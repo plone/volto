@@ -214,14 +214,14 @@ class Edit extends Component {
                   value={this.state.url}
                   // Prevents propagation to the Dropzone and the opening
                   // of the upload browser dialog
-                  onClick={e => e.stopPropagation()}
+                  onClick={(e) => e.stopPropagation()}
                 />
                 {this.state.url && (
                   <Button.Group>
                     <Button
                       basic
                       className="cancel"
-                      onClick={e => {
+                      onClick={(e) => {
                         e.stopPropagation();
                         this.setState({ url: '' });
                       }}
@@ -234,7 +234,7 @@ class Edit extends Component {
                   <Button
                     basic
                     primary
-                    onClick={e => {
+                    onClick={(e) => {
                       e.stopPropagation();
                       this.onSubmitUrl();
                     }}

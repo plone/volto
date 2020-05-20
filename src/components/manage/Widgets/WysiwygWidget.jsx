@@ -265,7 +265,7 @@ class WysiwygWidget extends Component {
             <label htmlFor={`field-${id}`}>{title}</label>
             <TextArea id={id} name={id} value={value ? value.data : ''} />
             {description && <p className="help">{description}</p>}
-            {map(error, message => (
+            {map(error, (message) => (
               <Label key={message} basic color="red" pointing>
                 {message}
               </Label>
@@ -337,7 +337,7 @@ class WysiwygWidget extends Component {
                   <div className="DraftEditor-root" />
                 )}
               </div>
-              {map(error, message => (
+              {map(error, (message) => (
                 <Label key={message} basic color="red" pointing>
                   {message}
                 </Label>

@@ -21,7 +21,7 @@ import {
 } from 'semantic-ui-react';
 import { find, map, isEqual } from 'lodash';
 import { toast } from 'react-toastify';
-import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
 import {
   createUser,
@@ -34,7 +34,7 @@ import {
   updateUser,
   updateGroup,
 } from '@plone/volto/actions';
-import { getBaseUrl } from '@plone/volto/helpers';
+import { getBaseUrl, messages } from '@plone/volto/helpers';
 import {
   ModalForm,
   Toolbar,
@@ -45,117 +45,6 @@ import {
 } from '@plone/volto/components';
 import addSvg from '@plone/volto/icons/circle-plus.svg';
 import backSVG from '@plone/volto/icons/back.svg';
-
-const messages = defineMessages({
-  searchUsers: {
-    id: 'Search users...',
-    defaultMessage: 'Search users...',
-  },
-  searchGroups: {
-    id: 'Search group...',
-    defaultMessage: 'Search group...',
-  },
-  save: {
-    id: 'Save',
-    defaultMessage: 'Save',
-  },
-  cancel: {
-    id: 'Cancel',
-    defaultMessage: 'Cancel',
-  },
-  back: {
-    id: 'Back',
-    defaultMessage: 'Back',
-  },
-  deleteUserConfirmTitle: {
-    id: 'Delete User',
-    defaultMessage: 'Delete User',
-  },
-  deleteGroupConfirmTitle: {
-    id: 'Delete Group',
-    defaultMessage: 'Delete Group',
-  },
-  add: {
-    id: 'Add',
-    defaultMessage: 'Add',
-  },
-  addUserButtonTitle: {
-    id: 'Add new user',
-    defaultMessage: 'Add new user',
-  },
-  addGroupsButtonTitle: {
-    id: 'Add new group',
-    defaultMessage: 'Add new group',
-  },
-  addUserFormTitle: {
-    id: 'Add User',
-    defaultMessage: 'Add User',
-  },
-  addGroupsFormTitle: {
-    id: 'Add group',
-    defaultMessage: 'Add group',
-  },
-  addUserFormUsernameTitle: {
-    id: 'Username',
-    defaultMessage: 'Username',
-  },
-  addGroupsFormTitleTitle: {
-    id: 'Title',
-    defaultMessage: 'Title',
-  },
-  addUserFormFullnameTitle: {
-    id: 'Fullname',
-    defaultMessage: 'Fullname',
-  },
-  addUserGroupNameTitle: {
-    id: 'Add to Groups',
-    defaultMessage: 'Add to Groups',
-  },
-  addGroupsFormGroupNameTitle: {
-    id: 'Groupname',
-    defaultMessage: 'Groupname',
-  },
-  addGroupsFormDescriptionTitle: {
-    id: 'Description',
-    defaultMessage: 'Description',
-  },
-  addUserFormEmailTitle: {
-    id: 'Email',
-    defaultMessage: 'Email',
-  },
-  addGroupsFormEmailTitle: {
-    id: 'Email',
-    defaultMessage: 'Email',
-  },
-  addUserFormPasswordTitle: {
-    id: 'Password',
-    defaultMessage: 'Password',
-  },
-  addUserFormRolesTitle: {
-    id: 'Roles',
-    defaultMessage: 'Roles',
-  },
-  addGroupsFormRolesTitle: {
-    id: 'Roles',
-    defaultMessage: 'Roles',
-  },
-  success: {
-    id: 'Success',
-    defaultMessage: 'Success',
-  },
-  userCreated: {
-    id: 'User created',
-    defaultMessage: 'User created',
-  },
-  groupCreated: {
-    id: 'Group created',
-    defaultMessage: 'Group created',
-  },
-  usersAndGroups: {
-    id: 'Users and Groups',
-    defaultMessage: 'Users and Groups',
-  },
-});
 
 /**
  * UsersControlpanel class.
@@ -281,14 +170,14 @@ class UsersControlpanel extends Component {
       this.onAddGroupError(nextProps.createRequest.error);
     }
     this.setState({
-      entries: map(nextProps.users, entry => {
+      entries: map(nextProps.users, (entry) => {
         const values = find(this.state.entries, { id: entry.id });
         return {
           ...entry,
           roles: values ? values.roles : entry.roles,
         };
       }),
-      groupEntries: map(nextProps.groups, entry => {
+      groupEntries: map(nextProps.groups, (entry) => {
         const values = find(this.state.groupEntries, { id: entry.id });
         return {
           ...entry,
@@ -428,13 +317,13 @@ class UsersControlpanel extends Component {
    */
   updateUserRole(name, value) {
     this.setState({
-      entries: map(this.state.entries, entry => ({
+      entries: map(this.state.entries, (entry) => ({
         ...entry,
         roles:
           entry.id === name
             ? entry.roles.includes(value) === false
               ? entry.roles.concat([value])
-              : [].concat(entry.roles.filter(e => e !== value))
+              : [].concat(entry.roles.filter((e) => e !== value))
             : entry.roles,
       })),
     });
@@ -447,13 +336,13 @@ class UsersControlpanel extends Component {
    */
   updateGroupRole(name, value) {
     this.setState({
-      groupEntries: map(this.state.groupEntries, entry => ({
+      groupEntries: map(this.state.groupEntries, (entry) => ({
         ...entry,
         roles:
           entry.id === name
             ? entry.roles.includes(value) === false
               ? entry.roles.concat([value])
-              : [].concat(entry.roles.filter(e => e !== value))
+              : [].concat(entry.roles.filter((e) => e !== value))
             : entry.roles,
       })),
     });
@@ -549,10 +438,11 @@ class UsersControlpanel extends Component {
   onSubmit(event) {
     const userData = { roles: {} };
     const groupData = { roles: {} };
+
     event.preventDefault();
     for (let i = 0; i < this.props.users.length; i += 1) {
       if (!isEqual(this.props.users[i].roles, this.state.entries[i].roles)) {
-        this.state.entries[i].roles.forEach(item => {
+        this.state.entries[i].roles.forEach((item) => {
           userData.roles[item] = true;
         });
         userData.id = this.state.entries[i].id;
@@ -563,7 +453,7 @@ class UsersControlpanel extends Component {
       if (
         !isEqual(this.props.groups[i].roles, this.state.groupEntries[i].roles)
       ) {
-        this.state.groupEntries[i].roles.forEach(item => {
+        this.state.groupEntries[i].roles.forEach((item) => {
           groupData.roles[item] = true;
         });
         groupData.id = this.state.groupEntries[i].id;
@@ -596,6 +486,7 @@ class UsersControlpanel extends Component {
     let groupNameToDelete = this.state.groupToDelete
       ? this.state.groupToDelete.id
       : '';
+
     return (
       <Container className="users-control-panel">
         <Helmet
@@ -640,143 +531,160 @@ class UsersControlpanel extends Component {
             }
             onCancel={this.onDeleteCancel}
             onConfirm={this.onDeleteOk}
-            size="none"
+            size={null}
           />
-          <ModalForm
-            open={this.state.showAddUser}
-            className="modal"
-            onSubmit={this.onAddUserSubmit}
-            submitError={this.state.addUserError}
-            onCancel={() => this.setState({ showAddUser: false })}
-            title={this.props.intl.formatMessage(messages.addUserFormTitle)}
-            loading={this.props.createRequest.loading}
-            schema={{
-              fieldsets: [
-                {
-                  id: 'default',
-                  title: 'FIXME: User Data',
-                  fields: [
-                    'username',
-                    'fullname',
-                    'email',
-                    'password',
-                    'roles',
-                    'groups',
-                  ],
+          {this.state.showAddUser ? (
+            <ModalForm
+              open={this.state.showAddUser}
+              className="modal"
+              onSubmit={this.onAddUserSubmit}
+              submitError={this.state.addUserError}
+              onCancel={() => this.setState({ showAddUser: false })}
+              title={this.props.intl.formatMessage(messages.addUserFormTitle)}
+              loading={this.props.createRequest.loading}
+              schema={{
+                fieldsets: [
+                  {
+                    id: 'default',
+                    title: 'FIXME: User Data',
+                    fields: [
+                      'username',
+                      'fullname',
+                      'email',
+                      'password',
+                      'roles',
+                      'groups',
+                    ],
+                  },
+                ],
+                properties: {
+                  username: {
+                    title: this.props.intl.formatMessage(
+                      messages.addUserFormUsernameTitle,
+                    ),
+                    type: 'string',
+                    description: '',
+                  },
+                  fullname: {
+                    title: this.props.intl.formatMessage(
+                      messages.addUserFormFullnameTitle,
+                    ),
+                    type: 'string',
+                    description: '',
+                  },
+                  email: {
+                    title: this.props.intl.formatMessage(
+                      messages.addUserFormEmailTitle,
+                    ),
+                    type: 'string',
+                    description: '',
+                    widget: 'email',
+                  },
+                  password: {
+                    title: this.props.intl.formatMessage(
+                      messages.addUserFormPasswordTitle,
+                    ),
+                    type: 'password',
+                    description: '',
+                    widget: 'password',
+                  },
+                  roles: {
+                    title: this.props.intl.formatMessage(
+                      messages.addUserFormRolesTitle,
+                    ),
+                    type: 'array',
+                    choices: this.props.roles.map((role) => [role.id, role.id]),
+                    description: '',
+                  },
+                  groups: {
+                    title: this.props.intl.formatMessage(
+                      messages.addUserGroupNameTitle,
+                    ),
+                    type: 'array',
+                    choices: this.props.groups.map((group) => [
+                      group.id,
+                      group.id,
+                    ]),
+                    description: '',
+                  },
                 },
-              ],
-              properties: {
-                username: {
-                  title: this.props.intl.formatMessage(
-                    messages.addUserFormUsernameTitle,
-                  ),
-                  type: 'string',
-                  description: '',
+                required: ['username', 'fullname', 'email', 'password'],
+              }}
+            />
+          ) : null}
+
+          {this.state.showAddGroup ? (
+            <ModalForm
+              open={this.state.showAddGroup}
+              className="modal"
+              onSubmit={this.onAddGroupSubmit}
+              submitError={this.state.addGroupError}
+              onCancel={() => this.setState({ showAddGroup: false })}
+              title={this.props.intl.formatMessage(messages.addGroupsFormTitle)}
+              loading={this.props.createGroupRequest.loading}
+              schema={{
+                fieldsets: [
+                  {
+                    id: 'default',
+                    title: 'FIXME: Group Data',
+                    fields: [
+                      'title',
+                      'description',
+                      'groupname',
+                      'email',
+                      'roles',
+                    ],
+                  },
+                ],
+                properties: {
+                  title: {
+                    title: this.props.intl.formatMessage(
+                      messages.addGroupsFormTitleTitle,
+                    ),
+                    type: 'string',
+                    description: '',
+                  },
+                  description: {
+                    title: this.props.intl.formatMessage(
+                      messages.addGroupsFormDescriptionTitle,
+                    ),
+                    type: 'string',
+                    description: '',
+                  },
+                  groupname: {
+                    title: this.props.intl.formatMessage(
+                      messages.addGroupsFormGroupNameTitle,
+                    ),
+                    type: 'string',
+                    description: '',
+                  },
+                  email: {
+                    title: this.props.intl.formatMessage(
+                      messages.addGroupsFormEmailTitle,
+                    ),
+                    type: 'string',
+                    description: '',
+                    widget: 'email',
+                  },
+                  roles: {
+                    title: this.props.intl.formatMessage(
+                      messages.addGroupsFormRolesTitle,
+                    ),
+                    type: 'array',
+                    choices: this.props.roles.map((role) => [role.id, role.id]),
+                    description: '',
+                  },
                 },
-                fullname: {
-                  title: this.props.intl.formatMessage(
-                    messages.addUserFormFullnameTitle,
-                  ),
-                  type: 'string',
-                  description: '',
-                },
-                email: {
-                  title: this.props.intl.formatMessage(
-                    messages.addUserFormEmailTitle,
-                  ),
-                  type: 'string',
-                  description: '',
-                },
-                password: {
-                  title: this.props.intl.formatMessage(
-                    messages.addUserFormPasswordTitle,
-                  ),
-                  type: 'password',
-                  description: '',
-                },
-                roles: {
-                  title: this.props.intl.formatMessage(
-                    messages.addUserFormRolesTitle,
-                  ),
-                  type: 'array',
-                  choices: this.props.roles.map(role => [role.id, role.id]),
-                  description: '',
-                },
-                groups: {
-                  title: this.props.intl.formatMessage(
-                    messages.addUserGroupNameTitle,
-                  ),
-                  type: 'array',
-                  choices: this.props.groups.map(group => [group.id, group.id]),
-                  description: '',
-                },
-              },
-              required: ['username', 'fullname', 'email', 'password'],
-            }}
-          />
-          <ModalForm
-            open={this.state.showAddGroup}
-            className="modal"
-            onSubmit={this.onAddGroupSubmit}
-            submitError={this.state.addGroupError}
-            onCancel={() => this.setState({ showAddGroup: false })}
-            title={this.props.intl.formatMessage(messages.addGroupsFormTitle)}
-            loading={this.props.createGroupRequest.loading}
-            schema={{
-              fieldsets: [
-                {
-                  id: 'default',
-                  title: 'FIXME: Group Data',
-                  fields: [
-                    'Title',
-                    'Description',
-                    'groupname',
-                    'email',
-                    'roles',
-                  ],
-                },
-              ],
-              properties: {
-                Title: {
-                  title: this.props.intl.formatMessage(
-                    messages.addGroupsFormTitleTitle,
-                  ),
-                  type: 'string',
-                  description: '',
-                },
-                Description: {
-                  title: this.props.intl.formatMessage(
-                    messages.addGroupsFormDescriptionTitle,
-                  ),
-                  type: 'string',
-                  description: '',
-                },
-                groupname: {
-                  title: this.props.intl.formatMessage(
-                    messages.addGroupsFormGroupNameTitle,
-                  ),
-                  type: 'string',
-                  description: '',
-                },
-                email: {
-                  title: this.props.intl.formatMessage(
-                    messages.addGroupsFormEmailTitle,
-                  ),
-                  type: 'string',
-                  description: '',
-                },
-                roles: {
-                  title: this.props.intl.formatMessage(
-                    messages.addGroupsFormRolesTitle,
-                  ),
-                  type: 'array',
-                  choices: this.props.roles.map(role => [role.id, role.id]),
-                  description: '',
-                },
-              },
-              required: ['Title', 'description', 'groupname', 'email', 'roles'],
-            }}
-          />
+                required: [
+                  'title',
+                  'description',
+                  'groupname',
+                  'email',
+                  'roles',
+                ],
+              }}
+            />
+          ) : null}
         </div>
         <Segment.Group raised>
           <Segment className="primary">
@@ -814,7 +722,7 @@ class UsersControlpanel extends Component {
                         defaultMessage="User name"
                       />
                     </Table.HeaderCell>
-                    {this.props.roles.map(role => (
+                    {this.props.roles.map((role) => (
                       <Table.HeaderCell key={role.id}>
                         {role.id}
                       </Table.HeaderCell>
@@ -825,7 +733,7 @@ class UsersControlpanel extends Component {
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
-                  {this.state.entries.map(user => (
+                  {this.state.entries.map((user) => (
                     <UsersControlpanelUser
                       key={user.id}
                       onDelete={this.delete}
@@ -887,7 +795,7 @@ class UsersControlpanel extends Component {
                         defaultMessage="Groupname"
                       />
                     </Table.HeaderCell>
-                    {this.props.roles.map(role => (
+                    {this.props.roles.map((role) => (
                       <Table.HeaderCell key={role.id}>
                         {role.id}
                       </Table.HeaderCell>
@@ -898,10 +806,9 @@ class UsersControlpanel extends Component {
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
-                  {this.state.groupEntries.map(groups => (
+                  {this.state.groupEntries.map((groups) => (
                     <UsersControlpanelGroups
                       key={groups.id}
-                      user={this.props.users}
                       onDelete={this.deleteGroup}
                       roles={this.props.roles}
                       groups={groups}
@@ -970,7 +877,7 @@ export default compose(
       deleteGroupRequest: state.groups.delete,
       createGroupRequest: state.groups.create,
     }),
-    dispatch =>
+    (dispatch) =>
       bindActionCreators(
         {
           listRoles,

@@ -216,7 +216,7 @@ class ContentsPropertiesModal extends Component {
 export default compose(
   injectIntl,
   connect(
-    state => ({
+    (state) => ({
       request: state.content.update,
     }),
     { updateContent },

@@ -283,7 +283,7 @@ class AddonsControlpanel extends Component {
           <Segment key="body-installed" attached>
             <Accordion>
               <Divider />
-              {this.props.installedAddons.map(item => (
+              {this.props.installedAddons.map((item) => (
                 <div key={item.id}>
                   <Accordion.Title
                     active={this.state.activeIndex === item.id}
@@ -366,7 +366,7 @@ class AddonsControlpanel extends Component {
           <Segment key="body-available" attached>
             <Accordion>
               <Divider />
-              {this.props.availableAddons.map(item => (
+              {this.props.availableAddons.map((item) => (
                 <div key={item.id}>
                   <Accordion.Title
                     active={this.state.activeIndex === item.id}

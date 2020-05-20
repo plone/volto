@@ -74,7 +74,7 @@ function getDefaultValues(choices, value) {
   if (!isObject(value) && isBoolean(value)) {
     // We have a boolean value, which means we need to provide a "No value"
     // option
-    const label = find(choices, o => getBoolean(o[0]) === value);
+    const label = find(choices, (o) => getBoolean(o[0]) === value);
     return label
       ? {
           label: label[1],
@@ -95,7 +95,7 @@ function getDefaultValues(choices, value) {
     };
   }
   if (value && choices.length > 0) {
-    return { label: find(choices, o => o[0] === value)[1], value };
+    return { label: find(choices, (o) => o[0] === value)[1], value };
   } else {
     return {};
   }
@@ -130,12 +130,12 @@ class SelectWidget extends Component {
     widgetOptions: PropTypes.shape({
       vocabulary: PropTypes.object,
     }),
-    value: PropTypes.oneOfType([
-      PropTypes.object,
-      PropTypes.string,
-      PropTypes.bool,
-    ]),
+    value: PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.object, PropTypes.string, PropTypes.bool]),
+    ),
     onChange: PropTypes.func.isRequired,
+    onBlur: PropTypes.func,
+    onClick: PropTypes.func,
     onEdit: PropTypes.func,
     onDelete: PropTypes.func,
     itemsTotal: PropTypes.number,
@@ -159,6 +159,9 @@ class SelectWidget extends Component {
     choices: [],
     loading: false,
     value: null,
+    onChange: () => {},
+    onBlur: () => {},
+    onClick: () => {},
     onEdit: null,
     onDelete: null,
   };
@@ -208,7 +211,7 @@ class SelectWidget extends Component {
    * @param {array} selectedOption The selected options (already aggregated).
    * @returns {undefined}
    */
-  handleChange = selectedOption => {
+  handleChange = (selectedOption) => {
     this.setState({ selectedOption });
     this.props.onChange(this.props.id, selectedOption.value);
   };
@@ -265,6 +268,8 @@ class SelectWidget extends Component {
       choices,
       value,
       onChange,
+      onBlur,
+      onClick,
       fieldSet,
     } = this.props;
 
@@ -333,7 +338,7 @@ class SelectWidget extends Component {
                   classNamePrefix="react-select"
                   isMulti={id === 'roles' || id === 'groups'}
                   options={[
-                    ...map(choices, option => ({
+                    ...map(choices, (option) => ({
                       value: option[0],
                       label:
                         // Fix "None" on the serializer, to remove when fixed in p.restapi
@@ -354,7 +359,7 @@ class SelectWidget extends Component {
                       ? null
                       : getDefaultValues(choices, value)
                   }
-                  onChange={data => {
+                  onChange={(data) => {
                     let dataValue = [];
                     if (Array.isArray(data)) {
                       for (let obj of data) {
@@ -364,12 +369,20 @@ class SelectWidget extends Component {
                     }
                     return onChange(
                       id,
-                      data.value === 'no-value' ? undefined : data.value,
+                      data
+                        ? data.value === 'no-value'
+                          ? undefined
+                          : data.value
+                        : null,
                     );
                   }}
+                  onBlur={({ target }) =>
+                    onBlur(id, target.value === '' ? undefined : target.value)
+                  }
+                  onClick={() => onClick()}
                 />
               )}
-              {map(error, message => (
+              {map(error, (message) => (
                 <Label key={message} basic color="red" pointing>
                   {message}
                 </Label>

@@ -75,7 +75,7 @@ class Html extends Component {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="apple-mobile-web-app-capable" content="yes" />
           {/* Add the crossorigin while in development */}
-          {extractor.getLinkElements().map(elem =>
+          {extractor.getLinkElements().map((elem) =>
             React.cloneElement(elem, {
               crossOrigin:
                 process.env.NODE_ENV === 'production' ? undefined : 'true',
@@ -98,7 +98,7 @@ class Html extends Component {
             charSet="UTF-8"
           />
           {/* Add the crossorigin while in development */}
-          {extractor.getScriptElements().map(elem =>
+          {extractor.getScriptElements().map((elem) =>
             React.cloneElement(elem, {
               crossOrigin:
                 process.env.NODE_ENV === 'production' ? undefined : 'true',

@@ -112,11 +112,11 @@ class ContentsWorkflowModal extends Component {
       filter(
         map(
           concat(
-            ...map(this.props.workflows, workflow => workflow.transitions),
+            ...map(this.props.workflows, (workflow) => workflow.transitions),
           ),
-          item => item['@id'],
+          (item) => item['@id'],
         ),
-        x => last(x.split('/')) === state,
+        (x) => last(x.split('/')) === state,
       ),
       include_children,
     );
@@ -156,12 +156,12 @@ class ContentsWorkflowModal extends Component {
                     concat(
                       ...map(
                         this.props.workflows,
-                        workflow => workflow.transitions,
+                        (workflow) => workflow.transitions,
                       ),
                     ),
-                    x => x.title,
+                    (x) => x.title,
                   ),
-                  y => [last(y['@id'].split('/')), y.title],
+                  (y) => [last(y['@id'].split('/')), y.title],
                 ),
               },
               include_children: {
@@ -182,7 +182,7 @@ class ContentsWorkflowModal extends Component {
 export default compose(
   injectIntl,
   connect(
-    state => ({
+    (state) => ({
       request: state.workflow.transition,
       workflows: state.workflow.multiple,
     }),

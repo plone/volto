@@ -28,6 +28,75 @@ import { SidebarPortal } from '@plone/volto/components';
 
 Everything that's inside the `SidebarPortal` component will be rendered in the sidebar.
 
+## Automated block editing forms
+
+To simplify the task of defining the edit component for a block, the ``InlineForm`` component can be used. The block edit component needs to be described by a schema that matches the format used to serialize the content type definitions. The widgets that will be used in rendering the form follow the same algorithm that is used for the regular metadata fields for the content types. As an example of schema, it could look like this:
+
+```js
+const IframeSchema = {
+  title: 'Embed external content',
+
+  fieldsets: [
+    {
+      id: 'default',
+      title: 'Default',
+      fields: [
+        'url',
+        'align',
+        'privacy_statement',
+        'privacy_cookie_key',
+        'enabled',
+      ],
+    },
+  ],
+
+  properties: {
+    url: {
+      title: 'Embed URL',
+    },
+    privacy_statement: {
+      title: 'Privacy statement',
+      description: 'Short notification text',
+      widget: 'text',
+    },
+    privacy_cookie_key: {
+      title: 'Privacy cookie key',
+      description: 'Identifies similar external content',
+    },
+    enabled: {
+      title: 'Use privacy screen?',
+      description: 'Enable/disable the privacy protection',
+      type: 'boolean',
+    },
+  },
+
+  required: ['url'],
+};
+
+export default IframeSchema;
+```
+
+To render this form and make it available to the edit component:
+
+```jsx
+import schema from './schema';
+import InlineForm from '@plone/volto/components/manage/Form/InlineForm';
+
+<SidebarPortal selected={this.props.selected}>
+  <InlineForm
+    schema={schema}
+    title={schema.title}
+    onChangeField={(id, value) => {
+      this.props.onChangeBlock(this.props.block, {
+	...this.props.data,
+	[id]: value,
+      });
+    }}
+    formData={this.props.data}
+  />
+</SidebarPortal>
+```
+
 ## Object Browser
 
 Volto 4 has a new object browser component that allows you to select an existing content object from the site.

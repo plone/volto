@@ -233,7 +233,7 @@ class TextWidget extends Component {
                   onBlur(id, target.value === '' ? undefined : target.value)
                 }
                 onClick={() => onClick()}
-                ref={node => {
+                ref={(node) => {
                   this.node = node;
                 }}
                 type={typeTranslations[type] || type}
@@ -248,7 +248,7 @@ class TextWidget extends Component {
                   maxLength={maxLength || null}
                 />
               </Input>
-              {map(error, message => (
+              {map(error, (message) => (
                 <Label key={message} basic color="red" pointing>
                   {message}
                 </Label>

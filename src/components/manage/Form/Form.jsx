@@ -3,8 +3,17 @@
  * @module components/manage/Form/Form
  */
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import { EditBlock, Field, Icon } from '@plone/volto/components';
+import {
+  difference,
+  FormValidation,
+  getBlocksFieldname,
+  getBlocksLayoutFieldname,
+  messages,
+} from '@plone/volto/helpers';
+import aheadSVG from '@plone/volto/icons/ahead.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
+import dragSVG from '@plone/volto/icons/drag.svg';
 import {
   findIndex,
   isEmpty,
@@ -13,249 +22,24 @@ import {
   mapValues,
   omit,
   pickBy,
-  uniq,
   without,
 } from 'lodash';
 import move from 'lodash-move';
 import isBoolean from 'lodash/isBoolean';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
+import { injectIntl } from 'react-intl';
+import { Portal } from 'react-portal';
 import {
   Button,
   Container,
   Form as UiForm,
+  Message,
   Segment,
   Tab,
-  Message,
 } from 'semantic-ui-react';
-import { defineMessages, injectIntl } from 'react-intl';
 import { v4 as uuid } from 'uuid';
-import { Portal } from 'react-portal';
-
-import { EditBlock, Icon, Field } from '@plone/volto/components';
-import {
-  getBlocksFieldname,
-  getBlocksLayoutFieldname,
-} from '@plone/volto/helpers';
-import { difference } from '@plone/volto/helpers';
-
-import aheadSVG from '@plone/volto/icons/ahead.svg';
-import clearSVG from '@plone/volto/icons/clear.svg';
-
-const messages = defineMessages({
-  addBlock: {
-    id: 'Add block...',
-    defaultMessage: 'Add block...',
-  },
-  required: {
-    id: 'Required input is missing.',
-    defaultMessage: 'Required input is missing.',
-  },
-  minLength: {
-    id: 'Minimum length is {len}.',
-    defaultMessage: 'Minimum length is {len}.',
-  },
-  maxLength: {
-    id: 'Maximum length is {len}.',
-    defaultMessage: 'Maximum length is {len}.',
-  },
-  minimum: {
-    id: 'Minimum value is {len}.',
-    defaultMessage: 'Minimum value is {len}.',
-  },
-  maximum: {
-    id: 'Maximum value is {len}.',
-    defaultMessage: 'Maximum value is {len}.',
-  },
-  uniqueItems: {
-    id: 'Items must be unique.',
-    defaultMessage: 'Items must be unique.',
-  },
-  save: {
-    id: 'Save',
-    defaultMessage: 'Save',
-  },
-  isNumber: {
-    id: 'number',
-    defaultMessage: 'Input must be number',
-  },
-  isInteger: {
-    id: 'integer',
-    defaultMessage: 'Input must be integer',
-  },
-  isValidEmail: {
-    id: 'email',
-    defaultMessage: 'Input must be valid email (something@domain.com)',
-  },
-  isValidURL: {
-    id: 'url',
-    defaultMessage:
-      'Input must be valid url (www.something.com or http(s)://www.something.com)',
-  },
-  cancel: {
-    id: 'Cancel',
-    defaultMessage: 'Cancel',
-  },
-  error: {
-    id: 'Error',
-    defaultMessage: 'Error',
-  },
-  thereWereSomeErrors: {
-    id: 'There were some errors.',
-    defaultMessage: 'There were some errors.',
-  },
-});
-
-/**
- * Will return the intl message if invalid
- * @param {boolean} isValid
- * @param {string} maxCriterion
- * @param {string | number} valueToCompare can compare '47' < 50
- * @param {Function} intlFunc
- */
-const validationMessage = (isValid, maxCriterion, valueToCompare, intlFunc) =>
-  !isValid
-    ? intlFunc(messages[maxCriterion], {
-        len: valueToCompare,
-      })
-    : null;
-/**
- * Returns if based on the criterion the value is lower or equal
- * @param {string | number} value can compare '47' < 50
- * @param {string | number} valueToCompare can compare '47' < 50
- * @param {string} minCriterion
- * @param {Function} intlFunc
- */
-const isMaxPropertyValid = (value, valueToCompare, minCriterion, intlFunc) => {
-  const isValid = valueToCompare !== undefined ? value <= valueToCompare : true;
-  return validationMessage(isValid, minCriterion, valueToCompare, intlFunc);
-};
-/**
- * Returns if based on the criterion the value is higher or equal
- * @param {string | number} value can compare '47' < 50
- * @param {string | number} valueToCompare can compare '47' < 50
- * @param {string} minCriterion
- * @param {Function} intlFunc
- */
-const isMinPropertyValid = (value, valueToCompare, maxCriterion, intlFunc) => {
-  const isValid = valueToCompare !== undefined ? value >= valueToCompare : true;
-  return validationMessage(isValid, maxCriterion, valueToCompare, intlFunc);
-};
-
-const widgetValidation = {
-  email: {
-    isValidEmail: (emailValue, emailObj, intlFunc) => {
-      const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-      const isValid = emailRegex.test(emailValue);
-      return !isValid ? intlFunc(messages.isValidEmail) : null;
-    },
-    minLength: (emailValue, emailObj, intlFunc) =>
-      isMinPropertyValid(
-        emailValue.length,
-        emailObj.minLength,
-        'minLength',
-        intlFunc,
-      ),
-    maxLength: (emailValue, emailObj, intlFunc) =>
-      isMaxPropertyValid(
-        emailValue.length,
-        emailObj.maxLength,
-        'maxLength',
-        intlFunc,
-      ),
-  },
-  url: {
-    isValidURL: (urlValue, urlObj, intlFunc) => {
-      const urlRegex = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([-.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/gm;
-      const isValid = urlRegex.test(urlValue);
-      return !isValid ? intlFunc(messages.isValidURL) : null;
-    },
-    minLength: (urlValue, urlObj, intlFunc) =>
-      isMinPropertyValid(
-        urlValue.length,
-        urlObj.minLength,
-        'minLength',
-        intlFunc,
-      ),
-    maxLength: (urlValue, urlObj, intlFunc) =>
-      isMaxPropertyValid(
-        urlValue.length,
-        urlObj.maxLength,
-        'maxLength',
-        intlFunc,
-      ),
-  },
-  password: {
-    minLength: (passwordValue, passwordObj, intlFunc) =>
-      isMinPropertyValid(
-        passwordValue.length,
-        passwordObj.minLength,
-        'minLength',
-        intlFunc,
-      ),
-    maxLength: (passwordValue, passwordObj, intlFunc) =>
-      isMaxPropertyValid(
-        passwordValue.length,
-        passwordObj.maxLength,
-        'maxLength',
-        intlFunc,
-      ),
-  },
-  string: {
-    minLength: (value, itemObj, intlFunc) =>
-      isMinPropertyValid(
-        value.length,
-        itemObj.minLength,
-        'minLength',
-        intlFunc,
-      ),
-    maxLength: (value, itemObj, intlFunc) =>
-      isMaxPropertyValid(
-        value.length,
-        itemObj.maxLengthj,
-        'maxLength',
-        intlFunc,
-      ),
-  },
-  number: {
-    isNumber: (value, itemObj, intlFunc) => {
-      const floatRegex = /^[+-]?\d+(\.\d+)?$/;
-      const isValid = !isNaN(value) && floatRegex.test(value);
-      return !isValid ? intlFunc(messages.isNumber) : null;
-    },
-    minimum: (value, itemObj, intlFunc) =>
-      isMinPropertyValid(value, itemObj.minimum, 'minimum', intlFunc),
-    maximum: (value, itemObj, intlFunc) =>
-      isMaxPropertyValid(value, itemObj.maximum, 'maximum', intlFunc),
-  },
-  integer: {
-    isInteger: (value, itemObj, intlFunc) => {
-      const intRegex = /^-?[0-9]+$/;
-      const isValid = !isNaN(value) && intRegex.test(value);
-      return !isValid ? intlFunc(messages.isInteger) : null;
-    },
-    minimum: (value, itemObj, intlFunc) =>
-      isMinPropertyValid(value, itemObj.minimum, 'minimum', intlFunc),
-    maximum: (value, itemObj, intlFunc) =>
-      isMaxPropertyValid(value, itemObj.maximum, 'maximum', intlFunc),
-  },
-};
-
-/**
- * The string that comes my not be a valid JSON
- * @param {string} requestItem
- */
-const tryParseJSON = requestItem => {
-  let resultObj = null;
-  try {
-    resultObj = JSON.parse(requestItem);
-  } catch (e) {
-    try {
-      resultObj = JSON.parse(requestItem.replace(/'/g, '"'));
-    } catch (e) {
-      resultObj = null;
-    }
-  }
-  return resultObj;
-};
 
 /**
  * Form container class.
@@ -371,17 +155,14 @@ class Form extends Component {
     this.state = {
       formData,
       initialFormData: { ...formData },
-      isFormPrestine: true,
       errors: {},
-      activeIndex: 0,
       selected:
         formData[blocksLayoutFieldname].items.length > 0
           ? formData[blocksLayoutFieldname].items[0]
           : null,
+      placeholderProps: {},
     };
     this.onChangeField = this.onChangeField.bind(this);
-    this.onBlurField = this.onBlurField.bind(this);
-    this.onClickInput = this.onClickInput.bind(this);
     this.onChangeBlock = this.onChangeBlock.bind(this);
     this.onMutateBlock = this.onMutateBlock.bind(this);
     this.onSelectBlock = this.onSelectBlock.bind(this);
@@ -393,46 +174,8 @@ class Form extends Component {
     this.onFocusNextBlock = this.onFocusNextBlock.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.onTabChange = this.onTabChange.bind(this);
-  }
-
-  /**
-   * The first Fieldset (Tab) that has any errors
-   * will be selected
-   * @param {Object[]} errors
-   * @param {string} errors[].field
-   * @param {string[]} errors[].message
-   * @returns {number} activeIndex
-   */
-  showFirstTabWithErrors(errors) {
-    let activeIndex = 0;
-
-    this.props.schema.fieldsets.some((fieldSet, index) => {
-      let foundfield = fieldSet.fields.some(fieldId => errors[fieldId]);
-
-      activeIndex = foundfield ? index : activeIndex;
-      return foundfield;
-    });
-
-    return activeIndex;
-  }
-
-  /**
-   * Create the errors object from backend the same way it is done on Frontend validation
-   * @param {string} requestError form the server
-   * @returns {Object}
-   */
-  giveServerErrorsToCorrespondingFields(requestError) {
-    let errorsList = tryParseJSON(requestError);
-    const errors = {};
-
-    if (Array.isArray(errorsList) && errorsList.length > 0) {
-      errorsList.forEach(errorItem => {
-        errors[errorItem.field] = errors[errorItem.field]
-          ? errors[errorItem.field].push(errorItem.message)
-          : [errorItem.message];
-      });
-    }
-    return errors;
+    this.onBlurField = this.onBlurField.bind(this);
+    this.onClickInput = this.onClickInput.bind(this);
   }
 
   /**
@@ -447,8 +190,13 @@ class Form extends Component {
     let activeIndex = 0;
 
     if (requestError && prevProps.requestError !== requestError) {
-      errors = this.giveServerErrorsToCorrespondingFields(requestError);
-      activeIndex = this.showFirstTabWithErrors(errors);
+      errors = FormValidation.giveServerErrorsToCorrespondingFields(
+        requestError,
+      );
+      activeIndex = FormValidation.showFirstTabWithErrors({
+        errors,
+        schema: this.props.schema,
+      });
 
       this.setState({
         errors,
@@ -482,12 +230,15 @@ class Form extends Component {
    */
   onBlurField(id, value) {
     if (!this.state.isFormPrestine) {
-      const errors = this.validateFieldsPerFieldset();
-      if (keys(errors).length > 0) {
-        this.setState({
-          errors,
-        });
-      }
+      const errors = FormValidation.validateFieldsPerFieldset({
+        schema: this.props.schema,
+        formData: this.state.formData,
+        formatMessage: this.props.intl.formatMessage,
+      });
+
+      this.setState({
+        errors,
+      });
     }
   }
 
@@ -500,7 +251,7 @@ class Form extends Component {
    * @returns {undefined}
    */
   onChangeField(id, value) {
-    this.setState(prevState => {
+    this.setState((prevState) => {
       const { errors, formData } = prevState;
       delete errors[id];
       return {
@@ -514,6 +265,14 @@ class Form extends Component {
       };
     });
   }
+
+  hideHandler = (data) => {
+    return (
+      data['@type'] === 'text' &&
+      (!data.text ||
+        (data.text?.blocks?.length === 1 && data.text.blocks[0].text === ''))
+    );
+  };
 
   /**
    * Change block handler
@@ -657,93 +416,6 @@ class Form extends Component {
   }
 
   /**
-   * Returns errors if obj has unique Items
-   * @param {Object} field
-   * @param {*} fieldData
-   * @returns {Object[string]} - list of errors
-   */
-  hasUniqueItems(field, fieldData) {
-    const errors = [];
-    if (
-      field.uniqueItems &&
-      fieldData &&
-      uniq(fieldData).length !== fieldData.length
-    ) {
-      errors.push(this.props.intl.formatMessage(messages.uniqueItems));
-    }
-    return errors;
-  }
-
-  /**
-   * If required fields are undefined, return list of errors
-   * @returns {Object[string]} - list of errors
-   */
-  validateRequiredFields() {
-    const errors = {};
-
-    map(this.props.schema.required, requiredField => {
-      if (
-        this.props.schema.properties[requiredField].type !== 'boolean' &&
-        !this.props.schema.properties[requiredField].readonly &&
-        !this.state.formData[requiredField]
-      ) {
-        errors[requiredField] = [];
-        errors[requiredField].push(
-          this.props.intl.formatMessage(messages.required),
-        );
-      }
-    });
-
-    return errors;
-  }
-
-  /**
-   * Return list of errors if field constraints are not respected
-   * (ex min, max, maxLength, email format, url format etc)
-   * each potential criterion has a validation process in widgetValidation
-   * !!ONLY fields with data will be tested (those undefined are ignored here)
-   * @returns {Object[string]} - list of errors
-   */
-  validateFieldsPerFieldset() {
-    const errors = this.validateRequiredFields();
-
-    map(this.props.schema.properties, (field, fieldId) => {
-      const fieldWidgetType = field.widget || field.type;
-      const widgetValidationCriteria = widgetValidation[fieldWidgetType]
-        ? Object.keys(widgetValidation[fieldWidgetType])
-        : [];
-      let fieldData = this.state.formData[fieldId];
-      // test each criterion ex maximum, isEmail, isUrl, maxLength etc
-      const fieldErrors = widgetValidationCriteria
-        .map(widgetCriterion => {
-          const errorMessage =
-            fieldData === undefined || fieldData === null
-              ? null
-              : widgetValidation[fieldWidgetType][widgetCriterion](
-                  fieldData,
-                  field,
-                  this.props.intl.formatMessage,
-                );
-          return errorMessage;
-        })
-        .filter(item => !!item);
-
-      const uniqueErrors = this.hasUniqueItems(field, fieldData);
-      const mergedErrors = [...fieldErrors, ...uniqueErrors];
-
-      if (mergedErrors.length > 0) {
-        errors[fieldId] = [
-          ...(errors[fieldId] || []),
-          ...fieldErrors,
-          ...uniqueErrors,
-        ];
-      }
-    });
-
-    return errors;
-  }
-
-  /**
    * Submit handler also validate form and collect errors
    * @method onSubmit
    * @param {Object} event Event object.
@@ -754,7 +426,11 @@ class Form extends Component {
       event.preventDefault();
     }
 
-    const errors = this.validateFieldsPerFieldset();
+    const errors = FormValidation.validateFieldsPerFieldset({
+      schema: this.props.schema,
+      formData: this.state.formData,
+      formatMessage: this.props.intl.formatMessage,
+    });
 
     if (keys(errors).length > 0) {
       this.setState({
@@ -913,16 +589,16 @@ class Form extends Component {
    * @param {object} schema The schema definition of the form.
    * @returns A modified copy of the given schema.
    */
-  removeBlocksLayoutFields = schema => {
+  removeBlocksLayoutFields = (schema) => {
     const newSchema = { ...schema };
     const layoutFieldsetIndex = findIndex(
       newSchema.fieldsets,
-      fieldset => fieldset.id === 'layout',
+      (fieldset) => fieldset.id === 'layout',
     );
     if (layoutFieldsetIndex > -1) {
       const layoutFields = newSchema.fieldsets[layoutFieldsetIndex].fields;
       newSchema.fieldsets[layoutFieldsetIndex].fields = layoutFields.filter(
-        field => field !== 'blocks' && field !== 'blocks_layout',
+        (field) => field !== 'blocks' && field !== 'blocks_layout',
       );
       if (newSchema.fieldsets[layoutFieldsetIndex].fields.length === 0) {
         newSchema.fieldsets = [
@@ -934,6 +610,108 @@ class Form extends Component {
     return newSchema;
   };
 
+  onDragEnd = (result) => {
+    const { source, destination } = result;
+    if (!destination) {
+      return;
+    }
+    const blocksLayoutFieldname = getBlocksLayoutFieldname(this.state.formData);
+    this.setState({
+      placeholderProps: {},
+    });
+    this.setState({
+      formData: {
+        ...this.state.formData,
+        [blocksLayoutFieldname]: {
+          items: move(
+            this.state.formData[blocksLayoutFieldname].items,
+            source.index,
+            destination.index,
+          ),
+        },
+      },
+    });
+  };
+
+  handleDragStart = (event) => {
+    const queryAttr = 'data-rbd-draggable-id';
+    const domQuery = `[${queryAttr}='${event.draggableId}']`;
+    const draggedDOM = document.querySelector(domQuery);
+
+    if (!draggedDOM) {
+      return;
+    }
+
+    const { clientHeight, clientWidth } = draggedDOM;
+    const sourceIndex = event.source.index;
+    var clientY =
+      parseFloat(window.getComputedStyle(draggedDOM.parentNode).paddingTop) +
+      [...draggedDOM.parentNode.children]
+        .slice(0, sourceIndex)
+        .reduce((total, curr) => {
+          const style = curr.currentStyle || window.getComputedStyle(curr);
+          const marginBottom = parseFloat(style.marginBottom);
+          return total + curr.clientHeight + marginBottom;
+        }, 0);
+
+    this.setState({
+      placeholderProps: {
+        clientHeight,
+        clientWidth,
+        clientY,
+        clientX: parseFloat(
+          window.getComputedStyle(draggedDOM.parentNode).paddingLeft,
+        ),
+      },
+    });
+  };
+
+  onDragUpdate = (update) => {
+    if (!update.destination) {
+      return;
+    }
+    const draggableId = update.draggableId;
+    const destinationIndex = update.destination.index;
+
+    const queryAttr = 'data-rbd-draggable-id';
+    const domQuery = `[${queryAttr}='${draggableId}']`;
+    const draggedDOM = document.querySelector(domQuery);
+
+    if (!draggedDOM) {
+      return;
+    }
+    const { clientHeight, clientWidth } = draggedDOM;
+    const sourceIndex = update.source.index;
+    const childrenArray = [...draggedDOM.parentNode.children];
+    const movedItem = childrenArray[sourceIndex];
+    childrenArray.splice(sourceIndex, 1);
+
+    const updatedArray = [
+      ...childrenArray.slice(0, destinationIndex),
+      movedItem,
+      ...childrenArray.slice(destinationIndex + 1),
+    ];
+
+    var clientY =
+      parseFloat(window.getComputedStyle(draggedDOM.parentNode).paddingTop) +
+      updatedArray.slice(0, destinationIndex).reduce((total, curr) => {
+        const style = curr.currentStyle || window.getComputedStyle(curr);
+        const marginBottom = parseFloat(style.marginBottom);
+        return total + curr.clientHeight + marginBottom;
+      }, 0);
+
+    this.setState({
+      placeholderProps: {
+        clientHeight,
+        clientWidth,
+        clientY,
+        clientX: parseFloat(
+          window.getComputedStyle(draggedDOM.parentNode).paddingLeft,
+        ),
+      },
+    });
+  };
+
   /**
    * Render method.
    * @method render
@@ -941,72 +719,132 @@ class Form extends Component {
    */
   render() {
     const { schema: originalSchema, onCancel, onSubmit } = this.props;
-    const { formData } = this.state;
+    const { formData, placeholderProps } = this.state;
     const blocksFieldname = getBlocksFieldname(formData);
     const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
-    const renderBlocks = formData[blocksLayoutFieldname]?.items;
-    const blocksDict = formData[blocksFieldname];
+    const renderBlocks = formData?.[blocksLayoutFieldname]?.items;
+    const blocksDict = formData?.[blocksFieldname];
     const schema = this.removeBlocksLayoutFields(originalSchema);
 
     return this.props.visual ? (
-      <div className="ui container">
-        {map(renderBlocks, (block, index) => (
-          <EditBlock
-            id={block}
-            index={index}
-            type={blocksDict[block]['@type']}
-            key={block}
-            handleKeyDown={this.handleKeyDown}
-            onAddBlock={this.onAddBlock}
-            onChangeBlock={this.onChangeBlock}
-            onMutateBlock={this.onMutateBlock}
-            onChangeField={this.onChangeField}
-            onDeleteBlock={this.onDeleteBlock}
-            onSelectBlock={this.onSelectBlock}
-            onMoveBlock={this.onMoveBlock}
-            onFocusPreviousBlock={this.onFocusPreviousBlock}
-            onFocusNextBlock={this.onFocusNextBlock}
-            properties={formData}
-            data={blocksDict[block]}
-            pathname={this.props.pathname}
-            block={block}
-            selected={this.state.selected === block}
-          />
-        ))}
-        <Portal
-          node={__CLIENT__ && document.getElementById('sidebar-metadata')}
-        >
-          <UiForm
-            method="post"
-            onSubmit={this.onSubmit}
-            error={keys(this.state.errors).length > 0}
+      // Removing this from SSR is important, since react-beautiful-dnd supports SSR,
+      // but draftJS don't like it much and the hydration gets messed up
+      !__SERVER__ && (
+        <div className="ui container">
+          <DragDropContext
+            onDragEnd={this.onDragEnd}
+            onDragStart={this.handleDragStart}
+            onDragUpdate={this.onDragUpdate}
           >
-            {schema &&
-              map(schema.fieldsets, item => [
-                <Segment secondary attached key={item.title}>
-                  {item.title}
-                </Segment>,
-                <Segment attached key={`fieldset-contents-${item.title}`}>
-                  {map(item.fields, (field, index) => (
-                    <Field
-                      {...schema.properties[field]}
-                      id={field}
-                      focus={false}
-                      value={this.state.formData[field]}
-                      required={schema.required.indexOf(field) !== -1}
-                      onChange={this.onChangeField}
-                      onBlur={this.onBlurField}
-                      onClick={this.onClickInput}
-                      dateOnly={schema.properties[field].widget === 'date'}
-                      key={field}
-                      error={this.state.errors[field]}
-                    />
+            <Droppable droppableId="edit-form">
+              {(provided, snapshot) => (
+                <div
+                  ref={provided.innerRef}
+                  {...provided.droppableProps}
+                  style={{ position: 'relative' }}
+                >
+                  {map(renderBlocks, (block, index) => (
+                    <Draggable draggableId={block} index={index} key={block}>
+                      {(provided) => (
+                        <div
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          className={`block-editor-${blocksDict[block]['@type']}`}
+                        >
+                          <div style={{ position: 'relative' }}>
+                            <div
+                              style={{
+                                visibility:
+                                  this.state.selected === block &&
+                                  !this.hideHandler(blocksDict[block])
+                                    ? 'visible'
+                                    : 'hidden',
+                                display: 'inline-block',
+                              }}
+                              {...provided.dragHandleProps}
+                              className="drag handle wrapper"
+                            >
+                              <Icon name={dragSVG} size="18px" />
+                            </div>
+
+                            <EditBlock
+                              id={block}
+                              index={index}
+                              type={blocksDict[block]['@type']}
+                              key={block}
+                              handleKeyDown={this.handleKeyDown}
+                              onAddBlock={this.onAddBlock}
+                              onChangeBlock={this.onChangeBlock}
+                              onMutateBlock={this.onMutateBlock}
+                              onChangeField={this.onChangeField}
+                              onDeleteBlock={this.onDeleteBlock}
+                              onSelectBlock={this.onSelectBlock}
+                              onMoveBlock={this.onMoveBlock}
+                              onFocusPreviousBlock={this.onFocusPreviousBlock}
+                              onFocusNextBlock={this.onFocusNextBlock}
+                              properties={formData}
+                              data={blocksDict[block]}
+                              pathname={this.props.pathname}
+                              block={block}
+                              selected={this.state.selected === block}
+                            />
+                          </div>
+                        </div>
+                      )}
+                    </Draggable>
                   ))}
-                </Segment>,
-              ])}
-          </UiForm>
-        </Portal>
-      </div>
+                  {provided.placeholder}
+                  {!isEmpty(placeholderProps) && (
+                    <div
+                      style={{
+                        position: 'absolute',
+                        top: `${placeholderProps.clientY}px`,
+                        height: `${placeholderProps.clientHeight + 18}px`,
+                        background: '#eee',
+                        width: `${placeholderProps.clientWidth}px`,
+                        borderRadius: '3px',
+                      }}
+                    />
+                  )}
+                </div>
+              )}
+            </Droppable>
+            <Portal
+              node={__CLIENT__ && document.getElementById('sidebar-metadata')}
+            >
+              <UiForm
+                method="post"
+                onSubmit={this.onSubmit}
+                error={keys(this.state.errors).length > 0}
+              >
+                {schema &&
+                  map(schema.fieldsets, (item) => [
+                    <Segment secondary attached key={item.title}>
+                      {item.title}
+                    </Segment>,
+                    <Segment attached key={`fieldset-contents-${item.title}`}>
+                      {map(item.fields, (field, index) => (
+                        <Field
+                          {...schema.properties[field]}
+                          id={field}
+                          focus={false}
+                          value={this.state.formData[field]}
+                          required={schema.required.indexOf(field) !== -1}
+                          onChange={this.onChangeField}
+                          onBlur={this.onBlurField}
+                          onClick={this.onClickInput}
+                          dateOnly={schema.properties[field].widget === 'date'}
+                          key={field}
+                          error={this.state.errors[field]}
+                        />
+                      ))}
+                    </Segment>,
+                  ])}
+              </UiForm>
+            </Portal>
+          </DragDropContext>
+        </div>
+      )
     ) : (
       <Container>
         <UiForm
@@ -1024,9 +862,7 @@ class Form extends Component {
                   tabular: true,
                   className: 'formtabs',
                 }}
-                onTabChange={this.onTabChange}
-                activeIndex={this.state.activeIndex}
-                panes={map(schema.fieldsets, item => ({
+                panes={map(schema.fieldsets, (item) => ({
                   menuItem: item.title,
                   render: () => [
                     this.props.title && (
@@ -1082,7 +918,7 @@ class Form extends Component {
                     content={this.props.error.message}
                   />
                 )}
-                {map(schema.fieldsets[0].fields, field => (
+                {map(schema.fieldsets[0].fields, (field) => (
                   <Field
                     {...schema.properties[field]}
                     id={field}

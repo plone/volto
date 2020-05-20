@@ -15,6 +15,7 @@ import path from 'path';
 import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
 import { createProxyMiddleware } from 'http-proxy-middleware';
 import { updateIntl } from 'react-intl-redux';
+import { resetServerContext } from 'react-beautiful-dnd';
 
 import routes from '~/routes';
 import { settings } from '~/config';
@@ -38,8 +39,8 @@ import configureStore from '@plone/volto/store';
 let locales = {};
 
 if (settings) {
-  settings.supportedLanguages.forEach(lang => {
-    import('~/../locales/' + lang + '.json').then(locale => {
+  settings.supportedLanguages.forEach((lang) => {
+    import('~/../locales/' + lang + '.json').then((locale) => {
       locales = { ...locales, [lang]: locale.default };
     });
   });
@@ -113,7 +114,7 @@ server
     persistAuthToken(store);
 
     if (req.path === '/sitemap.xml.gz') {
-      generateSitemap(req).then(sitemap => {
+      generateSitemap(req).then((sitemap) => {
         res.set('Content-Type', 'application/x-gzip');
         res.set('Content-Encoding', 'gzip');
         res.set('Content-Disposition', 'attachment; filename="sitemap.xml.gz"');
@@ -123,9 +124,9 @@ server
       req.path.match(/(.*)\/@@images\/(.*)/) ||
       req.path.match(/(.*)\/@@download\/(.*)/)
     ) {
-      getAPIResourceWithAuth(req).then(resource => {
+      getAPIResourceWithAuth(req).then((resource) => {
         function forwardHeaders(headers) {
-          headers.forEach(header => {
+          headers.forEach((header) => {
             if (resource.headers[header]) {
               res.set(header, resource.headers[header]);
             }
@@ -156,6 +157,7 @@ server
           );
 
           const context = {};
+          resetServerContext();
           const markup = renderToString(
             <ChunkExtractorManager extractor={extractor}>
               <Provider store={store}>
@@ -178,7 +180,7 @@ server
             );
           }
         })
-        .catch(error => {
+        .catch((error) => {
           const errorPage = (
             <Provider store={store}>
               <StaticRouter context={{}} location={req.url}>

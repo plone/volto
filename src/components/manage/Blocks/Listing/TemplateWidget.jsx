@@ -49,7 +49,7 @@ const TemplateWidget = ({
                 name="select-listingblock-template"
                 className="react-select-container"
                 classNamePrefix="react-select"
-                options={Object.keys(templatesConfig).map(key => {
+                options={Object.keys(templatesConfig).map((key) => {
                   return {
                     value: key,
                     ...templatesConfig[key],
@@ -62,7 +62,7 @@ const TemplateWidget = ({
                   value: value,
                   label: templatesConfig[value].label,
                 }}
-                onChange={field => {
+                onChange={(field) => {
                   onChangeBlock(block, {
                     ...data,
                     template: field.value,

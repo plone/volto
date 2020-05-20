@@ -185,7 +185,7 @@ class Diff extends Component {
    */
   render() {
     const versions = map(
-      filter(this.props.historyEntries, entry => 'version' in entry),
+      filter(this.props.historyEntries, (entry) => 'version' in entry),
       (entry, index) => ({
         text: `${index === 0 ? 'Current' : entry.version} (${moment(
           entry.time,
@@ -231,7 +231,7 @@ class Diff extends Component {
                     label: this.props.intl.formatMessage(messages.unified),
                   },
                 ],
-                view => (
+                (view) => (
                   <Button
                     key={view.id}
                     value={view.id}
@@ -275,10 +275,10 @@ class Diff extends Component {
         )}
         {this.props.schema &&
           this.props.data.length > 0 &&
-          map(this.props.schema.fieldsets, fieldset =>
+          map(this.props.schema.fieldsets, (fieldset) =>
             map(
               fieldset.fields,
-              field =>
+              (field) =>
                 !isEqual(
                   this.props.data[0][field],
                   this.props.data[1][field],
