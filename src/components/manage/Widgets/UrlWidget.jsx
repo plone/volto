@@ -28,7 +28,7 @@ const UrlWidget = ({
 }) => {
   const inputId = `field-${id}`;
   const fieldId = `${fieldSet || 'field'}-${id}`;
-  const errorsList = map(error, message => (
+  const errorsList = map(error, (message) => (
     <Label key={message} basic color="red" pointing>
       {message}
     </Label>

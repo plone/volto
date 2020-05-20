@@ -140,7 +140,7 @@ const widgetValidation = {
  * The string that comes my not be a valid JSON
  * @param {string} requestItem
  */
-const tryParseJSON = requestItem => {
+const tryParseJSON = (requestItem) => {
   let resultObj = null;
   try {
     resultObj = JSON.parse(requestItem);
@@ -179,7 +179,7 @@ const hasUniqueItems = (field, fieldData, formatMessage) => {
 const validateRequiredFields = (schema, formData, formatMessage) => {
   const errors = {};
 
-  map(schema.required, requiredField => {
+  map(schema.required, (requiredField) => {
     if (
       schema.properties[requiredField].type !== 'boolean' &&
       !schema.properties[requiredField].readonly &&
@@ -210,7 +210,7 @@ const validateFieldsPerFieldset = (schema, formData, formatMessage) => {
     let fieldData = formData[fieldId];
     // test each criterion ex maximum, isEmail, isUrl, maxLength etc
     const fieldErrors = widgetValidationCriteria
-      .map(widgetCriterion => {
+      .map((widgetCriterion) => {
         const errorMessage =
           fieldData === undefined || fieldData === null
             ? null
@@ -221,7 +221,7 @@ const validateFieldsPerFieldset = (schema, formData, formatMessage) => {
               );
         return errorMessage;
       })
-      .filter(item => !!item);
+      .filter((item) => !!item);
 
     const uniqueErrors = hasUniqueItems(field, fieldData, formatMessage);
     const mergedErrors = [...fieldErrors, ...uniqueErrors];
@@ -243,12 +243,12 @@ const validateFieldsPerFieldset = (schema, formData, formatMessage) => {
  * @param {string} requestError form the server
  * @returns {Object}
  */
-const giveServerErrorsToCorrespondingFields = requestError => {
+const giveServerErrorsToCorrespondingFields = (requestError) => {
   let errorsList = tryParseJSON(requestError);
   const errors = {};
 
   if (Array.isArray(errorsList) && errorsList.length > 0) {
-    errorsList.forEach(errorItem => {
+    errorsList.forEach((errorItem) => {
       errors[errorItem.field] = errors[errorItem.field]
         ? errors[errorItem.field].push(errorItem.message)
         : [errorItem.message];
@@ -269,7 +269,7 @@ const getIndexOfFirstTabWithErrors = (errors, schema) => {
   let activeIndex = 0;
 
   schema.fieldsets.some((fieldSet, index) => {
-    let foundfield = fieldSet.fields.some(fieldId => errors[fieldId]);
+    let foundfield = fieldSet.fields.some((fieldId) => errors[fieldId]);
 
     activeIndex = foundfield ? index : activeIndex;
     return foundfield;
