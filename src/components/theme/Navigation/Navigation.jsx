@@ -165,7 +165,7 @@ class Navigation extends Component {
           }
           onClick={this.closeMobileMenu}
         >
-          {this.props.items.map(item => (
+          {this.props.items.map((item) => (
             <NavLink
               to={item.url === '' ? '/' : item.url}
               key={item.url}
@@ -189,7 +189,7 @@ class Navigation extends Component {
 export default compose(
   injectIntl,
   connect(
-    state => ({
+    (state) => ({
       items: state.navigation.items,
       lang: state.intl.locale,
     }),

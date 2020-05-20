@@ -84,8 +84,8 @@
 
 .ui.form .field .ui.basic.button.delete-button {
   padding: 0;
-  margin-left: 10px;
   border: none;
+  margin-left: 10px;
   -webkit-box-shadow: none;
   box-shadow: none;
 

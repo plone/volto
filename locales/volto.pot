@@ -626,6 +626,11 @@ msgstr ""
 msgid "Edit fieldset"
 msgstr ""
 
+#: components/manage/Form/InlineForm
+# defaultMessage: Edit values
+msgid "Edit values"
+msgstr ""
+
 #: components/manage/Edit/Edit
 # defaultMessage: Edit {title}
 msgid "Edit {title}"
@@ -696,6 +701,8 @@ msgstr ""
 
 #: components/manage/Add/Add
 #: components/manage/Edit/Edit
+#: components/manage/Form/Form
+#: components/manage/Form/InlineForm
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
@@ -1824,6 +1831,12 @@ msgstr ""
 msgid "There is a configuration problem on the backend"
 msgstr ""
 
+#: components/manage/Form/InlineForm
+# defaultMessage: There were some errors
+msgid "There were some errors"
+msgstr ""
+
+#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: There were some errors.

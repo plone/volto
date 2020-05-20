@@ -86,7 +86,7 @@ class ObjectBrowserWidget extends Component {
                 name={clearSVG}
                 size="12px"
                 className="right"
-                onClick={event => {
+                onClick={(event) => {
                   event.preventDefault();
                   this.removeItem(item);
                 }}
@@ -106,15 +106,15 @@ class ObjectBrowserWidget extends Component {
     );
   }
 
-  removeItem = item => {
+  removeItem = (item) => {
     let value = [...this.props.value];
-    remove(value, function(_item) {
+    remove(value, function (_item) {
       return _item['@id'] === item['@id'];
     });
     this.props.onChange(this.props.id, value);
   };
 
-  onChange = item => {
+  onChange = (item) => {
     let value = this.props.mode === 'multiple' ? [...this.props.value] : [];
 
     let exists = false;
@@ -139,7 +139,7 @@ class ObjectBrowserWidget extends Component {
     }
   };
 
-  showObjectBrowser = ev => {
+  showObjectBrowser = (ev) => {
     ev.preventDefault();
     this.props.openObjectBrowser({
       mode: this.props.mode,
@@ -150,7 +150,7 @@ class ObjectBrowserWidget extends Component {
     });
   };
 
-  handleSelectedItemsRefClick = e => {
+  handleSelectedItemsRefClick = (e) => {
     if (
       e.target.contains(this.selectedItemsRef.current) ||
       e.target.contains(this.placeholderRef.current)
@@ -183,7 +183,7 @@ class ObjectBrowserWidget extends Component {
     let iconAction =
       mode === 'multiple' || value.length === 0
         ? this.showObjectBrowser
-        : e => {
+        : (e) => {
             e.preventDefault();
             onChange(id, []);
           };
@@ -221,7 +221,7 @@ class ObjectBrowserWidget extends Component {
                   tabIndex={0}
                   ref={this.selectedItemsRef}
                 >
-                  {value.map(item => this.renderLabel(item))}
+                  {value.map((item) => this.renderLabel(item))}
 
                   {value.length === 0 && (
                     <div className="placeholder" ref={this.placeholderRef}>
@@ -239,7 +239,7 @@ class ObjectBrowserWidget extends Component {
                 </Button>
               </div>
 
-              {map(error, message => (
+              {map(error, (message) => (
                 <Label key={message} basic color="red" pointing>
                   {message}
                 </Label>
@@ -259,10 +259,10 @@ class ObjectBrowserWidget extends Component {
   }
 }
 
-const ObjectBrowserWidgetMode = mode =>
+const ObjectBrowserWidgetMode = (mode) =>
   compose(
     injectIntl,
     withObjectBrowser,
-  )(props => <ObjectBrowserWidget {...props} mode={mode} />);
+  )((props) => <ObjectBrowserWidget {...props} mode={mode} />);
 export { ObjectBrowserWidgetMode };
 export default compose(injectIntl, withObjectBrowser)(ObjectBrowserWidget);

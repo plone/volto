@@ -24,7 +24,7 @@ const DefaultTemplate = ({ items, linkMore, isEditMode }) => {
   return (
     <>
       <div className="items">
-        {items.map(item => (
+        {items.map((item) => (
           <div className="listing-item" key={item['@id']}>
             <ConditionalLink
               to={flattenToAppURL(item['@id'])}

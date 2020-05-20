@@ -177,7 +177,7 @@ class View extends Component {
    * @param  {string} dirtyDisplayName The displayName
    * @returns {string} Clean displayName (no Connect(...)).
    */
-  cleanViewName = dirtyDisplayName =>
+  cleanViewName = (dirtyDisplayName) =>
     dirtyDisplayName
       .replace('Connect(', '')
       .replace('injectIntl(', '')

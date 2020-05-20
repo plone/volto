@@ -178,7 +178,7 @@ class ModalForm extends Component {
         errors,
       });
     } else {
-      let setFormDataCallback = formData => {
+      let setFormDataCallback = (formData) => {
         this.setState({ formData: formData, errors: {} });
       };
       this.props.onSubmit(this.state.formData, setFormDataCallback);
@@ -207,7 +207,7 @@ class ModalForm extends Component {
     const { schema, onCancel } = this.props;
     const currentFieldset = schema.fieldsets[this.state.currentTab];
 
-    const fields = map(currentFieldset.fields, field => ({
+    const fields = map(currentFieldset.fields, (field) => ({
       ...schema.properties[field],
       id: field,
       value: this.state.formData[field],
@@ -253,7 +253,7 @@ class ModalForm extends Component {
                 ))}
               </Menu>
             )}
-            {fields.map(field => (
+            {fields.map((field) => (
               <Field
                 {...field}
                 key={field.id}

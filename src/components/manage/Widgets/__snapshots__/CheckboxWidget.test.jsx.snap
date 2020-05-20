@@ -34,7 +34,7 @@ exports[`renders a checkbox widget component 1`] = `
               type="checkbox"
             />
             <label
-              for="field-my-field"
+              htmlFor="field-my-field"
             >
               My field
             </label>

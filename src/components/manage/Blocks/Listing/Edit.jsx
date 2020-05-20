@@ -33,12 +33,12 @@ const Edit = ({
     <>
       {data?.query?.length === 0 && (
         <FormattedMessage id="Contained items" defaultMessage="Contained items">
-          {message => <p className="items-preview">{message}</p>}
+          {(message) => <p className="items-preview">{message}</p>}
         </FormattedMessage>
       )}
       {data?.query?.length > 0 && (
         <FormattedMessage id="Results preview" defaultMessage="Results preview">
-          {message => <p className="items-preview">{message}</p>}
+          {(message) => <p className="items-preview">{message}</p>}
         </FormattedMessage>
       )}
       <ListingBody
