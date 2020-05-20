@@ -14,7 +14,7 @@ const schema = {
 };
 const errors = { email: ['The specified email is not valid.'] };
 const formData = { username: 'test username', email: 'test' };
-const formatMessage = messageObj => {
+const formatMessage = (messageObj) => {
   return messageObj?.defaultMessage;
 };
 const errorJSON =
