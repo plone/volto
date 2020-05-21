@@ -101,7 +101,7 @@ class Edit extends Component {
         entityMutability: 'IMMUTABLE',
       });
 
-      const suggestions = Object.keys(this.props.properties).map((name) => {
+      this.mentions = Object.keys(this.props.properties).map((name) => {
         return {
           name: name,
         };
@@ -115,8 +115,8 @@ class Edit extends Component {
         editorState,
         mentionPlugin,
         inlineToolbarPlugin,
-        suggestions,
         hasMentions,
+        suggestions: this.mentions,
         addNewBlockOpened: false,
         isPreview: false,
       };
@@ -217,7 +217,7 @@ class Edit extends Component {
    */
   onSearchChange({ value }) {
     this.setState({
-      suggestions: suggestionsFilter(value, this.state.suggestions),
+      suggestions: suggestionsFilter(value, this.mentions),
     });
   }
 
@@ -307,82 +307,87 @@ class Edit extends Component {
             </Button.Group>
           </div>
         )}
-        <Editor
-          onChange={this.onChange}
-          editorState={this.state.editorState}
-          plugins={[
-            this.state.inlineToolbarPlugin,
-            this.state.mentionPlugin,
-            ...settings.richTextEditorPlugins,
-          ]}
-          blockRenderMap={settings.extendedBlockRenderMap}
-          blockStyleFn={settings.blockStyleFn}
-          customStyleMap={settings.customStyleMap}
-          placeholder={this.props.intl.formatMessage(messages.text)}
-          handleReturn={(e) => {
-            if (isSoftNewlineEvent(e)) {
-              this.onChange(
-                RichUtils.insertSoftNewline(this.state.editorState),
-              );
-              return 'handled';
-            }
-            if (!this.props.detached) {
-              const selectionState = this.state.editorState.getSelection();
-              const anchorKey = selectionState.getAnchorKey();
-              const currentContent = this.state.editorState.getCurrentContent();
-              const currentContentBlock = currentContent.getBlockForKey(
-                anchorKey,
-              );
-              const blockType = currentContentBlock.getType();
-              if (!includes(settings.listBlockTypes, blockType)) {
-                this.props.onSelectBlock(
-                  this.props.onAddBlock('text', this.props.index + 1),
-                );
-                return 'handled';
-              }
-              return 'un-handled';
-            }
-            return {};
-          }}
-          handleKeyCommand={(command, editorState) => {
-            if (
-              command === 'backspace' &&
-              editorState.getCurrentContent().getPlainText().length === 0
-            ) {
-              this.props.onDeleteBlock(this.props.block, true);
-            }
-          }}
-          onUpArrow={() => {
-            const selectionState = this.state.editorState.getSelection();
-            const currentCursorPosition = selectionState.getStartOffset();
+        {this.state.isPreview && 'Preview here'}
+        {!this.state.isPreview && (
+          <>
+            <Editor
+              onChange={this.onChange}
+              editorState={this.state.editorState}
+              plugins={[
+                this.state.inlineToolbarPlugin,
+                this.state.mentionPlugin,
+                ...settings.richTextEditorPlugins,
+              ]}
+              blockRenderMap={settings.extendedBlockRenderMap}
+              blockStyleFn={settings.blockStyleFn}
+              customStyleMap={settings.customStyleMap}
+              placeholder={this.props.intl.formatMessage(messages.text)}
+              handleReturn={(e) => {
+                if (isSoftNewlineEvent(e)) {
+                  this.onChange(
+                    RichUtils.insertSoftNewline(this.state.editorState),
+                  );
+                  return 'handled';
+                }
+                if (!this.props.detached) {
+                  const selectionState = this.state.editorState.getSelection();
+                  const anchorKey = selectionState.getAnchorKey();
+                  const currentContent = this.state.editorState.getCurrentContent();
+                  const currentContentBlock = currentContent.getBlockForKey(
+                    anchorKey,
+                  );
+                  const blockType = currentContentBlock.getType();
+                  if (!includes(settings.listBlockTypes, blockType)) {
+                    this.props.onSelectBlock(
+                      this.props.onAddBlock('text', this.props.index + 1),
+                    );
+                    return 'handled';
+                  }
+                  return 'un-handled';
+                }
+                return {};
+              }}
+              handleKeyCommand={(command, editorState) => {
+                if (
+                  command === 'backspace' &&
+                  editorState.getCurrentContent().getPlainText().length === 0
+                ) {
+                  this.props.onDeleteBlock(this.props.block, true);
+                }
+              }}
+              onUpArrow={() => {
+                const selectionState = this.state.editorState.getSelection();
+                const currentCursorPosition = selectionState.getStartOffset();
 
-            if (currentCursorPosition === 0) {
-              this.props.onFocusPreviousBlock(this.props.block, this.node);
-            }
-          }}
-          onDownArrow={() => {
-            const selectionState = this.state.editorState.getSelection();
-            const { editorState } = this.state;
-            const currentCursorPosition = selectionState.getStartOffset();
-            const blockLength = editorState
-              .getCurrentContent()
-              .getFirstBlock()
-              .getLength();
+                if (currentCursorPosition === 0) {
+                  this.props.onFocusPreviousBlock(this.props.block, this.node);
+                }
+              }}
+              onDownArrow={() => {
+                const selectionState = this.state.editorState.getSelection();
+                const { editorState } = this.state;
+                const currentCursorPosition = selectionState.getStartOffset();
+                const blockLength = editorState
+                  .getCurrentContent()
+                  .getFirstBlock()
+                  .getLength();
 
-            if (currentCursorPosition === blockLength) {
-              this.props.onFocusNextBlock(this.props.block, this.node);
-            }
-          }}
-          ref={(node) => {
-            this.node = node;
-          }}
-        />
-        <MentionSuggestions
-          suggestions={this.state.suggestions}
-          onSearchChange={this.onSearchChange}
-          onAddMention={this.onAddMention}
-        />
-        <InlineToolbar />
+                if (currentCursorPosition === blockLength) {
+                  this.props.onFocusNextBlock(this.props.block, this.node);
+                }
+              }}
+              ref={(node) => {
+                this.node = node;
+              }}
+            />
+            <MentionSuggestions
+              suggestions={this.state.suggestions}
+              onSearchChange={this.onSearchChange}
+              onAddMention={this.onAddMention}
+            />
+            <InlineToolbar />
+          </>
+        )}
         {!this.props.detached &&
           (!this.props.data.text ||
             (this.props.data.text &&
