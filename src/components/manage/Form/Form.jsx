@@ -922,7 +922,7 @@ class Form extends Component {
                   <Field
                     {...schema.properties[field]}
                     id={field}
-                    value={this.state.formData[field]}
+                    value={this.state.formData?.[field]}
                     required={schema.required.indexOf(field) !== -1}
                     onChange={this.onChangeField}
                     onBlur={this.onBlurField}
