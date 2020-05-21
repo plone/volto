@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Added Draftjs link uses Objectbrowser @giuliaghisini
+
 ### Bugfix
 
 ### Internal
