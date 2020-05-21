@@ -5,7 +5,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import { Container, Table } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
@@ -18,7 +17,6 @@ import { FormattedMessage } from 'react-intl';
  */
 const TabularView = ({ content }) => (
   <Container className="view-wrapper">
-    <Helmet title={content.title} />
     <article id="content">
       <header>
         <h1 className="documentFirstHeading">{content.title}</h1>
@@ -48,7 +46,7 @@ const TabularView = ({ content }) => (
             </Table.Row>
           </Table.Header>
           <Table.Body>
-            {content.items.map(item => (
+            {content.items.map((item) => (
               <Table.Row key={item.url}>
                 <Table.Cell>
                   <Link

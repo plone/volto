@@ -8,6 +8,14 @@ import Navigation from './Navigation';
 
 const mockStore = configureStore();
 
+jest.mock('~/config', () => ({
+  settings: {
+    nonContentRoutes: [],
+    supportedLanguages: ['en'],
+    navDepth: 1,
+  },
+}));
+
 describe('Navigation', () => {
   it('renders a navigation component without active items', () => {
     const store = mockStore({
@@ -50,7 +58,7 @@ describe('Navigation', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <MemoryRouter>
+        <MemoryRouter initialEntries={[{ pathname: '/blog' }]}>
           <Navigation pathname="/blog" />
         </MemoryRouter>
       </Provider>,
@@ -75,7 +83,7 @@ describe('Navigation', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <MemoryRouter>
+        <MemoryRouter initialEntries={[{ pathname: '/blog/2017/12/27' }]}>
           <Navigation pathname="/blog/2017/12/27" />
         </MemoryRouter>
       </Provider>,
@@ -101,7 +109,7 @@ describe('Navigation', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <MemoryRouter>
+        <MemoryRouter initialEntries={[{ pathname: '/blog' }]}>
           <Navigation pathname="/blog" />
         </MemoryRouter>
       </Provider>,

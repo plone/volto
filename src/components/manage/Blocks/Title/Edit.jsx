@@ -152,11 +152,8 @@ class Edit extends Component {
           const selectionState = this.state.editorState.getSelection();
           const { editorState } = this.state;
           if (
-            editorState
-              .getCurrentContent()
-              .getBlockMap()
-              .first()
-              .getKey() === selectionState.getFocusKey()
+            editorState.getCurrentContent().getBlockMap().first().getKey() ===
+            selectionState.getFocusKey()
           ) {
             this.props.onFocusPreviousBlock(this.props.block, this.node);
           }
@@ -165,16 +162,13 @@ class Edit extends Component {
           const selectionState = this.state.editorState.getSelection();
           const { editorState } = this.state;
           if (
-            editorState
-              .getCurrentContent()
-              .getBlockMap()
-              .last()
-              .getKey() === selectionState.getFocusKey()
+            editorState.getCurrentContent().getBlockMap().last().getKey() ===
+            selectionState.getFocusKey()
           ) {
             this.props.onFocusNextBlock(this.props.block, this.node);
           }
         }}
-        ref={node => {
+        ref={(node) => {
           this.node = node;
         }}
       />

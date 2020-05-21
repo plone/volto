@@ -7,6 +7,7 @@ import React from 'react';
 import { Menu } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { map } from 'lodash';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
 /**
  * Component to display pagination.
@@ -83,8 +84,10 @@ const Pagination = ({
     </Menu.Menu>
     {pageSize && (
       <Menu.Menu position="right">
-        <Menu.Item>Show:</Menu.Item>
-        {map(pageSizes, size => (
+        <Menu.Item>
+          <FormattedMessage id="Show" defaultMessage="Show" />:
+        </Menu.Item>
+        {map(pageSizes, (size) => (
           <Menu.Item
             key={size}
             value={size}
@@ -142,4 +145,4 @@ Pagination.defaultProps = {
   onChangePageSize: null,
 };
 
-export default Pagination;
+export default injectIntl(Pagination);

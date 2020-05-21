@@ -139,8 +139,8 @@ class ContentsUploadModal extends Component {
    * @returns {undefined}
    */
   onSubmit() {
-    Promise.all(map(this.state.files, file => readAsDataURL(file))).then(
-      files => {
+    Promise.all(map(this.state.files, (file) => readAsDataURL(file))).then(
+      (files) => {
         this.props.createContent(
           this.props.pathname,
           map(this.state.files, (file, index) => {
@@ -305,7 +305,7 @@ class ContentsUploadModal extends Component {
 export default compose(
   injectIntl,
   connect(
-    state => ({
+    (state) => ({
       request: state.content.create,
     }),
     { createContent },

@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContentType renders dexterity content-type component 1`] = `
+<div
+  id="page-controlpanel"
+>
+  <div
+    id="form"
+  />
+  <div
+    id="Portal"
+  />
+</div>
+`;

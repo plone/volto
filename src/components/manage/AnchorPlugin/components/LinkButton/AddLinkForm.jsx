@@ -6,7 +6,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
-import unionClassNames from 'union-class-names';
 import EditorUtils from 'draft-js-plugins-utils';
 
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
@@ -57,7 +56,6 @@ class AddLinkForm extends Component {
 
     this.state = {
       value: props.data.url || '',
-      isInvalid: false,
     };
     this.onRef = this.onRef.bind(this);
     this.onChange = this.onChange.bind(this);
@@ -79,7 +77,7 @@ class AddLinkForm extends Component {
     document.removeEventListener('mousedown', this.handleClickOutside, false);
   }
 
-  handleClickOutside = e => {
+  handleClickOutside = (e) => {
     if (
       this.linkFormContainer.current &&
       doesNodeContainClick(this.linkFormContainer.current, e)
@@ -196,11 +194,7 @@ class AddLinkForm extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { theme } = this.props;
-    const { value, isInvalid } = this.state;
-    const className = isInvalid
-      ? unionClassNames('ui input editor-link', theme.input, theme.inputInvalid)
-      : unionClassNames('ui input editor-link', theme.input);
+    const { value } = this.state;
 
     return (
       <div className="link-form-container" ref={this.linkFormContainer}>
@@ -244,7 +238,7 @@ class AddLinkForm extends Component {
                         this.props.openObjectBrowser({
                           mode: 'link',
                           overlay: true,
-                          onSelectItem: url => {
+                          onSelectItem: (url) => {
                             this.onChange(url);
                             this.onSubmit();
                           },

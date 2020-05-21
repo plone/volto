@@ -39,6 +39,8 @@ import tableSVG from '@plone/volto/icons/table.svg';
 import listBulletSVG from '@plone/volto/icons/list-bullet.svg';
 import tocSVG from '@plone/volto/icons/list-bullet.svg';
 
+import ImageGalleryListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/ImageGallery';
+
 defineMessages({
   title: {
     id: 'title',
@@ -205,6 +207,10 @@ const blocksConfig = {
     },
     templates: {
       default: { label: 'Default', template: DefaultListingBlockTemplate },
+      imageGallery: {
+        label: 'Image gallery',
+        template: ImageGalleryListingBlockTemplate,
+      },
     },
   },
   video: {

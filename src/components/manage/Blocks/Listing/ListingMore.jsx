@@ -65,7 +65,7 @@ const ListingMore = ({
             : () =>
                 openObjectBrowser({
                   mode: 'link',
-                  onSelectItem: url => {
+                  onSelectItem: (url) => {
                     onChangeBlock(block, {
                       ...data,
                       linkMore: {

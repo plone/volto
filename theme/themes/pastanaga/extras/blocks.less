@@ -1,3 +1,11 @@
+[data-rbd-draggable-context-id] {
+  margin-bottom: 2rem;
+}
+
+.block-editor-title .drag.handle.wrapper {
+  top: 5px;
+}
+
 // Here should be placed all blocks that receive (faked) focus
 .block:focus {
   outline: none;
@@ -40,6 +48,7 @@
   clear: both;
 }
 
+// Deprecated
 .ui.drag.block:not(:last-child) {
   margin-bottom: 2rem;
 }
@@ -149,6 +158,11 @@
   }
 }
 
+.draggable {
+  position: absolute;
+  top: 20px;
+  left: -32px;
+}
 // Hacks for the full width image
 body .ui.wrapper > .block.align.full,
 body.has-toolbar.has-sidebar .ui.wrapper > .ui.inner .block.align.full,
@@ -387,8 +401,8 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
   // margin-top: -21px;
   top: -2px;
   padding: 0;
-  margin-bottom: 0;
   border: none;
+  margin-bottom: 0;
   -webkit-box-shadow: none;
   box-shadow: none;
   color: #b8c6c8 !important;
@@ -454,6 +468,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
   }
 }
 
+// Deprecated
 .drag.block.title .drag.handle.wrapper {
   top: 5px;
 }
@@ -469,8 +484,8 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 
 .callout {
   padding: 1em;
-  margin: 1rem 0;
   border: 1px solid rgba(34, 36, 38, 0.15);
+  margin: 1rem 0;
   border-radius: 0.28571429rem;
   box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15);
 }
@@ -485,8 +500,8 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 .separator {
   display: inline-block;
   height: 24px;
-  margin: 0 0 4px 4px;
   border-right: 1px solid #ddd;
+  margin: 0 0 4px 4px;
   vertical-align: bottom;
 }
 
@@ -589,6 +604,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
       outline: none;
     }
   }
+
   .ui.input {
     min-width: 250px;
   }
@@ -759,5 +775,36 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 
   .button .icon {
     margin: 0 !important;
+  }
+}
+
+.link-form-container {
+  // ToDo: Improve CSS in anchor link component (previously from CSS module to normal theme)
+  .input-anchorlink-theme {
+    width: 240px;
+    height: 34px;
+    padding: 0 12px;
+    border: none;
+    background-color: transparent;
+    color: #444;
+    font-family: inherit;
+    font-size: 15px;
+  }
+
+  .input-anchorlink-theme:focus {
+    outline: none;
+  }
+
+  .input-anchorlink-theme::placeholder {
+    color: #888;
+  }
+
+  .input-anchorlink-theme-Invalid {
+    color: #e65757;
+  }
+
+  .link-anchorlink-theme {
+    color: #007eb1;
+    text-decoration: underline;
   }
 }

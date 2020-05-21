@@ -18,8 +18,9 @@ import {
 import { filter, remove, toPairs, groupBy, isEmpty, map } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 import { getQuerystring } from '@plone/volto/actions';
-import Select from 'react-select';
 import { Icon } from '@plone/volto/components';
+import { format, parse } from 'date-fns';
+import loadable from '@loadable/component';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
 
@@ -29,6 +30,8 @@ import {
   selectTheme,
   customSelectStyles,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
+
+const Select = loadable(() => import('react-select'));
 
 const messages = defineMessages({
   default: {
@@ -145,7 +148,7 @@ class QuerystringWidget extends Component {
     const props = {
       fluid: true,
       value: row.v,
-      onChange: data => this.onChangeValue(index, data.target.value),
+      onChange: (data) => this.onChangeValue(index, data.target.value),
     };
     const values = this.props.indexes[row.i].values;
 
@@ -155,7 +158,11 @@ class QuerystringWidget extends Component {
       case 'DateWidget':
         return (
           <Form.Field width={4}>
-            <Input type="date" {...props} />
+            <Input
+              type="date"
+              {...props}
+              value={format(parse(row.v), 'YYYY-MM-DD')}
+            />
           </Form.Field>
         );
       case 'DateRangeWidget': // 2 date inputs
@@ -165,8 +172,8 @@ class QuerystringWidget extends Component {
               <Input
                 type="date"
                 {...props}
-                value={row.v[0]}
-                onChange={data =>
+                value={format(parse(row.v[0]), 'YYYY-MM-DD')}
+                onChange={(data) =>
                   this.onChangeValue(index, [data.target.value, row.v[1]])
                 }
               />
@@ -175,8 +182,8 @@ class QuerystringWidget extends Component {
               <Input
                 type="date"
                 {...props}
-                value={row.v[1]}
-                onChange={data =>
+                value={format(parse(row.v[1]), 'YYYY-MM-DD')}
+                onChange={(data) =>
                   this.onChangeValue(index, [row.v[0], data.target.value])
                 }
               />
@@ -198,7 +205,7 @@ class QuerystringWidget extends Component {
               classNamePrefix="react-select"
               options={
                 values
-                  ? map(toPairs(values), value => ({
+                  ? map(toPairs(values), (value) => ({
                       label: value[1].title,
                       value: value[0],
                     }))
@@ -207,14 +214,14 @@ class QuerystringWidget extends Component {
               styles={customSelectStyles}
               theme={selectTheme}
               components={{ DropdownIndicator, Option }}
-              onChange={data => {
+              onChange={(data) => {
                 this.onChangeValue(
                   index,
-                  map(data, item => item.value),
+                  map(data, (item) => item.value),
                 );
               }}
               isMulti={true}
-              value={map(row.v, value => ({
+              value={map(row.v, (value) => ({
                 label: values?.[value]?.title || value,
                 value,
               }))}
@@ -355,13 +362,13 @@ class QuerystringWidget extends Component {
                         classNamePrefix="react-select"
                         options={map(
                           toPairs(
-                            groupBy(toPairs(indexes), item => item[1].group),
+                            groupBy(toPairs(indexes), (item) => item[1].group),
                           ),
-                          group => ({
+                          (group) => ({
                             label: group[0],
                             options: map(
-                              filter(group[1], item => item[1].enabled),
-                              field => ({
+                              filter(group[1], (item) => item[1].enabled),
+                              (field) => ({
                                 label: field[1].title,
                                 value: field[0],
                               }),
@@ -375,7 +382,7 @@ class QuerystringWidget extends Component {
                           value: row.i,
                           label: indexes[row.i].title,
                         }}
-                        onChange={data =>
+                        onChange={(data) =>
                           onChange(
                             id,
                             map(value, (curRow, curIndex) =>
@@ -398,10 +405,13 @@ class QuerystringWidget extends Component {
                         disabled={onEdit !== null}
                         className="react-select-container"
                         classNamePrefix="react-select"
-                        options={map(indexes[row.i].operations, operation => ({
-                          value: operation,
-                          label: indexes[row.i].operators[operation].title,
-                        }))}
+                        options={map(
+                          indexes[row.i].operations,
+                          (operation) => ({
+                            value: operation,
+                            label: indexes[row.i].operators[operation].title,
+                          }),
+                        )}
                         styles={customSelectStyles}
                         theme={selectTheme}
                         components={{ DropdownIndicator, Option }}
@@ -409,7 +419,7 @@ class QuerystringWidget extends Component {
                           value: row.o,
                           label: indexes[row.i].operators[row.o].title,
                         }}
-                        onChange={data =>
+                        onChange={(data) =>
                           onChange(
                             id,
                             map(value, (curRow, curIndex) =>
@@ -427,7 +437,7 @@ class QuerystringWidget extends Component {
                     </Form.Field>
                     {this.getWidget(row, index)}
                     <Button
-                      onClick={event => {
+                      onClick={(event) => {
                         onChange(
                           id,
                           remove(value, (v, i) => i !== index),
@@ -456,12 +466,14 @@ class QuerystringWidget extends Component {
                       messages.selectCriteria,
                     )}
                     options={map(
-                      toPairs(groupBy(toPairs(indexes), item => item[1].group)),
-                      group => ({
+                      toPairs(
+                        groupBy(toPairs(indexes), (item) => item[1].group),
+                      ),
+                      (group) => ({
                         label: group[0],
                         options: map(
-                          filter(group[1], item => item[1].enabled),
-                          field => ({
+                          filter(group[1], (item) => item[1].enabled),
+                          (field) => ({
                             label: field[1].title,
                             value: field[0],
                           }),
@@ -472,7 +484,7 @@ class QuerystringWidget extends Component {
                     theme={selectTheme}
                     components={{ DropdownIndicator, Option }}
                     value={null}
-                    onChange={data => {
+                    onChange={(data) => {
                       onChange(id, [
                         ...(value || []),
                         {
@@ -485,7 +497,7 @@ class QuerystringWidget extends Component {
                   />
                 </Form.Field>
               </Form.Group>
-              {map(error, message => (
+              {map(error, (message) => (
                 <Label key={message} basic color="red" pointing>
                   {message}
                 </Label>
@@ -508,7 +520,7 @@ class QuerystringWidget extends Component {
 export default compose(
   injectIntl,
   connect(
-    state => ({
+    (state) => ({
       indexes: state.querystring.indexes,
     }),
     { getQuerystring },

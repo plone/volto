@@ -13,11 +13,14 @@ export {
 } from '@plone/volto/helpers/AuthToken/AuthToken';
 export {
   addAppURL,
+  flattenHTMLToAppURL,
   flattenToAppURL,
   isInternalURL,
+  getParentUrl,
   getBaseUrl,
   getIcon,
   getView,
+  getId,
 } from '@plone/volto/helpers/Url/Url';
 export { generateSitemap } from '@plone/volto/helpers/Sitemap/Sitemap';
 export {

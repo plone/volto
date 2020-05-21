@@ -5,7 +5,7 @@ exports[`UsersControlpanelUser renders a UsersControlpanelUser component 1`] = `
   className=""
 >
   <td
-    className=""
+    className="fullname"
   >
     Test User
   </td>

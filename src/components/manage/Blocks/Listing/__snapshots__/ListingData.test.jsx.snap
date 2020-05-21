@@ -324,7 +324,7 @@ exports[`renders an Listing Data Sidebar component 1`] = `
             className="wrapper"
           >
             <div
-              className="ui fitted checkbox"
+              className="ui checkbox"
               onChange={[Function]}
               onClick={[Function]}
               onMouseDown={[Function]}
@@ -339,15 +339,12 @@ exports[`renders an Listing Data Sidebar component 1`] = `
                 tabIndex={0}
                 type="checkbox"
               />
-              <label />
+              <label
+                htmlFor="field-listingblock-sort-on-reverse"
+              >
+                Reversed order
+              </label>
             </div>
-            <label
-              className="ui basic horizontal label"
-              htmlFor="field-listingblock-sort-on-reverse"
-              onClick={[Function]}
-            >
-              Reversed order
-            </label>
           </div>
         </div>
       </div>

@@ -1,14 +1,443 @@
 # Change Log
 
-## 4.0.0 (unreleased)
+## 6.0.1 (unreleased)
 
-### Added
+### Breaking
+
+### Feature
+
+### Bugfix
+
+### Internal
+
+## 6.0.0 (2020-05-18)
+
+### Breaking
+
+- Removed support for CSS modules, since Razzle 3.1.x do not support them @sneridagh
+- Updated Volto dependencies - See https://docs.voltocms.com/upgrade-guide/ for more information @sneridagh
+- By adding `react-beautiful-dnd` in the block editor we are introducing new wrappers
+  (belonging to the lib machinery) in the structure. The original structure and class
+  names are still in there for maintain maximum backwards compatibility. Those might be
+  cleaned up in next major versions, so if for some reason you have customized the
+  styling of your blocks in edit mode relying in the old structure, you might want to
+  review and adapt them @sneridagh
+
+### Feature
+
+- Added `react-beautiful-dnd` in core for edit form @iFlameing
+
+### Bugfix
+
+- Improve `isInternalURL` helper to match also anchors @sneridagh
+- Fix local build when no RAZZLE_API_PATH is set @sneridagh
+- Fix `WysiwygWidget` redraft HTML conversion when creating an empty paragraph force a `<br />` on it @sneridagh
+
+### Internal
+
+- Update to Razzle 3.1.2 @sneridagh
+- Update to React 16.13.1 @sneridagh
+- Removal of unused (and deprecated) `@babel/preset-stage-0` @sneridagh
+- Update `react-router` @sneridagh
+- Update `react-redux` and friends @sneridagh
+- Update `connected-react-router` @sneridagh
+- Update low hanging fruits deps @sneridagh
+- Update style/less loaders and friends @sneridagh
+- Update stylelint and friends @sneridagh
+- Update prettier @sneridagh
+- Update eslint plugins @sneridagh
+- Update `cypress-axe`, `detectbrowser`, `lint-staged` and `release-it` @sneridagh
+
+## 5.10.0 (2020-05-16)
+
+### Feature
+
+- Refactor createContent command to accept a single json object @iFlameing
+- enable hyperlinks in comments when intelligent text is enabled for comments @jackahl
+- Added InlineForm, a generic form implementation that can be used to edit, among others, block data. @tiberiuichim
+
+### Internal
+
+- Make available some internal artifacts (Router, Redux Store and Settings) to the Cypress acceptance tests, add docs @sneridagh
+- Added a cypress test for the comment @iFlameing
+- Add a cypress function to set registry entries @jackahl
+
+## 5.9.1 (2020-05-15)
+
+### Bugfix
+
+- Fix Bug in Form Component, that lead to site crash when transmitting a comment @jackahl #1475
+- Fix for the long lasted issue when creating links in newly created text blocks not showing as links until you save @avoinea
+
+### Internal
+
+- add a cypress function to set registry entries @jackahl
+
+## 5.9.0 (2020-05-12)
+
+### Feature
+
+- Implemented a new ObjectBrowserWidget @giuliaghisini
+- Add system information in controlpanel @iFlameing #1457
+- Added Dexterity Types Controlpanel @avoinea #1285
+- Remember sort order of folder contents view. @ksuess
+
+### Bugfix
+
+- Fix new lines inside blockquotes are not rendered @iFlameing #1249
+- Fix blockquote style render error: unique key @iFlameing #1097
+- Added Dexterity control panel Cypress tests @iFlameing
+
+## 5.8.0 (2020-05-11)
+
+### Feature
+
+- Adding Image Gallery template in Listing view @iFlameing
+
+## 5.7.1 (2020-05-08)
+
+### Bugfix
+
+- Fix translation locator lookup in `CreateTranslation` component and remove the no longer needed store reducer @sneridagh
+
+## 5.7.0 (2020-05-08)
+
+### Feature
+
+- Enable `@querystringresults` action to use the new context aware query feature @sneridagh
+
+## 5.6.1 (2020-05-08)
+
+### Bugfix
+
+- REALLY load the current object language on SSR, instead of relying on the cookie @sneridagh
+
+### Internal
+
+- Pin some api devs (ZCatalog and p.namedfile improvements) @sneridagh
+
+## 5.6.0 (2020-05-06)
+
+### Feature
+
+- Load the current object language on SSR, instead of relying on the cookie @sneridagh
+
+### Bugfix
+
+- Correct the `defaultLanguage` intend in `react-intl-redux` configuration @sneridagh
+
+### Internal
+
+- Add default `src` alias for addons detecting if there is a released or a mrs-developer one @sneridagh
+
+## 5.5.0 (2020-05-06)
+
+### Feature
+
+- Added label expired if expiration date is smaller that current date #1413 @iFlameing
+- Added word limit widget @iFlameing
+- Addons control panel @esteele @iFlameing
+
+### Internal
+
+- Cypress test for Table Block @steffenri @iFlameing
+- Cypress tests upgraded for Image, Hero and HTML Block @steffenri @iFlameing
+- Added cypress test for sort method in folder content #1035 @iFlameing
+
+## 5.4.0 (2020-05-04)
+
+### Feature
+
+- Add babel and externals support in Webpack for add-on infrastructure @sneridagh
+- Forward the images and files cache headers in Volto SSR passthrough @sneridagh
+
+### Bugfix
+
+- Fix handling of external links in ToHTML config @nzambello
+- Remove the title field from right dropdown in folder content view
+
+### Internal
+
+- Periodical upgrade of `browserlist` lib @sneridagh
+
+## 5.3.0 (2020-04-29)
+
+### Feature
+
+- Add general @navigation endpoint depth setting @sneridagh
+
+### Bugfix
+
+- Fix `<html>` `lang` attribute @sneridagh
+
+## 5.2.1 (2020-04-27)
+
+### Internal
+
+- Remove console log in workflow asyncConnect :( @sneridagh
+
+## 5.2.0 (2020-04-27)
+
+### Feature
+
+- Improvement of API requests error handling @sneridagh
+- Unauthorized on folder contents if no proper credentials @sneridagh
+
+### Bugfix
+
+- Improve German translations for folder contents view @timo
+- Make label of checkboxwidget clickable @pbauer #1414
+- Show new added user in user control panel @iFlameing #1271
+- Support multi selection in roles and groups and polish add user #1372
+- Listing block: removed message 'No results found' only in view mode on public site, in editMode is still present. @giuliaghisini
+
+### Internal
+
+- Add crossorigin to the preload resources tags while in development @sneridagh
+- Permissions in contents and Edit @sneridagh
+- Fix the error on content Edit no credentials now shows `Unauthorized` @sneridagh
+- Improve console server output showing info @sneridagh
+
+## 5.1.0 (2020-04-23)
+
+### Breaking
+
+### Feature
+
+- Full screen right sidebar @rexalex #1345
+- Enable internal API proxy for not to rely on CORS on development @sneridagh
+- Added Print CSS @iFlameing #1289
+- Added error handling for Add and Edit forms #1392 @nzambello
+
+### Bugfix
+
+- Japanese translation @terapyon
+- Fix `ArrayWidget` to support multiselect schema `schema.List`/`schema.Set`-> `schema.Choice` hardcoded (not using vocabularies) combination @sneridagh
+- Remove Back button from control panels, since it's redundant @sneridagh
+- Show past dates in date time widget calendar @nzambello
+
+### Internal
+
+- Translated labels in Eventi View @nzambello
+- Improve i18n script, so shadowed components are not overriding their original translations. For the record, any override of i18n messages, should be done somewhere else (eg. config object) @sneridagh
+
+## 5.0.1 (2020-04-16)
+
+### Bugfix
+
+- Show new added user in user control panel @iFlameing #1271
+- Fixes for contact form @nzambello
+
+## 5.0.0 (2020-04-12)
+
+### Breaking
+
+- Added basic lazy loading dependencies and boilerplate @sneridagh
+- Change component to where page title is set to `View.jsx`, remove all `Helmet` calls from inner views @jackahl
+
+### Feature
+
+- Added date time widget @nzambello
+- Add meta description tags and meta generator @sneridagh
+- Add lang property in `html` tag depending on the site/content language @sneridagh
+- Add `App.jsx` component insertion point @sneridagh
+- Lazy load `EventView.jsx`, splitting out all its big dependencies (Luxon) along with it @sneridagh
+- Lazy load `pretty` library, used in the HTML block @sneridagh
+- Lazy load `Raven` library @sneridagh
+- Lazy load `React Select` library @sneridagh
+
+### Bugfix
+
+- Show save/cancel on control panels @avoinea #850
+- Fix listing "show more" link rendering conditions @nzambello
+
+### Internal
+
+- Make Jest only looks up in `src` folder @sneridagh
+- Re-arrange `components/index.js` @sneridagh
+- Added a patch for Razzle Jest config generator to include `modulePathIgnorePatterns` option @sneridagh
+- Fix Travis random no sound card found error @sneridagh
+- docs: add release documentation @tisto
+
+## 4.6.0 (2020-04-06)
+
+### Feature
+
+- pagination on site search results @giuliaghisini
+
+### Bugfix
+
+- Fix use case for non-multilingual setups and on projects on lang loading @sneridagh
+
+### Internal
+
+- Typo in German translations @steffenri
+- Complete more Italian translations @nzambello
+
+## 4.5.0 (2020-04-06)
+
+### Feature
+
+- /sitemap to view sitemap based on @navigation with depth 4 @giuliaghisini
+
+### Bugfix
+
+- Fix ArrayWidget to support static supermodel vocabulary @datakurre
+- Bring back the OutdatedBrowser component, it got removed in a bad merge :( @sneridagh
+
+### Internal
+
+- Improve the i18n script, only write the pot file if it's really different @sneridagh
+
+## 4.4.0 (2020-04-03)
+
+### Feature
+
+- /contents (folder content view) is sortable @ksuess
+- Updated the (folder content icons to Pastanaga Icons) @iFlameing
+
+### Bugfix
+
+- Fix conversion from DraftJS to HTML using redraft for atomic entities (IMAGE) @sneridagh
+
+## 4.3.0 (2020-04-01)
+
+### Feature
+
+- Added recursive workflow changes @robgietema
+
+### Bugfix
+
+- Fixed ssr link view @robgietema
+
+## 4.2.0 (2020-03-31)
+
+### Feature
+
+- Add Multilingual Support @sneridagh
+
+## 4.1.2 (2020-03-30)
+
+### Bugfix
+
+- Fix typo for Japanese translation @terapyon
+- Fix refresh of the `Breadcrumbs` and `Navigation` components on calling `/login` and `/logout` @sneridagh
+- Fix refresh of the `Navigation` component on calling `/login` and `/logout` @sneridagh
+- Adjust implementation of the download link behavior for files @sneridagh
+- Fix Maps block to use maps-inner instead of video-inner class @timo
+- Add div with class "table-of-contents" to ToC block @timo
+
+### Internal
+
+- Upgrade critical Plone 5.2.1 deps in api folder @sneridagh
+- Improve Cypress Video Block tests @sneridagh @timo
+- Run `yarn i18n` on any JSX change @sneridagh
+- Add link mailto Cypress test @timo
+- Added design guidelines manifesto @sneridagh
+
+## 4.1.1 (2020-03-18)
+
+### Bugfix
+
+- Fix for #1267 - Link inside text for content-type without blocks breaks the site @sneridagh
+- Japanese translation @terapyon
+- Fix production mode for newly created `__DEVELOPMENT__` global @sneridagh
+
+### Internal
+
+- Upgrade to Cypress 4 @timo
+
+## 4.1.0 (2020-03-13)
+
+### Feature
+
+- Add `flattenHTMLToAppURL` helper method for remove api url from TinyMCE generated HTML @cekk
+- Add development mode global @sneridagh
+
+### Bugfix
+
+- Improve the UX of the listing block when queries are running @sneridagh
+- Added table of content cypress test @steffenri
+
+## 4.0.1 (2020-03-09)
+
+### Bugfix
+
+- Fixes #1262 - SSR support for "undetected" browsers
+- Japanese translation @terapyon
+- Site settings styling fixed in the Controlpanel
+- Increase ObjectBrowser limit per folder to 1000, partially fixes #1259 @sneridagh
+- Deprecate `utils.less` as it's a leftover and it collides with some use cases depending on the viewport, see: #1265
+
+### Internal
+
+- Use kitconcept.volto as integration package @sneridagh
+
+## 4.0.0 (2020-03-01)
+
+### Feature
+
+Summary of the most important features in this final release. For more detailed information
+refer to all of them in https://github.com/plone/volto/releases
+
+- Improved Pastanaga Editor
+- New Pastanaga Editor sidebar
+- New mobile first toolbar
+- Developing blocks experience simplified
+- New Object Browser
+- Listing, TOC, Lead Image blocks
+- Improved existing blocks (Image, Video, Maps)
+- New blocks chooser and future proof blocks definitions
+- Definition of default Blocks per content type
+- Body classes like the Plone ones hinting content types, section and current view
+- New message system
+- React hooks support
+- Several internal libraries updated, including Redux, Router ones that support hooks as well
+- New locales (es, it, ja, pt, pt_BR)
+
+### Bugfixes
+
+- Tons of bug fixes
+
+## 4.0.0-alpha.43 (2020-03-01)
 
 ### Changes
 
+- Fixes #982 - History compare/diff @avoinea
+- Responsive header @ksuess
+  - Anontools (login, register) wrapping under long navigation.
+  - Breaking change: Hamburger menu also on tablet.
+  - Mobile: compact display of anontools and search.
+
+## 4.0.0-alpha.42 (2020-02-26)
+
+### Changes
+
+- Revert "Fix Scrolling Functionality if there are many columns in table" since it has non desired secondary effects in the table block and other tables @sneridagh
+
+## 4.0.0-alpha.41 (2020-02-26)
+
+### Changes
+
+- Fixes for the `ListingView` (Issue #1188, Listing View) @wkbkhard
+- Fix date widgets on QueryString widget on listings and in the widget @sneridagh
+- Update German translation @tisto
+- i18n in toolbar and folder contents view @ksuess
+
+## 4.0.0-alpha.40 (2020-02-24)
+
+### Added
+
+- Add pagination support to listing blocks @sneridagh
+
+### Changes
+
+- Fix Video and Maps blocks hydration quirks on view mode @sneridagh
+- Deleted Empty Select Component @aryamanpuri
 - Fix `RichText` Widget on normal forms @sneridagh
-- Fix Scrolling Functionality if there are many columns in table @sumukhah
 - Fix Guillotina tests @bloodbare
+- Fix problem with not wrapped element in `Provider` store in `WysiwygWidget` component
+  due that now, the links are wrapped with a connected component @sneridagh
 
 ## 4.0.0-alpha.39 (2020-02-18)
 
@@ -38,7 +467,7 @@
 - Chose template for listing block @giuliaghisini
 - Event type view @nileshgulia1 @pnicolli
 - Add ability to define the starting blocks per content type @sneridagh
-- Reference widget: show item title and path in search and hover itmes selected @giuliaghisini
+- Reference widget: show item title and path in search and hover items selected @giuliaghisini
 
 ### Changes
 

@@ -121,4 +121,24 @@ describe('DiffField', () => {
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
+
+  it('renders an array of objects field', () => {
+    const component = renderer.create(
+      <DiffField
+        pathname="/blog"
+        schema={{ title: 'Text', type: 'array' }}
+        one={[
+          { title: 'one', token: 'one' },
+          { title: 'two', token: 'two' },
+        ]}
+        two={[
+          { title: 'one', token: 'one' },
+          { title: 'three', token: 'three' },
+        ]}
+        view="unified"
+      />,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
 });

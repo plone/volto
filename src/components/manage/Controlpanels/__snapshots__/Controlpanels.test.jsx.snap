@@ -5,7 +5,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
   className="view-wrapper"
 >
   <div
-    className="ui container"
+    className="ui container controlpanel"
   >
     <div
       className="ui raised segments"
@@ -71,6 +71,29 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                     className="content"
                   >
                     Language
+                  </div>
+                </h3>
+              </a>
+            </div>
+            <div
+              className="column"
+            >
+              <a
+                href="/controlpanel/addons"
+                onClick={[Function]}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <i
+                    aria-hidden="true"
+                    className="add-on icon"
+                    onClick={[Function]}
+                  />
+                  <div
+                    className="content"
+                  >
+                    Add-Ons
                   </div>
                 </h3>
               </a>
@@ -232,11 +255,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
       </div>
       <div
         className="ui attached segment"
-      >
-        <div
-          className="VersionOverview"
-        />
-      </div>
+      />
     </div>
   </div>
   <div
