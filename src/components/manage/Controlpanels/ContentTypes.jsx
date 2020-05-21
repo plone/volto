@@ -26,6 +26,7 @@ import addSVG from '@plone/volto/icons/add-document.svg';
 import backSVG from '@plone/volto/icons/back.svg';
 import editSVG from '@plone/volto/icons/pen.svg';
 import trashSVG from '@plone/volto/icons/delete.svg';
+import layoutSVG from '@plone/volto/icons/file.svg';
 
 const messages = defineMessages({
   add: {
@@ -128,6 +129,7 @@ class ContentTypes extends Component {
     this.onAddTypeError = this.onAddTypeError.bind(this);
     this.onAddTypeSuccess = this.onAddTypeSuccess.bind(this);
     this.onEdit = this.onEdit.bind(this);
+    this.onLayout = this.onLayout.bind(this);
     this.onDelete = this.onDelete.bind(this);
     this.onDeleteCancel = this.onDeleteCancel.bind(this);
     this.onDeleteOk = this.onDeleteOk.bind(this);
@@ -228,10 +230,18 @@ class ContentTypes extends Component {
     this.props.history.push(value);
   }
 
+  /**
+   * Layout button click
+   * @param {*} event
+   * @param {string} value
+   * @returns {undefined}
+   */
+  onLayout(event, { value }) {
+    this.props.history.push(value);
+  }
+
   /** Delete */
   /**
-   *
-   *
    * @param {*} event Event object.
    * @param {*} { value }
    * @memberof ContentTypes
@@ -408,6 +418,16 @@ class ContentTypes extends Component {
                               <FormattedMessage
                                 id="Edit"
                                 defaultMessage="Edit"
+                              />
+                            </Dropdown.Item>
+                            <Dropdown.Item
+                              onClick={this.onLayout}
+                              value={`${this.props.pathname}/${item['id']}/layout`}
+                            >
+                              <Icon name={layoutSVG} size="15px" />
+                              <FormattedMessage
+                                id="Layout"
+                                defaultMessage="Layout"
                               />
                             </Dropdown.Item>
                             <Dropdown.Item
