@@ -6,16 +6,22 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { map } from 'lodash';
+import unionClassNames from 'union-class-names';
+import { resetSearchContent, searchContent } from '@plone/volto/actions';
+import { addAppURL } from '@plone/volto/helpers';
 import EditorUtils from 'draft-js-plugins-utils';
 
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
-import { Input, Form } from 'semantic-ui-react';
+import { Input, Form, Button } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 
 import URLUtils from '@plone/volto/components/manage/AnchorPlugin/utils/URLUtils';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
+import aheadSVG from '@plone/volto/icons/ahead.svg';
 
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import { Icon } from '@plone/volto/components';
@@ -56,6 +62,7 @@ class AddLinkForm extends Component {
 
     this.state = {
       value: props.data.url || '',
+      isInvalid: false,
     };
     this.onRef = this.onRef.bind(this);
     this.onChange = this.onChange.bind(this);
@@ -117,6 +124,13 @@ class AddLinkForm extends Component {
       }
     }
     this.setState(nextState);
+    if (value && value !== '') {
+      this.props.searchContent('', {
+        Title: `*${value}*`,
+      });
+    } else {
+      this.props.resetSearchContent();
+    }
 
     if (clear) {
       this.props.setEditorState(
@@ -124,6 +138,25 @@ class AddLinkForm extends Component {
       );
     }
   }
+
+  /**
+   * Select item handler
+   * @method onSelectItem
+   * @param {string} e event
+   * @param {string} url Url
+   * @returns {undefined}
+   */
+  onSelectItem = (e, url) => {
+    e.preventDefault();
+    this.setState({
+      value: url,
+      isInvalid: false,
+    });
+    this.props.resetSearchContent();
+    this.props.setEditorState(
+      EditorUtils.createLinkAtSelection(this.props.getEditorState(), url),
+    );
+  };
 
   /**
    * Clear handler
@@ -134,6 +167,7 @@ class AddLinkForm extends Component {
   clear() {
     const nextState = { value: '' };
     this.setState(nextState);
+    this.props.resetSearchContent();
 
     this.props.setEditorState(
       EditorUtils.removeLinkAtSelection(this.props.getEditorState()),
@@ -185,6 +219,7 @@ class AddLinkForm extends Component {
     }
 
     setEditorState(EditorUtils.createLinkAtSelection(getEditorState(), url));
+    this.props.resetSearchContent();
     this.onClose();
   }
 
@@ -194,7 +229,14 @@ class AddLinkForm extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { value } = this.state;
+    const { value, isInvalid } = this.state;
+    const className = isInvalid
+      ? unionClassNames(
+          'ui input editor-link',
+          'input-anchorlink-theme',
+          'input-anchorlink-theme-Invalid',
+        )
+      : unionClassNames('ui input editor-link', 'input-anchorlink-theme');
 
     return (
       <div className="link-form-container" ref={this.linkFormContainer}>
@@ -216,11 +258,12 @@ class AddLinkForm extends Component {
           <Form.Field inline>
             <div className="wrapper">
               <Input
+                className={className}
                 id={`field-link`}
                 name="link"
                 value={value || ''}
                 onChange={({ target }) =>
-                  this.onChange(target.value === '' ? undefined : target.value)
+                  this.onChange(target.value === '' ? '' : target.value)
                 }
                 placeholder={this.props.intl.formatMessage(
                   messages.placeholder,
@@ -228,31 +271,81 @@ class AddLinkForm extends Component {
                 onKeyDown={this.onKeyDown}
                 ref={this.onRef}
               />
-              <button
-                onClick={
-                  value
-                    ? () => {
-                        this.clear();
-                      }
-                    : () =>
-                        this.props.openObjectBrowser({
-                          mode: 'link',
-                          overlay: true,
-                          onSelectItem: (url) => {
-                            this.onChange(url);
-                            this.onSubmit();
-                          },
-                        })
-                }
-              >
-                <Icon name={value ? clearSVG : navTreeSVG} size="18px" />
-              </button>
+              {value.length > 0 ? (
+                <Button.Group>
+                  <Button
+                    basic
+                    className="cancel"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      this.clear();
+                    }}
+                  >
+                    <Icon name={clearSVG} size="30px" />
+                  </Button>
+                </Button.Group>
+              ) : (
+                <Button.Group>
+                  <Button
+                    basic
+                    icon
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      this.props.openObjectBrowser({
+                        mode: 'link',
+                        overlay: true,
+                        onSelectItem: (url) => {
+                          this.onChange(url);
+                        },
+                      });
+                    }}
+                  >
+                    <Icon name={navTreeSVG} size="24px" />
+                  </Button>
+                </Button.Group>
+              )}
+              <Button.Group>
+                <Button
+                  basic
+                  primary
+                  disabled={!value.length > 0}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    this.onSubmit();
+                  }}
+                >
+                  <Icon name={aheadSVG} size="30px" />
+                </Button>
+              </Button.Group>
             </div>
           </Form.Field>
         </div>
+        <ul style={{ margin: 0, paddingLeft: '35px' }}>
+          {map(this.props.search, (item) => (
+            <li style={{ padding: '5px' }} key={item['@id']}>
+              <button
+                style={{ cursor: 'pointer' }}
+                onClick={(e) => this.onSelectItem(e, addAppURL(item['@id']))}
+                title={item['@id']}
+                role="link"
+              >
+                {item.title}
+              </button>
+            </li>
+          ))}
+        </ul>
       </div>
     );
   }
 }
 
-export default compose(injectIntl, withObjectBrowser)(AddLinkForm);
+export default compose(
+  injectIntl,
+  withObjectBrowser,
+  connect(
+    (state) => ({
+      search: state.search.items,
+    }),
+    { resetSearchContent, searchContent },
+  ),
+)(AddLinkForm);
