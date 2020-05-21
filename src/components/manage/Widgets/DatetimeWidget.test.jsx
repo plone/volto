@@ -50,8 +50,6 @@ test('datetime widget converts UTC date and adapt to local datetime', () => {
   const componentTimeInput = componentInstance.findByType(TimePicker);
 
   expect(componentTimeInput.props.defaultValue.toISOString()).toBe(
-    moment('2020-02-10T15:01:00')
-      .utc()
-      .toISOString(),
+    moment('2020-02-10T15:01:00').utc().toISOString(),
   );
 });

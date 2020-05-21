@@ -52,7 +52,7 @@ const FileWidget = ({
               ref={fileInput}
               onChange={({ target }) => {
                 const file = target.files[0];
-                readAsDataURL(file).then(data => {
+                readAsDataURL(file).then((data) => {
                   const fields = data.match(/^data:(.*);(.*),(.*)$/);
                   onChange(id, {
                     data: fields[3],
@@ -80,7 +80,7 @@ const FileWidget = ({
                 </Button>
               )}
             </div>
-            {map(error, message => (
+            {map(error, (message) => (
               <Label key={message} basic color="red" pointing>
                 {message}
               </Label>

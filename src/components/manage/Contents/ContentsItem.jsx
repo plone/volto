@@ -111,7 +111,7 @@ export const ContentsItemComponent = ({
               icon
               basic
               aria-label="Unchecked"
-              onClick={e => onClick(e, item['@id'])}
+              onClick={(e) => onClick(e, item['@id'])}
             >
               <Icon
                 name={checkboxCheckedSVG}
@@ -125,7 +125,7 @@ export const ContentsItemComponent = ({
               icon
               basic
               aria-label="Checked"
-              onClick={e => onClick(e, item['@id'])}
+              onClick={(e) => onClick(e, item['@id'])}
             >
               <Icon
                 name={checkboxUncheckedSVG}
@@ -159,7 +159,7 @@ export const ContentsItemComponent = ({
               )}
           </Link>
         </Table.Cell>
-        {map(indexes, index => (
+        {map(indexes, (index) => (
           <Table.Cell key={index.id}>
             {index.type === 'boolean' &&
               (item[index.id] ? (
@@ -331,7 +331,7 @@ export default DropTarget(
       monitor.getItem().order = dropOrder;
     },
   },
-  connect => ({
+  (connect) => ({
     connectDropTarget: connect.dropTarget(),
   }),
 )(

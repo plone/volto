@@ -18,7 +18,7 @@ export const TAG_NAMES = {
 };
 
 export const VALID_TAG_NAMES = Object.keys(TAG_NAMES).map(
-  name => TAG_NAMES[name],
+  (name) => TAG_NAMES[name],
 );
 
 export const TAG_PROPERTIES = {

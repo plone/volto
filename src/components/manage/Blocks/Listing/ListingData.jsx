@@ -56,7 +56,7 @@ const ListingData = ({
   intl,
 }) => {
   const sortable_indexes = useSelector(
-    state => state.querystring.sortable_indexes,
+    (state) => state.querystring.sortable_indexes,
   );
   const [limit, setLimit] = React.useState(data.limit || '');
   const [itemBatchSize, setItemBatchSize] = React.useState(data.b_size || '');
@@ -103,12 +103,12 @@ const ListingData = ({
                       toPairs(
                         groupBy(
                           toPairs(sortable_indexes),
-                          item => item[1].group,
+                          (item) => item[1].group,
                         ),
                       ),
-                      group => ({
+                      (group) => ({
                         label: group[0],
-                        options: map(group[1], field => ({
+                        options: map(group[1], (field) => ({
                           label: field[1].title,
                           value: field[0],
                         })),
@@ -126,7 +126,7 @@ const ListingData = ({
                         : data.sort_on ||
                           intl.formatMessage(messages.NoSelection),
                   }}
-                  onChange={field => {
+                  onChange={(field) => {
                     onChangeBlock(block, {
                       ...data,
                       sort_on: field.value,

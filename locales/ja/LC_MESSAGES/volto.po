@@ -529,6 +529,10 @@ msgstr "フィールドを編集"
 msgid "Edit fieldset"
 msgstr "フィールドセットを編集"
 
+#: components/manage/Form/InlineForm
+msgid "Edit values"
+msgstr ""
+
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
 msgstr "{title} を編集"
@@ -588,6 +592,7 @@ msgstr "新しいパスワードを入力。（5文字以上）"
 #: components/manage/Controlpanels/ContentTypeMetadata
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form
+#: components/manage/Form/InlineForm
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
@@ -975,6 +980,10 @@ msgstr "コンテンツフィールドの画像がありません"
 msgid "No items found in this container."
 msgstr "アイテムが見つかりませんでした"
 
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "No items selected"
+msgstr ""
+
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "No map selected"
 msgstr "マップが選択されていません"
@@ -1279,6 +1288,10 @@ msgstr "選択の基準"
 msgid "Select the transition to be used for modifying the items state."
 msgstr "Select the transition to be used for modifying the items state. (未翻訳)"
 
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Selected items"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Selection"
 msgstr "Selection (未翻訳)"
@@ -1489,6 +1502,10 @@ msgstr "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundatio
 
 #: components/theme/CorsError/CorsError
 msgid "There is a configuration problem on the backend"
+msgstr ""
+
+#: components/manage/Form/InlineForm
+msgid "There were some errors"
 msgstr ""
 
 #: components/manage/Form/Form

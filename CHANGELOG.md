@@ -1,21 +1,92 @@
 # Change Log
 
-## 5.8.1 (unreleased)
+## 6.0.1 (unreleased)
 
 ### Breaking
 
 ### Feature
 
+### Bugfix
+
+### Internal
+
+## 6.0.0 (2020-05-18)
+
+### Breaking
+
+- Removed support for CSS modules, since Razzle 3.1.x do not support them @sneridagh
+- Updated Volto dependencies - See https://docs.voltocms.com/upgrade-guide/ for more information @sneridagh
+- By adding `react-beautiful-dnd` in the block editor we are introducing new wrappers
+  (belonging to the lib machinery) in the structure. The original structure and class
+  names are still in there for maintain maximum backwards compatibility. Those might be
+  cleaned up in next major versions, so if for some reason you have customized the
+  styling of your blocks in edit mode relying in the old structure, you might want to
+  review and adapt them @sneridagh
+
+### Feature
+
+- Added `react-beautiful-dnd` in core for edit form @iFlameing
+
+### Bugfix
+
+- Improve `isInternalURL` helper to match also anchors @sneridagh
+- Fix local build when no RAZZLE_API_PATH is set @sneridagh
+- Fix `WysiwygWidget` redraft HTML conversion when creating an empty paragraph force a `<br />` on it @sneridagh
+
+### Internal
+
+- Update to Razzle 3.1.2 @sneridagh
+- Update to React 16.13.1 @sneridagh
+- Removal of unused (and deprecated) `@babel/preset-stage-0` @sneridagh
+- Update `react-router` @sneridagh
+- Update `react-redux` and friends @sneridagh
+- Update `connected-react-router` @sneridagh
+- Update low hanging fruits deps @sneridagh
+- Update style/less loaders and friends @sneridagh
+- Update stylelint and friends @sneridagh
+- Update prettier @sneridagh
+- Update eslint plugins @sneridagh
+- Update `cypress-axe`, `detectbrowser`, `lint-staged` and `release-it` @sneridagh
+
+## 5.10.0 (2020-05-16)
+
+### Feature
+
+- Refactor createContent command to accept a single json object @iFlameing
+- enable hyperlinks in comments when intelligent text is enabled for comments @jackahl
+- Added InlineForm, a generic form implementation that can be used to edit, among others, block data. @tiberiuichim
+
+### Internal
+
+- Make available some internal artifacts (Router, Redux Store and Settings) to the Cypress acceptance tests, add docs @sneridagh
+- Added a cypress test for the comment @iFlameing
+- Add a cypress function to set registry entries @jackahl
+
+## 5.9.1 (2020-05-15)
+
+### Bugfix
+
+- Fix Bug in Form Component, that lead to site crash when transmitting a comment @jackahl #1475
+- Fix for the long lasted issue when creating links in newly created text blocks not showing as links until you save @avoinea
+
+### Internal
+
+- add a cypress function to set registry entries @jackahl
+
+## 5.9.0 (2020-05-12)
+
+### Feature
+
+- Implemented a new ObjectBrowserWidget @giuliaghisini
 - Add system information in controlpanel @iFlameing #1457
 - Added Dexterity Types Controlpanel @avoinea #1285
+- Remember sort order of folder contents view. @ksuess
 
 ### Bugfix
 
 - Fix new lines inside blockquotes are not rendered @iFlameing #1249
 - Fix blockquote style render error: unique key @iFlameing #1097
 - Added Dexterity control panel Cypress tests @iFlameing
-
-### Internal
 
 ## 5.8.0 (2020-05-11)
 

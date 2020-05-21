@@ -131,10 +131,10 @@ const CheckboxWidget = ({
                 checked={value}
                 disabled={onEdit !== null}
                 onChange={(event, { checked }) => onChange(id, checked)}
-                label={<label for={`field-${id}`}>{title}</label>}
+                label={<label htmlFor={`field-${id}`}>{title}</label>}
               />
             </div>
-            {map(error, message => (
+            {map(error, (message) => (
               <Label key={message} basic color="red" pointing>
                 {message}
               </Label>

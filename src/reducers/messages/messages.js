@@ -49,8 +49,8 @@ export default function messages(state = initialState, action = {}) {
     case PURGE_MESSAGES:
       return {
         messages: map(
-          filter(state.messages, message => message.show),
-          message => ({
+          filter(state.messages, (message) => message.show),
+          (message) => ({
             ...message,
             show: false,
           }),

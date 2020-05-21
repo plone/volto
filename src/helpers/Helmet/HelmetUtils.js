@@ -24,7 +24,7 @@ const encodeSpecialCharacters = (str, encode = true) => {
     .replace(/'/g, '&#x27;');
 };
 
-const getTitleFromPropsList = propsList => {
+const getTitleFromPropsList = (propsList) => {
   const innermostTitle = getInnermostProperty(propsList, TAG_NAMES.TITLE);
   const innermostTemplate = getInnermostProperty(
     propsList,
@@ -46,7 +46,7 @@ const getTitleFromPropsList = propsList => {
   return innermostTitle || innermostDefaultTitle || undefined;
 };
 
-const getOnChangeClientState = propsList => {
+const getOnChangeClientState = (propsList) => {
   return (
     getInnermostProperty(propsList, HELMET_PROPS.ON_CHANGE_CLIENT_STATE) ||
     (() => {})
@@ -55,8 +55,8 @@ const getOnChangeClientState = propsList => {
 
 const getAttributesFromPropsList = (tagType, propsList) => {
   return propsList
-    .filter(props => typeof props[tagType] !== 'undefined')
-    .map(props => props[tagType])
+    .filter((props) => typeof props[tagType] !== 'undefined')
+    .map((props) => props[tagType])
     .reduce((tagAttrs, current) => {
       return { ...tagAttrs, ...current };
     }, {});
@@ -64,8 +64,8 @@ const getAttributesFromPropsList = (tagType, propsList) => {
 
 const getBaseTagFromPropsList = (primaryAttributes, propsList) => {
   return propsList
-    .filter(props => typeof props[TAG_NAMES.BASE] !== 'undefined')
-    .map(props => props[TAG_NAMES.BASE])
+    .filter((props) => typeof props[TAG_NAMES.BASE] !== 'undefined')
+    .map((props) => props[TAG_NAMES.BASE])
     .reverse()
     .reduce((innermostBaseTag, tag) => {
       if (!innermostBaseTag.length) {
@@ -93,7 +93,7 @@ const getTagsFromPropsList = (tagName, primaryAttributes, propsList) => {
   const approvedSeenTags = {};
 
   return propsList
-    .filter(props => {
+    .filter((props) => {
       if (Array.isArray(props[tagName])) {
         return true;
       }
@@ -106,13 +106,13 @@ const getTagsFromPropsList = (tagName, primaryAttributes, propsList) => {
       }
       return false;
     })
-    .map(props => props[tagName])
+    .map((props) => props[tagName])
     .reverse()
     .reduce((approvedTags, instanceTags) => {
       const instanceSeenTags = {};
 
       instanceTags
-        .filter(tag => {
+        .filter((tag) => {
           let primaryAttributeKey;
           const keys = Object.keys(tag);
           for (let i = 0; i < keys.length; i++) {
@@ -166,7 +166,7 @@ const getTagsFromPropsList = (tagName, primaryAttributes, propsList) => {
           return false;
         })
         .reverse()
-        .forEach(tag => approvedTags.push(tag));
+        .forEach((tag) => approvedTags.push(tag));
 
       // Update seen tags with tags from this instance
       const keys = Object.keys(instanceSeenTags);
@@ -198,7 +198,7 @@ const getInnermostProperty = (propsList, property) => {
   return null;
 };
 
-const reducePropsToState = propsList => ({
+const reducePropsToState = (propsList) => ({
   baseTag: getBaseTagFromPropsList(
     [TAG_PROPERTIES.HREF, TAG_PROPERTIES.TARGET],
     propsList,
@@ -249,7 +249,7 @@ const reducePropsToState = propsList => ({
 const rafPolyfill = (() => {
   let clock = Date.now();
 
-  return callback => {
+  return (callback) => {
     const currentTime = Date.now();
 
     if (currentTime - clock > 16) {
@@ -263,7 +263,7 @@ const rafPolyfill = (() => {
   };
 })();
 
-const cafPolyfill = id => clearTimeout(id);
+const cafPolyfill = (id) => clearTimeout(id);
 
 const requestAnimationFrame =
   typeof window !== 'undefined'
@@ -282,13 +282,13 @@ const cancelAnimationFrame =
       cafPolyfill
     : global.cancelAnimationFrame || cafPolyfill;
 
-const warn = msg => {
+const warn = (msg) => {
   return console && typeof console.warn === 'function' && console.warn(msg);
 };
 
 let _helmetCallback = null;
 
-const handleClientStateChange = newState => {
+const handleClientStateChange = (newState) => {
   if (_helmetCallback) {
     cancelAnimationFrame(_helmetCallback);
   }
@@ -336,7 +336,7 @@ const commitTagChanges = (newState, cb) => {
   const addedTags = {};
   const removedTags = {};
 
-  Object.keys(tagUpdates).forEach(tagType => {
+  Object.keys(tagUpdates).forEach((tagType) => {
     const { newTags, oldTags } = tagUpdates[tagType];
 
     if (newTags.length) {
@@ -352,7 +352,7 @@ const commitTagChanges = (newState, cb) => {
   onChangeClientState(newState, addedTags, removedTags);
 };
 
-const flattenArray = possibleArray => {
+const flattenArray = (possibleArray) => {
   return Array.isArray(possibleArray) ? possibleArray.join('') : possibleArray;
 };
 
@@ -417,7 +417,7 @@ const updateTags = (type, tags) => {
   let indexToDelete;
 
   if (tags && tags.length) {
-    tags.forEach(tag => {
+    tags.forEach((tag) => {
       const newElement = document.createElement(type);
 
       for (const attribute in tag) {
@@ -454,8 +454,8 @@ const updateTags = (type, tags) => {
     });
   }
 
-  oldTags.forEach(tag => tag.parentNode.removeChild(tag));
-  newTags.forEach(tag => headElement.appendChild(tag));
+  oldTags.forEach((tag) => tag.parentNode.removeChild(tag));
+  newTags.forEach((tag) => headElement.appendChild(tag));
 
   return {
     oldTags,
@@ -463,7 +463,7 @@ const updateTags = (type, tags) => {
   };
 };
 
-const generateElementAttributesAsString = attributes =>
+const generateElementAttributesAsString = (attributes) =>
   Object.keys(attributes).reduce((str, key) => {
     const attr =
       typeof attributes[key] !== 'undefined'
@@ -490,7 +490,7 @@ const generateTagsAsString = (type, tags, encode) =>
   tags.reduce((str, tag) => {
     const attributeHtml = Object.keys(tag)
       .filter(
-        attribute =>
+        (attribute) =>
           !(
             attribute === TAG_PROPERTIES.INNER_HTML ||
             attribute === TAG_PROPERTIES.CSS_TEXT
@@ -548,7 +548,7 @@ const generateTagsAsReactComponent = (type, tags) =>
       [HELMET_ATTRIBUTE]: true,
     };
 
-    Object.keys(tag).forEach(attribute => {
+    Object.keys(tag).forEach((attribute) => {
       const mappedAttribute = REACT_TAG_MAP[attribute] || attribute;
 
       if (

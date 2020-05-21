@@ -1,4 +1,4 @@
-export default element => {
+export default (element) => {
   if (element.className === 'callout') {
     return {
       type: 'callout',

@@ -28,7 +28,7 @@ const messages = defineMessages({
   },
 });
 
-const ListingSidebar = props => {
+const ListingSidebar = (props) => {
   const [activeAccIndex, setActiveAccIndex] = useState(1);
 
   function handleAccClick(e, titleProps) {

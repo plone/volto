@@ -228,7 +228,7 @@ class Actions extends Component {
       >
         <Dropdown.Menu>
           {this.props.actions.object_buttons &&
-            this.props.actions.object_buttons.map(item => {
+            this.props.actions.object_buttons.map((item) => {
               switch (item.id) {
                 case 'cut':
                   return (
@@ -304,7 +304,7 @@ class Actions extends Component {
 export default compose(
   injectIntl,
   connect(
-    state => ({
+    (state) => ({
       actions: state.actions.actions,
       action: state.clipboard.action,
       source: state.clipboard.source,

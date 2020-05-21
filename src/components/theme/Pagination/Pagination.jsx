@@ -87,7 +87,7 @@ const Pagination = ({
         <Menu.Item>
           <FormattedMessage id="Show" defaultMessage="Show" />:
         </Menu.Item>
-        {map(pageSizes, size => (
+        {map(pageSizes, (size) => (
           <Menu.Item
             key={size}
             value={size}

@@ -1,10 +1,10 @@
---- original.js	2020-04-10 14:58:18.196596708 +0200
-+++ changed.js	2020-04-10 14:57:56.640916416 +0200
-@@ -58,6 +58,7 @@
-     'transform',
-     'transformIgnorePatterns',
-     'reporters',
+--- node_modules/razzle/config/createJestConfig.js	2020-05-09 19:48:07.276871617 +0200
++++ patched.js	2020-05-09 19:50:07.049471664 +0200
+@@ -60,6 +60,7 @@
+     'moduleDirectories',
+     'moduleFileExtensions',
+     'moduleNameMapper',
 +    'modulePathIgnorePatterns',
-   ];
-   if (overrides) {
-     supportedKeys.forEach(key => {
+     'modulePaths',
+     'snapshotSerializers',
+     'setupFiles',
