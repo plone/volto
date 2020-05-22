@@ -24,8 +24,10 @@ export default {
     const anchorKey = selection.getAnchorKey();
     const contentState = editorState.getCurrentContent();
     const anchorBlock = contentState.getBlockForKey(anchorKey);
-    const offset = selection.anchorOffset;
-    const index = selection.isBackward ? offset - 1 : offset;
+    const index = selection.isBackward
+      ? selection.focusOffset
+      : selection.anchorOffset;
+
     return anchorBlock.getEntityAt(index);
   },
 

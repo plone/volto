@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import unionClassNames from 'union-class-names';
-import EditorUtils from 'draft-js-plugins-utils';
+//import EditorUtils from 'draft-js-plugins-utils';
+import EditorUtils from '../../utils/EditorUtils';
 import AddLinkForm from '@plone/volto/components/manage/AnchorPlugin/components/LinkButton/AddLinkForm';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 

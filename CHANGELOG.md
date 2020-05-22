@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fixed edit link in draft-js when link is selected from word-end to word-start [giuliaghisini]
+
 ### Internal
 
 ## 6.0.0 (2020-05-18)
