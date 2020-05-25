@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { keys } from 'lodash';
+import { keys, isEmpty } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Button } from 'semantic-ui-react';
 import { Portal } from 'react-portal';
@@ -201,6 +201,30 @@ class Add extends Component {
   render() {
     if (this.props.schemaRequest.loaded) {
       const visual = hasBlocksData(this.props.schema.properties);
+      const blocksFieldname = getBlocksFieldname(this.props.schema.properties);
+      const blocksLayoutFieldname = getBlocksLayoutFieldname(
+        this.props.schema.properties,
+      );
+
+      // Lookup initialBlocks and initialBlocksLayout within schema
+      const schemaBlocks = this.props.schema.properties[blocksFieldname]
+        ?.default;
+      const schemaBlocksLayout = this.props.schema.properties[
+        blocksLayoutFieldname
+      ]?.default?.items;
+      let initialBlocks = this.initialBlocks;
+      let initialBlocksLayout = this.initialBlocksLayout;
+      if (!isEmpty(schemaBlocksLayout) && !isEmpty(schemaBlocks)) {
+        initialBlocks = {};
+        initialBlocksLayout = [];
+        schemaBlocksLayout.forEach(value => {
+          if (!isEmpty(schemaBlocks[value])) {
+            let newUid = uuid();
+            initialBlocksLayout.push(newUid);
+            initialBlocks[newUid] = schemaBlocks[value];
+          }
+        });
+      }
 
       return (
         <div id="page-add">
@@ -213,11 +237,8 @@ class Add extends Component {
             ref={this.form}
             schema={this.props.schema}
             formData={{
-              [getBlocksFieldname(this.props.schema.properties)]: this
-                .initialBlocks,
-              [getBlocksLayoutFieldname(this.props.schema.properties)]: {
-                items: this.initialBlocksLayout,
-              },
+              [blocksFieldname]: initialBlocks,
+              [blocksLayoutFieldname]: { items: initialBlocksLayout },
             }}
             onSubmit={this.onSubmit}
             hideActions
