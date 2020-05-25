@@ -45,11 +45,6 @@ export const defaultRoutes = [
     exact: true,
   },
   {
-    path: '/database',
-    component: DatabaseInformation,
-    exact: true,
-  },
-  {
     path: '/login',
     component: Login,
   },
