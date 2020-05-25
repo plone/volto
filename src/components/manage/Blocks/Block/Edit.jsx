@@ -11,6 +11,7 @@ import { defineMessages, injectIntl } from 'react-intl';
 import { blocks } from '~/config';
 import { Button } from 'semantic-ui-react';
 import includes from 'lodash/includes';
+import isBoolean from 'lodash/isBoolean';
 import cx from 'classnames';
 import { setSidebarTab } from '@plone/volto/actions';
 
@@ -99,7 +100,9 @@ class Edit extends Component {
    */
   render() {
     const { id, type, selected } = this.props;
-    const required = this.props.data.required || includes(blocks.requiredBlocks, type);
+    const required = isBoolean(this.props.data.required)
+      ? this.props.data.required
+      : includes(blocks.requiredBlocks, type);
 
     const Block = blocks.blocksConfig?.[type]?.['edit'] || null;
     const blockHasOwnFocusManagement =
