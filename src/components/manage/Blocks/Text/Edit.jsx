@@ -16,7 +16,7 @@ import { includes, isEqual } from 'lodash';
 import { filterEditorState } from 'draftjs-filters';
 import { settings } from '~/config';
 
-import { Icon, BlockChooser } from '@plone/volto/components';
+import { Icon, BlockChooser, SidebarPortal, BlockSettingsSidebar } from '@plone/volto/components';
 import addSVG from '@plone/volto/icons/circle-plus.svg';
 
 const messages = defineMessages({
@@ -198,6 +198,7 @@ class Edit extends Component {
       return <div />;
     }
 
+    const placeholder = this.props.data.placeholder || this.props.intl.formatMessage(messages.text);
     const { InlineToolbar } = this.state.inlineToolbarPlugin;
 
     return (
@@ -212,7 +213,7 @@ class Edit extends Component {
           blockRenderMap={settings.extendedBlockRenderMap}
           blockStyleFn={settings.blockStyleFn}
           customStyleMap={settings.customStyleMap}
-          placeholder={this.props.intl.formatMessage(messages.text)}
+          placeholder={placeholder}
           handleReturn={(e) => {
             if (isSoftNewlineEvent(e)) {
               this.onChange(
@@ -293,6 +294,9 @@ class Edit extends Component {
             currentBlock={this.props.block}
           />
         )}
+        <SidebarPortal selected={this.props.selected}>
+          <BlockSettingsSidebar {...this.props} />
+        </SidebarPortal>
       </>
     );
   }

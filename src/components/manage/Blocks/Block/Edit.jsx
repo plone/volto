@@ -99,6 +99,7 @@ class Edit extends Component {
    */
   render() {
     const { id, type, selected } = this.props;
+    const required = this.props.data.required || includes(blocks.requiredBlocks, type);
 
     const Block = blocks.blocksConfig?.[type]?.['edit'] || null;
     const blockHasOwnFocusManagement =
@@ -152,7 +153,7 @@ class Edit extends Component {
             })}
           </div>
         )}
-        {selected && !includes(blocks.requiredBlocks, type) && (
+        {selected && !required && (
           <Button
             icon
             basic
