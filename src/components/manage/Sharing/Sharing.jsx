@@ -159,7 +159,7 @@ class SharingComponent extends Component {
     this.setState({
       inherit:
         this.props.inherit === null ? nextProps.inherit : this.state.inherit,
-      entries: map(nextProps.entries, entry => {
+      entries: map(nextProps.entries, (entry) => {
         const values = find(this.state.entries, { id: entry.id });
         return {
           ...entry,
@@ -237,7 +237,7 @@ class SharingComponent extends Component {
   onChange(event, { value }) {
     const [principal, role] = value.split('.');
     this.setState({
-      entries: map(this.state.entries, entry => ({
+      entries: map(this.state.entries, (entry) => ({
         ...entry,
         roles:
           entry.id === principal
@@ -303,7 +303,7 @@ class SharingComponent extends Component {
                   <Table.HeaderCell>
                     <FormattedMessage id="Name" defaultMessage="Name" />
                   </Table.HeaderCell>
-                  {this.props.available_roles.map(role => (
+                  {this.props.available_roles.map((role) => (
                     <Table.HeaderCell key={role.id}>
                       {role.title}
                     </Table.HeaderCell>
@@ -311,7 +311,7 @@ class SharingComponent extends Component {
                 </Table.Row>
               </Table.Header>
               <Table.Body>
-                {this.state.entries.map(entry => (
+                {this.state.entries.map((entry) => (
                   <Table.Row key={entry.id}>
                     <Table.Cell>
                       <Icon
@@ -325,7 +325,7 @@ class SharingComponent extends Component {
                       {entry.title}
                       {entry.login && ` (${entry.login})`}
                     </Table.Cell>
-                    {this.props.available_roles.map(role => (
+                    {this.props.available_roles.map((role) => (
                       <Table.Cell key={role.id}>
                         {entry.roles[role.id] === 'global' && (
                           <Icon

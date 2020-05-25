@@ -35,6 +35,7 @@ describe('Workflow action', () => {
 
       expect(action.type).toEqual(TRANSITION_WORKFLOW);
       expect(action.request.op).toEqual('post');
+      expect(action.request.data.include_children).toEqual(false);
       expect(action.request.path).toEqual(url);
     });
 

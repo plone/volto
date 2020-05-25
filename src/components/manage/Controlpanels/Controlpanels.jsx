@@ -15,7 +15,7 @@ import { Container, Grid, Header, Icon, Segment } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import Icons from '@plone/volto/constants/ControlpanelIcons';
-import { listControlpanels } from '@plone/volto/actions';
+import { listControlpanels, getSystemInformation } from '@plone/volto/actions';
 import {
   Icon as IconNext,
   Toolbar,
@@ -77,6 +77,7 @@ class Controlpanels extends Component {
    */
   UNSAFE_componentWillMount() {
     this.props.listControlpanels();
+    this.props.getSystemInformation();
   }
 
   /**
@@ -88,6 +89,11 @@ class Controlpanels extends Component {
     const controlpanels = map(
       concat(this.props.controlpanels, [
         {
+          '@id': '/addons',
+          group: 'General',
+          title: 'Add-Ons',
+        },
+        {
           '@id': '/moderate-comments',
           group: 'Content',
           title: this.props.intl.formatMessage(messages.moderatecomments),
@@ -98,7 +104,7 @@ class Controlpanels extends Component {
           title: this.props.intl.formatMessage(messages.usersandgroups),
         },
       ]),
-      controlpanel => ({
+      (controlpanel) => ({
         ...controlpanel,
         id: last(controlpanel['@id'].split('/')),
       }),
@@ -107,19 +113,19 @@ class Controlpanels extends Component {
     return (
       <div className="view-wrapper">
         <Helmet title={this.props.intl.formatMessage(messages.sitesetup)} />
-        <Container>
+        <Container className="controlpanel">
           <Segment.Group raised>
             <Segment className="primary">
               <FormattedMessage id="Site Setup" defaultMessage="Site Setup" />
             </Segment>
-            {map(groups, group => [
+            {map(groups, (group) => [
               <Segment key={`header-${group}`} secondary>
                 {group}
               </Segment>,
               <Segment key={`body-${group}`} attached>
                 <Grid columns={6}>
                   <Grid.Row>
-                    {map(filter(controlpanels, { group }), controlpanel => (
+                    {map(filter(controlpanels, { group }), (controlpanel) => (
                       <Grid.Column key={controlpanel.id}>
                         <Link to={`/controlpanel/${controlpanel.id}`}>
                           <Header as="h3" icon textAlign="center">
@@ -144,7 +150,9 @@ class Controlpanels extends Component {
               />
             </Segment>
             <Segment attached>
-              <VersionOverview />
+              {this.props.systemInformation ? (
+                <VersionOverview {...this.props.systemInformation} />
+              ) : null}
             </Segment>
           </Segment.Group>
         </Container>
@@ -175,7 +183,8 @@ export default compose(
     (state, props) => ({
       controlpanels: state.controlpanels.controlpanels,
       pathname: props.location.pathname,
+      systemInformation: state.controlpanels.systeminformation,
     }),
-    { listControlpanels },
+    { listControlpanels, getSystemInformation },
   ),
 )(Controlpanels);

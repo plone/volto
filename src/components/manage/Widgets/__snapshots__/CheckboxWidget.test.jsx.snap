@@ -18,7 +18,7 @@ exports[`renders a checkbox widget component 1`] = `
           className="wrapper"
         >
           <div
-            className="ui fitted checkbox"
+            className="ui checkbox"
             onChange={[Function]}
             onClick={[Function]}
             onMouseDown={[Function]}
@@ -33,15 +33,12 @@ exports[`renders a checkbox widget component 1`] = `
               tabIndex={0}
               type="checkbox"
             />
-            <label />
+            <label
+              htmlFor="field-my-field"
+            >
+              My field
+            </label>
           </div>
-          <label
-            className="ui basic horizontal label"
-            htmlFor="field-my-field"
-            onClick={[Function]}
-          >
-            My field
-          </label>
         </div>
       </div>
     </div>

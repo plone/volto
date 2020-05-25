@@ -10,8 +10,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { map, find, isBoolean, isObject } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
-import Select from 'react-select';
-import AsyncPaginate from 'react-select-async-paginate';
+import loadable from '@loadable/component';
 
 import {
   getBoolean,
@@ -28,6 +27,9 @@ import {
   selectTheme,
   customSelectStyles,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
+
+const Select = loadable(() => import('react-select'));
+const AsyncPaginate = loadable(() => import('react-select-async-paginate'));
 
 const messages = defineMessages({
   default: {
@@ -72,7 +74,7 @@ function getDefaultValues(choices, value) {
   if (!isObject(value) && isBoolean(value)) {
     // We have a boolean value, which means we need to provide a "No value"
     // option
-    const label = find(choices, o => getBoolean(o[0]) === value);
+    const label = find(choices, (o) => getBoolean(o[0]) === value);
     return label
       ? {
           label: label[1],
@@ -93,7 +95,7 @@ function getDefaultValues(choices, value) {
     };
   }
   if (value && choices.length > 0) {
-    return { label: find(choices, o => o[0] === value)[1], value };
+    return { label: find(choices, (o) => o[0] === value)[1], value };
   } else {
     return {};
   }
@@ -206,7 +208,7 @@ class SelectWidget extends Component {
    * @param {array} selectedOption The selected options (already aggregated).
    * @returns {undefined}
    */
-  handleChange = selectedOption => {
+  handleChange = (selectedOption) => {
     this.setState({ selectedOption });
     this.props.onChange(this.props.id, selectedOption.value);
   };
@@ -329,8 +331,9 @@ class SelectWidget extends Component {
                   disabled={onEdit !== null}
                   className="react-select-container"
                   classNamePrefix="react-select"
+                  isMulti={id === 'roles' || id === 'groups'}
                   options={[
-                    ...map(choices, option => ({
+                    ...map(choices, (option) => ({
                       value: option[0],
                       label:
                         // Fix "None" on the serializer, to remove when fixed in p.restapi
@@ -346,16 +349,27 @@ class SelectWidget extends Component {
                   styles={customSelectStyles}
                   theme={selectTheme}
                   components={{ DropdownIndicator, Option }}
-                  defaultValue={getDefaultValues(choices, value)}
-                  onChange={data =>
-                    onChange(
+                  defaultValue={
+                    id === 'roles' || id === 'groups'
+                      ? null
+                      : getDefaultValues(choices, value)
+                  }
+                  onChange={(data) => {
+                    let dataValue = [];
+                    if (Array.isArray(data)) {
+                      for (let obj of data) {
+                        dataValue.push(obj.value);
+                      }
+                      return onChange(id, dataValue);
+                    }
+                    return onChange(
                       id,
                       data.value === 'no-value' ? undefined : data.value,
-                    )
-                  }
+                    );
+                  }}
                 />
               )}
-              {map(error, message => (
+              {map(error, (message) => (
                 <Label key={message} basic color="red" pointing>
                   {message}
                 </Label>

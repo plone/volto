@@ -23,3 +23,27 @@ exports[`renders a news item view component 1`] = `
   />
 </div>
 `;
+
+exports[`renders a news item view component without links to api 1`] = `
+<div
+  className="ui container view-wrapper"
+>
+  <h1
+    className="documentFirstHeading"
+  >
+    Hello World!
+  </h1>
+  <p
+    className="documentDescription"
+  >
+    Hi
+  </p>
+  <div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "<p>Hello World!</p><p>This is an <a href=\\"/foo/bar\\">internal link</a> and a <a href=\\"/foo/baz\\">second link</a></p>",
+      }
+    }
+  />
+</div>
+`;

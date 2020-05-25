@@ -25,7 +25,7 @@ export function createContent(url, content) {
   return {
     type: CREATE_CONTENT,
     request: Array.isArray(content)
-      ? content.map(item => ({ op: 'post', path: url, data: item }))
+      ? content.map((item) => ({ op: 'post', path: url, data: item }))
       : { op: 'post', path: url, data: nestContent(content) },
   };
 }
@@ -42,7 +42,7 @@ export function deleteContent(urls) {
     request:
       typeof urls === 'string'
         ? { op: 'del', path: urls }
-        : urls.map(url => ({ op: 'del', path: url })),
+        : urls.map((url) => ({ op: 'del', path: url })),
   };
 }
 
@@ -98,6 +98,7 @@ export function orderContent(parent, url, delta, subset) {
 export function sortContent(url, on, order) {
   return {
     type: UPDATE_CONTENT,
+    sort: { on, order },
     request: {
       op: 'patch',
       path: url,
@@ -120,11 +121,16 @@ export function getContent(
   subrequest = null,
   page = null,
 ) {
-  const qs = page
+  let qs = page
     ? `?fullobjects&b_start=${settings.defaultPageSize * (page - 1)}&b_size=${
         settings.defaultPageSize
       }`
     : '?fullobjects';
+
+  if (settings.isMultilingual) {
+    qs = qs + '&expand=translations';
+  }
+
   return {
     type: GET_CONTENT,
     subrequest,

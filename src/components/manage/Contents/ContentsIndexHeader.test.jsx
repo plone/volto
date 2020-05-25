@@ -21,8 +21,8 @@ describe('ContentsIndexHeader', () => {
           width={1}
           label="Review state"
           onOrderIndex={() => {}}
-          connectDragSource={x => x}
-          connectDropTarget={x => x}
+          connectDragSource={(x) => x}
+          connectDropTarget={(x) => x}
           order={1}
           isDragging={false}
         />

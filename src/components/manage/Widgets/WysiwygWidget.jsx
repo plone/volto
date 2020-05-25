@@ -18,6 +18,7 @@ import { map } from 'lodash';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import { defineMessages, injectIntl } from 'react-intl';
 import configureStore from 'redux-mock-store';
+import { MemoryRouter } from 'react-router-dom';
 
 import { settings } from '~/config';
 
@@ -221,11 +222,13 @@ class WysiwygWidget extends Component {
             },
           })}
         >
-          {redraft(
-            convertToRaw(editorState.getCurrentContent()),
-            settings.ToHTMLRenderers,
-            settings.ToHTMLOptions,
-          )}
+          <MemoryRouter>
+            {redraft(
+              convertToRaw(editorState.getCurrentContent()),
+              settings.ToHTMLRenderers,
+              settings.ToHTMLOptions,
+            )}
+          </MemoryRouter>
         </Provider>,
       ),
     });
@@ -262,7 +265,7 @@ class WysiwygWidget extends Component {
             <label htmlFor={`field-${id}`}>{title}</label>
             <TextArea id={id} name={id} value={value ? value.data : ''} />
             {description && <p className="help">{description}</p>}
-            {map(error, message => (
+            {map(error, (message) => (
               <Label key={message} basic color="red" pointing>
                 {message}
               </Label>
@@ -334,7 +337,7 @@ class WysiwygWidget extends Component {
                   <div className="DraftEditor-root" />
                 )}
               </div>
-              {map(error, message => (
+              {map(error, (message) => (
                 <Label key={message} basic color="red" pointing>
                   {message}
                 </Label>

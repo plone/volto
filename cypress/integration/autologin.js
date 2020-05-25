@@ -1,5 +1,5 @@
 describe('Autologin Tests', () => {
-  it('As a site administrator I can add a page', function() {
+  it('Autologin as an standalone test', function() {
     let api_url, user, password;
     if (Cypress.env('API') === 'guillotina') {
       api_url = 'http://localhost:8081/db/container';
@@ -19,7 +19,6 @@ describe('Autologin Tests', () => {
     }).then(response => cy.setCookie('auth_token', response.body.token));
 
     cy.visit('/');
-
     cy.get('#toolbar-personal').click();
     cy.get('#toolbar-logout');
   });

@@ -29,6 +29,9 @@ exports[`Header renders a header component 1`] = `
         className="tools-search-wrapper"
       >
         <div
+          id="language-selector"
+        />
+        <div
           className="tools"
         >
           <div

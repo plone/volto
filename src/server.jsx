@@ -11,16 +11,14 @@ import Raven from 'raven';
 import cookie, { plugToRequest } from 'react-cookie';
 import locale from 'locale';
 import { detect } from 'detect-browser';
+import path from 'path';
+import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
+import { createProxyMiddleware } from 'http-proxy-middleware';
+import { updateIntl } from 'react-intl-redux';
+import { resetServerContext } from 'react-beautiful-dnd';
 
 import routes from '~/routes';
-import nlLocale from '~/../locales/nl.json';
-import deLocale from '~/../locales/de.json';
-import enLocale from '~/../locales/en.json';
-import jaLocale from '~/../locales/ja.json';
-import ptLocale from '~/../locales/pt.json';
-import ptBRLocale from '~/../locales/pt_BR.json';
-import esLocale from '~/../locales/es.json';
-import itLocale from '~/../locales/it.json';
+import { settings } from '~/config';
 
 import {
   Html,
@@ -38,21 +36,36 @@ import languages from '@plone/volto/constants/Languages';
 
 import configureStore from '@plone/volto/store';
 
-const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
+let locales = {};
+
+if (settings) {
+  settings.supportedLanguages.forEach((lang) => {
+    import('~/../locales/' + lang + '.json').then((locale) => {
+      locales = { ...locales, [lang]: locale.default };
+    });
+  });
+}
 
 const supported = new locale.Locales(keys(languages), 'en');
-const locales = {
-  en: enLocale,
-  nl: nlLocale,
-  de: deLocale,
-  ja: jaLocale,
-  pt: ptLocale,
-  pt_BR: ptBRLocale,
-  es: esLocale,
-  it: itLocale,
-};
 
 const server = express();
+// Internal proxy to bypass CORS while developing.
+if (__DEVELOPMENT__ && settings.devProxyToApiPath) {
+  const apiPathURL = parseUrl(settings.apiPath);
+  const proxyURL = parseUrl(settings.devProxyToApiPath);
+  const serverURL = `${proxyURL.protocol}//${proxyURL.host}`;
+  const instancePath = proxyURL.pathname;
+  server.use(
+    '/api',
+    createProxyMiddleware({
+      target: serverURL,
+      pathRewrite: {
+        '^/api': `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot/_vh_api`,
+      },
+      logLevel: 'silent',
+    }),
+  );
+}
 server
   .disable('x-powered-by')
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
@@ -66,7 +79,9 @@ server
     const browserdetect = detect(req.headers['user-agent']);
 
     const lang = new locale.Locales(
-      cookie.load('lang') || req.headers['accept-language'],
+      cookie.load('lang') ||
+        settings.defaultLanguage ||
+        req.headers['accept-language'],
     )
       .best(supported)
       .toString();
@@ -87,13 +102,19 @@ server
       initialEntries: [req.url],
     });
 
+    // @loadable/server extractor
+    const extractor = new ChunkExtractor({
+      statsFile: path.resolve('build/loadable-stats.json'),
+      entrypoints: ['client'],
+    });
+
     // Create a new Redux store instance
     const store = configureStore(initialState, history, api);
 
     persistAuthToken(store);
 
     if (req.path === '/sitemap.xml.gz') {
-      generateSitemap(req).then(sitemap => {
+      generateSitemap(req).then((sitemap) => {
         res.set('Content-Type', 'application/x-gzip');
         res.set('Content-Encoding', 'gzip');
         res.set('Content-Disposition', 'attachment; filename="sitemap.xml.gz"');
@@ -103,26 +124,48 @@ server
       req.path.match(/(.*)\/@@images\/(.*)/) ||
       req.path.match(/(.*)\/@@download\/(.*)/)
     ) {
-      getAPIResourceWithAuth(req).then(resource => {
-        res.set('Content-Type', resource.headers['content-type']);
-        if (resource.headers['content-disposition']) {
-          res.set(
-            'Content-Disposition',
-            resource.headers['content-disposition'],
-          );
+      getAPIResourceWithAuth(req).then((resource) => {
+        function forwardHeaders(headers) {
+          headers.forEach((header) => {
+            if (resource.headers[header]) {
+              res.set(header, resource.headers[header]);
+            }
+          });
         }
+        // Just forward the headers that we need
+        forwardHeaders([
+          'content-type',
+          'content-disposition',
+          'cache-control',
+        ]);
         res.send(resource.body);
       });
     } else {
       loadOnServer({ store, location, routes, api })
         .then(() => {
+          // The content info is in the store at this point thanks to the asynconnect
+          // features, then we can force the current language info into the store when
+          // coming from an SSR request
+          const updatedLang =
+            store.getState().content.data?.language?.token ||
+            settings.defaultLanguage;
+          store.dispatch(
+            updateIntl({
+              locale: updatedLang,
+              messages: locales[updatedLang],
+            }),
+          );
+
           const context = {};
+          resetServerContext();
           const markup = renderToString(
-            <Provider store={store}>
-              <StaticRouter context={context} location={req.url}>
-                <ReduxAsyncConnect routes={routes} helpers={api} />
-              </StaticRouter>
-            </Provider>,
+            <ChunkExtractorManager extractor={extractor}>
+              <Provider store={store}>
+                <StaticRouter context={context} location={req.url}>
+                  <ReduxAsyncConnect routes={routes} helpers={api} />
+                </StaticRouter>
+              </Provider>
+            </ChunkExtractorManager>,
           );
 
           if (context.url) {
@@ -131,13 +174,13 @@ server
             res.status(200).send(
               `<!doctype html>
                 ${renderToString(
-                  <Html assets={assets} markup={markup} store={store} />,
+                  <Html extractor={extractor} markup={markup} store={store} />,
                 )}
               `,
             );
           }
         })
-        .catch(error => {
+        .catch((error) => {
           const errorPage = (
             <Provider store={store}>
               <StaticRouter context={{}} location={req.url}>
@@ -163,4 +206,6 @@ server
     }
   });
 
+server.apiPath = settings.apiPath;
+server.devProxyToApiPath = settings.devProxyToApiPath;
 export default server;

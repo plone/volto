@@ -25,7 +25,7 @@ const View = ({ properties }) => {
   const blocksLayoutFieldname = getBlocksLayoutFieldname(properties);
 
   return (
-    <>
+    <div className="block table-of-contents">
       <h2>
         <FormattedMessage
           id="Table of Contents"
@@ -37,13 +37,13 @@ const View = ({ properties }) => {
           filter(
             map(
               properties[blocksLayoutFieldname].items,
-              id => properties[blocksFieldname][id],
+              (id) => properties[blocksFieldname][id],
             ),
-            block =>
+            (block) =>
               block['@type'] === 'text' &&
               block.text?.blocks[0].type.indexOf('header-') === 0,
           ),
-          block => (
+          (block) => (
             <List.Item
               key={block.text.blocks[0].key}
               className={block.text.blocks[0].type}
@@ -55,7 +55,7 @@ const View = ({ properties }) => {
           ),
         )}
       </List>
-    </>
+    </div>
   );
 };
 

@@ -4,12 +4,14 @@
  */
 import {
   Add,
+  AddonsControlpanel,
   App,
   ChangePassword,
   ContactForm,
   Contents,
   Controlpanel,
   Controlpanels,
+  CreateTranslation,
   Edit,
   Diff,
   Delete,
@@ -23,8 +25,11 @@ import {
   Register,
   RequestPasswordReset,
   Search,
+  Sitemap,
   Sharing,
   UsersControlpanel,
+  ContentTypes,
+  ContentType,
 } from '@plone/volto/components';
 
 /**
@@ -47,6 +52,10 @@ export const defaultRoutes = [
     component: Logout,
   },
   {
+    path: '/sitemap',
+    component: Sitemap,
+  },
+  {
     path: '/search',
     component: Search,
   },
@@ -58,6 +67,18 @@ export const defaultRoutes = [
     path: '/controlpanel',
     exact: true,
     component: Controlpanels,
+  },
+  {
+    path: '/controlpanel/dexterity-types/:id',
+    component: ContentType,
+  },
+  {
+    path: '/controlpanel/dexterity-types',
+    component: ContentTypes,
+  },
+  {
+    path: '/controlpanel/addons',
+    component: AddonsControlpanel,
   },
   {
     path: '/controlpanel/moderate-comments',
@@ -94,6 +115,10 @@ export const defaultRoutes = [
   {
     path: '/**/add',
     component: Add,
+  },
+  {
+    path: '/**/create-translation',
+    component: CreateTranslation,
   },
   {
     path: '/**/contents',

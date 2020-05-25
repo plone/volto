@@ -100,7 +100,7 @@ class Messages extends Component {
 }
 
 export default connect(
-  state => ({
+  (state) => ({
     messages: state.messages.messages,
   }),
   { removeMessage },

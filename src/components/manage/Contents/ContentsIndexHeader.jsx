@@ -85,7 +85,7 @@ export default DropTarget(
       monitor.getItem().order = hoverOrder;
     },
   },
-  connect => ({
+  (connect) => ({
     connectDropTarget: connect.dropTarget(),
   }),
 )(

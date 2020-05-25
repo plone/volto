@@ -2,12 +2,13 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import { wait } from '@testing-library/react';
 
 import ListingData from './ListingData';
 
 const mockStore = configureStore();
 
-test('renders an Listing Data Sidebar component', () => {
+test('renders an Listing Data Sidebar component', async () => {
   const store = mockStore({
     intl: {
       locale: 'en',
@@ -35,6 +36,7 @@ test('renders an Listing Data Sidebar component', () => {
       />
     </Provider>,
   );
-  const json = component.toJSON();
-  expect(json).toMatchSnapshot();
+  await wait(() => {
+    expect(component.toJSON()).toMatchSnapshot();
+  });
 });

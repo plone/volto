@@ -78,8 +78,8 @@ const DiffField = ({ one, two, contentOne, contentTwo, view, schema }) => {
   } else if (schema.type === 'object') {
     parts = diffWords(one?.filename || one, two?.filename || two);
   } else if (schema.type === 'array') {
-    oneArray = (one || []).map(i => i?.title || i);
-    twoArray = (two || []).map(j => j?.title || j);
+    oneArray = (one || []).map((i) => i?.title || i);
+    twoArray = (two || []).map((j) => j?.title || j);
     parts = diffWords(oneArray, twoArray);
   } else {
     parts = diffWords(one?.title || one, two?.title || two);
@@ -100,7 +100,7 @@ const DiffField = ({ one, two, contentOne, contentTwo, view, schema }) => {
                   __html: join(
                     map(
                       parts,
-                      part =>
+                      (part) =>
                         (part.removed &&
                           `<span class="deletion">${part.value}</span>`) ||
                         (!part.added && `<span>${part.value}</span>`) ||
@@ -117,7 +117,7 @@ const DiffField = ({ one, two, contentOne, contentTwo, view, schema }) => {
                   __html: join(
                     map(
                       parts,
-                      part =>
+                      (part) =>
                         (part.added &&
                           `<span class="addition">${part.value}</span>`) ||
                         (!part.removed && `<span>${part.value}</span>`) ||
@@ -138,7 +138,7 @@ const DiffField = ({ one, two, contentOne, contentTwo, view, schema }) => {
                   __html: join(
                     map(
                       parts,
-                      part =>
+                      (part) =>
                         (part.removed &&
                           `<span class="deletion">${part.value}</span>`) ||
                         (part.added &&

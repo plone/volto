@@ -97,7 +97,7 @@ export default function content(state = initialState, action = {}) {
     case `${CREATE_CONTENT}_SUCCESS`:
     case `${GET_CONTENT}_SUCCESS`:
       if (result['@static_behaviors']) {
-        map(result['@static_behaviors'], behavior => {
+        map(result['@static_behaviors'], (behavior) => {
           result = {
             ...omit(result, behavior),
             ...mapKeys(result[behavior], (value, key) => `${behavior}.${key}`),
@@ -118,7 +118,7 @@ export default function content(state = initialState, action = {}) {
                   items:
                     action.result &&
                     action.result.items &&
-                    action.result.items.map(item => ({
+                    action.result.items.map((item) => ({
                       ...item,
                       url: item['@id'].replace(settings.apiPath, ''),
                     })),
@@ -133,7 +133,7 @@ export default function content(state = initialState, action = {}) {
               items:
                 action.result &&
                 action.result.items &&
-                action.result.items.map(item => ({
+                action.result.items.map((item) => ({
                   ...item,
                   url: item['@id'].replace(settings.apiPath, ''),
                 })),
@@ -153,6 +153,10 @@ export default function content(state = initialState, action = {}) {
           loading: false,
           loaded: true,
           error: null,
+          sort: {
+            on: action.sort?.on,
+            order: action.sort?.order,
+          },
         },
       };
     case `${CREATE_CONTENT}_FAIL`:

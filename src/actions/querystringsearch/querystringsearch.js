@@ -9,7 +9,7 @@ import { settings } from '~/config';
  */
 export function getQueryStringResults(path, data, subrequest, page) {
   // fixes https://github.com/plone/volto/issues/1059
-  const fixedQuery = data?.query?.map(queryElem => {
+  const fixedQuery = data?.query?.map((queryElem) => {
     if (queryElem.o === 'plone.app.querystring.operation.string.relativePath') {
       return {
         ...queryElem,
@@ -24,7 +24,7 @@ export function getQueryStringResults(path, data, subrequest, page) {
     subrequest,
     request: {
       op: 'post',
-      path: '/@querystring-search',
+      path: `${path}/@querystring-search`,
       data: {
         ...data,
         ...(!data.b_size && {
