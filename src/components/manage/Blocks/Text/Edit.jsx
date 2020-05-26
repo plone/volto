@@ -16,7 +16,7 @@ import { includes, isEqual } from 'lodash';
 import { filterEditorState } from 'draftjs-filters';
 import { settings } from '~/config';
 
-import { Icon, BlockChooser, SidebarPortal, BlockSettingsSidebar } from '@plone/volto/components';
+import { Icon, BlockChooser } from '@plone/volto/components';
 import addSVG from '@plone/volto/icons/circle-plus.svg';
 
 const messages = defineMessages({
@@ -294,9 +294,6 @@ class Edit extends Component {
             currentBlock={this.props.block}
           />
         )}
-        <SidebarPortal selected={this.props.selected}>
-          <BlockSettingsSidebar {...this.props} />
-        </SidebarPortal>
       </>
     );
   }

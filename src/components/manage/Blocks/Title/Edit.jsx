@@ -9,7 +9,6 @@ import PropTypes from 'prop-types';
 import { stateFromHTML } from 'draft-js-import-html';
 import { Editor, DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
 import { defineMessages, injectIntl } from 'react-intl';
-import { SidebarPortal, BlockSettingsSidebar } from '@plone/volto/components';
 
 const messages = defineMessages({
   title: {
@@ -177,9 +176,6 @@ class Edit extends Component {
           this.node = node;
         }}
       />
-      <SidebarPortal selected={this.props.selected}>
-        <BlockSettingsSidebar {...this.props} />
-      </SidebarPortal>
     </>
     );
   }
