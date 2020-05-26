@@ -18,6 +18,7 @@ import { setSidebarTab } from '@plone/volto/actions';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import trashSVG from '@plone/volto/icons/delete.svg';
+import { SidebarPortal, BlockSettingsSidebar } from '@plone/volto/components';
 
 const messages = defineMessages({
   unknownBlock: {
@@ -104,7 +105,10 @@ class Edit extends Component {
       ? this.props.data.required
       : includes(blocks.requiredBlocks, type);
 
-    const Block = blocks.blocksConfig?.[type]?.['edit'] || null;
+    let Block = blocks.blocksConfig?.[type]?.['edit'] || null;
+    if(this.props.data?.readOnly) {
+      Block = blocks.blocksConfig?.[type]?.['view'] || null;
+    }
     const blockHasOwnFocusManagement =
       blocks.blocksConfig?.[type]?.['blockHasOwnFocusManagement'] || null;
 
@@ -133,6 +137,9 @@ class Edit extends Component {
             tabIndex={!blockHasOwnFocusManagement ? -1 : null}
           >
             <Block {...this.props} blockNode={this.blockNode} />
+            <SidebarPortal selected={this.props.selected}>
+              <BlockSettingsSidebar {...this.props} />
+            </SidebarPortal>
           </div>
         ) : (
           <div

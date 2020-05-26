@@ -7,6 +7,7 @@ const Schema = {
       'placeholder',
       'required',
       'fixed',
+      'readOnly',
       ],
   }],
   properties: {
@@ -25,6 +26,11 @@ const Schema = {
       description: "Block can be moved or not via drag&drop",
       type: 'boolean',
     },
+    readOnly: {
+      title: "Read-only",
+      description: "Block can be edited",
+      type: 'boolean',
+    }
   },
   required: [],
 }
