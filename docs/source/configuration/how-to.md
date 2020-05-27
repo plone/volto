@@ -44,7 +44,11 @@ The `addonRoutes` is a list of routes declaration, to be used as child sub-route
   }
 ```
 
-The addonRoutes have a higher priority compared to the default routes, so you can use them to override the existing routes, as well. See `src/routes.js` for more details.
+The addonRoutes have a higher priority compared to the default routes, so you can use them to override the existing routes, as well. See `src/routes.js` for more details. An addon, in its configuration, would push additional routes to this data structure:
+
+```
+config.addonRoutes.push({ path: '/**/chat', component: Chat });
+```
 
 !!! note
     This documentation is a work in progress. Please consider to contribute to this documentation.
