@@ -7,6 +7,7 @@
 ### Feature
 
 ### Bugfix
+ - Removed a regex check in default view, we already have that check implemented in `toHTML.jsx` L173s @nileshgulia1
 
 ### Internal
 
