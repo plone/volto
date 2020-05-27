@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Added internationalization for Romanian language @alecghica #1521
+
 ### Bugfix
 
 ### Internal
