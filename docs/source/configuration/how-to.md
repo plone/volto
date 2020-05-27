@@ -12,6 +12,7 @@ import {
   views as defaultViews,
   widgets as defaultWidgets,
   blocks as defaultBlocks,
+  addonRoutes as defaultAddonRoutes,
 } from '@plone/volto/config';
 
 export const settings = {
@@ -29,6 +30,10 @@ export const widgets = {
 export const blocks = {
   ...defaultBlocks,
 };
+
+export const addonRoutes = [
+  ...defaultAddonRoutes
+]
 ```
 
 It gets the default config from Volto and leave it available to you to customize it in your project.
