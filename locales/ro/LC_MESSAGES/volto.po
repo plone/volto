@@ -489,7 +489,7 @@ msgstr "Document"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
-msgstr "Trageți și fixați fișierele de pe computer în această zonă sau faceți clic pe butonul "Parcurgere".
+msgstr "Trageți și fixați fișierele de pe computer în această zonă sau faceți clic pe butonul “Parcurgere”."
 
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
@@ -1256,7 +1256,7 @@ msgstr "Rezultatele căutării"
 
 #: components/theme/Search/Search
 msgid "Search results for {term}"
-msgstr "Rezultatele căutării pentru {term}
+msgstr "Rezultatele căutării pentru {term}"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Search users..."
@@ -1476,7 +1476,7 @@ msgstr "Backendul răspunde, dar anteturile CORS nu sunt configurate corect și 
 
 #: components/theme/Register/Register
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
-msgstr "Procesul de înregistrare a avut succes. Vă rugăm să verificați căsuța de e-mail pentru informații despre modul de activare a contului dvs.
+msgstr "Procesul de înregistrare a avut succes. Vă rugăm să verificați căsuța de e-mail pentru informații despre modul de activare a contului dvs."
 
 #: components/manage/Preferences/PersonalInformation
 msgid "The user portrait/avatar"
@@ -1752,7 +1752,7 @@ msgstr "E-mailul dvs. este necesar pentru resetarea parolei."
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Your location - either city and country - or in a company setting, where your office is located."
-msgstr "Locația dvs. - fie orașul, fie țara - fie într-un cadru al companiei, unde se află biroul dvs.
+msgstr "Locația dvs. - fie orașul, fie țara - fie într-un cadru al companiei, unde se află biroul dvs."
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Your password has been set successfully. You may now {link} with your new password."
