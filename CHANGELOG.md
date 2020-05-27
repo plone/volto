@@ -6,6 +6,9 @@
 
 ### Feature
 
+- Include ``config.addonRoutes`` in router configuration. This allows addons to
+  override route children defined for the ``App`` component.
+
 ### Bugfix
 
 ### Internal
