@@ -57,9 +57,31 @@ const AlignBlock = ({ align, onChangeBlock, data, intl, block }) => {
         <Button
           icon
           basic
+          aria-label={intl.formatMessage(messages.left)}
+          onClick={() => onAlignBlock('left small')}
+          active={data.align === 'left small'}
+        >
+          <Icon name={imageLeftSVG} size="24px" />
+        </Button>
+      </Button.Group>
+      <Button.Group>
+        <Button
+          icon
+          basic
           aria-label={intl.formatMessage(messages.right)}
           onClick={() => onAlignBlock('right')}
           active={data.align === 'right'}
+        >
+          <Icon name={imageRightSVG} size="24px" />
+        </Button>
+      </Button.Group>
+      <Button.Group>
+        <Button
+          icon
+          basic
+          aria-label={intl.formatMessage(messages.right)}
+          onClick={() => onAlignBlock('right small')}
+          active={data.align === 'right small'}
         >
           <Icon name={imageRightSVG} size="24px" />
         </Button>

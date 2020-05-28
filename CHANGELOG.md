@@ -6,6 +6,8 @@
 
 ### Feature
 
+- add smaller aligmend options to imagesidebar as requested in #1163 @jackahl
+
 ### Bugfix
 
 ### Internal

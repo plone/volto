@@ -236,6 +236,62 @@ exports[`renders an Image Block Sidebar component 1`] = `
                 className="ui buttons"
               >
                 <button
+                  aria-label="Left"
+                  className="ui basic icon button"
+                  onClick={[Function]}
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "24px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                </button>
+              </div>
+              <div
+                className="ui buttons"
+              >
+                <button
+                  aria-label="Right"
+                  className="ui basic icon button"
+                  onClick={[Function]}
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "24px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                </button>
+              </div>
+              <div
+                className="ui buttons"
+              >
+                <button
                   aria-label="Right"
                   className="ui basic icon button"
                   onClick={[Function]}
