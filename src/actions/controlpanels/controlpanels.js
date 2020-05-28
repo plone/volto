@@ -5,10 +5,12 @@
 
 import {
   GET_CONTROLPANEL,
+  POST_CONTROLPANEL,
+  DELETE_CONTROLPANEL,
   LIST_CONTROLPANELS,
   UPDATE_CONTROLPANEL,
+  SYSTEM_INFORMATION,
 } from '@plone/volto/constants/ActionTypes';
-
 /**
  * Get controlpanel function.
  * @function getControlpanel
@@ -21,6 +23,41 @@ export function getControlpanel(id) {
     request: {
       op: 'get',
       path: `/@controlpanels/${id}`,
+    },
+  };
+}
+
+/**
+ * Post controlpanel function.
+ * @function postControlpanel
+ * @param {id} id Controlpanel id.
+ * @param {Object} data Controlpanel data.
+ * @returns {Object} Post controlpanel action.
+ */
+export function postControlpanel(id, data) {
+  return {
+    type: POST_CONTROLPANEL,
+    request: {
+      op: 'post',
+      path: `/@controlpanels/${id}`,
+      data,
+    },
+  };
+}
+
+/**
+ * Delete controlpanel function.
+ * @function deleteControlpanel
+ * @param {id} id Controlpanel id.
+ * @param {string} item Controlpanel item to be deleted.
+ * @returns {Object} Delete controlpanel action.
+ */
+export function deleteControlpanel(id, item) {
+  return {
+    type: DELETE_CONTROLPANEL,
+    request: {
+      op: 'del',
+      path: `/@controlpanels/${id}/${item}`,
     },
   };
 }
@@ -54,6 +91,16 @@ export function updateControlpanel(url, data) {
       op: 'patch',
       path: url,
       data,
+    },
+  };
+}
+
+export function getSystemInformation() {
+  return {
+    type: SYSTEM_INFORMATION,
+    request: {
+      op: 'get',
+      path: '/@system',
     },
   };
 }

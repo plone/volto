@@ -28,9 +28,9 @@ const View = ({ data }) => (
         striped={data.table.striped}
       >
         <Table.Body>
-          {map(data.table.rows, row => (
+          {map(data.table.rows, (row) => (
             <Table.Row key={row.key}>
-              {map(row.cells, cell => (
+              {map(row.cells, (cell) => (
                 <Table.Cell
                   key={cell.key}
                   as={cell.type === 'header' ? 'th' : 'td'}

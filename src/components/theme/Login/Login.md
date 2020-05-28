@@ -15,7 +15,7 @@ const store = configureStore()({
 
 <div className={'rsg--pre-42'}>
   <Provider store={store}>
-    <LoginComponent error={(message = '')} token="" login={form => null} />
+    <LoginComponent error={(message = '')} token="" login={(form) => null} />
   </Provider>
 </div>;
 ```

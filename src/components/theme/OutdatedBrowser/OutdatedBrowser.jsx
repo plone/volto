@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { settings } from '~/config';
 
 const OutdatedBrowser = () => {
-  const browserdetect = useSelector(state => state.browserdetect);
+  const browserdetect = useSelector((state) => state.browserdetect);
   return (
     settings.notSupportedBrowsers.includes(browserdetect?.name) && (
       <Container style={{ marginBottom: '20px' }}>

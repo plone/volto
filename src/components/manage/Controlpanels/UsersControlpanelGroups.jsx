@@ -73,7 +73,7 @@ class UsersControlpanelGroups extends Component {
     return (
       <Table.Row key={this.props.groups.title}>
         <Table.Cell>{this.props.groups.groupname}</Table.Cell>
-        {this.props.roles.map(role => (
+        {this.props.roles.map((role) => (
           <Table.Cell key={role.id}>
             <Checkbox
               checked={this.props.groups.roles.includes(role.id)}

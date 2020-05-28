@@ -30,7 +30,7 @@ const messages = defineMessages({
  * @returns {string} Markup of the component.
  */
 const Logo = () => {
-  const lang = useSelector(state => state.intl.locale);
+  const lang = useSelector((state) => state.intl.locale);
   const intl = useIntl();
 
   return (

@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { Form, Grid, Label } from 'semantic-ui-react';
 import { map } from 'lodash';
 import { connect } from 'react-redux';
-import AsyncCreatableSelect from 'react-select/async-creatable';
+import loadable from '@loadable/component';
 
 import {
   getVocabFromHint,
@@ -23,6 +23,10 @@ import {
   selectTheme,
   customSelectStyles,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
+
+const AsyncCreatable = loadable.lib(() =>
+  import('react-select/async-creatable'),
+);
 
 /**
  * TokenWidget component class.
@@ -92,7 +96,7 @@ class TokenWidget extends Component {
       getVocabFromItems(props);
     this.state = {
       selectedOption: props.value
-        ? props.value.map(item => ({ label: item, value: item }))
+        ? props.value.map((item) => ({ label: item, value: item }))
         : [],
     };
   }
@@ -126,8 +130,8 @@ class TokenWidget extends Component {
    * @returns {undefined}
    */
   loadOptions(search) {
-    return this.props.getVocabulary(this.vocabBaseUrl, search).then(resolve =>
-      this.props.choices.map(item => ({
+    return this.props.getVocabulary(this.vocabBaseUrl, search).then((resolve) =>
+      this.props.choices.map((item) => ({
         label: item.value,
         value: item.value,
       })),
@@ -145,7 +149,7 @@ class TokenWidget extends Component {
     this.setState({ selectedOption });
     this.props.onChange(
       this.props.id,
-      selectedOption ? selectedOption.map(item => item.value) : null,
+      selectedOption ? selectedOption.map((item) => item.value) : null,
     );
   }
 
@@ -173,19 +177,23 @@ class TokenWidget extends Component {
               </div>
             </Grid.Column>
             <Grid.Column width="8">
-              <AsyncCreatableSelect
-                className="react-select-container"
-                classNamePrefix="react-select"
-                defaultOptions={this.props.choices || []}
-                styles={customSelectStyles}
-                theme={selectTheme}
-                components={{ DropdownIndicator, Option }}
-                isMulti
-                value={selectedOption || []}
-                loadOptions={this.loadOptions}
-                onChange={this.handleChange}
-              />
-              {map(error, message => (
+              <AsyncCreatable>
+                {({ default: AsyncCreatableSelect }) => (
+                  <AsyncCreatableSelect
+                    className="react-select-container"
+                    classNamePrefix="react-select"
+                    defaultOptions={this.props.choices || []}
+                    styles={customSelectStyles}
+                    theme={selectTheme}
+                    components={{ DropdownIndicator, Option }}
+                    isMulti
+                    value={selectedOption || []}
+                    loadOptions={this.loadOptions}
+                    onChange={this.handleChange}
+                  />
+                )}
+              </AsyncCreatable>
+              {map(error, (message) => (
                 <Label key={message} basic color="red" pointing>
                   {message}
                 </Label>
@@ -215,7 +223,7 @@ export default connect(
     if (vocabState) {
       return {
         choices: vocabState.items
-          ? vocabState.items.map(item => ({
+          ? vocabState.items.map((item) => ({
               label: item.value,
               value: item.value,
             }))

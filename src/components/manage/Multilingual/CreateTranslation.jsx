@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { updateIntl } from 'react-intl-redux';
 import { getTranslationLocator } from '@plone/volto/actions';
 import { flattenToAppURL } from '@plone/volto/helpers';
@@ -9,23 +9,23 @@ import { settings } from '~/config';
 let locales = {};
 
 if (settings) {
-  settings.supportedLanguages.forEach(lang => {
-    import('~/../locales/' + lang + '.json').then(locale => {
+  settings.supportedLanguages.forEach((lang) => {
+    import('~/../locales/' + lang + '.json').then((locale) => {
       locales = { ...locales, [lang]: locale.default };
     });
   });
 }
 
-const CreateTranslation = props => {
+const CreateTranslation = (props) => {
   const dispatch = useDispatch();
-  const translationLocation = useSelector(
-    state => state.translations.translationLocation,
-  );
   const { language, translationOf } = props.location.state;
+  const [translationLocation, setTranslationLocation] = React.useState(null);
 
   React.useEffect(() => {
     // Only on mount, we dispatch the locator query
-    dispatch(getTranslationLocator(translationOf, language));
+    dispatch(getTranslationLocator(translationOf, language)).then((resp) => {
+      setTranslationLocation(resp['@id']);
+    });
     // On unmount we dispatch the language change
     return () => {
       dispatch(

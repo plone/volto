@@ -10,6 +10,234 @@ This upgrade guide lists all breaking changes in Volto and explains the
     dependencies might do when dealing with upgrades. We keep the generator up
     to date and in sync with current Volto release.
 
+## Upgrading to Volto 6.x.x
+
+First, update the `package.json` of your Volto project to Volto 6.x.x.
+
+```json
+  "dependencies": {
+    "@plone/volto": "6.0.0",
+    ...
+  }
+```
+
+!!! note
+    This release includes a number of changes to the internal dependencies. If you have problems building your project, might be that you need to remove your `node_modules` and, ultimately, remove also your `yarn.lock` file. Then run again `yarn` for rebuilding dependencies.
+
+### Upgrade to Node 12
+
+We have now dependencies that requires `node >=10.19.0`. Although Node 10 has still LTS
+"maintenance" treatment (see https://nodejs.org/en/about/releases/) the recommended path
+is that you use from now on node 12 which is LTS since last October.
+
+### New Razzle version and related development dependencies
+
+The underlying Razzle package has been upgraded, and although that does not suppose any
+change in Volto itself, a lot of development dependencies have been upgraded and they should be updated in your local projects as well. Might be that the builds continue working if you don't update them, but it's better for you to do so for a better development experience.
+
+### Upgrade local dependencies versions
+
+You need to update `devDependencies` in `package.json` in your local environment:
+
+```json
+  "devDependencies": {
+    "eslint-plugin-prettier": "3.1.3",
+    "prettier": "2.0.5",
+    "stylelint-config-idiomatic-order": "8.1.0",
+    "stylelint-config-prettier": "8.0.1",
+    "stylelint-prettier": "1.1.2",
+  }
+```
+
+and remove entirely the `resolutions` key:
+
+```json
+  "resolutions": {
+    "@plone/volto/razzle/webpack-dev-server": "3.2.0"
+  }
+```
+
+### Update `package.json` config
+
+Add this key to the `jest.moduleNameMapper`:
+
+```json
+"jest":
+  "moduleNameMapper": {
+    "@plone/volto/babel": "<rootDir>/node_modules/@plone/volto/babel",
+    ...
+  }
+```
+
+because new Jest is a bit more picky when importing externals.
+
+### Prettier
+
+Prettier has been updated, introducing some breaking formatting changes. It's recommended that you upgrade your local version of `prettier` and reformat your code with it using:
+
+`yarn prettier:fix`
+
+### Stylelint
+
+`stylelint` has been upgraded too, and it introduces some changes in the declaration
+of the styles order. It's recommended that you upgrade your local version of `prettier` and reformat your code with it using:
+
+`yarn stylelint:fix`
+
+### CSS modules are not supported anymore
+
+Razzle does not support them anymore, so neither do we. If you need them, you could add
+a Webpack config in your local `razzle.config.js`.
+
+### Update your eslint config
+
+Introduced in the Volto 5 series, it's recommended that you update your local ESLint config. In the past, we used `.eslintrc` file to do so. In order to support automatically Volto addons, you should remove it and use a JS based config one `.eslintrc.js` with this contents:
+
+```js
+const path = require('path');
+const projectRootPath = path.resolve('.');
+const packageJson = require(path.join(projectRootPath, 'package.json'));
+
+// Extends ESlint configuration for adding the aliases to `src` directories in Volto addons
+const addonsAliases = [];
+if (packageJson.addons) {
+  const addons = packageJson.addons;
+  addons.forEach(addon => {
+    const addonPath = `${addon}/src`;
+    addonsAliases.push([addon, addonPath]);
+  });
+}
+
+module.exports = {
+  extends: './node_modules/@plone/volto/.eslintrc',
+  settings: {
+    'import/resolver': {
+      alias: {
+        map: [
+          ['@plone/volto', '@plone/volto/src'],
+          ...addonsAliases,
+          ['@package', './src'],
+        ],
+        extensions: ['.js', '.jsx', '.json'],
+      },
+      'babel-plugin-root-import': {
+        rootPathSuffix: 'src',
+      },
+    },
+  },
+};
+```
+
+### New wrappers in block editor
+
+We have improved the overall UX of the block drag and drop feature by using the library
+`react-beautiful-dnd` in the block editor. It introduces new wrappers (belonging to the
+lib machinery) in the structure. The original structure and class names are still in
+there (as children of these wrappers) to maintain maximum backwards compatibility. Those
+might be cleaned up in next major versions, so if for some reason you have customized
+the styling of your blocks in edit mode relying in the old structure, you might want to
+review and adapt them.
+
+## Upgrading to Volto 5.x.x
+
+First, update the `package.json` of your Volto project to Volto 5.x.x.
+
+```json
+  "dependencies": {
+    "@plone/volto": "5.0.0",
+    ...
+  }
+```
+
+### New lazy loading boilerplate
+
+Volto is now capable of splitting and lazy load components. This allows for better
+performance and reduced bundle sizes, the client also has to parse and load less code,
+improving the user experience, specially on mobile devices.
+
+The boilerplate includes changes in the structural foundation of Volto itself. So if you
+have updated in your projects any of these components:
+
+- `src/helpers/Html/Html.jsx`
+- `src/components/theme/App/App.jsx`
+- `src/server.jsx`
+- `src/client.jsx`
+
+you should adapt them to the newests changes in Volto source code. You can do that by
+diffing the new ones with yours.
+
+### Testing lazy load components
+
+The whole process has been designed to have a minimal impact in existing projects.
+However, only a thing should be changed in your components tests. Specially if your components are composed of original Volto components (not SemanticUI ones, though).
+
+You should adapt them by mocking the Volto component or resolve (await) for them in an
+async construction before the test is fired. See this Codepen example:
+
+https://codesandbox.io/s/loadable-async-tests-l2bx9
+
+```js
+import React from "react";
+import { render } from "@testing-library/react";
+import App from "./App";
+import { Component1, Component2 } from "./components";
+
+describe("CustomComponent", () => {
+  it("rendered lazily", async () => {
+    const { container, getByText } = render(<App />);
+
+    await Component1;
+    await Component2;
+
+    expect(container.firstChild).toMatchSnapshot();
+    expect(getByText("Component1"));
+    expect(getByText("Component2"));
+  });
+```
+
+This is also another pattern used in Volto core for testing, you can transform your test
+in async aware like this:
+
+```diff
+--- a/src/components/manage/Preferences/PersonalPreferences.test.jsx
++++ b/src/components/manage/Preferences/PersonalPreferences.test.jsx
+@@ -3,6 +3,7 @@ import renderer from 'react-test-renderer';
+ import { Provider } from 'react-intl-redux';
+ import configureStore from 'redux-mock-store';
+ import { MemoryRouter } from 'react-router-dom';
++import { wait } from '@testing-library/react';
+
+ import PersonalPreferences from './PersonalPreferences';
+
+@@ -13,7 +14,7 @@ jest.mock('react-portal', () => ({
+ }));
+
+ describe('PersonalPreferences', () => {
+-  it('renders a personal preferences component', () => {
++  it('renders a personal preferences component', async () => {
+     const store = mockStore({
+       intl: {
+         locale: 'en',
+@@ -36,7 +37,8 @@ describe('PersonalPreferences', () => {
+         </MemoryRouter>
+       </Provider>,
+     );
+-    const json = component.toJSON();
+-    expect(json).toMatchSnapshot();
++    await wait(() => {
++      expect(component.toJSON()).toMatchSnapshot();
++    });
+   });
+ });
+```
+
+### Helmet title now it's centralized in `View.jsx`
+
+All the calls for update the title in the document performed by `Helmet` are now
+centralized in the `View.jsx` components. It's recommended to remove all the Helmet
+calls for updating the title from your components specially if you are using some of the
+SEO addons for Volto, since not doing that could interfere with them.
+
 ## Upgrading to Volto 4.x.x
 
 First, update your `package.json` to Volto 4.x.x.

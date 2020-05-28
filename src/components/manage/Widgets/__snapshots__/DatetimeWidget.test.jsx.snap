@@ -27,16 +27,74 @@ exports[`renders a datetime widget component 1`] = `
       <div
         className="eight wide column"
       >
-        <div
-          className="ui input"
-        >
-          <input
-            id="field-my-field"
-            name="my-field"
-            onChange={[Function]}
-            type="datetime-local"
-            value=""
-          />
+        <div>
+          <div
+            className="ui input date-input"
+          >
+            <div
+              className="SingleDatePicker SingleDatePicker_1"
+            >
+              <div>
+                <div
+                  className="SingleDatePickerInput SingleDatePickerInput_1"
+                >
+                  <div
+                    className="DateInput DateInput_1"
+                  >
+                    <input
+                      aria-describedby="DateInput__screen-reader-message-my-field-date"
+                      aria-label="Date"
+                      autoComplete="off"
+                      className="DateInput_input DateInput_input_1"
+                      disabled={false}
+                      id="my-field-date"
+                      name="my-field-date"
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      placeholder="Date"
+                      readOnly={false}
+                      required={false}
+                      type="text"
+                      value="10/21/2019"
+                    />
+                    <p
+                      className="DateInput_screenReaderMessage DateInput_screenReaderMessage_1"
+                      id="DateInput__screen-reader-message-my-field-date"
+                    >
+                      Navigate forward to interact with the calendar and select a date. Press the question mark key to get the keyboard shortcuts for changing dates.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="ui input time-input"
+          >
+            <span
+              className="rc-time-picker"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onTouchStart={[Function]}
+              style={Object {}}
+            >
+              <input
+                className="rc-time-picker-input"
+                id="my-field-time"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                readOnly={false}
+                type="text"
+                value="12:00 AM"
+              />
+              <span
+                className="rc-time-picker-icon"
+              />
+            </span>
+          </div>
         </div>
       </div>
     </div>

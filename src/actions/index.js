@@ -6,12 +6,19 @@
 
 export { listActions } from '@plone/volto/actions/actions/actions';
 export { getBreadcrumbs } from '@plone/volto/actions/breadcrumbs/breadcrumbs';
+export { setExpandedToolbar } from '@plone/volto/actions/toolbar/toolbar';
 export {
   copy,
   cut,
   copyContent,
   moveContent,
 } from '@plone/volto/actions/clipboard/clipboard';
+export {
+  installAddon,
+  listAddons,
+  uninstallAddon,
+  upgradeAddon,
+} from './addons/addons';
 export {
   addComment,
   deleteComment,
@@ -29,8 +36,11 @@ export {
 } from '@plone/volto/actions/content/content';
 export {
   getControlpanel,
+  postControlpanel,
+  deleteControlpanel,
   listControlpanels,
   updateControlpanel,
+  getSystemInformation,
 } from '@plone/volto/actions/controlpanels/controlpanels';
 export { getDiff } from '@plone/volto/actions/diff/diff';
 export { emailNotification } from '@plone/volto/actions/emailNotification/emailNotification';

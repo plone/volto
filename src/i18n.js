@@ -15,8 +15,8 @@ const babel = require('@babel/core');
  * @return {undefined}
  */
 function extractMessages() {
-  map(glob('src/**/*.js?(x)'), filename => {
-    babel.transformFileSync(filename, {}, err => {
+  map(glob('src/**/*.js?(x)'), (filename) => {
+    babel.transformFileSync(filename, {}, (err) => {
       if (err) {
         console.log(err);
       }
@@ -33,11 +33,18 @@ function getMessages() {
   return reduce(
     concat(
       {},
-      ...map(glob('build/messages/src/**/*.json'), filename =>
-        map(JSON.parse(fs.readFileSync(filename, 'utf8')), message => ({
-          ...message,
-          filename: filename.match(/build\/messages\/src\/(.*).json$/)[1],
-        })),
+      ...map(
+        // We ignore the existing customized shadowed components ones, since most
+        // probably we won't be overriding them
+        // If so, we should do it in the config object or somewhere else
+        glob('build/messages/src/**/*.json', {
+          ignore: 'build/messages/src/customizations/**',
+        }),
+        (filename) =>
+          map(JSON.parse(fs.readFileSync(filename, 'utf8')), (message) => ({
+            ...message,
+            filename: filename.match(/build\/messages\/src\/(.*).json$/)[1],
+          })),
       ),
     ),
     (current, value) => {
@@ -71,9 +78,9 @@ function getMessages() {
  * @return {string} Formatted pot string
  */
 function messagesToPot(messages) {
-  return map(keys(messages).sort(), key =>
+  return map(keys(messages).sort(), (key) =>
     [
-      ...map(messages[key].filenames, filename => `#: ${filename}`),
+      ...map(messages[key].filenames, (filename) => `#: ${filename}`),
       `# defaultMessage: ${messages[key].defaultMessage}`,
       `msgid "${key}"`,
       'msgstr ""',
@@ -111,7 +118,7 @@ msgstr ""
  * @return {undefined}
  */
 function poToJson() {
-  map(glob('locales/**/*.po'), filename => {
+  map(glob('locales/**/*.po'), (filename) => {
     let { items } = Pofile.parse(fs.readFileSync(filename, 'utf8'));
     const lib = `node_modules/@plone/volto/${filename}`;
     if (fs.existsSync(lib)) {
@@ -123,8 +130,8 @@ function poToJson() {
       `locales/${lang}.json`,
       JSON.stringify(
         zipObject(
-          map(items, item => item.msgid),
-          map(items, item => item.msgstr[0]),
+          map(items, (item) => item.msgid),
+          map(items, (item) => item.msgstr[0]),
         ),
       ),
     );
@@ -140,10 +147,10 @@ function poToJson() {
  */
 function formatHeader(comments, headers) {
   return [
-    ...map(comments, comment => `# ${comment}`),
+    ...map(comments, (comment) => `# ${comment}`),
     'msgid ""',
     'msgstr ""',
-    ...map(keys(headers), key => `"${key}: ${headers[key]}\\n"`),
+    ...map(keys(headers), (key) => `"${key}: ${headers[key]}\\n"`),
     '',
   ].join('\n');
 }
@@ -156,16 +163,16 @@ function formatHeader(comments, headers) {
 function syncPoByPot() {
   const pot = Pofile.parse(fs.readFileSync('locales/volto.pot', 'utf8'));
 
-  map(glob('locales/**/*.po'), filename => {
+  map(glob('locales/**/*.po'), (filename) => {
     const po = Pofile.parse(fs.readFileSync(filename, 'utf8'));
 
     fs.writeFileSync(
       filename,
       `${formatHeader(po.comments, po.headers)}
-${map(pot.items, item => {
+${map(pot.items, (item) => {
   const poItem = find(po.items, { msgid: item.msgid });
   return [
-    `${map(item.references, ref => `#: ${ref}`).join('\n')}`,
+    `${map(item.references, (ref) => `#: ${ref}`).join('\n')}`,
     `msgid "${item.msgid}"`,
     `msgstr "${poItem ? poItem.msgstr : ''}"`,
   ].join('\n');

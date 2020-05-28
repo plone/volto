@@ -12,10 +12,10 @@ import { settings } from '~/config';
  * @param {string} url Url to be parsed.
  * @return {string} Base url of content object.
  */
-export const getBaseUrl = memoize(url => {
+export const getBaseUrl = memoize((url) => {
   // We allow settings.nonContentRoutes to have strings (that are supposed to match
   // ending strings of pathnames, so we are converting them to RegEx to match also
-  const normalized_nonContentRoutes = settings.nonContentRoutes.map(item => {
+  const normalized_nonContentRoutes = settings.nonContentRoutes.map((item) => {
     if (item.test) {
       return item;
     } else {
@@ -31,6 +31,26 @@ export const getBaseUrl = memoize(url => {
   adjustedUrl = adjustedUrl || '/';
   return adjustedUrl === '/' ? '' : adjustedUrl;
 });
+
+/**
+ * Get parent url.
+ * @function getParentUrl
+ * @param {string} url Url to be parsed.
+ * @return {string} Parent url of content object.
+ */
+export const getParentUrl = memoize((url) => {
+  return url.substring(0, url.lastIndexOf('/'));
+});
+
+/**
+ * Get id from url.
+ * @function getId
+ * @param {string} url Url to be parsed.
+ * @return {string} Id of content object.
+ */
+export function getId(url) {
+  return last(url.replace(/\?.*$/, '').split('/'));
+}
 
 /**
  * Get view of an url.
@@ -101,7 +121,7 @@ export function flattenToAppURL(url) {
  * @param {string} currentPathname pathname of the current view
  * @returns {boolean} true if the current view is a cms ui view
  */
-export const isCmsUi = memoize(currentPathname => {
+export const isCmsUi = memoize((currentPathname) => {
   const fullPath = currentPathname.replace(/\?.*$/, '');
   // WARNING:
   // not working properly for paths like /editors or similar
@@ -143,5 +163,9 @@ export function addAppURL(url) {
  * @returns {boolean} True if internal url
  */
 export function isInternalURL(url) {
-  return url.indexOf(settings.apiPath) !== -1 || url.charAt(0) === '/';
+  return (
+    url.indexOf(settings.apiPath) !== -1 ||
+    url.charAt(0) === '/' ||
+    url.startsWith('#')
+  );
 }

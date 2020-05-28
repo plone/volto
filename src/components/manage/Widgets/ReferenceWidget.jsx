@@ -88,7 +88,7 @@ class ReferenceWidget extends Component {
       choices: props.value
         ? props.multiple
           ? fromPairs(
-              map(props.value, value => [
+              map(props.value, (value) => [
                 value['@id'],
                 {
                   key: value['@id'],
@@ -143,13 +143,16 @@ class ReferenceWidget extends Component {
         ...fromPairs(
           map(
             uniqBy(
-              map(compact(concat(nextProps.value, nextProps.search)), item => ({
-                ...item,
-                '@id': item['@id'].replace(settings.apiPath, ''),
-              })),
+              map(
+                compact(concat(nextProps.value, nextProps.search)),
+                (item) => ({
+                  ...item,
+                  '@id': item['@id'].replace(settings.apiPath, ''),
+                }),
+              ),
               '@id',
             ),
-            value => [
+            (value) => [
               value['@id'],
               {
                 key: value['@id'],
@@ -205,7 +208,7 @@ class ReferenceWidget extends Component {
               {item.label.content}
               <Icon
                 name="delete"
-                onClick={event => {
+                onClick={(event) => {
                   defaultProps.onRemove(event, defaultProps);
                 }}
               />
@@ -263,7 +266,7 @@ class ReferenceWidget extends Component {
                 value={
                   multiple
                     ? value
-                      ? map(value, item =>
+                      ? map(value, (item) =>
                           item && item['@id']
                             ? item['@id'].replace(settings.apiPath, '')
                             : item,
@@ -277,14 +280,14 @@ class ReferenceWidget extends Component {
                   return onChange(
                     id,
                     multiple
-                      ? map(data.value, item => this.state.choices[item].data)
+                      ? map(data.value, (item) => this.state.choices[item].data)
                       : this.state.choices[data.value].data,
                   );
                 }}
                 onSearchChange={this.onSearchChange}
                 renderLabel={this.renderLabel}
               />
-              {map(error, message => (
+              {map(error, (message) => (
                 <Label key={message} basic color="red" pointing>
                   {message}
                 </Label>
@@ -307,7 +310,7 @@ class ReferenceWidget extends Component {
 export default compose(
   injectIntl,
   connect(
-    state => ({
+    (state) => ({
       search: state.search.items,
     }),
     { resetSearchContent, searchContent },

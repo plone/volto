@@ -8,7 +8,11 @@ import jwtDecode from 'jwt-decode';
 
 import { settings } from '~/config';
 
-import { LOGIN } from '@plone/volto/constants/ActionTypes';
+import {
+  LOGIN,
+  RESET_APIERROR,
+  SET_APIERROR,
+} from '@plone/volto/constants/ActionTypes';
 
 let socket = null;
 
@@ -43,7 +47,7 @@ function sendOnSocket(request) {
  * @param {Object} api Api object.
  * @returns {Promise} Action promise.
  */
-export default api => ({ dispatch, getState }) => next => action => {
+export default (api) => ({ dispatch, getState }) => (next) => (action) => {
   if (typeof action === 'function') {
     return action(dispatch, getState);
   }
@@ -59,12 +63,12 @@ export default api => ({ dispatch, getState }) => next => action => {
 
   if (socket) {
     actionPromise = Array.isArray(request)
-      ? Promise.all(request.map(item => sendOnSocket({ ...item, id: type })))
+      ? Promise.all(request.map((item) => sendOnSocket({ ...item, id: type })))
       : sendOnSocket({ ...request, id: type });
   } else {
     actionPromise = Array.isArray(request)
       ? Promise.all(
-          request.map(item =>
+          request.map((item) =>
             api[item.op](item.path, {
               data: item.data,
               type: item.type,
@@ -78,19 +82,25 @@ export default api => ({ dispatch, getState }) => next => action => {
           headers: request.headers,
         });
     actionPromise.then(
-      result => {
+      (result) => {
+        if (getState().apierror.connectionRefused) {
+          next({
+            ...rest,
+            type: RESET_APIERROR,
+          });
+        }
         if (type === LOGIN && settings.websockets) {
           cookie.save('auth_token', result.token, {
             path: '/',
             expires: new Date(jwtDecode(result.token).exp * 1000),
           });
-          api.get('/@wstoken').then(res => {
+          api.get('/@wstoken').then((res) => {
             socket = new WebSocket(
               `${settings.apiPath.replace('http', 'ws')}/@ws?ws_token=${
                 res.token
               }`,
             );
-            socket.onmessage = message => {
+            socket.onmessage = (message) => {
               const packet = JSON.parse(message.data);
               if (packet.error) {
                 dispatch({
@@ -108,7 +118,54 @@ export default api => ({ dispatch, getState }) => next => action => {
         }
         return next({ ...rest, result, type: `${type}_SUCCESS` });
       },
-      error => next({ ...rest, error, type: `${type}_FAIL` }),
+      (error) => {
+        // Only SRR can set ECONNREFUSED
+        if (error.code === 'ECONNREFUSED') {
+          next({
+            ...rest,
+            error,
+            statusCode: error.code,
+            connectionRefused: true,
+            type: SET_APIERROR,
+          });
+        }
+
+        // Response error is marked crossDomain if CORS error happen
+        else if (error.crossDomain) {
+          next({
+            ...rest,
+            error,
+            statusCode: 'CORSERROR',
+            connectionRefused: false,
+            type: SET_APIERROR,
+          });
+        }
+
+        // Gateway timeout
+        else if (error.response.statusCode === 504) {
+          next({
+            ...rest,
+            error,
+            statusCode: error.code,
+            connectionRefused: true,
+            type: SET_APIERROR,
+          });
+
+          // The rest
+        } else if (settings.actions_raising_api_errors.includes(action.type)) {
+          if (error.response.statusCode === 401) {
+            next({
+              ...rest,
+              error,
+              statusCode: error.response,
+              message: error.response.body.message,
+              connectionRefused: false,
+              type: SET_APIERROR,
+            });
+          }
+        }
+        return next({ ...rest, error, type: `${type}_FAIL` });
+      },
     );
   }
 

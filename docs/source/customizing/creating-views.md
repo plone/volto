@@ -9,26 +9,24 @@ We start by creating a file called: `components/FullView/FullView.jsx`.
 
 ```js
 /**
-  * Full view component.
-  * @module components/theme/View/FullView
-  */
+ * Full view component.
+ * @module components/theme/View/FullView
+ */
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { Container, Image } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
 
 /**
-  * Full view component class.
-  * @function FullView
-  * @param {Object} content Content object.
-  * @returns {string} Markup of the component.
-  */
+ * Full view component class.
+ * @function FullView
+ * @param {Object} content Content object.
+ * @returns {string} Markup of the component.
+ */
 const FullView = ({ content }) => (
   <Container className="view-wrapper">
-    <Helmet title={content.title} />
     <article id="content">
       <header>
         <h1 className="documentFirstHeading">{content.title}</h1>
@@ -53,10 +51,9 @@ const FullView = ({ content }) => (
               />
             )}
             {item.description && <p>{item.description}</p>}
-            {item.text &&
-              item.text.data && (
-                <p dangerouslySetInnerHTML={{ __html: item.text.data }} />
-              )}
+            {item.text && item.text.data && (
+              <p dangerouslySetInnerHTML={{ __html: item.text.data }} />
+            )}
           </article>
         ))}
       </section>
@@ -65,51 +62,51 @@ const FullView = ({ content }) => (
 );
 
 /**
-  * Property types.
-  * @property {Object} propTypes Property types.
-  * @static
-  */
+ * Property types.
+ * @property {Object} propTypes Property types.
+ * @static
+ */
 FullView.propTypes = {
   /**
-    * Content of the object
-    */
+   * Content of the object
+   */
   content: PropTypes.shape({
     /**
-      * Title of the object
-      */
+     * Title of the object
+     */
     title: PropTypes.string,
     /**
-      * Description of the object
-      */
+     * Description of the object
+     */
     description: PropTypes.string,
     /**
-      * Child items of the object
-      */
+     * Child items of the object
+     */
     items: PropTypes.arrayOf(
       PropTypes.shape({
         /**
-          * Title of the item
-          */
+         * Title of the item
+         */
         title: PropTypes.string,
         /**
-          * Description of the item
-          */
+         * Description of the item
+         */
         description: PropTypes.string,
         /**
-          * Url of the item
-          */
+         * Url of the item
+         */
         url: PropTypes.string,
         /**
-          * Image of the item
-          */
+         * Image of the item
+         */
         image: PropTypes.object,
         /**
-          * Image caption of the item
-          */
+         * Image caption of the item
+         */
         image_caption: PropTypes.string,
         /**
-          * Type of the item
-          */
+         * Type of the item
+         */
         '@type': PropTypes.string,
       }),
     ),
@@ -152,108 +149,106 @@ class from `semantic-ui`, `components/AlbumView/AlbumView.jsx`:
 
 ```js
 /**
-* Album view component.
-* @module components/theme/View/AlbumView
-*/
+ * Album view component.
+ * @module components/theme/View/AlbumView
+ */
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { Card, Container, Image } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
 
 /**
-* Album view component class.
-* @function AlbumView
-* @param {Object} content Content object.
-* @returns {string} Markup of the component.
-*/
+ * Album view component class.
+ * @function AlbumView
+ * @param {Object} content Content object.
+ * @returns {string} Markup of the component.
+ */
 const AlbumView = ({ content }) => (
-    <Container className="view-wrapper">
-    <Helmet title={content.title} />
+  <Container className="view-wrapper">
     <article id="content">
-        <header>
+      <header>
         <h1 className="documentFirstHeading">{content.title}</h1>
         {content.description && (
-            <p className="documentDescription">{content.description}</p>
+          <p className="documentDescription">{content.description}</p>
         )}
-        </header>
-        <section id="content-core">
+      </header>
+      <section id="content-core">
         <Card.Group>
-            {content.items.map(item => (
+          {content.items.map(item => (
             <Card key={item.url}>
-                {item.image && (
+              {item.image && (
                 <Image
-                    alt={item.image_caption ? item.image_caption : item.title}
-                    src={item.image.scales.thumb.download}
+                  alt={item.image_caption ? item.image_caption : item.title}
+                  src={item.image.scales.thumb.download}
                 />
-                )}
-                <Card.Content>
+              )}
+              <Card.Content>
                 <Card.Header>
-                    <Link to={item.url} title={item['@type']}>
+                  <Link to={item.url} title={item['@type']}>
                     {item.title}
-                    </Link>
+                  </Link>
                 </Card.Header>
-                </Card.Content>
+              </Card.Content>
             </Card>
-            ))}
+          ))}
         </Card.Group>
-        </section>
+      </section>
     </article>
-    </Container>
+  </Container>
 );
 
 /**
-* Property types.
-* @property {Object} propTypes Property types.
-* @static
-*/
+ * Property types.
+ * @property {Object} propTypes Property types.
+ * @static
+ */
 AlbumView.propTypes = {
+  /**
+   * Content of the object
+   */
+  content: PropTypes.shape({
     /**
-    * Content of the object
-    */
-    content: PropTypes.shape({
-    /**
-        * Title of the object
-        */
+     * Title of the object
+     */
     title: PropTypes.string,
     /**
-        * Description of the object
-        */
+     * Description of the object
+     */
     description: PropTypes.string,
     /**
-        * Child items of the object
-        */
+     * Child items of the object
+     */
     items: PropTypes.arrayOf(
-        PropTypes.shape({
+      PropTypes.shape({
         /**
-            * Title of the item
-            */
+         * Title of the item
+         */
         title: PropTypes.string,
         /**
-            * Description of the item
-            */
+         * Description of the item
+         */
         description: PropTypes.string,
         /**
-            * Url of the item
-            */
+         * Url of the item
+         */
         url: PropTypes.string,
         /**
-            * Image of the item
-            */
+         * Image of the item
+         */
         image: PropTypes.object,
         /**
-            * Image caption of the item
-            */
+         * Image caption of the item
+         */
         image_caption: PropTypes.string,
         /**
-            * Type of the item
-            */
+         * Type of the item
+         */
         '@type': PropTypes.string,
-        }),
+      }),
     ),
-    }).isRequired,
+  }).isRequired,
 };
 
 export default AlbumView;
@@ -263,15 +258,15 @@ Then in `components/index.js`:
 
 ```js
 /**
-* Add your components here.
-* @module components
-* @example
-* import Footer from './Footer/Footer';
-*
-* export {
-*   Footer,
-* };
-*/
+ * Add your components here.
+ * @module components
+ * @example
+ * import Footer from './Footer/Footer';
+ *
+ * export {
+ *   Footer,
+ * };
+ */
 
 import AlbumView from './AlbumView/AlbumView';
 import FullView from './FullView/FullView';
@@ -283,50 +278,48 @@ And in `config.js`:
 
 ```js
 /**
-* Add your config changes here.
-* @module config
-* @example
-* export const settings = {
-*   ...defaultSettings,
-*   port: 4300,
-*   listBlockTypes: {
-*     ...defaultSettings.listBlockTypes,
-*     'my-list-item',
-*   }
-* }
-*/
+ * Add your config changes here.
+ * @module config
+ * @example
+ * export const settings = {
+ *   ...defaultSettings,
+ *   port: 4300,
+ *   listBlockTypes: {
+ *     ...defaultSettings.listBlockTypes,
+ *     'my-list-item',
+ *   }
+ * }
+ */
 
 import {
-    settings as defaultSettings,
-    views as defaultViews,
-    widgets as defaultWidgets,
-    blocks as defaultBlocks,
+  settings as defaultSettings,
+  views as defaultViews,
+  widgets as defaultWidgets,
+  blocks as defaultBlocks,
 } from '@plone/volto/config';
 
 import { AlbumView, FullView } from './components';
 
 export const settings = {
-    ...defaultSettings,
+  ...defaultSettings,
 };
 
 export const views = {
-    ...defaultViews,
-    layoutViews: {
+  ...defaultViews,
+  layoutViews: {
     ...defaultViews.layoutViews,
     album_view: AlbumView,
     full_view: FullView,
-    },
+  },
 };
 
 export const widgets = {
-    ...defaultWidgets,
+  ...defaultWidgets,
 };
 
 export const blocks = {
-    ...defaultBlocks,
+  ...defaultBlocks,
 };
-
 
 export default SummaryView;
 ```
-

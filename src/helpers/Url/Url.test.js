@@ -7,6 +7,7 @@ import {
   getIcon,
   getView,
   isCmsUi,
+  isInternalURL,
 } from './Url';
 
 describe('Url', () => {
@@ -91,7 +92,7 @@ describe('Url', () => {
   });
 
   describe('isCmsUi', () => {
-    [...settings.nonContentRoutes, '/controlpanel/mypanel'].forEach(route => {
+    [...settings.nonContentRoutes, '/controlpanel/mypanel'].forEach((route) => {
       if (typeof route === 'string') {
         it(`matches non-content-route ${route}`, () => {
           expect(isCmsUi(`/mycontent/${route}`)).toBe(true);
@@ -110,6 +111,16 @@ describe('Url', () => {
       expect(flattenHTMLToAppURL(html)).toBe(
         '<a href="/foo/bar">An internal link</a><a href="/foo/baz">second link</a>',
       );
+    });
+  });
+  describe('isInternalURL', () => {
+    it('tells if an URL is internal or not', () => {
+      const href = `${settings.apiPath}/foo/bar`;
+      expect(isInternalURL(href)).toBe(true);
+    });
+    it('tells if an URL is internal if it is an anchor', () => {
+      const href = '#anchor';
+      expect(isInternalURL(href)).toBe(true);
     });
   });
 });

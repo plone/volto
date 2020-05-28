@@ -6,6 +6,14 @@ import { MemoryRouter } from 'react-router-dom';
 
 import Login from './Login';
 
+jest.mock('~/config', () => ({
+  settings: {
+    nonContentRoutes: [],
+    supportedLanguages: ['en'],
+    navDepth: 1,
+  },
+}));
+
 const mockStore = configureStore();
 
 describe('Login', () => {

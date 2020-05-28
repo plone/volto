@@ -62,7 +62,7 @@ export default function search(state = initialState, action = {}) {
               ...state.subrequests,
               [action.subrequest]: {
                 error: null,
-                items: map(action.result.items, item => ({
+                items: map(action.result.items, (item) => ({
                   ...item,
                   '@id': item['@id'].replace(settings.apiPath, ''),
                 })),
@@ -76,7 +76,7 @@ export default function search(state = initialState, action = {}) {
         : {
             ...state,
             error: null,
-            items: map(action.result.items, item => ({
+            items: map(action.result.items, (item) => ({
               ...item,
               '@id': item['@id'].replace(settings.apiPath, ''),
             })),

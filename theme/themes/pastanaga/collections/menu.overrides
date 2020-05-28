@@ -105,8 +105,8 @@
 .navigation,
 .tools {
   .ui.secondary.pointing.menu {
-    margin: 0 0 0 40px;
     border: 0;
+    margin: 0 0 0 40px;
 
     @media only screen and (max-width: @largestTabletScreen) {
       margin-bottom: 20px;

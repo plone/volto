@@ -18,10 +18,10 @@ const SidebarPortal = ({ children, selected }) => (
           <div
             style={{ height: '100%' }}
             role="presentation"
-            onClick={e => {
+            onClick={(e) => {
               e.stopPropagation();
             }}
-            onKeyDown={e => {
+            onKeyDown={(e) => {
               e.stopPropagation();
             }}
           >

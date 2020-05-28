@@ -11,7 +11,7 @@ import {
 } from './HelmetUtils.js';
 import { TAG_NAMES, VALID_TAG_NAMES } from './HelmetConstants.js';
 
-const Helmet = Component =>
+const Helmet = (Component) =>
   class HelmetWrapper extends React.Component {
     /**
      * @param {Object} base: {"target": "_blank", "href": "http://mysite.com/"}
@@ -113,9 +113,7 @@ const Helmet = Component =>
       }
 
       throw new Error(
-        `<${
-          child.type
-        } /> elements are self-closing and can not contain children. Refer to our API for more information.`,
+        `<${child.type} /> elements are self-closing and can not contain children. Refer to our API for more information.`,
       );
     }
 
@@ -169,7 +167,7 @@ const Helmet = Component =>
     mapArrayTypeChildrenToProps(arrayTypeChildren, newProps) {
       let newFlattenedProps = { ...newProps };
 
-      Object.keys(arrayTypeChildren).forEach(arrayChildName => {
+      Object.keys(arrayTypeChildren).forEach((arrayChildName) => {
         newFlattenedProps = {
           ...newFlattenedProps,
           [arrayChildName]: arrayTypeChildren[arrayChildName],
@@ -181,7 +179,7 @@ const Helmet = Component =>
 
     warnOnInvalidChildren(child, nestedChildren) {
       if (process.env.NODE_ENV !== 'production') {
-        if (!VALID_TAG_NAMES.some(name => child.type === name)) {
+        if (!VALID_TAG_NAMES.some((name) => child.type === name)) {
           if (typeof child.type === 'function') {
             return warn(
               `You may be attempting to nest <Helmet> components within each other, which is not allowed. Refer to our API for more information.`,
@@ -201,14 +199,12 @@ const Helmet = Component =>
           nestedChildren &&
           typeof nestedChildren !== 'string' &&
           (!Array.isArray(nestedChildren) ||
-            nestedChildren.some(nestedChild => typeof nestedChild !== 'string'))
+            nestedChildren.some(
+              (nestedChild) => typeof nestedChild !== 'string',
+            ))
         ) {
           throw new Error(
-            `Helmet expects a string as a child of <${
-              child.type
-            }>. Did you forget to wrap your children in braces? ( <${
-              child.type
-            }>{\`\`}</${child.type}> ) Refer to our API for more information.`,
+            `Helmet expects a string as a child of <${child.type}>. Did you forget to wrap your children in braces? ( <${child.type}>{\`\`}</${child.type}> ) Refer to our API for more information.`,
           );
         }
       }
@@ -219,7 +215,7 @@ const Helmet = Component =>
     mapChildrenToProps(children, newProps) {
       let arrayTypeChildren = {};
 
-      React.Children.forEach(children, child => {
+      React.Children.forEach(children, (child) => {
         if (!child || !child.props) {
           return;
         }

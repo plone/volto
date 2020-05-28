@@ -11,6 +11,7 @@ import { defineMessages, injectIntl } from 'react-intl';
 import { Container } from 'semantic-ui-react';
 import { Helmet } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
+import { settings } from '~/config';
 
 import { getNavigation } from '@plone/volto/actions';
 
@@ -41,7 +42,11 @@ class Sitemap extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillMount() {
-    this.props.getNavigation('/', 4);
+    if (settings.isMultilingual) {
+      this.props.getNavigation(`/${this.props.lang}`, 4);
+    } else {
+      this.props.getNavigation('/', 4);
+    }
   }
 
   /**
@@ -50,10 +55,10 @@ class Sitemap extends Component {
    * @returns {string} Markup for the component.
    */
 
-  renderItems = items => {
+  renderItems = (items) => {
     return (
       <ul>
-        {items.map(item => (
+        {items.map((item) => (
           <li
             key={item.url}
             className={item.items?.length > 0 ? 'with-children' : ''}
@@ -82,7 +87,7 @@ class Sitemap extends Component {
 export default compose(
   injectIntl,
   connect(
-    state => ({
+    (state) => ({
       items: state.navigation.items,
       lang: state.intl.locale,
     }),
