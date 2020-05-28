@@ -10,24 +10,13 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import { injectIntl } from 'react-intl';
-import { Container, Form as UiForm, Segment, Tab } from 'semantic-ui-react';
+import { Container, Form as UiForm, Menu, Segment, Tab } from 'semantic-ui-react';
 
 const reorder = (list, startIndex, endIndex) => {
   const result = Array.from(list);
-  const [removed] = result.splice(startIndex, 1);
-  result.splice(endIndex, 0, removed);
+  // const [removed] = result.splice(startIndex, 1);
+  // result.splice(endIndex, 0, removed);
 
-  return result;
-};
-
-const makeArrayFromObject = (objectItem) => {
-  console.log('makeArrayFromObject objectItem', objectItem);
-  const listOfKeys = Object.keys(objectItem);
-  const result = listOfKeys.map((itemKey) => ({
-    ...objectItem[itemKey],
-    id: itemKey,
-  }));
-  console.log('result', result);
   return result;
 };
 
@@ -36,6 +25,26 @@ const makeFormData = (objectItem) => {
   Object.keys(objectItem).forEach(
     (key) => (result[key] = objectItem[key].title),
   );
+  return result;
+};
+
+const makeSchemaList = (schema) => {
+  let result = [];
+  console.log(schema);
+  result = schema.fieldsets.map((fieldSet) => {
+    const temp = {};
+    temp[fieldSet.id] = {
+      id: fieldSet.id,
+      title: fieldSet.title,
+      fields: [],
+    };
+    temp[fieldSet.id].fields = fieldSet.fields.map((fieldKey) => ({
+      ...schema.properties[fieldKey],
+      id: fieldKey,
+    }));
+    return temp;
+  });
+  console.log('makeSchemaList', result);
   return result;
 };
 
@@ -98,17 +107,20 @@ class SchemaBuilder extends Component {
   constructor(props) {
     super(props);
 
-    const allFields = makeArrayFromObject(props?.schema?.properties);
-
     this.state = {
       errors: {},
-      selected: allFields[0]?.id,
       placeholderProps: {},
-      fields: allFields,
       formData: makeFormData(props?.schema?.properties),
+      activeIndex: 0,
+      schemaItems: makeSchemaList(props?.schema),
     };
+
+    this.onDragUpdate = this.onDragUpdate.bind(this);
     this.onDragEnd = this.onDragEnd.bind(this);
     this.onSelectBlock = this.onSelectBlock.bind(this);
+    this.handleTabChange = this.handleTabChange.bind(this);
+    this.makeMenuItem = this.makeMenuItem.bind(this);
+    this.makeTabItemContent = this.makeTabItemContent.bind(this);
   }
 
   /**
@@ -130,6 +142,10 @@ class SchemaBuilder extends Component {
   onFocusPreviousBlock(event) {}
   onFocusNextBlock(event) {}
   removeBlocksLayoutFields(event) {}
+  handleTabChange(e) {
+    console.log('tab change');
+    this.setState({ activeIndex: e.target.value });
+  }
 
   hideHandler = (data) => {
     return false;
@@ -144,6 +160,7 @@ class SchemaBuilder extends Component {
 
   onDragEnd(result) {
     // dropped outside the list
+    console.log('onDragEnd result', result);
     if (!result.destination) {
       return;
     }
@@ -163,7 +180,68 @@ class SchemaBuilder extends Component {
   }
 
   componentDidMount() {
-    console.log('componentDidMount props', this.props);
+    // console.log('componentDidMount props', this.props);
+  }
+
+  makeMenuItem(item) {
+    // console.log('menu item', item);
+    const menuId = `tab-${item.id}`;
+    const menuItem = (
+      <Menu.Item key={menuId}>
+        <Droppable droppableId={menuId}>
+          {(provided, snapshot) => (
+            <div ref={provided.innerRef} {...provided.draggableProps}>
+              {item.title}
+            </div>
+          )}
+        </Droppable>
+      </Menu.Item>
+    );
+    return menuItem;
+  }
+
+  makeTabItemContent(schema, item) {
+    return (
+      <Droppable droppableId="schema-edit">
+        {(provided, snapshot) => (
+          <div ref={provided.innerRef} {...provided.draggableProps}>
+            {map(item.fields, (field, index) => (
+              <Draggable draggableId={field} index={index} key={field}>
+                {(provided) => (
+                  <div ref={provided.innerRef} {...provided.draggableProps}>
+                    <div style={{ position: 'relative' }}>
+                      <div
+                        style={{
+                          visibility: 'visible',
+                          display: 'inline-block',
+                        }}
+                        {...provided.dragHandleProps}
+                        className="drag handle wrapper"
+                      >
+                        <Icon name={dragSVG} size="18px" />
+                      </div>
+                      <Field
+                        {...schema.properties[field]}
+                        id={field}
+                        fieldSet={item.title.toLowerCase()}
+                        focus={index === 0}
+                        value={this.state.formData[field]}
+                        required={schema.required.indexOf(field) !== -1}
+                        onChange={this.onChangeField}
+                        key={field}
+                        error={this.state.errors[field]}
+                      />
+                    </div>
+                  </div>
+                )}
+              </Draggable>
+            ))}
+
+            {provided.placeholder}
+          </div>
+        )}
+      </Droppable>
+    );
   }
 
   /**
@@ -172,9 +250,10 @@ class SchemaBuilder extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { schema, title } = this.props;
-    console.log('render this.state', this.state);
-    console.log('render this.props', this.props);
+    const { schema } = this.props;
+    const { activeIndex } = this.state;
+    // console.log('render this.state', this.state);
+    // console.log('render this.props', this.props);
 
     return (
       <Container>
@@ -190,72 +269,21 @@ class SchemaBuilder extends Component {
           >
             <Segment.Group raised>
               {schema && schema.fieldsets.length > 1 && (
-                <Droppable droppableId="schema-edit">
-                  {(provided, snapshot) => (
-                    <div ref={provided.innerRef} {...provided.draggableProps}>
-                      <Tab
-                        menu={{
-                          secondary: true,
-                          pointing: true,
-                          attached: true,
-                          tabular: true,
-                          className: 'formtabs',
-                        }}
-                        panes={map(schema.fieldsets, (item) => ({
-                          menuItem: item.title,
-                          render: () => [
-                            title && (
-                              <Segment secondary attached key={title}>
-                                {title}
-                              </Segment>
-                            ),
-                            provided.placeholder,
-                            ...map(item.fields, (field, index) => (
-                              <Draggable
-                                draggableId={field}
-                                index={index}
-                                key={field}
-                              >
-                                {(provided) => (
-                                  <div
-                                    ref={provided.innerRef}
-                                    {...provided.draggableProps}
-                                  >
-                                    <div style={{ position: 'relative' }}>
-                                      <div
-                                        style={{
-                                          visibility: 'visible',
-                                          display: 'inline-block',
-                                        }}
-                                        {...provided.dragHandleProps}
-                                        className="drag handle wrapper"
-                                      >
-                                        <Icon name={dragSVG} size="18px" />
-                                      </div>
-                                      <Field
-                                        {...schema.properties[field]}
-                                        id={field}
-                                        fieldSet={item.title.toLowerCase()}
-                                        focus={index === 0}
-                                        value={this.state.formData[field]}
-                                        required={
-                                          schema.required.indexOf(field) !== -1
-                                        }
-                                        onChange={this.onChangeField}
-                                        key={field}
-                                        error={this.state.errors[field]}
-                                      />
-                                    </div>
-                                  </div>
-                                )}
-                              </Draggable>
-                            )),
-                          ],
-                        }))}
-                      />
-                    </div>
-                  )}
-                </Droppable>
+                <Tab
+                  activeIndex={activeIndex}
+                  onTabChange={this.handleTabChange}
+                  menu={{
+                    secondary: true,
+                    pointing: true,
+                    attached: true,
+                    tabular: true,
+                    className: 'formtabs',
+                  }}
+                  panes={map(schema.fieldsets, (item) => ({
+                    menuItem: this.makeMenuItem(item),
+                    render: () => this.makeTabItemContent(schema, item),
+                  }))}
+                />
               )}
             </Segment.Group>
           </UiForm>
