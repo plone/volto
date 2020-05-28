@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Added Picture tag to support src-set @iFlameing
+
 ### Bugfix
 
 ### Internal
