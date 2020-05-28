@@ -6,6 +6,9 @@
 
 ### Feature
 
+- Support loading additional reducers from the ``config.addonReducers`` key,
+  to allow addons to provide their own reducers @tiberiuichim
+
 ### Bugfix
 
 ### Internal
