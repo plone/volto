@@ -1,21 +1,23 @@
 /**
  * Content type metadata.
- * @module components/manage/Add/Add
+ * @module components/manage/Controlpanels/ContentTypeMetadata
  */
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { defineMessages, injectIntl } from 'react-intl';
-import HTML5Backend from 'react-dnd-html5-backend';
-import { DragDropContext } from 'react-dnd';
-import { Helmet } from '@plone/volto/helpers';
 import { createContent, getSchema } from '@plone/volto/actions';
+import { Icon, Sidebar, Toast, Toolbar } from '@plone/volto/components';
+import FormBuilder from '@plone/volto/components/manage/Form/SchemaBuilder';
+import { Helmet } from '@plone/volto/helpers';
+import clearSVG from '@plone/volto/icons/clear.svg';
+import saveSVG from '@plone/volto/icons/save.svg';
+import PropTypes from 'prop-types';
 import qs from 'query-string';
+import React, { Component } from 'react';
+import { defineMessages, injectIntl } from 'react-intl';
+import { Portal } from 'react-portal';
+import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
-import { Toast } from '@plone/volto/components';
-import FormBuilder from '@plone/volto/components/manage/Form/FormBuilder';
+import { compose } from 'redux';
+import { Button } from 'semantic-ui-react';
 
 const messages = defineMessages({
   metadata: {
@@ -91,7 +93,7 @@ class ContentTypeMetadata extends Component {
   constructor(props) {
     super(props);
 
-    console.log('ContentTypeMetadata props', props);
+    // console.log('ContentTypeMetadata props', props);
   }
 
   /**
@@ -104,10 +106,10 @@ class ContentTypeMetadata extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log('prevProps', prevProps);
-    console.log('this.props', this.props);
-    console.log('this.state', this.state);
-    console.log('prevState', prevState);
+    // console.log('prevProps', prevProps);
+    // console.log('this.props', this.props);
+    // console.log('this.state', this.state);
+    // console.log('prevState', prevState);
 
     if (this.props.createRequest.error) {
       toast.error(
@@ -126,6 +128,8 @@ class ContentTypeMetadata extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    // console.log('this.props', this.props);
+    // console.log('this.state', this.state);
     return (
       <div id="page-types-control-panel-metadata">
         <Helmet
@@ -133,24 +137,66 @@ class ContentTypeMetadata extends Component {
             type: this.props.type,
           })}
         />
-        <FormBuilder
-          ref={this.form}
-          schema={this.props.schema}
-          onSubmit={this.onSubmit}
-          hideActions
-          pathname={this.props.pathname}
-          title={this.props.intl.formatMessage(messages.metadata, {
-            type: this.props.type,
-          })}
-          loading={this.props.createRequest.loading}
-        />
+        {this.props.schema ? (
+          <FormBuilder
+            ref={this.form}
+            schema={this.props.schema}
+            onSubmit={this.onSubmit}
+            hideActions
+            visual
+            pathname={this.props.pathname}
+            title={this.props.intl.formatMessage(messages.metadata, {
+              type: this.props.type,
+            })}
+            loading={this.props.createRequest.loading}
+          />
+        ) : null}
+        <Portal node={__CLIENT__ && document.getElementById('sidebar')}>
+          <Sidebar />
+        </Portal>
+        <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
+          <Toolbar
+            pathname={this.props.pathname}
+            hideDefaultViewButtons
+            inner={
+              <>
+                <Button
+                  id="toolbar-save"
+                  className="save"
+                  aria-label={this.props.intl.formatMessage(messages.save)}
+                  onClick={() => this.form.current.onSubmit()}
+                  // disabled={this.props.updateRequest.loading}
+                  // loading={this.props.updateRequest.loading}
+                >
+                  <Icon
+                    name={saveSVG}
+                    className="circled"
+                    size="30px"
+                    title={this.props.intl.formatMessage(messages.save)}
+                  />
+                </Button>
+                <Button
+                  className="cancel"
+                  aria-label={this.props.intl.formatMessage(messages.cancel)}
+                  onClick={() => this.onCancel()}
+                >
+                  <Icon
+                    name={clearSVG}
+                    className="circled"
+                    size="30px"
+                    title={this.props.intl.formatMessage(messages.cancel)}
+                  />
+                </Button>
+              </>
+            }
+          />
+        </Portal>
       </div>
     );
   }
 }
 
 export default compose(
-  DragDropContext(HTML5Backend),
   injectIntl,
   connect(
     (state, props) => ({

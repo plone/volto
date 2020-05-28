@@ -3,30 +3,25 @@
  * @module components/manage/Controlpanels/ContentTypes
  */
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { Link } from 'react-router-dom';
-import { getParentUrl } from '@plone/volto/helpers';
-import { Portal } from 'react-portal';
-import { last } from 'lodash';
-import { Confirm, Container, Table, Button, Dropdown } from 'semantic-ui-react';
-import { toast } from 'react-toastify';
-import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import { Icon, ModalForm, Toolbar, Toast } from '@plone/volto/components';
-import {
-  getControlpanel,
-  postControlpanel,
-  deleteControlpanel,
-} from '@plone/volto/actions';
-import { getId } from '@plone/volto/helpers';
-
+import { deleteControlpanel, getControlpanel, postControlpanel } from '@plone/volto/actions';
+import { Icon, ModalForm, Toast, Toolbar } from '@plone/volto/components';
+import { getId, getParentUrl } from '@plone/volto/helpers';
 import addSVG from '@plone/volto/icons/add-document.svg';
 import backSVG from '@plone/volto/icons/back.svg';
-import editSVG from '@plone/volto/icons/pen.svg';
 import trashSVG from '@plone/volto/icons/delete.svg';
 import folderSVG from '@plone/volto/icons/folder.svg';
+import editSVG from '@plone/volto/icons/pen.svg';
+import { last } from 'lodash';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
+import { Portal } from 'react-portal';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { compose } from 'redux';
+import { Button, Confirm, Container, Dropdown, Table } from 'semantic-ui-react';
+
 
 const messages = defineMessages({
   add: {
@@ -310,7 +305,6 @@ class ContentTypes extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    console.log('this.props', this.props);
     if (!this.props.controlpanel) {
       return <div />;
     }

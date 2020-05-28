@@ -3,20 +3,19 @@
  * @module components/manage/Blocks/Block/Edit
  */
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
-import { defineMessages, injectIntl } from 'react-intl';
-import { blocks } from '~/config';
-import { Button } from 'semantic-ui-react';
-import includes from 'lodash/includes';
-import cx from 'classnames';
 import { setSidebarTab } from '@plone/volto/actions';
-
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import trashSVG from '@plone/volto/icons/delete.svg';
+import cx from 'classnames';
+import includes from 'lodash/includes';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { defineMessages, injectIntl } from 'react-intl';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { Button } from 'semantic-ui-react';
+import { blocks } from '~/config';
 
 const messages = defineMessages({
   unknownBlock: {
@@ -104,12 +103,17 @@ class Edit extends Component {
     const blockHasOwnFocusManagement =
       blocks.blocksConfig?.[type]?.['blockHasOwnFocusManagement'] || null;
 
+    console.log('render Block', Block);
+
     return (
       <div className={`ui drag block inner ${type}`}>
         {Block !== null ? (
           <div
             role="presentation"
-            onClick={() => this.props.onSelectBlock(this.props.id)}
+            onClick={() => {
+              console.log('on select id', this.props.id);
+              this.props.onSelectBlock(this.props.id);
+            }}
             onKeyDown={
               !blockHasOwnFocusManagement
                 ? (e) =>

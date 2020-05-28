@@ -3,45 +3,21 @@
  * @module components/manage/Form/Form
  */
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import {
-  findIndex,
-  isEmpty,
-  keys,
-  map,
-  mapValues,
-  omit,
-  pickBy,
-  uniq,
-  without,
-} from 'lodash';
-import move from 'lodash-move';
-import isBoolean from 'lodash/isBoolean';
-import {
-  Button,
-  Container,
-  Form as UiForm,
-  Segment,
-  Tab,
-  Message,
-} from 'semantic-ui-react';
-import { defineMessages, injectIntl } from 'react-intl';
-import { v4 as uuid } from 'uuid';
-import { Portal } from 'react-portal';
-
-import { EditBlock, Icon, Field } from '@plone/volto/components';
-import dragSVG from '@plone/volto/icons/drag.svg';
-
-import {
-  getBlocksFieldname,
-  getBlocksLayoutFieldname,
-} from '@plone/volto/helpers';
-import { difference } from '@plone/volto/helpers';
-
+import { EditBlock, Field, Icon } from '@plone/volto/components';
+import { difference, getBlocksFieldname, getBlocksLayoutFieldname } from '@plone/volto/helpers';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
+import dragSVG from '@plone/volto/icons/drag.svg';
+import { findIndex, isEmpty, keys, map, mapValues, omit, pickBy, uniq, without } from 'lodash';
+import move from 'lodash-move';
+import isBoolean from 'lodash/isBoolean';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
+import { defineMessages, injectIntl } from 'react-intl';
+import { Portal } from 'react-portal';
+import { Button, Container, Form as UiForm, Message, Segment, Tab } from 'semantic-ui-react';
+import { v4 as uuid } from 'uuid';
 
 const messages = defineMessages({
   addBlock: {
@@ -297,6 +273,7 @@ class Form extends Component {
    * @returns {undefined}
    */
   onSelectBlock(id) {
+    console.log('selected id', id);
     this.setState({
       selected: id,
     });
