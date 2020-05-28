@@ -105,6 +105,7 @@ export UsersControlpanelUser from '@plone/volto/components/manage/Controlpanels/
 export UsersControlpanelGroups from '@plone/volto/components/manage/Controlpanels/UsersControlpanelGroups';
 export DiffField from '@plone/volto/components/manage/Diff/DiffField';
 
+export FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 export ArrayWidget from '@plone/volto/components/manage/Widgets/ArrayWidget';
 export CheckboxWidget from '@plone/volto/components/manage/Widgets/CheckboxWidget';
 

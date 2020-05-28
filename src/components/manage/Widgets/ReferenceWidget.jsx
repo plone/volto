@@ -7,11 +7,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { Form, Grid, Label, Dropdown, Popup, Icon } from 'semantic-ui-react';
+import { Label, Dropdown, Popup, Icon } from 'semantic-ui-react';
 import { compact, concat, fromPairs, map, values, uniqBy } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 import { settings } from '~/config';
-
+import { FormFieldWrapper } from '@plone/volto/components';
 import { resetSearchContent, searchContent } from '@plone/volto/actions';
 
 const messages = defineMessages({
@@ -58,6 +58,7 @@ class ReferenceWidget extends Component {
         description: PropTypes.string,
       }),
     ),
+    wrapped: PropTypes.bool,
   };
 
   /**
@@ -225,84 +226,45 @@ class ReferenceWidget extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const {
-      id,
-      title,
-      required,
-      description,
-      error,
-      value,
-      multiple,
-      onChange,
-      fieldSet,
-    } = this.props;
+    const { id, title, value, multiple, onChange } = this.props;
 
     return (
-      <Form.Field
-        inline
-        required={required}
-        error={error.length > 0}
-        className={description ? 'help' : ''}
-        id={`${fieldSet || 'field'}-${id}`}
-      >
-        <Grid>
-          <Grid.Row stretched>
-            <Grid.Column width="4">
-              <div className="wrapper">
-                <label htmlFor={`field-${id}`}>{title}</label>
-              </div>
-            </Grid.Column>
-            <Grid.Column width="8">
-              <Dropdown
-                options={values(this.state.choices)}
-                placeholder={title}
-                search
-                selection
-                fluid
-                noResultsMessage={this.props.intl.formatMessage(
-                  messages.no_results_found,
-                )}
-                multiple={multiple}
-                value={
-                  multiple
-                    ? value
-                      ? map(value, (item) =>
-                          item && item['@id']
-                            ? item['@id'].replace(settings.apiPath, '')
-                            : item,
-                        )
-                      : []
-                    : value
-                    ? value['@id']?.replace(settings.apiPath, '')
-                    : ''
-                }
-                onChange={(event, data) => {
-                  return onChange(
-                    id,
-                    multiple
-                      ? map(data.value, (item) => this.state.choices[item].data)
-                      : this.state.choices[data.value].data,
-                  );
-                }}
-                onSearchChange={this.onSearchChange}
-                renderLabel={this.renderLabel}
-              />
-              {map(error, (message) => (
-                <Label key={message} basic color="red" pointing>
-                  {message}
-                </Label>
-              ))}
-            </Grid.Column>
-          </Grid.Row>
-          {description && (
-            <Grid.Row stretched>
-              <Grid.Column stretched width="12">
-                <p className="help">{description}</p>
-              </Grid.Column>
-            </Grid.Row>
+      <FormFieldWrapper {...this.props}>
+        <Dropdown
+          options={values(this.state.choices)}
+          placeholder={title}
+          search
+          selection
+          fluid
+          noResultsMessage={this.props.intl.formatMessage(
+            messages.no_results_found,
           )}
-        </Grid>
-      </Form.Field>
+          multiple={multiple}
+          value={
+            multiple
+              ? value
+                ? map(value, (item) =>
+                    item && item['@id']
+                      ? item['@id'].replace(settings.apiPath, '')
+                      : item,
+                  )
+                : []
+              : value
+              ? value['@id']?.replace(settings.apiPath, '')
+              : ''
+          }
+          onChange={(event, data) => {
+            return onChange(
+              id,
+              multiple
+                ? map(data.value, (item) => this.state.choices[item].data)
+                : this.state.choices[data.value].data,
+            );
+          }}
+          onSearchChange={this.onSearchChange}
+          renderLabel={this.renderLabel}
+        />
+      </FormFieldWrapper>
     );
   }
 }

@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Added param 'wrapped' for widgets, to use widgets without form wrappers. @giuliaghisini
+
 ### Bugfix
 
 ### Internal

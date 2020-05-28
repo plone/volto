@@ -6,15 +6,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
-import { Form, Grid, Label } from 'semantic-ui-react';
-import { map } from 'lodash';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 import TimePicker from 'rc-time-picker';
 import cx from 'classnames';
-import leftKey from '../../../icons/left-key.svg';
-import rightKey from '../../../icons/right-key.svg';
-import { Icon } from '../../../components';
+import leftKey from '@plone/volto/icons/left-key.svg';
+import rightKey from '@plone/volto/icons/right-key.svg';
+import { Icon } from '@plone/volto/components';
+import { FormFieldWrapper } from '@plone/volto/components';
 
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
@@ -153,94 +152,51 @@ class DatetimeWidget extends Component {
   onFocusChange = ({ focused }) => this.setState({ focused });
 
   render() {
-    const {
-      id,
-      title,
-      required,
-      description,
-      error,
-      fieldSet,
-      dateOnly,
-      noPastDates,
-      intl,
-    } = this.props;
+    const { id, dateOnly, noPastDates, intl } = this.props;
     const { datetime, isDefault, focused } = this.state;
 
     return (
-      <Form.Field
-        inline
-        required={required}
-        error={error.length > 0}
-        className={description ? 'help' : ''}
-        id={`${fieldSet || 'field'}-${id}`}
-      >
-        <Grid>
-          <Grid.Row stretched>
-            <Grid.Column width="4">
-              <div className="wrapper">
-                <label htmlFor={`field-${id}`}>{title}</label>
-              </div>
-            </Grid.Column>
-            <Grid.Column width="8">
-              <div>
-                <div
-                  className={cx('ui input date-input', {
-                    'default-date': isDefault,
-                  })}
-                >
-                  <SingleDatePicker
-                    date={datetime}
-                    onDateChange={this.onDateChange}
-                    focused={focused}
-                    numberOfMonths={1}
-                    {...(noPastDates ? {} : { isOutsideRange: () => false })}
-                    onFocusChange={this.onFocusChange}
-                    noBorder
-                    displayFormat={moment
-                      .localeData(intl.locale)
-                      .longDateFormat('L')}
-                    navPrev={<PrevIcon />}
-                    navNext={<NextIcon />}
-                    id={`${id}-date`}
-                  />
-                </div>
-                {!dateOnly && (
-                  <div
-                    className={cx('ui input time-input', {
-                      'default-date': isDefault,
-                    })}
-                  >
-                    <TimePicker
-                      defaultValue={datetime}
-                      onChange={this.onTimeChange}
-                      allowEmpty={false}
-                      showSecond={false}
-                      use12Hours={intl.locale === 'en'}
-                      id={`${id}-time`}
-                      format={moment
-                        .localeData(intl.locale)
-                        .longDateFormat('LT')}
-                      focusOnOpen
-                    />
-                  </div>
-                )}
-              </div>
-              {map(error, (message) => (
-                <Label key={message} basic color="red" pointing>
-                  {message}
-                </Label>
-              ))}
-            </Grid.Column>
-          </Grid.Row>
-          {description && (
-            <Grid.Row stretched>
-              <Grid.Column stretched width="12">
-                <p className="help">{description}</p>
-              </Grid.Column>
-            </Grid.Row>
+      <FormFieldWrapper {...this.props}>
+        <div>
+          <div
+            className={cx('ui input date-input', {
+              'default-date': isDefault,
+            })}
+          >
+            <SingleDatePicker
+              date={datetime}
+              onDateChange={this.onDateChange}
+              focused={focused}
+              numberOfMonths={1}
+              {...(noPastDates ? {} : { isOutsideRange: () => false })}
+              onFocusChange={this.onFocusChange}
+              noBorder
+              displayFormat={moment.localeData(intl.locale).longDateFormat('L')}
+              navPrev={<PrevIcon />}
+              navNext={<NextIcon />}
+              id={`${id}-date`}
+            />
+          </div>
+          {!dateOnly && (
+            <div
+              className={cx('ui input time-input', {
+                'default-date': isDefault,
+              })}
+            >
+              <TimePicker
+                defaultValue={datetime}
+                onChange={this.onTimeChange}
+                allowEmpty={false}
+                showSecond={false}
+                use12Hours={intl.locale === 'en'}
+                id={`${id}-time`}
+                format={moment.localeData(intl.locale).longDateFormat('LT')}
+                focusOnOpen
+              />
+            </div>
           )}
-        </Grid>
-      </Form.Field>
+        </div>
+      </FormFieldWrapper>
     );
   }
 }
@@ -260,6 +216,7 @@ DatetimeWidget.propTypes = {
   noPastDates: PropTypes.bool,
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
+  wrapped: PropTypes.bool,
 };
 
 /**
