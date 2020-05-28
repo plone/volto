@@ -19,6 +19,7 @@
 - UX and UI improvements to `DateTimeWidget` @sneridagh
 - Fix an UTC handling for edge cases in `DateTimeWidget` @sneridagh
 - Do not store the server information of the image block in the block @sneridagh
+- expose `blocks` and `blocks_layout` only editing content types @nileshgulia1
 
 ### Internal
 
