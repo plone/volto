@@ -12,6 +12,7 @@ import {
   views as defaultViews,
   widgets as defaultWidgets,
   blocks as defaultBlocks,
+  addonReducers as defaultAddonReducers,
 } from '@plone/volto/config';
 
 export const settings = {
@@ -29,7 +30,13 @@ export const widgets = {
 export const blocks = {
   ...defaultBlocks,
 };
+
+export const addonReducers = {
+  ...defaultAddonReducers,
+}
 ```
+
+In the ``addonReducers`` you can register and potentially override (by name) any registered reducer from Volto or other loaded Volto addons.
 
 It gets the default config from Volto and leave it available to you to customize it in your project.
 

@@ -6,10 +6,14 @@
 
 ### Feature
 
+- Support loading additional reducers from the ``config.addonReducers`` key,
+  to allow addons to provide their own reducers @tiberiuichim
+
 ### Bugfix
 
 - UX and UI improvements to `DateTimeWidget` @sneridagh
 - Fix an UTC handling for edge cases in `DateTimeWidget` @sneridagh
+- Do not store the server information of the image block in the block @sneridagh
 
 ### Internal
 
