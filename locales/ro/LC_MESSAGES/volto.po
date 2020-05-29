@@ -836,15 +836,15 @@ msgstr "Stânga"
 
 #: components/manage/Toolbar/Toolbar
 msgid "Link"
-msgstr "Link"
+msgstr "Legătură"
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Link more"
-msgstr "Link mai multe"
+msgstr "Legătură către mai multe"
 
 #: components/manage/Blocks/Listing/ListingMore
 msgid "Link title"
-msgstr "Link Titlu"
+msgstr "Legătură la titlu"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -852,7 +852,7 @@ msgstr "Link Titlu"
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Link to"
-msgstr "Link la"
+msgstr "Legătură către"
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
@@ -893,7 +893,7 @@ msgstr "Hartă"
 
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "Maps URL"
-msgstr "URL-urile hărților"
+msgstr "URL Hartă"
 
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
