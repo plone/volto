@@ -47,6 +47,8 @@ nav:
       - Anatomy: 'blocks/anatomy.md'
       - Settings: 'blocks/settings.md'
       - Edit components: 'blocks/editcomponent.md'
+  - Slots:
+      - Anatomy: 'slots/anatomy.md'
   - Recipes:
       - App component insertion point: 'recipes/appextras.md'
       - Lazy loading and code splitting: 'recipes/lazyload.md'
