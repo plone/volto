@@ -105,7 +105,7 @@ class DatetimeWidget extends Component {
     this.state = {
       focused: false,
       isDefault:
-        datetime && datetime.toISOString() === moment().utc().toISOString(),
+        datetime?.toISOString() === moment().utc().toISOString(),
       datetime,
     };
   }
