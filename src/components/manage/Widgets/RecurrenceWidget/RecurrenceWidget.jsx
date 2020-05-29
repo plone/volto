@@ -210,7 +210,7 @@ class RecurrenceWidget extends Component {
           .startOf('day')
           .toDate();
 
-        this.setState(prevState => {
+        this.setState((prevState) => {
           let rruleSet = prevState.rruleSet;
 
           rruleSet = this.updateRruleSet(
@@ -237,11 +237,9 @@ class RecurrenceWidget extends Component {
     console.log('setrecurrencestartend');
     const start = this.props.formData?.start;
 
-    let _start = this.getUTCDate(start)
-      .startOf('day')
-      .toDate();
+    let _start = this.getUTCDate(start).startOf('day').toDate();
 
-    this.setState(prevState => {
+    this.setState((prevState) => {
       let rruleSet = prevState.rruleSet;
       const formValues = this.getFormValues(rruleSet); //to set default values, included end
 
@@ -254,31 +252,37 @@ class RecurrenceWidget extends Component {
     });
   };
 
-  getUTCDate = date => {
+  getUTCDate = (date) => {
     return date.match(/T(.)*(-|\+|Z)/g)
       ? moment(date).utc()
       : moment(`${date}Z`).utc();
   };
 
-  show = dimmer => () => {
+  show = (dimmer) => () => {
     this.setState({ dimmer, open: true });
     this.editRecurrence();
   };
   close = () => this.setState({ open: false });
 
-  getFreq = number => {
+  getFreq = (number, weekdays) => {
     let freq = FREQUENCES.DAILY;
     Object.entries(OPTIONS.frequences).forEach(([f, o]) => {
       if (o.rrule === number) {
         freq = f;
       }
     });
+    if (freq === FREQUENCES.WEEKLY && weekdays) {
+      console.log(weekdays, WEEKLY_DAYS);
+      if (isEqual(weekdays.sort(), WEEKLY_DAYS.map((w) => w.weekday).sort())) {
+        freq = FREQUENCES.WEEKDAYS;
+      }
+    }
     return freq;
   };
 
-  getWeekday = number => {
+  getWeekday = (number) => {
     var day = null;
-    Object.keys(Days).forEach(d => {
+    Object.keys(Days).forEach((d) => {
       if (Days[d].weekday === number) {
         day = Days[d];
       }
@@ -289,7 +293,7 @@ class RecurrenceWidget extends Component {
   /**
    * Called on init, to populate form values
    * */
-  getFormValues = rruleSet => {
+  getFormValues = (rruleSet) => {
     //default
     let formValues = {
       freq: FREQUENCES.DAILY,
@@ -305,13 +309,14 @@ class RecurrenceWidget extends Component {
     const rrule = rruleSet.rrules()[0];
 
     if (rrule) {
-      var freq = this.getFreq(rrule.options.freq);
+      console.log('options', rrule.options.byweekday);
+      var freq = this.getFreq(rrule.options.freq, rrule.options.byweekday);
 
       //init with rruleOptions
       Object.entries(rrule.options).forEach(([option, value]) => {
         switch (option) {
           case 'freq':
-            formValues[option] = this.getFreq(value);
+            formValues[option] = freq;
             break;
           case 'count':
             if (value != null) {
@@ -335,7 +340,7 @@ class RecurrenceWidget extends Component {
               }
             }
             formValues[option] = value
-              ? value.map(d => {
+              ? value.map((d) => {
                   return this.getWeekday(d);
                 })
               : [];
@@ -389,16 +394,16 @@ class RecurrenceWidget extends Component {
     return formValues;
   };
 
-  formValuesToRRuleOptions = formValues => {
+  formValuesToRRuleOptions = (formValues) => {
     var values = Object.assign({}, formValues);
 
     //remove NoRRuleOptions
-    NoRRuleOptions.forEach(opt => {
+    NoRRuleOptions.forEach((opt) => {
       delete values[opt];
     });
 
     //transform values for rrule
-    Object.keys(values).forEach(field => {
+    Object.keys(values).forEach((field) => {
       var value = values[field];
       switch (field) {
         case 'freq':
@@ -407,11 +412,7 @@ class RecurrenceWidget extends Component {
           }
           break;
         case 'until':
-          value = value
-            ? moment(new Date(value))
-                .utc()
-                .toDate()
-            : null;
+          value = value ? moment(new Date(value)).utc().toDate() : null;
           break;
         default:
           break;
@@ -436,9 +437,7 @@ class RecurrenceWidget extends Component {
         ? value
         : rruleSet.dtstart()
         ? rruleSet.dtstart()
-        : moment()
-            .utc()
-            .toDate();
+        : moment().utc().toDate();
     var exdates =
       field === 'exdates' ? value : Object.assign([], rruleSet.exdates());
 
@@ -451,40 +450,20 @@ class RecurrenceWidget extends Component {
     //set.dtstart(dstart);
     set.rrule(new RRule(rruleOptions));
 
-    exdates.map(ex => set.exdate(ex));
-    rdates.map(r => set.rdate(r));
+    exdates.map((ex) => set.exdate(ex));
+    rdates.map((r) => set.rdate(r));
 
     return set;
   };
 
-  getDefaultUntil = freq => {
+  getDefaultUntil = (freq) => {
     var end = this.props.formData?.end
       ? toISOString(this.getUTCDate(this.props.formData.end).toDate())
       : null;
-    var tomorrow = toISOString(
-      moment()
-        .add(1, 'days')
-        .utc()
-        .toDate(),
-    );
-    var nextWeek = toISOString(
-      moment()
-        .add(7, 'days')
-        .utc()
-        .toDate(),
-    );
-    var nextMonth = toISOString(
-      moment()
-        .add(1, 'months')
-        .utc()
-        .toDate(),
-    );
-    var nextYear = toISOString(
-      moment()
-        .add(1, 'years')
-        .utc()
-        .toDate(),
-    );
+    var tomorrow = toISOString(moment().add(1, 'days').utc().toDate());
+    var nextWeek = toISOString(moment().add(7, 'days').utc().toDate());
+    var nextMonth = toISOString(moment().add(1, 'months').utc().toDate());
+    var nextYear = toISOString(moment().add(1, 'years').utc().toDate());
 
     var until = end;
     switch (freq) {
@@ -671,7 +650,7 @@ class RecurrenceWidget extends Component {
     var formValues = Object.assign({}, this.state.formValues);
     formValues = this.changeField(formValues, field, value);
 
-    this.setState(prevState => {
+    this.setState((prevState) => {
       var rruleSet = prevState.rruleSet;
       rruleSet = this.updateRruleSet(rruleSet, formValues, field, value);
       return {
@@ -682,32 +661,26 @@ class RecurrenceWidget extends Component {
     });
   };
 
-  exclude = date => {
+  exclude = (date) => {
     let list = this.state.rruleSet.exdates().slice(0);
     list.push(date);
     this.onChangeRule('exdates', list);
   };
 
-  undoExclude = date => {
+  undoExclude = (date) => {
     let list = this.state.rruleSet.exdates().slice(0);
-    remove(list, e => {
+    remove(list, (e) => {
       return e.getTime() === date.getTime();
     });
     this.onChangeRule('exdates', list);
   };
 
-  addDate = date => {
+  addDate = (date) => {
     let all = concat(this.state.rruleSet.all(), this.state.rruleSet.exdates());
 
-    var simpleDate = moment(new Date(date))
-      .startOf('day')
-      .toDate()
-      .getTime();
-    var exists = find(all, e => {
-      var d = moment(e)
-        .startOf('day')
-        .toDate()
-        .getTime();
+    var simpleDate = moment(new Date(date)).startOf('day').toDate().getTime();
+    var exists = find(all, (e) => {
+      var d = moment(e).startOf('day').toDate().getTime();
       return d === simpleDate;
     });
     if (!exists) {
@@ -743,6 +716,7 @@ class RecurrenceWidget extends Component {
       error,
       fieldSet,
       intl,
+      value,
     } = this.props;
 
     return (
@@ -765,7 +739,7 @@ class RecurrenceWidget extends Component {
                 <>
                   <Label>
                     {rruleSet.rrules()[0]?.toText(
-                      t => {
+                      (t) => {
                         return RRULE_LANGUAGE.strings[t];
                       },
                       RRULE_LANGUAGE,
@@ -784,7 +758,6 @@ class RecurrenceWidget extends Component {
                   </Segment>
                 </>
               )}
-
               <div>
                 <Button
                   basic
@@ -819,7 +792,6 @@ class RecurrenceWidget extends Component {
                   </Button>
                 )}
               </div>
-
               <Modal
                 dimmer={dimmer}
                 open={open}
@@ -840,9 +812,11 @@ class RecurrenceWidget extends Component {
                             title={intl.formatMessage(messages.repeat)}
                             getVocabulary={() => {}}
                             getVocabularyTokenTitle={() => {}}
-                            choices={Object.keys(OPTIONS.frequences).map(t => {
-                              return [t, intl.formatMessage(messages[t])];
-                            })}
+                            choices={Object.keys(OPTIONS.frequences).map(
+                              (t) => {
+                                return [t, intl.formatMessage(messages[t])];
+                              },
+                            )}
                             value={formValues.freq}
                             onChange={this.onChangeRule}
                           />
@@ -952,7 +926,7 @@ class RecurrenceWidget extends Component {
                   </Button>
                 </Modal.Actions>
               </Modal>
-              {map(error, message => (
+              {map(error, (message) => (
                 <Label key={message} basic color="red" pointing>
                   {message}
                 </Label>
