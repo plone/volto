@@ -26,6 +26,7 @@
 ### Feature
 
 - Added `react-beautiful-dnd` in core for edit form @iFlameing
+- Added cms-only theme that allows to completely remove semantic-ui from public facing views @pnicolli @nzambello
 
 ### Bugfix
 
@@ -762,7 +763,6 @@ refer to all of them in https://github.com/plone/volto/releases
 ### Added
 
 - Add Node 12 support @timo
-- Added cms-only theme that allows to completely remove semantic-ui from public facing views @pnicolli
 
 ### Changes
 
