@@ -40,6 +40,7 @@ const ByMonthField = ({
                 <Radio
                   label=""
                   name="monthly"
+                  id="monthly-bymonthday"
                   value="bymonthday"
                   checked={value === 'bymonthday'}
                   onChange={(e, { value }) => onChange('monthly', value)}
@@ -56,6 +57,7 @@ const ByMonthField = ({
                 <Radio
                   label=""
                   name="monthly"
+                  id="monthly-byweekday"
                   value="byweekday"
                   checked={value === 'byweekday'}
                   onChange={(e, { value }) => onChange('monthly', value)}
