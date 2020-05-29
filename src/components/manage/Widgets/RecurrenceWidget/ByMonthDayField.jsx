@@ -36,7 +36,10 @@ const ByMonthDayField = ({
           name="bymonthday"
           value={value || ''}
           onChange={({ target }) => {
-            onChange(target.id, target.value === '' ? undefined : target.value);
+            onChange(
+              target.id,
+              target.value === '' ? undefined : [parseInt(target.value)],
+            );
           }}
         />
       </Form.Field>

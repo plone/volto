@@ -163,7 +163,7 @@ if (Cypress.env('API') === 'plone') {
       );
     });
 
-    it('Test Weekly recurrence', function () {
+    it.skip('Test Weekly recurrence', function () {
       //change freq
       cy.get('.modal .field#field-freq').click().type('Weekly {enter}');
       cy.get('.modal .byday-field .ui.button.active').click(); //deactivate selected days
@@ -205,6 +205,60 @@ if (Cypress.env('API') === 'plone') {
         'have.length',
         6,
       );
+    });
+
+    it('Test Monthly recurrence', function () {
+      //change freq
+      cy.get('.modal .field#field-freq').click().type('Monthly {enter}');
+
+      cy.get('.modal input#bymonthday').should('have.attr', 'value', '4');
+      cy.get('.modal .occurences .list .item:last-of-type .content').contains(
+        'Monday, May 4',
+      );
+
+      cy.get('.modal input#bymonthday').type('{selectall}6');
+      cy.get('.modal .occurences .list .item:last-of-type .content').contains(
+        'Monday, May 4',
+      );
+      // cy.get('.modal .byday-field .ui.button.active').click(); //deactivate selected days
+
+      // cy.get('.modal .byday-field .ui.button').contains('Tue').click(); //select Tuesday
+      // cy.get('.modal .occurences .list > .item').should('have.length', 2);
+      // cy.get('.modal .byday-field .ui.button').contains('Wed').click(); //select Wednesday
+      // cy.get('.modal .occurences .list > .item').should('have.length', 4);
+
+      // //test recurrence end after N recurrences
+      // cy.get('.modal #recurrenceEndsCount').check({ force: true });
+      // cy.get('.modal #count').type('{selectall}6');
+      // cy.get('.modal .occurences .list > .item').should('have.length', 6);
+      // cy.get('.modal .occurences .list .item:last-of-type .content').contains(
+      //   'Wednesday',
+      // );
+
+      // //test exclude date
+      // cy.get(
+      //   '.modal .occurences .list .item:last-of-type .exclude-button',
+      // ).click();
+      // cy.get('.modal .occurences .list .item:last-of-type .content').should(
+      //   'have.class',
+      //   'excluded',
+      // );
+
+      // //test re-add date
+      // cy.get(
+      //   '.modal .occurences .list .item:last-of-type .include-button',
+      // ).click();
+      // cy.get('.modal .occurences .list .item:last-of-type .content').should(
+      //   'not.have.class',
+      //   'excluded',
+      // );
+
+      // //save recurrence
+      // cy.get('.modal .button.save').click();
+      // cy.get('#default-recurrence .occurences .list > .item').should(
+      //   'have.length',
+      //   6,
+      // );
     });
 
     afterEach(() => {

@@ -234,7 +234,6 @@ class RecurrenceWidget extends Component {
   };
 
   setRecurrenceStartEnd = () => {
-    console.log('setrecurrencestartend');
     const start = this.props.formData?.start;
 
     let _start = this.getUTCDate(start).startOf('day').toDate();
@@ -601,7 +600,10 @@ class RecurrenceWidget extends Component {
 
       case 'monthly':
         if (value === 'bymonthday') {
-          formValues.bymonthday = [moment().date()]; //default value
+          const day = this.props.formData?.start
+            ? moment(this.props.formData.start).date()
+            : moment().date();
+          formValues.bymonthday = [day]; //default value
           formValues = this.changeField(formValues, 'byweekday', null); //default value
         }
         if (value === 'byweekday') {
@@ -618,7 +620,11 @@ class RecurrenceWidget extends Component {
       case 'yearly':
         if (value === 'bymonthday') {
           //sets bymonth and bymonthday in rruleset
-          formValues.bymonthday = [moment().date()]; //default value
+          const day = this.props.formData?.start
+            ? moment(this.props.formData.start).date()
+            : moment().date();
+          formValues.bymonthday = [day]; //default value
+
           formValues = this.changeField(
             formValues,
             'monthOfTheYear',
@@ -650,7 +656,9 @@ class RecurrenceWidget extends Component {
 
     this.setState((prevState) => {
       var rruleSet = prevState.rruleSet;
+      console.log(rruleSet, 'before');
       rruleSet = this.updateRruleSet(rruleSet, formValues, field, value);
+      console.log(rruleSet, 'after');
       return {
         ...prevState,
         rruleSet,
@@ -799,6 +807,7 @@ class RecurrenceWidget extends Component {
               >
                 <Modal.Header>
                   {intl.formatMessage(messages.editRecurrence)}{' '}
+                  {this.state.rruleSet.toString()}
                 </Modal.Header>
                 <Modal.Content scrolling>
                   {rruleSet.rrules().length > 0 && (
