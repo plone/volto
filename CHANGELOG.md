@@ -8,8 +8,12 @@
 
 - Include ``config.addonRoutes`` in router configuration. This allows addons to
   override route children defined for the ``App`` component.
+- Support loading additional reducers from the ``config.addonReducers`` key,
+  to allow addons to provide their own reducers @tiberiuichim
 
 ### Bugfix
+
+- Do not store the server information of the image block in the block @sneridagh
 
 ### Internal
 
