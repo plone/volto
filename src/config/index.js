@@ -88,3 +88,5 @@ export const blocks = {
   groupBlocksOrder,
   initialBlocks,
 };
+
+export const addonReducers = {};
