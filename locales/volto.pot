@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-05-16T13:45:12.387Z\n"
+"POT-Creation-Date: 2020-05-29T13:53:23.622Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -447,6 +447,7 @@ msgid "Cut"
 msgstr ""
 
 #: components/manage/Controlpanels/ModerateComments
+#: components/manage/Widgets/DatetimeWidget
 # defaultMessage: Date
 msgid "Date"
 msgstr ""
@@ -1835,6 +1836,11 @@ msgstr ""
 #: components/theme/NotFound/NotFound
 # defaultMessage: This page does not seem to exist…
 msgid "This page does not seem to exist…"
+msgstr ""
+
+#: components/manage/Widgets/DatetimeWidget
+# defaultMessage: Time
+msgid "Time"
 msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/Edit

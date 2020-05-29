@@ -368,6 +368,7 @@ msgid "Cut"
 msgstr "Taie"
 
 #: components/manage/Controlpanels/ModerateComments
+#: components/manage/Widgets/DatetimeWidget
 msgid "Date"
 msgstr "Data"
 
@@ -1506,6 +1507,10 @@ msgstr "Acest nume va fi afișat în adresa URL."
 #: components/theme/NotFound/NotFound
 msgid "This page does not seem to exist…"
 msgstr "Se pare că această pagină nu există ..."
+
+#: components/manage/Widgets/DatetimeWidget
+msgid "Time"
+msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/Contents

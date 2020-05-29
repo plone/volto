@@ -383,6 +383,7 @@ msgid "Cut"
 msgstr "Ausschneiden"
 
 #: components/manage/Controlpanels/ModerateComments
+#: components/manage/Widgets/DatetimeWidget
 msgid "Date"
 msgstr "Datum"
 
@@ -1521,6 +1522,10 @@ msgstr "Dieser Name wird in der Adressleiste des Browsers angezeigt."
 #: components/theme/NotFound/NotFound
 msgid "This page does not seem to exist…"
 msgstr "Die Seite existiert leider nicht…"
+
+#: components/manage/Widgets/DatetimeWidget
+msgid "Time"
+msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/Contents

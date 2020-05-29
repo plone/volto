@@ -375,6 +375,7 @@ msgid "Cut"
 msgstr "カット"
 
 #: components/manage/Controlpanels/ModerateComments
+#: components/manage/Widgets/DatetimeWidget
 msgid "Date"
 msgstr "日付"
 
@@ -1513,6 +1514,10 @@ msgstr "この名前はURLの一部として使用されます"
 #: components/theme/NotFound/NotFound
 msgid "This page does not seem to exist…"
 msgstr "このページは存在しないようです…"
+
+#: components/manage/Widgets/DatetimeWidget
+msgid "Time"
+msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/Contents

@@ -16,6 +16,8 @@
 ### Bugfix
  - Removed a regex check in default view, we already have that check implemented in `toHTML.jsx` L173s @nileshgulia1
 
+- UX and UI improvements to `DateTimeWidget` @sneridagh
+- Fix an UTC handling for edge cases in `DateTimeWidget` @sneridagh
 - Do not store the server information of the image block in the block @sneridagh
 
 ### Internal

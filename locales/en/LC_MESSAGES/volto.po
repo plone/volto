@@ -368,6 +368,7 @@ msgid "Cut"
 msgstr ""
 
 #: components/manage/Controlpanels/ModerateComments
+#: components/manage/Widgets/DatetimeWidget
 msgid "Date"
 msgstr ""
 
@@ -1505,6 +1506,10 @@ msgstr ""
 
 #: components/theme/NotFound/NotFound
 msgid "This page does not seem to exist…"
+msgstr ""
+
+#: components/manage/Widgets/DatetimeWidget
+msgid "Time"
 msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/Edit
