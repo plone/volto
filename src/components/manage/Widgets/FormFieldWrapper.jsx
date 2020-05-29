@@ -67,6 +67,18 @@ class FormFieldWrapper extends Component {
       className,
     } = this.props;
 
+    const wdg = (
+      <>
+        {this.props.children}
+
+        {map(error, (message) => (
+          <Label key={message} basic color="red" pointing>
+            {message}
+          </Label>
+        ))}
+      </>
+    );
+
     return wrapped ? (
       <Form.Field
         inline
@@ -92,15 +104,7 @@ class FormFieldWrapper extends Component {
                 </div>
               </Grid.Column>
             )}
-            <Grid.Column width={columns === 2 ? 8 : 12}>
-              {this.props.children}
-
-              {map(error, (message) => (
-                <Label key={message} basic color="red" pointing>
-                  {message}
-                </Label>
-              ))}
-            </Grid.Column>
+            <Grid.Column width={columns === 2 ? 8 : 12}>{wdg}</Grid.Column>
           </Grid.Row>
           {description && (
             <Grid.Row stretched>
@@ -112,14 +116,7 @@ class FormFieldWrapper extends Component {
         </Grid>
       </Form.Field>
     ) : (
-      <>
-        {this.props.children}
-        {map(error, (message) => (
-          <Label key={message} basic color="red" pointing>
-            {message}
-          </Label>
-        ))}
-      </>
+      <>{wdg}</>
     );
   }
 }
