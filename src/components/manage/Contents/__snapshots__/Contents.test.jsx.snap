@@ -396,34 +396,6 @@ exports[`Contents renders a contents component 1`] = `
                     role="option"
                   >
                     <svg
-                      className="icon Title"
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": undefined,
-                        }
-                      }
-                      onClick={null}
-                      style={
-                        Object {
-                          "fill": "currentColor",
-                          "height": "24px",
-                          "width": "auto",
-                        }
-                      }
-                      viewBox=""
-                      xmlns=""
-                    />
-                    <span>
-                       
-                      Title
-                    </span>
-                  </div>
-                  <div
-                    className="item iconAlign"
-                    onClick={[Function]}
-                    role="option"
-                  >
-                    <svg
                       className="icon Review state"
                       dangerouslySetInnerHTML={
                         Object {
@@ -1007,7 +979,7 @@ exports[`Contents renders a contents component 1`] = `
                     tabIndex={0}
                   >
                     <svg
-                      className="icon"
+                      className="icon configuration-svg"
                       dangerouslySetInnerHTML={
                         Object {
                           "__html": undefined,
@@ -1033,7 +1005,7 @@ exports[`Contents renders a contents component 1`] = `
                         Rearrange items by…
                       </div>
                       <div
-                        className="item sort_id iconAlign"
+                        className="item sort_id icon-align"
                         onClick={[Function]}
                         role="option"
                       >
@@ -1060,7 +1032,7 @@ exports[`Contents renders a contents component 1`] = `
                           className="menu transition"
                         >
                           <div
-                            className="item sort_id_ascending iconAlign"
+                            className="item sort_id_ascending icon-align"
                             onClick={[Function]}
                             role="option"
                           >
@@ -1086,7 +1058,7 @@ exports[`Contents renders a contents component 1`] = `
                             Ascending
                           </div>
                           <div
-                            className="item sort_id_descending iconAlign"
+                            className="item sort_id_descending icon-align"
                             onClick={[Function]}
                             role="option"
                           >
@@ -1114,7 +1086,7 @@ exports[`Contents renders a contents component 1`] = `
                         </div>
                       </div>
                       <div
-                        className="item sort_sortable_title iconAlign"
+                        className="item sort_sortable_title icon-align"
                         onClick={[Function]}
                         role="option"
                       >
@@ -1141,7 +1113,7 @@ exports[`Contents renders a contents component 1`] = `
                           className="menu transition"
                         >
                           <div
-                            className="item sort_sortable_title_ascending iconAlign"
+                            className="item sort_sortable_title_ascending icon-align"
                             onClick={[Function]}
                             role="option"
                           >
@@ -1167,7 +1139,7 @@ exports[`Contents renders a contents component 1`] = `
                             Ascending
                           </div>
                           <div
-                            className="item sort_sortable_title_descending iconAlign"
+                            className="item sort_sortable_title_descending icon-align"
                             onClick={[Function]}
                             role="option"
                           >
@@ -1195,7 +1167,7 @@ exports[`Contents renders a contents component 1`] = `
                         </div>
                       </div>
                       <div
-                        className="item sort_EffectiveDate iconAlign"
+                        className="item sort_EffectiveDate icon-align"
                         onClick={[Function]}
                         role="option"
                       >
@@ -1222,7 +1194,7 @@ exports[`Contents renders a contents component 1`] = `
                           className="menu transition"
                         >
                           <div
-                            className="item sort_effective_ascending iconAlign"
+                            className="item sort_effective_ascending icon-align"
                             onClick={[Function]}
                             role="option"
                           >
@@ -1248,7 +1220,7 @@ exports[`Contents renders a contents component 1`] = `
                             Ascending
                           </div>
                           <div
-                            className="item sort_effective_descending iconAlign"
+                            className="item sort_effective_descending icon-align"
                             onClick={[Function]}
                             role="option"
                           >
@@ -1276,7 +1248,7 @@ exports[`Contents renders a contents component 1`] = `
                         </div>
                       </div>
                       <div
-                        className="item sort_CreationDate iconAlign"
+                        className="item sort_CreationDate icon-align"
                         onClick={[Function]}
                         role="option"
                       >
@@ -1303,7 +1275,7 @@ exports[`Contents renders a contents component 1`] = `
                           className="menu transition"
                         >
                           <div
-                            className="item sort_created_ascending iconAlign"
+                            className="item sort_created_ascending icon-align"
                             onClick={[Function]}
                             role="option"
                           >
@@ -1329,7 +1301,7 @@ exports[`Contents renders a contents component 1`] = `
                             Ascending
                           </div>
                           <div
-                            className="item sort_created_descending iconAlign"
+                            className="item sort_created_descending icon-align"
                             onClick={[Function]}
                             role="option"
                           >
@@ -1357,7 +1329,7 @@ exports[`Contents renders a contents component 1`] = `
                         </div>
                       </div>
                       <div
-                        className="item sort_ModificationDate iconAlign"
+                        className="item sort_ModificationDate icon-align"
                         onClick={[Function]}
                         role="option"
                       >
@@ -1384,7 +1356,7 @@ exports[`Contents renders a contents component 1`] = `
                           className="menu transition"
                         >
                           <div
-                            className="item sort_modified_ascending iconAlign"
+                            className="item sort_modified_ascending icon-align"
                             onClick={[Function]}
                             role="option"
                           >
@@ -1410,7 +1382,7 @@ exports[`Contents renders a contents component 1`] = `
                             Ascending
                           </div>
                           <div
-                            className="item sort_modified_descending iconAlign"
+                            className="item sort_modified_descending icon-align"
                             onClick={[Function]}
                             role="option"
                           >
@@ -1438,7 +1410,7 @@ exports[`Contents renders a contents component 1`] = `
                         </div>
                       </div>
                       <div
-                        className="item sort_portal_type iconAlign"
+                        className="item sort_portal_type icon-align"
                         onClick={[Function]}
                         role="option"
                       >
@@ -1465,7 +1437,7 @@ exports[`Contents renders a contents component 1`] = `
                           className="menu transition"
                         >
                           <div
-                            className="item sort_portal_type_ascending iconAlign"
+                            className="item sort_portal_type_ascending icon-align"
                             onClick={[Function]}
                             role="option"
                           >
@@ -1491,7 +1463,7 @@ exports[`Contents renders a contents component 1`] = `
                             Ascending
                           </div>
                           <div
-                            className="item sort_portal_type_descending iconAlign"
+                            className="item sort_portal_type_descending icon-align"
                             onClick={[Function]}
                             role="option"
                           >

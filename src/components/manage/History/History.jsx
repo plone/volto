@@ -162,15 +162,15 @@ class History extends Component {
               </Table.Row>
             </Table.Header>
             <Table.Body>
-              {map(entries, entry => (
+              {map(entries, (entry) => (
                 <Table.Row key={entry.time}>
                   <Table.Cell>
                     {('version' in entry && entry.version > 0 && (
                       <Link
                         className="item"
-                        to={`${getBaseUrl(
-                          this.props.pathname,
-                        )}/diff?one=${entry.version - 1}&two=${entry.version}`}
+                        to={`${getBaseUrl(this.props.pathname)}/diff?one=${
+                          entry.version - 1
+                        }&two=${entry.version}`}
                       >
                         {entry.transition_title}
                       </Link>

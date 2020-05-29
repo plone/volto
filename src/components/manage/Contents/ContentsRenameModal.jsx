@@ -96,7 +96,7 @@ class ContentsRenameModal extends Component {
    */
   onSubmit(data) {
     this.props.updateContent(
-      map(this.props.items, item => item.url),
+      map(this.props.items, (item) => item.url),
       map(this.props.items, (item, index) => ({
         id: data[`${index}_id`],
         title: data[`${index}_title`],
@@ -163,7 +163,7 @@ class ContentsRenameModal extends Component {
 export default compose(
   injectIntl,
   connect(
-    state => ({
+    (state) => ({
       request: state.content.update,
     }),
     { updateContent },

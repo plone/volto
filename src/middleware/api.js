@@ -47,7 +47,7 @@ function sendOnSocket(request) {
  * @param {Object} api Api object.
  * @returns {Promise} Action promise.
  */
-export default api => ({ dispatch, getState }) => next => action => {
+export default (api) => ({ dispatch, getState }) => (next) => (action) => {
   if (typeof action === 'function') {
     return action(dispatch, getState);
   }
@@ -63,12 +63,12 @@ export default api => ({ dispatch, getState }) => next => action => {
 
   if (socket) {
     actionPromise = Array.isArray(request)
-      ? Promise.all(request.map(item => sendOnSocket({ ...item, id: type })))
+      ? Promise.all(request.map((item) => sendOnSocket({ ...item, id: type })))
       : sendOnSocket({ ...request, id: type });
   } else {
     actionPromise = Array.isArray(request)
       ? Promise.all(
-          request.map(item =>
+          request.map((item) =>
             api[item.op](item.path, {
               data: item.data,
               type: item.type,
@@ -82,7 +82,7 @@ export default api => ({ dispatch, getState }) => next => action => {
           headers: request.headers,
         });
     actionPromise.then(
-      result => {
+      (result) => {
         if (getState().apierror.connectionRefused) {
           next({
             ...rest,
@@ -94,13 +94,13 @@ export default api => ({ dispatch, getState }) => next => action => {
             path: '/',
             expires: new Date(jwtDecode(result.token).exp * 1000),
           });
-          api.get('/@wstoken').then(res => {
+          api.get('/@wstoken').then((res) => {
             socket = new WebSocket(
               `${settings.apiPath.replace('http', 'ws')}/@ws?ws_token=${
                 res.token
               }`,
             );
-            socket.onmessage = message => {
+            socket.onmessage = (message) => {
               const packet = JSON.parse(message.data);
               if (packet.error) {
                 dispatch({
@@ -118,7 +118,7 @@ export default api => ({ dispatch, getState }) => next => action => {
         }
         return next({ ...rest, result, type: `${type}_SUCCESS` });
       },
-      error => {
+      (error) => {
         // Only SRR can set ECONNREFUSED
         if (error.code === 'ECONNREFUSED') {
           next({

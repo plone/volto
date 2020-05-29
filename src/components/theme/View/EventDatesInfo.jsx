@@ -114,8 +114,8 @@ export const Recurrence = ({ recurrence, start }) => {
     <List
       items={rrule
         .all()
-        .map(date => datesForDisplay(date))
-        .map(date => date.startDate)}
+        .map((date) => datesForDisplay(date))
+        .map((date) => date.startDate)}
     />
   );
 };

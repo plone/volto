@@ -33,8 +33,8 @@
 }
 
 .ui.selection.active.dropdown .menu {
-  margin-top: 1px;
   border: none;
+  margin-top: 1px;
 
   &:hover {
     border: none;

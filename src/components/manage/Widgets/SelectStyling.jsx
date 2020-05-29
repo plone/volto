@@ -9,7 +9,7 @@ import checkSVG from '@plone/volto/icons/check.svg';
 
 const ReactSelect = loadable.lib(() => import('react-select'));
 
-export const Option = props => {
+export const Option = (props) => {
   return (
     <ReactSelect>
       {({ components }) => (
@@ -27,7 +27,7 @@ export const Option = props => {
   );
 };
 
-export const DropdownIndicator = props => {
+export const DropdownIndicator = (props) => {
   return (
     <ReactSelect>
       {({ components }) => (
@@ -43,7 +43,7 @@ export const DropdownIndicator = props => {
   );
 };
 
-export const selectTheme = theme => ({
+export const selectTheme = (theme) => ({
   ...theme,
   borderRadius: 0,
   colors: {
@@ -70,15 +70,15 @@ export const customSelectStyles = {
     borderBottom: '1px solid #c7d5d8',
     zIndex: 2,
   }),
-  indicatorSeparator: styles => ({
+  indicatorSeparator: (styles) => ({
     ...styles,
     width: null,
   }),
-  valueContainer: styles => ({
+  valueContainer: (styles) => ({
     ...styles,
     paddingLeft: 0,
   }),
-  dropdownIndicator: styles => ({
+  dropdownIndicator: (styles) => ({
     paddingRight: 0,
   }),
   option: (styles, state) => ({

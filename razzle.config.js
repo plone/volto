@@ -33,7 +33,6 @@ module.exports = {
       options: {
         importLoaders: 2,
         sourceMap: true,
-        localIdentName: '[name]__[local]___[hash:base64:5]',
       },
     };
     const POST_CSS_LOADER = {
@@ -70,7 +69,6 @@ module.exports = {
             {
               loader: 'less-loader',
               options: {
-                outputStyle: 'expanded',
                 sourceMap: true,
               },
             },
@@ -82,15 +80,12 @@ module.exports = {
               options: {
                 importLoaders: 2,
                 sourceMap: true,
-                modules: false,
-                localIdentName: '[name]__[local]___[hash:base64:5]',
               },
             },
             POST_CSS_LOADER,
             {
               loader: 'less-loader',
               options: {
-                outputStyle: 'expanded',
                 sourceMap: true,
               },
             },
@@ -228,6 +223,18 @@ module.exports = {
       });
     }
 
+    // If there's any addon, add the alias for the `src` folder
+    const addonsAliases = {};
+    if (packageJson.addons) {
+      const addons = packageJson.addons;
+      addons.forEach(addon => {
+        if (!(addon in jsconfigPaths)) {
+          const addonPath = `${projectRootPath}/node_modules/${addon}/src`;
+          addonsAliases[addon] = addonPath;
+        }
+      });
+    }
+
     const customizations = {};
     let { customizationPaths } = packageJson;
     if (!customizationPaths) {
@@ -264,6 +271,7 @@ module.exports = {
       ...customizations,
       ...config.resolve.alias,
       '../../theme.config$': `${projectRootPath}/theme/theme.config`,
+      ...addonsAliases,
       ...jsconfigPaths,
       '@plone/volto': `${voltoPath}/src`,
       // to be able to reference path uncustomized by webpack
@@ -287,12 +295,27 @@ module.exports = {
     if (packageJson.name !== '@plone/volto') {
       include.push(fs.realpathSync(`${voltoPath}/src`));
     }
+    // Add babel support external (ie. node_modules npm published packages)
+    if (packageJson.addons) {
+      packageJson.addons.forEach(addon =>
+        include.push(
+          fs.realpathSync(`${projectRootPath}/node_modules/${addon}/src`),
+        ),
+      );
+    }
+
     config.module.rules[babelRuleIndex] = Object.assign(
       config.module.rules[babelRuleIndex],
       {
         include,
       },
     );
+
+    let addonsAsExternals = [];
+    if (packageJson.addons) {
+      addonsAsExternals = packageJson.addons.map(addon => new RegExp(addon));
+    }
+
     config.externals =
       target === 'node'
         ? [
@@ -303,6 +326,8 @@ module.exports = {
                 /\.(svg|png|jpg|jpeg|gif|ico)$/,
                 /\.(mp4|mp3|ogg|swf|webp)$/,
                 /\.(css|scss|sass|sss|less)$/,
+                // Add support for whitelist external (ie. node_modules npm published packages)
+                ...addonsAsExternals,
                 /^@plone\/volto/,
               ].filter(Boolean),
             }),

@@ -1,0 +1,279 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContentTypes renders dexterity content-types controlpanel component 1`] = `
+<div
+  className="ui container types-control-panel"
+>
+  <div
+    className="container"
+  />
+  <div
+    className="ui container"
+  >
+    <article
+      id="content"
+    >
+      <header>
+        <h1
+          className="documentFirstHeading"
+        >
+          Dexterity Content Types
+        </h1>
+      </header>
+      <section
+        id="content-core"
+      >
+        <table
+          className="ui single line striped compact table"
+        >
+          <thead
+            className=""
+          >
+            <tr
+              className=""
+            >
+              <th
+                className=""
+              >
+                Type
+              </th>
+              <th
+                className=""
+              >
+                Description
+              </th>
+              <th
+                className=""
+              >
+                Items
+              </th>
+              <th
+                className="right aligned"
+              >
+                Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody
+            className=""
+          >
+            <tr
+              className=""
+            >
+              <td
+                className=""
+              >
+                <a
+                  href="/controlpanel/dexterity-types/Document"
+                  onClick={[Function]}
+                >
+                  Page
+                </a>
+              </td>
+              <td
+                className=""
+              >
+                
+              </td>
+              <td
+                className=""
+              >
+                0
+              </td>
+              <td
+                className="right aligned"
+              >
+                <div
+                  aria-expanded={false}
+                  className="ui dropdown"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onMouseDown={[Function]}
+                  role="listbox"
+                  tabIndex={0}
+                >
+                  <div
+                    aria-atomic={true}
+                    aria-live="polite"
+                    className="text"
+                    role="alert"
+                  />
+                  <i
+                    aria-hidden="true"
+                    className="ellipsis horizontal icon"
+                    onClick={[Function]}
+                  />
+                  <div
+                    className="menu transition left"
+                  >
+                    <div
+                      className="item"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <svg
+                        className="icon"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={null}
+                        style={
+                          Object {
+                            "fill": "currentColor",
+                            "height": "15px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
+                      Edit
+                    </div>
+                    <div
+                      className="item"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <svg
+                        className="icon"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={null}
+                        style={
+                          Object {
+                            "fill": "currentColor",
+                            "height": "15px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
+                      Delete
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr
+              className=""
+            >
+              <td
+                className=""
+              >
+                <a
+                  href="/controlpanel/dexterity-types/Folder"
+                  onClick={[Function]}
+                >
+                  Folder
+                </a>
+              </td>
+              <td
+                className=""
+              >
+                
+              </td>
+              <td
+                className=""
+              >
+                0
+              </td>
+              <td
+                className="right aligned"
+              >
+                <div
+                  aria-expanded={false}
+                  className="ui dropdown"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onMouseDown={[Function]}
+                  role="listbox"
+                  tabIndex={0}
+                >
+                  <div
+                    aria-atomic={true}
+                    aria-live="polite"
+                    className="text"
+                    role="alert"
+                  />
+                  <i
+                    aria-hidden="true"
+                    className="ellipsis horizontal icon"
+                    onClick={[Function]}
+                  />
+                  <div
+                    className="menu transition left"
+                  >
+                    <div
+                      className="item"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <svg
+                        className="icon"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={null}
+                        style={
+                          Object {
+                            "fill": "currentColor",
+                            "height": "15px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
+                      Edit
+                    </div>
+                    <div
+                      className="item"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <svg
+                        className="icon"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={null}
+                        style={
+                          Object {
+                            "fill": "currentColor",
+                            "height": "15px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
+                      Delete
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </article>
+  </div>
+  <div
+    id="Portal"
+  />
+</div>
+`;

@@ -379,7 +379,7 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
                     type="checkbox"
                   />
                   <label
-                    for="field-openLinkInNewTab"
+                    htmlFor="field-openLinkInNewTab"
                   >
                     Open in a new tab
                   </label>

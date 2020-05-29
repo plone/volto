@@ -39,7 +39,7 @@ BodyClass.defaultProps = {
  */
 function reducePropsToState(propsList) {
   let classList = [];
-  propsList.forEach(props => {
+  propsList.forEach((props) => {
     if (props.className) {
       classList = classList.concat(props.className);
     }
@@ -55,10 +55,10 @@ function reducePropsToState(propsList) {
  */
 function handleStateChangeOnClient(classList) {
   document.body.className = '';
-  classList.forEach(className => {
+  classList.forEach((className) => {
     // This allows the component to accept more than one class at the same time
     if (className.includes(' ')) {
-      className.split(' ').forEach(className => {
+      className.split(' ').forEach((className) => {
         if (!document.body.classList.contains(className)) {
           document.body.classList.add(className);
         }

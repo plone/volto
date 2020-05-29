@@ -1,6 +1,6 @@
 # Change Log
 
-## 5.2.2 (unreleased)
+## 6.0.1 (unreleased)
 
 ### Breaking
 
@@ -9,6 +9,166 @@
 ### Bugfix
 
 ### Internal
+
+## 6.0.0 (2020-05-18)
+
+### Breaking
+
+- Removed support for CSS modules, since Razzle 3.1.x do not support them @sneridagh
+- Updated Volto dependencies - See https://docs.voltocms.com/upgrade-guide/ for more information @sneridagh
+- By adding `react-beautiful-dnd` in the block editor we are introducing new wrappers
+  (belonging to the lib machinery) in the structure. The original structure and class
+  names are still in there for maintain maximum backwards compatibility. Those might be
+  cleaned up in next major versions, so if for some reason you have customized the
+  styling of your blocks in edit mode relying in the old structure, you might want to
+  review and adapt them @sneridagh
+
+### Feature
+
+- Added `react-beautiful-dnd` in core for edit form @iFlameing
+
+### Bugfix
+
+- Improve `isInternalURL` helper to match also anchors @sneridagh
+- Fix local build when no RAZZLE_API_PATH is set @sneridagh
+- Fix `WysiwygWidget` redraft HTML conversion when creating an empty paragraph force a `<br />` on it @sneridagh
+
+### Internal
+
+- Update to Razzle 3.1.2 @sneridagh
+- Update to React 16.13.1 @sneridagh
+- Removal of unused (and deprecated) `@babel/preset-stage-0` @sneridagh
+- Update `react-router` @sneridagh
+- Update `react-redux` and friends @sneridagh
+- Update `connected-react-router` @sneridagh
+- Update low hanging fruits deps @sneridagh
+- Update style/less loaders and friends @sneridagh
+- Update stylelint and friends @sneridagh
+- Update prettier @sneridagh
+- Update eslint plugins @sneridagh
+- Update `cypress-axe`, `detectbrowser`, `lint-staged` and `release-it` @sneridagh
+
+## 5.10.0 (2020-05-16)
+
+### Feature
+
+- Refactor createContent command to accept a single json object @iFlameing
+- enable hyperlinks in comments when intelligent text is enabled for comments @jackahl
+- Added InlineForm, a generic form implementation that can be used to edit, among others, block data. @tiberiuichim
+
+### Internal
+
+- Make available some internal artifacts (Router, Redux Store and Settings) to the Cypress acceptance tests, add docs @sneridagh
+- Added a cypress test for the comment @iFlameing
+- Add a cypress function to set registry entries @jackahl
+
+## 5.9.1 (2020-05-15)
+
+### Bugfix
+
+- Fix Bug in Form Component, that lead to site crash when transmitting a comment @jackahl #1475
+- Fix for the long lasted issue when creating links in newly created text blocks not showing as links until you save @avoinea
+
+### Internal
+
+- add a cypress function to set registry entries @jackahl
+
+## 5.9.0 (2020-05-12)
+
+### Feature
+
+- Implemented a new ObjectBrowserWidget @giuliaghisini
+- Add system information in controlpanel @iFlameing #1457
+- Added Dexterity Types Controlpanel @avoinea #1285
+- Remember sort order of folder contents view. @ksuess
+
+### Bugfix
+
+- Fix new lines inside blockquotes are not rendered @iFlameing #1249
+- Fix blockquote style render error: unique key @iFlameing #1097
+- Added Dexterity control panel Cypress tests @iFlameing
+
+## 5.8.0 (2020-05-11)
+
+### Feature
+
+- Adding Image Gallery template in Listing view @iFlameing
+
+## 5.7.1 (2020-05-08)
+
+### Bugfix
+
+- Fix translation locator lookup in `CreateTranslation` component and remove the no longer needed store reducer @sneridagh
+
+## 5.7.0 (2020-05-08)
+
+### Feature
+
+- Enable `@querystringresults` action to use the new context aware query feature @sneridagh
+
+## 5.6.1 (2020-05-08)
+
+### Bugfix
+
+- REALLY load the current object language on SSR, instead of relying on the cookie @sneridagh
+
+### Internal
+
+- Pin some api devs (ZCatalog and p.namedfile improvements) @sneridagh
+
+## 5.6.0 (2020-05-06)
+
+### Feature
+
+- Load the current object language on SSR, instead of relying on the cookie @sneridagh
+
+### Bugfix
+
+- Correct the `defaultLanguage` intend in `react-intl-redux` configuration @sneridagh
+
+### Internal
+
+- Add default `src` alias for addons detecting if there is a released or a mrs-developer one @sneridagh
+
+## 5.5.0 (2020-05-06)
+
+### Feature
+
+- Added label expired if expiration date is smaller that current date #1413 @iFlameing
+- Added word limit widget @iFlameing
+- Addons control panel @esteele @iFlameing
+
+### Internal
+
+- Cypress test for Table Block @steffenri @iFlameing
+- Cypress tests upgraded for Image, Hero and HTML Block @steffenri @iFlameing
+- Added cypress test for sort method in folder content #1035 @iFlameing
+
+## 5.4.0 (2020-05-04)
+
+### Feature
+
+- Add babel and externals support in Webpack for add-on infrastructure @sneridagh
+- Forward the images and files cache headers in Volto SSR passthrough @sneridagh
+
+### Bugfix
+
+- Fix handling of external links in ToHTML config @nzambello
+- Remove the title field from right dropdown in folder content view
+
+### Internal
+
+- Periodical upgrade of `browserlist` lib @sneridagh
+
+## 5.3.0 (2020-04-29)
+
+### Feature
+
+- Add general @navigation endpoint depth setting @sneridagh
+
+### Bugfix
+
+- Fix `<html>` `lang` attribute @sneridagh
 
 ## 5.2.1 (2020-04-27)
 

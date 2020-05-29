@@ -126,7 +126,7 @@ class Sidebar extends Component {
       sidebarContainer.classList.remove('no-toolbar');
     }
 
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       showFull: !prevState.showFull,
     }));
   }
@@ -233,7 +233,7 @@ class Sidebar extends Component {
 export default compose(
   injectIntl,
   connect(
-    state => ({
+    (state) => ({
       tab: state.sidebar.tab,
       toolbarExpanded: state.toolbar.expanded,
     }),

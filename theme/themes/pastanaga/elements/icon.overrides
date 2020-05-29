@@ -1382,7 +1382,7 @@ i.icon.ellipsis.vertical:before {
 }
 
 i.icon.cube:before {
-  content: '\f1b2';
+  content: @icon-content;
 }
 
 i.icon.cubes:before {
@@ -3170,6 +3170,10 @@ i.icon.minimize:before {
 
 i.icon.add:before {
   content: @icon-add-document;
+}
+
+i.icon.add-on:before {
+  content: @icon-add-on;
 }
 
 i.icon.exclamation.circle:before {

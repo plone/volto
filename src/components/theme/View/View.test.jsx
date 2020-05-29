@@ -5,26 +5,32 @@ import { Provider } from 'react-intl-redux';
 
 import View from './View';
 
+jest.mock('~/config', () => ({
+  settings: {
+    nonContentRoutes: [],
+    supportedLanguages: ['en'],
+    navDepth: 1,
+  },
+  views: {
+    defaultView: () => <div id="DefaultView" />,
+    layoutViews: {
+      summary_view: () => <div id="SummaryView" />,
+      tabular_view: () => <div id="TabularView" />,
+    },
+    contentTypesViews: {
+      Event: () => <div className="event" />,
+    },
+    errorViews: {
+      ECONNREFUSED: () => <div className="ECONNREFUSED" />,
+    },
+  },
+}));
+
 const mockStore = configureStore();
 
 jest.mock('react-portal', () => ({
   Portal: jest.fn(() => <div id="Portal" />),
 }));
-jest.mock('./SummaryView', () => {
-  const dummyComponent = jest.fn(() => <div id="SummaryView" />);
-  dummyComponent.displayName = 'dummyComponent';
-  return dummyComponent;
-});
-jest.mock('./TabularView', () => {
-  const dummyComponent = jest.fn(() => <div id="TabularView" />);
-  dummyComponent.displayName = 'dummyComponent';
-  return dummyComponent;
-});
-jest.mock('./DefaultView', () => {
-  const dummyComponent = jest.fn(() => <div id="DefaultView" />);
-  dummyComponent.displayName = 'dummyComponent';
-  return dummyComponent;
-});
 jest.mock('../SocialSharing/SocialSharing', () =>
   jest.fn(() => <div id="SocialSharing" />),
 );
