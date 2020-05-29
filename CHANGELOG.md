@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Added recurrence widget @giuliaghisini
+
 ### Bugfix
 
 ### Internal
