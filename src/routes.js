@@ -31,6 +31,7 @@ import {
   ContentTypes,
   ContentType,
 } from '@plone/volto/components';
+import { addonRoutes } from '~/config';
 
 /**
  * Default routes array.
@@ -185,7 +186,11 @@ const routes = [
   {
     path: '/',
     component: App,
-    routes: defaultRoutes,
+    routes: [
+      // addon routes have a higher priority then default routes
+      ...(addonRoutes || []),
+      ...defaultRoutes,
+    ],
   },
 ];
 

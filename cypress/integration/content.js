@@ -9,7 +9,7 @@ describe('Add Content Tests', () => {
     cy.waitForResourceToLoad('@types');
     cy.waitForResourceToLoad('?fullobjects');
   });
-  it('As editor I can add a page', function() {
+  it('As editor I can add a page', function () {
     // when I add a page
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-document').click();
@@ -27,7 +27,7 @@ describe('Add Content Tests', () => {
       cy.contains('My Page');
     }
   });
-  it('As editor I can add a page with a text block', function() {
+  it('As editor I can add a page with a text block', function () {
     // when I add a page with a text block
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-document').click();
@@ -50,15 +50,13 @@ describe('Add Content Tests', () => {
       cy.contains('This is the text');
     }
   });
-  it('As editor I can add a file', function() {
+  it('As editor I can add a file', function () {
     // when I add a file
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-file').click();
 
     if (Cypress.env('API') === 'guillotina') {
-      cy.get('.formtabs.menu')
-        .contains('default')
-        .click();
+      cy.get('.formtabs.menu').contains('default').click();
     }
 
     cy.get('input[name="title"]')
@@ -67,27 +65,21 @@ describe('Add Content Tests', () => {
 
     if (Cypress.env('API') === 'guillotina') {
       // Guillotina wants the file handler instead than the base64 encoding
-      cy.fixture('file.pdf').then(fileContent => {
+      cy.fixture('file.pdf').then((fileContent) => {
         cy.get('#field-file').upload(
           { fileContent, fileName: 'file.pdf', mimeType: 'application/pdf' },
           { subjectType: 'input' },
         );
-        cy.get('#field-file')
-          .parent()
-          .parent()
-          .contains('file.pdf');
+        cy.get('#field-file').parent().parent().contains('file.pdf');
       });
     } else {
-      cy.fixture('file.pdf', 'base64').then(fileContent => {
-        cy.get('#field-file').upload(
+      cy.fixture('file.pdf', 'base64').then((fileContent) => {
+        cy.get('input#field-file').upload(
           { fileContent, fileName: 'file.pdf', mimeType: 'application/pdf' },
           { subjectType: 'input' },
         );
       });
-      cy.get('#field-file')
-        .parent()
-        .parent()
-        .contains('file.pdf');
+      cy.get('#field-file').parent().parent().contains('file.pdf');
     }
     cy.get('#toolbar-save').click();
 
@@ -100,15 +92,13 @@ describe('Add Content Tests', () => {
     cy.contains('My File');
   });
 
-  it('As editor I can add an image', function() {
+  it('As editor I can add an image', function () {
     // when I add an image
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-image').click();
 
     if (Cypress.env('API') === 'guillotina') {
-      cy.get('.formtabs.menu')
-        .contains('default')
-        .click();
+      cy.get('.formtabs.menu').contains('default').click();
     }
 
     cy.get('input[name="title"]')
@@ -117,26 +107,20 @@ describe('Add Content Tests', () => {
 
     if (Cypress.env('API') === 'guillotina') {
       // Guillotina wants the file handler instead than the base64 encoding
-      cy.fixture('image.png').then(fileContent => {
+      cy.fixture('image.png').then((fileContent) => {
         cy.get('#field-image').upload(
           { fileContent, fileName: 'image.png', mimeType: 'image/png' },
           { subjectType: 'input' },
         );
-        cy.get('#field-image')
-          .parent()
-          .parent()
-          .contains('image.png');
+        cy.get('#field-image').parent().parent().contains('image.png');
       });
     } else {
-      cy.fixture('image.png', 'base64').then(fileContent => {
-        cy.get('#field-image').upload(
+      cy.fixture('image.png', 'base64').then((fileContent) => {
+        cy.get('input#field-image').upload(
           { fileContent, fileName: 'image.png', mimeType: 'image/png' },
           { subjectType: 'input' },
         );
-        cy.get('#field-image')
-          .parent()
-          .parent()
-          .contains('image.png');
+        cy.get('#field-image').parent().parent().contains('image.png');
       });
     }
     cy.get('#toolbar-save').click();
@@ -150,7 +134,7 @@ describe('Add Content Tests', () => {
 
   // Plone only tests
   if (Cypress.env('API') === 'plone') {
-    it('As editor I can add a news item', function() {
+    it('As editor I can add a news item', function () {
       // when I add a news item
       cy.get('#toolbar-add').click();
       cy.get('#toolbar-add-news-item').click();
@@ -163,7 +147,7 @@ describe('Add Content Tests', () => {
       cy.url().should('eq', Cypress.config().baseUrl + '/my-news-item');
       cy.get('.navigation .item.active').should('have.text', 'My News Item');
     });
-    it('As editor I can add a folder', function() {
+    it('As editor I can add a folder', function () {
       // when I add a folder
       cy.get('#toolbar-add').click();
       cy.get('#toolbar-add-folder').click();
@@ -184,7 +168,7 @@ describe('Add Content Tests', () => {
       beforeEach(() => {
         cy.autologin();
       });
-      it('As editor I can add a Guillotina folder', function() {
+      it('As editor I can add a Guillotina folder', function () {
         cy.visit('/');
         cy.get('#toolbar-add').click();
         cy.get('#toolbar-add-cmsfolder').click();
