@@ -15,7 +15,7 @@ import { Days } from './Utils';
  * @returns {string} Markup of the component.
  */
 const ByDayField = ({ label, value, onChange }) => {
-  const toggleWeekDay = dayName => {
+  const toggleWeekDay = (dayName) => {
     var day = Days[dayName];
     var byweekday = value ? [...value] : [];
 
@@ -38,8 +38,8 @@ const ByDayField = ({ label, value, onChange }) => {
             </div>
           </Grid.Column>
           <Grid.Column width="8">
-            <Button.Group basic>
-              {Object.keys(Days).map(d => (
+            <Button.Group basic className="byday-field">
+              {Object.keys(Days).map((d) => (
                 <Button
                   key={d}
                   active={value?.indexOf(Days[d]) >= 0}

@@ -272,7 +272,6 @@ class RecurrenceWidget extends Component {
       }
     });
     if (freq === FREQUENCES.WEEKLY && weekdays) {
-      console.log(weekdays, WEEKLY_DAYS);
       if (isEqual(weekdays.sort(), WEEKLY_DAYS.map((w) => w.weekday).sort())) {
         freq = FREQUENCES.WEEKDAYS;
       }
@@ -299,7 +298,7 @@ class RecurrenceWidget extends Component {
       freq: FREQUENCES.DAILY,
       interval: 1,
     };
-    console.log(this.props.formData);
+
     formValues = this.changeField(
       formValues,
       'recurrenceEnds',
@@ -309,7 +308,6 @@ class RecurrenceWidget extends Component {
     const rrule = rruleSet.rrules()[0];
 
     if (rrule) {
-      console.log('options', rrule.options.byweekday);
       var freq = this.getFreq(rrule.options.freq, rrule.options.byweekday);
 
       //init with rruleOptions
