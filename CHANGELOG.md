@@ -7,8 +7,13 @@
 ### Feature
 
 - Added param 'wrapped' for widgets, to use widgets without form wrappers. @giuliaghisini
+- Added internationalization for Romanian language @alecghica #1521
+- Support loading additional reducers from the ``config.addonReducers`` key,
+  to allow addons to provide their own reducers @tiberiuichim
 
 ### Bugfix
+
+- Do not store the server information of the image block in the block @sneridagh
 
 ### Internal
 
