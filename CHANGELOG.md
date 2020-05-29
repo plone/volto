@@ -11,6 +11,8 @@
 
 ### Bugfix
 
+- Do not store the server information of the image block in the block @sneridagh
+
 ### Internal
 
 ## 6.0.0 (2020-05-18)
