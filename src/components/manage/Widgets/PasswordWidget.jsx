@@ -30,6 +30,7 @@ const PasswordWidget = ({
     description={description}
     required={required}
     error={error}
+    fieldSet={fieldSet}
     wrapped={wrapped}
   >
     <Input

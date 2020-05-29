@@ -37,6 +37,7 @@ const FileWidget = ({
       required={required}
       error={error}
       wrapped={wrapped}
+      fieldSet={fieldSet}
     >
       <Input
         id={`field-${id}`}
