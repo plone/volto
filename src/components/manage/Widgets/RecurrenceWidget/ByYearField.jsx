@@ -31,7 +31,7 @@ const ByYearField = ({
   intl,
 }) => {
   return (
-    <Form.Field inline className="text">
+    <Form.Field inline className="text byyear-field">
       <Grid>
         <Grid.Row stretched>
           <Grid.Column width="4">
@@ -40,12 +40,13 @@ const ByYearField = ({
             </div>
           </Grid.Column>
           <Grid.Column width="8">
-            <Form.Group inline>
+            <Form.Group inline className="byyear-bymonthday">
               <Form.Field>
                 <Radio
                   label=""
                   name="yearly"
                   value="bymonthday"
+                  id="yearly-bymonthday"
                   checked={value === 'bymonthday'}
                   onChange={(e, { value }) => onChange('yearly', value)}
                 />
@@ -64,11 +65,12 @@ const ByYearField = ({
                 onChange={onChange}
               />
             </Form.Group>
-            <Form.Group inline>
+            <Form.Group inline className="byyear-byday">
               <Form.Field>
                 <Radio
                   label=""
                   name="yearly"
+                  id="yearly-byday"
                   value="byday"
                   checked={value === 'byday'}
                   onChange={(e, { value }) => onChange('yearly', value)}

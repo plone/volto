@@ -207,7 +207,7 @@ if (Cypress.env('API') === 'plone') {
       );
     });
 
-    it('Test Monthly recurrence', function () {
+    it.skip('Test Monthly recurrence', function () {
       //change freq
       cy.get('.modal .field#field-freq').click().type('Monthly {enter}');
 
@@ -273,6 +273,114 @@ if (Cypress.env('API') === 'plone') {
       cy.get('#default-recurrence .occurences .list > .item').should(
         'have.length',
         6,
+      );
+    });
+
+    it('Test Yearly recurrence', function () {
+      //change freq
+      cy.get('.modal .field#field-freq').click().type('Yearly {enter}');
+
+      cy.get('.modal #until-date').type('{selectall}12/31/2030');
+      cy.get('.modal .occurences .list > .item').should('have.length', 11);
+
+      cy.get('.modal #interval').type('{selectall}2');
+      cy.get('.modal .occurences .list > .item').should('have.length', 6);
+
+      cy.get('.modal #interval').type('{selectall}3');
+      cy.get('.modal .occurences .list > .item').should('have.length', 4);
+
+      cy.get('.modal #interval').type('{selectall}2');
+
+      cy.get('.modal input#bymonthday').type('{selectall}6');
+      cy.get('.modal .occurences .list > .item').should('have.length', 6);
+      cy.get('.modal .occurences .list .item:last-of-type .content').contains(
+        'Monday, May 6, 2030',
+      );
+
+      cy.get('.modal .byyear-bymonthday #monthOfTheYear')
+        .click()
+        .type('January{enter}');
+      cy.get('.modal .occurences .list > .item').should('have.length', 5);
+      cy.get('.modal .occurences .list .item:first-of-type .content').contains(
+        'Thursday, January 6, 2022',
+      );
+      cy.get('.modal .occurences .list .item:last-of-type .content').contains(
+        'Sunday, January 6, 2030',
+      );
+
+      cy.get('.modal #yearly-byday').check({ force: true });
+      cy.get('.modal .occurences .list > .item').should('have.length', 5);
+      cy.get('.modal .occurences .list .item:first-of-type .content').contains(
+        'Friday, May 6, 2022',
+      );
+      cy.get('.modal .occurences .list .item:last-of-type .content').contains(
+        'Friday, May 3, 2030',
+      );
+
+      cy.get('.modal #weekdayOfTheMonthIndex').click().type('Third {enter}');
+      cy.get('.modal .occurences .list > .item').should('have.length', 6);
+      cy.get('.modal .occurences .list .item:first-of-type .content').contains(
+        'Friday, May 15, 2020',
+      );
+      cy.get('.modal .occurences .list .item:last-of-type .content').contains(
+        'Friday, May 17, 2030',
+      );
+
+      cy.get('.modal #weekdayOfTheMonth').click().type('Monday {enter}');
+      cy.get('.modal .occurences .list > .item').should('have.length', 6);
+      cy.get('.modal .occurences .list .item:first-of-type .content').contains(
+        'Monday, May 18, 2020',
+      );
+      cy.get('.modal .occurences .list .item:last-of-type .content').contains(
+        'Monday, May 20, 2030',
+      );
+
+      cy.get('.modal .byyear-byday #monthOfTheYear')
+        .click()
+        .type('January {enter}');
+      cy.get('.modal .occurences .list > .item').should('have.length', 5);
+      cy.get('.modal .occurences .list .item:first-of-type .content').contains(
+        'Monday, January 17, 2022',
+      );
+      cy.get('.modal .occurences .list .item:last-of-type .content').contains(
+        'Monday, January 21, 2030',
+      );
+
+      cy.get('.modal #recurrenceEndsCount').check({ force: true });
+      cy.get('.modal #count').type('{selectall}3');
+      cy.get('.modal .occurences .list > .item').should('have.length', 3);
+      cy.get('.modal #count').type('{selectall}8');
+      cy.get('.modal .occurences .list > .item').should('have.length', 8);
+
+      //test exclude date
+      cy.get(
+        '.modal .occurences .list .item:last-of-type .exclude-button',
+      ).click();
+      cy.get('.modal .occurences .list .item:last-of-type .content').should(
+        'have.class',
+        'excluded',
+      );
+
+      //test re-add date
+      cy.get(
+        '.modal .occurences .list .item:last-of-type .include-button',
+      ).click();
+      cy.get('.modal .occurences .list .item:last-of-type .content').should(
+        'not.have.class',
+        'excluded',
+      );
+
+      //test add-date
+      cy.get('.modal #addDate-date').type('{selectall}10/08/2040');
+      cy.get('.modal .occurences .list .item:last-of-type .content').contains(
+        'Monday, October 8, 2040',
+      );
+
+      //save recurrence
+      cy.get('.modal .button.save').click();
+      cy.get('#default-recurrence .occurences .list > .item').should(
+        'have.length',
+        9,
       );
     });
 
