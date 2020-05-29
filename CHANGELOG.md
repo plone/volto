@@ -12,6 +12,7 @@
   to allow addons to provide their own reducers @tiberiuichim
 
 ### Bugfix
+ - Removed a regex check in default view, we already have that check implemented in `toHTML.jsx` L173s @nileshgulia1
 
 - Do not store the server information of the image block in the block @sneridagh
 
