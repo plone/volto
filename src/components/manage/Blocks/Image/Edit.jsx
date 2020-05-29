@@ -13,11 +13,13 @@ import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 import Dropzone from 'react-dropzone';
 
-import { settings } from '~/config';
-
 import { Icon, ImageSidebar, SidebarPortal } from '@plone/volto/components';
 import { createContent } from '@plone/volto/actions';
-import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
+import {
+  flattenToAppURL,
+  getBaseUrl,
+  isInternalURL,
+} from '@plone/volto/helpers';
 
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -232,8 +234,9 @@ class Edit extends Component {
           <img
             className={cx({ 'full-width': data.align === 'full' })}
             src={
-              data.url.includes(settings.apiPath)
-                ? `${flattenToAppURL(data.url)}/@@images/image`
+              isInternalURL(data.url)
+                ? // Backwards compat in the case that the block is storing the full server URL
+                  `${flattenToAppURL(data.url)}/@@images/image`
                 : data.url
             }
             alt={data.alt || ''}
