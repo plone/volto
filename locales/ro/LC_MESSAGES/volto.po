@@ -51,11 +51,11 @@ msgstr "Adăugare add-on-uri"
 
 #: components/manage/Toolbar/Types
 msgid "Add Content"
-msgstr "Adăugați conținut"
+msgstr "Adăugare conținut"
 
 #: components/manage/Toolbar/Types
 msgid "Add Translation..."
-msgstr "Adăugați traducere ..."
+msgstr "Adăugare traducere ..."
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add User"
@@ -67,15 +67,15 @@ msgstr "Adăugați o descriere ..."
 
 #: components/manage/Form/Form
 msgid "Add block..."
-msgstr "Adăugați bloc ..."
+msgstr "Adăugare bloc ..."
 
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "Add criteria"
-msgstr "Adăugați criterii"
+msgstr "Adăugare criterii"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Add field"
-msgstr "Adăugați câmp"
+msgstr "Adăugare câmp"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Add fieldset"
@@ -87,7 +87,7 @@ msgstr "Adăugare grup"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Add new content type"
-msgstr "Adăugați un nou tip de conținut"
+msgstr "Adăugare tip de conținut nou"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add new group"
@@ -135,7 +135,7 @@ msgstr "Sunteți sigur că doriți să ștergeți acest set de câmpuri, inclusi
 
 #: components/manage/Contents/Contents
 msgid "Ascending"
-msgstr "Ascendent"
+msgstr "Crescător"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Available"
@@ -166,11 +166,11 @@ msgstr "Baza"
 
 #: components/manage/Sidebar/Sidebar
 msgid "Block"
-msgstr "Blocare"
+msgstr "Bloc"
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Block style"
-msgstr "Blocare stil"
+msgstr "Stil bloc"
 
 #: components/theme/Login/Login
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
@@ -182,7 +182,7 @@ msgstr "Breadcrumbs"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Browse"
-msgstr ""
+msgstr "Răsfoiește"
 
 #: components/manage/Blocks/Image/Edit
 msgid "Browse the site, drop an image, or type an URL"
@@ -218,7 +218,7 @@ msgstr "Centrează"
 
 #: components/manage/History/History
 msgid "Change Note"
-msgstr "Schimbare notă"
+msgstr "Schimbă comentariul"
 
 #: components/manage/Preferences/ChangePassword
 msgid "Change Password"
@@ -431,7 +431,7 @@ msgstr "Șterge rândul"
 
 #: components/manage/Contents/Contents
 msgid "Descending"
-msgstr ""
+msgstr "Descrescător"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Controlpanels/ContentTypes
@@ -840,7 +840,7 @@ msgstr "Link"
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Link more"
-msgstr ""
+msgstr "Link mai multe"
 
 #: components/manage/Blocks/Listing/ListingMore
 msgid "Link title"
@@ -852,7 +852,7 @@ msgstr "Link Titlu"
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Link to"
-msgstr ""
+msgstr "Link la"
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
@@ -893,7 +893,7 @@ msgstr "Hartă"
 
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "Maps URL"
-msgstr ""
+msgstr "URL-urile hărților"
 
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
@@ -1397,7 +1397,7 @@ msgstr "Start resetare parolă"
 #: components/manage/Workflow/Workflow
 #: components/theme/View/TabularView
 msgid "State"
-msgstr ""
+msgstr "Stare"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "String"
@@ -1630,7 +1630,7 @@ msgstr "Nume utilizator"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Username"
-msgstr ""
+msgstr "Nume utilizator"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Users"
@@ -1671,7 +1671,7 @@ msgstr "Vizualizați această revizuire"
 
 #: components/manage/Display/Display
 msgid "Viewmode"
-msgstr ""
+msgstr "Mod vizualizare"
 
 #: components/manage/Controlpanels/VersionOverview
 msgid "Warning Regarding debug mode"
@@ -1792,7 +1792,7 @@ msgstr "descriere_parola_trimisa"
 
 #: components/theme/View/EventView
 msgid "event_alldates"
-msgstr "eveniment_toatedatele"
+msgstr "eveniment_toate_datele"
 
 #: components/theme/View/EventView
 msgid "event_attendees"
@@ -1800,11 +1800,11 @@ msgstr "eveniment_participanti"
 
 #: components/theme/View/EventView
 msgid "event_contactname"
-msgstr ""
+msgstr "eveniment_nume_de_contact"
 
 #: components/theme/View/EventView
 msgid "event_contactphone"
-msgstr "eveniment_telefondecontact"
+msgstr "eveniment_telefon_de_contact"
 
 #: components/theme/View/EventView
 msgid "event_website"
@@ -1812,15 +1812,15 @@ msgstr "eveniment_website"
 
 #: components/theme/View/EventView
 msgid "event_what"
-msgstr ""
+msgstr "eveniment_descriere"
 
 #: components/theme/View/EventView
 msgid "event_when"
-msgstr ""
+msgstr "eveniment_începere"
 
 #: components/theme/View/EventView
 msgid "event_where"
-msgstr ""
+msgstr "eveniment_locație"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "heading_sent_password"
@@ -1852,7 +1852,7 @@ msgstr "listare"
 
 #: components/theme/Unauthorized/Unauthorized
 msgid "log in"
-msgstr ""
+msgstr "autentificare (conectare)"
 
 #: config/Blocks
 msgid "maps"
