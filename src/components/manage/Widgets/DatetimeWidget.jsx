@@ -5,21 +5,34 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { injectIntl } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import { Form, Grid, Label } from 'semantic-ui-react';
 import { map } from 'lodash';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 import TimePicker from 'rc-time-picker';
 import cx from 'classnames';
-import leftKey from '../../../icons/left-key.svg';
-import rightKey from '../../../icons/right-key.svg';
-import { Icon } from '../../../components';
+import leftKey from '@plone/volto/icons/left-key.svg';
+import rightKey from '@plone/volto/icons/right-key.svg';
+import { Icon } from '@plone/volto/components';
+
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 
 import 'rc-time-picker/assets/index.css';
+
+const messages = defineMessages({
+  date: {
+    id: 'Date',
+    defaultMessage: 'Date',
+  },
+  time: {
+    id: 'Time',
+    defaultMessage: 'Time',
+  },
+});
 
 const PrevIcon = () => (
   <div
@@ -73,22 +86,26 @@ class DatetimeWidget extends Component {
   constructor(props) {
     super(props);
 
-    let datetime = moment().utc();
+    let datetime = null;
 
     if (this.props.value) {
       // check if datetime has timezone, otherwise assumes it's UTC
       datetime = this.props.value.match(/T(.)*(-|\+|Z)/g)
-        ? moment(this.props.value).utc()
-        : moment(`${this.props.value}Z`).utc();
+        ? // Since we assume UTC everywhere, then transform to local (momentjs default)
+          moment(this.props.value)
+        : // This might happen in old Plone versions dates
+          moment(`${this.props.value}Z`);
     }
 
-    if (!this.props.value && this.props.dateOnly) {
-      datetime.set(defaultTimeDateOnly);
-    }
+    // @nzambello do we need this if using null by default?
+    // if (!this.props.value && this.props.dateOnly) {
+    //   datetime.set(defaultTimeDateOnly);
+    // }
 
     this.state = {
       focused: false,
-      isDefault: datetime.toISOString() === moment().utc().toISOString(),
+      isDefault:
+        datetime && datetime.toISOString() === moment().utc().toISOString(),
       datetime,
     };
   }
@@ -103,12 +120,19 @@ class DatetimeWidget extends Component {
     if (date)
       this.setState(
         (prevState) => ({
-          datetime: prevState.datetime.set({
-            year: date.year(),
-            month: date.month(),
-            date: date.date(),
-            ...(this.props.dateOnly ? defaultTimeDateOnly : {}),
-          }),
+          datetime: prevState.datetime
+            ? prevState.datetime.set({
+                year: date.year(),
+                month: date.month(),
+                date: date.date(),
+                ...(this.props.dateOnly ? defaultTimeDateOnly : {}),
+              })
+            : moment().set({
+                year: date.year(),
+                month: date.month(),
+                date: date.date(),
+                ...(this.props.dateOnly ? defaultTimeDateOnly : {}),
+              }),
           isDefault: false,
         }),
         () => this.onDateTimeChange(),
@@ -124,11 +148,17 @@ class DatetimeWidget extends Component {
   onTimeChange = (time) => {
     this.setState(
       (prevState) => ({
-        datetime: prevState.datetime.set({
-          hours: time.hours(),
-          minutes: time.minutes(),
-          seconds: 0,
-        }),
+        datetime: prevState.datetime
+          ? prevState.datetime.set({
+              hours: time.hours(),
+              minutes: time.minutes(),
+              seconds: 0,
+            })
+          : moment().set({
+              hours: time.hours(),
+              minutes: time.minutes(),
+              seconds: 0,
+            }),
         isDefault: false,
       }),
       () => this.onDateTimeChange(),
@@ -141,7 +171,18 @@ class DatetimeWidget extends Component {
    * @returns {undefined}
    */
   onDateTimeChange = () => {
+    // Serialize always to UTC (toISOString)
     this.props.onChange(this.props.id, this.state.datetime.toISOString());
+  };
+
+  onResetDates = () => {
+    this.setState(
+      (prevState) => ({
+        datetime: null,
+        isDefault: false,
+      }),
+      this.props.onChange(this.props.id, null),
+    );
   };
 
   /**
@@ -182,7 +223,7 @@ class DatetimeWidget extends Component {
               </div>
             </Grid.Column>
             <Grid.Column width="8">
-              <div>
+              <div className="date-time-widget-wrapper">
                 <div
                   className={cx('ui input date-input', {
                     'default-date': isDefault,
@@ -202,6 +243,7 @@ class DatetimeWidget extends Component {
                     navPrev={<PrevIcon />}
                     navNext={<NextIcon />}
                     id={`${id}-date`}
+                    placeholder={intl.formatMessage(messages.date)}
                   />
                 </div>
                 {!dateOnly && (
@@ -212,6 +254,7 @@ class DatetimeWidget extends Component {
                   >
                     <TimePicker
                       defaultValue={datetime}
+                      value={datetime}
                       onChange={this.onTimeChange}
                       allowEmpty={false}
                       showSecond={false}
@@ -220,10 +263,19 @@ class DatetimeWidget extends Component {
                       format={moment
                         .localeData(intl.locale)
                         .longDateFormat('LT')}
+                      placeholder={intl.formatMessage(messages.time)}
                       focusOnOpen
+                      placement="bottomRight"
                     />
                   </div>
                 )}
+                <button
+                  disabled={!datetime}
+                  onClick={() => this.onResetDates()}
+                  className="item ui noborder button"
+                >
+                  <Icon name={clearSVG} size="24px" className="close" />
+                </button>
               </div>
               {map(error, (message) => (
                 <Label key={message} basic color="red" pointing>

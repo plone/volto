@@ -8,6 +8,9 @@
 
 ### Bugfix
 
+- UX and UI improvements to `DateTimeWidget` @sneridagh
+- Fix an UTC handling for edge cases in `DateTimeWidget` @sneridagh
+
 ### Internal
 
 ## 6.0.0 (2020-05-18)

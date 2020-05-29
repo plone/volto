@@ -27,7 +27,9 @@ exports[`renders a datetime widget component 1`] = `
       <div
         className="eight wide column"
       >
-        <div>
+        <div
+          className="date-time-widget-wrapper"
+        >
           <div
             className="ui input date-input"
           >
@@ -86,6 +88,7 @@ exports[`renders a datetime widget component 1`] = `
                 onChange={[Function]}
                 onFocus={[Function]}
                 onKeyDown={[Function]}
+                placeholder="Time"
                 readOnly={false}
                 type="text"
                 value="12:00 AM"
@@ -95,6 +98,30 @@ exports[`renders a datetime widget component 1`] = `
               />
             </span>
           </div>
+          <button
+            className="item ui noborder button"
+            disabled={false}
+            onClick={[Function]}
+          >
+            <svg
+              className="icon close"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": undefined,
+                }
+              }
+              onClick={null}
+              style={
+                Object {
+                  "fill": "currentColor",
+                  "height": "24px",
+                  "width": "auto",
+                }
+              }
+              viewBox=""
+              xmlns=""
+            />
+          </button>
         </div>
       </div>
     </div>

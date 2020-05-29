@@ -1,7 +1,6 @@
 .ui.input.date-input,
 .SingleDatePicker,
 .SingleDatePickerInput,
-.DateInput,
 .DateInput_input {
   width: 100%;
   max-width: 100%;
@@ -100,4 +99,22 @@ td.CalendarDay__today {
 ul.DayPicker_weekHeader_ul {
   display: flex;
   padding-top: 0.5rem;
+}
+
+.date-time-widget-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-container:not(.full-size) #sidebar-metadata {
+  color: red !important;
+
+  .DateInput {
+    width: 110px !important;
+    max-width: 100%;
+  }
+
+  .SingleDatePicker_picker {
+    left: -115px !important;
+  }
 }
