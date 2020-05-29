@@ -123,7 +123,7 @@ msgstr "Toate"
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Alt text"
-msgstr "Alt text"
+msgstr "Text alternativ"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this field?"
@@ -190,7 +190,7 @@ msgstr "Navigați site-ul, adaugați o imagine sau introduceți o adresă URL"
 
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
-msgstr "În mod implicit, autorizațiile din containerul acestui articol sunt moștenite. Dacă dezactivați acest lucru, numai permisiunile de partajare definite în mod explicit vor fi valide. În imagine, simbolul {inherited} indică o valoare moștenită. În mod similar, simbolul {global} indică un rol global, care este gestionat de administratorul site-ului. "
+msgstr "În mod implicit, permisiunile din containerul acestui articol sunt moștenite. Dacă dezactivați acest lucru, numai permisiunile de partajare definite în mod explicit vor fi valide. În imagine, simbolul {inherited} indică o valoare moștenită. În mod similar, simbolul {global} indică un rol global, care este gestionat de administratorul site-ului. "
 
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsToolbar
@@ -249,7 +249,7 @@ msgstr "Checkbox"
 
 #: components/manage/Widgets/SelectWidget
 msgid "Choices"
-msgstr "Alegeri"
+msgstr "Opțiuni"
 
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Choose Image"
@@ -423,11 +423,11 @@ msgstr "Ștergeți utilizatorul"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Delete col"
-msgstr "Șterge col"
+msgstr "Șterge coloană"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Delete row"
-msgstr "Șterge rândul"
+msgstr "Șterge rând"
 
 #: components/manage/Contents/Contents
 msgid "Descending"
@@ -453,7 +453,7 @@ msgstr "Diff"
 
 #: components/manage/Diff/Diff
 msgid "Difference between revision {one} and {two} of {title}"
-msgstr "Diferența dintre revizuirea {one} și {two} din {title}"
+msgstr "Diferența dintre versiunea {one} și {two} din {title}"
 
 #: components/theme/Footer/Footer
 msgid "Distributed under the {license}."
@@ -489,7 +489,7 @@ msgstr "Document"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
-msgstr "Trageți și fixați fișierele de pe computer în această zonă sau faceți clic pe butonul “Parcurgere”."
+msgstr "Trageți și fixați fișierele de pe computer în această zonă sau faceți clic pe butonul Răsfoiește."
 
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
@@ -515,7 +515,7 @@ msgstr "Editează comentariul"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Edit field"
-msgstr "Câmpul de editare"
+msgstr "Editează câmp"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Edit fieldset"
@@ -561,7 +561,7 @@ msgstr "Introduceți o adresă de e-mail. Acesta va fi numele dvs. de autentific
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
 msgid "Enter full name, e.g. John Smith."
-msgstr "Introduceți numele complet, de exemplu, John Smith."
+msgstr "Introduceți numele complet, de exemplu, Valentin Popescu."
 
 #: components/manage/Blocks/Maps/Edit
 msgid "Enter map Embed Code"
@@ -633,7 +633,7 @@ msgstr "Nume fișier"
 
 #: components/manage/Contents/Contents
 msgid "Filter…"
-msgstr "Filtru ..."
+msgstr "Filtru…"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Fixed width table cells"
@@ -676,7 +676,7 @@ msgstr "Rolul global"
 
 #: components/manage/Blocks/Maps/Edit
 msgid "Google Maps Embedded Block"
-msgstr "Blocul integrat in Google Maps"
+msgstr "Bloc te tip Google Maps"
 
 #: components/manage/Sharing/Sharing
 msgid "Group"
@@ -761,7 +761,7 @@ msgstr "Introduceți col. după"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Insert col before"
-msgstr "Introduceți col. înainte"
+msgstr "Introduceți coloana înainte"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Insert row after"
@@ -1095,7 +1095,7 @@ msgstr "Site Plone"
 
 #: components/theme/Footer/Footer
 msgid "Plone{reg} Open Source CMS/WCM"
-msgstr "Plone {reg} CMS / WCM Open Source"
+msgstr "Plone{reg} CMS/WCM Open Source"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Portrait"
@@ -1180,7 +1180,7 @@ msgstr "Obligatoriu"
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 msgid "Required input is missing."
-msgstr "Input-ul necesar lipseste."
+msgstr "Câmpul este obligatoriu."
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "Results limit"
@@ -1316,11 +1316,11 @@ msgstr "Partajare pentru {title}"
 #: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 msgid "Short Name"
-msgstr "Nume scurt"
+msgstr "Nume"
 
 #: components/manage/Contents/ContentsRenameModal
 msgid "Short name"
-msgstr "Nume scurt"
+msgstr "Nume"
 
 #: components/theme/Pagination/Pagination
 msgid "Show"
@@ -1366,7 +1366,7 @@ msgstr "Mărime: {size}"
 
 #: error
 msgid "Sorry, something went wrong with your request"
-msgstr "Ne pare rău, ceva nu a funcționat corect la solicitarea dvs."
+msgstr "Ne pare rău, a apârut o eroare"
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "Sort on"
@@ -1401,7 +1401,7 @@ msgstr "Stare"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "String"
-msgstr "Sir"
+msgstr "String"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Stripe alternate rows with color"
@@ -1424,7 +1424,7 @@ msgstr "Succes"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Table"
-msgstr "Tabelul"
+msgstr "Tabel"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Table color inverted"
@@ -1776,7 +1776,7 @@ msgstr "Ștergeți"
 
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "deprecated_browser_notice_message"
-msgstr "Browser-ul dvs. {browsername} {browserversion} nu este actualizat. Actualizați browser-ul pentru o mai mare siguranță, viteză și cea mai bună experiență pe acest site."
+msgstr "Browser-ul dvs. {browsername} {browserversion} este învechit. Actualizați browser-ul pentru o mai mare siguranță, viteză și cea mai bună experiență pe acest site."
 
 #: config/Blocks
 msgid "description"
@@ -1848,7 +1848,7 @@ msgstr "Imagine (copertă)"
 
 #: config/Blocks
 msgid "listing"
-msgstr "listare"
+msgstr "Listare"
 
 #: components/theme/Unauthorized/Unauthorized
 msgid "log in"
@@ -1856,15 +1856,15 @@ msgstr "autentificați-vă"
 
 #: config/Blocks
 msgid "maps"
-msgstr "hărți"
+msgstr "Harta"
 
 #: config/Blocks
 msgid "media"
-msgstr "media"
+msgstr "Media"
 
 #: config/Blocks
 msgid "mostUsed"
-msgstr "cele mai utilizate"
+msgstr "Cele mai utilizate"
 
 #: error
 msgid "or try a different page."
@@ -1888,19 +1888,19 @@ msgstr "sortare"
 
 #: config/Blocks
 msgid "table"
-msgstr "tabel"
+msgstr "Tabel"
 
 #: config/Blocks
 msgid "text"
-msgstr "text"
+msgstr "Text"
 
 #: config/Blocks
 msgid "title"
-msgstr "titlu"
+msgstr "Titlu"
 
 #: config/Blocks
 msgid "toc"
-msgstr "toc"
+msgstr "Cuprins"
 
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"
@@ -1908,7 +1908,7 @@ msgstr "avatarul utilizatorului"
 
 #: config/Blocks
 msgid "video"
-msgstr "video"
+msgstr "Video"
 
 #: components/theme/View/EventView
 msgid "visit_external_website"
