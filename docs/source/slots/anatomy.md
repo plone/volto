@@ -21,7 +21,20 @@ export const slots = {
 ## Slots
 
 - aboveContentTitle
-- ...
+- belowContentTitle
+- aboveContentBody
+- belowContentBody
+- footer
+
+- leftAsideSlot
+- rightAsideSlot
+
+- afterApp
+- afterToolbar
+
+- htmlHead
+- htmlBeforeBody
+- htmlAfterBody
 
 ### Slots definition
 
