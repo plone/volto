@@ -26,14 +26,10 @@ if (Cypress.env('API') !== 'guillotina') {
 
     it('Renaming via folder contents view', () => {
       // when I rename a content object
-      cy.get('svg[class="icon unchecked"]').click();
+      cy.get('svg[class="icon unchecked"]').click({ force: true });
       cy.get('svg[class="icon rename"]').click();
-      cy.get('input[name="0_title"]')
-        .clear()
-        .type('Brand new document title');
-      cy.get('input[name="0_id"]')
-        .clear()
-        .type('brand-new-document-title');
+      cy.get('input[name="0_title"]').clear().type('Brand new document title');
+      cy.get('input[name="0_id"]').clear().type('brand-new-document-title');
       cy.get('.modal button[title="Save"]').click();
 
       // then the new document title and ID should show up in the folder contents view
@@ -44,7 +40,7 @@ if (Cypress.env('API') !== 'guillotina') {
     });
 
     it('Copying the content in the same folder', () => {
-      cy.get('svg[class="icon unchecked"]').click();
+      cy.get('svg[class="icon unchecked"]').click({ force: true });
       cy.get('svg[class="icon copy"]').click();
       cy.get('svg[class="icon paste"]').click();
       cy.get('.icon.unchecked').should('have.length', 2);
@@ -58,17 +54,17 @@ if (Cypress.env('API') !== 'guillotina') {
         path: 'my-folder',
       });
       cy.visit('my-folder/contents');
-      cy.get('tbody>tr:nth-child(2) .unchecked').click();
+      cy.get('tbody>tr:nth-child(2) .unchecked').click({ force: true });
       cy.get('svg[class="icon cut"]').click();
-      cy.get('tbody>tr:nth-child(1) .expire-align > span').click();
+      cy.get('tbody>tr:nth-child(1) a.icon-align-name').click({ force: true });
       cy.get('svg[class="icon paste"]').click();
 
       //then their should be a My child
       cy.get('#content-core table').contains('My Child');
     });
 
-    it('Deleting a item from a folder', () => {
-      cy.get('svg[class="icon unchecked"]').click();
+    it('Deleting an item from a folder', () => {
+      cy.get('svg[class="icon unchecked"]').click({ force: true });
       cy.get('svg[class="icon delete"]').click();
       cy.get('.ui.primary.button').click();
 
@@ -84,11 +80,9 @@ if (Cypress.env('API') !== 'guillotina') {
         contentTitle: 'My Child',
         path: 'my-folder/my-document',
       });
-      cy.get('svg[class="icon unchecked"]').click();
+      cy.get('svg[class="icon unchecked"]').click({ force: true });
       cy.get('svg[class="icon semaphore"]').click();
-      cy.get('#field-state')
-        .click()
-        .type('Publish{enter}');
+      cy.get('#field-state').click().type('Publish{enter}');
       cy.get('.checkbox').click();
       cy.get('button[title="Save"]').click();
 
@@ -108,15 +102,33 @@ if (Cypress.env('API') !== 'guillotina') {
         path: 'my-folder',
       });
       cy.visit('my-folder/contents');
-      cy.get('.icon.configuration-svg').click();
+      cy.get('.icon.configuration-svg').click({ force: true });
       cy.get('.sort_CreationDate').invoke('trigger', 'mouseover');
       cy.get('.item.sort_created_descending').click({ force: true });
-
-      // then the last document created must be the firs element
-      cy.get('tbody>tr:nth-child(1) .expire-align > span').should(
-        'have.text',
-        ' My Child',
+      cy.waitForResourceToLoad(
+        'my-folder/@search?path.depth=1&sort_on=created&sort_order=descending',
       );
+      cy.wait(5000);
+      // then the last document created must be the first element
+      cy.get('.folder-contents tbody tr').first().contains('My Child');
     });
+
+    it('Remember indexes', () => {
+      // Add the tags index.
+      cy.visit('my-folder/contents')
+        .get('.selectIndex > .icon')
+        .click()
+        .get('.icon.Tags')
+        .click()
+        .get('thead tr')
+        .contains('Tags');
+
+      // Tags index shows up on visiting another folder-contents view.
+      cy.get('.folder-contents .breadcrumb a.section').first().click();
+      cy.url().should('eq', Cypress.config().baseUrl + '/contents');
+      cy.waitForResourceToLoad('@breadcrumbs');
+      cy.get('thead tr').contains('Tags');
+    });
+
   });
 }

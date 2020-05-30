@@ -14,6 +14,7 @@
   to allow addons to provide their own reducers @tiberiuichim
 - Add a no brainer image sizing option, using scales. This will be vastly improved when
   we adopt srcsets. @sneridagh
+- Folder contents view: Store selection and order of columns for later visits of a folder contents view #1462 @ksuess
 
 ### Bugfix
 

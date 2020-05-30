@@ -31,6 +31,11 @@ describe('Content reducer', () => {
         loading: false,
         error: null,
       },
+      index: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
       order: {
         loaded: false,
         loading: false,

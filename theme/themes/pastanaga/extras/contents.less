@@ -1,3 +1,23 @@
+.review_state {
+  .private circle {
+    fill: #ed4033;
+  }
+
+  .published circle {
+    fill: #007bc1;
+  }
+
+  .intranet circle {
+    fill: #51aa55;
+  }
+
+  .draft circle {
+    fill: #f6a808;
+  }
+}
+
+@bordercolordivider: #b8c6c8;
+
 .folder-contents {
   .ui.icon.button,
   .ui.icon.button:hover {
@@ -29,7 +49,7 @@
   }
 
   .ui.menu .menu.top-menu-menu {
-    border-right: 1px solid #b8c6c8;
+    border-right: 1px solid @bordercolordivider;
 
     .ui.icon.button {
       padding: 10px;
@@ -44,7 +64,7 @@
   }
 
   .ui.menu .menu.top-menu-searchbox {
-    border-left: 1px solid #b8c6c8;
+    border-left: 1px solid @bordercolordivider;
   }
 
   .ui.secondary.attached.segment.contents-breadcrumbs {
@@ -80,18 +100,13 @@
     padding-top: 4px;
   }
 
-  .ui.table .expire-align {
-    display: flex;
-    align-items: center;
-  }
-
   .ui.table .icon-margin {
+    width: 36px !important;
+    height: 36px;
     margin-right: 0.3em;
   }
 
-  .ui.table .button-margin {
-    padding: 4px;
-    margin-right: 1em;
+  button.expired {
     background-color: rgb(228, 1, 102);
     color: white;
   }
@@ -110,5 +125,86 @@
   .ui.secondary.menu a.item:hover,
   .ui.secondary.menu a.item.active {
     background-color: #edf1f2 !important;
+  }
+}
+
+/* sticky columns */
+
+@media only screen and (min-width: @largestMobileScreen) {
+  @selectionwidth: 40px;
+  @titlewidth: 250px;
+  @actionswidth: 80px;
+
+  .zui-wrapper {
+    position: relative;
+  }
+
+  .zui-scroller {
+    padding: 0 1px;
+    border-right: 1px solid @bordercolordivider;
+    border-left: 1px solid @bordercolordivider;
+    margin-right: @actionswidth;
+    margin-left: 2 * @selectionwidth + @titlewidth;
+    overflow-x: auto;
+    overflow-y: visible;
+  }
+
+  .ui.table {
+    &.zui-table {
+      th {
+        height: 3.3rem;
+      }
+
+      th,
+      td {
+        // overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
+        &:not(.zui-sticky-col):not(.zui-sticky-col-right) {
+          min-width: 7rem;
+        }
+
+        &.zui-sticky-col {
+          position: absolute;
+          left: 0;
+          width: @selectionwidth;
+          hyphens: auto;
+          white-space: normal;
+
+          &:nth-of-type(2) {
+            left: @selectionwidth;
+          }
+
+          &:nth-of-type(3) {
+            left: 2 * @selectionwidth;
+            width: @titlewidth;
+
+            div.title {
+              display: flex;
+              overflow: hidden;
+              align-items: center;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+
+              div {
+                overflow: hidden;
+                max-width: 80%;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+            }
+          }
+        }
+
+        &.zui-sticky-col-right {
+          position: absolute;
+          right: 0;
+          width: @actionswidth;
+        }
+
+        & .review_state {
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    }
   }
 }

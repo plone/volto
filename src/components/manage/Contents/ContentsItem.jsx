@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { Button, Dropdown, Table } from 'semantic-ui-react';
+import { Button, Label, Dropdown, Table } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { map } from 'lodash';
@@ -52,21 +52,6 @@ function capitalise(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-function getColor(string) {
-  switch (string) {
-    case 'private':
-      return '#ed4033';
-    case 'published':
-      return '#007bc1';
-    case 'intranet':
-      return '#51aa55';
-    case 'draft':
-      return '#f6a808';
-    default:
-      return 'grey';
-  }
-}
-
 /**
  * Contents item component class.
  * @function ContentsItemComponent
@@ -91,7 +76,7 @@ export const ContentsItemComponent = ({
   connectDropTarget(
     connectDragPreview(
       <tr key={item['@id']} style={{ opacity: isDragging ? 0 : 1 }}>
-        <Table.Cell>
+        <Table.Cell className="zui-sticky-col">
           {connectDragSource(
             <div style={{ display: 'inline-block' }}>
               <Button icon basic>
@@ -105,7 +90,7 @@ export const ContentsItemComponent = ({
             </div>,
           )}
         </Table.Cell>
-        <Table.Cell>
+        <Table.Cell className="zui-sticky-col">
           {selected ? (
             <Button
               icon
@@ -136,26 +121,26 @@ export const ContentsItemComponent = ({
             </Button>
           )}
         </Table.Cell>
-        <Table.Cell>
+        <Table.Cell className="zui-sticky-col">
           <Link
             className="icon-align-name"
             to={`${item['@id']}${item.is_folderish ? '/contents' : ''}`}
           >
-            <div className="expire-align">
+            <div class="title" title={`${item['@type']} '${item.title}'`}>
               <Icon
                 name={getIcon(item['@type'], item.is_folderish)}
                 size="20px"
                 className="icon-margin"
                 color="#878f93"
-              />{' '}
-              <span> {item.title}</span>
+              />
+              <div>{item.title}</div>
             </div>
             {item.ExpirationDate !== 'None' &&
               new Date(item.ExpirationDate).getTime() <
                 new Date().getTime() && (
-                <Button className="button-margin" size="mini">
+                <Label color="pink" size="tiny">
                   <FormattedMessage id="Expired" defaultMessage="Expired" />
-                </Button>
+                </Label>
               )}
           </Link>
         </Table.Cell>
@@ -171,13 +156,13 @@ export const ContentsItemComponent = ({
               index.id !== 'review_state' &&
               item[index.id]}
             {index.id === 'review_state' && (
-              <div>
-                <span>
-                  <Circle color={getColor(item[index.id])} size="15px" />
+              <div class="review_state">
+                <span className={item.review_state}>
+                  <Circle size="15px" />
+                  {item[index.id]
+                    ? capitalise(item[index.id])
+                    : 'No workflow state'}
                 </span>
-                {item[index.id]
-                  ? capitalise(item[index.id])
-                  : 'No workflow state'}
               </div>
             )}
             {index.type === 'date' && (
@@ -199,7 +184,7 @@ export const ContentsItemComponent = ({
             )}
           </Table.Cell>
         ))}
-        <Table.Cell textAlign="right">
+        <Table.Cell textAlign="right" className="zui-sticky-col-right">
           <Dropdown
             className="row-actions"
             icon={<Icon name={moreSVG} size="24px" color="#007eb1" />}
