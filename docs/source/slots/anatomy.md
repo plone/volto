@@ -8,7 +8,7 @@ so you can add in the configuration object:
 
 ```js
 export const slots = {
-  aboveDocumentTitle: [
+  aboveContentTitle: [
     // List of components (might have config too, maybe in `data` property)
     { path: '/', component: 'Component', data: {} },
     // It can include blocks too (makes sense when we will be able to save them)
@@ -20,7 +20,7 @@ export const slots = {
 
 ## Slots
 
-- aboveDocumentTitle
+- aboveContentTitle
 - ...
 
 ### Slots definition
@@ -32,7 +32,7 @@ object. This is how you define them in JSX:
 import {SlotRenderer} from '@plone/volto/components';
 ...
 
-<SlotRenderer name="aboveDocumentTitle" />
+<SlotRenderer name="aboveContentTitle" />
 
 ```
 
@@ -41,5 +41,5 @@ import {SlotRenderer} from '@plone/volto/components';
 You can define slots also in addons:
 
 ```js
-config.slots.aboveDocumentTitle.push({path:'/', component: ExtraComponent})
+config.slots.aboveContentTitle.push({path:'/', component: ExtraComponent})
 ```
