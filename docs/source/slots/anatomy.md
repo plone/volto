@@ -10,7 +10,7 @@ so you can add in the configuration object:
 export const slots = {
   aboveContentTitle: [
     // List of components (might have config too, in `props` property)
-    { path: '/', component: 'Component', props: {}, exact: true },
+    { path: '/', component: ExtraComponent, props: {}, exact: true },
   ],
 };
 ```
@@ -26,8 +26,8 @@ defining `exact` property to `true`.
 - belowContentBody
 - footer
 
-- leftAsideSlot
-- rightAsideSlot
+- asideLeftSlot
+- asideRightSlot
 
 - afterApp
 - afterToolbar

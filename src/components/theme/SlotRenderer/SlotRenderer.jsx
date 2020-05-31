@@ -3,7 +3,7 @@ import { matchPath, useLocation } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 import { slots } from '~/config';
 
-export default ({ name }) => {
+const SlotRenderer = ({ name }) => {
   const pathname = useLocation().pathname;
 
   if (!slots[name]) {
@@ -21,3 +21,5 @@ export default ({ name }) => {
     return <Slot {...props} key={id} id={id} />;
   });
 };
+
+export default SlotRenderer;
