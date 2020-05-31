@@ -9,14 +9,14 @@ so you can add in the configuration object:
 ```js
 export const slots = {
   aboveContentTitle: [
-    // List of components (might have config too, maybe in `data` property)
-    { path: '/', component: 'Component', data: {} },
-    // It can include blocks too (makes sense when we will be able to save them)
-    { path: '/', '@type': 'text' },
-    { path: '/', '@type': 'image' },
+    // List of components (might have config too, in `props` property)
+    { path: '/', component: 'Component', props: {}, exact: true },
   ],
 };
 ```
+
+Slots are inherited by default on all children routes, but you can block inheritance by
+defining `exact` property to `true`.
 
 ## Slots
 

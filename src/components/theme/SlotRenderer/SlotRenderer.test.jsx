@@ -106,4 +106,39 @@ describe('SlotRenderer Component', () => {
     const asideSlot = container.querySelector('aside');
     expect(asideSlot).toBe(null);
   });
+  test('renders a SlotRenderer component for the aboveContentTitle with inheritance', () => {
+    slots.aboveContentTitle = [
+      {
+        path: '/other-place',
+        component: (props) => <div {...props} />,
+        props: { className: 'slot-component-aboveContentTitle' },
+      },
+    ];
+
+    const { container } = render(
+      <MemoryRouter initialEntries={[{ pathname: '/other-place/other-dir' }]}>
+        <SlotRenderer name="aboveContentTitle" />
+      </MemoryRouter>,
+    );
+    const divSlot = container.querySelector('div');
+    expect(divSlot).toHaveClass('slot-component-aboveContentTitle');
+  });
+  test('renders a SlotRenderer component for the aboveContentTitle disable inheritance', () => {
+    slots.aboveContentTitle = [
+      {
+        path: '/other-place',
+        component: (props) => <div {...props} />,
+        props: { className: 'slot-component-aboveContentTitle' },
+        exact: true,
+      },
+    ];
+
+    const { container } = render(
+      <MemoryRouter initialEntries={[{ pathname: '/other-place/other-dir' }]}>
+        <SlotRenderer name="aboveContentTitle" />
+      </MemoryRouter>,
+    );
+    const divSlot = container.querySelector('div');
+    expect(divSlot).toBe(null);
+  });
 });

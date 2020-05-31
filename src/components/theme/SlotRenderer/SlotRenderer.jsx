@@ -11,7 +11,9 @@ export default ({ name }) => {
   }
 
   const currentSlot = slots[name];
-  const active = currentSlot.filter((slot) => matchPath(pathname, slot.path));
+  const active = currentSlot.filter((slot) =>
+    matchPath(pathname, { path: slot.path, exact: slot.exact }),
+  );
 
   return active.map(({ component, props }) => {
     const id = uuid();
