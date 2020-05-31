@@ -93,12 +93,4 @@ export const blocks = {
 
 export const addonReducers = {};
 
-export const slots = {
-  aboveDocumentTitle: [
-    // List of components (might have config too, maybe in `data` property)
-    { path: '/', component: 'Component', data: {} },
-    // It can include blocks too (makes sense when we will be able to save them)
-    { path: '/', '@type': 'text' },
-    { path: '/', '@type': 'image' },
-  ],
-};
+export const slots = {};
