@@ -230,6 +230,7 @@ msgstr "Annuleren"
 msgid "Cell"
 msgstr ""
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Center"
@@ -762,6 +763,10 @@ msgstr ""
 msgid "Image"
 msgstr ""
 
+#: components/manage/Blocks/Image/ImageSidebar
+msgid "Image size"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
 msgid "Info"
@@ -849,6 +854,7 @@ msgstr ""
 msgid "Lead Image"
 msgstr ""
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Left"
@@ -1226,6 +1232,7 @@ msgstr ""
 msgid "Richtext"
 msgstr ""
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Right"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-05-29T13:53:23.622Z\n"
+"POT-Creation-Date: 2020-06-02T10:57:08.036Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -254,6 +254,7 @@ msgstr ""
 msgid "Cell"
 msgstr ""
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 # defaultMessage: Center
@@ -900,6 +901,11 @@ msgstr ""
 msgid "Image"
 msgstr ""
 
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: Image size
+msgid "Image size"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
 # defaultMessage: Info
@@ -1008,6 +1014,7 @@ msgstr ""
 msgid "Lead Image"
 msgstr ""
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 # defaultMessage: Left
@@ -1470,6 +1477,7 @@ msgstr ""
 msgid "Richtext"
 msgstr ""
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 # defaultMessage: Right

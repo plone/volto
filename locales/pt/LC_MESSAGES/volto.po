@@ -219,6 +219,7 @@ msgstr "Cancelar"
 msgid "Cell"
 msgstr "Célula"
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Center"
@@ -751,6 +752,10 @@ msgstr "Se não tem uma conta aqui, dirija-se a {registrationform}."
 msgid "Image"
 msgstr "Imagem"
 
+#: components/manage/Blocks/Image/ImageSidebar
+msgid "Image size"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
 msgid "Info"
@@ -838,6 +843,7 @@ msgstr ""
 msgid "Lead Image"
 msgstr ""
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Left"
@@ -1215,6 +1221,7 @@ msgstr ""
 msgid "Richtext"
 msgstr "Richtext"
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Right"

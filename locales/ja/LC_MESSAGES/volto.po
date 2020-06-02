@@ -218,6 +218,7 @@ msgstr "キャンセル"
 msgid "Cell"
 msgstr "セル"
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Center"
@@ -750,6 +751,10 @@ msgstr "アカウントを持っていない場合、ここが {registrationform
 msgid "Image"
 msgstr "画像"
 
+#: components/manage/Blocks/Image/ImageSidebar
+msgid "Image size"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
 msgid "Info"
@@ -837,6 +842,7 @@ msgstr ""
 msgid "Lead Image"
 msgstr "リード画像"
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Left"
@@ -1214,6 +1220,7 @@ msgstr "審査状態"
 msgid "Richtext"
 msgstr "Richtext"
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Right"

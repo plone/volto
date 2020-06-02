@@ -226,6 +226,7 @@ msgstr "Abbrechen"
 msgid "Cell"
 msgstr "Zelle"
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Center"
@@ -758,6 +759,10 @@ msgstr "Falls Sie noch keinen Zugang haben, {registrationform} Sie sich bitte zu
 msgid "Image"
 msgstr "Bild"
 
+#: components/manage/Blocks/Image/ImageSidebar
+msgid "Image size"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
 msgid "Info"
@@ -845,6 +850,7 @@ msgstr ""
 msgid "Lead Image"
 msgstr "Leadbild"
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Left"
@@ -1222,6 +1228,7 @@ msgstr "Arbeitsablauf"
 msgid "Richtext"
 msgstr "Richtext"
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Right"
