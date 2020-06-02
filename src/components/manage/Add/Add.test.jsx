@@ -7,6 +7,13 @@ import Add from './Add';
 
 const mockStore = configureStore();
 
+jest.mock('~/config', () => ({
+  settings: {
+    isMultilingual: false,
+    supportedLanguages: ['de'],
+  },
+}));
+
 jest.mock('react-portal', () => ({
   Portal: jest.fn(() => <div id="Portal" />),
 }));

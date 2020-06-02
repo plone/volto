@@ -5,8 +5,6 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Grid, Label } from 'semantic-ui-react';
-import { map } from 'lodash';
 import { connect } from 'react-redux';
 import loadable from '@loadable/component';
 
@@ -23,6 +21,8 @@ import {
   selectTheme,
   customSelectStyles,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
+
+import { FormFieldWrapper } from '@plone/volto/components';
 
 const AsyncCreatable = loadable.lib(() =>
   import('react-select/async-creatable'),
@@ -57,6 +57,7 @@ class TokenWidget extends Component {
     value: PropTypes.arrayOf(PropTypes.string),
     onChange: PropTypes.func.isRequired,
     itemsTotal: PropTypes.number,
+    wrapped: PropTypes.bool,
   };
 
   /**
@@ -159,56 +160,26 @@ class TokenWidget extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { id, title, required, description, error, fieldSet } = this.props;
     const { selectedOption } = this.state;
     return (
-      <Form.Field
-        inline
-        required={required}
-        error={error.length > 0}
-        className={description ? 'help' : ''}
-        id={`${fieldSet || 'field'}-${id}`}
-      >
-        <Grid>
-          <Grid.Row stretched>
-            <Grid.Column width="4">
-              <div className="wrapper">
-                <label htmlFor={`field-${id}`}>{title}</label>
-              </div>
-            </Grid.Column>
-            <Grid.Column width="8">
-              <AsyncCreatable>
-                {({ default: AsyncCreatableSelect }) => (
-                  <AsyncCreatableSelect
-                    className="react-select-container"
-                    classNamePrefix="react-select"
-                    defaultOptions={this.props.choices || []}
-                    styles={customSelectStyles}
-                    theme={selectTheme}
-                    components={{ DropdownIndicator, Option }}
-                    isMulti
-                    value={selectedOption || []}
-                    loadOptions={this.loadOptions}
-                    onChange={this.handleChange}
-                  />
-                )}
-              </AsyncCreatable>
-              {map(error, (message) => (
-                <Label key={message} basic color="red" pointing>
-                  {message}
-                </Label>
-              ))}
-            </Grid.Column>
-          </Grid.Row>
-          {description && (
-            <Grid.Row stretched>
-              <Grid.Column stretched width="12">
-                <p className="help">{description}</p>
-              </Grid.Column>
-            </Grid.Row>
+      <FormFieldWrapper {...this.props}>
+        <AsyncCreatable>
+          {({ default: AsyncCreatableSelect }) => (
+            <AsyncCreatableSelect
+              className="react-select-container"
+              classNamePrefix="react-select"
+              defaultOptions={this.props.choices || []}
+              styles={customSelectStyles}
+              theme={selectTheme}
+              components={{ DropdownIndicator, Option }}
+              isMulti
+              value={selectedOption || []}
+              loadOptions={this.loadOptions}
+              onChange={this.handleChange}
+            />
           )}
-        </Grid>
-      </Form.Field>
+        </AsyncCreatable>
+      </FormFieldWrapper>
     );
   }
 }
