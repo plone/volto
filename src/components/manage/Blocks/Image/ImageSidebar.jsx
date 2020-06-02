@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import { Form } from 'semantic-ui-react';
 import { Accordion, Grid, Segment } from 'semantic-ui-react';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
-import { CheckboxWidget, Icon, TextWidget } from '@plone/volto/components';
+import {
+  CheckboxWidget,
+  Icon,
+  FormFieldWrapper,
+  TextWidget,
+} from '@plone/volto/components';
 import {
   AlignBlock,
   flattenToAppURL,
@@ -15,6 +20,7 @@ import clearSVG from '@plone/volto/icons/clear.svg';
 import upSVG from '@plone/volto/icons/up-key.svg';
 import downSVG from '@plone/volto/icons/down-key.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
+import ImageSizeWidget from '@plone/volto/components/manage/Blocks/Image/ImageSizeWidget';
 
 const messages = defineMessages({
   Image: {
@@ -48,6 +54,10 @@ const messages = defineMessages({
   externalURL: {
     id: 'External URL',
     defaultMessage: 'External URL',
+  },
+  imageSize: {
+    id: 'Image size',
+    defaultMessage: 'Image size',
   },
 });
 
@@ -185,6 +195,16 @@ const ImageSidebar = ({
                 </Grid.Row>
               </Grid>
             </Form.Field>
+            <FormFieldWrapper
+              id="image_size"
+              title={intl.formatMessage(messages.imageSize)}
+            >
+              <ImageSizeWidget
+                onChangeBlock={onChangeBlock}
+                data={data}
+                block={block}
+              />
+            </FormFieldWrapper>
           </Segment>
           <Accordion fluid styled className="form">
             <Accordion.Title
