@@ -12,6 +12,10 @@ describe('Blocks', () => {
       );
     });
 
+    it('returns null if no blocks field name from formdata is present', () => {
+      expect(getBlocksLayoutFieldname({ title: 'Example' })).toBe(null);
+    });
+
     it('can get the blocks field name from formdata of a nested schema', () => {
       expect(
         getBlocksFieldname({
@@ -27,6 +31,10 @@ describe('Blocks', () => {
       expect(
         getBlocksLayoutFieldname({ title: 'Example', blocks_layout: [] }),
       ).toBe('blocks_layout');
+    });
+
+    it('returns null if no layout field name from formdata is present', () => {
+      expect(getBlocksLayoutFieldname({ title: 'Example' })).toBe(null);
     });
 
     it('can get the blocks layout field name from formdata of a nested schema', () => {
