@@ -3,11 +3,11 @@
  * @module components/manage/Widgets/TextareaWidget
  */
 
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { Form, Grid, Icon, Label, TextArea } from 'semantic-ui-react';
 import { map } from 'lodash';
+import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
+import { Form, Grid, Icon, Label, TextArea } from 'semantic-ui-react';
 
 const messages = defineMessages({
   default: {
@@ -137,7 +137,7 @@ const TextareaWidget = ({
                   <Icon name="write square" size="large" color="blue" />
                 </button>
                 <button
-                  aria-label={this.props.intl.formatMessage(messages.delete)}
+                  aria-label={intl.formatMessage(messages.delete)}
                   className="item ui noborder button"
                   onClick={() => onDelete(id)}
                 >

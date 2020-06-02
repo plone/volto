@@ -67,6 +67,7 @@ export Controlpanel from '@plone/volto/components/manage/Controlpanels/Controlpa
 export Controlpanels from '@plone/volto/components/manage/Controlpanels/Controlpanels';
 export ContentType from '@plone/volto/components/manage/Controlpanels/ContentType';
 export ContentTypeMetadata from '@plone/volto/components/manage/Controlpanels/ContentTypeMetadata';
+export ContentTypeSchema from '@plone/volto/components/manage/Form/ContentTypeSchema';
 export ContentTypes from '@plone/volto/components/manage/Controlpanels/ContentTypes';
 export UsersControlpanel from '@plone/volto/components/manage/Controlpanels/UsersControlpanel';
 export ModerateComments from '@plone/volto/components/manage/Controlpanels/ModerateComments';
@@ -92,7 +93,6 @@ export Toast from '@plone/volto/components/manage/Toast/Toast';
 // Potentially could ve removed from index, since they are internal components and
 // we don't want them to end up in the main chunk
 export Form from '@plone/volto/components/manage/Form/Form';
-export FormBuilder from '@plone/volto/components/manage/Form/FormBuilder';
 export Field from '@plone/volto/components/manage/Form/Field';
 export SearchTags from '@plone/volto/components/theme/Search/SearchTags';
 export CommentEditModal from '@plone/volto/components/theme/Comments/CommentEditModal';
