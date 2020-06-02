@@ -220,14 +220,14 @@ class Add extends Component {
               ...(blocksFieldname && {
                 [blocksFieldname]:
                   this.initialBlocks ||
-                  this.props.schema.properties[blocksFieldname].default,
+                  this.props.schema.properties[blocksFieldname]?.default,
               }),
               ...(blocksLayoutFieldname && {
                 [blocksLayoutFieldname]: {
                   items:
                     this.initialBlocksLayout ||
-                    this.props.schema.properties[blocksLayoutFieldname].default
-                      .items,
+                    this.props.schema.properties[blocksLayoutFieldname]?.default
+                      ?.items,
                 },
               }),
             }}
