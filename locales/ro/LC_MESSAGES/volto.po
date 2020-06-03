@@ -744,10 +744,6 @@ msgstr "Dacă nu aveți un cont aici, treceți la {registrationform}."
 msgid "Image"
 msgstr "Imagine"
 
-#: components/manage/Blocks/Image/ImageSidebar
-msgid "Image size"
-msgstr ""
-
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
 msgid "Info"
@@ -1367,6 +1363,10 @@ msgstr "Configurare site"
 #: components/theme/Sitemap/Sitemap
 msgid "Sitemap"
 msgstr "Sitemap"
+
+#: components/manage/Blocks/Image/ImageSidebar
+msgid "Size"
+msgstr ""
 
 #: components/theme/View/ImageView
 msgid "Size: {size}"

@@ -744,10 +744,6 @@ msgstr "Se non ti sei ancora iscritto, compila il {registrationform} per diventa
 msgid "Image"
 msgstr "Immagine"
 
-#: components/manage/Blocks/Image/ImageSidebar
-msgid "Image size"
-msgstr ""
-
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
 msgid "Info"
@@ -1367,6 +1363,10 @@ msgstr "Configurazione del sito"
 #: components/theme/Sitemap/Sitemap
 msgid "Sitemap"
 msgstr "Mappa del sito"
+
+#: components/manage/Blocks/Image/ImageSidebar
+msgid "Size"
+msgstr ""
 
 #: components/theme/View/ImageView
 msgid "Size: {size}"

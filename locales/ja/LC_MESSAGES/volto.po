@@ -751,10 +751,6 @@ msgstr "アカウントを持っていない場合、ここが {registrationform
 msgid "Image"
 msgstr "画像"
 
-#: components/manage/Blocks/Image/ImageSidebar
-msgid "Image size"
-msgstr ""
-
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
 msgid "Info"
@@ -1374,6 +1370,10 @@ msgstr "サイト設定"
 #: components/theme/Sitemap/Sitemap
 msgid "Sitemap"
 msgstr "サイトマップ"
+
+#: components/manage/Blocks/Image/ImageSidebar
+msgid "Size"
+msgstr ""
 
 #: components/theme/View/ImageView
 msgid "Size: {size}"

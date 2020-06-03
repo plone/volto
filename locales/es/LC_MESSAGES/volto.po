@@ -754,10 +754,6 @@ msgstr "Si usted no tiene una cuenta de usuario aquí, valla al {registrationfor
 msgid "Image"
 msgstr "Imagen"
 
-#: components/manage/Blocks/Image/ImageSidebar
-msgid "Image size"
-msgstr ""
-
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
 msgid "Info"
@@ -1376,6 +1372,10 @@ msgstr "Configuración del sitio"
 
 #: components/theme/Sitemap/Sitemap
 msgid "Sitemap"
+msgstr ""
+
+#: components/manage/Blocks/Image/ImageSidebar
+msgid "Size"
 msgstr ""
 
 #: components/theme/View/ImageView

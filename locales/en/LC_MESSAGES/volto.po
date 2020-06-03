@@ -744,10 +744,6 @@ msgstr ""
 msgid "Image"
 msgstr ""
 
-#: components/manage/Blocks/Image/ImageSidebar
-msgid "Image size"
-msgstr ""
-
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
 msgid "Info"
@@ -1366,6 +1362,10 @@ msgstr ""
 
 #: components/theme/Sitemap/Sitemap
 msgid "Sitemap"
+msgstr ""
+
+#: components/manage/Blocks/Image/ImageSidebar
+msgid "Size"
 msgstr ""
 
 #: components/theme/View/ImageView

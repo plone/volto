@@ -55,9 +55,9 @@ const messages = defineMessages({
     id: 'External URL',
     defaultMessage: 'External URL',
   },
-  imageSize: {
-    id: 'Image size',
-    defaultMessage: 'Image size',
+  size: {
+    id: 'Size',
+    defaultMessage: 'Size',
   },
 });
 
@@ -191,10 +191,13 @@ const ImageSidebar = ({
                         if (data.align === 'full') {
                           onChangeBlock(block, {
                             ...data,
-                            size: 'l',
+                            size: null,
                           });
                         } else {
-                          onChangeBlock(block, data);
+                          onChangeBlock(block, {
+                            ...data,
+                            size: 'l',
+                          });
                         }
                       }}
                       data={data}
@@ -206,7 +209,7 @@ const ImageSidebar = ({
             </Form.Field>
             <FormFieldWrapper
               id="image_size"
-              title={intl.formatMessage(messages.imageSize)}
+              title={intl.formatMessage(messages.size)}
             >
               <ImageSizeWidget
                 onChangeBlock={onChangeBlock}

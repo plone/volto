@@ -340,7 +340,7 @@ exports[`renders an Image Block Sidebar component 1`] = `
               <label
                 htmlFor="field-image_size"
               >
-                Image size
+                Size
               </label>
             </div>
           </div>

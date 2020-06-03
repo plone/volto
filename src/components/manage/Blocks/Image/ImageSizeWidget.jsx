@@ -65,7 +65,7 @@ const ImageSizeWidget = ({ onChangeBlock, data, block, disabled }) => {
           basic
           aria-label={intl.formatMessage(messages.large)}
           onClick={() => onImageSize('l')}
-          active={data.size === 'l' || !data.size}
+          active={data.size === 'l' || data.size === undefined}
           disabled={disabled}
         >
           <div className="image-sizes-text">L</div>
