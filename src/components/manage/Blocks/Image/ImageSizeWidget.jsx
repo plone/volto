@@ -17,7 +17,7 @@ const messages = defineMessages({
   },
 });
 
-const ImageSizeWidget = ({ onChangeBlock, data, block }) => {
+const ImageSizeWidget = ({ onChangeBlock, data, block, disabled }) => {
   /**
    * Image size handler
    * @method onImageSize
@@ -42,6 +42,7 @@ const ImageSizeWidget = ({ onChangeBlock, data, block }) => {
           aria-label={intl.formatMessage(messages.small)}
           onClick={() => onImageSize('s')}
           active={data.size === 's'}
+          disabled={disabled}
         >
           <div className="image-sizes-text">S</div>
         </Button>
@@ -53,6 +54,7 @@ const ImageSizeWidget = ({ onChangeBlock, data, block }) => {
           aria-label={intl.formatMessage(messages.medium)}
           onClick={() => onImageSize('m')}
           active={data.size === 'm'}
+          disabled={disabled}
         >
           <div className="image-sizes-text">M</div>
         </Button>
@@ -62,8 +64,9 @@ const ImageSizeWidget = ({ onChangeBlock, data, block }) => {
           icon
           basic
           aria-label={intl.formatMessage(messages.large)}
-          onClick={() => onImageSize('x')}
-          active={data.size === 'x' || !data.size}
+          onClick={() => onImageSize('l')}
+          active={data.size === 'l' || !data.size}
+          disabled={disabled}
         >
           <div className="image-sizes-text">L</div>
         </Button>

@@ -187,7 +187,16 @@ const ImageSidebar = ({
                   <Grid.Column width="8" className="align-tools">
                     <AlignBlock
                       align={data.align}
-                      onChangeBlock={onChangeBlock}
+                      onChangeBlock={(block, data) => {
+                        if (data.align === 'full') {
+                          onChangeBlock(block, {
+                            ...data,
+                            size: 'l',
+                          });
+                        } else {
+                          onChangeBlock(block, data);
+                        }
+                      }}
                       data={data}
                       block={block}
                     />
@@ -203,6 +212,7 @@ const ImageSidebar = ({
                 onChangeBlock={onChangeBlock}
                 data={data}
                 block={block}
+                disabled={data.align === 'full'}
               />
             </FormFieldWrapper>
           </Segment>
