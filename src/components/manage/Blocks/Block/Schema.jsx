@@ -12,23 +12,23 @@ const Schema = {
   }],
   properties: {
     placeholder: {
-      title: "Placeholder",
-      description: "A short hint that describes the expected value",
+      title: "Description",
+      description: "A short hint that describes the expected value within this block",
       type: 'string',
     },
     required: {
       title: "Required",
-      description: "Block can be removed or not",
+      description: "Don't allow deletion of this block",
       type: 'boolean',
     },
     fixed: {
-      title: "Fixed",
-      description: "Block can be moved or not via drag&drop",
+      title: "Fixed position",
+      description: "Disable drag & drop on this block",
       type: 'boolean',
     },
     readOnly: {
       title: "Read-only",
-      description: "Block can be edited",
+      description: "Disable editing on this block",
       type: 'boolean',
     }
   },

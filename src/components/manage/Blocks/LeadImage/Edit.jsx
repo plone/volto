@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 import { Message } from 'semantic-ui-react';
 
@@ -14,6 +14,13 @@ import { LeadImageSidebar, SidebarPortal } from '@plone/volto/components';
 import { flattenToAppURL } from '@plone/volto/helpers';
 
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
+
+const messages = defineMessages({
+  ImageBlockInputPlaceholder: {
+    id: "Upload a lead image in the 'Lead Image' content field.",
+    defaultMessage: "Upload a lead image in the 'Lead Image' content field.",
+  },
+});
 
 /**
  * Edit image block class.
@@ -59,6 +66,7 @@ class Edit extends Component {
    */
   render() {
     const { data, properties } = this.props;
+    const placeholder = this.props.data.placeholder || this.props.intl.formatMessage(messages.ImageBlockInputPlaceholder);
 
     return (
       <div
@@ -75,10 +83,7 @@ class Edit extends Component {
             <center>
               <img src={imageBlockSVG} alt="" />
               <div className="message-text">
-                <FormattedMessage
-                  id="Upload a lead image in the 'Lead Image' content field."
-                  defaultMessage="Upload a lead image in the 'Lead Image' content field."
-                />
+                {placeholder}
               </div>
             </center>
           </Message>

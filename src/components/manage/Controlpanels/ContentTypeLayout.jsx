@@ -208,6 +208,7 @@ class ContentTypeLayout extends Component {
           <Helmet title={controlpanel.title} />
           <Form
             isEditForm
+            isAdminForm
             ref={this.form}
             title={controlpanel.title}
             schema={schema}

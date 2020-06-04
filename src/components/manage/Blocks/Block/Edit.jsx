@@ -52,6 +52,16 @@ class Edit extends Component {
     id: PropTypes.string.isRequired,
     onMoveBlock: PropTypes.func.isRequired,
     onDeleteBlock: PropTypes.func.isRequired,
+    isAdminBlock: PropTypes.bool,
+  };
+
+    /**
+   * Default properties.
+   * @property {Object} defaultProps Default properties.
+   * @static
+   */
+  static defaultProps = {
+    isAdminBlock: false
   };
 
   componentDidMount() {
@@ -67,6 +77,11 @@ class Edit extends Component {
     }
     if (this.props.selected) {
       this.props.setSidebarTab(blocks.blocksConfig?.[type]?.sidebarBar || 0);
+    }
+
+    // Ref ID
+    if(this.props.isAdminBlock && !this.props.data.rid) {
+      this.props.data.rid = this.props.id;
     }
   }
 
@@ -137,9 +152,11 @@ class Edit extends Component {
             tabIndex={!blockHasOwnFocusManagement ? -1 : null}
           >
             <Block {...this.props} blockNode={this.blockNode} />
+            {this.props.isAdminBlock && (
             <SidebarPortal selected={this.props.selected}>
               <BlockSettingsSidebar {...this.props} />
             </SidebarPortal>
+            )}
           </div>
         ) : (
           <div
