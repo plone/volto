@@ -17,6 +17,7 @@ describe('Sidebar reducer', () => {
       }),
     ).toEqual({
       tab: 1,
+      blockData: null,
     });
   });
 });

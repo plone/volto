@@ -4,6 +4,12 @@ exports[`renders a BlockChooser component 1`] = `
 <div
   className="blocks-chooser"
 >
+  <button
+    className="ui button"
+    onClick={[Function]}
+  >
+    Paste
+  </button>
   <div
     className="accordion ui fluid styled form"
   >

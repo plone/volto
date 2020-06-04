@@ -10,6 +10,12 @@ exports[`renders an Image Block Sidebar component 1`] = `
     <h2>
       Image
     </h2>
+    <button
+      className="ui button"
+      onClick={[Function]}
+    >
+      Copy
+    </button>
   </header>
   <div
     className="ui secondary segment sidebar-metadata-container"

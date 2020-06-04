@@ -8,6 +8,9 @@ const mockStore = configureStore();
 
 test('renders a BlockChooser component', () => {
   const store = mockStore({
+    sidebar: {
+      blockData: null,
+    },
     intl: {
       locale: 'en',
       messages: {},

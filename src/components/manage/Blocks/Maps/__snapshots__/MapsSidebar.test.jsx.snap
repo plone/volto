@@ -10,6 +10,12 @@ exports[`renders an Image Block Sidebar component 1`] = `
     <h2>
       Map
     </h2>
+    <button
+      className="ui button"
+      onClick={[Function]}
+    >
+      Copy
+    </button>
   </header>
   <div
     className="ui segment form sidebar-image-data"

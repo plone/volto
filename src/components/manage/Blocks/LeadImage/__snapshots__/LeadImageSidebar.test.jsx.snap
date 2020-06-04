@@ -10,6 +10,12 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
     <h2>
       Lead Image
     </h2>
+    <button
+      className="ui button"
+      onClick={[Function]}
+    >
+      Copy
+    </button>
   </header>
   <div
     className="ui secondary segment sidebar-metadata-container"
