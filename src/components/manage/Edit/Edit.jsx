@@ -108,9 +108,6 @@ class Edit extends Component {
    */
   componentDidMount() {
     this.props.getContent(getBaseUrl(this.props.pathname));
-    console.log('MARELE EDIT');
-    console.log('componentDidMount this.state', this.state);
-    console.log('componentDidMount this.props', this.props);
   }
 
   /**
