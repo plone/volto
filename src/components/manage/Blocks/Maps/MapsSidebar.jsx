@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Form } from 'semantic-ui-react';
-import { Grid, Segment } from 'semantic-ui-react';
+import { Grid, Segment, Button } from 'semantic-ui-react';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import { Icon, TextWidget } from '@plone/volto/components';
 import { AlignBlock } from '@plone/volto/helpers';
@@ -32,6 +32,7 @@ const MapsSidebar = ({
   required = false,
   resetSubmitUrl,
   intl,
+  onCopy,
 }) => {
   return (
     <Segment.Group raised>
@@ -39,6 +40,7 @@ const MapsSidebar = ({
         <h2>
           <FormattedMessage id="Map" defaultMessage="Map" />
         </h2>
+        <Button onClick={onCopy}>Copy</Button>
       </header>
 
       {!data.url && (

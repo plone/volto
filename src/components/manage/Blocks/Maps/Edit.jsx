@@ -4,10 +4,13 @@
  */
 
 import React, { Component } from 'react';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Button, Input, Message } from 'semantic-ui-react';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import cx from 'classnames';
+import { copyBlock } from '@plone/volto/actions';
 
 import { Icon, SidebarPortal, MapsSidebar } from '@plone/volto/components';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -93,6 +96,15 @@ class Edit extends Component {
     this.setState({
       url: target.value,
     });
+  };
+
+  /**
+   * Copy block handler
+   * @method onCopy
+   * @returns {undefined}
+   */
+  onCopy = () => {
+    this.props.copyBlock(this.props.data);
   };
 
   /**
@@ -245,11 +257,15 @@ class Edit extends Component {
           </Message>
         )}
         <SidebarPortal selected={this.props.selected}>
-          <MapsSidebar {...this.props} resetSubmitUrl={this.resetSubmitUrl} />
+          <MapsSidebar
+            {...this.props}
+            resetSubmitUrl={this.resetSubmitUrl}
+            onCopy={this.onCopy}
+          />
         </SidebarPortal>
       </div>
     );
   }
 }
 
-export default injectIntl(Edit);
+export default compose(injectIntl, connect(null, { copyBlock }))(Edit);

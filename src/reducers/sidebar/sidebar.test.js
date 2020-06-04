@@ -5,6 +5,7 @@ describe('Sidebar reducer', () => {
   it('should return the initial state', () => {
     expect(sidebar()).toEqual({
       tab: 0,
+      blockData: null,
     });
   });
 

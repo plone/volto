@@ -5,11 +5,14 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import { Button, Input, Embed, Message } from 'semantic-ui-react';
 import cx from 'classnames';
 
 import { Icon, SidebarPortal, VideoSidebar } from '@plone/volto/components';
+import { copyBlock } from '@plone/volto/actions';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import videoBlockSVG from '@plone/volto/components/manage/Blocks/Video/block-video.svg';
@@ -94,6 +97,15 @@ class Edit extends Component {
     this.setState({
       url: '',
     });
+  };
+
+  /**
+   * Copy block handler
+   * @method onCopy
+   * @returns {undefined}
+   */
+  onCopy = () => {
+    this.props.copyBlock(this.props.data);
   };
 
   /**
@@ -247,11 +259,15 @@ class Edit extends Component {
           </Message>
         )}
         <SidebarPortal selected={this.props.selected}>
-          <VideoSidebar {...this.props} resetSubmitUrl={this.resetSubmitUrl} />
+          <VideoSidebar
+            {...this.props}
+            resetSubmitUrl={this.resetSubmitUrl}
+            onCopy={this.onCopy}
+          />
         </SidebarPortal>
       </div>
     );
   }
 }
 
-export default injectIntl(Edit);
+export default compose(injectIntl, connect(null, { copyBlock }))(Edit);

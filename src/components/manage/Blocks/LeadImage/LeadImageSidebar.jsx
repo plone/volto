@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Form } from 'semantic-ui-react';
-import { Accordion, Grid, Segment } from 'semantic-ui-react';
+import { Accordion, Grid, Segment, Button } from 'semantic-ui-react';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import { CheckboxWidget, Icon, TextWidget } from '@plone/volto/components';
 import { AlignBlock, flattenToAppURL } from '@plone/volto/helpers';
@@ -51,6 +51,7 @@ const LeadImageSidebar = ({
   properties,
   data,
   block,
+  onCopy,
   onChangeBlock,
   openObjectBrowser,
   required = false,
@@ -72,6 +73,7 @@ const LeadImageSidebar = ({
         <h2>
           <FormattedMessage id="Lead Image" defaultMessage="Lead Image" />
         </h2>
+        <Button onClick={onCopy}>Copy</Button>
       </header>
 
       {!properties.image && (

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Segment, Accordion } from 'semantic-ui-react';
+import { Segment, Accordion, Button } from 'semantic-ui-react';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 
 import {
@@ -44,6 +44,7 @@ const ListingSidebar = (props) => {
         <h2>
           <FormattedMessage id="Listing" defaultMessage="Listing" />
         </h2>
+        <Button onClick={props.onCopy}>Copy</Button>
       </header>
 
       <Accordion fluid styled className="form">

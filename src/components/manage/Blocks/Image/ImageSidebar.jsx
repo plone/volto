@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Form } from 'semantic-ui-react';
-import { Accordion, Grid, Segment } from 'semantic-ui-react';
+import { Accordion, Grid, Segment, Form, Button } from 'semantic-ui-react';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import { CheckboxWidget, Icon, TextWidget } from '@plone/volto/components';
 import {
@@ -58,6 +57,7 @@ const ImageSidebar = ({
   openObjectBrowser,
   required = false,
   resetSubmitUrl,
+  onCopy,
   intl,
 }) => {
   const [activeAccIndex, setActiveAccIndex] = useState(0);
@@ -75,6 +75,7 @@ const ImageSidebar = ({
         <h2>
           <FormattedMessage id="Image" defaultMessage="Image" />
         </h2>
+        <Button onClick={onCopy}>Copy</Button>
       </header>
 
       {!data.url && (

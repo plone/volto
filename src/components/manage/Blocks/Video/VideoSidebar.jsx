@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Form } from 'semantic-ui-react';
-import { Accordion, Grid, Segment } from 'semantic-ui-react';
+import { Accordion, Grid, Segment, Button, Form } from 'semantic-ui-react';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import { CheckboxWidget, Icon, TextWidget } from '@plone/volto/components';
 import { AlignBlock } from '@plone/volto/helpers';
@@ -35,6 +34,7 @@ const VideoSidebar = ({
   required = false,
   resetSubmitUrl,
   intl,
+  onCopy,
 }) => {
   const [activeAccIndex, setActiveAccIndex] = useState(0);
 
@@ -51,6 +51,7 @@ const VideoSidebar = ({
         <h2>
           <FormattedMessage id="Video" defaultMessage="Video" />
         </h2>
+        <Button onClick={onCopy}>Copy Block</Button>
       </header>
 
       {!data.url && (

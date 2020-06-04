@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
+import { useDispatch } from 'react-redux';
+import { copyBlock } from '@plone/volto/actions';
 
 import {
   SidebarPortal,
@@ -29,6 +31,17 @@ const Edit = ({
     /* eslint-disable react-hooks/exhaustive-deps */
   }, []);
 
+  const dispatch = useDispatch();
+
+  /**
+   * Copy block handler
+   * @function onCopy
+   * @returns {undefined}
+   */
+  const onCopy = () => {
+    dispatch(copyBlock(data));
+  };
+
   return (
     <>
       {data?.query?.length === 0 && (
@@ -53,6 +66,7 @@ const Edit = ({
           data={data}
           block={block}
           onChangeBlock={onChangeBlock}
+          onCopy={onCopy}
         />
       </SidebarPortal>
     </>

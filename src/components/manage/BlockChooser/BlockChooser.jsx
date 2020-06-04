@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { filter, map, groupBy } from 'lodash';
 import { Accordion, Button } from 'semantic-ui-react';
+import { useSelector } from 'react-redux';
 import { injectIntl } from 'react-intl';
 import { Icon } from '@plone/volto/components';
 import AnimateHeight from 'react-animate-height';
@@ -15,6 +16,7 @@ const BlockChooser = ({ currentBlock, onMutateBlock, intl }) => {
   const groupedBlocks = groupBy(blocks.blocksConfig, (item) => item.group);
   const blocksAvailable = { mostUsed: mostUsedBlocks, ...groupedBlocks };
   const [activeIndex, setActiveIndex] = React.useState(0);
+  const copyBlock = useSelector((state) => state.sidebar.blockData);
 
   function handleClick(e, titleProps) {
     const { index } = titleProps;
@@ -25,6 +27,9 @@ const BlockChooser = ({ currentBlock, onMutateBlock, intl }) => {
 
   return (
     <div className="blocks-chooser">
+      <Button onClick={() => onMutateBlock(currentBlock, { ...copyBlock })}>
+        Paste
+      </Button>
       <Accordion fluid styled className="form">
         {map(blocks.groupBlocksOrder, (groupName, index) => (
           <React.Fragment key={groupName.id}>

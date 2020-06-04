@@ -3,10 +3,14 @@
  * @module reducers/sidebar/sidebar
  */
 
-import { SET_SIDEBAR_TAB } from '@plone/volto/constants/ActionTypes';
+import {
+  SET_SIDEBAR_TAB,
+  COPY_BLOCK,
+} from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
   tab: 0,
+  blockData: null,
 };
 
 /**
@@ -22,6 +26,11 @@ export default function sidebar(state = initialState, action = {}) {
       return {
         ...state,
         tab: action.index,
+      };
+    case COPY_BLOCK:
+      return {
+        ...state,
+        blockData: action.blockData,
       };
     default:
       return state;

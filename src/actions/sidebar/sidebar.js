@@ -3,7 +3,10 @@
  * @module actions/sidebar/sidebar
  */
 
-import { SET_SIDEBAR_TAB } from '@plone/volto/constants/ActionTypes';
+import {
+  SET_SIDEBAR_TAB,
+  COPY_BLOCK,
+} from '@plone/volto/constants/ActionTypes';
 
 /**
  * Set sidebar tab function.
@@ -15,5 +18,12 @@ export function setSidebarTab(index) {
   return {
     type: SET_SIDEBAR_TAB,
     index,
+  };
+}
+
+export function copyBlock(blockData) {
+  return {
+    type: COPY_BLOCK,
+    blockData,
   };
 }

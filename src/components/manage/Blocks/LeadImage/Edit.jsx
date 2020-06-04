@@ -6,12 +6,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
+import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import cx from 'classnames';
 import { Message } from 'semantic-ui-react';
 
 import { LeadImageSidebar, SidebarPortal } from '@plone/volto/components';
 import { flattenToAppURL } from '@plone/volto/helpers';
+import { copyBlock } from '@plone/volto/actions';
 
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
 
@@ -49,6 +51,15 @@ class Edit extends Component {
       align,
     });
   }
+
+  /**
+   * Copy block handler
+   * @method onCopy
+   * @returns {undefined}
+   */
+  onCopy = () => {
+    this.props.copyBlock(this.props.data);
+  };
 
   node = React.createRef();
 
@@ -95,11 +106,11 @@ class Edit extends Component {
           />
         )}
         <SidebarPortal selected={this.props.selected}>
-          <LeadImageSidebar {...this.props} />
+          <LeadImageSidebar {...this.props} onCopy={this.onCopy} />
         </SidebarPortal>
       </div>
     );
   }
 }
 
-export default compose(injectIntl)(Edit);
+export default compose(injectIntl, connect(null, { copyBlock }))(Edit);
