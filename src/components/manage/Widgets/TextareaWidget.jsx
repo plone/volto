@@ -64,7 +64,7 @@ const TextareaWidget = ({
   const [lengthError, setlengthError] = useState('');
 
   const onhandleChange = (id, value) => {
-    if (maxLength) {
+    if (maxLength & value?.length) {
       let remlength = maxLength - value.length;
       if (remlength < 0) {
         setlengthError(`You have exceed word limit by ${Math.abs(remlength)}`);
