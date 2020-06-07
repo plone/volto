@@ -12,6 +12,8 @@
 - Added internationalization for Romanian language @alecghica #1521
 - Support loading additional reducers from the ``config.addonReducers`` key,
   to allow addons to provide their own reducers @tiberiuichim
+- Add a no brainer image sizing option, using scales. This will be vastly improved when
+  we adopt srcsets. @sneridagh
 
 ### Bugfix
 
