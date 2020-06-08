@@ -2,17 +2,26 @@
 @import 'cms-ui.site.less';
 
 // prettier-ignore
+.cms-ui{
+ 
+
+  /* Elements */
+  & { @import "~semantic-ui-less/definitions/elements/button"; }
+  
+}
+// prettier-ignore
 .cms-ui, #toolbar {
   /* Global - OVERRIDDEN ABOVE */
   // & { @import "~semantic-ui-less/definitions/globals/reset"; }
   // & { @import "~semantic-ui-less/definitions/globals/site"; }
 
-  /* Elements */
-  & { @import "~semantic-ui-less/definitions/elements/button"; }
+  /* Elements */ 
   & { @import "~semantic-ui-less/definitions/elements/container"; }
 }
 
-& { @import 'cms-ui.elements.container.less'; }
+& {
+  @import 'cms-ui.elements.container.less';
+}
 
 // prettier-ignore
 .cms-ui, #toolbar {
