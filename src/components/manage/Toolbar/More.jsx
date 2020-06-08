@@ -64,7 +64,7 @@ class More extends Component {
     content: null,
   };
 
-  push = selector => {
+  push = (selector) => {
     this.setState(() => ({
       pushed: true,
     }));

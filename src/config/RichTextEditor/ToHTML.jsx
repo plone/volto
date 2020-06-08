@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
+import { isEmpty } from 'lodash';
 
 const styles = {
   code: {
@@ -30,10 +31,28 @@ const inline = {
   ),
 };
 
-const addBreaklines = children => children.map(child => [child, <br />]);
+const addBreaklines = (children) =>
+  children.map((child) => {
+    return child[1].map((child) => [
+      <React.Fragment key={child}>
+        {child}
+        <br />
+      </React.Fragment>,
+    ]);
+  });
+
+const splitBySoftLines = (children) =>
+  children.map((child) => {
+    return child.map((item) => {
+      if (Array.isArray(item)) {
+        return item[0].split('\n');
+      }
+      return item;
+    });
+  });
 
 // Returns how the default lists should be rendered
-const getList = ordered => (children, { depth, keys }) =>
+const getList = (ordered) => (children, { depth, keys }) =>
   ordered ? (
     <ol key={keys[0]} keys={keys} depth={depth}>
       {children.map((child, i) => (
@@ -69,9 +88,13 @@ const getList = ordered => (children, { depth, keys }) =>
  */
 const blocks = {
   unstyled: (children, { keys }) => {
-    const processedChildren = children.map(chunks =>
-      chunks.map(child => {
+    const processedChildren = children.map((chunks) =>
+      chunks.map((child) => {
         if (Array.isArray(child)) {
+          // If it's empty is a blank paragraph, we want to add a <br /> in it
+          if (isEmpty(child)) {
+            return <br />;
+          }
           return child.map((subchild, index) => {
             if (typeof subchild === 'string') {
               const last = subchild.split('\n').length - 1;
@@ -94,9 +117,11 @@ const blocks = {
       (chunk, index) => chunk && <p key={keys[index]}>{chunk}</p>,
     );
   },
-  atomic: children => children[0],
+  atomic: (children) => children[0],
   blockquote: (children, { keys }) => (
-    <blockquote key={keys[0]}>{addBreaklines(children)}</blockquote>
+    <blockquote key={keys[0]}>
+      {addBreaklines(splitBySoftLines(children))}
+    </blockquote>
   ),
   'header-one': (children, { keys }) =>
     children.map((child, i) => <h1 key={keys[i]}>{child}</h1>),
@@ -145,9 +170,9 @@ const blocks = {
     )),
 };
 
-const LinkEntity = connect(state => ({
+const LinkEntity = connect((state) => ({
   token: state.userSession.token,
-}))(({ token, key, url, target, targetUrl, download, children }) => {
+}))(({ token, key, url, target = '_blank', targetUrl, download, children }) => {
   const to = token ? url : targetUrl || url;
   if (download) {
     return token ? (

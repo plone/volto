@@ -203,11 +203,11 @@ class TextWidget extends Component {
                 onChange={({ target }) =>
                   onChange(id, target.value === '' ? undefined : target.value)
                 }
-                ref={node => {
+                ref={(node) => {
                   this.node = node;
                 }}
               />
-              {map(error, message => (
+              {map(error, (message) => (
                 <Label key={message} basic color="red" pointing>
                   {message}
                 </Label>

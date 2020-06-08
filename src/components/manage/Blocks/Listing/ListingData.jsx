@@ -2,19 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Form, Segment } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
-import Select from 'react-select';
 import { toPairs, groupBy, map } from 'lodash';
+import loadable from '@loadable/component';
 import { CheckboxWidget, TextWidget } from '@plone/volto/components';
 import { compose } from 'redux';
 import { useSelector } from 'react-redux';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 
-import QuerystringWidget, {
-  customSelectStyles,
-  selectTheme,
-  DropdownIndicator,
+import QuerystringWidget from '@plone/volto/components/manage/Blocks/Listing/QuerystringWidget';
+
+import {
   Option,
-} from '@plone/volto/components/manage/Blocks/Listing/QuerystringWidget';
+  DropdownIndicator,
+  selectTheme,
+  customSelectStyles,
+} from '@plone/volto/components/manage/Widgets/SelectStyling';
+
+const Select = loadable(() => import('react-select'));
 
 const messages = defineMessages({
   Source: {
@@ -52,7 +56,7 @@ const ListingData = ({
   intl,
 }) => {
   const sortable_indexes = useSelector(
-    state => state.querystring.sortable_indexes,
+    (state) => state.querystring.sortable_indexes,
   );
   const [limit, setLimit] = React.useState(data.limit || '');
   const [itemBatchSize, setItemBatchSize] = React.useState(data.b_size || '');
@@ -99,12 +103,12 @@ const ListingData = ({
                       toPairs(
                         groupBy(
                           toPairs(sortable_indexes),
-                          item => item[1].group,
+                          (item) => item[1].group,
                         ),
                       ),
-                      group => ({
+                      (group) => ({
                         label: group[0],
-                        options: map(group[1], field => ({
+                        options: map(group[1], (field) => ({
                           label: field[1].title,
                           value: field[0],
                         })),
@@ -122,7 +126,7 @@ const ListingData = ({
                         : data.sort_on ||
                           intl.formatMessage(messages.NoSelection),
                   }}
-                  onChange={field => {
+                  onChange={(field) => {
                     onChangeBlock(block, {
                       ...data,
                       sort_on: field.value,

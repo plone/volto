@@ -23,7 +23,7 @@ export function getWorkflow(urls) {
     request:
       typeof urls === 'string'
         ? { op: 'get', path: `${urls}/@workflow` }
-        : urls.map(url => ({ op: 'get', path: `${url}/@workflow` })),
+        : urls.map((url) => ({ op: 'get', path: `${url}/@workflow` })),
   };
 }
 
@@ -44,7 +44,7 @@ export function transitionWorkflow(urls, include_children = false) {
             path: urls.replace(settings.apiPath, ''),
             data: { include_children },
           }
-        : urls.map(url => ({
+        : urls.map((url) => ({
             op: 'post',
             path: url.replace(settings.apiPath, ''),
             data: { include_children },

@@ -38,7 +38,7 @@ class Api {
    * @constructs Api
    */
   constructor() {
-    methods.forEach(method => {
+    methods.forEach((method) => {
       this[method] = (path, { params, data, type, headers = {} } = {}) => {
         let request;
         let promise = new Promise((resolve, reject) => {
@@ -59,7 +59,7 @@ class Api {
             request.type(type);
           }
 
-          Object.keys(headers).forEach(key => request.set(key, headers[key]));
+          Object.keys(headers).forEach((key) => request.set(key, headers[key]));
 
           if (data) {
             request.send(data);

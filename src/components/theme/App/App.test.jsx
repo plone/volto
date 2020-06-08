@@ -6,6 +6,19 @@ import { MemoryRouter } from 'react-router-dom';
 
 import { __test__ as App } from './App';
 
+jest.mock('~/config', () => ({
+  settings: {
+    nonContentRoutes: [],
+    supportedLanguages: ['en'],
+    navDepth: 1,
+  },
+  views: {
+    errorViews: {
+      ECONNREFUSED: () => <div className="ECONNREFUSED" />,
+    },
+  },
+}));
+
 const mockStore = configureStore();
 
 jest.mock('../../manage/Toolbar/Toolbar', () =>
@@ -34,6 +47,7 @@ describe('App', () => {
         token: 'abcdefgh',
       },
       content: { data: { id: 'content', '@type': 'Document' } },
+      apierror: {},
     });
     const component = renderer.create(
       <Provider store={store}>

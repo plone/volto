@@ -77,7 +77,7 @@ class Cell extends Component {
   componentDidMount() {
     if (this.node) {
       const onFocus = this.node.editor._onFocus;
-      this.node.editor._onFocus = event => {
+      this.node.editor._onFocus = (event) => {
         onFocus(event);
         this.props.onSelectCell(this.props.row, this.props.cell);
       };
@@ -136,7 +136,7 @@ class Cell extends Component {
           blockRenderMap={settings.extendedBlockRenderMap}
           blockStyleFn={settings.blockStyleFn}
           customStyleMap={settings.customStyleMap}
-          handleReturn={e => {
+          handleReturn={(e) => {
             if (isSoftNewlineEvent(e)) {
               this.onChange(
                 RichUtils.insertSoftNewline(this.state.editorState),
@@ -161,7 +161,7 @@ class Cell extends Component {
             }
             return {};
           }}
-          ref={node => {
+          ref={(node) => {
             this.node = node;
           }}
         />

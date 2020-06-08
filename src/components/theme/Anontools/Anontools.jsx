@@ -77,7 +77,7 @@ class Anontools extends Component {
   }
 }
 
-export default connect(state => ({
+export default connect((state) => ({
   token: state.userSession.token,
   content: state.content.data,
 }))(Anontools);

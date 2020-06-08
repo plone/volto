@@ -17,14 +17,14 @@ const DefaultTemplate = ({ items, linkMore, isEditMode }) => {
         {linkMore?.title || href}
       </ConditionalLink>
     );
-  } else {
+  } else if (href) {
     link = <a href={href}>{linkMore?.title || href}</a>;
   }
 
   return (
     <>
       <div className="items">
-        {items.map(item => (
+        {items.map((item) => (
           <div className="listing-item" key={item['@id']}>
             <ConditionalLink
               to={flattenToAppURL(item['@id'])}

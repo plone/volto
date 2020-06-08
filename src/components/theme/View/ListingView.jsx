@@ -5,7 +5,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import { Segment, Container, Image } from 'semantic-ui-react';
 
@@ -17,9 +16,8 @@ import { Segment, Container, Image } from 'semantic-ui-react';
  */
 const ListingView = ({ content }) => (
   <Container id="page-home">
-    <Helmet title={content.title} />
     <section id="content-core">
-      {content.items.map(item => (
+      {content.items.map((item) => (
         <Segment key={item.url} className="listing-item">
           <Container>
             <h2>

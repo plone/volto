@@ -3,6 +3,7 @@ import renderer from 'react-test-renderer';
 import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
 import { MemoryRouter } from 'react-router-dom';
+import { wait } from '@testing-library/react';
 
 import PersonalPreferences from './PersonalPreferences';
 
@@ -13,7 +14,7 @@ jest.mock('react-portal', () => ({
 }));
 
 describe('PersonalPreferences', () => {
-  it('renders a personal preferences component', () => {
+  it('renders a personal preferences component', async () => {
     const store = mockStore({
       intl: {
         locale: 'en',
@@ -36,7 +37,8 @@ describe('PersonalPreferences', () => {
         </MemoryRouter>
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    await wait(() => {
+      expect(component.toJSON()).toMatchSnapshot();
+    });
   });
 });

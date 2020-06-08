@@ -12,9 +12,9 @@ import { blocks, settings } from '~/config';
 
 const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
   const [currentPage, setCurrentPage] = React.useState(1);
-  const content = useSelector(state => state.content.data);
+  const content = useSelector((state) => state.content.data);
   const querystringResults = useSelector(
-    state => state.querystringsearch.subrequests,
+    (state) => state.querystringsearch.subrequests,
   );
   const dispatch = useDispatch();
 
@@ -24,7 +24,8 @@ const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
         getQueryStringResults(path, { ...data, fullobjects: 1 }, data.block),
       );
     }
-  }, [dispatch, data, data.block, path]);
+    /* eslint-disable react-hooks/exhaustive-deps */
+  }, [data]);
 
   const folderItems = content.is_folderish ? content.items : [];
 
@@ -137,7 +138,7 @@ const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
               </div>
             )}
         </>
-      ) : (
+      ) : isEditMode ? (
         <div className="listing message">
           {data?.query?.length === 0 && (
             <FormattedMessage
@@ -152,7 +153,7 @@ const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
             />
           )}
         </div>
-      )}
+      ) : null}
     </>
   );
 };

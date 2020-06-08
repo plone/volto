@@ -10,8 +10,7 @@ import { Form, Grid, Label } from 'semantic-ui-react';
 import { isObject, map } from 'lodash';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import AsyncPaginate from 'react-select-async-paginate';
-import CreatableSelect from 'react-select/creatable';
+import loadable from '@loadable/component';
 
 import {
   getVocabFromHint,
@@ -26,6 +25,9 @@ import {
   selectTheme,
   customSelectStyles,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
+
+const AsyncPaginate = loadable(() => import('react-select-async-paginate'));
+const CreatableSelect = loadable(() => import('react-select/creatable'));
 
 const messages = defineMessages({
   select: {
@@ -111,9 +113,9 @@ class ArrayWidget extends Component {
     this.state = {
       search: '',
       selectedOption: props.value
-        ? props.value.map(item =>
+        ? props.value.map((item) =>
             isObject(item)
-              ? { label: item.title, value: item.token }
+              ? { label: item.title || item.token, value: item.token }
               : { label: item, value: item },
           )
         : [],
@@ -175,7 +177,7 @@ class ArrayWidget extends Component {
 
     this.props.onChange(
       this.props.id,
-      selectedOption ? selectedOption.map(item => item.value) : null,
+      selectedOption ? selectedOption.map((item) => item.value) : null,
     );
   }
 
@@ -226,9 +228,13 @@ class ArrayWidget extends Component {
                   options={
                     this.props.choices
                       ? [
-                          ...this.props.choices.map(option => ({
+                          ...this.props.choices.map((option) => ({
                             value: option[0],
-                            label: option[1],
+                            label:
+                              // Fix "None" on the serializer, to remove when fixed in p.restapi
+                              option[1] !== 'None' && option[1]
+                                ? option[1]
+                                : option[0],
                           })),
                           {
                             label: this.props.intl.formatMessage(
@@ -255,7 +261,7 @@ class ArrayWidget extends Component {
                   isMulti
                 />
               )}
-              {map(error, message => (
+              {map(error, (message) => (
                 <Label key={message} basic color="red" pointing>
                   {message}
                 </Label>

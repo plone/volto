@@ -121,7 +121,7 @@ class ContactForm extends Component {
         <Toast
           success
           title={this.props.intl.formatMessage(messages.success)}
-          content={this.props.intl.formatMessage(messages.saved)}
+          content={this.props.intl.formatMessage(messages.messageSent)}
         />,
       );
     }

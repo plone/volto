@@ -24,7 +24,7 @@ describe('Pagination', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Pagination current={1} total={1} onChangePage={x => x} />
+        <Pagination current={1} total={1} onChangePage={(x) => x} />
       </Provider>,
     );
     const json = component.toJSON();
@@ -50,10 +50,10 @@ describe('Pagination', () => {
         <Pagination
           pageSize={15}
           pageSizes={[15, 30, 50]}
-          onChangePageSize={x => x}
+          onChangePageSize={(x) => x}
           current={1}
           total={1}
-          onChangePage={x => x}
+          onChangePage={(x) => x}
         />
       </Provider>,
     );
@@ -77,7 +77,7 @@ describe('Pagination', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Pagination current={6} total={12} onChangePage={x => x} />
+        <Pagination current={6} total={12} onChangePage={(x) => x} />
       </Provider>,
     );
     const json = component.toJSON();

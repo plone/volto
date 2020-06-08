@@ -9,13 +9,15 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { asyncConnect } from 'redux-connect';
 import { Segment } from 'semantic-ui-react';
-import Raven from 'raven-js';
 import { renderRoutes } from 'react-router-config';
 import { Slide, ToastContainer, toast } from 'react-toastify';
 import split from 'lodash/split';
 import join from 'lodash/join';
 import trim from 'lodash/trim';
 import cx from 'classnames';
+import loadable from '@loadable/component';
+
+import { settings, views } from '~/config';
 
 import Error from '@plone/volto/error';
 
@@ -25,6 +27,7 @@ import {
   Header,
   Icon,
   OutdatedBrowser,
+  AppExtras,
 } from '@plone/volto/components';
 import { BodyClass, getBaseUrl, getView, isCmsUi } from '@plone/volto/helpers';
 import {
@@ -68,6 +71,7 @@ class App extends Component {
    */
   componentDidMount() {
     if (__CLIENT__ && process.env.SENTRY_DSN) {
+      const Raven = loadable(() => import('raven-js'));
       Raven.config(process.env.SENTRY_DSN).install();
     }
   }
@@ -95,6 +99,7 @@ class App extends Component {
   componentDidCatch(error, info) {
     this.setState({ hasError: true, error, errorInfo: info });
     if (__CLIENT__ && process.env.SENTRY_DSN) {
+      const Raven = loadable(() => import('raven-js'));
       Raven.captureException(error, { extra: info });
     }
   }
@@ -108,6 +113,7 @@ class App extends Component {
     const path = getBaseUrl(this.props.pathname);
     const action = getView(this.props.pathname);
     const isCmsUI = isCmsUi(this.props.pathname);
+    const ConnectionRefusedView = views.errorViews.ECONNREFUSED;
 
     return (
       <Fragment>
@@ -140,7 +146,9 @@ class App extends Component {
           <Segment basic className="content-area">
             <main>
               <OutdatedBrowser />
-              {this.state.hasError ? (
+              {this.props.connectionRefused ? (
+                <ConnectionRefusedView />
+              ) : this.state.hasError ? (
                 <Error
                   message={this.state.error.message}
                   stackTrace={this.state.errorInfo.componentStack}
@@ -165,6 +173,7 @@ class App extends Component {
             />
           }
         />
+        <AppExtras />
       </Fragment>
     );
   }
@@ -175,6 +184,8 @@ export const __test__ = connect(
     pathname: props.location.pathname,
     token: state.userSession.token,
     content: state.content.data,
+    apiError: state.apierror.error,
+    connectionRefused: state.apierror.connectionRefused,
   }),
   {},
 )(App);
@@ -194,7 +205,10 @@ export default compose(
     {
       key: 'navigation',
       promise: ({ location, store: { dispatch } }) =>
-        __SERVER__ && dispatch(getNavigation(getBaseUrl(location.pathname))),
+        __SERVER__ &&
+        dispatch(
+          getNavigation(getBaseUrl(location.pathname), settings.navDepth),
+        ),
     },
     {
       key: 'types',
@@ -212,6 +226,8 @@ export default compose(
       pathname: props.location.pathname,
       token: state.userSession.token,
       content: state.content.data,
+      apiError: state.apierror.error,
+      connectionRefused: state.apierror.connectionRefused,
     }),
     {},
   ),

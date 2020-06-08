@@ -12,17 +12,17 @@ import { asyncConnect } from 'redux-connect';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Button } from 'semantic-ui-react';
 import { Portal } from 'react-portal';
-import { DragDropContext } from 'react-dnd';
-import HTML5Backend from 'react-dnd-html5-backend';
 import qs from 'query-string';
 import { find } from 'lodash';
+import { toast } from 'react-toastify';
 
 import {
   Forbidden,
   Form,
   Icon,
-  Toolbar,
   Sidebar,
+  Toast,
+  Toolbar,
   Unauthorized,
 } from '@plone/volto/components';
 import {
@@ -48,6 +48,10 @@ const messages = defineMessages({
   cancel: {
     id: 'Cancel',
     defaultMessage: 'Cancel',
+  },
+  error: {
+    id: 'Error',
+    defaultMessage: 'Error',
   },
 });
 
@@ -140,7 +144,7 @@ class Edit extends Component {
       }
     }
     // Hack for make the Plone site editable by Volto Editor without checkings
-    if (this.props.content['@type'] === 'Plone Site') {
+    if (this.props?.content?.['@type'] === 'Plone Site') {
       this.setState({
         visual: true,
       });
@@ -148,6 +152,16 @@ class Edit extends Component {
     if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
       this.props.history.push(
         this.props.returnUrl || getBaseUrl(this.props.pathname),
+      );
+    }
+
+    if (nextProps.updateRequest.error) {
+      toast.error(
+        <Toast
+          error
+          title={this.props.intl.formatMessage(messages.error)}
+          content={`${nextProps.updateRequest.error.status} ${nextProps.updateRequest.error.response?.body?.message}`}
+        />,
       );
     }
   }
@@ -185,7 +199,7 @@ class Edit extends Component {
 
     return (
       <div id="page-edit">
-        {this.props.objectActions.length > 0 && (
+        {this.props.objectActions?.length > 0 && (
           <>
             {editPermission && (
               <>
@@ -288,6 +302,7 @@ export const __test__ = compose(
       getRequest: state.content.get,
       schemaRequest: state.schema,
       updateRequest: state.content.update,
+      createRequest: state.content.create,
       pathname: props.location.pathname,
       returnUrl: qs.parse(props.location.search).return_url,
     }),
@@ -300,13 +315,12 @@ export const __test__ = compose(
 )(Edit);
 
 export default compose(
-  DragDropContext(HTML5Backend),
   injectIntl,
   asyncConnect([
     {
       key: 'actions',
-      promise: ({ location, store: { dispatch } }) => {
-        __SERVER__ && dispatch(listActions(getBaseUrl(location.pathname)));
+      promise: async ({ location, store: { dispatch } }) => {
+        await dispatch(listActions(getBaseUrl(location.pathname)));
       },
     },
   ]),
