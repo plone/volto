@@ -218,6 +218,7 @@ msgstr "キャンセル"
 msgid "Cell"
 msgstr "セル"
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Center"
@@ -375,6 +376,7 @@ msgid "Cut"
 msgstr "カット"
 
 #: components/manage/Controlpanels/ModerateComments
+#: components/manage/Widgets/DatetimeWidget
 msgid "Date"
 msgstr "日付"
 
@@ -836,6 +838,7 @@ msgstr ""
 msgid "Lead Image"
 msgstr "リード画像"
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Left"
@@ -1213,6 +1216,7 @@ msgstr "審査状態"
 msgid "Richtext"
 msgstr "Richtext"
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Right"
@@ -1367,6 +1371,10 @@ msgstr "サイト設定"
 msgid "Sitemap"
 msgstr "サイトマップ"
 
+#: components/manage/Blocks/Image/ImageSidebar
+msgid "Size"
+msgstr ""
+
 #: components/theme/View/ImageView
 msgid "Size: {size}"
 msgstr "サイズ: {size}"
@@ -1513,6 +1521,10 @@ msgstr "この名前はURLの一部として使用されます"
 #: components/theme/NotFound/NotFound
 msgid "This page does not seem to exist…"
 msgstr "このページは存在しないようです…"
+
+#: components/manage/Widgets/DatetimeWidget
+msgid "Time"
+msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/Contents

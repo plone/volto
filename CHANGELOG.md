@@ -6,12 +6,23 @@
 
 ### Feature
 
+- Include ``config.addonRoutes`` in router configuration. This allows addons to
+  override route children defined for the ``App`` component.
+- Added param 'wrapped' for widgets, to use widgets without form wrappers. @giuliaghisini
+- Added internationalization for Romanian language @alecghica #1521
 - Support loading additional reducers from the ``config.addonReducers`` key,
   to allow addons to provide their own reducers @tiberiuichim
+- Add a no brainer image sizing option, using scales. This will be vastly improved when
+  we adopt srcsets. @sneridagh
 
 ### Bugfix
 
+- Removed a regex check in default view, we already have that check implemented in `toHTML.jsx` L173s @nileshgulia1
+- UX and UI improvements to `DateTimeWidget` @sneridagh
+- Fix an UTC handling for edge cases in `DateTimeWidget` @sneridagh
 - Do not store the server information of the image block in the block @sneridagh
+- expose `blocks` and `blocks_layout` only editing content types @nileshgulia1
+- Small fix for `TextAreaWidget` and max_lenght @sneridagh
 
 ### Internal
 

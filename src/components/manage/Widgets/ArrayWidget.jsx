@@ -6,8 +6,7 @@
 import React, { Component } from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
-import { Form, Grid, Label } from 'semantic-ui-react';
-import { isObject, map } from 'lodash';
+import { isObject } from 'lodash';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import loadable from '@loadable/component';
@@ -25,6 +24,8 @@ import {
   selectTheme,
   customSelectStyles,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
+
+import { FormFieldWrapper } from '@plone/volto/components';
 
 const AsyncPaginate = loadable(() => import('react-select-async-paginate'));
 const CreatableSelect = loadable(() => import('react-select/creatable'));
@@ -73,6 +74,7 @@ class ArrayWidget extends Component {
     ),
     onChange: PropTypes.func.isRequired,
     itemsTotal: PropTypes.number,
+    wrapped: PropTypes.bool,
   };
 
   /**
@@ -187,96 +189,63 @@ class ArrayWidget extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { id, title, required, description, error, fieldSet } = this.props;
     const { selectedOption } = this.state;
+
     return (
-      <Form.Field
-        inline
-        required={required}
-        error={error.length > 0}
-        className={description ? 'help' : ''}
-        id={`${fieldSet || 'field'}-${id}`}
-      >
-        <Grid>
-          <Grid.Row stretched>
-            <Grid.Column width="4">
-              <div className="wrapper">
-                <label htmlFor={`field-${id}`}>{title}</label>
-              </div>
-            </Grid.Column>
-            <Grid.Column width="8">
-              {!this.props.items?.choices && this.vocabBaseUrl ? (
-                <AsyncPaginate
-                  className="react-select-container"
-                  classNamePrefix="react-select"
-                  options={this.props.choices || []}
-                  styles={customSelectStyles}
-                  theme={selectTheme}
-                  components={{ DropdownIndicator, Option }}
-                  isMulti
-                  value={selectedOption || []}
-                  loadOptions={this.loadOptions}
-                  onChange={this.handleChange}
-                  additional={{
-                    offset: 25,
-                  }}
-                />
-              ) : (
-                <CreatableSelect
-                  className="react-select-container"
-                  classNamePrefix="react-select"
-                  options={
-                    this.props.choices
-                      ? [
-                          ...this.props.choices.map((option) => ({
-                            value: option[0],
-                            label:
-                              // Fix "None" on the serializer, to remove when fixed in p.restapi
-                              option[1] !== 'None' && option[1]
-                                ? option[1]
-                                : option[0],
-                          })),
-                          {
-                            label: this.props.intl.formatMessage(
-                              messages.no_value,
-                            ),
-                            value: 'no-value',
-                          },
-                        ]
-                      : [
-                          {
-                            label: this.props.intl.formatMessage(
-                              messages.no_value,
-                            ),
-                            value: 'no-value',
-                          },
-                        ]
-                  }
-                  styles={customSelectStyles}
-                  theme={selectTheme}
-                  components={{ DropdownIndicator, Option }}
-                  value={selectedOption || []}
-                  placeholder={this.props.intl.formatMessage(messages.select)}
-                  onChange={this.handleChange}
-                  isMulti
-                />
-              )}
-              {map(error, (message) => (
-                <Label key={message} basic color="red" pointing>
-                  {message}
-                </Label>
-              ))}
-            </Grid.Column>
-          </Grid.Row>
-          {description && (
-            <Grid.Row stretched>
-              <Grid.Column stretched width="12">
-                <p className="help">{description}</p>
-              </Grid.Column>
-            </Grid.Row>
-          )}
-        </Grid>
-      </Form.Field>
+      <FormFieldWrapper {...this.props}>
+        {!this.props.items?.choices && this.vocabBaseUrl ? (
+          <AsyncPaginate
+            className="react-select-container"
+            classNamePrefix="react-select"
+            options={this.props.choices || []}
+            styles={customSelectStyles}
+            theme={selectTheme}
+            components={{ DropdownIndicator, Option }}
+            isMulti
+            value={selectedOption || []}
+            loadOptions={this.loadOptions}
+            onChange={this.handleChange}
+            additional={{
+              offset: 25,
+            }}
+          />
+        ) : (
+          <CreatableSelect
+            className="react-select-container"
+            classNamePrefix="react-select"
+            options={
+              this.props.choices
+                ? [
+                    ...this.props.choices.map((option) => ({
+                      value: option[0],
+                      label:
+                        // Fix "None" on the serializer, to remove when fixed in p.restapi
+                        option[1] !== 'None' && option[1]
+                          ? option[1]
+                          : option[0],
+                    })),
+                    {
+                      label: this.props.intl.formatMessage(messages.no_value),
+                      value: 'no-value',
+                    },
+                  ]
+                : [
+                    {
+                      label: this.props.intl.formatMessage(messages.no_value),
+                      value: 'no-value',
+                    },
+                  ]
+            }
+            styles={customSelectStyles}
+            theme={selectTheme}
+            components={{ DropdownIndicator, Option }}
+            value={selectedOption || []}
+            placeholder={this.props.intl.formatMessage(messages.select)}
+            onChange={this.handleChange}
+            isMulti
+          />
+        )}
+      </FormFieldWrapper>
     );
   }
 }
