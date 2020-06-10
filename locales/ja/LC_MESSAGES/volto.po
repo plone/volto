@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-27T19:30:59.079Z\n"
-"PO-Revision-Date: 2020-04-22 21:11+0900\n"
+"PO-Revision-Date: 2020-06-10 21:08+0900\n"
 "Last-Translator: Manabu TERADA <terada@cmscom.jp>\n"
 "Language: ja\n"
 "Language-Team: Plone Japanese Team <https://github.com/plonejp>\n"
@@ -43,7 +43,7 @@ msgstr "アクション"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Activate and deactivate"
-msgstr ""
+msgstr "以下のリストにあるアドオンを有効にしたり無効にしたりできます。"
 
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
@@ -54,7 +54,7 @@ msgstr "追加"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Add Addons"
-msgstr ""
+msgstr "以下のリストに新しいアドオンが表示されるようにするには、それをビルドアウト設定(buildout.cfg)に追加し、ビルドアウトコマンド(bin/buildout)を実行した後に、サーバプロセスを再起動します。"
 
 #: components/manage/Toolbar/Types
 msgid "Add Content"
@@ -94,7 +94,7 @@ msgstr "グループを追加"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Add new content type"
-msgstr ""
+msgstr "コンテンツタイプを追加"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add new group"
@@ -114,7 +114,7 @@ msgstr "{type} を追加"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Add-ons Settings"
-msgstr ""
+msgstr "アドオン設定"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -146,7 +146,7 @@ msgstr "昇順"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Available"
-msgstr ""
+msgstr "利用可能"
 
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -782,15 +782,15 @@ msgstr "上に行を追加"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Install"
-msgstr ""
+msgstr "インストール"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Installed"
-msgstr ""
+msgstr "インストール済み"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Installed version"
-msgstr ""
+msgstr "インストール済バージョン"
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "Item batch size"
@@ -832,7 +832,7 @@ msgstr "最終変更"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Latest version"
-msgstr ""
+msgstr "最新バージョン"
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Lead Image"
@@ -996,7 +996,7 @@ msgstr "選択肢無し"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "No uninstall profile"
-msgstr ""
+msgstr "アンインストール用のプロファイルがありません"
 
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
@@ -1582,7 +1582,7 @@ msgstr "Unified (未翻訳)"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Uninstall"
-msgstr ""
+msgstr "アンインストール"
 
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
@@ -1591,19 +1591,19 @@ msgstr "不明なブロック"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update"
-msgstr ""
+msgstr "更新"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update installed addons"
-msgstr ""
+msgstr "Update installed addons(未翻訳)"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update installed addons:"
-msgstr ""
+msgstr "Update installed addons:(未翻訳)"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Updates available"
-msgstr ""
+msgstr "Updates available(未翻訳)"
 
 #: components/manage/Contents/Contents
 msgid "Upload"
