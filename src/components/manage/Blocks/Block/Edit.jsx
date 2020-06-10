@@ -75,8 +75,9 @@ class Edit extends Component {
     ) {
       this.blockNode.current.focus();
     }
+    const tab = this.props.isAdminBlock ? 1 : (blocks.blocksConfig?.[type]?.sidebarBar || 0);
     if (this.props.selected) {
-      this.props.setSidebarTab(blocks.blocksConfig?.[type]?.sidebarBar || 0);
+      this.props.setSidebarTab(tab);
     }
 
     // Ref ID
@@ -101,9 +102,8 @@ class Edit extends Component {
       (!this.props.selected && nextProps.selected) ||
       type !== nextProps.type
     ) {
-      this.props.setSidebarTab(
-        blocks.blocksConfig?.[nextProps.type]?.sidebarTab || 0,
-      );
+      const tab = this.props.isAdminBlock ? 1 : (blocks.blocksConfig?.[nextProps.type]?.sidebarTab || 0);
+      this.props.setSidebarTab(tab);
     }
   }
 
