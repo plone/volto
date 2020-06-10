@@ -5,7 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Icon as IconOld, Form, Grid, Label } from 'semantic-ui-react';
+import { Icon as IconOld } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { map, find, isBoolean, isObject } from 'lodash';
@@ -18,7 +18,7 @@ import {
   getVocabFromField,
   getVocabFromItems,
 } from '@plone/volto/helpers';
-
+import { FormFieldWrapper } from '@plone/volto/components';
 import { getVocabulary, getVocabularyTokenTitle } from '@plone/volto/actions';
 
 import {
@@ -139,6 +139,7 @@ class SelectWidget extends Component {
     onEdit: PropTypes.func,
     onDelete: PropTypes.func,
     itemsTotal: PropTypes.number,
+    wrapped: PropTypes.bool,
   };
 
   /**
@@ -254,137 +255,86 @@ class SelectWidget extends Component {
       required: ['id', 'title', 'choices'],
     };
 
-    const {
-      required,
-      error,
-      description,
-      onEdit,
-      id,
-      title,
-      onDelete,
-      choices,
-      value,
-      onChange,
-      fieldSet,
-    } = this.props;
+    const { onEdit, id, onDelete, choices, value, onChange } = this.props;
 
     return (
-      <Form.Field
-        inline
-        required={required}
-        error={error.length > 0}
-        className={description ? 'help' : ''}
-        id={`${fieldSet || 'field'}-${id}`}
-      >
-        <Grid>
-          <Grid.Row stretched>
-            <Grid.Column width="4">
-              <div className="wrapper">
-                <label htmlFor={`field-${id}`}>
-                  {onEdit && (
-                    <i
-                      aria-hidden="true"
-                      className="grey bars icon drag handle"
-                    />
-                  )}
-                  {title}
-                </label>
-              </div>
-            </Grid.Column>
-            <Grid.Column width="8">
-              {onEdit && (
-                <div className="toolbar">
-                  <button
-                    onClick={() => onEdit(id, schema)}
-                    className="item ui noborder button"
-                  >
-                    <IconOld name="write square" size="large" color="blue" />
-                  </button>
-                  <button
-                    aria-label={this.props.intl.formatMessage(messages.close)}
-                    className="item ui noborder button"
-                    onClick={() => onDelete(id)}
-                  >
-                    <IconOld name="close" size="large" color="red" />
-                  </button>
-                </div>
-              )}
-              {this.props.vocabBaseUrl ? (
-                <AsyncPaginate
-                  className="react-select-container"
-                  classNamePrefix="react-select"
-                  options={this.props.choices || []}
-                  styles={customSelectStyles}
-                  theme={selectTheme}
-                  components={{ DropdownIndicator, Option }}
-                  value={this.state.selectedOption}
-                  loadOptions={this.loadOptions}
-                  onChange={this.handleChange}
-                  additional={{
-                    offset: 25,
-                  }}
-                />
-              ) : (
-                <Select
-                  id={`field-${id}`}
-                  name={id}
-                  disabled={onEdit !== null}
-                  className="react-select-container"
-                  classNamePrefix="react-select"
-                  isMulti={id === 'roles' || id === 'groups'}
-                  options={[
-                    ...map(choices, (option) => ({
-                      value: option[0],
-                      label:
-                        // Fix "None" on the serializer, to remove when fixed in p.restapi
-                        option[1] !== 'None' && option[1]
-                          ? option[1]
-                          : option[0],
-                    })),
-                    {
-                      label: this.props.intl.formatMessage(messages.no_value),
-                      value: 'no-value',
-                    },
-                  ]}
-                  styles={customSelectStyles}
-                  theme={selectTheme}
-                  components={{ DropdownIndicator, Option }}
-                  defaultValue={
-                    id === 'roles' || id === 'groups'
-                      ? null
-                      : getDefaultValues(choices, value)
-                  }
-                  onChange={(data) => {
-                    let dataValue = [];
-                    if (Array.isArray(data)) {
-                      for (let obj of data) {
-                        dataValue.push(obj.value);
-                      }
-                      return onChange(id, dataValue);
-                    }
-                    return onChange(
-                      id,
-                      data.value === 'no-value' ? undefined : data.value,
-                    );
-                  }}
-                />
-              )}
-              {map(error, (message) => (
-                <Label key={message} basic color="red" pointing>
-                  {message}
-                </Label>
-              ))}
-            </Grid.Column>
-          </Grid.Row>
-          {description && (
-            <Grid.Row stretched>
-              <Grid.Column stretched width="12">
-                <p className="help">{description}</p>
-              </Grid.Column>
-            </Grid.Row>
-          )}
-        </Grid>
-      </Form.Field>
+      <FormFieldWrapper {...this.props} draggable={true}>
+        {onEdit && (
+          <div className="toolbar">
+            <button
+              onClick={() => onEdit(id, schema)}
+              className="item ui noborder button"
+            >
+              <IconOld name="write square" size="large" color="blue" />
+            </button>
+            <button
+              aria-label={this.props.intl.formatMessage(messages.close)}
+              className="item ui noborder button"
+              onClick={() => onDelete(id)}
+            >
+              <IconOld name="close" size="large" color="red" />
+            </button>
+          </div>
+        )}
+        {this.props.vocabBaseUrl ? (
+          <AsyncPaginate
+            className="react-select-container"
+            classNamePrefix="react-select"
+            options={this.props.choices || []}
+            styles={customSelectStyles}
+            theme={selectTheme}
+            components={{ DropdownIndicator, Option }}
+            value={this.state.selectedOption}
+            loadOptions={this.loadOptions}
+            onChange={this.handleChange}
+            additional={{
+              offset: 25,
+            }}
+          />
+        ) : (
+          <Select
+            id={`field-${id}`}
+            name={id}
+            disabled={onEdit !== null}
+            className="react-select-container"
+            classNamePrefix="react-select"
+            isMulti={id === 'roles' || id === 'groups'}
+            options={[
+              ...map(choices, (option) => ({
+                value: option[0],
+                label:
+                  // Fix "None" on the serializer, to remove when fixed in p.restapi
+                  option[1] !== 'None' && option[1] ? option[1] : option[0],
+              })),
+              {
+                label: this.props.intl.formatMessage(messages.no_value),
+                value: 'no-value',
+              },
+            ]}
+            styles={customSelectStyles}
+            theme={selectTheme}
+            components={{ DropdownIndicator, Option }}
+            defaultValue={
+              id === 'roles' || id === 'groups'
+                ? null
+                : getDefaultValues(choices, value)
+            }
+            onChange={(data) => {
+              let dataValue = [];
+              if (Array.isArray(data)) {
+                for (let obj of data) {
+                  dataValue.push(obj.value);
+                }
+                return onChange(id, dataValue);
+              }
+              return onChange(
+                id,
+                data.value === 'no-value' ? undefined : data.value,
+              );
+            }}
+          />
+        )}
+      </FormFieldWrapper>
     );
   }
 }
