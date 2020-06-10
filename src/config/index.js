@@ -92,3 +92,5 @@ export const blocks = {
 };
 
 export const addonReducers = {};
+
+export const FormBlocks = ['inputBlock', 'textarea', 'submit'];

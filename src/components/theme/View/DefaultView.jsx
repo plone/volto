@@ -3,14 +3,14 @@
  * @module components/theme/View/DefaultView
  */
 
-import React from 'react';
+import React, { useReducer } from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
 
 import { Container, Image } from 'semantic-ui-react';
 import { map } from 'lodash';
 
-import { blocks } from '~/config';
+import { blocks, FormBlocks } from '~/config';
 
 import {
   getBlocksFieldname,
@@ -36,6 +36,22 @@ const DefaultView = ({ content, intl, location }) => {
   const blocksFieldname = getBlocksFieldname(content);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
 
+  function reducer(state, { field, value }) {
+    return {
+      ...state,
+      [field]: value,
+    };
+  }
+  const [state, dispatch] = useReducer(reducer, {});
+
+  const onChange = (field, value) => {
+    dispatch({ field, value });
+  };
+
+  const onSubmit = () => {
+    alert(JSON.stringify(state));
+  };
+
   return hasBlocksData(content) ? (
     <div id="page-document" className="ui container">
       {map(content[blocksLayoutFieldname].items, (block) => {
@@ -43,6 +59,25 @@ const DefaultView = ({ content, intl, location }) => {
           blocks.blocksConfig[content[blocksFieldname]?.[block]?.['@type']]?.[
             'view'
           ] || null;
+        if (
+          Block !== null &&
+          FormBlocks.includes(
+            blocks.blocksConfig[content[blocksFieldname]?.[block]?.['@type']]
+              ?.id,
+          )
+        ) {
+          return (
+            <Block
+              key={block}
+              id={block}
+              properties={content}
+              data={content[blocksFieldname][block]}
+              path={getBaseUrl(location?.pathname || '')}
+              onChange={onChange}
+              onSubmit={onSubmit}
+            />
+          );
+        }
         return Block !== null ? (
           <Block
             key={block}
