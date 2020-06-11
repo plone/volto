@@ -158,5 +158,6 @@ export MapsSidebar from '@plone/volto/components/manage/Blocks/Maps/MapsSidebar'
 export VideoSidebar from '@plone/volto/components/manage/Blocks/Video/VideoSidebar';
 export LeadImageSidebar from '@plone/volto/components/manage/Blocks/LeadImage/LeadImageSidebar';
 
-export BlockSettingsSchema from '@plone/volto/components/manage/Blocks/Block/Schema';
 export BlockSettingsSidebar from '@plone/volto/components/manage/Blocks/Block/Settings';
+export BlockSettingsSchema from '@plone/volto/components/manage/Blocks/Block/Schema';
+export TextSettingsSchema from '@plone/volto/components/manage/Blocks/Text/Schema';
