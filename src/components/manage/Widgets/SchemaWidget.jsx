@@ -3,6 +3,7 @@
  * @module components/manage/Widgets/SchemaWidget
  */
 
+import { getFieldSchema } from '@plone/volto/actions';
 import { Field, ModalForm, SchemaWidgetFieldset } from '@plone/volto/components';
 import { concat, findIndex, map, omit, slice, without } from 'lodash';
 import move from 'lodash-move';
@@ -30,6 +31,21 @@ import { Confirm, Form, Grid, Icon, Message, Segment } from 'semantic-ui-react';
 //   ModalForm,
 //   SchemaWidgetFieldset,
 // } from '@plone/volto/components';
+
+const getItemStyle = (isDragging, draggableStyle) => ({
+  // some basic styles to make the items look a bit nicer
+  userSelect: 'none',
+
+  // change background colour if dragging
+  background: isDragging ? 'white' : 'transparent',
+
+  // styles we need to apply on draggables
+  ...draggableStyle,
+});
+
+const getListStyle = (isDraggingOver) => ({
+  background: isDraggingOver ? '#f4f4f4' : 'transparent',
+});
 
 const messages = defineMessages({
   add: {
@@ -460,6 +476,8 @@ class SchemaWidget extends Component {
         schema,
       },
     });
+    console.log('onShowEditField id', id);
+    this.props.getFieldSchema(id);
   }
 
   /**
@@ -586,11 +604,7 @@ class SchemaWidget extends Component {
                 content={err}
               />
             ))}
-          <DragDropContext
-            onDragEnd={this.onDragEnd}
-            // onDragStart={this.handleDragStart}
-            // onDragUpdate={this.onDragUpdate}
-          >
+          <DragDropContext onDragEnd={this.onDragEnd}>
             <Droppable droppableId="tabs-schema-edit" direction="horizontal">
               {(provided, snapshot) => (
                 <div
@@ -598,6 +612,7 @@ class SchemaWidget extends Component {
                   className="ui pointing secondary attached tabular menu"
                   ref={provided.innerRef}
                   {...provided.draggableProps}
+                  style={getListStyle(snapshot.isDraggingOver)}
                 >
                   {map(value.fieldsets, (item, index) => (
                     <SchemaWidgetFieldset
@@ -609,9 +624,10 @@ class SchemaWidget extends Component {
                       onShowEditFieldset={this.onShowEditFieldset}
                       onShowDeleteFieldset={this.onShowDeleteFieldset}
                       onOrderFieldset={this.onOrderFieldset}
+                      getItemStyle={getItemStyle}
                     />
                   ))}
-                  <div className="item">
+                  <div className="item item-add">
                     <button
                       aria-label={this.props.intl.formatMessage(messages.add)}
                       className="item ui noborder button"
@@ -632,16 +648,24 @@ class SchemaWidget extends Component {
               type="fixed"
             >
               {(provided, snapshot) => (
-                <div ref={provided.innerRef} {...provided.draggableProps}>
+                <div
+                  ref={provided.innerRef}
+                  {...provided.draggableProps}
+                  style={getListStyle(snapshot.isDraggingOver)}
+                >
                   {map(
                     value.fieldsets[this.state.currentFieldset].fields,
                     (field, index) => (
                       <Draggable draggableId={field} index={index} key={field}>
-                        {(provided) => (
+                        {(provided, snapshot) => (
                           <div
                             ref={provided.innerRef}
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
+                            style={getItemStyle(
+                              snapshot.isDragging,
+                              provided.draggableProps.style,
+                            )}
                           >
                             <Field
                               {...value.properties[field]}
@@ -856,7 +880,13 @@ class SchemaWidget extends Component {
 
 export default compose(
   injectIntl,
-  connect((state, props) => ({
-    value: JSON.parse(props.value),
-  })),
+  connect(
+    (state, props) => ({
+      value: JSON.parse(props.value),
+      fieldSchema: state.fieldSchema.fieldSchema,
+    }),
+    {
+      getFieldSchema,
+    },
+  ),
 )(SchemaWidget);

@@ -22,17 +22,18 @@ export const SchemaWidgetFieldsetComponent = ({
   active,
   onShowEditFieldset,
   onShowDeleteFieldset,
-  onOrderFieldset,
   onClick,
+  getItemStyle,
 }) => (
   <Draggable draggableId={title} index={order} key={title}>
-    {(provided) => (
+    {(provided, snapshot) => (
       <div
         className={`item${active ? ' active' : ''}`}
         // style={{ opacity: isDragging ? 0.5 : 1 }}
         onClick={() => onClick(order)}
         ref={provided.innerRef}
         {...provided.draggableProps}
+        style={getItemStyle(snapshot.isDragging, provided.draggableProps.style)}
       >
         <i
           aria-hidden="true"
@@ -77,6 +78,7 @@ SchemaWidgetFieldsetComponent.propTypes = {
   onShowEditFieldset: PropTypes.func.isRequired,
   onShowDeleteFieldset: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired,
+  getItemStyle: PropTypes.func.isRequired,
 };
 
 export default SchemaWidgetFieldsetComponent;

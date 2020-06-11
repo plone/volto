@@ -360,6 +360,7 @@ class Form extends Component {
    * @returns {undefined}
    */
   onSubmit(event) {
+    console.log(event);
     if (event) {
       event.preventDefault();
     }
@@ -809,7 +810,8 @@ class Form extends Component {
       <Container>
         <UiForm
           method="post"
-          onSubmit={this.onSubmit}
+          // onSubmit={this.onSubmit}
+          // onCancel={this.onCancel}
           error={keys(this.state.errors).length > 0}
         >
           <Segment.Group raised>
@@ -907,6 +909,7 @@ class Form extends Component {
                         : this.props.intl.formatMessage(messages.save)
                     }
                     loading={this.props.loading}
+                    onClick={this.onSubmit}
                   >
                     <Icon className="circled" name={aheadSVG} size="30px" />
                   </Button>
@@ -915,6 +918,7 @@ class Form extends Component {
                   <Button
                     basic
                     secondary
+                    type="cancel"
                     aria-label={this.props.intl.formatMessage(messages.cancel)}
                     title={this.props.intl.formatMessage(messages.cancel)}
                     floated="right"
