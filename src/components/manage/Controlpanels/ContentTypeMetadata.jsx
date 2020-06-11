@@ -129,7 +129,10 @@ class ContentTypeMetadata extends Component {
     this.onSubmit = this.onSubmit.bind(this);
     this.form = React.createRef();
   }
-  onSubmit(event) {}
+  onSubmit(data) {
+    console.log('onsubmit data.schema', JSON.parse(data.schema));
+    // console.log('onsubmit data', JSON.parse(data.schema));
+  }
   onChange(event) {}
   onCancel(event) {}
 
@@ -172,9 +175,11 @@ class ContentTypeMetadata extends Component {
           isEditForm
           schema={contentTypeSchema}
           formData={schemaData}
-          onChange={this.onChange}
+          pathname={this.props.pathname}
           onSubmit={this.onSubmit}
           onCancel={this.onCancel}
+          // visual={this.state.visual}
+          // hideActions
         />
       );
     }
