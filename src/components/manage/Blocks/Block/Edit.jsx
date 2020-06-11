@@ -50,9 +50,9 @@ class Edit extends Component {
     selected: PropTypes.bool.isRequired,
     index: PropTypes.number.isRequired,
     id: PropTypes.string.isRequired,
+    manage: PropTypes.bool,
     onMoveBlock: PropTypes.func.isRequired,
     onDeleteBlock: PropTypes.func.isRequired,
-    isAdminBlock: PropTypes.bool,
   };
 
     /**
@@ -61,7 +61,7 @@ class Edit extends Component {
    * @static
    */
   static defaultProps = {
-    isAdminBlock: false
+    manage: false
   };
 
   componentDidMount() {
@@ -75,13 +75,13 @@ class Edit extends Component {
     ) {
       this.blockNode.current.focus();
     }
-    const tab = this.props.isAdminBlock ? 1 : (blocks.blocksConfig?.[type]?.sidebarBar || 0);
+    const tab = this.props.manage ? 2 : (blocks.blocksConfig?.[type]?.sidebarBar || 0);
     if (this.props.selected) {
       this.props.setSidebarTab(tab);
     }
 
     // Ref ID
-    if(this.props.isAdminBlock && !this.props.data.rid) {
+    if(this.props.manage && !this.props.data.rid) {
       this.props.data.rid = this.props.id;
     }
   }
@@ -102,7 +102,7 @@ class Edit extends Component {
       (!this.props.selected && nextProps.selected) ||
       type !== nextProps.type
     ) {
-      const tab = this.props.isAdminBlock ? 1 : (blocks.blocksConfig?.[nextProps.type]?.sidebarTab || 0);
+      const tab = this.props.manage ? 2 : (blocks.blocksConfig?.[nextProps.type]?.sidebarTab || 0);
       this.props.setSidebarTab(tab);
     }
   }
@@ -152,8 +152,8 @@ class Edit extends Component {
             tabIndex={!blockHasOwnFocusManagement ? -1 : null}
           >
             <Block {...this.props} blockNode={this.blockNode} />
-            {this.props.isAdminBlock && (
-            <SidebarPortal selected={this.props.selected}>
+            {this.props.manage && (
+            <SidebarPortal selected={this.props.selected} tab="sidebar-settings">
               <BlockSettingsSidebar {...this.props} />
             </SidebarPortal>
             )}

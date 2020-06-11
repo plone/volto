@@ -156,7 +156,7 @@ class ContentTypeLayout extends Component {
         />
         {this.state.visual && (
           <Portal node={__CLIENT__ && document.getElementById('sidebar')}>
-            <Sidebar />
+            <Sidebar settingsTab={true} />
           </Portal>
         )}
         <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
