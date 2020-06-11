@@ -781,7 +781,7 @@ class Form extends Component {
                               pathname={this.props.pathname}
                               block={block}
                               selected={this.state.selected === block}
-                              isAdminBlock={this.props.isAdminForm}
+                              manage={this.props.isAdminForm}
                             />
                           </div>
                         </div>
