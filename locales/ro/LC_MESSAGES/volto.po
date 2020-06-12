@@ -978,6 +978,12 @@ msgstr "Niciun element selectat"
 msgid "No map selected"
 msgstr "Nicio hartă selectată"
 
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
+msgid "No options"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
@@ -1278,6 +1284,12 @@ msgstr "Selectarea criteriilor"
 msgid "Select the transition to be used for modifying the items state."
 msgstr "Selectați tranziția care va fi utilizată pentru modificarea stării elementelor."
 
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
+msgid "Select..."
+msgstr ""
+
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Selected items"
 msgstr "Articole selectate"
@@ -1287,7 +1299,6 @@ msgid "Selection"
 msgstr "Selecție"
 
 #: components/manage/Contents/Contents
-#: components/manage/Widgets/ArrayWidget
 msgid "Select…"
 msgstr "Selectați ..."
 

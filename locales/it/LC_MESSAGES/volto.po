@@ -36,7 +36,7 @@ msgstr "Azioni"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Activate and deactivate"
-msgstr ""
+msgstr "Attiva e disattiva"
 
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
@@ -47,7 +47,7 @@ msgstr "Aggiungi"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Add Addons"
-msgstr ""
+msgstr "Aggiungi Add-ons"
 
 #: components/manage/Toolbar/Types
 msgid "Add Content"
@@ -87,7 +87,7 @@ msgstr "Aggiungi un gruppo"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Add new content type"
-msgstr ""
+msgstr "Aggiungi un nuovo tipo di contenuto"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add new group"
@@ -107,7 +107,7 @@ msgstr "Aggiungi {type}"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Add-ons Settings"
-msgstr ""
+msgstr "Impostazioni Add-ons"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -139,7 +139,7 @@ msgstr "Crescente"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Available"
-msgstr ""
+msgstr "Disponibile"
 
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -297,7 +297,7 @@ msgstr "Conferma password"
 
 #: components/theme/ConnectionRefused/ConnectionRefused
 msgid "Connection refused"
-msgstr ""
+msgstr "Connesione rifiutata"
 
 #: components/theme/Footer/Footer
 msgid "Contact"
@@ -317,11 +317,11 @@ msgstr "Contenuto"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
-msgstr ""
+msgstr "Il tipo di contenuto è stato creato"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type deleted"
-msgstr ""
+msgstr "Il tipo di contenuto è stato eliminato"
 
 #: components/manage/Contents/Contents
 #: components/manage/Toolbar/Toolbar
@@ -417,7 +417,7 @@ msgstr "Elimina gruppo"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Delete Type"
-msgstr ""
+msgstr "Rimuovi tipo di contenuto"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Delete User"
@@ -475,7 +475,7 @@ msgstr "Vuoi veramente eliminare il gruppo {groupname}?"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Do you really want to delete the type {typename}?"
-msgstr ""
+msgstr "Vuoi veramente eliminare il tipo di contenuto {typename}?"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Do you really want to delete the user {username}?"
@@ -525,7 +525,7 @@ msgstr "Modifica insieme di campi"
 
 #: components/manage/Form/InlineForm
 msgid "Edit values"
-msgstr ""
+msgstr "Modifica i valori"
 
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
@@ -614,7 +614,7 @@ msgstr "Data di scadenza"
 
 #: components/manage/Contents/ContentsItem
 msgid "Expired"
-msgstr ""
+msgstr "Scaduto"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -775,15 +775,15 @@ msgstr "Inserisci riga sopra"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Install"
-msgstr ""
+msgstr "Installa"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Installed"
-msgstr ""
+msgstr "Installato"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Installed version"
-msgstr ""
+msgstr "Versione installata"
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "Item batch size"
@@ -804,7 +804,7 @@ msgstr "Elemento/i incollato/i."
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Items"
-msgstr ""
+msgstr "Elementi"
 
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
@@ -825,7 +825,7 @@ msgstr "Ultima modifica"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Latest version"
-msgstr ""
+msgstr "Ultima versione"
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Lead Image"
@@ -972,11 +972,17 @@ msgstr "Nessun elemento trovato in questo contenitore."
 
 #: components/manage/Widgets/ObjectBrowserWidget
 msgid "No items selected"
-msgstr ""
+msgstr "Nessun elemento selezionato"
 
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "No map selected"
 msgstr "Nessuna mappa selezionata"
+
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
+msgid "No options"
+msgstr "Nessuna opzione"
 
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
@@ -989,7 +995,7 @@ msgstr "Nessun elemento selezionato"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "No uninstall profile"
-msgstr ""
+msgstr "Nessun profilo di disinstallazione"
 
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
@@ -1278,16 +1284,21 @@ msgstr "Seleziona un criterio"
 msgid "Select the transition to be used for modifying the items state."
 msgstr "Seleziona la transizione da effettuare per cambiare lo stato del contenuto."
 
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
+msgid "Select..."
+msgstr "Seleziona..."
+
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Selected items"
-msgstr ""
+msgstr "Elementi selezionati"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Selection"
 msgstr "Selezione"
 
 #: components/manage/Contents/Contents
-#: components/manage/Widgets/ArrayWidget
 msgid "Select…"
 msgstr "Seleziona…"
 
@@ -1366,7 +1377,7 @@ msgstr "Mappa del sito"
 
 #: components/manage/Blocks/Image/ImageSidebar
 msgid "Size"
-msgstr ""
+msgstr "Dimensione"
 
 #: components/theme/View/ImageView
 msgid "Size: {size}"
@@ -1476,11 +1487,11 @@ msgstr "L'indirizzo della tua pagina personale esterna, se ne hai una."
 
 #: components/theme/ConnectionRefused/ConnectionRefused
 msgid "The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable."
-msgstr ""
+msgstr "Il backend non sta rispondendo, verifica di avere avviato Plone, controlla la configurazione di apiPath nel tuo progetto (o se stai usando un proxy interno, devProxyToApiPath) oppure la variabile RAZZLE_API_PATH nell'ambiente di Volto."
 
 #: components/theme/CorsError/CorsError
 msgid "The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources."
-msgstr ""
+msgstr "Il backend sta rispondendo, ma i CORS headers non sono adeguatamente configurati e il browser ha negato l'accesso alle risorse del backend."
 
 #: components/theme/Register/Register
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
@@ -1496,16 +1507,16 @@ msgstr "{plonecms} è {copyright} 2000-{current_year} della {plonefoundation} ed
 
 #: components/theme/CorsError/CorsError
 msgid "There is a configuration problem on the backend"
-msgstr ""
+msgstr "C'è un problema di configurazione sul backend"
 
 #: components/manage/Form/InlineForm
 msgid "There were some errors"
-msgstr ""
+msgstr "Si sono verificati degli errori"
 
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 msgid "There were some errors."
-msgstr "Ci sono stati degli errori."
+msgstr "Si sono verificati degli errori."
 
 #: components/manage/Contents/ContentsRenameModal
 msgid "This name will be displayed in the URL."
@@ -1517,7 +1528,7 @@ msgstr "Questa pagina non esiste…"
 
 #: components/manage/Widgets/DatetimeWidget
 msgid "Time"
-msgstr ""
+msgstr "Ora"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/Contents
@@ -1575,7 +1586,7 @@ msgstr "Unificato"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Uninstall"
-msgstr ""
+msgstr "Disinstalla"
 
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
@@ -1584,19 +1595,19 @@ msgstr "Blocco sconosciuto"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update"
-msgstr ""
+msgstr "Aggiorna"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update installed addons"
-msgstr ""
+msgstr "Aggiorna gli addons installati"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update installed addons:"
-msgstr ""
+msgstr "Aggiorna gli addons installati:"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Updates available"
-msgstr ""
+msgstr "Aggiornamenti disponibili"
 
 #: components/manage/Contents/Contents
 msgid "Upload"
@@ -1687,15 +1698,15 @@ msgstr "Vista"
 
 #: components/manage/Controlpanels/VersionOverview
 msgid "Warning Regarding debug mode"
-msgstr ""
+msgstr "Avviso relativo alla modalità di debug"
 
 #: components/theme/ConnectionRefused/ConnectionRefused
 msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later."
-msgstr ""
+msgstr "Ci scusiamo per l'inconveniente, ma il backend del sito a cui stai cercando di accedere non è disponibile al momento. Ti preghiamo di riprovare più tardi."
 
 #: components/theme/CorsError/CorsError
 msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not configured properly right now. Please, try again later."
-msgstr ""
+msgstr "Ci scusiamo per l'inconveniente, ma il backend del sito a cui stai cercando di acceder non è configurato correttamente al momento. Ti preghiamo di riprovare più tardi."
 
 #: components/theme/NotFound/NotFound
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."

@@ -65,8 +65,8 @@ export const settings = {
   notSupportedBrowsers: ['ie'],
   defaultPageSize: 25,
   isMultilingual: false,
-  supportedLanguages: ['en'],
-  defaultLanguage: 'en',
+  supportedLanguages: ['it'],
+  defaultLanguage: 'it',
   navDepth: 1,
 };
 

@@ -993,6 +993,12 @@ msgstr ""
 msgid "No map selected"
 msgstr "Keine Karte ausgewählt"
 
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
+msgid "No options"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
@@ -1293,6 +1299,12 @@ msgstr "Kriterium wählen"
 msgid "Select the transition to be used for modifying the items state."
 msgstr "Arbeitsablauf-Status für Seite wählen."
 
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
+msgid "Select..."
+msgstr ""
+
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Selected items"
 msgstr ""
@@ -1302,7 +1314,6 @@ msgid "Selection"
 msgstr "Auswahl"
 
 #: components/manage/Contents/Contents
-#: components/manage/Widgets/ArrayWidget
 msgid "Select…"
 msgstr "Wähle…"
 

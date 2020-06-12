@@ -5,9 +5,10 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
 import loadable from '@loadable/component';
-
+import { defineMessages, injectIntl } from 'react-intl';
 import {
   getVocabFromHint,
   getVocabFromField,
@@ -27,6 +28,17 @@ import { FormFieldWrapper } from '@plone/volto/components';
 const AsyncCreatable = loadable.lib(() =>
   import('react-select/async-creatable'),
 );
+
+const messages = defineMessages({
+  select: {
+    id: 'Select...',
+    defaultMessage: 'Select...',
+  },
+  no_options: {
+    id: 'No options',
+    defaultMessage: 'No options',
+  },
+});
 
 /**
  * TokenWidget component class.
@@ -176,6 +188,10 @@ class TokenWidget extends Component {
               value={selectedOption || []}
               loadOptions={this.loadOptions}
               onChange={this.handleChange}
+              placeholder={this.props.intl.formatMessage(messages.select)}
+              noOptionsMessage={() =>
+                this.props.intl.formatMessage(messages.no_options)
+              }
             />
           )}
         </AsyncCreatable>
@@ -184,26 +200,29 @@ class TokenWidget extends Component {
   }
 }
 
-export default connect(
-  (state, props) => {
-    const vocabBaseUrl =
-      getVocabFromHint(props) ||
-      getVocabFromField(props) ||
-      getVocabFromItems(props);
-    const vocabState = state.vocabularies[vocabBaseUrl];
-    if (vocabState) {
-      return {
-        choices: vocabState.items
-          ? vocabState.items.map((item) => ({
-              label: item.value,
-              value: item.value,
-            }))
-          : [],
-        itemsTotal: vocabState.itemsTotal,
-        loading: Boolean(vocabState.loading),
-      };
-    }
-    return {};
-  },
-  { getVocabulary },
+export default compose(
+  injectIntl,
+  connect(
+    (state, props) => {
+      const vocabBaseUrl =
+        getVocabFromHint(props) ||
+        getVocabFromField(props) ||
+        getVocabFromItems(props);
+      const vocabState = state.vocabularies[vocabBaseUrl];
+      if (vocabState) {
+        return {
+          choices: vocabState.items
+            ? vocabState.items.map((item) => ({
+                label: item.value,
+                value: item.value,
+              }))
+            : [],
+          itemsTotal: vocabState.itemsTotal,
+          loading: Boolean(vocabState.loading),
+        };
+      }
+      return {};
+    },
+    { getVocabulary },
+  ),
 )(TokenWidget);

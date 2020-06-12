@@ -988,6 +988,12 @@ msgstr ""
 msgid "No map selected"
 msgstr ""
 
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
+msgid "No options"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
@@ -1288,6 +1294,12 @@ msgstr "Seleccionar criterios"
 msgid "Select the transition to be used for modifying the items state."
 msgstr "Seleccione la transición a ser efectuada al cambiar el estado del contenido."
 
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
+msgid "Select..."
+msgstr ""
+
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Selected items"
 msgstr ""
@@ -1297,7 +1309,6 @@ msgid "Selection"
 msgstr "Selección"
 
 #: components/manage/Contents/Contents
-#: components/manage/Widgets/ArrayWidget
 msgid "Select…"
 msgstr "Selecciona..."
 

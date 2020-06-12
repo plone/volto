@@ -985,6 +985,12 @@ msgstr ""
 msgid "No map selected"
 msgstr "マップが選択されていません"
 
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
+msgid "No options"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
@@ -1285,6 +1291,12 @@ msgstr "選択の基準"
 msgid "Select the transition to be used for modifying the items state."
 msgstr "Select the transition to be used for modifying the items state. (未翻訳)"
 
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
+msgid "Select..."
+msgstr ""
+
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Selected items"
 msgstr ""
@@ -1294,7 +1306,6 @@ msgid "Selection"
 msgstr "Selection (未翻訳)"
 
 #: components/manage/Contents/Contents
-#: components/manage/Widgets/ArrayWidget
 msgid "Select…"
 msgstr "選択…"
 
