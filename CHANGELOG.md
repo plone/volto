@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Add yarn-deduplicate. @timo
+
 ## 6.1.0 (2020-06-12)
 
 ### Feature
