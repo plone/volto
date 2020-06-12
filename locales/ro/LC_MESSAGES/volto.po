@@ -211,6 +211,7 @@ msgstr "Anulează"
 msgid "Cell"
 msgstr "Celulă"
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Center"
@@ -830,6 +831,7 @@ msgstr "Ultima versiune"
 msgid "Lead Image"
 msgstr "Imaginea de start"
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Left"
@@ -1207,6 +1209,7 @@ msgstr "Stare de revizuire"
 msgid "Richtext"
 msgstr "Richtext"
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Right"
@@ -1360,6 +1363,10 @@ msgstr "Configurare site"
 #: components/theme/Sitemap/Sitemap
 msgid "Sitemap"
 msgstr "Sitemap"
+
+#: components/manage/Blocks/Image/ImageSidebar
+msgid "Size"
+msgstr ""
 
 #: components/theme/View/ImageView
 msgid "Size: {size}"

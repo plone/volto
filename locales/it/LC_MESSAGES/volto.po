@@ -211,6 +211,7 @@ msgstr "Annulla"
 msgid "Cell"
 msgstr "Cella"
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Center"
@@ -830,6 +831,7 @@ msgstr ""
 msgid "Lead Image"
 msgstr "Immagine di testata"
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Left"
@@ -1207,6 +1209,7 @@ msgstr "Data di revisione"
 msgid "Richtext"
 msgstr "Testo formattato"
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Right"
@@ -1360,6 +1363,10 @@ msgstr "Configurazione del sito"
 #: components/theme/Sitemap/Sitemap
 msgid "Sitemap"
 msgstr "Mappa del sito"
+
+#: components/manage/Blocks/Image/ImageSidebar
+msgid "Size"
+msgstr ""
 
 #: components/theme/View/ImageView
 msgid "Size: {size}"
