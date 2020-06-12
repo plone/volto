@@ -1,8 +1,16 @@
 # Change Log
 
-## 6.1.0 (2020-06-12)
+## 6.1.1 (unreleased)
 
 ### Breaking
+
+### Feature
+
+### Bugfix
+
+### Internal
+
+## 6.1.0 (2020-06-12)
 
 ### Feature
 
@@ -23,8 +31,6 @@
 - Do not store the server information of the image block in the block @sneridagh
 - expose `blocks` and `blocks_layout` only editing content types @nileshgulia1
 - Small fix for `TextAreaWidget` and max_lenght @sneridagh
-
-### Internal
 
 ## 6.0.0 (2020-05-18)
 
