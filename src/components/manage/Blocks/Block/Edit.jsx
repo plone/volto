@@ -79,11 +79,6 @@ class Edit extends Component {
     if (this.props.selected) {
       this.props.setSidebarTab(tab);
     }
-
-    // Ref ID
-    if(this.props.manage && !this.props.data.rid) {
-      this.props.data.rid = this.props.id;
-    }
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {

@@ -12,7 +12,7 @@ const Schema = {
   }],
   properties: {
     placeholder: {
-      title: "Description",
+      title: "Help",
       description: "A short hint that describes the expected value within this block",
       type: 'string',
     },

@@ -222,6 +222,9 @@ class Add extends Component {
             let newUid = uuid();
             initialBlocksLayout.push(newUid);
             initialBlocks[newUid] = schemaBlocks[value];
+
+            // Ref ID - keep a reference to the original block id
+            initialBlocks[newUid]["rid"] = value;
           }
         });
       }
@@ -239,13 +242,13 @@ class Add extends Component {
             formData={{
               ...(blocksFieldname && {
                 [blocksFieldname]:
-                  this.initialBlocks ||
+                  initialBlocks ||
                   this.props.schema.properties[blocksFieldname]?.default,
               }),
               ...(blocksLayoutFieldname && {
                 [blocksLayoutFieldname]: {
                   items:
-                    this.initialBlocksLayout ||
+                    initialBlocksLayout ||
                     this.props.schema.properties[blocksLayoutFieldname]?.default
                       ?.items,
                 },
