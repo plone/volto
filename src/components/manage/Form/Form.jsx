@@ -170,28 +170,34 @@ class Form extends Component {
     // Adding fallback in case the fields are empty, so we are sure that the edit form
     // shows at least the default blocks
     if (
-      !formData[blocksLayoutFieldname] ||
-      isEmpty(formData[blocksLayoutFieldname].items)
+      formData.hasOwnProperty(blocksFieldname) &&
+      formData.hasOwnProperty(blocksLayoutFieldname)
     ) {
-      formData[blocksLayoutFieldname] = {
-        items: [ids.title, ids.text],
-      };
-    }
-    if (!formData[blocksFieldname] || isEmpty(formData[blocksFieldname])) {
-      formData[blocksFieldname] = {
-        [ids.title]: {
-          '@type': 'title',
-        },
-        [ids.text]: {
-          '@type': 'text',
-        },
-      };
+      if (
+        !formData[blocksLayoutFieldname] ||
+        isEmpty(formData[blocksLayoutFieldname].items)
+      ) {
+        formData[blocksLayoutFieldname] = {
+          items: [ids.title, ids.text],
+        };
+      }
+      if (!formData[blocksFieldname] || isEmpty(formData[blocksFieldname])) {
+        formData[blocksFieldname] = {
+          [ids.title]: {
+            '@type': 'title',
+          },
+          [ids.text]: {
+            '@type': 'text',
+          },
+        };
+      }
     }
     this.state = {
       formData,
       initialFormData: { ...formData },
       errors: {},
       selected:
+        formData.hasOwnProperty(blocksLayoutFieldname) &&
         formData[blocksLayoutFieldname].items.length > 0
           ? formData[blocksLayoutFieldname].items[0]
           : null,

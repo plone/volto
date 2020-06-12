@@ -70,6 +70,8 @@ export const settings = {
   navDepth: 1,
 };
 
+export const addonRoutes = [];
+
 export const widgets = {
   ...widgetMapping,
   default: defaultWidget,
@@ -88,3 +90,5 @@ export const blocks = {
   groupBlocksOrder,
   initialBlocks,
 };
+
+export const addonReducers = {};

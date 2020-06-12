@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-05-25T10:04:11.021Z\n"
+"POT-Creation-Date: 2020-06-12T14:07:19.505Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -260,6 +260,7 @@ msgstr ""
 msgid "Cell"
 msgstr ""
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 # defaultMessage: Center
@@ -473,6 +474,7 @@ msgid "Database main"
 msgstr ""
 
 #: components/manage/Controlpanels/ModerateComments
+#: components/manage/Widgets/DatetimeWidget
 # defaultMessage: Date
 msgid "Date"
 msgstr ""
@@ -1033,6 +1035,7 @@ msgstr ""
 msgid "Lead Image"
 msgstr ""
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 # defaultMessage: Left
@@ -1500,6 +1503,7 @@ msgstr ""
 msgid "Richtext"
 msgstr ""
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 # defaultMessage: Right
@@ -1686,6 +1690,11 @@ msgstr ""
 #: components/theme/Sitemap/Sitemap
 # defaultMessage: Sitemap
 msgid "Sitemap"
+msgstr ""
+
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: Size
+msgid "Size"
 msgstr ""
 
 #: components/theme/View/ImageView
@@ -1881,6 +1890,11 @@ msgstr ""
 #: components/theme/NotFound/NotFound
 # defaultMessage: This page does not seem to exist…
 msgid "This page does not seem to exist…"
+msgstr ""
+
+#: components/manage/Widgets/DatetimeWidget
+# defaultMessage: Time
+msgid "Time"
 msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/Edit
