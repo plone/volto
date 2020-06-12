@@ -7,10 +7,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { Helmet, getParentUrl } from '@plone/volto/helpers';
+import { Helmet, getParentUrl, hasBlocksData } from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
 import { Button } from 'semantic-ui-react';
-import { defineMessages, injectIntl } from 'react-intl';
+import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
 import { nth } from 'lodash';
 import { Form, Icon, Toolbar, Sidebar } from '@plone/volto/components';
 import { getSchema } from '@plone/volto/actions';
@@ -61,10 +61,6 @@ class ContentTypeLayout extends Component {
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
     }).isRequired,
-    getRequest: PropTypes.shape({
-      loading: PropTypes.bool,
-      loaded: PropTypes.bool,
-    }).isRequired,
     schema: PropTypes.objectOf(PropTypes.any),
   };
 
@@ -74,8 +70,7 @@ class ContentTypeLayout extends Component {
    * @static
    */
   static defaultProps = {
-    schema: null,
-    content: {},
+    schema: {},
   };
 
   /**
@@ -87,7 +82,8 @@ class ContentTypeLayout extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      visual: true,
+      visual: false,
+      content: {},
     };
     this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -101,8 +97,6 @@ class ContentTypeLayout extends Component {
    */
   componentDidMount() {
     this.props.getSchema(this.props.id);
-    this.props.content.blocks = this.props.schema?.properties?.blocks?.default || {};
-    this.props.content.blocks_layout = this.props.schema?.properties?.blocks_layout?.default || {};
   }
 
   /**
@@ -112,6 +106,26 @@ class ContentTypeLayout extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
+    if (this.props.schemaRequest.loading && nextProps.schemaRequest.loaded) {
+      let properties = nextProps.schema?.properties || {};
+      let content = {};
+      let value, key;
+      for (key in properties) {
+        value = properties[key].default
+        if(value) {
+          content[key] = value;
+        }
+      }
+      this.setState({
+        content: content,
+      });
+
+      if (hasBlocksData(properties)) {
+        this.setState({
+          visual: true,
+        });
+      }
+    }
   }
 
   /**
@@ -139,26 +153,23 @@ class ContentTypeLayout extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    return (
+    return this.state.visual ? (
       <div id="page-controlpanel-layout">
-        <Helmet />
         <Form
           isEditForm
           isAdminForm
           ref={this.form}
           schema={this.props.schema}
-          formData={this.props.content}
+          formData={this.state.content}
           onSubmit={this.onSubmit}
           onCancel={this.onCancel}
           pathname={this.props.pathname}
           visual={this.state.visual}
           hideActions
         />
-        {this.state.visual && (
-          <Portal node={__CLIENT__ && document.getElementById('sidebar')}>
-            <Sidebar settingsTab={true} />
-          </Portal>
-        )}
+        <Portal node={__CLIENT__ && document.getElementById('sidebar')}>
+          <Sidebar settingsTab={true} />
+        </Portal>
         <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
           <Toolbar
             pathname={this.props.pathname}
@@ -195,6 +206,8 @@ class ContentTypeLayout extends Component {
           />
         </Portal>
       </div>
+    ) : (
+      <div />
     );
   }
 }
@@ -205,7 +218,6 @@ export default compose(
     (state, props) => ({
       schema: state.schema.schema,
       schemaRequest: state.schema,
-      getRequest: state.content.get,
       pathname: props.location.pathname,
       id: nth(props.location.pathname.split('/'), -2),
       parent: nth(props.location.pathname.split('/'), -3),
