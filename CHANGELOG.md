@@ -1,6 +1,6 @@
 # Change Log
 
-## 6.0.1 (unreleased)
+## 6.1.0 (2020-06-12)
 
 ### Breaking
 
