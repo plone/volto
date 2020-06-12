@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
-import { isObject } from 'lodash';
+import { isObject, intersection } from 'lodash';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import loadable from '@loadable/component';
@@ -130,7 +130,11 @@ class ArrayWidget extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    if (!this.props.items?.choices && this.vocabBaseUrl) {
+    if (
+      !this.props.items?.choices &&
+      !this.props.choices &&
+      this.vocabBaseUrl
+    ) {
       this.props.getVocabulary(this.vocabBaseUrl);
     }
   }
@@ -155,16 +159,26 @@ class ArrayWidget extends Component {
    * @returns {undefined}
    */
   loadOptions(search, previousOptions, additional) {
-    const offset = this.state.search !== search ? 0 : additional.offset;
-    this.props.getVocabulary(this.vocabBaseUrl, search, offset);
-    this.setState({ search });
-    return {
-      options: this.props.choices,
-      hasMore: this.props.itemsTotal > 25,
-      additional: {
-        offset: offset === additional.offset ? offset + 25 : offset,
-      },
-    };
+    let hasMore = this.props.itemsTotal > previousOptions.length;
+    if (hasMore) {
+      const offset = this.state.search !== search ? 0 : additional.offset;
+
+      this.props.getVocabulary(this.vocabBaseUrl, search, offset);
+      this.setState({ search });
+
+      return {
+        options:
+          intersection(previousOptions, this.props.choices).length ===
+          this.props.choices.length
+            ? []
+            : this.props.choices,
+        hasMore: hasMore,
+        additional: {
+          offset: offset === additional.offset ? offset + 25 : offset,
+        },
+      };
+    }
+    return null;
   }
 
   /**

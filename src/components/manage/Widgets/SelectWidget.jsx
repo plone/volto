@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { Icon as IconOld } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { map, find, isBoolean, isObject } from 'lodash';
+import { map, find, isBoolean, isObject, intersection } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 import loadable from '@loadable/component';
 
@@ -190,16 +190,25 @@ class SelectWidget extends Component {
    * @returns {undefined}
    */
   loadOptions = (search, previousOptions, additional) => {
-    const offset = this.state.search !== search ? 0 : additional.offset;
-    this.props.getVocabulary(this.props.vocabBaseUrl, search, offset);
-    this.setState({ search });
-    return {
-      options: this.props.choices,
-      hasMore: this.props.itemsTotal > 25,
-      additional: {
-        offset: offset === additional.offset ? offset + 25 : offset,
-      },
-    };
+    let hasMore = this.props.itemsTotal > previousOptions.length;
+    if (hasMore) {
+      const offset = this.state.search !== search ? 0 : additional.offset;
+      this.props.getVocabulary(this.props.vocabBaseUrl, search, offset);
+      this.setState({ search });
+
+      return {
+        options:
+          intersection(previousOptions, this.props.choices).length ===
+          this.props.choices.length
+            ? []
+            : this.props.choices,
+        hasMore: hasMore,
+        additional: {
+          offset: offset === additional.offset ? offset + 25 : offset,
+        },
+      };
+    }
+    return null;
   };
 
   /**
