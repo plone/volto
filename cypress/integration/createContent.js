@@ -4,7 +4,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.autologin();
     });
 
-    it('Create document', function() {
+    it('Create document', function () {
       cy.createContent({
         contentType: 'Document',
         contentId: 'my-page',
@@ -14,7 +14,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('.documentFirstHeading').should('have.text', 'My Page');
       cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
     });
-    it('Create document with path', function() {
+    it('Create document with path', function () {
       cy.createContent({
         contentType: 'Document',
         contentId: 'container',
@@ -29,17 +29,16 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.visit('/container/child');
       cy.get('.documentFirstHeading').should('have.text', 'My Child');
     });
-    it('Create document with custom id', function() {
+    it('Create document with custom id', function () {
       cy.createContent({
         contentType: 'Document',
         contentId: 'my-custom-id',
         contentTitle: 'My Page',
       });
-      cy.createContent('Document', 'my-custom-id', 'My Page');
       cy.visit('/my-custom-id');
       cy.get('.documentFirstHeading').should('have.text', 'My Page');
     });
-    it('Create News Item', function() {
+    it('Create News Item', function () {
       cy.createContent({
         contentType: 'News Item',
         contentId: 'my-news-item',
@@ -48,7 +47,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.visit('/my-news-item');
       cy.get('.documentFirstHeading').should('have.text', 'My News Item');
     });
-    it('Create File', function() {
+    it('Create File', function () {
       cy.createContent({
         contentType: 'File',
         contentId: 'my-file',
@@ -63,7 +62,7 @@ if (Cypress.env('API') !== 'guillotina') {
       );
       // cy.get('.view-wrapper a').click();
     });
-    it('Create Image', function() {
+    it('Create Image', function () {
       cy.createContent({
         contentType: 'Image',
         contentId: 'my-image',
