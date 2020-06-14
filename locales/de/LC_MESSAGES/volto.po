@@ -226,6 +226,7 @@ msgstr "Abbrechen"
 msgid "Cell"
 msgstr "Zelle"
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Center"
@@ -845,6 +846,7 @@ msgstr ""
 msgid "Lead Image"
 msgstr "Leadbild"
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Left"
@@ -1222,6 +1224,7 @@ msgstr "Arbeitsablauf"
 msgid "Richtext"
 msgstr "Richtext"
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Right"
@@ -1374,6 +1377,10 @@ msgstr "Seiteneinstellungen"
 
 #: components/theme/Sitemap/Sitemap
 msgid "Sitemap"
+msgstr ""
+
+#: components/manage/Blocks/Image/ImageSidebar
+msgid "Size"
 msgstr ""
 
 #: components/theme/View/ImageView

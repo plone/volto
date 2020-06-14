@@ -201,6 +201,10 @@ class Add extends Component {
   render() {
     if (this.props.schemaRequest.loaded) {
       const visual = hasBlocksData(this.props.schema.properties);
+      const blocksFieldname = getBlocksFieldname(this.props.schema.properties);
+      const blocksLayoutFieldname = getBlocksLayoutFieldname(
+        this.props.schema.properties,
+      );
 
       return (
         <div id="page-add">
@@ -213,11 +217,19 @@ class Add extends Component {
             ref={this.form}
             schema={this.props.schema}
             formData={{
-              [getBlocksFieldname(this.props.schema.properties)]: this
-                .initialBlocks,
-              [getBlocksLayoutFieldname(this.props.schema.properties)]: {
-                items: this.initialBlocksLayout,
-              },
+              ...(blocksFieldname && {
+                [blocksFieldname]:
+                  this.initialBlocks ||
+                  this.props.schema.properties[blocksFieldname]?.default,
+              }),
+              ...(blocksLayoutFieldname && {
+                [blocksLayoutFieldname]: {
+                  items:
+                    this.initialBlocksLayout ||
+                    this.props.schema.properties[blocksLayoutFieldname]?.default
+                      ?.items,
+                },
+              }),
             }}
             onSubmit={this.onSubmit}
             hideActions
