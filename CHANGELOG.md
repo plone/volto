@@ -2,13 +2,9 @@
 
 ## 6.1.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Added database information component in ControlPanels @iFlameing
-
-### Bugfix
 
 ### Internal
 
