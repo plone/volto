@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Added database information component in ControlPanels @iFlameing
+
 ### Bugfix
 
 ### Internal
