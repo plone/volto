@@ -1,9 +1,9 @@
 /**
- * Document reducer.
- * @module reducers/document/document
+ * Field Schema reducer.
+ * @module reducers/fieldSchema/fieldSchema
  */
 
-import { GET_DOCUMENT_FIELD_SCHEMA } from '@plone/volto/constants/ActionTypes';
+import { GET_CONTENT_TYPE_FIELD_SCHEMA } from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
   error: null,
@@ -21,14 +21,14 @@ const initialState = {
  */
 export default function fieldSchema(state = initialState, action = {}) {
   switch (action.type) {
-    case `${GET_DOCUMENT_FIELD_SCHEMA}_PENDING`:
+    case `${GET_CONTENT_TYPE_FIELD_SCHEMA}_PENDING`:
       return {
         ...state,
         error: null,
         loading: true,
         loaded: false,
       };
-    case `${GET_DOCUMENT_FIELD_SCHEMA}_SUCCESS`:
+    case `${GET_CONTENT_TYPE_FIELD_SCHEMA}_SUCCESS`:
       return {
         ...state,
         error: null,
@@ -36,7 +36,7 @@ export default function fieldSchema(state = initialState, action = {}) {
         loaded: true,
         fieldSchema: action,
       };
-    case `${GET_DOCUMENT_FIELD_SCHEMA}_FAIL`:
+    case `${GET_CONTENT_TYPE_FIELD_SCHEMA}_FAIL`:
       return {
         ...state,
         error: action.error,

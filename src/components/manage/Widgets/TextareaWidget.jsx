@@ -57,6 +57,8 @@ const TextareaWidget = ({
   onEdit,
   onDelete,
   intl,
+  isDissabled,
+  isDraggable,
   fieldSet,
 }) => {
   const [lengthError, setlengthError] = useState('');
@@ -117,7 +119,7 @@ const TextareaWidget = ({
           <Grid.Column width="4">
             <div className="wrapper">
               <label htmlFor={`field-${id}`}>
-                {onEdit && (
+                {isDraggable && (
                   <i
                     aria-hidden="true"
                     className="grey bars icon drag handle"
@@ -128,7 +130,7 @@ const TextareaWidget = ({
             </div>
           </Grid.Column>
           <Grid.Column width="8">
-            {onEdit && (
+            {onEdit && !isDissabled && (
               <div className="toolbar">
                 <button
                   className="item ui noborder button"
@@ -149,7 +151,7 @@ const TextareaWidget = ({
               id={`field-${id}`}
               name={id}
               value={value || ''}
-              disabled={onEdit !== null}
+              disabled={isDissabled}
               onChange={({ target }) =>
                 onhandleChange(
                   id,
@@ -192,6 +194,8 @@ TextareaWidget.propTypes = {
   description: PropTypes.string,
   maxLength: PropTypes.number,
   required: PropTypes.bool,
+  isDissabled: PropTypes.bool,
+  isDraggable: PropTypes.bool,
   error: PropTypes.arrayOf(PropTypes.string),
   value: PropTypes.string,
   onChange: PropTypes.func,
@@ -208,6 +212,8 @@ TextareaWidget.defaultProps = {
   description: null,
   maxLength: null,
   required: false,
+  isDissabled: false,
+  isDraggable: false,
   error: [],
   value: null,
   onChange: null,

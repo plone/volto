@@ -3,23 +3,21 @@
  * @module components/manage/Widgets/DatetimeWidget
  */
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { injectIntl } from 'react-intl';
-import { Form, Grid, Label } from 'semantic-ui-react';
+import cx from 'classnames';
 import { map } from 'lodash';
 import moment from 'moment';
-import { SingleDatePicker } from 'react-dates';
+import PropTypes from 'prop-types';
 import TimePicker from 'rc-time-picker';
-import cx from 'classnames';
-import leftKey from '../../../icons/left-key.svg';
-import rightKey from '../../../icons/right-key.svg';
-import { Icon } from '../../../components';
-
+import 'rc-time-picker/assets/index.css';
+import React, { Component } from 'react';
+import { SingleDatePicker } from 'react-dates';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
-
-import 'rc-time-picker/assets/index.css';
+import { injectIntl } from 'react-intl';
+import { Form, Grid, Label } from 'semantic-ui-react';
+import { Icon } from '../../../components';
+import leftKey from '../../../icons/left-key.svg';
+import rightKey from '../../../icons/right-key.svg';
 
 const PrevIcon = () => (
   <div
@@ -162,6 +160,7 @@ class DatetimeWidget extends Component {
       fieldSet,
       dateOnly,
       noPastDates,
+      isDraggable,
       intl,
     } = this.props;
     const { datetime, isDefault, focused } = this.state;
@@ -178,7 +177,15 @@ class DatetimeWidget extends Component {
           <Grid.Row stretched>
             <Grid.Column width="4">
               <div className="wrapper">
-                <label htmlFor={`field-${id}`}>{title}</label>
+                <label htmlFor={`field-${id}`}>
+                  {isDraggable && (
+                    <i
+                      aria-hidden="true"
+                      className="grey bars icon drag handle"
+                    />
+                  )}
+                  {title}
+                </label>
               </div>
             </Grid.Column>
             <Grid.Column width="8">
@@ -258,6 +265,7 @@ DatetimeWidget.propTypes = {
   error: PropTypes.arrayOf(PropTypes.string),
   dateOnly: PropTypes.bool,
   noPastDates: PropTypes.bool,
+  isDraggable: PropTypes.bool,
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
 };
@@ -273,6 +281,7 @@ DatetimeWidget.defaultProps = {
   error: [],
   dateOnly: false,
   noPastDates: false,
+  isDraggable: false,
   value: null,
 };
 

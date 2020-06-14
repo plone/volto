@@ -8,9 +8,8 @@ import { difference, getBlocksFieldname, getBlocksLayoutFieldname } from '@plone
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import dragSVG from '@plone/volto/icons/drag.svg';
-import { findIndex, isEmpty, keys, map, mapValues, omit, pickBy, uniq, without } from 'lodash';
+import { findIndex, isBoolean, isEmpty, keys, map, mapValues, omit, pickBy, uniq, without } from 'lodash';
 import move from 'lodash-move';
-import isBoolean from 'lodash/isBoolean';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
@@ -273,7 +272,6 @@ class Form extends Component {
    * @returns {undefined}
    */
   onSelectBlock(id) {
-    console.log('selected id', id);
     this.setState({
       selected: id,
     });
@@ -360,7 +358,6 @@ class Form extends Component {
    * @returns {undefined}
    */
   onSubmit(event) {
-    console.log(event);
     if (event) {
       event.preventDefault();
     }

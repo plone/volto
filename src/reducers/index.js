@@ -11,9 +11,9 @@ import browserdetect from '@plone/volto/reducers/browserdetect/browserdetect';
 import clipboard from '@plone/volto/reducers/clipboard/clipboard';
 import comments from '@plone/volto/reducers/comments/comments';
 import content from '@plone/volto/reducers/content/content';
+import contenttype from '@plone/volto/reducers/contenttype/contenttype';
 import controlpanels from '@plone/volto/reducers/controlpanels/controlpanels';
 import diff from '@plone/volto/reducers/diff/diff';
-import document from '@plone/volto/reducers/document/document';
 import emailNotification from '@plone/volto/reducers/emailNotification/emailNotification';
 import fieldSchema from '@plone/volto/reducers/fieldschema/fieldschema';
 import form from '@plone/volto/reducers/form/form';
@@ -76,7 +76,7 @@ const reducers = {
   vocabularies,
   workflow,
   toolbar,
-  document,
+  contenttype,
   fieldSchema,
 };
 

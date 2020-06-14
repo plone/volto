@@ -3,10 +3,10 @@
  * @module components/manage/Widgets/PassswordWidget
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Form, Grid, Input, Label } from 'semantic-ui-react';
 import { map } from 'lodash';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { Form, Grid, Input, Label } from 'semantic-ui-react';
 
 /**
  * PasswordWidget component class.
@@ -18,6 +18,7 @@ const PasswordWidget = ({
   title,
   required,
   description,
+  isDraggable,
   error,
   value,
   onChange,
@@ -34,7 +35,12 @@ const PasswordWidget = ({
       <Grid.Row stretched>
         <Grid.Column width="4">
           <div className="wrapper">
-            <label htmlFor={`field-${id}`}>{title}</label>
+            <label htmlFor={`field-${id}`}>
+              {isDraggable ? (
+                <i aria-hidden="true" className="grey bars icon drag handle" />
+              ) : null}
+              {title}
+            </label>
           </div>
         </Grid.Column>
         <Grid.Column width="8">
@@ -90,6 +96,7 @@ PasswordWidget.defaultProps = {
   required: false,
   error: [],
   value: null,
+  isDraggable: false,
 };
 
 export default PasswordWidget;

@@ -3,7 +3,7 @@
  * @module components/manage/Controlpanels/ContentTypeMetadata
  */
 
-import { createContent, getDocumentTypes, getFieldSchema, getSchema, updateDocumentField, updateDocumentTypes } from '@plone/volto/actions';
+import { getSchema } from '@plone/volto/actions';
 import { Form, Toast } from '@plone/volto/components';
 import PropTypes from 'prop-types';
 import qs from 'query-string';
@@ -71,12 +71,7 @@ class ContentTypeMetadata extends Component {
    * @static
    */
   static propTypes = {
-    createContent: PropTypes.func.isRequired,
     getSchema: PropTypes.func.isRequired,
-    getDocumentTypes: PropTypes.func.isRequired,
-    getFieldSchema: PropTypes.func.isRequired,
-    updateDocumentTypes: PropTypes.func.isRequired,
-    updateDocumentField: PropTypes.func.isRequired,
     pathname: PropTypes.string.isRequired,
     schema: PropTypes.objectOf(PropTypes.any),
     content: PropTypes.shape({
@@ -135,9 +130,11 @@ class ContentTypeMetadata extends Component {
   }
   onSubmit(data) {
     console.log('onsubmit data', data);
-    // console.log('onsubmit data', JSON.parse(data.schema));
+    console.log('onsubmit data', JSON.parse(data.schema));
   }
-  onChange(event) {}
+  onChange(data) {
+    console.log('onChange data', data);
+  }
   onCancel(event) {
     const location = {
       pathname: '/controlpanel/dexterity-types',
@@ -152,14 +149,9 @@ class ContentTypeMetadata extends Component {
    */
   componentDidMount() {
     this.props.getSchema(this.props.type);
-    this.props.getDocumentTypes();
-    this.props.getFieldSchema('default');
   }
 
   componentDidUpdate(prevProps, prevState) {
-    // console.log('componentDidUpdate prevProps', prevProps);
-    // console.log('componentDidUpdate this.props', this.props);
-
     if (this.props.createRequest.error) {
       toast.error(
         <Toast
@@ -179,8 +171,12 @@ class ContentTypeMetadata extends Component {
   render() {
     if (this.props.schema) {
       const contentTypeSchema = makeSchemaList(this.props.schema);
-      const schemaData = { schema: JSON.stringify(this.props.schema) };
-      console.log('render this.props', this.props);
+      const schemaData = {
+        schema: JSON.stringify({
+          ...this.props.schema,
+          contentType: this.props.type,
+        }),
+      };
 
       return (
         <Form
@@ -190,8 +186,7 @@ class ContentTypeMetadata extends Component {
           pathname={this.props.pathname}
           onSubmit={this.onSubmit}
           onCancel={this.onCancel}
-          // visual={this.state.visual}
-          // hideActions
+          onChange={this.onChange}
         />
       );
     }
@@ -208,19 +203,12 @@ export default compose(
       schemaRequest: state.schema,
       content: state.content.data,
       schema: state.schema.schema,
-      document: state.document.document,
-      fieldSchema: state.fieldSchema.fieldSchema,
       pathname: props.location.pathname,
       returnUrl: qs.parse(props.location.search).return_url,
       type: props.match.params.id,
     }),
     {
-      createContent,
       getSchema,
-      getDocumentTypes,
-      getFieldSchema,
-      updateDocumentTypes,
-      updateDocumentField,
     },
   ),
 )(ContentTypeMetadata);

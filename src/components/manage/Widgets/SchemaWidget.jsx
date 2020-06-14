@@ -25,12 +25,16 @@ import { Confirm, Form, Grid, Icon, Message, Segment } from 'semantic-ui-react';
 // import { defineMessages, injectIntl } from 'react-intl';
 // import { DragDropContext } from 'react-dnd';
 // import HTML5Backend from 'react-dnd-html5-backend';
+// import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 
 // import {
 //   Field,
 //   ModalForm,
 //   SchemaWidgetFieldset,
 // } from '@plone/volto/components';
+
+const isUserCreated = (field) =>
+  field.behavior.indexOf('plone.dexterity.schema.generated') > -1;
 
 const getItemStyle = (isDragging, draggableStyle) => ({
   // some basic styles to make the items look a bit nicer
@@ -188,6 +192,7 @@ class SchemaWidget extends Component {
   constructor(props) {
     super(props);
     this.onChange = this.onChange.bind(this);
+    this.onChangeDefaultValue = this.onChangeDefaultValue.bind(this);
     this.onAddField = this.onAddField.bind(this);
     this.onAddFieldset = this.onAddFieldset.bind(this);
     this.onEditField = this.onEditField.bind(this);
@@ -213,6 +218,7 @@ class SchemaWidget extends Component {
       deleteFieldset: null,
       deleteField: null,
       currentFieldset: 0,
+      lol: 'lol',
     };
   }
 
@@ -410,6 +416,20 @@ class SchemaWidget extends Component {
     this.props.onChange(this.props.id, JSON.stringify(value));
   }
 
+  onChangeDefaultValue(fieldId, fieldValue) {
+    const { value } = this.props;
+    const fieldMerge = {
+      ...value.properties[fieldId],
+      ...{ default: fieldValue },
+    };
+    const propsMerge = { ...value.properties, ...{ [fieldId]: fieldMerge } };
+
+    this.onChange({
+      ...value,
+      properties: propsMerge,
+    });
+  }
+
   /**
    * Cancel handler
    * @method onCancel
@@ -470,14 +490,16 @@ class SchemaWidget extends Component {
    * @returns {undefined}
    */
   onShowEditField(id, schema) {
+    const { contentType } = this.props.value;
+
     this.setState({
       editField: {
         id,
         schema,
       },
     });
-    console.log('onShowEditField id', id);
-    this.props.getFieldSchema(id);
+
+    this.props.getFieldSchema(contentType, id);
   }
 
   /**
@@ -526,7 +548,6 @@ class SchemaWidget extends Component {
    * @returns {undefined}
    */
   onOrderField(index, delta) {
-    console.log('onOrderField', index, delta);
     this.onChange({
       ...this.props.value,
       fieldsets: [
@@ -552,8 +573,6 @@ class SchemaWidget extends Component {
    * @returns {undefined}
    */
   onOrderFieldset(index, delta) {
-    console.log('onOrderFieldset', index, delta);
-    console.log('on order: ', index, 'delta: ', delta);
     const value = {
       ...this.props.value,
       fieldsets: move(this.props.value.fieldsets, index, delta),
@@ -573,11 +592,16 @@ class SchemaWidget extends Component {
    * @returns {undefined}
    */
   onDragEnd(result) {
-    console.log('result', result);
-    if (result.destination.droppableId === 'fields-schema-edit') {
+    if (
+      result.destination &&
+      result.destination.droppableId === 'fields-schema-edit'
+    ) {
       this.onOrderField(result.source.index, result.destination.index);
     }
-    if (result.destination.droppableId === 'tabs-schema-edit') {
+    if (
+      result.destination &&
+      result.destination.droppableId === 'tabs-schema-edit'
+    ) {
       this.onOrderFieldset(result.source.index, result.destination.index);
     }
   }
@@ -589,6 +613,19 @@ class SchemaWidget extends Component {
    */
   render() {
     const { value, error } = this.props;
+    const userCreatedFields = value.fieldsets[
+      this.state.currentFieldset
+    ].fields.filter(
+      (fieldId) =>
+        isUserCreated(value.properties[fieldId]) && fieldId !== 'changeNote',
+    );
+    const nonUserCreatedFields = value.fieldsets[
+      this.state.currentFieldset
+    ].fields.filter(
+      (fieldId) =>
+        !isUserCreated(value.properties[fieldId]) && fieldId !== 'changeNote',
+    );
+    const userCreatedFieldsStartingIndex = nonUserCreatedFields.length;
 
     return (
       <div>
@@ -641,7 +678,21 @@ class SchemaWidget extends Component {
                 </div>
               )}
             </Droppable>
-
+            {map(nonUserCreatedFields, (field, index) => (
+              <Field
+                {...value.properties[field]}
+                id={field}
+                required={value.required.indexOf(field) !== -1}
+                onEdit={this.onShowEditField}
+                isDraggable={isUserCreated(value.properties[field])}
+                isDissabled={!isUserCreated(value.properties[field])}
+                order={index}
+                onDelete={this.onShowDeleteField}
+                onChange={this.onChangeDefaultValue}
+                key={field}
+                value={value.properties[field].default}
+              />
+            ))}
             <Droppable
               droppableId="fields-schema-edit"
               direction="vertical"
@@ -653,40 +704,65 @@ class SchemaWidget extends Component {
                   {...provided.draggableProps}
                   style={getListStyle(snapshot.isDraggingOver)}
                 >
-                  {map(
-                    value.fieldsets[this.state.currentFieldset].fields,
-                    (field, index) => (
-                      <Draggable draggableId={field} index={index} key={field}>
-                        {(provided, snapshot) => (
-                          <div
-                            ref={provided.innerRef}
-                            {...provided.draggableProps}
-                            {...provided.dragHandleProps}
-                            style={getItemStyle(
-                              snapshot.isDragging,
-                              provided.draggableProps.style,
-                            )}
-                          >
-                            <Field
-                              {...value.properties[field]}
-                              id={field}
-                              required={value.required.indexOf(field) !== -1}
-                              onEdit={this.onShowEditField}
-                              order={index}
-                              onDelete={this.onShowDeleteField}
-                              key={field}
-                            />
-                          </div>
-                        )}
-                      </Draggable>
-                    ),
-                  )}
+                  {map(userCreatedFields, (field, index) => (
+                    <Draggable
+                      draggableId={field}
+                      index={userCreatedFieldsStartingIndex + index}
+                      key={field}
+                    >
+                      {(provided, snapshot) => (
+                        <div
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                          style={getItemStyle(
+                            snapshot.isDragging,
+                            provided.draggableProps.style,
+                          )}
+                        >
+                          <Field
+                            {...value.properties[field]}
+                            id={field}
+                            required={value.required.indexOf(field) !== -1}
+                            onEdit={this.onShowEditField}
+                            isDraggable={isUserCreated(value.properties[field])}
+                            isDissabled={
+                              !isUserCreated(value.properties[field])
+                            }
+                            order={index}
+                            onDelete={this.onShowDeleteField}
+                            onChange={this.onChangeDefaultValue}
+                            key={field}
+                            value={value.properties[field].default}
+                          />
+                        </div>
+                      )}
+                    </Draggable>
+                  ))}
 
                   {provided.placeholder}
                 </div>
               )}
             </Droppable>
           </DragDropContext>
+
+          {value.fieldsets[this.state.currentFieldset].fields.indexOf(
+            'changeNote',
+          ) ? (
+            <Field
+              {...value.properties.changeNote}
+              id={'changeNote'}
+              required={value.required.indexOf('changeNote') !== -1}
+              onEdit={this.onShowEditField}
+              isDraggable={isUserCreated(value.properties.changeNote)}
+              isDissabled={!isUserCreated(value.properties.changeNote)}
+              order={value.fieldsets[this.state.currentFieldset].length - 1}
+              onDelete={this.onShowDeleteField}
+              onChange={this.onChangeDefaultValue}
+              key={'changeNote'}
+              value={value.properties.changeNote.default}
+            />
+          ) : null}
 
           <Form.Field inline>
             <Grid>
