@@ -1,6 +1,6 @@
 # Change Log
 
-## 6.1.1 (unreleased)
+## 6.2.1 (unreleased)
 
 ### Breaking
 
@@ -10,6 +10,14 @@
 - Added italian translations and translated array, token and select widget. @giuliaghisini
 
 ### Bugfix
+
+### Internal
+
+## 6.2.0 (2020-06-14)
+
+### Feature
+
+- Added database information component in ControlPanels @iFlameing
 
 ### Internal
 
