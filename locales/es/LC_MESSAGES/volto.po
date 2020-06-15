@@ -221,6 +221,7 @@ msgstr "Cancelar"
 msgid "Cell"
 msgstr "Celda"
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Center"
@@ -378,6 +379,7 @@ msgid "Cut"
 msgstr "Cortar"
 
 #: components/manage/Controlpanels/ModerateComments
+#: components/manage/Widgets/DatetimeWidget
 msgid "Date"
 msgstr "Fecha"
 
@@ -839,6 +841,7 @@ msgstr ""
 msgid "Lead Image"
 msgstr ""
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Left"
@@ -1216,6 +1219,7 @@ msgstr ""
 msgid "Richtext"
 msgstr "Texto formateado"
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Right"
@@ -1370,6 +1374,10 @@ msgstr "Configuración del sitio"
 msgid "Sitemap"
 msgstr ""
 
+#: components/manage/Blocks/Image/ImageSidebar
+msgid "Size"
+msgstr ""
+
 #: components/theme/View/ImageView
 msgid "Size: {size}"
 msgstr ""
@@ -1516,6 +1524,10 @@ msgstr "Este nombre se mostrará en la URL."
 #: components/theme/NotFound/NotFound
 msgid "This page does not seem to exist…"
 msgstr "Esta página no existe..."
+
+#: components/manage/Widgets/DatetimeWidget
+msgid "Time"
+msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/Contents

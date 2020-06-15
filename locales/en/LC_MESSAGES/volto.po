@@ -211,6 +211,7 @@ msgstr ""
 msgid "Cell"
 msgstr ""
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Center"
@@ -368,6 +369,7 @@ msgid "Cut"
 msgstr ""
 
 #: components/manage/Controlpanels/ModerateComments
+#: components/manage/Widgets/DatetimeWidget
 msgid "Date"
 msgstr ""
 
@@ -829,6 +831,7 @@ msgstr ""
 msgid "Lead Image"
 msgstr ""
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Left"
@@ -1206,6 +1209,7 @@ msgstr ""
 msgid "Richtext"
 msgstr ""
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Right"
@@ -1360,6 +1364,10 @@ msgstr ""
 msgid "Sitemap"
 msgstr ""
 
+#: components/manage/Blocks/Image/ImageSidebar
+msgid "Size"
+msgstr ""
+
 #: components/theme/View/ImageView
 msgid "Size: {size}"
 msgstr ""
@@ -1505,6 +1513,10 @@ msgstr ""
 
 #: components/theme/NotFound/NotFound
 msgid "This page does not seem to exist…"
+msgstr ""
+
+#: components/manage/Widgets/DatetimeWidget
+msgid "Time"
 msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/Edit
