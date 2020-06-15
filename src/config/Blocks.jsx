@@ -42,6 +42,7 @@ import tocSVG from '@plone/volto/icons/list-bullet.svg';
 import ImageGalleryListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/ImageGallery';
 import BlockSettingsSchema from '@plone/volto/components/manage/Blocks/Block/Schema';
 import TextSettingsSchema from '@plone/volto/components/manage/Blocks/Text/Schema';
+import ImageSettingsSchema from '@plone/volto/components/manage/Blocks/Image/Schema';
 
 defineMessages({
   title: {
@@ -122,7 +123,7 @@ const blocksConfig = {
     group: 'text',
     view: ViewTitleBlock,
     edit: EditTitleBlock,
-    schema: TextSettingsSchema,
+    schema: BlockSettingsSchema,
     restricted: true,
     mostUsed: false,
     blockHasOwnFocusManagement: true,
@@ -139,7 +140,7 @@ const blocksConfig = {
     group: 'text',
     view: ViewDescriptionBlock,
     edit: EditDescriptionBlock,
-    schema: TextSettingsSchema,
+    schema: BlockSettingsSchema,
     restricted: true,
     mostUsed: false,
     blockHasOwnFocusManagement: true,
@@ -173,7 +174,7 @@ const blocksConfig = {
     group: 'media',
     view: ViewImageBlock,
     edit: EditImageBlock,
-    schema: BlockSettingsSchema,
+    schema: ImageSettingsSchema,
     restricted: false,
     mostUsed: true,
     sidebarTab: 1,

@@ -6,20 +6,20 @@ const Schema = {
     ...BlockSettingsSchema.fieldsets[0],
     fields: [
       ...BlockSettingsSchema.fieldsets[0].fields,
-        "minLength",
-        "maxLength",
+        "minSize",
+        "maxSize",
     ]
   }],
   properties: {
     ...BlockSettingsSchema.properties,
-    minLength: {
-      title: "Min length",
-      description: "Minimum number of characters",
+    minSize: {
+      title: "Min size",
+      description: "Minimum image size",
       type: 'integer',
     },
-    maxLength: {
-      title: "Max length",
-      description: "Maximum number of characters",
+    maxSize: {
+      title: "Max size",
+      description: "Maximum image size",
       type: 'integer',
     },
   }
