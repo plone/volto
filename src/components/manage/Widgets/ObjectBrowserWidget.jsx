@@ -147,6 +147,8 @@ class ObjectBrowserWidget extends Component {
         this.onChange(item);
       },
       propDataName: 'value',
+      selectableTypes: this.props.widgetOptions?.pattern_options
+        ?.selectableTypes,
     });
   };
 
@@ -187,6 +189,8 @@ class ObjectBrowserWidget extends Component {
             e.preventDefault();
             onChange(id, []);
           };
+
+    console.log('props', this.props);
 
     return (
       <Form.Field

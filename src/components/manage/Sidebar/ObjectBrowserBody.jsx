@@ -70,6 +70,7 @@ class ObjectBrowserBody extends Component {
     href: '',
     onSelectItem: null,
     dataName: null,
+    selectableTypes: [],
   };
 
   /**
@@ -300,7 +301,14 @@ class ObjectBrowserBody extends Component {
         this.onSelectItem(item);
       }
     } else {
-      this.onSelectItem(item);
+      if (
+        this.props.selectableTypes.length > 0 &&
+        this.props.selectableTypes.indexOf(item['@type']) < 0
+      ) {
+        this.navigateTo(item['@id']);
+      } else {
+        this.onSelectItem(item);
+      }
     }
   };
 
@@ -314,8 +322,15 @@ class ObjectBrowserBody extends Component {
         this.props.closeObjectBrowser();
       }
     } else {
-      this.onSelectItem(item);
-      this.props.closeObjectBrowser();
+      if (
+        this.props.selectableTypes.length > 0 &&
+        this.props.selectableTypes.indexOf(item['@type']) < 0
+      ) {
+        this.navigateTo(item['@id']);
+      } else {
+        this.onSelectItem(item);
+        this.props.closeObjectBrowser();
+      }
     }
   };
 
