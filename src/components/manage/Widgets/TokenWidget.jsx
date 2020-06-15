@@ -31,8 +31,8 @@ const AsyncCreatable = loadable.lib(() =>
 
 const messages = defineMessages({
   select: {
-    id: 'Select...',
-    defaultMessage: 'Select...',
+    id: 'Select…',
+    defaultMessage: 'Select…',
   },
   no_options: {
     id: 'No options',

@@ -65,8 +65,8 @@ const messages = defineMessages({
     defaultMessage: 'Required',
   },
   select: {
-    id: 'Select...',
-    defaultMessage: 'Select...',
+    id: 'Select…',
+    defaultMessage: 'Select…',
   },
   no_value: {
     id: 'No value',

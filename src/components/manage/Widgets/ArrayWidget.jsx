@@ -32,8 +32,8 @@ const CreatableSelect = loadable(() => import('react-select/creatable'));
 
 const messages = defineMessages({
   select: {
-    id: 'Select...',
-    defaultMessage: 'Select...',
+    id: 'Select…',
+    defaultMessage: 'Select…',
   },
   no_value: {
     id: 'No value',

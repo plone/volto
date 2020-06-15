@@ -73,7 +73,7 @@ msgid "Add Content"
 msgstr ""
 
 #: components/manage/Toolbar/Types
-msgid "Add Translation..."
+msgid "Add Translation…"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
@@ -85,7 +85,7 @@ msgid "Add a description…"
 msgstr ""
 
 #: components/manage/Form/Form
-msgid "Add block..."
+msgid "Add block…"
 msgstr ""
 
 #: components/manage/Blocks/Listing/QuerystringWidget
@@ -1276,7 +1276,7 @@ msgid "Search for user or group"
 msgstr "Zoeken naar gebruiker of groep"
 
 #: components/manage/Controlpanels/UsersControlpanel
-msgid "Search group..."
+msgid "Search group…"
 msgstr ""
 
 #: components/theme/Search/Search
@@ -1288,7 +1288,7 @@ msgid "Search results for {term}"
 msgstr "Zoekresultaten voor ${term}"
 
 #: components/manage/Controlpanels/UsersControlpanel
-msgid "Search users..."
+msgid "Search users…"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -1303,12 +1303,6 @@ msgstr ""
 msgid "Select the transition to be used for modifying the items state."
 msgstr "Selecteer welke overgang moet worden gebruikt voor het wijzigen van de status van de items."
 
-#: components/manage/Widgets/ArrayWidget
-#: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/TokenWidget
-msgid "Select..."
-msgstr ""
-
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Selected items"
 msgstr ""
@@ -1318,6 +1312,9 @@ msgid "Selection"
 msgstr ""
 
 #: components/manage/Contents/Contents
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
 msgid "Select…"
 msgstr "Selecteer…"
 

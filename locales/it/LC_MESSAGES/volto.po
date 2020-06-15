@@ -54,8 +54,8 @@ msgid "Add Content"
 msgstr "Aggiungi un contenuto"
 
 #: components/manage/Toolbar/Types
-msgid "Add Translation..."
-msgstr "Aggiungi traduzione..."
+msgid "Add Translation…"
+msgstr "Aggiungi traduzione…"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add User"
@@ -66,8 +66,8 @@ msgid "Add a description…"
 msgstr "Aggiungi una descrizione…"
 
 #: components/manage/Form/Form
-msgid "Add block..."
-msgstr "Aggiungi un blocco..."
+msgid "Add block…"
+msgstr "Aggiungi un blocco…"
 
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "Add criteria"
@@ -1257,8 +1257,8 @@ msgid "Search for user or group"
 msgstr "Ricerca per nome utente o gruppo"
 
 #: components/manage/Controlpanels/UsersControlpanel
-msgid "Search group..."
-msgstr "Cerca un gruppo..."
+msgid "Search group…"
+msgstr "Cerca gruppo…"
 
 #: components/theme/Search/Search
 msgid "Search results"
@@ -1269,8 +1269,8 @@ msgid "Search results for {term}"
 msgstr "Risultati per {term}"
 
 #: components/manage/Controlpanels/UsersControlpanel
-msgid "Search users..."
-msgstr "Cerca utenti..."
+msgid "Search users…"
+msgstr "Cerca utenti…"
 
 #: components/manage/Contents/Contents
 msgid "Select columns to show"
@@ -1284,12 +1284,6 @@ msgstr "Seleziona un criterio"
 msgid "Select the transition to be used for modifying the items state."
 msgstr "Seleziona la transizione da effettuare per cambiare lo stato del contenuto."
 
-#: components/manage/Widgets/ArrayWidget
-#: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/TokenWidget
-msgid "Select..."
-msgstr "Seleziona..."
-
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Selected items"
 msgstr "Elementi selezionati"
@@ -1299,6 +1293,9 @@ msgid "Selection"
 msgstr "Selezione"
 
 #: components/manage/Contents/Contents
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
 msgid "Select…"
 msgstr "Seleziona…"
 

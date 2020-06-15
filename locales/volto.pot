@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-06-12T13:33:56.722Z\n"
+"POT-Creation-Date: 2020-06-15T07:03:05.694Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -60,13 +60,13 @@ msgid "Add Addons"
 msgstr ""
 
 #: components/manage/Toolbar/Types
-# defaultMessage: Add Content...
+# defaultMessage: Add Content…
 msgid "Add Content"
 msgstr ""
 
 #: components/manage/Toolbar/Types
-# defaultMessage: Add Translation...
-msgid "Add Translation..."
+# defaultMessage: Add Translation…
+msgid "Add Translation…"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
@@ -80,8 +80,8 @@ msgid "Add a description…"
 msgstr ""
 
 #: components/manage/Form/Form
-# defaultMessage: Add block...
-msgid "Add block..."
+# defaultMessage: Add block…
+msgid "Add block…"
 msgstr ""
 
 #: components/manage/Blocks/Listing/QuerystringWidget
@@ -1529,8 +1529,8 @@ msgid "Search for user or group"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
-# defaultMessage: Search group...
-msgid "Search group..."
+# defaultMessage: Search group…
+msgid "Search group…"
 msgstr ""
 
 #: components/theme/Search/Search
@@ -1544,8 +1544,8 @@ msgid "Search results for {term}"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
-# defaultMessage: Search users...
-msgid "Search users..."
+# defaultMessage: Search users…
+msgid "Search users…"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -1563,13 +1563,6 @@ msgstr ""
 msgid "Select the transition to be used for modifying the items state."
 msgstr ""
 
-#: components/manage/Widgets/ArrayWidget
-#: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/TokenWidget
-# defaultMessage: Select...
-msgid "Select..."
-msgstr ""
-
 #: components/manage/Sidebar/ObjectBrowserBody
 # defaultMessage: Selected items
 msgid "Selected items"
@@ -1581,6 +1574,9 @@ msgid "Selection"
 msgstr ""
 
 #: components/manage/Contents/Contents
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
 # defaultMessage: Select…
 msgid "Select…"
 msgstr ""

@@ -61,8 +61,8 @@ msgid "Add Content"
 msgstr "新規追加"
 
 #: components/manage/Toolbar/Types
-msgid "Add Translation..."
-msgstr "翻訳コンテンツを追加..."
+msgid "Add Translation…"
+msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add User"
@@ -70,11 +70,11 @@ msgstr "ユーザを追加"
 
 #: components/manage/Blocks/Description/Edit
 msgid "Add a description…"
-msgstr "説明を追加..."
+msgstr "説明を追加…"
 
 #: components/manage/Form/Form
-msgid "Add block..."
-msgstr "ブロックを追加..."
+msgid "Add block…"
+msgstr "ブロックを追加…"
 
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "Add criteria"
@@ -642,7 +642,7 @@ msgstr "ファイル名"
 
 #: components/manage/Contents/Contents
 msgid "Filter…"
-msgstr "フィルター..."
+msgstr "フィルター…"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Fixed width table cells"
@@ -1264,8 +1264,8 @@ msgid "Search for user or group"
 msgstr "検索"
 
 #: components/manage/Controlpanels/UsersControlpanel
-msgid "Search group..."
-msgstr "検索"
+msgid "Search group…"
+msgstr ""
 
 #: components/theme/Search/Search
 msgid "Search results"
@@ -1276,8 +1276,8 @@ msgid "Search results for {term}"
 msgstr "検索"
 
 #: components/manage/Controlpanels/UsersControlpanel
-msgid "Search users..."
-msgstr "検索"
+msgid "Search users…"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Select columns to show"
@@ -1291,12 +1291,6 @@ msgstr "選択の基準"
 msgid "Select the transition to be used for modifying the items state."
 msgstr "Select the transition to be used for modifying the items state. (未翻訳)"
 
-#: components/manage/Widgets/ArrayWidget
-#: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/TokenWidget
-msgid "Select..."
-msgstr ""
-
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Selected items"
 msgstr ""
@@ -1306,6 +1300,9 @@ msgid "Selection"
 msgstr "Selection (未翻訳)"
 
 #: components/manage/Contents/Contents
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
 msgid "Select…"
 msgstr "選択…"
 
