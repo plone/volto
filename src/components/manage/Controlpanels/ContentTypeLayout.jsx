@@ -7,16 +7,24 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { Helmet, getParentUrl, hasBlocksData } from '@plone/volto/helpers';
+import { Link } from 'react-router-dom';
+import { getParentUrl, hasBlocksData } from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
 import { Button } from 'semantic-ui-react';
+import { toast } from 'react-toastify';
 import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
-import { nth } from 'lodash';
-import { Form, Icon, Toolbar, Sidebar } from '@plone/volto/components';
-import { getSchema } from '@plone/volto/actions';
+import { nth, join } from 'lodash';
+import { Form, Icon, Toolbar, Sidebar, Toast } from '@plone/volto/components';
+import {
+  getSchema,
+  postSchema,
+  updateSchema,
+  getControlpanel,
+  updateControlpanel } from '@plone/volto/actions';
 
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
+import backSVG from '@plone/volto/icons/back.svg';
 
 const messages = defineMessages({
   changesSaved: {
@@ -53,15 +61,29 @@ class ContentTypeLayout extends Component {
    * @static
    */
   static propTypes = {
+    updateControlpanel: PropTypes.func.isRequired,
+    getControlpanel: PropTypes.func.isRequired,
+    getSchema: PropTypes.func.isRequired,
+    postSchema: PropTypes.func.isRequired,
+    updateSchema: PropTypes.func.isRequired,
     id: PropTypes.string.isRequired,
     parent: PropTypes.string.isRequired,
     pathname: PropTypes.string.isRequired,
-    getSchema: PropTypes.func.isRequired,
     schemaRequest: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
     }).isRequired,
+    updateRequest: PropTypes.shape({
+      loading: PropTypes.bool,
+      loaded: PropTypes.bool,
+    }).isRequired,
     schema: PropTypes.objectOf(PropTypes.any),
+    controlpanel: PropTypes.shape({
+      '@id': PropTypes.string,
+      data: PropTypes.object,
+      schema: PropTypes.object,
+      title: PropTypes.string,
+    }),
   };
 
   /**
@@ -71,6 +93,7 @@ class ContentTypeLayout extends Component {
    */
   static defaultProps = {
     schema: {},
+    controlpanel: null,
   };
 
   /**
@@ -83,19 +106,21 @@ class ContentTypeLayout extends Component {
     super(props);
     this.state = {
       visual: false,
-      content: {},
+      content: null,
     };
     this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onEnableBlocks = this.onEnableBlocks.bind(this);
     this.form = React.createRef();
   }
 
   /**
-   * Component did mount
-   * @method componentDidMount
+   * Component will mount
+   * @method componentWillMount
    * @returns {undefined}
    */
-  componentDidMount() {
+  UNSAFE_componentWillMount() {
+    this.props.getControlpanel(join([this.props.parent, this.props.id], '/'));
     this.props.getSchema(this.props.id);
   }
 
@@ -106,6 +131,7 @@ class ContentTypeLayout extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
+    // Schema
     if (this.props.schemaRequest.loading && nextProps.schemaRequest.loaded) {
       let properties = nextProps.schema?.properties || {};
       let content = {};
@@ -126,6 +152,22 @@ class ContentTypeLayout extends Component {
         });
       }
     }
+
+    // Blocks enabled
+    if (this.props.schemaRequest.post.loading && nextProps.schemaRequest.post.loaded) {
+      this.props.getSchema(this.props.id);
+    }
+
+    // Schema updated
+    if (this.props.schemaRequest.update.loading && nextProps.schemaRequest.update.loaded) {
+      toast.info(
+        <Toast
+          info
+          title={this.props.intl.formatMessage(messages.info)}
+          content={this.props.intl.formatMessage(messages.changesSaved)}
+        />,
+      );
+    }
   }
 
   /**
@@ -135,7 +177,7 @@ class ContentTypeLayout extends Component {
    * @returns {undefined}
    */
   onSubmit(data) {
-
+    this.props.updateSchema(this.props.id, data);
   }
 
   /**
@@ -144,7 +186,34 @@ class ContentTypeLayout extends Component {
    * @returns {undefined}
    */
   onCancel() {
-    this.props.history.push(getParentUrl(this.props.pathname));
+    let url = getParentUrl(this.props.pathname)
+    this.props.history.push(getParentUrl(url));
+  }
+
+  /**
+   * Enable blocks handler
+   * @method onEnableBlocks
+   * @returns {undefined}
+   */
+  onEnableBlocks() {
+    this.props.postSchema(this.props.id, {
+      "@type": "fieldset",
+      "title": "Layout"
+    });
+    this.props.postSchema(this.props.id, {
+      "@type": "JSONField",
+      "title": "Blocks Layout",
+      "fieldset_id": 1
+    });
+    this.props.postSchema(this.props.id, {
+      "@type": "JSONField",
+      "title": "Blocks",
+      "fieldset_id": 1
+    });
+    this.props.updateSchema(this.props.id, {
+      blocks: {},
+      blocks_layout: {"items": []}
+    });
   }
 
   /**
@@ -153,13 +222,67 @@ class ContentTypeLayout extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    return this.state.visual ? (
+    if (!this.state.visual) {
+      // Still loading
+      if (!this.state.content) {
+        return <div />;
+      }
+
+      // Blocks are not enabled
+      return (
+        <>
+        <div id="page-controlpanel-layout" className="ui container">
+          <p>
+          <FormattedMessage
+              id="Can not edit Layout for {type} content-type as it doesn't have support for Volto Blocks enabled"
+              defaultMessage="Can not edit Layout for {type} content-type as it doesn't have support for Volto Blocks enabled"
+              values = {{
+                type: this.props.id
+              }}
+            />
+          </p>
+          <p>
+            <button onClick={this.onEnableBlocks}>
+              <FormattedMessage
+                id="Enables Volto Blocks support"
+                defaultMessage="Enables Volto Blocks support"
+              />
+            </button>
+          </p>
+        </div>
+        <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
+        <Toolbar
+          pathname={this.props.pathname}
+          hideDefaultViewButtons
+          inner={
+            <>
+              <Link className="item" to="#" onClick={() => this.onCancel()}>
+                <Icon
+                  name={backSVG}
+                  size="30px"
+                  className="contents circled"
+                  title={this.props.intl.formatMessage(messages.back)}
+                />
+              </Link>
+            </>
+          }
+        />
+      </Portal>
+      </>
+      )
+    }
+
+    // Render layout editor
+    return (
       <div id="page-controlpanel-layout">
         <Form
           isEditForm
           isAdminForm
           ref={this.form}
-          schema={this.props.schema}
+          schema={{
+            ...this.props.schema,
+            required: []
+          }}
           formData={this.state.content}
           onSubmit={this.onSubmit}
           onCancel={this.onCancel}
@@ -206,8 +329,6 @@ class ContentTypeLayout extends Component {
           />
         </Portal>
       </div>
-    ) : (
-      <div />
     );
   }
 }
@@ -218,10 +339,14 @@ export default compose(
     (state, props) => ({
       schema: state.schema.schema,
       schemaRequest: state.schema,
+      updateRequest: state.controlpanels.update,
+      controlpanel: state.controlpanels.controlpanel,
       pathname: props.location.pathname,
       id: nth(props.location.pathname.split('/'), -2),
       parent: nth(props.location.pathname.split('/'), -3),
     }),
-    { getSchema },
+    { getSchema, postSchema, updateSchema,
+      getControlpanel, updateControlpanel
+    },
   ),
 )(ContentTypeLayout);
