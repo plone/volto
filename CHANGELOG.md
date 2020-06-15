@@ -6,7 +6,6 @@
 
 ### Feature
 
-- Added param 'wrapped' for widgets, to use widgets without form wrappers. @giuliaghisini
 - Added italian translations and translated array, token and select widget. @giuliaghisini
 
 ### Bugfix
@@ -29,8 +28,9 @@
 
 - Include ``config.addonRoutes`` in router configuration. This allows addons to
   override route children defined for the ``App`` component.
+- Added param 'wrapped' for widgets, to use widgets without form wrappers. @giuliaghisini
 - Added internationalization for Romanian language @alecghica #1521
-- Support loading additional reducers from the `config.addonReducers` key,
+- Support loading additional reducers from the ``config.addonReducers`` key,
   to allow addons to provide their own reducers @tiberiuichim
 - Add a no brainer image sizing option, using scales. This will be vastly improved when
   we adopt srcsets. @sneridagh
