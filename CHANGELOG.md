@@ -1,12 +1,20 @@
 # Change Log
 
-## 6.1.1 (unreleased)
+## 6.2.1 (unreleased)
 
 ### Breaking
 
 ### Feature
 
 ### Bugfix
+
+### Internal
+
+## 6.2.0 (2020-06-14)
+
+### Feature
+
+- Added database information component in ControlPanels @iFlameing
 
 ### Internal
 
