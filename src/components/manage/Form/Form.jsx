@@ -193,6 +193,7 @@ class Form extends Component {
    * @returns {undefined}
    */
   onChangeField(id, value) {
+    // console.log('onChangeField', id, value);
     this.setState({
       formData: {
         ...this.state.formData,

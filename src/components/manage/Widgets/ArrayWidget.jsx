@@ -3,28 +3,17 @@
  * @module components/manage/Widgets/ArrayWidget
  */
 
+import loadable from '@loadable/component';
+import { getVocabulary } from '@plone/volto/actions';
+import { customSelectStyles, DropdownIndicator, Option, selectTheme } from '@plone/volto/components/manage/Widgets/SelectStyling';
+import { getVocabFromField, getVocabFromHint, getVocabFromItems } from '@plone/volto/helpers';
+import { isObject, map } from 'lodash';
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
-import PropTypes from 'prop-types';
-import { Form, Grid, Label } from 'semantic-ui-react';
-import { isObject, map } from 'lodash';
-import { compose } from 'redux';
 import { connect } from 'react-redux';
-import loadable from '@loadable/component';
-
-import {
-  getVocabFromHint,
-  getVocabFromField,
-  getVocabFromItems,
-} from '@plone/volto/helpers';
-import { getVocabulary } from '@plone/volto/actions';
-
-import {
-  Option,
-  DropdownIndicator,
-  selectTheme,
-  customSelectStyles,
-} from '@plone/volto/components/manage/Widgets/SelectStyling';
+import { compose } from 'redux';
+import { Form, Grid, Icon as IconOld, Label } from 'semantic-ui-react';
 
 const AsyncPaginate = loadable(() => import('react-select-async-paginate'));
 const CreatableSelect = loadable(() => import('react-select/creatable'));
@@ -37,6 +26,38 @@ const messages = defineMessages({
   no_value: {
     id: 'No value',
     defaultMessage: 'No value',
+  },
+  default: {
+    id: 'Default',
+    defaultMessage: 'Default',
+  },
+  idTitle: {
+    id: 'Short Name',
+    defaultMessage: 'Short Name',
+  },
+  idDescription: {
+    id: 'Used for programmatic access to the fieldset.',
+    defaultMessage: 'Used for programmatic access to the fieldset.',
+  },
+  title: {
+    id: 'Title',
+    defaultMessage: 'Title',
+  },
+  description: {
+    id: 'Description',
+    defaultMessage: 'Description',
+  },
+  close: {
+    id: 'Close',
+    defaultMessage: 'Close',
+  },
+  choices: {
+    id: 'Choices',
+    defaultMessage: 'Choices',
+  },
+  required: {
+    id: 'Required',
+    defaultMessage: 'Required',
   },
 });
 
@@ -72,7 +93,11 @@ class ArrayWidget extends Component {
       PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     ),
     onChange: PropTypes.func.isRequired,
+    onEdit: PropTypes.func,
+    isDraggable: PropTypes.bool,
+    isDissabled: PropTypes.bool,
     itemsTotal: PropTypes.number,
+    onDelete: PropTypes.func,
   };
 
   /**
@@ -93,6 +118,10 @@ class ArrayWidget extends Component {
     choices: [],
     loading: false,
     value: null,
+    onEdit: null,
+    onDelete: null,
+    isDraggable: false,
+    isDissabled: false,
   };
 
   /**
@@ -187,7 +216,52 @@ class ArrayWidget extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { id, title, required, description, error, fieldSet } = this.props;
+    const schema = {
+      fieldsets: [
+        {
+          id: 'default',
+          title: this.props.intl.formatMessage(messages.default),
+          fields: ['title', 'id', 'description', 'choices', 'required'],
+        },
+      ],
+      properties: {
+        id: {
+          type: 'string',
+          title: this.props.intl.formatMessage(messages.idTitle),
+          description: this.props.intl.formatMessage(messages.idDescription),
+        },
+        title: {
+          type: 'string',
+          title: this.props.intl.formatMessage(messages.title),
+        },
+        description: {
+          type: 'string',
+          widget: 'textarea',
+          title: this.props.intl.formatMessage(messages.description),
+        },
+        choices: {
+          type: 'array',
+          title: this.props.intl.formatMessage(messages.choices),
+        },
+        required: {
+          type: 'boolean',
+          title: this.props.intl.formatMessage(messages.required),
+        },
+      },
+      required: ['id', 'title', 'choices'],
+    };
+    const {
+      id,
+      title,
+      required,
+      description,
+      error,
+      fieldSet,
+      onDelete,
+      onEdit,
+      isDraggable,
+      isDissabled,
+    } = this.props;
     const { selectedOption } = this.state;
     return (
       <Form.Field
@@ -201,10 +275,35 @@ class ArrayWidget extends Component {
           <Grid.Row stretched>
             <Grid.Column width="4">
               <div className="wrapper">
-                <label htmlFor={`field-${id}`}>{title}</label>
+                <label htmlFor={`field-${id}`}>
+                  {isDraggable && (
+                    <i
+                      aria-hidden="true"
+                      className="grey bars icon drag handle"
+                    />
+                  )}
+                  {title}
+                </label>
               </div>
             </Grid.Column>
             <Grid.Column width="8">
+              {onEdit && !isDissabled && (
+                <div className="toolbar">
+                  <button
+                    onClick={() => onEdit(id, schema)}
+                    className="item ui noborder button"
+                  >
+                    <IconOld name="write square" size="large" color="blue" />
+                  </button>
+                  <button
+                    aria-label={this.props.intl.formatMessage(messages.close)}
+                    className="item ui noborder button"
+                    onClick={() => onDelete(id)}
+                  >
+                    <IconOld name="close" size="large" color="red" />
+                  </button>
+                </div>
+              )}
               {!this.props.items?.choices && this.vocabBaseUrl ? (
                 <AsyncPaginate
                   className="react-select-container"

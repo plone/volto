@@ -33,12 +33,19 @@ export function getContentTypeTypes(contentType) {
  * @returns {Object} Update document action.
  */
 export function updateContentTypeFieldTypes(contentType, text) {
+  console.log(
+    'updateContentTypeFieldTypes contentType',
+    contentType,
+    'text',
+    text,
+  );
+  const data = JSON.parse(text);
   return {
     type: UPDATE_CONTENT_TYPE_TYPES,
     request: {
       op: 'put',
       path: `/@types/${contentType}`,
-      data: { text },
+      data,
     },
   };
 }

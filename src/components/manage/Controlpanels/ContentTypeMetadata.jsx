@@ -3,7 +3,7 @@
  * @module components/manage/Controlpanels/ContentTypeMetadata
  */
 
-import { getSchema } from '@plone/volto/actions';
+import { getSchema, updateContentTypeFieldTypes } from '@plone/volto/actions';
 import { Form, Toast } from '@plone/volto/components';
 import PropTypes from 'prop-types';
 import qs from 'query-string';
@@ -58,6 +58,37 @@ const makeSchemaList = (schema) => {
 
   return result;
 };
+const isUserCreated = (field) =>
+  !field.behavior ||
+  field.behavior.indexOf('plone.dexterity.schema.generated') > -1;
+
+const makeSchemaData = (schema, contentType) => {
+  const fieldsets = schema.fieldsets.map((fieldset) => {
+    const nonUserCreatedFields = fieldset.fields.filter(
+      (fieldId) =>
+        !isUserCreated(schema.properties[fieldId]) && fieldId !== 'changeNote',
+    );
+    const userCreatedFields = fieldset.fields.filter((fieldId) =>
+      isUserCreated(schema.properties[fieldId]),
+    );
+    const changeNote = fieldset.fields.filter(
+      (fieldId) => fieldId === 'changeNote',
+    );
+    return {
+      ...fieldset,
+      fields: [...nonUserCreatedFields, ...userCreatedFields, ...changeNote],
+    };
+  });
+  const result = {
+    ...schema,
+    fieldsets,
+    contentType,
+  };
+  // console.log('make schema ', schema);
+  // console.log('make schema data fieldsets', fieldsets);
+  // console.log('make schema data result', result);
+  return { schema: JSON.stringify(result) };
+};
 
 /**
  * ContentTypeMetadata class.
@@ -72,6 +103,7 @@ class ContentTypeMetadata extends Component {
    */
   static propTypes = {
     getSchema: PropTypes.func.isRequired,
+    updateContentTypeFieldTypes: PropTypes.func.isRequired,
     pathname: PropTypes.string.isRequired,
     schema: PropTypes.objectOf(PropTypes.any),
     content: PropTypes.shape({
@@ -131,6 +163,7 @@ class ContentTypeMetadata extends Component {
   onSubmit(data) {
     console.log('onsubmit data', data);
     console.log('onsubmit data', JSON.parse(data.schema));
+    this.props.updateContentTypeFieldTypes(this.props.type, data.schema);
   }
   onChange(data) {
     console.log('onChange data', data);
@@ -171,12 +204,9 @@ class ContentTypeMetadata extends Component {
   render() {
     if (this.props.schema) {
       const contentTypeSchema = makeSchemaList(this.props.schema);
-      const schemaData = {
-        schema: JSON.stringify({
-          ...this.props.schema,
-          contentType: this.props.type,
-        }),
-      };
+      const schemaData = makeSchemaData(this.props.schema, this.props.type);
+      console.log('render this.props.schema ', this.props.schema);
+      console.log('render schemaData', schemaData);
 
       return (
         <Form
@@ -209,6 +239,7 @@ export default compose(
     }),
     {
       getSchema,
+      updateContentTypeFieldTypes,
     },
   ),
 )(ContentTypeMetadata);

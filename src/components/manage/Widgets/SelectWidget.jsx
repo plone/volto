@@ -3,30 +3,17 @@
  * @module components/manage/Widgets/SelectWidget
  */
 
-import React, { Component } from 'react';
+import loadable from '@loadable/component';
+import { getVocabulary, getVocabularyTokenTitle } from '@plone/volto/actions';
+import { customSelectStyles, DropdownIndicator, Option, selectTheme } from '@plone/volto/components/manage/Widgets/SelectStyling';
+import { getBoolean, getVocabFromField, getVocabFromHint, getVocabFromItems } from '@plone/volto/helpers';
+import { find, isBoolean, isObject, map } from 'lodash';
 import PropTypes from 'prop-types';
-import { Icon as IconOld, Form, Grid, Label } from 'semantic-ui-react';
+import React, { Component } from 'react';
+import { defineMessages, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { map, find, isBoolean, isObject } from 'lodash';
-import { defineMessages, injectIntl } from 'react-intl';
-import loadable from '@loadable/component';
-
-import {
-  getBoolean,
-  getVocabFromHint,
-  getVocabFromField,
-  getVocabFromItems,
-} from '@plone/volto/helpers';
-
-import { getVocabulary, getVocabularyTokenTitle } from '@plone/volto/actions';
-
-import {
-  Option,
-  DropdownIndicator,
-  selectTheme,
-  customSelectStyles,
-} from '@plone/volto/components/manage/Widgets/SelectStyling';
+import { Form, Grid, Icon as IconOld, Label } from 'semantic-ui-react';
 
 const Select = loadable(() => import('react-select'));
 const AsyncPaginate = loadable(() => import('react-select-async-paginate'));
@@ -137,6 +124,8 @@ class SelectWidget extends Component {
     ]),
     onChange: PropTypes.func.isRequired,
     onEdit: PropTypes.func,
+    isDraggable: PropTypes.bool,
+    isDissabled: PropTypes.bool,
     onDelete: PropTypes.func,
     itemsTotal: PropTypes.number,
   };
@@ -161,6 +150,8 @@ class SelectWidget extends Component {
     value: null,
     onEdit: null,
     onDelete: null,
+    isDraggable: false,
+    isDissabled: false,
   };
 
   state = {
@@ -266,8 +257,10 @@ class SelectWidget extends Component {
       value,
       onChange,
       fieldSet,
+      isDraggable,
+      isDissabled,
     } = this.props;
-
+    console.log('SELECT isDraggable', isDraggable);
     return (
       <Form.Field
         inline
@@ -281,7 +274,7 @@ class SelectWidget extends Component {
             <Grid.Column width="4">
               <div className="wrapper">
                 <label htmlFor={`field-${id}`}>
-                  {onEdit && (
+                  {isDraggable && (
                     <i
                       aria-hidden="true"
                       className="grey bars icon drag handle"
@@ -292,7 +285,7 @@ class SelectWidget extends Component {
               </div>
             </Grid.Column>
             <Grid.Column width="8">
-              {onEdit && (
+              {onEdit && !isDissabled && (
                 <div className="toolbar">
                   <button
                     onClick={() => onEdit(id, schema)}

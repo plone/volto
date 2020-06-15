@@ -130,7 +130,7 @@ const TextareaWidget = ({
             </div>
           </Grid.Column>
           <Grid.Column width="8">
-            {onEdit && !isDissabled && (
+            {onEdit && !isDissabled ? (
               <div className="toolbar">
                 <button
                   className="item ui noborder button"
@@ -146,12 +146,13 @@ const TextareaWidget = ({
                   <Icon name="close" size="large" color="red" />
                 </button>
               </div>
-            )}
+            ) : null}
             <TextArea
               id={`field-${id}`}
               name={id}
               value={value || ''}
               disabled={isDissabled}
+              style={{ background: 'transparent' }}
               onChange={({ target }) =>
                 onhandleChange(
                   id,

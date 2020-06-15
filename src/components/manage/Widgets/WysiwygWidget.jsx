@@ -3,23 +3,21 @@
  * @module components/manage/WysiwygWidget/WysiwygWidget
  */
 
+import { convertToRaw, EditorState } from 'draft-js';
+import { stateFromHTML } from 'draft-js-import-html';
+import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
+import Editor from 'draft-js-plugins-editor';
+import { map } from 'lodash';
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import ReactDOMServer from 'react-dom/server';
-import PropTypes from 'prop-types';
-import { Provider } from 'react-redux';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import Editor from 'draft-js-plugins-editor';
-import { stateFromHTML } from 'draft-js-import-html';
-import { convertToRaw, EditorState } from 'draft-js';
-import redraft from 'redraft';
-import { Form, Grid, Icon, Label, TextArea } from 'semantic-ui-react';
-import { map } from 'lodash';
-import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import { defineMessages, injectIntl } from 'react-intl';
-import configureStore from 'redux-mock-store';
+import { connect, Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
-
+import redraft from 'redraft';
+import { compose } from 'redux';
+import configureStore from 'redux-mock-store';
+import { Form, Grid, Icon, Label, TextArea } from 'semantic-ui-react';
 import { settings } from '~/config';
 
 const messages = defineMessages({
@@ -114,6 +112,8 @@ class WysiwygWidget extends Component {
      * On edit handler
      */
     onEdit: PropTypes.func,
+    isDraggable: PropTypes.bool,
+    isDissabled: PropTypes.bool,
     /**
      * Internationalization
      */
@@ -136,6 +136,8 @@ class WysiwygWidget extends Component {
     onEdit: null,
     onDelete: null,
     onChange: null,
+    isDraggable: false,
+    isDissabled: false,
   };
 
   /**
@@ -250,6 +252,8 @@ class WysiwygWidget extends Component {
       onEdit,
       onDelete,
       fieldSet,
+      isDraggable,
+      isDissabled,
     } = this.props;
 
     if (__SERVER__) {
@@ -265,7 +269,7 @@ class WysiwygWidget extends Component {
             <label htmlFor={`field-${id}`}>{title}</label>
             <TextArea id={id} name={id} value={value ? value.data : ''} />
             {description && <p className="help">{description}</p>}
-            {map(error, (message) => (
+            {map(error, (message, index) => (
               <Label key={message} basic color="red" pointing>
                 {message}
               </Label>
@@ -288,7 +292,7 @@ class WysiwygWidget extends Component {
             <Grid.Column width="4">
               <div className="wrapper">
                 <label htmlFor={`field-${id}`}>
-                  {onEdit && (
+                  {isDraggable && (
                     <i
                       aria-hidden="true"
                       className="grey bars icon drag handle"
@@ -299,7 +303,7 @@ class WysiwygWidget extends Component {
               </div>
             </Grid.Column>
             <Grid.Column width="8">
-              {onEdit && (
+              {onEdit && !isDissabled && (
                 <div className="toolbar">
                   <button
                     className="item ui noborder button"

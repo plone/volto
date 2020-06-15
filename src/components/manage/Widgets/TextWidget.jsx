@@ -201,6 +201,7 @@ class TextWidget extends Component {
                 </div>
               )}
               <Input
+                style={{ background: 'transparent' }}
                 id={`field-${id}`}
                 name={id}
                 value={value || ''}
