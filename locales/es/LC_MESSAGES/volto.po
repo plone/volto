@@ -157,6 +157,7 @@ msgstr ""
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/DatabaseInformation
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Diff/Diff
@@ -201,6 +202,10 @@ msgstr "Navegue el contenido, arrastre un imagen o ingrese una dirección URL"
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr "Por defecto, los permisos desde el contenedor de este elemento son heredados. Si usted deshabilita esta opción, solamente los permisos compartidos definidos explícitamente serán validos. En la vista general, el símbolo {inherited} indica un valor heredado. Similarmente, el símbolo {global} indica un rol global, el cual es administrado por el administrador del sitio."
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Cache Name"
+msgstr ""
 
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsToolbar
@@ -377,6 +382,22 @@ msgstr "Actual contraseña"
 #: components/manage/Contents/ContentsItem
 msgid "Cut"
 msgstr "Cortar"
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Database Information"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Database Location"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Database Size"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Database main"
+msgstr ""
 
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Widgets/DatetimeWidget
@@ -1020,6 +1041,10 @@ msgstr "Sin flujo de trabajo"
 msgid "None"
 msgstr "Ninguno"
 
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Number of active objects"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Object Size"
 msgstr ""
@@ -1465,6 +1490,14 @@ msgstr "Categoría a agregar"
 msgid "Tags to remove"
 msgstr "Categoría a remover"
 
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Target memory size per cache in bytes"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Target number of objects in memory per cache"
+msgstr ""
+
 #: components/manage/Blocks/Listing/TemplateWidget
 msgid "Template"
 msgstr ""
@@ -1479,6 +1512,10 @@ msgstr "Texto"
 #: components/theme/Unauthorized/Unauthorized
 msgid "Thank you."
 msgstr "Gracias."
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "The Database Manager allow you to view database status information"
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 msgid "The URL for your external home page, if you have one."
@@ -1545,8 +1582,24 @@ msgstr ""
 msgid "Title"
 msgstr "Título"
 
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Total active and non-active objects"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Total comments"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Total number of objects in each cache"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Total number of objects in memory from all caches"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Total number of objects in the database"
 msgstr ""
 
 #: components/manage/Toolbar/Types
