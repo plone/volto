@@ -30,7 +30,8 @@ import { defineMessages, injectIntl } from 'react-intl';
 import { v4 as uuid } from 'uuid';
 import { Portal } from 'react-portal';
 
-import { EditBlock, Icon, Field } from '@plone/volto/components';
+import { toast } from 'react-toastify';
+import { EditBlock, Icon, Field, Toast } from '@plone/volto/components';
 import dragSVG from '@plone/volto/icons/drag.svg';
 
 import {
@@ -427,6 +428,8 @@ class Form extends Component {
     if (keys(errors).length > 0) {
       this.setState({
         errors,
+      }, () => {
+        Object.keys(errors).forEach(err => toast.error(<Toast error title={this.props.intl.formatMessage(messages.error)} content={errors[err]} />));
       });
     } else {
       // Get only the values that have been modified (Edit forms), send all in case that

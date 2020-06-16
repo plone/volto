@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Added toast notifications for form errors @nzambello
+
 ### Bugfix
 
 ### Internal
