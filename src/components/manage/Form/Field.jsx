@@ -49,6 +49,19 @@ const getWidgetByVocabulary = (vocabulary) =>
     : null;
 
 /**
+ * Get widget by field's `vocabulary` attribute
+ * @method getWidgetByVocabularyChoices
+ * @param {string} vocabulary Widget
+ * @returns {string} Widget component.
+ */
+const getWidgetByVocabularyChoices = (vocabulary) =>
+  vocabulary && vocabulary['@id']
+    ? widgets.vocabularyChoices[
+        vocabulary['@id'].replace(`${settings.apiPath}/@vocabularies/`, '')
+      ]
+    : null;
+
+/**
  * Get widget by field's hints `vocabulary` attribute in widgetOptions
  * @method getWidgetByVocabularyFromHint
  * @param {string} props Widget props
@@ -78,8 +91,10 @@ const getWidgetByChoices = (props) => {
   if (props.vocabulary) {
     // If vocabulary exists, then it means it's a choice field in disguise with
     // no widget specified that probably contains a string then we force it
-    // to be a select widget instead
-    return widgets.choices;
+    // to be a select widget instead (widgets.choices)
+    // If is defined a widget for a vocaboulary, use it
+    let widget = getWidgetByVocabularyChoices(props.vocabulary);
+    return widget || widgets.choices;
   }
 
   return null;

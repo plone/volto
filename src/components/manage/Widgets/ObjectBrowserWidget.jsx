@@ -39,7 +39,7 @@ class ObjectBrowserWidget extends Component {
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     description: PropTypes.string,
-    mode: PropTypes.string, //link,image,multiple
+    mode: PropTypes.string, //link,image,multiple,single
     required: PropTypes.bool,
     error: PropTypes.arrayOf(PropTypes.string),
     value: PropTypes.oneOfType([
@@ -116,7 +116,6 @@ class ObjectBrowserWidget extends Component {
 
   onChange = (item) => {
     let value = this.props.mode === 'multiple' ? [...this.props.value] : [];
-
     let exists = false;
     let index = -1;
     value.forEach((_item, _index) => {
@@ -125,6 +124,7 @@ class ObjectBrowserWidget extends Component {
         index = _index;
       }
     });
+
     //find(value, {
     //   '@id': flattenToAppURL(item['@id']),
     // });
@@ -189,8 +189,6 @@ class ObjectBrowserWidget extends Component {
             e.preventDefault();
             onChange(id, []);
           };
-
-    console.log('props', this.props);
 
     return (
       <Form.Field

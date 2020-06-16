@@ -26,7 +26,7 @@ const withObjectBrowser = (WrappedComponent) =>
      * openObjectBrowser
      * @function openObjectBrowser
      * @param {Object} object ObjectBrowser configuration.
-     * @param {string} object.mode Quick mode, defaults to `image`. Values: link, image, multiple
+     * @param {string} object.mode Quick mode, defaults to `image`. Values: link, image, multiple, single
      * @param {string} object.dataName Name of the block data property to write the selected item.
      * @param {string} object.onSelectItem Function that will be called on item selection.
      *

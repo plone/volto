@@ -15,6 +15,7 @@ import TextWidget from '@plone/volto/components/manage/Widgets/TextWidget';
 import TokenWidget from '@plone/volto/components/manage/Widgets/TokenWidget';
 import WysiwygWidget from '@plone/volto/components/manage/Widgets/WysiwygWidget';
 import ObjectBrowserWidget from '@plone/volto/components/manage/Widgets/ObjectBrowserWidget';
+import { ObjectBrowserWidgetMode } from '@plone/volto/components/manage/Widgets/ObjectBrowserWidget';
 
 export const DatetimeWidget = loadable(() =>
   import('@plone/volto/components/manage/Widgets/DatetimeWidget'),
@@ -38,6 +39,9 @@ export const widgetMapping = {
     'plone.app.vocabularies.Catalog': ObjectBrowserWidget, //ReferenceWidget,
   },
   choices: SelectWidget,
+  vocabularyChoices: {
+    'plone.app.vocabularies.Catalog': ObjectBrowserWidgetMode('single'),
+  },
   type: {
     boolean: CheckboxWidget,
     array: ArrayWidget,

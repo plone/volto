@@ -81,6 +81,7 @@ class ObjectBrowserBody extends Component {
    */
   constructor(props) {
     super(props);
+    console.log(props);
     this.state = {
       currentFolder:
         this.props.mode === 'multiple'
@@ -282,6 +283,7 @@ class ObjectBrowserBody extends Component {
         href: url,
       });
     }
+
     updateState(mode);
   };
 
