@@ -195,7 +195,7 @@ msgstr "Di norma, i permessi di questo elemento vengono ereditati dal contenitor
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Cache Name"
-msgstr ""
+msgstr "Nome della cache"
 
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsToolbar
@@ -375,19 +375,19 @@ msgstr "Taglia"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database Information"
-msgstr ""
+msgstr "Informazioni sul database"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database Location"
-msgstr ""
+msgstr "Posizione del database"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database Size"
-msgstr ""
+msgstr "Dimensione del database"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database main"
-msgstr ""
+msgstr "Database principale"
 
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Widgets/DatetimeWidget
@@ -1039,7 +1039,7 @@ msgstr "Nessuno"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Number of active objects"
-msgstr ""
+msgstr "Numero degli oggetti attivi"
 
 #: components/manage/Contents/Contents
 msgid "Object Size"
@@ -1513,7 +1513,7 @@ msgstr "Grazie."
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "The Database Manager allow you to view database status information"
-msgstr ""
+msgstr "Il Database Manager ti permette di vedere le informazioni di stato del database"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "The URL for your external home page, if you have one."
@@ -1582,7 +1582,7 @@ msgstr "Titolo"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total active and non-active objects"
-msgstr ""
+msgstr "Totale degli oggetti attivi e non attivi"
 
 #: components/manage/Contents/Contents
 msgid "Total comments"
@@ -1590,15 +1590,15 @@ msgstr "Totale dei commenti"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total number of objects in each cache"
-msgstr ""
+msgstr "Numero totale degli oggetti in ogni cache"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total number of objects in memory from all caches"
-msgstr ""
+msgstr "Numero totale degli oggetti di tutte le cache"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total number of objects in the database"
-msgstr ""
+msgstr "Numero totale di oggetti nel database"
 
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
