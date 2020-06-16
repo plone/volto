@@ -8,6 +8,7 @@ import { flatten, keys, pickBy, isArray, map, mapKeys, merge } from 'lodash';
 import {
   GET_SCHEMA,
   POST_SCHEMA,
+  PUT_SCHEMA,
   UPDATE_SCHEMA,
  } from '@plone/volto/constants/ActionTypes';
 
@@ -26,6 +27,11 @@ const initialState = {
     loading: false,
     error: null,
   },
+  put: {
+    loaded: false,
+    loading: false,
+    error: null,
+  }
 };
 
 /**
@@ -55,6 +61,7 @@ export default function schema(state = initialState, action = {}) {
         loaded: false,
       };
     case `${POST_SCHEMA}_PENDING`:
+    case `${PUT_SCHEMA}_PENDING`:
     case `${UPDATE_SCHEMA}_PENDING`:
       return {
         ...state,
@@ -99,6 +106,7 @@ export default function schema(state = initialState, action = {}) {
         },
       };
     case `${POST_SCHEMA}_SUCCESS`:
+    case `${PUT_SCHEMA}_SUCCESS`:
     case `${UPDATE_SCHEMA}_SUCCESS`:
       return {
         ...state,
@@ -117,6 +125,7 @@ export default function schema(state = initialState, action = {}) {
         schema: null,
       };
     case `${POST_SCHEMA}_FAIL`:
+    case `${PUT_SCHEMA}_FAIL`:
     case `${UPDATE_SCHEMA}_FAIL`:
       return {
         ...state,

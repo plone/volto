@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import { getParentUrl, hasBlocksData } from '@plone/volto/helpers';
+import { getParentUrl, hasBlocksData, getBlocksFieldname } from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
 import { Button } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
@@ -17,7 +17,7 @@ import { nth, join } from 'lodash';
 import { Form, Icon, Toolbar, Sidebar, Toast } from '@plone/volto/components';
 import {
   getSchema,
-  postSchema,
+  putSchema,
   updateSchema,
   getControlpanel,
   updateControlpanel } from '@plone/volto/actions';
@@ -64,7 +64,7 @@ class ContentTypeLayout extends Component {
     updateControlpanel: PropTypes.func.isRequired,
     getControlpanel: PropTypes.func.isRequired,
     getSchema: PropTypes.func.isRequired,
-    postSchema: PropTypes.func.isRequired,
+    putSchema: PropTypes.func.isRequired,
     updateSchema: PropTypes.func.isRequired,
     id: PropTypes.string.isRequired,
     parent: PropTypes.string.isRequired,
@@ -107,10 +107,12 @@ class ContentTypeLayout extends Component {
     this.state = {
       visual: false,
       content: null,
+      readOnly: false,
     };
     this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.onEnableBlocks = this.onEnableBlocks.bind(this);
+    this.onDisableBlocksBehavior = this.onDisableBlocksBehavior.bind(this);
     this.form = React.createRef();
   }
 
@@ -150,11 +152,22 @@ class ContentTypeLayout extends Component {
         this.setState({
           visual: true,
         });
+
+        const blocksFieldName = getBlocksFieldname(properties);
+        const blocksBehavior = properties[blocksFieldName]?.behavior || "";
+        this.setState({
+          readOnly: !blocksBehavior.includes("generated")
+        });
+      } else {
+        this.setState({
+          visual: false,
+          readOnly: false,
+        });
       }
     }
 
     // Blocks enabled
-    if (this.props.schemaRequest.post.loading && nextProps.schemaRequest.post.loaded) {
+    if (this.props.schemaRequest.put.loading && nextProps.schemaRequest.put.loaded) {
       this.props.getSchema(this.props.id);
     }
 
@@ -167,6 +180,11 @@ class ContentTypeLayout extends Component {
           content={this.props.intl.formatMessage(messages.changesSaved)}
         />,
       );
+    }
+
+    // Blocks behavior disabled
+    if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
+      this.props.getSchema(this.props.id);
     }
   }
 
@@ -196,24 +214,69 @@ class ContentTypeLayout extends Component {
    * @returns {undefined}
    */
   onEnableBlocks() {
-    this.props.postSchema(this.props.id, {
-      "@type": "fieldset",
-      "title": "Layout"
-    });
-    this.props.postSchema(this.props.id, {
-      "@type": "JSONField",
-      "title": "Blocks Layout",
-      "fieldset_id": 1
-    });
-    this.props.postSchema(this.props.id, {
-      "@type": "JSONField",
-      "title": "Blocks",
-      "fieldset_id": 1
-    });
-    this.props.updateSchema(this.props.id, {
-      blocks: {},
-      blocks_layout: {"items": []}
-    });
+    let schema = {
+      ...this.props.schema,
+      fieldsets: [
+        ...this.props.schema.fieldsets,
+        {
+          id: "layout",
+          title: "Layout",
+          fields: ["blocks", "blocks_layout"],
+        }
+      ],
+      properties: {
+        ...this.props.schema.properties,
+        blocks: {
+          default: {},
+          title: "Blocks",
+          type: "dict",
+          widget: "json",
+          factory: "JSONField"
+        },
+        blocks_layout: {
+          default: {
+            items: []
+          },
+          title: "Blocks Layout",
+          type: "dict",
+          widget: "json",
+          factory: "JSONField"
+        },
+      }
+    }
+    this.props.putSchema(this.props.id, schema);
+    // debugger;
+    // this.props.postSchema(this.props.id, {
+    //   "@type": "fieldset",
+    //   "title": "Layout"
+    // },
+
+    // );
+    // this.props.postSchema(this.props.id, {
+    //   "@type": "JSONField",
+    //   "title": "Blocks Layout",
+    //   "fieldset_id": 1
+    // });
+    // this.props.postSchema(this.props.id, {
+    //   "@type": "JSONField",
+    //   "title": "Blocks",
+    //   "fieldset_id": 1
+    // });
+    // this.props.updateSchema(this.props.id, {
+    //   blocks: {},
+    //   blocks_layout: {"items": []}
+    // });
+  }
+
+  /**
+   * Disable Blocks behavior handler
+   * @method onDisableBlocksBehavior
+   * @returns {undefined}
+   */
+  onDisableBlocksBehavior() {
+    this.props.updateControlpanel(this.props.controlpanel['@id'], {
+      "volto.blocks": false
+    })
   }
 
   /**
@@ -269,6 +332,50 @@ class ContentTypeLayout extends Component {
         />
       </Portal>
       </>
+      )
+    }
+
+    if (this.state.readOnly) {
+      return (
+        <>
+          <div id="page-controlpanel-layout" className="ui container">
+            <p>
+              <FormattedMessage
+                  id="Can not edit Layout for {type} content-type as the Blocks behavior is enabled and read-only"
+                  defaultMessage="Can not edit Layout for {type} content-type as the Blocks behavior is enabled and read-only"
+                  values = {{
+                    type: this.props.id
+                  }}
+                />
+            </p>
+            <p>
+              <button onClick={this.onDisableBlocksBehavior}>
+                <FormattedMessage
+                  id="Enable editable Blocks"
+                  defaultMessage="Enable editable Blocks"
+                />
+              </button>
+            </p>
+          </div>
+          <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
+          <Toolbar
+            pathname={this.props.pathname}
+            hideDefaultViewButtons
+            inner={
+              <>
+                <Link className="item" to="#" onClick={() => this.onCancel()}>
+                  <Icon
+                    name={backSVG}
+                    size="30px"
+                    className="contents circled"
+                    title={this.props.intl.formatMessage(messages.back)}
+                  />
+                </Link>
+              </>
+            }
+          />
+        </Portal>
+        </>
       )
     }
 
@@ -345,7 +452,7 @@ export default compose(
       id: nth(props.location.pathname.split('/'), -2),
       parent: nth(props.location.pathname.split('/'), -3),
     }),
-    { getSchema, postSchema, updateSchema,
+    { getSchema, putSchema, updateSchema,
       getControlpanel, updateControlpanel
     },
   ),

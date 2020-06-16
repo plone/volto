@@ -65,6 +65,7 @@ export { listRoles } from '@plone/volto/actions/roles/roles';
 export {
   getSchema,
   postSchema,
+  putSchema,
   updateSchema,
 } from '@plone/volto/actions/schema/schema';
 export {

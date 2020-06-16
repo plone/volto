@@ -3,7 +3,7 @@
  * @module actions/schema/schema
  */
 
-import { GET_SCHEMA, POST_SCHEMA, UPDATE_SCHEMA } from '@plone/volto/constants/ActionTypes';
+import { GET_SCHEMA, POST_SCHEMA, PUT_SCHEMA, UPDATE_SCHEMA } from '@plone/volto/constants/ActionTypes';
 
 /**
  * Get schema function.
@@ -33,6 +33,24 @@ export function postSchema(type, data) {
     type: POST_SCHEMA,
     request: {
       op: 'post',
+      path: `/@types/${type}`,
+      data,
+    },
+  };
+}
+
+/**
+ * Put schema function.
+ * @function putSchema
+ * @param {string} type Content type.
+ * @param {Object} data Schema data.
+ * @returns {Object} Put schema action.
+ */
+export function putSchema(type, data) {
+  return {
+    type: PUT_SCHEMA,
+    request: {
+      op: 'put',
       path: `/@types/${type}`,
       data,
     },
