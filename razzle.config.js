@@ -4,6 +4,7 @@
 /* eslint no-console: 0 */
 /* eslint no-param-reassign: 0 */
 /* eslint no-unused-vars: 0 */
+
 const path = require('path');
 const autoprefixer = require('autoprefixer');
 const makeLoaderFinder = require('razzle-dev-utils/makeLoaderFinder');
@@ -13,9 +14,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const LoadablePlugin = require('@loadable/webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const fs = require('fs');
-const { map } = require('lodash');
+const { map, has } = require('lodash');
 const glob = require('glob').sync;
 const RootResolverPlugin = require('./webpack-root-resolver');
+const createAddonsLoader = require('./create-addons-loader');
 
 const fileLoaderFinder = makeLoaderFinder('file-loader');
 const eslintLoaderFinder = makeLoaderFinder('eslint-loader');
@@ -214,7 +216,7 @@ module.exports = {
     if (fs.existsSync(`${projectRootPath}/jsconfig.json`)) {
       const jsConfig = require(`${projectRootPath}/jsconfig`).compilerOptions;
       const pathsConfig = jsConfig.paths;
-      Object.keys(pathsConfig).forEach(packageName => {
+      Object.keys(pathsConfig).forEach((packageName) => {
         const packagePath = `${projectRootPath}/${jsConfig.baseUrl}/${pathsConfig[packageName][0]}`;
         jsconfigPaths[packageName] = packagePath;
         if (packageName === '@plone/volto') {
@@ -227,25 +229,29 @@ module.exports = {
     const addonsAliases = {};
     if (packageJson.addons) {
       const addons = packageJson.addons;
-      addons.forEach(addon => {
-        if (!(addon in jsconfigPaths)) {
-          const addonPath = `${projectRootPath}/node_modules/${addon}/src`;
-          addonsAliases[addon] = addonPath;
+      addons.forEach((addon) => {
+        const addonName = addon.split(':')[0];
+        if (!(addonName in jsconfigPaths)) {
+          const addonPath = `${projectRootPath}/node_modules/${addonName}/src`;
+          addonsAliases[addonName] = addonPath;
         }
       });
     }
+
+    // console.debug(`Generated addon loader code at ${io.name}`);
+    const addonsLoaderPath = createAddonsLoader(packageJson.addons || []);
 
     const customizations = {};
     let { customizationPaths } = packageJson;
     if (!customizationPaths) {
       customizationPaths = ['src/customizations/'];
     }
-    customizationPaths.forEach(customizationPath => {
+    customizationPaths.forEach((customizationPath) => {
       map(
         glob(
           `${customizationPath}**/*.*(svg|png|jpg|jpeg|gif|ico|less|js|jsx)`,
         ),
-        filename => {
+        (filename) => {
           const targetPath = filename.replace(
             customizationPath,
             `${voltoPath}/src/`,
@@ -271,6 +277,7 @@ module.exports = {
       ...customizations,
       ...config.resolve.alias,
       '../../theme.config$': `${projectRootPath}/theme/theme.config`,
+      'load-volto-addons': addonsLoaderPath,
       ...addonsAliases,
       ...jsconfigPaths,
       '@plone/volto': `${voltoPath}/src`,
@@ -286,7 +293,7 @@ module.exports = {
     };
 
     const babelRuleIndex = config.module.rules.findIndex(
-      rule =>
+      (rule) =>
         rule.use &&
         rule.use[0].loader &&
         rule.use[0].loader.includes('babel-loader'),
@@ -297,7 +304,7 @@ module.exports = {
     }
     // Add babel support external (ie. node_modules npm published packages)
     if (packageJson.addons) {
-      packageJson.addons.forEach(addon =>
+      packageJson.addons.forEach((addon) =>
         include.push(
           fs.realpathSync(`${projectRootPath}/node_modules/${addon}/src`),
         ),
@@ -313,7 +320,7 @@ module.exports = {
 
     let addonsAsExternals = [];
     if (packageJson.addons) {
-      addonsAsExternals = packageJson.addons.map(addon => new RegExp(addon));
+      addonsAsExternals = packageJson.addons.map((addon) => new RegExp(addon));
     }
 
     config.externals =

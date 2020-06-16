@@ -97,7 +97,8 @@
       "@plone/volto/(.*)$": "<rootDir>/src/$1",
       "~/config": "<rootDir>/src/config",
       "~/../locales/${lang}.json": "<rootDir>/locales/en.json",
-      "(.*)/locales/(.*)": "<rootDir>/locales/$2"
+      "(.*)/locales/(.*)": "<rootDir>/locales/$2",
+      "load-volto-addons": "<rootDir>/dummy-addons-loader.js"
     },
     "coverageThreshold": {
       "global": {
