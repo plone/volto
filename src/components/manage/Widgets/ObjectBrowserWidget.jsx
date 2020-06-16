@@ -190,7 +190,6 @@ class ObjectBrowserWidget extends Component {
             onChange(id, []);
           };
 
-    console.log('props', this.props);
 
     return (
       <Form.Field
