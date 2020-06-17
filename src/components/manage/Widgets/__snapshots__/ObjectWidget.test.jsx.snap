@@ -1,0 +1,324 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders an object widget component with clicks on each tab in root level to load all of them 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="ui attached tabular menu"
+    >
+      <a
+        class="active item"
+      >
+        Internal
+      </a>
+      <a
+        class="item"
+      >
+        External
+      </a>
+      <a
+        class="item"
+      >
+        Email
+      </a>
+    </div>
+    <div
+      class="ui bottom attached segment active tab"
+    >
+      <div
+        class="inline field text"
+        id="field-internal_link"
+      >
+        <div
+          class="ui grid"
+        >
+          <div
+            class="stretched row"
+          >
+            <div
+              class="four wide column"
+            >
+              <div
+                class="wrapper"
+              >
+                <label
+                  for="field-internal_link"
+                >
+                  Internal link
+                </label>
+              </div>
+            </div>
+            <div
+              class="eight wide column"
+            >
+              <div
+                class="ui input"
+              >
+                <input
+                  id="field-internal_link"
+                  name="internal_link"
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`renders an object widget component with clicks on each tab in root level to load all of them 2`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="ui attached tabular menu"
+    >
+      <a
+        class="item"
+      >
+        Internal
+      </a>
+      <a
+        class="active item"
+      >
+        External
+      </a>
+      <a
+        class="item"
+      >
+        Email
+      </a>
+    </div>
+    <div
+      class="ui bottom attached segment active tab"
+    >
+      <div
+        class="inline field text"
+        id="field-external_link"
+      >
+        <div
+          class="ui grid"
+        >
+          <div
+            class="stretched row"
+          >
+            <div
+              class="four wide column"
+            >
+              <div
+                class="wrapper"
+              >
+                <label
+                  for="field-external_link"
+                >
+                  External URL (can be relative within this site or absolute if it starts with http:// or https://)
+                </label>
+              </div>
+            </div>
+            <div
+              class="eight wide column"
+            >
+              <div
+                class="ui input"
+              >
+                <input
+                  id="field-external_link"
+                  name="external_link"
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`renders an object widget component with clicks on each tab in root level to load all of them 3`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="ui attached tabular menu"
+    >
+      <a
+        class="item"
+      >
+        Internal
+      </a>
+      <a
+        class="item"
+      >
+        External
+      </a>
+      <a
+        class="active item"
+      >
+        Email
+      </a>
+    </div>
+    <div
+      class="ui bottom attached segment active tab"
+    >
+      <div
+        class="inline field text"
+        id="field-email_address"
+      >
+        <div
+          class="ui grid"
+        >
+          <div
+            class="stretched row"
+          >
+            <div
+              class="four wide column"
+            >
+              <div
+                class="wrapper"
+              >
+                <label
+                  for="field-email_address"
+                >
+                  Email address
+                </label>
+              </div>
+            </div>
+            <div
+              class="eight wide column"
+            >
+              <div
+                class="ui input"
+              >
+                <input
+                  id="field-email_address"
+                  name="email_address"
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="inline field text"
+        id="field-email_subject"
+      >
+        <div
+          class="ui grid"
+        >
+          <div
+            class="stretched row"
+          >
+            <div
+              class="four wide column"
+            >
+              <div
+                class="wrapper"
+              >
+                <label
+                  for="field-email_subject"
+                >
+                  Email subject (optional)
+                </label>
+              </div>
+            </div>
+            <div
+              class="eight wide column"
+            >
+              <div
+                class="ui input"
+              >
+                <input
+                  id="field-email_subject"
+                  name="email_subject"
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`renders an object widget component with invalid field in value 1`] = `
+<div>
+  <div
+    className="ui attached tabular menu"
+  >
+    <a
+      className="active item"
+      onClick={[Function]}
+    >
+      Internal
+    </a>
+    <a
+      className="item"
+      onClick={[Function]}
+    >
+      External
+    </a>
+    <a
+      className="item"
+      onClick={[Function]}
+    >
+      Email
+    </a>
+  </div>
+  <div
+    className="ui bottom attached segment active tab"
+  >
+    <div
+      className="inline field text"
+      id="field-internal_link"
+    >
+      <div
+        className="ui grid"
+      >
+        <div
+          className="stretched row"
+        >
+          <div
+            className="four wide column"
+          >
+            <div
+              className="wrapper"
+            >
+              <label
+                htmlFor="field-internal_link"
+              >
+                Internal link
+              </label>
+            </div>
+          </div>
+          <div
+            className="eight wide column"
+          >
+            <div
+              className="ui input"
+            >
+              <input
+                disabled={false}
+                id="field-internal_link"
+                name="internal_link"
+                onChange={[Function]}
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

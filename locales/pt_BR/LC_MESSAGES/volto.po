@@ -19,6 +19,10 @@ msgstr ""
 "Preferred-Encodings: utf-8\n"
 "Domain: volto\n"
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "A collection of {count} items"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "Accessibility"
 msgstr "Acessibilidade"
@@ -108,6 +112,10 @@ msgstr "Adicionar novo usuário"
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add to Groups"
 msgstr "Adicionar à Grupos"
+
+#: components/manage/Widgets/ObjectListWidget
+msgid "Add {schemaTitle}"
+msgstr ""
 
 #: components/manage/Add/Add
 msgid "Add {type}"
@@ -216,6 +224,7 @@ msgstr ""
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: components/manage/Widgets/ObjectListWidget
 #: components/theme/Login/Login
 msgid "Cancel"
 msgstr "Cancelar"
@@ -433,6 +442,7 @@ msgstr "Predefinido"
 #: components/manage/Controlpanels/UsersControlpanelUser
 #: components/manage/Delete/Delete
 #: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/ObjectListWidget
 #: components/manage/Widgets/TextareaWidget
 #: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -536,6 +546,7 @@ msgstr "Os endereços de e-mail não coincidem."
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/ObjectListWidget
 #: components/theme/Comments/Comments
 msgid "Edit"
 msgstr "Editar"
@@ -1264,6 +1275,7 @@ msgstr "Papéis"
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: components/manage/Widgets/ObjectListWidget
 msgid "Save"
 msgstr "Guardar"
 

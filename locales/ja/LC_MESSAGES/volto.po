@@ -18,6 +18,10 @@ msgstr ""
 "Preferred-Encodings: utf-8\n"
 "X-Is-Fallback-For: ja-jp\n"
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "A collection of {count} items"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "Accessibility"
 msgstr "アクセシビリティ"
@@ -107,6 +111,10 @@ msgstr "新しいユーザを追加"
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add to Groups"
 msgstr "グループに追加"
+
+#: components/manage/Widgets/ObjectListWidget
+msgid "Add {schemaTitle}"
+msgstr ""
 
 #: components/manage/Add/Add
 msgid "Add {type}"
@@ -215,6 +223,7 @@ msgstr ""
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: components/manage/Widgets/ObjectListWidget
 #: components/theme/Login/Login
 msgid "Cancel"
 msgstr "キャンセル"
@@ -432,6 +441,7 @@ msgstr "基本"
 #: components/manage/Controlpanels/UsersControlpanelUser
 #: components/manage/Delete/Delete
 #: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/ObjectListWidget
 #: components/manage/Widgets/TextareaWidget
 #: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -535,6 +545,7 @@ msgstr "E-mail アドレスが見つかりません。"
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/ObjectListWidget
 #: components/theme/Comments/Comments
 msgid "Edit"
 msgstr "編集"
@@ -1263,6 +1274,7 @@ msgstr "ロール"
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: components/manage/Widgets/ObjectListWidget
 msgid "Save"
 msgstr "保存"
 

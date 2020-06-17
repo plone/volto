@@ -6,6 +6,8 @@
 
 ### Feature
 
+- New `object` and `object_list` widgets (classes `ObjectWidget`, `ObjectListWidget`) @silviubogan
+
 ### Bugfix
 
 ### Internal
