@@ -1,4 +1,5 @@
 const fs = require('fs');
+const transform = require('@babel/core').transform;
 
 const getLoader = require('../create-addons-loader');
 
@@ -97,9 +98,16 @@ describe('create-addons-loader default name generation', () => {
     expect(rand.length).toBe(10);
     expect(new RegExp(/[abcdefghjk]+/).exec(rand)[0].length > 0).toBe(true);
   });
+  test('passing a tilda relative path with addon strips tilda', () => {
+    const name = getName('~/addons/volto-addon1');
+    expect(name).toBe('addonsvoltoAddon1');
+  });
+  test('passing a tilda relative path strips tilda', () => {
+    const name = getName('~/../');
+    expect(name.length).toBe(10);
+    expect(new RegExp(/[abcdefghjk]+/).exec(name)[0].length > 0).toBe(true);
+  });
 });
-
-const transform = require('@babel/core').transform;
 
 function transpile(fpath) {
   const code = fs.readFileSync(fpath, 'utf-8');
