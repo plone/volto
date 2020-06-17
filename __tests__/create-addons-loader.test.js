@@ -94,7 +94,6 @@ describe('create-addons-loader default name generation', () => {
 
   test('passing a simple relative path returns random string', () => {
     const rand = getName('../../');
-    // expect(rand).toBe('a');
     expect(rand.length).toBe(10);
     expect(new RegExp(/[abcdefghjk]+/).exec(rand)[0].length > 0).toBe(true);
   });
@@ -117,9 +116,9 @@ describe('create-addons-loader apply configuration', () => {
     const loaderPath = getLoader([addon1]);
     transpile(loaderPath);
 
-    const loader = require(loaderPath);
+    const loader = require(loaderPath).default;
     const defaultConfig = {};
-    const config = loader.default(defaultConfig);
+    const config = loader(defaultConfig);
     expect(config).toStrictEqual({
       settings: {
         nonContentRoutes: [],
