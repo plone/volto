@@ -1,5 +1,7 @@
 const fs = require('fs');
+const path = require('path');
 const tmp = require('tmp');
+const cryptoRandomString = require('crypto-random-string');
 
 const titleCase = (w) => w.slice(0, 1).toUpperCase() + w.slice(1, w.length);
 
@@ -7,6 +9,15 @@ const titleCase = (w) => w.slice(0, 1).toUpperCase() + w.slice(1, w.length);
  * Transforms a package name to javascript variable name
  */
 function nameFromPackage(name) {
+  if (
+    name.startsWith('~') ||
+    name.startsWith('.') ||
+    name.startsWith(path.sep)
+  ) {
+    name =
+      name.replace('~', '').split('.').join('').split(path.sep).join('') ||
+      cryptoRandomString({ length: 10, characters: 'abcdefghijk' });
+  }
   return name
     .split('-')
     .map((w, i) => (i > 0 ? titleCase(w) : w))
