@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Bugfix Edit page through Contents list #1594 @terapyon
+
 ### Internal
 
 ## 6.2.0 (2020-06-14)

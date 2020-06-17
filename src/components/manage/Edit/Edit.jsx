@@ -323,6 +323,11 @@ export default compose(
         await dispatch(listActions(getBaseUrl(location.pathname)));
       },
     },
+    {
+      key: 'content',
+      promise: async ({ location, store: { dispatch } }) =>
+        await dispatch(getContent(getBaseUrl(location.pathname))),
+    },
   ]),
   connect(
     (state, props) => ({
