@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Localized content upload modal last modified date @nzambello
+
 ### Internal
 
 ## 6.2.0 (2020-06-14)
