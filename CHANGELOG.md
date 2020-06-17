@@ -1,12 +1,23 @@
 # Change Log
 
-## 6.0.1 (unreleased)
+## 6.1.1 (unreleased)
 
 ### Breaking
 
 ### Feature
 
 - Addons configuration loading @tiberiuichim @sneridagh
+
+### Bugfix
+
+### Internal
+
+- Add yarn-deduplicate. @timo
+
+## 6.1.0 (2020-06-12)
+
+### Feature
+
 - Include ``config.addonRoutes`` in router configuration. This allows addons to
   override route children defined for the ``App`` component.
 - Support loading additional reducers from the ``config.addonReducers`` key,
@@ -24,8 +35,6 @@
 - Do not store the server information of the image block in the block @sneridagh
 - expose `blocks` and `blocks_layout` only editing content types @nileshgulia1
 - Small fix for `TextAreaWidget` and max_lenght @sneridagh
-
-### Internal
 
 ## 6.0.0 (2020-05-18)
 
