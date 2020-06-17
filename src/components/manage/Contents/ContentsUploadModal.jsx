@@ -246,10 +246,8 @@ class ContentsUploadModal extends Component {
                         {filesize(file.size, { round: 0 })}
                       </Table.Cell>
                       <Table.Cell>
-                        {file.type.split('/')[0] === 'image' ? (
+                        {file.type.split('/')[0] === 'image' && (
                           <Image src={file.preview} height={60} />
-                        ) : (
-                          <Image src="//:0" height={60} />
                         )}
                       </Table.Cell>
                       <Table.Cell>
