@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix overflow in folder contents with long titles @nzambello
+
 ### Internal
 
 ## 6.2.0 (2020-06-14)
