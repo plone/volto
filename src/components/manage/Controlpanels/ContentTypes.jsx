@@ -22,7 +22,6 @@ import { toast } from 'react-toastify';
 import { compose } from 'redux';
 import { Button, Confirm, Container, Dropdown, Table } from 'semantic-ui-react';
 
-
 const messages = defineMessages({
   add: {
     id: 'Add',
@@ -71,6 +70,10 @@ const messages = defineMessages({
   typeDeleted: {
     id: 'Content type deleted',
     defaultMessage: 'Content type deleted',
+  },
+  Schema: {
+    id: 'Schema',
+    defaultMessage: 'Schema',
   },
 });
 
@@ -435,8 +438,8 @@ class ContentTypes extends Component {
                             >
                               <Icon name={folderSVG} size="15px" />
                               <FormattedMessage
-                                id="Fields"
-                                defaultMessage="Fields"
+                                id="Schema"
+                                defaultMessage="Schema"
                               />
                             </Dropdown.Item>
                           </Dropdown.Menu>
