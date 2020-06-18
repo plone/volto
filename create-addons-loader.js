@@ -44,8 +44,7 @@ Instead, change the "addons" setting in your package.json file. */
     }
     const line = `import ${defaultImport}${
       extras ? `, { ${extras.join(', ')} }` : ''
-    } from '${pkgName}';\n
-    `;
+    } from '${pkgName}';\n`;
     buf += line;
     configsToLoad = [...configsToLoad, defaultImport, ...(extras || [])];
   });
