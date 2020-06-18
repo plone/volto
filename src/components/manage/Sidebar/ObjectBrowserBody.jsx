@@ -272,7 +272,7 @@ class ObjectBrowserBody extends Component {
     } else if (mode === 'image') {
       onChangeBlock(block, {
         ...data,
-        url: `${settings.apiPath}${url}`,
+        url,
         alt: title,
       });
     } else if (mode === 'link') {
