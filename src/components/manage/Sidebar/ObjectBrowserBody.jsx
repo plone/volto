@@ -292,6 +292,12 @@ class ObjectBrowserBody extends Component {
     });
   };
 
+  isSelectable = (item) => {
+    return this.props.selectableTypes.length > 0
+      ? this.props.selectableTypes.indexOf(item['@type']) >= 0
+      : true;
+  };
+
   handleClickOnItem = (item) => {
     if (this.props.mode === 'image') {
       if (item.is_folderish) {
@@ -301,13 +307,10 @@ class ObjectBrowserBody extends Component {
         this.onSelectItem(item);
       }
     } else {
-      if (
-        this.props.selectableTypes.length > 0 &&
-        this.props.selectableTypes.indexOf(item['@type']) < 0
-      ) {
-        this.navigateTo(item['@id']);
-      } else {
+      if (this.isSelectable(item)) {
         this.onSelectItem(item);
+      } else {
+        this.navigateTo(item['@id']);
       }
     }
   };
@@ -431,6 +434,7 @@ class ObjectBrowserBody extends Component {
             handleDoubleClickOnItem={this.handleDoubleClickOnItem}
             mode={this.props.mode}
             navigateTo={this.navigateTo}
+            isSelectable={this.isSelectable}
           />
         </Segment.Group>
       </aside>,
