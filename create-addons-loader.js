@@ -45,7 +45,6 @@ Instead, change the "addons" setting in your package.json file. */
     const line = `import ${defaultImport}${
       extras ? `, { ${extras.join(', ')} }` : ''
     } from '${pkgName}';\n
-    console.log('${defaultImport}', ${defaultImport});
     `;
     buf += line;
     configsToLoad = [...configsToLoad, defaultImport, ...(extras || [])];
