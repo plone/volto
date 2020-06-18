@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-06-12T14:07:19.505Z\n"
+"POT-Creation-Date: 2020-06-18T08:54:34.514Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -2269,6 +2269,11 @@ msgstr ""
 msgid "description_sent_password"
 msgstr ""
 
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Draft
+msgid "draft"
+msgstr ""
+
 #: components/theme/View/EventView
 # defaultMessage: All dates
 msgid "event_alldates"
@@ -2329,6 +2334,11 @@ msgstr ""
 msgid "image"
 msgstr ""
 
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Intranet
+msgid "intranet"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: My email address is
 msgid "label_my_email_address_is"
@@ -2364,9 +2374,24 @@ msgstr ""
 msgid "mostUsed"
 msgstr ""
 
+#: components/manage/Contents/ContentsItem
+# defaultMessage: No workflow state
+msgid "no workflow state"
+msgstr ""
+
 #: error
 # defaultMessage: or try a different page.
 msgid "or try a different page."
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Private
+msgid "private"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Published
+msgid "published"
 msgstr ""
 
 #: components/theme/Login/Login

@@ -1855,6 +1855,10 @@ msgstr "Din motive de securitate, parola dvs. este criptată și nu poate fi rec
 msgid "description_sent_password"
 msgstr "Parola este în curs de schimbare. Urmați instrucțiunile primite pe adresa de e-mail pentru a finaliza procesul de schimbare a parolei."
 
+#: components/manage/Contents/ContentsItem
+msgid "draft"
+msgstr ""
+
 #: components/theme/View/EventView
 msgid "event_alldates"
 msgstr "Toate"
@@ -1903,6 +1907,10 @@ msgstr "HTML"
 msgid "image"
 msgstr "Imagine"
 
+#: components/manage/Contents/ContentsItem
+msgid "intranet"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "label_my_email_address_is"
 msgstr "Adresa e-mail"
@@ -1931,9 +1939,21 @@ msgstr "Media"
 msgid "mostUsed"
 msgstr "Cele mai utilizate"
 
+#: components/manage/Contents/ContentsItem
+msgid "no workflow state"
+msgstr ""
+
 #: error
 msgid "or try a different page."
 msgstr "sau încercați o altă pagină."
+
+#: components/manage/Contents/ContentsItem
+msgid "private"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+msgid "published"
+msgstr ""
 
 #: components/theme/Login/Login
 msgid "registration form"
