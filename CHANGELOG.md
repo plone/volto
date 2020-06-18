@@ -6,6 +6,9 @@
 
 ### Feature
 
+- Translated workflow state in contents @nzambello
+- Added item type as a tooltip in contents @nzambello
+
 ### Bugfix
 
 ### Internal
