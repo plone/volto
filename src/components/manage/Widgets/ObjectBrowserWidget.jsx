@@ -190,7 +190,6 @@ class ObjectBrowserWidget extends Component {
             onChange(id, []);
           };
 
-
     return (
       <Form.Field
         inline
