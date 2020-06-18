@@ -52,7 +52,7 @@ Instead, change the "addons" setting in your package.json file. */
   buf += `
 const load = (config) => {
   const addonLoaders = [${configsToLoad.join(', ')}];
-  return addonLoaders.reduce((acc, apply) => apply(acc), config)
+  return addonLoaders.reduce((acc, apply) => apply(acc), config);
 };
 export default load;
 `;
