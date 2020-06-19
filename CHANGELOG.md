@@ -6,6 +6,8 @@
 
 ### Feature
 
+- selectableTypes in ObjectBrowserWidget @giuliaghisini
+
 ### Bugfix
 
 - Localized content upload modal last modified date @nzambello
