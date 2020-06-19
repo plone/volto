@@ -19,11 +19,13 @@ const ObjectBrowserNav = ({
   const isSelected = (item) => {
     let ret = false;
     if (selected) {
-      selected.forEach((_item) => {
-        if (flattenToAppURL(_item['@id']) === flattenToAppURL(item['@id'])) {
-          ret = true;
-        }
-      });
+      selected
+        .filter((item) => item != null)
+        .forEach((_item) => {
+          if (flattenToAppURL(_item['@id']) === flattenToAppURL(item['@id'])) {
+            ret = true;
+          }
+        });
     }
     return ret;
   };
