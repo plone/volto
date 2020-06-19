@@ -1314,6 +1314,10 @@ msgstr "Select the transition to be used for modifying the items state. (未翻�
 msgid "Selected items"
 msgstr ""
 
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Selected items - x of y"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Selection"
 msgstr "Selection (未翻訳)"

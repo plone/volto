@@ -1315,6 +1315,10 @@ msgstr "Seleccione a transição a ser usada para modificar o estado dos itens."
 msgid "Selected items"
 msgstr ""
 
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Selected items - x of y"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Selection"
 msgstr "Selecção"

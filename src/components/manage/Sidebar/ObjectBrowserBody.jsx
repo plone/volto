@@ -31,6 +31,7 @@ const messages = defineMessages({
     id: 'Selected items',
     defaultMessage: 'Selected items',
   },
+  of: { id: 'Selected items - x of y', defaultMessage: 'of' },
 });
 
 function getParentURL(url) {
@@ -58,6 +59,7 @@ class ObjectBrowserBody extends Component {
     onChangeBlock: PropTypes.func.isRequired,
     onSelectItem: PropTypes.func,
     dataName: PropTypes.string,
+    maximumSelectionSize: PropTypes.number,
   };
 
   /**
@@ -70,6 +72,8 @@ class ObjectBrowserBody extends Component {
     href: '',
     onSelectItem: null,
     dataName: null,
+    selectableTypes: [],
+    maximumSelectionSize: null,
   };
 
   /**
@@ -291,6 +295,12 @@ class ObjectBrowserBody extends Component {
     });
   };
 
+  isSelectable = (item) => {
+    return this.props.selectableTypes.length > 0
+      ? this.props.selectableTypes.indexOf(item['@type']) >= 0
+      : true;
+  };
+
   handleClickOnItem = (item) => {
     if (this.props.mode === 'image') {
       if (item.is_folderish) {
@@ -300,7 +310,18 @@ class ObjectBrowserBody extends Component {
         this.onSelectItem(item);
       }
     } else {
-      this.onSelectItem(item);
+      if (this.isSelectable(item)) {
+        if (this.props.data.length < this.props.maximumSelectionSize) {
+          this.onSelectItem(item);
+          if (this.props.data.length + 1 >= this.props.maximumSelectionSize) {
+            this.props.closeObjectBrowser();
+          }
+        } else {
+          this.props.closeObjectBrowser();
+        }
+      } else {
+        this.navigateTo(item['@id']);
+      }
     }
   };
 
@@ -314,8 +335,14 @@ class ObjectBrowserBody extends Component {
         this.props.closeObjectBrowser();
       }
     } else {
-      this.onSelectItem(item);
-      this.props.closeObjectBrowser();
+      if (this.isSelectable(item)) {
+        if (this.props.data.length < this.props.maximumSelectionSize) {
+          this.onSelectItem(item);
+        }
+        this.props.closeObjectBrowser();
+      } else {
+        this.navigateTo(item['@id']);
+      }
     }
   };
 
@@ -391,6 +418,13 @@ class ObjectBrowserBody extends Component {
             <Segment className="infos">
               {this.props.intl.formatMessage(messages.SelectedItems)}:{' '}
               {this.props.data?.length}
+              {this.props.maximumSelectionSize && (
+                <>
+                  {' '}
+                  {this.props.intl.formatMessage(messages.of)}{' '}
+                  {this.props.maximumSelectionSize}
+                </>
+              )}
             </Segment>
           )}
           <ObjectBrowserNav
@@ -416,6 +450,7 @@ class ObjectBrowserBody extends Component {
             handleDoubleClickOnItem={this.handleDoubleClickOnItem}
             mode={this.props.mode}
             navigateTo={this.navigateTo}
+            isSelectable={this.isSelectable}
           />
         </Segment.Group>
       </aside>,

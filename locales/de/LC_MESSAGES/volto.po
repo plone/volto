@@ -1322,6 +1322,10 @@ msgstr "Arbeitsablauf-Status für Seite wählen."
 msgid "Selected items"
 msgstr ""
 
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Selected items - x of y"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Selection"
 msgstr "Auswahl"
