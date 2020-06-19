@@ -9,6 +9,7 @@
 ### Bugfix
 
 - removed broken preview image in ContentsUploadModal if uploaded item is not an image. @giuliaghisini
+- fixed error on adding new item if parent item is not translated when multilingual is set @giuliaghisini
 
 ### Internal
 
