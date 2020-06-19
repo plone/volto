@@ -12,6 +12,7 @@
 
 ### Bugfix
 
+- fixed duplicated items in SelectWidget and ArrayWidget @giuliaghisini
 - Update German translation @timo
 - removed broken preview image in ContentsUploadModal if uploaded item is not an image. @giuliaghisini
 - Localized content upload modal last modified date @nzambello
