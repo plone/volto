@@ -21,6 +21,8 @@
 
 ### Internal
 
+- Added translations for select in querystring widget @nzambello
+
 ## 6.2.0 (2020-06-14)
 
 ### Feature
