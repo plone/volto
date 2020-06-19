@@ -12,6 +12,7 @@
 
 ### Bugfix
 
+- removed broken preview image in ContentsUploadModal if uploaded item is not an image. @giuliaghisini
 - Localized content upload modal last modified date @nzambello
 - Fix overflow in folder contents with long titles @nzambello
 - fixed object browser widget when a selected items is deleted. Plone.restapi returns a null object. @giuliaghisini
