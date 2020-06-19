@@ -152,24 +152,23 @@ function transpile(fpath) {
 }
 
 describe('create-addons-loader apply configuration', () => {
-  // temporarily disabled, it causes yarn test to keep reloading
-  // test('get the default export and applies it', () => {
-  //   const addon1 = require.resolve('./fixtures/volto-addon1');
-  //
-  //   const loaderPath = getLoader([addon1]);
-  //   transpile(loaderPath);
-  //
-  //   const loader = require(loaderPath).default;
-  //   const defaultConfig = {};
-  //   const config = loader(defaultConfig);
-  //   expect(config).toStrictEqual({
-  //     settings: {
-  //       nonContentRoutes: [],
-  //       supportedLanguages: ['en'],
-  //       navDepth: 1,
-  //     },
-  //   });
-  // });
+  test('get the default export and applies it', () => {
+    const addon1 = require.resolve('./fixtures/volto-addon1');
+
+    const loaderPath = getLoader([addon1]);
+    transpile(loaderPath);
+
+    const loader = require(loaderPath).default;
+    const defaultConfig = {};
+    const config = loader(defaultConfig);
+    expect(config).toStrictEqual({
+      settings: {
+        nonContentRoutes: [],
+        supportedLanguages: ['en'],
+        navDepth: 1,
+      },
+    });
+  });
   // test('get the default export and applies it with several packages, last wins', () => {
   //   packageJSON.addons = ['./volto-addon1', './volto-addon2'];
   //   const defaultConfig = {};

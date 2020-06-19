@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const tmp = require('tmp');
 const cryptoRandomString = require('crypto-random-string');
 
 const titleCase = (w) => w.slice(0, 1).toUpperCase() + w.slice(1, w.length);
@@ -63,11 +64,13 @@ export default load;
 }
 
 module.exports = (addons) => {
-  const addonsLoaderPath = path.join(
-    process.cwd(),
-    'src',
-    'load-volto-addons.js',
-  );
+  // const addonsLoaderPath = path.join(
+  //   process.cwd(),
+  //   'src',
+  //   'load-volto-addons.js',
+  // );
+  //
+  const addonsLoaderPath = tmp.tmpNameSync({ postfix: '.js' });
   const code = getAddonsLoaderCode(addons);
   fs.writeFileSync(addonsLoaderPath, new Buffer.from(code));
   return addonsLoaderPath;
