@@ -6,9 +6,14 @@
 
 ### Feature
 
+- Added italian translations and translated array, token and select widget. @giuliaghisini
+- Added internationalization for French language @bsuttor #1588
+- selectableTypes in ObjectBrowserWidget @giuliaghisini
+
 ### Bugfix
 
 - removed broken preview image in ContentsUploadModal if uploaded item is not an image. @giuliaghisini
+- Localized content upload modal last modified date @nzambello
 - Fix overflow in folder contents with long titles @nzambello
 - fixed object browser widget when a selected items is deleted. Plone.restapi returns a null object. @giuliaghisini
 - fixed error on adding new item if parent item is not translated when multilingual is set @giuliaghisini

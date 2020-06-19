@@ -168,6 +168,8 @@ class ContentsUploadModal extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    moment.locale(this.props.intl.locale);
+
     return (
       this.props.open && (
         <Modal open={this.props.open}>
