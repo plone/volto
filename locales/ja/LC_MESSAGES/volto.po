@@ -61,8 +61,8 @@ msgid "Add Content"
 msgstr "新規追加"
 
 #: components/manage/Toolbar/Types
-msgid "Add Translation..."
-msgstr "翻訳コンテンツを追加..."
+msgid "Add Translation…"
+msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add User"
@@ -70,11 +70,11 @@ msgstr "ユーザを追加"
 
 #: components/manage/Blocks/Description/Edit
 msgid "Add a description…"
-msgstr "説明を追加..."
+msgstr "説明を追加…"
 
 #: components/manage/Form/Form
-msgid "Add block..."
-msgstr "ブロックを追加..."
+msgid "Add block…"
+msgstr "ブロックを追加…"
 
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "Add criteria"
@@ -154,6 +154,7 @@ msgstr "利用可能"
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/DatabaseInformation
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Diff/Diff
@@ -198,6 +199,10 @@ msgstr "参照"
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr "デフォルトでは、このアイテムのコンテナからのパーミッションが継承されます。これを無効にすると、明示的に定義されたパーミッションだけが有効になります。概要画面で {inherited} シンボルが継承された値を示します。同様に、{global} シンボルはグローバルロールを示します。これはサイト管理者によって管理されるものです。"
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Cache Name"
+msgstr ""
 
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsToolbar
@@ -374,6 +379,22 @@ msgstr "現在のパスワード"
 #: components/manage/Contents/ContentsItem
 msgid "Cut"
 msgstr "カット"
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Database Information"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Database Location"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Database Size"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Database main"
+msgstr ""
 
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Widgets/DatetimeWidget
@@ -642,7 +663,7 @@ msgstr "ファイル名"
 
 #: components/manage/Contents/Contents
 msgid "Filter…"
-msgstr "フィルター..."
+msgstr "フィルター…"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Fixed width table cells"
@@ -985,6 +1006,12 @@ msgstr ""
 msgid "No map selected"
 msgstr "マップが選択されていません"
 
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
+msgid "No options"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
@@ -1016,6 +1043,10 @@ msgstr "ワークフローなし"
 #: components/manage/Contents/ContentsItem
 msgid "None"
 msgstr "None"
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Number of active objects"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Object Size"
@@ -1258,8 +1289,8 @@ msgid "Search for user or group"
 msgstr "検索"
 
 #: components/manage/Controlpanels/UsersControlpanel
-msgid "Search group..."
-msgstr "検索"
+msgid "Search group…"
+msgstr ""
 
 #: components/theme/Search/Search
 msgid "Search results"
@@ -1270,8 +1301,8 @@ msgid "Search results for {term}"
 msgstr "検索"
 
 #: components/manage/Controlpanels/UsersControlpanel
-msgid "Search users..."
-msgstr "検索"
+msgid "Search users…"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Select columns to show"
@@ -1295,6 +1326,8 @@ msgstr "Selection (未翻訳)"
 
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
 msgid "Select…"
 msgstr "選択…"
 
@@ -1462,6 +1495,14 @@ msgstr "追加するタグ"
 msgid "Tags to remove"
 msgstr "削除をするタグ"
 
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Target memory size per cache in bytes"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Target number of objects in memory per cache"
+msgstr ""
+
 #: components/manage/Blocks/Listing/TemplateWidget
 msgid "Template"
 msgstr "テンプレート"
@@ -1476,6 +1517,10 @@ msgstr "テキスト"
 #: components/theme/Unauthorized/Unauthorized
 msgid "Thank you."
 msgstr "ありがとうございます。"
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "The Database Manager allow you to view database status information"
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 msgid "The URL for your external home page, if you have one."
@@ -1542,9 +1587,25 @@ msgstr ""
 msgid "Title"
 msgstr "タイトル"
 
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Total active and non-active objects"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Total comments"
 msgstr "コメント計"
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Total number of objects in each cache"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Total number of objects in memory from all caches"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Total number of objects in the database"
+msgstr ""
 
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"

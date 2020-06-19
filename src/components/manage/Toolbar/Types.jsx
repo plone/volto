@@ -11,7 +11,7 @@ const Types = ({ types, pathname, content, currentLanguage }) => {
   return types.length > 0 ? (
     <div className="menu-more pastanaga-menu">
       <header>
-        <FormattedMessage id="Add Content" defaultMessage="Add Content..." />
+        <FormattedMessage id="Add Content" defaultMessage="Add Content…" />
       </header>
       <div className="pastanaga-menu-list">
         <ul>
@@ -47,9 +47,10 @@ const Types = ({ types, pathname, content, currentLanguage }) => {
             settings.supportedLanguages,
             (lang) =>
               !Boolean(
-                find(content['@components'].translations.items, {
-                  language: lang,
-                }),
+                content['@components'].translations &&
+                  find(content['@components'].translations.items, {
+                    language: lang,
+                  }),
               ) && currentLanguage !== lang,
           );
 
@@ -58,8 +59,8 @@ const Types = ({ types, pathname, content, currentLanguage }) => {
               <>
                 <header>
                   <FormattedMessage
-                    id="Add Translation..."
-                    defaultMessage="Add Translation..."
+                    id="Add Translation…"
+                    defaultMessage="Add Translation…"
                   />
                 </header>
                 <div className="pastanaga-menu-list">

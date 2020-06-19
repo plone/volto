@@ -30,6 +30,7 @@ import {
   UsersControlpanel,
   ContentTypes,
   ContentType,
+  DatabaseInformation,
 } from '@plone/volto/components';
 import { addonRoutes } from '~/config';
 
@@ -80,6 +81,10 @@ export const defaultRoutes = [
   {
     path: '/controlpanel/addons',
     component: AddonsControlpanel,
+  },
+  {
+    path: '/controlpanel/database',
+    component: DatabaseInformation,
   },
   {
     path: '/controlpanel/moderate-comments',

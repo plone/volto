@@ -48,12 +48,12 @@ import backSVG from '@plone/volto/icons/back.svg';
 
 const messages = defineMessages({
   searchUsers: {
-    id: 'Search users...',
-    defaultMessage: 'Search users...',
+    id: 'Search users…',
+    defaultMessage: 'Search users…',
   },
   searchGroups: {
-    id: 'Search group...',
-    defaultMessage: 'Search group...',
+    id: 'Search group…',
+    defaultMessage: 'Search group…',
   },
   save: {
     id: 'Save',

@@ -64,9 +64,17 @@ const messages = defineMessages({
     id: 'Required',
     defaultMessage: 'Required',
   },
+  select: {
+    id: 'Select…',
+    defaultMessage: 'Select…',
+  },
   no_value: {
     id: 'No value',
     defaultMessage: 'No value',
+  },
+  no_options: {
+    id: 'No options',
+    defaultMessage: 'No options',
   },
 });
 
@@ -277,20 +285,26 @@ class SelectWidget extends Component {
           </div>
         )}
         {this.props.vocabBaseUrl ? (
-          <AsyncPaginate
-            className="react-select-container"
-            classNamePrefix="react-select"
-            options={this.props.choices || []}
-            styles={customSelectStyles}
-            theme={selectTheme}
-            components={{ DropdownIndicator, Option }}
-            value={this.state.selectedOption}
-            loadOptions={this.loadOptions}
-            onChange={this.handleChange}
-            additional={{
-              offset: 25,
-            }}
-          />
+          <>
+            <AsyncPaginate
+              className="react-select-container"
+              classNamePrefix="react-select"
+              options={this.props.choices || []}
+              styles={customSelectStyles}
+              theme={selectTheme}
+              components={{ DropdownIndicator, Option }}
+              value={this.state.selectedOption}
+              loadOptions={this.loadOptions}
+              onChange={this.handleChange}
+              additional={{
+                offset: 25,
+              }}
+              placeholder={this.props.intl.formatMessage(messages.select)}
+              noOptionsMessage={() =>
+                this.props.intl.formatMessage(messages.no_options)
+              }
+            />
+          </>
         ) : (
           <Select
             id={`field-${id}`}
