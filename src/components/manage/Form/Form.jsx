@@ -46,8 +46,8 @@ import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 
 const messages = defineMessages({
   addBlock: {
-    id: 'Add block...',
-    defaultMessage: 'Add block...',
+    id: 'Add block…',
+    defaultMessage: 'Add block…',
   },
   required: {
     id: 'Required input is missing.',
