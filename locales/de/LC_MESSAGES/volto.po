@@ -1950,6 +1950,10 @@ msgstr "Häufig genutzt"
 msgid "or try a different page."
 msgstr "versuchen Sie eine andere Seite."
 
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "querystring-widget-select"
+msgstr ""
+
 #: components/theme/Login/Login
 msgid "registration form"
 msgstr "Registrierungsformular"

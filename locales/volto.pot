@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-06-12T14:07:19.505Z\n"
+"POT-Creation-Date: 2020-06-19T14:00:15.134Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -2367,6 +2367,11 @@ msgstr ""
 #: error
 # defaultMessage: or try a different page.
 msgid "or try a different page."
+msgstr ""
+
+#: components/manage/Blocks/Listing/QuerystringWidget
+# defaultMessage: Select…
+msgid "querystring-widget-select"
 msgstr ""
 
 #: components/theme/Login/Login

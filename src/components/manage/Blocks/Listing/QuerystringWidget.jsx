@@ -35,6 +35,10 @@ const messages = defineMessages({
     id: 'Add criteria',
     defaultMessage: 'Add criteria',
   },
+  select: {
+    id: 'querystring-widget-select',
+    defaultMessage: 'Select…',
+  },
 });
 
 /**
@@ -116,7 +120,7 @@ class QuerystringWidget extends Component {
     const props = {
       fluid: true,
       value: row.v,
-      onChange: (data) => this.onChangeValue(index, data.target.value),
+      onChange: data => this.onChangeValue(index, data.target.value),
     };
     const values = this.props.indexes[row.i].values;
 
@@ -141,7 +145,7 @@ class QuerystringWidget extends Component {
                 type="date"
                 {...props}
                 value={format(parse(row.v[0]), 'YYYY-MM-DD')}
-                onChange={(data) =>
+                onChange={data =>
                   this.onChangeValue(index, [data.target.value, row.v[1]])
                 }
               />
@@ -151,7 +155,7 @@ class QuerystringWidget extends Component {
                 type="date"
                 {...props}
                 value={format(parse(row.v[1]), 'YYYY-MM-DD')}
-                onChange={(data) =>
+                onChange={data =>
                   this.onChangeValue(index, [row.v[0], data.target.value])
                 }
               />
@@ -173,23 +177,24 @@ class QuerystringWidget extends Component {
               classNamePrefix="react-select"
               options={
                 values
-                  ? map(toPairs(values), (value) => ({
+                  ? map(toPairs(values), value => ({
                       label: value[1].title,
                       value: value[0],
                     }))
                   : []
               }
               styles={customSelectStyles}
+              placeholder={this.props.intl.formatMessage(messages.select)}
               theme={selectTheme}
               components={{ DropdownIndicator, Option }}
-              onChange={(data) => {
+              onChange={data => {
                 this.onChangeValue(
                   index,
-                  map(data, (item) => item.value),
+                  map(data, item => item.value),
                 );
               }}
               isMulti={true}
-              value={map(row.v, (value) => ({
+              value={map(row.v, value => ({
                 label: values?.[value]?.title || value,
                 value,
               }))}
@@ -283,14 +288,11 @@ class QuerystringWidget extends Component {
                           classNamePrefix="react-select"
                           options={map(
                             toPairs(
-                              groupBy(
-                                toPairs(indexes),
-                                (item) => item[1].group,
-                              ),
+                              groupBy(toPairs(indexes), item => item[1].group),
                             ),
-                            (group) => ({
+                            group => ({
                               label: group[0],
-                              options: map(group[1], (field) => ({
+                              options: map(group[1], field => ({
                                 label: field[1].title,
                                 value: field[0],
                               })),
@@ -298,12 +300,13 @@ class QuerystringWidget extends Component {
                           )}
                           styles={customSelectStyles}
                           theme={selectTheme}
+                          placeholder={intl.formatMessage(messages.select)}
                           components={{ DropdownIndicator, Option }}
                           value={{
                             value: row.i,
                             label: indexes[row.i].title,
                           }}
-                          onChange={(data) =>
+                          onChange={data =>
                             onChange(
                               id,
                               map(value, (curRow, curIndex) =>
@@ -328,19 +331,20 @@ class QuerystringWidget extends Component {
                           classNamePrefix="react-select"
                           options={map(
                             indexes[row.i].operations,
-                            (operation) => ({
+                            operation => ({
                               value: operation,
                               label: indexes[row.i].operators[operation].title,
                             }),
                           )}
                           styles={customSelectStyles}
                           theme={selectTheme}
+                          placeholder={intl.formatMessage(messages.select)}
                           components={{ DropdownIndicator, Option }}
                           value={{
                             value: row.o,
                             label: indexes[row.i].operators[row.o].title,
                           }}
-                          onChange={(data) =>
+                          onChange={data =>
                             onChange(
                               id,
                               map(value, (curRow, curIndex) =>
@@ -358,7 +362,7 @@ class QuerystringWidget extends Component {
                       </Form.Field>
                       {!this.props.indexes[row.i].operators[row.o].widget && (
                         <Button
-                          onClick={(event) => {
+                          onClick={event => {
                             onChange(
                               id,
                               remove(value, (v, i) => i !== index),
@@ -379,7 +383,7 @@ class QuerystringWidget extends Component {
                     {this.getWidget(row, index)}
                     {this.props.indexes[row.i].operators[row.o].widget && (
                       <Button
-                        onClick={(event) => {
+                        onClick={event => {
                           onChange(
                             id,
                             remove(value, (v, i) => i !== index),
@@ -408,14 +412,12 @@ class QuerystringWidget extends Component {
                     classNamePrefix="react-select"
                     placeholder={intl.formatMessage(messages.AddCriteria)}
                     options={map(
-                      toPairs(
-                        groupBy(toPairs(indexes), (item) => item[1].group),
-                      ),
-                      (group) => ({
+                      toPairs(groupBy(toPairs(indexes), item => item[1].group)),
+                      group => ({
                         label: group[0],
                         options: map(
-                          filter(group[1], (item) => item[1].enabled),
-                          (field) => ({
+                          filter(group[1], item => item[1].enabled),
+                          field => ({
                             label: field[1].title,
                             value: field[0],
                           }),
@@ -426,7 +428,7 @@ class QuerystringWidget extends Component {
                     theme={selectTheme}
                     components={{ DropdownIndicator, Option }}
                     value={null}
-                    onChange={(data) => {
+                    onChange={data => {
                       onChange(id, [
                         ...(value || []),
                         {
@@ -439,7 +441,7 @@ class QuerystringWidget extends Component {
                   />
                 </Form.Field>
               </Form.Group>
-              {map(error, (message) => (
+              {map(error, message => (
                 <Label key={message} basic color="red" pointing>
                   {message}
                 </Label>
@@ -462,7 +464,7 @@ class QuerystringWidget extends Component {
 export default compose(
   injectIntl,
   connect(
-    (state) => ({
+    state => ({
       indexes: state.querystring.indexes,
     }),
     { getQuerystring },

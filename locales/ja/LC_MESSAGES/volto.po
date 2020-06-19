@@ -1942,6 +1942,10 @@ msgstr "よく使う物"
 msgid "or try a different page."
 msgstr "または、他のページを試してください。"
 
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "querystring-widget-select"
+msgstr ""
+
 #: components/theme/Login/Login
 msgid "registration form"
 msgstr "登録フォーム"
