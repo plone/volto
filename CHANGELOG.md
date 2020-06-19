@@ -6,6 +6,7 @@
 
 ### Feature
 
+- Added internationalization for French language @bsuttor #1588
 - selectableTypes in ObjectBrowserWidget @giuliaghisini
 
 ### Bugfix
