@@ -47,9 +47,10 @@ const Types = ({ types, pathname, content, currentLanguage }) => {
             settings.supportedLanguages,
             (lang) =>
               !Boolean(
-                find(content['@components'].translations.items, {
-                  language: lang,
-                }),
+                content['@components'].translations &&
+                  find(content['@components'].translations.items, {
+                    language: lang,
+                  }),
               ) && currentLanguage !== lang,
           );
 
