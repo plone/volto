@@ -41,14 +41,33 @@ const addBreaklines = (children) =>
     ]);
   });
 
+const addBreaklinesBlockquote = (children) =>
+  children[1].reduce((acc, child, index, src) => {
+    if (typeof src[index + 1] == 'object' || typeof child == 'object') {
+      return acc.concat([<React.Fragment key={child}>{child}</React.Fragment>]);
+    } else {
+      return acc.concat([
+        <React.Fragment key={child}>
+          {child}
+          <br />
+        </React.Fragment>,
+      ]);
+    }
+  }, []);
+
 const splitBySoftLines = (children) =>
-  children.map((child) => {
-    return child.map((item) => {
-      if (Array.isArray(item)) {
-        return item[0].split('\n');
-      }
-      return item;
-    });
+  children[0].map((item) => {
+    if (Array.isArray(item)) {
+      return item.reduce((acc, value) => {
+        if (typeof value === 'string') {
+          let splitarray = value.split('\n');
+          return [...acc, ...splitarray];
+        } else {
+          return [...acc, value];
+        }
+      }, []);
+    }
+    return [item];
   });
 
 // Returns how the default lists should be rendered
@@ -120,7 +139,7 @@ const blocks = {
   atomic: (children) => children[0],
   blockquote: (children, { keys }) => (
     <blockquote key={keys[0]}>
-      {addBreaklines(splitBySoftLines(children))}
+      {addBreaklinesBlockquote(splitBySoftLines(children))}
     </blockquote>
   ),
   'header-one': (children, { keys }) =>
