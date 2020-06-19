@@ -44,7 +44,7 @@ const addBreaklines = (children) =>
 const addBreaklinesBlockquote = (children) =>
   children[1].reduce((acc, child, index, src) => {
     if (typeof src[index + 1] == 'object' || typeof child == 'object') {
-      return acc.concat([<React.Fragment key={child}>{child}</React.Fragment>]);
+      return acc.concat([<React.Fragment key={index}>{child}</React.Fragment>]);
     } else {
       return acc.concat([
         <React.Fragment key={child}>
