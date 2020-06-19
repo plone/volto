@@ -1,153 +1,145 @@
-# Translators:
-# Emanuel de Jesus <emanuel.angelo@gmail.com>, 2019
-# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Plone\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-17T20:38:19.520Z\n"
+"POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: Emanuel de Jesus <emanuel.angelo@gmail.com>, 2019\n"
-"Language: pt\n"
-"Language-Team: Portuguese (https://www.transifex.com/plone/teams/14552/pt/)\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"MIME-Version: 1.0\n"
-"Domain: volto\n"
-"Language-Code: pt\n"
-"Language-Name: Portuguese\n"
-"Preferred-Encodings: utf-8\n"
+"Last-Translator: \n"
+"Language: \n"
+"Language-Team: \n"
+"Content-Type: \n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
 
 #: components/theme/Footer/Footer
 msgid "Accessibility"
-msgstr "Acessibilidade"
+msgstr "Accesibilitate"
 
 #: components/theme/Register/Register
 msgid "Account Registration Completed"
-msgstr "Registo de Conta Concluído"
+msgstr "Înregistrarea contului a fost finalizată"
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Account activation completed"
-msgstr "Activação da conta concluída"
+msgstr "Activarea contului a fost finalizată"
 
 #: components/manage/Controlpanels/ModerateComments
 msgid "Action"
-msgstr "Acção"
+msgstr "Acțiune"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Actions"
-msgstr "Acções"
+msgstr "Acțiuni"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Activate and deactivate"
-msgstr ""
+msgstr "Activare și dezactivare"
 
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/SchemaWidget
 #: helpers/MessageLabels/MessageLabels
 msgid "Add"
-msgstr "Adicionar"
+msgstr "Adăugare"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Add Addons"
-msgstr ""
+msgstr "Adăugare add-on-uri"
 
 #: components/manage/Toolbar/Types
 msgid "Add Content"
-msgstr "Adicionar Conteúdo"
+msgstr "Adăugare conținut"
 
 #: components/manage/Toolbar/Types
 msgid "Add Translation..."
-msgstr ""
+msgstr "Adăugare traducere ..."
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Add User"
-msgstr "Adicionar Utilizador"
+msgstr "Adăugare utilizator"
 
 #: components/manage/Blocks/Description/Edit
 msgid "Add a description…"
-msgstr "Adicionar uma descrição..."
+msgstr "Adăugați o descriere ..."
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Add block..."
-msgstr "Adicionar bloco..."
+msgstr "Adăugare bloc ..."
 
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "Add criteria"
-msgstr ""
+msgstr "Adăugare criterii"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Add field"
-msgstr "Adicionar campo"
+msgstr "Adăugare câmp"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Add fieldset"
-msgstr "Adicionar conjunto de campos"
+msgstr "Adăugare set de câmpuri"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Add group"
-msgstr "Adicionar grupo"
+msgstr "Adăugare grup"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Add new content type"
-msgstr ""
+msgstr "Adăugare tip de conținut nou"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Add new group"
-msgstr "Adicionar novo grupo"
+msgstr "Adăugare grup nou"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Add new user"
-msgstr "Adicionar um novo utilizador"
+msgstr "Adăugare utilizator nou"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Add to Groups"
-msgstr "Adicionar a Grupos"
+msgstr "Adăugare la grupuri"
 
 #: components/manage/Add/Add
 msgid "Add {type}"
-msgstr "Adicionar {type}"
+msgstr "Adăugare {type}"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Add-ons Settings"
-msgstr ""
+msgstr "Setări add-on-uri"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Alignment"
-msgstr "Alinhamento"
+msgstr "Aliniere"
 
 #: components/manage/Contents/Contents
 msgid "All"
-msgstr "Tudo"
+msgstr "Toate"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Alt text"
-msgstr "Texto alternativo"
+msgstr "Text alternativ"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this field?"
-msgstr "Tem a certeza que quer eliminar este campo?"
+msgstr "Sunteți sigur că doriți să ștergeți acest câmp?"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this fieldset including all fields?"
-msgstr "Tem a certeza que quer eliminar este conjunto de campos incluindo todos os campos?"
+msgstr "Sunteți sigur că doriți să ștergeți acest set de câmpuri, inclusiv toate câmpurile?"
 
 #: components/manage/Contents/Contents
 msgid "Ascending"
-msgstr "Ascendente"
+msgstr "Crescător"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Available"
-msgstr ""
+msgstr "Disponibil"
 
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -167,39 +159,39 @@ msgstr ""
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
 msgid "Back"
-msgstr "Voltar"
+msgstr "Înapoi"
 
 #: components/manage/Diff/Diff
 msgid "Base"
-msgstr "Base"
+msgstr "Baza"
 
 #: components/manage/Sidebar/Sidebar
 msgid "Block"
-msgstr "Bloco"
+msgstr "Bloc"
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Block style"
-msgstr ""
+msgstr "Stil bloc"
 
 #: components/theme/Login/Login
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
-msgstr "Tanto o endereço de email como a senha são sensíveis às diferenças entre maiúsculas e minúsculas. Assegure-se que o `caps lock` não esteja ligado."
+msgstr "Atât adresa de e-mail, cât și parola sunt case-sensitive, verificați dacă tasta 'Caps Lock' nu este activată."
 
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Breadcrumbs"
-msgstr "Navegação estrutural"
+msgstr "Breadcrumbs"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Browse"
-msgstr "Navegar"
+msgstr "Răsfoiește"
 
 #: components/manage/Blocks/Image/Edit
 msgid "Browse the site, drop an image, or type an URL"
-msgstr "Navegue no website, largue uma imagem ou escreva um URL"
+msgstr "Navigați site-ul, adaugați o imagine sau introduceți o adresă URL"
 
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
-msgstr "Por predefinição, as permissões do contentor deste item são herdadas. Se desactivar isto, apenas serão válidas as permissões de partilha explicitamente definidas. No resumo, o símbolo {inherited} indica um valor herdado. Do mesmo modo, o símbolo {global} indica um papel global, que é gerido pelo administrador do sítio."
+msgstr "În mod implicit, permisiunile din containerul acestui articol sunt moștenite. Dacă dezactivați acest lucru, numai permisiunile de partajare definite în mod explicit vor fi valide. În imagine, simbolul {inherited} indică o valoare moștenită. În mod similar, simbolul {global} indică un rol global, care este gestionat de administratorul site-ului. "
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Cache Name"
@@ -217,168 +209,168 @@ msgstr ""
 #: components/theme/Login/Login
 #: helpers/MessageLabels/MessageLabels
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "Anulează"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Cell"
-msgstr "Célula"
+msgstr "Celulă"
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Center"
-msgstr "Centro"
+msgstr "Centrează"
 
 #: components/manage/History/History
 msgid "Change Note"
-msgstr "Alterar Nota"
+msgstr "Schimbă comentariul"
 
 #: components/manage/Preferences/ChangePassword
 msgid "Change Password"
-msgstr "Alterar Senha"
+msgstr "Schimbă parola"
 
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Change State"
-msgstr "Alterar Estado"
+msgstr "Schimbă starea"
 
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Change workflow state recursively"
-msgstr ""
+msgstr "Schimbă starea fluxului de lucru recursiv"
 
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 msgid "Changes saved"
-msgstr "Alterações guardadas"
+msgstr "Modificări salvate"
 
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
 msgid "Changes saved."
-msgstr "Alterações guardadas."
+msgstr "Modificări salvate."
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Checkbox"
-msgstr "Caixa de verificação"
+msgstr "Checkbox"
 
 #: components/manage/Widgets/SelectWidget
 msgid "Choices"
-msgstr "Escolhas"
+msgstr "Opțiuni"
 
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Choose Image"
-msgstr "Escolha Imagem"
+msgstr "Alegeți imaginea"
 
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Choose Target"
-msgstr "Escolha Alvo"
+msgstr "Alegeți ținta"
 
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
-msgstr ""
+msgstr "Faceți clic pentru a descărca imaginea cu dimensiuni complete"
 
 #: components/manage/Widgets/SelectWidget
 msgid "Close"
-msgstr "Fechar"
+msgstr "Închideți"
 
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
-msgstr "Fechar menu"
+msgstr "Închidere meniu"
 
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"
-msgstr ""
+msgstr "Colecție"
 
 #: components/manage/Controlpanels/ModerateComments
 #: components/theme/Comments/CommentEditModal
 #: components/theme/Comments/Comments
 msgid "Comment"
-msgstr "Comentar"
+msgstr "Comentariu"
 
 #: components/manage/Controlpanels/ModerateComments
 msgid "Commenter"
-msgstr "Comentador"
+msgstr "Comentator"
 
 #: components/manage/Diff/Diff
 msgid "Compare"
-msgstr "Comparar"
+msgstr "Compară"
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "Confirm password"
-msgstr "Confirmar senha"
+msgstr "Confirmă parola"
 
 #: components/theme/ConnectionRefused/ConnectionRefused
 msgid "Connection refused"
-msgstr ""
+msgstr "Conexiune refuzată"
 
 #: components/theme/Footer/Footer
 msgid "Contact"
-msgstr "Contacto"
+msgstr "Contact"
 
 #: components/theme/ContactForm/ContactForm
 msgid "Contact form"
-msgstr "Formulário de contacto"
+msgstr "Formular de contact"
 
 #: components/manage/Blocks/Listing/Edit
 msgid "Contained items"
-msgstr ""
+msgstr "Elemente conținute"
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Content"
-msgstr ""
+msgstr "Conținut"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
-msgstr ""
+msgstr "Tip de conținut creat"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type deleted"
-msgstr ""
+msgstr "Tip de conținut șters"
 
 #: components/manage/Contents/Contents
 #: components/manage/Toolbar/Toolbar
 msgid "Contents"
-msgstr "Conteúdo"
+msgstr "Cuprins"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
 msgid "Copy"
-msgstr "Copiar"
+msgstr "Copiere"
 
 #: components/theme/Footer/Footer
 msgid "Copyright"
-msgstr "Copyright"
+msgstr "Drepturi de autor"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Copyright statement or other rights information on this item."
-msgstr "Declaração de copyright ou outras informações de direitos sobre este item."
+msgstr "Declarație de copyright sau alte informații privind drepturile asupra acestui articol."
 
 #: components/manage/Contents/Contents
 msgid "Created on"
-msgstr ""
+msgstr "Creat pe"
 
 #: components/manage/Contents/Contents
 msgid "Creator"
-msgstr ""
+msgstr "Creator"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Creators"
-msgstr "Criadores"
+msgstr "Creatori"
 
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "Criteria"
-msgstr ""
+msgstr "Criterii"
 
 #: components/manage/Preferences/ChangePassword
 msgid "Current password"
-msgstr "Senha actual"
+msgstr "Parolă curentă"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
 msgid "Cut"
-msgstr "Cortar"
+msgstr "Taie"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database Information"
@@ -422,7 +414,7 @@ msgstr "Data"
 #: components/theme/PasswordReset/RequestPasswordReset
 #: components/theme/Register/Register
 msgid "Default"
-msgstr "Predefinido"
+msgstr "Implicit"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
@@ -437,31 +429,31 @@ msgstr "Predefinido"
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/Comments
 msgid "Delete"
-msgstr "Eliminar"
+msgstr "Ștergeți"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Delete Group"
-msgstr "Eliminar Grupo"
+msgstr "Ștergeți grupul"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Delete Type"
-msgstr ""
+msgstr "Ștergeți tipul"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Delete User"
-msgstr "Eliminar Utilizador"
+msgstr "Ștergeți utilizatorul"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Delete col"
-msgstr "Eliminar coluna"
+msgstr "Șterge coloană"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Delete row"
-msgstr "Eliminar linha"
+msgstr "Șterge rând"
 
 #: components/manage/Contents/Contents
 msgid "Descending"
-msgstr "Descendente"
+msgstr "Descrescător"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Controlpanels/ContentTypes
@@ -475,51 +467,51 @@ msgstr "Descendente"
 #: components/theme/View/TabularView
 #: helpers/MessageLabels/MessageLabels
 msgid "Description"
-msgstr "Descrição"
+msgstr "Descriere"
 
 #: components/manage/Diff/Diff
 msgid "Diff"
-msgstr "Diferenças"
+msgstr "Diff"
 
 #: components/manage/Diff/Diff
 msgid "Difference between revision {one} and {two} of {title}"
-msgstr "Diferenças entre as revisões {one} e {two} de {title}"
+msgstr "Diferența dintre versiunea {one} și {two} din {title}"
 
 #: components/theme/Footer/Footer
 msgid "Distributed under the {license}."
-msgstr "Distribuído sob a licença {license}."
+msgstr "Distribuit sub {license}."
 
 #: components/manage/Blocks/Table/Edit
 msgid "Divide each row into separate cells"
-msgstr "Dividir cada linha em células separadas"
+msgstr "Împărțiți fiecare rând în celule separate"
 
 #: components/manage/Contents/Contents
 msgid "Do you really want to delete the following items?"
-msgstr "Quer mesmo eliminar os itens seguintes?"
+msgstr "Doriți cu adevărat să ștergeți următoarele elemente?"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Do you really want to delete the group {groupname}?"
-msgstr "Quer mesmo eliminar o grupo {groupname}?"
+msgstr "Doriți cu adevărat să ștergeți grupul {groupname}?"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Do you really want to delete the type {typename}?"
-msgstr ""
+msgstr "Doriți cu adevărat să ștergeți tipul {typename}?"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Do you really want to delete the user {username}?"
-msgstr "Quer mesmo eliminar o utilizador {username}?"
+msgstr "Doriți cu adevărat să ștergeți utilizatorul {username}?"
 
 #: components/manage/Delete/Delete
 msgid "Do you really want to delete this item?"
-msgstr "Quer mesmo eliminar este item?"
+msgstr "Doriți cu adevărat să ștergeți acest articol?"
 
 #: components/manage/Sidebar/Sidebar
 msgid "Document"
-msgstr "Documento"
+msgstr "Document"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
-msgstr "Arraste e largue ficheiros do seu computador para esta área ou clique no botão “Procurar”."
+msgstr "Trageți și fixați fișierele de pe computer în această zonă sau faceți clic pe butonul Răsfoiește."
 
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
@@ -528,7 +520,7 @@ msgstr "E-mail"
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "E-mail addresses do not match."
-msgstr "Os endereços de e-mail não coincidem."
+msgstr "Adresele de e-mail nu se potrivesc."
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypes
@@ -537,27 +529,27 @@ msgstr "Os endereços de e-mail não coincidem."
 #: components/manage/Widgets/CheckboxWidget
 #: components/theme/Comments/Comments
 msgid "Edit"
-msgstr "Editar"
+msgstr "Editează"
 
 #: components/theme/Comments/CommentEditModal
 msgid "Edit comment"
-msgstr "Editar comentário"
+msgstr "Editează comentariul"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Edit field"
-msgstr "Editar campo"
+msgstr "Editează câmp"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Edit fieldset"
-msgstr "Editar conjunto de campos"
+msgstr "Editează setul de câmpuri"
 
 #: components/manage/Form/InlineForm
 msgid "Edit values"
-msgstr ""
+msgstr "Editează valori"
 
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
-msgstr "Editar {title}"
+msgstr "Editează {title}"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Email"
@@ -565,50 +557,50 @@ msgstr "Email"
 
 #: components/theme/ContactForm/ContactForm
 msgid "Email sent"
-msgstr "Email enviado"
+msgstr "E-mail trimis"
 
 #: components/manage/Blocks/Maps/Edit
 msgid "Embed code error, please follow the instructions and try again."
-msgstr ""
+msgstr "Eroare de cod integrat, urmați instrucțiunile și încercați din nou."
 
 #: components/manage/Blocks/Maps/View
 msgid "Embeded Google Maps"
-msgstr ""
+msgstr "Harti Google integrate"
 
 #: components/manage/Contents/Contents
 msgid "End Date"
-msgstr ""
+msgstr "Data de încheiere"
 
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 msgid "Enter URL or title"
-msgstr "Escreva URL ou título"
+msgstr "Introdu URL sau titlu"
 
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
-msgstr "Escreva um endereço de email. Este será o seu nome de sessão. Respeitamos a sua privacidade e nunca iremos ceder o seu endereço a terceiros ou expô-lo onde quer que seja."
+msgstr "Introduceți o adresă de e-mail. Acesta va fi numele dvs. de autentificare. Respectăm confidențialitatea dvs. și nu vom oferi adresa niciunui terț și nu o vom expune nicăieri."
 
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
 msgid "Enter full name, e.g. John Smith."
-msgstr "Escreva o nome completo. Por exemplo, José Silva."
+msgstr "Introduceți numele complet, de exemplu, Valentin Popescu."
 
 #: components/manage/Blocks/Maps/Edit
 msgid "Enter map Embed Code"
-msgstr ""
+msgstr "Introduceți codul de integrare a hărții"
 
 #: components/manage/Preferences/ChangePassword
 msgid "Enter your current password."
-msgstr "Escreva a senha actual."
+msgstr "Introduceți parola curentă."
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Enter your email address for verification."
-msgstr "Escreva o seu endereço de email para verificação."
+msgstr "Introduceți adresa dvs. de e-mail pentru verificare."
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "Enter your new password. Minimum 5 characters."
-msgstr "Escreva uma senha nova. Mínimo de 5 caracteres."
+msgstr "Introduceți noua parolă. Minim 5 caractere."
 
 #: components/manage/Add/Add
 #: components/manage/Edit/Edit
@@ -618,265 +610,265 @@ msgstr "Escreva uma senha nova. Mínimo de 5 caracteres."
 #: components/theme/Login/Login
 #: helpers/MessageLabels/MessageLabels
 msgid "Error"
-msgstr "Erro"
+msgstr "Eroare"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Exclude from navigation"
-msgstr "Excluir da navegação"
+msgstr "Excludeți din navigare"
 
 #: components/manage/Contents/Contents
 msgid "Excluded from navigation"
-msgstr ""
+msgstr "Exclus din navigare"
 
 #: components/manage/Sidebar/Sidebar
 msgid "Expand sidebar"
-msgstr "Expandir barra lateral"
+msgstr "Extinde bara laterală"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Expiration Date"
-msgstr "Data de vencimento"
+msgstr "Data de expirare"
 
 #: components/manage/Contents/Contents
 msgid "Expiration date"
-msgstr ""
+msgstr "Data de expirare"
 
 #: components/manage/Contents/ContentsItem
 msgid "Expired"
-msgstr ""
+msgstr "Expirat"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "External URL"
-msgstr "URL externo"
+msgstr "URL extern"
 
 #: components/manage/Toolbar/Toolbar
 msgid "File"
-msgstr ""
+msgstr "Fișier"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "File size"
-msgstr "Tamanho do ficheiro"
+msgstr "Mărimea fișierului"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Filename"
-msgstr "Nome de ficheiro"
+msgstr "Nume fișier"
 
 #: components/manage/Contents/Contents
 msgid "Filter…"
-msgstr "Filtro..."
+msgstr "Filtru…"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Fixed width table cells"
-msgstr "Células de tabela de tamanho fixo."
+msgstr "Celule de tabel cu lățimea fixă"
 
 #: components/manage/Contents/Contents
 msgid "Folder"
-msgstr ""
+msgstr "Director"
 
 #: components/theme/Forbidden/Forbidden
 msgid "Forbidden"
-msgstr ""
+msgstr "Interzis"
 
 #: components/theme/ContactForm/ContactForm
 msgid "From"
-msgstr "De"
+msgstr "Din"
 
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Full"
-msgstr "Cheio"
+msgstr "Complet"
 
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
 msgid "Full Name"
-msgstr "Nome Completo"
+msgstr "Numele complet"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Fullname"
-msgstr "Nome completo"
+msgstr "Numele complet"
 
 #: components/theme/Footer/Footer
 msgid "GNU GPL license"
-msgstr "Licença GNU GPL"
+msgstr "Licența GNU GPL"
 
 #: components/manage/Sharing/Sharing
 msgid "Global role"
-msgstr "Papel global"
+msgstr "Rolul global"
 
 #: components/manage/Blocks/Maps/Edit
 msgid "Google Maps Embedded Block"
-msgstr "Bloco Integrado Google Maps"
+msgstr "Bloc te tip Google Maps"
 
 #: components/manage/Sharing/Sharing
 msgid "Group"
-msgstr "Grupo"
+msgstr "Grup"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Group created"
-msgstr "Grupo criado"
+msgstr "Grup creat"
 
 #: components/manage/Controlpanels/UsersControlpanel
 #: helpers/MessageLabels/MessageLabels
 msgid "Groupname"
-msgstr "Nome do grupo"
+msgstr "Nume de grup"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Groups"
-msgstr "Grupos"
+msgstr "Grupuri"
 
 #: components/manage/History/History
 #: components/manage/Toolbar/More
 msgid "History"
-msgstr "Histórico"
+msgstr "Istoric"
 
 #: components/manage/History/History
 msgid "History of {title}"
-msgstr "Histórico de {title}"
+msgstr "Istoricul {title}"
 
 #: components/manage/Contents/Contents
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Home"
-msgstr "Início"
+msgstr "Acasă"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Home page"
-msgstr "Página inicial"
+msgstr "Pagina de pornire"
 
 #: components/manage/Contents/Contents
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "If selected, this item will not appear in the navigation tree"
-msgstr "Se este item estiver seleccionado, não irá aparecer na árvore de navegação"
+msgstr "Dacă este selectat, acest element nu va apărea în arborele de navigare"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "If this date is in the future, the content will not show up in listings and searches until this date."
-msgstr "Se esta data estiver no futuro, o conteúdo não irá aparecer em listas nem em pesquisas até esta data."
+msgstr "Dacă această dată va fi în viitor, conținutul nu va apărea în listări și căutări până la această dată."
 
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
-msgstr "Se tiver a certeza que tem o endereço web correcto mas está a obter um erro, por favor contacte o {site_admin}."
+msgstr "Dacă sunteți sigur că aveți adresa web corectă, dar întâmpinați o eroare, vă rugăm să contactați {site_admin}."
 
 #: components/theme/Login/Login
 msgid "If you have forgotten your password, {forgotpassword}"
-msgstr "Se se esqueceu da sua senha, {forgotpassword}"
+msgstr "Dacă v-ați uitat parola, {forgotpassword}"
 
 #: components/theme/Login/Login
 msgid "If you you do not have an account here, head over to the {registrationform}."
-msgstr "Se não tem uma conta aqui, dirija-se a {registrationform}."
+msgstr "Dacă nu aveți un cont aici, treceți la {registrationform}."
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
-msgstr "Imagem"
+msgstr "Imagine"
 
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
 msgid "Info"
-msgstr "Informação"
+msgstr "Info"
 
 #: components/manage/Sharing/Sharing
 msgid "Inherit permissions from higher levels"
-msgstr "Herdar permissões de níveis superiores"
+msgstr "Permisiuni mostenite de la niveluri superioare"
 
 #: components/manage/Sharing/Sharing
 msgid "Inherited value"
-msgstr "Herdar valor"
+msgstr "Valoarea moștenită"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Insert col after"
-msgstr "Inserir coluna após"
+msgstr "Introduceți col. după"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Insert col before"
-msgstr "Inserir coluna antes"
+msgstr "Introduceți coloana înainte"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Insert row after"
-msgstr "Inserir linha após"
+msgstr "Introduceți rândul după"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Insert row before"
-msgstr "Inserir linha antes"
+msgstr "Introduceți rândul înainte"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Install"
-msgstr ""
+msgstr "Instalare"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Installed"
-msgstr ""
+msgstr "Instalat"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Installed version"
-msgstr ""
+msgstr "Versiunea instalată"
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "Item batch size"
-msgstr ""
+msgstr "Dimensiunea lotului obiectului"
 
 #: components/manage/Contents/Contents
 msgid "Item(s) copied."
-msgstr "Item(ns) copiado(s)."
+msgstr "Obiect(e) copiat."
 
 #: components/manage/Contents/Contents
 msgid "Item(s) cut."
-msgstr "Item(ns) cortado(s)."
+msgstr "Obiect(e) tăiat(e)."
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 msgid "Item(s) pasted."
-msgstr "Item(ns) colado(s)."
+msgstr "Obiect(e) lipit(e)."
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Items"
-msgstr ""
+msgstr "Obiecte"
 
 #: components/manage/Form/ModalForm
 #: helpers/MessageLabels/MessageLabels
 msgid "Items must be unique."
-msgstr "Os itens têm de ser únicos."
+msgstr "Obiectele trebuie să fie unice."
 
 #: components/manage/Preferences/PersonalPreferences
 msgid "Language"
-msgstr "Idioma"
+msgstr "Limba"
 
 #: components/manage/Contents/Contents
 msgid "Last comment date"
-msgstr ""
+msgstr "Data ultimului comentariu"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Last modified"
-msgstr "Última modificação"
+msgstr "Ultima modificare"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Latest version"
-msgstr ""
+msgstr "Ultima versiune"
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Lead Image"
-msgstr ""
+msgstr "Imaginea de start"
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Left"
-msgstr "Esquerda"
+msgstr "Stânga"
 
 #: components/manage/Toolbar/Toolbar
 msgid "Link"
-msgstr ""
+msgstr "Legătură"
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Link more"
-msgstr ""
+msgstr "Legătură către mai multe"
 
 #: components/manage/Blocks/Listing/ListingMore
 msgid "Link title"
-msgstr ""
+msgstr "Legătură la titlu"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -884,48 +876,48 @@ msgstr ""
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Link to"
-msgstr "Ligar a"
+msgstr "Legătură către"
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
-msgstr ""
+msgstr "Listare"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Location"
-msgstr "Localização"
+msgstr "Locație"
 
 #: components/theme/Login/Login
 msgid "Log In"
-msgstr "Iniciar sessão"
+msgstr "Autentificare"
 
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
 msgid "Log in"
-msgstr "Iniciar sessão"
+msgstr "Autentificare"
 
 #: components/theme/Login/Login
 msgid "Login"
-msgstr "Iniciar sessão"
+msgstr "Autentificare"
 
 #: components/theme/Login/Login
 msgid "Login Failed"
-msgstr "Falhou o início de sessão"
+msgstr "Autentificare eșuată"
 
 #: components/theme/Login/Login
 msgid "Login Name"
-msgstr "Nome de utilizador"
+msgstr "Nume de autentificare"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Make the table compact"
-msgstr "Compactar a tabela"
+msgstr "Compactati tabelul"
 
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "Map"
-msgstr ""
+msgstr "Hartă"
 
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "Maps URL"
-msgstr ""
+msgstr "URL Hartă"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Maximum length is {len}."
@@ -937,12 +929,12 @@ msgstr ""
 
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
-msgstr "Mensagem"
+msgstr "Mesaj"
 
 #: components/manage/Form/ModalForm
 #: helpers/MessageLabels/MessageLabels
 msgid "Minimum length is {len}."
-msgstr "O comprimento mínimo é {len}."
+msgstr "Lungimea minimă este {len}."
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Minimum value is {len}."
@@ -950,106 +942,106 @@ msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Moderate Comments"
-msgstr "Moderar Comentários"
+msgstr "Moderati comentarii"
 
 #: components/manage/Controlpanels/ModerateComments
 msgid "Moderate comments"
-msgstr "Moderar comentários"
+msgstr "Moderati comentarii"
 
 #: components/manage/Toolbar/Toolbar
 msgid "More"
-msgstr ""
+msgstr "Mai mult"
 
 #: components/manage/Contents/ContentsItem
 msgid "Move to bottom of folder"
-msgstr "Mover para o fundo da pasta"
+msgstr "Mutați în partea de jos a folderului"
 
 #: components/manage/Contents/ContentsItem
 msgid "Move to top of folder"
-msgstr "Mover para o topo da pasta"
+msgstr "Mutați în partea de sus a folderului"
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "My email address is"
-msgstr "O meu endereço de email é"
+msgstr "Adresa mea de e-mail este"
 
 #: components/manage/Sharing/Sharing
 #: components/theme/ContactForm/ContactForm
 msgid "Name"
-msgstr "Nome"
+msgstr "Nume"
 
 #: error
 msgid "Navigate back"
-msgstr ""
+msgstr "Navigați înapoi"
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "New password"
-msgstr "Nova senha"
+msgstr "Parolă nouă"
 
 #: components/manage/Toolbar/Toolbar
 msgid "News Item"
-msgstr ""
+msgstr "Articol de știri"
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypes
 msgid "No"
-msgstr ""
+msgstr "Nu"
 
 #: components/manage/Blocks/Image/ImageSidebar
 msgid "No image selected"
-msgstr "Nenhuma imagem seleccionada"
+msgstr "Nici o imagine selectată"
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "No image set in Lead Image content field"
-msgstr ""
+msgstr "Nicio imagine setată în câmpul de conținut imagine de start"
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "No image set in image content field"
-msgstr ""
+msgstr "Nicio imagine setată în câmpul imagine de continut"
 
 #: components/manage/Blocks/Listing/ListingBody
 msgid "No items found in this container."
-msgstr ""
+msgstr "Nu s-au găsit articole în acest container."
 
 #: components/manage/Widgets/ObjectBrowserWidget
 msgid "No items selected"
-msgstr ""
+msgstr "Niciun element selectat"
 
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "No map selected"
-msgstr ""
+msgstr "Nicio hartă selectată"
 
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
-msgstr "Não foram encontrados quaisquer resultados."
+msgstr "Nu s-au găsit rezultate."
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "No selection"
-msgstr ""
+msgstr "Fără selecție"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "No uninstall profile"
-msgstr ""
+msgstr "Niciun profil de dezinstalare"
 
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
 #: components/manage/Widgets/SelectWidget
 msgid "No value"
-msgstr "Sem qualquer valor"
+msgstr "Fără valoare"
 
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "No video selected"
-msgstr ""
+msgstr "Niciun videoclip selectat"
 
 #: components/manage/Workflow/Workflow
 msgid "No workflow"
-msgstr "Sem fluxo de trabalho"
+msgstr "Fără flux de lucru"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
 msgid "None"
-msgstr "Nenhum"
+msgstr "Niciuna"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Number of active objects"
@@ -1057,7 +1049,7 @@ msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Object Size"
-msgstr ""
+msgstr "Dimensiunea obiectului"
 
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -1068,152 +1060,152 @@ msgstr "Ok"
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Open in a new tab"
-msgstr "Abrir num novo separador"
+msgstr "Deschideți într-o fereastra nouă"
 
 #: components/theme/Navigation/Navigation
 msgid "Open menu"
-msgstr "Abrir menu"
+msgstr "Deschideți meniul"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Origin"
-msgstr "Origem"
+msgstr "Origine"
 
 #: components/manage/Toolbar/Toolbar
 msgid "Page"
-msgstr ""
+msgstr "Pagina"
 
 #: components/theme/Login/Login
 #: helpers/MessageLabels/MessageLabels
 msgid "Password"
-msgstr "Senha"
+msgstr "Parolă"
 
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Password reset"
-msgstr "Reiniciar senha"
+msgstr "Resetare parolă"
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Passwords do not match."
-msgstr "As senhas não coincidem."
+msgstr "Parolele nu se potrivesc."
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 msgid "Paste"
-msgstr "Colar"
+msgstr "Lipire"
 
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Toolbar/Toolbar
 msgid "Personal Information"
-msgstr "Informação Pessoal"
+msgstr "Informații personale"
 
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Toolbar/Toolbar
 msgid "Personal Preferences"
-msgstr "Preferências Pessoais"
+msgstr "Preferințe personale"
 
 #: components/manage/Toolbar/More
 #: components/manage/Toolbar/Toolbar
 msgid "Personal tools"
-msgstr ""
+msgstr "Instrumente personale"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
-msgstr "Pessoas responsáveis pela criação de conteúdo deste item. Pro favor escreva uma lista de nomes de utilizador, um por linha. O criador principal deve estar em primeiro lugar."
+msgstr "Persoane responsabile de crearea conținutului acestui articol. Vă rugăm să introduceți o listă cu numele de utilizator, unul pe fiecare linie. Creatorul principal ar trebui să vină pe primul loc."
 
 #: components/manage/Blocks/Video/Edit
 msgid "Please enter a valid URL by deleting the block and adding a new video block."
-msgstr ""
+msgstr "Vă rugăm să introduceți o adresă URL validă ștergând blocul și adăugând un nou bloc video."
 
 #: components/manage/Blocks/Maps/Edit
 msgid "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
-msgstr ""
+msgstr "Vă rugăm să introduceți codul de integrare furnizat de Google Maps -> Partajare -> Integrare harta. Acesta trebuie să conțină codul <iframe>."
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Please fill out the form below to set your password."
-msgstr "Por favor preencha o formulário abaixo para definir a sua senha."
+msgstr "Vă rugăm să completați formularul de mai jos pentru a seta parola."
 
 #: components/theme/Footer/Footer
 msgid "Plone Foundation"
-msgstr "Fundação Plone"
+msgstr "Fundația Plone"
 
 #: components/theme/Logo/Logo
 msgid "Plone Site"
-msgstr "Sítio Plone"
+msgstr "Site Plone"
 
 #: components/theme/Footer/Footer
 msgid "Plone{reg} Open Source CMS/WCM"
-msgstr "Plone{reg} Open Source CMS/WCM"
+msgstr "Plone{reg} CMS/WCM Open Source"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Portrait"
-msgstr "Retrato"
+msgstr "Portret"
 
 #: components/theme/Footer/Footer
 msgid "Powered by Plone & Python"
-msgstr "Criado com Plone e Python"
+msgstr "Powered by Plone & Python"
 
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
-msgstr "Preferências"
+msgstr "Preferințe"
 
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
 msgid "Preview"
-msgstr "Pré-visualização"
+msgstr "Previzualizare"
 
 #: components/manage/Toolbar/PersonalTools
 msgid "Profile"
-msgstr "Perfil"
+msgstr "Profil"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Properties"
-msgstr "Propriedades"
+msgstr "Proprietăți"
 
 #: components/manage/Contents/Contents
 msgid "Publication date"
-msgstr ""
+msgstr "Data publicării"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Publishing Date"
-msgstr "Data de Publicação"
+msgstr "Data publicării"
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "Re-enter the password. Make sure the passwords are identical."
-msgstr "Escreva de novo a senha. Certifique-se que as senhas são idênticas."
+msgstr "Reintroduceți parola. Asigurați-vă că parolele sunt identice."
 
 #: components/theme/Search/Search
 #: components/theme/View/SummaryView
 msgid "Read More…"
-msgstr "Ler Mais..."
+msgstr "Citește mai mult ..."
 
 #: components/manage/Contents/Contents
 msgid "Rearrange items by…"
-msgstr "Reordenar itens por..."
+msgstr "Reorganizați elementele in functie de ..."
 
 #: components/manage/Blocks/Table/Edit
 msgid "Reduce complexity"
-msgstr "Reduzir complexidade"
+msgstr "Reduce complexitatea"
 
 #: components/theme/Anontools/Anontools
 #: components/theme/Register/Register
 msgid "Register"
-msgstr "Registar"
+msgstr "Înregistrare"
 
 #: components/theme/Register/Register
 msgid "Registration form"
-msgstr "Formulário de registo"
+msgstr "Formular de înregistrare"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 msgid "Rename"
-msgstr "Renomear"
+msgstr "Redenumește"
 
 #: components/manage/Contents/ContentsRenameModal
 msgid "Rename items"
-msgstr "Renomear itens"
+msgstr "Redenumirea articolelor"
 
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
@@ -1223,32 +1215,32 @@ msgstr "Renomear itens"
 #: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 msgid "Required"
-msgstr "Obrigatório"
+msgstr "Obligatoriu"
 
 #: components/manage/Form/ModalForm
 #: helpers/MessageLabels/MessageLabels
 msgid "Required input is missing."
-msgstr "Falta informação obrigatória."
+msgstr "Câmpul este obligatoriu."
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "Results limit"
-msgstr ""
+msgstr "Limita rezultatelor"
 
 #: components/manage/Blocks/Listing/Edit
 msgid "Results preview"
-msgstr ""
+msgstr "Previzualizare rezultate"
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "Reversed order"
-msgstr ""
+msgstr "Ordine inversată"
 
 #: components/manage/History/History
 msgid "Revert to this revision"
-msgstr "Reverter para esta revisão"
+msgstr "Reveniți la această revizuire"
 
 #: components/manage/Contents/Contents
 msgid "Review state"
-msgstr ""
+msgstr "Stare de revizuire"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Richtext"
@@ -1258,15 +1250,15 @@ msgstr "Richtext"
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Right"
-msgstr "Direita"
+msgstr "Dreapta"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Rights"
-msgstr "Permissões"
+msgstr "Drepturi"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Roles"
-msgstr "Papéis"
+msgstr "Roluri"
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentType
@@ -1276,85 +1268,85 @@ msgstr "Papéis"
 #: components/manage/Sharing/Sharing
 #: helpers/MessageLabels/MessageLabels
 msgid "Save"
-msgstr "Guardar"
+msgstr "Salvare"
 
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search"
-msgstr "Pesquisar"
+msgstr "Căutare"
 
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search Site"
-msgstr "Pesquisar Sítio"
+msgstr "Căutare pe site"
 
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Search content"
-msgstr "Pesquisar conteúdo"
+msgstr "Căutare conținut"
 
 #: components/manage/Sharing/Sharing
 msgid "Search for user or group"
-msgstr "Pesquisar utilizador ou grupo"
+msgstr "Căutare utilizator sau grup"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Search group..."
-msgstr "Pesquisar grupo..."
+msgstr "Grup de căutare ..."
 
 #: components/theme/Search/Search
 msgid "Search results"
-msgstr "Resultados da pesquisa"
+msgstr "Rezultatele căutării"
 
 #: components/theme/Search/Search
 msgid "Search results for {term}"
-msgstr "Resultados da pesquisa para {term}"
+msgstr "Rezultatele căutării pentru {term}"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Search users..."
-msgstr "Pesquisar utilizadores..."
+msgstr "Căutați utilizatori ..."
 
 #: components/manage/Contents/Contents
 msgid "Select columns to show"
-msgstr "Seleccione colunas a apresentar"
+msgstr "Selectați coloane de afișat"
 
 #: components/manage/Widgets/QuerystringWidget
 msgid "Select criteria"
-msgstr "Critérios de selecção"
+msgstr "Selectarea criteriilor"
 
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Select the transition to be used for modifying the items state."
-msgstr "Seleccione a transição a ser usada para modificar o estado dos itens."
+msgstr "Selectați tranziția care va fi utilizată pentru modificarea stării elementelor."
 
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Selected items"
-msgstr ""
+msgstr "Articole selectate"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Selection"
-msgstr "Selecção"
+msgstr "Selecție"
 
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
 msgid "Select…"
-msgstr "Seleccionar..."
+msgstr "Selectați ..."
 
 #: components/theme/ContactForm/ContactForm
 msgid "Send"
-msgstr "Enviar"
+msgstr "Trimite"
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Set my password"
-msgstr "Definir a minha senha"
+msgstr "Setați parola mea"
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Set your password"
-msgstr "Defina a sua senha"
+msgstr "Setați parola"
 
 #: components/manage/Sharing/Sharing
 #: components/manage/Toolbar/More
 msgid "Sharing"
-msgstr "Partilha"
+msgstr "Partajare"
 
 #: components/manage/Sharing/Sharing
 msgid "Sharing for {title}"
-msgstr "Partilha de {title}"
+msgstr "Partajare pentru {title}"
 
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
@@ -1364,49 +1356,49 @@ msgstr "Partilha de {title}"
 #: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 msgid "Short Name"
-msgstr "Nome Curto"
+msgstr "Nume"
 
 #: components/manage/Contents/ContentsRenameModal
 msgid "Short name"
-msgstr "Nome curto"
+msgstr "Nume"
 
 #: components/theme/Pagination/Pagination
 msgid "Show"
-msgstr ""
+msgstr "Afișați"
 
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
-msgstr "Encolher barra lateral"
+msgstr "Reduceți bara laterală"
 
 #: components/manage/Toolbar/Toolbar
 msgid "Shrink toolbar"
-msgstr ""
+msgstr "Reduceti bara de instrumente"
 
 #: components/theme/Login/Login
 msgid "Sign in to start session"
-msgstr "Inicie a sessão"
+msgstr "Conectați-vă pentru a începe sesiunea"
 
 #: components/theme/Logo/Logo
 msgid "Site"
-msgstr "Sítio"
+msgstr "Site"
 
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized
 msgid "Site Administration"
-msgstr "Administração do Sítio"
+msgstr "Administrare site"
 
 #: components/theme/Footer/Footer
 msgid "Site Map"
-msgstr "Mapa do Sítio"
+msgstr "Harta site-ului"
 
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/PersonalTools
 msgid "Site Setup"
-msgstr "Configuração do Sítio"
+msgstr "Configurare site"
 
 #: components/theme/Sitemap/Sitemap
 msgid "Sitemap"
-msgstr ""
+msgstr "Sitemap"
 
 #: components/manage/Blocks/Image/ImageSidebar
 msgid "Size"
@@ -1414,54 +1406,54 @@ msgstr ""
 
 #: components/theme/View/ImageView
 msgid "Size: {size}"
-msgstr ""
+msgstr "Mărime: {size}"
 
 #: error
 msgid "Sorry, something went wrong with your request"
-msgstr ""
+msgstr "Ne pare rău, a apârut o eroare"
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "Sort on"
-msgstr ""
+msgstr "Sortare pe"
 
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Blocks/Listing/ListingData
 msgid "Source"
-msgstr ""
+msgstr "Sursa"
 
 #: components/manage/Blocks/Video/Edit
 msgid "Specify a youtube video or playlist url"
-msgstr "Especifique um vídeo youtube ou um URL de um repertório (playlist)"
+msgstr "Specificați un URL YouTube sau url de playlist"
 
 #: components/manage/Diff/Diff
 msgid "Split"
-msgstr "Dividir"
+msgstr "Împărțire"
 
 #: components/manage/Contents/Contents
 msgid "Start Date"
-msgstr ""
+msgstr "Data de început"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Start password reset"
-msgstr "Redefinir senha"
+msgstr "Start resetare parolă"
 
 #: components/manage/Contents/Contents
 #: components/manage/Workflow/Workflow
 #: components/theme/View/TabularView
 msgid "State"
-msgstr "Estado"
+msgstr "Stare"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "String"
-msgstr "Texto"
+msgstr "String"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Stripe alternate rows with color"
-msgstr "Alternar cores das linhas"
+msgstr "Colorati randurile alternativ"
 
 #: components/theme/ContactForm/ContactForm
 msgid "Subject"
-msgstr "Assunto"
+msgstr "Subiect"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -1472,32 +1464,32 @@ msgstr "Assunto"
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
 msgid "Success"
-msgstr "Sucesso"
+msgstr "Succes"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Table"
-msgstr "Tabela"
+msgstr "Tabel"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Table color inverted"
-msgstr "Cor da tabela invertida"
+msgstr "Culoarea tabelului inversată"
 
 #: components/manage/Blocks/ToC/View
 msgid "Table of Contents"
-msgstr ""
+msgstr "Cuprins"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsTagsModal
 msgid "Tags"
-msgstr "Etiquetas"
+msgstr "Etichete"
 
 #: components/manage/Contents/ContentsTagsModal
 msgid "Tags to add"
-msgstr "Etiquetas a adicionar"
+msgstr "Etichete de adăugat"
 
 #: components/manage/Contents/ContentsTagsModal
 msgid "Tags to remove"
-msgstr "Etiquetas a remover"
+msgstr "Etichete de eliminat"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Target memory size per cache in bytes"
@@ -1509,18 +1501,18 @@ msgstr ""
 
 #: components/manage/Blocks/Listing/TemplateWidget
 msgid "Template"
-msgstr ""
+msgstr "Șablon"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Text"
-msgstr "Texto"
+msgstr "Text"
 
 #: components/theme/ConnectionRefused/ConnectionRefused
 #: components/theme/CorsError/CorsError
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized
 msgid "Thank you."
-msgstr "Obrigado."
+msgstr "Mulțumesc."
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "The Database Manager allow you to view database status information"
@@ -1528,48 +1520,48 @@ msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 msgid "The URL for your external home page, if you have one."
-msgstr "O URL da sua página inicial externa, se tiver uma."
+msgstr "Adresa URL a paginii de start externe, dacă aveți una."
 
 #: components/theme/ConnectionRefused/ConnectionRefused
 msgid "The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable."
-msgstr ""
+msgstr "Backendul nu răspunde. Vă rugăm să verificați dacă ați pornit Plone, verificați obiectul apiPath de configurare al proiectului dvs. (sau dacă utilizați proxy intern, devProxyToApiPath) sau variabila de mediu RAZZLE_API_PATH Volto."
 
 #: components/theme/CorsError/CorsError
 msgid "The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources."
-msgstr ""
+msgstr "Backendul răspunde, dar anteturile CORS nu sunt configurate corect și browserul a refuzat accesul la resursele de backend."
 
 #: components/theme/Register/Register
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
-msgstr "O processo de registo foi bem sucedido. Por favor verifique no seu e-mail a informação sobre como activar a sua conta."
+msgstr "Procesul de înregistrare a avut succes. Vă rugăm să verificați căsuța de e-mail pentru informații despre modul de activare a contului dvs."
 
 #: components/manage/Preferences/PersonalInformation
 msgid "The user portrait/avatar"
-msgstr "Retrato/avatar do utilizador"
+msgstr "Portretul / avatarul utilizatorului"
 
 #: components/theme/Footer/Footer
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
-msgstr "O {plonecms} tem {copyright} de 2000-{current_year} pela {plonefoundation} e amigos."
+msgstr "{plonecms} este {copyright} 2000- {current_year} de {plonefoundation} și prieteni."
 
 #: components/theme/CorsError/CorsError
 msgid "There is a configuration problem on the backend"
-msgstr ""
+msgstr "Există o problemă de configurare pe backend"
 
 #: components/manage/Form/InlineForm
 msgid "There were some errors"
-msgstr ""
+msgstr "Au aparut unele erori"
 
 #: components/manage/Form/ModalForm
 #: helpers/MessageLabels/MessageLabels
 msgid "There were some errors."
-msgstr "Ocorreram alguns erros."
+msgstr "Au aparut unele erori."
 
 #: components/manage/Contents/ContentsRenameModal
 msgid "This name will be displayed in the URL."
-msgstr "Este nome será apresentado no URL."
+msgstr "Acest nume va fi afișat în adresa URL."
 
 #: components/theme/NotFound/NotFound
 msgid "This page does not seem to exist…"
-msgstr "Esta página não parece existir..."
+msgstr "Se pare că această pagină nu există ..."
 
 #: components/manage/Widgets/DatetimeWidget
 msgid "Time"
@@ -1589,7 +1581,7 @@ msgstr ""
 #: components/theme/View/TabularView
 #: helpers/MessageLabels/MessageLabels
 msgid "Title"
-msgstr "Título"
+msgstr "Titlu"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total active and non-active objects"
@@ -1597,7 +1589,7 @@ msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Total comments"
-msgstr ""
+msgstr "Total comentarii"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total number of objects in each cache"
@@ -1613,82 +1605,82 @@ msgstr ""
 
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
-msgstr ""
+msgstr "Traduceți în {lang}"
 
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
 msgid "Type"
-msgstr "Tipo"
+msgstr "Tip"
 
 #: components/manage/Blocks/Video/Edit
 msgid "Type a Video (YouTube, Vimeo or mp4) URL"
-msgstr ""
+msgstr "Introduceți un URL video (YouTube, Vimeo sau mp4)"
 
 #: components/manage/Blocks/Text/Edit
 msgid "Type text…"
-msgstr "Escreva texto..."
+msgstr "Tastați textul ..."
 
 #: components/manage/Blocks/Title/Edit
 msgid "Type the title…"
-msgstr "Escreva o título..."
+msgstr "Tastați titlul ..."
 
 #: components/manage/Contents/Contents
 msgid "UID"
-msgstr ""
+msgstr "UID"
 
 #: components/theme/Unauthorized/Unauthorized
 msgid "Unauthorized"
-msgstr ""
+msgstr "Neautorizat"
 
 #: components/manage/Diff/Diff
 msgid "Unified"
-msgstr "Unificado"
+msgstr "Unificat"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Uninstall"
-msgstr ""
+msgstr "Dezinstalare"
 
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
 msgid "Unknown Block"
-msgstr "Bloco Desconhecido"
+msgstr "Bloc necunoscut"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update"
-msgstr ""
+msgstr "Actualizare"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update installed addons"
-msgstr ""
+msgstr "Actualizați suplimentele instalate"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update installed addons:"
-msgstr ""
+msgstr "Actualizați suplimentele instalate:"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Updates available"
-msgstr ""
+msgstr "Actualizări disponibile"
 
 #: components/manage/Contents/Contents
 msgid "Upload"
-msgstr "Enviar"
+msgstr "Încărcare"
 
 #: components/manage/Blocks/LeadImage/Edit
 msgid "Upload a lead image in the 'Lead Image' content field."
-msgstr ""
+msgstr "Încărcați o imagine de start în câmpul de conținut 'Imagine de start'."
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Upload files"
-msgstr "Enviar ficheiros"
+msgstr "Încărcați fișiere"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Upload {count, plural, one {# file} other {# files}}"
-msgstr "Enviar {count, plural, one {# file} other {# files}}"
+msgstr "Încărcați {count, plural, one {# file} other {# files}}"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Uploading files"
-msgstr "Enviando ficheiros"
+msgstr "Încărcarea fișierelor"
 
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
@@ -1698,181 +1690,181 @@ msgstr "Enviando ficheiros"
 #: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 msgid "Used for programmatic access to the fieldset."
-msgstr "Usado para aceder programaticamente ao conjunto de campos."
+msgstr "Folosit pentru acces programatic la setul de câmpuri."
 
 #: components/manage/Sharing/Sharing
 msgid "User"
-msgstr "Utilizador"
+msgstr "Utilizator"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "User created"
-msgstr "Utilizador criado"
+msgstr "Utilizator creat"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "User name"
-msgstr "Nome de utilizador"
+msgstr "Nume utilizator"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Username"
-msgstr "Nome de utilizador"
+msgstr "Nume utilizator"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Users"
-msgstr "Utilizadores"
+msgstr "Utilizatori"
 
 #: components/manage/Controlpanels/Controlpanels
 #: helpers/MessageLabels/MessageLabels
 msgid "Users and Groups"
-msgstr "Utilizadores e Grupos"
+msgstr "Utilizatori și grupuri"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Users and groups settings"
-msgstr "Configurações de utilizadores e grupos"
+msgstr "Setările utilizatorilor și grupurilor"
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Version Overview"
-msgstr "Resumo da Versão"
+msgstr "Prezentare generală a versiunii"
 
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Video"
-msgstr ""
+msgstr "Video"
 
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Video URL"
-msgstr ""
+msgstr "URL-ul video"
 
 #: components/manage/Contents/ContentsItem
 msgid "View"
-msgstr "Ver"
+msgstr "Vizualizare"
 
 #: components/manage/History/History
 msgid "View changes"
-msgstr "Ver modificações"
+msgstr "Vizualizare modificări"
 
 #: components/manage/History/History
 msgid "View this revision"
-msgstr "Ver esta revisão"
+msgstr "Vizualizați această revizuire"
 
 #: components/manage/Display/Display
 msgid "Viewmode"
-msgstr "Modo de visualização"
+msgstr "Mod vizualizare"
 
 #: components/manage/Controlpanels/VersionOverview
 msgid "Warning Regarding debug mode"
-msgstr ""
+msgstr "Avertisment cu privire la modul de depanare"
 
 #: components/theme/ConnectionRefused/ConnectionRefused
 msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later."
-msgstr ""
+msgstr "Ne cerem scuze pentru neplăceri, dar backend-ul site-ului pe care îl accesați nu este disponibil în acest moment. Vă rugăm, încercați din nou mai târziu."
 
 #: components/theme/CorsError/CorsError
 msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not configured properly right now. Please, try again later."
-msgstr ""
+msgstr "Ne cerem scuze pentru neplăceri, dar backend-ul site-ului pe care îl accesați nu este configurat corect în acest moment. Vă rugăm, încercați din nou mai târziu."
 
 #: components/theme/NotFound/NotFound
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
-msgstr "Pedimos desculpa pela inconveniência, mas a página a que está a tentar aceder não está neste endereço. Pode usar as ligações abaixo para ajudar a encontrar o que procura."
+msgstr "Ne cerem scuze pentru neplăceri, dar pagina pe care încercați să o accesați nu se află la această adresă. Puteți utiliza linkurile de mai jos pentru a vă ajuta să găsiți ceea ce căutați."
 
 #: components/theme/Forbidden/Forbidden
 msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
-msgstr ""
+msgstr "Ne cerem scuze pentru neplăceri, dar nu aveți permisiuni pentru a accesa această resursă."
 
 #: components/manage/Preferences/PersonalInformation
 msgid "We will use this address if you need to recover your password"
-msgstr "Iremos usar este endereço se precisar de recuperar a sua senha"
+msgstr "Vom folosi această adresă în cazul în care trebuie să vă recuperați parola"
 
 #: components/manage/History/History
 msgid "What"
-msgstr "O quê"
+msgstr "Ce"
 
 #: components/manage/History/History
 msgid "When"
-msgstr "Quando"
+msgstr "Când"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "When this date is reached, the content will nolonger be visible in listings and searches."
-msgstr "Quando chegar a esta data, o conteúdo deixará de ficar visível nas listagens e nas pesquisas."
+msgstr "Când se ajunge la această dată, conținutul nu va fi mai vizibil în listări și căutări."
 
 #: components/manage/History/History
 msgid "Who"
-msgstr "Quem"
+msgstr "Cine"
 
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
-msgstr "Fluxo de trabalho actualizado."
+msgstr "Fluxul de lucru a fost actualizat."
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypes
 msgid "Yes"
-msgstr ""
+msgstr "Da"
 
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource, please {login} first."
-msgstr ""
+msgstr "Încercați să accesați o resursă protejată, vă rugăm mai întâi {login}."
 
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "You are using an outdated browser"
-msgstr ""
+msgstr "Utilizați un browser învechit"
 
 #: components/theme/Comments/Comments
 msgid "You can add a comment by filling out the form below. Plain text formatting."
-msgstr "Pode adicionar um comentário ao preencher o formulário abaixo. Formatação simples de texto."
+msgstr "Puteți adăuga un comentariu completând formularul de mai jos. Formatare text simplu."
 
 #: components/manage/Sharing/Sharing
 msgid "You can control who can view and edit your item using the list below."
-msgstr "Pode controlar quem irá ver e editar o seu item usando a lista abaixo."
+msgstr "Puteți controla cine vă poate vizualiza și edita elementul folosind lista de mai jos."
 
 #: components/manage/Diff/Diff
 msgid "You can view the difference of the revisions below."
-msgstr "Pode ver a diferença das revisões abaixo."
+msgstr "Puteți vedea diferența reviziilor de mai jos."
 
 #: components/manage/History/History
 msgid "You can view the history of your item below."
-msgstr "Pode ver o histórico do seu item abaixo."
+msgstr "Puteți vedea istoricul articolului dvs. mai jos."
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Your email is required for reset your password."
-msgstr "O seu email é necessário para reiniciar a sua senha."
+msgstr "E-mailul dvs. este necesar pentru resetarea parolei."
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Your location - either city and country - or in a company setting, where your office is located."
-msgstr "A sua localização (cidade ou país) ou, no contexto de uma empresa, onde o escritório está localizado."
+msgstr "Locația dvs. - fie orașul, fie țara - fie într-un cadru al companiei, unde se află biroul dvs."
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Your password has been set successfully. You may now {link} with your new password."
-msgstr "A sua senha foi definida com sucesso. Pode agora {link} com a sua nova senha."
+msgstr "Parola dvs. a fost setată cu succes. Acum puteți {link} cu noua dvs. parolă."
 
 #: components/manage/Preferences/PersonalPreferences
 msgid "Your preferred language"
-msgstr "O seu idioma preferido"
+msgstr "Limba dvs. preferată"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "box_forgot_password_option"
-msgstr "box_forgot_password_option"
+msgstr "Ați uitat parola?"
 
 #: config/Blocks
 msgid "common"
-msgstr "comum"
+msgstr "Comun"
 
 #: components/manage/Blocks/Block/Edit
 msgid "delete"
-msgstr "eliminar"
+msgstr "Ștergeți"
 
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "deprecated_browser_notice_message"
-msgstr ""
+msgstr "Browser-ul dvs. {browsername} {browserversion} este învechit. Actualizați browser-ul pentru o mai mare siguranță, viteză și cea mai bună experiență pe acest site."
 
 #: config/Blocks
 msgid "description"
-msgstr "descrição"
+msgstr "Descriere"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "description_lost_password"
-msgstr "descrição_senha_perdida"
+msgstr "Din motive de securitate, parola dvs. este criptată și nu poate fi recuperată. Dacă doriți să o schimbați, completați formularul de mai jos și veți primi instrucțiunile la adresa de e-mail cu care v-ați înregistrat"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "description_sent_password"
-msgstr "descrição_senha_enviada"
+msgstr "Parola este în curs de schimbare. Urmați instrucțiunile primite pe adresa de e-mail pentru a finaliza procesul de schimbare a parolei."
 
 #: helpers/MessageLabels/MessageLabels
 msgid "email"
@@ -1880,51 +1872,51 @@ msgstr ""
 
 #: components/theme/View/EventView
 msgid "event_alldates"
-msgstr ""
+msgstr "Toate"
 
 #: components/theme/View/EventView
 msgid "event_attendees"
-msgstr ""
+msgstr "Participanți"
 
 #: components/theme/View/EventView
 msgid "event_contactname"
-msgstr ""
+msgstr "Nume"
 
 #: components/theme/View/EventView
 msgid "event_contactphone"
-msgstr ""
+msgstr "Telefon"
 
 #: components/theme/View/EventView
 msgid "event_website"
-msgstr ""
+msgstr "Website"
 
 #: components/theme/View/EventView
 msgid "event_what"
-msgstr ""
+msgstr "Despre"
 
 #: components/theme/View/EventView
 msgid "event_when"
-msgstr ""
+msgstr "Data"
 
 #: components/theme/View/EventView
 msgid "event_where"
-msgstr ""
+msgstr "Locație"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "heading_sent_password"
-msgstr "título_senha_enviada"
+msgstr "Confirmare schimbare parolă trimisă cu succes"
 
 #: config/Blocks
 msgid "hero"
-msgstr "herói"
+msgstr "Hero"
 
 #: config/Blocks
 msgid "html"
-msgstr "html"
+msgstr "HTML"
 
 #: config/Blocks
 msgid "image"
-msgstr "imagem"
+msgstr "Imagine"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "integer"
@@ -1932,31 +1924,31 @@ msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "label_my_email_address_is"
-msgstr "etiqueta_meu_email_é"
+msgstr "Adresa e-mail"
 
 #: config/Blocks
 msgid "leadimage"
-msgstr ""
+msgstr "Imagine (copertă)"
 
 #: config/Blocks
 msgid "listing"
-msgstr ""
+msgstr "Listare"
 
 #: components/theme/Unauthorized/Unauthorized
 msgid "log in"
-msgstr ""
+msgstr "autentificați-vă"
 
 #: config/Blocks
 msgid "maps"
-msgstr "mapas"
+msgstr "Harta"
 
 #: config/Blocks
 msgid "media"
-msgstr "média"
+msgstr "Media"
 
 #: config/Blocks
 msgid "mostUsed"
-msgstr "maisUsado"
+msgstr "Cele mai utilizate"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "number"
@@ -1964,39 +1956,39 @@ msgstr ""
 
 #: error
 msgid "or try a different page."
-msgstr ""
+msgstr "sau încercați o altă pagină."
 
 #: components/theme/Login/Login
 msgid "registration form"
-msgstr "formulário de registo"
+msgstr "formular de înregistrare"
 
 #: components/theme/Search/Search
 msgid "results found"
-msgstr ""
+msgstr "rezultate găsite"
 
 #: error
 msgid "return to the site root"
-msgstr ""
+msgstr "revenire la prima pagină"
 
 #: components/manage/Contents/Contents
 msgid "sort"
-msgstr ""
+msgstr "sortare"
 
 #: config/Blocks
 msgid "table"
-msgstr "tabela"
+msgstr "Tabel"
 
 #: config/Blocks
 msgid "text"
-msgstr "texto"
+msgstr "Text"
 
 #: config/Blocks
 msgid "title"
-msgstr "título"
+msgstr "Titlu"
 
 #: config/Blocks
 msgid "toc"
-msgstr ""
+msgstr "Cuprins"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "url"
@@ -2004,36 +1996,36 @@ msgstr ""
 
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"
-msgstr "avatar do utilizador"
+msgstr "avatarul utilizatorului"
 
 #: config/Blocks
 msgid "video"
-msgstr "vídeo"
+msgstr "Video"
 
 #: components/theme/View/EventView
 msgid "visit_external_website"
-msgstr ""
+msgstr "Vizitează site extern"
 
 #: components/theme/Login/Login
 msgid "we can send you a new one"
-msgstr "podemos enviar-lhe uma nova"
+msgstr "vă putem trimite unul nou"
 
 #: components/manage/Contents/Contents
 msgid "{count} selected"
-msgstr "{count} seleccionados"
+msgstr "{count} selectat"
 
 #: components/manage/Actions/Actions
 msgid "{title} copied."
-msgstr "{title} copiado."
+msgstr "copiat {title}."
 
 #: components/manage/Actions/Actions
 msgid "{title} cut."
-msgstr "{title} cortado."
+msgstr "{title} tăiat."
 
 #: components/manage/Actions/Actions
 msgid "{title} has been deleted."
-msgstr "{title} foi eliminado."
+msgstr "{title} a fost șters."
 
 #: components/theme/Comments/Comments
 msgid "{user} says:"
-msgstr "{user} diz:"
+msgstr "{user} spune:"

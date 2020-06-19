@@ -3,10 +3,10 @@
  * @module components/manage/Widgets/PassswordWidget
  */
 
-import React from 'react';
+import { FormFieldWrapper } from '@plone/volto/components';
 import PropTypes from 'prop-types';
-import { Form, Grid, Input, Label } from 'semantic-ui-react';
-import { map } from 'lodash';
+import React from 'react';
+import { Input } from 'semantic-ui-react';
 
 /**
  * PasswordWidget component class.
@@ -24,66 +24,40 @@ const PasswordWidget = ({
   onBlur,
   onClick,
   fieldSet,
+  wrapped,
   minLength,
   maxLength,
-}) => {
-  const inputId = `field-${id}`;
-  const fieldId = `${fieldSet || 'field'}-${id}`;
-  const errorsList = map(error, (message) => (
-    <Label key={message} basic color="red" pointing>
-      {message}
-    </Label>
-  ));
-
-  return (
-    <Form.Field
-      inline
-      required={required}
-      error={error.length > 0}
-      className={description ? 'help' : ''}
-      id={fieldId}
+}) => (
+  <FormFieldWrapper
+    id={id}
+    title={title}
+    description={description}
+    required={required}
+    error={error}
+    fieldSet={fieldSet}
+    wrapped={wrapped}
+  >
+    <Input
+      id={`field-${id}`}
+      name={id}
+      type="password"
+      value={value || ''}
+      onChange={({ target }) =>
+        onChange(id, target.value === '' ? undefined : target.value)
+      }
+      onBlur={({ target }) =>
+        onBlur(id, target.value === '' ? undefined : target.value)
+      }
+      onClick={() => onClick()}
     >
-      <Grid>
-        <Grid.Row stretched>
-          <Grid.Column width="4">
-            <div className="wrapper">
-              <label htmlFor={inputId}>{title}</label>
-            </div>
-          </Grid.Column>
-          <Grid.Column width="8">
-            <Input
-              id={inputId}
-              name={id}
-              type="password"
-              value={value || ''}
-              onChange={({ target }) =>
-                onChange(id, target.value === '' ? undefined : target.value)
-              }
-              onBlur={({ target }) =>
-                onBlur(id, target.value === '' ? undefined : target.value)
-              }
-              onClick={() => onClick()}
-            >
-              <input
-                minLength={minLength || null}
-                maxLength={maxLength || null}
-                autoComplete="off"
-              />
-            </Input>
-            {errorsList}
-          </Grid.Column>
-        </Grid.Row>
-        {description && (
-          <Grid.Row stretched>
-            <Grid.Column stretched width="12">
-              <p className="help">{description}</p>
-            </Grid.Column>
-          </Grid.Row>
-        )}
-      </Grid>
-    </Form.Field>
-  );
-};
+      <input
+        minLength={minLength || null}
+        maxLength={maxLength || null}
+        autoComplete="off"
+      />
+    </Input>
+  </FormFieldWrapper>
+);
 
 /**
  * Property types.
@@ -102,6 +76,7 @@ PasswordWidget.propTypes = {
   onClick: PropTypes.func,
   minLength: PropTypes.number,
   maxLength: PropTypes.number,
+  wrapped: PropTypes.bool,
 };
 
 /**

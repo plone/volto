@@ -3,12 +3,11 @@
  * @module components/manage/Widgets/TextWidget
  */
 
-import React, { Component } from 'react';
+import { FormFieldWrapper, Icon } from '@plone/volto/components';
 import PropTypes from 'prop-types';
-import { Form, Grid, Input, Label, Icon as IconOld } from 'semantic-ui-react';
-import { map } from 'lodash';
+import React, { Component } from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
-import { Icon } from '@plone/volto/components';
+import { Icon as IconOld, Input } from 'semantic-ui-react';
 
 const messages = defineMessages({
   default: {
@@ -63,7 +62,7 @@ class TextWidget extends Component {
     description: PropTypes.string,
     required: PropTypes.bool,
     error: PropTypes.arrayOf(PropTypes.string),
-    value: PropTypes.string,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     focus: PropTypes.bool,
     onChange: PropTypes.func,
     onBlur: PropTypes.func,
@@ -81,6 +80,7 @@ class TextWidget extends Component {
     maxLength: PropTypes.number,
     maximum: PropTypes.number,
     minimum: PropTypes.number,
+    wrapped: PropTypes.bool,
   };
 
   /**
@@ -127,10 +127,6 @@ class TextWidget extends Component {
   render() {
     const {
       id,
-      title,
-      required,
-      description,
-      error,
       value,
       onChange,
       onBlur,
@@ -140,7 +136,6 @@ class TextWidget extends Component {
       intl,
       icon,
       iconAction,
-      fieldSet,
       type,
       minLength,
       maxLength,
@@ -180,95 +175,53 @@ class TextWidget extends Component {
     };
 
     return (
-      <Form.Field
-        inline
-        required={required}
-        error={error.length > 0}
-        className={description ? 'help text' : 'text'}
-        id={`${fieldSet || 'field'}-${id}`}
-      >
-        <Grid>
-          <Grid.Row stretched>
-            <Grid.Column width="4">
-              <div className="wrapper">
-                <label htmlFor={`field-${id}`}>
-                  {onEdit && (
-                    <i
-                      aria-hidden="true"
-                      className="grey bars icon drag handle"
-                    />
-                  )}
-                  {title}
-                </label>
-              </div>
-            </Grid.Column>
-            <Grid.Column width="8">
-              {onEdit && (
-                <div className="toolbar">
-                  <button
-                    className="item ui noborder button"
-                    onClick={() => onEdit(id, schema)}
-                  >
-                    <IconOld name="write square" size="large" color="blue" />
-                  </button>
-                  <button
-                    aria-label={this.props.intl.formatMessage(messages.delete)}
-                    className="item ui noborder button"
-                    onClick={() => onDelete(id)}
-                  >
-                    <IconOld name="close" size="large" color="red" />
-                  </button>
-                </div>
-              )}
-              <Input
-                id={`field-${id}`}
-                name={id}
-                value={value || ''}
-                disabled={onEdit !== null}
-                icon={icon || null}
-                onChange={({ target }) =>
-                  onChange(id, target.value === '' ? undefined : target.value)
-                }
-                onBlur={({ target }) =>
-                  onBlur(id, target.value === '' ? undefined : target.value)
-                }
-                onClick={() => onClick()}
-                ref={(node) => {
-                  this.node = node;
-                }}
-                type={typeTranslations[type] || type}
-                step={
-                  type === 'number' ? 'any' : type === 'integer' ? '1' : null
-                }
-                min={minimum || null}
-                max={maximum || null}
-              >
-                <input
-                  minLength={minLength || null}
-                  maxLength={maxLength || null}
-                />
-              </Input>
-              {map(error, (message) => (
-                <Label key={message} basic color="red" pointing>
-                  {message}
-                </Label>
-              ))}
-              {icon && iconAction && (
-                <button onClick={iconAction}>
-                  <Icon name={icon} size="18px" />
-                </button>
-              )}
-            </Grid.Column>
-          </Grid.Row>
-          {description && (
-            <Grid.Row stretched>
-              <Grid.Column stretched width="12">
-                <p className="help">{description}</p>
-              </Grid.Column>
-            </Grid.Row>
-          )}
-        </Grid>
-      </Form.Field>
+      <FormFieldWrapper {...this.props} draggable={true} className="text">
+        {onEdit && (
+          <div className="toolbar">
+            <button
+              className="item ui noborder button"
+              onClick={() => onEdit(id, schema)}
+            >
+              <IconOld name="write square" size="large" color="blue" />
+            </button>
+            <button
+              aria-label={this.props.intl.formatMessage(messages.delete)}
+              className="item ui noborder button"
+              onClick={() => onDelete(id)}
+            >
+              <IconOld name="close" size="large" color="red" />
+            </button>
+          </div>
+        )}
+        <Input
+          id={`field-${id}`}
+          name={id}
+          value={value || ''}
+          disabled={onEdit !== null}
+          icon={icon || null}
+          onChange={({ target }) =>
+            onChange(id, target.value === '' ? undefined : target.value)
+          }
+          ref={(node) => {
+            this.node = node;
+          }}
+          onBlur={({ target }) =>
+            onBlur(id, target.value === '' ? undefined : target.value)
+          }
+          onClick={() => onClick()}
+          type={typeTranslations[type] || type}
+          step={type === 'number' ? 'any' : type === 'integer' ? '1' : null}
+          min={minimum || null}
+          max={maximum || null}
+        >
+          <input minLength={minLength || null} maxLength={maxLength || null} />
+        </Input>
+        {icon && iconAction && (
+          <button onClick={iconAction}>
+            <Icon name={icon} size="18px" />
+          </button>
+        )}
+      </FormFieldWrapper>
     );
   }
 }

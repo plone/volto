@@ -3,16 +3,24 @@ import PropTypes from 'prop-types';
 import { Form } from 'semantic-ui-react';
 import { Accordion, Grid, Segment } from 'semantic-ui-react';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
-import { CheckboxWidget, Icon, TextWidget } from '@plone/volto/components';
-import { AlignBlock, flattenToAppURL } from '@plone/volto/helpers';
-
-import { settings } from '~/config';
+import {
+  CheckboxWidget,
+  Icon,
+  FormFieldWrapper,
+  TextWidget,
+} from '@plone/volto/components';
+import {
+  AlignBlock,
+  flattenToAppURL,
+  isInternalURL,
+} from '@plone/volto/helpers';
 
 import imageSVG from '@plone/volto/icons/image.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import upSVG from '@plone/volto/icons/up-key.svg';
 import downSVG from '@plone/volto/icons/down-key.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
+import ImageSizeWidget from '@plone/volto/components/manage/Blocks/Image/ImageSizeWidget';
 
 const messages = defineMessages({
   Image: {
@@ -46,6 +54,10 @@ const messages = defineMessages({
   externalURL: {
     id: 'External URL',
     defaultMessage: 'External URL',
+  },
+  size: {
+    id: 'Size',
+    defaultMessage: 'Size',
   },
 });
 
@@ -90,18 +102,18 @@ const ImageSidebar = ({
         <>
           <Segment className="sidebar-metadata-container" secondary>
             {data.url.split('/').slice(-1)[0]}
-            {data.url.includes(settings.apiPath) && (
+            {isInternalURL(data.url) && (
               <img
                 src={`${flattenToAppURL(data.url)}/@@images/image/mini`}
                 alt={data.alt}
               />
             )}
-            {!data.url.includes(settings.apiPath) && (
+            {!isInternalURL(data.url) && (
               <img src={data.url} alt={data.alt} style={{ width: '50%' }} />
             )}
           </Segment>
           <Segment className="form sidebar-image-data">
-            {data.url.includes(settings.apiPath) && (
+            {isInternalURL(data.url) && (
               <TextWidget
                 id="Origin"
                 title={intl.formatMessage(messages.Origin)}
@@ -122,7 +134,7 @@ const ImageSidebar = ({
                 onChange={() => {}}
               />
             )}
-            {!data.url.includes(settings.apiPath) && (
+            {!isInternalURL(data.url) && (
               <TextWidget
                 id="external"
                 title={intl.formatMessage(messages.externalURL)}
@@ -175,7 +187,19 @@ const ImageSidebar = ({
                   <Grid.Column width="8" className="align-tools">
                     <AlignBlock
                       align={data.align}
-                      onChangeBlock={onChangeBlock}
+                      onChangeBlock={(block, data) => {
+                        if (data.align === 'full') {
+                          onChangeBlock(block, {
+                            ...data,
+                            size: null,
+                          });
+                        } else {
+                          onChangeBlock(block, {
+                            ...data,
+                            size: 'l',
+                          });
+                        }
+                      }}
                       data={data}
                       block={block}
                     />
@@ -183,6 +207,17 @@ const ImageSidebar = ({
                 </Grid.Row>
               </Grid>
             </Form.Field>
+            <FormFieldWrapper
+              id="image_size"
+              title={intl.formatMessage(messages.size)}
+            >
+              <ImageSizeWidget
+                onChangeBlock={onChangeBlock}
+                data={data}
+                block={block}
+                disabled={data.align === 'full'}
+              />
+            </FormFieldWrapper>
           </Segment>
           <Accordion fluid styled className="form">
             <Accordion.Title
