@@ -9,6 +9,7 @@
 ### Bugfix
 
 - fixed object browser widget when a selected items is deleted. Plone.restapi returns a null object. @giuliaghisini
+- fixed error on adding new item if parent item is not translated when multilingual is set @giuliaghisini
 
 ### Internal
 
