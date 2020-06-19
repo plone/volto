@@ -426,11 +426,22 @@ class Form extends Component {
       }),
     );
     if (keys(errors).length > 0) {
-      this.setState({
-        errors,
-      }, () => {
-        Object.keys(errors).forEach(err => toast.error(<Toast error title={this.props.intl.formatMessage(messages.error)} content={errors[err]} />));
-      });
+      this.setState(
+        {
+          errors,
+        },
+        () => {
+          Object.keys(errors).forEach((err) =>
+            toast.error(
+              <Toast
+                error
+                title={this.props.intl.formatMessage(messages.error)}
+                content={errors[err]}
+              />,
+            ),
+          );
+        },
+      );
     } else {
       // Get only the values that have been modified (Edit forms), send all in case that
       // it's an add form
