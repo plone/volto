@@ -1960,6 +1960,10 @@ msgstr "souvent utilisé"
 msgid "or try a different page."
 msgstr "ou essayez une autre page."
 
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "querystring-widget-select"
+msgstr ""
+
 #: components/theme/Login/Login
 msgid "registration form"
 msgstr "formulaire d'inscription"

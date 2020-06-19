@@ -1943,6 +1943,10 @@ msgstr "Cele mai utilizate"
 msgid "or try a different page."
 msgstr "sau încercați o altă pagină."
 
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "querystring-widget-select"
+msgstr ""
+
 #: components/theme/Login/Login
 msgid "registration form"
 msgstr "formular de înregistrare"
