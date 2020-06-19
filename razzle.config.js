@@ -238,7 +238,6 @@ module.exports = {
       });
     }
 
-    // console.debug(`Generated addon loader code at ${io.name}`);
     const addonsLoaderPath = createAddonsLoader(packageJson.addons || []);
 
     const customizations = {};

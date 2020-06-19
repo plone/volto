@@ -94,8 +94,6 @@ let config = {
 
 config = applyAddonConfiguration(config);
 
-console.log('config', config);
-
 export const settings = config.settings;
 export const widgets = config.widgets;
 export const views = config.views;
