@@ -39,6 +39,10 @@ const messages = defineMessages({
     id: 'No value',
     defaultMessage: 'No value',
   },
+  no_options: {
+    id: 'No options',
+    defaultMessage: 'No options',
+  },
 });
 
 /**
@@ -208,6 +212,10 @@ class ArrayWidget extends Component {
             additional={{
               offset: 25,
             }}
+            placeholder={this.props.intl.formatMessage(messages.select)}
+            noOptionsMessage={() =>
+              this.props.intl.formatMessage(messages.no_options)
+            }
           />
         ) : (
           <CreatableSelect
