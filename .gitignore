@@ -61,6 +61,3 @@ cypress/screenshots
 # Local environment setup
 .env
 .vscode
-
-# Addons loader
-src/load-volto-addons.js
