@@ -71,8 +71,8 @@ msgid "Add Content"
 msgstr "Ajouter du contenu"
 
 #: components/manage/Toolbar/Types
-msgid "Add Translation..."
-msgstr "Ajouter un traduction..."
+msgid "Add Translation…"
+msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add User"
@@ -83,8 +83,8 @@ msgid "Add a description…"
 msgstr "Ajouter une description"
 
 #: components/manage/Form/Form
-msgid "Add block..."
-msgstr "Ajouter un bloc..."
+msgid "Add block…"
+msgstr ""
 
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "Add criteria"
@@ -1016,6 +1016,12 @@ msgstr "Aucun élément sélectionné"
 msgid "No map selected"
 msgstr "Aucune carte sélectionnée"
 
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
+msgid "No options"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
@@ -1293,8 +1299,8 @@ msgid "Search for user or group"
 msgstr "Recherche d'un utilisateur ou un groupe"
 
 #: components/manage/Controlpanels/UsersControlpanel
-msgid "Search group..."
-msgstr "Recherche d'un groupe..."
+msgid "Search group…"
+msgstr ""
 
 #: components/theme/Search/Search
 msgid "Search results"
@@ -1305,8 +1311,8 @@ msgid "Search results for {term}"
 msgstr "Résultats de recherche pour {term}"
 
 #: components/manage/Controlpanels/UsersControlpanel
-msgid "Search users..."
-msgstr "Rechercher des utilisateurs ..."
+msgid "Search users…"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Select columns to show"
@@ -1330,6 +1336,8 @@ msgstr "Sélection"
 
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
 msgid "Select…"
 msgstr "Sélectionner..."
 
@@ -1951,6 +1959,10 @@ msgstr "souvent utilisé"
 #: error
 msgid "or try a different page."
 msgstr "ou essayez une autre page."
+
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "querystring-widget-select"
+msgstr ""
 
 #: components/theme/Login/Login
 msgid "registration form"

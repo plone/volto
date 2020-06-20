@@ -13,6 +13,8 @@
 ### Bugfix
 
 - Fixed edit link in draft-js when link is selected from word-end to word-start @giuliaghisini
+- fixed duplicated items in SelectWidget and ArrayWidget @giuliaghisini
+- Update German translation @timo
 - removed broken preview image in ContentsUploadModal if uploaded item is not an image. @giuliaghisini
 - Localized content upload modal last modified date @nzambello
 - Fix overflow in folder contents with long titles @nzambello
@@ -20,6 +22,8 @@
 - fixed error on adding new item if parent item is not translated when multilingual is set @giuliaghisini
 
 ### Internal
+
+- Added translations for select in querystring widget @nzambello
 
 ## 6.2.0 (2020-06-14)
 
