@@ -62,7 +62,7 @@ msgid "Add Content"
 msgstr "Adicionar Conteúdo"
 
 #: components/manage/Toolbar/Types
-msgid "Add Translation..."
+msgid "Add Translation…"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
@@ -71,11 +71,11 @@ msgstr "Adicionar Utilizador"
 
 #: components/manage/Blocks/Description/Edit
 msgid "Add a description…"
-msgstr "Adicionar uma descrição..."
+msgstr "Adicionar uma descrição…"
 
 #: components/manage/Form/Form
-msgid "Add block..."
-msgstr "Adicionar bloco..."
+msgid "Add block…"
+msgstr "Adicionar bloco…"
 
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "Add criteria"
@@ -155,6 +155,7 @@ msgstr ""
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/DatabaseInformation
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Diff/Diff
@@ -199,6 +200,10 @@ msgstr "Navegue no website, largue uma imagem ou escreva um URL"
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr "Por predefinição, as permissões do contentor deste item são herdadas. Se desactivar isto, apenas serão válidas as permissões de partilha explicitamente definidas. No resumo, o símbolo {inherited} indica um valor herdado. Do mesmo modo, o símbolo {global} indica um papel global, que é gerido pelo administrador do sítio."
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Cache Name"
+msgstr ""
 
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsToolbar
@@ -375,6 +380,22 @@ msgstr "Senha actual"
 #: components/manage/Contents/ContentsItem
 msgid "Cut"
 msgstr "Cortar"
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Database Information"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Database Location"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Database Size"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Database main"
+msgstr ""
 
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Widgets/DatetimeWidget
@@ -643,7 +664,7 @@ msgstr "Nome de ficheiro"
 
 #: components/manage/Contents/Contents
 msgid "Filter…"
-msgstr "Filtro..."
+msgstr "Filtro…"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Fixed width table cells"
@@ -986,6 +1007,12 @@ msgstr ""
 msgid "No map selected"
 msgstr ""
 
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
+msgid "No options"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
@@ -1017,6 +1044,10 @@ msgstr "Sem fluxo de trabalho"
 #: components/manage/Contents/ContentsItem
 msgid "None"
 msgstr "Nenhum"
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Number of active objects"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Object Size"
@@ -1150,11 +1181,11 @@ msgstr "Escreva de novo a senha. Certifique-se que as senhas são idênticas."
 #: components/theme/Search/Search
 #: components/theme/View/SummaryView
 msgid "Read More…"
-msgstr "Ler Mais..."
+msgstr "Ler Mais…"
 
 #: components/manage/Contents/Contents
 msgid "Rearrange items by…"
-msgstr "Reordenar itens por..."
+msgstr "Reordenar itens por…"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Reduce complexity"
@@ -1259,8 +1290,8 @@ msgid "Search for user or group"
 msgstr "Pesquisar utilizador ou grupo"
 
 #: components/manage/Controlpanels/UsersControlpanel
-msgid "Search group..."
-msgstr "Pesquisar grupo..."
+msgid "Search group…"
+msgstr ""
 
 #: components/theme/Search/Search
 msgid "Search results"
@@ -1271,8 +1302,8 @@ msgid "Search results for {term}"
 msgstr "Resultados da pesquisa para {term}"
 
 #: components/manage/Controlpanels/UsersControlpanel
-msgid "Search users..."
-msgstr "Pesquisar utilizadores..."
+msgid "Search users…"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Select columns to show"
@@ -1296,8 +1327,10 @@ msgstr "Selecção"
 
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
 msgid "Select…"
-msgstr "Seleccionar..."
+msgstr "Seleccionar…"
 
 #: components/theme/ContactForm/ContactForm
 msgid "Send"
@@ -1463,6 +1496,14 @@ msgstr "Etiquetas a adicionar"
 msgid "Tags to remove"
 msgstr "Etiquetas a remover"
 
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Target memory size per cache in bytes"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Target number of objects in memory per cache"
+msgstr ""
+
 #: components/manage/Blocks/Listing/TemplateWidget
 msgid "Template"
 msgstr ""
@@ -1477,6 +1518,10 @@ msgstr "Texto"
 #: components/theme/Unauthorized/Unauthorized
 msgid "Thank you."
 msgstr "Obrigado."
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "The Database Manager allow you to view database status information"
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 msgid "The URL for your external home page, if you have one."
@@ -1521,7 +1566,7 @@ msgstr "Este nome será apresentado no URL."
 
 #: components/theme/NotFound/NotFound
 msgid "This page does not seem to exist…"
-msgstr "Esta página não parece existir..."
+msgstr "Esta página não parece existir…"
 
 #: components/manage/Widgets/DatetimeWidget
 msgid "Time"
@@ -1543,8 +1588,24 @@ msgstr ""
 msgid "Title"
 msgstr "Título"
 
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Total active and non-active objects"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Total comments"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Total number of objects in each cache"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Total number of objects in memory from all caches"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Total number of objects in the database"
 msgstr ""
 
 #: components/manage/Toolbar/Types
@@ -1563,11 +1624,11 @@ msgstr ""
 
 #: components/manage/Blocks/Text/Edit
 msgid "Type text…"
-msgstr "Escreva texto..."
+msgstr "Escreva texto…"
 
 #: components/manage/Blocks/Title/Edit
 msgid "Type the title…"
-msgstr "Escreva o título..."
+msgstr "Escreva o título…"
 
 #: components/manage/Contents/Contents
 msgid "UID"
@@ -1888,6 +1949,10 @@ msgstr "maisUsado"
 
 #: error
 msgid "or try a different page."
+msgstr ""
+
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "querystring-widget-select"
 msgstr ""
 
 #: components/theme/Login/Login
