@@ -35,21 +35,34 @@ Instead, change the "addons" setting in your package.json file.
 */
 
 `;
-  let configsToLoad = [];
+  let configsToLoad = [],
+    counter = 0;
 
   addons.forEach((addonConfigString) => {
-    let extras;
+    let extras = [];
     const addonConfigLoadInfo = addonConfigString.split(':');
     const pkgName = addonConfigLoadInfo[0];
     const defaultImport = nameFromPackage(pkgName);
     if (addonConfigLoadInfo.length > 1) {
       extras = addonConfigLoadInfo[1].split(',');
     }
+    extras = extras.map((name) => [name, `${name}${counter++}`]);
+
     const line = `import ${defaultImport}${
-      extras ? `, { ${extras.join(', ')} }` : ''
+      extras.length
+        ? `, { ${extras
+            .map((ex) => {
+              return `${ex[0]} as ${ex[1]}`;
+            })
+            .join(', ')} }`
+        : ''
     } from '${pkgName}';\n`;
     buf += line;
-    configsToLoad = [...configsToLoad, defaultImport, ...(extras || [])];
+    configsToLoad = [
+      ...configsToLoad,
+      defaultImport,
+      ...extras.map((ex) => ex[1]),
+    ];
   });
 
   buf += `
