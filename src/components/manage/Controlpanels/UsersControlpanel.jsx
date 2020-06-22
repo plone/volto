@@ -2,49 +2,47 @@
  * Users controlpanel container.
  * @module components/manage/Controlpanels/UsersControlpanel
  */
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Helmet } from '@plone/volto/helpers';
-import { connect } from 'react-redux';
-import { compose, bindActionCreators } from 'redux';
-import { Link } from 'react-router-dom';
-import { Portal } from 'react-portal';
 import {
+  createGroup,
+  createUser,
+  deleteGroup,
+  deleteUser,
+  listGroups,
+  listRoles,
+  listUsers,
+  updateGroup,
+  updateUser,
+} from '@plone/volto/actions';
+import {
+  Icon,
+  ModalForm,
+  Toast,
+  Toolbar,
+  UsersControlpanelGroups,
+  UsersControlpanelUser,
+} from '@plone/volto/components';
+import { getBaseUrl, Helmet, messages } from '@plone/volto/helpers';
+import backSVG from '@plone/volto/icons/back.svg';
+import addSvg from '@plone/volto/icons/circle-plus.svg';
+import { find, isEqual, map } from 'lodash';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { FormattedMessage, injectIntl } from 'react-intl';
+import { Portal } from 'react-portal';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { bindActionCreators, compose } from 'redux';
+import {
+  Button,
   Confirm,
+  Container,
+  Divider,
   Form,
   Input,
   Segment,
   Table,
-  Container,
-  Divider,
-  Button,
 } from 'semantic-ui-react';
-import { find, map, isEqual } from 'lodash';
-import { toast } from 'react-toastify';
-import { FormattedMessage, injectIntl } from 'react-intl';
-
-import {
-  createUser,
-  deleteUser,
-  listRoles,
-  listUsers,
-  createGroup,
-  deleteGroup,
-  listGroups,
-  updateUser,
-  updateGroup,
-} from '@plone/volto/actions';
-import { getBaseUrl, messages } from '@plone/volto/helpers';
-import {
-  ModalForm,
-  Toolbar,
-  UsersControlpanelUser,
-  Icon,
-  UsersControlpanelGroups,
-  Toast,
-} from '@plone/volto/components';
-import addSvg from '@plone/volto/icons/circle-plus.svg';
-import backSVG from '@plone/volto/icons/back.svg';
 
 /**
  * UsersControlpanel class.

@@ -313,6 +313,83 @@ exports[`renders an Image Block Sidebar component 1`] = `
         </div>
       </div>
     </div>
+    <div
+      className="inline field"
+      id="field-image_size"
+    >
+      <div
+        className="ui grid"
+      >
+        <div
+          className="stretched row"
+        >
+          <div
+            className="four wide column"
+          >
+            <div
+              className="wrapper"
+            >
+              <label
+                htmlFor="field-image_size"
+              >
+                Size
+              </label>
+            </div>
+          </div>
+          <div
+            className="eight wide column"
+          >
+            <div>
+              <div
+                className="ui buttons"
+              >
+                <button
+                  aria-label="Left"
+                  className="ui basic icon button"
+                  onClick={[Function]}
+                >
+                  <div
+                    className="image-sizes-text"
+                  >
+                    S
+                  </div>
+                </button>
+              </div>
+              <div
+                className="ui buttons"
+              >
+                <button
+                  aria-label="Right"
+                  className="ui basic icon button"
+                  onClick={[Function]}
+                >
+                  <div
+                    className="image-sizes-text"
+                  >
+                    M
+                  </div>
+                </button>
+              </div>
+              <div
+                className="ui buttons"
+              >
+                <button
+                  aria-label="Center"
+                  className="ui active basic icon button"
+                  onClick={[Function]}
+                >
+                  <div
+                    className="image-sizes-text"
+                  >
+                    L
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div
     className="accordion ui fluid styled form"

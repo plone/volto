@@ -135,28 +135,34 @@ class Form extends Component {
     // Adding fallback in case the fields are empty, so we are sure that the edit form
     // shows at least the default blocks
     if (
-      !formData[blocksLayoutFieldname] ||
-      isEmpty(formData[blocksLayoutFieldname].items)
+      formData.hasOwnProperty(blocksFieldname) &&
+      formData.hasOwnProperty(blocksLayoutFieldname)
     ) {
-      formData[blocksLayoutFieldname] = {
-        items: [ids.title, ids.text],
-      };
-    }
-    if (!formData[blocksFieldname] || isEmpty(formData[blocksFieldname])) {
-      formData[blocksFieldname] = {
-        [ids.title]: {
-          '@type': 'title',
-        },
-        [ids.text]: {
-          '@type': 'text',
-        },
-      };
+      if (
+        !formData[blocksLayoutFieldname] ||
+        isEmpty(formData[blocksLayoutFieldname].items)
+      ) {
+        formData[blocksLayoutFieldname] = {
+          items: [ids.title, ids.text],
+        };
+      }
+      if (!formData[blocksFieldname] || isEmpty(formData[blocksFieldname])) {
+        formData[blocksFieldname] = {
+          [ids.title]: {
+            '@type': 'title',
+          },
+          [ids.text]: {
+            '@type': 'text',
+          },
+        };
+      }
     }
     this.state = {
       formData,
       initialFormData: { ...formData },
       errors: {},
       selected:
+        formData.hasOwnProperty(blocksLayoutFieldname) &&
         formData[blocksLayoutFieldname].items.length > 0
           ? formData[blocksLayoutFieldname].items[0]
           : null,
@@ -433,8 +439,13 @@ class Form extends Component {
     });
 
     if (keys(errors).length > 0) {
+      const activeIndex = FormValidation.showFirstTabWithErrors({
+        errors,
+        schema: this.props.schema,
+      });
       this.setState({
         errors,
+        activeIndex,
       });
     } else {
       // Get only the values that have been modified (Edit forms), send all in case that
@@ -804,7 +815,7 @@ class Form extends Component {
                         width: `${placeholderProps.clientWidth}px`,
                         borderRadius: '3px',
                       }}
-                    />
+                    ></div>
                   )}
                 </div>
               )}
@@ -828,7 +839,7 @@ class Form extends Component {
                           {...schema.properties[field]}
                           id={field}
                           focus={false}
-                          value={this.state.formData[field]}
+                          value={this.state.formData?.[field]}
                           required={schema.required.indexOf(field) !== -1}
                           onChange={this.onChangeField}
                           onBlur={this.onBlurField}
@@ -862,6 +873,8 @@ class Form extends Component {
                   tabular: true,
                   className: 'formtabs',
                 }}
+                onTabChange={this.onTabChange}
+                activeIndex={this.state.activeIndex}
                 panes={map(schema.fieldsets, (item) => ({
                   menuItem: item.title,
                   render: () => [
@@ -876,7 +889,7 @@ class Form extends Component {
                         id={field}
                         fieldSet={item.title.toLowerCase()}
                         focus={index === 0}
-                        value={this.state.formData[field]}
+                        value={this.state.formData?.[field]}
                         required={schema.required.indexOf(field) !== -1}
                         onChange={this.onChangeField}
                         onBlur={this.onBlurField}
