@@ -72,7 +72,7 @@ describe('Blocks', () => {
       const consoleSpy = jest
         .spyOn(console, 'error')
         .mockImplementation(() => {});
-      blockHasValue({ '@type': 'not-defined' });
+      expect(blockHasValue({ '@type': 'not-defined' })).toBe(false);
       expect(consoleSpy).toHaveBeenCalled();
     });
 
