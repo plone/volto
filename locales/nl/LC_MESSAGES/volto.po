@@ -73,7 +73,7 @@ msgid "Add Content"
 msgstr ""
 
 #: components/manage/Toolbar/Types
-msgid "Add Translation..."
+msgid "Add Translation…"
 msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
@@ -85,7 +85,7 @@ msgid "Add a description…"
 msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
-msgid "Add block..."
+msgid "Add block…"
 msgstr ""
 
 #: components/manage/Blocks/Listing/QuerystringWidget
@@ -1030,6 +1030,12 @@ msgstr ""
 msgid "No map selected"
 msgstr ""
 
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
+msgid "No options"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
@@ -1306,7 +1312,7 @@ msgid "Search for user or group"
 msgstr "Zoeken naar gebruiker of groep"
 
 #: helpers/MessageLabels/MessageLabels
-msgid "Search group..."
+msgid "Search group…"
 msgstr ""
 
 #: components/theme/Search/Search
@@ -1318,7 +1324,7 @@ msgid "Search results for {term}"
 msgstr "Zoekresultaten voor ${term}"
 
 #: helpers/MessageLabels/MessageLabels
-msgid "Search users..."
+msgid "Search users…"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -1343,6 +1349,8 @@ msgstr ""
 
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
 msgid "Select…"
 msgstr "Selecteer…"
 
@@ -1975,6 +1983,10 @@ msgstr ""
 
 #: error
 msgid "or try a different page."
+msgstr ""
+
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "querystring-widget-select"
 msgstr ""
 
 #: components/theme/Login/Login

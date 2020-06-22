@@ -2,8 +2,8 @@ import { defineMessages } from 'react-intl';
 
 export const messages = defineMessages({
   addBlock: {
-    id: 'Add block...',
-    defaultMessage: 'Add block...',
+    id: 'Add block…',
+    defaultMessage: 'Add block…',
   },
   required: {
     id: 'Required input is missing.',
@@ -63,12 +63,12 @@ export const messages = defineMessages({
     defaultMessage: 'There were some errors.',
   },
   searchUsers: {
-    id: 'Search users...',
-    defaultMessage: 'Search users...',
+    id: 'Search users…',
+    defaultMessage: 'Search users…',
   },
   searchGroups: {
-    id: 'Search group...',
-    defaultMessage: 'Search group...',
+    id: 'Search group…',
+    defaultMessage: 'Search group…',
   },
   back: {
     id: 'Back',

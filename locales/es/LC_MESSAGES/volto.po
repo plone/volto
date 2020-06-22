@@ -64,7 +64,7 @@ msgid "Add Content"
 msgstr "Agregar contenido"
 
 #: components/manage/Toolbar/Types
-msgid "Add Translation..."
+msgid "Add Translation…"
 msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
@@ -73,11 +73,11 @@ msgstr "Agregar Usuario"
 
 #: components/manage/Blocks/Description/Edit
 msgid "Add a description…"
-msgstr "Agregar una descripción..."
+msgstr "Agregar una descripción…"
 
 #: helpers/MessageLabels/MessageLabels
-msgid "Add block..."
-msgstr "Agregar bloque..."
+msgid "Add block…"
+msgstr "Agregar bloque…"
 
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "Add criteria"
@@ -665,7 +665,7 @@ msgstr "Nombre del archivo"
 
 #: components/manage/Contents/Contents
 msgid "Filter…"
-msgstr "Filtrar..."
+msgstr "Filtrar…"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Fixed width table cells"
@@ -1021,6 +1021,12 @@ msgstr ""
 msgid "No map selected"
 msgstr ""
 
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
+msgid "No options"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
@@ -1189,11 +1195,11 @@ msgstr "Ingrese de nuevo su contraseña. Debe asegurarse que las contraseñas se
 #: components/theme/Search/Search
 #: components/theme/View/SummaryView
 msgid "Read More…"
-msgstr "Leer Más..."
+msgstr "Leer Más…"
 
 #: components/manage/Contents/Contents
 msgid "Rearrange items by…"
-msgstr "Reordenar elementos por..."
+msgstr "Reordenar elementos por…"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Reduce complexity"
@@ -1297,8 +1303,8 @@ msgid "Search for user or group"
 msgstr "Buscar por nombre de usuario o grupo"
 
 #: helpers/MessageLabels/MessageLabels
-msgid "Search group..."
-msgstr "Buscar grupo..."
+msgid "Search group…"
+msgstr ""
 
 #: components/theme/Search/Search
 msgid "Search results"
@@ -1309,8 +1315,8 @@ msgid "Search results for {term}"
 msgstr "Resultados de búsqueda para {term}"
 
 #: helpers/MessageLabels/MessageLabels
-msgid "Search users..."
-msgstr "Buscar usuarios..."
+msgid "Search users…"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Select columns to show"
@@ -1334,8 +1340,10 @@ msgstr "Selección"
 
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
 msgid "Select…"
-msgstr "Selecciona..."
+msgstr "Selecciona…"
 
 #: components/theme/ContactForm/ContactForm
 msgid "Send"
@@ -1571,7 +1579,7 @@ msgstr "Este nombre se mostrará en la URL."
 
 #: components/theme/NotFound/NotFound
 msgid "This page does not seem to exist…"
-msgstr "Esta página no existe..."
+msgstr "Esta página no existe…"
 
 #: components/manage/Widgets/DatetimeWidget
 msgid "Time"
@@ -1629,11 +1637,11 @@ msgstr ""
 
 #: components/manage/Blocks/Text/Edit
 msgid "Type text…"
-msgstr "Ingrese texto..."
+msgstr "Ingrese texto…"
 
 #: components/manage/Blocks/Title/Edit
 msgid "Type the title…"
-msgstr "Ingrese el título..."
+msgstr "Ingrese el título…"
 
 #: components/manage/Contents/Contents
 msgid "UID"
@@ -1967,6 +1975,10 @@ msgstr ""
 #: error
 msgid "or try a different page."
 msgstr "o intente con una página diferente."
+
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "querystring-widget-select"
+msgstr ""
 
 #: components/theme/Login/Login
 msgid "registration form"

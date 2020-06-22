@@ -54,8 +54,8 @@ msgid "Add Content"
 msgstr "Adăugare conținut"
 
 #: components/manage/Toolbar/Types
-msgid "Add Translation..."
-msgstr "Adăugare traducere ..."
+msgid "Add Translation…"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Add User"
@@ -63,11 +63,11 @@ msgstr "Adăugare utilizator"
 
 #: components/manage/Blocks/Description/Edit
 msgid "Add a description…"
-msgstr "Adăugați o descriere ..."
+msgstr "Adăugați o descriere …"
 
 #: helpers/MessageLabels/MessageLabels
-msgid "Add block..."
-msgstr "Adăugare bloc ..."
+msgid "Add block…"
+msgstr "Adăugare bloc …"
 
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "Add criteria"
@@ -1011,6 +1011,12 @@ msgstr "Niciun element selectat"
 msgid "No map selected"
 msgstr "Nicio hartă selectată"
 
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
+msgid "No options"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
@@ -1179,11 +1185,11 @@ msgstr "Reintroduceți parola. Asigurați-vă că parolele sunt identice."
 #: components/theme/Search/Search
 #: components/theme/View/SummaryView
 msgid "Read More…"
-msgstr "Citește mai mult ..."
+msgstr "Citește mai mult …"
 
 #: components/manage/Contents/Contents
 msgid "Rearrange items by…"
-msgstr "Reorganizați elementele in functie de ..."
+msgstr "Reorganizați elementele in functie de …"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Reduce complexity"
@@ -1287,8 +1293,8 @@ msgid "Search for user or group"
 msgstr "Căutare utilizator sau grup"
 
 #: helpers/MessageLabels/MessageLabels
-msgid "Search group..."
-msgstr "Grup de căutare ..."
+msgid "Search group…"
+msgstr ""
 
 #: components/theme/Search/Search
 msgid "Search results"
@@ -1299,8 +1305,8 @@ msgid "Search results for {term}"
 msgstr "Rezultatele căutării pentru {term}"
 
 #: helpers/MessageLabels/MessageLabels
-msgid "Search users..."
-msgstr "Căutați utilizatori ..."
+msgid "Search users…"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Select columns to show"
@@ -1324,8 +1330,10 @@ msgstr "Selecție"
 
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
 msgid "Select…"
-msgstr "Selectați ..."
+msgstr "Selectați …"
 
 #: components/theme/ContactForm/ContactForm
 msgid "Send"
@@ -1561,7 +1569,7 @@ msgstr "Acest nume va fi afișat în adresa URL."
 
 #: components/theme/NotFound/NotFound
 msgid "This page does not seem to exist…"
-msgstr "Se pare că această pagină nu există ..."
+msgstr "Se pare că această pagină nu există …"
 
 #: components/manage/Widgets/DatetimeWidget
 msgid "Time"
@@ -1619,11 +1627,11 @@ msgstr "Introduceți un URL video (YouTube, Vimeo sau mp4)"
 
 #: components/manage/Blocks/Text/Edit
 msgid "Type text…"
-msgstr "Tastați textul ..."
+msgstr "Tastați textul …"
 
 #: components/manage/Blocks/Title/Edit
 msgid "Type the title…"
-msgstr "Tastați titlul ..."
+msgstr "Tastați titlul …"
 
 #: components/manage/Contents/Contents
 msgid "UID"
@@ -1957,6 +1965,10 @@ msgstr ""
 #: error
 msgid "or try a different page."
 msgstr "sau încercați o altă pagină."
+
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "querystring-widget-select"
+msgstr ""
 
 #: components/theme/Login/Login
 msgid "registration form"
