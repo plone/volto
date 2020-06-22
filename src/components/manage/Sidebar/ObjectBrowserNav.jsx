@@ -15,15 +15,18 @@ const ObjectBrowserNav = ({
   handleDoubleClickOnItem,
   mode,
   navigateTo,
+  isSelectable,
 }) => {
   const isSelected = (item) => {
     let ret = false;
     if (selected) {
-      selected.forEach((_item) => {
-        if (flattenToAppURL(_item['@id']) === flattenToAppURL(item['@id'])) {
-          ret = true;
-        }
-      });
+      selected
+        .filter((item) => item != null)
+        .forEach((_item) => {
+          if (flattenToAppURL(_item['@id']) === flattenToAppURL(item['@id'])) {
+            ret = true;
+          }
+        });
     }
     return ret;
   };
@@ -37,22 +40,23 @@ const ObjectBrowserNav = ({
             key={item.id}
             className={cx('', {
               'selected-item': isSelected(item),
+
               disabled:
                 mode === 'image'
                   ? !settings.imageObjects.includes(item['@type']) &&
                     !item.is_folderish
-                  : false,
+                  : !isSelectable(item),
             })}
             onClick={() => handleClickOnItem(item)}
             onDoubleClick={() => handleDoubleClickOnItem(item)}
           >
-            <span title={item['@id']}>
+            <span title={`${item['@id']} (${item['@type']})`}>
               <Popup
                 key={item['@id']}
                 content={
                   <>
                     <Icon name={homeSVG} size="18px" />{' '}
-                    {flattenToAppURL(item['@id'])}
+                    {flattenToAppURL(item['@id'])} ( {item['@type']})
                   </>
                 }
                 trigger={<span>{getIcon(item['@type'])}</span>}
