@@ -36,6 +36,7 @@ import dragSVG from '@plone/volto/icons/drag.svg';
 import {
   getBlocksFieldname,
   getBlocksLayoutFieldname,
+  blockHasValue,
 } from '@plone/volto/helpers';
 import { difference } from '@plone/volto/helpers';
 
@@ -234,11 +235,7 @@ class Form extends Component {
   }
 
   hideHandler = (data) => {
-    return (
-      data['@type'] === 'text' &&
-      (!data.text ||
-        (data.text?.blocks?.length === 1 && data.text.blocks[0].text === ''))
-    );
+    return blockHasValue(data);
   };
 
   /**
