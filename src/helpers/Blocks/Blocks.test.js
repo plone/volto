@@ -68,12 +68,12 @@ describe('Blocks', () => {
   });
 
   describe('blockHasValue', () => {
-    it('warns when block checker is not defined', () => {
-      const consoleSpy = jest
-        .spyOn(console, 'error')
-        .mockImplementation(() => {});
+    it('returns false when block checker is not defined', () => {
       expect(blockHasValue({ '@type': 'not-defined' })).toBe(false);
-      expect(consoleSpy).toHaveBeenCalled();
+      // const consoleSpy = jest
+      //   .spyOn(console, 'error')
+      //   .mockImplementation(() => {});
+      // expect(consoleSpy).toHaveBeenCalled();
     });
 
     it('returns true for text blocks with valid text', () => {

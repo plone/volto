@@ -236,7 +236,7 @@ class Form extends Component {
   }
 
   hideHandler = (data) => {
-    return blockHasValue(data);
+    return !blockHasValue(data);
   };
 
   /**
