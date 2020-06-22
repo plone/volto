@@ -9,6 +9,7 @@
 - Added italian translations and translated array, token and select widget. @giuliaghisini
 - Added internationalization for French language @bsuttor #1588
 - selectableTypes in ObjectBrowserWidget @giuliaghisini
+- use of maximumSelectionSize from plone in ObjectBrowserWidget. @giuliaghisini
 
 ### Bugfix
 
