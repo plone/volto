@@ -1943,6 +1943,10 @@ msgstr ""
 msgid "or try a different page."
 msgstr ""
 
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "querystring-widget-select"
+msgstr ""
+
 #: components/theme/Login/Login
 msgid "registration form"
 msgstr ""

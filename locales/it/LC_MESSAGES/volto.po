@@ -1943,6 +1943,10 @@ msgstr "Più usati"
 msgid "or try a different page."
 msgstr "oppure prova una pagina diversa."
 
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "querystring-widget-select"
+msgstr "Seleziona…"
+
 #: components/theme/Login/Login
 msgid "registration form"
 msgstr "form di registrazione"
