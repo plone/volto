@@ -9,6 +9,7 @@
 - Added italian translations and translated array, token and select widget. @giuliaghisini
 - Added internationalization for French language @bsuttor #1588
 - selectableTypes in ObjectBrowserWidget @giuliaghisini
+- Added uploading image preview in FileWidget @iFlameing
 
 ### Bugfix
 
