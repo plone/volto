@@ -204,7 +204,7 @@
     ]
   },
   "engines": {
-    "node": "^10 || ^12"
+    "node": ">=10"
   },
   "dependencies": {
     "@babel/core": "7.9.6",

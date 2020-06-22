@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Make Volto require Node 10 as a base requirement only. Allow any higher version @timo
+
 ### Bugfix
 
 ### Internal
