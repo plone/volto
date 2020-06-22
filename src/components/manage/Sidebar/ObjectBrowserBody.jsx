@@ -73,8 +73,7 @@ class ObjectBrowserBody extends Component {
     onSelectItem: null,
     dataName: null,
     selectableTypes: [],
-    maximumSelectionSize: null,
-  };
+    maximumSelectionSize: null,  };
 
   /**
    * Constructor

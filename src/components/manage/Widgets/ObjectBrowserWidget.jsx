@@ -116,11 +116,14 @@ class ObjectBrowserWidget extends Component {
 
   onChange = (item) => {
     let value = this.props.mode === 'multiple' ? [...this.props.value] : [];
+    value = value.filter((item) => item != null);
+    
     const maxSize =
       this.props.widgetOptions?.pattern_options?.maximumSelectionSize || -1;
     if (maxSize === 1 && value.length === 1) {
       value = []; //enable replace of selected item with another value, if maxsize is 1
     }
+
     let exists = false;
     let index = -1;
     value.forEach((_item, _index) => {
@@ -196,6 +199,8 @@ class ObjectBrowserWidget extends Component {
             onChange(id, []);
           };
 
+    let items = value ? value.filter((item) => item != null) : [];
+
     return (
       <Form.Field
         inline
@@ -229,9 +234,9 @@ class ObjectBrowserWidget extends Component {
                   tabIndex={0}
                   ref={this.selectedItemsRef}
                 >
-                  {value.map((item) => this.renderLabel(item))}
+                  {items.map((item) => this.renderLabel(item))}
 
-                  {value.length === 0 && (
+                  {items.length === 0 && (
                     <div className="placeholder" ref={this.placeholderRef}>
                       {this.props.intl.formatMessage(messages.placeholder)}
                     </div>
