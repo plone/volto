@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "6.1.0",
+  "version": "6.3.0",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -160,7 +160,7 @@
   "release-it": {
     "hooks": {
       "after:bump": "node changelogupdater.js bump ${version}",
-      "after:release": "node changelogupdater.js back ${version} && git add . && git ci -am 'Back to development' && git push"
+      "after:release": "node changelogupdater.js back ${version} && git add . && git commit -am 'Back to development' && git push"
     },
     "git": {
       "changelog": "node changelogupdater.js excerpt",

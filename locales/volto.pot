@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-06-03T11:11:12.934Z\n"
+"POT-Creation-Date: 2020-06-19T15:05:53.851Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -60,13 +60,13 @@ msgid "Add Addons"
 msgstr ""
 
 #: components/manage/Toolbar/Types
-# defaultMessage: Add Content...
+# defaultMessage: Add Content…
 msgid "Add Content"
 msgstr ""
 
 #: components/manage/Toolbar/Types
-# defaultMessage: Add Translation...
-msgid "Add Translation..."
+# defaultMessage: Add Translation…
+msgid "Add Translation…"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
@@ -80,8 +80,8 @@ msgid "Add a description…"
 msgstr ""
 
 #: components/manage/Form/Form
-# defaultMessage: Add block...
-msgid "Add block..."
+# defaultMessage: Add block…
+msgid "Add block…"
 msgstr ""
 
 #: components/manage/Blocks/Listing/QuerystringWidget
@@ -179,6 +179,7 @@ msgstr ""
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/DatabaseInformation
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Diff/Diff
@@ -231,6 +232,11 @@ msgstr ""
 #: components/manage/Sharing/Sharing
 # defaultMessage: By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator.
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Cache Name
+msgid "Cache Name"
 msgstr ""
 
 #: components/manage/Add/Add
@@ -445,6 +451,26 @@ msgstr ""
 #: components/manage/Contents/ContentsItem
 # defaultMessage: Cut
 msgid "Cut"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Database Information
+msgid "Database Information"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Database Location
+msgid "Database Location"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Database Size
+msgid "Database Size"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Database main
+msgid "Database main"
 msgstr ""
 
 #: components/manage/Controlpanels/ModerateComments
@@ -1190,6 +1216,13 @@ msgstr ""
 msgid "No map selected"
 msgstr ""
 
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
+# defaultMessage: No options
+msgid "No options"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 # defaultMessage: No results found.
@@ -1227,6 +1260,11 @@ msgstr ""
 #: components/manage/Contents/ContentsItem
 # defaultMessage: None
 msgid "None"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Number of active objects
+msgid "Number of active objects"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -1522,8 +1560,8 @@ msgid "Search for user or group"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
-# defaultMessage: Search group...
-msgid "Search group..."
+# defaultMessage: Search group…
+msgid "Search group…"
 msgstr ""
 
 #: components/theme/Search/Search
@@ -1537,8 +1575,8 @@ msgid "Search results for {term}"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
-# defaultMessage: Search users...
-msgid "Search users..."
+# defaultMessage: Search users…
+msgid "Search users…"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -1568,6 +1606,8 @@ msgstr ""
 
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
 # defaultMessage: Select…
 msgid "Select…"
 msgstr ""
@@ -1772,6 +1812,16 @@ msgstr ""
 msgid "Tags to remove"
 msgstr ""
 
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Target memory size per cache in bytes
+msgid "Target memory size per cache in bytes"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Target number of objects in memory per cache
+msgid "Target number of objects in memory per cache"
+msgstr ""
+
 #: components/manage/Blocks/Listing/TemplateWidget
 # defaultMessage: Template
 msgid "Template"
@@ -1788,6 +1838,11 @@ msgstr ""
 #: components/theme/Unauthorized/Unauthorized
 # defaultMessage: Thank you.
 msgid "Thank you."
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: The Database Manager allow you to view database status information
+msgid "The Database Manager allow you to view database status information"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
@@ -1868,9 +1923,29 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Total active and non-active objects
+msgid "Total active and non-active objects"
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: Total comments
 msgid "Total comments"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Total number of objects in each cache
+msgid "Total number of objects in each cache"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Total number of objects in memory from all caches
+msgid "Total number of objects in memory from all caches"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Total number of objects in the database
+msgid "Total number of objects in the database"
 msgstr ""
 
 #: components/manage/Toolbar/Types
@@ -2301,6 +2376,11 @@ msgstr ""
 #: error
 # defaultMessage: or try a different page.
 msgid "or try a different page."
+msgstr ""
+
+#: components/manage/Blocks/Listing/QuerystringWidget
+# defaultMessage: Select…
+msgid "querystring-widget-select"
 msgstr ""
 
 #: components/theme/Login/Login
