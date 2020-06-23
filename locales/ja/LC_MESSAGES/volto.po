@@ -18,6 +18,10 @@ msgstr ""
 "Preferred-Encodings: utf-8\n"
 "X-Is-Fallback-For: ja-jp\n"
 
+#: components/manage/Blocks/HTML/Edit
+msgid "<p>Add some HTML here</p>"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "Accessibility"
 msgstr "アクセシビリティ"
@@ -151,6 +155,7 @@ msgstr "利用可能"
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Controlpanels
@@ -204,10 +209,19 @@ msgstr "デフォルトでは、このアイテムのコンテナからのパー
 msgid "Cache Name"
 msgstr ""
 
+#: components/manage/Controlpanels/ContentTypeLayout
+msgid "Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypeLayout
+msgid "Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>"
+msgstr ""
+
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsToolbar
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Delete/Delete
@@ -252,6 +266,7 @@ msgid "Changes saved"
 msgstr "変更が保存されました"
 
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/Controlpanel
 msgid "Changes saved."
 msgstr "変更が保存されました"
@@ -575,6 +590,14 @@ msgstr "Embedコードがエラーです。説明を読んで再度実行して�
 msgid "Embeded Google Maps"
 msgstr "埋め込まれたGoogle Maps"
 
+#: components/manage/Controlpanels/ContentTypeLayout
+msgid "Enable Volto Blocks"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypeLayout
+msgid "Enable editable Blocks"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "End Date"
 msgstr "終了日付"
@@ -773,6 +796,7 @@ msgid "Image"
 msgstr "画像"
 
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/Controlpanel
 msgid "Info"
 msgstr "情報"
@@ -854,6 +878,10 @@ msgstr "最終変更"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Latest version"
 msgstr "最新バージョン"
+
+#: components/manage/Controlpanels/ContentTypes
+msgid "Layout"
+msgstr ""
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Lead Image"
@@ -1263,6 +1291,7 @@ msgstr "ロール"
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
@@ -1342,6 +1371,10 @@ msgstr "パスワードを設定"
 #: components/theme/PasswordReset/PasswordReset
 msgid "Set your password"
 msgstr "パスワードを設定"
+
+#: components/manage/Sidebar/Sidebar
+msgid "Settings"
+msgstr ""
 
 #: components/manage/Sharing/Sharing
 #: components/manage/Toolbar/More
@@ -1673,6 +1706,10 @@ msgstr "アップロード"
 #: components/manage/Blocks/LeadImage/Edit
 msgid "Upload a lead image in the 'Lead Image' content field."
 msgstr "リード画像をコンテンツのフィールドにアップロード"
+
+#: components/manage/Blocks/HeroImageLeft/Edit
+msgid "Upload a new image"
+msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Upload files"

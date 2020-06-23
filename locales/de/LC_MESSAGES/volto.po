@@ -26,6 +26,10 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "X-Is-Fallback-For: de-at de-li de-lu de-ch de-de\n"
 
+#: components/manage/Blocks/HTML/Edit
+msgid "<p>Add some HTML here</p>"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "Accessibility"
 msgstr "Barrierefreiheit"
@@ -159,6 +163,7 @@ msgstr "Verfügbar"
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Controlpanels
@@ -212,10 +217,19 @@ msgstr "Standardmäßig werden die Berechtigungen von einem Ordner auf die in ih
 msgid "Cache Name"
 msgstr "Cache Name"
 
+#: components/manage/Controlpanels/ContentTypeLayout
+msgid "Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypeLayout
+msgid "Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>"
+msgstr ""
+
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsToolbar
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Delete/Delete
@@ -260,6 +274,7 @@ msgid "Changes saved"
 msgstr "Änderungen gespeichert"
 
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/Controlpanel
 msgid "Changes saved."
 msgstr "Änderungen gespeichert."
@@ -583,6 +598,14 @@ msgstr "Fehler beim Einbinden des Google Maps Codes. Bitte lesen Sie die Anweisu
 msgid "Embeded Google Maps"
 msgstr "Eingebettete Google Maps Karte"
 
+#: components/manage/Controlpanels/ContentTypeLayout
+msgid "Enable Volto Blocks"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypeLayout
+msgid "Enable editable Blocks"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "End Date"
 msgstr "Enddatum"
@@ -781,6 +804,7 @@ msgid "Image"
 msgstr "Bild"
 
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/Controlpanel
 msgid "Info"
 msgstr "Information"
@@ -862,6 +886,10 @@ msgstr "Letzte Änderung"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Latest version"
 msgstr "Letzte Version"
+
+#: components/manage/Controlpanels/ContentTypes
+msgid "Layout"
+msgstr ""
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Lead Image"
@@ -1271,6 +1299,7 @@ msgstr "Rollen"
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
@@ -1350,6 +1379,10 @@ msgstr "Passwort neu setzen"
 #: components/theme/PasswordReset/PasswordReset
 msgid "Set your password"
 msgstr "Setzen Sie Ihr Passwort"
+
+#: components/manage/Sidebar/Sidebar
+msgid "Settings"
+msgstr ""
 
 #: components/manage/Sharing/Sharing
 #: components/manage/Toolbar/More
@@ -1681,6 +1714,10 @@ msgstr "Hochladen"
 #: components/manage/Blocks/LeadImage/Edit
 msgid "Upload a lead image in the 'Lead Image' content field."
 msgstr "Laden Sie ein Leadbild im 'Leadbild' Feld hoch."
+
+#: components/manage/Blocks/HeroImageLeft/Edit
+msgid "Upload a new image"
+msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Upload files"

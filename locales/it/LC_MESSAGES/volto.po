@@ -11,6 +11,10 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
+#: components/manage/Blocks/HTML/Edit
+msgid "<p>Add some HTML here</p>"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "Accessibility"
 msgstr "Accessibilità"
@@ -144,6 +148,7 @@ msgstr "Disponibile"
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Controlpanels
@@ -197,10 +202,19 @@ msgstr "Di norma, i permessi di questo elemento vengono ereditati dal contenitor
 msgid "Cache Name"
 msgstr "Nome della cache"
 
+#: components/manage/Controlpanels/ContentTypeLayout
+msgid "Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypeLayout
+msgid "Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>"
+msgstr ""
+
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsToolbar
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Delete/Delete
@@ -245,6 +259,7 @@ msgid "Changes saved"
 msgstr "Modifiche salvate"
 
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/Controlpanel
 msgid "Changes saved."
 msgstr "Modifiche salvate."
@@ -568,6 +583,14 @@ msgstr "Errore del codice incorporato, per favore segui le istruzioni e riprova.
 msgid "Embeded Google Maps"
 msgstr "Google Maps incorporata"
 
+#: components/manage/Controlpanels/ContentTypeLayout
+msgid "Enable Volto Blocks"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypeLayout
+msgid "Enable editable Blocks"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "End Date"
 msgstr "Data di fine"
@@ -766,6 +789,7 @@ msgid "Image"
 msgstr "Immagine"
 
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/Controlpanel
 msgid "Info"
 msgstr "Info"
@@ -847,6 +871,10 @@ msgstr "Ultima modifica"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Latest version"
 msgstr "Ultima versione"
+
+#: components/manage/Controlpanels/ContentTypes
+msgid "Layout"
+msgstr ""
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Lead Image"
@@ -1256,6 +1284,7 @@ msgstr "Ruoli"
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
@@ -1335,6 +1364,10 @@ msgstr "Imposta la password"
 #: components/theme/PasswordReset/PasswordReset
 msgid "Set your password"
 msgstr "Specifica la tua password"
+
+#: components/manage/Sidebar/Sidebar
+msgid "Settings"
+msgstr ""
 
 #: components/manage/Sharing/Sharing
 #: components/manage/Toolbar/More
@@ -1666,6 +1699,10 @@ msgstr "Carica"
 #: components/manage/Blocks/LeadImage/Edit
 msgid "Upload a lead image in the 'Lead Image' content field."
 msgstr "Carica un'Immagine di testata nel campo del contenuto."
+
+#: components/manage/Blocks/HeroImageLeft/Edit
+msgid "Upload a new image"
+msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Upload files"
