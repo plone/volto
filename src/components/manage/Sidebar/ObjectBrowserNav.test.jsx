@@ -102,6 +102,9 @@ test('renders a view image component', () => {
     <ObjectBrowserNav
       currentSearchResults={currentSearchResults}
       getIcon={() => {}}
+      isSelectable={() => {
+        return true;
+      }}
     />,
   );
   const json = component.toJSON();

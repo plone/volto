@@ -36,6 +36,7 @@ import vocabularies from '@plone/volto/reducers/vocabularies/vocabularies';
 import workflow from '@plone/volto/reducers/workflow/workflow';
 import { intlReducer } from 'react-intl-redux';
 import { reducer as reduxAsyncConnect } from 'redux-connect';
+import { addonReducers } from '~/config';
 
 /**
  * Root reducer.
@@ -78,6 +79,7 @@ const reducers = {
   toolbar,
   contenttype,
   fieldSchema,
+  ...addonReducers,
 };
 
 export default reducers;

@@ -98,6 +98,29 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                 </h3>
               </a>
             </div>
+            <div
+              className="column"
+            >
+              <a
+                href="/controlpanel/database"
+                onClick={[Function]}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <i
+                    aria-hidden="true"
+                    className="setting icon"
+                    onClick={[Function]}
+                  />
+                  <div
+                    className="content"
+                  >
+                    Database
+                  </div>
+                </h3>
+              </a>
+            </div>
           </div>
         </div>
       </div>

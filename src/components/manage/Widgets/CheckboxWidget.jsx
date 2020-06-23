@@ -3,11 +3,11 @@
  * @module components/manage/Widgets/CheckboxWidget
  */
 
-import { map } from 'lodash';
+import { FormFieldWrapper } from '@plone/volto/components';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
-import { Checkbox, Form, Grid, Icon, Label } from 'semantic-ui-react';
+import { Checkbox, Icon } from 'semantic-ui-react';
 
 const messages = defineMessages({
   default: {
@@ -61,6 +61,8 @@ const CheckboxWidget = ({
   onDelete,
   intl,
   fieldSet,
+  wrapped,
+  isDraggable,
 }) => {
   const schema = {
     fieldsets: [
@@ -94,62 +96,48 @@ const CheckboxWidget = ({
   };
 
   return (
-    <Form.Field
-      inline
+    <FormFieldWrapper
+      id={id}
+      title={title}
+      description={description}
       required={required}
-      error={error.length > 0}
-      className={description ? 'help' : ''}
-      id={`${fieldSet || 'field'}-${id}`}
+      error={error}
+      fieldSet={fieldSet}
+      wrapped={wrapped}
+      columns={1}
+      draggable={isDraggable}
     >
-      <Grid>
-        <Grid.Row stretched>
-          <Grid.Column width="12">
-            <div className="wrapper">
-              {onEdit && (
-                <div className="toolbar">
-                  <button
-                    aria-label={intl.formatMessage(messages.edit)}
-                    className="item ui noborder button"
-                    onClick={() => onEdit(id, schema)}
-                  >
-                    <Icon name="write square" size="large" color="blue" />
-                  </button>
-                  <button
-                    aria-label={intl.formatMessage(messages.delete)}
-                    className="item ui noborder button"
-                    onClick={() => onDelete(id)}
-                  >
-                    <Icon name="close" size="large" color="red" />
-                  </button>
-                </div>
-              )}
-              {onEdit && (
-                <i aria-hidden="true" className="grey bars icon drag handle" />
-              )}
-              <Checkbox
-                name={`field-${id}`}
-                checked={value}
-                disabled={onEdit !== null}
-                onChange={(event, { checked }) => onChange(id, checked)}
-                label={<label htmlFor={`field-${id}`}>{title}</label>}
-              />
-            </div>
-            {map(error, (message) => (
-              <Label key={message} basic color="red" pointing>
-                {message}
-              </Label>
-            ))}
-          </Grid.Column>
-        </Grid.Row>
-        {description && (
-          <Grid.Row stretched>
-            <Grid.Column stretched width="12">
-              <p className="help">{description}</p>
-            </Grid.Column>
-          </Grid.Row>
+      <div className="wrapper">
+        {onEdit && (
+          <div className="toolbar">
+            <button
+              aria-label={intl.formatMessage(messages.edit)}
+              className="item ui noborder button"
+              onClick={() => onEdit(id, schema)}
+            >
+              <Icon name="write square" size="large" color="blue" />
+            </button>
+            <button
+              aria-label={intl.formatMessage(messages.delete)}
+              className="item ui noborder button"
+              onClick={() => onDelete(id)}
+            >
+              <Icon name="close" size="large" color="red" />
+            </button>
+          </div>
         )}
-      </Grid>
-    </Form.Field>
+        {onEdit && (
+          <i aria-hidden="true" className="grey bars icon drag handle" />
+        )}
+        <Checkbox
+          name={`field-${id}`}
+          checked={value}
+          disabled={onEdit !== null}
+          onChange={(event, { checked }) => onChange(id, checked)}
+          label={<label htmlFor={`field-${id}`}>{title}</label>}
+        />
+      </div>
+    </FormFieldWrapper>
   );
 };
 
@@ -168,6 +156,7 @@ CheckboxWidget.propTypes = {
   onChange: PropTypes.func,
   onEdit: PropTypes.func,
   onDelete: PropTypes.func,
+  wrapped: PropTypes.bool,
 };
 
 /**

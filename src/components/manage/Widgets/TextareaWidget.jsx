@@ -3,11 +3,11 @@
  * @module components/manage/Widgets/TextareaWidget
  */
 
-import { map } from 'lodash';
+import { FormFieldWrapper } from '@plone/volto/components';
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import { default as React, useState } from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
-import { Form, Grid, Icon, Label, TextArea } from 'semantic-ui-react';
+import { Icon, Label, TextArea } from 'semantic-ui-react';
 
 const messages = defineMessages({
   default: {
@@ -60,11 +60,12 @@ const TextareaWidget = ({
   isDissabled,
   isDraggable,
   fieldSet,
+  wrapped,
 }) => {
   const [lengthError, setlengthError] = useState('');
 
   const onhandleChange = (id, value) => {
-    if (maxLength) {
+    if (maxLength & value?.length) {
       let remlength = maxLength - value.length;
       if (remlength < 0) {
         setlengthError(`You have exceed word limit by ${Math.abs(remlength)}`);
@@ -107,80 +108,50 @@ const TextareaWidget = ({
   };
 
   return (
-    <Form.Field
-      inline
+    <FormFieldWrapper
+      id={id}
+      title={title}
+      description={description}
       required={required}
-      error={error.length > 0}
-      className={description ? 'help textarea' : 'textarea'}
-      id={`${fieldSet || 'field'}-${id}`}
+      error={error}
+      fieldSet={fieldSet}
+      wrapped={wrapped}
+      onEdit={onEdit}
+      draggable={isDraggable}
+      className="textarea"
     >
-      <Grid>
-        <Grid.Row stretched>
-          <Grid.Column width="4">
-            <div className="wrapper">
-              <label htmlFor={`field-${id}`}>
-                {isDraggable && (
-                  <i
-                    aria-hidden="true"
-                    className="grey bars icon drag handle"
-                  />
-                )}
-                {title}
-              </label>
-            </div>
-          </Grid.Column>
-          <Grid.Column width="8">
-            {onEdit && !isDissabled ? (
-              <div className="toolbar">
-                <button
-                  className="item ui noborder button"
-                  onClick={() => onEdit(id, schema)}
-                >
-                  <Icon name="write square" size="large" color="blue" />
-                </button>
-                <button
-                  aria-label={intl.formatMessage(messages.delete)}
-                  className="item ui noborder button"
-                  onClick={() => onDelete(id)}
-                >
-                  <Icon name="close" size="large" color="red" />
-                </button>
-              </div>
-            ) : null}
-            <TextArea
-              id={`field-${id}`}
-              name={id}
-              value={value || ''}
-              disabled={isDissabled}
-              style={{ background: 'transparent' }}
-              onChange={({ target }) =>
-                onhandleChange(
-                  id,
-                  target.value === '' ? undefined : target.value,
-                )
-              }
-            />
-            {lengthError.length > 0 && (
-              <Label key={lengthError} basic color="red" pointing>
-                {lengthError}
-              </Label>
-            )}
-            {map(error, (message) => (
-              <Label key={message} basic color="red" pointing>
-                {message}
-              </Label>
-            ))}
-          </Grid.Column>
-        </Grid.Row>
-        {description && (
-          <Grid.Row stretched>
-            <Grid.Column stretched width="12">
-              <p className="help">{description}</p>
-            </Grid.Column>
-          </Grid.Row>
-        )}
-      </Grid>
-    </Form.Field>
+      {onEdit && !isDissabled && (
+        <div className="toolbar">
+          <button
+            className="item ui noborder button"
+            onClick={() => onEdit(id, schema)}
+          >
+            <Icon name="write square" size="large" color="blue" />
+          </button>
+          <button
+            aria-label={intl.formatMessage(messages.delete)}
+            className="item ui noborder button"
+            onClick={() => onDelete(id)}
+          >
+            <Icon name="close" size="large" color="red" />
+          </button>
+        </div>
+      )}
+      <TextArea
+        id={`field-${id}`}
+        name={id}
+        value={value || ''}
+        disabled={isDissabled}
+        onChange={({ target }) =>
+          onhandleChange(id, target.value === '' ? undefined : target.value)
+        }
+      />
+      {lengthError.length > 0 && (
+        <Label key={lengthError} basic color="red" pointing>
+          {lengthError}
+        </Label>
+      )}
+    </FormFieldWrapper>
   );
 };
 
@@ -202,6 +173,7 @@ TextareaWidget.propTypes = {
   onChange: PropTypes.func,
   onEdit: PropTypes.func,
   onDelete: PropTypes.func,
+  wrapped: PropTypes.bool,
 };
 
 /**

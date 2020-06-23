@@ -3,7 +3,11 @@
  * @module components/manage/Controlpanels/ContentTypeMetadata
  */
 
-import { getSchema, updateContentTypeFieldTypes } from '@plone/volto/actions';
+import {
+  getSchema,
+  getVocabulary,
+  updateContentTypeFieldTypes
+} from '@plone/volto/actions';
 import { Form, Toast } from '@plone/volto/components';
 import PropTypes from 'prop-types';
 import qs from 'query-string';
@@ -103,6 +107,7 @@ class ContentTypeMetadata extends Component {
    */
   static propTypes = {
     getSchema: PropTypes.func.isRequired,
+    getVocabulary: PropTypes.func.isRequired,
     updateContentTypeFieldTypes: PropTypes.func.isRequired,
     pathname: PropTypes.string.isRequired,
     schema: PropTypes.objectOf(PropTypes.any),
@@ -182,6 +187,7 @@ class ContentTypeMetadata extends Component {
    */
   componentDidMount() {
     this.props.getSchema(this.props.type);
+    this.props.getVocabulary('Fields');
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -240,6 +246,7 @@ export default compose(
     {
       getSchema,
       updateContentTypeFieldTypes,
+      getVocabulary,
     },
   ),
 )(ContentTypeMetadata);
