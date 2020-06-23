@@ -1,28 +1,34 @@
 # Change Log
 
-## 6.2.1 (unreleased)
+## 6.3.1 (unreleased)
 
 ### Breaking
 
 ### Feature
 
-- Added italian translations and translated array, token and select widget. @giuliaghisini
-- Added internationalization for French language @bsuttor #1588
-- selectableTypes in ObjectBrowserWidget @giuliaghisini
-- use of maximumSelectionSize from plone in ObjectBrowserWidget. @giuliaghisini
-
 ### Bugfix
-
-- fixed duplicated items in SelectWidget and ArrayWidget @giuliaghisini
-- Update German translation @timo
-- removed broken preview image in ContentsUploadModal if uploaded item is not an image. @giuliaghisini
-- Localized content upload modal last modified date @nzambello
-- Fix overflow in folder contents with long titles @nzambello
-- fixed object browser widget when a selected items is deleted. Plone.restapi returns a null object. @giuliaghisini
-- fixed error on adding new item if parent item is not translated when multilingual is set @giuliaghisini
 
 ### Internal
 
+## 6.3.0 (2020-06-22)
+
+### Feature
+
+- Added Italian translations and translated array, token and select widget. @giuliaghisini
+- Added internationalization for French language @bsuttor #1588
+- use of maximumSelectionSize from plone in ObjectBrowserWidget. @giuliaghisini
+- Added selectableTypes in ObjectBrowserWidget @giuliaghisini
+
+
+### Bugfix
+
+- Fixed duplicated items in SelectWidget and ArrayWidget @giuliaghisini
+- Update German translation @timo
+- Removed broken preview image in ContentsUploadModal if uploaded item is not an image. @giuliaghisini
+- Localized content upload modal last modified date @nzambello
+- Fix overflow in folder contents with long titles @nzambello
+- Fixed object browser widget when a selected items is deleted. Plone.restapi returns a null object. @giuliaghisini
+- Fixed error on adding new item if parent item is not translated when multilingual is set @giuliaghisini
 - Added translations for select in querystring widget @nzambello
 
 ## 6.2.0 (2020-06-14)
