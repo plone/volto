@@ -8,7 +8,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import { getParentUrl, hasBlocksData, getBlocksFieldname } from '@plone/volto/helpers';
+import {
+  getParentUrl,
+  hasBlocksData,
+  getBlocksFieldname,
+  getBlocksLayoutFieldname,
+} from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
 import { Button } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
@@ -17,10 +22,10 @@ import { nth, join } from 'lodash';
 import { Form, Icon, Toolbar, Sidebar, Toast } from '@plone/volto/components';
 import {
   getSchema,
-  putSchema,
   updateSchema,
   getControlpanel,
-  updateControlpanel } from '@plone/volto/actions';
+  updateControlpanel,
+} from '@plone/volto/actions';
 
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -64,7 +69,6 @@ class ContentTypeLayout extends Component {
     updateControlpanel: PropTypes.func.isRequired,
     getControlpanel: PropTypes.func.isRequired,
     getSchema: PropTypes.func.isRequired,
-    putSchema: PropTypes.func.isRequired,
     updateSchema: PropTypes.func.isRequired,
     id: PropTypes.string.isRequired,
     parent: PropTypes.string.isRequired,
@@ -139,14 +143,11 @@ class ContentTypeLayout extends Component {
       let content = {};
       let value, key;
       for (key in properties) {
-        value = properties[key].default
-        if(value) {
+        value = properties[key].default;
+        if (value) {
           content[key] = value;
         }
       }
-      this.setState({
-        content: content,
-      });
 
       if (hasBlocksData(properties)) {
         this.setState({
@@ -154,9 +155,14 @@ class ContentTypeLayout extends Component {
         });
 
         const blocksFieldName = getBlocksFieldname(properties);
-        const blocksBehavior = properties[blocksFieldName]?.behavior || "";
+        const blocksLayoutFieldname = getBlocksLayoutFieldname(properties);
+        content[blocksFieldName] = properties[blocksFieldName]?.default || {};
+        content[blocksLayoutFieldname] = properties[blocksLayoutFieldname]
+          ?.default || { items: [] };
+
+        const blocksBehavior = properties[blocksFieldName]?.behavior || '';
         this.setState({
-          readOnly: !blocksBehavior.includes("generated")
+          readOnly: !blocksBehavior.includes('generated'),
         });
       } else {
         this.setState({
@@ -164,15 +170,18 @@ class ContentTypeLayout extends Component {
           readOnly: false,
         });
       }
-    }
 
-    // Blocks enabled
-    if (this.props.schemaRequest.put.loading && nextProps.schemaRequest.put.loaded) {
-      this.props.getSchema(this.props.id);
+      this.setState({
+        content: content,
+      });
     }
 
     // Schema updated
-    if (this.props.schemaRequest.update.loading && nextProps.schemaRequest.update.loaded) {
+    if (
+      this.props.schemaRequest.update.loading &&
+      nextProps.schemaRequest.update.loaded
+    ) {
+      this.props.getSchema(this.props.id);
       toast.info(
         <Toast
           info
@@ -184,7 +193,7 @@ class ContentTypeLayout extends Component {
 
     // Blocks behavior disabled
     if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
-      this.props.getSchema(this.props.id);
+      this.onEnableBlocks();
     }
   }
 
@@ -195,7 +204,11 @@ class ContentTypeLayout extends Component {
    * @returns {undefined}
    */
   onSubmit(data) {
-    this.props.updateSchema(this.props.id, data);
+    let schema = { properties: {} };
+    Object.keys(data).forEach(
+      (k) => (schema.properties[k] = { default: data[k] }),
+    );
+    this.props.updateSchema(this.props.id, schema);
   }
 
   /**
@@ -204,7 +217,7 @@ class ContentTypeLayout extends Component {
    * @returns {undefined}
    */
   onCancel() {
-    let url = getParentUrl(this.props.pathname)
+    let url = getParentUrl(this.props.pathname);
     this.props.history.push(getParentUrl(url));
   }
 
@@ -215,57 +228,29 @@ class ContentTypeLayout extends Component {
    */
   onEnableBlocks() {
     let schema = {
-      ...this.props.schema,
       fieldsets: [
-        ...this.props.schema.fieldsets,
         {
-          id: "layout",
-          title: "Layout",
-          fields: ["blocks", "blocks_layout"],
-        }
+          id: 'layout',
+          title: 'Layout',
+          fields: ['blocks', 'blocks_layout'],
+        },
       ],
       properties: {
-        ...this.props.schema.properties,
         blocks: {
-          default: {},
-          title: "Blocks",
-          type: "dict",
-          widget: "json",
-          factory: "JSONField"
+          title: 'Blocks',
+          type: 'dict',
+          widget: 'json',
+          factory: 'JSONField',
         },
         blocks_layout: {
-          default: {
-            items: []
-          },
-          title: "Blocks Layout",
-          type: "dict",
-          widget: "json",
-          factory: "JSONField"
+          title: 'Blocks Layout',
+          type: 'dict',
+          widget: 'json',
+          factory: 'JSONField',
         },
-      }
-    }
-    this.props.putSchema(this.props.id, schema);
-    // debugger;
-    // this.props.postSchema(this.props.id, {
-    //   "@type": "fieldset",
-    //   "title": "Layout"
-    // },
-
-    // );
-    // this.props.postSchema(this.props.id, {
-    //   "@type": "JSONField",
-    //   "title": "Blocks Layout",
-    //   "fieldset_id": 1
-    // });
-    // this.props.postSchema(this.props.id, {
-    //   "@type": "JSONField",
-    //   "title": "Blocks",
-    //   "fieldset_id": 1
-    // });
-    // this.props.updateSchema(this.props.id, {
-    //   blocks: {},
-    //   blocks_layout: {"items": []}
-    // });
+      },
+    };
+    this.props.updateSchema(this.props.id, schema);
   }
 
   /**
@@ -275,8 +260,8 @@ class ContentTypeLayout extends Component {
    */
   onDisableBlocksBehavior() {
     this.props.updateControlpanel(this.props.controlpanel['@id'], {
-      "volto.blocks": false
-    })
+      'volto.blocks': false,
+    });
   }
 
   /**
@@ -294,92 +279,104 @@ class ContentTypeLayout extends Component {
       // Blocks are not enabled
       return (
         <>
-        <div id="page-controlpanel-layout" className="ui container">
-          <p>
-          <FormattedMessage
-              id="Can not edit Layout for {type} content-type as it doesn't have support for Volto Blocks enabled"
-              defaultMessage="Can not edit Layout for {type} content-type as it doesn't have support for Volto Blocks enabled"
-              values = {{
-                type: this.props.id
-              }}
-            />
-          </p>
-          <p>
-            <button onClick={this.onEnableBlocks}>
-              <FormattedMessage
-                id="Enables Volto Blocks support"
-                defaultMessage="Enables Volto Blocks support"
-              />
-            </button>
-          </p>
-        </div>
-        <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
-        <Toolbar
-          pathname={this.props.pathname}
-          hideDefaultViewButtons
-          inner={
-            <>
-              <Link className="item" to="#" onClick={() => this.onCancel()}>
-                <Icon
-                  name={backSVG}
-                  size="30px"
-                  className="contents circled"
-                  title={this.props.intl.formatMessage(messages.back)}
+          <div id="page-controlpanel-layout" className="ui container">
+            <center>
+              <p>
+                <FormattedMessage
+                  id="Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled"
+                  defaultMessage="Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled"
+                  values={{
+                    strong: (...chunks) => <strong>{chunks}</strong>,
+                    type: this.props.id,
+                  }}
                 />
-              </Link>
-            </>
-          }
-        />
-      </Portal>
-      </>
-      )
+              </p>
+              <p>
+                <button onClick={this.onEnableBlocks}>
+                  <FormattedMessage
+                    id="Enable Volto Blocks"
+                    defaultMessage="Enable Volto Blocks"
+                  />
+                </button>
+              </p>
+            </center>
+          </div>
+          <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
+            <Toolbar
+              pathname={this.props.pathname}
+              hideDefaultViewButtons
+              inner={
+                <>
+                  <Link className="item" to="#" onClick={() => this.onCancel()}>
+                    <Icon
+                      name={backSVG}
+                      size="30px"
+                      className="contents circled"
+                      title={this.props.intl.formatMessage(messages.back)}
+                    />
+                  </Link>
+                </>
+              }
+            />
+          </Portal>
+        </>
+      );
     }
 
     if (this.state.readOnly) {
       return (
         <>
           <div id="page-controlpanel-layout" className="ui container">
-            <p>
-              <FormattedMessage
-                  id="Can not edit Layout for {type} content-type as the Blocks behavior is enabled and read-only"
-                  defaultMessage="Can not edit Layout for {type} content-type as the Blocks behavior is enabled and read-only"
-                  values = {{
-                    type: this.props.id
+            <center>
+              <p>
+                <FormattedMessage
+                  id="Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>"
+                  defaultMessage="Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>"
+                  values={{
+                    strong: (...chunks) => <strong>{chunks}</strong>,
+                    type: this.props.id,
                   }}
                 />
-            </p>
-            <p>
-              <button onClick={this.onDisableBlocksBehavior}>
-                <FormattedMessage
-                  id="Enable editable Blocks"
-                  defaultMessage="Enable editable Blocks"
-                />
-              </button>
-            </p>
+              </p>
+              <p>
+                <button onClick={this.onDisableBlocksBehavior}>
+                  <FormattedMessage
+                    id="Enable editable Blocks"
+                    defaultMessage="Enable editable Blocks"
+                  />
+                </button>
+              </p>
+            </center>
           </div>
           <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
-          <Toolbar
-            pathname={this.props.pathname}
-            hideDefaultViewButtons
-            inner={
-              <>
-                <Link className="item" to="#" onClick={() => this.onCancel()}>
-                  <Icon
-                    name={backSVG}
-                    size="30px"
-                    className="contents circled"
-                    title={this.props.intl.formatMessage(messages.back)}
-                  />
-                </Link>
-              </>
-            }
-          />
-        </Portal>
+            <Toolbar
+              pathname={this.props.pathname}
+              hideDefaultViewButtons
+              inner={
+                <>
+                  <Link className="item" to="#" onClick={() => this.onCancel()}>
+                    <Icon
+                      name={backSVG}
+                      size="30px"
+                      className="contents circled"
+                      title={this.props.intl.formatMessage(messages.back)}
+                    />
+                  </Link>
+                </>
+              }
+            />
+          </Portal>
         </>
-      )
+      );
     }
 
     // Render layout editor
+    const blocksFieldName = getBlocksFieldname(
+      this.props.schema?.properties || {},
+    );
+    const blocksLayoutFieldname = getBlocksLayoutFieldname(
+      this.props.schema?.properties || {},
+    );
     return (
       <div id="page-controlpanel-layout">
         <Form
@@ -387,8 +384,18 @@ class ContentTypeLayout extends Component {
           isAdminForm
           ref={this.form}
           schema={{
-            ...this.props.schema,
-            required: []
+            fieldsets: [
+              {
+                id: 'layout',
+                title: 'Layout',
+                fields: [blocksFieldName, blocksLayoutFieldname],
+              },
+            ],
+            properties: {
+              ...this.props.schema.properties[blocksFieldName],
+              ...this.props.schema.properties[blocksLayoutFieldname],
+            },
+            required: [],
           }}
           formData={this.state.content}
           onSubmit={this.onSubmit}
@@ -398,7 +405,7 @@ class ContentTypeLayout extends Component {
           hideActions
         />
         <Portal node={__CLIENT__ && document.getElementById('sidebar')}>
-          <Sidebar settingsTab={true} />
+          <Sidebar settingsTab={true} documentTab={false} />
         </Portal>
         <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
           <Toolbar
@@ -452,8 +459,6 @@ export default compose(
       id: nth(props.location.pathname.split('/'), -2),
       parent: nth(props.location.pathname.split('/'), -3),
     }),
-    { getSchema, putSchema, updateSchema,
-      getControlpanel, updateControlpanel
-    },
+    { getSchema, updateSchema, getControlpanel, updateControlpanel },
   ),
 )(ContentTypeLayout);
