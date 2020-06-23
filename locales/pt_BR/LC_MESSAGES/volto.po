@@ -1969,6 +1969,10 @@ msgstr ""
 
 #: components/manage/Contents/ContentsItem
 msgid "published"
+msgstr "\"
+
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "querystring-widget-select"
 msgstr ""
 
 #: components/theme/Login/Login

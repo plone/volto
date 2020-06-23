@@ -1963,6 +1963,10 @@ msgstr "Privato"
 msgid "published"
 msgstr "Pubblicato"
 
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "querystring-widget-select"
+msgstr "Seleziona…"
+
 #: components/theme/Login/Login
 msgid "registration form"
 msgstr "form di registrazione"

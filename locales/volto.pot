@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-06-18T08:54:34.514Z\n"
+"POT-Creation-Date: 2020-06-19T15:05:53.851Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -2401,6 +2401,11 @@ msgstr ""
 #: components/manage/Contents/ContentsItem
 # defaultMessage: Published
 msgid "published"
+msgstr ""
+
+#: components/manage/Blocks/Listing/QuerystringWidget
+# defaultMessage: Select…
+msgid "querystring-widget-select"
 msgstr ""
 
 #: components/theme/Login/Login
