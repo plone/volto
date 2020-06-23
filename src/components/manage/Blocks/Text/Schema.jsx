@@ -2,27 +2,29 @@ import BlockSettingsSchema from '@plone/volto/components/manage/Blocks/Block/Sch
 
 const Schema = {
   ...BlockSettingsSchema,
-  fieldsets: [{
-    ...BlockSettingsSchema.fieldsets[0],
-    fields: [
-      ...BlockSettingsSchema.fieldsets[0].fields,
-        "minLength",
-        "maxLength",
-    ]
-  }],
+  fieldsets: [
+    {
+      ...BlockSettingsSchema.fieldsets[0],
+      fields: [
+        ...BlockSettingsSchema.fieldsets[0].fields,
+        'minLength',
+        'maxLength',
+      ],
+    },
+  ],
   properties: {
     ...BlockSettingsSchema.properties,
     minLength: {
-      title: "Min length",
-      description: "Minimum number of characters",
+      title: 'Min length',
+      description: 'Minimum number of characters',
       type: 'integer',
     },
     maxLength: {
-      title: "Max length",
-      description: "Maximum number of characters",
+      title: 'Max length',
+      description: 'Maximum number of characters',
       type: 'integer',
     },
-  }
-}
+  },
+};
 
 export default Schema;

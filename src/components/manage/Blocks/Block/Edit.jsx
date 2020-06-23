@@ -18,7 +18,11 @@ import { setSidebarTab } from '@plone/volto/actions';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import trashSVG from '@plone/volto/icons/delete.svg';
-import { SidebarPortal, BlockSettingsSidebar, BlockSettingsSchema } from '@plone/volto/components';
+import {
+  SidebarPortal,
+  BlockSettingsSidebar,
+  BlockSettingsSchema,
+} from '@plone/volto/components';
 
 const messages = defineMessages({
   unknownBlock: {
@@ -55,13 +59,13 @@ class Edit extends Component {
     onDeleteBlock: PropTypes.func.isRequired,
   };
 
-    /**
+  /**
    * Default properties.
    * @property {Object} defaultProps Default properties.
    * @static
    */
   static defaultProps = {
-    manage: false
+    manage: false,
   };
 
   componentDidMount() {
@@ -75,7 +79,9 @@ class Edit extends Component {
     ) {
       this.blockNode.current.focus();
     }
-    const tab = this.props.manage ? 2 : (blocks.blocksConfig?.[type]?.sidebarBar || 0);
+    const tab = this.props.manage
+      ? 2
+      : blocks.blocksConfig?.[type]?.sidebarBar || 0;
     if (this.props.selected) {
       this.props.setSidebarTab(tab);
     }
@@ -97,7 +103,9 @@ class Edit extends Component {
       (!this.props.selected && nextProps.selected) ||
       type !== nextProps.type
     ) {
-      const tab = this.props.manage ? 2 : (blocks.blocksConfig?.[nextProps.type]?.sidebarTab || 0);
+      const tab = this.props.manage
+        ? 2
+        : blocks.blocksConfig?.[nextProps.type]?.sidebarTab || 0;
       this.props.setSidebarTab(tab);
     }
   }
@@ -116,10 +124,11 @@ class Edit extends Component {
       : includes(blocks.requiredBlocks, type);
 
     let Block = blocks.blocksConfig?.[type]?.['edit'] || null;
-    if(this.props.data?.readOnly) {
+    if (this.props.data?.readOnly) {
       Block = blocks.blocksConfig?.[type]?.['view'] || null;
     }
-    const schema = blocks.blocksConfig?.[type]?.['schema'] || BlockSettingsSchema;
+    const schema =
+      blocks.blocksConfig?.[type]?.['schema'] || BlockSettingsSchema;
     const blockHasOwnFocusManagement =
       blocks.blocksConfig?.[type]?.['blockHasOwnFocusManagement'] || null;
 
@@ -149,9 +158,12 @@ class Edit extends Component {
           >
             <Block {...this.props} blockNode={this.blockNode} />
             {this.props.manage && (
-            <SidebarPortal selected={this.props.selected} tab="sidebar-settings">
-              <BlockSettingsSidebar {...this.props} schema={schema} />
-            </SidebarPortal>
+              <SidebarPortal
+                selected={this.props.selected}
+                tab="sidebar-settings"
+              >
+                <BlockSettingsSidebar {...this.props} schema={schema} />
+              </SidebarPortal>
             )}
           </div>
         ) : (

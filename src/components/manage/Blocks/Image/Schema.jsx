@@ -2,27 +2,29 @@ import BlockSettingsSchema from '@plone/volto/components/manage/Blocks/Block/Sch
 
 const Schema = {
   ...BlockSettingsSchema,
-  fieldsets: [{
-    ...BlockSettingsSchema.fieldsets[0],
-    fields: [
-      ...BlockSettingsSchema.fieldsets[0].fields,
-        "minSize",
-        "maxSize",
-    ]
-  }],
+  fieldsets: [
+    {
+      ...BlockSettingsSchema.fieldsets[0],
+      fields: [
+        ...BlockSettingsSchema.fieldsets[0].fields,
+        'minSize',
+        'maxSize',
+      ],
+    },
+  ],
   properties: {
     ...BlockSettingsSchema.properties,
     minSize: {
-      title: "Min size",
-      description: "Minimum image size",
+      title: 'Min size',
+      description: 'Minimum image size',
       type: 'integer',
     },
     maxSize: {
-      title: "Max size",
-      description: "Maximum image size",
+      title: 'Max size',
+      description: 'Maximum image size',
       type: 'integer',
     },
-  }
-}
+  },
+};
 
 export default Schema;

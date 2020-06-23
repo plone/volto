@@ -3,7 +3,12 @@
  * @module actions/schema/schema
  */
 
-import { GET_SCHEMA, POST_SCHEMA, PUT_SCHEMA, UPDATE_SCHEMA } from '@plone/volto/constants/ActionTypes';
+import {
+  GET_SCHEMA,
+  POST_SCHEMA,
+  PUT_SCHEMA,
+  UPDATE_SCHEMA,
+} from '@plone/volto/constants/ActionTypes';
 
 /**
  * Get schema function.

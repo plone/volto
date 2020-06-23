@@ -217,14 +217,14 @@ class Add extends Component {
       if (!isEmpty(schemaBlocksLayout) && !isEmpty(schemaBlocks)) {
         initialBlocks = {};
         initialBlocksLayout = [];
-        schemaBlocksLayout.forEach(value => {
+        schemaBlocksLayout.forEach((value) => {
           if (!isEmpty(schemaBlocks[value])) {
             let newUid = uuid();
             initialBlocksLayout.push(newUid);
             initialBlocks[newUid] = schemaBlocks[value];
 
             // Ref ID - keep a reference to the original block id
-            initialBlocks[newUid]["rid"] = value;
+            initialBlocks[newUid]['rid'] = value;
           }
         });
       }

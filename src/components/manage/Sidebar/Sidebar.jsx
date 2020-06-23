@@ -28,8 +28,8 @@ const messages = defineMessages({
     defaultMessage: 'Block',
   },
   settings: {
-    id: "Settings",
-    defaultMessage: "Settings",
+    id: 'Settings',
+    defaultMessage: 'Settings',
   },
   shrinkSidebar: {
     id: 'Shrink sidebar',
@@ -67,7 +67,7 @@ class Sidebar extends Component {
     documentTab: true,
     blockTab: true,
     settingsTab: false,
-  }
+  };
 
   /**
    * Constructor
@@ -256,7 +256,7 @@ class Sidebar extends Component {
                     />
                   </Tab.Pane>
                 ),
-              }
+              },
             ]}
           />
         </div>

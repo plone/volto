@@ -219,7 +219,9 @@ class Edit extends Component {
    */
   render() {
     const { data } = this.props;
-    const placeholder = this.props.data.placeholder || this.props.intl.formatMessage(messages.ImageBlockInputPlaceholder);
+    const placeholder =
+      this.props.data.placeholder ||
+      this.props.intl.formatMessage(messages.ImageBlockInputPlaceholder);
     return (
       <div
         className={cx(

@@ -9,12 +9,10 @@ import { Portal } from 'react-portal';
  * @param {string} tab Element id where to insert sidebar content, default: sidebar-properties
  * @returns {string} Rendered sidebar
  */
-const SidebarPortal = ({ children, selected, tab='sidebar-properties' }) => (
+const SidebarPortal = ({ children, selected, tab = 'sidebar-properties' }) => (
   <>
     {selected && (
-      <Portal
-        node={__CLIENT__ && document.getElementById(tab)}
-      >
+      <Portal node={__CLIENT__ && document.getElementById(tab)}>
         <div role="form" style={{ height: '100%' }}>
           <div
             style={{ height: '100%' }}

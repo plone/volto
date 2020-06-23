@@ -29,9 +29,9 @@ const messages = defineMessages({
     defaultMessage: 'Preview',
   },
   placeholder: {
-    id: "<p>Add some HTML here</p>",
-    defaultMessage: "<p>Add some HTML here</p>",
-  }
+    id: '<p>Add some HTML here</p>',
+    defaultMessage: '<p>Add some HTML here</p>',
+  },
 });
 
 /**
@@ -138,7 +138,9 @@ class Edit extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const placeholder = this.props.data.placeholder || this.props.intl.formatMessage(messages.placeholder);
+    const placeholder =
+      this.props.data.placeholder ||
+      this.props.intl.formatMessage(messages.placeholder);
     return (
       <>
         <Pretty ref={this.pretty} />

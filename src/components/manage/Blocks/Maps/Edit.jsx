@@ -158,7 +158,9 @@ class Edit extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const placeholder = this.props.data.placeholder || this.props.intl.formatMessage(messages.MapsBlockInputPlaceholder);
+    const placeholder =
+      this.props.data.placeholder ||
+      this.props.intl.formatMessage(messages.MapsBlockInputPlaceholder);
     return (
       <div
         className={cx(

@@ -198,7 +198,9 @@ class Edit extends Component {
       return <div />;
     }
 
-    const placeholder = this.props.data.placeholder || this.props.intl.formatMessage(messages.text);
+    const placeholder =
+      this.props.data.placeholder ||
+      this.props.intl.formatMessage(messages.text);
     const { InlineToolbar } = this.state.inlineToolbarPlugin;
 
     return (

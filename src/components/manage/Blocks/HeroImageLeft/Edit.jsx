@@ -260,7 +260,9 @@ class Edit extends Component {
     if (__SERVER__) {
       return <div />;
     }
-    const placeholder = this.props.data.placeholder || this.props.intl.formatMessage(messages.placeholder);
+    const placeholder =
+      this.props.data.placeholder ||
+      this.props.intl.formatMessage(messages.placeholder);
     return (
       <div
         className={cx('block hero', {

@@ -66,7 +66,9 @@ class Edit extends Component {
    */
   render() {
     const { data, properties } = this.props;
-    const placeholder = this.props.data.placeholder || this.props.intl.formatMessage(messages.ImageBlockInputPlaceholder);
+    const placeholder =
+      this.props.data.placeholder ||
+      this.props.intl.formatMessage(messages.ImageBlockInputPlaceholder);
 
     return (
       <div
@@ -82,9 +84,7 @@ class Edit extends Component {
           <Message>
             <center>
               <img src={imageBlockSVG} alt="" />
-              <div className="message-text">
-                {placeholder}
-              </div>
+              <div className="message-text">{placeholder}</div>
             </center>
           </Message>
         )}

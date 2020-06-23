@@ -10,7 +10,7 @@ import {
   POST_SCHEMA,
   PUT_SCHEMA,
   UPDATE_SCHEMA,
- } from '@plone/volto/constants/ActionTypes';
+} from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
   error: null,
@@ -31,7 +31,7 @@ const initialState = {
     loaded: false,
     loading: false,
     error: null,
-  }
+  },
 };
 
 /**

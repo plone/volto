@@ -123,7 +123,9 @@ class Edit extends Component {
    */
   render() {
     const { data } = this.props;
-    const placeholder = this.props.data.placeholder || this.props.intl.formatMessage(messages.VideoBlockInputPlaceholder);
+    const placeholder =
+      this.props.data.placeholder ||
+      this.props.intl.formatMessage(messages.VideoBlockInputPlaceholder);
     return (
       <div
         className={cx(
