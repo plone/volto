@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Added Blocks Layout Editor within Dexterity Content-Types Controlpanel @avoinea #1517
+
 ### Bugfix
 
 ### Internal
