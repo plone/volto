@@ -3,7 +3,7 @@
  * @module helpers/Blocks
  */
 
-import { endsWith, findLast, keys } from 'lodash';
+import { endsWith, find, keys } from 'lodash';
 
 /**
  * Get blocks field.
@@ -13,7 +13,7 @@ import { endsWith, findLast, keys } from 'lodash';
  */
 export function getBlocksFieldname(props) {
   return (
-    findLast(
+    find(
       keys(props),
       (key) => key !== 'volto.blocks' && endsWith(key, 'blocks'),
     ) || null
@@ -28,7 +28,7 @@ export function getBlocksFieldname(props) {
  */
 export function getBlocksLayoutFieldname(props) {
   return (
-    findLast(
+    find(
       keys(props),
       (key) => key !== 'volto.blocks' && endsWith(key, 'blocks_layout'),
     ) || null
@@ -43,7 +43,7 @@ export function getBlocksLayoutFieldname(props) {
  */
 export function hasBlocksData(props) {
   return (
-    findLast(
+    find(
       keys(props),
       (key) => key !== 'volto.blocks' && endsWith(key, 'blocks'),
     ) !== undefined
