@@ -141,7 +141,7 @@ review and adapt them.
 ### Update `config.js`
 
 !!! note
-    This is required since Volto version 6.1.0
+    This is required since Volto version 6.1.0 [1541](https://github.com/plone/volto/pull/1541)
 
 Add these to the `config.js` of your project:
 
