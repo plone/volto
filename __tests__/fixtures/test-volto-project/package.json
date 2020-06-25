@@ -1,4 +1,4 @@
 {
   "name": "test-volto-project",
-  "addons": ["test-addon", "test-released-addon"]
+  "addons": ["test-addon", "test-released-addon:extra", "test-released-source-addon"]
 }

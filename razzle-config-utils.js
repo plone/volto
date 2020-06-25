@@ -34,13 +34,14 @@ class AddonConfigurationRegistry {
           : `${projectRootPath}/node_modules/@plone/volto`,
 
       packages: {},
+      customizations: new Map(),
     };
 
     this.initDevelopmentPackages();
     this.initPublishedPackages();
 
     this.initRazzleExtenders();
-    this.initConfigLoaders();
+    this.initAddonLoaders();
   }
 
   /*
@@ -83,9 +84,7 @@ class AddonConfigurationRegistry {
         const packageJson = `${basePath}/package.json`;
         const pkg = require(packageJson);
         const main = pkg.main || 'src/index.js';
-        const modulePath = path.basepath(
-          require.resolve(`${basePath}/${main}`),
-        );
+        const modulePath = path.dirname(require.resolve(`${basePath}/${main}`));
         this.registry.packages[addonName] = {
           isAddon: true,
           modulePath,
@@ -95,21 +94,15 @@ class AddonConfigurationRegistry {
     });
   }
 
-  getAddons() {
-    return this.registry.packages
-      .filter((o) => o.isAddon && o.name !== '@plone/volto')
-      .map((name) => this.registry.packages[name]);
-  }
-
   /*
    * Allow addons to provide razzle.config extenders. These extenders
-   * modules need to provide two functions:
+   * modules (named razzle.extend.js) need to provide two functions:
    * `plugins(defaultPlugins) => plugins` and
    * `modify(...) => config`
    */
   initRazzleExtenders() {
-    this.getAddons().forEach((addon) => {
-      const base = path.basepath(addon.packageJson);
+    this.getOrderedAddons().forEach((addon) => {
+      const base = path.dirname(addon.packageJson);
       const razzlePath = path.resolve(`${base}/razzle.extend.js`);
       if (fs.existsSync(razzlePath)) {
         addon.razzleExtender = require(razzlePath);
@@ -117,6 +110,11 @@ class AddonConfigurationRegistry {
     });
   }
 
+  /*
+   * Maps extra configuration loaders for addons:
+   * - extra loaders (from the addon loader string in package.addons
+   * - the server.config.js files
+   */
   initAddonLoaders() {
     (this.packageJson.addons || []).forEach((addonConfigString) => {
       let extras = [];
@@ -126,7 +124,7 @@ class AddonConfigurationRegistry {
         extras = addonConfigLoadInfo[1].split(',');
       }
 
-      const addon = this.registry[pkgName];
+      const addon = this.registry.packages[pkgName];
       addon.extraConfigLoaders = extras;
 
       const serverModule = path.resolve(`${addon.modulePath}/server.config.js`);
@@ -135,25 +133,12 @@ class AddonConfigurationRegistry {
       }
     });
   }
+
+  getOrderedAddons() {
+    return (this.packageJson.addons || []).map(
+      (s) => this.registry.packages[s.split(':')[0]],
+    );
+  }
 }
 
 module.exports = { AddonConfigurationRegistry };
-
-// pkgPaths: {
-//   '@plone/volto':
-//     packageJson.name === '@plone/volto'
-//       ? `${projectRootPath}`
-//       : `${projectRootPath}/node_modules/@plone/volto`,
-// },
-// addons: packageJson.addons || [],
-// addonsPkgJson: {}, // addonName => addonPackageJsonPath
-//
-// // addonLoaders: [],
-// addonExtenders: [],
-//
-// serverExtenders: [],
-// customizations: new Map(),
-// this.addPkgPaths();
-// this.addAddonPaths();
-// // this.addAddonLoaders();
-// this.addAddonExtenders();
