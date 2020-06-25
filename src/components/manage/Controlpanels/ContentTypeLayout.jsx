@@ -19,7 +19,14 @@ import { Button } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
 import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
 import { nth, join } from 'lodash';
-import { Form, Icon, Toolbar, Sidebar, Toast } from '@plone/volto/components';
+import {
+  Error,
+  Form,
+  Icon,
+  Toolbar,
+  Sidebar,
+  Toast,
+} from '@plone/volto/components';
 import {
   getSchema,
   updateSchema,
@@ -73,14 +80,8 @@ class ContentTypeLayout extends Component {
     id: PropTypes.string.isRequired,
     parent: PropTypes.string.isRequired,
     pathname: PropTypes.string.isRequired,
-    schemaRequest: PropTypes.shape({
-      loading: PropTypes.bool,
-      loaded: PropTypes.bool,
-    }).isRequired,
-    updateRequest: PropTypes.shape({
-      loading: PropTypes.bool,
-      loaded: PropTypes.bool,
-    }).isRequired,
+    schemaRequest: PropTypes.objectOf(PropTypes.any).isRequired,
+    cpanelRequest: PropTypes.objectOf(PropTypes.any).isRequired,
     schema: PropTypes.objectOf(PropTypes.any),
     controlpanel: PropTypes.shape({
       '@id': PropTypes.string,
@@ -108,11 +109,14 @@ class ContentTypeLayout extends Component {
    */
   constructor(props) {
     super(props);
+
     this.state = {
       visual: false,
       content: null,
       readOnly: false,
+      error: null,
     };
+
     this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.onEnableBlocks = this.onEnableBlocks.bind(this);
@@ -137,7 +141,17 @@ class ContentTypeLayout extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
-    // Schema
+    // Control Panel GET
+    if (
+      this.props.cpanelRequest.get.loading &&
+      nextProps.cpanelRequest.get.error
+    ) {
+      this.setState({
+        error: nextProps.cpanelRequest.get.error,
+      });
+    }
+
+    // Schema GET
     if (this.props.schemaRequest.loading && nextProps.schemaRequest.loaded) {
       let properties = nextProps.schema?.properties || {};
       let content = {};
@@ -192,7 +206,10 @@ class ContentTypeLayout extends Component {
     }
 
     // Blocks behavior disabled
-    if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
+    if (
+      this.props.cpanelRequest.update.loading &&
+      nextProps.cpanelRequest.update.loaded
+    ) {
       this.onEnableBlocks();
     }
   }
@@ -270,6 +287,11 @@ class ContentTypeLayout extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    // Error
+    if (this.state.error) {
+      return <Error error={this.state.error} />;
+    }
+
     if (!this.state.visual) {
       // Still loading
       if (!this.state.content) {
@@ -453,7 +475,7 @@ export default compose(
     (state, props) => ({
       schema: state.schema.schema,
       schemaRequest: state.schema,
-      updateRequest: state.controlpanels.update,
+      cpanelRequest: state.controlpanels,
       controlpanel: state.controlpanels.controlpanel,
       pathname: props.location.pathname,
       id: nth(props.location.pathname.split('/'), -2),

@@ -22,6 +22,7 @@ export Tags from '@plone/volto/components/theme/Tags/Tags';
 export OutdatedBrowser from '@plone/volto/components/theme/OutdatedBrowser/OutdatedBrowser';
 export LanguageSelector from '@plone/volto/components/theme/LanguageSelector/LanguageSelector';
 
+export Error from '@plone/volto/components/theme/Error/Error';
 export NotFound from '@plone/volto/components/theme/NotFound/NotFound';
 export Forbidden from '@plone/volto/components/theme/Forbidden/Forbidden';
 export Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';

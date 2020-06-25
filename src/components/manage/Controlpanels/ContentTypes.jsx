@@ -14,7 +14,13 @@ import { last } from 'lodash';
 import { Confirm, Container, Table, Button, Dropdown } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import { Icon, ModalForm, Toolbar, Toast } from '@plone/volto/components';
+import {
+  Error,
+  Icon,
+  ModalForm,
+  Toolbar,
+  Toast,
+} from '@plone/volto/components';
 import {
   getControlpanel,
   postControlpanel,
@@ -96,14 +102,7 @@ class ContentTypes extends Component {
     postControlpanel: PropTypes.func.isRequired,
     deleteControlpanel: PropTypes.func.isRequired,
     pathname: PropTypes.string.isRequired,
-    postRequest: PropTypes.shape({
-      loading: PropTypes.bool,
-      loaded: PropTypes.bool,
-    }).isRequired,
-    deleteRequest: PropTypes.shape({
-      loading: PropTypes.bool,
-      loaded: PropTypes.bool,
-    }).isRequired,
+    cpanelRequest: PropTypes.objectOf(PropTypes.any).isRequired,
     controlpanel: PropTypes.shape({
       '@id': PropTypes.string,
       items: PropTypes.arrayOf(
@@ -140,6 +139,7 @@ class ContentTypes extends Component {
       addTypeError: '',
       showDelete: false,
       typeToDelete: undefined,
+      error: null,
     };
   }
 
@@ -153,17 +153,36 @@ class ContentTypes extends Component {
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
+    // Get
+    if (
+      this.props.cpanelRequest.get.loading &&
+      nextProps.cpanelRequest.get.error
+    ) {
+      this.setState({
+        error: nextProps.cpanelRequest.get.error,
+      });
+    }
+
     // Create
-    if (this.props.postRequest.loading && nextProps.postRequest.loaded) {
+    if (
+      this.props.cpanelRequest.post.loading &&
+      nextProps.cpanelRequest.post.loaded
+    ) {
       this.props.getControlpanel(this.props.id);
       this.onAddTypeSuccess();
     }
-    if (this.props.postRequest.loading && nextProps.postRequest.error) {
-      this.onAddTypeError(nextProps.postRequest.error);
+    if (
+      this.props.cpanelRequest.post.loading &&
+      nextProps.cpanelRequest.post.error
+    ) {
+      this.onAddTypeError(nextProps.cpanelRequest.post.error);
     }
 
     // Delete
-    if (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) {
+    if (
+      this.props.cpanelRequest.delete.loading &&
+      nextProps.cpanelRequest.delete.loaded
+    ) {
       this.props.getControlpanel(this.props.id);
       this.onDeleteTypeSuccess();
     }
@@ -306,6 +325,11 @@ class ContentTypes extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    // Error
+    if (this.state.error) {
+      return <Error error={this.state.error} />;
+    }
+
     if (!this.props.controlpanel) {
       return <div />;
     }
@@ -340,7 +364,7 @@ class ContentTypes extends Component {
             submitError={this.state.addTypeError}
             onCancel={() => this.setState({ showAddType: false })}
             title={this.props.intl.formatMessage(messages.addTypeFormTitle)}
-            loading={this.props.postRequest.loading}
+            loading={this.props.cpanelRequest.post.loading}
             schema={{
               fieldsets: [
                 {
@@ -494,8 +518,7 @@ export default compose(
   connect(
     (state, props) => ({
       controlpanel: state.controlpanels.controlpanel,
-      postRequest: state.controlpanels.post,
-      deleteRequest: state.controlpanels.delete,
+      cpanelRequest: state.controlpanels,
       pathname: props.location.pathname,
       id: last(props.location.pathname.split('/')),
     }),
