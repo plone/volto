@@ -141,44 +141,42 @@ class Edit extends Component {
       this.props.intl.formatMessage(messages.title);
 
     return (
-      <>
-        <Editor
-          onChange={this.onChange}
-          editorState={this.state.editorState}
-          blockRenderMap={extendedBlockRenderMap}
-          handleReturn={() => {
-            this.props.onSelectBlock(
-              this.props.onAddBlock('text', this.props.index + 1),
-            );
-            return 'handled';
-          }}
-          placeholder={placeholder}
-          blockStyleFn={() => 'documentFirstHeading'}
-          onUpArrow={() => {
-            const selectionState = this.state.editorState.getSelection();
-            const { editorState } = this.state;
-            if (
-              editorState.getCurrentContent().getBlockMap().first().getKey() ===
-              selectionState.getFocusKey()
-            ) {
-              this.props.onFocusPreviousBlock(this.props.block, this.node);
-            }
-          }}
-          onDownArrow={() => {
-            const selectionState = this.state.editorState.getSelection();
-            const { editorState } = this.state;
-            if (
-              editorState.getCurrentContent().getBlockMap().last().getKey() ===
-              selectionState.getFocusKey()
-            ) {
-              this.props.onFocusNextBlock(this.props.block, this.node);
-            }
-          }}
-          ref={(node) => {
-            this.node = node;
-          }}
-        />
-      </>
+      <Editor
+        onChange={this.onChange}
+        editorState={this.state.editorState}
+        blockRenderMap={extendedBlockRenderMap}
+        handleReturn={() => {
+          this.props.onSelectBlock(
+            this.props.onAddBlock('text', this.props.index + 1),
+          );
+          return 'handled';
+        }}
+        placeholder={placeholder}
+        blockStyleFn={() => 'documentFirstHeading'}
+        onUpArrow={() => {
+          const selectionState = this.state.editorState.getSelection();
+          const { editorState } = this.state;
+          if (
+            editorState.getCurrentContent().getBlockMap().first().getKey() ===
+            selectionState.getFocusKey()
+          ) {
+            this.props.onFocusPreviousBlock(this.props.block, this.node);
+          }
+        }}
+        onDownArrow={() => {
+          const selectionState = this.state.editorState.getSelection();
+          const { editorState } = this.state;
+          if (
+            editorState.getCurrentContent().getBlockMap().last().getKey() ===
+            selectionState.getFocusKey()
+          ) {
+            this.props.onFocusNextBlock(this.props.block, this.node);
+          }
+        }}
+        ref={(node) => {
+          this.node = node;
+        }}
+      />
     );
   }
 }
