@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Usage of Contettype label in Add component. @giuliaghisini
+
 ### Internal
 
 ## 6.3.0 (2020-06-22)
