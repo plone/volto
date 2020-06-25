@@ -164,3 +164,4 @@ export BlockSettingsSidebar from '@plone/volto/components/manage/Blocks/Block/Se
 export BlockSettingsSchema from '@plone/volto/components/manage/Blocks/Block/Schema';
 export TextSettingsSchema from '@plone/volto/components/manage/Blocks/Text/Schema';
 export ImageSettingsSchema from '@plone/volto/components/manage/Blocks/Image/Schema';
+export ToCSettingsSchema from '@plone/volto/components/manage/Blocks/ToC/Schema';

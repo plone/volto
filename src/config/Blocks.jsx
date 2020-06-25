@@ -43,6 +43,7 @@ import ImageGalleryListingBlockTemplate from '@plone/volto/components/manage/Blo
 import BlockSettingsSchema from '@plone/volto/components/manage/Blocks/Block/Schema';
 import TextSettingsSchema from '@plone/volto/components/manage/Blocks/Text/Schema';
 import ImageSettingsSchema from '@plone/volto/components/manage/Blocks/Image/Schema';
+import ToCSettingsSchema from '@plone/volto/components/manage/Blocks/ToC/Schema';
 
 defineMessages({
   title: {
@@ -245,7 +246,7 @@ const blocksConfig = {
     group: 'common',
     view: ViewToCBlock,
     edit: EditToCBlock,
-    schema: BlockSettingsSchema,
+    schema: ToCSettingsSchema,
     restricted: false,
     mostUsed: false,
     sidebarTab: 0,
