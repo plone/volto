@@ -27,6 +27,34 @@ const messages = defineMessages({
     id: 'Time',
     defaultMessage: 'Time',
   },
+  default: {
+    id: 'Default',
+    defaultMessage: 'Default',
+  },
+  idTitle: {
+    id: 'Short Name',
+    defaultMessage: 'Short Name',
+  },
+  idDescription: {
+    id: 'Used for programmatic access to the fieldset.',
+    defaultMessage: 'Used for programmatic access to the fieldset.',
+  },
+  title: {
+    id: 'Title',
+    defaultMessage: 'Title',
+  },
+  description: {
+    id: 'Description',
+    defaultMessage: 'Description',
+  },
+  required: {
+    id: 'Required',
+    defaultMessage: 'Required',
+  },
+  delete: {
+    id: 'Delete',
+    defaultMessage: 'Delete',
+  },
 });
 
 const PrevIcon = () => (
@@ -188,11 +216,28 @@ class DatetimeWidget extends Component {
   onFocusChange = ({ focused }) => this.setState({ focused });
 
   render() {
-    const { id, dateOnly, noPastDates, intl, isDraggable } = this.props;
+    const {
+      id,
+      dateOnly,
+      noPastDates,
+      intl,
+      isDraggable,
+      isDissabled,
+      onDelete,
+      onEdit,
+    } = this.props;
     const { datetime, isDefault, focused } = this.state;
 
     return (
-      <FormFieldWrapper {...this.props} draggable={isDraggable}>
+      <FormFieldWrapper
+        {...this.props}
+        draggable={isDraggable}
+        className="text"
+        onEdit={onEdit ? () => onEdit(id) : null}
+        onDelete={onDelete}
+        intl={intl}
+        isDissabled={isDissabled}
+      >
         <div className="date-time-widget-wrapper">
           <div
             className={cx('ui input date-input', {
@@ -262,8 +307,11 @@ DatetimeWidget.propTypes = {
   dateOnly: PropTypes.bool,
   noPastDates: PropTypes.bool,
   isDraggable: PropTypes.bool,
+  isDissabled: PropTypes.bool,
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
+  onEdit: PropTypes.func,
+  onDelete: PropTypes.func,
   wrapped: PropTypes.bool,
 };
 
@@ -279,7 +327,11 @@ DatetimeWidget.defaultProps = {
   dateOnly: false,
   noPastDates: false,
   isDraggable: false,
+  isDissabled: false,
   value: null,
+  onChange: null,
+  onEdit: null,
+  onDelete: null,
 };
 
 export default injectIntl(DatetimeWidget);

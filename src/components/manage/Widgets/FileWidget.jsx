@@ -3,13 +3,12 @@
  * @module components/manage/Widgets/FileWidget
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Input, Button } from 'semantic-ui-react';
-import { readAsDataURL } from 'promise-file-reader';
-
+import { FormFieldWrapper, Icon } from '@plone/volto/components';
 import deleteSVG from '@plone/volto/icons/delete.svg';
-import { Icon, FormFieldWrapper } from '@plone/volto/components';
+import { readAsDataURL } from 'promise-file-reader';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { Button, Input } from 'semantic-ui-react';
 
 /**
  * FileWidget component class.
@@ -26,6 +25,11 @@ const FileWidget = ({
   onChange,
   fieldSet,
   wrapped,
+  isDraggable,
+  isDissabled,
+  onEdit,
+  onDelete,
+  intl,
 }) => {
   const fileInput = React.useRef(null);
 
@@ -38,6 +42,11 @@ const FileWidget = ({
       error={error}
       wrapped={wrapped}
       fieldSet={fieldSet}
+      draggable={isDraggable}
+      onEdit={onEdit ? () => onEdit(id) : null}
+      onDelete={onDelete}
+      intl={intl}
+      isDissabled={isDissabled}
     >
       <Input
         id={`field-${id}`}
@@ -95,6 +104,10 @@ FileWidget.propTypes = {
   }),
   onChange: PropTypes.func.isRequired,
   wrapped: PropTypes.bool,
+  onEdit: PropTypes.func,
+  onDelete: PropTypes.func,
+  isDraggable: PropTypes.bool,
+  isDissabled: PropTypes.bool,
 };
 
 /**
@@ -103,10 +116,20 @@ FileWidget.propTypes = {
  * @static
  */
 FileWidget.defaultProps = {
+  id: null,
+  title: null,
   description: null,
   required: false,
   error: [],
   value: null,
+  onChange: null,
+  onEdit: null,
+  onDelete: null,
+  focus: false,
+  isDraggable: false,
+  isDissabled: false,
+  icon: null,
+  iconAction: null,
 };
 
 export default FileWidget;

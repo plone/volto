@@ -16,7 +16,7 @@ exports[`PersonalPreferences renders a personal preferences component 1`] = `
         className="ui segment"
       >
         <div
-          className="inline field help"
+          className="inline field help text"
           id="field-language"
         >
           <div
@@ -41,6 +41,31 @@ exports[`PersonalPreferences renders a personal preferences component 1`] = `
               <div
                 className="eight wide column"
               >
+                <div
+                  className="toolbar"
+                >
+                  <button
+                    className="item ui noborder button"
+                    onClick={[Function]}
+                  >
+                    <i
+                      aria-hidden="true"
+                      className="blue write square large icon"
+                      onClick={[Function]}
+                    />
+                  </button>
+                  <button
+                    aria-label="Delete"
+                    className="item ui noborder button"
+                    onClick={[Function]}
+                  >
+                    <i
+                      aria-hidden="true"
+                      className="red close large icon"
+                      onClick={[Function]}
+                    />
+                  </button>
+                </div>
                 <div
                   className="react-select-container css-2b097c-container"
                   id="field-language"
@@ -205,6 +230,7 @@ exports[`PersonalPreferences renders a personal preferences component 1`] = `
           className="ui basic secondary right floated button"
           onClick={[Function]}
           title="Cancel"
+          type="cancel"
         >
           <svg
             className="icon circled"

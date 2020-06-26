@@ -181,7 +181,7 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
                         viewBox=""
                         xmlns=""
                       />
-                      Fields
+                      Schema
                     </div>
                   </div>
                 </div>
@@ -311,7 +311,7 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
                         viewBox=""
                         xmlns=""
                       />
-                      Fields
+                      Schema
                     </div>
                   </div>
                 </div>

@@ -169,37 +169,6 @@ class WysiwygWidget extends Component {
       this.state = { editorState, inlineToolbarPlugin };
     }
 
-    this.schema = {
-      fieldsets: [
-        {
-          id: 'default',
-          title: props.intl.formatMessage(messages.default),
-          fields: ['title', 'id', 'description', 'required'],
-        },
-      ],
-      properties: {
-        id: {
-          type: 'string',
-          title: props.intl.formatMessage(messages.idTitle),
-          description: props.intl.formatMessage(messages.idDescription),
-        },
-        title: {
-          type: 'string',
-          title: props.intl.formatMessage(messages.title),
-        },
-        description: {
-          type: 'string',
-          widget: 'textarea',
-          title: props.intl.formatMessage(messages.description),
-        },
-        required: {
-          type: 'boolean',
-          title: props.intl.formatMessage(messages.required),
-        },
-      },
-      required: ['id', 'title'],
-    };
-
     this.onChange = this.onChange.bind(this);
   }
 
@@ -254,6 +223,7 @@ class WysiwygWidget extends Component {
       onEdit,
       onDelete,
       fieldSet,
+      intl,
       isDraggable,
       isDissabled,
     } = this.props;
@@ -285,7 +255,11 @@ class WysiwygWidget extends Component {
     return (
       <FormFieldWrapper
         {...this.props}
+        onEdit={onEdit ? () => onEdit(id) : null}
+        onDelete={onDelete}
         draggable={isDraggable}
+        isDissabled={isDissabled}
+        intl={intl}
         className="wysiwyg"
       >
         {onEdit && !isDissabled && (

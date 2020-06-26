@@ -3,16 +3,16 @@
  * @module components/manage/Widgets/ReferenceWidget
  */
 
-import React, { Component } from 'react';
+import { resetSearchContent, searchContent } from '@plone/volto/actions';
+import { FormFieldWrapper } from '@plone/volto/components';
+import { compact, concat, fromPairs, map, uniqBy, values } from 'lodash';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { defineMessages, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { Label, Dropdown, Popup, Icon } from 'semantic-ui-react';
-import { compact, concat, fromPairs, map, values, uniqBy } from 'lodash';
-import { defineMessages, injectIntl } from 'react-intl';
+import { Dropdown, Icon, Label, Popup } from 'semantic-ui-react';
 import { settings } from '~/config';
-import { FormFieldWrapper } from '@plone/volto/components';
-import { resetSearchContent, searchContent } from '@plone/volto/actions';
 
 const messages = defineMessages({
   no_results_found: {
@@ -227,7 +227,7 @@ class ReferenceWidget extends Component {
    */
   render() {
     const { id, title, value, multiple, onChange } = this.props;
-
+    console.log('select');
     return (
       <FormFieldWrapper {...this.props}>
         <Dropdown

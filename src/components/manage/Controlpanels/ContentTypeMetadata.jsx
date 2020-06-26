@@ -6,7 +6,7 @@
 import {
   getSchema,
   getVocabulary,
-  updateContentTypeFieldTypes
+  updateContentTypeFieldTypes,
 } from '@plone/volto/actions';
 import { Form, Toast } from '@plone/volto/components';
 import PropTypes from 'prop-types';
@@ -88,9 +88,7 @@ const makeSchemaData = (schema, contentType) => {
     fieldsets,
     contentType,
   };
-  // console.log('make schema ', schema);
-  // console.log('make schema data fieldsets', fieldsets);
-  // console.log('make schema data result', result);
+
   return { schema: JSON.stringify(result) };
 };
 
@@ -111,6 +109,7 @@ class ContentTypeMetadata extends Component {
     updateContentTypeFieldTypes: PropTypes.func.isRequired,
     pathname: PropTypes.string.isRequired,
     schema: PropTypes.objectOf(PropTypes.any),
+    vocabularyFields: PropTypes.objectOf(PropTypes.any),
     content: PropTypes.shape({
       // eslint-disable-line react/no-unused-prop-types
       '@id': PropTypes.string,
@@ -166,12 +165,10 @@ class ContentTypeMetadata extends Component {
     this.form = React.createRef();
   }
   onSubmit(data) {
-    console.log('onsubmit data', data);
-    console.log('onsubmit data', JSON.parse(data.schema));
     this.props.updateContentTypeFieldTypes(this.props.type, data.schema);
   }
   onChange(data) {
-    console.log('onChange data', data);
+    // console.log('onChange data', data);
   }
   onCancel(event) {
     const location = {
@@ -211,13 +208,12 @@ class ContentTypeMetadata extends Component {
     if (this.props.schema) {
       const contentTypeSchema = makeSchemaList(this.props.schema);
       const schemaData = makeSchemaData(this.props.schema, this.props.type);
-      console.log('render this.props.schema ', this.props.schema);
-      console.log('render schemaData', schemaData);
 
       return (
         <Form
           isEditForm
           schema={contentTypeSchema}
+          vocabularyFields={this.props.vocabularyFields}
           formData={schemaData}
           pathname={this.props.pathname}
           onSubmit={this.onSubmit}
@@ -239,6 +235,7 @@ export default compose(
       schemaRequest: state.schema,
       content: state.content.data,
       schema: state.schema.schema,
+      vocabularyFields: state.vocabularies.Fields,
       pathname: props.location.pathname,
       returnUrl: qs.parse(props.location.search).return_url,
       type: props.match.params.id,

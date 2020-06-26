@@ -10,12 +10,12 @@ import {
   customSelectStyles,
   DropdownIndicator,
   Option,
-  selectTheme
+  selectTheme,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
 import {
   getVocabFromField,
   getVocabFromHint,
-  getVocabFromItems
+  getVocabFromItems,
 } from '@plone/volto/helpers';
 import { intersection, isObject } from 'lodash';
 import PropTypes from 'prop-types';
@@ -39,6 +39,34 @@ const messages = defineMessages({
   no_options: {
     id: 'No options',
     defaultMessage: 'No options',
+  },
+  default: {
+    id: 'Default',
+    defaultMessage: 'Default',
+  },
+  idTitle: {
+    id: 'Short Name',
+    defaultMessage: 'Short Name',
+  },
+  idDescription: {
+    id: 'Used for programmatic access to the fieldset.',
+    defaultMessage: 'Used for programmatic access to the fieldset.',
+  },
+  title: {
+    id: 'Title',
+    defaultMessage: 'Title',
+  },
+  description: {
+    id: 'Description',
+    defaultMessage: 'Description',
+  },
+  required: {
+    id: 'Required',
+    defaultMessage: 'Required',
+  },
+  delete: {
+    id: 'Delete',
+    defaultMessage: 'Delete',
   },
 });
 
@@ -79,6 +107,7 @@ class ArrayWidget extends Component {
     isDissabled: PropTypes.bool,
     itemsTotal: PropTypes.number,
     wrapped: PropTypes.bool,
+    onDelete: PropTypes.func,
   };
 
   /**
@@ -87,6 +116,8 @@ class ArrayWidget extends Component {
    * @static
    */
   static defaultProps = {
+    id: null,
+    title: null,
     description: null,
     required: false,
     items: {
@@ -212,9 +243,18 @@ class ArrayWidget extends Component {
    */
   render() {
     const { selectedOption } = this.state;
+    const { onEdit, isDraggable, isDissabled, onDelete, intl, id } = this.props;
 
     return (
-      <FormFieldWrapper {...this.props}>
+      <FormFieldWrapper
+        {...this.props}
+        draggable={isDraggable}
+        className="text"
+        onEdit={onEdit ? () => onEdit(id) : null}
+        onDelete={onDelete}
+        intl={intl}
+        isDissabled={isDissabled}
+      >
         {!this.props.items?.choices && this.vocabBaseUrl ? (
           <AsyncPaginate
             className="react-select-container"
