@@ -9,9 +9,17 @@
 - Addons configuration loading. You can now declare addons in the addons key of
   package.json and they'll be automatically loaded. @tiberiuichim @sneridagh
 
+- Added uploading image preview in FileWidget @iFlameing
+
 ### Bugfix
 
+- Fix the toolbar dropdown to add content types if isMultilingual is enabled
+  but a type is not marked as translatable. @csenger
+- Usage of Contettype label in Add component. @giuliaghisini
+
 ### Internal
+
+- Update upgrade-guide to for `addonRoutes` and `addonReducers` @jackahl
 
 ## 6.3.0 (2020-06-22)
 
