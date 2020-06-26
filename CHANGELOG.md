@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix the toolbar dropdown to add content types if isMultilingual is enabled
+  but a type is not marked as translatable. @csenger
 - Usage of Contettype label in Add component. @giuliaghisini
 
 ### Internal
