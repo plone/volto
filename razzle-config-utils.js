@@ -119,10 +119,10 @@ class AddonConfigurationRegistry {
       const addon = this.packages[pkgName];
       addon.extraConfigLoaders = extras;
 
-      const serverModule = path.resolve(`${addon.modulePath}/server.config.js`);
-      if (fs.existsSync(serverModule)) {
-        addon.serverConfig = serverModule;
-      }
+      // const serverModule = path.resolve(`${addon.modulePath}/server.config.js`);
+      // if (fs.existsSync(serverModule)) {
+      //   addon.serverConfig = serverModule;
+      // }
     });
   }
 

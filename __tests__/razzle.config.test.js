@@ -36,7 +36,7 @@ describe('AddonConfigurationRegistry', () => {
         isAddon: true,
         modulePath: `${base}/node_modules/test-released-addon`,
         packageJson: `${base}/node_modules/test-released-addon/package.json`,
-        serverConfig: `${base}/node_modules/test-released-addon/server.config.js`,
+        // serverConfig: `${base}/node_modules/test-released-addon/server.config.js`,
       },
       'test-released-source-addon': {
         extraConfigLoaders: [],
