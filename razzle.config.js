@@ -19,6 +19,7 @@ const { map, has } = require('lodash');
 const glob = require('glob').sync;
 const RootResolverPlugin = require('./webpack-root-resolver');
 const createAddonsLoader = require('./create-addons-loader');
+const utils = require('./razzle-config-utils.js');
 
 const fileLoaderFinder = makeLoaderFinder('file-loader');
 const eslintLoaderFinder = makeLoaderFinder('eslint-loader');
@@ -26,67 +27,9 @@ const eslintLoaderFinder = makeLoaderFinder('eslint-loader');
 const projectRootPath = path.resolve('.');
 const languages = require('./src/constants/Languages');
 
-const pathRegistry = {};
 const packageJson = require(path.join(projectRootPath, 'package.json'));
 
-// let voltoPath = `${projectRootPath}`;
-// if (packageJson.name !== '@plone/volto') {
-//   voltoPath = `${projectRootPath}/node_modules/@plone/volto`;
-// }
-
-/*
- * Find the best Volto path from the environment
- */
-
-// What is a Volto addon?
-// Unlike any other JS package, it's a package that can customize Volto.
-// Usually Volto addons are loaded from mrs.developer configuration, but that's
-// not strictly required. If packaged as NPM packages, they should ship with
-// their intact source code in the "src" folder, as that is required by Volto
-// aliasing and customizations mechanism.
-//
-// TODO: use package.main = src/index.js to distinguish on transpiled packages.
-
-// // Get the real disk path for all development packages (Volto addons)
-// const jsconfigPaths = {};
-// if (fs.existsSync(`${projectRootPath}/jsconfig.json`)) {
-//   const jsConfig = require(`${projectRootPath}/jsconfig`).compilerOptions;
-//   const pathsConfig = jsConfig.paths;
-//   Object.keys(pathsConfig).forEach((packageName) => {
-//     const packagePath = `${projectRootPath}/${jsConfig.baseUrl}/${pathsConfig[packageName][0]}`;
-//     jsconfigPaths[packageName] = packagePath;
-//     if (packageName === '@plone/volto') {
-//       voltoPath = packagePath;
-//     }
-//   });
-// }
-//
-// // For npm released addons, treat them as development by aliasing their 'src'
-// // folder
-// const addonAliases = {};
-// const addons = packageJson.addons || [];
-//
-// addons.forEach((addon) => {
-//   const addonName = addon.split(':')[0];
-//   if (!(addonName in jsconfigPaths)) {
-//     const addonPath = `${projectRootPath}/node_modules/${addonName}/src`;
-//     addonAliases[addonName] = addonPath;
-//   }
-// });
-//
-// // Now we have:
-// //  - development addons in jsconfigPath
-// //  - npm released addons in addonAliases
-// const addonPaths = {
-//   ...jsconfigPaths,
-//   ...addonAliases,
-// };
-//
-const pkgRegistry = require('./razzle-config-utils').PackageRegistry(
-  projectRootPath,
-);
-
-// const addonExtenders = [];
+const registry = utils.AddonConfigurationRegistry(projectRootPath);
 
 // TODO: apply "customize Volto by addon", "customize addon by project" logic
 const customizations = {};
@@ -100,7 +43,7 @@ customizationPaths.forEach((customizationPath) => {
     (filename) => {
       const targetPath = filename.replace(
         customizationPath,
-        `${voltoPath}/src/`,
+        `${registry.voltoPath}/src/`,
       );
       if (fs.existsSync(targetPath)) {
         customizations[
@@ -305,11 +248,10 @@ const defaultModify = (config, { target, dev }, webpack) => {
     ...config.resolve.alias,
     '../../theme.config$': `${projectRootPath}/theme/theme.config`,
     'load-volto-addons': addonsLoaderPath,
-    ...addonAliases,
-    ...jsconfigPaths,
-    '@plone/volto': `${voltoPath}/src`,
+    ...registry.getResolveAliases(),
+    '@plone/volto': `${registry.voltoPath}/src`,
     // to be able to reference path uncustomized by webpack
-    '@plone/volto-original': `${voltoPath}/src`,
+    '@plone/volto-original': `${registry.voltoPath}/src`,
     // be able to reference current package from customized package
     '@package': `${projectRootPath}/src`,
   };
@@ -327,14 +269,12 @@ const defaultModify = (config, { target, dev }, webpack) => {
   );
   const { include } = config.module.rules[babelRuleIndex];
   if (packageJson.name !== '@plone/volto') {
-    include.push(fs.realpathSync(`${voltoPath}/src`));
+    include.push(fs.realpathSync(`${registry.voltoPath}/src`));
   }
   // Add babel support external (ie. node_modules npm published packages)
   if (packageJson.addons) {
-    packageJson.addons.forEach((addon) =>
-      include.push(
-        fs.realpathSync(`${projectRootPath}/node_modules/${addon}/src`),
-      ),
+    registry.addonNames.forEach((addon) =>
+      include.push(fs.realpathSync(addon.modulePath)),
     );
   }
 
@@ -347,7 +287,9 @@ const defaultModify = (config, { target, dev }, webpack) => {
 
   let addonsAsExternals = [];
   if (packageJson.addons) {
-    addonsAsExternals = packageJson.addons.map((addon) => new RegExp(addon));
+    addonsAsExternals = packageJson.addonsNames.map(
+      (addon) => new RegExp(addon),
+    );
   }
 
   config.externals =
@@ -371,6 +313,8 @@ const defaultModify = (config, { target, dev }, webpack) => {
   return config;
 };
 
+const addonExtenders = registry.getAddonExtenders();
+
 const plugins = addonExtenders.reduce(
   (acc, extender) => extender.plugins(acc),
   defaultPlugins,
@@ -384,7 +328,6 @@ module.exports = {
       (acc, extender) => extender.modify(acc, { target, dev }, webpack),
       defaultConfig,
     );
-    // logger.debug('config', res);
     return defaultConfig;
   },
 };

@@ -35,6 +35,7 @@ class AddonConfigurationRegistry {
 
       packages: {},
       customizations: new Map(),
+      addonNames: (packageJson.addons || []).map((s) => s.split(':')[0]),
     };
 
     this.initDevelopmentPackages();
@@ -45,8 +46,7 @@ class AddonConfigurationRegistry {
   }
 
   /*
-   * Use jsconfig.js to get paths for "development" addons (coming from
-   * mrs.developer.json)
+   * Use jsconfig.js to get paths for "development" packages/addons (coming from mrs.developer.json)
    */
   initDevelopmentPackages() {
     if (fs.existsSync(`${this.registry.projectRootPath}/jsconfig.json`)) {
@@ -77,8 +77,7 @@ class AddonConfigurationRegistry {
    * default.
    */
   initPublishedPackages() {
-    (this.packageJson.addons || []).forEach((addon) => {
-      const addonName = addon.split(':')[0];
+    this.registry.addonNames.forEach((addonName) => {
       if (!(addonName in this.registry.packages)) {
         const basePath = `${this.registry.projectRootPath}/node_modules/${addonName}`;
         const packageJson = `${basePath}/package.json`;
@@ -101,7 +100,7 @@ class AddonConfigurationRegistry {
    * `modify(...) => config`
    */
   initRazzleExtenders() {
-    this.getOrderedAddons().forEach((addon) => {
+    this.getAddons().forEach((addon) => {
       const base = path.dirname(addon.packageJson);
       const razzlePath = path.resolve(`${base}/razzle.extend.js`);
       if (fs.existsSync(razzlePath)) {
@@ -134,10 +133,26 @@ class AddonConfigurationRegistry {
     });
   }
 
-  getOrderedAddons() {
+  /*
+   * Returns the addon records, respects order from package.json:addons
+   */
+  getAddons() {
     return (this.packageJson.addons || []).map(
       (s) => this.registry.packages[s.split(':')[0]],
     );
+  }
+
+  getAddonExtenders() {}
+
+  /*
+   * Returns a mapping name:diskpath to be uses in webpack's resolve aliases
+   */
+  getResolveAliases() {
+    const pairs = Object.keys(this.registry.packages).map((o) => [
+      o,
+      this.registry.packages[o].modulePath,
+    ]);
+    return Object.fromEntries(pairs);
   }
 }
 
