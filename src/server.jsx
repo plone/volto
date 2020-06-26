@@ -67,27 +67,12 @@ if (__DEVELOPMENT__ && settings.devProxyToApiPath) {
   );
 }
 
-// // Allow pluggability with `config.settings.serverRoutes`
-function handleAll(req, res, next) {
-  let found = false;
-  (settings.expressMiddleware || []).forEach((handler) => {
-    console.log('handler', handler);
-    if (found) return;
-    if (req.route.path === handler.route) {
-      found = true;
-      handler.handle(req, res, next);
-    }
-    // if (handler.match(req)) {
-  });
-  if (!found) return next();
-}
-
-console.log('expressM', settings.expressMiddleware);
+const middleware = (settings.expressMiddleware || []).map((m) => m.middleware);
+if (middleware.length) server.use('/', middleware);
 
 server
   .disable('x-powered-by')
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
-  .use(handleAll)
   .get('/*', (req, res) => {
     plugToRequest(req, res);
     const api = new Api(req);
