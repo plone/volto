@@ -66,35 +66,10 @@ if (__DEVELOPMENT__ && settings.devProxyToApiPath) {
     }),
   );
 }
-<<<<<<< Updated upstream
-||||||| constructed merge base
 
-// Allow pluggability with `config.settings.serverRoutes`
-function handleAll(req, res, next) {
-  let found = false;
-  (settings.requestHandlers || []).forEach((handler) => {
-    if (found) return;
-    if (handler[0](req)) {
-      found = true;
-      handler[1](req, res, next);
-    }
-  });
-  if (!found) return next();
-}
-
-=======
-
->>>>>>> Stashed changes
 server
   .disable('x-powered-by')
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
-<<<<<<< Updated upstream
-||||||| constructed merge base
-  .use(handleAll)
-=======
-  // .use((settings.expressMiddleware || []).map(([name, handler]) => handler))
-  // .use(settings.expressMiddleware || [])
->>>>>>> Stashed changes
   .get('/*', (req, res) => {
     plugToRequest(req, res);
     const api = new Api(req);
