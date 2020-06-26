@@ -66,6 +66,10 @@ if (__DEVELOPMENT__ && settings.devProxyToApiPath) {
     }),
   );
 }
+
+const middleware = (settings.expressMiddleware || []).map((m) => m.middleware);
+if (middleware.length) server.use('/', middleware);
+
 server
   .disable('x-powered-by')
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
