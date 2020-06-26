@@ -136,7 +136,9 @@ class AddonConfigurationRegistry {
   }
 
   getAddonExtenders() {
-    return this.getAddons().filter((o) => Boolean(o.razzleExtender));
+    return this.getAddons()
+      .map((o) => o.razzleExtender)
+      .filter((e) => e);
   }
 
   /*
