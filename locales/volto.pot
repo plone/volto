@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-05-12T07:21:28.623Z\n"
+"POT-Creation-Date: 2020-05-16T13:45:12.387Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -237,6 +237,7 @@ msgstr ""
 #: components/manage/Contents/ContentsToolbar
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeMetadata
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Delete/Delete
@@ -627,6 +628,11 @@ msgstr ""
 msgid "Edit fieldset"
 msgstr ""
 
+#: components/manage/Form/InlineForm
+# defaultMessage: Edit values
+msgid "Edit values"
+msgstr ""
+
 #: components/manage/Edit/Edit
 # defaultMessage: Edit {title}
 msgid "Edit {title}"
@@ -696,8 +702,10 @@ msgid "Enter your new password. Minimum 5 characters."
 msgstr ""
 
 #: components/manage/Add/Add
+#: components/manage/Controlpanels/ContentTypeMetadata
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form
+#: components/manage/Form/InlineForm
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
@@ -739,6 +747,11 @@ msgstr ""
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: External URL
 msgid "External URL"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Fields
+msgid "Fields"
 msgstr ""
 
 #: components/manage/Toolbar/Toolbar
@@ -1171,6 +1184,11 @@ msgstr ""
 msgid "No items found in this container."
 msgstr ""
 
+#: components/manage/Widgets/ObjectBrowserWidget
+# defaultMessage: No items selected
+msgid "No items selected"
+msgstr ""
+
 #: components/manage/Blocks/Maps/MapsSidebar
 # defaultMessage: No map selected
 msgid "No map selected"
@@ -1476,6 +1494,7 @@ msgstr ""
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeMetadata
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
@@ -1539,6 +1558,11 @@ msgstr ""
 #: components/manage/Contents/ContentsWorkflowModal
 # defaultMessage: Select the transition to be used for modifying the items state.
 msgid "Select the transition to be used for modifying the items state."
+msgstr ""
+
+#: components/manage/Sidebar/ObjectBrowserBody
+# defaultMessage: Selected items
+msgid "Selected items"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
@@ -1798,6 +1822,11 @@ msgstr ""
 #: components/theme/CorsError/CorsError
 # defaultMessage: There is a configuration problem on the backend
 msgid "There is a configuration problem on the backend"
+msgstr ""
+
+#: components/manage/Form/InlineForm
+# defaultMessage: There were some errors
+msgid "There were some errors"
 msgstr ""
 
 #: components/manage/Form/Form
@@ -2256,6 +2285,11 @@ msgstr ""
 #: config/Blocks
 # defaultMessage: Media
 msgid "media"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypeMetadata
+# defaultMessage: metadata {type}
+msgid "metadata {type}"
 msgstr ""
 
 #: config/Blocks

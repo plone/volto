@@ -10,9 +10,7 @@ const propTypes = {
 };
 
 const Link = ({ children, className, entityKey, getEditorState, target }) => {
-  const entity = getEditorState()
-    .getCurrentContent()
-    .getEntity(entityKey);
+  const entity = getEditorState().getCurrentContent().getEntity(entityKey);
   const entityData = entity ? entity.get('data') : undefined;
   const href = (entityData && entityData.url) || undefined;
 

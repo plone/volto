@@ -371,8 +371,8 @@ class Contents extends Component {
         })),
         selectedCount: defaultIndexes.length + 1,
       },
-      sort_on: 'getObjPositionInParent',
-      sort_order: 'ascending',
+      sort_on: this.props.sort?.on || 'getObjPositionInParent',
+      sort_order: this.props.sort?.order || 'ascending',
     };
     this.filterTimeout = null;
   }
@@ -454,7 +454,7 @@ class Contents extends Component {
    */
   onSelectAll() {
     this.setState({
-      selected: map(this.state.items, item => item['@id']),
+      selected: map(this.state.items, (item) => item['@id']),
     });
   }
 
@@ -970,7 +970,7 @@ class Contents extends Component {
                   content={
                     <div className="content">
                       <ul className="content">
-                        {map(this.state.itemsToDelete, item => (
+                        {map(this.state.itemsToDelete, (item) => (
                           <li key={item}>{this.getFieldById(item, 'title')}</li>
                         ))}
                       </ul>
@@ -990,7 +990,7 @@ class Contents extends Component {
                   open={this.state.showRename}
                   onCancel={this.onRenameCancel}
                   onOk={this.onRenameOk}
-                  items={map(this.state.selected, item => ({
+                  items={map(this.state.selected, (item) => ({
                     url: item,
                     title: this.getFieldById(item, 'title'),
                     id: this.getFieldById(item, 'id'),
@@ -1000,7 +1000,7 @@ class Contents extends Component {
                   open={this.state.showTags}
                   onCancel={this.onTagsCancel}
                   onOk={this.onTagsOk}
-                  items={map(this.state.selected, item => ({
+                  items={map(this.state.selected, (item) => ({
                     url: item,
                     subjects: this.getFieldById(item, 'Subject'),
                   }))}
@@ -1299,9 +1299,9 @@ class Contents extends Component {
                             {map(
                               filter(
                                 this.state.index.order,
-                                index => index !== 'sortable_title',
+                                (index) => index !== 'sortable_title',
                               ),
-                              index => (
+                              (index) => (
                                 <Dropdown.Item
                                   key={index}
                                   value={index}
@@ -1377,7 +1377,7 @@ class Contents extends Component {
                                     'ModificationDate',
                                     'portal_type',
                                   ],
-                                  index => (
+                                  (index) => (
                                     <Dropdown.Item
                                       key={index}
                                       className={`sort_${index} icon-align`}
@@ -1484,7 +1484,7 @@ class Contents extends Component {
                                   )}
                                 />
                                 <Dropdown.Menu scrolling>
-                                  {map(this.state.selected, item => (
+                                  {map(this.state.selected, (item) => (
                                     <Dropdown.Item
                                       key={item}
                                       value={item}
@@ -1546,11 +1546,11 @@ class Contents extends Component {
                             }
                             onClick={this.onSelect}
                             indexes={filter(
-                              map(this.state.index.order, index => ({
+                              map(this.state.index.order, (index) => ({
                                 id: index,
                                 type: this.state.index.values[index].type,
                               })),
-                              index =>
+                              (index) =>
                                 this.state.index.values[index.id].selected,
                             )}
                             onCut={this.cut}
@@ -1616,6 +1616,7 @@ export const __test__ = compose(
       return {
         token: state.userSession.token,
         items: state.search.items,
+        sort: state.content.update.sort,
         breadcrumbs: state.breadcrumbs.items,
         total: state.search.total,
         searchRequest: {
@@ -1653,6 +1654,7 @@ export default compose(
       return {
         token: state.userSession.token,
         items: state.search.items,
+        sort: state.content.update.sort,
         breadcrumbs: state.breadcrumbs.items,
         total: state.search.total,
         searchRequest: {

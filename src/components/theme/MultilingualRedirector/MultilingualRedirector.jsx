@@ -8,14 +8,14 @@ import { settings } from '~/config';
 let locales = {};
 
 if (settings) {
-  settings.supportedLanguages.forEach(lang => {
-    import('~/../locales/' + lang + '.json').then(locale => {
+  settings.supportedLanguages.forEach((lang) => {
+    import('~/../locales/' + lang + '.json').then((locale) => {
       locales = { ...locales, [lang]: locale.default };
     });
   });
 }
 
-const MultilingualRedirector = props => {
+const MultilingualRedirector = (props) => {
   const { pathname, children } = props;
   const currentLanguage = cookie.load('lang') || settings.defaultLanguage;
   const redirectToLanguage = settings.supportedLanguages.includes(

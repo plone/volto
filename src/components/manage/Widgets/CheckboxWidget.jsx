@@ -3,11 +3,11 @@
  * @module components/manage/Widgets/CheckboxWidget
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Form, Grid, Icon, Label, Checkbox } from 'semantic-ui-react';
 import { map } from 'lodash';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
+import { Checkbox, Form, Grid, Icon, Label } from 'semantic-ui-react';
 
 const messages = defineMessages({
   default: {
@@ -108,14 +108,14 @@ const CheckboxWidget = ({
               {onEdit && (
                 <div className="toolbar">
                   <button
-                    aria-label={this.props.intl.formatMessage(messages.edit)}
+                    aria-label={intl.formatMessage(messages.edit)}
                     className="item ui noborder button"
                     onClick={() => onEdit(id, schema)}
                   >
                     <Icon name="write square" size="large" color="blue" />
                   </button>
                   <button
-                    aria-label={this.props.intl.formatMessage(messages.delete)}
+                    aria-label={intl.formatMessage(messages.delete)}
                     className="item ui noborder button"
                     onClick={() => onDelete(id)}
                   >
@@ -131,10 +131,10 @@ const CheckboxWidget = ({
                 checked={value}
                 disabled={onEdit !== null}
                 onChange={(event, { checked }) => onChange(id, checked)}
-                label={<label for={`field-${id}`}>{title}</label>}
+                label={<label htmlFor={`field-${id}`}>{title}</label>}
               />
             </div>
-            {map(error, message => (
+            {map(error, (message) => (
               <Label key={message} basic color="red" pointing>
                 {message}
               </Label>

@@ -203,7 +203,7 @@ export default compose(
   withRouter,
   injectIntl,
   connect(
-    state => ({
+    (state) => ({
       loading: state.users.reset.loading,
       loaded: state.users.reset.loaded,
       error: state.users.reset.error,

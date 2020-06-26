@@ -3,11 +3,11 @@
  * @module components/manage/Widgets/TextareaWidget
  */
 
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { Form, Grid, Icon, Label, TextArea } from 'semantic-ui-react';
 import { map } from 'lodash';
+import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
+import { Form, Grid, Icon, Label, TextArea } from 'semantic-ui-react';
 
 const messages = defineMessages({
   default: {
@@ -57,6 +57,8 @@ const TextareaWidget = ({
   onEdit,
   onDelete,
   intl,
+  isDissabled,
+  isDraggable,
   fieldSet,
 }) => {
   const [lengthError, setlengthError] = useState('');
@@ -117,7 +119,7 @@ const TextareaWidget = ({
           <Grid.Column width="4">
             <div className="wrapper">
               <label htmlFor={`field-${id}`}>
-                {onEdit && (
+                {isDraggable && (
                   <i
                     aria-hidden="true"
                     className="grey bars icon drag handle"
@@ -128,7 +130,7 @@ const TextareaWidget = ({
             </div>
           </Grid.Column>
           <Grid.Column width="8">
-            {onEdit && (
+            {onEdit && !isDissabled ? (
               <div className="toolbar">
                 <button
                   className="item ui noborder button"
@@ -137,19 +139,20 @@ const TextareaWidget = ({
                   <Icon name="write square" size="large" color="blue" />
                 </button>
                 <button
-                  aria-label={this.props.intl.formatMessage(messages.delete)}
+                  aria-label={intl.formatMessage(messages.delete)}
                   className="item ui noborder button"
                   onClick={() => onDelete(id)}
                 >
                   <Icon name="close" size="large" color="red" />
                 </button>
               </div>
-            )}
+            ) : null}
             <TextArea
               id={`field-${id}`}
               name={id}
               value={value || ''}
-              disabled={onEdit !== null}
+              disabled={isDissabled}
+              style={{ background: 'transparent' }}
               onChange={({ target }) =>
                 onhandleChange(
                   id,
@@ -162,7 +165,7 @@ const TextareaWidget = ({
                 {lengthError}
               </Label>
             )}
-            {map(error, message => (
+            {map(error, (message) => (
               <Label key={message} basic color="red" pointing>
                 {message}
               </Label>
@@ -192,6 +195,8 @@ TextareaWidget.propTypes = {
   description: PropTypes.string,
   maxLength: PropTypes.number,
   required: PropTypes.bool,
+  isDissabled: PropTypes.bool,
+  isDraggable: PropTypes.bool,
   error: PropTypes.arrayOf(PropTypes.string),
   value: PropTypes.string,
   onChange: PropTypes.func,
@@ -208,6 +213,8 @@ TextareaWidget.defaultProps = {
   description: null,
   maxLength: null,
   required: false,
+  isDissabled: false,
+  isDraggable: false,
   error: [],
   value: null,
   onChange: null,

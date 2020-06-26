@@ -110,7 +110,7 @@ class Add extends Component {
     this.onSubmit = this.onSubmit.bind(this);
 
     if (blocks?.initialBlocks[props.type]) {
-      this.initialBlocksLayout = blocks.initialBlocks[props.type].map(item =>
+      this.initialBlocksLayout = blocks.initialBlocks[props.type].map((item) =>
         uuid(),
       );
       this.initialBlocks = this.initialBlocksLayout.reduce(

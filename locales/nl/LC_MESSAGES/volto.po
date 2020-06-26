@@ -215,6 +215,7 @@ msgstr "Standaard worden de rechten overgenomen van de bovenliggende map.  Als u
 #: components/manage/Contents/ContentsToolbar
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeMetadata
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Delete/Delete
@@ -540,6 +541,10 @@ msgstr ""
 msgid "Edit fieldset"
 msgstr ""
 
+#: components/manage/Form/InlineForm
+msgid "Edit values"
+msgstr ""
+
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
 msgstr "{title} bewerken"
@@ -596,8 +601,10 @@ msgid "Enter your new password. Minimum 5 characters."
 msgstr "Geef een nieuw wachtwoord op. Minimaal 5 karakters."
 
 #: components/manage/Add/Add
+#: components/manage/Controlpanels/ContentTypeMetadata
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form
+#: components/manage/Form/InlineForm
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
@@ -631,6 +638,10 @@ msgstr ""
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "External URL"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypes
+msgid "Fields"
 msgstr ""
 
 #: components/manage/Toolbar/Toolbar
@@ -981,6 +992,10 @@ msgstr ""
 msgid "No items found in this container."
 msgstr ""
 
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "No items selected"
+msgstr ""
+
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "No map selected"
 msgstr ""
@@ -1231,6 +1246,7 @@ msgstr ""
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeMetadata
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
@@ -1283,6 +1299,10 @@ msgstr ""
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Select the transition to be used for modifying the items state."
 msgstr "Selecteer welke overgang moet worden gebruikt voor het wijzigen van de status van de items."
+
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Selected items"
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Selection"
@@ -1494,6 +1514,10 @@ msgstr "Het {plonecms} is {copyright} 2000-{current_year} door de {plonefoundati
 
 #: components/theme/CorsError/CorsError
 msgid "There is a configuration problem on the backend"
+msgstr ""
+
+#: components/manage/Form/InlineForm
+msgid "There were some errors"
 msgstr ""
 
 #: components/manage/Form/Form
@@ -1862,6 +1886,10 @@ msgstr ""
 
 #: config/Blocks
 msgid "media"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypeMetadata
+msgid "metadata {type}"
 msgstr ""
 
 #: config/Blocks

@@ -3,22 +3,54 @@
  * @module components/manage/Widgets/SchemaWidget
  */
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
+import { getFieldSchema } from '@plone/volto/actions';
+import { Field, ModalForm, SchemaWidgetFieldset } from '@plone/volto/components';
 import { concat, findIndex, map, omit, slice, without } from 'lodash';
 import move from 'lodash-move';
-import { Confirm, Form, Grid, Icon, Message, Segment } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import { defineMessages, injectIntl } from 'react-intl';
-import { DragDropContext } from 'react-dnd';
-import HTML5Backend from 'react-dnd-html5-backend';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { Confirm, Form, Grid, Icon, Message, Segment } from 'semantic-ui-react';
 
-import {
-  Field,
-  ModalForm,
-  SchemaWidgetFieldset,
-} from '@plone/volto/components';
+// import React, { Component } from 'react';
+// import PropTypes from 'prop-types';
+// import { connect } from 'react-redux';
+// import { compose } from 'redux';
+// import { concat, findIndex, map, omit, slice, without } from 'lodash';
+// import move from 'lodash-move';
+// import { Confirm, Form, Grid, Icon, Message, Segment } from 'semantic-ui-react';
+// import { defineMessages, injectIntl } from 'react-intl';
+// import { DragDropContext } from 'react-dnd';
+// import HTML5Backend from 'react-dnd-html5-backend';
+// import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
+
+// import {
+//   Field,
+//   ModalForm,
+//   SchemaWidgetFieldset,
+// } from '@plone/volto/components';
+
+const isUserCreated = (field) =>
+  !field.behavior ||
+  field.behavior.indexOf('plone.dexterity.schema.generated') > -1;
+
+const getItemStyle = (isDragging, draggableStyle) => ({
+  // some basic styles to make the items look a bit nicer
+  userSelect: 'none',
+
+  // change background colour if dragging
+  background: isDragging ? 'white' : 'transparent',
+
+  // styles we need to apply on draggables
+  ...draggableStyle,
+});
+
+const getListStyle = (isDraggingOver) => ({
+  background: isDraggingOver ? '#f4f4f4' : 'transparent',
+});
 
 const messages = defineMessages({
   add: {
@@ -161,6 +193,7 @@ class SchemaWidget extends Component {
   constructor(props) {
     super(props);
     this.onChange = this.onChange.bind(this);
+    this.onChangeDefaultValue = this.onChangeDefaultValue.bind(this);
     this.onAddField = this.onAddField.bind(this);
     this.onAddFieldset = this.onAddFieldset.bind(this);
     this.onEditField = this.onEditField.bind(this);
@@ -177,6 +210,7 @@ class SchemaWidget extends Component {
     this.onOrderField = this.onOrderField.bind(this);
     this.onOrderFieldset = this.onOrderFieldset.bind(this);
     this.onCancel = this.onCancel.bind(this);
+    this.onDragEnd = this.onDragEnd.bind(this);
     this.state = {
       addField: null,
       addFieldset: null,
@@ -185,6 +219,7 @@ class SchemaWidget extends Component {
       deleteFieldset: null,
       deleteField: null,
       currentFieldset: 0,
+      lol: 'lol',
     };
   }
 
@@ -195,16 +230,26 @@ class SchemaWidget extends Component {
    * @returns {undefined}
    */
   onAddField(values) {
+    // console.log('onAddField', values);
+    const currentFieldsetFields = this.props.value.fieldsets[
+      this.state.currentFieldset
+    ].fields;
+    const hasChangeNote = currentFieldsetFields.indexOf('changeNote') > -1;
+    const newFieldsetFields = hasChangeNote
+      ? [
+          ...currentFieldsetFields.slice(0, currentFieldsetFields.length - 1),
+          values.id,
+          currentFieldsetFields[currentFieldsetFields.length - 1],
+        ]
+      : [...currentFieldsetFields, values.id];
+
     this.onChange({
       ...this.props.value,
       fieldsets: [
         ...slice(this.props.value.fieldsets, 0, this.state.currentFieldset),
         {
           ...this.props.value.fieldsets[this.state.currentFieldset],
-          fields: [
-            ...this.props.value.fieldsets[this.state.currentFieldset].fields,
-            values.id,
-          ],
+          fields: newFieldsetFields,
         },
         ...slice(this.props.value.fieldsets, this.state.currentFieldset + 1),
       ],
@@ -213,7 +258,7 @@ class SchemaWidget extends Component {
         [values.id]: {
           title: values.title,
           description: values.description,
-          ...(type => {
+          ...((type) => {
             switch (type) {
               case 'textarea':
                 return {
@@ -302,7 +347,7 @@ class SchemaWidget extends Component {
           ...this.props.value.fieldsets[this.state.currentFieldset],
           fields: map(
             this.props.value.fieldsets[this.state.currentFieldset].fields,
-            field => (field === this.state.editField.id ? values.id : field),
+            (field) => (field === this.state.editField.id ? values.id : field),
           ),
         },
         ...slice(this.props.value.fieldsets, this.state.currentFieldset + 1),
@@ -379,7 +424,23 @@ class SchemaWidget extends Component {
    * @returns {undefined}
    */
   onChange(value) {
+    // console.log('onChange', value);
     this.props.onChange(this.props.id, JSON.stringify(value));
+  }
+
+  onChangeDefaultValue(fieldId, fieldValue) {
+    // console.log('onChangeDefaultValue', fieldId, fieldValue);
+    const { value } = this.props;
+    const fieldMerge = {
+      ...value.properties[fieldId],
+      ...{ default: fieldValue },
+    };
+    const propsMerge = { ...value.properties, ...{ [fieldId]: fieldMerge } };
+
+    this.onChange({
+      ...value,
+      properties: propsMerge,
+    });
   }
 
   /**
@@ -442,12 +503,16 @@ class SchemaWidget extends Component {
    * @returns {undefined}
    */
   onShowEditField(id, schema) {
+    const { contentType } = this.props.value;
+
     this.setState({
       editField: {
         id,
         schema,
       },
     });
+
+    this.props.getFieldSchema(contentType, id);
   }
 
   /**
@@ -505,7 +570,7 @@ class SchemaWidget extends Component {
           fields: move(
             this.props.value.fieldsets[this.state.currentFieldset].fields,
             index,
-            index + delta,
+            delta,
           ),
         },
         ...slice(this.props.value.fieldsets, this.state.currentFieldset + 1),
@@ -523,7 +588,7 @@ class SchemaWidget extends Component {
   onOrderFieldset(index, delta) {
     const value = {
       ...this.props.value,
-      fieldsets: move(this.props.value.fieldsets, index, index + delta),
+      fieldsets: move(this.props.value.fieldsets, index, delta),
     };
     this.setState({
       currentFieldset: findIndex(value.fieldsets, {
@@ -534,68 +599,198 @@ class SchemaWidget extends Component {
   }
 
   /**
+   * Set current fieldset handler
+   * @method onDragEnd
+   * @param {Number} index Index of fieldset
+   * @returns {undefined}
+   */
+  onDragEnd(result) {
+    if (
+      result.destination &&
+      result.destination.droppableId === 'fields-schema-edit'
+    ) {
+      this.onOrderField(result.source.index, result.destination.index);
+    }
+    if (
+      result.destination &&
+      result.destination.droppableId === 'tabs-schema-edit'
+    ) {
+      this.onOrderFieldset(result.source.index, result.destination.index);
+    }
+  }
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
   render() {
     const { value, error } = this.props;
+    const nonUserCreatedFields = value.fieldsets[
+      this.state.currentFieldset
+    ].fields.filter(
+      (fieldId) =>
+        !isUserCreated(value.properties[fieldId]) && fieldId !== 'changeNote',
+    );
+    const hasChangeNote =
+      value.fieldsets[this.state.currentFieldset].fields.indexOf('changeNote') >
+      -1;
+    const userCreatedFieldsStartingIndex = nonUserCreatedFields.length;
+    const lastUserCreatedFieldsIndex = hasChangeNote
+      ? value.fieldsets[this.state.currentFieldset].fields.length - 1
+      : value.fieldsets[this.state.currentFieldset].fields.length;
 
     return (
       <div>
         <Segment.Group raised>
           {error.length > 0 &&
-            map(error, err => (
+            map(error, (err, index) => (
               <Message
                 icon="warning"
-                key={err}
+                key={`${err}-${index}`}
                 negative
                 attached
                 header={this.props.intl.formatMessage(messages.error)}
                 content={err}
               />
             ))}
-          <div
-            role="tablist"
-            className="ui pointing secondary attached tabular menu"
-          >
-            {map(value.fieldsets, (item, index) => (
-              <SchemaWidgetFieldset
-                key={item.id}
-                title={item.title}
-                order={index}
-                active={index === this.state.currentFieldset}
-                onClick={this.onSetCurrentFieldset}
-                onShowEditFieldset={this.onShowEditFieldset}
-                onShowDeleteFieldset={this.onShowDeleteFieldset}
-                onOrderFieldset={this.onOrderFieldset}
-              />
-            ))}
-            <div className="item">
-              <button
-                aria-label={this.props.intl.formatMessage(messages.add)}
-                className="item ui noborder button"
-                onClick={this.onShowAddFieldset}
-              >
-                <Icon name="plus" size="large" />
-              </button>
-            </div>
-          </div>
-          {map(
-            value.fieldsets[this.state.currentFieldset].fields,
-            (field, index) => (
+          <DragDropContext onDragEnd={this.onDragEnd}>
+            <Droppable droppableId="tabs-schema-edit" direction="horizontal">
+              {(provided, snapshot) => (
+                <div
+                  role="tablist"
+                  className="ui pointing secondary attached tabular menu"
+                  ref={provided.innerRef}
+                  {...provided.draggableProps}
+                  style={getListStyle(snapshot.isDraggingOver)}
+                >
+                  {map(value.fieldsets, (item, index) => (
+                    <SchemaWidgetFieldset
+                      key={`${item.id}-${this.state.currentFieldset}-${index}`}
+                      title={item.title}
+                      order={index}
+                      active={index === this.state.currentFieldset}
+                      onClick={this.onSetCurrentFieldset}
+                      onShowEditFieldset={this.onShowEditFieldset}
+                      onShowDeleteFieldset={this.onShowDeleteFieldset}
+                      onOrderFieldset={this.onOrderFieldset}
+                      getItemStyle={getItemStyle}
+                    />
+                  ))}
+                  <div className="item item-add">
+                    <button
+                      aria-label={this.props.intl.formatMessage(messages.add)}
+                      className="item ui noborder button"
+                      onClick={this.onShowAddFieldset}
+                    >
+                      <Icon name="plus" size="large" />
+                    </button>
+                  </div>
+
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+            {map(
+              value.fieldsets[this.state.currentFieldset].fields.slice(
+                0,
+                userCreatedFieldsStartingIndex,
+              ),
+              (field, index) => (
+                <div
+                  style={{ background: '#c7d5d859' }}
+                  key={`${field}-${this.state.currentFieldset}-${index}`}
+                >
+                  <Field
+                    {...value.properties[field]}
+                    id={field}
+                    required={value.required.indexOf(field) !== -1}
+                    onEdit={this.onShowEditField}
+                    isDraggable={false}
+                    isDissabled={true}
+                    order={index}
+                    onDelete={this.onShowDeleteField}
+                    onChange={this.onChangeDefaultValue}
+                    value={value.properties[field].default}
+                  />
+                </div>
+              ),
+            )}
+            <Droppable
+              droppableId="fields-schema-edit"
+              direction="vertical"
+              type="fixed"
+            >
+              {(provided, snapshot) => (
+                <div
+                  ref={provided.innerRef}
+                  {...provided.draggableProps}
+                  style={getListStyle(snapshot.isDraggingOver)}
+                >
+                  {map(
+                    value.fieldsets[this.state.currentFieldset].fields.slice(
+                      userCreatedFieldsStartingIndex,
+                      lastUserCreatedFieldsIndex,
+                    ),
+                    (field, index) => (
+                      <Draggable
+                        draggableId={field}
+                        index={userCreatedFieldsStartingIndex + index}
+                        key={`${field}-${this.state.currentFieldset}-${index}`}
+                      >
+                        {(provided, snapshot) => (
+                          <div
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                            style={getItemStyle(
+                              snapshot.isDragging,
+                              provided.draggableProps.style,
+                            )}
+                          >
+                            <Field
+                              {...value.properties[field]}
+                              id={field}
+                              required={value.required.indexOf(field) !== -1}
+                              onEdit={this.onShowEditField}
+                              isDraggable={true}
+                              isDissabled={false}
+                              order={index}
+                              onDelete={this.onShowDeleteField}
+                              onChange={this.onChangeDefaultValue}
+                              key={`${field}-${this.state.currentFieldset}-${index}`}
+                              value={value.properties[field].default}
+                            />
+                          </div>
+                        )}
+                      </Draggable>
+                    ),
+                  )}
+
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+          </DragDropContext>
+
+          {hasChangeNote ? (
+            <div style={{ background: '#c7d5d859' }}>
               <Field
-                {...value.properties[field]}
-                id={field}
-                required={value.required.indexOf(field) !== -1}
-                onOrder={this.onOrderField}
+                {...value.properties.changeNote}
+                id={'changeNote'}
+                required={value.required.indexOf('changeNote') !== -1}
                 onEdit={this.onShowEditField}
-                order={index}
+                isDraggable={false}
+                isDissabled={true}
+                order={value.fieldsets[this.state.currentFieldset].length - 1}
                 onDelete={this.onShowDeleteField}
-                key={field}
+                onChange={this.onChangeDefaultValue}
+                key={'changeNote'}
+                value={value.properties.changeNote.default}
               />
-            ),
-          )}
+            </div>
+          ) : null}
+
           <Form.Field inline>
             <Grid>
               <Grid.Row stretched>
@@ -787,9 +982,14 @@ class SchemaWidget extends Component {
 }
 
 export default compose(
-  DragDropContext(HTML5Backend),
   injectIntl,
-  connect((state, props) => ({
-    value: JSON.parse(props.value),
-  })),
+  connect(
+    (state, props) => ({
+      value: JSON.parse(props.value),
+      fieldSchema: state.fieldSchema.fieldSchema,
+    }),
+    {
+      getFieldSchema,
+    },
+  ),
 )(SchemaWidget);

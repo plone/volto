@@ -204,6 +204,7 @@ msgstr "Por padrão, as permissões do contêiner deste item são herdadas. Se v
 #: components/manage/Contents/ContentsToolbar
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeMetadata
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Delete/Delete
@@ -529,6 +530,10 @@ msgstr "Editar campo"
 msgid "Edit fieldset"
 msgstr "Editar conjunto de campos"
 
+#: components/manage/Form/InlineForm
+msgid "Edit values"
+msgstr ""
+
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
 msgstr "Editar {title}"
@@ -585,8 +590,10 @@ msgid "Enter your new password. Minimum 5 characters."
 msgstr "Escreva uma senha nova. Mínimo de 5 caracteres."
 
 #: components/manage/Add/Add
+#: components/manage/Controlpanels/ContentTypeMetadata
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form
+#: components/manage/Form/InlineForm
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
@@ -621,6 +628,10 @@ msgstr ""
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "External URL"
 msgstr "URL externo"
+
+#: components/manage/Controlpanels/ContentTypes
+msgid "Fields"
+msgstr ""
 
 #: components/manage/Toolbar/Toolbar
 msgid "File"
@@ -970,6 +981,10 @@ msgstr ""
 msgid "No items found in this container."
 msgstr ""
 
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "No items selected"
+msgstr ""
+
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "No map selected"
 msgstr ""
@@ -1220,6 +1235,7 @@ msgstr "Papéis"
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeMetadata
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
@@ -1272,6 +1288,10 @@ msgstr "Critérios de selecção"
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Select the transition to be used for modifying the items state."
 msgstr "Seleccione a transição a ser usada para modificar o estado dos itens."
+
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Selected items"
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Selection"
@@ -1483,6 +1503,10 @@ msgstr "O {plonecms} tem {copyright} de 2000-{current_year} pela {plonefoundatio
 
 #: components/theme/CorsError/CorsError
 msgid "There is a configuration problem on the backend"
+msgstr ""
+
+#: components/manage/Form/InlineForm
+msgid "There were some errors"
 msgstr ""
 
 #: components/manage/Form/Form
@@ -1852,6 +1876,10 @@ msgstr "mapas"
 #: config/Blocks
 msgid "media"
 msgstr "média"
+
+#: components/manage/Controlpanels/ContentTypeMetadata
+msgid "metadata {type}"
+msgstr ""
 
 #: config/Blocks
 msgid "mostUsed"

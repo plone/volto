@@ -211,6 +211,7 @@ msgstr "Standardmäßig werden die Berechtigungen von einem Ordner auf die in ih
 #: components/manage/Contents/ContentsToolbar
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeMetadata
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Delete/Delete
@@ -536,6 +537,10 @@ msgstr "Feld bearbeiten"
 msgid "Edit fieldset"
 msgstr "Fieldset bearbeiten"
 
+#: components/manage/Form/InlineForm
+msgid "Edit values"
+msgstr ""
+
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
 msgstr "{title} bearbeiten"
@@ -592,8 +597,10 @@ msgid "Enter your new password. Minimum 5 characters."
 msgstr "Geben Sie ihr neues Passwort ein. Mindestens 5 Zeichen."
 
 #: components/manage/Add/Add
+#: components/manage/Controlpanels/ContentTypeMetadata
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form
+#: components/manage/Form/InlineForm
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
@@ -628,6 +635,10 @@ msgstr ""
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "External URL"
 msgstr "Externe URL"
+
+#: components/manage/Controlpanels/ContentTypes
+msgid "Fields"
+msgstr ""
 
 #: components/manage/Toolbar/Toolbar
 msgid "File"
@@ -977,6 +988,10 @@ msgstr "Im Bild Feld wurde kein Bild gesetzt"
 msgid "No items found in this container."
 msgstr "Keine Elemente gefunden"
 
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "No items selected"
+msgstr ""
+
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "No map selected"
 msgstr "Keine Karte ausgewählt"
@@ -1227,6 +1242,7 @@ msgstr "Rollen"
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeMetadata
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
@@ -1279,6 +1295,10 @@ msgstr "Kriterium wählen"
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Select the transition to be used for modifying the items state."
 msgstr "Arbeitsablauf-Status für Seite wählen."
+
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Selected items"
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Selection"
@@ -1490,6 +1510,10 @@ msgstr "{plonecms} {copyright} 2000-{current_year} {plonefoundation} und Freunde
 
 #: components/theme/CorsError/CorsError
 msgid "There is a configuration problem on the backend"
+msgstr ""
+
+#: components/manage/Form/InlineForm
+msgid "There were some errors"
 msgstr ""
 
 #: components/manage/Form/Form
@@ -1859,6 +1883,10 @@ msgstr "Karten"
 #: config/Blocks
 msgid "media"
 msgstr "Medien"
+
+#: components/manage/Controlpanels/ContentTypeMetadata
+msgid "metadata {type}"
+msgstr ""
 
 #: config/Blocks
 msgid "mostUsed"

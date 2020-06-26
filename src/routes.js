@@ -30,6 +30,7 @@ import {
   UsersControlpanel,
   ContentTypes,
   ContentType,
+  ContentTypeMetadata,
 } from '@plone/volto/components';
 
 /**
@@ -67,6 +68,10 @@ export const defaultRoutes = [
     path: '/controlpanel',
     exact: true,
     component: Controlpanels,
+  },
+  {
+    path: '/controlpanel/dexterity-types/:id/fields',
+    component: ContentTypeMetadata,
   },
   {
     path: '/controlpanel/dexterity-types/:id',

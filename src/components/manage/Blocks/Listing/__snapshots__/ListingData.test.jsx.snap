@@ -340,7 +340,7 @@ exports[`renders an Listing Data Sidebar component 1`] = `
                 type="checkbox"
               />
               <label
-                for="field-listingblock-sort-on-reverse"
+                htmlFor="field-listingblock-sort-on-reverse"
               >
                 Reversed order
               </label>

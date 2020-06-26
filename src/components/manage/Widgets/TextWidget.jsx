@@ -3,12 +3,12 @@
  * @module components/manage/Widgets/TextWidget
  */
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Form, Grid, Input, Label, Icon as IconOld } from 'semantic-ui-react';
-import { map } from 'lodash';
-import { defineMessages, injectIntl } from 'react-intl';
 import { Icon } from '@plone/volto/components';
+import { map } from 'lodash';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { defineMessages, injectIntl } from 'react-intl';
+import { Form, Grid, Icon as IconOld, Input, Label } from 'semantic-ui-react';
 
 const messages = defineMessages({
   default: {
@@ -60,6 +60,8 @@ class TextWidget extends Component {
     error: PropTypes.arrayOf(PropTypes.string),
     value: PropTypes.string,
     focus: PropTypes.bool,
+    isDraggable: PropTypes.bool,
+    isDissabled: PropTypes.bool,
     onChange: PropTypes.func,
     onEdit: PropTypes.func,
     onDelete: PropTypes.func,
@@ -85,6 +87,8 @@ class TextWidget extends Component {
     onEdit: null,
     onDelete: null,
     focus: false,
+    isDraggable: false,
+    isDissabled: false,
     icon: null,
     iconAction: null,
   };
@@ -115,6 +119,8 @@ class TextWidget extends Component {
       value,
       onChange,
       onEdit,
+      isDraggable,
+      isDissabled,
       onDelete,
       intl,
       icon,
@@ -166,18 +172,18 @@ class TextWidget extends Component {
             <Grid.Column width="4">
               <div className="wrapper">
                 <label htmlFor={`field-${id}`}>
-                  {onEdit && (
+                  {isDraggable ? (
                     <i
                       aria-hidden="true"
                       className="grey bars icon drag handle"
                     />
-                  )}
+                  ) : null}
                   {title}
                 </label>
               </div>
             </Grid.Column>
             <Grid.Column width="8">
-              {onEdit && (
+              {onEdit && !isDissabled && (
                 <div className="toolbar">
                   <button
                     className="item ui noborder button"
@@ -195,19 +201,20 @@ class TextWidget extends Component {
                 </div>
               )}
               <Input
+                style={{ background: 'transparent' }}
                 id={`field-${id}`}
                 name={id}
                 value={value || ''}
-                disabled={onEdit !== null}
+                disabled={isDissabled}
                 icon={icon || null}
                 onChange={({ target }) =>
                   onChange(id, target.value === '' ? undefined : target.value)
                 }
-                ref={node => {
+                ref={(node) => {
                   this.node = node;
                 }}
               />
-              {map(error, message => (
+              {map(error, (message) => (
                 <Label key={message} basic color="red" pointing>
                   {message}
                 </Label>

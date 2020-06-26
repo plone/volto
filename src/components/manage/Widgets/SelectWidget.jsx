@@ -3,30 +3,17 @@
  * @module components/manage/Widgets/SelectWidget
  */
 
-import React, { Component } from 'react';
+import loadable from '@loadable/component';
+import { getVocabulary, getVocabularyTokenTitle } from '@plone/volto/actions';
+import { customSelectStyles, DropdownIndicator, Option, selectTheme } from '@plone/volto/components/manage/Widgets/SelectStyling';
+import { getBoolean, getVocabFromField, getVocabFromHint, getVocabFromItems } from '@plone/volto/helpers';
+import { find, isBoolean, isObject, map } from 'lodash';
 import PropTypes from 'prop-types';
-import { Icon as IconOld, Form, Grid, Label } from 'semantic-ui-react';
+import React, { Component } from 'react';
+import { defineMessages, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { map, find, isBoolean, isObject } from 'lodash';
-import { defineMessages, injectIntl } from 'react-intl';
-import loadable from '@loadable/component';
-
-import {
-  getBoolean,
-  getVocabFromHint,
-  getVocabFromField,
-  getVocabFromItems,
-} from '@plone/volto/helpers';
-
-import { getVocabulary, getVocabularyTokenTitle } from '@plone/volto/actions';
-
-import {
-  Option,
-  DropdownIndicator,
-  selectTheme,
-  customSelectStyles,
-} from '@plone/volto/components/manage/Widgets/SelectStyling';
+import { Form, Grid, Icon as IconOld, Label } from 'semantic-ui-react';
 
 const Select = loadable(() => import('react-select'));
 const AsyncPaginate = loadable(() => import('react-select-async-paginate'));
@@ -74,7 +61,7 @@ function getDefaultValues(choices, value) {
   if (!isObject(value) && isBoolean(value)) {
     // We have a boolean value, which means we need to provide a "No value"
     // option
-    const label = find(choices, o => getBoolean(o[0]) === value);
+    const label = find(choices, (o) => getBoolean(o[0]) === value);
     return label
       ? {
           label: label[1],
@@ -95,7 +82,7 @@ function getDefaultValues(choices, value) {
     };
   }
   if (value && choices.length > 0) {
-    return { label: find(choices, o => o[0] === value)[1], value };
+    return { label: find(choices, (o) => o[0] === value)[1], value };
   } else {
     return {};
   }
@@ -137,6 +124,8 @@ class SelectWidget extends Component {
     ]),
     onChange: PropTypes.func.isRequired,
     onEdit: PropTypes.func,
+    isDraggable: PropTypes.bool,
+    isDissabled: PropTypes.bool,
     onDelete: PropTypes.func,
     itemsTotal: PropTypes.number,
   };
@@ -161,6 +150,8 @@ class SelectWidget extends Component {
     value: null,
     onEdit: null,
     onDelete: null,
+    isDraggable: false,
+    isDissabled: false,
   };
 
   state = {
@@ -208,7 +199,7 @@ class SelectWidget extends Component {
    * @param {array} selectedOption The selected options (already aggregated).
    * @returns {undefined}
    */
-  handleChange = selectedOption => {
+  handleChange = (selectedOption) => {
     this.setState({ selectedOption });
     this.props.onChange(this.props.id, selectedOption.value);
   };
@@ -266,8 +257,10 @@ class SelectWidget extends Component {
       value,
       onChange,
       fieldSet,
+      isDraggable,
+      isDissabled,
     } = this.props;
-
+    console.log('SELECT isDraggable', isDraggable);
     return (
       <Form.Field
         inline
@@ -281,7 +274,7 @@ class SelectWidget extends Component {
             <Grid.Column width="4">
               <div className="wrapper">
                 <label htmlFor={`field-${id}`}>
-                  {onEdit && (
+                  {isDraggable && (
                     <i
                       aria-hidden="true"
                       className="grey bars icon drag handle"
@@ -292,7 +285,7 @@ class SelectWidget extends Component {
               </div>
             </Grid.Column>
             <Grid.Column width="8">
-              {onEdit && (
+              {onEdit && !isDissabled && (
                 <div className="toolbar">
                   <button
                     onClick={() => onEdit(id, schema)}
@@ -333,7 +326,7 @@ class SelectWidget extends Component {
                   classNamePrefix="react-select"
                   isMulti={id === 'roles' || id === 'groups'}
                   options={[
-                    ...map(choices, option => ({
+                    ...map(choices, (option) => ({
                       value: option[0],
                       label:
                         // Fix "None" on the serializer, to remove when fixed in p.restapi
@@ -354,7 +347,7 @@ class SelectWidget extends Component {
                       ? null
                       : getDefaultValues(choices, value)
                   }
-                  onChange={data => {
+                  onChange={(data) => {
                     let dataValue = [];
                     if (Array.isArray(data)) {
                       for (let obj of data) {
@@ -369,7 +362,7 @@ class SelectWidget extends Component {
                   }}
                 />
               )}
-              {map(error, message => (
+              {map(error, (message) => (
                 <Label key={message} basic color="red" pointing>
                   {message}
                 </Label>

@@ -158,6 +158,31 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
                       />
                       Delete
                     </div>
+                    <div
+                      className="item"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <svg
+                        className="icon"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={null}
+                        style={
+                          Object {
+                            "fill": "currentColor",
+                            "height": "15px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
+                      Fields
+                    </div>
                   </div>
                 </div>
               </td>
@@ -262,6 +287,31 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
                         xmlns=""
                       />
                       Delete
+                    </div>
+                    <div
+                      className="item"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <svg
+                        className="icon"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={null}
+                        style={
+                          Object {
+                            "fill": "currentColor",
+                            "height": "15px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
+                      Fields
                     </div>
                   </div>
                 </div>

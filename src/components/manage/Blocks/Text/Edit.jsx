@@ -101,7 +101,8 @@ class Edit extends Component {
    */
   componentDidMount() {
     if (this.props.selected) {
-      this.node.focus();
+      // See https://github.com/draft-js-plugins/draft-js-plugins/issues/800
+      setTimeout(this.node.focus, 0);
     }
     document.addEventListener('mousedown', this.handleClickOutside, false);
   }
@@ -114,7 +115,8 @@ class Edit extends Component {
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (!this.props.selected && nextProps.selected) {
-      this.node.focus();
+      // See https://github.com/draft-js-plugins/draft-js-plugins/issues/800
+      setTimeout(this.node.focus, 0);
       this.setState({
         editorState: EditorState.moveFocusToEnd(this.state.editorState),
       });
@@ -122,14 +124,11 @@ class Edit extends Component {
   }
 
   /**
-   * Component will receive props
+   * Component will unmount
    * @method componentWillUnmount
    * @returns {undefined}
    */
   componentWillUnmount() {
-    if (this.props.selected) {
-      this.node.focus();
-    }
     document.removeEventListener('mousedown', this.handleClickOutside, false);
   }
 
@@ -176,9 +175,9 @@ class Edit extends Component {
   }
 
   toggleAddNewBlock = () =>
-    this.setState(state => ({ addNewBlockOpened: !state.addNewBlockOpened }));
+    this.setState((state) => ({ addNewBlockOpened: !state.addNewBlockOpened }));
 
-  handleClickOutside = e => {
+  handleClickOutside = (e) => {
     if (
       this.props.blockNode.current &&
       doesNodeContainClick(this.props.blockNode.current, e)
@@ -214,7 +213,7 @@ class Edit extends Component {
           blockStyleFn={settings.blockStyleFn}
           customStyleMap={settings.customStyleMap}
           placeholder={this.props.intl.formatMessage(messages.text)}
-          handleReturn={e => {
+          handleReturn={(e) => {
             if (isSoftNewlineEvent(e)) {
               this.onChange(
                 RichUtils.insertSoftNewline(this.state.editorState),
@@ -268,7 +267,7 @@ class Edit extends Component {
               this.props.onFocusNextBlock(this.props.block, this.node);
             }
           }}
-          ref={node => {
+          ref={(node) => {
             this.node = node;
           }}
         />

@@ -176,11 +176,11 @@ class Edit extends Component {
           <Editor
             value={this.state.code}
             placeholder={`<p>Add some HTML here</p>`}
-            onValueChange={code => this.onChangeCode(code)}
-            highlight={code => highlight(code, languages.html)}
+            onValueChange={(code) => this.onChangeCode(code)}
+            highlight={(code) => highlight(code, languages.html)}
             padding={8}
             className="html-editor"
-            ref={node => {
+            ref={(node) => {
               this.codeEditor = node;
             }}
           />

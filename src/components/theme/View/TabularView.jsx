@@ -46,7 +46,7 @@ const TabularView = ({ content }) => (
             </Table.Row>
           </Table.Header>
           <Table.Body>
-            {content.items.map(item => (
+            {content.items.map((item) => (
               <Table.Row key={item.url}>
                 <Table.Cell>
                   <Link

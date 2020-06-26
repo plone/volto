@@ -33,7 +33,6 @@ module.exports = {
       options: {
         importLoaders: 2,
         sourceMap: true,
-        localIdentName: '[name]__[local]___[hash:base64:5]',
       },
     };
     const POST_CSS_LOADER = {
@@ -70,7 +69,6 @@ module.exports = {
             {
               loader: 'less-loader',
               options: {
-                outputStyle: 'expanded',
                 sourceMap: true,
               },
             },
@@ -82,15 +80,12 @@ module.exports = {
               options: {
                 importLoaders: 2,
                 sourceMap: true,
-                modules: false,
-                localIdentName: '[name]__[local]___[hash:base64:5]',
               },
             },
             POST_CSS_LOADER,
             {
               loader: 'less-loader',
               options: {
-                outputStyle: 'expanded',
                 sourceMap: true,
               },
             },

@@ -3,40 +3,22 @@
  * @module components/manage/Edit/Edit
  */
 
-import React, { Component } from 'react';
+import { getContent, getSchema, listActions, updateContent } from '@plone/volto/actions';
+import { Forbidden, Form, Icon, Sidebar, Toast, Toolbar, Unauthorized } from '@plone/volto/components';
+import { getBaseUrl, hasBlocksData, Helmet } from '@plone/volto/helpers';
+import clearSVG from '@plone/volto/icons/clear.svg';
+import saveSVG from '@plone/volto/icons/save.svg';
+import { find } from 'lodash';
 import PropTypes from 'prop-types';
-import { Helmet } from '@plone/volto/helpers';
+import qs from 'query-string';
+import React, { Component } from 'react';
+import { defineMessages, injectIntl } from 'react-intl';
+import { Portal } from 'react-portal';
 import { connect } from 'react-redux';
+import { toast } from 'react-toastify';
 import { compose } from 'redux';
 import { asyncConnect } from 'redux-connect';
-import { defineMessages, injectIntl } from 'react-intl';
 import { Button } from 'semantic-ui-react';
-import { Portal } from 'react-portal';
-import { DragDropContext } from 'react-dnd';
-import HTML5Backend from 'react-dnd-html5-backend';
-import qs from 'query-string';
-import { find } from 'lodash';
-import { toast } from 'react-toastify';
-
-import {
-  Forbidden,
-  Form,
-  Icon,
-  Sidebar,
-  Toast,
-  Toolbar,
-  Unauthorized,
-} from '@plone/volto/components';
-import {
-  updateContent,
-  getContent,
-  getSchema,
-  listActions,
-} from '@plone/volto/actions';
-import { getBaseUrl, hasBlocksData } from '@plone/volto/helpers';
-
-import saveSVG from '@plone/volto/icons/save.svg';
-import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   edit: {
@@ -201,7 +183,7 @@ class Edit extends Component {
 
     return (
       <div id="page-edit">
-        {this.props.objectActions.length > 0 && (
+        {this.props.objectActions?.length > 0 && (
           <>
             {editPermission && (
               <>
@@ -220,7 +202,7 @@ class Edit extends Component {
                   schema={this.props.schema}
                   formData={this.props.content}
                   onSubmit={this.onSubmit}
-                  hideActions
+                  // hideActions
                   pathname={this.props.pathname}
                   visual={this.state.visual}
                   title={
@@ -317,7 +299,6 @@ export const __test__ = compose(
 )(Edit);
 
 export default compose(
-  DragDropContext(HTML5Backend),
   injectIntl,
   asyncConnect([
     {

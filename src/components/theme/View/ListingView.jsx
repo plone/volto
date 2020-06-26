@@ -17,7 +17,7 @@ import { Segment, Container, Image } from 'semantic-ui-react';
 const ListingView = ({ content }) => (
   <Container id="page-home">
     <section id="content-core">
-      {content.items.map(item => (
+      {content.items.map((item) => (
         <Segment key={item.url} className="listing-item">
           <Container>
             <h2>
