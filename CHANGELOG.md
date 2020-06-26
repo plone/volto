@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Added uploading image preview in FileWidget @iFlameing
+
 ### Bugfix
 
 - Fix the toolbar dropdown to add content types if isMultilingual is enabled
