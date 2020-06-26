@@ -12,6 +12,8 @@
 
 ### Internal
 
+- Update upgrade-guide to for `addonRoutes` and `addonReducers` @jackahl
+
 ## 6.3.0 (2020-06-22)
 
 ### Feature
