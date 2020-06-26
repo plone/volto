@@ -97,7 +97,7 @@ class AddonConfigurationRegistry {
       const base = path.dirname(addon.packageJson);
       const razzlePath = path.resolve(`${base}/razzle.extend.js`);
       if (fs.existsSync(razzlePath)) {
-        addon.razzleExtender = require(razzlePath);
+        addon.razzleExtender = razzlePath;
       }
     });
   }
@@ -136,7 +136,7 @@ class AddonConfigurationRegistry {
   }
 
   getAddonExtenders() {
-    return [];
+    return this.getAddons().filter((o) => Boolean(o.razzleExtender));
   }
 
   /*

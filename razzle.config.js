@@ -311,7 +311,7 @@ const defaultModify = (config, { target, dev }, webpack) => {
   return config;
 };
 
-const addonExtenders = registry.getAddonExtenders();
+const addonExtenders = registry.getAddonExtenders().map((m) => require(m));
 
 const plugins = addonExtenders.reduce(
   (acc, extender) => extender.plugins(acc),

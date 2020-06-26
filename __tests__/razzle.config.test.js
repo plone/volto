@@ -43,7 +43,7 @@ describe('AddonConfigurationRegistry', () => {
         isAddon: true,
         modulePath: `${base}/node_modules/test-released-source-addon/src`,
         packageJson: `${base}/node_modules/test-released-source-addon/package.json`,
-        razzleExtender: Object(),
+        razzleExtender: `${base}/node_modules/test-released-source-addon/razzle.extend.js`,
       },
     });
   });
