@@ -80,7 +80,7 @@ class Edit extends Component {
       this.blockNode.current.focus();
     }
     const tab = this.props.manage
-      ? 2
+      ? 1
       : blocks.blocksConfig?.[type]?.sidebarBar || 0;
     if (this.props.selected) {
       this.props.setSidebarTab(tab);
@@ -104,7 +104,7 @@ class Edit extends Component {
       type !== nextProps.type
     ) {
       const tab = this.props.manage
-        ? 2
+        ? 1
         : blocks.blocksConfig?.[nextProps.type]?.sidebarTab || 0;
       this.props.setSidebarTab(tab);
     }

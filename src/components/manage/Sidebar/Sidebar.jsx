@@ -257,7 +257,7 @@ class Sidebar extends Component {
                   </Tab.Pane>
                 ),
               },
-            ]}
+            ].filter((tab) => tab)}
           />
         </div>
         <div className={this.state.expanded ? 'pusher expanded' : 'pusher'} />
