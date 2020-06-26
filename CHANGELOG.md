@@ -10,6 +10,7 @@
   package.json and they'll be automatically loaded. @tiberiuichim @sneridagh
 
 - Added uploading image preview in FileWidget @iFlameing
+- Allow custom express middleware declared with ``settings.expressMiddleware``. See [Customizing Express](docs/customizing/express.md) @tiberiuichim
 
 ### Bugfix
 
