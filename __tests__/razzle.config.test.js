@@ -5,7 +5,8 @@ describe('AddonConfigurationRegistry', () => {
   it('works in Volto', () => {
     const base = path.join(__dirname, '..');
     const reg = new utils.AddonConfigurationRegistry(base);
-    expect(reg.registry.projectRootPath).toStrictEqual(base);
+    expect(reg.projectRootPath).toStrictEqual(base);
+    expect(reg.addonNames).toStrictEqual([]);
   });
 
   it('works in a mock project directory', () => {
@@ -14,10 +15,16 @@ describe('AddonConfigurationRegistry', () => {
 
     const voltoPath = `${base}/node_modules/@plone/volto`;
 
-    expect(reg.registry.projectRootPath).toStrictEqual(base);
-    expect(reg.registry.voltoPath).toStrictEqual(voltoPath);
+    expect(reg.projectRootPath).toStrictEqual(base);
+    expect(reg.voltoPath).toStrictEqual(voltoPath);
 
-    expect(reg.registry.packages).toEqual({
+    expect(reg.addonNames).toStrictEqual([
+      'test-addon',
+      'test-released-addon',
+      'test-released-source-addon',
+    ]);
+
+    expect(reg.packages).toEqual({
       'test-addon': {
         extraConfigLoaders: [],
         isAddon: false,

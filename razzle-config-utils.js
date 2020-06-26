@@ -25,18 +25,14 @@ class AddonConfigurationRegistry {
       'package.json',
     )));
 
-    this.registry = {
-      projectRootPath: projectRootPath,
-      projectPackageJson: packageJson,
-      voltoPath:
-        packageJson.name === '@plone/volto'
-          ? `${projectRootPath}`
-          : `${projectRootPath}/node_modules/@plone/volto`,
-
-      packages: {},
-      customizations: new Map(),
-      addonNames: (packageJson.addons || []).map((s) => s.split(':')[0]),
-    };
+    this.projectRootPath = projectRootPath;
+    this.voltoPath =
+      packageJson.name === '@plone/volto'
+        ? `${projectRootPath}`
+        : `${projectRootPath}/node_modules/@plone/volto`;
+    this.addonNames = (packageJson.addons || []).map((s) => s.split(':')[0]);
+    this.packages = {};
+    this.customizations = new Map();
 
     this.initDevelopmentPackages();
     this.initPublishedPackages();
@@ -49,23 +45,20 @@ class AddonConfigurationRegistry {
    * Use jsconfig.js to get paths for "development" packages/addons (coming from mrs.developer.json)
    */
   initDevelopmentPackages() {
-    if (fs.existsSync(`${this.registry.projectRootPath}/jsconfig.json`)) {
-      const jsConfig = require(`${this.registry.projectRootPath}/jsconfig`)
+    if (fs.existsSync(`${this.projectRootPath}/jsconfig.json`)) {
+      const jsConfig = require(`${this.projectRootPath}/jsconfig`)
         .compilerOptions;
       const pathsConfig = jsConfig.paths;
 
       Object.keys(pathsConfig).forEach((name) => {
-        const packagePath = `${this.registry.projectRootPath}/${jsConfig.baseUrl}/${pathsConfig[name][0]}`;
+        const packagePath = `${this.projectRootPath}/${jsConfig.baseUrl}/${pathsConfig[name][0]}`;
         const pkg = {
           modulePath: packagePath,
           packageJson: `${getPackageBasePath(packagePath)}/package.json`,
           isAddon: false,
         };
 
-        this.registry.packages[name] = Object.assign(
-          this.registry.packages[name] || {},
-          pkg,
-        );
+        this.packages[name] = Object.assign(this.packages[name] || {}, pkg);
       });
     }
   }
@@ -77,14 +70,14 @@ class AddonConfigurationRegistry {
    * default.
    */
   initPublishedPackages() {
-    this.registry.addonNames.forEach((addonName) => {
-      if (!(addonName in this.registry.packages)) {
-        const basePath = `${this.registry.projectRootPath}/node_modules/${addonName}`;
+    this.addonNames.forEach((addonName) => {
+      if (!(addonName in this.packages)) {
+        const basePath = `${this.projectRootPath}/node_modules/${addonName}`;
         const packageJson = `${basePath}/package.json`;
         const pkg = require(packageJson);
         const main = pkg.main || 'src/index.js';
         const modulePath = path.dirname(require.resolve(`${basePath}/${main}`));
-        this.registry.packages[addonName] = {
+        this.packages[addonName] = {
           isAddon: true,
           modulePath,
           packageJson,
@@ -123,7 +116,7 @@ class AddonConfigurationRegistry {
         extras = addonConfigLoadInfo[1].split(',');
       }
 
-      const addon = this.registry.packages[pkgName];
+      const addon = this.packages[pkgName];
       addon.extraConfigLoaders = extras;
 
       const serverModule = path.resolve(`${addon.modulePath}/server.config.js`);
@@ -138,19 +131,21 @@ class AddonConfigurationRegistry {
    */
   getAddons() {
     return (this.packageJson.addons || []).map(
-      (s) => this.registry.packages[s.split(':')[0]],
+      (s) => this.packages[s.split(':')[0]],
     );
   }
 
-  getAddonExtenders() {}
+  getAddonExtenders() {
+    return [];
+  }
 
   /*
    * Returns a mapping name:diskpath to be uses in webpack's resolve aliases
    */
   getResolveAliases() {
-    const pairs = Object.keys(this.registry.packages).map((o) => [
+    const pairs = Object.keys(this.packages).map((o) => [
       o,
-      this.registry.packages[o].modulePath,
+      this.packages[o].modulePath,
     ]);
     return Object.fromEntries(pairs);
   }

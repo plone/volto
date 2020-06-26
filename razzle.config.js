@@ -29,7 +29,7 @@ const languages = require('./src/constants/Languages');
 
 const packageJson = require(path.join(projectRootPath, 'package.json'));
 
-const registry = utils.AddonConfigurationRegistry(projectRootPath);
+const registry = new utils.AddonConfigurationRegistry(projectRootPath);
 
 // TODO: apply "customize Volto by addon", "customize addon by project" logic
 const customizations = {};
@@ -274,7 +274,7 @@ const defaultModify = (config, { target, dev }, webpack) => {
   // Add babel support external (ie. node_modules npm published packages)
   if (packageJson.addons) {
     registry.addonNames.forEach((addon) =>
-      include.push(fs.realpathSync(addon.modulePath)),
+      include.push(fs.realpathSync(registry.packages[addon].modulePath)),
     );
   }
 
@@ -287,9 +287,7 @@ const defaultModify = (config, { target, dev }, webpack) => {
 
   let addonsAsExternals = [];
   if (packageJson.addons) {
-    addonsAsExternals = packageJson.addonsNames.map(
-      (addon) => new RegExp(addon),
-    );
+    addonsAsExternals = registry.addonNames.map((addon) => new RegExp(addon));
   }
 
   config.externals =
