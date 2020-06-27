@@ -1,7 +1,8 @@
 # Custom Express middleware
 
 Volto uses the popular [Express](https://expressjs.com/) server for its
-Server-Side Rendering implementation. In some cases it is useful to extend this
+Server-Side Rendering implementation and static resource serving.
+In some cases it is useful to extend this
 server with new functionality. For example, Volto includes an Express proxy
 middleware for the backend that can be used during development. Another use
 case might include a CORS proxy server, a proxy to protect a database such as
