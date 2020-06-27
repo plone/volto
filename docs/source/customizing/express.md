@@ -1,17 +1,14 @@
 # Custom Express middleware
 
 Volto uses the popular [Express](https://expressjs.com/) server for its
-Server-Side Rendering implementation and static resource serving.
-In some cases it is useful to extend this
-server with new functionality. For example, Volto includes an Express proxy
-middleware for the backend that can be used during development. Another use
-case might include a CORS proxy server, a proxy to protect a database such as
-ElasticSearch or MongoDB, etc.
+Server-Side Rendering implementation and static resource serving.  In some
+cases it is useful to extend this server with new functionality. For example,
+Volto includes a middleware that proxies the backend and that can be used
+during development. Other use cases might include a CORS proxy server, a proxy
+to protect a database such as ElasticSearch or MongoDB, etc.
 
 To add new middleware, use the ``settings.expressMiddleware`` configuration
-key. This is a list that takes objects with ``id`` and ``middleware`` as
-keys. The ``id`` should be a simple identification string for that
-middleware. For example:
+key. This is a list that takes Express middleware functions.  For example:
 
 ```js
 import {
@@ -28,13 +25,11 @@ if (__SERVER__) {
   middleware.all('/test-middleware', function (req, res, next) {
     res.send('Hello world');
   });
+  middleware.id = 'test-middleware'
 
   settings.expressMiddleware = [
     ...defaultSettings.expressMiddleware,
-    {
-      id: 'just-a-test-middleware',
-      middleware,
-    }
+    middleware,
   ] ;
 }
 ```
@@ -49,4 +44,5 @@ project's ``config.js`` gets executed by both the server and the client
 See [ExpressJS](https://expressjs.com/) website for more documentation.
 
 !!! note
-    This documentation is a work in progress. Please consider to contribute to this documentation.
+    Addon authors should add the ``id`` property to the middleware so that it
+    can be identified and manipulated in Volto projects configuration.
