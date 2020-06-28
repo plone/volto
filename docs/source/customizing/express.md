@@ -17,7 +17,6 @@ import {
 
 const settings = { ...defaultSettings };
 
-
 if (__SERVER__) {
   const express = require('express');
   const middleware = express.Router();
