@@ -29,6 +29,10 @@ const messages = defineMessages({
     id: 'Sort on',
     defaultMessage: 'Sort on',
   },
+  ListTitle: {
+    id: 'Title',
+    defaultMessage: 'Title',
+  },
   reversedOrder: {
     id: 'Reversed order',
     defaultMessage: 'Reversed order',
@@ -149,6 +153,21 @@ const ListingData = ({
             });
           }}
         />
+
+        {data.block === 'listingGrid' && (
+          <TextWidget
+            id="header"
+            title={intl.formatMessage(messages.ListTitle)}
+            required={true}
+            value={data.header}
+            onChange={(name, value) => {
+              onChangeBlock(block, {
+                ...data,
+                header: value,
+              });
+            }}
+          />
+        )}
 
         <TextWidget
           id="limit"
