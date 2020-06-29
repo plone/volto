@@ -2,8 +2,6 @@
 
 ## 6.3.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Translated workflow state in contents @nzambello
