@@ -7,6 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { RRule, RRuleSet, rrulestr } from 'rrule';
+
 import cx from 'classnames';
 import { isEqual, map, find, concat, remove } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
@@ -34,6 +35,7 @@ import {
   toISOString,
   rrulei18n,
 } from './Utils';
+
 import IntervalField from './IntervalField';
 import ByDayField from './ByDayField';
 import EndField from './EndField';
