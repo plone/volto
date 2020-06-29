@@ -432,11 +432,15 @@ class ContentTypes extends Component {
                       <Table.Cell>{item.description}</Table.Cell>
                       <Table.Cell>{item.count}</Table.Cell>
                       <Table.Cell textAlign="right">
-                        <Dropdown icon="ellipsis horizontal">
+                        <Dropdown
+                          icon="ellipsis horizontal"
+                          className={`actions-${item.id}`}
+                        >
                           <Dropdown.Menu className="left">
                             <Dropdown.Item
                               onClick={this.onEdit}
                               value={`${this.props.pathname}/${item['id']}`}
+                              className={`edit-${item.id}`}
                             >
                               <Icon name={editSVG} size="15px" />
                               <FormattedMessage
@@ -446,7 +450,8 @@ class ContentTypes extends Component {
                             </Dropdown.Item>
                             <Dropdown.Item
                               onClick={this.onLayout}
-                              value={`${this.props.pathname}/${item['id']}/layout`}
+                              value={`${this.props.pathname}/${item.id}/layout`}
+                              className={`layout-${item.id}`}
                             >
                               <Icon name={layoutSVG} size="15px" />
                               <FormattedMessage
@@ -457,6 +462,7 @@ class ContentTypes extends Component {
                             <Dropdown.Item
                               onClick={this.onDelete}
                               value={item['@id']}
+                              className={`delete-${item.id}`}
                             >
                               <Icon name={trashSVG} size="15px" />
                               <FormattedMessage

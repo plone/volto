@@ -222,9 +222,9 @@ class ContentTypeLayout extends Component {
    */
   onSubmit(data) {
     let schema = { properties: {} };
-    Object.keys(data).forEach(
-      (k) => (schema.properties[k] = { default: data[k] }),
-    );
+    Object.keys(data)
+      .filter((k) => data[k])
+      .forEach((k) => (schema.properties[k] = { default: data[k] }));
     this.props.updateSchema(this.props.id, schema);
   }
 
@@ -402,7 +402,6 @@ class ContentTypeLayout extends Component {
     return (
       <div id="page-controlpanel-layout">
         <Form
-          isEditForm
           isAdminForm
           ref={this.form}
           schema={{
