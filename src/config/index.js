@@ -68,6 +68,7 @@ export const settings = {
   supportedLanguages: ['en'],
   defaultLanguage: 'en',
   navDepth: 1,
+  expressMiddleware: [],
 };
 
 export const addonRoutes = [];
