@@ -39,11 +39,11 @@ export const OPTIONS = {
   },
 };
 
-export const toISOString = date => {
+export const toISOString = (date) => {
   return date.toISOString().split('T')[0];
 };
 
-export const rrulei18n = intl => {
+export const rrulei18n = (intl) => {
   moment.locale(intl.locale);
 
   const messages = defineMessages({
@@ -107,7 +107,7 @@ export const rrulei18n = intl => {
 
   let strings = {};
   Object.keys(messages).map(
-    k => (strings[k] = intl.formatMessage(messages[k])),
+    (k) => (strings[k] = intl.formatMessage(messages[k])),
   );
 
   let dateFormat = strings.dateFormat
