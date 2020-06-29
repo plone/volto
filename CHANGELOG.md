@@ -10,6 +10,7 @@
 - Added item type as a tooltip in contents @nzambello
 - Added italian translations and translated array, token and select widget. @giuliaghisini
 - Added uploading image preview in FileWidget @iFlameing
+- Allow custom express middleware declared with ``settings.expressMiddleware``. See [Customizing Express](docs/customizing/express.md) @tiberiuichim
 
 ### Bugfix
 
