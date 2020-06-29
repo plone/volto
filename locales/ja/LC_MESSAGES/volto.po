@@ -46,9 +46,9 @@ msgid "Activate and deactivate"
 msgstr "以下のリストにあるアドオンを有効にしたり無効にしたりできます。"
 
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/SchemaWidget
+#: helpers/MessageLabels/MessageLabels
 msgid "Add"
 msgstr "追加"
 
@@ -64,7 +64,7 @@ msgstr "新規追加"
 msgid "Add Translation…"
 msgstr ""
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Add User"
 msgstr "ユーザを追加"
 
@@ -72,7 +72,7 @@ msgstr "ユーザを追加"
 msgid "Add a description…"
 msgstr "説明を追加…"
 
-#: components/manage/Form/Form
+#: helpers/MessageLabels/MessageLabels
 msgid "Add block…"
 msgstr "ブロックを追加…"
 
@@ -88,7 +88,7 @@ msgstr "フィールドを追加"
 msgid "Add fieldset"
 msgstr "フィールドセットを追加"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Add group"
 msgstr "グループを追加"
 
@@ -96,15 +96,15 @@ msgstr "グループを追加"
 msgid "Add new content type"
 msgstr "コンテンツタイプを追加"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Add new group"
 msgstr "新しいグループを追加"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Add new user"
 msgstr "新しいユーザを追加"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Add to Groups"
 msgstr "グループに追加"
 
@@ -156,7 +156,6 @@ msgstr "利用可能"
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/DatabaseInformation
 #: components/manage/Controlpanels/ModerateComments
-#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Diff/Diff
 #: components/manage/History/History
 #: components/manage/Preferences/ChangePassword
@@ -165,6 +164,7 @@ msgstr "利用可能"
 #: components/manage/Sharing/Sharing
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
+#: helpers/MessageLabels/MessageLabels
 msgid "Back"
 msgstr "戻る"
 
@@ -209,13 +209,12 @@ msgstr ""
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
-#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Delete/Delete
 #: components/manage/Edit/Edit
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 #: components/theme/Login/Login
+#: helpers/MessageLabels/MessageLabels
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -439,7 +438,7 @@ msgstr "基本"
 msgid "Delete"
 msgstr "削除"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Delete Group"
 msgstr "グループを削除"
 
@@ -447,7 +446,7 @@ msgstr "グループを削除"
 msgid "Delete Type"
 msgstr ""
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Delete User"
 msgstr "ユーザを削除"
 
@@ -465,7 +464,6 @@ msgstr "降順"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
@@ -474,6 +472,7 @@ msgstr "降順"
 #: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
+#: helpers/MessageLabels/MessageLabels
 msgid "Description"
 msgstr "説明"
 
@@ -559,7 +558,7 @@ msgstr ""
 msgid "Edit {title}"
 msgstr "{title} を編集"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Email"
 msgstr "メール"
 
@@ -612,11 +611,11 @@ msgstr "新しいパスワードを入力。（5文字以上）"
 
 #: components/manage/Add/Add
 #: components/manage/Edit/Edit
-#: components/manage/Form/Form
 #: components/manage/Form/InlineForm
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
+#: helpers/MessageLabels/MessageLabels
 msgid "Error"
 msgstr "エラー"
 
@@ -692,7 +691,7 @@ msgstr "フルサイズ"
 msgid "Full Name"
 msgstr "氏名"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Fullname"
 msgstr "氏名"
 
@@ -712,11 +711,12 @@ msgstr "Google Maps Embedded Block (未翻訳)"
 msgid "Group"
 msgstr "グループ"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Group created"
 msgstr "グループが作成されました"
 
 #: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Groupname"
 msgstr "グループ名"
 
@@ -834,8 +834,8 @@ msgstr "アイテムがペーストされました。"
 msgid "Items"
 msgstr ""
 
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
 msgid "Items must be unique."
 msgstr "アイテムはユニークである必要があります。"
 
@@ -926,14 +926,26 @@ msgstr "地図"
 msgid "Maps URL"
 msgstr "地図URL"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Maximum length is {len}."
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Maximum value is {len}."
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
 msgstr "メッセージ"
 
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
 msgid "Minimum length is {len}."
 msgstr "最小サイズは {len}　。"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Minimum value is {len}."
+msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Moderate Comments"
@@ -1076,8 +1088,8 @@ msgstr "参照元"
 msgid "Page"
 msgstr "ページ"
 
-#: components/manage/Controlpanels/UsersControlpanel
 #: components/theme/Login/Login
+#: helpers/MessageLabels/MessageLabels
 msgid "Password"
 msgstr "パスワード"
 
@@ -1218,8 +1230,8 @@ msgstr "名前の変更"
 msgid "Required"
 msgstr "必須"
 
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
 msgid "Required input is missing."
 msgstr "必須"
 
@@ -1257,18 +1269,17 @@ msgstr "右"
 msgid "Rights"
 msgstr "権利"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Roles"
 msgstr "ロール"
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
-#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: helpers/MessageLabels/MessageLabels
 msgid "Save"
 msgstr "保存"
 
@@ -1288,7 +1299,7 @@ msgstr "検索"
 msgid "Search for user or group"
 msgstr "検索"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Search group…"
 msgstr ""
 
@@ -1300,7 +1311,7 @@ msgstr "検索"
 msgid "Search results for {term}"
 msgstr "検索"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Search users…"
 msgstr ""
 
@@ -1462,11 +1473,11 @@ msgstr "件名"
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/theme/ContactForm/ContactForm
+#: helpers/MessageLabels/MessageLabels
 msgid "Success"
 msgstr "成功"
 
@@ -1554,8 +1565,8 @@ msgstr ""
 msgid "There were some errors"
 msgstr ""
 
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
 msgid "There were some errors."
 msgstr "いくつかのエラーが発生しました"
 
@@ -1575,7 +1586,6 @@ msgstr ""
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
@@ -1584,6 +1594,7 @@ msgstr ""
 #: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
+#: helpers/MessageLabels/MessageLabels
 msgid "Title"
 msgstr "タイトル"
 
@@ -1700,7 +1711,7 @@ msgstr "Used for programmatic access to the fieldset. (未翻訳)"
 msgid "User"
 msgstr "ユーザ"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "User created"
 msgstr "ユーザを作成しました"
 
@@ -1708,7 +1719,7 @@ msgstr "ユーザを作成しました"
 msgid "User name"
 msgstr "ユーザ名"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Username"
 msgstr "ユーザ名"
 
@@ -1717,7 +1728,7 @@ msgid "Users"
 msgstr "ユーザ"
 
 #: components/manage/Controlpanels/Controlpanels
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Users and Groups"
 msgstr "ユーザとグループ"
 
@@ -1874,6 +1885,10 @@ msgstr "パスワード再設定のお願いをメール送信しました。ま
 msgid "draft"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+msgid "email"
+msgstr ""
+
 #: components/theme/View/EventView
 msgid "event_alldates"
 msgstr ""
@@ -1922,6 +1937,10 @@ msgstr "HTML"
 msgid "image"
 msgstr "画像"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "integer"
+msgstr ""
+
 #: components/manage/Contents/ContentsItem
 msgid "intranet"
 msgstr ""
@@ -1956,6 +1975,10 @@ msgstr "よく使う物"
 
 #: components/manage/Contents/ContentsItem
 msgid "no workflow state"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+msgid "number"
 msgstr ""
 
 #: error
@@ -2005,6 +2028,10 @@ msgstr "タイトル"
 #: config/Blocks
 msgid "toc"
 msgstr "目次"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "url"
+msgstr ""
 
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"
