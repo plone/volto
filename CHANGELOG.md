@@ -1,6 +1,6 @@
 # Change Log
 
-## 6.3.1 (unreleased)
+## 6.4.1 (unreleased)
 
 ### Breaking
 
@@ -8,11 +8,20 @@
 
 - Added toast notifications for form errors @nzambello
 - Added italian translations and translated array, token and select widget. @giuliaghisini
+
+### Bugfix
+
+### Internal
+
+## 6.4.0 (2020-06-29)
+
+### Feature
+
 - Translated workflow state in contents @nzambello
 - Added item type as a tooltip in contents @nzambello
 - Added italian translations and translated array, token and select widget. @giuliaghisini
 - Added uploading image preview in FileWidget @iFlameing
-- Allow custom express middleware declared with ``settings.expressMiddleware``. See [Customizing Express](docs/customizing/express.md) @tiberiuichim
+- Allow custom express middleware declared with ``settings.expressMiddleware``. See [Customizing Express](docs/source/customizing/express.md) @tiberiuichim
 
 ### Bugfix
 
