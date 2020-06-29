@@ -2020,6 +2020,10 @@ msgstr "Mot de passe perdu"
 msgid "description_sent_password"
 msgstr "Mot de passe envoyé"
 
+#: components/manage/Contents/ContentsItem
+msgid "draft"
+msgstr ""
+
 #: components/theme/View/EventView
 msgid "event_alldates"
 msgstr "Toutes les dates"
@@ -2068,6 +2072,10 @@ msgstr "html"
 msgid "image"
 msgstr "image"
 
+#: components/manage/Contents/ContentsItem
+msgid "intranet"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "label_my_email_address_is"
 msgstr "Mon adresse e-mail est"
@@ -2094,7 +2102,11 @@ msgstr "média"
 
 #: config/Blocks
 msgid "mostUsed"
-msgstr "souvent utilisé"
+msgstr "souvent utilisé<<<<<<< HEAD"
+
+#: components/manage/Contents/ContentsItem
+msgid "no workflow state"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
 #: components/manage/Widgets/RecurrenceWidget/ByYearField
@@ -2107,6 +2119,14 @@ msgstr "ou essayez une autre page."
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "others"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+msgid "private"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+msgid "published"
 msgstr ""
 
 #: components/manage/Blocks/Listing/QuerystringWidget
