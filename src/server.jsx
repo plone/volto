@@ -67,7 +67,8 @@ if (__DEVELOPMENT__ && settings.devProxyToApiPath) {
   );
 }
 
-if ((settings.expressMiddleware || []).length) server.use('/', settings.expressMiddleware);
+if ((settings.expressMiddleware || []).length)
+  server.use('/', settings.expressMiddleware);
 
 server
   .disable('x-powered-by')
