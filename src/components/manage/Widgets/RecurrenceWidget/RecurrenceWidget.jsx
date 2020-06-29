@@ -386,8 +386,6 @@ class RecurrenceWidget extends Component {
         }
       });
     }
-
-    //  console.log('getFormValues elab', formValues);
     return formValues;
   };
 
@@ -656,9 +654,7 @@ class RecurrenceWidget extends Component {
 
     this.setState((prevState) => {
       var rruleSet = prevState.rruleSet;
-      console.log(rruleSet, 'before');
       rruleSet = this.updateRruleSet(rruleSet, formValues, field, value);
-      console.log(rruleSet, 'after');
       return {
         ...prevState,
         rruleSet,
@@ -722,7 +718,6 @@ class RecurrenceWidget extends Component {
       error,
       fieldSet,
       intl,
-      value,
     } = this.props;
 
     return (
@@ -807,7 +802,6 @@ class RecurrenceWidget extends Component {
               >
                 <Modal.Header>
                   {intl.formatMessage(messages.editRecurrence)}{' '}
-                  {this.state.rruleSet.toString()}
                 </Modal.Header>
                 <Modal.Content scrolling>
                   {rruleSet.rrules().length > 0 && (
