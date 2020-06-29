@@ -66,6 +66,9 @@ if (__DEVELOPMENT__ && settings.devProxyToApiPath) {
     }),
   );
 }
+
+if ((settings.expressMiddleware || []).length) server.use('/', settings.expressMiddleware);
+
 server
   .disable('x-powered-by')
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))

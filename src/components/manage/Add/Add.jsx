@@ -238,9 +238,13 @@ class Add extends Component {
             hideActions
             pathname={this.props.pathname}
             visual={visual}
-            title={this.props.intl.formatMessage(messages.add, {
-              type: this.props.type,
-            })}
+            title={
+              this.props?.schema?.title
+                ? this.props.intl.formatMessage(messages.add, {
+                    type: this.props.schema.title,
+                  })
+                : null
+            }
             loading={this.props.createRequest.loading}
           />
           <Portal node={__CLIENT__ && document.getElementById('toolbar')}>

@@ -1,6 +1,6 @@
 # Change Log
 
-## 6.2.1 (unreleased)
+## 6.4.1 (unreleased)
 
 ### Breaking
 
@@ -13,22 +13,48 @@
 - Fixed date only widget rendering #1246 @rexalex
 - Fix errors with SelectWidget when removing the only element @rexalex
 
-- Added italian translations and translated array, token and select widget. @giuliaghisini
-- Added internationalization for French language @bsuttor #1588
-- selectableTypes in ObjectBrowserWidget @giuliaghisini
-
 ### Bugfix
-
-- fixed duplicated items in SelectWidget and ArrayWidget @giuliaghisini
-- Update German translation @timo
-- removed broken preview image in ContentsUploadModal if uploaded item is not an image. @giuliaghisini
-- Localized content upload modal last modified date @nzambello
-- Fix overflow in folder contents with long titles @nzambello
-- fixed object browser widget when a selected items is deleted. Plone.restapi returns a null object. @giuliaghisini
-- fixed error on adding new item if parent item is not translated when multilingual is set @giuliaghisini
 
 ### Internal
 
+## 6.4.0 (2020-06-29)
+
+### Feature
+
+- Translated workflow state in contents @nzambello
+- Added item type as a tooltip in contents @nzambello
+- Added italian translations and translated array, token and select widget. @giuliaghisini
+- Added uploading image preview in FileWidget @iFlameing
+- Allow custom express middleware declared with ``settings.expressMiddleware``. See [Customizing Express](docs/customizing/express.md) @tiberiuichim
+
+### Bugfix
+
+- Fix the toolbar dropdown to add content types if isMultilingual is enabled
+  but a type is not marked as translatable. @csenger
+- Usage of Contettype label in Add component. @giuliaghisini
+
+### Internal
+
+- Update upgrade-guide to for `addonRoutes` and `addonReducers` @jackahl
+
+## 6.3.0 (2020-06-22)
+
+### Feature
+
+- Added Italian translations and translated array, token and select widget. @giuliaghisini
+- Added internationalization for French language @bsuttor #1588
+- Added selectableTypes in ObjectBrowserWidget @giuliaghisini
+
+### Bugfix
+
+- added export for ObjectBrowserWidget in component/index.js @giuliaghisini
+- Fixed duplicated items in SelectWidget and ArrayWidget @giuliaghisini
+- Update German translation @timo
+- Removed broken preview image in ContentsUploadModal if uploaded item is not an image. @giuliaghisini
+- Localized content upload modal last modified date @nzambello
+- Fix overflow in folder contents with long titles @nzambello
+- Fixed object browser widget when a selected items is deleted. Plone.restapi returns a null object. @giuliaghisini
+- Fixed error on adding new item if parent item is not translated when multilingual is set @giuliaghisini
 - Added translations for select in querystring widget @nzambello
 
 ## 6.2.0 (2020-06-14)

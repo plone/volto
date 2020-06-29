@@ -39,9 +39,9 @@ msgid "Activate and deactivate"
 msgstr "Activare și dezactivare"
 
 #: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/SchemaWidget
-#: helpers/MessageLabels/MessageLabels
 msgid "Add"
 msgstr "Adăugare"
 
@@ -57,7 +57,7 @@ msgstr "Adăugare conținut"
 msgid "Add Translation…"
 msgstr ""
 
-#: helpers/MessageLabels/MessageLabels
+#: components/manage/Controlpanels/UsersControlpanel
 msgid "Add User"
 msgstr "Adăugare utilizator"
 
@@ -65,7 +65,7 @@ msgstr "Adăugare utilizator"
 msgid "Add a description…"
 msgstr "Adăugați o descriere …"
 
-#: helpers/MessageLabels/MessageLabels
+#: components/manage/Form/Form
 msgid "Add block…"
 msgstr "Adăugare bloc …"
 
@@ -81,7 +81,7 @@ msgstr "Adăugare câmp"
 msgid "Add fieldset"
 msgstr "Adăugare set de câmpuri"
 
-#: helpers/MessageLabels/MessageLabels
+#: components/manage/Controlpanels/UsersControlpanel
 msgid "Add group"
 msgstr "Adăugare grup"
 
@@ -89,15 +89,15 @@ msgstr "Adăugare grup"
 msgid "Add new content type"
 msgstr "Adăugare tip de conținut nou"
 
-#: helpers/MessageLabels/MessageLabels
+#: components/manage/Controlpanels/UsersControlpanel
 msgid "Add new group"
 msgstr "Adăugare grup nou"
 
-#: helpers/MessageLabels/MessageLabels
+#: components/manage/Controlpanels/UsersControlpanel
 msgid "Add new user"
 msgstr "Adăugare utilizator nou"
 
-#: helpers/MessageLabels/MessageLabels
+#: components/manage/Controlpanels/UsersControlpanel
 msgid "Add to Groups"
 msgstr "Adăugare la grupuri"
 
@@ -149,6 +149,7 @@ msgstr "Disponibil"
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/DatabaseInformation
 #: components/manage/Controlpanels/ModerateComments
+#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Diff/Diff
 #: components/manage/History/History
 #: components/manage/Preferences/ChangePassword
@@ -157,7 +158,6 @@ msgstr "Disponibil"
 #: components/manage/Sharing/Sharing
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
-#: helpers/MessageLabels/MessageLabels
 msgid "Back"
 msgstr "Înapoi"
 
@@ -202,12 +202,13 @@ msgstr ""
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Delete/Delete
 #: components/manage/Edit/Edit
+#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 #: components/theme/Login/Login
-#: helpers/MessageLabels/MessageLabels
 msgid "Cancel"
 msgstr "Anulează"
 
@@ -431,7 +432,7 @@ msgstr "Implicit"
 msgid "Delete"
 msgstr "Ștergeți"
 
-#: helpers/MessageLabels/MessageLabels
+#: components/manage/Controlpanels/UsersControlpanel
 msgid "Delete Group"
 msgstr "Ștergeți grupul"
 
@@ -439,7 +440,7 @@ msgstr "Ștergeți grupul"
 msgid "Delete Type"
 msgstr "Ștergeți tipul"
 
-#: helpers/MessageLabels/MessageLabels
+#: components/manage/Controlpanels/UsersControlpanel
 msgid "Delete User"
 msgstr "Ștergeți utilizatorul"
 
@@ -457,6 +458,7 @@ msgstr "Descrescător"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
@@ -465,7 +467,6 @@ msgstr "Descrescător"
 #: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
-#: helpers/MessageLabels/MessageLabels
 msgid "Description"
 msgstr "Descriere"
 
@@ -551,7 +552,7 @@ msgstr "Editează valori"
 msgid "Edit {title}"
 msgstr "Editează {title}"
 
-#: helpers/MessageLabels/MessageLabels
+#: components/manage/Controlpanels/UsersControlpanel
 msgid "Email"
 msgstr "Email"
 
@@ -604,11 +605,11 @@ msgstr "Introduceți noua parolă. Minim 5 caractere."
 
 #: components/manage/Add/Add
 #: components/manage/Edit/Edit
+#: components/manage/Form/Form
 #: components/manage/Form/InlineForm
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
-#: helpers/MessageLabels/MessageLabels
 msgid "Error"
 msgstr "Eroare"
 
@@ -684,7 +685,7 @@ msgstr "Complet"
 msgid "Full Name"
 msgstr "Numele complet"
 
-#: helpers/MessageLabels/MessageLabels
+#: components/manage/Controlpanels/UsersControlpanel
 msgid "Fullname"
 msgstr "Numele complet"
 
@@ -704,12 +705,11 @@ msgstr "Bloc te tip Google Maps"
 msgid "Group"
 msgstr "Grup"
 
-#: helpers/MessageLabels/MessageLabels
+#: components/manage/Controlpanels/UsersControlpanel
 msgid "Group created"
 msgstr "Grup creat"
 
 #: components/manage/Controlpanels/UsersControlpanel
-#: helpers/MessageLabels/MessageLabels
 msgid "Groupname"
 msgstr "Nume de grup"
 
@@ -827,8 +827,8 @@ msgstr "Obiect(e) lipit(e)."
 msgid "Items"
 msgstr "Obiecte"
 
+#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
-#: helpers/MessageLabels/MessageLabels
 msgid "Items must be unique."
 msgstr "Obiectele trebuie să fie unice."
 
@@ -919,26 +919,14 @@ msgstr "Hartă"
 msgid "Maps URL"
 msgstr "URL Hartă"
 
-#: helpers/MessageLabels/MessageLabels
-msgid "Maximum length is {len}."
-msgstr ""
-
-#: helpers/MessageLabels/MessageLabels
-msgid "Maximum value is {len}."
-msgstr ""
-
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
 msgstr "Mesaj"
 
+#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
-#: helpers/MessageLabels/MessageLabels
 msgid "Minimum length is {len}."
 msgstr "Lungimea minimă este {len}."
-
-#: helpers/MessageLabels/MessageLabels
-msgid "Minimum value is {len}."
-msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Moderate Comments"
@@ -1081,8 +1069,8 @@ msgstr "Origine"
 msgid "Page"
 msgstr "Pagina"
 
+#: components/manage/Controlpanels/UsersControlpanel
 #: components/theme/Login/Login
-#: helpers/MessageLabels/MessageLabels
 msgid "Password"
 msgstr "Parolă"
 
@@ -1223,8 +1211,8 @@ msgstr "Redenumirea articolelor"
 msgid "Required"
 msgstr "Obligatoriu"
 
+#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
-#: helpers/MessageLabels/MessageLabels
 msgid "Required input is missing."
 msgstr "Câmpul este obligatoriu."
 
@@ -1262,17 +1250,18 @@ msgstr "Dreapta"
 msgid "Rights"
 msgstr "Drepturi"
 
-#: helpers/MessageLabels/MessageLabels
+#: components/manage/Controlpanels/UsersControlpanel
 msgid "Roles"
 msgstr "Roluri"
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
+#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
-#: helpers/MessageLabels/MessageLabels
 msgid "Save"
 msgstr "Salvare"
 
@@ -1292,7 +1281,7 @@ msgstr "Căutare conținut"
 msgid "Search for user or group"
 msgstr "Căutare utilizator sau grup"
 
-#: helpers/MessageLabels/MessageLabels
+#: components/manage/Controlpanels/UsersControlpanel
 msgid "Search group…"
 msgstr ""
 
@@ -1304,7 +1293,7 @@ msgstr "Rezultatele căutării"
 msgid "Search results for {term}"
 msgstr "Rezultatele căutării pentru {term}"
 
-#: helpers/MessageLabels/MessageLabels
+#: components/manage/Controlpanels/UsersControlpanel
 msgid "Search users…"
 msgstr ""
 
@@ -1466,11 +1455,11 @@ msgstr "Subiect"
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/theme/ContactForm/ContactForm
-#: helpers/MessageLabels/MessageLabels
 msgid "Success"
 msgstr "Succes"
 
@@ -1558,8 +1547,8 @@ msgstr "Există o problemă de configurare pe backend"
 msgid "There were some errors"
 msgstr "Au aparut unele erori"
 
+#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
-#: helpers/MessageLabels/MessageLabels
 msgid "There were some errors."
 msgstr "Au aparut unele erori."
 
@@ -1579,6 +1568,7 @@ msgstr ""
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
@@ -1587,7 +1577,6 @@ msgstr ""
 #: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
-#: helpers/MessageLabels/MessageLabels
 msgid "Title"
 msgstr "Titlu"
 
@@ -1704,7 +1693,7 @@ msgstr "Folosit pentru acces programatic la setul de câmpuri."
 msgid "User"
 msgstr "Utilizator"
 
-#: helpers/MessageLabels/MessageLabels
+#: components/manage/Controlpanels/UsersControlpanel
 msgid "User created"
 msgstr "Utilizator creat"
 
@@ -1712,7 +1701,7 @@ msgstr "Utilizator creat"
 msgid "User name"
 msgstr "Nume utilizator"
 
-#: helpers/MessageLabels/MessageLabels
+#: components/manage/Controlpanels/UsersControlpanel
 msgid "Username"
 msgstr "Nume utilizator"
 
@@ -1721,7 +1710,7 @@ msgid "Users"
 msgstr "Utilizatori"
 
 #: components/manage/Controlpanels/Controlpanels
-#: helpers/MessageLabels/MessageLabels
+#: components/manage/Controlpanels/UsersControlpanel
 msgid "Users and Groups"
 msgstr "Utilizatori și grupuri"
 
@@ -1874,8 +1863,8 @@ msgstr "Din motive de securitate, parola dvs. este criptată și nu poate fi rec
 msgid "description_sent_password"
 msgstr "Parola este în curs de schimbare. Urmați instrucțiunile primite pe adresa de e-mail pentru a finaliza procesul de schimbare a parolei."
 
-#: helpers/MessageLabels/MessageLabels
-msgid "email"
+#: components/manage/Contents/ContentsItem
+msgid "draft"
 msgstr ""
 
 #: components/theme/View/EventView
@@ -1926,8 +1915,8 @@ msgstr "HTML"
 msgid "image"
 msgstr "Imagine"
 
-#: helpers/MessageLabels/MessageLabels
-msgid "integer"
+#: components/manage/Contents/ContentsItem
+msgid "intranet"
 msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
@@ -1958,13 +1947,21 @@ msgstr "Media"
 msgid "mostUsed"
 msgstr "Cele mai utilizate"
 
-#: helpers/MessageLabels/MessageLabels
-msgid "number"
+#: components/manage/Contents/ContentsItem
+msgid "no workflow state"
 msgstr ""
 
 #: error
 msgid "or try a different page."
 msgstr "sau încercați o altă pagină."
+
+#: components/manage/Contents/ContentsItem
+msgid "private"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+msgid "published"
+msgstr ""
 
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "querystring-widget-select"
@@ -2001,10 +1998,6 @@ msgstr "Titlu"
 #: config/Blocks
 msgid "toc"
 msgstr "Cuprins"
-
-#: helpers/MessageLabels/MessageLabels
-msgid "url"
-msgstr ""
 
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"
