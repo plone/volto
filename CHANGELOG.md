@@ -6,6 +6,9 @@
 
 ### Feature
 
+- Translated workflow state in contents @nzambello
+- Added item type as a tooltip in contents @nzambello
+- Added italian translations and translated array, token and select widget. @giuliaghisini
 - Added uploading image preview in FileWidget @iFlameing
 
 ### Bugfix
