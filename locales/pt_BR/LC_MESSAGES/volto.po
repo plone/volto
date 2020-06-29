@@ -1908,6 +1908,10 @@ msgstr ""
 msgid "description_sent_password"
 msgstr ""
 
+#: components/manage/Contents/ContentsItem
+msgid "draft"
+msgstr ""
+
 #: components/theme/View/EventView
 msgid "event_alldates"
 msgstr ""
@@ -1956,6 +1960,10 @@ msgstr "html"
 msgid "image"
 msgstr "imagem"
 
+#: components/manage/Contents/ContentsItem
+msgid "intranet"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "label_my_email_address_is"
 msgstr ""
@@ -1984,9 +1992,21 @@ msgstr "média"
 msgid "mostUsed"
 msgstr ""
 
+#: components/manage/Contents/ContentsItem
+msgid "no workflow state"
+msgstr ""
+
 #: error
 msgid "or try a different page."
 msgstr ""
+
+#: components/manage/Contents/ContentsItem
+msgid "private"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+msgid "published"
+msgstr "\"
 
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "querystring-widget-select"

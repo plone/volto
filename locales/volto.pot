@@ -2323,6 +2323,11 @@ msgstr ""
 msgid "description_sent_password"
 msgstr ""
 
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Draft
+msgid "draft"
+msgstr ""
+
 #: components/theme/View/EventView
 # defaultMessage: All dates
 msgid "event_alldates"
@@ -2383,6 +2388,11 @@ msgstr ""
 msgid "image"
 msgstr ""
 
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Intranet
+msgid "intranet"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: My email address is
 msgid "label_my_email_address_is"
@@ -2418,9 +2428,24 @@ msgstr ""
 msgid "mostUsed"
 msgstr ""
 
+#: components/manage/Contents/ContentsItem
+# defaultMessage: No workflow state
+msgid "no workflow state"
+msgstr ""
+
 #: error
 # defaultMessage: or try a different page.
 msgid "or try a different page."
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Private
+msgid "private"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Published
+msgid "published"
 msgstr ""
 
 #: components/manage/Blocks/Listing/QuerystringWidget

@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import { map } from 'lodash';
 import moment from 'moment';
 import { DragSource, DropTarget } from 'react-dnd';
-import { FormattedMessage } from 'react-intl';
+import { useIntl, defineMessages, FormattedMessage } from 'react-intl';
 import { Icon, Circle } from '@plone/volto/components';
 import moreSVG from '@plone/volto/icons/more.svg';
 import documentSVG from '@plone/volto/icons/content-existing.svg';
@@ -30,6 +30,29 @@ import moveDownSVG from '@plone/volto/icons/move-down.svg';
 import editingSVG from '@plone/volto/icons/editing.svg';
 import dragSVG from '@plone/volto/icons/drag.svg';
 
+const messages = defineMessages({
+  private: {
+    id: 'private',
+    defaultMessage: 'Private',
+  },
+  published: {
+    id: 'published',
+    defaultMessage: 'Published',
+  },
+  intranet: {
+    id: 'intranet',
+    defaultMessage: 'Intranet',
+  },
+  draft: {
+    id: 'draft',
+    defaultMessage: 'Draft',
+  },
+  no_workflow_state: {
+    id: 'no workflow state',
+    defaultMessage: 'No workflow state',
+  },
+});
+
 export function getIcon(type, isFolderish) {
   switch (type) {
     case 'Document':
@@ -46,10 +69,6 @@ export function getIcon(type, isFolderish) {
     default:
       return isFolderish ? folderSVG : fileSVG;
   }
-}
-
-function capitalise(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 function getColor(string) {
@@ -87,8 +106,10 @@ export const ContentsItemComponent = ({
   connectDropTarget,
   isDragging,
   order,
-}) =>
-  connectDropTarget(
+}) => {
+  const intl = useIntl();
+
+  return connectDropTarget(
     connectDragPreview(
       <tr key={item['@id']} style={{ opacity: isDragging ? 0 : 1 }}>
         <Table.Cell>
@@ -140,6 +161,7 @@ export const ContentsItemComponent = ({
           <Link
             className="icon-align-name"
             to={`${item['@id']}${item.is_folderish ? '/contents' : ''}`}
+            title={item['@type']}
           >
             <div className="expire-align">
               <Icon
@@ -175,9 +197,9 @@ export const ContentsItemComponent = ({
                 <span>
                   <Circle color={getColor(item[index.id])} size="15px" />
                 </span>
-                {item[index.id]
-                  ? capitalise(item[index.id])
-                  : 'No workflow state'}
+                {messages[item[index.id]]
+                  ? intl.formatMessage(messages[item[index.id]])
+                  : intl.formatMessage(messages.no_workflow_state)}
               </div>
             )}
             {index.type === 'date' && (
@@ -267,6 +289,7 @@ export const ContentsItemComponent = ({
       </tr>,
     ),
   );
+};
 
 /**
  * Property types.

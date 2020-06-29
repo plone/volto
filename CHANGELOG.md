@@ -1,13 +1,25 @@
 # Change Log
 
-## 6.3.1 (unreleased)
+## 6.4.1 (unreleased)
 
 ### Breaking
 
 ### Feature
 
 - Added Blocks Layout Editor within Dexterity Content-Types Controlpanel @avoinea #1517
+### Bugfix
+
+### Internal
+
+## 6.4.0 (2020-06-29)
+
+### Feature
+
+- Translated workflow state in contents @nzambello
+- Added item type as a tooltip in contents @nzambello
+- Added italian translations and translated array, token and select widget. @giuliaghisini
 - Added uploading image preview in FileWidget @iFlameing
+- Allow custom express middleware declared with ``settings.expressMiddleware``. See [Customizing Express](docs/source/customizing/express.md) @tiberiuichim
 
 ### Bugfix
 
@@ -29,6 +41,7 @@
 
 ### Bugfix
 
+- added export for ObjectBrowserWidget in component/index.js @giuliaghisini
 - Fixed duplicated items in SelectWidget and ArrayWidget @giuliaghisini
 - Update German translation @timo
 - Removed broken preview image in ContentsUploadModal if uploaded item is not an image. @giuliaghisini
