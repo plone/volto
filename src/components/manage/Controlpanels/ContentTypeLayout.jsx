@@ -113,7 +113,7 @@ class ContentTypeLayout extends Component {
     this.state = {
       visual: false,
       content: null,
-      readOnly: false,
+      readOnlyBehavior: null,
       error: null,
     };
 
@@ -176,12 +176,14 @@ class ContentTypeLayout extends Component {
 
         const blocksBehavior = properties[blocksFieldName]?.behavior || '';
         this.setState({
-          readOnly: !blocksBehavior.includes('generated'),
+          readOnlyBehavior: !blocksBehavior.includes('generated')
+            ? blocksBehavior
+            : '',
         });
       } else {
         this.setState({
           visual: false,
-          readOnly: false,
+          readOnlyBehavior: '',
         });
       }
 
@@ -277,7 +279,7 @@ class ContentTypeLayout extends Component {
    */
   onDisableBlocksBehavior() {
     this.props.updateControlpanel(this.props.controlpanel['@id'], {
-      'volto.blocks': false,
+      [this.state.readOnlyBehavior]: false,
     });
   }
 
@@ -345,7 +347,7 @@ class ContentTypeLayout extends Component {
       );
     }
 
-    if (this.state.readOnly) {
+    if (this.state.readOnlyBehavior) {
       return (
         <>
           <div id="page-controlpanel-layout" className="ui container">
