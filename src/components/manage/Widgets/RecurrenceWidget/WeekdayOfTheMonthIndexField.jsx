@@ -60,7 +60,7 @@ class WeekdayOfTheMonthIndexField extends Component {
   render() {
     const { intl, disabled } = this.props;
     const weekdayOfTheMonthIndexList = [
-      ...map(Object.keys(ORDINAL_NUMBERS), option => ({
+      ...map(Object.keys(ORDINAL_NUMBERS), (option) => ({
         value: parseInt(option),
         label: intl.formatMessage(messages[ORDINAL_NUMBERS[option]]),
       })),

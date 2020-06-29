@@ -44,7 +44,7 @@ class WeekdayOfTheMonthField extends Component {
     const { disabled } = this.props;
 
     const weekdayOfTheMonthList = [
-      ...map(Object.keys(Days), d => ({
+      ...map(Object.keys(Days), (d) => ({
         value: Days[d].weekday,
         label: moment.weekdays(Days[d].weekday + 1),
       })),

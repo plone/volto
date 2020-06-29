@@ -46,7 +46,7 @@ const messages = defineMessages({
   },
 });
 
-const formatDate = d => {
+const formatDate = (d) => {
   const m = moment(d);
   return m.format('dddd') + ', ' + m.format('LL');
 };
@@ -65,10 +65,10 @@ const Occurences = ({
   editOccurences,
 }) => {
   let all = [];
-  const isExcluded = date => {
+  const isExcluded = (date) => {
     var dateISO = toISOString(date);
     var excluded = false;
-    rruleSet.exdates().forEach(ex => {
+    rruleSet.exdates().forEach((ex) => {
       var exISO = toISOString(ex);
       if (exISO === dateISO) {
         excluded = true;
@@ -77,10 +77,10 @@ const Occurences = ({
     return excluded;
   };
 
-  const isAdditional = date => {
+  const isAdditional = (date) => {
     var dateISO = toISOString(date);
     var additional = false;
-    rruleSet.rdates().forEach(d => {
+    rruleSet.rdates().forEach((d) => {
       var dd = toISOString(d);
       if (dd === dateISO) {
         additional = true;
@@ -92,7 +92,7 @@ const Occurences = ({
   if (rruleSet) {
     all = rruleSet.all();
 
-    rruleSet.exdates().forEach(date => {
+    rruleSet.exdates().forEach((date) => {
       if (all.indexOf(date) < 0) {
         all.push(date);
       }

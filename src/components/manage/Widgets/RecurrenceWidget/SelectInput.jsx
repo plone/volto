@@ -27,7 +27,7 @@ const SelectInput = ({ name, disabled, options, value, onChange }) => {
     }),
   };
   const getDefaultValue = (choices, value) => {
-    const element = find(choices, o => o.value === value);
+    const element = find(choices, (o) => o.value === value);
     return element ? element : {};
   };
 
@@ -47,7 +47,7 @@ const SelectInput = ({ name, disabled, options, value, onChange }) => {
         DropdownIndicator,
         Option,
       }}
-      onChange={data => onChange(name, data.value)}
+      onChange={(data) => onChange(name, data.value)}
     />
   );
 };
