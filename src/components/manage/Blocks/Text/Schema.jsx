@@ -5,25 +5,26 @@ const Schema = {
   fieldsets: [
     {
       ...BlockSettingsSchema.fieldsets[0],
-      fields: [
-        ...BlockSettingsSchema.fieldsets[0].fields,
-        'minLength',
-        'maxLength',
-      ],
+      // fields: [
+      //   ...BlockSettingsSchema.fieldsets[0].fields,
+      //   'minLength',
+      //   'maxLength',
+      // ],
     },
   ],
   properties: {
     ...BlockSettingsSchema.properties,
-    minLength: {
-      title: 'Min length',
-      description: 'Minimum number of characters',
-      type: 'integer',
-    },
-    maxLength: {
-      title: 'Max length',
-      description: 'Maximum number of characters',
-      type: 'integer',
-    },
+    /* TODO Enable when we have block validation inplace */
+    // minLength: {
+    //   title: 'Min length',
+    //   description: 'Minimum number of characters',
+    //   type: 'integer',
+    // },
+    // maxLength: {
+    //   title: 'Max length',
+    //   description: 'Maximum number of characters',
+    //   type: 'integer',
+    // },
   },
 };
 
