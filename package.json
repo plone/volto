@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "6.0.0",
+  "version": "6.3.0",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -50,6 +50,7 @@
     "code-analysis:i18n": "yarn i18n && git diff -G'^[^\"POT]' --exit-code",
     "stylelint:patches": "patch -p0 -N node_modules/stylelint/lib/getPostcssResult.js < patches/fixstylelint.patch || true",
     "patches": "/bin/bash patches/patchit.sh > /dev/null 2>&1 ||true",
+    "deduplicate": "yarn-deduplicate yarn.lock",
     "cypress:open": "CYPRESS_API=plone cypress open",
     "cypress:open:guillotina": "CYPRESS_API=guillotina cypress open",
     "cypress:run": "CYPRESS_API=plone CYPRESS_RETRIES=2 cypress run",
@@ -159,7 +160,7 @@
   "release-it": {
     "hooks": {
       "after:bump": "node changelogupdater.js bump ${version}",
-      "after:release": "node changelogupdater.js back ${version} && git add . && git ci -am 'Back to development' && git push"
+      "after:release": "node changelogupdater.js back ${version} && git add . && git commit -am 'Back to development' && git push"
     },
     "git": {
       "changelog": "node changelogupdater.js excerpt",
@@ -358,6 +359,7 @@
     "svgo-loader": "2.2.1",
     "tlds": "1.203.1",
     "xmlrpc": "1.3.2",
+    "yarn-deduplicate": "2.0.0",
     "yarnhook": "0.4.3"
   },
   "devDependencies": {}

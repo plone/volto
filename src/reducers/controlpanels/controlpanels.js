@@ -10,6 +10,7 @@ import {
   LIST_CONTROLPANELS,
   UPDATE_CONTROLPANEL,
   SYSTEM_INFORMATION,
+  DATABASE_INFORMATION,
 } from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
@@ -41,6 +42,7 @@ const initialState = {
   controlpanel: null,
   controlpanels: [],
   systeminformation: null,
+  databaseinformation: null,
 };
 
 /**
@@ -65,6 +67,7 @@ export default function controlpanels(state = initialState, action = {}) {
     case `${GET_CONTROLPANEL}_PENDING`:
     case `${LIST_CONTROLPANELS}_PENDING`:
     case `${SYSTEM_INFORMATION}_PENDING`:
+    case `${DATABASE_INFORMATION}_PENDING`:
       return {
         ...state,
         controlpanel: null,
@@ -131,6 +134,27 @@ export default function controlpanels(state = initialState, action = {}) {
       };
     }
     case `${SYSTEM_INFORMATION}_FAIL`: {
+      return {
+        ...state,
+        [getRequestKey(action.type)]: {
+          loading: false,
+          loaded: true,
+          error: action.error,
+        },
+      };
+    }
+    case `${DATABASE_INFORMATION}_SUCCESS`: {
+      return {
+        ...state,
+        [getRequestKey(action.type)]: {
+          loading: false,
+          loaded: true,
+          error: null,
+        },
+        databaseinformation: action.result,
+      };
+    }
+    case `${DATABASE_INFORMATION}_FAIL`: {
       return {
         ...state,
         [getRequestKey(action.type)]: {

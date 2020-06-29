@@ -1,6 +1,6 @@
 # Change Log
 
-## 6.0.1 (unreleased)
+## 6.3.1 (unreleased)
 
 ### Breaking
 
@@ -9,12 +9,68 @@
 - Added recurrence widget @giuliaghisini
 - Support loading additional reducers from the ``config.addonReducers`` key,
   to allow addons to provide their own reducers @tiberiuichim
+- Added uploading image preview in FileWidget @iFlameing
 
 ### Bugfix
 
-- Do not store the server information of the image block in the block @sneridagh
+- Fix the toolbar dropdown to add content types if isMultilingual is enabled
+  but a type is not marked as translatable. @csenger
+- Usage of Contettype label in Add component. @giuliaghisini
 
 ### Internal
+
+- Update upgrade-guide to for `addonRoutes` and `addonReducers` @jackahl
+
+## 6.3.0 (2020-06-22)
+
+### Feature
+
+- Added Italian translations and translated array, token and select widget. @giuliaghisini
+- Added internationalization for French language @bsuttor #1588
+- Added selectableTypes in ObjectBrowserWidget @giuliaghisini
+
+### Bugfix
+
+- Fixed duplicated items in SelectWidget and ArrayWidget @giuliaghisini
+- Update German translation @timo
+- Removed broken preview image in ContentsUploadModal if uploaded item is not an image. @giuliaghisini
+- Localized content upload modal last modified date @nzambello
+- Fix overflow in folder contents with long titles @nzambello
+- Fixed object browser widget when a selected items is deleted. Plone.restapi returns a null object. @giuliaghisini
+- Fixed error on adding new item if parent item is not translated when multilingual is set @giuliaghisini
+- Added translations for select in querystring widget @nzambello
+
+## 6.2.0 (2020-06-14)
+
+### Feature
+
+- Added database information component in ControlPanels @iFlameing
+
+### Internal
+
+- Add yarn-deduplicate. @timo
+
+## 6.1.0 (2020-06-12)
+
+### Feature
+
+- Include `config.addonRoutes` in router configuration. This allows addons to
+  override route children defined for the `App` component.
+- Added param 'wrapped' for widgets, to use widgets without form wrappers. @giuliaghisini
+- Added internationalization for Romanian language @alecghica #1521
+- Support loading additional reducers from the `config.addonReducers` key,
+  to allow addons to provide their own reducers @tiberiuichim
+- Add a no brainer image sizing option, using scales. This will be vastly improved when
+  we adopt srcsets. @sneridagh
+
+### Bugfix
+
+- Removed a regex check in default view, we already have that check implemented in `toHTML.jsx` L173s @nileshgulia1
+- UX and UI improvements to `DateTimeWidget` @sneridagh
+- Fix an UTC handling for edge cases in `DateTimeWidget` @sneridagh
+- Do not store the server information of the image block in the block @sneridagh
+- expose `blocks` and `blocks_layout` only editing content types @nileshgulia1
+- Small fix for `TextAreaWidget` and max_lenght @sneridagh
 
 ## 6.0.0 (2020-05-18)
 

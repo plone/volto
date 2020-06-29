@@ -36,7 +36,7 @@ msgstr "Azioni"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Activate and deactivate"
-msgstr ""
+msgstr "Attiva e disattiva"
 
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
@@ -47,15 +47,15 @@ msgstr "Aggiungi"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Add Addons"
-msgstr ""
+msgstr "Aggiungi Add-ons"
 
 #: components/manage/Toolbar/Types
 msgid "Add Content"
 msgstr "Aggiungi un contenuto"
 
 #: components/manage/Toolbar/Types
-msgid "Add Translation..."
-msgstr "Aggiungi traduzione..."
+msgid "Add Translation…"
+msgstr "Aggiungi traduzione…"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add User"
@@ -66,8 +66,8 @@ msgid "Add a description…"
 msgstr "Aggiungi una descrizione…"
 
 #: components/manage/Form/Form
-msgid "Add block..."
-msgstr "Aggiungi un blocco..."
+msgid "Add block…"
+msgstr "Aggiungi un blocco…"
 
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "Add criteria"
@@ -91,7 +91,7 @@ msgstr "Aggiungi un gruppo"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Add new content type"
-msgstr ""
+msgstr "Aggiungi un nuovo tipo di contenuto"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add new group"
@@ -111,7 +111,7 @@ msgstr "Aggiungi {type}"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Add-ons Settings"
-msgstr ""
+msgstr "Impostazioni Add-ons"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Additional date"
@@ -147,7 +147,7 @@ msgstr "Crescente"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Available"
-msgstr ""
+msgstr "Disponibile"
 
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -155,6 +155,7 @@ msgstr ""
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/DatabaseInformation
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Diff/Diff
@@ -200,6 +201,10 @@ msgstr "Sfoglia i contenuti, rilascia un'immagine o digita un URL"
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr "Di norma, i permessi di questo elemento vengono ereditati dal contenitore. Se disabiliti questa opzione, verranno considerati solo i permessi di condivisione definiti esplicitamente. Nel sommario, il simbolo {inherited} indica una impostazione ereditata. Analogamente, il simbolo {global} indica un ruolo globale, che è gestito dall'amministratore del sito"
 
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Cache Name"
+msgstr "Nome della cache"
+
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsToolbar
 #: components/manage/Contents/ContentsUploadModal
@@ -219,6 +224,7 @@ msgstr "Annulla"
 msgid "Cell"
 msgstr "Cella"
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Center"
@@ -304,7 +310,7 @@ msgstr "Conferma password"
 
 #: components/theme/ConnectionRefused/ConnectionRefused
 msgid "Connection refused"
-msgstr ""
+msgstr "Connesione rifiutata"
 
 #: components/theme/Footer/Footer
 msgid "Contact"
@@ -324,11 +330,11 @@ msgstr "Contenuto"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
-msgstr ""
+msgstr "Il tipo di contenuto è stato creato"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type deleted"
-msgstr ""
+msgstr "Il tipo di contenuto è stato eliminato"
 
 #: components/manage/Contents/Contents
 #: components/manage/Toolbar/Toolbar
@@ -379,7 +385,24 @@ msgstr "Taglia"
 msgid "Daily"
 msgstr "Giornaliera"
 
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Database Information"
+msgstr "Informazioni sul database"
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Database Location"
+msgstr "Posizione del database"
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Database Size"
+msgstr "Dimensione del database"
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Database main"
+msgstr "Database principale"
+
 #: components/manage/Controlpanels/ModerateComments
+#: components/manage/Widgets/DatetimeWidget
 msgid "Date"
 msgstr "Data"
 
@@ -427,7 +450,7 @@ msgstr "Elimina gruppo"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Delete Type"
-msgstr ""
+msgstr "Rimuovi tipo di contenuto"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Delete User"
@@ -485,7 +508,7 @@ msgstr "Vuoi veramente eliminare il gruppo {groupname}?"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Do you really want to delete the type {typename}?"
-msgstr ""
+msgstr "Vuoi veramente eliminare il tipo di contenuto {typename}?"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Do you really want to delete the user {username}?"
@@ -539,7 +562,7 @@ msgstr "Modifica le regole"
 
 #: components/manage/Form/InlineForm
 msgid "Edit values"
-msgstr ""
+msgstr "Modifica i valori"
 
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
@@ -632,7 +655,7 @@ msgstr "Data di scadenza"
 
 #: components/manage/Contents/ContentsItem
 msgid "Expired"
-msgstr ""
+msgstr "Scaduto"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -805,15 +828,15 @@ msgstr "Inserisci riga sopra"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Install"
-msgstr ""
+msgstr "Installa"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Installed"
-msgstr ""
+msgstr "Installato"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Installed version"
-msgstr ""
+msgstr "Versione installata"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Interval Daily"
@@ -850,7 +873,7 @@ msgstr "Elemento/i incollato/i."
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Items"
-msgstr ""
+msgstr "Elementi"
 
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
@@ -875,12 +898,13 @@ msgstr "Ultima modifica"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Latest version"
-msgstr ""
+msgstr "Ultima versione"
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Lead Image"
 msgstr "Immagine di testata"
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Left"
@@ -1033,7 +1057,7 @@ msgstr "Nessun elemento trovato in questo contenitore."
 
 #: components/manage/Widgets/ObjectBrowserWidget
 msgid "No items selected"
-msgstr ""
+msgstr "Nessun elemento selezionato"
 
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "No map selected"
@@ -1042,6 +1066,12 @@ msgstr "Nessuna mappa selezionata"
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "No occurences set"
 msgstr ""
+
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
+msgid "No options"
+msgstr "Nessuna opzione"
 
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
@@ -1054,7 +1084,7 @@ msgstr "Nessun elemento selezionato"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "No uninstall profile"
-msgstr ""
+msgstr "Nessun profilo di disinstallazione"
 
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
@@ -1074,6 +1104,10 @@ msgstr "Nessun flusso"
 #: components/manage/Contents/ContentsItem
 msgid "None"
 msgstr "Nessuno"
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Number of active objects"
+msgstr "Numero degli oggetti attivi"
 
 #: components/manage/Contents/Contents
 msgid "Object Size"
@@ -1306,6 +1340,7 @@ msgstr "Data di revisione"
 msgid "Richtext"
 msgstr "Testo formattato"
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Right"
@@ -1351,8 +1386,8 @@ msgid "Search for user or group"
 msgstr "Ricerca per nome utente o gruppo"
 
 #: components/manage/Controlpanels/UsersControlpanel
-msgid "Search group..."
-msgstr "Cerca un gruppo..."
+msgid "Search group…"
+msgstr "Cerca gruppo…"
 
 #: components/theme/Search/Search
 msgid "Search results"
@@ -1363,8 +1398,8 @@ msgid "Search results for {term}"
 msgstr "Risultati per {term}"
 
 #: components/manage/Controlpanels/UsersControlpanel
-msgid "Search users..."
-msgstr "Cerca utenti..."
+msgid "Search users…"
+msgstr "Cerca utenti…"
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Second"
@@ -1392,7 +1427,7 @@ msgstr "Date selezionate"
 
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Selected items"
-msgstr ""
+msgstr "Elementi selezionati"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Selection"
@@ -1400,6 +1435,8 @@ msgstr "Selezione"
 
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
 msgid "Select…"
 msgstr "Seleziona…"
 
@@ -1475,6 +1512,10 @@ msgstr "Configurazione del sito"
 #: components/theme/Sitemap/Sitemap
 msgid "Sitemap"
 msgstr "Mappa del sito"
+
+#: components/manage/Blocks/Image/ImageSidebar
+msgid "Size"
+msgstr "Dimensione"
 
 #: components/theme/View/ImageView
 msgid "Size: {size}"
@@ -1567,6 +1608,14 @@ msgstr "Categorie da aggiungere"
 msgid "Tags to remove"
 msgstr "Categorie da rimuovere"
 
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Target memory size per cache in bytes"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Target number of objects in memory per cache"
+msgstr ""
+
 #: components/manage/Blocks/Listing/TemplateWidget
 msgid "Template"
 msgstr "Template"
@@ -1582,17 +1631,21 @@ msgstr "Testo"
 msgid "Thank you."
 msgstr "Grazie."
 
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "The Database Manager allow you to view database status information"
+msgstr "Il Database Manager ti permette di vedere le informazioni di stato del database"
+
 #: components/manage/Preferences/PersonalInformation
 msgid "The URL for your external home page, if you have one."
 msgstr "L'indirizzo della tua pagina personale esterna, se ne hai una."
 
 #: components/theme/ConnectionRefused/ConnectionRefused
 msgid "The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable."
-msgstr ""
+msgstr "Il backend non sta rispondendo, verifica di avere avviato Plone, controlla la configurazione di apiPath nel tuo progetto (o se stai usando un proxy interno, devProxyToApiPath) oppure la variabile RAZZLE_API_PATH nell'ambiente di Volto."
 
 #: components/theme/CorsError/CorsError
 msgid "The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources."
-msgstr ""
+msgstr "Il backend sta rispondendo, ma i CORS headers non sono adeguatamente configurati e il browser ha negato l'accesso alle risorse del backend."
 
 #: components/theme/Register/Register
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
@@ -1608,16 +1661,16 @@ msgstr "{plonecms} è {copyright} 2000-{current_year} della {plonefoundation} ed
 
 #: components/theme/CorsError/CorsError
 msgid "There is a configuration problem on the backend"
-msgstr ""
+msgstr "C'è un problema di configurazione sul backend"
 
 #: components/manage/Form/InlineForm
 msgid "There were some errors"
-msgstr ""
+msgstr "Si sono verificati degli errori"
 
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 msgid "There were some errors."
-msgstr "Ci sono stati degli errori."
+msgstr "Si sono verificati degli errori."
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Third"
@@ -1630,6 +1683,10 @@ msgstr "Questo nome verrà mostrato nell'URL."
 #: components/theme/NotFound/NotFound
 msgid "This page does not seem to exist…"
 msgstr "Questa pagina non esiste…"
+
+#: components/manage/Widgets/DatetimeWidget
+msgid "Time"
+msgstr "Ora"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/Contents
@@ -1647,9 +1704,25 @@ msgstr "Questa pagina non esiste…"
 msgid "Title"
 msgstr "Titolo"
 
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Total active and non-active objects"
+msgstr "Totale degli oggetti attivi e non attivi"
+
 #: components/manage/Contents/Contents
 msgid "Total comments"
 msgstr "Totale dei commenti"
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Total number of objects in each cache"
+msgstr "Numero totale degli oggetti in ogni cache"
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Total number of objects in memory from all caches"
+msgstr "Numero totale degli oggetti di tutte le cache"
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Total number of objects in the database"
+msgstr "Numero totale di oggetti nel database"
 
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
@@ -1687,7 +1760,7 @@ msgstr "Unificato"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Uninstall"
-msgstr ""
+msgstr "Disinstalla"
 
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
@@ -1696,19 +1769,19 @@ msgstr "Blocco sconosciuto"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update"
-msgstr ""
+msgstr "Aggiorna"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update installed addons"
-msgstr ""
+msgstr "Aggiorna gli addons installati"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update installed addons:"
-msgstr ""
+msgstr "Aggiorna gli addons installati:"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Updates available"
-msgstr ""
+msgstr "Aggiornamenti disponibili"
 
 #: components/manage/Contents/Contents
 msgid "Upload"
@@ -1799,15 +1872,15 @@ msgstr "Vista"
 
 #: components/manage/Controlpanels/VersionOverview
 msgid "Warning Regarding debug mode"
-msgstr ""
+msgstr "Avviso relativo alla modalità di debug"
 
 #: components/theme/ConnectionRefused/ConnectionRefused
 msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later."
-msgstr ""
+msgstr "Ci scusiamo per l'inconveniente, ma il backend del sito a cui stai cercando di accedere non è disponibile al momento. Ti preghiamo di riprovare più tardi."
 
 #: components/theme/CorsError/CorsError
 msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not configured properly right now. Please, try again later."
-msgstr ""
+msgstr "Ci scusiamo per l'inconveniente, ma il backend del sito a cui stai cercando di acceder non è configurato correttamente al momento. Ti preghiamo di riprovare più tardi."
 
 #: components/theme/NotFound/NotFound
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
@@ -2018,6 +2091,10 @@ msgstr "oppure prova una pagina diversa."
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "others"
 msgstr ""
+
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "querystring-widget-select"
+msgstr "Seleziona…"
 
 #: components/theme/Login/Login
 msgid "registration form"
