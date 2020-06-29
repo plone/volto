@@ -9,9 +9,17 @@
 - Translated workflow state in contents @nzambello
 - Added item type as a tooltip in contents @nzambello
 - Added italian translations and translated array, token and select widget. @giuliaghisini
+- Added uploading image preview in FileWidget @iFlameing
+
 ### Bugfix
 
+- Fix the toolbar dropdown to add content types if isMultilingual is enabled
+  but a type is not marked as translatable. @csenger
+- Usage of Contettype label in Add component. @giuliaghisini
+
 ### Internal
+
+- Update upgrade-guide to for `addonRoutes` and `addonReducers` @jackahl
 
 ## 6.3.0 (2020-06-22)
 

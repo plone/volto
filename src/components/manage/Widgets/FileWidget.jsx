@@ -5,7 +5,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Input, Button } from 'semantic-ui-react';
+import { Input, Button, Image } from 'semantic-ui-react';
 import { readAsDataURL } from 'promise-file-reader';
 
 import deleteSVG from '@plone/volto/icons/delete.svg';
@@ -39,6 +39,7 @@ const FileWidget = ({
       wrapped={wrapped}
       fieldSet={fieldSet}
     >
+      <Image className="image-preview" id="image-preview" size="small" />
       <Input
         id={`field-${id}`}
         name={id}
@@ -55,6 +56,13 @@ const FileWidget = ({
               filename: file.name,
             });
           });
+
+          let reader = new FileReader();
+          reader.onload = function () {
+            let imagePreview = document.getElementById('image-preview');
+            imagePreview.src = reader.result;
+          };
+          reader.readAsDataURL(target.files[0]);
         }}
       />
       <div className="field-file-name">
