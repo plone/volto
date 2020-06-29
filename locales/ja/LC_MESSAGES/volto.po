@@ -61,8 +61,8 @@ msgid "Add Content"
 msgstr "新規追加"
 
 #: components/manage/Toolbar/Types
-msgid "Add Translation..."
-msgstr "翻訳コンテンツを追加..."
+msgid "Add Translation…"
+msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add User"
@@ -70,11 +70,11 @@ msgstr "ユーザを追加"
 
 #: components/manage/Blocks/Description/Edit
 msgid "Add a description…"
-msgstr "説明を追加..."
+msgstr "説明を追加…"
 
 #: components/manage/Form/Form
-msgid "Add block..."
-msgstr "ブロックを追加..."
+msgid "Add block…"
+msgstr "ブロックを追加…"
 
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "Add criteria"
@@ -663,7 +663,7 @@ msgstr "ファイル名"
 
 #: components/manage/Contents/Contents
 msgid "Filter…"
-msgstr "フィルター..."
+msgstr "フィルター…"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Fixed width table cells"
@@ -1006,6 +1006,12 @@ msgstr ""
 msgid "No map selected"
 msgstr "マップが選択されていません"
 
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
+msgid "No options"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
@@ -1283,8 +1289,8 @@ msgid "Search for user or group"
 msgstr "検索"
 
 #: components/manage/Controlpanels/UsersControlpanel
-msgid "Search group..."
-msgstr "検索"
+msgid "Search group…"
+msgstr ""
 
 #: components/theme/Search/Search
 msgid "Search results"
@@ -1295,8 +1301,8 @@ msgid "Search results for {term}"
 msgstr "検索"
 
 #: components/manage/Controlpanels/UsersControlpanel
-msgid "Search users..."
-msgstr "検索"
+msgid "Search users…"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Select columns to show"
@@ -1320,6 +1326,8 @@ msgstr "Selection (未翻訳)"
 
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
 msgid "Select…"
 msgstr "選択…"
 
@@ -1862,6 +1870,10 @@ msgstr "安全上の理由で、パスワードは暗号化されて保管され
 msgid "description_sent_password"
 msgstr "パスワード再設定のお願いをメール送信しました。まもなくあなたのメールボックスに届くはずです。メッセージを受け取ったら、その中にあるパスワード再設定用のURLにアクセスしてください。"
 
+#: components/manage/Contents/ContentsItem
+msgid "draft"
+msgstr ""
+
 #: components/theme/View/EventView
 msgid "event_alldates"
 msgstr ""
@@ -1910,6 +1922,10 @@ msgstr "HTML"
 msgid "image"
 msgstr "画像"
 
+#: components/manage/Contents/ContentsItem
+msgid "intranet"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "label_my_email_address_is"
 msgstr "私のメールアドレスは"
@@ -1938,9 +1954,25 @@ msgstr "メディア"
 msgid "mostUsed"
 msgstr "よく使う物"
 
+#: components/manage/Contents/ContentsItem
+msgid "no workflow state"
+msgstr ""
+
 #: error
 msgid "or try a different page."
 msgstr "または、他のページを試してください。"
+
+#: components/manage/Contents/ContentsItem
+msgid "private"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+msgid "published"
+msgstr ""
+
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "querystring-widget-select"
+msgstr ""
 
 #: components/theme/Login/Login
 msgid "registration form"

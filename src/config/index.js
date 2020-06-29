@@ -69,6 +69,7 @@ export const settings = {
   defaultLanguage: 'en',
   navDepth: 1,
   timezone: 'UTC',
+  expressMiddleware: [],
 };
 
 export const addonRoutes = [];
