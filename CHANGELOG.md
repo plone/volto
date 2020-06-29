@@ -31,6 +31,7 @@
 
 ### Bugfix
 
+- added export for ObjectBrowserWidget in component/index.js @giuliaghisini
 - Fixed duplicated items in SelectWidget and ArrayWidget @giuliaghisini
 - Update German translation @timo
 - Removed broken preview image in ContentsUploadModal if uploaded item is not an image. @giuliaghisini
