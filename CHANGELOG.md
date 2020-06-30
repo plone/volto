@@ -2,10 +2,6 @@
 
 ## 6.4.1 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Fixing bug for Image Preview on upload @iFlameing
