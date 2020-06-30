@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Allow JSON API calls to made to third-party servers @tiberiuichim
+
 ### Bugfix
 
 ### Internal
