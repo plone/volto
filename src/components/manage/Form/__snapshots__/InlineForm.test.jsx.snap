@@ -15,7 +15,7 @@ exports[`Form renders a form component 1`] = `
     id="blockform-fieldset-default"
   >
     <div
-      className="ui segment form sidebar-image-data"
+      className="ui segment form"
     >
       <div
         className="Field"

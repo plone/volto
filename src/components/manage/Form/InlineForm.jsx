@@ -60,7 +60,7 @@ const InlineForm = ({
       )}
 
       <div id={`blockform-fieldset-${defaultFieldset.id}`}>
-        <Segment className="form sidebar-image-data">
+        <Segment className="form">
           {map(defaultFieldset.fields, (field, index) => (
             <Field
               {...schema.properties[field]}
@@ -83,7 +83,7 @@ const InlineForm = ({
       {other.map((fieldset) => (
         <div key={fieldset.id} id={`blockform-fieldset-${fieldset.id}`}>
           {title && <Segment className="secondary">{fieldset.title}</Segment>}
-          <Segment className="form sidebar-image-data">
+          <Segment className="form">
             {map(fieldset.fields, (field) => (
               <Field
                 {...schema.properties[field]}
