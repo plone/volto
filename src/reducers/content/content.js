@@ -3,7 +3,7 @@
  * @module reducers/content/content
  */
 
-import { omit, map, mapKeys } from 'lodash';
+import { map, mapKeys, omit } from 'lodash';
 
 import { settings } from '~/config';
 
@@ -14,6 +14,7 @@ import {
   ORDER_CONTENT,
   RESET_CONTENT,
   UPDATE_CONTENT,
+  INDEX_CONTENT,
 } from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
@@ -42,6 +43,11 @@ const initialState = {
     loading: false,
     error: null,
   },
+  index: {
+    loaded: false,
+    loading: false,
+    error: null,
+  },
   data: null,
   subrequests: {},
 };
@@ -66,6 +72,16 @@ function getRequestKey(actionType) {
 export default function content(state = initialState, action = {}) {
   let { result } = action;
   switch (action.type) {
+    case `${INDEX_CONTENT}`:
+      return {
+        ...state,
+        [getRequestKey(action.type)]: {
+          loading: false,
+          loaded: true,
+          error: null,
+          idx: action.indexcolumns,
+        },
+      };
     case `${CREATE_CONTENT}_PENDING`:
     case `${DELETE_CONTENT}_PENDING`:
     case `${UPDATE_CONTENT}_PENDING`:
@@ -144,9 +160,22 @@ export default function content(state = initialState, action = {}) {
               error: null,
             },
           };
-    case `${UPDATE_CONTENT}_SUCCESS`:
     case `${DELETE_CONTENT}_SUCCESS`:
     case `${ORDER_CONTENT}_SUCCESS`:
+      return {
+        ...state,
+        [getRequestKey(action.type)]: {
+          loading: false,
+          loaded: true,
+          error: null,
+          sort: {
+            on: action.sort?.on,
+            order: action.sort?.order,
+          },
+          index: action.index,
+        },
+      };
+    case `${UPDATE_CONTENT}_SUCCESS`:
       return {
         ...state,
         [getRequestKey(action.type)]: {

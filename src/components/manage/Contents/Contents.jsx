@@ -48,9 +48,10 @@ import {
   moveContent,
   orderContent,
   sortContent,
+  indexContent,
 } from '@plone/volto/actions';
 import { getBaseUrl } from '@plone/volto/helpers';
-import Indexes from '@plone/volto/constants/Indexes';
+import Indexes, { defaultIndexes } from '@plone/volto/constants/Indexes';
 import {
   ContentsIndexHeader,
   ContentsItem,
@@ -86,7 +87,6 @@ import sortDownSVG from '@plone/volto/icons/sort-down.svg';
 import sortUpSVG from '@plone/volto/icons/sort-up.svg';
 import downKeySVG from '@plone/volto/icons/down-key.svg';
 import moreSVG from '@plone/volto/icons/more.svg';
-const defaultIndexes = ['review_state', 'ModificationDate', 'EffectiveDate'];
 
 const messages = defineMessages({
   back: {
@@ -261,6 +261,7 @@ class Contents extends Component {
     moveContent: PropTypes.func.isRequired,
     orderContent: PropTypes.func.isRequired,
     sortContent: PropTypes.func.isRequired,
+    indexContent: PropTypes.func.isRequired,
     clipboardRequest: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
@@ -304,6 +305,14 @@ class Contents extends Component {
     items: [],
     action: null,
     source: null,
+    index: {
+      order: keys(Indexes),
+      values: mapValues(Indexes, (value, key) => ({
+        ...value,
+        selected: indexOf(defaultIndexes, key) !== -1,
+      })),
+      selectedCount: defaultIndexes.length + 1,
+    },
   };
 
   /**
@@ -363,7 +372,7 @@ class Contents extends Component {
       filter: '',
       currentPage: 0,
       pageSize: 15,
-      index: {
+      index: this.props.index || {
         order: keys(Indexes),
         values: mapValues(Indexes, (value, key) => ({
           ...value,
@@ -477,19 +486,21 @@ class Contents extends Component {
    * @returns {undefined}
    */
   onSelectIndex(event, { value }) {
+    let newIndex = {
+      ...this.state.index,
+      selectedCount:
+        this.state.index.selectedCount +
+        (this.state.index.values[value].selected ? -1 : 1),
+      values: mapValues(this.state.index.values, (indexValue, indexKey) => ({
+        ...indexValue,
+        selected:
+          indexKey === value ? !indexValue.selected : indexValue.selected,
+      })),
+    };
     this.setState({
-      index: {
-        ...this.state.index,
-        selectedCount:
-          this.state.index.selectedCount +
-          (this.state.index.values[value].selected ? -1 : 1),
-        values: mapValues(this.state.index.values, (indexValue, indexKey) => ({
-          ...indexValue,
-          selected:
-            indexKey === value ? !indexValue.selected : indexValue.selected,
-        })),
-      },
+      index: newIndex,
     });
+    this.props.indexContent(getBaseUrl(this.props.pathname), newIndex);
   }
 
   /**
@@ -561,6 +572,7 @@ class Contents extends Component {
         order: move(this.state.index.order, index, index + delta),
       },
     });
+    this.props.indexContent(getBaseUrl(this.props.pathname), this.state.index);
   }
 
   /**
@@ -1287,7 +1299,7 @@ class Contents extends Component {
                         icon={
                           <Icon name={moreSVG} size="24px" color="#826a6a" />
                         }
-                        className="right floating"
+                        className="right floating selectIndex"
                       >
                         <Dropdown.Menu className="left">
                           <Dropdown.Header
@@ -1617,6 +1629,7 @@ export const __test__ = compose(
         token: state.userSession.token,
         items: state.search.items,
         sort: state.content.update.sort,
+        index: state.content.index.idx,
         breadcrumbs: state.breadcrumbs.items,
         total: state.search.total,
         searchRequest: {
@@ -1642,6 +1655,7 @@ export const __test__ = compose(
       moveContent,
       orderContent,
       sortContent,
+      indexContent,
     },
   ),
 )(Contents);
@@ -1655,6 +1669,7 @@ export default compose(
         token: state.userSession.token,
         items: state.search.items,
         sort: state.content.update.sort,
+        index: state.content.index.idx,
         breadcrumbs: state.breadcrumbs.items,
         total: state.search.total,
         searchRequest: {
@@ -1680,6 +1695,7 @@ export default compose(
       moveContent,
       orderContent,
       sortContent,
+      indexContent,
     },
   ),
   asyncConnect([
