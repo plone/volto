@@ -499,8 +499,15 @@ class RecurrenceWidget extends Component {
     var currWeekday = this.getWeekday(moment().day() - 1);
     var currMonth = moment().month() + 1;
 
+    var startMonth = this.props.formData.start
+      ? moment(this.props.formData.start).month() + 1
+      : currMonth;
     var startWeekday = this.getWeekday(moment(formValues.dtstart).day() - 1);
     formValues[field] = value;
+
+    const defaultMonthDay = this.props.formData?.start
+      ? moment(this.props.formData.start).date()
+      : moment().date();
 
     switch (field) {
       case 'freq':
@@ -600,10 +607,7 @@ class RecurrenceWidget extends Component {
 
       case 'monthly':
         if (value === 'bymonthday') {
-          const day = this.props.formData?.start
-            ? moment(this.props.formData.start).date()
-            : moment().date();
-          formValues.bymonthday = [day]; //default value
+          formValues.bymonthday = [defaultMonthDay]; //default value
           formValues = this.changeField(formValues, 'byweekday', null); //default value
         }
         if (value === 'byweekday') {
@@ -620,27 +624,24 @@ class RecurrenceWidget extends Component {
       case 'yearly':
         if (value === 'bymonthday') {
           //sets bymonth and bymonthday in rruleset
-          const day = this.props.formData?.start
-            ? moment(this.props.formData.start).date()
-            : moment().date();
-          formValues.bymonthday = [day]; //default value
+          formValues.bymonthday = [defaultMonthDay]; //default value
 
           formValues = this.changeField(
             formValues,
             'monthOfTheYear',
-            currMonth,
+            startMonth,
           ); //default value: current month
           formValues = this.changeField(formValues, 'byweekday', null); //default value
         }
         if (value === 'byday') {
           formValues = this.changeField(formValues, 'bymonthday', null); //default value
           formValues = this.changeField(formValues, 'byweekday', [
-            currWeekday.nth(1),
+            startWeekday.nth(1) || currWeekday.nth(1),
           ]); //default value
           formValues = this.changeField(
             formValues,
             'monthOfTheYear',
-            currMonth,
+            startMonth,
           ); //default value
         }
         break;
