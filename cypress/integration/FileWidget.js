@@ -19,7 +19,7 @@ if (Cypress.env('API') !== 'guillotina') {
         );
       });
 
-      cy.get('#image-preview').should('have.attr', 'src');
+      cy.get('#field-image-image').should('have.attr', 'src');
     });
   });
 }
