@@ -153,7 +153,7 @@ exports[`PersonalInformation renders a personal information component 1`] = `
               >
                 <img
                   className="ui small image image-preview"
-                  id="image-preview"
+                  id="field-portrait-image"
                 />
                 <div
                   className="ui input"
@@ -509,7 +509,7 @@ exports[`PersonalInformation renders a personal information component embedded i
               >
                 <img
                   className="ui small image image-preview"
-                  id="image-preview"
+                  id="field-portrait-image"
                 />
                 <div
                   className="ui input"
