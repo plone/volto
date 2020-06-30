@@ -82,10 +82,6 @@ describe('Contents', () => {
           loading: false,
           loaded: false,
         },
-        index: {
-          loading: false,
-          loaded: false,
-        },
       },
       intl: {
         locale: 'en',

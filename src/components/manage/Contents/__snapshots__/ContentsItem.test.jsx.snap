@@ -9,7 +9,7 @@ exports[`ContentsItem renders a contents item component 1`] = `
   }
 >
   <td
-    className="zui-sticky-col"
+    className=""
   >
     <div
       style={
@@ -44,7 +44,7 @@ exports[`ContentsItem renders a contents item component 1`] = `
     </div>
   </td>
   <td
-    className="zui-sticky-col"
+    className=""
   >
     <button
       aria-label="Checked"
@@ -72,7 +72,7 @@ exports[`ContentsItem renders a contents item component 1`] = `
     </button>
   </td>
   <td
-    className="zui-sticky-col"
+    className=""
   >
     <a
       className="icon-align-name"
@@ -80,8 +80,7 @@ exports[`ContentsItem renders a contents item component 1`] = `
       onClick={[Function]}
     >
       <div
-        class="title"
-        title="Document 'Blog'"
+        className="expire-align"
       >
         <svg
           className="icon icon-margin"
@@ -101,9 +100,11 @@ exports[`ContentsItem renders a contents item component 1`] = `
           viewBox=""
           xmlns=""
         />
-        <div>
+         
+        <span>
+           
           Blog
-        </div>
+        </span>
       </div>
     </a>
   </td>
@@ -113,7 +114,7 @@ exports[`ContentsItem renders a contents item component 1`] = `
     Blog
   </td>
   <td
-    className="right aligned zui-sticky-col-right"
+    className="right aligned"
   >
     <div
       aria-expanded={false}

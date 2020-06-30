@@ -48,10 +48,9 @@ import {
   moveContent,
   orderContent,
   sortContent,
-  indexContent,
 } from '@plone/volto/actions';
 import { getBaseUrl } from '@plone/volto/helpers';
-import Indexes, { defaultIndexes } from '@plone/volto/constants/Indexes';
+import Indexes from '@plone/volto/constants/Indexes';
 import {
   ContentsIndexHeader,
   ContentsItem,
@@ -87,6 +86,7 @@ import sortDownSVG from '@plone/volto/icons/sort-down.svg';
 import sortUpSVG from '@plone/volto/icons/sort-up.svg';
 import downKeySVG from '@plone/volto/icons/down-key.svg';
 import moreSVG from '@plone/volto/icons/more.svg';
+const defaultIndexes = ['review_state', 'ModificationDate', 'EffectiveDate'];
 
 const messages = defineMessages({
   back: {
@@ -261,7 +261,6 @@ class Contents extends Component {
     moveContent: PropTypes.func.isRequired,
     orderContent: PropTypes.func.isRequired,
     sortContent: PropTypes.func.isRequired,
-    indexContent: PropTypes.func.isRequired,
     clipboardRequest: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
@@ -305,14 +304,6 @@ class Contents extends Component {
     items: [],
     action: null,
     source: null,
-    index: {
-      order: keys(Indexes),
-      values: mapValues(Indexes, (value, key) => ({
-        ...value,
-        selected: indexOf(defaultIndexes, key) !== -1,
-      })),
-      selectedCount: defaultIndexes.length + 1,
-    },
   };
 
   /**
@@ -372,7 +363,7 @@ class Contents extends Component {
       filter: '',
       currentPage: 0,
       pageSize: 15,
-      index: this.props.index || {
+      index: {
         order: keys(Indexes),
         values: mapValues(Indexes, (value, key) => ({
           ...value,
@@ -486,21 +477,19 @@ class Contents extends Component {
    * @returns {undefined}
    */
   onSelectIndex(event, { value }) {
-    let newIndex = {
-      ...this.state.index,
-      selectedCount:
-        this.state.index.selectedCount +
-        (this.state.index.values[value].selected ? -1 : 1),
-      values: mapValues(this.state.index.values, (indexValue, indexKey) => ({
-        ...indexValue,
-        selected:
-          indexKey === value ? !indexValue.selected : indexValue.selected,
-      })),
-    };
     this.setState({
-      index: newIndex,
+      index: {
+        ...this.state.index,
+        selectedCount:
+          this.state.index.selectedCount +
+          (this.state.index.values[value].selected ? -1 : 1),
+        values: mapValues(this.state.index.values, (indexValue, indexKey) => ({
+          ...indexValue,
+          selected:
+            indexKey === value ? !indexValue.selected : indexValue.selected,
+        })),
+      },
     });
-    this.props.indexContent(getBaseUrl(this.props.pathname), newIndex);
   }
 
   /**
@@ -572,7 +561,6 @@ class Contents extends Component {
         order: move(this.state.index.order, index, index + delta),
       },
     });
-    this.props.indexContent(getBaseUrl(this.props.pathname), this.state.index);
   }
 
   /**
@@ -968,9 +956,6 @@ class Contents extends Component {
     const folderContentsAction = find(this.props.objectActions, {
       id: 'folderContents',
     });
-    // 12 - 1 - 1 - 3 - 1 = 6 (12 cols minus sticky cols)
-    // const cellWidth = Math.ceil(6 / (this.state.index.selectedCount - 1));
-    const cellWidth = 4; // scrolling, not packing all cols in available space
 
     return this.props.token && this.props.objectActions.length > 0 ? (
       <>
@@ -1302,7 +1287,7 @@ class Contents extends Component {
                         icon={
                           <Icon name={moreSVG} size="24px" color="#826a6a" />
                         }
-                        className="right floating selectIndex"
+                        className="right floating"
                       >
                         <Dropdown.Menu className="left">
                           <Dropdown.Header
@@ -1357,240 +1342,227 @@ class Contents extends Component {
                         </Dropdown.Menu>
                       </Dropdown>
                     </Segment>
-                    <div className="zui-wrapper">
-                      <div className="zui-scroller">
-                        <Table
-                          selectable
-                          compact
-                          singleLine
-                          attached
-                          className="zui-table"
-                        >
-                          <Table.Header>
-                            <Table.Row>
-                              <Table.HeaderCell className="zui-sticky-col">
-                                <Dropdown
-                                  trigger={
-                                    <Icon
-                                      name={configurationSVG}
-                                      size="24px"
-                                      color="#826a6a"
-                                      className="configuration-svg"
-                                    />
-                                  }
-                                  className="sort-icon"
-                                  aria-label={this.props.intl.formatMessage(
-                                    messages.sort,
+                    <Table selectable compact singleLine attached>
+                      <Table.Header>
+                        <Table.Row>
+                          <Table.HeaderCell>
+                            <Dropdown
+                              trigger={
+                                <Icon
+                                  name={configurationSVG}
+                                  size="24px"
+                                  color="#826a6a"
+                                  className="configuration-svg"
+                                />
+                              }
+                              className="sort-icon"
+                              aria-label={this.props.intl.formatMessage(
+                                messages.sort,
+                              )}
+                              icon={null}
+                              simple
+                            >
+                              <Dropdown.Menu>
+                                <Dropdown.Header
+                                  content={this.props.intl.formatMessage(
+                                    messages.rearrangeBy,
                                   )}
-                                  icon={null}
-                                  simple
-                                >
-                                  <Dropdown.Menu>
-                                    <Dropdown.Header
-                                      content={this.props.intl.formatMessage(
-                                        messages.rearrangeBy,
-                                      )}
-                                    />
-                                    {map(
-                                      [
-                                        'id',
-                                        'sortable_title',
-                                        'EffectiveDate',
-                                        'CreationDate',
-                                        'ModificationDate',
-                                        'portal_type',
-                                      ],
-                                      (index) => (
-                                        <Dropdown.Item
-                                          key={index}
-                                          className={`sort_${index} icon-align`}
-                                        >
-                                          <Icon name={downKeySVG} size="24px" />
-                                          <FormattedMessage
-                                            id={Indexes[index].label}
-                                          />
-                                          <Dropdown.Menu>
-                                            <Dropdown.Item
-                                              onClick={this.onSortItems}
-                                              value={`${Indexes[index].sort_on}|ascending`}
-                                              className={`sort_${Indexes[index].sort_on}_ascending icon-align`}
-                                            >
-                                              <Icon
-                                                name={sortDownSVG}
-                                                size="24px"
-                                              />{' '}
-                                              <FormattedMessage
-                                                id="Ascending"
-                                                defaultMessage="Ascending"
-                                              />
-                                            </Dropdown.Item>
-                                            <Dropdown.Item
-                                              onClick={this.onSortItems}
-                                              value={`${Indexes[index].sort_on}|descending`}
-                                              className={`sort_${Indexes[index].sort_on}_descending icon-align`}
-                                            >
-                                              <Icon
-                                                name={sortUpSVG}
-                                                size="24px"
-                                              />{' '}
-                                              <FormattedMessage
-                                                id="Descending"
-                                                defaultMessage="Descending"
-                                              />
-                                            </Dropdown.Item>
-                                          </Dropdown.Menu>
-                                        </Dropdown.Item>
-                                      ),
-                                    )}
-                                  </Dropdown.Menu>
-                                </Dropdown>
-                              </Table.HeaderCell>
-                              <Table.HeaderCell className="zui-sticky-col">
-                                <Dropdown
-                                  trigger={
-                                    <Icon
-                                      name={
-                                        this.state.selected.length === 0
-                                          ? checkboxUncheckedSVG
-                                          : this.state.selected.length ===
-                                            this.state.items.length
-                                          ? checkboxCheckedSVG
-                                          : checkboxIndeterminateSVG
-                                      }
-                                      color={
-                                        this.state.selected.length > 0
-                                          ? '#007eb1'
-                                          : '#826a6a'
-                                      }
-                                      size="24px"
-                                    />
-                                  }
-                                  icon={null}
-                                >
-                                  <Dropdown.Menu>
-                                    <Dropdown.Header
-                                      content={this.props.intl.formatMessage(
-                                        messages.select,
-                                      )}
-                                    />
-                                    <Dropdown.Item onClick={this.onSelectAll}>
-                                      <Icon
-                                        name={checkboxCheckedSVG}
-                                        color="#007eb1"
-                                        size="24px"
-                                      />{' '}
+                                />
+                                {map(
+                                  [
+                                    'id',
+                                    'sortable_title',
+                                    'EffectiveDate',
+                                    'CreationDate',
+                                    'ModificationDate',
+                                    'portal_type',
+                                  ],
+                                  (index) => (
+                                    <Dropdown.Item
+                                      key={index}
+                                      className={`sort_${index} icon-align`}
+                                    >
+                                      <Icon name={downKeySVG} size="24px" />
                                       <FormattedMessage
-                                        id="All"
-                                        defaultMessage="All"
+                                        id={Indexes[index].label}
                                       />
-                                    </Dropdown.Item>
-                                    <Dropdown.Item onClick={this.onSelectNone}>
-                                      <Icon
-                                        name={checkboxUncheckedSVG}
-                                        size="24px"
-                                      />{' '}
-                                      <FormattedMessage
-                                        id="None"
-                                        defaultMessage="None"
-                                      />
-                                    </Dropdown.Item>
-                                    <Dropdown.Divider />
-                                    <Dropdown.Header
-                                      content={this.props.intl.formatMessage(
-                                        messages.selected,
-                                        { count: this.state.selected.length },
-                                      )}
-                                    />
-                                    <Input
-                                      icon={<Icon name={zoomSVG} size="24px" />}
-                                      iconPosition="left"
-                                      className="search"
-                                      placeholder={this.props.intl.formatMessage(
-                                        messages.filter,
-                                      )}
-                                    />
-                                    <Dropdown.Menu scrolling>
-                                      {map(this.state.selected, (item) => (
+                                      <Dropdown.Menu>
                                         <Dropdown.Item
-                                          key={item}
-                                          value={item}
-                                          onClick={this.onDeselect}
+                                          onClick={this.onSortItems}
+                                          value={`${Indexes[index].sort_on}|ascending`}
+                                          className={`sort_${Indexes[index].sort_on}_ascending icon-align`}
                                         >
                                           <Icon
-                                            name={deleteSVG}
-                                            color="#e40166"
+                                            name={sortDownSVG}
                                             size="24px"
                                           />{' '}
-                                          {this.getFieldById(item, 'title')}
+                                          <FormattedMessage
+                                            id="Ascending"
+                                            defaultMessage="Ascending"
+                                          />
                                         </Dropdown.Item>
-                                      ))}
-                                    </Dropdown.Menu>
-                                  </Dropdown.Menu>
-                                </Dropdown>
-                              </Table.HeaderCell>
-                              <Table.HeaderCell className="zui-sticky-col">
-                                <FormattedMessage
-                                  id="Title"
-                                  defaultMessage="NAME"
-                                />
-                              </Table.HeaderCell>
-                              {map(
-                                this.state.index.order,
-                                (index, order) =>
-                                  this.state.index.values[index].selected && (
-                                    <ContentsIndexHeader
-                                      key={index}
-                                      width={cellWidth}
-                                      label={
-                                        this.state.index.values[index].label
-                                      }
-                                      order={order}
-                                      onOrderIndex={this.onOrderIndex}
-                                    />
+                                        <Dropdown.Item
+                                          onClick={this.onSortItems}
+                                          value={`${Indexes[index].sort_on}|descending`}
+                                          className={`sort_${Indexes[index].sort_on}_descending icon-align`}
+                                        >
+                                          <Icon name={sortUpSVG} size="24px" />{' '}
+                                          <FormattedMessage
+                                            id="Descending"
+                                            defaultMessage="Descending"
+                                          />
+                                        </Dropdown.Item>
+                                      </Dropdown.Menu>
+                                    </Dropdown.Item>
                                   ),
-                              )}
-                              <Table.HeaderCell
-                                className="zui-sticky-col-right"
-                                textAlign="right"
-                              >
-                                <FormattedMessage
-                                  id="Actions"
-                                  defaultMessage="Actions"
-                                />
-                              </Table.HeaderCell>
-                            </Table.Row>
-                          </Table.Header>
-                          <Table.Body>
-                            {this.state.items.map((item, order) => (
-                              <ContentsItem
-                                key={item['@id']}
-                                item={item}
-                                order={order}
-                                selected={
-                                  indexOf(this.state.selected, item['@id']) !==
-                                  -1
-                                }
-                                onClick={this.onSelect}
-                                indexes={filter(
-                                  map(this.state.index.order, (index) => ({
-                                    id: index,
-                                    type: this.state.index.values[index].type,
-                                  })),
-                                  (index) =>
-                                    this.state.index.values[index.id].selected,
                                 )}
-                                onCut={this.cut}
-                                onCopy={this.copy}
-                                onDelete={this.delete}
-                                onOrderItem={this.onOrderItem}
-                                onMoveToTop={this.onMoveToTop}
-                                onMoveToBottom={this.onMoveToBottom}
-                              />
-                            ))}
-                          </Table.Body>
-                        </Table>
-                      </div>
-                    </div>
+                              </Dropdown.Menu>
+                            </Dropdown>
+                          </Table.HeaderCell>
+                          <Table.HeaderCell>
+                            <Dropdown
+                              trigger={
+                                <Icon
+                                  name={
+                                    this.state.selected.length === 0
+                                      ? checkboxUncheckedSVG
+                                      : this.state.selected.length ===
+                                        this.state.items.length
+                                      ? checkboxCheckedSVG
+                                      : checkboxIndeterminateSVG
+                                  }
+                                  color={
+                                    this.state.selected.length > 0
+                                      ? '#007eb1'
+                                      : '#826a6a'
+                                  }
+                                  size="24px"
+                                />
+                              }
+                              icon={null}
+                            >
+                              <Dropdown.Menu>
+                                <Dropdown.Header
+                                  content={this.props.intl.formatMessage(
+                                    messages.select,
+                                  )}
+                                />
+                                <Dropdown.Item onClick={this.onSelectAll}>
+                                  <Icon
+                                    name={checkboxCheckedSVG}
+                                    color="#007eb1"
+                                    size="24px"
+                                  />{' '}
+                                  <FormattedMessage
+                                    id="All"
+                                    defaultMessage="All"
+                                  />
+                                </Dropdown.Item>
+                                <Dropdown.Item onClick={this.onSelectNone}>
+                                  <Icon
+                                    name={checkboxUncheckedSVG}
+                                    size="24px"
+                                  />{' '}
+                                  <FormattedMessage
+                                    id="None"
+                                    defaultMessage="None"
+                                  />
+                                </Dropdown.Item>
+                                <Dropdown.Divider />
+                                <Dropdown.Header
+                                  content={this.props.intl.formatMessage(
+                                    messages.selected,
+                                    { count: this.state.selected.length },
+                                  )}
+                                />
+                                <Input
+                                  icon={<Icon name={zoomSVG} size="24px" />}
+                                  iconPosition="left"
+                                  className="search"
+                                  placeholder={this.props.intl.formatMessage(
+                                    messages.filter,
+                                  )}
+                                />
+                                <Dropdown.Menu scrolling>
+                                  {map(this.state.selected, (item) => (
+                                    <Dropdown.Item
+                                      key={item}
+                                      value={item}
+                                      onClick={this.onDeselect}
+                                    >
+                                      <Icon
+                                        name={deleteSVG}
+                                        color="#e40166"
+                                        size="24px"
+                                      />{' '}
+                                      {this.getFieldById(item, 'title')}
+                                    </Dropdown.Item>
+                                  ))}
+                                </Dropdown.Menu>
+                              </Dropdown.Menu>
+                            </Dropdown>
+                          </Table.HeaderCell>
+                          <Table.HeaderCell
+                            width={Math.ceil(
+                              16 / this.state.index.selectedCount,
+                            )}
+                          >
+                            <FormattedMessage
+                              id="Title"
+                              defaultMessage="NAME"
+                            />
+                          </Table.HeaderCell>
+                          {map(
+                            this.state.index.order,
+                            (index, order) =>
+                              this.state.index.values[index].selected && (
+                                <ContentsIndexHeader
+                                  key={index}
+                                  width={Math.ceil(
+                                    16 / this.state.index.selectedCount,
+                                  )}
+                                  label={this.state.index.values[index].label}
+                                  order={order}
+                                  onOrderIndex={this.onOrderIndex}
+                                />
+                              ),
+                          )}
+                          <Table.HeaderCell textAlign="right">
+                            <FormattedMessage
+                              id="Actions"
+                              defaultMessage="Actions"
+                            />
+                          </Table.HeaderCell>
+                        </Table.Row>
+                      </Table.Header>
+                      <Table.Body>
+                        {this.state.items.map((item, order) => (
+                          <ContentsItem
+                            key={item['@id']}
+                            item={item}
+                            order={order}
+                            selected={
+                              indexOf(this.state.selected, item['@id']) !== -1
+                            }
+                            onClick={this.onSelect}
+                            indexes={filter(
+                              map(this.state.index.order, (index) => ({
+                                id: index,
+                                type: this.state.index.values[index].type,
+                              })),
+                              (index) =>
+                                this.state.index.values[index.id].selected,
+                            )}
+                            onCut={this.cut}
+                            onCopy={this.copy}
+                            onDelete={this.delete}
+                            onOrderItem={this.onOrderItem}
+                            onMoveToTop={this.onMoveToTop}
+                            onMoveToBottom={this.onMoveToBottom}
+                          />
+                        ))}
+                      </Table.Body>
+                    </Table>
 
                     <div className="contents-pagination">
                       <Pagination
@@ -1645,7 +1617,6 @@ export const __test__ = compose(
         token: state.userSession.token,
         items: state.search.items,
         sort: state.content.update.sort,
-        index: state.content.index.idx,
         breadcrumbs: state.breadcrumbs.items,
         total: state.search.total,
         searchRequest: {
@@ -1671,7 +1642,6 @@ export const __test__ = compose(
       moveContent,
       orderContent,
       sortContent,
-      indexContent,
     },
   ),
 )(Contents);
@@ -1685,7 +1655,6 @@ export default compose(
         token: state.userSession.token,
         items: state.search.items,
         sort: state.content.update.sort,
-        index: state.content.index.idx,
         breadcrumbs: state.breadcrumbs.items,
         total: state.search.total,
         searchRequest: {
@@ -1711,7 +1680,6 @@ export default compose(
       moveContent,
       orderContent,
       sortContent,
-      indexContent,
     },
   ),
   asyncConnect([
