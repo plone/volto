@@ -125,6 +125,8 @@ export TextWidget from '@plone/volto/components/manage/Widgets/TextWidget';
 export WysiwygWidget from '@plone/volto/components/manage/Widgets/WysiwygWidget';
 export ObjectWidget from '@plone/volto/components/manage/Widgets/ObjectWidget';
 export ObjectListWidget from '@plone/volto/components/manage/Widgets/ObjectListWidget';
+export ObjectBrowserWidget from '@plone/volto/components/manage/Widgets/ObjectBrowserWidget';
+export ObjectBrowserWidgetMode from '@plone/volto/components/manage/Widgets/ObjectBrowserWidget';
 
 export EditDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/Edit';
 export EditTitleBlock from '@plone/volto/components/manage/Blocks/Title/Edit';

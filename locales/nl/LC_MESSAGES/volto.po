@@ -77,7 +77,7 @@ msgid "Add Content"
 msgstr ""
 
 #: components/manage/Toolbar/Types
-msgid "Add Translation..."
+msgid "Add Translation…"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
@@ -89,7 +89,7 @@ msgid "Add a description…"
 msgstr ""
 
 #: components/manage/Form/Form
-msgid "Add block..."
+msgid "Add block…"
 msgstr ""
 
 #: components/manage/Blocks/Listing/QuerystringWidget
@@ -1029,6 +1029,12 @@ msgstr ""
 msgid "No map selected"
 msgstr ""
 
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
+msgid "No options"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
@@ -1307,7 +1313,7 @@ msgid "Search for user or group"
 msgstr "Zoeken naar gebruiker of groep"
 
 #: components/manage/Controlpanels/UsersControlpanel
-msgid "Search group..."
+msgid "Search group…"
 msgstr ""
 
 #: components/theme/Search/Search
@@ -1319,7 +1325,7 @@ msgid "Search results for {term}"
 msgstr "Zoekresultaten voor ${term}"
 
 #: components/manage/Controlpanels/UsersControlpanel
-msgid "Search users..."
+msgid "Search users…"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -1344,6 +1350,8 @@ msgstr ""
 
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
 msgid "Select…"
 msgstr "Selecteer…"
 
@@ -1886,6 +1894,10 @@ msgstr ""
 msgid "description_sent_password"
 msgstr ""
 
+#: components/manage/Contents/ContentsItem
+msgid "draft"
+msgstr ""
+
 #: components/theme/View/EventView
 msgid "event_alldates"
 msgstr ""
@@ -1934,6 +1946,10 @@ msgstr ""
 msgid "image"
 msgstr ""
 
+#: components/manage/Contents/ContentsItem
+msgid "intranet"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "label_my_email_address_is"
 msgstr ""
@@ -1962,8 +1978,24 @@ msgstr ""
 msgid "mostUsed"
 msgstr ""
 
+#: components/manage/Contents/ContentsItem
+msgid "no workflow state"
+msgstr ""
+
 #: error
 msgid "or try a different page."
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+msgid "private"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+msgid "published"
+msgstr ""
+
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "querystring-widget-select"
 msgstr ""
 
 #: components/theme/Login/Login

@@ -68,7 +68,7 @@ msgid "Add Content"
 msgstr "Agregar contenido"
 
 #: components/manage/Toolbar/Types
-msgid "Add Translation..."
+msgid "Add Translation…"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
@@ -77,11 +77,11 @@ msgstr "Agregar Usuario"
 
 #: components/manage/Blocks/Description/Edit
 msgid "Add a description…"
-msgstr "Agregar una descripción..."
+msgstr "Agregar una descripción…"
 
 #: components/manage/Form/Form
-msgid "Add block..."
-msgstr "Agregar bloque..."
+msgid "Add block…"
+msgstr "Agregar bloque…"
 
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "Add criteria"
@@ -677,7 +677,7 @@ msgstr "Nombre del archivo"
 
 #: components/manage/Contents/Contents
 msgid "Filter…"
-msgstr "Filtrar..."
+msgstr "Filtrar…"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Fixed width table cells"
@@ -1020,6 +1020,12 @@ msgstr ""
 msgid "No map selected"
 msgstr ""
 
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
+msgid "No options"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
@@ -1188,11 +1194,11 @@ msgstr "Ingrese de nuevo su contraseña. Debe asegurarse que las contraseñas se
 #: components/theme/Search/Search
 #: components/theme/View/SummaryView
 msgid "Read More…"
-msgstr "Leer Más..."
+msgstr "Leer Más…"
 
 #: components/manage/Contents/Contents
 msgid "Rearrange items by…"
-msgstr "Reordenar elementos por..."
+msgstr "Reordenar elementos por…"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Reduce complexity"
@@ -1298,8 +1304,8 @@ msgid "Search for user or group"
 msgstr "Buscar por nombre de usuario o grupo"
 
 #: components/manage/Controlpanels/UsersControlpanel
-msgid "Search group..."
-msgstr "Buscar grupo..."
+msgid "Search group…"
+msgstr ""
 
 #: components/theme/Search/Search
 msgid "Search results"
@@ -1310,8 +1316,8 @@ msgid "Search results for {term}"
 msgstr "Resultados de búsqueda para {term}"
 
 #: components/manage/Controlpanels/UsersControlpanel
-msgid "Search users..."
-msgstr "Buscar usuarios..."
+msgid "Search users…"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Select columns to show"
@@ -1335,8 +1341,10 @@ msgstr "Selección"
 
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
 msgid "Select…"
-msgstr "Selecciona..."
+msgstr "Selecciona…"
 
 #: components/theme/ContactForm/ContactForm
 msgid "Send"
@@ -1572,7 +1580,7 @@ msgstr "Este nombre se mostrará en la URL."
 
 #: components/theme/NotFound/NotFound
 msgid "This page does not seem to exist…"
-msgstr "Esta página no existe..."
+msgstr "Esta página no existe…"
 
 #: components/manage/Widgets/DatetimeWidget
 msgid "Time"
@@ -1630,11 +1638,11 @@ msgstr ""
 
 #: components/manage/Blocks/Text/Edit
 msgid "Type text…"
-msgstr "Ingrese texto..."
+msgstr "Ingrese texto…"
 
 #: components/manage/Blocks/Title/Edit
 msgid "Type the title…"
-msgstr "Ingrese el título..."
+msgstr "Ingrese el título…"
 
 #: components/manage/Contents/Contents
 msgid "UID"
@@ -1877,6 +1885,10 @@ msgstr "Por razones de seguridad, las contraseñas se almacenan en forma cifrada
 msgid "description_sent_password"
 msgstr "Se han enviado las instrucciones para restablecer su contraseña. Deben llegar a su bandeja de entrada pronto. Una vez que reciba el mensaje, visite la dirección indicada para restablecer la contraseña."
 
+#: components/manage/Contents/ContentsItem
+msgid "draft"
+msgstr ""
+
 #: components/theme/View/EventView
 msgid "event_alldates"
 msgstr ""
@@ -1925,6 +1937,10 @@ msgstr "HTML"
 msgid "image"
 msgstr "Imagen"
 
+#: components/manage/Contents/ContentsItem
+msgid "intranet"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "label_my_email_address_is"
 msgstr "Mi dirección de correo electrónico es"
@@ -1953,9 +1969,25 @@ msgstr "Multimedia"
 msgid "mostUsed"
 msgstr "Más usado"
 
+#: components/manage/Contents/ContentsItem
+msgid "no workflow state"
+msgstr ""
+
 #: error
 msgid "or try a different page."
 msgstr "o intente con una página diferente."
+
+#: components/manage/Contents/ContentsItem
+msgid "private"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+msgid "published"
+msgstr ""
+
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "querystring-widget-select"
+msgstr ""
 
 #: components/theme/Login/Login
 msgid "registration form"

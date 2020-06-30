@@ -37,7 +37,7 @@ exports[`UsersControlpanel renders a user control component 1`] = `
               id="user-search-input"
               name="SearchableText"
               onChange={[Function]}
-              placeholder="Search users..."
+              placeholder="Search users…"
               type="text"
             />
             <button
@@ -141,7 +141,7 @@ exports[`UsersControlpanel renders a user control component 1`] = `
               id="group-search-input"
               name="SearchableText"
               onChange={[Function]}
-              placeholder="Search group..."
+              placeholder="Search group…"
               type="text"
             />
             <button

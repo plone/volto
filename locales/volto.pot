@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-06-17T15:15:52.286Z\n"
+"POT-Creation-Date: 2020-06-19T15:05:53.851Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -65,13 +65,13 @@ msgid "Add Addons"
 msgstr ""
 
 #: components/manage/Toolbar/Types
-# defaultMessage: Add Content...
+# defaultMessage: Add Content…
 msgid "Add Content"
 msgstr ""
 
 #: components/manage/Toolbar/Types
-# defaultMessage: Add Translation...
-msgid "Add Translation..."
+# defaultMessage: Add Translation…
+msgid "Add Translation…"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
@@ -85,8 +85,8 @@ msgid "Add a description…"
 msgstr ""
 
 #: components/manage/Form/Form
-# defaultMessage: Add block...
-msgid "Add block..."
+# defaultMessage: Add block…
+msgid "Add block…"
 msgstr ""
 
 #: components/manage/Blocks/Listing/QuerystringWidget
@@ -1229,6 +1229,13 @@ msgstr ""
 msgid "No map selected"
 msgstr ""
 
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
+# defaultMessage: No options
+msgid "No options"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 # defaultMessage: No results found.
@@ -1567,8 +1574,8 @@ msgid "Search for user or group"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
-# defaultMessage: Search group...
-msgid "Search group..."
+# defaultMessage: Search group…
+msgid "Search group…"
 msgstr ""
 
 #: components/theme/Search/Search
@@ -1582,8 +1589,8 @@ msgid "Search results for {term}"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
-# defaultMessage: Search users...
-msgid "Search users..."
+# defaultMessage: Search users…
+msgid "Search users…"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -1613,6 +1620,8 @@ msgstr ""
 
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
 # defaultMessage: Select…
 msgid "Select…"
 msgstr ""
@@ -2283,6 +2292,11 @@ msgstr ""
 msgid "description_sent_password"
 msgstr ""
 
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Draft
+msgid "draft"
+msgstr ""
+
 #: components/theme/View/EventView
 # defaultMessage: All dates
 msgid "event_alldates"
@@ -2343,6 +2357,11 @@ msgstr ""
 msgid "image"
 msgstr ""
 
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Intranet
+msgid "intranet"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: My email address is
 msgid "label_my_email_address_is"
@@ -2378,9 +2397,29 @@ msgstr ""
 msgid "mostUsed"
 msgstr ""
 
+#: components/manage/Contents/ContentsItem
+# defaultMessage: No workflow state
+msgid "no workflow state"
+msgstr ""
+
 #: error
 # defaultMessage: or try a different page.
 msgid "or try a different page."
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Private
+msgid "private"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Published
+msgid "published"
+msgstr ""
+
+#: components/manage/Blocks/Listing/QuerystringWidget
+# defaultMessage: Select…
+msgid "querystring-widget-select"
 msgstr ""
 
 #: components/theme/Login/Login
