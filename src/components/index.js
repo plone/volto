@@ -63,6 +63,7 @@ export Add from '@plone/volto/components/manage/Add/Add';
 export AddonsControlpanel from '@plone/volto/components/manage/Controlpanels/AddonsControlpanel';
 export Contents from '@plone/volto/components/manage/Contents/Contents';
 export Circle from '@plone/volto/components/manage/Contents/circle';
+export DatabaseInformation from '@plone/volto/components/manage/Controlpanels/DatabaseInformation';
 export Controlpanel from '@plone/volto/components/manage/Controlpanels/Controlpanel';
 export Controlpanels from '@plone/volto/components/manage/Controlpanels/Controlpanels';
 export ContentType from '@plone/volto/components/manage/Controlpanels/ContentType';
@@ -107,6 +108,7 @@ export UsersControlpanelUser from '@plone/volto/components/manage/Controlpanels/
 export UsersControlpanelGroups from '@plone/volto/components/manage/Controlpanels/UsersControlpanelGroups';
 export DiffField from '@plone/volto/components/manage/Diff/DiffField';
 
+export FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 export ArrayWidget from '@plone/volto/components/manage/Widgets/ArrayWidget';
 export CheckboxWidget from '@plone/volto/components/manage/Widgets/CheckboxWidget';
 

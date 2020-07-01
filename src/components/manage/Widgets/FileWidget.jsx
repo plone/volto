@@ -3,14 +3,12 @@
  * @module components/manage/Widgets/FileWidget
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Form, Grid, Input, Label, Button } from 'semantic-ui-react';
-import { map } from 'lodash';
-import { readAsDataURL } from 'promise-file-reader';
-
+import { FormFieldWrapper, Icon } from '@plone/volto/components';
 import deleteSVG from '@plone/volto/icons/delete.svg';
-import { Icon } from '@plone/volto/components';
+import { readAsDataURL } from 'promise-file-reader';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { Button, Input } from 'semantic-ui-react';
 
 /**
  * FileWidget component class.
@@ -26,76 +24,66 @@ const FileWidget = ({
   value,
   onChange,
   fieldSet,
+  wrapped,
+  isDraggable,
+  isDissabled,
+  onEdit,
+  onDelete,
+  intl,
 }) => {
   const fileInput = React.useRef(null);
 
   return (
-    <Form.Field
-      inline
+    <FormFieldWrapper
+      id={id}
+      title={title}
+      description={description}
       required={required}
-      error={error.length > 0}
-      className={description ? 'help' : ''}
-      id={`${fieldSet || 'field'}-${id}`}
+      error={error}
+      wrapped={wrapped}
+      fieldSet={fieldSet}
+      draggable={isDraggable}
+      onEdit={onEdit ? () => onEdit(id) : null}
+      onDelete={onDelete}
+      intl={intl}
+      isDissabled={isDissabled}
     >
-      <Grid>
-        <Grid.Row stretched>
-          <Grid.Column width="4">
-            <div className="wrapper">
-              <label htmlFor={`field-${id}`}>{title}</label>
-            </div>
-          </Grid.Column>
-          <Grid.Column width="8">
-            <Input
-              id={`field-${id}`}
-              name={id}
-              type="file"
-              ref={fileInput}
-              onChange={({ target }) => {
-                const file = target.files[0];
-                readAsDataURL(file).then((data) => {
-                  const fields = data.match(/^data:(.*);(.*),(.*)$/);
-                  onChange(id, {
-                    data: fields[3],
-                    encoding: fields[2],
-                    'content-type': fields[1],
-                    filename: file.name,
-                  });
-                });
-              }}
-            />
-            <div className="field-file-name">
-              {value && value.filename}
-              {value && (
-                <Button
-                  icon
-                  basic
-                  className="delete-button"
-                  aria-label="delete file"
-                  onClick={() => {
-                    onChange(id, null);
-                    fileInput.current.inputRef.value = null;
-                  }}
-                >
-                  <Icon name={deleteSVG} size="20px" />
-                </Button>
-              )}
-            </div>
-            {map(error, (message) => (
-              <Label key={message} basic color="red" pointing>
-                {message}
-              </Label>
-            ))}
-          </Grid.Column>
-        </Grid.Row>
-        {description && (
-          <Grid.Row stretched>
-            <Grid.Column stretched width="12">
-              <p className="help">{description}</p>
-            </Grid.Column>
-          </Grid.Row>
+      <Input
+        id={`field-${id}`}
+        name={id}
+        type="file"
+        ref={fileInput}
+        onChange={({ target }) => {
+          const file = target.files[0];
+          readAsDataURL(file).then((data) => {
+            const fields = data.match(/^data:(.*);(.*),(.*)$/);
+            onChange(id, {
+              data: fields[3],
+              encoding: fields[2],
+              'content-type': fields[1],
+              filename: file.name,
+            });
+          });
+        }}
+      />
+      <div className="field-file-name">
+        {value && value.filename}
+        {value && (
+          <Button
+            icon
+            basic
+            className="delete-button"
+            aria-label="delete file"
+            onClick={() => {
+              onChange(id, null);
+              fileInput.current.inputRef.value = null;
+            }}
+          >
+            <Icon name={deleteSVG} size="20px" />
+          </Button>
         )}
-      </Grid>
-    </Form.Field>
+      </div>
+    </FormFieldWrapper>
   );
 };
 
@@ -115,6 +103,11 @@ FileWidget.propTypes = {
     title: PropTypes.string,
   }),
   onChange: PropTypes.func.isRequired,
+  wrapped: PropTypes.bool,
+  onEdit: PropTypes.func,
+  onDelete: PropTypes.func,
+  isDraggable: PropTypes.bool,
+  isDissabled: PropTypes.bool,
 };
 
 /**
@@ -123,10 +116,20 @@ FileWidget.propTypes = {
  * @static
  */
 FileWidget.defaultProps = {
+  id: null,
+  title: null,
   description: null,
   required: false,
   error: [],
   value: null,
+  onChange: null,
+  onEdit: null,
+  onDelete: null,
+  focus: false,
+  isDraggable: false,
+  isDissabled: false,
+  icon: null,
+  iconAction: null,
 };
 
 export default FileWidget;

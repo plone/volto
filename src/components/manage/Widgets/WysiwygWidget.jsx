@@ -3,6 +3,7 @@
  * @module components/manage/WysiwygWidget/WysiwygWidget
  */
 
+import { FormFieldWrapper } from '@plone/volto/components';
 import { convertToRaw, EditorState } from 'draft-js';
 import { stateFromHTML } from 'draft-js-import-html';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
@@ -17,7 +18,7 @@ import { MemoryRouter } from 'react-router-dom';
 import redraft from 'redraft';
 import { compose } from 'redux';
 import configureStore from 'redux-mock-store';
-import { Form, Grid, Icon, Label, TextArea } from 'semantic-ui-react';
+import { Form, Icon, Label, TextArea } from 'semantic-ui-react';
 import { settings } from '~/config';
 
 const messages = defineMessages({
@@ -115,8 +116,9 @@ class WysiwygWidget extends Component {
     isDraggable: PropTypes.bool,
     isDissabled: PropTypes.bool,
     /**
-     * Internationalization
+     * Wrapped form component
      */
+    wrapped: PropTypes.bool,
   };
 
   /**
@@ -166,37 +168,6 @@ class WysiwygWidget extends Component {
 
       this.state = { editorState, inlineToolbarPlugin };
     }
-
-    this.schema = {
-      fieldsets: [
-        {
-          id: 'default',
-          title: props.intl.formatMessage(messages.default),
-          fields: ['title', 'id', 'description', 'required'],
-        },
-      ],
-      properties: {
-        id: {
-          type: 'string',
-          title: props.intl.formatMessage(messages.idTitle),
-          description: props.intl.formatMessage(messages.idDescription),
-        },
-        title: {
-          type: 'string',
-          title: props.intl.formatMessage(messages.title),
-        },
-        description: {
-          type: 'string',
-          widget: 'textarea',
-          title: props.intl.formatMessage(messages.description),
-        },
-        required: {
-          type: 'boolean',
-          title: props.intl.formatMessage(messages.required),
-        },
-      },
-      required: ['id', 'title'],
-    };
 
     this.onChange = this.onChange.bind(this);
   }
@@ -252,6 +223,7 @@ class WysiwygWidget extends Component {
       onEdit,
       onDelete,
       fieldSet,
+      intl,
       isDraggable,
       isDissabled,
     } = this.props;
@@ -281,82 +253,54 @@ class WysiwygWidget extends Component {
     const { InlineToolbar } = this.state.inlineToolbarPlugin;
 
     return (
-      <Form.Field
-        inline
-        required={required}
-        error={error.length > 0}
-        className={description ? 'help wysiwyg' : 'wysiwyg'}
+      <FormFieldWrapper
+        {...this.props}
+        onEdit={onEdit ? () => onEdit(id) : null}
+        onDelete={onDelete}
+        draggable={isDraggable}
+        isDissabled={isDissabled}
+        intl={intl}
+        className="wysiwyg"
       >
-        <Grid>
-          <Grid.Row stretched>
-            <Grid.Column width="4">
-              <div className="wrapper">
-                <label htmlFor={`field-${id}`}>
-                  {isDraggable && (
-                    <i
-                      aria-hidden="true"
-                      className="grey bars icon drag handle"
-                    />
-                  )}
-                  {title}
-                </label>
-              </div>
-            </Grid.Column>
-            <Grid.Column width="8">
-              {onEdit && !isDissabled && (
-                <div className="toolbar">
-                  <button
-                    className="item ui noborder button"
-                    onClick={() => onEdit(id, this.schema)}
-                  >
-                    <Icon name="write square" size="large" color="blue" />
-                  </button>
-                  <button
-                    aria-label={this.props.intl.formatMessage(messages.delete)}
-                    className="item ui noborder button"
-                    onClick={() => onDelete(id)}
-                  >
-                    <Icon name="close" size="large" color="red" />
-                  </button>
-                </div>
-              )}
-              <div style={{ boxSizing: 'initial' }}>
-                {this.props.onChange ? (
-                  <>
-                    <Editor
-                      id={`field-${id}`}
-                      onChange={this.onChange}
-                      editorState={this.state.editorState}
-                      plugins={[
-                        this.state.inlineToolbarPlugin,
-                        ...settings.richTextEditorPlugins,
-                      ]}
-                      blockRenderMap={settings.extendedBlockRenderMap}
-                      blockStyleFn={settings.blockStyleFn}
-                      customStyleMap={settings.customStyleMap}
-                    />
-                    {this.props.onChange && <InlineToolbar />}
-                  </>
-                ) : (
-                  <div className="DraftEditor-root" />
-                )}
-              </div>
-              {map(error, (message) => (
-                <Label key={message} basic color="red" pointing>
-                  {message}
-                </Label>
-              ))}
-            </Grid.Column>
-          </Grid.Row>
-          {description && (
-            <Grid.Row stretched>
-              <Grid.Column stretched width="12">
-                <p className="help">{description}</p>
-              </Grid.Column>
-            </Grid.Row>
+        {onEdit && !isDissabled && (
+          <div className="toolbar">
+            <button
+              className="item ui noborder button"
+              onClick={() => onEdit(id, this.schema)}
+            >
+              <Icon name="write square" size="large" color="blue" />
+            </button>
+            <button
+              aria-label={this.props.intl.formatMessage(messages.delete)}
+              className="item ui noborder button"
+              onClick={() => onDelete(id)}
+            >
+              <Icon name="close" size="large" color="red" />
+            </button>
+          </div>
+        )}
+        <div style={{ boxSizing: 'initial' }}>
+          {this.props.onChange ? (
+            <>
+              <Editor
+                id={`field-${id}`}
+                onChange={this.onChange}
+                editorState={this.state.editorState}
+                plugins={[
+                  this.state.inlineToolbarPlugin,
+                  ...settings.richTextEditorPlugins,
+                ]}
+                blockRenderMap={settings.extendedBlockRenderMap}
+                blockStyleFn={settings.blockStyleFn}
+                customStyleMap={settings.customStyleMap}
+              />
+              {this.props.onChange && <InlineToolbar />}
+            </>
+          ) : (
+            <div className="DraftEditor-root" />
           )}
-        </Grid>
-      </Form.Field>
+        </div>
+      </FormFieldWrapper>
     );
   }
 }

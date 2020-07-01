@@ -4,24 +4,46 @@
  */
 
 import { EditBlock, Field, Icon } from '@plone/volto/components';
-import { difference, getBlocksFieldname, getBlocksLayoutFieldname } from '@plone/volto/helpers';
+import {
+  difference,
+  getBlocksFieldname,
+  getBlocksLayoutFieldname,
+} from '@plone/volto/helpers';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import dragSVG from '@plone/volto/icons/drag.svg';
-import { findIndex, isBoolean, isEmpty, keys, map, mapValues, omit, pickBy, uniq, without } from 'lodash';
+import {
+  findIndex,
+  isBoolean,
+  isEmpty,
+  keys,
+  map,
+  mapValues,
+  omit,
+  pickBy,
+  uniq,
+  without,
+} from 'lodash';
 import move from 'lodash-move';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Portal } from 'react-portal';
-import { Button, Container, Form as UiForm, Message, Segment, Tab } from 'semantic-ui-react';
+import {
+  Button,
+  Container,
+  Form as UiForm,
+  Message,
+  Segment,
+  Tab,
+} from 'semantic-ui-react';
 import { v4 as uuid } from 'uuid';
 
 const messages = defineMessages({
   addBlock: {
-    id: 'Add block...',
-    defaultMessage: 'Add block...',
+    id: 'Add block…',
+    defaultMessage: 'Add block…',
   },
   required: {
     id: 'Required input is missing.',
@@ -93,6 +115,7 @@ class Form extends Component {
     description: PropTypes.string,
     visual: PropTypes.bool,
     blocks: PropTypes.arrayOf(PropTypes.object),
+    vocabularyFields: PropTypes.object,
   };
 
   /**
@@ -116,6 +139,7 @@ class Form extends Component {
     blocks: [],
     pathname: '',
     schema: {},
+    vocabularyFields: {},
   };
 
   /**
@@ -145,28 +169,34 @@ class Form extends Component {
     // Adding fallback in case the fields are empty, so we are sure that the edit form
     // shows at least the default blocks
     if (
-      !formData[blocksLayoutFieldname] ||
-      isEmpty(formData[blocksLayoutFieldname].items)
+      formData.hasOwnProperty(blocksFieldname) &&
+      formData.hasOwnProperty(blocksLayoutFieldname)
     ) {
-      formData[blocksLayoutFieldname] = {
-        items: [ids.title, ids.text],
-      };
-    }
-    if (!formData[blocksFieldname] || isEmpty(formData[blocksFieldname])) {
-      formData[blocksFieldname] = {
-        [ids.title]: {
-          '@type': 'title',
-        },
-        [ids.text]: {
-          '@type': 'text',
-        },
-      };
+      if (
+        !formData[blocksLayoutFieldname] ||
+        isEmpty(formData[blocksLayoutFieldname].items)
+      ) {
+        formData[blocksLayoutFieldname] = {
+          items: [ids.title, ids.text],
+        };
+      }
+      if (!formData[blocksFieldname] || isEmpty(formData[blocksFieldname])) {
+        formData[blocksFieldname] = {
+          [ids.title]: {
+            '@type': 'title',
+          },
+          [ids.text]: {
+            '@type': 'text',
+          },
+        };
+      }
     }
     this.state = {
       formData,
       initialFormData: { ...formData },
       errors: {},
       selected:
+        formData.hasOwnProperty(blocksLayoutFieldname) &&
         formData[blocksLayoutFieldname].items.length > 0
           ? formData[blocksLayoutFieldname].items[0]
           : null,
@@ -680,13 +710,19 @@ class Form extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { schema: originalSchema, onCancel, onSubmit } = this.props;
+    const {
+      schema: originalSchema,
+      onCancel,
+      onSubmit,
+      vocabularyFields,
+    } = this.props;
     const { formData, placeholderProps } = this.state;
     const blocksFieldname = getBlocksFieldname(formData);
     const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
     const renderBlocks = formData?.[blocksLayoutFieldname]?.items;
     const blocksDict = formData?.[blocksFieldname];
     const schema = this.removeBlocksLayoutFields(originalSchema);
+    // console.log('render this.props ', this.props);
 
     return this.props.visual ? (
       // Removing this from SSR is important, since react-beautiful-dnd supports SSR,
@@ -883,6 +919,7 @@ class Form extends Component {
                     required={schema.required.indexOf(field) !== -1}
                     onChange={this.onChangeField}
                     key={field}
+                    vocabularyFields={vocabularyFields}
                     error={this.state.errors[field]}
                   />
                 ))}

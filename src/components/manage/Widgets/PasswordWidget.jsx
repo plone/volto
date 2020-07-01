@@ -3,10 +3,11 @@
  * @module components/manage/Widgets/PassswordWidget
  */
 
-import { map } from 'lodash';
+import { FormFieldWrapper } from '@plone/volto/components';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Form, Grid, Input, Label } from 'semantic-ui-react';
+import { injectIntl } from 'react-intl';
+import { Input } from 'semantic-ui-react';
 
 /**
  * PasswordWidget component class.
@@ -19,57 +20,43 @@ const PasswordWidget = ({
   required,
   description,
   isDraggable,
+  isDissabled,
   error,
   value,
   onChange,
+  onEdit,
+  onDelete,
   fieldSet,
-}) => (
-  <Form.Field
-    inline
-    required={required}
-    error={error.length > 0}
-    className={description ? 'help' : ''}
-    id={`${fieldSet || 'field'}-${id}`}
-  >
-    <Grid>
-      <Grid.Row stretched>
-        <Grid.Column width="4">
-          <div className="wrapper">
-            <label htmlFor={`field-${id}`}>
-              {isDraggable ? (
-                <i aria-hidden="true" className="grey bars icon drag handle" />
-              ) : null}
-              {title}
-            </label>
-          </div>
-        </Grid.Column>
-        <Grid.Column width="8">
-          <Input
-            id={`field-${id}`}
-            name={id}
-            type="password"
-            value={value || ''}
-            onChange={({ target }) =>
-              onChange(id, target.value === '' ? undefined : target.value)
-            }
-          />
-          {map(error, (message) => (
-            <Label key={message} basic color="red" pointing>
-              {message}
-            </Label>
-          ))}
-        </Grid.Column>
-      </Grid.Row>
-      {description && (
-        <Grid.Row stretched>
-          <Grid.Column stretched width="12">
-            <p className="help">{description}</p>
-          </Grid.Column>
-        </Grid.Row>
-      )}
-    </Grid>
-  </Form.Field>
-);
+  wrapped,
+  intl,
+}) => {
+  return (
+    <FormFieldWrapper
+      id={id}
+      title={title}
+      description={description}
+      required={required}
+      error={error}
+      fieldSet={fieldSet}
+      wrapped={wrapped}
+      draggable={isDraggable}
+      onEdit={onEdit ? () => onEdit(id) : null}
+      onDelete={onDelete}
+      intl={intl}
+      isDissabled={isDissabled}
+    >
+      <Input
+        id={`field-${id}`}
+        name={id}
+        type="password"
+        value={value || ''}
+        onChange={({ target }) =>
+          onChange(id, target.value === '' ? undefined : target.value)
+        }
+      />
+    </FormFieldWrapper>
+  );
+};
 
 /**
  * Property types.
@@ -84,6 +71,11 @@ PasswordWidget.propTypes = {
   error: PropTypes.arrayOf(PropTypes.string),
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
+  wrapped: PropTypes.bool,
+  onEdit: PropTypes.func,
+  onDelete: PropTypes.func,
+  isDraggable: PropTypes.bool,
+  isDissabled: PropTypes.bool,
 };
 
 /**
@@ -96,7 +88,14 @@ PasswordWidget.defaultProps = {
   required: false,
   error: [],
   value: null,
+  onChange: null,
+  onEdit: null,
+  onDelete: null,
+  focus: false,
   isDraggable: false,
+  isDissabled: false,
+  icon: null,
+  iconAction: null,
 };
 
-export default PasswordWidget;
+export default injectIntl(PasswordWidget);

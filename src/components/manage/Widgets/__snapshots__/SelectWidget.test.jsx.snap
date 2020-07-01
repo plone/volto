@@ -2,7 +2,7 @@
 
 exports[`renders a select widget component 1`] = `
 <div
-  className="inline field"
+  className="inline field text"
   id="field-my-field"
 >
   <div
@@ -27,6 +27,31 @@ exports[`renders a select widget component 1`] = `
       <div
         className="eight wide column"
       >
+        <div
+          className="toolbar"
+        >
+          <button
+            className="item ui noborder button"
+            onClick={[Function]}
+          >
+            <i
+              aria-hidden="true"
+              className="blue write square large icon"
+              onClick={[Function]}
+            />
+          </button>
+          <button
+            aria-label="Delete"
+            className="item ui noborder button"
+            onClick={[Function]}
+          >
+            <i
+              aria-hidden="true"
+              className="red close large icon"
+              onClick={[Function]}
+            />
+          </button>
+        </div>
         <div
           className="react-select-container css-2b097c-container"
           id="field-my-field"

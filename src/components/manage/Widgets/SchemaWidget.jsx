@@ -4,7 +4,11 @@
  */
 
 import { getFieldSchema } from '@plone/volto/actions';
-import { Field, ModalForm, SchemaWidgetFieldset } from '@plone/volto/components';
+import {
+  Field,
+  ModalForm,
+  SchemaWidgetFieldset,
+} from '@plone/volto/components';
 import { concat, findIndex, map, omit, slice, without } from 'lodash';
 import move from 'lodash-move';
 import PropTypes from 'prop-types';
@@ -14,43 +18,6 @@ import { defineMessages, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Confirm, Form, Grid, Icon, Message, Segment } from 'semantic-ui-react';
-
-// import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
-// import { connect } from 'react-redux';
-// import { compose } from 'redux';
-// import { concat, findIndex, map, omit, slice, without } from 'lodash';
-// import move from 'lodash-move';
-// import { Confirm, Form, Grid, Icon, Message, Segment } from 'semantic-ui-react';
-// import { defineMessages, injectIntl } from 'react-intl';
-// import { DragDropContext } from 'react-dnd';
-// import HTML5Backend from 'react-dnd-html5-backend';
-// import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
-
-// import {
-//   Field,
-//   ModalForm,
-//   SchemaWidgetFieldset,
-// } from '@plone/volto/components';
-
-const isUserCreated = (field) =>
-  !field.behavior ||
-  field.behavior.indexOf('plone.dexterity.schema.generated') > -1;
-
-const getItemStyle = (isDragging, draggableStyle) => ({
-  // some basic styles to make the items look a bit nicer
-  userSelect: 'none',
-
-  // change background colour if dragging
-  background: isDragging ? 'white' : 'transparent',
-
-  // styles we need to apply on draggables
-  ...draggableStyle,
-});
-
-const getListStyle = (isDraggingOver) => ({
-  background: isDraggingOver ? '#f4f4f4' : 'transparent',
-});
 
 const messages = defineMessages({
   add: {
@@ -121,6 +88,22 @@ const messages = defineMessages({
     id: 'Required',
     defaultMessage: 'Required',
   },
+  minLength: {
+    id: 'minLength',
+    defaultMessage: 'Minimum Length',
+  },
+  maxLength: {
+    id: 'maxLength',
+    defaultMessage: 'Maximum Length',
+  },
+  minimum: {
+    id: 'minimum',
+    defaultMessage: 'Start of the range',
+  },
+  maximum: {
+    id: 'maximum',
+    defaultMessage: 'End of the range (including the value itself)',
+  },
   deleteFieldset: {
     id: 'Are you sure you want to delete this fieldset including all fields?',
     defaultMessage:
@@ -134,6 +117,139 @@ const messages = defineMessages({
     id: 'Error',
     defaultMessage: 'Error',
   },
+});
+
+const makeFieldTypes = (listOfTypes, intl) => {
+  const result = listOfTypes.map((type) => [type.label, type.label]);
+  return result;
+};
+
+const schemaField = (factory, intl) => ({
+  fieldsets: [
+    {
+      id: 'default',
+      title: 'default',
+      fields: [
+        ...['title', 'description'],
+        ...((factory) => {
+          switch (factory) {
+            case 'Rich Text':
+              return ['maxLength'];
+            case 'URL':
+            case 'Password':
+            case 'Email':
+              return ['minLength', 'maxLength'];
+            case 'Date/Time':
+            case 'Date':
+            case 'Floating-point number':
+            case 'Integer':
+              return ['minimum', 'maximum'];
+            case 'File':
+            case 'Image':
+            case 'Yes/No':
+            case 'JSONField':
+            case 'Multiple Choice':
+            case 'Relation List':
+              return [];
+            default:
+              return ['minLength', 'maxLength'];
+          }
+        })(factory),
+        ...['required'],
+      ],
+    },
+  ],
+  properties: {
+    title: {
+      type: 'string',
+      title: intl.formatMessage(messages.title),
+    },
+    description: {
+      type: 'string',
+      widget: 'textarea',
+      title: intl.formatMessage(messages.idDescription),
+    },
+    required: {
+      type: 'boolean',
+      title: intl.formatMessage(messages.required),
+    },
+    ...((factory) => {
+      switch (factory) {
+        case 'Rich Text':
+          return {
+            maxLength: {
+              type: 'integer',
+              title: intl.formatMessage(messages.maxLength),
+            },
+          };
+        case 'URL':
+        case 'Password':
+        case 'Email':
+          return {
+            minLength: {
+              type: 'integer',
+              title: intl.formatMessage(messages.minLength),
+            },
+            maxLength: {
+              type: 'integer',
+              title: intl.formatMessage(messages.maxLength),
+            },
+          };
+        case 'Date/Time':
+        case 'Date':
+        case 'Floating-point number':
+        case 'Integer':
+          return {
+            minimum: {
+              type: 'integer',
+              title: intl.formatMessage(messages.minimum),
+            },
+            maximum: {
+              type: 'integer',
+              title: intl.formatMessage(messages.maximum),
+            },
+          };
+        case 'File':
+        case 'Image':
+        case 'Yes/No':
+        case 'JSONField':
+        case 'Multiple Choice':
+        case 'Relation List':
+          return {};
+        default:
+          return {
+            minLength: {
+              type: 'integer',
+              title: intl.formatMessage(messages.minLength),
+            },
+            maxLength: {
+              type: 'integer',
+              title: intl.formatMessage(messages.maxLength),
+            },
+          };
+      }
+    })(factory),
+  },
+  required: ['type', 'title'],
+});
+
+const isUserCreated = (field) =>
+  !field.behavior ||
+  field.behavior.indexOf('plone.dexterity.schema.generated') > -1;
+
+const getItemStyle = (isDragging, draggableStyle) => ({
+  // some basic styles to make the items look a bit nicer
+  userSelect: 'none',
+
+  // change background colour if dragging
+  background: isDragging ? 'white' : 'transparent',
+
+  // styles we need to apply on draggables
+  ...draggableStyle,
+});
+
+const getListStyle = (isDraggingOver) => ({
+  background: isDraggingOver ? '#f4f4f4' : 'transparent',
 });
 
 /**
@@ -230,7 +346,8 @@ class SchemaWidget extends Component {
    * @returns {undefined}
    */
   onAddField(values) {
-    // console.log('onAddField', values);
+    console.log('onAddField', values);
+
     const currentFieldsetFields = this.props.value.fieldsets[
       this.state.currentFieldset
     ].fields;
@@ -258,33 +375,95 @@ class SchemaWidget extends Component {
         [values.id]: {
           title: values.title,
           description: values.description,
-          ...((type) => {
-            switch (type) {
-              case 'textarea':
+          ...((factory) => {
+            switch (factory) {
+              case 'File':
                 return {
-                  type: 'string',
+                  type: 'object',
                   widget: 'textarea',
+                  factory,
                 };
-              case 'wysiwyg':
+              case 'Image':
+                return {
+                  type: 'object',
+                  factory,
+                };
+              case 'Rich Text':
                 return {
                   type: 'string',
                   widget: 'richtext',
+                  factory,
                 };
-              case 'checkbox':
+              case 'Email':
+                return {
+                  type: 'string',
+                  widget: 'email',
+                  factory,
+                };
+              case 'Yes/No':
                 return {
                   type: 'boolean',
+                  factory,
+                };
+              case 'Floating-point number':
+                return {
+                  type: 'number',
+                  factory,
+                };
+              case 'Integer':
+                return {
+                  type: 'integer',
+                  factory,
+                };
+              case 'Date/Time':
+                return {
+                  type: 'string',
+                  widget: 'datetime',
+                  factory,
+                };
+              case 'Date':
+                return {
+                  type: 'string',
+                  widget: 'date',
+                  factory,
+                };
+              case 'JSONField':
+                return {
+                  type: 'dict',
+                  widget: 'json',
+                  factory,
+                };
+              case 'Multiple Choice':
+              case 'Relation List':
+                return {
+                  type: 'array',
+                  factory,
+                };
+              case 'URL':
+                return {
+                  type: 'string',
+                  widget: 'url',
+                  factory,
+                };
+              case 'Password':
+                return {
+                  type: 'string',
+                  widget: 'password',
+                  factory,
                 };
               case 'selection':
                 return {
                   type: 'string',
                   choices: [],
+                  factory,
                 };
               default:
                 return {
                   type: 'string',
+                  factory,
                 };
             }
-          })(values.type),
+          })(values.factory),
         },
       },
       required: values.required
@@ -503,16 +682,16 @@ class SchemaWidget extends Component {
    * @returns {undefined}
    */
   onShowEditField(id, schema) {
-    const { contentType } = this.props.value;
-
+    // const { contentType } = this.props.value;
+    console.log('on show field schema', schema);
     this.setState({
       editField: {
         id,
-        schema,
+        // schema,
       },
     });
 
-    this.props.getFieldSchema(contentType, id);
+    // this.props.getFieldSchema(contentType, id);
   }
 
   /**
@@ -625,7 +804,7 @@ class SchemaWidget extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { value, error } = this.props;
+    const { value, error, vocabularyFields } = this.props;
     const nonUserCreatedFields = value.fieldsets[
       this.state.currentFieldset
     ].fields.filter(
@@ -639,6 +818,7 @@ class SchemaWidget extends Component {
     const lastUserCreatedFieldsIndex = hasChangeNote
       ? value.fieldsets[this.state.currentFieldset].fields.length - 1
       : value.fieldsets[this.state.currentFieldset].fields.length;
+    console.log('render this.props ', this.props);
 
     return (
       <div>
@@ -709,6 +889,7 @@ class SchemaWidget extends Component {
                     isDraggable={false}
                     isDissabled={true}
                     order={index}
+                    vocabularyFields={vocabularyFields}
                     onDelete={this.onShowDeleteField}
                     onChange={this.onChangeDefaultValue}
                     value={value.properties[field].default}
@@ -828,36 +1009,24 @@ class SchemaWidget extends Component {
                 {
                   id: 'default',
                   title: this.props.intl.formatMessage(messages.default),
-                  fields: ['type', 'title', 'id', 'description', 'required'],
+                  fields: [
+                    'factory',
+                    'title',
+                    'minLength',
+                    'description',
+                    'required',
+                  ],
                 },
               ],
               properties: {
-                type: {
+                factory: {
                   type: 'string',
                   title: this.props.intl.formatMessage(messages.type),
-                  choices: [
-                    ['text', this.props.intl.formatMessage(messages.string)],
-                    ['textarea', this.props.intl.formatMessage(messages.text)],
-                    [
-                      'wysiwyg',
-                      this.props.intl.formatMessage(messages.richtext),
-                    ],
-                    [
-                      'checkbox',
-                      this.props.intl.formatMessage(messages.checkbox),
-                    ],
-                    [
-                      'selection',
-                      this.props.intl.formatMessage(messages.selection),
-                    ],
-                  ],
+                  choices: makeFieldTypes(this.props.vocabularyFields?.items),
                 },
-                id: {
-                  type: 'string',
-                  title: this.props.intl.formatMessage(messages.idTitle),
-                  description: this.props.intl.formatMessage(
-                    messages.idDescription,
-                  ),
+                minLength: {
+                  type: 'integer',
+                  title: 'minLength',
                 },
                 title: {
                   type: 'string',
@@ -873,7 +1042,7 @@ class SchemaWidget extends Component {
                   title: this.props.intl.formatMessage(messages.required),
                 },
               },
-              required: ['type', 'id', 'title'],
+              required: ['type', 'title'],
             }}
           />
         )}
@@ -923,7 +1092,10 @@ class SchemaWidget extends Component {
                 this.props.value.required.indexOf(this.state.editField.id) !==
                 -1,
             }}
-            schema={this.state.editField.schema}
+            schema={schemaField(
+              this.props.value.properties[this.state.editField.id].factory,
+              this.props.intl,
+            )}
           />
         )}
         {this.state.editFieldset !== null && (
@@ -986,7 +1158,6 @@ export default compose(
   connect(
     (state, props) => ({
       value: JSON.parse(props.value),
-      fieldSchema: state.fieldSchema.fieldSchema,
     }),
     {
       getFieldSchema,

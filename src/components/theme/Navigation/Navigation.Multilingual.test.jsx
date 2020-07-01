@@ -1,10 +1,9 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
-import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
+import renderer from 'react-test-renderer';
+import configureStore from 'redux-mock-store';
 import { settings } from '~/config';
-
 import Navigation from './Navigation';
 
 beforeAll(() => {
@@ -36,7 +35,7 @@ describe('Navigation Multilingual', () => {
     const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter initialEntries={[{ pathname: '/en/bla' }]}>
-          <Navigation pathname="/en/bla" />
+          <Navigation getNavigation={() => {}} pathname="/en/bla" />
         </MemoryRouter>
       </Provider>,
     );
@@ -62,7 +61,7 @@ describe('Navigation Multilingual', () => {
     const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter initialEntries={[{ pathname: '/en/blog' }]}>
-          <Navigation pathname="/en/blog" />
+          <Navigation getNavigation={() => {}} pathname="/en/blog" />
         </MemoryRouter>
       </Provider>,
     );
@@ -88,7 +87,7 @@ describe('Navigation Multilingual', () => {
     const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter initialEntries={[{ pathname: '/en/blog/2017/12/27' }]}>
-          <Navigation pathname="/en/blog/2017/12/27" />
+          <Navigation getNavigation={() => {}} pathname="/en/blog/2017/12/27" />
         </MemoryRouter>
       </Provider>,
     );
@@ -115,7 +114,7 @@ describe('Navigation Multilingual', () => {
     const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter initialEntries={[{ pathname: '/en/blog' }]}>
-          <Navigation pathname="/en/blog" />
+          <Navigation getNavigation={() => {}} pathname="/en/blog" />
         </MemoryRouter>
       </Provider>,
     );

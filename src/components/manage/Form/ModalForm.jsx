@@ -3,9 +3,13 @@
  * @module components/manage/Form/ModalForm
  */
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import { Field, Icon } from '@plone/volto/components';
+import aheadSVG from '@plone/volto/icons/ahead.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 import { keys, map, uniq } from 'lodash';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import {
   Button,
   Form as UiForm,
@@ -14,11 +18,6 @@ import {
   Message,
   Modal,
 } from 'semantic-ui-react';
-import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-
-import { Field, Icon } from '@plone/volto/components';
-import aheadSVG from '@plone/volto/icons/ahead.svg';
-import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   required: {
@@ -204,7 +203,7 @@ class ModalForm extends Component {
       required: schema.required.indexOf(field) !== -1,
       onChange: this.onChangeField,
     }));
-
+    console.log('this.props', this.props);
     const state_errors = keys(this.state.errors).length > 0;
     return (
       <Modal open={this.props.open} className={this.props.className}>

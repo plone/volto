@@ -9,29 +9,31 @@ import {
   ChangePassword,
   ContactForm,
   Contents,
+  ContentType,
+  ContentTypeMetadata,
+  ContentTypes,
   Controlpanel,
   Controlpanels,
   CreateTranslation,
-  Edit,
-  Diff,
+  DatabaseInformation,
   Delete,
+  Diff,
+  Edit,
   History,
-  View,
-  NotFound,
   Login,
   Logout,
   ModerateComments,
+  NotFound,
   PasswordReset,
   Register,
   RequestPasswordReset,
   Search,
-  Sitemap,
   Sharing,
+  Sitemap,
   UsersControlpanel,
-  ContentTypes,
-  ContentType,
-  ContentTypeMetadata,
+  View
 } from '@plone/volto/components';
+import { addonRoutes } from '~/config';
 
 /**
  * Default routes array.
@@ -84,6 +86,10 @@ export const defaultRoutes = [
   {
     path: '/controlpanel/addons',
     component: AddonsControlpanel,
+  },
+  {
+    path: '/controlpanel/database',
+    component: DatabaseInformation,
   },
   {
     path: '/controlpanel/moderate-comments',
@@ -190,7 +196,11 @@ const routes = [
   {
     path: '/',
     component: App,
-    routes: defaultRoutes,
+    routes: [
+      // addon routes have a higher priority then default routes
+      ...(addonRoutes || []),
+      ...defaultRoutes,
+    ],
   },
 ];
 

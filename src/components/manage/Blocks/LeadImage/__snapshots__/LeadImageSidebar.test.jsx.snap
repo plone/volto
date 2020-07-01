@@ -372,7 +372,6 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
                   <input
                     checked={false}
                     className="hidden"
-                    disabled={false}
                     name="field-openLinkInNewTab"
                     readOnly={true}
                     tabIndex={0}

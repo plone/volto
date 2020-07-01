@@ -3,43 +3,11 @@
  * @module components/manage/Widgets/TextWidget
  */
 
-import { Icon } from '@plone/volto/components';
-import { map } from 'lodash';
+import { FormFieldWrapper, Icon } from '@plone/volto/components';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { defineMessages, injectIntl } from 'react-intl';
-import { Form, Grid, Icon as IconOld, Input, Label } from 'semantic-ui-react';
-
-const messages = defineMessages({
-  default: {
-    id: 'Default',
-    defaultMessage: 'Default',
-  },
-  idTitle: {
-    id: 'Short Name',
-    defaultMessage: 'Short Name',
-  },
-  idDescription: {
-    id: 'Used for programmatic access to the fieldset.',
-    defaultMessage: 'Used for programmatic access to the fieldset.',
-  },
-  title: {
-    id: 'Title',
-    defaultMessage: 'Title',
-  },
-  description: {
-    id: 'Description',
-    defaultMessage: 'Description',
-  },
-  required: {
-    id: 'Required',
-    defaultMessage: 'Required',
-  },
-  delete: {
-    id: 'Delete',
-    defaultMessage: 'Delete',
-  },
-});
+import { injectIntl } from 'react-intl';
+import { Input } from 'semantic-ui-react';
 
 /**
  * TextWidget component class.
@@ -71,6 +39,7 @@ class TextWidget extends Component {
       content: PropTypes.string,
     }),
     iconAction: PropTypes.func,
+    wrapped: PropTypes.bool,
   };
 
   /**
@@ -112,10 +81,6 @@ class TextWidget extends Component {
   render() {
     const {
       id,
-      title,
-      required,
-      description,
-      error,
       value,
       onChange,
       onEdit,
@@ -125,116 +90,37 @@ class TextWidget extends Component {
       intl,
       icon,
       iconAction,
-      fieldSet,
     } = this.props;
 
-    const schema = {
-      fieldsets: [
-        {
-          id: 'default',
-          title: intl.formatMessage(messages.default),
-          fields: ['title', 'id', 'description', 'required'],
-        },
-      ],
-      properties: {
-        id: {
-          type: 'string',
-          title: intl.formatMessage(messages.idTitle),
-          description: intl.formatMessage(messages.idDescription),
-        },
-        title: {
-          type: 'string',
-          title: intl.formatMessage(messages.title),
-        },
-        description: {
-          type: 'string',
-          widget: 'textarea',
-          title: intl.formatMessage(messages.description),
-        },
-        required: {
-          type: 'boolean',
-          title: intl.formatMessage(messages.required),
-        },
-      },
-      required: ['id', 'title'],
-    };
-
     return (
-      <Form.Field
-        inline
-        required={required}
-        error={error.length > 0}
-        className={description ? 'help text' : 'text'}
-        id={`${fieldSet || 'field'}-${id}`}
+      <FormFieldWrapper
+        {...this.props}
+        draggable={isDraggable}
+        className="text"
+        onEdit={onEdit ? () => onEdit(id) : null}
+        onDelete={onDelete}
+        intl={intl}
+        isDissabled={isDissabled}
       >
-        <Grid>
-          <Grid.Row stretched>
-            <Grid.Column width="4">
-              <div className="wrapper">
-                <label htmlFor={`field-${id}`}>
-                  {isDraggable ? (
-                    <i
-                      aria-hidden="true"
-                      className="grey bars icon drag handle"
-                    />
-                  ) : null}
-                  {title}
-                </label>
-              </div>
-            </Grid.Column>
-            <Grid.Column width="8">
-              {onEdit && !isDissabled && (
-                <div className="toolbar">
-                  <button
-                    className="item ui noborder button"
-                    onClick={() => onEdit(id, schema)}
-                  >
-                    <IconOld name="write square" size="large" color="blue" />
-                  </button>
-                  <button
-                    aria-label={this.props.intl.formatMessage(messages.delete)}
-                    className="item ui noborder button"
-                    onClick={() => onDelete(id)}
-                  >
-                    <IconOld name="close" size="large" color="red" />
-                  </button>
-                </div>
-              )}
-              <Input
-                style={{ background: 'transparent' }}
-                id={`field-${id}`}
-                name={id}
-                value={value || ''}
-                disabled={isDissabled}
-                icon={icon || null}
-                onChange={({ target }) =>
-                  onChange(id, target.value === '' ? undefined : target.value)
-                }
-                ref={(node) => {
-                  this.node = node;
-                }}
-              />
-              {map(error, (message) => (
-                <Label key={message} basic color="red" pointing>
-                  {message}
-                </Label>
-              ))}
-              {icon && iconAction && (
-                <button onClick={iconAction}>
-                  <Icon name={icon} size="18px" />
-                </button>
-              )}
-            </Grid.Column>
-          </Grid.Row>
-          {description && (
-            <Grid.Row stretched>
-              <Grid.Column stretched width="12">
-                <p className="help">{description}</p>
-              </Grid.Column>
-            </Grid.Row>
-          )}
-        </Grid>
-      </Form.Field>
+        <Input
+          id={`field-${id}`}
+          name={id}
+          value={value || ''}
+          disabled={isDissabled}
+          icon={icon || null}
+          onChange={({ target }) =>
+            onChange(id, target.value === '' ? undefined : target.value)
+          }
+          ref={(node) => {
+            this.node = node;
+          }}
+        />
+        {icon && iconAction && (
+          <button onClick={iconAction}>
+            <Icon name={icon} size="18px" />
+          </button>
+        )}
+      </FormFieldWrapper>
     );
   }
 }
