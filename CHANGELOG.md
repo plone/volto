@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Added default Export for the QuerystringWidget for the ListingBlock @steffenri
+
 ### Bugfix
 
 ### Internal
