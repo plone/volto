@@ -12,6 +12,12 @@
 
 ## 6.4.1 (2020-07-01)
 
+### Breaking
+
+### Feature
+
+- Allow JSON API calls to made to third-party servers @tiberiuichim
+
 ### Bugfix
 
 - Fixing bug for Image Preview on upload @iFlameing
