@@ -12,6 +12,8 @@
 
 ### Internal
 
+- Upgrade insecure packages `http-proxy`, `http-proxy-middleware` and `handlebars` @tiberiuichim
+
 ## 6.4.1 (2020-07-01)
 
 ### Breaking
