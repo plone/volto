@@ -9,7 +9,11 @@
 - Added Blocks Layout Editor within Dexterity Content-Types Controlpanel @avoinea #1517
 ### Bugfix
 
+- Fixing bug for Image Preview on upload @iFlameing
+
 ### Internal
+
+- Fix formatting of ``src/server.jsx`` @tiberiuichim
 
 ## 6.4.0 (2020-06-29)
 
@@ -19,7 +23,7 @@
 - Added item type as a tooltip in contents @nzambello
 - Added italian translations and translated array, token and select widget. @giuliaghisini
 - Added uploading image preview in FileWidget @iFlameing
-- Allow custom express middleware declared with ``settings.expressMiddleware``. See [Customizing Express](docs/source/customizing/express.md) @tiberiuichim
+- Allow custom express middleware declared with `settings.expressMiddleware`. See [Customizing Express](docs/source/customizing/express.md) @tiberiuichim
 
 ### Bugfix
 
