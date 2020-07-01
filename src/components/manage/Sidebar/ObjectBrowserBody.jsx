@@ -189,7 +189,6 @@ class ObjectBrowserBody extends Component {
       doesNodeContainClick(this.objectBrowser.current, e)
     )
       return;
-    debugger;
     this.props.closeObjectBrowser();
   };
 
@@ -317,7 +316,6 @@ class ObjectBrowserBody extends Component {
   };
 
   handleDoubleClickOnItem = (item) => {
-    debugger;
     if (this.props.mode === 'image') {
       if (item.is_folderish) {
         this.navigateTo(item['@id']);

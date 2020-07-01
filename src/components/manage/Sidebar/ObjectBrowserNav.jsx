@@ -48,7 +48,6 @@ const ObjectBrowserNav = ({
                   : !isSelectable(item),
             })}
             onClick={(e) => {
-              debugger;
               e.stopPropagation();
               handleClickOnItem(item);
             }}
@@ -80,7 +79,6 @@ const ObjectBrowserNav = ({
                   basic
                   icon
                   onClick={(e) => {
-                    debugger;
                     e.preventDefault();
                     e.stopPropagation();
                     navigateTo(item['@id']);
