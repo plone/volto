@@ -209,5 +209,18 @@ If **maximumSelectionSize** is set in _widgetOptions.pattern_options_, widget al
 
 You can also set the _maximumSelectionSize_ from plone when declaring a field for contenttype:
 
-`form.widget( "a_cura_di", RelatedItemsFieldWidget, vocabulary="plone.app.vocabularies.Catalog", pattern_options={ "maximumSelectionSize": 1, "selectableTypes": ["Event"]}, )`
-`form.widget( "notizie_correlate", RelatedItemsFieldWidget, vocabulary="plone.app.vocabularies.Catalog", pattern_options={ "maximumSelectionSize": 10, "selectableTypes": ["News Item"], }, )`
+```python
+form.widget(
+  "a_cura_di", RelatedItemsFieldWidget,
+  vocabulary="plone.app.vocabularies.Catalog",
+  pattern_options={ "maximumSelectionSize": 1, "selectableTypes": ["Event"]},
+  )
+```
+
+```python
+form.widget(
+  "notizie_correlate", RelatedItemsFieldWidget,
+  vocabulary="plone.app.vocabularies.Catalog",
+  pattern_options={ "maximumSelectionSize": 10,
+  "selectableTypes": ["News Item"], }, )
+```
