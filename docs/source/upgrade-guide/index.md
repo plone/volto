@@ -138,6 +138,19 @@ might be cleaned up in next major versions, so if for some reason you have custo
 the styling of your blocks in edit mode relying in the old structure, you might want to
 review and adapt them.
 
+### Update `config.js`
+
+!!! note
+    This is required since Volto version 6.1.0 [1541](https://github.com/plone/volto/pull/1541)
+
+Add these to the `config.js` of your project:
+
+```js
+export const addonRoutes = [];
+
+export const addonReducers = {};
+```
+
 ## Upgrading to Volto 5.x.x
 
 First, update the `package.json` of your Volto project to Volto 5.x.x.

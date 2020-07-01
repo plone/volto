@@ -151,6 +151,14 @@
     max-width: 100%;
     margin-right: auto;
     margin-left: auto;
+
+    &.medium {
+      max-width: 50%;
+    }
+
+    &.small {
+      max-width: 25%;
+    }
   }
 
   iframe {
@@ -806,5 +814,22 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
   .link-anchorlink-theme {
     color: #007eb1;
     text-decoration: underline;
+  }
+}
+
+.block.image.align.left,
+.block.image.align.right {
+  img {
+    &.large {
+      max-width: 50%;
+    }
+
+    &.medium {
+      max-width: 25%;
+    }
+
+    &.small {
+      max-width: 15%;
+    }
   }
 }

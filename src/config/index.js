@@ -68,7 +68,10 @@ export const settings = {
   supportedLanguages: ['en'],
   defaultLanguage: 'en',
   navDepth: 1,
+  expressMiddleware: [],
 };
+
+export const addonRoutes = [];
 
 export const widgets = {
   ...widgetMapping,
@@ -88,3 +91,5 @@ export const blocks = {
   groupBlocksOrder,
   initialBlocks,
 };
+
+export const addonReducers = {};

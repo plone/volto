@@ -56,6 +56,7 @@ const withObjectBrowser = (WrappedComponent) =>
       dataName = null,
       overlay = null,
       propDataName = null,
+      selectableTypes,
     } = {}) =>
       this.setState({
         isObjectBrowserOpen: true,
@@ -64,6 +65,7 @@ const withObjectBrowser = (WrappedComponent) =>
         dataName,
         overlay,
         propDataName,
+        selectableTypes,
       });
 
     closeObjectBrowser = () => this.setState({ isObjectBrowserOpen: false });
@@ -124,6 +126,7 @@ const withObjectBrowser = (WrappedComponent) =>
               mode={this.state.mode}
               onSelectItem={this.state.onSelectItem}
               dataName={this.state.dataName}
+              selectableTypes={this.state.selectableTypes}
             />
           </CSSTransition>
         </>

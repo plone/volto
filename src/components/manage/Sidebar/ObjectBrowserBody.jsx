@@ -70,6 +70,7 @@ class ObjectBrowserBody extends Component {
     href: '',
     onSelectItem: null,
     dataName: null,
+    selectableTypes: [],
   };
 
   /**
@@ -272,7 +273,7 @@ class ObjectBrowserBody extends Component {
     } else if (mode === 'image') {
       onChangeBlock(block, {
         ...data,
-        url: `${settings.apiPath}${url}`,
+        url,
         alt: title,
       });
     } else if (mode === 'link') {
@@ -291,6 +292,12 @@ class ObjectBrowserBody extends Component {
     });
   };
 
+  isSelectable = (item) => {
+    return this.props.selectableTypes.length > 0
+      ? this.props.selectableTypes.indexOf(item['@type']) >= 0
+      : true;
+  };
+
   handleClickOnItem = (item) => {
     if (this.props.mode === 'image') {
       if (item.is_folderish) {
@@ -300,7 +307,11 @@ class ObjectBrowserBody extends Component {
         this.onSelectItem(item);
       }
     } else {
-      this.onSelectItem(item);
+      if (this.isSelectable(item)) {
+        this.onSelectItem(item);
+      } else {
+        this.navigateTo(item['@id']);
+      }
     }
   };
 
@@ -314,8 +325,15 @@ class ObjectBrowserBody extends Component {
         this.props.closeObjectBrowser();
       }
     } else {
-      this.onSelectItem(item);
-      this.props.closeObjectBrowser();
+      if (
+        this.props.selectableTypes.length > 0 &&
+        this.props.selectableTypes.indexOf(item['@type']) < 0
+      ) {
+        this.navigateTo(item['@id']);
+      } else {
+        this.onSelectItem(item);
+        this.props.closeObjectBrowser();
+      }
     }
   };
 
@@ -416,6 +434,7 @@ class ObjectBrowserBody extends Component {
             handleDoubleClickOnItem={this.handleDoubleClickOnItem}
             mode={this.props.mode}
             navigateTo={this.navigateTo}
+            isSelectable={this.isSelectable}
           />
         </Segment.Group>
       </aside>,
