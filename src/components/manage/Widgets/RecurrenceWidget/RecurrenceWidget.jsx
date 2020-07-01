@@ -502,7 +502,9 @@ class RecurrenceWidget extends Component {
     var startMonth = this.props.formData.start
       ? moment(this.props.formData.start).month() + 1
       : currMonth;
-    var startWeekday = this.getWeekday(moment(formValues.dtstart).day() - 1);
+    var startWeekday = this.props.formData.start
+      ? this.getWeekday(moment(this.props.formData.start).day() - 1)
+      : currWeekday;
     formValues[field] = value;
 
     const defaultMonthDay = this.props.formData?.start
@@ -593,6 +595,7 @@ class RecurrenceWidget extends Component {
         break;
       case 'weekdayOfTheMonthIndex':
         var week_day = byweekday ? byweekday[0] : currWeekday; //get day from state. If not set get current day
+        console.log('week_day', week_day);
         //set nth value
         formValues.byweekday = value ? [week_day.nth(value)] : null;
         break;
@@ -636,7 +639,7 @@ class RecurrenceWidget extends Component {
         if (value === 'byday') {
           formValues = this.changeField(formValues, 'bymonthday', null); //default value
           formValues = this.changeField(formValues, 'byweekday', [
-            startWeekday.nth(1) || currWeekday.nth(1),
+            startWeekday.nth(1),
           ]); //default value
           formValues = this.changeField(
             formValues,

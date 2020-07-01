@@ -311,19 +311,19 @@ if (Cypress.env('API') === 'plone') {
       cy.get('.modal #yearly-byday').check({ force: true });
       cy.get('.modal .occurences .list > .item').should('have.length', 6);
       cy.get('.modal .occurences .list .item:first-of-type .content').contains(
-        'Tuesday, May 5, 2020',
+        'Monday, May 4, 2020',
       );
       cy.get('.modal .occurences .list .item:last-of-type .content').contains(
-        'Tuesday, May 7, 2030',
+        'Monday, May 6, 2030',
       );
 
       cy.get('.modal #weekdayOfTheMonthIndex').click().type('Third {enter}');
       cy.get('.modal .occurences .list > .item').should('have.length', 6);
       cy.get('.modal .occurences .list .item:first-of-type .content').contains(
-        'Tuesday, May 19, 2020',
+        'Monday, May 18, 2020',
       );
       cy.get('.modal .occurences .list .item:last-of-type .content').contains(
-        'Tuesday, May 21, 2030',
+        'Monday, May 20, 2030',
       );
 
       cy.get('.modal #weekdayOfTheMonth').click().type('Monday {enter}');
