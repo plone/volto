@@ -178,7 +178,10 @@ It works in 3 different mode:
 - **PropDataName** is the name of field wich value is _data_. It's used for _multiple_ mode.
 
 For example:
-`content:{ '@id': 'page-1', related_pages:[], image:{url:""}, link:{href:""} }`
+
+```js
+content:{ '@id': 'page-1', related_pages:[], image:{url:""}, link:{href:""} }
+```
 
 if we use object browser widget for fields:
 
@@ -192,35 +195,69 @@ Returns the component widget with _mode_ passed as argument.
 
 The default mode for ObjectBrowserWidget is multiple. If you would like to use this widget with link or image mode as widget field for a specific field id (for example), you could specify in in config.js as:
 
-`export const widgets = { widgetMapping:{ ...widgetMapping, id:{ ...widgetMapping.id, my_image_field: ObjectBrowserWidgetMode('image'), my_link_field: ObjectBrowserWidgetMode('link'), } }, default: defaultWidget, };`
+```jsx
+export const widgets = {
+  widgetMapping: {
+    ...widgetMapping,
+    id: {
+      ...widgetMapping.id,
+      my_image_field: ObjectBrowserWidgetMode('image'),
+      my_link_field: ObjectBrowserWidgetMode('link'),
+    },
+  },
+  default: defaultWidget,
+};
+```
 
 #### Selectable types
 
 If **selectableTypes** is set in _widgetOptions.pattern_options_, widget allows to select only items that matches types defined in _widgetOptions.pattern_options.selectableTypes_.
-`<ObjectBrowserWidget ... widgetOptions={{pattern_options:{selectableTypes:['News Item','Event']}}}>`
+
+```jsx
+<ObjectBrowserWidget ... widgetOptions={{pattern_options:{selectableTypes:['News Item','Event']}}}>
+```
 
 You can also set the _selectableTypes_ from plone when declaring a field for contenttype:
-`form.widget( "a_cura_di", RelatedItemsFieldWidget, vocabulary="plone.app.vocabularies.Catalog", pattern_options={ "maximumSelectionSize": 1, "selectableTypes": ['News Item','Event'], }, )`
+
+```jsx
+form.widget(
+  'a_cura_di',
+  RelatedItemsFieldWidget,
+  (vocabulary = 'plone.app.vocabularies.Catalog'),
+  (pattern_options = {
+    maximumSelectionSize: 1,
+    selectableTypes: ['News Item', 'Event'],
+  }),
+);
+```
 
 #### MaximumSelectionSize
 
 If **maximumSelectionSize** is set in _widgetOptions.pattern_options_, widget allows to select at most the **maximumSelectionSize** number of items defined in _widgetOptions.pattern_options.maximumSelectionSize_.
-`<ObjectBrowserWidget ... widgetOptions={{pattern_options:{maximumSelectionSize:2}}}>`
+
+```jsx
+<ObjectBrowserWidget ... widgetOptions={{pattern_options:{maximumSelectionSize:2}}}>
+```
 
 You can also set the _maximumSelectionSize_ from plone when declaring a field for contenttype:
 
-```python
+```jsx
 form.widget(
-  "a_cura_di", RelatedItemsFieldWidget,
-  vocabulary="plone.app.vocabularies.Catalog",
-  pattern_options={ "maximumSelectionSize": 1, "selectableTypes": ["Event"]},
-  )
+  'a_cura_di',
+  RelatedItemsFieldWidget,
+  (vocabulary = 'plone.app.vocabularies.Catalog'),
+  (pattern_options = { maximumSelectionSize: 1, selectableTypes: ['Event'] }),
+);
 ```
 
-```python
+```jsx
 form.widget(
-  "notizie_correlate", RelatedItemsFieldWidget,
-  vocabulary="plone.app.vocabularies.Catalog",
-  pattern_options={ "maximumSelectionSize": 10,
-  "selectableTypes": ["News Item"], }, )
+  'notizie_correlate',
+  RelatedItemsFieldWidget,
+  (vocabulary = 'plone.app.vocabularies.Catalog'),
+  (pattern_options = {
+    maximumSelectionSize: 10,
+    selectableTypes: ['News Item'],
+  }),
+);
 ```
