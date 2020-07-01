@@ -102,33 +102,19 @@ const withObjectBrowser = (WrappedComponent) =>
             >
               <ObjectBrowserBody
                 {...this.props}
+                data={
+                  this.state.propDataName
+                    ? this.props[this.state.propDataName]
+                    : this.props.data
+                }
                 closeObjectBrowser={this.closeObjectBrowser}
                 mode={this.state.mode}
                 onSelectItem={this.state.onSelectItem}
                 dataName={this.state.dataName}
+                selectableTypes={this.state.selectableTypes}
               />
             </CSSTransition>
           </>
-          <CSSTransition
-            in={this.state.isObjectBrowserOpen}
-            timeout={DEFAULT_TIMEOUT}
-            classNames="sidebar-container"
-            unmountOnExit
-          >
-            <ObjectBrowserBody
-              {...this.props}
-              data={
-                this.state.propDataName
-                  ? this.props[this.state.propDataName]
-                  : this.props.data
-              }
-              closeObjectBrowser={this.closeObjectBrowser}
-              mode={this.state.mode}
-              onSelectItem={this.state.onSelectItem}
-              dataName={this.state.dataName}
-              selectableTypes={this.state.selectableTypes}
-            />
-          </CSSTransition>
         </>
       );
     }
