@@ -20,6 +20,8 @@
 
 ### Bugfix
 
+- Fix styling and use of csss classes in ``InlineForm.jsx`` @tiberiuichim
+
 - Fixing bug for Image Preview on upload @iFlameing
 
 ### Internal
