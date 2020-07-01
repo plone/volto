@@ -189,6 +189,7 @@ class ObjectBrowserBody extends Component {
       doesNodeContainClick(this.objectBrowser.current, e)
     )
       return;
+    debugger;
     this.props.closeObjectBrowser();
   };
 
@@ -316,6 +317,7 @@ class ObjectBrowserBody extends Component {
   };
 
   handleDoubleClickOnItem = (item) => {
+    debugger;
     if (this.props.mode === 'image') {
       if (item.is_folderish) {
         this.navigateTo(item['@id']);
@@ -325,14 +327,11 @@ class ObjectBrowserBody extends Component {
         this.props.closeObjectBrowser();
       }
     } else {
-      if (
-        this.props.selectableTypes.length > 0 &&
-        this.props.selectableTypes.indexOf(item['@type']) < 0
-      ) {
-        this.navigateTo(item['@id']);
-      } else {
+      if (this.isSelectable(item)) {
         this.onSelectItem(item);
         this.props.closeObjectBrowser();
+      } else {
+        this.navigateTo(item['@id']);
       }
     }
   };

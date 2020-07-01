@@ -6,10 +6,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
-import { connect } from 'react-redux';
-import { map } from 'lodash';
+
 import unionClassNames from 'union-class-names';
-import { resetSearchContent, searchContent } from '@plone/volto/actions';
 import { addAppURL } from '@plone/volto/helpers';
 import EditorUtils from 'draft-js-plugins-utils';
 
@@ -124,13 +122,6 @@ class AddLinkForm extends Component {
       }
     }
     this.setState(nextState);
-    if (value && value !== '') {
-      this.props.searchContent('', {
-        Title: `*${value}*`,
-      });
-    } else {
-      this.props.resetSearchContent();
-    }
 
     if (clear) {
       this.props.setEditorState(
@@ -152,7 +143,6 @@ class AddLinkForm extends Component {
       value: url,
       isInvalid: false,
     });
-    this.props.resetSearchContent();
     this.props.setEditorState(
       EditorUtils.createLinkAtSelection(this.props.getEditorState(), url),
     );
@@ -167,7 +157,6 @@ class AddLinkForm extends Component {
   clear() {
     const nextState = { value: '' };
     this.setState(nextState);
-    this.props.resetSearchContent();
 
     this.props.setEditorState(
       EditorUtils.removeLinkAtSelection(this.props.getEditorState()),
@@ -219,7 +208,6 @@ class AddLinkForm extends Component {
     }
 
     setEditorState(EditorUtils.createLinkAtSelection(getEditorState(), url));
-    this.props.resetSearchContent();
     this.onClose();
   }
 
@@ -295,7 +283,7 @@ class AddLinkForm extends Component {
                         mode: 'link',
                         overlay: true,
                         onSelectItem: (url) => {
-                          this.onChange(url);
+                          this.onChange(addAppURL(url));
                         },
                       });
                     }}
@@ -320,32 +308,9 @@ class AddLinkForm extends Component {
             </div>
           </Form.Field>
         </div>
-        <ul style={{ margin: 0, paddingLeft: '35px' }}>
-          {map(this.props.search, (item) => (
-            <li style={{ padding: '5px' }} key={item['@id']}>
-              <button
-                style={{ cursor: 'pointer' }}
-                onClick={(e) => this.onSelectItem(e, addAppURL(item['@id']))}
-                title={item['@id']}
-                role="link"
-              >
-                {item.title}
-              </button>
-            </li>
-          ))}
-        </ul>
       </div>
     );
   }
 }
 
-export default compose(
-  injectIntl,
-  withObjectBrowser,
-  connect(
-    (state) => ({
-      search: state.search.items,
-    }),
-    { resetSearchContent, searchContent },
-  ),
-)(AddLinkForm);
+export default compose(injectIntl, withObjectBrowser)(AddLinkForm);

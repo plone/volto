@@ -47,8 +47,15 @@ const ObjectBrowserNav = ({
                     !item.is_folderish
                   : !isSelectable(item),
             })}
-            onClick={() => handleClickOnItem(item)}
-            onDoubleClick={() => handleDoubleClickOnItem(item)}
+            onClick={(e) => {
+              debugger;
+              e.stopPropagation();
+              handleClickOnItem(item);
+            }}
+            onDoubleClick={(e) => {
+              e.stopPropagation();
+              handleDoubleClickOnItem(item);
+            }}
           >
             <span title={`${item['@id']} (${item['@type']})`}>
               <Popup
@@ -73,6 +80,8 @@ const ObjectBrowserNav = ({
                   basic
                   icon
                   onClick={(e) => {
+                    debugger;
+                    e.preventDefault();
                     e.stopPropagation();
                     navigateTo(item['@id']);
                   }}
