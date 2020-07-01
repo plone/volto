@@ -199,7 +199,7 @@ The default mode for ObjectBrowserWidget is multiple. If you would like to use t
 If **selectableTypes** is set in _widgetOptions.pattern_options_, widget allows to select only items that matches types defined in _widgetOptions.pattern_options.selectableTypes_.
 `<ObjectBrowserWidget ... widgetOptions={{pattern_options:{selectableTypes:['News Item','Event']}}}>`
 
-You can also set the selectable type from plone when declaring a field for contenttype:
+You can also set the _selectableTypes_ from plone when declaring a field for contenttype:
 `form.widget( "a_cura_di", RelatedItemsFieldWidget, vocabulary="plone.app.vocabularies.Catalog", pattern_options={ "maximumSelectionSize": 1, "selectableTypes": ['News Item','Event'], }, )`
 
 #### MaximumSelectionSize
@@ -207,7 +207,7 @@ You can also set the selectable type from plone when declaring a field for conte
 If **maximumSelectionSize** is set in _widgetOptions.pattern_options_, widget allows to select at most the **maximumSelectionSize** number of items defined in _widgetOptions.pattern_options.maximumSelectionSize_.
 `<ObjectBrowserWidget ... widgetOptions={{pattern_options:{maximumSelectionSize:2}}}>`
 
-You can also set the maximumSelectionSize from plone when declaring a field for contenttype:
+You can also set the _maximumSelectionSize_ from plone when declaring a field for contenttype:
 
 `form.widget( "a_cura_di", RelatedItemsFieldWidget, vocabulary="plone.app.vocabularies.Catalog", pattern_options={ "maximumSelectionSize": 1, "selectableTypes": ["Event"]}, )`
 `form.widget( "notizie_correlate", RelatedItemsFieldWidget, vocabulary="plone.app.vocabularies.Catalog", pattern_options={ "maximumSelectionSize": 10, "selectableTypes": ["News Item"], }, )`
