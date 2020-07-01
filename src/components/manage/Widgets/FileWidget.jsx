@@ -39,7 +39,7 @@ const FileWidget = ({
       wrapped={wrapped}
       fieldSet={fieldSet}
     >
-      <Image className="image-preview" id="image-preview" size="small" />
+      <Image className="image-preview" id={`field-${id}-image`} size="small" />
       <Input
         id={`field-${id}`}
         name={id}
@@ -59,7 +59,7 @@ const FileWidget = ({
 
           let reader = new FileReader();
           reader.onload = function () {
-            let imagePreview = document.getElementById('image-preview');
+            let imagePreview = document.getElementById(`field-${id}-image`);
             imagePreview.src = reader.result;
           };
           reader.readAsDataURL(target.files[0]);
