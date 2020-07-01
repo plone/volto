@@ -12,7 +12,7 @@ This upgrade guide lists all breaking changes in Volto and explains the
 
 ## Upgrading to Volto 6.4.x
 
-A misspelled file has been renamed. If if import `strickthrough.svg` in your
+A misspelled file has been renamed. If you import `strickthrough.svg` in your
 project, you'll now find that file at `@plone/volto/icons/strikethrough.svg`.
 
 ## Upgrading to Volto 6.x.x
