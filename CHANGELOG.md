@@ -4,6 +4,8 @@
 
 ### Breaking
 
+- Fix filename of strickthrough.svg to strikethrough.svg @tiberiuichim
+
 ### Feature
 
 - Added default Export for the QuerystringWidget for the ListingBlock @steffenri
