@@ -29,7 +29,7 @@ exports[`renders a file widget component 1`] = `
       >
         <img
           className="ui small image image-preview"
-          id="image-preview"
+          id="field-my-field-image"
         />
         <div
           className="ui input"
