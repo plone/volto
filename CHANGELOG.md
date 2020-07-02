@@ -11,6 +11,7 @@
 ### Bugfix
 
 - Fixing bug to correctly assign classes to image sizes in View @steffenri
+- Fix datepicker z-index @giuliaghisini
 
 ### Internal
 
