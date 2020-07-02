@@ -4,6 +4,7 @@
  */
 
 import { endsWith, find, keys } from 'lodash';
+import { blocks } from '~/config';
 
 /**
  * Get blocks field.
@@ -48,4 +49,22 @@ export function hasBlocksData(props) {
       (key) => key !== 'volto.blocks' && endsWith(key, 'blocks'),
     ) !== undefined
   );
+}
+
+/*
+ * Pluggable method to test if a block has a set value (any non-empty value)
+ * @function blockHasValue
+ * @param {Object} data Block data
+ * @return {boolean} True if block has a non-empty value
+ */
+export function blockHasValue(data) {
+  const blockType = data['@type'];
+  const check = blocks.blocksConfig[blockType]?.blockHasValue;
+  if (!check) {
+    // console.error(
+    //   `No valid blockHasValue implementation for block type '${blockType}'!`,
+    // );
+    return false;
+  }
+  return check(data);
 }

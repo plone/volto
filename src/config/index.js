@@ -69,6 +69,7 @@ export const settings = {
   defaultLanguage: 'en',
   navDepth: 1,
   expressMiddleware: [],
+  defaultBlockType: 'text',
 };
 
 export const addonRoutes = [];
