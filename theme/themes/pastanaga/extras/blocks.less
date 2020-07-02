@@ -146,6 +146,8 @@
 }
 
 .block.align.center {
+  text-align: center;
+
   iframe,
   img {
     max-width: 100%;
@@ -171,6 +173,7 @@
   top: 20px;
   left: -32px;
 }
+
 // Hacks for the full width image
 body .ui.wrapper > .block.align.full,
 body.has-toolbar.has-sidebar .ui.wrapper > .ui.inner .block.align.full,
@@ -705,6 +708,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 .listing-item a {
   display: flex;
   width: 100%;
+
   @media only screen and (max-width: (@largestMobileScreen)) {
     flex-direction: column;
   }
@@ -716,6 +720,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
   img {
     width: 15%;
     margin-right: 20px;
+
     @media only screen and (max-width: (@largestMobileScreen)) {
       width: 100%;
       margin: 0;
@@ -739,6 +744,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
       color: @textColor;
     }
   }
+
   @media only screen and (max-width: (@largestMobileScreen)) {
     h3 {
       margin-top: 1em;

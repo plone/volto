@@ -11,6 +11,7 @@
 ### Bugfix
 
 - Fixing bug to correctly assign classes to image sizes in View @steffenri
+- Center aligned Images are now displayed like they are center aligned in the View @steffenri
 
 ### Internal
 
