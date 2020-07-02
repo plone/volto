@@ -42,6 +42,7 @@ const Types = ({ types, pathname, content, currentLanguage }) => {
         </ul>
       </div>
       {settings.isMultilingual &&
+        content['@components'].translations &&
         (() => {
           const translationsLeft = filter(
             settings.supportedLanguages,

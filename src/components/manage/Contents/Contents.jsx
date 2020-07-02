@@ -1509,7 +1509,7 @@ class Contents extends Component {
                           >
                             <FormattedMessage
                               id="Title"
-                              defaultMessage="NAME"
+                              defaultMessage="Title"
                             />
                           </Table.HeaderCell>
                           {map(

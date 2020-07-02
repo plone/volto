@@ -259,7 +259,7 @@ class SelectWidget extends Component {
         {...this.props}
         draggable={isDraggable}
         className="text"
-        onEdit={() => onEdit(id)}
+        onEdit={onEdit ? () => onEdit(id) : null}
         onDelete={onDelete}
         intl={intl}
         isDissabled={isDissabled}

@@ -32,6 +32,10 @@ const messages = defineMessages({
     id: 'Add fieldset',
     defaultMessage: 'Add fieldset',
   },
+  parentFieldSet: {
+    id: 'Parent fieldset',
+    defaultMessage: 'Parent fieldset',
+  },
   editField: {
     id: 'Edit field',
     defaultMessage: 'Edit field',
@@ -51,6 +55,10 @@ const messages = defineMessages({
   idDescription: {
     id: 'Used for programmatic access to the fieldset.',
     defaultMessage: 'Used for programmatic access to the fieldset.',
+  },
+  choices: {
+    id: 'Possible values',
+    defaultMessage: 'Possible values (Enter allowed choices one per line).',
   },
   string: {
     id: 'String',
@@ -124,13 +132,18 @@ const makeFieldTypes = (listOfTypes, intl) => {
   return result;
 };
 
-const schemaField = (factory, intl) => ({
+const makeFieldsetList = (listOfFieldsets, intl) => {
+  const result = listOfFieldsets.map((type) => [type.id, type.title]);
+  return result;
+};
+
+const schemaField = (factory, intl, fieldsets) => ({
   fieldsets: [
     {
       id: 'default',
       title: 'default',
       fields: [
-        ...['title', 'description'],
+        ...['title', 'description', 'parentFieldSet'],
         ...((factory) => {
           switch (factory) {
             case 'Rich Text':
@@ -148,9 +161,12 @@ const schemaField = (factory, intl) => ({
             case 'Image':
             case 'Yes/No':
             case 'JSONField':
-            case 'Multiple Choice':
+            case 'Relation Choice':
             case 'Relation List':
               return [];
+            case 'Multiple Choice':
+            case 'Choice':
+              return ['values'];
             default:
               return ['minLength', 'maxLength'];
           }
@@ -167,7 +183,12 @@ const schemaField = (factory, intl) => ({
     description: {
       type: 'string',
       widget: 'textarea',
-      title: intl.formatMessage(messages.idDescription),
+      title: intl.formatMessage(messages.description),
+    },
+    parentFieldSet: {
+      type: 'string',
+      title: intl.formatMessage(messages.parentFieldSet),
+      choices: makeFieldsetList(fieldsets),
     },
     required: {
       type: 'boolean',
@@ -196,7 +217,31 @@ const schemaField = (factory, intl) => ({
             },
           };
         case 'Date/Time':
+          return {
+            minimum: {
+              type: 'string',
+              title: intl.formatMessage(messages.minimum),
+              widget: 'datetime',
+            },
+            maximum: {
+              type: 'string',
+              title: intl.formatMessage(messages.maximum),
+              widget: 'datetime',
+            },
+          };
         case 'Date':
+          return {
+            minimum: {
+              type: 'string',
+              title: intl.formatMessage(messages.minimum),
+              widget: 'date',
+            },
+            maximum: {
+              type: 'string',
+              title: intl.formatMessage(messages.maximum),
+              widget: 'date',
+            },
+          };
         case 'Floating-point number':
         case 'Integer':
           return {
@@ -213,9 +258,18 @@ const schemaField = (factory, intl) => ({
         case 'Image':
         case 'Yes/No':
         case 'JSONField':
-        case 'Multiple Choice':
+        case 'Relation Choice':
         case 'Relation List':
           return {};
+        case 'Multiple Choice':
+        case 'Choice':
+          return {
+            values: {
+              type: 'string',
+              title: intl.formatMessage(messages.choices),
+              widget: 'textarea',
+            },
+          };
         default:
           return {
             minLength: {
@@ -231,6 +285,28 @@ const schemaField = (factory, intl) => ({
     })(factory),
   },
   required: ['type', 'title'],
+});
+
+const fieldsetSchema = (factory, intl) => ({
+  fieldsets: [
+    {
+      id: 'default',
+      title: intl.formatMessage(messages.default),
+      fields: ['title', 'id'],
+    },
+  ],
+  properties: {
+    id: {
+      type: 'string',
+      title: intl.formatMessage(messages.idTitle),
+      description: intl.formatMessage(messages.idDescription),
+    },
+    title: {
+      type: 'string',
+      title: intl.formatMessage(messages.title),
+    },
+  },
+  required: ['id', 'title'],
 });
 
 const isUserCreated = (field) =>
@@ -251,6 +327,23 @@ const getItemStyle = (isDragging, draggableStyle) => ({
 const getListStyle = (isDraggingOver) => ({
   background: isDraggingOver ? '#f4f4f4' : 'transparent',
 });
+
+/**
+"<p>wer</p><p>rew</p><p>ewr</p><p>erw</p>"
+ */
+const formatRichtextToArray = (richText) => {
+  // console.log('formatRichtextToArray ', richText);
+  const values =
+    richText && richText
+      ? richText
+          .split(/(\r\n|\n|\r)/gm)
+          .map((elem) => elem.trim())
+          .filter((elem) => elem !== '')
+      : null;
+
+  // console.log('formatRichtextToArray ', values);
+  return values ? { values } : {};
+};
 
 /**
  * SchemaWidget component class.
@@ -346,7 +439,8 @@ class SchemaWidget extends Component {
    * @returns {undefined}
    */
   onAddField(values) {
-    console.log('onAddField', values);
+    // console.log('onAddField', values);
+    const fieldId = values.title.trim().replace(' ', '_');
 
     const currentFieldsetFields = this.props.value.fieldsets[
       this.state.currentFieldset
@@ -355,10 +449,10 @@ class SchemaWidget extends Component {
     const newFieldsetFields = hasChangeNote
       ? [
           ...currentFieldsetFields.slice(0, currentFieldsetFields.length - 1),
-          values.id,
+          fieldId,
           currentFieldsetFields[currentFieldsetFields.length - 1],
         ]
-      : [...currentFieldsetFields, values.id];
+      : [...currentFieldsetFields, fieldId];
 
     this.onChange({
       ...this.props.value,
@@ -372,26 +466,22 @@ class SchemaWidget extends Component {
       ],
       properties: {
         ...this.props.value.properties,
-        [values.id]: {
+        [fieldId]: {
           title: values.title,
           description: values.description,
+          id: fieldId,
           ...((factory) => {
             switch (factory) {
-              case 'File':
-                return {
-                  type: 'object',
-                  widget: 'textarea',
-                  factory,
-                };
-              case 'Image':
-                return {
-                  type: 'object',
-                  factory,
-                };
-              case 'Rich Text':
+              case 'Date/Time':
                 return {
                   type: 'string',
-                  widget: 'richtext',
+                  widget: 'datetime',
+                  factory,
+                };
+              case 'Date':
+                return {
+                  type: 'string',
+                  widget: 'date',
                   factory,
                 };
               case 'Email':
@@ -400,9 +490,10 @@ class SchemaWidget extends Component {
                   widget: 'email',
                   factory,
                 };
-              case 'Yes/No':
+              case 'File':
                 return {
-                  type: 'boolean',
+                  type: 'object',
+                  widget: 'textarea',
                   factory,
                 };
               case 'Floating-point number':
@@ -415,16 +506,9 @@ class SchemaWidget extends Component {
                   type: 'integer',
                   factory,
                 };
-              case 'Date/Time':
+              case 'Image':
                 return {
-                  type: 'string',
-                  widget: 'datetime',
-                  factory,
-                };
-              case 'Date':
-                return {
-                  type: 'string',
-                  widget: 'date',
+                  type: 'object',
                   factory,
                 };
               case 'JSONField':
@@ -439,10 +523,11 @@ class SchemaWidget extends Component {
                   type: 'array',
                   factory,
                 };
-              case 'URL':
+              case 'Choice':
+              case 'Relation Choice':
                 return {
                   type: 'string',
-                  widget: 'url',
+                  widget: 'password',
                   factory,
                 };
               case 'Password':
@@ -451,10 +536,21 @@ class SchemaWidget extends Component {
                   widget: 'password',
                   factory,
                 };
-              case 'selection':
+              case 'Rich Text':
                 return {
                   type: 'string',
-                  choices: [],
+                  widget: 'richtext',
+                  factory,
+                };
+              case 'URL':
+                return {
+                  type: 'string',
+                  widget: 'url',
+                  factory,
+                };
+              case 'Yes/No':
+                return {
+                  type: 'boolean',
                   factory,
                 };
               default:
@@ -467,7 +563,7 @@ class SchemaWidget extends Component {
         },
       },
       required: values.required
-        ? [...this.props.value.required, values.id]
+        ? [...this.props.value.required, fieldId]
         : this.props.value.required,
     });
     this.onCancel();
@@ -511,6 +607,84 @@ class SchemaWidget extends Component {
     this.onCancel();
   }
 
+  editFieldset(
+    fieldsets,
+    parentFieldSet,
+    currentFieldset,
+    oldfieldId,
+    newfieldId,
+  ) {
+    const moveToFieldsetWithNewName = () => {
+      const newParentFieldsetIndex = fieldsets.findIndex(
+        (field) => field.id === parentFieldSet,
+      );
+      const indexOfChangeNote = fieldsets[
+        newParentFieldsetIndex
+      ].fields.indexOf('changeNote');
+      // remove from current fieldset
+      const fieldsetsWithoutField = [
+        ...slice(fieldsets, 0, currentFieldset),
+        {
+          ...fieldsets[currentFieldset],
+          fields: fieldsets[currentFieldset].fields.filter(
+            (fieldId) => fieldId !== oldfieldId,
+          ),
+        },
+        ...slice(fieldsets, currentFieldset + 1),
+      ];
+      // console.log('fieldsetsWithoutField', fieldsetsWithoutField);
+
+      const fieldsOfNewFieldset =
+        indexOfChangeNote > -1
+          ? [
+              ...fieldsetsWithoutField[newParentFieldsetIndex].fields.slice(
+                0,
+                indexOfChangeNote + 1,
+              ),
+              oldfieldId,
+              fieldsetsWithoutField[newParentFieldsetIndex].fields[
+                indexOfChangeNote
+              ],
+            ]
+          : [
+              ...fieldsetsWithoutField[newParentFieldsetIndex].fields,
+              oldfieldId,
+            ];
+
+      // add to new fieldset
+      const fieldsetsWithField = [
+        ...slice(fieldsetsWithoutField, 0, newParentFieldsetIndex),
+        {
+          ...fieldsetsWithoutField[newParentFieldsetIndex],
+          fields: fieldsOfNewFieldset,
+        },
+        ...slice(fieldsetsWithoutField, newParentFieldsetIndex + 1),
+      ];
+      // console.log('fieldsetsWithField', fieldsetsWithField);
+      return fieldsetsWithField;
+    };
+
+    const changeNameInFieldset = () => {
+      return [
+        ...slice(fieldsets, 0, currentFieldset),
+        {
+          ...fieldsets[currentFieldset],
+          fields: map(fieldsets[currentFieldset].fields, (field) =>
+            field === oldfieldId ? newfieldId : field,
+          ),
+        },
+        ...slice(fieldsets, currentFieldset + 1),
+      ];
+    };
+    // console.log('parentFieldSet', parentFieldSet);
+    // console.log('currentFieldset', currentFieldset);
+    const result =
+      parentFieldSet !== fieldsets[currentFieldset].id
+        ? moveToFieldsetWithNewName()
+        : changeNameInFieldset();
+    return result;
+  }
+
   /**
    * Edit field handler
    * @method onEditField
@@ -518,32 +692,46 @@ class SchemaWidget extends Component {
    * @returns {undefined}
    */
   onEditField(values) {
-    this.onChange({
+    // console.log('values', values);
+    let formattedValues = { ...values };
+    if (values.factory !== 'Date/Time' || values.factory !== 'Date') {
+      const listOfProp = ['minLength', 'maxLength', 'minimum', 'maximum'];
+      listOfProp.forEach((prop) => {
+        formattedValues = values[prop]
+          ? { ...formattedValues, ...{ [prop]: parseFloat(values[prop]) } }
+          : formattedValues;
+      });
+    }
+    // console.log('formattedValues', formattedValues);
+
+    const result = {
       ...this.props.value,
-      fieldsets: [
-        ...slice(this.props.value.fieldsets, 0, this.state.currentFieldset),
-        {
-          ...this.props.value.fieldsets[this.state.currentFieldset],
-          fields: map(
-            this.props.value.fieldsets[this.state.currentFieldset].fields,
-            (field) => (field === this.state.editField.id ? values.id : field),
-          ),
-        },
-        ...slice(this.props.value.fieldsets, this.state.currentFieldset + 1),
-      ],
+      fieldsets: formattedValues.parentFieldSet
+        ? this.editFieldset(
+            this.props.value.fieldsets,
+            formattedValues.parentFieldSet,
+            this.state.currentFieldset,
+            this.state.editField.id,
+            formattedValues.id,
+          )
+        : this.props.value.fieldsets,
       properties: {
         ...omit(this.props.value.properties, [this.state.editField.id]),
-        [values.id]: {
+        [formattedValues.id]: {
           ...this.props.value.properties[this.state.editField.id],
-          ...omit(values, ['id', 'required']),
+          ...omit(formattedValues, ['id', 'required', 'parentFieldSet']),
+          ...formatRichtextToArray(formattedValues.formattedValues),
         },
       },
-      required: values.required
+      required: formattedValues.required
         ? concat(without(this.props.value.required, this.state.editField.id), [
-            values.id,
+            formattedValues.id,
           ])
         : without(this.props.value.required, this.state.editField.id),
-    });
+    };
+    // console.log('onEditField result', result);
+    this.onChange(result);
+
     this.onCancel();
   }
 
@@ -682,16 +870,11 @@ class SchemaWidget extends Component {
    * @returns {undefined}
    */
   onShowEditField(id, schema) {
-    // const { contentType } = this.props.value;
-    console.log('on show field schema', schema);
     this.setState({
       editField: {
         id,
-        // schema,
       },
     });
-
-    // this.props.getFieldSchema(contentType, id);
   }
 
   /**
@@ -818,7 +1001,78 @@ class SchemaWidget extends Component {
     const lastUserCreatedFieldsIndex = hasChangeNote
       ? value.fieldsets[this.state.currentFieldset].fields.length - 1
       : value.fieldsets[this.state.currentFieldset].fields.length;
-    console.log('render this.props ', this.props);
+
+    const makeNonUserFields = () =>
+      map(
+        value.fieldsets[this.state.currentFieldset].fields.slice(
+          0,
+          userCreatedFieldsStartingIndex,
+        ),
+        (field, index) => (
+          <div
+            style={{ background: '#c7d5d859' }}
+            key={`${field}-${this.state.currentFieldset}-${index}`}
+          >
+            <Field
+              {...value.properties[field]}
+              id={field}
+              required={value.required.indexOf(field) !== -1}
+              onEdit={this.onShowEditField}
+              isDraggable={false}
+              isDissabled={true}
+              order={index}
+              vocabularyFields={vocabularyFields}
+              onDelete={this.onShowDeleteField}
+              onChange={this.onChangeDefaultValue}
+              value={value.properties[field].default}
+            />
+          </div>
+        ),
+      );
+
+    const makeUserFields = () =>
+      map(
+        value.fieldsets[this.state.currentFieldset].fields.slice(
+          userCreatedFieldsStartingIndex,
+          lastUserCreatedFieldsIndex,
+        ),
+        (field, index) => (
+          <Draggable
+            draggableId={field}
+            index={userCreatedFieldsStartingIndex + index}
+            key={`${field}-${this.state.currentFieldset}-${index}`}
+          >
+            {(provided, snapshot) => (
+              <div
+                ref={provided.innerRef}
+                {...provided.draggableProps}
+                {...provided.dragHandleProps}
+                style={getItemStyle(
+                  snapshot.isDragging,
+                  provided.draggableProps.style,
+                )}
+              >
+                <Field
+                  {...value.properties[field]}
+                  id={field}
+                  required={value.required.indexOf(field) !== -1}
+                  onEdit={this.onShowEditField}
+                  isDraggable={true}
+                  isDissabled={
+                    value.properties[field].factory === 'Image' ||
+                    value.properties[field].factory === 'File'
+                  }
+                  order={index}
+                  onDelete={this.onShowDeleteField}
+                  onChange={this.onChangeDefaultValue}
+                  key={`${field}-${this.state.currentFieldset}-${index}`}
+                  value={value.properties[field].default}
+                />
+              </div>
+            )}
+          </Draggable>
+        ),
+      );
 
     return (
       <div>
@@ -844,10 +1098,10 @@ class SchemaWidget extends Component {
                   {...provided.draggableProps}
                   style={getListStyle(snapshot.isDraggingOver)}
                 >
-                  {map(value.fieldsets, (item, index) => (
+                  {map(value.fieldsets, (fieldset, index) => (
                     <SchemaWidgetFieldset
-                      key={`${item.id}-${this.state.currentFieldset}-${index}`}
-                      title={item.title}
+                      key={`${fieldset.id}-${this.state.currentFieldset}-${index}`}
+                      title={fieldset.title}
                       order={index}
                       active={index === this.state.currentFieldset}
                       onClick={this.onSetCurrentFieldset}
@@ -855,6 +1109,14 @@ class SchemaWidget extends Component {
                       onShowDeleteFieldset={this.onShowDeleteFieldset}
                       onOrderFieldset={this.onOrderFieldset}
                       getItemStyle={getItemStyle}
+                      isDraggable={true}
+                      isDissabled={
+                        !(
+                          fieldset.id === 'default' ||
+                          fieldset.behavior ===
+                            'plone.dexterity.schema.generated'
+                        )
+                      }
                     />
                   ))}
                   <div className="item item-add">
@@ -871,32 +1133,9 @@ class SchemaWidget extends Component {
                 </div>
               )}
             </Droppable>
-            {map(
-              value.fieldsets[this.state.currentFieldset].fields.slice(
-                0,
-                userCreatedFieldsStartingIndex,
-              ),
-              (field, index) => (
-                <div
-                  style={{ background: '#c7d5d859' }}
-                  key={`${field}-${this.state.currentFieldset}-${index}`}
-                >
-                  <Field
-                    {...value.properties[field]}
-                    id={field}
-                    required={value.required.indexOf(field) !== -1}
-                    onEdit={this.onShowEditField}
-                    isDraggable={false}
-                    isDissabled={true}
-                    order={index}
-                    vocabularyFields={vocabularyFields}
-                    onDelete={this.onShowDeleteField}
-                    onChange={this.onChangeDefaultValue}
-                    value={value.properties[field].default}
-                  />
-                </div>
-              ),
-            )}
+
+            {makeNonUserFields()}
+
             <Droppable
               droppableId="fields-schema-edit"
               direction="vertical"
@@ -908,45 +1147,7 @@ class SchemaWidget extends Component {
                   {...provided.draggableProps}
                   style={getListStyle(snapshot.isDraggingOver)}
                 >
-                  {map(
-                    value.fieldsets[this.state.currentFieldset].fields.slice(
-                      userCreatedFieldsStartingIndex,
-                      lastUserCreatedFieldsIndex,
-                    ),
-                    (field, index) => (
-                      <Draggable
-                        draggableId={field}
-                        index={userCreatedFieldsStartingIndex + index}
-                        key={`${field}-${this.state.currentFieldset}-${index}`}
-                      >
-                        {(provided, snapshot) => (
-                          <div
-                            ref={provided.innerRef}
-                            {...provided.draggableProps}
-                            {...provided.dragHandleProps}
-                            style={getItemStyle(
-                              snapshot.isDragging,
-                              provided.draggableProps.style,
-                            )}
-                          >
-                            <Field
-                              {...value.properties[field]}
-                              id={field}
-                              required={value.required.indexOf(field) !== -1}
-                              onEdit={this.onShowEditField}
-                              isDraggable={true}
-                              isDissabled={false}
-                              order={index}
-                              onDelete={this.onShowDeleteField}
-                              onChange={this.onChangeDefaultValue}
-                              key={`${field}-${this.state.currentFieldset}-${index}`}
-                              value={value.properties[field].default}
-                            />
-                          </div>
-                        )}
-                      </Draggable>
-                    ),
-                  )}
+                  {makeUserFields()}
 
                   {provided.placeholder}
                 </div>
@@ -1024,10 +1225,6 @@ class SchemaWidget extends Component {
                   title: this.props.intl.formatMessage(messages.type),
                   choices: makeFieldTypes(this.props.vocabularyFields?.items),
                 },
-                minLength: {
-                  type: 'integer',
-                  title: 'minLength',
-                },
                 title: {
                   type: 'string',
                   title: this.props.intl.formatMessage(messages.title),
@@ -1046,40 +1243,6 @@ class SchemaWidget extends Component {
             }}
           />
         )}
-        {this.state.addFieldset !== null && (
-          <ModalForm
-            onSubmit={this.onAddFieldset}
-            onCancel={this.onCancel}
-            title={this.props.intl.formatMessage(messages.addFieldset)}
-            formData={{
-              id: '',
-              title: '',
-            }}
-            schema={{
-              fieldsets: [
-                {
-                  id: 'default',
-                  title: this.props.intl.formatMessage(messages.default),
-                  fields: ['title', 'id'],
-                },
-              ],
-              properties: {
-                id: {
-                  type: 'string',
-                  title: this.props.intl.formatMessage(messages.idTitle),
-                  description: this.props.intl.formatMessage(
-                    messages.idDescription,
-                  ),
-                },
-                title: {
-                  type: 'string',
-                  title: this.props.intl.formatMessage(messages.title),
-                },
-              },
-              required: ['id', 'title'],
-            }}
-          />
-        )}
         {this.state.editField !== null && (
           <ModalForm
             onSubmit={this.onEditField}
@@ -1091,11 +1254,31 @@ class SchemaWidget extends Component {
               required:
                 this.props.value.required.indexOf(this.state.editField.id) !==
                 -1,
+              parentFieldSet: this.props.value.fieldsets[
+                this.state.currentFieldset
+              ].id,
             }}
             schema={schemaField(
               this.props.value.properties[this.state.editField.id].factory,
               this.props.intl,
+              this.props.value.fieldsets.filter(
+                (fieldset) =>
+                  fieldset.id === 'default' ||
+                  fieldset.behavior === 'plone.dexterity.schema.generated',
+              ),
             )}
+          />
+        )}
+        {this.state.addFieldset !== null && (
+          <ModalForm
+            onSubmit={this.onAddFieldset}
+            onCancel={this.onCancel}
+            title={this.props.intl.formatMessage(messages.addFieldset)}
+            formData={{
+              id: '',
+              title: '',
+            }}
+            schema={fieldsetSchema(this.props.intl)}
           />
         )}
         {this.state.editFieldset !== null && (
@@ -1107,29 +1290,7 @@ class SchemaWidget extends Component {
               id: this.props.value.fieldsets[this.state.editFieldset].id,
               title: this.props.value.fieldsets[this.state.editFieldset].title,
             }}
-            schema={{
-              fieldsets: [
-                {
-                  id: 'default',
-                  title: this.props.intl.formatMessage(messages.default),
-                  fields: ['title', 'id'],
-                },
-              ],
-              properties: {
-                id: {
-                  type: 'string',
-                  title: this.props.intl.formatMessage(messages.idTitle),
-                  description: this.props.intl.formatMessage(
-                    messages.idDescription,
-                  ),
-                },
-                title: {
-                  type: 'string',
-                  title: this.props.intl.formatMessage(messages.title),
-                },
-              },
-              required: ['id', 'title'],
-            }}
+            schema={fieldsetSchema(this.props.intl)}
           />
         )}
         {this.state.deleteFieldset !== null && (

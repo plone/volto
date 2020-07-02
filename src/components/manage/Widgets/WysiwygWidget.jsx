@@ -12,45 +12,14 @@ import { map } from 'lodash';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import ReactDOMServer from 'react-dom/server';
-import { defineMessages, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import { connect, Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 import redraft from 'redraft';
 import { compose } from 'redux';
 import configureStore from 'redux-mock-store';
-import { Form, Icon, Label, TextArea } from 'semantic-ui-react';
+import { Form, Label, TextArea } from 'semantic-ui-react';
 import { settings } from '~/config';
-
-const messages = defineMessages({
-  default: {
-    id: 'Default',
-    defaultMessage: 'Default',
-  },
-  idTitle: {
-    id: 'Short Name',
-    defaultMessage: 'Short Name',
-  },
-  idDescription: {
-    id: 'Used for programmatic access to the fieldset.',
-    defaultMessage: 'Used for programmatic access to the fieldset.',
-  },
-  title: {
-    id: 'Title',
-    defaultMessage: 'Title',
-  },
-  description: {
-    id: 'Description',
-    defaultMessage: 'Description',
-  },
-  required: {
-    id: 'Required',
-    defaultMessage: 'Required',
-  },
-  delete: {
-    id: 'Delete',
-    defaultMessage: 'Delete',
-  },
-});
 
 /**
  * WysiwygWidget container class.
@@ -262,23 +231,6 @@ class WysiwygWidget extends Component {
         intl={intl}
         className="wysiwyg"
       >
-        {onEdit && !isDissabled && (
-          <div className="toolbar">
-            <button
-              className="item ui noborder button"
-              onClick={() => onEdit(id, this.schema)}
-            >
-              <Icon name="write square" size="large" color="blue" />
-            </button>
-            <button
-              aria-label={this.props.intl.formatMessage(messages.delete)}
-              className="item ui noborder button"
-              onClick={() => onDelete(id)}
-            >
-              <Icon name="close" size="large" color="red" />
-            </button>
-          </div>
-        )}
         <div style={{ boxSizing: 'initial' }}>
           {this.props.onChange ? (
             <>

@@ -38,26 +38,6 @@ exports[`renders a schema widget component 1`] = `
           role="button"
           tabIndex={0}
         />
-        <button
-          className="item ui noborder button"
-          onClick={[Function]}
-        >
-          <i
-            aria-hidden="true"
-            className="blue write square large icon"
-            onClick={[Function]}
-          />
-        </button>
-        <button
-          className="item ui noborder button"
-          onClick={[Function]}
-        >
-          <i
-            aria-hidden="true"
-            className="red close large icon"
-            onClick={[Function]}
-          />
-        </button>
       </div>
       <div
         className="item item-add"

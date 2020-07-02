@@ -1877,6 +1877,10 @@ msgstr "安全上の理由で、パスワードは暗号化されて保管され
 msgid "description_sent_password"
 msgstr "パスワード再設定のお願いをメール送信しました。まもなくあなたのメールボックスに届くはずです。メッセージを受け取ったら、その中にあるパスワード再設定用のURLにアクセスしてください。"
 
+#: components/manage/Contents/ContentsItem
+msgid "draft"
+msgstr ""
+
 #: components/theme/View/EventView
 msgid "event_alldates"
 msgstr ""
@@ -1925,6 +1929,10 @@ msgstr "HTML"
 msgid "image"
 msgstr "画像"
 
+#: components/manage/Contents/ContentsItem
+msgid "intranet"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "label_my_email_address_is"
 msgstr "私のメールアドレスは"
@@ -1957,9 +1965,21 @@ msgstr ""
 msgid "mostUsed"
 msgstr "よく使う物"
 
+#: components/manage/Contents/ContentsItem
+msgid "no workflow state"
+msgstr ""
+
 #: error
 msgid "or try a different page."
 msgstr "または、他のページを試してください。"
+
+#: components/manage/Contents/ContentsItem
+msgid "private"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+msgid "published"
+msgstr ""
 
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "querystring-widget-select"

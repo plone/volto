@@ -24,43 +24,51 @@ export const SchemaWidgetFieldsetComponent = ({
   onShowDeleteFieldset,
   onClick,
   getItemStyle,
+  isDraggable,
+  isDissabled,
 }) => (
   <Draggable draggableId={title} index={order} key={title}>
     {(provided, snapshot) => (
       <div
         className={`item${active ? ' active' : ''}`}
-        // style={{ opacity: isDragging ? 0.5 : 1 }}
         onClick={() => onClick(order)}
         ref={provided.innerRef}
         {...provided.draggableProps}
         style={getItemStyle(snapshot.isDragging, provided.draggableProps.style)}
       >
-        <i
-          aria-hidden="true"
-          className="grey bars icon drag handle"
-          {...provided.dragHandleProps}
-        />
+        {isDraggable && (
+          <i
+            aria-hidden="true"
+            className="grey bars icon drag handle"
+            {...provided.dragHandleProps}
+          />
+        )}
         {title}
-        <button
-          className="item ui noborder button"
-          onClick={(event) => {
-            event.stopPropagation();
-            event.preventDefault();
-            onShowEditFieldset(order);
-          }}
-        >
-          <Icon name="write square" size="large" color="blue" />
-        </button>
-        <button
-          className="item ui noborder button"
-          onClick={(event) => {
-            event.stopPropagation();
-            event.preventDefault();
-            onShowDeleteFieldset(order);
-          }}
-        >
-          <Icon name="close" size="large" color="red" />
-        </button>
+        {!isDissabled && (
+          <button
+            className="item ui noborder button"
+            onClick={(event) => {
+              event.stopPropagation();
+              event.preventDefault();
+              onShowEditFieldset(order);
+            }}
+          >
+            <Icon name="write square" size="large" color="blue" />
+          </button>
+        )}
+
+        {!isDissabled && (
+          <button
+            className="item ui noborder button"
+            onClick={(event) => {
+              event.stopPropagation();
+              event.preventDefault();
+              onShowDeleteFieldset(order);
+            }}
+          >
+            <Icon name="close" size="large" color="red" />
+          </button>
+        )}
       </div>
     )}
   </Draggable>
@@ -79,6 +87,8 @@ SchemaWidgetFieldsetComponent.propTypes = {
   onShowDeleteFieldset: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired,
   getItemStyle: PropTypes.func.isRequired,
+  isDraggable: PropTypes.bool,
+  isDissabled: PropTypes.bool,
 };
 
 export default SchemaWidgetFieldsetComponent;

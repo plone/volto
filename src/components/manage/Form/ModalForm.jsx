@@ -203,7 +203,7 @@ class ModalForm extends Component {
       required: schema.required.indexOf(field) !== -1,
       onChange: this.onChangeField,
     }));
-    console.log('this.props', this.props);
+
     const state_errors = keys(this.state.errors).length > 0;
     return (
       <Modal open={this.props.open} className={this.props.className}>
