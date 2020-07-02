@@ -137,7 +137,6 @@ class FormFieldWrapper extends Component {
                   </button>
                 </div>
               )}
-
               {wdg}
             </Grid.Column>
           </Grid.Row>

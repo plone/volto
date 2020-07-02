@@ -31,6 +31,7 @@ exports[`renders a file widget component 1`] = `
           className="ui input"
         >
           <input
+            disabled={false}
             id="field-my-field"
             name="my-field"
             onChange={[Function]}

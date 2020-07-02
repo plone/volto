@@ -53,6 +53,7 @@ const FileWidget = ({
         name={id}
         type="file"
         ref={fileInput}
+        disabled={isDissabled}
         onChange={({ target }) => {
           const file = target.files[0];
           readAsDataURL(file).then((data) => {

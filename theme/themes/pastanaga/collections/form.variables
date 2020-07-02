@@ -17,6 +17,7 @@
 /* Form Label */
 @labelFontSize: @14px;
 @labelFontWeight: 500;
+@listMarginRight: 50px;
 
 /* Input */
 
