@@ -19,7 +19,7 @@ const { map, has } = require('lodash');
 const glob = require('glob').sync;
 const RootResolverPlugin = require('./webpack-root-resolver');
 const createAddonsLoader = require('./create-addons-loader');
-const utils = require('./razzle-config-utils.js');
+const AddonConfigurationRegistry = require('./addon-registry');
 
 const fileLoaderFinder = makeLoaderFinder('file-loader');
 const eslintLoaderFinder = makeLoaderFinder('eslint-loader');
@@ -29,7 +29,7 @@ const languages = require('./src/constants/Languages');
 
 const packageJson = require(path.join(projectRootPath, 'package.json'));
 
-const registry = new utils.AddonConfigurationRegistry(projectRootPath);
+const registry = new AddonConfigurationRegistry(projectRootPath);
 
 // TODO: apply "customize Volto by addon", "customize addon by project" logic
 const customizations = {};

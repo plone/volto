@@ -153,4 +153,4 @@ class AddonConfigurationRegistry {
   }
 }
 
-module.exports = { AddonConfigurationRegistry };
+module.exports = AddonConfigurationRegistry;

@@ -1,17 +1,17 @@
 const path = require('path');
-const utils = require('../razzle-config-utils.js');
+const AddonConfigurationRegistry = require('../addon-registry');
 
 describe('AddonConfigurationRegistry', () => {
   it('works in Volto', () => {
     const base = path.join(__dirname, '..');
-    const reg = new utils.AddonConfigurationRegistry(base);
+    const reg = new AddonConfigurationRegistry(base);
     expect(reg.projectRootPath).toStrictEqual(base);
     expect(reg.addonNames).toStrictEqual([]);
   });
 
   it('works in a mock project directory', () => {
     const base = path.join(__dirname, 'fixtures', 'test-volto-project');
-    const reg = new utils.AddonConfigurationRegistry(base);
+    const reg = new AddonConfigurationRegistry(base);
 
     const voltoPath = `${base}/node_modules/@plone/volto`;
 
