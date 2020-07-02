@@ -30,7 +30,9 @@ const customBlocks = {
       addPermission: [], // Future proof (not implemented yet) add user permission role(s)
       view: [], // Future proof (not implemented yet) view user role(s)
     },
-    blockHasValue: (data) => { // A function that returns whether a given block data object represents a block that has a value which is not null or undefined
+    blockHasValue: (data) => {
+      // A function that returns whether a given block data object represents a block that has a value which is not null or undefined
+      // Who wants to create a default block type (set with the defaultBlockType setting) needs to implement blockHasValue to tell the system that the block has a value (see the page Configuration > Settings Reference)
       return blockDataIsNotNull(data) && blockDataIsNotUndefined(data);
     },
   },
