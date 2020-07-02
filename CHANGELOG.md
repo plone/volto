@@ -10,8 +10,10 @@
 
 ### Bugfix
 
+- fix text overflow in pastanaga-menu header if title is too long. @giuliaghisini
 - Fixing bug to correctly assign classes to image sizes in View @steffenri
 - Center aligned Images are now displayed like they are center aligned in the View @steffenri
+- Fix datepicker z-index @giuliaghisini
 
 ### Internal
 
