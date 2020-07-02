@@ -442,10 +442,14 @@
       border-bottom: 4px solid @silver-blue;
 
       h2 {
+        overflow: hidden;
+        max-width: 100%;
         flex: 1 0 auto;
         margin: 0;
         font-size: 16px;
         font-weight: 500;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
 
       a {
