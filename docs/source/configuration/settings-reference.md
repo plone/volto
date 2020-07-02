@@ -12,4 +12,4 @@ for implementing fat navigation menus. Defaults to `1`.
 
 # defaultBlockType
 
-By default this is `'text'` but can be set to other block type string from addons.
+The default block type in Volto is "text", which uses the current draftjs-based implementation of rich text editor. It can be set to other block type implementations.

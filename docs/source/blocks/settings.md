@@ -5,7 +5,7 @@ Since Volto have its own set of default blocks, you should extend them by adding
 
 ## Configuring a new block
 
-So we add this lines to the `src/config.js`:
+So we add these lines to the `src/config.js`:
 
 ```js
 import MainSliderViewBlock from '@package/components/Blocks/MainSlider/View';
@@ -29,6 +29,9 @@ const customBlocks = {
     security: {
       addPermission: [], // Future proof (not implemented yet) add user permission role(s)
       view: [], // Future proof (not implemented yet) view user role(s)
+    },
+    blockHasValue: (data) => { // A function that returns whether a given block data object represents a block that has a value which is not null or undefined
+      return blockDataIsNotNull(data) && blockDataIsNotUndefined(data);
     },
   },
 };
