@@ -56,6 +56,7 @@ class AddonConfigurationRegistry {
           modulePath: packagePath,
           packageJson: `${getPackageBasePath(packagePath)}/package.json`,
           isAddon: false,
+          name,
         };
 
         this.packages[name] = Object.assign(this.packages[name] || {}, pkg);
@@ -70,14 +71,15 @@ class AddonConfigurationRegistry {
    * default.
    */
   initPublishedPackages() {
-    this.addonNames.forEach((addonName) => {
-      if (!(addonName in this.packages)) {
-        const basePath = `${this.projectRootPath}/node_modules/${addonName}`;
+    this.addonNames.forEach((name) => {
+      if (!(name in this.packages)) {
+        const basePath = `${this.projectRootPath}/node_modules/${name}`;
         const packageJson = `${basePath}/package.json`;
         const pkg = require(packageJson);
         const main = pkg.main || 'src/index.js';
         const modulePath = path.dirname(require.resolve(`${basePath}/${main}`));
-        this.packages[addonName] = {
+        this.packages[name] = {
+          name,
           isAddon: true,
           modulePath,
           packageJson,
