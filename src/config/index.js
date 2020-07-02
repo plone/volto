@@ -70,6 +70,7 @@ let config = {
     supportedLanguages: ['en'],
     defaultLanguage: 'en',
     navDepth: 1,
+    expressMiddleware: [],
   },
   widgets: {
     ...widgetMapping,
