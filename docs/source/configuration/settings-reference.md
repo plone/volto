@@ -14,4 +14,4 @@ for implementing fat navigation menus. Defaults to `1`.
 
 The default block type in Volto is "text", which uses the current draftjs-based implementation of rich text editor. It can be set to other block type implementations.
 
-Who wants to set a `defaultBlockType` needs to implement `blockHasValue` to tell the system that that block has a default value. See the [Blocks > Settings](../blocks/settings.md) page.
+The block definition should also include the `blockHasValue` function. See this function signature in [Blocks > Settings](../blocks/settings.md).
