@@ -20,7 +20,7 @@ describe('AddonsControlpanel', () => {
             id: 'plone.app.whatever',
             title: 'Whatever',
             version: '1.0.0',
-            description: 'Does stuff and junk...',
+            description: 'Does stuff and junk…',
             uninstall_profile_id: 'plone.app.whatever:uninstall',
             upgrade_info: {
               available: true,
@@ -32,7 +32,7 @@ describe('AddonsControlpanel', () => {
             id: 'plone.app.somethingelse',
             title: 'Something Else',
             version: '1.0.0',
-            description: 'Does other things...',
+            description: 'Does other things…',
             uninstall_profile_id: 'plone.app.somethingelse:uninstall',
             upgrade_info: {
               available: false,
@@ -44,7 +44,7 @@ describe('AddonsControlpanel', () => {
             id: 'plone.app.whatever',
             title: 'Whatever',
             version: '1.0.0',
-            description: 'Does stuff and junk...',
+            description: 'Does stuff and junk…',
             uninstall_profile_id: 'plone.app.whatever:uninstall',
             upgrade_info: {
               available: true,

@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { Icon as IconOld } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { map, find, isBoolean, isObject } from 'lodash';
+import { map, find, isBoolean, isObject, intersection } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 import loadable from '@loadable/component';
 
@@ -64,9 +64,17 @@ const messages = defineMessages({
     id: 'Required',
     defaultMessage: 'Required',
   },
+  select: {
+    id: 'Select…',
+    defaultMessage: 'Select…',
+  },
   no_value: {
     id: 'No value',
     defaultMessage: 'No value',
+  },
+  no_options: {
+    id: 'No options',
+    defaultMessage: 'No options',
   },
 });
 
@@ -190,16 +198,25 @@ class SelectWidget extends Component {
    * @returns {undefined}
    */
   loadOptions = (search, previousOptions, additional) => {
-    const offset = this.state.search !== search ? 0 : additional.offset;
-    this.props.getVocabulary(this.props.vocabBaseUrl, search, offset);
-    this.setState({ search });
-    return {
-      options: this.props.choices,
-      hasMore: this.props.itemsTotal > 25,
-      additional: {
-        offset: offset === additional.offset ? offset + 25 : offset,
-      },
-    };
+    let hasMore = this.props.itemsTotal > previousOptions.length;
+    if (hasMore) {
+      const offset = this.state.search !== search ? 0 : additional.offset;
+      this.props.getVocabulary(this.props.vocabBaseUrl, search, offset);
+      this.setState({ search });
+
+      return {
+        options:
+          intersection(previousOptions, this.props.choices).length ===
+          this.props.choices.length
+            ? []
+            : this.props.choices,
+        hasMore: hasMore,
+        additional: {
+          offset: offset === additional.offset ? offset + 25 : offset,
+        },
+      };
+    }
+    return null;
   };
 
   /**
@@ -277,20 +294,26 @@ class SelectWidget extends Component {
           </div>
         )}
         {this.props.vocabBaseUrl ? (
-          <AsyncPaginate
-            className="react-select-container"
-            classNamePrefix="react-select"
-            options={this.props.choices || []}
-            styles={customSelectStyles}
-            theme={selectTheme}
-            components={{ DropdownIndicator, Option }}
-            value={this.state.selectedOption}
-            loadOptions={this.loadOptions}
-            onChange={this.handleChange}
-            additional={{
-              offset: 25,
-            }}
-          />
+          <>
+            <AsyncPaginate
+              className="react-select-container"
+              classNamePrefix="react-select"
+              options={this.props.choices || []}
+              styles={customSelectStyles}
+              theme={selectTheme}
+              components={{ DropdownIndicator, Option }}
+              value={this.state.selectedOption}
+              loadOptions={this.loadOptions}
+              onChange={this.handleChange}
+              additional={{
+                offset: 25,
+              }}
+              placeholder={this.props.intl.formatMessage(messages.select)}
+              noOptionsMessage={() =>
+                this.props.intl.formatMessage(messages.no_options)
+              }
+            />
+          </>
         ) : (
           <Select
             id={`field-${id}`}
