@@ -61,6 +61,7 @@
 
 ### Feature
 
+- Added Italian translations and translated array, token and select widget. @giuliaghisini
 - Added internationalization for French language @bsuttor #1588
 - Added selectableTypes in ObjectBrowserWidget @giuliaghisini
 
@@ -96,8 +97,6 @@
 - Added internationalization for Romanian language @alecghica #1521
 - Support loading additional reducers from the `config.addonReducers` key,
   to allow addons to provide their own reducers @tiberiuichim
-- Added param 'wrapped' for widgets, to use widgets without form wrappers. @giuliaghisini
-- Added internationalization for Romanian language @alecghica #1521
 - Add a no brainer image sizing option, using scales. This will be vastly improved when
   we adopt srcsets. @sneridagh
 
