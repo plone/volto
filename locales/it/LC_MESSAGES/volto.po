@@ -1240,7 +1240,7 @@ msgstr "Ripristina questa versione"
 
 #: components/manage/Contents/Contents
 msgid "Review state"
-msgstr "Data di revisione"
+msgstr "Stato del workflow"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Richtext"
@@ -1497,11 +1497,11 @@ msgstr "Categorie da rimuovere"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Target memory size per cache in bytes"
-msgstr ""
+msgstr "Dimensionei target della memoria per cache in byte"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Target number of objects in memory per cache"
-msgstr ""
+msgstr "Numero target di oggetti in memoria per cache"
 
 #: components/manage/Blocks/Listing/TemplateWidget
 msgid "Template"
@@ -1870,6 +1870,10 @@ msgstr "Per ragioni di sicurezza, le password vengono memorizzate in forma critt
 msgid "description_sent_password"
 msgstr "La istruzioni per reimpostare la tua password sono state inviate. Dovrebbero arrivare a breve nella tua casella di posta. Una volta ricevuto il messaggio, visita l'indirizzo indicato per reimpostare la password."
 
+#: components/manage/Contents/ContentsItem
+msgid "draft"
+msgstr "Bozza"
+
 #: components/theme/View/EventView
 msgid "event_alldates"
 msgstr "Tutte le date"
@@ -1918,6 +1922,10 @@ msgstr "HTML"
 msgid "image"
 msgstr "Immagine"
 
+#: components/manage/Contents/ContentsItem
+msgid "intranet"
+msgstr "Pubbliato internamente"
+
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "label_my_email_address_is"
 msgstr "Il mio indirizzo email è"
@@ -1950,9 +1958,21 @@ msgstr ""
 msgid "mostUsed"
 msgstr "Più usati"
 
+#: components/manage/Contents/ContentsItem
+msgid "no workflow state"
+msgstr "Nessun stato di workflow"
+
 #: error
 msgid "or try a different page."
 msgstr "oppure prova una pagina diversa."
+
+#: components/manage/Contents/ContentsItem
+msgid "private"
+msgstr "Privato"
+
+#: components/manage/Contents/ContentsItem
+msgid "published"
+msgstr "Pubblicato"
 
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "querystring-widget-select"

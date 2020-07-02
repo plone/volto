@@ -8,7 +8,7 @@ import deleteSVG from '@plone/volto/icons/delete.svg';
 import { readAsDataURL } from 'promise-file-reader';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Button, Input } from 'semantic-ui-react';
+import { Button, Image, Input } from 'semantic-ui-react';
 
 /**
  * FileWidget component class.
@@ -48,6 +48,7 @@ const FileWidget = ({
       intl={intl}
       isDissabled={isDissabled}
     >
+      <Image className="image-preview" id={`field-${id}-image`} size="small" />
       <Input
         id={`field-${id}`}
         name={id}
@@ -65,6 +66,13 @@ const FileWidget = ({
               filename: file.name,
             });
           });
+
+          let reader = new FileReader();
+          reader.onload = function () {
+            let imagePreview = document.getElementById(`field-${id}-image`);
+            imagePreview.src = reader.result;
+          };
+          reader.readAsDataURL(target.files[0]);
         }}
       />
       <div className="field-file-name">
