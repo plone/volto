@@ -129,22 +129,6 @@ resolve them, so in `package.json`:
 Make sure to upgrade your project's `.eslintrc` to the `.eslintrc.js` version,
 according to the [Upgrade Guide](/upgrade-guide).
 
-In your addon source code, add the following `.eslintrc`:
-
-```
-const path = require('path');
-const root = __dirname
-
-
-function getPackageBasePath(base) {
-  while (!fs.existsSync(`${base}/package.json`)) {
-    base = path.join(base, '../');
-  }
-  return path.resolve(base);
-}
-
-module.exports = require(`${getPackageBasePath(path.join(__dirname, '..'))}/.eslintrc`)
-```
 
 ## Loading addon configuration
 
