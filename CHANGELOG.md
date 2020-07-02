@@ -10,6 +10,8 @@
 
 ### Bugfix
 
+- Fixing bug to correctly assign classes to image sizes in View @steffenri
+
 ### Internal
 
 - Upgrade insecure packages `http-proxy`, `http-proxy-middleware` and `handlebars` @tiberiuichim
@@ -24,13 +26,13 @@
 
 ### Bugfix
 
-- Fix styling and use of csss classes in ``InlineForm.jsx`` @tiberiuichim
+- Fix styling and use of csss classes in `InlineForm.jsx` @tiberiuichim
 
 - Fixing bug for Image Preview on upload @iFlameing
 
 ### Internal
 
-- Fix formatting of ``src/server.jsx`` @tiberiuichim
+- Fix formatting of `src/server.jsx` @tiberiuichim
 
 ## 6.4.0 (2020-06-29)
 
