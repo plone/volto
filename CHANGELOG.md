@@ -1,6 +1,6 @@
 # Change Log
 
-## 6.4.2 (unreleased)
+## 6.5.0 (2020-07-03)
 
 ### Feature
 
