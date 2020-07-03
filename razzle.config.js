@@ -128,11 +128,26 @@ module.exports = {
       );
     }
 
+    let SENTRY = undefined;
+    if (process.env.SENTRY_DSN){
+      SENTRY = {
+        SENTRY_DSN: process.env.SENTRY_DSN
+      }
+    }
     if (target === 'web') {
+      if ((SENTRY) && (process.env.SENTRY_FRONTEND_CONFIG)){
+        try{
+          SENTRY.SENTRY_CONFIG = JSON.parse(process.env.SENTRY_FRONTEND_CONFIG)
+        }
+        catch(e){
+          // not a valid JSON
+        }
+      }
       config.plugins.unshift(
         new webpack.DefinePlugin({
           __CLIENT__: true,
           __SERVER__: false,
+          __SENTRY__: SENTRY ? JSON.stringify(SENTRY) : undefined
         }),
       );
 
@@ -184,10 +199,22 @@ module.exports = {
     }
 
     if (target === 'node') {
+      if (SENTRY){
+        SENTRY.SENTRY_CONFIG = undefined;
+          if (process.env.SENTRY_BACKEND_CONFIG){
+          try{
+            SENTRY.SENTRY_CONFIG = JSON.parse(process.env.SENTRY_BACKEND_CONFIG)
+          }
+          catch(e){
+            // not a valid JSON
+          }
+        }
+      }
       config.plugins.unshift(
         new webpack.DefinePlugin({
           __CLIENT__: false,
           __SERVER__: true,
+          __SENTRY__: SENTRY ? JSON.stringify(SENTRY) : undefined
         }),
       );
     }
