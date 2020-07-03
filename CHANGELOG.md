@@ -1,6 +1,6 @@
 # Change Log
 
-## 6.4.2 (unreleased)
+## 6.5.1 (unreleased)
 
 ### Breaking
 
@@ -9,11 +9,22 @@
 - Addons configuration loading. You can now declare addons in the addons key of
   package.json and they'll be automatically loaded. @tiberiuichim @sneridagh
 
+### Bugfix
+
+### Internal
+
+## 6.5.0 (2020-07-03)
+
+### Feature
+
 - Added default Export for the QuerystringWidget for the ListingBlock @steffenri
 
 ### Bugfix
 
+- Fix text overflow in pastanaga-menu header if title is too long. @giuliaghisini
 - Fixing bug to correctly assign classes to image sizes in View @steffenri
+- Center aligned Images are now displayed like they are center aligned in the View @steffenri
+- Fix datepicker z-index @giuliaghisini
 
 ### Internal
 
