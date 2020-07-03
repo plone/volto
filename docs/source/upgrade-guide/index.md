@@ -10,7 +10,7 @@ This upgrade guide lists all breaking changes in Volto and explains the
     dependencies might do when dealing with upgrades. We keep the generator up
     to date and in sync with current Volto release.
 
-## Upgrading to Volto 6.4.x
+## Upgrading to Volto 7.x.x
 
 A misspelled file has been renamed. If you import `strickthrough.svg` in your
 project, you'll now find that file at `@plone/volto/icons/strikethrough.svg`.

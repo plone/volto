@@ -11,9 +11,6 @@
 - Addons configuration loading. You can now declare addons in the addons key of
   package.json and they'll be automatically loaded. @tiberiuichim @sneridagh
 
-### Bugfix
-
-### Internal
 
 ## 6.5.0 (2020-07-03)
 
