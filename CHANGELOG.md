@@ -11,9 +11,6 @@
 
 - Allow JSON API calls to made to third-party servers @tiberiuichim
 
-- Addons configuration loading. You can now declare addons in the addons key of
-  package.json and they'll be automatically loaded. @tiberiuichim @sneridagh
-
 ### Bugfix
 
 ### Internal
