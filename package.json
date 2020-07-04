@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "6.4.1",
+  "version": "6.5.0",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -98,7 +98,8 @@
       "@plone/volto/(.*)$": "<rootDir>/src/$1",
       "~/config": "<rootDir>/src/config",
       "~/../locales/${lang}.json": "<rootDir>/locales/en.json",
-      "(.*)/locales/(.*)": "<rootDir>/locales/$2"
+      "(.*)/locales/(.*)": "<rootDir>/locales/$2",
+      "load-volto-addons": "<rootDir>/dummy-addons-loader.js"
     },
     "coverageThreshold": {
       "global": {
@@ -114,7 +115,12 @@
     "globalSetup": "./global-test-setup.js",
     "globals": {
       "__DEV__": true
-    }
+    },
+    "testMatch": [
+      "<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}",
+      "<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs}",
+      "<rootDir>/__tests__/**/?(*.)(spec|test).{js,jsx,mjs}"
+    ]
   },
   "prettier": {
     "trailingComma": "all",
@@ -362,8 +368,11 @@
     "yarn-deduplicate": "2.0.0",
     "yarnhook": "0.4.3"
   },
-  "devDependencies": {},
-  "resolutions" : {
+  "devDependencies": {
+    "crypto-random-string": "3.2.0",
+    "tmp": "0.2.1"
+  },
+  "resolutions": {
     "http-proxy": "^1.18.1"
   }
 }
