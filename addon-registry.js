@@ -18,6 +18,14 @@ function getPackageBasePath(base) {
   return path.resolve(base);
 }
 
+function fromEntries(pairs) {
+  const res = {};
+  pairs.forEach((p) => {
+    res[p[0]] = p[1];
+  });
+  return res;
+}
+
 class AddonConfigurationRegistry {
   constructor(projectRootPath) {
     const packageJson = (this.packageJson = require(path.join(
@@ -151,7 +159,7 @@ class AddonConfigurationRegistry {
       o,
       this.packages[o].modulePath,
     ]);
-    return Object.fromEntries(pairs);
+    return fromEntries(pairs);
   }
 }
 
