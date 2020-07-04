@@ -4,6 +4,8 @@
 
 ### Breaking
 
+- Fix filename of strickthrough.svg to strikethrough.svg @tiberiuichim
+
 ### Feature
 
 - Addons configuration loading. You can now declare addons in the addons key of
