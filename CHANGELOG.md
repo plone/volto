@@ -10,8 +10,10 @@
 
 - Addons configuration loading. You can now declare addons in the addons key of
   package.json and they'll be automatically loaded. @tiberiuichim @sneridagh
-
-- Allow JSON API calls to made to third-party servers @tiberiuichim
+- Addons can optionally include a `razzle.extend.js` file in their root. This
+  module needs to follow the same rules as the `razzle.config.js`. They change
+  the default Volto Razzle configuration, before it is passed to the Volto
+  project.
 
 ### Bugfix
 
