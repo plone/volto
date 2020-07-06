@@ -25,10 +25,6 @@
   the default Volto Razzle configuration, before it is passed to the Volto
   project. @tiberiuichim @sneridagh
 
-### Bugfix
-
-### Internal
-
 ## 6.5.0 (2020-07-03)
 
 ### Feature
