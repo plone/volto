@@ -264,6 +264,11 @@
       padding: 0;
     }
   }
+
+  .infos {
+    color: @grey;
+    font-size: 0.8rem !important;
+  }
 }
 
 #sidebar .pusher.expanded {
@@ -327,6 +332,7 @@
   padding: 20px 0;
 }
 
+#field-image_size .eight.wide.column,
 .align-tools {
   display: flex !important;
   align-items: center;
@@ -350,6 +356,17 @@
     border: 1px solid #2996da;
     background: transparent !important;
   }
+}
+
+#field-image_size .ui.grid > .stretched.row > .column {
+  flex-direction: row;
+}
+
+.image-sizes-text {
+  width: 24px;
+  font-size: @20px;
+  line-height: 24px;
+  text-align: center;
 }
 
 .ui.icon.input + button {

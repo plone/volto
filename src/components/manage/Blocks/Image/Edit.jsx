@@ -13,11 +13,13 @@ import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 import Dropzone from 'react-dropzone';
 
-import { settings } from '~/config';
-
 import { Icon, ImageSidebar, SidebarPortal } from '@plone/volto/components';
 import { createContent } from '@plone/volto/actions';
-import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
+import {
+  flattenToAppURL,
+  getBaseUrl,
+  isInternalURL,
+} from '@plone/volto/helpers';
 
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -103,7 +105,7 @@ class Edit extends Component {
     this.setState({
       uploading: true,
     });
-    readAsDataURL(file).then(data => {
+    readAsDataURL(file).then((data) => {
       const fields = data.match(/^data:(.*);(.*),(.*)$/);
       this.props.createContent(getBaseUrl(this.props.pathname), {
         '@type': 'Image',
@@ -168,12 +170,12 @@ class Edit extends Component {
    * @param {array} files File objects
    * @returns {undefined}
    */
-  onDrop = file => {
+  onDrop = (file) => {
     this.setState({
       uploading: true,
     });
 
-    readAsDataURL(file[0]).then(data => {
+    readAsDataURL(file[0]).then((data) => {
       const fields = data.match(/^data:(.*);(.*),(.*)$/);
       this.props.createContent(getBaseUrl(this.props.pathname), {
         '@type': 'Image',
@@ -196,7 +198,7 @@ class Edit extends Component {
    * @param {Object} e Event object
    * @returns {undefined}
    */
-  onKeyDownVariantMenuForm = e => {
+  onKeyDownVariantMenuForm = (e) => {
     if (e.key === 'Enter') {
       e.preventDefault();
       e.stopPropagation();
@@ -230,10 +232,26 @@ class Edit extends Component {
       >
         {data.url ? (
           <img
-            className={cx({ 'full-width': data.align === 'full' })}
+            className={cx({
+              'full-width': data.align === 'full',
+              large: data.size === 'l',
+              medium: data.size === 'm',
+              small: data.size === 's',
+            })}
             src={
-              data.url.includes(settings.apiPath)
-                ? `${flattenToAppURL(data.url)}/@@images/image`
+              isInternalURL(data.url)
+                ? // Backwards compat in the case that the block is storing the full server URL
+                  (() => {
+                    if (data.size === 'l')
+                      return `${flattenToAppURL(data.url)}/@@images/image`;
+                    if (data.size === 'm')
+                      return `${flattenToAppURL(
+                        data.url,
+                      )}/@@images/image/preview`;
+                    if (data.size === 's')
+                      return `${flattenToAppURL(data.url)}/@@images/image/mini`;
+                    return `${flattenToAppURL(data.url)}/@@images/image`;
+                  })()
                 : data.url
             }
             alt={data.alt || ''}
@@ -254,7 +272,7 @@ class Edit extends Component {
                       <Button
                         basic
                         icon
-                        onClick={e => {
+                        onClick={(e) => {
                           e.stopPropagation();
                           this.props.openObjectBrowser();
                         }}
@@ -281,14 +299,14 @@ class Edit extends Component {
                       value={this.state.url}
                       // Prevents propagation to the Dropzone and the opening
                       // of the upload browser dialog
-                      onClick={e => e.stopPropagation()}
+                      onClick={(e) => e.stopPropagation()}
                     />
                     {this.state.url && (
                       <Button.Group>
                         <Button
                           basic
                           className="cancel"
-                          onClick={e => {
+                          onClick={(e) => {
                             e.stopPropagation();
                             this.setState({ url: '' });
                           }}
@@ -302,7 +320,7 @@ class Edit extends Component {
                         basic
                         primary
                         disabled={!this.state.url}
-                        onClick={e => {
+                        onClick={(e) => {
                           e.stopPropagation();
                           this.onSubmitUrl();
                         }}
@@ -327,7 +345,7 @@ class Edit extends Component {
 export default compose(
   injectIntl,
   connect(
-    state => ({
+    (state) => ({
       request: state.content.create,
       content: state.content.data,
     }),

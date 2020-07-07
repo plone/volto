@@ -10,8 +10,17 @@ exports[`renders a view image component 1`] = `
     onDoubleClick={[Function]}
     role="presentation"
   >
-    <span>
-      front-page
+    <span
+      title="/front-page (Document)"
+    >
+      <span
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      />
+      Welcome to Plone
     </span>
   </li>
   <li
@@ -20,8 +29,17 @@ exports[`renders a view image component 1`] = `
     onDoubleClick={[Function]}
     role="presentation"
   >
-    <span>
-      news
+    <span
+      title="/news (Folder)"
+    >
+      <span
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      />
+      News
     </span>
   </li>
 </ul>

@@ -5,10 +5,10 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Grid, Input, Label, Icon as IconOld } from 'semantic-ui-react';
-import { map } from 'lodash';
+import { Input, Icon as IconOld } from 'semantic-ui-react';
+
 import { defineMessages, injectIntl } from 'react-intl';
-import { Icon } from '@plone/volto/components';
+import { Icon, FormFieldWrapper } from '@plone/volto/components';
 
 const messages = defineMessages({
   default: {
@@ -69,6 +69,7 @@ class TextWidget extends Component {
       content: PropTypes.string,
     }),
     iconAction: PropTypes.func,
+    wrapped: PropTypes.bool,
   };
 
   /**
@@ -108,10 +109,6 @@ class TextWidget extends Component {
   render() {
     const {
       id,
-      title,
-      required,
-      description,
-      error,
       value,
       onChange,
       onEdit,
@@ -119,7 +116,6 @@ class TextWidget extends Component {
       intl,
       icon,
       iconAction,
-      fieldSet,
     } = this.props;
 
     const schema = {
@@ -154,80 +150,43 @@ class TextWidget extends Component {
     };
 
     return (
-      <Form.Field
-        inline
-        required={required}
-        error={error.length > 0}
-        className={description ? 'help text' : 'text'}
-        id={`${fieldSet || 'field'}-${id}`}
-      >
-        <Grid>
-          <Grid.Row stretched>
-            <Grid.Column width="4">
-              <div className="wrapper">
-                <label htmlFor={`field-${id}`}>
-                  {onEdit && (
-                    <i
-                      aria-hidden="true"
-                      className="grey bars icon drag handle"
-                    />
-                  )}
-                  {title}
-                </label>
-              </div>
-            </Grid.Column>
-            <Grid.Column width="8">
-              {onEdit && (
-                <div className="toolbar">
-                  <button
-                    className="item ui noborder button"
-                    onClick={() => onEdit(id, schema)}
-                  >
-                    <IconOld name="write square" size="large" color="blue" />
-                  </button>
-                  <button
-                    aria-label={this.props.intl.formatMessage(messages.delete)}
-                    className="item ui noborder button"
-                    onClick={() => onDelete(id)}
-                  >
-                    <IconOld name="close" size="large" color="red" />
-                  </button>
-                </div>
-              )}
-              <Input
-                id={`field-${id}`}
-                name={id}
-                value={value || ''}
-                disabled={onEdit !== null}
-                icon={icon || null}
-                onChange={({ target }) =>
-                  onChange(id, target.value === '' ? undefined : target.value)
-                }
-                ref={node => {
-                  this.node = node;
-                }}
-              />
-              {map(error, message => (
-                <Label key={message} basic color="red" pointing>
-                  {message}
-                </Label>
-              ))}
-              {icon && iconAction && (
-                <button onClick={iconAction}>
-                  <Icon name={icon} size="18px" />
-                </button>
-              )}
-            </Grid.Column>
-          </Grid.Row>
-          {description && (
-            <Grid.Row stretched>
-              <Grid.Column stretched width="12">
-                <p className="help">{description}</p>
-              </Grid.Column>
-            </Grid.Row>
-          )}
-        </Grid>
-      </Form.Field>
+      <FormFieldWrapper {...this.props} draggable={true} className="text">
+        {onEdit && (
+          <div className="toolbar">
+            <button
+              className="item ui noborder button"
+              onClick={() => onEdit(id, schema)}
+            >
+              <IconOld name="write square" size="large" color="blue" />
+            </button>
+            <button
+              aria-label={this.props.intl.formatMessage(messages.delete)}
+              className="item ui noborder button"
+              onClick={() => onDelete(id)}
+            >
+              <IconOld name="close" size="large" color="red" />
+            </button>
+          </div>
+        )}
+        <Input
+          id={`field-${id}`}
+          name={id}
+          value={value || ''}
+          disabled={onEdit !== null}
+          icon={icon || null}
+          onChange={({ target }) =>
+            onChange(id, target.value === '' ? undefined : target.value)
+          }
+          ref={(node) => {
+            this.node = node;
+          }}
+        />
+        {icon && iconAction && (
+          <button onClick={iconAction}>
+            <Icon name={icon} size="18px" />
+          </button>
+        )}
+      </FormFieldWrapper>
     );
   }
 }

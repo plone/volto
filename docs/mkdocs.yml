@@ -22,6 +22,7 @@ nav:
   - Design principles: 'design-principles/index.md'
   - Configuration:
       - What is configurable?: 'configuration/how-to.md'
+      - Settings reference guide: 'configuration/settings-reference.md'
       - Internal proxy: 'configuration/internalproxy.md'
       - Richeditor settings: 'configuration/richeditor-settings.md'
       - Multilingual: 'configuration/multilingual.md'
@@ -41,6 +42,7 @@ nav:
       - Creating new views: 'customizing/creating-views.md'
       - Creating Add-on packages: 'customizing/add-ons.md'
       - Internationalization: 'customizing/i18n.md'
+      - Express middleware: 'customizing/express.md'
   - Blocks:
       - Introduction: 'blocks/introduction.md'
       - Anatomy: 'blocks/anatomy.md'
@@ -49,7 +51,7 @@ nav:
   - Recipes:
       - App component insertion point: 'recipes/appextras.md'
       - Lazy loading and code splitting: 'recipes/lazyload.md'
-      - Overriding i18n messages: 'recipes/overridei18n'
+      - Overriding i18n messages: 'recipes/overridei18n.md'
   - Deploying:
       - Simple deployment: 'deploying/simple.md'
       - Using PM2: 'deploying/pm2.md'
@@ -63,6 +65,7 @@ nav:
       - Routing: 'developer-guidelines/routing.md'
       - Linting: 'developer-guidelines/linting.md'
       - Language features: 'developer-guidelines/language-features.md'
+      - Acceptance tests: 'developer-guidelines/acceptance-tests.md'
   - Contributing:
       - Guidelines: 'contributing/guidelines.md'
 

@@ -11,11 +11,11 @@ const Types = ({ types, pathname, content, currentLanguage }) => {
   return types.length > 0 ? (
     <div className="menu-more pastanaga-menu">
       <header>
-        <FormattedMessage id="Add Content" defaultMessage="Add Content..." />
+        <FormattedMessage id="Add Content" defaultMessage="Add Content…" />
       </header>
       <div className="pastanaga-menu-list">
         <ul>
-          {map(filter(types), item => {
+          {map(filter(types), (item) => {
             // Strip the type for the item we want to add
             const contentTypeToAdd = item['@id'].split('@types/')[1];
             // If we are in the root or in /contents, we need to strip the preceeding / and /contents
@@ -42,14 +42,16 @@ const Types = ({ types, pathname, content, currentLanguage }) => {
         </ul>
       </div>
       {settings.isMultilingual &&
+        content['@components'].translations &&
         (() => {
           const translationsLeft = filter(
             settings.supportedLanguages,
-            lang =>
+            (lang) =>
               !Boolean(
-                find(content['@components'].translations.items, {
-                  language: lang,
-                }),
+                content['@components'].translations &&
+                  find(content['@components'].translations.items, {
+                    language: lang,
+                  }),
               ) && currentLanguage !== lang,
           );
 
@@ -58,13 +60,13 @@ const Types = ({ types, pathname, content, currentLanguage }) => {
               <>
                 <header>
                   <FormattedMessage
-                    id="Add Translation..."
-                    defaultMessage="Add Translation..."
+                    id="Add Translation…"
+                    defaultMessage="Add Translation…"
                   />
                 </header>
                 <div className="pastanaga-menu-list">
                   <ul>
-                    {map(translationsLeft, lang => (
+                    {map(translationsLeft, (lang) => (
                       <li>
                         <Link
                           to={{
@@ -111,7 +113,7 @@ Types.propTypes = {
 };
 
 export default connect(
-  state => ({
+  (state) => ({
     types: filter(state.types.types, 'addable'),
     currentLanguage: state.intl.locale,
   }),

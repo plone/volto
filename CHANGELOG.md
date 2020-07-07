@@ -1,16 +1,279 @@
 # Change Log
 
-## 5.3.1 (unreleased)
+## 7.0.1 (unreleased)
 
 ### Breaking
 
 ### Feature
 
+### Bugfix
+
+### Internal
+
+## 7.0.0 (2020-07-06)
+
+### Breaking
+
+- Fix filename of strickthrough.svg to strikethrough.svg @tiberiuichim
+
+### Feature
+
+- Addons configuration loading. You can now declare addons in the addons key of
+  package.json and they'll be automatically loaded. @tiberiuichim @sneridagh
+
+
+## 6.5.0 (2020-07-03)
+
+### Feature
+
+- Added default Export for the QuerystringWidget for the ListingBlock @steffenri
+
+### Bugfix
+
+- Fix text overflow in pastanaga-menu header if title is too long. @giuliaghisini
+- Fixing bug to correctly assign classes to image sizes in View @steffenri
+- Center aligned Images are now displayed like they are center aligned in the View @steffenri
+- Fix datepicker z-index @giuliaghisini
+
+### Internal
+
+- Upgrade insecure packages `http-proxy`, `http-proxy-middleware` and `handlebars` @tiberiuichim
+
+## 6.4.1 (2020-07-01)
+
+### Breaking
+
+### Feature
+
+- Allow JSON API calls to made to third-party servers @tiberiuichim
+
+### Bugfix
+
+- Fix styling and use of csss classes in `InlineForm.jsx` @tiberiuichim
+
+- Fixing bug for Image Preview on upload @iFlameing
+
+### Internal
+
+- Fix formatting of `src/server.jsx` @tiberiuichim
+
+## 6.4.0 (2020-06-29)
+
+### Feature
+
+- Translated workflow state in contents @nzambello
+- Added item type as a tooltip in contents @nzambello
+- Added italian translations and translated array, token and select widget. @giuliaghisini
+- Added uploading image preview in FileWidget @iFlameing
+- Allow custom express middleware declared with `settings.expressMiddleware`. See [Customizing Express](docs/source/customizing/express.md) @tiberiuichim
+
+### Bugfix
+
+- Fix the toolbar dropdown to add content types if isMultilingual is enabled
+  but a type is not marked as translatable. @csenger
+- Usage of Contettype label in Add component. @giuliaghisini
+
+### Internal
+
+- Update upgrade-guide to for `addonRoutes` and `addonReducers` @jackahl
+
+## 6.3.0 (2020-06-22)
+
+### Feature
+
+- Added Italian translations and translated array, token and select widget. @giuliaghisini
+- Added internationalization for French language @bsuttor #1588
+- Added selectableTypes in ObjectBrowserWidget @giuliaghisini
+
+### Bugfix
+
+- added export for ObjectBrowserWidget in component/index.js @giuliaghisini
+- Fixed duplicated items in SelectWidget and ArrayWidget @giuliaghisini
+- Update German translation @timo
+- Removed broken preview image in ContentsUploadModal if uploaded item is not an image. @giuliaghisini
+- Localized content upload modal last modified date @nzambello
+- Fix overflow in folder contents with long titles @nzambello
+- Fixed object browser widget when a selected items is deleted. Plone.restapi returns a null object. @giuliaghisini
+- Fixed error on adding new item if parent item is not translated when multilingual is set @giuliaghisini
+- Added translations for select in querystring widget @nzambello
+
+## 6.2.0 (2020-06-14)
+
+### Feature
+
+- Added database information component in ControlPanels @iFlameing
+
+### Internal
+
+- Add yarn-deduplicate. @timo
+
+## 6.1.0 (2020-06-12)
+
+### Feature
+
+- Include `config.addonRoutes` in router configuration. This allows addons to
+  override route children defined for the `App` component.
+- Added param 'wrapped' for widgets, to use widgets without form wrappers. @giuliaghisini
+- Added internationalization for Romanian language @alecghica #1521
+- Support loading additional reducers from the `config.addonReducers` key,
+  to allow addons to provide their own reducers @tiberiuichim
+- Add a no brainer image sizing option, using scales. This will be vastly improved when
+  we adopt srcsets. @sneridagh
+
+### Bugfix
+
+- Removed a regex check in default view, we already have that check implemented in `toHTML.jsx` L173s @nileshgulia1
+- UX and UI improvements to `DateTimeWidget` @sneridagh
+- Fix an UTC handling for edge cases in `DateTimeWidget` @sneridagh
+- Do not store the server information of the image block in the block @sneridagh
+- expose `blocks` and `blocks_layout` only editing content types @nileshgulia1
+- Small fix for `TextAreaWidget` and max_lenght @sneridagh
+
+## 6.0.0 (2020-05-18)
+
+### Breaking
+
+- Removed support for CSS modules, since Razzle 3.1.x do not support them @sneridagh
+- Updated Volto dependencies - See https://docs.voltocms.com/upgrade-guide/ for more information @sneridagh
+- By adding `react-beautiful-dnd` in the block editor we are introducing new wrappers
+  (belonging to the lib machinery) in the structure. The original structure and class
+  names are still in there for maintain maximum backwards compatibility. Those might be
+  cleaned up in next major versions, so if for some reason you have customized the
+  styling of your blocks in edit mode relying in the old structure, you might want to
+  review and adapt them @sneridagh
+
+### Feature
+
+- Added `react-beautiful-dnd` in core for edit form @iFlameing
+
+### Bugfix
+
+- Improve `isInternalURL` helper to match also anchors @sneridagh
+- Fix local build when no RAZZLE_API_PATH is set @sneridagh
+- Fix `WysiwygWidget` redraft HTML conversion when creating an empty paragraph force a `<br />` on it @sneridagh
+
+### Internal
+
+- Update to Razzle 3.1.2 @sneridagh
+- Update to React 16.13.1 @sneridagh
+- Removal of unused (and deprecated) `@babel/preset-stage-0` @sneridagh
+- Update `react-router` @sneridagh
+- Update `react-redux` and friends @sneridagh
+- Update `connected-react-router` @sneridagh
+- Update low hanging fruits deps @sneridagh
+- Update style/less loaders and friends @sneridagh
+- Update stylelint and friends @sneridagh
+- Update prettier @sneridagh
+- Update eslint plugins @sneridagh
+- Update `cypress-axe`, `detectbrowser`, `lint-staged` and `release-it` @sneridagh
+
+## 5.10.0 (2020-05-16)
+
+### Feature
+
+- Refactor createContent command to accept a single json object @iFlameing
+- enable hyperlinks in comments when intelligent text is enabled for comments @jackahl
+- Added InlineForm, a generic form implementation that can be used to edit, among others, block data. @tiberiuichim
+
+### Internal
+
+- Make available some internal artifacts (Router, Redux Store and Settings) to the Cypress acceptance tests, add docs @sneridagh
+- Added a cypress test for the comment @iFlameing
+- Add a cypress function to set registry entries @jackahl
+
+## 5.9.1 (2020-05-15)
+
+### Bugfix
+
+- Fix Bug in Form Component, that lead to site crash when transmitting a comment @jackahl #1475
+- Fix for the long lasted issue when creating links in newly created text blocks not showing as links until you save @avoinea
+
+### Internal
+
+- add a cypress function to set registry entries @jackahl
+
+## 5.9.0 (2020-05-12)
+
+### Feature
+
+- Implemented a new ObjectBrowserWidget @giuliaghisini
+- Add system information in controlpanel @iFlameing #1457
+- Added Dexterity Types Controlpanel @avoinea #1285
+- Remember sort order of folder contents view. @ksuess
+
+### Bugfix
+
+- Fix new lines inside blockquotes are not rendered @iFlameing #1249
+- Fix blockquote style render error: unique key @iFlameing #1097
+- Added Dexterity control panel Cypress tests @iFlameing
+
+## 5.8.0 (2020-05-11)
+
+### Feature
+
+- Adding Image Gallery template in Listing view @iFlameing
+
+## 5.7.1 (2020-05-08)
+
+### Bugfix
+
+- Fix translation locator lookup in `CreateTranslation` component and remove the no longer needed store reducer @sneridagh
+
+## 5.7.0 (2020-05-08)
+
+### Feature
+
+- Enable `@querystringresults` action to use the new context aware query feature @sneridagh
+
+## 5.6.1 (2020-05-08)
+
+### Bugfix
+
+- REALLY load the current object language on SSR, instead of relying on the cookie @sneridagh
+
+### Internal
+
+- Pin some api devs (ZCatalog and p.namedfile improvements) @sneridagh
+
+## 5.6.0 (2020-05-06)
+
+### Feature
+
+- Load the current object language on SSR, instead of relying on the cookie @sneridagh
+
+### Bugfix
+
+- Correct the `defaultLanguage` intend in `react-intl-redux` configuration @sneridagh
+
+### Internal
+
+- Add default `src` alias for addons detecting if there is a released or a mrs-developer one @sneridagh
+
+## 5.5.0 (2020-05-06)
+
+### Feature
+
+- Added label expired if expiration date is smaller that current date #1413 @iFlameing
+- Added word limit widget @iFlameing
+- Addons control panel @esteele @iFlameing
+
+### Internal
+
+- Cypress test for Table Block @steffenri @iFlameing
+- Cypress tests upgraded for Image, Hero and HTML Block @steffenri @iFlameing
+- Added cypress test for sort method in folder content #1035 @iFlameing
+
+## 5.4.0 (2020-05-04)
+
+### Feature
+
 - Add babel and externals support in Webpack for add-on infrastructure @sneridagh
+- Forward the images and files cache headers in Volto SSR passthrough @sneridagh
 
 ### Bugfix
 
 - Fix handling of external links in ToHTML config @nzambello
+- Remove the title field from right dropdown in folder content view
 
 ### Internal
 

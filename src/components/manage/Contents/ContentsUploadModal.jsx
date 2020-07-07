@@ -139,8 +139,8 @@ class ContentsUploadModal extends Component {
    * @returns {undefined}
    */
   onSubmit() {
-    Promise.all(map(this.state.files, file => readAsDataURL(file))).then(
-      files => {
+    Promise.all(map(this.state.files, (file) => readAsDataURL(file))).then(
+      (files) => {
         this.props.createContent(
           this.props.pathname,
           map(this.state.files, (file, index) => {
@@ -168,6 +168,8 @@ class ContentsUploadModal extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    moment.locale(this.props.intl.locale);
+
     return (
       this.props.open && (
         <Modal open={this.props.open}>
@@ -246,10 +248,8 @@ class ContentsUploadModal extends Component {
                         {filesize(file.size, { round: 0 })}
                       </Table.Cell>
                       <Table.Cell>
-                        {file.type.split('/')[0] === 'image' ? (
+                        {file.type.split('/')[0] === 'image' && (
                           <Image src={file.preview} height={60} />
-                        ) : (
-                          <Image src="//:0" height={60} />
                         )}
                       </Table.Cell>
                       <Table.Cell>
@@ -305,7 +305,7 @@ class ContentsUploadModal extends Component {
 export default compose(
   injectIntl,
   connect(
-    state => ({
+    (state) => ({
       request: state.content.create,
     }),
     { createContent },

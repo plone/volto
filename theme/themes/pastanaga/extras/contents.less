@@ -66,15 +66,47 @@
     top: 3px;
   }
 
-  .ui.table .iconAlign,
-  .ui.dropdown .menu > .item.iconAlign {
+  .ui.table .icon-align,
+  .ui.dropdown .menu > .item.icon-align {
     display: flex;
     align-items: center;
     padding-top: 4px;
   }
 
-  .ui.table .iconMargin {
+  .ui.table .icon-align-name {
+    display: flex;
+    overflow: hidden;
+    max-width: 330px;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 4px;
+
+    svg {
+      flex-shrink: 0;
+    }
+
+    span {
+      display: block;
+      overflow: hidden;
+      max-width: 100%;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .ui.table .expire-align {
+    display: flex;
+    align-items: center;
+  }
+
+  .ui.table .icon-margin {
     margin-right: 0.3em;
+  }
+
+  .ui.table .button-margin {
+    padding: 4px;
+    margin-right: 1em;
+    background-color: rgb(228, 1, 102);
+    color: white;
   }
 }
 

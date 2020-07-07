@@ -14,6 +14,12 @@ export {
   moveContent,
 } from '@plone/volto/actions/clipboard/clipboard';
 export {
+  installAddon,
+  listAddons,
+  uninstallAddon,
+  upgradeAddon,
+} from './addons/addons';
+export {
   addComment,
   deleteComment,
   listComments,
@@ -30,8 +36,12 @@ export {
 } from '@plone/volto/actions/content/content';
 export {
   getControlpanel,
+  postControlpanel,
+  deleteControlpanel,
   listControlpanels,
   updateControlpanel,
+  getSystemInformation,
+  getDatabaseInformation,
 } from '@plone/volto/actions/controlpanels/controlpanels';
 export { getDiff } from '@plone/volto/actions/diff/diff';
 export { emailNotification } from '@plone/volto/actions/emailNotification/emailNotification';

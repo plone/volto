@@ -5,8 +5,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Grid, Input, Label } from 'semantic-ui-react';
-import { map } from 'lodash';
+import { Input } from 'semantic-ui-react';
+import { FormFieldWrapper } from '@plone/volto/components';
 
 /**
  * PasswordWidget component class.
@@ -22,47 +22,27 @@ const PasswordWidget = ({
   value,
   onChange,
   fieldSet,
+  wrapped,
 }) => (
-  <Form.Field
-    inline
+  <FormFieldWrapper
+    id={id}
+    title={title}
+    description={description}
     required={required}
-    error={error.length > 0}
-    className={description ? 'help' : ''}
-    id={`${fieldSet || 'field'}-${id}`}
+    error={error}
+    fieldSet={fieldSet}
+    wrapped={wrapped}
   >
-    <Grid>
-      <Grid.Row stretched>
-        <Grid.Column width="4">
-          <div className="wrapper">
-            <label htmlFor={`field-${id}`}>{title}</label>
-          </div>
-        </Grid.Column>
-        <Grid.Column width="8">
-          <Input
-            id={`field-${id}`}
-            name={id}
-            type="password"
-            value={value || ''}
-            onChange={({ target }) =>
-              onChange(id, target.value === '' ? undefined : target.value)
-            }
-          />
-          {map(error, message => (
-            <Label key={message} basic color="red" pointing>
-              {message}
-            </Label>
-          ))}
-        </Grid.Column>
-      </Grid.Row>
-      {description && (
-        <Grid.Row stretched>
-          <Grid.Column stretched width="12">
-            <p className="help">{description}</p>
-          </Grid.Column>
-        </Grid.Row>
-      )}
-    </Grid>
-  </Form.Field>
+    <Input
+      id={`field-${id}`}
+      name={id}
+      type="password"
+      value={value || ''}
+      onChange={({ target }) =>
+        onChange(id, target.value === '' ? undefined : target.value)
+      }
+    />
+  </FormFieldWrapper>
 );
 
 /**
@@ -78,6 +58,7 @@ PasswordWidget.propTypes = {
   error: PropTypes.arrayOf(PropTypes.string),
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
+  wrapped: PropTypes.bool,
 };
 
 /**

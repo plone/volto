@@ -131,6 +131,7 @@
 @teal             : #517776; // Palette: slate
 @blue             : #007EB1; // Palette: Plone (tealBlue/cerulean)
 @pink             : #E40166; // Palette: darkHotPink
+@red              : @pink;
 @brown            : #826A6A; // Palette: reddishGrey
 @grey             : #68778D; // Palette: blueishGrey
 @black            : #252525; // Palette: darkishGrey
@@ -191,6 +192,10 @@
 /* Info */
 
 /* Warning */
+@warningBorderColor     : #F3E2AB;
+@warningBackgroundColor : #F3E2AB;
+@warningHeaderColor     : @black;
+@warningTextColor       : @black;
 
 
 /*-------------------

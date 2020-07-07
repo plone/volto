@@ -75,6 +75,6 @@ class Header extends Component {
   }
 }
 
-export default connect(state => ({
+export default connect((state) => ({
   token: state.userSession.token,
 }))(Header);

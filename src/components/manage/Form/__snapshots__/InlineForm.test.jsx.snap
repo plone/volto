@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form renders a form component 1`] = `
+<div
+  className="ui raised segments form"
+>
+  <header
+    className="header pulled"
+  >
+    <h2>
+      Edit values
+    </h2>
+  </header>
+  <div
+    id="blockform-fieldset-default"
+  >
+    <div
+      className="ui segment attached"
+    >
+      <div
+        className="Field"
+      />
+    </div>
+  </div>
+</div>
+`;

@@ -25,7 +25,7 @@ const SummaryView = ({ content }) => (
         )}
       </header>
       <section id="content-core">
-        {content.items.map(item => (
+        {content.items.map((item) => (
           <article key={item.url}>
             <h2>
               <Link to={item.url} title={item['@type']}>

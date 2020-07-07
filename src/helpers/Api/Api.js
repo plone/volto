@@ -13,10 +13,12 @@ const methods = ['get', 'post', 'put', 'patch', 'del'];
 /**
  * Format the url.
  * @function formatUrl
- * @param {string} path Path to be formatted.
+ * @param {string} path Path (or URL) to be formatted.
  * @returns {string} Formatted path.
  */
 function formatUrl(path) {
+  if (path.startsWith('http://') || path.startsWith('https://')) return path;
+
   const adjustedPath = path[0] !== '/' ? `/${path}` : path;
   let apiPath = '';
   if (settings.internalApiPath && __SERVER__) {
@@ -38,7 +40,7 @@ class Api {
    * @constructs Api
    */
   constructor() {
-    methods.forEach(method => {
+    methods.forEach((method) => {
       this[method] = (path, { params, data, type, headers = {} } = {}) => {
         let request;
         let promise = new Promise((resolve, reject) => {
@@ -59,7 +61,7 @@ class Api {
             request.type(type);
           }
 
-          Object.keys(headers).forEach(key => request.set(key, headers[key]));
+          Object.keys(headers).forEach((key) => request.set(key, headers[key]));
 
           if (data) {
             request.send(data);

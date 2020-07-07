@@ -3,11 +3,12 @@
  * @module components/manage/Widgets/TextareaWidget
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Grid, Icon, Label, TextArea } from 'semantic-ui-react';
-import { map } from 'lodash';
+import { Icon, Label, TextArea } from 'semantic-ui-react';
+
 import { defineMessages, injectIntl } from 'react-intl';
+import { FormFieldWrapper } from '@plone/volto/components';
 
 const messages = defineMessages({
   default: {
@@ -51,13 +52,29 @@ const TextareaWidget = ({
   required,
   description,
   error,
+  maxLength,
   value,
   onChange,
   onEdit,
   onDelete,
   intl,
   fieldSet,
+  wrapped,
 }) => {
+  const [lengthError, setlengthError] = useState('');
+
+  const onhandleChange = (id, value) => {
+    if (maxLength & value?.length) {
+      let remlength = maxLength - value.length;
+      if (remlength < 0) {
+        setlengthError(`You have exceed word limit by ${Math.abs(remlength)}`);
+      } else {
+        setlengthError('');
+      }
+    }
+    onChange(id, value);
+  };
+
   const schema = {
     fieldsets: [
       {
@@ -90,71 +107,50 @@ const TextareaWidget = ({
   };
 
   return (
-    <Form.Field
-      inline
+    <FormFieldWrapper
+      id={id}
+      title={title}
+      description={description}
       required={required}
-      error={error.length > 0}
-      className={description ? 'help textarea' : 'textarea'}
-      id={`${fieldSet || 'field'}-${id}`}
+      error={error}
+      fieldSet={fieldSet}
+      wrapped={wrapped}
+      onEdit={onEdit}
+      draggable={true}
+      className="textarea"
     >
-      <Grid>
-        <Grid.Row stretched>
-          <Grid.Column width="4">
-            <div className="wrapper">
-              <label htmlFor={`field-${id}`}>
-                {onEdit && (
-                  <i
-                    aria-hidden="true"
-                    className="grey bars icon drag handle"
-                  />
-                )}
-                {title}
-              </label>
-            </div>
-          </Grid.Column>
-          <Grid.Column width="8">
-            {onEdit && (
-              <div className="toolbar">
-                <button
-                  className="item ui noborder button"
-                  onClick={() => onEdit(id, schema)}
-                >
-                  <Icon name="write square" size="large" color="blue" />
-                </button>
-                <button
-                  aria-label={this.props.intl.formatMessage(messages.delete)}
-                  className="item ui noborder button"
-                  onClick={() => onDelete(id)}
-                >
-                  <Icon name="close" size="large" color="red" />
-                </button>
-              </div>
-            )}
-            <TextArea
-              id={`field-${id}`}
-              name={id}
-              value={value || ''}
-              disabled={onEdit !== null}
-              onChange={({ target }) =>
-                onChange(id, target.value === '' ? undefined : target.value)
-              }
-            />
-            {map(error, message => (
-              <Label key={message} basic color="red" pointing>
-                {message}
-              </Label>
-            ))}
-          </Grid.Column>
-        </Grid.Row>
-        {description && (
-          <Grid.Row stretched>
-            <Grid.Column stretched width="12">
-              <p className="help">{description}</p>
-            </Grid.Column>
-          </Grid.Row>
-        )}
-      </Grid>
-    </Form.Field>
+      {onEdit && (
+        <div className="toolbar">
+          <button
+            className="item ui noborder button"
+            onClick={() => onEdit(id, schema)}
+          >
+            <Icon name="write square" size="large" color="blue" />
+          </button>
+          <button
+            aria-label={this.props.intl.formatMessage(messages.delete)}
+            className="item ui noborder button"
+            onClick={() => onDelete(id)}
+          >
+            <Icon name="close" size="large" color="red" />
+          </button>
+        </div>
+      )}
+      <TextArea
+        id={`field-${id}`}
+        name={id}
+        value={value || ''}
+        disabled={onEdit !== null}
+        onChange={({ target }) =>
+          onhandleChange(id, target.value === '' ? undefined : target.value)
+        }
+      />
+      {lengthError.length > 0 && (
+        <Label key={lengthError} basic color="red" pointing>
+          {lengthError}
+        </Label>
+      )}
+    </FormFieldWrapper>
   );
 };
 
@@ -167,12 +163,14 @@ TextareaWidget.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
+  maxLength: PropTypes.number,
   required: PropTypes.bool,
   error: PropTypes.arrayOf(PropTypes.string),
   value: PropTypes.string,
   onChange: PropTypes.func,
   onEdit: PropTypes.func,
   onDelete: PropTypes.func,
+  wrapped: PropTypes.bool,
 };
 
 /**
@@ -182,6 +180,7 @@ TextareaWidget.propTypes = {
  */
 TextareaWidget.defaultProps = {
   description: null,
+  maxLength: null,
   required: false,
   error: [],
   value: null,

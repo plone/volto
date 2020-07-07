@@ -13,7 +13,7 @@ import Editor from 'draft-js-plugins-editor';
 import { stateFromHTML } from 'draft-js-import-html';
 import { convertToRaw, EditorState } from 'draft-js';
 import redraft from 'redraft';
-import { Form, Grid, Icon, Label, TextArea } from 'semantic-ui-react';
+import { Form, Icon, Label, TextArea } from 'semantic-ui-react';
 import { map } from 'lodash';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import { defineMessages, injectIntl } from 'react-intl';
@@ -21,6 +21,7 @@ import configureStore from 'redux-mock-store';
 import { MemoryRouter } from 'react-router-dom';
 
 import { settings } from '~/config';
+import { FormFieldWrapper } from '@plone/volto/components';
 
 const messages = defineMessages({
   default: {
@@ -115,8 +116,9 @@ class WysiwygWidget extends Component {
      */
     onEdit: PropTypes.func,
     /**
-     * Internationalization
+     * Wrapped form component
      */
+    wrapped: PropTypes.bool,
   };
 
   /**
@@ -265,7 +267,7 @@ class WysiwygWidget extends Component {
             <label htmlFor={`field-${id}`}>{title}</label>
             <TextArea id={id} name={id} value={value ? value.data : ''} />
             {description && <p className="help">{description}</p>}
-            {map(error, message => (
+            {map(error, (message) => (
               <Label key={message} basic color="red" pointing>
                 {message}
               </Label>
@@ -277,82 +279,46 @@ class WysiwygWidget extends Component {
     const { InlineToolbar } = this.state.inlineToolbarPlugin;
 
     return (
-      <Form.Field
-        inline
-        required={required}
-        error={error.length > 0}
-        className={description ? 'help wysiwyg' : 'wysiwyg'}
-      >
-        <Grid>
-          <Grid.Row stretched>
-            <Grid.Column width="4">
-              <div className="wrapper">
-                <label htmlFor={`field-${id}`}>
-                  {onEdit && (
-                    <i
-                      aria-hidden="true"
-                      className="grey bars icon drag handle"
-                    />
-                  )}
-                  {title}
-                </label>
-              </div>
-            </Grid.Column>
-            <Grid.Column width="8">
-              {onEdit && (
-                <div className="toolbar">
-                  <button
-                    className="item ui noborder button"
-                    onClick={() => onEdit(id, this.schema)}
-                  >
-                    <Icon name="write square" size="large" color="blue" />
-                  </button>
-                  <button
-                    aria-label={this.props.intl.formatMessage(messages.delete)}
-                    className="item ui noborder button"
-                    onClick={() => onDelete(id)}
-                  >
-                    <Icon name="close" size="large" color="red" />
-                  </button>
-                </div>
-              )}
-              <div style={{ boxSizing: 'initial' }}>
-                {this.props.onChange ? (
-                  <>
-                    <Editor
-                      id={`field-${id}`}
-                      onChange={this.onChange}
-                      editorState={this.state.editorState}
-                      plugins={[
-                        this.state.inlineToolbarPlugin,
-                        ...settings.richTextEditorPlugins,
-                      ]}
-                      blockRenderMap={settings.extendedBlockRenderMap}
-                      blockStyleFn={settings.blockStyleFn}
-                      customStyleMap={settings.customStyleMap}
-                    />
-                    {this.props.onChange && <InlineToolbar />}
-                  </>
-                ) : (
-                  <div className="DraftEditor-root" />
-                )}
-              </div>
-              {map(error, message => (
-                <Label key={message} basic color="red" pointing>
-                  {message}
-                </Label>
-              ))}
-            </Grid.Column>
-          </Grid.Row>
-          {description && (
-            <Grid.Row stretched>
-              <Grid.Column stretched width="12">
-                <p className="help">{description}</p>
-              </Grid.Column>
-            </Grid.Row>
+      <FormFieldWrapper {...this.props} draggable={true} className="wysiwyg">
+        {onEdit && (
+          <div className="toolbar">
+            <button
+              className="item ui noborder button"
+              onClick={() => onEdit(id, this.schema)}
+            >
+              <Icon name="write square" size="large" color="blue" />
+            </button>
+            <button
+              aria-label={this.props.intl.formatMessage(messages.delete)}
+              className="item ui noborder button"
+              onClick={() => onDelete(id)}
+            >
+              <Icon name="close" size="large" color="red" />
+            </button>
+          </div>
+        )}
+        <div style={{ boxSizing: 'initial' }}>
+          {this.props.onChange ? (
+            <>
+              <Editor
+                id={`field-${id}`}
+                onChange={this.onChange}
+                editorState={this.state.editorState}
+                plugins={[
+                  this.state.inlineToolbarPlugin,
+                  ...settings.richTextEditorPlugins,
+                ]}
+                blockRenderMap={settings.extendedBlockRenderMap}
+                blockStyleFn={settings.blockStyleFn}
+                customStyleMap={settings.customStyleMap}
+              />
+              {this.props.onChange && <InlineToolbar />}
+            </>
+          ) : (
+            <div className="DraftEditor-root" />
           )}
-        </Grid>
-      </Form.Field>
+        </div>
+      </FormFieldWrapper>
     );
   }
 }

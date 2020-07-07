@@ -10,7 +10,7 @@ import { defineMessages, injectIntl } from 'react-intl';
 import { Container, Image } from 'semantic-ui-react';
 import { map } from 'lodash';
 
-import { settings, blocks } from '~/config';
+import { blocks } from '~/config';
 
 import {
   getBlocksFieldname,
@@ -38,7 +38,7 @@ const DefaultView = ({ content, intl, location }) => {
 
   return hasBlocksData(content) ? (
     <div id="page-document" className="ui container">
-      {map(content[blocksLayoutFieldname].items, block => {
+      {map(content[blocksLayoutFieldname].items, (block) => {
         const Block =
           blocks.blocksConfig[content[blocksFieldname]?.[block]?.['@type']]?.[
             'view'
@@ -82,10 +82,7 @@ const DefaultView = ({ content, intl, location }) => {
       {content.text && (
         <div
           dangerouslySetInnerHTML={{
-            __html: content.text.data.replace(
-              /a href="([^"]*\.[^"]*)"/g,
-              `a href="${settings.apiPath}$1/download/file"`,
-            ),
+            __html: content.text.data,
           }}
         />
       )}

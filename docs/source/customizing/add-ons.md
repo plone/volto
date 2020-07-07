@@ -28,6 +28,8 @@ Volto is also capable of using aliases for your (unreleased) package, so that on
 you've released it, you don't need to change import paths, since you can use the
 final ones from the very beginning.
 
+
+
 ## Configuring a Volto project to use a Volto add-on product
 
 ### Add mr-developer dependency and related script
@@ -49,6 +51,10 @@ we can configure `mrs-developer` to use any directory that you want. Here we are
 telling it to create the directory `src/addons` and put the packages managed by
 `mrs-developer` inside.
 
+!!! note
+    You can use any name/directory in your project. We chose `addons` by convention for
+    all Volto add-ons.
+
 ### mrs.developer.json
 
 This is the configuration file that instructs `mrs-developer` from where it has
@@ -56,11 +62,22 @@ to pull the packages. So, in `mrs.developer.json`:
 
 ```json
 {
-  "@plone/my-volto-addon": {
-      "url": "git@github.com:plone/my-volto-addon.git"
+  "plone.my-volto-addon": {
+      "package": "@plone/my-volto-addon",
+      "url": "git@github.com:plone/my-volto-addon.git",
+      "path": "src"
   }
 }
 ```
+
+!!! warning
+    `mrs-developer` does not support scopes (`@` or `/` in the key for the definition of the
+    package). The suggestion is to remove the `@` and replace the `/` with `.`.
+
+!!! info
+    `package` property is optional, set it up only if your package has a scope. `src` is
+    required if the content of your addon is located in the `src` directory (recommended
+    by convention in all Volto add-on packages)
 
 If you want to know more about `mrs-developer` config options, please refer to
 [its npm page](https://www.npmjs.com/package/mrs-developer).
@@ -86,10 +103,14 @@ You can let `mrs-developer` create this file for you or create it manually.
     Please note that both `paths` and `baseUrl` are required to match your
     project layout.
 
-### Fix tests
+!!! tip
+    You should use the `src` path inside your package and point the `main` key
+    in `package.json` to the `index.js` file in `src/index.js`.
 
-We should let jest about our aliases and make them available to it to resolve
-them, so in `package.json`:
+### Fix test infrastructure
+
+We should let jest know about our aliases and make them available to it to
+resolve them, so in `package.json`:
 
 ```json hl_lines="6"
   "jest": {
@@ -105,29 +126,75 @@ them, so in `package.json`:
 
 ### .eslintrc
 
-Add the path to the `eslintrc` file in order to the linter not to complain if
-you import from a package that does not yet exist (since it's an alias).
+Make sure to upgrade your project's `.eslintrc` to the `.eslintrc.js` version,
+according to the [Upgrade Guide](/upgrade-guide).
 
-```json hl_lines="9"
+
+## Loading addon configuration
+
+As a convenience, an addon can export configuration functions that can mutate,
+in-place, the overall ``~/config`` registry. An addon can export multiple
+configurations methods, making it possible to selectively choose which specific
+addon functionality you want to load.
+
+In your Volto project's ``package.json`` you can allow the addon to alter the
+global configuration by adding, in the ``addons`` key, a list of volto addon
+package names, like:
+
+```
 {
-  "extends": "./node_modules/@plone/volto/.eslintrc",
-  "settings": {
-    "import/resolver": {
-      "alias": {
-        "map": [
-          ["@plone/volto", "@plone/volto/src"],
-          ["@package", "./src"],
-          ["@plone/my-volto-addon", "./src/addons/@plone/my-volto-addon/src"]
-        ],
-        "extensions": [".js", ".jsx", ".json"]
-      },
-      "babel-plugin-root-import": {
-        "rootPathSuffix": "src"
-      }
-    }
-  }
+  "name": "my-nice-volto-project",
+  ...
+  "addons": [
+    "volto-example-addon",
+    "volto-ga"
+  ],
+  ...
 }
 ```
+
+!!! info
+  If you're an addon developer, you should export, in your package main,
+  a function with the signature ``config => config``. So it should take the
+  ``global`` configuration object and return it, possibly mutated or changed.
+
+Some addons might choose to allow the Volto project to selectively load some of
+their configuration, so they may offer additional configuration functions,
+which you can load by overloading the addon name in the ``addons`` package.json
+key, like so:
+
+```js
+{
+  "name": "my-nice-volto-project",
+  ...
+  "addons": [
+    "volto-example-addon:loadOptionalBlocks,overrideSomeDefaultBlock",
+    "volto-ga"
+  ],
+  ...
+}
+```
+
+!!! info
+  The additional comma-separated names should be exported from the addon
+  package's ``index.js``. The main configuration function should be exported as
+  the default. An addon's default configuration method will always be loaded.
+
+If for some reason, you want to manually load the addon, you could always do,
+in your project's ``config.js`` module:
+
+```js
+import loadExampleAddon, { enableOptionalBlocks } from 'volto-example-addon';
+import * as voltoConfig from '@plone/volto/config';
+
+const config = enableOptionalBlocks(loadExampleAddon(voltoConfig));
+
+export blocks = {
+  ...config.blocks,
+}
+...
+```
+
 
 ## Add several layers of customizations
 

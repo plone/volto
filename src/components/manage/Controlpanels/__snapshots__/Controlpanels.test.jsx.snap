@@ -75,6 +75,52 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                 </h3>
               </a>
             </div>
+            <div
+              className="column"
+            >
+              <a
+                href="/controlpanel/addons"
+                onClick={[Function]}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <i
+                    aria-hidden="true"
+                    className="add-on icon"
+                    onClick={[Function]}
+                  />
+                  <div
+                    className="content"
+                  >
+                    Add-Ons
+                  </div>
+                </h3>
+              </a>
+            </div>
+            <div
+              className="column"
+            >
+              <a
+                href="/controlpanel/database"
+                onClick={[Function]}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <i
+                    aria-hidden="true"
+                    className="setting icon"
+                    onClick={[Function]}
+                  />
+                  <div
+                    className="content"
+                  >
+                    Database
+                  </div>
+                </h3>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -232,11 +278,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
       </div>
       <div
         className="ui attached segment"
-      >
-        <div
-          className="VersionOverview"
-        />
-      </div>
+      />
     </div>
   </div>
   <div

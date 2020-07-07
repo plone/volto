@@ -42,7 +42,7 @@ exports[`renders a token widget component 1`] = `
               <div
                 className="react-select__placeholder css-1wa3eu0-placeholder"
               >
-                Select...
+                Select…
               </div>
               <div
                 className="css-b8ldur-Input"

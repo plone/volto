@@ -2,17 +2,12 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
-
-import ImageSidebar from '../Blocks/Image/ImageSidebar';
+import ObjectBrowserWidget from './ObjectBrowserWidget';
 
 const mockStore = configureStore();
-
-test('renders an Image Block Sidebar component', () => {
+test('renders a objectBrowser widget component', () => {
   const store = mockStore({
-    content: {
-      create: {},
-      data: {},
-    },
+    search: {},
     intl: {
       locale: 'en',
       messages: {},
@@ -20,14 +15,7 @@ test('renders an Image Block Sidebar component', () => {
   });
   const component = renderer.create(
     <Provider store={store}>
-      <ImageSidebar
-        data={{ url: 'image' }}
-        block="1234"
-        pathname="/news"
-        onChangeBlock={() => {}}
-        openObjectBrowser={() => {}}
-        resetSubmitUrl={() => {}}
-      />
+      <ObjectBrowserWidget id="my-field" title="My field" onChange={() => {}} />
     </Provider>,
   );
   const json = component.toJSON();
