@@ -2,15 +2,9 @@
 
 ## 7.0.1 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
-### Internal
-
-- Adding absolute url in ObjectBrowser for image type
+- Adding absolute url in ObjectBrowser for image type @iFlameing
 
 ## 7.0.0 (2020-07-06)
 
