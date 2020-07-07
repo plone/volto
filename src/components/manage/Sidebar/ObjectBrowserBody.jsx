@@ -311,9 +311,14 @@ class ObjectBrowserBody extends Component {
       }
     } else {
       if (this.isSelectable(item)) {
-        if (this.props.data.length < this.props.maximumSelectionSize) {
+        if (
+          !this.props.maximumSelectionSize ||
+          !this.props.data ||
+          this.props.data.length < this.props.maximumSelectionSize
+        ) {
           this.onSelectItem(item);
-          if (this.props.data.length + 1 >= this.props.maximumSelectionSize) {
+          let length = this.props.data ? this.props.data.length : 0;
+          if (length + 1 >= this.props.maximumSelectionSize) {
             this.props.closeObjectBrowser();
           }
         } else {
