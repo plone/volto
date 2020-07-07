@@ -1410,7 +1410,7 @@ msgstr "Sitemap"
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/PersonalTools
 msgid "Site Setup"
-msgstr "<<<<<<< HEAD"
+msgstr ""
 
 #: components/theme/Sitemap/Sitemap
 msgid "Sitemap"
