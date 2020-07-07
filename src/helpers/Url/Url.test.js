@@ -6,6 +6,7 @@ import {
   getBaseUrl,
   getIcon,
   getView,
+  isInternalURL,
 } from './Url';
 
 describe('Url', () => {
@@ -94,6 +95,16 @@ describe('Url', () => {
       expect(flattenHTMLToAppURL(html)).toBe(
         '<a href="/foo/bar">An internal link</a><a href="/foo/baz">second link</a>',
       );
+    });
+  });
+  describe('isInternalURL', () => {
+    it('tells if an URL is internal or not', () => {
+      const href = `${settings.apiPath}/foo/bar`;
+      expect(isInternalURL(href)).toBe(true);
+    });
+    it('tells if an URL is internal if it is an anchor', () => {
+      const href = '#anchor';
+      expect(isInternalURL(href)).toBe(true);
     });
   });
 });

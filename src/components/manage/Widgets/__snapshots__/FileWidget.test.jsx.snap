@@ -27,6 +27,10 @@ exports[`renders a file widget component 1`] = `
       <div
         className="eight wide column"
       >
+        <img
+          className="ui small image image-preview"
+          id="field-my-field-image"
+        />
         <div
           className="ui input"
         >

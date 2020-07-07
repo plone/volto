@@ -94,6 +94,11 @@ class Controlpanels extends Component {
           title: 'Add-Ons',
         },
         {
+          '@id': '/database',
+          group: 'General',
+          title: 'Database',
+        },
+        {
           '@id': '/moderate-comments',
           group: 'Content',
           title: this.props.intl.formatMessage(messages.moderatecomments),

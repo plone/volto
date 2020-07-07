@@ -42,6 +42,7 @@ nav:
       - Creating new views: 'customizing/creating-views.md'
       - Creating Add-on packages: 'customizing/add-ons.md'
       - Internationalization: 'customizing/i18n.md'
+      - Express middleware: 'customizing/express.md'
   - Blocks:
       - Introduction: 'blocks/introduction.md'
       - Anatomy: 'blocks/anatomy.md'

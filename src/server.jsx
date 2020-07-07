@@ -15,6 +15,7 @@ import path from 'path';
 import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
 import { createProxyMiddleware } from 'http-proxy-middleware';
 import { updateIntl } from 'react-intl-redux';
+import { resetServerContext } from 'react-beautiful-dnd';
 
 import routes from '~/routes';
 import { settings } from '~/config';
@@ -65,6 +66,10 @@ if (__DEVELOPMENT__ && settings.devProxyToApiPath) {
     }),
   );
 }
+
+if ((settings.expressMiddleware || []).length)
+  server.use('/', settings.expressMiddleware);
+
 server
   .disable('x-powered-by')
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
@@ -156,6 +161,7 @@ server
           );
 
           const context = {};
+          resetServerContext();
           const markup = renderToString(
             <ChunkExtractorManager extractor={extractor}>
               <Provider store={store}>

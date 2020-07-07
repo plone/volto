@@ -10,6 +10,11 @@ This upgrade guide lists all breaking changes in Volto and explains the
     dependencies might do when dealing with upgrades. We keep the generator up
     to date and in sync with current Volto release.
 
+## Upgrading to Volto 7.x.x
+
+A misspelled file has been renamed. If you import `strickthrough.svg` in your
+project, you'll now find that file at `@plone/volto/icons/strikethrough.svg`.
+
 ## Upgrading to Volto 6.x.x
 
 First, update the `package.json` of your Volto project to Volto 6.x.x.
@@ -20,6 +25,15 @@ First, update the `package.json` of your Volto project to Volto 6.x.x.
     ...
   }
 ```
+
+!!! note
+    This release includes a number of changes to the internal dependencies. If you have problems building your project, might be that you need to remove your `node_modules` and, ultimately, remove also your `yarn.lock` file. Then run again `yarn` for rebuilding dependencies.
+
+### Upgrade to Node 12
+
+We have now dependencies that requires `node >=10.19.0`. Although Node 10 has still LTS
+"maintenance" treatment (see https://nodejs.org/en/about/releases/) the recommended path
+is that you use from now on node 12 which is LTS since last October.
 
 ### New Razzle version and related development dependencies
 
@@ -117,6 +131,29 @@ module.exports = {
     },
   },
 };
+```
+
+### New wrappers in block editor
+
+We have improved the overall UX of the block drag and drop feature by using the library
+`react-beautiful-dnd` in the block editor. It introduces new wrappers (belonging to the
+lib machinery) in the structure. The original structure and class names are still in
+there (as children of these wrappers) to maintain maximum backwards compatibility. Those
+might be cleaned up in next major versions, so if for some reason you have customized
+the styling of your blocks in edit mode relying in the old structure, you might want to
+review and adapt them.
+
+### Update `config.js`
+
+!!! note
+    This is required since Volto version 6.1.0 [1541](https://github.com/plone/volto/pull/1541)
+
+Add these to the `config.js` of your project:
+
+```js
+export const addonRoutes = [];
+
+export const addonReducers = {};
 ```
 
 ## Upgrading to Volto 5.x.x

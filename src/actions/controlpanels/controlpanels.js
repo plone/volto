@@ -10,6 +10,7 @@ import {
   LIST_CONTROLPANELS,
   UPDATE_CONTROLPANEL,
   SYSTEM_INFORMATION,
+  DATABASE_INFORMATION,
 } from '@plone/volto/constants/ActionTypes';
 /**
  * Get controlpanel function.
@@ -101,6 +102,16 @@ export function getSystemInformation() {
     request: {
       op: 'get',
       path: '/@system',
+    },
+  };
+}
+
+export function getDatabaseInformation() {
+  return {
+    type: DATABASE_INFORMATION,
+    request: {
+      op: 'get',
+      path: '/@database',
     },
   };
 }

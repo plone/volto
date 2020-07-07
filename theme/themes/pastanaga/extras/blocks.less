@@ -1,3 +1,11 @@
+[data-rbd-draggable-context-id] {
+  margin-bottom: 2rem;
+}
+
+.block-editor-title .drag.handle.wrapper {
+  top: 5px;
+}
+
 // Here should be placed all blocks that receive (faked) focus
 .block:focus {
   outline: none;
@@ -40,6 +48,7 @@
   clear: both;
 }
 
+// Deprecated
 .ui.drag.block:not(:last-child) {
   margin-bottom: 2rem;
 }
@@ -137,16 +146,32 @@
 }
 
 .block.align.center {
+  text-align: center;
+
   iframe,
   img {
     max-width: 100%;
     margin-right: auto;
     margin-left: auto;
+
+    &.medium {
+      max-width: 50%;
+    }
+
+    &.small {
+      max-width: 25%;
+    }
   }
 
   iframe {
     width: 100%;
   }
+}
+
+.draggable {
+  position: absolute;
+  top: 20px;
+  left: -32px;
 }
 
 // Hacks for the full width image
@@ -454,6 +479,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
   }
 }
 
+// Deprecated
 .drag.block.title .drag.handle.wrapper {
   top: 5px;
 }
@@ -682,6 +708,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 .listing-item a {
   display: flex;
   width: 100%;
+
   @media only screen and (max-width: (@largestMobileScreen)) {
     flex-direction: column;
   }
@@ -693,6 +720,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
   img {
     width: 15%;
     margin-right: 20px;
+
     @media only screen and (max-width: (@largestMobileScreen)) {
       width: 100%;
       margin: 0;
@@ -716,6 +744,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
       color: @textColor;
     }
   }
+
   @media only screen and (max-width: (@largestMobileScreen)) {
     h3 {
       margin-top: 1em;
@@ -787,5 +816,22 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
   .link-anchorlink-theme {
     color: #007eb1;
     text-decoration: underline;
+  }
+}
+
+.block.image.align.left,
+.block.image.align.right {
+  img {
+    &.large {
+      max-width: 50%;
+    }
+
+    &.medium {
+      max-width: 25%;
+    }
+
+    &.small {
+      max-width: 15%;
+    }
   }
 }
