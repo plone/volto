@@ -273,7 +273,7 @@ class ObjectBrowserBody extends Component {
     } else if (mode === 'image') {
       onChangeBlock(block, {
         ...data,
-        url,
+        url: item.getURL,
         alt: title,
       });
     } else if (mode === 'link') {
