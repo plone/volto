@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Adding absolute url in ObjectBrowser for image type
+
 ## 7.0.0 (2020-07-06)
 
 ### Breaking
@@ -20,7 +22,6 @@
 
 - Addons configuration loading. You can now declare addons in the addons key of
   package.json and they'll be automatically loaded. @tiberiuichim @sneridagh
-
 
 ## 6.5.0 (2020-07-03)
 
