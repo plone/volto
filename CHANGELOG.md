@@ -8,6 +8,9 @@
 
 ### Bugfix
 
+- Enable `react-hooks/exhaustive-deps` according to recommended settings. Fix
+  Volto code in ListingBody to pass eslint checks @tiberiuichim
+
 ### Internal
 
 ## 7.0.1 (2020-07-07)
