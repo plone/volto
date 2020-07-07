@@ -61,10 +61,10 @@ export function blockHasValue(data) {
   const blockType = data['@type'];
   const check = blocks.blocksConfig[blockType]?.blockHasValue;
   if (!check) {
-    // console.error(
-    //   `No valid blockHasValue implementation for block type '${blockType}'!`,
-    // );
-    return false;
+    console.warn(
+      `No valid blockHasValue implementation for block type '${blockType}'!`,
+    );
+    return true;
   }
   return check(data);
 }

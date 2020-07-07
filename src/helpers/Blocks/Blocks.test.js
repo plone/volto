@@ -67,8 +67,8 @@ describe('Blocks', () => {
     });
 
     describe('blockHasValue', () => {
-      it('returns false when block checker is not defined', () => {
-        expect(blockHasValue({ '@type': 'not-defined' })).toBe(false);
+      it('returns true when block checker is not defined', () => {
+        expect(blockHasValue({ '@type': 'not-defined' })).toBe(true);
         // const consoleSpy = jest
         //   .spyOn(console, 'error')
         //   .mockImplementation(() => {});
