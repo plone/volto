@@ -1,6 +1,6 @@
 # Change Log
 
-## 7.0.1 (unreleased)
+## 7.0.2 (unreleased)
 
 ### Breaking
 
@@ -9,6 +9,12 @@
 ### Bugfix
 
 ### Internal
+
+## 7.0.1 (2020-07-07)
+
+### Bugfix
+
+- Adding absolute url in ObjectBrowser for image type @iFlameing
 
 ## 7.0.0 (2020-07-06)
 
@@ -20,7 +26,6 @@
 
 - Addons configuration loading. You can now declare addons in the addons key of
   package.json and they'll be automatically loaded. @tiberiuichim @sneridagh
-
 
 ## 6.5.0 (2020-07-03)
 
