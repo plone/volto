@@ -9,7 +9,6 @@ const fs = require('fs');
 // - packageContent (customizable files)
 // - extraConfigLoaders (function references)
 // - razzleExtender ({plugins, modify})
-// - serverConfig (function reference)
 
 function getPackageBasePath(base) {
   while (!fs.existsSync(`${base}/package.json`)) {
@@ -115,7 +114,6 @@ class AddonConfigurationRegistry {
   /*
    * Maps extra configuration loaders for addons:
    * - extra loaders (from the addon loader string in package.addons
-   * - the server.config.js files
    */
   initAddonLoaders() {
     (this.packageJson.addons || []).forEach((addonConfigString) => {
@@ -128,11 +126,6 @@ class AddonConfigurationRegistry {
 
       const addon = this.packages[pkgName];
       addon.extraConfigLoaders = extras;
-
-      // const serverModule = path.resolve(`${addon.modulePath}/server.config.js`);
-      // if (fs.existsSync(serverModule)) {
-      //   addon.serverConfig = serverModule;
-      // }
     });
   }
 
