@@ -117,6 +117,11 @@ class ObjectBrowserWidget extends Component {
   onChange = (item) => {
     let value = this.props.mode === 'multiple' ? [...this.props.value] : [];
     value = value.filter((item) => item != null);
+    const maxSize =
+      this.props.widgetOptions?.pattern_options?.maximumSelectionSize || -1;
+    if (maxSize === 1 && value.length === 1) {
+      value = []; //enable replace of selected item with another value, if maxsize is 1
+    }
 
     let exists = false;
     let index = -1;
@@ -150,6 +155,8 @@ class ObjectBrowserWidget extends Component {
       propDataName: 'value',
       selectableTypes: this.props.widgetOptions?.pattern_options
         ?.selectableTypes,
+      maximumSelectionSize: this.props.widgetOptions?.pattern_options
+        ?.maximumSelectionSize,
     });
   };
 

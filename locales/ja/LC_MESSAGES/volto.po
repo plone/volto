@@ -1320,6 +1320,10 @@ msgstr "アイテムの状態を変更するために遷移を選んでくださ
 msgid "Selected items"
 msgstr "選択されたアイテム"
 
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Selected items - x of y"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Selection"
 msgstr "Selection (未翻訳)"

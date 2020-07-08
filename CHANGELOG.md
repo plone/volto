@@ -96,7 +96,9 @@
 ### Feature
 
 - Added internationalization for French language @bsuttor #1588
+- use of maximumSelectionSize from plone in ObjectBrowserWidget. @giuliaghisini
 - Added selectableTypes in ObjectBrowserWidget @giuliaghisini
+
 
 ### Bugfix
 
