@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Added Image Crop widget @iFlameing
+
 ### Bugfix
 
 ### Internal
