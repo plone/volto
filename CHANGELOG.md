@@ -7,8 +7,16 @@
 ### Feature
 
 - Added Image Crop widget @iFlameing
+- Addons can optionally include a `razzle.extend.js` file in their root. This
+  module needs to follow the same rules as the `razzle.config.js`. They change
+  the default Volto Razzle configuration, before it is passed to the Volto
+  project. @tiberiuichim @sneridagh
 
 ### Bugfix
+- managed hidden fields @giuliaghisini
+
+
+- Japanese translation @terapyon
 
 ### Internal
 
@@ -70,7 +78,7 @@
 
 - Translated workflow state in contents @nzambello
 - Added item type as a tooltip in contents @nzambello
-- Added italian translations and translated array, token and select widget. @giuliaghisini
+- Added Italian translations and translated array, token and select widget. @giuliaghisini
 - Added uploading image preview in FileWidget @iFlameing
 - Allow custom express middleware declared with `settings.expressMiddleware`. See [Customizing Express](docs/source/customizing/express.md) @tiberiuichim
 
@@ -88,7 +96,6 @@
 
 ### Feature
 
-- Added Italian translations and translated array, token and select widget. @giuliaghisini
 - Added internationalization for French language @bsuttor #1588
 - Added selectableTypes in ObjectBrowserWidget @giuliaghisini
 
