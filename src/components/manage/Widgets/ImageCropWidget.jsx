@@ -132,7 +132,7 @@ const ImageCropWidget = ({
       onChange,
       fileName,
     );
-  }, [completedCrop]);
+  }, [completedCrop, id, onChange, fileName]);
 
   return (
     <FormFieldWrapper
