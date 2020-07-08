@@ -12,6 +12,71 @@ repositories using `mrs-developer` helper package.
 We can use them to easily reuse components across projects, like custom blocks,
 views, widgets, or any other Volto or React artifact.
 
+### Loading an addon configuration
+
+As a convenience, an addon can export configuration functions that can mutate,
+in-place, the overall ``~/config`` registry. An addon can export multiple
+configurations methods, making it possible to selectively choose which specific
+addon functionality you want to load.
+
+In your Volto project's ``package.json`` you can allow the addon to alter the
+global configuration by adding, in the ``addons`` key, a list of volto addon
+package names, like:
+
+```
+{
+  "name": "my-nice-volto-project",
+  ...
+  "addons": [
+    "volto-example-addon",
+    "volto-ga"
+  ],
+  ...
+}
+```
+
+!!! info
+  If you're an addon developer, you should export, in your package main,
+  a function with the signature ``config => config``. So it should take the
+  ``global`` configuration object and return it, possibly mutated or changed.
+
+Some addons might choose to allow the Volto project to selectively load some of
+their configuration, so they may offer additional configuration functions,
+which you can load by overloading the addon name in the ``addons`` package.json
+key, like so:
+
+```js
+{
+  "name": "my-nice-volto-project",
+  ...
+  "addons": [
+    "volto-example-addon:loadOptionalBlocks,overrideSomeDefaultBlock",
+    "volto-ga"
+  ],
+  ...
+}
+```
+
+!!! info
+  The additional comma-separated names should be exported from the addon
+  package's ``index.js``. The main configuration function should be exported as
+  the default. An addon's default configuration method will always be loaded.
+
+If for some reason, you want to manually load the addon, you could always do,
+in your project's ``config.js`` module:
+
+```js
+import loadExampleAddon, { enableOptionalBlocks } from 'volto-example-addon';
+import * as voltoConfig from '@plone/volto/config';
+
+const config = enableOptionalBlocks(loadExampleAddon(voltoConfig));
+
+export blocks = {
+  ...config.blocks,
+}
+...
+```
+
 ### Mrs. Developer
 
 Eric Brehault ported this amazing Python tool, which provides a way to pull
