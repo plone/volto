@@ -11,11 +11,9 @@ Status](https://api.netlify.com/api/v1/badges/b8310579-ac4f-41f2-a144-9c90fca9b3
 
 ## Introduction
 
-[Volto](https://github.com/plone/volto) is a React-based frontend for content
-management systems, currently supporting three backend implementations: Plone,
-Guillotina and a NodeJS reference implementation.
+[Volto](https://github.com/plone/volto) is a open source content management system written in React.
 
-[Plone](https://plone.org) is a CMS built on Python with over 17 years of experience.
+Volto uses [Plone](https://plone.org) as backend.
 
 Plone has very interesting features that appeal to developers and users alike,
 such as customizable content types, hierarchical URL object traversing and a

@@ -1,8 +1,6 @@
 # Change Log
 
-## 7.0.2 (unreleased)
-
-### Breaking
+## 7.1.0 (2020-07-08)
 
 ### Feature
 
@@ -12,13 +10,10 @@
   project. @tiberiuichim @sneridagh
 
 ### Bugfix
-- managed hidden fields @giuliaghisini
+
+- Managed hidden fields @giuliaghisini
 - Fix bug in addon loading with namespaced packages @tiberiuichim
-
-
-- Japanese translation @terapyon
-
-### Internal
+- Japanese translation updated @terapyon
 
 ## 7.0.1 (2020-07-07)
 
