@@ -12,6 +12,8 @@
   project. @tiberiuichim @sneridagh
 
 ### Bugfix
+- managed hidden fields @giuliaghisini
+
 
 - Japanese translation @terapyon
 
