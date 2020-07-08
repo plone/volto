@@ -13,6 +13,7 @@
 
 ### Bugfix
 - managed hidden fields @giuliaghisini
+- Fix bug in addon loading with namespaced packages @tiberiuichim
 
 
 - Japanese translation @terapyon

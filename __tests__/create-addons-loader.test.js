@@ -136,6 +136,10 @@ describe('create-addons-loader default name generation', () => {
     const name = getName('~/addons/volto-addon1');
     expect(name).toBe('addonsvoltoAddon1');
   });
+  test('passing a namespace package strips @', () => {
+    const name = getName('@plone/volto-addon1');
+    expect(name).toBe('plonevoltoAddon1');
+  });
   test('passing a tilda relative path strips tilda', () => {
     const name = getName('~/../');
     expect(name.length).toBe(10);
