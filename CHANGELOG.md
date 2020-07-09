@@ -2,23 +2,16 @@
 
 ## 7.0.2 (unreleased)
 
-### Breaking
-
 ### Feature
 
-- Addons can optionally include a `razzle.extend.js` file in their root. This
-  module needs to follow the same rules as the `razzle.config.js`. They change
-  the default Volto Razzle configuration, before it is passed to the Volto
-  project. @tiberiuichim @sneridagh
+- Addons can optionally include a `razzle.extend.js` file in their root. This module needs to follow the same rules as the `razzle.config.js`. They change the default Volto Razzle configuration, before it is passed to the Volto project @tiberiuichim @sneridagh
 
 ### Bugfix
-- managed hidden fields @giuliaghisini
+
+- Managed hidden fields @giuliaghisini
 - Fix bug in addon loading with namespaced packages @tiberiuichim
+- Japanese translation updated @terapyon
 
-
-- Japanese translation @terapyon
-
-### Internal
 
 ## 7.0.1 (2020-07-07)
 
