@@ -140,7 +140,8 @@ module.exports = {
           SENTRY.SENTRY_CONFIG = JSON.parse(process.env.SENTRY_FRONTEND_CONFIG)
         }
         catch(e){
-          // not a valid JSON
+          console.log("Error parsing SENTRY_FRONTEND_CONFIG")
+          throw(e);
         }
       }
       config.plugins.unshift(
@@ -206,7 +207,8 @@ module.exports = {
             SENTRY.SENTRY_CONFIG = JSON.parse(process.env.SENTRY_BACKEND_CONFIG)
           }
           catch(e){
-            // not a valid JSON
+            console.log("Error parsing SENTRY_BACKEND_CONFIG")
+            throw(e);
           }
         }
       }
