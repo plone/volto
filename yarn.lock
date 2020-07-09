@@ -12405,7 +12405,7 @@ razzle-plugin-bundle-analyzer@1.2.0:
     webpack "~4.0.0"
     webpack-bundle-analyzer ">=3.6.0"
 
-razzle@^3.1.5:
+razzle@3.1.5:
   version "3.1.5"
   resolved "https://registry.yarnpkg.com/razzle/-/razzle-3.1.5.tgz#c697a32318720d6f5defd29998684d9e8fae6f62"
   integrity sha512-MabdkNnyX8qYGDMndRtRb4OzdYNmoCjWPyg/RQPYJBQ+IQhwmruLFpA6/vZybwkhqx+vc0d98RyuOMGRfPXW9Q==
