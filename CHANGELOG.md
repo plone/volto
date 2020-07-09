@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- German translation improved @timo
+
 ### Internal
 
 ## 7.1.0 (2020-07-09)

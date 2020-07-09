@@ -683,7 +683,7 @@ msgstr "Ordner"
 
 #: components/theme/Forbidden/Forbidden
 msgid "Forbidden"
-msgstr "Verboten"
+msgstr "Zugriff verweigert"
 
 #: components/theme/ContactForm/ContactForm
 msgid "From"
