@@ -6,6 +6,9 @@
 
 ### Feature
 
+- Provide a new webpack alias, `volto-themes`, which points to Volto's theme
+  folder. See details in the https://docs.voltocms.com/upgrade-guide/
+
 ### Bugfix
 
 ### Internal

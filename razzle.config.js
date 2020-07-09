@@ -247,6 +247,7 @@ const defaultModify = (config, { target, dev }, webpack) => {
     ...customizations,
     ...config.resolve.alias,
     '../../theme.config$': `${projectRootPath}/theme/theme.config`,
+    'volto-themes': `${registry.voltoPath}/theme/themes`,
     'load-volto-addons': addonsLoaderPath,
     ...registry.getResolveAliases(),
     '@plone/volto': `${registry.voltoPath}/src`,
