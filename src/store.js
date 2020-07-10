@@ -5,16 +5,11 @@ import { connectRouter, routerMiddleware } from 'connected-react-router';
 
 import reducers from '~/reducers';
 
-import { api, crashReporter } from '@plone/volto/middleware';
+import { api } from '@plone/volto/middleware';
 
 const configureStore = (initialState, history, apiHelper) => {
   const middlewares = composeWithDevTools(
-    applyMiddleware(
-      routerMiddleware(history),
-      crashReporter,
-      thunk,
-      api(apiHelper),
-    ),
+    applyMiddleware(routerMiddleware(history), thunk, api(apiHelper)),
   );
   const store = createStore(
     combineReducers({
