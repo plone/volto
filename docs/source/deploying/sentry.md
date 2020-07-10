@@ -37,8 +37,8 @@ SENTRY_DSN=<MY_SENTRY_DSN> SENTRY_FRONTEND_CONFIG='{"tags":{"site":"www.test.com
 
 ## Example of messages in SENTRY
 1. List of messages
-![](semantic_messages.png)
+![](sentry_messages.png)
 2. Messages from the frontend, with it's own TAGS and ADDITIONAL DATA
-![](semantic_frontend_message.png)
+![](sentry_frontend_message.png)
 3. Messages from the backend, with it's own TAGS and ADDITIONAL DATA
-![](semantic_backend_message.png)
+![](sentry_backend_message.png)
