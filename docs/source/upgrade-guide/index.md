@@ -16,10 +16,10 @@ A misspelled file has been renamed. If you import `strickthrough.svg` in your
 project, you'll now find that file at `@plone/volto/icons/strikethrough.svg`.
 
 
-### New theming webpack alias
+### New webpack resolve alias for Volto themes
 
-As a "nice to have", a new alias is provided that points to Volto's theme
-folder. So, in your project's `theme.config` file, you can replace:
+As a "nice to have", a new resolve alias is provided that points to Volto's 
+theme folder. So, in your project's `theme.config` file, you can replace:
 
 ```less
 @themesFolder: '../../node_modules/@plone/volto/theme/themes';
