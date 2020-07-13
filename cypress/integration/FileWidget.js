@@ -9,7 +9,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('#toolbar-add').click();
       cy.get('#toolbar-add-news-item').click();
       cy.fixture('image.png').then((fileContent) => {
-        cy.get('input[type="file"]').upload(
+        cy.get('input[type="file"]').attachFile(
           {
             fileContent,
             fileName: 'image.png',
