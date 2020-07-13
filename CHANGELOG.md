@@ -2,16 +2,13 @@
 
 ## 7.1.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
-- Provide a new webpack alias, `volto-themes`, which points to Volto's theme
-  folder. See details in the https://docs.voltocms.com/upgrade-guide/
-
-### Bugfix
+- Provide a new webpack alias, `volto-themes`, which points to Volto's theme folder. See details in the https://docs.voltocms.com/upgrade-guide/
 
 ### Internal
+
+- Upgrade razzle to `^3.1.5`. @tiberiuichim
 
 ## 7.1.0 (2020-07-09)
 
