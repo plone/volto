@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Upgrade to Cypress 4.10.0 @tisto
+
 ## 7.2.0 (2020-07-13)
 
 ### Feature
