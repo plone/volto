@@ -249,7 +249,7 @@
     "classnames": "2.2.6",
     "connected-react-router": "6.8.0",
     "coveralls": "3.0.2",
-    "cypress": "4.5.0",
+    "cypress": "4.10.0",
     "cypress-axe": "0.8.1",
     "cypress-file-upload": "4.0.7",
     "cypress-plugin-retries": "1.5.2",
