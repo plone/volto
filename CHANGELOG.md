@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Upgrade cypress-file-upload 4.0.7
+
 ## 7.2.0 (2020-07-13)
 
 ### Feature
@@ -114,7 +116,6 @@
 - Added internationalization for French language @bsuttor #1588
 - use of maximumSelectionSize from plone in ObjectBrowserWidget. @giuliaghisini
 - Added selectableTypes in ObjectBrowserWidget @giuliaghisini
-
 
 ### Bugfix
 
