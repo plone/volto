@@ -10,7 +10,7 @@
 
 ### Internal
 
-- Upgrade cypress-file-upload 4.0.7
+- Upgrade to cypress-file-upload 4.0.7 @iFlameing
 - Upgrade to Cypress 4.10.0 @tisto
 
 ## 7.2.0 (2020-07-13)
@@ -35,8 +35,7 @@
 - Fix bug in addon loading with namespaced packages @tiberiuichim
 - Japanese translation updated @terapyon
 
-
-- Upgrade razzle to `^3.1.5`. @tiberiuichim
+* Upgrade razzle to `^3.1.5`. @tiberiuichim
 
 ## 7.0.1 (2020-07-07)
 
