@@ -2,7 +2,7 @@
 
 exports[`Form renders a form component 1`] = `
 <div
-  className="ui raised segments"
+  className="ui raised segments form"
 >
   <header
     className="header pulled"
@@ -15,7 +15,7 @@ exports[`Form renders a form component 1`] = `
     id="blockform-fieldset-default"
   >
     <div
-      className="ui segment form sidebar-image-data"
+      className="ui segment attached"
     >
       <div
         className="Field"
