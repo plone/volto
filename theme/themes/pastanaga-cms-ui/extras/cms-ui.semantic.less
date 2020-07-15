@@ -4,10 +4,8 @@
 // prettier-ignore
 .cms-ui{
  
-
   /* Elements */
-  & { @import "~semantic-ui-less/definitions/elements/button"; }
-  
+  & { @import "~semantic-ui-less/definitions/elements/button"; }  
 }
 // prettier-ignore
 .cms-ui, #toolbar {
@@ -73,4 +71,12 @@
   & { @import "~semantic-ui-less/definitions/modules/sticky"; }
   & { @import "~semantic-ui-less/definitions/modules/tab"; }
   & { @import "~semantic-ui-less/definitions/modules/transition"; }
+}
+
+// prettier-ignore
+.cms-ui{
+ 
+  /* Pastanaga extras */   
+  & { @import '../../pastanaga/extras/sidebar.less'; } 
+
 }
