@@ -22,8 +22,6 @@ import 'react-dates/lib/css/_datepicker.css';
 
 import 'rc-time-picker/assets/index.css';
 
-console.log(moment.tz.names());
-
 const messages = defineMessages({
   date: {
     id: 'Date',
