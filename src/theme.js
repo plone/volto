@@ -7,6 +7,6 @@
  * Then, in your `theme.config` file, change the following variable:
  * `@container   : 'pastanaga-cms-ui'`
  */
-import '../theme/themes/pastanaga-cms-ui/extras/cms-ui.semantic.less';
-//import 'semantic-ui-less/semantic.less';
+// import '../theme/themes/pastanaga-cms-ui/extras/cms-ui.semantic.less';
+import 'semantic-ui-less/semantic.less';
 import '../theme/themes/pastanaga/extras/extras.less';
