@@ -12,7 +12,7 @@
 
 - Upgrade to Cypress 4.10.0 @tisto
 - Add a new blocks helper method, `getBlocks`. It simplifies using
-  `getBlocksFieldname` and getBlocksLayoutFieldname` under a single method that
+  `getBlocksFieldname` and `getBlocksLayoutFieldname` under a single method that
   returns ordered pairs of `[blockid, blockvalue]` @tiberiuichim
 
 ## 7.2.0 (2020-07-13)
