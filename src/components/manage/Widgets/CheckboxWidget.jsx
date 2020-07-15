@@ -78,6 +78,10 @@ CheckboxWidget.propTypes = {
   onEdit: PropTypes.func,
   onDelete: PropTypes.func,
   wrapped: PropTypes.bool,
+  intl: PropTypes.object,
+  fieldSet: PropTypes.string,
+  isDraggable: PropTypes.bool,
+  isDissabled: PropTypes.bool,
 };
 
 /**
@@ -86,13 +90,20 @@ CheckboxWidget.propTypes = {
  * @static
  */
 CheckboxWidget.defaultProps = {
+  id: '',
+  title: '',
   description: null,
   required: false,
-  error: [],
-  value: null,
   onChange: null,
   onEdit: null,
   onDelete: null,
+  error: [],
+  value: null,
+  wrapped: false,
+  intl: { formatMessage: () => {} },
+  fieldSet: null,
+  isDraggable: false,
+  isDissabled: false,
 };
 
 export default injectIntl(CheckboxWidget);

@@ -330,41 +330,24 @@ exports[`renders a Listing Block Sidebar component 1`] = `
           </div>
         </div>
         <div
-          class="inline field"
-          id="field-listingblock-sort-on-reverse"
+          class="wrapper"
         >
           <div
-            class="ui grid"
+            class="ui checkbox"
           >
-            <div
-              class="stretched row"
+            <input
+              class="hidden"
+              name="field-listingblock-sort-on-reverse"
+              readonly=""
+              tabindex="0"
+              type="checkbox"
+              value=""
+            />
+            <label
+              for="field-listingblock-sort-on-reverse"
             >
-              <div
-                class="twelve wide column"
-              >
-                <div
-                  class="wrapper"
-                >
-                  <div
-                    class="ui checkbox"
-                  >
-                    <input
-                      class="hidden"
-                      name="field-listingblock-sort-on-reverse"
-                      readonly=""
-                      tabindex="0"
-                      type="checkbox"
-                      value=""
-                    />
-                    <label
-                      for="field-listingblock-sort-on-reverse"
-                    >
-                      Reversed order
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </div>
+              Reversed order
+            </label>
           </div>
         </div>
         <div

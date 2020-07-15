@@ -321,6 +321,8 @@ DatetimeWidget.propTypes = {
  * @static
  */
 DatetimeWidget.defaultProps = {
+  id: '',
+  title: '',
   description: null,
   required: false,
   error: [],
@@ -332,6 +334,7 @@ DatetimeWidget.defaultProps = {
   onChange: null,
   onEdit: null,
   onDelete: null,
+  wrapped: false,
 };
 
 export default injectIntl(DatetimeWidget);

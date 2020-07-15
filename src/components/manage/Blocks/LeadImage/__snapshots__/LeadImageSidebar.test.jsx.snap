@@ -347,45 +347,29 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
         </div>
       </div>
       <div
-        className="inline field"
-        id="field-openLinkInNewTab"
+        className="wrapper"
       >
         <div
-          className="ui grid"
+          className="ui checkbox"
+          onChange={[Function]}
+          onClick={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
         >
-          <div
-            className="stretched row"
+          <input
+            checked={false}
+            className="hidden"
+            disabled={false}
+            name="field-openLinkInNewTab"
+            readOnly={true}
+            tabIndex={0}
+            type="checkbox"
+          />
+          <label
+            htmlFor="field-openLinkInNewTab"
           >
-            <div
-              className="twelve wide column"
-            >
-              <div
-                className="wrapper"
-              >
-                <div
-                  className="ui checkbox"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseUp={[Function]}
-                >
-                  <input
-                    checked={false}
-                    className="hidden"
-                    name="field-openLinkInNewTab"
-                    readOnly={true}
-                    tabIndex={0}
-                    type="checkbox"
-                  />
-                  <label
-                    htmlFor="field-openLinkInNewTab"
-                  >
-                    Open in a new tab
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
+            Open in a new tab
+          </label>
         </div>
       </div>
     </div>

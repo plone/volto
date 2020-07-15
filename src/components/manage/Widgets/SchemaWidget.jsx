@@ -127,16 +127,37 @@ const messages = defineMessages({
   },
 });
 
+/**
+ * Makes a list of field types formated for select widget
+ * @param {Object[]} listOfTypes array of strings
+ * @param {*} intl
+ * @returns {Object[]} example [['text', 'text']]
+ */
 const makeFieldTypes = (listOfTypes, intl) => {
   const result = listOfTypes.map((type) => [type.label, type.label]);
   return result;
 };
 
+/**
+ * Makes a list of fieldset types formated for select widget
+ * @param {Object[]} listOfTypes array of strings
+ * @param {*} intl
+ * @returns {Object[]} example [['default', 'default']]
+ */
 const makeFieldsetList = (listOfFieldsets, intl) => {
   const result = listOfFieldsets.map((type) => [type.id, type.title]);
   return result;
 };
 
+/**
+ * schemaField used for modal form, when editing a field
+ * - based on the factory a set of fields is presented
+ * - fields can be moved to another fieldset
+ * @param {string} factory - the kind of field
+ * @param {Object} intl
+ * @param {*} fieldsets
+ * @return {Object} - schema
+ */
 const schemaField = (factory, intl, fieldsets) => ({
   fieldsets: [
     {
@@ -287,6 +308,11 @@ const schemaField = (factory, intl, fieldsets) => ({
   required: ['type', 'title'],
 });
 
+/**
+ * schema for adding a new field
+ * @param {string} factory
+ * @param {Object} intl
+ */
 const fieldsetSchema = (factory, intl) => ({
   fieldsets: [
     {
@@ -309,6 +335,10 @@ const fieldsetSchema = (factory, intl) => ({
   required: ['id', 'title'],
 });
 
+/**
+ * 'plone.dexterity.schema.generated' is considered user created
+ * @param {Object} field
+ */
 const isUserCreated = (field) =>
   !field.behavior ||
   field.behavior.indexOf('plone.dexterity.schema.generated') > -1;
@@ -329,19 +359,18 @@ const getListStyle = (isDraggingOver) => ({
 });
 
 /**
-"<p>wer</p><p>rew</p><p>ewr</p><p>erw</p>"
+ * will transform a string with new lines in an array for each item on a line
+ * @param {string} textarea - has '\r\n' characters
  */
-const formatRichtextToArray = (richText) => {
-  // console.log('formatRichtextToArray ', richText);
+const formatTextareaToArray = (textarea) => {
   const values =
-    richText && richText
-      ? richText
+    textarea && textarea
+      ? textarea
           .split(/(\r\n|\n|\r)/gm)
           .map((elem) => elem.trim())
           .filter((elem) => elem !== '')
       : null;
 
-  // console.log('formatRichtextToArray ', values);
   return values ? { values } : {};
 };
 
@@ -439,9 +468,7 @@ class SchemaWidget extends Component {
    * @returns {undefined}
    */
   onAddField(values) {
-    // console.log('onAddField', values);
     const fieldId = values.title.trim().replace(' ', '_');
-
     const currentFieldsetFields = this.props.value.fieldsets[
       this.state.currentFieldset
     ].fields;
@@ -607,6 +634,17 @@ class SchemaWidget extends Component {
     this.onCancel();
   }
 
+  /**
+   * Recreates the fieldset structure
+   * will move change name of the field if needed and
+   * change fieldset if changed
+   * @param {Object[]} fieldsets
+   * @param {string} parentFieldSet - id
+   * @param {number} currentFieldset - index
+   * @param {Object} oldfieldId
+   * @param {Object} newfieldId
+   * @returns {Object[]} fieldsets
+   */
   editFieldset(
     fieldsets,
     parentFieldSet,
@@ -632,7 +670,6 @@ class SchemaWidget extends Component {
         },
         ...slice(fieldsets, currentFieldset + 1),
       ];
-      // console.log('fieldsetsWithoutField', fieldsetsWithoutField);
 
       const fieldsOfNewFieldset =
         indexOfChangeNote > -1
@@ -660,7 +697,6 @@ class SchemaWidget extends Component {
         },
         ...slice(fieldsetsWithoutField, newParentFieldsetIndex + 1),
       ];
-      // console.log('fieldsetsWithField', fieldsetsWithField);
       return fieldsetsWithField;
     };
 
@@ -676,8 +712,7 @@ class SchemaWidget extends Component {
         ...slice(fieldsets, currentFieldset + 1),
       ];
     };
-    // console.log('parentFieldSet', parentFieldSet);
-    // console.log('currentFieldset', currentFieldset);
+
     const result =
       parentFieldSet !== fieldsets[currentFieldset].id
         ? moveToFieldsetWithNewName()
@@ -687,22 +722,23 @@ class SchemaWidget extends Component {
 
   /**
    * Edit field handler
+   * recreates the schema based on field changes (properties, name, fieldset)
    * @method onEditField
    * @param {Object} values Field values
    * @returns {undefined}
    */
   onEditField(values) {
-    // console.log('values', values);
     let formattedValues = { ...values };
+
     if (values.factory !== 'Date/Time' || values.factory !== 'Date') {
       const listOfProp = ['minLength', 'maxLength', 'minimum', 'maximum'];
+
       listOfProp.forEach((prop) => {
         formattedValues = values[prop]
           ? { ...formattedValues, ...{ [prop]: parseFloat(values[prop]) } }
           : formattedValues;
       });
     }
-    // console.log('formattedValues', formattedValues);
 
     const result = {
       ...this.props.value,
@@ -720,7 +756,7 @@ class SchemaWidget extends Component {
         [formattedValues.id]: {
           ...this.props.value.properties[this.state.editField.id],
           ...omit(formattedValues, ['id', 'required', 'parentFieldSet']),
-          ...formatRichtextToArray(formattedValues.formattedValues),
+          ...formatTextareaToArray(formattedValues.formattedValues),
         },
       },
       required: formattedValues.required
@@ -729,7 +765,7 @@ class SchemaWidget extends Component {
           ])
         : without(this.props.value.required, this.state.editField.id),
     };
-    // console.log('onEditField result', result);
+
     this.onChange(result);
 
     this.onCancel();
@@ -791,12 +827,16 @@ class SchemaWidget extends Component {
    * @returns {undefined}
    */
   onChange(value) {
-    // console.log('onChange', value);
     this.props.onChange(this.props.id, JSON.stringify(value));
   }
 
+  /**
+   * Change default value handler
+   * @method onChangeDefaultValue
+   * @param {string} fieldId
+   * @param {string} fieldValue
+   */
   onChangeDefaultValue(fieldId, fieldValue) {
-    // console.log('onChangeDefaultValue', fieldId, fieldValue);
     const { value } = this.props;
     const fieldMerge = {
       ...value.properties[fieldId],
@@ -1001,7 +1041,7 @@ class SchemaWidget extends Component {
     const lastUserCreatedFieldsIndex = hasChangeNote
       ? value.fieldsets[this.state.currentFieldset].fields.length - 1
       : value.fieldsets[this.state.currentFieldset].fields.length;
-
+    // fields that were not created by the user, but are part of a behaviour
     const makeNonUserFields = () =>
       map(
         value.fieldsets[this.state.currentFieldset].fields.slice(
@@ -1029,7 +1069,7 @@ class SchemaWidget extends Component {
           </div>
         ),
       );
-
+    // fields created by the user
     const makeUserFields = () =>
       map(
         value.fieldsets[this.state.currentFieldset].fields.slice(
