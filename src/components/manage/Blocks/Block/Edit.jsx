@@ -156,7 +156,7 @@ class Edit extends Component {
           <Button
             icon
             basic
-            onClick={() => this.props.onDeleteBlock(id)}
+            onClick={() => this.props.onDeleteBlock(id, true)}
             className="delete-button"
             aria-label={this.props.intl.formatMessage(messages.delete)}
           >
