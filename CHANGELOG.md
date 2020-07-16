@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Added Placeholder attribute to Textwidget and TextAreaWidget @iFlameing
+
 ### Bugfix
 
 ### Internal
