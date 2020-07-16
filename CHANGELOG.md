@@ -35,7 +35,7 @@
 - Fix bug in addon loading with namespaced packages @tiberiuichim
 - Japanese translation updated @terapyon
 
-* Upgrade razzle to `^3.1.5`. @tiberiuichim
+- Upgrade razzle to `^3.1.5`. @tiberiuichim
 
 ## 7.0.1 (2020-07-07)
 

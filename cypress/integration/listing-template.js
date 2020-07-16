@@ -33,7 +33,6 @@ if (Cypress.env('API') !== 'guillotina') {
         subjectType: 'input',
       });
       cy.get('#toolbar-save').click();
-      cy.wait(4000);
       cy.visit('/my-folder/my-document');
       cy.get('.edit').click();
       cy.get('svg[class="icon block-add-button"]').click({ force: true });
