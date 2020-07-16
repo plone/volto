@@ -251,7 +251,7 @@
     "coveralls": "3.0.2",
     "cypress": "4.10.0",
     "cypress-axe": "0.8.1",
-    "cypress-file-upload": "3.5.3",
+    "cypress-file-upload": "4.0.7",
     "cypress-plugin-retries": "1.5.2",
     "detect-browser": "5.1.0",
     "diff": "3.5.0",
