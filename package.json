@@ -292,7 +292,7 @@
     "less-loader": "6.1.0",
     "lint-staged": "10.2.2",
     "locale": "0.1.0",
-    "lodash": "4.17.15",
+    "lodash": "4.17.19",
     "lodash-move": "1.1.1",
     "lodash-webpack-plugin": "0.11.5",
     "mem": "4.0.0",
