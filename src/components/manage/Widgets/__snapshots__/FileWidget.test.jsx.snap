@@ -27,17 +27,58 @@ exports[`renders a file widget component 1`] = `
       <div
         className="eight wide column"
       >
-        <img
-          className="ui small image image-preview"
-          id="field-my-field-image"
-        />
         <div
-          className="ui input"
+          aria-disabled={false}
+          className="dropzone"
+          onClick={[Function]}
+          onDragEnter={[Function]}
+          onDragLeave={[Function]}
+          onDragOver={[Function]}
+          onDragStart={[Function]}
+          onDrop={[Function]}
+          style={
+            Object {
+              "position": "relative",
+            }
+          }
         >
+          <img
+            className="ui small image image-preview"
+            id="field-my-field-image"
+            src="block-image.svg"
+          />
+          <label
+            className="label-file-widget-input"
+            htmlFor="field-my-field"
+          >
+            choose a file
+          </label>
+          <div
+            className="ui input file-widget-input"
+          >
+            <input
+              id="field-my-field"
+              name="my-field"
+              onChange={[Function]}
+              type="file"
+            />
+          </div>
           <input
-            id="field-my-field"
-            name="my-field"
+            autoComplete="off"
+            disabled={false}
+            multiple={true}
             onChange={[Function]}
+            style={
+              Object {
+                "bottom": 0,
+                "left": 0,
+                "opacity": 0.00001,
+                "pointerEvents": "none",
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              }
+            }
             type="file"
           />
         </div>

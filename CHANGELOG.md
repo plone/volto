@@ -5,6 +5,7 @@
 ### Breaking
 
 ### Feature
+- Added Dropzone in FileWidget @iFlameing
 
 ### Bugfix
 
