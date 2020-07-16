@@ -2,16 +2,10 @@
 
 ## 7.2.1 (unreleased)
 
-### Breaking
-
-### Feature
-
-### Bugfix
-
 ### Internal
 
-- Upgrade to cypress-file-upload 4.0.7 @iFlameing
 - Upgrade to Cypress 4.10.0 @tisto
+- Upgrade to cypress-file-upload 4.0.7 @iFlameing
 
 ## 7.2.0 (2020-07-13)
 
