@@ -11,6 +11,7 @@
 
 ### Internal
 
+- Upgrade to cypress-file-upload 4.0.7 @iFlameing
 - Upgrade to Cypress 4.10.0 @tisto
 
 ## 7.2.0 (2020-07-13)
@@ -34,7 +35,6 @@
 - Managed hidden fields @giuliaghisini
 - Fix bug in addon loading with namespaced packages @tiberiuichim
 - Japanese translation updated @terapyon
-
 
 - Upgrade razzle to `^3.1.5`. @tiberiuichim
 
@@ -117,7 +117,6 @@
 - Added internationalization for French language @bsuttor #1588
 - use of maximumSelectionSize from plone in ObjectBrowserWidget. @giuliaghisini
 - Added selectableTypes in ObjectBrowserWidget @giuliaghisini
-
 
 ### Bugfix
 
