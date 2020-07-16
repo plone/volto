@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Upgrade lodash dependency to 4.17.19 @tisto
+
 ## 7.2.1 (2020-07-16)
 
 ### Internal
