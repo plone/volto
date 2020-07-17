@@ -1,4 +1,4 @@
-# Using third party libraries/themes written in sass
+# Using third party libraries/themes different from semantic-ui
 
 You can use Volto with third party libraries or themes written in sass and avoid applying semantic-ui on public facing views.
 This is made possible by code splitting, where interfaces have a marker CSS class to incapsulate styles and avoid conflicts between semantic-ui and the custom theme you would use.
