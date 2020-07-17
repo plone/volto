@@ -73,13 +73,9 @@ describe('Add Content Tests', () => {
         cy.get('#field-file').parent().parent().contains('file.pdf');
       });
     } else {
-      cy.fixture('file.pdf', 'base64').then((fileContent) => {
-        cy.get('input#field-file').attachFile(
-          { fileContent, fileName: 'file.pdf', mimeType: 'application/pdf' },
-          { subjectType: 'input' },
-        );
-      });
-      cy.get('#field-file').parent().parent().contains('file.pdf');
+      cy.get('input[id="field-file"]').attachFile('file.pdf',
+        { subjectType: 'input' },
+      );
     }
     cy.get('#toolbar-save').click();
 
@@ -115,12 +111,8 @@ describe('Add Content Tests', () => {
         cy.get('#field-image').parent().parent().contains('image.png');
       });
     } else {
-      cy.fixture('image.png', 'base64').then((fileContent) => {
-        cy.get('input#field-image').attachFile(
-          { fileContent, fileName: 'image.png', mimeType: 'image/png' },
-          { subjectType: 'input' },
-        );
-        cy.get('#field-image').parent().parent().contains('image.png');
+      cy.get('input[id="field-image"]').attachFile('image.png', {
+        subjectType: 'input',
       });
     }
     cy.get('#toolbar-save').click();
