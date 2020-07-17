@@ -70,7 +70,6 @@ describe('Add Content Tests', () => {
           { fileContent, fileName: 'file.pdf', mimeType: 'application/pdf' },
           { subjectType: 'input' },
         );
-        cy.get('#field-file').parent().parent().contains('file.pdf');
       });
     } else {
       cy.get('input[id="field-file"]').attachFile('file.pdf',
@@ -108,7 +107,6 @@ describe('Add Content Tests', () => {
           { fileContent, fileName: 'image.png', mimeType: 'image/png' },
           { subjectType: 'input' },
         );
-        cy.get('#field-image').parent().parent().contains('image.png');
       });
     } else {
       cy.get('input[id="field-image"]').attachFile('image.png', {
