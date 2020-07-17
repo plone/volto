@@ -1,12 +1,12 @@
 # Using third party libraries/themes written in sass
 
 You can use Volto with third party libraries or themes written in sass and avoid applying semantic-ui on public facing views.
-This is made possible by code splitting, where interfaces have a marker CSS class to incapsulate styles and avoid conflicts between semantic-ui and the custom theme you'd use.
+This is made possible by code splitting, where interfaces have a marker CSS class to incapsulate styles and avoid conflicts between semantic-ui and the custom theme you would use.
 
 ## The problem
 
 The main purpuse could be to use a sass based theme like Bootstrap.
-If you want to load a different styling library using the base Volto configuration, you'll load a huge bundle with both having weight and performance issues thus this would likely imply conflicts on base elements as containers.
+If you want to load a different styling library using the base Volto configuration, you will load a huge bundle with both having weight and performance issues thus this would likely imply conflicts on base elements as containers.
 
 ## The solution
 
@@ -14,13 +14,13 @@ Volto supports the split of the styles on a different theme: `pastanaga-cms-ui`.
 This will load only the CSS needed for Volto's own interfaces like toolbar, sidebar and blocks management. Generally speaking, only for the management interfaces.
 With this different theme, the end user interfaces will be free to be styled with your custom styles.
 
-To accomplish this, you'll need to follow two wrapper CSS classes:
+To accomplish this, you will need to follow two wrapper CSS classes:
 
 - `cms-ui` for management interfaces;
 - `public-ui` for end-user/public facing views.
 
-These classes are applied to the body element and in those situations where you're in a management view but a component is a "public" one or the opposite, in order to handle the specialization of those.
-An example of this behavior is the blocks view: you are in a public view because you're not editing the content, but you have the toolbar.
+These classes are applied to the body element and in those situations where you are in a management view but a component is a "public" one or the opposite, in order to handle the specialization of those.
+An example of this behavior is the blocks view: you are in a public view because you are not editing the content, but you have the toolbar.
 
 ## Setting up the theme
 
@@ -44,7 +44,7 @@ Then, in your `theme.config` change the following and the needed variables:
 
 ### Use sass loader
 
-If you have to load sass, you'll need `sass-loader` and you'll have to customize `razzle.config.js` integrating that loader into webpack configuration.
+If you have to load sass, you will need `sass-loader` and you will have to customize `razzle.config.js` integrating that loader into webpack configuration.
 
 Example:
 
@@ -106,13 +106,13 @@ base_config.module.rules.push(SASSLOADER);
 Complete example in an active project:  
 https://github.com/RedTurtle/design-volto-theme/blob/master/razzle.config.js
 
-In that project, there's the sass loader and the svg loader, too.
+In that project, there is the sass loader and the svg loader, too.
 
 ### Including custom styles
 
 In your Volto site theme, include your site custom styles in `src/theme.js` as described before.
 
-Including other styling libraries in most cases will mess font sizes, so it's suggested to add something like:
+Including other styling libraries in most cases will mess font sizes, so it is suggested to add something like:
 
 ```scss
 body.cms-ui {
