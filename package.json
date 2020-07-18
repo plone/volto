@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "7.2.0",
+  "version": "7.2.1",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -251,7 +251,7 @@
     "coveralls": "3.0.2",
     "cypress": "4.10.0",
     "cypress-axe": "0.8.1",
-    "cypress-file-upload": "3.5.3",
+    "cypress-file-upload": "4.0.7",
     "cypress-plugin-retries": "1.5.2",
     "detect-browser": "5.1.0",
     "diff": "3.5.0",
@@ -292,7 +292,7 @@
     "less-loader": "6.1.0",
     "lint-staged": "10.2.2",
     "locale": "0.1.0",
-    "lodash": "4.17.15",
+    "lodash": "4.17.19",
     "lodash-move": "1.1.1",
     "lodash-webpack-plugin": "0.11.5",
     "mem": "4.0.0",
