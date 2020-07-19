@@ -15,6 +15,33 @@ This upgrade guide lists all breaking changes in Volto and explains the
 A misspelled file has been renamed. If you import `strickthrough.svg` in your
 project, you'll now find that file at `@plone/volto/icons/strikethrough.svg`.
 
+
+### New webpack resolve alias for Volto themes
+
+As a "nice to have", a new resolve alias is provided that points to Volto's 
+theme folder. So, in your project's `theme.config` file, you can replace:
+
+```less
+@themesFolder: '../../node_modules/@plone/volto/theme/themes';
+@siteFolder: "../../theme";
+@fontPath : "../../@{theme}/assets/fonts";
+```
+with:
+
+```less
+@themesFolder: '~volto-themes';
+@siteFolder: '~@package/../theme';
+@fontPath: "~volto-themes/@{theme}/assets/fonts";
+```
+
+You might consider moving your theme files to a subfolder called `site`, to
+prepare for the arival of addons theming and their overrides.  In that case,
+you would set your `@siteFolder` to:
+
+```
+@siteFolder: '~@package/../theme/site';
+```
+
 ## Upgrading to Volto 6.x.x
 
 First, update the `package.json` of your Volto project to Volto 6.x.x.

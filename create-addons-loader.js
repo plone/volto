@@ -10,12 +10,19 @@ const titleCase = (w) => w.slice(0, 1).toUpperCase() + w.slice(1, w.length);
  */
 function nameFromPackage(name) {
   if (
+    name.startsWith('@') ||
     name.startsWith('~') ||
     name.startsWith('.') ||
     name.startsWith(path.sep)
   ) {
     name =
-      name.replace('~', '').split('.').join('').split(path.sep).join('') ||
+      name
+        .replace('@', '')
+        .replace('~', '')
+        .split('.')
+        .join('')
+        .split(path.sep)
+        .join('') ||
       cryptoRandomString({ length: 10, characters: 'abcdefghijk' });
   }
   return name

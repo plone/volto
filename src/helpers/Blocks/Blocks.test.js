@@ -1,4 +1,5 @@
 import {
+  getBlocks,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
   hasBlocksData,
@@ -114,6 +115,36 @@ describe('Blocks', () => {
         };
         expect(blockHasValue(textBlock)).toBe(false);
       });
+    });
+  });
+
+  describe('getBlock', () => {
+    it('returns empty when there is no block content', () => {
+      expect(
+        getBlocks({ blocks: {}, blocks_layout: { items: [] } }),
+      ).toStrictEqual([]);
+    });
+
+    it('returns ordered pairs', () => {
+      expect(
+        getBlocks({
+          blocks: { a: { value: 1 }, b: { value: 2 } },
+          blocks_layout: { items: ['a', 'b'] },
+        }),
+      ).toStrictEqual([
+        ['a', { value: 1 }],
+        ['b', { value: 2 }],
+      ]);
+
+      expect(
+        getBlocks({
+          blocks: { a: { value: 1 }, b: { value: 2 } },
+          blocks_layout: { items: ['b', 'a'] },
+        }),
+      ).toStrictEqual([
+        ['b', { value: 2 }],
+        ['a', { value: 1 }],
+      ]);
     });
   });
 });

@@ -65,3 +65,18 @@ export function blockHasValue(data) {
   }
   return check(data);
 }
+
+/**
+ * Get block pairs of [id, block] from content properties
+ * @function getBlocks
+ * @param {Object} properties
+ * @return {Array} a list of block [id, value] pairs, in order from layout
+ */
+export const getBlocks = (properties) => {
+  const blocksFieldName = getBlocksFieldname(properties);
+  const blocksLayoutFieldname = getBlocksLayoutFieldname(properties);
+  return properties[blocksLayoutFieldname].items.map((n) => [
+    n,
+    properties[blocksFieldName][n],
+  ]);
+};
