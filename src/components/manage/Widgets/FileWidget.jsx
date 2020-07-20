@@ -75,7 +75,7 @@ const FileWidget = ({
             aria-label="delete file"
             onClick={() => {
               onChange(id, null);
-              fileInput.current.inputRef.value = null;
+              fileInput.current.inputRef.current.value = null;
             }}
           >
             <Icon name={deleteSVG} size="20px" />

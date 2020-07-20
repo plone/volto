@@ -7,6 +7,7 @@
 ### Feature
 
 - Added Placeholder attribute to Textwidget and TextAreaWidget @iFlameing
+- Fix upload avatar (FileWidget) @nileshgulia1
 
 ### Bugfix
 
