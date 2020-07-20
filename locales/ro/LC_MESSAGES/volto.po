@@ -1342,6 +1342,10 @@ msgstr "Selectați tranziția care va fi utilizată pentru modificarea stării e
 msgid "Selected items"
 msgstr "Articole selectate"
 
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Selected items - x of y"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Selection"
 msgstr "Selecție"
