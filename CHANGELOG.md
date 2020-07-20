@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Making Content browser aware of context @iFlameing
+
 ### Bugfix
 
 ### Internal
