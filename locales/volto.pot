@@ -1613,6 +1613,11 @@ msgstr ""
 msgid "Selected items"
 msgstr ""
 
+#: components/manage/Sidebar/ObjectBrowserBody
+# defaultMessage: of
+msgid "Selected items - x of y"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Selection
 msgid "Selection"
