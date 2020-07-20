@@ -44,63 +44,37 @@ Then, in your `theme.config` change the following and the needed variables:
 
 ### Use sass loader
 
-If you have to load sass, you will need `sass-loader` and you will have to customize `razzle.config.js` integrating that loader into webpack configuration.
+If you have to load sass, you will need `razzle-plugin-scss` and you will have to customize `razzle.config.js` integrating that plugin into razzle configuration.
 
 Example:
 
 ```js
 const volto_config = require(`${voltoPath}/razzle.config`);
 
-// into exported modify():
-const base_config = volto_config.modify(config, { target, dev }, webpack);
-const SASSLOADER = {
-  test: /\.s[ac]ss$/i,
-  include: [
-    path.resolve('./theme'),
-    /*/node_modules\/bootstrap/,*/
-  ],
-  use: dev
-    ? [
-        {
-          loader: 'style-loader',
-        },
-        BASE_CSS_LOADER,
-        POST_CSS_LOADER,
-        {
-          loader: 'sass-loader',
-          options: {
-            sassOptions: {
-              outputStyle: 'expanded',
-              sourceMap: true,
-              includePaths: ['node_modules'],
-            },
-          },
-        },
-      ]
-    : [
-        MiniCssExtractPlugin.loader,
-        {
-          loader: 'css-loader',
-          options: {
-            importLoaders: 2,
+module.exports = Object.assign({}, volto_config, {
+  modify: (config, { target, dev }, webpack) => {
+    ...
+  },
+  plugins: [
+    {
+      name: 'scss',
+      options: {
+        sass: {
+          dev: {
+            outputStyle: 'expanded',
             sourceMap: true,
+            includePaths: ['node_modules'],
           },
+          prod: {
+            outputStyle: 'expanded',
+            sourceMap: true,
+            includePaths: ['node_modules'],
+          }
         },
-        POST_CSS_LOADER,
-        {
-          loader: 'sass-loader',
-          options: {
-            sassOptions: {
-              outputStyle: 'expanded',
-              sourceMap: true,
-              includePaths: ['node_modules'],
-            },
-          },
-        },
-      ],
-};
-
-base_config.module.rules.push(SASSLOADER);
+      },
+    },
+  ],
+});
 ```
 
 Complete example in an active project:  
