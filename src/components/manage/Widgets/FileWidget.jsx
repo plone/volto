@@ -12,6 +12,7 @@ import deleteSVG from '@plone/volto/icons/delete.svg';
 import { Icon, FormFieldWrapper } from '@plone/volto/components';
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
 import Dropzone from 'react-dropzone';
+import { flattenToAppURL } from '@plone/volto/helpers';
 
 /**
  * FileWidget component class.
@@ -71,10 +72,14 @@ const FileWidget = ({
           className="image-preview"
           id={`field-${id}-image`}
           size="small"
-          src={imageBlockSVG}
+          src={
+            value?.download ? flattenToAppURL(value.download) : imageBlockSVG
+          }
         />
         <label className="label-file-widget-input" htmlFor={`field-${id}`}>
-          choose a file
+          {value?.download
+            ? 'Replace existing File/Image'
+            : 'Choose a File/Image'}
         </label>
         <Input
           id={`field-${id}`}
@@ -113,7 +118,9 @@ const FileWidget = ({
             aria-label="delete file"
             onClick={() => {
               onChange(id, null);
-              fileInput.current.inputRef.value = null;
+              let imagePreview = document.getElementById(`field-${id}-image`);
+              imagePreview.src = imageBlockSVG;
+              fileInput.current.inputRef.current.value = null;
             }}
           >
             <Icon name={deleteSVG} size="20px" />

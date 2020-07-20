@@ -51,7 +51,7 @@ exports[`renders a file widget component 1`] = `
             className="label-file-widget-input"
             htmlFor="field-my-field"
           >
-            choose a file
+            Choose a File/Image
           </label>
           <div
             className="ui input file-widget-input"

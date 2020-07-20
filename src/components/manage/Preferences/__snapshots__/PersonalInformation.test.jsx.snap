@@ -175,7 +175,7 @@ exports[`PersonalInformation renders a personal information component 1`] = `
                     className="label-file-widget-input"
                     htmlFor="field-portrait"
                   >
-                    choose a file
+                    Choose a File/Image
                   </label>
                   <div
                     className="ui input file-widget-input"
@@ -572,7 +572,7 @@ exports[`PersonalInformation renders a personal information component embedded i
                     className="label-file-widget-input"
                     htmlFor="field-portrait"
                   >
-                    choose a file
+                    Choose a File/Image
                   </label>
                   <div
                     className="ui input file-widget-input"
