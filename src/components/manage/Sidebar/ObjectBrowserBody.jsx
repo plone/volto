@@ -159,7 +159,7 @@ class ObjectBrowserBody extends Component {
       );
     } else {
       this.props.searchContent(
-        '/',
+        this.state.currentFolder,
         {
           'path.depth': 1,
           sort_on: 'getObjPositionInParent',
