@@ -1,5 +1,53 @@
 // Object Browser Container
 
+@sidebar-toggle-button-highlight-color: yellow;
+@sidebar-toggle-button-animations-duration: 1s;
+@sidebar-toggle-button-normal-opacity: 0.05;
+
+@keyframes sidebar-toggle-button-before-highlight {
+  0% {
+    background: @sidebar-toggle-button-highlight-color;
+  }
+
+  25% {
+    background: @sidebar-toggle-button-highlight-color;
+  }
+
+  50% {
+    background: @sidebar-toggle-button-highlight-color;
+  }
+
+  75% {
+    background: @blue;
+  }
+
+  100% {
+    background: @blue;
+  }
+}
+
+@keyframes sidebar-toggle-button-highlight {
+  0% {
+    opacity: @sidebar-toggle-button-normal-opacity;
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: @sidebar-toggle-button-normal-opacity;
+  }
+
+  100% {
+    opacity: @sidebar-toggle-button-normal-opacity;
+  }
+
+  100% {
+    opacity: @sidebar-toggle-button-normal-opacity;
+  }
+}
+
 @media only screen and (max-width: @largestMobileScreen) {
   .has-toolbar {
     .sidebar-container {
@@ -90,9 +138,11 @@
     height: 80px;
     padding: 0;
     margin-top: -40px;
+    animation: sidebar-toggle-button-highlight
+      @sidebar-toggle-button-animations-duration;
     background: transparent;
     border-radius: 0;
-    opacity: 0.05;
+    opacity: @sidebar-toggle-button-normal-opacity;
     transition: opacity 0.3s;
   }
 
@@ -107,6 +157,8 @@
     display: block;
     width: 4px;
     height: 100%;
+    animation: sidebar-toggle-button-before-highlight
+      @sidebar-toggle-button-animations-duration;
     background: @blue;
     content: '';
   }
