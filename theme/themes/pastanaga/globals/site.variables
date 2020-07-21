@@ -115,6 +115,12 @@
 --------------------*/
 
 
+/*------------------
+     Animations
+--------------------*/
+
+@sidebarToggleButtonAnimationsDuration: 1s;
+
 /*-------------------
      Breakpoints
 --------------------*/
@@ -163,6 +169,8 @@
 @greyBorderColor      : #C7D5D8; // breadcrumbs border
 @lightGreyBorderColor : #EDF1F2; // breadcrumbs background
 
+@sidebarToggleButtonHighlightColor: @grey;
+
 /*-------------------
      Alpha Colors
 --------------------*/
@@ -172,6 +180,12 @@
        Accents
 --------------------*/
 
+
+/*-------------------
+      Opacities
+--------------------*/
+
+@sidebarToggleButtonNormalOpacity: 0.05;
 
 /*******************************
            Power-User
