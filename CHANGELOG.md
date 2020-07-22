@@ -7,6 +7,7 @@
 ### Feature
 
 - Added Placeholder attribute to Textwidget and TextAreaWidget @iFlameing
+- Fix click-select block on unknown block type @nileshgulia1
 
 ### Bugfix
 
