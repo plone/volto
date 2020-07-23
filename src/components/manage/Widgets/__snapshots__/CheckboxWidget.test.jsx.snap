@@ -1,46 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a checkbox widget component 1`] = `
-<div
-  className="inline field"
-  id="field-my-field"
->
+Array [
   <div
-    className="ui grid"
+    className="wrapper"
   >
+    <i
+      aria-hidden="true"
+      className="grey bars icon drag handle"
+    />
     <div
-      className="stretched row"
+      className="ui checked checkbox"
+      onChange={[Function]}
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
     >
-      <div
-        className="twelve wide column"
+      <input
+        checked={true}
+        className="hidden"
+        disabled={false}
+        name="field-my-field"
+        readOnly={true}
+        tabIndex={0}
+        type="checkbox"
+      />
+      <label
+        htmlFor="field-my-field"
       >
-        <div
-          className="wrapper"
-        >
-          <div
-            className="ui checkbox"
-            onChange={[Function]}
-            onClick={[Function]}
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
-          >
-            <input
-              checked={null}
-              className="hidden"
-              name="field-my-field"
-              readOnly={true}
-              tabIndex={0}
-              type="checkbox"
-            />
-            <label
-              htmlFor="field-my-field"
-            >
-              My field
-            </label>
-          </div>
-        </div>
-      </div>
+        My field
+      </label>
     </div>
-  </div>
-</div>
+  </div>,
+  <div
+    className="ui red pointing basic label"
+    onClick={[Function]}
+  >
+    error1
+  </div>,
+]
 `;

@@ -308,45 +308,29 @@ exports[`renders an Listing Data Sidebar component 1`] = `
     </div>
   </div>
   <div
-    className="inline field"
-    id="field-listingblock-sort-on-reverse"
+    className="wrapper"
   >
     <div
-      className="ui grid"
+      className="ui checkbox"
+      onChange={[Function]}
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
     >
-      <div
-        className="stretched row"
+      <input
+        checked={false}
+        className="hidden"
+        disabled={false}
+        name="field-listingblock-sort-on-reverse"
+        readOnly={true}
+        tabIndex={0}
+        type="checkbox"
+      />
+      <label
+        htmlFor="field-listingblock-sort-on-reverse"
       >
-        <div
-          className="twelve wide column"
-        >
-          <div
-            className="wrapper"
-          >
-            <div
-              className="ui checkbox"
-              onChange={[Function]}
-              onClick={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="field-listingblock-sort-on-reverse"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label
-                htmlFor="field-listingblock-sort-on-reverse"
-              >
-                Reversed order
-              </label>
-            </div>
-          </div>
-        </div>
-      </div>
+        Reversed order
+      </label>
     </div>
   </div>
   <div

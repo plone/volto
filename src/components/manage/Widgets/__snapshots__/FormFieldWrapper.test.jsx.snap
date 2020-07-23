@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a file widget component 1`] = `
+<div
+  className="ui red pointing basic label"
+  onClick={[Function]}
+>
+  error1
+</div>
+`;

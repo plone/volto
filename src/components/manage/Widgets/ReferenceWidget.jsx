@@ -227,7 +227,7 @@ class ReferenceWidget extends Component {
    */
   render() {
     const { id, title, value, multiple, onChange } = this.props;
-    console.log('select');
+
     return (
       <FormFieldWrapper {...this.props}>
         <Dropdown
