@@ -7,6 +7,7 @@
 ### Feature
 
 - Added Placeholder attribute to Textwidget and TextAreaWidget @iFlameing
+- Highlight the sidebar toggle button with a small flashing animation @silviubogan @tiberiuichim
 
 ### Bugfix
 

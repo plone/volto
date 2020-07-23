@@ -119,7 +119,8 @@
      Animations
 --------------------*/
 
-@sidebarToggleButtonAnimationsDuration: 1s;
+@sidebarToggleButtonAnimationsDuration: 0.5s;
+@sidebarToggleButtonIterations: 4;
 
 /*-------------------
      Breakpoints
