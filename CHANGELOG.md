@@ -10,6 +10,8 @@
 
 ### Bugfix
 
+- Pagination icon fix @nileshgulia1
+
 ### Internal
 
 - Upgrade lodash dependency to 4.17.19 @tisto
