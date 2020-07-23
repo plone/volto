@@ -10,6 +10,8 @@
 
 ### Bugfix
 
+- Avoid React hydration complaining about mismatched server output in toolbar @tiberiuichim
+
 ### Internal
 
 - Upgrade lodash dependency to 4.17.19 @tisto
