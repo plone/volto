@@ -37,7 +37,7 @@ jobs:
       # node code analysis
       - run: yarn run prettier
       - run: yarn run lint
-      - run: yarn run code-analysis:i18n
+      - run: yarn run i18n:ci
 
       # node test
       - run: yarn test:ci

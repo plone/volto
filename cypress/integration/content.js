@@ -66,7 +66,7 @@ describe('Add Content Tests', () => {
     if (Cypress.env('API') === 'guillotina') {
       // Guillotina wants the file handler instead than the base64 encoding
       cy.fixture('file.pdf').then((fileContent) => {
-        cy.get('#field-file').upload(
+        cy.get('#field-file').attachFile(
           { fileContent, fileName: 'file.pdf', mimeType: 'application/pdf' },
           { subjectType: 'input' },
         );
@@ -74,7 +74,7 @@ describe('Add Content Tests', () => {
       });
     } else {
       cy.fixture('file.pdf', 'base64').then((fileContent) => {
-        cy.get('input#field-file').upload(
+        cy.get('input#field-file').attachFile(
           { fileContent, fileName: 'file.pdf', mimeType: 'application/pdf' },
           { subjectType: 'input' },
         );
@@ -108,7 +108,7 @@ describe('Add Content Tests', () => {
     if (Cypress.env('API') === 'guillotina') {
       // Guillotina wants the file handler instead than the base64 encoding
       cy.fixture('image.png').then((fileContent) => {
-        cy.get('#field-image').upload(
+        cy.get('#field-image').attachFile(
           { fileContent, fileName: 'image.png', mimeType: 'image/png' },
           { subjectType: 'input' },
         );
@@ -116,7 +116,7 @@ describe('Add Content Tests', () => {
       });
     } else {
       cy.fixture('image.png', 'base64').then((fileContent) => {
-        cy.get('input#field-image').upload(
+        cy.get('input#field-image').attachFile(
           { fileContent, fileName: 'image.png', mimeType: 'image/png' },
           { subjectType: 'input' },
         );
