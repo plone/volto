@@ -112,7 +112,7 @@ class Edit extends Component {
     super(props);
     this.state = {
       visual: true,
-      mounted: false,
+      isClient: false,
     };
     this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -125,7 +125,7 @@ class Edit extends Component {
    */
   componentDidMount() {
     this.props.getContent(getBaseUrl(this.props.pathname));
-    this.setState({ mounted: true });
+    this.setState({ isClient: true });
   }
 
   /**
@@ -244,15 +244,15 @@ class Edit extends Component {
               </>
             )}
 
-            {editPermission && this.state.visual && (
-              <Portal node={__CLIENT__ && document.getElementById('sidebar')}>
+            {editPermission && this.state.visual && this.state.isClient && (
+              <Portal node={document.getElementById('sidebar')}>
                 <Sidebar />
               </Portal>
             )}
           </>
         )}
-        {this.state.mounted && (
-          <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
+        {this.state.isClient && (
+          <Portal node={document.getElementById('toolbar')}>
             <Toolbar
               pathname={this.props.pathname}
               hideDefaultViewButtons

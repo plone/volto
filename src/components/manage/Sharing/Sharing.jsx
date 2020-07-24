@@ -134,6 +134,7 @@ class SharingComponent extends Component {
       search: '',
       inherit: props.inherit,
       entries: props.entries,
+      isClient: false,
     };
   }
 
@@ -144,6 +145,7 @@ class SharingComponent extends Component {
    */
   componentDidMount() {
     this.props.getSharing(getBaseUrl(this.props.pathname), this.state.search);
+    this.setState({ isClient: true });
   }
 
   /**
@@ -407,22 +409,27 @@ class SharingComponent extends Component {
             </Segment>
           </Form>
         </Segment.Group>
-        <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
-          <Toolbar
-            pathname={this.props.pathname}
-            hideDefaultViewButtons
-            inner={
-              <Link to={`${getBaseUrl(this.props.pathname)}`} className="item">
-                <IconNext
-                  name={backSVG}
-                  className="contents circled"
-                  size="30px"
-                  title={this.props.intl.formatMessage(messages.back)}
-                />
-              </Link>
-            }
-          />
-        </Portal>
+        {this.state.isClient && (
+          <Portal node={document.getElementById('toolbar')}>
+            <Toolbar
+              pathname={this.props.pathname}
+              hideDefaultViewButtons
+              inner={
+                <Link
+                  to={`${getBaseUrl(this.props.pathname)}`}
+                  className="item"
+                >
+                  <IconNext
+                    name={backSVG}
+                    className="contents circled"
+                    size="30px"
+                    title={this.props.intl.formatMessage(messages.back)}
+                  />
+                </Link>
+              }
+            />
+          </Portal>
+        )}
       </Container>
     );
   }

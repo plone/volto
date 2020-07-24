@@ -107,7 +107,7 @@ class View extends Component {
 
   state = {
     hasObjectButtons: null,
-    mounted: false,
+    isClient: false,
   };
 
   /**
@@ -124,7 +124,7 @@ class View extends Component {
   }
 
   componentDidMount() {
-    this.setState({ mounted: true });
+    this.setState({ isClient: true });
   }
 
   /**
@@ -258,8 +258,8 @@ class View extends Component {
         {this.props.content.allow_discussion && (
           <Comments pathname={this.props.pathname} />
         )}
-        {this.state.mounted && (
-          <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
+        {this.state.isClient && (
+          <Portal node={document.getElementById('toolbar')}>
             <Toolbar pathname={this.props.pathname} inner={<span />} />
           </Portal>
         )}

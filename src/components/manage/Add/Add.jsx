@@ -121,7 +121,7 @@ class Add extends Component {
         {},
       );
     }
-    this.state = { mounted: false };
+    this.state = { isClient: false };
   }
 
   /**
@@ -131,7 +131,7 @@ class Add extends Component {
    */
   componentDidMount() {
     this.props.getSchema(this.props.type);
-    this.setState({ mounted: true });
+    this.setState({ isClient: true });
   }
 
   /**
@@ -246,8 +246,8 @@ class Add extends Component {
             }
             loading={this.props.createRequest.loading}
           />
-          {this.state.mounted && (
-            <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
+          {this.state.isClient && (
+            <Portal node={document.getElementById('toolbar')}>
               <Toolbar
                 pathname={this.props.pathname}
                 hideDefaultViewButtons
@@ -283,8 +283,8 @@ class Add extends Component {
               />
             </Portal>
           )}
-          {visual && (
-            <Portal node={__CLIENT__ && document.getElementById('sidebar')}>
+          {visual && this.state.isClient && (
+            <Portal node={document.getElementById('sidebar')}>
               <Sidebar />
             </Portal>
           )}
