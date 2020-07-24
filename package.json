@@ -371,6 +371,7 @@
   },
   "devDependencies": {
     "crypto-random-string": "3.2.0",
+    "isomorphic-style-loader": "5.1.0",
     "tmp": "0.2.1"
   },
   "resolutions": {
