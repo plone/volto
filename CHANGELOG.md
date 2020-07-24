@@ -10,6 +10,8 @@
 
 ### Bugfix
 
+- Fix for content overflow in folder contents view @nileshgulia1
+
 ### Internal
 
 - Upgrade lodash dependency to 4.17.19 @tisto
