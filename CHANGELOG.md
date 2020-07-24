@@ -7,6 +7,7 @@
 ### Feature
 
 - Added Placeholder attribute to Textwidget and TextAreaWidget @iFlameing
+- Allow addons to provide less files @tiberiuichim
 
 ### Bugfix
 
