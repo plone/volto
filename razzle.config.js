@@ -20,6 +20,7 @@ const glob = require('glob').sync;
 const RootResolverPlugin = require('./webpack-root-resolver');
 const createAddonsLoader = require('./create-addons-loader');
 const AddonConfigurationRegistry = require('./addon-registry');
+const addLessLoader = require('./less-plugin');
 
 const fileLoaderFinder = makeLoaderFinder('file-loader');
 const eslintLoaderFinder = makeLoaderFinder('eslint-loader');
@@ -62,69 +63,69 @@ customizationPaths.forEach((customizationPath) => {
 
 const defaultPlugins = ['bundle-analyzer'];
 const defaultModify = (config, { target, dev }, webpack) => {
-  const BASE_CSS_LOADER = {
-    loader: 'css-loader',
-    options: {
-      importLoaders: 2,
-      sourceMap: true,
-    },
-  };
-  const POST_CSS_LOADER = {
-    loader: require.resolve('postcss-loader'),
-    options: {
-      sourceMap: true,
-      // Necessary for external CSS imports to work
-      // https://github.com/facebookincubator/create-react-app/issues/2677
-      ident: 'postcss',
-      plugins: () => [
-        require('postcss-flexbugs-fixes'),
-        autoprefixer({
-          flexbox: 'no-2009',
-        }),
-      ],
-    },
-  };
+  // const BASE_CSS_LOADER = {
+  //   loader: 'css-loader',
+  //   options: {
+  //     importLoaders: 2,
+  //     sourceMap: true,
+  //   },
+  // };
+  // const POST_CSS_LOADER = {
+  //   loader: require.resolve('postcss-loader'),
+  //   options: {
+  //     sourceMap: true,
+  //     // Necessary for external CSS imports to work
+  //     // https://github.com/facebookincubator/create-react-app/issues/2677
+  //     ident: 'postcss',
+  //     plugins: () => [
+  //       require('postcss-flexbugs-fixes'),
+  //       autoprefixer({
+  //         flexbox: 'no-2009',
+  //       }),
+  //     ],
+  //   },
+  // };
 
-  const LESSLOADER = {
-    test: /\.less$/,
-    include: [
-      path.resolve('./theme'),
-      /node_modules\/@plone\/volto\/theme/,
-      /plone\.volto\/theme/,
-      /node_modules\/semantic-ui-less/,
-    ],
-    use: dev
-      ? [
-          {
-            loader: 'style-loader',
-          },
-          BASE_CSS_LOADER,
-          POST_CSS_LOADER,
-          {
-            loader: 'less-loader',
-            options: {
-              sourceMap: true,
-            },
-          },
-        ]
-      : [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 2,
-              sourceMap: true,
-            },
-          },
-          POST_CSS_LOADER,
-          {
-            loader: 'less-loader',
-            options: {
-              sourceMap: true,
-            },
-          },
-        ],
-  };
+  // const LESSLOADER = {
+  //   test: /\.less$/,
+  //   include: [
+  //     path.resolve('./theme'),
+  //     /node_modules\/@plone\/volto\/theme/,
+  //     /plone\.volto\/theme/,
+  //     /node_modules\/semantic-ui-less/,
+  //   ],
+  //   use: dev
+  //     ? [
+  //         {
+  //           loader: 'style-loader',
+  //         },
+  //         BASE_CSS_LOADER,
+  //         POST_CSS_LOADER,
+  //         {
+  //           loader: 'less-loader',
+  //           options: {
+  //             sourceMap: true,
+  //           },
+  //         },
+  //       ]
+  //     : [
+  //         MiniCssExtractPlugin.loader,
+  //         {
+  //           loader: 'css-loader',
+  //           options: {
+  //             importLoaders: 2,
+  //             sourceMap: true,
+  //           },
+  //         },
+  //         POST_CSS_LOADER,
+  //         {
+  //           loader: 'less-loader',
+  //           options: {
+  //             sourceMap: true,
+  //           },
+  //         },
+  //       ],
+  // };
 
   const SVGLOADER = {
     test: /icons\/.*\.svg$/,
@@ -224,8 +225,11 @@ const defaultModify = (config, { target, dev }, webpack) => {
     );
   }
 
-  config.module.rules.push(LESSLOADER);
+  // config.module.rules.push(LESSLOADER);
   config.module.rules.push(SVGLOADER);
+
+  const lessLoaderOptions = {};
+  addLessLoader(config, { target, dev }, webpack, lessLoaderOptions);
 
   // Don't load config|variables|overrides) files with file-loader
   // Don't load SVGs from ./src/icons with file-loader
