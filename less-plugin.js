@@ -1,23 +1,8 @@
+const path = require('path');
 const autoprefixer = require('autoprefixer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const PostCssFlexBugFixes = require('postcss-flexbugs-fixes');
-// const paths = require('razzle/config/paths');
-const path = require('path');
 const postcssLoadConfig = require('postcss-load-config');
-
-// const makeLoaderFinder = require('razzle-dev-utils/makeLoaderFinder');
-// const cssLoaderFinder = makeLoaderFinder('css-loader');
-// const postCssLoaderFinder = makeLoaderFinder('postcss-loader');
-// const resolveUrlLoaderFinder = makeLoaderFinder('resolve-url-loader');
-// const lessLoaderFinder = makeLoaderFinder('less-loader');
-// const styleLoaderFinder = makeLoaderFinder('style-loader');
-// module.exports = {
-//   cssLoaderFinder,
-//   postCssLoaderFinder,
-//   resolveUrlLoaderFinder,
-//   lessLoaderFinder,
-//   styleLoaderFinder,
-// };
 
 const hasPostCssConfig = () => {
   try {
@@ -83,16 +68,21 @@ const defaultOptions = {
   },
 };
 
-module.exports = (
+module.exports = (userOptions = {}) => (
   defaultConfig,
   { target, dev },
   webpack,
-  userOptions = {},
 ) => {
   const isServer = target !== 'web';
   const constantEnv = dev ? 'dev' : 'prod';
 
   const config = Object.assign({}, defaultConfig);
+  const { registry } = userOptions;
+  if (!registry) {
+    throw new Error(
+      'You need to pass an AddonsConfigurationRegistry object as option',
+    );
+  }
 
   const options = Object.assign({}, defaultOptions, userOptions);
 
@@ -106,6 +96,9 @@ module.exports = (
     options: options.css[constantEnv],
   };
 
+  // resolveUrlLoader is not compatible with semantic-ui-react
+  // See https://github.com/Semantic-Org/Semantic-UI-React/issues/3761
+  // Maybe also https://github.com/Semantic-Org/Semantic-UI-React/issues/3844
   // const resolveUrlLoader = {
   //   loader: require.resolve('resolve-url-loader'),
   //   options: options.resolveUrl[constantEnv],
@@ -134,6 +127,7 @@ module.exports = (
         /node_modules\/@plone\/volto\/theme/,
         /plone\.volto\/theme/,
         /node_modules\/semantic-ui-less/,
+        ...Object.values(registry.getResolveAliases()),
       ],
       use: isServer
         ? [
@@ -159,3 +153,67 @@ module.exports = (
 
   return config;
 };
+//
+// const BASE_CSS_LOADER = {
+//   loader: 'css-loader',
+//   options: {
+//     importLoaders: 2,
+//     sourceMap: true,
+//   },
+// };
+// const POST_CSS_LOADER = {
+//   loader: require.resolve('postcss-loader'),
+//   options: {
+//     sourceMap: true,
+//     // Necessary for external CSS imports to work
+//     // https://github.com/facebookincubator/create-react-app/issues/2677
+//     ident: 'postcss',
+//     plugins: () => [
+//       require('postcss-flexbugs-fixes'),
+//       autoprefixer({
+//         flexbox: 'no-2009',
+//       }),
+//     ],
+//   },
+// };
+
+// const LESSLOADER = {
+//   test: /\.less$/,
+//   include: [
+//     path.resolve('./theme'),
+//     /node_modules\/@plone\/volto\/theme/,
+//     /plone\.volto\/theme/,
+//     /node_modules\/semantic-ui-less/,
+//   ],
+//   use: dev
+//     ? [
+//         {
+//           loader: 'style-loader',
+//         },
+//         BASE_CSS_LOADER,
+//         POST_CSS_LOADER,
+//         {
+//           loader: 'less-loader',
+//           options: {
+//             sourceMap: true,
+//           },
+//         },
+//       ]
+//     : [
+//         MiniCssExtractPlugin.loader,
+//         {
+//           loader: 'css-loader',
+//           options: {
+//             importLoaders: 2,
+//             sourceMap: true,
+//           },
+//         },
+//         POST_CSS_LOADER,
+//         {
+//           loader: 'less-loader',
+//           options: {
+//             sourceMap: true,
+//           },
+//         },
+//       ],
+// };
