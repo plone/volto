@@ -9,6 +9,8 @@ import PropTypes from 'prop-types';
 import { stateFromHTML } from 'draft-js-import-html';
 import { Editor, DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
 import { defineMessages, injectIntl } from 'react-intl';
+import { settings } from '~/config';
+import { FormStateContext } from '@plone/volto/components/manage/Form/FormContext';
 
 const messages = defineMessages({
   title: {
@@ -37,7 +39,7 @@ class Edit extends Component {
    * @static
    */
   static propTypes = {
-    properties: PropTypes.objectOf(PropTypes.any).isRequired,
+    // properties: PropTypes.objectOf(PropTypes.any).isRequired,
     selected: PropTypes.bool.isRequired,
     index: PropTypes.number.isRequired,
     onChangeField: PropTypes.func.isRequired,
@@ -48,6 +50,7 @@ class Edit extends Component {
     onFocusNextBlock: PropTypes.func.isRequired,
     block: PropTypes.string.isRequired,
   };
+  static contextType = FormStateContext;
 
   /**
    * Constructor
@@ -55,13 +58,14 @@ class Edit extends Component {
    * @param {Object} props Component properties
    * @constructs WysiwygEditor
    */
-  constructor(props) {
+  constructor(props, context) {
     super(props);
 
     if (!__SERVER__) {
       let editorState;
-      if (props.properties && props.properties.title) {
-        const contentState = stateFromHTML(props.properties.title);
+      const properties = context.contextData?.formData || {};
+      if (properties && properties.title) {
+        const contentState = stateFromHTML(properties.title);
         editorState = EditorState.createWithContent(contentState);
       } else {
         editorState = EditorState.createEmpty();
@@ -78,6 +82,7 @@ class Edit extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
+    this.setState({ mounted: true });
     if (this.node) {
       this.node.focus();
       this.node._onBlur = () => this.setState({ focus: false });
@@ -142,7 +147,10 @@ class Edit extends Component {
         blockRenderMap={extendedBlockRenderMap}
         handleReturn={() => {
           this.props.onSelectBlock(
-            this.props.onAddBlock('text', this.props.index + 1),
+            this.props.onAddBlock(
+              settings.defaultBlockType,
+              this.props.index + 1,
+            ),
           );
           return 'handled';
         }}
