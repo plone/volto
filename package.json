@@ -349,7 +349,6 @@
     "redux-mock-store": "1.5.4",
     "redux-thunk": "2.3.0",
     "release-it": "13.5.8",
-    "resolve-url-loader": "3.1.1",
     "rrule": "2.6.4",
     "semantic-ui-less": "2.4.1",
     "semantic-ui-react": "0.88.1",

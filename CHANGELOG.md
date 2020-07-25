@@ -7,6 +7,7 @@
 ### Feature
 
 - Added Placeholder attribute to Textwidget and TextAreaWidget @iFlameing
+- Allow addons to provide less files @tiberiuichim
 
 ### Bugfix
 
@@ -16,6 +17,8 @@
 - Add a new blocks helper method, `getBlocks`. It simplifies using
   `getBlocksFieldname` and `getBlocksLayoutFieldname` under a single method that
   returns ordered pairs of `[blockid, blockvalue]` @tiberiuichim
+- Split the less loader configuration to a new module, `less-plugin.js` @tiberiuichim
+- Split the svg loader configuration to a new plugin function inside `razzle.config.js` @tiberiuichim
 
 ## 7.2.1 (2020-07-16)
 
