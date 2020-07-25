@@ -25,7 +25,6 @@ const defaultOptions = {
     plugins: [
       PostCssFlexBugFixes,
       autoprefixer({
-        // browsers: ['>1%', 'last 4 versions', 'Firefox ESR', 'not ie < 9'],
         flexbox: 'no-2009',
       }),
     ],
@@ -33,14 +32,9 @@ const defaultOptions = {
   less: {
     dev: {
       sourceMap: true,
-      // includePaths: [paths.appNodeModules],
     },
     prod: {
-      // XXX Source maps are required for the resolve-url-loader to properly
-      // function. Disable them in later stages if you do not want source maps.
       sourceMap: true,
-      // sourceMapContents: false,
-      // includePaths: [paths.appNodeModules],
     },
   },
   css: {
@@ -62,10 +56,6 @@ const defaultOptions = {
     },
   },
   style: {},
-  resolveUrl: {
-    dev: {},
-    prod: {},
-  },
 };
 
 module.exports = (userOptions = {}) => (
@@ -153,67 +143,3 @@ module.exports = (userOptions = {}) => (
 
   return config;
 };
-//
-// const BASE_CSS_LOADER = {
-//   loader: 'css-loader',
-//   options: {
-//     importLoaders: 2,
-//     sourceMap: true,
-//   },
-// };
-// const POST_CSS_LOADER = {
-//   loader: require.resolve('postcss-loader'),
-//   options: {
-//     sourceMap: true,
-//     // Necessary for external CSS imports to work
-//     // https://github.com/facebookincubator/create-react-app/issues/2677
-//     ident: 'postcss',
-//     plugins: () => [
-//       require('postcss-flexbugs-fixes'),
-//       autoprefixer({
-//         flexbox: 'no-2009',
-//       }),
-//     ],
-//   },
-// };
-
-// const LESSLOADER = {
-//   test: /\.less$/,
-//   include: [
-//     path.resolve('./theme'),
-//     /node_modules\/@plone\/volto\/theme/,
-//     /plone\.volto\/theme/,
-//     /node_modules\/semantic-ui-less/,
-//   ],
-//   use: dev
-//     ? [
-//         {
-//           loader: 'style-loader',
-//         },
-//         BASE_CSS_LOADER,
-//         POST_CSS_LOADER,
-//         {
-//           loader: 'less-loader',
-//           options: {
-//             sourceMap: true,
-//           },
-//         },
-//       ]
-//     : [
-//         MiniCssExtractPlugin.loader,
-//         {
-//           loader: 'css-loader',
-//           options: {
-//             importLoaders: 2,
-//             sourceMap: true,
-//           },
-//         },
-//         POST_CSS_LOADER,
-//         {
-//           loader: 'less-loader',
-//           options: {
-//             sourceMap: true,
-//           },
-//         },
-//       ],
-// };
