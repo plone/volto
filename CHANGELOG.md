@@ -7,12 +7,16 @@
 ### Feature
 
 - Making Content browser aware of context @iFlameing
+- Added Placeholder attribute to Textwidget and TextAreaWidget @iFlameing
 
 ### Bugfix
 
 ### Internal
 
 - Upgrade lodash dependency to 4.17.19 @tisto
+- Add a new blocks helper method, `getBlocks`. It simplifies using
+  `getBlocksFieldname` and `getBlocksLayoutFieldname` under a single method that
+  returns ordered pairs of `[blockid, blockvalue]` @tiberiuichim
 
 ## 7.2.1 (2020-07-16)
 
