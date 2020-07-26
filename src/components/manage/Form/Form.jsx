@@ -392,38 +392,38 @@ class Form extends Component {
       .length;
     const insert = index === -1 ? totalItems : index;
 
-    this.setContextData({
-      formData: {
-        ...this.contextData.formData,
-        [blocksLayoutFieldname]: {
-          items: [
-            ...this.contextData.formData[blocksLayoutFieldname].items.slice(
-              0,
-              insert,
-            ),
-            id,
-            ...(type !== settings.defaultBlockType ? [idTrailingBlock] : []),
-            ...this.contextData.formData[blocksLayoutFieldname].items.slice(
-              insert,
-            ),
-          ],
-        },
-        [blocksFieldname]: {
-          ...this.contextData.formData[blocksFieldname],
-          [id]: {
-            '@type': type,
+    return new Promise((resolve) => {
+      this.setContextData({
+        formData: {
+          ...this.contextData.formData,
+          [blocksLayoutFieldname]: {
+            items: [
+              ...this.contextData.formData[blocksLayoutFieldname].items.slice(
+                0,
+                insert,
+              ),
+              id,
+              ...(type !== settings.defaultBlockType ? [idTrailingBlock] : []),
+              ...this.contextData.formData[blocksLayoutFieldname].items.slice(
+                insert,
+              ),
+            ],
           },
-          ...(type !== settings.defaultBlockType && {
-            [idTrailingBlock]: {
-              '@type': settings.defaultBlockType,
+          [blocksFieldname]: {
+            ...this.contextData.formData[blocksFieldname],
+            [id]: {
+              '@type': type,
             },
-          }),
+            ...(type !== settings.defaultBlockType && {
+              [idTrailingBlock]: {
+                '@type': settings.defaultBlockType,
+              },
+            }),
+          },
         },
-      },
-      selected: id,
+        selected: id,
+      }).then(resolve(id));
     });
-
-    return id;
   }
 
   /**
