@@ -10,6 +10,7 @@ import { stateFromHTML } from 'draft-js-import-html';
 import { Editor, DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
 import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
+import { FormStateContext } from '@plone/volto/components/manage/Form/FormContext';
 
 const messages = defineMessages({
   description: {
@@ -38,7 +39,7 @@ class Edit extends Component {
    * @static
    */
   static propTypes = {
-    properties: PropTypes.objectOf(PropTypes.any).isRequired,
+    // properties: PropTypes.objectOf(PropTypes.any).isRequired,
     selected: PropTypes.bool.isRequired,
     block: PropTypes.string.isRequired,
     index: PropTypes.number.isRequired,
@@ -49,6 +50,7 @@ class Edit extends Component {
     onFocusPreviousBlock: PropTypes.func.isRequired,
     onFocusNextBlock: PropTypes.func.isRequired,
   };
+  static contextType = FormStateContext;
 
   /**
    * Constructor
@@ -61,8 +63,9 @@ class Edit extends Component {
 
     if (!__SERVER__) {
       let editorState;
-      if (props.properties && props.properties.description) {
-        const contentState = stateFromHTML(props.properties.description);
+      const properties = context.contextData?.formData || {};
+      if (properties && properties.description) {
+        const contentState = stateFromHTML(properties.description);
         editorState = EditorState.createWithContent(contentState);
       } else {
         editorState = EditorState.createEmpty();
