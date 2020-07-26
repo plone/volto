@@ -8,6 +8,7 @@ import {
   ListingBlockSidebar as ListingSidebar,
 } from '@plone/volto/components';
 import { getBaseUrl } from '@plone/volto/helpers';
+import { useFormStateContext } from '@plone/volto/components/manage/Form/FormContext';
 
 const Edit = ({
   data,
@@ -29,6 +30,9 @@ const Edit = ({
     /* eslint-disable react-hooks/exhaustive-deps */
   }, []);
 
+  const { contextData } = useFormStateContext();
+  const { formData } = contextData;
+
   return (
     <>
       {data?.query?.length === 0 && (
@@ -43,7 +47,7 @@ const Edit = ({
       )}
       <ListingBody
         data={data}
-        properties={properties}
+        properties={formData}
         block={block}
         path={getBaseUrl(pathname)}
         isEditMode
