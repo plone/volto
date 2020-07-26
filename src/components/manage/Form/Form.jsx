@@ -232,7 +232,7 @@ class Form extends Component {
    * @returns {undefined}
    */
   onChangeField(id, value) {
-    this.setContextData({
+    return this.setContextData({
       formData: {
         ...this.contextData.formData,
         // We need to catch also when the value equals false this fixes #888
@@ -254,7 +254,7 @@ class Form extends Component {
    */
   onChangeBlock(id, value) {
     const blocksFieldname = getBlocksFieldname(this.contextData.formData);
-    this.setContextData({
+    return this.setContextData({
       formData: {
         ...this.contextData.formData,
         [blocksFieldname]: {
@@ -281,7 +281,7 @@ class Form extends Component {
     const index =
       this.contextData.formData[blocksLayoutFieldname].items.indexOf(id) + 1;
 
-    this.setContextData({
+    return this.setContextData({
       formData: {
         ...this.contextData.formData,
         [blocksFieldname]: {
@@ -314,7 +314,7 @@ class Form extends Component {
    * @returns {undefined}
    */
   onSelectBlock(id) {
-    this.setContextData({
+    return this.setContextData({
       selected: id,
     });
   }
@@ -332,7 +332,7 @@ class Form extends Component {
       this.contextData.formData,
     );
 
-    this.setContextData({
+    return this.setContextData({
       formData: {
         ...this.contextData.formData,
         [blocksLayoutFieldname]: {
@@ -448,7 +448,7 @@ class Form extends Component {
       }),
     );
     if (keys(errors).length > 0) {
-      this.setContextData({
+      return this.setContextData({
         errors,
       });
     } else {
@@ -460,7 +460,7 @@ class Form extends Component {
         this.props.onSubmit(this.contextData.formData);
       }
       if (this.props.resetAfterSubmit) {
-        this.setContextData({
+        return this.setContextData({
           formData: this.props.formData,
         });
       }
@@ -498,7 +498,7 @@ class Form extends Component {
       this.contextData.formData,
     );
 
-    this.setContextData({
+    return this.setContextData({
       formData: {
         ...this.contextData.formData,
         [blocksLayoutFieldname]: {
@@ -534,7 +534,7 @@ class Form extends Component {
     const newindex = currentIndex - 1;
     blockNode.blur();
 
-    this.onSelectBlock(
+    return this.onSelectBlock(
       this.contextData.formData[blocksLayoutFieldname].items[newindex],
     );
   }
@@ -559,13 +559,15 @@ class Form extends Component {
       this.contextData.formData[blocksLayoutFieldname].items.length - 1
     ) {
       // We are already at the bottom block don't do anything
-      return;
+      return new Promise((resolve) => {
+        resolve();
+      });
     }
 
     const newindex = currentIndex + 1;
     blockNode.blur();
 
-    this.onSelectBlock(
+    return this.onSelectBlock(
       this.contextData.formData[blocksLayoutFieldname].items[newindex],
     );
   }
@@ -643,7 +645,7 @@ class Form extends Component {
     this.setState({
       placeholderProps: {},
     });
-    this.setContextData({
+    return this.setContextData({
       formData: {
         ...this.contextData.formData,
         [blocksLayoutFieldname]: {
