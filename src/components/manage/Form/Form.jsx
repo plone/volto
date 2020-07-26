@@ -239,7 +239,7 @@ class Form extends Component {
    * @returns {undefined}
    */
   componentDidUpdate(prevProps) {
-    if (this.props.formData !== prevProps.formData) {
+    if (this.props.formData?.['@id'] !== prevProps.formData?.['@id']) {
       const newState = this.getInitialState(this.props);
       this.setContextData(newState); // .then(() => this.setState(newState));;
     }
