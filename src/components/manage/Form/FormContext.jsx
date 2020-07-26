@@ -25,7 +25,6 @@ export class FormStateProvider extends React.Component {
 
   render() {
     const { contextData } = this.state;
-    // console.log('title in provider', contextData.formData.title);
 
     return (
       <FormStateContext.Provider

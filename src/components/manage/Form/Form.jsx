@@ -154,6 +154,28 @@ class Form extends Component {
    */
   constructor(props) {
     super(props);
+
+    this.onChangeField = this.onChangeField.bind(this);
+    this.onChangeBlock = this.onChangeBlock.bind(this);
+    this.onMutateBlock = this.onMutateBlock.bind(this);
+    this.onSelectBlock = this.onSelectBlock.bind(this);
+    this.onDeleteBlock = this.onDeleteBlock.bind(this);
+    this.onAddBlock = this.onAddBlock.bind(this);
+    this.onMoveBlock = this.onMoveBlock.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+    this.onFocusPreviousBlock = this.onFocusPreviousBlock.bind(this);
+    this.onFocusNextBlock = this.onFocusNextBlock.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
+
+    // We use these as instance fields, to be initialized in the render() meth
+    // from the context provider
+    this.contextData = null;
+    this.setContextData = null;
+
+    this.state = this.getInitialState(props);
+  }
+
+  getInitialState(props) {
     const ids = {
       title: uuid(),
       text: uuid(),
@@ -195,7 +217,8 @@ class Form extends Component {
         };
       }
     }
-    this.state = {
+
+    const state = {
       formData,
       initialFormData: { ...formData },
       errors: {},
@@ -206,22 +229,20 @@ class Form extends Component {
           : null,
       placeholderProps: {},
     };
-    this.onChangeField = this.onChangeField.bind(this);
-    this.onChangeBlock = this.onChangeBlock.bind(this);
-    this.onMutateBlock = this.onMutateBlock.bind(this);
-    this.onSelectBlock = this.onSelectBlock.bind(this);
-    this.onDeleteBlock = this.onDeleteBlock.bind(this);
-    this.onAddBlock = this.onAddBlock.bind(this);
-    this.onMoveBlock = this.onMoveBlock.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-    this.onFocusPreviousBlock = this.onFocusPreviousBlock.bind(this);
-    this.onFocusNextBlock = this.onFocusNextBlock.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
+    return state;
+  }
 
-    // We use these as instance fields, to be initialized in the render() meth
-    // from the context provider
-    this.contextData = null;
-    this.setContextData = null;
+  /**
+   * Component did update
+   * @method componentDidUpdate
+   * @param {Object} prevProps Previous properties
+   * @returns {undefined}
+   */
+  componentDidUpdate(prevProps) {
+    if (this.props.formData !== prevProps.formData) {
+      const newState = this.getInitialState(this.props);
+      this.setContextData(newState); // .then(() => this.setState(newState));;
+    }
   }
 
   /**
@@ -828,7 +849,6 @@ class Form extends Component {
                                         this.onFocusPreviousBlock
                                       }
                                       onFocusNextBlock={this.onFocusNextBlock}
-                                      properties={formData}
                                       data={blocksDict[block]}
                                       pathname={this.props.pathname}
                                       block={block}
