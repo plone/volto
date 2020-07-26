@@ -2,20 +2,40 @@ import React from 'react';
 
 export const FormStateContext = React.createContext();
 
-export const FormStateProvider = (props) => {
-  const { initialValue } = props;
-  const [contextData, setContextData] = React.useState(initialValue);
+export class FormStateProvider extends React.Component {
+  constructor(props) {
+    super(props);
+    const { initialValue } = this.props;
+    this.state = { contextData: initialValue };
+  }
 
-  const logger = (val) => {
-    setContextData((data) => ({ ...data, ...val }));
+  setContextData = (value) => {
+    return new Promise((resolve, reject) => {
+      this.setState((state) => {
+        return {
+          ...state,
+          contextData: {
+            ...(state.contextData || {}),
+            ...value,
+          },
+        };
+      }, resolve);
+    });
   };
 
-  return (
-    <FormStateContext.Provider value={{ contextData, setContextData: logger }}>
-      {props.children}
-    </FormStateContext.Provider>
-  );
-};
+  render() {
+    const { contextData } = this.state;
+    // console.log('title in provider', contextData.formData.title);
+
+    return (
+      <FormStateContext.Provider
+        value={{ contextData, setContextData: this.setContextData }}
+      >
+        {this.props.children}
+      </FormStateContext.Provider>
+    );
+  }
+}
 
 export const useFormStateContext = () => {
   const context = React.useContext(FormStateContext);
