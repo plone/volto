@@ -70,6 +70,7 @@
 ### Feature
 
 - Added default Export for the QuerystringWidget for the ListingBlock @steffenri
+- The default block type (currently draftjs text) is now configurable @tiberiuichim @silviubogan
 
 ### Bugfix
 
