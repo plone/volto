@@ -59,7 +59,7 @@ class Edit extends Component {
    * @param {Object} props Component properties
    * @constructs WysiwygEditor
    */
-  constructor(props) {
+  constructor(props, context) {
     super(props);
 
     if (!__SERVER__) {
