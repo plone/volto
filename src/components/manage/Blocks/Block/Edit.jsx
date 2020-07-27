@@ -44,7 +44,7 @@ class Edit extends Component {
     type: PropTypes.string.isRequired,
     data: PropTypes.objectOf(PropTypes.any).isRequired,
     // properties is mapped to formData, so it's not connected to changes of the object
-    properties: PropTypes.objectOf(PropTypes.any).isRequired,
+    // properties: PropTypes.objectOf(PropTypes.any).isRequired,
     selected: PropTypes.bool.isRequired,
     index: PropTypes.number.isRequired,
     id: PropTypes.string.isRequired,
