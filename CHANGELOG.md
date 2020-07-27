@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Solved a browser console error in /contents view (#1695) @silviubogan
+
 ### Internal
 
 ## 7.3.0 (2020-07-26)
