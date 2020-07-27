@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import View from '@plone/volto/components/manage/Blocks/ToC/View';
 import { useFormStateContext } from '@plone/volto/components/manage/Form/FormContext';
@@ -26,7 +26,7 @@ const Edit = () => {
  * @static
  */
 Edit.propTypes = {
-  properties: PropTypes.objectOf(PropTypes.any).isRequired,
+  // properties: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 export default Edit;

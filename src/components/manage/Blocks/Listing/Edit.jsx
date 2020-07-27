@@ -70,7 +70,7 @@ Edit.propTypes = {
   block: PropTypes.string.isRequired,
   onSelectBlock: PropTypes.func.isRequired,
   items: PropTypes.arrayOf(PropTypes.any),
-  properties: PropTypes.objectOf(PropTypes.any).isRequired,
+  // properties: PropTypes.objectOf(PropTypes.any).isRequired,
   pathname: PropTypes.string.isRequired,
 };
 

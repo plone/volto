@@ -28,7 +28,7 @@ class Edit extends Component {
    * @static
    */
   static propTypes = {
-    properties: PropTypes.objectOf(PropTypes.any).isRequired,
+    // properties: PropTypes.objectOf(PropTypes.any).isRequired,
     selected: PropTypes.bool.isRequired,
     block: PropTypes.string.isRequired,
     index: PropTypes.number.isRequired,
