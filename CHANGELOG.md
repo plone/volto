@@ -1,6 +1,6 @@
 # Change Log
 
-## 7.2.2 (unreleased)
+## 7.3.2 (unreleased)
 
 ### Breaking
 
@@ -8,15 +8,28 @@
 
 - Added Placeholder attribute to Textwidget and TextAreaWidget @iFlameing
 - Highlight the sidebar toggle button with a small flashing animation @silviubogan @tiberiuichim
-
 ### Bugfix
 
 ### Internal
 
+## 7.3.1 (2020-07-28)
+
+### Bugfix
+
+- Solved a browser console error in /contents view (#1695) @silviubogan
+- Pagination icon fix @nileshgulia1
+
+## 7.3.0 (2020-07-26)
+
+### Feature
+
+- Add Placeholder attribute to Textwidget and TextAreaWidget @iFlameing
+- Make the default block type (currently draftjs text) configurable @tiberiuichim @silviubogan
+
+### Internal
+
 - Upgrade lodash dependency to 4.17.19 @tisto
-- Add a new blocks helper method, `getBlocks`. It simplifies using
-  `getBlocksFieldname` and `getBlocksLayoutFieldname` under a single method that
-  returns ordered pairs of `[blockid, blockvalue]` @tiberiuichim
+- Add a new blocks helper method, `getBlocks`. It simplifies using `getBlocksFieldname` and `getBlocksLayoutFieldname` under a single method that returns ordered pairs of `[blockid, blockvalue]` @tiberiuichim
 
 ## 7.2.1 (2020-07-16)
 
