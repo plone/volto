@@ -2,16 +2,10 @@
 
 ## 7.3.1 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Solved a browser console error in /contents view (#1695) @silviubogan
 - Pagination icon fix @nileshgulia1
-
-### Internal
 
 ## 7.3.0 (2020-07-26)
 
