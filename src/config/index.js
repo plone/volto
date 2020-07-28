@@ -72,6 +72,7 @@ let config = {
     navDepth: 1,
     expressMiddleware: [],
     timezone: 'UTC',
+    defaultBlockType: 'text',
   },
   widgets: {
     ...widgetMapping,
