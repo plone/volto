@@ -8,6 +8,7 @@
 
 ### Bugfix
 
+- Solved a browser console error in /contents view (#1695) @silviubogan
 - Pagination icon fix @nileshgulia1
 
 ### Internal
