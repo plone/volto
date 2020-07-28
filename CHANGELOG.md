@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Pagination icon fix @nileshgulia1
+
 ### Internal
 
 ## 7.3.0 (2020-07-26)
