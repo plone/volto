@@ -6,6 +6,7 @@
 
 ### Feature
 
+- Highlight the sidebar toggle button with a small flashing animation @silviubogan @tiberiuichim
 ### Bugfix
 
 ### Internal
