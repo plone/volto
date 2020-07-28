@@ -31,35 +31,6 @@ const packageJson = require(path.join(projectRootPath, 'package.json'));
 
 const registry = new AddonConfigurationRegistry(projectRootPath);
 
-// TODO: apply "customize Volto by addon", "customize addon by project" logic
-const customizations = {};
-let { customizationPaths } = packageJson;
-if (!customizationPaths) {
-  customizationPaths = ['src/customizations/'];
-}
-customizationPaths.forEach((customizationPath) => {
-  map(
-    glob(`${customizationPath}**/*.*(svg|png|jpg|jpeg|gif|ico|less|js|jsx)`),
-    (filename) => {
-      const targetPath = filename.replace(
-        customizationPath,
-        `${registry.voltoPath}/src/`,
-      );
-      if (fs.existsSync(targetPath)) {
-        customizations[
-          filename
-            .replace(customizationPath, '@plone/volto/')
-            .replace(/\.(js|jsx)$/, '')
-        ] = path.resolve(filename);
-      } else {
-        console.log(
-          `The file ${filename} doesn't exist in the volto package (${targetPath}), unable to customize.`,
-        );
-      }
-    },
-  );
-});
-
 const defaultPlugins = ['bundle-analyzer'];
 const defaultModify = (config, { target, dev }, webpack) => {
   const BASE_CSS_LOADER = {
@@ -244,7 +215,9 @@ const defaultModify = (config, { target, dev }, webpack) => {
   config.resolve.plugins = [new RootResolverPlugin()];
 
   config.resolve.alias = {
-    ...customizations,
+    ...registry.getAddonCustomizationPaths(),
+    ...registry.getProjectCustomizationPaths(),
+    // ...customizations,
     ...config.resolve.alias,
     '../../theme.config$': `${projectRootPath}/theme/theme.config`,
     'volto-themes': `${registry.voltoPath}/theme/themes`,
