@@ -8,7 +8,7 @@
 
 ### Bugfix
 
-- Bugfix Edit page through Contents list #1594 @terapyon
+- Bugfix Edit page through Contents list #1594 @terapyon @csenger
 
 ### Internal
 
