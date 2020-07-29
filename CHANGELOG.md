@@ -106,8 +106,7 @@
 ### Feature
 
 - Added recurrence widget @giuliaghisini
-- Support loading additional reducers from the ``config.addonReducers`` key,
-  to allow addons to provide their own reducers @tiberiuichim
+
 ### Bugfix
 
 - Fix text overflow in pastanaga-menu header if title is too long. @giuliaghisini
