@@ -988,7 +988,7 @@ class Contents extends Component {
                   }
                   onCancel={this.onDeleteCancel}
                   onConfirm={this.onDeleteOk}
-                  size="none"
+                  size="mini"
                 />
                 <ContentsUploadModal
                   open={this.state.showUpload}
