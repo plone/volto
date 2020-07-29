@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Configurable api expanders @csenger
+
 ### Bugfix
 
 ### Internal
