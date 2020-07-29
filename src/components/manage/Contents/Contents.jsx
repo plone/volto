@@ -373,6 +373,7 @@ class Contents extends Component {
       },
       sort_on: this.props.sort?.on || 'getObjPositionInParent',
       sort_order: this.props.sort?.order || 'ascending',
+      isClient: false,
     };
     this.filterTimeout = null;
   }
@@ -384,6 +385,15 @@ class Contents extends Component {
    */
   UNSAFE_componentWillMount() {
     this.fetchContents();
+  }
+
+  /**
+   * Component did mount
+   * @method componentDidMount
+   * @returns {undefined}
+   */
+  componentDidMount() {
+    this.setState({ isClient: true });
   }
 
   /**
@@ -1580,24 +1590,26 @@ class Contents extends Component {
                 </section>
               </article>
             </div>
-            <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
-              <Toolbar
-                pathname={this.props.pathname}
-                inner={
-                  <Link
-                    to={`${path}`}
-                    aria-label={this.props.intl.formatMessage(messages.back)}
-                  >
-                    <Icon
-                      name={backSVG}
-                      className="contents circled"
-                      size="30px"
-                      title={this.props.intl.formatMessage(messages.back)}
-                    />
-                  </Link>
-                }
-              />
-            </Portal>
+            {this.state.isClient && (
+              <Portal node={document.getElementById('toolbar')}>
+                <Toolbar
+                  pathname={this.props.pathname}
+                  inner={
+                    <Link
+                      to={`${path}`}
+                      aria-label={this.props.intl.formatMessage(messages.back)}
+                    >
+                      <Icon
+                        name={backSVG}
+                        className="contents circled"
+                        size="30px"
+                        title={this.props.intl.formatMessage(messages.back)}
+                      />
+                    </Link>
+                  }
+                />
+              </Portal>
+            )}
           </Container>
         ) : (
           <Unauthorized />
