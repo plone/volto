@@ -2,15 +2,9 @@
 
 ## 7.4.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Used moment-timezone to set a specific server timezone as default for DatetimeWidget. @razvanMiu
-
-### Bugfix
-
-### Internal
 
 ## 7.4.0 (2020-07-29)
 
