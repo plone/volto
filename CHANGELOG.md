@@ -1,17 +1,22 @@
 # Change Log
 
-## 7.3.2 (unreleased)
+## 7.4.1 (unreleased)
 
 ### Breaking
 
 ### Feature
 
 - Used moment-timezone to set a specific server timezone as default for DatetimeWidget. @razvanMiu
-- Highlight the sidebar toggle button with a small flashing animation @silviubogan @tiberiuichim
 
 ### Bugfix
 
 ### Internal
+
+## 7.4.0 (2020-07-29)
+
+### Feature
+
+- Highlight the sidebar toggle button with a small flashing animation @silviubogan @tiberiuichim
 
 ## 7.3.1 (2020-07-28)
 
