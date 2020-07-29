@@ -174,51 +174,49 @@ class AddonConfigurationRegistry {
    * and separate folder for each addon, identified by its addon (package) name.
    *
    */
-  getProjectCustomizationPaths() {
-    // TODO: apply "customize Volto by addon", "customize addon by project" logic
+  getCustomizationPaths() {
     const customizations = {};
     let { customizationPaths } = this.packageJson;
     if (!customizationPaths) {
-      customizationPaths = ['src/customizations/'];
+      customizationPaths = ['src/customizations'];
     }
-    // Classic style customizations
     customizationPaths.forEach((customizationPath) => {
-      Object.keys(this.packages).forEach((addonName) => {
-        if (fs.existsSync(path.join(customizationPath, addonName))) {
-          //
+      const base = path.join(this.projectRootPath, customizationPath);
+      const reg = [];
+
+      // Addon customization, goes first
+      Object.values(this.packages).forEach((addon) => {
+        const { name, modulePath } = addon;
+        if (fs.existsSync(path.join(base, name))) {
+          reg.push({
+            basePath: path.join(base, name),
+            sourcePath: modulePath,
+            name,
+          });
         }
       });
 
-      // allow customization of all declared packages
-      const reg = [
-        fs.existsSync(path.join(customizationPath, 'volto'))
+      reg.push(
+        fs.existsSync(path.join(base, 'volto'))
           ? {
-              basePath: `${customizationPath}/volto`,
-              target: `${this.voltoPath}/src/`,
-              name: '@plone/volto/',
+              // new style (addons) customizations
+              basePath: path.join(base, 'volto'),
+              sourcePath: `${this.voltoPath}/src/`,
+              name: '@plone/volto',
             }
           : {
-              basePath: customizationPath,
-              target: `${this.voltoPath}/src/`,
-              name: '@plone/volto/',
+              // old style, customizations directly in folder
+              basePath: base,
+              sourcePath: `${this.voltoPath}/src/`,
+              name: '@plone/volto',
             },
-        ...Object.values(this.packages).map((addon) => {
-          const { name, modulePath } = addon;
-          if (fs.existsSync(path.join(customizationPath, name))) {
-            return {
-              basePath: `${customizationPath}/${name}`,
-              target: modulePath,
-              name,
-            };
-          }
-        }),
-      ];
+      );
 
-      reg.forEach(({ basePath, name, target }) => {
+      reg.forEach(({ basePath, name, sourcePath }) => {
         map(
           glob(`${basePath}**/*.*(svg|png|jpg|jpeg|gif|ico|less|js|jsx)`),
           (filename) => {
-            const targetPath = filename.replace(customizationPath, target);
+            const targetPath = filename.replace(basePath, sourcePath);
             if (fs.existsSync(targetPath)) {
               customizations[
                 filename.replace(basePath, name).replace(/\.(js|jsx)$/, '')
@@ -233,7 +231,7 @@ class AddonConfigurationRegistry {
       });
     });
 
-    return {};
+    return customizations;
   }
 
   getAddonCustomizationPaths() {

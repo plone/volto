@@ -77,4 +77,14 @@ describe('AddonConfigurationRegistry', () => {
       'test-released-source-addon',
     ]);
   });
+
+  it('provides customization paths declared in a Volto project', () => {
+    const base = path.join(__dirname, 'fixtures', 'test-volto-project');
+    const reg = new AddonConfigurationRegistry(base);
+    expect(reg.getCustomizationPaths()).toStrictEqual({
+      '@plone/volto/client': `${base}/src/customizations/client.js`,
+      'test-addon/testaddon': `${base}/src/custom-addons/test-addon/testaddon.js`,
+      '@plone/volto/server': `${base}/src/customizations/server.jsx`,
+    });
+  });
 });
