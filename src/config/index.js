@@ -46,6 +46,7 @@ let config = {
     // In production, the proxy is disabled, make sure you specify an apiPath that does
     // not require CORS to work.
     apiPath,
+    apiExpanders: {},
     devProxyToApiPath: 'http://localhost:8080/Plone', // Set it to '' for disabling the proxy
     // apiPath: process.env.RAZZLE_API_PATH || 'http://localhost:8000', // for Volto reference
     // apiPath: process.env.RAZZLE_API_PATH || 'http://localhost:8081/db/web', // for guillotina

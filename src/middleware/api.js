@@ -5,6 +5,8 @@
 
 import cookie from 'react-cookie';
 import jwtDecode from 'jwt-decode';
+import { compact, join } from 'lodash';
+import qs from 'query-string';
 
 import { settings } from '~/config';
 
@@ -15,6 +17,32 @@ import {
 } from '@plone/volto/constants/ActionTypes';
 
 let socket = null;
+
+/**
+ *
+ * Add configured expanders to an api call for an action
+ * @function addExpandersToPath
+ * @param {string} path The url/path including the querystring
+ * @param {*} type The action type
+ * @returns {string} The url/path with the configured epanders added to the query string
+ */
+function addExpandersToPath(path, type) {
+  if (!path) {
+    return path;
+  }
+  const pathPart = path.split('?')[0] || '';
+  let query = qs.parse(qs.extract(path));
+  const apiExpanders = settings?.apiExpanders?.[type] || [];
+  let expand = join(compact([query.expand, ...apiExpanders]), ',');
+  if (expand) {
+    query.expand = expand;
+  }
+  const stringifiedQuery = qs.stringify(query);
+  if (!stringifiedQuery) {
+    return pathPart;
+  }
+  return `${pathPart}?${stringifiedQuery}`;
+}
 
 /**
  * Send a message on a websocket.
@@ -53,6 +81,7 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
   }
 
   const { request, type, ...rest } = action;
+
   let actionPromise;
 
   if (!request) {
@@ -63,20 +92,32 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
 
   if (socket) {
     actionPromise = Array.isArray(request)
-      ? Promise.all(request.map((item) => sendOnSocket({ ...item, id: type })))
-      : sendOnSocket({ ...request, id: type });
+      ? Promise.all(
+          request.map((item) =>
+            sendOnSocket({
+              ...item,
+              path: addExpandersToPath(item.path, type),
+              id: type,
+            }),
+          ),
+        )
+      : sendOnSocket({
+          ...request,
+          path: addExpandersToPath(request.path, type),
+          id: type,
+        });
   } else {
     actionPromise = Array.isArray(request)
       ? Promise.all(
           request.map((item) =>
-            api[item.op](item.path, {
+            api[item.op](addExpandersToPath(item.path, type), {
               data: item.data,
               type: item.type,
               headers: item.headers,
             }),
           ),
         )
-      : api[request.op](request.path, {
+      : api[request.op](addExpandersToPath(request.path, type), {
           data: request.data,
           type: request.type,
           headers: request.headers,
