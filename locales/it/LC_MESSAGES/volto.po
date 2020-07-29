@@ -1429,6 +1429,10 @@ msgstr "Date selezionate"
 msgid "Selected items"
 msgstr "Elementi selezionati"
 
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Selected items - x of y"
+msgstr "su"
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Selection"
 msgstr "Selezione"

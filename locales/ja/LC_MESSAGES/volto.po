@@ -62,7 +62,7 @@ msgstr "新規追加"
 
 #: components/manage/Toolbar/Types
 msgid "Add Translation…"
-msgstr ""
+msgstr "翻訳を追加…"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add User"
@@ -210,7 +210,7 @@ msgstr "デフォルトでは、このアイテムのコンテナからのパー
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Cache Name"
-msgstr ""
+msgstr "キャッシュの名前"
 
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsToolbar
@@ -317,7 +317,7 @@ msgstr "パスワードを確認"
 
 #: components/theme/ConnectionRefused/ConnectionRefused
 msgid "Connection refused"
-msgstr ""
+msgstr "接続が拒否されました"
 
 #: components/theme/Footer/Footer
 msgid "Contact"
@@ -337,11 +337,11 @@ msgstr "コンテント"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
-msgstr ""
+msgstr "コンテンツタイプが作成されました"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type deleted"
-msgstr ""
+msgstr "コンテンツタイプが削除されました"
 
 #: components/manage/Contents/Contents
 #: components/manage/Toolbar/Toolbar
@@ -394,19 +394,19 @@ msgstr ""
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database Information"
-msgstr ""
+msgstr "データベースの情報"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database Location"
-msgstr ""
+msgstr "データベースの場所"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database Size"
-msgstr ""
+msgstr "データベースのサイズ"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database main"
-msgstr ""
+msgstr "メインのデータベース"
 
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Widgets/DatetimeWidget
@@ -457,7 +457,7 @@ msgstr "グループを削除"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Delete Type"
-msgstr ""
+msgstr "タイプを削除"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Delete User"
@@ -515,7 +515,7 @@ msgstr "グループ {groupname} を削除してよろしいですか?"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Do you really want to delete the type {typename}?"
-msgstr ""
+msgstr "タイプ {typename} を削除してよろしいですか?"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Do you really want to delete the user {username}?"
@@ -569,7 +569,7 @@ msgstr ""
 
 #: components/manage/Form/InlineForm
 msgid "Edit values"
-msgstr ""
+msgstr "値を編集"
 
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
@@ -662,7 +662,7 @@ msgstr "満了日付"
 
 #: components/manage/Contents/ContentsItem
 msgid "Expired"
-msgstr ""
+msgstr "期間満了"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -880,7 +880,7 @@ msgstr "アイテムがペーストされました。"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Items"
-msgstr ""
+msgstr "アイテム数"
 
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
@@ -1064,7 +1064,7 @@ msgstr "アイテムが見つかりませんでした"
 
 #: components/manage/Widgets/ObjectBrowserWidget
 msgid "No items selected"
-msgstr ""
+msgstr "アイテムが選択されていません"
 
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "No map selected"
@@ -1078,7 +1078,7 @@ msgstr ""
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TokenWidget
 msgid "No options"
-msgstr ""
+msgstr "オプションがありません"
 
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
@@ -1114,7 +1114,7 @@ msgstr "None"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Number of active objects"
-msgstr ""
+msgstr "有効なオブジェクトの数"
 
 #: components/manage/Contents/Contents
 msgid "Object Size"
@@ -1394,7 +1394,7 @@ msgstr "検索"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Search group…"
-msgstr ""
+msgstr "グループを検索…"
 
 #: components/theme/Search/Search
 msgid "Search results"
@@ -1406,7 +1406,7 @@ msgstr "検索"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Search users…"
-msgstr ""
+msgstr "ユーザーを検索…"
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Second"
@@ -1426,7 +1426,7 @@ msgstr "選択の基準"
 
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Select the transition to be used for modifying the items state."
-msgstr "Select the transition to be used for modifying the items state. (未翻訳)"
+msgstr "アイテムの状態を変更するために遷移を選んでください"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Selected dates"
@@ -1434,6 +1434,10 @@ msgstr ""
 
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Selected items"
+msgstr "選択されたアイテム"
+
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Selected items - x of y"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
@@ -1522,7 +1526,7 @@ msgstr "サイトマップ"
 
 #: components/manage/Blocks/Image/ImageSidebar
 msgid "Size"
-msgstr ""
+msgstr "サイズ"
 
 #: components/theme/View/ImageView
 msgid "Size: {size}"
@@ -1617,11 +1621,11 @@ msgstr "削除をするタグ"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Target memory size per cache in bytes"
-msgstr ""
+msgstr "キャッシュごとの最大容量(byte単位)"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Target number of objects in memory per cache"
-msgstr ""
+msgstr "キャッシュごとのメモリー上の最大オブジェクト数"
 
 #: components/manage/Blocks/Listing/TemplateWidget
 msgid "Template"
@@ -1668,11 +1672,11 @@ msgstr "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundatio
 
 #: components/theme/CorsError/CorsError
 msgid "There is a configuration problem on the backend"
-msgstr ""
+msgstr "バックエンド側の構成に問題があります"
 
 #: components/manage/Form/InlineForm
 msgid "There were some errors"
-msgstr ""
+msgstr "エラーが発生しました"
 
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
@@ -1693,7 +1697,7 @@ msgstr "このページは存在しないようです…"
 
 #: components/manage/Widgets/DatetimeWidget
 msgid "Time"
-msgstr ""
+msgstr "時間"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/Contents
@@ -1713,7 +1717,7 @@ msgstr "タイトル"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total active and non-active objects"
-msgstr ""
+msgstr "有効または非有効のオブジェクトの総数"
 
 #: components/manage/Contents/Contents
 msgid "Total comments"
@@ -1879,7 +1883,7 @@ msgstr "表示モード"
 
 #: components/manage/Controlpanels/VersionOverview
 msgid "Warning Regarding debug mode"
-msgstr ""
+msgstr "デバッグモードに関する警告"
 
 #: components/theme/ConnectionRefused/ConnectionRefused
 msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later."
@@ -2012,27 +2016,27 @@ msgstr "パスワード再設定のお願いをメール送信しました。ま
 
 #: components/manage/Contents/ContentsItem
 msgid "draft"
-msgstr ""
+msgstr "下書き(draft)"
 
 #: components/theme/View/EventView
 msgid "event_alldates"
-msgstr ""
+msgstr "すべての日程"
 
 #: components/theme/View/EventView
 msgid "event_attendees"
-msgstr ""
+msgstr "参加者"
 
 #: components/theme/View/EventView
 msgid "event_contactname"
-msgstr ""
+msgstr "連絡先名称"
 
 #: components/theme/View/EventView
 msgid "event_contactphone"
-msgstr ""
+msgstr "連絡先電話番号"
 
 #: components/theme/View/EventView
 msgid "event_website"
-msgstr ""
+msgstr "イベントURL"
 
 #: components/theme/View/EventView
 msgid "event_what"
@@ -2040,11 +2044,11 @@ msgstr ""
 
 #: components/theme/View/EventView
 msgid "event_when"
-msgstr ""
+msgstr "イベント日時"
 
 #: components/theme/View/EventView
 msgid "event_where"
-msgstr ""
+msgstr "場所"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "heading_sent_password"
@@ -2293,7 +2297,7 @@ msgstr "ビデオ"
 
 #: components/theme/View/EventView
 msgid "visit_external_website"
-msgstr ""
+msgstr "外部サイトを表示"
 
 #: components/theme/Login/Login
 msgid "we can send you a new one"
