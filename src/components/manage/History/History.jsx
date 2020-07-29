@@ -74,6 +74,7 @@ class History extends Component {
   constructor(props) {
     super(props);
     this.onRevert = this.onRevert.bind(this);
+    this.state = { isClient: false };
   }
 
   /**
@@ -83,6 +84,7 @@ class History extends Component {
    */
   componentDidMount() {
     this.props.getHistory(getBaseUrl(this.props.pathname));
+    this.setState({ isClient: true });
   }
 
   /**
@@ -246,22 +248,27 @@ class History extends Component {
             </Table.Body>
           </Table>
         </Segment.Group>
-        <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
-          <Toolbar
-            pathname={this.props.pathname}
-            hideDefaultViewButtons
-            inner={
-              <Link to={`${getBaseUrl(this.props.pathname)}`} className="item">
-                <IconNext
-                  name={backSVG}
-                  className="contents circled"
-                  size="30px"
-                  title={this.props.intl.formatMessage(messages.back)}
-                />
-              </Link>
-            }
-          />
-        </Portal>
+        {this.state.isClient && (
+          <Portal node={document.getElementById('toolbar')}>
+            <Toolbar
+              pathname={this.props.pathname}
+              hideDefaultViewButtons
+              inner={
+                <Link
+                  to={`${getBaseUrl(this.props.pathname)}`}
+                  className="item"
+                >
+                  <IconNext
+                    name={backSVG}
+                    className="contents circled"
+                    size="30px"
+                    title={this.props.intl.formatMessage(messages.back)}
+                  />
+                </Link>
+              }
+            />
+          </Portal>
+        )}
       </Container>
     );
   }
