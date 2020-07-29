@@ -35,6 +35,10 @@ const messages = defineMessages({
     id: 'Add criteria',
     defaultMessage: 'Add criteria',
   },
+  select: {
+    id: 'querystring-widget-select',
+    defaultMessage: 'Select…',
+  },
 });
 
 /**
@@ -180,6 +184,7 @@ class QuerystringWidget extends Component {
                   : []
               }
               styles={customSelectStyles}
+              placeholder={this.props.intl.formatMessage(messages.select)}
               theme={selectTheme}
               components={{ DropdownIndicator, Option }}
               onChange={(data) => {
@@ -298,6 +303,7 @@ class QuerystringWidget extends Component {
                           )}
                           styles={customSelectStyles}
                           theme={selectTheme}
+                          placeholder={intl.formatMessage(messages.select)}
                           components={{ DropdownIndicator, Option }}
                           value={{
                             value: row.i,
@@ -335,6 +341,7 @@ class QuerystringWidget extends Component {
                           )}
                           styles={customSelectStyles}
                           theme={selectTheme}
+                          placeholder={intl.formatMessage(messages.select)}
                           components={{ DropdownIndicator, Option }}
                           value={{
                             value: row.o,

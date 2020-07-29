@@ -1,6 +1,6 @@
 # Change Log
 
-## 6.2.1 (unreleased)
+## 7.5.2 (unreleased)
 
 ### Breaking
 
@@ -11,6 +11,172 @@
 - Bugfix Edit page through Contents list #1594 @terapyon
 
 ### Internal
+
+## 7.5.1 (2020-07-29)
+
+### Bugfix
+
+- Avoid React hydration complaining about mismatched server output in toolbar. In component rendering, replaced the use of `__CLIENT__` with a state-stored `isClient`, as that is more correct. @tiberiuichim
+
+## 7.5.0 (2020-07-29)
+
+### Feature
+
+- Used moment-timezone to set a specific server timezone as default for DatetimeWidget. @razvanMiu
+
+## 7.4.0 (2020-07-29)
+
+### Feature
+
+- Highlight the sidebar toggle button with a small flashing animation @silviubogan @tiberiuichim
+
+## 7.3.1 (2020-07-28)
+
+### Bugfix
+
+- Solved a browser console error in /contents view (#1695) @silviubogan
+- Pagination icon fix @nileshgulia1
+
+## 7.3.0 (2020-07-26)
+
+### Feature
+
+- Add Placeholder attribute to Textwidget and TextAreaWidget @iFlameing
+- Make the default block type (currently draftjs text) configurable @tiberiuichim @silviubogan
+
+### Internal
+
+- Upgrade lodash dependency to 4.17.19 @tisto
+- Add a new blocks helper method, `getBlocks`. It simplifies using `getBlocksFieldname` and `getBlocksLayoutFieldname` under a single method that returns ordered pairs of `[blockid, blockvalue]` @tiberiuichim
+
+## 7.2.1 (2020-07-16)
+
+### Internal
+
+- Upgrade to Cypress 4.10.0 @tisto
+- Upgrade to cypress-file-upload 4.0.7 @iFlameing
+
+## 7.2.0 (2020-07-13)
+
+### Feature
+
+- Provide a new webpack alias, `volto-themes`, which points to Volto's theme folder. See details in the https://docs.voltocms.com/upgrade-guide/
+
+### Internal
+
+- Upgrade razzle to `^3.1.5`. @tiberiuichim
+
+## 7.1.0 (2020-07-09)
+
+### Feature
+
+- Addons can optionally include a `razzle.extend.js` file in their root. This module needs to follow the same rules as the `razzle.config.js`. They change the default Volto Razzle configuration, before it is passed to the Volto project @tiberiuichim @sneridagh
+
+### Bugfix
+
+- Managed hidden fields @giuliaghisini
+- Fix bug in addon loading with namespaced packages @tiberiuichim
+- Japanese translation updated @terapyon
+
+- Upgrade razzle to `^3.1.5`. @tiberiuichim
+
+## 7.0.1 (2020-07-07)
+
+### Bugfix
+
+- Adding absolute url in ObjectBrowser for image type @iFlameing
+
+## 7.0.0 (2020-07-06)
+
+### Breaking
+
+- Fix filename of strickthrough.svg to strikethrough.svg @tiberiuichim
+
+### Feature
+
+- Addons configuration loading. You can now declare addons in the addons key of
+  package.json and they'll be automatically loaded. @tiberiuichim @sneridagh
+
+## 6.5.0 (2020-07-03)
+
+### Feature
+
+- Added default Export for the QuerystringWidget for the ListingBlock @steffenri
+
+### Breaking
+
+### Feature
+
+- Added recurrence widget @giuliaghisini
+
+### Bugfix
+
+- Fix text overflow in pastanaga-menu header if title is too long. @giuliaghisini
+- Fixing bug to correctly assign classes to image sizes in View @steffenri
+- Center aligned Images are now displayed like they are center aligned in the View @steffenri
+- Fix datepicker z-index @giuliaghisini
+
+### Internal
+
+- Upgrade insecure packages `http-proxy`, `http-proxy-middleware` and `handlebars` @tiberiuichim
+
+## 6.4.1 (2020-07-01)
+
+### Breaking
+
+### Feature
+
+- Allow JSON API calls to made to third-party servers @tiberiuichim
+
+### Bugfix
+
+- Fix styling and use of csss classes in `InlineForm.jsx` @tiberiuichim
+
+- Fixing bug for Image Preview on upload @iFlameing
+
+### Internal
+
+- Fix formatting of `src/server.jsx` @tiberiuichim
+
+## 6.4.0 (2020-06-29)
+
+### Feature
+
+- Translated workflow state in contents @nzambello
+- Added item type as a tooltip in contents @nzambello
+- Added Italian translations and translated array, token and select widget. @giuliaghisini
+- Added uploading image preview in FileWidget @iFlameing
+- Allow custom express middleware declared with `settings.expressMiddleware`. See [Customizing Express](docs/source/customizing/express.md) @tiberiuichim
+
+### Bugfix
+
+- Fix the toolbar dropdown to add content types if isMultilingual is enabled
+  but a type is not marked as translatable. @csenger
+- Usage of Contettype label in Add component. @giuliaghisini
+
+### Internal
+
+- Update upgrade-guide to for `addonRoutes` and `addonReducers` @jackahl
+
+## 6.3.0 (2020-06-22)
+
+### Feature
+
+- Added internationalization for French language @bsuttor #1588
+- use of maximumSelectionSize from plone in ObjectBrowserWidget. @giuliaghisini
+- Added selectableTypes in ObjectBrowserWidget @giuliaghisini
+
+### Bugfix
+
+- added export for ObjectBrowserWidget in component/index.js @giuliaghisini
+- Fixed duplicated items in SelectWidget and ArrayWidget @giuliaghisini
+- Update German translation @timo
+- Removed broken preview image in ContentsUploadModal if uploaded item is not an image. @giuliaghisini
+- Localized content upload modal last modified date @nzambello
+- Fix overflow in folder contents with long titles @nzambello
+- Fixed object browser widget when a selected items is deleted. Plone.restapi returns a null object. @giuliaghisini
+- Fixed error on adding new item if parent item is not translated when multilingual is set @giuliaghisini
+- Added translations for select in querystring widget @nzambello
 
 ## 6.2.0 (2020-06-14)
 
@@ -26,11 +192,11 @@
 
 ### Feature
 
-- Include ``config.addonRoutes`` in router configuration. This allows addons to
-  override route children defined for the ``App`` component.
+- Include `config.addonRoutes` in router configuration. This allows addons to
+  override route children defined for the `App` component.
 - Added param 'wrapped' for widgets, to use widgets without form wrappers. @giuliaghisini
 - Added internationalization for Romanian language @alecghica #1521
-- Support loading additional reducers from the ``config.addonReducers`` key,
+- Support loading additional reducers from the `config.addonReducers` key,
   to allow addons to provide their own reducers @tiberiuichim
 - Add a no brainer image sizing option, using scales. This will be vastly improved when
   we adopt srcsets. @sneridagh

@@ -112,6 +112,7 @@ class Edit extends Component {
     super(props);
     this.state = {
       visual: true,
+      isClient: false,
     };
     this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -126,6 +127,7 @@ class Edit extends Component {
     if (this.props.getRequest.loaded && this.props.content?.['@type']) {
       this.props.getSchema(this.props.content['@type']);
     }
+    this.setState({ isClient: true });
   }
 
   /**
@@ -241,50 +243,52 @@ class Edit extends Component {
               </>
             )}
 
-            {editPermission && this.state.visual && (
-              <Portal node={__CLIENT__ && document.getElementById('sidebar')}>
+            {editPermission && this.state.visual && this.state.isClient && (
+              <Portal node={document.getElementById('sidebar')}>
                 <Sidebar />
               </Portal>
             )}
           </>
         )}
-        <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
-          <Toolbar
-            pathname={this.props.pathname}
-            hideDefaultViewButtons
-            inner={
-              <>
-                <Button
-                  id="toolbar-save"
-                  className="save"
-                  aria-label={this.props.intl.formatMessage(messages.save)}
-                  onClick={() => this.form.current.onSubmit()}
-                  disabled={this.props.updateRequest.loading}
-                  loading={this.props.updateRequest.loading}
-                >
-                  <Icon
-                    name={saveSVG}
-                    className="circled"
-                    size="30px"
-                    title={this.props.intl.formatMessage(messages.save)}
-                  />
-                </Button>
-                <Button
-                  className="cancel"
-                  aria-label={this.props.intl.formatMessage(messages.cancel)}
-                  onClick={() => this.onCancel()}
-                >
-                  <Icon
-                    name={clearSVG}
-                    className="circled"
-                    size="30px"
-                    title={this.props.intl.formatMessage(messages.cancel)}
-                  />
-                </Button>
-              </>
-            }
-          />
-        </Portal>
+        {this.state.isClient && (
+          <Portal node={document.getElementById('toolbar')}>
+            <Toolbar
+              pathname={this.props.pathname}
+              hideDefaultViewButtons
+              inner={
+                <>
+                  <Button
+                    id="toolbar-save"
+                    className="save"
+                    aria-label={this.props.intl.formatMessage(messages.save)}
+                    onClick={() => this.form.current.onSubmit()}
+                    disabled={this.props.updateRequest.loading}
+                    loading={this.props.updateRequest.loading}
+                  >
+                    <Icon
+                      name={saveSVG}
+                      className="circled"
+                      size="30px"
+                      title={this.props.intl.formatMessage(messages.save)}
+                    />
+                  </Button>
+                  <Button
+                    className="cancel"
+                    aria-label={this.props.intl.formatMessage(messages.cancel)}
+                    onClick={() => this.onCancel()}
+                  >
+                    <Icon
+                      name={clearSVG}
+                      className="circled"
+                      size="30px"
+                      title={this.props.intl.formatMessage(messages.cancel)}
+                    />
+                  </Button>
+                </>
+              }
+            />
+          </Portal>
+        )}
       </div>
     );
   }
