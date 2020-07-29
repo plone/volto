@@ -1,12 +1,10 @@
 # Change Log
 
-## 7.2.2 (unreleased)
+## 7.5.2 (unreleased)
 
 ### Breaking
 
 ### Feature
-
-- Added Placeholder attribute to Textwidget and TextAreaWidget @iFlameing
 
 ### Bugfix
 
@@ -14,10 +12,42 @@
 
 ### Internal
 
+## 7.5.1 (2020-07-29)
+
+### Bugfix
+
+- Avoid React hydration complaining about mismatched server output in toolbar. In component rendering, replaced the use of `__CLIENT__` with a state-stored `isClient`, as that is more correct. @tiberiuichim
+
+## 7.5.0 (2020-07-29)
+
+### Feature
+
+- Used moment-timezone to set a specific server timezone as default for DatetimeWidget. @razvanMiu
+
+## 7.4.0 (2020-07-29)
+
+### Feature
+
+- Highlight the sidebar toggle button with a small flashing animation @silviubogan @tiberiuichim
+
+## 7.3.1 (2020-07-28)
+
+### Bugfix
+
+- Solved a browser console error in /contents view (#1695) @silviubogan
+- Pagination icon fix @nileshgulia1
+
+## 7.3.0 (2020-07-26)
+
+### Feature
+
+- Add Placeholder attribute to Textwidget and TextAreaWidget @iFlameing
+- Make the default block type (currently draftjs text) configurable @tiberiuichim @silviubogan
+
+### Internal
+
 - Upgrade lodash dependency to 4.17.19 @tisto
-- Add a new blocks helper method, `getBlocks`. It simplifies using
-  `getBlocksFieldname` and `getBlocksLayoutFieldname` under a single method that
-  returns ordered pairs of `[blockid, blockvalue]` @tiberiuichim
+- Add a new blocks helper method, `getBlocks`. It simplifies using `getBlocksFieldname` and `getBlocksLayoutFieldname` under a single method that returns ordered pairs of `[blockid, blockvalue]` @tiberiuichim
 
 ## 7.2.1 (2020-07-16)
 
@@ -72,6 +102,12 @@
 ### Feature
 
 - Added default Export for the QuerystringWidget for the ListingBlock @steffenri
+
+### Breaking
+
+### Feature
+
+- Added recurrence widget @giuliaghisini
 
 ### Bugfix
 
