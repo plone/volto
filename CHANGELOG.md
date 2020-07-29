@@ -101,6 +101,12 @@
 
 - Added default Export for the QuerystringWidget for the ListingBlock @steffenri
 
+### Breaking
+
+### Feature
+
+- Added recurrence widget @giuliaghisini
+
 ### Bugfix
 
 - Fix text overflow in pastanaga-menu header if title is too long. @giuliaghisini
