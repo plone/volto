@@ -71,6 +71,7 @@ let config = {
     defaultLanguage: 'en',
     navDepth: 1,
     expressMiddleware: [],
+    timezone: 'UTC',
     defaultBlockType: 'text',
   },
   widgets: {

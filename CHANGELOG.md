@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Used moment-timezone to set a specific server timezone as default for DatetimeWidget. @razvanMiu
+
 ### Bugfix
 
 ### Internal
