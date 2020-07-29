@@ -2,14 +2,9 @@
 
 ## 7.3.2 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Highlight the sidebar toggle button with a small flashing animation @silviubogan @tiberiuichim
-### Bugfix
-
-### Internal
 
 ## 7.3.1 (2020-07-28)
 
