@@ -12,6 +12,7 @@ export class FormStateProvider extends React.Component {
   setContextData = (value) => {
     return new Promise((resolve, reject) => {
       this.setState((state) => {
+        console.log('setC', value);
         return {
           ...state,
           contextData: {
@@ -46,4 +47,26 @@ export const useFormStateContext = () => {
   }
 
   return context;
+};
+
+export const withFormStateContext = (WrappedComponent) => {
+  const Form = class extends React.Component {
+    render() {
+      return (
+        <FormStateProvider initialValue={{}}>
+          <FormStateContext.Consumer>
+            {(formStateContext) => {
+              return (
+                <WrappedComponent
+                  {...this.props}
+                  formStateContext={formStateContext}
+                />
+              );
+            }}
+          </FormStateContext.Consumer>
+        </FormStateProvider>
+      );
+    }
+  };
+  return Form;
 };
