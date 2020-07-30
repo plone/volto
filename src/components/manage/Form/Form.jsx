@@ -797,7 +797,8 @@ export class Form extends Component {
     const contextData = this.contextData.isClient
       ? this.contextData
       : this.state;
-    // console.log('contextData', contextData);
+
+    if (this.props.formRef) this.props.formRef.current = this;
 
     return this.props.visual ? (
       // Removing this from SSR is important, since react-beautiful-dnd supports SSR,
@@ -1046,5 +1047,9 @@ export class Form extends Component {
   }
 }
 
-// export default injectIntl(Form, { forwardRef: true });
-export default injectIntl(withFormStateContext(Form), { forwardRef: true });
+const WrappedForm = React.forwardRef((props, ref) => {
+  const FormWithState = withFormStateContext(Form);
+  return <FormWithState {...props} formRef={ref} />;
+});
+
+export default injectIntl(WrappedForm, { forwardRef: true });
