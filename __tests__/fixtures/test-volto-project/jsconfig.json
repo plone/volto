@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "paths": {
+            "test-addon": [
+                "test-addon/src"
+            ]
+        },
+        "baseUrl": "addons"
+    }
+}
+

@@ -103,15 +103,12 @@ class Edit extends Component {
     const blockHasOwnFocusManagement =
       blocks.blocksConfig?.[type]?.['blockHasOwnFocusManagement'] || null;
 
-    console.log('render Block', Block);
-
     return (
       <div className={`ui drag block inner ${type}`}>
         {Block !== null ? (
           <div
             role="presentation"
             onClick={() => {
-              console.log('on select id', this.props.id);
               this.props.onSelectBlock(this.props.id);
             }}
             onKeyDown={

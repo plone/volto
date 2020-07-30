@@ -68,7 +68,6 @@ export Controlpanel from '@plone/volto/components/manage/Controlpanels/Controlpa
 export Controlpanels from '@plone/volto/components/manage/Controlpanels/Controlpanels';
 export ContentType from '@plone/volto/components/manage/Controlpanels/ContentType';
 export ContentTypeMetadata from '@plone/volto/components/manage/Controlpanels/ContentTypeMetadata';
-export ContentTypeSchema from '@plone/volto/components/manage/Form/ContentTypeSchema';
 export ContentTypes from '@plone/volto/components/manage/Controlpanels/ContentTypes';
 export UsersControlpanel from '@plone/volto/components/manage/Controlpanels/UsersControlpanel';
 export ModerateComments from '@plone/volto/components/manage/Controlpanels/ModerateComments';
@@ -114,6 +113,11 @@ export CheckboxWidget from '@plone/volto/components/manage/Widgets/CheckboxWidge
 
 export const DatetimeWidget = loadable(() =>
   import('@plone/volto/components/manage/Widgets/DatetimeWidget'),
+);
+export const RecurrenceWidget = loadable(() =>
+  import(
+    '@plone/volto/components/manage/Widgets/RecurrenceWidget/RecurrenceWidget'
+  ),
 );
 
 export FileWidget from '@plone/volto/components/manage/Widgets/FileWidget';

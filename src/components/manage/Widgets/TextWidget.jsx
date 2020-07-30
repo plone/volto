@@ -40,6 +40,7 @@ class TextWidget extends Component {
     }),
     iconAction: PropTypes.func,
     wrapped: PropTypes.bool,
+    placeholder: PropTypes.string,
   };
 
   /**
@@ -90,6 +91,7 @@ class TextWidget extends Component {
       intl,
       icon,
       iconAction,
+      placeholder,
     } = this.props;
 
     return (
@@ -108,6 +110,7 @@ class TextWidget extends Component {
           value={value || ''}
           disabled={isDissabled}
           icon={icon || null}
+          placeholder={placeholder}
           onChange={({ target }) =>
             onChange(id, target.value === '' ? undefined : target.value)
           }
