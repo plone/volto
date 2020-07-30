@@ -105,9 +105,9 @@ also to integrate other third-party Volto addons and pottentially customize
 files from those addons. You may even want to write an addon that customizes
 Volto or other addons, on its own.
 
-To customize an addon, you can create can follow the pattern described above,
-but place the addon customization files in a folder named after the addon,
-inside the `src/customizations` folder. So, for example, to customize the
+To customize an addon, you can follow the pattern described above, but place
+the addon customization files in a folder named after the addon, inside the
+`src/customizations` folder. So, for example, to customize the
 `volto-venue/src/components/OSMMap/OSMMap.jsx` file, you would create
 a `src/customizations/volto-venue/components/OSMMap/OSMMap.jsx` shadow file.
 
