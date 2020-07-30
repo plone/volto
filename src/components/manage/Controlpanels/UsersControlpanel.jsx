@@ -123,6 +123,7 @@ class UsersControlpanel extends Component {
       showAddGroup: false,
       entries: props.users,
       groupEntries: props.groups,
+      isClient: false,
     };
   }
 
@@ -135,6 +136,7 @@ class UsersControlpanel extends Component {
     this.props.listRoles();
     this.props.listUsers();
     this.props.listGroups();
+    this.setState({ isClient: true });
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -837,25 +839,27 @@ class UsersControlpanel extends Component {
             </Button>
           </Segment>
         </Segment.Group>
-        <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
-          <Toolbar
-            pathname={this.props.pathname}
-            hideDefaultViewButtons
-            inner={
-              <>
-                <Link to="/controlpanel" className="item">
-                  <Icon
-                    name={backSVG}
-                    aria-label={this.props.intl.formatMessage(messages.back)}
-                    className="contents circled"
-                    size="30px"
-                    title={this.props.intl.formatMessage(messages.back)}
-                  />
-                </Link>
-              </>
-            }
-          />
-        </Portal>
+        {this.state.isClient && (
+          <Portal node={document.getElementById('toolbar')}>
+            <Toolbar
+              pathname={this.props.pathname}
+              hideDefaultViewButtons
+              inner={
+                <>
+                  <Link to="/controlpanel" className="item">
+                    <Icon
+                      name={backSVG}
+                      aria-label={this.props.intl.formatMessage(messages.back)}
+                      className="contents circled"
+                      size="30px"
+                      title={this.props.intl.formatMessage(messages.back)}
+                    />
+                  </Link>
+                </>
+              }
+            />
+          </Portal>
+        )}
       </Container>
     );
   }

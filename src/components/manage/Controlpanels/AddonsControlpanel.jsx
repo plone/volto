@@ -161,6 +161,7 @@ class AddonsControlpanel extends Component {
       installedAddons: [],
       availableAddons: [],
       upgradableAddons: [],
+      isClient: false,
     };
   }
 
@@ -171,6 +172,15 @@ class AddonsControlpanel extends Component {
    */
   componentWillMount() {
     this.props.listAddons();
+  }
+
+  /**
+   * Component did mount
+   * @method componentDidMount
+   * @returns {undefined}
+   */
+  componentDidMount() {
+    this.setState({ isClient: true });
   }
 
   /**
@@ -429,25 +439,27 @@ class AddonsControlpanel extends Component {
           </Segment>
         </Segment.Group>
 
-        <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
-          <Toolbar
-            pathname={this.props.pathname}
-            hideDefaultViewButtons
-            inner={
-              <>
-                <Link to="/controlpanel" className="item">
-                  <Icon
-                    name={backSVG}
-                    aria-label={this.props.intl.formatMessage(messages.back)}
-                    className="contents circled"
-                    size="30px"
-                    title={this.props.intl.formatMessage(messages.back)}
-                  />
-                </Link>
-              </>
-            }
-          />
-        </Portal>
+        {this.state.isClient && (
+          <Portal node={document.getElementById('toolbar')}>
+            <Toolbar
+              pathname={this.props.pathname}
+              hideDefaultViewButtons
+              inner={
+                <>
+                  <Link to="/controlpanel" className="item">
+                    <Icon
+                      name={backSVG}
+                      aria-label={this.props.intl.formatMessage(messages.back)}
+                      className="contents circled"
+                      size="30px"
+                      title={this.props.intl.formatMessage(messages.back)}
+                    />
+                  </Link>
+                </>
+              }
+            />
+          </Portal>
+        )}
       </Container>
     );
   }

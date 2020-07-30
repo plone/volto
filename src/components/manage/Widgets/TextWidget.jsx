@@ -81,6 +81,7 @@ class TextWidget extends Component {
     maximum: PropTypes.number,
     minimum: PropTypes.number,
     wrapped: PropTypes.bool,
+    placeholder: PropTypes.string,
   };
 
   /**
@@ -141,6 +142,7 @@ class TextWidget extends Component {
       maxLength,
       minimum,
       maximum,
+      placeholder,
     } = this.props;
 
     const schema = {
@@ -199,6 +201,7 @@ class TextWidget extends Component {
           value={value || ''}
           disabled={onEdit !== null}
           icon={icon || null}
+          placeholder={placeholder}
           onChange={({ target }) =>
             onChange(id, target.value === '' ? undefined : target.value)
           }
