@@ -1045,10 +1045,5 @@ export class Form extends Component {
   }
 }
 
-// const WrappedForm = React.forwardRef((props, ref) => {
-//   const FormWithState = withFormStateContext(Form);
-//   return <FormWithState {...props} formRef={ref} />;
-// });
-
 const WrappedForm = withFormStateContext(Form);
 export default injectIntl(WrappedForm, { forwardRef: true });
