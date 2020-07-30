@@ -272,8 +272,10 @@ Set them up in the `customizationPaths` key in the `package.json` file on your
 Volto project.
 
 ```json
-"customizationPaths": ["src/customizations/", "src/addons/@plone/my-volto-addon/src/customizations/"],
+"customizationPaths": ["src/customizations", "src/addons/@plone/my-volto-addon/src/customizations"],
 ```
 
 !!! tip
-    Do not forget the `/` at the end of both
+  See the *Advanced customization scenarios* in
+  [Customizing Components](../customizing-components/) section on how to
+  enhance this pattern and how to include customizations inside addons.

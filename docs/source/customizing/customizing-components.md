@@ -127,6 +127,6 @@ customization files.
   addons
 
 In case of conflicts where multiple addons customize the same file, the order
-of addon declaration: the last addon declared in the `addons` key in the
-project's `package.json` wins. Further more, the project's customizations are
-applied last, so they "win" in the conflict resolution.
+of addon declaration matters: the last addon declared in the `addons` key in
+the project's `package.json` wins. Further more, the project's customizations
+are applied last, so they "win" in the conflict resolution.
