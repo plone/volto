@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Added recurrence widget @giuliaghisini
+
 ### Bugfix
 
 ### Internal
@@ -100,12 +102,6 @@
 ### Feature
 
 - Added default Export for the QuerystringWidget for the ListingBlock @steffenri
-
-### Breaking
-
-### Feature
-
-- Added recurrence widget @giuliaghisini
 
 ### Bugfix
 
