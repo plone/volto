@@ -787,284 +787,302 @@ class Form extends Component {
             const renderBlocks = formData?.[blocksLayoutFieldname]?.items;
             const blocksDict = formData?.[blocksFieldname];
 
-            return this.props.visual ? (
-              // Removing this from SSR is important, since react-beautiful-dnd supports SSR,
-              // but draftJS don't like it much and the hydration gets messed up
-              !__SERVER__ && (
-                <div className="ui container">
-                  <DragDropContext
-                    onDragEnd={this.onDragEnd}
-                    onDragStart={this.handleDragStart}
-                    onDragUpdate={this.onDragUpdate}
-                  >
-                    <Droppable droppableId="edit-form">
-                      {(provided, snapshot) => (
-                        <div
-                          ref={provided.innerRef}
-                          {...provided.droppableProps}
-                          style={{ position: 'relative' }}
-                        >
-                          {map(renderBlocks, (block, index) => (
-                            <Draggable
-                              draggableId={block}
-                              index={index}
-                              key={block}
-                            >
-                              {(provided) => (
-                                <div
-                                  ref={provided.innerRef}
-                                  {...provided.draggableProps}
-                                  className={`block-editor-${blocksDict[block]['@type']}`}
-                                >
-                                  <div style={{ position: 'relative' }}>
-                                    <div
-                                      style={{
-                                        visibility:
-                                          this.contextData.selected === block &&
-                                          !this.hideHandler(blocksDict[block])
-                                            ? 'visible'
-                                            : 'hidden',
-                                        display: 'inline-block',
-                                      }}
-                                      {...provided.dragHandleProps}
-                                      className="drag handle wrapper"
-                                    >
-                                      <Icon name={dragSVG} size="18px" />
-                                    </div>
-
-                                    <EditBlock
-                                      id={block}
-                                      index={index}
-                                      type={blocksDict[block]['@type']}
-                                      key={block}
-                                      handleKeyDown={this.handleKeyDown}
-                                      onAddBlock={this.onAddBlock}
-                                      onChangeBlock={this.onChangeBlock}
-                                      onMutateBlock={this.onMutateBlock}
-                                      onChangeField={this.onChangeField}
-                                      onDeleteBlock={this.onDeleteBlock}
-                                      onSelectBlock={this.onSelectBlock}
-                                      onMoveBlock={this.onMoveBlock}
-                                      onFocusPreviousBlock={
-                                        this.onFocusPreviousBlock
-                                      }
-                                      onFocusNextBlock={this.onFocusNextBlock}
-                                      data={blocksDict[block]}
-                                      pathname={this.props.pathname}
-                                      block={block}
-                                      selected={
-                                        this.contextData.selected === block
-                                      }
-                                    />
-                                  </div>
-                                </div>
-                              )}
-                            </Draggable>
-                          ))}
-                          {provided.placeholder}
-                          {!isEmpty(placeholderProps) && (
-                            <div
-                              style={{
-                                position: 'absolute',
-                                top: `${placeholderProps.clientY}px`,
-                                height: `${
-                                  placeholderProps.clientHeight + 18
-                                }px`,
-                                background: '#eee',
-                                width: `${placeholderProps.clientWidth}px`,
-                                borderRadius: '3px',
-                              }}
-                            />
-                          )}
-                        </div>
-                      )}
-                    </Droppable>
-                    <Portal
-                      node={
-                        __CLIENT__ &&
-                        document.getElementById('sidebar-metadata')
-                      }
-                    >
-                      <UiForm
-                        method="post"
-                        onSubmit={this.onSubmit}
-                        error={keys(this.contextData.errors).length > 0}
+            return (
+              <>
+                {this.props.children}
+                {this.props.visual ? (
+                  // Removing this from SSR is important, since react-beautiful-dnd supports SSR,
+                  // but draftJS don't like it much and the hydration gets messed up
+                  !__SERVER__ && (
+                    <div className="ui container">
+                      <DragDropContext
+                        onDragEnd={this.onDragEnd}
+                        onDragStart={this.handleDragStart}
+                        onDragUpdate={this.onDragUpdate}
                       >
-                        {schema &&
-                          map(schema.fieldsets, (item) => [
-                            <Segment secondary attached key={item.title}>
-                              {item.title}
-                            </Segment>,
-                            <Segment
-                              attached
-                              key={`fieldset-contents-${item.title}`}
+                        <Droppable droppableId="edit-form">
+                          {(provided, snapshot) => (
+                            <div
+                              ref={provided.innerRef}
+                              {...provided.droppableProps}
+                              style={{ position: 'relative' }}
                             >
-                              {map(item.fields, (field, index) => (
-                                <Field
-                                  {...schema.properties[field]}
-                                  id={field}
-                                  focus={false}
-                                  value={this.contextData.formData[field]}
-                                  required={
-                                    schema.required.indexOf(field) !== -1
-                                  }
-                                  onChange={this.onChangeField}
-                                  key={field}
-                                  error={this.contextData.errors[field]}
-                                />
+                              {map(renderBlocks, (block, index) => (
+                                <Draggable
+                                  draggableId={block}
+                                  index={index}
+                                  key={block}
+                                >
+                                  {(provided) => (
+                                    <div
+                                      ref={provided.innerRef}
+                                      {...provided.draggableProps}
+                                      className={`block-editor-${blocksDict[block]['@type']}`}
+                                    >
+                                      <div style={{ position: 'relative' }}>
+                                        <div
+                                          style={{
+                                            visibility:
+                                              this.contextData.selected ===
+                                                block &&
+                                              !this.hideHandler(
+                                                blocksDict[block],
+                                              )
+                                                ? 'visible'
+                                                : 'hidden',
+                                            display: 'inline-block',
+                                          }}
+                                          {...provided.dragHandleProps}
+                                          className="drag handle wrapper"
+                                        >
+                                          <Icon name={dragSVG} size="18px" />
+                                        </div>
+
+                                        <EditBlock
+                                          id={block}
+                                          index={index}
+                                          type={blocksDict[block]['@type']}
+                                          key={block}
+                                          handleKeyDown={this.handleKeyDown}
+                                          onAddBlock={this.onAddBlock}
+                                          onChangeBlock={this.onChangeBlock}
+                                          onMutateBlock={this.onMutateBlock}
+                                          onChangeField={this.onChangeField}
+                                          onDeleteBlock={this.onDeleteBlock}
+                                          onSelectBlock={this.onSelectBlock}
+                                          onMoveBlock={this.onMoveBlock}
+                                          onFocusPreviousBlock={
+                                            this.onFocusPreviousBlock
+                                          }
+                                          onFocusNextBlock={
+                                            this.onFocusNextBlock
+                                          }
+                                          data={blocksDict[block]}
+                                          pathname={this.props.pathname}
+                                          block={block}
+                                          selected={
+                                            this.contextData.selected === block
+                                          }
+                                        />
+                                      </div>
+                                    </div>
+                                  )}
+                                </Draggable>
                               ))}
-                            </Segment>,
-                          ])}
-                      </UiForm>
-                    </Portal>
-                  </DragDropContext>
-                </div>
-              )
-            ) : (
-              <Container>
-                <UiForm
-                  method="post"
-                  onSubmit={this.onSubmit}
-                  error={keys(this.contextData.errors).length > 0}
-                >
-                  <Segment.Group raised>
-                    {schema && schema.fieldsets.length > 1 && (
-                      <Tab
-                        menu={{
-                          secondary: true,
-                          pointing: true,
-                          attached: true,
-                          tabular: true,
-                          className: 'formtabs',
-                        }}
-                        panes={map(schema.fieldsets, (item) => ({
-                          menuItem: item.title,
-                          render: () => [
-                            this.props.title && (
-                              <Segment
-                                secondary
-                                attached
-                                key={this.props.title}
-                              >
+                              {provided.placeholder}
+                              {!isEmpty(placeholderProps) && (
+                                <div
+                                  style={{
+                                    position: 'absolute',
+                                    top: `${placeholderProps.clientY}px`,
+                                    height: `${
+                                      placeholderProps.clientHeight + 18
+                                    }px`,
+                                    background: '#eee',
+                                    width: `${placeholderProps.clientWidth}px`,
+                                    borderRadius: '3px',
+                                  }}
+                                />
+                              )}
+                            </div>
+                          )}
+                        </Droppable>
+                        <Portal
+                          node={
+                            __CLIENT__ &&
+                            document.getElementById('sidebar-metadata')
+                          }
+                        >
+                          <UiForm
+                            method="post"
+                            onSubmit={this.onSubmit}
+                            error={keys(this.contextData.errors).length > 0}
+                          >
+                            {schema &&
+                              map(schema.fieldsets, (item) => [
+                                <Segment secondary attached key={item.title}>
+                                  {item.title}
+                                </Segment>,
+                                <Segment
+                                  attached
+                                  key={`fieldset-contents-${item.title}`}
+                                >
+                                  {map(item.fields, (field, index) => (
+                                    <Field
+                                      {...schema.properties[field]}
+                                      id={field}
+                                      focus={false}
+                                      value={this.contextData.formData[field]}
+                                      required={
+                                        schema.required.indexOf(field) !== -1
+                                      }
+                                      onChange={this.onChangeField}
+                                      key={field}
+                                      error={this.contextData.errors[field]}
+                                    />
+                                  ))}
+                                </Segment>,
+                              ])}
+                          </UiForm>
+                        </Portal>
+                      </DragDropContext>
+                    </div>
+                  )
+                ) : (
+                  <Container>
+                    <UiForm
+                      method="post"
+                      onSubmit={this.onSubmit}
+                      error={keys(this.contextData.errors).length > 0}
+                    >
+                      <Segment.Group raised>
+                        {schema && schema.fieldsets.length > 1 && (
+                          <Tab
+                            menu={{
+                              secondary: true,
+                              pointing: true,
+                              attached: true,
+                              tabular: true,
+                              className: 'formtabs',
+                            }}
+                            panes={map(schema.fieldsets, (item) => ({
+                              menuItem: item.title,
+                              render: () => [
+                                this.props.title && (
+                                  <Segment
+                                    secondary
+                                    attached
+                                    key={this.props.title}
+                                  >
+                                    {this.props.title}
+                                  </Segment>
+                                ),
+                                ...map(item.fields, (field, index) => (
+                                  <Field
+                                    {...schema.properties[field]}
+                                    id={field}
+                                    fieldSet={item.title.toLowerCase()}
+                                    focus={index === 0}
+                                    value={this.contextData.formData[field]}
+                                    required={
+                                      schema.required.indexOf(field) !== -1
+                                    }
+                                    onChange={this.onChangeField}
+                                    key={field}
+                                    error={this.contextData.errors[field]}
+                                  />
+                                )),
+                              ],
+                            }))}
+                          />
+                        )}
+                        {schema && schema.fieldsets.length === 1 && (
+                          <Segment>
+                            {this.props.title && (
+                              <Segment className="primary">
                                 {this.props.title}
                               </Segment>
-                            ),
-                            ...map(item.fields, (field, index) => (
+                            )}
+                            {this.props.description && (
+                              <Segment secondary>
+                                {this.props.description}
+                              </Segment>
+                            )}
+                            {keys(this.contextData.errors).length > 0 && (
+                              <Message
+                                icon="warning"
+                                negative
+                                attached
+                                header={this.props.intl.formatMessage(
+                                  messages.error,
+                                )}
+                                content={this.props.intl.formatMessage(
+                                  messages.thereWereSomeErrors,
+                                )}
+                              />
+                            )}
+                            {this.props.error && (
+                              <Message
+                                icon="warning"
+                                negative
+                                attached
+                                header={this.props.intl.formatMessage(
+                                  messages.error,
+                                )}
+                                content={this.props.error.message}
+                              />
+                            )}
+                            {map(schema.fieldsets[0].fields, (field) => (
                               <Field
                                 {...schema.properties[field]}
                                 id={field}
-                                fieldSet={item.title.toLowerCase()}
-                                focus={index === 0}
-                                value={this.contextData.formData[field]}
+                                value={this.contextData.formData?.[field]}
                                 required={schema.required.indexOf(field) !== -1}
                                 onChange={this.onChangeField}
                                 key={field}
                                 error={this.contextData.errors[field]}
                               />
-                            )),
-                          ],
-                        }))}
-                      />
-                    )}
-                    {schema && schema.fieldsets.length === 1 && (
-                      <Segment>
-                        {this.props.title && (
-                          <Segment className="primary">
-                            {this.props.title}
+                            ))}
                           </Segment>
                         )}
-                        {this.props.description && (
-                          <Segment secondary>{this.props.description}</Segment>
-                        )}
-                        {keys(this.contextData.errors).length > 0 && (
-                          <Message
-                            icon="warning"
-                            negative
-                            attached
-                            header={this.props.intl.formatMessage(
-                              messages.error,
+                        {!this.props.hideActions && (
+                          <Segment className="actions" clearing>
+                            {onSubmit && (
+                              <Button
+                                basic
+                                primary
+                                floated="right"
+                                type="submit"
+                                aria-label={
+                                  this.props.submitLabel
+                                    ? this.props.submitLabel
+                                    : this.props.intl.formatMessage(
+                                        messages.save,
+                                      )
+                                }
+                                title={
+                                  this.props.submitLabel
+                                    ? this.props.submitLabel
+                                    : this.props.intl.formatMessage(
+                                        messages.save,
+                                      )
+                                }
+                                loading={this.props.loading}
+                              >
+                                <Icon
+                                  className="circled"
+                                  name={aheadSVG}
+                                  size="30px"
+                                />
+                              </Button>
                             )}
-                            content={this.props.intl.formatMessage(
-                              messages.thereWereSomeErrors,
+                            {onCancel && (
+                              <Button
+                                basic
+                                secondary
+                                aria-label={this.props.intl.formatMessage(
+                                  messages.cancel,
+                                )}
+                                title={this.props.intl.formatMessage(
+                                  messages.cancel,
+                                )}
+                                floated="right"
+                                onClick={onCancel}
+                              >
+                                <Icon
+                                  className="circled"
+                                  name={clearSVG}
+                                  size="30px"
+                                />
+                              </Button>
                             )}
-                          />
+                          </Segment>
                         )}
-                        {this.props.error && (
-                          <Message
-                            icon="warning"
-                            negative
-                            attached
-                            header={this.props.intl.formatMessage(
-                              messages.error,
-                            )}
-                            content={this.props.error.message}
-                          />
-                        )}
-                        {map(schema.fieldsets[0].fields, (field) => (
-                          <Field
-                            {...schema.properties[field]}
-                            id={field}
-                            value={this.contextData.formData?.[field]}
-                            required={schema.required.indexOf(field) !== -1}
-                            onChange={this.onChangeField}
-                            key={field}
-                            error={this.contextData.errors[field]}
-                          />
-                        ))}
-                      </Segment>
-                    )}
-                    {!this.props.hideActions && (
-                      <Segment className="actions" clearing>
-                        {onSubmit && (
-                          <Button
-                            basic
-                            primary
-                            floated="right"
-                            type="submit"
-                            aria-label={
-                              this.props.submitLabel
-                                ? this.props.submitLabel
-                                : this.props.intl.formatMessage(messages.save)
-                            }
-                            title={
-                              this.props.submitLabel
-                                ? this.props.submitLabel
-                                : this.props.intl.formatMessage(messages.save)
-                            }
-                            loading={this.props.loading}
-                          >
-                            <Icon
-                              className="circled"
-                              name={aheadSVG}
-                              size="30px"
-                            />
-                          </Button>
-                        )}
-                        {onCancel && (
-                          <Button
-                            basic
-                            secondary
-                            aria-label={this.props.intl.formatMessage(
-                              messages.cancel,
-                            )}
-                            title={this.props.intl.formatMessage(
-                              messages.cancel,
-                            )}
-                            floated="right"
-                            onClick={onCancel}
-                          >
-                            <Icon
-                              className="circled"
-                              name={clearSVG}
-                              size="30px"
-                            />
-                          </Button>
-                        )}
-                      </Segment>
-                    )}
-                  </Segment.Group>
-                </UiForm>
-              </Container>
+                      </Segment.Group>
+                    </UiForm>
+                  </Container>
+                )}
+              </>
             );
           }}
         </FormStateContext.Consumer>
