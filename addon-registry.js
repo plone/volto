@@ -197,7 +197,7 @@ class AddonConfigurationRegistry {
         const { name, modulePath } = addon;
         if (fs.existsSync(path.join(base, name))) {
           reg.push({
-            basePath: path.join(base, name),
+            customPath: path.join(base, name),
             sourcePath: modulePath,
             name,
           });
@@ -208,26 +208,26 @@ class AddonConfigurationRegistry {
         fs.existsSync(path.join(base, 'volto'))
           ? {
               // new style (addons) customizations
-              basePath: path.join(base, 'volto'),
+              customPath: path.join(base, 'volto'),
               sourcePath: `${this.voltoPath}/src/`,
               name: '@plone/volto',
             }
           : {
               // old style, customizations directly in folder
-              basePath: base,
+              customPath: base,
               sourcePath: `${this.voltoPath}/src/`,
               name: '@plone/volto',
             },
       );
 
-      reg.forEach(({ basePath, name, sourcePath }) => {
+      reg.forEach(({ customPath, name, sourcePath }) => {
         map(
-          glob(`${basePath}**/*.*(svg|png|jpg|jpeg|gif|ico|less|js|jsx)`),
+          glob(`${customPath}**/*.*(svg|png|jpg|jpeg|gif|ico|less|js|jsx)`),
           (filename) => {
-            const targetPath = filename.replace(basePath, sourcePath);
+            const targetPath = filename.replace(customPath, sourcePath);
             if (fs.existsSync(targetPath)) {
               aliases[
-                filename.replace(basePath, name).replace(/\.(js|jsx)$/, '')
+                filename.replace(customPath, name).replace(/\.(js|jsx)$/, '')
               ] = path.resolve(filename);
             } else {
               console.log(

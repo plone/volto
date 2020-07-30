@@ -231,8 +231,8 @@ const defaultModify = (config, { target, dev }, webpack) => {
   config.resolve.plugins = [new RootResolverPlugin()];
 
   config.resolve.alias = {
-    ...registry.getProjectCustomizationPaths(),
     ...registry.getAddonCustomizationPaths(),
+    ...registry.getProjectCustomizationPaths(),
     ...config.resolve.alias,
     '../../theme.config$': `${projectRootPath}/theme/theme.config`,
     'volto-themes': `${registry.voltoPath}/theme/themes`,
