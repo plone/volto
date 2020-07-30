@@ -1,6 +1,6 @@
 # Change Log
 
-## 7.3.2 (unreleased)
+## 7.5.2 (unreleased)
 
 ### Breaking
 
@@ -12,6 +12,24 @@
 ### Bugfix
 
 ### Internal
+
+## 7.5.1 (2020-07-29)
+
+### Bugfix
+
+- Avoid React hydration complaining about mismatched server output in toolbar. In component rendering, replaced the use of `__CLIENT__` with a state-stored `isClient`, as that is more correct. @tiberiuichim
+
+## 7.5.0 (2020-07-29)
+
+### Feature
+
+- Used moment-timezone to set a specific server timezone as default for DatetimeWidget. @razvanMiu
+
+## 7.4.0 (2020-07-29)
+
+### Feature
+
+- Highlight the sidebar toggle button with a small flashing animation @silviubogan @tiberiuichim
 
 ## 7.3.1 (2020-07-28)
 
@@ -85,6 +103,12 @@
 ### Feature
 
 - Added default Export for the QuerystringWidget for the ListingBlock @steffenri
+
+### Breaking
+
+### Feature
+
+- Added recurrence widget @giuliaghisini
 
 ### Bugfix
 

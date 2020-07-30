@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "7.3.1",
+  "version": "7.5.1",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -298,6 +298,8 @@
     "mem": "4.0.0",
     "mini-css-extract-plugin": "0.9.0",
     "moment": "2.24.0",
+    "moment-locales-webpack-plugin": "1.2.0",
+    "moment-timezone": "^0.5.31",
     "pofile": "1.0.10",
     "postcss-flexbugs-fixes": "4.2.1",
     "postcss-loader": "3.0.0",

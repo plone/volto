@@ -75,7 +75,7 @@ class Search extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { currentPage: 1 };
+    this.state = { currentPage: 1, isClient: false };
   }
 
   /**
@@ -89,6 +89,15 @@ class Search extends Component {
       this.props.subject,
       this.props.path,
     );
+  }
+
+  /**
+   * Component did mount
+   * @method componentDidMount
+   * @returns {undefined}
+   */
+  componentDidMount() {
+    this.setState({ isClient: true });
   }
 
   /**
@@ -245,13 +254,15 @@ class Search extends Component {
             </section>
           </article>
         </div>
-        <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
-          <Toolbar
-            pathname={this.props.pathname}
-            hideDefaultViewButtons
-            inner={<span />}
-          />
-        </Portal>
+        {this.state.isClient && (
+          <Portal node={document.getElementById('toolbar')}>
+            <Toolbar
+              pathname={this.props.pathname}
+              hideDefaultViewButtons
+              inner={<span />}
+            />
+          </Portal>
+        )}
       </Container>
     );
   }
