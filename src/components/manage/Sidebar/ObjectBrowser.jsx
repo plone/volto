@@ -54,6 +54,7 @@ const withObjectBrowser = (WrappedComponent) =>
       dataName = null,
       propDataName = null,
       selectableTypes,
+      maximumSelectionSize,
     } = {}) =>
       this.setState({
         isObjectBrowserOpen: true,
@@ -62,6 +63,7 @@ const withObjectBrowser = (WrappedComponent) =>
         dataName,
         propDataName,
         selectableTypes,
+        maximumSelectionSize,
       });
 
     closeObjectBrowser = () => this.setState({ isObjectBrowserOpen: false });
@@ -93,6 +95,7 @@ const withObjectBrowser = (WrappedComponent) =>
               onSelectItem={this.state.onSelectItem}
               dataName={this.state.dataName}
               selectableTypes={this.state.selectableTypes}
+              maximumSelectionSize={this.state.maximumSelectionSize}
             />
           </CSSTransition>
         </>

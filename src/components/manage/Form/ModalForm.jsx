@@ -134,10 +134,12 @@ class ModalForm extends Component {
   onSubmit(event) {
     event.preventDefault();
     const errors = {};
+
     map(this.props.schema.fieldsets, (fieldset) =>
       map(fieldset.fields, (fieldId) => {
         const field = this.props.schema.properties[fieldId];
         const data = this.state.formData[fieldId];
+
         if (this.props.schema.required.indexOf(fieldId) !== -1) {
           if (field.type !== 'boolean' && !data) {
             errors[fieldId] = errors[field] || [];

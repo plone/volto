@@ -102,6 +102,7 @@ class Diff extends Component {
     this.onChangeOne = this.onChangeOne.bind(this);
     this.onChangeTwo = this.onChangeTwo.bind(this);
     this.onSelectView = this.onSelectView.bind(this);
+    this.state = { isClient: false };
   }
 
   /**
@@ -117,6 +118,7 @@ class Diff extends Component {
       this.props.one,
       this.props.two,
     );
+    this.setState({ isClient: true });
   }
 
   /**
@@ -319,25 +321,27 @@ class Diff extends Component {
               view={this.props.view}
             />
           )}
-        <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
-          <Toolbar
-            pathname={this.props.pathname}
-            hideDefaultViewButtons
-            inner={
-              <Link
-                to={`${getBaseUrl(this.props.pathname)}/history`}
-                className="item"
-              >
-                <Icon
-                  name={backSVG}
-                  className="contents circled"
-                  size="30px"
-                  title={this.props.intl.formatMessage(messages.back)}
-                />
-              </Link>
-            }
-          />
-        </Portal>
+        {this.state.isClient && (
+          <Portal node={document.getElementById('toolbar')}>
+            <Toolbar
+              pathname={this.props.pathname}
+              hideDefaultViewButtons
+              inner={
+                <Link
+                  to={`${getBaseUrl(this.props.pathname)}/history`}
+                  className="item"
+                >
+                  <Icon
+                    name={backSVG}
+                    className="contents circled"
+                    size="30px"
+                    title={this.props.intl.formatMessage(messages.back)}
+                  />
+                </Link>
+              }
+            />
+          </Portal>
+        )}
       </Container>
     );
   }

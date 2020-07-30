@@ -159,17 +159,15 @@ class ContentTypeMetadata extends Component {
       visual: true,
     };
 
-    this.onChange = this.onChange.bind(this);
     this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.form = React.createRef();
   }
+
   onSubmit(data) {
     this.props.updateContentTypeFieldTypes(this.props.type, data.schema);
   }
-  onChange(data) {
-    // console.log('onChange data', data);
-  }
+
   onCancel(event) {
     const location = {
       pathname: '/controlpanel/dexterity-types',
@@ -218,7 +216,6 @@ class ContentTypeMetadata extends Component {
           pathname={this.props.pathname}
           onSubmit={this.onSubmit}
           onCancel={this.onCancel}
-          onChange={this.onChange}
         />
       );
     }

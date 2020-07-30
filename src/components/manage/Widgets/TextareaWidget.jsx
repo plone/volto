@@ -5,7 +5,7 @@
 
 import { FormFieldWrapper } from '@plone/volto/components';
 import PropTypes from 'prop-types';
-import { default as React, useState } from 'react';
+import React, { useState } from 'react';
 import { injectIntl } from 'react-intl';
 import { Label, TextArea } from 'semantic-ui-react';
 
@@ -26,10 +26,11 @@ const TextareaWidget = ({
   onEdit,
   onDelete,
   intl,
-  isDissabled,
+  isDisabled,
   isDraggable,
   fieldSet,
   wrapped,
+  placeholder,
 }) => {
   const [lengthError, setlengthError] = useState('');
 
@@ -58,14 +59,15 @@ const TextareaWidget = ({
       onDelete={onDelete}
       intl={intl}
       draggable={isDraggable}
-      isDissabled={isDissabled}
+      isDisabled={isDisabled}
       className="textarea"
     >
       <TextArea
         id={`field-${id}`}
         name={id}
         value={value || ''}
-        disabled={isDissabled}
+        disabled={isDisabled}
+        placeholder={placeholder}
         onChange={({ target }) =>
           onhandleChange(id, target.value === '' ? undefined : target.value)
         }
@@ -90,7 +92,7 @@ TextareaWidget.propTypes = {
   description: PropTypes.string,
   maxLength: PropTypes.number,
   required: PropTypes.bool,
-  isDissabled: PropTypes.bool,
+  isDisabled: PropTypes.bool,
   isDraggable: PropTypes.bool,
   error: PropTypes.arrayOf(PropTypes.string),
   value: PropTypes.string,
@@ -98,6 +100,7 @@ TextareaWidget.propTypes = {
   onEdit: PropTypes.func,
   onDelete: PropTypes.func,
   wrapped: PropTypes.bool,
+  placeholder: PropTypes.string,
 };
 
 /**
@@ -111,7 +114,7 @@ TextareaWidget.defaultProps = {
   description: null,
   maxLength: null,
   required: false,
-  isDissabled: false,
+  isDisabled: false,
   isDraggable: false,
   error: [],
   value: null,

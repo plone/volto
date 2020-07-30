@@ -1,9 +1,15 @@
+# https://docs.npmjs.com/using-npm/developers.html#keeping-files-out-of-your-package
+
+# Directories
 api/
 bin/
 build/
 lib/
-g-api
+g-api/
 tests/
+cypress/
+
+# Files
 .travis.yml
 requirements-docs.txt
 requirements-tests.txt
