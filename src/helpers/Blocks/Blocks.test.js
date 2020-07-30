@@ -3,6 +3,7 @@ import {
   getBlocksFieldname,
   getBlocksLayoutFieldname,
   hasBlocksData,
+  blockHasValue,
 } from './Blocks';
 
 describe('Blocks', () => {
@@ -64,6 +65,56 @@ describe('Blocks', () => {
           'guillotina_cms.interfaces.blocks.IBlocks.blocks': [],
         }),
       ).toBe(true);
+    });
+
+    describe('blockHasValue', () => {
+      it('returns true when block checker is not defined', () => {
+        expect(blockHasValue({ '@type': 'not-defined' })).toBe(true);
+        // const consoleSpy = jest
+        //   .spyOn(console, 'error')
+        //   .mockImplementation(() => {});
+        // expect(consoleSpy).toHaveBeenCalled();
+      });
+
+      it('returns true for text blocks with valid text', () => {
+        const textBlock = {
+          '@type': 'text',
+          text: {
+            blocks: [
+              {
+                data: {},
+                depth: 0,
+                entityRanges: [],
+                inlineStyleRanges: [],
+                key: 'cnh5c',
+                text: 'The block text content',
+                type: 'unstyled',
+              },
+            ],
+          },
+        };
+        expect(blockHasValue(textBlock)).toBe(true);
+      });
+
+      it('returns false for text blocks with empty text', () => {
+        const textBlock = {
+          '@type': 'text',
+          text: {
+            blocks: [
+              {
+                data: {},
+                depth: 0,
+                entityRanges: [],
+                inlineStyleRanges: [],
+                key: 'cnh5c',
+                text: '',
+                type: 'unstyled',
+              },
+            ],
+          },
+        };
+        expect(blockHasValue(textBlock)).toBe(false);
+      });
     });
   });
 

@@ -17,6 +17,7 @@ const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const fs = require('fs');
 const { map, has } = require('lodash');
 const glob = require('glob').sync;
+const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const RootResolverPlugin = require('./webpack-root-resolver');
 const createAddonsLoader = require('./create-addons-loader');
 const AddonConfigurationRegistry = require('./addon-registry');
@@ -145,6 +146,21 @@ const defaultModify = (config, { target, dev }, webpack) => {
       },
     ],
   };
+
+  //  Prevent moment from loading all locales
+  config.plugins.push(
+    new MomentLocalesPlugin({
+      localesToKeep: [],
+    }),
+  )
+
+  //  Load only desired timezones
+  config.plugins.push(
+    new webpack.NormalModuleReplacementPlugin(
+      /moment-timezone\/data\/packed\/latest\.json/,
+      require.resolve('./timezone-definitions')
+    )
+  )
 
   if (dev) {
     config.plugins.unshift(
