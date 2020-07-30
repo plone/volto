@@ -123,15 +123,15 @@ const defaultModify = (config, { target, dev }, webpack) => {
     new MomentLocalesPlugin({
       localesToKeep: [],
     }),
-  )
+  );
 
   //  Load only desired timezones
   config.plugins.push(
     new webpack.NormalModuleReplacementPlugin(
       /moment-timezone\/data\/packed\/latest\.json/,
-      require.resolve('./timezone-definitions')
-    )
-  )
+      require.resolve('./timezone-definitions'),
+    ),
+  );
 
   if (dev) {
     config.plugins.unshift(
@@ -231,7 +231,8 @@ const defaultModify = (config, { target, dev }, webpack) => {
   config.resolve.plugins = [new RootResolverPlugin()];
 
   config.resolve.alias = {
-    ...registry.getCustomizationPaths(),
+    ...registry.getProjectCustomizationPaths(),
+    ...registry.getAddonCustomizationPaths(),
     ...config.resolve.alias,
     '../../theme.config$': `${projectRootPath}/theme/theme.config`,
     'volto-themes': `${registry.voltoPath}/theme/themes`,

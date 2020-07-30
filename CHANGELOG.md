@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Allow Volto projects to customize (via webpack resolve aliases) addons. Allow addons to customize Volto and other addons. Allow Volto projects to customize Volto in a `src/customizations/volto` folder, for better organization of the customizations folder. @tiberiuichim @sneridagh
+
 ### Bugfix
 
 ### Internal

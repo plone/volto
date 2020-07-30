@@ -4,15 +4,6 @@ const fs = require('fs');
 
 const { map } = require('lodash');
 
-// Addon specification:
-// - name
-// - isAddon
-// - modulePath
-// - packageJson
-// - packageContent (customizable files)
-// - extraConfigLoaders (function references)
-// - razzleExtender ({plugins, modify})
-
 function getPackageBasePath(base) {
   while (!fs.existsSync(`${base}/package.json`)) {
     base = path.join(base, '../');
@@ -28,6 +19,23 @@ function fromEntries(pairs) {
   return res;
 }
 
+/*
+ * A registry to discover and publish information about the structure of Volto
+ * projects and their addons.
+ *
+ * The registry builds information about both addons and other development
+ * packages, structured as an object with the following information:
+ *
+ * - name
+ * - isAddon (to distinguish addons from other Javascript development packages)
+ * - modulePath (the path that would be resolved from Javascript package name)
+ * - packageJson (the path to the addon's package.json file)
+ * - extraConfigLoaders (names for extra functions to be loaded from the addon
+ *   for configuration purposes)
+ * - razzleExtender (the path to the addon's razzle.extend.js path, to allow
+ *   addons to customize the webpack configuration)
+ *
+ */
 class AddonConfigurationRegistry {
   constructor(projectRootPath) {
     const packageJson = (this.packageJson = require(path.join(
@@ -174,17 +182,17 @@ class AddonConfigurationRegistry {
    * and separate folder for each addon, identified by its addon (package) name.
    *
    */
-  getCustomizationPaths() {
-    const customizations = {};
-    let { customizationPaths } = this.packageJson;
+  getCustomizationPaths(packageJson, rootPath) {
+    const aliases = {};
+    let { customizationPaths } = packageJson;
     if (!customizationPaths) {
       customizationPaths = ['src/customizations'];
     }
     customizationPaths.forEach((customizationPath) => {
-      const base = path.join(this.projectRootPath, customizationPath);
+      const base = path.join(rootPath, customizationPath);
       const reg = [];
 
-      // Addon customization, goes first
+      // All registered addon packages (in jsconfig.json and package.json:addons) can be customized
       Object.values(this.packages).forEach((addon) => {
         const { name, modulePath } = addon;
         if (fs.existsSync(path.join(base, name))) {
@@ -218,7 +226,7 @@ class AddonConfigurationRegistry {
           (filename) => {
             const targetPath = filename.replace(basePath, sourcePath);
             if (fs.existsSync(targetPath)) {
-              customizations[
+              aliases[
                 filename.replace(basePath, name).replace(/\.(js|jsx)$/, '')
               ] = path.resolve(filename);
             } else {
@@ -231,11 +239,35 @@ class AddonConfigurationRegistry {
       });
     });
 
-    return customizations;
+    return aliases;
   }
 
+  getProjectCustomizationPaths() {
+    return this.getCustomizationPaths(this.packageJson, this.projectRootPath);
+  }
+
+  /*
+   * Allow addons to customize Volto and other addons.
+   *
+   * We follow the same logic for overriding as the main `package.json:addons`.
+   * First declared addon gets overridden by subsequent declared addons. That
+   * means: customization in volto-addonA will potentially be rewritten by
+   * customizations in volto-addonB if the declaration in package.json is like:
+   * `addons:volto-addonA,volto-addonB`
+   *
+   */
   getAddonCustomizationPaths() {
-    return {};
+    let aliases = {};
+    this.getAddons().forEach((addon) => {
+      aliases = {
+        ...aliases,
+        ...this.getCustomizationPaths(
+          require(addon.packageJson),
+          getPackageBasePath(addon.modulePath),
+        ),
+      };
+    });
+    return aliases;
   }
 }
 
