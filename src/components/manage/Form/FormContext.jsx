@@ -50,7 +50,7 @@ export const useFormStateContext = () => {
 };
 
 export const withFormStateContext = (WrappedComponent) => {
-  return class extends React.Component {
+  const Form = class extends React.Component {
     render() {
       return (
         <FormStateProvider initialValue={{}}>
@@ -59,6 +59,7 @@ export const withFormStateContext = (WrappedComponent) => {
               return (
                 <WrappedComponent
                   {...this.props}
+                  ref={this.props.formRef}
                   formStateContext={formStateContext}
                 />
               );
@@ -68,4 +69,6 @@ export const withFormStateContext = (WrappedComponent) => {
       );
     }
   };
+
+  return React.forwardRef((props, ref) => <Form {...props} formRef={ref} />);
 };
