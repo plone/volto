@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Fix click-select block on unknown block type @nileshgulia1
+
 ### Bugfix
 
 ### Internal
