@@ -2,16 +2,9 @@
 
 ## 7.5.2 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Added recurrence widget @giuliaghisini
-- Removed datepicker z-index @giuliaghisini
-
-### Bugfix
-
-### Internal
 
 ## 7.5.1 (2020-07-29)
 
