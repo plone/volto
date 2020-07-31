@@ -33,8 +33,8 @@
 }
 
 .ui.selection.active.dropdown .menu {
-  margin-top: 1px;
   border: none;
+  margin-top: 1px;
 
   &:hover {
     border: none;
@@ -60,6 +60,20 @@
 
 .ui.dropdown.multiple .menu .selected.item:hover {
   background: @subtleTransparentBlack;
+}
+
+.ui.dropdown.multiple .menu .item .label ~ .text {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.ui.dropdown.multiple .menu .item:hover:after {
+  position: absolute;
+  top: 50%;
+  right: 0.5em;
+  margin-top: -0.5em;
+  float: none;
 }
 
 .ui.dropdown .menu.left {

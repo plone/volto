@@ -9,6 +9,9 @@
 @fontName          : 'Poppins';
 
 @googleFontSizes   : '300,400,500,700,400italic,700italic';
+@toolbalWidth: 80px;
+@toolbalWidthMin: 20px;
+@fullSizeIcon: 36px;
 
 
 /*-------------------
@@ -112,6 +115,13 @@
 --------------------*/
 
 
+/*------------------
+     Animations
+--------------------*/
+
+@sidebarToggleButtonAnimationsDuration: 0.5s;
+@sidebarToggleButtonIterations: 4;
+
 /*-------------------
      Breakpoints
 --------------------*/
@@ -128,6 +138,7 @@
 @teal             : #517776; // Palette: slate
 @blue             : #007EB1; // Palette: Plone (tealBlue/cerulean)
 @pink             : #E40166; // Palette: darkHotPink
+@red              : @pink;
 @brown            : #826A6A; // Palette: reddishGrey
 @grey             : #68778D; // Palette: blueishGrey
 @black            : #252525; // Palette: darkishGrey
@@ -159,6 +170,8 @@
 @greyBorderColor      : #C7D5D8; // breadcrumbs border
 @lightGreyBorderColor : #EDF1F2; // breadcrumbs background
 
+@sidebarToggleButtonHighlightColor: @grey;
+
 /*-------------------
      Alpha Colors
 --------------------*/
@@ -168,6 +181,12 @@
        Accents
 --------------------*/
 
+
+/*-------------------
+      Opacities
+--------------------*/
+
+@sidebarToggleButtonNormalOpacity: 0.05;
 
 /*******************************
            Power-User
@@ -188,6 +207,10 @@
 /* Info */
 
 /* Warning */
+@warningBorderColor     : #F3E2AB;
+@warningBackgroundColor : #F3E2AB;
+@warningHeaderColor     : @black;
+@warningTextColor       : @black;
 
 
 /*-------------------

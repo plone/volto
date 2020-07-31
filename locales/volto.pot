@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2019-12-15T02:06:35.708Z\n"
+"POT-Creation-Date: 2020-06-29T13:46:51.194Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -35,14 +35,38 @@ msgstr ""
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
 # defaultMessage: Actions
 msgid "Actions"
 msgstr ""
 
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Activate and deactivate add-ons in the lists below.
+msgid "Activate and deactivate"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/UsersControlpanel
+#: components/manage/Toolbar/Toolbar
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Add
+msgid "Add"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see
+msgid "Add Addons"
+msgstr ""
+
 #: components/manage/Toolbar/Types
-# defaultMessage: Add Content...
+# defaultMessage: Add Content…
 msgid "Add Content"
+msgstr ""
+
+#: components/manage/Toolbar/Types
+# defaultMessage: Add Translation…
+msgid "Add Translation…"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
@@ -56,8 +80,18 @@ msgid "Add a description…"
 msgstr ""
 
 #: components/manage/Form/Form
-# defaultMessage: Add block...
-msgid "Add block..."
+# defaultMessage: Add block…
+msgid "Add block…"
+msgstr ""
+
+#: components/manage/Blocks/Listing/QuerystringWidget
+# defaultMessage: Add criteria
+msgid "Add criteria"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Add date
+msgid "Add date"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
@@ -73,6 +107,11 @@ msgstr ""
 #: components/manage/Controlpanels/UsersControlpanel
 # defaultMessage: Add group
 msgid "Add group"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Add new content type
+msgid "Add new content type"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
@@ -95,7 +134,20 @@ msgstr ""
 msgid "Add {type}"
 msgstr ""
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Add-ons Settings
+msgid "Add-ons Settings"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+# defaultMessage: Additional date
+msgid "Additional date"
+msgstr ""
+
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Alignment
 msgid "Alignment"
 msgstr ""
@@ -105,7 +157,8 @@ msgstr ""
 msgid "All"
 msgstr ""
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Alt text
 msgid "Alt text"
 msgstr ""
@@ -125,9 +178,18 @@ msgstr ""
 msgid "Ascending"
 msgstr ""
 
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Available
+msgid "Available"
+msgstr ""
+
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/DatabaseInformation
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Diff/Diff
@@ -136,6 +198,7 @@ msgstr ""
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
+#: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Back
 msgid "Back"
@@ -151,9 +214,19 @@ msgstr ""
 msgid "Block"
 msgstr ""
 
+#: components/manage/Blocks/Listing/ListingSidebar
+# defaultMessage: Block style
+msgid "Block style"
+msgstr ""
+
 #: components/theme/Login/Login
 # defaultMessage: Both email address and password are case sensitive, check that caps lock is not enabled.
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
+msgstr ""
+
+#: components/theme/Breadcrumbs/Breadcrumbs
+# defaultMessage: Breadcrumbs
+msgid "Breadcrumbs"
 msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
@@ -171,9 +244,16 @@ msgstr ""
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr ""
 
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Cache Name
+msgid "Cache Name"
+msgstr ""
+
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsToolbar
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Delete/Delete
 #: components/manage/Edit/Edit
@@ -188,6 +268,13 @@ msgstr ""
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Cell
 msgid "Cell"
+msgstr ""
+
+#: components/manage/Blocks/Image/ImageSizeWidget
+#: components/manage/Blocks/Maps/Edit
+#: helpers/AlignBlock/AlignBlock
+# defaultMessage: Center
+msgid "Center"
 msgstr ""
 
 #: components/manage/History/History
@@ -205,6 +292,11 @@ msgstr ""
 msgid "Change State"
 msgstr ""
 
+#: components/manage/Contents/ContentsWorkflowModal
+# defaultMessage: Change workflow state recursively
+msgid "Change workflow state recursively"
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -212,6 +304,7 @@ msgstr ""
 msgid "Changes saved"
 msgstr ""
 
+#: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
 # defaultMessage: Changes saved.
 msgid "Changes saved."
@@ -237,9 +330,24 @@ msgstr ""
 msgid "Choose Target"
 msgstr ""
 
+#: components/theme/View/ImageView
+# defaultMessage: Click to download full sized image
+msgid "Click to download full sized image"
+msgstr ""
+
+#: components/manage/Widgets/SelectWidget
+# defaultMessage: Close
+msgid "Close"
+msgstr ""
+
 #: components/theme/Navigation/Navigation
 # defaultMessage: Close menu
 msgid "Close menu"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Collection
+msgid "Collection"
 msgstr ""
 
 #: components/manage/Controlpanels/ModerateComments
@@ -265,6 +373,11 @@ msgstr ""
 msgid "Confirm password"
 msgstr ""
 
+#: components/theme/ConnectionRefused/ConnectionRefused
+# defaultMessage: Connection refused
+msgid "Connection refused"
+msgstr ""
+
 #: components/theme/Footer/Footer
 # defaultMessage: Contact
 msgid "Contact"
@@ -275,7 +388,28 @@ msgstr ""
 msgid "Contact form"
 msgstr ""
 
+#: components/manage/Blocks/Listing/Edit
+# defaultMessage: Contained items
+msgid "Contained items"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingSidebar
+# defaultMessage: Content
+msgid "Content"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Content type created
+msgid "Content type created"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Content type deleted
+msgid "Content type deleted"
+msgstr ""
+
 #: components/manage/Contents/Contents
+#: components/manage/Toolbar/Toolbar
 # defaultMessage: Contents
 msgid "Contents"
 msgstr ""
@@ -297,9 +431,24 @@ msgstr ""
 msgid "Copyright statement or other rights information on this item."
 msgstr ""
 
+#: components/manage/Contents/Contents
+# defaultMessage: Created on
+msgid "Created on"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Creator
+msgid "Creator"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: Creators
 msgid "Creators"
+msgstr ""
+
+#: components/manage/Blocks/Listing/QuerystringWidget
+# defaultMessage: Criteria
+msgid "Criteria"
 msgstr ""
 
 #: components/manage/Preferences/ChangePassword
@@ -314,7 +463,33 @@ msgstr ""
 msgid "Cut"
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Daily
+msgid "Daily"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Database Information
+msgid "Database Information"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Database Location
+msgid "Database Location"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Database Size
+msgid "Database Size"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Database main
+msgid "Database main"
+msgstr ""
+
 #: components/manage/Controlpanels/ModerateComments
+#: components/manage/Widgets/DatetimeWidget
 # defaultMessage: Date
 msgid "Date"
 msgstr ""
@@ -345,10 +520,15 @@ msgstr ""
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/UsersControlpanelGroups
 #: components/manage/Controlpanels/UsersControlpanelUser
 #: components/manage/Delete/Delete
+#: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/TextareaWidget
+#: components/manage/Widgets/TextWidget
+#: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/Comments
 # defaultMessage: Delete
 msgid "Delete"
@@ -357,6 +537,11 @@ msgstr ""
 #: components/manage/Controlpanels/UsersControlpanel
 # defaultMessage: Delete Group
 msgid "Delete Group"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Delete Type
+msgid "Delete Type"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
@@ -380,6 +565,7 @@ msgid "Descending"
 msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
@@ -423,6 +609,11 @@ msgstr ""
 msgid "Do you really want to delete the group {groupname}?"
 msgstr ""
 
+#: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Do you really want to delete type {typename}?
+msgid "Do you really want to delete the type {typename}?"
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 # defaultMessage: Do you really want to delete the user {username}?
 msgid "Do you really want to delete the user {username}?"
@@ -455,7 +646,10 @@ msgid "E-mail addresses do not match."
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ModerateComments
+#: components/manage/Toolbar/Toolbar
+#: components/manage/Widgets/CheckboxWidget
 #: components/theme/Comments/Comments
 # defaultMessage: Edit
 msgid "Edit"
@@ -476,6 +670,16 @@ msgstr ""
 msgid "Edit fieldset"
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Edit recurrence
+msgid "Edit recurrence"
+msgstr ""
+
+#: components/manage/Form/InlineForm
+# defaultMessage: Edit values
+msgid "Edit values"
+msgstr ""
+
 #: components/manage/Edit/Edit
 # defaultMessage: Edit {title}
 msgid "Edit {title}"
@@ -492,18 +696,23 @@ msgid "Email sent"
 msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
-# defaultMessage: Enter Map URL
-msgid "Enter Map URL"
+# defaultMessage: Embed code error, please follow the instructions and try again.
+msgid "Embed code error, please follow the instructions and try again."
+msgstr ""
+
+#: components/manage/Blocks/Maps/View
+# defaultMessage: Embeded Google Maps
+msgid "Embeded Google Maps"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: End Date
+msgid "End Date"
 msgstr ""
 
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 # defaultMessage: Enter URL or title
 msgid "Enter URL or title"
-msgstr ""
-
-#: components/manage/Blocks/Video/Edit
-# defaultMessage: Enter Video URL
-msgid "Enter Video URL"
 msgstr ""
 
 #: components/theme/Register/Register
@@ -516,6 +725,11 @@ msgstr ""
 #: components/theme/Register/Register
 # defaultMessage: Enter full name, e.g. John Smith.
 msgid "Enter full name, e.g. John Smith."
+msgstr ""
+
+#: components/manage/Blocks/Maps/Edit
+# defaultMessage: Enter map Embed Code
+msgid "Enter map Embed Code"
 msgstr ""
 
 #: components/manage/Preferences/ChangePassword
@@ -534,7 +748,10 @@ msgstr ""
 msgid "Enter your new password. Minimum 5 characters."
 msgstr ""
 
+#: components/manage/Add/Add
+#: components/manage/Edit/Edit
 #: components/manage/Form/Form
+#: components/manage/Form/InlineForm
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
@@ -547,14 +764,45 @@ msgstr ""
 msgid "Exclude from navigation"
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+# defaultMessage: Exclude this occurence
+msgid "Exclude this occurence"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Excluded from navigation
+msgid "Excluded from navigation"
+msgstr ""
+
+#: components/manage/Sidebar/Sidebar
+# defaultMessage: Expand sidebar
+msgid "Expand sidebar"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: Expiration Date
 msgid "Expiration Date"
 msgstr ""
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Contents/Contents
+# defaultMessage: Expiration date
+msgid "Expiration date"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Expired
+msgid "Expired"
+msgstr ""
+
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: External URL
 msgid "External URL"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: File
+msgid "File"
 msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
@@ -572,14 +820,40 @@ msgstr ""
 msgid "Filter…"
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+# defaultMessage: First
+msgid "First"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Fixed width table cells
 msgid "Fixed width table cells"
 msgstr ""
 
+#: components/manage/Contents/Contents
+# defaultMessage: Folder
+msgid "Folder"
+msgstr ""
+
+#: components/theme/Forbidden/Forbidden
+# defaultMessage: Forbidden
+msgid "Forbidden"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+# defaultMessage: Fourth
+msgid "Fourth"
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: From
 msgid "From"
+msgstr ""
+
+#: components/manage/Blocks/Maps/Edit
+#: helpers/AlignBlock/AlignBlock
+# defaultMessage: Full
+msgid "Full"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
@@ -599,6 +873,21 @@ msgstr ""
 msgid "GNU GPL license"
 msgstr ""
 
+#: components/manage/Sharing/Sharing
+# defaultMessage: Global role
+msgid "Global role"
+msgstr ""
+
+#: components/manage/Blocks/Maps/Edit
+# defaultMessage: Google Maps Embedded Block
+msgid "Google Maps Embedded Block"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
+# defaultMessage: Group
+msgid "Group"
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 # defaultMessage: Group created
 msgid "Group created"
@@ -612,6 +901,12 @@ msgstr ""
 #: components/manage/Controlpanels/UsersControlpanel
 # defaultMessage: Groups
 msgid "Groups"
+msgstr ""
+
+#: components/manage/History/History
+#: components/manage/Toolbar/More
+# defaultMessage: History
+msgid "History"
 msgstr ""
 
 #: components/manage/History/History
@@ -630,6 +925,11 @@ msgstr ""
 msgid "Home page"
 msgstr ""
 
+#: components/manage/Contents/Contents
+# defaultMessage: ID
+msgid "ID"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: If selected, this item will not appear in the navigation tree
 msgid "If selected, this item will not appear in the navigation tree"
@@ -641,6 +941,7 @@ msgid "If this date is in the future, the content will not show up in listings a
 msgstr ""
 
 #: components/theme/NotFound/NotFound
+#: components/theme/Unauthorized/Unauthorized
 # defaultMessage: If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}.
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr ""
@@ -655,11 +956,18 @@ msgstr ""
 msgid "If you you do not have an account here, head over to the {registrationform}."
 msgstr ""
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Image
 msgid "Image"
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+# defaultMessage: Include this occurence
+msgid "Include this occurence"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
 # defaultMessage: Info
 msgid "Info"
@@ -668,6 +976,11 @@ msgstr ""
 #: components/manage/Sharing/Sharing
 # defaultMessage: Inherit permissions from higher levels
 msgid "Inherit permissions from higher levels"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
+# defaultMessage: Inherited value
+msgid "Inherited value"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
@@ -690,6 +1003,46 @@ msgstr ""
 msgid "Insert row before"
 msgstr ""
 
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Install
+msgid "Install"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Installed
+msgid "Installed"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Installed version
+msgid "Installed version"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: days
+msgid "Interval Daily"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Month(s)
+msgid "Interval Monthly"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: week(s)
+msgid "Interval Weekly"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: year(s)
+msgid "Interval Yearly"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingData
+# defaultMessage: Item batch size
+msgid "Item batch size"
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: Item(s) copied.
 msgid "Item(s) copied."
@@ -706,6 +1059,11 @@ msgstr ""
 msgid "Item(s) pasted."
 msgstr ""
 
+#: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Items
+msgid "Items"
+msgstr ""
+
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 # defaultMessage: Items must be unique.
@@ -717,14 +1075,65 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+# defaultMessage: Last
+msgid "Last"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Last comment date
+msgid "Last comment date"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Last modified
 msgid "Last modified"
 msgstr ""
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Latest version
+msgid "Latest version"
+msgstr ""
+
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+# defaultMessage: Lead Image
+msgid "Lead Image"
+msgstr ""
+
+#: components/manage/Blocks/Image/ImageSizeWidget
+#: components/manage/Blocks/Maps/Edit
+#: helpers/AlignBlock/AlignBlock
+# defaultMessage: Left
+msgid "Left"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Link
+msgid "Link"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingSidebar
+# defaultMessage: Link more
+msgid "Link more"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingMore
+# defaultMessage: Link Title
+msgid "Link title"
+msgstr ""
+
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Listing/ListingMore
+#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Link to
 msgid "Link to"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingSidebar
+# defaultMessage: Listing
+msgid "Listing"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
@@ -744,6 +1153,11 @@ msgid "Log in"
 msgstr ""
 
 #: components/theme/Login/Login
+# defaultMessage: Login
+msgid "Login"
+msgstr ""
+
+#: components/theme/Login/Login
 # defaultMessage: Login Failed
 msgid "Login Failed"
 msgstr ""
@@ -758,14 +1172,14 @@ msgstr ""
 msgid "Make the table compact"
 msgstr ""
 
-#: components/manage/Blocks/Maps/Edit
-# defaultMessage: Embed code error, please follow the instructions and try again.
-msgid "Maps data error"
+#: components/manage/Blocks/Maps/MapsSidebar
+# defaultMessage: Map
+msgid "Map"
 msgstr ""
 
-#: components/manage/Blocks/Maps/Edit
-# defaultMessage: Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it.
-msgid "Maps instructions"
+#: components/manage/Blocks/Maps/MapsSidebar
+# defaultMessage: Maps URL
+msgid "Maps URL"
 msgstr ""
 
 #: components/theme/ContactForm/ContactForm
@@ -779,9 +1193,34 @@ msgstr ""
 msgid "Minimum length is {len}."
 msgstr ""
 
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Moderate Comments
+msgid "Moderate Comments"
+msgstr ""
+
 #: components/manage/Controlpanels/ModerateComments
 # defaultMessage: Moderate comments
 msgid "Moderate comments"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Monday and Friday
+msgid "Monday and Friday"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
+# defaultMessage: Day
+msgid "Month day"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Monthly
+msgid "Monthly"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: More
+msgid "More"
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
@@ -805,25 +1244,122 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
+#: error
+# defaultMessage: Navigate back
+msgid "Navigate back"
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: New password
 msgid "New password"
 msgstr ""
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: News Item
+msgid "News Item"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypes
+# defaultMessage: No
+msgid "No"
+msgstr ""
+
+#: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: No image selected
 msgid "No image selected"
 msgstr ""
 
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+# defaultMessage: No image set in Lead Image content field
+msgid "No image set in Lead Image content field"
+msgstr ""
+
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+# defaultMessage: No image set in image content field
+msgid "No image set in image content field"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingBody
+# defaultMessage: No items found in this container.
+msgid "No items found in this container."
+msgstr ""
+
+#: components/manage/Widgets/ObjectBrowserWidget
+# defaultMessage: No items selected
+msgid "No items selected"
+msgstr ""
+
+#: components/manage/Blocks/Maps/MapsSidebar
+# defaultMessage: No map selected
+msgid "No map selected"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+# defaultMessage: No occurences set
+msgid "No occurences set"
+msgstr ""
+
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
+# defaultMessage: No options
+msgid "No options"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 # defaultMessage: No results found.
 msgid "No results found."
 msgstr ""
 
+#: components/manage/Blocks/Listing/ListingData
+# defaultMessage: No selection
+msgid "No selection"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: This addon does not provide an uninstall profile.
+msgid "No uninstall profile"
+msgstr ""
+
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/ReferenceWidget
+#: components/manage/Widgets/SelectWidget
+# defaultMessage: No value
+msgid "No value"
+msgstr ""
+
+#: components/manage/Blocks/Video/VideoSidebar
+# defaultMessage: No video selected
+msgid "No video selected"
+msgstr ""
+
+#: components/manage/Workflow/Workflow
+# defaultMessage: No workflow
+msgid "No workflow"
+msgstr ""
+
 #: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsItem
 # defaultMessage: None
 msgid "None"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Number of active objects
+msgid "Number of active objects"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Object Size
+msgid "Object Size"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/EndField
+# defaultMessage: occurrence(s)
+msgid "Occurences"
 msgstr ""
 
 #: components/manage/Delete/Delete
@@ -831,7 +1367,10 @@ msgstr ""
 msgid "Ok"
 msgstr ""
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Open in a new tab
 msgid "Open in a new tab"
 msgstr ""
@@ -841,15 +1380,27 @@ msgstr ""
 msgid "Open menu"
 msgstr ""
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Origin
 msgid "Origin"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Page
+msgid "Page"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/theme/Login/Login
 # defaultMessage: Password
 msgid "Password"
+msgstr ""
+
+#: components/theme/PasswordReset/PasswordReset
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Password reset
+msgid "Password reset"
 msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
@@ -864,18 +1415,36 @@ msgid "Paste"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
+#: components/manage/Toolbar/Toolbar
 # defaultMessage: Personal Information
 msgid "Personal Information"
 msgstr ""
 
 #: components/manage/Preferences/PersonalPreferences
+#: components/manage/Toolbar/Toolbar
 # defaultMessage: Personal Preferences
 msgid "Personal Preferences"
+msgstr ""
+
+#: components/manage/Toolbar/More
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Personal tools
+msgid "Personal tools"
 msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first.
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
+msgstr ""
+
+#: components/manage/Blocks/Video/Edit
+# defaultMessage: Please enter a valid URL by deleting the block and adding a new video block.
+msgid "Please enter a valid URL by deleting the block and adding a new video block."
+msgstr ""
+
+#: components/manage/Blocks/Maps/Edit
+# defaultMessage: Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it.
+msgid "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
 msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
@@ -913,6 +1482,7 @@ msgstr ""
 msgid "Preferences"
 msgstr ""
 
+#: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Preview
 msgid "Preview"
@@ -927,6 +1497,11 @@ msgstr ""
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: Properties
 msgid "Properties"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Publication date
+msgid "Publication date"
 msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
@@ -951,6 +1526,21 @@ msgstr ""
 msgid "Rearrange items by…"
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget/EndField
+# defaultMessage: Ends
+msgid "Recurrence ends"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/EndField
+# defaultMessage: after
+msgid "Recurrence ends after"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/EndField
+# defaultMessage: on
+msgid "Recurrence ends on"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Reduce complexity
 msgid "Reduce complexity"
@@ -967,6 +1557,11 @@ msgstr ""
 msgid "Registration form"
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Remove
+msgid "Remove recurrence"
+msgstr ""
+
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 # defaultMessage: Rename
@@ -976,6 +1571,21 @@ msgstr ""
 #: components/manage/Contents/ContentsRenameModal
 # defaultMessage: Rename items
 msgid "Rename items"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Repeat
+msgid "Repeat"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Repeat every
+msgid "Repeat every"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Repeat on
+msgid "Repeat on"
 msgstr ""
 
 #: components/manage/Widgets/CheckboxWidget
@@ -995,14 +1605,41 @@ msgstr ""
 msgid "Required input is missing."
 msgstr ""
 
+#: components/manage/Blocks/Listing/ListingData
+# defaultMessage: Results limit
+msgid "Results limit"
+msgstr ""
+
+#: components/manage/Blocks/Listing/Edit
+# defaultMessage: Results preview
+msgid "Results preview"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingData
+# defaultMessage: Reversed order
+msgid "Reversed order"
+msgstr ""
+
 #: components/manage/History/History
 # defaultMessage: Revert to this revision
 msgid "Revert to this revision"
 msgstr ""
 
+#: components/manage/Contents/Contents
+# defaultMessage: Review state
+msgid "Review state"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Richtext
 msgid "Richtext"
+msgstr ""
+
+#: components/manage/Blocks/Image/ImageSizeWidget
+#: components/manage/Blocks/Maps/Edit
+#: helpers/AlignBlock/AlignBlock
+# defaultMessage: Right
+msgid "Right"
 msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
@@ -1016,7 +1653,8 @@ msgid "Roles"
 msgstr ""
 
 #: components/manage/Add/Add
-#: components/manage/Blocks/Video/Edit
+#: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form
@@ -1024,6 +1662,11 @@ msgstr ""
 #: components/manage/Sharing/Sharing
 # defaultMessage: Save
 msgid "Save"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Save
+msgid "Save recurrence"
 msgstr ""
 
 #: components/theme/SearchWidget/SearchWidget
@@ -1047,8 +1690,8 @@ msgid "Search for user or group"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
-# defaultMessage: Search group...
-msgid "Search group..."
+# defaultMessage: Search group…
+msgid "Search group…"
 msgstr ""
 
 #: components/theme/Search/Search
@@ -1062,8 +1705,18 @@ msgid "Search results for {term}"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
-# defaultMessage: Search users...
-msgid "Search users..."
+# defaultMessage: Search users…
+msgid "Search users…"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+# defaultMessage: Second
+msgid "Second"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Select a date to add to recurrence
+msgid "Select a date to add to recurrence"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -1071,9 +1724,29 @@ msgstr ""
 msgid "Select columns to show"
 msgstr ""
 
+#: components/manage/Widgets/QuerystringWidget
+# defaultMessage: Select criteria
+msgid "Select criteria"
+msgstr ""
+
 #: components/manage/Contents/ContentsWorkflowModal
 # defaultMessage: Select the transition to be used for modifying the items state.
 msgid "Select the transition to be used for modifying the items state."
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+# defaultMessage: Selected dates
+msgid "Selected dates"
+msgstr ""
+
+#: components/manage/Sidebar/ObjectBrowserBody
+# defaultMessage: Selected items
+msgid "Selected items"
+msgstr ""
+
+#: components/manage/Sidebar/ObjectBrowserBody
+# defaultMessage: of
+msgid "Selected items - x of y"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
@@ -1082,6 +1755,9 @@ msgid "Selection"
 msgstr ""
 
 #: components/manage/Contents/Contents
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
 # defaultMessage: Select…
 msgid "Select…"
 msgstr ""
@@ -1099,6 +1775,12 @@ msgstr ""
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Set your password
 msgid "Set your password"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
+#: components/manage/Toolbar/More
+# defaultMessage: Sharing
+msgid "Sharing"
 msgstr ""
 
 #: components/manage/Sharing/Sharing
@@ -1122,6 +1804,21 @@ msgstr ""
 msgid "Short name"
 msgstr ""
 
+#: components/theme/Pagination/Pagination
+# defaultMessage: Show
+msgid "Show"
+msgstr ""
+
+#: components/manage/Sidebar/Sidebar
+# defaultMessage: Shrink sidebar
+msgid "Shrink sidebar"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Shrink toolbar
+msgid "Shrink toolbar"
+msgstr ""
+
 #: components/theme/Login/Login
 # defaultMessage: Sign in to start session
 msgid "Sign in to start session"
@@ -1133,6 +1830,7 @@ msgid "Site"
 msgstr ""
 
 #: components/theme/NotFound/NotFound
+#: components/theme/Unauthorized/Unauthorized
 # defaultMessage: Site Administration
 msgid "Site Administration"
 msgstr ""
@@ -1148,9 +1846,55 @@ msgstr ""
 msgid "Site Setup"
 msgstr ""
 
+#: components/theme/Sitemap/Sitemap
+# defaultMessage: Sitemap
+msgid "Sitemap"
+msgstr ""
+
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: Size
+msgid "Size"
+msgstr ""
+
+#: components/theme/View/ImageView
+# defaultMessage: Size: {size}
+msgid "Size: {size}"
+msgstr ""
+
+#: error
+# defaultMessage: Sorry, something went wrong with your request 
+msgid "Sorry, something went wrong with your request"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingData
+# defaultMessage: Sort on
+msgid "Sort on"
+msgstr ""
+
+#: components/manage/Blocks/HTML/Edit
+#: components/manage/Blocks/Listing/ListingData
+# defaultMessage: Source
+msgid "Source"
+msgstr ""
+
 #: components/manage/Blocks/Video/Edit
 # defaultMessage: Specify a youtube video or playlist url
 msgid "Specify a youtube video or playlist url"
+msgstr ""
+
+#: components/manage/Diff/Diff
+# defaultMessage: Split
+msgid "Split"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Start Date
+msgid "Start Date"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+# defaultMessage: Start of the recurrence
+msgid "Start of the recurrence"
 msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
@@ -1182,6 +1926,7 @@ msgstr ""
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
@@ -1201,6 +1946,11 @@ msgstr ""
 msgid "Table color inverted"
 msgstr ""
 
+#: components/manage/Blocks/ToC/View
+# defaultMessage: Table of Contents
+msgid "Table of Contents"
+msgstr ""
+
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsTagsModal
 # defaultMessage: Tags
@@ -1217,19 +1967,52 @@ msgstr ""
 msgid "Tags to remove"
 msgstr ""
 
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Target memory size per cache in bytes
+msgid "Target memory size per cache in bytes"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Target number of objects in memory per cache
+msgid "Target number of objects in memory per cache"
+msgstr ""
+
+#: components/manage/Blocks/Listing/TemplateWidget
+# defaultMessage: Template
+msgid "Template"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Text
 msgid "Text"
 msgstr ""
 
+#: components/theme/ConnectionRefused/ConnectionRefused
+#: components/theme/CorsError/CorsError
 #: components/theme/NotFound/NotFound
+#: components/theme/Unauthorized/Unauthorized
 # defaultMessage: Thank you.
 msgid "Thank you."
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: The Database Manager allow you to view database status information
+msgid "The Database Manager allow you to view database status information"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 # defaultMessage: The URL for your external home page, if you have one.
 msgid "The URL for your external home page, if you have one."
+msgstr ""
+
+#: components/theme/ConnectionRefused/ConnectionRefused
+# defaultMessage: The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable.
+msgid "The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable."
+msgstr ""
+
+#: components/theme/CorsError/CorsError
+# defaultMessage: The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources.
+msgid "The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources."
 msgstr ""
 
 #: components/theme/Register/Register
@@ -1247,10 +2030,25 @@ msgstr ""
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
 msgstr ""
 
+#: components/theme/CorsError/CorsError
+# defaultMessage: There is a configuration problem on the backend
+msgid "There is a configuration problem on the backend"
+msgstr ""
+
+#: components/manage/Form/InlineForm
+# defaultMessage: There were some errors
+msgid "There were some errors"
+msgstr ""
+
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 # defaultMessage: There were some errors.
 msgid "There were some errors."
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+# defaultMessage: Third
+msgid "Third"
 msgstr ""
 
 #: components/manage/Contents/ContentsRenameModal
@@ -1263,9 +2061,15 @@ msgstr ""
 msgid "This page does not seem to exist…"
 msgstr ""
 
+#: components/manage/Widgets/DatetimeWidget
+# defaultMessage: Time
+msgid "Time"
+msgstr ""
+
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
@@ -1279,10 +2083,46 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Total active and non-active objects
+msgid "Total active and non-active objects"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Total comments
+msgid "Total comments"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Total number of objects in each cache
+msgid "Total number of objects in each cache"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Total number of objects in memory from all caches
+msgid "Total number of objects in memory from all caches"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Total number of objects in the database
+msgid "Total number of objects in the database"
+msgstr ""
+
+#: components/manage/Toolbar/Types
+# defaultMessage: Translate to {lang}
+msgid "Translate to {lang}"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
 # defaultMessage: Type
 msgid "Type"
+msgstr ""
+
+#: components/manage/Blocks/Video/Edit
+# defaultMessage: Type a Video (YouTube, Vimeo or mp4) URL
+msgid "Type a Video (YouTube, Vimeo or mp4) URL"
 msgstr ""
 
 #: components/manage/Blocks/Text/Edit
@@ -1295,15 +2135,60 @@ msgstr ""
 msgid "Type the title…"
 msgstr ""
 
+#: components/manage/Contents/Contents
+# defaultMessage: UID
+msgid "UID"
+msgstr ""
+
+#: components/theme/Unauthorized/Unauthorized
+# defaultMessage: Unauthorized
+msgid "Unauthorized"
+msgstr ""
+
+#: components/manage/Diff/Diff
+# defaultMessage: Unified
+msgid "Unified"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Uninstall
+msgid "Uninstall"
+msgstr ""
+
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
 # defaultMessage: Unknown Block {block}
 msgid "Unknown Block"
 msgstr ""
 
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Update
+msgid "Update"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Update installed addons
+msgid "Update installed addons"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Update installed addons:
+msgid "Update installed addons:"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Updates available
+msgid "Updates available"
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: Upload
 msgid "Upload"
+msgstr ""
+
+#: components/manage/Blocks/LeadImage/Edit
+# defaultMessage: Upload a lead image in the 'Lead Image' content field.
+msgid "Upload a lead image in the 'Lead Image' content field."
 msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
@@ -1332,6 +2217,11 @@ msgstr ""
 msgid "Used for programmatic access to the fieldset."
 msgstr ""
 
+#: components/manage/Sharing/Sharing
+# defaultMessage: User
+msgid "User"
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 # defaultMessage: User created
 msgid "User created"
@@ -1352,6 +2242,12 @@ msgstr ""
 msgid "Users"
 msgstr ""
 
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/UsersControlpanel
+# defaultMessage: Users and Groups
+msgid "Users and Groups"
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 # defaultMessage: Users and groups settings
 msgid "Users and groups settings"
@@ -1360,6 +2256,16 @@ msgstr ""
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Version Overview
 msgid "Version Overview"
+msgstr ""
+
+#: components/manage/Blocks/Video/VideoSidebar
+# defaultMessage: Video
+msgid "Video"
+msgstr ""
+
+#: components/manage/Blocks/Video/VideoSidebar
+# defaultMessage: Video URL
+msgid "Video URL"
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
@@ -1382,14 +2288,53 @@ msgstr ""
 msgid "Viewmode"
 msgstr ""
 
+#: components/manage/Controlpanels/VersionOverview
+# defaultMessage: You are running in "debug mode". This mode is intended for sites that
+        are under development. This allows many configuration changes to be
+        immediately visible, but will make your site run more slowly. To turn
+        off debug mode, stop the server, set "debug-mode=off" in your
+        buildout.cfg, re-run bin/buildout and then restart the server process.
+msgid "Warning Regarding debug mode"
+msgstr ""
+
+#: components/theme/ConnectionRefused/ConnectionRefused
+# defaultMessage: We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later.
+msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later."
+msgstr ""
+
+#: components/theme/CorsError/CorsError
+# defaultMessage: We apologize for the inconvenience, but the backend of the site you are accessing is not configured properly right now. Please, try again later.
+msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not configured properly right now. Please, try again later."
+msgstr ""
+
 #: components/theme/NotFound/NotFound
 # defaultMessage: We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for.
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
 msgstr ""
 
+#: components/theme/Forbidden/Forbidden
+# defaultMessage: We apologize for the inconvenience, but you don't have permissions on this resource.
+msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
+msgstr ""
+
 #: components/manage/Preferences/PersonalInformation
 # defaultMessage: We will use this address if you need to recover your password
 msgid "We will use this address if you need to recover your password"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+# defaultMessage: The
+msgid "Weeek day of month"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Weekday
+msgid "Weekday"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Weekly
+msgid "Weekly"
 msgstr ""
 
 #: components/manage/History/History
@@ -1415,6 +2360,27 @@ msgstr ""
 #: components/manage/Workflow/Workflow
 # defaultMessage: Workflow updated.
 msgid "Workflow updated."
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Yearly
+msgid "Yearly"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Yes
+msgid "Yes"
+msgstr ""
+
+#: components/theme/Unauthorized/Unauthorized
+# defaultMessage: You are trying to access a protected resource, please {login} first.
+msgid "You are trying to access a protected resource, please {login} first."
+msgstr ""
+
+#: components/theme/OutdatedBrowser/OutdatedBrowser
+# defaultMessage: You are using an outdated browser
+msgid "You are using an outdated browser"
 msgstr ""
 
 #: components/theme/Comments/Comments
@@ -1467,6 +2433,16 @@ msgstr ""
 msgid "common"
 msgstr ""
 
+#: components/manage/Blocks/Block/Edit
+# defaultMessage: delete
+msgid "delete"
+msgstr ""
+
+#: components/theme/OutdatedBrowser/OutdatedBrowser
+# defaultMessage: You are using {browsername} {browserversion} which is deprecated by its vendor. That means that it does not get security updates and it is not ready for current modern web features, which deteriorates the user experience. Please upgrade to a modern browser.
+msgid "deprecated_browser_notice_message"
+msgstr ""
+
 #: config/Blocks
 # defaultMessage: Description
 msgid "description"
@@ -1480,6 +2456,51 @@ msgstr ""
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Your password reset request has been mailed. It should arrive in your mailbox shortly. When you receive the message, visit the address it contains to reset your password.
 msgid "description_sent_password"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Draft
+msgid "draft"
+msgstr ""
+
+#: components/theme/View/EventView
+# defaultMessage: All dates
+msgid "event_alldates"
+msgstr ""
+
+#: components/theme/View/EventView
+# defaultMessage: Attendees
+msgid "event_attendees"
+msgstr ""
+
+#: components/theme/View/EventView
+# defaultMessage: Contact Name
+msgid "event_contactname"
+msgstr ""
+
+#: components/theme/View/EventView
+# defaultMessage: Contact Phone
+msgid "event_contactphone"
+msgstr ""
+
+#: components/theme/View/EventView
+# defaultMessage: Website
+msgid "event_website"
+msgstr ""
+
+#: components/theme/View/EventView
+# defaultMessage: What
+msgid "event_what"
+msgstr ""
+
+#: components/theme/View/EventView
+# defaultMessage: When
+msgid "event_when"
+msgstr ""
+
+#: components/theme/View/EventView
+# defaultMessage: Where
+msgid "event_where"
 msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
@@ -1502,9 +2523,29 @@ msgstr ""
 msgid "image"
 msgstr ""
 
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Intranet
+msgid "intranet"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: My email address is
 msgid "label_my_email_address_is"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Lead Image Field
+msgid "leadimage"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Listing
+msgid "listing"
+msgstr ""
+
+#: components/theme/Unauthorized/Unauthorized
+# defaultMessage: log in
+msgid "log in"
 msgstr ""
 
 #: config/Blocks
@@ -1522,9 +2563,220 @@ msgstr ""
 msgid "mostUsed"
 msgstr ""
 
+#: components/manage/Contents/ContentsItem
+# defaultMessage: No workflow state
+msgid "no workflow state"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
+#: components/manage/Widgets/RecurrenceWidget/ByYearField
+# defaultMessage: of the month
+msgid "of the month"
+msgstr ""
+
+#: error
+# defaultMessage: or try a different page.
+msgid "or try a different page."
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+# defaultMessage: others
+msgid "others"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Private
+msgid "private"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Published
+msgid "published"
+msgstr ""
+
+#: components/manage/Blocks/Listing/QuerystringWidget
+# defaultMessage: Select…
+msgid "querystring-widget-select"
+msgstr ""
+
 #: components/theme/Login/Login
 # defaultMessage: registration form
 msgid "registration form"
+msgstr ""
+
+#: components/theme/Search/Search
+# defaultMessage: results
+msgid "results found"
+msgstr ""
+
+#: error
+# defaultMessage: return to the site root
+msgid "return to the site root"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: and
+msgid "rrule_and"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: (~approximate)
+msgid "rrule_approximate"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: at
+msgid "rrule_at"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: [month] [day], [year]
+msgid "rrule_dateFormat"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: day
+msgid "rrule_day"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: days
+msgid "rrule_days"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: every
+msgid "rrule_every"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: for
+msgid "rrule_for"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: hour
+msgid "rrule_hour"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: hours
+msgid "rrule_hours"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: in
+msgid "rrule_in"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: last
+msgid "rrule_last"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: minutes
+msgid "rrule_minutes"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: month
+msgid "rrule_month"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: months
+msgid "rrule_months"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: nd
+msgid "rrule_nd"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: on
+msgid "rrule_on"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: on the
+msgid "rrule_on the"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: or
+msgid "rrule_or"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: rd
+msgid "rrule_rd"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: st
+msgid "rrule_st"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: th
+msgid "rrule_th"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: the
+msgid "rrule_the"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: time
+msgid "rrule_time"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: times
+msgid "rrule_times"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: until
+msgid "rrule_until"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: week
+msgid "rrule_week"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: weekday
+msgid "rrule_weekday"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: weekdays
+msgid "rrule_weekdays"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: weeks
+msgid "rrule_weeks"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: year
+msgid "rrule_year"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: years
+msgid "rrule_years"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: sort
+msgid "sort"
 msgstr ""
 
 #: config/Blocks
@@ -1543,8 +2795,23 @@ msgid "title"
 msgstr ""
 
 #: config/Blocks
+# defaultMessage: Table of Contents
+msgid "toc"
+msgstr ""
+
+#: components/manage/Toolbar/PersonalTools
+# defaultMessage: user avatar
+msgid "user avatar"
+msgstr ""
+
+#: config/Blocks
 # defaultMessage: Video
 msgid "video"
+msgstr ""
+
+#: components/theme/View/EventView
+# defaultMessage: Visit external website
+msgid "visit_external_website"
 msgstr ""
 
 #: components/theme/Login/Login

@@ -6,7 +6,7 @@
 import {
   GET_VOCABULARY,
   GET_VOCABULARY_TOKEN_TITLE,
-} from '../../constants/ActionTypes';
+} from '@plone/volto/constants/ActionTypes';
 
 const initialState = {};
 
@@ -45,7 +45,7 @@ export default function vocabularies(state = initialState, action = {}) {
           loaded: true,
           loading: !!(vocabState.loading - 1),
           items: [
-            ...action.result.items.map(item => ({
+            ...action.result.items.map((item) => ({
               label: item.title,
               value: item.token,
             })),

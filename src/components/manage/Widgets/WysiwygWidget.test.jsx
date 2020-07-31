@@ -15,6 +15,10 @@ test('renders a wysiwyg widget component', () => {
       locale: 'en',
       messages: {},
     },
+    userSession: {
+      token:
+        'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTU4MjM0MzcyNSwiZnVsbG5hbWUiOm51bGx9.BxCvhI8qrtSYUbuTCJCe5TYo1jw8LXZC3gwd726O0UI',
+    },
   });
 
   const component = renderer.create(

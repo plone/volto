@@ -14,16 +14,20 @@ import { Container, Button, Table } from 'semantic-ui-react';
 import moment from 'moment';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import { deleteComment, searchContent } from '../../../actions';
-import { CommentEditModal, Icon, Toolbar } from '../../../components';
-import { getBaseUrl } from '../../../helpers';
+import { deleteComment, searchContent } from '@plone/volto/actions';
+import { CommentEditModal, Icon, Toolbar } from '@plone/volto/components';
+import { getBaseUrl } from '@plone/volto/helpers';
 
-import backSVG from '../../../icons/back.svg';
+import backSVG from '@plone/volto/icons/back.svg';
 
 const messages = defineMessages({
   back: {
     id: 'Back',
     defaultMessage: 'Back',
+  },
+  ModerateComments: {
+    id: 'Moderate comments',
+    defaultMessage: 'Moderate comments',
   },
 });
 
@@ -76,6 +80,7 @@ class ModerateComments extends Component {
       showEdit: false,
       editId: null,
       editText: null,
+      isClient: false,
     };
   }
 
@@ -89,6 +94,15 @@ class ModerateComments extends Component {
       portal_type: 'Discussion Item',
       fullobjects: true,
     });
+  }
+
+  /**
+   * Component did mount
+   * @method componentDidMount
+   * @returns {undefined}
+   */
+  componentDidMount() {
+    this.setState({ isClient: true });
   }
 
   /**
@@ -177,7 +191,9 @@ class ModerateComments extends Component {
           id={this.state.editId}
           text={this.state.editText}
         />
-        <Helmet title="Moderate comments" />
+        <Helmet
+          title={this.props.intl.formatMessage(messages.ModerateComments)}
+        />
         <Container>
           <article id="content">
             <header>
@@ -210,7 +226,7 @@ class ModerateComments extends Component {
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
-                  {this.props.items.map(item => (
+                  {this.props.items.map((item) => (
                     <Table.Row key={item['@id']}>
                       <Table.Cell>{item.author_name}</Table.Cell>
                       <Table.Cell>
@@ -249,25 +265,27 @@ class ModerateComments extends Component {
             </section>
           </article>
         </Container>
-        <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
-          <Toolbar
-            pathname={this.props.pathname}
-            hideDefaultViewButtons
-            inner={
-              <Link
-                to={`${getBaseUrl(this.props.pathname)}controlpanel`}
-                className="item"
-              >
-                <Icon
-                  name={backSVG}
-                  className="contents circled"
-                  size="30px"
-                  title={this.props.intl.formatMessage(messages.back)}
-                />
-              </Link>
-            }
-          />
-        </Portal>
+        {this.state.isClient && (
+          <Portal node={document.getElementById('toolbar')}>
+            <Toolbar
+              pathname={this.props.pathname}
+              hideDefaultViewButtons
+              inner={
+                <Link
+                  to={`${getBaseUrl(this.props.pathname)}controlpanel`}
+                  className="item"
+                >
+                  <Icon
+                    name={backSVG}
+                    className="contents circled"
+                    size="30px"
+                    title={this.props.intl.formatMessage(messages.back)}
+                  />
+                </Link>
+              }
+            />
+          </Portal>
+        )}
       </div>
     );
   }

@@ -1,11 +1,22 @@
 import React from 'react';
 import { CSSTransition } from 'react-transition-group';
-import ObjectBrowserBody from './ObjectBrowserBody';
+import ObjectBrowserBody from '@plone/volto/components/manage/Sidebar/ObjectBrowserBody';
 
 const DEFAULT_TIMEOUT = 500;
 
-const withObjectBrowser = WrappedComponent =>
+const withObjectBrowser = (WrappedComponent) =>
   class extends React.Component {
+    /**
+     * Default properties
+     * @property {Object} defaultProps Default properties.
+     * @static
+     */
+    static defaultProps = {
+      onChangeBlock: () => {},
+      data: {},
+      block: new Date().getTime() + '',
+    };
+
     constructor() {
       super();
       this.state = { isObjectBrowserOpen: false };
@@ -15,7 +26,7 @@ const withObjectBrowser = WrappedComponent =>
      * openObjectBrowser
      * @function openObjectBrowser
      * @param {Object} object ObjectBrowser configuration.
-     * @param {string} object.mode Quick mode, defaults to `image`.
+     * @param {string} object.mode Quick mode, defaults to `image`. Values: link, image, multiple
      * @param {string} object.dataName Name of the block data property to write the selected item.
      * @param {string} object.onSelectItem Function that will be called on item selection.
      *
@@ -41,12 +52,18 @@ const withObjectBrowser = WrappedComponent =>
       mode = 'image',
       onSelectItem = null,
       dataName = null,
+      propDataName = null,
+      selectableTypes,
+      maximumSelectionSize,
     } = {}) =>
       this.setState({
         isObjectBrowserOpen: true,
         mode,
         onSelectItem,
         dataName,
+        propDataName,
+        selectableTypes,
+        maximumSelectionSize,
       });
 
     closeObjectBrowser = () => this.setState({ isObjectBrowserOpen: false });
@@ -68,10 +85,17 @@ const withObjectBrowser = WrappedComponent =>
           >
             <ObjectBrowserBody
               {...this.props}
+              data={
+                this.state.propDataName
+                  ? this.props[this.state.propDataName]
+                  : this.props.data
+              }
               closeObjectBrowser={this.closeObjectBrowser}
               mode={this.state.mode}
               onSelectItem={this.state.onSelectItem}
               dataName={this.state.dataName}
+              selectableTypes={this.state.selectableTypes}
+              maximumSelectionSize={this.state.maximumSelectionSize}
             />
           </CSSTransition>
         </>

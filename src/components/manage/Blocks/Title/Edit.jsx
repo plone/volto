@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import { stateFromHTML } from 'draft-js-import-html';
 import { Editor, DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
 import { defineMessages, injectIntl } from 'react-intl';
+import { settings } from '~/config';
 
 const messages = defineMessages({
   title: {
@@ -142,7 +143,10 @@ class Edit extends Component {
         blockRenderMap={extendedBlockRenderMap}
         handleReturn={() => {
           this.props.onSelectBlock(
-            this.props.onAddBlock('text', this.props.index + 1),
+            this.props.onAddBlock(
+              settings.defaultBlockType,
+              this.props.index + 1,
+            ),
           );
           return 'handled';
         }}
@@ -152,11 +156,8 @@ class Edit extends Component {
           const selectionState = this.state.editorState.getSelection();
           const { editorState } = this.state;
           if (
-            editorState
-              .getCurrentContent()
-              .getBlockMap()
-              .first()
-              .getKey() === selectionState.getFocusKey()
+            editorState.getCurrentContent().getBlockMap().first().getKey() ===
+            selectionState.getFocusKey()
           ) {
             this.props.onFocusPreviousBlock(this.props.block, this.node);
           }
@@ -165,16 +166,13 @@ class Edit extends Component {
           const selectionState = this.state.editorState.getSelection();
           const { editorState } = this.state;
           if (
-            editorState
-              .getCurrentContent()
-              .getBlockMap()
-              .last()
-              .getKey() === selectionState.getFocusKey()
+            editorState.getCurrentContent().getBlockMap().last().getKey() ===
+            selectionState.getFocusKey()
           ) {
             this.props.onFocusNextBlock(this.props.block, this.node);
           }
         }}
-        ref={node => {
+        ref={(node) => {
           this.node = node;
         }}
       />

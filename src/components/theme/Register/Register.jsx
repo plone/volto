@@ -12,8 +12,8 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import { Form, Toast } from '../../../components';
-import { createUser } from '../../../actions';
+import { Form, Toast } from '@plone/volto/components';
+import { createUser } from '@plone/volto/actions';
 
 const messages = defineMessages({
   title: {
@@ -149,7 +149,7 @@ class Register extends Component {
   render() {
     return (
       <div id="page-register">
-        <Helmet title="Register" />
+        <Helmet title={this.props.intl.formatMessage(messages.register)} />
         <Form
           onSubmit={this.onSubmit}
           title={this.props.intl.formatMessage(messages.title)}
@@ -192,7 +192,7 @@ export default compose(
   withRouter,
   injectIntl,
   connect(
-    state => ({
+    (state) => ({
       loading: state.users.create.loading,
       loaded: state.users.create.loaded,
       error: state.users.create.error,

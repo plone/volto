@@ -10,8 +10,8 @@ import { compose } from 'redux';
 import { concat, merge, map } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 
-import { updateContent } from '../../../actions';
-import { ModalForm } from '../../../components';
+import { updateContent } from '@plone/volto/actions';
+import { ModalForm } from '@plone/volto/components';
 
 const messages = defineMessages({
   renameItems: {
@@ -96,7 +96,7 @@ class ContentsRenameModal extends Component {
    */
   onSubmit(data) {
     this.props.updateContent(
-      map(this.props.items, item => item.url),
+      map(this.props.items, (item) => item.url),
       map(this.props.items, (item, index) => ({
         id: data[`${index}_id`],
         title: data[`${index}_title`],
@@ -163,7 +163,7 @@ class ContentsRenameModal extends Component {
 export default compose(
   injectIntl,
   connect(
-    state => ({
+    (state) => ({
       request: state.content.update,
     }),
     { updateContent },

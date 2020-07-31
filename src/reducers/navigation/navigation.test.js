@@ -1,6 +1,6 @@
 import { settings } from '~/config';
 import navigation from './navigation';
-import { GET_NAVIGATION } from '../../constants/ActionTypes';
+import { GET_NAVIGATION } from '@plone/volto/constants/ActionTypes';
 
 describe('Navigation reducer', () => {
   it('should return the initial state', () => {

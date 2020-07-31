@@ -7,7 +7,10 @@ import { reducer as reduxAsyncConnect } from 'redux-connect';
 import { intlReducer } from 'react-intl-redux';
 
 import actions from '@plone/volto/reducers/actions/actions';
+import addons from '@plone/volto/reducers/addons/addons';
+import apierror from '@plone/volto/reducers/apierror/apierror';
 import breadcrumbs from '@plone/volto/reducers/breadcrumbs/breadcrumbs';
+import browserdetect from '@plone/volto/reducers/browserdetect/browserdetect';
 import comments from '@plone/volto/reducers/comments/comments';
 import content from '@plone/volto/reducers/content/content';
 import controlpanels from '@plone/volto/reducers/controlpanels/controlpanels';
@@ -20,6 +23,7 @@ import groups from '@plone/volto/reducers/groups/groups';
 import messages from '@plone/volto/reducers/messages/messages';
 import navigation from '@plone/volto/reducers/navigation/navigation';
 import querystring from '@plone/volto/reducers/querystring/querystring';
+import querystringsearch from '@plone/volto/reducers/querystringsearch/querystringsearch';
 import roles from '@plone/volto/reducers/roles/roles';
 import schema from '@plone/volto/reducers/schema/schema';
 import search from '@plone/volto/reducers/search/search';
@@ -30,6 +34,8 @@ import users from '@plone/volto/reducers/users/users';
 import userSession from '@plone/volto/reducers/userSession/userSession';
 import vocabularies from '@plone/volto/reducers/vocabularies/vocabularies';
 import workflow from '@plone/volto/reducers/workflow/workflow';
+import toolbar from '@plone/volto/reducers/toolbar/toolbar';
+import { addonReducers } from '~/config';
 
 /**
  * Root reducer.
@@ -42,7 +48,10 @@ const reducers = {
   intl: intlReducer,
   reduxAsyncConnect,
   actions,
+  addons,
+  apierror,
   breadcrumbs,
+  browserdetect,
   comments,
   content,
   controlpanels,
@@ -55,6 +64,7 @@ const reducers = {
   messages,
   navigation,
   querystring,
+  querystringsearch,
   roles,
   schema,
   search,
@@ -65,6 +75,8 @@ const reducers = {
   userSession,
   vocabularies,
   workflow,
+  toolbar,
+  ...addonReducers,
 };
 
 export default reducers;

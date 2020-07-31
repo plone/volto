@@ -5,7 +5,7 @@ import { connectRouter, routerMiddleware } from 'connected-react-router';
 
 import reducers from '~/reducers';
 
-import { api, crashReporter } from './middleware';
+import { api, crashReporter } from '@plone/volto/middleware';
 
 const configureStore = (initialState, history, apiHelper) => {
   const middlewares = composeWithDevTools(

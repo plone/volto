@@ -11,8 +11,8 @@ import upSVG from '@plone/volto/icons/up-key.svg';
 import downSVG from '@plone/volto/icons/down-key.svg';
 
 const BlockChooser = ({ currentBlock, onMutateBlock, intl }) => {
-  const mostUsedBlocks = filter(blocks.blocksConfig, item => item.mostUsed);
-  const groupedBlocks = groupBy(blocks.blocksConfig, item => item.group);
+  const mostUsedBlocks = filter(blocks.blocksConfig, (item) => item.mostUsed);
+  const groupedBlocks = groupBy(blocks.blocksConfig, (item) => item.group);
   const blocksAvailable = { mostUsed: mostUsedBlocks, ...groupedBlocks };
   const [activeIndex, setActiveIndex] = React.useState(0);
 
@@ -57,9 +57,9 @@ const BlockChooser = ({ currentBlock, onMutateBlock, intl }) => {
                 {map(
                   filter(
                     blocksAvailable[groupName.id],
-                    block => !block.restricted,
+                    (block) => !block.restricted,
                   ),
-                  block => (
+                  (block) => (
                     <Button.Group key={block.id}>
                       <Button
                         icon

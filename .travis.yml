@@ -1,22 +1,14 @@
 language: python
+python:
+  - "3.7"
+os: linux
 dist: xenial
-matrix:
-  include:
-    - name: 'Plone'
-      python: 3.7
-      env: TEST_SUITE=plone ZSERVER_PORT=55001
-    - name: 'Guillotina Tests'
-      python: 3.7
-      env: TEST_SUITE=guillotina
-    - name: 'Unit Tests'
-      env: TEST_SUITE=unit
 cache:
   pip: true
   yarn: true
   directories:
     - $HOME/buildout-cache
     - ~/.cache
-sudo: required
 addons:
   apt:
     packages:
@@ -29,35 +21,9 @@ addons:
       - libasound2
 before_install:
   - nvm install 12;
-  - if [ "$TEST_SUITE" == "plone" ]; then
-    mkdir -p $HOME/buildout-cache/{eggs,downloads};
-    mkdir $HOME/.buildout;
-    echo "[buildout]" > $HOME/.buildout/default.cfg;
-    echo "download-cache = $HOME/buildout-cache/downloads" >> $HOME/.buildout/default.cfg;
-    echo "eggs-directory = $HOME/buildout-cache/eggs" >> $HOME/.buildout/default.cfg;
-    fi
-
 install:
-  - if [ "$TEST_SUITE" == "plone" ]; then
-    make build-backend;
-    fi
   - yarn install --frozen-lockfile
   - yarn cy:install
 script:
-  - if [ "$TEST_SUITE" == "unit" ]; then
-    yarn run prettier &&
-    yarn run lint &&
-    yarn run code-analysis:i18n &&
-    yarn test:ci;
-    fi
-  - if [ "$TEST_SUITE" == "guillotina" ]; then
-    yarn ci:cypress:run:guillotina;
-    fi
-  - if [ "$TEST_SUITE" == "plone" ]; then
-    yarn ci:cypress:run;
-    fi
-after_success:
-  - if [ "$TEST_SUITE" == "plone" ]; then
-    yarn run bundlewatch;
-    yarn run bundlesize;
-    fi
+  - echo -e 'pcm.!default {\n type hw\n card 0\n}\n\nctl.!default {\n type hw\n card 0\n}' > ~/.asoundrc;
+  - yarn ci:cypress:run:guillotina;

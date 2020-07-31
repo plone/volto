@@ -18,10 +18,14 @@
   },
   "rules": {
     "import/no-unresolved": 1,
+    "no-alert": 1,
+    "no-debugger": 1,
     "prettier/prettier": [
       "error",
       { "trailingComma": "all", "singleQuote": true }
-    ]
+    ],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   },
   "settings": {
     "import/resolver": {
@@ -32,7 +36,8 @@
       "babel-plugin-root-import": {
         "rootPathSuffix": "src"
       }
-    }
+    },
+    "import/core-modules": [ "load-volto-addons" ]
   },
   "globals": {
     "root": true,

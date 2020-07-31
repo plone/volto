@@ -5,7 +5,7 @@
 
 import { flatten, keys, pickBy, isArray, map, mapKeys, merge } from 'lodash';
 
-import { GET_SCHEMA } from '../../constants/ActionTypes';
+import { GET_SCHEMA } from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
   error: null,
@@ -41,10 +41,10 @@ export default function schema(state = initialState, action = {}) {
           required: [
             ...action.result.required,
             ...flatten(
-              map(keys(pickBy(action.result.properties, isArray)), fieldset =>
+              map(keys(pickBy(action.result.properties, isArray)), (fieldset) =>
                 map(
                   action.result.definitions[fieldset].required,
-                  required => `${fieldset}.${required}`,
+                  (required) => `${fieldset}.${required}`,
                 ),
               ),
             ),
@@ -54,7 +54,7 @@ export default function schema(state = initialState, action = {}) {
             ...merge(
               ...map(
                 keys(pickBy(action.result.properties, isArray)),
-                fieldset =>
+                (fieldset) =>
                   mapKeys(
                     action.result.definitions[fieldset].properties,
                     (value, key) => `${fieldset}.${key}`,

@@ -12,9 +12,9 @@ import { Dropdown, Icon } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import { cut, copy, copyContent, moveContent } from '../../../actions';
-import { getBaseUrl } from '../../../helpers';
-import { ContentsRenameModal, Toast } from '../../../components';
+import { cut, copy, copyContent, moveContent } from '@plone/volto/actions';
+import { getBaseUrl } from '@plone/volto/helpers';
+import { ContentsRenameModal, Toast } from '@plone/volto/components';
 
 const messages = defineMessages({
   cut: {
@@ -228,7 +228,7 @@ class Actions extends Component {
       >
         <Dropdown.Menu>
           {this.props.actions.object_buttons &&
-            this.props.actions.object_buttons.map(item => {
+            this.props.actions.object_buttons.map((item) => {
               switch (item.id) {
                 case 'cut':
                   return (
@@ -304,7 +304,7 @@ class Actions extends Component {
 export default compose(
   injectIntl,
   connect(
-    state => ({
+    (state) => ({
       actions: state.actions.actions,
       action: state.clipboard.action,
       source: state.clipboard.source,

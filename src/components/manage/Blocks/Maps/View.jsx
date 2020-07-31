@@ -4,8 +4,16 @@
  */
 
 import React from 'react';
+import { defineMessages, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+
+const messages = defineMessages({
+  EmbededGoogleMaps: {
+    id: 'Embeded Google Maps',
+    defaultMessage: 'Embeded Google Maps',
+  },
+});
 
 /**
  * View image block class.
@@ -13,8 +21,8 @@ import cx from 'classnames';
  * @extends Component
  */
 
-const View = ({ data }) => (
-  <p
+const View = ({ data, intl }) => (
+  <div
     className={cx(
       'block maps align',
       {
@@ -24,19 +32,19 @@ const View = ({ data }) => (
     )}
   >
     <div
-      className={cx('video-inner', {
+      className={cx('maps-inner', {
         'full-width': data.align === 'full',
       })}
     >
       <iframe
-        title="Embeded Google Maps"
+        title={intl.formatMessage(messages.EmbededGoogleMaps)}
         src={data.url}
         className="google-map"
         frameBorder="0"
         allowFullScreen
       />
     </div>
-  </p>
+  </div>
 );
 
 /**
@@ -48,4 +56,4 @@ View.propTypes = {
   data: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
-export default View;
+export default injectIntl(View);

@@ -4,12 +4,12 @@
  */
 
 import React, { Component } from 'react';
+import { defineMessages, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
-import { Form, Grid, Label } from 'semantic-ui-react';
-import { isObject, map } from 'lodash';
+import { isObject, intersection } from 'lodash';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
-import AsyncPaginate from 'react-select-async-paginate';
-import CreatableSelect from 'react-select/creatable';
+import loadable from '@loadable/component';
 
 import {
   getVocabFromHint,
@@ -23,7 +23,27 @@ import {
   DropdownIndicator,
   selectTheme,
   customSelectStyles,
-} from './SelectStyling';
+} from '@plone/volto/components/manage/Widgets/SelectStyling';
+
+import { FormFieldWrapper } from '@plone/volto/components';
+
+const AsyncPaginate = loadable(() => import('react-select-async-paginate'));
+const CreatableSelect = loadable(() => import('react-select/creatable'));
+
+const messages = defineMessages({
+  select: {
+    id: 'Select…',
+    defaultMessage: 'Select…',
+  },
+  no_value: {
+    id: 'No value',
+    defaultMessage: 'No value',
+  },
+  no_options: {
+    id: 'No options',
+    defaultMessage: 'No options',
+  },
+});
 
 /**
  * ArrayWidget component class.
@@ -43,7 +63,9 @@ export class ArrayWidget extends Component {
     required: PropTypes.bool,
     error: PropTypes.arrayOf(PropTypes.string),
     getVocabulary: PropTypes.func.isRequired,
-    choices: PropTypes.arrayOf(PropTypes.object),
+    choices: PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+    ),
     loading: PropTypes.bool,
     items: PropTypes.shape({
       vocabulary: PropTypes.object,
@@ -56,6 +78,7 @@ export class ArrayWidget extends Component {
     ),
     onChange: PropTypes.func.isRequired,
     itemsTotal: PropTypes.number,
+    wrapped: PropTypes.bool,
   };
 
   /**
@@ -96,9 +119,9 @@ export class ArrayWidget extends Component {
     this.state = {
       search: '',
       selectedOption: props.value
-        ? props.value.map(item =>
+        ? props.value.map((item) =>
             isObject(item)
-              ? { label: item.title, value: item.token }
+              ? { label: item.title || item.token, value: item.token }
               : { label: item, value: item },
           )
         : [],
@@ -111,7 +134,11 @@ export class ArrayWidget extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    if (this.vocabBaseUrl) {
+    if (
+      !this.props.items?.choices &&
+      !this.props.choices &&
+      this.vocabBaseUrl
+    ) {
       this.props.getVocabulary(this.vocabBaseUrl);
     }
   }
@@ -136,16 +163,26 @@ export class ArrayWidget extends Component {
    * @returns {undefined}
    */
   loadOptions(search, previousOptions, additional) {
-    const offset = this.state.search !== search ? 0 : additional.offset;
-    this.props.getVocabulary(this.vocabBaseUrl, search, offset);
-    this.setState({ search });
-    return {
-      options: this.props.choices,
-      hasMore: this.props.itemsTotal > 25,
-      additional: {
-        offset: offset === additional.offset ? offset + 25 : offset,
-      },
-    };
+    let hasMore = this.props.itemsTotal > previousOptions.length;
+    if (hasMore) {
+      const offset = this.state.search !== search ? 0 : additional.offset;
+
+      this.props.getVocabulary(this.vocabBaseUrl, search, offset);
+      this.setState({ search });
+
+      return {
+        options:
+          intersection(previousOptions, this.props.choices).length ===
+          this.props.choices.length
+            ? []
+            : this.props.choices,
+        hasMore: hasMore,
+        additional: {
+          offset: offset === additional.offset ? offset + 25 : offset,
+        },
+      };
+    }
+    return null;
   }
 
   /**
@@ -157,9 +194,10 @@ export class ArrayWidget extends Component {
    */
   handleChange(selectedOption) {
     this.setState({ selectedOption });
+
     this.props.onChange(
       this.props.id,
-      selectedOption.map(item => item.value),
+      selectedOption ? selectedOption.map((item) => item.value) : null,
     );
   }
 
@@ -169,98 +207,95 @@ export class ArrayWidget extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { id, title, required, description, error, fieldSet } = this.props;
     const { selectedOption } = this.state;
+
     return (
-      <Form.Field
-        inline
-        required={required}
-        error={error.length > 0}
-        className={description ? 'help' : ''}
-        id={`${fieldSet || 'field'}-${id}`}
-      >
-        <Grid>
-          <Grid.Row stretched>
-            <Grid.Column width="4">
-              <div className="wrapper">
-                <label htmlFor={`field-${id}`}>{title}</label>
-              </div>
-            </Grid.Column>
-            <Grid.Column width="8">
-              {this.vocabBaseUrl ? (
-                <AsyncPaginate
-                  className="react-select-container"
-                  classNamePrefix="react-select"
-                  options={this.props.choices || []}
-                  styles={customSelectStyles}
-                  theme={selectTheme}
-                  components={{ DropdownIndicator, Option }}
-                  isMulti
-                  value={selectedOption || []}
-                  loadOptions={this.loadOptions}
-                  onChange={this.handleChange}
-                  additional={{
-                    offset: 25,
-                  }}
-                />
-              ) : (
-                <CreatableSelect
-                  className="react-select-container"
-                  classNamePrefix="react-select"
-                  options={
-                    this.props.choices
-                      ? [
-                          ...this.props.choices.map(option => ({
-                            value: option[0],
-                            label: option[1],
-                          })),
-                          { label: 'No value', value: 'no-value' },
-                        ]
-                      : []
-                  }
-                  styles={customSelectStyles}
-                  theme={selectTheme}
-                  components={{ DropdownIndicator, Option }}
-                  value={selectedOption || []}
-                  onChange={this.handleChange}
-                  isMulti
-                />
-              )}
-              {map(error, message => (
-                <Label key={message} basic color="red" pointing>
-                  {message}
-                </Label>
-              ))}
-            </Grid.Column>
-          </Grid.Row>
-          {description && (
-            <Grid.Row stretched>
-              <Grid.Column stretched width="12">
-                <p className="help">{description}</p>
-              </Grid.Column>
-            </Grid.Row>
-          )}
-        </Grid>
-      </Form.Field>
+      <FormFieldWrapper {...this.props}>
+        {!this.props.items?.choices && this.vocabBaseUrl ? (
+          <AsyncPaginate
+            className="react-select-container"
+            classNamePrefix="react-select"
+            options={this.props.choices || []}
+            styles={customSelectStyles}
+            theme={selectTheme}
+            components={{ DropdownIndicator, Option }}
+            isMulti
+            value={selectedOption || []}
+            loadOptions={this.loadOptions}
+            onChange={this.handleChange}
+            additional={{
+              offset: 25,
+            }}
+            placeholder={this.props.intl.formatMessage(messages.select)}
+            noOptionsMessage={() =>
+              this.props.intl.formatMessage(messages.no_options)
+            }
+          />
+        ) : (
+          <CreatableSelect
+            className="react-select-container"
+            classNamePrefix="react-select"
+            options={
+              this.props.choices
+                ? [
+                    ...this.props.choices.map((option) => ({
+                      value: option[0],
+                      label:
+                        // Fix "None" on the serializer, to remove when fixed in p.restapi
+                        option[1] !== 'None' && option[1]
+                          ? option[1]
+                          : option[0],
+                    })),
+                    {
+                      label: this.props.intl.formatMessage(messages.no_value),
+                      value: 'no-value',
+                    },
+                  ]
+                : [
+                    {
+                      label: this.props.intl.formatMessage(messages.no_value),
+                      value: 'no-value',
+                    },
+                  ]
+            }
+            styles={customSelectStyles}
+            theme={selectTheme}
+            components={{ DropdownIndicator, Option }}
+            value={selectedOption || []}
+            placeholder={this.props.intl.formatMessage(messages.select)}
+            onChange={this.handleChange}
+            isMulti
+          />
+        )}
+      </FormFieldWrapper>
     );
   }
 }
 
-export default connect(
-  (state, props) => {
-    const vocabBaseUrl =
-      getVocabFromHint(props) ||
-      getVocabFromField(props) ||
-      getVocabFromItems(props);
-    const vocabState = state.vocabularies[vocabBaseUrl];
-    if (vocabState) {
-      return {
-        choices: vocabState.items,
-        itemsTotal: vocabState.itemsTotal,
-        loading: Boolean(vocabState.loading),
-      };
-    }
-    return {};
-  },
-  { getVocabulary },
+export default compose(
+  injectIntl,
+  connect(
+    (state, props) => {
+      const vocabBaseUrl =
+        getVocabFromHint(props) ||
+        getVocabFromField(props) ||
+        getVocabFromItems(props);
+      const vocabState = state.vocabularies[vocabBaseUrl];
+      // If the schema already has the choices in it, then do not try to get the vocab,
+      // even if there is one
+      if (props.items?.choices) {
+        return {
+          choices: props.items.choices,
+        };
+      } else if (vocabState) {
+        return {
+          choices: vocabState.items,
+          itemsTotal: vocabState.itemsTotal,
+          loading: Boolean(vocabState.loading),
+        };
+      }
+      return {};
+    },
+    { getVocabulary },
+  ),
 )(ArrayWidget);

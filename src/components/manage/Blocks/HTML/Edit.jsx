@@ -9,12 +9,26 @@ import Editor from 'react-simple-code-editor';
 import { highlight, languages } from 'prismjs/components/prism-core';
 import 'prismjs/components/prism-markup';
 import { Button } from 'semantic-ui-react';
-import pretty from 'pretty';
+import loadable from '@loadable/component';
+import { defineMessages, injectIntl } from 'react-intl';
 
-import { Icon } from '../../../../components';
-import showSVG from '../../../../icons/show.svg';
-import clearSVG from '../../../../icons/clear.svg';
-import codeSVG from '../../../../icons/code.svg';
+import { Icon } from '@plone/volto/components';
+import showSVG from '@plone/volto/icons/show.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
+import codeSVG from '@plone/volto/icons/code.svg';
+
+const Pretty = loadable.lib(() => import('pretty'));
+
+const messages = defineMessages({
+  source: {
+    id: 'Source',
+    defaultMessage: 'Source',
+  },
+  preview: {
+    id: 'Preview',
+    defaultMessage: 'Preview',
+  },
+});
 
 /**
  * Edit html block class.
@@ -91,6 +105,8 @@ class Edit extends Component {
     this.setState({ code });
   }
 
+  pretty = React.createRef();
+
   /**
    * Preview mode handler
    * @method onPreview
@@ -99,7 +115,7 @@ class Edit extends Component {
   onPreview() {
     this.setState({
       isPreview: !this.state.isPreview,
-      code: pretty(this.state.code),
+      code: this.pretty.current.default(this.state.code),
     });
   }
 
@@ -120,13 +136,14 @@ class Edit extends Component {
   render() {
     return (
       <>
+        <Pretty ref={this.pretty} />
         {this.props.selected && !!this.state.code && (
           <div className="toolbar">
             <Button.Group>
               <Button
                 icon
                 basic
-                aria-label="Source"
+                aria-label={this.props.intl.formatMessage(messages.source)}
                 active={!this.state.isPreview}
                 onClick={this.onCodeEditor}
               >
@@ -137,7 +154,7 @@ class Edit extends Component {
               <Button
                 icon
                 basic
-                aria-label="Preview"
+                aria-label={this.props.intl.formatMessage(messages.preview)}
                 active={this.state.isPreview}
                 onClick={this.onPreview}
               >
@@ -159,11 +176,11 @@ class Edit extends Component {
           <Editor
             value={this.state.code}
             placeholder={`<p>Add some HTML here</p>`}
-            onValueChange={code => this.onChangeCode(code)}
-            highlight={code => highlight(code, languages.html)}
+            onValueChange={(code) => this.onChangeCode(code)}
+            highlight={(code) => highlight(code, languages.html)}
             padding={8}
             className="html-editor"
-            ref={node => {
+            ref={(node) => {
               this.codeEditor = node;
             }}
           />
@@ -173,4 +190,4 @@ class Edit extends Component {
   }
 }
 
-export default Edit;
+export default injectIntl(Edit);

@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
-import { Provider } from 'react-redux';
+import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
 
 import More from './More';
@@ -19,6 +19,10 @@ const mockStore = configureStore();
 describe('Toolbar More component', () => {
   it('renders a Toolbar More component', () => {
     const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
       actions: {
         actions: {
           document_actions: [],

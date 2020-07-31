@@ -4,17 +4,27 @@ import {
   GET_CONTROLPANEL,
   LIST_CONTROLPANELS,
   UPDATE_CONTROLPANEL,
-} from '../../constants/ActionTypes';
+} from '@plone/volto/constants/ActionTypes';
 
 describe('Controlpanels reducer', () => {
   it('should return the initial state', () => {
     expect(controlpanels()).toEqual({
+      delete: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
       get: {
         loaded: false,
         loading: false,
         error: null,
       },
       list: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
+      post: {
         loaded: false,
         loading: false,
         error: null,
@@ -26,6 +36,8 @@ describe('Controlpanels reducer', () => {
       },
       controlpanel: null,
       controlpanels: [],
+      systeminformation: null,
+      databaseinformation: null,
     });
   });
 

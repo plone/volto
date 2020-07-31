@@ -9,7 +9,7 @@ import {
   GET_GROUP,
   LIST_GROUPS,
   UPDATE_GROUP,
-} from '../../constants/ActionTypes';
+} from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
   create: {

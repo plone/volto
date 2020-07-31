@@ -5,19 +5,19 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from '@plone/volto/helpers';
 import { defineMessages, injectIntl } from 'react-intl';
 
 import { Container, Image } from 'semantic-ui-react';
 import { map } from 'lodash';
 
-import { settings, blocks } from '~/config';
+import { blocks } from '~/config';
 
 import {
   getBlocksFieldname,
   getBlocksLayoutFieldname,
   hasBlocksData,
-} from '../../../helpers';
+  getBaseUrl,
+} from '@plone/volto/helpers';
 
 const messages = defineMessages({
   unknownBlock: {
@@ -32,14 +32,13 @@ const messages = defineMessages({
  * @param {Object} content Content object.
  * @returns {string} Markup of the component.
  */
-const DefaultView = ({ content, intl }) => {
+const DefaultView = ({ content, intl, location }) => {
   const blocksFieldname = getBlocksFieldname(content);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
 
   return hasBlocksData(content) ? (
     <div id="page-document" className="ui container">
-      <Helmet title={content.title} />
-      {map(content[blocksLayoutFieldname].items, block => {
+      {map(content[blocksLayoutFieldname].items, (block) => {
         const Block =
           blocks.blocksConfig[content[blocksFieldname]?.[block]?.['@type']]?.[
             'view'
@@ -50,6 +49,7 @@ const DefaultView = ({ content, intl }) => {
             id={block}
             properties={content}
             data={content[blocksFieldname][block]}
+            path={getBaseUrl(location?.pathname || '')}
           />
         ) : (
           <div key={block}>
@@ -62,7 +62,6 @@ const DefaultView = ({ content, intl }) => {
     </div>
   ) : (
     <Container id="page-document">
-      <Helmet title={content.title} />
       <h1 className="documentFirstHeading">{content.title}</h1>
       {content.description && (
         <p className="documentDescription">{content.description}</p>
@@ -83,10 +82,7 @@ const DefaultView = ({ content, intl }) => {
       {content.text && (
         <div
           dangerouslySetInnerHTML={{
-            __html: content.text.data.replace(
-              /a href="([^"]*\.[^"]*)"/g,
-              `a href="${settings.apiPath}$1/download/file"`,
-            ),
+            __html: content.text.data,
           }}
         />
       )}

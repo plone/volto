@@ -8,6 +8,7 @@ import { Input, Segment } from 'semantic-ui-react';
 import { join } from 'lodash';
 import { searchContent } from '@plone/volto/actions';
 import { Icon } from '@plone/volto/components';
+import { flattenToAppURL } from '@plone/volto/helpers';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 
 import { settings } from '~/config';
@@ -19,20 +20,22 @@ import searchSVG from '@plone/volto/icons/zoom.svg';
 import linkSVG from '@plone/volto/icons/link.svg';
 import imageSVG from '@plone/volto/icons/image.svg';
 
-import ObjectBrowserNav from './ObjectBrowserNav';
+import ObjectBrowserNav from '@plone/volto/components/manage/Sidebar/ObjectBrowserNav';
 
 const messages = defineMessages({
   SearchInputPlaceholder: {
     id: 'Search content',
     defaultMessage: 'Search content',
   },
+  SelectedItems: {
+    id: 'Selected items',
+    defaultMessage: 'Selected items',
+  },
+  of: { id: 'Selected items - x of y', defaultMessage: 'of' },
 });
 
 function getParentURL(url) {
-  return (
-    `${join(url.split('/').slice(0, -1), '/')}`.replace(settings.apiPath, '') ||
-    '/'
-  );
+  return flattenToAppURL(`${join(url.split('/').slice(0, -1), '/')}`) || '/';
 }
 
 /**
@@ -49,13 +52,14 @@ class ObjectBrowserBody extends Component {
   static propTypes = {
     block: PropTypes.string.isRequired,
     mode: PropTypes.string.isRequired,
-    data: PropTypes.objectOf(PropTypes.any).isRequired,
+    data: PropTypes.any.isRequired,
     searchSubrequests: PropTypes.objectOf(PropTypes.any).isRequired,
     searchContent: PropTypes.func.isRequired,
     closeObjectBrowser: PropTypes.func.isRequired,
     onChangeBlock: PropTypes.func.isRequired,
     onSelectItem: PropTypes.func,
     dataName: PropTypes.string,
+    maximumSelectionSize: PropTypes.number,
   };
 
   /**
@@ -68,6 +72,8 @@ class ObjectBrowserBody extends Component {
     href: '',
     onSelectItem: null,
     dataName: null,
+    selectableTypes: [],
+    maximumSelectionSize: null,
   };
 
   /**
@@ -79,22 +85,37 @@ class ObjectBrowserBody extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentFolder: this.props.data.url
-        ? getParentURL(this.props.data.url)
-        : '/',
-      currentImageFolder: this.props.data.url
-        ? getParentURL(this.props.data.url)
-        : '/',
-      currentLinkFolder: this.props.data.href
-        ? getParentURL(this.props.data.href)
-        : '/',
+      currentFolder:
+        this.props.mode === 'multiple'
+          ? '/'
+          : this.props.data?.url
+          ? getParentURL(this.props.data.url)
+          : '/',
+      currentImageFolder:
+        this.props.mode === 'multiple'
+          ? '/'
+          : this.props.data?.url
+          ? getParentURL(this.props.data.url)
+          : '/',
+      currentLinkFolder:
+        this.props.mode === 'multiple'
+          ? '/'
+          : this.props.data?.href
+          ? getParentURL(this.props.data.href)
+          : '/',
       parentFolder: '',
-      selectedImage: this.props.data.url
-        ? this.props.data.url.replace(settings.apiPath, '')
-        : '',
-      selectedHref: this.props.data.href
-        ? this.props.data.href.replace(settings.apiPath, '')
-        : '',
+      selectedImage:
+        this.props.mode === 'multiple'
+          ? ''
+          : this.props.data?.url
+          ? flattenToAppURL(this.props.data.url)
+          : '',
+      selectedHref:
+        this.props.mode === 'multiple'
+          ? ''
+          : this.props.data?.href
+          ? flattenToAppURL(this.props.data.href)
+          : '',
       showSearchInput: false,
     };
   }
@@ -118,9 +139,13 @@ class ObjectBrowserBody extends Component {
     document.removeEventListener('mousedown', this.handleClickOutside, false);
   }
 
-  initialSearch = mode => {
+  initialSearch = (mode) => {
     const currentSelected =
-      mode === 'image' ? this.state.selectedImage : this.state.selectedHref;
+      mode === 'multiple'
+        ? ''
+        : mode === 'image'
+        ? this.state.selectedImage
+        : this.state.selectedHref;
     if (currentSelected) {
       this.props.searchContent(
         getParentURL(currentSelected),
@@ -128,6 +153,7 @@ class ObjectBrowserBody extends Component {
           'path.depth': 1,
           sort_on: 'getObjPositionInParent',
           metadata_fields: '_all',
+          b_size: 1000,
         },
         `${this.props.block}-${mode}`,
       );
@@ -138,13 +164,14 @@ class ObjectBrowserBody extends Component {
           'path.depth': 1,
           sort_on: 'getObjPositionInParent',
           metadata_fields: '_all',
+          b_size: 1000,
         },
         `${this.props.block}-${mode}`,
       );
     }
   };
 
-  getIcon = icon => {
+  getIcon = (icon) => {
     switch (icon) {
       case 'Folder':
         return <Icon name={folderSVG} size="24px" />;
@@ -159,7 +186,7 @@ class ObjectBrowserBody extends Component {
     }
   };
 
-  handleClickOutside = e => {
+  handleClickOutside = (e) => {
     if (
       this.objectBrowser &&
       doesNodeContainClick(this.objectBrowser.current, e)
@@ -170,13 +197,14 @@ class ObjectBrowserBody extends Component {
 
   objectBrowser = React.createRef();
 
-  navigateTo = id => {
+  navigateTo = (id) => {
     this.props.searchContent(
       id,
       {
         'path.depth': 1,
         sort_on: 'getObjPositionInParent',
         metadata_fields: '_all',
+        b_size: 1000,
       },
       `${this.props.block}-${this.props.mode}`,
     );
@@ -188,11 +216,11 @@ class ObjectBrowserBody extends Component {
   };
 
   toggleSearchInput = () =>
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       showSearchInput: !prevState.showSearchInput,
     }));
 
-  onSearch = e => {
+  onSearch = (e) => {
     const text = e.target.value;
     text.length > 2
       ? this.props.searchContent(
@@ -214,10 +242,12 @@ class ObjectBrowserBody extends Component {
         );
   };
 
-  onSelectItem = url => {
+  onSelectItem = (item) => {
+    const url = item['@id'];
+    const title = item.title;
     const { block, data, mode, dataName, onChangeBlock } = this.props;
 
-    const updateState = mode => {
+    const updateState = (mode) => {
       switch (mode) {
         case 'image':
           this.setState({
@@ -242,11 +272,12 @@ class ObjectBrowserBody extends Component {
         [dataName]: url,
       });
     } else if (this.props.onSelectItem) {
-      this.props.onSelectItem(url);
+      this.props.onSelectItem(url, item);
     } else if (mode === 'image') {
       onChangeBlock(block, {
         ...data,
-        url: `${settings.apiPath}${url}`,
+        url: item.getURL,
+        alt: title,
       });
     } else if (mode === 'link') {
       onChangeBlock(block, {
@@ -264,31 +295,59 @@ class ObjectBrowserBody extends Component {
     });
   };
 
-  handleClickOnItem = item => {
+  isSelectable = (item) => {
+    return this.props.selectableTypes.length > 0
+      ? this.props.selectableTypes.indexOf(item['@type']) >= 0
+      : true;
+  };
+
+  handleClickOnItem = (item) => {
     if (this.props.mode === 'image') {
       if (item.is_folderish) {
         this.navigateTo(item['@id']);
       }
       if (settings.imageObjects.includes(item['@type'])) {
-        this.onSelectItem(item['@id']);
+        this.onSelectItem(item);
       }
     } else {
-      this.onSelectItem(item['@id']);
+      if (this.isSelectable(item)) {
+        if (
+          !this.props.maximumSelectionSize ||
+          !this.props.data ||
+          this.props.data.length < this.props.maximumSelectionSize
+        ) {
+          this.onSelectItem(item);
+          let length = this.props.data ? this.props.data.length : 0;
+          if (length + 1 >= this.props.maximumSelectionSize) {
+            this.props.closeObjectBrowser();
+          }
+        } else {
+          this.props.closeObjectBrowser();
+        }
+      } else {
+        this.navigateTo(item['@id']);
+      }
     }
   };
 
-  handleDoubleClickOnItem = item => {
+  handleDoubleClickOnItem = (item) => {
     if (this.props.mode === 'image') {
       if (item.is_folderish) {
         this.navigateTo(item['@id']);
       }
       if (settings.imageObjects.includes(item['@type'])) {
-        this.onSelectItem(item['@id']);
+        this.onSelectItem(item);
         this.props.closeObjectBrowser();
       }
     } else {
-      this.onSelectItem(item['@id']);
-      this.props.closeObjectBrowser();
+      if (this.isSelectable(item)) {
+        if (this.props.data.length < this.props.maximumSelectionSize) {
+          this.onSelectItem(item);
+        }
+        this.props.closeObjectBrowser();
+      } else {
+        this.navigateTo(item['@id']);
+      }
     }
   };
 
@@ -301,7 +360,7 @@ class ObjectBrowserBody extends Component {
     return ReactDOM.createPortal(
       <aside
         role="presentation"
-        onClick={e => {
+        onClick={(e) => {
           e.stopPropagation();
         }}
         ref={this.objectBrowser}
@@ -360,7 +419,19 @@ class ObjectBrowserBody extends Component {
             </button>
           </header>
           <Segment secondary>{this.state.currentFolder}</Segment>
-
+          {this.props.mode === 'multiple' && (
+            <Segment className="infos">
+              {this.props.intl.formatMessage(messages.SelectedItems)}:{' '}
+              {this.props.data?.length}
+              {this.props.maximumSelectionSize && (
+                <>
+                  {' '}
+                  {this.props.intl.formatMessage(messages.of)}{' '}
+                  {this.props.maximumSelectionSize}
+                </>
+              )}
+            </Segment>
+          )}
           <ObjectBrowserNav
             currentSearchResults={
               this.props.searchSubrequests[
@@ -368,15 +439,23 @@ class ObjectBrowserBody extends Component {
               ]
             }
             selected={
-              this.props.mode === 'image'
-                ? this.state.selectedImage
-                : this.state.selectedHref
+              this.props.mode === 'multiple'
+                ? this.props.data
+                : [
+                    {
+                      '@id':
+                        this.props.mode === 'image'
+                          ? this.state.selectedImage
+                          : this.state.selectedHref,
+                    },
+                  ]
             }
             getIcon={this.getIcon}
             handleClickOnItem={this.handleClickOnItem}
             handleDoubleClickOnItem={this.handleDoubleClickOnItem}
             mode={this.props.mode}
             navigateTo={this.navigateTo}
+            isSelectable={this.isSelectable}
           />
         </Segment.Group>
       </aside>,
@@ -388,7 +467,7 @@ class ObjectBrowserBody extends Component {
 export default compose(
   injectIntl,
   connect(
-    state => ({
+    (state) => ({
       searchSubrequests: state.search.subrequests,
     }),
     { searchContent },

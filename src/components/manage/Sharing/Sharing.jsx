@@ -23,11 +23,11 @@ import {
 import jwtDecode from 'jwt-decode';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import { updateSharing, getSharing } from '../../../actions';
-import { getBaseUrl } from '../../../helpers';
-import { Icon as IconNext, Toolbar } from '../../../components';
+import { updateSharing, getSharing } from '@plone/volto/actions';
+import { getBaseUrl } from '@plone/volto/helpers';
+import { Icon as IconNext, Toolbar } from '@plone/volto/components';
 
-import backSVG from '../../../icons/back.svg';
+import backSVG from '@plone/volto/icons/back.svg';
 
 const messages = defineMessages({
   searchForUserOrGroup: {
@@ -49,6 +49,26 @@ const messages = defineMessages({
   back: {
     id: 'Back',
     defaultMessage: 'Back',
+  },
+  sharing: {
+    id: 'Sharing',
+    defaultMessage: 'Sharing',
+  },
+  user: {
+    id: 'User',
+    defaultMessage: 'User',
+  },
+  group: {
+    id: 'Group',
+    defaultMessage: 'Group',
+  },
+  globalRole: {
+    id: 'Global role',
+    defaultMessage: 'Global role',
+  },
+  inheritedValue: {
+    id: 'Inherited value',
+    defaultMessage: 'Inherited value',
   },
 });
 
@@ -114,6 +134,7 @@ class SharingComponent extends Component {
       search: '',
       inherit: props.inherit,
       entries: props.entries,
+      isClient: false,
     };
   }
 
@@ -124,6 +145,7 @@ class SharingComponent extends Component {
    */
   componentDidMount() {
     this.props.getSharing(getBaseUrl(this.props.pathname), this.state.search);
+    this.setState({ isClient: true });
   }
 
   /**
@@ -139,7 +161,7 @@ class SharingComponent extends Component {
     this.setState({
       inherit:
         this.props.inherit === null ? nextProps.inherit : this.state.inherit,
-      entries: map(nextProps.entries, entry => {
+      entries: map(nextProps.entries, (entry) => {
         const values = find(this.state.entries, { id: entry.id });
         return {
           ...entry,
@@ -217,7 +239,7 @@ class SharingComponent extends Component {
   onChange(event, { value }) {
     const [principal, role] = value.split('.');
     this.setState({
-      entries: map(this.state.entries, entry => ({
+      entries: map(this.state.entries, (entry) => ({
         ...entry,
         roles:
           entry.id === principal
@@ -247,7 +269,7 @@ class SharingComponent extends Component {
   render() {
     return (
       <Container id="page-sharing">
-        <Helmet title="Sharing" />
+        <Helmet title={this.props.intl.formatMessage(messages.sharing)} />
         <Segment.Group raised>
           <Segment className="primary">
             <FormattedMessage
@@ -283,7 +305,7 @@ class SharingComponent extends Component {
                   <Table.HeaderCell>
                     <FormattedMessage id="Name" defaultMessage="Name" />
                   </Table.HeaderCell>
-                  {this.props.available_roles.map(role => (
+                  {this.props.available_roles.map((role) => (
                     <Table.HeaderCell key={role.id}>
                       {role.title}
                     </Table.HeaderCell>
@@ -291,22 +313,28 @@ class SharingComponent extends Component {
                 </Table.Row>
               </Table.Header>
               <Table.Body>
-                {this.state.entries.map(entry => (
+                {this.state.entries.map((entry) => (
                   <Table.Row key={entry.id}>
                     <Table.Cell>
                       <Icon
                         name={entry.type === 'user' ? 'user' : 'users'}
-                        title={entry.type === 'user' ? 'User' : 'Group'}
+                        title={
+                          entry.type === 'user'
+                            ? this.props.intl.formatMessage(messages.user)
+                            : this.props.intl.formatMessage(messages.group)
+                        }
                       />{' '}
                       {entry.title}
                       {entry.login && ` (${entry.login})`}
                     </Table.Cell>
-                    {this.props.available_roles.map(role => (
+                    {this.props.available_roles.map((role) => (
                       <Table.Cell key={role.id}>
                         {entry.roles[role.id] === 'global' && (
                           <Icon
                             name="check circle outline"
-                            title="Global role"
+                            title={this.props.intl.formatMessage(
+                              messages.globalRole,
+                            )}
                             color="blue"
                           />
                         )}
@@ -314,7 +342,9 @@ class SharingComponent extends Component {
                           <Icon
                             name="check circle outline"
                             color="green"
-                            title="Inherited value"
+                            title={this.props.intl.formatMessage(
+                              messages.inheritedValue,
+                            )}
                           />
                         )}
                         {typeof entry.roles[role.id] === 'boolean' && (
@@ -379,22 +409,27 @@ class SharingComponent extends Component {
             </Segment>
           </Form>
         </Segment.Group>
-        <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
-          <Toolbar
-            pathname={this.props.pathname}
-            hideDefaultViewButtons
-            inner={
-              <Link to={`${getBaseUrl(this.props.pathname)}`} className="item">
-                <IconNext
-                  name={backSVG}
-                  className="contents circled"
-                  size="30px"
-                  title={this.props.intl.formatMessage(messages.back)}
-                />
-              </Link>
-            }
-          />
-        </Portal>
+        {this.state.isClient && (
+          <Portal node={document.getElementById('toolbar')}>
+            <Toolbar
+              pathname={this.props.pathname}
+              hideDefaultViewButtons
+              inner={
+                <Link
+                  to={`${getBaseUrl(this.props.pathname)}`}
+                  className="item"
+                >
+                  <IconNext
+                    name={backSVG}
+                    className="contents circled"
+                    size="30px"
+                    title={this.props.intl.formatMessage(messages.back)}
+                  />
+                </Link>
+              }
+            />
+          </Portal>
+        )}
       </Container>
     );
   }

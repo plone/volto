@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { isInternalURL, flattenToAppURL } from '../../helpers';
+import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
+import { isEmpty } from 'lodash';
 
 const styles = {
   code: {
@@ -30,10 +31,28 @@ const inline = {
   ),
 };
 
-const addBreaklines = children => children.map(child => [child, <br />]);
+const addBreaklines = (children) =>
+  children.map((child) => {
+    return child[1].map((child) => [
+      <React.Fragment key={child}>
+        {child}
+        <br />
+      </React.Fragment>,
+    ]);
+  });
+
+const splitBySoftLines = (children) =>
+  children.map((child) => {
+    return child.map((item) => {
+      if (Array.isArray(item)) {
+        return item[0].split('\n');
+      }
+      return item;
+    });
+  });
 
 // Returns how the default lists should be rendered
-const getList = ordered => (children, { depth, keys }) =>
+const getList = (ordered) => (children, { depth, keys }) =>
   ordered ? (
     <ol key={keys[0]} keys={keys} depth={depth}>
       {children.map((child, i) => (
@@ -60,17 +79,22 @@ const getList = ordered => (children, { depth, keys }) =>
 );
 */
 
-const getAtomic = (children, { data, keys }) =>
-  data.map((item, i) => <div key={keys[i]} {...data[i]} />);
+// Original recommended way to deal with atomics, this does not work with IMAGE
+// const getAtomic = (children, { data, keys }) =>
+//   data.map((item, i) => <div key={keys[i]} {...data[i]} />);
 
 /**
  * Note that children can be maped to render a list or do other cool stuff
  */
 const blocks = {
   unstyled: (children, { keys }) => {
-    const processedChildren = children.map(chunks =>
-      chunks.map(child => {
+    const processedChildren = children.map((chunks) =>
+      chunks.map((child) => {
         if (Array.isArray(child)) {
+          // If it's empty is a blank paragraph, we want to add a <br /> in it
+          if (isEmpty(child)) {
+            return <br />;
+          }
           return child.map((subchild, index) => {
             if (typeof subchild === 'string') {
               const last = subchild.split('\n').length - 1;
@@ -90,25 +114,47 @@ const blocks = {
       }),
     );
     return processedChildren.map(
-      chunk => chunk && <p key={keys[0]}>{chunk}</p>,
+      (chunk, index) => chunk && <p key={keys[index]}>{chunk}</p>,
     );
   },
-  atomic: getAtomic,
+  atomic: (children) => children[0],
   blockquote: (children, { keys }) => (
-    <blockquote key={keys[0]}>{addBreaklines(children)}</blockquote>
+    <blockquote key={keys[0]}>
+      {addBreaklines(splitBySoftLines(children))}
+    </blockquote>
   ),
   'header-one': (children, { keys }) =>
     children.map((child, i) => <h1 key={keys[i]}>{child}</h1>),
   'header-two': (children, { keys }) =>
-    children.map((child, i) => <h2 key={keys[i]}>{child}</h2>),
+    children.map((child, i) => (
+      <h2 id={keys[i]} key={keys[i]}>
+        {child}
+      </h2>
+    )),
   'header-three': (children, { keys }) =>
-    children.map((child, i) => <h3 key={keys[i]}>{child}</h3>),
+    children.map((child, i) => (
+      <h3 id={keys[i]} key={keys[i]}>
+        {child}
+      </h3>
+    )),
   'header-four': (children, { keys }) =>
-    children.map((child, i) => <h4 key={keys[i]}>{child}</h4>),
+    children.map((child, i) => (
+      <h4 id={keys[i]} key={keys[i]}>
+        {child}
+      </h4>
+    )),
   'header-five': (children, { keys }) =>
-    children.map((child, i) => <h5 key={keys[i]}>{child}</h5>),
+    children.map((child, i) => (
+      <h5 id={keys[i]} key={keys[i]}>
+        {child}
+      </h5>
+    )),
   'header-six': (children, { keys }) =>
-    children.map((child, i) => <h6 key={keys[i]}>{child}</h6>),
+    children.map((child, i) => (
+      <h6 id={keys[i]} key={keys[i]}>
+        {child}
+      </h6>
+    )),
   'code-block': (children, { keys }) => (
     <pre key={keys[0]} style={styles.codeBlock}>
       {addBreaklines(children)}
@@ -124,10 +170,10 @@ const blocks = {
     )),
 };
 
-const LinkEntity = connect(state => ({
+const LinkEntity = connect((state) => ({
   token: state.userSession.token,
-}))(({ token, key, url, target, download, children }) => {
-  const to = token ? url : target || url;
+}))(({ token, key, url, target = '_blank', targetUrl, download, children }) => {
+  const to = token ? url : targetUrl || url;
   if (download) {
     return token ? (
       <Link key={key} to={flattenToAppURL(to)}>
@@ -144,7 +190,7 @@ const LinkEntity = connect(state => ({
       {children}
     </Link>
   ) : (
-    <a key={key} href={to} target="_blank" rel="noopener noreferrer">
+    <a key={key} href={to} target={target} rel="noopener noreferrer">
       {children}
     </a>
   );

@@ -11,35 +11,48 @@ Cypress.Commands.add('autologin', () => {
     password = 'secret';
   }
 
-  cy.request({
-    method: 'POST',
-    url: `${api_url}/@login`,
-    headers: { Accept: 'application/json' },
-    body: { login: user, password: password },
-  }).then(response => cy.setCookie('auth_token', response.body.token));
+  return cy
+    .request({
+      method: 'POST',
+      url: `${api_url}/@login`,
+      headers: { Accept: 'application/json' },
+      body: { login: user, password: password },
+    })
+    .then((response) => cy.setCookie('auth_token', response.body.token));
 });
 
 // --- CREATE CONTENT --------------------------------------------------------
 Cypress.Commands.add(
   'createContent',
-  (contentType, contentId, contentTitle, path = '') => {
-    let api_url;
+  ({
+    contentType,
+    contentId,
+    contentTitle,
+    path = '',
+    allow_discussion = false,
+  }) => {
+    let api_url, auth;
     if (Cypress.env('API') === 'guillotina') {
       api_url = 'http://localhost:8081/db/container';
+      auth = {
+        user: 'root',
+        pass: 'root',
+      };
     } else {
       api_url = 'http://localhost:55001/plone';
+      auth = {
+        user: 'admin',
+        pass: 'secret',
+      };
     }
     if (contentType === 'File') {
-      cy.request({
+      return cy.request({
         method: 'POST',
         url: `${api_url}/${path}`,
         headers: {
           Accept: 'application/json',
         },
-        auth: {
-          user: 'admin',
-          pass: 'secret',
-        },
+        auth: auth,
         body: {
           '@type': contentType,
           id: contentId,
@@ -50,20 +63,18 @@ Cypress.Commands.add(
             filename: 'lorem.txt',
             'content-type': 'text/plain',
           },
+          allow_discussion: allow_discussion,
         },
       });
     }
     if (contentType === 'Image') {
-      cy.request({
+      return cy.request({
         method: 'POST',
         url: `${api_url}/${path}`,
         headers: {
           Accept: 'application/json',
         },
-        auth: {
-          user: 'admin',
-          pass: 'secret',
-        },
+        auth: auth,
         body: {
           '@type': contentType,
           id: contentId,
@@ -78,47 +89,105 @@ Cypress.Commands.add(
         },
       });
     }
-    if (contentType === 'Document' || contentType === 'News Item') {
-      cy.request({
-        method: 'POST',
-        url: `${api_url}/${path}`,
-        headers: {
-          Accept: 'application/json',
-        },
-        auth: {
-          user: 'admin',
-          pass: 'secret',
-        },
-        body: {
-          '@type': contentType,
-          id: contentId,
-          title: contentTitle,
-          blocks: {
-            'd3f1c443-583f-4e8e-a682-3bf25752a300': { '@type': 'title' },
-            '7624cf59-05d0-4055-8f55-5fd6597d84b0': { '@type': 'text' },
+    if (['Document', 'Folder', 'CMSFolder'].includes(contentType)) {
+      return cy
+        .request({
+          method: 'POST',
+          url: `${api_url}/${path}`,
+          headers: {
+            Accept: 'application/json',
           },
-          blocks_layout: {
-            items: [
-              'd3f1c443-583f-4e8e-a682-3bf25752a300',
-              '7624cf59-05d0-4055-8f55-5fd6597d84b0',
-            ],
+          auth: auth,
+          body: {
+            '@type': contentType,
+            id: contentId,
+            title: contentTitle,
+            blocks: {
+              'd3f1c443-583f-4e8e-a682-3bf25752a300': { '@type': 'title' },
+              '7624cf59-05d0-4055-8f55-5fd6597d84b0': { '@type': 'text' },
+            },
+            blocks_layout: {
+              items: [
+                'd3f1c443-583f-4e8e-a682-3bf25752a300',
+                '7624cf59-05d0-4055-8f55-5fd6597d84b0',
+              ],
+            },
+            allow_discussion: allow_discussion,
           },
-        },
-      });
+        })
+        .then(() => console.log(`${contentType} created`));
+    } else {
+      return cy
+        .request({
+          method: 'POST',
+          url: `${api_url}/${path}`,
+          headers: {
+            Accept: 'application/json',
+          },
+          auth: auth,
+          body: {
+            '@type': contentType,
+            id: contentId,
+            title: contentTitle,
+            allow_discussion: allow_discussion,
+          },
+        })
+        .then(() => console.log(`${contentType} created`));
     }
+  },
+);
+
+// --- SET WORKFLOW ----------------------------------------------------------
+Cypress.Commands.add(
+  'setWorkflow',
+  ({
+    path = '/',
+    actor = 'admin',
+    review_state = 'publish',
+    time = '1995-07-31T18:30:00',
+    title = '',
+    comment = '',
+    effective = '2018-01-21T08:00:00',
+    expires = '2019-01-21T08:00:00',
+    include_children = true,
+  }) => {
+    let api_url, auth;
+    api_url = 'http://localhost:55001/plone';
+    auth = {
+      user: 'admin',
+      pass: 'secret',
+    };
+    return cy.request({
+      method: 'POST',
+      url: `${api_url}/${path}/@workflow/${review_state}`,
+      headers: {
+        Accept: 'application/json',
+      },
+      auth: auth,
+      body: {
+        actor: actor,
+        review_state: review_state,
+        time: time,
+        title: title,
+        comment: comment,
+        effective: effective,
+        expires: expires,
+        include_children: include_children,
+      },
+    });
   },
 );
 
 Cypress.Commands.add('waitForResourceToLoad', (fileName, type) => {
   const resourceCheckInterval = 40;
 
-  return new Cypress.Promise(resolve => {
+  return new Cypress.Promise((resolve) => {
     const checkIfResourceHasBeenLoaded = () => {
       const resource = cy
         .state('window')
         .performance.getEntriesByType('resource')
-        .filter(entry => !type || entry.initiatorType === type)
-        .find(entry => entry.name.includes(fileName));
+        .filter((entry) => !type || entry.initiatorType === type)
+        .find((entry) => entry.name.includes(fileName));
 
       if (resource) {
         resolve();
@@ -131,4 +200,129 @@ Cypress.Commands.add('waitForResourceToLoad', (fileName, type) => {
 
     checkIfResourceHasBeenLoaded();
   });
+});
+
+// --- CREATE CONTENT --------------------------------------------------------
+Cypress.Commands.add('setRegistry', (record, value) => {
+  let api_url, auth;
+  api_url = 'http://localhost:55001/plone';
+  auth = {
+    user: 'admin',
+    pass: 'secret',
+  };
+
+  return cy.request({
+    method: 'PATCH',
+    url: `${api_url}/@registry/`,
+    headers: {
+      Accept: 'application/json',
+    },
+    auth: auth,
+    body: {
+      [record]: value,
+    },
+  });
+});
+
+// Low level command reused by `setSelection` and low level command `setCursor`
+Cypress.Commands.add('selection', { prevSubject: true }, (subject, fn) => {
+  cy.wrap(subject).trigger('mousedown').then(fn).trigger('mouseup');
+
+  cy.document().trigger('selectionchange');
+  return cy.wrap(subject);
+});
+
+Cypress.Commands.add(
+  'setSelection',
+  { prevSubject: true },
+  (subject, query, endQuery) => {
+    return cy.wrap(subject).selection(($el) => {
+      if (typeof query === 'string') {
+        const anchorNode = getTextNode($el[0], query);
+        const focusNode = endQuery ? getTextNode($el[0], endQuery) : anchorNode;
+        const anchorOffset = anchorNode.wholeText.indexOf(query);
+        const focusOffset = endQuery
+          ? focusNode.wholeText.indexOf(endQuery) + endQuery.length
+          : anchorOffset + query.length;
+        setBaseAndExtent(anchorNode, anchorOffset, focusNode, focusOffset);
+      } else if (typeof query === 'object') {
+        const el = $el[0];
+        const anchorNode = getTextNode(el.querySelector(query.anchorQuery));
+        const anchorOffset = query.anchorOffset || 0;
+        const focusNode = query.focusQuery
+          ? getTextNode(el.querySelector(query.focusQuery))
+          : anchorNode;
+        const focusOffset = query.focusOffset || 0;
+        setBaseAndExtent(anchorNode, anchorOffset, focusNode, focusOffset);
+      }
+    });
+  },
+);
+
+// Low level command reused by `setCursorBefore` and `setCursorAfter`, equal to `setCursorAfter`
+Cypress.Commands.add(
+  'setCursor',
+  { prevSubject: true },
+  (subject, query, atStart) => {
+    return cy.wrap(subject).selection(($el) => {
+      const node = getTextNode($el[0], query);
+      const offset =
+        node.wholeText.indexOf(query) + (atStart ? 0 : query.length);
+      const document = node.ownerDocument;
+      document.getSelection().removeAllRanges();
+      document.getSelection().collapse(node, offset);
+    });
+    // Depending on what you're testing, you may need to chain a `.click()` here to ensure
+    // further commands are picked up by whatever you're testing (this was required for Slate, for example).
+  },
+);
+
+Cypress.Commands.add(
+  'setCursorBefore',
+  { prevSubject: true },
+  (subject, query) => {
+    cy.wrap(subject).setCursor(query, true);
+  },
+);
+
+Cypress.Commands.add(
+  'setCursorAfter',
+  { prevSubject: true },
+  (subject, query) => {
+    cy.wrap(subject).setCursor(query);
+  },
+);
+
+// Helper functions
+function getTextNode(el, match) {
+  const walk = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null, false);
+  if (!match) {
+    return walk.nextNode();
+  }
+
+  const nodes = [];
+  let node;
+  while ((node = walk.nextNode())) {
+    if (node.wholeText.includes(match)) {
+      return node;
+    }
+  }
+}
+
+function setBaseAndExtent(...args) {
+  const document = args[0].ownerDocument;
+  document.getSelection().removeAllRanges();
+  document.getSelection().setBaseAndExtent(...args);
+}
+
+Cypress.Commands.add('navigate', (route = '') => {
+  return cy.window().its('appHistory').invoke('push', route);
+});
+
+Cypress.Commands.add('store', () => {
+  return cy.window().its('store').invoke('getStore', '');
+});
+
+Cypress.Commands.add('settings', (key, value) => {
+  return cy.window().its('settings');
 });

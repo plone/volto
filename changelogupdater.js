@@ -64,7 +64,7 @@ try {
   if (command === 'back') {
     const data = fs.readFileSync('CHANGELOG.md', 'utf8');
     const nextversion = semver.inc(process.argv[3], 'patch');
-    const backToDevelTemplate = `\n\n## ${nextversion} (unreleased)\n\n### Added\n\n### Changes`;
+    const backToDevelTemplate = `\n\n## ${nextversion} (unreleased)\n\n### Breaking\n\n### Feature\n\n### Bugfix\n\n### Internal`;
 
     const insertIndex = data.indexOf('\n\n');
     const back = `${data.slice(

@@ -5,7 +5,7 @@ Since Volto have its own set of default blocks, you should extend them by adding
 
 ## Configuring a new block
 
-So we add this lines to the `src/config.js`:
+So we add these lines to the `src/config.js`:
 
 ```js
 import MainSliderViewBlock from '@package/components/Blocks/MainSlider/View';
@@ -30,6 +30,11 @@ const customBlocks = {
       addPermission: [], // Future proof (not implemented yet) add user permission role(s)
       view: [], // Future proof (not implemented yet) view user role(s)
     },
+    blockHasValue: (data) => {
+      // Returns true if the provided block data represents a value for the current block. 
+      // Required for alternate default block types implementations. 
+      // See also [Settings reference](/configuration/settings-reference)
+    },
   },
 };
 
@@ -42,8 +47,8 @@ export const blocks = {
 We start by importing both view and edit components of our recently created custom block.
 
 !!! note
-Notice the `@package` alias.
-You can use it when importing modules/components from your own project.
+    Notice the `@package` alias.
+    You can use it when importing modules/components from your own project.
 
 Then you define the block, using the object described in the example.
 
@@ -66,13 +71,13 @@ Our new block should be ready to use in the editor.
 
 ## Other block options
 
-The configuration object also exposes this options
+The configuration object also exposes these options
 
-### requiredBlocks
+### requiredBlocks - The required (mandatory, cannot be removed) blocks
 
 This option is used to make the tiles not removable. By default, the Title block is not removable (you won't be able to delete it as the remove handler is not present).
 
-## groupBlocksOrder
+### groupBlocksOrder - The blocks chooser group order
 
 This option is used to define the order of the groups in the blocks chooser. By default:
 
@@ -86,3 +91,19 @@ const groupBlocksOrder = [
 ```
 
 You can change it (and add your own group) in your project configuration object.
+
+### initialBlocks - Initial Blocks per content type
+
+By default, the default blocks for all content types are a title block and a text block. You can override this and provide your own by modifying the configuration object:
+
+```js
+const initialBlocks = {};
+```
+
+and provide your own per content type, e.g:
+
+```js
+const initialBlocks = {
+    Document: ['leadimage', 'title', 'text', 'listing' ]
+};
+```

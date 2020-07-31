@@ -8,7 +8,7 @@ import { compact, concat, isArray, join, map, pickBy, toPairs } from 'lodash';
 import {
   RESET_SEARCH_CONTENT,
   SEARCH_CONTENT,
-} from '../../constants/ActionTypes';
+} from '@plone/volto/constants/ActionTypes';
 
 /**
  * Search content function.
@@ -20,13 +20,13 @@ import {
  */
 export function searchContent(url, options, subrequest = null) {
   let queryArray = [];
-  const arrayOptions = pickBy(options, item => isArray(item));
+  const arrayOptions = pickBy(options, (item) => isArray(item));
 
   queryArray = concat(
     queryArray,
     options
       ? join(
-          map(toPairs(pickBy(options, item => !isArray(item))), item => {
+          map(toPairs(pickBy(options, (item) => !isArray(item))), (item) => {
             if (item[0] === 'SearchableText') {
               // Adds the wildcard to the SearchableText param
               item[1] = `${item[1]}*`;
@@ -44,7 +44,7 @@ export function searchContent(url, options, subrequest = null) {
       ? join(
           map(pickBy(arrayOptions), (item, key) =>
             join(
-              item.map(value => `${key}:list=${value}`),
+              item.map((value) => `${key}:list=${value}`),
               '&',
             ),
           ),

@@ -4,12 +4,14 @@
  */
 import {
   Add,
+  AddonsControlpanel,
   App,
   ChangePassword,
   ContactForm,
   Contents,
   Controlpanel,
   Controlpanels,
+  CreateTranslation,
   Edit,
   Diff,
   Delete,
@@ -23,9 +25,14 @@ import {
   Register,
   RequestPasswordReset,
   Search,
+  Sitemap,
   Sharing,
   UsersControlpanel,
-} from './components';
+  ContentTypes,
+  ContentType,
+  DatabaseInformation,
+} from '@plone/volto/components';
+import { addonRoutes } from '~/config';
 
 /**
  * Default routes array.
@@ -47,6 +54,10 @@ export const defaultRoutes = [
     component: Logout,
   },
   {
+    path: '/sitemap',
+    component: Sitemap,
+  },
+  {
     path: '/search',
     component: Search,
   },
@@ -58,6 +69,22 @@ export const defaultRoutes = [
     path: '/controlpanel',
     exact: true,
     component: Controlpanels,
+  },
+  {
+    path: '/controlpanel/dexterity-types/:id',
+    component: ContentType,
+  },
+  {
+    path: '/controlpanel/dexterity-types',
+    component: ContentTypes,
+  },
+  {
+    path: '/controlpanel/addons',
+    component: AddonsControlpanel,
+  },
+  {
+    path: '/controlpanel/database',
+    component: DatabaseInformation,
   },
   {
     path: '/controlpanel/moderate-comments',
@@ -94,6 +121,10 @@ export const defaultRoutes = [
   {
     path: '/**/add',
     component: Add,
+  },
+  {
+    path: '/**/create-translation',
+    component: CreateTranslation,
   },
   {
     path: '/**/contents',
@@ -160,7 +191,11 @@ const routes = [
   {
     path: '/',
     component: App,
-    routes: defaultRoutes,
+    routes: [
+      // addon routes have a higher priority then default routes
+      ...(addonRoutes || []),
+      ...defaultRoutes,
+    ],
   },
 ];
 

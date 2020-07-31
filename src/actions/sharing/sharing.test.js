@@ -1,5 +1,8 @@
 import { updateSharing, getSharing } from './sharing';
-import { UPDATE_SHARING, GET_SHARING } from '../../constants/ActionTypes';
+import {
+  UPDATE_SHARING,
+  GET_SHARING,
+} from '@plone/volto/constants/ActionTypes';
 
 describe('Sharing action', () => {
   describe('updateSharing', () => {

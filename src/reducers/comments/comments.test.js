@@ -1,5 +1,5 @@
 import comments from './comments';
-import { ADD_COMMENT, LIST_COMMENTS } from '../../constants/ActionTypes';
+import { ADD_COMMENT, LIST_COMMENTS } from '@plone/volto/constants/ActionTypes';
 
 describe('Content reducer', () => {
   it('should return the initial state', () => {

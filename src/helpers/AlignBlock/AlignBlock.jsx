@@ -1,4 +1,5 @@
 import React from 'react';
+import { defineMessages, injectIntl } from 'react-intl';
 import { Icon } from '@plone/volto/components';
 import { Button } from 'semantic-ui-react';
 import imageLeftSVG from '@plone/volto/icons/image-left.svg';
@@ -6,7 +7,26 @@ import imageRightSVG from '@plone/volto/icons/image-right.svg';
 import imageFitSVG from '@plone/volto/icons/image-fit.svg';
 import imageFullSVG from '@plone/volto/icons/image-full.svg';
 
-const AlignBlock = ({ align, onChangeBlock, data, block }) => {
+const messages = defineMessages({
+  left: {
+    id: 'Left',
+    defaultMessage: 'Left',
+  },
+  right: {
+    id: 'Right',
+    defaultMessage: 'Right',
+  },
+  center: {
+    id: 'Center',
+    defaultMessage: 'Center',
+  },
+  full: {
+    id: 'Full',
+    defaultMessage: 'Full',
+  },
+});
+
+const AlignBlock = ({ align, onChangeBlock, data, intl, block }) => {
   /**
    * Align block handler
    * @method onAlignBlock
@@ -26,7 +46,7 @@ const AlignBlock = ({ align, onChangeBlock, data, block }) => {
         <Button
           icon
           basic
-          aria-label="Left"
+          aria-label={intl.formatMessage(messages.left)}
           onClick={() => onAlignBlock('left')}
           active={data.align === 'left'}
         >
@@ -37,7 +57,7 @@ const AlignBlock = ({ align, onChangeBlock, data, block }) => {
         <Button
           icon
           basic
-          aria-label="Right"
+          aria-label={intl.formatMessage(messages.right)}
           onClick={() => onAlignBlock('right')}
           active={data.align === 'right'}
         >
@@ -48,7 +68,7 @@ const AlignBlock = ({ align, onChangeBlock, data, block }) => {
         <Button
           icon
           basic
-          aria-label="Center"
+          aria-label={intl.formatMessage(messages.center)}
           onClick={() => onAlignBlock('center')}
           active={data.align === 'center' || !data.align}
         >
@@ -59,7 +79,7 @@ const AlignBlock = ({ align, onChangeBlock, data, block }) => {
         <Button
           icon
           basic
-          aria-label="Full"
+          aria-label={intl.formatMessage(messages.full)}
           onClick={() => onAlignBlock('full')}
           active={data.align === 'full'}
         >
@@ -70,4 +90,4 @@ const AlignBlock = ({ align, onChangeBlock, data, block }) => {
   );
 };
 
-export default AlignBlock;
+export default injectIntl(AlignBlock);

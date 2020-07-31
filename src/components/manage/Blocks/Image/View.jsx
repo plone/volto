@@ -7,9 +7,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import cx from 'classnames';
-import { settings } from '~/config';
 
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
 
 /**
  * View image block class.
@@ -32,26 +31,39 @@ const View = ({ data, detached }) => (
         {(() => {
           const image = (
             <img
-              className={cx({ 'full-width': data.align === 'full' })}
+              className={cx({
+                'full-width': data.align === 'full',
+                large: data.size === 'l',
+                medium: data.size === 'm',
+                small: data.size === 's',
+              })}
               src={
-                data.url.includes(settings.apiPath)
-                  ? `${flattenToAppURL(data.url)}/@@images/image`
+                isInternalURL(data.url)
+                  ? // Backwards compat in the case that the block is storing the full server URL
+                    (() => {
+                      if (data.size === 'l')
+                        return `${flattenToAppURL(data.url)}/@@images/image`;
+                      if (data.size === 'm')
+                        return `${flattenToAppURL(
+                          data.url,
+                        )}/@@images/image/preview`;
+                      if (data.size === 's')
+                        return `${flattenToAppURL(
+                          data.url,
+                        )}/@@images/image/mini`;
+                      return `${flattenToAppURL(data.url)}/@@images/image`;
+                    })()
                   : data.url
               }
               alt={data.alt || ''}
             />
           );
-          if (data.external) {
-            const isReallyExternal =
-              (data.external.startsWith('http') ||
-                data.external.startsWith('https')) &&
-              !data.external.includes(settings.apiPath);
-
-            if (isReallyExternal) {
+          if (data.href) {
+            if (!isInternalURL(data.href)) {
               return (
                 <a
                   target={data.openLinkInNewTab ? '_blank' : null}
-                  href={data.external}
+                  href={data.href}
                 >
                   {image}
                 </a>
@@ -59,22 +71,13 @@ const View = ({ data, detached }) => (
             } else {
               return (
                 <Link
-                  to={data.external.replace(settings.apiPath, '')}
+                  to={flattenToAppURL(data.href)}
                   target={data.openLinkInNewTab ? '_blank' : null}
                 >
                   {image}
                 </Link>
               );
             }
-          } else if (data.href) {
-            return (
-              <Link
-                to={data.href}
-                target={data.openLinkInNewTab ? '_blank' : null}
-              >
-                {image}
-              </Link>
-            );
           } else {
             return image;
           }

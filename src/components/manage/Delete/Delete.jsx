@@ -14,8 +14,8 @@ import { Button, Container, List, Segment } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import qs from 'query-string';
 
-import { deleteContent, getContent } from '../../../actions';
-import { Toolbar } from '../../../components';
+import { deleteContent, getContent } from '@plone/volto/actions';
+import { Toolbar } from '@plone/volto/components';
 
 const messages = defineMessages({
   delete: {
@@ -77,6 +77,7 @@ class Delete extends Component {
     super(props);
     this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.state = { isClient: false };
   }
 
   /**
@@ -101,6 +102,15 @@ class Delete extends Component {
           this.props.pathname.replace('/delete', '').replace(/\/[^/]*$/, ''),
       );
     }
+  }
+
+  /**
+   * Component did mount
+   * @method componentDidMount
+   * @returns {undefined}
+   */
+  componentDidMount() {
+    this.setState({ isClient: true });
   }
 
   /**
@@ -170,13 +180,15 @@ class Delete extends Component {
               </Segment>
             </Segment.Group>
           </Container>
-          <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
-            <Toolbar
-              pathname={this.props.pathname}
-              hideDefaultViewButtons
-              inner={<span />}
-            />
-          </Portal>
+          {this.state.isClient && (
+            <Portal node={document.getElementById('toolbar')}>
+              <Toolbar
+                pathname={this.props.pathname}
+                hideDefaultViewButtons
+                inner={<span />}
+              />
+            </Portal>
+          )}
         </div>
       );
     }

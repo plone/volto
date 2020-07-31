@@ -4,6 +4,7 @@
  */
 
 export default {
+  'dexterity-types': 'cube',
   'date-and-time': 'calendar',
   language: 'translate',
   mail: 'mail',
@@ -17,4 +18,5 @@ export default {
   'moderate-comments': 'comments',
   security: 'lock',
   users: 'users',
+  addons: 'add-on',
 };

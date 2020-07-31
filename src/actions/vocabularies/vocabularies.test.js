@@ -1,5 +1,5 @@
 import { getVocabulary } from './vocabularies';
-import { GET_VOCABULARY } from '../../constants/ActionTypes';
+import { GET_VOCABULARY } from '@plone/volto/constants/ActionTypes';
 
 describe('Vocabularies actions', () => {
   describe('getVocabulary', () => {

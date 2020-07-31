@@ -14,7 +14,9 @@ exports[`renders a view table component 1`] = `
         <td
           className=""
         >
-          <h2>
+          <h2
+            id="fgm98"
+          >
             My header
           </h2>
         </td>

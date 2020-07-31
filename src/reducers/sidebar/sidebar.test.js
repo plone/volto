@@ -1,5 +1,5 @@
 import sidebar from './sidebar';
-import { SET_SIDEBAR_TAB } from '../../constants/ActionTypes';
+import { SET_SIDEBAR_TAB } from '@plone/volto/constants/ActionTypes';
 
 describe('Sidebar reducer', () => {
   it('should return the initial state', () => {

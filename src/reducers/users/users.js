@@ -14,7 +14,7 @@ import {
   UPDATE_USER,
   INITIAL_PASSWORD,
   RESET_PASSWORD,
-} from '../../constants/ActionTypes';
+} from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
   user: {},

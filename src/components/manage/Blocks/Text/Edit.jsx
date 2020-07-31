@@ -13,11 +13,11 @@ import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import isSoftNewlineEvent from 'draft-js/lib/isSoftNewlineEvent';
 import { defineMessages, injectIntl } from 'react-intl';
 import { includes, isEqual } from 'lodash';
-
+import { filterEditorState } from 'draftjs-filters';
 import { settings } from '~/config';
 
-import { Icon, BlockChooser } from '../../../../components';
-import addSVG from '../../../../icons/circle-plus.svg';
+import { Icon, BlockChooser } from '@plone/volto/components';
+import addSVG from '@plone/volto/icons/circle-plus.svg';
 
 const messages = defineMessages({
   text: {
@@ -101,7 +101,8 @@ class Edit extends Component {
    */
   componentDidMount() {
     if (this.props.selected) {
-      this.node.focus();
+      // See https://github.com/draft-js-plugins/draft-js-plugins/issues/800
+      setTimeout(this.node.focus, 0);
     }
     document.addEventListener('mousedown', this.handleClickOutside, false);
   }
@@ -114,7 +115,8 @@ class Edit extends Component {
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (!this.props.selected && nextProps.selected) {
-      this.node.focus();
+      // See https://github.com/draft-js-plugins/draft-js-plugins/issues/800
+      setTimeout(this.node.focus, 0);
       this.setState({
         editorState: EditorState.moveFocusToEnd(this.state.editorState),
       });
@@ -122,14 +124,11 @@ class Edit extends Component {
   }
 
   /**
-   * Component will receive props
+   * Component will unmount
    * @method componentWillUnmount
    * @returns {undefined}
    */
   componentWillUnmount() {
-    if (this.props.selected) {
-      this.node.focus();
-    }
     document.removeEventListener('mousedown', this.handleClickOutside, false);
   }
 
@@ -140,12 +139,33 @@ class Edit extends Component {
    * @returns {undefined}
    */
   onChange(editorState) {
+    const shouldFilterPaste =
+      editorState.getLastChangeType() === 'insert-fragment';
+
     if (
       !isEqual(
         convertToRaw(editorState.getCurrentContent()),
         convertToRaw(this.state.editorState.getCurrentContent()),
       )
     ) {
+      if (shouldFilterPaste) {
+        let filteredState = editorState;
+        filteredState = filterEditorState(
+          {
+            blocks: ['unordered-list-item', 'ordered-list-item'],
+            styles: ['BOLD', 'ITALIC'],
+            entities: [
+              {
+                type: 'LINK',
+                attributes: ['url'],
+              },
+            ],
+            whitespacedCharacters: [],
+          },
+          filteredState,
+        );
+        editorState = filteredState;
+      }
       this.props.onChangeBlock(this.props.block, {
         ...this.props.data,
         text: convertToRaw(editorState.getCurrentContent()),
@@ -155,9 +175,9 @@ class Edit extends Component {
   }
 
   toggleAddNewBlock = () =>
-    this.setState(state => ({ addNewBlockOpened: !state.addNewBlockOpened }));
+    this.setState((state) => ({ addNewBlockOpened: !state.addNewBlockOpened }));
 
-  handleClickOutside = e => {
+  handleClickOutside = (e) => {
     if (
       this.props.blockNode.current &&
       doesNodeContainClick(this.props.blockNode.current, e)
@@ -191,8 +211,9 @@ class Edit extends Component {
           ]}
           blockRenderMap={settings.extendedBlockRenderMap}
           blockStyleFn={settings.blockStyleFn}
+          customStyleMap={settings.customStyleMap}
           placeholder={this.props.intl.formatMessage(messages.text)}
-          handleReturn={e => {
+          handleReturn={(e) => {
             if (isSoftNewlineEvent(e)) {
               this.onChange(
                 RichUtils.insertSoftNewline(this.state.editorState),
@@ -246,7 +267,7 @@ class Edit extends Component {
               this.props.onFocusNextBlock(this.props.block, this.node);
             }
           }}
-          ref={node => {
+          ref={(node) => {
             this.node = node;
           }}
         />

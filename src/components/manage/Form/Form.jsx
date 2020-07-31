@@ -5,7 +5,17 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { keys, map, mapValues, omit, uniq, without } from 'lodash';
+import {
+  findIndex,
+  isEmpty,
+  keys,
+  map,
+  mapValues,
+  omit,
+  pickBy,
+  uniq,
+  without,
+} from 'lodash';
 import move from 'lodash-move';
 import isBoolean from 'lodash/isBoolean';
 import {
@@ -20,16 +30,25 @@ import { defineMessages, injectIntl } from 'react-intl';
 import { v4 as uuid } from 'uuid';
 import { Portal } from 'react-portal';
 
-import { EditBlock, Icon, Field } from '../../../components';
-import { getBlocksFieldname, getBlocksLayoutFieldname } from '../../../helpers';
+import { EditBlock, Icon, Field } from '@plone/volto/components';
+import { settings } from '~/config';
+import dragSVG from '@plone/volto/icons/drag.svg';
+
+import {
+  getBlocksFieldname,
+  getBlocksLayoutFieldname,
+  difference,
+  blockHasValue,
+} from '@plone/volto/helpers';
 
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
+import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 
 const messages = defineMessages({
   addBlock: {
-    id: 'Add block...',
-    defaultMessage: 'Add block...',
+    id: 'Add block…',
+    defaultMessage: 'Add block…',
   },
   required: {
     id: 'Required input is missing.',
@@ -91,6 +110,7 @@ class Form extends Component {
     onCancel: PropTypes.func,
     submitLabel: PropTypes.string,
     resetAfterSubmit: PropTypes.bool,
+    isEditForm: PropTypes.bool,
     title: PropTypes.string,
     error: PropTypes.shape({
       message: PropTypes.string,
@@ -113,6 +133,7 @@ class Form extends Component {
     onCancel: null,
     submitLabel: null,
     resetAfterSubmit: false,
+    isEditForm: false,
     title: null,
     description: null,
     error: null,
@@ -140,33 +161,50 @@ class Form extends Component {
     const blocksFieldname = getBlocksFieldname(formData);
     const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
 
-    if (formData === null) {
-      // get defaults from schema
-      formData = mapValues(props.schema.properties, 'default');
+    if (!props.isEditForm) {
+      // It's a normal (add form), get defaults from schema
+      formData = {
+        ...mapValues(props.schema.properties, 'default'),
+        ...formData,
+      };
     }
     // defaults for block editor; should be moved to schema on server side
-    if (!formData[blocksLayoutFieldname]) {
-      formData[blocksLayoutFieldname] = {
-        items: [ids.title, ids.text],
-      };
-    }
-    if (!formData[blocksFieldname]) {
-      formData[blocksFieldname] = {
-        [ids.title]: {
-          '@type': 'title',
-        },
-        [ids.text]: {
-          '@type': 'text',
-        },
-      };
+    // Adding fallback in case the fields are empty, so we are sure that the edit form
+    // shows at least the default blocks
+    if (
+      formData.hasOwnProperty(blocksFieldname) &&
+      formData.hasOwnProperty(blocksLayoutFieldname)
+    ) {
+      if (
+        !formData[blocksLayoutFieldname] ||
+        isEmpty(formData[blocksLayoutFieldname].items)
+      ) {
+        formData[blocksLayoutFieldname] = {
+          items: [ids.title, ids.text],
+        };
+      }
+      if (!formData[blocksFieldname] || isEmpty(formData[blocksFieldname])) {
+        formData[blocksFieldname] = {
+          [ids.title]: {
+            '@type': 'title',
+          },
+          [ids.text]: {
+            '@type': settings.defaultBlockType,
+          },
+        };
+      }
     }
     this.state = {
       formData,
+      initialFormData: { ...formData },
       errors: {},
       selected:
+        formData.hasOwnProperty(blocksLayoutFieldname) &&
         formData[blocksLayoutFieldname].items.length > 0
           ? formData[blocksLayoutFieldname].items[0]
           : null,
+      placeholderProps: {},
+      isClient: false,
     };
     this.onChangeField = this.onChangeField.bind(this);
     this.onChangeBlock = this.onChangeBlock.bind(this);
@@ -179,6 +217,15 @@ class Form extends Component {
     this.onFocusPreviousBlock = this.onFocusPreviousBlock.bind(this);
     this.onFocusNextBlock = this.onFocusNextBlock.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
+  }
+
+  /**
+   * Component did mount
+   * @method componentDidMount
+   * @returns {undefined}
+   */
+  componentDidMount() {
+    this.setState({ isClient: true });
   }
 
   /**
@@ -197,6 +244,10 @@ class Form extends Component {
       },
     });
   }
+
+  hideHandler = (data) => {
+    return !blockHasValue(data);
+  };
 
   /**
    * Change block handler
@@ -239,7 +290,7 @@ class Form extends Component {
           ...this.state.formData[blocksFieldname],
           [id]: value || null,
           [idTrailingBlock]: {
-            '@type': 'text',
+            '@type': settings.defaultBlockType,
           },
         },
         [blocksLayoutFieldname]: {
@@ -317,7 +368,7 @@ class Form extends Component {
               insert,
             ),
             id,
-            ...(type !== 'text' ? [idTrailingBlock] : []),
+            ...(type !== settings.defaultBlockType ? [idTrailingBlock] : []),
             ...this.state.formData[blocksLayoutFieldname].items.slice(insert),
           ],
         },
@@ -326,9 +377,9 @@ class Form extends Component {
           [id]: {
             '@type': type,
           },
-          ...(type !== 'text' && {
+          ...(type !== settings.defaultBlockType && {
             [idTrailingBlock]: {
-              '@type': 'text',
+              '@type': settings.defaultBlockType,
             },
           }),
         },
@@ -350,8 +401,8 @@ class Form extends Component {
       event.preventDefault();
     }
     const errors = {};
-    map(this.props.schema.fieldsets, fieldset =>
-      map(fieldset.fields, fieldId => {
+    map(this.props.schema.fieldsets, (fieldset) =>
+      map(fieldset.fields, (fieldId) => {
         const field = this.props.schema.properties[fieldId];
         var data = this.state.formData[fieldId];
         if (typeof data === 'string' || data instanceof String) {
@@ -386,7 +437,13 @@ class Form extends Component {
         errors,
       });
     } else {
-      this.props.onSubmit(this.state.formData);
+      // Get only the values that have been modified (Edit forms), send all in case that
+      // it's an add form
+      if (this.props.isEditForm) {
+        this.props.onSubmit(this.getOnlyFormModifiedValues());
+      } else {
+        this.props.onSubmit(this.state.formData);
+      }
       if (this.props.resetAfterSubmit) {
         this.setState({
           formData: this.props.formData,
@@ -394,6 +451,24 @@ class Form extends Component {
       }
     }
   }
+
+  /**
+   * getOnlyFormModifiedValues handler
+   * It returns only the values of the fields that are have really changed since the
+   * form was loaded. Useful for edit forms and PATCH operations, when we only want to
+   * send the changed data.
+   * @method getOnlyFormModifiedValues
+   * @param {Object} event Event object.
+   * @returns {undefined}
+   */
+  getOnlyFormModifiedValues = () => {
+    const fieldsModified = Object.keys(
+      difference(this.state.formData, this.state.initialFormData),
+    );
+    return pickBy(this.state.formData, (value, key) =>
+      fieldsModified.includes(key),
+    );
+  };
 
   /**
    * Move block handler
@@ -503,10 +578,139 @@ class Form extends Component {
       e.preventDefault();
     }
     if (e.key === 'Enter' && !disableEnter) {
-      this.onAddBlock('text', index + 1);
+      this.onAddBlock(settings.defaultBlockType, index + 1);
       e.preventDefault();
     }
   }
+
+  /**
+   * Removed blocks and blocks_layout fields from the form.
+   * @method removeBlocksLayoutFields
+   * @param {object} schema The schema definition of the form.
+   * @returns A modified copy of the given schema.
+   */
+  removeBlocksLayoutFields = (schema) => {
+    const newSchema = { ...schema };
+    const layoutFieldsetIndex = findIndex(
+      newSchema.fieldsets,
+      (fieldset) => fieldset.id === 'layout',
+    );
+    if (layoutFieldsetIndex > -1) {
+      const layoutFields = newSchema.fieldsets[layoutFieldsetIndex].fields;
+      newSchema.fieldsets[layoutFieldsetIndex].fields = layoutFields.filter(
+        (field) => field !== 'blocks' && field !== 'blocks_layout',
+      );
+      if (newSchema.fieldsets[layoutFieldsetIndex].fields.length === 0) {
+        newSchema.fieldsets = [
+          ...newSchema.fieldsets.slice(0, layoutFieldsetIndex),
+          ...newSchema.fieldsets.slice(layoutFieldsetIndex + 1),
+        ];
+      }
+    }
+    return newSchema;
+  };
+
+  onDragEnd = (result) => {
+    const { source, destination } = result;
+    if (!destination) {
+      return;
+    }
+    const blocksLayoutFieldname = getBlocksLayoutFieldname(this.state.formData);
+    this.setState({
+      placeholderProps: {},
+    });
+    this.setState({
+      formData: {
+        ...this.state.formData,
+        [blocksLayoutFieldname]: {
+          items: move(
+            this.state.formData[blocksLayoutFieldname].items,
+            source.index,
+            destination.index,
+          ),
+        },
+      },
+    });
+  };
+
+  handleDragStart = (event) => {
+    const queryAttr = 'data-rbd-draggable-id';
+    const domQuery = `[${queryAttr}='${event.draggableId}']`;
+    const draggedDOM = document.querySelector(domQuery);
+
+    if (!draggedDOM) {
+      return;
+    }
+
+    const { clientHeight, clientWidth } = draggedDOM;
+    const sourceIndex = event.source.index;
+    var clientY =
+      parseFloat(window.getComputedStyle(draggedDOM.parentNode).paddingTop) +
+      [...draggedDOM.parentNode.children]
+        .slice(0, sourceIndex)
+        .reduce((total, curr) => {
+          const style = curr.currentStyle || window.getComputedStyle(curr);
+          const marginBottom = parseFloat(style.marginBottom);
+          return total + curr.clientHeight + marginBottom;
+        }, 0);
+
+    this.setState({
+      placeholderProps: {
+        clientHeight,
+        clientWidth,
+        clientY,
+        clientX: parseFloat(
+          window.getComputedStyle(draggedDOM.parentNode).paddingLeft,
+        ),
+      },
+    });
+  };
+
+  onDragUpdate = (update) => {
+    if (!update.destination) {
+      return;
+    }
+    const draggableId = update.draggableId;
+    const destinationIndex = update.destination.index;
+
+    const queryAttr = 'data-rbd-draggable-id';
+    const domQuery = `[${queryAttr}='${draggableId}']`;
+    const draggedDOM = document.querySelector(domQuery);
+
+    if (!draggedDOM) {
+      return;
+    }
+    const { clientHeight, clientWidth } = draggedDOM;
+    const sourceIndex = update.source.index;
+    const childrenArray = [...draggedDOM.parentNode.children];
+    const movedItem = childrenArray[sourceIndex];
+    childrenArray.splice(sourceIndex, 1);
+
+    const updatedArray = [
+      ...childrenArray.slice(0, destinationIndex),
+      movedItem,
+      ...childrenArray.slice(destinationIndex + 1),
+    ];
+
+    var clientY =
+      parseFloat(window.getComputedStyle(draggedDOM.parentNode).paddingTop) +
+      updatedArray.slice(0, destinationIndex).reduce((total, curr) => {
+        const style = curr.currentStyle || window.getComputedStyle(curr);
+        const marginBottom = parseFloat(style.marginBottom);
+        return total + curr.clientHeight + marginBottom;
+      }, 0);
+
+    this.setState({
+      placeholderProps: {
+        clientHeight,
+        clientWidth,
+        clientY,
+        clientX: parseFloat(
+          window.getComputedStyle(draggedDOM.parentNode).paddingLeft,
+        ),
+      },
+    });
+  };
 
   /**
    * Render method.
@@ -514,68 +718,133 @@ class Form extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { schema, onCancel, onSubmit } = this.props;
-    const { formData } = this.state;
+    const { schema: originalSchema, onCancel, onSubmit } = this.props;
+    const { formData, placeholderProps } = this.state;
     const blocksFieldname = getBlocksFieldname(formData);
     const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
-    const renderBlocks = formData[blocksLayoutFieldname].items;
-    const blocksDict = formData[blocksFieldname];
+    const renderBlocks = formData?.[blocksLayoutFieldname]?.items;
+    const blocksDict = formData?.[blocksFieldname];
+    const schema = this.removeBlocksLayoutFields(originalSchema);
+
     return this.props.visual ? (
-      <div className="ui container">
-        {map(renderBlocks, (block, index) => (
-          <EditBlock
-            id={block}
-            index={index}
-            type={blocksDict[block]['@type']}
-            key={block}
-            handleKeyDown={this.handleKeyDown}
-            onAddBlock={this.onAddBlock}
-            onChangeBlock={this.onChangeBlock}
-            onMutateBlock={this.onMutateBlock}
-            onChangeField={this.onChangeField}
-            onDeleteBlock={this.onDeleteBlock}
-            onSelectBlock={this.onSelectBlock}
-            onMoveBlock={this.onMoveBlock}
-            onFocusPreviousBlock={this.onFocusPreviousBlock}
-            onFocusNextBlock={this.onFocusNextBlock}
-            properties={formData}
-            data={blocksDict[block]}
-            pathname={this.props.pathname}
-            block={block}
-            selected={this.state.selected === block}
-          />
-        ))}
-        <Portal
-          node={__CLIENT__ && document.getElementById('sidebar-metadata')}
-        >
-          <UiForm
-            method="post"
-            onSubmit={this.onSubmit}
-            error={keys(this.state.errors).length > 0}
+      // Removing this from SSR is important, since react-beautiful-dnd supports SSR,
+      // but draftJS don't like it much and the hydration gets messed up
+      this.state.isClient && (
+        <div className="ui container">
+          <DragDropContext
+            onDragEnd={this.onDragEnd}
+            onDragStart={this.handleDragStart}
+            onDragUpdate={this.onDragUpdate}
           >
-            {schema &&
-              map(schema.fieldsets, item => [
-                <Segment secondary attached key={item.title}>
-                  {item.title}
-                </Segment>,
-                <Segment attached key={`fieldset-contents-${item.title}`}>
-                  {map(item.fields, (field, index) => (
-                    <Field
-                      {...schema.properties[field]}
-                      id={field}
-                      focus={index === 0}
-                      value={this.state.formData[field]}
-                      required={schema.required.indexOf(field) !== -1}
-                      onChange={this.onChangeField}
-                      key={field}
-                      error={this.state.errors[field]}
-                    />
+            <Droppable droppableId="edit-form">
+              {(provided, snapshot) => (
+                <div
+                  ref={provided.innerRef}
+                  {...provided.droppableProps}
+                  style={{ position: 'relative' }}
+                >
+                  {map(renderBlocks, (block, index) => (
+                    <Draggable draggableId={block} index={index} key={block}>
+                      {(provided) => (
+                        <div
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          className={`block-editor-${blocksDict[block]['@type']}`}
+                        >
+                          <div style={{ position: 'relative' }}>
+                            <div
+                              style={{
+                                visibility:
+                                  this.state.selected === block &&
+                                  !this.hideHandler(blocksDict[block])
+                                    ? 'visible'
+                                    : 'hidden',
+                                display: 'inline-block',
+                              }}
+                              {...provided.dragHandleProps}
+                              className="drag handle wrapper"
+                            >
+                              <Icon name={dragSVG} size="18px" />
+                            </div>
+
+                            <EditBlock
+                              id={block}
+                              index={index}
+                              type={blocksDict[block]['@type']}
+                              key={block}
+                              handleKeyDown={this.handleKeyDown}
+                              onAddBlock={this.onAddBlock}
+                              onChangeBlock={this.onChangeBlock}
+                              onMutateBlock={this.onMutateBlock}
+                              onChangeField={this.onChangeField}
+                              onDeleteBlock={this.onDeleteBlock}
+                              onSelectBlock={this.onSelectBlock}
+                              onMoveBlock={this.onMoveBlock}
+                              onFocusPreviousBlock={this.onFocusPreviousBlock}
+                              onFocusNextBlock={this.onFocusNextBlock}
+                              properties={formData}
+                              data={blocksDict[block]}
+                              pathname={this.props.pathname}
+                              block={block}
+                              selected={this.state.selected === block}
+                            />
+                          </div>
+                        </div>
+                      )}
+                    </Draggable>
                   ))}
-                </Segment>,
-              ])}
-          </UiForm>
-        </Portal>
-      </div>
+                  {provided.placeholder}
+                  {!isEmpty(placeholderProps) && (
+                    <div
+                      style={{
+                        position: 'absolute',
+                        top: `${placeholderProps.clientY}px`,
+                        height: `${placeholderProps.clientHeight + 18}px`,
+                        background: '#eee',
+                        width: `${placeholderProps.clientWidth}px`,
+                        borderRadius: '3px',
+                      }}
+                    />
+                  )}
+                </div>
+              )}
+            </Droppable>
+            {this.state.isClient && (
+              <Portal
+                node={__CLIENT__ && document.getElementById('sidebar-metadata')}
+              >
+                <UiForm
+                  method="post"
+                  onSubmit={this.onSubmit}
+                  error={keys(this.state.errors).length > 0}
+                >
+                  {schema &&
+                    map(schema.fieldsets, (item) => [
+                      <Segment secondary attached key={item.title}>
+                        {item.title}
+                      </Segment>,
+                      <Segment attached key={`fieldset-contents-${item.title}`}>
+                        {map(item.fields, (field, index) => (
+                          <Field
+                            {...schema.properties[field]}
+                            id={field}
+                            formData={this.state.formData}
+                            focus={false}
+                            value={this.state.formData[field]}
+                            required={schema.required.indexOf(field) !== -1}
+                            onChange={this.onChangeField}
+                            key={field}
+                            error={this.state.errors[field]}
+                          />
+                        ))}
+                      </Segment>,
+                    ])}
+                </UiForm>
+              </Portal>
+            )}
+          </DragDropContext>
+        </div>
+      )
     ) : (
       <Container>
         <UiForm
@@ -593,7 +862,7 @@ class Form extends Component {
                   tabular: true,
                   className: 'formtabs',
                 }}
-                panes={map(schema.fieldsets, item => ({
+                panes={map(schema.fieldsets, (item) => ({
                   menuItem: item.title,
                   render: () => [
                     this.props.title && (
@@ -605,6 +874,7 @@ class Form extends Component {
                       <Field
                         {...schema.properties[field]}
                         id={field}
+                        formData={this.state.formData}
                         fieldSet={item.title.toLowerCase()}
                         focus={index === 0}
                         value={this.state.formData[field]}
@@ -646,11 +916,11 @@ class Form extends Component {
                     content={this.props.error.message}
                   />
                 )}
-                {map(schema.fieldsets[0].fields, field => (
+                {map(schema.fieldsets[0].fields, (field) => (
                   <Field
                     {...schema.properties[field]}
                     id={field}
-                    value={this.state.formData[field]}
+                    value={this.state.formData?.[field]}
                     required={schema.required.indexOf(field) !== -1}
                     onChange={this.onChangeField}
                     key={field}

@@ -1,5 +1,49 @@
 // Object Browser Container
 
+@keyframes sidebar-toggle-button-before-highlight {
+  0% {
+    background: @sidebarToggleButtonHighlightColor;
+  }
+
+  25% {
+    background: @sidebarToggleButtonHighlightColor;
+  }
+
+  50% {
+    background: @sidebarToggleButtonHighlightColor;
+  }
+
+  75% {
+    background: @blue;
+  }
+
+  100% {
+    background: @blue;
+  }
+}
+
+@keyframes sidebar-toggle-button-highlight {
+  0% {
+    opacity: @sidebarToggleButtonNormalOpacity;
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: @sidebarToggleButtonNormalOpacity;
+  }
+
+  100% {
+    opacity: @sidebarToggleButtonNormalOpacity;
+  }
+
+  100% {
+    opacity: @sidebarToggleButtonNormalOpacity;
+  }
+}
+
 @media only screen and (max-width: @largestMobileScreen) {
   .has-toolbar {
     .sidebar-container {
@@ -18,6 +62,18 @@
   }
 }
 
+.ui.button.full-size-sidenav-btn {
+  position: absolute;
+  top: 0;
+  padding: 12px 6px;
+  background: transparent;
+}
+
+.full-size-icon {
+  height: @fullSizeIcon !important;
+  color: #bac5c7;
+}
+
 .sidebar-container {
   position: fixed;
   z-index: 100;
@@ -29,6 +85,7 @@
   box-shadow: 0 1px 2px 0 #c7d5d8;
   transition: right 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045),
     height 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045),
+    width 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045),
     top 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 
   &.collapsed {
@@ -37,6 +94,14 @@
     .tabs-wrapper {
       opacity: 0;
       transition: opacity 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+    }
+  }
+
+  &.full-size {
+    width: calc(100% - @toolbalWidth);
+
+    &.no-toolbar {
+      width: calc(100% - @toolbalWidthMin);
     }
   }
 
@@ -69,9 +134,12 @@
     height: 80px;
     padding: 0;
     margin-top: -40px;
+    animation: sidebar-toggle-button-highlight
+      @sidebarToggleButtonAnimationsDuration;
+    animation-iteration-count: @sidebarToggleButtonIterations;
     background: transparent;
     border-radius: 0;
-    opacity: 0.05;
+    opacity: @sidebarToggleButtonNormalOpacity;
     transition: opacity 0.3s;
   }
 
@@ -86,6 +154,9 @@
     display: block;
     width: 4px;
     height: 100%;
+    animation: sidebar-toggle-button-before-highlight
+      @sidebarToggleButtonAnimationsDuration;
+    animation-iteration-count: 3;
     background: @blue;
     content: '';
   }
@@ -108,6 +179,12 @@
 
   .tabs-wrapper {
     height: 100%;
+
+    .formtabs.menu {
+      a:first-child {
+        margin-left: 36px;
+      }
+    }
   }
 
   .tab-forbidden {
@@ -237,6 +314,11 @@
       padding: 0;
     }
   }
+
+  .infos {
+    color: @grey;
+    font-size: 0.8rem !important;
+  }
 }
 
 #sidebar .pusher.expanded {
@@ -300,6 +382,7 @@
   padding: 20px 0;
 }
 
+#field-image_size .eight.wide.column,
 .align-tools {
   display: flex !important;
   align-items: center;
@@ -323,6 +406,17 @@
     border: 1px solid #2996da;
     background: transparent !important;
   }
+}
+
+#field-image_size .ui.grid > .stretched.row > .column {
+  flex-direction: row;
+}
+
+.image-sizes-text {
+  width: 24px;
+  font-size: @20px;
+  line-height: 24px;
+  text-align: center;
 }
 
 .ui.icon.input + button {

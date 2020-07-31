@@ -33,8 +33,8 @@ import {
   listGroups,
   updateUser,
   updateGroup,
-} from '../../../actions';
-import { getBaseUrl } from '../../../helpers';
+} from '@plone/volto/actions';
+import { getBaseUrl } from '@plone/volto/helpers';
 import {
   ModalForm,
   Toolbar,
@@ -42,20 +42,18 @@ import {
   Icon,
   UsersControlpanelGroups,
   Toast,
-} from '../../../components';
-import addSvg from '../../../icons/circle-plus.svg';
-import backSVG from '../../../icons/back.svg';
-import saveSVG from '../../../icons/save.svg';
-import clearSVG from '../../../icons/clear.svg';
+} from '@plone/volto/components';
+import addSvg from '@plone/volto/icons/circle-plus.svg';
+import backSVG from '@plone/volto/icons/back.svg';
 
 const messages = defineMessages({
   searchUsers: {
-    id: 'Search users...',
-    defaultMessage: 'Search users...',
+    id: 'Search users…',
+    defaultMessage: 'Search users…',
   },
   searchGroups: {
-    id: 'Search group...',
-    defaultMessage: 'Search group...',
+    id: 'Search group…',
+    defaultMessage: 'Search group…',
   },
   save: {
     id: 'Save',
@@ -76,6 +74,10 @@ const messages = defineMessages({
   deleteGroupConfirmTitle: {
     id: 'Delete Group',
     defaultMessage: 'Delete Group',
+  },
+  add: {
+    id: 'Add',
+    defaultMessage: 'Add',
   },
   addUserButtonTitle: {
     id: 'Add new user',
@@ -108,6 +110,10 @@ const messages = defineMessages({
   addUserGroupNameTitle: {
     id: 'Add to Groups',
     defaultMessage: 'Add to Groups',
+  },
+  addGroupsFormGroupNameTitle: {
+    id: 'Groupname',
+    defaultMessage: 'Groupname',
   },
   addGroupsFormDescriptionTitle: {
     id: 'Description',
@@ -144,6 +150,10 @@ const messages = defineMessages({
   groupCreated: {
     id: 'Group created',
     defaultMessage: 'Group created',
+  },
+  usersAndGroups: {
+    id: 'Users and Groups',
+    defaultMessage: 'Users and Groups',
   },
 });
 
@@ -226,6 +236,7 @@ class UsersControlpanel extends Component {
       showAddGroup: false,
       entries: props.users,
       groupEntries: props.groups,
+      isClient: false,
     };
   }
 
@@ -238,6 +249,7 @@ class UsersControlpanel extends Component {
     this.props.listRoles();
     this.props.listUsers();
     this.props.listGroups();
+    this.setState({ isClient: true });
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -271,14 +283,14 @@ class UsersControlpanel extends Component {
       this.onAddGroupError(nextProps.createRequest.error);
     }
     this.setState({
-      entries: map(nextProps.entries, entry => {
+      entries: map(nextProps.users, (entry) => {
         const values = find(this.state.entries, { id: entry.id });
         return {
           ...entry,
           roles: values ? values.roles : entry.roles,
         };
       }),
-      groupEntries: map(nextProps.groups, entry => {
+      groupEntries: map(nextProps.groups, (entry) => {
         const values = find(this.state.groupEntries, { id: entry.id });
         return {
           ...entry,
@@ -418,13 +430,13 @@ class UsersControlpanel extends Component {
    */
   updateUserRole(name, value) {
     this.setState({
-      entries: map(this.state.entries, entry => ({
+      entries: map(this.state.entries, (entry) => ({
         ...entry,
         roles:
           entry.id === name
             ? entry.roles.includes(value) === false
               ? entry.roles.concat([value])
-              : [].concat(entry.roles.filter(e => e !== value))
+              : [].concat(entry.roles.filter((e) => e !== value))
             : entry.roles,
       })),
     });
@@ -437,13 +449,13 @@ class UsersControlpanel extends Component {
    */
   updateGroupRole(name, value) {
     this.setState({
-      groupEntries: map(this.state.groupEntries, entry => ({
+      groupEntries: map(this.state.groupEntries, (entry) => ({
         ...entry,
         roles:
           entry.id === name
             ? entry.roles.includes(value) === false
               ? entry.roles.concat([value])
-              : [].concat(entry.roles.filter(e => e !== value))
+              : [].concat(entry.roles.filter((e) => e !== value))
             : entry.roles,
       })),
     });
@@ -542,7 +554,7 @@ class UsersControlpanel extends Component {
     event.preventDefault();
     for (let i = 0; i < this.props.users.length; i += 1) {
       if (!isEqual(this.props.users[i].roles, this.state.entries[i].roles)) {
-        this.state.entries[i].roles.forEach(item => {
+        this.state.entries[i].roles.forEach((item) => {
           userData.roles[item] = true;
         });
         userData.id = this.state.entries[i].id;
@@ -553,7 +565,7 @@ class UsersControlpanel extends Component {
       if (
         !isEqual(this.props.groups[i].roles, this.state.groupEntries[i].roles)
       ) {
-        this.state.groupEntries[i].roles.forEach(item => {
+        this.state.groupEntries[i].roles.forEach((item) => {
           groupData.roles[item] = true;
         });
         groupData.id = this.state.groupEntries[i].id;
@@ -588,7 +600,9 @@ class UsersControlpanel extends Component {
       : '';
     return (
       <Container className="users-control-panel">
-        <Helmet title="Users and Groups" />
+        <Helmet
+          title={this.props.intl.formatMessage(messages.usersAndGroups)}
+        />
         <div className="container">
           <Confirm
             open={this.state.showDelete}
@@ -628,6 +642,7 @@ class UsersControlpanel extends Component {
             }
             onCancel={this.onDeleteCancel}
             onConfirm={this.onDeleteOk}
+            size="none"
           />
           <ModalForm
             open={this.state.showAddUser}
@@ -686,7 +701,7 @@ class UsersControlpanel extends Component {
                     messages.addUserFormRolesTitle,
                   ),
                   type: 'array',
-                  choices: this.props.roles.map(role => [role.id, role.id]),
+                  choices: this.props.roles.map((role) => [role.id, role.id]),
                   description: '',
                 },
                 groups: {
@@ -694,7 +709,10 @@ class UsersControlpanel extends Component {
                     messages.addUserGroupNameTitle,
                   ),
                   type: 'array',
-                  choices: this.props.groups.map(group => [group.id, group.id]),
+                  choices: this.props.groups.map((group) => [
+                    group.id,
+                    group.id,
+                  ]),
                   description: '',
                 },
               },
@@ -739,7 +757,9 @@ class UsersControlpanel extends Component {
                   description: '',
                 },
                 groupname: {
-                  title: 'groupname',
+                  title: this.props.intl.formatMessage(
+                    messages.addGroupsFormGroupNameTitle,
+                  ),
                   type: 'string',
                   description: '',
                 },
@@ -755,7 +775,7 @@ class UsersControlpanel extends Component {
                     messages.addGroupsFormRolesTitle,
                   ),
                   type: 'array',
-                  choices: this.props.roles.map(role => [role.id, role.id]),
+                  choices: this.props.roles.map((role) => [role.id, role.id]),
                   description: '',
                 },
               },
@@ -783,6 +803,7 @@ class UsersControlpanel extends Component {
                     messages.searchUsers,
                   )}
                   onChange={this.onChangeSearch}
+                  id="user-search-input"
                 />
               </Form.Field>
             </Form>
@@ -798,7 +819,7 @@ class UsersControlpanel extends Component {
                         defaultMessage="User name"
                       />
                     </Table.HeaderCell>
-                    {this.props.roles.map(role => (
+                    {this.props.roles.map((role) => (
                       <Table.HeaderCell key={role.id}>
                         {role.id}
                       </Table.HeaderCell>
@@ -809,7 +830,7 @@ class UsersControlpanel extends Component {
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
-                  {this.state.entries.map(user => (
+                  {this.state.entries.map((user) => (
                     <UsersControlpanelUser
                       key={user.id}
                       onDelete={this.delete}
@@ -832,7 +853,13 @@ class UsersControlpanel extends Component {
                 this.setState({ showAddUser: true });
               }}
             >
-              <Icon name={addSvg} size="30px" color="#007eb1" title="Add" />
+              <Icon
+                name={addSvg}
+                size="30px"
+                color="#007eb1"
+                className="addSVG"
+                title={this.props.intl.formatMessage(messages.add)}
+              />
             </Button>
           </Segment>
           <Divider />
@@ -849,6 +876,7 @@ class UsersControlpanel extends Component {
                     messages.searchGroups,
                   )}
                   onChange={this.onChangeSearch}
+                  id="group-search-input"
                 />
               </Form.Field>
             </Form>
@@ -864,7 +892,7 @@ class UsersControlpanel extends Component {
                         defaultMessage="Groupname"
                       />
                     </Table.HeaderCell>
-                    {this.props.roles.map(role => (
+                    {this.props.roles.map((role) => (
                       <Table.HeaderCell key={role.id}>
                         {role.id}
                       </Table.HeaderCell>
@@ -875,7 +903,7 @@ class UsersControlpanel extends Component {
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
-                  {this.state.groupEntries.map(groups => (
+                  {this.state.groupEntries.map((groups) => (
                     <UsersControlpanelGroups
                       key={groups.id}
                       user={this.props.users}
@@ -899,50 +927,37 @@ class UsersControlpanel extends Component {
                 this.setState({ showAddGroup: true });
               }}
             >
-              <Icon name={addSvg} size="30px" color="#007eb1" title="Add" />
+              <Icon
+                name={addSvg}
+                size="30px"
+                color="#007eb1"
+                classname="addgroupSVG"
+                title={this.props.intl.formatMessage(messages.add)}
+              />
             </Button>
           </Segment>
         </Segment.Group>
-        <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
-          <Toolbar
-            pathname={this.props.pathname}
-            hideDefaultViewButtons
-            inner={
-              <>
-                <Link to="/controlpanel" className="item">
-                  <Icon
-                    name={backSVG}
-                    className="contents circled"
-                    size="30px"
-                    title={this.props.intl.formatMessage(messages.back)}
-                  />
-                </Link>
-                <button
-                  id="toolbar-save"
-                  className="save"
-                  aria-label={this.props.intl.formatMessage(messages.save)}
-                  onClick={this.onSubmit}
-                >
-                  <Icon
-                    name={saveSVG}
-                    className="circled"
-                    size="30px"
-                    title={this.props.intl.formatMessage(messages.save)}
-                  />
-                </button>
-                <button className="cancel" onClick={this.onCancel}>
-                  <Icon
-                    name={clearSVG}
-                    className="circled"
-                    aria-label={this.props.intl.formatMessage(messages.cancel)}
-                    size="30px"
-                    title={this.props.intl.formatMessage(messages.cancel)}
-                  />
-                </button>
-              </>
-            }
-          />
-        </Portal>
+        {this.state.isClient && (
+          <Portal node={document.getElementById('toolbar')}>
+            <Toolbar
+              pathname={this.props.pathname}
+              hideDefaultViewButtons
+              inner={
+                <>
+                  <Link to="/controlpanel" className="item">
+                    <Icon
+                      name={backSVG}
+                      aria-label={this.props.intl.formatMessage(messages.back)}
+                      className="contents circled"
+                      size="30px"
+                      title={this.props.intl.formatMessage(messages.back)}
+                    />
+                  </Link>
+                </>
+              }
+            />
+          </Portal>
+        )}
       </Container>
     );
   }
@@ -962,7 +977,7 @@ export default compose(
       deleteGroupRequest: state.groups.delete,
       createGroupRequest: state.groups.create,
     }),
-    dispatch =>
+    (dispatch) =>
       bindActionCreators(
         {
           listRoles,

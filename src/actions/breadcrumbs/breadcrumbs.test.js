@@ -1,5 +1,5 @@
 import { getBreadcrumbs } from './breadcrumbs';
-import { GET_BREADCRUMBS } from '../../constants/ActionTypes';
+import { GET_BREADCRUMBS } from '@plone/volto/constants/ActionTypes';
 
 describe('Breadcrumbs action', () => {
   describe('getBreadcrumbs', () => {

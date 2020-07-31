@@ -21,10 +21,12 @@ import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import qs from 'query-string';
 import { withRouter } from 'react-router-dom';
 
-import { Icon } from '../../../components';
-import { login } from '../../../actions';
+import { Icon } from '@plone/volto/components';
+import { getNavigation, login } from '@plone/volto/actions';
 import { toast } from 'react-toastify';
 import { Toast } from '@plone/volto/components';
+
+import { settings } from '~/config';
 
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -37,6 +39,10 @@ const messages = defineMessages({
   loginName: {
     id: 'Login Name',
     defaultMessage: 'Login Name',
+  },
+  Login: {
+    id: 'Login',
+    defaultMessage: 'Login',
   },
   password: {
     id: 'Password',
@@ -133,7 +139,21 @@ class Login extends Component {
     }
   }
 
+  UNSAFE_componentWillMount() {
+    if (settings.isMultilingual) {
+      this.props.getNavigation(`/${this.props.lang}`, settings.navDepth);
+    } else {
+      this.props.getNavigation('/', settings.navDepth);
+    }
+  }
+
   componentWillUnmount() {
+    if (settings.isMultilingual) {
+      this.props.getNavigation(`/${this.props.lang}`, settings.navDepth);
+    } else {
+      this.props.getNavigation('/', settings.navDepth);
+    }
+
     if (toast.isActive('loginFailed')) {
       toast.dismiss('loginFailed');
     }
@@ -161,7 +181,7 @@ class Login extends Component {
   render() {
     return (
       <div id="page-login">
-        <Helmet title="Login" />
+        <Helmet title={this.props.intl.formatMessage(messages.Login)} />
         <Container text>
           <Form method="post" onSubmit={this.onLogin}>
             <Segment.Group raised>
@@ -311,11 +331,17 @@ export default compose(
   injectIntl,
   connect(
     (state, props) => ({
+      lang: state.intl.locale,
       error: state.userSession.login.error,
       loading: state.userSession.login.loading,
       token: state.userSession.token,
-      returnUrl: qs.parse(props.location.search).return_url || '/',
+      returnUrl:
+        qs.parse(props.location.search).return_url ||
+        props.location.pathname
+          .replace(/\/login$/, '')
+          .replace(/\/logout$/, '') ||
+        '/',
     }),
-    { login },
+    { login, getNavigation },
   ),
 )(Login);

@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { Dropdown, Table, Checkbox } from 'semantic-ui-react';
-import trashSVG from '../../../icons/delete.svg';
-import { Icon } from '../../../components';
+import trashSVG from '@plone/volto/icons/delete.svg';
+import { Icon } from '@plone/volto/components';
 
 /**
  * UsersControlpanelGroups class.
@@ -73,7 +73,7 @@ class UsersControlpanelGroups extends Component {
     return (
       <Table.Row key={this.props.groups.title}>
         <Table.Cell>{this.props.groups.groupname}</Table.Cell>
-        {this.props.roles.map(role => (
+        {this.props.roles.map((role) => (
           <Table.Cell key={role.id}>
             <Checkbox
               checked={this.props.groups.roles.includes(role.id)}

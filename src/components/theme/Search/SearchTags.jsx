@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { getVocabulary } from '../../../actions';
+import { getVocabulary } from '@plone/volto/actions';
 
 const vocabulary = 'plone.app.vocabularies.Keywords';
 
@@ -49,7 +49,7 @@ class SearchTags extends Component {
   render() {
     return this.props.terms && this.props.terms.length > 0 ? (
       <div>
-        {this.props.terms.map(term => (
+        {this.props.terms.map((term) => (
           <Link
             className="ui label"
             to={`/search?Subject=${term.title}`}
@@ -66,7 +66,7 @@ class SearchTags extends Component {
 }
 
 export default connect(
-  state => ({
+  (state) => ({
     terms:
       state.vocabularies[vocabulary] && state.vocabularies[vocabulary].terms
         ? state.vocabularies[vocabulary].terms

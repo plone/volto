@@ -3,7 +3,7 @@
  * @module reducers/userSession/userSession
  */
 
-import { LOGIN, LOGIN_RENEW, LOGOUT } from '../../constants/ActionTypes';
+import { LOGIN, LOGIN_RENEW, LOGOUT } from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
   token: null,

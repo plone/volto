@@ -151,6 +151,10 @@ exports[`PersonalInformation renders a personal information component 1`] = `
               <div
                 className="eight wide column"
               >
+                <img
+                  className="ui small image image-preview"
+                  id="field-portrait-image"
+                />
                 <div
                   className="ui input"
                 >
@@ -503,6 +507,10 @@ exports[`PersonalInformation renders a personal information component embedded i
               <div
                 className="eight wide column"
               >
+                <img
+                  className="ui small image image-preview"
+                  id="field-portrait-image"
+                />
                 <div
                   className="ui input"
                 >

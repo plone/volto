@@ -16,16 +16,16 @@ import moment from 'moment';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import qs from 'query-string';
 
-import { getDiff, getSchema, getHistory } from '../../../actions';
+import { getDiff, getSchema, getHistory } from '@plone/volto/actions';
 import {
   getBaseUrl,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
   hasBlocksData,
-} from '../../../helpers';
-import { DiffField, Icon, Toolbar } from '../../../components';
+} from '@plone/volto/helpers';
+import { DiffField, Icon, Toolbar } from '@plone/volto/components';
 
-import backSVG from '../../../icons/back.svg';
+import backSVG from '@plone/volto/icons/back.svg';
 
 const messages = defineMessages({
   diff: {
@@ -35,6 +35,14 @@ const messages = defineMessages({
   back: {
     id: 'Back',
     defaultMessage: 'Back',
+  },
+  split: {
+    id: 'Split',
+    defaultMessage: 'Split',
+  },
+  unified: {
+    id: 'Unified',
+    defaultMessage: 'Unified',
   },
 });
 
@@ -94,6 +102,7 @@ class Diff extends Component {
     this.onChangeOne = this.onChangeOne.bind(this);
     this.onChangeTwo = this.onChangeTwo.bind(this);
     this.onSelectView = this.onSelectView.bind(this);
+    this.state = { isClient: false };
   }
 
   /**
@@ -109,6 +118,7 @@ class Diff extends Component {
       this.props.one,
       this.props.two,
     );
+    this.setState({ isClient: true });
   }
 
   /**
@@ -177,7 +187,7 @@ class Diff extends Component {
    */
   render() {
     const versions = map(
-      filter(this.props.historyEntries, entry => 'version' in entry),
+      filter(this.props.historyEntries, (entry) => 'version' in entry),
       (entry, index) => ({
         text: `${index === 0 ? 'Current' : entry.version} (${moment(
           entry.time,
@@ -214,10 +224,16 @@ class Diff extends Component {
             <Button.Group>
               {map(
                 [
-                  { id: 'split', label: 'Split' },
-                  { id: 'unified', label: 'Unified' },
+                  {
+                    id: 'split',
+                    label: this.props.intl.formatMessage(messages.split),
+                  },
+                  {
+                    id: 'unified',
+                    label: this.props.intl.formatMessage(messages.unified),
+                  },
                 ],
-                view => (
+                (view) => (
                   <Button
                     key={view.id}
                     value={view.id}
@@ -261,10 +277,10 @@ class Diff extends Component {
         )}
         {this.props.schema &&
           this.props.data.length > 0 &&
-          map(this.props.schema.fieldsets, fieldset =>
+          map(this.props.schema.fieldsets, (fieldset) =>
             map(
               fieldset.fields,
-              field =>
+              (field) =>
                 !isEqual(
                   this.props.data[0][field],
                   this.props.data[1][field],
@@ -305,25 +321,27 @@ class Diff extends Component {
               view={this.props.view}
             />
           )}
-        <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
-          <Toolbar
-            pathname={this.props.pathname}
-            hideDefaultViewButtons
-            inner={
-              <Link
-                to={`${getBaseUrl(this.props.pathname)}/history`}
-                className="item"
-              >
-                <Icon
-                  name={backSVG}
-                  className="contents circled"
-                  size="30px"
-                  title={this.props.intl.formatMessage(messages.back)}
-                />
-              </Link>
-            }
-          />
-        </Portal>
+        {this.state.isClient && (
+          <Portal node={document.getElementById('toolbar')}>
+            <Toolbar
+              pathname={this.props.pathname}
+              hideDefaultViewButtons
+              inner={
+                <Link
+                  to={`${getBaseUrl(this.props.pathname)}/history`}
+                  className="item"
+                >
+                  <Icon
+                    name={backSVG}
+                    className="contents circled"
+                    size="30px"
+                    title={this.props.intl.formatMessage(messages.back)}
+                  />
+                </Link>
+              }
+            />
+          </Portal>
+        )}
       </Container>
     );
   }

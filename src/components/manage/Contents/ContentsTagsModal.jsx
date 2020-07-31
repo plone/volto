@@ -10,8 +10,8 @@ import { compose } from 'redux';
 import { without, union, map } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 
-import { updateContent } from '../../../actions';
-import { ModalForm } from '../../../components';
+import { updateContent } from '@plone/volto/actions';
+import { ModalForm } from '@plone/volto/components';
 
 const messages = defineMessages({
   default: {
@@ -91,8 +91,8 @@ class ContentsTagsModal extends Component {
    */
   onSubmit(data) {
     this.props.updateContent(
-      map(this.props.items, item => item.url),
-      map(this.props.items, item => ({
+      map(this.props.items, (item) => item.url),
+      map(this.props.items, (item) => ({
         subjects: union(
           without(item.subjects, ...data.tags_to_remove),
           data.tags_to_add,
@@ -147,7 +147,7 @@ class ContentsTagsModal extends Component {
 export default compose(
   injectIntl,
   connect(
-    state => ({
+    (state) => ({
       request: state.content.update,
     }),
     { updateContent },

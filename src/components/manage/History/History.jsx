@@ -15,16 +15,20 @@ import { Portal } from 'react-portal';
 import moment from 'moment';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import { Icon as IconNext, Toolbar } from '../../../components';
-import { getHistory, revertHistory } from '../../../actions';
-import { getBaseUrl } from '../../../helpers';
+import { Icon as IconNext, Toolbar } from '@plone/volto/components';
+import { getHistory, revertHistory } from '@plone/volto/actions';
+import { getBaseUrl } from '@plone/volto/helpers';
 
-import backSVG from '../../../icons/back.svg';
+import backSVG from '@plone/volto/icons/back.svg';
 
 const messages = defineMessages({
   back: {
     id: 'Back',
     defaultMessage: 'Back',
+  },
+  history: {
+    id: 'History',
+    defaultMessage: 'History',
   },
 });
 
@@ -70,6 +74,7 @@ class History extends Component {
   constructor(props) {
     super(props);
     this.onRevert = this.onRevert.bind(this);
+    this.state = { isClient: false };
   }
 
   /**
@@ -79,6 +84,7 @@ class History extends Component {
    */
   componentDidMount() {
     this.props.getHistory(getBaseUrl(this.props.pathname));
+    this.setState({ isClient: true });
   }
 
   /**
@@ -119,7 +125,7 @@ class History extends Component {
     reverse(entries);
     return (
       <Container id="page-history">
-        <Helmet title="History" />
+        <Helmet title={this.props.intl.formatMessage(messages.history)} />
         <Segment.Group raised>
           <Segment className="primary">
             <FormattedMessage
@@ -158,15 +164,15 @@ class History extends Component {
               </Table.Row>
             </Table.Header>
             <Table.Body>
-              {map(entries, entry => (
+              {map(entries, (entry) => (
                 <Table.Row key={entry.time}>
                   <Table.Cell>
                     {('version' in entry && entry.version > 0 && (
                       <Link
                         className="item"
-                        to={`${getBaseUrl(
-                          this.props.pathname,
-                        )}/diff?one=${entry.version - 1}&two=${entry.version}`}
+                        to={`${getBaseUrl(this.props.pathname)}/diff?one=${
+                          entry.version - 1
+                        }&two=${entry.version}`}
                       >
                         {entry.transition_title}
                       </Link>
@@ -242,22 +248,27 @@ class History extends Component {
             </Table.Body>
           </Table>
         </Segment.Group>
-        <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
-          <Toolbar
-            pathname={this.props.pathname}
-            hideDefaultViewButtons
-            inner={
-              <Link to={`${getBaseUrl(this.props.pathname)}`} className="item">
-                <IconNext
-                  name={backSVG}
-                  className="contents circled"
-                  size="30px"
-                  title={this.props.intl.formatMessage(messages.back)}
-                />
-              </Link>
-            }
-          />
-        </Portal>
+        {this.state.isClient && (
+          <Portal node={document.getElementById('toolbar')}>
+            <Toolbar
+              pathname={this.props.pathname}
+              hideDefaultViewButtons
+              inner={
+                <Link
+                  to={`${getBaseUrl(this.props.pathname)}`}
+                  className="item"
+                >
+                  <IconNext
+                    name={backSVG}
+                    className="contents circled"
+                    size="30px"
+                    title={this.props.intl.formatMessage(messages.back)}
+                  />
+                </Link>
+              }
+            />
+          </Portal>
+        )}
       </Container>
     );
   }

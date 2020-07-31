@@ -14,9 +14,17 @@ import { defineMessages, injectIntl } from 'react-intl';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 
-import { Field, ModalForm, SchemaWidgetFieldset } from '../../../components';
+import {
+  Field,
+  ModalForm,
+  SchemaWidgetFieldset,
+} from '@plone/volto/components';
 
 const messages = defineMessages({
+  add: {
+    id: 'Add',
+    defaultMessage: 'Add',
+  },
   addField: {
     id: 'Add field',
     defaultMessage: 'Add field',
@@ -205,7 +213,7 @@ export class SchemaWidget extends Component {
         [values.id]: {
           title: values.title,
           description: values.description,
-          ...(type => {
+          ...((type) => {
             switch (type) {
               case 'textarea':
                 return {
@@ -294,7 +302,7 @@ export class SchemaWidget extends Component {
           ...this.props.value.fieldsets[this.state.currentFieldset],
           fields: map(
             this.props.value.fieldsets[this.state.currentFieldset].fields,
-            field => (field === this.state.editField.id ? values.id : field),
+            (field) => (field === this.state.editField.id ? values.id : field),
           ),
         },
         ...slice(this.props.value.fieldsets, this.state.currentFieldset + 1),
@@ -537,7 +545,7 @@ export class SchemaWidget extends Component {
       <div>
         <Segment.Group raised>
           {error.length > 0 &&
-            map(error, err => (
+            map(error, (err) => (
               <Message
                 icon="warning"
                 key={err}
@@ -565,7 +573,7 @@ export class SchemaWidget extends Component {
             ))}
             <div className="item">
               <button
-                aria-label="Add"
+                aria-label={this.props.intl.formatMessage(messages.add)}
                 className="item ui noborder button"
                 onClick={this.onShowAddFieldset}
               >
@@ -597,7 +605,7 @@ export class SchemaWidget extends Component {
                   </div>
                   <div className="toolbar">
                     <button
-                      aria-label="Add"
+                      aria-label={this.props.intl.formatMessage(messages.add)}
                       id="addfield"
                       className="item ui noborder button"
                       onClick={this.onShowAddField}

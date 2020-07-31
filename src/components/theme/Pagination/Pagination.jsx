@@ -5,8 +5,12 @@
 
 import React from 'react';
 import { Menu } from 'semantic-ui-react';
+import { Icon } from '@plone/volto/components';
 import PropTypes from 'prop-types';
 import { map } from 'lodash';
+import { FormattedMessage, injectIntl } from 'react-intl';
+import leftChevron from '@plone/volto/icons/left-key.svg';
+import rightChevron from '@plone/volto/icons/right-key.svg';
 
 /**
  * Component to display pagination.
@@ -32,7 +36,8 @@ const Pagination = ({
       {current > 0 && (
         <Menu.Item
           value={current - 1}
-          icon="chevron left"
+          icon={<Icon name={leftChevron} size="23px" />}
+          className="chevron-left-icon"
           onClick={onChangePage}
         />
       )}
@@ -76,15 +81,18 @@ const Pagination = ({
       {current < total - 1 && (
         <Menu.Item
           value={current + 1}
-          icon="chevron right"
+          icon={<Icon name={rightChevron} size="23px" />}
+          className="chevron-right-icon"
           onClick={onChangePage}
         />
       )}
     </Menu.Menu>
     {pageSize && (
       <Menu.Menu position="right">
-        <Menu.Item>Show:</Menu.Item>
-        {map(pageSizes, size => (
+        <Menu.Item>
+          <FormattedMessage id="Show" defaultMessage="Show" />:
+        </Menu.Item>
+        {map(pageSizes, (size) => (
           <Menu.Item
             key={size}
             value={size}
@@ -142,4 +150,4 @@ Pagination.defaultProps = {
   onChangePageSize: null,
 };
 
-export default Pagination;
+export default injectIntl(Pagination);

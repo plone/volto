@@ -4,7 +4,6 @@ import { EditorState, Modifier } from 'draft-js';
 import DefaultLink from './components/Link';
 import LinkButton from './components/LinkButton';
 import linkStrategy, { matchesEntityType } from './linkStrategy';
-import linkStyles from './linkStyles.module.css';
 
 function removeEntity(editorState) {
   const contentState = editorState.getCurrentContent();
@@ -21,7 +20,7 @@ function removeEntity(editorState) {
   let entitySelection = null;
 
   contentBlock.findEntityRanges(
-    character => character.getEntity() === entity,
+    (character) => character.getEntity() === entity,
     (start, end) => {
       entitySelection = selectionState.merge({
         anchorOffset: start,
@@ -46,21 +45,12 @@ function removeEntity(editorState) {
 }
 
 export default (config = {}) => {
-  const defaultTheme = linkStyles;
+  // ToDo: Get rif of the remainings of having the original CSS modules
+  const defaultTheme = {};
 
   const { theme = defaultTheme, placeholder, Link, linkTarget } = config;
 
-  const store = {
-    getEditorState: undefined,
-    setEditorState: undefined,
-  };
-
   return {
-    initialize: ({ getEditorState, setEditorState }) => {
-      store.getEditorState = getEditorState;
-      store.setEditorState = setEditorState;
-    },
-
     decorators: [
       {
         strategy: linkStrategy,
@@ -68,7 +58,7 @@ export default (config = {}) => {
         component:
           Link ||
           decorateComponentWithProps(DefaultLink, {
-            className: theme.link,
+            className: 'link-anchorlink-theme',
             target: linkTarget,
           }),
       },
@@ -76,10 +66,9 @@ export default (config = {}) => {
 
     LinkButton: decorateComponentWithProps(LinkButton, {
       ownTheme: theme,
-      store,
       placeholder,
-      onRemoveLinkAtSelection: () =>
-        store.setEditorState(removeEntity(store.getEditorState())),
+      onRemoveLinkAtSelection: (setEditorState, getEditorState) =>
+        setEditorState(removeEntity(getEditorState())),
     }),
   };
 };

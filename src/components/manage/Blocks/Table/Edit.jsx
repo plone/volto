@@ -12,16 +12,16 @@ import { Portal } from 'react-portal';
 import cx from 'classnames';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import Cell from './Cell';
-import { Field, Icon } from '../../../../components';
+import Cell from '@plone/volto/components/manage/Blocks/Table/Cell';
+import { Field, Icon } from '@plone/volto/components';
 
-import rowSVG from '../../../../icons/row.svg';
-import colSVG from '../../../../icons/column.svg';
-import deleteSVG from '../../../../icons/delete.svg';
+import rowSVG from '@plone/volto/icons/row.svg';
+import colSVG from '@plone/volto/icons/column.svg';
+import deleteSVG from '@plone/volto/icons/delete.svg';
 
 const getId = () => Math.floor(Math.random() * Math.pow(2, 24)).toString(32);
 
-const valueToDraft = value => ({
+const valueToDraft = (value) => ({
   blocks: [
     {
       data: {},
@@ -36,13 +36,13 @@ const valueToDraft = value => ({
   entityMap: {},
 });
 
-const emptyCell = type => ({
+const emptyCell = (type) => ({
   key: getId(),
   type: type || 'data',
   value: valueToDraft(''),
 });
 
-const emptyRow = cells => ({
+const emptyRow = (cells) => ({
   key: getId(),
   cells: map(cells, () => emptyCell()),
 });
@@ -187,6 +187,7 @@ class Edit extends Component {
         row: 0,
         cell: 0,
       },
+      isClient: false,
     };
     this.onSelectCell = this.onSelectCell.bind(this);
     this.onInsertRowBefore = this.onInsertRowBefore.bind(this);
@@ -218,6 +219,7 @@ class Edit extends Component {
         table: initialTable,
       });
     }
+    this.setState({ isClient: true });
   }
 
   /**
@@ -401,7 +403,7 @@ class Edit extends Component {
       ...this.props.data,
       table: {
         ...table,
-        rows: map(table.rows, row => ({
+        rows: map(table.rows, (row) => ({
           ...row,
           cells: remove(
             row.cells,
@@ -644,7 +646,10 @@ class Edit extends Component {
                           cellIndex === this.state.selected.cell
                         }
                         isTableBlockSelected={this.props.selected}
+                        onAddBlock={this.props.onAddBlock}
+                        onSelectBlock={this.props.onSelectBlock}
                         onChange={this.onChangeCell}
+                        index={this.props.index}
                       />
                     </Table.Cell>
                   ))}
@@ -653,11 +658,9 @@ class Edit extends Component {
             </Table.Body>
           </Table>
         )}
-        {this.props.selected && (
-          <Portal
-            node={__CLIENT__ && document.getElementById('sidebar-properties')}
-          >
-            <Form method="post" onSubmit={event => event.preventDefault()}>
+        {this.props.selected && this.state.isClient && (
+          <Portal node={document.getElementById('sidebar-properties')}>
+            <Form method="post" onSubmit={(event) => event.preventDefault()}>
               <Segment secondary attached>
                 <FormattedMessage id="Table" defaultMessage="Table" />
               </Segment>

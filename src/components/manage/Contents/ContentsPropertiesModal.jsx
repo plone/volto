@@ -10,8 +10,8 @@ import { compose } from 'redux';
 import { isEmpty, map } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 
-import { updateContent } from '../../../actions';
-import { ModalForm } from '../../../components';
+import { updateContent } from '@plone/volto/actions';
+import { ModalForm } from '@plone/volto/components';
 
 const messages = defineMessages({
   properties: {
@@ -216,7 +216,7 @@ class ContentsPropertiesModal extends Component {
 export default compose(
   injectIntl,
   connect(
-    state => ({
+    (state) => ({
       request: state.content.update,
     }),
     { updateContent },

@@ -2,8 +2,11 @@ import { defineMessages } from 'react-intl';
 
 import ViewTitleBlock from '@plone/volto/components/manage/Blocks/Title/View';
 import ViewDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/View';
+import ViewToCBlock from '@plone/volto/components/manage/Blocks/ToC/View';
 import ViewTextBlock from '@plone/volto/components/manage/Blocks/Text/View';
 import ViewImageBlock from '@plone/volto/components/manage/Blocks/Image/View';
+import ViewLeadImageBlock from '@plone/volto/components/manage/Blocks/LeadImage/View';
+import ViewListingBlock from '@plone/volto/components/manage/Blocks/Listing/View';
 import ViewVideoBlock from '@plone/volto/components/manage/Blocks/Video/View';
 import ViewHeroImageLeftBlock from '@plone/volto/components/manage/Blocks/HeroImageLeft/View';
 import ViewMapBlock from '@plone/volto/components/manage/Blocks/Maps/View';
@@ -12,8 +15,12 @@ import ViewTableBlock from '@plone/volto/components/manage/Blocks/Table/View';
 
 import EditTitleBlock from '@plone/volto/components/manage/Blocks/Title/Edit';
 import EditDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/Edit';
+import EditToCBlock from '@plone/volto/components/manage/Blocks/ToC/Edit';
 import EditTextBlock from '@plone/volto/components/manage/Blocks/Text/Edit';
 import EditImageBlock from '@plone/volto/components/manage/Blocks/Image/Edit';
+import EditLeadImageBlock from '@plone/volto/components/manage/Blocks/LeadImage/Edit';
+import EditListingBlock from '@plone/volto/components/manage/Blocks/Listing/Edit';
+import DefaultListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/DefaultTemplate';
 import EditVideoBlock from '@plone/volto/components/manage/Blocks/Video/Edit';
 import EditHeroImageLeftBlock from '@plone/volto/components/manage/Blocks/HeroImageLeft/Edit';
 import EditMapBlock from '@plone/volto/components/manage/Blocks/Maps/Edit';
@@ -29,6 +36,10 @@ import globeSVG from '@plone/volto/icons/globe.svg';
 import codeSVG from '@plone/volto/icons/code.svg';
 import heroSVG from '@plone/volto/icons/hero.svg';
 import tableSVG from '@plone/volto/icons/table.svg';
+import listBulletSVG from '@plone/volto/icons/list-bullet.svg';
+import tocSVG from '@plone/volto/icons/list-bullet.svg';
+
+import ImageGalleryListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/ImageGallery';
 
 defineMessages({
   title: {
@@ -42,6 +53,10 @@ defineMessages({
   text: {
     id: 'text',
     defaultMessage: 'Text',
+  },
+  toc: {
+    id: 'toc',
+    defaultMessage: 'Table of Contents',
   },
   image: {
     id: 'image',
@@ -66,6 +81,14 @@ defineMessages({
   html: {
     id: 'html',
     defaultMessage: 'HTML',
+  },
+  leadimage: {
+    id: 'leadimage',
+    defaultMessage: 'Lead Image Field',
+  },
+  listing: {
+    id: 'listing',
+    defaultMessage: 'Listing',
   },
   // Groups
   mostUsed: {
@@ -137,6 +160,12 @@ const blocksConfig = {
       addPermission: [],
       view: [],
     },
+    blockHasValue: (data) => {
+      const isEmpty =
+        !data.text ||
+        (data.text?.blocks?.length === 1 && data.text.blocks[0].text === '');
+      return !isEmpty;
+    },
   },
   image: {
     id: 'image',
@@ -153,6 +182,43 @@ const blocksConfig = {
       view: [],
     },
   },
+  leadimage: {
+    id: 'leadimage',
+    title: 'Lead Image Field',
+    icon: cameraSVG,
+    group: 'media',
+    view: ViewLeadImageBlock,
+    edit: EditLeadImageBlock,
+    restricted: false,
+    mostUsed: false,
+    sidebarTab: 1,
+    security: {
+      addPermission: [],
+      view: [],
+    },
+  },
+  listing: {
+    id: 'listing',
+    title: 'Listing',
+    icon: listBulletSVG,
+    group: 'common',
+    view: ViewListingBlock,
+    edit: EditListingBlock,
+    restricted: false,
+    mostUsed: true,
+    sidebarTab: 1,
+    security: {
+      addPermission: [],
+      view: [],
+    },
+    templates: {
+      default: { label: 'Default', template: DefaultListingBlockTemplate },
+      imageGallery: {
+        label: 'Image gallery',
+        template: ImageGalleryListingBlockTemplate,
+      },
+    },
+  },
   video: {
     id: 'video',
     title: 'Video',
@@ -162,6 +228,21 @@ const blocksConfig = {
     edit: EditVideoBlock,
     restricted: false,
     mostUsed: true,
+    sidebarTab: 1,
+    security: {
+      addPermission: [],
+      view: [],
+    },
+  },
+  toc: {
+    id: 'toc',
+    title: 'Table of Contents',
+    icon: tocSVG,
+    group: 'common',
+    view: ViewToCBlock,
+    edit: EditToCBlock,
+    restricted: false,
+    mostUsed: false,
     sidebarTab: 0,
     security: {
       addPermission: [],
@@ -193,7 +274,7 @@ const blocksConfig = {
     edit: EditMapBlock,
     restricted: false,
     mostUsed: false,
-    sidebarTab: 0,
+    sidebarTab: 1,
     security: {
       addPermission: [],
       view: [],
@@ -234,4 +315,6 @@ const blocksConfig = {
 
 const requiredBlocks = ['title'];
 
-export { groupBlocksOrder, requiredBlocks, blocksConfig };
+const initialBlocks = {};
+
+export { groupBlocksOrder, requiredBlocks, blocksConfig, initialBlocks };

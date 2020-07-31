@@ -8,7 +8,7 @@ import {
   ADD_MESSAGE,
   REMOVE_MESSAGE,
   PURGE_MESSAGES,
-} from '../../constants/ActionTypes';
+} from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
   messages: [],
@@ -49,8 +49,8 @@ export default function messages(state = initialState, action = {}) {
     case PURGE_MESSAGES:
       return {
         messages: map(
-          filter(state.messages, message => message.show),
-          message => ({
+          filter(state.messages, (message) => message.show),
+          (message) => ({
             ...message,
             show: false,
           }),

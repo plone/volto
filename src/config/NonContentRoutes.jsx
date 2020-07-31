@@ -1,4 +1,6 @@
 // Non Content Routes/Views
+// You can include either RegEx or a string representing the ending of the
+// nonContentRoute eg. '/add' will match '/foo/bar/add'
 export const nonContentRoutes = [
   /\?.*$/,
   '/add',
@@ -10,6 +12,7 @@ export const nonContentRoutes = [
   '/layout',
   '/login',
   '/logout',
+  '/sitemap',
   '/register',
   '/sharing',
   '/search',
@@ -19,6 +22,8 @@ export const nonContentRoutes = [
   '/contact-form',
   '/personal-information',
   '/personal-preferences',
-  'register',
-  'password-reset',
+  '/register',
+  /\/password-reset\/.*$/,
+  '/password-reset',
+  '/create-translation',
 ];

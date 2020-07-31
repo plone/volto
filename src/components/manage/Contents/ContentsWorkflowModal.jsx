@@ -10,8 +10,8 @@ import { compose } from 'redux';
 import { concat, filter, last, map, uniqBy } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 
-import { getWorkflow, transitionWorkflow } from '../../../actions';
-import { ModalForm } from '../../../components';
+import { getWorkflow, transitionWorkflow } from '@plone/volto/actions';
+import { ModalForm } from '@plone/volto/components';
 
 const messages = defineMessages({
   default: {
@@ -21,6 +21,10 @@ const messages = defineMessages({
   stateTitle: {
     id: 'Change State',
     defaultMessage: 'Change State',
+  },
+  includeChildrenTitle: {
+    id: 'Change workflow state recursively',
+    defaultMessage: 'Change workflow state recursively',
   },
   stateDescription: {
     id: 'Select the transition to be used for modifying the items state.',
@@ -99,7 +103,7 @@ class ContentsWorkflowModal extends Component {
    * @param {string} state New state
    * @returns {undefined}
    */
-  onSubmit({ state }) {
+  onSubmit({ state, include_children }) {
     if (!state) {
       return;
     }
@@ -108,12 +112,13 @@ class ContentsWorkflowModal extends Component {
       filter(
         map(
           concat(
-            ...map(this.props.workflows, workflow => workflow.transitions),
+            ...map(this.props.workflows, (workflow) => workflow.transitions),
           ),
-          item => item['@id'],
+          (item) => item['@id'],
         ),
-        x => last(x.split('/')) === state,
+        (x) => last(x.split('/')) === state,
       ),
+      include_children,
     );
   }
 
@@ -136,7 +141,7 @@ class ContentsWorkflowModal extends Component {
               {
                 id: 'default',
                 title: this.props.intl.formatMessage(messages.default),
-                fields: ['state'],
+                fields: ['state', 'include_children'],
               },
             ],
             properties: {
@@ -151,13 +156,19 @@ class ContentsWorkflowModal extends Component {
                     concat(
                       ...map(
                         this.props.workflows,
-                        workflow => workflow.transitions,
+                        (workflow) => workflow.transitions,
                       ),
                     ),
-                    x => x.title,
+                    (x) => x.title,
                   ),
-                  y => [last(y['@id'].split('/')), y.title],
+                  (y) => [last(y['@id'].split('/')), y.title],
                 ),
+              },
+              include_children: {
+                title: this.props.intl.formatMessage(
+                  messages.includeChildrenTitle,
+                ),
+                type: 'boolean',
               },
             },
             required: [],
@@ -171,7 +182,7 @@ class ContentsWorkflowModal extends Component {
 export default compose(
   injectIntl,
   connect(
-    state => ({
+    (state) => ({
       request: state.workflow.transition,
       workflows: state.workflow.multiple,
     }),

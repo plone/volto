@@ -1,5 +1,5 @@
 import { listActions } from './actions';
-import { LIST_ACTIONS } from '../../constants/ActionTypes';
+import { LIST_ACTIONS } from '@plone/volto/constants/ActionTypes';
 
 describe('Actions action', () => {
   describe('listActions', () => {

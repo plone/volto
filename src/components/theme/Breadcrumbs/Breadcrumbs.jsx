@@ -12,8 +12,8 @@ import { Breadcrumb, Container, Segment } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 
 import { Icon } from '@plone/volto/components';
-import { getBreadcrumbs } from '../../../actions';
-import { getBaseUrl } from '../../../helpers';
+import { getBreadcrumbs } from '@plone/volto/actions';
+import { getBaseUrl } from '@plone/volto/helpers';
 
 import homeSVG from '@plone/volto/icons/home.svg';
 
@@ -21,6 +21,10 @@ const messages = defineMessages({
   home: {
     id: 'Home',
     defaultMessage: 'Home',
+  },
+  breadcrumbs: {
+    id: 'Breadcrumbs',
+    defaultMessage: 'Breadcrumbs',
   },
 });
 
@@ -76,7 +80,7 @@ class Breadcrumbs extends Component {
     return (
       <Segment
         role="navigation"
-        aria-label="Breadcrumbs"
+        aria-label={this.props.intl.formatMessage(messages.breadcrumbs)}
         className="breadcrumbs"
         secondary
         vertical
@@ -112,7 +116,7 @@ class Breadcrumbs extends Component {
 export default compose(
   injectIntl,
   connect(
-    state => ({
+    (state) => ({
       items: state.breadcrumbs.items,
     }),
     { getBreadcrumbs },

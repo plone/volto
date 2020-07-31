@@ -6,7 +6,7 @@
 import { map } from 'lodash';
 import { settings } from '~/config';
 
-import { GET_BREADCRUMBS } from '../../constants/ActionTypes';
+import { GET_BREADCRUMBS } from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
   error: null,
@@ -35,7 +35,7 @@ export default function breadcrumbs(state = initialState, action = {}) {
       return {
         ...state,
         error: null,
-        items: map(action.result.items, item => ({
+        items: map(action.result.items, (item) => ({
           title: item.title,
           url: item['@id'].replace(settings.apiPath, ''),
         })),

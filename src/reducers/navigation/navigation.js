@@ -6,7 +6,7 @@
 import { map } from 'lodash';
 import { settings } from '~/config';
 
-import { GET_NAVIGATION } from '../../constants/ActionTypes';
+import { GET_NAVIGATION } from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
   error: null,
@@ -23,7 +23,7 @@ const initialState = {
  * @returns {*} The navigation items object (recursive)
  */
 function getRecursiveItems(items) {
-  return map(items, item => ({
+  return map(items, (item) => ({
     title: item.title,
     url: item['@id'].replace(settings.apiPath, ''),
     ...(item.items && { items: getRecursiveItems(item.items) }),

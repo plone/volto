@@ -12,8 +12,8 @@ import { Helmet } from '@plone/volto/helpers';
 import { Container } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import { Form } from '../../../components';
-import { setInitialPassword } from '../../../actions';
+import { Form } from '@plone/volto/components';
+import { setInitialPassword } from '@plone/volto/actions';
 
 const messages = defineMessages({
   title: {
@@ -82,6 +82,10 @@ const messages = defineMessages({
       'Your password has been set successfully. You may now {link} with your new password.',
     defaultMessage:
       'Your password has been set successfully. You may now {link} with your new password.',
+  },
+  passwordReset: {
+    id: 'Password reset',
+    defaultMessage: 'Password reset',
   },
 });
 
@@ -217,7 +221,9 @@ class PasswordReset extends Component {
     if (this.props.token) {
       return (
         <div id="page-password-reset">
-          <Helmet title="Password reset" />
+          <Helmet
+            title={this.props.intl.formatMessage(messages.passwordReset)}
+          />
           <Container>
             <Form
               title={this.props.intl.formatMessage(messages.title)}
