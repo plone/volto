@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "6.4.1",
+  "version": "7.5.1",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -47,7 +47,7 @@
     "lint": "./node_modules/eslint/bin/eslint.js --max-warnings=0 'src/**/*.{js,jsx,json}'",
     "lint:fix": "./node_modules/eslint/bin/eslint.js --fix 'src/**/*.{js,jsx,json}'",
     "i18n": "rm -rf build/messages && NODE_ENV=production node src/i18n.js",
-    "code-analysis:i18n": "yarn i18n && git diff -G'^[^\"POT]' --exit-code",
+    "i18n:ci": "yarn i18n && git diff -G'^[^\"POT]' --exit-code",
     "stylelint:patches": "patch -p0 -N node_modules/stylelint/lib/getPostcssResult.js < patches/fixstylelint.patch || true",
     "patches": "/bin/bash patches/patchit.sh > /dev/null 2>&1 ||true",
     "deduplicate": "yarn-deduplicate yarn.lock",
@@ -98,7 +98,8 @@
       "@plone/volto/(.*)$": "<rootDir>/src/$1",
       "~/config": "<rootDir>/src/config",
       "~/../locales/${lang}.json": "<rootDir>/locales/en.json",
-      "(.*)/locales/(.*)": "<rootDir>/locales/$2"
+      "(.*)/locales/(.*)": "<rootDir>/locales/$2",
+      "load-volto-addons": "<rootDir>/dummy-addons-loader.js"
     },
     "coverageThreshold": {
       "global": {
@@ -114,7 +115,12 @@
     "globalSetup": "./global-test-setup.js",
     "globals": {
       "__DEV__": true
-    }
+    },
+    "testMatch": [
+      "<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}",
+      "<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs}",
+      "<rootDir>/__tests__/**/?(*.)(spec|test).{js,jsx,mjs}"
+    ]
   },
   "prettier": {
     "trailingComma": "all",
@@ -223,6 +229,7 @@
     "@babel/plugin-proposal-throw-expressions": "7.8.3",
     "@babel/plugin-syntax-dynamic-import": "7.8.3",
     "@babel/plugin-syntax-import-meta": "7.8.3",
+    "@babel/plugin-transform-modules-commonjs": "7.10.4",
     "@loadable/babel-plugin": "5.12.0",
     "@loadable/component": "5.12.0",
     "@loadable/server": "5.12.0",
@@ -242,9 +249,9 @@
     "classnames": "2.2.6",
     "connected-react-router": "6.8.0",
     "coveralls": "3.0.2",
-    "cypress": "4.5.0",
+    "cypress": "4.10.0",
     "cypress-axe": "0.8.1",
-    "cypress-file-upload": "3.5.3",
+    "cypress-file-upload": "4.0.7",
     "cypress-plugin-retries": "1.5.2",
     "detect-browser": "5.1.0",
     "diff": "3.5.0",
@@ -285,12 +292,14 @@
     "less-loader": "6.1.0",
     "lint-staged": "10.2.2",
     "locale": "0.1.0",
-    "lodash": "4.17.15",
+    "lodash": "4.17.19",
     "lodash-move": "1.1.1",
     "lodash-webpack-plugin": "0.11.5",
     "mem": "4.0.0",
     "mini-css-extract-plugin": "0.9.0",
     "moment": "2.24.0",
+    "moment-locales-webpack-plugin": "1.2.0",
+    "moment-timezone": "^0.5.31",
     "pofile": "1.0.10",
     "postcss-flexbugs-fixes": "4.2.1",
     "postcss-loader": "3.0.0",
@@ -304,7 +313,7 @@
     "query-string": "4.1.0",
     "raven": "2.6.4",
     "raven-js": "3.27.2",
-    "razzle": "3.1.2",
+    "razzle": "3.1.5",
     "razzle-plugin-bundle-analyzer": "1.2.0",
     "rc-time-picker": "3.7.3",
     "react": "16.13.1",
@@ -362,8 +371,11 @@
     "yarn-deduplicate": "2.0.0",
     "yarnhook": "0.4.3"
   },
-  "devDependencies": {},
-  "resolutions" : {
+  "devDependencies": {
+    "crypto-random-string": "3.2.0",
+    "tmp": "0.2.1"
+  },
+  "resolutions": {
     "http-proxy": "^1.18.1"
   }
 }

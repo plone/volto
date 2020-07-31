@@ -310,10 +310,9 @@ const schemaField = (factory, intl, fieldsets) => ({
 
 /**
  * schema for adding a new field
- * @param {string} factory
  * @param {Object} intl
  */
-const fieldsetSchema = (factory, intl) => ({
+const fieldsetSchema = (intl) => ({
   fieldsets: [
     {
       id: 'default',
@@ -1250,13 +1249,7 @@ class SchemaWidget extends Component {
                 {
                   id: 'default',
                   title: this.props.intl.formatMessage(messages.default),
-                  fields: [
-                    'factory',
-                    'title',
-                    'minLength',
-                    'description',
-                    'required',
-                  ],
+                  fields: ['factory', 'title', 'description', 'required'],
                 },
               ],
               properties: {
