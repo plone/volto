@@ -107,6 +107,7 @@ class ContactForm extends Component {
     super(props);
     this.onSubmit = this.onSubmit.bind(this);
     this.onCancel = this.onCancel.bind(this);
+    this.state = { isClient: false };
   }
 
   /**
@@ -125,6 +126,15 @@ class ContactForm extends Component {
         />,
       );
     }
+  }
+
+  /**
+   * Component did mount
+   * @method componentDidMount
+   * @returns {undefined}
+   */
+  componentDidMount() {
+    this.setState({ isClient: true });
   }
 
   /**
@@ -207,24 +217,26 @@ class ContactForm extends Component {
               required: ['from', 'message'],
             }}
           />
-          <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
-            <Toolbar
-              pathname={this.props.pathname}
-              inner={
-                <Link
-                  to={`${getBaseUrl(this.props.pathname)}`}
-                  className="item"
-                >
-                  <Icon
-                    name="arrow left"
-                    size="big"
-                    color="blue"
-                    title={this.props.intl.formatMessage(messages.back)}
-                  />
-                </Link>
-              }
-            />
-          </Portal>
+          {this.state.isClient && (
+            <Portal node={document.getElementById('toolbar')}>
+              <Toolbar
+                pathname={this.props.pathname}
+                inner={
+                  <Link
+                    to={`${getBaseUrl(this.props.pathname)}`}
+                    className="item"
+                  >
+                    <Icon
+                      name="arrow left"
+                      size="big"
+                      color="blue"
+                      title={this.props.intl.formatMessage(messages.back)}
+                    />
+                  </Link>
+                }
+              />
+            </Portal>
+          )}
         </Container>
       </div>
     );
