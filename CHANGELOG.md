@@ -1,16 +1,23 @@
 # Change Log
 
-## 7.5.2 (unreleased)
+## 7.6.1 (unreleased)
 
 ### Breaking
 
 ### Feature
 
 - Making Content browser aware of context @iFlameing
+- Fix click-select block on unknown block type @nileshgulia1
 
 ### Bugfix
 
 ### Internal
+
+## 7.6.0 (2020-07-31)
+
+### Feature
+
+- Added recurrence widget @giuliaghisini
 
 ## 7.5.1 (2020-07-29)
 
@@ -102,12 +109,6 @@
 ### Feature
 
 - Added default Export for the QuerystringWidget for the ListingBlock @steffenri
-
-### Breaking
-
-### Feature
-
-- Added recurrence widget @giuliaghisini
 
 ### Bugfix
 
