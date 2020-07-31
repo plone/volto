@@ -7,6 +7,7 @@
 ### Feature
 
 - Added recurrence widget @giuliaghisini
+- Removed datepicker z-index @giuliaghisini
 
 ### Bugfix
 
