@@ -6,6 +6,7 @@
 
 ### Feature
 
+- Making Content browser aware of context @iFlameing
 - Fix click-select block on unknown block type @nileshgulia1
 
 ### Bugfix
