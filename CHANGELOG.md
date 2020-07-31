@@ -12,6 +12,8 @@
 
 ### Internal
 
+- Export connected widget classes, to allow extending @tiberiuichim
+
 ## 7.5.1 (2020-07-29)
 
 ### Bugfix
@@ -640,8 +642,6 @@ refer to all of them in https://github.com/plone/volto/releases
 - Add permission check to edit form @sneridagh
 
 ### Changes
-
-- Export connected widget classes, to allow extending @tiberiuichim
 
 - Fix and improve Error in SSR @sneridagh
 - Fix `LinkAnchorPlugin` press Enter key inside blocks with draftJS widgets @sneridagh
