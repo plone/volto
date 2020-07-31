@@ -187,6 +187,7 @@ class Edit extends Component {
         row: 0,
         cell: 0,
       },
+      isClient: false,
     };
     this.onSelectCell = this.onSelectCell.bind(this);
     this.onInsertRowBefore = this.onInsertRowBefore.bind(this);
@@ -218,6 +219,7 @@ class Edit extends Component {
         table: initialTable,
       });
     }
+    this.setState({ isClient: true });
   }
 
   /**
@@ -656,10 +658,8 @@ class Edit extends Component {
             </Table.Body>
           </Table>
         )}
-        {this.props.selected && (
-          <Portal
-            node={__CLIENT__ && document.getElementById('sidebar-properties')}
-          >
+        {this.props.selected && this.state.isClient && (
+          <Portal node={document.getElementById('sidebar-properties')}>
             <Form method="post" onSubmit={(event) => event.preventDefault()}>
               <Segment secondary attached>
                 <FormattedMessage id="Table" defaultMessage="Table" />
