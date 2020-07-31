@@ -29,11 +29,8 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('#toolbar-add').click();
       cy.get('#toolbar-add-image').click();
       cy.get('input[name="title"]').type('My image');
-      cy.fixture('image.png', 'base64').then(fileContent => {
-        cy.get('#field-image').upload(
-          { fileContent, fileName: 'image.png', mimeType: 'image/png' },
-          { subjectType: 'input' },
-        );
+      cy.get('#field-image').attachFile('image.png', {
+        subjectType: 'input',
       });
       cy.get('#toolbar-save').click();
       cy.visit('/my-folder/my-document');
