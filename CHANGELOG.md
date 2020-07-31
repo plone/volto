@@ -1,5 +1,15 @@
 # Change Log
 
+## 7.6.1 (unreleased)
+
+### Breaking
+
+### Feature
+
+### Bugfix
+
+### Internal
+
 ## 7.6.0 (2020-07-31)
 
 ### Feature
