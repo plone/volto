@@ -367,8 +367,9 @@ class Form extends Component {
         ]),
       },
       selected: selectPrev
-        ? this.contextData[blocksLayoutFieldname].items[
-            this.contextData[blocksLayoutFieldname].items.indexOf(id) - 1
+        ? this.contextData.formData[blocksLayoutFieldname].items[
+            this.contextData.formData[blocksLayoutFieldname].items.indexOf(id) -
+              1
           ]
         : null,
     });
