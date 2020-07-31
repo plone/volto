@@ -1,14 +1,41 @@
 # Change Log
 
-## 7.3.1 (unreleased)
+## 7.5.2 (unreleased)
 
 ### Breaking
 
 ### Feature
 
+- Added recurrence widget @giuliaghisini
+
 ### Bugfix
 
 ### Internal
+
+## 7.5.1 (2020-07-29)
+
+### Bugfix
+
+- Avoid React hydration complaining about mismatched server output in toolbar. In component rendering, replaced the use of `__CLIENT__` with a state-stored `isClient`, as that is more correct. @tiberiuichim
+
+## 7.5.0 (2020-07-29)
+
+### Feature
+
+- Used moment-timezone to set a specific server timezone as default for DatetimeWidget. @razvanMiu
+
+## 7.4.0 (2020-07-29)
+
+### Feature
+
+- Highlight the sidebar toggle button with a small flashing animation @silviubogan @tiberiuichim
+
+## 7.3.1 (2020-07-28)
+
+### Bugfix
+
+- Solved a browser console error in /contents view (#1695) @silviubogan
+- Pagination icon fix @nileshgulia1
 
 ## 7.3.0 (2020-07-26)
 
