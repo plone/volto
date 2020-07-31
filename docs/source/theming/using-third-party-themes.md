@@ -97,10 +97,10 @@ body.cms-ui {
 }
 ```
 
-to avoid troubles on basical stuff.
+to avoid troubles on basical stuff: this is useful to have the correct font in the public-ui component showed while in a cms-view.
 
 !!! tip
-    Consider adding `public-ui` CSS class as a wrapper for your components, so they will be using your public theme.
+    Consider adding `public-ui` CSS class as a wrapper for your components, so they will be using your public theme. A good example of this is for the blocks, that need the public-ui styles both while viewing the object and while editing it.
     On the other hand, many Volto components are using `cms-ui`.
 
 For any other customization, you can put styles in your site theme and override stuff taking advantage of semantic composition engine.
