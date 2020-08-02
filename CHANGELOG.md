@@ -13,6 +13,8 @@
 
 ### Internal
 
+- Wrap addon configuration loaders in a wrapper to check that they return back config @tiberiuichim
+
 ## 7.6.0 (2020-07-31)
 
 ### Feature
