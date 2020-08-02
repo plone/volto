@@ -1,17 +1,24 @@
 # Change Log
 
-## 7.5.2 (unreleased)
+## 7.6.1 (unreleased)
 
 ### Breaking
 
 ### Feature
 
 - Allow Volto projects to customize (via webpack resolve aliases) addons. Allow addons to customize Volto and other addons. Allow Volto projects to customize Volto in a `src/customizations/volto` folder, for better organization of the customizations folder. @tiberiuichim @sneridagh
-- Added recurrence widget @giuliaghisini
+- Making Content browser aware of context @iFlameing
+- Fix click-select block on unknown block type @nileshgulia1
 
 ### Bugfix
 
 ### Internal
+
+## 7.6.0 (2020-07-31)
+
+### Feature
+
+- Added recurrence widget @giuliaghisini
 
 ## 7.5.1 (2020-07-29)
 
