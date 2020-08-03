@@ -84,6 +84,10 @@ msgstr "ブロックを追加…"
 msgid "Add criteria"
 msgstr "基準を追加"
 
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Add date"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Add field"
 msgstr "フィールドを追加"
@@ -119,6 +123,10 @@ msgstr "{type} を追加"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Add-ons Settings"
 msgstr "アドオン設定"
+
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+msgid "Additional date"
+msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -395,6 +403,10 @@ msgstr "現在のパスワード"
 msgid "Cut"
 msgstr "カット"
 
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Daily"
+msgstr ""
+
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database Information"
 msgstr "データベースの情報"
@@ -566,6 +578,10 @@ msgstr "フィールドを編集"
 msgid "Edit fieldset"
 msgstr "フィールドセットを編集"
 
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Edit recurrence"
+msgstr ""
+
 #: components/manage/Form/InlineForm
 msgid "Edit values"
 msgstr "値を編集"
@@ -647,6 +663,10 @@ msgstr "エラー"
 msgid "Exclude from navigation"
 msgstr "ナビゲーションに含まない"
 
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+msgid "Exclude this occurence"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Excluded from navigation"
 msgstr "ナビゲーションから除く"
@@ -688,6 +708,10 @@ msgstr "ファイル名"
 msgid "Filter…"
 msgstr "フィルター…"
 
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+msgid "First"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 msgid "Fixed width table cells"
 msgstr "テーブルのセル幅を固定"
@@ -699,6 +723,10 @@ msgstr "フォルダ"
 #: components/theme/Forbidden/Forbidden
 msgid "Forbidden"
 msgstr "Forbidden(未翻訳)"
+
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+msgid "Fourth"
+msgstr ""
 
 #: components/theme/ContactForm/ContactForm
 msgid "From"
@@ -795,6 +823,10 @@ msgstr "アカウントを持っていない場合、ここが {registrationform
 msgid "Image"
 msgstr "画像"
 
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+msgid "Include this occurence"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/Controlpanel
@@ -837,6 +869,22 @@ msgstr "インストール済み"
 msgid "Installed version"
 msgstr "インストール済バージョン"
 
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Interval Daily"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Interval Monthly"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Interval Weekly"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Interval Yearly"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingData
 msgid "Item batch size"
 msgstr "1ページ表示件数"
@@ -866,6 +914,10 @@ msgstr "アイテムはユニークである必要があります。"
 #: components/manage/Preferences/PersonalPreferences
 msgid "Language"
 msgstr "言語"
+
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+msgid "Last"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Last comment date"
@@ -971,6 +1023,18 @@ msgstr "コメントのモデレート"
 msgid "Moderate comments"
 msgstr "コメントのモデレート"
 
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Monday and Friday"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
+msgid "Month day"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Monthly"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 msgid "More"
 msgstr "もっと見る"
@@ -1034,6 +1098,10 @@ msgstr "アイテムが選択されていません"
 msgid "No map selected"
 msgstr "マップが選択されていません"
 
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+msgid "No occurences set"
+msgstr ""
+
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TokenWidget
@@ -1079,6 +1147,10 @@ msgstr "有効なオブジェクトの数"
 #: components/manage/Contents/Contents
 msgid "Object Size"
 msgstr "オブジェクトサイズ"
+
+#: components/manage/Widgets/RecurrenceWidget/EndField
+msgid "Occurences"
+msgstr ""
 
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -1214,6 +1286,18 @@ msgstr "もっと読む"
 msgid "Rearrange items by…"
 msgstr "何で並べ替えますか"
 
+#: components/manage/Widgets/RecurrenceWidget/EndField
+msgid "Recurrence ends"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/EndField
+msgid "Recurrence ends after"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/EndField
+msgid "Recurrence ends on"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 msgid "Reduce complexity"
 msgstr "見出し行の背景色を変更しない"
@@ -1227,6 +1311,10 @@ msgstr "登録"
 msgid "Registration form"
 msgstr "登録フォーム"
 
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Remove recurrence"
+msgstr ""
+
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 msgid "Rename"
@@ -1235,6 +1323,18 @@ msgstr "名前の変更"
 #: components/manage/Contents/ContentsRenameModal
 msgid "Rename items"
 msgstr "名前の変更"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Repeat"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Repeat every"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Repeat on"
+msgstr ""
 
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
@@ -1301,6 +1401,10 @@ msgstr "ロール"
 msgid "Save"
 msgstr "保存"
 
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Save recurrence"
+msgstr ""
+
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search"
 msgstr "検索"
@@ -1333,6 +1437,14 @@ msgstr "検索"
 msgid "Search users…"
 msgstr "ユーザーを検索…"
 
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+msgid "Second"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Select a date to add to recurrence"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Select columns to show"
 msgstr "表示する列を選択"
@@ -1344,6 +1456,10 @@ msgstr "選択の基準"
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Select the transition to be used for modifying the items state."
 msgstr "アイテムの状態を変更するために遷移を選んでください"
+
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+msgid "Selected dates"
+msgstr ""
 
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Selected items"
@@ -1474,6 +1590,10 @@ msgstr "分割"
 msgid "Start Date"
 msgstr "開始日付"
 
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+msgid "Start of the recurrence"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Start password reset"
 msgstr "パスワード再設定を開始"
@@ -1595,6 +1715,10 @@ msgstr "エラーが発生しました"
 #: components/manage/Form/ModalForm
 msgid "There were some errors."
 msgstr "いくつかのエラーが発生しました"
+
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+msgid "Third"
+msgstr ""
 
 #: components/manage/Contents/ContentsRenameModal
 msgid "This name will be displayed in the URL."
@@ -1818,6 +1942,18 @@ msgstr "We apologize for the inconvenience, but you don't have permissions on th
 msgid "We will use this address if you need to recover your password"
 msgstr "あなたのパスワードを回復する必要がある場合、このアドレスが使われます。"
 
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+msgid "Weeek day of month"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Weekday"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Weekly"
+msgstr ""
+
 #: components/manage/History/History
 msgid "What"
 msgstr "何を"
@@ -1837,6 +1973,10 @@ msgstr "誰が"
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
 msgstr "ワークフローがアップデートされました"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Yearly"
+msgstr ""
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypes
@@ -1993,15 +2133,24 @@ msgstr "メディア"
 
 #: config/Blocks
 msgid "mostUsed"
-msgstr "よく使う物"
+msgstr "よく使う物<<<<<<< HEAD"
 
 #: components/manage/Contents/ContentsItem
 msgid "no workflow state"
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
+#: components/manage/Widgets/RecurrenceWidget/ByYearField
+msgid "of the month"
+msgstr ""
+
 #: error
 msgid "or try a different page."
 msgstr "または、他のページを試してください。"
+
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+msgid "others"
+msgstr ""
 
 #: components/manage/Contents/ContentsItem
 msgid "private"
@@ -2026,6 +2175,134 @@ msgstr "件 見つかりました"
 #: error
 msgid "return to the site root"
 msgstr "サイトルートに戻ってください。"
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_and"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_approximate"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_at"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_dateFormat"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_day"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_days"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_every"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_for"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_hour"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_hours"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_in"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_last"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_minutes"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_month"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_months"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_nd"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_on"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_on the"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_or"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_rd"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_st"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_th"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_the"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_time"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_times"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_until"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_week"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_weekday"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_weekdays"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_weeks"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_year"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_years"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "sort"

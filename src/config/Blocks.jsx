@@ -167,6 +167,12 @@ const blocksConfig = {
       addPermission: [],
       view: [],
     },
+    blockHasValue: (data) => {
+      const isEmpty =
+        !data.text ||
+        (data.text?.blocks?.length === 1 && data.text.blocks[0].text === '');
+      return !isEmpty;
+    },
   },
   image: {
     id: 'image',

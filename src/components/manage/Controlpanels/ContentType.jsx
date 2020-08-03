@@ -89,6 +89,7 @@ class ContentType extends Component {
     this.state = {
       visual: false,
       error: null,
+      isClient: false,
     };
 
     this.onCancel = this.onCancel.bind(this);
@@ -103,6 +104,15 @@ class ContentType extends Component {
    */
   UNSAFE_componentWillMount() {
     this.props.getControlpanel(join([this.props.parent, this.props.id], '/'));
+  }
+
+  /**
+   * Component did mount
+   * @method componentDidMount
+   * @returns {undefined}
+   */
+  componentDidMount() {
+    this.setState({ isClient: true });
   }
 
   /**
@@ -201,43 +211,47 @@ class ContentType extends Component {
             hideActions
             loading={this.props.cpanelRequest.update.loading}
           />
-          <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
-            <Toolbar
-              pathname={this.props.pathname}
-              hideDefaultViewButtons
-              inner={
-                <>
-                  <Button
-                    id="toolbar-save"
-                    className="save"
-                    aria-label={this.props.intl.formatMessage(messages.save)}
-                    onClick={() => this.form.current.onSubmit()}
-                    disabled={this.props.cpanelRequest.update.loading}
-                    loading={this.props.cpanelRequest.update.loading}
-                  >
-                    <Icon
-                      name={saveSVG}
-                      className="circled"
-                      size="30px"
-                      title={this.props.intl.formatMessage(messages.save)}
-                    />
-                  </Button>
-                  <Button
-                    className="cancel"
-                    aria-label={this.props.intl.formatMessage(messages.cancel)}
-                    onClick={() => this.onCancel()}
-                  >
-                    <Icon
-                      name={clearSVG}
-                      className="circled"
-                      size="30px"
-                      title={this.props.intl.formatMessage(messages.cancel)}
-                    />
-                  </Button>
-                </>
-              }
-            />
-          </Portal>
+          {this.state.isClient && (
+            <Portal node={document.getElementById('toolbar')}>
+              <Toolbar
+                pathname={this.props.pathname}
+                hideDefaultViewButtons
+                inner={
+                  <>
+                    <Button
+                      id="toolbar-save"
+                      className="save"
+                      aria-label={this.props.intl.formatMessage(messages.save)}
+                      onClick={() => this.form.current.onSubmit()}
+                      disabled={this.props.updateRequest.loading}
+                      loading={this.props.updateRequest.loading}
+                    >
+                      <Icon
+                        name={saveSVG}
+                        className="circled"
+                        size="30px"
+                        title={this.props.intl.formatMessage(messages.save)}
+                      />
+                    </Button>
+                    <Button
+                      className="cancel"
+                      aria-label={this.props.intl.formatMessage(
+                        messages.cancel,
+                      )}
+                      onClick={() => this.onCancel()}
+                    >
+                      <Icon
+                        name={clearSVG}
+                        className="circled"
+                        size="30px"
+                        title={this.props.intl.formatMessage(messages.cancel)}
+                      />
+                    </Button>
+                  </>
+                }
+              />
+            </Portal>
+          )}
         </div>
       );
     }

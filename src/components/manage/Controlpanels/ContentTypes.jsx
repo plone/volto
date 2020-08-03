@@ -140,6 +140,7 @@ class ContentTypes extends Component {
       showDelete: false,
       typeToDelete: undefined,
       error: null,
+      isClient: false,
     };
   }
 
@@ -150,6 +151,15 @@ class ContentTypes extends Component {
    */
   UNSAFE_componentWillMount() {
     this.props.getControlpanel(this.props.id);
+  }
+
+  /**
+   * Component did mount
+   * @method componentDidMount
+   * @returns {undefined}
+   */
+  componentDidMount() {
+    this.setState({ isClient: true });
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -480,40 +490,42 @@ class ContentTypes extends Component {
             </section>
           </article>
         </Container>
-        <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
-          <Toolbar
-            pathname={this.props.pathname}
-            hideDefaultViewButtons
-            inner={
-              <>
-                <Link to={getParentUrl(this.props.pathname)} className="item">
-                  <Icon
-                    name={backSVG}
-                    size="30px"
-                    className="contents circled"
-                    title={this.props.intl.formatMessage(messages.back)}
-                  />
-                </Link>
-                <Button
-                  className="add"
-                  aria-label={this.props.intl.formatMessage(messages.add)}
-                  tabIndex={0}
-                  id="toolbar-add"
-                  onClick={() => {
-                    this.setState({ showAddType: true });
-                  }}
-                >
-                  <Icon
-                    name={addSVG}
-                    title={this.props.intl.formatMessage(
-                      messages.addTypeButtonTitle,
-                    )}
-                  />
-                </Button>
-              </>
-            }
-          />
-        </Portal>
+        {this.state.isClient && (
+          <Portal node={document.getElementById('toolbar')}>
+            <Toolbar
+              pathname={this.props.pathname}
+              hideDefaultViewButtons
+              inner={
+                <>
+                  <Link to={getParentUrl(this.props.pathname)} className="item">
+                    <Icon
+                      name={backSVG}
+                      size="30px"
+                      className="contents circled"
+                      title={this.props.intl.formatMessage(messages.back)}
+                    />
+                  </Link>
+                  <Button
+                    className="add"
+                    aria-label={this.props.intl.formatMessage(messages.add)}
+                    tabIndex={0}
+                    id="toolbar-add"
+                    onClick={() => {
+                      this.setState({ showAddType: true });
+                    }}
+                  >
+                    <Icon
+                      name={addSVG}
+                      title={this.props.intl.formatMessage(
+                        messages.addTypeButtonTitle,
+                      )}
+                    />
+                  </Button>
+                </>
+              }
+            />
+          </Portal>
+        )}
       </Container>
     );
   }

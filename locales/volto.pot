@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-06-23T13:40:41.529Z\n"
+"POT-Creation-Date: 2020-06-29T13:46:51.194Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -12,11 +12,6 @@ msgstr ""
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8\n"
 "Domain: volto\n"
-
-#: components/manage/Blocks/HTML/Edit
-# defaultMessage: <p>Add some HTML here</p>
-msgid "<p>Add some HTML here</p>"
-msgstr ""
 
 #: components/theme/Footer/Footer
 # defaultMessage: Accessibility
@@ -94,6 +89,11 @@ msgstr ""
 msgid "Add criteria"
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Add date
+msgid "Add date"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Add field
 msgid "Add field"
@@ -139,6 +139,11 @@ msgstr ""
 msgid "Add-ons Settings"
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+# defaultMessage: Additional date
+msgid "Additional date"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/MapsSidebar
@@ -181,7 +186,6 @@ msgstr ""
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentType
-#: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Controlpanels
@@ -245,21 +249,10 @@ msgstr ""
 msgid "Cache Name"
 msgstr ""
 
-#: components/manage/Controlpanels/ContentTypeLayout
-# defaultMessage: Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled
-msgid "Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled"
-msgstr ""
-
-#: components/manage/Controlpanels/ContentTypeLayout
-# defaultMessage: Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>
-msgid "Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>"
-msgstr ""
-
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsToolbar
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/ContentType
-#: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Delete/Delete
@@ -312,7 +305,6 @@ msgid "Changes saved"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentType
-#: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/Controlpanel
 # defaultMessage: Changes saved.
 msgid "Changes saved."
@@ -469,6 +461,11 @@ msgstr ""
 #: components/manage/Contents/ContentsItem
 # defaultMessage: Cut
 msgid "Cut"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Daily
+msgid "Daily"
 msgstr ""
 
 #: components/manage/Controlpanels/DatabaseInformation
@@ -673,6 +670,11 @@ msgstr ""
 msgid "Edit fieldset"
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Edit recurrence
+msgid "Edit recurrence"
+msgstr ""
+
 #: components/manage/Form/InlineForm
 # defaultMessage: Edit values
 msgid "Edit values"
@@ -701,16 +703,6 @@ msgstr ""
 #: components/manage/Blocks/Maps/View
 # defaultMessage: Embeded Google Maps
 msgid "Embeded Google Maps"
-msgstr ""
-
-#: components/manage/Controlpanels/ContentTypeLayout
-# defaultMessage: Enable Volto Blocks
-msgid "Enable Volto Blocks"
-msgstr ""
-
-#: components/manage/Controlpanels/ContentTypeLayout
-# defaultMessage: Enable editable Blocks
-msgid "Enable editable Blocks"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -772,6 +764,11 @@ msgstr ""
 msgid "Exclude from navigation"
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+# defaultMessage: Exclude this occurence
+msgid "Exclude this occurence"
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: Excluded from navigation
 msgid "Excluded from navigation"
@@ -823,6 +820,11 @@ msgstr ""
 msgid "Filter…"
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+# defaultMessage: First
+msgid "First"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Fixed width table cells
 msgid "Fixed width table cells"
@@ -836,6 +838,11 @@ msgstr ""
 #: components/theme/Forbidden/Forbidden
 # defaultMessage: Forbidden
 msgid "Forbidden"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+# defaultMessage: Fourth
+msgid "Fourth"
 msgstr ""
 
 #: components/theme/ContactForm/ContactForm
@@ -955,8 +962,12 @@ msgstr ""
 msgid "Image"
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+# defaultMessage: Include this occurence
+msgid "Include this occurence"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentType
-#: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/Controlpanel
 # defaultMessage: Info
 msgid "Info"
@@ -1007,6 +1018,26 @@ msgstr ""
 msgid "Installed version"
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: days
+msgid "Interval Daily"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Month(s)
+msgid "Interval Monthly"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: week(s)
+msgid "Interval Weekly"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: year(s)
+msgid "Interval Yearly"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingData
 # defaultMessage: Item batch size
 msgid "Item batch size"
@@ -1044,6 +1075,11 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+# defaultMessage: Last
+msgid "Last"
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: Last comment date
 msgid "Last comment date"
@@ -1057,11 +1093,6 @@ msgstr ""
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Latest version
 msgid "Latest version"
-msgstr ""
-
-#: components/manage/Controlpanels/ContentTypes
-# defaultMessage: Layout
-msgid "Layout"
 msgstr ""
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -1172,6 +1203,21 @@ msgstr ""
 msgid "Moderate comments"
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Monday and Friday
+msgid "Monday and Friday"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
+# defaultMessage: Day
+msgid "Month day"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Monthly
+msgid "Monthly"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: More
 msgid "More"
@@ -1250,6 +1296,11 @@ msgstr ""
 msgid "No map selected"
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+# defaultMessage: No occurences set
+msgid "No occurences set"
+msgstr ""
+
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TokenWidget
@@ -1304,6 +1355,11 @@ msgstr ""
 #: components/manage/Contents/Contents
 # defaultMessage: Object Size
 msgid "Object Size"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/EndField
+# defaultMessage: occurrence(s)
+msgid "Occurences"
 msgstr ""
 
 #: components/manage/Delete/Delete
@@ -1470,6 +1526,21 @@ msgstr ""
 msgid "Rearrange items by…"
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget/EndField
+# defaultMessage: Ends
+msgid "Recurrence ends"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/EndField
+# defaultMessage: after
+msgid "Recurrence ends after"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/EndField
+# defaultMessage: on
+msgid "Recurrence ends on"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Reduce complexity
 msgid "Reduce complexity"
@@ -1486,6 +1557,11 @@ msgstr ""
 msgid "Registration form"
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Remove
+msgid "Remove recurrence"
+msgstr ""
+
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 # defaultMessage: Rename
@@ -1495,6 +1571,21 @@ msgstr ""
 #: components/manage/Contents/ContentsRenameModal
 # defaultMessage: Rename items
 msgid "Rename items"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Repeat
+msgid "Repeat"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Repeat every
+msgid "Repeat every"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Repeat on
+msgid "Repeat on"
 msgstr ""
 
 #: components/manage/Widgets/CheckboxWidget
@@ -1563,7 +1654,6 @@ msgstr ""
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentType
-#: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
@@ -1572,6 +1662,11 @@ msgstr ""
 #: components/manage/Sharing/Sharing
 # defaultMessage: Save
 msgid "Save"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Save
+msgid "Save recurrence"
 msgstr ""
 
 #: components/theme/SearchWidget/SearchWidget
@@ -1614,6 +1709,16 @@ msgstr ""
 msgid "Search users…"
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+# defaultMessage: Second
+msgid "Second"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Select a date to add to recurrence
+msgid "Select a date to add to recurrence"
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: Select columns to show
 msgid "Select columns to show"
@@ -1627,6 +1732,11 @@ msgstr ""
 #: components/manage/Contents/ContentsWorkflowModal
 # defaultMessage: Select the transition to be used for modifying the items state.
 msgid "Select the transition to be used for modifying the items state."
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+# defaultMessage: Selected dates
+msgid "Selected dates"
 msgstr ""
 
 #: components/manage/Sidebar/ObjectBrowserBody
@@ -1665,11 +1775,6 @@ msgstr ""
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Set your password
 msgid "Set your password"
-msgstr ""
-
-#: components/manage/Sidebar/Sidebar
-# defaultMessage: Settings
-msgid "Settings"
 msgstr ""
 
 #: components/manage/Sharing/Sharing
@@ -1785,6 +1890,11 @@ msgstr ""
 #: components/manage/Contents/Contents
 # defaultMessage: Start Date
 msgid "Start Date"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+# defaultMessage: Start of the recurrence
+msgid "Start of the recurrence"
 msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
@@ -1936,6 +2046,11 @@ msgstr ""
 msgid "There were some errors."
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+# defaultMessage: Third
+msgid "Third"
+msgstr ""
+
 #: components/manage/Contents/ContentsRenameModal
 # defaultMessage: This name will be displayed in the URL.
 msgid "This name will be displayed in the URL."
@@ -2076,11 +2191,6 @@ msgstr ""
 msgid "Upload a lead image in the 'Lead Image' content field."
 msgstr ""
 
-#: components/manage/Blocks/HeroImageLeft/Edit
-# defaultMessage: Upload a new image
-msgid "Upload a new image"
-msgstr ""
-
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Upload files
 msgid "Upload files"
@@ -2212,6 +2322,21 @@ msgstr ""
 msgid "We will use this address if you need to recover your password"
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+# defaultMessage: The
+msgid "Weeek day of month"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Weekday
+msgid "Weekday"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Weekly
+msgid "Weekly"
+msgstr ""
+
 #: components/manage/History/History
 # defaultMessage: What
 msgid "What"
@@ -2235,6 +2360,11 @@ msgstr ""
 #: components/manage/Workflow/Workflow
 # defaultMessage: Workflow updated.
 msgid "Workflow updated."
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Yearly
+msgid "Yearly"
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
@@ -2438,9 +2568,20 @@ msgstr ""
 msgid "no workflow state"
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
+#: components/manage/Widgets/RecurrenceWidget/ByYearField
+# defaultMessage: of the month
+msgid "of the month"
+msgstr ""
+
 #: error
 # defaultMessage: or try a different page.
 msgid "or try a different page."
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+# defaultMessage: others
+msgid "others"
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
@@ -2471,6 +2612,166 @@ msgstr ""
 #: error
 # defaultMessage: return to the site root
 msgid "return to the site root"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: and
+msgid "rrule_and"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: (~approximate)
+msgid "rrule_approximate"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: at
+msgid "rrule_at"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: [month] [day], [year]
+msgid "rrule_dateFormat"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: day
+msgid "rrule_day"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: days
+msgid "rrule_days"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: every
+msgid "rrule_every"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: for
+msgid "rrule_for"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: hour
+msgid "rrule_hour"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: hours
+msgid "rrule_hours"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: in
+msgid "rrule_in"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: last
+msgid "rrule_last"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: minutes
+msgid "rrule_minutes"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: month
+msgid "rrule_month"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: months
+msgid "rrule_months"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: nd
+msgid "rrule_nd"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: on
+msgid "rrule_on"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: on the
+msgid "rrule_on the"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: or
+msgid "rrule_or"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: rd
+msgid "rrule_rd"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: st
+msgid "rrule_st"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: th
+msgid "rrule_th"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: the
+msgid "rrule_the"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: time
+msgid "rrule_time"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: times
+msgid "rrule_times"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: until
+msgid "rrule_until"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: week
+msgid "rrule_week"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: weekday
+msgid "rrule_weekday"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: weekdays
+msgid "rrule_weekdays"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: weeks
+msgid "rrule_weeks"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: year
+msgid "rrule_year"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: years
+msgid "rrule_years"
 msgstr ""
 
 #: components/manage/Contents/Contents

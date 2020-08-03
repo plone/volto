@@ -169,6 +169,7 @@ class Edit extends Component {
         ) : (
           <div
             role="presentation"
+            onClick={() => this.props.onSelectBlock(this.props.id)}
             onKeyDown={(e) =>
               this.props.handleKeyDown(
                 e,
