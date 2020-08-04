@@ -2,16 +2,15 @@
 
 ## 7.6.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
+- Allow addons to provide less files @tiberiuichim
 - Making Content browser aware of context @iFlameing
-- Fix click-select block on unknown block type @nileshgulia1
 
 ### Bugfix
 
-### Internal
+- Fix click-select block on unknown block type @nileshgulia1
+
 
 ## 7.6.0 (2020-07-31)
 
