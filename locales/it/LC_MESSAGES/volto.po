@@ -2022,6 +2022,10 @@ msgstr "La istruzioni per reimpostare la tua password sono state inviate. Dovreb
 msgid "draft"
 msgstr "Bozza"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "email"
+msgstr ""
+
 #: components/theme/View/EventView
 msgid "event_alldates"
 msgstr "Tutte le date"
@@ -2070,6 +2074,10 @@ msgstr "HTML"
 msgid "image"
 msgstr "Immagine"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "integer"
+msgstr ""
+
 #: components/manage/Contents/ContentsItem
 msgid "intranet"
 msgstr "Pubbliato internamente"
@@ -2106,14 +2114,14 @@ msgstr "Più usati<<<<<<< HEAD"
 msgid "no workflow state"
 msgstr "Nessun stato di workflow>>>>>>> master"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "number"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
 #: components/manage/Widgets/RecurrenceWidget/ByYearField
 msgid "of the month"
 msgstr "del mese======="
-
-#: helpers/MessageLabels/MessageLabels
-msgid "number"
-msgstr ""
 
 #: error
 msgid "or try a different page."

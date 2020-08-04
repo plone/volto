@@ -2037,6 +2037,10 @@ msgstr "Der Link, um das Passwort neu zu setzen, wurde Ihnen zugesendet. Die E-M
 msgid "draft"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+msgid "email"
+msgstr ""
+
 #: components/theme/View/EventView
 msgid "event_alldates"
 msgstr "Alle Termine"
@@ -2085,6 +2089,10 @@ msgstr "HTML"
 msgid "image"
 msgstr "Bild"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "integer"
+msgstr ""
+
 #: components/manage/Contents/ContentsItem
 msgid "intranet"
 msgstr ""
@@ -2121,13 +2129,13 @@ msgstr "Häufig genutzt<<<<<<< HEAD"
 msgid "no workflow state"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+msgid "number"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
 #: components/manage/Widgets/RecurrenceWidget/ByYearField
 msgid "of the month"
-msgstr ""
-
-#: helpers/MessageLabels/MessageLabels
-msgid "number"
 msgstr ""
 
 #: error

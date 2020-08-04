@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-06-29T13:46:51.194Z\n"
+"POT-Creation-Date: 2020-07-31T07:02:45.643Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -2477,6 +2477,11 @@ msgstr ""
 msgid "draft"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Input must be valid email (something@domain.com)
+msgid "email"
+msgstr ""
+
 #: components/theme/View/EventView
 # defaultMessage: All dates
 msgid "event_alldates"
@@ -2537,6 +2542,11 @@ msgstr ""
 msgid "image"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Input must be integer
+msgid "integer"
+msgstr ""
+
 #: components/manage/Contents/ContentsItem
 # defaultMessage: Intranet
 msgid "intranet"
@@ -2580,6 +2590,11 @@ msgstr ""
 #: components/manage/Contents/ContentsItem
 # defaultMessage: No workflow state
 msgid "no workflow state"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Input must be number
+msgid "number"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
