@@ -284,6 +284,9 @@ export const ObjectListWidget = injectIntl(
                     count: value.length,
                   })}
                 />
+                <button onClick={() => setOpen(true)}>
+                  <VoltoIcon name={penSVG} size="18px" />
+                </button>
 
                 {onEdit && (
                   <div className="toolbar">
@@ -293,7 +296,6 @@ export const ObjectListWidget = injectIntl(
                       className="item ui noborder button"
                       data-testid="big-pen-button"
                       onClick={() => {
-                        setOpen(true);
                         onEdit(id, schema);
                       }}
                     >
