@@ -10,6 +10,7 @@ import { stateFromHTML } from 'draft-js-import-html';
 import { Editor, DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
 import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
+import { settings } from '~/config';
 
 const messages = defineMessages({
   description: {
@@ -145,7 +146,10 @@ class Edit extends Component {
           blockRenderMap={extendedBlockRenderMap}
           handleReturn={() => {
             this.props.onSelectBlock(
-              this.props.onAddBlock('text', this.props.index + 1),
+              this.props.onAddBlock(
+                settings.defaultBlockType,
+                this.props.index + 1,
+              ),
             );
             return 'handled';
           }}
