@@ -31,7 +31,7 @@ import {
   Sharing,
   Sitemap,
   UsersControlpanel,
-  View
+  View,
 } from '@plone/volto/components';
 import { addonRoutes } from '~/config';
 
@@ -72,7 +72,7 @@ export const defaultRoutes = [
     component: Controlpanels,
   },
   {
-    path: '/controlpanel/dexterity-types/:id/fields',
+    path: '/controlpanel/dexterity-types/:id/schema',
     component: ContentTypeMetadata,
   },
   {

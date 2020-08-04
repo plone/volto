@@ -268,7 +268,7 @@ class ContentTypes extends Component {
    */
   addFields(event, { value }) {
     if (value) {
-      this.props.history.push(`${this.props.pathname}/${value}/fields`);
+      this.props.history.push(`${this.props.pathname}/${value}/schema`);
     }
   }
 
