@@ -5,7 +5,8 @@
 ### Breaking
 
 ### Feature
-
+- Allow addons to provide less files @tiberiuichim
+- Highlight the sidebar toggle button with a small flashing animation @silviubogan @tiberiuichim
 - Making Content browser aware of context @iFlameing
 - Fix click-select block on unknown block type @nileshgulia1
 
