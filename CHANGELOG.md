@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Add cms-only theme that allows to completely remove semantic-ui from public facing views @pnicolli @nzambello
+
 ### Bugfix
 
 ### Internal
@@ -236,7 +238,6 @@
 ### Feature
 
 - Added `react-beautiful-dnd` in core for edit form @iFlameing
-- Added cms-only theme that allows to completely remove semantic-ui from public facing views @pnicolli @nzambello
 
 ### Bugfix
 
