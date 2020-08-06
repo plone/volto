@@ -15,10 +15,19 @@ This upgrade guide lists all breaking changes in Volto and explains the
 A misspelled file has been renamed. If you import `strickthrough.svg` in your
 project, you'll now find that file at `@plone/volto/icons/strikethrough.svg`.
 
+### Upgrade package.json testing configuration
+
+You should add the following value to the `moduleNameMapper` property of the
+`jest` key in your project's package.json:
+
+```
+"load-volto-addons": "<rootDir>/node_modules/@plone/volto/jest-addons-loader.js",
+```
+
 
 ### New webpack resolve alias for Volto themes
 
-As a "nice to have", a new resolve alias is provided that points to Volto's 
+As a "nice to have", a new resolve alias is provided that points to Volto's
 theme folder. So, in your project's `theme.config` file, you can replace:
 
 ```less
