@@ -194,6 +194,22 @@ class Edit extends Component {
   }
 
   /**
+   * @param {*} nextProps
+   * @param {*} nextState
+   * @returns {boolean}
+   * @memberof Edit
+   */
+  shouldComponentUpdate(nextProps, nextState) {
+    if (
+      this.state.titleEditorState === nextState.titleEditorState &&
+      this.state.descriptionEditorState === nextState.descriptionEditorState
+    ) {
+      return false;
+    }
+    return true;
+  }
+
+  /**
    * Change Title handler
    * @method onChangeTitle
    * @param {object} titleEditorState Editor state.
