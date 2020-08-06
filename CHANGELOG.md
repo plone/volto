@@ -1,18 +1,27 @@
 # Change Log
 
-## 7.6.1 (unreleased)
+## 7.7.1 (unreleased)
 
 ### Breaking
 
 ### Feature
 
 - Allow Volto projects to customize (via webpack resolve aliases) addons. Allow addons to customize Volto and other addons. Allow Volto projects to customize Volto in a `src/customizations/volto` folder, for better organization of the customizations folder. @tiberiuichim @sneridagh
-- Making Content browser aware of context @iFlameing
-- Fix click-select block on unknown block type @nileshgulia1
-
 ### Bugfix
 
 ### Internal
+
+## 7.7.0 (2020-08-04)
+
+### Feature
+
+- Allow addons to provide less files @tiberiuichim
+- Making Content browser aware of context @iFlameing
+
+### Bugfix
+
+- Fix click-select block on unknown block type @nileshgulia1
+
 
 ## 7.6.0 (2020-07-31)
 
