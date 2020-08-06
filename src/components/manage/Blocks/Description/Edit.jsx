@@ -113,6 +113,17 @@ class Edit extends Component {
   }
 
   /**
+   * @param {*} nextProps
+   * @param {*} nextState
+   * @returns {boolean}
+   * @memberof Edit
+   */
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.state.editorState === nextState.editorState) {
+      return false;
+    }
+  }
+  /**
    * Change handler
    * @method onChange
    * @param {object} editorState Editor state.
