@@ -15,7 +15,6 @@ import PropTypes from 'prop-types';
 import { Icon as VoltoIcon } from '@plone/volto/components';
 
 import deleteSVG from '@plone/volto/icons/delete.svg';
-import penSVG from '@plone/volto/icons/pen.svg';
 import addSVG from '@plone/volto/icons/add.svg';
 
 import ObjectWidget from './ObjectWidget';
@@ -264,12 +263,10 @@ export const ObjectListWidget = injectIntl(
               <Grid.Column width="4">
                 <div className="wrapper">
                   <label htmlFor={`field-${id}`}>
-                    {onEdit && (
-                      <i
-                        aria-hidden="true"
-                        className="grey bars icon drag handle"
-                      />
-                    )}
+                    <i
+                      aria-hidden="true"
+                      className="grey bars icon drag handle"
+                    />
                     {title}
                   </label>
                 </div>
@@ -279,39 +276,38 @@ export const ObjectListWidget = injectIntl(
                   id={`field-${id}`}
                   name={id}
                   disabled={true}
-                  icon={penSVG}
                   value={intl.formatMessage(messages.count, {
                     count: value.length,
                   })}
                 />
 
-                {onEdit && (
-                  <div className="toolbar">
-                    <Button
-                      aria-label={intl.formatMessage(messages.edit)}
-                      title={intl.formatMessage(messages.edit)}
-                      className="item ui noborder button"
-                      data-testid="big-pen-button"
-                      onClick={() => {
-                        setOpen(true);
+                <div className="toolbar">
+                  <Button
+                    aria-label={intl.formatMessage(messages.edit)}
+                    title={intl.formatMessage(messages.edit)}
+                    className="item ui noborder button"
+                    data-testid="big-pen-button"
+                    onClick={() => {
+                      setOpen(true);
+                      if (typeof onEdit === 'function') {
                         onEdit(id, schema);
-                      }}
-                    >
-                      <Icon name="write square" size="large" color="blue" />
-                    </Button>
-                    <Button
-                      aria-label={intl.formatMessage(messages.delete)}
-                      title={intl.formatMessage(messages.delete)}
-                      className="item ui noborder button"
-                      onClick={() => {
-                        onChange(id, []);
-                        onDelete(id);
-                      }}
-                    >
-                      <Icon name="close" size="large" color="red" />
-                    </Button>
-                  </div>
-                )}
+                      }
+                    }}
+                  >
+                    <Icon name="write square" size="large" color="blue" />
+                  </Button>
+                  <Button
+                    aria-label={intl.formatMessage(messages.delete)}
+                    title={intl.formatMessage(messages.delete)}
+                    className="item ui noborder button"
+                    onClick={() => {
+                      onChange(id, []);
+                      onDelete(id);
+                    }}
+                  >
+                    <Icon name="close" size="large" color="red" />
+                  </Button>
+                </div>
 
                 {map(error, (message) => (
                   <Label key={message} basic color="red" pointing>

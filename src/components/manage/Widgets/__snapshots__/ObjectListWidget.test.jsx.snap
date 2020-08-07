@@ -646,7 +646,7 @@ exports[`renders an object list widget component 1`] = `
         className="eight wide column"
       >
         <div
-          className="ui disabled icon input"
+          className="ui disabled input"
         >
           <input
             disabled={true}
@@ -656,17 +656,6 @@ exports[`renders an object list widget component 1`] = `
             tabIndex={-1}
             type="text"
             value="A collection of 2 items"
-          />
-          <i
-            aria-hidden="true"
-            attributes={
-              Object {
-                "viewBox": "",
-                "xmlns": "",
-              }
-            }
-            className="icon"
-            onClick={[Function]}
           />
         </div>
         <div
@@ -750,7 +739,7 @@ exports[`renders an object list widget component and changes its value by clicki
           class="eight wide column"
         >
           <div
-            class="ui disabled icon input"
+            class="ui disabled input"
           >
             <input
               disabled=""
@@ -759,11 +748,6 @@ exports[`renders an object list widget component and changes its value by clicki
               tabindex="-1"
               type="text"
               value="A collection of 2 items"
-            />
-            <i
-              aria-hidden="true"
-              attributes="[object Object]"
-              class="icon"
             />
           </div>
           <div
@@ -847,7 +831,7 @@ exports[`renders an object list widget component and changes its value by clicki
           class="eight wide column"
         >
           <div
-            class="ui disabled icon input"
+            class="ui disabled input"
           >
             <input
               disabled=""
@@ -856,11 +840,6 @@ exports[`renders an object list widget component and changes its value by clicki
               tabindex="-1"
               type="text"
               value="A collection of 2 items"
-            />
-            <i
-              aria-hidden="true"
-              attributes="[object Object]"
-              class="icon"
             />
           </div>
           <div
