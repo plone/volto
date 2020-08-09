@@ -124,6 +124,19 @@ class Edit extends Component {
   }
 
   /**
+   * @param {*} nextProps
+   * @param {*} nextState
+   * @returns {boolean}
+   * @memberof Editq
+   */
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.state.addNewBlockOpened !== nextState.addNewBlockOpened) {
+      return true;
+    }
+    return this.props.data.text !== nextProps.data.text;
+  }
+
+  /**
    * Component will unmount
    * @method componentWillUnmount
    * @returns {undefined}

@@ -119,8 +119,14 @@ class Edit extends Component {
    * @memberof Edit
    */
   shouldComponentUpdate(nextProps, nextState) {
-    return this.state.editorState !== nextState.editorState;
+    if (
+      nextProps.properties.description &&
+      this.props.properties.description !== nextProps.properties.description
+    )
+      return true;
+    else return false;
   }
+
   /**
    * Change handler
    * @method onChange
