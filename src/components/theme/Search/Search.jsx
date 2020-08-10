@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 import { asyncConnect } from 'redux-connect';
 import { FormattedMessage } from 'react-intl';
 import { Portal } from 'react-portal';
-import { Container, Pagination } from 'semantic-ui-react';
+import { Container, Pagination, Button, Segment } from 'semantic-ui-react';
 import qs from 'query-string';
 
 import { settings } from '~/config';
@@ -152,6 +152,10 @@ class Search extends Component {
     });
   };
 
+  onsortHandle = (e) => {
+    this.props.searchContent('', { sort_on: e.target.name });
+  };
+
   /**
    * Render method.
    * @method render
@@ -194,6 +198,16 @@ class Search extends Component {
               )}
             </header>
             <section id="content-core">
+              <Segment>
+                <FormattedMessage id="Sort By" defaultMessage="Sort By" />
+                <Button onClick={this.onsortHandle} name="sortable_title">
+                  Alphabetically
+                </Button>
+                <Button onClick={this.onsortHandle} name="effective">
+                  date(newest first)
+                </Button>
+              </Segment>
+
               {this.props.items.map((item) => (
                 <article className="tileItem" key={item['@id']}>
                   <h2 className="tileHeadline">

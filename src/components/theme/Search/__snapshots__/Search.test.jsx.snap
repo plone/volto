@@ -27,6 +27,25 @@ exports[`Search renders a search component 1`] = `
       <section
         id="content-core"
       >
+        <div
+          className="ui segment"
+        >
+          Sort By
+          <button
+            className="ui button"
+            name="sortable_title"
+            onClick={[Function]}
+          >
+            Alphabetically
+          </button>
+          <button
+            className="ui button"
+            name="effective"
+            onClick={[Function]}
+          >
+            date(newest first)
+          </button>
+        </div>
         <article
           className="tileItem"
         >
@@ -100,7 +119,27 @@ exports[`Search renders an empty search component 1`] = `
       </header>
       <section
         id="content-core"
-      />
+      >
+        <div
+          className="ui segment"
+        >
+          Sort By
+          <button
+            className="ui button"
+            name="sortable_title"
+            onClick={[Function]}
+          >
+            Alphabetically
+          </button>
+          <button
+            className="ui button"
+            name="effective"
+            onClick={[Function]}
+          >
+            date(newest first)
+          </button>
+        </div>
+      </section>
     </article>
   </div>
   <div
