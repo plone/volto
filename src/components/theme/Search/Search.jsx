@@ -153,7 +153,12 @@ class Search extends Component {
   };
 
   onsortHandle = (e) => {
-    this.props.searchContent('', { sort_on: e.target.name });
+    this.setState({ currentPage: 1 });
+    const options = qs.parse(this.props.location.search);
+    this.props.searchContent('', {
+      ...options,
+      sort_on: e.target.name,
+    });
   };
 
   /**
