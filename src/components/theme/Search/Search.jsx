@@ -22,18 +22,6 @@ import { SearchTags, Toolbar, Icon } from '@plone/volto/components';
 import paginationLeftSVG from '@plone/volto/icons/left-key.svg';
 import paginationRightSVG from '@plone/volto/icons/right-key.svg';
 
-const toSearchOptions = (searchableText, subject, path) => {
-  return {
-    ...(searchableText && { SearchableText: searchableText }),
-    ...(subject && {
-      Subject: subject,
-    }),
-    ...(path && {
-      path: path,
-    }),
-  };
-};
-
 /**
  * Search class.
  * @class SearchComponent
@@ -84,11 +72,7 @@ class Search extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillMount() {
-    this.doSearch(
-      this.props.searchableText,
-      this.props.subject,
-      this.props.path,
-    );
+    this.doSearch();
   }
 
   /**
@@ -107,15 +91,8 @@ class Search extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps = (nextProps) => {
-    if (
-      nextProps.searchableText !== this.props.searchableText ||
-      nextProps.subject !== this.props.subject
-    ) {
-      this.doSearch(
-        nextProps.searchableText,
-        nextProps.subject,
-        this.props.path,
-      );
+    if (this.props.location.search !== nextProps.location.search) {
+      this.doSearch();
     }
   };
 
@@ -128,23 +105,16 @@ class Search extends Component {
    * @returns {undefined}
    */
 
-  doSearch = (searchableText, subject, path) => {
+  doSearch = () => {
+    const options = qs.parse(this.props.history.location.search);
     this.setState({ currentPage: 1 });
-    this.props.searchContent(
-      '',
-      toSearchOptions(searchableText, subject, path),
-    );
+    this.props.searchContent('', options);
   };
 
   handleQueryPaginationChange = (e, { activePage }) => {
     window.scrollTo(0, 0);
+    let options = qs.parse(this.props.history.location.search);
     this.setState({ currentPage: activePage }, () => {
-      const options = toSearchOptions(
-        qs.parse(this.props.location.search).SearchableText,
-        qs.parse(this.props.location.search).Subject,
-        qs.parse(this.props.location.search).path,
-      );
-
       this.props.searchContent('', {
         ...options,
         b_start: (this.state.currentPage - 1) * settings.defaultPageSize,
@@ -153,11 +123,17 @@ class Search extends Component {
   };
 
   onsortHandle = (e) => {
-    this.setState({ currentPage: 1 });
-    const options = qs.parse(this.props.location.search);
-    this.props.searchContent('', {
-      ...options,
-      sort_on: e.target.name,
+    let options = qs.parse(this.props.location.search);
+    options.sort_on = e.target.name;
+    if (e.target.name === 'effective') {
+      options = { ...options, sort_order: 'reverse' };
+    }
+    let searchParams = qs.stringify(options);
+    this.setState({ currentPage: 1 }, () => {
+      // eslint-disable-next-line no-restricted-globals
+      this.props.history.replace({
+        search: searchParams,
+      });
     });
   };
 
@@ -290,10 +266,8 @@ class Search extends Component {
 export const __test__ = connect(
   (state, props) => ({
     items: state.search.items,
-    searchableText: qs.parse(props.location.search).SearchableText,
-    subject: qs.parse(props.location.search).Subject,
-    path: qs.parse(props.location.search).path,
-    pathname: props.location.pathname,
+    searchableText: qs.parse(props.history.location.search).SearchableText,
+    pathname: props.history.location.pathname,
   }),
   { searchContent },
 )(Search);
@@ -302,9 +276,7 @@ export default compose(
   connect(
     (state, props) => ({
       items: state.search.items,
-      searchableText: qs.parse(props.location.search).SearchableText,
-      subject: qs.parse(props.location.search).Subject,
-      path: qs.parse(props.location.search).path,
+      searchableText: qs.parse(props.history.location.search).SearchableText,
       pathname: props.location.pathname,
     }),
     { searchContent },
@@ -312,17 +284,8 @@ export default compose(
   asyncConnect([
     {
       key: 'search',
-      promise: ({ location, store: { dispatch } }) =>
-        dispatch(
-          searchContent(
-            '',
-            toSearchOptions(
-              qs.parse(location.search).SearchableText,
-              qs.parse(location.search).Subject,
-              qs.parse(location.search).path,
-            ),
-          ),
-        ),
+      promise: ({ history, store: { dispatch } }) =>
+        dispatch(searchContent('', qs.parse(history.location.search))),
     },
   ]),
 )(Search);
