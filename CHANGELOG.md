@@ -16,11 +16,11 @@
 
 - Allow addons to provide less files @tiberiuichim
 - Making Content browser aware of context @iFlameing
+- Refactoring Search component to handle the search query @iFlameing
 
 ### Bugfix
 
 - Fix click-select block on unknown block type @nileshgulia1
-
 
 ## 7.6.0 (2020-07-31)
 
