@@ -1,6 +1,6 @@
 # Change Log
 
-## 7.2.1 (unreleased)
+## 7.7.1 (unreleased)
 
 ### Breaking
 
@@ -10,7 +10,67 @@
 
 ### Internal
 
+## 7.7.0 (2020-08-04)
+
+### Feature
+
+- Allow addons to provide less files @tiberiuichim
+- Making Content browser aware of context @iFlameing
+
+### Bugfix
+
+- Fix click-select block on unknown block type @nileshgulia1
+
+
+## 7.6.0 (2020-07-31)
+
+### Feature
+
+- Added recurrence widget @giuliaghisini
+
+## 7.5.1 (2020-07-29)
+
+### Bugfix
+
+- Avoid React hydration complaining about mismatched server output in toolbar. In component rendering, replaced the use of `__CLIENT__` with a state-stored `isClient`, as that is more correct. @tiberiuichim
+
+## 7.5.0 (2020-07-29)
+
+### Feature
+
+- Used moment-timezone to set a specific server timezone as default for DatetimeWidget. @razvanMiu
+
+## 7.4.0 (2020-07-29)
+
+### Feature
+
+- Highlight the sidebar toggle button with a small flashing animation @silviubogan @tiberiuichim
+
+## 7.3.1 (2020-07-28)
+
+### Bugfix
+
+- Solved a browser console error in /contents view (#1695) @silviubogan
+- Pagination icon fix @nileshgulia1
+
+## 7.3.0 (2020-07-26)
+
+### Feature
+
+- Add Placeholder attribute to Textwidget and TextAreaWidget @iFlameing
+- Make the default block type (currently draftjs text) configurable @tiberiuichim @silviubogan
+
+### Internal
+
+- Upgrade lodash dependency to 4.17.19 @tisto
+- Add a new blocks helper method, `getBlocks`. It simplifies using `getBlocksFieldname` and `getBlocksLayoutFieldname` under a single method that returns ordered pairs of `[blockid, blockvalue]` @tiberiuichim
+
+## 7.2.1 (2020-07-16)
+
+### Internal
+
 - Upgrade to Cypress 4.10.0 @tisto
+- Upgrade to cypress-file-upload 4.0.7 @iFlameing
 
 ## 7.2.0 (2020-07-13)
 
@@ -33,7 +93,6 @@
 - Managed hidden fields @giuliaghisini
 - Fix bug in addon loading with namespaced packages @tiberiuichim
 - Japanese translation updated @terapyon
-
 
 - Upgrade razzle to `^3.1.5`. @tiberiuichim
 
@@ -117,7 +176,6 @@
 - Added internationalization for French language @bsuttor #1588
 - use of maximumSelectionSize from plone in ObjectBrowserWidget. @giuliaghisini
 - Added selectableTypes in ObjectBrowserWidget @giuliaghisini
-
 
 ### Bugfix
 
