@@ -265,6 +265,7 @@ class AddLinkForm extends Component {
                     basic
                     className="cancel"
                     onClick={(e) => {
+                      e.preventDefault();
                       e.stopPropagation();
                       this.clear();
                     }}
@@ -278,6 +279,7 @@ class AddLinkForm extends Component {
                     basic
                     icon
                     onClick={(e) => {
+                      e.preventDefault();
                       e.stopPropagation();
                       this.props.openObjectBrowser({
                         mode: 'link',
@@ -298,6 +300,7 @@ class AddLinkForm extends Component {
                   primary
                   disabled={!value.length > 0}
                   onClick={(e) => {
+                    e.preventDefault();
                     e.stopPropagation();
                     this.onSubmit();
                   }}
