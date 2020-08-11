@@ -1546,6 +1546,10 @@ msgstr "Taille : {size}"
 msgid "Sorry, something went wrong with your request"
 msgstr "Désolé, quelque chose s'est mal passé avec votre demande"
 
+#: components/theme/Search/Search
+msgid "Sort By"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingData
 msgid "Sort on"
 msgstr "Trier sur"

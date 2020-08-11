@@ -1536,6 +1536,10 @@ msgstr "サイズ: {size}"
 msgid "Sorry, something went wrong with your request"
 msgstr "申し訳ありません。問題が発生したために処理できませんでした。"
 
+#: components/theme/Search/Search
+msgid "Sort By"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingData
 msgid "Sort on"
 msgstr "ソート順"

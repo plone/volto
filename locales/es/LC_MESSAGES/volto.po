@@ -1539,6 +1539,10 @@ msgstr ""
 msgid "Sorry, something went wrong with your request"
 msgstr "Lo siento, algo estuvo mal con su solicitud "
 
+#: components/theme/Search/Search
+msgid "Sort By"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingData
 msgid "Sort on"
 msgstr ""

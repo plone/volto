@@ -1529,6 +1529,10 @@ msgstr "Mărime: {size}"
 msgid "Sorry, something went wrong with your request"
 msgstr "Ne pare rău, a apârut o eroare"
 
+#: components/theme/Search/Search
+msgid "Sort By"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingData
 msgid "Sort on"
 msgstr "Sortare pe"

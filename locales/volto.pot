@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-06-29T13:46:51.194Z\n"
+"POT-Creation-Date: 2020-08-11T15:49:48.696Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1864,6 +1864,11 @@ msgstr ""
 #: error
 # defaultMessage: Sorry, something went wrong with your request 
 msgid "Sorry, something went wrong with your request"
+msgstr ""
+
+#: components/theme/Search/Search
+# defaultMessage: Sort By
+msgid "Sort By"
 msgstr ""
 
 #: components/manage/Blocks/Listing/ListingData
