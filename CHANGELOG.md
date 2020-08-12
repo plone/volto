@@ -10,6 +10,9 @@
 
 ### Internal
 
+- Bump serialize-javascript from 2.1.1 to 3.1.0 @timo
+- Bump prismjs from 1.17.1 to 1.21.0 @timo
+
 ## 7.7.0 (2020-08-04)
 
 ### Feature
