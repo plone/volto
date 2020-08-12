@@ -122,12 +122,10 @@ class Search extends Component {
     });
   };
 
-  onsortHandle = (e) => {
-    let options = qs.parse(this.props.location.search);
-    options.sort_on = e.target.name;
-    if (e.target.name === 'effective') {
-      options = { ...options, sort_order: 'reverse' };
-    }
+  onSortChange = (event, sort_order) => {
+    let options = qs.parse(this.props.history.location.search);
+    options.sort_on = event.target.name;
+    options.sort_order = sort_order || 'ascending';
     let searchParams = qs.stringify(options);
     this.setState({ currentPage: 1 }, () => {
       // eslint-disable-next-line no-restricted-globals
@@ -181,11 +179,27 @@ class Search extends Component {
             <section id="content-core">
               <Segment>
                 <FormattedMessage id="Sort By" defaultMessage="Sort By" />
-                <Button onClick={this.onsortHandle} name="sortable_title">
-                  Alphabetically
+                <Button
+                  onClick={(event) => {
+                    this.onSortChange(event);
+                  }}
+                  name="sortable_title"
+                >
+                  <FormattedMessage
+                    id="Alphabetically"
+                    defaultMessage="Alphabetically"
+                  />
                 </Button>
-                <Button onClick={this.onsortHandle} name="effective">
-                  date(newest first)
+                <Button
+                  onClick={(event) => {
+                    this.onSortChange(event, 'reverse');
+                  }}
+                  name="effective"
+                >
+                  <FormattedMessage
+                    id="date(newest first)"
+                    defaultMessage="date(newest first)"
+                  />
                 </Button>
               </Segment>
 
@@ -284,8 +298,8 @@ export default compose(
   asyncConnect([
     {
       key: 'search',
-      promise: ({ history, store: { dispatch } }) =>
-        dispatch(searchContent('', qs.parse(history.location.search))),
+      promise: ({ location, store: { dispatch } }) =>
+        dispatch(searchContent('', qs.parse(location.search))),
     },
   ]),
 )(Search);
