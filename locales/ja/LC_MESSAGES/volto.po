@@ -62,7 +62,7 @@ msgstr "新規追加"
 
 #: components/manage/Toolbar/Types
 msgid "Add Translation…"
-msgstr ""
+msgstr "翻訳を追加…"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add User"
@@ -202,7 +202,7 @@ msgstr "デフォルトでは、このアイテムのコンテナからのパー
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Cache Name"
-msgstr ""
+msgstr "キャッシュの名前"
 
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsToolbar
@@ -309,7 +309,7 @@ msgstr "パスワードを確認"
 
 #: components/theme/ConnectionRefused/ConnectionRefused
 msgid "Connection refused"
-msgstr ""
+msgstr "接続が拒否されました"
 
 #: components/theme/Footer/Footer
 msgid "Contact"
@@ -329,11 +329,11 @@ msgstr "コンテント"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
-msgstr ""
+msgstr "コンテンツタイプが作成されました"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type deleted"
-msgstr ""
+msgstr "コンテンツタイプが削除されました"
 
 #: components/manage/Contents/Contents
 #: components/manage/Toolbar/Toolbar
@@ -382,19 +382,19 @@ msgstr "カット"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database Information"
-msgstr ""
+msgstr "データベース情報"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database Location"
-msgstr ""
+msgstr "データベースの場所"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database Size"
-msgstr ""
+msgstr "データベースサイズ"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database main"
-msgstr ""
+msgstr "主なデータベース情報"
 
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Widgets/DatetimeWidget
@@ -445,7 +445,7 @@ msgstr "グループを削除"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Delete Type"
-msgstr ""
+msgstr "コンテンツを削除"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Delete User"
@@ -503,7 +503,7 @@ msgstr "グループ {groupname} を削除してよろしいですか?"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Do you really want to delete the type {typename}?"
-msgstr ""
+msgstr "本当にコンテンツタイプ {typename} を削除しますか?"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Do you really want to delete the user {username}?"
@@ -832,7 +832,7 @@ msgstr "アイテムがペーストされました。"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Items"
-msgstr ""
+msgstr "アイテム数"
 
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
@@ -1000,7 +1000,7 @@ msgstr "アイテムが見つかりませんでした"
 
 #: components/manage/Widgets/ObjectBrowserWidget
 msgid "No items selected"
-msgstr ""
+msgstr "未選択"
 
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "No map selected"
@@ -1010,7 +1010,7 @@ msgstr "マップが選択されていません"
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TokenWidget
 msgid "No options"
-msgstr ""
+msgstr "選択肢無し"
 
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
@@ -1046,7 +1046,7 @@ msgstr "None"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Number of active objects"
-msgstr ""
+msgstr "アクティブなオブジェクトの数"
 
 #: components/manage/Contents/Contents
 msgid "Object Size"
@@ -1290,7 +1290,7 @@ msgstr "検索"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Search group…"
-msgstr ""
+msgstr "グループを検索…"
 
 #: components/theme/Search/Search
 msgid "Search results"
@@ -1302,7 +1302,7 @@ msgstr "検索"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Search users…"
-msgstr ""
+msgstr "ユーザを検索…"
 
 #: components/manage/Contents/Contents
 msgid "Select columns to show"
@@ -1318,7 +1318,7 @@ msgstr "Select the transition to be used for modifying the items state. (未翻�
 
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Selected items"
-msgstr ""
+msgstr "選択中のアイテム"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Selection"
@@ -1406,7 +1406,7 @@ msgstr "サイトマップ"
 
 #: components/manage/Blocks/Image/ImageSidebar
 msgid "Size"
-msgstr ""
+msgstr "サイズ"
 
 #: components/theme/View/ImageView
 msgid "Size: {size}"
@@ -1520,7 +1520,7 @@ msgstr "ありがとうございます。"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "The Database Manager allow you to view database status information"
-msgstr ""
+msgstr "この画面でデータベースの状態を確認できます。"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "The URL for your external home page, if you have one."
@@ -1528,11 +1528,11 @@ msgstr "外部ホームページがあればURLを記載してください。"
 
 #: components/theme/ConnectionRefused/ConnectionRefused
 msgid "The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable."
-msgstr ""
+msgstr "The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable. (未翻訳)"
 
 #: components/theme/CorsError/CorsError
 msgid "The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources."
-msgstr ""
+msgstr "The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources. (未翻訳)"
 
 #: components/theme/Register/Register
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
@@ -1548,7 +1548,7 @@ msgstr "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundatio
 
 #: components/theme/CorsError/CorsError
 msgid "There is a configuration problem on the backend"
-msgstr ""
+msgstr "バックエンドサーバの設定に問題があります。"
 
 #: components/manage/Form/InlineForm
 msgid "There were some errors"
@@ -1569,7 +1569,7 @@ msgstr "このページは存在しないようです…"
 
 #: components/manage/Widgets/DatetimeWidget
 msgid "Time"
-msgstr ""
+msgstr "時刻"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/Contents
@@ -1589,7 +1589,7 @@ msgstr "タイトル"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total active and non-active objects"
-msgstr ""
+msgstr "オブジェクトの総数"
 
 #: components/manage/Contents/Contents
 msgid "Total comments"
@@ -1597,7 +1597,7 @@ msgstr "コメント計"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total number of objects in each cache"
-msgstr ""
+msgstr "各キャッシュのオブジェクト総数"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total number of objects in memory from all caches"
@@ -1956,7 +1956,7 @@ msgstr "よく使う物"
 
 #: components/manage/Contents/ContentsItem
 msgid "no workflow state"
-msgstr ""
+msgstr "状態なし"
 
 #: error
 msgid "or try a different page."
@@ -1964,11 +1964,11 @@ msgstr "または、他のページを試してください。"
 
 #: components/manage/Contents/ContentsItem
 msgid "private"
-msgstr ""
+msgstr "非表示"
 
 #: components/manage/Contents/ContentsItem
 msgid "published"
-msgstr ""
+msgstr "公開中"
 
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "querystring-widget-select"
