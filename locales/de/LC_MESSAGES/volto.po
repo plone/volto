@@ -143,6 +143,10 @@ msgstr "Ausrichtung"
 msgid "All"
 msgstr "Alle"
 
+#: components/theme/Search/Search
+msgid "Alphabetically"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Alt text"
@@ -2005,6 +2009,10 @@ msgstr "Passwort vergessen?"
 #: config/Blocks
 msgid "common"
 msgstr "Allgemein"
+
+#: components/theme/Search/Search
+msgid "date(newest first)"
+msgstr ""
 
 #: components/manage/Blocks/Block/Edit
 msgid "delete"

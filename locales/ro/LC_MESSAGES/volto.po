@@ -128,6 +128,10 @@ msgstr "Aliniere"
 msgid "All"
 msgstr "Toate"
 
+#: components/theme/Search/Search
+msgid "Alphabetically"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Alt text"
@@ -1990,6 +1994,10 @@ msgstr "Ați uitat parola?"
 #: config/Blocks
 msgid "common"
 msgstr "Comun"
+
+#: components/theme/Search/Search
+msgid "date(newest first)"
+msgstr ""
 
 #: components/manage/Blocks/Block/Edit
 msgid "delete"

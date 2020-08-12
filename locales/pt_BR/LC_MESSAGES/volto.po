@@ -136,6 +136,10 @@ msgstr "Alinhamento"
 msgid "All"
 msgstr "Todos"
 
+#: components/theme/Search/Search
+msgid "Alphabetically"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Alt text"
@@ -1998,6 +2002,10 @@ msgstr "box_forgot_password_option"
 #: config/Blocks
 msgid "common"
 msgstr "comum"
+
+#: components/theme/Search/Search
+msgid "date(newest first)"
+msgstr ""
 
 #: components/manage/Blocks/Block/Edit
 msgid "delete"
