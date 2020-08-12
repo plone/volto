@@ -87,8 +87,6 @@ const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
     );
   }
 
-  console.log(listingItems);
-
   return (
     <>
       {listingItems?.length > 0 ? (
