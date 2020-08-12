@@ -23,6 +23,24 @@ const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
       dispatch(
         getQueryStringResults(path, { ...data, fullobjects: 1 }, data.block),
       );
+    } else if (data.template === 'imageGallery' && data?.query?.length === 0) {
+      dispatch(
+        getQueryStringResults(
+          path,
+          {
+            ...data,
+            fullobjects: 1,
+            query: [
+              {
+                i: 'path',
+                o: 'plone.app.querystring.operation.string.relativePath',
+                v: '',
+              },
+            ],
+          },
+          data.block,
+        ),
+      );
     }
 
     /* eslint-disable react-hooks/exhaustive-deps */
@@ -34,7 +52,7 @@ const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
     data?.query?.length > 0 && querystringResults?.[data.block]?.loading;
 
   const listingItems =
-    data?.query?.length > 0
+    data?.query?.length > 0 && querystringResults?.[data.block]
       ? (querystringResults &&
           querystringResults[data.block] &&
           querystringResults[data.block].items) ||
@@ -69,9 +87,11 @@ const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
     );
   }
 
+  console.log(listingItems);
+
   return (
     <>
-      {listingItems.length > 0 ? (
+      {listingItems?.length > 0 ? (
         <>
           <ListingBodyTemplate
             items={listingItems}
