@@ -2,10 +2,6 @@
 
 ## 7.7.1 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Japanese translation updated @terapyon
@@ -16,6 +12,7 @@
 - Bump serialize-javascript from 2.1.1 to 3.1.0 @timo
 - Bump prismjs from 1.17.1 to 1.21.0 @timo
 - Make Table Block Cypress test more reliable @timo
+- Make listing template Cypress test more reliable @timo
 
 ## 7.7.0 (2020-08-04)
 
