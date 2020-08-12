@@ -11,8 +11,9 @@ import { Link } from 'react-router-dom';
 import { asyncConnect } from 'redux-connect';
 import { FormattedMessage } from 'react-intl';
 import { Portal } from 'react-portal';
-import { Container, Pagination, Button, Segment } from 'semantic-ui-react';
+import { Container, Pagination, Button, Header } from 'semantic-ui-react';
 import qs from 'query-string';
+import classNames from 'classnames';
 
 import { settings } from '~/config';
 import { Helmet } from '@plone/volto/helpers';
@@ -63,7 +64,7 @@ class Search extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { currentPage: 1, isClient: false };
+    this.state = { currentPage: 1, isClient: false, active: 'path' };
   }
 
   /**
@@ -127,7 +128,7 @@ class Search extends Component {
     options.sort_on = event.target.name;
     options.sort_order = sort_order || 'ascending';
     let searchParams = qs.stringify(options);
-    this.setState({ currentPage: 1 }, () => {
+    this.setState({ currentPage: 1, active: event.target.name }, () => {
       // eslint-disable-next-line no-restricted-globals
       this.props.history.replace({
         search: searchParams,
@@ -177,31 +178,55 @@ class Search extends Component {
               )}
             </header>
             <section id="content-core">
-              <Segment>
-                <FormattedMessage id="Sort By" defaultMessage="Sort By" />
-                <Button
-                  onClick={(event) => {
-                    this.onSortChange(event);
-                  }}
-                  name="sortable_title"
-                >
-                  <FormattedMessage
-                    id="Alphabetically"
-                    defaultMessage="Alphabetically"
-                  />
-                </Button>
-                <Button
-                  onClick={(event) => {
-                    this.onSortChange(event, 'reverse');
-                  }}
-                  name="effective"
-                >
-                  <FormattedMessage
-                    id="date(newest first)"
-                    defaultMessage="date(newest first)"
-                  />
-                </Button>
-              </Segment>
+              <Header>
+                <Header.Content className="header-content">
+                  <div>
+                    <FormattedMessage id="Sort By" defaultMessage="Sort By" />
+                  </div>
+                  <Button
+                    onClick={(event) => {
+                      this.onSortChange(event, 'path');
+                    }}
+                    name="path"
+                    size="tiny"
+                    className={classNames('button-sort', {
+                      'button-active': this.state.active === 'path',
+                    })}
+                  >
+                    <FormattedMessage id="Default" defaultMessage="Default" />
+                  </Button>
+                  <Button
+                    onClick={(event) => {
+                      this.onSortChange(event);
+                    }}
+                    name="sortable_title"
+                    size="tiny"
+                    className={classNames('button-sort', {
+                      'button-active': this.state.active === 'sortable_title',
+                    })}
+                  >
+                    <FormattedMessage
+                      id="Alphabetically"
+                      defaultMessage="Alphabetically"
+                    />
+                  </Button>
+                  <Button
+                    onClick={(event) => {
+                      this.onSortChange(event, 'reverse');
+                    }}
+                    name="effective"
+                    size="tiny"
+                    className={classNames('button-sort', {
+                      'button-active': this.state.active === 'effective',
+                    })}
+                  >
+                    <FormattedMessage
+                      id="Date(newest first)"
+                      defaultMessage="Date(newest first)"
+                    />
+                  </Button>
+                </Header.Content>
+              </Header>
 
               {this.props.items.map((item) => (
                 <article className="tileItem" key={item['@id']}>

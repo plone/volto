@@ -429,6 +429,10 @@ msgstr ""
 msgid "Date"
 msgstr ""
 
+#: components/theme/Search/Search
+msgid "Date(newest first)"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Contents/ContentsTagsModal
@@ -449,6 +453,7 @@ msgstr ""
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
 #: components/theme/Register/Register
+#: components/theme/Search/Search
 msgid "Default"
 msgstr "Standaard"
 
@@ -2012,10 +2017,6 @@ msgstr ""
 
 #: config/Blocks
 msgid "common"
-msgstr ""
-
-#: components/theme/Search/Search
-msgid "date(newest first)"
 msgstr ""
 
 #: components/manage/Blocks/Block/Edit

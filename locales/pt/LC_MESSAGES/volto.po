@@ -418,6 +418,10 @@ msgstr ""
 msgid "Date"
 msgstr "Data"
 
+#: components/theme/Search/Search
+msgid "Date(newest first)"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Contents/ContentsTagsModal
@@ -438,6 +442,7 @@ msgstr "Data"
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
 #: components/theme/Register/Register
+#: components/theme/Search/Search
 msgid "Default"
 msgstr "Predefinido"
 
@@ -2002,10 +2007,6 @@ msgstr "box_forgot_password_option"
 #: config/Blocks
 msgid "common"
 msgstr "comum"
-
-#: components/theme/Search/Search
-msgid "date(newest first)"
-msgstr ""
 
 #: components/manage/Blocks/Block/Edit
 msgid "delete"

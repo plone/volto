@@ -425,6 +425,10 @@ msgstr "Datenbank"
 msgid "Date"
 msgstr "Datum"
 
+#: components/theme/Search/Search
+msgid "Date(newest first)"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Contents/ContentsTagsModal
@@ -445,6 +449,7 @@ msgstr "Datum"
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
 #: components/theme/Register/Register
+#: components/theme/Search/Search
 msgid "Default"
 msgstr "Standard"
 
@@ -2009,10 +2014,6 @@ msgstr "Passwort vergessen?"
 #: config/Blocks
 msgid "common"
 msgstr "Allgemein"
-
-#: components/theme/Search/Search
-msgid "date(newest first)"
-msgstr ""
 
 #: components/manage/Blocks/Block/Edit
 msgid "delete"

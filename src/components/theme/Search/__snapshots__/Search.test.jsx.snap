@@ -28,23 +28,36 @@ exports[`Search renders a search component 1`] = `
         id="content-core"
       >
         <div
-          className="ui segment"
+          className="ui header"
         >
-          Sort By
-          <button
-            className="ui button"
-            name="sortable_title"
-            onClick={[Function]}
+          <div
+            className="content header-content"
           >
-            Alphabetically
-          </button>
-          <button
-            className="ui button"
-            name="effective"
-            onClick={[Function]}
-          >
-            date(newest first)
-          </button>
+            <div>
+              Sort By
+            </div>
+            <button
+              className="ui tiny button button-sort button-active"
+              name="path"
+              onClick={[Function]}
+            >
+              Default
+            </button>
+            <button
+              className="ui tiny button button-sort"
+              name="sortable_title"
+              onClick={[Function]}
+            >
+              Alphabetically
+            </button>
+            <button
+              className="ui tiny button button-sort"
+              name="effective"
+              onClick={[Function]}
+            >
+              Date(newest first)
+            </button>
+          </div>
         </div>
         <article
           className="tileItem"
@@ -121,23 +134,36 @@ exports[`Search renders an empty search component 1`] = `
         id="content-core"
       >
         <div
-          className="ui segment"
+          className="ui header"
         >
-          Sort By
-          <button
-            className="ui button"
-            name="sortable_title"
-            onClick={[Function]}
+          <div
+            className="content header-content"
           >
-            Alphabetically
-          </button>
-          <button
-            className="ui button"
-            name="effective"
-            onClick={[Function]}
-          >
-            date(newest first)
-          </button>
+            <div>
+              Sort By
+            </div>
+            <button
+              className="ui tiny button button-sort button-active"
+              name="path"
+              onClick={[Function]}
+            >
+              Default
+            </button>
+            <button
+              className="ui tiny button button-sort"
+              name="sortable_title"
+              onClick={[Function]}
+            >
+              Alphabetically
+            </button>
+            <button
+              className="ui tiny button button-sort"
+              name="effective"
+              onClick={[Function]}
+            >
+              Date(newest first)
+            </button>
+          </div>
         </div>
       </section>
     </article>

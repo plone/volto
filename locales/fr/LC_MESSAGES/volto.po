@@ -427,6 +427,10 @@ msgstr "Base de donnée principale"
 msgid "Date"
 msgstr "Date"
 
+#: components/theme/Search/Search
+msgid "Date(newest first)"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Contents/ContentsTagsModal
@@ -447,6 +451,7 @@ msgstr "Date"
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
 #: components/theme/Register/Register
+#: components/theme/Search/Search
 msgid "Default"
 msgstr "Défaut"
 
@@ -2011,10 +2016,6 @@ msgstr "Mot de passe oublié"
 #: config/Blocks
 msgid "common"
 msgstr "commun"
-
-#: components/theme/Search/Search
-msgid "date(newest first)"
-msgstr ""
 
 #: components/manage/Blocks/Block/Edit
 msgid "delete"
