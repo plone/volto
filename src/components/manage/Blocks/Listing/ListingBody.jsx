@@ -24,6 +24,7 @@ const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
         getQueryStringResults(path, { ...data, fullobjects: 1 }, data.block),
       );
     }
+
     /* eslint-disable react-hooks/exhaustive-deps */
   }, [data]);
 
