@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Bugfix Edit page through Contents list #1594 @terapyon @csenger
+
 ### Internal
 
 ## 7.7.0 (2020-08-04)
