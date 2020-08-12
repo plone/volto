@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Japanese translation updated @terapyon
+
 ### Internal
 
 ## 7.7.0 (2020-08-04)
