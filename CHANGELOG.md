@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Bugfix Edit page through Contents list #1594 @terapyon @csenger
+
 ### Internal
 
 - Bump serialize-javascript from 2.1.1 to 3.1.0 @timo
