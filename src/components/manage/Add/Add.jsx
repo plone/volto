@@ -225,8 +225,8 @@ class Add extends Component {
             initialBlocksLayout.push(newUid);
             initialBlocks[newUid] = schemaBlocks[value];
 
-            // Ref ID - keep a reference to the original block id
-            initialBlocks[newUid]['rid'] = value;
+            // Layout ID - keep a reference to the original block id within layout
+            initialBlocks[newUid]['@layout'] = value;
           }
         });
       }
