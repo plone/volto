@@ -1,17 +1,31 @@
 # Change Log
 
-## 7.6.1 (unreleased)
+## 7.7.1 (unreleased)
 
 ### Breaking
 
 ### Feature
 
+### Bugfix
+
+- Bugfix Edit page through Contents list #1594 @terapyon @csenger
+
+### Internal
+
+- Bump serialize-javascript from 2.1.1 to 3.1.0 @timo
+- Bump prismjs from 1.17.1 to 1.21.0 @timo
+
+## 7.7.0 (2020-08-04)
+
+### Feature
+
+- Allow addons to provide less files @tiberiuichim
 - Making Content browser aware of context @iFlameing
-- Fix click-select block on unknown block type @nileshgulia1
 
 ### Bugfix
 
-### Internal
+- Fix click-select block on unknown block type @nileshgulia1
+
 
 ## 7.6.0 (2020-07-31)
 
