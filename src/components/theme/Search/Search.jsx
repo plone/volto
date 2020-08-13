@@ -167,67 +167,80 @@ class Search extends Component {
 
               <SearchTags />
 
-              {this.props.search?.items_total && (
+              {this.props.search?.items_total > 0 ? (
                 <div className="items_total">
                   {this.props.search.items_total}{' '}
                   <FormattedMessage
                     id="results found"
                     defaultMessage="results"
                   />
+                  <Header>
+                    <Header.Content className="header-content">
+                      <div className="sort-by">
+                        <FormattedMessage
+                          id="Sort By:"
+                          defaultMessage="Sort By :"
+                        />
+                      </div>
+                      <Button
+                        onClick={(event) => {
+                          this.onSortChange(event, 'path');
+                        }}
+                        name="path"
+                        size="tiny"
+                        className={classNames('button-sort', {
+                          'button-active': this.state.active === 'path',
+                        })}
+                      >
+                        <FormattedMessage
+                          id="Default"
+                          defaultMessage="Default"
+                        />
+                      </Button>
+                      <Button
+                        onClick={(event) => {
+                          this.onSortChange(event);
+                        }}
+                        name="sortable_title"
+                        size="tiny"
+                        className={classNames('button-sort', {
+                          'button-active':
+                            this.state.active === 'sortable_title',
+                        })}
+                      >
+                        <FormattedMessage
+                          id="Alphabetically"
+                          defaultMessage="Alphabetically"
+                        />
+                      </Button>
+                      <Button
+                        onClick={(event) => {
+                          this.onSortChange(event, 'reverse');
+                        }}
+                        name="effective"
+                        size="tiny"
+                        className={classNames('button-sort', {
+                          'button-active': this.state.active === 'effective',
+                        })}
+                      >
+                        <FormattedMessage
+                          id="Date(newest first)"
+                          defaultMessage="Date(newest first)"
+                        />
+                      </Button>
+                    </Header.Content>
+                  </Header>
+                </div>
+              ) : (
+                <div>
+                  <FormattedMessage
+                    id="Sorry!!! No results found"
+                    defaultMessage="Sorry!! No results found"
+                  />
                 </div>
               )}
             </header>
             <section id="content-core">
-              <Header>
-                <Header.Content className="header-content">
-                  <div>
-                    <FormattedMessage id="Sort By" defaultMessage="Sort By" />
-                  </div>
-                  <Button
-                    onClick={(event) => {
-                      this.onSortChange(event, 'path');
-                    }}
-                    name="path"
-                    size="tiny"
-                    className={classNames('button-sort', {
-                      'button-active': this.state.active === 'path',
-                    })}
-                  >
-                    <FormattedMessage id="Default" defaultMessage="Default" />
-                  </Button>
-                  <Button
-                    onClick={(event) => {
-                      this.onSortChange(event);
-                    }}
-                    name="sortable_title"
-                    size="tiny"
-                    className={classNames('button-sort', {
-                      'button-active': this.state.active === 'sortable_title',
-                    })}
-                  >
-                    <FormattedMessage
-                      id="Alphabetically"
-                      defaultMessage="Alphabetically"
-                    />
-                  </Button>
-                  <Button
-                    onClick={(event) => {
-                      this.onSortChange(event, 'reverse');
-                    }}
-                    name="effective"
-                    size="tiny"
-                    className={classNames('button-sort', {
-                      'button-active': this.state.active === 'effective',
-                    })}
-                  >
-                    <FormattedMessage
-                      id="Date(newest first)"
-                      defaultMessage="Date(newest first)"
-                    />
-                  </Button>
-                </Header.Content>
-              </Header>
-
               {this.props.items.map((item) => (
                 <article className="tileItem" key={item['@id']}>
                   <h2 className="tileHeadline">
