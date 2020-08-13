@@ -25,7 +25,7 @@ export const SchemaWidgetFieldsetComponent = ({
   onClick,
   getItemStyle,
   isDraggable,
-  isDissabled,
+  isDisabled,
 }) => (
   <Draggable draggableId={title} index={order} key={title}>
     {(provided, snapshot) => (
@@ -44,7 +44,7 @@ export const SchemaWidgetFieldsetComponent = ({
           />
         )}
         {title}
-        {!isDissabled && (
+        {!isDisabled && (
           <button
             className="item ui noborder button"
             onClick={(event) => {
@@ -57,7 +57,7 @@ export const SchemaWidgetFieldsetComponent = ({
           </button>
         )}
 
-        {!isDissabled && (
+        {!isDisabled && (
           <button
             className="item ui noborder button"
             onClick={(event) => {
@@ -88,7 +88,7 @@ SchemaWidgetFieldsetComponent.propTypes = {
   onClick: PropTypes.func.isRequired,
   getItemStyle: PropTypes.func.isRequired,
   isDraggable: PropTypes.bool,
-  isDissabled: PropTypes.bool,
+  isDisabled: PropTypes.bool,
 };
 
 export default SchemaWidgetFieldsetComponent;

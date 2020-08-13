@@ -8,19 +8,27 @@ import {
   getVocabulary,
   updateContentTypeFieldTypes,
 } from '@plone/volto/actions';
-import { Form, Toast } from '@plone/volto/components';
+import { Form, Icon, Toast, Toolbar } from '@plone/volto/components';
+import clearSVG from '@plone/volto/icons/clear.svg';
+import saveSVG from '@plone/volto/icons/save.svg';
 import PropTypes from 'prop-types';
 import qs from 'query-string';
 import React, { Component } from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
+import { Portal } from 'react-portal';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 import { compose } from 'redux';
+import { Button } from 'semantic-ui-react';
 
 const messages = defineMessages({
   metadata: {
     id: 'metadata {type}',
     defaultMessage: 'metadata {type}',
+  },
+  success: {
+    id: 'Success',
+    defaultMessage: 'Success',
   },
   save: {
     id: 'Save',
@@ -33,6 +41,10 @@ const messages = defineMessages({
   error: {
     id: 'Error',
     defaultMessage: 'Error',
+  },
+  typeCreated: {
+    id: 'Metadata updates',
+    defaultMessage: 'Metadata updates',
   },
 });
 
@@ -110,20 +122,12 @@ class ContentTypeMetadata extends Component {
     pathname: PropTypes.string.isRequired,
     schema: PropTypes.objectOf(PropTypes.any),
     vocabularyFields: PropTypes.objectOf(PropTypes.any),
-    content: PropTypes.shape({
+    contenttype: PropTypes.shape({
       // eslint-disable-line react/no-unused-prop-types
       '@id': PropTypes.string,
       '@type': PropTypes.string,
     }),
     returnUrl: PropTypes.string,
-    createRequest: PropTypes.shape({
-      loading: PropTypes.bool,
-      loaded: PropTypes.bool,
-    }).isRequired,
-    schemaRequest: PropTypes.shape({
-      loading: PropTypes.bool,
-      loaded: PropTypes.bool,
-    }).isRequired,
     type: PropTypes.string,
     location: PropTypes.objectOf(PropTypes.any),
   };
@@ -135,7 +139,6 @@ class ContentTypeMetadata extends Component {
    */
   static defaultProps = {
     schema: null,
-    content: null,
     returnUrl: '/controlpanel/dexterity-types',
     type: 'Default',
   };
@@ -157,6 +160,7 @@ class ContentTypeMetadata extends Component {
       loading: false,
       hideActions: false,
       visual: true,
+      isClient: false,
     };
 
     this.onCancel = this.onCancel.bind(this);
@@ -183,19 +187,33 @@ class ContentTypeMetadata extends Component {
   componentDidMount() {
     this.props.getSchema(this.props.type);
     this.props.getVocabulary('Fields');
+    this.setState({ isClient: true });
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.props.createRequest.error) {
+    console.log('contenttype', this.props.contenttype);
+
+    if (this.props.contenttype.error) {
       toast.error(
         <Toast
           error
           title={this.props.intl.formatMessage(messages.error)}
-          content={`${this.props.createRequest.error.status}:  ${this.props.createRequest.error.response?.body?.message}`}
+          content={`${this.props.contenttype.error.status}:  ${this.props.contenttype.error.response?.body?.message}`}
+        />,
+      );
+    }
+    if (this.props.contenttype.loaded && prevProps.contenttype.loading) {
+      toast.success(
+        <Toast
+          success
+          title={this.props.intl.formatMessage(messages.success)}
+          content={this.props.intl.formatMessage(messages.typeCreated)}
         />,
       );
     }
   }
+
+  form = React.createRef();
 
   /**
    * Render method.
@@ -208,15 +226,60 @@ class ContentTypeMetadata extends Component {
       const schemaData = makeSchemaData(this.props.schema, this.props.type);
 
       return (
-        <Form
-          isEditForm
-          schema={contentTypeSchema}
-          vocabularyFields={this.props.vocabularyFields}
-          formData={schemaData}
-          pathname={this.props.pathname}
-          onSubmit={this.onSubmit}
-          onCancel={this.onCancel}
-        />
+        <>
+          <Form
+            isEditForm
+            ref={this.form}
+            schema={contentTypeSchema}
+            vocabularyFields={this.props.vocabularyFields}
+            formData={schemaData}
+            pathname={this.props.pathname}
+            onSubmit={this.onSubmit}
+            onCancel={this.onCancel}
+            hideActions
+          />
+          {this.state.isClient && (
+            <Portal node={document.getElementById('toolbar')}>
+              <Toolbar
+                pathname={this.props.pathname}
+                hideDefaultViewButtons
+                inner={
+                  <>
+                    <Button
+                      id="toolbar-save"
+                      className="save"
+                      aria-label={this.props.intl.formatMessage(messages.save)}
+                      onClick={() => this.form.current.onSubmit()}
+                      disabled={this.props.contenttype.loading}
+                      loading={this.props.contenttype.loading}
+                    >
+                      <Icon
+                        name={saveSVG}
+                        className="circled"
+                        size="30px"
+                        title={this.props.intl.formatMessage(messages.save)}
+                      />
+                    </Button>
+                    <Button
+                      className="cancel"
+                      aria-label={this.props.intl.formatMessage(
+                        messages.cancel,
+                      )}
+                      onClick={() => this.onCancel()}
+                    >
+                      <Icon
+                        name={clearSVG}
+                        className="circled"
+                        size="30px"
+                        title={this.props.intl.formatMessage(messages.cancel)}
+                      />
+                    </Button>
+                  </>
+                }
+              />
+            </Portal>
+          )}
+        </>
       );
     }
 
@@ -228,9 +291,7 @@ export default compose(
   injectIntl,
   connect(
     (state, props) => ({
-      createRequest: state.content.create,
-      schemaRequest: state.schema,
-      content: state.content.data,
+      contenttype: state.contenttype,
       schema: state.schema.schema,
       vocabularyFields: state.vocabularies.Fields,
       pathname: props.location.pathname,

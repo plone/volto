@@ -38,7 +38,7 @@ test('renders an array widget component', async () => {
         value={['test']}
         onEdit={() => {}}
         isDraggable={true}
-        isDissabled={false}
+        isDisabled={false}
         itemsTotal={3}
         wrapped={false}
         onDelete={() => {}}

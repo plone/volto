@@ -28,7 +28,7 @@ const CheckboxWidget = ({
   fieldSet,
   wrapped,
   isDraggable,
-  isDissabled,
+  isDisabled,
 }) => {
   return (
     <FormFieldWrapper
@@ -44,7 +44,7 @@ const CheckboxWidget = ({
       onEdit={onEdit ? () => onEdit(id) : null}
       onDelete={onDelete}
       intl={intl}
-      isDissabled={isDissabled}
+      isDisabled={isDisabled}
     >
       <div className="wrapper">
         {onEdit && (
@@ -53,7 +53,7 @@ const CheckboxWidget = ({
         <Checkbox
           name={`field-${id}`}
           checked={value}
-          disabled={isDissabled}
+          disabled={isDisabled}
           onChange={(event, { checked }) => onChange(id, checked)}
           label={<label htmlFor={`field-${id}`}>{title}</label>}
         />
@@ -81,7 +81,7 @@ CheckboxWidget.propTypes = {
   intl: PropTypes.object,
   fieldSet: PropTypes.string,
   isDraggable: PropTypes.bool,
-  isDissabled: PropTypes.bool,
+  isDisabled: PropTypes.bool,
 };
 
 /**
@@ -103,7 +103,7 @@ CheckboxWidget.defaultProps = {
   intl: { formatMessage: () => {} },
   fieldSet: null,
   isDraggable: false,
-  isDissabled: false,
+  isDisabled: false,
 };
 
 export default injectIntl(CheckboxWidget);

@@ -36,7 +36,7 @@ class FormFieldWrapper extends Component {
     wrapped: PropTypes.bool,
     columns: PropTypes.number,
     draggable: PropTypes.bool,
-    isDissabled: PropTypes.bool,
+    isDisabled: PropTypes.bool,
     onEdit: PropTypes.func,
     className: PropTypes.string,
     onDelete: PropTypes.func,
@@ -56,7 +56,7 @@ class FormFieldWrapper extends Component {
     columns: 2,
     onDelete: null,
     intl: null,
-    isDissabled: null,
+    isDisabled: null,
     draggable: null,
   };
 
@@ -78,7 +78,7 @@ class FormFieldWrapper extends Component {
       draggable,
       onEdit,
       className,
-      isDissabled,
+      isDisabled,
       onDelete,
       intl,
     } = this.props;
@@ -120,7 +120,7 @@ class FormFieldWrapper extends Component {
               </Grid.Column>
             )}
             <Grid.Column width={columns === 2 ? 8 : 12}>
-              {onEdit && !isDissabled && (
+              {onEdit && !isDisabled && (
                 <div className="toolbar">
                   <button
                     className="item ui noborder button"

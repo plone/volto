@@ -29,7 +29,7 @@ class TextWidget extends Component {
     value: PropTypes.string,
     focus: PropTypes.bool,
     isDraggable: PropTypes.bool,
-    isDissabled: PropTypes.bool,
+    isDisabled: PropTypes.bool,
     onChange: PropTypes.func,
     onEdit: PropTypes.func,
     onDelete: PropTypes.func,
@@ -58,7 +58,7 @@ class TextWidget extends Component {
     onDelete: null,
     focus: false,
     isDraggable: false,
-    isDissabled: false,
+    isDisabled: false,
     icon: null,
     iconAction: null,
   };
@@ -86,7 +86,7 @@ class TextWidget extends Component {
       onChange,
       onEdit,
       isDraggable,
-      isDissabled,
+      isDisabled,
       onDelete,
       intl,
       icon,
@@ -102,13 +102,13 @@ class TextWidget extends Component {
         onEdit={onEdit ? () => onEdit(id) : null}
         onDelete={onDelete}
         intl={intl}
-        isDissabled={isDissabled}
+        isDisabled={isDisabled}
       >
         <Input
           id={`field-${id}`}
           name={id}
           value={value || ''}
-          disabled={isDissabled}
+          disabled={isDisabled}
           icon={icon || null}
           placeholder={placeholder}
           onChange={({ target }) =>

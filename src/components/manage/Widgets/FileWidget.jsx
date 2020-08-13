@@ -26,7 +26,7 @@ const FileWidget = ({
   fieldSet,
   wrapped,
   isDraggable,
-  isDissabled,
+  isDisabled,
   onEdit,
   onDelete,
   intl,
@@ -46,7 +46,7 @@ const FileWidget = ({
       onEdit={onEdit ? () => onEdit(id) : null}
       onDelete={onDelete}
       intl={intl}
-      isDissabled={isDissabled}
+      isDisabled={isDisabled}
     >
       <Image className="image-preview" id={`field-${id}-image`} size="small" />
       <Input
@@ -54,7 +54,7 @@ const FileWidget = ({
         name={id}
         type="file"
         ref={fileInput}
-        disabled={isDissabled}
+        disabled={isDisabled}
         onChange={({ target }) => {
           const file = target.files[0];
           readAsDataURL(file).then((data) => {
@@ -116,7 +116,7 @@ FileWidget.propTypes = {
   onEdit: PropTypes.func,
   onDelete: PropTypes.func,
   isDraggable: PropTypes.bool,
-  isDissabled: PropTypes.bool,
+  isDisabled: PropTypes.bool,
 };
 
 /**
@@ -136,7 +136,7 @@ FileWidget.defaultProps = {
   onDelete: null,
   focus: false,
   isDraggable: false,
-  isDissabled: false,
+  isDisabled: false,
   icon: null,
   iconAction: null,
 };

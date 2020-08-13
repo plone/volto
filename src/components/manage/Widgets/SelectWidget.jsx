@@ -143,7 +143,7 @@ class SelectWidget extends Component {
     onChange: PropTypes.func.isRequired,
     onEdit: PropTypes.func,
     isDraggable: PropTypes.bool,
-    isDissabled: PropTypes.bool,
+    isDisabled: PropTypes.bool,
     onDelete: PropTypes.func,
     itemsTotal: PropTypes.number,
     wrapped: PropTypes.bool,
@@ -170,7 +170,7 @@ class SelectWidget extends Component {
     onEdit: null,
     onDelete: null,
     isDraggable: false,
-    isDissabled: false,
+    isDisabled: false,
     onChange: null,
     focus: false,
     icon: null,
@@ -250,10 +250,10 @@ class SelectWidget extends Component {
       value,
       onChange,
       isDraggable,
-      isDissabled,
+      isDisabled,
       intl,
     } = this.props;
-
+    console.log(this.props);
     return (
       <FormFieldWrapper
         {...this.props}
@@ -262,7 +262,7 @@ class SelectWidget extends Component {
         onEdit={onEdit ? () => onEdit(id) : null}
         onDelete={onDelete}
         intl={intl}
-        isDissabled={isDissabled}
+        isDisabled={isDisabled}
       >
         {this.props.vocabBaseUrl ? (
           <>
@@ -289,7 +289,8 @@ class SelectWidget extends Component {
           <Select
             id={`field-${id}`}
             name={id}
-            disabled={onEdit !== null}
+            draggable={isDraggable}
+            isDisabled={isDisabled}
             className="react-select-container"
             classNamePrefix="react-select"
             isMulti={id === 'roles' || id === 'groups'}
