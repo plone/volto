@@ -1553,12 +1553,16 @@ msgstr ""
 msgid "Size: {size}"
 msgstr ""
 
+#: components/theme/Search/Search
+msgid "Sorry!!! No results found"
+msgstr ""
+
 #: error
 msgid "Sorry, something went wrong with your request"
 msgstr ""
 
 #: components/theme/Search/Search
-msgid "Sort By"
+msgid "Sort By:"
 msgstr ""
 
 #: components/manage/Blocks/Listing/ListingData

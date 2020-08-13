@@ -1541,12 +1541,16 @@ msgstr "サイズ"
 msgid "Size: {size}"
 msgstr "サイズ: {size}"
 
+#: components/theme/Search/Search
+msgid "Sorry!!! No results found"
+msgstr ""
+
 #: error
 msgid "Sorry, something went wrong with your request"
 msgstr "申し訳ありません。問題が発生したために処理できませんでした。"
 
 #: components/theme/Search/Search
-msgid "Sort By"
+msgid "Sort By:"
 msgstr ""
 
 #: components/manage/Blocks/Listing/ListingData

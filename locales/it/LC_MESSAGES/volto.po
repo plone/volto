@@ -1534,12 +1534,16 @@ msgstr "Dimensione"
 msgid "Size: {size}"
 msgstr "Dimensione: {size}"
 
+#: components/theme/Search/Search
+msgid "Sorry!!! No results found"
+msgstr ""
+
 #: error
 msgid "Sorry, something went wrong with your request"
 msgstr "Spiacente, qualcosa è andato storto"
 
 #: components/theme/Search/Search
-msgid "Sort By"
+msgid "Sort By:"
 msgstr ""
 
 #: components/manage/Blocks/Listing/ListingData

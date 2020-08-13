@@ -1534,12 +1534,16 @@ msgstr ""
 msgid "Size: {size}"
 msgstr "Mărime: {size}"
 
+#: components/theme/Search/Search
+msgid "Sorry!!! No results found"
+msgstr ""
+
 #: error
 msgid "Sorry, something went wrong with your request"
 msgstr "Ne pare rău, a apârut o eroare"
 
 #: components/theme/Search/Search
-msgid "Sort By"
+msgid "Sort By:"
 msgstr ""
 
 #: components/manage/Blocks/Listing/ListingData
