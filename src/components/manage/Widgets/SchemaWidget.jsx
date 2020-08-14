@@ -1058,7 +1058,7 @@ class SchemaWidget extends Component {
               required={value.required.indexOf(field) !== -1}
               onEdit={this.onShowEditField}
               isDraggable={false}
-              isDissabled={true}
+              isDisabled={true}
               order={index}
               vocabularyFields={vocabularyFields}
               onDelete={this.onShowDeleteField}
@@ -1097,7 +1097,7 @@ class SchemaWidget extends Component {
                   required={value.required.indexOf(field) !== -1}
                   onEdit={this.onShowEditField}
                   isDraggable={true}
-                  isDissabled={
+                  isDisabled={
                     value.properties[field].factory === 'Image' ||
                     value.properties[field].factory === 'File'
                   }
@@ -1149,7 +1149,7 @@ class SchemaWidget extends Component {
                       onOrderFieldset={this.onOrderFieldset}
                       getItemStyle={getItemStyle}
                       isDraggable={true}
-                      isDissabled={
+                      isDisabled={
                         !(
                           fieldset.id === 'default' ||
                           fieldset.behavior ===
@@ -1202,7 +1202,7 @@ class SchemaWidget extends Component {
                 required={value.required.indexOf('changeNote') !== -1}
                 onEdit={this.onShowEditField}
                 isDraggable={false}
-                isDissabled={true}
+                isDisabled={true}
                 order={value.fieldsets[this.state.currentFieldset].length - 1}
                 onDelete={this.onShowDeleteField}
                 onChange={this.onChangeDefaultValue}

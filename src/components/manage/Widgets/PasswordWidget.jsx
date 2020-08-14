@@ -20,7 +20,7 @@ const PasswordWidget = ({
   required,
   description,
   isDraggable,
-  isDissabled,
+  isDisabled,
   error,
   value,
   onChange,
@@ -43,7 +43,7 @@ const PasswordWidget = ({
       onEdit={onEdit ? () => onEdit(id) : null}
       onDelete={onDelete}
       intl={intl}
-      isDissabled={isDissabled}
+      isDisabled={isDisabled}
     >
       <Input
         id={`field-${id}`}
@@ -75,7 +75,7 @@ PasswordWidget.propTypes = {
   onEdit: PropTypes.func,
   onDelete: PropTypes.func,
   isDraggable: PropTypes.bool,
-  isDissabled: PropTypes.bool,
+  isDisabled: PropTypes.bool,
 };
 
 /**
@@ -93,7 +93,7 @@ PasswordWidget.defaultProps = {
   onDelete: null,
   focus: false,
   isDraggable: false,
-  isDissabled: false,
+  isDisabled: false,
   icon: null,
   iconAction: null,
 };

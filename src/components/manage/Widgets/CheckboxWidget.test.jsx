@@ -30,7 +30,7 @@ test('renders a checkbox widget component', () => {
         intl={{ formatMessage: () => {} }}
         fieldSet={null}
         isDraggable={true}
-        isDissabled={false}
+        isDisabled={false}
       />
     </Provider>,
   );

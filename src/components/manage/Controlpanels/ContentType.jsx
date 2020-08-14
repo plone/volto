@@ -3,21 +3,20 @@
  * @module components/manage/Controlpanels/ContentType
  */
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { Helmet, getParentUrl } from '@plone/volto/helpers';
-import { Portal } from 'react-portal';
-import { Button } from 'semantic-ui-react';
-import { defineMessages, injectIntl } from 'react-intl';
-import { toast } from 'react-toastify';
-import { last, nth, join } from 'lodash';
-import { Form, Icon, Toolbar, Toast } from '@plone/volto/components';
 import { getControlpanel, updateControlpanel } from '@plone/volto/actions';
-
-import saveSVG from '@plone/volto/icons/save.svg';
+import { Form, Icon, Toast, Toolbar } from '@plone/volto/components';
+import { getParentUrl, Helmet } from '@plone/volto/helpers';
 import clearSVG from '@plone/volto/icons/clear.svg';
+import saveSVG from '@plone/volto/icons/save.svg';
+import { join, last, nth } from 'lodash';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { defineMessages, injectIntl } from 'react-intl';
+import { Portal } from 'react-portal';
+import { connect } from 'react-redux';
+import { toast } from 'react-toastify';
+import { compose } from 'redux';
+import { Button } from 'semantic-ui-react';
 
 const messages = defineMessages({
   changesSaved: {
@@ -176,6 +175,7 @@ class ContentType extends Component {
           };
         }
       }
+      console.log('content type controlpanel.schema', controlpanel.schema);
       return (
         <div id="page-controlpanel">
           <Helmet title={controlpanel.title} />

@@ -104,7 +104,7 @@ class ArrayWidget extends Component {
     onChange: PropTypes.func.isRequired,
     onEdit: PropTypes.func,
     isDraggable: PropTypes.bool,
-    isDissabled: PropTypes.bool,
+    isDisabled: PropTypes.bool,
     itemsTotal: PropTypes.number,
     wrapped: PropTypes.bool,
     onDelete: PropTypes.func,
@@ -133,7 +133,7 @@ class ArrayWidget extends Component {
     onEdit: null,
     onDelete: null,
     isDraggable: false,
-    isDissabled: false,
+    isDisabled: false,
   };
 
   /**
@@ -243,7 +243,7 @@ class ArrayWidget extends Component {
    */
   render() {
     const { selectedOption } = this.state;
-    const { onEdit, isDraggable, isDissabled, onDelete, intl, id } = this.props;
+    const { onEdit, isDraggable, isDisabled, onDelete, intl, id } = this.props;
 
     return (
       <FormFieldWrapper
@@ -253,7 +253,7 @@ class ArrayWidget extends Component {
         onEdit={onEdit ? () => onEdit(id) : null}
         onDelete={onDelete}
         intl={intl}
-        isDissabled={isDissabled}
+        isDisabled={isDisabled}
       >
         {!this.props.items?.choices && this.vocabBaseUrl ? (
           <AsyncPaginate
@@ -302,6 +302,7 @@ class ArrayWidget extends Component {
                     },
                   ]
             }
+            isDisabled={isDisabled}
             styles={customSelectStyles}
             theme={selectTheme}
             components={{ DropdownIndicator, Option }}

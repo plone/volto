@@ -24,7 +24,7 @@ test('renders a contents item component', () => {
               onClick={(x) => x}
               getItemStyle={(x) => x}
               isDraggable={false}
-              isDissabled={false}
+              isDisabled={false}
             />
             {provided.placeholder}
           </div>

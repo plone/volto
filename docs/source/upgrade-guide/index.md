@@ -35,7 +35,7 @@ with:
 ```
 
 You might consider moving your theme files to a subfolder called `site`, to
-prepare for the arival of addons theming and their overrides.  In that case,
+prepare for the arrival of addons theming and their overrides.  In that case,
 you would set your `@siteFolder` to:
 
 ```

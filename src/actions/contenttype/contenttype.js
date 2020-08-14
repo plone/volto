@@ -3,7 +3,10 @@
  * @module actions/contenttype/contenttype
  */
 
-import { GET_CONTENT_TYPE_TYPES, UPDATE_CONTENT_TYPE_TYPES } from '@plone/volto/constants/ActionTypes';
+import {
+  GET_CONTENT_TYPE_TYPES,
+  UPDATE_CONTENT_TYPE_TYPES,
+} from '@plone/volto/constants/ActionTypes';
 
 /**
  * Get types function.
@@ -33,12 +36,6 @@ export function getContentTypeTypes(contentType) {
  * @returns {Object} Update document action.
  */
 export function updateContentTypeFieldTypes(contentType, text) {
-  console.log(
-    'updateContentTypeFieldTypes contentType',
-    contentType,
-    'text',
-    text,
-  );
   const data = JSON.parse(text);
   return {
     type: UPDATE_CONTENT_TYPE_TYPES,

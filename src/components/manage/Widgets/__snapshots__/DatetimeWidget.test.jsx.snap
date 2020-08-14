@@ -57,6 +57,7 @@ exports[`renders a datetime widget component 1`] = `
     >
       <input
         className="rc-time-picker-input"
+        disabled={false}
         id="my-field-time"
         onBlur={[Function]}
         onChange={[Function]}

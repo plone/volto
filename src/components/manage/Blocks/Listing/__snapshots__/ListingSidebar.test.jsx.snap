@@ -330,24 +330,63 @@ exports[`renders a Listing Block Sidebar component 1`] = `
           </div>
         </div>
         <div
-          class="wrapper"
+          class="inline field"
+          id="field-listingblock-sort-on-reverse"
         >
           <div
-            class="ui checkbox"
+            class="ui grid"
           >
-            <input
-              class="hidden"
-              name="field-listingblock-sort-on-reverse"
-              readonly=""
-              tabindex="0"
-              type="checkbox"
-              value=""
-            />
-            <label
-              for="field-listingblock-sort-on-reverse"
+            <div
+              class="stretched row"
             >
-              Reversed order
-            </label>
+              <div
+                class="twelve wide column"
+              >
+                <div
+                  class="wrapper"
+                >
+                  <div
+                    class="toolbar"
+                  >
+                    <button
+                      aria-label="Edit"
+                      class="item ui noborder button"
+                    >
+                      <i
+                        aria-hidden="true"
+                        class="blue write square large icon"
+                      />
+                    </button>
+                    <button
+                      aria-label="Delete"
+                      class="item ui noborder button"
+                    >
+                      <i
+                        aria-hidden="true"
+                        class="red close large icon"
+                      />
+                    </button>
+                  </div>
+                  <div
+                    class="ui checkbox"
+                  >
+                    <input
+                      class="hidden"
+                      name="field-listingblock-sort-on-reverse"
+                      readonly=""
+                      tabindex="0"
+                      type="checkbox"
+                      value=""
+                    />
+                    <label
+                      for="field-listingblock-sort-on-reverse"
+                    >
+                      Reversed order
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div

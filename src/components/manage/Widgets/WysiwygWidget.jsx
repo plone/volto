@@ -83,7 +83,7 @@ class WysiwygWidget extends Component {
      */
     onEdit: PropTypes.func,
     isDraggable: PropTypes.bool,
-    isDissabled: PropTypes.bool,
+    isDisabled: PropTypes.bool,
     /**
      * Wrapped form component
      */
@@ -108,7 +108,7 @@ class WysiwygWidget extends Component {
     onDelete: null,
     onChange: null,
     isDraggable: false,
-    isDissabled: false,
+    isDisabled: false,
   };
 
   /**
@@ -194,7 +194,7 @@ class WysiwygWidget extends Component {
       fieldSet,
       intl,
       isDraggable,
-      isDissabled,
+      isDisabled,
     } = this.props;
 
     if (__SERVER__) {
@@ -227,7 +227,7 @@ class WysiwygWidget extends Component {
         onEdit={onEdit ? () => onEdit(id) : null}
         onDelete={onDelete}
         draggable={isDraggable}
-        isDissabled={isDissabled}
+        isDisabled={isDisabled}
         intl={intl}
         className="wysiwyg"
       >

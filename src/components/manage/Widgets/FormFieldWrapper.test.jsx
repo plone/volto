@@ -18,7 +18,7 @@ test('renders a file widget component', () => {
       intl={{ formatMessage: () => {} }}
       fieldSet={null}
       draggable={true}
-      isDissabled={false}
+      isDisabled={false}
       columns={2}
       className="text"
     />,
