@@ -95,8 +95,7 @@ class Edit extends Component {
   }
 
   /**
-   * Upload image handler (not used), but useful in case that we want a button
-   * not powered by react-dropzone
+   * Upload image handler
    * @method onUploadImage
    * @returns {undefined}
    */
@@ -107,16 +106,20 @@ class Edit extends Component {
     });
     readAsDataURL(file).then((data) => {
       const fields = data.match(/^data:(.*);(.*),(.*)$/);
-      this.props.createContent(getBaseUrl(this.props.pathname), {
-        '@type': 'Image',
-        title: file.name,
-        image: {
-          data: fields[3],
-          encoding: fields[2],
-          'content-type': fields[1],
-          filename: file.name,
+      this.props.createContent(
+        getBaseUrl(this.props.pathname),
+        {
+          '@type': 'Image',
+          title: file.name,
+          image: {
+            data: fields[3],
+            encoding: fields[2],
+            'content-type': fields[1],
+            filename: file.name,
+          },
         },
-      });
+        this.props.block,
+      );
     });
   };
 
@@ -177,16 +180,20 @@ class Edit extends Component {
 
     readAsDataURL(file[0]).then((data) => {
       const fields = data.match(/^data:(.*);(.*),(.*)$/);
-      this.props.createContent(getBaseUrl(this.props.pathname), {
-        '@type': 'Image',
-        title: file[0].name,
-        image: {
-          data: fields[3],
-          encoding: fields[2],
-          'content-type': fields[1],
-          filename: file[0].name,
+      this.props.createContent(
+        getBaseUrl(this.props.pathname),
+        {
+          '@type': 'Image',
+          title: file[0].name,
+          image: {
+            data: fields[3],
+            encoding: fields[2],
+            'content-type': fields[1],
+            filename: file[0].name,
+          },
         },
-      });
+        this.props.block,
+      );
     });
   };
 
@@ -345,9 +352,9 @@ class Edit extends Component {
 export default compose(
   injectIntl,
   connect(
-    (state) => ({
-      request: state.content.create,
-      content: state.content.data,
+    (state, ownProps) => ({
+      request: state.content.subrequests[ownProps.block] || {},
+      content: state.content.subrequests[ownProps.block]?.data,
     }),
     { createContent },
   ),

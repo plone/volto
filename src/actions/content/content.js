@@ -17,13 +17,15 @@ import { settings } from '~/config';
 /**
  * Create content function.
  * @function createContent
- * @param {string} url Parent url.
+ * @param {string} url Parent URL.
  * @param {Object|Array} content Content data.
+ * @param {string} origin Optional. The ID of the block into which the content should be uploaded.
  * @returns {Object} Create content action.
  */
-export function createContent(url, content) {
+export function createContent(url, content, origin) {
   return {
     type: CREATE_CONTENT,
+    subrequest: origin,
     request: Array.isArray(content)
       ? content.map((item) => ({ op: 'post', path: url, data: item }))
       : { op: 'post', path: url, data: nestContent(content) },

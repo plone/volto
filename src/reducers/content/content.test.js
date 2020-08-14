@@ -55,6 +55,24 @@ describe('Content reducer', () => {
     });
   });
 
+  it('should handle CREATE_CONTENT_PENDING with subrequest', () => {
+    expect(
+      content(undefined, {
+        type: `${CREATE_CONTENT}_PENDING`,
+        subrequest: '1234',
+      }),
+    ).toMatchObject({
+      subrequests: {
+        '1234': {
+          data: null,
+          loaded: false,
+          loading: true,
+          error: null,
+        },
+      },
+    });
+  });
+
   it('should handle CREATE_CONTENT_SUCCESS', () => {
     expect(
       content(undefined, {
@@ -84,6 +102,38 @@ describe('Content reducer', () => {
     });
   });
 
+  it('should handle CREATE_CONTENT_SUCCESS with subrequest', () => {
+    expect(
+      content(undefined, {
+        type: `${CREATE_CONTENT}_SUCCESS`,
+        subrequest: '1234',
+        result: {
+          items: [
+            {
+              '@id': `${settings.apiPath}/home-page`,
+            },
+          ],
+        },
+      }),
+    ).toMatchObject({
+      subrequests: {
+        '1234': {
+          data: {
+            items: [
+              {
+                '@id': `${settings.apiPath}/home-page`,
+                url: '/home-page',
+              },
+            ],
+          },
+          loaded: true,
+          loading: false,
+          error: null,
+        },
+      },
+    });
+  });
+
   it('should handle CREATE_CONTENT_FAIL', () => {
     expect(
       content(undefined, {
@@ -97,6 +147,25 @@ describe('Content reducer', () => {
         error: 'failed',
       },
       data: null,
+    });
+  });
+
+  it('should handle CREATE_CONTENT_FAIL with subrequest', () => {
+    expect(
+      content(undefined, {
+        type: `${CREATE_CONTENT}_FAIL`,
+        subrequest: '1234',
+        error: 'failed',
+      }),
+    ).toMatchObject({
+      subrequests: {
+        '1234': {
+          data: null,
+          loaded: false,
+          loading: false,
+          error: 'failed',
+        },
+      },
     });
   });
 
