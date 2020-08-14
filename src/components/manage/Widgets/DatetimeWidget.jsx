@@ -28,34 +28,6 @@ const messages = defineMessages({
     id: 'Time',
     defaultMessage: 'Time',
   },
-  default: {
-    id: 'Default',
-    defaultMessage: 'Default',
-  },
-  idTitle: {
-    id: 'Short Name',
-    defaultMessage: 'Short Name',
-  },
-  idDescription: {
-    id: 'Used for programmatic access to the fieldset.',
-    defaultMessage: 'Used for programmatic access to the fieldset.',
-  },
-  title: {
-    id: 'Title',
-    defaultMessage: 'Title',
-  },
-  description: {
-    id: 'Description',
-    defaultMessage: 'Description',
-  },
-  required: {
-    id: 'Required',
-    defaultMessage: 'Required',
-  },
-  delete: {
-    id: 'Delete',
-    defaultMessage: 'Delete',
-  },
 });
 
 const PrevIcon = () => (
@@ -216,28 +188,11 @@ class DatetimeWidget extends Component {
   onFocusChange = ({ focused }) => this.setState({ focused });
 
   render() {
-    const {
-      id,
-      dateOnly,
-      noPastDates,
-      intl,
-      isDraggable,
-      isDisabled,
-      onDelete,
-      onEdit,
-    } = this.props;
+    const { id, dateOnly, noPastDates, intl, isDisabled } = this.props;
     const { datetime, isDefault, focused } = this.state;
 
     return (
-      <FormFieldWrapper
-        {...this.props}
-        draggable={isDraggable}
-        className="text"
-        onEdit={onEdit ? () => onEdit(id) : null}
-        onDelete={onDelete}
-        intl={intl}
-        isDisabled={isDisabled}
-      >
+      <FormFieldWrapper {...this.props}>
         <div className="date-time-widget-wrapper">
           <div
             className={cx('ui input date-input', {
@@ -256,6 +211,7 @@ class DatetimeWidget extends Component {
               navPrev={<PrevIcon />}
               navNext={<NextIcon />}
               id={`${id}-date`}
+              disabled={isDisabled}
               placeholder={intl.formatMessage(messages.date)}
             />
           </div>
@@ -272,6 +228,7 @@ class DatetimeWidget extends Component {
                 allowEmpty={false}
                 showSecond={false}
                 use12Hours={intl.locale === 'en'}
+                disabled={isDisabled}
                 id={`${id}-time`}
                 format={moment.localeData(intl.locale).longDateFormat('LT')}
                 placeholder={intl.formatMessage(messages.time)}
@@ -306,13 +263,13 @@ DatetimeWidget.propTypes = {
   error: PropTypes.arrayOf(PropTypes.string),
   dateOnly: PropTypes.bool,
   noPastDates: PropTypes.bool,
+  value: PropTypes.string,
   isDraggable: PropTypes.bool,
   isDisabled: PropTypes.bool,
-  value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
+  wrapped: PropTypes.bool,
   onEdit: PropTypes.func,
   onDelete: PropTypes.func,
-  wrapped: PropTypes.bool,
 };
 
 /**
@@ -328,13 +285,13 @@ DatetimeWidget.defaultProps = {
   error: [],
   dateOnly: false,
   noPastDates: false,
+  value: null,
   isDraggable: false,
   isDisabled: false,
-  value: null,
-  onChange: null,
-  onEdit: null,
-  onDelete: null,
-  wrapped: false,
+  wrapped: true,
+  onChange: () => {},
+  onEdit: () => {},
+  onDelete: () => {},
 };
 
 export default injectIntl(DatetimeWidget);

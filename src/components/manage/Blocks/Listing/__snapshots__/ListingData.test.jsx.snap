@@ -308,29 +308,72 @@ exports[`renders an Listing Data Sidebar component 1`] = `
     </div>
   </div>
   <div
-    className="wrapper"
+    className="inline field"
+    id="field-listingblock-sort-on-reverse"
   >
     <div
-      className="ui checkbox"
-      onChange={[Function]}
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
+      className="ui grid"
     >
-      <input
-        checked={false}
-        className="hidden"
-        disabled={false}
-        name="field-listingblock-sort-on-reverse"
-        readOnly={true}
-        tabIndex={0}
-        type="checkbox"
-      />
-      <label
-        htmlFor="field-listingblock-sort-on-reverse"
+      <div
+        className="stretched row"
       >
-        Reversed order
-      </label>
+        <div
+          className="twelve wide column"
+        >
+          <div
+            className="wrapper"
+          >
+            <div
+              className="toolbar"
+            >
+              <button
+                aria-label="Edit"
+                className="item ui noborder button"
+                onClick={[Function]}
+              >
+                <i
+                  aria-hidden="true"
+                  className="blue write square large icon"
+                  onClick={[Function]}
+                />
+              </button>
+              <button
+                aria-label="Delete"
+                className="item ui noborder button"
+                onClick={[Function]}
+              >
+                <i
+                  aria-hidden="true"
+                  className="red close large icon"
+                  onClick={[Function]}
+                />
+              </button>
+            </div>
+            <div
+              className="ui checkbox"
+              onChange={[Function]}
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
+            >
+              <input
+                checked={false}
+                className="hidden"
+                disabled={false}
+                name="field-listingblock-sort-on-reverse"
+                readOnly={true}
+                tabIndex={0}
+                type="checkbox"
+              />
+              <label
+                htmlFor="field-listingblock-sort-on-reverse"
+              >
+                Reversed order
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div
