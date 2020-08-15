@@ -179,7 +179,7 @@ class Search extends Component {
                       <div className="sort-by">
                         <FormattedMessage
                           id="Sort By:"
-                          defaultMessage="Sort By :"
+                          defaultMessage="Sort by:"
                         />
                       </div>
                       <Button
