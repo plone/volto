@@ -1,6 +1,6 @@
 # Change Log
 
-## 7.7.1 (unreleased)
+## 7.7.2 (unreleased)
 
 ### Breaking
 
@@ -11,6 +11,20 @@
 ### Internal
 
 - Change dummy-addons-loader.js fixture name to `jest-addons-loader.js`, to match existing `jest-svgsystem-transform.js` @tiberiuichim
+
+## 7.7.1 (2020-08-12)
+
+### Bugfix
+
+- Japanese translation updated @terapyon
+- Bugfix Edit page through Contents list #1594 @terapyon @csenger
+
+### Internal
+
+- Bump serialize-javascript from 2.1.1 to 3.1.0 @timo
+- Bump prismjs from 1.17.1 to 1.21.0 @timo
+- Make Table Block Cypress test more reliable @timo
+- Make listing template Cypress test more reliable @timo
 
 ## 7.7.0 (2020-08-04)
 
