@@ -22,11 +22,6 @@ if (Cypress.env('API') !== 'guillotina') {
         contentTitle: 'Color',
       });
       cy.visit('/colorless/edit');
-      cy.waitForResourceToLoad('@navigation');
-      cy.waitForResourceToLoad('@breadcrumbs');
-      cy.waitForResourceToLoad('@actions');
-      cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('?fullobjects');
       cy.url().should('eq', Cypress.config().baseUrl + '/colorless/edit');
       cy.get('.block.inner.text .public-DraftEditor-content').type(
         'This is the text.',
@@ -50,8 +45,7 @@ if (Cypress.env('API') !== 'guillotina') {
         Cypress.config().baseUrl + '/search?SearchableText=color',
       );
 
-      // we should get two result and first link should be Color
-      cy.get('.items_total').should('have.text', '2 results');
+      // we should get the first link Color
       cy.get('.summary.url:first').should('have.text', 'Color');
     });
 
@@ -68,11 +62,6 @@ if (Cypress.env('API') !== 'guillotina') {
         contentTitle: 'B Color',
       });
       cy.visit('/acolorless/edit');
-      cy.waitForResourceToLoad('@navigation');
-      cy.waitForResourceToLoad('@breadcrumbs');
-      cy.waitForResourceToLoad('@actions');
-      cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('?fullobjects');
       cy.url().should('eq', Cypress.config().baseUrl + '/acolorless/edit');
       cy.get('.block.inner.text .public-DraftEditor-content').type(
         'This is the text.',
@@ -113,11 +102,6 @@ if (Cypress.env('API') !== 'guillotina') {
         contentTitle: 'Color',
       });
       cy.visit('/colorless/edit');
-      cy.waitForResourceToLoad('@navigation');
-      cy.waitForResourceToLoad('@breadcrumbs');
-      cy.waitForResourceToLoad('@actions');
-      cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('?fullobjects');
       cy.url().should('eq', Cypress.config().baseUrl + '/colorless/edit');
       cy.get('.block.inner.text .public-DraftEditor-content').type(
         'This is the text.',
@@ -142,8 +126,7 @@ if (Cypress.env('API') !== 'guillotina') {
         Cypress.config().baseUrl + '/search?SearchableText=color',
       );
 
-      // it should give us 2 result and first link must be Colorless
-      cy.get('.items_total').should('have.text', '2 results');
+      // then the first link must be Colorless
       cy.get('button[name="effective"]').click();
       cy.get('.summary.url:first').should('have.text', 'Colorless');
     });
