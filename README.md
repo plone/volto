@@ -11,29 +11,7 @@ Status](https://api.netlify.com/api/v1/badges/b8310579-ac4f-41f2-a144-9c90fca9b3
 
 ## Introduction
 
-[Volto](https://github.com/plone/volto) is a React-based frontend for content
-management systems, currently supporting three backend implementations: Plone,
-Guillotina and a NodeJS reference implementation.
-
-[Plone](https://plone.org) is a CMS built on Python with over 17 years of experience.
-
-Plone has very interesting features that appeal to developers and users alike,
-such as customizable content types, hierarchical URL object traversing and a
-sophisticated content workflow powered by a granular permissions model. This
-allows you to build anything from simple websites to enterprise-grade
-intranets.
-
-Volto exposes all these features and communicates with Plone via its
-mature [REST API](https://github.com/plone/plone.restapi). Volto has the
-ability of being highly themable and customizable.
-
-Volto also supports other APIs like [Guillotina](https://guillotina.io/), a
-Python resource management system, inspired by Plone and using the same basic
-concepts like traversal, content types and permissions model.
-
-Last but not least, it also supports a [Volto Nodejs-based backend reference](https://github.com/plone/volto-reference-backend) API implementation that
-demos how other systems could also use Volto to display and create content
-through it.
+[Volto](https://github.com/plone/volto) is a React-based content management system.
 
 ## Quick Start
 
@@ -63,7 +41,7 @@ global installs.
 
 ### Bootstrap the Plone API backend
 
-We recommend Plone as backend of choice for Volto.
+Volto uses [Plone](https://plone.org), a CMS built on Python with a RESTful API to expose its core features.
 
 You can bootstrap a ready Docker Plone container with all the dependencies and ready for Volto use:
 
