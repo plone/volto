@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Remove "$" from all examples in install docs and README @timo
+
 ## 7.7.1 (2020-08-12)
 
 ### Bugfix
