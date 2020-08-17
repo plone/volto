@@ -5,6 +5,7 @@
 ### Breaking
 
 ### Feature
+- Adding searchAll feature in UsersControlpanel @iFlameing
 
 ### Bugfix
 

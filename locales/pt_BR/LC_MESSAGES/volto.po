@@ -600,6 +600,10 @@ msgstr ""
 msgid "Enter URL or title"
 msgstr "Escreva URL ou título"
 
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Enter a username above to search or click 'Show All'"
+msgstr ""
+
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 msgstr "Escreva um endereço de email. Este será o seu nome de sessão. Respeitamos a sua privacidade e nunca iremos ceder o seu endereço a terceiros ou expô-lo onde quer que seja."
@@ -1489,6 +1493,10 @@ msgstr "Nome curto"
 
 #: components/theme/Pagination/Pagination
 msgid "Show"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Show All"
 msgstr ""
 
 #: components/manage/Sidebar/Sidebar

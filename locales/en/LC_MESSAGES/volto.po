@@ -592,6 +592,10 @@ msgstr ""
 msgid "Enter URL or title"
 msgstr ""
 
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Enter a username above to search or click 'Show All'"
+msgstr ""
+
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 msgstr ""
@@ -1481,6 +1485,10 @@ msgstr ""
 
 #: components/theme/Pagination/Pagination
 msgid "Show"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Show All"
 msgstr ""
 
 #: components/manage/Sidebar/Sidebar

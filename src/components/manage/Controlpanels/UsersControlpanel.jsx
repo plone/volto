@@ -155,6 +155,14 @@ const messages = defineMessages({
     id: 'Users and Groups',
     defaultMessage: 'Users and Groups',
   },
+  showAllUserButton: {
+    id: 'Show All',
+    defaultMessage: 'Show All',
+  },
+  showAllUserText: {
+    id: "Enter a username above to search or click 'Show All'",
+    defaultMessage: "Enter a username above to search or click 'Show All'",
+  },
 });
 
 /**
@@ -223,6 +231,7 @@ class UsersControlpanel extends Component {
     this.updateGroupRole = this.updateGroupRole.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.onCancel = this.onCancel.bind(this);
+    this.onShowAllUser = this.onShowAllUser.bind(this);
     this.state = {
       search: '',
       showAddUser: false,
@@ -237,6 +246,7 @@ class UsersControlpanel extends Component {
       entries: props.users,
       groupEntries: props.groups,
       isClient: false,
+      showAlluser: false,
     };
   }
 
@@ -247,7 +257,6 @@ class UsersControlpanel extends Component {
    */
   componentDidMount() {
     this.props.listRoles();
-    this.props.listUsers();
     this.props.listGroups();
     this.setState({ isClient: true });
   }
@@ -584,6 +593,17 @@ class UsersControlpanel extends Component {
   }
 
   /**
+   * ShowAllUser handler
+   * @method onShowAllUser
+   * @returns {undefined}
+   */
+  onShowAllUser() {
+    this.setState({ showAlluser: true }, () => {
+      this.props.listUsers();
+    });
+  }
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -830,6 +850,27 @@ class UsersControlpanel extends Component {
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
+                  <Table.Row>
+                    {this.state.showAlluser ? null : (
+                      <Table.HeaderCell colspan={9}>
+                        <div className="show-all-users">
+                          <p>
+                            {this.props.intl.formatMessage(
+                              messages.showAllUserText,
+                            )}
+                          </p>
+                          <Button
+                            className="show-all-users"
+                            onClick={this.onShowAllUser}
+                          >
+                            {this.props.intl.formatMessage(
+                              messages.showAllUserButton,
+                            )}
+                          </Button>
+                        </div>
+                      </Table.HeaderCell>
+                    )}
+                  </Table.Row>
                   {this.state.entries.map((user) => (
                     <UsersControlpanelUser
                       key={user.id}

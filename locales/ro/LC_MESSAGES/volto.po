@@ -592,6 +592,10 @@ msgstr "Data de încheiere"
 msgid "Enter URL or title"
 msgstr "Introdu URL sau titlu"
 
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Enter a username above to search or click 'Show All'"
+msgstr ""
+
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 msgstr "Introduceți o adresă de e-mail. Acesta va fi numele dvs. de autentificare. Respectăm confidențialitatea dvs. și nu vom oferi adresa niciunui terț și nu o vom expune nicăieri."
@@ -1482,6 +1486,10 @@ msgstr "Nume"
 #: components/theme/Pagination/Pagination
 msgid "Show"
 msgstr "Afișați"
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Show All"
+msgstr ""
 
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"

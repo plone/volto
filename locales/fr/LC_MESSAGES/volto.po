@@ -609,6 +609,10 @@ msgstr "Date de fin"
 msgid "Enter URL or title"
 msgstr "Entrer l'URL ou le titre"
 
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Enter a username above to search or click 'Show All'"
+msgstr ""
+
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 msgstr "Entrer votre adresse e-mail. Elle sera votre nom d'utilisateur. Nous respectons votre vie privée, nous ne donnerons pas votre adresse à un tiers et elle ne sera pas exposée."
@@ -1499,6 +1503,10 @@ msgstr "Nom court"
 #: components/theme/Pagination/Pagination
 msgid "Show"
 msgstr "Voir"
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Show All"
+msgstr ""
 
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
