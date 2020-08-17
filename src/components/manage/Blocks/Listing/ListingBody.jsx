@@ -123,7 +123,7 @@ const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
               </div>
             )}
           {data?.query?.length > 0 &&
-            querystringResults[data.block].total >
+            querystringResults?.[data.block]?.total >
               (data.b_size || settings.defaultPageSize) && (
               <div className="pagination-wrapper">
                 <Pagination
