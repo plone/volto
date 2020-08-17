@@ -8,9 +8,11 @@
 
 ### Bugfix
 
+- Fix bug showing wrong data in the edit view, that occured in some cases, when one would enter the edit view of a page from another page @jackahl
+
 ### Internal
 
-- Remove "$" from all examples in install docs and README @timo
+- Remove "\$" from all examples in install docs and README @timo
 
 ## 7.7.1 (2020-08-12)
 
