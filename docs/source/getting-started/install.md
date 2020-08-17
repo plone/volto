@@ -134,14 +134,20 @@ npm -g i @plone/create-volto-app
 
     `npx @plone/create-volto-app myvoltoapp`
 
-2. Create a new Volto app using the recently added command, providing the name
-   of the new app (folder) to be created.
+2. Create a new Volto app using the recently added command, providing the name of the new app (folder) to be created.
+
 ```
 create-volto-app myvoltoapp
 ```
 
-3. Change directory to the newly created folder `myvoltoapp` (or the one you've
-   chosen). Then:
+3. Change directory to the newly created folder `myvoltoapp` (or the one you've chosen):
+
+```
+cd myvoltoapp
+```
+
+Then start Volto with:
+
 ```
 yarn start
 ```
