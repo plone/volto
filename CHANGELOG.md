@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix Image Gallery Template in Listing Block crashing when no criteria are set (#1722) @jackahl
+
 ### Internal
 
 - Remove "\$" from all examples in install docs and README @timo

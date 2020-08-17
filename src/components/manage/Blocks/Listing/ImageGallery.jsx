@@ -77,10 +77,10 @@ const ImageGalleryTemplate = ({ items }) => {
   const imagesInfo = renderItems.map((item) => {
     return {
       original: flattenToAppURL(
-        item[settings.listingPreviewImageField].scales.preview.download,
+        item[settings.listingPreviewImageField]?.scales.preview.download || '',
       ),
       thumbnail: flattenToAppURL(
-        item[settings.listingPreviewImageField].scales.thumb.download,
+        item[settings.listingPreviewImageField]?.scales.thumb.download || '',
       ),
     };
   });
