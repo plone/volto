@@ -8,8 +8,6 @@
 
 ### Bugfix
 
-- Fix Image Gallery Template in Listing Block crashing when no criteria are set (#1722) @jackahl
-
 ### Internal
 
 - Remove "\$" from all examples in install docs and README @timo
@@ -38,6 +36,7 @@
 
 ### Bugfix
 
+- Fix Image Gallery Template in Listing Block crashing when no criteria are set (#1722) @jackahl
 - Fix click-select block on unknown block type @nileshgulia1
 
 ## 7.6.0 (2020-07-31)
