@@ -6,6 +6,9 @@
 
 ### Feature
 
+- Add sort option to search @iFlameing
+- Turn autocomplete off for the search input field @timo
+
 ### Bugfix
 
 ### Internal
@@ -30,7 +33,6 @@
 
 - Allow addons to provide less files @tiberiuichim
 - Making Content browser aware of context @iFlameing
-- Refactoring Search component to handle the search query @iFlameing
 
 ### Bugfix
 
