@@ -17,29 +17,29 @@ are assuming a MacOS/Linux machine:
 
 1. Open a terminal console and type:
 ```bash
-$ touch ~/.bash_profile
-$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+touch ~/.bash_profile
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
 ```
 
 2. Close the terminal and open a new one or execute:
 ```
-$ source ~/.bash_profile
+source ~/.bash_profile
 ```
 
 3. Test it:
 ```
-$ nvm version
+nvm version
 ```
 
 4. Install a LTS version of NodeJS:
 ```
-$ nvm install 12.16.1
-$ nvm use 12.16.1
+nvm install 12.16.1
+nvm use 12.16.1
 ```
 
 5. Test NodeJS:
 ```
-$ node -v
+node -v
 ```
 
 ## Yarn (NodeJS package manager)
@@ -48,12 +48,12 @@ Install the classic version, not the 2.x one, of the popular node package manage
 
 1. Open a terminal and type:
 ```
-$ curl -o- -L https://yarnpkg.com/install.sh | bash
+curl -o- -L https://yarnpkg.com/install.sh | bash
 ```
 
 2. Test it, running:
 ```
-$ yarn -v
+yarn -v
 ```
 
 !!! tip Alternative methods
@@ -81,7 +81,7 @@ Here are the detailed instructions:
 3. Check that docker is installed correctly, open a new terminal and type:
 
 ```shell
-$ docker ps
+docker ps
 ```
 
 should not throw an error and show the current running containers.
@@ -113,7 +113,7 @@ for you and it's ready to use in your own projects.
 You can run an standard Plone docker container with the proper configuration using `kitconcept.volto` right away by issuing:
 
 ```shell
-$ docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="kitconcept.volto" -e ZCML="kitconcept.volto.cors" -e PROFILES="kitconcept.volto:default-homepage" plone
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="kitconcept.volto" -e ZCML="kitconcept.volto.cors" -e PROFILES="kitconcept.volto:default-homepage" plone
 ```
 
 ## Install Volto
@@ -122,7 +122,7 @@ Use the `create-volto-app` helper utility.
 
 1. Open a terminal and execute:
 ```
-$ npm -g i @plone/create-volto-app
+npm -g i @plone/create-volto-app
 ```
 
 !!! tip Installing it using npx
@@ -134,16 +134,22 @@ $ npm -g i @plone/create-volto-app
 
     `npx @plone/create-volto-app myvoltoapp`
 
-2. Create a new Volto app using the recently added command, providing the name
-   of the new app (folder) to be created.
+2. Create a new Volto app using the recently added command, providing the name of the new app (folder) to be created.
+
 ```
-$ create-volto-app myvoltoapp
+create-volto-app myvoltoapp
 ```
 
-3. Change directory to the newly created folder `myvoltoapp` (or the one you've
-   chosen). Then:
+3. Change directory to the newly created folder `myvoltoapp` (or the one you've chosen):
+
 ```
-$ yarn start
+cd myvoltoapp
+```
+
+Then start Volto with:
+
+```
+yarn start
 ```
 
 This command will build an in-memory bundle and execute Volto in development mode. Open a browser to
@@ -158,18 +164,18 @@ side rendering process.
 
 1. Compile the app using the command:
 ```
-$ yarn build
+yarn build
 ```
 The resultant build is available in the `build` folder.
 
 2. Run the Volto Nodejs process
 ```
-$ yarn start:prod
+yarn start:prod
 ```
 
 to run the node process with the production build. You can also run it
 manually:
 ```
-$ NODE_ENV=production node build/server.js
+NODE_ENV=production node build/server.js
 ```
 Your production ready Volto will be available in http://localhost:3000
