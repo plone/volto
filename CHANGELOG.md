@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix bug showing wrong data in the edit view, that occured in some cases, when one would enter the edit view of a page from another page @jackahl
+
 ### Internal
 
 - Remove "\$" from all examples in install docs and README @timo
@@ -18,7 +20,6 @@
 
 - Japanese translation updated @terapyon
 - Bugfix Edit page through Contents list #1594 @terapyon @csenger
-- Fix bug showing wrong data in the edit view, that occured in some cases, when one would enter the edit view of a page from another page @jackahl
 
 ### Internal
 
@@ -36,8 +37,8 @@
 
 ### Bugfix
 
-- Fix Image Gallery Template in Listing Block crashing when no criteria are set (#1722) @jackahl
 - Fix click-select block on unknown block type @nileshgulia1
+- Fix Image Gallery Template in Listing Block crashing when no criteria are set (#1722) @jackahl
 
 ## 7.6.0 (2020-07-31)
 
