@@ -193,8 +193,8 @@ class Search extends Component {
                         })}
                       >
                         <FormattedMessage
-                          id="Default"
-                          defaultMessage="Default"
+                          id="Relevance"
+                          defaultMessage="Relevance"
                         />
                       </Button>
                       <Button

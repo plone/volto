@@ -442,7 +442,6 @@ msgstr ""
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
 #: components/theme/Register/Register
-#: components/theme/Search/Search
 msgid "Default"
 msgstr "Predefinido"
 
@@ -1292,6 +1291,10 @@ msgstr "Registar"
 #: components/theme/Register/Register
 msgid "Registration form"
 msgstr "Formulário de registo"
+
+#: components/theme/Search/Search
+msgid "Relevance"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
