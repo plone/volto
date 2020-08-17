@@ -6,7 +6,11 @@
 
 ### Feature
 
+- Add a `subrequest` option to the `createContent` action @tiberiuichim @silviubogan
+
 ### Bugfix
+
+- On image upload in a block, don't overwrite the global `state.content.data` with new image data @tiberiuichim @silviubogan
 
 ### Internal
 
