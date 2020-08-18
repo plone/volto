@@ -6,6 +6,8 @@
 
 ### Feature
 
+- create link in Draftjs using Objectbrowser @giuliaghisini
+
 ### Bugfix
 
 ### Internal
@@ -188,7 +190,6 @@
 
 ### Feature
 
-- Added Draftjs link uses Objectbrowser @giuliaghisini
 - Translated workflow state in contents @nzambello
 - Added item type as a tooltip in contents @nzambello
 - Added Italian translations and translated array, token and select widget. @giuliaghisini
