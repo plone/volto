@@ -20,6 +20,8 @@
 
 ### Bugfix
 
+- Fix issue introduced with #1732 that caused the image Block to completely wipe the edit page when a new image was uploaded.
+
 ### Internal
 
 ## 7.7.2 (2020-08-18)
