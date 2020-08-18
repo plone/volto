@@ -2,10 +2,6 @@
 
 ## 7.7.2 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Fix bug showing wrong data in the edit view, that occured in some cases, when one would enter the edit view of a page from another page @jackahl
