@@ -20,7 +20,7 @@
 
 ### Bugfix
 
-- Fix issue introduced with #1732 that caused the image Block to completely wipe the edit page when a new image was uploaded.
+- Remove supposed fix to form.jsx again, as it apparently did not really fix anything but only broke stuff @jackahl
 
 ### Internal
 

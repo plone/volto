@@ -15,7 +15,6 @@ import {
   pickBy,
   uniq,
   without,
-  isEqual,
 } from 'lodash';
 import move from 'lodash-move';
 import isBoolean from 'lodash/isBoolean';
@@ -227,18 +226,6 @@ class Form extends Component {
    */
   componentDidMount() {
     this.setState({ isClient: true });
-  }
-
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (isEqual(nextProps.formData, this.state.formData)) {
-      this.setState({ formData: nextProps.formData });
-    }
   }
 
   /**
