@@ -2,13 +2,9 @@
 
 ## 7.8.1 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
-### Internal
+- Remove supposed fix to form.jsx again, as it apparently did not really fix anything but only broke stuff @jackahl
 
 ## 7.8.0 (2020-08-18)
 
@@ -17,10 +13,6 @@
 ### Feature
 
 - Add cms-only theme that allows to completely remove semantic-ui from public facing views @pnicolli @nzambello
-
-### Bugfix
-
-- Remove supposed fix to form.jsx again, as it apparently did not really fix anything but only broke stuff @jackahl
 
 ### Internal
 
