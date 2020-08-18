@@ -7,6 +7,7 @@
 ### Feature
 
 ### Bugfix
+- Fix bug related to closing the More menu of Toolbar @iFlameing
 
 ### Internal
 
