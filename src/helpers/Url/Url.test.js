@@ -6,6 +6,7 @@ import {
   getBaseUrl,
   getIcon,
   getView,
+  isCmsUi,
   isInternalURL,
 } from './Url';
 
@@ -89,6 +90,21 @@ describe('Url', () => {
       expect(flattenToAppURL(`${settings.apiPath}/edit`)).toBe('/edit');
     });
   });
+
+  describe('isCmsUi', () => {
+    [...settings.nonContentRoutes, '/controlpanel/mypanel'].forEach((route) => {
+      if (typeof route === 'string') {
+        it(`matches non-content-route ${route}`, () => {
+          expect(isCmsUi(`/mycontent/${route}`)).toBe(true);
+        });
+      }
+    });
+
+    it('returns false on non-cms-ui views', () => {
+      expect(isCmsUi('/mycontent')).toBe(false);
+    });
+  });
+
   describe('flattenHTMLToAppURL', () => {
     it('flattens all occurences of the api URL from an html snippet', () => {
       const html = `<a href="${settings.apiPath}/foo/bar">An internal link</a><a href="${settings.apiPath}/foo/baz">second link</a>`;

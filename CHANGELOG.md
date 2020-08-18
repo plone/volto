@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Add cms-only theme that allows to completely remove semantic-ui from public facing views @pnicolli @nzambello
+
 ### Bugfix
 
 ### Internal
