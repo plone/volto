@@ -1,5 +1,15 @@
 # Change Log
 
+## 7.8.1 (unreleased)
+
+### Breaking
+
+### Feature
+
+### Bugfix
+
+### Internal
+
 ## 7.8.0 (2020-08-18)
 
 ### Breaking
