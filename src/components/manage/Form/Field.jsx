@@ -9,6 +9,7 @@ import { DragSource, DropTarget } from 'react-dnd';
 import { settings, widgets } from '~/config';
 import { injectIntl } from 'react-intl';
 
+const MODE_HIDDEN = 'hidden'; //hidden mode. If mode is hidden, field is not rendered
 /**
  * Get default widget
  * @method getViewDefault
@@ -108,6 +109,10 @@ const Field = (props, { intl }) => {
     getWidgetByVocabularyFromHint(props) ||
     getWidgetByType(props.type) ||
     getWidgetDefault();
+
+  if (props.mode === MODE_HIDDEN) {
+    return null;
+  }
 
   if (props.onOrder) {
     const WrappedWidget = DropTarget(

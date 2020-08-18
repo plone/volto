@@ -70,6 +70,7 @@ class TextWidget extends Component {
     }),
     iconAction: PropTypes.func,
     wrapped: PropTypes.bool,
+    placeholder: PropTypes.string,
   };
 
   /**
@@ -116,6 +117,7 @@ class TextWidget extends Component {
       intl,
       icon,
       iconAction,
+      placeholder,
     } = this.props;
 
     const schema = {
@@ -174,6 +176,7 @@ class TextWidget extends Component {
           value={value || ''}
           disabled={onEdit !== null}
           icon={icon || null}
+          placeholder={placeholder}
           onChange={({ target }) =>
             onChange(id, target.value === '' ? undefined : target.value)
           }

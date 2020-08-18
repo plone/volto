@@ -113,6 +113,11 @@ export CheckboxWidget from '@plone/volto/components/manage/Widgets/CheckboxWidge
 export const DatetimeWidget = loadable(() =>
   import('@plone/volto/components/manage/Widgets/DatetimeWidget'),
 );
+export const RecurrenceWidget = loadable(() =>
+  import(
+    '@plone/volto/components/manage/Widgets/RecurrenceWidget/RecurrenceWidget'
+  ),
+);
 
 export FileWidget from '@plone/volto/components/manage/Widgets/FileWidget';
 export PasswordWidget from '@plone/volto/components/manage/Widgets/PasswordWidget';
@@ -154,6 +159,7 @@ export ListingBlockData from '@plone/volto/components/manage/Blocks/Listing/List
 export ListingBlockStyle from '@plone/volto/components/manage/Blocks/Listing/ListingStyle';
 export ListingBlockMore from '@plone/volto/components/manage/Blocks/Listing/ListingMore';
 export ListingBlockSidebar from '@plone/volto/components/manage/Blocks/Listing/ListingSidebar';
+export QuerystringWidget from '@plone/volto/components/manage/Blocks/Listing/QuerystringWidget';
 
 export ImageSidebar from '@plone/volto/components/manage/Blocks/Image/ImageSidebar';
 export MapsSidebar from '@plone/volto/components/manage/Blocks/Maps/MapsSidebar';
