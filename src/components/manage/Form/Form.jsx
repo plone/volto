@@ -15,7 +15,7 @@ import {
   pickBy,
   uniq,
   without,
-  isEqual,
+  // isEqual,
 } from 'lodash';
 import move from 'lodash-move';
 import isBoolean from 'lodash/isBoolean';
@@ -265,11 +265,11 @@ export class Form extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (!isEqual(nextProps.formData, this.contextData.formData)) {
-      this.setContextData({ formData: nextProps.formData });
-    }
-  }
+  // UNSAFE_componentWillReceiveProps(nextProps) {
+  //   if (!isEqual(nextProps.formData, this.contextData.formData)) {
+  //     this.setContextData({ formData: nextProps.formData });
+  //   }
+  // }
 
   /**
    * Change field handler
