@@ -1,16 +1,70 @@
 # Change Log
 
-## 7.5.2 (unreleased)
+## 7.8.1 (unreleased)
 
 ### Breaking
 
 ### Feature
 
-- Added recurrence widget @giuliaghisini
-
 ### Bugfix
 
 ### Internal
+
+## 7.8.0 (2020-08-18)
+
+### Breaking
+
+### Feature
+
+- Add cms-only theme that allows to completely remove semantic-ui from public facing views @pnicolli @nzambello
+
+### Bugfix
+
+- Remove supposed fix to form.jsx again, as it apparently did not really fix anything but only broke stuff @jackahl
+
+### Internal
+
+## 7.7.2 (2020-08-18)
+
+### Bugfix
+
+- Fix bug showing wrong data in the edit view, that occured in some cases, when one would enter the edit view of a page from another page @jackahl
+
+### Internal
+
+- Remove "\$" from all examples in install docs and README @timo
+
+## 7.7.1 (2020-08-12)
+
+### Bugfix
+
+- Japanese translation updated @terapyon
+- Bugfix Edit page through Contents list #1594 @terapyon @csenger
+
+### Internal
+
+- Bump serialize-javascript from 2.1.1 to 3.1.0 @timo
+- Bump prismjs from 1.17.1 to 1.21.0 @timo
+- Make Table Block Cypress test more reliable @timo
+- Make listing template Cypress test more reliable @timo
+
+## 7.7.0 (2020-08-04)
+
+### Feature
+
+- Allow addons to provide less files @tiberiuichim
+- Making Content browser aware of context @iFlameing
+
+### Bugfix
+
+- Fix click-select block on unknown block type @nileshgulia1
+- Fix Image Gallery Template in Listing Block crashing when no criteria are set (#1722) @jackahl
+
+## 7.6.0 (2020-07-31)
+
+### Feature
+
+- Added recurrence widget @giuliaghisini
 
 ## 7.5.1 (2020-07-29)
 
