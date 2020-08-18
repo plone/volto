@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix breaking bug caused by #1732 @jackahl
+
 ### Internal
 
 ## 7.8.0 (2020-08-18)
@@ -30,7 +32,7 @@
 
 ### Internal
 
-- Remove "$" from all examples in install docs and README @timo
+- Remove "\$" from all examples in install docs and README @timo
 
 ## 7.7.1 (2020-08-12)
 
