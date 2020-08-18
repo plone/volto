@@ -70,6 +70,7 @@ export function getView(url) {
       'diff',
       'history',
       'sharing',
+      'controlpanel',
     ].indexOf(view) === -1
   ) {
     return 'view';
@@ -113,6 +114,24 @@ export function getIcon(type, isFolderish) {
 export function flattenToAppURL(url) {
   return url.replace(settings.apiPath, '');
 }
+
+/**
+ * Returns true if the current view is a cms ui view
+ * @method isCmsUi
+ * @param {string} currentPathname pathname of the current view
+ * @returns {boolean} true if the current view is a cms ui view
+ */
+export const isCmsUi = memoize((currentPathname) => {
+  const fullPath = currentPathname.replace(/\?.*$/, '');
+  // WARNING:
+  // not working properly for paths like /editors or similar
+  // because the regexp test does not take that into account
+  // https://github.com/plone/volto/issues/870
+  return settings.nonContentRoutes.reduce(
+    (acc, route) => acc || new RegExp(route).test(`/${fullPath}`),
+    false,
+  );
+});
 
 /**
  * Flatten to app server HTML - Given a text if it contains some urls that starts
