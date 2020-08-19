@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Making minor change to context aware of objectBrowser @iFlameing
+
 ### Bugfix
 
 ### Internal
