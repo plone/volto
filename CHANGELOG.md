@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Docs: Review of "How to use and addon" @ksuess
+
 ## 7.8.2 (2020-08-18)
 
 ### Bugfix
