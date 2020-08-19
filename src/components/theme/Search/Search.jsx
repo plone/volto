@@ -64,7 +64,7 @@ class Search extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { currentPage: 1, isClient: false, active: 'path' };
+    this.state = { currentPage: 1, isClient: false, active: 'relevance' };
   }
 
   /**
@@ -127,6 +127,10 @@ class Search extends Component {
     let options = qs.parse(this.props.history.location.search);
     options.sort_on = event.target.name;
     options.sort_order = sort_order || 'ascending';
+    if (event.target.name === 'relevance') {
+      delete options.sort_on;
+      delete options.sort_order;
+    }
     let searchParams = qs.stringify(options);
     this.setState({ currentPage: 1, active: event.target.name }, () => {
       // eslint-disable-next-line no-restricted-globals
@@ -184,12 +188,12 @@ class Search extends Component {
                       </div>
                       <Button
                         onClick={(event) => {
-                          this.onSortChange(event, 'path');
+                          this.onSortChange(event);
                         }}
-                        name="path"
+                        name="relevance"
                         size="tiny"
                         className={classNames('button-sort', {
-                          'button-active': this.state.active === 'path',
+                          'button-active': this.state.active === 'relevance',
                         })}
                       >
                         <FormattedMessage
@@ -224,8 +228,8 @@ class Search extends Component {
                         })}
                       >
                         <FormattedMessage
-                          id="Date(newest first)"
-                          defaultMessage="Date(newest first)"
+                          id="Date (newest first)"
+                          defaultMessage="Date (newest first)"
                         />
                       </Button>
                     </Header.Content>
