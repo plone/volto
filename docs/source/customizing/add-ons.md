@@ -27,7 +27,6 @@ and in `package.json`:
 ```json
   "scripts": {
     "develop": "missdev --config=jsconfig.json --output=addons",
-    ...
   }
 ```
 
@@ -102,14 +101,12 @@ resolve them, so in `package.json`:
 
 ```json hl_lines="6"
   "jest": {
-    ...
     "moduleNameMapper": {
       "@plone/volto/(.*)$": "<rootDir>/node_modules/@plone/volto/src/$1",
       "@package/(.*)$": "<rootDir>/src/$1",
       "@plone/my-volto-addon/(.*)$": "<rootDir>/src/addons/@plone/my-volto-addon/src/$1",
       "~/(.*)$": "<rootDir>/src/$1"
     },
-    ...
 ```
 
 ### .eslintrc
@@ -146,7 +143,7 @@ their configuration, so they may offer additional configuration functions,
 which you can load by overloading the addon name in the ``addons`` package.json
 key, like so:
 
-```js
+```json
 {
   "name": "my-nice-volto-project",
   ...
@@ -154,7 +151,6 @@ key, like so:
     "acme-volto-foo-addon:loadOptionalBlocks,overrideSomeDefaultBlock",
     "volto-ga"
   ],
-  ...
 }
 ```
 
@@ -212,12 +208,10 @@ package names, like:
 ```json
 {
   "name": "my-nice-volto-project",
-  ...
   "addons": [
     "acme-volto-foo-addon",
     "volto-ga"
   ],
-  ...
 }
 ```
 
@@ -251,9 +245,7 @@ export default function applyConfig(config) {
 
 ```json
 {
-  ...
   "main": "src/index.js",
-  ...
 }
 ```
 
