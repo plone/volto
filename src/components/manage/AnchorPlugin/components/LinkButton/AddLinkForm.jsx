@@ -286,6 +286,7 @@ class AddLinkForm extends Component {
                         overlay: true,
                         onSelectItem: (url) => {
                           this.onChange(addAppURL(url));
+                          this.onSubmit();
                         },
                       });
                     }}
