@@ -19,9 +19,12 @@ Example of configurations:
     },
   "extras":
     {
-      "logger":"javascript-frontend", 
-      "release":1
+      "logger":"javascript-frontend"
     }
+  "release": "version 1",
+  "environment": "development",
+  "serverName": "server #1",
+  "maxBreadcrumbs": 50
 }
 ```
 
