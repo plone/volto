@@ -76,7 +76,7 @@ Instead, change the "addons" setting in your package.json file.
 const load = (config) => {
   const addonLoaders = [${configsToLoad.join(', ')}];
   if(!addonLoaders.every((el) => typeof el === "function")) {
-    throw new Error(
+    throw new TypeError(
       'Each addon has to provide a function applying its configuration to the projects configuration.',
     );
   }
