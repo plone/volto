@@ -11,6 +11,7 @@
 ### Internal
 
 - Docs: Review of "How to use and addon" @ksuess
+- Addon: Hint for addon developers if function applying config is missing @ksuess
 
 ## 7.8.2 (2020-08-18)
 
