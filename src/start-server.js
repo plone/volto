@@ -4,17 +4,9 @@ import app from './server';
 
 import * as Sentry from '@sentry/node';
 
-if (__SENTRY__) {
-  Sentry.init({ dsn: __SENTRY__.SENTRY_DSN });
-  if (__SENTRY__.SENTRY_CONFIG !== undefined) {
-    if (__SENTRY__.SENTRY_CONFIG.tags !== undefined) {
-      Sentry.setTags(__SENTRY__.SENTRY_CONFIG.tags);
-    }
-    if (__SENTRY__.SENTRY_CONFIG.extras !== undefined) {
-      Sentry.setExtras(__SENTRY__.SENTRY_CONFIG.extras);
-    }
-  }
-}
+import initSentry from './sentry';
+
+initSentry(Sentry);
 
 export default () => {
   const server = http.createServer(app);

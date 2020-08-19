@@ -13,20 +13,11 @@ import configureStore from '@plone/volto/store';
 import { Api, persistAuthToken, ScrollToTop } from '@plone/volto/helpers';
 
 import * as Sentry from '@sentry/browser';
+import initSentry from './sentry';
 
 export const history = createBrowserHistory();
 
-if (__SENTRY__) {
-  Sentry.init({ dsn: __SENTRY__.SENTRY_DSN });
-  if (__SENTRY__.SENTRY_CONFIG !== undefined) {
-    if (__SENTRY__.SENTRY_CONFIG.tags !== undefined) {
-      Sentry.setTags(__SENTRY__.SENTRY_CONFIG.tags);
-    }
-    if (__SENTRY__.SENTRY_CONFIG.extras !== undefined) {
-      Sentry.setExtras(__SENTRY__.SENTRY_CONFIG.extras);
-    }
-  }
-}
+initSentry(Sentry);
 
 export default () => {
   const api = new Api();
