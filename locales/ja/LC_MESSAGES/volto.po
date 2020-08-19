@@ -418,7 +418,7 @@ msgid "Date"
 msgstr "日付"
 
 #: components/theme/Search/Search
-msgid "Date(newest first)"
+msgid "Date (newest first)"
 msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
