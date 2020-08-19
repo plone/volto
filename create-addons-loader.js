@@ -75,6 +75,11 @@ Instead, change the "addons" setting in your package.json file.
   buf += `
 const load = (config) => {
   const addonLoaders = [${configsToLoad.join(', ')}];
+  if(!addonLoaders.every((el) => typeof el === "function")) {
+    throw new Error(
+      'Each addon has to provide a function applying its configuration to the projects configuration.',
+    );
+  }
   return addonLoaders.reduce((acc, apply) => apply(acc), config);
 };
 export default load;
