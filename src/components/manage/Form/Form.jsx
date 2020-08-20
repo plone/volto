@@ -120,6 +120,7 @@ class Form extends Component {
     description: PropTypes.string,
     visual: PropTypes.bool,
     blocks: PropTypes.arrayOf(PropTypes.object),
+    onChangeFormData: PropTypes.func,
   };
 
   /**
@@ -237,6 +238,17 @@ class Form extends Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.formData !== this.state.formData) {
       this.setState({ formData: nextProps.formData });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.onChangeFormData) {
+      if (
+        JSON.stringify(prevState?.formData) !==
+        JSON.stringify(this.state.formData)
+      ) {
+        this.props.onChangeFormData(this.state.formData);
+      }
     }
   }
 
