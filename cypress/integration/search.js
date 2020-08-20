@@ -101,6 +101,16 @@ if (Cypress.env('API') !== 'guillotina') {
         contentId: 'color',
         contentTitle: 'Color',
       });
+      cy.setWorkflow({
+        path: 'colorless',
+        effective: '2020-08-15T15:58:24+00:00',
+        expires: '2030-05-14T15:58:24+00:00',
+      });
+      cy.setWorkflow({
+        path: 'color',
+        effective: '2020-08-13T15:58:24+00:00',
+        expires: '2030-05-14T15:58:24+00:00',
+      });
       cy.visit('/colorless/edit');
       cy.url().should('eq', Cypress.config().baseUrl + '/colorless/edit');
       cy.get('.block.inner.text .public-DraftEditor-content').type(
@@ -118,8 +128,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.visit('/');
       cy.url().should('eq', Cypress.config().baseUrl + '/');
 
-      // then we are searhing for SearchableText=color and sorting it with new date
-      // first
+      // then we are searching for SearchableText=color and sorting it with effective date
       cy.visit('/search?SearchableText=color');
       cy.url().should(
         'eq',
