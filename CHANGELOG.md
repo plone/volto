@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Adding support of pasting link of voltoCMS video link to video blocks @iFlameing
+
 ### Bugfix
 
 ### Internal
