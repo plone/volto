@@ -228,8 +228,8 @@ class Search extends Component {
                         })}
                       >
                         <FormattedMessage
-                          id="Date(newest first)"
-                          defaultMessage="Date(newest first)"
+                          id="Date (newest first)"
+                          defaultMessage="Date (newest first)"
                         />
                       </Button>
                     </Header.Content>
