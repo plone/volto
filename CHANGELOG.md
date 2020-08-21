@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Change ImageGallery image scale from preview to large. @tisto
+
 ### Internal
 
 - Docs: Review of "How to use and addon" @ksuess
