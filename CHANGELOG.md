@@ -2,15 +2,11 @@
 
 ## 7.8.3 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Change ImageGallery image scale from preview to large. @tisto
 - Also use `settings.internalApiPath` in url helpers `isInternalURL`, `flattenToAppUrl` and `flattenHTMLToAppURL` @tiberiuichim
-- Fix getBlocks helper when blocks_layout has no `items` (default PloneSite with no volto homepage)
+- Fix getBlocks helper when blocks_layout has no `items` (default PloneSite with no volto homepage) @avoinea
 
 ### Internal
 
