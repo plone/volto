@@ -93,7 +93,7 @@ const ImageGalleryTemplate = ({ items }) => {
         renderRightNav={renderRightNav}
         renderPlayPauseButton={renderPlayPauseButton}
         renderFullscreenButton={renderFullscreenButton}
-        lazyLoad
+        lazyLoad={true}
       />
     )
   );
