@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Also use `settings.internalApiPath` in url helpers `isInternalURL`, `flattenToAppUrl` and `flattenHTMLToAppURL` @tiberiuichim
+
 ### Internal
 
 - Docs: Review of "How to use and addon" @ksuess
