@@ -112,7 +112,9 @@ export function getIcon(type, isFolderish) {
  * @returns {string} Flattened URL to the app server
  */
 export function flattenToAppURL(url) {
-  return url.replace(settings.apiPath, '');
+  return url
+    .replace(settings.internalApiPath, '')
+    .replace(settings.apiPath, '');
 }
 
 /**
@@ -143,7 +145,11 @@ export const isCmsUi = memoize((currentPathname) => {
  * @returns {string} Same HTML with Flattened URLs to the app server
  */
 export function flattenHTMLToAppURL(html) {
-  return html.replace(new RegExp(settings.apiPath, 'g'), '');
+  return settings.internalApiPath
+    ? html
+        .replace(new RegExp(settings.internalApiPath, 'g'), '')
+        .replace(new RegExp(settings.apiPath, 'g'), '')
+    : html.replace(new RegExp(settings.apiPath, 'g'), '');
 }
 
 /**
@@ -164,8 +170,10 @@ export function addAppURL(url) {
  */
 export function isInternalURL(url) {
   return (
+    url.indexOf(settings.internalApiPath) !== -1 ||
     url.indexOf(settings.apiPath) !== -1 ||
     url.charAt(0) === '/' ||
+    url.charAt(0) === '.' ||
     url.startsWith('#')
   );
 }
