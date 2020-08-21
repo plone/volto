@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix getBlocks helper when blocks_layout has no `items` (default PloneSite with no volto homepage)
+
 ### Internal
 
 - Docs: Review of "How to use and addon" @ksuess
