@@ -274,6 +274,7 @@ class Edit extends Component {
                         icon
                         onClick={(e) => {
                           e.stopPropagation();
+                          e.preventDefault();
                           this.props.openObjectBrowser();
                         }}
                       >

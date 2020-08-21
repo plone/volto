@@ -241,7 +241,7 @@ class Form extends Component {
     }
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  async componentDidUpdate(prevProps, prevState) {
     if (this.props.onChangeFormData) {
       if (
         JSON.stringify(prevState?.formData) !==
