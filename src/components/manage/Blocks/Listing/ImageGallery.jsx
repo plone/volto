@@ -77,7 +77,7 @@ const ImageGalleryTemplate = ({ items }) => {
   const imagesInfo = renderItems.map((item) => {
     return {
       original: flattenToAppURL(
-        item[settings.listingPreviewImageField]?.scales.preview.download || '',
+        item[settings.listingPreviewImageField]?.scales.large.download || '',
       ),
       thumbnail: flattenToAppURL(
         item[settings.listingPreviewImageField]?.scales.thumb.download || '',
