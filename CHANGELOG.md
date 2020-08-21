@@ -1,6 +1,6 @@
 # Change Log
 
-## 7.8.3 (unreleased)
+## 7.8.3 (2020-08-21)
 
 ### Bugfix
 
