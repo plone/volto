@@ -9,6 +9,7 @@
 ### Bugfix
 
 - Change ImageGallery image scale from preview to large. @tisto
+- Fix getBlocks helper when blocks_layout has no `items` (default PloneSite with no volto homepage)
 
 ### Internal
 
