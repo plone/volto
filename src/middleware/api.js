@@ -116,7 +116,11 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
             };
           });
         }
-        return next({ ...rest, result, type: `${type}_SUCCESS` });
+        return next({
+          ...rest,
+          result: Array.isArray(result) ? { items: result } : result,
+          type: `${type}_SUCCESS`,
+        });
       },
       (error) => {
         // Only SRR can set ECONNREFUSED

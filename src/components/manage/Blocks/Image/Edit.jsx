@@ -95,7 +95,8 @@ class Edit extends Component {
   }
 
   /**
-   * Upload image handler
+   * Upload image handler (not used), but useful in case that we want a button
+   * not powered by react-dropzone
    * @method onUploadImage
    * @returns {undefined}
    */

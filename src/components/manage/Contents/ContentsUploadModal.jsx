@@ -24,6 +24,7 @@ import moment from 'moment';
 import filesize from 'filesize';
 import { readAsDataURL } from 'promise-file-reader';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
+// import { v4 as uuid } from 'uuid';
 
 import { createContent } from '@plone/volto/actions';
 
@@ -37,6 +38,8 @@ const messages = defineMessages({
     defaultMessage: 'Upload {count, plural, one {# file} other {# files}}',
   },
 });
+
+const SUBREQUEST = 'batch-upload';
 
 /**
  * ContentsUploadModal class.
@@ -157,6 +160,7 @@ class ContentsUploadModal extends Component {
               },
             };
           }),
+          SUBREQUEST,
         );
       },
     );
@@ -306,7 +310,7 @@ export default compose(
   injectIntl,
   connect(
     (state) => ({
-      request: state.content.create,
+      request: state.content.subrequests?.[SUBREQUEST] || {},
     }),
     { createContent },
   ),
