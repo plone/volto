@@ -14,6 +14,11 @@ Instead, change the "addons" setting in your package.json file.
 
 const load = (config) => {
   const addonLoaders = [];
+  if(!addonLoaders.every((el) => typeof el === "function")) {
+    throw new TypeError(
+      'Each addon has to provide a function applying its configuration to the projects configuration.',
+    );
+  }
   return addonLoaders.reduce((acc, apply) => apply(acc), config);
 };
 export default load;
@@ -31,6 +36,11 @@ import voltoAddon1 from 'volto-addon1';
 
 const load = (config) => {
   const addonLoaders = [voltoAddon1];
+  if(!addonLoaders.every((el) => typeof el === "function")) {
+    throw new TypeError(
+      'Each addon has to provide a function applying its configuration to the projects configuration.',
+    );
+  }
   return addonLoaders.reduce((acc, apply) => apply(acc), config);
 };
 export default load;
@@ -52,6 +62,11 @@ import voltoAddon2 from 'volto-addon2';
 
 const load = (config) => {
   const addonLoaders = [voltoAddon1, voltoAddon2];
+  if(!addonLoaders.every((el) => typeof el === "function")) {
+    throw new TypeError(
+      'Each addon has to provide a function applying its configuration to the projects configuration.',
+    );
+  }
   return addonLoaders.reduce((acc, apply) => apply(acc), config);
 };
 export default load;
@@ -69,6 +84,11 @@ import voltoAddon1, { loadExtra1 as loadExtra10 } from 'volto-addon1';
 
 const load = (config) => {
   const addonLoaders = [voltoAddon1, loadExtra10];
+  if(!addonLoaders.every((el) => typeof el === "function")) {
+    throw new TypeError(
+      'Each addon has to provide a function applying its configuration to the projects configuration.',
+    );
+  }
   return addonLoaders.reduce((acc, apply) => apply(acc), config);
 };
 export default load;
@@ -88,6 +108,11 @@ import voltoAddon1, { loadExtra1 as loadExtra10, loadExtra2 as loadExtra21 } fro
 
 const load = (config) => {
   const addonLoaders = [voltoAddon1, loadExtra10, loadExtra21];
+  if(!addonLoaders.every((el) => typeof el === "function")) {
+    throw new TypeError(
+      'Each addon has to provide a function applying its configuration to the projects configuration.',
+    );
+  }
   return addonLoaders.reduce((acc, apply) => apply(acc), config);
 };
 export default load;
@@ -109,6 +134,11 @@ import voltoAddon2, { loadExtra3 as loadExtra32, loadExtra4 as loadExtra43 } fro
 
 const load = (config) => {
   const addonLoaders = [voltoAddon1, loadExtra10, loadExtra21, voltoAddon2, loadExtra32, loadExtra43];
+  if(!addonLoaders.every((el) => typeof el === "function")) {
+    throw new TypeError(
+      'Each addon has to provide a function applying its configuration to the projects configuration.',
+    );
+  }
   return addonLoaders.reduce((acc, apply) => apply(acc), config);
 };
 export default load;
