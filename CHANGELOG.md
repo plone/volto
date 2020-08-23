@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- On mutating a block, don't create extra placeholder block if such block already exists @tiberiuichim
+
 ### Internal
 
 ## 7.8.3 (2020-08-21)
