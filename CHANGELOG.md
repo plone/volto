@@ -4,6 +4,8 @@
 
 ### Breaking
 
+- In the backend API middleware, when dealing with multiple subrequests, return the action result as a `{ items: [...] }` object. Before, it was returned as a list directly, which breaks the assumptions in the `GET_CONTENT_SUCCESS` `content` reducer @tiberiuichim
+
 ### Feature
 
 - Add a `subrequest` option to the `createContent` action @tiberiuichim @silviubogan
@@ -11,6 +13,8 @@
 ### Bugfix
 
 - On image upload in a block, don't overwrite the global `state.content.data` with new image data @tiberiuichim @silviubogan
+- In folder contents batch upload, use a subrequest to avoid breaking the global `content.data` state @tiberiuichim
+
 ### Internal
 
 ## 7.8.3 (2020-08-21)
