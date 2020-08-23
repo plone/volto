@@ -23,14 +23,13 @@ import { settings } from '~/config';
  * @returns {Object} Create content action.
  */
 export function createContent(url, content, subrequest) {
-  const action = {
+  return {
     type: CREATE_CONTENT,
     subrequest,
     request: Array.isArray(content)
       ? content.map((item) => ({ op: 'post', path: url, data: item }))
       : { op: 'post', path: url, data: nestContent(content) },
   };
-  return action;
 }
 
 /**
