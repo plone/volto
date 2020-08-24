@@ -1,6 +1,7 @@
 # Change Log
 
 ## 7.9.0 (unreleased)
+## 7.9.1 (unreleased)
 
 ### Breaking
 
@@ -16,6 +17,22 @@
 - In folder contents batch upload, use a subrequest to avoid breaking the global `content.data` state @tiberiuichim
 
 ### Internal
+
+## 7.9.0 (2020-08-24)
+
+### Breaking
+
+### Feature
+
+- Allow serial processing of API requests when `mode:'serial'` is passed in the action. @tiberiuichim
+
+### Bugfix
+
+- On mutating a block, don't create extra placeholder block if such block already exists @tiberiuichim
+
+### Internal
+
+- When passed an array of items (for example in batch upload content), the `createContent` action now serializes those requests @tiberiuichim
 
 ## 7.8.3 (2020-08-21)
 
