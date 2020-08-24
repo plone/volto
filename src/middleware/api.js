@@ -128,7 +128,10 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
         }
         return next({
           ...rest,
-          result: Array.isArray(result) ? { items: result } : result,
+          result:
+            Array.isArray(action.request) && Array.isArray(result)
+              ? { items: result }
+              : result,
           type: `${type}_SUCCESS`,
         });
       },
