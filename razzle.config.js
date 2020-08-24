@@ -40,10 +40,10 @@ let { customizationPaths } = packageJson;
 if (!customizationPaths) {
   customizationPaths = ['src/customizations/'];
 }
-customizationPaths.forEach(customizationPath => {
+customizationPaths.forEach((customizationPath) => {
   map(
     glob(`${customizationPath}**/*.*(svg|png|jpg|jpeg|gif|ico|less|js|jsx)`),
-    filename => {
+    (filename) => {
       const targetPath = filename.replace(
         customizationPath,
         `${registry.voltoPath}/src/`,
@@ -63,7 +63,7 @@ customizationPaths.forEach(customizationPath => {
   );
 });
 
-const svgPlugin = config => {
+const svgPlugin = (config) => {
   const SVGLOADER = {
     test: /icons\/.*\.svg$/,
     use: [
@@ -224,14 +224,14 @@ const defaultModify = (config, { target, dev }, webpack) => {
   }
   // Add babel support external (ie. node_modules npm published packages)
   if (packageJson.addons) {
-    registry.addonNames.forEach(addon =>
+    registry.addonNames.forEach((addon) =>
       include.push(fs.realpathSync(registry.packages[addon].modulePath)),
     );
   }
 
   let addonsAsExternals = [];
   if (packageJson.addons) {
-    addonsAsExternals = registry.addonNames.map(addon => new RegExp(addon));
+    addonsAsExternals = registry.addonNames.map((addon) => new RegExp(addon));
   }
 
   config.externals =
@@ -255,7 +255,7 @@ const defaultModify = (config, { target, dev }, webpack) => {
   return config;
 };
 
-const addonExtenders = registry.getAddonExtenders().map(m => require(m));
+const addonExtenders = registry.getAddonExtenders().map((m) => require(m));
 const defaultPlugins = [
   'bundle-analyzer',
   svgPlugin,
@@ -276,5 +276,8 @@ module.exports = {
       defaultConfig,
     );
     return defaultConfig;
+  },
+  experimental: {
+    reactRefresh: true,
   },
 };
