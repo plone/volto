@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Removed unused component `src/components/manage/Contents/ContentsToolbar.jsx` @tiberiuichim
+
 ## 7.9.0 (2020-08-24)
 
 ### Breaking
