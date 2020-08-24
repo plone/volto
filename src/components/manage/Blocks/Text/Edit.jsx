@@ -127,13 +127,13 @@ class Edit extends Component {
    * @param {*} nextProps
    * @param {*} nextState
    * @returns {boolean}
-   * @memberof Editq
+   * @memberof Edit
    */
   shouldComponentUpdate(nextProps, nextState) {
     if (this.state.addNewBlockOpened !== nextState.addNewBlockOpened) {
       return true;
     }
-    return this.props.data.text !== nextProps.data.text;
+    return !isEqual(this.props.data.text, nextProps.data.text);
   }
 
   /**

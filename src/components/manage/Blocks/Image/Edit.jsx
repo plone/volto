@@ -12,6 +12,7 @@ import { Button, Dimmer, Input, Loader, Message } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 import Dropzone from 'react-dropzone';
+import { isEqual } from 'lodash';
 
 import { Icon, ImageSidebar, SidebarPortal } from '@plone/volto/components';
 import { createContent } from '@plone/volto/actions';
@@ -92,6 +93,19 @@ class Edit extends Component {
         alt: nextProps.content.title,
       });
     }
+  }
+
+  /**
+    * @param {*} nextProps
+    * @returns {boolean}
+    * @memberof Edit
+    */
+  shouldComponentUpdate(nextProps) {
+    if (this.props.data.url && nextProps.data.url) {
+      return !isEqual(this.props.data.url, nextProps.data.url)
+    }
+    return true;
+
   }
 
   /**
@@ -249,99 +263,99 @@ class Edit extends Component {
             src={
               isInternalURL(data.url)
                 ? // Backwards compat in the case that the block is storing the full server URL
-                  (() => {
-                    if (data.size === 'l')
-                      return `${flattenToAppURL(data.url)}/@@images/image`;
-                    if (data.size === 'm')
-                      return `${flattenToAppURL(
-                        data.url,
-                      )}/@@images/image/preview`;
-                    if (data.size === 's')
-                      return `${flattenToAppURL(data.url)}/@@images/image/mini`;
+                (() => {
+                  if (data.size === 'l')
                     return `${flattenToAppURL(data.url)}/@@images/image`;
-                  })()
+                  if (data.size === 'm')
+                    return `${flattenToAppURL(
+                      data.url,
+                    )}/@@images/image/preview`;
+                  if (data.size === 's')
+                    return `${flattenToAppURL(data.url)}/@@images/image/mini`;
+                  return `${flattenToAppURL(data.url)}/@@images/image`;
+                })()
                 : data.url
             }
             alt={data.alt || ''}
           />
         ) : (
-          <div>
-            <Dropzone disableClick onDrop={this.onDrop} className="dropzone">
-              <Message>
-                {this.state.uploading && (
-                  <Dimmer active>
-                    <Loader indeterminate>Uploading image</Loader>
-                  </Dimmer>
-                )}
-                <center>
-                  <img src={imageBlockSVG} alt="" />
-                  <div className="toolbar-inner">
-                    <Button.Group>
-                      <Button
-                        basic
-                        icon
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          this.props.openObjectBrowser();
-                        }}
-                      >
-                        <Icon name={navTreeSVG} size="24px" />
-                      </Button>
-                    </Button.Group>
-                    <Button.Group>
-                      <label className="ui button basic icon">
-                        <Icon name={uploadSVG} size="24px" />
-                        <input
-                          type="file"
-                          onChange={this.onUploadImage}
-                          style={{ display: 'none' }}
-                        />
-                      </label>
-                    </Button.Group>
-                    <Input
-                      onKeyDown={this.onKeyDownVariantMenuForm}
-                      onChange={this.onChangeUrl}
-                      placeholder={this.props.intl.formatMessage(
-                        messages.ImageBlockInputPlaceholder,
-                      )}
-                      value={this.state.url}
-                      // Prevents propagation to the Dropzone and the opening
-                      // of the upload browser dialog
-                      onClick={(e) => e.stopPropagation()}
-                    />
-                    {this.state.url && (
+            <div>
+              <Dropzone disableClick onDrop={this.onDrop} className="dropzone">
+                <Message>
+                  {this.state.uploading && (
+                    <Dimmer active>
+                      <Loader indeterminate>Uploading image</Loader>
+                    </Dimmer>
+                  )}
+                  <center>
+                    <img src={imageBlockSVG} alt="" />
+                    <div className="toolbar-inner">
                       <Button.Group>
                         <Button
                           basic
-                          className="cancel"
+                          icon
                           onClick={(e) => {
                             e.stopPropagation();
-                            this.setState({ url: '' });
+                            this.props.openObjectBrowser();
                           }}
                         >
-                          <Icon name={clearSVG} size="30px" />
+                          <Icon name={navTreeSVG} size="24px" />
                         </Button>
                       </Button.Group>
-                    )}
-                    <Button.Group>
-                      <Button
-                        basic
-                        primary
-                        disabled={!this.state.url}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          this.onSubmitUrl();
-                        }}
-                      >
-                        <Icon name={aheadSVG} size="30px" />
-                      </Button>
-                    </Button.Group>
-                  </div>
-                </center>
-              </Message>
-            </Dropzone>
-          </div>
-        )}
+                      <Button.Group>
+                        <label className="ui button basic icon">
+                          <Icon name={uploadSVG} size="24px" />
+                          <input
+                            type="file"
+                            onChange={this.onUploadImage}
+                            style={{ display: 'none' }}
+                          />
+                        </label>
+                      </Button.Group>
+                      <Input
+                        onKeyDown={this.onKeyDownVariantMenuForm}
+                        onChange={this.onChangeUrl}
+                        placeholder={this.props.intl.formatMessage(
+                          messages.ImageBlockInputPlaceholder,
+                        )}
+                        value={this.state.url}
+                        // Prevents propagation to the Dropzone and the opening
+                        // of the upload browser dialog
+                        onClick={(e) => e.stopPropagation()}
+                      />
+                      {this.state.url && (
+                        <Button.Group>
+                          <Button
+                            basic
+                            className="cancel"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              this.setState({ url: '' });
+                            }}
+                          >
+                            <Icon name={clearSVG} size="30px" />
+                          </Button>
+                        </Button.Group>
+                      )}
+                      <Button.Group>
+                        <Button
+                          basic
+                          primary
+                          disabled={!this.state.url}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            this.onSubmitUrl();
+                          }}
+                        >
+                          <Icon name={aheadSVG} size="30px" />
+                        </Button>
+                      </Button.Group>
+                    </div>
+                  </center>
+                </Message>
+              </Dropzone>
+            </div>
+          )}
         <SidebarPortal selected={this.props.selected}>
           <ImageSidebar {...this.props} resetSubmitUrl={this.resetSubmitUrl} />
         </SidebarPortal>

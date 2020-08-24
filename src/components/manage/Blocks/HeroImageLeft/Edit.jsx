@@ -12,6 +12,7 @@ import { readAsDataURL } from 'promise-file-reader';
 import { Button, Dimmer, Loader, Message } from 'semantic-ui-react';
 import { stateFromHTML } from 'draft-js-import-html';
 import { Editor, DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
+import { isEqual } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 
@@ -304,30 +305,30 @@ class Edit extends Component {
               alt=""
             />
           ) : (
-            <div className="image-add">
-              <Message className="image-message">
-                {this.state.uploading && (
-                  <Dimmer active>
-                    <Loader indeterminate>Uploading image</Loader>
-                  </Dimmer>
-                )}
-                <center>
-                  <h4>Image</h4>
-                  <p>Upload a new image</p>
-                  <p>
-                    <label className="ui button file">
-                      Browse
+              <div className="image-add">
+                <Message className="image-message">
+                  {this.state.uploading && (
+                    <Dimmer active>
+                      <Loader indeterminate>Uploading image</Loader>
+                    </Dimmer>
+                  )}
+                  <center>
+                    <h4>Image</h4>
+                    <p>Upload a new image</p>
+                    <p>
+                      <label className="ui button file">
+                        Browse
                       <input
-                        type="file"
-                        onChange={this.onUploadImage}
-                        style={{ display: 'none' }}
-                      />
-                    </label>
-                  </p>
-                </center>
-              </Message>
-            </div>
-          )}
+                          type="file"
+                          onChange={this.onUploadImage}
+                          style={{ display: 'none' }}
+                        />
+                      </label>
+                    </p>
+                  </center>
+                </Message>
+              </div>
+            )}
           <div className="hero-body">
             <Editor
               ref={(node) => {

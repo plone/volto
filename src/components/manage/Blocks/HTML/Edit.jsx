@@ -16,6 +16,7 @@ import { Icon } from '@plone/volto/components';
 import showSVG from '@plone/volto/icons/show.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import codeSVG from '@plone/volto/icons/code.svg';
+import { isEqual } from 'lodash';
 
 const Pretty = loadable.lib(() => import('pretty'));
 
@@ -89,6 +90,20 @@ class Edit extends Component {
     if (nextProps.selected) {
       this.codeEditor._input.focus();
     }
+  }
+
+  /**
+    * @param {*} nextProps
+    * @param {*} nextState
+    * @returns {boolean}
+    * @memberof Edit
+    */
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.props.data.html && nextProps.data.html) {
+      return !isEqual(this.props.data.html, nextProps.data.html)
+    }
+    return true
+
   }
 
   /**

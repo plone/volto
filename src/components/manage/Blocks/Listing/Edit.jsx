@@ -9,7 +9,7 @@ import {
 } from '@plone/volto/components';
 import { getBaseUrl } from '@plone/volto/helpers';
 
-const Edit = ({
+const Edit = React.memo(({
   data,
   onChangeBlock,
   block,
@@ -57,7 +57,7 @@ const Edit = ({
       </SidebarPortal>
     </>
   );
-};
+});
 
 Edit.propTypes = {
   data: PropTypes.objectOf(PropTypes.any).isRequired,

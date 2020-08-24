@@ -5,7 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { map, remove } from 'lodash';
+import { map, remove, isEqual } from 'lodash';
 import { Button, Segment, Table, Form } from 'semantic-ui-react';
 import { convertToRaw } from 'draft-js';
 import { Portal } from 'react-portal';
@@ -236,6 +236,18 @@ class Edit extends Component {
       });
     }
   }
+
+  /**
+   * Component will receive props
+   * @method shouldComponentUpdate
+   * @param {Object} nextProps Next properties
+   * @returns {Boolean}
+   */
+  shouldComponentUpdate(nextProps) {
+    return !isEqual(this.props.data.table, nextProps.data.table)
+
+  }
+
 
   /**
    * Select cell handler
@@ -630,8 +642,8 @@ class Edit extends Component {
                       as={cell.type === 'header' ? 'th' : 'td'}
                       className={
                         rowIndex === this.state.selected.row &&
-                        cellIndex === this.state.selected.cell &&
-                        this.props.selected
+                          cellIndex === this.state.selected.cell &&
+                          this.props.selected
                           ? 'selected'
                           : ''
                       }
