@@ -403,7 +403,7 @@ msgstr ""
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database Information"
-msgstr "データベースの情報"
+msgstr "データベース情報"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database Location"
@@ -411,11 +411,11 @@ msgstr "データベースの場所"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database Size"
-msgstr "データベースのサイズ"
+msgstr "データベースサイズ"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database main"
-msgstr "メインのデータベース"
+msgstr "主なデータベース情報"
 
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Widgets/DatetimeWidget
@@ -467,7 +467,7 @@ msgstr "グループを削除"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Delete Type"
-msgstr "タイプを削除"
+msgstr "コンテンツを削除"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Delete User"
@@ -525,7 +525,7 @@ msgstr "グループ {groupname} を削除してよろしいですか?"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Do you really want to delete the type {typename}?"
-msgstr "タイプ {typename} を削除してよろしいですか?"
+msgstr "本当にコンテンツタイプ {typename} を削除しますか?"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Do you really want to delete the user {username}?"
@@ -1075,7 +1075,7 @@ msgstr "アイテムが見つかりませんでした"
 
 #: components/manage/Widgets/ObjectBrowserWidget
 msgid "No items selected"
-msgstr "アイテムが選択されていません"
+msgstr "未選択"
 
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "No map selected"
@@ -1089,7 +1089,7 @@ msgstr ""
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TokenWidget
 msgid "No options"
-msgstr "オプションがありません"
+msgstr "選択肢無し"
 
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
@@ -1125,7 +1125,7 @@ msgstr "None"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Number of active objects"
-msgstr "有効なオブジェクトの数"
+msgstr "アクティブなオブジェクトの数"
 
 #: components/manage/Contents/Contents
 msgid "Object Size"
@@ -1446,7 +1446,7 @@ msgstr ""
 
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Selected items"
-msgstr "選択されたアイテム"
+msgstr "選択中のアイテム"
 
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Selected items - x of y"
@@ -1656,7 +1656,7 @@ msgstr "ありがとうございます。"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "The Database Manager allow you to view database status information"
-msgstr ""
+msgstr "この画面でデータベースの状態を確認できます。"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "The URL for your external home page, if you have one."
@@ -1664,10 +1664,14 @@ msgstr "外部ホームページがあればURLを記載してください。"
 
 #: components/theme/ConnectionRefused/ConnectionRefused
 msgid "The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable."
-msgstr ""
+msgstr "The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable. (未翻訳)"
 
 #: components/theme/CorsError/CorsError
 msgid "The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources."
+msgstr "The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources. (未翻訳)"
+
+#: components/theme/CorsError/CorsError
+msgid "The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
 msgstr ""
 
 #: components/theme/Register/Register
@@ -1684,7 +1688,7 @@ msgstr "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundatio
 
 #: components/theme/CorsError/CorsError
 msgid "There is a configuration problem on the backend"
-msgstr "バックエンド側の構成に問題があります"
+msgstr "バックエンドサーバの設定に問題があります。"
 
 #: components/manage/Form/InlineForm
 msgid "There were some errors"
@@ -1709,7 +1713,7 @@ msgstr "このページは存在しないようです…"
 
 #: components/manage/Widgets/DatetimeWidget
 msgid "Time"
-msgstr "時間"
+msgstr "時刻"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/Contents
@@ -1729,7 +1733,7 @@ msgstr "タイトル"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total active and non-active objects"
-msgstr "有効または非有効のオブジェクトの総数"
+msgstr "オブジェクトの総数"
 
 #: components/manage/Contents/Contents
 msgid "Total comments"
@@ -1737,7 +1741,7 @@ msgstr "コメント計"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total number of objects in each cache"
-msgstr ""
+msgstr "各キャッシュのオブジェクト総数"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total number of objects in memory from all caches"
@@ -1899,10 +1903,6 @@ msgstr "デバッグモードに関する警告"
 
 #: components/theme/ConnectionRefused/ConnectionRefused
 msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later."
-msgstr ""
-
-#: components/theme/CorsError/CorsError
-msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not configured properly right now. Please, try again later."
 msgstr ""
 
 #: components/theme/NotFound/NotFound
@@ -2112,7 +2112,7 @@ msgstr "よく使う物<<<<<<< HEAD"
 
 #: components/manage/Contents/ContentsItem
 msgid "no workflow state"
-msgstr ""
+msgstr "状態なし"
 
 #: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
 #: components/manage/Widgets/RecurrenceWidget/ByYearField
@@ -2129,11 +2129,11 @@ msgstr ""
 
 #: components/manage/Contents/ContentsItem
 msgid "private"
-msgstr ""
+msgstr "非表示"
 
 #: components/manage/Contents/ContentsItem
 msgid "published"
-msgstr ""
+msgstr "公開中"
 
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "querystring-widget-select"

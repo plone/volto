@@ -1,17 +1,101 @@
 # Change Log
 
-## 7.6.1 (unreleased)
+## 7.9.1 (unreleased)
 
 ### Breaking
 
 ### Feature
 
-- Making Content browser aware of context @iFlameing
-- Fix click-select block on unknown block type @nileshgulia1
-
 ### Bugfix
 
 ### Internal
+
+## 7.9.0 (2020-08-24)
+
+### Breaking
+
+### Feature
+
+- Allow serial processing of API requests when `mode:'serial'` is passed in the action. @tiberiuichim
+
+### Bugfix
+
+- On mutating a block, don't create extra placeholder block if such block already exists @tiberiuichim
+
+### Internal
+
+- When passed an array of items (for example in batch upload content), the `createContent` action now serializes those requests @tiberiuichim
+
+## 7.8.3 (2020-08-21)
+
+### Bugfix
+
+- Change ImageGallery image scale from preview to large. @tisto
+- Also use `settings.internalApiPath` in url helpers `isInternalURL`, `flattenToAppUrl` and `flattenHTMLToAppURL` @tiberiuichim
+- Fix getBlocks helper when blocks_layout has no `items` (default PloneSite with no volto homepage) @avoinea
+
+### Internal
+
+- Docs: Review of "How to use and addon" @ksuess
+- Addon: Hint for addon developers if function applying config is missing @ksuess
+
+## 7.8.2 (2020-08-18)
+
+### Bugfix
+
+- Include cypress folder in release @timo
+
+## 7.8.1 (2020-08-18)
+
+### Bugfix
+
+- Remove supposed fix to form.jsx again, as it apparently did not really fix anything but only broke stuff @jackahl
+
+## 7.8.0 (2020-08-18)
+
+### Breaking
+
+### Feature
+
+- Add cms-only theme that allows to completely remove semantic-ui from public facing views @pnicolli @nzambello
+
+### Internal
+
+## 7.7.2 (2020-08-18)
+
+### Bugfix
+
+- Fix bug showing wrong data in the edit view, that occured in some cases, when one would enter the edit view of a page from another page @jackahl
+
+### Internal
+
+- Remove "\$" from all examples in install docs and README @timo
+
+## 7.7.1 (2020-08-12)
+
+### Bugfix
+
+- Japanese translation updated @terapyon
+- Bugfix Edit page through Contents list #1594 @terapyon @csenger
+
+### Internal
+
+- Bump serialize-javascript from 2.1.1 to 3.1.0 @timo
+- Bump prismjs from 1.17.1 to 1.21.0 @timo
+- Make Table Block Cypress test more reliable @timo
+- Make listing template Cypress test more reliable @timo
+
+## 7.7.0 (2020-08-04)
+
+### Feature
+
+- Allow addons to provide less files @tiberiuichim
+- Making Content browser aware of context @iFlameing
+
+### Bugfix
+
+- Fix click-select block on unknown block type @nileshgulia1
+- Fix Image Gallery Template in Listing Block crashing when no criteria are set (#1722) @jackahl
 
 ## 7.6.0 (2020-07-31)
 
