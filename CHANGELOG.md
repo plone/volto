@@ -10,6 +10,8 @@
 
 ### Bugfix
 
+- On mutating a block, don't create extra placeholder block if such block already exists @tiberiuichim
+
 ### Internal
 
 - When passed an array of items (for example in batch upload content), the `createContent` action now serializes those requests @tiberiuichim
