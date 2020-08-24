@@ -109,5 +109,24 @@ if (Cypress.env('API') !== 'guillotina') {
         .should('have.attr', 'src')
         .and('eq', '/my-page/image.png/@@images/image');
     });
+
+    it('Create a image block document in edit mode', () => {
+      cy.visit('/');
+      cy.url().should('eq', Cypress.config().baseUrl + '/');
+      cy.get('#toolbar-add').click();
+      cy.get('#toolbar-add-document').click();
+      cy.get('.block.inner.text .public-DraftEditor-content').click();
+      cy.get('.ui.basic.icon.button.block-add-button').click();
+      cy.get('.ui.basic.icon.button.image').contains('Image').click();
+
+      cy.get('input[type="file"]').attachFile('image.png', {
+        subjectType: 'input',
+        encoding: 'utf8',
+      });
+      cy.waitForResourceToLoad('image.png/@@images/image');
+      cy.get('.block img')
+        .should('have.attr', 'src')
+        .and('eq', '/my-page/image.png/@@images/image');
+    });
   });
 }
