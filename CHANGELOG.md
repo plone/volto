@@ -1,14 +1,29 @@
 # Change Log
 
-## 7.8.3 (unreleased)
+## 7.8.4 (unreleased)
 
 ### Breaking
 
 ### Feature
 
 - Adding support of pasting link of voltoCMS video link to video blocks @iFlameing
+- Allow serial processing of API requests when `mode:'serial'` is passed in the action. @tiberiuichim
 
 ### Bugfix
+
+- On mutating a block, don't create extra placeholder block if such block already exists @tiberiuichim
+
+### Internal
+
+- When passed an array of items (for example in batch upload content), the `createContent` action now serializes those requests @tiberiuichim
+
+## 7.8.3 (2020-08-21)
+
+### Bugfix
+
+- Change ImageGallery image scale from preview to large. @tisto
+- Also use `settings.internalApiPath` in url helpers `isInternalURL`, `flattenToAppUrl` and `flattenHTMLToAppURL` @tiberiuichim
+- Fix getBlocks helper when blocks_layout has no `items` (default PloneSite with no volto homepage) @avoinea
 
 ### Internal
 
