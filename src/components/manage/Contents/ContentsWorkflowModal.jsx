@@ -184,7 +184,7 @@ export default compose(
   connect(
     (state) => ({
       request: state.workflow.transition,
-      workflows: state.workflow.multiple,
+      workflows: state.workflow.multiple?.items || [],
     }),
     { getWorkflow, transitionWorkflow },
   ),
