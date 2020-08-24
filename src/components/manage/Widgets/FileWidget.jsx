@@ -11,7 +11,14 @@ import { readAsDataURL } from 'promise-file-reader';
 import deleteSVG from '@plone/volto/icons/delete.svg';
 import { Icon, FormFieldWrapper } from '@plone/volto/components';
 
-const fileExtension = ['image/png', 'image/jpeg', 'image/webp', 'image/jpg'];
+const imageMimetypes = [
+  'image/png',
+  'image/jpeg',
+  'image/webp',
+  'image/jpg',
+  'image/gif',
+  'image/svg+xml',
+];
 
 /**
  * FileWidget component class.
@@ -69,7 +76,7 @@ const FileWidget = ({
           let reader = new FileReader();
           reader.onload = function () {
             const fields = reader.result.match(/^data:(.*);(.*),(.*)$/);
-            if (fileExtension.includes(fields[1])) {
+            if (imageMimetypes.includes(fields[1])) {
               setFileType(true);
               let imagePreview = document.getElementById(`field-${id}-image`);
               imagePreview.src = reader.result;
