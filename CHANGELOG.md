@@ -21,6 +21,7 @@
 ### Bugfix
 
 - On mutating a block, don't create extra placeholder block if such block already exists @tiberiuichim
+- Fixing broken file-preview placeholder for other file type than image @iFlameing
 
 ### Internal
 
