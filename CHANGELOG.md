@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix cosmetic issue, add links were not properly generated in Contents view not under the root. This didn't impact functionality as the content was properly created @tiberiuichim
+
 ### Internal
 
 ## 7.9.0 (2020-08-24)
