@@ -1,6 +1,5 @@
 # Change Log
 
-## 7.9.0 (unreleased)
 ## 7.9.1 (unreleased)
 
 ### Breaking
