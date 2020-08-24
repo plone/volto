@@ -1,6 +1,6 @@
 # Change Log
 
-## 7.8.4 (unreleased)
+## 7.9.0 (2020-08-24)
 
 ### Breaking
 
