@@ -104,21 +104,21 @@ export default function content(state = initialState, action = {}) {
         });
       }
       const data = action.subrequest
-        ? {
-            ...result,
-            items:
-              action.result &&
-              action.result.items &&
-              action.result.items.map((item) => ({
-                ...item,
-                url: flattenToAppURL(item['@id']),
-              })),
-          }
-        : Array.isArray(result)
-        ? result.map((item) => ({
-            ...item,
-            url: flattenToAppURL(item['@id']),
-          }))
+        ? Array.isArray(result)
+          ? result.map((item) => ({
+              ...item,
+              url: flattenToAppURL(item['@id']),
+            }))
+          : {
+              ...result,
+              items:
+                action.result &&
+                action.result.items &&
+                action.result.items.map((item) => ({
+                  ...item,
+                  url: flattenToAppURL(item['@id']),
+                })),
+            }
         : {
             ...result,
             items:

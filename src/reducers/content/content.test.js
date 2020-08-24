@@ -134,6 +134,42 @@ describe('Content reducer', () => {
     });
   });
 
+  it('should handle CREATE_CONTENT_SUCCESS with subrequest and multiple requests', () => {
+    expect(
+      content(undefined, {
+        type: `${CREATE_CONTENT}_SUCCESS`,
+        subrequest: '1234',
+        result: [
+          {
+            '@id': `${settings.apiPath}/home-page`,
+          },
+          {
+            '@id': `${settings.apiPath}/news`,
+            url: '/news',
+          },
+        ],
+      }),
+    ).toMatchObject({
+      subrequests: {
+        '1234': {
+          data: [
+            {
+              '@id': `${settings.apiPath}/home-page`,
+              url: '/home-page',
+            },
+            {
+              '@id': `${settings.apiPath}/news`,
+              url: '/news',
+            },
+          ],
+          loaded: true,
+          loading: false,
+          error: null,
+        },
+      },
+    });
+  });
+
   it('should handle CREATE_CONTENT_FAIL', () => {
     expect(
       content(undefined, {
