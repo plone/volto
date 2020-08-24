@@ -126,21 +126,7 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
             };
           });
         }
-
-        // Note: we're returning an inconsistent type of result.
-        // Some actions/reducers (such as GET_TYPES) expect that the result
-        // is a list, while others (GET_CONTENT in particular) expect that the
-        // result is an object.
-        // To make actions with multiple requests work (where the result is
-        // a list), we store the result in { items: result }
-        return next({
-          ...rest,
-          result:
-            Array.isArray(action.request) && Array.isArray(result)
-              ? { items: result }
-              : result,
-          type: `${type}_SUCCESS`,
-        });
+        return next({ ...rest, result, type: `${type}_SUCCESS` });
       },
       (error) => {
         // Only SRR can set ECONNREFUSED
