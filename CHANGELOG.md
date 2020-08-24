@@ -17,6 +17,7 @@
 ### Feature
 
 - Allow serial processing of API requests when `mode:'serial'` is passed in the action. @tiberiuichim
+- Adding cypress test from image-gallery in edit mode @iFlameing
 
 ### Bugfix
 
