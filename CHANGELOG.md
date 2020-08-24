@@ -10,6 +10,7 @@
 
 ### Bugfix
 
+- Fix bug introduced in 7.9.0, properly return a list of results when dealing with batched api requests @tiberiuichim
 - On image upload in a block, don't overwrite the global `state.content.data` with new image data @tiberiuichim @silviubogan
 - In folder contents batch upload, use a subrequest to avoid breaking the global `content.data` state @tiberiuichim
 
