@@ -4,8 +4,6 @@
 
 ### Breaking
 
-- In the backend API middleware, when dealing with multiple subrequests, return the action result as a `{ items: [...] }` object. Before, it was returned as a list directly, which breaks the assumptions in the `content` reducer for `GET_CONTENT_SUCCESS` and `CREATE_CONTENT_SUCCESS` @tiberiuichim
-
 ### Feature
 
 - Add a `subrequest` option to the `createContent` action @tiberiuichim @silviubogan
