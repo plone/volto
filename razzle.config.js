@@ -34,6 +34,8 @@ const packageJson = require(path.join(projectRootPath, 'package.json'));
 
 const registry = new AddonConfigurationRegistry(projectRootPath);
 
+const SentryCliPlugin = require('@sentry/webpack-plugin');
+
 // TODO: apply "customize Volto by addon", "customize addon by project" logic
 const customizations = {};
 let { customizationPaths } = packageJson;
@@ -129,6 +131,9 @@ const defaultModify = (config, { target, dev }, webpack) => {
     if ((SENTRY) && (process.env.SENTRY_FRONTEND_CONFIG)){
       try{
         SENTRY.SENTRY_CONFIG = JSON.parse(process.env.SENTRY_FRONTEND_CONFIG);
+        if (process.env.SENTRY_RELEASE !== undefined){
+          SENTRY.SENTRY_CONFIG.release = process.env.SENTRY_RELEASE;
+        }
       }
       catch(e){
         console.log("Error parsing SENTRY_FRONTEND_CONFIG");
@@ -196,6 +201,9 @@ const defaultModify = (config, { target, dev }, webpack) => {
         if (process.env.SENTRY_BACKEND_CONFIG){
         try{
           SENTRY.SENTRY_CONFIG = JSON.parse(process.env.SENTRY_BACKEND_CONFIG)
+          if (process.env.SENTRY_RELEASE !== undefined){
+            SENTRY.SENTRY_CONFIG.release = process.env.SENTRY_RELEASE;
+          }
         }
         catch(e){
           console.log("Error parsing SENTRY_BACKEND_CONFIG")
@@ -281,7 +289,21 @@ const defaultModify = (config, { target, dev }, webpack) => {
           }),
         ]
       : [];
-
+  if ((process.env.SENTRY_AUTH_TOKEN !== undefined) &&
+    (process.env.SENTRY_URL !== undefined) &&
+    (process.env.SENTRY_ORG !== undefined) &&
+    (process.env.SENTRY_PROJECT !== undefined) &&
+    (process.env.SENTRY_RELEASE !== undefined)){
+    if (target === 'web') {
+      config.plugins.push(
+        new SentryCliPlugin({
+          include: './build/public',
+          ignore: ['node_modules', 'webpack.config.js'],
+          release: process.env.SENTRY_RELEASE
+        }),
+      );
+    }
+  }
   return config;
 };
 
