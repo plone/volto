@@ -6,9 +6,9 @@
 
 ### Feature
 
-- Making minor change to context aware of objectBrowser @iFlameing
-
 ### Bugfix
+
+- Open content browser sidebar on parent object when editing an existing document. @iFlameing
 
 - Fix cosmetic issue, add links were not properly generated in Contents view not under the root. This didn't impact functionality as the content was properly created @tiberiuichim
 
