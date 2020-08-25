@@ -9,6 +9,7 @@
 ### Bugfix
 
 - Open content browser sidebar on parent object when editing an existing document. @iFlameing
+
 ### Internal
 
 ## 7.9.1 (2020-08-25)
