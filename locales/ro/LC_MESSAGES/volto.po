@@ -214,7 +214,6 @@ msgid "Cache Name"
 msgstr ""
 
 #: components/manage/Add/Add
-#: components/manage/Contents/ContentsToolbar
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
@@ -1663,6 +1662,10 @@ msgstr "Backendul nu răspunde. Vă rugăm să verificați dacă ați pornit Plo
 msgid "The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources."
 msgstr "Backendul răspunde, dar anteturile CORS nu sunt configurate corect și browserul a refuzat accesul la resursele de backend."
 
+#: components/theme/CorsError/CorsError
+msgid "The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
+msgstr ""
+
 #: components/theme/Register/Register
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 msgstr "Procesul de înregistrare a avut succes. Vă rugăm să verificați căsuța de e-mail pentru informații despre modul de activare a contului dvs."
@@ -1893,10 +1896,6 @@ msgstr "Avertisment cu privire la modul de depanare"
 #: components/theme/ConnectionRefused/ConnectionRefused
 msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later."
 msgstr "Ne cerem scuze pentru neplăceri, dar backend-ul site-ului pe care îl accesați nu este disponibil în acest moment. Vă rugăm, încercați din nou mai târziu."
-
-#: components/theme/CorsError/CorsError
-msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not configured properly right now. Please, try again later."
-msgstr "Ne cerem scuze pentru neplăceri, dar backend-ul site-ului pe care îl accesați nu este configurat corect în acest moment. Vă rugăm, încercați din nou mai târziu."
 
 #: components/theme/NotFound/NotFound
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
