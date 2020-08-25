@@ -42,6 +42,7 @@ export function createContent(url, content, subrequest) {
 export function deleteContent(urls) {
   return {
     type: DELETE_CONTENT,
+    mode: 'serial',
     request:
       typeof urls === 'string'
         ? { op: 'del', path: urls }
