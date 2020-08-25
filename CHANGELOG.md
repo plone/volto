@@ -20,6 +20,8 @@
 
 - Fix cosmetic issue, add links were not properly generated in Contents view not under the root. This didn't impact functionality as the content was properly created @tiberiuichim
 
+- Fix bug for text block with new line and styles applyed to all text. @giuliaghisini
+
 ### Internal
 
 - Removed unused component `src/components/manage/Contents/ContentsToolbar.jsx` @tiberiuichim
