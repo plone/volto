@@ -6,6 +6,8 @@
 
 ### Feature
 
+- New `object` and `object_list` widgets (classes `ObjectWidget`, `ObjectListWidget`) @silviubogan
+
 ### Bugfix
 - Fix bug related to closing the More menu of Toolbar @iFlameing
 
@@ -203,8 +205,6 @@
 ### Breaking
 
 ### Feature
-
-- New `object` and `object_list` widgets (classes `ObjectWidget`, `ObjectListWidget`) @silviubogan
 
 ### Bugfix
 
