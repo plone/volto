@@ -4,10 +4,10 @@
     This documentation is a work in progress. Any help is welcome to fill in the
     gaps!
 
-As with any other complex React project, the way global state is handled shared
+As with any other complex React project, the way global state is handled
 across all components has a big impact on the overall architecture. Basic
 knowledge of Redux is needed to understand this part, but Volto's use of Redux
-is both typical and you can find plenty example in Volto's code base.
+is "typical" and you can find plenty examples in Volto's code base.
 
 To access the global state, a component needs to be connected with `connect`.
 A simple example of such component is the
@@ -29,11 +29,11 @@ export default compose(
 )(ContactForm);
 ```
 
-If you're writing Function Components, you can use the `useSelector` hook. See
-`src/components/theme/OutdatedBrowser/OutdatedBrowser.jsx` for an example.
-
 If multiple Higher Order Components need to be used, like in the above example,
 the `compose` can be used to combine all of them in a final component.
+
+If you're writing Function Components, you can use the `useSelector` hook. See
+`src/components/theme/OutdatedBrowser/OutdatedBrowser.jsx` for an example.
 
 When using the `connect` function, you can `select` parts from the global store
 and either pass them directly as component props, or tweak them combine them,
