@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Added developer-guidelines/redux documentation @tiberiuichim
+
 ## 7.9.1 (2020-08-25)
 
 ### Bugfix
