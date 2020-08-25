@@ -9,12 +9,17 @@
 - Add a `subrequest` option to the `createContent` action @tiberiuichim @silviubogan
 
 ### Bugfix
+- Fix bug related to closing the More menu of Toolbar @iFlameing
+
+- Fix cosmetic issue, add links were not properly generated in Contents view not under the root. This didn't impact functionality as the content was properly created @tiberiuichim
 
 - Fix bug introduced in 7.9.0, properly return a list of results when dealing with batched api requests @tiberiuichim
 - On image upload in a block, don't overwrite the global `state.content.data` with new image data @tiberiuichim @silviubogan
 - In folder contents batch upload, use a subrequest to avoid breaking the global `content.data` state @tiberiuichim
 
 ### Internal
+
+- Removed unused component `src/components/manage/Contents/ContentsToolbar.jsx` @tiberiuichim
 
 ## 7.9.0 (2020-08-24)
 
@@ -27,6 +32,7 @@
 ### Bugfix
 
 - On mutating a block, don't create extra placeholder block if such block already exists @tiberiuichim
+- Fixing broken file-preview placeholder for other file type than image @iFlameing
 
 ### Internal
 
