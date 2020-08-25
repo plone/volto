@@ -19,11 +19,32 @@ const styles = {
   },
 };
 
+const addBreaklinesInline = (children) => {
+  if (typeof children[0] == 'string') {
+    const s = children[0].endsWith('\n')
+      ? children[0].slice(0, -1)
+      : children[0];
+    return s.split('\n').map((child, index) => (
+      <React.Fragment key={child + index}>
+        {child}
+        <br />
+      </React.Fragment>
+    ));
+  }
+  return children;
+};
+
 // Inline (not block) styles
 const inline = {
-  BOLD: (children, { key }) => <strong key={key}>{children}</strong>,
-  ITALIC: (children, { key }) => <em key={key}>{children}</em>,
-  UNDERLINE: (children, { key }) => <u key={key}>{children}</u>,
+  BOLD: (children, { key }) => (
+    <strong key={key}>{addBreaklinesInline(children)}</strong>
+  ),
+  ITALIC: (children, { key }) => (
+    <em key={key}>{addBreaklinesInline(children)}</em>
+  ),
+  UNDERLINE: (children, { key }) => (
+    <u key={key}>{addBreaklinesInline(children)}</u>
+  ),
   CODE: (children, { key }) => (
     <span key={key} style={styles.code}>
       {children}
@@ -83,39 +104,42 @@ const getList = (ordered) => (children, { depth, keys }) =>
 // const getAtomic = (children, { data, keys }) =>
 //   data.map((item, i) => <div key={keys[i]} {...data[i]} />);
 
+const processChildren = (children, keys) => {
+  const processedChildren = children.map((chunks) =>
+    chunks.map((child) => {
+      if (Array.isArray(child)) {
+        // If it's empty is a blank paragraph, we want to add a <br /> in it
+        if (isEmpty(child)) {
+          return <br />;
+        }
+        return child.map((subchild, index) => {
+          if (typeof subchild === 'string') {
+            const last = subchild.split('\n').length - 1;
+            return subchild.split('\n').map((item, index) => (
+              <React.Fragment key={index}>
+                {item}
+                {index !== last && <br />}
+              </React.Fragment>
+            ));
+          } else {
+            return subchild;
+          }
+        });
+      } else {
+        return child;
+      }
+    }),
+  );
+  return processedChildren.map(
+    (chunk, index) => chunk && <p key={keys[index]}>{chunk}</p>,
+  );
+};
 /**
  * Note that children can be maped to render a list or do other cool stuff
  */
 const blocks = {
   unstyled: (children, { keys }) => {
-    const processedChildren = children.map((chunks) =>
-      chunks.map((child) => {
-        if (Array.isArray(child)) {
-          // If it's empty is a blank paragraph, we want to add a <br /> in it
-          if (isEmpty(child)) {
-            return <br />;
-          }
-          return child.map((subchild, index) => {
-            if (typeof subchild === 'string') {
-              const last = subchild.split('\n').length - 1;
-              return subchild.split('\n').map((item, index) => (
-                <React.Fragment key={index}>
-                  {item}
-                  {index !== last && <br />}
-                </React.Fragment>
-              ));
-            } else {
-              return subchild;
-            }
-          });
-        } else {
-          return child;
-        }
-      }),
-    );
-    return processedChildren.map(
-      (chunk, index) => chunk && <p key={keys[index]}>{chunk}</p>,
-    );
+    return processChildren(children, keys);
   },
   atomic: (children) => children[0],
   blockquote: (children, { keys }) => (
