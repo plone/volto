@@ -227,7 +227,7 @@ class Form extends Component {
    * @param {Object} e event
    */
   onClickInput(e) {
-    this.setState({ isFormPrestine: false });
+    this.setState({ isFormPristine: false });
   }
 
   /**
@@ -238,7 +238,7 @@ class Form extends Component {
    * @returns {undefined}
    */
   onBlurField(id, value) {
-    if (!this.state.isFormPrestine) {
+    if (!this.state.isFormPristine) {
       const errors = FormValidation.validateFieldsPerFieldset({
         schema: this.props.schema,
         formData: this.state.formData,

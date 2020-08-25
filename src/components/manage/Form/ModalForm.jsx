@@ -103,7 +103,7 @@ class ModalForm extends Component {
     this.state = {
       currentTab: 0,
       errors: {},
-      isFormPrestine: true,
+      isFormPristine: true,
       formData: props.formData,
     };
     this.selectTab = this.selectTab.bind(this);
@@ -135,7 +135,7 @@ class ModalForm extends Component {
    * @param {Object} e event
    */
   onClickInput(e) {
-    this.setState({ isFormPrestine: false });
+    this.setState({ isFormPristine: false });
   }
 
   /**
@@ -146,7 +146,7 @@ class ModalForm extends Component {
    * @returns {undefined}
    */
   onBlurField(id, value) {
-    if (!this.state.isFormPrestine) {
+    if (!this.state.isFormPristine) {
       const errors = FormValidation.validateFieldsPerFieldset({
         schema: this.props.schema,
         formData: this.state.formData,
