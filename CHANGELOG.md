@@ -1,6 +1,183 @@
 # Change Log
 
-## 6.2.1 (unreleased)
+## 7.9.1 (unreleased)
+
+### Breaking
+
+### Feature
+
+### Bugfix
+- Fix bug related to closing the More menu of Toolbar @iFlameing
+
+- Fix cosmetic issue, add links were not properly generated in Contents view not under the root. This didn't impact functionality as the content was properly created @tiberiuichim
+
+### Internal
+
+- Removed unused component `src/components/manage/Contents/ContentsToolbar.jsx` @tiberiuichim
+
+## 7.9.0 (2020-08-24)
+
+### Breaking
+
+### Feature
+
+- Allow serial processing of API requests when `mode:'serial'` is passed in the action. @tiberiuichim
+
+### Bugfix
+
+- On mutating a block, don't create extra placeholder block if such block already exists @tiberiuichim
+- Fixing broken file-preview placeholder for other file type than image @iFlameing
+
+### Internal
+
+- When passed an array of items (for example in batch upload content), the `createContent` action now serializes those requests @tiberiuichim
+
+## 7.8.3 (2020-08-21)
+
+### Bugfix
+
+- Change ImageGallery image scale from preview to large. @tisto
+- Also use `settings.internalApiPath` in url helpers `isInternalURL`, `flattenToAppUrl` and `flattenHTMLToAppURL` @tiberiuichim
+- Fix getBlocks helper when blocks_layout has no `items` (default PloneSite with no volto homepage) @avoinea
+
+### Internal
+
+- Docs: Review of "How to use and addon" @ksuess
+- Addon: Hint for addon developers if function applying config is missing @ksuess
+
+## 7.8.2 (2020-08-18)
+
+### Bugfix
+
+- Include cypress folder in release @timo
+
+## 7.8.1 (2020-08-18)
+
+### Bugfix
+
+- Remove supposed fix to form.jsx again, as it apparently did not really fix anything but only broke stuff @jackahl
+
+## 7.8.0 (2020-08-18)
+
+### Breaking
+
+### Feature
+
+- Add cms-only theme that allows to completely remove semantic-ui from public facing views @pnicolli @nzambello
+
+### Internal
+
+## 7.7.2 (2020-08-18)
+
+### Bugfix
+
+- Fix bug showing wrong data in the edit view, that occured in some cases, when one would enter the edit view of a page from another page @jackahl
+
+### Internal
+
+- Remove "\$" from all examples in install docs and README @timo
+
+## 7.7.1 (2020-08-12)
+
+### Bugfix
+
+- Japanese translation updated @terapyon
+- Bugfix Edit page through Contents list #1594 @terapyon @csenger
+
+### Internal
+
+- Bump serialize-javascript from 2.1.1 to 3.1.0 @timo
+- Bump prismjs from 1.17.1 to 1.21.0 @timo
+- Make Table Block Cypress test more reliable @timo
+- Make listing template Cypress test more reliable @timo
+
+## 7.7.0 (2020-08-04)
+
+### Feature
+
+- Allow addons to provide less files @tiberiuichim
+- Making Content browser aware of context @iFlameing
+
+### Bugfix
+
+- Fix click-select block on unknown block type @nileshgulia1
+- Fix Image Gallery Template in Listing Block crashing when no criteria are set (#1722) @jackahl
+
+## 7.6.0 (2020-07-31)
+
+### Feature
+
+- Added recurrence widget @giuliaghisini
+
+## 7.5.1 (2020-07-29)
+
+### Bugfix
+
+- Avoid React hydration complaining about mismatched server output in toolbar. In component rendering, replaced the use of `__CLIENT__` with a state-stored `isClient`, as that is more correct. @tiberiuichim
+
+## 7.5.0 (2020-07-29)
+
+### Feature
+
+- Used moment-timezone to set a specific server timezone as default for DatetimeWidget. @razvanMiu
+
+## 7.4.0 (2020-07-29)
+
+### Feature
+
+- Highlight the sidebar toggle button with a small flashing animation @silviubogan @tiberiuichim
+
+## 7.3.1 (2020-07-28)
+
+### Bugfix
+
+- Solved a browser console error in /contents view (#1695) @silviubogan
+- Pagination icon fix @nileshgulia1
+
+## 7.3.0 (2020-07-26)
+
+### Feature
+
+- Add Placeholder attribute to Textwidget and TextAreaWidget @iFlameing
+- Make the default block type (currently draftjs text) configurable @tiberiuichim @silviubogan
+
+### Internal
+
+- Upgrade lodash dependency to 4.17.19 @tisto
+- Add a new blocks helper method, `getBlocks`. It simplifies using `getBlocksFieldname` and `getBlocksLayoutFieldname` under a single method that returns ordered pairs of `[blockid, blockvalue]` @tiberiuichim
+
+## 7.2.1 (2020-07-16)
+
+### Internal
+
+- Upgrade to Cypress 4.10.0 @tisto
+- Upgrade to cypress-file-upload 4.0.7 @iFlameing
+
+## 7.2.0 (2020-07-13)
+
+### Feature
+
+- Provide a new webpack alias, `volto-themes`, which points to Volto's theme folder. See details in the https://docs.voltocms.com/upgrade-guide/
+
+### Internal
+
+- Upgrade razzle to `^3.1.5`. @tiberiuichim
+
+## 7.1.0 (2020-07-09)
+
+### Feature
+
+- Addons can optionally include a `razzle.extend.js` file in their root. This module needs to follow the same rules as the `razzle.config.js`. They change the default Volto Razzle configuration, before it is passed to the Volto project @tiberiuichim @sneridagh
+
+### Bugfix
+
+- Managed hidden fields @giuliaghisini
+- Fix bug in addon loading with namespaced packages @tiberiuichim
+- Japanese translation updated @terapyon
+
+- Upgrade razzle to `^3.1.5`. @tiberiuichim
+
+## 7.0.1 (2020-07-07)
 
 ### Breaking
 
@@ -13,22 +190,94 @@
 - Fixed date only widget rendering #1246 @rexalex
 - Fix errors with SelectWidget when removing the only element @rexalex
 
-- Added italian translations and translated array, token and select widget. @giuliaghisini
-- Added internationalization for French language @bsuttor #1588
-- selectableTypes in ObjectBrowserWidget @giuliaghisini
+### Bugfix
+
+- Adding absolute url in ObjectBrowser for image type @iFlameing
+
+## 7.0.0 (2020-07-06)
+
+### Breaking
+
+- Fix filename of strickthrough.svg to strikethrough.svg @tiberiuichim
+
+### Feature
+
+- Addons configuration loading. You can now declare addons in the addons key of
+  package.json and they'll be automatically loaded. @tiberiuichim @sneridagh
+
+## 6.5.0 (2020-07-03)
+
+### Feature
+
+- Added default Export for the QuerystringWidget for the ListingBlock @steffenri
 
 ### Bugfix
 
-- fixed duplicated items in SelectWidget and ArrayWidget @giuliaghisini
-- Update German translation @timo
-- removed broken preview image in ContentsUploadModal if uploaded item is not an image. @giuliaghisini
-- Localized content upload modal last modified date @nzambello
-- Fix overflow in folder contents with long titles @nzambello
-- fixed object browser widget when a selected items is deleted. Plone.restapi returns a null object. @giuliaghisini
-- fixed error on adding new item if parent item is not translated when multilingual is set @giuliaghisini
+- Fix text overflow in pastanaga-menu header if title is too long. @giuliaghisini
+- Fixing bug to correctly assign classes to image sizes in View @steffenri
+- Center aligned Images are now displayed like they are center aligned in the View @steffenri
+- Fix datepicker z-index @giuliaghisini
 
 ### Internal
 
+- Upgrade insecure packages `http-proxy`, `http-proxy-middleware` and `handlebars` @tiberiuichim
+
+## 6.4.1 (2020-07-01)
+
+### Breaking
+
+### Feature
+
+- Allow JSON API calls to made to third-party servers @tiberiuichim
+
+### Bugfix
+
+- Fix styling and use of csss classes in `InlineForm.jsx` @tiberiuichim
+
+- Fixing bug for Image Preview on upload @iFlameing
+
+### Internal
+
+- Fix formatting of `src/server.jsx` @tiberiuichim
+
+## 6.4.0 (2020-06-29)
+
+### Feature
+
+- Translated workflow state in contents @nzambello
+- Added item type as a tooltip in contents @nzambello
+- Added Italian translations and translated array, token and select widget. @giuliaghisini
+- Added uploading image preview in FileWidget @iFlameing
+- Allow custom express middleware declared with `settings.expressMiddleware`. See [Customizing Express](docs/source/customizing/express.md) @tiberiuichim
+
+### Bugfix
+
+- Fix the toolbar dropdown to add content types if isMultilingual is enabled
+  but a type is not marked as translatable. @csenger
+- Usage of Contettype label in Add component. @giuliaghisini
+
+### Internal
+
+- Update upgrade-guide to for `addonRoutes` and `addonReducers` @jackahl
+
+## 6.3.0 (2020-06-22)
+
+### Feature
+
+- Added internationalization for French language @bsuttor #1588
+- use of maximumSelectionSize from plone in ObjectBrowserWidget. @giuliaghisini
+- Added selectableTypes in ObjectBrowserWidget @giuliaghisini
+
+### Bugfix
+
+- added export for ObjectBrowserWidget in component/index.js @giuliaghisini
+- Fixed duplicated items in SelectWidget and ArrayWidget @giuliaghisini
+- Update German translation @timo
+- Removed broken preview image in ContentsUploadModal if uploaded item is not an image. @giuliaghisini
+- Localized content upload modal last modified date @nzambello
+- Fix overflow in folder contents with long titles @nzambello
+- Fixed object browser widget when a selected items is deleted. Plone.restapi returns a null object. @giuliaghisini
+- Fixed error on adding new item if parent item is not translated when multilingual is set @giuliaghisini
 - Added translations for select in querystring widget @nzambello
 
 ## 6.2.0 (2020-06-14)

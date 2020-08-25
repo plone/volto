@@ -60,6 +60,7 @@ const TextareaWidget = ({
   intl,
   fieldSet,
   wrapped,
+  placeholder,
 }) => {
   const [lengthError, setlengthError] = useState('');
 
@@ -141,6 +142,7 @@ const TextareaWidget = ({
         name={id}
         value={value || ''}
         disabled={onEdit !== null}
+        placeholder={placeholder}
         onChange={({ target }) =>
           onhandleChange(id, target.value === '' ? undefined : target.value)
         }
@@ -171,6 +173,7 @@ TextareaWidget.propTypes = {
   onEdit: PropTypes.func,
   onDelete: PropTypes.func,
   wrapped: PropTypes.bool,
+  placeholder: PropTypes.string,
 };
 
 /**

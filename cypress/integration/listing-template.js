@@ -29,13 +29,11 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('#toolbar-add').click();
       cy.get('#toolbar-add-image').click();
       cy.get('input[name="title"]').type('My image');
-      cy.fixture('image.png', 'base64').then(fileContent => {
-        cy.get('#field-image').upload(
-          { fileContent, fileName: 'image.png', mimeType: 'image/png' },
-          { subjectType: 'input' },
-        );
+      cy.get('#field-image').attachFile('image.png', {
+        subjectType: 'input',
       });
       cy.get('#toolbar-save').click();
+
       cy.visit('/my-folder/my-document');
       cy.get('.edit').click();
       cy.get('svg[class="icon block-add-button"]').click({ force: true });
@@ -46,6 +44,11 @@ if (Cypress.env('API') !== 'guillotina') {
         .click()
         .type('imageGallery{enter}');
       cy.get('#toolbar-save').click();
+      cy.waitForResourceToLoad('@navigation');
+      cy.waitForResourceToLoad('@breadcrumbs');
+      cy.waitForResourceToLoad('@actions');
+      cy.waitForResourceToLoad('@types');
+      cy.url().should('eq', Cypress.config().baseUrl + '/my-folder/my-document');
 
       // then we should have a slide play or pause button
       cy.get('.image-gallery-play-button')

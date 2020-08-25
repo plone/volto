@@ -10,6 +10,7 @@ import {
   getBlocksFieldname,
   getBlocksLayoutFieldname,
   messages,
+  blockHasValue,
 } from '@plone/volto/helpers';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -40,6 +41,7 @@ import {
   Tab,
 } from 'semantic-ui-react';
 import { v4 as uuid } from 'uuid';
+import { settings } from '~/config';
 
 /**
  * Form container class.
@@ -152,7 +154,7 @@ class Form extends Component {
             '@type': 'title',
           },
           [ids.text]: {
-            '@type': 'text',
+            '@type': settings.defaultBlockType,
           },
         };
       }
@@ -167,6 +169,7 @@ class Form extends Component {
           ? formData[blocksLayoutFieldname].items[0]
           : null,
       placeholderProps: {},
+      isClient: false,
     };
     this.onChangeField = this.onChangeField.bind(this);
     this.onChangeBlock = this.onChangeBlock.bind(this);
@@ -224,7 +227,7 @@ class Form extends Component {
    * @param {Object} e event
    */
   onClickInput(e) {
-    this.setState({ isFormPrestine: false });
+    this.setState({ isFormPristine: false });
   }
 
   /**
@@ -235,7 +238,7 @@ class Form extends Component {
    * @returns {undefined}
    */
   onBlurField(id, value) {
-    if (!this.state.isFormPrestine) {
+    if (!this.state.isFormPristine) {
       const errors = FormValidation.validateFieldsPerFieldset({
         schema: this.props.schema,
         formData: this.state.formData,
@@ -246,6 +249,15 @@ class Form extends Component {
         errors,
       });
     }
+  }
+
+  /**
+   * Component did mount
+   * @method componentDidMount
+   * @returns {undefined}
+   */
+  componentDidMount() {
+    this.setState({ isClient: true });
   }
 
   /**
@@ -273,11 +285,7 @@ class Form extends Component {
   }
 
   hideHandler = (data) => {
-    return (
-      data['@type'] === 'text' &&
-      (!data.text ||
-        (data.text?.blocks?.length === 1 && data.text.blocks[0].text === ''))
-    );
+    return !blockHasValue(data);
   };
 
   /**
@@ -308,12 +316,30 @@ class Form extends Component {
    * @returns {undefined}
    */
   onMutateBlock(id, value) {
-    const idTrailingBlock = uuid();
     const blocksFieldname = getBlocksFieldname(this.state.formData);
     const blocksLayoutFieldname = getBlocksLayoutFieldname(this.state.formData);
     const index =
       this.state.formData[blocksLayoutFieldname].items.indexOf(id) + 1;
 
+    // Test if block at index is already a placeholder (trailing) block
+    const trailId = this.state.formData[blocksLayoutFieldname].items[index];
+    if (trailId) {
+      const block = this.state.formData[blocksFieldname][trailId];
+      if (!blockHasValue(block)) {
+        this.setState({
+          formData: {
+            ...this.state.formData,
+            [blocksFieldname]: {
+              ...this.state.formData[blocksFieldname],
+              [id]: value || null,
+            },
+          },
+        });
+        return;
+      }
+    }
+
+    const idTrailingBlock = uuid();
     this.setState({
       formData: {
         ...this.state.formData,
@@ -321,7 +347,7 @@ class Form extends Component {
           ...this.state.formData[blocksFieldname],
           [id]: value || null,
           [idTrailingBlock]: {
-            '@type': 'text',
+            '@type': settings.defaultBlockType,
           },
         },
         [blocksLayoutFieldname]: {
@@ -399,7 +425,7 @@ class Form extends Component {
               insert,
             ),
             id,
-            ...(type !== 'text' ? [idTrailingBlock] : []),
+            ...(type !== settings.defaultBlockType ? [idTrailingBlock] : []),
             ...this.state.formData[blocksLayoutFieldname].items.slice(insert),
           ],
         },
@@ -408,9 +434,9 @@ class Form extends Component {
           [id]: {
             '@type': type,
           },
-          ...(type !== 'text' && {
+          ...(type !== settings.defaultBlockType && {
             [idTrailingBlock]: {
-              '@type': 'text',
+              '@type': settings.defaultBlockType,
             },
           }),
         },
@@ -589,7 +615,7 @@ class Form extends Component {
       e.preventDefault();
     }
     if (e.key === 'Enter' && !disableEnter) {
-      this.onAddBlock('text', index + 1);
+      this.onAddBlock(settings.defaultBlockType, index + 1);
       e.preventDefault();
     }
   }
@@ -740,7 +766,7 @@ class Form extends Component {
     return this.props.visual ? (
       // Removing this from SSR is important, since react-beautiful-dnd supports SSR,
       // but draftJS don't like it much and the hydration gets messed up
-      !__SERVER__ && (
+      this.state.isClient && (
         <div className="ui container">
           <DragDropContext
             onDragEnd={this.onDragEnd}
@@ -820,39 +846,43 @@ class Form extends Component {
                 </div>
               )}
             </Droppable>
-            <Portal
-              node={__CLIENT__ && document.getElementById('sidebar-metadata')}
-            >
-              <UiForm
-                method="post"
-                onSubmit={this.onSubmit}
-                error={keys(this.state.errors).length > 0}
+            {this.state.isClient && (
+              <Portal
+                node={__CLIENT__ && document.getElementById('sidebar-metadata')}
               >
-                {schema &&
-                  map(schema.fieldsets, (item) => [
-                    <Segment secondary attached key={item.title}>
-                      {item.title}
-                    </Segment>,
-                    <Segment attached key={`fieldset-contents-${item.title}`}>
-                      {map(item.fields, (field, index) => (
-                        <Field
-                          {...schema.properties[field]}
-                          id={field}
-                          focus={false}
-                          value={this.state.formData?.[field]}
-                          required={schema.required.indexOf(field) !== -1}
-                          onChange={this.onChangeField}
-                          onBlur={this.onBlurField}
-                          onClick={this.onClickInput}
-                          dateOnly={schema.properties[field].widget === 'date'}
-                          key={field}
-                          error={this.state.errors[field]}
-                        />
-                      ))}
-                    </Segment>,
-                  ])}
-              </UiForm>
-            </Portal>
+                <UiForm
+                  method="post"
+                  onSubmit={this.onSubmit}
+                  error={keys(this.state.errors).length > 0}
+                >
+                  {schema &&
+                    map(schema.fieldsets, (item) => [
+                      <Segment secondary attached key={item.title}>
+                        {item.title}
+                      </Segment>,
+                      <Segment attached key={`fieldset-contents-${item.title}`}>
+                        {map(item.fields, (field, index) => (
+                          <Field
+                            {...schema.properties[field]}
+                            id={field}
+                            focus={false}
+                            value={this.state.formData?.[field]}
+                            required={schema.required.indexOf(field) !== -1}
+                            onChange={this.onChangeField}
+                            onBlur={this.onBlurField}
+                            onClick={this.onClickInput}
+                            dateOnly={
+                              schema.properties[field].widget === 'date'
+                            }
+                            key={field}
+                            error={this.state.errors[field]}
+                          />
+                        ))}
+                      </Segment>,
+                    ])}
+                </UiForm>
+              </Portal>
+            )}
           </DragDropContext>
         </div>
       )
@@ -887,6 +917,7 @@ class Form extends Component {
                       <Field
                         {...schema.properties[field]}
                         id={field}
+                        formData={this.state.formData}
                         fieldSet={item.title.toLowerCase()}
                         focus={index === 0}
                         value={this.state.formData?.[field]}

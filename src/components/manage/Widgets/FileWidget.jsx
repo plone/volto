@@ -5,11 +5,20 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Input, Button } from 'semantic-ui-react';
+import { Input, Button, Image } from 'semantic-ui-react';
 import { readAsDataURL } from 'promise-file-reader';
 
 import deleteSVG from '@plone/volto/icons/delete.svg';
 import { Icon, FormFieldWrapper } from '@plone/volto/components';
+
+const imageMimetypes = [
+  'image/png',
+  'image/jpeg',
+  'image/webp',
+  'image/jpg',
+  'image/gif',
+  'image/svg+xml',
+];
 
 /**
  * FileWidget component class.
@@ -28,6 +37,7 @@ const FileWidget = ({
   wrapped,
 }) => {
   const fileInput = React.useRef(null);
+  const [fileType, setFileType] = React.useState(true);
 
   return (
     <FormFieldWrapper
@@ -39,6 +49,13 @@ const FileWidget = ({
       wrapped={wrapped}
       fieldSet={fieldSet}
     >
+      {fileType ? (
+        <Image
+          className="image-preview"
+          id={`field-${id}-image`}
+          size="small"
+        />
+      ) : null}
       <Input
         id={`field-${id}`}
         name={id}
@@ -55,6 +72,19 @@ const FileWidget = ({
               filename: file.name,
             });
           });
+
+          let reader = new FileReader();
+          reader.onload = function () {
+            const fields = reader.result.match(/^data:(.*);(.*),(.*)$/);
+            if (imageMimetypes.includes(fields[1])) {
+              setFileType(true);
+              let imagePreview = document.getElementById(`field-${id}-image`);
+              imagePreview.src = reader.result;
+            } else {
+              setFileType(false);
+            }
+          };
+          reader.readAsDataURL(target.files[0]);
         }}
       />
       <div className="field-file-name">
@@ -67,7 +97,8 @@ const FileWidget = ({
             aria-label="delete file"
             onClick={() => {
               onChange(id, null);
-              fileInput.current.inputRef.value = null;
+              setFileType(false);
+              fileInput.current.inputRef.current.value = null;
             }}
           >
             <Icon name={deleteSVG} size="20px" />
