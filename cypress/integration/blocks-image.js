@@ -126,7 +126,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.waitForResourceToLoad('image.png/@@images/image');
       cy.get('.block img')
         .should('have.attr', 'src')
-        .and('eq', '/my-page/image.png/@@images/image');
+        .and('eq', '/image.png/@@images/image');
     });
   });
 }
