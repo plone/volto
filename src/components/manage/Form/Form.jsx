@@ -316,12 +316,30 @@ class Form extends Component {
    * @returns {undefined}
    */
   onMutateBlock(id, value) {
-    const idTrailingBlock = uuid();
     const blocksFieldname = getBlocksFieldname(this.state.formData);
     const blocksLayoutFieldname = getBlocksLayoutFieldname(this.state.formData);
     const index =
       this.state.formData[blocksLayoutFieldname].items.indexOf(id) + 1;
 
+    // Test if block at index is already a placeholder (trailing) block
+    const trailId = this.state.formData[blocksLayoutFieldname].items[index];
+    if (trailId) {
+      const block = this.state.formData[blocksFieldname][trailId];
+      if (!blockHasValue(block)) {
+        this.setState({
+          formData: {
+            ...this.state.formData,
+            [blocksFieldname]: {
+              ...this.state.formData[blocksFieldname],
+              [id]: value || null,
+            },
+          },
+        });
+        return;
+      }
+    }
+
+    const idTrailingBlock = uuid();
     this.setState({
       formData: {
         ...this.state.formData,

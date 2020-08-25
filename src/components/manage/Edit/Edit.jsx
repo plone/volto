@@ -124,7 +124,9 @@ class Edit extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    this.props.getContent(getBaseUrl(this.props.pathname));
+    if (this.props.getRequest.loaded && this.props.content?.['@type']) {
+      this.props.getSchema(this.props.content['@type']);
+    }
     this.setState({ isClient: true });
   }
 
@@ -135,9 +137,6 @@ class Edit extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (this.props.getRequest.loading && nextProps.getRequest.loaded) {
-      this.props.getSchema(nextProps.content['@type']);
-    }
     if (this.props.schemaRequest.loading && nextProps.schemaRequest.loaded) {
       if (!hasBlocksData(nextProps.schema.properties)) {
         this.setState({
@@ -329,6 +328,11 @@ export default compose(
       promise: async ({ location, store: { dispatch } }) => {
         await dispatch(listActions(getBaseUrl(location.pathname)));
       },
+    },
+    {
+      key: 'content',
+      promise: async ({ location, store: { dispatch } }) =>
+        await dispatch(getContent(getBaseUrl(location.pathname))),
     },
   ]),
   connect(
