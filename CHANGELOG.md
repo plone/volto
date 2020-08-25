@@ -1,6 +1,6 @@
 # Change Log
 
-## 7.9.1 (unreleased)
+## 7.9.2 (unreleased)
 
 ### Breaking
 
@@ -9,10 +9,19 @@
 ### Bugfix
 
 - Open content browser sidebar on parent object when editing an existing document. @iFlameing
+### Internal
+
+## 7.9.1 (2020-08-25)
+
+### Bugfix
+
+- Fix bug related to closing the More menu of Toolbar @iFlameing
 
 - Fix cosmetic issue, add links were not properly generated in Contents view not under the root. This didn't impact functionality as the content was properly created @tiberiuichim
 
 ### Internal
+
+- Removed unused component `src/components/manage/Contents/ContentsToolbar.jsx` @tiberiuichim
 
 ## 7.9.0 (2020-08-24)
 
