@@ -52,7 +52,7 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
     return action(dispatch, getState);
   }
 
-  const { request, type, ...rest } = action;
+  const { request, type, mode = 'paralel', ...rest } = action;
   let actionPromise;
 
   if (!request) {
@@ -67,15 +67,25 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
       : sendOnSocket({ ...request, id: type });
   } else {
     actionPromise = Array.isArray(request)
-      ? Promise.all(
-          request.map((item) =>
-            api[item.op](item.path, {
-              data: item.data,
-              type: item.type,
-              headers: item.headers,
-            }),
-          ),
-        )
+      ? mode === 'serial'
+        ? request.reduce((prevPromise, item) => {
+            return prevPromise.then(() => {
+              return api[item.op](item.path, {
+                data: item.data,
+                type: item.type,
+                headers: item.headers,
+              });
+            });
+          }, Promise.resolve())
+        : Promise.all(
+            request.map((item) =>
+              api[item.op](item.path, {
+                data: item.data,
+                type: item.type,
+                headers: item.headers,
+              }),
+            ),
+          )
       : api[request.op](request.path, {
           data: request.data,
           type: request.type,
