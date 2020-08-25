@@ -11,6 +11,8 @@
 
 - Fix cosmetic issue, add links were not properly generated in Contents view not under the root. This didn't impact functionality as the content was properly created @tiberiuichim
 
+- Fix `no results` issue when passing custm `Accept:` headers to actions #1771 @avoinea
+
 ### Internal
 
 - Removed unused component `src/components/manage/Contents/ContentsToolbar.jsx` @tiberiuichim
