@@ -1,3 +1,4 @@
+/* eslint no-console: 0 */
 import http from 'http';
 
 import app from './server';

@@ -24,6 +24,7 @@ import { settings } from '~/config';
 export function createContent(url, content) {
   return {
     type: CREATE_CONTENT,
+    mode: 'serial',
     request: Array.isArray(content)
       ? content.map((item) => ({ op: 'post', path: url, data: item }))
       : { op: 'post', path: url, data: nestContent(content) },
