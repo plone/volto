@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-08-26T10:06:47.351Z\n"
+"POT-Creation-Date: 2020-08-26T10:10:13.182Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1317,6 +1317,11 @@ msgstr ""
 msgid "No options"
 msgstr ""
 
+#: components/theme/Search/Search
+# defaultMessage: No results found
+msgid "No results found"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 # defaultMessage: No results found.
@@ -1873,11 +1878,6 @@ msgstr ""
 #: components/theme/View/ImageView
 # defaultMessage: Size: {size}
 msgid "Size: {size}"
-msgstr ""
-
-#: components/theme/Search/Search
-# defaultMessage: Sorry!! No results found
-msgid "Sorry!!! No results found"
 msgstr ""
 
 #: error

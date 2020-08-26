@@ -238,8 +238,8 @@ class Search extends Component {
               ) : (
                 <div>
                   <FormattedMessage
-                    id="Sorry!!! No results found"
-                    defaultMessage="Sorry!! No results found"
+                    id="No results found"
+                    defaultMessage="No results found"
                   />
                 </div>
               )}

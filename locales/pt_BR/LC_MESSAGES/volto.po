@@ -1088,6 +1088,10 @@ msgstr ""
 msgid "No options"
 msgstr ""
 
+#: components/theme/Search/Search
+msgid "No results found"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
@@ -1542,10 +1546,6 @@ msgstr ""
 
 #: components/theme/View/ImageView
 msgid "Size: {size}"
-msgstr ""
-
-#: components/theme/Search/Search
-msgid "Sorry!!! No results found"
 msgstr ""
 
 #: error

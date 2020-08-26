@@ -24,7 +24,7 @@ exports[`Search renders a search component 1`] = `
           id="search-tags"
         />
         <div>
-          Sorry!! No results found
+          No results found
         </div>
       </header>
       <section
@@ -101,7 +101,7 @@ exports[`Search renders an empty search component 1`] = `
           id="search-tags"
         />
         <div>
-          Sorry!! No results found
+          No results found
         </div>
       </header>
       <section
