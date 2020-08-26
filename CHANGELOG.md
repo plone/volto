@@ -6,7 +6,7 @@
 
 ### Feature
 
-- Added toast notifications for form errors @nzambello
+- Added toast notifications for form errors @nzambello @avoinea
 - Added italian translations and translated array, token and select widget. @giuliaghisini
 
 ### Bugfix

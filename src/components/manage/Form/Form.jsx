@@ -428,7 +428,7 @@ class Form extends Component {
               this.props.intl.formatMessage(messages.required),
             );
           }
-          if (field.minLength && data.length < field.minLength) {
+          if (field.minLength && data && data.length < field.minLength) {
             errors[fieldId] = errors[field] || [];
             errors[fieldId].push(
               this.props.intl.formatMessage(messages.minLength, {
@@ -453,11 +453,7 @@ class Form extends Component {
         () => {
           Object.keys(errors).forEach((err) =>
             toast.error(
-              <Toast
-                error
-                title={this.props.intl.formatMessage(messages.error)}
-                content={errors[err]}
-              />,
+              <Toast error title={err} content={errors[err].join(', ')} />,
             ),
           );
         },
