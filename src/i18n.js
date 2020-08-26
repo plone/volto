@@ -1,3 +1,4 @@
+/* eslint no-console: 0 */
 /**
  * i18n script.
  * @module scripts/i18n
