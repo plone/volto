@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-08-25T06:39:52.529Z\n"
+"POT-Creation-Date: 2020-08-26T17:01:28.191Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -712,6 +712,11 @@ msgstr ""
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 # defaultMessage: Enter URL or title
 msgid "Enter URL or title"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+# defaultMessage: Enter a username above to search or click 'Show All'
+msgid "Enter a username above to search or click 'Show All'"
 msgstr ""
 
 #: components/theme/Register/Register
@@ -1806,6 +1811,11 @@ msgstr ""
 #: components/theme/Pagination/Pagination
 # defaultMessage: Show
 msgid "Show"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+# defaultMessage: Show All
+msgid "Show All"
 msgstr ""
 
 #: components/manage/Sidebar/Sidebar
