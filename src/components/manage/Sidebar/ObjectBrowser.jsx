@@ -1,6 +1,7 @@
 import React from 'react';
 import { CSSTransition } from 'react-transition-group';
 import ObjectBrowserBody from '@plone/volto/components/manage/Sidebar/ObjectBrowserBody';
+import { getParentURL } from '@plone/volto/components/manage/Sidebar/ObjectBrowserBody';
 
 const DEFAULT_TIMEOUT = 500;
 
@@ -69,6 +70,10 @@ const withObjectBrowser = (WrappedComponent) =>
     closeObjectBrowser = () => this.setState({ isObjectBrowserOpen: false });
 
     render() {
+      let contextURL = this.props.pathname;
+      if (this.props.pathname?.endsWith('edit')) {
+        contextURL = getParentURL(this.props.pathname);
+      }
       return (
         <>
           <WrappedComponent
@@ -88,7 +93,7 @@ const withObjectBrowser = (WrappedComponent) =>
               data={
                 this.state.propDataName
                   ? this.props[this.state.propDataName]
-                  : { ...this.props.data, url: this.props.pathname }
+                  : { ...this.props.data, url: contextURL }
               }
               closeObjectBrowser={this.closeObjectBrowser}
               mode={this.state.mode}
