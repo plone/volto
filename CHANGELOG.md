@@ -1,6 +1,6 @@
 # Change Log
 
-## 7.9.2 (unreleased)
+## 7.9.2 (2020-08-26)
 
 ### Bugfix
 
