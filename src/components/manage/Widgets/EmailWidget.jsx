@@ -3,10 +3,10 @@
  * @module components/manage/Widgets/EmailWidget
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Form, Grid, Input, Label } from 'semantic-ui-react';
 import { map } from 'lodash';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { Form, Grid, Input, Label } from 'semantic-ui-react';
 
 /** EmailWidget function component
  * @function EmailWidget

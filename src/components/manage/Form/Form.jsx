@@ -5,12 +5,12 @@
 
 import { EditBlock, Field, Icon } from '@plone/volto/components';
 import {
+  blockHasValue,
   difference,
   FormValidation,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
   messages,
-  blockHasValue,
 } from '@plone/volto/helpers';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -872,9 +872,6 @@ class Form extends Component {
                             onChange={this.onChangeField}
                             onBlur={this.onBlurField}
                             onClick={this.onClickInput}
-                            dateOnly={
-                              schema.properties[field].widget === 'date'
-                            }
                             key={field}
                             error={this.state.errors[field]}
                           />
@@ -926,7 +923,6 @@ class Form extends Component {
                         onChange={this.onChangeField}
                         onBlur={this.onBlurField}
                         onClick={this.onClickInput}
-                        dateOnly={schema.properties[field].widget === 'date'}
                         key={field}
                         error={this.state.errors[field]}
                       />
@@ -972,7 +968,6 @@ class Form extends Component {
                     onChange={this.onChangeField}
                     onBlur={this.onBlurField}
                     onClick={this.onClickInput}
-                    dateOnly={schema.properties[field].widget === 'date'}
                     key={field}
                     error={this.state.errors[field]}
                   />
