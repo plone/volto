@@ -26,7 +26,6 @@ export const datesForDisplay = (start, end) => {
 export const When = ({ start, end, whole_day, open_end }) => {
   const datesInfo = datesForDisplay(start, end);
   if (!datesInfo) {
-    console.warn('EventWhen: Received invalid start or end date.');
     return;
   }
   // TODO I18N INTL
