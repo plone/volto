@@ -2,10 +2,6 @@
 
 ## 7.9.2 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Open content browser sidebar on parent object when editing an existing document. @iFlameing
