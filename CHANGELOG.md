@@ -1,6 +1,6 @@
 # Change Log
 
-## 7.9.3 (unreleased)
+## 7.10.1 (unreleased)
 
 ### Breaking
 
@@ -17,6 +17,13 @@
 - In folder contents batch upload, use a subrequest to avoid breaking the global `content.data` state @tiberiuichim
 
 ### Internal
+
+## 7.10.0 (2020-08-26)
+
+### Feature
+
+- Added toast notifications for form errors @nzambello @avoinea
+- Added italian translations and translated array, token and select widget. @giuliaghisini
 
 ## 7.9.2 (2020-08-26)
 
