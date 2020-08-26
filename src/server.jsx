@@ -19,6 +19,9 @@ import { resetServerContext } from 'react-beautiful-dnd';
 import routes from '~/routes';
 import { settings } from '~/config';
 
+import { runtimeConfig } from './runtime_config';
+import serialize from 'serialize-javascript';
+
 import {
   Html,
   Api,
@@ -176,6 +179,7 @@ server
           } else {
             res.status(200).send(
               `<!doctype html>
+                <script>window.env = ${serialize(runtimeConfig)};</script>
                 ${renderToString(
                   <Html extractor={extractor} markup={markup} store={store} />,
                 )}
