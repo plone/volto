@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Open content browser sidebar on parent object when editing an existing document. @iFlameing
+
 ### Internal
 
 - Added developer-guidelines/redux documentation @tiberiuichim
