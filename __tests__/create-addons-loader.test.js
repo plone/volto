@@ -22,6 +22,11 @@ const safeWrapper = (func) => (config) => {
 
 const load = (config) => {
   const addonLoaders = [];
+  if(!addonLoaders.every((el) => typeof el === "function")) {
+    throw new TypeError(
+      'Each addon has to provide a function applying its configuration to the projects configuration.',
+    );
+  }
   return addonLoaders.reduce((acc, apply) => safeWrapper(apply)(acc), config);
 };
 export default load;
@@ -47,6 +52,11 @@ const safeWrapper = (func) => (config) => {
 
 const load = (config) => {
   const addonLoaders = [voltoAddon1];
+  if(!addonLoaders.every((el) => typeof el === "function")) {
+    throw new TypeError(
+      'Each addon has to provide a function applying its configuration to the projects configuration.',
+    );
+  }
   return addonLoaders.reduce((acc, apply) => safeWrapper(apply)(acc), config);
 };
 export default load;
@@ -76,6 +86,11 @@ const safeWrapper = (func) => (config) => {
 
 const load = (config) => {
   const addonLoaders = [voltoAddon1, voltoAddon2];
+  if(!addonLoaders.every((el) => typeof el === "function")) {
+    throw new TypeError(
+      'Each addon has to provide a function applying its configuration to the projects configuration.',
+    );
+  }
   return addonLoaders.reduce((acc, apply) => safeWrapper(apply)(acc), config);
 };
 export default load;
@@ -101,6 +116,11 @@ const safeWrapper = (func) => (config) => {
 
 const load = (config) => {
   const addonLoaders = [voltoAddon1, loadExtra10];
+  if(!addonLoaders.every((el) => typeof el === "function")) {
+    throw new TypeError(
+      'Each addon has to provide a function applying its configuration to the projects configuration.',
+    );
+  }
   return addonLoaders.reduce((acc, apply) => safeWrapper(apply)(acc), config);
 };
 export default load;
@@ -128,6 +148,11 @@ const safeWrapper = (func) => (config) => {
 
 const load = (config) => {
   const addonLoaders = [voltoAddon1, loadExtra10, loadExtra21];
+  if(!addonLoaders.every((el) => typeof el === "function")) {
+    throw new TypeError(
+      'Each addon has to provide a function applying its configuration to the projects configuration.',
+    );
+  }
   return addonLoaders.reduce((acc, apply) => safeWrapper(apply)(acc), config);
 };
 export default load;
@@ -157,6 +182,11 @@ const safeWrapper = (func) => (config) => {
 
 const load = (config) => {
   const addonLoaders = [voltoAddon1, loadExtra10, loadExtra21, voltoAddon2, loadExtra32, loadExtra43];
+  if(!addonLoaders.every((el) => typeof el === "function")) {
+    throw new TypeError(
+      'Each addon has to provide a function applying its configuration to the projects configuration.',
+    );
+  }
   return addonLoaders.reduce((acc, apply) => safeWrapper(apply)(acc), config);
 };
 export default load;

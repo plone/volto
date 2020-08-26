@@ -62,8 +62,8 @@ const CorsError = () => (
           }}
         >
           <FormattedMessage
-            id="We apologize for the inconvenience, but the backend of the site you are accessing is not configured properly right now. Please, try again later."
-            defaultMessage="We apologize for the inconvenience, but the backend of the site you are accessing is not configured properly right now. Please, try again later."
+            id="The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
+            defaultMessage="The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
           />
         </p>
 

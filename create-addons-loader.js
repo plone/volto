@@ -83,6 +83,11 @@ const safeWrapper = (func) => (config) => {
 
 const load = (config) => {
   const addonLoaders = [${configsToLoad.join(', ')}];
+  if(!addonLoaders.every((el) => typeof el === "function")) {
+    throw new TypeError(
+      'Each addon has to provide a function applying its configuration to the projects configuration.',
+    );
+  }
   return addonLoaders.reduce((acc, apply) => safeWrapper(apply)(acc), config);
 };
 export default load;
