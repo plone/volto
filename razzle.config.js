@@ -21,9 +21,11 @@ const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const RootResolverPlugin = require('./webpack-root-resolver');
 const createAddonsLoader = require('./create-addons-loader');
 const AddonConfigurationRegistry = require('./addon-registry');
+const addLessLoader = require('./less-plugin');
 
 const fileLoaderFinder = makeLoaderFinder('file-loader');
-const eslintLoaderFinder = makeLoaderFinder('eslint-loader');
+const babelLoaderFinder = makeLoaderFinder('babel-loader');
+// const eslintLoaderFinder = makeLoaderFinder('eslint-loader');
 
 const projectRootPath = path.resolve('.');
 const languages = require('./src/constants/Languages');
@@ -38,10 +40,10 @@ let { customizationPaths } = packageJson;
 if (!customizationPaths) {
   customizationPaths = ['src/customizations/'];
 }
-customizationPaths.forEach((customizationPath) => {
+customizationPaths.forEach(customizationPath => {
   map(
     glob(`${customizationPath}**/*.*(svg|png|jpg|jpeg|gif|ico|less|js|jsx)`),
-    (filename) => {
+    filename => {
       const targetPath = filename.replace(
         customizationPath,
         `${registry.voltoPath}/src/`,
@@ -61,72 +63,7 @@ customizationPaths.forEach((customizationPath) => {
   );
 });
 
-const defaultPlugins = ['bundle-analyzer'];
-const defaultModify = (config, { target, dev }, webpack) => {
-  const BASE_CSS_LOADER = {
-    loader: 'css-loader',
-    options: {
-      importLoaders: 2,
-      sourceMap: true,
-    },
-  };
-  const POST_CSS_LOADER = {
-    loader: require.resolve('postcss-loader'),
-    options: {
-      sourceMap: true,
-      // Necessary for external CSS imports to work
-      // https://github.com/facebookincubator/create-react-app/issues/2677
-      ident: 'postcss',
-      plugins: () => [
-        require('postcss-flexbugs-fixes'),
-        autoprefixer({
-          flexbox: 'no-2009',
-        }),
-      ],
-    },
-  };
-
-  const LESSLOADER = {
-    test: /\.less$/,
-    include: [
-      path.resolve('./theme'),
-      /node_modules\/@plone\/volto\/theme/,
-      /plone\.volto\/theme/,
-      /node_modules\/semantic-ui-less/,
-    ],
-    use: dev
-      ? [
-          {
-            loader: 'style-loader',
-          },
-          BASE_CSS_LOADER,
-          POST_CSS_LOADER,
-          {
-            loader: 'less-loader',
-            options: {
-              sourceMap: true,
-            },
-          },
-        ]
-      : [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 2,
-              sourceMap: true,
-            },
-          },
-          POST_CSS_LOADER,
-          {
-            loader: 'less-loader',
-            options: {
-              sourceMap: true,
-            },
-          },
-        ],
-  };
-
+const svgPlugin = config => {
   const SVGLOADER = {
     test: /icons\/.*\.svg$/,
     use: [
@@ -147,20 +84,25 @@ const defaultModify = (config, { target, dev }, webpack) => {
     ],
   };
 
+  config.module.rules.push(SVGLOADER);
+  return config;
+};
+
+const defaultModify = (config, { target, dev }, webpack) => {
   //  Prevent moment from loading all locales
   config.plugins.push(
     new MomentLocalesPlugin({
       localesToKeep: [],
     }),
-  )
+  );
 
   //  Load only desired timezones
   config.plugins.push(
     new webpack.NormalModuleReplacementPlugin(
       /moment-timezone\/data\/packed\/latest\.json/,
-      require.resolve('./timezone-definitions')
-    )
-  )
+      require.resolve('./timezone-definitions'),
+    ),
+  );
 
   if (dev) {
     config.plugins.unshift(
@@ -240,9 +182,6 @@ const defaultModify = (config, { target, dev }, webpack) => {
     );
   }
 
-  config.module.rules.push(LESSLOADER);
-  config.module.rules.push(SVGLOADER);
-
   // Don't load config|variables|overrides) files with file-loader
   // Don't load SVGs from ./src/icons with file-loader
   const fileLoader = config.module.rules.find(fileLoaderFinder);
@@ -278,33 +217,21 @@ const defaultModify = (config, { target, dev }, webpack) => {
     maxEntrypointSize: 10000000,
   };
 
-  const babelRuleIndex = config.module.rules.findIndex(
-    (rule) =>
-      rule.use &&
-      rule.use[0].loader &&
-      rule.use[0].loader.includes('babel-loader'),
-  );
-  const { include } = config.module.rules[babelRuleIndex];
+  const babelLoader = config.module.rules.find(babelLoaderFinder);
+  const { include } = babelLoader;
   if (packageJson.name !== '@plone/volto') {
     include.push(fs.realpathSync(`${registry.voltoPath}/src`));
   }
   // Add babel support external (ie. node_modules npm published packages)
   if (packageJson.addons) {
-    registry.addonNames.forEach((addon) =>
+    registry.addonNames.forEach(addon =>
       include.push(fs.realpathSync(registry.packages[addon].modulePath)),
     );
   }
 
-  config.module.rules[babelRuleIndex] = Object.assign(
-    config.module.rules[babelRuleIndex],
-    {
-      include,
-    },
-  );
-
   let addonsAsExternals = [];
   if (packageJson.addons) {
-    addonsAsExternals = registry.addonNames.map((addon) => new RegExp(addon));
+    addonsAsExternals = registry.addonNames.map(addon => new RegExp(addon));
   }
 
   config.externals =
@@ -328,7 +255,12 @@ const defaultModify = (config, { target, dev }, webpack) => {
   return config;
 };
 
-const addonExtenders = registry.getAddonExtenders().map((m) => require(m));
+const addonExtenders = registry.getAddonExtenders().map(m => require(m));
+const defaultPlugins = [
+  'bundle-analyzer',
+  svgPlugin,
+  require('./less-plugin')({ registry }),
+];
 
 const plugins = addonExtenders.reduce(
   (acc, extender) => extender.plugins(acc),
@@ -336,7 +268,7 @@ const plugins = addonExtenders.reduce(
 );
 
 module.exports = {
-  plugins: plugins,
+  plugins,
   modify: (config, { target, dev }, webpack) => {
     const defaultConfig = defaultModify(config, { target, dev }, webpack);
     const res = addonExtenders.reduce(

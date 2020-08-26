@@ -6,6 +6,7 @@ import {
   getBaseUrl,
   getIcon,
   getView,
+  isCmsUi,
   isInternalURL,
 } from './Url';
 
@@ -88,7 +89,30 @@ describe('Url', () => {
     it('flattens a given URL to the app URL', () => {
       expect(flattenToAppURL(`${settings.apiPath}/edit`)).toBe('/edit');
     });
+
+    it('flattens a given URL to the app URL, with settings.internalApiPath', () => {
+      const url = 'http://plone:8080/Plone/something';
+      const saved = settings.internalApiPath;
+      settings.internalApiPath = 'http://plone:8080/Plone';
+      expect(flattenToAppURL(url)).toBe('/something');
+      settings.internalApiPath = saved;
+    });
   });
+
+  describe('isCmsUi', () => {
+    [...settings.nonContentRoutes, '/controlpanel/mypanel'].forEach((route) => {
+      if (typeof route === 'string') {
+        it(`matches non-content-route ${route}`, () => {
+          expect(isCmsUi(`/mycontent/${route}`)).toBe(true);
+        });
+      }
+    });
+
+    it('returns false on non-cms-ui views', () => {
+      expect(isCmsUi('/mycontent')).toBe(false);
+    });
+  });
+
   describe('flattenHTMLToAppURL', () => {
     it('flattens all occurences of the api URL from an html snippet', () => {
       const html = `<a href="${settings.apiPath}/foo/bar">An internal link</a><a href="${settings.apiPath}/foo/baz">second link</a>`;
@@ -96,14 +120,39 @@ describe('Url', () => {
         '<a href="/foo/bar">An internal link</a><a href="/foo/baz">second link</a>',
       );
     });
+
+    it('flattens all occurences of the api URL from an html snippet, with settings.internalApiPath', () => {
+      const html = `<a href="http://plone:8080/Plone/foo/bar">An internal link</a><a href="http://plone:8080/Plone/foo/baz">second link</a>`;
+      const saved = settings.internalApiPath;
+      settings.internalApiPath = 'http://plone:8080/Plone';
+      expect(flattenHTMLToAppURL(html)).toBe(
+        '<a href="/foo/bar">An internal link</a><a href="/foo/baz">second link</a>',
+      );
+      settings.internalApiPath = saved;
+    });
   });
   describe('isInternalURL', () => {
     it('tells if an URL is internal or not', () => {
       const href = `${settings.apiPath}/foo/bar`;
       expect(isInternalURL(href)).toBe(true);
     });
+    it('tells if an URL is internal or not, with settings.internalApiPath', () => {
+      const href = `http://plone:8080/Plone/foo/bar`;
+      const saved = settings.internalApiPath;
+      settings.internalApiPath = 'http://plone:8080/Plone';
+      expect(isInternalURL(href)).toBe(true);
+      settings.internalApiPath = saved;
+    });
     it('tells if an URL is internal if it is an anchor', () => {
       const href = '#anchor';
+      expect(isInternalURL(href)).toBe(true);
+    });
+    it('tells if an URL is internal if a root relative path', () => {
+      const href = '/';
+      expect(isInternalURL(href)).toBe(true);
+    });
+    it('tells if an URL is internal if a relative path', () => {
+      const href = './../';
       expect(isInternalURL(href)).toBe(true);
     });
   });
