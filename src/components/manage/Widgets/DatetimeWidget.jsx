@@ -257,7 +257,6 @@ DatetimeWidget.propTypes = {
   description: PropTypes.string,
   required: PropTypes.bool,
   error: PropTypes.arrayOf(PropTypes.string),
-  // dateOnly: PropTypes.bool,
   noPastDates: PropTypes.bool,
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
@@ -273,7 +272,6 @@ DatetimeWidget.defaultProps = {
   description: null,
   required: false,
   error: [],
-  // dateOnly: false,
   noPastDates: false,
   value: null,
 };
