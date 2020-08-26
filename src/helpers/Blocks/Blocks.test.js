@@ -119,6 +119,10 @@ describe('Blocks', () => {
   });
 
   describe('getBlock', () => {
+    it('returns empty when there is no block content and no items in layout', () => {
+      expect(getBlocks({ blocks: {}, blocks_layout: {} })).toStrictEqual([]);
+    });
+
     it('returns empty when there is no block content', () => {
       expect(
         getBlocks({ blocks: {}, blocks_layout: { items: [] } }),

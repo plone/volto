@@ -31,7 +31,8 @@ import { defineMessages, injectIntl } from 'react-intl';
 import { v4 as uuid } from 'uuid';
 import { Portal } from 'react-portal';
 
-import { EditBlock, Icon, Field } from '@plone/volto/components';
+import { toast } from 'react-toastify';
+import { EditBlock, Icon, Field, Toast } from '@plone/volto/components';
 import { settings } from '~/config';
 import dragSVG from '@plone/volto/icons/drag.svg';
 import { withFormStateContext } from '@plone/volto/components/manage/Form/FormContext';
@@ -478,7 +479,7 @@ export class Form extends Component {
               this.props.intl.formatMessage(messages.required),
             );
           }
-          if (field.minLength && data.length < field.minLength) {
+          if (field.minLength && data && data.length < field.minLength) {
             errors[fieldId] = errors[field] || [];
             errors[fieldId].push(
               this.props.intl.formatMessage(messages.minLength, {
@@ -498,6 +499,12 @@ export class Form extends Component {
     if (keys(errors).length > 0) {
       return this.setContextData({
         errors,
+      }).then(() => {
+        Object.keys(errors).forEach((err) =>
+          toast.error(
+            <Toast error title={err} content={errors[err].join(', ')} />,
+          ),
+        );
       });
     } else {
       // Get only the values that have been modified (Edit forms), send all in case that
