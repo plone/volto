@@ -7,7 +7,6 @@ build/
 lib/
 g-api/
 tests/
-cypress/
 
 # Files
 .travis.yml
