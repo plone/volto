@@ -10,6 +10,38 @@ This upgrade guide lists all breaking changes in Volto and explains the
     dependencies might do when dealing with upgrades. We keep the generator up
     to date and in sync with current Volto release.
 
+## Upgrading to Volto 7.x.x
+
+A misspelled file has been renamed. If you import `strickthrough.svg` in your
+project, you'll now find that file at `@plone/volto/icons/strikethrough.svg`.
+
+
+### New webpack resolve alias for Volto themes
+
+As a "nice to have", a new resolve alias is provided that points to Volto's 
+theme folder. So, in your project's `theme.config` file, you can replace:
+
+```less
+@themesFolder: '../../node_modules/@plone/volto/theme/themes';
+@siteFolder: "../../theme";
+@fontPath : "../../@{theme}/assets/fonts";
+```
+with:
+
+```less
+@themesFolder: '~volto-themes';
+@siteFolder: '~@package/../theme';
+@fontPath: "~volto-themes/@{theme}/assets/fonts";
+```
+
+You might consider moving your theme files to a subfolder called `site`, to
+prepare for the arrival of addons theming and their overrides.  In that case,
+you would set your `@siteFolder` to:
+
+```
+@siteFolder: '~@package/../theme/site';
+```
+
 ## Upgrading to Volto 6.x.x
 
 First, update the `package.json` of your Volto project to Volto 6.x.x.
@@ -23,6 +55,12 @@ First, update the `package.json` of your Volto project to Volto 6.x.x.
 
 !!! note
     This release includes a number of changes to the internal dependencies. If you have problems building your project, might be that you need to remove your `node_modules` and, ultimately, remove also your `yarn.lock` file. Then run again `yarn` for rebuilding dependencies.
+
+### Upgrade to Node 12
+
+We have now dependencies that requires `node >=10.19.0`. Although Node 10 has still LTS
+"maintenance" treatment (see https://nodejs.org/en/about/releases/) the recommended path
+is that you use from now on node 12 which is LTS since last October.
 
 ### New Razzle version and related development dependencies
 
@@ -131,6 +169,19 @@ there (as children of these wrappers) to maintain maximum backwards compatibilit
 might be cleaned up in next major versions, so if for some reason you have customized
 the styling of your blocks in edit mode relying in the old structure, you might want to
 review and adapt them.
+
+### Update `config.js`
+
+!!! note
+    This is required since Volto version 6.1.0 [1541](https://github.com/plone/volto/pull/1541)
+
+Add these to the `config.js` of your project:
+
+```js
+export const addonRoutes = [];
+
+export const addonReducers = {};
+```
 
 ## Upgrading to Volto 5.x.x
 

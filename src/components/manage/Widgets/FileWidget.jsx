@@ -5,12 +5,20 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Grid, Input, Label, Button } from 'semantic-ui-react';
-import { map } from 'lodash';
+import { Input, Button, Image } from 'semantic-ui-react';
 import { readAsDataURL } from 'promise-file-reader';
 
 import deleteSVG from '@plone/volto/icons/delete.svg';
-import { Icon } from '@plone/volto/components';
+import { Icon, FormFieldWrapper } from '@plone/volto/components';
+
+const imageMimetypes = [
+  'image/png',
+  'image/jpeg',
+  'image/webp',
+  'image/jpg',
+  'image/gif',
+  'image/svg+xml',
+];
 
 /**
  * FileWidget component class.
@@ -26,76 +34,78 @@ const FileWidget = ({
   value,
   onChange,
   fieldSet,
+  wrapped,
 }) => {
   const fileInput = React.useRef(null);
+  const [fileType, setFileType] = React.useState(true);
 
   return (
-    <Form.Field
-      inline
+    <FormFieldWrapper
+      id={id}
+      title={title}
+      description={description}
       required={required}
-      error={error.length > 0}
-      className={description ? 'help' : ''}
-      id={`${fieldSet || 'field'}-${id}`}
+      error={error}
+      wrapped={wrapped}
+      fieldSet={fieldSet}
     >
-      <Grid>
-        <Grid.Row stretched>
-          <Grid.Column width="4">
-            <div className="wrapper">
-              <label htmlFor={`field-${id}`}>{title}</label>
-            </div>
-          </Grid.Column>
-          <Grid.Column width="8">
-            <Input
-              id={`field-${id}`}
-              name={id}
-              type="file"
-              ref={fileInput}
-              onChange={({ target }) => {
-                const file = target.files[0];
-                readAsDataURL(file).then((data) => {
-                  const fields = data.match(/^data:(.*);(.*),(.*)$/);
-                  onChange(id, {
-                    data: fields[3],
-                    encoding: fields[2],
-                    'content-type': fields[1],
-                    filename: file.name,
-                  });
-                });
-              }}
-            />
-            <div className="field-file-name">
-              {value && value.filename}
-              {value && (
-                <Button
-                  icon
-                  basic
-                  className="delete-button"
-                  aria-label="delete file"
-                  onClick={() => {
-                    onChange(id, null);
-                    fileInput.current.inputRef.value = null;
-                  }}
-                >
-                  <Icon name={deleteSVG} size="20px" />
-                </Button>
-              )}
-            </div>
-            {map(error, (message) => (
-              <Label key={message} basic color="red" pointing>
-                {message}
-              </Label>
-            ))}
-          </Grid.Column>
-        </Grid.Row>
-        {description && (
-          <Grid.Row stretched>
-            <Grid.Column stretched width="12">
-              <p className="help">{description}</p>
-            </Grid.Column>
-          </Grid.Row>
+      {fileType ? (
+        <Image
+          className="image-preview"
+          id={`field-${id}-image`}
+          size="small"
+        />
+      ) : null}
+      <Input
+        id={`field-${id}`}
+        name={id}
+        type="file"
+        ref={fileInput}
+        onChange={({ target }) => {
+          const file = target.files[0];
+          readAsDataURL(file).then((data) => {
+            const fields = data.match(/^data:(.*);(.*),(.*)$/);
+            onChange(id, {
+              data: fields[3],
+              encoding: fields[2],
+              'content-type': fields[1],
+              filename: file.name,
+            });
+          });
+
+          let reader = new FileReader();
+          reader.onload = function () {
+            const fields = reader.result.match(/^data:(.*);(.*),(.*)$/);
+            if (imageMimetypes.includes(fields[1])) {
+              setFileType(true);
+              let imagePreview = document.getElementById(`field-${id}-image`);
+              imagePreview.src = reader.result;
+            } else {
+              setFileType(false);
+            }
+          };
+          reader.readAsDataURL(target.files[0]);
+        }}
+      />
+      <div className="field-file-name">
+        {value && value.filename}
+        {value && (
+          <Button
+            icon
+            basic
+            className="delete-button"
+            aria-label="delete file"
+            onClick={() => {
+              onChange(id, null);
+              setFileType(false);
+              fileInput.current.inputRef.current.value = null;
+            }}
+          >
+            <Icon name={deleteSVG} size="20px" />
+          </Button>
         )}
-      </Grid>
-    </Form.Field>
+      </div>
+    </FormFieldWrapper>
   );
 };
 
@@ -115,6 +125,7 @@ FileWidget.propTypes = {
     title: PropTypes.string,
   }),
   onChange: PropTypes.func.isRequired,
+  wrapped: PropTypes.bool,
 };
 
 /**

@@ -1,6 +1,7 @@
 import React from 'react';
 import { CSSTransition } from 'react-transition-group';
 import ObjectBrowserBody from '@plone/volto/components/manage/Sidebar/ObjectBrowserBody';
+import { getParentURL } from '@plone/volto/components/manage/Sidebar/ObjectBrowserBody';
 
 const DEFAULT_TIMEOUT = 500;
 
@@ -53,6 +54,8 @@ const withObjectBrowser = (WrappedComponent) =>
       onSelectItem = null,
       dataName = null,
       propDataName = null,
+      selectableTypes,
+      maximumSelectionSize,
     } = {}) =>
       this.setState({
         isObjectBrowserOpen: true,
@@ -60,11 +63,17 @@ const withObjectBrowser = (WrappedComponent) =>
         onSelectItem,
         dataName,
         propDataName,
+        selectableTypes,
+        maximumSelectionSize,
       });
 
     closeObjectBrowser = () => this.setState({ isObjectBrowserOpen: false });
 
     render() {
+      let contextURL = this.props.pathname;
+      if (this.props.pathname?.endsWith('edit')) {
+        contextURL = getParentURL(this.props.pathname);
+      }
       return (
         <>
           <WrappedComponent
@@ -84,12 +93,14 @@ const withObjectBrowser = (WrappedComponent) =>
               data={
                 this.state.propDataName
                   ? this.props[this.state.propDataName]
-                  : this.props.data
+                  : { ...this.props.data, url: contextURL }
               }
               closeObjectBrowser={this.closeObjectBrowser}
               mode={this.state.mode}
               onSelectItem={this.state.onSelectItem}
               dataName={this.state.dataName}
+              selectableTypes={this.state.selectableTypes}
+              maximumSelectionSize={this.state.maximumSelectionSize}
             />
           </CSSTransition>
         </>

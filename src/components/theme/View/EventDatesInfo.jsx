@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { List } from 'semantic-ui-react';
 import moment from 'moment';
 import cx from 'classnames';
-import { RRule } from 'rrule';
+import { RRule, rrulestr } from 'rrule';
 
 export const datesForDisplay = (start, end) => {
   const mStart = moment(start);
@@ -26,7 +26,6 @@ export const datesForDisplay = (start, end) => {
 export const When = ({ start, end, whole_day, open_end }) => {
   const datesInfo = datesForDisplay(start, end);
   if (!datesInfo) {
-    console.warn('EventWhen: Received invalid start or end date.');
     return;
   }
   // TODO I18N INTL
@@ -102,10 +101,13 @@ When.propTypes = {
 };
 
 export const Recurrence = ({ recurrence, start }) => {
-  const rrule = new RRule({
-    ...RRule.parseString(recurrence),
-    dtstart: new Date(start),
-  });
+  if (recurrence.indexOf('DTSTART') < 0) {
+    var dtstart = RRule.optionsToString({
+      dtstart: new Date(start),
+    });
+    recurrence = dtstart + '\n' + recurrence;
+  }
+  const rrule = rrulestr(recurrence, { unfold: true, forceset: true });
 
   return (
     <List

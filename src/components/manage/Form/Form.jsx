@@ -30,14 +30,17 @@ import { defineMessages, injectIntl } from 'react-intl';
 import { v4 as uuid } from 'uuid';
 import { Portal } from 'react-portal';
 
-import { EditBlock, Icon, Field } from '@plone/volto/components';
+import { toast } from 'react-toastify';
+import { EditBlock, Icon, Field, Toast } from '@plone/volto/components';
+import { settings } from '~/config';
 import dragSVG from '@plone/volto/icons/drag.svg';
 
 import {
   getBlocksFieldname,
   getBlocksLayoutFieldname,
+  difference,
+  blockHasValue,
 } from '@plone/volto/helpers';
-import { difference } from '@plone/volto/helpers';
 
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -45,8 +48,8 @@ import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 
 const messages = defineMessages({
   addBlock: {
-    id: 'Add block...',
-    defaultMessage: 'Add block...',
+    id: 'Add block…',
+    defaultMessage: 'Add block…',
   },
   required: {
     id: 'Required input is missing.',
@@ -170,32 +173,39 @@ class Form extends Component {
     // Adding fallback in case the fields are empty, so we are sure that the edit form
     // shows at least the default blocks
     if (
-      !formData[blocksLayoutFieldname] ||
-      isEmpty(formData[blocksLayoutFieldname].items)
+      formData.hasOwnProperty(blocksFieldname) &&
+      formData.hasOwnProperty(blocksLayoutFieldname)
     ) {
-      formData[blocksLayoutFieldname] = {
-        items: [ids.title, ids.text],
-      };
-    }
-    if (!formData[blocksFieldname] || isEmpty(formData[blocksFieldname])) {
-      formData[blocksFieldname] = {
-        [ids.title]: {
-          '@type': 'title',
-        },
-        [ids.text]: {
-          '@type': 'text',
-        },
-      };
+      if (
+        !formData[blocksLayoutFieldname] ||
+        isEmpty(formData[blocksLayoutFieldname].items)
+      ) {
+        formData[blocksLayoutFieldname] = {
+          items: [ids.title, ids.text],
+        };
+      }
+      if (!formData[blocksFieldname] || isEmpty(formData[blocksFieldname])) {
+        formData[blocksFieldname] = {
+          [ids.title]: {
+            '@type': 'title',
+          },
+          [ids.text]: {
+            '@type': settings.defaultBlockType,
+          },
+        };
+      }
     }
     this.state = {
       formData,
       initialFormData: { ...formData },
       errors: {},
       selected:
+        formData.hasOwnProperty(blocksLayoutFieldname) &&
         formData[blocksLayoutFieldname].items.length > 0
           ? formData[blocksLayoutFieldname].items[0]
           : null,
       placeholderProps: {},
+      isClient: false,
     };
     this.onChangeField = this.onChangeField.bind(this);
     this.onChangeBlock = this.onChangeBlock.bind(this);
@@ -208,6 +218,15 @@ class Form extends Component {
     this.onFocusPreviousBlock = this.onFocusPreviousBlock.bind(this);
     this.onFocusNextBlock = this.onFocusNextBlock.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
+  }
+
+  /**
+   * Component did mount
+   * @method componentDidMount
+   * @returns {undefined}
+   */
+  componentDidMount() {
+    this.setState({ isClient: true });
   }
 
   /**
@@ -228,11 +247,7 @@ class Form extends Component {
   }
 
   hideHandler = (data) => {
-    return (
-      data['@type'] === 'text' &&
-      (!data.text ||
-        (data.text?.blocks?.length === 1 && data.text.blocks[0].text === ''))
-    );
+    return !blockHasValue(data);
   };
 
   /**
@@ -263,12 +278,30 @@ class Form extends Component {
    * @returns {undefined}
    */
   onMutateBlock(id, value) {
-    const idTrailingBlock = uuid();
     const blocksFieldname = getBlocksFieldname(this.state.formData);
     const blocksLayoutFieldname = getBlocksLayoutFieldname(this.state.formData);
     const index =
       this.state.formData[blocksLayoutFieldname].items.indexOf(id) + 1;
 
+    // Test if block at index is already a placeholder (trailing) block
+    const trailId = this.state.formData[blocksLayoutFieldname].items[index];
+    if (trailId) {
+      const block = this.state.formData[blocksFieldname][trailId];
+      if (!blockHasValue(block)) {
+        this.setState({
+          formData: {
+            ...this.state.formData,
+            [blocksFieldname]: {
+              ...this.state.formData[blocksFieldname],
+              [id]: value || null,
+            },
+          },
+        });
+        return;
+      }
+    }
+
+    const idTrailingBlock = uuid();
     this.setState({
       formData: {
         ...this.state.formData,
@@ -276,7 +309,7 @@ class Form extends Component {
           ...this.state.formData[blocksFieldname],
           [id]: value || null,
           [idTrailingBlock]: {
-            '@type': 'text',
+            '@type': settings.defaultBlockType,
           },
         },
         [blocksLayoutFieldname]: {
@@ -354,7 +387,7 @@ class Form extends Component {
               insert,
             ),
             id,
-            ...(type !== 'text' ? [idTrailingBlock] : []),
+            ...(type !== settings.defaultBlockType ? [idTrailingBlock] : []),
             ...this.state.formData[blocksLayoutFieldname].items.slice(insert),
           ],
         },
@@ -363,9 +396,9 @@ class Form extends Component {
           [id]: {
             '@type': type,
           },
-          ...(type !== 'text' && {
+          ...(type !== settings.defaultBlockType && {
             [idTrailingBlock]: {
-              '@type': 'text',
+              '@type': settings.defaultBlockType,
             },
           }),
         },
@@ -401,7 +434,7 @@ class Form extends Component {
               this.props.intl.formatMessage(messages.required),
             );
           }
-          if (field.minLength && data.length < field.minLength) {
+          if (field.minLength && data && data.length < field.minLength) {
             errors[fieldId] = errors[field] || [];
             errors[fieldId].push(
               this.props.intl.formatMessage(messages.minLength, {
@@ -419,9 +452,18 @@ class Form extends Component {
       }),
     );
     if (keys(errors).length > 0) {
-      this.setState({
-        errors,
-      });
+      this.setState(
+        {
+          errors,
+        },
+        () => {
+          Object.keys(errors).forEach((err) =>
+            toast.error(
+              <Toast error title={err} content={errors[err].join(', ')} />,
+            ),
+          );
+        },
+      );
     } else {
       // Get only the values that have been modified (Edit forms), send all in case that
       // it's an add form
@@ -564,7 +606,7 @@ class Form extends Component {
       e.preventDefault();
     }
     if (e.key === 'Enter' && !disableEnter) {
-      this.onAddBlock('text', index + 1);
+      this.onAddBlock(settings.defaultBlockType, index + 1);
       e.preventDefault();
     }
   }
@@ -715,7 +757,7 @@ class Form extends Component {
     return this.props.visual ? (
       // Removing this from SSR is important, since react-beautiful-dnd supports SSR,
       // but draftJS don't like it much and the hydration gets messed up
-      !__SERVER__ && (
+      this.state.isClient && (
         <div className="ui container">
           <DragDropContext
             onDragEnd={this.onDragEnd}
@@ -795,36 +837,39 @@ class Form extends Component {
                 </div>
               )}
             </Droppable>
-            <Portal
-              node={__CLIENT__ && document.getElementById('sidebar-metadata')}
-            >
-              <UiForm
-                method="post"
-                onSubmit={this.onSubmit}
-                error={keys(this.state.errors).length > 0}
+            {this.state.isClient && (
+              <Portal
+                node={__CLIENT__ && document.getElementById('sidebar-metadata')}
               >
-                {schema &&
-                  map(schema.fieldsets, (item) => [
-                    <Segment secondary attached key={item.title}>
-                      {item.title}
-                    </Segment>,
-                    <Segment attached key={`fieldset-contents-${item.title}`}>
-                      {map(item.fields, (field, index) => (
-                        <Field
-                          {...schema.properties[field]}
-                          id={field}
-                          focus={false}
-                          value={this.state.formData[field]}
-                          required={schema.required.indexOf(field) !== -1}
-                          onChange={this.onChangeField}
-                          key={field}
-                          error={this.state.errors[field]}
-                        />
-                      ))}
-                    </Segment>,
-                  ])}
-              </UiForm>
-            </Portal>
+                <UiForm
+                  method="post"
+                  onSubmit={this.onSubmit}
+                  error={keys(this.state.errors).length > 0}
+                >
+                  {schema &&
+                    map(schema.fieldsets, (item) => [
+                      <Segment secondary attached key={item.title}>
+                        {item.title}
+                      </Segment>,
+                      <Segment attached key={`fieldset-contents-${item.title}`}>
+                        {map(item.fields, (field, index) => (
+                          <Field
+                            {...schema.properties[field]}
+                            id={field}
+                            formData={this.state.formData}
+                            focus={false}
+                            value={this.state.formData[field]}
+                            required={schema.required.indexOf(field) !== -1}
+                            onChange={this.onChangeField}
+                            key={field}
+                            error={this.state.errors[field]}
+                          />
+                        ))}
+                      </Segment>,
+                    ])}
+                </UiForm>
+              </Portal>
+            )}
           </DragDropContext>
         </div>
       )
@@ -857,6 +902,7 @@ class Form extends Component {
                       <Field
                         {...schema.properties[field]}
                         id={field}
+                        formData={this.state.formData}
                         fieldSet={item.title.toLowerCase()}
                         focus={index === 0}
                         value={this.state.formData[field]}

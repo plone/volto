@@ -51,7 +51,7 @@ msgstr "Aktionen"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Activate and deactivate"
-msgstr ""
+msgstr "Aktiviern und Deaktivieren"
 
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
@@ -62,15 +62,15 @@ msgstr "Hinzufügen"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Add Addons"
-msgstr ""
+msgstr "Add-on hinzufügen"
 
 #: components/manage/Toolbar/Types
 msgid "Add Content"
 msgstr "Inhalte hinzufügen"
 
 #: components/manage/Toolbar/Types
-msgid "Add Translation..."
-msgstr "Übersetzen..."
+msgid "Add Translation…"
+msgstr "Übersetzung hinzufügen…"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add User"
@@ -81,12 +81,16 @@ msgid "Add a description…"
 msgstr "Beschreibung hinzufügen…"
 
 #: components/manage/Form/Form
-msgid "Add block..."
+msgid "Add block…"
 msgstr "Block hinzufügen"
 
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "Add criteria"
 msgstr "Kriterien hinzufügen"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Add date"
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Add field"
@@ -102,7 +106,7 @@ msgstr "Gruppe hinzufügen"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Add new content type"
-msgstr ""
+msgstr "Neuen Inhaltstypen hinzufügen"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add new group"
@@ -122,6 +126,10 @@ msgstr "{type} hinzufügen"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Add-ons Settings"
+msgstr "Einstellungen Add-ons"
+
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+msgid "Additional date"
 msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
@@ -154,7 +162,7 @@ msgstr "Aufsteigend"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Available"
-msgstr ""
+msgstr "Verfügbar"
 
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -162,6 +170,7 @@ msgstr ""
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/DatabaseInformation
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Diff/Diff
@@ -207,8 +216,11 @@ msgstr "Seite durchsuchen, Bild ablegen oder URL eingeben"
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr "Standardmäßig werden die Berechtigungen von einem Ordner auf die in ihm befindlichen Artikel vererbt. Wenn Sie dies deaktivieren, sind nur die explizit definierten Zugriffsberechtigungen gültig. In der Übersicht zeigt das Symbol ${image_confirm_icon} einen ererbten Wert an. Das Symbol ${image_link_icon} zeigt eine globale Funktion an, die vom Administrator verwaltet wird."
 
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Cache Name"
+msgstr "Cache Name"
+
 #: components/manage/Add/Add
-#: components/manage/Contents/ContentsToolbar
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
@@ -226,6 +238,7 @@ msgstr "Abbrechen"
 msgid "Cell"
 msgstr "Zelle"
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Center"
@@ -311,7 +324,7 @@ msgstr "Passwort bestätigen"
 
 #: components/theme/ConnectionRefused/ConnectionRefused
 msgid "Connection refused"
-msgstr ""
+msgstr "Verbindung abgelehnt"
 
 #: components/theme/Footer/Footer
 msgid "Contact"
@@ -331,11 +344,11 @@ msgstr "Inhalt"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
-msgstr ""
+msgstr "Inhaltstyp erstellt"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type deleted"
-msgstr ""
+msgstr "Inhaltstyp gelöscht"
 
 #: components/manage/Contents/Contents
 #: components/manage/Toolbar/Toolbar
@@ -382,7 +395,28 @@ msgstr "Aktuelles Passwort"
 msgid "Cut"
 msgstr "Ausschneiden"
 
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Daily"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Database Information"
+msgstr "Datenbankinformationen"
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Database Location"
+msgstr "Speicheort Datenbank"
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Database Size"
+msgstr "Größe Datenbank"
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Database main"
+msgstr "Datenbank"
+
 #: components/manage/Controlpanels/ModerateComments
+#: components/manage/Widgets/DatetimeWidget
 msgid "Date"
 msgstr "Datum"
 
@@ -430,7 +464,7 @@ msgstr "Gruppe löschen"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Delete Type"
-msgstr ""
+msgstr "Inhaltstype löschen"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Delete User"
@@ -488,7 +522,7 @@ msgstr "Möchten Sie die Gruppe {groupname} wirklich löschen?"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Do you really want to delete the type {typename}?"
-msgstr ""
+msgstr "Möchten Sie den Inhaltstyp {typename} wirklich löschen?"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Do you really want to delete the user {username}?"
@@ -536,9 +570,13 @@ msgstr "Feld bearbeiten"
 msgid "Edit fieldset"
 msgstr "Fieldset bearbeiten"
 
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Edit recurrence"
+msgstr ""
+
 #: components/manage/Form/InlineForm
 msgid "Edit values"
-msgstr ""
+msgstr "Werte bearbeiten"
 
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
@@ -609,6 +647,10 @@ msgstr "Fehler"
 msgid "Exclude from navigation"
 msgstr "Von der Navigation ausschließen"
 
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+msgid "Exclude this occurence"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Excluded from navigation"
 msgstr "Von Navigation ausgeschlossen"
@@ -627,7 +669,7 @@ msgstr "Ablaufdatum"
 
 #: components/manage/Contents/ContentsItem
 msgid "Expired"
-msgstr ""
+msgstr "Abgelaufen"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -650,6 +692,10 @@ msgstr "Dateiname"
 msgid "Filter…"
 msgstr "Filter…"
 
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+msgid "First"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 msgid "Fixed width table cells"
 msgstr "Tabellen-Zellen mit fester Breite"
@@ -661,6 +707,10 @@ msgstr "Ordner"
 #: components/theme/Forbidden/Forbidden
 msgid "Forbidden"
 msgstr "Verboten"
+
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+msgid "Fourth"
+msgstr ""
 
 #: components/theme/ContactForm/ContactForm
 msgid "From"
@@ -757,6 +807,10 @@ msgstr "Falls Sie noch keinen Zugang haben, {registrationform} Sie sich bitte zu
 msgid "Image"
 msgstr "Bild"
 
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+msgid "Include this occurence"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
 msgid "Info"
@@ -788,14 +842,30 @@ msgstr "Zeile davor einfügen"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Install"
-msgstr ""
+msgstr "Installieren"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Installed"
-msgstr ""
+msgstr "Installiert"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Installed version"
+msgstr "Installierte Version"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Interval Daily"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Interval Monthly"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Interval Weekly"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Interval Yearly"
 msgstr ""
 
 #: components/manage/Blocks/Listing/ListingData
@@ -817,7 +887,7 @@ msgstr "Artikel eingefügt."
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Items"
-msgstr ""
+msgstr "Elemente"
 
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
@@ -827,6 +897,10 @@ msgstr "Auswahl muss eindeutig sein."
 #: components/manage/Preferences/PersonalPreferences
 msgid "Language"
 msgstr "Sprache"
+
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+msgid "Last"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Last comment date"
@@ -838,12 +912,13 @@ msgstr "Letzte Änderung"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Latest version"
-msgstr ""
+msgstr "Letzte Version"
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Lead Image"
 msgstr "Leadbild"
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Left"
@@ -927,6 +1002,18 @@ msgstr "Kommentare moderieren"
 msgid "Moderate comments"
 msgstr "Kommentare moderieren"
 
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Monday and Friday"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
+msgid "Month day"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Monthly"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 msgid "More"
 msgstr "Mehr"
@@ -984,11 +1071,21 @@ msgstr "Keine Elemente gefunden"
 
 #: components/manage/Widgets/ObjectBrowserWidget
 msgid "No items selected"
-msgstr ""
+msgstr "Kein Element ausgewählt"
 
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "No map selected"
 msgstr "Keine Karte ausgewählt"
+
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+msgid "No occurences set"
+msgstr ""
+
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
+msgid "No options"
+msgstr "Keine Option"
 
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
@@ -1001,7 +1098,7 @@ msgstr "Keine Auswahl"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "No uninstall profile"
-msgstr ""
+msgstr "Kein Deinstallationsprofil"
 
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
@@ -1022,9 +1119,17 @@ msgstr "Kein Workflow"
 msgid "None"
 msgstr "Nicht vorhanden"
 
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Number of active objects"
+msgstr "Anzahl aktive Objekte"
+
 #: components/manage/Contents/Contents
 msgid "Object Size"
 msgstr "Grösse"
+
+#: components/manage/Widgets/RecurrenceWidget/EndField
+msgid "Occurences"
+msgstr ""
 
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -1160,6 +1265,18 @@ msgstr "Mehr…"
 msgid "Rearrange items by…"
 msgstr "Elemente sortieren nach…"
 
+#: components/manage/Widgets/RecurrenceWidget/EndField
+msgid "Recurrence ends"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/EndField
+msgid "Recurrence ends after"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/EndField
+msgid "Recurrence ends on"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 msgid "Reduce complexity"
 msgstr "Komplexität reduzieren"
@@ -1173,6 +1290,10 @@ msgstr "Registrieren"
 msgid "Registration form"
 msgstr "Registrierungsformular"
 
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Remove recurrence"
+msgstr ""
+
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 msgid "Rename"
@@ -1181,6 +1302,18 @@ msgstr "Umbenennen"
 #: components/manage/Contents/ContentsRenameModal
 msgid "Rename items"
 msgstr "Artikel umbenennen"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Repeat"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Repeat every"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Repeat on"
+msgstr ""
 
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
@@ -1221,6 +1354,7 @@ msgstr "Arbeitsablauf"
 msgid "Richtext"
 msgstr "Richtext"
 
+#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Right"
@@ -1245,6 +1379,10 @@ msgstr "Rollen"
 msgid "Save"
 msgstr "Speichern"
 
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Save recurrence"
+msgstr ""
+
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search"
 msgstr "Suche"
@@ -1262,8 +1400,8 @@ msgid "Search for user or group"
 msgstr "Nach Benutzer oder Gruppe suchen"
 
 #: components/manage/Controlpanels/UsersControlpanel
-msgid "Search group..."
-msgstr "Gruppe suchen..."
+msgid "Search group…"
+msgstr "Nach Gruppe suchen…"
 
 #: components/theme/Search/Search
 msgid "Search results"
@@ -1274,8 +1412,16 @@ msgid "Search results for {term}"
 msgstr "Suchergebnisse für {term}"
 
 #: components/manage/Controlpanels/UsersControlpanel
-msgid "Search users..."
-msgstr "Nutzer suchen..."
+msgid "Search users…"
+msgstr "Nach Nutzern suchen…"
+
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+msgid "Second"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Select a date to add to recurrence"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Select columns to show"
@@ -1289,8 +1435,16 @@ msgstr "Kriterium wählen"
 msgid "Select the transition to be used for modifying the items state."
 msgstr "Arbeitsablauf-Status für Seite wählen."
 
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+msgid "Selected dates"
+msgstr ""
+
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Selected items"
+msgstr "Ausgewählte Objekte"
+
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Selected items - x of y"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
@@ -1299,6 +1453,8 @@ msgstr "Auswahl"
 
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
 msgid "Select…"
 msgstr "Wähle…"
 
@@ -1373,7 +1529,11 @@ msgstr "Seiteneinstellungen"
 
 #: components/theme/Sitemap/Sitemap
 msgid "Sitemap"
-msgstr ""
+msgstr "Sitemap"
+
+#: components/manage/Blocks/Image/ImageSidebar
+msgid "Size"
+msgstr "Größe"
 
 #: components/theme/View/ImageView
 msgid "Size: {size}"
@@ -1403,6 +1563,10 @@ msgstr "Aufsplitten"
 #: components/manage/Contents/Contents
 msgid "Start Date"
 msgstr "Anfangsdatum"
+
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+msgid "Start of the recurrence"
+msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Start password reset"
@@ -1462,6 +1626,14 @@ msgstr "Hinzuzufügende Tags"
 msgid "Tags to remove"
 msgstr "Zu entfernende Tags"
 
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Target memory size per cache in bytes"
+msgstr "Ziel-Speichergröße pro Cache in Bytes"
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Target number of objects in memory per cache"
+msgstr "Ziel-Anzahl von Objekten im Speicher pro Cache"
+
 #: components/manage/Blocks/Listing/TemplateWidget
 msgid "Template"
 msgstr "Template"
@@ -1477,16 +1649,24 @@ msgstr "Text"
 msgid "Thank you."
 msgstr "Vielen Dank."
 
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "The Database Manager allow you to view database status information"
+msgstr "Der Datenbank-Manager zeigt Ihnen Status-Informationen zu der Datenbank"
+
 #: components/manage/Preferences/PersonalInformation
 msgid "The URL for your external home page, if you have one."
 msgstr "Die URL Ihrer externen Homepage, sollten Sie eine besitzen."
 
 #: components/theme/ConnectionRefused/ConnectionRefused
 msgid "The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable."
-msgstr ""
+msgstr "Das Backend beantwortet die Anfrage nicht, prüfen Sie bitte ob Sie Plone gestartet haben. Prüfen Sie den apiPath Parameter Ihrer Projekt-Konfiguration oder die RAZZLE_API_PATH Umgebungsvariable."
 
 #: components/theme/CorsError/CorsError
 msgid "The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources."
+msgstr "Das Backend antwortet, allerdings sind ihre CORS HTTP Header nicht korrekt konfiguriert."
+
+#: components/theme/CorsError/CorsError
+msgid "The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
 msgstr ""
 
 #: components/theme/Register/Register
@@ -1503,16 +1683,20 @@ msgstr "{plonecms} {copyright} 2000-{current_year} {plonefoundation} und Freunde
 
 #: components/theme/CorsError/CorsError
 msgid "There is a configuration problem on the backend"
-msgstr ""
+msgstr "Konfigurationsproblem im Backend"
 
 #: components/manage/Form/InlineForm
 msgid "There were some errors"
-msgstr ""
+msgstr "Es sind Fehler"
 
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 msgid "There were some errors."
 msgstr "Es sind Fehler aufgetreten."
+
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+msgid "Third"
+msgstr ""
 
 #: components/manage/Contents/ContentsRenameModal
 msgid "This name will be displayed in the URL."
@@ -1521,6 +1705,10 @@ msgstr "Dieser Name wird in der Adressleiste des Browsers angezeigt."
 #: components/theme/NotFound/NotFound
 msgid "This page does not seem to exist…"
 msgstr "Die Seite existiert leider nicht…"
+
+#: components/manage/Widgets/DatetimeWidget
+msgid "Time"
+msgstr "Zeit"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/Contents
@@ -1538,9 +1726,25 @@ msgstr "Die Seite existiert leider nicht…"
 msgid "Title"
 msgstr "Titel"
 
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Total active and non-active objects"
+msgstr "Anzahl aktive und nicht-aktive Objekte"
+
 #: components/manage/Contents/Contents
 msgid "Total comments"
 msgstr "Anzahl Komentare"
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Total number of objects in each cache"
+msgstr "Anzahl aller Objekte im Cache"
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Total number of objects in memory from all caches"
+msgstr "Anzahl aller Objekte im Speicher von allen Caches"
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Total number of objects in the database"
+msgstr "Anzahl aller Objekte in der Datenbank"
 
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
@@ -1578,7 +1782,7 @@ msgstr "Vereinigt"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Uninstall"
-msgstr ""
+msgstr "Deinstallieren"
 
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
@@ -1587,19 +1791,19 @@ msgstr "Unbekannter Block"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update"
-msgstr ""
+msgstr "Update"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update installed addons"
-msgstr ""
+msgstr "Installierte Erweiterungen aktualisieren"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update installed addons:"
-msgstr ""
+msgstr "Installierte Erweiterungen:"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Updates available"
-msgstr ""
+msgstr "Verfügbare Erweiterungen"
 
 #: components/manage/Contents/Contents
 msgid "Upload"
@@ -1690,15 +1894,11 @@ msgstr "Ansicht"
 
 #: components/manage/Controlpanels/VersionOverview
 msgid "Warning Regarding debug mode"
-msgstr ""
+msgstr "Debug-Modus Warnung"
 
 #: components/theme/ConnectionRefused/ConnectionRefused
 msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later."
-msgstr ""
-
-#: components/theme/CorsError/CorsError
-msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not configured properly right now. Please, try again later."
-msgstr ""
+msgstr "Entschuldigen Sie die Unanehmlichkeiten aber das Backend der Seite antwortet zur Zeit nicht."
 
 #: components/theme/NotFound/NotFound
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
@@ -1711,6 +1911,18 @@ msgstr "Entschuldigen Sie die Unanehmlichkeiten, aber Sie besitzen nicht die erf
 #: components/manage/Preferences/PersonalInformation
 msgid "We will use this address if you need to recover your password"
 msgstr "Wir verwenden diese E-Mail Adresse wenn wir Ihr Passwort wiederherstellen müssen"
+
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+msgid "Weeek day of month"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Weekday"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Weekly"
+msgstr ""
 
 #: components/manage/History/History
 msgid "What"
@@ -1731,6 +1943,10 @@ msgstr "Wer"
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
 msgstr "Arbeitsablauf aktualisiert."
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Yearly"
+msgstr ""
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypes
@@ -1805,37 +2021,41 @@ msgstr "Aus Sicherheitsgründen speichern wir Ihr Passwort verschlüsselt und k�
 msgid "description_sent_password"
 msgstr "Der Link, um das Passwort neu zu setzen, wurde Ihnen zugesendet. Die E-Mail sollte in Kürze in Ihrem Postfach ankommen. Wenn Sie die Nachricht erhalten haben, klicken Sie auf den Link in der E-Mail, um zu der Webseite zu gelangen, wo Sie das Passwort neu setzen können."
 
+#: components/manage/Contents/ContentsItem
+msgid "draft"
+msgstr ""
+
 #: components/theme/View/EventView
 msgid "event_alldates"
-msgstr ""
+msgstr "Alle Termine"
 
 #: components/theme/View/EventView
 msgid "event_attendees"
-msgstr ""
+msgstr "Teilnehmer"
 
 #: components/theme/View/EventView
 msgid "event_contactname"
-msgstr ""
+msgstr "Kontaktname"
 
 #: components/theme/View/EventView
 msgid "event_contactphone"
-msgstr ""
+msgstr "Kontakttelefon"
 
 #: components/theme/View/EventView
 msgid "event_website"
-msgstr ""
+msgstr "Webseite"
 
 #: components/theme/View/EventView
 msgid "event_what"
-msgstr ""
+msgstr "Was"
 
 #: components/theme/View/EventView
 msgid "event_when"
-msgstr ""
+msgstr "Datum"
 
 #: components/theme/View/EventView
 msgid "event_where"
-msgstr ""
+msgstr "Ort"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "heading_sent_password"
@@ -1852,6 +2072,10 @@ msgstr "HTML"
 #: config/Blocks
 msgid "image"
 msgstr "Bild"
+
+#: components/manage/Contents/ContentsItem
+msgid "intranet"
+msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "label_my_email_address_is"
@@ -1879,11 +2103,36 @@ msgstr "Medien"
 
 #: config/Blocks
 msgid "mostUsed"
-msgstr "Häufig genutzt"
+msgstr "Häufig genutzt<<<<<<< HEAD"
+
+#: components/manage/Contents/ContentsItem
+msgid "no workflow state"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
+#: components/manage/Widgets/RecurrenceWidget/ByYearField
+msgid "of the month"
+msgstr ""
 
 #: error
 msgid "or try a different page."
 msgstr "versuchen Sie eine andere Seite."
+
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+msgid "others"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+msgid "private"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+msgid "published"
+msgstr ""
+
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "querystring-widget-select"
+msgstr ""
 
 #: components/theme/Login/Login
 msgid "registration form"
@@ -1891,11 +2140,139 @@ msgstr "Registrierungsformular"
 
 #: components/theme/Search/Search
 msgid "results found"
-msgstr ""
+msgstr "Ergebnisse gefunden"
 
 #: error
 msgid "return to the site root"
 msgstr "Zur Startseite zurückkehren"
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_and"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_approximate"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_at"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_dateFormat"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_day"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_days"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_every"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_for"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_hour"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_hours"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_in"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_last"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_minutes"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_month"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_months"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_nd"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_on"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_on the"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_or"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_rd"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_st"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_th"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_the"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_time"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_times"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_until"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_week"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_weekday"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_weekdays"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_weeks"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_year"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_years"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "sort"
@@ -1927,7 +2304,7 @@ msgstr "Video"
 
 #: components/theme/View/EventView
 msgid "visit_external_website"
-msgstr ""
+msgstr "Externe Webseite besuchen"
 
 #: components/theme/Login/Login
 msgid "we can send you a new one"

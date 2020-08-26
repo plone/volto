@@ -5,21 +5,33 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { injectIntl } from 'react-intl';
-import { Form, Grid, Label } from 'semantic-ui-react';
-import { map } from 'lodash';
-import moment from 'moment';
+import { defineMessages, injectIntl } from 'react-intl';
+import moment from 'moment-timezone';
 import { SingleDatePicker } from 'react-dates';
 import TimePicker from 'rc-time-picker';
 import cx from 'classnames';
-import leftKey from '../../../icons/left-key.svg';
-import rightKey from '../../../icons/right-key.svg';
-import { Icon } from '../../../components';
+import { Icon, FormFieldWrapper } from '@plone/volto/components';
+import { settings } from '~/config';
+
+import leftKey from '@plone/volto/icons/left-key.svg';
+import rightKey from '@plone/volto/icons/right-key.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 
 import 'rc-time-picker/assets/index.css';
+
+const messages = defineMessages({
+  date: {
+    id: 'Date',
+    defaultMessage: 'Date',
+  },
+  time: {
+    id: 'Time',
+    defaultMessage: 'Time',
+  },
+});
 
 const PrevIcon = () => (
   <div
@@ -72,24 +84,26 @@ class DatetimeWidget extends Component {
    */
   constructor(props) {
     super(props);
-
-    let datetime = moment().utc();
+    //  Used to set a server timezone or UTC as default
+    const timezone = settings.timezone || 'UTC';
+    let datetime = null;
 
     if (this.props.value) {
-      // check if datetime has timezone, otherwise assumes it's UTC
-      datetime = this.props.value.match(/T(.)*(-|\+|Z)/g)
-        ? moment(this.props.value).utc()
-        : moment(`${this.props.value}Z`).utc();
+      //  Since we set a default server timezone (UTC default), moment-timezone will transform
+      //  datetime to that specific timezone
+      datetime = moment.tz(this.props.value, timezone);
     }
 
-    if (!this.props.value && this.props.dateOnly) {
-      datetime.set(defaultTimeDateOnly);
-    }
+    // @nzambello do we need this if using null by default?
+    // if (!this.props.value && this.props.dateOnly) {
+    //   datetime.set(defaultTimeDateOnly);
+    // }
 
     this.state = {
       focused: false,
-      isDefault: datetime.toISOString() === moment().utc().toISOString(),
+      isDefault: datetime?.toISOString() === moment().utc().toISOString(),
       datetime,
+      timezone,
     };
   }
 
@@ -103,12 +117,19 @@ class DatetimeWidget extends Component {
     if (date)
       this.setState(
         (prevState) => ({
-          datetime: prevState.datetime.set({
-            year: date.year(),
-            month: date.month(),
-            date: date.date(),
-            ...(this.props.dateOnly ? defaultTimeDateOnly : {}),
-          }),
+          datetime: prevState.datetime
+            ? prevState.datetime.set({
+                year: date.year(),
+                month: date.month(),
+                date: date.date(),
+                ...(this.props.dateOnly ? defaultTimeDateOnly : {}),
+              })
+            : moment.tz(date.toISOString(), this.state.timezone).set({
+                year: date.year(),
+                month: date.month(),
+                date: date.date(),
+                ...(this.props.dateOnly ? defaultTimeDateOnly : {}),
+              }),
           isDefault: false,
         }),
         () => this.onDateTimeChange(),
@@ -124,11 +145,17 @@ class DatetimeWidget extends Component {
   onTimeChange = (time) => {
     this.setState(
       (prevState) => ({
-        datetime: prevState.datetime.set({
-          hours: time.hours(),
-          minutes: time.minutes(),
-          seconds: 0,
-        }),
+        datetime: prevState.datetime
+          ? prevState.datetime.set({
+              hours: time.hours(),
+              minutes: time.minutes(),
+              seconds: 0,
+            })
+          : moment.tz(time.toISOString(), this.state.timezone).set({
+              hours: time.hours(),
+              minutes: time.minutes(),
+              seconds: 0,
+            }),
         isDefault: false,
       }),
       () => this.onDateTimeChange(),
@@ -141,7 +168,18 @@ class DatetimeWidget extends Component {
    * @returns {undefined}
    */
   onDateTimeChange = () => {
-    this.props.onChange(this.props.id, this.state.datetime.toISOString());
+    // Serialize always to server default timezone (toISOString)
+    this.props.onChange(this.props.id, this.state.datetime.toISOString(true));
+  };
+
+  onResetDates = () => {
+    this.setState(
+      (prevState) => ({
+        datetime: null,
+        isDefault: false,
+      }),
+      this.props.onChange(this.props.id, null),
+    );
   };
 
   /**
@@ -153,94 +191,62 @@ class DatetimeWidget extends Component {
   onFocusChange = ({ focused }) => this.setState({ focused });
 
   render() {
-    const {
-      id,
-      title,
-      required,
-      description,
-      error,
-      fieldSet,
-      dateOnly,
-      noPastDates,
-      intl,
-    } = this.props;
+    const { id, dateOnly, noPastDates, intl } = this.props;
     const { datetime, isDefault, focused } = this.state;
 
     return (
-      <Form.Field
-        inline
-        required={required}
-        error={error.length > 0}
-        className={description ? 'help' : ''}
-        id={`${fieldSet || 'field'}-${id}`}
-      >
-        <Grid>
-          <Grid.Row stretched>
-            <Grid.Column width="4">
-              <div className="wrapper">
-                <label htmlFor={`field-${id}`}>{title}</label>
-              </div>
-            </Grid.Column>
-            <Grid.Column width="8">
-              <div>
-                <div
-                  className={cx('ui input date-input', {
-                    'default-date': isDefault,
-                  })}
-                >
-                  <SingleDatePicker
-                    date={datetime}
-                    onDateChange={this.onDateChange}
-                    focused={focused}
-                    numberOfMonths={1}
-                    {...(noPastDates ? {} : { isOutsideRange: () => false })}
-                    onFocusChange={this.onFocusChange}
-                    noBorder
-                    displayFormat={moment
-                      .localeData(intl.locale)
-                      .longDateFormat('L')}
-                    navPrev={<PrevIcon />}
-                    navNext={<NextIcon />}
-                    id={`${id}-date`}
-                  />
-                </div>
-                {!dateOnly && (
-                  <div
-                    className={cx('ui input time-input', {
-                      'default-date': isDefault,
-                    })}
-                  >
-                    <TimePicker
-                      defaultValue={datetime}
-                      onChange={this.onTimeChange}
-                      allowEmpty={false}
-                      showSecond={false}
-                      use12Hours={intl.locale === 'en'}
-                      id={`${id}-time`}
-                      format={moment
-                        .localeData(intl.locale)
-                        .longDateFormat('LT')}
-                      focusOnOpen
-                    />
-                  </div>
-                )}
-              </div>
-              {map(error, (message) => (
-                <Label key={message} basic color="red" pointing>
-                  {message}
-                </Label>
-              ))}
-            </Grid.Column>
-          </Grid.Row>
-          {description && (
-            <Grid.Row stretched>
-              <Grid.Column stretched width="12">
-                <p className="help">{description}</p>
-              </Grid.Column>
-            </Grid.Row>
+      <FormFieldWrapper {...this.props}>
+        <div className="date-time-widget-wrapper">
+          <div
+            className={cx('ui input date-input', {
+              'default-date': isDefault,
+            })}
+          >
+            <SingleDatePicker
+              date={datetime}
+              onDateChange={this.onDateChange}
+              focused={focused}
+              numberOfMonths={1}
+              {...(noPastDates ? {} : { isOutsideRange: () => false })}
+              onFocusChange={this.onFocusChange}
+              noBorder
+              displayFormat={moment.localeData(intl.locale).longDateFormat('L')}
+              navPrev={<PrevIcon />}
+              navNext={<NextIcon />}
+              id={`${id}-date`}
+              placeholder={intl.formatMessage(messages.date)}
+            />
+          </div>
+          {!dateOnly && (
+            <div
+              className={cx('ui input time-input', {
+                'default-date': isDefault,
+              })}
+            >
+              <TimePicker
+                defaultValue={datetime}
+                value={datetime}
+                onChange={this.onTimeChange}
+                allowEmpty={false}
+                showSecond={false}
+                use12Hours={intl.locale === 'en'}
+                id={`${id}-time`}
+                format={moment.localeData(intl.locale).longDateFormat('LT')}
+                placeholder={intl.formatMessage(messages.time)}
+                focusOnOpen
+                placement="bottomRight"
+              />
+            </div>
           )}
-        </Grid>
-      </Form.Field>
+          <button
+            disabled={!datetime}
+            onClick={() => this.onResetDates()}
+            className="item ui noborder button"
+          >
+            <Icon name={clearSVG} size="24px" className="close" />
+          </button>
+        </div>
+      </FormFieldWrapper>
     );
   }
 }
@@ -260,6 +266,7 @@ DatetimeWidget.propTypes = {
   noPastDates: PropTypes.bool,
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
+  wrapped: PropTypes.bool,
 };
 
 /**
