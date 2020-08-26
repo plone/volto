@@ -5,20 +5,19 @@
 
 import { FormFieldWrapper, Icon } from '@plone/volto/components';
 import clearSVG from '@plone/volto/icons/clear.svg';
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { defineMessages, injectIntl } from 'react-intl';
-import moment from 'moment-timezone';
-import { SingleDatePicker } from 'react-dates';
-import TimePicker from 'rc-time-picker';
-import cx from 'classnames';
-import { settings } from '~/config';
-
 import leftKey from '@plone/volto/icons/left-key.svg';
 import rightKey from '@plone/volto/icons/right-key.svg';
+import cx from 'classnames';
+import moment from 'moment-timezone';
+import PropTypes from 'prop-types';
+import TimePicker from 'rc-time-picker';
 import 'rc-time-picker/assets/index.css';
+import React, { Component } from 'react';
+import { SingleDatePicker } from 'react-dates';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
+import { defineMessages, injectIntl } from 'react-intl';
+import { settings } from '~/config';
 
 const messages = defineMessages({
   date: {
@@ -92,16 +91,12 @@ class DatetimeWidget extends Component {
       datetime = moment.tz(this.props.value, timezone);
     }
 
-    // @nzambello do we need this if using null by default?
-    // if (!this.props.value && this.props.dateOnly) {
-    //   datetime.set(defaultTimeDateOnly);
-    // }
-
     this.state = {
       focused: false,
       isDefault: datetime?.toISOString() === moment().utc().toISOString(),
       datetime,
       timezone,
+      dateOnly: this.props.widget === 'date',
     };
   }
 
@@ -120,13 +115,13 @@ class DatetimeWidget extends Component {
                 year: date.year(),
                 month: date.month(),
                 date: date.date(),
-                ...(this.props.dateOnly ? defaultTimeDateOnly : {}),
+                ...(this.state.dateOnly ? defaultTimeDateOnly : {}),
               })
             : moment.tz(date.toISOString(), this.state.timezone).set({
                 year: date.year(),
                 month: date.month(),
                 date: date.date(),
-                ...(this.props.dateOnly ? defaultTimeDateOnly : {}),
+                ...(this.state.dateOnly ? defaultTimeDateOnly : {}),
               }),
           isDefault: false,
         }),
@@ -166,7 +161,7 @@ class DatetimeWidget extends Component {
    * @returns {undefined}
    */
   onDateTimeChange = () => {
-    const dateValue = this.props.dateOnly
+    const dateValue = this.state.dateOnly
       ? this.state.datetime.format('YYYY-MM-DD')
       : this.state.datetime.toISOString();
     this.props.onChange(this.props.id, dateValue);
@@ -191,7 +186,7 @@ class DatetimeWidget extends Component {
   onFocusChange = ({ focused }) => this.setState({ focused });
 
   render() {
-    const { id, dateOnly, noPastDates, intl } = this.props;
+    const { id, noPastDates, intl } = this.props;
     const { datetime, isDefault, focused } = this.state;
 
     return (
@@ -217,7 +212,7 @@ class DatetimeWidget extends Component {
               placeholder={intl.formatMessage(messages.date)}
             />
           </div>
-          {!dateOnly && (
+          {!this.state.dateOnly && (
             <div
               className={cx('ui input time-input', {
                 'default-date': isDefault,
@@ -262,7 +257,7 @@ DatetimeWidget.propTypes = {
   description: PropTypes.string,
   required: PropTypes.bool,
   error: PropTypes.arrayOf(PropTypes.string),
-  dateOnly: PropTypes.bool,
+  // dateOnly: PropTypes.bool,
   noPastDates: PropTypes.bool,
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
@@ -278,7 +273,7 @@ DatetimeWidget.defaultProps = {
   description: null,
   required: false,
   error: [],
-  dateOnly: false,
+  // dateOnly: false,
   noPastDates: false,
   value: null,
 };
