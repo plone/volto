@@ -7,8 +7,6 @@
 ### Feature
 
 - Add a `subrequest` option to the `createContent` action @tiberiuichim @silviubogan
-- Added toast notifications for form errors @nzambello @avoinea
-- Added italian translations and translated array, token and select widget. @giuliaghisini
 
 ### Bugfix
 
