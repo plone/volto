@@ -595,7 +595,6 @@ class RecurrenceWidget extends Component {
         break;
       case 'weekdayOfTheMonthIndex':
         var week_day = byweekday ? byweekday[0] : currWeekday; //get day from state. If not set get current day
-        console.log('week_day', week_day);
         //set nth value
         formValues.byweekday = value ? [week_day.nth(value)] : null;
         break;

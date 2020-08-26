@@ -75,8 +75,10 @@ export function blockHasValue(data) {
 export const getBlocks = (properties) => {
   const blocksFieldName = getBlocksFieldname(properties);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(properties);
-  return properties[blocksLayoutFieldname].items.map((n) => [
-    n,
-    properties[blocksFieldName][n],
-  ]);
+  return (
+    properties[blocksLayoutFieldname]?.items?.map((n) => [
+      n,
+      properties[blocksFieldName][n],
+    ]) || []
+  );
 };
