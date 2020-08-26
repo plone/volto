@@ -1,21 +1,44 @@
 # Change Log
 
-## 7.9.1 (unreleased)
+## 7.9.3 (unreleased)
 
 ### Breaking
 
 ### Feature
 
-### Bugfix
-- Fix bug related to closing the More menu of Toolbar @iFlameing
+- Added toast notifications for form errors @nzambello @avoinea
+- Added italian translations and translated array, token and select widget. @giuliaghisini
 
-- Fix cosmetic issue, add links were not properly generated in Contents view not under the root. This didn't impact functionality as the content was properly created @tiberiuichim
+### Bugfix
 
 - Fix `null` response issue when passing custom `Accept:` headers to actions #1771 @avoinea
 
 ### Internal
 
+## 7.9.2 (2020-08-26)
+
+### Bugfix
+
+- Open content browser sidebar on parent object when editing an existing document. @iFlameing
+
+### Internal
+
+- Added developer-guidelines/redux documentation @tiberiuichim
+
+## 7.9.1 (2020-08-25)
+
+### Bugfix
+
+- Fix bug related to closing the More menu of Toolbar @iFlameing
+
+- Fix cosmetic issue, add links were not properly generated in Contents view not under the root. This didn't impact functionality as the content was properly created @tiberiuichim
+
+- Fix bug for text block with new line and styles applyed to all text. @giuliaghisini
+
+### Internal
+
 - Removed unused component `src/components/manage/Contents/ContentsToolbar.jsx` @tiberiuichim
+- Add no-console eslint rule @tisto
 
 ## 7.9.0 (2020-08-24)
 
@@ -24,6 +47,7 @@
 ### Feature
 
 - Allow serial processing of API requests when `mode:'serial'` is passed in the action. @tiberiuichim
+- Adding cypress test from image-gallery in edit mode @iFlameing
 
 ### Bugfix
 
