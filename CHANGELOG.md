@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Increase z-index of `block-add-button` @steffenri
+
 ### Bugfix
 
 - Fix `null` response issue when passing custom `Accept:` headers to actions #1771 @avoinea
