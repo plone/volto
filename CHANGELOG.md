@@ -6,6 +6,9 @@
 
 ### Feature
 
+- Add sort option to search @iFlameing
+- Turn autocomplete off for the search input field @timo
+
 ### Bugfix
 
 ### Internal

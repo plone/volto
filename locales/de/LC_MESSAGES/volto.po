@@ -143,6 +143,10 @@ msgstr "Ausrichtung"
 msgid "All"
 msgstr "Alle"
 
+#: components/theme/Search/Search
+msgid "Alphabetically"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Alt text"
@@ -419,6 +423,10 @@ msgstr "Datenbank"
 #: components/manage/Widgets/DatetimeWidget
 msgid "Date"
 msgstr "Datum"
+
+#: components/theme/Search/Search
+msgid "Date (newest first)"
+msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Contents/ContentsRenameModal
@@ -1087,6 +1095,10 @@ msgstr ""
 msgid "No options"
 msgstr "Keine Option"
 
+#: components/theme/Search/Search
+msgid "No results found"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
@@ -1289,6 +1301,10 @@ msgstr "Registrieren"
 #: components/theme/Register/Register
 msgid "Registration form"
 msgstr "Registrierungsformular"
+
+#: components/theme/Search/Search
+msgid "Relevance"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
@@ -1542,6 +1558,10 @@ msgstr "Grösse: {size}"
 #: error
 msgid "Sorry, something went wrong with your request"
 msgstr "Entschuldigung, ein Fehler ist beim Ausführen Ihrer Anfrage aufgetreten "
+
+#: components/theme/Search/Search
+msgid "Sort By:"
+msgstr ""
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "Sort on"
