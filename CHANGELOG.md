@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix `null` response issue when passing custom `Accept:` headers to actions #1771 @avoinea
+
 ### Internal
 
 ## 7.11.1 (2020-08-27)
