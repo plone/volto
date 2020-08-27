@@ -72,6 +72,7 @@
 
 ### Feature
 
+- Adding support of pasting link of voltoCMS video link to video blocks @iFlameing
 - Allow serial processing of API requests when `mode:'serial'` is passed in the action. @tiberiuichim
 - Adding cypress test from image-gallery in edit mode @iFlameing
 
