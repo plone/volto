@@ -2,16 +2,13 @@
 
 ## 7.10.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Add sort option to search @iFlameing
-- Turn autocomplete off for the search input field @timo
 
 ### Bugfix
 
-### Internal
+- Turn autocomplete off for the search input field @timo
 
 ## 7.10.0 (2020-08-26)
 
