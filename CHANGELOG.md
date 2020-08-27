@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Update German translations @tisto
+
 ### Internal
 
 ## 7.11.0 (2020-08-27)
