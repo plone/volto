@@ -1,6 +1,6 @@
 # Change Log
 
-## 7.11.1 (unreleased)
+## 7.11.1 (2020-08-27)
 
 ### Breaking
 
