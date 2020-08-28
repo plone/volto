@@ -617,10 +617,6 @@ msgid "Embeded Google Maps"
 msgstr "Insertar Google Maps"
 
 #: components/manage/Controlpanels/ContentTypeLayout
-msgid "Enable Volto Blocks"
-msgstr ""
-
-#: components/manage/Controlpanels/ContentTypeLayout
 msgid "Enable editable Blocks"
 msgstr ""
 
