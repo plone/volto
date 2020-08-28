@@ -111,6 +111,7 @@ class SearchWidget extends Component {
             name="SearchableText"
             value={this.state.text}
             transparent
+            autoComplete="off"
             placeholder={this.props.intl.formatMessage(messages.searchSite)}
             title={this.props.intl.formatMessage(messages.search)}
           />
