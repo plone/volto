@@ -1,10 +1,13 @@
 
+
 # Integration with SENTRY
 
 ## Prerequisities
 1. In Sentry create a new organization, and add a project to it
 2. On the projects settings page, from Client Keys (DSN), take the SENTRY_DSN
 3. Create an API Token: on the top left corner, click on your name -> API keys and create a new token, "project:write" scope should be selected.
+
+**Note:**  Instructions tested with Sentry 9.1.2
 
 ## Setup
 Volto creates bundles of the source codes, if an error is sent to sentry, it will only show the traceback in the bundles. To have nice traceback, we have to upload the source code and source map in sentry.
@@ -32,7 +35,7 @@ After starting the application if an error will occure, the errors will be sent 
 
 Example of usage:
 ```bash
-SENTRY_URL=<url> SENTRY_AUTH_TOKEN=<token> SENTRY_ORG=<org> SENTRY_PROJECT=<project> SENTRY_RELEASE=<release> yarn build
+SENTRY_URL=https://mysentry.com SENTRY_AUTH_TOKEN=foo SENTRY_ORG=my_organization SENTRY_PROJECT=new_project SENTRY_RELEASE=2.0.0 SENTRY_DSN=https://boo@sentry.com/1 yarn build
 node build/server.js
 ```
 ### 2. Runtime
@@ -86,7 +89,7 @@ exec "$@"
 
 Starting with docker:
 ```bash
-docker run -p 3000:3000 -p 3001:3001 -e SENTRY_URL=<url> -e SENTRY_AUTH_TOKEN=<token> -e SENTRY_ORG=<org> -e SENTRY_PROJECT=<project> -e SENTRY_RELEASE=<version> -e RAZZLE_SENTRY_DSN=<dsn> -e RAZZLE_SENTRY_RELEASE=<version> volto-app:latest
+docker run -p 3000:3000 -p 3001:3001 -e SENTRY_URL=https://mysentry.com -e SENTRY_AUTH_TOKEN=foo -e SENTRY_ORG=my_organization -e SENTRY_PROJECT=new_project -e SENTRY_RELEASE=2.0.0 -e RAZZLE_SENTRY_DSN=https://boo@sentry.com/1 -e RAZZLE_SENTRY_RELEASE=2.0.0 volto-app:latest
 ```
 
 Or using docker-compose:
@@ -99,16 +102,18 @@ services:
       - 3000:3000
       - 3001:3001
     environment:
-      - SENTRY_URL=<url>
-      - SENTRY_AUTH_TOKEN=<token>
-      - SENTRY_ORG=<org>
-      - SENTRY_PROJECT=<project>
-      - SENTRY_RELEASE=<version>
-      - RAZZLE_SENTRY_DSN=<dsn>
-      - RAZZLE_SENTRY_RELEASE=<version>
+      - SENTRY_URL=https://mysentry.com
+      - SENTRY_AUTH_TOKEN=foo
+      - SENTRY_ORG=my_organization
+      - SENTRY_PROJECT=new_project
+      - SENTRY_RELEASE=2.0.0
+      - RAZZLE_SENTRY_DSN=https://boo@sentry.com/1
+      - RAZZLE_SENTRY_RELEASE=2.0.0
 ```
 
-## SENTRY_FRONTEND_CONFIGURATION/SENTRY_BACKEND_CONFIGURATION or RAZZLE_SENTRY_FRONTEND_CONFIGURATION/RAZZLE_SENTRY_BACKEND_CONFIGURATION
+## Configuration options
+This applies to both SENTRY_FRONTEND_CONFIGURATION and SENTRY_BACKEND_CONFIGURATION 
+**Note:** In case you are using buildtime configuration you have to use SENTRY_FRONTEND_CONFIGURATION and SENTRY_BACKEND_CONFIGURATION. But if you are using runtime configuration, use RAZZLE_SENTRY_FRONTEND_CONFIGURATION and RAZZLE_SENTRY_BACKEND_CONFIGURATION
 
 We have the possibility to add TAGS and ADDITIONAL DATA for our messages for categorization in SENTRY. We can configure these 2 variables separately, as we might want to separate the messages from frontend and backend.
 Example of configurations:
@@ -128,6 +133,31 @@ Example of configurations:
   "maxBreadcrumbs": 50
 }
 ```
+Example of usage with buildtime setup:
+```bash
+SENTRY_URL=https://mysentry.com SENTRY_AUTH_TOKEN=foo SENTRY_ORG=my_organization SENTRY_PROJECT=new_project SENTRY_RELEASE=2.0.0 SENTRY_DSN=https://boo@sentry.com/1 SENTRY_FRONTEND_CONFIG='{"tags":{"site":"www.test.com","app":"test_app"},"extras":{"logger":"javascript-frontend", "release":"1.4.1"}}' SENTRY_BACKEND_CONFIG='{"tags":{"site":"www.test.com","app":"test_app"} yarn build
+node build/server.js
+```
+ Example with docker-compose:
+```bash
+version: '3'
+services:
+  volto:
+    build: volto
+    ports:
+      - 3000:3000
+      - 3001:3001
+    environment:
+      - SENTRY_URL=https://mysentry.com
+      - SENTRY_AUTH_TOKEN=foo
+      - SENTRY_ORG=my_organization
+      - SENTRY_PROJECT=new_project
+      - SENTRY_RELEASE=2.0.0
+      - RAZZLE_SENTRY_DSN=https://boo@sentry.com/1
+      - RAZZLE_SENTRY_RELEASE=2.0.0
+      - RAZZLE_SENTRY_FRONTEND_CONFIGURATION={"tags":{"site":"www.test.com","app":"test_app"},"extras":{"logger":"javascript-frontend"}}
+      - RAZZLE_SENTRY_BACKEND_CONFIGURATION={"tags":{"site":"www.test.com","app":"test_app"},"extras":{"logger":"javascript-backend", "server":"server#1"}}
+ ```
 
 ## Example of messages in SENTRY
 1. List of messages
