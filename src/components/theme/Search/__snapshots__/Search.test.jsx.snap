@@ -23,6 +23,9 @@ exports[`Search renders a search component 1`] = `
         <div
           id="search-tags"
         />
+        <div>
+          No results found
+        </div>
       </header>
       <section
         id="content-core"
@@ -97,6 +100,9 @@ exports[`Search renders an empty search component 1`] = `
         <div
           id="search-tags"
         />
+        <div>
+          No results found
+        </div>
       </header>
       <section
         id="content-core"
