@@ -599,10 +599,6 @@ msgid "Embeded Google Maps"
 msgstr "Harti Google integrate"
 
 #: components/manage/Controlpanels/ContentTypeLayout
-msgid "Enable Volto Blocks"
-msgstr ""
-
-#: components/manage/Controlpanels/ContentTypeLayout
 msgid "Enable editable Blocks"
 msgstr ""
 

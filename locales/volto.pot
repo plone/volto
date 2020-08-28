@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-08-26T11:34:19.443Z\n"
+"POT-Creation-Date: 2020-08-28T15:12:00.507Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -160,6 +160,11 @@ msgstr ""
 #: components/manage/Contents/Contents
 # defaultMessage: All
 msgid "All"
+msgstr ""
+
+#: components/theme/Search/Search
+# defaultMessage: Alphabetically
+msgid "Alphabetically"
 msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
@@ -511,6 +516,11 @@ msgstr ""
 msgid "Date"
 msgstr ""
 
+#: components/theme/Search/Search
+# defaultMessage: Date (newest first)
+msgid "Date (newest first)"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Contents/ContentsTagsModal
@@ -720,11 +730,6 @@ msgstr ""
 #: components/manage/Blocks/Maps/View
 # defaultMessage: Embeded Google Maps
 msgid "Embeded Google Maps"
-msgstr ""
-
-#: components/manage/Controlpanels/ContentTypeLayout
-# defaultMessage: Enable Volto Blocks
-msgid "Enable Volto Blocks"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypeLayout
@@ -1341,6 +1346,11 @@ msgstr ""
 msgid "No options"
 msgstr ""
 
+#: components/theme/Search/Search
+# defaultMessage: No results found
+msgid "No results found"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 # defaultMessage: No results found.
@@ -1588,6 +1598,11 @@ msgstr ""
 #: components/theme/Register/Register
 # defaultMessage: Registration form
 msgid "Registration form"
+msgstr ""
+
+#: components/theme/Search/Search
+# defaultMessage: Relevance
+msgid "Relevance"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
@@ -1903,6 +1918,11 @@ msgstr ""
 #: error
 # defaultMessage: Sorry, something went wrong with your request 
 msgid "Sorry, something went wrong with your request"
+msgstr ""
+
+#: components/theme/Search/Search
+# defaultMessage: Sort by:
+msgid "Sort By:"
 msgstr ""
 
 #: components/manage/Blocks/Listing/ListingData

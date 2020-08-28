@@ -606,10 +606,6 @@ msgid "Embeded Google Maps"
 msgstr "埋め込まれたGoogle Maps"
 
 #: components/manage/Controlpanels/ContentTypeLayout
-msgid "Enable Volto Blocks"
-msgstr ""
-
-#: components/manage/Controlpanels/ContentTypeLayout
 msgid "Enable editable Blocks"
 msgstr ""
 
@@ -2132,7 +2128,7 @@ msgstr "メディア"
 
 #: config/Blocks
 msgid "mostUsed"
-msgstr "よく使う物<<<<<<< HEAD"
+msgstr "よく使う物"
 
 #: components/manage/Contents/ContentsItem
 msgid "no workflow state"
