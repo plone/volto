@@ -2127,7 +2127,7 @@ msgstr ""
 
 #: config/Blocks
 msgid "mostUsed"
-msgstr "<<<<<<< HEAD"
+msgstr ""
 
 #: components/manage/Contents/ContentsItem
 msgid "no workflow state"
