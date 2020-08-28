@@ -15,7 +15,7 @@ import {
   getBlocksLayoutFieldname,
 } from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
-import { Button } from 'semantic-ui-react';
+import { Button, Segment } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
 import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
 import { nth, join } from 'lodash';
@@ -58,6 +58,10 @@ const messages = defineMessages({
   info: {
     id: 'Info',
     defaultMessage: 'Info',
+  },
+  enable: {
+    id: 'Enable editable Blocks',
+    defaultMessage: 'Enable editable Blocks',
   },
 });
 
@@ -303,28 +307,28 @@ class ContentTypeLayout extends Component {
       // Blocks are not enabled
       return (
         <>
-          <div id="page-controlpanel-layout" className="ui container">
-            <center>
-              <p>
-                <FormattedMessage
-                  id="Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled"
-                  defaultMessage="Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled"
-                  values={{
-                    strong: (...chunks) => <strong>{chunks}</strong>,
-                    type: this.props.id,
-                  }}
-                />
-              </p>
-              <p>
-                <button onClick={this.onEnableBlocks}>
-                  <FormattedMessage
-                    id="Enable Volto Blocks"
-                    defaultMessage="Enable Volto Blocks"
-                  />
-                </button>
-              </p>
-            </center>
-          </div>
+          <Segment
+            placeholder
+            id="page-controlpanel-layout"
+            className="ui container center aligned"
+          >
+            <div>
+              <FormattedMessage
+                id="Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled"
+                defaultMessage="Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled"
+                values={{
+                  strong: (...chunks) => <strong>{chunks}</strong>,
+                  type: this.props.id,
+                }}
+              />
+            </div>
+            <div class="ui divider"></div>
+            <Button
+              primary
+              onClick={this.onEnableBlocks}
+              content={this.props.intl.formatMessage(messages.enable)}
+            />
+          </Segment>
           <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
             <Toolbar
               pathname={this.props.pathname}
@@ -350,28 +354,28 @@ class ContentTypeLayout extends Component {
     if (this.state.readOnlyBehavior) {
       return (
         <>
-          <div id="page-controlpanel-layout" className="ui container">
-            <center>
-              <p>
-                <FormattedMessage
-                  id="Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>"
-                  defaultMessage="Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>"
-                  values={{
-                    strong: (...chunks) => <strong>{chunks}</strong>,
-                    type: this.props.id,
-                  }}
-                />
-              </p>
-              <p>
-                <button onClick={this.onDisableBlocksBehavior}>
-                  <FormattedMessage
-                    id="Enable editable Blocks"
-                    defaultMessage="Enable editable Blocks"
-                  />
-                </button>
-              </p>
-            </center>
-          </div>
+          <Segment
+            placeholder
+            id="page-controlpanel-layout"
+            className="ui container center aligned"
+          >
+            <div>
+              <FormattedMessage
+                id="Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>"
+                defaultMessage="Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>"
+                values={{
+                  strong: (...chunks) => <strong>{chunks}</strong>,
+                  type: this.props.id,
+                }}
+              />
+            </div>
+            <div class="ui divider"></div>
+            <Button
+              primary
+              onClick={this.onDisableBlocksBehavior}
+              content={this.props.intl.formatMessage(messages.enable)}
+            />
+          </Segment>
           <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
             <Toolbar
               pathname={this.props.pathname}
