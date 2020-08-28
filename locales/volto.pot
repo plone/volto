@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-08-28T15:12:00.507Z\n"
+"POT-Creation-Date: 2020-08-28T22:24:40.292Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -547,7 +547,7 @@ msgstr ""
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
-#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/UsersControlpanelGroups
 #: components/manage/Controlpanels/UsersControlpanelUser
@@ -673,7 +673,7 @@ msgid "E-mail addresses do not match."
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
-#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/CheckboxWidget
@@ -1128,7 +1128,7 @@ msgstr ""
 msgid "Latest version"
 msgstr ""
 
-#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/ContentTypesActions
 # defaultMessage: Layout
 msgid "Layout"
 msgstr ""

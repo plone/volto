@@ -468,7 +468,7 @@ msgstr "Standard"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
-#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/UsersControlpanelGroups
 #: components/manage/Controlpanels/UsersControlpanelUser
@@ -573,7 +573,7 @@ msgid "E-mail addresses do not match."
 msgstr "E-Mail-Adressen stimmen nicht überein."
 
 #: components/manage/Contents/ContentsItem
-#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/CheckboxWidget
@@ -942,7 +942,7 @@ msgstr "Letzte Änderung"
 msgid "Latest version"
 msgstr "Letzte Version"
 
-#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/ContentTypesActions
 msgid "Layout"
 msgstr ""
 

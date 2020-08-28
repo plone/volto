@@ -460,7 +460,7 @@ msgstr "基本"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
-#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/UsersControlpanelGroups
 #: components/manage/Controlpanels/UsersControlpanelUser
@@ -565,7 +565,7 @@ msgid "E-mail addresses do not match."
 msgstr "E-mail アドレスが見つかりません。"
 
 #: components/manage/Contents/ContentsItem
-#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/CheckboxWidget
@@ -934,7 +934,7 @@ msgstr "最終変更"
 msgid "Latest version"
 msgstr "最新バージョン"
 
-#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/ContentTypesActions
 msgid "Layout"
 msgstr ""
 
