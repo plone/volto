@@ -16,7 +16,7 @@ exports[`PersonalPreferences renders a personal preferences component 1`] = `
         className="ui segment"
       >
         <div
-          className="inline field help text"
+          className="inline field help"
           id="field-language"
         >
           <div
@@ -205,7 +205,6 @@ exports[`PersonalPreferences renders a personal preferences component 1`] = `
           className="ui basic secondary right floated button"
           onClick={[Function]}
           title="Cancel"
-          type="cancel"
         >
           <svg
             className="icon circled"

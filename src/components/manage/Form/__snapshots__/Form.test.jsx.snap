@@ -53,7 +53,6 @@ exports[`Form renders a form component 1`] = `
           className="ui basic secondary right floated button"
           onClick={[Function]}
           title="Cancel"
-          type="cancel"
         >
           <svg
             className="icon circled"
