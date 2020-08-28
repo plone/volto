@@ -11,6 +11,7 @@ import {
   Contents,
   ContentType,
   ContentTypeMetadata,
+  ContentTypeLayout,
   ContentTypes,
   Controlpanel,
   Controlpanels,
@@ -74,6 +75,10 @@ export const defaultRoutes = [
   {
     path: '/controlpanel/dexterity-types/:id/schema',
     component: ContentTypeMetadata,
+  },
+  {
+    path: '/controlpanel/dexterity-types/:id/layout',
+    component: ContentTypeLayout,
   },
   {
     path: '/controlpanel/dexterity-types/:id',

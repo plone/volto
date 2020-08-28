@@ -85,7 +85,7 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
               >
                 <div
                   aria-expanded={false}
-                  className="ui dropdown"
+                  className="ui dropdown actions-Document"
                   onBlur={[Function]}
                   onChange={[Function]}
                   onClick={[Function]}
@@ -109,7 +109,7 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
                     className="menu transition left"
                   >
                     <div
-                      className="item"
+                      className="item edit-Document"
                       onClick={[Function]}
                       role="option"
                     >
@@ -134,7 +134,32 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
                       Edit
                     </div>
                     <div
-                      className="item"
+                      className="item layout-Document"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <svg
+                        className="icon"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={null}
+                        style={
+                          Object {
+                            "fill": "currentColor",
+                            "height": "15px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
+                      Layout
+                    </div>
+                    <div
+                      className="item delete-Document"
                       onClick={[Function]}
                       role="option"
                     >
@@ -215,7 +240,7 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
               >
                 <div
                   aria-expanded={false}
-                  className="ui dropdown"
+                  className="ui dropdown actions-Folder"
                   onBlur={[Function]}
                   onChange={[Function]}
                   onClick={[Function]}
@@ -239,7 +264,7 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
                     className="menu transition left"
                   >
                     <div
-                      className="item"
+                      className="item edit-Folder"
                       onClick={[Function]}
                       role="option"
                     >
@@ -264,7 +289,32 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
                       Edit
                     </div>
                     <div
-                      className="item"
+                      className="item layout-Folder"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <svg
+                        className="icon"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={null}
+                        style={
+                          Object {
+                            "fill": "currentColor",
+                            "height": "15px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
+                      Layout
+                    </div>
+                    <div
+                      className="item delete-Folder"
                       onClick={[Function]}
                       role="option"
                     >

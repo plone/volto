@@ -3,7 +3,10 @@
  * @module reducers/contenttype/contenttype
  */
 
-import { GET_CONTENT_TYPE_TYPES, UPDATE_CONTENT_TYPE_TYPES } from '@plone/volto/constants/ActionTypes';
+import {
+  GET_CONTENT_TYPE_TYPES,
+  UPDATE_CONTENT_TYPE_TYPES,
+} from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
   error: null,

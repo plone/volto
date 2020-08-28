@@ -253,7 +253,7 @@ class SelectWidget extends Component {
       isDisabled,
       intl,
     } = this.props;
-    console.log(this.props);
+
     return (
       <FormFieldWrapper
         {...this.props}

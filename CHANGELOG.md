@@ -234,6 +234,11 @@
 
 ## 7.0.1 (2020-07-07)
 
+### Breaking
+
+### Feature
+
+- Added Blocks Layout Editor within Dexterity Content-Types Controlpanel @avoinea #1517
 ### Bugfix
 
 - Adding absolute url in ObjectBrowser for image type @iFlameing

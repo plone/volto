@@ -191,8 +191,6 @@ class ContentTypeMetadata extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log('contenttype', this.props.contenttype);
-
     if (this.props.contenttype.error) {
       toast.error(
         <Toast

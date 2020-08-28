@@ -198,6 +198,9 @@ class Edit extends Component {
       return <div />;
     }
 
+    const placeholder =
+      this.props.data.placeholder ||
+      this.props.intl.formatMessage(messages.text);
     const { InlineToolbar } = this.state.inlineToolbarPlugin;
 
     return (
@@ -212,7 +215,7 @@ class Edit extends Component {
           blockRenderMap={settings.extendedBlockRenderMap}
           blockStyleFn={settings.blockStyleFn}
           customStyleMap={settings.customStyleMap}
-          placeholder={this.props.intl.formatMessage(messages.text)}
+          placeholder={placeholder}
           handleReturn={(e) => {
             if (isSoftNewlineEvent(e)) {
               this.onChange(

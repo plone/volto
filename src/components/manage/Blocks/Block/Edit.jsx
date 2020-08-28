@@ -2,20 +2,25 @@
  * Edit block.
  * @module components/manage/Blocks/Block/Edit
  */
-
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { defineMessages, injectIntl } from 'react-intl';
+import { blocks } from '~/config';
+import { Button } from 'semantic-ui-react';
+import includes from 'lodash/includes';
+import isBoolean from 'lodash/isBoolean';
+import cx from 'classnames';
 import { setSidebarTab } from '@plone/volto/actions';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import trashSVG from '@plone/volto/icons/delete.svg';
-import cx from 'classnames';
-import includes from 'lodash/includes';
-import PropTypes from 'prop-types';
-import React, { Component } from 'react';
-import { defineMessages, injectIntl } from 'react-intl';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { Button } from 'semantic-ui-react';
-import { blocks } from '~/config';
+import {
+  SidebarPortal,
+  BlockSettingsSidebar,
+  BlockSettingsSchema,
+} from '@plone/volto/components';
 
 const messages = defineMessages({
   unknownBlock: {
@@ -47,8 +52,18 @@ class Edit extends Component {
     selected: PropTypes.bool.isRequired,
     index: PropTypes.number.isRequired,
     id: PropTypes.string.isRequired,
+    manage: PropTypes.bool,
     onMoveBlock: PropTypes.func.isRequired,
     onDeleteBlock: PropTypes.func.isRequired,
+  };
+
+  /**
+   * Default properties.
+   * @property {Object} defaultProps Default properties.
+   * @static
+   */
+  static defaultProps = {
+    manage: false,
   };
 
   componentDidMount() {
@@ -62,8 +77,11 @@ class Edit extends Component {
     ) {
       this.blockNode.current.focus();
     }
+    const tab = this.props.manage
+      ? 1
+      : blocks.blocksConfig?.[type]?.sidebarBar || 0;
     if (this.props.selected) {
-      this.props.setSidebarTab(blocks.blocksConfig?.[type]?.sidebarBar || 0);
+      this.props.setSidebarTab(tab);
     }
   }
 
@@ -83,9 +101,10 @@ class Edit extends Component {
       (!this.props.selected && nextProps.selected) ||
       type !== nextProps.type
     ) {
-      this.props.setSidebarTab(
-        blocks.blocksConfig?.[nextProps.type]?.sidebarTab || 0,
-      );
+      const tab = this.props.manage
+        ? 1
+        : blocks.blocksConfig?.[nextProps.type]?.sidebarTab || 0;
+      this.props.setSidebarTab(tab);
     }
   }
 
@@ -98,8 +117,16 @@ class Edit extends Component {
    */
   render() {
     const { id, type, selected } = this.props;
+    const required = isBoolean(this.props.data.required)
+      ? this.props.data.required
+      : includes(blocks.requiredBlocks, type);
 
-    const Block = blocks.blocksConfig?.[type]?.['edit'] || null;
+    let Block = blocks.blocksConfig?.[type]?.['edit'] || null;
+    if (this.props.data?.readOnly) {
+      Block = blocks.blocksConfig?.[type]?.['view'] || null;
+    }
+    const schema =
+      blocks.blocksConfig?.[type]?.['schema'] || BlockSettingsSchema;
     const blockHasOwnFocusManagement =
       blocks.blocksConfig?.[type]?.['blockHasOwnFocusManagement'] || null;
 
@@ -130,6 +157,14 @@ class Edit extends Component {
             tabIndex={!blockHasOwnFocusManagement ? -1 : null}
           >
             <Block {...this.props} blockNode={this.blockNode} />
+            {this.props.manage && (
+              <SidebarPortal
+                selected={this.props.selected}
+                tab="sidebar-settings"
+              >
+                <BlockSettingsSidebar {...this.props} schema={schema} />
+              </SidebarPortal>
+            )}
           </div>
         ) : (
           <div
@@ -154,7 +189,7 @@ class Edit extends Component {
             })}
           </div>
         )}
-        {selected && !includes(blocks.requiredBlocks, type) && (
+        {selected && !required && (
           <Button
             icon
             basic

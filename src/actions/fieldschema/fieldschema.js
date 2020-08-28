@@ -3,7 +3,10 @@
  * @module actions/fieldschema/fieldschema
  */
 
-import { GET_CONTENT_TYPE_FIELD_SCHEMA, UPDATE_CONTENT_TYPE_FIELD_SCHEMA } from '@plone/volto/constants/ActionTypes';
+import {
+  GET_CONTENT_TYPE_FIELD_SCHEMA,
+  UPDATE_CONTENT_TYPE_FIELD_SCHEMA,
+} from '@plone/volto/constants/ActionTypes';
 
 /**
  * Get field schema.

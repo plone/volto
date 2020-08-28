@@ -2,21 +2,21 @@
  * Content Type component.
  * @module components/manage/Controlpanels/ContentType
  */
-
-import { getControlpanel, updateControlpanel } from '@plone/volto/actions';
-import { Form, Icon, Toast, Toolbar } from '@plone/volto/components';
 import { getParentUrl, Helmet } from '@plone/volto/helpers';
-import clearSVG from '@plone/volto/icons/clear.svg';
-import saveSVG from '@plone/volto/icons/save.svg';
-import { join, last, nth } from 'lodash';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { defineMessages, injectIntl } from 'react-intl';
 import { Portal } from 'react-portal';
 import { connect } from 'react-redux';
-import { toast } from 'react-toastify';
 import { compose } from 'redux';
 import { Button } from 'semantic-ui-react';
+import { defineMessages, injectIntl } from 'react-intl';
+import { toast } from 'react-toastify';
+import { last, nth, join } from 'lodash';
+import { Error, Form, Icon, Toolbar, Toast } from '@plone/volto/components';
+import { getControlpanel, updateControlpanel } from '@plone/volto/actions';
+
+import saveSVG from '@plone/volto/icons/save.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   changesSaved: {
@@ -57,10 +57,7 @@ class ContentType extends Component {
     getControlpanel: PropTypes.func.isRequired,
     id: PropTypes.string.isRequired,
     parent: PropTypes.string.isRequired,
-    updateRequest: PropTypes.shape({
-      loading: PropTypes.bool,
-      loaded: PropTypes.bool,
-    }).isRequired,
+    cpanelRequest: PropTypes.objectOf(PropTypes.any).isRequired,
     controlpanel: PropTypes.shape({
       '@id': PropTypes.string,
       data: PropTypes.object,
@@ -87,10 +84,13 @@ class ContentType extends Component {
    */
   constructor(props) {
     super(props);
+
     this.state = {
       visual: false,
+      error: null,
       isClient: false,
     };
+
     this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.form = React.createRef();
@@ -121,7 +121,21 @@ class ContentType extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
+    // Control Panel GET
+    if (
+      this.props.cpanelRequest.get.loading &&
+      nextProps.cpanelRequest.get.error
+    ) {
+      this.setState({
+        error: nextProps.cpanelRequest.get.error,
+      });
+    }
+
+    // Control Panel PATCH
+    if (
+      this.props.cpanelRequest.update.loading &&
+      nextProps.cpanelRequest.update.loaded
+    ) {
       toast.info(
         <Toast
           info
@@ -157,6 +171,11 @@ class ContentType extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    // Error
+    if (this.state.error) {
+      return <Error error={this.state.error} />;
+    }
+
     if (this.props.controlpanel) {
       let controlpanel = this.props.controlpanel;
       if (controlpanel?.data?.filter_content_types === false) {
@@ -175,7 +194,7 @@ class ContentType extends Component {
           };
         }
       }
-      console.log('content type controlpanel.schema', controlpanel.schema);
+
       return (
         <div id="page-controlpanel">
           <Helmet title={controlpanel.title} />
@@ -190,7 +209,7 @@ class ContentType extends Component {
             pathname={this.props.pathname}
             visual={this.state.visual}
             hideActions
-            loading={this.props.updateRequest.loading}
+            loading={this.props.cpanelRequest.update.loading}
           />
           {this.state.isClient && (
             <Portal node={document.getElementById('toolbar')}>
@@ -204,8 +223,8 @@ class ContentType extends Component {
                       className="save"
                       aria-label={this.props.intl.formatMessage(messages.save)}
                       onClick={() => this.form.current.onSubmit()}
-                      disabled={this.props.updateRequest.loading}
-                      loading={this.props.updateRequest.loading}
+                      disabled={this.props.cpanelRequest.update.loading}
+                      loading={this.props.cpanelRequest.update.loading}
                     >
                       <Icon
                         name={saveSVG}
@@ -245,7 +264,7 @@ export default compose(
   connect(
     (state, props) => ({
       controlpanel: state.controlpanels.controlpanel,
-      updateRequest: state.controlpanels.update,
+      cpanelRequest: state.controlpanels,
       pathname: props.location.pathname,
       id: last(props.location.pathname.split('/')),
       parent: nth(props.location.pathname.split('/'), -2),
