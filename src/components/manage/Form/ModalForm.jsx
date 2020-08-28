@@ -3,13 +3,9 @@
  * @module components/manage/Form/ModalForm
  */
 
-import { Field, Icon } from '@plone/volto/components';
-import aheadSVG from '@plone/volto/icons/ahead.svg';
-import clearSVG from '@plone/volto/icons/clear.svg';
-import { keys, map, uniq } from 'lodash';
-import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
+import PropTypes from 'prop-types';
+import { keys, map, uniq } from 'lodash';
 import {
   Button,
   Form as UiForm,
@@ -18,6 +14,11 @@ import {
   Message,
   Modal,
 } from 'semantic-ui-react';
+import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
+
+import { Field, Icon } from '@plone/volto/components';
+import aheadSVG from '@plone/volto/icons/ahead.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   required: {
@@ -134,12 +135,10 @@ class ModalForm extends Component {
   onSubmit(event) {
     event.preventDefault();
     const errors = {};
-
     map(this.props.schema.fieldsets, (fieldset) =>
       map(fieldset.fields, (fieldId) => {
         const field = this.props.schema.properties[fieldId];
         const data = this.state.formData[fieldId];
-
         if (this.props.schema.required.indexOf(fieldId) !== -1) {
           if (field.type !== 'boolean' && !data) {
             errors[fieldId] = errors[field] || [];

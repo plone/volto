@@ -3,18 +3,10 @@
  * @module components/manage/Form/Form
  */
 
-import {
-  blockHasValue,
-  difference,
-  getBlocksFieldname,
-  getBlocksLayoutFieldname,
-} from '@plone/volto/helpers';
-import aheadSVG from '@plone/volto/icons/ahead.svg';
-import clearSVG from '@plone/volto/icons/clear.svg';
-import dragSVG from '@plone/volto/icons/drag.svg';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   findIndex,
-  isBoolean,
   isEmpty,
   keys,
   map,
@@ -25,24 +17,34 @@ import {
   without,
 } from 'lodash';
 import move from 'lodash-move';
-import PropTypes from 'prop-types';
-import React, { Component } from 'react';
-import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
-import { defineMessages, injectIntl } from 'react-intl';
+import isBoolean from 'lodash/isBoolean';
 import {
   Button,
   Container,
   Form as UiForm,
-  Message,
   Segment,
   Tab,
+  Message,
 } from 'semantic-ui-react';
+import { defineMessages, injectIntl } from 'react-intl';
 import { v4 as uuid } from 'uuid';
 import { Portal } from 'react-portal';
 
 import { toast } from 'react-toastify';
 import { EditBlock, Icon, Field, Toast } from '@plone/volto/components';
 import { settings } from '~/config';
+import dragSVG from '@plone/volto/icons/drag.svg';
+
+import {
+  getBlocksFieldname,
+  getBlocksLayoutFieldname,
+  difference,
+  blockHasValue,
+} from '@plone/volto/helpers';
+
+import aheadSVG from '@plone/volto/icons/ahead.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
+import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 
 const messages = defineMessages({
   addBlock: {
@@ -120,7 +122,6 @@ class Form extends Component {
     description: PropTypes.string,
     visual: PropTypes.bool,
     blocks: PropTypes.arrayOf(PropTypes.object),
-    vocabularyFields: PropTypes.object,
   };
 
   /**
@@ -145,7 +146,6 @@ class Form extends Component {
     blocks: [],
     pathname: '',
     schema: {},
-    vocabularyFields: {},
   };
 
   /**
@@ -748,12 +748,7 @@ class Form extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const {
-      schema: originalSchema,
-      onCancel,
-      onSubmit,
-      vocabularyFields,
-    } = this.props;
+    const { schema: originalSchema, onCancel, onSubmit } = this.props;
     const { formData, placeholderProps } = this.state;
     const blocksFieldname = getBlocksFieldname(formData);
     const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
@@ -885,8 +880,7 @@ class Form extends Component {
       <Container>
         <UiForm
           method="post"
-          // onSubmit={this.onSubmit}
-          // onCancel={this.onCancel}
+          onSubmit={this.onSubmit}
           error={keys(this.state.errors).length > 0}
         >
           <Segment.Group raised>
@@ -961,7 +955,6 @@ class Form extends Component {
                     required={schema.required.indexOf(field) !== -1}
                     onChange={this.onChangeField}
                     key={field}
-                    vocabularyFields={vocabularyFields}
                     error={this.state.errors[field]}
                   />
                 ))}
@@ -986,7 +979,6 @@ class Form extends Component {
                         : this.props.intl.formatMessage(messages.save)
                     }
                     loading={this.props.loading}
-                    onClick={this.onSubmit}
                   >
                     <Icon className="circled" name={aheadSVG} size="30px" />
                   </Button>
@@ -995,7 +987,6 @@ class Form extends Component {
                   <Button
                     basic
                     secondary
-                    type="cancel"
                     aria-label={this.props.intl.formatMessage(messages.cancel)}
                     title={this.props.intl.formatMessage(messages.cancel)}
                     floated="right"
