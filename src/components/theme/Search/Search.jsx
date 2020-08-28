@@ -11,8 +11,9 @@ import { Link } from 'react-router-dom';
 import { asyncConnect } from 'redux-connect';
 import { FormattedMessage } from 'react-intl';
 import { Portal } from 'react-portal';
-import { Container, Pagination } from 'semantic-ui-react';
+import { Container, Pagination, Button, Header } from 'semantic-ui-react';
 import qs from 'query-string';
+import classNames from 'classnames';
 
 import { settings } from '~/config';
 import { Helmet } from '@plone/volto/helpers';
@@ -21,18 +22,6 @@ import { SearchTags, Toolbar, Icon } from '@plone/volto/components';
 
 import paginationLeftSVG from '@plone/volto/icons/left-key.svg';
 import paginationRightSVG from '@plone/volto/icons/right-key.svg';
-
-const toSearchOptions = (searchableText, subject, path) => {
-  return {
-    ...(searchableText && { SearchableText: searchableText }),
-    ...(subject && {
-      Subject: subject,
-    }),
-    ...(path && {
-      path: path,
-    }),
-  };
-};
 
 /**
  * Search class.
@@ -75,7 +64,7 @@ class Search extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { currentPage: 1, isClient: false };
+    this.state = { currentPage: 1, isClient: false, active: 'relevance' };
   }
 
   /**
@@ -84,11 +73,7 @@ class Search extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillMount() {
-    this.doSearch(
-      this.props.searchableText,
-      this.props.subject,
-      this.props.path,
-    );
+    this.doSearch();
   }
 
   /**
@@ -107,15 +92,8 @@ class Search extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps = (nextProps) => {
-    if (
-      nextProps.searchableText !== this.props.searchableText ||
-      nextProps.subject !== this.props.subject
-    ) {
-      this.doSearch(
-        nextProps.searchableText,
-        nextProps.subject,
-        this.props.path,
-      );
+    if (this.props.location.search !== nextProps.location.search) {
+      this.doSearch();
     }
   };
 
@@ -128,26 +106,36 @@ class Search extends Component {
    * @returns {undefined}
    */
 
-  doSearch = (searchableText, subject, path) => {
+  doSearch = () => {
+    const options = qs.parse(this.props.history.location.search);
     this.setState({ currentPage: 1 });
-    this.props.searchContent(
-      '',
-      toSearchOptions(searchableText, subject, path),
-    );
+    this.props.searchContent('', options);
   };
 
   handleQueryPaginationChange = (e, { activePage }) => {
     window.scrollTo(0, 0);
+    let options = qs.parse(this.props.history.location.search);
     this.setState({ currentPage: activePage }, () => {
-      const options = toSearchOptions(
-        qs.parse(this.props.location.search).SearchableText,
-        qs.parse(this.props.location.search).Subject,
-        qs.parse(this.props.location.search).path,
-      );
-
       this.props.searchContent('', {
         ...options,
         b_start: (this.state.currentPage - 1) * settings.defaultPageSize,
+      });
+    });
+  };
+
+  onSortChange = (event, sort_order) => {
+    let options = qs.parse(this.props.history.location.search);
+    options.sort_on = event.target.name;
+    options.sort_order = sort_order || 'ascending';
+    if (event.target.name === 'relevance') {
+      delete options.sort_on;
+      delete options.sort_order;
+    }
+    let searchParams = qs.stringify(options);
+    this.setState({ currentPage: 1, active: event.target.name }, () => {
+      // eslint-disable-next-line no-restricted-globals
+      this.props.history.replace({
+        search: searchParams,
       });
     });
   };
@@ -183,12 +171,75 @@ class Search extends Component {
 
               <SearchTags />
 
-              {this.props.search?.items_total && (
+              {this.props.search?.items_total > 0 ? (
                 <div className="items_total">
                   {this.props.search.items_total}{' '}
                   <FormattedMessage
                     id="results found"
                     defaultMessage="results"
+                  />
+                  <Header>
+                    <Header.Content className="header-content">
+                      <div className="sort-by">
+                        <FormattedMessage
+                          id="Sort By:"
+                          defaultMessage="Sort by:"
+                        />
+                      </div>
+                      <Button
+                        onClick={(event) => {
+                          this.onSortChange(event);
+                        }}
+                        name="relevance"
+                        size="tiny"
+                        className={classNames('button-sort', {
+                          'button-active': this.state.active === 'relevance',
+                        })}
+                      >
+                        <FormattedMessage
+                          id="Relevance"
+                          defaultMessage="Relevance"
+                        />
+                      </Button>
+                      <Button
+                        onClick={(event) => {
+                          this.onSortChange(event);
+                        }}
+                        name="sortable_title"
+                        size="tiny"
+                        className={classNames('button-sort', {
+                          'button-active':
+                            this.state.active === 'sortable_title',
+                        })}
+                      >
+                        <FormattedMessage
+                          id="Alphabetically"
+                          defaultMessage="Alphabetically"
+                        />
+                      </Button>
+                      <Button
+                        onClick={(event) => {
+                          this.onSortChange(event, 'reverse');
+                        }}
+                        name="effective"
+                        size="tiny"
+                        className={classNames('button-sort', {
+                          'button-active': this.state.active === 'effective',
+                        })}
+                      >
+                        <FormattedMessage
+                          id="Date (newest first)"
+                          defaultMessage="Date (newest first)"
+                        />
+                      </Button>
+                    </Header.Content>
+                  </Header>
+                </div>
+              ) : (
+                <div>
+                  <FormattedMessage
+                    id="No results found"
+                    defaultMessage="No results found"
                   />
                 </div>
               )}
@@ -271,10 +322,8 @@ class Search extends Component {
 export const __test__ = connect(
   (state, props) => ({
     items: state.search.items,
-    searchableText: qs.parse(props.location.search).SearchableText,
-    subject: qs.parse(props.location.search).Subject,
-    path: qs.parse(props.location.search).path,
-    pathname: props.location.pathname,
+    searchableText: qs.parse(props.history.location.search).SearchableText,
+    pathname: props.history.location.pathname,
   }),
   { searchContent },
 )(Search);
@@ -283,9 +332,7 @@ export default compose(
   connect(
     (state, props) => ({
       items: state.search.items,
-      searchableText: qs.parse(props.location.search).SearchableText,
-      subject: qs.parse(props.location.search).Subject,
-      path: qs.parse(props.location.search).path,
+      searchableText: qs.parse(props.history.location.search).SearchableText,
       pathname: props.location.pathname,
     }),
     { searchContent },
@@ -294,16 +341,7 @@ export default compose(
     {
       key: 'search',
       promise: ({ location, store: { dispatch } }) =>
-        dispatch(
-          searchContent(
-            '',
-            toSearchOptions(
-              qs.parse(location.search).SearchableText,
-              qs.parse(location.search).Subject,
-              qs.parse(location.search).path,
-            ),
-          ),
-        ),
+        dispatch(searchContent('', qs.parse(location.search))),
     },
   ]),
 )(Search);

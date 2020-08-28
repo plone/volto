@@ -1,12 +1,53 @@
 # Change Log
 
-## 7.9.2 (unreleased)
+## 7.11.2 (unreleased)
+
+### Breaking
+
+### Feature
+
+- Increase z-index of `block-add-button` @steffenri
+
+### Bugfix
+
+- Fix `null` response issue when passing custom `Accept:` headers to actions #1771 @avoinea
+
+### Internal
+
+## 7.11.1 (2020-08-27)
 
 ### Breaking
 
 ### Feature
 
 ### Bugfix
+
+- Update German translations @tisto
+
+### Internal
+
+## 7.11.0 (2020-08-27)
+
+### Feature
+
+- Add sort option to search @iFlameing
+
+### Bugfix
+
+- Turn autocomplete off for the search input field @timo
+
+## 7.10.0 (2020-08-26)
+
+### Feature
+
+- Added toast notifications for form errors @nzambello @avoinea
+- Added italian translations and translated array, token and select widget. @giuliaghisini
+
+## 7.9.2 (2020-08-26)
+
+### Bugfix
+
+- Open content browser sidebar on parent object when editing an existing document. @iFlameing
 
 ### Internal
 
@@ -33,6 +74,7 @@
 
 ### Feature
 
+- Adding support of pasting link of voltoCMS video link to video blocks @iFlameing
 - Allow serial processing of API requests when `mode:'serial'` is passed in the action. @tiberiuichim
 - Adding cypress test from image-gallery in edit mode @iFlameing
 
