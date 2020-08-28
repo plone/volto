@@ -140,6 +140,10 @@ msgstr "Alinhamento"
 msgid "All"
 msgstr "Tudo"
 
+#: components/theme/Search/Search
+msgid "Alphabetically"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Alt text"
@@ -427,6 +431,10 @@ msgstr ""
 #: components/manage/Widgets/DatetimeWidget
 msgid "Date"
 msgstr "Data"
+
+#: components/theme/Search/Search
+msgid "Date (newest first)"
+msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Contents/ContentsRenameModal
@@ -913,7 +921,7 @@ msgstr "Os itens têm de ser únicos."
 
 #: components/manage/Preferences/PersonalPreferences
 msgid "Language"
-msgstr "Idioma<<<<<<< HEAD"
+msgstr "Idioma"
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Last"
@@ -1108,6 +1116,10 @@ msgstr ""
 msgid "No options"
 msgstr ""
 
+#: components/theme/Search/Search
+msgid "No results found"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
@@ -1138,7 +1150,7 @@ msgstr "Sem fluxo de trabalho"
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
 msgid "None"
-msgstr "Nenhum<<<<<<< HEAD"
+msgstr "Nenhum"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Number of active objects"
@@ -1310,6 +1322,10 @@ msgstr "Registar"
 #: components/theme/Register/Register
 msgid "Registration form"
 msgstr "Formulário de registo"
+
+#: components/theme/Search/Search
+msgid "Relevance"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
@@ -1569,6 +1585,10 @@ msgstr ""
 msgid "Sorry, something went wrong with your request"
 msgstr ""
 
+#: components/theme/Search/Search
+msgid "Sort By:"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingData
 msgid "Sort on"
 msgstr ""
@@ -1584,7 +1604,7 @@ msgstr "Especifique um vídeo youtube ou um URL de um repertório (playlist)"
 
 #: components/manage/Diff/Diff
 msgid "Split"
-msgstr "Dividir<<<<<<< HEAD"
+msgstr "Dividir"
 
 #: components/manage/Contents/Contents
 msgid "Start Date"
@@ -1972,7 +1992,7 @@ msgstr "Quem"
 
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
-msgstr "Fluxo de trabalho actualizado.<<<<<<< HEAD"
+msgstr "Fluxo de trabalho actualizado."
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Yearly"
@@ -2133,7 +2153,7 @@ msgstr "média"
 
 #: config/Blocks
 msgid "mostUsed"
-msgstr "maisUsado<<<<<<< HEAD"
+msgstr "maisUsado"
 
 #: components/manage/Contents/ContentsItem
 msgid "no workflow state"
@@ -2174,7 +2194,7 @@ msgstr ""
 
 #: error
 msgid "return to the site root"
-msgstr "<<<<<<< HEAD"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_and"

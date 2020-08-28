@@ -132,6 +132,10 @@ msgstr "Allineamento"
 msgid "All"
 msgstr "Tutti"
 
+#: components/theme/Search/Search
+msgid "Alphabetically"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Alt text"
@@ -419,6 +423,10 @@ msgstr "Database principale"
 #: components/manage/Widgets/DatetimeWidget
 msgid "Date"
 msgstr "Data"
+
+#: components/theme/Search/Search
+msgid "Date (newest first)"
+msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Contents/ContentsRenameModal
@@ -1100,6 +1108,10 @@ msgstr "Nessuna ricorrenza impostata"
 msgid "No options"
 msgstr "Nessuna opzione"
 
+#: components/theme/Search/Search
+msgid "No results found"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
@@ -1302,6 +1314,10 @@ msgstr "Iscriviti"
 #: components/theme/Register/Register
 msgid "Registration form"
 msgstr "Form di iscrizione"
+
+#: components/theme/Search/Search
+msgid "Relevance"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
@@ -1560,6 +1576,10 @@ msgstr "Dimensione: {size}"
 #: error
 msgid "Sorry, something went wrong with your request"
 msgstr "Spiacente, qualcosa è andato storto"
+
+#: components/theme/Search/Search
+msgid "Sort By:"
+msgstr ""
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "Sort on"
@@ -2125,7 +2145,7 @@ msgstr "media"
 
 #: config/Blocks
 msgid "mostUsed"
-msgstr "Più usati<<<<<<< HEAD"
+msgstr "Più usati"
 
 #: components/manage/Contents/ContentsItem
 msgid "no workflow state"

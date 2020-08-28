@@ -24,12 +24,13 @@ describe('Search', () => {
         messages: {},
       },
     });
+    const history = {
+      location: { pathname: '/blog', search: '?SearchableText=blog' },
+    };
     const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter>
-          <Search
-            location={{ pathname: '/blog', search: '?SearchableText=blog' }}
-          />
+          <Search history={history} />
         </MemoryRouter>
       </Provider>,
     );
@@ -55,12 +56,13 @@ describe('Search', () => {
         messages: {},
       },
     });
+    const history = {
+      location: { pathname: '/blog', search: '?SearchableText=blog' },
+    };
     const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter>
-          <Search
-            location={{ pathname: '/blog', search: '?SearchableText=blog' }}
-          />
+          <Search history={history} />
         </MemoryRouter>
       </Provider>,
     );
