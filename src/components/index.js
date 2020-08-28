@@ -70,6 +70,7 @@ export Controlpanels from '@plone/volto/components/manage/Controlpanels/Controlp
 export ContentTypes from '@plone/volto/components/manage/Controlpanels/ContentTypes';
 export ContentType from '@plone/volto/components/manage/Controlpanels/ContentType';
 export ContentTypeLayout from '@plone/volto/components/manage/Controlpanels/ContentTypeLayout';
+export ContentTypesActions from '@plone/volto/components/manage/Controlpanels/ContentTypesActions';
 export UsersControlpanel from '@plone/volto/components/manage/Controlpanels/UsersControlpanel';
 export ModerateComments from '@plone/volto/components/manage/Controlpanels/ModerateComments';
 export VersionOverview from '@plone/volto/components/manage/Controlpanels/VersionOverview';

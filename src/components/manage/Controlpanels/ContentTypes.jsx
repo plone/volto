@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 import { getParentUrl } from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
 import { last } from 'lodash';
-import { Confirm, Container, Table, Button, Dropdown } from 'semantic-ui-react';
+import { Confirm, Container, Table, Button } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import {
@@ -20,6 +20,7 @@ import {
   ModalForm,
   Toolbar,
   Toast,
+  ContentTypesActions,
 } from '@plone/volto/components';
 import {
   getControlpanel,
@@ -30,9 +31,6 @@ import { getId } from '@plone/volto/helpers';
 
 import addSVG from '@plone/volto/icons/add-document.svg';
 import backSVG from '@plone/volto/icons/back.svg';
-import editSVG from '@plone/volto/icons/pen.svg';
-import trashSVG from '@plone/volto/icons/delete.svg';
-import layoutSVG from '@plone/volto/icons/file.svg';
 
 const messages = defineMessages({
   add: {
@@ -442,46 +440,13 @@ class ContentTypes extends Component {
                       <Table.Cell>{item.description}</Table.Cell>
                       <Table.Cell>{item.count}</Table.Cell>
                       <Table.Cell textAlign="right">
-                        <Dropdown
-                          icon="ellipsis horizontal"
-                          className={`actions-${item.id}`}
-                        >
-                          <Dropdown.Menu className="left">
-                            <Dropdown.Item
-                              onClick={this.onEdit}
-                              value={`${this.props.pathname}/${item['id']}`}
-                              className={`edit-${item.id}`}
-                            >
-                              <Icon name={editSVG} size="15px" />
-                              <FormattedMessage
-                                id="Edit"
-                                defaultMessage="Edit"
-                              />
-                            </Dropdown.Item>
-                            <Dropdown.Item
-                              onClick={this.onLayout}
-                              value={`${this.props.pathname}/${item.id}/layout`}
-                              className={`layout-${item.id}`}
-                            >
-                              <Icon name={layoutSVG} size="15px" />
-                              <FormattedMessage
-                                id="Layout"
-                                defaultMessage="Layout"
-                              />
-                            </Dropdown.Item>
-                            <Dropdown.Item
-                              onClick={this.onDelete}
-                              value={item['@id']}
-                              className={`delete-${item.id}`}
-                            >
-                              <Icon name={trashSVG} size="15px" />
-                              <FormattedMessage
-                                id="Delete"
-                                defaultMessage="Delete"
-                              />
-                            </Dropdown.Item>
-                          </Dropdown.Menu>
-                        </Dropdown>
+                        <ContentTypesActions
+                          item={item}
+                          path={this.props.pathname}
+                          onEdit={this.onEdit}
+                          onDelete={this.onDelete}
+                          onLayout={this.onLayout}
+                        />
                       </Table.Cell>
                     </Table.Row>
                   ))}
