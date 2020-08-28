@@ -1,15 +1,41 @@
 # Change Log
 
-## 7.10.1 (unreleased)
+## 7.11.2 (unreleased)
 
 ### Breaking
 
 ### Feature
 
 - Allow Volto projects to customize (via webpack resolve aliases) addons. Allow addons to customize Volto and other addons. Allow Volto projects to customize Volto in a `src/customizations/volto` folder, for better organization of the customizations folder. @tiberiuichim @sneridagh
+- Increase z-index of `block-add-button` @steffenri
+
 ### Bugfix
 
+- Fix `null` response issue when passing custom `Accept:` headers to actions #1771 @avoinea
+
 ### Internal
+
+## 7.11.1 (2020-08-27)
+
+### Breaking
+
+### Feature
+
+### Bugfix
+
+- Update German translations @tisto
+
+### Internal
+
+## 7.11.0 (2020-08-27)
+
+### Feature
+
+- Add sort option to search @iFlameing
+
+### Bugfix
+
+- Turn autocomplete off for the search input field @timo
 
 ## 7.10.0 (2020-08-26)
 
@@ -49,6 +75,7 @@
 
 ### Feature
 
+- Adding support of pasting link of voltoCMS video link to video blocks @iFlameing
 - Allow serial processing of API requests when `mode:'serial'` is passed in the action. @tiberiuichim
 - Adding cypress test from image-gallery in edit mode @iFlameing
 
