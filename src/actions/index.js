@@ -6,12 +6,19 @@
 
 export { listActions } from '@plone/volto/actions/actions/actions';
 export { getBreadcrumbs } from '@plone/volto/actions/breadcrumbs/breadcrumbs';
+export { setExpandedToolbar } from '@plone/volto/actions/toolbar/toolbar';
 export {
   copy,
-  copyContent,
   cut,
+  copyContent,
   moveContent,
 } from '@plone/volto/actions/clipboard/clipboard';
+export {
+  installAddon,
+  listAddons,
+  uninstallAddon,
+  upgradeAddon,
+} from './addons/addons';
 export {
   addComment,
   deleteComment,
@@ -21,20 +28,20 @@ export {
 export {
   createContent,
   deleteContent,
+  updateContent,
   getContent,
   orderContent,
-  resetContent,
   sortContent,
-  updateContent,
+  resetContent,
 } from '@plone/volto/actions/content/content';
 export {
-  deleteControlpanel,
   getControlpanel,
-  getDatabaseInformation,
-  getSystemInformation,
-  listControlpanels,
   postControlpanel,
+  deleteControlpanel,
+  listControlpanels,
   updateControlpanel,
+  getSystemInformation,
+  getDatabaseInformation,
 } from '@plone/volto/actions/controlpanels/controlpanels';
 export { getDiff } from '@plone/volto/actions/diff/diff';
 export { emailNotification } from '@plone/volto/actions/emailNotification/emailNotification';
@@ -51,12 +58,10 @@ export {
 } from '@plone/volto/actions/history/history';
 export {
   addMessage,
-  purgeMessages,
   removeMessage,
+  purgeMessages,
 } from '@plone/volto/actions/messages/messages';
 export { getNavigation } from '@plone/volto/actions/navigation/navigation';
-export { getQuerystring } from '@plone/volto/actions/querystring/querystring';
-export { getQueryStringResults } from '@plone/volto/actions/querystringsearch/querystringsearch';
 export { listRoles } from '@plone/volto/actions/roles/roles';
 export {
   getSchema,
@@ -71,20 +76,17 @@ export {
   searchContent,
 } from '@plone/volto/actions/search/search';
 export {
-  getSharing,
   updateSharing,
+  getSharing,
 } from '@plone/volto/actions/sharing/sharing';
-export { setSidebarTab } from '@plone/volto/actions/sidebar/sidebar';
-export { setExpandedToolbar } from '@plone/volto/actions/toolbar/toolbar';
-export { getTranslationLocator } from '@plone/volto/actions/translations/translations';
 export { getTypes } from '@plone/volto/actions/types/types';
 export {
   createUser,
   deleteUser,
   getUser,
   listUsers,
-  resetPassword,
   setInitialPassword,
+  resetPassword,
   updatePassword,
   updateUser,
 } from '@plone/volto/actions/users/users';
@@ -101,9 +103,7 @@ export {
   getWorkflow,
   transitionWorkflow,
 } from '@plone/volto/actions/workflow/workflow';
-export {
-  installAddon,
-  listAddons,
-  uninstallAddon,
-  upgradeAddon,
-} from './addons/addons';
+export { getQuerystring } from '@plone/volto/actions/querystring/querystring';
+export { getQueryStringResults } from '@plone/volto/actions/querystringsearch/querystringsearch';
+export { setSidebarTab } from '@plone/volto/actions/sidebar/sidebar';
+export { getTranslationLocator } from '@plone/volto/actions/translations/translations';
