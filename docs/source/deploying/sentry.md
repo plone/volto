@@ -27,8 +27,8 @@ The configuration is done using environment variables:
  - SENTRY_PROJECT -the name of the project in sentry
  - SENTRY_RELEASE - release number
  - SENTRY_FRONTEND_CONFIGURATION - optional, here we can specify TAGS
-   and ADDITIONAL DATA for the messages from the browser we send to
- - SENTRY SENTRY_BACKEND_CONFIGURATION - same as SENTRY_FRONTEND_CONFIGURATION, but we configure the messages from the backend
+   and ADDITIONAL DATA for the messages from the browser we send to sentry
+ - SENTRY_BACKEND_CONFIGURATION - same as SENTRY_FRONTEND_CONFIGURATION, but we configure the messages from the backend
 
 If these env variables are configured, when the app is built, a new release will be created in sentry, and the source code and source maps will be uploaded it.
 After starting the application if an error will occure, the errors will be sent to sentry, and will be linked to the specified release.
