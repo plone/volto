@@ -119,6 +119,7 @@ class ContentTypeLayout extends Component {
       content: null,
       readOnlyBehavior: null,
       error: null,
+      isClient: false,
     };
 
     this.onCancel = this.onCancel.bind(this);
@@ -136,6 +137,15 @@ class ContentTypeLayout extends Component {
   UNSAFE_componentWillMount() {
     this.props.getControlpanel(join([this.props.parent, this.props.id], '/'));
     this.props.getSchema(this.props.id);
+  }
+
+  /**
+   * Component did mount
+   * @method componentDidMount
+   * @returns {undefined}
+   */
+  componentDidMount() {
+    this.setState({ isClient: true });
   }
 
   /**
@@ -329,7 +339,9 @@ class ContentTypeLayout extends Component {
               content={this.props.intl.formatMessage(messages.enable)}
             />
           </Segment>
-          <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
+          <Portal
+            node={this.state.isClient && document.getElementById('toolbar')}
+          >
             <Toolbar
               pathname={this.props.pathname}
               hideDefaultViewButtons
@@ -376,7 +388,9 @@ class ContentTypeLayout extends Component {
               content={this.props.intl.formatMessage(messages.enable)}
             />
           </Segment>
-          <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
+          <Portal
+            node={this.state.isClient && document.getElementById('toolbar')}
+          >
             <Toolbar
               pathname={this.props.pathname}
               hideDefaultViewButtons
@@ -431,10 +445,14 @@ class ContentTypeLayout extends Component {
           visual={this.state.visual}
           hideActions
         />
-        <Portal node={__CLIENT__ && document.getElementById('sidebar')}>
+        <Portal
+          node={this.state.isClient && document.getElementById('sidebar')}
+        >
           <Sidebar settingsTab={true} documentTab={false} />
         </Portal>
-        <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
+        <Portal
+          node={this.state.isClient && document.getElementById('toolbar')}
+        >
           <Toolbar
             pathname={this.props.pathname}
             hideDefaultViewButtons
@@ -445,6 +463,8 @@ class ContentTypeLayout extends Component {
                   className="save"
                   aria-label={this.props.intl.formatMessage(messages.save)}
                   onClick={() => this.form.current.onSubmit()}
+                  disabled={this.props.schemaRequest.update.loading}
+                  loading={this.props.schemaRequest.update.loading}
                 >
                   <Icon
                     name={saveSVG}
