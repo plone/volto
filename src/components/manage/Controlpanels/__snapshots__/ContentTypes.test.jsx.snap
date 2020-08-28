@@ -134,6 +134,31 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
                       Edit
                     </div>
                     <div
+                      className="item"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <svg
+                        className="icon"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={null}
+                        style={
+                          Object {
+                            "fill": "currentColor",
+                            "height": "15px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
+                      Schema
+                    </div>
+                    <div
                       className="item layout-Document"
                       onClick={[Function]}
                       role="option"
@@ -182,31 +207,6 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
                         xmlns=""
                       />
                       Delete
-                    </div>
-                    <div
-                      className="item"
-                      onClick={[Function]}
-                      role="option"
-                    >
-                      <svg
-                        className="icon"
-                        dangerouslySetInnerHTML={
-                          Object {
-                            "__html": undefined,
-                          }
-                        }
-                        onClick={null}
-                        style={
-                          Object {
-                            "fill": "currentColor",
-                            "height": "15px",
-                            "width": "auto",
-                          }
-                        }
-                        viewBox=""
-                        xmlns=""
-                      />
-                      Schema
                     </div>
                   </div>
                 </div>
@@ -289,6 +289,31 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
                       Edit
                     </div>
                     <div
+                      className="item"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <svg
+                        className="icon"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={null}
+                        style={
+                          Object {
+                            "fill": "currentColor",
+                            "height": "15px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
+                      Schema
+                    </div>
+                    <div
                       className="item layout-Folder"
                       onClick={[Function]}
                       role="option"
@@ -337,31 +362,6 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
                         xmlns=""
                       />
                       Delete
-                    </div>
-                    <div
-                      className="item"
-                      onClick={[Function]}
-                      role="option"
-                    >
-                      <svg
-                        className="icon"
-                        dangerouslySetInnerHTML={
-                          Object {
-                            "__html": undefined,
-                          }
-                        }
-                        onClick={null}
-                        style={
-                          Object {
-                            "fill": "currentColor",
-                            "height": "15px",
-                            "width": "auto",
-                          }
-                        }
-                        viewBox=""
-                        xmlns=""
-                      />
-                      Schema
                     </div>
                   </div>
                 </div>

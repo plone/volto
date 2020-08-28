@@ -475,6 +475,16 @@ class ContentTypes extends Component {
                               />
                             </Dropdown.Item>
                             <Dropdown.Item
+                              onClick={this.addFields}
+                              value={item['id']}
+                            >
+                              <Icon name={folderSVG} size="15px" />
+                              <FormattedMessage
+                                id="Schema"
+                                defaultMessage="Schema"
+                              />
+                            </Dropdown.Item>
+                            <Dropdown.Item
                               onClick={this.onLayout}
                               value={`${this.props.pathname}/${item.id}/layout`}
                               className={`layout-${item.id}`}
@@ -494,16 +504,6 @@ class ContentTypes extends Component {
                               <FormattedMessage
                                 id="Delete"
                                 defaultMessage="Delete"
-                              />
-                            </Dropdown.Item>
-                            <Dropdown.Item
-                              onClick={this.addFields}
-                              value={item['id']}
-                            >
-                              <Icon name={folderSVG} size="15px" />
-                              <FormattedMessage
-                                id="Schema"
-                                defaultMessage="Schema"
                               />
                             </Dropdown.Item>
                           </Dropdown.Menu>
