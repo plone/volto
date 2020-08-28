@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-08-14T12:41:01.299Z\n"
+"POT-Creation-Date: 2020-08-26T10:10:13.182Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -157,6 +157,11 @@ msgstr ""
 msgid "All"
 msgstr ""
 
+#: components/theme/Search/Search
+# defaultMessage: Alphabetically
+msgid "Alphabetically"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Alt text
@@ -250,10 +255,8 @@ msgid "Cache Name"
 msgstr ""
 
 #: components/manage/Add/Add
-#: components/manage/Contents/ContentsToolbar
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/ContentType
-#: components/manage/Controlpanels/ContentTypeMetadata
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Delete/Delete
@@ -495,6 +498,11 @@ msgstr ""
 msgid "Date"
 msgstr ""
 
+#: components/theme/Search/Search
+# defaultMessage: Date (newest first)
+msgid "Date (newest first)"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Contents/ContentsTagsModal
@@ -502,11 +510,13 @@ msgstr ""
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
-#: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TextareaWidget
+#: components/manage/Widgets/TextWidget
+#: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/CommentEditModal
 #: components/theme/Comments/Comments
 #: components/theme/ContactForm/ContactForm
@@ -524,9 +534,10 @@ msgstr ""
 #: components/manage/Controlpanels/UsersControlpanelGroups
 #: components/manage/Controlpanels/UsersControlpanelUser
 #: components/manage/Delete/Delete
-#: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/CheckboxWidget
-#: components/manage/Widgets/FormFieldWrapper
+#: components/manage/Widgets/TextareaWidget
+#: components/manage/Widgets/TextWidget
+#: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/Comments
 # defaultMessage: Delete
 msgid "Delete"
@@ -565,11 +576,13 @@ msgstr ""
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
-#: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TextareaWidget
+#: components/manage/Widgets/TextWidget
+#: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
 # defaultMessage: Description
 msgid "Description"
@@ -745,7 +758,6 @@ msgid "Enter your new password. Minimum 5 characters."
 msgstr ""
 
 #: components/manage/Add/Add
-#: components/manage/Controlpanels/ContentTypeMetadata
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form
 #: components/manage/Form/InlineForm
@@ -1184,11 +1196,6 @@ msgstr ""
 msgid "Message"
 msgstr ""
 
-#: components/manage/Controlpanels/ContentTypeMetadata
-# defaultMessage: Metadata updates
-msgid "Metadata updates"
-msgstr ""
-
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 # defaultMessage: Minimum length is {len}.
@@ -1310,6 +1317,11 @@ msgstr ""
 msgid "No options"
 msgstr ""
 
+#: components/theme/Search/Search
+# defaultMessage: No results found
+msgid "No results found"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 # defaultMessage: No results found.
@@ -1393,11 +1405,6 @@ msgstr ""
 msgid "Page"
 msgstr ""
 
-#: components/manage/Widgets/SchemaWidget
-# defaultMessage: Parent fieldset
-msgid "Parent fieldset"
-msgstr ""
-
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/theme/Login/Login
 # defaultMessage: Password
@@ -1477,11 +1484,6 @@ msgstr ""
 #: components/manage/Preferences/PersonalInformation
 # defaultMessage: Portrait
 msgid "Portrait"
-msgstr ""
-
-#: components/manage/Widgets/SchemaWidget
-# defaultMessage: Possible values (Enter allowed choices one per line).
-msgid "Possible values"
 msgstr ""
 
 #: components/theme/Footer/Footer
@@ -1569,6 +1571,11 @@ msgstr ""
 msgid "Registration form"
 msgstr ""
 
+#: components/theme/Search/Search
+# defaultMessage: Relevance
+msgid "Relevance"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: Remove
 msgid "Remove recurrence"
@@ -1600,11 +1607,13 @@ msgstr ""
 msgid "Repeat on"
 msgstr ""
 
-#: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TextareaWidget
+#: components/manage/Widgets/TextWidget
+#: components/manage/Widgets/WysiwygWidget
 # defaultMessage: Required
 msgid "Required"
 msgstr ""
@@ -1664,7 +1673,6 @@ msgstr ""
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentType
-#: components/manage/Controlpanels/ContentTypeMetadata
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
@@ -1678,11 +1686,6 @@ msgstr ""
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: Save
 msgid "Save recurrence"
-msgstr ""
-
-#: components/manage/Controlpanels/ContentTypes
-# defaultMessage: Schema
-msgid "Schema"
 msgstr ""
 
 #: components/theme/SearchWidget/SearchWidget
@@ -1804,11 +1807,13 @@ msgstr ""
 msgid "Sharing for {title}"
 msgstr ""
 
-#: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TextareaWidget
+#: components/manage/Widgets/TextWidget
+#: components/manage/Widgets/WysiwygWidget
 # defaultMessage: Short Name
 msgid "Short Name"
 msgstr ""
@@ -1880,6 +1885,11 @@ msgstr ""
 msgid "Sorry, something went wrong with your request"
 msgstr ""
 
+#: components/theme/Search/Search
+# defaultMessage: Sort by:
+msgid "Sort By:"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingData
 # defaultMessage: Sort on
 msgid "Sort on"
@@ -1940,7 +1950,6 @@ msgstr ""
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
-#: components/manage/Controlpanels/ContentTypeMetadata
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Preferences/ChangePassword
@@ -2030,6 +2039,11 @@ msgstr ""
 msgid "The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources."
 msgstr ""
 
+#: components/theme/CorsError/CorsError
+# defaultMessage: The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators.
+msgid "The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
+msgstr ""
+
 #: components/theme/Register/Register
 # defaultMessage: The registration process has been successful. Please check your e-mail inbox for information on how activate your account.
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
@@ -2086,11 +2100,13 @@ msgstr ""
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
-#: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TextareaWidget
+#: components/manage/Widgets/TextWidget
+#: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
 # defaultMessage: Title
 msgid "Title"
@@ -2219,11 +2235,13 @@ msgstr ""
 msgid "Uploading files"
 msgstr ""
 
-#: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TextareaWidget
+#: components/manage/Widgets/TextWidget
+#: components/manage/Widgets/WysiwygWidget
 # defaultMessage: Used for programmatic access to the fieldset.
 msgid "Used for programmatic access to the fieldset."
 msgstr ""
@@ -2311,11 +2329,6 @@ msgstr ""
 #: components/theme/ConnectionRefused/ConnectionRefused
 # defaultMessage: We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later.
 msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later."
-msgstr ""
-
-#: components/theme/CorsError/CorsError
-# defaultMessage: We apologize for the inconvenience, but the backend of the site you are accessing is not configured properly right now. Please, try again later.
-msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not configured properly right now. Please, try again later."
 msgstr ""
 
 #: components/theme/NotFound/NotFound
@@ -2564,34 +2577,9 @@ msgstr ""
 msgid "maps"
 msgstr ""
 
-#: components/manage/Widgets/SchemaWidget
-# defaultMessage: Maximum Length
-msgid "maxLength"
-msgstr ""
-
-#: components/manage/Widgets/SchemaWidget
-# defaultMessage: End of the range (including the value itself)
-msgid "maximum"
-msgstr ""
-
 #: config/Blocks
 # defaultMessage: Media
 msgid "media"
-msgstr ""
-
-#: components/manage/Controlpanels/ContentTypeMetadata
-# defaultMessage: metadata {type}
-msgid "metadata {type}"
-msgstr ""
-
-#: components/manage/Widgets/SchemaWidget
-# defaultMessage: Minimum Length
-msgid "minLength"
-msgstr ""
-
-#: components/manage/Widgets/SchemaWidget
-# defaultMessage: Start of the range
-msgid "minimum"
 msgstr ""
 
 #: config/Blocks

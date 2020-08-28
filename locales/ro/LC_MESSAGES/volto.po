@@ -128,6 +128,10 @@ msgstr "Aliniere"
 msgid "All"
 msgstr "Toate"
 
+#: components/theme/Search/Search
+msgid "Alphabetically"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Alt text"
@@ -206,7 +210,6 @@ msgid "Cache Name"
 msgstr ""
 
 #: components/manage/Add/Add
-#: components/manage/Contents/ContentsToolbar
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeMetadata
@@ -406,6 +409,10 @@ msgstr ""
 #: components/manage/Widgets/DatetimeWidget
 msgid "Date"
 msgstr "Data"
+
+#: components/theme/Search/Search
+msgid "Date (newest first)"
+msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Contents/ContentsRenameModal
@@ -1074,6 +1081,10 @@ msgstr ""
 msgid "No options"
 msgstr ""
 
+#: components/theme/Search/Search
+msgid "No results found"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
@@ -1284,6 +1295,10 @@ msgstr "Înregistrare"
 #: components/theme/Register/Register
 msgid "Registration form"
 msgstr "Formular de înregistrare"
+
+#: components/theme/Search/Search
+msgid "Relevance"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
@@ -1539,6 +1554,10 @@ msgstr "Mărime: {size}"
 msgid "Sorry, something went wrong with your request"
 msgstr "Ne pare rău, a apârut o eroare"
 
+#: components/theme/Search/Search
+msgid "Sort By:"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingData
 msgid "Sort on"
 msgstr "Sortare pe"
@@ -1661,6 +1680,10 @@ msgstr "Backendul nu răspunde. Vă rugăm să verificați dacă ați pornit Plo
 #: components/theme/CorsError/CorsError
 msgid "The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources."
 msgstr "Backendul răspunde, dar anteturile CORS nu sunt configurate corect și browserul a refuzat accesul la resursele de backend."
+
+#: components/theme/CorsError/CorsError
+msgid "The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
+msgstr ""
 
 #: components/theme/Register/Register
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
@@ -1888,10 +1911,6 @@ msgstr "Avertisment cu privire la modul de depanare"
 #: components/theme/ConnectionRefused/ConnectionRefused
 msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later."
 msgstr "Ne cerem scuze pentru neplăceri, dar backend-ul site-ului pe care îl accesați nu este disponibil în acest moment. Vă rugăm, încercați din nou mai târziu."
-
-#: components/theme/CorsError/CorsError
-msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not configured properly right now. Please, try again later."
-msgstr "Ne cerem scuze pentru neplăceri, dar backend-ul site-ului pe care îl accesați nu este configurat corect în acest moment. Vă rugăm, încercați din nou mai târziu."
 
 #: components/theme/NotFound/NotFound
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
