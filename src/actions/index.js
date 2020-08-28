@@ -28,10 +28,6 @@ export {
   updateContent,
 } from '@plone/volto/actions/content/content';
 export {
-  getContentTypeTypes,
-  updateContentTypeFieldTypes,
-} from '@plone/volto/actions/contenttype/contenttype';
-export {
   deleteControlpanel,
   getControlpanel,
   getDatabaseInformation,

@@ -3,11 +3,7 @@
  * @module components/manage/Controlpanels/ContentTypeSchema
  */
 
-import {
-  getSchema,
-  getVocabulary,
-  updateContentTypeFieldTypes,
-} from '@plone/volto/actions';
+import { getSchema, putSchema, getVocabulary } from '@plone/volto/actions';
 import { Form, Icon, Toast, Toolbar } from '@plone/volto/components';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import saveSVG from '@plone/volto/icons/save.svg';
@@ -117,8 +113,8 @@ class ContentTypeSchema extends Component {
    */
   static propTypes = {
     getSchema: PropTypes.func.isRequired,
+    putSchema: PropTypes.func.isRequired,
     getVocabulary: PropTypes.func.isRequired,
-    updateContentTypeFieldTypes: PropTypes.func.isRequired,
     pathname: PropTypes.string.isRequired,
     schema: PropTypes.objectOf(PropTypes.any),
     vocabularyFields: PropTypes.objectOf(PropTypes.any),
@@ -169,7 +165,7 @@ class ContentTypeSchema extends Component {
   }
 
   onSubmit(data) {
-    this.props.updateContentTypeFieldTypes(this.props.type, data.schema);
+    this.props.putSchema(this.props.type, data.schema);
   }
 
   onCancel(event) {
@@ -298,7 +294,7 @@ export default compose(
     }),
     {
       getSchema,
-      updateContentTypeFieldTypes,
+      putSchema,
       getVocabulary,
     },
   ),
