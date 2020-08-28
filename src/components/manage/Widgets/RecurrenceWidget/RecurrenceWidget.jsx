@@ -3,41 +3,45 @@
  * @module components/manage/Widgets/RecurrenceWidget
  */
 
-import { DatetimeWidget, Icon, SelectWidget } from '@plone/volto/components';
-import trashSVG from '@plone/volto/icons/delete.svg';
-import editingSVG from '@plone/volto/icons/editing.svg';
-import saveSVG from '@plone/volto/icons/save.svg';
-import cx from 'classnames';
-import { concat, find, isEqual, map, remove } from 'lodash';
-import moment from 'moment';
-import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { defineMessages, injectIntl } from 'react-intl';
+import PropTypes from 'prop-types';
+import moment from 'moment';
 import { RRule, RRuleSet, rrulestr } from 'rrule';
+
+import cx from 'classnames';
+import { isEqual, map, find, concat, remove } from 'lodash';
+import { defineMessages, injectIntl } from 'react-intl';
 import {
-  Button,
   Form,
   Grid,
-  Header,
   Label,
-  Modal,
+  Button,
   Segment,
+  Modal,
+  Header,
 } from 'semantic-ui-react';
-import ByDayField from './ByDayField';
-import ByMonthField from './ByMonthField';
-import ByYearField from './ByYearField';
-import EndField from './EndField';
-import IntervalField from './IntervalField';
-import Occurences from './Occurences';
+
+import { SelectWidget, Icon, DatetimeWidget } from '@plone/volto/components';
+import saveSVG from '@plone/volto/icons/save.svg';
+import editingSVG from '@plone/volto/icons/editing.svg';
+import trashSVG from '@plone/volto/icons/delete.svg';
+
 import {
   Days,
-  FREQUENCES,
-  MONDAYFRIDAY_DAYS,
   OPTIONS,
-  rrulei18n,
-  toISOString,
+  FREQUENCES,
   WEEKLY_DAYS,
+  MONDAYFRIDAY_DAYS,
+  toISOString,
+  rrulei18n,
 } from './Utils';
+
+import IntervalField from './IntervalField';
+import ByDayField from './ByDayField';
+import EndField from './EndField';
+import ByMonthField from './ByMonthField';
+import ByYearField from './ByYearField';
+import Occurences from './Occurences';
 
 const messages = defineMessages({
   editRecurrence: {

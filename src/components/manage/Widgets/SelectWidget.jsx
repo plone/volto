@@ -3,27 +3,30 @@
  * @module components/manage/Widgets/SelectWidget
  */
 
-import loadable from '@loadable/component';
-import { getVocabulary, getVocabularyTokenTitle } from '@plone/volto/actions';
-import { FormFieldWrapper } from '@plone/volto/components';
-import {
-  customSelectStyles,
-  DropdownIndicator,
-  Option,
-  selectTheme,
-} from '@plone/volto/components/manage/Widgets/SelectStyling';
-import {
-  getBoolean,
-  getVocabFromField,
-  getVocabFromHint,
-  getVocabFromItems,
-} from '@plone/volto/helpers';
-import { find, intersection, isBoolean, isObject, map } from 'lodash';
-import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { defineMessages, injectIntl } from 'react-intl';
+import PropTypes from 'prop-types';
+import { Icon as IconOld } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
+import { map, find, isBoolean, isObject, intersection } from 'lodash';
+import { defineMessages, injectIntl } from 'react-intl';
+import loadable from '@loadable/component';
+
+import {
+  getBoolean,
+  getVocabFromHint,
+  getVocabFromField,
+  getVocabFromItems,
+} from '@plone/volto/helpers';
+import { FormFieldWrapper } from '@plone/volto/components';
+import { getVocabulary, getVocabularyTokenTitle } from '@plone/volto/actions';
+
+import {
+  Option,
+  DropdownIndicator,
+  selectTheme,
+  customSelectStyles,
+} from '@plone/volto/components/manage/Widgets/SelectStyling';
 
 const Select = loadable(() => import('react-select'));
 const AsyncPaginate = loadable(() => import('react-select-async-paginate'));
@@ -142,8 +145,6 @@ class SelectWidget extends Component {
     ]),
     onChange: PropTypes.func.isRequired,
     onEdit: PropTypes.func,
-    isDraggable: PropTypes.bool,
-    isDisabled: PropTypes.bool,
     onDelete: PropTypes.func,
     itemsTotal: PropTypes.number,
     wrapped: PropTypes.bool,
@@ -169,12 +170,6 @@ class SelectWidget extends Component {
     value: null,
     onEdit: null,
     onDelete: null,
-    isDraggable: false,
-    isDisabled: false,
-    onChange: null,
-    focus: false,
-    icon: null,
-    iconAction: null,
   };
 
   state = {
@@ -242,28 +237,62 @@ class SelectWidget extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const {
-      onEdit,
-      id,
-      onDelete,
-      choices,
-      value,
-      onChange,
-      isDraggable,
-      isDisabled,
-      intl,
-    } = this.props;
+    const schema = {
+      fieldsets: [
+        {
+          id: 'default',
+          title: this.props.intl.formatMessage(messages.default),
+          fields: ['title', 'id', 'description', 'choices', 'required'],
+        },
+      ],
+      properties: {
+        id: {
+          type: 'string',
+          title: this.props.intl.formatMessage(messages.idTitle),
+          description: this.props.intl.formatMessage(messages.idDescription),
+        },
+        title: {
+          type: 'string',
+          title: this.props.intl.formatMessage(messages.title),
+        },
+        description: {
+          type: 'string',
+          widget: 'textarea',
+          title: this.props.intl.formatMessage(messages.description),
+        },
+        choices: {
+          type: 'array',
+          title: this.props.intl.formatMessage(messages.choices),
+        },
+        required: {
+          type: 'boolean',
+          title: this.props.intl.formatMessage(messages.required),
+        },
+      },
+      required: ['id', 'title', 'choices'],
+    };
+
+    const { onEdit, id, onDelete, choices, value, onChange } = this.props;
 
     return (
-      <FormFieldWrapper
-        {...this.props}
-        draggable={isDraggable}
-        className="text"
-        onEdit={onEdit ? () => onEdit(id) : null}
-        onDelete={onDelete}
-        intl={intl}
-        isDisabled={isDisabled}
-      >
+      <FormFieldWrapper {...this.props} draggable={true}>
+        {onEdit && (
+          <div className="toolbar">
+            <button
+              onClick={() => onEdit(id, schema)}
+              className="item ui noborder button"
+            >
+              <IconOld name="write square" size="large" color="blue" />
+            </button>
+            <button
+              aria-label={this.props.intl.formatMessage(messages.close)}
+              className="item ui noborder button"
+              onClick={() => onDelete(id)}
+            >
+              <IconOld name="close" size="large" color="red" />
+            </button>
+          </div>
+        )}
         {this.props.vocabBaseUrl ? (
           <>
             <AsyncPaginate
@@ -289,8 +318,7 @@ class SelectWidget extends Component {
           <Select
             id={`field-${id}`}
             name={id}
-            draggable={isDraggable}
-            isDisabled={isDisabled}
+            disabled={onEdit !== null}
             className="react-select-container"
             classNamePrefix="react-select"
             isMulti={id === 'roles' || id === 'groups'}

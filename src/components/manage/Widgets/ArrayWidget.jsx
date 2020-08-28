@@ -3,26 +3,29 @@
  * @module components/manage/Widgets/ArrayWidget
  */
 
-import loadable from '@loadable/component';
-import { getVocabulary } from '@plone/volto/actions';
-import { FormFieldWrapper } from '@plone/volto/components';
-import {
-  customSelectStyles,
-  DropdownIndicator,
-  Option,
-  selectTheme,
-} from '@plone/volto/components/manage/Widgets/SelectStyling';
-import {
-  getVocabFromField,
-  getVocabFromHint,
-  getVocabFromItems,
-} from '@plone/volto/helpers';
-import { intersection, isObject } from 'lodash';
-import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
-import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { isObject, intersection } from 'lodash';
 import { compose } from 'redux';
+import { connect } from 'react-redux';
+import loadable from '@loadable/component';
+
+import {
+  getVocabFromHint,
+  getVocabFromField,
+  getVocabFromItems,
+} from '@plone/volto/helpers';
+import { getVocabulary } from '@plone/volto/actions';
+
+import {
+  Option,
+  DropdownIndicator,
+  selectTheme,
+  customSelectStyles,
+} from '@plone/volto/components/manage/Widgets/SelectStyling';
+
+import { FormFieldWrapper } from '@plone/volto/components';
 
 const AsyncPaginate = loadable(() => import('react-select-async-paginate'));
 const CreatableSelect = loadable(() => import('react-select/creatable'));
@@ -39,34 +42,6 @@ const messages = defineMessages({
   no_options: {
     id: 'No options',
     defaultMessage: 'No options',
-  },
-  default: {
-    id: 'Default',
-    defaultMessage: 'Default',
-  },
-  idTitle: {
-    id: 'Short Name',
-    defaultMessage: 'Short Name',
-  },
-  idDescription: {
-    id: 'Used for programmatic access to the fieldset.',
-    defaultMessage: 'Used for programmatic access to the fieldset.',
-  },
-  title: {
-    id: 'Title',
-    defaultMessage: 'Title',
-  },
-  description: {
-    id: 'Description',
-    defaultMessage: 'Description',
-  },
-  required: {
-    id: 'Required',
-    defaultMessage: 'Required',
-  },
-  delete: {
-    id: 'Delete',
-    defaultMessage: 'Delete',
   },
 });
 
@@ -102,12 +77,8 @@ class ArrayWidget extends Component {
       PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     ),
     onChange: PropTypes.func.isRequired,
-    onEdit: PropTypes.func,
-    isDraggable: PropTypes.bool,
-    isDisabled: PropTypes.bool,
     itemsTotal: PropTypes.number,
     wrapped: PropTypes.bool,
-    onDelete: PropTypes.func,
   };
 
   /**
@@ -116,8 +87,6 @@ class ArrayWidget extends Component {
    * @static
    */
   static defaultProps = {
-    id: null,
-    title: null,
     description: null,
     required: false,
     items: {
@@ -130,10 +99,6 @@ class ArrayWidget extends Component {
     choices: [],
     loading: false,
     value: null,
-    onEdit: null,
-    onDelete: null,
-    isDraggable: false,
-    isDisabled: false,
   };
 
   /**
@@ -243,18 +208,9 @@ class ArrayWidget extends Component {
    */
   render() {
     const { selectedOption } = this.state;
-    const { onEdit, isDraggable, isDisabled, onDelete, intl, id } = this.props;
 
     return (
-      <FormFieldWrapper
-        {...this.props}
-        draggable={isDraggable}
-        className="text"
-        onEdit={onEdit ? () => onEdit(id) : null}
-        onDelete={onDelete}
-        intl={intl}
-        isDisabled={isDisabled}
-      >
+      <FormFieldWrapper {...this.props}>
         {!this.props.items?.choices && this.vocabBaseUrl ? (
           <AsyncPaginate
             className="react-select-container"
@@ -302,7 +258,6 @@ class ArrayWidget extends Component {
                     },
                   ]
             }
-            isDisabled={isDisabled}
             styles={customSelectStyles}
             theme={selectTheme}
             components={{ DropdownIndicator, Option }}
