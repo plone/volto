@@ -1,6 +1,6 @@
 # Change Log
 
-## 7.11.2 (unreleased)
+## 7.11.3 (unreleased)
 
 ### Breaking
 
@@ -8,14 +8,21 @@
 
 - Add a `subrequest` option to the `createContent` action @tiberiuichim @silviubogan
 
-- Increase z-index of `block-add-button` @steffenri
+### Bugfix
+
+- On image upload in a block, don't overwrite the global `state.content.data` with new image data @tiberiuichim @silviubogan
+
+### Internal
+
+## 7.11.2 (2020-08-28)
 
 ### Bugfix
 
 - Fix bug introduced in 7.9.0, properly return a list of results when dealing with batched api requests @tiberiuichim
-- On image upload in a block, don't overwrite the global `state.content.data` with new image data @tiberiuichim @silviubogan
 - In folder contents batch upload, use a subrequest to avoid breaking the global `content.data` state @tiberiuichim
 - Fix `null` response issue when passing custom `Accept:` headers to actions #1771 @avoinea
+- Removed all `<<<<<HEAD` artifacts from translations @steffenri
+- Increase z-index of `block-add-button` @steffenri
 
 ### Internal
 
