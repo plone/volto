@@ -48,8 +48,8 @@ The configuration for setting up sentry on runtime is very similar as how we set
  - SENTRY_RELEASE - release number
  - RAZZLE_SENTRY_DSN - required to enable the feature
  - RAZZLE_SENTRY_FRONTEND_CONFIGURATION - optional, here we can specify TAGS
-   and ADDITIONAL DATA for the messages from the browser we send to
- - RAZZLE_SENTRY SENTRY_BACKEND_CONFIGURATION - same as RAZZLE_SENTRY_FRONTEND_CONFIGURATION, but we configure the messages from the backend
+   and ADDITIONAL DATA for the messages from the browser we send to sentry
+ - RAZZLE_SENTRY_BACKEND_CONFIGURATION - same as RAZZLE_SENTRY_FRONTEND_CONFIGURATION, but we configure the messages from the backend
  - RAZZLE_SENTRY_RELEASE - release number, should be the same as SENTRY_RELEASE
 
 In the entrypoint of our docker image we have to add the ./create-sentry-release.sh script. When the container is started, this script will check in sentry if the specified release already exists, if not, it will create it and upload the source code and the source maps.
