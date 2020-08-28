@@ -2,7 +2,6 @@
  * Content Types component.
  * @module components/manage/Controlpanels/ContentTypes
  */
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -22,17 +21,17 @@ import {
   Toast,
 } from '@plone/volto/components';
 import {
+  deleteControlpanel,
   getControlpanel,
   postControlpanel,
-  deleteControlpanel,
 } from '@plone/volto/actions';
 import { getId } from '@plone/volto/helpers';
-
 import addSVG from '@plone/volto/icons/add-document.svg';
 import backSVG from '@plone/volto/icons/back.svg';
-import editSVG from '@plone/volto/icons/pen.svg';
 import trashSVG from '@plone/volto/icons/delete.svg';
 import layoutSVG from '@plone/volto/icons/file.svg';
+import folderSVG from '@plone/volto/icons/folder.svg';
+import editSVG from '@plone/volto/icons/pen.svg';
 
 const messages = defineMessages({
   add: {
@@ -83,6 +82,10 @@ const messages = defineMessages({
     id: 'Content type deleted',
     defaultMessage: 'Content type deleted',
   },
+  Schema: {
+    id: 'Schema',
+    defaultMessage: 'Schema',
+  },
 });
 
 /**
@@ -129,6 +132,7 @@ class ContentTypes extends Component {
     this.onAddTypeSuccess = this.onAddTypeSuccess.bind(this);
     this.onEdit = this.onEdit.bind(this);
     this.onLayout = this.onLayout.bind(this);
+    this.addFields = this.addFields.bind(this);
     this.onDelete = this.onDelete.bind(this);
     this.onDeleteCancel = this.onDeleteCancel.bind(this);
     this.onDeleteOk = this.onDeleteOk.bind(this);
@@ -282,6 +286,18 @@ class ContentTypes extends Component {
         showDelete: true,
         typeToDelete: value,
       });
+    }
+  }
+
+  /** Folder
+   * @param {Object} event Event object.
+   * @param {string} { value }
+   * @memberof ContentTypes
+   * @returns {undefined}
+   */
+  addFields(event, { value }) {
+    if (value) {
+      this.props.history.push(`${this.props.pathname}/${value}/schema`);
     }
   }
 
@@ -478,6 +494,16 @@ class ContentTypes extends Component {
                               <FormattedMessage
                                 id="Delete"
                                 defaultMessage="Delete"
+                              />
+                            </Dropdown.Item>
+                            <Dropdown.Item
+                              onClick={this.addFields}
+                              value={item['id']}
+                            >
+                              <Icon name={folderSVG} size="15px" />
+                              <FormattedMessage
+                                id="Schema"
+                                defaultMessage="Schema"
                               />
                             </Dropdown.Item>
                           </Dropdown.Menu>

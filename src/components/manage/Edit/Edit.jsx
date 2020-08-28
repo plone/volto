@@ -3,19 +3,12 @@
  * @module components/manage/Edit/Edit
  */
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Helmet } from '@plone/volto/helpers';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { asyncConnect } from 'redux-connect';
-import { defineMessages, injectIntl } from 'react-intl';
-import { Button } from 'semantic-ui-react';
-import { Portal } from 'react-portal';
-import qs from 'query-string';
-import { find } from 'lodash';
-import { toast } from 'react-toastify';
-
+import {
+  getContent,
+  getSchema,
+  listActions,
+  updateContent,
+} from '@plone/volto/actions';
 import {
   Forbidden,
   Form,
@@ -25,16 +18,20 @@ import {
   Toolbar,
   Unauthorized,
 } from '@plone/volto/components';
-import {
-  updateContent,
-  getContent,
-  getSchema,
-  listActions,
-} from '@plone/volto/actions';
-import { getBaseUrl, hasBlocksData } from '@plone/volto/helpers';
-
-import saveSVG from '@plone/volto/icons/save.svg';
+import { getBaseUrl, hasBlocksData, Helmet } from '@plone/volto/helpers';
 import clearSVG from '@plone/volto/icons/clear.svg';
+import saveSVG from '@plone/volto/icons/save.svg';
+import { find } from 'lodash';
+import PropTypes from 'prop-types';
+import qs from 'query-string';
+import React, { Component } from 'react';
+import { defineMessages, injectIntl } from 'react-intl';
+import { Portal } from 'react-portal';
+import { connect } from 'react-redux';
+import { toast } from 'react-toastify';
+import { compose } from 'redux';
+import { asyncConnect } from 'redux-connect';
+import { Button } from 'semantic-ui-react';
 
 const messages = defineMessages({
   edit: {
@@ -219,7 +216,7 @@ class Edit extends Component {
                   schema={this.props.schema}
                   formData={this.props.content}
                   onSubmit={this.onSubmit}
-                  hideActions
+                  // hideActions
                   pathname={this.props.pathname}
                   visual={this.state.visual}
                   title={

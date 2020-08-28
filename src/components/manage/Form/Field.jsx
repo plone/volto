@@ -3,11 +3,11 @@
  * @module components/manage/Form/Field
  */
 
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { DragSource, DropTarget } from 'react-dnd';
-import { settings, widgets } from '~/config';
 import { injectIntl } from 'react-intl';
+import { settings, widgets } from '~/config';
 
 const MODE_HIDDEN = 'hidden'; //hidden mode. If mode is hidden, field is not rendered
 /**
@@ -169,6 +169,7 @@ const Field = (props, { intl }) => {
     );
     return <WrappedWidget {...props} />;
   }
+
   return <Widget {...props} />;
 };
 

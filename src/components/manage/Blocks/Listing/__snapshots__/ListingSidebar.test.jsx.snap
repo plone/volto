@@ -346,6 +346,28 @@ exports[`renders a Listing Block Sidebar component 1`] = `
                   class="wrapper"
                 >
                   <div
+                    class="toolbar"
+                  >
+                    <button
+                      aria-label="Edit"
+                      class="item ui noborder button"
+                    >
+                      <i
+                        aria-hidden="true"
+                        class="blue write square large icon"
+                      />
+                    </button>
+                    <button
+                      aria-label="Delete"
+                      class="item ui noborder button"
+                    >
+                      <i
+                        aria-hidden="true"
+                        class="red close large icon"
+                      />
+                    </button>
+                  </div>
+                  <div
                     class="ui checkbox"
                   >
                     <input

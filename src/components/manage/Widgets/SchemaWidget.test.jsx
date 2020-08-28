@@ -1,18 +1,19 @@
 import React from 'react';
+import { Provider } from 'react-intl-redux';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
-import { Provider } from 'react-intl-redux';
-
 import SchemaWidget from './SchemaWidget';
 
 const mockStore = configureStore();
+const intl = {
+  locale: 'en',
+  messages: {},
+  formatMessage: () => {},
+};
 
 test('renders a schema widget component', () => {
   const store = mockStore({
-    intl: {
-      locale: 'en',
-      messages: {},
-    },
+    intl,
   });
 
   const component = renderer.create(

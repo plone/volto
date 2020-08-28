@@ -3,13 +3,11 @@
  * @module components/manage/Widgets/CheckboxWidget
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Icon, Checkbox } from 'semantic-ui-react';
-
-import { defineMessages, injectIntl } from 'react-intl';
 import { FormFieldWrapper } from '@plone/volto/components';
-
+import PropTypes from 'prop-types';
+import React from 'react';
+import { defineMessages, injectIntl } from 'react-intl';
+import { Checkbox, Icon } from 'semantic-ui-react';
 const messages = defineMessages({
   default: {
     id: 'Default',
@@ -63,6 +61,8 @@ const CheckboxWidget = ({
   intl,
   fieldSet,
   wrapped,
+  isDraggable,
+  isDisabled,
 }) => {
   const schema = {
     fieldsets: [
@@ -105,19 +105,21 @@ const CheckboxWidget = ({
       fieldSet={fieldSet}
       wrapped={wrapped}
       columns={1}
+      draggable={isDraggable}
+      isDisabled={isDisabled}
     >
       <div className="wrapper">
-        {onEdit && (
+        {!isDisabled && (
           <div className="toolbar">
             <button
-              aria-label={this.props.intl.formatMessage(messages.edit)}
+              aria-label={intl.formatMessage(messages.edit)}
               className="item ui noborder button"
               onClick={() => onEdit(id, schema)}
             >
               <Icon name="write square" size="large" color="blue" />
             </button>
             <button
-              aria-label={this.props.intl.formatMessage(messages.delete)}
+              aria-label={intl.formatMessage(messages.delete)}
               className="item ui noborder button"
               onClick={() => onDelete(id)}
             >
@@ -125,13 +127,13 @@ const CheckboxWidget = ({
             </button>
           </div>
         )}
-        {onEdit && (
+        {isDraggable && (
           <i aria-hidden="true" className="grey bars icon drag handle" />
         )}
         <Checkbox
           name={`field-${id}`}
           checked={value}
-          disabled={onEdit !== null}
+          disabled={isDisabled}
           onChange={(event, { checked }) => onChange(id, checked)}
           label={<label htmlFor={`field-${id}`}>{title}</label>}
         />
@@ -156,6 +158,10 @@ CheckboxWidget.propTypes = {
   onEdit: PropTypes.func,
   onDelete: PropTypes.func,
   wrapped: PropTypes.bool,
+  intl: PropTypes.object,
+  fieldSet: PropTypes.string,
+  isDraggable: PropTypes.bool,
+  isDisabled: PropTypes.bool,
 };
 
 /**
@@ -164,13 +170,20 @@ CheckboxWidget.propTypes = {
  * @static
  */
 CheckboxWidget.defaultProps = {
+  id: '',
+  title: '',
   description: null,
   required: false,
-  error: [],
-  value: null,
   onChange: null,
   onEdit: null,
   onDelete: null,
+  error: [],
+  value: null,
+  intl: { formatMessage: () => {} },
+  fieldSet: null,
+  wrapped: true,
+  isDraggable: false,
+  isDisabled: false,
 };
 
 export default injectIntl(CheckboxWidget);

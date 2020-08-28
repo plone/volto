@@ -3,13 +3,12 @@
  * @module components/manage/Widgets/FileWidget
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Input, Button, Image } from 'semantic-ui-react';
-import { readAsDataURL } from 'promise-file-reader';
-
+import { FormFieldWrapper, Icon } from '@plone/volto/components';
 import deleteSVG from '@plone/volto/icons/delete.svg';
-import { Icon, FormFieldWrapper } from '@plone/volto/components';
+import { readAsDataURL } from 'promise-file-reader';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { Button, Image, Input } from 'semantic-ui-react';
 
 const imageMimetypes = [
   'image/png',
@@ -35,6 +34,11 @@ const FileWidget = ({
   onChange,
   fieldSet,
   wrapped,
+  isDraggable,
+  isDisabled,
+  onEdit,
+  onDelete,
+  intl,
 }) => {
   const fileInput = React.useRef(null);
   const [fileType, setFileType] = React.useState(true);
@@ -48,6 +52,11 @@ const FileWidget = ({
       error={error}
       wrapped={wrapped}
       fieldSet={fieldSet}
+      draggable={isDraggable}
+      onEdit={onEdit ? () => onEdit(id) : null}
+      onDelete={onDelete}
+      intl={intl}
+      isDisabled={isDisabled}
     >
       {fileType ? (
         <Image
@@ -61,6 +70,7 @@ const FileWidget = ({
         name={id}
         type="file"
         ref={fileInput}
+        disabled={isDisabled}
         onChange={({ target }) => {
           const file = target.files[0];
           readAsDataURL(file).then((data) => {
@@ -126,6 +136,10 @@ FileWidget.propTypes = {
   }),
   onChange: PropTypes.func.isRequired,
   wrapped: PropTypes.bool,
+  onEdit: PropTypes.func,
+  onDelete: PropTypes.func,
+  isDraggable: PropTypes.bool,
+  isDisabled: PropTypes.bool,
 };
 
 /**
@@ -134,10 +148,20 @@ FileWidget.propTypes = {
  * @static
  */
 FileWidget.defaultProps = {
+  id: null,
+  title: null,
   description: null,
   required: false,
   error: [],
   value: null,
+  onChange: null,
+  onEdit: null,
+  onDelete: null,
+  focus: false,
+  isDraggable: false,
+  isDisabled: false,
+  icon: null,
+  iconAction: null,
 };
 
 export default FileWidget;

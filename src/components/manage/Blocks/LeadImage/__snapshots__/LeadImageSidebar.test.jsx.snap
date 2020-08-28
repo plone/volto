@@ -363,6 +363,32 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
                 className="wrapper"
               >
                 <div
+                  className="toolbar"
+                >
+                  <button
+                    aria-label="Edit"
+                    className="item ui noborder button"
+                    onClick={[Function]}
+                  >
+                    <i
+                      aria-hidden="true"
+                      className="blue write square large icon"
+                      onClick={[Function]}
+                    />
+                  </button>
+                  <button
+                    aria-label="Delete"
+                    className="item ui noborder button"
+                    onClick={[Function]}
+                  >
+                    <i
+                      aria-hidden="true"
+                      className="red close large icon"
+                      onClick={[Function]}
+                    />
+                  </button>
+                </div>
+                <div
                   className="ui checkbox"
                   onChange={[Function]}
                   onClick={[Function]}

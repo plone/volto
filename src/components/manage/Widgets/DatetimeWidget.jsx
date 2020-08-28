@@ -3,24 +3,21 @@
  * @module components/manage/Widgets/DatetimeWidget
  */
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { defineMessages, injectIntl } from 'react-intl';
-import moment from 'moment-timezone';
-import { SingleDatePicker } from 'react-dates';
-import TimePicker from 'rc-time-picker';
-import cx from 'classnames';
-import { Icon, FormFieldWrapper } from '@plone/volto/components';
-import { settings } from '~/config';
-
+import { FormFieldWrapper, Icon } from '@plone/volto/components';
+import clearSVG from '@plone/volto/icons/clear.svg';
 import leftKey from '@plone/volto/icons/left-key.svg';
 import rightKey from '@plone/volto/icons/right-key.svg';
-import clearSVG from '@plone/volto/icons/clear.svg';
-
+import cx from 'classnames';
+import moment from 'moment-timezone';
+import PropTypes from 'prop-types';
+import TimePicker from 'rc-time-picker';
+import 'rc-time-picker/assets/index.css';
+import React, { Component } from 'react';
+import { SingleDatePicker } from 'react-dates';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
-
-import 'rc-time-picker/assets/index.css';
+import { defineMessages, injectIntl } from 'react-intl';
+import { settings } from '~/config';
 
 const messages = defineMessages({
   date: {
@@ -191,7 +188,7 @@ class DatetimeWidget extends Component {
   onFocusChange = ({ focused }) => this.setState({ focused });
 
   render() {
-    const { id, dateOnly, noPastDates, intl } = this.props;
+    const { id, dateOnly, noPastDates, intl, isDisabled } = this.props;
     const { datetime, isDefault, focused } = this.state;
 
     return (
@@ -214,6 +211,7 @@ class DatetimeWidget extends Component {
               navPrev={<PrevIcon />}
               navNext={<NextIcon />}
               id={`${id}-date`}
+              disabled={isDisabled}
               placeholder={intl.formatMessage(messages.date)}
             />
           </div>
@@ -230,6 +228,7 @@ class DatetimeWidget extends Component {
                 allowEmpty={false}
                 showSecond={false}
                 use12Hours={intl.locale === 'en'}
+                disabled={isDisabled}
                 id={`${id}-time`}
                 format={moment.localeData(intl.locale).longDateFormat('LT')}
                 placeholder={intl.formatMessage(messages.time)}
@@ -265,8 +264,12 @@ DatetimeWidget.propTypes = {
   dateOnly: PropTypes.bool,
   noPastDates: PropTypes.bool,
   value: PropTypes.string,
+  isDraggable: PropTypes.bool,
+  isDisabled: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
   wrapped: PropTypes.bool,
+  onEdit: PropTypes.func,
+  onDelete: PropTypes.func,
 };
 
 /**
@@ -275,12 +278,20 @@ DatetimeWidget.propTypes = {
  * @static
  */
 DatetimeWidget.defaultProps = {
+  id: '',
+  title: '',
   description: null,
   required: false,
   error: [],
   dateOnly: false,
   noPastDates: false,
   value: null,
+  isDraggable: false,
+  isDisabled: false,
+  wrapped: true,
+  onChange: () => {},
+  onEdit: () => {},
+  onDelete: () => {},
 };
 
 export default injectIntl(DatetimeWidget);

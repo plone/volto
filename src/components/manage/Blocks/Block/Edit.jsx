@@ -2,7 +2,6 @@
  * Edit block.
  * @module components/manage/Blocks/Block/Edit
  */
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
@@ -14,7 +13,6 @@ import includes from 'lodash/includes';
 import isBoolean from 'lodash/isBoolean';
 import cx from 'classnames';
 import { setSidebarTab } from '@plone/volto/actions';
-
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import trashSVG from '@plone/volto/icons/delete.svg';
@@ -137,7 +135,9 @@ class Edit extends Component {
         {Block !== null ? (
           <div
             role="presentation"
-            onClick={() => this.props.onSelectBlock(this.props.id)}
+            onClick={() => {
+              this.props.onSelectBlock(this.props.id);
+            }}
             onKeyDown={
               !blockHasOwnFocusManagement
                 ? (e) =>

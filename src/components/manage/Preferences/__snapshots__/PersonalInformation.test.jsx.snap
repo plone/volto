@@ -159,6 +159,7 @@ exports[`PersonalInformation renders a personal information component 1`] = `
                   className="ui input"
                 >
                   <input
+                    disabled={false}
                     id="field-portrait"
                     name="portrait"
                     onChange={[Function]}
@@ -330,6 +331,7 @@ exports[`PersonalInformation renders a personal information component 1`] = `
           className="ui basic secondary right floated button"
           onClick={[Function]}
           title="Cancel"
+          type="cancel"
         >
           <svg
             className="icon circled"
@@ -515,6 +517,7 @@ exports[`PersonalInformation renders a personal information component embedded i
                   className="ui input"
                 >
                   <input
+                    disabled={false}
                     id="field-portrait"
                     name="portrait"
                     onChange={[Function]}
@@ -686,6 +689,7 @@ exports[`PersonalInformation renders a personal information component embedded i
           className="ui basic secondary right floated button"
           onClick={[Function]}
           title="Cancel"
+          type="cancel"
         >
           <svg
             className="icon circled"

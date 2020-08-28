@@ -1,47 +1,68 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a checkbox widget component 1`] = `
-<div
-  className="inline field"
-  id="field-my-field"
->
+Array [
   <div
-    className="ui grid"
+    className="wrapper"
   >
     <div
-      className="stretched row"
+      className="toolbar"
     >
-      <div
-        className="twelve wide column"
+      <button
+        aria-label="Edit"
+        className="item ui noborder button"
+        onClick={[Function]}
       >
-        <div
-          className="wrapper"
-        >
-          <div
-            className="ui checkbox"
-            onChange={[Function]}
-            onClick={[Function]}
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
-          >
-            <input
-              checked={null}
-              className="hidden"
-              disabled={false}
-              name="field-my-field"
-              readOnly={true}
-              tabIndex={0}
-              type="checkbox"
-            />
-            <label
-              htmlFor="field-my-field"
-            >
-              My field
-            </label>
-          </div>
-        </div>
-      </div>
+        <i
+          aria-hidden="true"
+          className="blue write square large icon"
+          onClick={[Function]}
+        />
+      </button>
+      <button
+        aria-label="Delete"
+        className="item ui noborder button"
+        onClick={[Function]}
+      >
+        <i
+          aria-hidden="true"
+          className="red close large icon"
+          onClick={[Function]}
+        />
+      </button>
     </div>
-  </div>
-</div>
+    <i
+      aria-hidden="true"
+      className="grey bars icon drag handle"
+    />
+    <div
+      className="ui checked checkbox"
+      onChange={[Function]}
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+    >
+      <input
+        checked={true}
+        className="hidden"
+        disabled={false}
+        name="field-my-field"
+        readOnly={true}
+        tabIndex={0}
+        type="checkbox"
+      />
+      <label
+        htmlFor="field-my-field"
+      >
+        My field
+      </label>
+    </div>
+  </div>,
+  <div
+    className="ui red pointing basic label"
+    onClick={[Function]}
+  >
+    error1
+  </div>,
+]
 `;
