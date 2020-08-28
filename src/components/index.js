@@ -68,7 +68,7 @@ export DatabaseInformation from '@plone/volto/components/manage/Controlpanels/Da
 export Controlpanel from '@plone/volto/components/manage/Controlpanels/Controlpanel';
 export Controlpanels from '@plone/volto/components/manage/Controlpanels/Controlpanels';
 export ContentType from '@plone/volto/components/manage/Controlpanels/ContentType';
-export ContentTypeMetadata from '@plone/volto/components/manage/Controlpanels/ContentTypeMetadata';
+export ContentTypeSchema from '@plone/volto/components/manage/Controlpanels/ContentTypeSchema';
 export ContentTypeLayout from '@plone/volto/components/manage/Controlpanels/ContentTypeLayout';
 export ContentTypes from '@plone/volto/components/manage/Controlpanels/ContentTypes';
 export UsersControlpanel from '@plone/volto/components/manage/Controlpanels/UsersControlpanel';

@@ -1,6 +1,6 @@
 /**
- * Content type metadata.
- * @module components/manage/Controlpanels/ContentTypeMetadata
+ * Content type schema.
+ * @module components/manage/Controlpanels/ContentTypeSchema
  */
 
 import {
@@ -43,8 +43,8 @@ const messages = defineMessages({
     defaultMessage: 'Error',
   },
   typeCreated: {
-    id: 'Metadata updates',
-    defaultMessage: 'Metadata updates',
+    id: 'Schema updates',
+    defaultMessage: 'Schema updates',
   },
 });
 
@@ -105,11 +105,11 @@ const makeSchemaData = (schema, contentType) => {
 };
 
 /**
- * ContentTypeMetadata class.
- * @class ContentTypeMetadata
+ * ContentTypeSchema class.
+ * @class ContentTypeSchema
  * @extends Component
  */
-class ContentTypeMetadata extends Component {
+class ContentTypeSchema extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -302,4 +302,4 @@ export default compose(
       getVocabulary,
     },
   ),
-)(ContentTypeMetadata);
+)(ContentTypeSchema);

@@ -132,7 +132,7 @@ class ContentTypes extends Component {
     this.onAddTypeSuccess = this.onAddTypeSuccess.bind(this);
     this.onEdit = this.onEdit.bind(this);
     this.onLayout = this.onLayout.bind(this);
-    this.addFields = this.addFields.bind(this);
+    this.onSchema = this.onSchema.bind(this);
     this.onDelete = this.onDelete.bind(this);
     this.onDeleteCancel = this.onDeleteCancel.bind(this);
     this.onDeleteOk = this.onDeleteOk.bind(this);
@@ -295,7 +295,7 @@ class ContentTypes extends Component {
    * @memberof ContentTypes
    * @returns {undefined}
    */
-  addFields(event, { value }) {
+  onSchema(event, { value }) {
     if (value) {
       this.props.history.push(`${this.props.pathname}/${value}/schema`);
     }
@@ -475,7 +475,7 @@ class ContentTypes extends Component {
                               />
                             </Dropdown.Item>
                             <Dropdown.Item
-                              onClick={this.addFields}
+                              onClick={this.onSchema}
                               value={item['id']}
                             >
                               <Icon name={folderSVG} size="15px" />
