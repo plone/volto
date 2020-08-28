@@ -2,6 +2,7 @@
  * Content Types component.
  * @module components/manage/Controlpanels/ContentTypes
  */
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -22,11 +23,12 @@ import {
   ContentTypesActions,
 } from '@plone/volto/components';
 import {
-  deleteControlpanel,
   getControlpanel,
   postControlpanel,
+  deleteControlpanel,
 } from '@plone/volto/actions';
 import { getId } from '@plone/volto/helpers';
+
 import addSVG from '@plone/volto/icons/add-document.svg';
 import backSVG from '@plone/volto/icons/back.svg';
 
@@ -78,10 +80,6 @@ const messages = defineMessages({
   typeDeleted: {
     id: 'Content type deleted',
     defaultMessage: 'Content type deleted',
-  },
-  Schema: {
-    id: 'Schema',
-    defaultMessage: 'Schema',
   },
 });
 
