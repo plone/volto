@@ -2123,7 +2123,7 @@ msgstr "Medien"
 
 #: config/Blocks
 msgid "mostUsed"
-msgstr "Häufig genutzt<<<<<<< HEAD"
+msgstr "Häufig genutzt"
 
 #: components/manage/Contents/ContentsItem
 msgid "no workflow state"

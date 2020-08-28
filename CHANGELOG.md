@@ -1,16 +1,22 @@
 # Change Log
 
-## 7.11.2 (unreleased)
+## 7.11.3 (unreleased)
 
 ### Breaking
 
 ### Feature
 
-- Increase z-index of `block-add-button` @steffenri
+### Bugfix
+
+### Internal
+
+## 7.11.2 (2020-08-28)
 
 ### Bugfix
 
 - Fix `null` response issue when passing custom `Accept:` headers to actions #1771 @avoinea
+- Removed all `<<<<<HEAD` artifacts from translations @steffenri
+- Increase z-index of `block-add-button` @steffenri
 
 ### Internal
 
