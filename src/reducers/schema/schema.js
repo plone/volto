@@ -7,9 +7,11 @@ import { flatten, keys, pickBy, isArray, map, mapKeys, merge } from 'lodash';
 
 import {
   GET_SCHEMA,
+  GET_FIELD_SCHEMA,
   POST_SCHEMA,
   PUT_SCHEMA,
   UPDATE_SCHEMA,
+  UPDATE_FIELD_SCHEMA,
 } from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
@@ -32,6 +34,19 @@ const initialState = {
     loading: false,
     error: null,
   },
+  field: {
+    schema: null,
+    get: {
+      error: null,
+      loaded: false,
+      loading: false,
+    },
+    update: {
+      error: null,
+      loaded: false,
+      loading: false,
+    },
+  },
 };
 
 /**
@@ -53,6 +68,7 @@ function getRequestKey(actionType) {
  */
 export default function schema(state = initialState, action = {}) {
   switch (action.type) {
+    /** PENDING */
     case `${GET_SCHEMA}_PENDING`:
       return {
         ...state,
@@ -71,6 +87,21 @@ export default function schema(state = initialState, action = {}) {
           error: null,
         },
       };
+    case `${GET_FIELD_SCHEMA}_PENDING`:
+    case `${UPDATE_FIELD_SCHEMA}_PENDING`:
+      return {
+        ...state,
+        field: {
+          ...state.field,
+          [getRequestKey(action.type)]: {
+            loading: true,
+            loaded: false,
+            error: null,
+          },
+        },
+      };
+
+    /** SUCCESS */
     case `${GET_SCHEMA}_SUCCESS`:
       return {
         ...state,
@@ -116,6 +147,22 @@ export default function schema(state = initialState, action = {}) {
           error: null,
         },
       };
+    case `${GET_FIELD_SCHEMA}_SUCCESS`:
+    case `${UPDATE_FIELD_SCHEMA}_SUCCESS`:
+      return {
+        ...state,
+        field: {
+          ...state.field,
+          schema: { ...action.result },
+          [getRequestKey(action.type)]: {
+            loading: false,
+            loaded: true,
+            error: null,
+          },
+        },
+      };
+
+    /** FAIL */
     case `${GET_SCHEMA}_FAIL`:
       return {
         ...state,
@@ -133,6 +180,19 @@ export default function schema(state = initialState, action = {}) {
           loading: false,
           loaded: false,
           error: action.error,
+        },
+      };
+    case `${GET_FIELD_SCHEMA}_FAIL`:
+    case `${UPDATE_FIELD_SCHEMA}_FAIL`:
+      return {
+        ...state,
+        field: {
+          ...state.field,
+          [getRequestKey(action.type)]: {
+            loading: false,
+            loaded: false,
+            error: action.error,
+          },
         },
       };
     default:

@@ -39,10 +39,6 @@ export {
 export { getDiff } from '@plone/volto/actions/diff/diff';
 export { emailNotification } from '@plone/volto/actions/emailNotification/emailNotification';
 export {
-  getFieldSchema,
-  updateFieldSchema,
-} from '@plone/volto/actions/fieldschema/fieldschema';
-export {
   createGroup,
   deleteGroup,
   getGroup,
@@ -64,9 +60,11 @@ export { getQueryStringResults } from '@plone/volto/actions/querystringsearch/qu
 export { listRoles } from '@plone/volto/actions/roles/roles';
 export {
   getSchema,
+  getFieldSchema,
   postSchema,
   putSchema,
   updateSchema,
+  updateFieldSchema,
 } from '@plone/volto/actions/schema/schema';
 export {
   resetSearchContent,

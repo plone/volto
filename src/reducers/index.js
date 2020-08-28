@@ -14,7 +14,6 @@ import content from '@plone/volto/reducers/content/content';
 import controlpanels from '@plone/volto/reducers/controlpanels/controlpanels';
 import diff from '@plone/volto/reducers/diff/diff';
 import emailNotification from '@plone/volto/reducers/emailNotification/emailNotification';
-import fieldSchema from '@plone/volto/reducers/fieldschema/fieldschema';
 import form from '@plone/volto/reducers/form/form';
 import groups from '@plone/volto/reducers/groups/groups';
 import history from '@plone/volto/reducers/history/history';
@@ -76,7 +75,6 @@ const reducers = {
   vocabularies,
   workflow,
   toolbar,
-  fieldSchema,
   ...addonReducers,
 };
 
