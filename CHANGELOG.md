@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Sentry integration
+
 ### Bugfix
 
 ### Internal
