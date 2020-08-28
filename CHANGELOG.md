@@ -8,6 +8,8 @@
 
 - Add a `subrequest` option to the `createContent` action @tiberiuichim @silviubogan
 
+- Increase z-index of `block-add-button` @steffenri
+
 ### Bugfix
 
 - Fix bug introduced in 7.9.0, properly return a list of results when dealing with batched api requests @tiberiuichim
