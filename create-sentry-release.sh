@@ -19,4 +19,6 @@ if [ ! -z "$SENTRY_AUTH_TOKEN" ] && [ ! -z "$SENTRY_URL" ] && [ ! -z "$SENTRY_OR
     echo "Release $SENTRY_RELEASE already exists"
     echo "Use --force if you still want to upload the source maps"
   fi
+else
+  echo "SENTRY is not configured"
 fi
