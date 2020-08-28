@@ -5,9 +5,11 @@
 
 import {
   GET_SCHEMA,
+  GET_FIELD_SCHEMA,
   POST_SCHEMA,
   PUT_SCHEMA,
   UPDATE_SCHEMA,
+  UPDATE_FIELD_SCHEMA,
 } from '@plone/volto/constants/ActionTypes';
 
 /**
@@ -75,6 +77,46 @@ export function updateSchema(type, data) {
     request: {
       op: 'patch',
       path: `/@types/${type}`,
+      data,
+    },
+  };
+}
+
+/**
+ * Get field schema function.
+ * @function getFieldSchema
+ * @param {string} type Content type.
+ * @param {string} field Content type field name.
+ * @returns {Object} Get field schema action.
+ */
+export function getFieldSchema(type, field) {
+  return (dispatch, getState) => {
+    if (getState().userSession.token) {
+      dispatch({
+        type: GET_FIELD_SCHEMA,
+        request: {
+          op: 'get',
+          path: `/@types/${type}/${field}`,
+        },
+      });
+    }
+  };
+}
+
+/**
+ * Update field schema function.
+ * @function updateFieldSchema
+ * @param {string} type Content type.
+ * @param {string} field Content type field name.
+ * @param {Object} data Schema data.
+ * @returns {Object} Add field action.
+ */
+export function updateFieldSchema(type, field, data) {
+  return {
+    type: UPDATE_FIELD_SCHEMA,
+    request: {
+      op: 'put',
+      path: `/@types/${type}/${field}`,
       data,
     },
   };

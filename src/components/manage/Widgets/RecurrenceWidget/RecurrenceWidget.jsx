@@ -303,7 +303,7 @@ class RecurrenceWidget extends Component {
     formValues = this.changeField(
       formValues,
       'recurrenceEnds',
-      this.props.formData.end ? 'until' : 'count',
+      this.props.formData?.end ? 'until' : 'count',
     );
 
     const rrule = rruleSet.rrules()[0];
@@ -499,10 +499,10 @@ class RecurrenceWidget extends Component {
     var currWeekday = this.getWeekday(moment().day() - 1);
     var currMonth = moment().month() + 1;
 
-    var startMonth = this.props.formData.start
+    var startMonth = this.props.formData?.start
       ? moment(this.props.formData.start).month() + 1
       : currMonth;
-    var startWeekday = this.props.formData.start
+    var startWeekday = this.props.formData?.start
       ? this.getWeekday(moment(this.props.formData.start).day() - 1)
       : currWeekday;
     formValues[field] = value;

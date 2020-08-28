@@ -65,9 +65,11 @@ export { getNavigation } from '@plone/volto/actions/navigation/navigation';
 export { listRoles } from '@plone/volto/actions/roles/roles';
 export {
   getSchema,
+  getFieldSchema,
   postSchema,
   putSchema,
   updateSchema,
+  updateFieldSchema,
 } from '@plone/volto/actions/schema/schema';
 export {
   resetSearchContent,

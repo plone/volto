@@ -129,7 +129,7 @@ const TextareaWidget = ({
             <Icon name="write square" size="large" color="blue" />
           </button>
           <button
-            aria-label={this.props.intl.formatMessage(messages.delete)}
+            aria-label={intl.formatMessage(messages.delete)}
             className="item ui noborder button"
             onClick={() => onDelete(id)}
           >

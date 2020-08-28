@@ -29,7 +29,7 @@ class FormFieldWrapper extends Component {
     wrapped: PropTypes.bool,
     columns: PropTypes.number,
     draggable: PropTypes.bool,
-    onEdit: PropTypes.bool,
+    onEdit: PropTypes.func,
     className: PropTypes.string,
   };
 

@@ -110,7 +110,7 @@ const processChildren = (children, keys) => {
       if (Array.isArray(child)) {
         // If it's empty is a blank paragraph, we want to add a <br /> in it
         if (isEmpty(child)) {
-          return <br />;
+          return <br key="br" />;
         }
         return child.map((subchild, index) => {
           if (typeof subchild === 'string') {

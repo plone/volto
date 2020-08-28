@@ -110,14 +110,14 @@ const CheckboxWidget = ({
         {onEdit && (
           <div className="toolbar">
             <button
-              aria-label={this.props.intl.formatMessage(messages.edit)}
+              aria-label={intl.formatMessage(messages.edit)}
               className="item ui noborder button"
               onClick={() => onEdit(id, schema)}
             >
               <Icon name="write square" size="large" color="blue" />
             </button>
             <button
-              aria-label={this.props.intl.formatMessage(messages.delete)}
+              aria-label={intl.formatMessage(messages.delete)}
               className="item ui noborder button"
               onClick={() => onDelete(id)}
             >
