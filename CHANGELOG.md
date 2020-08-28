@@ -2,17 +2,13 @@
 
 ## 7.11.3 (unreleased)
 
-### Breaking
-
-### Feature
-
-- Add a `subrequest` option to the `createContent` action @tiberiuichim @silviubogan
-
 ### Bugfix
 
 - On image upload in a block, don't overwrite the global `state.content.data` with new image data @tiberiuichim @silviubogan
 
 ### Internal
+
+- Add a `subrequest` option to the `createContent` action @tiberiuichim @silviubogan
 
 ## 7.11.2 (2020-08-28)
 
