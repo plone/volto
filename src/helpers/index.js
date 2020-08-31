@@ -42,6 +42,7 @@ export {
   getVocabFromHint,
   getVocabFromField,
   getVocabFromItems,
+  getFieldsVocabulary,
 } from '@plone/volto/helpers/Vocabularies/Vocabularies';
 export AlignBlock from '@plone/volto/helpers/AlignBlock/AlignBlock';
 

@@ -52,3 +52,87 @@ export function getVocabFromItems(props) {
     ? props.items.vocabulary['@id']
     : false;
 }
+
+/**
+ * Get Fields vocabulary
+ * @function getFieldsVocabulary
+ * @returns {Object} Fields vocabulary
+ */
+export function getFieldsVocabulary() {
+  return {
+    items: [
+      {
+        title: 'Choice',
+        token: 'label_choice_field',
+      },
+      {
+        title: 'Date',
+        token: 'label_date_field',
+      },
+      {
+        title: 'Date/Time',
+        token: 'label_datetime_field',
+      },
+      {
+        title: 'Email',
+        token: 'Email',
+      },
+      {
+        title: 'File Upload',
+        token: 'File Upload',
+      },
+      {
+        title: 'Floating-point number',
+        token: 'label_float_field',
+      },
+      {
+        title: 'Image',
+        token: 'Image',
+      },
+      {
+        title: 'Integer',
+        token: 'label_integer_field',
+      },
+      {
+        title: 'JSONField',
+        token: 'JSONField',
+      },
+      {
+        title: 'Multiple Choice',
+        token: 'label_multi_choice_field',
+      },
+      {
+        title: 'Password',
+        token: 'label_password_field',
+      },
+      {
+        title: 'Relation Choice',
+        token: 'Relation Choice',
+      },
+      {
+        title: 'Relation List',
+        token: 'Relation List',
+      },
+      {
+        title: 'Rich Text',
+        token: 'Rich Text',
+      },
+      {
+        title: 'Text',
+        token: 'label_text_field',
+      },
+      {
+        title: 'Text line (String)',
+        token: 'label_textline_field',
+      },
+      {
+        title: 'URL',
+        token: 'URL',
+      },
+      {
+        title: 'Yes/No',
+        token: 'label_boolean_field',
+      },
+    ],
+  };
+}

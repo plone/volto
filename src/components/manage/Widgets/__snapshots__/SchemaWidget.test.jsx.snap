@@ -100,7 +100,7 @@ exports[`renders a schema widget component 1`] = `
               <label
                 htmlFor="addfield"
               >
-                Add new field
+                Add field
               </label>
             </div>
             <div

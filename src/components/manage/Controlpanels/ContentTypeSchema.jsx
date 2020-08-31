@@ -3,13 +3,7 @@
  * @module components/manage/Controlpanels/ContentTypeSchema
  */
 
-import {
-  getSchema,
-  getFieldSchema,
-  putSchema,
-  updateFieldSchema,
-  getVocabulary,
-} from '@plone/volto/actions';
+import { getSchema, putSchema } from '@plone/volto/actions';
 import { getParentUrl } from '@plone/volto/helpers';
 import { nth } from 'lodash';
 import { Form, Icon, Toast, Toolbar } from '@plone/volto/components';
@@ -73,18 +67,8 @@ class ContentTypeSchema extends Component {
   static propTypes = {
     getSchema: PropTypes.func.isRequired,
     putSchema: PropTypes.func.isRequired,
-    getVocabulary: PropTypes.func.isRequired,
     pathname: PropTypes.string.isRequired,
-    schema: PropTypes.objectOf(PropTypes.any),
-    vocabularyFields: PropTypes.objectOf(PropTypes.any),
-    contenttype: PropTypes.shape({
-      // eslint-disable-line react/no-unused-prop-types
-      '@id': PropTypes.string,
-      '@type': PropTypes.string,
-    }),
-    returnUrl: PropTypes.string,
-    type: PropTypes.string,
-    location: PropTypes.objectOf(PropTypes.any),
+    id: PropTypes.string.isRequired,
   };
 
   /**
@@ -92,11 +76,7 @@ class ContentTypeSchema extends Component {
    * @property {Object} defaultProps Default properties.
    * @static
    */
-  static defaultProps = {
-    schema: null,
-    returnUrl: '/controlpanel/dexterity-types',
-    type: 'Default',
-  };
+  static defaultProps = {};
 
   /**
    * Constructor
@@ -107,15 +87,8 @@ class ContentTypeSchema extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      error: null,
+      schema: null,
       content: null,
-      placeholderProps: {},
-      formData: {},
-      activeIndex: 0,
-      schemaItems: {},
-      loading: false,
-      hideActions: false,
-      visual: true,
       isClient: false,
     };
 
@@ -131,7 +104,6 @@ class ContentTypeSchema extends Component {
    */
   UNSAFE_componentWillMount() {
     this.props.getSchema(this.props.id);
-    this.props.getVocabulary('Fields');
   }
 
   /**
@@ -179,6 +151,20 @@ class ContentTypeSchema extends Component {
           info
           title={this.props.intl.formatMessage(messages.info)}
           content={this.props.intl.formatMessage(messages.changesSaved)}
+        />,
+      );
+    }
+
+    // Schema update error
+    if (
+      this.props.schemaRequest.put.loading &&
+      nextProps.schemaRequest.put.error
+    ) {
+      toast.info(
+        <Toast
+          error
+          title={this.props.intl.formatMessage(messages.error)}
+          content={nextProps.schemaRequest.put.error}
         />,
       );
     }
@@ -279,7 +265,6 @@ class ContentTypeSchema extends Component {
             isEditForm
             ref={this.form}
             schema={contentTypeSchema}
-            vocabularyFields={this.props.vocabularyFields}
             formData={schemaData}
             pathname={this.props.pathname}
             onSubmit={this.onSubmit}
@@ -341,16 +326,12 @@ export default compose(
     (state, props) => ({
       schema: state.schema.schema,
       schemaRequest: state.schema,
-      vocabularyFields: state.vocabularies.Fields,
       pathname: props.location.pathname,
       id: nth(props.location.pathname.split('/'), -2),
     }),
     {
       getSchema,
-      getFieldSchema,
       putSchema,
-      updateFieldSchema,
-      getVocabulary,
     },
   ),
 )(ContentTypeSchema);
