@@ -17,7 +17,8 @@ if (settings) {
 
 const MultilingualRedirector = (props) => {
   const { pathname, children } = props;
-  const currentLanguage = cookie.load('lang') || settings.defaultLanguage;
+  const currentLanguage =
+    cookie.load('I18N_LANGUAGE') || settings.defaultLanguage;
   const redirectToLanguage = settings.supportedLanguages.includes(
     currentLanguage,
   )
