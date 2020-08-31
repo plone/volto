@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Use Plone `I18N_LANGUAGE` cookie instead of `language` @cekk
+
 ### Internal
 
 ## 7.11.3 (2020-08-28)
