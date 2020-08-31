@@ -1157,11 +1157,9 @@ class SchemaWidget extends Component {
                       getItemStyle={getItemStyle}
                       isDraggable={true}
                       isDisabled={
-                        !(
-                          fieldset.id === 'default' ||
-                          fieldset.behavior ===
-                            'plone.dexterity.schema.generated'
-                        )
+                        fieldset.behavior
+                          ? !fieldset.behavior.includes('generated')
+                          : false
                       }
                     />
                   ))}

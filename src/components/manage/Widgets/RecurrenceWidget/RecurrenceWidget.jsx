@@ -767,6 +767,7 @@ class RecurrenceWidget extends Component {
               <div>
                 <Button
                   basic
+                  disabled={this.props.isDisabled}
                   color="blue"
                   className="edit-recurrence"
                   onClick={this.show('blurring')}

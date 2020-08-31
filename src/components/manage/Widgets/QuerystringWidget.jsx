@@ -277,6 +277,8 @@ class QuerystringWidget extends Component {
       onDelete,
       indexes,
       intl,
+      draggable,
+      isDisabled,
     } = this.props;
 
     const schema = {
@@ -322,7 +324,7 @@ class QuerystringWidget extends Component {
             <Grid.Column width="4">
               <div className="wrapper">
                 <label htmlFor={`field-${id}`}>
-                  {onEdit && (
+                  {draggable && onEdit && (
                     <i
                       aria-hidden="true"
                       className="grey bars icon drag handle"
@@ -333,7 +335,7 @@ class QuerystringWidget extends Component {
               </div>
             </Grid.Column>
             <Grid.Column width="8">
-              {onEdit && (
+              {onEdit && !isDisabled && (
                 <div className="toolbar">
                   <button
                     onClick={() => onEdit(id, schema)}
@@ -357,7 +359,7 @@ class QuerystringWidget extends Component {
                       <Select
                         id={`field-${id}`}
                         name={id}
-                        disabled={onEdit !== null}
+                        isDisabled={isDisabled}
                         className="react-select-container"
                         classNamePrefix="react-select"
                         options={map(
@@ -402,7 +404,7 @@ class QuerystringWidget extends Component {
                       <Select
                         id={`field-${id}`}
                         name={id}
-                        disabled={onEdit !== null}
+                        isDisabled={isDisabled}
                         className="react-select-container"
                         classNamePrefix="react-select"
                         options={map(
@@ -459,7 +461,7 @@ class QuerystringWidget extends Component {
                   <Select
                     id={`field-${id}`}
                     name={id}
-                    disabled={onEdit !== null}
+                    isDisabled={isDisabled}
                     className="react-select-container"
                     classNamePrefix="react-select"
                     placeholder={this.props.intl.formatMessage(

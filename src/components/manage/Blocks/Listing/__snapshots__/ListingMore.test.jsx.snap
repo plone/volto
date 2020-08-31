@@ -32,7 +32,6 @@ Array [
             className="ui input"
           >
             <input
-              disabled={false}
               id="field-linkTitle"
               name="linkTitle"
               onChange={[Function]}
@@ -74,7 +73,6 @@ Array [
             className="ui icon input"
           >
             <input
-              disabled={false}
               id="field-linkHref"
               name="linkHref"
               onChange={[Function]}

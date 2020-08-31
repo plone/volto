@@ -53,7 +53,6 @@ exports[`Register renders a register component 1`] = `
                     className="ui input"
                   >
                     <input
-                      disabled={false}
                       id="field-fullname"
                       name="fullname"
                       onChange={[Function]}
@@ -108,7 +107,6 @@ exports[`Register renders a register component 1`] = `
                     className="ui input"
                   >
                     <input
-                      disabled={false}
                       id="field-email"
                       name="email"
                       onChange={[Function]}

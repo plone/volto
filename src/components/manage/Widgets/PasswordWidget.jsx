@@ -7,43 +7,30 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Input } from 'semantic-ui-react';
 import { FormFieldWrapper } from '@plone/volto/components';
+import { injectIntl } from 'react-intl';
 
 /**
  * PasswordWidget component class.
  * @function PasswordWidget
  * @returns {string} Markup of the component.
  */
-const PasswordWidget = ({
-  id,
-  title,
-  required,
-  description,
-  error,
-  value,
-  onChange,
-  fieldSet,
-  wrapped,
-}) => (
-  <FormFieldWrapper
-    id={id}
-    title={title}
-    description={description}
-    required={required}
-    error={error}
-    fieldSet={fieldSet}
-    wrapped={wrapped}
-  >
-    <Input
-      id={`field-${id}`}
-      name={id}
-      type="password"
-      value={value || ''}
-      onChange={({ target }) =>
-        onChange(id, target.value === '' ? undefined : target.value)
-      }
-    />
-  </FormFieldWrapper>
-);
+const PasswordWidget = (props) => {
+  const { id, value, onChange } = props;
+  return (
+    <FormFieldWrapper {...props}>
+      <Input
+        id={`field-${id}`}
+        name={id}
+        type="password"
+        disabled={props.isDisabled}
+        value={value || ''}
+        onChange={({ target }) =>
+          onChange(id, target.value === '' ? undefined : target.value)
+        }
+      />
+    </FormFieldWrapper>
+  );
+};
 
 /**
  * Property types.
@@ -73,4 +60,4 @@ PasswordWidget.defaultProps = {
   value: null,
 };
 
-export default PasswordWidget;
+export default injectIntl(PasswordWidget);

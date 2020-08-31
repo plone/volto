@@ -161,6 +161,10 @@ class ObjectBrowserWidget extends Component {
   };
 
   handleSelectedItemsRefClick = (e) => {
+    if (this.props.isDisabled) {
+      return;
+    }
+
     if (
       e.target.contains(this.selectedItemsRef.current) ||
       e.target.contains(this.placeholderRef.current)
@@ -186,6 +190,8 @@ class ObjectBrowserWidget extends Component {
       onEdit,
       fieldSet,
       onChange,
+      draggable,
+      isDisabled,
     } = this.props;
 
     let icon =
@@ -213,7 +219,7 @@ class ObjectBrowserWidget extends Component {
             <Grid.Column width="4">
               <div className="wrapper">
                 <label htmlFor={`field-${id}`}>
-                  {onEdit && (
+                  {draggable && onEdit && (
                     <i
                       aria-hidden="true"
                       className="grey bars icon drag handle"
@@ -246,7 +252,11 @@ class ObjectBrowserWidget extends Component {
                   <Icon name={navTreeSVG} size="18px" />
                 </Button> */}
 
-                <Button onClick={iconAction} className="action">
+                <Button
+                  onClick={iconAction}
+                  className="action"
+                  disabled={isDisabled}
+                >
                   <Icon name={icon} size="18px" />
                 </Button>
               </div>

@@ -380,7 +380,6 @@ exports[`renders an Listing Data Sidebar component 1`] = `
             className="ui input"
           >
             <input
-              disabled={false}
               id="field-limit"
               name="limit"
               onChange={[Function]}
@@ -422,7 +421,6 @@ exports[`renders an Listing Data Sidebar component 1`] = `
             className="ui input"
           >
             <input
-              disabled={false}
               id="field-itembatchsize"
               name="itembatchsize"
               onChange={[Function]}

@@ -5,7 +5,6 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Icon as IconOld } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { map, find, isBoolean, isObject, intersection } from 'lodash';
@@ -237,65 +236,14 @@ class SelectWidget extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const schema = {
-      fieldsets: [
-        {
-          id: 'default',
-          title: this.props.intl.formatMessage(messages.default),
-          fields: ['title', 'id', 'description', 'choices', 'required'],
-        },
-      ],
-      properties: {
-        id: {
-          type: 'string',
-          title: this.props.intl.formatMessage(messages.idTitle),
-          description: this.props.intl.formatMessage(messages.idDescription),
-        },
-        title: {
-          type: 'string',
-          title: this.props.intl.formatMessage(messages.title),
-        },
-        description: {
-          type: 'string',
-          widget: 'textarea',
-          title: this.props.intl.formatMessage(messages.description),
-        },
-        choices: {
-          type: 'array',
-          title: this.props.intl.formatMessage(messages.choices),
-        },
-        required: {
-          type: 'boolean',
-          title: this.props.intl.formatMessage(messages.required),
-        },
-      },
-      required: ['id', 'title', 'choices'],
-    };
-
-    const { onEdit, id, onDelete, choices, value, onChange } = this.props;
+    const { id, choices, value, onChange } = this.props;
 
     return (
-      <FormFieldWrapper {...this.props} draggable={true}>
-        {onEdit && (
-          <div className="toolbar">
-            <button
-              onClick={() => onEdit(id, schema)}
-              className="item ui noborder button"
-            >
-              <IconOld name="write square" size="large" color="blue" />
-            </button>
-            <button
-              aria-label={this.props.intl.formatMessage(messages.close)}
-              className="item ui noborder button"
-              onClick={() => onDelete(id)}
-            >
-              <IconOld name="close" size="large" color="red" />
-            </button>
-          </div>
-        )}
+      <FormFieldWrapper {...this.props}>
         {this.props.vocabBaseUrl ? (
           <>
             <AsyncPaginate
+              isDisabled={this.props.isDisabled}
               className="react-select-container"
               classNamePrefix="react-select"
               options={this.props.choices || []}
@@ -318,7 +266,7 @@ class SelectWidget extends Component {
           <Select
             id={`field-${id}`}
             name={id}
-            disabled={onEdit !== null}
+            isDisabled={this.props.isDisabled}
             className="react-select-container"
             classNamePrefix="react-select"
             isMulti={id === 'roles' || id === 'groups'}
