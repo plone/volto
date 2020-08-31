@@ -6,7 +6,7 @@
 import { getSchema, putSchema } from '@plone/volto/actions';
 import { getParentUrl } from '@plone/volto/helpers';
 import { nth } from 'lodash';
-import { Form, Icon, Toast, Toolbar } from '@plone/volto/components';
+import { Error, Form, Icon, Toast, Toolbar } from '@plone/volto/components';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import saveSVG from '@plone/volto/icons/save.svg';
 import PropTypes from 'prop-types';
@@ -87,6 +87,8 @@ class ContentTypeSchema extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      error: null,
+      saving: false,
       schema: null,
       content: null,
       isClient: false,
@@ -122,6 +124,13 @@ class ContentTypeSchema extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
+    // Schema error
+    if (this.props.schemaRequest.loading && nextProps.schemaRequest.error) {
+      this.setState({
+        error: nextProps.schemaRequest.error,
+      });
+    }
+
     // Schema GET
     if (this.props.schemaRequest.loading && nextProps.schemaRequest.loaded) {
       let properties = nextProps.schema?.properties || {};
@@ -146,6 +155,7 @@ class ContentTypeSchema extends Component {
       nextProps.schemaRequest.put.loaded
     ) {
       // this.props.getSchema(this.props.id);
+      this.setState({ saving: false });
       toast.info(
         <Toast
           info
@@ -160,6 +170,7 @@ class ContentTypeSchema extends Component {
       this.props.schemaRequest.put.loading &&
       nextProps.schemaRequest.put.error
     ) {
+      this.setState({ saving: false });
       toast.info(
         <Toast
           error
@@ -177,7 +188,20 @@ class ContentTypeSchema extends Component {
    * @returns {undefined}
    */
   onSubmit(data) {
-    this.props.putSchema(this.props.id, data.schema);
+    if (this.state.saving) {
+      this.props.putSchema(this.props.id, data.schema);
+    }
+  }
+
+  /**
+   * Save handler
+   * @method onSave
+   * @param {object} data Form data.
+   * @returns {undefined}
+   */
+  onSave() {
+    this.setState({ saving: true });
+    this.form.current.onSubmit();
   }
 
   /**
@@ -255,6 +279,11 @@ class ContentTypeSchema extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    // Error
+    if (this.state.error) {
+      return <Error error={this.state.error} />;
+    }
+
     if (this.state.schema) {
       const contentTypeSchema = this.makeSchemaList(this.state.schema);
       const schemaData = this.makeSchemaData(this.state.schema, this.props.id);
@@ -262,7 +291,6 @@ class ContentTypeSchema extends Component {
       return (
         <>
           <Form
-            isEditForm
             ref={this.form}
             schema={contentTypeSchema}
             formData={schemaData}
@@ -282,7 +310,7 @@ class ContentTypeSchema extends Component {
                       id="toolbar-save"
                       className="save"
                       aria-label={this.props.intl.formatMessage(messages.save)}
-                      onClick={() => this.form.current.onSubmit()}
+                      onClick={() => this.onSave()}
                       disabled={this.props.schemaRequest.put.loading}
                       loading={this.props.schemaRequest.put.loading}
                     >
