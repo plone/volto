@@ -123,14 +123,20 @@ class FormFieldWrapper extends Component {
                 <div className="toolbar">
                   <button
                     className="item ui noborder button"
-                    onClick={() => onEdit(id)}
+                    onClick={(evt) => {
+                      evt.preventDefault();
+                      onEdit(id);
+                    }}
                   >
                     <IconOld name="write square" size="large" color="blue" />
                   </button>
                   <button
                     aria-label={intl.formatMessage(messages.delete)}
                     className="item ui noborder button"
-                    onClick={() => onDelete(id)}
+                    onClick={(evt) => {
+                      evt.preventDefault();
+                      onDelete(id);
+                    }}
                   >
                     <IconOld name="close" size="large" color="red" />
                   </button>

@@ -88,7 +88,6 @@ class ContentTypeSchema extends Component {
     super(props);
     this.state = {
       error: null,
-      saving: false,
       schema: null,
       content: null,
       isClient: false,
@@ -155,7 +154,6 @@ class ContentTypeSchema extends Component {
       nextProps.schemaRequest.put.loaded
     ) {
       // this.props.getSchema(this.props.id);
-      this.setState({ saving: false });
       toast.info(
         <Toast
           info
@@ -170,7 +168,6 @@ class ContentTypeSchema extends Component {
       this.props.schemaRequest.put.loading &&
       nextProps.schemaRequest.put.error
     ) {
-      this.setState({ saving: false });
       toast.info(
         <Toast
           error
@@ -188,20 +185,7 @@ class ContentTypeSchema extends Component {
    * @returns {undefined}
    */
   onSubmit(data) {
-    if (this.state.saving) {
-      this.props.putSchema(this.props.id, data.schema);
-    }
-  }
-
-  /**
-   * Save handler
-   * @method onSave
-   * @param {object} data Form data.
-   * @returns {undefined}
-   */
-  onSave() {
-    this.setState({ saving: true });
-    this.form.current.onSubmit();
+    this.props.putSchema(this.props.id, data.schema);
   }
 
   /**
@@ -310,7 +294,7 @@ class ContentTypeSchema extends Component {
                       id="toolbar-save"
                       className="save"
                       aria-label={this.props.intl.formatMessage(messages.save)}
-                      onClick={() => this.onSave()}
+                      onClick={() => this.form.current.onSubmit()}
                       disabled={this.props.schemaRequest.put.loading}
                       loading={this.props.schemaRequest.put.loading}
                     >

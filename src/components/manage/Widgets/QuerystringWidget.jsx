@@ -338,13 +338,19 @@ class QuerystringWidget extends Component {
               {onEdit && !isDisabled && (
                 <div className="toolbar">
                   <button
-                    onClick={() => onEdit(id, schema)}
+                    onClick={(evt) => {
+                      evt.preventDefault();
+                      onEdit(id, schema);
+                    }}
                     className="item ui noborder button"
                   >
                     <OldIcon name="write square" size="large" color="blue" />
                   </button>
                   <button
-                    onClick={() => onDelete(id)}
+                    onClick={(evt) => {
+                      evt.preventDefault();
+                      onDelete(id);
+                    }}
                     className="item ui noborder button"
                   >
                     <Icon name={clearSVG} size="24px" className="close" />
