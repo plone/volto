@@ -18,7 +18,7 @@ import { v4 as uuid } from 'uuid';
 import qs from 'query-string';
 import { settings } from '~/config';
 import { toast } from 'react-toastify';
-
+import { Grid, Container } from 'semantic-ui-react';
 import { createContent, getSchema } from '@plone/volto/actions';
 import { Form, Icon, Toolbar, Sidebar, Toast } from '@plone/volto/components';
 import {
@@ -130,6 +130,7 @@ class Add extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
+    console.log('location', this.props.location);
     this.props.getSchema(this.props.type);
     this.setState({ isClient: true });
   }
@@ -207,8 +208,9 @@ class Add extends Component {
       const blocksLayoutFieldname = getBlocksLayoutFieldname(
         this.props.schema.properties,
       );
+      const translationObject = this.props.location?.state?.translationObject;
 
-      return (
+      const pageAdd = (
         <div id="page-add">
           <Helmet
             title={this.props.intl.formatMessage(messages.add, {
@@ -289,6 +291,35 @@ class Add extends Component {
             </Portal>
           )}
         </div>
+      );
+
+      return translationObject ? (
+        <Container>
+          <Grid
+            celled="internally"
+            stackable
+            columns={2}
+            id="page-add-translation"
+          >
+            <Grid.Column className="source-object">
+              <Form
+                schema={this.props.schema}
+                formData={translationObject}
+                onSubmit={() => {
+                  /*do nothing*/
+                }}
+                hideActions
+                pathname={this.props.pathname}
+                visual={visual}
+                title={translationObject.language.title}
+                loading={false}
+              />
+            </Grid.Column>
+            <Grid.Column>{pageAdd}</Grid.Column>
+          </Grid>
+        </Container>
+      ) : (
+        pageAdd
       );
     }
     return <div />;

@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { updateIntl } from 'react-intl-redux';
-import { getTranslationLocator } from '@plone/volto/actions';
+import { getTranslationLocator, getContent } from '@plone/volto/actions';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import { settings } from '~/config';
 
@@ -20,12 +20,19 @@ const CreateTranslation = (props) => {
   const dispatch = useDispatch();
   const { language, translationOf } = props.location.state;
   const [translationLocation, setTranslationLocation] = React.useState(null);
+  const [translationObject, setTranslationObject] = React.useState(null);
 
   React.useEffect(() => {
     // Only on mount, we dispatch the locator query
     dispatch(getTranslationLocator(translationOf, language)).then((resp) => {
       setTranslationLocation(resp['@id']);
     });
+    //and we load the translationObject
+    dispatch(getContent(translationOf, null, 'translationObject')).then(
+      (resp) => {
+        setTranslationObject(resp);
+      },
+    );
     // On unmount we dispatch the language change
     return () => {
       dispatch(
@@ -40,7 +47,8 @@ const CreateTranslation = (props) => {
   }, []);
 
   return (
-    translationLocation && (
+    translationLocation &&
+    translationObject && (
       <Redirect
         to={{
           pathname: `${flattenToAppURL(translationLocation)}/add`,
@@ -48,6 +56,7 @@ const CreateTranslation = (props) => {
           state: {
             translationOf: props.location.state.translationOf,
             language: props.location.state.language,
+            translationObject: translationObject,
           },
         }}
       />
