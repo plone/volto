@@ -168,11 +168,14 @@ class ContentTypeSchema extends Component {
       this.props.schemaRequest.put.loading &&
       nextProps.schemaRequest.put.error
     ) {
-      toast.info(
+      toast.error(
         <Toast
           error
           title={this.props.intl.formatMessage(messages.error)}
-          content={nextProps.schemaRequest.put.error}
+          content={JSON.stringify(
+            nextProps.schemaRequest.put.error.response.body ||
+              nextProps.schemaRequest.put.error.response.text,
+          )}
         />,
       );
     }

@@ -78,8 +78,8 @@ export function getFieldsVocabulary() {
         token: 'Email',
       },
       {
-        title: 'File Upload',
-        token: 'File Upload',
+        title: 'File',
+        token: 'File',
       },
       {
         title: 'Floating-point number',
@@ -105,10 +105,10 @@ export function getFieldsVocabulary() {
         title: 'Password',
         token: 'label_password_field',
       },
-      {
-        title: 'Relation Choice',
-        token: 'Relation Choice',
-      },
+      // {
+      //   title: 'Relation Choice',
+      //   token: 'Relation Choice',
+      // },
       {
         title: 'Relation List',
         token: 'Relation List',

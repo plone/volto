@@ -15,7 +15,7 @@ import TextWidget from '@plone/volto/components/manage/Widgets/TextWidget';
 import TokenWidget from '@plone/volto/components/manage/Widgets/TokenWidget';
 import WysiwygWidget from '@plone/volto/components/manage/Widgets/WysiwygWidget';
 
-//import ReferenceWidget from '@plone/volto/components/manage/Widgets/ReferenceWidget';
+import ReferenceWidget from '@plone/volto/components/manage/Widgets/ReferenceWidget';
 import ObjectBrowserWidget from '@plone/volto/components/manage/Widgets/ObjectBrowserWidget';
 
 export const DatetimeWidget = loadable(() =>
@@ -43,7 +43,11 @@ export const widgetMapping = {
     file: FileWidget,
   },
   vocabulary: {
-    'plone.app.vocabularies.Catalog': ObjectBrowserWidget, //ReferenceWidget,
+    'plone.app.vocabularies.Catalog': ObjectBrowserWidget,
+  },
+  factory: {
+    'Relation List': ObjectBrowserWidget,
+    'Relation Choice': ReferenceWidget,
   },
   choices: SelectWidget,
   type: {
