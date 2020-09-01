@@ -332,7 +332,7 @@ class ContentTypeLayout extends Component {
                 }}
               />
             </div>
-            <div class="ui divider"></div>
+            <div className="ui divider"></div>
             <Button
               primary
               onClick={this.onEnableBlocks}
@@ -381,7 +381,7 @@ class ContentTypeLayout extends Component {
                 }}
               />
             </div>
-            <div class="ui divider"></div>
+            <div className="ui divider"></div>
             <Button
               primary
               onClick={this.onDisableBlocksBehavior}
