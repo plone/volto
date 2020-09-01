@@ -1,6 +1,6 @@
 # Change Log
 
-## 7.8.1 (unreleased)
+## 7.11.3 (unreleased)
 
 ### Breaking
 
@@ -12,6 +12,114 @@
 
 ### Internal
 
+## 7.11.2 (2020-08-28)
+
+### Bugfix
+
+- Fix `null` response issue when passing custom `Accept:` headers to actions #1771 @avoinea
+- Removed all `<<<<<HEAD` artifacts from translations @steffenri
+- Increase z-index of `block-add-button` @steffenri
+
+### Internal
+
+## 7.11.1 (2020-08-27)
+
+### Breaking
+
+### Feature
+
+### Bugfix
+
+- Update German translations @tisto
+
+### Internal
+
+## 7.11.0 (2020-08-27)
+
+### Feature
+
+- Add sort option to search @iFlameing
+
+### Bugfix
+
+- Turn autocomplete off for the search input field @timo
+
+## 7.10.0 (2020-08-26)
+
+### Feature
+
+- Added toast notifications for form errors @nzambello @avoinea
+- Added italian translations and translated array, token and select widget. @giuliaghisini
+
+## 7.9.2 (2020-08-26)
+
+### Bugfix
+
+- Open content browser sidebar on parent object when editing an existing document. @iFlameing
+
+### Internal
+
+- Added developer-guidelines/redux documentation @tiberiuichim
+
+## 7.9.1 (2020-08-25)
+
+### Bugfix
+
+- Fix bug related to closing the More menu of Toolbar @iFlameing
+
+- Fix cosmetic issue, add links were not properly generated in Contents view not under the root. This didn't impact functionality as the content was properly created @tiberiuichim
+
+- Fix bug for text block with new line and styles applyed to all text. @giuliaghisini
+
+### Internal
+
+- Removed unused component `src/components/manage/Contents/ContentsToolbar.jsx` @tiberiuichim
+- Add no-console eslint rule @tisto
+
+## 7.9.0 (2020-08-24)
+
+### Breaking
+
+### Feature
+
+- Adding support of pasting link of voltoCMS video link to video blocks @iFlameing
+- Allow serial processing of API requests when `mode:'serial'` is passed in the action. @tiberiuichim
+- Adding cypress test from image-gallery in edit mode @iFlameing
+
+### Bugfix
+
+- On mutating a block, don't create extra placeholder block if such block already exists @tiberiuichim
+- Fixing broken file-preview placeholder for other file type than image @iFlameing
+
+### Internal
+
+- When passed an array of items (for example in batch upload content), the `createContent` action now serializes those requests @tiberiuichim
+
+## 7.8.3 (2020-08-21)
+
+### Bugfix
+
+- Change ImageGallery image scale from preview to large. @tisto
+- Also use `settings.internalApiPath` in url helpers `isInternalURL`, `flattenToAppUrl` and `flattenHTMLToAppURL` @tiberiuichim
+- Fix getBlocks helper when blocks_layout has no `items` (default PloneSite with no volto homepage) @avoinea
+
+### Internal
+
+- Docs: Review of "How to use and addon" @ksuess
+- Addon: Hint for addon developers if function applying config is missing @ksuess
+
+## 7.8.2 (2020-08-18)
+
+### Bugfix
+
+- Include cypress folder in release @timo
+
+## 7.8.1 (2020-08-18)
+
+### Bugfix
+
+- Remove supposed fix to form.jsx again, as it apparently did not really fix anything but only broke stuff @jackahl
+
 ## 7.8.0 (2020-08-18)
 
 ### Breaking
@@ -19,8 +127,6 @@
 ### Feature
 
 - Add cms-only theme that allows to completely remove semantic-ui from public facing views @pnicolli @nzambello
-
-### Bugfix
 
 ### Internal
 

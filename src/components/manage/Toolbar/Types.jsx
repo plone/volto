@@ -19,8 +19,9 @@ const Types = ({ types, pathname, content, currentLanguage }) => {
             // Strip the type for the item we want to add
             const contentTypeToAdd = item['@id'].split('@types/')[1];
             // If we are in the root or in /contents, we need to strip the preceeding / and /contents
-            const currentPath =
-              pathname === '/' || pathname === '/contents' ? '' : pathname;
+            const currentPath = pathname
+              .replace(/\/contents$/, '')
+              .replace(/\/$/, '');
             // Finally build the route URL
             const addContentTypeRoute = `${currentPath}/add?type=${contentTypeToAdd}`;
             return (
