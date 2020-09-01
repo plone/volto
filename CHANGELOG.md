@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Added Schema Editor within Dexterity Content-Types Controlpanel @rexalex @avoinea #1517
+
 ### Bugfix
 
 ### Internal
