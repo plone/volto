@@ -26,6 +26,7 @@ import {
   Tab,
   Message,
 } from 'semantic-ui-react';
+
 import { defineMessages, injectIntl } from 'react-intl';
 import { v4 as uuid } from 'uuid';
 import { Portal } from 'react-portal';
@@ -121,6 +122,9 @@ class Form extends Component {
     description: PropTypes.string,
     visual: PropTypes.bool,
     blocks: PropTypes.arrayOf(PropTypes.object),
+    isFormSelected: PropTypes.bool,
+    onSelectForm: PropTypes.func,
+    noSidebar: PropTypes.bool,
   };
 
   /**
@@ -144,6 +148,9 @@ class Form extends Component {
     blocks: [],
     pathname: '',
     schema: {},
+    isFormSelected: true,
+    onSelectForm: null,
+    noSidebar: false,
   };
 
   /**
@@ -227,6 +234,13 @@ class Form extends Component {
    */
   componentDidMount() {
     this.setState({ isClient: true });
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    if (!props.isFormSelected) {
+      return { ...state, selected: null };
+    }
+    return state;
   }
 
   /**
@@ -333,6 +347,9 @@ class Form extends Component {
     this.setState({
       selected: id,
     });
+    if (this.props.onSelectForm) {
+      this.props.onSelectForm();
+    }
   }
 
   /**
@@ -837,7 +854,7 @@ class Form extends Component {
                 </div>
               )}
             </Droppable>
-            {this.state.isClient && (
+            {this.state.isClient && !this.props.noSidebar && (
               <Portal
                 node={__CLIENT__ && document.getElementById('sidebar-metadata')}
               >

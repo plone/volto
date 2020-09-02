@@ -10,12 +10,14 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { keys } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
-import { Button } from 'semantic-ui-react';
+import { Button, Menu } from 'semantic-ui-react';
+
 import { Portal } from 'react-portal';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { v4 as uuid } from 'uuid';
 import qs from 'query-string';
+import TranslationObject from './TranslationObject';
 import { settings } from '~/config';
 import { toast } from 'react-toastify';
 import { Grid, Container } from 'semantic-ui-react';
@@ -130,7 +132,6 @@ class Add extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    console.log('location', this.props.location);
     this.props.getSchema(this.props.type);
     this.setState({ isClient: true });
   }
@@ -247,6 +248,10 @@ class Add extends Component {
                 : null
             }
             loading={this.props.createRequest.loading}
+            isFormSelected={this.state.formSelected === 'addForm'}
+            onSelectForm={() => {
+              this.setState({ formSelected: 'addForm' });
+            }}
           />
           {this.state.isClient && (
             <Portal node={document.getElementById('toolbar')}>
@@ -302,20 +307,28 @@ class Add extends Component {
             id="page-add-translation"
           >
             <Grid.Column className="source-object">
-              <Form
+              <TranslationObject
+                translationObject={translationObject}
                 schema={this.props.schema}
-                formData={translationObject}
-                onSubmit={() => {
-                  /*do nothing*/
-                }}
-                hideActions
                 pathname={this.props.pathname}
                 visual={visual}
-                title={translationObject.language.title}
-                loading={false}
+                isFormSelected={
+                  this.state.formSelected === 'translationObjectForm'
+                }
+                onSelectForm={() => {
+                  this.setState({ formSelected: 'translationObjectForm' });
+                }}
               />
             </Grid.Column>
-            <Grid.Column>{pageAdd}</Grid.Column>
+            <Grid.Column>
+              <Menu pointing secondary attached tabular>
+                <Menu.Item
+                  name={this.props.location.state.language.toUpperCase()}
+                  active={true}
+                />
+              </Menu>
+              {pageAdd}
+            </Grid.Column>
           </Grid>
         </Container>
       ) : (
