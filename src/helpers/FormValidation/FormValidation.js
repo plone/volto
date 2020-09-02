@@ -181,6 +181,7 @@ const validateRequiredFields = (schema, formData, formatMessage) => {
 
   map(schema.required, (requiredField) => {
     if (
+      schema.properties[requiredField] &&
       schema.properties[requiredField].type !== 'boolean' &&
       !schema.properties[requiredField].readonly &&
       !formData[requiredField]
