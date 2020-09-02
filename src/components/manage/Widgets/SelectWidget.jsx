@@ -102,7 +102,7 @@ function getDefaultValues(choices, value) {
     };
   }
   if (value && choices.length > 0) {
-    return { label: find(choices, (o) => o[0] === value)[1], value };
+    return { label: find(choices, (o) => o[0] === value)?.[1] || value, value };
   } else {
     return {};
   }
