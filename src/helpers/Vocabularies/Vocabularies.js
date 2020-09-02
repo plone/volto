@@ -78,8 +78,8 @@ export function getFieldsVocabulary() {
         token: 'Email',
       },
       {
-        title: 'File',
-        token: 'File',
+        title: 'File Upload',
+        token: 'File Upload',
       },
       {
         title: 'Floating-point number',

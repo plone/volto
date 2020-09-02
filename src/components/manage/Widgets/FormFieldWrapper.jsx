@@ -120,7 +120,7 @@ class FormFieldWrapper extends Component {
             )}
             <Grid.Column width={columns === 2 ? 8 : 12}>
               {onEdit && !isDisabled && (
-                <div className="toolbar">
+                <div className="toolbar" style={{ zIndex: '2' }}>
                   <button
                     className="item ui noborder button"
                     onClick={(evt) => {

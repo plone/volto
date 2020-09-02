@@ -174,12 +174,13 @@ const schemaField = (factory, intl, fieldsets) => ({
             case 'Password':
             case 'Email':
               return ['minLength', 'maxLength'];
-            case 'Date/Time':
-            case 'Date':
-            case 'Floating-point number':
             case 'Integer':
               return ['minimum', 'maximum'];
+            case 'Floating-point number':
+            case 'Date/Time':
+            case 'Date':
             case 'File':
+            case 'File Upload':
             case 'Image':
             case 'Yes/No':
             case 'JSONField':
@@ -238,33 +239,6 @@ const schemaField = (factory, intl, fieldsets) => ({
               title: intl.formatMessage(messages.maxLength),
             },
           };
-        case 'Date/Time':
-          return {
-            minimum: {
-              type: 'string',
-              title: intl.formatMessage(messages.minimum),
-              widget: 'datetime',
-            },
-            maximum: {
-              type: 'string',
-              title: intl.formatMessage(messages.maximum),
-              widget: 'datetime',
-            },
-          };
-        case 'Date':
-          return {
-            minimum: {
-              type: 'string',
-              title: intl.formatMessage(messages.minimum),
-              widget: 'date',
-            },
-            maximum: {
-              type: 'string',
-              title: intl.formatMessage(messages.maximum),
-              widget: 'date',
-            },
-          };
-        case 'Floating-point number':
         case 'Integer':
           return {
             minimum: {
@@ -276,7 +250,11 @@ const schemaField = (factory, intl, fieldsets) => ({
               title: intl.formatMessage(messages.maximum),
             },
           };
+        case 'Floating-point number':
+        case 'Date/Time':
+        case 'Date':
         case 'File':
+        case 'File Upload':
         case 'Image':
         case 'Yes/No':
         case 'JSONField':
@@ -371,6 +349,37 @@ const formatTextareaToArray = (textarea) => {
       : null;
 
   return values ? { values } : {};
+};
+
+const formatArrayToTextarea = (props) => {
+  if (props?.values) {
+    return props.values.join('\n');
+  }
+  if (props?.choices) {
+    return props.choices.map((elem) => elem[0]).join('\n');
+  }
+  if (props?.items?.choices) {
+    return props.items.choices.map((elem) => elem[0]).join('\n');
+  }
+  return '';
+};
+
+const formatTextareaToChoices = (textarea, multiple) => {
+  const choices =
+    textarea && textarea
+      ? textarea
+          .split(/(\r\n|\n|\r)/gm)
+          .map((elem) => elem.trim())
+          .filter((elem) => elem !== '')
+          .map((elem) => [elem, elem])
+      : null;
+
+  if (!multiple) {
+    return choices ? { choices } : {};
+  }
+
+  const items = choices ? { choices: choices } : {};
+  return items ? { items } : {};
 };
 
 /**
@@ -516,6 +525,7 @@ class SchemaWidget extends Component {
                   factory,
                 };
               case 'File':
+              case 'File Upload':
                 return {
                   type: 'object',
                   factory,
@@ -739,16 +749,17 @@ class SchemaWidget extends Component {
   onEditField(values) {
     let formattedValues = { ...values };
 
-    if (values.factory !== 'Date/Time' || values.factory !== 'Date') {
-      const listOfProp = ['minLength', 'maxLength', 'minimum', 'maximum'];
+    const listOfProp = ['minLength', 'maxLength', 'minimum', 'maximum'];
+    listOfProp.forEach((prop) => {
+      formattedValues = {
+        ...formattedValues,
+        ...{ [prop]: values[prop] ? parseFloat(values[prop]) : null },
+      };
+    });
 
-      listOfProp.forEach((prop) => {
-        formattedValues = values[prop]
-          ? { ...formattedValues, ...{ [prop]: parseFloat(values[prop]) } }
-          : formattedValues;
-      });
-    }
-
+    const multiple =
+      this.props.value.properties[this.state.editField.id]?.factory ===
+      'Multiple Choice';
     const result = {
       ...this.props.value,
       fieldsets: formattedValues.parentFieldSet
@@ -764,8 +775,9 @@ class SchemaWidget extends Component {
         ...omit(this.props.value.properties, [this.state.editField.id]),
         [formattedValues.id]: {
           ...this.props.value.properties[this.state.editField.id],
-          ...omit(formattedValues, ['id', 'required', 'parentFieldSet']),
+          ...omit(formattedValues, ['id', 'parentFieldSet']),
           ...formatTextareaToArray(formattedValues.values),
+          ...formatTextareaToChoices(formattedValues.values, multiple),
         },
       },
       required: formattedValues.required
@@ -1323,14 +1335,18 @@ class SchemaWidget extends Component {
               parentFieldSet: this.props.value.fieldsets[
                 this.state.currentFieldset
               ].id,
+              values: formatArrayToTextarea(
+                this.props.value.properties[this.state.editField.id],
+              ),
             }}
             schema={schemaField(
               this.props.value.properties[this.state.editField.id].factory,
               this.props.intl,
               this.props.value.fieldsets.filter(
                 (fieldset) =>
+                  !fieldset.behavior ||
                   fieldset.id === 'default' ||
-                  fieldset.behavior === 'plone.dexterity.schema.generated',
+                  fieldset.behavior.includes('generated'),
               ),
             )}
           />
