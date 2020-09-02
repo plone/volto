@@ -69,6 +69,7 @@ const TranslationObject = ({
           isFormSelected={isFormSelected}
           onSelectForm={onSelectForm}
           noSidebar={true}
+          onChange={() => {}}
         />
       )}
       {activeMenu === 'properties' && (

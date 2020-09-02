@@ -123,6 +123,7 @@ class Add extends Component {
         {},
       );
     }
+
     this.state = { isClient: false };
   }
 
@@ -210,6 +211,13 @@ class Add extends Component {
         this.props.schema.properties,
       );
       const translationObject = this.props.location?.state?.translationObject;
+
+      if (translationObject) {
+        //copy blocks from translationObject
+        this.initialBlocks = translationObject[blocksFieldname];
+        this.initialBlocksLayout =
+          translationObject[blocksLayoutFieldname].items;
+      }
 
       const pageAdd = (
         <div id="page-add">
