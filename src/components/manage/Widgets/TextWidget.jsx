@@ -216,9 +216,9 @@ class TextWidget extends Component {
           step={type === 'number' ? 'any' : type === 'integer' ? '1' : null}
           min={minimum || null}
           max={maximum || null}
-        >
-          <input minLength={minLength || null} maxLength={maxLength || null} />
-        </Input>
+          minLength={minLength || null}
+          maxLength={maxLength || null}
+        />
         {icon && iconAction && (
           <button onClick={iconAction}>
             <Icon name={icon} size="18px" />

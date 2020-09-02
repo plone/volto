@@ -58,6 +58,17 @@ exports[`renders an Image Block Sidebar component 1`] = `
                 type=""
                 value="map"
               />
+              <i
+                aria-hidden="true"
+                attributes={
+                  Object {
+                    "viewBox": "",
+                    "xmlns": "",
+                  }
+                }
+                className="icon"
+                onClick={[Function]}
+              />
             </div>
             <button
               onClick={[Function]}

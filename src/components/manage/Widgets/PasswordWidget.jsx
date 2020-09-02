@@ -49,13 +49,10 @@ const PasswordWidget = ({
         onBlur(id, target.value === '' ? undefined : target.value)
       }
       onClick={() => onClick()}
-    >
-      <input
-        minLength={minLength || null}
-        maxLength={maxLength || null}
-        autoComplete="off"
-      />
-    </Input>
+      minLength={minLength || null}
+      maxLength={maxLength || null}
+      autoComplete="off"
+    />
   </FormFieldWrapper>
 );
 

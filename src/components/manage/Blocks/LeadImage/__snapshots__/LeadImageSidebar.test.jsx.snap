@@ -66,6 +66,17 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
                 type=""
                 value="alternate text"
               />
+              <i
+                aria-hidden="true"
+                attributes={
+                  Object {
+                    "viewBox": "",
+                    "xmlns": "",
+                  }
+                }
+                className="icon"
+                onClick={[Function]}
+              />
             </div>
             <button
               onClick={[Function]}
@@ -310,6 +321,17 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
                   step={null}
                   type=""
                   value=""
+                />
+                <i
+                  aria-hidden="true"
+                  attributes={
+                    Object {
+                      "viewBox": "",
+                      "xmlns": "",
+                    }
+                  }
+                  className="icon"
+                  onClick={[Function]}
                 />
               </div>
               <button

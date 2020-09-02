@@ -2,7 +2,7 @@
 
 exports[`renders an email widget component 1`] = `
 <div
-  className="inline field"
+  className="inline field email"
   id="field-test-email"
 >
   <div
@@ -31,7 +31,6 @@ exports[`renders an email widget component 1`] = `
           className="ui input"
         >
           <input
-            autoComplete="off"
             id="field-test-email"
             maxLength={null}
             minLength={null}

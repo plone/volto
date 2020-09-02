@@ -2,7 +2,7 @@
 
 exports[`renders an url widget component 1`] = `
 <div
-  className="inline field"
+  className="inline field url"
   id="field-test-url"
 >
   <div

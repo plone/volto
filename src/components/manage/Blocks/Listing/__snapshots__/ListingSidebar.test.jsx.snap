@@ -538,6 +538,11 @@ exports[`renders a Listing Block Sidebar component 1`] = `
                   type=""
                   value=""
                 />
+                <i
+                  aria-hidden="true"
+                  attributes="[object Object]"
+                  class="icon"
+                />
               </div>
               <button>
                 <svg

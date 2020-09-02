@@ -95,6 +95,17 @@ Array [
               type=""
               value=""
             />
+            <i
+              aria-hidden="true"
+              attributes={
+                Object {
+                  "viewBox": "",
+                  "xmlns": "",
+                }
+              }
+              className="icon"
+              onClick={[Function]}
+            />
           </div>
           <button
             onClick={[Function]}

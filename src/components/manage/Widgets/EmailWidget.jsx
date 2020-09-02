@@ -3,84 +3,37 @@
  * @module components/manage/Widgets/EmailWidget
  */
 
-import { map } from 'lodash';
+import { FormFieldWrapper } from '@plone/volto/components';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Form, Grid, Input, Label } from 'semantic-ui-react';
+import { Input } from 'semantic-ui-react';
 
 /** EmailWidget function component
  * @function EmailWidget
  * @returns {string} Markup of the component
  */
-const EmailWidget = ({
-  id,
-  title,
-  description,
-  required,
-  error,
-  value,
-  onChange,
-  onBlur,
-  onClick,
-  fieldSet,
-  minLength,
-  maxLength,
-}) => {
+const EmailWidget = (props) => {
+  const { id, value, onChange, onBlur, onClick, minLength, maxLength } = props;
   const inputId = `field-${id}`;
-  const fieldId = `${fieldSet || 'field'}-${id}`;
-  const errorsList = map(error, (message) => (
-    <Label key={message} basic color="red" pointing>
-      {message}
-    </Label>
-  ));
 
   return (
-    <Form.Field
-      inline
-      required={required}
-      error={error.length > 0}
-      className={description ? 'help' : ''}
-      id={fieldId}
-    >
-      <Grid>
-        <Grid.Row stretched>
-          <Grid.Column width="4">
-            <div className="wrapper">
-              <label htmlFor={inputId}>{title}</label>
-            </div>
-          </Grid.Column>
-          <Grid.Column width="8">
-            <Input
-              id={inputId}
-              name={id}
-              type="email"
-              value={value || ''}
-              onChange={({ target }) =>
-                onChange(id, target.value === '' ? undefined : target.value)
-              }
-              onBlur={({ target }) =>
-                onBlur(id, target.value === '' ? undefined : target.value)
-              }
-              onClick={() => onClick()}
-            >
-              <input
-                minLength={minLength || null}
-                maxLength={maxLength || null}
-                autoComplete="off"
-              />
-            </Input>
-            {errorsList}
-          </Grid.Column>
-        </Grid.Row>
-        {description && (
-          <Grid.Row stretched>
-            <Grid.Column stretched width="12">
-              <p className="help">{description}</p>
-            </Grid.Column>
-          </Grid.Row>
-        )}
-      </Grid>
-    </Form.Field>
+    <FormFieldWrapper {...props} className="email">
+      <Input
+        id={inputId}
+        name={id}
+        type="email"
+        value={value || ''}
+        onChange={({ target }) =>
+          onChange(id, target.value === '' ? undefined : target.value)
+        }
+        onBlur={({ target }) =>
+          onBlur(id, target.value === '' ? undefined : target.value)
+        }
+        onClick={() => onClick()}
+        minLength={minLength || null}
+        maxLength={maxLength || null}
+      />
+    </FormFieldWrapper>
   );
 };
 
