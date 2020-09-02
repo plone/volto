@@ -17,12 +17,19 @@ import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { v4 as uuid } from 'uuid';
 import qs from 'query-string';
-import TranslationObject from './TranslationObject';
+
 import { settings } from '~/config';
 import { toast } from 'react-toastify';
 import { Grid, Container } from 'semantic-ui-react';
 import { createContent, getSchema } from '@plone/volto/actions';
-import { Form, Icon, Toolbar, Sidebar, Toast } from '@plone/volto/components';
+import {
+  Form,
+  Icon,
+  Toolbar,
+  Sidebar,
+  Toast,
+  TranslationObject,
+} from '@plone/volto/components';
 import {
   getBaseUrl,
   hasBlocksData,
@@ -51,6 +58,10 @@ const messages = defineMessages({
   error: {
     id: 'Error',
     defaultMessage: 'Error',
+  },
+  translateTo: {
+    id: 'Translate to',
+    defaultMessage: 'Translate to',
   },
 });
 
@@ -211,8 +222,9 @@ class Add extends Component {
         this.props.schema.properties,
       );
       const translationObject = this.props.location?.state?.translationObject;
+      const translateTo = this.props.location?.state?.language;
 
-      if (translationObject) {
+      if (translationObject && blocksFieldname && blocksLayoutFieldname) {
         //copy blocks from translationObject
         this.initialBlocks = translationObject[blocksFieldname];
         this.initialBlocksLayout =
@@ -329,13 +341,15 @@ class Add extends Component {
               />
             </Grid.Column>
             <Grid.Column>
-              <Menu pointing secondary attached tabular>
-                <Menu.Item
-                  name={this.props.location.state.language.toUpperCase()}
-                  active={true}
-                />
-              </Menu>
-              {pageAdd}
+              <div className="new-translation">
+                <Menu pointing secondary attached tabular>
+                  <Menu.Item name={translateTo.toUpperCase()} active={true}>
+                    {this.props.intl.formatMessage(messages.translateTo)}{' '}
+                    {translateTo.toUpperCase()}
+                  </Menu.Item>
+                </Menu>
+                {pageAdd}
+              </div>
             </Grid.Column>
           </Grid>
         </Container>

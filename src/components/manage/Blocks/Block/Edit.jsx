@@ -50,6 +50,15 @@ class Edit extends Component {
     id: PropTypes.string.isRequired,
     onMoveBlock: PropTypes.func.isRequired,
     onDeleteBlock: PropTypes.func.isRequired,
+    editable: PropTypes.bool,
+  };
+  /**
+   * Default properties.
+   * @property {Object} defaultProps Default properties.
+   * @static
+   */
+  static defaultProps = {
+    editable: true,
   };
 
   componentDidMount() {
@@ -63,7 +72,7 @@ class Edit extends Component {
     ) {
       this.blockNode.current.focus();
     }
-    if (this.props.selected) {
+    if (this.props.selected && this.props.editable) {
       this.props.setSidebarTab(blocks.blocksConfig?.[type]?.sidebarBar || 0);
     }
   }
@@ -81,8 +90,9 @@ class Edit extends Component {
       this.blockNode.current.focus();
     }
     if (
-      (!this.props.selected && nextProps.selected) ||
-      type !== nextProps.type
+      ((!this.props.selected && nextProps.selected) ||
+        type !== nextProps.type) &&
+      this.props.editable
     ) {
       this.props.setSidebarTab(
         blocks.blocksConfig?.[nextProps.type]?.sidebarTab || 0,
@@ -153,17 +163,19 @@ class Edit extends Component {
             })}
           </div>
         )}
-        {selected && !includes(blocks.requiredBlocks, type) && (
-          <Button
-            icon
-            basic
-            onClick={() => this.props.onDeleteBlock(id)}
-            className="delete-button"
-            aria-label={this.props.intl.formatMessage(messages.delete)}
-          >
-            <Icon name={trashSVG} size="18px" />
-          </Button>
-        )}
+        {selected &&
+          !includes(blocks.requiredBlocks, type) &&
+          this.props.editable && (
+            <Button
+              icon
+              basic
+              onClick={() => this.props.onDeleteBlock(id)}
+              className="delete-button"
+              aria-label={this.props.intl.formatMessage(messages.delete)}
+            >
+              <Icon name={trashSVG} size="18px" />
+            </Button>
+          )}
       </div>
     );
   }

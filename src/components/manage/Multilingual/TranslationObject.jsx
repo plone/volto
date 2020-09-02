@@ -46,13 +46,15 @@ const TranslationObject = ({
         >
           {translationObject.language.token.toUpperCase()}
         </Menu.Item>
-        <Menu.Item
-          name="properties"
-          active={activeMenu === 'properties'}
-          onClick={handleMenuClick}
-        >
-          {intl.formatMessage(messages.document)}
-        </Menu.Item>
+        {visual && (
+          <Menu.Item
+            name="properties"
+            active={activeMenu === 'properties'}
+            onClick={handleMenuClick}
+          >
+            {intl.formatMessage(messages.document)}
+          </Menu.Item>
+        )}
       </Menu>
       {activeMenu === 'language' && (
         <Form
@@ -68,7 +70,7 @@ const TranslationObject = ({
           loading={false}
           isFormSelected={isFormSelected}
           onSelectForm={onSelectForm}
-          noSidebar={true}
+          editable={false}
           onChange={() => {}}
         />
       )}

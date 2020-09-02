@@ -124,7 +124,7 @@ class Form extends Component {
     blocks: PropTypes.arrayOf(PropTypes.object),
     isFormSelected: PropTypes.bool,
     onSelectForm: PropTypes.func,
-    noSidebar: PropTypes.bool,
+    editable: PropTypes.bool,
   };
 
   /**
@@ -150,7 +150,7 @@ class Form extends Component {
     schema: {},
     isFormSelected: true,
     onSelectForm: null,
-    noSidebar: false,
+    editable: true,
   };
 
   /**
@@ -261,7 +261,7 @@ class Form extends Component {
   }
 
   hideHandler = (data) => {
-    return !blockHasValue(data);
+    return !(blockHasValue(data) && this.props.editable);
   };
 
   /**
@@ -387,43 +387,48 @@ class Form extends Component {
    * @returns {string} Id of the block
    */
   onAddBlock(type, index) {
-    const id = uuid();
-    const idTrailingBlock = uuid();
-    const blocksFieldname = getBlocksFieldname(this.state.formData);
-    const blocksLayoutFieldname = getBlocksLayoutFieldname(this.state.formData);
-    const totalItems = this.state.formData[blocksLayoutFieldname].items.length;
-    const insert = index === -1 ? totalItems : index;
+    if (this.props.editable) {
+      const id = uuid();
+      const idTrailingBlock = uuid();
+      const blocksFieldname = getBlocksFieldname(this.state.formData);
+      const blocksLayoutFieldname = getBlocksLayoutFieldname(
+        this.state.formData,
+      );
+      const totalItems = this.state.formData[blocksLayoutFieldname].items
+        .length;
+      const insert = index === -1 ? totalItems : index;
 
-    this.setState({
-      formData: {
-        ...this.state.formData,
-        [blocksLayoutFieldname]: {
-          items: [
-            ...this.state.formData[blocksLayoutFieldname].items.slice(
-              0,
-              insert,
-            ),
-            id,
-            ...(type !== settings.defaultBlockType ? [idTrailingBlock] : []),
-            ...this.state.formData[blocksLayoutFieldname].items.slice(insert),
-          ],
-        },
-        [blocksFieldname]: {
-          ...this.state.formData[blocksFieldname],
-          [id]: {
-            '@type': type,
+      this.setState({
+        formData: {
+          ...this.state.formData,
+          [blocksLayoutFieldname]: {
+            items: [
+              ...this.state.formData[blocksLayoutFieldname].items.slice(
+                0,
+                insert,
+              ),
+              id,
+              ...(type !== settings.defaultBlockType ? [idTrailingBlock] : []),
+              ...this.state.formData[blocksLayoutFieldname].items.slice(insert),
+            ],
           },
-          ...(type !== settings.defaultBlockType && {
-            [idTrailingBlock]: {
-              '@type': settings.defaultBlockType,
+          [blocksFieldname]: {
+            ...this.state.formData[blocksFieldname],
+            [id]: {
+              '@type': type,
             },
-          }),
+            ...(type !== settings.defaultBlockType && {
+              [idTrailingBlock]: {
+                '@type': settings.defaultBlockType,
+              },
+            }),
+          },
         },
-      },
-      selected: id,
-    });
+        selected: id,
+      });
 
-    return id;
+      return id;
+    }
   }
 
   /**
@@ -832,6 +837,7 @@ class Form extends Component {
                               pathname={this.props.pathname}
                               block={block}
                               selected={this.state.selected === block}
+                              editable={this.props.editable}
                             />
                           </div>
                         </div>
@@ -854,7 +860,7 @@ class Form extends Component {
                 </div>
               )}
             </Droppable>
-            {this.state.isClient && !this.props.noSidebar && (
+            {this.state.isClient && this.props.editable && (
               <Portal
                 node={__CLIENT__ && document.getElementById('sidebar-metadata')}
               >
