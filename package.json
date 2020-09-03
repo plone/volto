@@ -99,7 +99,8 @@
       "~/config": "<rootDir>/src/config",
       "~/../locales/${lang}.json": "<rootDir>/locales/en.json",
       "(.*)/locales/(.*)": "<rootDir>/locales/$2",
-      "load-volto-addons": "<rootDir>/dummy-addons-loader.js"
+      "load-volto-addons": "<rootDir>/dummy-addons-loader.js",
+      "\\.(css|less|scss|sass)$": "identity-obj-proxy"
     },
     "coverageThreshold": {
       "global": {
@@ -373,6 +374,7 @@
   },
   "devDependencies": {
     "crypto-random-string": "3.2.0",
+    "identity-obj-proxy": "3.0.0",
     "tmp": "0.2.1"
   },
   "resolutions": {
