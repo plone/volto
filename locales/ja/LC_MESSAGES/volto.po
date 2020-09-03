@@ -563,6 +563,8 @@ msgstr "E-mail アドレスが見つかりません。"
 #: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Toolbar/Toolbar
+#: components/manage/Widgets/FormFieldWrapper
+#: components/manage/Widgets/ObjectBrowserWidget
 #: components/theme/Comments/Comments
 msgid "Edit"
 msgstr "編集"
@@ -2156,10 +2158,6 @@ msgstr ""
 msgid "media"
 msgstr "メディア"
 
-#: components/manage/Controlpanels/ContentTypeSchema
-msgid "metadata {type}"
-msgstr ""
-
 #: components/manage/Widgets/SchemaWidget
 msgid "minLength"
 msgstr ""
@@ -2380,6 +2378,10 @@ msgstr "こちらからメール送信できます。"
 #: components/manage/Contents/Contents
 msgid "{count} selected"
 msgstr "{count} 件選択中"
+
+#: components/manage/Controlpanels/ContentTypeSchema
+msgid "{id} schema"
+msgstr ""
 
 #: components/manage/Actions/Actions
 msgid "{title} copied."

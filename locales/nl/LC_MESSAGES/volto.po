@@ -575,6 +575,8 @@ msgstr ""
 #: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Toolbar/Toolbar
+#: components/manage/Widgets/FormFieldWrapper
+#: components/manage/Widgets/ObjectBrowserWidget
 #: components/theme/Comments/Comments
 msgid "Edit"
 msgstr "Bewerken"
@@ -2168,10 +2170,6 @@ msgstr ""
 msgid "media"
 msgstr ""
 
-#: components/manage/Controlpanels/ContentTypeSchema
-msgid "metadata {type}"
-msgstr ""
-
 #: components/manage/Widgets/SchemaWidget
 msgid "minLength"
 msgstr ""
@@ -2392,6 +2390,10 @@ msgstr ""
 #: components/manage/Contents/Contents
 msgid "{count} selected"
 msgstr "{count} geselecteerd"
+
+#: components/manage/Controlpanels/ContentTypeSchema
+msgid "{id} schema"
+msgstr ""
 
 #: components/manage/Actions/Actions
 msgid "{title} copied."

@@ -571,6 +571,8 @@ msgstr "E-Mail-Adressen stimmen nicht überein."
 #: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Toolbar/Toolbar
+#: components/manage/Widgets/FormFieldWrapper
+#: components/manage/Widgets/ObjectBrowserWidget
 #: components/theme/Comments/Comments
 msgid "Edit"
 msgstr "Bearbeiten"
@@ -2164,10 +2166,6 @@ msgstr ""
 msgid "media"
 msgstr "Medien"
 
-#: components/manage/Controlpanels/ContentTypeSchema
-msgid "metadata {type}"
-msgstr ""
-
 #: components/manage/Widgets/SchemaWidget
 msgid "minLength"
 msgstr ""
@@ -2388,6 +2386,10 @@ msgstr "Wir schicken Ihnen gerne ein neues Passwort zu."
 #: components/manage/Contents/Contents
 msgid "{count} selected"
 msgstr "{count} ausgewählt"
+
+#: components/manage/Controlpanels/ContentTypeSchema
+msgid "{id} schema"
+msgstr ""
 
 #: components/manage/Actions/Actions
 msgid "{title} copied."

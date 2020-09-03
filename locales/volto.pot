@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-09-02T20:55:00.944Z\n"
+"POT-Creation-Date: 2020-09-03T11:06:12.901Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -671,6 +671,8 @@ msgstr ""
 #: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Toolbar/Toolbar
+#: components/manage/Widgets/FormFieldWrapper
+#: components/manage/Widgets/ObjectBrowserWidget
 #: components/theme/Comments/Comments
 # defaultMessage: Edit
 msgid "Edit"
@@ -2638,11 +2640,6 @@ msgstr ""
 msgid "media"
 msgstr ""
 
-#: components/manage/Controlpanels/ContentTypeSchema
-# defaultMessage: metadata {type}
-msgid "metadata {type}"
-msgstr ""
-
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Minimum Length
 msgid "minLength"
@@ -2917,6 +2914,11 @@ msgstr ""
 #: components/manage/Contents/Contents
 # defaultMessage: {count} selected
 msgid "{count} selected"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypeSchema
+# defaultMessage: {id} schema
+msgid "{id} schema"
 msgstr ""
 
 #: components/manage/Actions/Actions

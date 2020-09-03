@@ -573,6 +573,8 @@ msgstr "Les adresses e-mails ne correspondent pas."
 #: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Toolbar/Toolbar
+#: components/manage/Widgets/FormFieldWrapper
+#: components/manage/Widgets/ObjectBrowserWidget
 #: components/theme/Comments/Comments
 msgid "Edit"
 msgstr "Modifier"
@@ -2166,10 +2168,6 @@ msgstr ""
 msgid "media"
 msgstr "média"
 
-#: components/manage/Controlpanels/ContentTypeSchema
-msgid "metadata {type}"
-msgstr ""
-
 #: components/manage/Widgets/SchemaWidget
 msgid "minLength"
 msgstr ""
@@ -2390,6 +2388,10 @@ msgstr "nous pouvons vous en envoyer un nouveau"
 #: components/manage/Contents/Contents
 msgid "{count} selected"
 msgstr "{count} sélectionné"
+
+#: components/manage/Controlpanels/ContentTypeSchema
+msgid "{id} schema"
+msgstr ""
 
 #: components/manage/Actions/Actions
 msgid "{title} copied."
