@@ -2372,8 +2372,12 @@ msgstr "vă putem trimite unul nou"
 msgid "{count} selected"
 msgstr "{count} selectat"
 
+#: components/manage/Controlpanels/ContentType
+msgid "{id} Content Type"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypeSchema
-msgid "{id} schema"
+msgid "{id} Schema"
 msgstr ""
 
 #: components/manage/Actions/Actions

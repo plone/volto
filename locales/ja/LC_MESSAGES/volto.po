@@ -2379,8 +2379,12 @@ msgstr "こちらからメール送信できます。"
 msgid "{count} selected"
 msgstr "{count} 件選択中"
 
+#: components/manage/Controlpanels/ContentType
+msgid "{id} Content Type"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypeSchema
-msgid "{id} schema"
+msgid "{id} Schema"
 msgstr ""
 
 #: components/manage/Actions/Actions
