@@ -108,7 +108,7 @@ class Edit extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { id, type, selected } = this.props;
+    const { id, type, selected, editable } = this.props;
 
     const Block = blocks.blocksConfig?.[type]?.['edit'] || null;
     const blockHasOwnFocusManagement =
@@ -163,19 +163,17 @@ class Edit extends Component {
             })}
           </div>
         )}
-        {selected &&
-          !includes(blocks.requiredBlocks, type) &&
-          this.props.editable && (
-            <Button
-              icon
-              basic
-              onClick={() => this.props.onDeleteBlock(id)}
-              className="delete-button"
-              aria-label={this.props.intl.formatMessage(messages.delete)}
-            >
-              <Icon name={trashSVG} size="18px" />
-            </Button>
-          )}
+        {selected && !includes(blocks.requiredBlocks, type) && editable && (
+          <Button
+            icon
+            basic
+            onClick={() => this.props.onDeleteBlock(id)}
+            className="delete-button"
+            aria-label={this.props.intl.formatMessage(messages.delete)}
+          >
+            <Icon name={trashSVG} size="18px" />
+          </Button>
+        )}
       </div>
     );
   }

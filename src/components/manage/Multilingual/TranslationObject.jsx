@@ -76,25 +76,27 @@ const TranslationObject = ({
       )}
       {activeMenu === 'properties' && (
         <UiForm method="post" onSubmit={() => {}}>
-          {schema &&
-            map(schema.fieldsets, (item) => [
-              <Segment secondary attached key={item.title}>
-                {item.title}
-              </Segment>,
-              <Segment attached key={`fieldset-contents-${item.title}`}>
-                {map(item.fields, (field, index) => (
-                  <Field
-                    {...schema.properties[field]}
-                    id={field}
-                    formData={translationObject}
-                    focus={false}
-                    value={translationObject[field]}
-                    required={schema.required.indexOf(field) !== -1}
-                    key={field}
-                  />
-                ))}
-              </Segment>,
-            ])}
+          <fieldset className="invisible" disabled={true}>
+            {schema &&
+              map(schema.fieldsets, (item) => [
+                <Segment secondary attached key={item.title}>
+                  {item.title}
+                </Segment>,
+                <Segment attached key={`fieldset-contents-${item.title}`}>
+                  {map(item.fields, (field, index) => (
+                    <Field
+                      {...schema.properties[field]}
+                      id={field}
+                      formData={translationObject}
+                      focus={false}
+                      value={translationObject[field]}
+                      required={schema.required.indexOf(field) !== -1}
+                      key={field}
+                    />
+                  ))}
+                </Segment>,
+              ])}
+          </fieldset>
         </UiForm>
       )}
     </>
