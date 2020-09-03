@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 import { getParentUrl } from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
 import { last } from 'lodash';
-import { Confirm, Container, Table, Button } from 'semantic-ui-react';
+import { Confirm, Container, Table, Button, Header } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import {
@@ -416,11 +416,7 @@ class ContentTypes extends Component {
         </div>
         <Container>
           <article id="content">
-            <header>
-              <h1 className="documentFirstHeading">
-                {this.props.controlpanel.title}
-              </h1>
-            </header>
+            <Header disabled>{this.props.controlpanel.title}</Header>
             <section id="content-core">
               <Table compact singleLine striped>
                 <Table.Header>

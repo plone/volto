@@ -13,13 +13,11 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
     <article
       id="content"
     >
-      <header>
-        <h1
-          className="documentFirstHeading"
-        >
-          Dexterity Content Types
-        </h1>
-      </header>
+      <div
+        className="ui disabled header"
+      >
+        Dexterity Content Types
+      </div>
       <section
         id="content-core"
       >

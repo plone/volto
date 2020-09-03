@@ -333,6 +333,9 @@ const getItemStyle = (isDragging, draggableStyle) => ({
 
 const getListStyle = (isDraggingOver) => ({
   background: isDraggingOver ? '#f4f4f4' : 'transparent',
+  display: 'flex',
+  'flex-direction': 'row',
+  'flex-wrap': 'wrap',
 });
 
 /**
@@ -1153,7 +1156,11 @@ class SchemaWidget extends Component {
 
     return (
       <div>
-        <Segment.Group raised>
+        <Segment.Group
+          style={{
+            margin: '-1rem',
+          }}
+        >
           {error.length > 0 &&
             map(error, (err, index) => (
               <Message

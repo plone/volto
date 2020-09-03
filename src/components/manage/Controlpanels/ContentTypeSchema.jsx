@@ -16,12 +16,12 @@ import { Portal } from 'react-portal';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 import { compose } from 'redux';
-import { Button } from 'semantic-ui-react';
+import { Button, Header } from 'semantic-ui-react';
 
 const messages = defineMessages({
   title: {
-    id: '{id} schema',
-    defaultMessage: '{id} schema',
+    id: '{id} Schema',
+    defaultMessage: '{id} Schema',
   },
   success: {
     id: 'Success',
@@ -276,12 +276,14 @@ class ContentTypeSchema extends Component {
       const schemaData = this.makeSchemaData(this.state.schema, this.props.id);
 
       return (
-        <div id="page-controlpanel-schema">
-          <Form
-            ref={this.form}
-            title={this.props.intl.formatMessage(messages.title, {
+        <div id="page-controlpanel-schema" className="ui container">
+          <Header disabled>
+            {this.props.intl.formatMessage(messages.title, {
               id: this.props.id,
             })}
+          </Header>
+          <Form
+            ref={this.form}
             schema={contentTypeSchema}
             formData={schemaData}
             pathname={this.props.pathname}
