@@ -10,6 +10,10 @@ import cx from 'classnames';
 import { defineMessages, injectIntl } from 'react-intl';
 
 const messages = defineMessages({
+  edit: {
+    id: 'Edit',
+    defaultMessage: 'Edit',
+  },
   delete: {
     id: 'Delete',
     defaultMessage: 'Delete',
@@ -122,6 +126,7 @@ class FormFieldWrapper extends Component {
               {onEdit && !isDisabled && (
                 <div className="toolbar" style={{ zIndex: '2' }}>
                   <button
+                    aria-label={intl.formatMessage(messages.edit)}
                     className="item ui noborder button"
                     onClick={(evt) => {
                       evt.preventDefault();

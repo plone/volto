@@ -14,13 +14,9 @@ if (Cypress.env('API') !== 'guillotina') {
     });
 
     it('Edit Blocks Layout for Book', () => {
-      cy.get("#toolbar-add").click();
-      cy.get('input[id="field-title"]')
-        .clear()
-        .type('Book');
-      cy.get('input[id="field-description"]').type(
-        'A book content-type',
-      );
+      cy.get('#toolbar-add').click();
+      cy.get('input[id="field-title"]').clear().type('Book');
+      cy.get('input[id="field-description"]').type('A book content-type');
       cy.get('[title=Save]').click();
 
       cy.get('a[href="/controlpanel/dexterity-types/book"]').should(
@@ -29,27 +25,25 @@ if (Cypress.env('API') !== 'guillotina') {
       );
 
       cy.visit('/controlpanel/dexterity-types/book/layout');
-      cy.get("#page-controlpanel-layout").contains(
+      cy.get('#page-controlpanel-layout').contains(
         'Can not edit Layout for book',
       );
-      cy.get("#page-controlpanel-layout button").click();
+      cy.get('#page-controlpanel-layout button').click();
 
-      cy.get('input[id="field-placeholder"]').type("Book title");
+      cy.get('input[id="field-placeholder"]').type('Book title');
       cy.get('label[for="field-required"]').click();
       cy.get('label[for="field-fixed"]').click();
 
-      cy.get(".block.inner.text .public-DraftEditor-content").click();
-      cy.get('input[id="field-placeholder"]').click().type("About this book");
+      cy.get('.block.inner.text .public-DraftEditor-content').click();
+      cy.get('input[id="field-placeholder"]').click().type('About this book');
       cy.get('label[for="field-fixed"]').click();
-      cy.get(".block.inner.text .public-DraftEditor-content").type("{enter}");
+      cy.get('.block.inner.text .public-DraftEditor-content').type('{enter}');
 
       cy.get('.ui.basic.icon.button.block-add-button:visible').click();
-      cy.get('.ui.basic.icon.button.image')
-        .contains('Image')
-        .click();
-        cy.get('input[id="field-placeholder"]').click().type("Book cover image");
+      cy.get('.ui.basic.icon.button.image').contains('Image').click();
+      cy.get('input[id="field-placeholder"]').click().type('Book cover image');
 
-      cy.get("#toolbar-save").click();
+      cy.get('#toolbar-save').click();
 
       cy.visit('/');
       cy.waitForResourceToLoad('@navigation');
@@ -58,9 +52,9 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.waitForResourceToLoad('@types');
 
       cy.get('button[class="add"]').click();
-      cy.get("#toolbar-add-book").click();
-      cy.get(".block.title").contains("Book title");
-      cy.get(".block.text").contains("About this book");
+      cy.get('#toolbar-add-book').click();
+      cy.get('.block.title').contains('Book title');
+      cy.get('.block.text').contains('About this book');
       cy.get('.block.image input[type="text"]')
         .should('have.attr', 'placeholder')
         .and('match', /Book cover image/);

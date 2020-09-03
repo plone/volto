@@ -29,6 +29,10 @@ const messages = defineMessages({
     id: 'No items selected',
     defaultMessage: 'No items selected',
   },
+  edit: {
+    id: 'Edit',
+    defaultMessage: 'Edit',
+  },
   delete: {
     id: 'Delete',
     defaultMessage: 'Delete',
@@ -246,6 +250,7 @@ class ObjectBrowserWidget extends Component {
               {onEdit && !isDisabled && (
                 <div className="toolbar">
                   <button
+                    aria-label={intl.formatMessage(messages.edit)}
                     className="item ui noborder button"
                     onClick={(evt) => {
                       evt.preventDefault();

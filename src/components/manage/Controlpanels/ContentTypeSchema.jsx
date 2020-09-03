@@ -19,9 +19,9 @@ import { compose } from 'redux';
 import { Button } from 'semantic-ui-react';
 
 const messages = defineMessages({
-  metadata: {
-    id: 'metadata {type}',
-    defaultMessage: 'metadata {type}',
+  title: {
+    id: '{id} schema',
+    defaultMessage: '{id} schema',
   },
   success: {
     id: 'Success',
@@ -276,9 +276,12 @@ class ContentTypeSchema extends Component {
       const schemaData = this.makeSchemaData(this.state.schema, this.props.id);
 
       return (
-        <>
+        <div id="page-controlpanel-schema">
           <Form
             ref={this.form}
+            title={this.props.intl.formatMessage(messages.title, {
+              id: this.props.id,
+            })}
             schema={contentTypeSchema}
             formData={schemaData}
             pathname={this.props.pathname}
@@ -327,7 +330,7 @@ class ContentTypeSchema extends Component {
               />
             </Portal>
           )}
-        </>
+        </div>
       );
     }
 
