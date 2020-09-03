@@ -87,9 +87,6 @@ exports[`renders a schema widget component 1`] = `
       style={
         Object {
           "background": "transparent",
-          "display": "flex",
-          "flex-direction": "row",
-          "flex-wrap": "wrap",
         }
       }
     />

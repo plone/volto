@@ -331,11 +331,15 @@ const getItemStyle = (isDragging, draggableStyle) => ({
   ...draggableStyle,
 });
 
-const getListStyle = (isDraggingOver) => ({
+const getTabStyle = (isDraggingOver) => ({
   background: isDraggingOver ? '#f4f4f4' : 'transparent',
   display: 'flex',
   'flex-direction': 'row',
   'flex-wrap': 'wrap',
+});
+
+const getFieldStyle = (isDraggingOver) => ({
+  background: isDraggingOver ? '#f4f4f4' : 'transparent',
 });
 
 /**
@@ -1180,7 +1184,7 @@ class SchemaWidget extends Component {
                   className="ui pointing secondary attached tabular menu"
                   ref={provided.innerRef}
                   {...provided.draggableProps}
-                  style={getListStyle(snapshot.isDraggingOver)}
+                  style={getTabStyle(snapshot.isDraggingOver)}
                 >
                   {map(this.props.value.fieldsets, (fieldset, index) => (
                     <SchemaWidgetFieldset
@@ -1227,7 +1231,7 @@ class SchemaWidget extends Component {
                 <div
                   ref={provided.innerRef}
                   {...provided.draggableProps}
-                  style={getListStyle(snapshot.isDraggingOver)}
+                  style={getFieldStyle(snapshot.isDraggingOver)}
                 >
                   {makeUserFields()}
 

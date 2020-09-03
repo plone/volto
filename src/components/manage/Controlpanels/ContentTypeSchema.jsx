@@ -279,7 +279,7 @@ class ContentTypeSchema extends Component {
         <div id="page-controlpanel-schema" className="ui container">
           <Header disabled>
             {this.props.intl.formatMessage(messages.title, {
-              id: this.props.id,
+              id: this.props?.schema?.title || this.props.id,
             })}
           </Header>
           <Form

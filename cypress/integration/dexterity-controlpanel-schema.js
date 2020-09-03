@@ -27,7 +27,7 @@ if (Cypress.env('API') !== 'guillotina') {
 
       // Go to schema
       cy.visit('/controlpanel/dexterity-types/bike/schema');
-      cy.get('#page-controlpanel-schema').contains('bike schema');
+      cy.get('#page-controlpanel-schema').contains('Bike Schema');
 
       // Add field
       cy.get('button[id=addfield]').click();
