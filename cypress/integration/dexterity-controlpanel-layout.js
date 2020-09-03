@@ -26,7 +26,7 @@ if (Cypress.env('API') !== 'guillotina') {
 
       cy.visit('/controlpanel/dexterity-types/book/layout');
       cy.get('#page-controlpanel-layout').contains(
-        'Can not edit Layout for book',
+        'Can not edit Layout for Book',
       );
       cy.get('#page-controlpanel-layout button').click();
 
@@ -58,6 +58,11 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('.block.image input[type="text"]')
         .should('have.attr', 'placeholder')
         .and('match', /Book cover image/);
+      cy.get('.documentFirstHeading > .public-DraftStyleDefault-block')
+        .type('My first book')
+        .get('.documentFirstHeading span[data-text]')
+        .contains('My first book');
+      cy.get('#toolbar-save').click();
     });
   });
 }

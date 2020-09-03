@@ -328,7 +328,7 @@ class ContentTypeLayout extends Component {
                 defaultMessage="Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled"
                 values={{
                   strong: (...chunks) => <strong>{chunks}</strong>,
-                  type: this.props.id,
+                  type: this.props?.controlpanel?.title || this.props.id,
                 }}
               />
             </div>
@@ -377,7 +377,7 @@ class ContentTypeLayout extends Component {
                 defaultMessage="Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>"
                 values={{
                   strong: (...chunks) => <strong>{chunks}</strong>,
-                  type: this.props.id,
+                  type: this.props?.controlpanel?.title || this.props.id,
                 }}
               />
             </div>
