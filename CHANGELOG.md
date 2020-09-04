@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Added onChangeFormData prop to Form component @giuliaghisini
+
 ### Bugfix
 
 ### Internal
