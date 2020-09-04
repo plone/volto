@@ -30,7 +30,8 @@ import { defineMessages, injectIntl } from 'react-intl';
 import { v4 as uuid } from 'uuid';
 import { Portal } from 'react-portal';
 
-import { EditBlock, Icon, Field } from '@plone/volto/components';
+import { toast } from 'react-toastify';
+import { EditBlock, Icon, Field, Toast } from '@plone/volto/components';
 import { settings } from '~/config';
 import dragSVG from '@plone/volto/icons/drag.svg';
 
@@ -301,12 +302,30 @@ class Form extends Component {
    * @returns {undefined}
    */
   onMutateBlock(id, value) {
-    const idTrailingBlock = uuid();
     const blocksFieldname = getBlocksFieldname(this.state.formData);
     const blocksLayoutFieldname = getBlocksLayoutFieldname(this.state.formData);
     const index =
       this.state.formData[blocksLayoutFieldname].items.indexOf(id) + 1;
 
+    // Test if block at index is already a placeholder (trailing) block
+    const trailId = this.state.formData[blocksLayoutFieldname].items[index];
+    if (trailId) {
+      const block = this.state.formData[blocksFieldname][trailId];
+      if (!blockHasValue(block)) {
+        this.setState({
+          formData: {
+            ...this.state.formData,
+            [blocksFieldname]: {
+              ...this.state.formData[blocksFieldname],
+              [id]: value || null,
+            },
+          },
+        });
+        return;
+      }
+    }
+
+    const idTrailingBlock = uuid();
     this.setState({
       formData: {
         ...this.state.formData,
@@ -439,7 +458,7 @@ class Form extends Component {
               this.props.intl.formatMessage(messages.required),
             );
           }
-          if (field.minLength && data.length < field.minLength) {
+          if (field.minLength && data && data.length < field.minLength) {
             errors[fieldId] = errors[field] || [];
             errors[fieldId].push(
               this.props.intl.formatMessage(messages.minLength, {
@@ -457,9 +476,18 @@ class Form extends Component {
       }),
     );
     if (keys(errors).length > 0) {
-      this.setState({
-        errors,
-      });
+      this.setState(
+        {
+          errors,
+        },
+        () => {
+          Object.keys(errors).forEach((err) =>
+            toast.error(
+              <Toast error title={err} content={errors[err].join(', ')} />,
+            ),
+          );
+        },
+      );
     } else {
       // Get only the values that have been modified (Edit forms), send all in case that
       // it's an add form

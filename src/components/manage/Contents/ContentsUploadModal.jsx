@@ -38,6 +38,8 @@ const messages = defineMessages({
   },
 });
 
+const SUBREQUEST = 'batch-upload';
+
 /**
  * ContentsUploadModal class.
  * @class ContentsUploadModal
@@ -157,6 +159,7 @@ class ContentsUploadModal extends Component {
               },
             };
           }),
+          SUBREQUEST,
         );
       },
     );
@@ -306,7 +309,7 @@ export default compose(
   injectIntl,
   connect(
     (state) => ({
-      request: state.content.create,
+      request: state.content.subrequests?.[SUBREQUEST] || {},
     }),
     { createContent },
   ),
