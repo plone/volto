@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fixing the Image size settings in sidebar when Image alignment changes @iFlameing
+
 ### Internal
 
 ## 7.12.0 (2020-09-04)
