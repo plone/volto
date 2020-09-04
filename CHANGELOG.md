@@ -1,6 +1,6 @@
 # Change Log
 
-## 7.11.4 (unreleased)
+## 7.12.2 (unreleased)
 
 ### Breaking
 
@@ -9,6 +9,18 @@
 ### Bugfix
 
 ### Internal
+
+## 7.12.1 (2020-09-04)
+
+### Bugfix
+
+- Fix checkbox widget styles @nzambello
+
+## 7.12.0 (2020-09-04)
+
+### Feature
+
+- Allow Volto projects to customize (via webpack resolve aliases) addons. Allow addons to customize Volto and other addons. Allow Volto projects to customize Volto in a `src/customizations/volto` folder, for better organization of the customizations folder. @tiberiuichim @sneridagh
 
 ## 7.11.3 (2020-08-28)
 
