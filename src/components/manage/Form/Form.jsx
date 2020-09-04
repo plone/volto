@@ -879,6 +879,7 @@ class Form extends Component {
           method="post"
           onSubmit={this.onSubmit}
           error={keys(this.state.errors).length > 0}
+          className={settings.verticalFormTabs ? 'vertical-form' : ''}
         >
           <Segment.Group raised>
             {schema && schema.fieldsets.length > 1 && (
