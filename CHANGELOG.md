@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- enabled no-folderish CT to be translated @giuliaghisini
+ 
 ### Internal
 
 ## 7.12.0 (2020-09-04)
