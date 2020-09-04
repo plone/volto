@@ -1,6 +1,6 @@
 # Change Log
 
-## 7.12.1 (unreleased)
+## 7.12.2 (unreleased)
 
 ### Breaking
 
@@ -12,6 +12,12 @@
 ### Bugfix
 
 ### Internal
+
+## 7.12.1 (2020-09-04)
+
+### Bugfix
+
+- Fix checkbox widget styles @nzambello
 
 ## 7.12.0 (2020-09-04)
 
