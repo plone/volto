@@ -8,6 +8,11 @@
 
 ### Bugfix
 
+- Added prop resettable to DatetimeWidget @damiDevRT
+- removed the ability to reset the datepicker in the recurrence widget to prevent the uncontrolled creation of recurrences
+- fix typo in the Italian translation of "of the month"
+- added the "icon" attribute to the ByDayField buttons to correct a display error
+
 ### Internal
 
 ## 7.12.1 (2020-09-04)

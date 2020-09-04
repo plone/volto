@@ -2117,7 +2117,7 @@ msgstr "Nessun stato di workflow>>>>>>> master"
 #: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
 #: components/manage/Widgets/RecurrenceWidget/ByYearField
 msgid "of the month"
-msgstr "del mese======="
+msgstr "del mese"
 
 #: error
 msgid "or try a different page."

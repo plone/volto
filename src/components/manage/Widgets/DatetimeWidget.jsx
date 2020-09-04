@@ -191,7 +191,7 @@ class DatetimeWidget extends Component {
   onFocusChange = ({ focused }) => this.setState({ focused });
 
   render() {
-    const { id, dateOnly, noPastDates, intl } = this.props;
+    const { id, dateOnly, noPastDates, resettable, intl } = this.props;
     const { datetime, isDefault, focused } = this.state;
 
     return (
@@ -238,13 +238,15 @@ class DatetimeWidget extends Component {
               />
             </div>
           )}
-          <button
-            disabled={!datetime}
-            onClick={() => this.onResetDates()}
-            className="item ui noborder button"
-          >
-            <Icon name={clearSVG} size="24px" className="close" />
-          </button>
+          {resettable && (
+            <button
+              disabled={!datetime}
+              onClick={() => this.onResetDates()}
+              className="item ui noborder button"
+            >
+              <Icon name={clearSVG} size="24px" className="close" />
+            </button>
+          )}
         </div>
       </FormFieldWrapper>
     );
@@ -267,6 +269,7 @@ DatetimeWidget.propTypes = {
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   wrapped: PropTypes.bool,
+  resettable: PropTypes.bool,
 };
 
 /**
@@ -281,6 +284,7 @@ DatetimeWidget.defaultProps = {
   dateOnly: false,
   noPastDates: false,
   value: null,
+  resettable: true,
 };
 
 export default injectIntl(DatetimeWidget);
