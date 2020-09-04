@@ -1,4 +1,8 @@
 {
   "name": "test-volto-project",
-  "addons": ["test-addon", "test-released-addon:extra", "test-released-source-addon"]
+  "addons": ["test-addon", "test-released-addon:extra", "test-released-source-addon"],
+  "customizationPaths": [
+    "src/custom-addons",
+    "src/customizations"
+  ]
 }

@@ -136,6 +136,10 @@ msgstr "Alinhamento"
 msgid "All"
 msgstr "Tudo"
 
+#: components/theme/Search/Search
+msgid "Alphabetically"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Alt text"
@@ -214,7 +218,6 @@ msgid "Cache Name"
 msgstr ""
 
 #: components/manage/Add/Add
-#: components/manage/Contents/ContentsToolbar
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
@@ -413,6 +416,10 @@ msgstr ""
 #: components/manage/Widgets/DatetimeWidget
 msgid "Date"
 msgstr "Data"
+
+#: components/theme/Search/Search
+msgid "Date (newest first)"
+msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Contents/ContentsRenameModal
@@ -890,7 +897,7 @@ msgstr "Os itens têm de ser únicos."
 
 #: components/manage/Preferences/PersonalPreferences
 msgid "Language"
-msgstr "Idioma<<<<<<< HEAD"
+msgstr "Idioma"
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Last"
@@ -1081,6 +1088,10 @@ msgstr ""
 msgid "No options"
 msgstr ""
 
+#: components/theme/Search/Search
+msgid "No results found"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
@@ -1111,7 +1122,7 @@ msgstr "Sem fluxo de trabalho"
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
 msgid "None"
-msgstr "Nenhum<<<<<<< HEAD"
+msgstr "Nenhum"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Number of active objects"
@@ -1283,6 +1294,10 @@ msgstr "Registar"
 #: components/theme/Register/Register
 msgid "Registration form"
 msgstr "Formulário de registo"
+
+#: components/theme/Search/Search
+msgid "Relevance"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
@@ -1537,6 +1552,10 @@ msgstr ""
 msgid "Sorry, something went wrong with your request"
 msgstr ""
 
+#: components/theme/Search/Search
+msgid "Sort By:"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingData
 msgid "Sort on"
 msgstr ""
@@ -1552,7 +1571,7 @@ msgstr "Especifique um vídeo youtube ou um URL de um repertório (playlist)"
 
 #: components/manage/Diff/Diff
 msgid "Split"
-msgstr "Dividir<<<<<<< HEAD"
+msgstr "Dividir"
 
 #: components/manage/Contents/Contents
 msgid "Start Date"
@@ -1657,6 +1676,10 @@ msgstr ""
 
 #: components/theme/CorsError/CorsError
 msgid "The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources."
+msgstr ""
+
+#: components/theme/CorsError/CorsError
+msgid "The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
 msgstr ""
 
 #: components/theme/Register/Register
@@ -1890,10 +1913,6 @@ msgstr ""
 msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later."
 msgstr ""
 
-#: components/theme/CorsError/CorsError
-msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not configured properly right now. Please, try again later."
-msgstr ""
-
 #: components/theme/NotFound/NotFound
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
 msgstr "Pedimos desculpa pela inconveniência, mas a página a que está a tentar aceder não está neste endereço. Pode usar as ligações abaixo para ajudar a encontrar o que procura."
@@ -1936,7 +1955,7 @@ msgstr "Quem"
 
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
-msgstr "Fluxo de trabalho actualizado.<<<<<<< HEAD"
+msgstr "Fluxo de trabalho actualizado."
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Yearly"
@@ -2097,7 +2116,7 @@ msgstr "média"
 
 #: config/Blocks
 msgid "mostUsed"
-msgstr "maisUsado<<<<<<< HEAD"
+msgstr "maisUsado"
 
 #: components/manage/Contents/ContentsItem
 msgid "no workflow state"
@@ -2138,7 +2157,7 @@ msgstr ""
 
 #: error
 msgid "return to the site root"
-msgstr "<<<<<<< HEAD"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_and"

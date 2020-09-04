@@ -1,14 +1,8 @@
+const glob = require('glob').sync;
 const path = require('path');
 const fs = require('fs');
 
-// Addon specification:
-// - name
-// - isAddon
-// - modulePath
-// - packageJson
-// - packageContent (customizable files)
-// - extraConfigLoaders (function references)
-// - razzleExtender ({plugins, modify})
+const { map } = require('lodash');
 
 function getPackageBasePath(base) {
   while (!fs.existsSync(`${base}/package.json`)) {
@@ -25,6 +19,23 @@ function fromEntries(pairs) {
   return res;
 }
 
+/*
+ * A registry to discover and publish information about the structure of Volto
+ * projects and their addons.
+ *
+ * The registry builds information about both addons and other development
+ * packages, structured as an object with the following information:
+ *
+ * - name
+ * - isAddon (to distinguish addons from other Javascript development packages)
+ * - modulePath (the path that would be resolved from Javascript package name)
+ * - packageJson (the path to the addon's package.json file)
+ * - extraConfigLoaders (names for extra functions to be loaded from the addon
+ *   for configuration purposes)
+ * - razzleExtender (the path to the addon's razzle.extend.js path, to allow
+ *   addons to customize the webpack configuration)
+ *
+ */
 class AddonConfigurationRegistry {
   constructor(projectRootPath) {
     const packageJson = (this.packageJson = require(path.join(
@@ -153,6 +164,110 @@ class AddonConfigurationRegistry {
       this.packages[o].modulePath,
     ]);
     return fromEntries(pairs);
+  }
+
+  /*
+   * Retrieves a mapping (to be used in resolve aliases) of module name to
+   * filestype paths, to be used as customization paths.
+   *
+   * There are two styles of customizations: "classic style" and "addons style"
+   *
+   * In the classic style, the customization folders are only used to customize
+   * Volto itself, so inside it we'll find a mirror of the Volto project
+   * structure.
+   *
+   * In the "addons style" customization folder, we allow customization of
+   * addons along with Volto customization, so we need separate folders. By
+   * convention, we use a folder called "volto" inside customizations folder
+   * and separate folder for each addon, identified by its addon (package) name.
+   *
+   */
+  getCustomizationPaths(packageJson, rootPath) {
+    const aliases = {};
+    let { customizationPaths } = packageJson;
+    if (!customizationPaths) {
+      customizationPaths = ['src/customizations'];
+    }
+    customizationPaths.forEach((customizationPath) => {
+      const base = path.join(rootPath, customizationPath);
+      const reg = [];
+
+      // All registered addon packages (in jsconfig.json and package.json:addons) can be customized
+      Object.values(this.packages).forEach((addon) => {
+        const { name, modulePath } = addon;
+        if (fs.existsSync(path.join(base, name))) {
+          reg.push({
+            customPath: path.join(base, name),
+            sourcePath: modulePath,
+            name,
+          });
+        }
+      });
+
+      reg.push(
+        fs.existsSync(path.join(base, 'volto'))
+          ? {
+              // new style (addons) customizations
+              customPath: path.join(base, 'volto'),
+              sourcePath: `${this.voltoPath}/src/`,
+              name: '@plone/volto',
+            }
+          : {
+              // old style, customizations directly in folder
+              customPath: base,
+              sourcePath: `${this.voltoPath}/src/`,
+              name: '@plone/volto',
+            },
+      );
+
+      reg.forEach(({ customPath, name, sourcePath }) => {
+        map(
+          glob(`${customPath}/**/*.*(svg|png|jpg|jpeg|gif|ico|less|js|jsx)`),
+          (filename) => {
+            const targetPath = filename.replace(customPath, sourcePath);
+            if (fs.existsSync(targetPath)) {
+              aliases[
+                filename.replace(customPath, name).replace(/\.(js|jsx)$/, '')
+              ] = path.resolve(filename);
+            } else {
+              console.log(
+                `The file ${filename} doesn't exist in the ${name} (${targetPath}), unable to customize.`,
+              );
+            }
+          },
+        );
+      });
+    });
+
+    return aliases;
+  }
+
+  getProjectCustomizationPaths() {
+    return this.getCustomizationPaths(this.packageJson, this.projectRootPath);
+  }
+
+  /*
+   * Allow addons to customize Volto and other addons.
+   *
+   * We follow the same logic for overriding as the main `package.json:addons`.
+   * First declared addon gets overridden by subsequent declared addons. That
+   * means: customization in volto-addonA will potentially be rewritten by
+   * customizations in volto-addonB if the declaration in package.json is like:
+   * `addons:volto-addonA,volto-addonB`
+   *
+   */
+  getAddonCustomizationPaths() {
+    let aliases = {};
+    this.getAddons().forEach((addon) => {
+      aliases = {
+        ...aliases,
+        ...this.getCustomizationPaths(
+          require(addon.packageJson),
+          getPackageBasePath(addon.modulePath),
+        ),
+      };
+    });
+    return aliases;
   }
 }
 

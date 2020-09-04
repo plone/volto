@@ -128,6 +128,10 @@ msgstr ""
 msgid "All"
 msgstr ""
 
+#: components/theme/Search/Search
+msgid "Alphabetically"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Alt text"
@@ -206,7 +210,6 @@ msgid "Cache Name"
 msgstr ""
 
 #: components/manage/Add/Add
-#: components/manage/Contents/ContentsToolbar
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
@@ -379,7 +382,7 @@ msgstr ""
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
 msgid "Cut"
-msgstr "<<<<<<< HEAD"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Daily"
@@ -404,6 +407,10 @@ msgstr ""
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Widgets/DatetimeWidget
 msgid "Date"
+msgstr ""
+
+#: components/theme/Search/Search
+msgid "Date (newest first)"
 msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
@@ -1061,7 +1068,7 @@ msgstr ""
 
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "No map selected"
-msgstr "<<<<<<< HEAD"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "No occurences set"
@@ -1071,6 +1078,10 @@ msgstr ""
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TokenWidget
 msgid "No options"
+msgstr ""
+
+#: components/theme/Search/Search
+msgid "No results found"
 msgstr ""
 
 #: components/manage/Blocks/Listing/ListingBody
@@ -1274,6 +1285,10 @@ msgstr ""
 
 #: components/theme/Register/Register
 msgid "Registration form"
+msgstr ""
+
+#: components/theme/Search/Search
+msgid "Relevance"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
@@ -1529,6 +1544,10 @@ msgstr ""
 msgid "Sorry, something went wrong with your request"
 msgstr ""
 
+#: components/theme/Search/Search
+msgid "Sort By:"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingData
 msgid "Sort on"
 msgstr ""
@@ -1649,6 +1668,10 @@ msgstr ""
 
 #: components/theme/CorsError/CorsError
 msgid "The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources."
+msgstr ""
+
+#: components/theme/CorsError/CorsError
+msgid "The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
 msgstr ""
 
 #: components/theme/Register/Register
@@ -1882,10 +1905,6 @@ msgstr ""
 msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later."
 msgstr ""
 
-#: components/theme/CorsError/CorsError
-msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not configured properly right now. Please, try again later."
-msgstr ""
-
 #: components/theme/NotFound/NotFound
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
 msgstr ""
@@ -2102,7 +2121,7 @@ msgstr ""
 
 #: error
 msgid "or try a different page."
-msgstr "<<<<<<< HEAD"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "others"
