@@ -17,13 +17,15 @@ import { settings } from '~/config';
 /**
  * Create content function.
  * @function createContent
- * @param {string} url Parent url.
+ * @param {string} url Parent URL.
  * @param {Object|Array} content Content data.
+ * @param {string} subrequest Optional. Key of the subrequest.
  * @returns {Object} Create content action.
  */
-export function createContent(url, content) {
+export function createContent(url, content, subrequest) {
   return {
     type: CREATE_CONTENT,
+    subrequest,
     mode: 'serial',
     request: Array.isArray(content)
       ? content.map((item) => ({ op: 'post', path: url, data: item }))
@@ -40,6 +42,7 @@ export function createContent(url, content) {
 export function deleteContent(urls) {
   return {
     type: DELETE_CONTENT,
+    mode: 'serial',
     request:
       typeof urls === 'string'
         ? { op: 'del', path: urls }

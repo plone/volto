@@ -49,7 +49,7 @@ to pull the packages. So, create `mrs.developer.json` and add:
 }
 ```
 
-run 
+run
 
 ```bash
 yarn develop
@@ -186,13 +186,13 @@ Set them up in the `customizationPaths` key in the `package.json` file on your
 Volto project.
 
 ```json
-"customizationPaths": ["src/customizations/", "src/addons/@plone/my-volto-addon/src/customizations/"],
+"customizationPaths": ["src/customizations", "src/addons/@plone/my-volto-addon/src/customizations"],
 ```
 
 !!! tip
-    Do not forget the `/` at the end of both
-
-
+  See the [Advanced customization scenarios](../../customizing-components/)
+  section on how to enhance this pattern and how to include customizations
+  inside addons.
 
 ## Creating addons
 
