@@ -7,7 +7,7 @@
 ### Feature
 
 ### Bugfix
-
+ - fix console warning due to uncontrolled selectWidget component @nileshgulia1
 ### Internal
 
 ## 7.12.1 (2020-09-04)

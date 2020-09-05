@@ -96,6 +96,9 @@ function getDefaultValues(choices, value) {
       value: 'no-value',
     };
   }
+  if (value === null) {
+    return '';
+  }
   if (isObject(value)) {
     return {
       label: value.title !== 'None' && value.title ? value.title : value.token,
