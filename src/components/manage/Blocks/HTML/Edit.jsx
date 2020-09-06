@@ -93,17 +93,16 @@ class Edit extends Component {
   }
 
   /**
-    * @param {*} nextProps
-    * @param {*} nextState
-    * @returns {boolean}
-    * @memberof Edit
-    */
+   * @param {*} nextProps
+   * @param {*} nextState
+   * @returns {boolean}
+   * @memberof Edit
+   */
   shouldComponentUpdate(nextProps, nextState) {
-    if (this.props.data.html && nextProps.data.html) {
-      return !isEqual(this.props.data.html, nextProps.data.html)
+    if (this.props.selected) {
+      return true;
     }
-    return true
-
+    return !isEqual(this.props.data, nextProps.data);
   }
 
   /**

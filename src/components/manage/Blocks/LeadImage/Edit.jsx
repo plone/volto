@@ -52,13 +52,15 @@ class Edit extends Component {
   }
 
   /**
-     * @param {*} nextProps
-     * @returns {boolean}
-     * @memberof Edit
-     */
+   * @param {*} nextProps
+   * @returns {boolean}
+   * @memberof Edit
+   */
   shouldComponentUpdate(nextProps) {
-    return !isEqual(this.props.data.url, nextProps.data.url)
-
+    if (this.props.selected) {
+      return true;
+    }
+    return !isEqual(this.props.data, nextProps.data);
   }
 
   node = React.createRef();

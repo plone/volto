@@ -201,13 +201,10 @@ class Edit extends Component {
    * @memberof Edit
    */
   shouldComponentUpdate(nextProps, nextState) {
-    if (
-      this.state.titleEditorState === nextState.titleEditorState &&
-      this.state.descriptionEditorState === nextState.descriptionEditorState
-    ) {
-      return false;
+    if (this.props.selected) {
+      return true;
     }
-    return true;
+    return !isEqual(this.props.data, nextProps.data);
   }
 
   /**
@@ -305,30 +302,30 @@ class Edit extends Component {
               alt=""
             />
           ) : (
-              <div className="image-add">
-                <Message className="image-message">
-                  {this.state.uploading && (
-                    <Dimmer active>
-                      <Loader indeterminate>Uploading image</Loader>
-                    </Dimmer>
-                  )}
-                  <center>
-                    <h4>Image</h4>
-                    <p>Upload a new image</p>
-                    <p>
-                      <label className="ui button file">
-                        Browse
+            <div className="image-add">
+              <Message className="image-message">
+                {this.state.uploading && (
+                  <Dimmer active>
+                    <Loader indeterminate>Uploading image</Loader>
+                  </Dimmer>
+                )}
+                <center>
+                  <h4>Image</h4>
+                  <p>Upload a new image</p>
+                  <p>
+                    <label className="ui button file">
+                      Browse
                       <input
-                          type="file"
-                          onChange={this.onUploadImage}
-                          style={{ display: 'none' }}
-                        />
-                      </label>
-                    </p>
-                  </center>
-                </Message>
-              </div>
-            )}
+                        type="file"
+                        onChange={this.onUploadImage}
+                        style={{ display: 'none' }}
+                      />
+                    </label>
+                  </p>
+                </center>
+              </Message>
+            </div>
+          )}
           <div className="hero-body">
             <Editor
               ref={(node) => {
