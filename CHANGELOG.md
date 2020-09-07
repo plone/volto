@@ -2,8 +2,6 @@
 
 ## 7.12.2 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Add NumberWidget, an input widget for numbers @tiberiuichim
@@ -11,8 +9,6 @@
 ### Bugfix
 
 - Fixing the Image size settings in sidebar when Image alignment changes @iFlameing
-
-### Internal
 
 ## 7.12.1 (2020-09-04)
 
