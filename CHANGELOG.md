@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Add NumberWidget, an input widget for numbers @tiberiuichim
+
 ### Bugfix
 
 - Fixing the Image size settings in sidebar when Image alignment changes @iFlameing
