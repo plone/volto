@@ -36,36 +36,7 @@ const registry = new AddonConfigurationRegistry(projectRootPath);
 
 const SentryCliPlugin = require('@sentry/webpack-plugin');
 
-// TODO: apply "customize Volto by addon", "customize addon by project" logic
-const customizations = {};
-let { customizationPaths } = packageJson;
-if (!customizationPaths) {
-  customizationPaths = ['src/customizations/'];
-}
-customizationPaths.forEach(customizationPath => {
-  map(
-    glob(`${customizationPath}**/*.*(svg|png|jpg|jpeg|gif|ico|less|js|jsx)`),
-    filename => {
-      const targetPath = filename.replace(
-        customizationPath,
-        `${registry.voltoPath}/src/`,
-      );
-      if (fs.existsSync(targetPath)) {
-        customizations[
-          filename
-            .replace(customizationPath, '@plone/volto/')
-            .replace(/\.(js|jsx)$/, '')
-        ] = path.resolve(filename);
-      } else {
-        console.log(
-          `The file ${filename} doesn't exist in the volto package (${targetPath}), unable to customize.`,
-        );
-      }
-    },
-  );
-});
-
-const svgPlugin = config => {
+const svgPlugin = (config) => {
   const SVGLOADER = {
     test: /icons\/.*\.svg$/,
     use: [
@@ -237,7 +208,8 @@ const defaultModify = (config, { target, dev }, webpack) => {
   config.resolve.plugins = [new RootResolverPlugin()];
 
   config.resolve.alias = {
-    ...customizations,
+    ...registry.getAddonCustomizationPaths(),
+    ...registry.getProjectCustomizationPaths(),
     ...config.resolve.alias,
     '../../theme.config$': `${projectRootPath}/theme/theme.config`,
     'volto-themes': `${registry.voltoPath}/theme/themes`,
@@ -262,14 +234,14 @@ const defaultModify = (config, { target, dev }, webpack) => {
   }
   // Add babel support external (ie. node_modules npm published packages)
   if (packageJson.addons) {
-    registry.addonNames.forEach(addon =>
+    registry.addonNames.forEach((addon) =>
       include.push(fs.realpathSync(registry.packages[addon].modulePath)),
     );
   }
 
   let addonsAsExternals = [];
   if (packageJson.addons) {
-    addonsAsExternals = registry.addonNames.map(addon => new RegExp(addon));
+    addonsAsExternals = registry.addonNames.map((addon) => new RegExp(addon));
   }
 
   config.externals =
@@ -307,7 +279,7 @@ const defaultModify = (config, { target, dev }, webpack) => {
   return config;
 };
 
-const addonExtenders = registry.getAddonExtenders().map(m => require(m));
+const addonExtenders = registry.getAddonExtenders().map((m) => require(m));
 const defaultPlugins = [
   'bundle-analyzer',
   svgPlugin,
