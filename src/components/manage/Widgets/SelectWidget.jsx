@@ -96,9 +96,6 @@ function getDefaultValues(choices, value) {
       value: 'no-value',
     };
   }
-  if (value === null) {
-    return '';
-  }
   if (isObject(value)) {
     return {
       label: value.title !== 'None' && value.title ? value.title : value.token,
@@ -107,8 +104,6 @@ function getDefaultValues(choices, value) {
   }
   if (value && choices.length > 0) {
     return { label: find(choices, (o) => o[0] === value)[1], value };
-  } else {
-    return {};
   }
 }
 
