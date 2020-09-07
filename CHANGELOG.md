@@ -1,6 +1,6 @@
 # Change Log
 
-## 7.12.2 (unreleased)
+## 7.13.0 (2020-09-07)
 
 ### Feature
 
