@@ -6,11 +6,14 @@
 
 ### Feature
 
+- Add NumberWidget, an input widget for numbers @tiberiuichim
+
 ### Bugfix
 
 - Added prop resettable to DatetimeWidget @damiDevRT
 - removed the ability to reset the datepicker in the recurrence widget to prevent the uncontrolled creation of recurrences @damiDevRT
 - fix typo in the Italian translation of "of the month" @damiDevRT
+- Fixing the Image size settings in sidebar when Image alignment changes @iFlameing
 
 ### Internal
 
