@@ -42,7 +42,6 @@ const ByDayField = ({ label, value, onChange }) => {
               {Object.keys(Days).map((d) => (
                 <Button
                   key={d}
-                  icon
                   active={value?.indexOf(Days[d]) >= 0}
                   type="button"
                   content={moment.weekdaysShort(Days[d].weekday + 1)}

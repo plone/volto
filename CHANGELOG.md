@@ -11,7 +11,6 @@
 - Added prop resettable to DatetimeWidget @damiDevRT
 - removed the ability to reset the datepicker in the recurrence widget to prevent the uncontrolled creation of recurrences @damiDevRT
 - fix typo in the Italian translation of "of the month" @damiDevRT
-- added the "icon" attribute to the ByDayField buttons to correct a display error @damiDevRT
 
 ### Internal
 
