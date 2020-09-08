@@ -2,29 +2,35 @@
  * SelectWidget component.
  * @module components/manage/Widgets/SelectWidget
  */
+/**
+ * SelectWidget component.
+ * @module components/manage/Widgets/SelectWidget
+ */
 
-import loadable from '@loadable/component';
-import { getVocabulary, getVocabularyTokenTitle } from '@plone/volto/actions';
-import { FormFieldWrapper } from '@plone/volto/components';
-import {
-  customSelectStyles,
-  DropdownIndicator,
-  Option,
-  selectTheme,
-} from '@plone/volto/components/manage/Widgets/SelectStyling';
-import {
-  getBoolean,
-  getVocabFromField,
-  getVocabFromHint,
-  getVocabFromItems,
-} from '@plone/volto/helpers';
-import { find, intersection, isBoolean, isObject, map } from 'lodash';
-import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { defineMessages, injectIntl } from 'react-intl';
+import PropTypes from 'prop-types';
+import { Icon as IconOld } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { Icon as IconOld } from 'semantic-ui-react';
+import { map, find, isBoolean, isObject, intersection } from 'lodash';
+import { defineMessages, injectIntl } from 'react-intl';
+import loadable from '@loadable/component';
+
+import {
+  getBoolean,
+  getVocabFromHint,
+  getVocabFromField,
+  getVocabFromItems,
+} from '@plone/volto/helpers';
+import { FormFieldWrapper } from '@plone/volto/components';
+import { getVocabulary, getVocabularyTokenTitle } from '@plone/volto/actions';
+
+import {
+  Option,
+  DropdownIndicator,
+  selectTheme,
+  customSelectStyles,
+} from '@plone/volto/components/manage/Widgets/SelectStyling';
 
 const Select = loadable(() => import('react-select'));
 const AsyncPaginate = loadable(() => import('react-select-async-paginate'));
