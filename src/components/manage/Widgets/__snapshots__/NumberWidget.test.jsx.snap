@@ -39,7 +39,6 @@ exports[`renders a number widget component 1`] = `
             onChange={[Function]}
             onClick={[Function]}
             type="number"
-            value={0}
           />
         </div>
       </div>

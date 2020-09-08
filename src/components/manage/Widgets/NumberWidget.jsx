@@ -20,7 +20,7 @@ const NumberWidget = (props) => {
     onChange,
     onBlur,
     onClick,
-    defaultValue = 0,
+    defaultValue,
     maximum,
     minimum,
   } = props;
