@@ -1,6 +1,6 @@
 # Change Log
 
-## 7.12.2 (unreleased)
+## 7.13.1 (unreleased)
 
 ### Breaking
 
@@ -9,6 +9,16 @@
 ### Bugfix
 
 ### Internal
+
+## 7.13.0 (2020-09-07)
+
+### Feature
+
+- Add NumberWidget, an input widget for numbers @tiberiuichim
+
+### Bugfix
+
+- Fixing the Image size settings in sidebar when Image alignment changes @iFlameing
 
 ## 7.12.1 (2020-09-04)
 
