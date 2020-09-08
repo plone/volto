@@ -1,6 +1,6 @@
 # Change Log
 
-## 7.13.1 (unreleased)
+## 7.14.1 (unreleased)
 
 ### Breaking
 
@@ -21,6 +21,17 @@
 - Fix errors with SelectWidget when removing the only element @rexalex
 
 ### Internal
+
+## 7.14.0 (2020-09-08)
+
+### Feature
+
+- Render form with vertical tabs, setting the property `verticalFormTabs` in config.js @giuliaghisini
+
+### Bugfix
+
+- Imported locales by razzle and fixed import locale @giuliaghisini
+- Fix console warning due to uncontrolled selectWidget component @nileshgulia1
 
 ## 7.13.0 (2020-09-07)
 

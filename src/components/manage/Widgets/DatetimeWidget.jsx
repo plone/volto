@@ -2,22 +2,22 @@
  * DatetimeWidget component.
  * @module components/manage/Widgets/DatetimeWidget
  */
-
-import { FormFieldWrapper, Icon } from '@plone/volto/components';
-import clearSVG from '@plone/volto/icons/clear.svg';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { defineMessages, injectIntl } from 'react-intl';
+import moment from 'moment-timezone';
+import Moment from 'moment';
+import { SingleDatePicker } from 'react-dates';
+import TimePicker from 'rc-time-picker';
+import cx from 'classnames';
+import { Icon, FormFieldWrapper } from '@plone/volto/components';
+import { settings } from '~/config';
 import leftKey from '@plone/volto/icons/left-key.svg';
 import rightKey from '@plone/volto/icons/right-key.svg';
-import cx from 'classnames';
-import moment from 'moment-timezone';
-import PropTypes from 'prop-types';
-import TimePicker from 'rc-time-picker';
+import clearSVG from '@plone/volto/icons/clear.svg';
 import 'rc-time-picker/assets/index.css';
-import React, { Component } from 'react';
-import { SingleDatePicker } from 'react-dates';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
-import { defineMessages, injectIntl } from 'react-intl';
-import { settings } from '~/config';
 
 const messages = defineMessages({
   date: {
@@ -82,6 +82,10 @@ class DatetimeWidget extends Component {
   constructor(props) {
     super(props);
     //  Used to set a server timezone or UTC as default
+    moment.defineLocale(
+      this.props.intl.locale,
+      Moment.localeData(this.props.intl.locale)._config,
+    ); // copy locale to moment-timezone
     const timezone = settings.timezone || 'UTC';
     let datetime = null;
 
