@@ -4,7 +4,13 @@ const Schema = {
     {
       id: 'default',
       title: 'Default',
-      fields: ['placeholder', 'required', 'fixed', 'readOnly'],
+      fields: [
+        'placeholder',
+        'required',
+        'fixed',
+        'disableNewBlocks',
+        'readOnly',
+      ],
     },
   ],
   properties: {
@@ -22,6 +28,11 @@ const Schema = {
     fixed: {
       title: 'Fixed position',
       description: 'Disable drag & drop on this block',
+      type: 'boolean',
+    },
+    disableNewBlocks: {
+      title: 'Disable new blocks',
+      description: 'Disable creation of new blocks after this block',
       type: 'boolean',
     },
     readOnly: {
