@@ -2,15 +2,14 @@
 
 ## 7.13.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Render form with vertical tabs, setting the property `verticalFormTabs` in config.js @giuliaghisini
 
 ### Bugfix
- - fix console warning due to uncontrolled selectWidget component @nileshgulia1
-### Internal
+
+- Imported locales by razzle and fixed import locale @giuliaghisini
+- Fix console warning due to uncontrolled selectWidget component @nileshgulia1
 
 ## 7.13.0 (2020-09-07)
 
@@ -53,7 +52,6 @@
 - Fix `null` response issue when passing custom `Accept:` headers to actions #1771 @avoinea
 - Removed all `<<<<<HEAD` artifacts from translations @steffenri
 - Increase z-index of `block-add-button` @steffenri
-- imported locales by razzle and fixed import locale @giuliaghisini
 
 ### Internal
 
