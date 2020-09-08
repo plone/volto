@@ -1,14 +1,27 @@
 # Change Log
 
-## 7.13.1 (unreleased)
+## 7.14.1 (unreleased)
 
 ### Breaking
 
 ### Feature
 
+- Added Blocks Layout Editor within Dexterity Content-Types Controlpanel @avoinea #1517
+
 ### Bugfix
 
 ### Internal
+
+## 7.14.0 (2020-09-08)
+
+### Feature
+
+- Render form with vertical tabs, setting the property `verticalFormTabs` in config.js @giuliaghisini
+
+### Bugfix
+
+- Imported locales by razzle and fixed import locale @giuliaghisini
+- Fix console warning due to uncontrolled selectWidget component @nileshgulia1
 
 ## 7.13.0 (2020-09-07)
 
@@ -278,7 +291,6 @@
 
 ### Feature
 
-- Added Blocks Layout Editor within Dexterity Content-Types Controlpanel @avoinea #1517
 ### Bugfix
 
 - Adding absolute url in ObjectBrowser for image type @iFlameing

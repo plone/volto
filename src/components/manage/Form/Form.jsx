@@ -882,42 +882,52 @@ class Form extends Component {
           method="post"
           onSubmit={this.onSubmit}
           error={keys(this.state.errors).length > 0}
+          className={settings.verticalFormTabs ? 'vertical-form' : ''}
         >
           <Segment.Group raised>
             {schema && schema.fieldsets.length > 1 && (
-              <Tab
-                menu={{
-                  secondary: true,
-                  pointing: true,
-                  attached: true,
-                  tabular: true,
-                  className: 'formtabs',
-                }}
-                panes={map(schema.fieldsets, (item) => ({
-                  menuItem: item.title,
-                  render: () => [
-                    this.props.title && (
-                      <Segment secondary attached key={this.props.title}>
-                        {this.props.title}
-                      </Segment>
-                    ),
-                    ...map(item.fields, (field, index) => (
-                      <Field
-                        {...schema.properties[field]}
-                        id={field}
-                        formData={this.state.formData}
-                        fieldSet={item.title.toLowerCase()}
-                        focus={index === 0}
-                        value={this.state.formData[field]}
-                        required={schema.required.indexOf(field) !== -1}
-                        onChange={this.onChangeField}
-                        key={field}
-                        error={this.state.errors[field]}
-                      />
-                    )),
-                  ],
-                }))}
-              />
+              <>
+                {settings.verticalFormTabs && this.props.title && (
+                  <Segment secondary attached key={this.props.title}>
+                    {this.props.title}
+                  </Segment>
+                )}
+                <Tab
+                  menu={{
+                    secondary: true,
+                    pointing: true,
+                    attached: true,
+                    tabular: true,
+                    className: 'formtabs',
+                    vertical: settings.verticalFormTabs,
+                  }}
+                  grid={{ paneWidth: 9, tabWidth: 3, stackable: true }}
+                  panes={map(schema.fieldsets, (item) => ({
+                    menuItem: item.title,
+                    render: () => [
+                      !settings.verticalFormTabs && this.props.title && (
+                        <Segment secondary attached key={this.props.title}>
+                          {this.props.title}
+                        </Segment>
+                      ),
+                      ...map(item.fields, (field, index) => (
+                        <Field
+                          {...schema.properties[field]}
+                          id={field}
+                          formData={this.state.formData}
+                          fieldSet={item.title.toLowerCase()}
+                          focus={index === 0}
+                          value={this.state.formData[field]}
+                          required={schema.required.indexOf(field) !== -1}
+                          onChange={this.onChangeField}
+                          key={field}
+                          error={this.state.errors[field]}
+                        />
+                      )),
+                    ],
+                  }))}
+                />
+              </>
             )}
             {schema && schema.fieldsets.length === 1 && (
               <Segment>
