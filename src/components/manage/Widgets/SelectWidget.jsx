@@ -2,10 +2,6 @@
  * SelectWidget component.
  * @module components/manage/Widgets/SelectWidget
  */
-/**
- * SelectWidget component.
- * @module components/manage/Widgets/SelectWidget
- */
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -142,6 +138,11 @@ class SelectWidget extends Component {
     widgetOptions: PropTypes.shape({
       vocabulary: PropTypes.object,
     }),
+    value: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.string,
+      PropTypes.bool,
+    ]),
     onChange: PropTypes.func.isRequired,
     onBlur: PropTypes.func,
     onClick: PropTypes.func,
