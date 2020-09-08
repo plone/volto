@@ -7,6 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Input } from 'semantic-ui-react';
 import { FormFieldWrapper } from '@plone/volto/components';
+import { injectIntl } from 'react-intl';
 
 /**
  * NumberWidget component class.
@@ -74,4 +75,4 @@ NumberWidget.defaultProps = {
   value: null,
 };
 
-export default NumberWidget;
+export default injectIntl(NumberWidget);
