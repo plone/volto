@@ -2,13 +2,11 @@
 
 ## 7.13.1 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
-### Internal
+- Added prop resettable to DatetimeWidget @damiDevRT
+- removed the ability to reset the datepicker in the recurrence widget to prevent the uncontrolled creation of recurrences @damiDevRT
+- fix typo in the Italian translation of "of the month" @damiDevRT
 
 ## 7.13.0 (2020-09-07)
 
