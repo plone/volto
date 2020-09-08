@@ -36,7 +36,6 @@ Array [
               name="my-field"
               onChange={[Function]}
               type="number"
-              value={0}
             />
           </div>
         </div>

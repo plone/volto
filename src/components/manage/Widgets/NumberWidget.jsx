@@ -14,38 +14,23 @@ import { injectIntl } from 'react-intl';
  * @function NumberWidget
  * @returns {string} Markup of the component.
  */
-const NumberWidget = ({
-  id,
-  title,
-  required,
-  description,
-  error,
-  value,
-  onChange,
-  fieldSet,
-  wrapped,
-  defaultValue = 0,
-}) => (
-  <FormFieldWrapper
-    id={id}
-    title={title}
-    description={description}
-    required={required}
-    error={error}
-    fieldSet={fieldSet}
-    wrapped={wrapped}
-  >
-    <Input
-      id={`field-${id}`}
-      name={id}
-      type="number"
-      value={value || defaultValue}
-      onChange={({ target }) =>
-        onChange(id, target.value === '' ? undefined : target.value)
-      }
-    />
-  </FormFieldWrapper>
-);
+const NumberWidget = (props) => {
+  const { id, value, onChange, defaultValue } = props;
+  return (
+    <FormFieldWrapper {...props}>
+      <Input
+        id={`field-${id}`}
+        name={id}
+        type="number"
+        disabled={props.isDisabled}
+        value={value || defaultValue}
+        onChange={({ target }) =>
+          onChange(id, target.value === '' ? undefined : target.value)
+        }
+      />
+    </FormFieldWrapper>
+  );
+};
 
 /**
  * Property types.
