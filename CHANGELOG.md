@@ -53,6 +53,7 @@
 - Fix `null` response issue when passing custom `Accept:` headers to actions #1771 @avoinea
 - Removed all `<<<<<HEAD` artifacts from translations @steffenri
 - Increase z-index of `block-add-button` @steffenri
+- imported locales by razzle and fixed import locale @giuliaghisini
 
 ### Internal
 
