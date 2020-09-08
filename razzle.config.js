@@ -34,35 +34,6 @@ const packageJson = require(path.join(projectRootPath, 'package.json'));
 
 const registry = new AddonConfigurationRegistry(projectRootPath);
 
-// TODO: apply "customize Volto by addon", "customize addon by project" logic
-const customizations = {};
-let { customizationPaths } = packageJson;
-if (!customizationPaths) {
-  customizationPaths = ['src/customizations/'];
-}
-customizationPaths.forEach((customizationPath) => {
-  map(
-    glob(`${customizationPath}**/*.*(svg|png|jpg|jpeg|gif|ico|less|js|jsx)`),
-    (filename) => {
-      const targetPath = filename.replace(
-        customizationPath,
-        `${registry.voltoPath}/src/`,
-      );
-      if (fs.existsSync(targetPath)) {
-        customizations[
-          filename
-            .replace(customizationPath, '@plone/volto/')
-            .replace(/\.(js|jsx)$/, '')
-        ] = path.resolve(filename);
-      } else {
-        console.log(
-          `The file ${filename} doesn't exist in the volto package (${targetPath}), unable to customize.`,
-        );
-      }
-    },
-  );
-});
-
 const svgPlugin = (config) => {
   const SVGLOADER = {
     test: /icons\/.*\.svg$/,
