@@ -7,6 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
 import moment from 'moment-timezone';
+import Moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 import TimePicker from 'rc-time-picker';
 import cx from 'classnames';
@@ -85,6 +86,10 @@ class DatetimeWidget extends Component {
   constructor(props) {
     super(props);
     //  Used to set a server timezone or UTC as default
+    moment.defineLocale(
+      this.props.intl.locale,
+      Moment.localeData(this.props.intl.locale)._config,
+    ); // copy locale to moment-timezone
     const timezone = settings.timezone || 'UTC';
     let datetime = null;
 

@@ -134,7 +134,7 @@ msgstr "Tutti"
 
 #: components/theme/Search/Search
 msgid "Alphabetically"
-msgstr ""
+msgstr "Alfabetico"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -428,7 +428,7 @@ msgstr "Data"
 
 #: components/theme/Search/Search
 msgid "Date (newest first)"
-msgstr ""
+msgstr "Data (prima i più recenti)"
 
 #: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Contents/ContentsRenameModal
@@ -1104,7 +1104,7 @@ msgstr "Nessuna opzione"
 
 #: components/theme/Search/Search
 msgid "No results found"
-msgstr ""
+msgstr "Nessun risultato"
 
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
@@ -1319,7 +1319,7 @@ msgstr "Form di iscrizione"
 
 #: components/theme/Search/Search
 msgid "Relevance"
-msgstr ""
+msgstr "Rilevanza"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
@@ -1584,7 +1584,7 @@ msgstr "Spiacente, qualcosa è andato storto"
 
 #: components/theme/Search/Search
 msgid "Sort By:"
-msgstr ""
+msgstr "Ordina per:"
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "Sort on"
@@ -2165,12 +2165,12 @@ msgstr "Più usati"
 
 #: components/manage/Contents/ContentsItem
 msgid "no workflow state"
-msgstr "Nessun stato di workflow>>>>>>> master"
+msgstr "Nessun stato di workflow"
 
 #: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
 #: components/manage/Widgets/RecurrenceWidget/ByYearField
 msgid "of the month"
-msgstr "del mese======="
+msgstr "del mese"
 
 #: error
 msgid "or try a different page."

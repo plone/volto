@@ -22,6 +22,7 @@ import {
 } from 'semantic-ui-react';
 
 import { SelectWidget, Icon, DatetimeWidget } from '@plone/volto/components';
+
 import saveSVG from '@plone/volto/icons/save.svg';
 import editingSVG from '@plone/volto/icons/editing.svg';
 import trashSVG from '@plone/volto/icons/delete.svg';
@@ -177,6 +178,7 @@ class RecurrenceWidget extends Component {
    */
   constructor(props, intl) {
     super(props);
+
     moment.locale(this.props.intl.locale);
 
     let rruleSet = this.props.value
