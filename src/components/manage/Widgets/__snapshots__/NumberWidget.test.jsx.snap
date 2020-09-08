@@ -32,8 +32,12 @@ exports[`renders a number widget component 1`] = `
         >
           <input
             id="field-my-field"
+            max={null}
+            min={null}
             name="my-field"
+            onBlur={[Function]}
             onChange={[Function]}
+            onClick={[Function]}
             type="number"
             value={0}
           />
