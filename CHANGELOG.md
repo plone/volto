@@ -9,7 +9,7 @@
 - Render form with vertical tabs, setting the property `verticalFormTabs` in config.js @giuliaghisini
 
 ### Bugfix
-
+ - fix console warning due to uncontrolled selectWidget component @nileshgulia1
 ### Internal
 
 ## 7.13.0 (2020-09-07)
