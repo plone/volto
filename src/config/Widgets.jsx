@@ -16,6 +16,7 @@ import TokenWidget from '@plone/volto/components/manage/Widgets/TokenWidget';
 import WysiwygWidget from '@plone/volto/components/manage/Widgets/WysiwygWidget';
 import UrlWidget from '@plone/volto/components/manage/Widgets/UrlWidget';
 import EmailWidget from '@plone/volto/components/manage/Widgets/EmailWidget';
+import NumberWidget from '@plone/volto/components/manage/Widgets/NumberWidget';
 
 //import ReferenceWidget from '@plone/volto/components/manage/Widgets/ReferenceWidget';
 import ObjectBrowserWidget from '@plone/volto/components/manage/Widgets/ObjectBrowserWidget';
@@ -60,6 +61,7 @@ export const widgetMapping = {
     password: PasswordWidget,
     url: UrlWidget,
     email: EmailWidget,
+    number: NumberWidget,
   },
 };
 

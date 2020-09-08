@@ -24,12 +24,15 @@ const addBreaklinesInline = (children) => {
     const s = children[0].endsWith('\n')
       ? children[0].slice(0, -1)
       : children[0];
-    return s.split('\n').map((child, index) => (
-      <React.Fragment key={child + index}>
-        {child}
-        <br />
-      </React.Fragment>
-    ));
+
+    if (s.split('\n').length > 1) {
+      return s.split('\n').map((child, index) => (
+        <React.Fragment key={child + index}>
+          {child}
+          <br />
+        </React.Fragment>
+      ));
+    }
   }
   return children;
 };
