@@ -201,6 +201,9 @@ class Edit extends Component {
     const placeholder =
       this.props.data.placeholder ||
       this.props.intl.formatMessage(messages.text);
+
+    const disableNewBlocks =
+      this.props.data?.disableNewBlocks || this.props.detached;
     const { InlineToolbar } = this.state.inlineToolbarPlugin;
 
     return (
@@ -217,7 +220,7 @@ class Edit extends Component {
           customStyleMap={settings.customStyleMap}
           placeholder={placeholder}
           handleReturn={(e) => {
-            if (isSoftNewlineEvent(e)) {
+            if (isSoftNewlineEvent(e) || disableNewBlocks) {
               this.onChange(
                 RichUtils.insertSoftNewline(this.state.editorState),
               );
@@ -242,6 +245,9 @@ class Edit extends Component {
             return {};
           }}
           handleKeyCommand={(command, editorState) => {
+            if (this.props.data.required) {
+              return;
+            }
             if (
               command === 'backspace' &&
               editorState.getCurrentContent().getPlainText().length === 0
@@ -275,7 +281,7 @@ class Edit extends Component {
           }}
         />
         <InlineToolbar />
-        {!this.props.detached &&
+        {!disableNewBlocks &&
           (!this.props.data.text ||
             (this.props.data.text &&
               this.props.data.text.blocks &&

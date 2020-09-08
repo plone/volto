@@ -32,6 +32,7 @@ class Cell extends Component {
     selected: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
     isTableBlockSelected: PropTypes.bool,
+    disableNewBlocks: PropTypes.bool,
   };
 
   /**
@@ -137,7 +138,7 @@ class Cell extends Component {
           blockStyleFn={settings.blockStyleFn}
           customStyleMap={settings.customStyleMap}
           handleReturn={(e) => {
-            if (isSoftNewlineEvent(e)) {
+            if (isSoftNewlineEvent(e) || this.props.disableNewBlocks) {
               this.onChange(
                 RichUtils.insertSoftNewline(this.state.editorState),
               );
@@ -153,7 +154,10 @@ class Cell extends Component {
               const blockType = currentContentBlock.getType();
               if (!includes(settings.listBlockTypes, blockType)) {
                 this.props.onSelectBlock(
-                  this.props.onAddBlock('text', this.props.index + 1),
+                  this.props.onAddBlock(
+                    settings.defaultBlockType,
+                    this.props.index + 1,
+                  ),
                 );
                 return 'handled';
               }

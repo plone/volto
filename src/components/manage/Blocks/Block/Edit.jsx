@@ -123,6 +123,8 @@ class Edit extends Component {
       ? this.props.data.required
       : includes(blocks.requiredBlocks, type);
 
+    const disableNewBlocks = this.props.data?.disableNewBlocks;
+
     let Block = blocks.blocksConfig?.[type]?.['edit'] || null;
     if (this.props.data?.readOnly) {
       Block = blocks.blocksConfig?.[type]?.['view'] || null;
@@ -139,7 +141,7 @@ class Edit extends Component {
             role="presentation"
             onClick={() => this.props.onSelectBlock(this.props.id)}
             onKeyDown={
-              !blockHasOwnFocusManagement
+              !(blockHasOwnFocusManagement && disableNewBlocks)
                 ? (e) =>
                     this.props.handleKeyDown(
                       e,
@@ -170,13 +172,16 @@ class Edit extends Component {
           <div
             role="presentation"
             onClick={() => this.props.onSelectBlock(this.props.id)}
-            onKeyDown={(e) =>
-              this.props.handleKeyDown(
-                e,
-                this.props.index,
-                this.props.id,
-                this.blockNode.current,
-              )
+            onKeyDown={
+              !(blockHasOwnFocusManagement && disableNewBlocks)
+                ? (e) =>
+                    this.props.handleKeyDown(
+                      e,
+                      this.props.index,
+                      this.props.id,
+                      this.blockNode.current,
+                    )
+                : null
             }
             className={cx(`block ${type}`, { selected: this.props.selected })}
             style={{ outline: 'none' }}
