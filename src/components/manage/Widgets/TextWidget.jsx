@@ -3,11 +3,12 @@
  * @module components/manage/Widgets/TextWidget
  */
 
-import { FormFieldWrapper, Icon } from '@plone/volto/components';
-import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Input, Icon as IconOld } from 'semantic-ui-react';
+
 import { defineMessages, injectIntl } from 'react-intl';
-import { Icon as IconOld, Input } from 'semantic-ui-react';
+import { Icon, FormFieldWrapper } from '@plone/volto/components';
 
 const messages = defineMessages({
   default: {
@@ -40,11 +41,6 @@ const messages = defineMessages({
   },
 });
 
-const typeTranslations = {
-  integer: 'number',
-  string: 'text',
-};
-
 /**
  * TextWidget component class.
  * @class TextWidget
@@ -62,7 +58,7 @@ class TextWidget extends Component {
     description: PropTypes.string,
     required: PropTypes.bool,
     error: PropTypes.arrayOf(PropTypes.string),
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    value: PropTypes.string,
     focus: PropTypes.bool,
     onChange: PropTypes.func,
     onBlur: PropTypes.func,
@@ -75,11 +71,8 @@ class TextWidget extends Component {
       content: PropTypes.string,
     }),
     iconAction: PropTypes.func,
-    type: PropTypes.string,
     minLength: PropTypes.number,
     maxLength: PropTypes.number,
-    maximum: PropTypes.number,
-    minimum: PropTypes.number,
     wrapped: PropTypes.bool,
     placeholder: PropTypes.string,
   };
@@ -102,11 +95,8 @@ class TextWidget extends Component {
     focus: false,
     icon: null,
     iconAction: null,
-    type: '',
     minLength: null,
     maxLength: null,
-    minimum: null,
-    maximum: null,
   };
 
   /**
@@ -137,11 +127,8 @@ class TextWidget extends Component {
       intl,
       icon,
       iconAction,
-      type,
       minLength,
       maxLength,
-      minimum,
-      maximum,
       placeholder,
     } = this.props;
 
@@ -212,10 +199,6 @@ class TextWidget extends Component {
             onBlur(id, target.value === '' ? undefined : target.value)
           }
           onClick={() => onClick()}
-          type={typeTranslations[type] || type}
-          step={type === 'number' ? 'any' : type === 'integer' ? '1' : null}
-          min={minimum || null}
-          max={maximum || null}
           minLength={minLength || null}
           maxLength={maxLength || null}
         />
