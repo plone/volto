@@ -2,15 +2,9 @@
 
 ## 7.14.1 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Fix customization mechanism where customization paths end with `/` @tiberiuichim
-
-### Internal
 
 ## 7.14.0 (2020-09-08)
 
