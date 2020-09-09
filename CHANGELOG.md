@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Hyphenate sidebar labels @ksuess
+
 ### Internal
 
 ## 7.14.1 (2020-09-09)
