@@ -64,6 +64,7 @@
   color: @labelColor;
   font-size: @labelFontSize;
   font-weight: @labelFontWeight;
+  hyphens: auto;
   text-transform: @labelTextTransform;
 }
 
