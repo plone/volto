@@ -85,6 +85,18 @@ class Edit extends Component {
   }
 
   /**
+   * @param {*} nextProps
+   * @returns {boolean}
+   * @memberof Edit
+   */
+  shouldComponentUpdate(nextProps) {
+    if (this.props.selected || nextProps.selected) {
+      return true;
+    }
+    return !isEqual(this.props.data, nextProps.data);
+  }
+
+  /**
    * Change url handler
    * @method onChangeUrl
    * @param {Object} target Target object
@@ -186,65 +198,65 @@ class Edit extends Component {
             />
           </div>
         ) : (
-            <Message>
-              <center>
-                <img src={mapsBlockSVG} alt="" />
-                <div className="toolbar-inner">
-                  <Input
-                    onKeyDown={this.onKeyDownVariantMenuForm}
-                    onChange={this.onChangeUrl}
-                    placeholder={this.props.intl.formatMessage(
-                      messages.MapsBlockInputPlaceholder,
-                    )}
-                    value={this.state.url}
-                    // Prevents propagation to the Dropzone and the opening
-                    // of the upload browser dialog
-                    onClick={(e) => e.stopPropagation()}
-                  />
-                  {this.state.url && (
-                    <Button.Group>
-                      <Button
-                        basic
-                        className="cancel"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          this.setState({ url: '' });
-                        }}
-                      >
-                        <Icon name={clearSVG} size="30px" />
-                      </Button>
-                    </Button.Group>
+          <Message>
+            <center>
+              <img src={mapsBlockSVG} alt="" />
+              <div className="toolbar-inner">
+                <Input
+                  onKeyDown={this.onKeyDownVariantMenuForm}
+                  onChange={this.onChangeUrl}
+                  placeholder={this.props.intl.formatMessage(
+                    messages.MapsBlockInputPlaceholder,
                   )}
+                  value={this.state.url}
+                  // Prevents propagation to the Dropzone and the opening
+                  // of the upload browser dialog
+                  onClick={(e) => e.stopPropagation()}
+                />
+                {this.state.url && (
                   <Button.Group>
                     <Button
                       basic
-                      primary
+                      className="cancel"
                       onClick={(e) => {
                         e.stopPropagation();
-                        this.onSubmitUrl();
+                        this.setState({ url: '' });
                       }}
                     >
-                      <Icon name={aheadSVG} size="30px" />
+                      <Icon name={clearSVG} size="30px" />
                     </Button>
                   </Button.Group>
-                </div>
-                <div className="message-text">
-                  <FormattedMessage
-                    id="Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
-                    defaultMessage="Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
-                  />
-                  {this.state.error && (
-                    <div style={{ color: 'red' }}>
-                      <FormattedMessage
-                        id="Embed code error, please follow the instructions and try again."
-                        defaultMessage="Embed code error, please follow the instructions and try again."
-                      />
-                    </div>
-                  )}
-                </div>
-              </center>
-            </Message>
-          )}
+                )}
+                <Button.Group>
+                  <Button
+                    basic
+                    primary
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      this.onSubmitUrl();
+                    }}
+                  >
+                    <Icon name={aheadSVG} size="30px" />
+                  </Button>
+                </Button.Group>
+              </div>
+              <div className="message-text">
+                <FormattedMessage
+                  id="Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
+                  defaultMessage="Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
+                />
+                {this.state.error && (
+                  <div style={{ color: 'red' }}>
+                    <FormattedMessage
+                      id="Embed code error, please follow the instructions and try again."
+                      defaultMessage="Embed code error, please follow the instructions and try again."
+                    />
+                  </div>
+                )}
+              </div>
+            </center>
+          </Message>
+        )}
         <SidebarPortal selected={this.props.selected}>
           <MapsSidebar {...this.props} resetSubmitUrl={this.resetSubmitUrl} />
         </SidebarPortal>

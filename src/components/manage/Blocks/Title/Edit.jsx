@@ -7,6 +7,7 @@ import React, { Component } from 'react';
 import { Map } from 'immutable';
 import PropTypes from 'prop-types';
 import { stateFromHTML } from 'draft-js-import-html';
+import { isEqual } from 'lodash';
 import { Editor, DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
 import { defineMessages, injectIntl } from 'react-intl';
 import { settings } from '~/config';
@@ -84,6 +85,18 @@ class Edit extends Component {
       this.node._onBlur = () => this.setState({ focus: false });
       this.node._onFocus = () => this.setState({ focus: true });
     }
+  }
+
+  /**
+   * @param {*} nextProps
+   * @returns {boolean}
+   * @memberof Edit
+   */
+  shouldComponentUpdate(nextProps) {
+    if (this.props.selected) {
+      return true;
+    }
+    return !isEqual(this.props.data, nextProps.data);
   }
 
   /**

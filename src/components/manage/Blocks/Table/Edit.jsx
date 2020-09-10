@@ -244,10 +244,11 @@ class Edit extends Component {
    * @returns {Boolean}
    */
   shouldComponentUpdate(nextProps) {
-    return !isEqual(this.props.data.table, nextProps.data.table)
-
+    if (this.props.selected) {
+      return true;
+    }
+    return !isEqual(this.props.data.table, nextProps.data.table);
   }
-
 
   /**
    * Select cell handler
@@ -642,8 +643,8 @@ class Edit extends Component {
                       as={cell.type === 'header' ? 'th' : 'td'}
                       className={
                         rowIndex === this.state.selected.row &&
-                          cellIndex === this.state.selected.cell &&
-                          this.props.selected
+                        cellIndex === this.state.selected.cell &&
+                        this.props.selected
                           ? 'selected'
                           : ''
                       }

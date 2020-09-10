@@ -130,7 +130,7 @@ class Edit extends Component {
    * @memberof Edit
    */
   shouldComponentUpdate(nextProps, nextState) {
-    if (this.state.addNewBlockOpened !== nextState.addNewBlockOpened) {
+    if (this.props.selected) {
       return true;
     }
     return !isEqual(this.props.data.text, nextProps.data.text);
