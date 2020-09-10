@@ -9,6 +9,7 @@
 ### Bugfix
 
 - Hyphenate sidebar labels @ksuess
+- Update German translations @tisto
 
 ### Internal
 
