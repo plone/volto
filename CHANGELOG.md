@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Show Username when Firstname attr is missing in UsersControlPanelUser @iFlameing
+
 ### Bugfix
 
 ### Internal
