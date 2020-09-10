@@ -6,6 +6,7 @@ exports[`renders an edit map block component 1`] = `
 >
   <div
     className="maps-inner"
+    onClick={[Function]}
   >
     <iframe
       allowFullScreen={true}
