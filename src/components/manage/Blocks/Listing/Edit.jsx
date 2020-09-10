@@ -9,55 +9,56 @@ import {
 } from '@plone/volto/components';
 import { getBaseUrl } from '@plone/volto/helpers';
 
-const Edit = React.memo(({
-  data,
-  onChangeBlock,
-  block,
-  selected,
-  properties,
-  pathname,
-}) => {
-  // componentDidMount
-  React.useEffect(() => {
-    if (!data.query) {
-      onChangeBlock(block, {
-        ...data,
-        query: [],
-        block,
-      });
-    }
-    /* eslint-disable react-hooks/exhaustive-deps */
-  }, []);
+const Edit = React.memo(
+  ({ data, onChangeBlock, block, selected, properties, pathname }) => {
+    // componentDidMount
+    React.useEffect(() => {
+      if (!data.query) {
+        onChangeBlock(block, {
+          ...data,
+          query: [],
+          block,
+        });
+      }
+      /* eslint-disable react-hooks/exhaustive-deps */
+    }, []);
 
-  return (
-    <>
-      {data?.query?.length === 0 && (
-        <FormattedMessage id="Contained items" defaultMessage="Contained items">
-          {(message) => <p className="items-preview">{message}</p>}
-        </FormattedMessage>
-      )}
-      {data?.query?.length > 0 && (
-        <FormattedMessage id="Results preview" defaultMessage="Results preview">
-          {(message) => <p className="items-preview">{message}</p>}
-        </FormattedMessage>
-      )}
-      <ListingBody
-        data={data}
-        properties={properties}
-        block={block}
-        path={getBaseUrl(pathname)}
-        isEditMode
-      />
-      <SidebarPortal selected={selected}>
-        <ListingSidebar
+    return (
+      <>
+        {data?.query?.length === 0 && (
+          <FormattedMessage
+            id="Contained items"
+            defaultMessage="Contained items"
+          >
+            {(message) => <p className="items-preview">{message}</p>}
+          </FormattedMessage>
+        )}
+        {data?.query?.length > 0 && (
+          <FormattedMessage
+            id="Results preview"
+            defaultMessage="Results preview"
+          >
+            {(message) => <p className="items-preview">{message}</p>}
+          </FormattedMessage>
+        )}
+        <ListingBody
           data={data}
+          properties={properties}
           block={block}
-          onChangeBlock={onChangeBlock}
+          path={getBaseUrl(pathname)}
+          isEditMode
         />
-      </SidebarPortal>
-    </>
-  );
-});
+        <SidebarPortal selected={selected}>
+          <ListingSidebar
+            data={data}
+            block={block}
+            onChangeBlock={onChangeBlock}
+          />
+        </SidebarPortal>
+      </>
+    );
+  },
+);
 
 Edit.propTypes = {
   data: PropTypes.objectOf(PropTypes.any).isRequired,
