@@ -11,12 +11,12 @@ import 'prismjs/components/prism-markup';
 import { Button } from 'semantic-ui-react';
 import loadable from '@loadable/component';
 import { defineMessages, injectIntl } from 'react-intl';
+import { isEqual } from 'lodash';
 
 import { Icon } from '@plone/volto/components';
 import showSVG from '@plone/volto/icons/show.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import codeSVG from '@plone/volto/icons/code.svg';
-import { isEqual } from 'lodash';
 
 const Pretty = loadable.lib(() => import('pretty'));
 
@@ -98,11 +98,8 @@ class Edit extends Component {
    * @returns {boolean}
    * @memberof Edit
    */
-  shouldComponentUpdate(nextProps, nextState) {
-    if (this.props.selected) {
-      return true;
-    }
-    return !isEqual(this.props.data, nextProps.data);
+  shouldComponentUpdate(nextProps) {
+    return this.props.selected || !isEqual(this.props.data, nextProps.data);
   }
 
   /**

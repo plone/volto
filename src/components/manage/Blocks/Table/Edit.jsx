@@ -244,10 +244,7 @@ class Edit extends Component {
    * @returns {Boolean}
    */
   shouldComponentUpdate(nextProps) {
-    if (this.props.selected) {
-      return true;
-    }
-    return !isEqual(this.props.data.table, nextProps.data.table);
+    return this.props.selected || !isEqual(this.props.data, nextProps.data);
   }
 
   /**

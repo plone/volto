@@ -90,10 +90,11 @@ class Edit extends Component {
    * @memberof Edit
    */
   shouldComponentUpdate(nextProps) {
-    if (this.props.selected || nextProps.selected) {
-      return true;
-    }
-    return !isEqual(this.props.data, nextProps.data);
+    return (
+      this.props.selected ||
+      nextProps.selected ||
+      !isEqual(this.props.data, nextProps.data)
+    );
   }
 
   /**
