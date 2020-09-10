@@ -33,6 +33,7 @@ import {
   listGroups,
   updateUser,
   updateGroup,
+  showAllUsers,
 } from '@plone/volto/actions';
 import { getBaseUrl } from '@plone/volto/helpers';
 import {
@@ -246,7 +247,6 @@ class UsersControlpanel extends Component {
       entries: props.users,
       groupEntries: props.groups,
       isClient: false,
-      showAlluser: false,
     };
   }
 
@@ -598,9 +598,8 @@ class UsersControlpanel extends Component {
    * @returns {undefined}
    */
   onShowAllUser() {
-    this.setState({ showAlluser: true }, () => {
-      this.props.listUsers();
-    });
+    this.props.showAllUsers();
+    this.props.listUsers();
   }
 
   /**
@@ -851,7 +850,7 @@ class UsersControlpanel extends Component {
                 </Table.Header>
                 <Table.Body>
                   <Table.Row>
-                    {this.state.showAlluser ? null : (
+                    {this.props.showAllUser ? null : (
                       <Table.HeaderCell colspan={9}>
                         <div className="show-all-users">
                           <p>
@@ -1010,6 +1009,7 @@ export default compose(
     (state, props) => ({
       roles: state.roles.roles,
       users: state.users.users,
+      showAllUser: state.users.showAllUser,
       groups: state.groups.groups,
       description: state.description,
       pathname: props.location.pathname,
@@ -1030,6 +1030,7 @@ export default compose(
           createGroup,
           updateUser,
           updateGroup,
+          showAllUsers,
         },
         dispatch,
       ),
