@@ -135,6 +135,10 @@ msgstr "配置"
 msgid "All"
 msgstr "すべて"
 
+#: components/theme/Search/Search
+msgid "Alphabetically"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Alt text"
@@ -411,6 +415,10 @@ msgstr "主なデータベース情報"
 #: components/manage/Widgets/DatetimeWidget
 msgid "Date"
 msgstr "日付"
+
+#: components/theme/Search/Search
+msgid "Date (newest first)"
+msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Contents/ContentsRenameModal
@@ -1079,6 +1087,10 @@ msgstr ""
 msgid "No options"
 msgstr "選択肢無し"
 
+#: components/theme/Search/Search
+msgid "No results found"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
@@ -1281,6 +1293,10 @@ msgstr "登録"
 #: components/theme/Register/Register
 msgid "Registration form"
 msgstr "登録フォーム"
+
+#: components/theme/Search/Search
+msgid "Relevance"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
@@ -1534,6 +1550,10 @@ msgstr "サイズ: {size}"
 #: error
 msgid "Sorry, something went wrong with your request"
 msgstr "申し訳ありません。問題が発生したために処理できませんでした。"
+
+#: components/theme/Search/Search
+msgid "Sort By:"
+msgstr ""
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "Sort on"
@@ -2095,7 +2115,7 @@ msgstr "メディア"
 
 #: config/Blocks
 msgid "mostUsed"
-msgstr "よく使う物<<<<<<< HEAD"
+msgstr "よく使う物"
 
 #: components/manage/Contents/ContentsItem
 msgid "no workflow state"

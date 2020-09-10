@@ -1,6 +1,6 @@
 # Change Log
 
-## 7.10.1 (unreleased)
+## 7.14.2 (unreleased)
 
 ### Breaking
 
@@ -10,7 +10,92 @@
 
 ### Bugfix
 
+- Hyphenate sidebar labels @ksuess
+
 ### Internal
+
+## 7.14.1 (2020-09-09)
+
+### Bugfix
+
+- Fix customization mechanism where customization paths end with `/` @tiberiuichim
+
+## 7.14.0 (2020-09-08)
+
+### Feature
+
+- Render form with vertical tabs, setting the property `verticalFormTabs` in config.js @giuliaghisini
+
+### Bugfix
+
+- Imported locales by razzle and fixed import locale @giuliaghisini
+- Fix console warning due to uncontrolled selectWidget component @nileshgulia1
+
+## 7.13.0 (2020-09-07)
+
+### Feature
+
+- Add NumberWidget, an input widget for numbers @tiberiuichim
+
+### Bugfix
+
+- Fixing the Image size settings in sidebar when Image alignment changes @iFlameing
+
+## 7.12.1 (2020-09-04)
+
+### Bugfix
+
+- Fix checkbox widget styles @nzambello
+
+## 7.12.0 (2020-09-04)
+
+### Feature
+
+- Allow Volto projects to customize (via webpack resolve aliases) addons. Allow addons to customize Volto and other addons. Allow Volto projects to customize Volto in a `src/customizations/volto` folder, for better organization of the customizations folder. @tiberiuichim @sneridagh
+
+## 7.11.3 (2020-08-28)
+
+### Bugfix
+
+- On image upload in a block, don't overwrite the global `state.content.data` with new image data @tiberiuichim @silviubogan
+
+### Internal
+
+- Add a `subrequest` option to the `createContent` action @tiberiuichim @silviubogan
+
+## 7.11.2 (2020-08-28)
+
+### Bugfix
+
+- Fix bug introduced in 7.9.0, properly return a list of results when dealing with batched api requests @tiberiuichim
+- In folder contents batch upload, use a subrequest to avoid breaking the global `content.data` state @tiberiuichim
+- Fix `null` response issue when passing custom `Accept:` headers to actions #1771 @avoinea
+- Removed all `<<<<<HEAD` artifacts from translations @steffenri
+- Increase z-index of `block-add-button` @steffenri
+
+### Internal
+
+## 7.11.1 (2020-08-27)
+
+### Breaking
+
+### Feature
+
+### Bugfix
+
+- Update German translations @tisto
+
+### Internal
+
+## 7.11.0 (2020-08-27)
+
+### Feature
+
+- Add sort option to search @iFlameing
+
+### Bugfix
+
+- Turn autocomplete off for the search input field @timo
 
 ## 7.10.0 (2020-08-26)
 
@@ -50,6 +135,7 @@
 
 ### Feature
 
+- Adding support of pasting link of voltoCMS video link to video blocks @iFlameing
 - Allow serial processing of API requests when `mode:'serial'` is passed in the action. @tiberiuichim
 - Adding cypress test from image-gallery in edit mode @iFlameing
 

@@ -7,6 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { map } from 'lodash';
 import moment from 'moment';
+import { useIntl } from 'react-intl';
 import { Form } from 'semantic-ui-react';
 import SelectInput from './SelectInput';
 
@@ -16,6 +17,8 @@ import SelectInput from './SelectInput';
  * @returns {string} Markup of the component.
  */
 const MonthOfTheYearField = ({ value, disabled, inline, onChange }) => {
+  const intl = useIntl();
+  moment.locale(intl.locale);
   const monthList = [
     ...map(moment.months(), (m, i) => ({
       value: i + 1,
