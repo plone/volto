@@ -2,16 +2,10 @@
 
 ## 7.14.2 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Hyphenate sidebar labels @ksuess
 - Update German translations @tisto
-
-### Internal
 
 ## 7.14.1 (2020-09-09)
 
