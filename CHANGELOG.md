@@ -8,6 +8,7 @@
 
 - Show Username when Firstname attr is missing in UsersControlPanelUser @iFlameing
 
+ - add shouldComponentUpdate to blocks @nileshgulia1
 ### Bugfix
 
 ### Internal
