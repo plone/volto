@@ -12,6 +12,8 @@
 
 ### Internal
 
+- Hide block chooser button using React logic instead of CSS. This makes it easier to support nested blocks @tiberiuichim
+
 ## 7.14.2 (2020-09-10)
 
 ### Bugfix
