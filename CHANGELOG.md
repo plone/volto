@@ -10,7 +10,11 @@
 
 ### Bugfix
 
+- When dealing with authentication token expiration set to 0, auto-refresh token in one hour instead of logging out use @tiberiuichim
+
 ### Internal
+
+- Improve developer experience, don't logout on hot-reload @tiberiuichim
 
 ## 7.14.2 (2020-09-10)
 
