@@ -3,6 +3,7 @@
 
 import loadable from '@loadable/component';
 
+import AlignWidget from '@plone/volto/components/manage/Widgets/AlignWidget';
 import ArrayWidget from '@plone/volto/components/manage/Widgets/ArrayWidget';
 import CheckboxWidget from '@plone/volto/components/manage/Widgets/CheckboxWidget';
 import FileWidget from '@plone/volto/components/manage/Widgets/FileWidget';
@@ -42,6 +43,7 @@ export const widgetMapping = {
     datetime: DatetimeWidget,
     password: PasswordWidget,
     file: FileWidget,
+    align: AlignWidget,
   },
   vocabulary: {
     'plone.app.vocabularies.Catalog': ObjectBrowserWidget, //ReferenceWidget,
