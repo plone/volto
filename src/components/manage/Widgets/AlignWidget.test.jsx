@@ -7,7 +7,7 @@ import AlignWidget from './AlignWidget';
 
 const mockStore = configureStore();
 
-test('renders a textarea widget component', () => {
+test('renders an align widget component', () => {
   const store = mockStore({
     intl: {
       locale: 'en',

@@ -99,7 +99,7 @@ const AlignWidget = ({
       wrapped={wrapped}
       onEdit={onEdit}
       draggable={true}
-      className="textarea"
+      className="align-widget"
     >
       {onEdit && (
         <div className="toolbar">

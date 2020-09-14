@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a textarea widget component 1`] = `
+exports[`renders an align widget component 1`] = `
 <div
-  className="inline field textarea"
+  className="inline field align-widget"
   id="field-align"
 >
   <div
