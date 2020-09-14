@@ -1,16 +1,57 @@
 # Change Log
 
-## 7.12.1 (unreleased)
+## 7.14.3 (unreleased)
 
 ### Breaking
 
 ### Feature
 
 - Added onChangeFormData prop to Form component @giuliaghisini
+- Show Username when Firstname attr is missing in UsersControlPanelUser @iFlameing
 
 ### Bugfix
 
 ### Internal
+
+## 7.14.2 (2020-09-10)
+
+### Bugfix
+
+- Hyphenate sidebar labels @ksuess
+- Update German translations @tisto
+
+## 7.14.1 (2020-09-09)
+
+### Bugfix
+
+- Fix customization mechanism where customization paths end with `/` @tiberiuichim
+
+## 7.14.0 (2020-09-08)
+
+### Feature
+
+- Render form with vertical tabs, setting the property `verticalFormTabs` in config.js @giuliaghisini
+
+### Bugfix
+
+- Imported locales by razzle and fixed import locale @giuliaghisini
+- Fix console warning due to uncontrolled selectWidget component @nileshgulia1
+
+## 7.13.0 (2020-09-07)
+
+### Feature
+
+- Add NumberWidget, an input widget for numbers @tiberiuichim
+
+### Bugfix
+
+- Fixing the Image size settings in sidebar when Image alignment changes @iFlameing
+
+## 7.12.1 (2020-09-04)
+
+### Bugfix
+
+- Fix checkbox widget styles @nzambello
 
 ## 7.12.0 (2020-09-04)
 

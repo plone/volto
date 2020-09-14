@@ -63,7 +63,7 @@ const defaultModify = (config, { target, dev }, webpack) => {
   //  Prevent moment from loading all locales
   config.plugins.push(
     new MomentLocalesPlugin({
-      localesToKeep: [],
+      localesToKeep: Object.keys(languages),
     }),
   );
 
