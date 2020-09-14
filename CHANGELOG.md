@@ -10,6 +10,8 @@
 
 ### Bugfix
 
+- Fix missplaced profile toolbar @jackahl
+
 ### Internal
 
 ## 7.14.2 (2020-09-10)
