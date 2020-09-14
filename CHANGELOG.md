@@ -7,6 +7,8 @@
 ### Feature
 
 - Show Username when Firstname attr is missing in UsersControlPanelUser @iFlameing
+- Add `Style`, a wrapper component that applies float and width classes to wrapped content (typically blocks) @tiberiuichim
+- Add `AlignWidget`, a widget that wraps the `AlignBlock` helper @tiberiuichim
 
 ### Bugfix
 
