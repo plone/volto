@@ -107,16 +107,20 @@ class Edit extends Component {
     });
     readAsDataURL(file).then((data) => {
       const fields = data.match(/^data:(.*);(.*),(.*)$/);
-      this.props.createContent(getBaseUrl(this.props.pathname), {
-        '@type': 'Image',
-        title: file.name,
-        image: {
-          data: fields[3],
-          encoding: fields[2],
-          'content-type': fields[1],
-          filename: file.name,
+      this.props.createContent(
+        getBaseUrl(this.props.pathname),
+        {
+          '@type': 'Image',
+          title: file.name,
+          image: {
+            data: fields[3],
+            encoding: fields[2],
+            'content-type': fields[1],
+            filename: file.name,
+          },
         },
-      });
+        this.props.block,
+      );
     });
   };
 
@@ -177,16 +181,20 @@ class Edit extends Component {
 
     readAsDataURL(file[0]).then((data) => {
       const fields = data.match(/^data:(.*);(.*),(.*)$/);
-      this.props.createContent(getBaseUrl(this.props.pathname), {
-        '@type': 'Image',
-        title: file[0].name,
-        image: {
-          data: fields[3],
-          encoding: fields[2],
-          'content-type': fields[1],
-          filename: file[0].name,
+      this.props.createContent(
+        getBaseUrl(this.props.pathname),
+        {
+          '@type': 'Image',
+          title: file[0].name,
+          image: {
+            data: fields[3],
+            encoding: fields[2],
+            'content-type': fields[1],
+            filename: file[0].name,
+          },
         },
-      });
+        this.props.block,
+      );
     });
   };
 
@@ -219,7 +227,9 @@ class Edit extends Component {
    */
   render() {
     const { data } = this.props;
-
+    const placeholder =
+      this.props.data.placeholder ||
+      this.props.intl.formatMessage(messages.ImageBlockInputPlaceholder);
     return (
       <div
         className={cx(
@@ -293,9 +303,7 @@ class Edit extends Component {
                     <Input
                       onKeyDown={this.onKeyDownVariantMenuForm}
                       onChange={this.onChangeUrl}
-                      placeholder={this.props.intl.formatMessage(
-                        messages.ImageBlockInputPlaceholder,
-                      )}
+                      placeholder={placeholder}
                       value={this.state.url}
                       // Prevents propagation to the Dropzone and the opening
                       // of the upload browser dialog
@@ -345,9 +353,9 @@ class Edit extends Component {
 export default compose(
   injectIntl,
   connect(
-    (state) => ({
-      request: state.content.create,
-      content: state.content.data,
+    (state, ownProps) => ({
+      request: state.content.subrequests[ownProps.block] || {},
+      content: state.content.subrequests[ownProps.block]?.data,
     }),
     { createContent },
   ),

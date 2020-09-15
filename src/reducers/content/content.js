@@ -5,7 +5,7 @@
 
 import { omit, map, mapKeys } from 'lodash';
 
-import { settings } from '~/config';
+import { flattenToAppURL } from '@plone/volto/helpers';
 
 import {
   CREATE_CONTENT,
@@ -95,6 +95,62 @@ export default function content(state = initialState, action = {}) {
             },
           };
     case `${CREATE_CONTENT}_SUCCESS`:
+      if (result['@static_behaviors']) {
+        map(result['@static_behaviors'], (behavior) => {
+          result = {
+            ...omit(result, behavior),
+            ...mapKeys(result[behavior], (value, key) => `${behavior}.${key}`),
+          };
+        });
+      }
+      const data = action.subrequest
+        ? Array.isArray(result)
+          ? result.map((item) => ({
+              ...item,
+              url: flattenToAppURL(item['@id']),
+            }))
+          : {
+              ...result,
+              items:
+                action.result &&
+                action.result.items &&
+                action.result.items.map((item) => ({
+                  ...item,
+                  url: flattenToAppURL(item['@id']),
+                })),
+            }
+        : {
+            ...result,
+            items:
+              action.result &&
+              action.result.items &&
+              action.result.items.map((item) => ({
+                ...item,
+                url: flattenToAppURL(item['@id']),
+              })),
+          };
+      return action.subrequest
+        ? {
+            ...state,
+            subrequests: {
+              ...state.subrequests,
+              [action.subrequest]: {
+                loading: false,
+                loaded: true,
+                error: null,
+                data,
+              },
+            },
+          }
+        : {
+            ...state,
+            data,
+            [getRequestKey(action.type)]: {
+              loading: false,
+              loaded: true,
+              error: null,
+            },
+          };
     case `${GET_CONTENT}_SUCCESS`:
       if (result['@static_behaviors']) {
         map(result['@static_behaviors'], (behavior) => {
@@ -120,7 +176,7 @@ export default function content(state = initialState, action = {}) {
                     action.result.items &&
                     action.result.items.map((item) => ({
                       ...item,
-                      url: item['@id'].replace(settings.apiPath, ''),
+                      url: flattenToAppURL(item['@id']),
                     })),
                 },
               },
@@ -135,7 +191,7 @@ export default function content(state = initialState, action = {}) {
                 action.result.items &&
                 action.result.items.map((item) => ({
                   ...item,
-                  url: item['@id'].replace(settings.apiPath, ''),
+                  url: flattenToAppURL(item['@id']),
                 })),
             },
             [getRequestKey(action.type)]: {

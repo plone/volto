@@ -27,7 +27,6 @@ exports[`renders a checkbox widget component 1`] = `
             <input
               checked={null}
               className="hidden"
-              disabled={false}
               name="field-my-field"
               readOnly={true}
               tabIndex={0}

@@ -13,13 +13,11 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
     <article
       id="content"
     >
-      <header>
-        <h1
-          className="documentFirstHeading"
-        >
-          Dexterity Content Types
-        </h1>
-      </header>
+      <div
+        className="ui disabled header"
+      >
+        Dexterity Content Types
+      </div>
       <section
         id="content-core"
       >
@@ -85,7 +83,7 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
               >
                 <div
                   aria-expanded={false}
-                  className="ui dropdown"
+                  className="ui dropdown actions-Document"
                   onBlur={[Function]}
                   onChange={[Function]}
                   onClick={[Function]}
@@ -109,7 +107,7 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
                     className="menu transition left"
                   >
                     <div
-                      className="item"
+                      className="item edit-Document"
                       onClick={[Function]}
                       role="option"
                     >
@@ -135,6 +133,56 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
                     </div>
                     <div
                       className="item"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <svg
+                        className="icon"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={null}
+                        style={
+                          Object {
+                            "fill": "currentColor",
+                            "height": "15px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
+                      Schema
+                    </div>
+                    <div
+                      className="item layout-Document"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <svg
+                        className="icon"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={null}
+                        style={
+                          Object {
+                            "fill": "currentColor",
+                            "height": "15px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
+                      Layout
+                    </div>
+                    <div
+                      className="item delete-Document"
                       onClick={[Function]}
                       role="option"
                     >
@@ -190,7 +238,7 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
               >
                 <div
                   aria-expanded={false}
-                  className="ui dropdown"
+                  className="ui dropdown actions-Folder"
                   onBlur={[Function]}
                   onChange={[Function]}
                   onClick={[Function]}
@@ -214,7 +262,7 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
                     className="menu transition left"
                   >
                     <div
-                      className="item"
+                      className="item edit-Folder"
                       onClick={[Function]}
                       role="option"
                     >
@@ -240,6 +288,56 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
                     </div>
                     <div
                       className="item"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <svg
+                        className="icon"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={null}
+                        style={
+                          Object {
+                            "fill": "currentColor",
+                            "height": "15px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
+                      Schema
+                    </div>
+                    <div
+                      className="item layout-Folder"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <svg
+                        className="icon"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={null}
+                        style={
+                          Object {
+                            "fill": "currentColor",
+                            "height": "15px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
+                      Layout
+                    </div>
+                    <div
+                      className="item delete-Folder"
                       onClick={[Function]}
                       role="option"
                     >
