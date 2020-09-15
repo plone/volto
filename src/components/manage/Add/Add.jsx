@@ -121,7 +121,10 @@ class Add extends Component {
         {},
       );
     }
-    this.state = { isClient: false };
+    this.state = {
+      isClient: false,
+      error: null,
+    };
   }
 
   /**
@@ -152,12 +155,22 @@ class Add extends Component {
       );
     }
 
-    if (nextProps.createRequest.error) {
+    if (this.props.createRequest.loading && nextProps.createRequest.error) {
+      const message =
+        nextProps.createRequest.error.response?.body?.message ||
+        nextProps.createRequest.error.response?.text;
+
+      const error =
+        new DOMParser().parseFromString(message, 'text/html')?.all[0]
+          ?.textContent || message;
+
+      this.setState({ error: error });
+
       toast.error(
         <Toast
           error
           title={this.props.intl.formatMessage(messages.error)}
-          content={`${nextProps.createRequest.error.status}:  ${nextProps.createRequest.error.response?.body?.message}`}
+          content={`${nextProps.createRequest.error.status}:  ${error}`}
         />,
       );
     }
@@ -233,6 +246,7 @@ class Add extends Component {
                 },
               }),
             }}
+            requestError={this.state.error}
             onSubmit={this.onSubmit}
             hideActions
             pathname={this.props.pathname}

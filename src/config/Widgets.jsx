@@ -15,6 +15,8 @@ import TextareaWidget from '@plone/volto/components/manage/Widgets/TextareaWidge
 import TextWidget from '@plone/volto/components/manage/Widgets/TextWidget';
 import TokenWidget from '@plone/volto/components/manage/Widgets/TokenWidget';
 import WysiwygWidget from '@plone/volto/components/manage/Widgets/WysiwygWidget';
+import UrlWidget from '@plone/volto/components/manage/Widgets/UrlWidget';
+import EmailWidget from '@plone/volto/components/manage/Widgets/EmailWidget';
 import NumberWidget from '@plone/volto/components/manage/Widgets/NumberWidget';
 
 //import ReferenceWidget from '@plone/volto/components/manage/Widgets/ReferenceWidget';
@@ -41,9 +43,12 @@ export const widgetMapping = {
     richtext: WysiwygWidget,
     textarea: TextareaWidget,
     datetime: DatetimeWidget,
+    date: DatetimeWidget,
     password: PasswordWidget,
     file: FileWidget,
     align: AlignWidget,
+    url: UrlWidget,
+    email: EmailWidget,
   },
   vocabulary: {
     'plone.app.vocabularies.Catalog': ObjectBrowserWidget, //ReferenceWidget,
@@ -54,8 +59,10 @@ export const widgetMapping = {
     array: ArrayWidget,
     object: FileWidget,
     datetime: DatetimeWidget,
+    date: DatetimeWidget,
     password: PasswordWidget,
     number: NumberWidget,
+    integer: NumberWidget,
   },
 };
 
