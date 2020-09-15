@@ -46,7 +46,8 @@ if (Cypress.env('API') !== 'guillotina') {
         .should('have.value', 'Specifications');
       cy.get('.modal input[id="field-id"]')
         .type('specifications')
-        .should('have.value', 'specifications');
+        .should('have.value', 'specifications')
+        .blur();
       cy.get('.modal .actions button[aria-label="Save"]').click();
 
       // Edit field
