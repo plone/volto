@@ -74,7 +74,6 @@ exports[`Contact form renders a contact form 1`] = `
                       className="ui input"
                     >
                       <input
-                        disabled={false}
                         id="field-name"
                         maxLength={null}
                         minLength={null}
@@ -120,7 +119,6 @@ exports[`Contact form renders a contact form 1`] = `
                       className="ui input"
                     >
                       <input
-                        disabled={false}
                         id="field-from"
                         maxLength={null}
                         minLength={null}
@@ -166,7 +164,6 @@ exports[`Contact form renders a contact form 1`] = `
                       className="ui input"
                     >
                       <input
-                        disabled={false}
                         id="field-subject"
                         maxLength={null}
                         minLength={null}
@@ -209,7 +206,6 @@ exports[`Contact form renders a contact form 1`] = `
                     className="eight wide column"
                   >
                     <textarea
-                      disabled={false}
                       id="field-message"
                       name="message"
                       onChange={[Function]}
@@ -364,7 +360,6 @@ exports[`Contact form renders a contact form with error message 1`] = `
                       className="ui input"
                     >
                       <input
-                        disabled={false}
                         id="field-name"
                         maxLength={null}
                         minLength={null}
@@ -410,7 +405,6 @@ exports[`Contact form renders a contact form with error message 1`] = `
                       className="ui input"
                     >
                       <input
-                        disabled={false}
                         id="field-from"
                         maxLength={null}
                         minLength={null}
@@ -456,7 +450,6 @@ exports[`Contact form renders a contact form with error message 1`] = `
                       className="ui input"
                     >
                       <input
-                        disabled={false}
                         id="field-subject"
                         maxLength={null}
                         minLength={null}
@@ -499,7 +492,6 @@ exports[`Contact form renders a contact form with error message 1`] = `
                     className="eight wide column"
                   >
                     <textarea
-                      disabled={false}
                       id="field-message"
                       name="message"
                       onChange={[Function]}
