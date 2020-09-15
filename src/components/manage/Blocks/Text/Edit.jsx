@@ -220,13 +220,13 @@ class Edit extends Component {
           customStyleMap={settings.customStyleMap}
           placeholder={placeholder}
           handleReturn={(e) => {
-            if (isSoftNewlineEvent(e) || disableNewBlocks) {
+            if (isSoftNewlineEvent(e)) {
               this.onChange(
                 RichUtils.insertSoftNewline(this.state.editorState),
               );
               return 'handled';
             }
-            if (!this.props.detached) {
+            if (!disableNewBlocks) {
               const selectionState = this.state.editorState.getSelection();
               const anchorKey = selectionState.getAnchorKey();
               const currentContent = this.state.editorState.getCurrentContent();
