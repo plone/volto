@@ -12,7 +12,6 @@ import {
   Dimmer,
   Header,
   Icon,
-  Image,
   Loader,
   Modal,
   Table,
@@ -24,7 +23,6 @@ import moment from 'moment';
 import filesize from 'filesize';
 import { readAsDataURL } from 'promise-file-reader';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import { flattenToAppURL } from '@plone/volto/helpers';
 import { createContent } from '@plone/volto/actions';
 
 const messages = defineMessages({
@@ -78,6 +76,7 @@ class ContentsUploadModal extends Component {
     this.state = {
       files: [],
     };
+    this.previewRef = React.createRef();
   }
 
   /**
@@ -123,6 +122,12 @@ class ContentsUploadModal extends Component {
     });
   }
 
+  getUrl = (file) => {
+    readAsDataURL(file).then((data) => {
+      const fields = data.match(/^data:(.*);(.*),(.*)$/);
+      this.previewRef.current.src = fields[0];
+    });
+  };
   /**
    * Cancel handler
    * @method onCancel
@@ -265,11 +270,11 @@ class ContentsUploadModal extends Component {
                       </Table.Cell>
                       <Table.Cell>
                         {file.type.split('/')[0] === 'image' && (
-                          <Image
-                            src={`${flattenToAppURL(
-                              file.path,
-                            )}/@@images/image/mini`}
-                            height={60}
+                          <img
+                            ref={this.previewRef}
+                            src={this.getUrl(file)}
+                            style={{ height: '60px' }}
+                            alt={''}
                           />
                         )}
                       </Table.Cell>

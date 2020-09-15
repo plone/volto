@@ -307,9 +307,7 @@ class Edit extends Component {
                         <Input
                           onKeyDown={this.onKeyDownVariantMenuForm}
                           onChange={this.onChangeUrl}
-                          placeholder={this.props.intl.formatMessage(
-                            messages.ImageBlockInputPlaceholder,
-                          )}
+                          placeholder={placeholder}
                           value={this.state.url}
                           // Prevents propagation to the Dropzone and the opening
                           // of the upload browser dialog
