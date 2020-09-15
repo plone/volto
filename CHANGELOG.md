@@ -1,6 +1,6 @@
 # Change Log
 
-## 7.14.1 (unreleased)
+## 7.14.3 (unreleased)
 
 ### Breaking
 
@@ -11,6 +11,7 @@
 - Show backend validation errors on corresponding fields #1246 @rexalex
 
 - Validation implemented for add user/group @rexalex
+- Show Username when Firstname attr is missing in UsersControlPanelUser @iFlameing
 
 ### Bugfix
 
@@ -21,6 +22,19 @@
 - Fix errors with SelectWidget when removing the only element @rexalex
 
 ### Internal
+
+## 7.14.2 (2020-09-10)
+
+### Bugfix
+
+- Hyphenate sidebar labels @ksuess
+- Update German translations @tisto
+
+## 7.14.1 (2020-09-09)
+
+### Bugfix
+
+- Fix customization mechanism where customization paths end with `/` @tiberiuichim
 
 ## 7.14.0 (2020-09-08)
 
