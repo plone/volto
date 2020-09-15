@@ -10,35 +10,10 @@ import { injectIntl } from 'react-intl';
 import { FormFieldWrapper } from '@plone/volto/components';
 import { AlignBlock } from '@plone/volto/helpers';
 
-const AlignWidget = ({
-  description,
-  error,
-  fieldSet,
-  id,
-  intl,
-  maxLength,
-  onChange,
-  onDelete,
-  onEdit,
-  placeholder,
-  required,
-  title,
-  value,
-  wrapped,
-}) => {
+const AlignWidget = (props) => {
+  const { id, onChange, value } = props;
   return (
-    <FormFieldWrapper
-      id={id}
-      title={title}
-      description={description}
-      required={required}
-      error={error}
-      fieldSet={fieldSet}
-      wrapped={wrapped}
-      onEdit={onEdit}
-      draggable={true}
-      className="align-widget"
-    >
+    <FormFieldWrapper {...props} className="align-widget">
       <AlignBlock
         align={value}
         onChangeBlock={(block, { align }) => onChange(id, align)}
