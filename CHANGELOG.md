@@ -20,6 +20,7 @@
 - Fixed date only widget rendering #1246 @rexalex
 
 - Fix errors with SelectWidget when removing the only element @rexalex
+- Fix console warning in ToHTML @iFlameing
 
 ### Internal
 
@@ -312,7 +313,6 @@
 ## 7.0.1 (2020-07-07)
 
 ### Breaking
-
 
 ### Bugfix
 
