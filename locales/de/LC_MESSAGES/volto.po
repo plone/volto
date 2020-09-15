@@ -2060,7 +2060,7 @@ msgstr "Löschen"
 
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "deprecated_browser_notice_message"
-msgstr "Sie verwenden einen veralteten Browser, bitte aktualisieren Sie Ihren Browser."
+msgstr "Sie verwenden einen veralteten Browser. Wir empfehlen den Einsatz eines modernen Browsers wie Firefox, Chrome, Safari oder Windows Edge Chromium."
 
 #: config/Blocks
 msgid "description"

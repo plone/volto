@@ -1,16 +1,30 @@
 # Change Log
 
-## 7.14.1 (unreleased)
+## 7.14.3 (unreleased)
 
 ### Breaking
 
 ### Feature
 
 - Added Blocks Layout Editor within Dexterity Content-Types Controlpanel @avoinea #1517
+- Show Username when Firstname attr is missing in UsersControlPanelUser @iFlameing
 
 ### Bugfix
 
 ### Internal
+
+## 7.14.2 (2020-09-10)
+
+### Bugfix
+
+- Hyphenate sidebar labels @ksuess
+- Update German translations @tisto
+
+## 7.14.1 (2020-09-09)
+
+### Bugfix
+
+- Fix customization mechanism where customization paths end with `/` @tiberiuichim
 
 ## 7.14.0 (2020-09-08)
 
