@@ -188,7 +188,12 @@ class ContentsUploadModal extends Component {
             </Loader>
           </Dimmer>
           <Modal.Content>
-            <Dropzone noClick onDrop={this.onDrop} className="dropzone">
+            <Dropzone
+              noClick
+              onDrop={this.onDrop}
+              className="dropzone"
+              noDragEventsBubbling={true}
+            >
               {({ getRootProps, getInputProps }) => (
                 <Segment {...getRootProps({ className: 'dashed' })}>
                   <Table basic="very">
@@ -201,20 +206,18 @@ class ContentsUploadModal extends Component {
                           />
                         </Table.Cell>
                         <Table.Cell>
-                          <Button.Group>
-                            <label className="ui button primary">
-                              <FormattedMessage
-                                id="Browse"
-                                defaultMessage="Browse"
-                              />
-                              <input
-                                {...getInputProps({
-                                  type: 'file',
-                                  style: { display: 'none' },
-                                })}
-                              />
-                            </label>
-                          </Button.Group>
+                          <label className="ui button primary">
+                            <FormattedMessage
+                              id="Browse"
+                              defaultMessage="Browse"
+                            />
+                            <input
+                              {...getInputProps({
+                                type: 'file',
+                                style: { display: 'none' },
+                              })}
+                            />
+                          </label>
                         </Table.Cell>
                       </Table.Row>
                     </Table.Body>
