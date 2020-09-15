@@ -189,28 +189,30 @@ class ContentsUploadModal extends Component {
           </Dimmer>
           <Modal.Content>
             <Dropzone onDrop={this.onDrop} className="dropzone">
-              <Segment className="dashed">
-                <Table basic="very">
-                  <Table.Body>
-                    <Table.Row>
-                      <Table.Cell>
-                        <FormattedMessage
-                          id="Drag and drop files from your computer onto this area or click the “Browse” button."
-                          defaultMessage="Drag and drop files from your computer onto this area or click the “Browse” button."
-                        />
-                      </Table.Cell>
-                      <Table.Cell>
-                        <Button primary floated="right">
+              {({ getRootProps, getInputProps }) => (
+                <Segment {...getRootProps({ className: 'dashed' })}>
+                  <Table basic="very">
+                    <Table.Body>
+                      <Table.Row>
+                        <Table.Cell>
                           <FormattedMessage
-                            id="Browse"
-                            defaultMessage="Browse"
+                            id="Drag and drop files from your computer onto this area or click the “Browse” button."
+                            defaultMessage="Drag and drop files from your computer onto this area or click the “Browse” button."
                           />
-                        </Button>
-                      </Table.Cell>
-                    </Table.Row>
-                  </Table.Body>
-                </Table>
-              </Segment>
+                        </Table.Cell>
+                        <Table.Cell>
+                          <Button primary floated="right" {...getInputProps()}>
+                            <FormattedMessage
+                              id="Browse"
+                              defaultMessage="Browse"
+                            />
+                          </Button>
+                        </Table.Cell>
+                      </Table.Row>
+                    </Table.Body>
+                  </Table>
+                </Segment>
+              )}
             </Dropzone>
             {this.state.files.length > 0 && (
               <Table compact singleLine>
