@@ -117,11 +117,10 @@ const processChildren = (children, keys) => {
         }
         return child.map((subchild, index) => {
           if (typeof subchild === 'string') {
-            const last = subchild.split('\n').length - 1;
             return subchild.split('\n').map((item, index) => (
               <React.Fragment key={index}>
                 {item}
-                {index !== last && <br />}
+                {<br />}
               </React.Fragment>
             ));
           } else {

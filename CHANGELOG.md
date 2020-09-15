@@ -20,6 +20,7 @@
 - Fixed date only widget rendering #1246 @rexalex
 
 - Fix errors with SelectWidget when removing the only element @rexalex
+- Fix break-line in view mode @iFlameing
 
 ### Internal
 
@@ -312,7 +313,6 @@
 ## 7.0.1 (2020-07-07)
 
 ### Breaking
-
 
 ### Bugfix
 
