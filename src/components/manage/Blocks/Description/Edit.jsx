@@ -95,26 +95,25 @@ class Edit extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  // UNSAFE_componentWillReceiveProps(nextProps) {
-  //   const properties = context.contextData?.formData || {};
-  //   if (
-  //     nextProps.properties.description &&
-  //     this.props.properties.description !== nextProps.properties.description &&
-  //     !this.state.focus
-  //   ) {
-  //     const contentState = stateFromHTML(nextProps.properties.description);
-  //     this.setState({
-  //       editorState: nextProps.properties.description
-  //         ? EditorState.createWithContent(contentState)
-  //         : EditorState.createEmpty(),
-  //     });
-  //   }
-  //
-  //   if (!this.props.selected && nextProps.selected) {
-  //     this.node.focus();
-  //     this.setState({ focus: true });
-  //   }
-  // }
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (
+      nextProps.properties.description &&
+      this.props.properties.description !== nextProps.properties.description &&
+      !this.state.focus
+    ) {
+      const contentState = stateFromHTML(nextProps.properties.description);
+      this.setState({
+        editorState: nextProps.properties.description
+          ? EditorState.createWithContent(contentState)
+          : EditorState.createEmpty(),
+      });
+    }
+
+    if (!this.props.selected && nextProps.selected) {
+      this.node.focus();
+      this.setState({ focus: true });
+    }
+  }
 
   /**
    * Change handler
