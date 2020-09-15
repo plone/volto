@@ -24,6 +24,7 @@ import {
   omit,
   pickBy,
   without,
+  // isEqual,
 } from 'lodash';
 import move from 'lodash-move';
 import isBoolean from 'lodash/isBoolean';
@@ -44,6 +45,7 @@ import { v4 as uuid } from 'uuid';
 import { toast } from 'react-toastify';
 import { settings } from '~/config';
 import { withFormStateContext } from '@plone/volto/components/manage/Form/FormContext';
+// import { FormStateContext, FormStateProvider } from './FormContext';
 
 /**
  * Form container class.
@@ -199,8 +201,6 @@ export class Form extends Component {
           : null,
       placeholderProps: {},
       isClient: false,
-      isFormPristine: true,
-      activeIndex: 0,
     };
     return state;
   }
@@ -230,7 +230,7 @@ export class Form extends Component {
         schema: this.props.schema,
       });
 
-      this.setContextData({
+      this.setState({
         errors,
         activeIndex,
       });
@@ -241,7 +241,7 @@ export class Form extends Component {
    * Tab selection is done only by setting activeIndex in state
    */
   onTabChange(e, { activeIndex }) {
-    this.setContextData({ activeIndex });
+    this.setState({ activeIndex });
   }
 
   /**
@@ -250,28 +250,7 @@ export class Form extends Component {
    * @param {Object} e event
    */
   onClickInput(e) {
-    this.setContextData({ isFormPristine: false });
-  }
-
-  /**
-   * Validate fields on blur
-   * @method onBlurField
-   * @param {string} id Id of the field
-   * @param {*} value Value of the field
-   * @returns {undefined}
-   */
-  onBlurField(id, value) {
-    if (!this.contextData.isFormPristine) {
-      const errors = FormValidation.validateFieldsPerFieldset({
-        schema: this.props.schema,
-        formData: this.state.formData,
-        formatMessage: this.props.intl.formatMessage,
-      });
-
-      this.setContextData({
-        errors,
-      });
-    }
+    this.setState({ isFormPristine: false });
   }
 
   /**
@@ -281,10 +260,36 @@ export class Form extends Component {
    */
   componentDidMount() {
     this.setContextData({
-      ...this.contextData,
+      ...this.state,
       isClient: true,
     });
   }
+
+  onBlurField(id, value) {
+    if (!this.state.isFormPristine) {
+      const errors = FormValidation.validateFieldsPerFieldset({
+        schema: this.props.schema,
+        formData: this.state.formData,
+        formatMessage: this.props.intl.formatMessage,
+      });
+
+      this.setState({
+        errors,
+      });
+    }
+  }
+
+  /**
+   * Component will receive props
+   * @method componentWillReceiveProps
+   * @param {Object} nextProps Next properties
+   * @returns {undefined}
+   */
+  // UNSAFE_componentWillReceiveProps(nextProps) {
+  //   if (!isEqual(nextProps.formData, this.contextData.formData)) {
+  //     this.setContextData({ formData: nextProps.formData });
+  //   }
+  // }
 
   /**
    * Change field handler
@@ -295,10 +300,7 @@ export class Form extends Component {
    * @returns {undefined}
    */
   onChangeField(id, value) {
-    const errors = { ...this.contextData.errors };
-    delete errors[id];
     return this.setContextData({
-      errors,
       formData: {
         ...this.contextData.formData,
         // We need to catch also when the value equals false this fixes #888
@@ -339,6 +341,7 @@ export class Form extends Component {
    * @returns {undefined}
    */
   onMutateBlock(id, value) {
+    const idTrailingBlock = uuid();
     const blocksFieldname = getBlocksFieldname(this.contextData.formData);
     const blocksLayoutFieldname = getBlocksLayoutFieldname(
       this.contextData.formData,
@@ -353,7 +356,7 @@ export class Form extends Component {
     if (trailId) {
       const block = this.contextData.formData[blocksFieldname][trailId];
       if (!blockHasValue(block)) {
-        this.setContextData({
+        this.setState({
           formData: {
             ...this.contextData.formData,
             [blocksFieldname]: {
@@ -366,7 +369,6 @@ export class Form extends Component {
       }
     }
 
-    const idTrailingBlock = uuid();
     return this.setContextData({
       formData: {
         ...this.contextData.formData,
@@ -514,19 +516,17 @@ export class Form extends Component {
         errors,
         schema: this.props.schema,
       });
-      this.setContextData(
-        {
-          errors,
-          activeIndex,
-        },
-        () => {
-          Object.keys(errors).forEach((err) =>
-            toast.error(
-              <Toast error title={err} content={errors[err].join(', ')} />,
-            ),
-          );
-        },
-      );
+
+      this.setState({ activeIndex });
+      return this.setContextData({
+        errors,
+      }).then(() => {
+        Object.keys(errors).forEach((err) =>
+          toast.error(
+            <Toast error title={err} content={errors[err].join(', ')} />,
+          ),
+        );
+      });
     } else {
       // Get only the values that have been modified (Edit forms), send all in case that
       // it's an add form
@@ -536,7 +536,7 @@ export class Form extends Component {
         this.props.onSubmit(this.contextData.formData);
       }
       if (this.props.resetAfterSubmit) {
-        return this.setContextData({
+        this.setContextData({
           formData: this.props.formData,
         });
       }
@@ -919,7 +919,7 @@ export class Form extends Component {
                         width: `${placeholderProps.clientWidth}px`,
                         borderRadius: '3px',
                       }}
-                    ></div>
+                    />
                   )}
                 </div>
               )}
@@ -945,13 +945,13 @@ export class Form extends Component {
                             id={field}
                             formData={contextData.formData}
                             focus={false}
-                            value={contextData.formData?.[field]}
+                            value={contextData.formData[field]}
                             required={schema.required.indexOf(field) !== -1}
                             onChange={this.onChangeField}
                             onBlur={this.onBlurField}
                             onClick={this.onClickInput}
                             key={field}
-                            error={contextData.errors?.[field]}
+                            error={contextData.errors[field]}
                           />
                         ))}
                       </Segment>,
@@ -987,9 +987,9 @@ export class Form extends Component {
                     className: 'formtabs',
                     vertical: settings.verticalFormTabs,
                   }}
-                  grid={{ paneWidth: 9, tabWidth: 3, stackable: true }}
                   onTabChange={this.onTabChange}
-                  activeIndex={contextData.activeIndex}
+                  activeIndex={this.state.activeIndex}
+                  grid={{ paneWidth: 9, tabWidth: 3, stackable: true }}
                   panes={map(schema.fieldsets, (item) => ({
                     menuItem: item.title,
                     render: () => [
@@ -1011,7 +1011,7 @@ export class Form extends Component {
                           onBlur={this.onBlurField}
                           onClick={this.onClickInput}
                           key={field}
-                          error={contextData.errors?.[field]}
+                          error={contextData.errors[field]}
                         />
                       )),
                     ],
@@ -1057,7 +1057,7 @@ export class Form extends Component {
                     onBlur={this.onBlurField}
                     onClick={this.onClickInput}
                     key={field}
-                    error={contextData.errors?.[field]}
+                    error={contextData.errors[field]}
                   />
                 ))}
               </Segment>
