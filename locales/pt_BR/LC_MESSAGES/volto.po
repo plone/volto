@@ -428,6 +428,7 @@ msgstr ""
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
+#: components/manage/Widgets/AlignWidget
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
@@ -451,6 +452,7 @@ msgstr "Predefinido"
 #: components/manage/Controlpanels/UsersControlpanelGroups
 #: components/manage/Controlpanels/UsersControlpanelUser
 #: components/manage/Delete/Delete
+#: components/manage/Widgets/AlignWidget
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/TextareaWidget
 #: components/manage/Widgets/TextWidget
@@ -486,6 +488,7 @@ msgstr "Descendente"
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
+#: components/manage/Widgets/AlignWidget
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
@@ -1324,6 +1327,7 @@ msgstr ""
 msgid "Repeat on"
 msgstr ""
 
+#: components/manage/Widgets/AlignWidget
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
@@ -1488,6 +1492,7 @@ msgstr "Partilha"
 msgid "Sharing for {title}"
 msgstr "Partilha de {title}"
 
+#: components/manage/Widgets/AlignWidget
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
@@ -1728,6 +1733,7 @@ msgstr ""
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
+#: components/manage/Widgets/AlignWidget
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
@@ -1838,6 +1844,7 @@ msgstr "Enviar {count, plural, one {# file} other {# files}}"
 msgid "Uploading files"
 msgstr "Enviando ficheiros"
 
+#: components/manage/Widgets/AlignWidget
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
