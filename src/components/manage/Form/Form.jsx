@@ -281,7 +281,7 @@ export class Form extends Component {
    */
   componentDidMount() {
     this.setContextData({
-      ...this.state,
+      ...this.contextData,
       isClient: true,
     });
   }
@@ -295,18 +295,15 @@ export class Form extends Component {
    * @returns {undefined}
    */
   onChangeField(id, value) {
-    return this.setContextData((prevState) => {
-      const { errors } = prevState;
-      delete errors[id];
-      return {
-        errors,
-        formData: {
-          ...this.contextData.formData,
-          // We need to catch also when the value equals false this fixes #888
-          [id]:
-            value || (value !== undefined && isBoolean(value)) ? value : null,
-        },
-      };
+    const errors = { ...this.contextData.errors };
+    delete errors[id];
+    return this.setContextData({
+      errors,
+      formData: {
+        ...this.contextData.formData,
+        // We need to catch also when the value equals false this fixes #888
+        [id]: value || (value !== undefined && isBoolean(value)) ? value : null,
+      },
     });
   }
 
@@ -954,7 +951,7 @@ export class Form extends Component {
                             onBlur={this.onBlurField}
                             onClick={this.onClickInput}
                             key={field}
-                            error={contextData.errors[field]}
+                            error={contextData.errors?.[field]}
                           />
                         ))}
                       </Segment>,
@@ -1014,7 +1011,7 @@ export class Form extends Component {
                           onBlur={this.onBlurField}
                           onClick={this.onClickInput}
                           key={field}
-                          error={contextData.errors[field]}
+                          error={contextData.errors?.[field]}
                         />
                       )),
                     ],
@@ -1060,7 +1057,7 @@ export class Form extends Component {
                     onBlur={this.onBlurField}
                     onClick={this.onClickInput}
                     key={field}
-                    error={contextData.errors[field]}
+                    error={contextData.errors?.[field]}
                   />
                 ))}
               </Segment>
