@@ -142,6 +142,8 @@ class SelectWidget extends Component {
       PropTypes.bool,
     ]),
     onChange: PropTypes.func.isRequired,
+    onBlur: PropTypes.func,
+    onClick: PropTypes.func,
     onEdit: PropTypes.func,
     onDelete: PropTypes.func,
     itemsTotal: PropTypes.number,
@@ -166,6 +168,9 @@ class SelectWidget extends Component {
     choices: [],
     loading: false,
     value: null,
+    onChange: () => {},
+    onBlur: () => {},
+    onClick: () => {},
     onEdit: null,
     onDelete: null,
   };

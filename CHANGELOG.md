@@ -6,11 +6,19 @@
 
 ### Feature
 
+- Added missing components for Email and Url widgets #1246 @rexalex
+
+- Show backend validation errors on corresponding fields #1246 @rexalex
+
+- Validation implemented for add user/group @rexalex
 - Show Username when Firstname attr is missing in UsersControlPanelUser @iFlameing
 
 ### Bugfix
 
 - When dealing with authentication token expiration set to 0, auto-refresh token in one hour instead of logging out use @tiberiuichim
+- Fixed front-end field validation #1246 @rexalex
+- Fixed date only widget rendering #1246 @rexalex
+- Fix errors with SelectWidget when removing the only element @rexalex
 
 ### Internal
 
@@ -303,6 +311,9 @@
 - Upgrade razzle to `^3.1.5`. @tiberiuichim
 
 ## 7.0.1 (2020-07-07)
+
+### Breaking
+
 
 ### Bugfix
 

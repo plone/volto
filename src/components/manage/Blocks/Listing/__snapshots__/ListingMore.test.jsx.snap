@@ -34,8 +34,12 @@ Array [
             <input
               disabled={false}
               id="field-linkTitle"
+              maxLength={null}
+              minLength={null}
               name="linkTitle"
+              onBlur={[Function]}
               onChange={[Function]}
+              onClick={[Function]}
               type="text"
               value=""
             />
@@ -76,8 +80,12 @@ Array [
             <input
               disabled={false}
               id="field-linkHref"
+              maxLength={null}
+              minLength={null}
               name="linkHref"
+              onBlur={[Function]}
               onChange={[Function]}
+              onClick={[Function]}
               type="text"
               value=""
             />

@@ -60,8 +60,12 @@ exports[`renders an Image Block Sidebar component 1`] = `
               <input
                 disabled={false}
                 id="field-external"
+                maxLength={null}
+                minLength={null}
                 name="external"
+                onBlur={[Function]}
                 onChange={[Function]}
+                onClick={[Function]}
                 type="text"
                 value="image"
               />
@@ -135,8 +139,12 @@ exports[`renders an Image Block Sidebar component 1`] = `
               <input
                 disabled={false}
                 id="field-alt"
+                maxLength={null}
+                minLength={null}
                 name="alt"
+                onBlur={[Function]}
                 onChange={[Function]}
+                onClick={[Function]}
                 type="text"
                 value="alternate text"
               />
@@ -461,8 +469,12 @@ exports[`renders an Image Block Sidebar component 1`] = `
                 <input
                   disabled={false}
                   id="field-link"
+                  maxLength={null}
+                  minLength={null}
                   name="link"
+                  onBlur={[Function]}
                   onChange={[Function]}
+                  onClick={[Function]}
                   type="text"
                   value=""
                 />

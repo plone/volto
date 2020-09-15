@@ -61,6 +61,8 @@ class TextWidget extends Component {
     value: PropTypes.string,
     focus: PropTypes.bool,
     onChange: PropTypes.func,
+    onBlur: PropTypes.func,
+    onClick: PropTypes.func,
     onEdit: PropTypes.func,
     onDelete: PropTypes.func,
     icon: PropTypes.shape({
@@ -69,6 +71,8 @@ class TextWidget extends Component {
       content: PropTypes.string,
     }),
     iconAction: PropTypes.func,
+    minLength: PropTypes.number,
+    maxLength: PropTypes.number,
     wrapped: PropTypes.bool,
     placeholder: PropTypes.string,
   };
@@ -83,12 +87,16 @@ class TextWidget extends Component {
     required: false,
     error: [],
     value: null,
-    onChange: null,
+    onChange: () => {},
+    onBlur: () => {},
+    onClick: () => {},
     onEdit: null,
     onDelete: null,
     focus: false,
     icon: null,
     iconAction: null,
+    minLength: null,
+    maxLength: null,
   };
 
   /**
@@ -112,11 +120,15 @@ class TextWidget extends Component {
       id,
       value,
       onChange,
+      onBlur,
+      onClick,
       onEdit,
       onDelete,
       intl,
       icon,
       iconAction,
+      minLength,
+      maxLength,
       placeholder,
     } = this.props;
 
@@ -183,6 +195,12 @@ class TextWidget extends Component {
           ref={(node) => {
             this.node = node;
           }}
+          onBlur={({ target }) =>
+            onBlur(id, target.value === '' ? undefined : target.value)
+          }
+          onClick={() => onClick()}
+          minLength={minLength || null}
+          maxLength={maxLength || null}
         />
         {icon && iconAction && (
           <button onClick={iconAction}>
