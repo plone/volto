@@ -141,7 +141,7 @@ class Edit extends Component {
             role="presentation"
             onClick={() => this.props.onSelectBlock(this.props.id)}
             onKeyDown={
-              !(blockHasOwnFocusManagement && disableNewBlocks)
+              !(blockHasOwnFocusManagement || disableNewBlocks)
                 ? (e) =>
                     this.props.handleKeyDown(
                       e,
@@ -173,7 +173,7 @@ class Edit extends Component {
             role="presentation"
             onClick={() => this.props.onSelectBlock(this.props.id)}
             onKeyDown={
-              !(blockHasOwnFocusManagement && disableNewBlocks)
+              !(blockHasOwnFocusManagement || disableNewBlocks)
                 ? (e) =>
                     this.props.handleKeyDown(
                       e,
