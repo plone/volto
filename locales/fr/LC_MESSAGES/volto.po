@@ -453,6 +453,7 @@ msgstr ""
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
+#: components/manage/Widgets/AlignWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -473,6 +474,7 @@ msgstr "Défaut"
 #: components/manage/Controlpanels/UsersControlpanelGroups
 #: components/manage/Controlpanels/UsersControlpanelUser
 #: components/manage/Delete/Delete
+#: components/manage/Widgets/AlignWidget
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -506,6 +508,7 @@ msgstr "Descendant"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Controlpanels/ContentTypes
+#: components/manage/Widgets/AlignWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -1375,6 +1378,7 @@ msgstr ""
 msgid "Repeat on"
 msgstr ""
 
+#: components/manage/Widgets/AlignWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -1549,6 +1553,7 @@ msgstr "Partager"
 msgid "Sharing for {title}"
 msgstr "Partage pour {title}"
 
+#: components/manage/Widgets/AlignWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -1786,6 +1791,7 @@ msgstr "Temps"
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
+#: components/manage/Widgets/AlignWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -1898,6 +1904,7 @@ msgstr "Téléchargez {count, plural, one {# file} other {# files}}"
 msgid "Uploading files"
 msgstr "Téléchargement de fichiers"
 
+#: components/manage/Widgets/AlignWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
