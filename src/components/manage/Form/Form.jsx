@@ -167,8 +167,8 @@ export class Form extends Component {
     // Adding fallback in case the fields are empty, so we are sure that the edit form
     // shows at least the default blocks
     if (
-      formData.hasOwnProperty(blocksFieldname) &&
-      formData.hasOwnProperty(blocksLayoutFieldname)
+      formData?.hasOwnProperty(blocksFieldname) &&
+      formData?.hasOwnProperty(blocksLayoutFieldname)
     ) {
       if (
         !formData[blocksLayoutFieldname] ||
@@ -195,7 +195,7 @@ export class Form extends Component {
       initialFormData: { ...formData },
       errors: {},
       selected:
-        formData.hasOwnProperty(blocksLayoutFieldname) &&
+        formData?.hasOwnProperty(blocksLayoutFieldname) &&
         formData[blocksLayoutFieldname].items.length > 0
           ? formData[blocksLayoutFieldname].items[0]
           : null,
