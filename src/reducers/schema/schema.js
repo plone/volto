@@ -53,6 +53,7 @@ function getRequestKey(actionType) {
  */
 export default function schema(state = initialState, action = {}) {
   switch (action.type) {
+    /** PENDING */
     case `${GET_SCHEMA}_PENDING`:
       return {
         ...state,
@@ -71,6 +72,8 @@ export default function schema(state = initialState, action = {}) {
           error: null,
         },
       };
+
+    /** SUCCESS */
     case `${GET_SCHEMA}_SUCCESS`:
       return {
         ...state,
@@ -116,6 +119,8 @@ export default function schema(state = initialState, action = {}) {
           error: null,
         },
       };
+
+    /** FAIL */
     case `${GET_SCHEMA}_FAIL`:
       return {
         ...state,

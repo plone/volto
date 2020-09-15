@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 import { getParentUrl } from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
 import { last } from 'lodash';
-import { Confirm, Container, Table, Button } from 'semantic-ui-react';
+import { Confirm, Container, Table, Button, Header } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import {
@@ -127,6 +127,7 @@ class ContentTypes extends Component {
     this.onAddTypeSuccess = this.onAddTypeSuccess.bind(this);
     this.onEdit = this.onEdit.bind(this);
     this.onLayout = this.onLayout.bind(this);
+    this.onSchema = this.onSchema.bind(this);
     this.onDelete = this.onDelete.bind(this);
     this.onDeleteCancel = this.onDeleteCancel.bind(this);
     this.onDeleteOk = this.onDeleteOk.bind(this);
@@ -283,6 +284,18 @@ class ContentTypes extends Component {
     }
   }
 
+  /** Folder
+   * @param {Object} event Event object.
+   * @param {string} { value }
+   * @memberof ContentTypes
+   * @returns {undefined}
+   */
+  onSchema(event, { value }) {
+    if (value) {
+      this.props.history.push(`${this.props.pathname}/${value}/schema`);
+    }
+  }
+
   /**
    * On delete ok
    * @method onDeleteOk
@@ -403,11 +416,7 @@ class ContentTypes extends Component {
         </div>
         <Container>
           <article id="content">
-            <header>
-              <h1 className="documentFirstHeading">
-                {this.props.controlpanel.title}
-              </h1>
-            </header>
+            <Header disabled>{this.props.controlpanel.title}</Header>
             <section id="content-core">
               <Table compact singleLine striped>
                 <Table.Header>
@@ -445,6 +454,7 @@ class ContentTypes extends Component {
                           path={this.props.pathname}
                           onEdit={this.onEdit}
                           onDelete={this.onDelete}
+                          onSchema={this.onSchema}
                           onLayout={this.onLayout}
                         />
                       </Table.Cell>

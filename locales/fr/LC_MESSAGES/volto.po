@@ -243,6 +243,7 @@ msgstr ""
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Delete/Delete
 #: components/manage/Edit/Edit
@@ -287,6 +288,7 @@ msgstr "Changements sauvegardés"
 
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
 msgid "Changes saved."
 msgstr "Changements sauvegardés."
@@ -451,12 +453,9 @@ msgstr ""
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
-#: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/TextareaWidget
-#: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/CommentEditModal
 #: components/theme/Comments/Comments
@@ -474,9 +473,8 @@ msgstr "Défaut"
 #: components/manage/Controlpanels/UsersControlpanelGroups
 #: components/manage/Controlpanels/UsersControlpanelUser
 #: components/manage/Delete/Delete
-#: components/manage/Widgets/CheckboxWidget
-#: components/manage/Widgets/TextareaWidget
-#: components/manage/Widgets/TextWidget
+#: components/manage/Widgets/FormFieldWrapper
+#: components/manage/Widgets/ObjectBrowserWidget
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/Comments
 msgid "Delete"
@@ -508,12 +506,9 @@ msgstr "Descendant"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/TextareaWidget
-#: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
 #: helpers/MessageLabels/MessageLabels
@@ -577,7 +572,8 @@ msgstr "Les adresses e-mails ne correspondent pas."
 #: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Toolbar/Toolbar
-#: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/FormFieldWrapper
+#: components/manage/Widgets/ObjectBrowserWidget
 #: components/theme/Comments/Comments
 msgid "Edit"
 msgstr "Modifier"
@@ -662,6 +658,7 @@ msgid "Enter your new password. Minimum 5 characters."
 msgstr "Entrer votre nouveau mot de passe. Minimum 5 caractères."
 
 #: components/manage/Add/Add
+#: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Edit/Edit
 #: components/manage/Form/InlineForm
 #: components/manage/Widgets/SchemaWidget
@@ -842,6 +839,7 @@ msgstr ""
 
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
 msgid "Info"
 msgstr "Info"
@@ -1205,6 +1203,10 @@ msgstr "Origine"
 msgid "Page"
 msgstr "Page"
 
+#: components/manage/Widgets/SchemaWidget
+msgid "Parent fieldset"
+msgstr ""
+
 #: components/theme/Login/Login
 #: helpers/MessageLabels/MessageLabels
 msgid "Password"
@@ -1270,6 +1272,10 @@ msgstr "Plone{reg} Open Source CMS/WCM"
 #: components/manage/Preferences/PersonalInformation
 msgid "Portrait"
 msgstr "Portrait"
+
+#: components/manage/Widgets/SchemaWidget
+msgid "Possible values"
+msgstr ""
 
 #: components/theme/Footer/Footer
 msgid "Powered by Plone & Python"
@@ -1369,12 +1375,9 @@ msgstr ""
 msgid "Repeat on"
 msgstr ""
 
-#: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/TextareaWidget
-#: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 msgid "Required"
 msgstr "Obligatoire"
@@ -1425,6 +1428,7 @@ msgstr "Rôles"
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
@@ -1435,6 +1439,14 @@ msgstr "Sauvegarder"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Save recurrence"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypesActions
+msgid "Schema"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypeSchema
+msgid "Schema updates"
 msgstr ""
 
 #: components/theme/SearchWidget/SearchWidget
@@ -1537,12 +1549,9 @@ msgstr "Partager"
 msgid "Sharing for {title}"
 msgstr "Partage pour {title}"
 
-#: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/TextareaWidget
-#: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 msgid "Short Name"
 msgstr "Nom court"
@@ -1655,6 +1664,7 @@ msgstr "Sujet"
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -1776,12 +1786,9 @@ msgstr "Temps"
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/TextareaWidget
-#: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
 #: helpers/MessageLabels/MessageLabels
@@ -1891,12 +1898,9 @@ msgstr "Téléchargez {count, plural, one {# file} other {# files}}"
 msgid "Uploading files"
 msgstr "Téléchargement de fichiers"
 
-#: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/TextareaWidget
-#: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 msgid "Used for programmatic access to the fieldset."
 msgstr "Utilisé pour l'accès programmatique au groupe de champs."
@@ -2171,9 +2175,25 @@ msgstr "se connecter"
 msgid "maps"
 msgstr "cartes"
 
+#: components/manage/Widgets/SchemaWidget
+msgid "maxLength"
+msgstr ""
+
+#: components/manage/Widgets/SchemaWidget
+msgid "maximum"
+msgstr ""
+
 #: config/Blocks
 msgid "media"
 msgstr "média"
+
+#: components/manage/Widgets/SchemaWidget
+msgid "minLength"
+msgstr ""
+
+#: components/manage/Widgets/SchemaWidget
+msgid "minimum"
+msgstr ""
 
 #: config/Blocks
 msgid "mostUsed"
@@ -2395,6 +2415,14 @@ msgstr "nous pouvons vous en envoyer un nouveau"
 #: components/manage/Contents/Contents
 msgid "{count} selected"
 msgstr "{count} sélectionné"
+
+#: components/manage/Controlpanels/ContentType
+msgid "{id} Content Type"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypeSchema
+msgid "{id} Schema"
+msgstr ""
 
 #: components/manage/Actions/Actions
 msgid "{title} copied."

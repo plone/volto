@@ -9,13 +9,21 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { Icon } from '@plone/volto/components';
 import trashSVG from '@plone/volto/icons/delete.svg';
 import layoutSVG from '@plone/volto/icons/file.svg';
+import folderSVG from '@plone/volto/icons/folder.svg';
 import editSVG from '@plone/volto/icons/pen.svg';
 /**
  * ContentTypesActions class.
  * @class ContentTypesActions
  * @extends Component
  */
-const ContentTypesActions = ({ item, path, onEdit, onDelete, onLayout }) => {
+const ContentTypesActions = ({
+  item,
+  path,
+  onEdit,
+  onDelete,
+  onLayout,
+  onSchema,
+}) => {
   return (
     <Dropdown icon="ellipsis horizontal" className={`actions-${item.id}`}>
       <Dropdown.Menu className="left">
@@ -26,6 +34,10 @@ const ContentTypesActions = ({ item, path, onEdit, onDelete, onLayout }) => {
         >
           <Icon name={editSVG} size="15px" />
           <FormattedMessage id="Edit" defaultMessage="Edit" />
+        </Dropdown.Item>
+        <Dropdown.Item onClick={onSchema} value={item.id}>
+          <Icon name={folderSVG} size="15px" />
+          <FormattedMessage id="Schema" defaultMessage="Schema" />
         </Dropdown.Item>
         <Dropdown.Item
           onClick={onLayout}

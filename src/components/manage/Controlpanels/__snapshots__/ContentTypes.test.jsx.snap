@@ -13,13 +13,11 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
     <article
       id="content"
     >
-      <header>
-        <h1
-          className="documentFirstHeading"
-        >
-          Dexterity Content Types
-        </h1>
-      </header>
+      <div
+        className="ui disabled header"
+      >
+        Dexterity Content Types
+      </div>
       <section
         id="content-core"
       >
@@ -132,6 +130,31 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
                         xmlns=""
                       />
                       Edit
+                    </div>
+                    <div
+                      className="item"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <svg
+                        className="icon"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={null}
+                        style={
+                          Object {
+                            "fill": "currentColor",
+                            "height": "15px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
+                      Schema
                     </div>
                     <div
                       className="item layout-Document"
@@ -262,6 +285,31 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
                         xmlns=""
                       />
                       Edit
+                    </div>
+                    <div
+                      className="item"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <svg
+                        className="icon"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={null}
+                        style={
+                          Object {
+                            "fill": "currentColor",
+                            "height": "15px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
+                      Schema
                     </div>
                     <div
                       className="item layout-Folder"

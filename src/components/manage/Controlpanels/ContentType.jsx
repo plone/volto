@@ -7,9 +7,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { Helmet, getParentUrl } from '@plone/volto/helpers';
+import { getParentUrl } from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
-import { Button } from 'semantic-ui-react';
+import { Button, Header } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import { toast } from 'react-toastify';
 import { last, nth, join } from 'lodash';
@@ -20,6 +20,10 @@ import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
+  title: {
+    id: '{id} Content Type',
+    defaultMessage: '{id} Content Type',
+  },
   changesSaved: {
     id: 'Changes saved.',
     defaultMessage: 'Changes saved.',
@@ -196,12 +200,15 @@ class ContentType extends Component {
         }
       }
       return (
-        <div id="page-controlpanel">
-          <Helmet title={controlpanel.title} />
+        <div id="page-controlpanel" className="ui container">
+          <Header disabled>
+            {this.props.intl.formatMessage(messages.title, {
+              id: controlpanel.title,
+            })}
+          </Header>
           <Form
             isEditForm
             ref={this.form}
-            title={controlpanel.title}
             schema={controlpanel.schema}
             formData={controlpanel.data}
             onSubmit={this.onSubmit}
