@@ -138,13 +138,13 @@ class Cell extends Component {
           blockStyleFn={settings.blockStyleFn}
           customStyleMap={settings.customStyleMap}
           handleReturn={(e) => {
-            if (isSoftNewlineEvent(e) || this.props.disableNewBlocks) {
+            if (isSoftNewlineEvent(e)) {
               this.onChange(
                 RichUtils.insertSoftNewline(this.state.editorState),
               );
               return 'handled';
             }
-            if (!this.props.detached) {
+            if (!this.props.detached && !this.props.disableNewBlocks) {
               const selectionState = this.state.editorState.getSelection();
               const anchorKey = selectionState.getAnchorKey();
               const currentContent = this.state.editorState.getCurrentContent();
