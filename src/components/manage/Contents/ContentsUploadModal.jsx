@@ -24,7 +24,7 @@ import moment from 'moment';
 import filesize from 'filesize';
 import { readAsDataURL } from 'promise-file-reader';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-
+import { flattenToAppURL } from '@plone/volto/helpers';
 import { createContent } from '@plone/volto/actions';
 
 const messages = defineMessages({
@@ -188,7 +188,7 @@ class ContentsUploadModal extends Component {
             </Loader>
           </Dimmer>
           <Modal.Content>
-            <Dropzone onDrop={this.onDrop} className="dropzone">
+            <Dropzone noClick onDrop={this.onDrop} className="dropzone">
               {({ getRootProps, getInputProps }) => (
                 <Segment {...getRootProps({ className: 'dashed' })}>
                   <Table basic="very">
@@ -201,12 +201,20 @@ class ContentsUploadModal extends Component {
                           />
                         </Table.Cell>
                         <Table.Cell>
-                          <Button primary floated="right" {...getInputProps()}>
-                            <FormattedMessage
-                              id="Browse"
-                              defaultMessage="Browse"
-                            />
-                          </Button>
+                          <Button.Group>
+                            <label className="ui button primary">
+                              <FormattedMessage
+                                id="Browse"
+                                defaultMessage="Browse"
+                              />
+                              <input
+                                {...getInputProps({
+                                  type: 'file',
+                                  style: { display: 'none' },
+                                })}
+                              />
+                            </label>
+                          </Button.Group>
                         </Table.Cell>
                       </Table.Row>
                     </Table.Body>
@@ -254,7 +262,12 @@ class ContentsUploadModal extends Component {
                       </Table.Cell>
                       <Table.Cell>
                         {file.type.split('/')[0] === 'image' && (
-                          <Image src={file.preview} height={60} />
+                          <Image
+                            src={`${flattenToAppURL(
+                              file.path,
+                            )}/@@images/image/mini`}
+                            height={60}
+                          />
                         )}
                       </Table.Cell>
                       <Table.Cell>
