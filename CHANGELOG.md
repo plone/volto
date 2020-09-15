@@ -10,6 +10,8 @@
 
 ### Bugfix
 
+- Fix the broken profile view in Toolbar @iFlameing
+
 ### Internal
 
 ## 7.14.2 (2020-09-10)
