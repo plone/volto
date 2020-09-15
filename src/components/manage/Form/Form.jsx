@@ -306,7 +306,7 @@ export class Form extends Component {
     const { errors } = contextData;
     delete errors[id];
 
-    return this.setContextData({
+    this.setContextData({
       errors,
       formData: {
         ...this.contextData.formData,
