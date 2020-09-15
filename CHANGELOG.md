@@ -1,6 +1,6 @@
 # Change Log
 
-## 7.14.2 (unreleased)
+## 7.15.1 (unreleased)
 
 ### Breaking
 
@@ -9,10 +9,35 @@
 - Separate the Form.jsx state in its own component exposed as a context. This enables clean multi-block editing from other blocks, exposes the form state to widgets and many other advanced scenarios. @tiberiuichim
 
 ### Bugfix
+- Added Schema Editor within Dexterity Content-Types Controlpanel @rexalex @avoinea #1517
+- Added Blocks Layout Editor within Dexterity Content-Types Controlpanel @avoinea #1517
+- Added missing components for Email and Url widgets #1246 @rexalex
 
-- Hyphenate sidebar labels @ksuess
+### Bugfix
 
 ### Internal
+
+## 7.15.0 (2020-09-15)
+
+### Feature
+
+- Added missing components for Email and Url widgets #1246 @rexalex
+- Show backend validation errors on corresponding fields #1246 @rexalex
+- Validation implemented for add user/group @rexalex
+- Show Username when Firstname attr is missing in UsersControlPanelUser @iFlameing
+
+### Bugfix
+
+- Fixed front-end field validation #1246 @rexalex
+- Fixed date only widget rendering #1246 @rexalex
+- Fix errors with SelectWidget when removing the only element @rexalex
+
+## 7.14.2 (2020-09-10)
+
+### Bugfix
+
+- Hyphenate sidebar labels @ksuess
+- Update German translations @tisto
 
 ## 7.14.1 (2020-09-09)
 
@@ -294,6 +319,10 @@
 - Upgrade razzle to `^3.1.5`. @tiberiuichim
 
 ## 7.0.1 (2020-07-07)
+
+### Breaking
+
+### Feature
 
 ### Bugfix
 

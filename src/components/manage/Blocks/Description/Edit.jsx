@@ -149,6 +149,9 @@ class Edit extends Component {
           editorState={this.state.editorState}
           blockRenderMap={extendedBlockRenderMap}
           handleReturn={() => {
+            if (this.props.data?.disableNewBlocks) {
+              return 'handled';
+            }
             this.props
               .onAddBlock(settings.defaultBlockType, this.props.index + 1)
               .then((id) => this.props.onSelectBlock(id));

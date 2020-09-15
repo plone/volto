@@ -32,6 +32,7 @@ class Cell extends Component {
     selected: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
     isTableBlockSelected: PropTypes.bool,
+    disableNewBlocks: PropTypes.bool,
   };
 
   /**
@@ -143,7 +144,7 @@ class Cell extends Component {
               );
               return 'handled';
             }
-            if (!this.props.detached) {
+            if (!this.props.detached && !this.props.disableNewBlocks) {
               const selectionState = this.state.editorState.getSelection();
               const anchorKey = selectionState.getAnchorKey();
               const currentContent = this.state.editorState.getCurrentContent();

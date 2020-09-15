@@ -42,8 +42,11 @@ export {
   getVocabFromHint,
   getVocabFromField,
   getVocabFromItems,
+  getFieldsVocabulary,
 } from '@plone/volto/helpers/Vocabularies/Vocabularies';
 export AlignBlock from '@plone/volto/helpers/AlignBlock/AlignBlock';
 
 export Helmet from './Helmet/Helmet';
+export FormValidation from './FormValidation/FormValidation';
+export { messages } from './MessageLabels/MessageLabels';
 export { difference } from '@plone/volto/helpers/Utils/Utils';
