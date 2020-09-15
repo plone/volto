@@ -1,3 +1,6 @@
 {
-  "name": "test-addon"
+  "name": "test-addon",
+  "customizationPaths": [
+    "src/custom-addons"
+  ]
 }

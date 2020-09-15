@@ -178,6 +178,7 @@ class TokenWidget extends Component {
         <AsyncCreatable>
           {({ default: AsyncCreatableSelect }) => (
             <AsyncCreatableSelect
+              isDisabled={this.props.isDisabled}
               className="react-select-container"
               classNamePrefix="react-select"
               defaultOptions={this.props.choices || []}
