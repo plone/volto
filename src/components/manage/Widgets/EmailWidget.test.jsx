@@ -3,11 +3,11 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
-import PasswordWidget from './PasswordWidget';
+import EmailWidget from './EmailWidget';
 
 const mockStore = configureStore();
 
-test('renders a password widget component', () => {
+test('renders an email widget component', () => {
   const store = mockStore({
     intl: {
       locale: 'en',
@@ -16,9 +16,9 @@ test('renders a password widget component', () => {
   });
   const component = renderer.create(
     <Provider store={store}>
-      <PasswordWidget
-        id="my-field"
-        title="My field"
+      <EmailWidget
+        id="test-email"
+        title="My Email"
         onChange={() => {}}
         onBlur={() => {}}
         onClick={() => {}}
