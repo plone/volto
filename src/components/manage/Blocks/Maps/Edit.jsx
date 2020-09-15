@@ -158,6 +158,9 @@ class Edit extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const placeholder =
+      this.props.data.placeholder ||
+      this.props.intl.formatMessage(messages.MapsBlockInputPlaceholder);
     return (
       <div
         className={cx(
@@ -192,9 +195,7 @@ class Edit extends Component {
                 <Input
                   onKeyDown={this.onKeyDownVariantMenuForm}
                   onChange={this.onChangeUrl}
-                  placeholder={this.props.intl.formatMessage(
-                    messages.MapsBlockInputPlaceholder,
-                  )}
+                  placeholder={placeholder}
                   value={this.state.url}
                   // Prevents propagation to the Dropzone and the opening
                   // of the upload browser dialog

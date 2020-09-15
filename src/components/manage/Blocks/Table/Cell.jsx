@@ -32,6 +32,7 @@ class Cell extends Component {
     selected: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
     isTableBlockSelected: PropTypes.bool,
+    disableNewBlocks: PropTypes.bool,
   };
 
   /**
@@ -143,7 +144,7 @@ class Cell extends Component {
               );
               return 'handled';
             }
-            if (!this.props.detached) {
+            if (!this.props.detached && !this.props.disableNewBlocks) {
               const selectionState = this.state.editorState.getSelection();
               const anchorKey = selectionState.getAnchorKey();
               const currentContent = this.state.editorState.getCurrentContent();
@@ -153,7 +154,10 @@ class Cell extends Component {
               const blockType = currentContentBlock.getType();
               if (!includes(settings.listBlockTypes, blockType)) {
                 this.props.onSelectBlock(
-                  this.props.onAddBlock('text', this.props.index + 1),
+                  this.props.onAddBlock(
+                    settings.defaultBlockType,
+                    this.props.index + 1,
+                  ),
                 );
                 return 'handled';
               }

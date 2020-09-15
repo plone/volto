@@ -30,6 +30,10 @@ msgstr ""
 "Language-Name: Nederlands\n"
 "Preferred-Encodings: utf-8\n"
 
+#: components/manage/Blocks/HTML/Edit
+msgid "<p>Add some HTML here</p>"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "Accessibility"
 msgstr "Toegankelijkheid"
@@ -175,6 +179,7 @@ msgstr ""
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Controlpanels
@@ -228,9 +233,19 @@ msgstr "Standaard worden de rechten overgenomen van de bovenliggende map.  Als u
 msgid "Cache Name"
 msgstr ""
 
+#: components/manage/Controlpanels/ContentTypeLayout
+msgid "Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypeLayout
+msgid "Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>"
+msgstr ""
+
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Delete/Delete
 #: components/manage/Edit/Edit
@@ -274,6 +289,8 @@ msgid "Changes saved"
 msgstr "Wijzigingen zijn opgeslagen"
 
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
 msgid "Changes saved."
 msgstr ""
@@ -438,13 +455,9 @@ msgstr ""
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
-#: components/manage/Widgets/AlignWidget
-#: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/TextareaWidget
-#: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/CommentEditModal
 #: components/theme/Comments/Comments
@@ -457,15 +470,13 @@ msgstr "Standaard"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
-#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/UsersControlpanelGroups
 #: components/manage/Controlpanels/UsersControlpanelUser
 #: components/manage/Delete/Delete
-#: components/manage/Widgets/AlignWidget
-#: components/manage/Widgets/CheckboxWidget
-#: components/manage/Widgets/TextareaWidget
-#: components/manage/Widgets/TextWidget
+#: components/manage/Widgets/FormFieldWrapper
+#: components/manage/Widgets/ObjectBrowserWidget
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/Comments
 msgid "Delete"
@@ -497,13 +508,9 @@ msgstr "Aflopend"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Widgets/AlignWidget
-#: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/TextareaWidget
-#: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
 #: helpers/MessageLabels/MessageLabels
@@ -564,10 +571,11 @@ msgid "E-mail addresses do not match."
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
-#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Toolbar/Toolbar
-#: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/FormFieldWrapper
+#: components/manage/Widgets/ObjectBrowserWidget
 #: components/theme/Comments/Comments
 msgid "Edit"
 msgstr "Bewerken"
@@ -612,6 +620,10 @@ msgstr ""
 msgid "Embeded Google Maps"
 msgstr ""
 
+#: components/manage/Controlpanels/ContentTypeLayout
+msgid "Enable editable Blocks"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "End Date"
 msgstr ""
@@ -648,6 +660,7 @@ msgid "Enter your new password. Minimum 5 characters."
 msgstr "Geef een nieuw wachtwoord op. Minimaal 5 karakters."
 
 #: components/manage/Add/Add
+#: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Edit/Edit
 #: components/manage/Form/InlineForm
 #: components/manage/Widgets/SchemaWidget
@@ -827,6 +840,8 @@ msgid "Include this occurence"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
 msgid "Info"
 msgstr ""
@@ -927,6 +942,10 @@ msgstr "Laatst gewijzigd"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Latest version"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypesActions
+msgid "Layout"
 msgstr ""
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -1186,6 +1205,10 @@ msgstr ""
 msgid "Page"
 msgstr ""
 
+#: components/manage/Widgets/SchemaWidget
+msgid "Parent fieldset"
+msgstr ""
+
 #: components/theme/Login/Login
 #: helpers/MessageLabels/MessageLabels
 msgid "Password"
@@ -1250,6 +1273,10 @@ msgstr "Plone{reg} CMS - Open Source Web Content Management Systeem"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Portrait"
+msgstr ""
+
+#: components/manage/Widgets/SchemaWidget
+msgid "Possible values"
 msgstr ""
 
 #: components/theme/Footer/Footer
@@ -1350,13 +1377,9 @@ msgstr ""
 msgid "Repeat on"
 msgstr ""
 
-#: components/manage/Widgets/AlignWidget
-#: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/TextareaWidget
-#: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 msgid "Required"
 msgstr ""
@@ -1406,6 +1429,8 @@ msgstr ""
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
@@ -1416,6 +1441,14 @@ msgstr "Opslaan"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Save recurrence"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypesActions
+msgid "Schema"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypeSchema
+msgid "Schema updates"
 msgstr ""
 
 #: components/theme/SearchWidget/SearchWidget
@@ -1505,6 +1538,10 @@ msgstr ""
 msgid "Set your password"
 msgstr ""
 
+#: components/manage/Sidebar/Sidebar
+msgid "Settings"
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 #: components/manage/Toolbar/More
 msgid "Sharing"
@@ -1514,13 +1551,9 @@ msgstr ""
 msgid "Sharing for {title}"
 msgstr "Delen van {title}"
 
-#: components/manage/Widgets/AlignWidget
-#: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/TextareaWidget
-#: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 msgid "Short Name"
 msgstr ""
@@ -1633,6 +1666,7 @@ msgstr ""
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -1754,13 +1788,9 @@ msgstr ""
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Widgets/AlignWidget
-#: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/TextareaWidget
-#: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
 #: helpers/MessageLabels/MessageLabels
@@ -1854,6 +1884,10 @@ msgstr "Upload"
 msgid "Upload a lead image in the 'Lead Image' content field."
 msgstr ""
 
+#: components/manage/Blocks/HeroImageLeft/Edit
+msgid "Upload a new image"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 msgid "Upload files"
 msgstr "Bestanden uploaden"
@@ -1866,13 +1900,9 @@ msgstr "Upload {count, plural, one {# bestand} other {# bestanden}}"
 msgid "Uploading files"
 msgstr "Bestanden uploaden"
 
-#: components/manage/Widgets/AlignWidget
-#: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/TextareaWidget
-#: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 msgid "Used for programmatic access to the fieldset."
 msgstr ""
@@ -2147,8 +2177,24 @@ msgstr ""
 msgid "maps"
 msgstr ""
 
+#: components/manage/Widgets/SchemaWidget
+msgid "maxLength"
+msgstr ""
+
+#: components/manage/Widgets/SchemaWidget
+msgid "maximum"
+msgstr ""
+
 #: config/Blocks
 msgid "media"
+msgstr ""
+
+#: components/manage/Widgets/SchemaWidget
+msgid "minLength"
+msgstr ""
+
+#: components/manage/Widgets/SchemaWidget
+msgid "minimum"
 msgstr ""
 
 #: config/Blocks
@@ -2371,6 +2417,14 @@ msgstr ""
 #: components/manage/Contents/Contents
 msgid "{count} selected"
 msgstr "{count} geselecteerd"
+
+#: components/manage/Controlpanels/ContentType
+msgid "{id} Content Type"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypeSchema
+msgid "{id} Schema"
+msgstr ""
 
 #: components/manage/Actions/Actions
 msgid "{title} copied."

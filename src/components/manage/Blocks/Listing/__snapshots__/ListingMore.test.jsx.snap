@@ -32,7 +32,6 @@ Array [
             className="ui input"
           >
             <input
-              disabled={false}
               id="field-linkTitle"
               maxLength={null}
               minLength={null}
@@ -78,7 +77,6 @@ Array [
             className="ui icon input"
           >
             <input
-              disabled={false}
               id="field-linkHref"
               maxLength={null}
               minLength={null}

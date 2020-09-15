@@ -7,6 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Input } from 'semantic-ui-react';
 import { FormFieldWrapper } from '@plone/volto/components';
+import { injectIntl } from 'react-intl';
 
 /**
  * PasswordWidget component class.
@@ -22,6 +23,7 @@ const PasswordWidget = (props) => {
         id={`field-${id}`}
         name={id}
         type="password"
+        disabled={props.isDisabled}
         value={value || ''}
         onChange={({ target }) =>
           onChange(id, target.value === '' ? undefined : target.value)
@@ -74,4 +76,4 @@ PasswordWidget.defaultProps = {
   maxLength: null,
 };
 
-export default PasswordWidget;
+export default injectIntl(PasswordWidget);

@@ -7,6 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Input } from 'semantic-ui-react';
 import { FormFieldWrapper } from '@plone/volto/components';
+import { injectIntl } from 'react-intl';
 
 /**
  * NumberWidget component class.
@@ -21,15 +22,18 @@ const NumberWidget = (props) => {
     onBlur,
     onClick,
     defaultValue,
+    isDisabled,
     maximum,
     minimum,
   } = props;
+
   return (
     <FormFieldWrapper {...props}>
       <Input
         id={`field-${id}`}
         name={id}
         type="number"
+        disabled={isDisabled}
         min={minimum || null}
         max={maximum || null}
         value={value || defaultValue}
@@ -75,4 +79,4 @@ NumberWidget.defaultProps = {
   value: null,
 };
 
-export default NumberWidget;
+export default injectIntl(NumberWidget);
