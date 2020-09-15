@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-09-03T16:01:12.802Z\n"
+"POT-Creation-Date: 2020-09-15T08:53:14.294Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -52,9 +52,9 @@ msgid "Activate and deactivate"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/SchemaWidget
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add
 msgid "Add"
 msgstr ""
@@ -74,7 +74,7 @@ msgstr ""
 msgid "Add Translation…"
 msgstr ""
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add User
 msgid "Add User"
 msgstr ""
@@ -84,7 +84,7 @@ msgstr ""
 msgid "Add a description…"
 msgstr ""
 
-#: components/manage/Form/Form
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add block…
 msgid "Add block…"
 msgstr ""
@@ -109,7 +109,7 @@ msgstr ""
 msgid "Add fieldset"
 msgstr ""
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add group
 msgid "Add group"
 msgstr ""
@@ -119,17 +119,17 @@ msgstr ""
 msgid "Add new content type"
 msgstr ""
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add new group
 msgid "Add new group"
 msgstr ""
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add new user
 msgid "Add new user"
 msgstr ""
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add to Groups
 msgid "Add to Groups"
 msgstr ""
@@ -202,7 +202,6 @@ msgstr ""
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/DatabaseInformation
 #: components/manage/Controlpanels/ModerateComments
-#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Diff/Diff
 #: components/manage/History/History
 #: components/manage/Preferences/ChangePassword
@@ -211,6 +210,7 @@ msgstr ""
 #: components/manage/Sharing/Sharing
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Back
 msgid "Back"
 msgstr ""
@@ -276,13 +276,12 @@ msgstr ""
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
-#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Delete/Delete
 #: components/manage/Edit/Edit
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 #: components/theme/Login/Login
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Cancel
 msgid "Cancel"
 msgstr ""
@@ -559,7 +558,7 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Delete Group
 msgid "Delete Group"
 msgstr ""
@@ -569,7 +568,7 @@ msgstr ""
 msgid "Delete Type"
 msgstr ""
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Delete User
 msgid "Delete User"
 msgstr ""
@@ -591,12 +590,12 @@ msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Description
 msgid "Description"
 msgstr ""
@@ -708,7 +707,7 @@ msgstr ""
 msgid "Edit {title}"
 msgstr ""
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Email
 msgid "Email"
 msgstr ""
@@ -779,11 +778,11 @@ msgstr ""
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Edit/Edit
-#: components/manage/Form/Form
 #: components/manage/Form/InlineForm
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Error
 msgid "Error"
 msgstr ""
@@ -892,7 +891,7 @@ msgstr ""
 msgid "Full Name"
 msgstr ""
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Fullname
 msgid "Fullname"
 msgstr ""
@@ -917,12 +916,13 @@ msgstr ""
 msgid "Group"
 msgstr ""
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Group created
 msgid "Group created"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Groupname
 msgid "Groupname"
 msgstr ""
@@ -1095,8 +1095,8 @@ msgstr ""
 msgid "Items"
 msgstr ""
 
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Items must be unique.
 msgid "Items must be unique."
 msgstr ""
@@ -1218,15 +1218,30 @@ msgstr ""
 msgid "Maps URL"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Maximum length is {len}.
+msgid "Maximum length is {len}."
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Maximum value is {len}.
+msgid "Maximum value is {len}."
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Message
 msgid "Message"
 msgstr ""
 
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Minimum length is {len}.
 msgid "Minimum length is {len}."
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Minimum value is {len}.
+msgid "Minimum value is {len}."
 msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
@@ -1437,8 +1452,8 @@ msgstr ""
 msgid "Parent fieldset"
 msgstr ""
 
-#: components/manage/Controlpanels/UsersControlpanel
 #: components/theme/Login/Login
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Password
 msgid "Password"
 msgstr ""
@@ -1652,8 +1667,8 @@ msgstr ""
 msgid "Required"
 msgstr ""
 
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Required input is missing.
 msgid "Required input is missing."
 msgstr ""
@@ -1700,7 +1715,7 @@ msgstr ""
 msgid "Rights"
 msgstr ""
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Roles
 msgid "Roles"
 msgstr ""
@@ -1710,11 +1725,10 @@ msgstr ""
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
-#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Save
 msgid "Save"
 msgstr ""
@@ -1754,7 +1768,7 @@ msgstr ""
 msgid "Search for user or group"
 msgstr ""
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Search group…
 msgid "Search group…"
 msgstr ""
@@ -1769,7 +1783,7 @@ msgstr ""
 msgid "Search results for {term}"
 msgstr ""
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Search users…
 msgid "Search users…"
 msgstr ""
@@ -2000,11 +2014,11 @@ msgstr ""
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ContentTypeSchema
-#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/theme/ContactForm/ContactForm
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Success
 msgid "Success"
 msgstr ""
@@ -2118,8 +2132,8 @@ msgstr ""
 msgid "There were some errors"
 msgstr ""
 
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: There were some errors.
 msgid "There were some errors."
 msgstr ""
@@ -2148,12 +2162,12 @@ msgstr ""
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Title
 msgid "Title"
 msgstr ""
@@ -2299,7 +2313,7 @@ msgstr ""
 msgid "User"
 msgstr ""
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: User created
 msgid "User created"
 msgstr ""
@@ -2309,7 +2323,7 @@ msgstr ""
 msgid "User name"
 msgstr ""
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Username
 msgid "Username"
 msgstr ""
@@ -2320,7 +2334,7 @@ msgid "Users"
 msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Users and Groups
 msgid "Users and Groups"
 msgstr ""
@@ -2535,6 +2549,11 @@ msgstr ""
 msgid "draft"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Input must be valid email (something@domain.com)
+msgid "email"
+msgstr ""
+
 #: components/theme/View/EventView
 # defaultMessage: All dates
 msgid "event_alldates"
@@ -2593,6 +2612,11 @@ msgstr ""
 #: config/Blocks
 # defaultMessage: Image
 msgid "image"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Input must be integer
+msgid "integer"
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
@@ -2658,6 +2682,11 @@ msgstr ""
 #: components/manage/Contents/ContentsItem
 # defaultMessage: No workflow state
 msgid "no workflow state"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Input must be number
+msgid "number"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
@@ -2889,6 +2918,11 @@ msgstr ""
 #: config/Blocks
 # defaultMessage: Table of Contents
 msgid "toc"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Input must be valid url (www.something.com or http(s)://www.something.com)
+msgid "url"
 msgstr ""
 
 #: components/manage/Toolbar/PersonalTools

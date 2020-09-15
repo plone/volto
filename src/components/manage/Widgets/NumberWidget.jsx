@@ -15,18 +15,35 @@ import { injectIntl } from 'react-intl';
  * @returns {string} Markup of the component.
  */
 const NumberWidget = (props) => {
-  const { id, value, onChange, defaultValue } = props;
+  const {
+    id,
+    value,
+    onChange,
+    onBlur,
+    onClick,
+    defaultValue,
+    isDisabled,
+    maximum,
+    minimum,
+  } = props;
+
   return (
     <FormFieldWrapper {...props}>
       <Input
         id={`field-${id}`}
         name={id}
         type="number"
-        disabled={props.isDisabled}
+        disabled={isDisabled}
+        min={minimum || null}
+        max={maximum || null}
         value={value || defaultValue}
         onChange={({ target }) =>
           onChange(id, target.value === '' ? undefined : target.value)
         }
+        onBlur={({ target }) =>
+          onBlur(id, target.value === '' ? undefined : target.value)
+        }
+        onClick={() => onClick()}
       />
     </FormFieldWrapper>
   );
@@ -43,9 +60,11 @@ NumberWidget.propTypes = {
   description: PropTypes.string,
   required: PropTypes.bool,
   error: PropTypes.arrayOf(PropTypes.string),
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onChange: PropTypes.func.isRequired,
   wrapped: PropTypes.bool,
+  maximum: PropTypes.number,
+  minimum: PropTypes.number,
 };
 
 /**

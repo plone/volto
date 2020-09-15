@@ -27,9 +27,11 @@ class TextWidget extends Component {
     description: PropTypes.string,
     required: PropTypes.bool,
     error: PropTypes.arrayOf(PropTypes.string),
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    value: PropTypes.string,
     focus: PropTypes.bool,
     onChange: PropTypes.func,
+    onBlur: PropTypes.func,
+    onClick: PropTypes.func,
     onEdit: PropTypes.func,
     onDelete: PropTypes.func,
     icon: PropTypes.shape({
@@ -38,6 +40,8 @@ class TextWidget extends Component {
       content: PropTypes.string,
     }),
     iconAction: PropTypes.func,
+    minLength: PropTypes.number,
+    maxLength: PropTypes.number,
     wrapped: PropTypes.bool,
     placeholder: PropTypes.string,
   };
@@ -52,12 +56,16 @@ class TextWidget extends Component {
     required: false,
     error: [],
     value: null,
-    onChange: null,
+    onChange: () => {},
+    onBlur: () => {},
+    onClick: () => {},
     onEdit: null,
     onDelete: null,
     focus: false,
     icon: null,
     iconAction: null,
+    minLength: null,
+    maxLength: null,
   };
 
   /**
@@ -77,7 +85,18 @@ class TextWidget extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { id, value, onChange, icon, iconAction, placeholder } = this.props;
+    const {
+      id,
+      value,
+      onChange,
+      onBlur,
+      onClick,
+      icon,
+      iconAction,
+      minLength,
+      maxLength,
+      placeholder,
+    } = this.props;
 
     return (
       <FormFieldWrapper {...this.props} className="text">
@@ -94,6 +113,12 @@ class TextWidget extends Component {
           ref={(node) => {
             this.node = node;
           }}
+          onBlur={({ target }) =>
+            onBlur(id, target.value === '' ? undefined : target.value)
+          }
+          onClick={() => onClick()}
+          minLength={minLength || null}
+          maxLength={maxLength || null}
         />
         {icon && iconAction && (
           <button onClick={iconAction}>

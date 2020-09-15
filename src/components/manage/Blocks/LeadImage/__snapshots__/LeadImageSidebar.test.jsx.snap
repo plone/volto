@@ -53,8 +53,12 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
             >
               <input
                 id="field-alt"
+                maxLength={null}
+                minLength={null}
                 name="alt"
+                onBlur={[Function]}
                 onChange={[Function]}
+                onClick={[Function]}
                 type="text"
                 value="alternate text"
               />
@@ -301,8 +305,12 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
               >
                 <input
                   id="field-link"
+                  maxLength={null}
+                  minLength={null}
                   name="link"
+                  onBlur={[Function]}
                   onChange={[Function]}
+                  onClick={[Function]}
                   type="text"
                   value=""
                 />
