@@ -1,27 +1,27 @@
 /**
- * PasswordWidget component.
- * @module components/manage/Widgets/PassswordWidget
+ * UrlWidget component.
+ * @module components/manage/Widgets/UrlWidget
  */
 
 import React from 'react';
+import { FormFieldWrapper } from '@plone/volto/components';
 import PropTypes from 'prop-types';
 import { Input } from 'semantic-ui-react';
-import { FormFieldWrapper } from '@plone/volto/components';
 
-/**
- * PasswordWidget component class.
- * @function PasswordWidget
- * @returns {string} Markup of the component.
+/** UrlWidget function component
+ * @function UrlWidget
+ * @returns {string} Markup of the component
  */
-const PasswordWidget = (props) => {
+const UrlWidget = (props) => {
   const { id, value, onChange, onBlur, onClick, minLength, maxLength } = props;
+  const inputId = `field-${id}`;
 
   return (
-    <FormFieldWrapper {...props}>
+    <FormFieldWrapper {...props} className="url">
       <Input
-        id={`field-${id}`}
+        id={inputId}
         name={id}
-        type="password"
+        type="url"
         value={value || ''}
         onChange={({ target }) =>
           onChange(id, target.value === '' ? undefined : target.value)
@@ -32,17 +32,17 @@ const PasswordWidget = (props) => {
         onClick={() => onClick()}
         minLength={minLength || null}
         maxLength={maxLength || null}
-        autoComplete="off"
       />
     </FormFieldWrapper>
   );
 };
+
 /**
- * Property types.
+ * Property types
  * @property {Object} propTypes Property types.
  * @static
  */
-PasswordWidget.propTypes = {
+UrlWidget.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
@@ -54,7 +54,6 @@ PasswordWidget.propTypes = {
   onClick: PropTypes.func,
   minLength: PropTypes.number,
   maxLength: PropTypes.number,
-  wrapped: PropTypes.bool,
 };
 
 /**
@@ -62,7 +61,7 @@ PasswordWidget.propTypes = {
  * @property {Object} defaultProps Default properties.
  * @static
  */
-PasswordWidget.defaultProps = {
+UrlWidget.defaultProps = {
   description: null,
   required: false,
   error: [],
@@ -74,4 +73,4 @@ PasswordWidget.defaultProps = {
   maxLength: null,
 };
 
-export default PasswordWidget;
+export default UrlWidget;
