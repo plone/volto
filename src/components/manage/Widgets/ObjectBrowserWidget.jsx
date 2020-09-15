@@ -8,7 +8,14 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { map, remove } from 'lodash';
 
-import { Form, Grid, Label, Popup, Button } from 'semantic-ui-react';
+import {
+  Form,
+  Grid,
+  Label,
+  Popup,
+  Button,
+  Icon as IconOld,
+} from 'semantic-ui-react';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import { defineMessages, injectIntl } from 'react-intl';
@@ -21,6 +28,14 @@ const messages = defineMessages({
   placeholder: {
     id: 'No items selected',
     defaultMessage: 'No items selected',
+  },
+  edit: {
+    id: 'Edit',
+    defaultMessage: 'Edit',
+  },
+  delete: {
+    id: 'Delete',
+    defaultMessage: 'Delete',
   },
 });
 
@@ -161,6 +176,10 @@ class ObjectBrowserWidget extends Component {
   };
 
   handleSelectedItemsRefClick = (e) => {
+    if (this.props.isDisabled) {
+      return;
+    }
+
     if (
       e.target.contains(this.selectedItemsRef.current) ||
       e.target.contains(this.placeholderRef.current)
@@ -184,8 +203,12 @@ class ObjectBrowserWidget extends Component {
       value,
       mode,
       onEdit,
+      onDelete,
       fieldSet,
       onChange,
+      draggable,
+      isDisabled,
+      intl,
     } = this.props;
 
     let icon =
@@ -213,7 +236,7 @@ class ObjectBrowserWidget extends Component {
             <Grid.Column width="4">
               <div className="wrapper">
                 <label htmlFor={`field-${id}`}>
-                  {onEdit && (
+                  {draggable && onEdit && (
                     <i
                       aria-hidden="true"
                       className="grey bars icon drag handle"
@@ -224,6 +247,30 @@ class ObjectBrowserWidget extends Component {
               </div>
             </Grid.Column>
             <Grid.Column width="8">
+              {onEdit && !isDisabled && (
+                <div className="toolbar">
+                  <button
+                    aria-label={intl.formatMessage(messages.edit)}
+                    className="item ui noborder button"
+                    onClick={(evt) => {
+                      evt.preventDefault();
+                      onEdit(id);
+                    }}
+                  >
+                    <IconOld name="write square" size="large" color="blue" />
+                  </button>
+                  <button
+                    aria-label={intl.formatMessage(messages.delete)}
+                    className="item ui noborder button"
+                    onClick={(evt) => {
+                      evt.preventDefault();
+                      onDelete(id);
+                    }}
+                  >
+                    <IconOld name="close" size="large" color="red" />
+                  </button>
+                </div>
+              )}
               <div className="objectbrowser-field">
                 <div
                   className="selected-values"
@@ -246,7 +293,11 @@ class ObjectBrowserWidget extends Component {
                   <Icon name={navTreeSVG} size="18px" />
                 </Button> */}
 
-                <Button onClick={iconAction} className="action">
+                <Button
+                  onClick={iconAction}
+                  className="action"
+                  disabled={isDisabled}
+                >
                   <Icon name={icon} size="18px" />
                 </Button>
               </div>

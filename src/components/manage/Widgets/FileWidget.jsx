@@ -7,7 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Input, Button, Image } from 'semantic-ui-react';
 import { readAsDataURL } from 'promise-file-reader';
-
+import { injectIntl } from 'react-intl';
 import deleteSVG from '@plone/volto/icons/delete.svg';
 import { Icon, FormFieldWrapper } from '@plone/volto/components';
 
@@ -25,30 +25,13 @@ const imageMimetypes = [
  * @function FileWidget
  * @returns {string} Markup of the component.
  */
-const FileWidget = ({
-  id,
-  title,
-  required,
-  description,
-  error,
-  value,
-  onChange,
-  fieldSet,
-  wrapped,
-}) => {
+const FileWidget = (props) => {
+  const { id, value, onChange } = props;
   const fileInput = React.useRef(null);
   const [fileType, setFileType] = React.useState(true);
 
   return (
-    <FormFieldWrapper
-      id={id}
-      title={title}
-      description={description}
-      required={required}
-      error={error}
-      wrapped={wrapped}
-      fieldSet={fieldSet}
-    >
+    <FormFieldWrapper {...props}>
       {fileType ? (
         <Image
           className="image-preview"
@@ -61,6 +44,7 @@ const FileWidget = ({
         name={id}
         type="file"
         ref={fileInput}
+        disabled={props.isDisabled}
         onChange={({ target }) => {
           const file = target.files[0];
           readAsDataURL(file).then((data) => {
@@ -140,4 +124,4 @@ FileWidget.defaultProps = {
   value: null,
 };
 
-export default FileWidget;
+export default injectIntl(FileWidget);

@@ -1,18 +1,35 @@
 # Change Log
 
-## 7.14.3 (unreleased)
+## 7.15.1 (unreleased)
 
 ### Breaking
 
 ### Feature
 
-- Show Username when Firstname attr is missing in UsersControlPanelUser @iFlameing
+- Added Schema Editor within Dexterity Content-Types Controlpanel @rexalex @avoinea #1517
+- Added Blocks Layout Editor within Dexterity Content-Types Controlpanel @avoinea #1517
+- Added missing components for Email and Url widgets #1246 @rexalex
 
 ### Bugfix
 
 ### Internal
 
 - Hide block chooser button using React logic instead of CSS. This makes it easier to support nested blocks @tiberiuichim
+
+## 7.15.0 (2020-09-15)
+
+### Feature
+
+- Added missing components for Email and Url widgets #1246 @rexalex
+- Show backend validation errors on corresponding fields #1246 @rexalex
+- Validation implemented for add user/group @rexalex
+- Show Username when Firstname attr is missing in UsersControlPanelUser @iFlameing
+
+### Bugfix
+
+- Fixed front-end field validation #1246 @rexalex
+- Fixed date only widget rendering #1246 @rexalex
+- Fix errors with SelectWidget when removing the only element @rexalex
 
 ## 7.14.2 (2020-09-10)
 
@@ -301,6 +318,10 @@
 - Upgrade razzle to `^3.1.5`. @tiberiuichim
 
 ## 7.0.1 (2020-07-07)
+
+### Breaking
+
+### Feature
 
 ### Bugfix
 

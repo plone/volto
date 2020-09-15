@@ -198,6 +198,12 @@ class Edit extends Component {
       return <div />;
     }
 
+    const placeholder =
+      this.props.data.placeholder ||
+      this.props.intl.formatMessage(messages.text);
+
+    const disableNewBlocks =
+      this.props.data?.disableNewBlocks || this.props.detached;
     const { InlineToolbar } = this.state.inlineToolbarPlugin;
 
     return (
@@ -212,7 +218,7 @@ class Edit extends Component {
           blockRenderMap={settings.extendedBlockRenderMap}
           blockStyleFn={settings.blockStyleFn}
           customStyleMap={settings.customStyleMap}
-          placeholder={this.props.intl.formatMessage(messages.text)}
+          placeholder={placeholder}
           handleReturn={(e) => {
             if (isSoftNewlineEvent(e)) {
               this.onChange(
@@ -220,7 +226,7 @@ class Edit extends Component {
               );
               return 'handled';
             }
-            if (!this.props.detached) {
+            if (!disableNewBlocks) {
               const selectionState = this.state.editorState.getSelection();
               const anchorKey = selectionState.getAnchorKey();
               const currentContent = this.state.editorState.getCurrentContent();
@@ -239,6 +245,9 @@ class Edit extends Component {
             return {};
           }}
           handleKeyCommand={(command, editorState) => {
+            if (this.props.data.required) {
+              return;
+            }
             if (
               command === 'backspace' &&
               editorState.getCurrentContent().getPlainText().length === 0
@@ -273,7 +282,7 @@ class Edit extends Component {
         />
         <InlineToolbar />
         {this.props.selected &&
-          !this.props.detached &&
+          !disableNewBlocks &&
           !blocks.blocksConfig[
             this.props.data?.['@type'] || 'text'
           ].blockHasValue(this.props.data) && (
