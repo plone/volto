@@ -1,15 +1,23 @@
 # Change Log
 
-## 7.14.3 (unreleased)
+## 7.15.1 (unreleased)
 
 ### Breaking
 
 ### Feature
 
+### Bugfix
+
+### Internal
+
+- Improve developer experience, don't logout on hot-reload @tiberiuichim
+
+## 7.15.0 (2020-09-15)
+
+### Feature
+
 - Added missing components for Email and Url widgets #1246 @rexalex
-
 - Show backend validation errors on corresponding fields #1246 @rexalex
-
 - Validation implemented for add user/group @rexalex
 - Show Username when Firstname attr is missing in UsersControlPanelUser @iFlameing
 
@@ -19,10 +27,6 @@
 - Fixed front-end field validation #1246 @rexalex
 - Fixed date only widget rendering #1246 @rexalex
 - Fix errors with SelectWidget when removing the only element @rexalex
-
-### Internal
-
-- Improve developer experience, don't logout on hot-reload @tiberiuichim
 
 ## 7.14.2 (2020-09-10)
 
