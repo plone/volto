@@ -300,7 +300,14 @@ export class Form extends Component {
    * @returns {undefined}
    */
   onChangeField(id, value) {
+    const contextData = this.contextData.isClient
+      ? this.contextData
+      : this.state;
+    const { errors } = contextData;
+    delete errors[id];
+
     return this.setContextData({
+      errors,
       formData: {
         ...this.contextData.formData,
         // We need to catch also when the value equals false this fixes #888
