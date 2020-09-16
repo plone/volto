@@ -25,6 +25,8 @@
 
 ### Bugfix
 
+- Fix the broken profile view in Toolbar @iFlameing
+
 - Fixed front-end field validation #1246 @rexalex
 - Fixed date only widget rendering #1246 @rexalex
 - Fix errors with SelectWidget when removing the only element @rexalex
