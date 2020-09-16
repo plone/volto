@@ -203,7 +203,7 @@ moduleNameMapper: {
   '@plone/volto/babel': '<rootDir>/node_modules/@plone/volto/babel',
   '@plone/volto/(.*)$': '<rootDir>/node_modules/@plone/volto/src/$1',
   'load-volto-addons':
-    '<rootDir>/node_modules/@plone/volto/dummy-addons-loader.js',
+    '<rootDir>/node_modules/@plone/volto/jes-addons-loader.js',
   'my-volto-addon/(.*)$': '<rootDir>/src/addons/my-volto-addon/src/$1',
   '@package/(.*)$': '<rootDir>/src/$1',
   'load-volto-addons':
