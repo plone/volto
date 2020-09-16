@@ -2,13 +2,23 @@
  * FormFieldWrapper component.
  * @module components/manage/Widgets/FormFieldWrapper
  */
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Grid, Label } from 'semantic-ui-react';
+import { Form, Grid, Icon as IconOld, Label } from 'semantic-ui-react';
 import { map } from 'lodash';
 import cx from 'classnames';
+import { defineMessages, injectIntl } from 'react-intl';
 
+const messages = defineMessages({
+  edit: {
+    id: 'Edit',
+    defaultMessage: 'Edit',
+  },
+  delete: {
+    id: 'Delete',
+    defaultMessage: 'Delete',
+  },
+});
 /**
  * FormFieldWrapper component class.
  * @class FormFieldWrapper
@@ -29,8 +39,11 @@ class FormFieldWrapper extends Component {
     wrapped: PropTypes.bool,
     columns: PropTypes.number,
     draggable: PropTypes.bool,
-    onEdit: PropTypes.bool,
+    isDisabled: PropTypes.bool,
+    onEdit: PropTypes.func,
     className: PropTypes.string,
+    onDelete: PropTypes.func,
+    intl: PropTypes.object,
   };
 
   /**
@@ -44,6 +57,10 @@ class FormFieldWrapper extends Component {
     error: [],
     wrapped: true,
     columns: 2,
+    onDelete: null,
+    intl: null,
+    isDisabled: null,
+    draggable: null,
   };
 
   /**
@@ -64,8 +81,10 @@ class FormFieldWrapper extends Component {
       draggable,
       onEdit,
       className,
+      isDisabled,
+      onDelete,
+      intl,
     } = this.props;
-
     const wdg = (
       <>
         {this.props.children}
@@ -103,7 +122,33 @@ class FormFieldWrapper extends Component {
                 </div>
               </Grid.Column>
             )}
-            <Grid.Column width={columns === 2 ? 8 : 12}>{wdg}</Grid.Column>
+            <Grid.Column width={columns === 2 ? 8 : 12}>
+              {onEdit && !isDisabled && (
+                <div className="toolbar" style={{ zIndex: '2' }}>
+                  <button
+                    aria-label={intl.formatMessage(messages.edit)}
+                    className="item ui noborder button"
+                    onClick={(evt) => {
+                      evt.preventDefault();
+                      onEdit(id);
+                    }}
+                  >
+                    <IconOld name="write square" size="large" color="blue" />
+                  </button>
+                  <button
+                    aria-label={intl.formatMessage(messages.delete)}
+                    className="item ui noborder button"
+                    onClick={(evt) => {
+                      evt.preventDefault();
+                      onDelete(id);
+                    }}
+                  >
+                    <IconOld name="close" size="large" color="red" />
+                  </button>
+                </div>
+              )}
+              {wdg}
+            </Grid.Column>
           </Grid.Row>
           {description && (
             <Grid.Row stretched>
@@ -120,4 +165,4 @@ class FormFieldWrapper extends Component {
   }
 }
 
-export default FormFieldWrapper;
+export default injectIntl(FormFieldWrapper);

@@ -11,10 +11,17 @@ import { Link } from 'react-router-dom';
 import { getParentUrl } from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
 import { last } from 'lodash';
-import { Confirm, Container, Table, Button, Dropdown } from 'semantic-ui-react';
+import { Confirm, Container, Table, Button, Header } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import { Icon, ModalForm, Toolbar, Toast } from '@plone/volto/components';
+import {
+  Error,
+  Icon,
+  ModalForm,
+  Toolbar,
+  Toast,
+  ContentTypesActions,
+} from '@plone/volto/components';
 import {
   getControlpanel,
   postControlpanel,
@@ -24,8 +31,6 @@ import { getId } from '@plone/volto/helpers';
 
 import addSVG from '@plone/volto/icons/add-document.svg';
 import backSVG from '@plone/volto/icons/back.svg';
-import editSVG from '@plone/volto/icons/pen.svg';
-import trashSVG from '@plone/volto/icons/delete.svg';
 
 const messages = defineMessages({
   add: {
@@ -95,14 +100,7 @@ class ContentTypes extends Component {
     postControlpanel: PropTypes.func.isRequired,
     deleteControlpanel: PropTypes.func.isRequired,
     pathname: PropTypes.string.isRequired,
-    postRequest: PropTypes.shape({
-      loading: PropTypes.bool,
-      loaded: PropTypes.bool,
-    }).isRequired,
-    deleteRequest: PropTypes.shape({
-      loading: PropTypes.bool,
-      loaded: PropTypes.bool,
-    }).isRequired,
+    cpanelRequest: PropTypes.objectOf(PropTypes.any).isRequired,
     controlpanel: PropTypes.shape({
       '@id': PropTypes.string,
       items: PropTypes.arrayOf(
@@ -128,6 +126,8 @@ class ContentTypes extends Component {
     this.onAddTypeError = this.onAddTypeError.bind(this);
     this.onAddTypeSuccess = this.onAddTypeSuccess.bind(this);
     this.onEdit = this.onEdit.bind(this);
+    this.onLayout = this.onLayout.bind(this);
+    this.onSchema = this.onSchema.bind(this);
     this.onDelete = this.onDelete.bind(this);
     this.onDeleteCancel = this.onDeleteCancel.bind(this);
     this.onDeleteOk = this.onDeleteOk.bind(this);
@@ -138,6 +138,7 @@ class ContentTypes extends Component {
       addTypeError: '',
       showDelete: false,
       typeToDelete: undefined,
+      error: null,
       isClient: false,
     };
   }
@@ -161,17 +162,36 @@ class ContentTypes extends Component {
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
+    // Get
+    if (
+      this.props.cpanelRequest.get.loading &&
+      nextProps.cpanelRequest.get.error
+    ) {
+      this.setState({
+        error: nextProps.cpanelRequest.get.error,
+      });
+    }
+
     // Create
-    if (this.props.postRequest.loading && nextProps.postRequest.loaded) {
+    if (
+      this.props.cpanelRequest.post.loading &&
+      nextProps.cpanelRequest.post.loaded
+    ) {
       this.props.getControlpanel(this.props.id);
       this.onAddTypeSuccess();
     }
-    if (this.props.postRequest.loading && nextProps.postRequest.error) {
-      this.onAddTypeError(nextProps.postRequest.error);
+    if (
+      this.props.cpanelRequest.post.loading &&
+      nextProps.cpanelRequest.post.error
+    ) {
+      this.onAddTypeError(nextProps.cpanelRequest.post.error);
     }
 
     // Delete
-    if (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) {
+    if (
+      this.props.cpanelRequest.delete.loading &&
+      nextProps.cpanelRequest.delete.loaded
+    ) {
       this.props.getControlpanel(this.props.id);
       this.onDeleteTypeSuccess();
     }
@@ -238,10 +258,18 @@ class ContentTypes extends Component {
     this.props.history.push(value);
   }
 
+  /**
+   * Layout button click
+   * @param {*} event
+   * @param {string} value
+   * @returns {undefined}
+   */
+  onLayout(event, { value }) {
+    this.props.history.push(value);
+  }
+
   /** Delete */
   /**
-   *
-   *
    * @param {*} event Event object.
    * @param {*} { value }
    * @memberof ContentTypes
@@ -253,6 +281,18 @@ class ContentTypes extends Component {
         showDelete: true,
         typeToDelete: value,
       });
+    }
+  }
+
+  /** Folder
+   * @param {Object} event Event object.
+   * @param {string} { value }
+   * @memberof ContentTypes
+   * @returns {undefined}
+   */
+  onSchema(event, { value }) {
+    if (value) {
+      this.props.history.push(`${this.props.pathname}/${value}/schema`);
     }
   }
 
@@ -306,6 +346,11 @@ class ContentTypes extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    // Error
+    if (this.state.error) {
+      return <Error error={this.state.error} />;
+    }
+
     if (!this.props.controlpanel) {
       return <div />;
     }
@@ -340,7 +385,7 @@ class ContentTypes extends Component {
             submitError={this.state.addTypeError}
             onCancel={() => this.setState({ showAddType: false })}
             title={this.props.intl.formatMessage(messages.addTypeFormTitle)}
-            loading={this.props.postRequest.loading}
+            loading={this.props.cpanelRequest.post.loading}
             schema={{
               fieldsets: [
                 {
@@ -371,11 +416,7 @@ class ContentTypes extends Component {
         </div>
         <Container>
           <article id="content">
-            <header>
-              <h1 className="documentFirstHeading">
-                {this.props.controlpanel.title}
-              </h1>
-            </header>
+            <Header disabled>{this.props.controlpanel.title}</Header>
             <section id="content-core">
               <Table compact singleLine striped>
                 <Table.Header>
@@ -408,30 +449,14 @@ class ContentTypes extends Component {
                       <Table.Cell>{item.description}</Table.Cell>
                       <Table.Cell>{item.count}</Table.Cell>
                       <Table.Cell textAlign="right">
-                        <Dropdown icon="ellipsis horizontal">
-                          <Dropdown.Menu className="left">
-                            <Dropdown.Item
-                              onClick={this.onEdit}
-                              value={`${this.props.pathname}/${item['id']}`}
-                            >
-                              <Icon name={editSVG} size="15px" />
-                              <FormattedMessage
-                                id="Edit"
-                                defaultMessage="Edit"
-                              />
-                            </Dropdown.Item>
-                            <Dropdown.Item
-                              onClick={this.onDelete}
-                              value={item['@id']}
-                            >
-                              <Icon name={trashSVG} size="15px" />
-                              <FormattedMessage
-                                id="Delete"
-                                defaultMessage="Delete"
-                              />
-                            </Dropdown.Item>
-                          </Dropdown.Menu>
-                        </Dropdown>
+                        <ContentTypesActions
+                          item={item}
+                          path={this.props.pathname}
+                          onEdit={this.onEdit}
+                          onDelete={this.onDelete}
+                          onSchema={this.onSchema}
+                          onLayout={this.onLayout}
+                        />
                       </Table.Cell>
                     </Table.Row>
                   ))}
@@ -486,8 +511,7 @@ export default compose(
   connect(
     (state, props) => ({
       controlpanel: state.controlpanels.controlpanel,
-      postRequest: state.controlpanels.post,
-      deleteRequest: state.controlpanels.delete,
+      cpanelRequest: state.controlpanels,
       pathname: props.location.pathname,
       id: last(props.location.pathname.split('/')),
     }),

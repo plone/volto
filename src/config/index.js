@@ -73,6 +73,7 @@ let config = {
     expressMiddleware: [],
     timezone: 'UTC',
     defaultBlockType: 'text',
+    verticalFormTabs: false,
   },
   widgets: {
     ...widgetMapping,
