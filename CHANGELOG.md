@@ -12,6 +12,8 @@
 
 ### Bugfix
 
+- Fixed Cypress test for image upload
+
 ### Internal
 
 ## 7.15.0 (2020-09-15)
