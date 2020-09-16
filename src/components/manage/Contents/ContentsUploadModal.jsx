@@ -274,7 +274,7 @@ class ContentsUploadModal extends Component {
                             ref={this.previewRef}
                             src={this.getUrl(file)}
                             style={{ height: '60px' }}
-                            alt={''}
+                            alt={file.name}
                           />
                         )}
                       </Table.Cell>
