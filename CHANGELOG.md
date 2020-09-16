@@ -12,7 +12,7 @@
 
 ### Bugfix
 
-- Fixed Cypress test for image upload
+- Fix Cypress test for image upload
 
 ### Internal
 
