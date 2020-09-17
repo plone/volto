@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import { EditBlock, DragDropList } from '@plone/volto/components';
 import { getBlocks } from '@plone/volto/helpers';
 import {
@@ -21,11 +21,11 @@ const BlocksForm = (props) => {
     formId,
     onChangeField,
     properties,
-    setFormData,
+    onChangeFormData,
     renderBlock,
     blockWrapper,
-    selected,
-    setFormSelection,
+    selectedBlock,
+    onSelectBlock,
   } = props;
 
   const blockList = getBlocks(properties);
@@ -75,31 +75,32 @@ const BlocksForm = (props) => {
 
   const onMutateBlock = (id, value) => {
     const newFormData = mutateBlock(properties, id, value);
-    setFormData(formId, newFormData);
+    onChangeFormData(newFormData);
   };
 
   const onAddBlock = (type, index) => {
     const [id, newFormData] = addBlock(properties, type, index);
-    setFormData(formId, newFormData);
+    onChangeFormData(newFormData);
     return id;
   };
 
   const onChangeBlock = (id, value) => {
     const newFormData = changeBlock(properties, id, value);
-    setFormData(formId, newFormData);
+    onChangeFormData(newFormData);
   };
 
   const onDeleteBlock = (id, selectPrev) => {
     const previous = previousBlockId(properties, id);
 
     const newFormData = deleteBlock(properties, id);
-    setFormData(formId, newFormData);
+    onChangeFormData(newFormData);
 
     setFormSelection(formId, selectPrev ? previous : null);
   };
 
   const onMoveBlock = (dragIndex, hoverIndex) => {
-    setFormData(formId, moveBlock(properties, dragIndex, hoverIndex));
+    const newFormData = moveBlock(properties, dragIndex, hoverIndex);
+    onChangeFormData(newFormData);
   };
 
   const BlockWrapper = blockWrapper ? blockWrapper : EditBlockWrapper;
@@ -118,7 +119,7 @@ const BlocksForm = (props) => {
             source.index,
             destination.index,
           );
-          setFormData(formId, newFormData);
+          onChangeFormData(newFormData);
           // setState({ ...state, selected: selectPrev ? previous : null });
           return true;
         }}
@@ -130,7 +131,7 @@ const BlocksForm = (props) => {
               block={block}
               blockId={blockId}
               draginfo={draginfo}
-              selected={selected === blockId}
+              selected={selectedBlock === blockId}
             >
               <EditBlock
                 block={blockId}
@@ -147,10 +148,10 @@ const BlocksForm = (props) => {
                 onFocusPreviousBlock={onFocusPreviousBlock}
                 onMoveBlock={onMoveBlock}
                 onMutateBlock={onMutateBlock}
-                onSelectBlock={(id) => setFormSelection(formId, id)}
+                onSelectBlock={onSelectBlock}
                 pathname={pathname}
                 properties={properties}
-                selected={selected === blockId}
+                selected={selectedBlock === blockId}
                 type={block['@type']}
               />
             </BlockWrapper>
@@ -161,13 +162,15 @@ const BlocksForm = (props) => {
   );
 };
 
-export default connect(
-  (state, props) => {
-    return {
-      selected: state.formSelection[props.formId],
-    };
-  },
-  {
-    setFormSelection,
-  },
-)(BlocksForm);
+export default BlocksForm;
+
+// export default connect(
+//   (state, props) => {
+//     return {
+//       selected: state.formSelection[props.formId],
+//     };
+//   },
+//   {
+//     setFormSelection,
+//   },
+// )(BlocksForm);
