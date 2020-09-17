@@ -1,5 +1,4 @@
 import React from 'react';
-// import { connect } from 'react-redux';
 import { EditBlock, DragDropList } from '@plone/volto/components';
 import { getBlocks } from '@plone/volto/helpers';
 import {
@@ -11,14 +10,12 @@ import {
   nextBlockId,
   previousBlockId,
 } from '@plone/volto/helpers';
-import { setFormSelection } from '@plone/volto/actions';
 import { settings } from '~/config';
 import EditBlockWrapper from './EditBlockWrapper';
 
 const BlocksForm = (props) => {
   const {
     pathname,
-    formId,
     onChangeField,
     properties,
     onChangeFormData,
@@ -61,7 +58,7 @@ const BlocksForm = (props) => {
 
     blockNode.blur();
 
-    setFormSelection(formId, prev);
+    onSelectBlock(prev);
   };
 
   const onFocusNextBlock = (currentBlock, blockNode) => {
@@ -70,7 +67,7 @@ const BlocksForm = (props) => {
 
     blockNode.blur();
 
-    setFormSelection(formId, next);
+    onSelectBlock(next);
   };
 
   const onMutateBlock = (id, value) => {
@@ -95,7 +92,7 @@ const BlocksForm = (props) => {
     const newFormData = deleteBlock(properties, id);
     onChangeFormData(newFormData);
 
-    setFormSelection(formId, selectPrev ? previous : null);
+    onSelectBlock(selectPrev ? previous : null);
   };
 
   const onMoveBlock = (dragIndex, hoverIndex) => {
@@ -163,14 +160,3 @@ const BlocksForm = (props) => {
 };
 
 export default BlocksForm;
-
-// export default connect(
-//   (state, props) => {
-//     return {
-//       selected: state.formSelection[props.formId],
-//     };
-//   },
-//   {
-//     setFormSelection,
-//   },
-// )(BlocksForm);
