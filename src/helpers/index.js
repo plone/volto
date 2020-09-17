@@ -28,13 +28,6 @@ export {
   nestContent,
   getLayoutFieldname,
 } from '@plone/volto/helpers/Content/Content';
-export {
-  getBlocks,
-  getBlocksFieldname,
-  getBlocksLayoutFieldname,
-  hasBlocksData,
-  blockHasValue,
-} from '@plone/volto/helpers/Blocks/Blocks';
 export BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
 export ScrollToTop from '@plone/volto/helpers/ScrollToTop/ScrollToTop';
 export {
@@ -50,3 +43,4 @@ export Helmet from './Helmet/Helmet';
 export FormValidation from './FormValidation/FormValidation';
 export { messages } from './MessageLabels/MessageLabels';
 export { difference } from '@plone/volto/helpers/Utils/Utils';
+export * from '@plone/volto/helpers/Blocks/Blocks';
