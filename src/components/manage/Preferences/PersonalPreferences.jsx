@@ -87,6 +87,10 @@ class PersonalPreferences extends Component {
       expires: new Date((2 ** 31 - 1) * 1000),
       path: '/',
     });
+    cookie.save('I18N_LANGUAGE', data.language || '', {
+      expires: new Date((2 ** 31 - 1) * 1000),
+      path: '/',
+    });
     request('GET', `/assets/locales/${data.language || 'en'}.json`).then(
       (locale) => {
         this.props.updateIntl({

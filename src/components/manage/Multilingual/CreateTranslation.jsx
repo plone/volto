@@ -5,7 +5,7 @@ import { updateIntl } from 'react-intl-redux';
 import { getTranslationLocator, getContent } from '@plone/volto/actions';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import { settings } from '~/config';
-
+import cookie from 'react-cookie';
 let locales = {};
 
 if (settings) {
@@ -35,6 +35,15 @@ const CreateTranslation = (props) => {
     );
     // On unmount we dispatch the language change
     return () => {
+      cookie.save('lang', language, {
+        expires: new Date((2 ** 31 - 1) * 1000),
+        path: '/',
+      });
+      cookie.save('I18N_LANGUAGE', language || '', {
+        expires: new Date((2 ** 31 - 1) * 1000),
+        path: '/',
+      });
+
       dispatch(
         updateIntl({
           locale: language,
