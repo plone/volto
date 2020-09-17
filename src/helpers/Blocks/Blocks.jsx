@@ -3,10 +3,21 @@
  * @module helpers/Blocks
  */
 
-import { omit, without, endsWith, find, keys } from 'lodash';
+import React from 'react';
+import { omit, map, without, endsWith, find, keys } from 'lodash';
 import move from 'lodash-move';
-import { settings, blocks } from '~/config';
+import { defineMessages } from 'react-intl';
 import { v4 as uuid } from 'uuid';
+import { getBaseUrl } from '@plone/volto/helpers';
+
+import { settings, blocks } from '~/config';
+
+const messages = defineMessages({
+  unknownBlock: {
+    id: 'Unknown Block',
+    defaultMessage: 'Unknown Block {block}',
+  },
+});
 
 /**
  * Get blocks field.
@@ -233,4 +244,38 @@ export function emptyBlocksForm() {
     },
     blocks_layout: { items: [id] },
   };
+}
+
+export function renderBlocks(content, props) {
+  const { location, intl } = props;
+  const blocksFieldname = getBlocksFieldname(content);
+  const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
+
+  return hasBlocksData(content) ? (
+    <div>
+      {map(content[blocksLayoutFieldname].items, (block) => {
+        const Block =
+          blocks.blocksConfig[content[blocksFieldname]?.[block]?.['@type']]?.[
+            'view'
+          ] || null;
+        return Block !== null ? (
+          <Block
+            key={block}
+            id={block}
+            properties={content}
+            data={content[blocksFieldname][block]}
+            path={getBaseUrl(location?.pathname || '')}
+          />
+        ) : (
+          <div key={block}>
+            {intl.formatMessage(messages.unknownBlock, {
+              block: content[blocksFieldname]?.[block]?.['@type'],
+            })}
+          </div>
+        );
+      })}
+    </div>
+  ) : (
+    ''
+  );
 }
