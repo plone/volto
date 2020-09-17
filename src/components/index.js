@@ -109,6 +109,7 @@ export ContentsTagsModal from '@plone/volto/components/manage/Contents/ContentsT
 export UsersControlpanelUser from '@plone/volto/components/manage/Controlpanels/UsersControlpanelUser';
 export UsersControlpanelGroups from '@plone/volto/components/manage/Controlpanels/UsersControlpanelGroups';
 export DiffField from '@plone/volto/components/manage/Diff/DiffField';
+export DragDropList from '@plone/volto/components/manage/DragDropList/DragDropList';
 
 export FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 export ArrayWidget from '@plone/volto/components/manage/Widgets/ArrayWidget';

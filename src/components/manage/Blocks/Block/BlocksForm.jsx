@@ -1,0 +1,173 @@
+import React from 'react';
+import { connect } from 'react-redux';
+import { EditBlock, DragDropList } from '@plone/volto/components';
+import { getBlocks } from '@plone/volto/helpers';
+import {
+  addBlock,
+  changeBlock,
+  deleteBlock,
+  moveBlock,
+  mutateBlock,
+  nextBlockId,
+  previousBlockId,
+} from '@plone/volto/helpers';
+import { setFormSelection } from '@plone/volto/actions';
+import { settings } from '~/config';
+import EditBlockWrapper from './EditBlockWrapper';
+
+const BlocksForm = (props) => {
+  const {
+    pathname,
+    formId,
+    onChangeField,
+    properties,
+    setFormData,
+    renderBlock,
+    blockWrapper,
+    selected,
+    setFormSelection,
+  } = props;
+
+  const blockList = getBlocks(properties);
+
+  const handleKeyDown = (
+    e,
+    index,
+    block,
+    node,
+    {
+      disableEnter = false,
+      disableArrowUp = false,
+      disableArrowDown = false,
+    } = {},
+  ) => {
+    if (e.key === 'ArrowUp' && !disableArrowUp) {
+      onFocusPreviousBlock(block, node);
+      e.preventDefault();
+    }
+    if (e.key === 'ArrowDown' && !disableArrowDown) {
+      onFocusNextBlock(block, node);
+      e.preventDefault();
+    }
+    if (e.key === 'Enter' && !disableEnter) {
+      onAddBlock(settings.defaultBlockType, index + 1);
+      e.preventDefault();
+    }
+  };
+
+  const onFocusPreviousBlock = (currentBlock, blockNode) => {
+    const prev = previousBlockId(properties, currentBlock);
+    if (prev === null) return;
+
+    blockNode.blur();
+
+    setFormSelection(formId, prev);
+  };
+
+  const onFocusNextBlock = (currentBlock, blockNode) => {
+    const next = nextBlockId(properties, currentBlock);
+    if (next === null) return;
+
+    blockNode.blur();
+
+    setFormSelection(formId, next);
+  };
+
+  const onMutateBlock = (id, value) => {
+    const newFormData = mutateBlock(properties, id, value);
+    setFormData(formId, newFormData);
+  };
+
+  const onAddBlock = (type, index) => {
+    const [id, newFormData] = addBlock(properties, type, index);
+    setFormData(formId, newFormData);
+    return id;
+  };
+
+  const onChangeBlock = (id, value) => {
+    const newFormData = changeBlock(properties, id, value);
+    setFormData(formId, newFormData);
+  };
+
+  const onDeleteBlock = (id, selectPrev) => {
+    const previous = previousBlockId(properties, id);
+
+    const newFormData = deleteBlock(properties, id);
+    setFormData(formId, newFormData);
+
+    setFormSelection(formId, selectPrev ? previous : null);
+  };
+
+  const onMoveBlock = (dragIndex, hoverIndex) => {
+    setFormData(formId, moveBlock(properties, dragIndex, hoverIndex));
+  };
+
+  const BlockWrapper = blockWrapper ? blockWrapper : EditBlockWrapper;
+
+  return (
+    <div className="ui container">
+      <DragDropList
+        childList={blockList}
+        onMoveItem={(result) => {
+          const { source, destination } = result;
+          if (!destination) {
+            return;
+          }
+          const newFormData = moveBlock(
+            properties,
+            source.index,
+            destination.index,
+          );
+          setFormData(formId, newFormData);
+          // setState({ ...state, selected: selectPrev ? previous : null });
+          return true;
+        }}
+        renderChild={(block, blockId, index, draginfo) =>
+          renderBlock ? (
+            renderBlock(block, blockId, index, draginfo)
+          ) : (
+            <BlockWrapper
+              block={block}
+              blockId={blockId}
+              draginfo={draginfo}
+              selected={selected === blockId}
+            >
+              <EditBlock
+                block={blockId}
+                data={block}
+                handleKeyDown={handleKeyDown}
+                id={blockId}
+                index={index}
+                key={blockId}
+                onAddBlock={onAddBlock}
+                onChangeBlock={onChangeBlock}
+                onChangeField={onChangeField}
+                onDeleteBlock={onDeleteBlock}
+                onFocusNextBlock={onFocusNextBlock}
+                onFocusPreviousBlock={onFocusPreviousBlock}
+                onMoveBlock={onMoveBlock}
+                onMutateBlock={onMutateBlock}
+                onSelectBlock={(id) => setFormSelection(formId, id)}
+                pathname={pathname}
+                properties={properties}
+                selected={selected === blockId}
+                type={block['@type']}
+              />
+            </BlockWrapper>
+          )
+        }
+      />
+    </div>
+  );
+};
+
+export default connect(
+  (state, props) => {
+    return {
+      selected: state.formSelection[props.formId],
+    };
+  },
+  {
+    setFormSelection,
+  },
+)(BlocksForm);
