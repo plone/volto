@@ -9,6 +9,7 @@
 - Added Schema Editor within Dexterity Content-Types Controlpanel @rexalex @avoinea #1517
 - Added Blocks Layout Editor within Dexterity Content-Types Controlpanel @avoinea #1517
 - Added missing components for Email and Url widgets #1246 @rexalex
+- Add new components: BlocksForm, DragDropList and EditBlockWrapper @tiberiuichim
 
 ### Bugfix
 
