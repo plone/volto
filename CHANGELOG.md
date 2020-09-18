@@ -99,6 +99,7 @@
 
 ### Internal
 
+- Change dummy-addons-loader.js fixture name to `jest-addons-loader.js`, to match existing `jest-svgsystem-transform.js` @tiberiuichim
 ## 7.11.1 (2020-08-27)
 
 ### Breaking
