@@ -10,8 +10,13 @@
 - All the environment variables defined at runtime that have the `RAZZLE_` prefix, are now available in the browser under window.env @zotya
 
 ### Bugfix
+- Fix word overflow from html-block @iFlameing
+
+- Fix Cypress test for image upload
 
 ### Internal
+
+- Improve developer experience, don't logout on hot-reload @tiberiuichim
 
 ## 8.0.0 (2020-09-18)
 
@@ -44,6 +49,7 @@
 
 ### Bugfix
 
+- When dealing with authentication token expiration set to 0, auto-refresh token in one hour instead of logging out use @tiberiuichim
 - Fixed front-end field validation #1246 @rexalex
 - Fixed date only widget rendering #1246 @rexalex
 - Fix errors with SelectWidget when removing the only element @rexalex
