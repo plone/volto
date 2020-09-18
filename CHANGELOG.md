@@ -1,6 +1,6 @@
 # Change Log
 
-## 7.15.1 (unreleased)
+## 8.0.1 (unreleased)
 
 ### Breaking
 
@@ -8,13 +8,30 @@
 
 - Sentry integration
 - All the environment variables defined at runtime, that have the "RAZZLE_" prefix, are now available in the browser under window.env
+
+### Bugfix
+
+### Internal
+
+## 8.0.0 (2020-09-18)
+
+### Breaking
+
+- Change dummy-addons-loader.js fixture name to `jest-addons-loader.js`, to match existing `jest-svgsystem-transform.js` @tiberiuichim
+
+### Feature
+
 - Added Schema Editor within Dexterity Content-Types Controlpanel @rexalex @avoinea #1517
 - Added Blocks Layout Editor within Dexterity Content-Types Controlpanel @avoinea #1517
 - Added missing components for Email and Url widgets #1246 @rexalex
 
 ### Bugfix
 
+- Fix the broken profile view in Toolbar @iFlameing
+
 ### Internal
+
+- Wrap addon configuration loaders in a wrapper to check that they return back config @tiberiuichim
 
 ## 7.15.0 (2020-09-15)
 
@@ -96,8 +113,6 @@
 - Fix `null` response issue when passing custom `Accept:` headers to actions #1771 @avoinea
 - Removed all `<<<<<HEAD` artifacts from translations @steffenri
 - Increase z-index of `block-add-button` @steffenri
-
-### Internal
 
 ## 7.11.1 (2020-08-27)
 
