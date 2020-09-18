@@ -7,6 +7,7 @@
 ### Feature
 
 ### Bugfix
+- Fix word overflow from html-block @iFlameing
 
 ### Internal
 
