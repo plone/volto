@@ -12,8 +12,6 @@ This upgrade guide lists all breaking changes in Volto and explains the
 
 ## Upgrading to Volto 8.x.x
 
-Watch this space for other changes that need upgrades...
-
 ### Upgrade package.json testing configuration
 
 The `dummy-addons-loader.js` file has been renamed to `jest-addons-loader.js`,

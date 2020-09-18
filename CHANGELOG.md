@@ -4,6 +4,8 @@
 
 ### Breaking
 
+- Change dummy-addons-loader.js fixture name to `jest-addons-loader.js`, to match existing `jest-svgsystem-transform.js` @tiberiuichim
+
 ### Feature
 
 - Added Schema Editor within Dexterity Content-Types Controlpanel @rexalex @avoinea #1517
@@ -12,7 +14,11 @@
 
 ### Bugfix
 
+- Fix the broken profile view in Toolbar @iFlameing
+
 ### Internal
+
+- Wrap addon configuration loaders in a wrapper to check that they return back config @tiberiuichim
 
 ## 7.15.0 (2020-09-15)
 
@@ -24,8 +30,6 @@
 - Show Username when Firstname attr is missing in UsersControlPanelUser @iFlameing
 
 ### Bugfix
-
-- Fix the broken profile view in Toolbar @iFlameing
 
 - Fixed front-end field validation #1246 @rexalex
 - Fixed date only widget rendering #1246 @rexalex
@@ -97,9 +101,6 @@
 - Removed all `<<<<<HEAD` artifacts from translations @steffenri
 - Increase z-index of `block-add-button` @steffenri
 
-### Internal
-
-- Change dummy-addons-loader.js fixture name to `jest-addons-loader.js`, to match existing `jest-svgsystem-transform.js` @tiberiuichim
 ## 7.11.1 (2020-08-27)
 
 ### Breaking
@@ -226,8 +227,6 @@
 - Bugfix Edit page through Contents list #1594 @terapyon @csenger
 
 ### Internal
-
-- Wrap addon configuration loaders in a wrapper to check that they return back config @tiberiuichim
 
 - Bump serialize-javascript from 2.1.1 to 3.1.0 @timo
 - Bump prismjs from 1.17.1 to 1.21.0 @timo
