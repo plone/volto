@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "7.15.0",
+  "version": "8.0.0",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -99,7 +99,7 @@
       "~/config": "<rootDir>/src/config",
       "~/../locales/${lang}.json": "<rootDir>/locales/en.json",
       "(.*)/locales/(.*)": "<rootDir>/locales/$2",
-      "load-volto-addons": "<rootDir>/dummy-addons-loader.js"
+      "load-volto-addons": "<rootDir>/jest-addons-loader.js"
     },
     "coverageThreshold": {
       "global": {
