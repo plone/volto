@@ -174,6 +174,24 @@ export blocks = {
 ...
 ```
 
+As this is a common operation, Volto provides a helper method for this:
+
+```
+import { applyConfig } from '@plone/volto/helpers';
+import * as voltoConfig from '@plone/volto/config';
+
+const config = applyConfig([
+    enableOptionalBlocks,
+    loadExampleAddon
+], voltoConfig);
+
+export blocks = {
+  ...config.blocks,
+}
+```
+
+The `applyConfig` helper ensures that each configuration methods returns the
+config object, avoiding odd and hard to track errors when developing addons.
 
 ### Add several layers of customizations
 

@@ -227,6 +227,8 @@
 
 ### Internal
 
+- Wrap addon configuration loaders in a wrapper to check that they return back config @tiberiuichim
+
 - Bump serialize-javascript from 2.1.1 to 3.1.0 @timo
 - Bump prismjs from 1.17.1 to 1.21.0 @timo
 - Make Table Block Cypress test more reliable @timo
