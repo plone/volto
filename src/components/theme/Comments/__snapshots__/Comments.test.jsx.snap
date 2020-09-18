@@ -102,7 +102,6 @@ exports[`Comments renders a comments component 1`] = `
                   className="eight wide column"
                 >
                   <textarea
-                    disabled={false}
                     id="field-comment"
                     name="comment"
                     onChange={[Function]}

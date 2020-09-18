@@ -304,8 +304,10 @@ class Toolbar extends Component {
               style={{
                 transform: this.toolbarWindow.current
                   ? `translateX(-${
-                      (this.state.loadedComponents.length - 1) *
-                      this.toolbarWindow.current.getBoundingClientRect().width
+                      ((this.state.loadedComponents.length - 1) *
+                        this.toolbarWindow.current.getBoundingClientRect()
+                          .width) /
+                      2
                     }px)`
                   : null,
               }}
