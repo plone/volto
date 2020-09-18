@@ -53,7 +53,6 @@ exports[`Register renders a register component 1`] = `
                     className="ui input"
                   >
                     <input
-                      disabled={false}
                       id="field-fullname"
                       maxLength={null}
                       minLength={null}
@@ -112,7 +111,6 @@ exports[`Register renders a register component 1`] = `
                     className="ui input"
                   >
                     <input
-                      disabled={false}
                       id="field-email"
                       maxLength={null}
                       minLength={null}

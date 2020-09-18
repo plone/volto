@@ -115,7 +115,7 @@ const processChildren = (children, keys) => {
         if (isEmpty(child)) {
           return (
             <React.Fragment key={index}>
-              <br />
+              <br key="br" />
             </React.Fragment>
           );
         }

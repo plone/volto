@@ -1,28 +1,56 @@
 # Change Log
 
-## 7.14.3 (unreleased)
+## 8.0.1 (unreleased)
 
 ### Breaking
 
 ### Feature
 
+### Bugfix
+- Fix word overflow from html-block @iFlameing
+
+- Fix Cypress test for image upload
+- Fix console warning in ToHTML @iFlameing
+
+### Internal
+
+- Improve developer experience, don't logout on hot-reload @tiberiuichim
+
+## 8.0.0 (2020-09-18)
+
+### Breaking
+
+- Change dummy-addons-loader.js fixture name to `jest-addons-loader.js`, to match existing `jest-svgsystem-transform.js` @tiberiuichim
+
+### Feature
+
+- Added Schema Editor within Dexterity Content-Types Controlpanel @rexalex @avoinea #1517
+- Added Blocks Layout Editor within Dexterity Content-Types Controlpanel @avoinea #1517
 - Added missing components for Email and Url widgets #1246 @rexalex
 
-- Show backend validation errors on corresponding fields #1246 @rexalex
+### Bugfix
 
+- Fix the broken profile view in Toolbar @iFlameing
+
+### Internal
+
+- Wrap addon configuration loaders in a wrapper to check that they return back config @tiberiuichim
+
+## 7.15.0 (2020-09-15)
+
+### Feature
+
+- Added missing components for Email and Url widgets #1246 @rexalex
+- Show backend validation errors on corresponding fields #1246 @rexalex
 - Validation implemented for add user/group @rexalex
 - Show Username when Firstname attr is missing in UsersControlPanelUser @iFlameing
 
 ### Bugfix
 
+- When dealing with authentication token expiration set to 0, auto-refresh token in one hour instead of logging out use @tiberiuichim
 - Fixed front-end field validation #1246 @rexalex
-
 - Fixed date only widget rendering #1246 @rexalex
-
 - Fix errors with SelectWidget when removing the only element @rexalex
-- Fix console warning in ToHTML @iFlameing
-
-### Internal
 
 ## 7.14.2 (2020-09-10)
 
@@ -89,8 +117,6 @@
 - Fix `null` response issue when passing custom `Accept:` headers to actions #1771 @avoinea
 - Removed all `<<<<<HEAD` artifacts from translations @steffenri
 - Increase z-index of `block-add-button` @steffenri
-
-### Internal
 
 ## 7.11.1 (2020-08-27)
 

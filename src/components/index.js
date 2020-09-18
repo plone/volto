@@ -22,6 +22,7 @@ export Tags from '@plone/volto/components/theme/Tags/Tags';
 export OutdatedBrowser from '@plone/volto/components/theme/OutdatedBrowser/OutdatedBrowser';
 export LanguageSelector from '@plone/volto/components/theme/LanguageSelector/LanguageSelector';
 
+export Error from '@plone/volto/components/theme/Error/Error';
 export NotFound from '@plone/volto/components/theme/NotFound/NotFound';
 export Forbidden from '@plone/volto/components/theme/Forbidden/Forbidden';
 export Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
@@ -66,8 +67,11 @@ export Circle from '@plone/volto/components/manage/Contents/circle';
 export DatabaseInformation from '@plone/volto/components/manage/Controlpanels/DatabaseInformation';
 export Controlpanel from '@plone/volto/components/manage/Controlpanels/Controlpanel';
 export Controlpanels from '@plone/volto/components/manage/Controlpanels/Controlpanels';
-export ContentType from '@plone/volto/components/manage/Controlpanels/ContentType';
 export ContentTypes from '@plone/volto/components/manage/Controlpanels/ContentTypes';
+export ContentType from '@plone/volto/components/manage/Controlpanels/ContentType';
+export ContentTypeLayout from '@plone/volto/components/manage/Controlpanels/ContentTypeLayout';
+export ContentTypeSchema from '@plone/volto/components/manage/Controlpanels/ContentTypeSchema';
+export ContentTypesActions from '@plone/volto/components/manage/Controlpanels/ContentTypesActions';
 export UsersControlpanel from '@plone/volto/components/manage/Controlpanels/UsersControlpanel';
 export ModerateComments from '@plone/volto/components/manage/Controlpanels/ModerateComments';
 export VersionOverview from '@plone/volto/components/manage/Controlpanels/VersionOverview';
@@ -165,3 +169,9 @@ export ImageSidebar from '@plone/volto/components/manage/Blocks/Image/ImageSideb
 export MapsSidebar from '@plone/volto/components/manage/Blocks/Maps/MapsSidebar';
 export VideoSidebar from '@plone/volto/components/manage/Blocks/Video/VideoSidebar';
 export LeadImageSidebar from '@plone/volto/components/manage/Blocks/LeadImage/LeadImageSidebar';
+
+export BlockSettingsSidebar from '@plone/volto/components/manage/Blocks/Block/Settings';
+export BlockSettingsSchema from '@plone/volto/components/manage/Blocks/Block/Schema';
+export TextSettingsSchema from '@plone/volto/components/manage/Blocks/Text/Schema';
+export ImageSettingsSchema from '@plone/volto/components/manage/Blocks/Image/Schema';
+export ToCSettingsSchema from '@plone/volto/components/manage/Blocks/ToC/Schema';
