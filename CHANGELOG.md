@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Improve developer experience, don't logout on hot-reload @tiberiuichim
+
 ## 8.0.0 (2020-09-18)
 
 ### Breaking
@@ -41,6 +43,7 @@
 
 ### Bugfix
 
+- When dealing with authentication token expiration set to 0, auto-refresh token in one hour instead of logging out use @tiberiuichim
 - Fixed front-end field validation #1246 @rexalex
 - Fixed date only widget rendering #1246 @rexalex
 - Fix errors with SelectWidget when removing the only element @rexalex
