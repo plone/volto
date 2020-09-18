@@ -9,6 +9,8 @@
 ### Bugfix
 - Fix word overflow from html-block @iFlameing
 
+- Fix Cypress test for image upload
+
 ### Internal
 
 - Improve developer experience, don't logout on hot-reload @tiberiuichim
