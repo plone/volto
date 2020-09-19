@@ -1845,7 +1845,7 @@ msgstr "アンインストール"
 
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
-#: helpers/Blocks/Blocks
+#: components/theme/View/RenderBlocks
 msgid "Unknown Block"
 msgstr "不明なブロック"
 

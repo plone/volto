@@ -1848,7 +1848,7 @@ msgstr ""
 
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
-#: helpers/Blocks/Blocks
+#: components/theme/View/RenderBlocks
 msgid "Unknown Block"
 msgstr "Bloque desconocido"
 
