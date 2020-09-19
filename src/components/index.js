@@ -21,6 +21,7 @@ export Pagination from '@plone/volto/components/theme/Pagination/Pagination';
 export Tags from '@plone/volto/components/theme/Tags/Tags';
 export OutdatedBrowser from '@plone/volto/components/theme/OutdatedBrowser/OutdatedBrowser';
 export LanguageSelector from '@plone/volto/components/theme/LanguageSelector/LanguageSelector';
+export RenderBlocks from '@plone/volto/components/theme/View/RenderBlocks';
 
 export Error from '@plone/volto/components/theme/Error/Error';
 export NotFound from '@plone/volto/components/theme/NotFound/NotFound';
