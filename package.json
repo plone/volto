@@ -374,6 +374,7 @@
     "yarnhook": "0.4.3"
   },
   "devDependencies": {
+    "ast-types": "^0.14.2",
     "crypto-random-string": "3.2.0",
     "react-styleguidist": "11.1.0",
     "tmp": "0.2.1"
