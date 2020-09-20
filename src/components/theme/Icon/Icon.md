@@ -8,12 +8,13 @@ import codeSVG from '@plone/volto/icons/code.svg';
 Output:
 
 ```jsx noeditor
-const { Provider } = require('react-intl-redux');
-const configureStore = require('redux-mock-store').default;
-const BrowserRouter = require('react-router-dom/BrowserRouter').default;
-import StaticRouter from 'react-router-dom/StaticRouter';
-import codeSVG from '@plone/volto/icons/code.svg';
+import { Provider } from 'react-intl-redux';
+import { StaticRouter } from 'react-router-dom';
+import configureStore from 'redux-mock-store';
+
 import { Icon } from '@plone/volto/components';
+
+import codeSVG from '@plone/volto/icons/code.svg';
 
 const store = configureStore()({
   intl: {

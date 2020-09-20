@@ -1,11 +1,12 @@
 Display example source:
 
-```jsx noeditor
+```jsx_ noeditor
+import Display from './Display';
+import {StaticRouter} from 'react-router-dom';
+
 const { Provider } = require('react-intl-redux');
 const configureStore = require('redux-mock-store').default;
-import BrowserRouter from 'react-router-dom/BrowserRouter';
-import Display from './Display';
-import StaticRouter from 'react-router-dom/StaticRouter';
+
 const store = configureStore()({
   userSession: {
     login: {},

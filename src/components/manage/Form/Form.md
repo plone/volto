@@ -1,11 +1,11 @@
 Form example source:
 
-```jsx noeditor
+```jsx_ noeditor
+import { StaticRouter } from 'react-router-dom';
+import Form from './Form';
+
 const { Provider } = require('react-intl-redux');
 const configureStore = require('redux-mock-store').default;
-import BrowserRouter from 'react-router-dom/BrowserRouter';
-import Form from './Form';
-import StaticRouter from 'react-router-dom/StaticRouter';
 const store = configureStore()({
   userSession: {
     login: {},

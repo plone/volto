@@ -1,11 +1,12 @@
 Toolbar example source:
 
-```jsx noeditor
+```jsx_ noeditor
+import Toolbar from './Toolbar';
+import {StaticRouter} from 'react-router-dom';
+
 const { Provider } = require('react-intl-redux');
 const configureStore = require('redux-mock-store').default;
-import BrowserRouter from 'react-router-dom/BrowserRouter';
-import Toolbar from './Toolbar';
-import StaticRouter from 'react-router-dom/StaticRouter';
+
 const store = configureStore()({
   userSession: {
     login: {},

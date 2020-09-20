@@ -6,11 +6,12 @@ CommentEditModal example:
 
 Output:
 
-```jsx noeditor
+```jsx_ noeditor
+// TODO: the Provider here is wrong
 import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
 import { Button, Container } from 'semantic-ui-react';
-import BrowserRouter from 'react-router-dom/BrowserRouter';
+import {BrowserRouter} from 'react-router-dom';
 import CommentEditModal from './CommentEditModal';
 
 const store = configureStore()({

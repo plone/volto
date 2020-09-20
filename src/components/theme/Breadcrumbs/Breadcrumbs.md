@@ -7,10 +7,10 @@ Breadcrumbs example:
 Output:
 
 ```jsx noeditor
-const { Provider } = require('react-intl-redux');
-const configureStore = require('redux-mock-store').default;
-import StaticRouter from 'react-router-dom/StaticRouter';
+import {StaticRouter} from 'react-router-dom';
 import { Breadcrumb, Container, Icon, Segment } from 'semantic-ui-react';
+import { Provider } from 'react-intl-redux';
+import configureStore from 'redux-mock-store';
 
 const store = configureStore()({
   intl: {

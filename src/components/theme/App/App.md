@@ -7,14 +7,15 @@ This is our main Container Component.
 
 Output:
 
-```jsx noeditor
-const { Provider } = require('react-intl-redux');
+```jsx_ noeditor
 import configureStore from 'redux-mock-store';
+import {BrowserRouter}  from 'react-router-dom');
+import  AppComponent  from './App';
+
+const { Provider } = require('react-intl-redux');
 const { createBrowserHistory } = require('history');
-const BrowserRouter = require('react-router-dom/BrowserRouter').default;
 const { Api } = require('../../../helpers');
 const { ReduxAsyncConnect } = 'redux-connect';
-import  AppComponent  from './App';
 const routes = require('../../../routes').default;
 
 const api = new Api();

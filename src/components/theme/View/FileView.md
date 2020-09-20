@@ -1,11 +1,10 @@
 FileView example source:
 
-```jsx noeditor
+```jsx_ noeditor
 const { Provider } = require('react-intl-redux');
 const configureStore = require('redux-mock-store').default;
-import BrowserRouter from 'react-router-dom/BrowserRouter';
 import FileView from './FileView';
-import StaticRouter from 'react-router-dom/StaticRouter';
+import {StaticRouter} from 'react-router-dom';
 const store = configureStore()({
   userSession: {
     login: {},

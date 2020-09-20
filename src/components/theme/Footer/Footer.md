@@ -6,9 +6,9 @@ Footer example, with `intl` auto-injected:
 
 Output:
 
-```jsx noeditor
+```jsx_ noeditor
 const { Provider } = require('react-intl-redux');
-import StaticRouter from 'react-router-dom/StaticRouter';
+import {StaticRouter} from 'react-router-dom';
 const configureStore = require('redux-mock-store').default;
 const store = configureStore()({
   userSession: {

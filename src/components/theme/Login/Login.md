@@ -1,9 +1,9 @@
 Login example source:
 
-```jsx noeditor
+```jsx_ noeditor
 const { Provider } = require('react-intl-redux');
 const configureStore = require('redux-mock-store').default;
-import BrowserRouter from 'react-router-dom/BrowserRouter';
+import {BrowserRouter} from 'react-router-dom';
 import { LoginComponent } from './Login';
 const store = configureStore()({
   userSession: {

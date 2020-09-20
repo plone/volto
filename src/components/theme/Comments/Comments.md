@@ -6,10 +6,10 @@ Comments example:
 
 Output:
 
-```jsx noeditor
+```jsx_ noeditor
 import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
-import BrowserRouter from 'react-router-dom/BrowserRouter';
+import {BrowserRouter} from 'react-router-dom';
 import { Breadcrumb, Container, Icon, Segment } from 'semantic-ui-react';
 import Comments from './Comments';
 

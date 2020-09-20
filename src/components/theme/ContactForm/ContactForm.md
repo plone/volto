@@ -1,8 +1,10 @@
 Contact form example source:
 
-```jsx noeditor
-const { Provider } = require('react-intl-redux');
-const configureStore = require('redux-mock-store').default;
+```jsx_ noeditor
+import { StaticRouter } from 'react-router-dom';
+import { Provider } from 'react-intl-redux';
+import configureStore from 'redux-mock-store';
+
 const store = configureStore()({
   emailNotification: {
     error: {},
@@ -17,7 +19,9 @@ const store = configureStore()({
 
 <div className={'rsg--pre-42'}>
   <Provider store={store}>
-    <ContactForm error={(message = '')} loading={false} loaded={false} />
+    <StaticRouter>
+      <ContactForm error={(message = '')} loading={false} loaded={false} />
+    </StaticRouter>
   </Provider>
 </div>;
 ```

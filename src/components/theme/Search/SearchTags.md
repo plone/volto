@@ -6,7 +6,7 @@ SearchTags example:
 
 Output:
 
-```jsx noeditor
+```jsx_ noeditor
 const { Provider } = require('react-intl-redux');
 const configureStore = require('redux-mock-store').default;
 import SearchTags from './SearchTags';

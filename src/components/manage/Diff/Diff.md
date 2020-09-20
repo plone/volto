@@ -1,11 +1,12 @@
 DiffComponent example source:
 
-```jsx noeditor
+```jsx_ noeditor
+import DiffComponent from './Diff';
+import {StaticRouter} from 'react-router-dom';
+
 const { Provider } = require('react-intl-redux');
 const configureStore = require('redux-mock-store').default;
-import BrowserRouter from 'react-router-dom/BrowserRouter';
-import DiffComponent from './Diff';
-import StaticRouter from 'react-router-dom/StaticRouter';
+
 const store = configureStore()({
   userSession: {
     login: {},
