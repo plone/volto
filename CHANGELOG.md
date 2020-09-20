@@ -14,6 +14,7 @@
 ### Internal
 
 - Improve developer experience, don't logout on hot-reload @tiberiuichim
+- Cleanup eslint in razzle.config.js @tiberiuichim
 
 ## 8.0.0 (2020-09-18)
 
