@@ -11,6 +11,8 @@
 
 - Fix Cypress test for image upload
 
+- Fix missplaced profile toolbar @jackahl
+
 ### Internal
 
 - Improve developer experience, don't logout on hot-reload @tiberiuichim
