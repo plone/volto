@@ -1,6 +1,6 @@
 Title example:
 
-```jsx static
+```jsx
 <Title title="Plone" />
 ```
 

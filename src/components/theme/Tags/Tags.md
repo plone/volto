@@ -1,7 +1,7 @@
-Search example:
+Tags, with `intl` auto-injected:
 
 ```jsx static
-<SearchComponent path="" searchableText="" items={[]} />
+<Tags pathname="" />
 ```
 
 Output:
@@ -9,7 +9,7 @@ Output:
 ```jsx noeditor
 const { Provider } = require('react-intl-redux');
 const configureStore = require('redux-mock-store').default;
-import { SearchComponent } from './Search';
+import StaticRouter from 'react-router-dom/StaticRouter';
 const store = configureStore()({
   userSession: {
     login: {},
@@ -18,16 +18,13 @@ const store = configureStore()({
     locale: 'en',
     messages: {},
   },
-  search: {
-    items: [],
-  },
-  content: {},
-  vocabularies: {},
 });
 
 <div className={'rsg--pre-42'}>
   <Provider store={store}>
-    <SearchComponent path="" searchableText="" items={[]} location={''} />
+    <StaticRouter>
+      <Tags tags={[]} />
+    </StaticRouter>
   </Provider>
 </div>;
 ```

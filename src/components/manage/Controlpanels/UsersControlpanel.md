@@ -1,10 +1,10 @@
-Toolbar example source:
+UsersControlpanel example source:
 
 ```jsx noeditor
 const { Provider } = require('react-intl-redux');
 const configureStore = require('redux-mock-store').default;
 import BrowserRouter from 'react-router-dom/BrowserRouter';
-import Toolbar from './Toolbar';
+import UsersControlpanel from './UsersControlpanel';
 import StaticRouter from 'react-router-dom/StaticRouter';
 const store = configureStore()({
   userSession: {
@@ -15,29 +15,34 @@ const store = configureStore()({
     messages: {},
   },
   users: {
+    users: {},
     reset: {
       loading: '',
     },
   },
+  roles: {},
   actions: {},
-  content: { get: {}, data: {} },
+  content: { get: {} },
   controlpanels: {},
-  diff: {},
-  history: [],
-  schema: {},
 });
 
 <div className={'rsg--pre-42'}>
   <Provider store={store}>
     <StaticRouter>
-      <Toolbar
-        token=""
-        content={{
-          '@type': '',
-          is_folderish: true,
-          review_state: 'open',
-        }}
-        inner={{}}
+      <UsersControlpanel
+        listRoles={() => {}}
+        listUsers={() => {}}
+        users={[
+          {
+            fullname: '',
+            username: '',
+            roles: [],
+          },
+        ]}
+        roles={[{ '@id': '', '@type': '' }]}
+        pathname="/"
+        updateRequest={{ loading: true, loaded: false }}
+        controlpanel={{ '@id': '', data: {}, title: 'Plone', schema: {} }}
       />
     </StaticRouter>
   </Provider>

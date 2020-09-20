@@ -1,10 +1,10 @@
-Toolbar example source:
+NewsItemView example source:
 
 ```jsx noeditor
 const { Provider } = require('react-intl-redux');
 const configureStore = require('redux-mock-store').default;
 import BrowserRouter from 'react-router-dom/BrowserRouter';
-import Toolbar from './Toolbar';
+import NewsItemView from './NewsItemView';
 import StaticRouter from 'react-router-dom/StaticRouter';
 const store = configureStore()({
   userSession: {
@@ -20,24 +20,18 @@ const store = configureStore()({
     },
   },
   actions: {},
-  content: { get: {}, data: {} },
-  controlpanels: {},
-  diff: {},
-  history: [],
-  schema: {},
+  content: { get: {} },
 });
 
 <div className={'rsg--pre-42'}>
   <Provider store={store}>
     <StaticRouter>
-      <Toolbar
-        token=""
+      <NewsItemView
         content={{
-          '@type': '',
-          is_folderish: true,
-          review_state: 'open',
+          title: 'plone',
+          description: 'open source CMS',
+          text: { data: '' },
         }}
-        inner={{}}
       />
     </StaticRouter>
   </Provider>

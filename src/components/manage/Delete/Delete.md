@@ -1,10 +1,10 @@
-Toolbar example source:
+Delete example source:
 
 ```jsx noeditor
 const { Provider } = require('react-intl-redux');
 const configureStore = require('redux-mock-store').default;
 import BrowserRouter from 'react-router-dom/BrowserRouter';
-import Toolbar from './Toolbar';
+import Delete from './Delete';
 import StaticRouter from 'react-router-dom/StaticRouter';
 const store = configureStore()({
   userSession: {
@@ -20,24 +20,25 @@ const store = configureStore()({
     },
   },
   actions: {},
-  content: { get: {}, data: {} },
+  content: { get: {} },
   controlpanels: {},
-  diff: {},
-  history: [],
-  schema: {},
 });
 
 <div className={'rsg--pre-42'}>
   <Provider store={store}>
     <StaticRouter>
-      <Toolbar
-        token=""
-        content={{
-          '@type': '',
-          is_folderish: true,
-          review_state: 'open',
+      <Delete
+        deleteContent={() => {}}
+        getContent={() => {}}
+        deleteRequest={{
+          loading: true,
+          loaded: false,
         }}
-        inner={{}}
+        pathname="/"
+        content={{
+          title: 'PLone',
+        }}
+        returnUrl="/"
       />
     </StaticRouter>
   </Provider>

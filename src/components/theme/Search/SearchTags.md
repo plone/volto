@@ -1,4 +1,4 @@
-Search example:
+SearchTags example:
 
 ```jsx static
 <SearchComponent path="" searchableText="" items={[]} />
@@ -9,7 +9,7 @@ Output:
 ```jsx noeditor
 const { Provider } = require('react-intl-redux');
 const configureStore = require('redux-mock-store').default;
-import { SearchComponent } from './Search';
+import SearchTags from './SearchTags';
 const store = configureStore()({
   userSession: {
     login: {},
@@ -27,7 +27,13 @@ const store = configureStore()({
 
 <div className={'rsg--pre-42'}>
   <Provider store={store}>
-    <SearchComponent path="" searchableText="" items={[]} location={''} />
+    <SearchTags
+      path=""
+      searchableText=""
+      items={[]}
+      location={''}
+      terms={[{ title: 'plone' }]}
+    />
   </Provider>
 </div>;
 ```

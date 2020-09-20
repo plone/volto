@@ -1,11 +1,12 @@
-Toolbar example source:
+Navigation example source:
 
 ```jsx noeditor
 const { Provider } = require('react-intl-redux');
 const configureStore = require('redux-mock-store').default;
 import BrowserRouter from 'react-router-dom/BrowserRouter';
-import Toolbar from './Toolbar';
+import Navigation from './Navigation';
 import StaticRouter from 'react-router-dom/StaticRouter';
+
 const store = configureStore()({
   userSession: {
     login: {},
@@ -14,30 +15,18 @@ const store = configureStore()({
     locale: 'en',
     messages: {},
   },
-  users: {
-    reset: {
-      loading: '',
-    },
+  navigation: {
+    items: [],
   },
-  actions: {},
-  content: { get: {}, data: {} },
-  controlpanels: {},
-  diff: {},
-  history: [],
-  schema: {},
 });
 
 <div className={'rsg--pre-42'}>
   <Provider store={store}>
     <StaticRouter>
-      <Toolbar
-        token=""
-        content={{
-          '@type': '',
-          is_folderish: true,
-          review_state: 'open',
-        }}
-        inner={{}}
+      <Navigation
+        getNavigation={() => '/'}
+        pathname={'/'}
+        items={[{ title: 'Hello', url: 'www.plone.org' }]}
       />
     </StaticRouter>
   </Provider>

@@ -1,10 +1,10 @@
-Toolbar example source:
+Password reset example source:
 
 ```jsx noeditor
 const { Provider } = require('react-intl-redux');
 const configureStore = require('redux-mock-store').default;
 import BrowserRouter from 'react-router-dom/BrowserRouter';
-import Toolbar from './Toolbar';
+import RequestPasswordReset from './RequestPasswordReset';
 import StaticRouter from 'react-router-dom/StaticRouter';
 const store = configureStore()({
   userSession: {
@@ -19,25 +19,15 @@ const store = configureStore()({
       loading: '',
     },
   },
-  actions: {},
-  content: { get: {}, data: {} },
-  controlpanels: {},
-  diff: {},
-  history: [],
-  schema: {},
 });
 
 <div className={'rsg--pre-42'}>
   <Provider store={store}>
     <StaticRouter>
-      <Toolbar
-        token=""
-        content={{
-          '@type': '',
-          is_folderish: true,
-          review_state: 'open',
-        }}
-        inner={{}}
+      <RequestPasswordReset
+        loading={true}
+        loaded={false}
+        resetPassword={() => {}}
       />
     </StaticRouter>
   </Provider>

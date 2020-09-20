@@ -1,10 +1,10 @@
-Toolbar example source:
+ListingView example source:
 
 ```jsx noeditor
 const { Provider } = require('react-intl-redux');
 const configureStore = require('redux-mock-store').default;
 import BrowserRouter from 'react-router-dom/BrowserRouter';
-import Toolbar from './Toolbar';
+import ListingView from './ListingView';
 import StaticRouter from 'react-router-dom/StaticRouter';
 const store = configureStore()({
   userSession: {
@@ -20,24 +20,26 @@ const store = configureStore()({
     },
   },
   actions: {},
-  content: { get: {}, data: {} },
-  controlpanels: {},
-  diff: {},
-  history: [],
-  schema: {},
+  content: { get: {} },
 });
 
 <div className={'rsg--pre-42'}>
   <Provider store={store}>
     <StaticRouter>
-      <Toolbar
-        token=""
+      <ListingView
         content={{
-          '@type': '',
-          is_folderish: true,
-          review_state: 'open',
+          file: {},
+
+          items: [
+            {
+              '@id': '@plone',
+              '@type': '@image',
+              url: 'www.plone.org',
+              title: 'plone',
+              description: 'open source CMS',
+            },
+          ],
         }}
-        inner={{}}
       />
     </StaticRouter>
   </Provider>

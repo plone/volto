@@ -1,10 +1,10 @@
-Toolbar example source:
+Actions example source:
 
 ```jsx noeditor
 const { Provider } = require('react-intl-redux');
 const configureStore = require('redux-mock-store').default;
 import BrowserRouter from 'react-router-dom/BrowserRouter';
-import Toolbar from './Toolbar';
+import Actions from './Actions';
 import StaticRouter from 'react-router-dom/StaticRouter';
 const store = configureStore()({
   userSession: {
@@ -20,24 +20,27 @@ const store = configureStore()({
     },
   },
   actions: {},
-  content: { get: {}, data: {} },
-  controlpanels: {},
-  diff: {},
-  history: [],
-  schema: {},
+  content: { get: {} },
 });
 
 <div className={'rsg--pre-42'}>
   <Provider store={store}>
     <StaticRouter>
-      <Toolbar
-        token=""
+      <Actions
+        listActions={() => {}}
+        pathname=""
+        location={{ search: '/hello', pathname: '/' }}
+        getContent={() => {}}
+        versionId=""
         content={{
-          '@type': '',
+          layout: 'PLone',
+          allow_discussion: true,
+          title: 'plone',
+          description: 'plone CMS',
+          '@type': '@Document',
           is_folderish: true,
-          review_state: 'open',
+          subjects: [],
         }}
-        inner={{}}
       />
     </StaticRouter>
   </Provider>

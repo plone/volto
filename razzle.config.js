@@ -1,10 +1,3 @@
-/* eslint import/no-extraneous-dependencies: 0 */
-/* eslint import/no-dynamic-require: 0 */
-/* eslint global-require: 0 */
-/* eslint no-console: 0 */
-/* eslint no-param-reassign: 0 */
-/* eslint no-unused-vars: 0 */
-
 const logger = require('razzle-dev-utils/logger');
 const path = require('path');
 const autoprefixer = require('autoprefixer');
@@ -21,7 +14,6 @@ const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const RootResolverPlugin = require('./webpack-root-resolver');
 const createAddonsLoader = require('./create-addons-loader');
 const AddonConfigurationRegistry = require('./addon-registry');
-const addLessLoader = require('./less-plugin');
 
 const fileLoaderFinder = makeLoaderFinder('file-loader');
 const babelLoaderFinder = makeLoaderFinder('babel-loader');
@@ -59,7 +51,7 @@ const svgPlugin = (config) => {
   return config;
 };
 
-const defaultModify = (config, { target, dev }, webpack) => {
+const defaultModify = (config, { target, dev }, webpackObject) => {
   //  Prevent moment from loading all locales
   config.plugins.push(
     new MomentLocalesPlugin({

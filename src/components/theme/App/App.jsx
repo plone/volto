@@ -1,6 +1,7 @@
 /**
  * App container.
  * @module components/theme/App/App
+ * @visibleName AppComponent
  */
 
 import React, { Component, Fragment } from 'react';
