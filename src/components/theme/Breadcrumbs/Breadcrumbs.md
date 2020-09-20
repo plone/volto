@@ -9,7 +9,7 @@ Output:
 ```jsx noeditor
 const { Provider } = require('react-intl-redux');
 const configureStore = require('redux-mock-store').default;
-const BrowserRouter = require('react-router-dom/BrowserRouter').default;
+import StaticRouter from 'react-router-dom/StaticRouter';
 import { Breadcrumb, Container, Icon, Segment } from 'semantic-ui-react';
 
 const store = configureStore()({
@@ -18,17 +18,19 @@ const store = configureStore()({
     messages: {},
   },
   breadcrumbs: {
-    items: [''],
+    items: [
+      {title: 'hello', url: '/hello'},
+      {title: 'world', url: '/hello/world'}
+    ],
   },
 });
 
 <Provider store={store}>
-  <BrowserRouter>
+  <StaticRouter>
     <Breadcrumbs
-      items={['hello', 'www.google.com']}
       pathname={'/'}
       getBreadcrumbs={() => {}}
     />
-  </BrowserRouter>
+  </StaticRouter>
 </Provider>;
 ```

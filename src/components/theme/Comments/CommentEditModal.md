@@ -19,6 +19,7 @@ const store = configureStore()({
     messages: {},
   },
   comments: {
+    update: {
     items: [
       {
         ['@id']: '',
@@ -32,6 +33,7 @@ const store = configureStore()({
         is_editable: true,
       },
     ],
+}
   },
 });
 class Check extends React.Component {

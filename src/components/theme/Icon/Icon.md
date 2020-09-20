@@ -2,7 +2,7 @@ Icon example:
 
 ```jsx static
 import codeSVG from '@plone/volto/icons/code.svg';
-<Icon name={codeSVG} />
+<Icon name={codeSVG} size="60px" />
 ```
 
 Output:
@@ -11,6 +11,10 @@ Output:
 const { Provider } = require('react-intl-redux');
 const configureStore = require('redux-mock-store').default;
 const BrowserRouter = require('react-router-dom/BrowserRouter').default;
+import StaticRouter from 'react-router-dom/StaticRouter';
+import codeSVG from '@plone/volto/icons/code.svg';
+import { Icon } from '@plone/volto/components';
+
 const store = configureStore()({
   intl: {
     locale: 'en',
@@ -20,19 +24,14 @@ const store = configureStore()({
 
 <div className={'rsg--pre-42'}>
   <Provider store={store}>
-    <BrowserRouter>
+    <StaticRouter>
       <Icon
-        name={{
-          xmlns: '',
-          viewBox: '',
-          content: '',
-          attributes: '',
-        }}
-        size={'10px'}
+        name={ codeSVG }
+        size={'60px'}
         color={'#bbbbbb'}
         title={'This is SVG'}
       />
-    </BrowserRouter>
+    </StaticRouter>
   </Provider>
 </div>;
 ```

@@ -6,7 +6,7 @@ const projectRootPath = path.resolve('.');
 const razzleConfig = require(path.join(projectRootPath, 'razzle.config.js'));
 
 module.exports = {
-  title: 'Volto Style Guide',
+  title: 'Volto Components Guide',
   verbose: false,
   exampleMode: 'expand',
   skipComponentsWithoutExample: true,
@@ -17,17 +17,17 @@ module.exports = {
     {
       name: 'Theme',
       components: 'src/components/theme/**/*.jsx',
-      content: './docs/styleguide/theme.md',
+      // content: './docs/styleguide/theme.md',
     },
     {
       name: 'Manage',
       components: 'src/components/manage/**/*.jsx',
-      content: './docs/styleguide/manage.md',
+      // content: './docs/styleguide/manage.md',
     },
     {
       name: 'Helpers',
       components: 'src/helpers/**/*.jsx',
-      content: './docs/styleguide/helpers.md',
+      // content: './docs/styleguide/helpers.md',
     },
   ],
   resolver: require('react-docgen').resolver.findAllComponentDefinitions,

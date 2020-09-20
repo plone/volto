@@ -1,5 +1,9 @@
 Actions example source:
 
+```
+<Actions />
+```
+
 ```jsx noeditor
 const { Provider } = require('react-intl-redux');
 const configureStore = require('redux-mock-store').default;
@@ -19,8 +23,14 @@ const store = configureStore()({
       loading: '',
     },
   },
-  actions: {},
+  actions: {
+    actions: {}
+  },
   content: { get: {} },
+  clipboard: {
+    action: {},
+    source: {}
+  }
 });
 
 <div className={'rsg--pre-42'}>

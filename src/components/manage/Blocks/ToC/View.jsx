@@ -26,6 +26,7 @@ const messages = defineMessages({
  * View toc block class.
  * @class View
  * @extends Component
+ * @visibleName TocView
  */
 const View = ({ properties, data, intl }) => {
   const blocksFieldname = getBlocksFieldname(properties);

@@ -1,6 +1,6 @@
 UsersControlpanel example source:
 
-```jsx noeditor
+```jsx_disabled noeditor
 const { Provider } = require('react-intl-redux');
 const configureStore = require('redux-mock-store').default;
 import BrowserRouter from 'react-router-dom/BrowserRouter';
@@ -20,10 +20,27 @@ const store = configureStore()({
       loading: '',
     },
   },
-  roles: {},
   actions: {},
   content: { get: {} },
   controlpanels: {},
+  roles:{
+    roles: [{ '@id': '', '@type': '' }]
+  },
+  groups: {
+    groups: []
+  },
+  users: {
+    users: [
+        {
+          fullname: '',
+          username: '',
+          roles: [],
+        },
+      ]
+   },
+   types: {
+    types: []
+   }
 });
 
 <div className={'rsg--pre-42'}>
@@ -32,15 +49,9 @@ const store = configureStore()({
       <UsersControlpanel
         listRoles={() => {}}
         listUsers={() => {}}
-        users={[
-          {
-            fullname: '',
-            username: '',
-            roles: [],
-          },
-        ]}
         roles={[{ '@id': '', '@type': '' }]}
         pathname="/"
+        location={{pathname: "/"}}
         updateRequest={{ loading: true, loaded: false }}
         controlpanel={{ '@id': '', data: {}, title: 'Plone', schema: {} }}
       />

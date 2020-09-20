@@ -22,6 +22,9 @@ const store = configureStore()({
   actions: {},
   content: { get: {} },
   controlpanels: {},
+  groups: {
+    groups: {},
+  },
 });
 
 <div className={'rsg--pre-42'}>
@@ -32,6 +35,8 @@ const store = configureStore()({
         updateControlpanel={() => {}}
         id=""
         pathname="/"
+        match={{params: {id: ''}}}
+        location={{pathname: '/'}}
         updateRequest={{ loading: true, loaded: false }}
         controlpanel={{ '@id': '', data: {}, title: 'Plone', schema: {} }}
       />

@@ -8,6 +8,7 @@ Output:
 
 ```jsx noeditor
 const { Provider } = require('react-intl-redux');
+import StaticRouter from 'react-router-dom/StaticRouter';
 const configureStore = require('redux-mock-store').default;
 const store = configureStore()({
   userSession: {
@@ -21,7 +22,9 @@ const store = configureStore()({
 
 <div className={'rsg--pre-42'}>
   <Provider store={store}>
-    <Footer />
+    <StaticRouter>
+      <Footer />
+    </StaticRouter>
   </Provider>
 </div>;
 ```
