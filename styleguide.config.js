@@ -17,12 +17,24 @@ module.exports = {
     {
       name: 'Theme',
       components: 'src/components/theme/**/*.jsx',
-      // content: './docs/styleguide/theme.md',
+      ignore: 'src/components/theme/View/**/*.jsx',
+      sections: [
+        {
+          name: 'View pages',
+          components: 'src/components/theme/View/**/*.jsx',
+        },
+      ],
     },
     {
       name: 'Manage',
       components: 'src/components/manage/**/*.jsx',
-      // content: './docs/styleguide/manage.md',
+      ignore: 'src/components/manage/Widgets/**/*.jsx',
+      sections: [
+        {
+          name: 'Widgets',
+          components: 'src/components/manage/Widgets/**/*.jsx',
+        },
+      ],
     },
     {
       name: 'Helpers',

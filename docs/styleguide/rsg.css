@@ -7,3 +7,8 @@
   box-shadow: 5px 10px #888888;
   clear: both;
 }
+
+.icons-list {
+  color: gray;
+  font-size: 12px;
+}

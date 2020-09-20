@@ -21,6 +21,6 @@ const iconElements = Object.keys(icons).map(iconName => {
   )
 });
 
-<div style={{overflow: 'hidden'}}>{iconElements}</div>
+<div className='icons-list' style={{overflow: 'hidden'}}>{iconElements}</div>
 ```
 
