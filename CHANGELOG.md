@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Integrate react-styleguidist to document Volto components @tiberiuichim
+
 ### Bugfix
 - Fix word overflow from html-block @iFlameing
 
