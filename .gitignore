@@ -1,6 +1,6 @@
 # Node
 node_modules
-styleguide
+/styleguide
 coverage
 jsdoc
 webpack-assets.json

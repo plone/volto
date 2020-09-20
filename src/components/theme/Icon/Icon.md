@@ -23,16 +23,10 @@ const store = configureStore()({
   },
 });
 
-<div className={'rsg--pre-42'}>
-  <Provider store={store}>
-    <StaticRouter>
-      <Icon
-        name={ codeSVG }
-        size={'60px'}
-        color={'#bbbbbb'}
-        title={'This is SVG'}
-      />
-    </StaticRouter>
-  </Provider>
-</div>;
+<Icon
+  name={ codeSVG }
+  size={'60px'}
+  color={'#bbbbbb'}
+  title={'This is SVG'}
+/>
 ```

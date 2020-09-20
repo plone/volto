@@ -33,7 +33,7 @@ module.exports = {
   resolver: require('react-docgen').resolver.findAllComponentDefinitions,
   ignore: [
     '**/*.test.jsx',
-    '**/Contents/Contents*jsx',
+    // '**/Contents/Contents*jsx',
     '**/Schema.jsx',
     'src/components/manage/AnchorPlugin/index.jsx',
     'src/components/manage/Blocks/Image/Edit.jsx',
@@ -49,11 +49,12 @@ module.exports = {
   require: [
     path.join(__dirname, 'node_modules/semantic-ui-less/semantic.less'),
     path.join(__dirname, 'theme/themes/pastanaga/extras/extras.less'),
+    path.join(__dirname, 'docs/styleguide/rsg.css'),
   ],
   theme: {
     color: {
-      link: 'firebrick',
-      linkHover: 'salmon',
+      link: '#006d63', // #009688
+      linkHover: 'firebrick', // salmon
     },
   },
   webpackConfig(env) {
@@ -66,7 +67,7 @@ module.exports = {
 
     return baseConfig;
   },
-  // styleguideComponents: {
-  //   Wrapper: path.join(__dirname, 'src/styleguide'),
-  // },
+  styleguideComponents: {
+    Wrapper: path.join(__dirname, 'src/styleguide.jsx'),
+  },
 };
