@@ -1,33 +1,13 @@
-Search example:
-
-```jsx static
-<SearchComponent path="" searchableText="" items={[]} />
-```
-
-Output:
-
 ```jsx_ noeditor
-const { Provider } = require('react-intl-redux');
-const configureStore = require('redux-mock-store').default;
-import { SearchComponent } from './Search';
-const store = configureStore()({
-  userSession: {
-    login: {},
-  },
-  intl: {
-    locale: 'en',
-    messages: {},
-  },
-  search: {
-    items: [],
-  },
-  content: {},
-  vocabularies: {},
-});
+import Wrapper from '@plone/volto/styleguide';
 
-<div className={'rsg--pre-42'}>
-  <Provider store={store}>
-    <SearchComponent path="" searchableText="" items={[]} location={''} />
-  </Provider>
-</div>;
+<Wrapper location="/search">
+  <Search
+    location="/search"
+    path=""
+    history={{location: { pathname: '/search', search: 'hello'}}}
+    searchableText=""
+    items={[]}
+  />
+</Wrapper>
 ```

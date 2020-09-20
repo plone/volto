@@ -1931,9 +1931,15 @@ const initialState = () => ({
 
 export default class Wrapper extends Component {
   customState() {
-    const state = initialState();
+    let state = initialState();
     if (this.props.anonymous) {
       state.userSession.token = null;
+    }
+    if (this.props.customStore) {
+      state = {
+        ...state,
+        ...this.props.customStore,
+      };
     }
     return state;
   }
@@ -1944,7 +1950,7 @@ export default class Wrapper extends Component {
     return (
       <Provider store={store}>
         <IntlProvider locale="en">
-          <StaticRouter>
+          <StaticRouter location={this.props.location}>
             <div className="volto-rsg-container">{this.props.children}</div>
           </StaticRouter>
         </IntlProvider>
