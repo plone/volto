@@ -1,13 +1,15 @@
 Title example:
 
-```jsx
+```jsx static
 <Title title="Plone" />
 ```
 
 Output:
 
 ```jsx noeditor
-<div className={'rsg--pre-42'}>
+import Wrapper from '@plone/volto/styleguide';
+
+<Wrapper>
   <Title title="Plone" />
-</div>
+</Wrapper>
 ```

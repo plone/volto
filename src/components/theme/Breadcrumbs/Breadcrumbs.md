@@ -7,10 +7,12 @@ Breadcrumbs example:
 Output:
 
 ```jsx noeditor
-import { Breadcrumb } from '@plone/volto/components';
+import Wrapper from '@plone/volto/styleguide';
 
-<Breadcrumbs
-  pathname={'/'}
-  getBreadcrumbs={() => {}}
-/>
+<Wrapper>
+  <Breadcrumbs
+    pathname={'/'}
+    getBreadcrumbs={() => {}}
+  />
+</Wrapper>
 ```

@@ -67,7 +67,7 @@ module.exports = {
 
     return baseConfig;
   },
-  styleguideComponents: {
-    Wrapper: path.join(__dirname, 'src/styleguide.jsx'),
-  },
+  // styleguideComponents: {
+  //   Wrapper: path.join(__dirname, 'src/styleguide.jsx'),
+  // },
 };
