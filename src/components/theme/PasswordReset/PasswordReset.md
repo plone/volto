@@ -5,6 +5,7 @@ import Wrapper from '@plone/volto/styleguide';
   <PasswordReset
     loading={true}
     loaded={false}
+    token="abc"
     setInitialPassword={() => {}}
   />
 </Wrapper>

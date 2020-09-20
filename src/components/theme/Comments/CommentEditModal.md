@@ -1,24 +1,23 @@
-CommentEditModal example:
-
-```jsx static
-<CommentEditModal />
-```
-
-Output:
-
-```jsx_ noeditor
-// TODO: the Provider here is wrong
-import { Provider } from 'react-intl-redux';
-import configureStore from 'redux-mock-store';
-import { Button, Container } from 'semantic-ui-react';
-import {BrowserRouter} from 'react-router-dom';
+```jsx noeditor
+import Wrapper from '@plone/volto/styleguide';
 import CommentEditModal from './CommentEditModal';
 
-const store = configureStore()({
-  intl: {
-    locale: 'en',
-    messages: {},
-  },
+class Check extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false,
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick() {
+    this.setState({
+      open: true,
+    });
+  }
+  render() {
+    return (
+      <Wrapper customStore={{
   comments: {
     update: {
     items: [
@@ -35,42 +34,22 @@ const store = configureStore()({
       },
     ],
 }
-  },
-});
-class Check extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      open: false,
-    };
-    this.handleClick = this.handleClick.bind(this);
-  }
-  handleClick() {
-    this.setState({
-      open: true,
-    });
-  }
-  render() {
-    return (
-      <Container>
-        <Button onClick={this.handleClick}>Click Me</Button>
-        <Provider store={store}>
-          <BrowserRouter>
-            <CommentEditModal
-              request={{
-                loading: !this.state.open,
-                loaded: this.state.open,
-              }}
-              updateComment={() => {}}
-              open={this.state.open}
-              onOk={() => {}}
-              onCancel={() => {}}
-            />
-          </BrowserRouter>
-        </Provider>
-      </Container>
+  }}}>
+        <button onClick={this.handleClick}>Open modal</button>
+          <CommentEditModal
+            request={{
+              loading: !this.state.open,
+              loaded: this.state.open,
+            }}
+            updateComment={() => {}}
+            open={this.state.open}
+            onOk={() => {}}
+            onCancel={() => {}}
+          />
+      </Wrapper>
     );
   }
 }
+
 <Check />;
 ```

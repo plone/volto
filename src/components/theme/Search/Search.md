@@ -1,12 +1,13 @@
-```jsx_ noeditor
+```jsx noeditor
 import Wrapper from '@plone/volto/styleguide';
 
-<Wrapper location="/search">
+<Wrapper>
   <Search
-    location="/search"
+    location={{pathname: "/search"}}
     path=""
     history={{location: { pathname: '/search', search: 'hello'}}}
     searchableText=""
+    pathname="/search"
     items={[]}
   />
 </Wrapper>
