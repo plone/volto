@@ -1,69 +1,48 @@
-Comments example:
+```jsx noeditor
+import Wrapper from '@plone/volto/styleguide';
 
-```jsx static
-<Comments />
-```
-
-Output:
-
-```jsx_ noeditor
-import { Provider } from 'react-intl-redux';
-import configureStore from 'redux-mock-store';
-import {BrowserRouter} from 'react-router-dom';
-import { Breadcrumb, Container, Icon, Segment } from 'semantic-ui-react';
-import Comments from './Comments';
-
-const store = configureStore()({
-  intl: {
-    locale: 'en',
-    messages: {},
-  },
+<Wrapper customStore={{
   comments: {
     items: [
       {
         ['@id']: '',
-        author_name: '',
-        creation_date: '',
+        author_name: 'John',
+        creation_date: '01-02-2020',
         text: {
-          data: '',
+          data: 'Hello!',
           'mime-type': '',
         },
         is_deletable: true,
         is_editable: true,
       },
     ],
-  },
-});
-
-<Provider store={store}>
-  <BrowserRouter>
-    <Comments
-      items={[
-        {
-          '@id': '',
-          author_name: '',
-          creation_date: '',
-          text: {
-            data: '',
-            'mime-type': '',
-          },
-          is_deletable: true,
-          is_editable: true,
+  }}}>
+  <Comments
+    items={[
+      {
+        '@id': '',
+        author_name: 'Jim',
+        creation_date: '01-01-2020',
+        text: {
+          data: 'Hi!',
+          'mime-type': '',
         },
-      ]}
-      addComment={() => {}}
-      deleteComment={() => {}}
-      listComments={() => {}}
-      pathname={'/'}
-      addRequest={{
-        loading: true,
-        loaded: false,
-      }}
-      deleteRequest={{
-        loading: true,
-        loaded: false,
-      }}
-    />
-  </BrowserRouter>
-</Provider>;
+        is_deletable: true,
+        is_editable: true,
+      },
+    ]}
+    addComment={() => {}}
+    deleteComment={() => {}}
+    listComments={() => {}}
+    pathname={'/'}
+    addRequest={{
+      loading: true,
+      loaded: false,
+    }}
+    deleteRequest={{
+      loading: true,
+      loaded: false,
+    }}
+  />
+</Wrapper>
 ```

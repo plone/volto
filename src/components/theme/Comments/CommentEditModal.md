@@ -36,17 +36,17 @@ class Check extends React.Component {
 }
   }}}>
         <button onClick={this.handleClick}>Open modal</button>
-          <CommentEditModal
-            request={{
-              loading: !this.state.open,
-              loaded: this.state.open,
-            }}
-            updateComment={() => {}}
-            open={this.state.open}
-            onOk={() => {}}
-            onCancel={() => {}}
-            text="Some comment to edit..."
-          />
+        <CommentEditModal
+          request={{
+            loading: !this.state.open,
+            loaded: this.state.open,
+          }}
+          updateComment={() => {}}
+          open={this.state.open}
+          onOk={() => {}}
+          onCancel={() => {}}
+          text="Some comment to edit..."
+        />
       </Wrapper>
     );
   }
