@@ -45,6 +45,7 @@ class Check extends React.Component {
             open={this.state.open}
             onOk={() => {}}
             onCancel={() => {}}
+            text="Some comment to edit..."
           />
       </Wrapper>
     );
