@@ -1,48 +1,33 @@
 TabularView example source:
 
-```jsx_ noeditor
-const { Provider } = require('react-intl-redux');
-const configureStore = require('redux-mock-store').default;
-import TabularView from './TabularView';
-import {StaticRouter} from 'react-router-dom';
-const store = configureStore()({
-  userSession: {
-    login: {},
-  },
-  intl: {
-    locale: 'en',
-    messages: {},
-  },
-  users: {
-    reset: {
-      loading: '',
-    },
-  },
-  actions: {},
-  content: { get: {} },
-});
+```jsx noeditor
+import Wrapper from '@plone/volto/styleguide';
 
-<div className={'rsg--pre-42'}>
-  <Provider store={store}>
-    <StaticRouter>
-      <TabularView
-        content={{
-          title: 'plone',
+<Wrapper>
+  <TabularView
+    content={{
+      title: 'plone',
+      description: 'open source CMS',
+      items: [
+        {
+          '@id': '@plone',
+          '@type': 'image',
+          url: 'www.plone.org',
+          title: 'Plone',
           description: 'open source CMS',
-          items: [
-            {
-              '@id': '@plone',
-              '@type': '@image',
-              url: 'www.plone.org',
-              title: 'plone',
-              description: 'open source CMS',
-              image: { scales: { thumb: {} } },
-              review_state: '',
-            },
-          ],
-        }}
-      />
-    </StaticRouter>
-  </Provider>
-</div>;
+          image: { scales: { thumb: {} } },
+          review_state: 'private',
+        },
+        {
+          '@id': '@volto',
+          '@type': 'link',
+          url: 'https://voltocms.com',
+          title: 'Volto',
+          description: 'open source CMS',
+          review_state: 'published',
+        },
+      ],
+    }}
+  />
+</Wrapper>
 ```

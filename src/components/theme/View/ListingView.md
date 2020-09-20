@@ -1,46 +1,31 @@
 ListingView example source:
 
-```jsx_ noeditor
-const { Provider } = require('react-intl-redux');
-const configureStore = require('redux-mock-store').default;
-import ListingView from './ListingView';
-import {StaticRouter} from 'react-router-dom';
-const store = configureStore()({
-  userSession: {
-    login: {},
-  },
-  intl: {
-    locale: 'en',
-    messages: {},
-  },
-  users: {
-    reset: {
-      loading: '',
-    },
-  },
-  actions: {},
-  content: { get: {} },
-});
+```jsx noeditor
+import Wrapper from '@plone/volto/styleguide';
 
-<div className={'rsg--pre-42'}>
-  <Provider store={store}>
-    <StaticRouter>
-      <ListingView
-        content={{
-          file: {},
+<Wrapper>
+  <ListingView
+    content={{
+      file: {},
 
-          items: [
-            {
-              '@id': '@plone',
-              '@type': '@image',
-              url: 'www.plone.org',
-              title: 'plone',
-              description: 'open source CMS',
-            },
-          ],
-        }}
-      />
-    </StaticRouter>
-  </Provider>
-</div>;
+      items: [
+        {
+          '@id': '@plone',
+          '@type': '@image',
+          url: 'www.plone.org',
+          title: 'plone',
+          description: 'open source CMS',
+        },
+        {
+          '@id': '@volto',
+          '@type': 'link',
+          url: 'https://voltocms.com',
+          title: 'Volto',
+          description: 'open source CMS',
+          review_state: 'published',
+        },
+      ],
+    }}
+  />
+</Wrapper>
 ```

@@ -1,48 +1,33 @@
 SummaryView example source:
 
-```jsx_ noeditor
-const { Provider } = require('react-intl-redux');
-const configureStore = require('redux-mock-store').default;
-import SummaryView from './SummaryView';
-import {StaticRouter} from 'react-router-dom';
-const store = configureStore()({
-  userSession: {
-    login: {},
-  },
-  intl: {
-    locale: 'en',
-    messages: {},
-  },
-  users: {
-    reset: {
-      loading: '',
-    },
-  },
-  actions: {},
-  content: { get: {} },
-});
+```jsx noeditor
+import Wrapper from '@plone/volto/styleguide';
 
-<div className={'rsg--pre-42'}>
-  <Provider store={store}>
-    <StaticRouter>
-      <SummaryView
-        content={{
+<Wrapper>
+  <SummaryView
+    content={{
+      title: 'plone',
+      description: 'open source CMS',
+      items: [
+        {
+          '@id': '@plone',
+          '@type': '@image',
+          url: 'www.plone.org',
           title: 'plone',
           description: 'open source CMS',
-          items: [
-            {
-              '@id': '@plone',
-              '@type': '@image',
-              url: 'www.plone.org',
-              title: 'plone',
-              description: 'open source CMS',
-              image: { scales: { thumb: {} } },
-              image_caption: '',
-            },
-          ],
-        }}
-      />
-    </StaticRouter>
-  </Provider>
-</div>;
+          image: { scales: { thumb: {} } },
+          image_caption: '',
+        },
+        {
+          '@id': '@volto',
+          '@type': 'link',
+          url: 'https://voltocms.com',
+          title: 'Volto',
+          description: 'open source CMS',
+          review_state: 'published',
+        },
+      ],
+    }}
+  />
+</Wrapper>
 ```
