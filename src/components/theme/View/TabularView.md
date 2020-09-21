@@ -1,5 +1,3 @@
-TabularView example source:
-
 ```jsx noeditor
 import Wrapper from '@plone/volto/styleguide';
 

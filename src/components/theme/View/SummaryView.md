@@ -15,7 +15,7 @@ import Wrapper from '@plone/volto/styleguide';
           url: 'www.plone.org',
           title: 'plone',
           description: 'open source CMS',
-          image: { scales: { thumb: {} } },
+          image: { scales: { thumb: { download: 'https://plone.org/logo.png'} } },
           image_caption: '',
         },
         {
