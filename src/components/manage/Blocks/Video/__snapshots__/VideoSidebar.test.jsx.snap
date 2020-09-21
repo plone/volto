@@ -119,7 +119,7 @@ exports[`renders an Image Block Sidebar component 1`] = `
             className="eight wide column"
           >
             <div
-              className="ui icon input"
+              className="ui input"
             >
               <input
                 id="field-external"
@@ -132,40 +132,8 @@ exports[`renders an Image Block Sidebar component 1`] = `
                 type="text"
                 value=""
               />
-              <i
-                aria-hidden="true"
-                attributes={
-                  Object {
-                    "viewBox": "",
-                    "xmlns": "",
-                  }
-                }
-                className="icon"
-                onClick={[Function]}
-              />
             </div>
-            <button
-              onClick={[Function]}
-            >
-              <svg
-                className="icon"
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": undefined,
-                  }
-                }
-                onClick={null}
-                style={
-                  Object {
-                    "fill": "currentColor",
-                    "height": "18px",
-                    "width": "auto",
-                  }
-                }
-                viewBox=""
-                xmlns=""
-              />
-            </button>
+            
           </div>
         </div>
       </div>

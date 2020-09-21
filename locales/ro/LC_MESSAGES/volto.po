@@ -1273,6 +1273,10 @@ msgstr "Preferințe"
 msgid "Preview"
 msgstr "Previzualizare"
 
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "Preview Image URL"
+msgstr ""
+
 #: components/manage/Toolbar/PersonalTools
 msgid "Profile"
 msgstr "Profil"

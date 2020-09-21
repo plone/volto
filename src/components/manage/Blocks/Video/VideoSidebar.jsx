@@ -93,7 +93,7 @@ const VideoSidebar = ({
                   title={intl.formatMessage(messages.Preview_image)}
                   required={false}
                   value={data.preview_image}
-                  icon={clearSVG}
+                  icon={data.preview_image ? clearSVG : ''}
                   iconAction={() => {
                     onChangeBlock(block, {
                       ...data,

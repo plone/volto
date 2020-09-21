@@ -1288,6 +1288,10 @@ msgstr "Einstellungen"
 msgid "Preview"
 msgstr "Vorschau"
 
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "Preview Image URL"
+msgstr ""
+
 #: components/manage/Toolbar/PersonalTools
 msgid "Profile"
 msgstr "Profil"
