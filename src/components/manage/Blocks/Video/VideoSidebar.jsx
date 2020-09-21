@@ -25,6 +25,10 @@ const messages = defineMessages({
     id: 'Video URL',
     defaultMessage: 'Video URL',
   },
+  Preview_image: {
+    id: 'Preview Image URL',
+    defaultMessage: 'Preview Image URL',
+  },
 });
 
 const VideoSidebar = ({
@@ -68,21 +72,42 @@ const VideoSidebar = ({
         <>
           <Segment className="form sidebar-image-data">
             {data.url && (
-              <TextWidget
-                id="external"
-                title={intl.formatMessage(messages.videoURL)}
-                required={false}
-                value={data.url}
-                icon={clearSVG}
-                iconAction={() => {
-                  resetSubmitUrl();
-                  onChangeBlock(block, {
-                    ...data,
-                    url: '',
-                  });
-                }}
-                onChange={() => {}}
-              />
+              <>
+                <TextWidget
+                  id="external"
+                  title={intl.formatMessage(messages.videoURL)}
+                  required={false}
+                  value={data.url}
+                  icon={clearSVG}
+                  iconAction={() => {
+                    resetSubmitUrl();
+                    onChangeBlock(block, {
+                      ...data,
+                      url: '',
+                    });
+                  }}
+                  onChange={() => {}}
+                />
+                <TextWidget
+                  id="external"
+                  title={intl.formatMessage(messages.Preview_image)}
+                  required={false}
+                  value={data.preview_image}
+                  icon={clearSVG}
+                  iconAction={() => {
+                    onChangeBlock(block, {
+                      ...data,
+                      preview_image: '',
+                    });
+                  }}
+                  onChange={(id, value) => {
+                    onChangeBlock(block, {
+                      ...data,
+                      preview_image: value,
+                    });
+                  }}
+                />
+              </>
             )}
             <Form.Field inline required={required}>
               <Grid>

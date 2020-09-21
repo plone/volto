@@ -153,8 +153,9 @@ class Edit extends Component {
                     url={`https://www.youtube.com/embed/videoseries?list=${
                       data.url.match(/^.*\?list=(.*)$/)[1]
                     }`}
+                    placeholder={data.preview_image}
+                    defaultActive={data.preview_image ? false : true}
                     icon="arrow right"
-                    defaultActive
                     autoplay={false}
                   />
                 ) : (
@@ -166,7 +167,8 @@ class Edit extends Component {
                     }
                     source="youtube"
                     icon="arrow right"
-                    defaultActive
+                    defaultActive={data.preview_image ? false : true}
+                    placeholder={data.preview_image}
                     autoplay={false}
                   />
                 )}
@@ -179,7 +181,8 @@ class Edit extends Component {
                     id={data.url.match(/^.*\.com\/(.*)/)[1]}
                     source="vimeo"
                     icon="arrow right"
-                    defaultActive
+                    defaultActive={data.preview_image ? false : true}
+                    placeholder={data.preview_image}
                     autoplay={false}
                   />
                 ) : (

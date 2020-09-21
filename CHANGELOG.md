@@ -6,7 +6,10 @@
 
 ### Feature
 
+- Adding preview image placeholder in Video Block @iFlameing
+
 ### Bugfix
+
 - Fix word overflow from html-block @iFlameing
 
 - Fix Cypress test for image upload

@@ -34,13 +34,36 @@ const View = ({ data }) => (
         {data.url.match('youtu') ? (
           <>
             {data.url.match('list') ? (
+              data.preview_image ? (
+                <Embed
+                  url={`https://www.youtube.com/embed/videoseries?list=${
+                    data.url.match(/^.*\?list=(.*)$/)[1]
+                  }`}
+                  placeholder={data.preview_image}
+                  icon="arrow right"
+                  defaultActive
+                  autoplay={false}
+                />
+              ) : (
+                <Embed
+                  url={`https://www.youtube.com/embed/videoseries?list=${
+                    data.url.match(/^.*\?list=(.*)$/)[1]
+                  }`}
+                  icon="arrow right"
+                  defaultActive
+                  autoplay={false}
+                />
+              )
+            ) : data.preview_image ? (
               <Embed
-                url={`https://www.youtube.com/embed/videoseries?list=${
-                  data.url.match(/^.*\?list=(.*)$/)[1]
-                }`}
+                id={
+                  data.url.match(/.be\//)
+                    ? data.url.match(/^.*\.be\/(.*)/)[1]
+                    : data.url.match(/^.*\?v=(.*)$/)[1]
+                }
+                source="youtube"
+                placeholder={data.preview_image}
                 icon="arrow right"
-                defaultActive
-                autoplay={false}
               />
             ) : (
               <Embed
@@ -59,13 +82,23 @@ const View = ({ data }) => (
         ) : (
           <>
             {data.url.match('vimeo') ? (
-              <Embed
-                id={data.url.match(/^.*\.com\/(.*)/)[1]}
-                source="vimeo"
-                icon="arrow right"
-                defaultActive
-                autoplay={false}
-              />
+              data.preview_image ? (
+                <Embed
+                  id={data.url.match(/^.*\.com\/(.*)/)[1]}
+                  source="vimeo"
+                  placeholder={data.preview_image}
+                  icon="arrow right"
+                  autoplay={false}
+                />
+              ) : (
+                <Embed
+                  id={data.url.match(/^.*\.com\/(.*)/)[1]}
+                  source="vimeo"
+                  icon="arrow right"
+                  defaultActive
+                  autoplay={false}
+                />
+              )
             ) : (
               <>
                 {data.url.match('.mp4') ? (
