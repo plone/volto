@@ -9,6 +9,7 @@ import Editor from 'react-simple-code-editor';
 import { highlight, languages } from 'prismjs/components/prism-core';
 import 'prismjs/components/prism-markup';
 import { Button } from 'semantic-ui-react';
+import loadable from '@loadable/component';
 import { defineMessages, injectIntl } from 'react-intl';
 
 import { Icon } from '@plone/volto/components';
@@ -16,8 +17,9 @@ import showSVG from '@plone/volto/icons/show.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import codeSVG from '@plone/volto/icons/code.svg';
 import prettierSVG from '@plone/volto/icons/prettier.svg';
-import prettier from 'prettier/standalone';
-import parserHtml from 'prettier/parser-html';
+
+const Prettier = loadable.lib(() => import('prettier/standalone'));
+const ParserHtml = loadable.lib(() => import('prettier/parser-html'));
 
 const messages = defineMessages({
   source: {
@@ -132,9 +134,9 @@ class Edit extends Component {
 
   onPrettify = () => {
     this.setState({
-      code: prettier.format(this.state.code, {
+      code: this.prettier.current.default.format(this.state.code, {
         parser: 'html',
-        plugins: [parserHtml],
+        plugins: [this.parserHtml.current.default],
       }),
     });
   };
@@ -148,6 +150,10 @@ class Edit extends Component {
     this.setState({ isPreview: !this.state.isPreview });
   }
 
+  //ref
+  prettier = React.createRef();
+  parserHtml = React.createRef();
+
   /**
    * Render method.
    * @method render
@@ -159,6 +165,8 @@ class Edit extends Component {
       this.props.intl.formatMessage(messages.placeholder);
     return (
       <>
+        <Prettier ref={this.prettier} />
+        <ParserHtml ref={this.parserHtml} />
         {this.props.selected && !!this.state.code && (
           <div className="toolbar">
             <Button.Group>
