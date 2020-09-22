@@ -9,15 +9,15 @@ import Editor from 'react-simple-code-editor';
 import { highlight, languages } from 'prismjs/components/prism-core';
 import 'prismjs/components/prism-markup';
 import { Button } from 'semantic-ui-react';
-import loadable from '@loadable/component';
 import { defineMessages, injectIntl } from 'react-intl';
 
 import { Icon } from '@plone/volto/components';
 import showSVG from '@plone/volto/icons/show.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import codeSVG from '@plone/volto/icons/code.svg';
-
-const Pretty = loadable.lib(() => import('pretty'));
+import prettierSVG from '@plone/volto/icons/prettier.svg';
+import prettier from 'prettier/standalone';
+import parserHtml from 'prettier/parser-html';
 
 const messages = defineMessages({
   source: {
@@ -31,6 +31,10 @@ const messages = defineMessages({
   placeholder: {
     id: '<p>Add some HTML here</p>',
     defaultMessage: '<p>Add some HTML here</p>',
+  },
+  prettier: {
+    id: 'Prettify your code',
+    defaultMessage: 'Prettify your code',
   },
 });
 
@@ -109,8 +113,6 @@ class Edit extends Component {
     this.setState({ code });
   }
 
-  pretty = React.createRef();
-
   /**
    * Preview mode handler
    * @method onPreview
@@ -119,9 +121,23 @@ class Edit extends Component {
   onPreview() {
     this.setState({
       isPreview: !this.state.isPreview,
-      code: this.pretty.current.default(this.state.code),
     });
   }
+
+  /**
+   * Prettify handler
+   * @method onPrettify
+   * @returns {undefined}
+   */
+
+  onPrettify = () => {
+    this.setState({
+      code: prettier.format(this.state.code, {
+        parser: 'html',
+        plugins: [parserHtml],
+      }),
+    });
+  };
 
   /**
    * Code Editor mode handler
@@ -143,7 +159,6 @@ class Edit extends Component {
       this.props.intl.formatMessage(messages.placeholder);
     return (
       <>
-        <Pretty ref={this.pretty} />
         {this.props.selected && !!this.state.code && (
           <div className="toolbar">
             <Button.Group>
@@ -166,6 +181,14 @@ class Edit extends Component {
                 onClick={this.onPreview}
               >
                 <Icon name={showSVG} size="24px" />
+              </Button>
+              <Button
+                icon
+                basic
+                aria-label={this.props.intl.formatMessage(messages.prettier)}
+                onClick={this.onPrettify}
+              >
+                <Icon name={prettierSVG} size="24px" />
               </Button>
             </Button.Group>
             <div className="separator" />
