@@ -34,8 +34,19 @@ class LinkButton extends Component {
     e.preventDefault();
     e.stopPropagation();
     const { ownTheme, placeholder, onOverrideContent } = this.props;
+    const link = EditorUtils.getCurrentEntity(
+      this.props.getEditorState(),
+    )?.getData()?.url;
+
     const content = (props) => (
-      <AddLinkForm {...props} placeholder={placeholder} theme={ownTheme} />
+      <AddLinkForm
+        {...props}
+        placeholder={placeholder}
+        theme={ownTheme}
+        block="draft-js"
+        data={{ url: link || '' }}
+        onChangeBlock={() => {}}
+      />
     );
     onOverrideContent(content);
   };
@@ -46,7 +57,7 @@ class LinkButton extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { theme, onRemoveLinkAtSelection } = this.props;
+    const { theme } = this.props;
     const hasLinkSelected = EditorUtils.hasEntity(
       this.props.getEditorState(),
       'LINK',
@@ -64,13 +75,14 @@ class LinkButton extends Component {
         <button
           className={className}
           onClick={
-            hasLinkSelected
-              ? () =>
-                  onRemoveLinkAtSelection(
-                    this.props.setEditorState,
-                    this.props.getEditorState,
-                  )
-              : this.onAddLinkClick
+            this.onAddLinkClick
+            // hasLinkSelected
+            //   ? () =>
+            //       onRemoveLinkAtSelection(
+            //         this.props.setEditorState,
+            //         this.props.getEditorState,
+            //       )
+            //   : this.onAddLinkClick
           }
           type="button"
         >
