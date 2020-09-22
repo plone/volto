@@ -75,6 +75,7 @@ class Form extends Component {
     submitLabel: PropTypes.string,
     resetAfterSubmit: PropTypes.bool,
     isEditForm: PropTypes.bool,
+    isAdminForm: PropTypes.bool,
     title: PropTypes.string,
     error: PropTypes.shape({
       message: PropTypes.string,
@@ -99,6 +100,7 @@ class Form extends Component {
     submitLabel: null,
     resetAfterSubmit: false,
     isEditForm: false,
+    isAdminForm: false,
     title: null,
     description: null,
     error: null,
@@ -286,7 +288,7 @@ class Form extends Component {
   }
 
   hideHandler = (data) => {
-    return !blockHasValue(data);
+    return !!data.fixed || !blockHasValue(data);
   };
 
   /**
@@ -834,6 +836,7 @@ class Form extends Component {
                               pathname={this.props.pathname}
                               block={block}
                               selected={this.state.selected === block}
+                              manage={this.props.isAdminForm}
                             />
                           </div>
                         </div>

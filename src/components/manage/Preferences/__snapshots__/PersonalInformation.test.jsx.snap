@@ -45,7 +45,6 @@ exports[`PersonalInformation renders a personal information component 1`] = `
                   className="ui input"
                 >
                   <input
-                    disabled={false}
                     id="field-fullname"
                     maxLength={null}
                     minLength={null}
@@ -104,7 +103,6 @@ exports[`PersonalInformation renders a personal information component 1`] = `
                   className="ui input"
                 >
                   <input
-                    disabled={false}
                     id="field-email"
                     maxLength={null}
                     minLength={null}
@@ -223,7 +221,6 @@ exports[`PersonalInformation renders a personal information component 1`] = `
                   className="ui input"
                 >
                   <input
-                    disabled={false}
                     id="field-home_page"
                     maxLength={null}
                     minLength={null}
@@ -282,7 +279,6 @@ exports[`PersonalInformation renders a personal information component 1`] = `
                   className="ui input"
                 >
                   <input
-                    disabled={false}
                     id="field-location"
                     maxLength={null}
                     minLength={null}
@@ -417,7 +413,6 @@ exports[`PersonalInformation renders a personal information component embedded i
                   className="ui input"
                 >
                   <input
-                    disabled={false}
                     id="field-fullname"
                     maxLength={null}
                     minLength={null}
@@ -476,7 +471,6 @@ exports[`PersonalInformation renders a personal information component embedded i
                   className="ui input"
                 >
                   <input
-                    disabled={false}
                     id="field-email"
                     maxLength={null}
                     minLength={null}
@@ -595,7 +589,6 @@ exports[`PersonalInformation renders a personal information component embedded i
                   className="ui input"
                 >
                   <input
-                    disabled={false}
                     id="field-home_page"
                     maxLength={null}
                     minLength={null}
@@ -654,7 +647,6 @@ exports[`PersonalInformation renders a personal information component embedded i
                   className="ui input"
                 >
                   <input
-                    disabled={false}
                     id="field-location"
                     maxLength={null}
                     minLength={null}

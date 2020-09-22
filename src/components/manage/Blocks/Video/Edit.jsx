@@ -125,6 +125,9 @@ class Edit extends Component {
    */
   render() {
     const { data } = this.props;
+    const placeholder =
+      this.props.data.placeholder ||
+      this.props.intl.formatMessage(messages.VideoBlockInputPlaceholder);
     return (
       <div
         className={cx(
@@ -223,9 +226,7 @@ class Edit extends Component {
                 <Input
                   onKeyDown={this.onKeyDownVariantMenuForm}
                   onChange={this.onChangeUrl}
-                  placeholder={this.props.intl.formatMessage(
-                    messages.VideoBlockInputPlaceholder,
-                  )}
+                  placeholder={placeholder}
                   value={this.state.url}
                   // Prevents propagation to the Dropzone and the opening
                   // of the upload browser dialog
