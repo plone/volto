@@ -2,14 +2,10 @@
 
 ## 8.0.1 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
-- Fix word overflow from html-block @iFlameing
 
-- Fix Cypress test for image upload
+- Fix word overflow from html-block @iFlameing
+- Fix Cypress test for image upload @zotya
 
 ### Internal
 
