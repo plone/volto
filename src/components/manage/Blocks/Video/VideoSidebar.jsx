@@ -89,7 +89,7 @@ const VideoSidebar = ({
                   onChange={() => {}}
                 />
                 <TextWidget
-                  id="external"
+                  id="video-preview-image"
                   title={intl.formatMessage(messages.Preview_image)}
                   required={false}
                   value={data.preview_image}

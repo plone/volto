@@ -94,7 +94,7 @@ exports[`renders an Image Block Sidebar component 1`] = `
     </div>
     <div
       className="inline field text"
-      id="field-external"
+      id="field-video-preview-image"
     >
       <div
         className="ui grid"
@@ -109,7 +109,7 @@ exports[`renders an Image Block Sidebar component 1`] = `
               className="wrapper"
             >
               <label
-                htmlFor="field-external"
+                htmlFor="field-video-preview-image"
               >
                 Preview Image URL
               </label>
@@ -122,10 +122,10 @@ exports[`renders an Image Block Sidebar component 1`] = `
               className="ui input"
             >
               <input
-                id="field-external"
+                id="field-video-preview-image"
                 maxLength={null}
                 minLength={null}
-                name="external"
+                name="video-preview-image"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onClick={[Function]}
