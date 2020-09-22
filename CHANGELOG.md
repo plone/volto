@@ -1,19 +1,48 @@
 # Change Log
 
-## 7.15.1 (unreleased)
+## 8.0.2 (unreleased)
 
 ### Breaking
 
 ### Feature
 
-- create link in Draftjs using Objectbrowser @giuliaghisini
+- Create link in Draftjs using Objectbrowser @giuliaghisini
+
+### Bugfix
+
+### Internal
+
+## 8.0.1 (2020-09-22)
+
+### Bugfix
+
+- Fix word overflow from html-block @iFlameing
+- Fix Cypress test for image upload @zotya
+
+### Internal
+
+- Improve developer experience, don't logout on hot-reload @tiberiuichim
+- Cleanup eslint in razzle.config.js @tiberiuichim
+
+## 8.0.0 (2020-09-18)
+
+### Breaking
+
+- Change dummy-addons-loader.js fixture name to `jest-addons-loader.js`, to match existing `jest-svgsystem-transform.js` @tiberiuichim
+
+### Feature
+
 - Added Schema Editor within Dexterity Content-Types Controlpanel @rexalex @avoinea #1517
 - Added Blocks Layout Editor within Dexterity Content-Types Controlpanel @avoinea #1517
 - Added missing components for Email and Url widgets #1246 @rexalex
 
 ### Bugfix
 
+- Fix the broken profile view in Toolbar @iFlameing
+
 ### Internal
+
+- Wrap addon configuration loaders in a wrapper to check that they return back config @tiberiuichim
 
 ## 7.15.0 (2020-09-15)
 
@@ -26,6 +55,7 @@
 
 ### Bugfix
 
+- When dealing with authentication token expiration set to 0, auto-refresh token in one hour instead of logging out use @tiberiuichim
 - Fixed front-end field validation #1246 @rexalex
 - Fixed date only widget rendering #1246 @rexalex
 - Fix errors with SelectWidget when removing the only element @rexalex
@@ -95,8 +125,6 @@
 - Fix `null` response issue when passing custom `Accept:` headers to actions #1771 @avoinea
 - Removed all `<<<<<HEAD` artifacts from translations @steffenri
 - Increase z-index of `block-add-button` @steffenri
-
-### Internal
 
 ## 7.11.1 (2020-08-27)
 
