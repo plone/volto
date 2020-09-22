@@ -1277,6 +1277,10 @@ msgid "Preferences"
 msgstr "Preferências"
 
 #: components/manage/Blocks/HTML/Edit
+msgid "Prettify your code"
+msgstr ""
+
+#: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
 msgid "Preview"
 msgstr "Pré-visualização"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-09-15T08:53:14.294Z\n"
+"POT-Creation-Date: 2020-09-22T10:37:35.901Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1546,6 +1546,11 @@ msgstr ""
 #: components/manage/Toolbar/PersonalTools
 # defaultMessage: Preferences
 msgid "Preferences"
+msgstr ""
+
+#: components/manage/Blocks/HTML/Edit
+# defaultMessage: Prettify your code
+msgid "Prettify your code"
 msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
