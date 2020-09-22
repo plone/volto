@@ -1,6 +1,6 @@
 # Change Log
 
-## 8.0.2 (unreleased)
+## 8.1.0 (2020-09-22)
 
 ### Breaking
 
