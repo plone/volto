@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Create link in Draftjs using Objectbrowser @giuliaghisini
+
 ### Bugfix
 
 ### Internal
