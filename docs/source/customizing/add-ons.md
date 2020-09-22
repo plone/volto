@@ -49,7 +49,7 @@ to pull the packages. So, create `mrs.developer.json` and add:
 }
 ```
 
-run 
+run
 
 ```bash
 yarn develop
@@ -174,6 +174,24 @@ export blocks = {
 ...
 ```
 
+As this is a common operation, Volto provides a helper method for this:
+
+```
+import { applyConfig } from '@plone/volto/helpers';
+import * as voltoConfig from '@plone/volto/config';
+
+const config = applyConfig([
+    enableOptionalBlocks,
+    loadExampleAddon
+], voltoConfig);
+
+export blocks = {
+  ...config.blocks,
+}
+```
+
+The `applyConfig` helper ensures that each configuration methods returns the
+config object, avoiding odd and hard to track errors when developing addons.
 
 ### Add several layers of customizations
 
@@ -186,13 +204,36 @@ Set them up in the `customizationPaths` key in the `package.json` file on your
 Volto project.
 
 ```json
-"customizationPaths": ["src/customizations/", "src/addons/@plone/my-volto-addon/src/customizations/"],
+"customizationPaths": ["src/customizations", "src/addons/@plone/my-volto-addon/src/customizations"],
 ```
 
 !!! tip
     Do not forget the `/` at the end of both
 
+## Testing addons
 
+You can use `yarn test src/addons/addon-name` to run tests. You should add your
+addon path to the `moduleNameMapper` value of the `jest` key in package.json:
+Your moduleNameMapper would look like:
+
+```
+moduleNameMapper: {
+  '@plone/volto/babel': '<rootDir>/node_modules/@plone/volto/babel',
+  '@plone/volto/(.*)$': '<rootDir>/node_modules/@plone/volto/src/$1',
+  'load-volto-addons':
+    '<rootDir>/node_modules/@plone/volto/jes-addons-loader.js',
+  'my-volto-addon/(.*)$': '<rootDir>/src/addons/my-volto-addon/src/$1',
+  '@package/(.*)$': '<rootDir>/src/$1',
+  'load-volto-addons':
+    '<rootDir>/node_modules/@plone/volto/jest-addons-loader.js',
+  '~/(.*)$': '<rootDir>/src/$1',
+}
+```
+
+!!! tip
+  See the [Advanced customization scenarios](../../customizing-components/)
+  section on how to enhance this pattern and how to include customizations
+  inside addons.
 
 ## Creating addons
 

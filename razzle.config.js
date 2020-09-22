@@ -1,31 +1,16 @@
-/* eslint import/no-extraneous-dependencies: 0 */
-/* eslint import/no-dynamic-require: 0 */
-/* eslint global-require: 0 */
-/* eslint no-console: 0 */
-/* eslint no-param-reassign: 0 */
-/* eslint no-unused-vars: 0 */
-
-const logger = require('razzle-dev-utils/logger');
 const path = require('path');
-const autoprefixer = require('autoprefixer');
 const makeLoaderFinder = require('razzle-dev-utils/makeLoaderFinder');
 const nodeExternals = require('webpack-node-externals');
-const webpack = require('webpack');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const LoadablePlugin = require('@loadable/webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const fs = require('fs');
-const { map, has } = require('lodash');
-const glob = require('glob').sync;
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const RootResolverPlugin = require('./webpack-root-resolver');
 const createAddonsLoader = require('./create-addons-loader');
 const AddonConfigurationRegistry = require('./addon-registry');
-const addLessLoader = require('./less-plugin');
 
 const fileLoaderFinder = makeLoaderFinder('file-loader');
 const babelLoaderFinder = makeLoaderFinder('babel-loader');
-// const eslintLoaderFinder = makeLoaderFinder('eslint-loader');
 
 const projectRootPath = path.resolve('.');
 const languages = require('./src/constants/Languages');
@@ -42,10 +27,10 @@ let { customizationPaths } = packageJson;
 if (!customizationPaths) {
   customizationPaths = ['src/customizations/'];
 }
-customizationPaths.forEach(customizationPath => {
+customizationPaths.forEach((customizationPath) => {
   map(
     glob(`${customizationPath}**/*.*(svg|png|jpg|jpeg|gif|ico|less|js|jsx)`),
-    filename => {
+    (filename) => {
       const targetPath = filename.replace(
         customizationPath,
         `${registry.voltoPath}/src/`,
@@ -65,7 +50,7 @@ customizationPaths.forEach(customizationPath => {
   );
 });
 
-const svgPlugin = config => {
+const svgPlugin = (config) => {
   const SVGLOADER = {
     test: /icons\/.*\.svg$/,
     use: [
@@ -94,7 +79,7 @@ const defaultModify = (config, { target, dev }, webpack) => {
   //  Prevent moment from loading all locales
   config.plugins.push(
     new MomentLocalesPlugin({
-      localesToKeep: [],
+      localesToKeep: Object.keys(languages),
     }),
   );
 
@@ -121,30 +106,29 @@ const defaultModify = (config, { target, dev }, webpack) => {
   }
 
   let SENTRY = undefined;
-  if (process.env.SENTRY_DSN){
+  if (process.env.SENTRY_DSN) {
     SENTRY = {
-      SENTRY_DSN: process.env.SENTRY_DSN
-    }
+      SENTRY_DSN: process.env.SENTRY_DSN,
+    };
   }
 
   if (target === 'web') {
-    if ((SENTRY) && (process.env.SENTRY_FRONTEND_CONFIG)){
-      try{
+    if (SENTRY && process.env.SENTRY_FRONTEND_CONFIG) {
+      try {
         SENTRY.SENTRY_CONFIG = JSON.parse(process.env.SENTRY_FRONTEND_CONFIG);
-        if (process.env.SENTRY_RELEASE !== undefined){
+        if (process.env.SENTRY_RELEASE !== undefined) {
           SENTRY.SENTRY_CONFIG.release = process.env.SENTRY_RELEASE;
         }
-      }
-      catch(e){
-        console.log("Error parsing SENTRY_FRONTEND_CONFIG");
-        throw(e);
+      } catch (e) {
+        console.log('Error parsing SENTRY_FRONTEND_CONFIG');
+        throw e;
       }
     }
     config.plugins.unshift(
       new webpack.DefinePlugin({
         __CLIENT__: true,
         __SERVER__: false,
-        __SENTRY__: SENTRY ? JSON.stringify(SENTRY) : undefined
+        __SENTRY__: SENTRY ? JSON.stringify(SENTRY) : undefined,
       }),
     );
 
@@ -196,18 +180,17 @@ const defaultModify = (config, { target, dev }, webpack) => {
   }
 
   if (target === 'node') {
-    if (SENTRY){
+    if (SENTRY) {
       SENTRY.SENTRY_CONFIG = undefined;
-        if (process.env.SENTRY_BACKEND_CONFIG){
-        try{
-          SENTRY.SENTRY_CONFIG = JSON.parse(process.env.SENTRY_BACKEND_CONFIG)
-          if (process.env.SENTRY_RELEASE !== undefined){
+      if (process.env.SENTRY_BACKEND_CONFIG) {
+        try {
+          SENTRY.SENTRY_CONFIG = JSON.parse(process.env.SENTRY_BACKEND_CONFIG);
+          if (process.env.SENTRY_RELEASE !== undefined) {
             SENTRY.SENTRY_CONFIG.release = process.env.SENTRY_RELEASE;
           }
-        }
-        catch(e){
-          console.log("Error parsing SENTRY_BACKEND_CONFIG")
-          throw(e);
+        } catch (e) {
+          console.log('Error parsing SENTRY_BACKEND_CONFIG');
+          throw e;
         }
       }
     }
@@ -215,7 +198,7 @@ const defaultModify = (config, { target, dev }, webpack) => {
       new webpack.DefinePlugin({
         __CLIENT__: false,
         __SERVER__: true,
-        __SENTRY__: SENTRY ? JSON.stringify(SENTRY) : undefined
+        __SENTRY__: SENTRY ? JSON.stringify(SENTRY) : undefined,
       }),
     );
   }
@@ -237,7 +220,8 @@ const defaultModify = (config, { target, dev }, webpack) => {
   config.resolve.plugins = [new RootResolverPlugin()];
 
   config.resolve.alias = {
-    ...customizations,
+    ...registry.getAddonCustomizationPaths(),
+    ...registry.getProjectCustomizationPaths(),
     ...config.resolve.alias,
     '../../theme.config$': `${projectRootPath}/theme/theme.config`,
     'volto-themes': `${registry.voltoPath}/theme/themes`,
@@ -262,14 +246,14 @@ const defaultModify = (config, { target, dev }, webpack) => {
   }
   // Add babel support external (ie. node_modules npm published packages)
   if (packageJson.addons) {
-    registry.addonNames.forEach(addon =>
+    registry.addonNames.forEach((addon) =>
       include.push(fs.realpathSync(registry.packages[addon].modulePath)),
     );
   }
 
   let addonsAsExternals = [];
   if (packageJson.addons) {
-    addonsAsExternals = registry.addonNames.map(addon => new RegExp(addon));
+    addonsAsExternals = registry.addonNames.map((addon) => new RegExp(addon));
   }
 
   config.externals =
@@ -289,17 +273,19 @@ const defaultModify = (config, { target, dev }, webpack) => {
           }),
         ]
       : [];
-  if ((process.env.SENTRY_AUTH_TOKEN !== undefined) &&
-    (process.env.SENTRY_URL !== undefined) &&
-    (process.env.SENTRY_ORG !== undefined) &&
-    (process.env.SENTRY_PROJECT !== undefined) &&
-    (process.env.SENTRY_RELEASE !== undefined)){
+  if (
+    process.env.SENTRY_AUTH_TOKEN !== undefined &&
+    process.env.SENTRY_URL !== undefined &&
+    process.env.SENTRY_ORG !== undefined &&
+    process.env.SENTRY_PROJECT !== undefined &&
+    process.env.SENTRY_RELEASE !== undefined
+  ) {
     if (target === 'web') {
       config.plugins.push(
         new SentryCliPlugin({
           include: './build/public',
           ignore: ['node_modules', 'webpack.config.js'],
-          release: process.env.SENTRY_RELEASE
+          release: process.env.SENTRY_RELEASE,
         }),
       );
     }
@@ -307,7 +293,7 @@ const defaultModify = (config, { target, dev }, webpack) => {
   return config;
 };
 
-const addonExtenders = registry.getAddonExtenders().map(m => require(m));
+const addonExtenders = registry.getAddonExtenders().map((m) => require(m));
 const defaultPlugins = [
   'bundle-analyzer',
   svgPlugin,
@@ -327,6 +313,6 @@ module.exports = {
       (acc, extender) => extender.modify(acc, { target, dev }, webpack),
       defaultConfig,
     );
-    return defaultConfig;
+    return res;
   },
 };

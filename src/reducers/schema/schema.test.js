@@ -8,6 +8,21 @@ describe('Schema reducer', () => {
       loaded: false,
       loading: false,
       schema: null,
+      post: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
+      put: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
+      update: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
     });
   });
 
@@ -21,6 +36,21 @@ describe('Schema reducer', () => {
       schema: null,
       loaded: false,
       loading: true,
+      post: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
+      put: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
+      update: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
     });
   });
 
@@ -43,6 +73,21 @@ describe('Schema reducer', () => {
         required: [],
         properties: {},
       },
+      post: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
+      put: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
+      update: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
     });
   });
 
@@ -57,6 +102,21 @@ describe('Schema reducer', () => {
       loaded: false,
       loading: false,
       schema: null,
+      post: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
+      put: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
+      update: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
     });
   });
 });

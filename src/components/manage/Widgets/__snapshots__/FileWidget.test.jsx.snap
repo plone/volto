@@ -1,51 +1,54 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a file widget component 1`] = `
-<div
-  className="inline field"
-  id="field-my-field"
->
+Array [
   <div
-    className="ui grid"
+    className="inline field"
+    id="field-my-field"
   >
     <div
-      className="stretched row"
+      className="ui grid"
     >
       <div
-        className="four wide column"
+        className="stretched row"
       >
         <div
-          className="wrapper"
+          className="four wide column"
         >
-          <label
-            htmlFor="field-my-field"
+          <div
+            className="wrapper"
           >
-            My field
-          </label>
+            <label
+              htmlFor="field-my-field"
+            >
+              My field
+            </label>
+          </div>
         </div>
-      </div>
-      <div
-        className="eight wide column"
-      >
-        <img
-          className="ui small image image-preview"
-          id="field-my-field-image"
-        />
         <div
-          className="ui input"
+          className="eight wide column"
         >
-          <input
-            id="field-my-field"
-            name="my-field"
-            onChange={[Function]}
-            type="file"
+          <img
+            className="ui small image image-preview"
+            id="field-my-field-image"
+          />
+          <div
+            className="ui input"
+          >
+            <input
+              id="field-my-field"
+              name="my-field"
+              onChange={[Function]}
+              type="file"
+            />
+          </div>
+          <div
+            className="field-file-name"
           />
         </div>
-        <div
-          className="field-file-name"
-        />
       </div>
     </div>
-  </div>
-</div>
+  </div>,
+  ",",
+]
 `;

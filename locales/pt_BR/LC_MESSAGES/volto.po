@@ -19,6 +19,10 @@ msgstr ""
 "Preferred-Encodings: utf-8\n"
 "Domain: volto\n"
 
+#: components/manage/Blocks/HTML/Edit
+msgid "<p>Add some HTML here</p>"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "Accessibility"
 msgstr "Acessibilidade"
@@ -47,9 +51,9 @@ msgid "Activate and deactivate"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/SchemaWidget
+#: helpers/MessageLabels/MessageLabels
 msgid "Add"
 msgstr "Adicionar"
 
@@ -65,7 +69,7 @@ msgstr "Adicionar conteúdo"
 msgid "Add Translation…"
 msgstr ""
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Add User"
 msgstr "Adicionar usuário"
 
@@ -73,7 +77,7 @@ msgstr "Adicionar usuário"
 msgid "Add a description…"
 msgstr "Adicionar uma descrição…"
 
-#: components/manage/Form/Form
+#: helpers/MessageLabels/MessageLabels
 msgid "Add block…"
 msgstr "Adicionar bloco…"
 
@@ -93,7 +97,7 @@ msgstr "Adicionar campo"
 msgid "Add fieldset"
 msgstr "Adicionar conjunto de campos"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Add group"
 msgstr "Adicionar grupo"
 
@@ -101,15 +105,15 @@ msgstr "Adicionar grupo"
 msgid "Add new content type"
 msgstr ""
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Add new group"
 msgstr "Adicionar novo grupo"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Add new user"
 msgstr "Adicionar novo usuário"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Add to Groups"
 msgstr "Adicionar à Grupos"
 
@@ -164,12 +168,12 @@ msgstr ""
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/DatabaseInformation
 #: components/manage/Controlpanels/ModerateComments
-#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Diff/Diff
 #: components/manage/History/History
 #: components/manage/Preferences/ChangePassword
@@ -178,6 +182,7 @@ msgstr ""
 #: components/manage/Sharing/Sharing
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
+#: helpers/MessageLabels/MessageLabels
 msgid "Back"
 msgstr "Voltar"
 
@@ -217,17 +222,26 @@ msgstr "Por padrão, as permissões do contêiner deste item são herdadas. Se v
 msgid "Cache Name"
 msgstr ""
 
+#: components/manage/Controlpanels/ContentTypeLayout
+msgid "Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypeLayout
+msgid "Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>"
+msgstr ""
+
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
-#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Delete/Delete
 #: components/manage/Edit/Edit
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 #: components/theme/Login/Login
+#: helpers/MessageLabels/MessageLabels
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -264,6 +278,8 @@ msgid "Changes saved"
 msgstr "Alterações salvas"
 
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
 msgid "Changes saved."
 msgstr "Alterações guardadas."
@@ -428,12 +444,9 @@ msgstr ""
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
-#: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/TextareaWidget
-#: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/CommentEditModal
 #: components/theme/Comments/Comments
@@ -446,20 +459,19 @@ msgstr "Predefinido"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
-#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/UsersControlpanelGroups
 #: components/manage/Controlpanels/UsersControlpanelUser
 #: components/manage/Delete/Delete
-#: components/manage/Widgets/CheckboxWidget
-#: components/manage/Widgets/TextareaWidget
-#: components/manage/Widgets/TextWidget
+#: components/manage/Widgets/FormFieldWrapper
+#: components/manage/Widgets/ObjectBrowserWidget
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/Comments
 msgid "Delete"
 msgstr "Eliminar"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Delete Group"
 msgstr "Eliminar Grupo"
 
@@ -467,7 +479,7 @@ msgstr "Eliminar Grupo"
 msgid "Delete Type"
 msgstr ""
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Delete User"
 msgstr "Eliminar Usuário"
 
@@ -485,15 +497,12 @@ msgstr "Descendente"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Controlpanels/UsersControlpanel
-#: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/TextareaWidget
-#: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
+#: helpers/MessageLabels/MessageLabels
 msgid "Description"
 msgstr "Descrição"
 
@@ -551,10 +560,11 @@ msgid "E-mail addresses do not match."
 msgstr "Os endereços de e-mail não coincidem."
 
 #: components/manage/Contents/ContentsItem
-#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Toolbar/Toolbar
-#: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/FormFieldWrapper
+#: components/manage/Widgets/ObjectBrowserWidget
 #: components/theme/Comments/Comments
 msgid "Edit"
 msgstr "Editar"
@@ -583,7 +593,7 @@ msgstr ""
 msgid "Edit {title}"
 msgstr "Editar {title}"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Email"
 msgstr "Email"
 
@@ -599,13 +609,17 @@ msgstr ""
 msgid "Embeded Google Maps"
 msgstr ""
 
+#: components/manage/Controlpanels/ContentTypeLayout
+msgid "Enable editable Blocks"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "End Date"
 msgstr ""
 
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
-msgid "Enter URL or title"
-msgstr "Escreva URL ou título"
+msgid "Enter URL or select an item"
+msgstr ""
 
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
@@ -635,12 +649,13 @@ msgid "Enter your new password. Minimum 5 characters."
 msgstr "Escreva uma senha nova. Mínimo de 5 caracteres."
 
 #: components/manage/Add/Add
+#: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Edit/Edit
-#: components/manage/Form/Form
 #: components/manage/Form/InlineForm
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
+#: helpers/MessageLabels/MessageLabels
 msgid "Error"
 msgstr "Erro"
 
@@ -728,7 +743,7 @@ msgstr "Cheio"
 msgid "Full Name"
 msgstr "Nome Completo"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Fullname"
 msgstr "Nome completo"
 
@@ -748,11 +763,12 @@ msgstr "Bloco Integrado Google Maps"
 msgid "Group"
 msgstr "Grupo"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Group created"
 msgstr "Grupo criado"
 
 #: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Groupname"
 msgstr "Nome do grupo"
 
@@ -813,6 +829,8 @@ msgid "Include this occurence"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
 msgid "Info"
 msgstr "Informação"
@@ -890,8 +908,8 @@ msgstr "Item(ns) colado(s)."
 msgid "Items"
 msgstr ""
 
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
 msgid "Items must be unique."
 msgstr "Os itens têm de ser únicos."
 
@@ -913,6 +931,10 @@ msgstr "Última modificação"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Latest version"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypesActions
+msgid "Layout"
 msgstr ""
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -986,14 +1008,26 @@ msgstr ""
 msgid "Maps URL"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Maximum length is {len}."
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Maximum value is {len}."
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
 msgstr "Mensagem"
 
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
 msgid "Minimum length is {len}."
 msgstr "O comprimento mínimo é {len}."
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Minimum value is {len}."
+msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Moderate Comments"
@@ -1160,8 +1194,12 @@ msgstr "Origem"
 msgid "Page"
 msgstr ""
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: components/manage/Widgets/SchemaWidget
+msgid "Parent fieldset"
+msgstr ""
+
 #: components/theme/Login/Login
+#: helpers/MessageLabels/MessageLabels
 msgid "Password"
 msgstr "Senha"
 
@@ -1225,6 +1263,10 @@ msgstr "Plone{reg} Open Source CMS/WCM"
 #: components/manage/Preferences/PersonalInformation
 msgid "Portrait"
 msgstr "Retrato"
+
+#: components/manage/Widgets/SchemaWidget
+msgid "Possible values"
+msgstr ""
 
 #: components/theme/Footer/Footer
 msgid "Powered by Plone & Python"
@@ -1324,18 +1366,15 @@ msgstr ""
 msgid "Repeat on"
 msgstr ""
 
-#: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/TextareaWidget
-#: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 msgid "Required"
 msgstr "Obrigatório"
 
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
 msgid "Required input is missing."
 msgstr "Falta informação obrigatória."
 
@@ -1373,23 +1412,32 @@ msgstr "Direita"
 msgid "Rights"
 msgstr "Permissões"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Roles"
 msgstr "Papéis"
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
-#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: helpers/MessageLabels/MessageLabels
 msgid "Save"
 msgstr "Guardar"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Save recurrence"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypesActions
+msgid "Schema"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypeSchema
+msgid "Schema updates"
 msgstr ""
 
 #: components/theme/SearchWidget/SearchWidget
@@ -1408,7 +1456,7 @@ msgstr "Pesquisar conteúdo"
 msgid "Search for user or group"
 msgstr "Pesquisar usuário ou grupo"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Search group…"
 msgstr ""
 
@@ -1420,7 +1468,7 @@ msgstr "Resultados da pesquisa"
 msgid "Search results for {term}"
 msgstr "Resultados da pesquisa para {term}"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Search users…"
 msgstr ""
 
@@ -1479,6 +1527,10 @@ msgstr "Definir a minha senha"
 msgid "Set your password"
 msgstr "Defina a sua senha"
 
+#: components/manage/Sidebar/Sidebar
+msgid "Settings"
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 #: components/manage/Toolbar/More
 msgid "Sharing"
@@ -1488,12 +1540,9 @@ msgstr "Partilha"
 msgid "Sharing for {title}"
 msgstr "Partilha de {title}"
 
-#: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/TextareaWidget
-#: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 msgid "Short Name"
 msgstr "Nome Curto"
@@ -1606,11 +1655,12 @@ msgstr "Assunto"
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Controlpanels/UsersControlpanel
+#: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/theme/ContactForm/ContactForm
+#: helpers/MessageLabels/MessageLabels
 msgid "Success"
 msgstr "Sucesso"
 
@@ -1702,8 +1752,8 @@ msgstr ""
 msgid "There were some errors"
 msgstr ""
 
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
 msgid "There were some errors."
 msgstr "Ocorreram alguns erros."
 
@@ -1727,15 +1777,12 @@ msgstr ""
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Controlpanels/UsersControlpanel
-#: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/TextareaWidget
-#: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
+#: helpers/MessageLabels/MessageLabels
 msgid "Title"
 msgstr "Título"
 
@@ -1826,6 +1873,10 @@ msgstr "Enviar"
 msgid "Upload a lead image in the 'Lead Image' content field."
 msgstr ""
 
+#: components/manage/Blocks/HeroImageLeft/Edit
+msgid "Upload a new image"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 msgid "Upload files"
 msgstr "Enviar ficheiros"
@@ -1838,12 +1889,9 @@ msgstr "Enviar {count, plural, one {# file} other {# files}}"
 msgid "Uploading files"
 msgstr "Enviando ficheiros"
 
-#: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/TextareaWidget
-#: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 msgid "Used for programmatic access to the fieldset."
 msgstr "Usado para aceder programaticamente ao conjunto de campos."
@@ -1852,7 +1900,7 @@ msgstr "Usado para aceder programaticamente ao conjunto de campos."
 msgid "User"
 msgstr "Usuário"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "User created"
 msgstr "Usuário criado"
 
@@ -1860,7 +1908,7 @@ msgstr "Usuário criado"
 msgid "User name"
 msgstr "Nome de usuário"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Username"
 msgstr "Nome de usuário"
 
@@ -1869,7 +1917,7 @@ msgid "Users"
 msgstr "Usuários"
 
 #: components/manage/Controlpanels/Controlpanels
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Users and Groups"
 msgstr "Usuários e Grupos"
 
@@ -2038,6 +2086,10 @@ msgstr ""
 msgid "draft"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+msgid "email"
+msgstr ""
+
 #: components/theme/View/EventView
 msgid "event_alldates"
 msgstr ""
@@ -2086,6 +2138,10 @@ msgstr "html"
 msgid "image"
 msgstr "imagem"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "integer"
+msgstr ""
+
 #: components/manage/Contents/ContentsItem
 msgid "intranet"
 msgstr ""
@@ -2110,9 +2166,25 @@ msgstr ""
 msgid "maps"
 msgstr "mapas"
 
+#: components/manage/Widgets/SchemaWidget
+msgid "maxLength"
+msgstr ""
+
+#: components/manage/Widgets/SchemaWidget
+msgid "maximum"
+msgstr ""
+
 #: config/Blocks
 msgid "media"
 msgstr "média"
+
+#: components/manage/Widgets/SchemaWidget
+msgid "minLength"
+msgstr ""
+
+#: components/manage/Widgets/SchemaWidget
+msgid "minimum"
+msgstr ""
 
 #: config/Blocks
 msgid "mostUsed"
@@ -2120,6 +2192,10 @@ msgstr ""
 
 #: components/manage/Contents/ContentsItem
 msgid "no workflow state"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+msgid "number"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
@@ -2307,6 +2383,10 @@ msgstr "título"
 msgid "toc"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+msgid "url"
+msgstr ""
+
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"
 msgstr "avatar do usuário"
@@ -2326,6 +2406,14 @@ msgstr "podemos enviar-lhe uma nova"
 #: components/manage/Contents/Contents
 msgid "{count} selected"
 msgstr "{count} seleccionados"
+
+#: components/manage/Controlpanels/ContentType
+msgid "{id} Content Type"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypeSchema
+msgid "{id} Schema"
+msgstr ""
 
 #: components/manage/Actions/Actions
 msgid "{title} copied."
