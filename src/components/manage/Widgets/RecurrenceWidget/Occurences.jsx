@@ -64,6 +64,7 @@ const Occurences = ({
   showTitle,
   editOccurences,
 }) => {
+  moment.locale(intl.locale);
   let all = [];
   const isExcluded = (date) => {
     var dateISO = toISOString(date);

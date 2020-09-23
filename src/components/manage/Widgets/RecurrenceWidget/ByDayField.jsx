@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import { Form, Grid, Button } from 'semantic-ui-react';
 import moment from 'moment';
 import { Days } from './Utils';
+import { useIntl } from 'react-intl';
 
 /**
  * ByDayField component class.
@@ -15,6 +16,9 @@ import { Days } from './Utils';
  * @returns {string} Markup of the component.
  */
 const ByDayField = ({ label, value, onChange }) => {
+  const intl = useIntl();
+  moment.locale(intl.locale);
+
   const toggleWeekDay = (dayName) => {
     var day = Days[dayName];
     var byweekday = value ? [...value] : [];

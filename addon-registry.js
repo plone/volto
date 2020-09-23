@@ -189,6 +189,9 @@ class AddonConfigurationRegistry {
       customizationPaths = ['src/customizations'];
     }
     customizationPaths.forEach((customizationPath) => {
+      customizationPath = customizationPath.endsWith('/')
+        ? customizationPath.slice(0, customizationPath.length - 1)
+        : customizationPath;
       const base = path.join(rootPath, customizationPath);
       const reg = [];
 

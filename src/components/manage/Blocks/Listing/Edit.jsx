@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 
 import {
   SidebarPortal,
@@ -9,6 +9,17 @@ import {
 } from '@plone/volto/components';
 import { getBaseUrl } from '@plone/volto/helpers';
 
+const messages = defineMessages({
+  results: {
+    id: 'Results preview',
+    defaultMessage: 'Results preview',
+  },
+  items: {
+    id: 'Contained items',
+    defaultMessage: 'Contained items',
+  },
+});
+
 const Edit = ({
   data,
   onChangeBlock,
@@ -16,6 +27,7 @@ const Edit = ({
   selected,
   properties,
   pathname,
+  intl,
 }) => {
   // componentDidMount
   React.useEffect(() => {
@@ -29,18 +41,15 @@ const Edit = ({
     /* eslint-disable react-hooks/exhaustive-deps */
   }, []);
 
+  const placeholder =
+    data.placeholder ||
+    (data?.query?.length
+      ? intl.formatMessage(messages.results)
+      : intl.formatMessage(messages.items));
+
   return (
     <>
-      {data?.query?.length === 0 && (
-        <FormattedMessage id="Contained items" defaultMessage="Contained items">
-          {(message) => <p className="items-preview">{message}</p>}
-        </FormattedMessage>
-      )}
-      {data?.query?.length > 0 && (
-        <FormattedMessage id="Results preview" defaultMessage="Results preview">
-          {(message) => <p className="items-preview">{message}</p>}
-        </FormattedMessage>
-      )}
+      <p className="items-preview">{placeholder}</p>
       <ListingBody
         data={data}
         properties={properties}

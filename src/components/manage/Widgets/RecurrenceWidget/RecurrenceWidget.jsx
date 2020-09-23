@@ -22,6 +22,7 @@ import {
 } from 'semantic-ui-react';
 
 import { SelectWidget, Icon, DatetimeWidget } from '@plone/volto/components';
+
 import saveSVG from '@plone/volto/icons/save.svg';
 import editingSVG from '@plone/volto/icons/editing.svg';
 import trashSVG from '@plone/volto/icons/delete.svg';
@@ -177,6 +178,7 @@ class RecurrenceWidget extends Component {
    */
   constructor(props, intl) {
     super(props);
+
     moment.locale(this.props.intl.locale);
 
     let rruleSet = this.props.value
@@ -303,7 +305,7 @@ class RecurrenceWidget extends Component {
     formValues = this.changeField(
       formValues,
       'recurrenceEnds',
-      this.props.formData.end ? 'until' : 'count',
+      this.props.formData?.end ? 'until' : 'count',
     );
 
     const rrule = rruleSet.rrules()[0];
@@ -499,10 +501,10 @@ class RecurrenceWidget extends Component {
     var currWeekday = this.getWeekday(moment().day() - 1);
     var currMonth = moment().month() + 1;
 
-    var startMonth = this.props.formData.start
+    var startMonth = this.props.formData?.start
       ? moment(this.props.formData.start).month() + 1
       : currMonth;
-    var startWeekday = this.props.formData.start
+    var startWeekday = this.props.formData?.start
       ? this.getWeekday(moment(this.props.formData.start).day() - 1)
       : currWeekday;
     formValues[field] = value;
@@ -767,6 +769,7 @@ class RecurrenceWidget extends Component {
               <div>
                 <Button
                   basic
+                  disabled={this.props.isDisabled}
                   color="blue"
                   className="edit-recurrence"
                   onClick={this.show('blurring')}
