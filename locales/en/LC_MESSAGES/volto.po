@@ -610,7 +610,7 @@ msgid "End Date"
 msgstr ""
 
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
-msgid "Enter URL or title"
+msgid "Enter URL or select an item"
 msgstr ""
 
 #: components/theme/Register/Register

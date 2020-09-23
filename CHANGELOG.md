@@ -1,12 +1,24 @@
 # Change Log
 
-## 8.0.2 (unreleased)
+## 8.1.1 (unreleased)
 
 ### Breaking
 
 ### Feature
 
 - Now you can prettify the html code in HTML block @iFlameing
+
+### Bugfix
+
+### Internal
+
+## 8.1.0 (2020-09-22)
+
+### Breaking
+
+### Feature
+
+- Create link in Draftjs using Objectbrowser @giuliaghisini
 
 ### Bugfix
 
