@@ -1,19 +1,38 @@
 # Change Log
 
-## 8.0.1 (unreleased)
+## 8.1.1 (unreleased)
 
 ### Breaking
 
 ### Feature
 
 ### Bugfix
-- Fix word overflow from html-block @iFlameing
 
-- Fix Cypress test for image upload
+### Internal
+
+## 8.1.0 (2020-09-22)
+
+### Breaking
+
+### Feature
+
+- Create link in Draftjs using Objectbrowser @giuliaghisini
+
+### Bugfix
+
+### Internal
+
+## 8.0.1 (2020-09-22)
+
+### Bugfix
+
+- Fix word overflow from html-block @iFlameing
+- Fix Cypress test for image upload @zotya
 
 ### Internal
 
 - Improve developer experience, don't logout on hot-reload @tiberiuichim
+- Cleanup eslint in razzle.config.js @tiberiuichim
 
 ## 8.0.0 (2020-09-18)
 

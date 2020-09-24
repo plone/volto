@@ -97,3 +97,18 @@
     color: #e40166 !important;
   }
 }
+
+.ui.form .inline.field .link-form-container {
+  .wrapper {
+    display: flex;
+    border-bottom: 1px solid @lightGreyBorderColor;
+
+    .ui.input.input-anchorlink-theme {
+      vertical-align: unset;
+
+      input {
+        height: unset;
+      }
+    }
+  }
+}

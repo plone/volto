@@ -617,8 +617,8 @@ msgid "End Date"
 msgstr "終了日付"
 
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
-msgid "Enter URL or title"
-msgstr "URLまたはタイトルを入力"
+msgid "Enter URL or select an item"
+msgstr ""
 
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
