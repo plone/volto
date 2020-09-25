@@ -1874,10 +1874,6 @@ msgid "Upload files"
 msgstr "Încărcați fișiere"
 
 #: components/manage/Contents/ContentsUploadModal
-msgid "Upload {count, plural, one {# file} other {# files}}"
-msgstr "Încărcați {count, plural, one {# file} other {# files}}"
-
-#: components/manage/Contents/ContentsUploadModal
 msgid "Uploading files"
 msgstr "Încărcarea fișierelor"
 
@@ -2394,6 +2390,10 @@ msgstr "Vizitează site extern"
 #: components/theme/Login/Login
 msgid "we can send you a new one"
 msgstr "vă putem trimite unul nou"
+
+#: components/manage/Contents/ContentsUploadModal
+msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "{count} selected"
