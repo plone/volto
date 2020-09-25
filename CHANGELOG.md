@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Added prop resettable to DatetimeWidget @damiDevRT
+- removed the ability to reset the datepicker in the recurrence widget to prevent the uncontrolled creation of recurrences @damiDevRT
 - Japanese translation updated @terapyon
 
 ### Internal
