@@ -10,15 +10,27 @@ This upgrade guide lists all breaking changes in Volto and explains the
     dependencies might do when dealing with upgrades. We keep the generator up
     to date and in sync with current Volto release.
 
+## Upgrading to Volto 8.x.x
+
+### Upgrade package.json testing configuration
+
+The `dummy-addons-loader.js` file has been renamed to `jest-addons-loader.js`,
+to be more in line with the rest of the existing files. You should add the
+following value to the `moduleNameMapper` property of the `jest` key in your
+project's package.json:
+
+```
+"load-volto-addons": "<rootDir>/node_modules/@plone/volto/jest-addons-loader.js",
+```
+
 ## Upgrading to Volto 7.x.x
 
 A misspelled file has been renamed. If you import `strickthrough.svg` in your
 project, you'll now find that file at `@plone/volto/icons/strikethrough.svg`.
 
-
 ### New webpack resolve alias for Volto themes
 
-As a "nice to have", a new resolve alias is provided that points to Volto's 
+As a "nice to have", a new resolve alias is provided that points to Volto's
 theme folder. So, in your project's `theme.config` file, you can replace:
 
 ```less

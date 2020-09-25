@@ -738,8 +738,8 @@ msgid "End Date"
 msgstr ""
 
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
-# defaultMessage: Enter URL or title
-msgid "Enter URL or title"
+# defaultMessage: Enter URL or select an item
+msgid "Enter URL or select an item"
 msgstr ""
 
 #: components/theme/Register/Register
