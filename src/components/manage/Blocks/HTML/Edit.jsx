@@ -134,10 +134,12 @@ class Edit extends Component {
 
   onPrettify = () => {
     this.setState({
-      code: this.prettier.current.default.format(this.state.code, {
-        parser: 'html',
-        plugins: [this.parserHtml.current.default],
-      }),
+      code: this.prettier.current.default
+        .format(this.state.code, {
+          parser: 'html',
+          plugins: [this.parserHtml.current.default],
+        })
+        .trim(),
     });
   };
 
