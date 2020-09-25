@@ -32,8 +32,10 @@ const messages = defineMessages({
     defaultMessage: 'Cancel',
   },
   upload: {
-    id: 'Upload {count, plural, one {# file} other {# files}}',
-    defaultMessage: 'Upload {count, plural, one {# file} other {# files}}',
+    id:
+      '{count, plural, one {Upload {count} file} other {Upload {count} files}}',
+    defaultMessage:
+      '{count, plural, one {Upload {count} file} other {Upload {count} files}}',
   },
 });
 
@@ -200,34 +202,36 @@ class ContentsUploadModal extends Component {
               multiple={true}
             >
               {({ getRootProps, getInputProps }) => (
-                <Segment {...getRootProps({ className: 'dashed' })}>
-                  <Table basic="very">
-                    <Table.Body>
-                      <Table.Row>
-                        <Table.Cell>
-                          <FormattedMessage
-                            id="Drag and drop files from your computer onto this area or click the “Browse” button."
-                            defaultMessage="Drag and drop files from your computer onto this area or click the “Browse” button."
-                          />
-                        </Table.Cell>
-                        <Table.Cell>
-                          <Button className="ui button primary">
+                <div {...getRootProps({ className: 'dashed' })}>
+                  <Segment>
+                    <Table basic="very">
+                      <Table.Body>
+                        <Table.Row>
+                          <Table.Cell>
                             <FormattedMessage
-                              id="Browse"
-                              defaultMessage="Browse"
+                              id="Drag and drop files from your computer onto this area or click the “Browse” button."
+                              defaultMessage="Drag and drop files from your computer onto this area or click the “Browse” button."
                             />
-                          </Button>
-                          <input
-                            {...getInputProps({
-                              type: 'file',
-                              style: { display: 'none' },
-                            })}
-                          />
-                        </Table.Cell>
-                      </Table.Row>
-                    </Table.Body>
-                  </Table>
-                </Segment>
+                          </Table.Cell>
+                          <Table.Cell>
+                            <Button className="ui button primary">
+                              <FormattedMessage
+                                id="Browse"
+                                defaultMessage="Browse"
+                              />
+                            </Button>
+                            <input
+                              {...getInputProps({
+                                type: 'file',
+                                style: { display: 'none' },
+                              })}
+                            />
+                          </Table.Cell>
+                        </Table.Row>
+                      </Table.Body>
+                    </Table>
+                  </Segment>
+                </div>
               )}
             </Dropzone>
             {this.state.files.length > 0 && (
