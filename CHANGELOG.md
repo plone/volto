@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Add Basque translation @erral
+
 ### Bugfix
 
 - Japanese translation updated @terapyon
