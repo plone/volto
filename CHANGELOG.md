@@ -51,6 +51,7 @@
 ### Bugfix
 
 - Fix the broken profile view in Toolbar @iFlameing
+- Use Plone `I18N_LANGUAGE` cookie instead of `language` @cekk
 
 ### Internal
 
