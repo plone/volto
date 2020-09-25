@@ -38,7 +38,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('#page-document p').contains('My text');
     });
 
-    it('As editor I can add a link to a text block', function() {
+    it('As editor I can add a link to a text block', function () {
       cy.get('.documentFirstHeading > .public-DraftStyleDefault-block');
 
       // when I create a link
@@ -66,7 +66,7 @@ if (Cypress.env('API') !== 'guillotina') {
         .and('include', 'https://google.com');
     });
 
-    it('As editor I can add a mailto link to a text block', function() {
+    it('As editor I can add a mailto link to a text block', function () {
       cy.get('.documentFirstHeading > .public-DraftStyleDefault-block');
 
       // when I create a mailto link
