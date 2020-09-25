@@ -12,6 +12,7 @@ import {
   Dimmer,
   Header,
   Icon,
+  Image,
   Loader,
   Modal,
   Table,
@@ -76,7 +77,6 @@ class ContentsUploadModal extends Component {
     this.state = {
       files: [],
     };
-    this.previewRef = React.createRef();
   }
 
   /**
@@ -116,18 +116,18 @@ class ContentsUploadModal extends Component {
    * @param {array} files File objects
    * @returns {undefined}
    */
-  onDrop(files) {
+  onDrop = async (files) => {
+    for (let i = 0; i < files.length; i++) {
+      await readAsDataURL(files[i]).then((data) => {
+        const fields = data.match(/^data:(.*);(.*),(.*)$/);
+        files[i].preview = fields[0];
+      });
+    }
     this.setState({
       files: concat(this.state.files, files),
     });
-  }
-
-  getUrl = (file) => {
-    readAsDataURL(file).then((data) => {
-      const fields = data.match(/^data:(.*);(.*),(.*)$/);
-      this.previewRef.current.src = fields[0];
-    });
   };
+
   /**
    * Cancel handler
    * @method onCancel
@@ -194,10 +194,10 @@ class ContentsUploadModal extends Component {
           </Dimmer>
           <Modal.Content>
             <Dropzone
-              noClick
               onDrop={this.onDrop}
               className="dropzone"
               noDragEventsBubbling={true}
+              multiple={true}
             >
               {({ getRootProps, getInputProps }) => (
                 <Segment {...getRootProps({ className: 'dashed' })}>
@@ -211,18 +211,18 @@ class ContentsUploadModal extends Component {
                           />
                         </Table.Cell>
                         <Table.Cell>
-                          <label className="ui button primary">
+                          <Button className="ui button primary">
                             <FormattedMessage
                               id="Browse"
                               defaultMessage="Browse"
                             />
-                            <input
-                              {...getInputProps({
-                                type: 'file',
-                                style: { display: 'none' },
-                              })}
-                            />
-                          </label>
+                          </Button>
+                          <input
+                            {...getInputProps({
+                              type: 'file',
+                              style: { display: 'none' },
+                            })}
+                          />
                         </Table.Cell>
                       </Table.Row>
                     </Table.Body>
@@ -270,12 +270,7 @@ class ContentsUploadModal extends Component {
                       </Table.Cell>
                       <Table.Cell>
                         {file.type.split('/')[0] === 'image' && (
-                          <img
-                            ref={this.previewRef}
-                            src={this.getUrl(file)}
-                            style={{ height: '60px' }}
-                            alt={file.name}
-                          />
+                          <Image src={file.preview} height={60} />
                         )}
                       </Table.Cell>
                       <Table.Cell>
