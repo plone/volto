@@ -2,20 +2,15 @@
 
 ## 8.1.2 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Add Basque translation @erral
 
-- Added prop resettable to DatetimeWidget @damiDevRT
-- Removed the ability to reset the datepicker in the recurrence widget to prevent the uncontrolled creation of recurrences @damiDevRT
-
 ### Bugfix
 
+- Added prop resettable to DatetimeWidget @damiDevRT
+- Removed the ability to reset the datepicker in the recurrence widget to prevent the uncontrolled creation of recurrences @damiDevRT
 - Fix regression in setting selected sidebar tab by blocks @tiberiuichim
-
-### Internal
 
 ## 8.1.1 (2020-09-27)
 
