@@ -13,6 +13,8 @@
 
 ### Bugfix
 
+- Fix regression in setting selected sidebar tab by blocks @tiberiuichim
+
 ### Internal
 
 ## 8.1.1 (2020-09-27)
