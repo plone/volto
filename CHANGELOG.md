@@ -1,18 +1,25 @@
 # Change Log
 
-## 8.1.1 (unreleased)
+## 8.1.2 (unreleased)
 
 ### Breaking
 
 ### Feature
 
-### Bugfix
+- Add Basque translation @erral
 
 - Added prop resettable to DatetimeWidget @damiDevRT
-- removed the ability to reset the datepicker in the recurrence widget to prevent the uncontrolled creation of recurrences @damiDevRT
-- Japanese translation updated @terapyon
+- Removed the ability to reset the datepicker in the recurrence widget to prevent the uncontrolled creation of recurrences @damiDevRT
+
+### Bugfix
 
 ### Internal
+
+## 8.1.1 (2020-09-27)
+
+### Bugfix
+
+- Japanese translation updated @terapyon
 
 ## 8.1.0 (2020-09-22)
 
