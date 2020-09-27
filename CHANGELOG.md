@@ -37,6 +37,8 @@
 
 ### Internal
 
+- Fix console warning in ToHTML @iFlameing
+
 ## 8.0.1 (2020-09-22)
 
 ### Bugfix
@@ -372,8 +374,6 @@
 ## 7.0.1 (2020-07-07)
 
 ### Breaking
-
-### Feature
 
 ### Bugfix
 
