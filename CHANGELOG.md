@@ -9,6 +9,7 @@
 ### Bugfix
 
 - Japanese translation updated @terapyon
+- Fix regression in setting selected sidebar tab by blocks @tiberiuichim
 
 ### Internal
 
