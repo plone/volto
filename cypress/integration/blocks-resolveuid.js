@@ -21,7 +21,7 @@ if (Cypress.env('API') !== 'guillotina') {
       // cy.waitForResourceToLoad('?fullobjects');
     });
 
-    it('As editor I can add an internal link to a text block', function () {
+    it('Internal link continues to work after moving the target around', function () {
       // given
       cy.wait(2000);
       cy.get('.documentFirstHeading > .public-DraftStyleDefault-block');
@@ -79,6 +79,11 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.url().should('include', '/new-destination/link-target');
     });
 
+    it('Embedded image continues to work after moving the image to another location', function () {
+      // given a page with an image
+      // when I move the image to a new location
+      // then the page will use the new image location
+    });
     // it('Internal link continues to work after renaming the link target', function() {
     //   // given: target document + page with a text block
     //   cy.wait(2000);
