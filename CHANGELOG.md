@@ -33,6 +33,8 @@
 
 ### Bugfix
 
+- Allow select widget to reset when the incoming props change. The react-select widget has its own internal state, so if you initialise the widget without choices, then populate the choices, it wouldn't properly show the default value @tiberiuichim
+
 ### Internal
 
 ## 8.0.1 (2020-09-22)
