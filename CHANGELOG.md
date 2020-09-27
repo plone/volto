@@ -1,6 +1,6 @@
 # Change Log
 
-## 8.1.1 (unreleased)
+## 8.1.2 (unreleased)
 
 ### Breaking
 
@@ -8,10 +8,15 @@
 
 ### Bugfix
 
-- Japanese translation updated @terapyon
 - Fix regression in setting selected sidebar tab by blocks @tiberiuichim
 
 ### Internal
+
+## 8.1.1 (2020-09-27)
+
+### Bugfix
+
+- Japanese translation updated @terapyon
 
 ## 8.1.0 (2020-09-22)
 
