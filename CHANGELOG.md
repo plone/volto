@@ -8,6 +8,9 @@
 
 - Add Basque translation @erral
 
+- Added prop resettable to DatetimeWidget @damiDevRT
+- Removed the ability to reset the datepicker in the recurrence widget to prevent the uncontrolled creation of recurrences @damiDevRT
+
 ### Bugfix
 
 ### Internal
