@@ -906,6 +906,10 @@ msgstr "Artikel kopiert."
 msgid "Item(s) cut."
 msgstr "Artikel ausgeschnitten."
 
+#: components/manage/Contents/Contents
+msgid "Item(s) has been sorted."
+msgstr ""
+
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 msgid "Item(s) pasted."
