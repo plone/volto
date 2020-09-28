@@ -133,6 +133,14 @@ const messages = defineMessages({
     id: 'Item(s) has been sorted.',
     defaultMessage: 'Item(s) has been sorted.',
   },
+  messageMoveTop: {
+    id: 'Item has been Moved to Top.',
+    defaultMessage: 'Item has been Moved to Top.',
+  },
+  messageMoveBottom: {
+    id: 'Item has been Moved to Down.',
+    defaultMessage: 'Item has been Moved to Bottom.',
+  },
   messagePasted: {
     id: 'Item(s) pasted.',
     defaultMessage: 'Item(s) pasted.',
@@ -602,9 +610,31 @@ class Contents extends Component {
         delta,
       );
     } else {
-      this.setState({
-        items: move(this.state.items, itemIndex, itemIndex + delta),
-      });
+      this.setState(
+        {
+          items: move(this.state.items, itemIndex, itemIndex + delta),
+        },
+        () =>
+          delta < 0
+            ? toast.success(
+                <Toast
+                  success
+                  title={this.props.intl.formatMessage(messages.success)}
+                  content={this.props.intl.formatMessage(
+                    messages.messageMoveTop,
+                  )}
+                />,
+              )
+            : toast.success(
+                <Toast
+                  success
+                  title={this.props.intl.formatMessage(messages.success)}
+                  content={this.props.intl.formatMessage(
+                    messages.messageMoveBottom,
+                  )}
+                />,
+              ),
+      );
     }
   }
 
