@@ -891,6 +891,14 @@ msgid "Item batch size"
 msgstr "1ページ表示件数"
 
 #: components/manage/Contents/Contents
+msgid "Item has been Moved to Down."
+msgstr ""
+
+#: components/manage/Contents/Contents
+msgid "Item has been Moved to Top."
+msgstr ""
+
+#: components/manage/Contents/Contents
 msgid "Item(s) copied."
 msgstr "アイテムがコピーされました。"
 

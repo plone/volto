@@ -884,6 +884,14 @@ msgid "Item batch size"
 msgstr "Dimensiunea lotului obiectului"
 
 #: components/manage/Contents/Contents
+msgid "Item has been Moved to Down."
+msgstr ""
+
+#: components/manage/Contents/Contents
+msgid "Item has been Moved to Top."
+msgstr ""
+
+#: components/manage/Contents/Contents
 msgid "Item(s) copied."
 msgstr "Obiect(e) copiat."
 
