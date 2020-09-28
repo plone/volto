@@ -129,6 +129,10 @@ const messages = defineMessages({
     id: 'Item(s) cut.',
     defaultMessage: 'Item(s) cut.',
   },
+  messageSort: {
+    id: 'Item(s) has been sorted.',
+    defaultMessage: 'Item(s) has been sorted.',
+  },
   messagePasted: {
     id: 'Item(s) pasted.',
     defaultMessage: 'Item(s) pasted.',
@@ -410,6 +414,15 @@ class Contents extends Component {
       (this.props.updateRequest.loading && nextProps.updateRequest.loaded)
     ) {
       this.fetchContents(nextProps.pathname);
+    }
+    if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
+      toast.success(
+        <Toast
+          success
+          title={this.props.intl.formatMessage(messages.success)}
+          content={this.props.intl.formatMessage(messages.messageSort)}
+        />,
+      );
     }
     if (this.props.pathname !== nextProps.pathname) {
       this.setState(
