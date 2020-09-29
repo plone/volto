@@ -30,7 +30,7 @@ import isBoolean from 'lodash/isBoolean';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
-import { injectIntl } from 'react-intl';
+
 import { Portal } from 'react-portal';
 import {
   Button,
@@ -40,6 +40,8 @@ import {
   Segment,
   Tab,
 } from 'semantic-ui-react';
+
+import { injectIntl } from 'react-intl';
 import { v4 as uuid } from 'uuid';
 import { toast } from 'react-toastify';
 import { settings } from '~/config';
@@ -85,6 +87,9 @@ class Form extends Component {
     description: PropTypes.string,
     visual: PropTypes.bool,
     blocks: PropTypes.arrayOf(PropTypes.object),
+    isFormSelected: PropTypes.bool,
+    onSelectForm: PropTypes.func,
+    editable: PropTypes.bool,
     requestError: PropTypes.string,
   };
 
@@ -110,6 +115,9 @@ class Form extends Component {
     blocks: [],
     pathname: '',
     schema: {},
+    isFormSelected: true,
+    onSelectForm: null,
+    editable: true,
     requestError: null,
   };
 
@@ -263,6 +271,13 @@ class Form extends Component {
     this.setState({ isClient: true });
   }
 
+  static getDerivedStateFromProps(props, state) {
+    if (!props.isFormSelected) {
+      return { ...state, selected: null };
+    }
+    return state;
+  }
+
   /**
    * Change field handler
    * Remove errors for changed field
@@ -288,7 +303,7 @@ class Form extends Component {
   }
 
   hideHandler = (data) => {
-    return !!data.fixed || !blockHasValue(data);
+    return !!data.fixed || !(blockHasValue(data) && this.props.editable);
   };
 
   /**
@@ -374,6 +389,9 @@ class Form extends Component {
     this.setState({
       selected: id,
     });
+    if (this.props.onSelectForm) {
+      this.props.onSelectForm();
+    }
   }
 
   /**
@@ -411,43 +429,48 @@ class Form extends Component {
    * @returns {string} Id of the block
    */
   onAddBlock(type, index) {
-    const id = uuid();
-    const idTrailingBlock = uuid();
-    const blocksFieldname = getBlocksFieldname(this.state.formData);
-    const blocksLayoutFieldname = getBlocksLayoutFieldname(this.state.formData);
-    const totalItems = this.state.formData[blocksLayoutFieldname].items.length;
-    const insert = index === -1 ? totalItems : index;
+    if (this.props.editable) {
+      const id = uuid();
+      const idTrailingBlock = uuid();
+      const blocksFieldname = getBlocksFieldname(this.state.formData);
+      const blocksLayoutFieldname = getBlocksLayoutFieldname(
+        this.state.formData,
+      );
+      const totalItems = this.state.formData[blocksLayoutFieldname].items
+        .length;
+      const insert = index === -1 ? totalItems : index;
 
-    this.setState({
-      formData: {
-        ...this.state.formData,
-        [blocksLayoutFieldname]: {
-          items: [
-            ...this.state.formData[blocksLayoutFieldname].items.slice(
-              0,
-              insert,
-            ),
-            id,
-            ...(type !== settings.defaultBlockType ? [idTrailingBlock] : []),
-            ...this.state.formData[blocksLayoutFieldname].items.slice(insert),
-          ],
-        },
-        [blocksFieldname]: {
-          ...this.state.formData[blocksFieldname],
-          [id]: {
-            '@type': type,
+      this.setState({
+        formData: {
+          ...this.state.formData,
+          [blocksLayoutFieldname]: {
+            items: [
+              ...this.state.formData[blocksLayoutFieldname].items.slice(
+                0,
+                insert,
+              ),
+              id,
+              ...(type !== settings.defaultBlockType ? [idTrailingBlock] : []),
+              ...this.state.formData[blocksLayoutFieldname].items.slice(insert),
+            ],
           },
-          ...(type !== settings.defaultBlockType && {
-            [idTrailingBlock]: {
-              '@type': settings.defaultBlockType,
+          [blocksFieldname]: {
+            ...this.state.formData[blocksFieldname],
+            [id]: {
+              '@type': type,
             },
-          }),
+            ...(type !== settings.defaultBlockType && {
+              [idTrailingBlock]: {
+                '@type': settings.defaultBlockType,
+              },
+            }),
+          },
         },
-      },
-      selected: id,
-    });
+        selected: id,
+      });
 
-    return id;
+      return id;
+    }
   }
 
   /**
@@ -792,74 +815,80 @@ class Form extends Component {
                   {...provided.droppableProps}
                   style={{ position: 'relative' }}
                 >
-                  {map(renderBlocks, (block, index) => (
-                    <Draggable draggableId={block} index={index} key={block}>
-                      {(provided) => (
-                        <div
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          className={`block-editor-${blocksDict[block]['@type']}`}
-                        >
-                          <div style={{ position: 'relative' }}>
-                            <div
-                              style={{
-                                visibility:
-                                  this.state.selected === block &&
-                                  !this.hideHandler(blocksDict[block])
-                                    ? 'visible'
-                                    : 'hidden',
-                                display: 'inline-block',
-                              }}
-                              {...provided.dragHandleProps}
-                              className="drag handle wrapper"
-                            >
-                              <Icon name={dragSVG} size="18px" />
-                            </div>
+                  <fieldset
+                    className="invisible"
+                    disabled={!this.props.editable}
+                  >
+                    {map(renderBlocks, (block, index) => (
+                      <Draggable draggableId={block} index={index} key={block}>
+                        {(provided) => (
+                          <div
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            className={`block-editor-${blocksDict[block]['@type']}`}
+                          >
+                            <div style={{ position: 'relative' }}>
+                              <div
+                                style={{
+                                  visibility:
+                                    this.state.selected === block &&
+                                    !this.hideHandler(blocksDict[block])
+                                      ? 'visible'
+                                      : 'hidden',
+                                  display: 'inline-block',
+                                }}
+                                {...provided.dragHandleProps}
+                                className="drag handle wrapper"
+                              >
+                                <Icon name={dragSVG} size="18px" />
+                              </div>
 
-                            <EditBlock
-                              id={block}
-                              index={index}
-                              type={blocksDict[block]['@type']}
-                              key={block}
-                              handleKeyDown={this.handleKeyDown}
-                              onAddBlock={this.onAddBlock}
-                              onChangeBlock={this.onChangeBlock}
-                              onMutateBlock={this.onMutateBlock}
-                              onChangeField={this.onChangeField}
-                              onDeleteBlock={this.onDeleteBlock}
-                              onSelectBlock={this.onSelectBlock}
-                              onMoveBlock={this.onMoveBlock}
-                              onFocusPreviousBlock={this.onFocusPreviousBlock}
-                              onFocusNextBlock={this.onFocusNextBlock}
-                              properties={formData}
-                              data={blocksDict[block]}
-                              pathname={this.props.pathname}
-                              block={block}
-                              selected={this.state.selected === block}
-                              manage={this.props.isAdminForm}
-                            />
+                              <EditBlock
+                                id={block}
+                                index={index}
+                                type={blocksDict[block]['@type']}
+                                key={block}
+                                handleKeyDown={this.handleKeyDown}
+                                onAddBlock={this.onAddBlock}
+                                onChangeBlock={this.onChangeBlock}
+                                onMutateBlock={this.onMutateBlock}
+                                onChangeField={this.onChangeField}
+                                onDeleteBlock={this.onDeleteBlock}
+                                onSelectBlock={this.onSelectBlock}
+                                onMoveBlock={this.onMoveBlock}
+                                onFocusPreviousBlock={this.onFocusPreviousBlock}
+                                onFocusNextBlock={this.onFocusNextBlock}
+                                properties={formData}
+                                data={blocksDict[block]}
+                                pathname={this.props.pathname}
+                                block={block}
+                                selected={this.state.selected === block}
+                                editable={this.props.editable}
+                                manage={this.props.isAdminForm}
+                              />
+                            </div>
                           </div>
-                        </div>
-                      )}
-                    </Draggable>
-                  ))}
-                  {provided.placeholder}
-                  {!isEmpty(placeholderProps) && (
-                    <div
-                      style={{
-                        position: 'absolute',
-                        top: `${placeholderProps.clientY}px`,
-                        height: `${placeholderProps.clientHeight + 18}px`,
-                        background: '#eee',
-                        width: `${placeholderProps.clientWidth}px`,
-                        borderRadius: '3px',
-                      }}
-                    ></div>
-                  )}
+                        )}
+                      </Draggable>
+                    ))}
+                    {provided.placeholder}
+                    {!isEmpty(placeholderProps) && (
+                      <div
+                        style={{
+                          position: 'absolute',
+                          top: `${placeholderProps.clientY}px`,
+                          height: `${placeholderProps.clientHeight + 18}px`,
+                          background: '#eee',
+                          width: `${placeholderProps.clientWidth}px`,
+                          borderRadius: '3px',
+                        }}
+                      />
+                    )}
+                  </fieldset>
                 </div>
               )}
             </Droppable>
-            {this.state.isClient && (
+            {this.state.isClient && this.props.editable && (
               <Portal
                 node={__CLIENT__ && document.getElementById('sidebar-metadata')}
               >
@@ -905,136 +934,140 @@ class Form extends Component {
           error={keys(this.state.errors).length > 0}
           className={settings.verticalFormTabs ? 'vertical-form' : ''}
         >
-          <Segment.Group raised>
-            {schema && schema.fieldsets.length > 1 && (
-              <>
-                {settings.verticalFormTabs && this.props.title && (
-                  <Segment secondary attached key={this.props.title}>
-                    {this.props.title}
-                  </Segment>
-                )}
-                <Tab
-                  menu={{
-                    secondary: true,
-                    pointing: true,
-                    attached: true,
-                    tabular: true,
-                    className: 'formtabs',
-                    vertical: settings.verticalFormTabs,
-                  }}
-                  grid={{ paneWidth: 9, tabWidth: 3, stackable: true }}
-                  onTabChange={this.onTabChange}
-                  activeIndex={this.state.activeIndex}
-                  panes={map(schema.fieldsets, (item) => ({
-                    menuItem: item.title,
-                    render: () => [
-                      !settings.verticalFormTabs && this.props.title && (
-                        <Segment secondary attached key={this.props.title}>
-                          {this.props.title}
-                        </Segment>
-                      ),
-                      ...map(item.fields, (field, index) => (
-                        <Field
-                          {...schema.properties[field]}
-                          id={field}
-                          formData={this.state.formData}
-                          fieldSet={item.title.toLowerCase()}
-                          focus={index === 0}
-                          value={this.state.formData?.[field]}
-                          required={schema.required.indexOf(field) !== -1}
-                          onChange={this.onChangeField}
-                          onBlur={this.onBlurField}
-                          onClick={this.onClickInput}
-                          key={field}
-                          error={this.state.errors[field]}
-                        />
-                      )),
-                    ],
-                  }))}
-                />
-              </>
-            )}
-            {schema && schema.fieldsets.length === 1 && (
-              <Segment>
-                {this.props.title && (
-                  <Segment className="primary">{this.props.title}</Segment>
-                )}
-                {this.props.description && (
-                  <Segment secondary>{this.props.description}</Segment>
-                )}
-                {keys(this.state.errors).length > 0 && (
-                  <Message
-                    icon="warning"
-                    negative
-                    attached
-                    header={this.props.intl.formatMessage(messages.error)}
-                    content={this.props.intl.formatMessage(
-                      messages.thereWereSomeErrors,
-                    )}
+          <fieldset className="invisible" disabled={!this.props.editable}>
+            <Segment.Group raised>
+              {schema && schema.fieldsets.length > 1 && (
+                <>
+                  {settings.verticalFormTabs && this.props.title && (
+                    <Segment secondary attached key={this.props.title}>
+                      {this.props.title}
+                    </Segment>
+                  )}
+                  <Tab
+                    menu={{
+                      secondary: true,
+                      pointing: true,
+                      attached: true,
+                      tabular: true,
+                      className: 'formtabs',
+                      vertical: settings.verticalFormTabs,
+                    }}
+                    grid={{ paneWidth: 9, tabWidth: 3, stackable: true }}
+                    onTabChange={this.onTabChange}
+                    activeIndex={this.state.activeIndex}
+                    panes={map(schema.fieldsets, (item) => ({
+                      menuItem: item.title,
+                      render: () => [
+                        !settings.verticalFormTabs && this.props.title && (
+                          <Segment secondary attached key={this.props.title}>
+                            {this.props.title}
+                          </Segment>
+                        ),
+                        ...map(item.fields, (field, index) => (
+                          <Field
+                            {...schema.properties[field]}
+                            id={field}
+                            formData={this.state.formData}
+                            fieldSet={item.title.toLowerCase()}
+                            focus={index === 0}
+                            value={this.state.formData?.[field]}
+                            required={schema.required.indexOf(field) !== -1}
+                            onChange={this.onChangeField}
+                            onBlur={this.onBlurField}
+                            onClick={this.onClickInput}
+                            key={field}
+                            error={this.state.errors[field]}
+                          />
+                        )),
+                      ],
+                    }))}
                   />
-                )}
-                {this.props.error && (
-                  <Message
-                    icon="warning"
-                    negative
-                    attached
-                    header={this.props.intl.formatMessage(messages.error)}
-                    content={this.props.error.message}
-                  />
-                )}
-                {map(schema.fieldsets[0].fields, (field) => (
-                  <Field
-                    {...schema.properties[field]}
-                    id={field}
-                    value={this.state.formData?.[field]}
-                    required={schema.required.indexOf(field) !== -1}
-                    onChange={this.onChangeField}
-                    onBlur={this.onBlurField}
-                    onClick={this.onClickInput}
-                    key={field}
-                    error={this.state.errors[field]}
-                  />
-                ))}
-              </Segment>
-            )}
-            {!this.props.hideActions && (
-              <Segment className="actions" clearing>
-                {onSubmit && (
-                  <Button
-                    basic
-                    primary
-                    floated="right"
-                    type="submit"
-                    aria-label={
-                      this.props.submitLabel
-                        ? this.props.submitLabel
-                        : this.props.intl.formatMessage(messages.save)
-                    }
-                    title={
-                      this.props.submitLabel
-                        ? this.props.submitLabel
-                        : this.props.intl.formatMessage(messages.save)
-                    }
-                    loading={this.props.loading}
-                  >
-                    <Icon className="circled" name={aheadSVG} size="30px" />
-                  </Button>
-                )}
-                {onCancel && (
-                  <Button
-                    basic
-                    secondary
-                    aria-label={this.props.intl.formatMessage(messages.cancel)}
-                    title={this.props.intl.formatMessage(messages.cancel)}
-                    floated="right"
-                    onClick={onCancel}
-                  >
-                    <Icon className="circled" name={clearSVG} size="30px" />
-                  </Button>
-                )}
-              </Segment>
-            )}
-          </Segment.Group>
+                </>
+              )}
+              {schema && schema.fieldsets.length === 1 && (
+                <Segment>
+                  {this.props.title && (
+                    <Segment className="primary">{this.props.title}</Segment>
+                  )}
+                  {this.props.description && (
+                    <Segment secondary>{this.props.description}</Segment>
+                  )}
+                  {keys(this.state.errors).length > 0 && (
+                    <Message
+                      icon="warning"
+                      negative
+                      attached
+                      header={this.props.intl.formatMessage(messages.error)}
+                      content={this.props.intl.formatMessage(
+                        messages.thereWereSomeErrors,
+                      )}
+                    />
+                  )}
+                  {this.props.error && (
+                    <Message
+                      icon="warning"
+                      negative
+                      attached
+                      header={this.props.intl.formatMessage(messages.error)}
+                      content={this.props.error.message}
+                    />
+                  )}
+                  {map(schema.fieldsets[0].fields, (field) => (
+                    <Field
+                      {...schema.properties[field]}
+                      id={field}
+                      value={this.state.formData?.[field]}
+                      required={schema.required.indexOf(field) !== -1}
+                      onChange={this.onChangeField}
+                      onBlur={this.onBlurField}
+                      onClick={this.onClickInput}
+                      key={field}
+                      error={this.state.errors[field]}
+                    />
+                  ))}
+                </Segment>
+              )}
+              {!this.props.hideActions && (
+                <Segment className="actions" clearing>
+                  {onSubmit && (
+                    <Button
+                      basic
+                      primary
+                      floated="right"
+                      type="submit"
+                      aria-label={
+                        this.props.submitLabel
+                          ? this.props.submitLabel
+                          : this.props.intl.formatMessage(messages.save)
+                      }
+                      title={
+                        this.props.submitLabel
+                          ? this.props.submitLabel
+                          : this.props.intl.formatMessage(messages.save)
+                      }
+                      loading={this.props.loading}
+                    >
+                      <Icon className="circled" name={aheadSVG} size="30px" />
+                    </Button>
+                  )}
+                  {onCancel && (
+                    <Button
+                      basic
+                      secondary
+                      aria-label={this.props.intl.formatMessage(
+                        messages.cancel,
+                      )}
+                      title={this.props.intl.formatMessage(messages.cancel)}
+                      floated="right"
+                      onClick={onCancel}
+                    >
+                      <Icon className="circled" name={clearSVG} size="30px" />
+                    </Button>
+                  )}
+                </Segment>
+              )}
+            </Segment.Group>
+          </fieldset>
         </UiForm>
       </Container>
     );

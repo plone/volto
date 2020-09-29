@@ -50,6 +50,7 @@ class Edit extends Component {
     onFocusPreviousBlock: PropTypes.func.isRequired,
     onFocusNextBlock: PropTypes.func.isRequired,
     onSelectBlock: PropTypes.func.isRequired,
+    editable: PropTypes.bool,
   };
 
   /**
@@ -211,6 +212,7 @@ class Edit extends Component {
         <Editor
           onChange={this.onChange}
           editorState={this.state.editorState}
+          readOnly={!this.props.editable}
           plugins={[
             this.state.inlineToolbarPlugin,
             ...settings.richTextEditorPlugins,
