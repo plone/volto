@@ -1290,7 +1290,7 @@ msgstr "Vorschau"
 
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Preview Image URL"
-msgstr ""
+msgstr "URL Vorschaubild"
 
 #: components/manage/Toolbar/PersonalTools
 msgid "Profile"
@@ -2179,11 +2179,11 @@ msgstr "Karten"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "maxLength"
-msgstr ""
+msgstr "Maximale Länge"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "maximum"
-msgstr ""
+msgstr "Maximum"
 
 #: config/Blocks
 msgid "media"
@@ -2191,11 +2191,11 @@ msgstr "Medien"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "minLength"
-msgstr ""
+msgstr "Minimale Länge"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "minimum"
-msgstr ""
+msgstr "Minimum"
 
 #: config/Blocks
 msgid "mostUsed"
@@ -2207,7 +2207,7 @@ msgstr "Kein Status gesetzt"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "number"
-msgstr ""
+msgstr "Zahl"
 
 #: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
 #: components/manage/Widgets/RecurrenceWidget/ByYearField
@@ -2248,47 +2248,47 @@ msgstr "Zur Startseite zurückkehren"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_and"
-msgstr ""
+msgstr "Regel UND"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_approximate"
-msgstr ""
+msgstr "REGEL Annäherung"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_at"
-msgstr ""
+msgstr "Regel AT"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_dateFormat"
-msgstr ""
+msgstr "Regel Datumsformat"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_day"
-msgstr ""
+msgstr "Regel Tag"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_days"
-msgstr ""
+msgstr "Regel Tage"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_every"
-msgstr ""
+msgstr "Regel Jeden"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_for"
-msgstr ""
+msgstr "Regel für"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_hour"
-msgstr ""
+msgstr "Regel Stunde"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_hours"
-msgstr ""
+msgstr "Regel Stunden"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_in"
-msgstr ""
+msgstr "Regel in"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_last"
@@ -2396,7 +2396,7 @@ msgstr "Inhaltsverzeichnis"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "url"
-msgstr ""
+msgstr "URL"
 
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"
@@ -2420,11 +2420,11 @@ msgstr "{count} ausgewählt"
 
 #: components/manage/Controlpanels/ContentType
 msgid "{id} Content Type"
-msgstr ""
+msgstr "{id} Inhaltstyp"
 
 #: components/manage/Controlpanels/ContentTypeSchema
 msgid "{id} Schema"
-msgstr ""
+msgstr "{id} Schema"
 
 #: components/manage/Actions/Actions
 msgid "{title} copied."
