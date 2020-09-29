@@ -386,15 +386,13 @@ class ObjectBrowserBody extends Component {
               />
             )}
             {this.state.showSearchInput ? (
-              <form>
-                <Input
-                  className="search"
-                  onChange={this.onSearch}
-                  placeholder={this.props.intl.formatMessage(
-                    messages.SearchInputPlaceholder,
-                  )}
-                />
-              </form>
+              <Input
+                className="search"
+                onChange={this.onSearch}
+                placeholder={this.props.intl.formatMessage(
+                  messages.SearchInputPlaceholder,
+                )}
+              />
             ) : this.props.mode === 'image' ? (
               <h2>
                 <FormattedMessage
