@@ -1,6 +1,6 @@
 # Change Log
 
-## 8.1.1 (unreleased)
+## 8.2.1 (unreleased)
 
 ### Breaking
 
@@ -13,6 +13,24 @@
 
 ### Internal
 
+## 8.2.0 (2020-09-27)
+
+### Feature
+
+- Add Basque translation @erral
+
+### Bugfix
+
+- Added prop resettable to DatetimeWidget @damiDevRT
+- Removed the ability to reset the datepicker in the recurrence widget to prevent the uncontrolled creation of recurrences @damiDevRT
+- Fix regression in setting selected sidebar tab by blocks @tiberiuichim
+
+## 8.1.1 (2020-09-27)
+
+### Bugfix
+
+- Japanese translation updated @terapyon
+
 ## 8.1.0 (2020-09-22)
 
 ### Breaking
@@ -23,7 +41,11 @@
 
 ### Bugfix
 
+- Allow select widget to reset when the incoming props change. The react-select widget has its own internal state, so if you initialise the widget without choices, then populate the choices, it wouldn't properly show the default value @tiberiuichim
+
 ### Internal
+
+- Fix console warning in ToHTML @iFlameing
 
 ## 8.0.1 (2020-09-22)
 
@@ -360,8 +382,6 @@
 ## 7.0.1 (2020-07-07)
 
 ### Breaking
-
-### Feature
 
 ### Bugfix
 
