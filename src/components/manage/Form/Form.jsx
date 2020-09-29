@@ -91,6 +91,7 @@ class Form extends Component {
     onSelectForm: PropTypes.func,
     editable: PropTypes.bool,
     requestError: PropTypes.string,
+    onChangeFormData: PropTypes.func,
   };
 
   /**
@@ -204,7 +205,7 @@ class Form extends Component {
    * also the first Tab to have any errors will be selected
    * @param {Object} prevProps
    */
-  componentDidUpdate(prevProps) {
+  async componentDidUpdate(prevProps, prevState) {
     let { requestError } = this.props;
     let errors = {};
     let activeIndex = 0;
@@ -222,6 +223,15 @@ class Form extends Component {
         errors,
         activeIndex,
       });
+    }
+
+    if (this.props.onChangeFormData) {
+      if (
+        JSON.stringify(prevState?.formData) !==
+        JSON.stringify(this.state.formData)
+      ) {
+        this.props.onChangeFormData(this.state.formData);
+      }
     }
   }
 
@@ -276,6 +286,18 @@ class Form extends Component {
       return { ...state, selected: null };
     }
     return state;
+  }
+
+  /**
+   * Component will receive props
+   * @method componentWillReceiveProps
+   * @param {Object} nextProps Next properties
+   * @returns {undefined}
+   */
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (nextProps.formData !== this.state.formData) {
+      this.setState({ formData: nextProps.formData });
+    }
   }
 
   /**

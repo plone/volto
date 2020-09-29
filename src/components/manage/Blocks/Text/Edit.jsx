@@ -175,8 +175,10 @@ class Edit extends Component {
     this.setState({ editorState });
   }
 
-  toggleAddNewBlock = () =>
+  toggleAddNewBlock = (e) => {
+    e.preventDefault();
     this.setState((state) => ({ addNewBlockOpened: !state.addNewBlockOpened }));
+  };
 
   handleClickOutside = (e) => {
     if (

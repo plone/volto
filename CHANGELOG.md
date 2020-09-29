@@ -49,6 +49,8 @@
 - Fix console warning in ToHTML @iFlameing
 
 ## 8.0.1 (2020-09-22)
+- Added onChangeFormData prop to Form component @giuliaghisini
+- Show Username when Firstname attr is missing in UsersControlPanelUser @iFlameing
 
 ### Bugfix
 
