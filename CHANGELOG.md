@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- querystingsearch action now uses correct relative path, if specified. Fixes #1861 @jackahl
+
 ### Internal
 
 ## 8.2.0 (2020-09-27)
