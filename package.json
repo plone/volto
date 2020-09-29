@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "8.0.0",
+  "version": "8.2.0",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -350,7 +350,7 @@
     "redux-devtools-extension": "2.13.8",
     "redux-mock-store": "1.5.4",
     "redux-thunk": "2.3.0",
-    "release-it": "13.5.8",
+    "release-it": "14.0.3",
     "rrule": "2.6.4",
     "semantic-ui-less": "2.4.1",
     "semantic-ui-react": "0.88.1",
