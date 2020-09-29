@@ -8,7 +8,8 @@
 
 ### Bugfix
 
-- querystingsearch action now uses correct relative path, if specified. Fixes #1861 @jackahl
+- Querystingsearch action now uses correct relative path, if specified. Fixes #1861 @jackahl
+- Fixing ObjectBrowser search input reload @iFlameing
 
 ### Internal
 
