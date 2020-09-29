@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fixing ObjectBrowser search input reload @iFlameing
+
 ### Internal
 
 ## 8.2.0 (2020-09-27)
