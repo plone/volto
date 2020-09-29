@@ -15,7 +15,7 @@
   }
 
   &.required .wrapper {
-    label[for]::after,
+    > label[for]::after,
     .ui.label::after {
       display: inline-block;
       width: 10px;

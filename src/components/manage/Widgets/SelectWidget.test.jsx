@@ -24,7 +24,13 @@ test('renders a select widget component', async () => {
 
   const component = renderer.create(
     <Provider store={store}>
-      <SelectWidget id="my-field" title="My field" onChange={() => {}} />
+      <SelectWidget
+        id="my-field"
+        title="My field"
+        onChange={() => {}}
+        onBlur={() => {}}
+        onClick={() => {}}
+      />
     </Provider>,
   );
   await wait(() => {

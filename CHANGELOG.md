@@ -1,6 +1,6 @@
 # Change Log
 
-## 7.11.3 (unreleased)
+## 8.2.1 (unreleased)
 
 ### Breaking
 
@@ -10,15 +10,153 @@
 
 ### Internal
 
+## 8.2.0 (2020-09-27)
+
+### Feature
+
+- Add Basque translation @erral
+
+### Bugfix
+
+- Added prop resettable to DatetimeWidget @damiDevRT
+- Removed the ability to reset the datepicker in the recurrence widget to prevent the uncontrolled creation of recurrences @damiDevRT
+- Fix regression in setting selected sidebar tab by blocks @tiberiuichim
+
+## 8.1.1 (2020-09-27)
+
+### Bugfix
+
+- Japanese translation updated @terapyon
+
+## 8.1.0 (2020-09-22)
+
+### Breaking
+
+### Feature
+
+- Create link in Draftjs using Objectbrowser @giuliaghisini
+
+### Bugfix
+
+- Allow select widget to reset when the incoming props change. The react-select widget has its own internal state, so if you initialise the widget without choices, then populate the choices, it wouldn't properly show the default value @tiberiuichim
+
+### Internal
+
+- Fix console warning in ToHTML @iFlameing
+
+## 8.0.1 (2020-09-22)
+
+### Bugfix
+
+- Fix word overflow from html-block @iFlameing
+- Fix Cypress test for image upload @zotya
+
+### Internal
+
+- Improve developer experience, don't logout on hot-reload @tiberiuichim
+- Cleanup eslint in razzle.config.js @tiberiuichim
+
+## 8.0.0 (2020-09-18)
+
+### Breaking
+
+- Change dummy-addons-loader.js fixture name to `jest-addons-loader.js`, to match existing `jest-svgsystem-transform.js` @tiberiuichim
+
+### Feature
+
+- Added Schema Editor within Dexterity Content-Types Controlpanel @rexalex @avoinea #1517
+- Added Blocks Layout Editor within Dexterity Content-Types Controlpanel @avoinea #1517
+- Added missing components for Email and Url widgets #1246 @rexalex
+
+### Bugfix
+
+- Fix the broken profile view in Toolbar @iFlameing
+
+### Internal
+
+- Wrap addon configuration loaders in a wrapper to check that they return back config @tiberiuichim
+
+## 7.15.0 (2020-09-15)
+
+### Feature
+
+- Added missing components for Email and Url widgets #1246 @rexalex
+- Show backend validation errors on corresponding fields #1246 @rexalex
+- Validation implemented for add user/group @rexalex
+- Show Username when Firstname attr is missing in UsersControlPanelUser @iFlameing
+
+### Bugfix
+
+- When dealing with authentication token expiration set to 0, auto-refresh token in one hour instead of logging out use @tiberiuichim
+- Fixed front-end field validation #1246 @rexalex
+- Fixed date only widget rendering #1246 @rexalex
+- Fix errors with SelectWidget when removing the only element @rexalex
+
+## 7.14.2 (2020-09-10)
+
+### Bugfix
+
+- Hyphenate sidebar labels @ksuess
+- Update German translations @tisto
+
+## 7.14.1 (2020-09-09)
+
+### Bugfix
+
+- Fix customization mechanism where customization paths end with `/` @tiberiuichim
+
+## 7.14.0 (2020-09-08)
+
+### Feature
+
+- Render form with vertical tabs, setting the property `verticalFormTabs` in config.js @giuliaghisini
+
+### Bugfix
+
+- Imported locales by razzle and fixed import locale @giuliaghisini
+- Fix console warning due to uncontrolled selectWidget component @nileshgulia1
+
+## 7.13.0 (2020-09-07)
+
+### Feature
+
+- Add NumberWidget, an input widget for numbers @tiberiuichim
+
+### Bugfix
+
+- Fixing the Image size settings in sidebar when Image alignment changes @iFlameing
+
+## 7.12.1 (2020-09-04)
+
+### Bugfix
+
+- Fix checkbox widget styles @nzambello
+
+## 7.12.0 (2020-09-04)
+
+### Feature
+
+- Allow Volto projects to customize (via webpack resolve aliases) addons. Allow addons to customize Volto and other addons. Allow Volto projects to customize Volto in a `src/customizations/volto` folder, for better organization of the customizations folder. @tiberiuichim @sneridagh
+
+## 7.11.3 (2020-08-28)
+
+### Bugfix
+
+- On image upload in a block, don't overwrite the global `state.content.data` with new image data @tiberiuichim @silviubogan
+
+### Internal
+
+- Add a `subrequest` option to the `createContent` action @tiberiuichim @silviubogan
+
 ## 7.11.2 (2020-08-28)
 
 ### Bugfix
 
+- Fix bug introduced in 7.9.0, properly return a list of results when dealing with batched api requests @tiberiuichim
+- In folder contents batch upload, use a subrequest to avoid breaking the global `content.data` state @tiberiuichim
 - Fix `null` response issue when passing custom `Accept:` headers to actions #1771 @avoinea
 - Removed all `<<<<<HEAD` artifacts from translations @steffenri
 - Increase z-index of `block-add-button` @steffenri
-
-### Internal
 
 ## 7.11.1 (2020-08-27)
 
@@ -239,6 +377,8 @@
 - Upgrade razzle to `^3.1.5`. @tiberiuichim
 
 ## 7.0.1 (2020-07-07)
+
+### Breaking
 
 ### Bugfix
 

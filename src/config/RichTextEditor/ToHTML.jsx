@@ -24,12 +24,15 @@ const addBreaklinesInline = (children) => {
     const s = children[0].endsWith('\n')
       ? children[0].slice(0, -1)
       : children[0];
-    return s.split('\n').map((child, index) => (
-      <React.Fragment key={child + index}>
-        {child}
-        <br />
-      </React.Fragment>
-    ));
+
+    if (s.split('\n').length > 1) {
+      return s.split('\n').map((child, index) => (
+        <React.Fragment key={child + index}>
+          {child}
+          <br />
+        </React.Fragment>
+      ));
+    }
   }
   return children;
 };
@@ -106,11 +109,11 @@ const getList = (ordered) => (children, { depth, keys }) =>
 
 const processChildren = (children, keys) => {
   const processedChildren = children.map((chunks) =>
-    chunks.map((child) => {
+    chunks.map((child, index) => {
       if (Array.isArray(child)) {
         // If it's empty is a blank paragraph, we want to add a <br /> in it
         if (isEmpty(child)) {
-          return <br />;
+          return <br key={index} />;
         }
         return child.map((subchild, index) => {
           if (typeof subchild === 'string') {

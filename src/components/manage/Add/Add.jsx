@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { keys } from 'lodash';
+import { keys, isEmpty } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Button, Menu } from 'semantic-ui-react';
 
@@ -134,8 +134,10 @@ class Add extends Component {
         {},
       );
     }
-
-    this.state = { isClient: false };
+    this.state = {
+      isClient: false,
+      error: null,
+    };
   }
 
   /**
@@ -166,12 +168,22 @@ class Add extends Component {
       );
     }
 
-    if (nextProps.createRequest.error) {
+    if (this.props.createRequest.loading && nextProps.createRequest.error) {
+      const message =
+        nextProps.createRequest.error.response?.body?.message ||
+        nextProps.createRequest.error.response?.text;
+
+      const error =
+        new DOMParser().parseFromString(message, 'text/html')?.all[0]
+          ?.textContent || message;
+
+      this.setState({ error: error });
+
       toast.error(
         <Toast
           error
           title={this.props.intl.formatMessage(messages.error)}
-          content={`${nextProps.createRequest.error.status}:  ${nextProps.createRequest.error.response?.body?.message}`}
+          content={`${nextProps.createRequest.error.status}:  ${error}`}
         />,
       );
     }
@@ -231,6 +243,29 @@ class Add extends Component {
           translationObject[blocksLayoutFieldname].items;
       }
 
+      // Lookup initialBlocks and initialBlocksLayout within schema
+      const schemaBlocks = this.props.schema.properties[blocksFieldname]
+        ?.default;
+      const schemaBlocksLayout = this.props.schema.properties[
+        blocksLayoutFieldname
+      ]?.default?.items;
+      let initialBlocks = this.initialBlocks;
+      let initialBlocksLayout = this.initialBlocksLayout;
+      if (!isEmpty(schemaBlocksLayout) && !isEmpty(schemaBlocks)) {
+        initialBlocks = {};
+        initialBlocksLayout = [];
+        schemaBlocksLayout.forEach((value) => {
+          if (!isEmpty(schemaBlocks[value])) {
+            let newUid = uuid();
+            initialBlocksLayout.push(newUid);
+            initialBlocks[newUid] = schemaBlocks[value];
+
+            // Layout ID - keep a reference to the original block id within layout
+            initialBlocks[newUid]['@layout'] = value;
+          }
+        });
+      }
+
       const pageAdd = (
         <div id="page-add">
           <Helmet
@@ -244,18 +279,19 @@ class Add extends Component {
             formData={{
               ...(blocksFieldname && {
                 [blocksFieldname]:
-                  this.initialBlocks ||
+                  initialBlocks ||
                   this.props.schema.properties[blocksFieldname]?.default,
               }),
               ...(blocksLayoutFieldname && {
                 [blocksLayoutFieldname]: {
                   items:
-                    this.initialBlocksLayout ||
+                    initialBlocksLayout ||
                     this.props.schema.properties[blocksLayoutFieldname]?.default
                       ?.items,
                 },
               }),
             }}
+            requestError={this.state.error}
             onSubmit={this.onSubmit}
             hideActions
             pathname={this.props.pathname}

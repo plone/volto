@@ -77,4 +77,24 @@ describe('AddonConfigurationRegistry', () => {
       'test-released-source-addon',
     ]);
   });
+
+  it('provides customization paths declared in a Volto project', () => {
+    const base = path.join(__dirname, 'fixtures', 'test-volto-project');
+    const reg = new AddonConfigurationRegistry(base);
+    expect(reg.getProjectCustomizationPaths()).toStrictEqual({
+      '@plone/volto/client': `${base}/src/customizations/client.js`,
+      'test-addon/testaddon': `${base}/src/custom-addons/test-addon/testaddon.js`,
+      '@plone/volto/server': `${base}/src/customizations/server.jsx`,
+    });
+  });
+
+  it('provides customization paths declared in addons', () => {
+    const base = path.join(__dirname, 'fixtures', 'test-volto-project');
+    const reg = new AddonConfigurationRegistry(base);
+    expect(reg.getAddonCustomizationPaths()).toStrictEqual({
+      '@plone/volto/client': `${base}/node_modules/test-released-source-addon/src/customizations/client.js`,
+      '@plone/volto/server': `${base}/addons/test-addon/src/custom-addons/volto/server.jsx`,
+      'test-released-source-addon/index': `${base}/addons/test-addon/src/custom-addons/test-released-source-addon/index.js`,
+    });
+  });
 });

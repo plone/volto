@@ -1,31 +1,16 @@
-/* eslint import/no-extraneous-dependencies: 0 */
-/* eslint import/no-dynamic-require: 0 */
-/* eslint global-require: 0 */
-/* eslint no-console: 0 */
-/* eslint no-param-reassign: 0 */
-/* eslint no-unused-vars: 0 */
-
-const logger = require('razzle-dev-utils/logger');
 const path = require('path');
-const autoprefixer = require('autoprefixer');
 const makeLoaderFinder = require('razzle-dev-utils/makeLoaderFinder');
 const nodeExternals = require('webpack-node-externals');
-const webpack = require('webpack');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const LoadablePlugin = require('@loadable/webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const fs = require('fs');
-const { map, has } = require('lodash');
-const glob = require('glob').sync;
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const RootResolverPlugin = require('./webpack-root-resolver');
 const createAddonsLoader = require('./create-addons-loader');
 const AddonConfigurationRegistry = require('./addon-registry');
-const addLessLoader = require('./less-plugin');
 
 const fileLoaderFinder = makeLoaderFinder('file-loader');
 const babelLoaderFinder = makeLoaderFinder('babel-loader');
-// const eslintLoaderFinder = makeLoaderFinder('eslint-loader');
 
 const projectRootPath = path.resolve('.');
 const languages = require('./src/constants/Languages');
@@ -34,36 +19,7 @@ const packageJson = require(path.join(projectRootPath, 'package.json'));
 
 const registry = new AddonConfigurationRegistry(projectRootPath);
 
-// TODO: apply "customize Volto by addon", "customize addon by project" logic
-const customizations = {};
-let { customizationPaths } = packageJson;
-if (!customizationPaths) {
-  customizationPaths = ['src/customizations/'];
-}
-customizationPaths.forEach(customizationPath => {
-  map(
-    glob(`${customizationPath}**/*.*(svg|png|jpg|jpeg|gif|ico|less|js|jsx)`),
-    filename => {
-      const targetPath = filename.replace(
-        customizationPath,
-        `${registry.voltoPath}/src/`,
-      );
-      if (fs.existsSync(targetPath)) {
-        customizations[
-          filename
-            .replace(customizationPath, '@plone/volto/')
-            .replace(/\.(js|jsx)$/, '')
-        ] = path.resolve(filename);
-      } else {
-        console.log(
-          `The file ${filename} doesn't exist in the volto package (${targetPath}), unable to customize.`,
-        );
-      }
-    },
-  );
-});
-
-const svgPlugin = config => {
+const svgPlugin = (config) => {
   const SVGLOADER = {
     test: /icons\/.*\.svg$/,
     use: [
@@ -92,7 +48,7 @@ const defaultModify = (config, { target, dev }, webpack) => {
   //  Prevent moment from loading all locales
   config.plugins.push(
     new MomentLocalesPlugin({
-      localesToKeep: [],
+      localesToKeep: Object.keys(languages),
     }),
   );
 
@@ -199,7 +155,8 @@ const defaultModify = (config, { target, dev }, webpack) => {
   config.resolve.plugins = [new RootResolverPlugin()];
 
   config.resolve.alias = {
-    ...customizations,
+    ...registry.getAddonCustomizationPaths(),
+    ...registry.getProjectCustomizationPaths(),
     ...config.resolve.alias,
     '../../theme.config$': `${projectRootPath}/theme/theme.config`,
     'volto-themes': `${registry.voltoPath}/theme/themes`,
@@ -224,14 +181,14 @@ const defaultModify = (config, { target, dev }, webpack) => {
   }
   // Add babel support external (ie. node_modules npm published packages)
   if (packageJson.addons) {
-    registry.addonNames.forEach(addon =>
+    registry.addonNames.forEach((addon) =>
       include.push(fs.realpathSync(registry.packages[addon].modulePath)),
     );
   }
 
   let addonsAsExternals = [];
   if (packageJson.addons) {
-    addonsAsExternals = registry.addonNames.map(addon => new RegExp(addon));
+    addonsAsExternals = registry.addonNames.map((addon) => new RegExp(addon));
   }
 
   config.externals =
@@ -255,7 +212,7 @@ const defaultModify = (config, { target, dev }, webpack) => {
   return config;
 };
 
-const addonExtenders = registry.getAddonExtenders().map(m => require(m));
+const addonExtenders = registry.getAddonExtenders().map((m) => require(m));
 const defaultPlugins = [
   'bundle-analyzer',
   svgPlugin,
@@ -275,6 +232,6 @@ module.exports = {
       (acc, extender) => extender.modify(acc, { target, dev }, webpack),
       defaultConfig,
     );
-    return defaultConfig;
+    return res;
   },
 };

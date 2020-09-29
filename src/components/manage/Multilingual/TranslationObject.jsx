@@ -92,6 +92,7 @@ const TranslationObject = ({
                       value={translationObject[field]}
                       required={schema.required.indexOf(field) !== -1}
                       key={field}
+                      onChange={() => {}}
                     />
                   ))}
                 </Segment>,

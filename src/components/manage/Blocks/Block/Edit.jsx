@@ -11,12 +11,18 @@ import { defineMessages, injectIntl } from 'react-intl';
 import { blocks } from '~/config';
 import { Button } from 'semantic-ui-react';
 import includes from 'lodash/includes';
+import isBoolean from 'lodash/isBoolean';
 import cx from 'classnames';
 import { setSidebarTab } from '@plone/volto/actions';
 
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import trashSVG from '@plone/volto/icons/delete.svg';
+import {
+  SidebarPortal,
+  BlockSettingsSidebar,
+  BlockSettingsSchema,
+} from '@plone/volto/components';
 
 const messages = defineMessages({
   unknownBlock: {
@@ -48,6 +54,7 @@ class Edit extends Component {
     selected: PropTypes.bool.isRequired,
     index: PropTypes.number.isRequired,
     id: PropTypes.string.isRequired,
+    manage: PropTypes.bool,
     onMoveBlock: PropTypes.func.isRequired,
     onDeleteBlock: PropTypes.func.isRequired,
     editable: PropTypes.bool,
@@ -61,6 +68,15 @@ class Edit extends Component {
     editable: true,
   };
 
+  /**
+   * Default properties.
+   * @property {Object} defaultProps Default properties.
+   * @static
+   */
+  static defaultProps = {
+    manage: false,
+  };
+
   componentDidMount() {
     const { type } = this.props;
     const blockHasOwnFocusManagement =
@@ -72,8 +88,11 @@ class Edit extends Component {
     ) {
       this.blockNode.current.focus();
     }
+    const tab = this.props.manage
+      ? 1
+      : blocks.blocksConfig?.[type]?.sidebarTab || 0;
     if (this.props.selected && this.props.editable) {
-      this.props.setSidebarTab(blocks.blocksConfig?.[type]?.sidebarBar || 0);
+      this.props.setSidebarTab(tab);
     }
   }
 
@@ -94,9 +113,10 @@ class Edit extends Component {
         type !== nextProps.type) &&
       this.props.editable
     ) {
-      this.props.setSidebarTab(
-        blocks.blocksConfig?.[nextProps.type]?.sidebarTab || 0,
-      );
+      const tab = this.props.manage
+        ? 1
+        : blocks.blocksConfig?.[nextProps.type]?.sidebarTab || 0;
+      this.props.setSidebarTab(tab);
     }
   }
 
@@ -109,8 +129,18 @@ class Edit extends Component {
    */
   render() {
     const { id, type, selected, editable } = this.props;
+    const required = isBoolean(this.props.data.required)
+      ? this.props.data.required
+      : includes(blocks.requiredBlocks, type);
 
-    const Block = blocks.blocksConfig?.[type]?.['edit'] || null;
+    const disableNewBlocks = this.props.data?.disableNewBlocks;
+
+    let Block = blocks.blocksConfig?.[type]?.['edit'] || null;
+    if (this.props.data?.readOnly) {
+      Block = blocks.blocksConfig?.[type]?.['view'] || null;
+    }
+    const schema =
+      blocks.blocksConfig?.[type]?.['schema'] || BlockSettingsSchema;
     const blockHasOwnFocusManagement =
       blocks.blocksConfig?.[type]?.['blockHasOwnFocusManagement'] || null;
 
@@ -121,7 +151,7 @@ class Edit extends Component {
             role="presentation"
             onClick={() => this.props.onSelectBlock(this.props.id)}
             onKeyDown={
-              !blockHasOwnFocusManagement
+              !(blockHasOwnFocusManagement || disableNewBlocks)
                 ? (e) =>
                     this.props.handleKeyDown(
                       e,
@@ -139,18 +169,29 @@ class Edit extends Component {
             tabIndex={!blockHasOwnFocusManagement ? -1 : null}
           >
             <Block {...this.props} blockNode={this.blockNode} />
+            {this.props.manage && (
+              <SidebarPortal
+                selected={this.props.selected}
+                tab="sidebar-settings"
+              >
+                <BlockSettingsSidebar {...this.props} schema={schema} />
+              </SidebarPortal>
+            )}
           </div>
         ) : (
           <div
             role="presentation"
             onClick={() => this.props.onSelectBlock(this.props.id)}
-            onKeyDown={(e) =>
-              this.props.handleKeyDown(
-                e,
-                this.props.index,
-                this.props.id,
-                this.blockNode.current,
-              )
+            onKeyDown={
+              !(blockHasOwnFocusManagement || disableNewBlocks)
+                ? (e) =>
+                    this.props.handleKeyDown(
+                      e,
+                      this.props.index,
+                      this.props.id,
+                      this.blockNode.current,
+                    )
+                : null
             }
             className={cx(`block ${type}`, { selected: this.props.selected })}
             style={{ outline: 'none' }}
@@ -163,7 +204,7 @@ class Edit extends Component {
             })}
           </div>
         )}
-        {selected && !includes(blocks.requiredBlocks, type) && editable && (
+        {selected && !required && editable && (
           <Button
             icon
             basic

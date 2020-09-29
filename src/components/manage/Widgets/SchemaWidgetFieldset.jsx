@@ -5,9 +5,9 @@
  * @module components/manage/Widgets/SchemaWidgetFieldset
  */
 
-import React from 'react';
 import PropTypes from 'prop-types';
-import { DragSource, DropTarget } from 'react-dnd';
+import React from 'react';
+import { Draggable } from 'react-beautiful-dnd';
 import { Icon } from 'semantic-ui-react';
 
 /**
@@ -16,51 +16,63 @@ import { Icon } from 'semantic-ui-react';
  * @returns {string} Markup of the component.
  */
 export const SchemaWidgetFieldsetComponent = ({
-  connectDragSource,
-  connectDragPreview,
-  connectDropTarget,
-  isDragging,
+  // isDragging,
   title,
   order,
   active,
   onShowEditFieldset,
   onShowDeleteFieldset,
   onClick,
-}) =>
-  connectDropTarget(
-    connectDragPreview(
+  getItemStyle,
+  isDraggable,
+  isDisabled,
+}) => (
+  <Draggable draggableId={title} index={order} key={title}>
+    {(provided, snapshot) => (
       <div
         className={`item${active ? ' active' : ''}`}
-        style={{ opacity: isDragging ? 0.5 : 1 }}
         onClick={() => onClick(order)}
+        ref={provided.innerRef}
+        {...provided.draggableProps}
+        style={getItemStyle(snapshot.isDragging, provided.draggableProps.style)}
       >
-        {connectDragSource(
-          <i aria-hidden="true" className="grey bars icon drag handle" />,
+        {isDraggable && (
+          <i
+            aria-hidden="true"
+            className="grey bars icon drag handle"
+            {...provided.dragHandleProps}
+          />
         )}
         {title}
-        <button
-          className="item ui noborder button"
-          onClick={(event) => {
-            event.stopPropagation();
-            event.preventDefault();
-            onShowEditFieldset(order);
-          }}
-        >
-          <Icon name="write square" size="large" color="blue" />
-        </button>
-        <button
-          className="item ui noborder button"
-          onClick={(event) => {
-            event.stopPropagation();
-            event.preventDefault();
-            onShowDeleteFieldset(order);
-          }}
-        >
-          <Icon name="close" size="large" color="red" />
-        </button>
-      </div>,
-    ),
-  );
+        {!isDisabled && (
+          <button
+            className="item ui noborder button"
+            onClick={(event) => {
+              event.stopPropagation();
+              event.preventDefault();
+              onShowEditFieldset(order);
+            }}
+          >
+            <Icon name="write square" size="large" color="blue" />
+          </button>
+        )}
+
+        {!isDisabled && (
+          <button
+            className="item ui noborder button"
+            onClick={(event) => {
+              event.stopPropagation();
+              event.preventDefault();
+              onShowDeleteFieldset(order);
+            }}
+          >
+            <Icon name="close" size="large" color="red" />
+          </button>
+        )}
+      </div>
+    )}
+  </Draggable>
+);
 
 /**
  * Property types.
@@ -68,51 +80,15 @@ export const SchemaWidgetFieldsetComponent = ({
  * @static
  */
 SchemaWidgetFieldsetComponent.propTypes = {
-  connectDragPreview: PropTypes.func.isRequired,
-  connectDragSource: PropTypes.func.isRequired,
-  connectDropTarget: PropTypes.func.isRequired,
-  isDragging: PropTypes.bool.isRequired,
   order: PropTypes.number.isRequired,
   active: PropTypes.bool.isRequired,
   onOrderFieldset: PropTypes.func.isRequired,
   onShowEditFieldset: PropTypes.func.isRequired,
   onShowDeleteFieldset: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired,
+  getItemStyle: PropTypes.func.isRequired,
+  isDraggable: PropTypes.bool,
+  isDisabled: PropTypes.bool,
 };
 
-export default DropTarget(
-  'fieldset',
-  {
-    hover(props, monitor) {
-      const dragOrder = monitor.getItem().order;
-      const hoverOrder = props.order;
-
-      if (dragOrder === hoverOrder) {
-        return;
-      }
-      props.onOrderFieldset(dragOrder, hoverOrder - dragOrder);
-
-      monitor.getItem().order = hoverOrder;
-    },
-  },
-  (connect) => ({
-    connectDropTarget: connect.dropTarget(),
-  }),
-)(
-  DragSource(
-    'fieldset',
-    {
-      beginDrag(props) {
-        return {
-          id: props.label,
-          order: props.order,
-        };
-      },
-    },
-    (connect, monitor) => ({
-      connectDragSource: connect.dragSource(),
-      connectDragPreview: connect.dragPreview(),
-      isDragging: monitor.isDragging(),
-    }),
-  )(SchemaWidgetFieldsetComponent),
-);
+export default SchemaWidgetFieldsetComponent;

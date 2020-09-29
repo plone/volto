@@ -7,11 +7,16 @@ import Edit from './Edit';
 
 const mockStore = configureStore();
 
+const blockId = '1234';
+
 test('renders an edit image block component', () => {
   const store = mockStore({
     content: {
       create: {},
       data: {},
+      subrequests: {
+        [blockId]: {},
+      },
     },
     intl: {
       locale: 'en',
@@ -23,7 +28,7 @@ test('renders an edit image block component', () => {
       <Edit
         data={{ url: 'image' }}
         selected={false}
-        block="1234"
+        block={blockId}
         content={{}}
         request={{
           loading: false,

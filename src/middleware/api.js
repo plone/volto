@@ -69,14 +69,16 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
     actionPromise = Array.isArray(request)
       ? mode === 'serial'
         ? request.reduce((prevPromise, item) => {
-            return prevPromise.then(() => {
+            return prevPromise.then((acc) => {
               return api[item.op](item.path, {
                 data: item.data,
                 type: item.type,
                 headers: item.headers,
+              }).then((reqres) => {
+                return [...acc, reqres];
               });
             });
-          }, Promise.resolve())
+          }, Promise.resolve([]))
         : Promise.all(
             request.map((item) =>
               api[item.op](item.path, {
