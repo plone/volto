@@ -1,0 +1,26 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+svg {
+  display: inline-block;
+  vertical-align: top;
+}
+
+h1 {
+  display: inline-block;
+  margin: 6px 0 6px 10px;
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1;
+  vertical-align: top;
+}
+
+button + button {
+  margin-left: 10px;
+}
