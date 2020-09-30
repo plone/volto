@@ -33,7 +33,7 @@ const messages = defineMessages({
  * @class Breadcrumbs
  * @extends Component
  */
-class Breadcrumbs extends Component {
+class BreadcrumbsComponent extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -113,6 +113,8 @@ class Breadcrumbs extends Component {
   }
 }
 
+export { BreadcrumbsComponent };
+
 export default compose(
   injectIntl,
   connect(
@@ -121,4 +123,4 @@ export default compose(
     }),
     { getBreadcrumbs },
   ),
-)(Breadcrumbs);
+)(BreadcrumbsComponent);

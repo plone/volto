@@ -1,0 +1,17 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { BreadcrumbsComponent } from './components/theme/Breadcrumbs/Breadcrumbs';
+
+<Meta title="Breadcrumbs" />
+
+# Breadcrumbs
+
+With `MDX` we can define a story for `Breadcrumbs` right in the middle of our
+markdown documentation. Use the `args` for defining Storybook controls handlers.
+
+export const Breadcrumbs = (args) => <BreadcrumbsComponent {...args} />;
+
+<Story name="Breadcrumbs">{Breadcrumbs.bind({})}</Story>
+
+# Props
+
+<ArgsTable of={BreadcrumbsComponent} />
