@@ -283,17 +283,9 @@ class Form extends Component {
 
   static getDerivedStateFromProps(props, state) {
     let newState = { ...state };
-    if (props.onChangeFormData) {
-      if (
-        JSON.stringify(props.formData) !== JSON.stringify(state.formData) //serve per i blocchi nel megamenu
-      ) {
-        newState = { ...newState, formData: props.formData };
-      }
-    }
     if (!props.isFormSelected) {
       newState.selected = null;
     }
-
     return newState;
   }
 
