@@ -290,6 +290,10 @@ class Form extends Component {
         newState = { ...newState, formData: props.formData };
       }
     }
+    if (!props.isFormSelected) {
+      newState.selected = null;
+    }
+
     return newState;
   }
 
