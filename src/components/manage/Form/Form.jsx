@@ -272,10 +272,12 @@ class Form extends Component {
   }
 
   static getDerivedStateFromProps(props, state) {
+    let newState = { ...state };
     if (!props.isFormSelected) {
-      return { ...state, selected: null };
+      newState.selected = null;
     }
-    return state;
+
+    return newState;
   }
 
   /**
