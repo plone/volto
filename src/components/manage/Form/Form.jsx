@@ -282,22 +282,15 @@ class Form extends Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    if (!props.isFormSelected) {
-      return { ...state, selected: null };
+    let newState = { ...state };
+    if (props.onChangeFormData) {
+      if (
+        JSON.stringify(props.formData) !== JSON.stringify(state.formData) //serve per i blocchi nel megamenu
+      ) {
+        newState = { ...newState, formData: props.formData };
+      }
     }
-    return state;
-  }
-
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.formData !== this.state.formData) {
-      this.setState({ formData: nextProps.formData });
-    }
+    return newState;
   }
 
   /**
