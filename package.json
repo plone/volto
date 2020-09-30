@@ -66,7 +66,9 @@
     "ci:cypress:run:guillotina": "start-test ci:start-api-guillotina http-get://localhost:8081 ci:start-frontend-guillotina",
     "dry-release": "release-it --dry-run",
     "release": "release-it",
-    "release-alpha": "release-it major --preRelease=alpha"
+    "release-alpha": "release-it major --preRelease=alpha",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "bundlesize": [
     {
@@ -234,6 +236,7 @@
     "@loadable/component": "5.12.0",
     "@loadable/server": "5.12.0",
     "@loadable/webpack-plugin": "5.12.0",
+    "@storybook/addon-controls": "6.0.22",
     "@testing-library/jest-dom": "4.2.4",
     "@testing-library/react": "9.3.2",
     "autoprefixer": "9.7.6",
@@ -372,7 +375,13 @@
     "yarnhook": "0.4.3"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^6.0.22",
+    "@storybook/addon-essentials": "^6.0.22",
+    "@storybook/addon-links": "^6.0.22",
+    "@storybook/react": "^6.0.22",
+    "babel-loader": "^8.1.0",
     "crypto-random-string": "3.2.0",
+    "react-is": "^16.13.1",
     "tmp": "0.2.1"
   },
   "resolutions": {

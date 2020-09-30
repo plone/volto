@@ -1,0 +1,26 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import IconComponent from './Icon';
+import homeSVG from '../../../icons/home.svg';
+
+<Meta
+  title="Icon"
+  component={Icon}
+  argTypes={{
+    color: { control: 'color' },
+  }}
+/>
+
+# Icon
+
+With `MDX` we can define a story for `Icon` right in the middle of our
+markdown documentation. Use the `args` for defining Storybook controls handlers.
+
+export const Icon = (args) => <IconComponent {...args} />;
+
+<Story name="Icon" args={{ name: homeSVG, color: 'black', size: '32px' }}>
+  {Icon.bind({})}
+</Story>
+
+# Props
+
+<ArgsTable of={IconComponent} />
