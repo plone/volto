@@ -1,6 +1,10 @@
 const makeLoaderFinder = require('razzle-dev-utils/makeLoaderFinder');
 const fileLoaderFinder = makeLoaderFinder('file-loader');
 
+const path = require('path');
+const projectRootPath = path.resolve('.');
+const createAddonsLoader = require('../create-addons-loader');
+
 const SVGLOADER = {
   test: /icons\/.*\.svg$/,
   use: [
@@ -39,7 +43,31 @@ module.exports = {
     const fileLoader = config.module.rules.find(fileLoaderFinder);
     fileLoader.exclude = [/\.(config|variables|overrides)$/, /icons\/.*\.svg$/];
 
+    const packageJson = require(path.join(projectRootPath, 'package.json'));
+    const addonsLoaderPath = createAddonsLoader(packageJson.addons || []);
+
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      'load-volto-addons': addonsLoaderPath,
+      '@plone/volto': `${projectRootPath}/src`,
+    };
     // Return the altered config
     return config;
+  },
+  babel: async (options) => {
+    console.log(options.plugins);
+    return {
+      ...options,
+      plugins: [
+        ...options.plugins,
+        [
+          '/Users/sneridagh/Development/plone/volto/node_modules/babel-plugin-root-import/build/index.js',
+          {
+            rootPathSuffix: './src',
+          },
+        ],
+      ],
+      // any extra options you want to set
+    };
   },
 };
