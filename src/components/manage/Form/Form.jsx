@@ -230,18 +230,6 @@ class Form extends Component {
     this.setState({ isClient: true });
   }
 
-  static getDerivedStateFromProps(props, state) {
-    let newState = { ...state };
-    if (props.onChangeFormData) {
-      if (
-        JSON.stringify(props.formData) !== JSON.stringify(state.formData) //serve per i blocchi nel megamenu
-      ) {
-        newState = { ...newState, formData: props.formData };
-      }
-    }
-    return newState;
-  }
-
   async componentDidUpdate(prevProps, prevState) {
     if (this.props.onChangeFormData) {
       if (
