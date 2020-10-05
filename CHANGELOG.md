@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Added placeholder background color same as selected one @iFlameing
+
 ### Bugfix
 
 - Fixing ObjectBrowser search input reload @iFlameing
