@@ -9,6 +9,7 @@
 ### Bugfix
 
 - Fixing ObjectBrowser search input reload @iFlameing
+- Fix broken current folder by default in content browser for image links, solves #1860 @sneridagh
 
 ### Internal
 
