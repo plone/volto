@@ -13,6 +13,8 @@
 
 ### Internal
 
+- Writing test for the lisiting block location relative criteria @iFlameing
+
 ## 8.2.0 (2020-09-27)
 
 ### Feature
