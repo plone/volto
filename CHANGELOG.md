@@ -2,15 +2,10 @@
 
 ## 8.2.2 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
+- Upgrade react-dropzone from 5.1.0 to 11.1.0 @nileshgulia1
 - Update German translations @tisto
-
-### Internal
 
 ## 8.2.1 (2020-10-06)
 
@@ -101,7 +96,6 @@
 - Fixed front-end field validation #1246 @rexalex
 - Fixed date only widget rendering #1246 @rexalex
 - Fix errors with SelectWidget when removing the only element @rexalex
-- upgrade react-dropzone package @nileshgulia1
 
 ## 7.14.2 (2020-09-10)
 
