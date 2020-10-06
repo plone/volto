@@ -8,6 +8,7 @@
 
 ### Bugfix
 
+- Querystingsearch action now uses correct relative path, if specified. Fixes #1861 @jackahl
 - Fixing ObjectBrowser search input reload @iFlameing
 - Fix broken current folder by default in content browser for image links, solves #1860 @sneridagh
 
