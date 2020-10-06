@@ -9,6 +9,7 @@
 ### Bugfix
 
 - Use Plone `I18N_LANGUAGE` cookie instead of `language` @cekk
+- Fixes the Profile view in toolbar with generic css @iFlameing
 
 ### Internal
 
