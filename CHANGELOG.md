@@ -99,6 +99,7 @@
 - Fixed front-end field validation #1246 @rexalex
 - Fixed date only widget rendering #1246 @rexalex
 - Fix errors with SelectWidget when removing the only element @rexalex
+- upgrade react-dropzone package @nileshgulia1
 
 ## 7.14.2 (2020-09-10)
 
