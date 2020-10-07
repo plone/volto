@@ -21,6 +21,7 @@ if (Cypress.env('API') !== 'guillotina') {
     });
 
     it('Add Listing block', () => {
+      // Given One Document My Page Test and One News Item MY News and One Folder My Folder
       cy.createContent({
         contentType: 'Document',
         contentId: 'my-page-test',
@@ -140,6 +141,7 @@ if (Cypress.env('API') !== 'guillotina') {
     });
 
     it('Listing block - Test Criteria: short-name', () => {
+      // Given three Document in My Page i.e My News, My Folder and My Page Test
       cy.createContent({
         contentType: 'Document',
         contentId: 'my-page-test',
@@ -225,6 +227,8 @@ if (Cypress.env('API') !== 'guillotina') {
     });
 
     it('Listing block - Test Criteria: Location relative', () => {
+      // Given two Document in My Page i.e Document outside Folder and My Folder
+      // And One Document in My Folder i.e Document within Folder
       cy.createContent({
         contentType: 'Document',
         contentId: 'document-outside-folder',
@@ -311,6 +315,8 @@ if (Cypress.env('API') !== 'guillotina') {
     });
 
     it('Listing block - Test Criteria: Location absolute', () => {
+      // Given two Document in My Page i.e Document outside Folder and My Folder
+      // And One Document in My Folder i.e Document within Folder
       cy.createContent({
         contentType: 'Document',
         contentId: 'document-outside-folder',
@@ -395,7 +401,9 @@ if (Cypress.env('API') !== 'guillotina') {
         .contains('Document outside Folder')
         .should('not.exist');
     });
-    it('Listing block - Test Criteria: Location relative particular to a issue', () => {
+    it('Listing block - Test Criteria: Location relative with some outside content', () => {
+      // Given we have two document about us, contact at portal route and two document in My Page
+      // i.e News Item One and News Item Two
       cy.createContent({
         contentType: 'Document',
         contentId: 'about-us',
