@@ -9,6 +9,7 @@
 ### Bugfix
 
 - Use Plone `I18N_LANGUAGE` cookie instead of `language` @cekk
+- Fixing the bleed out of the modal for long filename @iFlameing
 
 ### Internal
 
