@@ -1,6 +1,6 @@
 # Change Log
 
-## 8.2.1 (unreleased)
+## 8.2.3 (unreleased)
 
 ### Breaking
 
@@ -11,7 +11,24 @@
 
 ### Bugfix
 
+- Use Plone `I18N_LANGUAGE` cookie instead of `language` @cekk
+
 ### Internal
+
+## 8.2.2 (2020-10-06)
+
+### Bugfix
+
+- Upgrade react-dropzone from 5.1.0 to 11.1.0 @nileshgulia1
+- Update German translations @tisto
+
+## 8.2.1 (2020-10-06)
+
+### Bugfix
+
+- Querystingsearch action now uses correct relative path, if specified. Fixes #1861 @jackahl
+- Fixing ObjectBrowser search input reload @iFlameing
+- Fix broken current folder by default in content browser for image links, solves #1860 @sneridagh
 
 ## 8.2.0 (2020-09-27)
 
