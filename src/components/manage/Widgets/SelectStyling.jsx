@@ -43,6 +43,14 @@ export const DropdownIndicator = (props) => {
   );
 };
 
+export const Group = (props) => {
+  return (
+    <ReactSelect>
+      {({ components }) => <components.Group {...props}></components.Group>}
+    </ReactSelect>
+  );
+};
+
 export const selectTheme = (theme) => ({
   ...theme,
   borderRadius: 0,
