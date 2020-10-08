@@ -9,6 +9,7 @@
 ### Bugfix
 
 - Fixing the bleed out of the modal for long filename @iFlameing
+- Fixing table block edit @iFlameing
 
 ### Internal
 
