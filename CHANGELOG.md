@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fixing the bleed out of the modal for long filename @iFlameing
+
 ### Internal
 
 ## 8.2.4 (2020-10-08)
