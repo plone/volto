@@ -1,6 +1,6 @@
 # Change Log
 
-## 8.0.1 (unreleased)
+## 8.2.6 (unreleased)
 
 ### Breaking
 
@@ -8,9 +8,88 @@
 
 ### Bugfix
 
+- Fix break-line in view mode @iFlameing
+
+### Internal
+
+## 8.2.5 (2020-10-08)
+
+### Bugfix
+
+- Fixing the bleed out of the modal for long filename @iFlameing
+
+## 8.2.4 (2020-10-08)
+
+### Bugfix
+
+- Fixing table block edit @iFlameing
+
+## 8.2.3 (2020-10-07)
+
+### Bugfix
+
+- Use Plone `I18N_LANGUAGE` cookie instead of `language` @cekk
+
+## 8.2.2 (2020-10-06)
+
+### Bugfix
+
+- Upgrade react-dropzone from 5.1.0 to 11.1.0 @nileshgulia1
+- Update German translations @tisto
+
+## 8.2.1 (2020-10-06)
+
+### Bugfix
+
+- Querystingsearch action now uses correct relative path, if specified. Fixes #1861 @jackahl
+- Fixing ObjectBrowser search input reload @iFlameing
+- Fix broken current folder by default in content browser for image links, solves #1860 @sneridagh
+
+## 8.2.0 (2020-09-27)
+
+### Feature
+
+- Add Basque translation @erral
+
+### Bugfix
+
+- Added prop resettable to DatetimeWidget @damiDevRT
+- Removed the ability to reset the datepicker in the recurrence widget to prevent the uncontrolled creation of recurrences @damiDevRT
+- Fix regression in setting selected sidebar tab by blocks @tiberiuichim
+
+## 8.1.1 (2020-09-27)
+
+### Bugfix
+
+- Japanese translation updated @terapyon
+
+## 8.1.0 (2020-09-22)
+
+### Breaking
+
+### Feature
+
+- Create link in Draftjs using Objectbrowser @giuliaghisini
+
+### Bugfix
+
+- Allow select widget to reset when the incoming props change. The react-select widget has its own internal state, so if you initialise the widget without choices, then populate the choices, it wouldn't properly show the default value @tiberiuichim
+
+### Internal
+
+- Fix console warning in ToHTML @iFlameing
+
+## 8.0.1 (2020-09-22)
+
+### Bugfix
+
+- Fix word overflow from html-block @iFlameing
+- Fix Cypress test for image upload @zotya
+
 ### Internal
 
 - Improve developer experience, don't logout on hot-reload @tiberiuichim
+- Cleanup eslint in razzle.config.js @tiberiuichim
 
 ## 8.0.0 (2020-09-18)
 
@@ -47,7 +126,6 @@
 - Fixed front-end field validation #1246 @rexalex
 - Fixed date only widget rendering #1246 @rexalex
 - Fix errors with SelectWidget when removing the only element @rexalex
-- Fix break-line in view mode @iFlameing
 
 ## 7.14.2 (2020-09-10)
 

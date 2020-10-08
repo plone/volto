@@ -24,7 +24,6 @@ import moment from 'moment';
 import filesize from 'filesize';
 import { readAsDataURL } from 'promise-file-reader';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-
 import { createContent } from '@plone/volto/actions';
 
 const messages = defineMessages({
@@ -33,8 +32,10 @@ const messages = defineMessages({
     defaultMessage: 'Cancel',
   },
   upload: {
-    id: 'Upload {count, plural, one {# file} other {# files}}',
-    defaultMessage: 'Upload {count, plural, one {# file} other {# files}}',
+    id:
+      '{count, plural, one {Upload {count} file} other {Upload {count} files}}',
+    defaultMessage:
+      '{count, plural, one {Upload {count} file} other {Upload {count} files}}',
   },
 });
 
@@ -117,11 +118,17 @@ class ContentsUploadModal extends Component {
    * @param {array} files File objects
    * @returns {undefined}
    */
-  onDrop(files) {
+  onDrop = async (files) => {
+    for (let i = 0; i < files.length; i++) {
+      await readAsDataURL(files[i]).then((data) => {
+        const fields = data.match(/^data:(.*);(.*),(.*)$/);
+        files[i].preview = fields[0];
+      });
+    }
     this.setState({
       files: concat(this.state.files, files),
     });
-  }
+  };
 
   /**
    * Cancel handler
@@ -188,29 +195,44 @@ class ContentsUploadModal extends Component {
             </Loader>
           </Dimmer>
           <Modal.Content>
-            <Dropzone onDrop={this.onDrop} className="dropzone">
-              <Segment className="dashed">
-                <Table basic="very">
-                  <Table.Body>
-                    <Table.Row>
-                      <Table.Cell>
-                        <FormattedMessage
-                          id="Drag and drop files from your computer onto this area or click the “Browse” button."
-                          defaultMessage="Drag and drop files from your computer onto this area or click the “Browse” button."
-                        />
-                      </Table.Cell>
-                      <Table.Cell>
-                        <Button primary floated="right">
-                          <FormattedMessage
-                            id="Browse"
-                            defaultMessage="Browse"
-                          />
-                        </Button>
-                      </Table.Cell>
-                    </Table.Row>
-                  </Table.Body>
-                </Table>
-              </Segment>
+            <Dropzone
+              onDrop={this.onDrop}
+              className="dropzone"
+              noDragEventsBubbling={true}
+              multiple={true}
+            >
+              {({ getRootProps, getInputProps }) => (
+                <div {...getRootProps({ className: 'dashed' })}>
+                  <Segment>
+                    <Table basic="very">
+                      <Table.Body>
+                        <Table.Row>
+                          <Table.Cell>
+                            <FormattedMessage
+                              id="Drag and drop files from your computer onto this area or click the “Browse” button."
+                              defaultMessage="Drag and drop files from your computer onto this area or click the “Browse” button."
+                            />
+                          </Table.Cell>
+                          <Table.Cell>
+                            <Button className="ui button primary">
+                              <FormattedMessage
+                                id="Browse"
+                                defaultMessage="Browse"
+                              />
+                            </Button>
+                            <input
+                              {...getInputProps({
+                                type: 'file',
+                                style: { display: 'none' },
+                              })}
+                            />
+                          </Table.Cell>
+                        </Table.Row>
+                      </Table.Body>
+                    </Table>
+                  </Segment>
+                </div>
+              )}
             </Dropzone>
             {this.state.files.length > 0 && (
               <Table compact singleLine>
@@ -242,7 +264,7 @@ class ContentsUploadModal extends Component {
                 </Table.Header>
                 <Table.Body>
                   {map(this.state.files, (file, index) => (
-                    <Table.Row key={file.name}>
+                    <Table.Row className="upload-row" key={file.name}>
                       <Table.Cell>{file.name}</Table.Cell>
                       <Table.Cell>
                         {moment(file.lastModifiedDate).fromNow()}

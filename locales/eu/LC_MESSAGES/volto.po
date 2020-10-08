@@ -1,178 +1,168 @@
-# Translation of plone.pot to French
-# French Translation Team <plone-i18n@lists.sourceforge.net>, 2003-2006.
-# Sebastien Douche <sdouche@gmail.com>, 2005-2007.
-# Encolpe Degoute <encolpe.degoute@ingeniweb.com>, 2006, 2007, 2008.
-# Gilles Lenfant <gilles.lenfant@ingeniweb.com>, 2008.
-# Encolpe Degoute <encolpe@gmail.com>, 2008.
-# Vincent Fretin <vincent.fretin@gmail.com>, 2009.
-# Kevin Deldycke <kevin@deldycke.com>, 2009.
-# JeanMichel FRANCOIS <toutpt@gmail.com>, 2010.
-# Denis Bitouzé <denis.bitouze@univ-littoral.fr>, 2019.
 msgid ""
 msgstr ""
-"Project-Id-Version: volto-fr\n"
+"Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"PO-Revision-Date: 2020-06-16 11:44+0100\n"
-"Last-Translator: Benoît Suttor <benoit.suttor@imio.be>\n"
-"Language: fr\n"
-"Language-Team: French <plone-fr@lists.plone.org>\n"
-"Content-Type: text/plain; charset=UTF-8;\n"
+"POT-Creation-Date: 2020-09-15T08:53:14.294Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
+"Language: eu\n"
+"Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "MIME-Version: 1.0\n"
-"Language-Code: fr\n"
-"Language-Name: French\n"
-"Preferred-Encodings: utf-8 latin1\n"
-"Domain: plone\n"
-"X-Is-Fallback-For: fr-be fr-ca fr-lu fr-mc fr-ch fr-fr\n"
-"X-Generator: Poedit 2.2.3\n"
+"Language-Code: eu\n"
+"Language-Name: Basque\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: volto\n"
+"X-Generator: Poedit 2.3\n"
+"X-Poedit-Bookmarks: -1,38,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
 #: components/manage/Blocks/HTML/Edit
 msgid "<p>Add some HTML here</p>"
-msgstr ""
+msgstr "<p>HTMLa idatzi hemen</p>"
 
 #: components/theme/Footer/Footer
 msgid "Accessibility"
-msgstr "Accessibilité"
+msgstr "Irisgarritasuna"
 
 #: components/theme/Register/Register
 msgid "Account Registration Completed"
-msgstr "Enregistrement de votre compte terminé"
+msgstr "Izen-ematea ondo egin da"
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Account activation completed"
-msgstr "Activation de votre compte terminé"
+msgstr "Erabiltzaile kontua ondo sortu da"
 
 #: components/manage/Controlpanels/ModerateComments
 msgid "Action"
-msgstr "Action"
+msgstr "Ekintza"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Actions"
-msgstr "Actions"
+msgstr "Ekintzak"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Activate and deactivate"
-msgstr "Activé et désactivé"
+msgstr "Aktibatu eta desaktibatu"
 
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/SchemaWidget
 #: helpers/MessageLabels/MessageLabels
 msgid "Add"
-msgstr "Ajouter"
+msgstr "Gehitu"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Add Addons"
-msgstr "Ajouter des modules"
+msgstr "Gehitu gehigarriak"
 
 #: components/manage/Toolbar/Types
 msgid "Add Content"
-msgstr "Ajouter du contenu"
+msgstr "Gehitu edukia"
 
 #: components/manage/Toolbar/Types
 msgid "Add Translation…"
-msgstr ""
+msgstr "Gehitu itzulpena..."
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Add User"
-msgstr "Ajouter un utilisateur"
+msgstr "Gehitu erabiltzailea"
 
 #: components/manage/Blocks/Description/Edit
 msgid "Add a description…"
-msgstr "Ajouter une description"
+msgstr "Gehitu deskribapena..."
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Add block…"
-msgstr ""
+msgstr "Gehitu blokea..."
 
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "Add criteria"
-msgstr "Ajouter un critère"
+msgstr "Gehitu irizpidea"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Add date"
-msgstr ""
+msgstr "Gehitu data"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Add field"
-msgstr "Ajouter un champ"
+msgstr "Gehitu eremua"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Add fieldset"
-msgstr "Ajouter un groupe de champs"
+msgstr "Gehitu eremu-multzoa"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Add group"
-msgstr "Ajouter un groupe"
+msgstr "Gehitu taldea"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Add new content type"
-msgstr "Ajouter un nouveau type de contenu"
+msgstr "Gehitu elementu-mota berria"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Add new group"
-msgstr "Ajouter un nouveau groupe"
+msgstr "Gehitu talde berria"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Add new user"
-msgstr "Ajouter un nouvel utilistateur"
+msgstr "Gehitu erabiltzaile berria"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Add to Groups"
-msgstr "Ajouter aux groupes"
+msgstr "Gehitu taldeetara"
 
 #: components/manage/Add/Add
 msgid "Add {type}"
-msgstr "Ajouter {type}"
+msgstr "Gehitu {type}"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Add-ons Settings"
-msgstr "Paramètres des modules"
+msgstr "Gehigarrien ezarpenak"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Additional date"
-msgstr ""
+msgstr "Data gehigarria"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Alignment"
-msgstr "Allignement"
+msgstr "Alineazio-estiloak"
 
 #: components/manage/Contents/Contents
 msgid "All"
-msgstr "Tout"
+msgstr "Guztiak"
 
 #: components/theme/Search/Search
 msgid "Alphabetically"
-msgstr ""
+msgstr "Alfabetikoki"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Alt text"
-msgstr "Texte pour la balise alt"
+msgstr "Ordezko testua (alt)"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this field?"
-msgstr "Voulez-vous vraiment supprimer ce champ ?"
+msgstr "Eremu hau ezabatu egin nahi duzu?"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this fieldset including all fields?"
-msgstr "Voulez-vous vraiment supprimer ce groupe de champs et tous les champs dedans"
+msgstr "Eremu-multzo hau eta bere eremu guztiak ezabatu nahi dituzu?"
 
 #: components/manage/Contents/Contents
 msgid "Ascending"
-msgstr "Ascendant"
+msgstr "Goraka"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Available"
-msgstr "Disponible"
+msgstr "Aukerak"
 
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -193,51 +183,51 @@ msgstr "Disponible"
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
 msgid "Back"
-msgstr "Retour"
+msgstr "Atzera"
 
 #: components/manage/Diff/Diff
 msgid "Base"
-msgstr "Base"
+msgstr "Oinarria"
 
 #: components/manage/Sidebar/Sidebar
 msgid "Block"
-msgstr "Bloc"
+msgstr "Blokea"
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Block style"
-msgstr "Style de bloc"
+msgstr "Blokearen estiloa"
 
 #: components/theme/Login/Login
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
-msgstr "L'adresse e-mail et le mot de passe sont sensibles aux majuscules et minuscules, verifier que le verrouillage des majuscules n'est pas activé"
+msgstr "Bai e-posta helbideak eta bai pasahitzak maiuskula eta minuskulak bereizten dituzte, egiaztatu maiuskulak blokeatzeko tekla ez dagoela aktibatuta."
 
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Breadcrumbs"
-msgstr "Fil d'Ariane"
+msgstr "Nabigazio arrastoa"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Browse"
-msgstr "Explore"
+msgstr "Arakatu"
 
 #: components/manage/Blocks/Image/Edit
 msgid "Browse the site, drop an image, or type an URL"
-msgstr "Explorer le site, déposer l'image ou écriver l'URL"
+msgstr "Atarian bilatu, irudi bat hona arrastatu edo URL bat idatzi"
 
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
-msgstr ""
+msgstr "Defektuz, elementu hau barnean duen karpetaren baimenak heredatu egiten dira. Hau desaktibatzen baduzu, hemen zehaztutako baimenak bakarrik aplikatuko dira. {inherited} ikurrak heredatutako balioa adierazten du. Era berean, {global} ikurrak rol globala adierazten du, atariaren kudeatzaileak kudeatzen duen rola."
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Cache Name"
-msgstr "Nom du cache"
+msgstr "Katxearen izena"
 
 #: components/manage/Controlpanels/ContentTypeLayout
 msgid "Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled"
-msgstr ""
+msgstr "Ezin da <strong>{type}</strong> elementu-motaren itxura aldatu, ez baitu <strong>Volto Blocks</strong> portaera aktibatuta"
 
 #: components/manage/Controlpanels/ContentTypeLayout
 msgid "Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>"
-msgstr ""
+msgstr "Ezin da <strong>{type}</strong> elementu-motaren itxura aldatu, <strong>Volto Blocks</strong> portaera aktibatuta izan arren <strong>irakurtzeko-moduan bakarrik</strong> baitago"
 
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsUploadModal
@@ -252,199 +242,199 @@ msgstr ""
 #: components/theme/Login/Login
 #: helpers/MessageLabels/MessageLabels
 msgid "Cancel"
-msgstr "Annuler"
+msgstr "Utzi"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Cell"
-msgstr "Cellule"
+msgstr "Zelda"
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Center"
-msgstr "Centre"
+msgstr "Erdiratu"
 
 #: components/manage/History/History
 msgid "Change Note"
-msgstr "Note de changement"
+msgstr "Aldaketaren inguruko oharra"
 
 #: components/manage/Preferences/ChangePassword
 msgid "Change Password"
-msgstr "Modifier son mot de passe"
+msgstr "Pasahitza aldatu"
 
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Change State"
-msgstr "Modifier l'état"
+msgstr "Egoera aldatu"
 
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Change workflow state recursively"
-msgstr "Modifier le "
+msgstr "Lan-fluxuaren egoera errekurtsiboki aldatu"
 
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 msgid "Changes saved"
-msgstr "Changements sauvegardés"
+msgstr "Aldaketak ondo gorde dira"
 
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
 msgid "Changes saved."
-msgstr "Changements sauvegardés."
+msgstr "Aldaketak ondo gorde dira."
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Checkbox"
-msgstr "Case à cocher"
+msgstr "Aukeraketa-kutxa"
 
 #: components/manage/Widgets/SelectWidget
 msgid "Choices"
-msgstr "Choix"
+msgstr "Aukerak"
 
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Choose Image"
-msgstr "Choisir une image"
+msgstr "Aukeratu irudia"
 
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Choose Target"
-msgstr "Choisir une cible"
+msgstr "Aukeratu helburua"
 
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
-msgstr "Cliquer pour télécharger l'image en taille réelle"
+msgstr "Egin klik tamaina osoko irudia deskargatzeko..."
 
 #: components/manage/Widgets/SelectWidget
 msgid "Close"
-msgstr "Fermer"
+msgstr "Itxi"
 
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
-msgstr "Fermer le menu"
+msgstr "Itxi menua"
 
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"
-msgstr "Collection"
+msgstr "Bilduma"
 
 #: components/manage/Controlpanels/ModerateComments
 #: components/theme/Comments/CommentEditModal
 #: components/theme/Comments/Comments
 msgid "Comment"
-msgstr "Commentaire"
+msgstr "Iruzkina"
 
 #: components/manage/Controlpanels/ModerateComments
 msgid "Commenter"
-msgstr "Commenter"
+msgstr "Erantzuna eman duena"
 
 #: components/manage/Diff/Diff
 msgid "Compare"
-msgstr "Comparer"
+msgstr "Alderatu"
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "Confirm password"
-msgstr "Confirmer le mot de passe"
+msgstr "Pasahitza berretsi"
 
 #: components/theme/ConnectionRefused/ConnectionRefused
 msgid "Connection refused"
-msgstr "Connexion refusée"
+msgstr "Konexioak huts egin du"
 
 #: components/theme/Footer/Footer
 msgid "Contact"
-msgstr "Contact"
+msgstr "Kontaktua"
 
 #: components/theme/ContactForm/ContactForm
 msgid "Contact form"
-msgstr "Formulaire de contact"
+msgstr "Kontaktu-formularioa"
 
 #: components/manage/Blocks/Listing/Edit
 msgid "Contained items"
-msgstr "Eléments contenants"
+msgstr "Barneko elementuak"
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Content"
-msgstr "Contenu"
+msgstr "Edukia"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
-msgstr "Type de contenu créé"
+msgstr "Elementu-mota gehitu da"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type deleted"
-msgstr "Type de contenu supprimé"
+msgstr "Elementu-mota ezabatu da"
 
 #: components/manage/Contents/Contents
 #: components/manage/Toolbar/Toolbar
 msgid "Contents"
-msgstr "Contenus"
+msgstr "Edukiak"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
 msgid "Copy"
-msgstr "Copier"
+msgstr "Kopiatu"
 
 #: components/theme/Footer/Footer
 msgid "Copyright"
-msgstr "Droits d'auteur"
+msgstr "Copyright"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Copyright statement or other rights information on this item."
-msgstr "Droits d'auteur ou autres informations sur les droits sur cet élément"
+msgstr "Elementu honen Copyright adierazpena"
 
 #: components/manage/Contents/Contents
 msgid "Created on"
-msgstr "Créé le"
+msgstr "Sorrera data"
 
 #: components/manage/Contents/Contents
 msgid "Creator"
-msgstr "Créateur"
+msgstr "Sortzailea"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Creators"
-msgstr "Créateurs"
+msgstr "Sortzaileak"
 
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "Criteria"
-msgstr "Critère"
+msgstr "Irizpidea"
 
 #: components/manage/Preferences/ChangePassword
 msgid "Current password"
-msgstr "Mot de passe actuel"
+msgstr "Oraingo pasahitza"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
 msgid "Cut"
-msgstr "Couper"
+msgstr "Ebaki"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Daily"
-msgstr ""
+msgstr "Egunero"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database Information"
-msgstr "Information sur la base de donnée"
+msgstr "Datu-basearen informazioa"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database Location"
-msgstr "Localisation de la base de donnée"
+msgstr "Datu-basearen kokalekua"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database Size"
-msgstr "Taille de la basse de donnée"
+msgstr "Datu-basearen tamaina"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database main"
-msgstr "Base de donnée principale"
+msgstr "Datu-base nagusia"
 
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Widgets/DatetimeWidget
 msgid "Date"
-msgstr "Date"
+msgstr "Data"
 
 #: components/theme/Search/Search
 msgid "Date (newest first)"
-msgstr ""
+msgstr "Data (berriena lehenengo)"
 
 #: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Contents/ContentsRenameModal
@@ -464,7 +454,7 @@ msgstr ""
 #: components/theme/PasswordReset/RequestPasswordReset
 #: components/theme/Register/Register
 msgid "Default"
-msgstr "Défaut"
+msgstr "Defektuzkoa"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
@@ -478,31 +468,31 @@ msgstr "Défaut"
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/Comments
 msgid "Delete"
-msgstr "Supprimer"
+msgstr "Ezabatu"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Delete Group"
-msgstr "Supprimer le groupe"
+msgstr "Ezabatu taldea"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Delete Type"
-msgstr "Supprimer le type"
+msgstr "Ezabatu elementu-mota"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Delete User"
-msgstr "Supprimer l'utilisateur"
+msgstr "Ezabatu erabiltzailea"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Delete col"
-msgstr "Supprimer la colonne"
+msgstr "Ezabatu zutabea"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Delete row"
-msgstr "Supprimer la ligne"
+msgstr "Ezabatu errenkada"
 
 #: components/manage/Contents/Contents
 msgid "Descending"
-msgstr "Descendant"
+msgstr "Beheraka"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Controlpanels/ContentTypes
@@ -513,60 +503,60 @@ msgstr "Descendant"
 #: components/theme/View/TabularView
 #: helpers/MessageLabels/MessageLabels
 msgid "Description"
-msgstr "Déscription"
+msgstr "Deskribapena"
 
 #: components/manage/Diff/Diff
 msgid "Diff"
-msgstr "Différence"
+msgstr "Desberdintasunak"
 
 #: components/manage/Diff/Diff
 msgid "Difference between revision {one} and {two} of {title}"
-msgstr "Différence entre le révision {one] et {two} de {title}"
+msgstr "{title} elementuaren {one} eta {two} errebisioen arteko desberdintasunak"
 
 #: components/theme/Footer/Footer
 msgid "Distributed under the {license}."
-msgstr "Distribué sous la {license}."
+msgstr "{license} lizentziapean banatuta."
 
 #: components/manage/Blocks/Table/Edit
 msgid "Divide each row into separate cells"
-msgstr "Diviser chaque colonnes en cellules séparées"
+msgstr "Errenkada bakoitza zeldatan banatu"
 
 #: components/manage/Contents/Contents
 msgid "Do you really want to delete the following items?"
-msgstr "Voulez-vous vraiment supprimer les éléments suivants ?"
+msgstr "Elementu hauek ezabatu egin nahi dituzu?"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Do you really want to delete the group {groupname}?"
-msgstr "Voulez-vous vraiment supprimer le groupe {groupname} ?"
+msgstr "{groupname} taldea ezabatu egin nahi duzu?"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Do you really want to delete the type {typename}?"
-msgstr "Voulez-vous vraiment supprimer le type {typename} ?"
+msgstr "{typename} elementu-mota ezabatu egin nahi duzu?"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Do you really want to delete the user {username}?"
-msgstr "Voulez-vous vraiment supprimer l'utilisateur {username} ?"
+msgstr "{username} erabiltzailea ezabatu egin nahi duzu?"
 
 #: components/manage/Delete/Delete
 msgid "Do you really want to delete this item?"
-msgstr "Voulez-vous vraiment supprimer cet élément ?"
+msgstr "Elementu hau ezabatu egin nahi duzu?"
 
 #: components/manage/Sidebar/Sidebar
 msgid "Document"
-msgstr "Document"
+msgstr "Dokumentua"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
-msgstr "Glisser et déposer les fichiers depuis votre ordinateur dans la zone ou cliquer sur le bouton “Explore“"
+msgstr "Arrastatu fitxategiak hona edo erabili Arakatu botoia."
 
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
 msgid "E-mail"
-msgstr "E-mail"
+msgstr "Eposta"
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "E-mail addresses do not match."
-msgstr "Les adresses e-mails ne correspondent pas."
+msgstr "Eposta helbideak ez datoz bat"
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypesActions
@@ -576,86 +566,86 @@ msgstr "Les adresses e-mails ne correspondent pas."
 #: components/manage/Widgets/ObjectBrowserWidget
 #: components/theme/Comments/Comments
 msgid "Edit"
-msgstr "Modifier"
+msgstr "Editatu"
 
 #: components/theme/Comments/CommentEditModal
 msgid "Edit comment"
-msgstr "Modifier le commentaire"
+msgstr "Editatu erantzuna"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Edit field"
-msgstr "Modifier le champ"
+msgstr "Editatu eramua"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Edit fieldset"
-msgstr "Modifier le groupe de champs"
+msgstr "Editatu eremu-multzoa"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Edit recurrence"
-msgstr ""
+msgstr "Editatu errepikapena"
 
 #: components/manage/Form/InlineForm
 msgid "Edit values"
-msgstr "Modifier les valeurs"
+msgstr "Editatu balioak"
 
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
-msgstr "Modifier {title}"
+msgstr "Editatu {title}"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Email"
-msgstr "E-mail"
+msgstr "Eposta"
 
 #: components/theme/ContactForm/ContactForm
 msgid "Email sent"
-msgstr "E-mail envoyé"
+msgstr "Eposta ondo bidali da"
 
 #: components/manage/Blocks/Maps/Edit
 msgid "Embed code error, please follow the instructions and try again."
-msgstr "Erreur dans le code intégré, veuillez suivre les instructions et essayez de nouveau."
+msgstr "Itsatsitako kodearen errorea, jarraitu argibideak eta saiatu berriz."
 
 #: components/manage/Blocks/Maps/View
 msgid "Embeded Google Maps"
-msgstr "Carte Google intégrée"
+msgstr "Itsatsitako Google Maps"
 
 #: components/manage/Controlpanels/ContentTypeLayout
 msgid "Enable editable Blocks"
-msgstr ""
+msgstr "Aktibatu editatu daitezkeen blokeak"
 
 #: components/manage/Contents/Contents
 msgid "End Date"
-msgstr "Date de fin"
+msgstr "Bukaera data"
 
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 msgid "Enter URL or select an item"
-msgstr ""
+msgstr "Sartu URL bat edo aukeratu elementu bat"
 
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
-msgstr "Entrer votre adresse e-mail. Elle sera votre nom d'utilisateur. Nous respectons votre vie privée, nous ne donnerons pas votre adresse à un tiers et elle ne sera pas exposée."
+msgstr "Idatzi eposta helbidea. Hau zure erabiltzaile-izena izango da. Zure pribatutasuna errespetatzen dugu eta ez dugu helbidea argitaratu edo inori emango."
 
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
 msgid "Enter full name, e.g. John Smith."
-msgstr "Entrer votre nom complet (par exemple : John Smith)"
+msgstr "Idatzi izen osoa, adb. Jon Garmendia."
 
 #: components/manage/Blocks/Maps/Edit
 msgid "Enter map Embed Code"
-msgstr "Entrer le code intégré de la carte"
+msgstr "Sartu itsasteko kodea"
 
 #: components/manage/Preferences/ChangePassword
 msgid "Enter your current password."
-msgstr "Entrer votre mot de passe actuel."
+msgstr "Idatzi zure pasahitza."
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Enter your email address for verification."
-msgstr "Entrer votre adresse e-mail pour la vérification."
+msgstr "Idatzi zure eposta helbidea egiaztatu dezagun."
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "Enter your new password. Minimum 5 characters."
-msgstr "Entrer votre nouveau mot de passe. Minimum 5 caractères."
+msgstr "Idatzi zure pasahitz berria. Gutxienez 5 karaktere."
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -666,142 +656,142 @@ msgstr "Entrer votre nouveau mot de passe. Minimum 5 caractères."
 #: components/theme/Login/Login
 #: helpers/MessageLabels/MessageLabels
 msgid "Error"
-msgstr "Erreur"
+msgstr "Erroea"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Exclude from navigation"
-msgstr "Exclure de la navigation"
+msgstr "Nabigaziotik baztertu"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Exclude this occurence"
-msgstr ""
+msgstr "Kendu agerpen hau"
 
 #: components/manage/Contents/Contents
 msgid "Excluded from navigation"
-msgstr "Exclut de la navigation"
+msgstr "Nabigaziotik baztertuta"
 
 #: components/manage/Sidebar/Sidebar
 msgid "Expand sidebar"
-msgstr "Etendre la barre latérale"
+msgstr "Alboko barra zabaldu"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Expiration Date"
-msgstr "Date d'expiration"
+msgstr "Iraungitze-data"
 
 #: components/manage/Contents/Contents
 msgid "Expiration date"
-msgstr "Date d'expiration"
+msgstr "Iraungitze-data"
 
 #: components/manage/Contents/ContentsItem
 msgid "Expired"
-msgstr "Expiré"
+msgstr "Iraungita"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "External URL"
-msgstr "URL externe"
+msgstr "Kanpoko URLa"
 
 #: components/manage/Toolbar/Toolbar
 msgid "File"
-msgstr "Fichier"
+msgstr "Fitxategia"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "File size"
-msgstr "Taille du fichier"
+msgstr "Fitxategiaren tamaina"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Filename"
-msgstr "Nom du fichier"
+msgstr "Fitxategi izena"
 
 #: components/manage/Contents/Contents
 msgid "Filter…"
-msgstr "Filtre..."
+msgstr "Filtratu..."
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "First"
-msgstr ""
+msgstr "Lehenengo"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Fixed width table cells"
-msgstr "Taille de la cellule de la table fixé"
+msgstr "Tamaina finkoko taularen zeldak"
 
 #: components/manage/Contents/Contents
 msgid "Folder"
-msgstr "Dossier"
+msgstr "Karpeta"
 
 #: components/theme/Forbidden/Forbidden
 msgid "Forbidden"
-msgstr "Interdit"
+msgstr "Debekatuta"
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Fourth"
-msgstr ""
+msgstr "Laugarren"
 
 #: components/theme/ContactForm/ContactForm
 msgid "From"
-msgstr "De"
+msgstr "Nok"
 
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Full"
-msgstr "Complet"
+msgstr "Osoa"
 
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
 msgid "Full Name"
-msgstr "Nom complet"
+msgstr "Izen-abizenak"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Fullname"
-msgstr "Nom complet"
+msgstr "Izen-abizenak"
 
 #: components/theme/Footer/Footer
 msgid "GNU GPL license"
-msgstr "License GNU GPL"
+msgstr "GNU GPL"
 
 #: components/manage/Sharing/Sharing
 msgid "Global role"
-msgstr "Rôle global"
+msgstr "Rol globala"
 
 #: components/manage/Blocks/Maps/Edit
 msgid "Google Maps Embedded Block"
-msgstr "Bloc intégré de la carte Google"
+msgstr "Google Maps itsasteko blokea"
 
 #: components/manage/Sharing/Sharing
 msgid "Group"
-msgstr "Groupe"
+msgstr "Taldea"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Group created"
-msgstr "Groupe créé"
+msgstr "Taldea ondo sortu da"
 
 #: components/manage/Controlpanels/UsersControlpanel
 #: helpers/MessageLabels/MessageLabels
 msgid "Groupname"
-msgstr "Nom du groupe"
+msgstr "Taldearen izena"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Groups"
-msgstr "Groupes"
+msgstr "Taldeak"
 
 #: components/manage/History/History
 #: components/manage/Toolbar/More
 msgid "History"
-msgstr "Historique"
+msgstr "Historia"
 
 #: components/manage/History/History
 msgid "History of {title}"
-msgstr "Historique de {title}"
+msgstr "{title} elementuaren historia"
 
 #: components/manage/Contents/Contents
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Home"
-msgstr "Accueil"
+msgstr "Hasiera"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Home page"
-msgstr "Page d'accueil"
+msgstr "Hasiera orrialdea"
 
 #: components/manage/Contents/Contents
 msgid "ID"
@@ -809,164 +799,164 @@ msgstr "ID"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "If selected, this item will not appear in the navigation tree"
-msgstr "Si sélectionné, cet élément n'apparaitera pas dans la navigation."
+msgstr "Aukeratuta badago, elementu hau ez da nabigazio zuhaitzean agertuko"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "If this date is in the future, the content will not show up in listings and searches until this date."
-msgstr "Si cette date est dans l'avenir, le contenu n'apparaîtera pas dans les listes et dans les recherches jusqu'à cette date."
+msgstr "Data hau etorkizunekoa bada, edukia ez da agertuko data hori iritsi arte"
 
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
-msgstr "Si vous êtes certain que l'adresse est bonne, mais que vous avez un erreur, veuillez contacter le {site_admin}."
+msgstr "Ziurtatu helbide zuzenean zaudena, hala ere errorea baduzu jarri kontaktuan {site_admin}."
 
 #: components/theme/Login/Login
 msgid "If you have forgotten your password, {forgotpassword}"
-msgstr "Si vous avez oublié votre mot de passe, {forgotpassword}"
+msgstr "Pasahitza ahaztu baduzu, {forgotpassword}"
 
 #: components/theme/Login/Login
 msgid "If you you do not have an account here, head over to the {registrationform}."
-msgstr "Si vous n'avez pas de compte, allez sur le {registrationform}."
+msgstr "Ez baduzu erabiltzaile-konturik, zoaz {registrationform}."
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
-msgstr "Image"
+msgstr "Irudia"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Include this occurence"
-msgstr ""
+msgstr "Sartu agerpen hau"
 
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
 msgid "Info"
-msgstr "Info"
+msgstr "informazioa"
 
 #: components/manage/Sharing/Sharing
 msgid "Inherit permissions from higher levels"
-msgstr "Hériter des permissions depuis un niveau supérieur"
+msgstr "Baimenak goragoko mailetatik heredatu"
 
 #: components/manage/Sharing/Sharing
 msgid "Inherited value"
-msgstr "Hériter de la valeur"
+msgstr "Heredatutako balioa"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Insert col after"
-msgstr "Insérer une colonne après"
+msgstr "Sartu zutabea ondoren"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Insert col before"
-msgstr "Insérer une colonne avant"
+msgstr "Sartu zutabea aurretik"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Insert row after"
-msgstr "Insérer une ligne après"
+msgstr "Sartu errenkada ondoren"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Insert row before"
-msgstr "Insérer une ligne avant"
+msgstr "Sartu errendaka aurretik"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Install"
-msgstr "Installer"
+msgstr "Instalatu"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Installed"
-msgstr "Installé"
+msgstr "Instalatuta"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Installed version"
-msgstr "Version instalée"
+msgstr "Instalatutako bertsioa"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Interval Daily"
-msgstr ""
+msgstr "egunean behin"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Interval Monthly"
-msgstr ""
+msgstr "hilean behin"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Interval Weekly"
-msgstr ""
+msgstr "astean behin"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Interval Yearly"
-msgstr ""
+msgstr "urtean behin"
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "Item batch size"
-msgstr "Nombre d'éléments du lot"
+msgstr "Elementu-multzoaren tamaina"
 
 #: components/manage/Contents/Contents
 msgid "Item(s) copied."
-msgstr "Elément(s) copié(s)"
+msgstr "Elementuak ondo kopiatu dira."
 
 #: components/manage/Contents/Contents
 msgid "Item(s) cut."
-msgstr "Elément(s) coupé(s)"
+msgstr "Elementuak ondo ebaki dira."
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 msgid "Item(s) pasted."
-msgstr "Elément(s) collé(s)"
+msgstr "Elementuak ondo itsatsi dira."
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Items"
-msgstr "Eléments"
+msgstr "Elementuak"
 
 #: components/manage/Form/ModalForm
 #: helpers/MessageLabels/MessageLabels
 msgid "Items must be unique."
-msgstr "Les éléments doivent être unique."
+msgstr "Elementuak bakarrak izan behar dira."
 
 #: components/manage/Preferences/PersonalPreferences
 msgid "Language"
-msgstr "Langage"
+msgstr "Hizkuntza"
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Last"
-msgstr ""
+msgstr "Azkena"
 
 #: components/manage/Contents/Contents
 msgid "Last comment date"
-msgstr "Date du dernier commentaire"
+msgstr "Azken komentarioaren data"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Last modified"
-msgstr "Dernier modifié"
+msgstr "Azken aldaketa"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Latest version"
-msgstr "Dernière version"
+msgstr "Azken bertsioa"
 
 #: components/manage/Controlpanels/ContentTypesActions
 msgid "Layout"
-msgstr ""
+msgstr "Itxura"
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Lead Image"
-msgstr "Image de garde"
+msgstr "Irudia"
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Left"
-msgstr "Gauche"
+msgstr "Ezkerrean"
 
 #: components/manage/Toolbar/Toolbar
 msgid "Link"
-msgstr "Lien"
+msgstr "Esteka"
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Link more"
-msgstr "Lier plus"
+msgstr ""Gehiago" estekatu"
 
 #: components/manage/Blocks/Listing/ListingMore
 msgid "Link title"
-msgstr "Titre du lien"
+msgstr "Izenburua estekatu"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -974,296 +964,296 @@ msgstr "Titre du lien"
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Link to"
-msgstr "Lien vers"
+msgstr "Esteka"
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
-msgstr "Listing"
+msgstr "Zerrenda"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Location"
-msgstr "Localisation"
+msgstr "Kokalekua"
 
 #: components/theme/Login/Login
 msgid "Log In"
-msgstr "Se connecter"
+msgstr "Sartu"
 
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
 msgid "Log in"
-msgstr "Se connecter"
+msgstr "Sartu"
 
 #: components/theme/Login/Login
 msgid "Login"
-msgstr "Se connecter"
+msgstr "Sartu"
 
 #: components/theme/Login/Login
 msgid "Login Failed"
-msgstr "Echec de la connexion"
+msgstr "Sartzeak huts egin du"
 
 #: components/theme/Login/Login
 msgid "Login Name"
-msgstr "Identifiant"
+msgstr "Erabiltzaile-izena"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Make the table compact"
-msgstr "Faire une table compacte"
+msgstr "Taula trinkotu"
 
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "Map"
-msgstr "Carte"
+msgstr "Mapa"
 
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "Maps URL"
-msgstr "URL de la carte"
+msgstr "Maparen URLa"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Maximum length is {len}."
-msgstr ""
+msgstr "Gehienezko luzera {len} da."
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Maximum value is {len}."
-msgstr ""
+msgstr "Balio handiena {len} da."
 
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
-msgstr "Message"
+msgstr "Mezua"
 
 #: components/manage/Form/ModalForm
 #: helpers/MessageLabels/MessageLabels
 msgid "Minimum length is {len}."
-msgstr "La longueur minimum est {len}."
+msgstr "Gutxienezko luzera {len} da."
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Minimum value is {len}."
-msgstr ""
+msgstr "Balio txikiena {len} da."
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Moderate Comments"
-msgstr "Modérer les commentaires"
+msgstr "Erantzunak moderatu"
 
 #: components/manage/Controlpanels/ModerateComments
 msgid "Moderate comments"
-msgstr "Modérer les commentaires"
+msgstr "Erantzunak moderatu"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Monday and Friday"
-msgstr ""
+msgstr "Astelehen eta ostiraletan"
 
 #: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
 msgid "Month day"
-msgstr ""
+msgstr "Hilabeteko"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Monthly"
-msgstr ""
+msgstr "Hilero"
 
 #: components/manage/Toolbar/Toolbar
 msgid "More"
-msgstr "Plus"
+msgstr "Gehiago"
 
 #: components/manage/Contents/ContentsItem
 msgid "Move to bottom of folder"
-msgstr "Déplacer à la fin du dossier"
+msgstr "Karpetaren barrenera mugitu"
 
 #: components/manage/Contents/ContentsItem
 msgid "Move to top of folder"
-msgstr "Déplace au début du dossier"
+msgstr "Karpetaren gorengo tokira mugitu"
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "My email address is"
-msgstr "Mon adresse e-mail est"
+msgstr "Nire helbidea hauxe da: "
 
 #: components/manage/Sharing/Sharing
 #: components/theme/ContactForm/ContactForm
 msgid "Name"
-msgstr "Nom"
+msgstr "Izena"
 
 #: error
 msgid "Navigate back"
-msgstr "Retour en arrière"
+msgstr "Atzera joan"
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "New password"
-msgstr "Nouveau mot de passe"
+msgstr "Pasahitz berria"
 
 #: components/manage/Toolbar/Toolbar
 msgid "News Item"
-msgstr "Actualité"
+msgstr "Albistea ikusi"
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypes
 msgid "No"
-msgstr "Non"
+msgstr "Ez"
 
 #: components/manage/Blocks/Image/ImageSidebar
 msgid "No image selected"
-msgstr "Aucune image sélectionée"
+msgstr "Ez da irudirik aukeratu"
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "No image set in Lead Image content field"
-msgstr "Aucune image pour le champ de l'image de garde"
+msgstr "Ez dago irudirik dagokion eremuan"
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "No image set in image content field"
-msgstr "Aucune image pour le champ image"
+msgstr "Ez dago irudirik dagokion eremuan"
 
 #: components/manage/Blocks/Listing/ListingBody
 msgid "No items found in this container."
-msgstr "Aucun élément trouvé dans ce conteneur"
+msgstr "Karpeta honetan ez dago elementurik"
 
 #: components/manage/Widgets/ObjectBrowserWidget
 msgid "No items selected"
-msgstr "Aucun élément sélectionné"
+msgstr "Ez da elementurik aukeratu"
 
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "No map selected"
-msgstr "Aucune carte sélectionnée"
+msgstr "Ez da maparik auekratu"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "No occurences set"
-msgstr ""
+msgstr "Ez da agerpenik ezarri"
 
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TokenWidget
 msgid "No options"
-msgstr ""
+msgstr "Ez du aukerarik"
 
 #: components/theme/Search/Search
 msgid "No results found"
-msgstr ""
+msgstr "Ez da emaitzarik aurkitu."
 
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
-msgstr "Aucun resultat trouvé"
+msgstr "Ez da emaitzarik aurkitu."
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "No selection"
-msgstr "Aucune sélection"
+msgstr "Ez da ezer aukeratu"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "No uninstall profile"
-msgstr "Aucun profile de désinstalation"
+msgstr "Ez du desinstalatzeko profilik"
 
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
 #: components/manage/Widgets/SelectWidget
 msgid "No value"
-msgstr "Aucune valeur"
+msgstr "Ez du baliorik"
 
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "No video selected"
-msgstr "Aucune vidéo selectionnée"
+msgstr "Ez da bideorik aukeratu"
 
 #: components/manage/Workflow/Workflow
 msgid "No workflow"
-msgstr "Aucun workflow"
+msgstr "Ez du workflowrik"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
 msgid "None"
-msgstr "Aucun"
+msgstr "Bat ere ez"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Number of active objects"
-msgstr "Nombre d'objets actifs"
+msgstr "Aktibo dagoen objektu kopurua"
 
 #: components/manage/Contents/Contents
 msgid "Object Size"
-msgstr "Taille de l'objet"
+msgstr "Objektuaren tamaina"
 
 #: components/manage/Widgets/RecurrenceWidget/EndField
 msgid "Occurences"
-msgstr ""
+msgstr "agerpenen ondoren"
 
 #: components/manage/Delete/Delete
 msgid "Ok"
-msgstr "Ok"
+msgstr "Ados"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Open in a new tab"
-msgstr "Ouvrir dans un nouvel onglet"
+msgstr "Fitxa berrian ireki"
 
 #: components/theme/Navigation/Navigation
 msgid "Open menu"
-msgstr "Ouvrir le menu"
+msgstr "Menua ireki"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Origin"
-msgstr "Origine"
+msgstr "Jatorria"
 
 #: components/manage/Toolbar/Toolbar
 msgid "Page"
-msgstr "Page"
+msgstr "Orria"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Parent fieldset"
-msgstr ""
+msgstr "Guraso den eremu-multzoa"
 
 #: components/theme/Login/Login
 #: helpers/MessageLabels/MessageLabels
 msgid "Password"
-msgstr "Mot de passe"
+msgstr "Pasahitza"
 
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Password reset"
-msgstr "Réinitialisation du mot de passe"
+msgstr "Pasahitza berrezarri"
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Passwords do not match."
-msgstr "Les mots de passe ne correspondent pas."
+msgstr "Pasahitzak ez datoz bat."
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 msgid "Paste"
-msgstr "Coller"
+msgstr "Itsatsi"
 
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Toolbar/Toolbar
 msgid "Personal Information"
-msgstr "Informations personnelles"
+msgstr "Informazio pertsonala"
 
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Toolbar/Toolbar
 msgid "Personal Preferences"
-msgstr "Préférences personnelles"
+msgstr "Hobespen Pertsonalak"
 
 #: components/manage/Toolbar/More
 #: components/manage/Toolbar/Toolbar
 msgid "Personal tools"
-msgstr "Outils personnelles"
+msgstr "Tresna pertsonalak"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
-msgstr "Personnes responsables de la création du contenu de cet article. Veuillez entrer une liste de noms d'utilisateurs, un par ligne. Le créateur principal doit venir en premier."
+msgstr "Elementu honen edukia sortzearen arduradunak. Idatzi erabiltzaile-izen bat lerro bakoitzean. Egile nagusia lehenengoa izan beharko litzateke."
 
 #: components/manage/Blocks/Video/Edit
 msgid "Please enter a valid URL by deleting the block and adding a new video block."
-msgstr "Veuillez saisir une URL valide en supprimant le bloc et en ajoutant un nouveau bloc vidéo."
+msgstr "Txertatu URL zuzen bat blokea ezabatu eta bideo bloke berri bat gehituz."
 
 #: components/manage/Blocks/Maps/Edit
 msgid "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
-msgstr "Veuillez saisir le code d'intégration fourni par Google Maps -> Partager -> Intégrer une carte. Il doit contenir le code <iframe> dessus."
+msgstr "Txertatu Google Mapsek ematen duen txertatzeko kodea. <iframe> etiketa bat izan behar du."
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Please fill out the form below to set your password."
-msgstr "Veuillez remplir le formulaire ci-dessous pour définir votre mot de passe."
+msgstr "Bete formulario hau zure pasahitza ezartzeko."
 
 #: components/theme/Footer/Footer
 msgid "Plone Foundation"
-msgstr "Fondation Plone"
+msgstr "Plone Fundazioa"
 
 #: components/theme/Logo/Logo
 msgid "Plone Site"
-msgstr "Site Plone"
+msgstr "Plone Ataria"
 
 #: components/theme/Footer/Footer
 msgid "Plone{reg} Open Source CMS/WCM"
@@ -1271,159 +1261,159 @@ msgstr "Plone{reg} Open Source CMS/WCM"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Portrait"
-msgstr "Portrait"
+msgstr "Argazkia"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Possible values"
-msgstr ""
+msgstr "Balio posibleak"
 
 #: components/theme/Footer/Footer
 msgid "Powered by Plone & Python"
-msgstr "Alimenté par Plone & Python"
+msgstr "Plone eta Pythonekin eginda"
 
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
-msgstr "Préférences"
+msgstr "Hobespenak"
 
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
 msgid "Preview"
-msgstr "Aperçu"
+msgstr "Aurreikusi"
 
 #: components/manage/Toolbar/PersonalTools
 msgid "Profile"
-msgstr "Profile"
+msgstr "Profila"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Properties"
-msgstr "Propriétés"
+msgstr "Propietateak"
 
 #: components/manage/Contents/Contents
 msgid "Publication date"
-msgstr "Date de publication"
+msgstr "Argitaratze-data"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Publishing Date"
-msgstr "Date de publication"
+msgstr "Argitaratze-data"
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "Re-enter the password. Make sure the passwords are identical."
-msgstr "Entrez à nouveau le mot de passe. Assurez-vous que les mots de passe sont identiques."
+msgstr "Idatzi pasahitza berriro eta ziurtatu idatzitako biak berdinak direla."
 
 #: components/theme/Search/Search
 #: components/theme/View/SummaryView
 msgid "Read More…"
-msgstr "Lire la suite..."
+msgstr "Gehiago irakurri"
 
 #: components/manage/Contents/Contents
 msgid "Rearrange items by…"
-msgstr "Réorganiser les éléments par…"
+msgstr "Elementuak honen arabera berrantolatu..."
 
 #: components/manage/Widgets/RecurrenceWidget/EndField
 msgid "Recurrence ends"
-msgstr ""
+msgstr "Errepikapenaren amaiera"
 
 #: components/manage/Widgets/RecurrenceWidget/EndField
 msgid "Recurrence ends after"
-msgstr ""
+msgstr "Amaitu"
 
 #: components/manage/Widgets/RecurrenceWidget/EndField
 msgid "Recurrence ends on"
-msgstr ""
+msgstr "Egun honetan amaitu"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Reduce complexity"
-msgstr "Réduisez la complexité"
+msgstr "Konplexutasuna gutxitu"
 
 #: components/theme/Anontools/Anontools
 #: components/theme/Register/Register
 msgid "Register"
-msgstr "S'enregistrer"
+msgstr "Izena eman"
 
 #: components/theme/Register/Register
 msgid "Registration form"
-msgstr "Formulaire d'enregistrement"
+msgstr "Erregistro formularioa"
 
 #: components/theme/Search/Search
 msgid "Relevance"
-msgstr ""
+msgstr "Errelebantzia"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
-msgstr ""
+msgstr "Errepikapena ezabatu"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 msgid "Rename"
-msgstr "Renomer"
+msgstr "Berrizendatu"
 
 #: components/manage/Contents/ContentsRenameModal
 msgid "Rename items"
-msgstr "Renommer les éléments"
+msgstr "Elementuak berrizendatu"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Repeat"
-msgstr ""
+msgstr "Errepikatu"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Repeat every"
-msgstr ""
+msgstr "Errepikatu"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Repeat on"
-msgstr ""
+msgstr "Egun honetan errepikatu"
 
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
 msgid "Required"
-msgstr "Obligatoire"
+msgstr "Beharrezkoa"
 
 #: components/manage/Form/ModalForm
 #: helpers/MessageLabels/MessageLabels
 msgid "Required input is missing."
-msgstr "Un champ obligatoire est manquant"
+msgstr "Beharrezko balioak falta dira"
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "Results limit"
-msgstr "Limiter les résultats"
+msgstr "Emaitzen muga"
 
 #: components/manage/Blocks/Listing/Edit
 msgid "Results preview"
-msgstr "Aperçu des résultats"
+msgstr "Emaitzen aurreikuspena"
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "Reversed order"
-msgstr "Ordre inversé"
+msgstr "Alderantzizko ordena"
 
 #: components/manage/History/History
 msgid "Revert to this revision"
-msgstr "Revenir à cette révision"
+msgstr "Bertsio honetara itzuli"
 
 #: components/manage/Contents/Contents
 msgid "Review state"
-msgstr "Etat de révision"
+msgstr "Egoera"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Richtext"
-msgstr "Texte riche"
+msgstr "Testu aberatsa"
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Right"
-msgstr "Droit"
+msgstr "Eskuman"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Rights"
-msgstr "Droits"
+msgstr "Eskubideak"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Roles"
-msgstr "Rôles"
+msgstr "Rolak"
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentType
@@ -1435,231 +1425,231 @@ msgstr "Rôles"
 #: components/manage/Sharing/Sharing
 #: helpers/MessageLabels/MessageLabels
 msgid "Save"
-msgstr "Sauvegarder"
+msgstr "Gorde"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Save recurrence"
-msgstr ""
+msgstr "Gorde errepikapena"
 
 #: components/manage/Controlpanels/ContentTypesActions
 msgid "Schema"
-msgstr ""
+msgstr "Eskema"
 
 #: components/manage/Controlpanels/ContentTypeSchema
 msgid "Schema updates"
-msgstr ""
+msgstr "Eskemaren eguneraketak"
 
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search"
-msgstr "Recherche"
+msgstr "Bilatu"
 
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search Site"
-msgstr "Site de recherche"
+msgstr "Atarian bilatu"
 
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Search content"
-msgstr "Recherche de contenu"
+msgstr "Bilatu edukia"
 
 #: components/manage/Sharing/Sharing
 msgid "Search for user or group"
-msgstr "Recherche d'un utilisateur ou un groupe"
+msgstr "Bilatu erabiltzailea edo taldea"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Search group…"
-msgstr ""
+msgstr "Bilatu taldea..."
 
 #: components/theme/Search/Search
 msgid "Search results"
-msgstr "Résultats de recherche"
+msgstr "Bilaketaren emaitzak"
 
 #: components/theme/Search/Search
 msgid "Search results for {term}"
-msgstr "Résultats de recherche pour {term}"
+msgstr "${term} bilatuz aurkitu dena"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Search users…"
-msgstr ""
+msgstr "Bilatu erabiltzaileak..."
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Second"
-msgstr ""
+msgstr "Bigarren"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Select a date to add to recurrence"
-msgstr ""
+msgstr "Aukeratu data eta gehitu errepikapenera"
 
 #: components/manage/Contents/Contents
 msgid "Select columns to show"
-msgstr "Sélectionnez les colonnes à afficher"
+msgstr "Aukeratu erakutsiko diren zutabeak"
 
 #: components/manage/Widgets/QuerystringWidget
 msgid "Select criteria"
-msgstr "Sélectionnez les critères"
+msgstr "Aukeraketa irizpideak"
 
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Select the transition to be used for modifying the items state."
-msgstr "Sélectionnez la transition à utiliser pour modifier l'état des éléments."
+msgstr "Aukeratu elementuaren egoera aldatzeko trantsizioa."
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Selected dates"
-msgstr ""
+msgstr "Aukeratutako datak"
 
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Selected items"
-msgstr "Éléments sélectionnés"
+msgstr "Aukeratutako elementuak"
 
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Selected items - x of y"
-msgstr ""
+msgstr "Aukeratutako elementuak x/y"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Selection"
-msgstr "Sélection"
+msgstr "Aukeraketa"
 
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TokenWidget
 msgid "Select…"
-msgstr "Sélectionner..."
+msgstr "Aukeratu..."
 
 #: components/theme/ContactForm/ContactForm
 msgid "Send"
-msgstr "Envoyer"
+msgstr "Bidali"
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Set my password"
-msgstr "Définir mon mot de passe"
+msgstr "Ezarri nire pasahitza"
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Set your password"
-msgstr "Définir votre mot de passe"
+msgstr "Ezarri zure pasahitza"
 
 #: components/manage/Sidebar/Sidebar
 msgid "Settings"
-msgstr ""
+msgstr "Ezarpenak"
 
 #: components/manage/Sharing/Sharing
 #: components/manage/Toolbar/More
 msgid "Sharing"
-msgstr "Partager"
+msgstr "Partekatzea"
 
 #: components/manage/Sharing/Sharing
 msgid "Sharing for {title}"
-msgstr "Partage pour {title}"
+msgstr "{title} elementuaren partekatze-aukerak"
 
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
 msgid "Short Name"
-msgstr "Nom court"
+msgstr "Izen-laburra"
 
 #: components/manage/Contents/ContentsRenameModal
 msgid "Short name"
-msgstr "Nom court"
+msgstr "Izen-laburra"
 
 #: components/theme/Pagination/Pagination
 msgid "Show"
-msgstr "Voir"
+msgstr "Erakutsi"
 
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
-msgstr "Rétrécir la barre latérale"
+msgstr "Txikitu alboko barra"
 
 #: components/manage/Toolbar/Toolbar
 msgid "Shrink toolbar"
-msgstr "Réduire la barre d'outils"
+msgstr "Txikitu tresna-barra"
 
 #: components/theme/Login/Login
 msgid "Sign in to start session"
-msgstr "Connectez-vous pour démarrer la session"
+msgstr "Sartu saioa hasteko"
 
 #: components/theme/Logo/Logo
 msgid "Site"
-msgstr "Site"
+msgstr "Ataria"
 
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized
 msgid "Site Administration"
-msgstr "Administration du site"
+msgstr "Atariaren kudeaketa"
 
 #: components/theme/Footer/Footer
 msgid "Site Map"
-msgstr "Plan du site"
+msgstr "Web mapa"
 
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/PersonalTools
 msgid "Site Setup"
-msgstr "Configuration du site"
+msgstr "Atariaren konfigurazioa"
 
 #: components/theme/Sitemap/Sitemap
 msgid "Sitemap"
-msgstr "Plan du site"
+msgstr "Web mapa"
 
 #: components/manage/Blocks/Image/ImageSidebar
 msgid "Size"
-msgstr "Taille"
+msgstr "Tamaina"
 
 #: components/theme/View/ImageView
 msgid "Size: {size}"
-msgstr "Taille : {size}"
+msgstr "Tamaina: {size}"
 
 #: error
 msgid "Sorry, something went wrong with your request"
-msgstr "Désolé, quelque chose s'est mal passé avec votre demande"
+msgstr "Barkatu, zerbait ez da ondo irten zure eskaeran"
 
 #: components/theme/Search/Search
 msgid "Sort By:"
-msgstr ""
+msgstr "Ordenazioa:"
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "Sort on"
-msgstr "Trier sur"
+msgstr "Ordenazioa"
 
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Blocks/Listing/ListingData
 msgid "Source"
-msgstr "Source"
+msgstr "Iturburua"
 
 #: components/manage/Blocks/Video/Edit
 msgid "Specify a youtube video or playlist url"
-msgstr "Spécifiez une URL de vidéo ou de playlist YouTube"
+msgstr "YouTubeko bideo edo erreprodukzio-zerrenda baten URLa adierazi"
 
 #: components/manage/Diff/Diff
 msgid "Split"
-msgstr "Divisé"
+msgstr "Banatu"
 
 #: components/manage/Contents/Contents
 msgid "Start Date"
-msgstr "Date de début"
+msgstr "Hasiera-data"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Start of the recurrence"
-msgstr ""
+msgstr "Errepikapenaren hasiera"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Start password reset"
-msgstr "Lancer la réinitialisation du mot de passe"
+msgstr "Pasahitza berrezartzea abiatu"
 
 #: components/manage/Contents/Contents
 #: components/manage/Workflow/Workflow
 #: components/theme/View/TabularView
 msgid "State"
-msgstr "Etat"
+msgstr "Egoera"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "String"
-msgstr "Chaîne"
+msgstr "Karaktere-katea"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Stripe alternate rows with color"
-msgstr "Rayez les rangées paires/impaires avec la couleur"
+msgstr "Errenkaden koloreak aldatzen joan"
 
 #: components/theme/ContactForm/ContactForm
 msgid "Subject"
-msgstr "Sujet"
+msgstr "Gaia"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -1671,116 +1661,116 @@ msgstr "Sujet"
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
 msgid "Success"
-msgstr "Succès"
+msgstr "Arrakasta"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Table"
-msgstr "Table"
+msgstr "Taula"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Table color inverted"
-msgstr "Couleur de la table inversée"
+msgstr "Taularen kolorea inbertitu"
 
 #: components/manage/Blocks/ToC/View
 msgid "Table of Contents"
-msgstr "Table des matières"
+msgstr "Edukien taula"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsTagsModal
 msgid "Tags"
-msgstr "Mots clés"
+msgstr "Etiketak"
 
 #: components/manage/Contents/ContentsTagsModal
 msgid "Tags to add"
-msgstr "Mots clés à ajouter"
+msgstr "Gehitu beharreko etiketak"
 
 #: components/manage/Contents/ContentsTagsModal
 msgid "Tags to remove"
-msgstr "Mots clés à supprimer"
+msgstr "Kendu beharreko etiketak"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Target memory size per cache in bytes"
-msgstr "Taille de la mémoire par cache en octets"
+msgstr "Katxe bakoitzaren tamaina "
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Target number of objects in memory per cache"
-msgstr "Nombre d'objets en mémoire par cache"
+msgstr "Katxe bakoitzaren elementu-kopurua"
 
 #: components/manage/Blocks/Listing/TemplateWidget
 msgid "Template"
-msgstr "Modèle"
+msgstr "Txantiloia"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Text"
-msgstr "Texte"
+msgstr "Testua"
 
 #: components/theme/ConnectionRefused/ConnectionRefused
 #: components/theme/CorsError/CorsError
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized
 msgid "Thank you."
-msgstr "Merci."
+msgstr "Eskerrik asko."
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "The Database Manager allow you to view database status information"
-msgstr "Le gestionnaire de base de données vous permet d'afficher les informations d'état de la base de données"
+msgstr "Datu-basearen kudeatzaileak datu-basearen egoera erakusten ditu"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "The URL for your external home page, if you have one."
-msgstr "L'URL de votre page d'accueil externe, si vous en avez une."
+msgstr "Idatzi zure webgunearen helbidea, bat baldin baduzu."
 
 #: components/theme/ConnectionRefused/ConnectionRefused
 msgid "The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable."
-msgstr "Le backend ne répond pas, veuillez vérifier si vous avez démarré Plone, vérifiez l'objet de configuration de votre projet apiPath (ou si vous utilisez le proxy interne, devProxyToApiPath) ou la variable d'environnement RAZZLE_API_ PATH de Volto."
+msgstr "Zerbitzaria ez dago ondo, egiaztatu Plone martxan dagoela, egiaztatu zure proiektuaren konfigurazio-objektuaren apiPath ezarpena (edo barne-proxya badarabilzu, devProxyToApiPath) edo RAZZLE_API_PATH ingurune-aldagaia."
 
 #: components/theme/CorsError/CorsError
 msgid "The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources."
-msgstr "Le backend répond, mais les en-têtes CORS ne sont pas configurés correctement et le navigateur a refusé l'accès aux ressources du backend."
+msgstr "Zerbitzaria ondo dago baina CORS goiburukoak ez dira zuzenak."
 
 #: components/theme/CorsError/CorsError
 msgid "The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
-msgstr ""
+msgstr "Zerbitzaria ez dago ondo, barkatu eragozpenak. Saiatu orrialdea freskatzen. Arazoak jarraitzen badu jarri kontaktuan atariaren kudeatzailearekin."
 
 #: components/theme/Register/Register
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
-msgstr "Le processus d'inscription a réussi. Veuillez vérifier votre boîte e-mail pour savoir comment activer votre compte."
+msgstr "Izen-emate prozesua ondo egin duzu. Begiratu zure eposta, kontua aktibatzeko informazioa bertara bidali dizugu-eta."
 
 #: components/manage/Preferences/PersonalInformation
 msgid "The user portrait/avatar"
-msgstr "Portrait / avatar de l'utilisateur"
+msgstr "Erabiltzailearen argazkia"
 
 #: components/theme/Footer/Footer
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
-msgstr "Le {plonecms} est {copyright} 2000-{current_year} par la {plonefoundation} et ses amis."
+msgstr "{plonecms} {copyright} 2000-{current_year} - {plonefoundation} eta lagunak."
 
 #: components/theme/CorsError/CorsError
 msgid "There is a configuration problem on the backend"
-msgstr "Il y a un problème de configuration sur le backend"
+msgstr "Zerbitzariak konfigurazio arazo bat du"
 
 #: components/manage/Form/InlineForm
 msgid "There were some errors"
-msgstr "Il y a eu quelques erreurs"
+msgstr "Errorea gertatu da"
 
 #: components/manage/Form/ModalForm
 #: helpers/MessageLabels/MessageLabels
 msgid "There were some errors."
-msgstr "Il y a eu quelques erreurs."
+msgstr "Errorea gertatu da"
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Third"
-msgstr ""
+msgstr "Hirugarren"
 
 #: components/manage/Contents/ContentsRenameModal
 msgid "This name will be displayed in the URL."
-msgstr "Ce nom sera affiché dans l'URL."
+msgstr "Izen hau URLan agertuko da"
 
 #: components/theme/NotFound/NotFound
 msgid "This page does not seem to exist…"
-msgstr "Cette page ne semble pas exister…"
+msgstr "Orrialde hau ez da existitzen..."
 
 #: components/manage/Widgets/DatetimeWidget
 msgid "Time"
-msgstr "Temps"
+msgstr "Ordua"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/Contents
@@ -1793,49 +1783,49 @@ msgstr "Temps"
 #: components/theme/View/TabularView
 #: helpers/MessageLabels/MessageLabels
 msgid "Title"
-msgstr "Titre"
+msgstr "Izenburua"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total active and non-active objects"
-msgstr "Total des objets actifs et non actifs"
+msgstr "Objektu aktibo eta ez-aktiboak"
 
 #: components/manage/Contents/Contents
 msgid "Total comments"
-msgstr "Nombre de commentaires"
+msgstr "Erantzun kopurua"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total number of objects in each cache"
-msgstr "Nombre total d'objets dans chaque cache"
+msgstr "Katxe bakoitzeko objektu kopurua"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total number of objects in memory from all caches"
-msgstr "Nombre total d'objets en mémoire de tous les caches"
+msgstr "Katxe guztietan dagoen elementu kopurua"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total number of objects in the database"
-msgstr "Nombre total d'objets dans la base de données"
+msgstr "Datu-basean dagoen elementu kopurua"
 
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
-msgstr "Traduire en {lang}"
+msgstr "{lang} hizkuntzara itzuli"
 
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
 msgid "Type"
-msgstr "Type"
+msgstr "Elementu mota"
 
 #: components/manage/Blocks/Video/Edit
 msgid "Type a Video (YouTube, Vimeo or mp4) URL"
-msgstr "Saisissez une URL de vidéo (YouTube, Vimeo ou mp4)"
+msgstr "Idatzi bideo baten URLa (YouTube, Vimeo edo mp4)"
 
 #: components/manage/Blocks/Text/Edit
 msgid "Type text…"
-msgstr "Saisissez du texte…"
+msgstr "Idatzi testua..."
 
 #: components/manage/Blocks/Title/Edit
 msgid "Type the title…"
-msgstr "Tapez le titre…"
+msgstr "Idatzi izenburua..."
 
 #: components/manage/Contents/Contents
 msgid "UID"
@@ -1843,402 +1833,402 @@ msgstr "UID"
 
 #: components/theme/Unauthorized/Unauthorized
 msgid "Unauthorized"
-msgstr "Non autorisé"
+msgstr "Ez duzu baimenik"
 
 #: components/manage/Diff/Diff
 msgid "Unified"
-msgstr "Unifié"
+msgstr "Elkartuta"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Uninstall"
-msgstr "Désinstaller"
+msgstr "Desinstalatu"
 
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
 msgid "Unknown Block"
-msgstr "Bloc inconnu"
+msgstr "Bloke ezezaguna"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update"
-msgstr "Mise à jour"
+msgstr "Eguneratu"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update installed addons"
-msgstr "Mettre à jour les modules installés"
+msgstr "Eguneratu instalatutako gehigarriak"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update installed addons:"
-msgstr "Mettre à jour les modules installés :"
+msgstr "Eguneratu instalatutako gehigarriak"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Updates available"
-msgstr "Mises à jour disponibles"
+msgstr "Instalatu daitezkeen eguneraketak"
 
 #: components/manage/Contents/Contents
 msgid "Upload"
-msgstr "Téléchargé"
+msgstr "Kargatu"
 
 #: components/manage/Blocks/LeadImage/Edit
 msgid "Upload a lead image in the 'Lead Image' content field."
-msgstr "Téléchargez une image de garde dans le champ «Image de garde»."
+msgstr "Kargatu irudia"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 msgid "Upload a new image"
-msgstr ""
+msgstr "Kargatu irudi berria"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Upload files"
-msgstr "Télécharger des fichiers"
+msgstr "Kargatu fitxategiak"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Uploading files"
-msgstr "Téléchargement de fichiers"
+msgstr "Fitxategiak kargatzen"
 
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
 msgid "Used for programmatic access to the fieldset."
-msgstr "Utilisé pour l'accès programmatique au groupe de champs."
+msgstr "Eremu-multzoa programaziotik atzitzeko izena"
 
 #: components/manage/Sharing/Sharing
 msgid "User"
-msgstr "Utilisateur"
+msgstr "Erabiltzailea"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "User created"
-msgstr "Utilisateur créé"
+msgstr "Erabiltzailea ondo sortu da"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "User name"
-msgstr "Nom d'utilisateur"
+msgstr "Erabiltzaile Izena"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Username"
-msgstr "Nom d'utilisateur"
+msgstr "Erabiltzaile izena"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Users"
-msgstr "Utilisateurs"
+msgstr "Erabiltzaileak"
 
 #: components/manage/Controlpanels/Controlpanels
 #: helpers/MessageLabels/MessageLabels
 msgid "Users and Groups"
-msgstr "Utilisateurs et groupes"
+msgstr "Erabiltzaile eta taldeak"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Users and groups settings"
-msgstr "Paramètre des utilisateurs et groupes"
+msgstr "Erabiltzaile eta taldeen ezarpenak"
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Version Overview"
-msgstr "Présentation de la version"
+msgstr "Bertsioen informazioa"
 
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Video"
-msgstr "Vidéo"
+msgstr "Bideoa"
 
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Video URL"
-msgstr "URL de la vidéo"
+msgstr "Bideoaren URLa"
 
 #: components/manage/Contents/ContentsItem
 msgid "View"
-msgstr "Vue"
+msgstr "Ikusi"
 
 #: components/manage/History/History
 msgid "View changes"
-msgstr "Voir les changements"
+msgstr "Aldaketak ikusi"
 
 #: components/manage/History/History
 msgid "View this revision"
-msgstr "Voir cette révision"
+msgstr "Bertsio hau ikusi"
 
 #: components/manage/Display/Display
 msgid "Viewmode"
-msgstr "Mode d'affichage"
+msgstr "Bistaratze modua"
 
 #: components/manage/Controlpanels/VersionOverview
 msgid "Warning Regarding debug mode"
-msgstr "Avertissement concernant le mode de débogage"
+msgstr ""Debug moduan" diharduzu. Modu hau garapenean dauden atarientzako da"
 
 #: components/theme/ConnectionRefused/ConnectionRefused
 msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later."
-msgstr "Nous nous excusons pour la gêne occasionnée, mais le backend du site auquel vous accédez n'est pas disponible pour le moment. Veuillez réessayer plus tard."
+msgstr "Barkatu eragozpenak baina zerbitzaria ez dago konektatuta. Saiatu beranduago mesedez."
 
 #: components/theme/NotFound/NotFound
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
-msgstr "Nous nous excusons pour la gêne occasionnée, mais la page à laquelle vous tentiez d'accéder n'est pas à cette adresse. Vous pouvez utiliser les liens ci-dessous pour vous aider à trouver ce que vous recherchez."
+msgstr "Barkatu eragozpenak baina orrialde horren helbidea ez da zuzena. erabili beheko loturak bilatu nahi duzuna aurkitzeko."
 
 #: components/theme/Forbidden/Forbidden
 msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
-msgstr "Nous nous excusons pour la gêne occasionnée, mais vous ne disposez pas des autorisations sur cette ressource."
+msgstr "Barkatu eragozpenak baina ez duzu orrialde hau ikusteko baimenik."
 
 #: components/manage/Preferences/PersonalInformation
 msgid "We will use this address if you need to recover your password"
-msgstr "Nous utiliserons cette adresse si vous avez besoin de récupérer votre mot de passe"
+msgstr "Helbide hau erabiliko dugu pasahitza berreskuratu behar baduzu"
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Weeek day of month"
-msgstr ""
+msgstr "Hilabeteko"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Weekday"
-msgstr ""
+msgstr "Astegunetan"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Weekly"
-msgstr ""
+msgstr "Astero"
 
 #: components/manage/History/History
 msgid "What"
-msgstr "Quoi"
+msgstr "Zer"
 
 #: components/manage/History/History
 msgid "When"
-msgstr "Quand"
+msgstr "Noiz"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "When this date is reached, the content will nolonger be visible in listings and searches."
-msgstr "Lorsque cette date est atteinte, le contenu ne sera plus visible dans les listes et les recherches."
+msgstr "Data hau iristean, elementua ez da erakutsiko bilaketa eta zerrendetan"
 
 #: components/manage/History/History
 msgid "Who"
-msgstr "Qui"
+msgstr "Nor"
 
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
-msgstr "Workflow mis à jour."
+msgstr "Workflowa eguneratu egin da"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Yearly"
-msgstr ""
+msgstr "Urtero"
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypes
 msgid "Yes"
-msgstr "Oui"
+msgstr "Bai"
 
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource, please {login} first."
-msgstr "Vous essayez d'accéder à une ressource protégée, veuillez d'abord {login}."
+msgstr "Babestutako orrialde batera sartu nahian zabiltza, {login} lehenengo."
 
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "You are using an outdated browser"
-msgstr "Vous utilisez un navigateur obsolète"
+msgstr "Zure nabigatzailea zaharra da."
 
 #: components/theme/Comments/Comments
 msgid "You can add a comment by filling out the form below. Plain text formatting."
-msgstr "Vous pouvez ajouter un commentaire en remplissant le formulaire ci-dessous. Formatage de texte brut."
+msgstr "Erantzun bat utzi dezakezu. Testu hutsez idatzi."
 
 #: components/manage/Sharing/Sharing
 msgid "You can control who can view and edit your item using the list below."
-msgstr "Vous pouvez contrôler qui peut afficher et modifier votre élément à l'aide de la liste ci-dessous."
+msgstr "Zure elementua nork ikusi eta aldatu dezakeen kontrolatu dezakezu."
 
 #: components/manage/Diff/Diff
 msgid "You can view the difference of the revisions below."
-msgstr "Vous pouvez voir la différence des révisions ci-dessous."
+msgstr "Bertsioen arteko aldeak ikusi ditzakezu"
 
 #: components/manage/History/History
 msgid "You can view the history of your item below."
-msgstr "Vous pouvez consulter l'historique de votre élément ci-dessous."
+msgstr "Zure elementuaren historia ikusi dezakezu."
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Your email is required for reset your password."
-msgstr "Votre e-mail est nécessaire pour réinitialiser votre mot de passe."
+msgstr "Eposta derrigorrezkoa da zure pasahitza berrezartzeko."
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Your location - either city and country - or in a company setting, where your office is located."
-msgstr "L'emplacement, ville et pays, ou nom de l'entreprise, où se trouve votre bureau."
+msgstr "Zure kokalekua."
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Your password has been set successfully. You may now {link} with your new password."
-msgstr "Votre mot de passe a été défini avec succès. Vous pouvez maintenant {link} avec votre nouveau mot de passe."
+msgstr "Zure pasahitza ondo berrezarri da. Orain zure pasahitz berriarekin {link}"
 
 #: components/manage/Preferences/PersonalPreferences
 msgid "Your preferred language"
-msgstr "Votre langue préférée"
+msgstr "Zure hizkuntza"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "box_forgot_password_option"
-msgstr "Mot de passe oublié"
+msgstr "Pasahitza ahaztuta?"
 
 #: config/Blocks
 msgid "common"
-msgstr "commun"
+msgstr "Ohikoa"
 
 #: components/manage/Blocks/Block/Edit
 msgid "delete"
-msgstr "supprimer"
+msgstr "Ezabatu"
 
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "deprecated_browser_notice_message"
-msgstr "Votre navigateur est obslète"
+msgstr "{browsername} {browserversion} erabilzen ari zara eta hori zaharkituta gelditu da. Ez duzu segurtasun-eguneraketarik jasoko eta ez dago prest egungo webguneetarako. Eguneratu zure nabigatzailea"
 
 #: config/Blocks
 msgid "description"
-msgstr "description"
+msgstr "Deskribapena"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "description_lost_password"
-msgstr "Mot de passe perdu"
+msgstr "Segurtasun arazoak ekiditeko, zure pasahitza zifratuta gordetzen da gure sisteman eta ezin dizugu e-postaz bidali. Zure pasahitza berrezarri bahi baduzu, bete beheko formularioa eta erregistratu zinenean eman zenuen epostara bidaliko dizugu pasahitza berrezartzeko egin beharrekoaren berri."
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "description_sent_password"
-msgstr "Mot de passe envoyé"
+msgstr "Pasahitza berrezartzeko eskaera e-postaz bidali dizugu. Momentu batetik bestera jasoko duzu zure eposta kontuan. Mezua jasotzen duzunean, egin klik hango loturan zure pasahitza berrezartzeko."
 
 #: components/manage/Contents/ContentsItem
 msgid "draft"
-msgstr ""
+msgstr "Zirriborroa"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "email"
-msgstr ""
+msgstr "Eposta zuzen bat idatzi behar duzu (izena@domeinua.eus)"
 
 #: components/theme/View/EventView
 msgid "event_alldates"
-msgstr "Toutes les dates"
+msgstr "Data guztiak"
 
 #: components/theme/View/EventView
 msgid "event_attendees"
-msgstr "Participants"
+msgstr "Bertaratutakoak"
 
 #: components/theme/View/EventView
 msgid "event_contactname"
-msgstr "Nom du contact"
+msgstr "Kontaktuaren izena"
 
 #: components/theme/View/EventView
 msgid "event_contactphone"
-msgstr "Téléphone du contact"
+msgstr "Kontaktuaren telefonoa"
 
 #: components/theme/View/EventView
 msgid "event_website"
-msgstr "Site de l'événement"
+msgstr "Hitzorduaren webgunea"
 
 #: components/theme/View/EventView
 msgid "event_what"
-msgstr "Quoi"
+msgstr "Zer"
 
 #: components/theme/View/EventView
 msgid "event_when"
-msgstr "Quand"
+msgstr "Noiz"
 
 #: components/theme/View/EventView
 msgid "event_where"
-msgstr "Où"
+msgstr "Non"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "heading_sent_password"
-msgstr ""
+msgstr "Pasahitza aldatzeko eskaera bidalia"
 
 #: config/Blocks
 msgid "hero"
-msgstr "hero"
+msgstr "Hero"
 
 #: config/Blocks
 msgid "html"
-msgstr "html"
+msgstr "HTML"
 
 #: config/Blocks
 msgid "image"
-msgstr "image"
+msgstr "Irudia"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "integer"
-msgstr ""
+msgstr "Zenbaki osoa izan behar da"
 
 #: components/manage/Contents/ContentsItem
 msgid "intranet"
-msgstr ""
+msgstr "Intraneta"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "label_my_email_address_is"
-msgstr "Mon adresse e-mail est"
+msgstr "Nire helbidea hauxe da: "
 
 #: config/Blocks
 msgid "leadimage"
-msgstr "image de garde"
+msgstr "Irudi nagusiaren eremua"
 
 #: config/Blocks
 msgid "listing"
-msgstr "listing"
+msgstr "Zerrenda"
 
 #: components/theme/Unauthorized/Unauthorized
 msgid "log in"
-msgstr "se connecter"
+msgstr "Sartu"
 
 #: config/Blocks
 msgid "maps"
-msgstr "cartes"
+msgstr "Mapak"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "maxLength"
-msgstr ""
+msgstr "Luzera maximoa"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "maximum"
-msgstr ""
+msgstr "Balio maximoa"
 
 #: config/Blocks
 msgid "media"
-msgstr "média"
+msgstr "Media"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "minLength"
-msgstr ""
+msgstr "Luzera minimoa"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "minimum"
-msgstr ""
+msgstr "Balio minimoa"
 
 #: config/Blocks
 msgid "mostUsed"
-msgstr "souvent utilisé"
+msgstr "Gehien erabilia"
 
 #: components/manage/Contents/ContentsItem
 msgid "no workflow state"
-msgstr ""
+msgstr "Ez du workflowrik"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "number"
-msgstr ""
+msgstr "Zenbakia idatzi behar duzu"
 
 #: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
 #: components/manage/Widgets/RecurrenceWidget/ByYearField
 msgid "of the month"
-msgstr ""
+msgstr ". egunean"
 
 #: error
 msgid "or try a different page."
-msgstr "ou essayez une autre page."
+msgstr "edo beste orrialde bat probatu."
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "others"
-msgstr ""
+msgstr "besteak"
 
 #: components/manage/Contents/ContentsItem
 msgid "private"
-msgstr ""
+msgstr "Pribatua"
 
 #: components/manage/Contents/ContentsItem
 msgid "published"
-msgstr ""
+msgstr "Argitaratuta"
 
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "querystring-widget-select"
-msgstr ""
+msgstr "Aukeratu..."
 
 #: components/theme/Login/Login
 msgid "registration form"
-msgstr "formulaire d'inscription"
+msgstr "Erregistro formularioa"
 
 #: components/theme/Search/Search
 msgid "results found"
-msgstr "résultats trouvés"
+msgstr "Emaitzak"
 
 #: error
 msgid "return to the site root"
-msgstr "retour à la racine du site"
+msgstr "Atariaren errora itzuli"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_and"
@@ -2370,43 +2360,43 @@ msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "sort"
-msgstr "trier"
+msgstr "Ordenatu"
 
 #: config/Blocks
 msgid "table"
-msgstr "table"
+msgstr "Taula"
 
 #: config/Blocks
 msgid "text"
-msgstr "texte"
+msgstr "Testua"
 
 #: config/Blocks
 msgid "title"
-msgstr "titre"
+msgstr "Izenburua"
 
 #: config/Blocks
 msgid "toc"
-msgstr "toc"
+msgstr "Edukien taula"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "url"
-msgstr ""
+msgstr "URL zuzen bat izan behar da (www.zerbait.eus) edo http(s)://www.zerbitzaria.eus)"
 
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"
-msgstr "Avatar de l'utilisateur"
+msgstr "Erabiltzailearen argazkia"
 
 #: config/Blocks
 msgid "video"
-msgstr "vidéo"
+msgstr "Bideoa"
 
 #: components/theme/View/EventView
 msgid "visit_external_website"
-msgstr ""
+msgstr "Webgunea ikusi"
 
 #: components/theme/Login/Login
 msgid "we can send you a new one"
-msgstr "nous pouvons vous en envoyer un nouveau"
+msgstr "berri bat bidali diezazukegu"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
@@ -2414,28 +2404,28 @@ msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "{count} selected"
-msgstr "{count} sélectionné"
+msgstr "{count} aukeratu tituzu"
 
 #: components/manage/Controlpanels/ContentType
 msgid "{id} Content Type"
-msgstr ""
+msgstr "{id} elementu-mota"
 
 #: components/manage/Controlpanels/ContentTypeSchema
 msgid "{id} Schema"
-msgstr ""
+msgstr "{id} eskema"
 
 #: components/manage/Actions/Actions
 msgid "{title} copied."
-msgstr "{title} copié."
+msgstr "{title} kopiatu egin da."
 
 #: components/manage/Actions/Actions
 msgid "{title} cut."
-msgstr "{title} coupé."
+msgstr "{title} moztu egin da."
 
 #: components/manage/Actions/Actions
 msgid "{title} has been deleted."
-msgstr "{title} a été supprimé"
+msgstr "{title} ezabatu egin da."
 
 #: components/theme/Comments/Comments
 msgid "{user} says:"
-msgstr "{user} dit :"
+msgstr "{user} erabiltzaileak zera dio:"

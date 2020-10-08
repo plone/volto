@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-27T19:30:59.079Z\n"
-"PO-Revision-Date: 2020-06-10 21:08+0900\n"
+"PO-Revision-Date: 2020-09-23 20:50+0900\n"
 "Last-Translator: Manabu TERADA <terada@cmscom.jp>\n"
 "Language: ja\n"
 "Language-Team: Plone Japanese Team <https://github.com/plonejp>\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
 msgid "<p>Add some HTML here</p>"
-msgstr ""
+msgstr "<p>ここにHTMLを記述</p>"
 
 #: components/theme/Footer/Footer
 msgid "Accessibility"
@@ -86,7 +86,7 @@ msgstr "基準を追加"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Add date"
-msgstr ""
+msgstr "日付を追加"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Add field"
@@ -126,7 +126,7 @@ msgstr "アドオン設定"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Additional date"
-msgstr ""
+msgstr "追加日"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -409,7 +409,7 @@ msgstr "カット"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Daily"
-msgstr ""
+msgstr "毎日"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database Information"
@@ -582,7 +582,7 @@ msgstr "フィールドセットを編集"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Edit recurrence"
-msgstr ""
+msgstr "繰り返しを編集"
 
 #: components/manage/Form/InlineForm
 msgid "Edit values"
@@ -617,8 +617,8 @@ msgid "End Date"
 msgstr "終了日付"
 
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
-msgid "Enter URL or title"
-msgstr "URLまたはタイトルを入力"
+msgid "Enter URL or select an item"
+msgstr ""
 
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
@@ -664,7 +664,7 @@ msgstr "ナビゲーションに含まない"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Exclude this occurence"
-msgstr ""
+msgstr "この繰り返しを削除"
 
 #: components/manage/Contents/Contents
 msgid "Excluded from navigation"
@@ -709,7 +709,7 @@ msgstr "フィルター…"
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "First"
-msgstr ""
+msgstr "第1"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Fixed width table cells"
@@ -725,7 +725,7 @@ msgstr "Forbidden(未翻訳)"
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Fourth"
-msgstr ""
+msgstr "第4"
 
 #: components/theme/ContactForm/ContactForm
 msgid "From"
@@ -918,7 +918,7 @@ msgstr "言語"
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Last"
-msgstr ""
+msgstr "最終"
 
 #: components/manage/Contents/Contents
 msgid "Last comment date"
@@ -1038,7 +1038,7 @@ msgstr "コメントのモデレート"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Monday and Friday"
-msgstr ""
+msgstr "月曜日と金曜日"
 
 #: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
 msgid "Month day"
@@ -1046,7 +1046,7 @@ msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Monthly"
-msgstr ""
+msgstr "毎月"
 
 #: components/manage/Toolbar/Toolbar
 msgid "More"
@@ -1113,7 +1113,7 @@ msgstr "マップが選択されていません"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "No occurences set"
-msgstr ""
+msgstr "未設定"
 
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/SelectWidget
@@ -1355,15 +1355,15 @@ msgstr "名前の変更"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Repeat"
-msgstr ""
+msgstr "繰り返しの単位"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Repeat every"
-msgstr ""
+msgstr "繰り返す間隔"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Repeat on"
-msgstr ""
+msgstr "日または曜日"
 
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
@@ -1429,7 +1429,7 @@ msgstr "保存"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Save recurrence"
-msgstr ""
+msgstr "繰り返しを保存"
 
 #: components/manage/Controlpanels/ContentTypesActions
 msgid "Schema"
@@ -1473,11 +1473,11 @@ msgstr "ユーザーを検索…"
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Second"
-msgstr ""
+msgstr "第2"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Select a date to add to recurrence"
-msgstr ""
+msgstr "繰り返しに追加する日を選択"
 
 #: components/manage/Contents/Contents
 msgid "Select columns to show"
@@ -1493,7 +1493,7 @@ msgstr "アイテムの状態を変更するために遷移を選んでくださ
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Selected dates"
-msgstr ""
+msgstr "選択した日付"
 
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Selected items"
@@ -1627,7 +1627,7 @@ msgstr "開始日付"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Start of the recurrence"
-msgstr ""
+msgstr "繰り返しの開始日"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Start password reset"
@@ -1758,7 +1758,7 @@ msgstr "いくつかのエラーが発生しました"
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Third"
-msgstr ""
+msgstr "第3"
 
 #: components/manage/Contents/ContentsRenameModal
 msgid "This name will be displayed in the URL."
@@ -1881,10 +1881,6 @@ msgid "Upload files"
 msgstr "アップロードファイル"
 
 #: components/manage/Contents/ContentsUploadModal
-msgid "Upload {count, plural, one {# file} other {# files}}"
-msgstr "Upload {count, plural, one {# file} other {# files}} (未翻訳)"
-
-#: components/manage/Contents/ContentsUploadModal
 msgid "Uploading files"
 msgstr "ファイルをアップロードしています"
 
@@ -1978,11 +1974,11 @@ msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Weekday"
-msgstr ""
+msgstr "平日"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Weekly"
-msgstr ""
+msgstr "毎週"
 
 #: components/manage/History/History
 msgid "What"
@@ -2006,7 +2002,7 @@ msgstr "ワークフローがアップデートされました"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Yearly"
-msgstr ""
+msgstr "毎年"
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypes
@@ -2401,6 +2397,10 @@ msgstr "外部サイトを表示"
 #: components/theme/Login/Login
 msgid "we can send you a new one"
 msgstr "こちらからメール送信できます。"
+
+#: components/manage/Contents/ContentsUploadModal
+msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "{count} selected"
