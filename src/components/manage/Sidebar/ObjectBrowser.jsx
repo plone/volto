@@ -112,7 +112,7 @@ const withObjectBrowser = (WrappedComponent) =>
                 data={
                   this.state.propDataName
                     ? this.props[this.state.propDataName]
-                    : { ...this.props.data, url: contextURL }
+                    : { ...this.props.data, contextURL }
                 }
                 closeObjectBrowser={this.closeObjectBrowser}
                 mode={this.state.mode}

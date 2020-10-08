@@ -123,7 +123,7 @@ class PersonalPreferences extends Component {
   render() {
     return (
       <Form
-        formData={{ language: cookie.load('lang') || '' }}
+        formData={{ language: cookie.load('I18N_LANGUAGE') || '' }}
         schema={{
           fieldsets: [
             {
