@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fixing table block edit @iFlameing
+
 ### Internal
 
 ## 8.2.3 (2020-10-07)
