@@ -75,6 +75,17 @@ class App extends Component {
   }
 
   /**
+   * ComponentDidCatch
+   * @method ComponentDidCatch
+   * @param {string} error  The error
+   * @param {string} info The info
+   * @returns {undefined}
+   */
+  componentDidCatch(error, info) {
+    this.setState({ hasError: true, error, errorInfo: info });
+  }
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
