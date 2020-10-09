@@ -264,7 +264,7 @@ class ContentsUploadModal extends Component {
                 </Table.Header>
                 <Table.Body>
                   {map(this.state.files, (file, index) => (
-                    <Table.Row key={file.name}>
+                    <Table.Row className="upload-row" key={file.name}>
                       <Table.Cell>{file.name}</Table.Cell>
                       <Table.Cell>
                         {moment(file.lastModifiedDate).fromNow()}
