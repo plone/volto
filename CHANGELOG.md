@@ -1,6 +1,6 @@
 # Change Log
 
-## 8.2.4 (unreleased)
+## 8.2.6 (unreleased)
 
 ### Breaking
 
@@ -9,6 +9,18 @@
 ### Bugfix
 
 ### Internal
+
+## 8.2.5 (2020-10-08)
+
+### Bugfix
+
+- Fixing the bleed out of the modal for long filename @iFlameing
+
+## 8.2.4 (2020-10-08)
+
+### Bugfix
+
+- Fixing table block edit @iFlameing
 
 ## 8.2.3 (2020-10-07)
 
