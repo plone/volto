@@ -15,6 +15,7 @@ import { Portal } from 'react-portal';
 import qs from 'query-string';
 import { find } from 'lodash';
 import { toast } from 'react-toastify';
+import { settings } from '~/config';
 
 import {
   Forbidden,
@@ -24,6 +25,7 @@ import {
   Toast,
   Toolbar,
   Unauthorized,
+  CompareLanguages,
 } from '@plone/volto/components';
 import {
   updateContent,
@@ -129,6 +131,7 @@ class Edit extends Component {
       this.props.getSchema(this.props.content['@type']);
     }
     this.setState({ isClient: true });
+    this.setState({ comparingLanguage: null });
   }
 
   /**
@@ -225,6 +228,21 @@ class Edit extends Component {
                       : null
                   }
                 />
+
+                {!this.state.visual && settings.isMultilingual && (
+                  <>!!!!!!!! wrappare la parte sotto</>
+                )}
+                <div className="ui container">
+                  <CompareLanguages
+                    content={this.props.content}
+                    visual={this.state.visual}
+                    setComparingLanguage={(lang) => {
+                      this.setState({ comparingLanguage: lang });
+                    }}
+                    comparingLanguage={this.state.comparingLanguage}
+                  />
+                </div>
+
                 <Form
                   isEditForm
                   ref={this.form}

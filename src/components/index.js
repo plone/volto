@@ -46,6 +46,7 @@ export PersonalPreferences from '@plone/volto/components/manage/Preferences/Pers
 export PersonalInformation from '@plone/volto/components/manage/Preferences/PersonalInformation';
 export CreateTranslation from '@plone/volto/components/manage/Multilingual/CreateTranslation';
 export TranslationObject from '@plone/volto/components/manage/Multilingual/TranslationObject';
+export CompareLanguages from '@plone/volto/components/manage/Multilingual/CompareLanguages';
 
 export FileView from '@plone/volto/components/theme/View/FileView';
 export ImageView from '@plone/volto/components/theme/View/ImageView';
