@@ -6,11 +6,11 @@
 
 ### Feature
 
-- Folder contents view: Save additional columns and updated order of columns @ksuess
-
 ### Bugfix
 
 ### Internal
+
+- Folder contents view: Save additional columns and updated order of columns @ksuess
 
 ## 8.2.5 (2020-10-08)
 
@@ -527,7 +527,6 @@
   to allow addons to provide their own reducers @tiberiuichim
 - Add a no brainer image sizing option, using scales. This will be vastly improved when
   we adopt srcsets. @sneridagh
-- Folder contents view: Store selection and order of columns for later visits of a folder contents view #1462 @ksuess
 
 ### Bugfix
 
