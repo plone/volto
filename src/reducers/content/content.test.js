@@ -21,22 +21,22 @@ describe('Content reducer', () => {
         loading: false,
         error: null,
       },
-      update: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
       get: {
         loaded: false,
         loading: false,
         error: null,
       },
-      index: {
-        error: null,
+      order: {
         loaded: false,
         loading: false,
+        error: null,
       },
-      order: {
+      update: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
+      updatecolumns: {
         loaded: false,
         loading: false,
         error: null,

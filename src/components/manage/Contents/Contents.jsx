@@ -48,7 +48,7 @@ import {
   moveContent,
   orderContent,
   sortContent,
-  indexContent,
+  updateColumnsContent,
 } from '@plone/volto/actions';
 import { getBaseUrl } from '@plone/volto/helpers';
 import Indexes, { defaultIndexes } from '@plone/volto/constants/Indexes';
@@ -261,7 +261,7 @@ class Contents extends Component {
     moveContent: PropTypes.func.isRequired,
     orderContent: PropTypes.func.isRequired,
     sortContent: PropTypes.func.isRequired,
-    indexContent: PropTypes.func.isRequired,
+    updateColumnsContent: PropTypes.func.isRequired,
     clipboardRequest: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
@@ -510,7 +510,7 @@ class Contents extends Component {
     this.setState({
       index: newIndex,
     });
-    this.props.indexContent(getBaseUrl(this.props.pathname), newIndex);
+    this.props.updateColumnsContent(getBaseUrl(this.props.pathname), newIndex);
   }
 
   /**
@@ -582,7 +582,10 @@ class Contents extends Component {
         order: move(this.state.index.order, index, index + delta),
       },
     });
-    this.props.indexContent(getBaseUrl(this.props.pathname), this.state.index);
+    this.props.updateColumnsContent(
+      getBaseUrl(this.props.pathname),
+      this.state.index,
+    );
   }
 
   /**
@@ -1636,25 +1639,25 @@ class Contents extends Component {
 export const __test__ = compose(
   injectIntl,
   connect(
-    (state, props) => {
+    (store, props) => {
       return {
-        token: state.userSession.token,
-        items: state.search.items,
-        sort: state.content.update.sort,
-        index: state.content.index.idx,
-        breadcrumbs: state.breadcrumbs.items,
-        total: state.search.total,
+        token: store.userSession.token,
+        items: store.search.items,
+        sort: store.content.update.sort,
+        index: store.content.updatecolumns.idx,
+        breadcrumbs: store.breadcrumbs.items,
+        total: store.search.total,
         searchRequest: {
-          loading: state.search.loading,
-          loaded: state.search.loaded,
+          loading: store.search.loading,
+          loaded: store.search.loaded,
         },
         pathname: props.location.pathname,
-        action: state.clipboard.action,
-        source: state.clipboard.source,
-        clipboardRequest: state.clipboard.request,
-        deleteRequest: state.content.delete,
-        updateRequest: state.content.update,
-        objectActions: state.actions.actions.object,
+        action: store.clipboard.action,
+        source: store.clipboard.source,
+        clipboardRequest: store.clipboard.request,
+        deleteRequest: store.content.delete,
+        updateRequest: store.content.update,
+        objectActions: store.actions.actions.object,
       };
     },
     {
@@ -1667,7 +1670,7 @@ export const __test__ = compose(
       moveContent,
       orderContent,
       sortContent,
-      indexContent,
+      updateColumnsContent,
     },
   ),
 )(Contents);
@@ -1676,25 +1679,25 @@ export default compose(
   DragDropContext(HTML5Backend),
   injectIntl,
   connect(
-    (state, props) => {
+    (store, props) => {
       return {
-        token: state.userSession.token,
-        items: state.search.items,
-        sort: state.content.update.sort,
-        index: state.content.index.idx,
-        breadcrumbs: state.breadcrumbs.items,
-        total: state.search.total,
+        token: store.userSession.token,
+        items: store.search.items,
+        sort: store.content.update.sort,
+        index: store.content.updatecolumns.idx,
+        breadcrumbs: store.breadcrumbs.items,
+        total: store.search.total,
         searchRequest: {
-          loading: state.search.loading,
-          loaded: state.search.loaded,
+          loading: store.search.loading,
+          loaded: store.search.loaded,
         },
         pathname: props.location.pathname,
-        action: state.clipboard.action,
-        source: state.clipboard.source,
-        clipboardRequest: state.clipboard.request,
-        deleteRequest: state.content.delete,
-        updateRequest: state.content.update,
-        objectActions: state.actions.actions.object,
+        action: store.clipboard.action,
+        source: store.clipboard.source,
+        clipboardRequest: store.clipboard.request,
+        deleteRequest: store.content.delete,
+        updateRequest: store.content.update,
+        objectActions: store.actions.actions.object,
       };
     },
     {
@@ -1707,7 +1710,7 @@ export default compose(
       moveContent,
       orderContent,
       sortContent,
-      indexContent,
+      updateColumnsContent,
     },
   ),
   asyncConnect([

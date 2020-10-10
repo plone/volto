@@ -14,7 +14,7 @@ import {
   ORDER_CONTENT,
   RESET_CONTENT,
   UPDATE_CONTENT,
-  INDEX_CONTENT,
+  UPDATECOLUMNS_CONTENT,
 } from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
@@ -24,11 +24,6 @@ const initialState = {
     error: null,
   },
   delete: {
-    loaded: false,
-    loading: false,
-    error: null,
-  },
-  update: {
     loaded: false,
     loading: false,
     error: null,
@@ -43,7 +38,12 @@ const initialState = {
     loading: false,
     error: null,
   },
-  index: {
+  update: {
+    loaded: false,
+    loading: false,
+    error: null,
+  },
+  updatecolumns: {
     loaded: false,
     loading: false,
     error: null,
@@ -72,7 +72,7 @@ function getRequestKey(actionType) {
 export default function content(state = initialState, action = {}) {
   let { result } = action;
   switch (action.type) {
-    case `${INDEX_CONTENT}`:
+    case `${UPDATECOLUMNS_CONTENT}`:
       return {
         ...state,
         [getRequestKey(action.type)]: {

@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Folder contents view: Save additional columns and updated order of columns @ksuess
+
 ### Bugfix
 
 ### Internal

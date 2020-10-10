@@ -10,7 +10,7 @@ import {
   GET_CONTENT,
   ORDER_CONTENT,
   RESET_CONTENT,
-  INDEX_CONTENT,
+  UPDATECOLUMNS_CONTENT,
 } from '@plone/volto/constants/ActionTypes';
 import { nestContent } from '@plone/volto/helpers';
 import { settings } from '~/config';
@@ -165,9 +165,9 @@ export function resetContent(subrequest = null) {
  * @param {string} index indexes with order
  * @returns {Object} Index content action
  */
-export function indexContent(url, index) {
+export function updateColumnsContent(url, index) {
   return {
-    type: INDEX_CONTENT,
+    type: UPDATECOLUMNS_CONTENT,
     indexcolumns: index,
   };
 }

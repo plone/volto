@@ -33,7 +33,7 @@ export {
   orderContent,
   sortContent,
   resetContent,
-  indexContent,
+  updateColumnsContent,
 } from '@plone/volto/actions/content/content';
 export {
   getControlpanel,
