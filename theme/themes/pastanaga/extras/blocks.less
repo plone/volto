@@ -146,11 +146,21 @@
 }
 
 .block.align.center {
+  text-align: center;
+
   iframe,
   img {
     max-width: 100%;
     margin-right: auto;
     margin-left: auto;
+
+    &.medium {
+      max-width: 50%;
+    }
+
+    &.small {
+      max-width: 25%;
+    }
   }
 
   iframe {
@@ -163,6 +173,7 @@
   top: 20px;
   left: -32px;
 }
+
 // Hacks for the full width image
 body .ui.wrapper > .block.align.full,
 body.has-toolbar.has-sidebar .ui.wrapper > .ui.inner .block.align.full,
@@ -398,6 +409,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 .ui.basic.button.block-add-button {
   // .ui.basic.button.block-delete-button {
   position: absolute;
+  z-index: 2;
   // margin-top: -21px;
   top: -2px;
   padding: 0;
@@ -512,6 +524,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
   border-radius: 4px;
   font-family: monospace;
   font-size: @16px;
+  word-break: break-all !important;
 
   &:focus-within textarea {
     caret-color: #e40166;
@@ -603,6 +616,10 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     &:focus {
       outline: none;
     }
+  }
+
+  .ui.input {
+    min-width: 250px;
   }
 }
 
@@ -697,6 +714,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 .listing-item a {
   display: flex;
   width: 100%;
+
   @media only screen and (max-width: (@largestMobileScreen)) {
     flex-direction: column;
   }
@@ -708,6 +726,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
   img {
     width: 15%;
     margin-right: 20px;
+
     @media only screen and (max-width: (@largestMobileScreen)) {
       width: 100%;
       margin: 0;
@@ -731,6 +750,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
       color: @textColor;
     }
   }
+
   @media only screen and (max-width: (@largestMobileScreen)) {
     h3 {
       margin-top: 1em;
@@ -802,5 +822,22 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
   .link-anchorlink-theme {
     color: #007eb1;
     text-decoration: underline;
+  }
+}
+
+.block.image.align.left,
+.block.image.align.right {
+  img {
+    &.large {
+      max-width: 50%;
+    }
+
+    &.medium {
+      max-width: 25%;
+    }
+
+    &.small {
+      max-width: 15%;
+    }
   }
 }

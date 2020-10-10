@@ -4,22 +4,25 @@ import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
 
-import ContentsToolbar from './ContentsToolbar';
+import Error from './Error';
 
 const mockStore = configureStore();
 
-describe('ContentsToolbar', () => {
-  it('renders a contents toolbar component', () => {
+describe('Generic Error', () => {
+  it('renders a not found component', () => {
     const store = mockStore({
       intl: {
         locale: 'en',
         messages: {},
       },
+      apierror: {
+        message: 'You are not authorized to access this resource',
+      },
     });
     const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter>
-          <ContentsToolbar location={{ pathname: '/blog' }} />
+          <Error error={{ status: 401, message: 'Unauthorized' }} />
         </MemoryRouter>
       </Provider>,
     );

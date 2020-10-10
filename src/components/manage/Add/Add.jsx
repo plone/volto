@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { keys } from 'lodash';
+import { keys, isEmpty } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Button } from 'semantic-ui-react';
 import { Portal } from 'react-portal';
@@ -121,6 +121,10 @@ class Add extends Component {
         {},
       );
     }
+    this.state = {
+      isClient: false,
+      error: null,
+    };
   }
 
   /**
@@ -130,6 +134,7 @@ class Add extends Component {
    */
   componentDidMount() {
     this.props.getSchema(this.props.type);
+    this.setState({ isClient: true });
   }
 
   /**
@@ -150,12 +155,22 @@ class Add extends Component {
       );
     }
 
-    if (nextProps.createRequest.error) {
+    if (this.props.createRequest.loading && nextProps.createRequest.error) {
+      const message =
+        nextProps.createRequest.error.response?.body?.message ||
+        nextProps.createRequest.error.response?.text;
+
+      const error =
+        new DOMParser().parseFromString(message, 'text/html')?.all[0]
+          ?.textContent || message;
+
+      this.setState({ error: error });
+
       toast.error(
         <Toast
           error
           title={this.props.intl.formatMessage(messages.error)}
-          content={`${nextProps.createRequest.error.status}:  ${nextProps.createRequest.error.response?.body?.message}`}
+          content={`${nextProps.createRequest.error.status}:  ${error}`}
         />,
       );
     }
@@ -206,6 +221,29 @@ class Add extends Component {
         this.props.schema.properties,
       );
 
+      // Lookup initialBlocks and initialBlocksLayout within schema
+      const schemaBlocks = this.props.schema.properties[blocksFieldname]
+        ?.default;
+      const schemaBlocksLayout = this.props.schema.properties[
+        blocksLayoutFieldname
+      ]?.default?.items;
+      let initialBlocks = this.initialBlocks;
+      let initialBlocksLayout = this.initialBlocksLayout;
+      if (!isEmpty(schemaBlocksLayout) && !isEmpty(schemaBlocks)) {
+        initialBlocks = {};
+        initialBlocksLayout = [];
+        schemaBlocksLayout.forEach((value) => {
+          if (!isEmpty(schemaBlocks[value])) {
+            let newUid = uuid();
+            initialBlocksLayout.push(newUid);
+            initialBlocks[newUid] = schemaBlocks[value];
+
+            // Layout ID - keep a reference to the original block id within layout
+            initialBlocks[newUid]['@layout'] = value;
+          }
+        });
+      }
+
       return (
         <div id="page-add">
           <Helmet
@@ -219,64 +257,71 @@ class Add extends Component {
             formData={{
               ...(blocksFieldname && {
                 [blocksFieldname]:
-                  this.initialBlocks ||
+                  initialBlocks ||
                   this.props.schema.properties[blocksFieldname]?.default,
               }),
               ...(blocksLayoutFieldname && {
                 [blocksLayoutFieldname]: {
                   items:
-                    this.initialBlocksLayout ||
+                    initialBlocksLayout ||
                     this.props.schema.properties[blocksLayoutFieldname]?.default
                       ?.items,
                 },
               }),
             }}
+            requestError={this.state.error}
             onSubmit={this.onSubmit}
             hideActions
             pathname={this.props.pathname}
             visual={visual}
-            title={this.props.intl.formatMessage(messages.add, {
-              type: this.props.type,
-            })}
+            title={
+              this.props?.schema?.title
+                ? this.props.intl.formatMessage(messages.add, {
+                    type: this.props.schema.title,
+                  })
+                : null
+            }
             loading={this.props.createRequest.loading}
           />
-          <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
-            <Toolbar
-              pathname={this.props.pathname}
-              hideDefaultViewButtons
-              inner={
-                <>
-                  <Button
-                    id="toolbar-save"
-                    className="save"
-                    aria-label={this.props.intl.formatMessage(messages.save)}
-                    onClick={() => this.form.current.onSubmit()}
-                    loading={this.props.createRequest.loading}
-                  >
-                    <Icon
-                      name={saveSVG}
-                      className="circled"
-                      size="30px"
-                      title={this.props.intl.formatMessage(messages.save)}
-                    />
-                  </Button>
-                  <Button className="cancel" onClick={() => this.onCancel()}>
-                    <Icon
-                      name={clearSVG}
-                      className="circled"
-                      aria-label={this.props.intl.formatMessage(
-                        messages.cancel,
-                      )}
-                      size="30px"
-                      title={this.props.intl.formatMessage(messages.cancel)}
-                    />
-                  </Button>
-                </>
-              }
-            />
-          </Portal>
-          {visual && (
-            <Portal node={__CLIENT__ && document.getElementById('sidebar')}>
+          {this.state.isClient && (
+            <Portal node={document.getElementById('toolbar')}>
+              <Toolbar
+                pathname={this.props.pathname}
+                hideDefaultViewButtons
+                inner={
+                  <>
+                    <Button
+                      id="toolbar-save"
+                      className="save"
+                      aria-label={this.props.intl.formatMessage(messages.save)}
+                      onClick={() => this.form.current.onSubmit()}
+                      loading={this.props.createRequest.loading}
+                    >
+                      <Icon
+                        name={saveSVG}
+                        className="circled"
+                        size="30px"
+                        title={this.props.intl.formatMessage(messages.save)}
+                      />
+                    </Button>
+                    <Button className="cancel" onClick={() => this.onCancel()}>
+                      <Icon
+                        name={clearSVG}
+                        className="circled"
+                        aria-label={this.props.intl.formatMessage(
+                          messages.cancel,
+                        )}
+                        size="30px"
+                        title={this.props.intl.formatMessage(messages.cancel)}
+                      />
+                    </Button>
+                  </>
+                }
+              />
+            </Portal>
+          )}
+          {visual && this.state.isClient && (
+            <Portal node={document.getElementById('sidebar')}>
               <Sidebar />
             </Portal>
           )}

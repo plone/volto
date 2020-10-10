@@ -75,9 +75,22 @@
 
   .ui.table .icon-align-name {
     display: flex;
+    overflow: hidden;
+    max-width: 330px;
     align-items: center;
     justify-content: space-between;
     padding-top: 4px;
+
+    svg {
+      flex-shrink: 0;
+    }
+
+    span {
+      display: block;
+      overflow: hidden;
+      max-width: 100%;
+      text-overflow: ellipsis;
+    }
   }
 
   .ui.table .expire-align {
@@ -110,5 +123,12 @@
   .ui.secondary.menu a.item:hover,
   .ui.secondary.menu a.item.active {
     background-color: #edf1f2 !important;
+  }
+}
+
+.ui.page.modals .content {
+  .upload-row {
+    white-space: normal;
+    word-break: break-all;
   }
 }

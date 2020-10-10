@@ -41,6 +41,7 @@ export {
   listControlpanels,
   updateControlpanel,
   getSystemInformation,
+  getDatabaseInformation,
 } from '@plone/volto/actions/controlpanels/controlpanels';
 export { getDiff } from '@plone/volto/actions/diff/diff';
 export { emailNotification } from '@plone/volto/actions/emailNotification/emailNotification';
@@ -62,7 +63,12 @@ export {
 } from '@plone/volto/actions/messages/messages';
 export { getNavigation } from '@plone/volto/actions/navigation/navigation';
 export { listRoles } from '@plone/volto/actions/roles/roles';
-export { getSchema } from '@plone/volto/actions/schema/schema';
+export {
+  getSchema,
+  postSchema,
+  putSchema,
+  updateSchema,
+} from '@plone/volto/actions/schema/schema';
 export {
   resetSearchContent,
   searchContent,

@@ -58,10 +58,13 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
               className="ui icon input"
             >
               <input
-                disabled={false}
                 id="field-alt"
+                maxLength={null}
+                minLength={null}
                 name="alt"
+                onBlur={[Function]}
                 onChange={[Function]}
+                onClick={[Function]}
                 type="text"
                 value="alternate text"
               />
@@ -307,10 +310,13 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
                 className="ui icon input"
               >
                 <input
-                  disabled={false}
                   id="field-link"
+                  maxLength={null}
+                  minLength={null}
                   name="link"
+                  onBlur={[Function]}
                   onChange={[Function]}
+                  onClick={[Function]}
                   type="text"
                   value=""
                 />
@@ -378,7 +384,6 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
                   <input
                     checked={false}
                     className="hidden"
-                    disabled={false}
                     name="field-openLinkInNewTab"
                     readOnly={true}
                     tabIndex={0}

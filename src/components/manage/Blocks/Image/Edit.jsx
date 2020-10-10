@@ -100,23 +100,28 @@ class Edit extends Component {
    * @method onUploadImage
    * @returns {undefined}
    */
-  onUploadImage = ({ target }) => {
-    const file = target.files[0];
+  onUploadImage = (e) => {
+    e.stopPropagation();
+    const file = e.target.files[0];
     this.setState({
       uploading: true,
     });
     readAsDataURL(file).then((data) => {
       const fields = data.match(/^data:(.*);(.*),(.*)$/);
-      this.props.createContent(getBaseUrl(this.props.pathname), {
-        '@type': 'Image',
-        title: file.name,
-        image: {
-          data: fields[3],
-          encoding: fields[2],
-          'content-type': fields[1],
-          filename: file.name,
+      this.props.createContent(
+        getBaseUrl(this.props.pathname),
+        {
+          '@type': 'Image',
+          title: file.name,
+          image: {
+            data: fields[3],
+            encoding: fields[2],
+            'content-type': fields[1],
+            filename: file.name,
+          },
         },
-      });
+        this.props.block,
+      );
     });
   };
 
@@ -177,16 +182,20 @@ class Edit extends Component {
 
     readAsDataURL(file[0]).then((data) => {
       const fields = data.match(/^data:(.*);(.*),(.*)$/);
-      this.props.createContent(getBaseUrl(this.props.pathname), {
-        '@type': 'Image',
-        title: file[0].name,
-        image: {
-          data: fields[3],
-          encoding: fields[2],
-          'content-type': fields[1],
-          filename: file[0].name,
+      this.props.createContent(
+        getBaseUrl(this.props.pathname),
+        {
+          '@type': 'Image',
+          title: file[0].name,
+          image: {
+            data: fields[3],
+            encoding: fields[2],
+            'content-type': fields[1],
+            filename: file[0].name,
+          },
         },
-      });
+        this.props.block,
+      );
     });
   };
 
@@ -228,7 +237,9 @@ class Edit extends Component {
    */
   render() {
     const { data } = this.props;
-
+    const placeholder =
+      this.props.data.placeholder ||
+      this.props.intl.formatMessage(messages.ImageBlockInputPlaceholder);
     return (
       <div
         className={cx(
@@ -241,90 +252,109 @@ class Edit extends Component {
       >
         {data.url ? (
           <img
-            className={cx({ 'full-width': data.align === 'full' })}
+            className={cx({
+              'full-width': data.align === 'full',
+              large: data.size === 'l',
+              medium: data.size === 'm',
+              small: data.size === 's',
+            })}
             src={
               isInternalURL(data.url)
                 ? // Backwards compat in the case that the block is storing the full server URL
-                  `${flattenToAppURL(data.url)}/@@images/image`
+                  (() => {
+                    if (data.size === 'l')
+                      return `${flattenToAppURL(data.url)}/@@images/image`;
+                    if (data.size === 'm')
+                      return `${flattenToAppURL(
+                        data.url,
+                      )}/@@images/image/preview`;
+                    if (data.size === 's')
+                      return `${flattenToAppURL(data.url)}/@@images/image/mini`;
+                    return `${flattenToAppURL(data.url)}/@@images/image`;
+                  })()
                 : data.url
             }
             alt={data.alt || ''}
           />
         ) : (
           <div>
-            <Dropzone disableClick onDrop={this.onDrop} className="dropzone">
-              <Message>
-                {this.state.uploading && (
-                  <Dimmer active>
-                    <Loader indeterminate>Uploading image</Loader>
-                  </Dimmer>
-                )}
-                <center>
-                  <img src={imageBlockSVG} alt="" />
-                  <div className="toolbar-inner">
-                    <Button.Group>
-                      <Button
-                        basic
-                        icon
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          this.props.openObjectBrowser();
-                        }}
-                      >
-                        <Icon name={navTreeSVG} size="24px" />
-                      </Button>
-                    </Button.Group>
-                    <Button.Group>
-                      <label className="ui button basic icon">
-                        <Icon name={uploadSVG} size="24px" />
-                        <input
-                          type="file"
-                          onChange={this.onUploadImage}
-                          style={{ display: 'none' }}
-                        />
-                      </label>
-                    </Button.Group>
-                    <Input
-                      onKeyDown={this.onKeyDownVariantMenuForm}
-                      onChange={this.onChangeUrl}
-                      placeholder={this.props.intl.formatMessage(
-                        messages.ImageBlockInputPlaceholder,
-                      )}
-                      value={this.state.url}
-                      // Prevents propagation to the Dropzone and the opening
-                      // of the upload browser dialog
-                      onClick={(e) => e.stopPropagation()}
-                    />
-                    {this.state.url && (
-                      <Button.Group>
-                        <Button
-                          basic
-                          className="cancel"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            this.setState({ url: '' });
-                          }}
-                        >
-                          <Icon name={clearSVG} size="30px" />
-                        </Button>
-                      </Button.Group>
+            <Dropzone noClick onDrop={this.onDrop} className="dropzone">
+              {({ getRootProps, getInputProps }) => (
+                <div {...getRootProps()}>
+                  <Message>
+                    {this.state.uploading && (
+                      <Dimmer active>
+                        <Loader indeterminate>Uploading image</Loader>
+                      </Dimmer>
                     )}
-                    <Button.Group>
-                      <Button
-                        basic
-                        primary
-                        disabled={!this.state.url}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          this.onSubmitUrl();
-                        }}
-                      >
-                        <Icon name={aheadSVG} size="30px" />
-                      </Button>
-                    </Button.Group>
-                  </div>
-                </center>
-              </Message>
+                    <center>
+                      <img src={imageBlockSVG} alt="" />
+                      <div className="toolbar-inner">
+                        <Button.Group>
+                          <Button
+                            basic
+                            icon
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              this.props.openObjectBrowser();
+                            }}
+                          >
+                            <Icon name={navTreeSVG} size="24px" />
+                          </Button>
+                        </Button.Group>
+                        <Button.Group>
+                          <label className="ui button basic icon">
+                            <Icon name={uploadSVG} size="24px" />
+                            <input
+                              {...getInputProps({
+                                type: 'file',
+                                onChange: this.onUploadImage,
+                                style: { display: 'none' },
+                              })}
+                            />
+                          </label>
+                        </Button.Group>
+                        <Input
+                          onKeyDown={this.onKeyDownVariantMenuForm}
+                          onChange={this.onChangeUrl}
+                          placeholder={placeholder}
+                          value={this.state.url}
+                          // Prevents propagation to the Dropzone and the opening
+                          // of the upload browser dialog
+                          onClick={(e) => e.stopPropagation()}
+                        />
+                        {this.state.url && (
+                          <Button.Group>
+                            <Button
+                              basic
+                              className="cancel"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                this.setState({ url: '' });
+                              }}
+                            >
+                              <Icon name={clearSVG} size="30px" />
+                            </Button>
+                          </Button.Group>
+                        )}
+                        <Button.Group>
+                          <Button
+                            basic
+                            primary
+                            disabled={!this.state.url}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              this.onSubmitUrl();
+                            }}
+                          >
+                            <Icon name={aheadSVG} size="30px" />
+                          </Button>
+                        </Button.Group>
+                      </div>
+                    </center>
+                  </Message>
+                </div>
+              )}
             </Dropzone>
           </div>
         )}
@@ -343,9 +373,9 @@ class Edit extends Component {
 export default compose(
   injectIntl,
   connect(
-    (state) => ({
-      request: state.content.create,
-      content: state.content.data,
+    (state, ownProps) => ({
+      request: state.content.subrequests[ownProps.block] || {},
+      content: state.content.subrequests[ownProps.block]?.data,
     }),
     { createContent, copyBlock },
   ),

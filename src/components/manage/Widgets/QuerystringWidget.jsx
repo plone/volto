@@ -277,6 +277,8 @@ class QuerystringWidget extends Component {
       onDelete,
       indexes,
       intl,
+      draggable,
+      isDisabled,
     } = this.props;
 
     const schema = {
@@ -322,7 +324,7 @@ class QuerystringWidget extends Component {
             <Grid.Column width="4">
               <div className="wrapper">
                 <label htmlFor={`field-${id}`}>
-                  {onEdit && (
+                  {draggable && onEdit && (
                     <i
                       aria-hidden="true"
                       className="grey bars icon drag handle"
@@ -333,16 +335,22 @@ class QuerystringWidget extends Component {
               </div>
             </Grid.Column>
             <Grid.Column width="8">
-              {onEdit && (
+              {onEdit && !isDisabled && (
                 <div className="toolbar">
                   <button
-                    onClick={() => onEdit(id, schema)}
+                    onClick={(evt) => {
+                      evt.preventDefault();
+                      onEdit(id, schema);
+                    }}
                     className="item ui noborder button"
                   >
                     <OldIcon name="write square" size="large" color="blue" />
                   </button>
                   <button
-                    onClick={() => onDelete(id)}
+                    onClick={(evt) => {
+                      evt.preventDefault();
+                      onDelete(id);
+                    }}
                     className="item ui noborder button"
                   >
                     <Icon name={clearSVG} size="24px" className="close" />
@@ -357,7 +365,7 @@ class QuerystringWidget extends Component {
                       <Select
                         id={`field-${id}`}
                         name={id}
-                        disabled={onEdit !== null}
+                        isDisabled={isDisabled}
                         className="react-select-container"
                         classNamePrefix="react-select"
                         options={map(
@@ -402,7 +410,7 @@ class QuerystringWidget extends Component {
                       <Select
                         id={`field-${id}`}
                         name={id}
-                        disabled={onEdit !== null}
+                        isDisabled={isDisabled}
                         className="react-select-container"
                         classNamePrefix="react-select"
                         options={map(
@@ -459,7 +467,7 @@ class QuerystringWidget extends Component {
                   <Select
                     id={`field-${id}`}
                     name={id}
-                    disabled={onEdit !== null}
+                    isDisabled={isDisabled}
                     className="react-select-container"
                     classNamePrefix="react-select"
                     placeholder={this.props.intl.formatMessage(

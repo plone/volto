@@ -5,10 +5,9 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Icon as IconOld } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { map, find, isBoolean, isObject } from 'lodash';
+import { map, find, isBoolean, isObject, intersection } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 import loadable from '@loadable/component';
 
@@ -64,9 +63,17 @@ const messages = defineMessages({
     id: 'Required',
     defaultMessage: 'Required',
   },
+  select: {
+    id: 'Select…',
+    defaultMessage: 'Select…',
+  },
   no_value: {
     id: 'No value',
     defaultMessage: 'No value',
+  },
+  no_options: {
+    id: 'No options',
+    defaultMessage: 'No options',
   },
 });
 
@@ -95,7 +102,7 @@ function getDefaultValues(choices, value) {
     };
   }
   if (value && choices.length > 0) {
-    return { label: find(choices, (o) => o[0] === value)[1], value };
+    return { label: find(choices, (o) => o[0] === value)?.[1] || value, value };
   } else {
     return {};
   }
@@ -136,6 +143,8 @@ class SelectWidget extends Component {
       PropTypes.bool,
     ]),
     onChange: PropTypes.func.isRequired,
+    onBlur: PropTypes.func,
+    onClick: PropTypes.func,
     onEdit: PropTypes.func,
     onDelete: PropTypes.func,
     itemsTotal: PropTypes.number,
@@ -160,6 +169,9 @@ class SelectWidget extends Component {
     choices: [],
     loading: false,
     value: null,
+    onChange: () => {},
+    onBlur: () => {},
+    onClick: () => {},
     onEdit: null,
     onDelete: null,
   };
@@ -190,16 +202,25 @@ class SelectWidget extends Component {
    * @returns {undefined}
    */
   loadOptions = (search, previousOptions, additional) => {
-    const offset = this.state.search !== search ? 0 : additional.offset;
-    this.props.getVocabulary(this.props.vocabBaseUrl, search, offset);
-    this.setState({ search });
-    return {
-      options: this.props.choices,
-      hasMore: this.props.itemsTotal > 25,
-      additional: {
-        offset: offset === additional.offset ? offset + 25 : offset,
-      },
-    };
+    let hasMore = this.props.itemsTotal > previousOptions.length;
+    if (hasMore) {
+      const offset = this.state.search !== search ? 0 : additional.offset;
+      this.props.getVocabulary(this.props.vocabBaseUrl, search, offset);
+      this.setState({ search });
+
+      return {
+        options:
+          intersection(previousOptions, this.props.choices).length ===
+          this.props.choices.length
+            ? []
+            : this.props.choices,
+        hasMore: hasMore,
+        additional: {
+          offset: offset === additional.offset ? offset + 25 : offset,
+        },
+      };
+    }
+    return null;
   };
 
   /**
@@ -220,82 +241,38 @@ class SelectWidget extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const schema = {
-      fieldsets: [
-        {
-          id: 'default',
-          title: this.props.intl.formatMessage(messages.default),
-          fields: ['title', 'id', 'description', 'choices', 'required'],
-        },
-      ],
-      properties: {
-        id: {
-          type: 'string',
-          title: this.props.intl.formatMessage(messages.idTitle),
-          description: this.props.intl.formatMessage(messages.idDescription),
-        },
-        title: {
-          type: 'string',
-          title: this.props.intl.formatMessage(messages.title),
-        },
-        description: {
-          type: 'string',
-          widget: 'textarea',
-          title: this.props.intl.formatMessage(messages.description),
-        },
-        choices: {
-          type: 'array',
-          title: this.props.intl.formatMessage(messages.choices),
-        },
-        required: {
-          type: 'boolean',
-          title: this.props.intl.formatMessage(messages.required),
-        },
-      },
-      required: ['id', 'title', 'choices'],
-    };
-
-    const { onEdit, id, onDelete, choices, value, onChange } = this.props;
+    const { id, choices, value, onChange } = this.props;
 
     return (
-      <FormFieldWrapper {...this.props} draggable={true}>
-        {onEdit && (
-          <div className="toolbar">
-            <button
-              onClick={() => onEdit(id, schema)}
-              className="item ui noborder button"
-            >
-              <IconOld name="write square" size="large" color="blue" />
-            </button>
-            <button
-              aria-label={this.props.intl.formatMessage(messages.close)}
-              className="item ui noborder button"
-              onClick={() => onDelete(id)}
-            >
-              <IconOld name="close" size="large" color="red" />
-            </button>
-          </div>
-        )}
+      <FormFieldWrapper {...this.props}>
         {this.props.vocabBaseUrl ? (
-          <AsyncPaginate
-            className="react-select-container"
-            classNamePrefix="react-select"
-            options={this.props.choices || []}
-            styles={customSelectStyles}
-            theme={selectTheme}
-            components={{ DropdownIndicator, Option }}
-            value={this.state.selectedOption}
-            loadOptions={this.loadOptions}
-            onChange={this.handleChange}
-            additional={{
-              offset: 25,
-            }}
-          />
+          <>
+            <AsyncPaginate
+              isDisabled={this.props.isDisabled}
+              className="react-select-container"
+              classNamePrefix="react-select"
+              options={this.props.choices || []}
+              styles={customSelectStyles}
+              theme={selectTheme}
+              components={{ DropdownIndicator, Option }}
+              value={this.state.selectedOption}
+              loadOptions={this.loadOptions}
+              onChange={this.handleChange}
+              additional={{
+                offset: 25,
+              }}
+              placeholder={this.props.intl.formatMessage(messages.select)}
+              noOptionsMessage={() =>
+                this.props.intl.formatMessage(messages.no_options)
+              }
+            />
+          </>
         ) : (
           <Select
             id={`field-${id}`}
+            key={this.props.choices}
             name={id}
-            disabled={onEdit !== null}
+            isDisabled={this.props.isDisabled}
             className="react-select-container"
             classNamePrefix="react-select"
             isMulti={id === 'roles' || id === 'groups'}

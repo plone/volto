@@ -68,7 +68,7 @@ We recommend Plone as backend of choice for Volto.
 You can bootstrap a ready Docker Plone container with all the dependencies and ready for Volto use:
 
 ```shell
-$ docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="kitconcept.volto" -e ZCML="kitconcept.volto.cors" -e PROFILES="kitconcept.volto:default-homepage" plone
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="kitconcept.volto" -e ZCML="kitconcept.volto.cors" -e PROFILES="kitconcept.volto:default-homepage" plone
 ```
 
 or as an alternative if you have experience with Plone and you have all the
@@ -76,7 +76,7 @@ dependencies installed on your system, you can use the supplied buildout in the
 `api` folder by issuing the command:
 
 ```shell
-$ make build-backend
+make build-backend
 ```
 
 ### Start Volto
@@ -84,7 +84,7 @@ $ make build-backend
 Once inside your Volto project folder:
 
 ```shell
-$ yarn start
+yarn start
 ```
 
 ### Browsing
@@ -105,6 +105,8 @@ Volto is actively developed since 2017 and used in production since 2018 on the 
 - [Forest Information System for Europe](https://forest.eea.europa.eu) (Thematic website focusing on European forests, developed by [Eau de Web](https://www.eaudeweb.ro), 2019)
 - [Talke Carrer Website](https://karriere.talke.com/) (Carrer website for [Talke](https://www.talke.com), one of the leading a chemical and petrochemical logistics companies in Germany, developed by [kitconcept GmbH](https://kitconcept.com), 2020)
 - [Stradanove](http://www.stradanove.it/) (Website of the Department of Youth Policies of the Municipality of Modena, developed by [RedTurtle](https://redturtle.it), 2020)
+- [Study guide at University of Jyväskylä](https://studyguide.jyu.fi/2020/) (Static website where [Volto is used as a headless CMS for authoring additional content](https://tech.blog.jyu.fi/2020/06/plone-volto-hasura-gatsbyjs-mashup/), 2020)
+- [Nuova Voce Ecologista](https://nuovavoceecologista.it) (Website of Nuova Voce Ecologista, an Italian green Party, 2020)
 - Please create a new [issue](https://github.com/plone/volto/issues/new) or [pull request](https://github.com/plone/volto/pulls) to add your Volto-site here!
 
 ## Documentation
@@ -163,13 +165,13 @@ For Volto development you need all the requirements already mentioned on the
 ### Checkout the Volto repository
 
 ```shell
-$ git clone https://github.com/plone/volto.git
+git clone https://github.com/plone/volto.git
 ```
 
 ### Install dependencies
 
 ```shell
-$ yarn
+yarn
 ```
 
 ### Install a backend
@@ -179,13 +181,13 @@ $ yarn
 Either using a Docker image
 
 ```shell
-$ docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="kitconcept.volto" -e ZCML="kitconcept.volto.cors" -e PROFILES="kitconcept.volto:default-homepage" plone
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="kitconcept.volto" -e ZCML="kitconcept.volto.cors" -e PROFILES="kitconcept.volto:default-homepage" plone
 ```
 
 or using the convenience makefile command:
 
 ```shell
-$ make start-backend-docker
+make start-backend-docker
 ```
 
 or running Plone on your machine (advanced), additional dependencies might be
@@ -193,7 +195,7 @@ required, only for Plone experienced integrators/developers. Check the [Plone
 Installation Documentation](https://docs.plone.org/manage/installing/installation.html).
 
 ```shell
-$ make build-backend
+make build-backend
 ```
 
 #### Guillotina (experimental)
@@ -201,19 +203,19 @@ $ make build-backend
 It still doesn't support the full API/features that Plone provides.
 
 ```shell
-$ docker-compose -f g-api/docker-compose.yml up -d
+docker-compose -f g-api/docker-compose.yml up -d
 ```
 
 or using the convenience makefile command:
 
 ```shell
-$ make start-backend-docker-guillotina
+make start-backend-docker-guillotina
 ```
 
 ### Run frontend
 
 ```shell
-$ yarn start
+yarn start
 ```
 
 ### Browsing
@@ -223,7 +225,7 @@ Browse to [http://localhost:3000](http://localhost:3000) in your browser.
 ### Testing
 
 ```shell
-$ yarn test
+yarn test
 ```
 
 ### Releasing
@@ -242,13 +244,13 @@ For using it and start a release you need to fulfill the requirements:
 Then the command for release:
 
 ```shell
-$ yarn release
+yarn release
 ```
 
 a dry-release command for testing the output is also available:
 
 ```shell
-$ yarn dry-release
+yarn dry-release
 ```
 
 ### Acceptance testing
@@ -258,13 +260,13 @@ Volto uses [Cypress](https://www.cypress.io/) for browser-based acceptance testi
 Run acceptance tests (with the Plone backend):
 
 ```shell
-$ yarn ci:cypress:run
+yarn ci:cypress:run
 ```
 
 Run acceptance tests (with the Guillotina backend):
 
 ```shell
-$ yarn ci:cypress:run:guillotina
+yarn ci:cypress:run:guillotina
 ```
 
 #### Writing new acceptance tests
@@ -276,19 +278,19 @@ To do so, start three individual terminal sessions for running the Plone backend
 Start the Plone backend:
 
 ```shell
-$ make start-test-backend
+make start-test-backend
 ```
 
 Start the Volto frontend:
 
 ```shell
-$ make start-test-frontend
+make start-test-frontend
 ```
 
 Open Cypress and start acceptance tests:
 
 ```shell
-$ make start-test
+make start-test
 ```
 
 Go to the `cypress/integration` folder to see existing tests.
@@ -301,7 +303,7 @@ This directory is hot reloaded with your changes as you write the tests. For mor
 If you want to use Guillotina as backend to run the tests you should run:
 
 ```shell
-$ yarn ci:start-api-plone-guillotina
+yarn ci:start-api-plone-guillotina
 ```
 
 ## Translations

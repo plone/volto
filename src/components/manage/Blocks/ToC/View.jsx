@@ -7,7 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { map, filter } from 'lodash';
 import { List } from 'semantic-ui-react';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 
 import {
@@ -15,23 +15,25 @@ import {
   getBlocksLayoutFieldname,
 } from '@plone/volto/helpers';
 
+const messages = defineMessages({
+  text: {
+    id: 'Table of Contents',
+    defaultMessage: 'Table of Contents',
+  },
+});
+
 /**
  * View toc block class.
  * @class View
  * @extends Component
  */
-const View = ({ properties }) => {
+const View = ({ properties, data, intl }) => {
   const blocksFieldname = getBlocksFieldname(properties);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(properties);
-
+  const placeholder = data?.placeholder || intl.formatMessage(messages.text);
   return (
     <div className="block table-of-contents">
-      <h2>
-        <FormattedMessage
-          id="Table of Contents"
-          defaultMessage="Table of Contents"
-        />
-      </h2>
+      <h2>{placeholder}</h2>
       <List bulleted>
         {map(
           filter(
