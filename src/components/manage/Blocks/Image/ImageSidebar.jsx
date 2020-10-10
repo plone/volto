@@ -188,17 +188,10 @@ const ImageSidebar = ({
                     <AlignBlock
                       align={data.align}
                       onChangeBlock={(block, data) => {
-                        if (data.align === 'full') {
-                          onChangeBlock(block, {
-                            ...data,
-                            size: null,
-                          });
-                        } else {
-                          onChangeBlock(block, {
-                            ...data,
-                            size: 'l',
-                          });
-                        }
+                        onChangeBlock(block, {
+                          ...data,
+                          size: data.size,
+                        });
                       }}
                       data={data}
                       block={block}
@@ -215,7 +208,6 @@ const ImageSidebar = ({
                 onChangeBlock={onChangeBlock}
                 data={data}
                 block={block}
-                disabled={data.align === 'full'}
               />
             </FormFieldWrapper>
           </Segment>

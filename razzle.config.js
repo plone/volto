@@ -1,29 +1,16 @@
-/* eslint import/no-extraneous-dependencies: 0 */
-/* eslint import/no-dynamic-require: 0 */
-/* eslint global-require: 0 */
-/* eslint no-console: 0 */
-/* eslint no-param-reassign: 0 */
-/* eslint no-unused-vars: 0 */
-
-const logger = require('razzle-dev-utils/logger');
 const path = require('path');
-const autoprefixer = require('autoprefixer');
 const makeLoaderFinder = require('razzle-dev-utils/makeLoaderFinder');
 const nodeExternals = require('webpack-node-externals');
-const webpack = require('webpack');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const LoadablePlugin = require('@loadable/webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const fs = require('fs');
-const { map, has } = require('lodash');
-const glob = require('glob').sync;
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const RootResolverPlugin = require('./webpack-root-resolver');
 const createAddonsLoader = require('./create-addons-loader');
 const AddonConfigurationRegistry = require('./addon-registry');
 
 const fileLoaderFinder = makeLoaderFinder('file-loader');
-const eslintLoaderFinder = makeLoaderFinder('eslint-loader');
+const babelLoaderFinder = makeLoaderFinder('babel-loader');
 
 const projectRootPath = path.resolve('.');
 const languages = require('./src/constants/Languages');
@@ -32,101 +19,7 @@ const packageJson = require(path.join(projectRootPath, 'package.json'));
 
 const registry = new AddonConfigurationRegistry(projectRootPath);
 
-// TODO: apply "customize Volto by addon", "customize addon by project" logic
-const customizations = {};
-let { customizationPaths } = packageJson;
-if (!customizationPaths) {
-  customizationPaths = ['src/customizations/'];
-}
-customizationPaths.forEach((customizationPath) => {
-  map(
-    glob(`${customizationPath}**/*.*(svg|png|jpg|jpeg|gif|ico|less|js|jsx)`),
-    (filename) => {
-      const targetPath = filename.replace(
-        customizationPath,
-        `${registry.voltoPath}/src/`,
-      );
-      if (fs.existsSync(targetPath)) {
-        customizations[
-          filename
-            .replace(customizationPath, '@plone/volto/')
-            .replace(/\.(js|jsx)$/, '')
-        ] = path.resolve(filename);
-      } else {
-        console.log(
-          `The file ${filename} doesn't exist in the volto package (${targetPath}), unable to customize.`,
-        );
-      }
-    },
-  );
-});
-
-const defaultPlugins = ['bundle-analyzer'];
-const defaultModify = (config, { target, dev }, webpack) => {
-  const BASE_CSS_LOADER = {
-    loader: 'css-loader',
-    options: {
-      importLoaders: 2,
-      sourceMap: true,
-    },
-  };
-  const POST_CSS_LOADER = {
-    loader: require.resolve('postcss-loader'),
-    options: {
-      sourceMap: true,
-      // Necessary for external CSS imports to work
-      // https://github.com/facebookincubator/create-react-app/issues/2677
-      ident: 'postcss',
-      plugins: () => [
-        require('postcss-flexbugs-fixes'),
-        autoprefixer({
-          flexbox: 'no-2009',
-        }),
-      ],
-    },
-  };
-
-  const LESSLOADER = {
-    test: /\.less$/,
-    include: [
-      path.resolve('./theme'),
-      /node_modules\/@plone\/volto\/theme/,
-      /plone\.volto\/theme/,
-      /node_modules\/semantic-ui-less/,
-    ],
-    use: dev
-      ? [
-          {
-            loader: 'style-loader',
-          },
-          BASE_CSS_LOADER,
-          POST_CSS_LOADER,
-          {
-            loader: 'less-loader',
-            options: {
-              sourceMap: true,
-            },
-          },
-        ]
-      : [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 2,
-              sourceMap: true,
-            },
-          },
-          POST_CSS_LOADER,
-          {
-            loader: 'less-loader',
-            options: {
-              sourceMap: true,
-            },
-          },
-        ],
-  };
-
+const svgPlugin = (config) => {
   const SVGLOADER = {
     test: /icons\/.*\.svg$/,
     use: [
@@ -147,20 +40,25 @@ const defaultModify = (config, { target, dev }, webpack) => {
     ],
   };
 
+  config.module.rules.push(SVGLOADER);
+  return config;
+};
+
+const defaultModify = (config, { target, dev }, webpack) => {
   //  Prevent moment from loading all locales
   config.plugins.push(
     new MomentLocalesPlugin({
-      localesToKeep: [],
+      localesToKeep: Object.keys(languages),
     }),
-  )
+  );
 
   //  Load only desired timezones
   config.plugins.push(
     new webpack.NormalModuleReplacementPlugin(
       /moment-timezone\/data\/packed\/latest\.json/,
-      require.resolve('./timezone-definitions')
-    )
-  )
+      require.resolve('./timezone-definitions'),
+    ),
+  );
 
   if (dev) {
     config.plugins.unshift(
@@ -240,9 +138,6 @@ const defaultModify = (config, { target, dev }, webpack) => {
     );
   }
 
-  config.module.rules.push(LESSLOADER);
-  config.module.rules.push(SVGLOADER);
-
   // Don't load config|variables|overrides) files with file-loader
   // Don't load SVGs from ./src/icons with file-loader
   const fileLoader = config.module.rules.find(fileLoaderFinder);
@@ -260,7 +155,8 @@ const defaultModify = (config, { target, dev }, webpack) => {
   config.resolve.plugins = [new RootResolverPlugin()];
 
   config.resolve.alias = {
-    ...customizations,
+    ...registry.getAddonCustomizationPaths(),
+    ...registry.getProjectCustomizationPaths(),
     ...config.resolve.alias,
     '../../theme.config$': `${projectRootPath}/theme/theme.config`,
     'volto-themes': `${registry.voltoPath}/theme/themes`,
@@ -278,13 +174,8 @@ const defaultModify = (config, { target, dev }, webpack) => {
     maxEntrypointSize: 10000000,
   };
 
-  const babelRuleIndex = config.module.rules.findIndex(
-    (rule) =>
-      rule.use &&
-      rule.use[0].loader &&
-      rule.use[0].loader.includes('babel-loader'),
-  );
-  const { include } = config.module.rules[babelRuleIndex];
+  const babelLoader = config.module.rules.find(babelLoaderFinder);
+  const { include } = babelLoader;
   if (packageJson.name !== '@plone/volto') {
     include.push(fs.realpathSync(`${registry.voltoPath}/src`));
   }
@@ -294,13 +185,6 @@ const defaultModify = (config, { target, dev }, webpack) => {
       include.push(fs.realpathSync(registry.packages[addon].modulePath)),
     );
   }
-
-  config.module.rules[babelRuleIndex] = Object.assign(
-    config.module.rules[babelRuleIndex],
-    {
-      include,
-    },
-  );
 
   let addonsAsExternals = [];
   if (packageJson.addons) {
@@ -329,6 +213,11 @@ const defaultModify = (config, { target, dev }, webpack) => {
 };
 
 const addonExtenders = registry.getAddonExtenders().map((m) => require(m));
+const defaultPlugins = [
+  'bundle-analyzer',
+  svgPlugin,
+  require('./less-plugin')({ registry }),
+];
 
 const plugins = addonExtenders.reduce(
   (acc, extender) => extender.plugins(acc),
@@ -336,13 +225,13 @@ const plugins = addonExtenders.reduce(
 );
 
 module.exports = {
-  plugins: plugins,
+  plugins,
   modify: (config, { target, dev }, webpack) => {
     const defaultConfig = defaultModify(config, { target, dev }, webpack);
     const res = addonExtenders.reduce(
       (acc, extender) => extender.modify(acc, { target, dev }, webpack),
       defaultConfig,
     );
-    return defaultConfig;
+    return res;
   },
 };

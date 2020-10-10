@@ -113,6 +113,7 @@ class Edit extends Component {
     this.state = {
       visual: true,
       isClient: false,
+      error: null,
     };
     this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -124,7 +125,9 @@ class Edit extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    this.props.getContent(getBaseUrl(this.props.pathname));
+    if (this.props.getRequest.loaded && this.props.content?.['@type']) {
+      this.props.getSchema(this.props.content['@type']);
+    }
     this.setState({ isClient: true });
   }
 
@@ -135,9 +138,6 @@ class Edit extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (this.props.getRequest.loading && nextProps.getRequest.loaded) {
-      this.props.getSchema(nextProps.content['@type']);
-    }
     if (this.props.schemaRequest.loading && nextProps.schemaRequest.loaded) {
       if (!hasBlocksData(nextProps.schema.properties)) {
         this.setState({
@@ -157,12 +157,23 @@ class Edit extends Component {
       );
     }
 
-    if (nextProps.updateRequest.error) {
+    if (this.props.updateRequest.loading && nextProps.updateRequest.error) {
+      const message =
+        nextProps.updateRequest.error?.response?.body?.message ||
+        nextProps.updateRequest.error?.response?.text ||
+        '';
+
+      const error =
+        new DOMParser().parseFromString(message, 'text/html')?.all[0]
+          ?.textContent || message;
+
+      this.setState({ error: error });
+
       toast.error(
         <Toast
           error
           title={this.props.intl.formatMessage(messages.error)}
-          content={`${nextProps.updateRequest.error.status} ${nextProps.updateRequest.error.response?.body?.message}`}
+          content={`${nextProps.updateRequest.error.status} ${error}`}
         />,
       );
     }
@@ -219,6 +230,7 @@ class Edit extends Component {
                   ref={this.form}
                   schema={this.props.schema}
                   formData={this.props.content}
+                  requestError={this.state.error}
                   onSubmit={this.onSubmit}
                   hideActions
                   pathname={this.props.pathname}
@@ -326,6 +338,11 @@ export default compose(
       promise: async ({ location, store: { dispatch } }) => {
         await dispatch(listActions(getBaseUrl(location.pathname)));
       },
+    },
+    {
+      key: 'content',
+      promise: async ({ location, store: { dispatch } }) =>
+        await dispatch(getContent(getBaseUrl(location.pathname))),
     },
   ]),
   connect(

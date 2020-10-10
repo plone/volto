@@ -26,6 +26,10 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "X-Is-Fallback-For: de-at de-li de-lu de-ch de-de\n"
 
+#: components/manage/Blocks/HTML/Edit
+msgid "<p>Add some HTML here</p>"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "Accessibility"
 msgstr "Barrierefreiheit"
@@ -54,9 +58,9 @@ msgid "Activate and deactivate"
 msgstr "Aktiviern und Deaktivieren"
 
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/SchemaWidget
+#: helpers/MessageLabels/MessageLabels
 msgid "Add"
 msgstr "Hinzufügen"
 
@@ -72,7 +76,7 @@ msgstr "Inhalte hinzufügen"
 msgid "Add Translation…"
 msgstr "Übersetzung hinzufügen…"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Add User"
 msgstr "Benutzer hinzufügen"
 
@@ -80,7 +84,7 @@ msgstr "Benutzer hinzufügen"
 msgid "Add a description…"
 msgstr "Beschreibung hinzufügen…"
 
-#: components/manage/Form/Form
+#: helpers/MessageLabels/MessageLabels
 msgid "Add block…"
 msgstr "Block hinzufügen"
 
@@ -90,7 +94,7 @@ msgstr "Kriterien hinzufügen"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Add date"
-msgstr ""
+msgstr "Datum hinzufügen"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Add field"
@@ -100,7 +104,7 @@ msgstr "Feld hinzufügen"
 msgid "Add fieldset"
 msgstr "Fieldset hinzufügen"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Add group"
 msgstr "Gruppe hinzufügen"
 
@@ -108,15 +112,15 @@ msgstr "Gruppe hinzufügen"
 msgid "Add new content type"
 msgstr "Neuen Inhaltstypen hinzufügen"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Add new group"
 msgstr "Neue Gruppe hinzufügen"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Add new user"
 msgstr "Neuen Benutzer hinzufügen"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Add to Groups"
 msgstr "Zu Gruppe hinzufügen"
 
@@ -130,7 +134,7 @@ msgstr "Einstellungen Add-ons"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Additional date"
-msgstr ""
+msgstr "Zusätzliches Datum"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -142,6 +146,10 @@ msgstr "Ausrichtung"
 #: components/manage/Contents/Contents
 msgid "All"
 msgstr "Alle"
+
+#: components/theme/Search/Search
+msgid "Alphabetically"
+msgstr "alphabetisch"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -167,12 +175,12 @@ msgstr "Verfügbar"
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/DatabaseInformation
 #: components/manage/Controlpanels/ModerateComments
-#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Diff/Diff
 #: components/manage/History/History
 #: components/manage/Preferences/ChangePassword
@@ -181,6 +189,7 @@ msgstr "Verfügbar"
 #: components/manage/Sharing/Sharing
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
+#: helpers/MessageLabels/MessageLabels
 msgid "Back"
 msgstr "Zurück"
 
@@ -220,18 +229,26 @@ msgstr "Standardmäßig werden die Berechtigungen von einem Ordner auf die in ih
 msgid "Cache Name"
 msgstr "Cache Name"
 
+#: components/manage/Controlpanels/ContentTypeLayout
+msgid "Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypeLayout
+msgid "Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>"
+msgstr ""
+
 #: components/manage/Add/Add
-#: components/manage/Contents/ContentsToolbar
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
-#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Delete/Delete
 #: components/manage/Edit/Edit
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 #: components/theme/Login/Login
+#: helpers/MessageLabels/MessageLabels
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -268,6 +285,8 @@ msgid "Changes saved"
 msgstr "Änderungen gespeichert"
 
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
 msgid "Changes saved."
 msgstr "Änderungen gespeichert."
@@ -398,7 +417,7 @@ msgstr "Ausschneiden"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Daily"
-msgstr ""
+msgstr "Täglich"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database Information"
@@ -421,6 +440,10 @@ msgstr "Datenbank"
 msgid "Date"
 msgstr "Datum"
 
+#: components/theme/Search/Search
+msgid "Date (newest first)"
+msgstr "Datum (neustes zuerst)"
+
 #: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Contents/ContentsTagsModal
@@ -428,12 +451,9 @@ msgstr "Datum"
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
-#: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/TextareaWidget
-#: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/CommentEditModal
 #: components/theme/Comments/Comments
@@ -446,20 +466,19 @@ msgstr "Standard"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
-#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/UsersControlpanelGroups
 #: components/manage/Controlpanels/UsersControlpanelUser
 #: components/manage/Delete/Delete
-#: components/manage/Widgets/CheckboxWidget
-#: components/manage/Widgets/TextareaWidget
-#: components/manage/Widgets/TextWidget
+#: components/manage/Widgets/FormFieldWrapper
+#: components/manage/Widgets/ObjectBrowserWidget
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/Comments
 msgid "Delete"
 msgstr "Löschen"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Delete Group"
 msgstr "Gruppe löschen"
 
@@ -467,7 +486,7 @@ msgstr "Gruppe löschen"
 msgid "Delete Type"
 msgstr "Inhaltstype löschen"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Delete User"
 msgstr "Benutzer löschen"
 
@@ -485,15 +504,12 @@ msgstr "Absteigend"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Controlpanels/UsersControlpanel
-#: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/TextareaWidget
-#: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
+#: helpers/MessageLabels/MessageLabels
 msgid "Description"
 msgstr "Beschreibung"
 
@@ -551,10 +567,11 @@ msgid "E-mail addresses do not match."
 msgstr "E-Mail-Adressen stimmen nicht überein."
 
 #: components/manage/Contents/ContentsItem
-#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Toolbar/Toolbar
-#: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/FormFieldWrapper
+#: components/manage/Widgets/ObjectBrowserWidget
 #: components/theme/Comments/Comments
 msgid "Edit"
 msgstr "Bearbeiten"
@@ -573,7 +590,7 @@ msgstr "Fieldset bearbeiten"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Edit recurrence"
-msgstr ""
+msgstr "Wiederkehrende Einstellungen bearbeiten"
 
 #: components/manage/Form/InlineForm
 msgid "Edit values"
@@ -583,7 +600,7 @@ msgstr "Werte bearbeiten"
 msgid "Edit {title}"
 msgstr "{title} bearbeiten"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Email"
 msgstr "E-Mail"
 
@@ -599,13 +616,17 @@ msgstr "Fehler beim Einbinden des Google Maps Codes. Bitte lesen Sie die Anweisu
 msgid "Embeded Google Maps"
 msgstr "Eingebettete Google Maps Karte"
 
+#: components/manage/Controlpanels/ContentTypeLayout
+msgid "Enable editable Blocks"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "End Date"
 msgstr "Enddatum"
 
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
-msgid "Enter URL or title"
-msgstr "URL oder Titel eingeben"
+msgid "Enter URL or select an item"
+msgstr ""
 
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
@@ -635,12 +656,13 @@ msgid "Enter your new password. Minimum 5 characters."
 msgstr "Geben Sie ihr neues Passwort ein. Mindestens 5 Zeichen."
 
 #: components/manage/Add/Add
+#: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Edit/Edit
-#: components/manage/Form/Form
 #: components/manage/Form/InlineForm
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
+#: helpers/MessageLabels/MessageLabels
 msgid "Error"
 msgstr "Fehler"
 
@@ -650,7 +672,7 @@ msgstr "Von der Navigation ausschließen"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Exclude this occurence"
-msgstr ""
+msgstr "Dieses Datum ausschließen"
 
 #: components/manage/Contents/Contents
 msgid "Excluded from navigation"
@@ -695,7 +717,7 @@ msgstr "Filter…"
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "First"
-msgstr ""
+msgstr "Erster Tag des Monats"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Fixed width table cells"
@@ -711,7 +733,7 @@ msgstr "Verboten"
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Fourth"
-msgstr ""
+msgstr "Vierter"
 
 #: components/theme/ContactForm/ContactForm
 msgid "From"
@@ -728,7 +750,7 @@ msgstr "Volle Breite"
 msgid "Full Name"
 msgstr "Vor- und Nachname"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Fullname"
 msgstr "Name"
 
@@ -748,11 +770,12 @@ msgstr "Google Maps Block"
 msgid "Group"
 msgstr "Gruppe"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Group created"
 msgstr "Gruppe erstellt"
 
 #: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Groupname"
 msgstr "Gruppenname"
 
@@ -810,9 +833,11 @@ msgstr "Bild"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Include this occurence"
-msgstr ""
+msgstr "Datum einbeziehen"
 
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
 msgid "Info"
 msgstr "Information"
@@ -855,19 +880,19 @@ msgstr "Installierte Version"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Interval Daily"
-msgstr ""
+msgstr "Täglich"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Interval Monthly"
-msgstr ""
+msgstr "Monatlich"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Interval Weekly"
-msgstr ""
+msgstr "Wöchentlich"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Interval Yearly"
-msgstr ""
+msgstr "Jährliches Intervall"
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "Item batch size"
@@ -890,8 +915,8 @@ msgstr "Artikel eingefügt."
 msgid "Items"
 msgstr "Elemente"
 
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
 msgid "Items must be unique."
 msgstr "Auswahl muss eindeutig sein."
 
@@ -901,7 +926,7 @@ msgstr "Sprache"
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Last"
-msgstr ""
+msgstr "Letzter"
 
 #: components/manage/Contents/Contents
 msgid "Last comment date"
@@ -914,6 +939,10 @@ msgstr "Letzte Änderung"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Latest version"
 msgstr "Letzte Version"
+
+#: components/manage/Controlpanels/ContentTypesActions
+msgid "Layout"
+msgstr ""
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Lead Image"
@@ -986,14 +1015,26 @@ msgstr "Karte"
 msgid "Maps URL"
 msgstr "Karten URL"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Maximum length is {len}."
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Maximum value is {len}."
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
 msgstr "Nachricht"
 
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
 msgid "Minimum length is {len}."
 msgstr "Minimale Länge ist {len}"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Minimum value is {len}."
+msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Moderate Comments"
@@ -1005,15 +1046,15 @@ msgstr "Kommentare moderieren"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Monday and Friday"
-msgstr ""
+msgstr "Montag und Freitag"
 
 #: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
 msgid "Month day"
-msgstr ""
+msgstr "Tag des Monats"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Monthly"
-msgstr ""
+msgstr "Monatlich"
 
 #: components/manage/Toolbar/Toolbar
 msgid "More"
@@ -1080,13 +1121,17 @@ msgstr "Keine Karte ausgewählt"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "No occurences set"
-msgstr ""
+msgstr "Kein Datum gesetzt"
 
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TokenWidget
 msgid "No options"
 msgstr "Keine Option"
+
+#: components/theme/Search/Search
+msgid "No results found"
+msgstr "Keine Ergebnisse gefunden"
 
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
@@ -1130,7 +1175,7 @@ msgstr "Grösse"
 
 #: components/manage/Widgets/RecurrenceWidget/EndField
 msgid "Occurences"
-msgstr ""
+msgstr "Vorkommen"
 
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -1156,8 +1201,12 @@ msgstr "Quelle"
 msgid "Page"
 msgstr "Seite"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: components/manage/Widgets/SchemaWidget
+msgid "Parent fieldset"
+msgstr ""
+
 #: components/theme/Login/Login
+#: helpers/MessageLabels/MessageLabels
 msgid "Password"
 msgstr "Passwort"
 
@@ -1222,6 +1271,10 @@ msgstr "Plone{reg} Open Source Content Management System"
 msgid "Portrait"
 msgstr "Portrait"
 
+#: components/manage/Widgets/SchemaWidget
+msgid "Possible values"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "Powered by Plone & Python"
 msgstr "Powered by Plone & Python"
@@ -1268,15 +1321,15 @@ msgstr "Elemente sortieren nach…"
 
 #: components/manage/Widgets/RecurrenceWidget/EndField
 msgid "Recurrence ends"
-msgstr ""
+msgstr "Ende des wiederkehrenden Vorkommens"
 
 #: components/manage/Widgets/RecurrenceWidget/EndField
 msgid "Recurrence ends after"
-msgstr ""
+msgstr "Wiederkehrendes Vorkommen endet nach"
 
 #: components/manage/Widgets/RecurrenceWidget/EndField
 msgid "Recurrence ends on"
-msgstr ""
+msgstr "Wiederkehrendes Vorkommen endet am"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Reduce complexity"
@@ -1291,9 +1344,13 @@ msgstr "Registrieren"
 msgid "Registration form"
 msgstr "Registrierungsformular"
 
+#: components/theme/Search/Search
+msgid "Relevance"
+msgstr "relevanz"
+
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
-msgstr ""
+msgstr "Wiederkehrende Einstellung entfernen"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -1306,28 +1363,25 @@ msgstr "Artikel umbenennen"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Repeat"
-msgstr ""
+msgstr "Wiederholen"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Repeat every"
-msgstr ""
+msgstr "Wiederhole jeden"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Repeat on"
-msgstr ""
+msgstr "Wiederhole am"
 
-#: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/TextareaWidget
-#: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 msgid "Required"
 msgstr "Notwendig"
 
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
 msgid "Required input is missing."
 msgstr "Notwendige Eingabe fehlt."
 
@@ -1365,24 +1419,33 @@ msgstr "Rechte"
 msgid "Rights"
 msgstr "Rechte"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Roles"
 msgstr "Rollen"
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
-#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: helpers/MessageLabels/MessageLabels
 msgid "Save"
 msgstr "Speichern"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Save recurrence"
-msgstr ""
+msgstr "Wiederkehrende Einstellung speichern"
+
+#: components/manage/Controlpanels/ContentTypesActions
+msgid "Schema"
+msgstr "Schema"
+
+#: components/manage/Controlpanels/ContentTypeSchema
+msgid "Schema updates"
+msgstr "Aktualisierungen Schema"
 
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search"
@@ -1400,7 +1463,7 @@ msgstr "Inhalte suchen"
 msgid "Search for user or group"
 msgstr "Nach Benutzer oder Gruppe suchen"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Search group…"
 msgstr "Nach Gruppe suchen…"
 
@@ -1412,17 +1475,17 @@ msgstr "Suchergebnisse"
 msgid "Search results for {term}"
 msgstr "Suchergebnisse für {term}"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Search users…"
 msgstr "Nach Nutzern suchen…"
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Second"
-msgstr ""
+msgstr "Zweiter"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Select a date to add to recurrence"
-msgstr ""
+msgstr "Wählen Sie ein Datum um ein wiederkehrendes Datum einzustellen"
 
 #: components/manage/Contents/Contents
 msgid "Select columns to show"
@@ -1438,7 +1501,7 @@ msgstr "Arbeitsablauf-Status für Seite wählen."
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Selected dates"
-msgstr ""
+msgstr "Ausgewählte Daten"
 
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Selected items"
@@ -1446,7 +1509,7 @@ msgstr "Ausgewählte Objekte"
 
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Selected items - x of y"
-msgstr ""
+msgstr "Ausgewählte Objekte - x von y"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Selection"
@@ -1471,6 +1534,10 @@ msgstr "Passwort neu setzen"
 msgid "Set your password"
 msgstr "Setzen Sie Ihr Passwort"
 
+#: components/manage/Sidebar/Sidebar
+msgid "Settings"
+msgstr "Einstellungen"
+
 #: components/manage/Sharing/Sharing
 #: components/manage/Toolbar/More
 msgid "Sharing"
@@ -1480,12 +1547,9 @@ msgstr "Freigabe"
 msgid "Sharing for {title}"
 msgstr "Freigabe für"
 
-#: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/TextareaWidget
-#: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 msgid "Short Name"
 msgstr "Kurzname"
@@ -1544,6 +1608,10 @@ msgstr "Grösse: {size}"
 msgid "Sorry, something went wrong with your request"
 msgstr "Entschuldigung, ein Fehler ist beim Ausführen Ihrer Anfrage aufgetreten "
 
+#: components/theme/Search/Search
+msgid "Sort By:"
+msgstr "Sortieren nach:"
+
 #: components/manage/Blocks/Listing/ListingData
 msgid "Sort on"
 msgstr "Sortieren nach"
@@ -1567,7 +1635,7 @@ msgstr "Anfangsdatum"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Start of the recurrence"
-msgstr ""
+msgstr "Anfangsdatum des wiederkehrenden Termins"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Start password reset"
@@ -1594,11 +1662,12 @@ msgstr "Betreff"
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Controlpanels/UsersControlpanel
+#: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/theme/ContactForm/ContactForm
+#: helpers/MessageLabels/MessageLabels
 msgid "Success"
 msgstr "Erfolgreich"
 
@@ -1666,6 +1735,10 @@ msgstr "Das Backend beantwortet die Anfrage nicht, prüfen Sie bitte ob Sie Plon
 msgid "The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources."
 msgstr "Das Backend antwortet, allerdings sind ihre CORS HTTP Header nicht korrekt konfiguriert."
 
+#: components/theme/CorsError/CorsError
+msgid "The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
+msgstr "Der Server antwortet nicht, wir entschuldigen uns für die Unanehmlichkeiten. Bitte versuchen Sie die Seite neu zu laden. Falls das Problem weiterhin besteht kontaktieren Sie bitte den Seitenbetreiber."
+
 #: components/theme/Register/Register
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 msgstr "Bitte prüfen Sie Ihr E-Mail Postfach. Sie sollten eine E-Mail erhalten haben mit Anweisungen, wie Sie Ihren Zugang aktivieren können."
@@ -1686,14 +1759,14 @@ msgstr "Konfigurationsproblem im Backend"
 msgid "There were some errors"
 msgstr "Es sind Fehler"
 
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
 msgid "There were some errors."
 msgstr "Es sind Fehler aufgetreten."
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Third"
-msgstr ""
+msgstr "Dritter"
 
 #: components/manage/Contents/ContentsRenameModal
 msgid "This name will be displayed in the URL."
@@ -1711,15 +1784,12 @@ msgstr "Zeit"
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Controlpanels/UsersControlpanel
-#: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/TextareaWidget
-#: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
+#: helpers/MessageLabels/MessageLabels
 msgid "Title"
 msgstr "Titel"
 
@@ -1810,24 +1880,21 @@ msgstr "Hochladen"
 msgid "Upload a lead image in the 'Lead Image' content field."
 msgstr "Laden Sie ein Leadbild im 'Leadbild' Feld hoch."
 
+#: components/manage/Blocks/HeroImageLeft/Edit
+msgid "Upload a new image"
+msgstr "Neues Bild hochladen"
+
 #: components/manage/Contents/ContentsUploadModal
 msgid "Upload files"
 msgstr "Datei hochladen"
 
 #: components/manage/Contents/ContentsUploadModal
-msgid "Upload {count, plural, one {# file} other {# files}}"
-msgstr "Lade {count, plural, one {# Datei} other {# Dateien}} hoch"
-
-#: components/manage/Contents/ContentsUploadModal
 msgid "Uploading files"
 msgstr "Dateien hochladen"
 
-#: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/TextareaWidget
-#: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 msgid "Used for programmatic access to the fieldset."
 msgstr "Wir für den programmierten Zugriff auf das Fieldset verwendet."
@@ -1836,7 +1903,7 @@ msgstr "Wir für den programmierten Zugriff auf das Fieldset verwendet."
 msgid "User"
 msgstr "Benutzer"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "User created"
 msgstr "Benutzer erstellt"
 
@@ -1844,7 +1911,7 @@ msgstr "Benutzer erstellt"
 msgid "User name"
 msgstr "Benutzername"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Username"
 msgstr "Benutzername"
 
@@ -1853,7 +1920,7 @@ msgid "Users"
 msgstr "Nutzer"
 
 #: components/manage/Controlpanels/Controlpanels
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Users and Groups"
 msgstr "Nutzer und Gruppen"
 
@@ -1897,10 +1964,6 @@ msgstr "Debug-Modus Warnung"
 msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later."
 msgstr "Entschuldigen Sie die Unanehmlichkeiten aber das Backend der Seite antwortet zur Zeit nicht."
 
-#: components/theme/CorsError/CorsError
-msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not configured properly right now. Please, try again later."
-msgstr "Entschuldigen Sie die Unanehmlichkeiten aber das Backend ist nicht richtig konfiguriert."
-
 #: components/theme/NotFound/NotFound
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
 msgstr "Entschuldigung, aber die Webseite die Sie versucht haben zu erreichen ist hier nicht verfügbar. Bitte benutzen Sie die aufgeführten Verweise um zu finden was Sie gesucht haben."
@@ -1915,15 +1978,15 @@ msgstr "Wir verwenden diese E-Mail Adresse wenn wir Ihr Passwort wiederherstelle
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Weeek day of month"
-msgstr ""
+msgstr "Wochentag im Monat"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Weekday"
-msgstr ""
+msgstr "Wochentag"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Weekly"
-msgstr ""
+msgstr "wöchentlich"
 
 #: components/manage/History/History
 msgid "What"
@@ -1947,7 +2010,7 @@ msgstr "Arbeitsablauf aktualisiert."
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Yearly"
-msgstr ""
+msgstr "jährlich"
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypes
@@ -2008,7 +2071,7 @@ msgstr "Löschen"
 
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "deprecated_browser_notice_message"
-msgstr "Sie verwenden einen veralteten Browser, bitte aktualisieren Sie Ihren Browser."
+msgstr "Sie verwenden einen veralteten Browser. Wir empfehlen den Einsatz eines modernen Browsers wie Firefox, Chrome, Safari oder Windows Edge Chromium."
 
 #: config/Blocks
 msgid "description"
@@ -2024,7 +2087,11 @@ msgstr "Der Link, um das Passwort neu zu setzen, wurde Ihnen zugesendet. Die E-M
 
 #: components/manage/Contents/ContentsItem
 msgid "draft"
-msgstr ""
+msgstr "Entwurf"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "email"
+msgstr "E-Mail"
 
 #: components/theme/View/EventView
 msgid "event_alldates"
@@ -2074,9 +2141,13 @@ msgstr "HTML"
 msgid "image"
 msgstr "Bild"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "integer"
+msgstr "Ganzzahl"
+
 #: components/manage/Contents/ContentsItem
 msgid "intranet"
-msgstr ""
+msgstr "Intranet"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "label_my_email_address_is"
@@ -2098,22 +2169,42 @@ msgstr "Einloggen"
 msgid "maps"
 msgstr "Karten"
 
+#: components/manage/Widgets/SchemaWidget
+msgid "maxLength"
+msgstr "Maximale Länge"
+
+#: components/manage/Widgets/SchemaWidget
+msgid "maximum"
+msgstr "Maximum"
+
 #: config/Blocks
 msgid "media"
 msgstr "Medien"
 
+#: components/manage/Widgets/SchemaWidget
+msgid "minLength"
+msgstr "Minimale Länge"
+
+#: components/manage/Widgets/SchemaWidget
+msgid "minimum"
+msgstr "Minimum"
+
 #: config/Blocks
 msgid "mostUsed"
-msgstr "Häufig genutzt<<<<<<< HEAD"
+msgstr "Häufig genutzt"
 
 #: components/manage/Contents/ContentsItem
 msgid "no workflow state"
-msgstr ""
+msgstr "Kein Status gesetzt"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "number"
+msgstr "Zahl"
 
 #: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
 #: components/manage/Widgets/RecurrenceWidget/ByYearField
 msgid "of the month"
-msgstr ""
+msgstr "im Monat"
 
 #: error
 msgid "or try a different page."
@@ -2121,19 +2212,19 @@ msgstr "versuchen Sie eine andere Seite."
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "others"
-msgstr ""
+msgstr "andere"
 
 #: components/manage/Contents/ContentsItem
 msgid "private"
-msgstr ""
+msgstr "Privat"
 
 #: components/manage/Contents/ContentsItem
 msgid "published"
-msgstr ""
+msgstr "Veröffentlicht"
 
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "querystring-widget-select"
-msgstr ""
+msgstr "Select Auswahlfeld"
 
 #: components/theme/Login/Login
 msgid "registration form"
@@ -2295,6 +2386,10 @@ msgstr "Titel"
 msgid "toc"
 msgstr "Inhaltsverzeichnis"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "url"
+msgstr "URL"
+
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"
 msgstr "Nutzer Avatar"
@@ -2311,9 +2406,21 @@ msgstr "Externe Webseite besuchen"
 msgid "we can send you a new one"
 msgstr "Wir schicken Ihnen gerne ein neues Passwort zu."
 
+#: components/manage/Contents/ContentsUploadModal
+msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
+msgstr "Lade {count, plural, one {# Datei} other {# Dateien}} hoch"
+
 #: components/manage/Contents/Contents
 msgid "{count} selected"
 msgstr "{count} ausgewählt"
+
+#: components/manage/Controlpanels/ContentType
+msgid "{id} Content Type"
+msgstr "{id} Inhaltstyp"
+
+#: components/manage/Controlpanels/ContentTypeSchema
+msgid "{id} Schema"
+msgstr "{id} Schema"
 
 #: components/manage/Actions/Actions
 msgid "{title} copied."

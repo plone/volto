@@ -73,9 +73,22 @@ Instead, change the "addons" setting in your package.json file.
   });
 
   buf += `
+const safeWrapper = (func) => (config) => {
+  const res = func(config);
+  if (typeof res === 'undefined') {
+    throw new Error("Configuration function doesn't return config");
+  }
+  return res;
+}
+
 const load = (config) => {
   const addonLoaders = [${configsToLoad.join(', ')}];
-  return addonLoaders.reduce((acc, apply) => apply(acc), config);
+  if(!addonLoaders.every((el) => typeof el === "function")) {
+    throw new TypeError(
+      'Each addon has to provide a function applying its configuration to the projects configuration.',
+    );
+  }
+  return addonLoaders.reduce((acc, apply) => safeWrapper(apply)(acc), config);
 };
 export default load;
 `;

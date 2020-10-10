@@ -107,21 +107,25 @@ describe('Add Content Tests', () => {
 
     if (Cypress.env('API') === 'guillotina') {
       // Guillotina wants the file handler instead than the base64 encoding
-      cy.fixture('image.png').then((fileContent) => {
-        cy.get('#field-image').attachFile(
-          { fileContent, fileName: 'image.png', mimeType: 'image/png' },
-          { subjectType: 'input' },
-        );
-        cy.get('#field-image').parent().parent().contains('image.png');
-      });
+      cy.fixture('image.png')
+        .then( fc => {return Cypress.Blob.base64StringToBlob( fc ) })
+        .then((fileContent) => {
+          cy.get('#field-image').attachFile(
+            { fileContent, fileName: 'image.png', mimeType: 'image/png' },
+            { subjectType: 'input' },
+          );
+          cy.get('#field-image').parent().parent().contains('image.png');
+        });
     } else {
-      cy.fixture('image.png', 'base64').then((fileContent) => {
-        cy.get('input#field-image').attachFile(
-          { fileContent, fileName: 'image.png', mimeType: 'image/png' },
-          { subjectType: 'input' },
-        );
-        cy.get('#field-image').parent().parent().contains('image.png');
-      });
+      cy.fixture('image.png', 'base64')
+        .then( fc => {return Cypress.Blob.base64StringToBlob( fc ) })
+        .then((fileContent) => {
+          cy.get('input#field-image').attachFile(
+            { fileContent, fileName: 'image.png', mimeType: 'image/png' },
+            { subjectType: 'input' },
+          );
+          cy.get('#field-image').parent().parent().contains('image.png');
+        });
     }
     cy.get('#toolbar-save').click();
     if (Cypress.env('API') === 'guillotina') {

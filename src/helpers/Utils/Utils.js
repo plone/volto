@@ -16,3 +16,26 @@ export function difference(object, base) {
     }
   });
 }
+
+/**
+ * Throw an error if the wrapped function returns undefined
+ *
+ * @param {Function} func
+ */
+export const safeWrapper = (func) => (config) => {
+  const res = func(config);
+  if (typeof res === 'undefined') {
+    throw new Error(`Configuration function doesn't return config, ${func}`);
+  }
+  return res;
+};
+
+/**
+ * A helper to pipe a configuration object through configuration loaders
+ *
+ * @param {Array} configMethods A list of configuration methods
+ * @param {Object} config The Volto singleton config object
+ */
+export function applyConfig(configMethods, config) {
+  return configMethods.reduce((acc, apply) => safeWrapper(apply)(acc), config);
+}

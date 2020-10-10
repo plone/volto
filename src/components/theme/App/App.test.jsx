@@ -43,6 +43,9 @@ jest.mock('../Footer/Footer', () => jest.fn(() => <div id="footer" />));
 describe('App', () => {
   it('renders a app component', () => {
     const store = mockStore({
+      userSession: {
+        token: 'abcdefgh',
+      },
       content: { data: { id: 'content', '@type': 'Document' } },
       apierror: {},
     });

@@ -13,7 +13,7 @@ import Editor from 'draft-js-plugins-editor';
 import { stateFromHTML } from 'draft-js-import-html';
 import { convertToRaw, EditorState } from 'draft-js';
 import redraft from 'redraft';
-import { Form, Icon, Label, TextArea } from 'semantic-ui-react';
+import { Form, Label, TextArea } from 'semantic-ui-react';
 import { map } from 'lodash';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import { defineMessages, injectIntl } from 'react-intl';
@@ -249,8 +249,6 @@ class WysiwygWidget extends Component {
       required,
       value,
       error,
-      onEdit,
-      onDelete,
       fieldSet,
     } = this.props;
 
@@ -279,29 +277,13 @@ class WysiwygWidget extends Component {
     const { InlineToolbar } = this.state.inlineToolbarPlugin;
 
     return (
-      <FormFieldWrapper {...this.props} draggable={true} className="wysiwyg">
-        {onEdit && (
-          <div className="toolbar">
-            <button
-              className="item ui noborder button"
-              onClick={() => onEdit(id, this.schema)}
-            >
-              <Icon name="write square" size="large" color="blue" />
-            </button>
-            <button
-              aria-label={this.props.intl.formatMessage(messages.delete)}
-              className="item ui noborder button"
-              onClick={() => onDelete(id)}
-            >
-              <Icon name="close" size="large" color="red" />
-            </button>
-          </div>
-        )}
+      <FormFieldWrapper {...this.props} className="wysiwyg">
         <div style={{ boxSizing: 'initial' }}>
           {this.props.onChange ? (
             <>
               <Editor
                 id={`field-${id}`}
+                readOnly={this.props.isDisabled}
                 onChange={this.onChange}
                 editorState={this.state.editorState}
                 plugins={[

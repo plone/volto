@@ -12,9 +12,22 @@ Instead, change the "addons" setting in your package.json file.
 */
 
 
+const safeWrapper = (func) => (config) => {
+  const res = func(config);
+  if (typeof res === 'undefined') {
+    throw new Error("Configuration function doesn't return config");
+  }
+  return res;
+}
+
 const load = (config) => {
   const addonLoaders = [];
-  return addonLoaders.reduce((acc, apply) => apply(acc), config);
+  if(!addonLoaders.every((el) => typeof el === "function")) {
+    throw new TypeError(
+      'Each addon has to provide a function applying its configuration to the projects configuration.',
+    );
+  }
+  return addonLoaders.reduce((acc, apply) => safeWrapper(apply)(acc), config);
 };
 export default load;
 `);
@@ -29,9 +42,22 @@ Instead, change the "addons" setting in your package.json file.
 
 import voltoAddon1 from 'volto-addon1';
 
+const safeWrapper = (func) => (config) => {
+  const res = func(config);
+  if (typeof res === 'undefined') {
+    throw new Error("Configuration function doesn't return config");
+  }
+  return res;
+}
+
 const load = (config) => {
   const addonLoaders = [voltoAddon1];
-  return addonLoaders.reduce((acc, apply) => apply(acc), config);
+  if(!addonLoaders.every((el) => typeof el === "function")) {
+    throw new TypeError(
+      'Each addon has to provide a function applying its configuration to the projects configuration.',
+    );
+  }
+  return addonLoaders.reduce((acc, apply) => safeWrapper(apply)(acc), config);
 };
 export default load;
 `);
@@ -50,9 +76,22 @@ Instead, change the "addons" setting in your package.json file.
 import voltoAddon1 from 'volto-addon1';
 import voltoAddon2 from 'volto-addon2';
 
+const safeWrapper = (func) => (config) => {
+  const res = func(config);
+  if (typeof res === 'undefined') {
+    throw new Error("Configuration function doesn't return config");
+  }
+  return res;
+}
+
 const load = (config) => {
   const addonLoaders = [voltoAddon1, voltoAddon2];
-  return addonLoaders.reduce((acc, apply) => apply(acc), config);
+  if(!addonLoaders.every((el) => typeof el === "function")) {
+    throw new TypeError(
+      'Each addon has to provide a function applying its configuration to the projects configuration.',
+    );
+  }
+  return addonLoaders.reduce((acc, apply) => safeWrapper(apply)(acc), config);
 };
 export default load;
 `);
@@ -67,9 +106,22 @@ Instead, change the "addons" setting in your package.json file.
 
 import voltoAddon1, { loadExtra1 as loadExtra10 } from 'volto-addon1';
 
+const safeWrapper = (func) => (config) => {
+  const res = func(config);
+  if (typeof res === 'undefined') {
+    throw new Error("Configuration function doesn't return config");
+  }
+  return res;
+}
+
 const load = (config) => {
   const addonLoaders = [voltoAddon1, loadExtra10];
-  return addonLoaders.reduce((acc, apply) => apply(acc), config);
+  if(!addonLoaders.every((el) => typeof el === "function")) {
+    throw new TypeError(
+      'Each addon has to provide a function applying its configuration to the projects configuration.',
+    );
+  }
+  return addonLoaders.reduce((acc, apply) => safeWrapper(apply)(acc), config);
 };
 export default load;
 `);
@@ -86,9 +138,22 @@ Instead, change the "addons" setting in your package.json file.
 
 import voltoAddon1, { loadExtra1 as loadExtra10, loadExtra2 as loadExtra21 } from 'volto-addon1';
 
+const safeWrapper = (func) => (config) => {
+  const res = func(config);
+  if (typeof res === 'undefined') {
+    throw new Error("Configuration function doesn't return config");
+  }
+  return res;
+}
+
 const load = (config) => {
   const addonLoaders = [voltoAddon1, loadExtra10, loadExtra21];
-  return addonLoaders.reduce((acc, apply) => apply(acc), config);
+  if(!addonLoaders.every((el) => typeof el === "function")) {
+    throw new TypeError(
+      'Each addon has to provide a function applying its configuration to the projects configuration.',
+    );
+  }
+  return addonLoaders.reduce((acc, apply) => safeWrapper(apply)(acc), config);
 };
 export default load;
 `);
@@ -107,9 +172,22 @@ Instead, change the "addons" setting in your package.json file.
 import voltoAddon1, { loadExtra1 as loadExtra10, loadExtra2 as loadExtra21 } from 'volto-addon1';
 import voltoAddon2, { loadExtra3 as loadExtra32, loadExtra4 as loadExtra43 } from 'volto-addon2';
 
+const safeWrapper = (func) => (config) => {
+  const res = func(config);
+  if (typeof res === 'undefined') {
+    throw new Error("Configuration function doesn't return config");
+  }
+  return res;
+}
+
 const load = (config) => {
   const addonLoaders = [voltoAddon1, loadExtra10, loadExtra21, voltoAddon2, loadExtra32, loadExtra43];
-  return addonLoaders.reduce((acc, apply) => apply(acc), config);
+  if(!addonLoaders.every((el) => typeof el === "function")) {
+    throw new TypeError(
+      'Each addon has to provide a function applying its configuration to the projects configuration.',
+    );
+  }
+  return addonLoaders.reduce((acc, apply) => safeWrapper(apply)(acc), config);
 };
 export default load;
 `);
