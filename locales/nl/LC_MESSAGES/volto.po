@@ -385,6 +385,10 @@ msgstr "Inhoud"
 msgid "Copy"
 msgstr "Kopiëren"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Copy blocks"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "Copyright"
 msgstr "Copyright"
@@ -1227,6 +1231,10 @@ msgstr ""
 #: components/manage/Contents/Contents
 msgid "Paste"
 msgstr "Plakken"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Paste blocks"
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Toolbar/Toolbar

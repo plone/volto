@@ -381,6 +381,10 @@ msgstr "Inhaltsverzeichnis"
 msgid "Copy"
 msgstr "Kopieren"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Copy blocks"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "Copyright"
 msgstr "Urheberrecht"
@@ -1223,6 +1227,10 @@ msgstr "Die Passwörter stimmen nicht überein."
 #: components/manage/Contents/Contents
 msgid "Paste"
 msgstr "Einfügen"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Paste blocks"
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Toolbar/Toolbar

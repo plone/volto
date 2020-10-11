@@ -3,6 +3,7 @@
  * @module components/manage/Form/Form
  */
 
+import { connect } from 'react-redux';
 import { EditBlock, Field, Icon, Toast } from '@plone/volto/components';
 import {
   blockHasValue,
@@ -45,6 +46,7 @@ import { v4 as uuid } from 'uuid';
 import { toast } from 'react-toastify';
 import { settings } from '~/config';
 
+import { getLocalStorage, setLocalStorage } from '@plone/volto/actions';
 import copySVG from '@plone/volto/icons/copy.svg';
 import pasteSVG from '@plone/volto/icons/paste.svg';
 
@@ -774,6 +776,17 @@ class Form extends Component {
     });
   };
 
+  copyBlocksToLocalStorage = () => {
+    const { formData } = this.state;
+    const blocksFieldname = getBlocksFieldname(formData);
+    const blocks = formData[blocksFieldname];
+    // const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
+    const blockData = this.state.multiSelected.map(
+      (blockId) => blocks[blockId],
+    );
+    this.props.setLocalStorage('copy-blocks', blockData);
+  };
+
   /**
    * Render method.
    * @method render
@@ -802,20 +815,30 @@ class Form extends Component {
               }
             >
               <button
-                className="copy"
                 aria-label={this.props.intl.formatMessage(messages.copyBlocks)}
-                onClick={(e) => {}}
+                onClick={this.copyBlocksToLocalStorage}
                 tabIndex={0}
+                className="copyBlocks"
                 id="toolbar-copy-blocks"
               >
                 <Icon name={copySVG} size="30px" className="circled" />
               </button>
-
+            </Portal>
+          ) : (
+            ''
+          )}
+          {this.props.copiedBlocks.length > 0 ? (
+            <Portal
+              node={
+                __CLIENT__ &&
+                document.querySelector('#toolbar .toolbar-actions')
+              }
+            >
               <button
-                className="add"
                 aria-label={this.props.intl.formatMessage(messages.pasteBlocks)}
                 onClick={(e) => {}}
                 tabIndex={0}
+                className="pasteBlocks"
                 id="toolbar-paste-blocks"
               >
                 <Icon name={pasteSVG} size="30px" className="circled" />
@@ -1088,4 +1111,11 @@ class Form extends Component {
   }
 }
 
-export default injectIntl(Form, { forwardRef: true });
+export default connect(
+  (state) => {
+    return {
+      copiedBlocks: state?.localstorage?.['copy-blocks'] || [],
+    };
+  },
+  { getLocalStorage, setLocalStorage },
+)(injectIntl(Form, { forwardRef: true }));

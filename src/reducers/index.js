@@ -35,6 +35,7 @@ import userSession from '@plone/volto/reducers/userSession/userSession';
 import vocabularies from '@plone/volto/reducers/vocabularies/vocabularies';
 import workflow from '@plone/volto/reducers/workflow/workflow';
 import toolbar from '@plone/volto/reducers/toolbar/toolbar';
+import localstorage from '@plone/volto/reducers/localstorage/localstorage';
 import { addonReducers } from '~/config';
 
 /**
@@ -76,6 +77,7 @@ const reducers = {
   vocabularies,
   workflow,
   toolbar,
+  localstorage,
   ...addonReducers,
 };
 
