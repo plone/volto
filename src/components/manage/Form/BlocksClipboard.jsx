@@ -9,15 +9,32 @@ import {
   getBlocksLayoutFieldname,
 } from '@plone/volto/helpers';
 import { Icon } from '@plone/volto/components';
-import { blocks } from '~/config';
 import { v4 as uuid } from 'uuid';
+import { load } from 'redux-localstorage-simple';
+import { isEqual } from 'lodash';
 
 import { setBlocksClipboard, resetBlocksClipboard } from '@plone/volto/actions';
+import { blocks } from '~/config';
 
 import copySVG from '@plone/volto/icons/copy.svg';
 import pasteSVG from '@plone/volto/icons/paste.svg';
 
 class BlockClipboardHandler extends React.Component {
+  loadFromStorage = () => {
+    const blocksData = load({ states: ['blocksClipboard'] })?.blocksClipboard
+      ?.blocksData;
+    if (!isEqual(blocksData, this.props.blocksClipboard))
+      this.props.setBlocksClipboard(blocksData);
+  };
+
+  componentDidMount() {
+    window.addEventListener('storage', this.loadFromStorage, true);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('storage', this.loadFromStorage);
+  }
+
   copyBlocksToClipboard = () => {
     const { formData } = this.props;
     const blocksFieldname = getBlocksFieldname(formData);
@@ -104,6 +121,9 @@ class BlockClipboardHandler extends React.Component {
               className="pasteBlocks"
               id="toolbar-paste-blocks"
             >
+              <span class="blockCount">
+                {this.props.blocksClipboard.length}
+              </span>
               <Icon name={pasteSVG} size="30px" className="circled" />
             </button>
           </Portal>
