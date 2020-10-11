@@ -3,7 +3,6 @@
  * @module components/manage/Form/Form
  */
 
-import { connect } from 'react-redux';
 import { EditBlock, Field, Icon, Toast } from '@plone/volto/components';
 import {
   blockHasValue,
@@ -42,14 +41,10 @@ import {
   Segment,
   Tab,
 } from 'semantic-ui-react';
+import BlocksClipboard from './BlocksClipboard';
 import { v4 as uuid } from 'uuid';
 import { toast } from 'react-toastify';
-import { settings, blocks } from '~/config';
-
-import { setBlocksClipboard, resetBlocksClipboard } from '@plone/volto/actions';
-
-import copySVG from '@plone/volto/icons/copy.svg';
-import pasteSVG from '@plone/volto/icons/paste.svg';
+import { settings } from '~/config';
 
 /**
  * Form container class.
@@ -797,61 +792,6 @@ class Form extends Component {
     });
   };
 
-  copyBlocksToClipboard = () => {
-    const { formData } = this.state;
-    const blocksFieldname = getBlocksFieldname(formData);
-    const blocks = formData[blocksFieldname];
-    const blocksData = this.state.multiSelected.map(
-      (blockId) => blocks[blockId],
-    );
-    this.props.setBlocksClipboard(blocksData);
-    this.setState({ multiSelected: [] });
-  };
-
-  pasteBlocks = () => {
-    const blocksData = this.props.blocksClipboard;
-    const cloneWithIds = blocksData
-      .filter((blockData) => !!blockData['@type'])
-      .map((blockData) => {
-        const blockConfig = blocks.blocksConfig[blockData['@type']];
-        return blockConfig.cloneData
-          ? blockConfig.cloneData(blockData) // returns [blockId, blockData]
-          : [uuid(), blockData];
-      })
-      .filter((info) => !!info); // some blocks may refuse to be copied
-    const { formData } = this.state;
-    const blocksFieldname = getBlocksFieldname(formData);
-    const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
-    const selectedIndex =
-      formData[blocksLayoutFieldname].items.indexOf(this.state.selected) + 1;
-
-    const newBlockData = {
-      [blocksFieldname]: {
-        ...formData[blocksFieldname],
-        ...Object.assign(
-          {},
-          ...cloneWithIds.map(([id, data]) => ({ [id]: data })),
-        ),
-      },
-      [blocksLayoutFieldname]: {
-        ...formData[blocksLayoutFieldname],
-        items: [
-          ...formData[blocksLayoutFieldname].items.slice(0, selectedIndex),
-          ...cloneWithIds.map(([id]) => id),
-          ...formData[blocksLayoutFieldname].items.slice(selectedIndex),
-        ],
-      },
-    };
-
-    this.setState({
-      formData: {
-        ...formData,
-        ...newBlockData,
-      },
-    });
-    this.props.resetBlocksClipboard();
-  };
-
   /**
    * Render method.
    * @method render
@@ -871,46 +811,22 @@ class Form extends Component {
       // but draftJS don't like it much and the hydration gets messed up
       this.state.isClient && (
         <div className="ui container">
-          {this.state.multiSelected.length > 0 ? (
-            <Portal
-              node={
-                __CLIENT__ &&
-                document.querySelector('#toolbar .toolbar-actions')
-              }
-            >
-              <button
-                aria-label={this.props.intl.formatMessage(messages.copyBlocks)}
-                onClick={this.copyBlocksToClipboard}
-                tabIndex={0}
-                className="copyBlocks"
-                id="toolbar-copy-blocks"
-              >
-                <Icon name={copySVG} size="30px" className="circled" />
-              </button>
-            </Portal>
-          ) : (
-            ''
-          )}
-          {this.props.blocksClipboard.length > 0 && this.state.selected ? (
-            <Portal
-              node={
-                __CLIENT__ &&
-                document.querySelector('#toolbar .toolbar-actions')
-              }
-            >
-              <button
-                aria-label={this.props.intl.formatMessage(messages.pasteBlocks)}
-                onClick={this.pasteBlocks}
-                tabIndex={0}
-                className="pasteBlocks"
-                id="toolbar-paste-blocks"
-              >
-                <Icon name={pasteSVG} size="30px" className="circled" />
-              </button>
-            </Portal>
-          ) : (
-            ''
-          )}
+          <BlocksClipboard
+            formData={this.state.formData}
+            selectedBlocks={this.state.multiSelected}
+            onSetSelectedBlocks={(blockIds) =>
+              this.setState({ multiSelected: blockIds })
+            }
+            onChangeBlocks={(newBlockData) =>
+              this.setState({
+                formData: {
+                  ...formData,
+                  ...newBlockData,
+                },
+              })
+            }
+            selectedBlock={this.state.selected}
+          />
           <DragDropContext
             onDragEnd={this.onDragEnd}
             onDragStart={this.handleDragStart}
@@ -1175,11 +1091,4 @@ class Form extends Component {
   }
 }
 
-export default connect(
-  (state) => {
-    return {
-      blocksClipboard: state?.blocksClipboard?.blocksData || [],
-    };
-  },
-  { setBlocksClipboard, resetBlocksClipboard },
-)(injectIntl(Form, { forwardRef: true }));
+export default injectIntl(Form, { forwardRef: true });
