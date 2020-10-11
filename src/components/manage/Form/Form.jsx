@@ -44,9 +44,10 @@ import {
 } from 'semantic-ui-react';
 import { v4 as uuid } from 'uuid';
 import { toast } from 'react-toastify';
-import { settings } from '~/config';
+import { settings, blocks } from '~/config';
 
-import { getLocalStorage, setLocalStorage } from '@plone/volto/actions';
+import { setBlocksClipboard, resetBlocksClipboard } from '@plone/volto/actions';
+
 import copySVG from '@plone/volto/icons/copy.svg';
 import pasteSVG from '@plone/volto/icons/paste.svg';
 
@@ -378,13 +379,33 @@ class Form extends Component {
    * @returns {undefined}
    */
   onSelectBlock(id, isMultipleSelection) {
+    let multiSelected = [];
+
+    if (isMultipleSelection) {
+      const blocksLayoutFieldname = getBlocksLayoutFieldname(
+        this.state.formData,
+      );
+
+      const blocks_layout = this.state.formData[blocksLayoutFieldname].items;
+
+      const anchor =
+        this.state.multiSelected.length > 0
+          ? blocks_layout.indexOf(this.state.multiSelected[0])
+          : blocks_layout.indexOf(this.state.selected);
+      const focus = blocks_layout.indexOf(id);
+
+      if (anchor === focus) {
+        multiSelected = [id];
+      } else if (focus > anchor) {
+        multiSelected = [...blocks_layout.slice(anchor, focus + 1)];
+      } else {
+        multiSelected = [...blocks_layout.slice(focus, anchor + 1)];
+      }
+    }
+
     this.setState({
       selected: id,
-      // TODO: need to filter multiple instances of block in multiSelected
-      // TODO: need to remove blocks from multiple selection
-      multiSelected: isMultipleSelection
-        ? [...(this.state.multiSelected || []), this.state.selected, id]
-        : [],
+      multiSelected,
     });
   }
 
@@ -776,15 +797,59 @@ class Form extends Component {
     });
   };
 
-  copyBlocksToLocalStorage = () => {
+  copyBlocksToClipboard = () => {
     const { formData } = this.state;
     const blocksFieldname = getBlocksFieldname(formData);
     const blocks = formData[blocksFieldname];
-    // const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
-    const blockData = this.state.multiSelected.map(
+    const blocksData = this.state.multiSelected.map(
       (blockId) => blocks[blockId],
     );
-    this.props.setLocalStorage('copy-blocks', blockData);
+    this.props.setBlocksClipboard(blocksData);
+    this.setState({ multiSelected: [] });
+  };
+
+  pasteBlocks = () => {
+    const blocksData = this.props.blocksClipboard;
+    const cloneWithIds = blocksData
+      .filter((blockData) => !!blockData['@type'])
+      .map((blockData) => {
+        const blockConfig = blocks.blocksConfig[blockData['@type']];
+        return blockConfig.cloneData
+          ? blockConfig.cloneData(blockData) // returns [blockId, blockData]
+          : [uuid(), blockData];
+      })
+      .filter((info) => !!info); // some blocks may refuse to be copied
+    const { formData } = this.state;
+    const blocksFieldname = getBlocksFieldname(formData);
+    const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
+    const selectedIndex =
+      formData[blocksLayoutFieldname].items.indexOf(this.state.selected) + 1;
+
+    const newBlockData = {
+      [blocksFieldname]: {
+        ...formData[blocksFieldname],
+        ...Object.assign(
+          {},
+          ...cloneWithIds.map(([id, data]) => ({ [id]: data })),
+        ),
+      },
+      [blocksLayoutFieldname]: {
+        ...formData[blocksLayoutFieldname],
+        items: [
+          ...formData[blocksLayoutFieldname].items.slice(0, selectedIndex),
+          ...cloneWithIds.map(([id]) => id),
+          ...formData[blocksLayoutFieldname].items.slice(selectedIndex),
+        ],
+      },
+    };
+
+    this.setState({
+      formData: {
+        ...formData,
+        ...newBlockData,
+      },
+    });
+    this.props.resetBlocksClipboard();
   };
 
   /**
@@ -806,7 +871,6 @@ class Form extends Component {
       // but draftJS don't like it much and the hydration gets messed up
       this.state.isClient && (
         <div className="ui container">
-          {JSON.stringify(this.state.multiSelected, null, 2)}
           {this.state.multiSelected.length > 0 ? (
             <Portal
               node={
@@ -816,7 +880,7 @@ class Form extends Component {
             >
               <button
                 aria-label={this.props.intl.formatMessage(messages.copyBlocks)}
-                onClick={this.copyBlocksToLocalStorage}
+                onClick={this.copyBlocksToClipboard}
                 tabIndex={0}
                 className="copyBlocks"
                 id="toolbar-copy-blocks"
@@ -827,7 +891,7 @@ class Form extends Component {
           ) : (
             ''
           )}
-          {this.props.copiedBlocks.length > 0 ? (
+          {this.props.blocksClipboard.length > 0 && this.state.selected ? (
             <Portal
               node={
                 __CLIENT__ &&
@@ -836,7 +900,7 @@ class Form extends Component {
             >
               <button
                 aria-label={this.props.intl.formatMessage(messages.pasteBlocks)}
-                onClick={(e) => {}}
+                onClick={this.pasteBlocks}
                 tabIndex={0}
                 className="pasteBlocks"
                 id="toolbar-paste-blocks"
@@ -1114,8 +1178,8 @@ class Form extends Component {
 export default connect(
   (state) => {
     return {
-      copiedBlocks: state?.localstorage?.['copy-blocks'] || [],
+      blocksClipboard: state?.blocksClipboard?.blocksData || [],
     };
   },
-  { getLocalStorage, setLocalStorage },
+  { setBlocksClipboard, resetBlocksClipboard },
 )(injectIntl(Form, { forwardRef: true }));

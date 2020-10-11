@@ -106,8 +106,6 @@ export { getQueryStringResults } from '@plone/volto/actions/querystringsearch/qu
 export { setSidebarTab, copyBlock } from '@plone/volto/actions/sidebar/sidebar';
 export { getTranslationLocator } from '@plone/volto/actions/translations/translations';
 export {
-  getLocalStorage,
-  setLocalStorage,
-  clearLocalStorage,
-  unsetLocalStorage,
-} from '@plone/volto/actions/localstorage/localstorage';
+  setBlocksClipboard,
+  resetBlocksClipboard,
+} from '@plone/volto/actions/blocksClipboard/blocksClipboard';

@@ -74,6 +74,7 @@ let config = {
     timezone: 'UTC',
     defaultBlockType: 'text',
     verticalFormTabs: false,
+    persistentReducers: ['blocksClipboard'],
   },
   widgets: {
     ...widgetMapping,

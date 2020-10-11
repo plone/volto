@@ -141,7 +141,10 @@ class Edit extends Component {
             role="presentation"
             onClick={(e) => {
               const isMultipleSelection = e.shiftKey;
-              this.props.onSelectBlock(this.props.id, isMultipleSelection);
+              this.props.onSelectBlock(
+                this.props.id,
+                this.props.selected ? false : isMultipleSelection,
+              );
             }}
             onKeyDown={
               !(blockHasOwnFocusManagement || disableNewBlocks)

@@ -5,33 +5,34 @@ import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { save, load } from 'redux-localstorage-simple';
 
 import reducers from '~/reducers';
+import { settings } from '~/config';
 
 import { api, crashReporter } from '@plone/volto/middleware';
 
 const configureStore = (initialState, history, apiHelper) => {
-  const defaultMiddlewares = [
-    routerMiddleware(history),
-    crashReporter,
-    thunk,
-    api(apiHelper),
-  ];
-  if (__CLIENT__)
-    defaultMiddlewares.push(save({ states: ['localstorage'], debounce: 500 }));
-
   const middlewares = composeWithDevTools(
-    applyMiddleware(...defaultMiddlewares),
+    applyMiddleware(
+      ...[
+        routerMiddleware(history),
+        crashReporter,
+        thunk,
+        api(apiHelper),
+        ...(__CLIENT__
+          ? [save({ states: settings.persistentReducers, debounce: 500 })]
+          : []),
+      ],
+    ),
   );
-
-  const ls = {
-    ...(__CLIENT__ ? load({ states: ['localstorage'] }) : {}),
-  };
 
   const store = createStore(
     combineReducers({
       router: connectRouter(history),
       ...reducers,
     }),
-    { ...initialState, ...ls },
+    {
+      ...initialState,
+      ...(__CLIENT__ ? load({ states: settings.persistentReducers }) : {}),
+    },
     middlewares,
   );
 
