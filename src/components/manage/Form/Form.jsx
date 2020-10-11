@@ -45,6 +45,9 @@ import { v4 as uuid } from 'uuid';
 import { toast } from 'react-toastify';
 import { settings } from '~/config';
 
+import copySVG from '@plone/volto/icons/copy.svg';
+import pasteSVG from '@plone/volto/icons/paste.svg';
+
 /**
  * Form container class.
  * @class Form
@@ -174,6 +177,7 @@ class Form extends Component {
           : null,
       placeholderProps: {},
       isClient: false,
+      multiSelected: [],
     };
     this.onChangeField = this.onChangeField.bind(this);
     this.onChangeBlock = this.onChangeBlock.bind(this);
@@ -371,9 +375,14 @@ class Form extends Component {
    * @param {string} id Id of the field
    * @returns {undefined}
    */
-  onSelectBlock(id) {
+  onSelectBlock(id, isMultipleSelection) {
     this.setState({
       selected: id,
+      // TODO: need to filter multiple instances of block in multiSelected
+      // TODO: need to remove blocks from multiple selection
+      multiSelected: isMultipleSelection
+        ? [...(this.state.multiSelected || []), this.state.selected, id]
+        : [],
     });
   }
 
@@ -551,7 +560,7 @@ class Form extends Component {
    * @param {node} blockNode The id of the current block
    * @returns {undefined}
    */
-  onFocusPreviousBlock(currentBlock, blockNode) {
+  onFocusPreviousBlock(currentBlock, blockNode, isMultipleSelection) {
     const blocksLayoutFieldname = getBlocksLayoutFieldname(this.state.formData);
     const currentIndex = this.state.formData[
       blocksLayoutFieldname
@@ -566,6 +575,7 @@ class Form extends Component {
 
     this.onSelectBlock(
       this.state.formData[blocksLayoutFieldname].items[newindex],
+      isMultipleSelection,
     );
   }
 
@@ -576,7 +586,7 @@ class Form extends Component {
    * @param {node} blockNode The id of the current block
    * @returns {undefined}
    */
-  onFocusNextBlock(currentBlock, blockNode) {
+  onFocusNextBlock(currentBlock, blockNode, isMultipleSelection) {
     const blocksLayoutFieldname = getBlocksLayoutFieldname(this.state.formData);
     const currentIndex = this.state.formData[
       blocksLayoutFieldname
@@ -595,6 +605,7 @@ class Form extends Component {
 
     this.onSelectBlock(
       this.state.formData[blocksLayoutFieldname].items[newindex],
+      isMultipleSelection,
     );
   }
 
@@ -619,12 +630,13 @@ class Form extends Component {
       disableArrowDown = false,
     } = {},
   ) {
+    const isMultipleSelection = e.shiftKey;
     if (e.key === 'ArrowUp' && !disableArrowUp) {
-      this.onFocusPreviousBlock(block, node);
+      this.onFocusPreviousBlock(block, node, isMultipleSelection);
       e.preventDefault();
     }
     if (e.key === 'ArrowDown' && !disableArrowDown) {
-      this.onFocusNextBlock(block, node);
+      this.onFocusNextBlock(block, node, isMultipleSelection);
       e.preventDefault();
     }
     if (e.key === 'Enter' && !disableEnter) {
@@ -781,6 +793,37 @@ class Form extends Component {
       // but draftJS don't like it much and the hydration gets messed up
       this.state.isClient && (
         <div className="ui container">
+          {JSON.stringify(this.state.multiSelected, null, 2)}
+          {this.state.multiSelected.length > 0 ? (
+            <Portal
+              node={
+                __CLIENT__ &&
+                document.querySelector('#toolbar .toolbar-actions')
+              }
+            >
+              <button
+                className="copy"
+                aria-label={this.props.intl.formatMessage(messages.copyBlocks)}
+                onClick={(e) => {}}
+                tabIndex={0}
+                id="toolbar-copy-blocks"
+              >
+                <Icon name={copySVG} size="30px" className="circled" />
+              </button>
+
+              <button
+                className="add"
+                aria-label={this.props.intl.formatMessage(messages.pasteBlocks)}
+                onClick={(e) => {}}
+                tabIndex={0}
+                id="toolbar-paste-blocks"
+              >
+                <Icon name={pasteSVG} size="30px" className="circled" />
+              </button>
+            </Portal>
+          ) : (
+            ''
+          )}
           <DragDropContext
             onDragEnd={this.onDragEnd}
             onDragStart={this.handleDragStart}
@@ -837,6 +880,9 @@ class Form extends Component {
                               pathname={this.props.pathname}
                               block={block}
                               selected={this.state.selected === block}
+                              multiSelected={this.state.multiSelected.includes(
+                                block,
+                              )}
                               manage={this.props.isAdminForm}
                             />
                           </div>

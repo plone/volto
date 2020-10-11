@@ -162,4 +162,12 @@ export const messages = defineMessages({
     id: 'Users and Groups',
     defaultMessage: 'Users and Groups',
   },
+  copyBlocks: {
+    id: 'Copy blocks',
+    defaultMesages: 'Copy blocks',
+  },
+  pasteBlocks: {
+    id: 'Paste blocks',
+    defaultMesages: 'Paste blocks',
+  },
 });
