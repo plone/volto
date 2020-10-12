@@ -817,6 +817,7 @@ class Form extends Component {
             onSetSelectedBlocks={(blockIds) =>
               this.setState({ multiSelected: blockIds })
             }
+            onSelectBlock={this.onSelectBlock}
             onChangeBlocks={(newBlockData) =>
               this.setState({
                 formData: {

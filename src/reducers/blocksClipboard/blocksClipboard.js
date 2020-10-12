@@ -3,9 +3,7 @@ import {
   RESET_BLOCKS_CLIPBOARD,
 } from '@plone/volto/constants/ActionTypes';
 
-const initialState = {
-  blocksData: [],
-};
+const initialState = {};
 
 export default function blocks(state = initialState, action = {}) {
   switch (action.type) {
@@ -13,7 +11,11 @@ export default function blocks(state = initialState, action = {}) {
       return initialState;
     case SET_BLOCKS_CLIPBOARD:
       return {
-        blocksData: action.blocksData,
+        ...Object.assign(
+          {},
+          action.cut ? { cut: action.cut } : {},
+          action.copy ? { copy: action.copy } : {},
+        ),
       };
     default:
       break;

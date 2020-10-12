@@ -166,6 +166,10 @@ export const messages = defineMessages({
     id: 'Copy blocks',
     defaultMesages: 'Copy blocks',
   },
+  cutBlocks: {
+    id: 'Cut blocks',
+    defaultMesages: 'Cut blocks',
+  },
   pasteBlocks: {
     id: 'Paste blocks',
     defaultMesages: 'Paste blocks',

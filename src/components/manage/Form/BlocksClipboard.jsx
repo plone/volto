@@ -11,20 +11,20 @@ import {
 import { Icon } from '@plone/volto/components';
 import { v4 as uuid } from 'uuid';
 import { load } from 'redux-localstorage-simple';
-import { isEqual } from 'lodash';
+import { isEqual, omit, without } from 'lodash';
 
 import { setBlocksClipboard, resetBlocksClipboard } from '@plone/volto/actions';
 import { blocks } from '~/config';
 
 import copySVG from '@plone/volto/icons/copy.svg';
+import cutSVG from '@plone/volto/icons/cut.svg';
 import pasteSVG from '@plone/volto/icons/paste.svg';
 
 class BlockClipboardHandler extends React.Component {
   loadFromStorage = () => {
-    const blocksData = load({ states: ['blocksClipboard'] })?.blocksClipboard
-      ?.blocksData;
-    if (!isEqual(blocksData, this.props.blocksClipboard))
-      this.props.setBlocksClipboard(blocksData);
+    const clipboard = load({ states: ['blocksClipboard'] })?.blocksClipboard;
+    if (!isEqual(clipboard, this.props.blocksClipboard))
+      this.props.setBlocksClipboard(clipboard);
   };
 
   componentDidMount() {
@@ -36,18 +36,43 @@ class BlockClipboardHandler extends React.Component {
   }
 
   copyBlocksToClipboard = () => {
+    this.setBlocksClipboard('copy');
+  };
+
+  cutBlocksToClipboard = () => {
+    const blockIds = this.props.selectedBlocks;
+
+    const { formData } = this.props;
+    const blocksFieldname = getBlocksFieldname(formData);
+    const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
+
+    // Might need ReactDOM.unstable_batchedUpdates()
+    this.setBlocksClipboard('cut');
+    this.props.onSelectBlock(null);
+    const newBlockData = {
+      [blocksFieldname]: omit(formData[blocksFieldname], blockIds),
+      [blocksLayoutFieldname]: {
+        ...formData[blocksLayoutFieldname],
+        items: without(formData[blocksLayoutFieldname].items, ...blockIds),
+      },
+    };
+    this.props.onChangeBlocks(newBlockData);
+  };
+
+  setBlocksClipboard = (actionType) => {
     const { formData } = this.props;
     const blocksFieldname = getBlocksFieldname(formData);
     const blocks = formData[blocksFieldname];
     const blocksData = this.props.selectedBlocks.map(
       (blockId) => blocks[blockId],
     );
-    this.props.setBlocksClipboard(blocksData);
+    this.props.setBlocksClipboard({ [actionType]: blocksData });
     this.props.onSetSelectedBlocks([]);
   };
 
   pasteBlocks = () => {
-    const blocksData = this.props.blocksClipboard;
+    const blocksData =
+      this.props.blocksClipboard?.copy || this.props.blocksClipboard?.cut;
     const cloneWithIds = blocksData
       .filter((blockData) => !!blockData['@type'])
       .map((blockData) => {
@@ -87,16 +112,22 @@ class BlockClipboardHandler extends React.Component {
   };
 
   render() {
+    const {
+      blocksClipboard = {},
+      selectedBlock,
+      selectedBlocks,
+      intl,
+    } = this.props;
     return (
       <>
-        {this.props.selectedBlock && this.props.selectedBlocks.length > 0 ? (
+        {selectedBlock && selectedBlocks.length > 0 ? (
           <Portal
             node={
               __CLIENT__ && document.querySelector('#toolbar .toolbar-actions')
             }
           >
             <button
-              aria-label={this.props.intl.formatMessage(messages.copyBlocks)}
+              aria-label={intl.formatMessage(messages.copyBlocks)}
               onClick={this.copyBlocksToClipboard}
               tabIndex={0}
               className="copyBlocks"
@@ -104,25 +135,34 @@ class BlockClipboardHandler extends React.Component {
             >
               <Icon name={copySVG} size="30px" className="circled" />
             </button>
+            <button
+              aria-label={intl.formatMessage(messages.cutBlocks)}
+              onClick={this.cutBlocksToClipboard}
+              tabIndex={0}
+              className="cutBlocks"
+              id="toolbar-cut-blocks"
+            >
+              <Icon name={cutSVG} size="30px" className="circled" />
+            </button>
           </Portal>
         ) : (
           ''
         )}
-        {this.props.selectedBlock && this.props.blocksClipboard.length > 0 ? (
+        {selectedBlock && (blocksClipboard?.cut || blocksClipboard?.copy) ? (
           <Portal
             node={
               __CLIENT__ && document.querySelector('#toolbar .toolbar-actions')
             }
           >
             <button
-              aria-label={this.props.intl.formatMessage(messages.pasteBlocks)}
+              aria-label={intl.formatMessage(messages.pasteBlocks)}
               onClick={this.pasteBlocks}
               tabIndex={0}
               className="pasteBlocks"
               id="toolbar-paste-blocks"
             >
               <span class="blockCount">
-                {this.props.blocksClipboard.length}
+                {(blocksClipboard.cut || blocksClipboard.copy).length}
               </span>
               <Icon name={pasteSVG} size="30px" className="circled" />
             </button>
@@ -140,7 +180,7 @@ export default compose(
   connect(
     (state) => {
       return {
-        blocksClipboard: state?.blocksClipboard?.blocksData || [],
+        blocksClipboard: state?.blocksClipboard || {},
       };
     },
     { setBlocksClipboard, resetBlocksClipboard },

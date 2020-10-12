@@ -9,10 +9,14 @@ import {
  * @param {array} blocksData Block data
  * @returns {Object} Copy action.
  */
-export function setBlocksClipboard(blocksData) {
+export function setBlocksClipboard(payload) {
   return {
     type: SET_BLOCKS_CLIPBOARD,
-    blocksData,
+    ...Object.assign(
+      {},
+      payload.cut ? { cut: payload.cut } : {},
+      payload.copy ? { copy: payload.copy } : {},
+    ),
   };
 }
 
