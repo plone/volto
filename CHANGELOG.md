@@ -2,8 +2,6 @@
 
 ## 8.2.7 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Adding droppable placeholder for Image Block @iFlameing
@@ -11,8 +9,6 @@
 ### Bugfix
 
 - Test if content exists in ListingBody, for addon Dropdownmenu @giuliaghisini
-
-### Internal
 
 ## 8.2.6 (2020-10-12)
 
