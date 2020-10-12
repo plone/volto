@@ -71,23 +71,24 @@ class BlockClipboardHandler extends React.Component {
   };
 
   pasteBlocks = () => {
-    const blocksData =
-      this.props.blocksClipboard?.copy || this.props.blocksClipboard?.cut;
+    const { formData, blocksClipboard = {}, selectedBlock } = this.props;
+    const mode = Object.keys(blocksClipboard).includes('cut') ? 'cut' : 'copy';
+    const blocksData = blocksClipboard[mode] || [];
     const cloneWithIds = blocksData
       .filter((blockData) => !!blockData['@type'])
       .map((blockData) => {
         const blockConfig = blocks.blocksConfig[blockData['@type']];
-        return blockConfig.cloneData
-          ? blockConfig.cloneData(blockData) // returns [blockId, blockData]
-          : [uuid(), blockData];
+        return mode === 'copy'
+          ? blockConfig.cloneData
+            ? blockConfig.cloneData(blockData)
+            : [uuid(), blockData]
+          : [uuid(), blockData]; // if cut/pasting blocks, we don't clone
       })
       .filter((info) => !!info); // some blocks may refuse to be copied
-    const { formData } = this.props;
     const blocksFieldname = getBlocksFieldname(formData);
     const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
     const selectedIndex =
-      formData[blocksLayoutFieldname].items.indexOf(this.props.selectedBlock) +
-      1;
+      formData[blocksLayoutFieldname].items.indexOf(selectedBlock) + 1;
 
     const newBlockData = {
       [blocksFieldname]: {
