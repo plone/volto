@@ -1,19 +1,26 @@
 # Change Log
 
-## 8.2.7 (unreleased)
+## 8.3.1 (unreleased)
 
 ### Breaking
 
 ### Feature
 
 - Added placeholder background color same as selected one @iFlameing
+
+### Bugfix
+
+### Internal
+
+## 8.3.0 (2020-10-12)
+
+### Feature
+
 - Adding droppable placeholder for Image Block @iFlameing
 
 ### Bugfix
 
 - Test if content exists in ListingBody, for addon Dropdownmenu @giuliaghisini
-
-### Internal
 
 ## 8.2.6 (2020-10-12)
 
