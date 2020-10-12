@@ -113,6 +113,8 @@
 
 ### Internal
 
+- Hide block chooser button using React logic instead of CSS. This makes it easier to support nested blocks @tiberiuichim
+
 - Wrap addon configuration loaders in a wrapper to check that they return back config @tiberiuichim
 
 ## 7.15.0 (2020-09-15)
