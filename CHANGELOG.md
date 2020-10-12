@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Test if content exists in ListingBody, for addon Dropdownmenu @giuliaghisini
+
 ### Internal
 
 ## 8.2.3 (2020-10-07)
