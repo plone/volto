@@ -1,18 +1,58 @@
 # Change Log
 
-## 8.2.1 (unreleased)
+## 8.2.7 (unreleased)
 
 ### Breaking
 
 ### Feature
 
 - Added placeholder background color same as selected one @iFlameing
+- Adding droppable placeholder for Image Block @iFlameing
 
 ### Bugfix
 
-- Fixing ObjectBrowser search input reload @iFlameing
+- Test if content exists in ListingBody, for addon Dropdownmenu @giuliaghisini
 
 ### Internal
+
+## 8.2.6 (2020-10-12)
+
+### Bugfix
+
+- Fix break-line in view mode @iFlameing
+
+## 8.2.5 (2020-10-08)
+
+### Bugfix
+
+- Fixing the bleed out of the modal for long filename @iFlameing
+
+## 8.2.4 (2020-10-08)
+
+### Bugfix
+
+- Fixing table block edit @iFlameing
+
+## 8.2.3 (2020-10-07)
+
+### Bugfix
+
+- Use Plone `I18N_LANGUAGE` cookie instead of `language` @cekk
+
+## 8.2.2 (2020-10-06)
+
+### Bugfix
+
+- Upgrade react-dropzone from 5.1.0 to 11.1.0 @nileshgulia1
+- Update German translations @tisto
+
+## 8.2.1 (2020-10-06)
+
+### Bugfix
+
+- Querystingsearch action now uses correct relative path, if specified. Fixes #1861 @jackahl
+- Fixing ObjectBrowser search input reload @iFlameing
+- Fix broken current folder by default in content browser for image links, solves #1860 @sneridagh
 
 ## 8.2.0 (2020-09-27)
 
@@ -77,6 +117,8 @@
 - Fix the broken profile view in Toolbar @iFlameing
 
 ### Internal
+
+- Hide block chooser button using React logic instead of CSS. This makes it easier to support nested blocks @tiberiuichim
 
 - Wrap addon configuration loaders in a wrapper to check that they return back config @tiberiuichim
 
@@ -381,8 +423,6 @@
 - Upgrade razzle to `^3.1.5`. @tiberiuichim
 
 ## 7.0.1 (2020-07-07)
-
-### Breaking
 
 ### Bugfix
 

@@ -84,7 +84,7 @@ server
     const browserdetect = detect(req.headers['user-agent']);
 
     const lang = new locale.Locales(
-      cookie.load('lang') ||
+      cookie.load('I18N_LANGUAGE') ||
         settings.defaultLanguage ||
         req.headers['accept-language'],
     )

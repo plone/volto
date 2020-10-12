@@ -1881,10 +1881,6 @@ msgid "Upload files"
 msgstr "Kargatu fitxategiak"
 
 #: components/manage/Contents/ContentsUploadModal
-msgid "Upload {count, plural, one {# file} other {# files}}"
-msgstr "Kargatu {count, plural, one {fitxategi #} other {# fitxategi}}"
-
-#: components/manage/Contents/ContentsUploadModal
 msgid "Uploading files"
 msgstr "Fitxategiak kargatzen"
 
@@ -2401,6 +2397,10 @@ msgstr "Webgunea ikusi"
 #: components/theme/Login/Login
 msgid "we can send you a new one"
 msgstr "berri bat bidali diezazukegu"
+
+#: components/manage/Contents/ContentsUploadModal
+msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "{count} selected"
