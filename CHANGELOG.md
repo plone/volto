@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Adding droppable placeholder for Image Block @iFlameing
+
 ### Bugfix
 
 ### Internal
