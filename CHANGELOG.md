@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Docs for upgrading react-dropzone @nileshgulia1
+
 ### Bugfix
 
 ### Internal

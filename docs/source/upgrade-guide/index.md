@@ -12,6 +12,43 @@ This upgrade guide lists all breaking changes in Volto and explains the
 
 ## Upgrading to Volto 8.x.x
 
+### Upgrade react-dropzone
+
+If your existing project uses `react-dropzone`<11.x. You need to update your code to overcome some of
+the breaking changes.
+As latest react-dropzone uses [renderProps](https://reactjs.org/docs/render-props.html) pattern.
+Add the React Dropzone component to the return of the render method, as well as an onDrop method above it.
+
+For eg Your Image `Edit.jsx` should look like this:
+
+```diff
+--- a/src/components/manage/Blocks/Image/Edit.jsx
++++ b/src/components/manage/Blocks/Image/Edit.jsx
+import Dropzone from 'react-dropzone'
+class Edit extends Component {
+  onDrop = (acceptedFiles) => {
+  //Do Something...
+  }
+  render() {
+    return (
+-        <Dropzone disableClick onDrop={this.onDrop} className="dropzone">
++        <Dropzone noClick onDrop={this.onDrop} className="dropzone">
+-        <Message>
++         {({ getRootProps, getInputProps }) => (
++            <div {...getRootProps()}>
++              <Message>
++             <input {...getInputProps()} />
+              Click me to upload a file!
+              </Message>
+            </div>
+          )}
+        </Dropzone>
+    );
+  }
+}
+```
+
+You should supply `getInputProps()` getter to only input component and `getRootProps()` to whatever element you want.
 ### Upgrade package.json testing configuration
 
 The `dummy-addons-loader.js` file has been renamed to `jest-addons-loader.js`,
