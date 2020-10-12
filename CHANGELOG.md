@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix break-line in view mode @iFlameing
+
 ### Internal
 
 ## 8.2.5 (2020-10-08)
@@ -410,8 +412,6 @@
 - Upgrade razzle to `^3.1.5`. @tiberiuichim
 
 ## 7.0.1 (2020-07-07)
-
-### Breaking
 
 ### Bugfix
 
