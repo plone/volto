@@ -1449,11 +1449,11 @@ msgstr "Wiederkehrende Einstellung speichern"
 
 #: components/manage/Controlpanels/ContentTypesActions
 msgid "Schema"
-msgstr ""
+msgstr "Schema"
 
 #: components/manage/Controlpanels/ContentTypeSchema
 msgid "Schema updates"
-msgstr ""
+msgstr "Aktualisierungen Schema"
 
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search"
@@ -1544,7 +1544,7 @@ msgstr "Setzen Sie Ihr Passwort"
 
 #: components/manage/Sidebar/Sidebar
 msgid "Settings"
-msgstr ""
+msgstr "Einstellungen"
 
 #: components/manage/Sharing/Sharing
 #: components/manage/Toolbar/More
@@ -1890,15 +1890,11 @@ msgstr "Laden Sie ein Leadbild im 'Leadbild' Feld hoch."
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 msgid "Upload a new image"
-msgstr ""
+msgstr "Neues Bild hochladen"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Upload files"
 msgstr "Datei hochladen"
-
-#: components/manage/Contents/ContentsUploadModal
-msgid "Upload {count, plural, one {# file} other {# files}}"
-msgstr "Lade {count, plural, one {# Datei} other {# Dateien}} hoch"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Uploading files"
@@ -2103,7 +2099,7 @@ msgstr "Entwurf"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "email"
-msgstr ""
+msgstr "E-Mail"
 
 #: components/theme/View/EventView
 msgid "event_alldates"
@@ -2155,7 +2151,7 @@ msgstr "Bild"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "integer"
-msgstr ""
+msgstr "Ganzzahl"
 
 #: components/manage/Contents/ContentsItem
 msgid "intranet"
@@ -2183,11 +2179,11 @@ msgstr "Karten"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "maxLength"
-msgstr ""
+msgstr "Maximale Länge"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "maximum"
-msgstr ""
+msgstr "Maximum"
 
 #: config/Blocks
 msgid "media"
@@ -2195,11 +2191,11 @@ msgstr "Medien"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "minLength"
-msgstr ""
+msgstr "Minimale Länge"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "minimum"
-msgstr ""
+msgstr "Minimum"
 
 #: config/Blocks
 msgid "mostUsed"
@@ -2211,7 +2207,7 @@ msgstr "Kein Status gesetzt"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "number"
-msgstr ""
+msgstr "Zahl"
 
 #: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
 #: components/manage/Widgets/RecurrenceWidget/ByYearField
@@ -2400,7 +2396,7 @@ msgstr "Inhaltsverzeichnis"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "url"
-msgstr ""
+msgstr "URL"
 
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"
@@ -2418,17 +2414,21 @@ msgstr "Externe Webseite besuchen"
 msgid "we can send you a new one"
 msgstr "Wir schicken Ihnen gerne ein neues Passwort zu."
 
+#: components/manage/Contents/ContentsUploadModal
+msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
+msgstr "Lade {count, plural, one {# Datei} other {# Dateien}} hoch"
+
 #: components/manage/Contents/Contents
 msgid "{count} selected"
 msgstr "{count} ausgewählt"
 
 #: components/manage/Controlpanels/ContentType
 msgid "{id} Content Type"
-msgstr ""
+msgstr "{id} Inhaltstyp"
 
 #: components/manage/Controlpanels/ContentTypeSchema
 msgid "{id} Schema"
-msgstr ""
+msgstr "{id} Schema"
 
 #: components/manage/Actions/Actions
 msgid "{title} copied."

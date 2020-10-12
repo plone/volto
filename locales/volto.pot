@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-10-01T14:13:04.822Z\n"
+"POT-Creation-Date: 2020-10-12T03:54:42.210Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -2301,11 +2301,6 @@ msgid "Upload files"
 msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
-# defaultMessage: Upload {count, plural, one {# file} other {# files}}
-msgid "Upload {count, plural, one {# file} other {# files}}"
-msgstr ""
-
-#: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Uploading files
 msgid "Uploading files"
 msgstr ""
@@ -2953,6 +2948,11 @@ msgstr ""
 #: components/theme/Login/Login
 # defaultMessage: we can send you a new one
 msgid "we can send you a new one"
+msgstr ""
+
+#: components/manage/Contents/ContentsUploadModal
+# defaultMessage: {count, plural, one {Upload {count} file} other {Upload {count} files}}
+msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 msgstr ""
 
 #: components/manage/Contents/Contents

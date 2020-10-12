@@ -1,6 +1,6 @@
 # Change Log
 
-## 8.2.1 (unreleased)
+## 8.2.6 (unreleased)
 
 ### Breaking
 
@@ -11,6 +11,39 @@
 ### Bugfix
 
 ### Internal
+
+## 8.2.5 (2020-10-08)
+
+### Bugfix
+
+- Fixing the bleed out of the modal for long filename @iFlameing
+
+## 8.2.4 (2020-10-08)
+
+### Bugfix
+
+- Fixing table block edit @iFlameing
+
+## 8.2.3 (2020-10-07)
+
+### Bugfix
+
+- Use Plone `I18N_LANGUAGE` cookie instead of `language` @cekk
+
+## 8.2.2 (2020-10-06)
+
+### Bugfix
+
+- Upgrade react-dropzone from 5.1.0 to 11.1.0 @nileshgulia1
+- Update German translations @tisto
+
+## 8.2.1 (2020-10-06)
+
+### Bugfix
+
+- Querystingsearch action now uses correct relative path, if specified. Fixes #1861 @jackahl
+- Fixing ObjectBrowser search input reload @iFlameing
+- Fix broken current folder by default in content browser for image links, solves #1860 @sneridagh
 
 ## 8.2.0 (2020-09-27)
 
