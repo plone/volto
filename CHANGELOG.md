@@ -2,15 +2,9 @@
 
 ## 8.2.6 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Fix break-line in view mode @iFlameing
-
-### Internal
 
 ## 8.2.5 (2020-10-08)
 
