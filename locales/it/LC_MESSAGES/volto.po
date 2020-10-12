@@ -404,6 +404,10 @@ msgstr "Password corrente"
 msgid "Cut"
 msgstr "Taglia"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Cut blocks"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Daily"
 msgstr "Giornaliera"

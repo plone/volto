@@ -411,6 +411,10 @@ msgstr "現在のパスワード"
 msgid "Cut"
 msgstr "カット"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Cut blocks"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Daily"
 msgstr "毎日"

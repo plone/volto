@@ -421,6 +421,10 @@ msgstr "Mot de passe actuel"
 msgid "Cut"
 msgstr "Couper"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Cut blocks"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Daily"
 msgstr ""

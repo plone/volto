@@ -404,6 +404,10 @@ msgstr "Parolă curentă"
 msgid "Cut"
 msgstr "Taie"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Cut blocks"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Daily"
 msgstr ""

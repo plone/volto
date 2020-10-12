@@ -411,6 +411,10 @@ msgstr "Oraingo pasahitza"
 msgid "Cut"
 msgstr "Ebaki"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Cut blocks"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Daily"
 msgstr "Egunero"

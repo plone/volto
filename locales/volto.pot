@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-10-11T16:43:51.168Z\n"
+"POT-Creation-Date: 2020-10-12T07:54:40.596Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -489,6 +489,11 @@ msgstr ""
 #: components/manage/Contents/ContentsItem
 # defaultMessage: Cut
 msgid "Cut"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: undefined
+msgid "Cut blocks"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget

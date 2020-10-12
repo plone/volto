@@ -423,6 +423,10 @@ msgstr "Huidig wachtwoord"
 msgid "Cut"
 msgstr "Knippen"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Cut blocks"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Daily"
 msgstr ""
