@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fixed edit link in draft-js when link is selected from word-end to word-start @giuliaghisini
+
 ### Internal
 
 ## 8.3.0 (2020-10-12)
@@ -510,7 +512,7 @@
 
 ### Bugfix
 
-- added export for ObjectBrowserWidget in component/index.js @giuliaghisini
+- Added export for ObjectBrowserWidget in component/index.js @giuliaghisini
 - Fixed duplicated items in SelectWidget and ArrayWidget @giuliaghisini
 - Update German translation @timo
 - Removed broken preview image in ContentsUploadModal if uploaded item is not an image. @giuliaghisini
