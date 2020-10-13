@@ -6,9 +6,13 @@
 
 ### Feature
 
+- Add `Style`, a wrapper component that applies float and width classes to wrapped content (typically blocks) @tiberiuichim
+- Add `AlignWidget`, a widget that wraps the `AlignBlock` helper @tiberiuichim
+
 ### Bugfix
 
 - Folder contents view: Save additional columns and updated order of columns @ksuess
+- Fixed edit link in draft-js when link is selected from word-end to word-start @giuliaghisini
 
 ### Internal
 
@@ -512,7 +516,7 @@
 
 ### Bugfix
 
-- added export for ObjectBrowserWidget in component/index.js @giuliaghisini
+- Added export for ObjectBrowserWidget in component/index.js @giuliaghisini
 - Fixed duplicated items in SelectWidget and ArrayWidget @giuliaghisini
 - Update German translation @timo
 - Removed broken preview image in ContentsUploadModal if uploaded item is not an image. @giuliaghisini
