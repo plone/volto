@@ -8,14 +8,27 @@ exports[`Pagination renders no pagination when only 1 page 1`] = `
     className="menu"
   >
     <a
-      className="icon item"
+      className="icon item chevron-left-icon"
       onClick={[Function]}
       value={0}
     >
-      <i
-        aria-hidden="true"
-        className="chevron left icon"
-        onClick={[Function]}
+      <svg
+        className="icon"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": undefined,
+          }
+        }
+        onClick={null}
+        style={
+          Object {
+            "fill": "currentColor",
+            "height": "23px",
+            "width": "auto",
+          }
+        }
+        viewBox=""
+        xmlns=""
       />
       
     </a>
@@ -38,14 +51,27 @@ exports[`Pagination renders page size options when specified 1`] = `
     className="menu"
   >
     <a
-      className="icon item"
+      className="icon item chevron-left-icon"
       onClick={[Function]}
       value={0}
     >
-      <i
-        aria-hidden="true"
-        className="chevron left icon"
-        onClick={[Function]}
+      <svg
+        className="icon"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": undefined,
+          }
+        }
+        onClick={null}
+        style={
+          Object {
+            "fill": "currentColor",
+            "height": "23px",
+            "width": "auto",
+          }
+        }
+        viewBox=""
+        xmlns=""
       />
       
     </a>
@@ -100,14 +126,27 @@ exports[`Pagination renders pagination when multiple pages are specified 1`] = `
     className="menu"
   >
     <a
-      className="icon item"
+      className="icon item chevron-left-icon"
       onClick={[Function]}
       value={5}
     >
-      <i
-        aria-hidden="true"
-        className="chevron left icon"
-        onClick={[Function]}
+      <svg
+        className="icon"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": undefined,
+          }
+        }
+        onClick={null}
+        style={
+          Object {
+            "fill": "currentColor",
+            "height": "23px",
+            "width": "auto",
+          }
+        }
+        viewBox=""
+        xmlns=""
       />
       
     </a>
@@ -173,14 +212,27 @@ exports[`Pagination renders pagination when multiple pages are specified 1`] = `
       12
     </a>
     <a
-      className="icon item"
+      className="icon item chevron-right-icon"
       onClick={[Function]}
       value={7}
     >
-      <i
-        aria-hidden="true"
-        className="chevron right icon"
-        onClick={[Function]}
+      <svg
+        className="icon"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": undefined,
+          }
+        }
+        onClick={null}
+        style={
+          Object {
+            "fill": "currentColor",
+            "height": "23px",
+            "width": "auto",
+          }
+        }
+        viewBox=""
+        xmlns=""
       />
       
     </a>

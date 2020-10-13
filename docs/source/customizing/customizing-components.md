@@ -98,3 +98,35 @@ Locate the `Tags.jsx` file and override this file so that there is a label in fr
 The final path of the overrided component will be
 `customizations/components/theme/Tags/Tags.jsx`.
 
+## Advanced customization scenarios
+
+Once you've started developing your Volto project, you'll find that you want
+also to integrate other third-party Volto addons and pottentially customize
+files from those addons. You may even want to write an addon that customizes
+Volto or other addons, on its own.
+
+To customize an addon, you can follow the pattern described above, but place
+the addon customization files in a folder named after the addon, inside the
+`src/customizations` folder. So, for example, to customize the
+`volto-venue/src/components/OSMMap/OSMMap.jsx` file, you would create
+a `src/customizations/volto-venue/components/OSMMap/OSMMap.jsx` shadow file.
+
+If you start customizing addons, to keep a clean folder structure inside
+`src/customizations`, you can move the Volto customizations file in
+a `src/customizations/volto` subfolder
+
+Addons can also customize Volto and other addons using the same logic. The
+default customization path inside an addon is `src/customizations`, but the
+addon can specify its own customization path with the `customizationsPaths` key
+in `package.json`. The `customizationPaths` is a list that takes strings with
+paths relative to the `package.json` file. All these paths are looked up for
+customization files.
+
+!!! tip
+  The `customizationPaths` key is also available in the project, not just the
+  addons
+
+In case of conflicts where multiple addons customize the same file, the order
+of addon declaration matters: the last addon declared in the `addons` key in
+the project's `package.json` wins. Further more, the project's customizations
+are applied last, so they "win" in the conflict resolution.

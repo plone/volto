@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import { stateFromHTML } from 'draft-js-import-html';
 import { Editor, DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
 import { defineMessages, injectIntl } from 'react-intl';
+import { settings } from '~/config';
 
 const messages = defineMessages({
   title: {
@@ -135,18 +136,29 @@ class Edit extends Component {
     if (__SERVER__) {
       return <div />;
     }
+
+    const placeholder =
+      this.props.data.placeholder ||
+      this.props.intl.formatMessage(messages.title);
+
     return (
       <Editor
         onChange={this.onChange}
         editorState={this.state.editorState}
         blockRenderMap={extendedBlockRenderMap}
         handleReturn={() => {
+          if (this.props.data.disableNewBlocks) {
+            return 'handled';
+          }
           this.props.onSelectBlock(
-            this.props.onAddBlock('text', this.props.index + 1),
+            this.props.onAddBlock(
+              settings.defaultBlockType,
+              this.props.index + 1,
+            ),
           );
           return 'handled';
         }}
-        placeholder={this.props.intl.formatMessage(messages.title)}
+        placeholder={placeholder}
         blockStyleFn={() => 'documentFirstHeading'}
         onUpArrow={() => {
           const selectionState = this.state.editorState.getSelection();

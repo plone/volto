@@ -1,0 +1,46 @@
+/*******************************
+         Theme Overrides
+*******************************/
+
+@toolbarWidth: 80px;
+@sidebarWidth: 375px;
+@collapsedWidth: 20px;
+
+.ui.messages.container {
+  margin-bottom: 1em;
+}
+
+/* All Sizes */
+.ui.container,
+.ui.wrapper > *,
+.ui.wrapper > .ui.inner > * {
+  display: block;
+  max-width: @maxWidth !important;
+  transition: width 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045),
+    margin-left 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045),
+    margin-right 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+.ui.wrapper > .ui.inner {
+  width: 100% !important;
+}
+
+.drag.handle.wrapper {
+  margin-left: -15px !important;
+}
+
+.block .delete-button {
+  margin-right: -25px !important;
+}
+
+// Hack for escape the blocks container in blocks full width
+.full-width {
+  position: relative;
+  right: 50%;
+  left: 50%;
+  width: 100vw !important;
+  max-width: initial !important;
+  margin-right: -50vw !important;
+  margin-left: -50vw !important;
+  // object-fit: cover;
+}
