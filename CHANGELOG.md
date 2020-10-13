@@ -17,6 +17,8 @@
 
 ### Internal
 
+- Keep `@babel/core` in Volto core in sync with `babel-preset-razzle` it fixes #1897 @sneridagh
+
 ## 8.3.0 (2020-10-12)
 
 ### Feature
