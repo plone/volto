@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fixing overlay expansion during link assign from objectbrowser in edit mode @iFlameing
+
 ### Internal
 
 ## 8.3.0 (2020-10-12)
