@@ -38,6 +38,7 @@ export const widgetMapping = {
     subjects: TokenWidget,
     query: QuerystringWidget,
     recurrence: RecurrenceWidget,
+    remoteUrl: UrlWidget,
   },
   widget: {
     richtext: WysiwygWidget,

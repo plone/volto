@@ -2,6 +2,8 @@
 
 ## 8.3.1 (unreleased)
 
+- added objectBrowser to UrlWidget, and attached UrlWidget to remoteUrl field of ContentType Link @giuliaghisini
+
 ### Breaking
 
 ### Feature
