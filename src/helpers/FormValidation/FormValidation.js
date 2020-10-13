@@ -180,11 +180,25 @@ const validateRequiredFields = (schema, formData, formatMessage) => {
   const errors = {};
 
   map(schema.required, (requiredField) => {
+    const type = schema.properties[requiredField].type;
+    const widget = schema.properties[requiredField].widget;
+    let isEmpty = !formData[requiredField];
+    if (!isEmpty) {
+      if (type === 'array') {
+        isEmpty = formData[requiredField]
+          ? formData[requiredField].length === 0
+          : true;
+      } else if (type === 'string' && widget === 'richtext') {
+        isEmpty = !(
+          formData[requiredField]?.data?.replace(/(<([^>]+)>)/g, '').length > 0
+        );
+      }
+    }
     if (
       schema.properties[requiredField] &&
       schema.properties[requiredField].type !== 'boolean' &&
       !schema.properties[requiredField].readonly &&
-      !formData[requiredField]
+      isEmpty
     ) {
       errors[requiredField] = [];
       errors[requiredField].push(formatMessage(messages.required));
