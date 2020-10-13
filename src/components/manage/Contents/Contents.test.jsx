@@ -26,7 +26,7 @@ jest.mock('moment', () =>
 );
 
 describe('Contents', () => {
-  it('renders a contents component', () => {
+  it('renders a folder contents view component', () => {
     const store = mockStore({
       actions: {
         actions: {
@@ -79,6 +79,10 @@ describe('Contents', () => {
           loaded: false,
         },
         update: {
+          loading: false,
+          loaded: false,
+        },
+        updatecolumns: {
           loading: false,
           loaded: false,
         },
