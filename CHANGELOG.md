@@ -2,6 +2,8 @@
 
 ## 8.3.1 (unreleased)
 
+- Improved form validation. Tested required fields when field is array or richtext @giuliaghisini
+
 ### Breaking
 
 ### Feature
