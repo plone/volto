@@ -1,6 +1,6 @@
 # Change Log
 
-## 8.2.6 (unreleased)
+## 8.3.1 (unreleased)
 
 ### Breaking
 
@@ -13,6 +13,22 @@
 - Japanese translation updated @terapyon
 
 ### Internal
+
+## 8.3.0 (2020-10-12)
+
+### Feature
+
+- Adding droppable placeholder for Image Block @iFlameing
+
+### Bugfix
+
+- Test if content exists in ListingBody, for addon Dropdownmenu @giuliaghisini
+
+## 8.2.6 (2020-10-12)
+
+### Bugfix
+
+- Fix break-line in view mode @iFlameing
 
 ## 8.2.5 (2020-10-08)
 
@@ -108,6 +124,7 @@
 - Added Schema Editor within Dexterity Content-Types Controlpanel @rexalex @avoinea #1517
 - Added Blocks Layout Editor within Dexterity Content-Types Controlpanel @avoinea #1517
 - Added missing components for Email and Url widgets #1246 @rexalex
+- Use content title instead of image id in alt tag @nileshgulia1
 
 ### Bugfix
 
@@ -115,6 +132,8 @@
 - Use Plone `I18N_LANGUAGE` cookie instead of `language` @cekk
 
 ### Internal
+
+- Hide block chooser button using React logic instead of CSS. This makes it easier to support nested blocks @tiberiuichim
 
 - Wrap addon configuration loaders in a wrapper to check that they return back config @tiberiuichim
 
@@ -419,8 +438,6 @@
 - Upgrade razzle to `^3.1.5`. @tiberiuichim
 
 ## 7.0.1 (2020-07-07)
-
-### Breaking
 
 ### Bugfix
 
