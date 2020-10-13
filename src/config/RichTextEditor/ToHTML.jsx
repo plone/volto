@@ -109,19 +109,18 @@ const getList = (ordered) => (children, { depth, keys }) =>
 
 const processChildren = (children, keys) => {
   const processedChildren = children.map((chunks) =>
-    chunks.map((child) => {
+    chunks.map((child, index) => {
       if (Array.isArray(child)) {
         // If it's empty is a blank paragraph, we want to add a <br /> in it
         if (isEmpty(child)) {
-          return <br key="br" />;
+          return <br key={index} />;
         }
         return child.map((subchild, index) => {
           if (typeof subchild === 'string') {
-            const last = subchild.split('\n').length - 1;
             return subchild.split('\n').map((item, index) => (
               <React.Fragment key={index}>
                 {item}
-                {index !== last && <br />}
+                {<br />}
               </React.Fragment>
             ));
           } else {

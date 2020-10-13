@@ -610,8 +610,8 @@ msgid "End Date"
 msgstr "Data di fine"
 
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
-msgid "Enter URL or title"
-msgstr "Inserisci un URL o un titolo"
+msgid "Enter URL or select an item"
+msgstr "Inserisci un URL o seleziona un elemento"
 
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
@@ -1874,10 +1874,6 @@ msgid "Upload files"
 msgstr "Carica file"
 
 #: components/manage/Contents/ContentsUploadModal
-msgid "Upload {count, plural, one {# file} other {# files}}"
-msgstr "Carica {count, plural, one {# file} other {# files}}"
-
-#: components/manage/Contents/ContentsUploadModal
 msgid "Uploading files"
 msgstr "Caricamento dei files"
 
@@ -2394,6 +2390,10 @@ msgstr "Visita il sito web"
 #: components/theme/Login/Login
 msgid "we can send you a new one"
 msgstr "possiamo spedirtene una nuova"
+
+#: components/manage/Contents/ContentsUploadModal
+msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "{count} selected"
