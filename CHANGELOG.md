@@ -13,6 +13,7 @@
 
 - Folder contents view: Save additional columns and updated order of columns @ksuess
 - Fixed edit link in draft-js when link is selected from word-end to word-start @giuliaghisini
+- Revert PR No. 1820 to fix linebreaks on inline links in draftJS @steffenri
 
 ### Internal
 
