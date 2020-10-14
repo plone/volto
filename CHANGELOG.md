@@ -2,16 +2,10 @@
 
 ## 8.4.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Sentry integration @zotya
 - All the environment variables defined at runtime that have the `RAZZLE_` prefix, are now available in the browser under window.env @zotya
-
-### Bugfix
-
-### Internal
 
 ## 8.4.0 (2020-10-14)
 
