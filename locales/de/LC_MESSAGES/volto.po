@@ -549,6 +549,7 @@ msgstr "Möchten Sie den Nutzer {username} wirklich löschen?"
 msgid "Do you really want to delete this item?"
 msgstr "Möchten Sie den Artikel wirklich löschen?"
 
+#: components/manage/Multilingual/TranslationObject
 #: components/manage/Sidebar/Sidebar
 msgid "Document"
 msgstr "Seite"
@@ -1813,6 +1814,10 @@ msgstr "Anzahl aller Objekte im Speicher von allen Caches"
 msgid "Total number of objects in the database"
 msgstr "Anzahl aller Objekte in der Datenbank"
 
+#: components/manage/Add/Add
+msgid "Translate to"
+msgstr ""
+
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
 msgstr "Auf {lang} übersetzen"
@@ -2064,6 +2069,10 @@ msgstr "Passwort vergessen?"
 #: config/Blocks
 msgid "common"
 msgstr "Allgemein"
+
+#: components/manage/Multilingual/CompareLanguages
+msgid "compare_to"
+msgstr ""
 
 #: components/manage/Blocks/Block/Edit
 msgid "delete"

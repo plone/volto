@@ -534,6 +534,7 @@ msgstr ""
 msgid "Do you really want to delete this item?"
 msgstr ""
 
+#: components/manage/Multilingual/TranslationObject
 #: components/manage/Sidebar/Sidebar
 msgid "Document"
 msgstr ""
@@ -1798,6 +1799,10 @@ msgstr ""
 msgid "Total number of objects in the database"
 msgstr ""
 
+#: components/manage/Add/Add
+msgid "Translate to"
+msgstr ""
+
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
 msgstr ""
@@ -2048,6 +2053,10 @@ msgstr ""
 
 #: config/Blocks
 msgid "common"
+msgstr ""
+
+#: components/manage/Multilingual/CompareLanguages
+msgid "compare_to"
 msgstr ""
 
 #: components/manage/Blocks/Block/Edit

@@ -26,14 +26,22 @@ const CompareLanguages = ({
       key: t.language,
       text: t.language,
       value: t.language,
+      disabled: t.language === comparingLanguage,
     };
   });
 
-  return settings.isMultilingual ? (
+  const translationsObject = {};
+  translations.map((t) => {
+    translationsObject[t.language] = t['@id'];
+  });
+
+  return settings.isMultilingual && compareOptions.length > 0 ? (
     <Grid>
       <Grid.Row>
         <Grid.Column width={6}>
-          <Label ribbon>{content.language?.token.toUpperCase()}</Label>
+          {!comparingLanguage && (
+            <Label ribbon>{content.language?.token.toUpperCase()}</Label>
+          )}
         </Grid.Column>
         <Grid.Column width={6} textAlign="right">
           {compareOptions.length > 0 && (
@@ -45,7 +53,7 @@ const CompareLanguages = ({
                 comparingLanguage ? comparingLanguage.toUpperCase() : '...'
               }`}
               onChange={(e, { value }) => {
-                setComparingLanguage(value);
+                setComparingLanguage(value, translationsObject[value]);
               }}
             />
           )}

@@ -541,6 +541,7 @@ msgstr "ユーザ {username} を削除してよろしいですか?"
 msgid "Do you really want to delete this item?"
 msgstr "このアイテムを削除してよろしいですか?"
 
+#: components/manage/Multilingual/TranslationObject
 #: components/manage/Sidebar/Sidebar
 msgid "Document"
 msgstr "文書"
@@ -1805,6 +1806,10 @@ msgstr ""
 msgid "Total number of objects in the database"
 msgstr ""
 
+#: components/manage/Add/Add
+msgid "Translate to"
+msgstr ""
+
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
 msgstr "{lang} に翻訳する"
@@ -2056,6 +2061,10 @@ msgstr "パスワードを忘れた？"
 #: config/Blocks
 msgid "common"
 msgstr "一般"
+
+#: components/manage/Multilingual/CompareLanguages
+msgid "compare_to"
+msgstr ""
 
 #: components/manage/Blocks/Block/Edit
 msgid "delete"

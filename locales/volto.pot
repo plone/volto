@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-10-13T09:58:31.078Z\n"
+"POT-Creation-Date: 2020-10-14T07:09:09.029Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -645,6 +645,7 @@ msgstr ""
 msgid "Do you really want to delete this item?"
 msgstr ""
 
+#: components/manage/Multilingual/TranslationObject
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Document
 msgid "Document"
@@ -2197,6 +2198,11 @@ msgstr ""
 msgid "Total number of objects in the database"
 msgstr ""
 
+#: components/manage/Add/Add
+# defaultMessage: Translate to
+msgid "Translate to"
+msgstr ""
+
 #: components/manage/Toolbar/Types
 # defaultMessage: Translate to {lang}
 msgid "Translate to {lang}"
@@ -2512,6 +2518,11 @@ msgstr ""
 #: config/Blocks
 # defaultMessage: Common
 msgid "common"
+msgstr ""
+
+#: components/manage/Multilingual/CompareLanguages
+# defaultMessage: Compare to
+msgid "compare_to"
 msgstr ""
 
 #: components/manage/Blocks/Block/Edit

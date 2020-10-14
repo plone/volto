@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { asyncConnect } from 'redux-connect';
 import { defineMessages, injectIntl } from 'react-intl';
-import { Button } from 'semantic-ui-react';
+import { Button, Grid, Container, Menu } from 'semantic-ui-react';
 import { Portal } from 'react-portal';
 import qs from 'query-string';
 import { find } from 'lodash';
@@ -26,6 +26,7 @@ import {
   Toolbar,
   Unauthorized,
   CompareLanguages,
+  TranslationObject,
 } from '@plone/volto/components';
 import {
   updateContent,
@@ -180,6 +181,15 @@ class Edit extends Component {
         />,
       );
     }
+
+    if (
+      nextProps.compare_to &&
+      ((this.state.compareTo &&
+        nextProps.compare_to['@id'] !== this.state.compareTo['@id']) ||
+        !this.state.compareTo)
+    ) {
+      this.setState({ compareTo: nextProps.compare_to });
+    }
   }
 
   /**
@@ -203,6 +213,11 @@ class Edit extends Component {
     );
   }
 
+  setComparingLanguage(lang, content_id) {
+    this.setState({ comparingLanguage: lang });
+    this.props.getContent(content_id, null, 'compare_to', null);
+  }
+
   form = React.createRef();
 
   /**
@@ -212,6 +227,32 @@ class Edit extends Component {
    */
   render() {
     const editPermission = find(this.props.objectActions, { id: 'edit' });
+
+    const pageEdit = (
+      <Form
+        isEditForm
+        ref={this.form}
+        schema={this.props.schema}
+        formData={this.props.content}
+        requestError={this.state.error}
+        onSubmit={this.onSubmit}
+        hideActions
+        pathname={this.props.pathname}
+        visual={this.state.visual}
+        title={
+          this.props?.schema?.title
+            ? this.props.intl.formatMessage(messages.edit, {
+                title: this.props.schema.title,
+              })
+            : null
+        }
+        loading={this.props.updateRequest.loading}
+        isFormSelected={this.state.formSelected === 'editForm'}
+        onSelectForm={() => {
+          this.setState({ formSelected: 'editForm' });
+        }}
+      />
+    );
 
     return (
       <div id="page-edit">
@@ -236,32 +277,56 @@ class Edit extends Component {
                   <CompareLanguages
                     content={this.props.content}
                     visual={this.state.visual}
-                    setComparingLanguage={(lang) => {
-                      this.setState({ comparingLanguage: lang });
+                    setComparingLanguage={(lang, id) => {
+                      this.setComparingLanguage(lang, id);
                     }}
                     comparingLanguage={this.state.comparingLanguage}
                   />
                 </div>
 
-                <Form
-                  isEditForm
-                  ref={this.form}
-                  schema={this.props.schema}
-                  formData={this.props.content}
-                  requestError={this.state.error}
-                  onSubmit={this.onSubmit}
-                  hideActions
-                  pathname={this.props.pathname}
-                  visual={this.state.visual}
-                  title={
-                    this.props?.schema?.title
-                      ? this.props.intl.formatMessage(messages.edit, {
-                          title: this.props.schema.title,
-                        })
-                      : null
-                  }
-                  loading={this.props.updateRequest.loading}
-                />
+                {this.state.comparingLanguage && this.state.compareTo ? (
+                  <Container>
+                    <Grid
+                      celled="internally"
+                      stackable
+                      columns={2}
+                      id="page-compare-translation"
+                    >
+                      <Grid.Column className="source-object">
+                        <TranslationObject
+                          translationObject={this.state.compareTo}
+                          schema={this.props.schema}
+                          pathname={this.props.pathname}
+                          visual={this.state.visual}
+                          isFormSelected={
+                            this.state.formSelected === 'translationObjectForm'
+                          }
+                          onSelectForm={() => {
+                            this.setState({
+                              formSelected: 'translationObjectForm',
+                            });
+                          }}
+                        />
+                      </Grid.Column>
+                      <Grid.Column>
+                        <div className="new-translation">
+                          <Menu pointing secondary attached tabular>
+                            <Menu.Item
+                              name={this.props.content.language?.token.toUpperCase()}
+                              active={true}
+                            >
+                              {this.props.content.language?.token.toUpperCase()}
+                            </Menu.Item>
+                          </Menu>
+
+                          {pageEdit}
+                        </div>
+                      </Grid.Column>
+                    </Grid>
+                  </Container>
+                ) : (
+                  pageEdit
+                )}
               </>
             )}
             {!editPermission && (
@@ -368,6 +433,7 @@ export default compose(
       objectActions: state.actions.actions.object,
       token: state.userSession.token,
       content: state.content.data,
+      compare_to: state.content.subrequests?.compare_to?.data,
       schema: state.schema.schema,
       getRequest: state.content.get,
       schemaRequest: state.schema,
