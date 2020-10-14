@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Making QuerystringWidget more resilient by handeling null value @iFlameing
+
 ## 8.5.0-alpha.0 (2020-10-14)
 
 ### Feature
