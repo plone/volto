@@ -542,6 +542,7 @@ msgstr "Quer mesmo eliminar o utilizador {username}?"
 msgid "Do you really want to delete this item?"
 msgstr "Quer mesmo eliminar este item?"
 
+#: components/manage/Multilingual/TranslationObject
 #: components/manage/Sidebar/Sidebar
 msgid "Document"
 msgstr "Documento"
@@ -1806,6 +1807,10 @@ msgstr ""
 msgid "Total number of objects in the database"
 msgstr ""
 
+#: components/manage/Add/Add
+msgid "Translate to"
+msgstr ""
+
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
 msgstr ""
@@ -2057,6 +2062,10 @@ msgstr "box_forgot_password_option"
 #: config/Blocks
 msgid "common"
 msgstr "comum"
+
+#: components/manage/Multilingual/CompareLanguages
+msgid "compare_to"
+msgstr ""
 
 #: components/manage/Blocks/Block/Edit
 msgid "delete"

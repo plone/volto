@@ -541,6 +541,7 @@ msgstr "{username} erabiltzailea ezabatu egin nahi duzu?"
 msgid "Do you really want to delete this item?"
 msgstr "Elementu hau ezabatu egin nahi duzu?"
 
+#: components/manage/Multilingual/TranslationObject
 #: components/manage/Sidebar/Sidebar
 msgid "Document"
 msgstr "Dokumentua"
@@ -1805,6 +1806,10 @@ msgstr "Katxe guztietan dagoen elementu kopurua"
 msgid "Total number of objects in the database"
 msgstr "Datu-basean dagoen elementu kopurua"
 
+#: components/manage/Add/Add
+msgid "Translate to"
+msgstr ""
+
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
 msgstr "{lang} hizkuntzara itzuli"
@@ -2056,6 +2061,10 @@ msgstr "Pasahitza ahaztuta?"
 #: config/Blocks
 msgid "common"
 msgstr "Ohikoa"
+
+#: components/manage/Multilingual/CompareLanguages
+msgid "compare_to"
+msgstr ""
 
 #: components/manage/Blocks/Block/Edit
 msgid "delete"
