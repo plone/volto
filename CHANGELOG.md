@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Japanese translation updated @terapyon
+
 ### Internal
 
 ## 8.5.0-alpha.0 (2020-10-14)
