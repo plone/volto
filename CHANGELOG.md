@@ -1,6 +1,6 @@
 # Change Log
 
-## 8.3.1 (unreleased)
+## 8.5.0 (unreleased)
 
 - Improved form validation. Tested required fields when field is array or richtext @giuliaghisini
 
@@ -13,9 +13,31 @@
 - Added prop resettable to DatetimeWidget @damiDevRT
 - removed the ability to reset the datepicker in the recurrence widget to prevent the uncontrolled creation of recurrences @damiDevRT
 - Japanese translation updated @terapyon
+### Internal
+
+## 8.5.0-alpha.0 (2020-10-14)
+
+### Feature
+
+- Sentry integration @zotya
+- All the environment variables defined at runtime that have the `RAZZLE_` prefix, are now available in the browser under window.env @zotya
+
+## 8.4.0 (2020-10-14)
+
+### Feature
+
+- Add `Style`, a wrapper component that applies float and width classes to wrapped content (typically blocks) @tiberiuichim
+- Add `AlignWidget`, a widget that wraps the `AlignBlock` helper @tiberiuichim
+
+### Bugfix
+
+- Folder contents view: Save additional columns and updated order of columns @ksuess
 - Fixed edit link in draft-js when link is selected from word-end to word-start @giuliaghisini
+- Revert PR No. 1820 to fix linebreaks on inline links in draftJS @steffenri
 
 ### Internal
+
+- Keep `@babel/core` in Volto core in sync with `babel-preset-razzle` it fixes #1897 @sneridagh
 
 ## 8.3.0 (2020-10-12)
 
