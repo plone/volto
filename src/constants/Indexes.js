@@ -34,3 +34,9 @@ export default {
   start: { label: 'Start Date', type: 'date' },
   Type: { label: 'Type', type: 'string' },
 };
+
+export const defaultIndexes = [
+  'review_state',
+  'ModificationDate',
+  'EffectiveDate',
+];
