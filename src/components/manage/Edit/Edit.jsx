@@ -270,19 +270,18 @@ class Edit extends Component {
                   }
                 />
 
-                {!this.state.visual && settings.isMultilingual && (
-                  <>!!!!!!!! wrappare la parte sotto</>
+                {settings.isMultilingual && (
+                  <div className="ui container">
+                    <CompareLanguages
+                      content={this.props.content}
+                      visual={this.state.visual}
+                      setComparingLanguage={(lang, id) => {
+                        this.setComparingLanguage(lang, id);
+                      }}
+                      comparingLanguage={this.state.comparingLanguage}
+                    />
+                  </div>
                 )}
-                <div className="ui container">
-                  <CompareLanguages
-                    content={this.props.content}
-                    visual={this.state.visual}
-                    setComparingLanguage={(lang, id) => {
-                      this.setComparingLanguage(lang, id);
-                    }}
-                    comparingLanguage={this.state.comparingLanguage}
-                  />
-                </div>
 
                 {this.state.comparingLanguage && this.state.compareTo ? (
                   <Container>

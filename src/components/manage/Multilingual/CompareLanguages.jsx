@@ -1,11 +1,15 @@
 import React from 'react';
-import { Label, Grid, Button, Dropdown } from 'semantic-ui-react';
+import { Label, Grid, Dropdown } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
 import { settings } from '~/config';
 const messages = defineMessages({
   compare_to: {
     id: 'compare_to',
     defaultMessage: 'Compare to',
+  },
+  compare_to_nothing: {
+    id: 'compare_to_nothing',
+    defaultMessage: 'Do not compare',
   },
 });
 
@@ -30,8 +34,16 @@ const CompareLanguages = ({
     };
   });
 
+  if (comparingLanguage) {
+    compareOptions.push({
+      key: 'nothing',
+      text: intl.formatMessage(messages.compare_to_nothing),
+      value: null,
+    });
+  }
+
   const translationsObject = {};
-  translations.map((t) => {
+  translations.each((t) => {
     translationsObject[t.language] = t['@id'];
   });
 
