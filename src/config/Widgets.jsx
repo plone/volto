@@ -3,6 +3,7 @@
 
 import loadable from '@loadable/component';
 
+import AlignWidget from '@plone/volto/components/manage/Widgets/AlignWidget';
 import ArrayWidget from '@plone/volto/components/manage/Widgets/ArrayWidget';
 import CheckboxWidget from '@plone/volto/components/manage/Widgets/CheckboxWidget';
 import FileWidget from '@plone/volto/components/manage/Widgets/FileWidget';
@@ -45,6 +46,7 @@ export const widgetMapping = {
     date: DatetimeWidget,
     password: PasswordWidget,
     file: FileWidget,
+    align: AlignWidget,
     url: UrlWidget,
     email: EmailWidget,
   },
