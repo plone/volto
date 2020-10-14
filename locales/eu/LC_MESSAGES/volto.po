@@ -2066,6 +2066,10 @@ msgstr "Ohikoa"
 msgid "compare_to"
 msgstr ""
 
+#: components/manage/Multilingual/CompareLanguages
+msgid "compare_to_nothing"
+msgstr ""
+
 #: components/manage/Blocks/Block/Edit
 msgid "delete"
 msgstr "Ezabatu"

@@ -2059,6 +2059,10 @@ msgstr "Comuni"
 msgid "compare_to"
 msgstr "Confronta con"
 
+#: components/manage/Multilingual/CompareLanguages
+msgid "compare_to_nothing"
+msgstr ""
+
 #: components/manage/Blocks/Block/Edit
 msgid "delete"
 msgstr "Elimina"
