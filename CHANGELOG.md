@@ -2,8 +2,6 @@
 
 ## 8.3.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Add `Style`, a wrapper component that applies float and width classes to wrapped content (typically blocks) @tiberiuichim
