@@ -8,7 +8,6 @@ import { createMemoryHistory } from 'history';
 import { ReduxAsyncConnect, loadOnServer } from 'redux-connect';
 import { parse as parseUrl } from 'url';
 import { keys } from 'lodash';
-import Raven from 'raven';
 import cookie, { plugToRequest } from 'react-cookie';
 import locale from 'locale';
 import { detect } from 'detect-browser';
@@ -194,11 +193,6 @@ server
             </Provider>
           );
 
-          if (process.env.SENTRY_DSN) {
-            Raven.captureException(error.message, {
-              extra: JSON.stringify(error),
-            });
-          }
           res.set({
             'Cache-Control': 'public, max-age=60, no-transform',
           });

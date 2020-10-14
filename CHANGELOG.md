@@ -6,6 +6,9 @@
 
 ### Feature
 
+- Sentry integration @zotya
+- All the environment variables defined at runtime that have the `RAZZLE_` prefix, are now available in the browser under window.env @zotya
+
 ### Bugfix
 
 ### Internal
