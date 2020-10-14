@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Showing error notification when user try to paste disallowed content type. @iFlameing
+
 ### Internal
 
 ## 8.5.0-alpha.0 (2020-10-14)
