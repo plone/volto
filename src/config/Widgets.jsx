@@ -3,6 +3,7 @@
 
 import loadable from '@loadable/component';
 
+import AlignWidget from '@plone/volto/components/manage/Widgets/AlignWidget';
 import ArrayWidget from '@plone/volto/components/manage/Widgets/ArrayWidget';
 import CheckboxWidget from '@plone/volto/components/manage/Widgets/CheckboxWidget';
 import FileWidget from '@plone/volto/components/manage/Widgets/FileWidget';
@@ -14,9 +15,11 @@ import TextareaWidget from '@plone/volto/components/manage/Widgets/TextareaWidge
 import TextWidget from '@plone/volto/components/manage/Widgets/TextWidget';
 import TokenWidget from '@plone/volto/components/manage/Widgets/TokenWidget';
 import WysiwygWidget from '@plone/volto/components/manage/Widgets/WysiwygWidget';
+import UrlWidget from '@plone/volto/components/manage/Widgets/UrlWidget';
+import EmailWidget from '@plone/volto/components/manage/Widgets/EmailWidget';
 import NumberWidget from '@plone/volto/components/manage/Widgets/NumberWidget';
 
-//import ReferenceWidget from '@plone/volto/components/manage/Widgets/ReferenceWidget';
+import ReferenceWidget from '@plone/volto/components/manage/Widgets/ReferenceWidget';
 import ObjectBrowserWidget from '@plone/volto/components/manage/Widgets/ObjectBrowserWidget';
 
 export const DatetimeWidget = loadable(() =>
@@ -40,11 +43,19 @@ export const widgetMapping = {
     richtext: WysiwygWidget,
     textarea: TextareaWidget,
     datetime: DatetimeWidget,
+    date: DatetimeWidget,
     password: PasswordWidget,
     file: FileWidget,
+    align: AlignWidget,
+    url: UrlWidget,
+    email: EmailWidget,
   },
   vocabulary: {
-    'plone.app.vocabularies.Catalog': ObjectBrowserWidget, //ReferenceWidget,
+    'plone.app.vocabularies.Catalog': ObjectBrowserWidget,
+  },
+  factory: {
+    'Relation List': ObjectBrowserWidget,
+    'Relation Choice': ReferenceWidget,
   },
   choices: SelectWidget,
   type: {
@@ -52,8 +63,10 @@ export const widgetMapping = {
     array: ArrayWidget,
     object: FileWidget,
     datetime: DatetimeWidget,
+    date: DatetimeWidget,
     password: PasswordWidget,
     number: NumberWidget,
+    integer: NumberWidget,
   },
 };
 

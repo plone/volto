@@ -145,12 +145,20 @@ class Edit extends Component {
     if (__SERVER__) {
       return <div />;
     }
+
+    const placeholder =
+      this.props.data.placeholder ||
+      this.props.intl.formatMessage(messages.title);
+
     return (
       <Editor
         onChange={this.onChange}
         editorState={this.state.editorState}
         blockRenderMap={extendedBlockRenderMap}
         handleReturn={() => {
+          if (this.props.data.disableNewBlocks) {
+            return 'handled';
+          }
           this.props.onSelectBlock(
             this.props.onAddBlock(
               settings.defaultBlockType,
@@ -159,7 +167,7 @@ class Edit extends Component {
           );
           return 'handled';
         }}
-        placeholder={this.props.intl.formatMessage(messages.title)}
+        placeholder={placeholder}
         blockStyleFn={() => 'documentFirstHeading'}
         onUpArrow={() => {
           const selectionState = this.state.editorState.getSelection();

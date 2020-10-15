@@ -1,31 +1,16 @@
-/* eslint import/no-extraneous-dependencies: 0 */
-/* eslint import/no-dynamic-require: 0 */
-/* eslint global-require: 0 */
-/* eslint no-console: 0 */
-/* eslint no-param-reassign: 0 */
-/* eslint no-unused-vars: 0 */
-
-const logger = require('razzle-dev-utils/logger');
 const path = require('path');
-const autoprefixer = require('autoprefixer');
 const makeLoaderFinder = require('razzle-dev-utils/makeLoaderFinder');
 const nodeExternals = require('webpack-node-externals');
-const webpack = require('webpack');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const LoadablePlugin = require('@loadable/webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const fs = require('fs');
-const { map, has } = require('lodash');
-const glob = require('glob').sync;
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const RootResolverPlugin = require('./webpack-root-resolver');
 const createAddonsLoader = require('./create-addons-loader');
 const AddonConfigurationRegistry = require('./addon-registry');
-const addLessLoader = require('./less-plugin');
 
 const fileLoaderFinder = makeLoaderFinder('file-loader');
 const babelLoaderFinder = makeLoaderFinder('babel-loader');
-// const eslintLoaderFinder = makeLoaderFinder('eslint-loader');
 
 const projectRootPath = path.resolve('.');
 const languages = require('./src/constants/Languages');
@@ -33,6 +18,8 @@ const languages = require('./src/constants/Languages');
 const packageJson = require(path.join(projectRootPath, 'package.json'));
 
 const registry = new AddonConfigurationRegistry(projectRootPath);
+
+const SentryCliPlugin = require('@sentry/webpack-plugin');
 
 const svgPlugin = (config) => {
   const SVGLOADER = {
@@ -89,11 +76,30 @@ const defaultModify = (config, { target, dev }, webpack) => {
     );
   }
 
+  let SENTRY = undefined;
+  if (process.env.SENTRY_DSN) {
+    SENTRY = {
+      SENTRY_DSN: process.env.SENTRY_DSN,
+    };
+  }
+
   if (target === 'web') {
+    if (SENTRY && process.env.SENTRY_FRONTEND_CONFIG) {
+      try {
+        SENTRY.SENTRY_CONFIG = JSON.parse(process.env.SENTRY_FRONTEND_CONFIG);
+        if (process.env.SENTRY_RELEASE !== undefined) {
+          SENTRY.SENTRY_CONFIG.release = process.env.SENTRY_RELEASE;
+        }
+      } catch (e) {
+        console.log('Error parsing SENTRY_FRONTEND_CONFIG');
+        throw e;
+      }
+    }
     config.plugins.unshift(
       new webpack.DefinePlugin({
         __CLIENT__: true,
         __SERVER__: false,
+        __SENTRY__: SENTRY ? JSON.stringify(SENTRY) : undefined,
       }),
     );
 
@@ -145,10 +151,25 @@ const defaultModify = (config, { target, dev }, webpack) => {
   }
 
   if (target === 'node') {
+    if (SENTRY) {
+      SENTRY.SENTRY_CONFIG = undefined;
+      if (process.env.SENTRY_BACKEND_CONFIG) {
+        try {
+          SENTRY.SENTRY_CONFIG = JSON.parse(process.env.SENTRY_BACKEND_CONFIG);
+          if (process.env.SENTRY_RELEASE !== undefined) {
+            SENTRY.SENTRY_CONFIG.release = process.env.SENTRY_RELEASE;
+          }
+        } catch (e) {
+          console.log('Error parsing SENTRY_BACKEND_CONFIG');
+          throw e;
+        }
+      }
+    }
     config.plugins.unshift(
       new webpack.DefinePlugin({
         __CLIENT__: false,
         __SERVER__: true,
+        __SENTRY__: SENTRY ? JSON.stringify(SENTRY) : undefined,
       }),
     );
   }
@@ -223,7 +244,23 @@ const defaultModify = (config, { target, dev }, webpack) => {
           }),
         ]
       : [];
-
+  if (
+    process.env.SENTRY_AUTH_TOKEN !== undefined &&
+    process.env.SENTRY_URL !== undefined &&
+    process.env.SENTRY_ORG !== undefined &&
+    process.env.SENTRY_PROJECT !== undefined &&
+    process.env.SENTRY_RELEASE !== undefined
+  ) {
+    if (target === 'web') {
+      config.plugins.push(
+        new SentryCliPlugin({
+          include: './build/public',
+          ignore: ['node_modules', 'webpack.config.js'],
+          release: process.env.SENTRY_RELEASE,
+        }),
+      );
+    }
+  }
   return config;
 };
 
@@ -247,6 +284,6 @@ module.exports = {
       (acc, extender) => extender.modify(acc, { target, dev }, webpack),
       defaultConfig,
     );
-    return defaultConfig;
+    return res;
   },
 };

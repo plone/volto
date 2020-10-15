@@ -29,6 +29,10 @@ const messages = defineMessages({
     id: 'Preview',
     defaultMessage: 'Preview',
   },
+  placeholder: {
+    id: '<p>Add some HTML here</p>',
+    defaultMessage: '<p>Add some HTML here</p>',
+  },
 });
 
 /**
@@ -145,6 +149,9 @@ class Edit extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const placeholder =
+      this.props.data.placeholder ||
+      this.props.intl.formatMessage(messages.placeholder);
     return (
       <>
         <Pretty ref={this.pretty} />
@@ -186,7 +193,7 @@ class Edit extends Component {
         {!this.state.isPreview && (
           <Editor
             value={this.state.code}
-            placeholder={`<p>Add some HTML here</p>`}
+            placeholder={placeholder}
             onValueChange={(code) => this.onChangeCode(code)}
             highlight={(code) => highlight(code, languages.html)}
             padding={8}

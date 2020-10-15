@@ -34,6 +34,27 @@ body {
   flex-direction: column;
 }
 
+.overlay-container {
+  position: absolute;
+  z-index: 110;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vw;
+  background-color: black;
+  opacity: 0;
+  transition: opacity 0.25s ease-in-out;
+
+  &.overlay-container-enter-active,
+  &.overlay-container-enter-done {
+    opacity: 0.4;
+  }
+
+  &.overlay-container-exit-active {
+    opacity: 0;
+  }
+}
+
 .documentFirstHeading {
   position: relative;
   border-bottom: 2px solid @purpleBackground;

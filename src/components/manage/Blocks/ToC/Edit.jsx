@@ -13,7 +13,9 @@ import View from '@plone/volto/components/manage/Blocks/ToC/View';
  * @class Edit
  * @extends Component
  */
-const Edit = ({ properties }) => <View properties={properties} />;
+const Edit = ({ properties, data }) => (
+  <View properties={properties} data={data} />
+);
 
 /**
  * Property types.
@@ -22,6 +24,7 @@ const Edit = ({ properties }) => <View properties={properties} />;
  */
 Edit.propTypes = {
   properties: PropTypes.objectOf(PropTypes.any).isRequired,
+  data: PropTypes.objectOf(PropTypes.any),
 };
 
 export default Edit;

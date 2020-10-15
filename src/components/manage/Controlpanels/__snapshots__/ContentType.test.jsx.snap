@@ -2,8 +2,14 @@
 
 exports[`ContentType renders dexterity content-type component 1`] = `
 <div
+  className="ui container"
   id="page-controlpanel"
 >
+  <div
+    className="ui disabled header"
+  >
+    Page Content Type
+  </div>
   <div
     id="form"
   />

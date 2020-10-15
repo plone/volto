@@ -7,44 +7,47 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Input } from 'semantic-ui-react';
 import { FormFieldWrapper } from '@plone/volto/components';
+import { injectIntl } from 'react-intl';
 
 /**
  * NumberWidget component class.
  * @function NumberWidget
  * @returns {string} Markup of the component.
  */
-const NumberWidget = ({
-  id,
-  title,
-  required,
-  description,
-  error,
-  value,
-  onChange,
-  fieldSet,
-  wrapped,
-  defaultValue = 0,
-}) => (
-  <FormFieldWrapper
-    id={id}
-    title={title}
-    description={description}
-    required={required}
-    error={error}
-    fieldSet={fieldSet}
-    wrapped={wrapped}
-  >
-    <Input
-      id={`field-${id}`}
-      name={id}
-      type="number"
-      value={value || defaultValue}
-      onChange={({ target }) =>
-        onChange(id, target.value === '' ? undefined : target.value)
-      }
-    />
-  </FormFieldWrapper>
-);
+const NumberWidget = (props) => {
+  const {
+    id,
+    value,
+    onChange,
+    onBlur,
+    onClick,
+    defaultValue,
+    isDisabled,
+    maximum,
+    minimum,
+  } = props;
+
+  return (
+    <FormFieldWrapper {...props}>
+      <Input
+        id={`field-${id}`}
+        name={id}
+        type="number"
+        disabled={isDisabled}
+        min={minimum || null}
+        max={maximum || null}
+        value={value || defaultValue}
+        onChange={({ target }) =>
+          onChange(id, target.value === '' ? undefined : target.value)
+        }
+        onBlur={({ target }) =>
+          onBlur(id, target.value === '' ? undefined : target.value)
+        }
+        onClick={() => onClick()}
+      />
+    </FormFieldWrapper>
+  );
+};
 
 /**
  * Property types.
@@ -57,9 +60,11 @@ NumberWidget.propTypes = {
   description: PropTypes.string,
   required: PropTypes.bool,
   error: PropTypes.arrayOf(PropTypes.string),
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onChange: PropTypes.func.isRequired,
   wrapped: PropTypes.bool,
+  maximum: PropTypes.number,
+  minimum: PropTypes.number,
 };
 
 /**
@@ -74,4 +79,4 @@ NumberWidget.defaultProps = {
   value: null,
 };
 
-export default NumberWidget;
+export default injectIntl(NumberWidget);

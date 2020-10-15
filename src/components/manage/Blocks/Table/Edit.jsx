@@ -664,6 +664,7 @@ class Edit extends Component {
                         onSelectBlock={this.props.onSelectBlock}
                         onChange={this.onChangeCell}
                         index={this.props.index}
+                        disableNewBlocks={this.props.data?.disableNewBlocks}
                       />
                     </Table.Cell>
                   ))}

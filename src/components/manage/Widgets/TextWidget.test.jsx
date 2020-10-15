@@ -17,7 +17,13 @@ test('renders a text widget component', () => {
 
   const component = renderer.create(
     <Provider store={store}>
-      <TextWidget id="my-field" title="My field" onChange={() => {}} />
+      <TextWidget
+        id="my-field"
+        title="My field"
+        onChange={() => {}}
+        onBlur={() => {}}
+        onClick={() => {}}
+      />
     </Provider>,
   );
   const json = component.toJSON();

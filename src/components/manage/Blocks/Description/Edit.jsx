@@ -162,6 +162,9 @@ class Edit extends Component {
           editorState={this.state.editorState}
           blockRenderMap={extendedBlockRenderMap}
           handleReturn={() => {
+            if (this.props.data?.disableNewBlocks) {
+              return 'handled';
+            }
             this.props.onSelectBlock(
               this.props.onAddBlock(
                 settings.defaultBlockType,
