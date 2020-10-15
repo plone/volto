@@ -41,6 +41,7 @@ node build/server.js
 ### 2. Runtime
 In case you plan to use the application using docker, you will not want to have the sentry setup in the docker image.
 The configuration for setting up sentry on runtime is very similar as how we set it up for buildtime, but with some small differences:
+
  - SENTRY_URL - the url of sentry
  - SENTRY_AUTH_TOKEN - the authentication token for sentry
  - SENTRY_ORG - the name of the organization in sentry
@@ -112,8 +113,12 @@ services:
 ```
 
 ## Configuration options
+
 This applies to both SENTRY_FRONTEND_CONFIGURATION and SENTRY_BACKEND_CONFIGURATION 
-**Note:** In case you are using buildtime configuration you have to use SENTRY_FRONTEND_CONFIGURATION and SENTRY_BACKEND_CONFIGURATION. But if you are using runtime configuration, use RAZZLE_SENTRY_FRONTEND_CONFIGURATION and RAZZLE_SENTRY_BACKEND_CONFIGURATION
+
+**Note:** In case you are using buildtime configuration you have to use SENTRY_FRONTEND_CONFIGURATION and SENTRY_BACKEND_CONFIGURATION.
+
+But if you are using runtime configuration, use RAZZLE_SENTRY_FRONTEND_CONFIGURATION and RAZZLE_SENTRY_BACKEND_CONFIGURATION
 
 We have the possibility to add TAGS and ADDITIONAL DATA for our messages for categorization in SENTRY. We can configure these 2 variables separately, as we might want to separate the messages from frontend and backend.
 Example of configurations:
@@ -134,11 +139,13 @@ Example of configurations:
 }
 ```
 Example of usage with buildtime setup:
+
 ```bash
 SENTRY_URL=https://mysentry.com SENTRY_AUTH_TOKEN=foo SENTRY_ORG=my_organization SENTRY_PROJECT=new_project SENTRY_RELEASE=2.0.0 SENTRY_DSN=https://boo@sentry.com/1 SENTRY_FRONTEND_CONFIG='{"tags":{"site":"www.test.com","app":"test_app"},"extras":{"logger":"javascript-frontend", "release":"1.4.1"}}' SENTRY_BACKEND_CONFIG='{"tags":{"site":"www.test.com","app":"test_app"} yarn build
 node build/server.js
 ```
  Example with docker-compose:
+
 ```bash
 version: '3'
 services:
@@ -160,6 +167,7 @@ services:
  ```
 
 ## Example of messages in SENTRY
+
 1. List of messages
 ![](sentry_messages.png)
 2. Messages from the frontend, with it's own TAGS and ADDITIONAL DATA

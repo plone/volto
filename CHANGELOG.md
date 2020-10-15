@@ -10,6 +10,8 @@
 
 ### Internal
 
+ - Fix sentry docs markdown format @avoinea
+
 ## 8.5.0-alpha.0 (2020-10-14)
 
 ### Feature
