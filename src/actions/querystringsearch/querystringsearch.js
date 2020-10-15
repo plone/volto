@@ -9,15 +9,6 @@ import { settings } from '~/config';
  */
 export function getQueryStringResults(path, data, subrequest, page) {
   // fixes https://github.com/plone/volto/issues/1059
-  const fixedQuery = data?.query?.map((queryElem) => {
-    if (queryElem.o === 'plone.app.querystring.operation.string.relativePath') {
-      return {
-        ...queryElem,
-        v: `${path}/${queryElem.v}`,
-      };
-    }
-    return queryElem;
-  });
 
   return {
     type: GET_QUERYSTRING_RESULTS,
@@ -35,7 +26,7 @@ export function getQueryStringResults(path, data, subrequest, page) {
             ? data.b_size * (page - 1)
             : settings.defaultPageSize * (page - 1),
         }),
-        query: fixedQuery,
+        query: data?.query,
       },
     },
   };
