@@ -107,21 +107,25 @@ describe('Add Content Tests', () => {
 
     if (Cypress.env('API') === 'guillotina') {
       // Guillotina wants the file handler instead than the base64 encoding
-      cy.fixture('image.png').then((fileContent) => {
-        cy.get('#field-image').attachFile(
-          { fileContent, fileName: 'image.png', mimeType: 'image/png' },
-          { subjectType: 'input' },
-        );
-        cy.get('#field-image').parent().parent().contains('image.png');
-      });
+      cy.fixture('image.png')
+        .then( fc => {return Cypress.Blob.base64StringToBlob( fc ) })
+        .then((fileContent) => {
+          cy.get('#field-image').attachFile(
+            { fileContent, fileName: 'image.png', mimeType: 'image/png' },
+            { subjectType: 'input' },
+          );
+          cy.get('#field-image').parent().parent().contains('image.png');
+        });
     } else {
-      cy.fixture('image.png', 'base64').then((fileContent) => {
-        cy.get('input#field-image').attachFile(
-          { fileContent, fileName: 'image.png', mimeType: 'image/png' },
-          { subjectType: 'input' },
-        );
-        cy.get('#field-image').parent().parent().contains('image.png');
-      });
+      cy.fixture('image.png', 'base64')
+        .then( fc => {return Cypress.Blob.base64StringToBlob( fc ) })
+        .then((fileContent) => {
+          cy.get('input#field-image').attachFile(
+            { fileContent, fileName: 'image.png', mimeType: 'image/png' },
+            { subjectType: 'input' },
+          );
+          cy.get('#field-image').parent().parent().contains('image.png');
+        });
     }
     cy.get('#toolbar-save').click();
     if (Cypress.env('API') === 'guillotina') {
@@ -184,44 +188,3 @@ describe('Add Content Tests', () => {
     });
   }
 });
-
-// // TODO: occasional timeout problem while testing: click on invisible node "sort on id ascending"
-// // click, hover, click is difficult to test.
-// describe('Contents', () => {
-//   beforeEach(() => {
-//     cy.autologin();
-//     if (Cypress.env('API') === 'guillotina') {
-//       cy.createContent('CMSFolder', 'blog', 'Blog');
-//       cy.createContent('CMSFolder', 'january', 'January', '/blog');
-//       cy.createContent('CMSFolder', 'february', 'February', '/blog');
-//     } else {
-//       cy.createContent('Document', 'blog', 'Blog');
-//       cy.createContent('Document', 'january', 'January', '/blog');
-//       cy.createContent('Document', 'february', 'February', '/blog');
-//     };
-//   });
-//   it('is sortable', function() {
-//     cy.visit('/blog/contents');
-//     // January is first item
-//     cy.get('a[href^="/blog/"]')
-//       .first()
-//       .should(($a) => {
-//         expect($a).to.contain('January')
-//       });
-//     cy
-//       .get('div.sort-icon')
-//       .click()
-//       .get('div.item.sort_id')
-//       .should('be.visible')
-//       .trigger('mousover')
-//       .get('div.item.sort_id_ascending')
-//       .should('be.visible')
-//       .click({force: true})
-//       // Now February is first item
-//       .get('a[href^="/blog/"]')
-//       .first()
-//       .should(($a) => {
-//         expect($a).to.contain('February')
-//       });
-//   });
-// });

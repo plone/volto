@@ -36,7 +36,7 @@ const LanguageSelector = (props) => {
   );
 
   function changeLanguage(language) {
-    cookie.save('lang', language, {
+    cookie.save('I18N_LANGUAGE', language, {
       expires: new Date((2 ** 31 - 1) * 1000),
       path: '/',
     });

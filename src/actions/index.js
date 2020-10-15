@@ -33,6 +33,7 @@ export {
   orderContent,
   sortContent,
   resetContent,
+  updateColumnsContent,
 } from '@plone/volto/actions/content/content';
 export {
   getControlpanel,
@@ -63,7 +64,12 @@ export {
 } from '@plone/volto/actions/messages/messages';
 export { getNavigation } from '@plone/volto/actions/navigation/navigation';
 export { listRoles } from '@plone/volto/actions/roles/roles';
-export { getSchema } from '@plone/volto/actions/schema/schema';
+export {
+  getSchema,
+  postSchema,
+  putSchema,
+  updateSchema,
+} from '@plone/volto/actions/schema/schema';
 export {
   resetSearchContent,
   searchContent,

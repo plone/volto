@@ -113,6 +113,7 @@ class Edit extends Component {
     this.state = {
       visual: true,
       isClient: false,
+      error: null,
     };
     this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -156,12 +157,23 @@ class Edit extends Component {
       );
     }
 
-    if (nextProps.updateRequest.error) {
+    if (this.props.updateRequest.loading && nextProps.updateRequest.error) {
+      const message =
+        nextProps.updateRequest.error?.response?.body?.message ||
+        nextProps.updateRequest.error?.response?.text ||
+        '';
+
+      const error =
+        new DOMParser().parseFromString(message, 'text/html')?.all[0]
+          ?.textContent || message;
+
+      this.setState({ error: error });
+
       toast.error(
         <Toast
           error
           title={this.props.intl.formatMessage(messages.error)}
-          content={`${nextProps.updateRequest.error.status} ${nextProps.updateRequest.error.response?.body?.message}`}
+          content={`${nextProps.updateRequest.error.status} ${error}`}
         />,
       );
     }
@@ -218,6 +230,7 @@ class Edit extends Component {
                   ref={this.form}
                   schema={this.props.schema}
                   formData={this.props.content}
+                  requestError={this.state.error}
                   onSubmit={this.onSubmit}
                   hideActions
                   pathname={this.props.pathname}
