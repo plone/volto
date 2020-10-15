@@ -305,7 +305,6 @@
     "postcss-loader": "3.0.0",
     "postcss-overrides": "3.1.4",
     "prettier": "2.0.5",
-    "pretty": "2.0.0",
     "pretty-bytes": "5.3.0",
     "prismjs": "1.21.0",
     "promise-file-reader": "1.0.2",

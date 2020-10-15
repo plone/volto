@@ -123,6 +123,12 @@ class Edit extends Component {
   onPreview() {
     this.setState({
       isPreview: !this.state.isPreview,
+      code: this.prettier.current.default
+        .format(this.state.code, {
+          parser: 'html',
+          plugins: [this.parserHtml.current.default],
+        })
+        .trim(),
     });
   }
 
