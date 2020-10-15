@@ -620,7 +620,7 @@ msgstr "終了日付"
 msgid "Enter URL or select an item"
 msgstr ""
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Enter a username above to search or click 'Show All'"
 msgstr ""
 
@@ -1558,7 +1558,7 @@ msgstr "ショートネーム"
 msgid "Show"
 msgstr "表示件数"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Show All"
 msgstr ""
 

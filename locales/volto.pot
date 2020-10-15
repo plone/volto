@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-10-13T09:58:31.078Z\n"
+"POT-Creation-Date: 2020-10-15T12:50:39.105Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -742,7 +742,7 @@ msgstr ""
 msgid "Enter URL or select an item"
 msgstr ""
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Enter a username above to search or click 'Show All'
 msgid "Enter a username above to search or click 'Show All'"
 msgstr ""
@@ -1895,7 +1895,7 @@ msgstr ""
 msgid "Show"
 msgstr ""
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Show All
 msgid "Show All"
 msgstr ""

@@ -621,7 +621,7 @@ msgstr ""
 msgid "Enter URL or select an item"
 msgstr ""
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Enter a username above to search or click 'Show All'"
 msgstr ""
 
@@ -1559,7 +1559,7 @@ msgstr "Nome curto"
 msgid "Show"
 msgstr ""
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Show All"
 msgstr ""
 
