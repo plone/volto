@@ -1897,10 +1897,6 @@ msgid "Upload files"
 msgstr "Bestanden uploaden"
 
 #: components/manage/Contents/ContentsUploadModal
-msgid "Upload {count, plural, one {# file} other {# files}}"
-msgstr "Upload {count, plural, one {# bestand} other {# bestanden}}"
-
-#: components/manage/Contents/ContentsUploadModal
 msgid "Uploading files"
 msgstr "Bestanden uploaden"
 
@@ -2416,6 +2412,10 @@ msgstr ""
 
 #: components/theme/Login/Login
 msgid "we can send you a new one"
+msgstr ""
+
+#: components/manage/Contents/ContentsUploadModal
+msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 msgstr ""
 
 #: components/manage/Contents/Contents

@@ -81,7 +81,7 @@ class Edit extends Component {
     }
     const tab = this.props.manage
       ? 1
-      : blocks.blocksConfig?.[type]?.sidebarBar || 0;
+      : blocks.blocksConfig?.[type]?.sidebarTab || 0;
     if (this.props.selected) {
       this.props.setSidebarTab(tab);
     }
