@@ -157,7 +157,17 @@ exports[`PersonalInformation renders a personal information component 1`] = `
               <div
                 className="eight wide column"
               >
-                <div>
+                <div
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onDragEnter={[Function]}
+                  onDragLeave={[Function]}
+                  onDragOver={[Function]}
+                  onDrop={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  tabIndex={0}
+                >
                   <img
                     className="ui small image image-preview"
                     id="field-portrait-image"
@@ -534,7 +544,17 @@ exports[`PersonalInformation renders a personal information component embedded i
               <div
                 className="eight wide column"
               >
-                <div>
+                <div
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onDragEnter={[Function]}
+                  onDragLeave={[Function]}
+                  onDragOver={[Function]}
+                  onDrop={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  tabIndex={0}
+                >
                   <img
                     className="ui small image image-preview"
                     id="field-portrait-image"

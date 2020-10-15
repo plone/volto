@@ -5,7 +5,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Input, Button, Image } from 'semantic-ui-react';
+import { Input, Button, Image, Dimmer } from 'semantic-ui-react';
 import { readAsDataURL } from 'promise-file-reader';
 import { injectIntl } from 'react-intl';
 import deleteSVG from '@plone/volto/icons/delete.svg';
@@ -32,6 +32,7 @@ const FileWidget = (props) => {
   const { id, value, onChange } = props;
   const fileInput = React.useRef(null);
   const [fileType, setFileType] = React.useState(true);
+  const [dragging, setDragging] = React.useState(false);
 
   /**
    * Drop handler
@@ -53,17 +54,36 @@ const FileWidget = (props) => {
 
     let reader = new FileReader();
     reader.onload = function () {
-      let imagePreview = document.getElementById(`field-${id}-image`);
-      imagePreview.src = reader.result;
+      const fields = reader.result.match(/^data:(.*);(.*),(.*)$/);
+      if (imageMimetypes.includes(fields[1])) {
+        setFileType(true);
+        let imagePreview = document.getElementById(`field-${id}-image`);
+        imagePreview.src = reader.result;
+      } else {
+        setFileType(false);
+      }
     };
     reader.readAsDataURL(files[0]);
+    setDragging(false);
+  };
+
+  const onDragEnter = () => {
+    setDragging(true);
+  };
+  const onDragLeave = () => {
+    setDragging(false);
   };
 
   return (
     <FormFieldWrapper {...props}>
-      <Dropzone disableClick onDrop={onDrop} className="dropzone">
+      <Dropzone
+        onDrop={onDrop}
+        onDragEnter={onDragEnter}
+        onDragLeave={onDragLeave}
+      >
         {({ getRootProps, getInputProps }) => (
-          <div {...getRootProps}>
+          <div {...getRootProps()}>
+            {dragging && <Dimmer active></Dimmer>}
             {fileType ? (
               <Image
                 className="image-preview"
@@ -82,6 +102,7 @@ const FileWidget = (props) => {
                 : 'Choose a File/Image'}
             </label>
             <Input
+              {...getInputProps}
               id={`field-${id}`}
               name={id}
               className="file-widget-input"

@@ -28,7 +28,17 @@ Array [
         <div
           className="eight wide column"
         >
-          <div>
+          <div
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragEnter={[Function]}
+            onDragLeave={[Function]}
+            onDragOver={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            tabIndex={0}
+          >
             <img
               className="ui small image image-preview"
               id="field-my-field-image"
