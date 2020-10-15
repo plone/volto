@@ -1,92 +1,63 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a file widget component 1`] = `
-<div
-  className="inline field"
-  id="field-my-field"
->
+Array [
   <div
-    className="ui grid"
+    className="inline field"
+    id="field-my-field"
   >
     <div
-      className="stretched row"
+      className="ui grid"
     >
       <div
-        className="four wide column"
+        className="stretched row"
       >
         <div
-          className="wrapper"
+          className="four wide column"
         >
-          <label
-            htmlFor="field-my-field"
-          >
-            My field
-          </label>
-        </div>
-      </div>
-      <div
-        className="eight wide column"
-      >
-        <div
-          aria-disabled={false}
-          className="dropzone"
-          onClick={[Function]}
-          onDragEnter={[Function]}
-          onDragLeave={[Function]}
-          onDragOver={[Function]}
-          onDragStart={[Function]}
-          onDrop={[Function]}
-          style={
-            Object {
-              "position": "relative",
-            }
-          }
-        >
-          <img
-            className="ui small image image-preview"
-            id="field-my-field-image"
-            src="block-image.svg"
-          />
-          <label
-            className="label-file-widget-input"
-            htmlFor="field-my-field"
-          >
-            Choose a File/Image
-          </label>
           <div
-            className="ui input file-widget-input"
+            className="wrapper"
           >
-            <input
-              id="field-my-field"
-              name="my-field"
-              onChange={[Function]}
-              type="file"
-            />
+            <label
+              htmlFor="field-my-field"
+            >
+              My field
+            </label>
           </div>
-          <input
-            autoComplete="off"
-            disabled={false}
-            multiple={true}
-            onChange={[Function]}
-            style={
-              Object {
-                "bottom": 0,
-                "left": 0,
-                "opacity": 0.00001,
-                "pointerEvents": "none",
-                "position": "absolute",
-                "right": 0,
-                "top": 0,
-              }
-            }
-            type="file"
-          />
         </div>
         <div
-          className="field-file-name"
-        />
+          className="eight wide column"
+        >
+          <div>
+            <img
+              className="ui small image image-preview"
+              id="field-my-field-image"
+              src="block-image.svg"
+            />
+            <label
+              className="label-file-widget-input"
+              htmlFor="field-my-field"
+            >
+              Choose a File/Image
+            </label>
+            <div
+              className="ui input file-widget-input"
+            >
+              <input
+                id="field-my-field"
+                name="my-field"
+                onChange={[Function]}
+                type="file"
+              />
+            </div>
+          </div>
+          <div
+            className="field-file-name"
+          />
+        </div>
       </div>
     </div>
-  </div>
-</div>
+  </div>,
+  ",",
+]
 `;

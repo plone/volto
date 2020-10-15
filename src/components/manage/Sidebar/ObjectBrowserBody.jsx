@@ -34,7 +34,7 @@ const messages = defineMessages({
   of: { id: 'Selected items - x of y', defaultMessage: 'of' },
 });
 
-function getParentURL(url) {
+export function getParentURL(url) {
   return flattenToAppURL(`${join(url.split('/').slice(0, -1), '/')}`) || '/';
 }
 
@@ -88,8 +88,8 @@ class ObjectBrowserBody extends Component {
       currentFolder:
         this.props.mode === 'multiple'
           ? '/'
-          : this.props.data?.url
-          ? getParentURL(this.props.data.url)
+          : this.props.data?.contextURL
+          ? getParentURL(this.props.data.contextURL)
           : '/',
       currentImageFolder:
         this.props.mode === 'multiple'
@@ -159,7 +159,7 @@ class ObjectBrowserBody extends Component {
       );
     } else {
       this.props.searchContent(
-        '/',
+        this.state.currentFolder,
         {
           'path.depth': 1,
           sort_on: 'getObjPositionInParent',
@@ -386,15 +386,13 @@ class ObjectBrowserBody extends Component {
               />
             )}
             {this.state.showSearchInput ? (
-              <form>
-                <Input
-                  className="search"
-                  onChange={this.onSearch}
-                  placeholder={this.props.intl.formatMessage(
-                    messages.SearchInputPlaceholder,
-                  )}
-                />
-              </form>
+              <Input
+                className="search"
+                onChange={this.onSearch}
+                placeholder={this.props.intl.formatMessage(
+                  messages.SearchInputPlaceholder,
+                )}
+              />
             ) : this.props.mode === 'image' ? (
               <h2>
                 <FormattedMessage

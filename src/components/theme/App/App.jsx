@@ -15,7 +15,6 @@ import split from 'lodash/split';
 import join from 'lodash/join';
 import trim from 'lodash/trim';
 import cx from 'classnames';
-import loadable from '@loadable/component';
 
 import { settings, views } from '~/config';
 
@@ -29,7 +28,7 @@ import {
   OutdatedBrowser,
   AppExtras,
 } from '@plone/volto/components';
-import { BodyClass, getBaseUrl, getView } from '@plone/volto/helpers';
+import { BodyClass, getBaseUrl, getView, isCmsUi } from '@plone/volto/helpers';
 import {
   getBreadcrumbs,
   getContent,
@@ -63,20 +62,6 @@ class App extends Component {
   };
 
   /**
-   * ComponentDidMount
-   * @method ComponentDidMount
-   * @param {string} error  The error
-   * @param {string} info The info
-   * @returns {undefined}
-   */
-  componentDidMount() {
-    if (__CLIENT__ && process.env.SENTRY_DSN) {
-      const Raven = loadable(() => import('raven-js'));
-      Raven.config(process.env.SENTRY_DSN).install();
-    }
-  }
-
-  /**
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
    * @returns {undefined}
@@ -98,10 +83,6 @@ class App extends Component {
    */
   componentDidCatch(error, info) {
     this.setState({ hasError: true, error, errorInfo: info });
-    if (__CLIENT__ && process.env.SENTRY_DSN) {
-      const Raven = loadable(() => import('raven-js'));
-      Raven.captureException(error, { extra: info });
-    }
   }
 
   /**
@@ -112,6 +93,7 @@ class App extends Component {
   render() {
     const path = getBaseUrl(this.props.pathname);
     const action = getView(this.props.pathname);
+    const isCmsUI = isCmsUi(this.props.pathname);
     const ConnectionRefusedView = views.errorViews.ECONNREFUSED;
 
     return (
@@ -133,6 +115,10 @@ class App extends Component {
             [trim(join(split(this.props.pathname, '/'), ' section-'))]:
               this.props.pathname !== '/',
             siteroot: this.props.pathname === '/',
+            'is-authenticated': !!this.props.token,
+            'is-anonymous': !this.props.token,
+            'cms-ui': isCmsUI,
+            'public-ui': !isCmsUI,
           })}
         />
         <Header pathname={path} />
@@ -177,6 +163,7 @@ class App extends Component {
 export const __test__ = connect(
   (state, props) => ({
     pathname: props.location.pathname,
+    token: state.userSession.token,
     content: state.content.data,
     apiError: state.apierror.error,
     connectionRefused: state.apierror.connectionRefused,
@@ -218,6 +205,7 @@ export default compose(
   connect(
     (state, props) => ({
       pathname: props.location.pathname,
+      token: state.userSession.token,
       content: state.content.data,
       apiError: state.apierror.error,
       connectionRefused: state.apierror.connectionRefused,

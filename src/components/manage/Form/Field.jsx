@@ -26,6 +26,14 @@ const getWidgetDefault = () => widgets.default;
 const getWidgetByFieldId = (id) => widgets.id[id] || null;
 
 /**
+ * Get widget by factory attribute
+ * @method getWidgetByFactory
+ * @param {string} id Id
+ * @returns {string} Widget component.
+ */
+const getWidgetByFactory = (factory) => widgets.factory?.[factory] || null;
+
+/**
  * Get widget by field's `widget` attribute
  * @method getWidgetByName
  * @param {string} widget Widget
@@ -107,6 +115,7 @@ const Field = (props, { intl }) => {
     getWidgetByChoices(props) ||
     getWidgetByVocabulary(props.vocabulary) ||
     getWidgetByVocabularyFromHint(props) ||
+    getWidgetByFactory(props.factory) ||
     getWidgetByType(props.type) ||
     getWidgetDefault();
 

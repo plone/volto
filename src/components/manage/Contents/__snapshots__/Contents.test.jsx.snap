@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Contents renders a contents component 1`] = `
+exports[`Contents renders a folder contents view component 1`] = `
 <div
   className="ui container folder-contents"
   id="page-contents"
@@ -346,7 +346,7 @@ exports[`Contents renders a contents component 1`] = `
             </div>
             <div
               aria-expanded={false}
-              className="ui item dropdown right floating"
+              className="ui item dropdown right floating selectIndex"
               onBlur={[Function]}
               onChange={[Function]}
               onClick={[Function]}

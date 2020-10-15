@@ -45,10 +45,13 @@ exports[`PersonalInformation renders a personal information component 1`] = `
                   className="ui input"
                 >
                   <input
-                    disabled={false}
                     id="field-fullname"
+                    maxLength={null}
+                    minLength={null}
                     name="fullname"
+                    onBlur={[Function]}
                     onChange={[Function]}
+                    onClick={[Function]}
                     type="text"
                     value=""
                   />
@@ -100,10 +103,13 @@ exports[`PersonalInformation renders a personal information component 1`] = `
                   className="ui input"
                 >
                   <input
-                    disabled={false}
                     id="field-email"
+                    maxLength={null}
+                    minLength={null}
                     name="email"
+                    onBlur={[Function]}
                     onChange={[Function]}
+                    onClick={[Function]}
                     type="text"
                     value=""
                   />
@@ -151,21 +157,7 @@ exports[`PersonalInformation renders a personal information component 1`] = `
               <div
                 className="eight wide column"
               >
-                <div
-                  aria-disabled={false}
-                  className="dropzone"
-                  onClick={[Function]}
-                  onDragEnter={[Function]}
-                  onDragLeave={[Function]}
-                  onDragOver={[Function]}
-                  onDragStart={[Function]}
-                  onDrop={[Function]}
-                  style={
-                    Object {
-                      "position": "relative",
-                    }
-                  }
-                >
+                <div>
                   <img
                     className="ui small image image-preview"
                     id="field-portrait-image"
@@ -187,24 +179,6 @@ exports[`PersonalInformation renders a personal information component 1`] = `
                       type="file"
                     />
                   </div>
-                  <input
-                    autoComplete="off"
-                    disabled={false}
-                    multiple={true}
-                    onChange={[Function]}
-                    style={
-                      Object {
-                        "bottom": 0,
-                        "left": 0,
-                        "opacity": 0.00001,
-                        "pointerEvents": "none",
-                        "position": "absolute",
-                        "right": 0,
-                        "top": 0,
-                      }
-                    }
-                    type="file"
-                  />
                 </div>
                 <div
                   className="field-file-name"
@@ -256,10 +230,13 @@ exports[`PersonalInformation renders a personal information component 1`] = `
                   className="ui input"
                 >
                   <input
-                    disabled={false}
                     id="field-home_page"
+                    maxLength={null}
+                    minLength={null}
                     name="home_page"
+                    onBlur={[Function]}
                     onChange={[Function]}
+                    onClick={[Function]}
                     type="text"
                     value=""
                   />
@@ -311,10 +288,13 @@ exports[`PersonalInformation renders a personal information component 1`] = `
                   className="ui input"
                 >
                   <input
-                    disabled={false}
                     id="field-location"
+                    maxLength={null}
+                    minLength={null}
                     name="location"
+                    onBlur={[Function]}
                     onChange={[Function]}
+                    onClick={[Function]}
                     type="text"
                     value=""
                   />
@@ -442,10 +422,13 @@ exports[`PersonalInformation renders a personal information component embedded i
                   className="ui input"
                 >
                   <input
-                    disabled={false}
                     id="field-fullname"
+                    maxLength={null}
+                    minLength={null}
                     name="fullname"
+                    onBlur={[Function]}
                     onChange={[Function]}
+                    onClick={[Function]}
                     type="text"
                     value=""
                   />
@@ -497,10 +480,13 @@ exports[`PersonalInformation renders a personal information component embedded i
                   className="ui input"
                 >
                   <input
-                    disabled={false}
                     id="field-email"
+                    maxLength={null}
+                    minLength={null}
                     name="email"
+                    onBlur={[Function]}
                     onChange={[Function]}
+                    onClick={[Function]}
                     type="text"
                     value=""
                   />
@@ -548,21 +534,7 @@ exports[`PersonalInformation renders a personal information component embedded i
               <div
                 className="eight wide column"
               >
-                <div
-                  aria-disabled={false}
-                  className="dropzone"
-                  onClick={[Function]}
-                  onDragEnter={[Function]}
-                  onDragLeave={[Function]}
-                  onDragOver={[Function]}
-                  onDragStart={[Function]}
-                  onDrop={[Function]}
-                  style={
-                    Object {
-                      "position": "relative",
-                    }
-                  }
-                >
+                <div>
                   <img
                     className="ui small image image-preview"
                     id="field-portrait-image"
@@ -584,24 +556,6 @@ exports[`PersonalInformation renders a personal information component embedded i
                       type="file"
                     />
                   </div>
-                  <input
-                    autoComplete="off"
-                    disabled={false}
-                    multiple={true}
-                    onChange={[Function]}
-                    style={
-                      Object {
-                        "bottom": 0,
-                        "left": 0,
-                        "opacity": 0.00001,
-                        "pointerEvents": "none",
-                        "position": "absolute",
-                        "right": 0,
-                        "top": 0,
-                      }
-                    }
-                    type="file"
-                  />
                 </div>
                 <div
                   className="field-file-name"
@@ -653,10 +607,13 @@ exports[`PersonalInformation renders a personal information component embedded i
                   className="ui input"
                 >
                   <input
-                    disabled={false}
                     id="field-home_page"
+                    maxLength={null}
+                    minLength={null}
                     name="home_page"
+                    onBlur={[Function]}
                     onChange={[Function]}
+                    onClick={[Function]}
                     type="text"
                     value=""
                   />
@@ -708,10 +665,13 @@ exports[`PersonalInformation renders a personal information component embedded i
                   className="ui input"
                 >
                   <input
-                    disabled={false}
                     id="field-location"
+                    maxLength={null}
+                    minLength={null}
                     name="location"
+                    onBlur={[Function]}
                     onChange={[Function]}
+                    onClick={[Function]}
                     type="text"
                     value=""
                   />

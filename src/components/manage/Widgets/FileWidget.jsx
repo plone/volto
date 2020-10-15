@@ -7,30 +7,32 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Input, Button, Image } from 'semantic-ui-react';
 import { readAsDataURL } from 'promise-file-reader';
-
+import { injectIntl } from 'react-intl';
 import deleteSVG from '@plone/volto/icons/delete.svg';
 import { Icon, FormFieldWrapper } from '@plone/volto/components';
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
 import Dropzone from 'react-dropzone';
 import { flattenToAppURL } from '@plone/volto/helpers';
 
+const imageMimetypes = [
+  'image/png',
+  'image/jpeg',
+  'image/webp',
+  'image/jpg',
+  'image/gif',
+  'image/svg+xml',
+];
+
 /**
  * FileWidget component class.
  * @function FileWidget
  * @returns {string} Markup of the component.
  */
-const FileWidget = ({
-  id,
-  title,
-  required,
-  description,
-  error,
-  value,
-  onChange,
-  fieldSet,
-  wrapped,
-}) => {
+const FileWidget = (props) => {
+  const { id, value, onChange } = props;
   const fileInput = React.useRef(null);
+  const [fileType, setFileType] = React.useState(true);
+
   /**
    * Drop handler
    * @method onDrop
@@ -58,55 +60,63 @@ const FileWidget = ({
   };
 
   return (
-    <FormFieldWrapper
-      id={id}
-      title={title}
-      description={description}
-      required={required}
-      error={error}
-      wrapped={wrapped}
-      fieldSet={fieldSet}
-    >
+    <FormFieldWrapper {...props}>
       <Dropzone disableClick onDrop={onDrop} className="dropzone">
-        <Image
-          className="image-preview"
-          id={`field-${id}-image`}
-          size="small"
-          src={
-            value?.download ? flattenToAppURL(value.download) : imageBlockSVG
-          }
-        />
-        <label className="label-file-widget-input" htmlFor={`field-${id}`}>
-          {value?.download
-            ? 'Replace existing File/Image'
-            : 'Choose a File/Image'}
-        </label>
-        <Input
-          id={`field-${id}`}
-          name={id}
-          className="file-widget-input"
-          type="file"
-          ref={fileInput}
-          onChange={({ target }) => {
-            const file = target.files[0];
-            readAsDataURL(file).then((data) => {
-              const fields = data.match(/^data:(.*);(.*),(.*)$/);
-              onChange(id, {
-                data: fields[3],
-                encoding: fields[2],
-                'content-type': fields[1],
-                filename: file.name,
-              });
-            });
+        {({ getRootProps, getInputProps }) => (
+          <div {...getRootProps}>
+            {fileType ? (
+              <Image
+                className="image-preview"
+                id={`field-${id}-image`}
+                size="small"
+                src={
+                  value?.download
+                    ? flattenToAppURL(value.download)
+                    : imageBlockSVG
+                }
+              />
+            ) : null}
+            <label className="label-file-widget-input" htmlFor={`field-${id}`}>
+              {value?.download
+                ? 'Replace existing File/Image'
+                : 'Choose a File/Image'}
+            </label>
+            <Input
+              id={`field-${id}`}
+              name={id}
+              className="file-widget-input"
+              type="file"
+              ref={fileInput}
+              onChange={({ target }) => {
+                const file = target.files[0];
+                readAsDataURL(file).then((data) => {
+                  const fields = data.match(/^data:(.*);(.*),(.*)$/);
+                  onChange(id, {
+                    data: fields[3],
+                    encoding: fields[2],
+                    'content-type': fields[1],
+                    filename: file.name,
+                  });
+                });
 
-            let reader = new FileReader();
-            reader.onload = function () {
-              let imagePreview = document.getElementById(`field-${id}-image`);
-              imagePreview.src = reader.result;
-            };
-            reader.readAsDataURL(target.files[0]);
-          }}
-        />
+                let reader = new FileReader();
+                reader.onload = function () {
+                  const fields = reader.result.match(/^data:(.*);(.*),(.*)$/);
+                  if (imageMimetypes.includes(fields[1])) {
+                    setFileType(true);
+                    let imagePreview = document.getElementById(
+                      `field-${id}-image`,
+                    );
+                    imagePreview.src = reader.result;
+                  } else {
+                    setFileType(false);
+                  }
+                };
+                reader.readAsDataURL(target.files[0]);
+              }}
+            />
+          </div>
+        )}
       </Dropzone>
       <div className="field-file-name">
         {value && value.filename}
@@ -120,6 +130,7 @@ const FileWidget = ({
               onChange(id, null);
               let imagePreview = document.getElementById(`field-${id}-image`);
               imagePreview.src = imageBlockSVG;
+              setFileType(false);
               fileInput.current.inputRef.current.value = null;
             }}
           >
@@ -162,4 +173,4 @@ FileWidget.defaultProps = {
   value: null,
 };
 
-export default FileWidget;
+export default injectIntl(FileWidget);

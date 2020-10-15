@@ -2,37 +2,38 @@
 
 exports[`renders a contents item component 1`] = `
 <div
-  className="item"
-  onClick={[Function]}
-  style={
-    Object {
-      "opacity": 1,
-    }
-  }
+  className="ui pointing secondary attached tabular menu"
+  role="tablist"
 >
-  <i
-    aria-hidden="true"
-    className="grey bars icon drag handle"
-  />
-  <button
-    className="item ui noborder button"
+  <div
+    className="item"
+    data-rbd-draggable-context-id="0"
+    data-rbd-draggable-id="test"
     onClick={[Function]}
+    onTransitionEnd={null}
+    style={false}
   >
-    <i
-      aria-hidden="true"
-      className="blue write square large icon"
+    test
+    <button
+      className="item ui noborder button"
       onClick={[Function]}
-    />
-  </button>
-  <button
-    className="item ui noborder button"
-    onClick={[Function]}
-  >
-    <i
-      aria-hidden="true"
-      className="red close large icon"
+    >
+      <i
+        aria-hidden="true"
+        className="blue write square large icon"
+        onClick={[Function]}
+      />
+    </button>
+    <button
+      className="item ui noborder button"
       onClick={[Function]}
-    />
-  </button>
+    >
+      <i
+        aria-hidden="true"
+        className="red close large icon"
+        onClick={[Function]}
+      />
+    </button>
+  </div>
 </div>
 `;
