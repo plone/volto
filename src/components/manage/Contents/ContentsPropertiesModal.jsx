@@ -205,6 +205,7 @@ class ContentsPropertiesModal extends Component {
                 choices: [
                   [true, 'Yes'],
                   [false, 'No'],
+                  [null, 'Leave settings as they are'],
                 ],
               },
             },
