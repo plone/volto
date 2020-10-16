@@ -8,11 +8,11 @@
 
 ### Bugfix
 
-- Use Plone `I18N_LANGUAGE` cookie instead of `language` @cekk
-- Fixes the Profile view in toolbar with generic css @iFlameing
+- Fixes secondary views in toolbar @iFlameing @sneridagh
+
 ### Internal
 
- - Fix sentry docs markdown format @avoinea
+- Fix sentry docs markdown format @avoinea
 
 ## 8.5.0-alpha.0 (2020-10-14)
 

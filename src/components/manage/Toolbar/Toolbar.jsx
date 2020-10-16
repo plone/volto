@@ -331,7 +331,7 @@ class Toolbar extends Component {
                         loadComponent={this.loadComponent}
                         unloadComponent={this.unloadComponent}
                         componentIndex={index}
-                        theToolbar={this.theToolbar}
+                        theToolbar={this.toolbarWindow}
                         key={`personalToolsComponent-${index}`}
                         closeMenu={this.closeMenu}
                         hasActions={haveActions}
@@ -341,7 +341,7 @@ class Toolbar extends Component {
                           loadComponent={this.loadComponent}
                           unloadComponent={this.unloadComponent}
                           componentIndex={index}
-                          theToolbar={this.theToolbar}
+                          theToolbar={this.toolbarWindow}
                           closeMenu={this.closeMenu}
                           isToolbarEmbedded
                         />
@@ -354,7 +354,7 @@ class Toolbar extends Component {
                         loadComponent={this.loadComponent}
                         unloadComponent={this.unloadComponent}
                         componentIndex={index}
-                        theToolbar={this.theToolbar}
+                        theToolbar={this.toolbarWindow}
                         key={`personalToolsComponent-${index}`}
                         closeMenu={this.closeMenu}
                         content={
