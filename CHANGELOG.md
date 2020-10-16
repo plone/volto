@@ -6,11 +6,13 @@
 
 ### Feature
 
+- Adding softlinebreak in list tag @iFlameing
+
 ### Bugfix
 
 ### Internal
 
- - Fix sentry docs markdown format @avoinea
+- Fix sentry docs markdown format @avoinea
 
 ## 8.5.0-alpha.0 (2020-10-14)
 
