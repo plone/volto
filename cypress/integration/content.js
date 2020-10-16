@@ -111,7 +111,7 @@ describe('Add Content Tests', () => {
             { fileContent, fileName: 'image.png', mimeType: 'image/png' },
             { subjectType: 'input' },
           );
-          cy.get('#field-image').parent().parent().contains('image.png');
+          cy.get('#field-image-image').parent().parent().contains('image.png');
         });
     } else {
       cy.fixture('image.png', 'base64')
@@ -123,7 +123,7 @@ describe('Add Content Tests', () => {
             { fileContent, fileName: 'image.png', mimeType: 'image/png' },
             { subjectType: 'input' },
           );
-          cy.get('#field-image').parent().parent().contains('image.png');
+          cy.get('#field-image-image').parent().parent().contains('image.png');
         });
     }
     cy.get('#toolbar-save').click();
