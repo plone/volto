@@ -1062,11 +1062,11 @@ msgstr "Mehr"
 
 #: components/manage/Contents/ContentsItem
 msgid "Move to bottom of folder"
-msgstr "Zum Anfang des Ordners wechseln"
+msgstr "Ans Ende des Ordners verschieben"
 
 #: components/manage/Contents/ContentsItem
 msgid "Move to top of folder"
-msgstr "Zum Unterseite des Ordners wechseln"
+msgstr "An den Anfang des Ordners verschieben"
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "My email address is"
