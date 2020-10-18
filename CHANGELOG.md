@@ -10,6 +10,8 @@
 
 ### Bugfix
 
+- handle SelectWidget null value and isMulti(#1915) &(1878) @nileshgulia1
+
 ### Internal
 
 - Fix sentry docs markdown format @avoinea
