@@ -208,6 +208,7 @@ msgstr "Tanto la dirección de correo electrónico y la contraseña son sensible
 msgid "Breadcrumbs"
 msgstr "Barra de ruta"
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/ContentsUploadModal
 msgid "Browse"
 msgstr "Navegue"
@@ -822,6 +823,7 @@ msgstr "Si usted ha perdido su contraseña, {forgotpassword}"
 msgid "If you you do not have an account here, head over to the {registrationform}."
 msgstr "Si usted no tiene una cuenta de usuario aquí, valla al {registrationform}."
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
@@ -1891,6 +1893,10 @@ msgstr "Cargar archivos"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Uploading files"
 msgstr "Cargando archivos"
+
+#: components/manage/Blocks/HeroImageLeft/Edit
+msgid "Uploading image"
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget

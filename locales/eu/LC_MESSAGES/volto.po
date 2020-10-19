@@ -205,6 +205,7 @@ msgstr "Bai e-posta helbideak eta bai pasahitzak maiuskula eta minuskulak bereiz
 msgid "Breadcrumbs"
 msgstr "Nabigazio arrastoa"
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/ContentsUploadModal
 msgid "Browse"
 msgstr "Arakatu"
@@ -819,6 +820,7 @@ msgstr "Pasahitza ahaztu baduzu, {forgotpassword}"
 msgid "If you you do not have an account here, head over to the {registrationform}."
 msgstr "Ez baduzu erabiltzaile-konturik, zoaz {registrationform}."
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
@@ -1888,6 +1890,10 @@ msgstr "Kargatu fitxategiak"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Uploading files"
 msgstr "Fitxategiak kargatzen"
+
+#: components/manage/Blocks/HeroImageLeft/Edit
+msgid "Uploading image"
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget

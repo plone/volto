@@ -637,6 +637,7 @@ class Edit extends Component {
                       }
                     >
                       <Cell
+                        editable={this.props.editable}
                         value={cell.value}
                         row={rowIndex}
                         cell={cellIndex}

@@ -34,6 +34,18 @@ const messages = defineMessages({
     id: 'Upload a new image',
     defaultMessage: 'Upload a new image',
   },
+  image: {
+    id: 'Image',
+    defaultMessage: 'Image',
+  },
+  browse: {
+    id: 'Browse',
+    defaultMessage: 'Browse',
+  },
+  uploading: {
+    id: 'Uploading image',
+    defaultMessage: 'Uploading image',
+  },
 });
 
 const blockTitleRenderMap = Map({
@@ -85,6 +97,16 @@ class Edit extends Component {
     onFocusNextBlock: PropTypes.func.isRequired,
     handleKeyDown: PropTypes.func.isRequired,
     createContent: PropTypes.func.isRequired,
+    editable: PropTypes.bool,
+  };
+
+  /**
+   * Default properties
+   * @property {Object} defaultProps Default properties.
+   * @static
+   */
+  static defaultProps = {
+    editable: true,
   };
 
   /**
@@ -269,7 +291,7 @@ class Edit extends Component {
           selected: this.props.selected,
         })}
       >
-        {this.props.selected && !!this.props.data.url && (
+        {this.props.editable && this.props.selected && !!this.props.data.url && (
           <div className="toolbar">
             <Button.Group>
               <Button
@@ -299,22 +321,28 @@ class Edit extends Component {
               <Message className="image-message">
                 {this.state.uploading && (
                   <Dimmer active>
-                    <Loader indeterminate>Uploading image</Loader>
+                    <Loader indeterminate>
+                      {this.props.intl.formatMessage(messages.uploading)}
+                    </Loader>
                   </Dimmer>
                 )}
                 <center>
-                  <h4>Image</h4>
-                  <p>{placeholder}</p>
-                  <p>
-                    <label className="ui button file">
-                      Browse
-                      <input
-                        type="file"
-                        onChange={this.onUploadImage}
-                        style={{ display: 'none' }}
-                      />
-                    </label>
-                  </p>
+                  <h4>{this.props.intl.formatMessage(messages.image)}</h4>
+                  {this.props.editable && (
+                    <>
+                      <p>{placeholder}</p>
+                      <p>
+                        <label className="ui button file">
+                          {this.props.intl.formatMessage(messages.browse)}
+                          <input
+                            type="file"
+                            onChange={this.onUploadImage}
+                            style={{ display: 'none' }}
+                          />
+                        </label>
+                      </p>
+                    </>
+                  )}
                 </center>
               </Message>
             </div>
@@ -324,6 +352,7 @@ class Edit extends Component {
               ref={(node) => {
                 this.titleEditor = node;
               }}
+              readOnly={!this.props.editable}
               onChange={this.onChangeTitle}
               editorState={this.state.titleEditorState}
               blockRenderMap={extendedBlockRenderMap}
@@ -365,6 +394,7 @@ class Edit extends Component {
               ref={(node) => {
                 this.descriptionEditor = node;
               }}
+              readOnly={!this.props.editable}
               onChange={this.onChangeDescription}
               editorState={this.state.descriptionEditorState}
               blockRenderMap={extendedDescripBlockRenderMap}

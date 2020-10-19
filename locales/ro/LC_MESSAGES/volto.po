@@ -198,6 +198,7 @@ msgstr "Atât adresa de e-mail, cât și parola sunt case-sensitive, verificați
 msgid "Breadcrumbs"
 msgstr "Breadcrumbs"
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/ContentsUploadModal
 msgid "Browse"
 msgstr "Răsfoiește"
@@ -812,6 +813,7 @@ msgstr "Dacă v-ați uitat parola, {forgotpassword}"
 msgid "If you you do not have an account here, head over to the {registrationform}."
 msgstr "Dacă nu aveți un cont aici, treceți la {registrationform}."
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
@@ -1881,6 +1883,10 @@ msgstr "Încărcați fișiere"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Uploading files"
 msgstr "Încărcarea fișierelor"
+
+#: components/manage/Blocks/HeroImageLeft/Edit
+msgid "Uploading image"
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
