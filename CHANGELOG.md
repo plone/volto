@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Translation @ksuess
+
 ## 8.5.1-alpha.0 (2020-10-19)
 
 ### Feature
@@ -24,7 +26,6 @@
 ### Internal
 
 - Fix sentry docs markdown format @avoinea
-- Translation @ksuess
 
 ## 8.5.0-alpha.0 (2020-10-14)
 
