@@ -8,9 +8,24 @@
 
 ### Bugfix
 
+- Making QuerystringWidget more resilient by handeling null value @iFlameing
+
 ### Internal
 
-- Making QuerystringWidget more resilient by handeling null value @iFlameing
+## 8.5.1-alpha.0 (2020-10-19)
+
+### Feature
+
+- Adding softlinebreak in list tag @iFlameing
+
+### Bugfix
+
+- Errors catched by the default error handler are sent to sentry @zotya
+- Fixed a problem what occured when RAZZLE_SENTRY_DSN was missing but the other RAZZLE_SENTRY_* variables were set @zotya
+
+### Internal
+
+- Fix sentry docs markdown format @avoinea
 
 ## 8.5.0-alpha.0 (2020-10-14)
 
