@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Translation @ksuess
+
 ## 8.5.1-alpha.0 (2020-10-19)
 
 ### Feature
