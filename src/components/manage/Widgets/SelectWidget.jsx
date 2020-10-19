@@ -119,7 +119,7 @@ function getDefaultValues(choices, value) {
  * @function SelectWidget
  * @returns {string} Markup of the component.
  */
-export class SelectWidget extends Component {
+class SelectWidget extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
