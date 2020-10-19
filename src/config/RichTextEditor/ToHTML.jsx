@@ -75,19 +75,37 @@ const splitBySoftLines = (children) =>
     });
   });
 
+// splitSoftLines for <li> tag
+const splitSoftLinesOfLists = (children) =>
+  children.map((child, index) => {
+    return (
+      <li key={index}>
+        {child[1].map((subchild) => {
+          if (typeof subchild === 'string') {
+            const last = subchild.split('\n').length - 1;
+            return subchild.split('\n').map((item, index) => (
+              <React.Fragment key={index}>
+                {item}
+                {index !== last && <br />}
+              </React.Fragment>
+            ));
+          } else {
+            return subchild;
+          }
+        })}
+      </li>
+    );
+  });
+
 // Returns how the default lists should be rendered
 const getList = (ordered) => (children, { depth, keys }) =>
   ordered ? (
     <ol key={keys[0]} keys={keys} depth={depth}>
-      {children.map((child, i) => (
-        <li key={keys[i]}>{child}</li>
-      ))}
+      {splitSoftLinesOfLists(children)}
     </ol>
   ) : (
     <ul key={keys[0]} keys={keys} depth={depth}>
-      {children.map((child, i) => (
-        <li key={keys[i]}>{child}</li>
-      ))}
+      {splitSoftLinesOfLists(children)}
     </ul>
   );
 
