@@ -13,6 +13,7 @@
 ### Internal
 
 - Fix sentry docs markdown format @avoinea
+- Add `UniversalLink` to handle internal/external/download links @nzambello
 
 ## 8.5.0-alpha.0 (2020-10-14)
 
