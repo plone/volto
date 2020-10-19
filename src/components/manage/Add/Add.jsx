@@ -236,13 +236,6 @@ class Add extends Component {
       const translationObject = this.props.location?.state?.translationObject;
       const translateTo = this.props.location?.state?.language;
 
-      if (translationObject && blocksFieldname && blocksLayoutFieldname) {
-        //copy blocks from translationObject
-        this.initialBlocks = translationObject[blocksFieldname];
-        this.initialBlocksLayout =
-          translationObject[blocksLayoutFieldname].items;
-      }
-
       // Lookup initialBlocks and initialBlocksLayout within schema
       const schemaBlocks = this.props.schema.properties[blocksFieldname]
         ?.default;
@@ -262,6 +255,26 @@ class Add extends Component {
 
             // Layout ID - keep a reference to the original block id within layout
             initialBlocks[newUid]['@layout'] = value;
+          }
+        });
+      }
+
+      //copy blocks from translationObject
+      if (translationObject && blocksFieldname && blocksLayoutFieldname) {
+        initialBlocks = {};
+        initialBlocksLayout = [];
+        const originalBlocks = translationObject[blocksFieldname];
+        const originalBlocksLayout =
+          translationObject[blocksLayoutFieldname].items;
+
+        originalBlocksLayout.forEach((value) => {
+          if (!isEmpty(originalBlocks[value])) {
+            let newUid = uuid();
+            initialBlocksLayout.push(newUid);
+            initialBlocks[newUid] = originalBlocks[value];
+
+            // Layout ID - keep a reference to the original block id within layout
+            initialBlocks[newUid]['@canonical'] = value;
           }
         });
       }

@@ -43,7 +43,7 @@ const CompareLanguages = ({
   }
 
   const translationsObject = {};
-  translations.each((t) => {
+  translations.forEach((t) => {
     translationsObject[t.language] = t['@id'];
   });
 
