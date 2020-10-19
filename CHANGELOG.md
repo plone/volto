@@ -8,12 +8,17 @@
 
 ### Feature
 
+- Adding softlinebreak in list tag @iFlameing
+
 ### Bugfix
 
 - Added prop resettable to DatetimeWidget @damiDevRT
 - removed the ability to reset the datepicker in the recurrence widget to prevent the uncontrolled creation of recurrences @damiDevRT
 - Japanese translation updated @terapyon
 ### Internal
+
+- Fix sentry docs markdown format @avoinea
+- Add `UniversalLink` to handle internal/external/download links @nzambello
 
 ## 8.5.0-alpha.0 (2020-10-14)
 

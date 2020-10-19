@@ -34,6 +34,7 @@ If these env variables are configured, when the app is built, a new release will
 After starting the application if an error will occure, the errors will be sent to sentry, and will be linked to the specified release.
 
 Example of usage:
+
 ```bash
 SENTRY_URL=https://mysentry.com SENTRY_AUTH_TOKEN=foo SENTRY_ORG=my_organization SENTRY_PROJECT=new_project SENTRY_RELEASE=2.0.0 SENTRY_DSN=https://boo@sentry.com/1 yarn build
 node build/server.js
@@ -41,6 +42,7 @@ node build/server.js
 ### 2. Runtime
 In case you plan to use the application using docker, you will not want to have the sentry setup in the docker image.
 The configuration for setting up sentry on runtime is very similar as how we set it up for buildtime, but with some small differences:
+
  - SENTRY_URL - the url of sentry
  - SENTRY_AUTH_TOKEN - the authentication token for sentry
  - SENTRY_ORG - the name of the organization in sentry
@@ -54,10 +56,12 @@ The configuration for setting up sentry on runtime is very similar as how we set
 
 In the entrypoint of our docker image we have to add the ./create-sentry-release.sh script. When the container is started, this script will check in sentry if the specified release already exists, if not, it will create it and upload the source code and the source maps.
 The script can be executed also manually and if we want to overwrite the existing files in sentry, we can use the --force  flag:
+
 ```bash
 ./create-sentry-release.sh --force
 ```
 Example of entrypoint:
+
 ```bash
 #!/usr/bin/env bash
 set -Ex
@@ -88,12 +92,14 @@ exec "$@"
 ```
 
 Starting with docker:
+
 ```bash
 docker run -p 3000:3000 -p 3001:3001 -e SENTRY_URL=https://mysentry.com -e SENTRY_AUTH_TOKEN=foo -e SENTRY_ORG=my_organization -e SENTRY_PROJECT=new_project -e SENTRY_RELEASE=2.0.0 -e RAZZLE_SENTRY_DSN=https://boo@sentry.com/1 -e RAZZLE_SENTRY_RELEASE=2.0.0 volto-app:latest
 ```
 
 Or using docker-compose:
-```bash
+
+```yaml
 version: '3'
 services:
   volto:
@@ -112,34 +118,41 @@ services:
 ```
 
 ## Configuration options
+
 This applies to both SENTRY_FRONTEND_CONFIGURATION and SENTRY_BACKEND_CONFIGURATION 
-**Note:** In case you are using buildtime configuration you have to use SENTRY_FRONTEND_CONFIGURATION and SENTRY_BACKEND_CONFIGURATION. But if you are using runtime configuration, use RAZZLE_SENTRY_FRONTEND_CONFIGURATION and RAZZLE_SENTRY_BACKEND_CONFIGURATION
+
+**Note:** In case you are using buildtime configuration you have to use SENTRY_FRONTEND_CONFIGURATION and SENTRY_BACKEND_CONFIGURATION.
+
+But if you are using runtime configuration, use RAZZLE_SENTRY_FRONTEND_CONFIGURATION and RAZZLE_SENTRY_BACKEND_CONFIGURATION
 
 We have the possibility to add TAGS and ADDITIONAL DATA for our messages for categorization in SENTRY. We can configure these 2 variables separately, as we might want to separate the messages from frontend and backend.
 Example of configurations:
-```bash
+
+```json
 {
   "tags":
-    {
+  {
       "site":"www.test.com",
       "app":"test_app"
-    },
+  },
   "extras":
-    {
+  {
       "logger":"javascript-frontend"
-    }
+  },
   "environment": "development",
   "serverName": "server #1",
   "maxBreadcrumbs": 50
 }
 ```
 Example of usage with buildtime setup:
+
 ```bash
 SENTRY_URL=https://mysentry.com SENTRY_AUTH_TOKEN=foo SENTRY_ORG=my_organization SENTRY_PROJECT=new_project SENTRY_RELEASE=2.0.0 SENTRY_DSN=https://boo@sentry.com/1 SENTRY_FRONTEND_CONFIG='{"tags":{"site":"www.test.com","app":"test_app"},"extras":{"logger":"javascript-frontend", "release":"1.4.1"}}' SENTRY_BACKEND_CONFIG='{"tags":{"site":"www.test.com","app":"test_app"} yarn build
 node build/server.js
 ```
  Example with docker-compose:
-```bash
+
+```yaml
 version: '3'
 services:
   volto:
@@ -160,6 +173,7 @@ services:
  ```
 
 ## Example of messages in SENTRY
+
 1. List of messages
 ![](sentry_messages.png)
 2. Messages from the frontend, with it's own TAGS and ADDITIONAL DATA
