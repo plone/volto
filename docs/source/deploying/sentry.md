@@ -170,7 +170,7 @@ services:
       - RAZZLE_SENTRY_RELEASE=2.0.0
       - RAZZLE_SENTRY_FRONTEND_CONFIGURATION={"tags":{"site":"www.test.com","app":"test_app"},"extras":{"logger":"javascript-frontend"}}
       - RAZZLE_SENTRY_BACKEND_CONFIGURATION={"tags":{"site":"www.test.com","app":"test_app"},"extras":{"logger":"javascript-backend", "server":"server#1"}}
- ```
+```
 
 ## Example of messages in SENTRY
 

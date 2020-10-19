@@ -6,11 +6,22 @@
 
 ### Feature
 
+### Bugfix
+
+- Fixing overlay expansion during link assign from objectbrowser in edit mode @iFlameing
+
+### Internal
+
+## 8.5.1-alpha.0 (2020-10-19)
+
+### Feature
+
 - Adding softlinebreak in list tag @iFlameing
 
 ### Bugfix
 
-- Fixing overlay expansion during link assign from objectbrowser in edit mode @iFlameing
+- Errors catched by the default error handler are sent to sentry @zotya
+- Fixed a problem what occured when RAZZLE_SENTRY_DSN was missing but the other RAZZLE_SENTRY_* variables were set @zotya
 
 ### Internal
 
