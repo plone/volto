@@ -1,16 +1,44 @@
 # Change Log
 
-## 8.3.1 (unreleased)
+## 8.5.0 (unreleased)
 
 ### Breaking
 
 ### Feature
+
+- Adding softlinebreak in list tag @iFlameing
 
 ### Bugfix
 
 - Fixing overlay expansion during link assign from objectbrowser in edit mode @iFlameing
 
 ### Internal
+
+- Fix sentry docs markdown format @avoinea
+
+## 8.5.0-alpha.0 (2020-10-14)
+
+### Feature
+
+- Sentry integration @zotya
+- All the environment variables defined at runtime that have the `RAZZLE_` prefix, are now available in the browser under window.env @zotya
+
+## 8.4.0 (2020-10-14)
+
+### Feature
+
+- Add `Style`, a wrapper component that applies float and width classes to wrapped content (typically blocks) @tiberiuichim
+- Add `AlignWidget`, a widget that wraps the `AlignBlock` helper @tiberiuichim
+
+### Bugfix
+
+- Folder contents view: Save additional columns and updated order of columns @ksuess
+- Fixed edit link in draft-js when link is selected from word-end to word-start @giuliaghisini
+- Revert PR No. 1820 to fix linebreaks on inline links in draftJS @steffenri
+
+### Internal
+
+- Keep `@babel/core` in Volto core in sync with `babel-preset-razzle` it fixes #1897 @sneridagh
 
 ## 8.3.0 (2020-10-12)
 
@@ -118,6 +146,7 @@
 - Added Schema Editor within Dexterity Content-Types Controlpanel @rexalex @avoinea #1517
 - Added Blocks Layout Editor within Dexterity Content-Types Controlpanel @avoinea #1517
 - Added missing components for Email and Url widgets #1246 @rexalex
+- Use content title instead of image id in alt tag @nileshgulia1
 
 ### Bugfix
 
@@ -511,7 +540,7 @@
 
 ### Bugfix
 
-- added export for ObjectBrowserWidget in component/index.js @giuliaghisini
+- Added export for ObjectBrowserWidget in component/index.js @giuliaghisini
 - Fixed duplicated items in SelectWidget and ArrayWidget @giuliaghisini
 - Update German translation @timo
 - Removed broken preview image in ContentsUploadModal if uploaded item is not an image. @giuliaghisini
