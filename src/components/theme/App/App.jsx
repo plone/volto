@@ -86,9 +86,7 @@ class App extends Component {
   componentDidCatch(error, info) {
     this.setState({ hasError: true, error, errorInfo: info });
     if (__CLIENT__) {
-      if (
-        (window?.env?.RAZZLE_SENTRY_DSN || __SENTRY__?.SENTRY_DSN)
-      ) {
+      if (window?.env?.RAZZLE_SENTRY_DSN || __SENTRY__?.SENTRY_DSN) {
         Sentry.captureException(error);
       }
     }
