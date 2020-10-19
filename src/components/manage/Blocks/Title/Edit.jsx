@@ -52,6 +52,15 @@ class Edit extends Component {
   };
 
   /**
+   * Default properties
+   * @property {Object} defaultProps Default properties.
+   * @static
+   */
+  static defaultProps = {
+    editable: true,
+  };
+
+  /**
    * Constructor
    * @method constructor
    * @param {Object} props Component properties
@@ -144,8 +153,8 @@ class Edit extends Component {
 
     return (
       <Editor
-        onChange={this.onChange}
         readOnly={!this.props.editable}
+        onChange={this.onChange}
         editorState={this.state.editorState}
         blockRenderMap={extendedBlockRenderMap}
         handleReturn={() => {

@@ -54,6 +54,16 @@ class Edit extends Component {
     onSelectBlock: PropTypes.func.isRequired,
     onDeleteBlock: PropTypes.func.isRequired,
     handleKeyDown: PropTypes.func.isRequired,
+    editable: PropTypes.bool,
+  };
+
+  /**
+   * Default properties
+   * @property {Object} defaultProps Default properties.
+   * @static
+   */
+  static defaultProps = {
+    editable: true,
   };
 
   /**
@@ -181,6 +191,7 @@ class Edit extends Component {
         )}
         {!this.state.isPreview && (
           <Editor
+            readOnly={!this.props.editable}
             value={this.state.code}
             placeholder={placeholder}
             onValueChange={(code) => this.onChangeCode(code)}

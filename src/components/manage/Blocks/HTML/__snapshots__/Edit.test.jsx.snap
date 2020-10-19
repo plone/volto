@@ -23,6 +23,7 @@ exports[`renders an edit html block component 1`] = `
     onChange={[Function]}
     onKeyDown={[Function]}
     placeholder="<p>Add some HTML here</p>"
+    readOnly={false}
     spellCheck={false}
     style={
       Object {

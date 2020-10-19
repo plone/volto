@@ -60,6 +60,7 @@ class Edit extends Component {
    */
   static defaultProps = {
     detached: false,
+    editable: true,
   };
 
   /**
@@ -210,9 +211,9 @@ class Edit extends Component {
     return (
       <>
         <Editor
+          readOnly={!this.props.editable}
           onChange={this.onChange}
           editorState={this.state.editorState}
-          readOnly={!this.props.editable}
           plugins={[
             this.state.inlineToolbarPlugin,
             ...settings.richTextEditorPlugins,

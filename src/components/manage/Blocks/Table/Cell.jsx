@@ -33,6 +33,7 @@ class Cell extends Component {
     onChange: PropTypes.func.isRequired,
     isTableBlockSelected: PropTypes.bool,
     disableNewBlocks: PropTypes.bool,
+    editable: PropTypes.bool,
   };
 
   /**
@@ -42,6 +43,7 @@ class Cell extends Component {
    */
   static defaultProps = {
     detached: false,
+    editable: true,
   };
 
   /**
@@ -128,6 +130,7 @@ class Cell extends Component {
     return (
       <div>
         <Editor
+          readOnly={!this.props.editable}
           onChange={this.onChange}
           editorState={this.state.editorState}
           plugins={[
