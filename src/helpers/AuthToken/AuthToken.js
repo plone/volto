@@ -37,6 +37,16 @@ export function persistAuthToken(store) {
     const previousValue = currentValue;
     const state = store.getState();
     currentValue = state.userSession.token;
+
+    if (
+      module.hot &&
+      module.hot.data &&
+      module.hot.data.reloaded &&
+      previousValue
+    ) {
+      currentValue = previousValue;
+    }
+
     if (previousValue !== currentValue || initial) {
       if (!currentValue) {
         cookie.remove('auth_token', { path: '/' });
@@ -45,6 +55,10 @@ export function persistAuthToken(store) {
           path: '/',
           expires: new Date(jwtDecode(currentValue).exp * 1000),
         });
+        const exp =
+          (jwtDecode(store.getState().userSession.token).exp * 1000 -
+            new Date().getTime()) *
+            0.9 || 3600000;
         setTimeout(() => {
           if (store.getState().userSession.token) {
             if (
@@ -63,11 +77,17 @@ export function persistAuthToken(store) {
               );
             }
           }
-        }, (jwtDecode(store.getState().userSession.token).exp * 1000 - new Date().getTime()) * 0.9);
+        }, exp);
       }
     }
   }
 
   store.subscribe(handleChange);
   handleChange(true);
+}
+
+if (module.hot) {
+  module.hot.dispose((data) => {
+    data.reloaded = true;
+  });
 }

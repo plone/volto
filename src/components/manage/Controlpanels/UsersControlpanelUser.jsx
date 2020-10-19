@@ -63,7 +63,11 @@ class UsersControlpanelUser extends Component {
   render() {
     return (
       <Table.Row key={this.props.user.username}>
-        <Table.Cell className="fullname">{this.props.user.fullname}</Table.Cell>
+        <Table.Cell className="fullname">
+          {this.props.user.fullname
+            ? this.props.user.fullname
+            : this.props.user.username}
+        </Table.Cell>
         {this.props.roles.map((role) => (
           <Table.Cell key={role.id}>
             <Checkbox

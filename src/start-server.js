@@ -1,6 +1,13 @@
+/* eslint no-console: 0 */
 import http from 'http';
 
 import app from './server';
+
+import * as Sentry from '@sentry/node';
+
+import initSentry from './sentry';
+
+initSentry(Sentry);
 
 export default () => {
   const server = http.createServer(app);

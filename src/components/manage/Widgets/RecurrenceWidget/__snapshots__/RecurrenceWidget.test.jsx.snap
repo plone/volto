@@ -1,0 +1,259 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a recurrence widget component 1`] = `
+<div
+  className="inline field recurrence-widget"
+  id="field-my-field"
+>
+  <div
+    className="ui grid"
+  >
+    <div
+      className="stretched row"
+    >
+      <div
+        className="four wide column"
+      >
+        <div
+          className="wrapper"
+        >
+          <label
+            htmlFor="field-my-field"
+          >
+            My field
+          </label>
+        </div>
+      </div>
+      <div
+        className="eight wide column"
+      >
+        <div
+          className="ui label"
+          onClick={[Function]}
+        >
+          every day until March 24, 2020
+        </div>
+        <div
+          className="ui segment"
+        >
+          <div
+            className="occurences"
+          >
+            <div
+              className="ui divided middle aligned list"
+              role="list"
+            >
+              <div
+                className="item"
+                onClick={[Function]}
+                role="listitem"
+              >
+                <div
+                  className="content"
+                >
+                  Wednesday, March 11, 2020
+                </div>
+              </div>
+              <div
+                className="item"
+                onClick={[Function]}
+                role="listitem"
+              >
+                <div
+                  className="content"
+                >
+                  Thursday, March 12, 2020
+                </div>
+              </div>
+              <div
+                className="item"
+                onClick={[Function]}
+                role="listitem"
+              >
+                <div
+                  className="content"
+                >
+                  Friday, March 13, 2020
+                </div>
+              </div>
+              <div
+                className="item"
+                onClick={[Function]}
+                role="listitem"
+              >
+                <div
+                  className="content"
+                >
+                  Saturday, March 14, 2020
+                </div>
+              </div>
+              <div
+                className="item"
+                onClick={[Function]}
+                role="listitem"
+              >
+                <div
+                  className="content"
+                >
+                  Sunday, March 15, 2020
+                </div>
+              </div>
+              <div
+                className="item"
+                onClick={[Function]}
+                role="listitem"
+              >
+                <div
+                  className="content"
+                >
+                  Monday, March 16, 2020
+                </div>
+              </div>
+              <div
+                className="item"
+                onClick={[Function]}
+                role="listitem"
+              >
+                <div
+                  className="content"
+                >
+                  Tuesday, March 17, 2020
+                </div>
+              </div>
+              <div
+                className="item"
+                onClick={[Function]}
+                role="listitem"
+              >
+                <div
+                  className="content"
+                >
+                  Wednesday, March 18, 2020
+                </div>
+              </div>
+              <div
+                className="item"
+                onClick={[Function]}
+                role="listitem"
+              >
+                <div
+                  className="content"
+                >
+                  Thursday, March 19, 2020
+                </div>
+              </div>
+              <div
+                className="item"
+                onClick={[Function]}
+                role="listitem"
+              >
+                <div
+                  className="content"
+                >
+                  Friday, March 20, 2020
+                </div>
+              </div>
+              <div
+                className="item"
+                onClick={[Function]}
+                role="listitem"
+              >
+                <div
+                  className="content"
+                >
+                  Saturday, March 21, 2020
+                </div>
+              </div>
+              <div
+                className="item"
+                onClick={[Function]}
+                role="listitem"
+              >
+                <div
+                  className="content"
+                >
+                  Sunday, March 22, 2020
+                </div>
+              </div>
+              <div
+                className="item"
+                onClick={[Function]}
+                role="listitem"
+              >
+                <div
+                  className="content"
+                >
+                  Monday, March 23, 2020
+                </div>
+              </div>
+              <div
+                className="item"
+                onClick={[Function]}
+                role="listitem"
+              >
+                <div
+                  className="content"
+                >
+                  Tuesday, March 24, 2020
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <button
+            aria-label="Edit recurrence"
+            className="ui blue basic button edit-recurrence"
+            onClick={[Function]}
+            type="button"
+          >
+            <svg
+              className="icon"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "<title>Edit recurrence</title>undefined",
+                }
+              }
+              onClick={null}
+              style={
+                Object {
+                  "fill": "currentColor",
+                  "height": "20px",
+                  "width": "auto",
+                }
+              }
+              viewBox=""
+              xmlns=""
+            />
+          </button>
+          <button
+            aria-label="Remove"
+            className="ui pink basic button remove-recurrence"
+            onClick={[Function]}
+            type="button"
+          >
+            <svg
+              className="icon"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "<title>Remove</title>undefined",
+                }
+              }
+              onClick={null}
+              style={
+                Object {
+                  "fill": "currentColor",
+                  "height": "20px",
+                  "width": "auto",
+                }
+              }
+              viewBox=""
+              xmlns=""
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

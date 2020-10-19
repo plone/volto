@@ -1,7 +1,64 @@
 .section-search {
   .items_total {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
     margin-bottom: 1em;
     color: @grey;
+  }
+
+  .items_total .header-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .items_total .button-sort {
+    position: relative;
+    padding: 4px;
+    padding-right: 2px;
+    margin-left: 2px;
+    background: none;
+    border-radius: 0;
+    color: #68778d;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .items_total .button-sort::before {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 80%;
+    border-right: 1px solid #b8c6c8;
+    margin: auto;
+    margin-top: -2px;
+    content: '';
+  }
+
+  .items_total .button-sort:last-of-type::before {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 80%;
+    border-right: 0px solid #b8c6c8;
+    margin: auto;
+    margin-top: -2px;
+    content: '';
+  }
+
+  .items_total .button-active {
+    border: none;
+    color: #68778d;
+    font-weight: bold;
+  }
+
+  .items_total .sort-by {
+    padding-right: 0.3em;
+    color: #68778d;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
   }
 
   #content-core {

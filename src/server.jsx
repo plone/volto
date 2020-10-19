@@ -1,3 +1,4 @@
+/* eslint no-console: 0 */
 import React from 'react';
 import { StaticRouter } from 'react-router-dom';
 import { Provider } from 'react-intl-redux';
@@ -7,7 +8,6 @@ import { createMemoryHistory } from 'history';
 import { ReduxAsyncConnect, loadOnServer } from 'redux-connect';
 import { parse as parseUrl } from 'url';
 import { keys } from 'lodash';
-import Raven from 'raven';
 import cookie, { plugToRequest } from 'react-cookie';
 import locale from 'locale';
 import { detect } from 'detect-browser';
@@ -66,6 +66,10 @@ if (__DEVELOPMENT__ && settings.devProxyToApiPath) {
     }),
   );
 }
+
+if ((settings.expressMiddleware || []).length)
+  server.use('/', settings.expressMiddleware);
+
 server
   .disable('x-powered-by')
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
@@ -79,7 +83,7 @@ server
     const browserdetect = detect(req.headers['user-agent']);
 
     const lang = new locale.Locales(
-      cookie.load('lang') ||
+      cookie.load('I18N_LANGUAGE') ||
         settings.defaultLanguage ||
         req.headers['accept-language'],
     )
@@ -189,11 +193,6 @@ server
             </Provider>
           );
 
-          if (process.env.SENTRY_DSN) {
-            Raven.captureException(error.message, {
-              extra: JSON.stringify(error),
-            });
-          }
           res.set({
             'Cache-Control': 'public, max-age=60, no-transform',
           });

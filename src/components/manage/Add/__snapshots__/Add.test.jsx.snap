@@ -2,4 +2,6 @@
 
 exports[`Add renders an add component 1`] = `<div />`;
 
+exports[`Add renders an add component with schema 1`] = `<div />`;
+
 exports[`Add renders an empty add component 1`] = `<div />`;

@@ -30,6 +30,10 @@ const messages = defineMessages({
     id: 'Description',
     defaultMessage: 'Description',
   },
+  placeholder: {
+    id: 'Upload a new image',
+    defaultMessage: 'Upload a new image',
+  },
 });
 
 const blockTitleRenderMap = Map({
@@ -256,6 +260,9 @@ class Edit extends Component {
     if (__SERVER__) {
       return <div />;
     }
+    const placeholder =
+      this.props.data.placeholder ||
+      this.props.intl.formatMessage(messages.placeholder);
     return (
       <div
         className={cx('block hero', {
@@ -297,7 +304,7 @@ class Edit extends Component {
                 )}
                 <center>
                   <h4>Image</h4>
-                  <p>Upload a new image</p>
+                  <p>{placeholder}</p>
                   <p>
                     <label className="ui button file">
                       Browse
