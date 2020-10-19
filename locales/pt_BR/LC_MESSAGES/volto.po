@@ -206,6 +206,7 @@ msgstr "O endereço de e-mail e a senha diferenciam maiúsculas de minúsculas. 
 msgid "Breadcrumbs"
 msgstr "Navegação estrutural"
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/ContentsUploadModal
 msgid "Browse"
 msgstr "Procurar"
@@ -820,6 +821,7 @@ msgstr "Se se esqueceu da sua senha, {forgotpassword}"
 msgid "If you you do not have an account here, head over to the {registrationform}."
 msgstr "Se não tem uma conta aqui, dirija-se a {registrationform}."
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
@@ -1890,6 +1892,10 @@ msgstr "Enviar ficheiros"
 msgid "Uploading files"
 msgstr "Enviando ficheiros"
 
+#: components/manage/Blocks/HeroImageLeft/Edit
+msgid "Uploading image"
+msgstr ""
+
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -2065,6 +2071,10 @@ msgstr "comum"
 
 #: components/manage/Multilingual/CompareLanguages
 msgid "compare_to"
+msgstr ""
+
+#: components/manage/Multilingual/CompareLanguages
+msgid "compare_to_nothing"
 msgstr ""
 
 #: components/manage/Blocks/Block/Edit

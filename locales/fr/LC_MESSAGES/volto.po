@@ -215,6 +215,7 @@ msgstr "L'adresse e-mail et le mot de passe sont sensibles aux majuscules et min
 msgid "Breadcrumbs"
 msgstr "Fil d'Ariane"
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/ContentsUploadModal
 msgid "Browse"
 msgstr "Explore"
@@ -829,6 +830,7 @@ msgstr "Si vous avez oublié votre mot de passe, {forgotpassword}"
 msgid "If you you do not have an account here, head over to the {registrationform}."
 msgstr "Si vous n'avez pas de compte, allez sur le {registrationform}."
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
@@ -1899,6 +1901,10 @@ msgstr "Télécharger des fichiers"
 msgid "Uploading files"
 msgstr "Téléchargement de fichiers"
 
+#: components/manage/Blocks/HeroImageLeft/Edit
+msgid "Uploading image"
+msgstr ""
+
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -2074,6 +2080,10 @@ msgstr "commun"
 
 #: components/manage/Multilingual/CompareLanguages
 msgid "compare_to"
+msgstr ""
+
+#: components/manage/Multilingual/CompareLanguages
+msgid "compare_to_nothing"
 msgstr ""
 
 #: components/manage/Blocks/Block/Edit
