@@ -2,8 +2,6 @@
 
 ## 8.5.0 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Adding softlinebreak in list tag @iFlameing
