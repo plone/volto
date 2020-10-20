@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix sharing for when users has dots on them @sneridagh
+
 ### Internal
 
 ## 8.5.0 (2020-10-20)
@@ -34,7 +36,6 @@
 
 ### Bugfix
 
-- Fix sharing for when users has dots on them @sneridagh
 - Errors catched by the default error handler are sent to sentry @zotya
 - Fixed a problem what occured when RAZZLE_SENTRY_DSN was missing but the other RAZZLE_SENTRY_* variables were set @zotya
 
