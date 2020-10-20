@@ -450,6 +450,15 @@ class Contents extends Component {
         items: nextProps.items,
       });
     }
+    if (this.props.orderRequest.loading && nextProps.orderRequest.loaded) {
+      toast.success(
+        <Toast
+          success
+          title={this.props.intl.formatMessage(messages.success)}
+          content={this.props.intl.formatMessage(messages.messageReorder)}
+        />,
+      );
+    }
   }
 
   /**
@@ -621,19 +630,9 @@ class Contents extends Component {
         delta,
       );
     } else {
-      this.setState(
-        {
-          items: move(this.state.items, itemIndex, itemIndex + delta),
-        },
-        () =>
-          toast.success(
-            <Toast
-              success
-              title={this.props.intl.formatMessage(messages.success)}
-              content={this.props.intl.formatMessage(messages.messageReorder)}
-            />,
-          ),
-      );
+      this.setState({
+        items: move(this.state.items, itemIndex, itemIndex + delta),
+      });
     }
   }
 
@@ -1685,6 +1684,7 @@ export const __test__ = compose(
         deleteRequest: store.content.delete,
         updateRequest: store.content.update,
         objectActions: store.actions.actions.object,
+        orderRequest: store.content.order,
       };
     },
     {
@@ -1725,6 +1725,7 @@ export default compose(
         deleteRequest: store.content.delete,
         updateRequest: store.content.update,
         objectActions: store.actions.actions.object,
+        orderRequest: store.content.order,
       };
     },
     {
