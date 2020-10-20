@@ -10,6 +10,8 @@
 
 ### Bugfix
 
+- Fix sharing for when users has dots on them @sneridagh
+
 ### Internal
 
 - Fix sentry docs markdown format @avoinea
