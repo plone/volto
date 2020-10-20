@@ -82,6 +82,7 @@
 - Fix sharing for when users has dots on them @sneridagh
 
 ## 8.5.0 (2020-10-20)
+- Improvements in InlineForm @nileshgulia1
 
 ### Bugfix
 
