@@ -1,8 +1,32 @@
 # Change Log
 
-## 8.5.0 (unreleased)
+## 8.5.1 (unreleased)
 
 ### Breaking
+
+### Feature
+
+### Bugfix
+
+### Internal
+
+## 8.5.0 (2020-10-20)
+
+### Bugfix
+
+- Japanese translation updated @terapyon
+
+## 8.5.0-alpha.2 (2020-10-20)
+
+### Bugfix
+
+- Update German translation @ksuess
+
+### Internal
+
+- Fix runtimeConfig relative vs absolute import @avoinea
+
+## 8.5.1-alpha.0 (2020-10-19)
 
 ### Feature
 
@@ -11,6 +35,8 @@
 ### Bugfix
 
 - Fix sharing for when users has dots on them @sneridagh
+- Errors catched by the default error handler are sent to sentry @zotya
+- Fixed a problem what occured when RAZZLE_SENTRY_DSN was missing but the other RAZZLE_SENTRY_* variables were set @zotya
 
 ### Internal
 
