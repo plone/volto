@@ -2,15 +2,9 @@
 
 ## 8.5.1 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Fix sharing for when users has dots on them @sneridagh
-
-### Internal
 
 ## 8.5.0 (2020-10-20)
 
