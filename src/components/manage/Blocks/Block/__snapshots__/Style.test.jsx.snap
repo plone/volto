@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a Style wrapper component 1`] = `
+<div
+  className=" align full"
+>
+  <div
+    className="full-width large"
+  >
+    Hello world
+  </div>
+</div>
+`;
