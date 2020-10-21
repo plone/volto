@@ -1,6 +1,6 @@
 # Change Log
 
-## 8.5.2 (unreleased)
+## 8.5.2 (2020-10-21)
 
 ### Bugfix
 
