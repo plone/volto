@@ -1,10 +1,44 @@
 # Change Log
 
-## 8.5.0 (unreleased)
+## 8.5.2 (unreleased)
 
 - Improved form validation. Tested required fields when field is array or richtext @giuliaghisini
 
 ### Breaking
+
+### Feature
+
+Added environment parameter `RAZZLE_BIND_ADDRESS` to be able to bind server to localhost or other specific IPs instead of 0.0.0.0 @achimwilde
+
+### Bugfix
+
+- Showing error notification when user try to paste disallowed content type. @iFlameing
+
+### Internal
+
+## 8.5.1 (2020-10-21)
+
+### Bugfix
+
+- Fix sharing for when users has dots on them @sneridagh
+
+## 8.5.0 (2020-10-20)
+
+### Bugfix
+
+- Japanese translation updated @terapyon
+
+## 8.5.0-alpha.2 (2020-10-20)
+
+### Bugfix
+
+- Update German translation @ksuess
+
+### Internal
+
+- Fix runtimeConfig relative vs absolute import @avoinea
+
+## 8.5.1-alpha.0 (2020-10-19)
 
 ### Feature
 
@@ -15,6 +49,9 @@
 - Added prop resettable to DatetimeWidget @damiDevRT
 - removed the ability to reset the datepicker in the recurrence widget to prevent the uncontrolled creation of recurrences @damiDevRT
 - Japanese translation updated @terapyon
+- Errors catched by the default error handler are sent to sentry @zotya
+- Fixed a problem what occured when RAZZLE_SENTRY_DSN was missing but the other RAZZLE_SENTRY_* variables were set @zotya
+
 ### Internal
 
 - Fix sentry docs markdown format @avoinea
