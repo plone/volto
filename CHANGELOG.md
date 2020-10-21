@@ -11,6 +11,7 @@ Added environment parameter `RAZZLE_BIND_ADDRESS` to be able to bind server to l
 ### Bugfix
 
 - Render nativeLang instead of 2 character language code in language selector
+- Showing error notification when user try to paste disallowed content type. @iFlameing
 
 ### Internal
 
