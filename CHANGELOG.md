@@ -11,6 +11,7 @@ Added environment parameter `RAZZLE_BIND_ADDRESS` to be able to bind server to l
 ### Bugfix
 
 - Showing error notification when user try to paste disallowed content type. @iFlameing
+- Removed timezone initialization for DatetimeWidget, ref #1923. @razvanMiu
 
 ### Internal
 
