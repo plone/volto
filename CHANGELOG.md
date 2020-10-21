@@ -10,6 +10,8 @@ Added environment parameter `RAZZLE_BIND_ADDRESS` to be able to bind server to l
 
 ### Bugfix
 
+- Render nativeLang instead of 2 character language code in language selector
+
 ### Internal
 
 ## 8.5.1 (2020-10-21)
