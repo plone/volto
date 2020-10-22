@@ -159,7 +159,9 @@ export function flattenHTMLToAppURL(html) {
  * @returns {string} New URL with app
  */
 export function addAppURL(url) {
-  return `${settings.apiPath}${url}`;
+  return url.indexOf(settings.apiPath) === 0
+    ? url
+    : `${settings.apiPath}${url}`;
 }
 
 /**
