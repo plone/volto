@@ -2,20 +2,15 @@
 
 ## 8.5.3 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
-### Internal
+- Removed timezone initialization for DatetimeWidget, ref #1923. @razvanMiu
 
 ## 8.5.2 (2020-10-21)
 
 ### Bugfix
 
 - Showing error notification when user try to paste disallowed content type. @iFlameing
-- Removed timezone initialization for DatetimeWidget, ref #1923. @razvanMiu
 
 ### Internal
 
