@@ -3,24 +3,31 @@
  * @module components/manage/Widgets/UrlWidget
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { compose } from 'redux';
 import PropTypes from 'prop-types';
 import { Input, Button } from 'semantic-ui-react';
 import { FormFieldWrapper, Icon } from '@plone/volto/components';
-import { addAppURL } from '@plone/volto/helpers';
+import {
+  addAppURL,
+  isInternalURL,
+  flattenToAppURL,
+} from '@plone/volto/helpers';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
+import URLUtils from '@plone/volto/components/manage/AnchorPlugin/utils/URLUtils';
 
 /** UrlWidget function component
  * @function UrlWidget
  * @returns {string} Markup of the component
  */
 const UrlWidget = (props) => {
-  const { id, value, onChange, onBlur, onClick, minLength, maxLength } = props;
+  const { id, onChange, onBlur, onClick, minLength, maxLength } = props;
   const inputId = `field-${id}`;
 
+  const [value, setValue] = useState(props.value);
+  const [isInvalid, setIsInvalid] = useState(false);
   /**
    * Clear handler
    * @method clear
@@ -28,7 +35,38 @@ const UrlWidget = (props) => {
    * @returns {undefined}
    */
   const clear = () => {
+    setValue('');
     onChange(id, undefined);
+  };
+
+  const onChangeValue = (_value) => {
+    let newValue = _value;
+    if (newValue?.length > 0) {
+      if (isInvalid && URLUtils.isUrl(URLUtils.normalizeUrl(newValue))) {
+        setIsInvalid(false);
+      }
+
+      if (isInternalURL(newValue)) {
+        newValue = flattenToAppURL(newValue);
+      }
+    }
+
+    setValue(newValue);
+
+    newValue = isInternalURL(newValue) ? addAppURL(newValue) : newValue;
+
+    if (!isInternalURL(newValue) && newValue.length > 0) {
+      if (!URLUtils.isMail(URLUtils.normaliseMail(newValue))) {
+        newValue = URLUtils.normalizeUrl(newValue);
+        if (!URLUtils.isUrl(newValue)) {
+          setIsInvalid(true);
+        }
+      } else {
+        newValue = URLUtils.normaliseMail(newValue);
+      }
+    }
+
+    onChange(id, newValue === '' ? undefined : newValue);
   };
 
   return (
@@ -39,15 +77,14 @@ const UrlWidget = (props) => {
           name={id}
           type="url"
           value={value || ''}
-          onChange={({ target }) =>
-            onChange(id, target.value === '' ? undefined : target.value)
-          }
+          onChange={({ target }) => onChangeValue(target.value)}
           onBlur={({ target }) =>
             onBlur(id, target.value === '' ? undefined : target.value)
           }
           onClick={() => onClick()}
           minLength={minLength || null}
           maxLength={maxLength || null}
+          error={isInvalid}
         />
         {value?.length > 0 ? (
           <Button.Group>
@@ -75,7 +112,7 @@ const UrlWidget = (props) => {
                   mode: 'link',
                   overlay: true,
                   onSelectItem: (url) => {
-                    onChange(id, addAppURL(url));
+                    onChangeValue(url);
                   },
                 });
               }}
