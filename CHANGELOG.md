@@ -1,6 +1,6 @@
 # Change Log
 
-## 8.5.2 (unreleased)
+## 8.5.4 (unreleased)
 
 - Improved form validation. Tested required fields when field is array or richtext @giuliaghisini
 
@@ -8,13 +8,25 @@
 
 ### Feature
 
-Added environment parameter `RAZZLE_BIND_ADDRESS` to be able to bind server to localhost or other specific IPs instead of 0.0.0.0 @achimwilde
+### Bugfix
+
+### Internal
+
+## 8.5.3 (2020-10-22)
+
+### Bugfix
+
+- Removed timezone initialization for DatetimeWidget, ref #1923. @razvanMiu
+
+## 8.5.2 (2020-10-21)
 
 ### Bugfix
 
 - Showing error notification when user try to paste disallowed content type. @iFlameing
 
 ### Internal
+
+- Added environment parameter `RAZZLE_BIND_ADDRESS` to be able to bind server to localhost or other specific IPs instead of 0.0.0.0 @achimwilde
 
 ## 8.5.1 (2020-10-21)
 
