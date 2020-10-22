@@ -63,7 +63,9 @@ class AddLinkForm extends Component {
     super(props);
 
     this.state = {
-      value: flattenToAppURL(props.data.url) || '',
+      value: isInternalURL(props.data.url)
+        ? flattenToAppURL(props.data.url)
+        : props.data.url || '',
       isInvalid: false,
     };
     this.onRef = this.onRef.bind(this);
