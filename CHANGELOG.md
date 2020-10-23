@@ -3,6 +3,7 @@
 ## 8.5.4 (unreleased)
 
 - Improved form validation. Tested required fields when field is array or richtext @giuliaghisini
+- fixed bug in render lists in draftjs, when there's some styles inside list-item (links or bold text ecc..) @giuliaghisini
 
 ### Breaking
 
@@ -62,7 +63,7 @@
 - removed the ability to reset the datepicker in the recurrence widget to prevent the uncontrolled creation of recurrences @damiDevRT
 - Japanese translation updated @terapyon
 - Errors catched by the default error handler are sent to sentry @zotya
-- Fixed a problem what occured when RAZZLE_SENTRY_DSN was missing but the other RAZZLE_SENTRY_* variables were set @zotya
+- Fixed a problem what occured when RAZZLE*SENTRY_DSN was missing but the other RAZZLE_SENTRY*\* variables were set @zotya
 
 ### Internal
 
