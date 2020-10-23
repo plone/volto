@@ -1,6 +1,6 @@
 # Change Log
 
-## 8.5.4 (unreleased)
+## 8.5.5 (unreleased)
 
 - Improved form validation. Tested required fields when field is array or richtext @giuliaghisini
 - fixed bug in render lists in draftjs, when there's some styles inside list-item (links or bold text ecc..) @giuliaghisini
@@ -10,6 +10,18 @@
 ### Feature
 
 ### Bugfix
+
+### Internal
+
+## 8.5.4 (2020-10-23)
+
+### Breaking
+
+### Feature
+
+### Bugfix
+
+- Fixing bug for link when inseting break lines in list tag for view mode @iFlameing
 
 ### Internal
 

@@ -79,25 +79,25 @@ const splitSoftLinesOfLists = (children) =>
   children.map((child, index) => {
     return (
       <li key={index}>
-        {Array.isArray(child[1]) ? (
-          <>
-            {child[1].map((subchild) => {
-              if (typeof subchild === 'string') {
-                const last = subchild.split('\n').length - 1;
-                return subchild.split('\n').map((item, index) => (
+        {child.map((subchild) => {
+          if (Array.isArray(subchild)) {
+            return subchild.map((subchildren) => {
+              if (typeof subchildren === 'string') {
+                const last = subchildren.split('\n').length - 1;
+                return subchildren.split('\n').map((item, index) => (
                   <React.Fragment key={index}>
                     {item}
                     {index !== last && <br />}
                   </React.Fragment>
                 ));
               } else {
-                return subchild;
+                return subchildren;
               }
-            })}
-          </>
-        ) : (
-          child[1]
-        )}
+            });
+          } else {
+            return subchild;
+          }
+        })}
       </li>
     );
   });
