@@ -1,18 +1,42 @@
 # Change Log
 
-## 8.5.2 (unreleased)
+## 8.5.5 (unreleased)
 
 ### Breaking
 
 ### Feature
 
-Added environment parameter `RAZZLE_BIND_ADDRESS` to be able to bind server to localhost or other specific IPs instead of 0.0.0.0 @achimwilde
+### Bugfix
+
+### Internal
+
+## 8.5.4 (2020-10-23)
+
+### Breaking
+
+### Feature
+
+### Bugfix
+
+- Fixing bug for link when inseting break lines in list tag for view mode @iFlameing
+
+### Internal
+
+## 8.5.3 (2020-10-22)
+
+### Bugfix
+
+- Removed timezone initialization for DatetimeWidget, ref #1923. @razvanMiu
+
+## 8.5.2 (2020-10-21)
 
 ### Bugfix
 
 - Showing error notification when user try to paste disallowed content type. @iFlameing
 
 ### Internal
+
+- Added environment parameter `RAZZLE_BIND_ADDRESS` to be able to bind server to localhost or other specific IPs instead of 0.0.0.0 @achimwilde
 
 ## 8.5.1 (2020-10-21)
 
@@ -45,7 +69,7 @@ Added environment parameter `RAZZLE_BIND_ADDRESS` to be able to bind server to l
 ### Bugfix
 
 - Errors catched by the default error handler are sent to sentry @zotya
-- Fixed a problem what occured when RAZZLE_SENTRY_DSN was missing but the other RAZZLE_SENTRY_* variables were set @zotya
+- Fixed a problem what occured when RAZZLE*SENTRY_DSN was missing but the other RAZZLE_SENTRY*\* variables were set @zotya
 
 ### Internal
 
