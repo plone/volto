@@ -69,6 +69,7 @@ class Edit extends Component {
   state = {
     uploading: false,
     url: '',
+    dragging: false,
   };
 
   /**
@@ -89,7 +90,7 @@ class Edit extends Component {
       this.props.onChangeBlock(this.props.block, {
         ...this.props.data,
         url: nextProps.content['@id'],
-        alt: nextProps.content.title,
+        alt: nextProps.properties.title,
       });
     }
   }
@@ -218,6 +219,12 @@ class Edit extends Component {
       // TODO: Do something on ESC key
     }
   };
+  onDragEnter = () => {
+    this.setState({ dragging: true });
+  };
+  onDragLeave = () => {
+    this.setState({ dragging: false });
+  };
 
   /**
    * Copy block handler
@@ -278,10 +285,17 @@ class Edit extends Component {
           />
         ) : (
           <div>
-            <Dropzone noClick onDrop={this.onDrop} className="dropzone">
+            <Dropzone
+              noClick
+              onDrop={this.onDrop}
+              onDragEnter={this.onDragEnter}
+              onDragLeave={this.onDragLeave}
+              className="dropzone"
+            >
               {({ getRootProps, getInputProps }) => (
                 <div {...getRootProps()}>
                   <Message>
+                    {this.state.dragging && <Dimmer active></Dimmer>}
                     {this.state.uploading && (
                       <Dimmer active>
                         <Loader indeterminate>Uploading image</Loader>

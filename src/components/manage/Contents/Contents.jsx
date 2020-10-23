@@ -48,9 +48,10 @@ import {
   moveContent,
   orderContent,
   sortContent,
+  updateColumnsContent,
 } from '@plone/volto/actions';
 import { getBaseUrl } from '@plone/volto/helpers';
-import Indexes from '@plone/volto/constants/Indexes';
+import Indexes, { defaultIndexes } from '@plone/volto/constants/Indexes';
 import {
   ContentsIndexHeader,
   ContentsItem,
@@ -86,7 +87,6 @@ import sortDownSVG from '@plone/volto/icons/sort-down.svg';
 import sortUpSVG from '@plone/volto/icons/sort-up.svg';
 import downKeySVG from '@plone/volto/icons/down-key.svg';
 import moreSVG from '@plone/volto/icons/more.svg';
-const defaultIndexes = ['review_state', 'ModificationDate', 'EffectiveDate'];
 
 const messages = defineMessages({
   back: {
@@ -261,6 +261,7 @@ class Contents extends Component {
     moveContent: PropTypes.func.isRequired,
     orderContent: PropTypes.func.isRequired,
     sortContent: PropTypes.func.isRequired,
+    updateColumnsContent: PropTypes.func.isRequired,
     clipboardRequest: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
@@ -304,6 +305,14 @@ class Contents extends Component {
     items: [],
     action: null,
     source: null,
+    index: {
+      order: keys(Indexes),
+      values: mapValues(Indexes, (value, key) => ({
+        ...value,
+        selected: indexOf(defaultIndexes, key) !== -1,
+      })),
+      selectedCount: defaultIndexes.length + 1,
+    },
   };
 
   /**
@@ -363,7 +372,7 @@ class Contents extends Component {
       filter: '',
       currentPage: 0,
       pageSize: 15,
-      index: {
+      index: this.props.index || {
         order: keys(Indexes),
         values: mapValues(Indexes, (value, key) => ({
           ...value,
@@ -423,6 +432,30 @@ class Contents extends Component {
       this.setState({
         items: nextProps.items,
       });
+    }
+    if (
+      this.props.clipboardRequest.loading &&
+      nextProps.clipboardRequest.error
+    ) {
+      toast.error(
+        <Toast
+          error
+          title={this.props.intl.formatMessage(messages.error)}
+          content={this.props.intl.formatMessage(messages.error)}
+        />,
+      );
+    }
+    if (
+      this.props.clipboardRequest.loading &&
+      nextProps.clipboardRequest.loaded
+    ) {
+      toast.success(
+        <Toast
+          success
+          title={this.props.intl.formatMessage(messages.success)}
+          content={this.props.intl.formatMessage(messages.messagePasted)}
+        />,
+      );
     }
   }
 
@@ -487,19 +520,21 @@ class Contents extends Component {
    * @returns {undefined}
    */
   onSelectIndex(event, { value }) {
+    let newIndex = {
+      ...this.state.index,
+      selectedCount:
+        this.state.index.selectedCount +
+        (this.state.index.values[value].selected ? -1 : 1),
+      values: mapValues(this.state.index.values, (indexValue, indexKey) => ({
+        ...indexValue,
+        selected:
+          indexKey === value ? !indexValue.selected : indexValue.selected,
+      })),
+    };
     this.setState({
-      index: {
-        ...this.state.index,
-        selectedCount:
-          this.state.index.selectedCount +
-          (this.state.index.values[value].selected ? -1 : 1),
-        values: mapValues(this.state.index.values, (indexValue, indexKey) => ({
-          ...indexValue,
-          selected:
-            indexKey === value ? !indexValue.selected : indexValue.selected,
-        })),
-      },
+      index: newIndex,
     });
+    this.props.updateColumnsContent(getBaseUrl(this.props.pathname), newIndex);
   }
 
   /**
@@ -571,6 +606,10 @@ class Contents extends Component {
         order: move(this.state.index.order, index, index + delta),
       },
     });
+    this.props.updateColumnsContent(
+      getBaseUrl(this.props.pathname),
+      this.state.index,
+    );
   }
 
   /**
@@ -946,13 +985,6 @@ class Contents extends Component {
         getBaseUrl(this.props.pathname),
       );
     }
-    toast.success(
-      <Toast
-        success
-        title={this.props.intl.formatMessage(messages.success)}
-        content={this.props.intl.formatMessage(messages.messagePasted)}
-      />,
-    );
   }
 
   /**
@@ -1297,7 +1329,7 @@ class Contents extends Component {
                         icon={
                           <Icon name={moreSVG} size="24px" color="#826a6a" />
                         }
-                        className="right floating"
+                        className="right floating selectIndex"
                       >
                         <Dropdown.Menu className="left">
                           <Dropdown.Header
@@ -1624,24 +1656,25 @@ class Contents extends Component {
 export const __test__ = compose(
   injectIntl,
   connect(
-    (state, props) => {
+    (store, props) => {
       return {
-        token: state.userSession.token,
-        items: state.search.items,
-        sort: state.content.update.sort,
-        breadcrumbs: state.breadcrumbs.items,
-        total: state.search.total,
+        token: store.userSession.token,
+        items: store.search.items,
+        sort: store.content.update.sort,
+        index: store.content.updatecolumns.idx,
+        breadcrumbs: store.breadcrumbs.items,
+        total: store.search.total,
         searchRequest: {
-          loading: state.search.loading,
-          loaded: state.search.loaded,
+          loading: store.search.loading,
+          loaded: store.search.loaded,
         },
         pathname: props.location.pathname,
-        action: state.clipboard.action,
-        source: state.clipboard.source,
-        clipboardRequest: state.clipboard.request,
-        deleteRequest: state.content.delete,
-        updateRequest: state.content.update,
-        objectActions: state.actions.actions.object,
+        action: store.clipboard.action,
+        source: store.clipboard.source,
+        clipboardRequest: store.clipboard.request,
+        deleteRequest: store.content.delete,
+        updateRequest: store.content.update,
+        objectActions: store.actions.actions.object,
       };
     },
     {
@@ -1654,6 +1687,7 @@ export const __test__ = compose(
       moveContent,
       orderContent,
       sortContent,
+      updateColumnsContent,
     },
   ),
 )(Contents);
@@ -1662,24 +1696,25 @@ export default compose(
   DragDropContext(HTML5Backend),
   injectIntl,
   connect(
-    (state, props) => {
+    (store, props) => {
       return {
-        token: state.userSession.token,
-        items: state.search.items,
-        sort: state.content.update.sort,
-        breadcrumbs: state.breadcrumbs.items,
-        total: state.search.total,
+        token: store.userSession.token,
+        items: store.search.items,
+        sort: store.content.update.sort,
+        index: store.content.updatecolumns.idx,
+        breadcrumbs: store.breadcrumbs.items,
+        total: store.search.total,
         searchRequest: {
-          loading: state.search.loading,
-          loaded: state.search.loaded,
+          loading: store.search.loading,
+          loaded: store.search.loaded,
         },
         pathname: props.location.pathname,
-        action: state.clipboard.action,
-        source: state.clipboard.source,
-        clipboardRequest: state.clipboard.request,
-        deleteRequest: state.content.delete,
-        updateRequest: state.content.update,
-        objectActions: state.actions.actions.object,
+        action: store.clipboard.action,
+        source: store.clipboard.source,
+        clipboardRequest: store.clipboard.request,
+        deleteRequest: store.content.delete,
+        updateRequest: store.content.update,
+        objectActions: store.actions.actions.object,
       };
     },
     {
@@ -1692,6 +1727,7 @@ export default compose(
       moveContent,
       orderContent,
       sortContent,
+      updateColumnsContent,
     },
   ),
   asyncConnect([
