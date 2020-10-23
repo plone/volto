@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- A pathname like /policy/edit does not show the Unauthorized or Forbidden component when not logged in, ref #1936. @silviubogan
+
 ### Internal
 
 ## 8.5.4 (2020-10-23)
