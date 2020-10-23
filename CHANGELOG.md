@@ -2,6 +2,8 @@
 
 ## 8.5.4 (unreleased)
 
+- fixed bug in render lists in draftjs, when there's some styles inside list-item (links or bold text ecc..) @giuliaghisini
+
 ### Breaking
 
 ### Feature
@@ -57,7 +59,7 @@
 ### Bugfix
 
 - Errors catched by the default error handler are sent to sentry @zotya
-- Fixed a problem what occured when RAZZLE_SENTRY_DSN was missing but the other RAZZLE_SENTRY_* variables were set @zotya
+- Fixed a problem what occured when RAZZLE*SENTRY_DSN was missing but the other RAZZLE_SENTRY*\* variables were set @zotya
 
 ### Internal
 
