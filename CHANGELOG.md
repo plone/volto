@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fixing bug for link when inseting break lines in list tag for view mode @iFlameing
+
 ### Internal
 
 ## 8.5.3 (2020-10-22)
@@ -57,7 +59,7 @@
 ### Bugfix
 
 - Errors catched by the default error handler are sent to sentry @zotya
-- Fixed a problem what occured when RAZZLE_SENTRY_DSN was missing but the other RAZZLE_SENTRY_* variables were set @zotya
+- Fixed a problem what occured when RAZZLE*SENTRY_DSN was missing but the other RAZZLE_SENTRY*\* variables were set @zotya
 
 ### Internal
 
