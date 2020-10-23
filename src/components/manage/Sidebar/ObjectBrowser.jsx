@@ -95,10 +95,11 @@ const withObjectBrowser = (WrappedComponent) =>
               unmountOnExit
             >
               <>
-                {ReactDOM.createPortal(
-                  <div className="overlay-container"></div>,
-                  document.body,
-                )}
+                {__CLIENT__ &&
+                  ReactDOM.createPortal(
+                    <div className="overlay-container"></div>,
+                    document.body,
+                  )}
               </>
             </CSSTransition>
             <CSSTransition

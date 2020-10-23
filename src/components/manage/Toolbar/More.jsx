@@ -11,16 +11,13 @@ import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import { find } from 'lodash';
 
-import {
-  Icon,
-  Display,
-  ManageTranslations,
-  Workflow,
-} from '@plone/volto/components';
+import { Icon, Display, Workflow } from '@plone/volto/components';
 import { getBaseUrl } from '@plone/volto/helpers';
 
 import rightArrowSVG from '@plone/volto/icons/right-key.svg';
 import userSVG from '@plone/volto/icons/user.svg';
+
+import { settings } from '~/config';
 
 const messages = defineMessages({
   personalTools: {
@@ -154,24 +151,18 @@ class More extends Component {
                 </Link>
               </li>
             )}
-            {sharingAction && (
+            {editAction && settings.isMultilingual && (
               <>
                 <li>
-                  <ManageTranslations
-                    open={this.state.openManageTranslations}
-                    content={this.props.content}
-                    title={this.props.intl.formatMessage(
-                      messages.ManageTranslations,
-                    )}
-                  />
-                  <button
-                    onClick={() =>
-                      this.setState({ openManageTranslations: true })
-                    }
-                  >
-                    {this.props.intl.formatMessage(messages.ManageTranslations)}
-                    <Icon name={rightArrowSVG} size="24px" />
-                  </button>
+                  <Link to={`${path}/manage-translations`}>
+                    <button>
+                      {this.props.intl.formatMessage(
+                        messages.ManageTranslations,
+                      )}
+
+                      <Icon name={rightArrowSVG} size="24px" />
+                    </button>
+                  </Link>
                 </li>
               </>
             )}
