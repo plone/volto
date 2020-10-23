@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Properly return 404 in server response, when appropriate @tiberiuichim
+
 ### Internal
 
 ## 8.5.3 (2020-10-22)

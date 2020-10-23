@@ -16,6 +16,7 @@ import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
 import { createProxyMiddleware } from 'http-proxy-middleware';
 import { updateIntl } from 'react-intl-redux';
 import { resetServerContext } from 'react-beautiful-dnd';
+import NotFoundView from '@plone/volto/components/theme/NotFound/NotFound';
 
 import routes from '~/routes';
 import { settings } from '~/config';
@@ -174,6 +175,25 @@ server
 
           if (context.url) {
             res.redirect(context.url);
+          } else if (context.is404) {
+            const error = context.error || {};
+            const errorPage = (
+              <Provider store={store}>
+                <StaticRouter context={{}} location={req.url}>
+                  <NotFoundView message={error.message} />
+                </StaticRouter>
+              </Provider>
+            );
+            res.set({
+              'Cache-Control': 'public, max-age=60, no-transform',
+            });
+
+            // Displays error in console
+            console.error(error);
+
+            res
+              .status(404)
+              .send(`<!doctype html> ${renderToString(errorPage)}`);
           } else {
             res.status(200).send(
               `<!doctype html>

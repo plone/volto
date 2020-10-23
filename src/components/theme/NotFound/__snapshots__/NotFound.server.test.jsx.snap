@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotFound renders a not found component 1`] = `
+<div
+  className="ui container view-wrapper"
+>
+  <h1>
+    This page does not seem to exist…
+  </h1>
+  <p
+    className="description"
+  >
+    We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for.
+  </p>
+  <p>
+    If you are certain you have the correct web address but are encountering an error, please contact the 
+    <a
+      href="/contact-form"
+      onClick={[Function]}
+    >
+      Site Administration
+    </a>
+    .
+  </p>
+  <p>
+    Thank you.
+  </p>
+</div>
+`;

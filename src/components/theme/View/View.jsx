@@ -211,7 +211,7 @@ class View extends Component {
       }
       return (
         <div id="view">
-          <FoundView />
+          <FoundView {...this.props} />
         </div>
       );
     }

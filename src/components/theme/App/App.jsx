@@ -142,7 +142,9 @@ class App extends Component {
                   stackTrace={this.state.errorInfo.componentStack}
                 />
               ) : (
-                renderRoutes(this.props.route.routes)
+                renderRoutes(this.props.route.routes, {
+                  serverStaticContext: this.props.staticContext,
+                })
               )}
             </main>
           </Segment>

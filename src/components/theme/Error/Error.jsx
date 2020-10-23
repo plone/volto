@@ -9,7 +9,8 @@ import { views } from '~/config';
  * @function Unauthorized
  * @returns {string} Markup of the unauthorized page.
  */
-const Error = ({ error }) => {
+const Error = (props) => {
+  const { error } = props;
   let FoundView;
   if (error.status === undefined) {
     // For some reason, while development and if CORS is in place and the
@@ -24,7 +25,7 @@ const Error = ({ error }) => {
   }
   return (
     <div id="view">
-      <FoundView />
+      <FoundView {...props} />
     </div>
   );
 };
