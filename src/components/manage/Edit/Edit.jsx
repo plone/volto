@@ -220,8 +220,8 @@ class Edit extends Component {
                   title={
                     this.props?.schema?.title
                       ? this.props.intl.formatMessage(messages.edit, {
-                          title: this.props.schema.title,
-                        })
+                        title: this.props.schema.title,
+                      })
                       : null
                   }
                 />
@@ -238,21 +238,12 @@ class Edit extends Component {
                   title={
                     this.props?.schema?.title
                       ? this.props.intl.formatMessage(messages.edit, {
-                          title: this.props.schema.title,
-                        })
+                        title: this.props.schema.title,
+                      })
                       : null
                   }
                   loading={this.props.updateRequest.loading}
                 />
-              </>
-            )}
-            {!editPermission && (
-              <>
-                {this.props.token ? (
-                  <Forbidden pathname={this.props.pathname} />
-                ) : (
-                  <Unauthorized pathname={this.props.pathname} />
-                )}
               </>
             )}
 
@@ -261,6 +252,15 @@ class Edit extends Component {
                 <Sidebar />
               </Portal>
             )}
+          </>
+        )}
+        {!editPermission && (
+          <>
+            {this.props.token ? (
+              <Forbidden pathname={this.props.pathname} />
+            ) : (
+                <Unauthorized pathname={this.props.pathname} />
+              )}
           </>
         )}
         {this.state.isClient && (
