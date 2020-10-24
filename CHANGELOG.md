@@ -1,6 +1,24 @@
 # Change Log
 
-## 8.5.0 (unreleased)
+## 8.5.5 (unreleased)
+
+### Breaking
+
+### Feature
+
+- Added placeholder background color same as selected one @iFlameing
+- Showing notification when user sort the folder-content @iFlameing
+
+### Bugfix
+
+- Fixes secondary views in toolbar @iFlameing @sneridagh
+
+### Internal
+
+- Added new in productions sites to README @wkbkhard
+- Writing test for the lisiting block location relative criteria @iFlameing
+
+## 8.5.4 (2020-10-23)
 
 ### Breaking
 
@@ -8,9 +26,46 @@
 
 ### Bugfix
 
+- Fixing bug for link when inseting break lines in list tag for view mode @iFlameing
+
+## 8.5.3 (2020-10-22)
+
+### Bugfix
+
+- Removed timezone initialization for DatetimeWidget, ref #1923. @razvanMiu
+
+## 8.5.2 (2020-10-21)
+
+### Bugfix
+
 - Fixing overlay expansion during link assign from objectbrowser in edit mode @iFlameing
+- Showing error notification when user try to paste disallowed content type. @iFlameing
 
 ### Internal
+
+- Added environment parameter `RAZZLE_BIND_ADDRESS` to be able to bind server to localhost or other specific IPs instead of 0.0.0.0 @achimwilde
+
+## 8.5.1 (2020-10-21)
+
+### Bugfix
+
+- Fix sharing for when users has dots on them @sneridagh
+
+## 8.5.0 (2020-10-20)
+
+### Bugfix
+
+- Japanese translation updated @terapyon
+
+## 8.5.0-alpha.2 (2020-10-20)
+
+### Bugfix
+
+- Update German translation @ksuess
+
+### Internal
+
+- Fix runtimeConfig relative vs absolute import @avoinea
 
 ## 8.5.1-alpha.0 (2020-10-19)
 
@@ -21,7 +76,7 @@
 ### Bugfix
 
 - Errors catched by the default error handler are sent to sentry @zotya
-- Fixed a problem what occured when RAZZLE_SENTRY_DSN was missing but the other RAZZLE_SENTRY_* variables were set @zotya
+- Fixed a problem what occured when RAZZLE*SENTRY_DSN was missing but the other RAZZLE_SENTRY*\* variables were set @zotya
 
 ### Internal
 

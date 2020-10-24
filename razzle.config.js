@@ -4,7 +4,6 @@ const nodeExternals = require('webpack-node-externals');
 const LoadablePlugin = require('@loadable/webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const fs = require('fs');
-const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const RootResolverPlugin = require('./webpack-root-resolver');
 const createAddonsLoader = require('./create-addons-loader');
 const AddonConfigurationRegistry = require('./addon-registry');
@@ -47,21 +46,6 @@ const svgPlugin = (config) => {
 };
 
 const defaultModify = (config, { target, dev }, webpack) => {
-  //  Prevent moment from loading all locales
-  config.plugins.push(
-    new MomentLocalesPlugin({
-      localesToKeep: Object.keys(languages),
-    }),
-  );
-
-  //  Load only desired timezones
-  config.plugins.push(
-    new webpack.NormalModuleReplacementPlugin(
-      /moment-timezone\/data\/packed\/latest\.json/,
-      require.resolve('./timezone-definitions'),
-    ),
-  );
-
   if (dev) {
     config.plugins.unshift(
       new webpack.DefinePlugin({
