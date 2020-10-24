@@ -6,6 +6,7 @@
 
 ### Feature
 
+- Added placeholder background color same as selected one @iFlameing
 - Showing notification when user sort the folder-content @iFlameing
 
 ### Bugfix
