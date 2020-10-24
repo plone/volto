@@ -13,6 +13,7 @@
 ### Internal
 
 - Added new in productions sites to README @wkbkhard
+- Writing test for the lisiting block location relative criteria @iFlameing
 
 ## 8.5.4 (2020-10-23)
 
@@ -24,9 +25,6 @@
 
 - Fixing bug for link when inseting break lines in list tag for view mode @iFlameing
 
-### Internal
-
-- Writing test for the lisiting block location relative criteria @iFlameing
 ## 8.5.3 (2020-10-22)
 
 ### Bugfix
