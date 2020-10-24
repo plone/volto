@@ -7,7 +7,7 @@
 ### Feature
 
 - Showing notification when user sort the folder-content @iFlameing
-- Added environment parameter `RAZZLE_BIND_ADDRESS` to be able to bind server to localhost or other specific IPs instead of 0.0.0.0 @achimwilde
+
 ### Bugfix
 
 ### Internal
