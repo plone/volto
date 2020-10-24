@@ -433,6 +433,30 @@ class Contents extends Component {
         items: nextProps.items,
       });
     }
+    if (
+      this.props.clipboardRequest.loading &&
+      nextProps.clipboardRequest.error
+    ) {
+      toast.error(
+        <Toast
+          error
+          title={this.props.intl.formatMessage(messages.error)}
+          content={this.props.intl.formatMessage(messages.error)}
+        />,
+      );
+    }
+    if (
+      this.props.clipboardRequest.loading &&
+      nextProps.clipboardRequest.loaded
+    ) {
+      toast.success(
+        <Toast
+          success
+          title={this.props.intl.formatMessage(messages.success)}
+          content={this.props.intl.formatMessage(messages.messagePasted)}
+        />,
+      );
+    }
   }
 
   /**
@@ -961,13 +985,6 @@ class Contents extends Component {
         getBaseUrl(this.props.pathname),
       );
     }
-    toast.success(
-      <Toast
-        success
-        title={this.props.intl.formatMessage(messages.success)}
-        content={this.props.intl.formatMessage(messages.messagePasted)}
-      />,
-    );
   }
 
   /**
