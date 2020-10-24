@@ -903,12 +903,20 @@ msgid "Item batch size"
 msgstr ""
 
 #: components/manage/Contents/Contents
+msgid "Item succesfully moved."
+msgstr ""
+
+#: components/manage/Contents/Contents
 msgid "Item(s) copied."
 msgstr "Item(s) gekopieerd"
 
 #: components/manage/Contents/Contents
 msgid "Item(s) cut."
 msgstr "Item(d) geknipt."
+
+#: components/manage/Contents/Contents
+msgid "Item(s) has been sorted."
+msgstr ""
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -1894,10 +1902,6 @@ msgid "Upload files"
 msgstr "Bestanden uploaden"
 
 #: components/manage/Contents/ContentsUploadModal
-msgid "Upload {count, plural, one {# file} other {# files}}"
-msgstr "Upload {count, plural, one {# bestand} other {# bestanden}}"
-
-#: components/manage/Contents/ContentsUploadModal
 msgid "Uploading files"
 msgstr "Bestanden uploaden"
 
@@ -2413,6 +2417,10 @@ msgstr ""
 
 #: components/theme/Login/Login
 msgid "we can send you a new one"
+msgstr ""
+
+#: components/manage/Contents/ContentsUploadModal
+msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 msgstr ""
 
 #: components/manage/Contents/Contents

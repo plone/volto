@@ -1,18 +1,175 @@
 # Change Log
 
-## 8.1.1 (unreleased)
+## 8.5.5 (unreleased)
 
 ### Breaking
 
 ### Feature
 
 - Add new components: RenderBlocks, BlocksForm, DragDropList and EditBlockWrapper @tiberiuichim
+- Showing notification when user sort the folder-content @iFlameing
+
+### Bugfix
+
+### Internal
+
+- Added new in productions sites to README @wkbkhard
+
+## 8.5.4 (2020-10-23)
+
+### Breaking
+
+### Feature
+
+### Bugfix
+
+- Fixing bug for link when inseting break lines in list tag for view mode @iFlameing
+
+### Internal
+
+## 8.5.3 (2020-10-22)
+
+### Bugfix
+
+- Removed timezone initialization for DatetimeWidget, ref #1923. @razvanMiu
+
+## 8.5.2 (2020-10-21)
+
+### Bugfix
+
+- Showing error notification when user try to paste disallowed content type. @iFlameing
+
+### Internal
+
+- Added environment parameter `RAZZLE_BIND_ADDRESS` to be able to bind server to localhost or other specific IPs instead of 0.0.0.0 @achimwilde
+
+## 8.5.1 (2020-10-21)
+
+### Bugfix
+
+- Fix sharing for when users has dots on them @sneridagh
+
+## 8.5.0 (2020-10-20)
 
 ### Bugfix
 
 - Japanese translation updated @terapyon
 
+## 8.5.0-alpha.2 (2020-10-20)
+
+### Bugfix
+
+- Update German translation @ksuess
+
 ### Internal
+
+- Fix runtimeConfig relative vs absolute import @avoinea
+
+## 8.5.1-alpha.0 (2020-10-19)
+
+### Feature
+
+- Adding softlinebreak in list tag @iFlameing
+
+### Bugfix
+
+- Errors catched by the default error handler are sent to sentry @zotya
+- Fixed a problem what occured when RAZZLE*SENTRY_DSN was missing but the other RAZZLE_SENTRY*\* variables were set @zotya
+
+### Internal
+
+- Fix sentry docs markdown format @avoinea
+
+## 8.5.0-alpha.0 (2020-10-14)
+
+### Feature
+
+- Sentry integration @zotya
+- All the environment variables defined at runtime that have the `RAZZLE_` prefix, are now available in the browser under window.env @zotya
+
+## 8.4.0 (2020-10-14)
+
+### Feature
+
+- Add `Style`, a wrapper component that applies float and width classes to wrapped content (typically blocks) @tiberiuichim
+- Add `AlignWidget`, a widget that wraps the `AlignBlock` helper @tiberiuichim
+
+### Bugfix
+
+- Folder contents view: Save additional columns and updated order of columns @ksuess
+- Fixed edit link in draft-js when link is selected from word-end to word-start @giuliaghisini
+- Revert PR No. 1820 to fix linebreaks on inline links in draftJS @steffenri
+
+### Internal
+
+- Keep `@babel/core` in Volto core in sync with `babel-preset-razzle` it fixes #1897 @sneridagh
+
+## 8.3.0 (2020-10-12)
+
+### Feature
+
+- Adding droppable placeholder for Image Block @iFlameing
+
+### Bugfix
+
+- Test if content exists in ListingBody, for addon Dropdownmenu @giuliaghisini
+
+## 8.2.6 (2020-10-12)
+
+### Bugfix
+
+- Fix break-line in view mode @iFlameing
+
+## 8.2.5 (2020-10-08)
+
+### Bugfix
+
+- Fixing the bleed out of the modal for long filename @iFlameing
+
+## 8.2.4 (2020-10-08)
+
+### Bugfix
+
+- Fixing table block edit @iFlameing
+
+## 8.2.3 (2020-10-07)
+
+### Bugfix
+
+- Use Plone `I18N_LANGUAGE` cookie instead of `language` @cekk
+
+## 8.2.2 (2020-10-06)
+
+### Bugfix
+
+- Upgrade react-dropzone from 5.1.0 to 11.1.0 @nileshgulia1
+- Update German translations @tisto
+
+## 8.2.1 (2020-10-06)
+
+### Bugfix
+
+- Querystingsearch action now uses correct relative path, if specified. Fixes #1861 @jackahl
+- Fixing ObjectBrowser search input reload @iFlameing
+- Fix broken current folder by default in content browser for image links, solves #1860 @sneridagh
+
+## 8.2.0 (2020-09-27)
+
+### Feature
+
+- Add Basque translation @erral
+
+### Bugfix
+
+- Added prop resettable to DatetimeWidget @damiDevRT
+- Removed the ability to reset the datepicker in the recurrence widget to prevent the uncontrolled creation of recurrences @damiDevRT
+- Fix regression in setting selected sidebar tab by blocks @tiberiuichim
+
+## 8.1.1 (2020-09-27)
+
+### Bugfix
+
+- Japanese translation updated @terapyon
 
 ## 8.1.0 (2020-09-22)
 
@@ -24,7 +181,11 @@
 
 ### Bugfix
 
+- Allow select widget to reset when the incoming props change. The react-select widget has its own internal state, so if you initialise the widget without choices, then populate the choices, it wouldn't properly show the default value @tiberiuichim
+
 ### Internal
+
+- Fix console warning in ToHTML @iFlameing
 
 ## 8.0.1 (2020-09-22)
 
@@ -49,12 +210,15 @@
 - Added Schema Editor within Dexterity Content-Types Controlpanel @rexalex @avoinea #1517
 - Added Blocks Layout Editor within Dexterity Content-Types Controlpanel @avoinea #1517
 - Added missing components for Email and Url widgets #1246 @rexalex
+- Use content title instead of image id in alt tag @nileshgulia1
 
 ### Bugfix
 
 - Fix the broken profile view in Toolbar @iFlameing
 
 ### Internal
+
+- Hide block chooser button using React logic instead of CSS. This makes it easier to support nested blocks @tiberiuichim
 
 - Wrap addon configuration loaders in a wrapper to check that they return back config @tiberiuichim
 
@@ -360,10 +524,6 @@
 
 ## 7.0.1 (2020-07-07)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Adding absolute url in ObjectBrowser for image type @iFlameing
@@ -444,7 +604,7 @@
 
 ### Bugfix
 
-- added export for ObjectBrowserWidget in component/index.js @giuliaghisini
+- Added export for ObjectBrowserWidget in component/index.js @giuliaghisini
 - Fixed duplicated items in SelectWidget and ArrayWidget @giuliaghisini
 - Update German translation @timo
 - Removed broken preview image in ContentsUploadModal if uploaded item is not an image. @giuliaghisini

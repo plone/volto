@@ -35,7 +35,8 @@ if (Cypress.env('API') !== 'guillotina') {
 
       cy.visit('/my-folder/my-document');
       cy.get('.edit').click();
-      cy.get('svg[class="icon block-add-button"]').click({ force: true });
+      cy.get('.block-editor-text').first().click();
+      cy.get('button.block-add-button').click();
       cy.get(
         '[style="transition: opacity 500ms ease 0ms;"] > :nth-child(2) > .ui',
       ).click();

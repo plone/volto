@@ -2,6 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
 "POT-Creation-Date: 2020-09-19T08:43:29.593Z\n"
+"POT-Creation-Date: 2020-10-20T22:19:14.009Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1075,6 +1076,11 @@ msgid "Item batch size"
 msgstr ""
 
 #: components/manage/Contents/Contents
+# defaultMessage: Item succesfully moved.
+msgid "Item succesfully moved."
+msgstr ""
+
+#: components/manage/Contents/Contents
 # defaultMessage: Item(s) copied.
 msgid "Item(s) copied."
 msgstr ""
@@ -1082,6 +1088,11 @@ msgstr ""
 #: components/manage/Contents/Contents
 # defaultMessage: Item(s) cut.
 msgid "Item(s) cut."
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Item(s) has been sorted.
+msgid "Item(s) has been sorted."
 msgstr ""
 
 #: components/manage/Actions/Actions
@@ -2292,11 +2303,6 @@ msgid "Upload files"
 msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
-# defaultMessage: Upload {count, plural, one {# file} other {# files}}
-msgid "Upload {count, plural, one {# file} other {# files}}"
-msgstr ""
-
-#: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Uploading files
 msgid "Uploading files"
 msgstr ""
@@ -2944,6 +2950,11 @@ msgstr ""
 #: components/theme/Login/Login
 # defaultMessage: we can send you a new one
 msgid "we can send you a new one"
+msgstr ""
+
+#: components/manage/Contents/ContentsUploadModal
+# defaultMessage: {count, plural, one {Upload {count} file} other {Upload {count} files}}
+msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 msgstr ""
 
 #: components/manage/Contents/Contents
