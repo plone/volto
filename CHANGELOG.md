@@ -11,6 +11,8 @@
 
 ### Bugfix
 
+- Fixes secondary views in toolbar @iFlameing @sneridagh
+
 ### Internal
 
 - Added new in productions sites to README @wkbkhard
