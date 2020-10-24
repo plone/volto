@@ -12,6 +12,7 @@
 ### Bugfix
 
 - Fixes secondary views in toolbar @iFlameing @sneridagh
+- Fixing overlay expansion during link assign from objectbrowser in edit mode @iFlameing
 
 ### Internal
 
