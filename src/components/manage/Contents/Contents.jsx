@@ -129,6 +129,14 @@ const messages = defineMessages({
     id: 'Item(s) cut.',
     defaultMessage: 'Item(s) cut.',
   },
+  messageSort: {
+    id: 'Item(s) has been sorted.',
+    defaultMessage: 'Item(s) has been sorted.',
+  },
+  messageReorder: {
+    id: 'Item succesfully moved.',
+    defaultMessage: 'Item succesfully moved.',
+  },
   messagePasted: {
     id: 'Item(s) pasted.',
     defaultMessage: 'Item(s) pasted.',
@@ -420,6 +428,15 @@ class Contents extends Component {
     ) {
       this.fetchContents(nextProps.pathname);
     }
+    if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
+      toast.success(
+        <Toast
+          success
+          title={this.props.intl.formatMessage(messages.success)}
+          content={this.props.intl.formatMessage(messages.messageSort)}
+        />,
+      );
+    }
     if (this.props.pathname !== nextProps.pathname) {
       this.setState(
         {
@@ -445,6 +462,7 @@ class Contents extends Component {
         />,
       );
     }
+
     if (
       this.props.clipboardRequest.loading &&
       nextProps.clipboardRequest.loaded
@@ -454,6 +472,15 @@ class Contents extends Component {
           success
           title={this.props.intl.formatMessage(messages.success)}
           content={this.props.intl.formatMessage(messages.messagePasted)}
+        />,
+      );
+    }
+    if (this.props.orderRequest.loading && nextProps.orderRequest.loaded) {
+      toast.success(
+        <Toast
+          success
+          title={this.props.intl.formatMessage(messages.success)}
+          content={this.props.intl.formatMessage(messages.messageReorder)}
         />,
       );
     }
@@ -1675,6 +1702,7 @@ export const __test__ = compose(
         deleteRequest: store.content.delete,
         updateRequest: store.content.update,
         objectActions: store.actions.actions.object,
+        orderRequest: store.content.order,
       };
     },
     {
@@ -1715,6 +1743,7 @@ export default compose(
         deleteRequest: store.content.delete,
         updateRequest: store.content.update,
         objectActions: store.actions.actions.object,
+        orderRequest: store.content.order,
       };
     },
     {

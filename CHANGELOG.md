@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Showing notification when user sort the folder-content @iFlameing
+
 ### Bugfix
 
 ### Internal
