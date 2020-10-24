@@ -12,7 +12,12 @@ import '~/theme';
 import configureStore from '@plone/volto/store';
 import { Api, persistAuthToken, ScrollToTop } from '@plone/volto/helpers';
 
+import * as Sentry from '@sentry/browser';
+import initSentry from './sentry';
+
 export const history = createBrowserHistory();
+
+initSentry(Sentry);
 
 export default () => {
   const api = new Api();
