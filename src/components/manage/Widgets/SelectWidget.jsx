@@ -270,6 +270,7 @@ class SelectWidget extends Component {
         ) : (
           <Select
             id={`field-${id}`}
+            key={this.props.choices}
             name={id}
             isDisabled={this.props.isDisabled}
             className="react-select-container"

@@ -1,10 +1,10 @@
 import React from 'react';
 import { EditBlock, DragDropList } from '@plone/volto/components';
-import { getBlocks } from '@plone/volto/helpers';
 import {
   addBlock,
   changeBlock,
   deleteBlock,
+  getBlocks,
   moveBlock,
   mutateBlock,
   nextBlockId,
@@ -23,6 +23,10 @@ const BlocksForm = (props) => {
     blockWrapper,
     selectedBlock,
     onSelectBlock,
+    allowedBlocks,
+    title,
+    description,
+    manage,
   } = props;
 
   const blockList = getBlocks(properties);
@@ -103,7 +107,7 @@ const BlocksForm = (props) => {
   const BlockWrapper = blockWrapper ? blockWrapper : EditBlockWrapper;
 
   return (
-    <div className="ui container">
+    <div className="ui container blocks-form" title={title}>
       <DragDropList
         childList={blockList}
         onMoveItem={(result) => {
@@ -150,6 +154,10 @@ const BlocksForm = (props) => {
                 properties={properties}
                 selected={selectedBlock === blockId}
                 type={block['@type']}
+                manage={manage}
+                allowedBlocks={allowedBlocks}
+                formTitle={title}
+                formDescription={description}
               />
             </BlockWrapper>
           )

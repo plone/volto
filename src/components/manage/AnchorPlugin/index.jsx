@@ -25,6 +25,7 @@ function removeEntity(editorState) {
       entitySelection = selectionState.merge({
         anchorOffset: start,
         focusOffset: end,
+        isBackward: false,
       });
     },
   );

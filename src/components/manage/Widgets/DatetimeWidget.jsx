@@ -5,13 +5,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
-import moment from 'moment-timezone';
-import Moment from 'moment';
+import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 import TimePicker from 'rc-time-picker';
 import cx from 'classnames';
 import { Icon, FormFieldWrapper } from '@plone/volto/components';
-import { settings } from '~/config';
 import leftKey from '@plone/volto/icons/left-key.svg';
 import rightKey from '@plone/volto/icons/right-key.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -84,22 +82,23 @@ class DatetimeWidget extends Component {
     //  Used to set a server timezone or UTC as default
     moment.defineLocale(
       this.props.intl.locale,
-      Moment.localeData(this.props.intl.locale)._config,
+      moment.localeData(this.props.intl.locale)._config,
     ); // copy locale to moment-timezone
-    const timezone = settings.timezone || 'UTC';
     let datetime = null;
 
     if (this.props.value) {
-      //  Since we set a default server timezone (UTC default), moment-timezone will transform
-      //  datetime to that specific timezone
-      datetime = moment.tz(this.props.value, timezone);
+      // check if datetime has timezone, otherwise assumes it's UTC
+      datetime = this.props.value.match(/T(.)*(-|\+|Z)/g)
+        ? // Since we assume UTC everywhere, then transform to local (momentjs default)
+          moment(this.props.value)
+        : // This might happen in old Plone versions dates
+          moment(`${this.props.value}Z`);
     }
 
     this.state = {
       focused: false,
       isDefault: datetime?.toISOString() === moment().utc().toISOString(),
       datetime,
-      timezone,
       dateOnly: this.props.dateOnly || this.props.widget === 'date',
     };
   }
@@ -121,7 +120,7 @@ class DatetimeWidget extends Component {
                 date: date.date(),
                 ...(this.state.dateOnly ? defaultTimeDateOnly : {}),
               })
-            : moment.tz(date.toISOString(), this.state.timezone).set({
+            : moment().set({
                 year: date.year(),
                 month: date.month(),
                 date: date.date(),
@@ -148,7 +147,7 @@ class DatetimeWidget extends Component {
               minutes: time.minutes(),
               seconds: 0,
             })
-          : moment.tz(time.toISOString(), this.state.timezone).set({
+          : moment().set({
               hours: time.hours(),
               minutes: time.minutes(),
               seconds: 0,
@@ -190,7 +189,7 @@ class DatetimeWidget extends Component {
   onFocusChange = ({ focused }) => this.setState({ focused });
 
   render() {
-    const { id, noPastDates, intl } = this.props;
+    const { id, noPastDates, resettable, intl } = this.props;
     const { datetime, isDefault, focused } = this.state;
 
     return (
@@ -239,13 +238,15 @@ class DatetimeWidget extends Component {
               />
             </div>
           )}
-          <button
-            disabled={this.props.isDisabled || !datetime}
-            onClick={() => this.onResetDates()}
-            className="item ui noborder button"
-          >
-            <Icon name={clearSVG} size="24px" className="close" />
-          </button>
+          {resettable && (
+            <button
+              disabled={this.props.isDisabled || !datetime}
+              onClick={() => this.onResetDates()}
+              className="item ui noborder button"
+            >
+              <Icon name={clearSVG} size="24px" className="close" />
+            </button>
+          )}
         </div>
       </FormFieldWrapper>
     );
@@ -268,6 +269,7 @@ DatetimeWidget.propTypes = {
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   wrapped: PropTypes.bool,
+  resettable: PropTypes.bool,
 };
 
 /**
@@ -282,6 +284,7 @@ DatetimeWidget.defaultProps = {
   dateOnly: false,
   noPastDates: false,
   value: null,
+  resettable: true,
 };
 
 export default injectIntl(DatetimeWidget);
