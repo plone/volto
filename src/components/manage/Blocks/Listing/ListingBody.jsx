@@ -46,7 +46,7 @@ const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
     /* eslint-disable react-hooks/exhaustive-deps */
   }, [data]);
 
-  const folderItems = content.is_folderish ? content.items : [];
+  const folderItems = content?.is_folderish ? content.items : [];
 
   const loadingQuery =
     data?.query?.length > 0 && querystringResults?.[data.block]?.loading;
@@ -97,7 +97,7 @@ const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
             {...data}
           />
           {data?.query?.length === 0 &&
-            content.items_total > settings.defaultPageSize && (
+            content?.items_total > settings.defaultPageSize && (
               <div className="pagination-wrapper">
                 <Pagination
                   activePage={currentPage}

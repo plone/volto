@@ -75,19 +75,43 @@ const splitBySoftLines = (children) =>
     });
   });
 
+// splitSoftLines for <li> tag
+const splitSoftLinesOfLists = (children) =>
+  children.map((child, index) => {
+    return (
+      <li key={index}>
+        {child.map((subchild) => {
+          if (Array.isArray(subchild)) {
+            return subchild.map((subchildren) => {
+              if (typeof subchildren === 'string') {
+                const last = subchildren.split('\n').length - 1;
+                return subchildren.split('\n').map((item, index) => (
+                  <React.Fragment key={index}>
+                    {item}
+                    {index !== last && <br />}
+                  </React.Fragment>
+                ));
+              } else {
+                return subchildren;
+              }
+            });
+          } else {
+            return subchild;
+          }
+        })}
+      </li>
+    );
+  });
+
 // Returns how the default lists should be rendered
 const getList = (ordered) => (children, { depth, keys }) =>
   ordered ? (
     <ol key={keys[0]} keys={keys} depth={depth}>
-      {children.map((child, i) => (
-        <li key={keys[i]}>{child}</li>
-      ))}
+      {splitSoftLinesOfLists(children)}
     </ol>
   ) : (
     <ul key={keys[0]} keys={keys} depth={depth}>
-      {children.map((child, i) => (
-        <li key={keys[i]}>{child}</li>
-      ))}
+      {splitSoftLinesOfLists(children)}
     </ul>
   );
 
@@ -109,11 +133,11 @@ const getList = (ordered) => (children, { depth, keys }) =>
 
 const processChildren = (children, keys) => {
   const processedChildren = children.map((chunks) =>
-    chunks.map((child) => {
+    chunks.map((child, index) => {
       if (Array.isArray(child)) {
         // If it's empty is a blank paragraph, we want to add a <br /> in it
         if (isEmpty(child)) {
-          return <br key="br" />;
+          return <br key={index} />;
         }
         return child.map((subchild, index) => {
           if (typeof subchild === 'string') {

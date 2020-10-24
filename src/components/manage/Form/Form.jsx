@@ -24,6 +24,7 @@ import {
   omit,
   pickBy,
   without,
+  cloneDeep,
 } from 'lodash';
 import move from 'lodash-move';
 import isBoolean from 'lodash/isBoolean';
@@ -164,7 +165,7 @@ class Form extends Component {
     }
     this.state = {
       formData,
-      initialFormData: { ...formData },
+      initialFormData: cloneDeep(formData),
       errors: {},
       selected:
         formData.hasOwnProperty(blocksLayoutFieldname) &&

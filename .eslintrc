@@ -49,6 +49,7 @@
     "__DEVTOOLS__": true,
     "__DEBUG__": true,
     "__SSR__": true,
+    "__SENTRY__": true,
     "cy": true,
     "Cypress": true,
     "jest": true,
