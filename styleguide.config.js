@@ -1,6 +1,6 @@
 const path = require('path');
 const createConfig = require('./node_modules/razzle/config/createConfig.js');
-
+const webpack = require('webpack');
 const projectRootPath = path.resolve('.');
 
 const razzleConfig = require(path.join(projectRootPath, 'razzle.config.js'));
@@ -79,11 +79,16 @@ module.exports = {
   },
   webpackConfig(env) {
     // env is dev
-    const baseConfig = createConfig('web', 'dev', {
-      // clearConsole: false,
-      modify: razzleConfig.modify,
-      plugins: razzleConfig.plugins,
-    });
+    const baseConfig = createConfig(
+      'web',
+      'dev',
+      {
+        // clearConsole: false,
+        modify: razzleConfig.modify,
+        plugins: razzleConfig.plugins,
+      },
+      webpack,
+    );
 
     return baseConfig;
   },
