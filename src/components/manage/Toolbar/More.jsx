@@ -84,8 +84,18 @@ class More extends Component {
     const sharingAction = find(this.props.actions.object, {
       id: 'local_roles',
     });
+
     return (
-      <div className="menu-more pastanaga-menu">
+      <div
+        className="menu-more pastanaga-menu"
+        style={{
+          flex: this.props.theToolbar.current
+            ? `0 0 ${
+                this.props.theToolbar.current.getBoundingClientRect().width
+              }px`
+            : null,
+        }}
+      >
         <header>
           <h2>{this.props.content.title}</h2>
           <button

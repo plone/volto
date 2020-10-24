@@ -6,11 +6,19 @@
 
 ### Feature
 
+- Added placeholder background color same as selected one @iFlameing
+- Showing notification when user sort the folder-content @iFlameing
+
 ### Bugfix
 
 - A pathname like /policy/edit does not show the Unauthorized or Forbidden component when not logged in, ref #1936. @silviubogan
+- Fixes secondary views in toolbar @iFlameing @sneridagh
+- Fixing overlay expansion during link assign from objectbrowser in edit mode @iFlameing
 
 ### Internal
+
+- Added new in productions sites to README @wkbkhard
+- Writing test for the lisiting block location relative criteria @iFlameing
 
 ## 8.5.4 (2020-10-23)
 
@@ -21,8 +29,6 @@
 ### Bugfix
 
 - Fixing bug for link when inseting break lines in list tag for view mode @iFlameing
-
-### Internal
 
 ## 8.5.3 (2020-10-22)
 
