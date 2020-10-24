@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Added new in productions sites to README @wkbkhard
+
 ## 8.5.4 (2020-10-23)
 
 ### Breaking
