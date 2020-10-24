@@ -18,6 +18,7 @@
 
 - Added new in productions sites to README @wkbkhard
 - Writing test for the lisiting block location relative criteria @iFlameing
+- Add `UniversalLink` to handle internal/external/download links @nzambello
 
 ## 8.5.4 (2020-10-23)
 
@@ -81,7 +82,6 @@
 ### Internal
 
 - Fix sentry docs markdown format @avoinea
-- Add `UniversalLink` to handle internal/external/download links @nzambello
 
 ## 8.5.0-alpha.0 (2020-10-14)
 
