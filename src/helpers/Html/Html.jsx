@@ -9,6 +9,7 @@ import { Helmet } from '@plone/volto/helpers';
 import serialize from 'serialize-javascript';
 import { join } from 'lodash';
 import { BodyClass } from '@plone/volto/helpers';
+import { runtimeConfig } from '@plone/volto/runtime_config';
 
 /**
  * Html class.
@@ -69,6 +70,12 @@ class Html extends Component {
           {head.meta.toComponent()}
           {head.link.toComponent()}
           {head.script.toComponent()}
+
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `window.env = ${serialize(runtimeConfig)};`,
+            }}
+          />
 
           <link rel="shortcut icon" href="/favicon.ico" />
           <meta name="generator" content="Volto - http://plone.org" />
