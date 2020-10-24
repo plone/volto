@@ -29,6 +29,7 @@ export Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorize
 
 export Icon from '@plone/volto/components/theme/Icon/Icon';
 export ConditionalLink from '@plone/volto/components/manage/ConditionalLink/ConditionalLink';
+export UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 
 // Lazy load them, since we want them and its deps to be in its own chunk
 export ContactForm from '@plone/volto/components/theme/ContactForm/ContactForm';
