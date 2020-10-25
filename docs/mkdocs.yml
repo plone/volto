@@ -15,7 +15,7 @@ theme:
     text: 'Poppins'
     code: 'Source Code Pro'
 extra_css:
-  - 'stylesheets/extra.css'
+  - 'stylesheets/extra.oct2020.css'
   - 'stylesheets/pygments.css'
 
 nav:
