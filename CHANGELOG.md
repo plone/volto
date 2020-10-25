@@ -1,6 +1,6 @@
 # Change Log
 
-## 8.5.5 (unreleased)
+## 8.6.0 (2020-10-25)
 
 ### Feature
 
