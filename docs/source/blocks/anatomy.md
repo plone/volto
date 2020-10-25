@@ -5,7 +5,7 @@ Every blocks is composed of an edit (`Edit.jsx`) and a view (`View.jsx`) compone
 This components can be as simple as a dummy component, no boilerplate is required.
 This is an example of the `Edit.jsx`:
 
-```js
+```jsx
 import React from 'react';
 
 const Edit = props => {
@@ -17,7 +17,7 @@ export default Edit;
 
 and the `View.jsx`.
 
-```js
+```jsx
 import React from 'react';
 
 const View = props => {

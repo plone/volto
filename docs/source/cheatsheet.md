@@ -39,7 +39,7 @@ Magic link https://volto.kitconcept.com @sneridagh
 
 :smile: :heart: :thumbsup:
 
-```js hl_lines="1 3 12"
+```jsx hl_lines="1 3 12"
   /**
    * Render method.
    * @method render
