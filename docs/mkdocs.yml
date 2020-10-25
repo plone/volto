@@ -75,7 +75,6 @@ markdown_extensions:
   - admonition
   - codehilite:
       guess_lang: false
-
   - pymdownx.superfences
   - pymdownx.magiclink
   - pymdownx.mark
