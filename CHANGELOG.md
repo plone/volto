@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Update docs build and include pygments support for jsx @sneridagh
+
 ## 8.6.0 (2020-10-25)
 
 ### Feature
