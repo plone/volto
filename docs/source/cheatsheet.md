@@ -75,132 +75,16 @@ Magic link https://volto.kitconcept.com @sneridagh
   """ """
 ```
 
-!!! example "Tabbed Code"
+=== "Tab 1"
+    Markdown **content**.
 
-    ````
-    ```Bash tab=
-    #!/bin/bash
-    STR="Hello World!"
-    echo $STR
-    ```
+    Multiple paragraphs.
 
-    ```C tab=
-    #include
+=== "Tab 2"
+    More Markdown **content**.
 
-    int main(void) {
-      printf("hello, world\n");
-    }
-    ```
-
-    ```C++ tab=
-    #include <iostream>
-
-    int main() {
-      std::cout << "Hello, world!\n";
-      return 0;
-    }
-    ```
-
-    ```C# tab=
-    using System;
-
-    class Program {
-      static void Main(string[] args) {
-        Console.WriteLine("Hello, world!");
-      }
-    }
-    ```
-    ````
-
-    ```Bash tab=
-    #!/bin/bash
-    STR="Hello World!"
-    echo $STR
-    ```
-
-    ```C tab=
-    #include
-
-    int main(void) {
-      printf("hello, world\n");
-    }
-    ```
-
-    ```C++ tab=
-    #include <iostream>
-
-    int main() {
-      std::cout << "Hello, world!\n";
-      return 0;
-    }
-    ```
-
-    ```C# tab=
-    using System;
-
-    class Program {
-      static void Main(string[] args) {
-        Console.WriteLine("Hello, world!");
-      }
-    }
-    ```
-
-??? settings "Tabbed Code Setup"
-    ```HTML tab=
-    <div class="superfences-tabs">
-    <input name="__tabs_1" type="radio" id="__tab_1_0" checked="checked">
-    <label for="__tab_1_0">Tab 0</label>
-    <div class="superfences-content">...</div>
-    ...
-    <input name="__tabs_1" type="radio" id="__tab_1_X" checked="checked">
-    <label for="__tab_1_X">Tab X</label>
-    <div class="superfences-content">...</div>
-    ...
-    </div>
-    ```
-
-    ```CSS tab=
-    .superfences-tabs {
-      display: flex;
-      position: relative;
-      flex-wrap: wrap;
-    }
-
-    .superfences-tabs .highlight {
-      background: #ddd;
-    }
-
-    .superfences-tabs .superfences-content {
-      display: none;
-      order: 99;
-      width: 100%;
-    }
-
-    .superfences-tabs label {
-      width: auto;
-      margin: 0 0.5em;
-      padding: 0.25em;
-      font-size: 120%;
-      cursor: pointer;
-    }
-
-    .superfences-tabs input {
-      position: absolute;
-      opacity: 0;
-    }
-
-    .superfences-tabs input:nth-child(n+1) {
-      color: #333333;
-    }
-
-    .superfences-tabs input:nth-child(n+1):checked + label {
-        color: #FF5252;
-    }
-
-    .superfences-tabs input:nth-child(n+1):checked + label + .superfences-content {
-        display: block;
-    }
-    ```
+    - list item a
+    - list item b
 
 Task List
 
@@ -214,3 +98,15 @@ Task List
     * [X] item C
 - [ ] item 2
 - [ ] item 3
+
+
+???+ note "Open styled details"
+
+    ??? danger "Nested details!"
+        And more content again.
+
+??? success "asdasd"
+    Content.
+
+??? warning classes
+    Content.
