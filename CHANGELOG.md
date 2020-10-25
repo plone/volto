@@ -2,12 +2,11 @@
 
 ## 8.5.5 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Added placeholder background color same as selected one @iFlameing
 - Showing notification when user sort the folder-content @iFlameing
+- Render full language name (e.g. "English") instead of 2 character language code in language selector, matching Plone default behavior. @mikejmets
 
 ### Bugfix
 
@@ -41,7 +40,6 @@
 
 ### Bugfix
 
-- Render nativeLang instead of 2 character language code in language selector
 - Showing error notification when user try to paste disallowed content type. @iFlameing
 
 ### Internal
