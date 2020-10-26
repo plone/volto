@@ -96,19 +96,32 @@ class LinkView extends Component {
               <>
                 {URLUtils.isMail('mailto:' + this.props.content.remoteUrl) ? (
                   <a
-                    href={`mailto:${this.props.content.remoteUrl}`}
+                    href={URLUtils.normaliseMail(this.props.content.remoteUrl)}
                     rel="noopener noreferrer"
                   >
                     {this.props.content.remoteUrl}
                   </a>
                 ) : (
-                  <a
-                    href={this.props.content.remoteUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {this.props.content.remoteUrl}
-                  </a>
+                  <>
+                    {URLUtils.isTelephone(this.props.content.remoteUrl) ? (
+                      <a
+                        href={URLUtils.normalizeTelephone(
+                          this.props.content.remoteUrl,
+                        )}
+                        rel="noopener noreferrer"
+                      >
+                        {this.props.content.remoteUrl}
+                      </a>
+                    ) : (
+                      <a
+                        href={this.props.content.remoteUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {this.props.content.remoteUrl}
+                      </a>
+                    )}
+                  </>
                 )}
               </>
             )}

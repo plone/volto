@@ -3,6 +3,7 @@
 ## 8.6.1 (unreleased)
 
 - added objectBrowser to UrlWidget, and attached UrlWidget to remoteUrl field of ContentType Link @giuliaghisini
+- managed tel link in UrlWidget and draftjs @giuliaghisini
 
 ### Breaking
 

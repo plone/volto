@@ -209,14 +209,19 @@ class AddLinkForm extends Component {
     const { getEditorState, setEditorState } = this.props;
     let { value: url } = this.state;
 
-    if (!URLUtils.isMail(URLUtils.normaliseMail(url))) {
+    if (URLUtils.isMail(URLUtils.normaliseMail(url))) {
+      //Mail
+      url = URLUtils.normaliseMail(url);
+    } else if (URLUtils.isTelephone(url)) {
+      //Phone
+      url = URLUtils.normalizeTelephone(url);
+    } else {
+      //url
       url = URLUtils.normalizeUrl(url);
       if (!URLUtils.isUrl(url) && !url.startsWith('/')) {
         this.setState({ isInvalid: true });
         return;
       }
-    } else {
-      url = URLUtils.normaliseMail(url);
     }
 
     const editorStateUrl = isInternalURL(url) ? addAppURL(url) : url;
