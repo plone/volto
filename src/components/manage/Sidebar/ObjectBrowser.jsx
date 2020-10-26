@@ -60,7 +60,7 @@ const withObjectBrowser = (WrappedComponent) =>
       selectableTypes,
       maximumSelectionSize,
     } = {}) =>
-      this.setState({
+      this.setState(() => ({
         isObjectBrowserOpen: true,
         mode,
         onSelectItem,
@@ -69,7 +69,7 @@ const withObjectBrowser = (WrappedComponent) =>
         propDataName,
         selectableTypes,
         maximumSelectionSize,
-      });
+      }));
 
     closeObjectBrowser = () => this.setState({ isObjectBrowserOpen: false });
 

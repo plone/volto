@@ -7,18 +7,35 @@ import { reduce } from 'lodash';
 import { Link, useLocation } from 'react-router-dom';
 import { Icon, Toast, Toolbar } from '@plone/volto/components';
 import { settings } from '~/config';
-import linkSVG from '@plone/volto/icons/link.svg';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
-import { getContent, linkTranslation } from '@plone/volto/actions';
+import {
+  deleteLinkTranslation,
+  getContent,
+  linkTranslation,
+} from '@plone/volto/actions';
 import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
 import { useSelector, useDispatch } from 'react-redux';
 import { Portal } from 'react-portal';
 import { toast } from 'react-toastify';
 
+import addSVG from '@plone/volto/icons/add.svg';
 import backSVG from '@plone/volto/icons/back.svg';
-import deleteSVG from '@plone/volto/icons/delete.svg';
+import linkSVG from '@plone/volto/icons/link.svg';
+import unlinkSVG from '@plone/volto/icons/unlink.svg';
 
 const messages = defineMessages({
+  success: {
+    id: 'Success',
+    defaultMessage: 'Success',
+  },
+  linked: {
+    id: 'Content linked',
+    defaultMessage: 'Content linked',
+  },
+  unlinked: {
+    id: 'Translation deleted',
+    defaultMessage: 'Translation deleted',
+  },
   ManageTranslations: {
     id: 'Manage Translations',
     defaultMessage: 'Manage Translations',
@@ -35,17 +52,51 @@ const messages = defineMessages({
 
 const ManageTranslations = (props) => {
   const intl = useIntl();
-  const location = useLocation();
+  const pathname = useLocation().pathname;
   const content = useSelector((state) => state.content.data);
   const dispatch = useDispatch();
 
-  const { openObjectBrowser } = props;
+  const { isObjectBrowserOpen, openObjectBrowser } = props;
+
+  const currentSelectedItem = React.useRef(null);
 
   React.useEffect(() => {
     if (!content) {
-      dispatch(getContent(getBaseUrl(location.pathname)));
+      dispatch(getContent(getBaseUrl(pathname)));
     }
-  }, [dispatch, content, location.pathname]);
+  }, [dispatch, content, pathname]);
+
+  React.useEffect(() => {
+    // Only execute the link API call on the final item selected, once the ObjectBrowser
+    // is closed
+    if (!isObjectBrowserOpen && currentSelectedItem.current) {
+      dispatch(linkTranslation(content['@id'], currentSelectedItem.current))
+        .then((resp) => {
+          toast.success(
+            <Toast
+              success
+              title={intl.formatMessage(messages.success)}
+              content={intl.formatMessage(messages.linked)}
+            />,
+          );
+          dispatch(getContent(getBaseUrl(pathname)));
+        })
+        .catch((error) => {
+          // TODO: The true error sent by the API is shadowed by the superagent one
+          // Update this when this issue is fixed.
+          const shadowedError = JSON.parse(error.response.text);
+          toast.error(
+            <Toast
+              error
+              title={shadowedError.error.type}
+              content={shadowedError.error.message}
+            />,
+            { toastId: 'linkFailed' },
+          );
+        });
+    }
+    /* eslint-disable react-hooks/exhaustive-deps */
+  }, [isObjectBrowserOpen]);
 
   const translations = content &&
     content['@components'].translations.items && {
@@ -62,15 +113,23 @@ const ManageTranslations = (props) => {
     };
 
   function onSelectTarget(target) {
-    dispatch(linkTranslation(content['@id'], target))
+    // We store the selection temporarily on the component, because we don't want it to
+    // execute it right away, since that will lead into duplicate link requests and we
+    // only want the last to get through
+    currentSelectedItem.current = target;
+  }
+
+  function onDeleteTranslation(lang) {
+    dispatch(deleteLinkTranslation(content['@id'], lang))
       .then((resp) => {
         toast.success(
           <Toast
             success
-            title={this.props.intl.formatMessage(messages.success)}
-            content={this.props.intl.formatMessage(messages.saved)}
+            title={intl.formatMessage(messages.success)}
+            content={intl.formatMessage(messages.unlinked)}
           />,
         );
+        dispatch(getContent(getBaseUrl(pathname)));
       })
       .catch((error) => {
         // TODO: The true error sent by the API is shadowed by the superagent one
@@ -109,7 +168,7 @@ const ManageTranslations = (props) => {
             </Table.Header>
             <Table.Body>
               {settings.supportedLanguages.map((lang) => (
-                <Table.Row>
+                <Table.Row key={lang}>
                   <Table.Cell collapsing>
                     {lang === content.language.token ? (
                       <strong>{langmap[lang].nativeName}</strong>
@@ -122,36 +181,66 @@ const ManageTranslations = (props) => {
                       {flattenToAppURL(translations[lang]?.url || '')}
                     </Link>
                   </Table.Cell>
-                  <Table.Cell textAlign="right">
+                  <Table.Cell
+                    textAlign="right"
+                    className="manage-multilingual-tools"
+                  >
                     <Button.Group>
                       <Button
                         basic
                         icon
-                        onClick={() =>
-                          openObjectBrowser({
-                            mode: 'link',
-                            overlay: true,
-                            onSelectItem: (url) => {
-                              onSelectTarget(url);
-                            },
-                          })
-                        }
+                        disabled={lang === content.language.token}
+                        as={Link}
+                        to={{
+                          pathname: `${pathname}/create-translation`,
+                          state: {
+                            type: content['@type'],
+                            translationOf: flattenToAppURL(content['@id']),
+                            language: lang,
+                          },
+                        }}
                       >
-                        <Icon name={linkSVG} size="24px" />
+                        <Icon name={addSVG} size="24px" />
                       </Button>
                     </Button.Group>
-                    {}
-                    <Button.Group>
-                      <Button
-                        basic
-                        icon
-                        onClick={() =>
-                          openObjectBrowser({ mode: 'link', overlay: true })
-                        }
-                      >
-                        <Icon name={deleteSVG} size="24px" />
-                      </Button>
-                    </Button.Group>
+                    {translations?.[lang] ? (
+                      <Button.Group>
+                        <Button
+                          basic
+                          icon
+                          disabled={lang === content.language.token}
+                          onClick={() => onDeleteTranslation(lang)}
+                        >
+                          <Icon
+                            name={
+                              lang === content.language.token
+                                ? linkSVG
+                                : unlinkSVG
+                            }
+                            size="24px"
+                          />
+                        </Button>
+                      </Button.Group>
+                    ) : (
+                      <Button.Group>
+                        <Button
+                          basic
+                          icon
+                          disabled={lang === content.language.token}
+                          onClick={() =>
+                            openObjectBrowser({
+                              mode: 'link',
+                              overlay: true,
+                              onSelectItem: (url) => {
+                                onSelectTarget(url, isObjectBrowserOpen);
+                              },
+                            })
+                          }
+                        >
+                          <Icon name={linkSVG} size="24px" />
+                        </Button>
+                      </Button.Group>
+                    )}
                   </Table.Cell>
                 </Table.Row>
               ))}
@@ -161,10 +250,10 @@ const ManageTranslations = (props) => {
         {__CLIENT__ && (
           <Portal node={document.getElementById('toolbar')}>
             <Toolbar
-              pathname={location.pathname}
+              pathname={pathname}
               hideDefaultViewButtons
               inner={
-                <Link to={`${getBaseUrl(location.pathname)}`} className="item">
+                <Link to={`${getBaseUrl(pathname)}`} className="item">
                   <Icon
                     name={backSVG}
                     className="contents circled"

@@ -4,6 +4,7 @@
  */
 
 import {
+  DELETE_TRANSLATION,
   GET_TRANSLATION_LOCATOR,
   LINK_TRANSLATION,
 } from '@plone/volto/constants/ActionTypes';
@@ -27,7 +28,8 @@ export function getTranslationLocator(url, lang) {
 /**
  * Link translations function.
  * @function linkTranslation
- * @param {string} url URL type.
+ * @param {string} url URL type origin object to be linked to.
+ * @param {string} target URL type (absolute, relative or UUID).
  * @returns {Object} Get translations action.
  */
 export function linkTranslation(url, target) {
@@ -38,6 +40,26 @@ export function linkTranslation(url, target) {
       path: `${url}/@translations`,
       data: {
         id: target,
+      },
+    },
+  };
+}
+
+/**
+ * Delete link translations function.
+ * @function linkTranslation
+ * @param {string} url URL type origin object to be linked to.
+ * @param {string} lang short language code of the translation to be deleted.
+ * @returns {Object} Get translations action.
+ */
+export function deleteLinkTranslation(url, lang) {
+  return {
+    type: DELETE_TRANSLATION,
+    request: {
+      op: 'del',
+      path: `${url}/@translations`,
+      data: {
+        language: lang,
       },
     },
   };
