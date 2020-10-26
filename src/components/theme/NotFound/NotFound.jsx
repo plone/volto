@@ -23,7 +23,6 @@ const NotFound = (props) => {
     staticContext.error_code = 404;
     staticContext.error = props.error;
   }
-  console.log('render notfound');
   return (
     <Container className="view-wrapper">
       <h1>

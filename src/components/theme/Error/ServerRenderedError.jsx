@@ -48,7 +48,6 @@ class App extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    console.log('ServerRenderedError', this.props);
     const path = getBaseUrl(this.props.pathname);
     const action = getView(this.props.pathname);
     const isCmsUI = isCmsUi(this.props.pathname);

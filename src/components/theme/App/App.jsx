@@ -103,8 +103,6 @@ class App extends Component {
     const isCmsUI = isCmsUi(this.props.pathname);
     const ConnectionRefusedView = views.errorViews.ECONNREFUSED;
 
-    console.log('app render', this.state, this.props);
-
     return (
       <Fragment>
         <BodyClass className={`view-${action}view`} />
@@ -221,6 +219,6 @@ export default compose(
       apiError: state.apierror.error,
       connectionRefused: state.apierror.connectionRefused,
     }),
-    {},
+    null,
   ),
 )(App);

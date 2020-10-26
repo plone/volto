@@ -196,15 +196,16 @@ class View extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    if (this.props.error && !this.props.connectionRefused) {
+    const error = this.props.error || this.props.apiError || null;
+    if (error && !this.props.connectionRefused) {
       let FoundView;
-      if (this.props.error.status === undefined) {
+      if (error.status === undefined) {
         // For some reason, while development and if CORS is in place and the
         // requested resource is 404, it returns undefined as status, then the
         // next statement will fail
         FoundView = views.errorViews.corsError;
       } else {
-        FoundView = views.errorViews[this.props.error.status.toString()];
+        FoundView = views.errorViews[error.status.toString()];
       }
       if (!FoundView) {
         FoundView = views.errorViews['404']; // default to 404

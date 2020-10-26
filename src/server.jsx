@@ -191,7 +191,6 @@ server
 
             // re-render again, the error have propagated back from router
             // to the staticContext
-            console.log('store', context);
             const initialState = {
               userSession: { ...userSession(), token: authToken },
               form: req.body,
