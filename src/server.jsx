@@ -31,8 +31,6 @@ import {
 import userSession from '@plone/volto/reducers/userSession/userSession';
 
 import ErrorPage from '@plone/volto/error';
-// import { Error } from '@plone/volto/components';
-import App from '@plone/volto/components/theme/Error/ServerRenderedError';
 
 import languages from '@plone/volto/constants/Languages';
 
@@ -71,14 +69,6 @@ if (__DEVELOPMENT__ && settings.devProxyToApiPath) {
 
 if ((settings.expressMiddleware || []).length)
   server.use('/', settings.expressMiddleware);
-
-// <App {...context} error={context.error} pathname="/" />
-const errorRoutes = [
-  {
-    path: '*',
-    component: App,
-  },
-];
 
 server
   .disable('x-powered-by')
@@ -189,31 +179,15 @@ server
               'Cache-Control': 'no-cache',
             });
 
-            // re-render again, the error have propagated back from router
-            // to the staticContext
-            const initialState = {
-              userSession: { ...userSession(), token: authToken },
-              form: req.body,
-              intl: {
-                defaultLocale: 'en',
-                locale: lang,
-                messages: locales[lang],
-              },
-              browserdetect,
-              apierror: context,
-            };
-            const store = configureStore(initialState, history, api);
-            const markup = renderToString(
-              <Provider store={store}>
-                <StaticRouter context={context} location={req.url}>
-                  <ReduxAsyncConnect routes={errorRoutes} />
-                </StaticRouter>
-              </Provider>,
-            );
             res.status(context.error_code).send(
               `<!doctype html>
                 ${renderToString(
-                  <Html extractor={extractor} markup={markup} store={store} />,
+                  <Html
+                    extractor={extractor}
+                    markup={markup}
+                    store={store}
+                    extractScripts={false}
+                  />,
                 )}
               `,
             );
