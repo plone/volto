@@ -2034,6 +2034,10 @@ msgstr ""
 msgid "You can view the history of your item below."
 msgstr ""
 
+#: components/manage/Contents/Contents
+msgid "You can't paste this content here"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Your email is required for reset your password."
 msgstr ""

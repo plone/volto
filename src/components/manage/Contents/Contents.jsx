@@ -105,6 +105,10 @@ const messages = defineMessages({
     id: 'Cut',
     defaultMessage: 'Cut',
   },
+  error: {
+    id: "You can't paste this content here",
+    defaultMessage: "You can't paste this content here",
+  },
   delete: {
     id: 'Delete',
     defaultMessage: 'Delete',

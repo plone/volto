@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix error object in clipboard reducer @iFlameing
+
 ### Internal
 
 - Update docs build and include pygments support for jsx @sneridagh

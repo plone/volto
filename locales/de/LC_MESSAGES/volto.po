@@ -2049,6 +2049,10 @@ msgstr "Sie können die Unterschiede der verschiedenen Versionen unten sehen."
 msgid "You can view the history of your item below."
 msgstr "Sie können die Historie des Inhalts unten einsehen."
 
+#: components/manage/Contents/Contents
+msgid "You can't paste this content here"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Your email is required for reset your password."
 msgstr "Ihre E-Mail Adresse ist notwendig um Ihr Passwort zurücksetzen zu können."
