@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Properly return 404 on SSR, when appropriate @tiberiuichim
+
 ### Internal
 
 - Update docs build and include pygments support for jsx @sneridagh
