@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { settings } from '~/config';
 import { flattenToAppURL } from '@plone/volto/helpers';
-import URLUtils from '../AnchorPlugin/utils/URLUtils';
+import URLUtils from '@plone/volto/components/manage/AnchorPlugin/utils/URLUtils';
 
 const UniversalLink = ({
   href,
