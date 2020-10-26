@@ -103,6 +103,8 @@ class App extends Component {
     const isCmsUI = isCmsUi(this.props.pathname);
     const ConnectionRefusedView = views.errorViews.ECONNREFUSED;
 
+    console.log('app render', this.state, this.props);
+
     return (
       <Fragment>
         <BodyClass className={`view-${action}view`} />
@@ -142,7 +144,9 @@ class App extends Component {
                   stackTrace={this.state.errorInfo.componentStack}
                 />
               ) : (
-                renderRoutes(this.props.route.routes)
+                renderRoutes(this.props.route.routes, {
+                  staticContext: this.props.staticContext,
+                })
               )}
             </main>
           </Segment>
