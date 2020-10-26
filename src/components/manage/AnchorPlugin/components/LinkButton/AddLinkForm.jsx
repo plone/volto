@@ -8,7 +8,11 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 
 import unionClassNames from 'union-class-names';
-import { addAppURL } from '@plone/volto/helpers';
+import {
+  addAppURL,
+  isInternalURL,
+  flattenToAppURL,
+} from '@plone/volto/helpers';
 import EditorUtils from 'draft-js-plugins-utils';
 
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
@@ -59,7 +63,9 @@ class AddLinkForm extends Component {
     super(props);
 
     this.state = {
-      value: props.data.url || '',
+      value: isInternalURL(props.data.url)
+        ? flattenToAppURL(props.data.url)
+        : props.data.url || '',
       isInvalid: false,
     };
     this.onRef = this.onRef.bind(this);
@@ -112,13 +118,17 @@ class AddLinkForm extends Component {
    * @returns {undefined}
    */
   onChange(value, clear) {
-    const nextState = { value };
+    let nextState = { value };
     if (!clear) {
       if (
         this.state.isInvalid &&
         URLUtils.isUrl(URLUtils.normalizeUrl(value))
       ) {
         nextState.isInvalid = false;
+      }
+
+      if (isInternalURL(value)) {
+        nextState = { value: flattenToAppURL(value) };
       }
     }
     this.setState(nextState);
@@ -144,7 +154,10 @@ class AddLinkForm extends Component {
       isInvalid: false,
     });
     this.props.setEditorState(
-      EditorUtils.createLinkAtSelection(this.props.getEditorState(), url),
+      EditorUtils.createLinkAtSelection(
+        this.props.getEditorState(),
+        addAppURL(url),
+      ),
     );
   };
 
@@ -196,18 +209,26 @@ class AddLinkForm extends Component {
     const { getEditorState, setEditorState } = this.props;
     let { value: url } = this.state;
 
-    if (!URLUtils.isMail(URLUtils.normaliseMail(url))) {
+    if (URLUtils.isMail(URLUtils.normaliseMail(url))) {
+      //Mail
+      url = URLUtils.normaliseMail(url);
+    } else if (URLUtils.isTelephone(url)) {
+      //Phone
+      url = URLUtils.normalizeTelephone(url);
+    } else {
+      //url
       url = URLUtils.normalizeUrl(url);
       if (!URLUtils.isUrl(url) && !url.startsWith('/')) {
         this.setState({ isInvalid: true });
-
         return;
       }
-    } else {
-      url = URLUtils.normaliseMail(url);
     }
 
-    setEditorState(EditorUtils.createLinkAtSelection(getEditorState(), url));
+    const editorStateUrl = isInternalURL(url) ? addAppURL(url) : url;
+
+    setEditorState(
+      EditorUtils.createLinkAtSelection(getEditorState(), editorStateUrl),
+    );
     this.onClose();
   }
 
@@ -250,9 +271,7 @@ class AddLinkForm extends Component {
                 id={`field-link`}
                 name="link"
                 value={value || ''}
-                onChange={({ target }) =>
-                  this.onChange(target.value === '' ? '' : target.value)
-                }
+                onChange={({ target }) => this.onChange(target.value)}
                 placeholder={this.props.intl.formatMessage(
                   messages.placeholder,
                 )}
@@ -285,7 +304,7 @@ class AddLinkForm extends Component {
                         mode: 'link',
                         overlay: true,
                         onSelectItem: (url) => {
-                          this.onChange(addAppURL(url));
+                          this.onChange(url);
                           this.onSubmit();
                         },
                       });

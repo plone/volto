@@ -5,9 +5,10 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { isInternalURL } from '@plone/volto/helpers';
+import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
+import URLUtils from '@plone/volto/components/manage/AnchorPlugin/utils/URLUtils';
 
 /**
  * View container class.
@@ -88,17 +89,41 @@ class LinkView extends Component {
           <span>
             The link address is:
             {isInternalURL(this.props.content.remoteUrl) ? (
-              <Link to={this.props.content.remoteUrl}>
+              <Link to={flattenToAppURL(this.props.content.remoteUrl)}>
                 {this.props.content.remoteUrl}
               </Link>
             ) : (
-              <a
-                href={this.props.content.remoteUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {this.props.content.remoteUrl}
-              </a>
+              <>
+                {URLUtils.isMail('mailto:' + this.props.content.remoteUrl) ? (
+                  <a
+                    href={URLUtils.normaliseMail(this.props.content.remoteUrl)}
+                    rel="noopener noreferrer"
+                  >
+                    {this.props.content.remoteUrl}
+                  </a>
+                ) : (
+                  <>
+                    {URLUtils.isTelephone(this.props.content.remoteUrl) ? (
+                      <a
+                        href={URLUtils.normalizeTelephone(
+                          this.props.content.remoteUrl,
+                        )}
+                        rel="noopener noreferrer"
+                      >
+                        {this.props.content.remoteUrl}
+                      </a>
+                    ) : (
+                      <a
+                        href={this.props.content.remoteUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {this.props.content.remoteUrl}
+                      </a>
+                    )}
+                  </>
+                )}
+              </>
             )}
           </span>
         )}

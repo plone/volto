@@ -1,6 +1,9 @@
 # Change Log
 
-## 8.5.5 (unreleased)
+## 8.6.1 (unreleased)
+
+- added objectBrowser to UrlWidget, and attached UrlWidget to remoteUrl field of ContentType Link @giuliaghisini
+- managed tel link in UrlWidget and draftjs @giuliaghisini
 
 - Improved form validation. Tested required fields when field is array or richtext @giuliaghisini
 - fixed bug in render lists in draftjs, when there's some styles inside list-item (links or bold text ecc..) @giuliaghisini
@@ -13,6 +16,28 @@
 
 ### Internal
 
+- Update docs build and include pygments support for jsx @sneridagh
+
+## 8.6.0 (2020-10-25)
+
+### Feature
+
+- Added placeholder background color same as selected one @iFlameing
+- Showing notification when user sort the folder-content @iFlameing
+- Render full language name (e.g. "English") instead of 2 character language code in language selector, matching Plone default behavior. @mikejmets
+
+### Bugfix
+
+- A pathname like /policy/edit does not show the Unauthorized or Forbidden component when not logged in, ref #1936. @silviubogan
+- Fixes secondary views in toolbar @iFlameing @sneridagh
+- Fixing overlay expansion during link assign from objectbrowser in edit mode @iFlameing
+
+### Internal
+
+- Added new in productions sites to README @wkbkhard
+- Writing test for the lisiting block location relative criteria @iFlameing
+- Add `UniversalLink` to handle internal/external/download links @nzambello
+
 ## 8.5.4 (2020-10-23)
 
 ### Breaking
@@ -22,8 +47,6 @@
 ### Bugfix
 
 - Fixing bug for link when inseting break lines in list tag for view mode @iFlameing
-
-### Internal
 
 ## 8.5.3 (2020-10-22)
 

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-10-19T10:56:29.881Z\n"
+"POT-Creation-Date: 2020-10-20T22:19:14.009Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1078,6 +1078,11 @@ msgid "Item batch size"
 msgstr ""
 
 #: components/manage/Contents/Contents
+# defaultMessage: Item succesfully moved.
+msgid "Item succesfully moved."
+msgstr ""
+
+#: components/manage/Contents/Contents
 # defaultMessage: Item(s) copied.
 msgid "Item(s) copied."
 msgstr ""
@@ -1085,6 +1090,11 @@ msgstr ""
 #: components/manage/Contents/Contents
 # defaultMessage: Item(s) cut.
 msgid "Item(s) cut."
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Item(s) has been sorted.
+msgid "Item(s) has been sorted."
 msgstr ""
 
 #: components/manage/Actions/Actions

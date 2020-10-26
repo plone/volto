@@ -894,12 +894,20 @@ msgid "Item batch size"
 msgstr "1ページ表示件数"
 
 #: components/manage/Contents/Contents
+msgid "Item succesfully moved."
+msgstr ""
+
+#: components/manage/Contents/Contents
 msgid "Item(s) copied."
 msgstr "アイテムがコピーされました。"
 
 #: components/manage/Contents/Contents
 msgid "Item(s) cut."
 msgstr "アイテムがカットされました。"
+
+#: components/manage/Contents/Contents
+msgid "Item(s) has been sorted."
+msgstr ""
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents

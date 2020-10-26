@@ -48,7 +48,7 @@ const LanguageSelector = (props) => {
             }}
             key={`language-selector-${lang}`}
           >
-            {lang}&nbsp;
+            {langmap[lang].nativeName}&nbsp;
           </Link>
         );
       })}

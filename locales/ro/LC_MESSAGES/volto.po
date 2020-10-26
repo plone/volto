@@ -887,12 +887,20 @@ msgid "Item batch size"
 msgstr "Dimensiunea lotului obiectului"
 
 #: components/manage/Contents/Contents
+msgid "Item succesfully moved."
+msgstr ""
+
+#: components/manage/Contents/Contents
 msgid "Item(s) copied."
 msgstr "Obiect(e) copiat."
 
 #: components/manage/Contents/Contents
 msgid "Item(s) cut."
 msgstr "Obiect(e) tăiat(e)."
+
+#: components/manage/Contents/Contents
+msgid "Item(s) has been sorted."
+msgstr ""
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
