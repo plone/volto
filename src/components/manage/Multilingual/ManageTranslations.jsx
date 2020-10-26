@@ -189,7 +189,10 @@ const ManageTranslations = (props) => {
                       <Button
                         basic
                         icon
-                        disabled={lang === content.language.token}
+                        disabled={
+                          lang === content.language.token ||
+                          translations?.[lang]
+                        }
                         as={Link}
                         to={{
                           pathname: `${pathname}/create-translation`,
