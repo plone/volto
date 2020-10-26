@@ -1,10 +1,110 @@
 # Change Log
 
-## 8.3.1 (unreleased)
+## 8.6.1 (unreleased)
 
 - added objectBrowser to UrlWidget, and attached UrlWidget to remoteUrl field of ContentType Link @giuliaghisini
 
 ### Breaking
+
+### Feature
+
+### Bugfix
+
+### Internal
+
+- Update docs build and include pygments support for jsx @sneridagh
+
+## 8.6.0 (2020-10-25)
+
+### Feature
+
+- Added placeholder background color same as selected one @iFlameing
+- Showing notification when user sort the folder-content @iFlameing
+- Render full language name (e.g. "English") instead of 2 character language code in language selector, matching Plone default behavior. @mikejmets
+
+### Bugfix
+
+- A pathname like /policy/edit does not show the Unauthorized or Forbidden component when not logged in, ref #1936. @silviubogan
+- Fixes secondary views in toolbar @iFlameing @sneridagh
+- Fixing overlay expansion during link assign from objectbrowser in edit mode @iFlameing
+
+### Internal
+
+- Added new in productions sites to README @wkbkhard
+- Writing test for the lisiting block location relative criteria @iFlameing
+- Add `UniversalLink` to handle internal/external/download links @nzambello
+
+## 8.5.4 (2020-10-23)
+
+### Breaking
+
+### Feature
+
+### Bugfix
+
+- Fixing bug for link when inseting break lines in list tag for view mode @iFlameing
+
+## 8.5.3 (2020-10-22)
+
+### Bugfix
+
+- Removed timezone initialization for DatetimeWidget, ref #1923. @razvanMiu
+
+## 8.5.2 (2020-10-21)
+
+### Bugfix
+
+- Showing error notification when user try to paste disallowed content type. @iFlameing
+
+### Internal
+
+- Added environment parameter `RAZZLE_BIND_ADDRESS` to be able to bind server to localhost or other specific IPs instead of 0.0.0.0 @achimwilde
+
+## 8.5.1 (2020-10-21)
+
+### Bugfix
+
+- Fix sharing for when users has dots on them @sneridagh
+
+## 8.5.0 (2020-10-20)
+
+### Bugfix
+
+- Japanese translation updated @terapyon
+
+## 8.5.0-alpha.2 (2020-10-20)
+
+### Bugfix
+
+- Update German translation @ksuess
+
+### Internal
+
+- Fix runtimeConfig relative vs absolute import @avoinea
+
+## 8.5.1-alpha.0 (2020-10-19)
+
+### Feature
+
+- Adding softlinebreak in list tag @iFlameing
+
+### Bugfix
+
+- Errors catched by the default error handler are sent to sentry @zotya
+- Fixed a problem what occured when RAZZLE*SENTRY_DSN was missing but the other RAZZLE_SENTRY*\* variables were set @zotya
+
+### Internal
+
+- Fix sentry docs markdown format @avoinea
+
+## 8.5.0-alpha.0 (2020-10-14)
+
+### Feature
+
+- Sentry integration @zotya
+- All the environment variables defined at runtime that have the `RAZZLE_` prefix, are now available in the browser under window.env @zotya
+
+## 8.4.0 (2020-10-14)
 
 ### Feature
 
@@ -15,8 +115,11 @@
 
 - Folder contents view: Save additional columns and updated order of columns @ksuess
 - Fixed edit link in draft-js when link is selected from word-end to word-start @giuliaghisini
+- Revert PR No. 1820 to fix linebreaks on inline links in draftJS @steffenri
 
 ### Internal
+
+- Keep `@babel/core` in Volto core in sync with `babel-preset-razzle` it fixes #1897 @sneridagh
 
 ## 8.3.0 (2020-10-12)
 

@@ -15,7 +15,6 @@ import split from 'lodash/split';
 import join from 'lodash/join';
 import trim from 'lodash/trim';
 import cx from 'classnames';
-import loadable from '@loadable/component';
 
 import { settings, views } from '~/config';
 
@@ -41,6 +40,8 @@ import {
 import clearSVG from '@plone/volto/icons/clear.svg';
 import MultilingualRedirector from '../MultilingualRedirector/MultilingualRedirector';
 
+import * as Sentry from '@sentry/browser';
+
 /**
  * @export
  * @class App
@@ -61,20 +62,6 @@ class App extends Component {
     error: null,
     errorInfo: null,
   };
-
-  /**
-   * ComponentDidMount
-   * @method ComponentDidMount
-   * @param {string} error  The error
-   * @param {string} info The info
-   * @returns {undefined}
-   */
-  componentDidMount() {
-    if (__CLIENT__ && process.env.SENTRY_DSN) {
-      const Raven = loadable(() => import('raven-js'));
-      Raven.config(process.env.SENTRY_DSN).install();
-    }
-  }
 
   /**
    * @method componentWillReceiveProps
@@ -98,9 +85,10 @@ class App extends Component {
    */
   componentDidCatch(error, info) {
     this.setState({ hasError: true, error, errorInfo: info });
-    if (__CLIENT__ && process.env.SENTRY_DSN) {
-      const Raven = loadable(() => import('raven-js'));
-      Raven.captureException(error, { extra: info });
+    if (__CLIENT__) {
+      if (window?.env?.RAZZLE_SENTRY_DSN || __SENTRY__?.SENTRY_DSN) {
+        Sentry.captureException(error);
+      }
     }
   }
 
