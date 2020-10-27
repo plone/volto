@@ -6,6 +6,9 @@
 
 ### Feature
 
+- Use localstorage for content items clipboard @tiberiuichim
+- Add new setting, `settings.persistentReducers` which is a list of reducer names to be persisted using local storage. @tiberiuichim
+
 ### Bugfix
 
 ### Internal

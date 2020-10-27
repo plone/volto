@@ -73,6 +73,7 @@ let config = {
     expressMiddleware: [],
     defaultBlockType: 'text',
     verticalFormTabs: false,
+    persistentReducers: ['clipboard'],
   },
   widgets: {
     ...widgetMapping,
