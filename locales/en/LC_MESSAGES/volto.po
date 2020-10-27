@@ -901,7 +901,7 @@ msgid "Item(s) cut."
 msgstr ""
 
 #: components/manage/Contents/Contents
-msgid "Item(s) has been sorted."
+msgid "Item(s) has been updated."
 msgstr ""
 
 #: components/manage/Actions/Actions

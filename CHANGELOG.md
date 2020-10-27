@@ -11,7 +11,7 @@
 ### Internal
 
 - Changing checkbox widget of exclude-nav to select widget @iFlameing
- - Fix sentry docs markdown format @avoinea
+
 ## 8.7.0 (2020-10-27)
 
 ### Feature
