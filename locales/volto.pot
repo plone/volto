@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-10-26T11:45:50.770Z\n"
+"POT-Creation-Date: 2020-10-27T10:48:28.404Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -354,6 +354,11 @@ msgstr ""
 msgid "Choose Target"
 msgstr ""
 
+#: components/manage/Blocks/HTML/Edit
+# defaultMessage: Clear
+msgid "Clear"
+msgstr ""
+
 #: components/theme/View/ImageView
 # defaultMessage: Click to download full sized image
 msgid "Click to download full sized image"
@@ -367,6 +372,11 @@ msgstr ""
 #: components/theme/Navigation/Navigation
 # defaultMessage: Close menu
 msgid "Close menu"
+msgstr ""
+
+#: components/manage/Blocks/HTML/Edit
+# defaultMessage: Code
+msgid "Code"
 msgstr ""
 
 #: components/manage/Toolbar/Toolbar

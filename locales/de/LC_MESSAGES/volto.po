@@ -308,6 +308,10 @@ msgstr "Bild auswählen"
 msgid "Choose Target"
 msgstr "Ziel auswählen"
 
+#: components/manage/Blocks/HTML/Edit
+msgid "Clear"
+msgstr ""
+
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
 msgstr "Klicken um das Bild in der vollen Größe runterzuladen"
@@ -319,6 +323,10 @@ msgstr "Schließen"
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
 msgstr "Menu schließen"
+
+#: components/manage/Blocks/HTML/Edit
+msgid "Code"
+msgstr ""
 
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"

@@ -293,6 +293,10 @@ msgstr "Alegeți imaginea"
 msgid "Choose Target"
 msgstr "Alegeți ținta"
 
+#: components/manage/Blocks/HTML/Edit
+msgid "Clear"
+msgstr ""
+
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
 msgstr "Faceți clic pentru a descărca imaginea cu dimensiuni complete"
@@ -304,6 +308,10 @@ msgstr "Închideți"
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
 msgstr "Închidere meniu"
+
+#: components/manage/Blocks/HTML/Edit
+msgid "Code"
+msgstr ""
 
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"

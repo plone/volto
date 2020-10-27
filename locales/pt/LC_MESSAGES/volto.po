@@ -301,6 +301,10 @@ msgstr "Escolha Imagem"
 msgid "Choose Target"
 msgstr "Escolha Alvo"
 
+#: components/manage/Blocks/HTML/Edit
+msgid "Clear"
+msgstr ""
+
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
 msgstr ""
@@ -312,6 +316,10 @@ msgstr "Fechar"
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
 msgstr "Fechar menu"
+
+#: components/manage/Blocks/HTML/Edit
+msgid "Code"
+msgstr ""
 
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"

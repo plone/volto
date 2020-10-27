@@ -300,6 +300,10 @@ msgstr "Aukeratu irudia"
 msgid "Choose Target"
 msgstr "Aukeratu helburua"
 
+#: components/manage/Blocks/HTML/Edit
+msgid "Clear"
+msgstr ""
+
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
 msgstr "Egin klik tamaina osoko irudia deskargatzeko..."
@@ -311,6 +315,10 @@ msgstr "Itxi"
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
 msgstr "Itxi menua"
+
+#: components/manage/Blocks/HTML/Edit
+msgid "Code"
+msgstr ""
 
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"
