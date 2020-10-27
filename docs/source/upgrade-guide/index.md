@@ -233,7 +233,7 @@ async construction before the test is fired. See this Codepen example:
 
 https://codesandbox.io/s/loadable-async-tests-l2bx9
 
-```js
+```jsx
 import React from "react";
 import { render } from "@testing-library/react";
 import App from "./App";
@@ -672,7 +672,7 @@ features from the blocks themselves and now it takes care of them by its own.
 This change only applies to your existing blocks, you have to update them
 accordingly by delete the trash icon and action from the end of your blocks
 
-```js
+```jsx
 {this.props.selected && (
   <Button
     icon
@@ -687,7 +687,7 @@ accordingly by delete the trash icon and action from the end of your blocks
 
 Modify the parent element of your block making this changes:
 
-```js
+```jsx
 <div
   role="presentation"
   onClick={() => this.props.onSelectBlock(this.props.block)}
@@ -711,7 +711,7 @@ Modify the parent element of your block making this changes:
 
 - Add the keylisteners to the parent element of your block
 
-```js
+```jsx
   onKeyDown={e =>
     this.props.handleKeyDown(
       e,
@@ -724,7 +724,7 @@ Modify the parent element of your block making this changes:
 
 - Add a ref to it and assign it to `this.node`.
 
-```js
+```jsx
   ref={node => {
     this.node = node;
   }}
@@ -732,7 +732,7 @@ Modify the parent element of your block making this changes:
 
 - Add a proper role for it
 
-```js
+```jsx
   role="presentation"
 ```
 

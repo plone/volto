@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-10-13T09:58:31.078Z\n"
+"POT-Creation-Date: 2020-10-26T11:45:50.770Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -204,6 +204,7 @@ msgstr ""
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Diff/Diff
 #: components/manage/History/History
+#: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -419,6 +420,11 @@ msgstr ""
 #: components/manage/Blocks/Listing/ListingSidebar
 # defaultMessage: Content
 msgid "Content"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+# defaultMessage: Content linked
+msgid "Content linked"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
@@ -1075,6 +1081,11 @@ msgid "Item batch size"
 msgstr ""
 
 #: components/manage/Contents/Contents
+# defaultMessage: Item succesfully moved.
+msgid "Item succesfully moved."
+msgstr ""
+
+#: components/manage/Contents/Contents
 # defaultMessage: Item(s) copied.
 msgid "Item(s) copied."
 msgstr ""
@@ -1082,6 +1093,11 @@ msgstr ""
 #: components/manage/Contents/Contents
 # defaultMessage: Item(s) cut.
 msgid "Item(s) cut."
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Item(s) has been sorted.
+msgid "Item(s) has been sorted."
 msgstr ""
 
 #: components/manage/Actions/Actions
@@ -1206,6 +1222,17 @@ msgstr ""
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Make the table compact
 msgid "Make the table compact"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+#: components/manage/Toolbar/More
+# defaultMessage: Manage Translations
+msgid "Manage Translations"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+# defaultMessage: Manage translations for {title}
+msgid "Manage translations for {title}"
 msgstr ""
 
 #: components/manage/Blocks/Maps/MapsSidebar
@@ -2019,6 +2046,7 @@ msgstr ""
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -2205,6 +2233,11 @@ msgstr ""
 #: components/manage/Toolbar/Types
 # defaultMessage: Translate to {lang}
 msgid "Translate to {lang}"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+# defaultMessage: Translation deleted
+msgid "Translation deleted"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
