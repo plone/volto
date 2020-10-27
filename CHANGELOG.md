@@ -1,15 +1,22 @@
 # Change Log
 
-## 8.6.1 (unreleased)
+## 8.7.1 (unreleased)
 
 ### Breaking
 
 ### Feature
 
 - Now you can prettify the html code in HTML block @iFlameing
-- Manage translations view @sneridagh
 
 ### Bugfix
+
+### Internal
+
+## 8.7.0 (2020-10-27)
+
+### Feature
+
+- Manage translations view @sneridagh
 
 ### Internal
 
