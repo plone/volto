@@ -378,6 +378,10 @@ msgstr "コンテンツ"
 msgid "Copy"
 msgstr "コピー"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Copy blocks"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "Copyright"
 msgstr "著作権"
@@ -411,6 +415,10 @@ msgstr "現在のパスワード"
 #: components/manage/Contents/ContentsItem
 msgid "Cut"
 msgstr "カット"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Cut blocks"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Daily"
@@ -1237,6 +1245,10 @@ msgstr "パスワードが一致しません"
 #: components/manage/Contents/Contents
 msgid "Paste"
 msgstr "ペースト"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Paste blocks"
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Toolbar/Toolbar

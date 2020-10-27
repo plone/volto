@@ -6,6 +6,9 @@
 
 ### Feature
 
+- Implement multi-block copy/paste @tiberiuichim
+- Allow reducers to be persisted using localstorage @tiberiuichim
+
 ### Bugfix
 
 ### Internal

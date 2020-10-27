@@ -98,6 +98,7 @@ export ManageTranslations from '@plone/volto/components/manage/Multilingual/Mana
 // Potentially could ve removed from index, since they are internal components and
 // we don't want them to end up in the main chunk
 export Form from '@plone/volto/components/manage/Form/Form';
+export BlocksClipboard from '@plone/volto/components/manage/Form/BlocksClipboard';
 export Field from '@plone/volto/components/manage/Form/Field';
 export SearchTags from '@plone/volto/components/theme/Search/SearchTags';
 export CommentEditModal from '@plone/volto/components/theme/Comments/CommentEditModal';

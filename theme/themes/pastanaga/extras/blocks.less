@@ -38,6 +38,18 @@
   border-color: rgba(120, 192, 215, 0.375);
 }
 
+.block .block.multiSelected::before {
+  z-index: 1;
+  background-color: rgba(120, 192, 215, 0.375);
+}
+
+#toolbar .toolbar-actions .blockCount {
+  position: absolute;
+  margin-top: 18px;
+  margin-left: 15px;
+  font-size: x-small;
+}
+
 .block.video,
 .block.image {
   /* This fixes two left floated items in a row */
