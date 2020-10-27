@@ -182,7 +182,12 @@ server
             res.status(context.error_code).send(
               `<!doctype html>
                 ${renderToString(
-                  <Html extractor={extractor} markup={markup} store={store} />,
+                  <Html
+                    extractor={extractor}
+                    markup={markup}
+                    store={store}
+                    extractScripts={false}
+                  />,
                 )}
               `,
             );
