@@ -12,6 +12,8 @@
 
 ### Feature
 
+- added loading icon when doing actions in folder-contents @giuliaghisini
+
 ### Bugfix
 
 ### Internal
