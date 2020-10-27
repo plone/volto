@@ -2154,6 +2154,10 @@ msgstr "Immagine di testata"
 msgid "listing"
 msgstr "Elenco"
 
+#: components/manage/Contents/Contents
+msgid "loading"
+msgstr ""
+
 #: components/theme/Unauthorized/Unauthorized
 msgid "log in"
 msgstr "log in"

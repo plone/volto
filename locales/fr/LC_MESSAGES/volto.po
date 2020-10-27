@@ -2171,6 +2171,10 @@ msgstr "image de garde"
 msgid "listing"
 msgstr "listing"
 
+#: components/manage/Contents/Contents
+msgid "loading"
+msgstr ""
+
 #: components/theme/Unauthorized/Unauthorized
 msgid "log in"
 msgstr "se connecter"

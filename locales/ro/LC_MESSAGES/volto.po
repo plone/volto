@@ -2154,6 +2154,10 @@ msgstr "Imagine (copertă)"
 msgid "listing"
 msgstr "Listare"
 
+#: components/manage/Contents/Contents
+msgid "loading"
+msgstr ""
+
 #: components/theme/Unauthorized/Unauthorized
 msgid "log in"
 msgstr "autentificați-vă"
