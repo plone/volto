@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Manage translations view @sneridagh
+
 ### Bugfix
 
 ### Internal
