@@ -183,6 +183,7 @@ msgstr "Verfügbar"
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Diff/Diff
 #: components/manage/History/History
+#: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -361,6 +362,10 @@ msgstr "Enthaltene Elemente"
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Content"
 msgstr "Inhalt"
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Content linked"
+msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
@@ -1014,6 +1019,15 @@ msgstr "Benutzername"
 #: components/manage/Blocks/Table/Edit
 msgid "Make the table compact"
 msgstr "Tabelle kompakt darstellen"
+
+#: components/manage/Multilingual/ManageTranslations
+#: components/manage/Toolbar/More
+msgid "Manage Translations"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Manage translations for {title}"
+msgstr ""
 
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "Map"
@@ -1671,6 +1685,7 @@ msgstr "Betreff"
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -1824,6 +1839,10 @@ msgstr "Anzahl aller Objekte in der Datenbank"
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
 msgstr "Auf {lang} übersetzen"
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Translation deleted"
+msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
