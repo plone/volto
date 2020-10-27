@@ -2,13 +2,9 @@
 
 ## 8.6.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Manage translations view @sneridagh
-
-### Bugfix
 
 ### Internal
 
