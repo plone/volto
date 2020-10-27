@@ -16,7 +16,7 @@ We can use the new sidebar when building our blocks' edit components.
 The sidebar is a new UI asset that is available in Volto 4.
 You need to instantiate it this way:
 
-```js
+```jsx
 import { SidebarPortal } from '@plone/volto/components';
 
 [...]

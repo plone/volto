@@ -141,7 +141,7 @@ msgstr "すべて"
 
 #: components/theme/Search/Search
 msgid "Alphabetically"
-msgstr ""
+msgstr "アルファベット順"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -175,6 +175,7 @@ msgstr "利用可能"
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Diff/Diff
 #: components/manage/History/History
+#: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -354,6 +355,10 @@ msgstr "含まれるアイテム"
 msgid "Content"
 msgstr "コンテント"
 
+#: components/manage/Multilingual/ManageTranslations
+msgid "Content linked"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
 msgstr "コンテンツタイプが作成されました"
@@ -434,7 +439,7 @@ msgstr "日付"
 
 #: components/theme/Search/Search
 msgid "Date (newest first)"
-msgstr ""
+msgstr "日付 (新しい順)"
 
 #: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Contents/ContentsRenameModal
@@ -610,7 +615,7 @@ msgstr "埋め込まれたGoogle Maps"
 
 #: components/manage/Controlpanels/ContentTypeLayout
 msgid "Enable editable Blocks"
-msgstr ""
+msgstr "Block編集を有効化"
 
 #: components/manage/Contents/Contents
 msgid "End Date"
@@ -891,12 +896,20 @@ msgid "Item batch size"
 msgstr "1ページ表示件数"
 
 #: components/manage/Contents/Contents
+msgid "Item succesfully moved."
+msgstr ""
+
+#: components/manage/Contents/Contents
 msgid "Item(s) copied."
 msgstr "アイテムがコピーされました。"
 
 #: components/manage/Contents/Contents
 msgid "Item(s) cut."
 msgstr "アイテムがカットされました。"
+
+#: components/manage/Contents/Contents
+msgid "Item(s) has been sorted."
+msgstr ""
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -934,7 +947,7 @@ msgstr "最新バージョン"
 
 #: components/manage/Controlpanels/ContentTypesActions
 msgid "Layout"
-msgstr ""
+msgstr "レイアウト"
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Lead Image"
@@ -999,6 +1012,15 @@ msgstr "ログイン名"
 msgid "Make the table compact"
 msgstr "コンパクトな表示"
 
+#: components/manage/Multilingual/ManageTranslations
+#: components/manage/Toolbar/More
+msgid "Manage Translations"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Manage translations for {title}"
+msgstr ""
+
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "Map"
 msgstr "地図"
@@ -1009,11 +1031,11 @@ msgstr "地図URL"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Maximum length is {len}."
-msgstr ""
+msgstr "最大の長さは {len} です。"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Maximum value is {len}."
-msgstr ""
+msgstr "最大の値は {len} です。"
 
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
@@ -1022,11 +1044,11 @@ msgstr "メッセージ"
 #: components/manage/Form/ModalForm
 #: helpers/MessageLabels/MessageLabels
 msgid "Minimum length is {len}."
-msgstr "最小サイズは {len}　。"
+msgstr "最小の長さは {len} です。"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Minimum value is {len}."
-msgstr ""
+msgstr "最小の値は {len} です。"
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Moderate Comments"
@@ -1042,7 +1064,7 @@ msgstr "月曜日と金曜日"
 
 #: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
 msgid "Month day"
-msgstr ""
+msgstr "日付"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Monthly"
@@ -1123,7 +1145,7 @@ msgstr "選択肢無し"
 
 #: components/theme/Search/Search
 msgid "No results found"
-msgstr ""
+msgstr "該当する結果が見つかりません。"
 
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
@@ -1167,7 +1189,7 @@ msgstr "オブジェクトサイズ"
 
 #: components/manage/Widgets/RecurrenceWidget/EndField
 msgid "Occurences"
-msgstr ""
+msgstr "回"
 
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -1313,15 +1335,15 @@ msgstr "何で並べ替えますか"
 
 #: components/manage/Widgets/RecurrenceWidget/EndField
 msgid "Recurrence ends"
-msgstr ""
+msgstr "終了条件"
 
 #: components/manage/Widgets/RecurrenceWidget/EndField
 msgid "Recurrence ends after"
-msgstr ""
+msgstr "繰り返し"
 
 #: components/manage/Widgets/RecurrenceWidget/EndField
 msgid "Recurrence ends on"
-msgstr ""
+msgstr "最終日"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Reduce complexity"
@@ -1338,11 +1360,11 @@ msgstr "登録フォーム"
 
 #: components/theme/Search/Search
 msgid "Relevance"
-msgstr ""
+msgstr "関連性"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
-msgstr ""
+msgstr "繰り返しを削除"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -1433,7 +1455,7 @@ msgstr "繰り返しを保存"
 
 #: components/manage/Controlpanels/ContentTypesActions
 msgid "Schema"
-msgstr ""
+msgstr "スキーマ"
 
 #: components/manage/Controlpanels/ContentTypeSchema
 msgid "Schema updates"
@@ -1602,7 +1624,7 @@ msgstr "申し訳ありません。問題が発生したために処理できま
 
 #: components/theme/Search/Search
 msgid "Sort By:"
-msgstr ""
+msgstr "並び順:"
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "Sort on"
@@ -1655,6 +1677,7 @@ msgstr "件名"
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -1799,15 +1822,19 @@ msgstr "各キャッシュのオブジェクト総数"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total number of objects in memory from all caches"
-msgstr ""
+msgstr "キャッシュメモリ内のオブジェクト数"
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total number of objects in the database"
-msgstr ""
+msgstr "データベースの中にあるオブジェクト数"
 
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
 msgstr "{lang} に翻訳する"
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Translation deleted"
+msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
@@ -1874,7 +1901,7 @@ msgstr "リード画像をコンテンツのフィールドにアップロード
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 msgid "Upload a new image"
-msgstr ""
+msgstr "画像をアップロード"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Upload files"
@@ -2196,7 +2223,7 @@ msgstr ""
 #: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
 #: components/manage/Widgets/RecurrenceWidget/ByYearField
 msgid "of the month"
-msgstr ""
+msgstr "(毎月の)"
 
 #: error
 msgid "or try a different page."
@@ -2408,11 +2435,11 @@ msgstr "{count} 件選択中"
 
 #: components/manage/Controlpanels/ContentType
 msgid "{id} Content Type"
-msgstr ""
+msgstr "{id} コンテンツタイプ"
 
 #: components/manage/Controlpanels/ContentTypeSchema
 msgid "{id} Schema"
-msgstr ""
+msgstr "{id} スキーマ"
 
 #: components/manage/Actions/Actions
 msgid "{title} copied."
