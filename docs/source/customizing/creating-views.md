@@ -7,7 +7,7 @@ contents in a folder. We will call this view `full view`. In Plone there is a
 view called `All content` with the view id `full_view` that we will reuse.
 We start by creating a file called: `components/FullView/FullView.jsx`.
 
-```js
+```jsx
 /**
  * Full view component.
  * @module components/theme/View/FullView
@@ -118,7 +118,7 @@ export default FullView;
 
 Next we will add the view to the app components. We can do this by adding the following lines to `components/index.js`.
 
-```js
+```jsx
 import FullView from './FullView/FullView';
 
 export { FullView };
@@ -147,7 +147,7 @@ export const views = {
 Create the `Album View` that shows the images in a grid. You can use the `Card`
 class from `semantic-ui`, `components/AlbumView/AlbumView.jsx`:
 
-```js
+```jsx
 /**
  * Album view component.
  * @module components/theme/View/AlbumView
