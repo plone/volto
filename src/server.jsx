@@ -186,7 +186,7 @@ server
                     extractor={extractor}
                     markup={markup}
                     store={store}
-                    extractScripts={false}
+                    extractScripts={process.env.NODE_ENV !== 'production'}
                   />,
                 )}
               `,
