@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-10-26T11:45:50.770Z\n"
+"POT-Creation-Date: 2020-10-28T16:35:33.487Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -354,6 +354,11 @@ msgstr ""
 msgid "Choose Target"
 msgstr ""
 
+#: components/manage/Widgets/FileWidget
+# defaultMessage: Choose a File/Image
+msgid "Choose a File/Image"
+msgstr ""
+
 #: components/theme/View/ImageView
 # defaultMessage: Click to download full sized image
 msgid "Click to download full sized image"
@@ -659,6 +664,21 @@ msgstr ""
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Drag and drop files from your computer onto this area or click the “Browse” button.
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
+msgstr ""
+
+#: components/manage/Widgets/FileWidget
+# defaultMessage: Drag the new item to upload
+msgid "Drag the new item to upload"
+msgstr ""
+
+#: components/manage/Widgets/FileWidget
+# defaultMessage: Drag to replace the file item
+msgid "Drag to replace the file item"
+msgstr ""
+
+#: components/manage/Widgets/FileWidget
+# defaultMessage: Drop files here ....
+msgid "Drop files here ...."
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
@@ -1684,6 +1704,11 @@ msgstr ""
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: Repeat on
 msgid "Repeat on"
+msgstr ""
+
+#: components/manage/Widgets/FileWidget
+# defaultMessage: Replace existing File/Image
+msgid "Replace existing File/Image"
 msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
