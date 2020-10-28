@@ -183,6 +183,7 @@ msgstr "Verfügbar"
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Diff/Diff
 #: components/manage/History/History
+#: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -361,6 +362,10 @@ msgstr "Enthaltene Elemente"
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Content"
 msgstr "Inhalt"
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Content linked"
+msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
@@ -899,12 +904,20 @@ msgid "Item batch size"
 msgstr "Batch-Anzahl"
 
 #: components/manage/Contents/Contents
+msgid "Item succesfully moved."
+msgstr ""
+
+#: components/manage/Contents/Contents
 msgid "Item(s) copied."
 msgstr "Artikel kopiert."
 
 #: components/manage/Contents/Contents
 msgid "Item(s) cut."
 msgstr "Artikel ausgeschnitten."
+
+#: components/manage/Contents/Contents
+msgid "Item(s) has been sorted."
+msgstr ""
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -1007,6 +1020,15 @@ msgstr "Benutzername"
 msgid "Make the table compact"
 msgstr "Tabelle kompakt darstellen"
 
+#: components/manage/Multilingual/ManageTranslations
+#: components/manage/Toolbar/More
+msgid "Manage Translations"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Manage translations for {title}"
+msgstr ""
+
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "Map"
 msgstr "Karte"
@@ -1062,11 +1084,11 @@ msgstr "Mehr"
 
 #: components/manage/Contents/ContentsItem
 msgid "Move to bottom of folder"
-msgstr "Zum Anfang des Ordners wechseln"
+msgstr "Ans Ende verschieben"
 
 #: components/manage/Contents/ContentsItem
 msgid "Move to top of folder"
-msgstr "Zum Unterseite des Ordners wechseln"
+msgstr "An den Anfang verschieben"
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "My email address is"
@@ -1445,11 +1467,11 @@ msgstr "Wiederkehrende Einstellung speichern"
 
 #: components/manage/Controlpanels/ContentTypesActions
 msgid "Schema"
-msgstr ""
+msgstr "Schema"
 
 #: components/manage/Controlpanels/ContentTypeSchema
 msgid "Schema updates"
-msgstr ""
+msgstr "Aktualisierungen Schema"
 
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search"
@@ -1540,7 +1562,7 @@ msgstr "Setzen Sie Ihr Passwort"
 
 #: components/manage/Sidebar/Sidebar
 msgid "Settings"
-msgstr ""
+msgstr "Einstellungen"
 
 #: components/manage/Sharing/Sharing
 #: components/manage/Toolbar/More
@@ -1667,6 +1689,7 @@ msgstr "Betreff"
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -1821,6 +1844,10 @@ msgstr "Anzahl aller Objekte in der Datenbank"
 msgid "Translate to {lang}"
 msgstr "Auf {lang} übersetzen"
 
+#: components/manage/Multilingual/ManageTranslations
+msgid "Translation deleted"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
@@ -1886,15 +1913,11 @@ msgstr "Laden Sie ein Leadbild im 'Leadbild' Feld hoch."
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 msgid "Upload a new image"
-msgstr ""
+msgstr "Neues Bild hochladen"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Upload files"
 msgstr "Datei hochladen"
-
-#: components/manage/Contents/ContentsUploadModal
-msgid "Upload {count, plural, one {# file} other {# files}}"
-msgstr "Lade {count, plural, one {# Datei} other {# Dateien}} hoch"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Uploading files"
@@ -2099,7 +2122,7 @@ msgstr "Entwurf"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "email"
-msgstr ""
+msgstr "E-Mail"
 
 #: components/theme/View/EventView
 msgid "event_alldates"
@@ -2151,7 +2174,7 @@ msgstr "Bild"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "integer"
-msgstr ""
+msgstr "Ganzzahl"
 
 #: components/manage/Contents/ContentsItem
 msgid "intranet"
@@ -2413,6 +2436,10 @@ msgstr "Externe Webseite besuchen"
 #: components/theme/Login/Login
 msgid "we can send you a new one"
 msgstr "Wir schicken Ihnen gerne ein neues Passwort zu."
+
+#: components/manage/Contents/ContentsUploadModal
+msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
+msgstr "Lade {count, plural, one {# Datei} other {# Dateien}} hoch"
 
 #: components/manage/Contents/Contents
 msgid "{count} selected"

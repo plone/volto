@@ -176,6 +176,7 @@ msgstr ""
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Diff/Diff
 #: components/manage/History/History
+#: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -353,6 +354,10 @@ msgstr ""
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Content"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Content linked"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
@@ -892,12 +897,20 @@ msgid "Item batch size"
 msgstr ""
 
 #: components/manage/Contents/Contents
+msgid "Item succesfully moved."
+msgstr ""
+
+#: components/manage/Contents/Contents
 msgid "Item(s) copied."
 msgstr "Item(ns) copiado(s)."
 
 #: components/manage/Contents/Contents
 msgid "Item(s) cut."
 msgstr "Item(ns) cortado(s)."
+
+#: components/manage/Contents/Contents
+msgid "Item(s) has been sorted."
+msgstr ""
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -999,6 +1012,15 @@ msgstr "Nome de usuário"
 #: components/manage/Blocks/Table/Edit
 msgid "Make the table compact"
 msgstr "Compactar a tabela"
+
+#: components/manage/Multilingual/ManageTranslations
+#: components/manage/Toolbar/More
+msgid "Manage Translations"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Manage translations for {title}"
+msgstr ""
 
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "Map"
@@ -1660,6 +1682,7 @@ msgstr "Assunto"
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -1814,6 +1837,10 @@ msgstr ""
 msgid "Translate to {lang}"
 msgstr ""
 
+#: components/manage/Multilingual/ManageTranslations
+msgid "Translation deleted"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
@@ -1884,10 +1911,6 @@ msgstr ""
 #: components/manage/Contents/ContentsUploadModal
 msgid "Upload files"
 msgstr "Enviar ficheiros"
-
-#: components/manage/Contents/ContentsUploadModal
-msgid "Upload {count, plural, one {# file} other {# files}}"
-msgstr "Enviar {count, plural, one {# file} other {# files}}"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Uploading files"
@@ -2406,6 +2429,10 @@ msgstr ""
 #: components/theme/Login/Login
 msgid "we can send you a new one"
 msgstr "podemos enviar-lhe uma nova"
+
+#: components/manage/Contents/ContentsUploadModal
+msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "{count} selected"

@@ -175,6 +175,7 @@ msgstr "Aukerak"
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Diff/Diff
 #: components/manage/History/History
+#: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -353,6 +354,10 @@ msgstr "Barneko elementuak"
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Content"
 msgstr "Edukia"
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Content linked"
+msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
@@ -891,12 +896,20 @@ msgid "Item batch size"
 msgstr "Elementu-multzoaren tamaina"
 
 #: components/manage/Contents/Contents
+msgid "Item succesfully moved."
+msgstr ""
+
+#: components/manage/Contents/Contents
 msgid "Item(s) copied."
 msgstr "Elementuak ondo kopiatu dira."
 
 #: components/manage/Contents/Contents
 msgid "Item(s) cut."
 msgstr "Elementuak ondo ebaki dira."
+
+#: components/manage/Contents/Contents
+msgid "Item(s) has been sorted."
+msgstr ""
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -998,6 +1011,15 @@ msgstr "Erabiltzaile-izena"
 #: components/manage/Blocks/Table/Edit
 msgid "Make the table compact"
 msgstr "Taula trinkotu"
+
+#: components/manage/Multilingual/ManageTranslations
+#: components/manage/Toolbar/More
+msgid "Manage Translations"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Manage translations for {title}"
+msgstr ""
 
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "Map"
@@ -1659,6 +1681,7 @@ msgstr "Gaia"
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -1813,6 +1836,10 @@ msgstr "Datu-basean dagoen elementu kopurua"
 msgid "Translate to {lang}"
 msgstr "{lang} hizkuntzara itzuli"
 
+#: components/manage/Multilingual/ManageTranslations
+msgid "Translation deleted"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
@@ -1883,10 +1910,6 @@ msgstr "Kargatu irudi berria"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Upload files"
 msgstr "Kargatu fitxategiak"
-
-#: components/manage/Contents/ContentsUploadModal
-msgid "Upload {count, plural, one {# file} other {# files}}"
-msgstr "Kargatu {count, plural, one {fitxategi #} other {# fitxategi}}"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Uploading files"
@@ -2405,6 +2428,10 @@ msgstr "Webgunea ikusi"
 #: components/theme/Login/Login
 msgid "we can send you a new one"
 msgstr "berri bat bidali diezazukegu"
+
+#: components/manage/Contents/ContentsUploadModal
+msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "{count} selected"

@@ -88,8 +88,8 @@ class ObjectBrowserBody extends Component {
       currentFolder:
         this.props.mode === 'multiple'
           ? '/'
-          : this.props.data?.url
-          ? getParentURL(this.props.data.url)
+          : this.props.data?.contextURL
+          ? getParentURL(this.props.data.contextURL)
           : '/',
       currentImageFolder:
         this.props.mode === 'multiple'
@@ -386,15 +386,13 @@ class ObjectBrowserBody extends Component {
               />
             )}
             {this.state.showSearchInput ? (
-              <form>
-                <Input
-                  className="search"
-                  onChange={this.onSearch}
-                  placeholder={this.props.intl.formatMessage(
-                    messages.SearchInputPlaceholder,
-                  )}
-                />
-              </form>
+              <Input
+                className="search"
+                onChange={this.onSearch}
+                placeholder={this.props.intl.formatMessage(
+                  messages.SearchInputPlaceholder,
+                )}
+              />
             ) : this.props.mode === 'image' ? (
               <h2>
                 <FormattedMessage

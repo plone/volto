@@ -60,7 +60,7 @@ const withObjectBrowser = (WrappedComponent) =>
       selectableTypes,
       maximumSelectionSize,
     } = {}) =>
-      this.setState({
+      this.setState(() => ({
         isObjectBrowserOpen: true,
         mode,
         onSelectItem,
@@ -69,7 +69,7 @@ const withObjectBrowser = (WrappedComponent) =>
         propDataName,
         selectableTypes,
         maximumSelectionSize,
-      });
+      }));
 
     closeObjectBrowser = () => this.setState({ isObjectBrowserOpen: false });
 
@@ -95,10 +95,11 @@ const withObjectBrowser = (WrappedComponent) =>
               unmountOnExit
             >
               <>
-                {ReactDOM.createPortal(
-                  <div className="overlay-container"></div>,
-                  document.body,
-                )}
+                {__CLIENT__ &&
+                  ReactDOM.createPortal(
+                    <div className="overlay-container"></div>,
+                    document.body,
+                  )}
               </>
             </CSSTransition>
             <CSSTransition
@@ -112,7 +113,7 @@ const withObjectBrowser = (WrappedComponent) =>
                 data={
                   this.state.propDataName
                     ? this.props[this.state.propDataName]
-                    : { ...this.props.data, url: contextURL }
+                    : { ...this.props.data, contextURL }
                 }
                 closeObjectBrowser={this.closeObjectBrowser}
                 mode={this.state.mode}

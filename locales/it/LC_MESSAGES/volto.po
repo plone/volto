@@ -168,6 +168,7 @@ msgstr "Disponibile"
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Diff/Diff
 #: components/manage/History/History
+#: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -346,6 +347,10 @@ msgstr "Elementi contenuti"
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Content"
 msgstr "Contenuto"
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Content linked"
+msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
@@ -884,12 +889,20 @@ msgid "Item batch size"
 msgstr "Risultati per pagina"
 
 #: components/manage/Contents/Contents
+msgid "Item succesfully moved."
+msgstr ""
+
+#: components/manage/Contents/Contents
 msgid "Item(s) copied."
 msgstr "Elemento/i copiato/i."
 
 #: components/manage/Contents/Contents
 msgid "Item(s) cut."
 msgstr "Elemento/i tagliato/i."
+
+#: components/manage/Contents/Contents
+msgid "Item(s) has been sorted."
+msgstr ""
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -991,6 +1004,15 @@ msgstr "Nome utente"
 #: components/manage/Blocks/Table/Edit
 msgid "Make the table compact"
 msgstr "Rendi la tabella compatta"
+
+#: components/manage/Multilingual/ManageTranslations
+#: components/manage/Toolbar/More
+msgid "Manage Translations"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Manage translations for {title}"
+msgstr ""
 
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "Map"
@@ -1652,6 +1674,7 @@ msgstr "Oggetto"
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -1806,6 +1829,10 @@ msgstr "Numero totale di oggetti nel database"
 msgid "Translate to {lang}"
 msgstr "Traduci in {lang}"
 
+#: components/manage/Multilingual/ManageTranslations
+msgid "Translation deleted"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
@@ -1876,10 +1903,6 @@ msgstr ""
 #: components/manage/Contents/ContentsUploadModal
 msgid "Upload files"
 msgstr "Carica file"
-
-#: components/manage/Contents/ContentsUploadModal
-msgid "Upload {count, plural, one {# file} other {# files}}"
-msgstr "Carica {count, plural, one {# file} other {# files}}"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Uploading files"
@@ -2398,6 +2421,10 @@ msgstr "Visita il sito web"
 #: components/theme/Login/Login
 msgid "we can send you a new one"
 msgstr "possiamo spedirtene una nuova"
+
+#: components/manage/Contents/ContentsUploadModal
+msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "{count} selected"
