@@ -10,8 +10,6 @@
 
 ### Bugfix
 
-- Fix word overflow from html-block @iFlameing
-
 ### Internal
 
 ## 8.7.0 (2020-10-27)
