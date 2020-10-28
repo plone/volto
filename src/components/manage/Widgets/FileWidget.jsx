@@ -10,9 +10,9 @@ import { readAsDataURL } from 'promise-file-reader';
 import { injectIntl } from 'react-intl';
 import deleteSVG from '@plone/volto/icons/delete.svg';
 import { Icon, FormFieldWrapper } from '@plone/volto/components';
-import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
 import Dropzone from 'react-dropzone';
 import { flattenToAppURL } from '@plone/volto/helpers';
+import { defineMessages, useIntl } from 'react-intl';
 
 const imageMimetypes = [
   'image/png',
@@ -23,6 +23,29 @@ const imageMimetypes = [
   'image/svg+xml',
 ];
 
+const messages = defineMessages({
+  releaseDrag: {
+    id: 'Drop files here ....',
+    defaultMessage: 'Drop files here ....',
+  },
+  editFile: {
+    id: 'Drag to replace the file item',
+    defaultMessage: 'Drag to replace the file item',
+  },
+  fileDrag: {
+    id: 'Drag the new item to upload',
+    defaultMessage: 'Drag the new item to upload',
+  },
+  replaceFile: {
+    id: 'Replace existing File/Image',
+    defaultMessage: 'Replace existing File/Image',
+  },
+  addNewFile: {
+    id: 'Choose a File/Image',
+    defaultMessage: 'Choose a File/Image',
+  },
+});
+
 /**
  * FileWidget component class.
  * @function FileWidget
@@ -31,8 +54,14 @@ const imageMimetypes = [
 const FileWidget = (props) => {
   const { id, value, onChange } = props;
   const fileInput = React.useRef(null);
-  const [fileType, setFileType] = React.useState(true);
-  const [dragging, setDragging] = React.useState(false);
+  const [fileType, setFileType] = React.useState(false);
+  const intl = useIntl();
+
+  React.useEffect(() => {
+    if (value && imageMimetypes.includes(value['content-type'])) {
+      setFileType(true);
+    }
+  }, [value]);
 
   /**
    * Drop handler
@@ -64,42 +93,43 @@ const FileWidget = (props) => {
       }
     };
     reader.readAsDataURL(files[0]);
-    setDragging(false);
-  };
-
-  const onDragEnter = () => {
-    setDragging(true);
-  };
-  const onDragLeave = () => {
-    setDragging(false);
   };
 
   return (
     <FormFieldWrapper {...props}>
-      <Dropzone
-        onDrop={onDrop}
-        onDragEnter={onDragEnter}
-        onDragLeave={onDragLeave}
-      >
-        {({ getRootProps, getInputProps }) => (
-          <div {...getRootProps()}>
-            {dragging && <Dimmer active></Dimmer>}
+      <Dropzone onDrop={onDrop}>
+        {({ getRootProps, getInputProps, isDragActive }) => (
+          <div className="file-widget-dropzone" {...getRootProps()}>
+            {isDragActive && <Dimmer active></Dimmer>}
             {fileType ? (
               <Image
                 className="image-preview"
                 id={`field-${id}-image`}
                 size="small"
-                src={
-                  value?.download
-                    ? flattenToAppURL(value.download)
-                    : imageBlockSVG
-                }
+                src={value?.download ? flattenToAppURL(value.download) : null}
               />
-            ) : null}
+            ) : (
+              <div className="dropzone-placeholder">
+                {isDragActive ? (
+                  <p className="dropzone-text">
+                    {intl.formatMessage(messages.releaseDrag)}
+                  </p>
+                ) : value ? (
+                  <p className="dropzone-text">
+                    {intl.formatMessage(messages.editFile)}
+                  </p>
+                ) : (
+                  <p className="dropzone-text">
+                    {intl.formatMessage(messages.fileDrag)}
+                  </p>
+                )}
+              </div>
+            )}
+
             <label className="label-file-widget-input" htmlFor={`field-${id}`}>
-              {value?.download
-                ? 'Replace existing File/Image'
-                : 'Choose a File/Image'}
+              {value
+                ? intl.formatMessage(messages.replaceFile)
+                : intl.formatMessage(messages.addNewFile)}
             </label>
             <Input
               {...getInputProps}
@@ -149,8 +179,6 @@ const FileWidget = (props) => {
             aria-label="delete file"
             onClick={() => {
               onChange(id, null);
-              let imagePreview = document.getElementById(`field-${id}-image`);
-              imagePreview.src = imageBlockSVG;
               setFileType(false);
               fileInput.current.inputRef.current.value = null;
             }}

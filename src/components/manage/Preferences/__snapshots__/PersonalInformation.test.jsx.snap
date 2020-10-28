@@ -158,6 +158,7 @@ exports[`PersonalInformation renders a personal information component 1`] = `
                 className="eight wide column"
               >
                 <div
+                  className="file-widget-dropzone"
                   onBlur={[Function]}
                   onClick={[Function]}
                   onDragEnter={[Function]}
@@ -168,11 +169,15 @@ exports[`PersonalInformation renders a personal information component 1`] = `
                   onKeyDown={[Function]}
                   tabIndex={0}
                 >
-                  <img
-                    className="ui small image image-preview"
-                    id="field-portrait-image"
-                    src="block-image.svg"
-                  />
+                  <div
+                    className="dropzone-placeholder"
+                  >
+                    <p
+                      className="dropzone-text"
+                    >
+                      Drag the new item to upload
+                    </p>
+                  </div>
                   <label
                     className="label-file-widget-input"
                     htmlFor="field-portrait"
@@ -545,6 +550,7 @@ exports[`PersonalInformation renders a personal information component embedded i
                 className="eight wide column"
               >
                 <div
+                  className="file-widget-dropzone"
                   onBlur={[Function]}
                   onClick={[Function]}
                   onDragEnter={[Function]}
@@ -555,11 +561,15 @@ exports[`PersonalInformation renders a personal information component embedded i
                   onKeyDown={[Function]}
                   tabIndex={0}
                 >
-                  <img
-                    className="ui small image image-preview"
-                    id="field-portrait-image"
-                    src="block-image.svg"
-                  />
+                  <div
+                    className="dropzone-placeholder"
+                  >
+                    <p
+                      className="dropzone-text"
+                    >
+                      Drag the new item to upload
+                    </p>
+                  </div>
                   <label
                     className="label-file-widget-input"
                     htmlFor="field-portrait"
