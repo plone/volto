@@ -7,7 +7,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Embed } from 'semantic-ui-react';
 import cx from 'classnames';
-import { isInternalURL, getParentUrl } from '@plone/volto/helpers';
+import {
+  isInternalURL,
+  getParentUrl,
+  flattenToAppURL,
+} from '@plone/volto/helpers';
 import { settings } from '~/config';
 
 /**
@@ -39,8 +43,11 @@ const View = ({ data }) => (
                   url={`https://www.youtube.com/embed/videoseries?list=${
                     data.url.match(/^.*\?list=(.*)$/)[1]
                   }`}
-                  placeholder={data.preview_image}
-                  icon="arrow right"
+                  placeholder={
+                    isInternalURL(data.preview_image)
+                      ? `${flattenToAppURL(data.preview_image)}/@@images/image`
+                      : data.preview_image
+                  }
                   defaultActive
                   autoplay={false}
                 />
@@ -49,7 +56,7 @@ const View = ({ data }) => (
                   url={`https://www.youtube.com/embed/videoseries?list=${
                     data.url.match(/^.*\?list=(.*)$/)[1]
                   }`}
-                  icon="arrow right"
+                  icon="play"
                   defaultActive
                   autoplay={false}
                 />
@@ -62,8 +69,13 @@ const View = ({ data }) => (
                     : data.url.match(/^.*\?v=(.*)$/)[1]
                 }
                 source="youtube"
-                placeholder={data.preview_image}
-                icon="arrow right"
+                placeholder={
+                  isInternalURL(data.preview_image)
+                    ? `${flattenToAppURL(data.preview_image)}/@@images/image`
+                    : data.preview_image
+                }
+                icon="play"
+                autoplay={false}
               />
             ) : (
               <Embed
@@ -73,7 +85,7 @@ const View = ({ data }) => (
                     : data.url.match(/^.*\?v=(.*)$/)[1]
                 }
                 source="youtube"
-                icon="arrow right"
+                icon="play"
                 defaultActive
                 autoplay={false}
               />
@@ -86,15 +98,19 @@ const View = ({ data }) => (
                 <Embed
                   id={data.url.match(/^.*\.com\/(.*)/)[1]}
                   source="vimeo"
-                  placeholder={data.preview_image}
-                  icon="arrow right"
+                  placeholder={
+                    isInternalURL(data.preview_image)
+                      ? `${flattenToAppURL(data.preview_image)}/@@images/image`
+                      : data.preview_image
+                  }
+                  icon="play"
                   autoplay={false}
                 />
               ) : (
                 <Embed
                   id={data.url.match(/^.*\.com\/(.*)/)[1]}
                   source="vimeo"
-                  icon="arrow right"
+                  icon="play"
                   defaultActive
                   autoplay={false}
                 />

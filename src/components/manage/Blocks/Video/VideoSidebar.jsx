@@ -92,14 +92,22 @@ const VideoSidebar = ({
                   id="video-preview-image"
                   title={intl.formatMessage(messages.Preview_image)}
                   required={false}
-                  value={data.preview_image}
-                  icon={data.preview_image ? clearSVG : ''}
-                  iconAction={() => {
-                    onChangeBlock(block, {
-                      ...data,
-                      preview_image: '',
-                    });
-                  }}
+                  value={data.preview_image?.split('/').slice(-1)[0]}
+                  icon={data.preview_image ? clearSVG : navTreeSVG}
+                  iconAction={
+                    data.preview_image
+                      ? () => {
+                          onChangeBlock(block, {
+                            ...data,
+                            preview_image: '',
+                          });
+                        }
+                      : () =>
+                          openObjectBrowser({
+                            mode: 'image',
+                            dataName: 'preview_image',
+                          })
+                  }
                   onChange={(id, value) => {
                     onChangeBlock(block, {
                       ...data,
