@@ -1671,11 +1671,11 @@ class Contents extends Component {
             )}
           </Container>
         ) : (
-          <Unauthorized />
+          <Unauthorized staticContext={this.props.staticContext} />
         )}
       </>
     ) : (
-      <Unauthorized />
+      <Unauthorized staticContext={this.props.staticContext} />
     );
   }
 }

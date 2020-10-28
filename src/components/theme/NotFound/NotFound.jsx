@@ -7,22 +7,14 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
+import { withServerErrorCode } from '@plone/volto/helpers/Utils/Utils';
 
 /**
  * Not found function.
  * @function NotFound
  * @returns {string} Markup of the not found page.
  */
-const NotFound = (props) => {
-  if (
-    __SERVER__ &&
-    props.staticContext &&
-    Object.keys(props.staticContext).length === 0
-  ) {
-    const { staticContext } = props;
-    staticContext.error_code = 404;
-    staticContext.error = props.error;
-  }
+const NotFound = () => {
   return (
     <Container className="view-wrapper">
       <h1>
@@ -60,4 +52,4 @@ const NotFound = (props) => {
   );
 };
 
-export default NotFound;
+export default withServerErrorCode(404)(NotFound);

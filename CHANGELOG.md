@@ -8,7 +8,7 @@
 
 ### Bugfix
 
-- Properly return 404 on SSR, when appropriate @tiberiuichim
+- Properly return 404, 401 and 403 on SSR, when appropriate @tiberiuichim
 
 ### Internal
 
