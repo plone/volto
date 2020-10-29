@@ -6,13 +6,15 @@ const crashReporter = (store) => (next) => (action) => {
   try {
     return next(action);
   } catch (error) {
-    Sentry.withScope((scope) => {
-      scope.setExtras({
-        action,
-        state: store.getState(),
+    if (__SENTRY__.SENTRY_DSN) {
+      Sentry.withScope((scope) => {
+        scope.setExtras({
+          action,
+          state: store.getState(),
+        });
+        Sentry.captureException(error);
       });
-      Sentry.captureException(error);
-    });
+    }
     throw error;
   }
 };
