@@ -1,18 +1,19 @@
-import * as Sentry from '@sentry/browser';
+const Sentry = __CLIENT__
+  ? require('@sentry/browser')
+  : require('@sentry/node');
 
 const crashReporter = (store) => (next) => (action) => {
   try {
     return next(action);
   } catch (error) {
-    if (__CLIENT__) {
-      Sentry.withScope((scope) => {
-        scope.setExtras({
-          action,
-          state: store.getState(),
-        });
-        Sentry.captureException(error);
+    Sentry.withScope((scope) => {
+      scope.setExtras({
+        action,
+        state: store.getState(),
       });
-    }
+      Sentry.captureException(error);
+    });
+    throw error;
   }
 };
 
