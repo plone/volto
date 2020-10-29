@@ -1,5 +1,5 @@
 const webpack = require('webpack');
-// const SentryCliPlugin = require('@sentry/webpack-plugin');
+const SentryCliPlugin = require('@sentry/webpack-plugin');
 
 const SENTRY_KEYS = [
   'SENTRY_AUTH_TOKEN',
@@ -9,8 +9,8 @@ const SENTRY_KEYS = [
   'SENTRY_RELEASE',
 ];
 
-function validateSentryConfiguration(env) {
-  return SENTRY_KEYS.findIndex((k) => env[k] === undefined) > -1;
+function validateSentryCliConfiguration(env) {
+  return SENTRY_KEYS.findIndex((k) => env[k] === undefined) === -1;
 }
 
 const sentryPlugin = (config, { target, dev }) => {
@@ -22,19 +22,17 @@ const sentryPlugin = (config, { target, dev }) => {
     };
   }
 
-  if (!validateSentryConfiguration(process.env)) {
-    return config;
-  }
-
   if (target === 'web') {
     if (SENTRY && process.env.SENTRY_FRONTEND_CONFIG) {
-      // config.plugins.push(
-      //   new SentryCliPlugin({
-      //     include: './build/public',
-      //     ignore: ['node_modules', 'webpack.config.js'],
-      //     release: process.env.SENTRY_RELEASE,
-      //   }),
-      // );
+      if (validateSentryCliConfiguration(process.env)){
+        config.plugins.push(
+          new SentryCliPlugin({
+            include: './build/public',
+            ignore: ['node_modules', 'webpack.config.js'],
+            release: process.env.SENTRY_RELEASE,
+          }),
+        );
+      }
       try {
         SENTRY.SENTRY_CONFIG = JSON.parse(process.env.SENTRY_FRONTEND_CONFIG);
         if (process.env.SENTRY_RELEASE !== undefined) {
