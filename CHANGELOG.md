@@ -2,17 +2,10 @@
 
 ## 8.7.1 (unreleased)
 
-### Breaking
-
-### Feature
-
-- added loading icon when doing actions in folder-contents @giuliaghisini
-
 ### Bugfix
 
+- Added loading icon when doing actions in folder-contents @giuliaghisini
 - Fix German translation "from" -> "E-Mail" in contact form @tisto
-
-### Internal
 
 ## 8.7.0 (2020-10-27)
 
