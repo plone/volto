@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- prevent form without blocks. Form always have at least the default block. @giuliaghisini
+
 ### Internal
 
 ## 8.7.0 (2020-10-27)
