@@ -1,6 +1,6 @@
 # Change Log
 
-## 8.6.1 (unreleased)
+## 8.7.2 (unreleased)
 
 ### Breaking
 
@@ -11,6 +11,23 @@
 ### Internal
 
 - Enabling support for the new active LTS NodeJS version 14. NodeJS 10 eol will happen on 2021-04-30 and Volto will update accordingly. More information on https://nodejs.org/en/about/releases @sneridagh
+
+## 8.7.1 (2020-10-29)
+
+### Bugfix
+
+- Added loading icon when doing actions in folder-contents @giuliaghisini
+- Fix German translation "from" -> "E-Mail" in contact form @tisto
+
+## 8.7.0 (2020-10-27)
+
+### Feature
+
+- Manage translations view @sneridagh
+
+### Internal
+
+- Update docs build and include pygments support for jsx @sneridagh
 
 ## 8.6.0 (2020-10-25)
 
