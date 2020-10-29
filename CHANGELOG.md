@@ -10,7 +10,11 @@
 
 ### Bugfix
 
+- Throw error in crashReporter; also log sentry errors in server @tiberiuichim
+
 ### Internal
+
+- Split razzle svg and sentry loaders to separate files @tiberiuichim
 
 ## 8.7.0 (2020-10-27)
 
