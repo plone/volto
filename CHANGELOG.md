@@ -6,6 +6,8 @@
 
 ### Feature
 
+- added loading icon when doing actions in folder-contents @giuliaghisini
+
 ### Bugfix
 
 - prevent form without blocks. Form always have at least the default block. @giuliaghisini
