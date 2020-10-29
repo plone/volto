@@ -1,5 +1,15 @@
 # Change Log
 
+## 8.7.2 (unreleased)
+
+### Breaking
+
+### Feature
+
+### Bugfix
+
+### Internal
+
 ## 8.7.1 (2020-10-29)
 
 ### Bugfix
