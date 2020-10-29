@@ -1,6 +1,6 @@
 # Change Log
 
-## 8.6.1 (unreleased)
+## 8.7.1 (unreleased)
 
 - added objectBrowser to UrlWidget, and attached UrlWidget to remoteUrl field of ContentType Link @giuliaghisini
 - managed tel link in UrlWidget and draftjs @giuliaghisini
@@ -15,6 +15,16 @@
 - added loading icon when doing actions in folder-contents @giuliaghisini
 
 ### Bugfix
+
+- prevent form without blocks. Form always have at least the default block. @giuliaghisini
+
+### Internal
+
+## 8.7.0 (2020-10-27)
+
+### Feature
+
+- Manage translations view @sneridagh
 
 ### Internal
 

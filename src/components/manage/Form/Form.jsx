@@ -417,20 +417,30 @@ class Form extends Component {
     const blocksFieldname = getBlocksFieldname(this.state.formData);
     const blocksLayoutFieldname = getBlocksLayoutFieldname(this.state.formData);
 
-    this.setState({
-      formData: {
-        ...this.state.formData,
-        [blocksLayoutFieldname]: {
-          items: without(this.state.formData[blocksLayoutFieldname].items, id),
+    this.setState(
+      {
+        formData: {
+          ...this.state.formData,
+          [blocksLayoutFieldname]: {
+            items: without(
+              this.state.formData[blocksLayoutFieldname].items,
+              id,
+            ),
+          },
+          [blocksFieldname]: omit(this.state.formData[blocksFieldname], [id]),
         },
-        [blocksFieldname]: omit(this.state.formData[blocksFieldname], [id]),
+        selected: selectPrev
+          ? this.state.formData[blocksLayoutFieldname].items[
+              this.state.formData[blocksLayoutFieldname].items.indexOf(id) - 1
+            ]
+          : null,
       },
-      selected: selectPrev
-        ? this.state.formData[blocksLayoutFieldname].items[
-            this.state.formData[blocksLayoutFieldname].items.indexOf(id) - 1
-          ]
-        : null,
-    });
+      (newState) => {
+        if (this.state.formData[blocksLayoutFieldname].items.length === 0) {
+          this.onAddBlock(settings.defaultBlockType, 0);
+        }
+      },
+    );
   }
 
   /**
