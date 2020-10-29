@@ -10,6 +10,8 @@
 
 ### Bugfix
 
+- Fix German translation "from" -> "E-Mail" in contact form @tisto
+
 ### Internal
 
 ## 8.7.0 (2020-10-27)
