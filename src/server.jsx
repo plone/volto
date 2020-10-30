@@ -70,6 +70,24 @@ if (__DEVELOPMENT__ && settings.devProxyToApiPath) {
 if ((settings.expressMiddleware || []).length)
   server.use('/', settings.expressMiddleware);
 
+/**
+ * Returns true if the request should be piped from the backend.
+ *
+ * Allows additional request matchers to be specified in
+ * `settings.backendResourceMatch`
+ *
+ * @param {} request
+ */
+function isBackendResource(request) {
+  const defaultResources = [/(.*)\/@@images\/(.*)/, /(.*)\/@@download\/(.*)/];
+  const toMatch = [
+    ...defaultResources.map((r) => (req) => req.path.match(r)),
+    ...(settings.backendResourceMatch || []),
+  ];
+
+  return toMatch.findIndex((m) => m(request)) > -1;
+}
+
 server
   .disable('x-powered-by')
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
@@ -124,10 +142,7 @@ server
         res.set('Content-Disposition', 'attachment; filename="sitemap.xml.gz"');
         res.send(sitemap);
       });
-    } else if (
-      req.path.match(/(.*)\/@@images\/(.*)/) ||
-      req.path.match(/(.*)\/@@download\/(.*)/)
-    ) {
+    } else if (isBackendResource(req)) {
       getAPIResourceWithAuth(req).then((resource) => {
         function forwardHeaders(headers) {
           headers.forEach((header) => {
