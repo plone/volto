@@ -13,6 +13,8 @@ import { Icon, SidebarPortal, VideoSidebar } from '@plone/volto/components';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import videoBlockSVG from '@plone/volto/components/manage/Blocks/Video/block-video.svg';
+import { isInternalURL, getParentUrl } from '@plone/volto/helpers';
+import { settings } from '~/config';
 
 const messages = defineMessages({
   VideoFormDescription: {
@@ -123,6 +125,9 @@ class Edit extends Component {
    */
   render() {
     const { data } = this.props;
+    const placeholder =
+      this.props.data.placeholder ||
+      this.props.intl.formatMessage(messages.VideoBlockInputPlaceholder);
     return (
       <div
         className={cx(
@@ -182,7 +187,20 @@ class Edit extends Component {
                     <div className="ui blocker" />
                     {data.url.match('.mp4') ? (
                       // eslint-disable-next-line jsx-a11y/media-has-caption
-                      <video src={data.url} controls type="video/mp4" />
+                      <video
+                        src={
+                          isInternalURL(
+                            data.url.replace(
+                              getParentUrl(settings.apiPath),
+                              '',
+                            ),
+                          )
+                            ? `${data.url}/@@download/file`
+                            : data.url
+                        }
+                        controls
+                        type="video/mp4"
+                      />
                     ) : (
                       <div>
                         <Message>
@@ -208,9 +226,7 @@ class Edit extends Component {
                 <Input
                   onKeyDown={this.onKeyDownVariantMenuForm}
                   onChange={this.onChangeUrl}
-                  placeholder={this.props.intl.formatMessage(
-                    messages.VideoBlockInputPlaceholder,
-                  )}
+                  placeholder={placeholder}
                   value={this.state.url}
                   // Prevents propagation to the Dropzone and the opening
                   // of the upload browser dialog

@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import { map } from 'lodash';
 import moment from 'moment';
 import { DragSource, DropTarget } from 'react-dnd';
-import { FormattedMessage } from 'react-intl';
+import { useIntl, defineMessages, FormattedMessage } from 'react-intl';
 import { Icon, Circle } from '@plone/volto/components';
 import moreSVG from '@plone/volto/icons/more.svg';
 import documentSVG from '@plone/volto/icons/content-existing.svg';
@@ -29,6 +29,30 @@ import moveUpSVG from '@plone/volto/icons/move-up.svg';
 import moveDownSVG from '@plone/volto/icons/move-down.svg';
 import editingSVG from '@plone/volto/icons/editing.svg';
 import dragSVG from '@plone/volto/icons/drag.svg';
+import cx from 'classnames';
+
+const messages = defineMessages({
+  private: {
+    id: 'private',
+    defaultMessage: 'Private',
+  },
+  published: {
+    id: 'published',
+    defaultMessage: 'Published',
+  },
+  intranet: {
+    id: 'intranet',
+    defaultMessage: 'Intranet',
+  },
+  draft: {
+    id: 'draft',
+    defaultMessage: 'Draft',
+  },
+  no_workflow_state: {
+    id: 'no workflow state',
+    defaultMessage: 'No workflow state',
+  },
+});
 
 export function getIcon(type, isFolderish) {
   switch (type) {
@@ -46,10 +70,6 @@ export function getIcon(type, isFolderish) {
     default:
       return isFolderish ? folderSVG : fileSVG;
   }
-}
-
-function capitalise(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 function getColor(string) {
@@ -87,11 +107,13 @@ export const ContentsItemComponent = ({
   connectDropTarget,
   isDragging,
   order,
-}) =>
-  connectDropTarget(
+}) => {
+  const intl = useIntl();
+
+  return connectDropTarget(
     connectDragPreview(
-      <tr key={item['@id']} style={{ opacity: isDragging ? 0 : 1 }}>
-        <Table.Cell>
+      <tr key={item['@id']} className={cx('', { 'dragging-row': isDragging })}>
+        <Table.Cell className={cx('', { 'dragging-cell': isDragging })}>
           {connectDragSource(
             <div style={{ display: 'inline-block' }}>
               <Button icon basic>
@@ -105,7 +127,7 @@ export const ContentsItemComponent = ({
             </div>,
           )}
         </Table.Cell>
-        <Table.Cell>
+        <Table.Cell className={cx('', { 'dragging-cell': isDragging })}>
           {selected ? (
             <Button
               icon
@@ -136,10 +158,11 @@ export const ContentsItemComponent = ({
             </Button>
           )}
         </Table.Cell>
-        <Table.Cell>
+        <Table.Cell className={cx('', { 'dragging-cell': isDragging })}>
           <Link
             className="icon-align-name"
             to={`${item['@id']}${item.is_folderish ? '/contents' : ''}`}
+            title={item['@type']}
           >
             <div className="expire-align">
               <Icon
@@ -160,7 +183,10 @@ export const ContentsItemComponent = ({
           </Link>
         </Table.Cell>
         {map(indexes, (index) => (
-          <Table.Cell key={index.id}>
+          <Table.Cell
+            className={cx('', { 'dragging-cell': isDragging })}
+            key={index.id}
+          >
             {index.type === 'boolean' &&
               (item[index.id] ? (
                 <FormattedMessage id="Yes" defaultMessage="Yes" />
@@ -175,9 +201,9 @@ export const ContentsItemComponent = ({
                 <span>
                   <Circle color={getColor(item[index.id])} size="15px" />
                 </span>
-                {item[index.id]
-                  ? capitalise(item[index.id])
-                  : 'No workflow state'}
+                {messages[item[index.id]]
+                  ? intl.formatMessage(messages[item[index.id]])
+                  : intl.formatMessage(messages.no_workflow_state)}
               </div>
             )}
             {index.type === 'date' && (
@@ -199,7 +225,10 @@ export const ContentsItemComponent = ({
             )}
           </Table.Cell>
         ))}
-        <Table.Cell textAlign="right">
+        <Table.Cell
+          className={cx('', { 'dragging-cell': isDragging })}
+          textAlign="right"
+        >
           <Dropdown
             className="row-actions"
             icon={<Icon name={moreSVG} size="24px" color="#007eb1" />}
@@ -267,6 +296,7 @@ export const ContentsItemComponent = ({
       </tr>,
     ),
   );
+};
 
 /**
  * Property types.

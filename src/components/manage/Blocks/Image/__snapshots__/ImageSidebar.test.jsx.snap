@@ -58,10 +58,13 @@ exports[`renders an Image Block Sidebar component 1`] = `
               className="ui icon input"
             >
               <input
-                disabled={false}
                 id="field-external"
+                maxLength={null}
+                minLength={null}
                 name="external"
+                onBlur={[Function]}
                 onChange={[Function]}
+                onClick={[Function]}
                 type="text"
                 value="image"
               />
@@ -133,10 +136,13 @@ exports[`renders an Image Block Sidebar component 1`] = `
               className="ui icon input"
             >
               <input
-                disabled={false}
                 id="field-alt"
+                maxLength={null}
+                minLength={null}
                 name="alt"
+                onBlur={[Function]}
                 onChange={[Function]}
+                onClick={[Function]}
                 type="text"
                 value="alternate text"
               />
@@ -321,6 +327,83 @@ exports[`renders an Image Block Sidebar component 1`] = `
         </div>
       </div>
     </div>
+    <div
+      className="inline field"
+      id="field-image_size"
+    >
+      <div
+        className="ui grid"
+      >
+        <div
+          className="stretched row"
+        >
+          <div
+            className="four wide column"
+          >
+            <div
+              className="wrapper"
+            >
+              <label
+                htmlFor="field-image_size"
+              >
+                Size
+              </label>
+            </div>
+          </div>
+          <div
+            className="eight wide column"
+          >
+            <div>
+              <div
+                className="ui buttons"
+              >
+                <button
+                  aria-label="Left"
+                  className="ui basic icon button"
+                  onClick={[Function]}
+                >
+                  <div
+                    className="image-sizes-text"
+                  >
+                    S
+                  </div>
+                </button>
+              </div>
+              <div
+                className="ui buttons"
+              >
+                <button
+                  aria-label="Right"
+                  className="ui basic icon button"
+                  onClick={[Function]}
+                >
+                  <div
+                    className="image-sizes-text"
+                  >
+                    M
+                  </div>
+                </button>
+              </div>
+              <div
+                className="ui buttons"
+              >
+                <button
+                  aria-label="Center"
+                  className="ui active basic icon button"
+                  onClick={[Function]}
+                >
+                  <div
+                    className="image-sizes-text"
+                  >
+                    L
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div
     className="accordion ui fluid styled form"
@@ -382,10 +465,13 @@ exports[`renders an Image Block Sidebar component 1`] = `
                 className="ui icon input"
               >
                 <input
-                  disabled={false}
                   id="field-link"
+                  maxLength={null}
+                  minLength={null}
                   name="link"
+                  onBlur={[Function]}
                   onChange={[Function]}
+                  onClick={[Function]}
                   type="text"
                   value=""
                 />
@@ -453,7 +539,6 @@ exports[`renders an Image Block Sidebar component 1`] = `
                   <input
                     checked={false}
                     className="hidden"
-                    disabled={false}
                     name="field-openLinkInNewTab"
                     readOnly={true}
                     tabIndex={0}

@@ -11,7 +11,7 @@ const Types = ({ types, pathname, content, currentLanguage }) => {
   return types.length > 0 ? (
     <div className="menu-more pastanaga-menu">
       <header>
-        <FormattedMessage id="Add Content" defaultMessage="Add Content..." />
+        <FormattedMessage id="Add Content" defaultMessage="Add Content…" />
       </header>
       <div className="pastanaga-menu-list">
         <ul>
@@ -19,8 +19,9 @@ const Types = ({ types, pathname, content, currentLanguage }) => {
             // Strip the type for the item we want to add
             const contentTypeToAdd = item['@id'].split('@types/')[1];
             // If we are in the root or in /contents, we need to strip the preceeding / and /contents
-            const currentPath =
-              pathname === '/' || pathname === '/contents' ? '' : pathname;
+            const currentPath = pathname
+              .replace(/\/contents$/, '')
+              .replace(/\/$/, '');
             // Finally build the route URL
             const addContentTypeRoute = `${currentPath}/add?type=${contentTypeToAdd}`;
             return (
@@ -42,14 +43,16 @@ const Types = ({ types, pathname, content, currentLanguage }) => {
         </ul>
       </div>
       {settings.isMultilingual &&
+        content['@components'].translations &&
         (() => {
           const translationsLeft = filter(
             settings.supportedLanguages,
             (lang) =>
               !Boolean(
-                find(content['@components'].translations.items, {
-                  language: lang,
-                }),
+                content['@components'].translations &&
+                  find(content['@components'].translations.items, {
+                    language: lang,
+                  }),
               ) && currentLanguage !== lang,
           );
 
@@ -58,8 +61,8 @@ const Types = ({ types, pathname, content, currentLanguage }) => {
               <>
                 <header>
                   <FormattedMessage
-                    id="Add Translation..."
-                    defaultMessage="Add Translation..."
+                    id="Add Translation…"
+                    defaultMessage="Add Translation…"
                   />
                 </header>
                 <div className="pastanaga-menu-list">

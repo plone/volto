@@ -10,6 +10,50 @@ This upgrade guide lists all breaking changes in Volto and explains the
     dependencies might do when dealing with upgrades. We keep the generator up
     to date and in sync with current Volto release.
 
+## Upgrading to Volto 8.x.x
+
+### Upgrade package.json testing configuration
+
+The `dummy-addons-loader.js` file has been renamed to `jest-addons-loader.js`,
+to be more in line with the rest of the existing files. You should add the
+following value to the `moduleNameMapper` property of the `jest` key in your
+project's package.json:
+
+```
+"load-volto-addons": "<rootDir>/node_modules/@plone/volto/jest-addons-loader.js",
+```
+
+## Upgrading to Volto 7.x.x
+
+A misspelled file has been renamed. If you import `strickthrough.svg` in your
+project, you'll now find that file at `@plone/volto/icons/strikethrough.svg`.
+
+### New webpack resolve alias for Volto themes
+
+As a "nice to have", a new resolve alias is provided that points to Volto's
+theme folder. So, in your project's `theme.config` file, you can replace:
+
+```less
+@themesFolder: '../../node_modules/@plone/volto/theme/themes';
+@siteFolder: "../../theme";
+@fontPath : "../../@{theme}/assets/fonts";
+```
+with:
+
+```less
+@themesFolder: '~volto-themes';
+@siteFolder: '~@package/../theme';
+@fontPath: "~volto-themes/@{theme}/assets/fonts";
+```
+
+You might consider moving your theme files to a subfolder called `site`, to
+prepare for the arrival of addons theming and their overrides.  In that case,
+you would set your `@siteFolder` to:
+
+```
+@siteFolder: '~@package/../theme/site';
+```
+
 ## Upgrading to Volto 6.x.x
 
 First, update the `package.json` of your Volto project to Volto 6.x.x.
@@ -138,6 +182,19 @@ might be cleaned up in next major versions, so if for some reason you have custo
 the styling of your blocks in edit mode relying in the old structure, you might want to
 review and adapt them.
 
+### Update `config.js`
+
+!!! note
+    This is required since Volto version 6.1.0 [1541](https://github.com/plone/volto/pull/1541)
+
+Add these to the `config.js` of your project:
+
+```js
+export const addonRoutes = [];
+
+export const addonReducers = {};
+```
+
 ## Upgrading to Volto 5.x.x
 
 First, update the `package.json` of your Volto project to Volto 5.x.x.
@@ -176,7 +233,7 @@ async construction before the test is fired. See this Codepen example:
 
 https://codesandbox.io/s/loadable-async-tests-l2bx9
 
-```js
+```jsx
 import React from "react";
 import { render } from "@testing-library/react";
 import App from "./App";
@@ -615,7 +672,7 @@ features from the blocks themselves and now it takes care of them by its own.
 This change only applies to your existing blocks, you have to update them
 accordingly by delete the trash icon and action from the end of your blocks
 
-```js
+```jsx
 {this.props.selected && (
   <Button
     icon
@@ -630,7 +687,7 @@ accordingly by delete the trash icon and action from the end of your blocks
 
 Modify the parent element of your block making this changes:
 
-```js
+```jsx
 <div
   role="presentation"
   onClick={() => this.props.onSelectBlock(this.props.block)}
@@ -654,7 +711,7 @@ Modify the parent element of your block making this changes:
 
 - Add the keylisteners to the parent element of your block
 
-```js
+```jsx
   onKeyDown={e =>
     this.props.handleKeyDown(
       e,
@@ -667,7 +724,7 @@ Modify the parent element of your block making this changes:
 
 - Add a ref to it and assign it to `this.node`.
 
-```js
+```jsx
   ref={node => {
     this.node = node;
   }}
@@ -675,7 +732,7 @@ Modify the parent element of your block making this changes:
 
 - Add a proper role for it
 
-```js
+```jsx
   role="presentation"
 ```
 

@@ -112,6 +112,7 @@ class View extends Component {
 
   state = {
     hasObjectButtons: null,
+    isClient: false,
   };
 
   /**
@@ -125,6 +126,10 @@ class View extends Component {
       getBaseUrl(this.props.pathname),
       this.props.versionId,
     );
+  }
+
+  componentDidMount() {
+    this.setState({ isClient: true });
   }
 
   /**
@@ -259,10 +264,12 @@ class View extends Component {
           {this.props.content.allow_discussion && (
             <Comments pathname={this.props.pathname} />
           )}
+          {this.state.isClient && (
+            <Portal node={document.getElementById('toolbar')}>
+              <Toolbar pathname={this.props.pathname} inner={<span />} />
+            </Portal>
+          )}
         </ContentContainer>
-        <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
-          <Toolbar pathname={this.props.pathname} inner={<span />} />
-        </Portal>
       </div>
     );
   }

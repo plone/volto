@@ -333,7 +333,6 @@ exports[`renders an Listing Data Sidebar component 1`] = `
               <input
                 checked={false}
                 className="hidden"
-                disabled={false}
                 name="field-listingblock-sort-on-reverse"
                 readOnly={true}
                 tabIndex={0}
@@ -380,10 +379,13 @@ exports[`renders an Listing Data Sidebar component 1`] = `
             className="ui input"
           >
             <input
-              disabled={false}
               id="field-limit"
+              maxLength={null}
+              minLength={null}
               name="limit"
+              onBlur={[Function]}
               onChange={[Function]}
+              onClick={[Function]}
               type="text"
               value=""
             />
@@ -422,10 +424,13 @@ exports[`renders an Listing Data Sidebar component 1`] = `
             className="ui input"
           >
             <input
-              disabled={false}
               id="field-itembatchsize"
+              maxLength={null}
+              minLength={null}
               name="itembatchsize"
+              onBlur={[Function]}
               onChange={[Function]}
+              onClick={[Function]}
               type="text"
               value=""
             />

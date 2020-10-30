@@ -31,9 +31,10 @@ const messages = defineMessages({
     id: 'Selected items',
     defaultMessage: 'Selected items',
   },
+  of: { id: 'Selected items - x of y', defaultMessage: 'of' },
 });
 
-function getParentURL(url) {
+export function getParentURL(url) {
   return flattenToAppURL(`${join(url.split('/').slice(0, -1), '/')}`) || '/';
 }
 
@@ -58,6 +59,7 @@ class ObjectBrowserBody extends Component {
     onChangeBlock: PropTypes.func.isRequired,
     onSelectItem: PropTypes.func,
     dataName: PropTypes.string,
+    maximumSelectionSize: PropTypes.number,
   };
 
   /**
@@ -70,6 +72,8 @@ class ObjectBrowserBody extends Component {
     href: '',
     onSelectItem: null,
     dataName: null,
+    selectableTypes: [],
+    maximumSelectionSize: null,
   };
 
   /**
@@ -84,8 +88,8 @@ class ObjectBrowserBody extends Component {
       currentFolder:
         this.props.mode === 'multiple'
           ? '/'
-          : this.props.data?.url
-          ? getParentURL(this.props.data.url)
+          : this.props.data?.contextURL
+          ? getParentURL(this.props.data.contextURL)
           : '/',
       currentImageFolder:
         this.props.mode === 'multiple'
@@ -155,7 +159,7 @@ class ObjectBrowserBody extends Component {
       );
     } else {
       this.props.searchContent(
-        '/',
+        this.state.currentFolder,
         {
           'path.depth': 1,
           sort_on: 'getObjPositionInParent',
@@ -272,7 +276,7 @@ class ObjectBrowserBody extends Component {
     } else if (mode === 'image') {
       onChangeBlock(block, {
         ...data,
-        url,
+        url: item.getURL,
         alt: title,
       });
     } else if (mode === 'link') {
@@ -291,6 +295,12 @@ class ObjectBrowserBody extends Component {
     });
   };
 
+  isSelectable = (item) => {
+    return this.props.selectableTypes.length > 0
+      ? this.props.selectableTypes.indexOf(item['@type']) >= 0
+      : true;
+  };
+
   handleClickOnItem = (item) => {
     if (this.props.mode === 'image') {
       if (item.is_folderish) {
@@ -300,7 +310,23 @@ class ObjectBrowserBody extends Component {
         this.onSelectItem(item);
       }
     } else {
-      this.onSelectItem(item);
+      if (this.isSelectable(item)) {
+        if (
+          !this.props.maximumSelectionSize ||
+          !this.props.data ||
+          this.props.data.length < this.props.maximumSelectionSize
+        ) {
+          this.onSelectItem(item);
+          let length = this.props.data ? this.props.data.length : 0;
+          if (length + 1 >= this.props.maximumSelectionSize) {
+            this.props.closeObjectBrowser();
+          }
+        } else {
+          this.props.closeObjectBrowser();
+        }
+      } else {
+        this.navigateTo(item['@id']);
+      }
     }
   };
 
@@ -314,8 +340,14 @@ class ObjectBrowserBody extends Component {
         this.props.closeObjectBrowser();
       }
     } else {
-      this.onSelectItem(item);
-      this.props.closeObjectBrowser();
+      if (this.isSelectable(item)) {
+        if (this.props.data.length < this.props.maximumSelectionSize) {
+          this.onSelectItem(item);
+        }
+        this.props.closeObjectBrowser();
+      } else {
+        this.navigateTo(item['@id']);
+      }
     }
   };
 
@@ -354,15 +386,13 @@ class ObjectBrowserBody extends Component {
               />
             )}
             {this.state.showSearchInput ? (
-              <form>
-                <Input
-                  className="search"
-                  onChange={this.onSearch}
-                  placeholder={this.props.intl.formatMessage(
-                    messages.SearchInputPlaceholder,
-                  )}
-                />
-              </form>
+              <Input
+                className="search"
+                onChange={this.onSearch}
+                placeholder={this.props.intl.formatMessage(
+                  messages.SearchInputPlaceholder,
+                )}
+              />
             ) : this.props.mode === 'image' ? (
               <h2>
                 <FormattedMessage
@@ -391,6 +421,13 @@ class ObjectBrowserBody extends Component {
             <Segment className="infos">
               {this.props.intl.formatMessage(messages.SelectedItems)}:{' '}
               {this.props.data?.length}
+              {this.props.maximumSelectionSize && (
+                <>
+                  {' '}
+                  {this.props.intl.formatMessage(messages.of)}{' '}
+                  {this.props.maximumSelectionSize}
+                </>
+              )}
             </Segment>
           )}
           <ObjectBrowserNav
@@ -416,6 +453,7 @@ class ObjectBrowserBody extends Component {
             handleDoubleClickOnItem={this.handleDoubleClickOnItem}
             mode={this.props.mode}
             navigateTo={this.navigateTo}
+            isSelectable={this.isSelectable}
           />
         </Segment.Group>
       </aside>,

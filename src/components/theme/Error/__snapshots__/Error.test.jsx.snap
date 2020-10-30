@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Generic Error renders a not found component 1`] = `
+<div
+  id="view"
+>
+  <div
+    className="ui container view-wrapper"
+  >
+    <h1>
+      Unauthorized
+    </h1>
+    <h3>
+      You are not authorized to access this resource
+    </h3>
+    <p
+      className="description"
+    >
+      You are trying to access a protected resource, please 
+      <a
+        href="//login"
+        onClick={[Function]}
+      >
+        log in
+      </a>
+       first.
+    </p>
+    <p>
+      If you are certain you have the correct web address but are encountering an error, please contact the 
+      <a
+        href="/contact-form"
+        onClick={[Function]}
+      >
+        Site Administration
+      </a>
+      .
+    </p>
+    <p>
+      Thank you.
+    </p>
+  </div>
+</div>
+`;

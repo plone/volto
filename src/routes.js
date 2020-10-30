@@ -9,27 +9,31 @@ import {
   ChangePassword,
   ContactForm,
   Contents,
+  ContentType,
+  ContentTypeLayout,
+  ContentTypeSchema,
+  ContentTypes,
   Controlpanel,
   Controlpanels,
   CreateTranslation,
-  Edit,
-  Diff,
+  DatabaseInformation,
   Delete,
+  Diff,
+  Edit,
   History,
-  View,
-  NotFound,
   Login,
   Logout,
+  ManageTranslations,
   ModerateComments,
+  NotFound,
   PasswordReset,
   Register,
   RequestPasswordReset,
   Search,
-  Sitemap,
   Sharing,
+  Sitemap,
   UsersControlpanel,
-  ContentTypes,
-  ContentType,
+  View,
 } from '@plone/volto/components';
 import { addonRoutes } from '~/config';
 
@@ -70,6 +74,14 @@ export const defaultRoutes = [
     component: Controlpanels,
   },
   {
+    path: '/controlpanel/dexterity-types/:id/layout',
+    component: ContentTypeLayout,
+  },
+  {
+    path: '/controlpanel/dexterity-types/:id/schema',
+    component: ContentTypeSchema,
+  },
+  {
     path: '/controlpanel/dexterity-types/:id',
     component: ContentType,
   },
@@ -80,6 +92,10 @@ export const defaultRoutes = [
   {
     path: '/controlpanel/addons',
     component: AddonsControlpanel,
+  },
+  {
+    path: '/controlpanel/database',
+    component: DatabaseInformation,
   },
   {
     path: '/controlpanel/moderate-comments',
@@ -148,6 +164,10 @@ export const defaultRoutes = [
   {
     path: '/**/sharing',
     component: Sharing,
+  },
+  {
+    path: '/**/manage-translations',
+    component: ManageTranslations,
   },
   {
     path: '/**/login',
