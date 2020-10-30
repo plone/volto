@@ -70,6 +70,11 @@ if (__DEVELOPMENT__ && settings.devProxyToApiPath) {
 if ((settings.expressMiddleware || []).length)
   server.use('/', settings.expressMiddleware);
 
+const defaultResources = [
+  /(.*)\/@@images\/(.*)/,
+  /(.*)\/@@download\/(.*)/,
+].map((r) => (req) => req.path.match(r));
+
 /**
  * Returns true if the request should be piped from the backend.
  *
@@ -79,13 +84,12 @@ if ((settings.expressMiddleware || []).length)
  * @param {} request
  */
 function isBackendResource(request) {
-  const defaultResources = [/(.*)\/@@images\/(.*)/, /(.*)\/@@download\/(.*)/];
-  const toMatch = [
-    ...defaultResources.map((r) => (req) => req.path.match(r)),
-    ...(settings.backendResourceMatch || []),
-  ];
-
-  return toMatch.findIndex((m) => m(request)) > -1;
+  return (
+    [
+      ...defaultResources,
+      ...(settings.backendResourceMatch || []),
+    ].findIndex((m) => m(request)) > -1
+  );
 }
 
 server
