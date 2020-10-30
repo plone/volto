@@ -3,7 +3,13 @@
  * @module components/manage/Form/Form
  */
 
-import { EditBlock, Field, Icon, Toast } from '@plone/volto/components';
+import {
+  UndoManager,
+  EditBlock,
+  Field,
+  Icon,
+  Toast,
+} from '@plone/volto/components';
 import {
   blockHasValue,
   difference,
@@ -781,6 +787,7 @@ class Form extends Component {
       // but draftJS don't like it much and the hydration gets messed up
       this.state.isClient && (
         <div className="ui container">
+          <UndoManager formstate={this.state} />
           <DragDropContext
             onDragEnd={this.onDragEnd}
             onDragStart={this.handleDragStart}
@@ -900,6 +907,7 @@ class Form extends Component {
       )
     ) : (
       <Container>
+        <UndoManager formstate={this.state} />
         <UiForm
           method="post"
           onSubmit={this.onSubmit}

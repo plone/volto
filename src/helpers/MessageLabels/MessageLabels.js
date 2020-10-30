@@ -162,4 +162,12 @@ export const messages = defineMessages({
     id: 'Users and Groups',
     defaultMessage: 'Users and Groups',
   },
+  undo: {
+    id: 'undo',
+    defaultMessage: 'Undo',
+  },
+  redo: {
+    id: 'redo',
+    defaultMessage: 'Redo',
+  },
 });
