@@ -93,6 +93,7 @@ let config = {
 
   addonRoutes: [],
   addonReducers: {},
+  slots: {},
 };
 
 config = applyAddonConfiguration(config);
