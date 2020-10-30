@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Enabling support for the new active LTS NodeJS version 14. NodeJS 10 eol will happen on 2021-04-30 and Volto will update accordingly. More information on https://nodejs.org/en/about/releases @sneridagh
+
 ### Bugfix
 
 ### Internal
