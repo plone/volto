@@ -133,7 +133,13 @@ describe('Toolbar More component', () => {
     const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter>
-          <More pathname="/blah" loadComponent={() => {}} />
+          <More
+            pathname="/blah"
+            loadComponent={() => {}}
+            theToolbar={{
+              current: { getBoundingClientRect: () => ({ width: '320' }) },
+            }}
+          />
         </MemoryRouter>
       </Provider>,
     );

@@ -40,6 +40,8 @@ import {
 import clearSVG from '@plone/volto/icons/clear.svg';
 import MultilingualRedirector from '../MultilingualRedirector/MultilingualRedirector';
 
+import * as Sentry from '@sentry/browser';
+
 /**
  * @export
  * @class App
@@ -83,6 +85,11 @@ class App extends Component {
    */
   componentDidCatch(error, info) {
     this.setState({ hasError: true, error, errorInfo: info });
+    if (__CLIENT__) {
+      if (window?.env?.RAZZLE_SENTRY_DSN || __SENTRY__?.SENTRY_DSN) {
+        Sentry.captureException(error);
+      }
+    }
   }
 
   /**
