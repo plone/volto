@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { map, find, isBoolean, isObject, intersection } from 'lodash';
+import { map, find, isBoolean, isObject, intersection, isArray } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 import loadable from '@loadable/component';
 
@@ -102,7 +102,7 @@ function getDefaultValues(choices, value) {
       value: value.token,
     };
   }
-  if (value.length > 0 && choices.length > 0) {
+  if (isArray(value) && choices.length > 0) {
     return value.map((v) => ({
       label: find(choices, (o) => o[0] === v)?.[1] || v,
       value: v,
