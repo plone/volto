@@ -10,6 +10,8 @@
 
 ### Bugfix
 
+- Fix default target for links in text blocks @giuliaghisini
+
 ### Internal
 
 ## 8.7.1 (2020-10-29)
