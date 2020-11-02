@@ -744,7 +744,7 @@ msgstr "Vierter"
 
 #: components/theme/ContactForm/ContactForm
 msgid "From"
-msgstr "Von"
+msgstr "E-Mail"
 
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
