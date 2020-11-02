@@ -270,4 +270,7 @@ module.exports = {
     );
     return res;
   },
+  experimental: {
+    reactRefresh: true,
+  },
 };
