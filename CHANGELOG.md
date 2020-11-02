@@ -10,6 +10,8 @@
 
 ### Bugfix
 
+- Fixing overlap of labels with each other in select widget @iFlameing
+
 ### Internal
 
 ## 8.7.1 (2020-10-29)
