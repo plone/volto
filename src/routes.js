@@ -23,6 +23,7 @@ import {
   History,
   Login,
   Logout,
+  ManageTranslations,
   ModerateComments,
   NotFound,
   PasswordReset,
@@ -163,6 +164,10 @@ export const defaultRoutes = [
   {
     path: '/**/sharing',
     component: Sharing,
+  },
+  {
+    path: '/**/manage-translations',
+    component: ManageTranslations,
   },
   {
     path: '/**/login',

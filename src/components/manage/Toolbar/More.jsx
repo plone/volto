@@ -17,6 +17,8 @@ import { getBaseUrl } from '@plone/volto/helpers';
 import rightArrowSVG from '@plone/volto/icons/right-key.svg';
 import userSVG from '@plone/volto/icons/user.svg';
 
+import { settings } from '~/config';
+
 const messages = defineMessages({
   personalTools: {
     id: 'Personal tools',
@@ -29,6 +31,10 @@ const messages = defineMessages({
   sharing: {
     id: 'Sharing',
     defaultMessage: 'Sharing',
+  },
+  ManageTranslations: {
+    id: 'Manage Translations',
+    defaultMessage: 'Manage Translations',
   },
 });
 
@@ -62,6 +68,10 @@ class More extends Component {
   static defaultProps = {
     actions: null,
     content: null,
+  };
+  state = {
+    openManageTranslations: false,
+    pushed: false,
   };
 
   push = (selector) => {
@@ -150,6 +160,21 @@ class More extends Component {
                   </button>
                 </Link>
               </li>
+            )}
+            {editAction && settings.isMultilingual && (
+              <>
+                <li>
+                  <Link to={`${path}/manage-translations`}>
+                    <button>
+                      {this.props.intl.formatMessage(
+                        messages.ManageTranslations,
+                      )}
+
+                      <Icon name={rightArrowSVG} size="24px" />
+                    </button>
+                  </Link>
+                </li>
+              </>
             )}
           </ul>
         </div>
