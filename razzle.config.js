@@ -45,7 +45,11 @@ const svgPlugin = (config) => {
   return config;
 };
 
-const defaultModify = (config, { target, dev }, webpack) => {
+const defaultModify = ({
+  env: { target, dev },
+  webpackConfig: config,
+  webpackObject: webpack,
+}) => {
   if (dev) {
     config.plugins.unshift(
       new webpack.DefinePlugin({
@@ -262,10 +266,18 @@ const plugins = addonExtenders.reduce(
 
 module.exports = {
   plugins,
-  modify: (config, { target, dev }, webpack) => {
-    const defaultConfig = defaultModify(config, { target, dev }, webpack);
+  modifyWebpackConfig: ({
+    env: { target, dev },
+    webpackConfig,
+    webpackObject,
+  }) => {
+    const defaultConfig = defaultModify({
+      env: { target, dev },
+      webpackConfig,
+      webpackObject,
+    });
     const res = addonExtenders.reduce(
-      (acc, extender) => extender.modify(acc, { target, dev }, webpack),
+      (acc, extender) => extender.modify(acc, { target, dev }, webpackConfig),
       defaultConfig,
     );
     return res;
