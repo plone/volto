@@ -348,10 +348,6 @@ msgstr "Elemente conținute"
 msgid "Content"
 msgstr "Conținut"
 
-#: components/manage/Multilingual/ManageTranslations
-msgid "Content linked"
-msgstr ""
-
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
 msgstr "Tip de conținut creat"
@@ -1826,7 +1822,11 @@ msgid "Translate to {lang}"
 msgstr "Traduceți în {lang}"
 
 #: components/manage/Multilingual/ManageTranslations
-msgid "Translation deleted"
+msgid "Translation linked"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Translation linking removed"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
