@@ -73,6 +73,10 @@ if ((settings.expressMiddleware || []).length)
 server
   .disable('x-powered-by')
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
+  .head('/*', function (req, res) {
+    // Support for HEAD requests. Required by start-test utility in CI.
+    res.send('');
+  })
   .get('/*', (req, res) => {
     plugToRequest(req, res);
     const api = new Api(req);
