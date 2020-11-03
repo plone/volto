@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Improve misleading translations deleted message @sneridagh
+
 ### Internal
 
 ## 8.8.0 (2020-11-02)
