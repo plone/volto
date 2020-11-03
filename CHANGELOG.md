@@ -13,6 +13,7 @@
 ### Internal
 
 - Split razzle svg and sentry loaders to separate files @tiberiuichim
+- prevent form without blocks. Form always have at least the default block. @giuliaghisini
 - Fix default target for links in text blocks @giuliaghisini
 
 ### Internal
