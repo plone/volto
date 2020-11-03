@@ -1,18 +1,24 @@
 # Change Log
 
-## 8.7.2 (unreleased)
+## 8.8.1 (unreleased)
 
 ### Breaking
 
 ### Feature
 
-- Enabling support for the new active LTS NodeJS version 14. NodeJS 10 eol will happen on 2021-04-30 and Volto will update accordingly. More information on https://nodejs.org/en/about/releases @sneridagh
-
 ### Bugfix
 
 - Fixing overlap of labels with each other in select widget @iFlameing
+- prevent form without blocks. Form always have at least the default block. @giuliaghisini
+- Fix default target for links in text blocks @giuliaghisini
 
 ### Internal
+
+## 8.8.0 (2020-11-02)
+
+### Feature
+
+- Add support for the new active LTS NodeJS version 14. NodeJS 10 eol will happen on 2021-04-30 and Volto will update accordingly. More information on https://nodejs.org/en/about/releases @sneridagh
 
 ## 8.7.1 (2020-10-29)
 
