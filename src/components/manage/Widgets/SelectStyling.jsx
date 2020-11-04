@@ -84,6 +84,7 @@ export const customSelectStyles = {
   option: (styles, state) => ({
     ...styles,
     backgroundColor: null,
+    minHeight: '50px',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -95,6 +96,9 @@ export const customSelectStyles = {
       : 'inherit',
     ':active': {
       backgroundColor: null,
+    },
+    svg: {
+      flex: '0 0 auto',
     },
   }),
 };
