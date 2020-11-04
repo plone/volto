@@ -2,10 +2,6 @@
 
 ## 8.8.1 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Improve misleading translations deleted message @sneridagh
