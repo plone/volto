@@ -6,6 +6,9 @@
 
 ### Feature
 
+- Making inline link toolbar, location aware in content browser @iFlameing.
+- Detect if the link typed or pasted in the link widget of the text block is internal @sneridagh
+
 ### Bugfix
 
 ### Internal
