@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "8.6.0",
+  "version": "8.8.0",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -211,7 +211,7 @@
     ]
   },
   "engines": {
-    "node": "^10 || ^12"
+    "node": "^10 || ^12 || ^14"
   },
   "dependencies": {
     "@babel/core": "7.11.1",
@@ -286,6 +286,7 @@
     "history": "4.10.1",
     "http-proxy-middleware": "1.0.4",
     "husky": "4.2.5",
+    "identity-obj-proxy": "3.0.0",
     "jest-css-modules": "1.1.0",
     "jest-file": "1.0.0",
     "js-yaml": "3.13.1",

@@ -93,6 +93,7 @@ export PersonalTools from '@plone/volto/components/manage/Toolbar/PersonalTools'
 export More from '@plone/volto/components/manage/Toolbar/More';
 export Types from '@plone/volto/components/manage/Toolbar/Types';
 export Toast from '@plone/volto/components/manage/Toast/Toast';
+export ManageTranslations from '@plone/volto/components/manage/Multilingual/ManageTranslations';
 
 // Potentially could ve removed from index, since they are internal components and
 // we don't want them to end up in the main chunk
