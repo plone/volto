@@ -363,10 +363,6 @@ msgstr "Enthaltene Elemente"
 msgid "Content"
 msgstr "Inhalt"
 
-#: components/manage/Multilingual/ManageTranslations
-msgid "Content linked"
-msgstr ""
-
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
 msgstr "Inhaltstyp erstellt"
@@ -1841,7 +1837,11 @@ msgid "Translate to {lang}"
 msgstr "Auf {lang} übersetzen"
 
 #: components/manage/Multilingual/ManageTranslations
-msgid "Translation deleted"
+msgid "Translation linked"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Translation linking removed"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes

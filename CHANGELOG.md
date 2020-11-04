@@ -8,6 +8,7 @@
 
 ### Bugfix
 
+- Improve misleading translations deleted message @sneridagh
 - Fixing overlap of labels with each other in select widget @iFlameing
 - Throw error in crashReporter; also log sentry errors in server @tiberiuichim
 
