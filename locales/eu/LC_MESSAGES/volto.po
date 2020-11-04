@@ -359,10 +359,6 @@ msgstr "Barneko elementuak"
 msgid "Content"
 msgstr "Edukia"
 
-#: components/manage/Multilingual/ManageTranslations
-msgid "Content linked"
-msgstr ""
-
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
 msgstr "Elementu-mota gehitu da"
@@ -1853,7 +1849,11 @@ msgid "Translate to {lang}"
 msgstr "{lang} hizkuntzara itzuli"
 
 #: components/manage/Multilingual/ManageTranslations
-msgid "Translation deleted"
+msgid "Translation linked"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Translation linking removed"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
@@ -2199,6 +2199,10 @@ msgstr "Irudi nagusiaren eremua"
 #: config/Blocks
 msgid "listing"
 msgstr "Zerrenda"
+
+#: components/manage/Contents/Contents
+msgid "loading"
+msgstr ""
 
 #: components/theme/Unauthorized/Unauthorized
 msgid "log in"

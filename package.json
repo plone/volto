@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "8.7.0",
+  "version": "8.8.1",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -99,7 +99,8 @@
       "~/config": "<rootDir>/src/config",
       "~/../locales/${lang}.json": "<rootDir>/locales/en.json",
       "(.*)/locales/(.*)": "<rootDir>/locales/$2",
-      "load-volto-addons": "<rootDir>/jest-addons-loader.js"
+      "load-volto-addons": "<rootDir>/jest-addons-loader.js",
+      "\\.(css|less|scss|sass)$": "identity-obj-proxy"
     },
     "coverageThreshold": {
       "global": {
@@ -210,7 +211,7 @@
     ]
   },
   "engines": {
-    "node": "^10 || ^12"
+    "node": "^10 || ^12 || ^14"
   },
   "dependencies": {
     "@babel/core": "7.11.1",
@@ -285,6 +286,7 @@
     "history": "4.10.1",
     "http-proxy-middleware": "1.0.4",
     "husky": "4.2.5",
+    "identity-obj-proxy": "3.0.0",
     "jest-css-modules": "1.1.0",
     "jest-file": "1.0.0",
     "js-yaml": "3.13.1",

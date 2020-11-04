@@ -367,10 +367,6 @@ msgstr "Enthaltene Elemente"
 msgid "Content"
 msgstr "Inhalt"
 
-#: components/manage/Multilingual/ManageTranslations
-msgid "Content linked"
-msgstr ""
-
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
 msgstr "Inhaltstyp erstellt"
@@ -758,7 +754,7 @@ msgstr "Vierter"
 
 #: components/theme/ContactForm/ContactForm
 msgid "From"
-msgstr "Von"
+msgstr "E-Mail"
 
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
@@ -1861,7 +1857,11 @@ msgid "Translate to {lang}"
 msgstr "Auf {lang} übersetzen"
 
 #: components/manage/Multilingual/ManageTranslations
-msgid "Translation deleted"
+msgid "Translation linked"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Translation linking removed"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
@@ -2207,6 +2207,10 @@ msgstr "leadimage"
 #: config/Blocks
 msgid "listing"
 msgstr "listing"
+
+#: components/manage/Contents/Contents
+msgid "loading"
+msgstr ""
 
 #: components/theme/Unauthorized/Unauthorized
 msgid "log in"

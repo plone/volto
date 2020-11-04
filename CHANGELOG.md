@@ -1,6 +1,6 @@
 # Change Log
 
-## 8.7.1 (unreleased)
+## 8.8.2 (unreleased)
 
 ### Breaking
 
@@ -10,6 +10,35 @@
 ### Bugfix
 
 ### Internal
+
+## 8.8.1 (2020-11-04)
+
+### Bugfix
+
+- Improve misleading translations deleted message @sneridagh
+- Fixing overlap of labels with each other in select widget @iFlameing
+- Throw error in crashReporter; also log sentry errors in server @tiberiuichim
+
+### Internal
+
+- Split razzle svg and sentry loaders to separate files @tiberiuichim
+- prevent form without blocks. Form always have at least the default block. @giuliaghisini
+- Fix default target for links in text blocks @giuliaghisini
+
+### Internal
+
+## 8.8.0 (2020-11-02)
+
+### Feature
+
+- Add support for the new active LTS NodeJS version 14. NodeJS 10 eol will happen on 2021-04-30 and Volto will update accordingly. More information on https://nodejs.org/en/about/releases @sneridagh
+
+## 8.7.1 (2020-10-29)
+
+### Bugfix
+
+- Added loading icon when doing actions in folder-contents @giuliaghisini
+- Fix German translation "from" -> "E-Mail" in contact form @tisto
 
 ## 8.7.0 (2020-10-27)
 

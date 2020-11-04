@@ -360,10 +360,6 @@ msgstr ""
 msgid "Content"
 msgstr ""
 
-#: components/manage/Multilingual/ManageTranslations
-msgid "Content linked"
-msgstr ""
-
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
 msgstr ""
@@ -1854,7 +1850,11 @@ msgid "Translate to {lang}"
 msgstr ""
 
 #: components/manage/Multilingual/ManageTranslations
-msgid "Translation deleted"
+msgid "Translation linked"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Translation linking removed"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
@@ -2199,6 +2199,10 @@ msgstr ""
 
 #: config/Blocks
 msgid "listing"
+msgstr ""
+
+#: components/manage/Contents/Contents
+msgid "loading"
 msgstr ""
 
 #: components/theme/Unauthorized/Unauthorized

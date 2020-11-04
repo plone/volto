@@ -359,10 +359,6 @@ msgstr "含まれるアイテム"
 msgid "Content"
 msgstr "コンテント"
 
-#: components/manage/Multilingual/ManageTranslations
-msgid "Content linked"
-msgstr ""
-
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
 msgstr "コンテンツタイプが作成されました"
@@ -1853,7 +1849,11 @@ msgid "Translate to {lang}"
 msgstr "{lang} に翻訳する"
 
 #: components/manage/Multilingual/ManageTranslations
-msgid "Translation deleted"
+msgid "Translation linked"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Translation linking removed"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
@@ -2199,6 +2199,10 @@ msgstr "リード画像"
 #: config/Blocks
 msgid "listing"
 msgstr "リスティング"
+
+#: components/manage/Contents/Contents
+msgid "loading"
+msgstr ""
 
 #: components/theme/Unauthorized/Unauthorized
 msgid "log in"
