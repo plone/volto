@@ -4,6 +4,15 @@
 
 ### Breaking
 
+- Babel plugins housekeeping
+
+  Deprecated proposals:
+  - @babel/plugin-proposal-function-bind
+  - @babel/plugin-proposal-do-expressions
+  - @babel/plugin-proposal-logical-assignment-operators
+  - @babel/plugin-proposal-pipeline-operator
+  - @babel/plugin-proposal-function-sent
+
 ### Feature
 
 ### Bugfix
