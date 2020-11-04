@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Making inline link toolbar, location aware in content browser @iFlameing.
+
 ### Bugfix
 
 - Throw error in crashReporter; also log sentry errors in server @tiberiuichim
