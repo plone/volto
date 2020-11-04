@@ -74,9 +74,7 @@ const withObjectBrowser = (WrappedComponent) =>
     closeObjectBrowser = () => this.setState({ isObjectBrowserOpen: false });
 
     render() {
-      let contextURL = this.props.pathname
-        ? this.props.pathname
-        : this.props.location?.pathname;
+      let contextURL = this.props.pathname ?? this.props.location?.pathname;
       if (contextURL?.endsWith('edit')) {
         contextURL = getParentURL(contextURL);
       }
