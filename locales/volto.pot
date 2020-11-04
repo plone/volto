@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-10-26T11:45:50.770Z\n"
+"POT-Creation-Date: 2020-11-03T12:17:02.874Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -420,11 +420,6 @@ msgstr ""
 #: components/manage/Blocks/Listing/ListingSidebar
 # defaultMessage: Content
 msgid "Content"
-msgstr ""
-
-#: components/manage/Multilingual/ManageTranslations
-# defaultMessage: Content linked
-msgid "Content linked"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
@@ -2231,8 +2226,13 @@ msgid "Translate to {lang}"
 msgstr ""
 
 #: components/manage/Multilingual/ManageTranslations
-# defaultMessage: Translation deleted
-msgid "Translation deleted"
+# defaultMessage: Translation linked
+msgid "Translation linked"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+# defaultMessage: Translation linking removed
+msgid "Translation linking removed"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
