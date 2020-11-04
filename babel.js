@@ -6,9 +6,6 @@ module.exports = function (api) {
     '@babel/plugin-proposal-export-default-from', // Stage 1
     '@babel/plugin-syntax-export-namespace-from', // Stage 4
     '@babel/plugin-proposal-json-strings', // ? - deprecate?
-    '@babel/plugin-proposal-nullish-coalescing-operator', // Stage 4
-    '@babel/plugin-proposal-numeric-separator', // Stage 4
-    '@babel/plugin-proposal-optional-chaining', // Stage 4
     '@babel/plugin-proposal-throw-expressions', // Stage 2
     '@babel/plugin-syntax-import-meta', // deprecate?
     [
