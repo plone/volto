@@ -10,7 +10,7 @@ exports[`LanguageSelector renders a language selector component 1`] = `
     onClick={[Function]}
     title="Deutsch"
   >
-    de
+    Deutsch
      
   </a>
   <a
@@ -19,7 +19,7 @@ exports[`LanguageSelector renders a language selector component 1`] = `
     onClick={[Function]}
     title="Español"
   >
-    es
+    Español
      
   </a>
 </div>

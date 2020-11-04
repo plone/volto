@@ -1,31 +1,15 @@
-/* eslint import/no-extraneous-dependencies: 0 */
-/* eslint import/no-dynamic-require: 0 */
-/* eslint global-require: 0 */
-/* eslint no-console: 0 */
-/* eslint no-param-reassign: 0 */
-/* eslint no-unused-vars: 0 */
-
-const logger = require('razzle-dev-utils/logger');
 const path = require('path');
-const autoprefixer = require('autoprefixer');
 const makeLoaderFinder = require('razzle-dev-utils/makeLoaderFinder');
 const nodeExternals = require('webpack-node-externals');
-const webpack = require('webpack');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const LoadablePlugin = require('@loadable/webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const fs = require('fs');
-const { map, has } = require('lodash');
-const glob = require('glob').sync;
-const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const RootResolverPlugin = require('./webpack-root-resolver');
 const createAddonsLoader = require('./create-addons-loader');
 const AddonConfigurationRegistry = require('./addon-registry');
-const addLessLoader = require('./less-plugin');
 
 const fileLoaderFinder = makeLoaderFinder('file-loader');
 const babelLoaderFinder = makeLoaderFinder('babel-loader');
-// const eslintLoaderFinder = makeLoaderFinder('eslint-loader');
 
 const projectRootPath = path.resolve('.');
 const languages = require('./src/constants/Languages');
@@ -34,47 +18,7 @@ const packageJson = require(path.join(projectRootPath, 'package.json'));
 
 const registry = new AddonConfigurationRegistry(projectRootPath);
 
-const svgPlugin = (config) => {
-  const SVGLOADER = {
-    test: /icons\/.*\.svg$/,
-    use: [
-      {
-        loader: 'svg-loader',
-      },
-      {
-        loader: 'svgo-loader',
-        options: {
-          plugins: [
-            { removeTitle: true },
-            { convertPathData: false },
-            { removeUselessStrokeAndFill: true },
-            { removeViewBox: false },
-          ],
-        },
-      },
-    ],
-  };
-
-  config.module.rules.push(SVGLOADER);
-  return config;
-};
-
 const defaultModify = (config, { target, dev }, webpack) => {
-  //  Prevent moment from loading all locales
-  config.plugins.push(
-    new MomentLocalesPlugin({
-      localesToKeep: Object.keys(languages),
-    }),
-  );
-
-  //  Load only desired timezones
-  config.plugins.push(
-    new webpack.NormalModuleReplacementPlugin(
-      /moment-timezone\/data\/packed\/latest\.json/,
-      require.resolve('./timezone-definitions'),
-    ),
-  );
-
   if (dev) {
     config.plugins.unshift(
       new webpack.DefinePlugin({
@@ -223,15 +167,16 @@ const defaultModify = (config, { target, dev }, webpack) => {
           }),
         ]
       : [];
-
   return config;
 };
 
 const addonExtenders = registry.getAddonExtenders().map((m) => require(m));
+
 const defaultPlugins = [
   'bundle-analyzer',
-  svgPlugin,
-  require('./less-plugin')({ registry }),
+  require('./webpack-less-plugin')({ registry }),
+  require('./webpack-sentry-plugin').sentryPlugin,
+  require('./webpack-svg-plugin').svgPlugin,
 ];
 
 const plugins = addonExtenders.reduce(
@@ -247,6 +192,6 @@ module.exports = {
       (acc, extender) => extender.modify(acc, { target, dev }, webpack),
       defaultConfig,
     );
-    return defaultConfig;
+    return res;
   },
 };

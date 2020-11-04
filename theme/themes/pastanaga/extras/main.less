@@ -34,6 +34,27 @@ body {
   flex-direction: column;
 }
 
+.overlay-container {
+  position: fixed;
+  z-index: 110;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vw;
+  background-color: black;
+  opacity: 0;
+  transition: opacity 0.25s ease-in-out;
+
+  &.overlay-container-enter-active,
+  &.overlay-container-enter-done {
+    opacity: 0.4;
+  }
+
+  &.overlay-container-exit-active {
+    opacity: 0;
+  }
+}
+
 .documentFirstHeading {
   position: relative;
   border-bottom: 2px solid @purpleBackground;
@@ -332,6 +353,15 @@ button {
     .stretched.nine.wide.column {
       align-self: start;
     }
+  }
+}
+
+#page-manage-translations .manage-multilingual-tools {
+  .ui.button {
+    padding: 4px;
+    margin-left: 4px;
+    border-radius: 1px;
+    color: #826a6a !important;
   }
 }
 

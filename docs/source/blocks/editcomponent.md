@@ -16,7 +16,7 @@ We can use the new sidebar when building our blocks' edit components.
 The sidebar is a new UI asset that is available in Volto 4.
 You need to instantiate it this way:
 
-```js
+```jsx
 import { SidebarPortal } from '@plone/volto/components';
 
 [...]
@@ -120,7 +120,7 @@ By default, it's enabled for all the component tree under the Blocks Editor, so 
 However, if you need to instantiate it somewhere else, you can do it anyways by wrapping your component with it.
 
 !!! note
-The default image block in Volto features both the Sidebar and the object browser, take a look at its source code in case you need more context on how they work.
+  The default image block in Volto features both the Sidebar and the object browser, take a look at its source code in case you need more context on how they work.
 
 ### openObjectBrowser handler API
 

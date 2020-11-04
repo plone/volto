@@ -17,6 +17,7 @@ import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import Icons from '@plone/volto/constants/ControlpanelIcons';
 import { listControlpanels, getSystemInformation } from '@plone/volto/actions';
 import {
+  Error,
   Icon as IconNext,
   Toolbar,
   VersionOverview,
@@ -79,6 +80,7 @@ class Controlpanels extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      error: null,
       isClient: false,
     };
   }
@@ -102,12 +104,29 @@ class Controlpanels extends Component {
     this.props.getSystemInformation();
   }
 
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    // Error
+    if (
+      this.props.controlpanelsRequest.loading &&
+      nextProps.controlpanelsRequest.error
+    ) {
+      this.setState({
+        error: nextProps.controlpanelsRequest.error,
+      });
+    }
+  }
+
   /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
   render() {
+    // Error
+    if (this.state.error) {
+      return <Error error={this.state.error} />;
+    }
+
     const controlpanels = map(
       concat(this.props.controlpanels, [
         {
@@ -211,6 +230,7 @@ export default compose(
   connect(
     (state, props) => ({
       controlpanels: state.controlpanels.controlpanels,
+      controlpanelsRequest: state.controlpanels.list,
       pathname: props.location.pathname,
       systemInformation: state.controlpanels.systeminformation,
     }),

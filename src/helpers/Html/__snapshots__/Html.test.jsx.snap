@@ -13,6 +13,13 @@ exports[`Html renders a html component 1`] = `
     
     
     
+    <script
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "window.env = {};",
+        }
+      }
+    />
     <link
       href="/favicon.ico"
       rel="shortcut icon"
