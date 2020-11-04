@@ -29,6 +29,7 @@ export Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorize
 
 export Icon from '@plone/volto/components/theme/Icon/Icon';
 export ConditionalLink from '@plone/volto/components/manage/ConditionalLink/ConditionalLink';
+export UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 
 // Lazy load them, since we want them and its deps to be in its own chunk
 export ContactForm from '@plone/volto/components/theme/ContactForm/ContactForm';
@@ -92,6 +93,7 @@ export PersonalTools from '@plone/volto/components/manage/Toolbar/PersonalTools'
 export More from '@plone/volto/components/manage/Toolbar/More';
 export Types from '@plone/volto/components/manage/Toolbar/Types';
 export Toast from '@plone/volto/components/manage/Toast/Toast';
+export ManageTranslations from '@plone/volto/components/manage/Multilingual/ManageTranslations';
 
 // Potentially could ve removed from index, since they are internal components and
 // we don't want them to end up in the main chunk

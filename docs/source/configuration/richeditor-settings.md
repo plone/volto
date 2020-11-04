@@ -12,7 +12,7 @@ We will add a button to the toolbar to underline the selected text.
 
 In the `config.js` file we will create a new button.
 
-```js
+```jsx
 import React from 'react';
 import createInlineStyleButton from 'draft-js-buttons/lib/utils/createInlineStyleButton';
 import Icon from '@plone/volto/components/theme/Icon/Icon';

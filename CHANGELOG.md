@@ -1,6 +1,6 @@
 # Change Log
 
-## 8.5.5 (unreleased)
+## 8.8.1 (unreleased)
 
 - Improved form validation. Tested required fields when field is array or richtext @giuliaghisini
 
@@ -8,11 +8,52 @@
 
 ### Feature
 
-- Added placeholder background color same as selected one @iFlameing
-- Showing notification when user sort the folder-content @iFlameing
+### Bugfix
+
+- Throw error in crashReporter; also log sentry errors in server @tiberiuichim
+
+### Internal
+
+- Split razzle svg and sentry loaders to separate files @tiberiuichim
+- prevent form without blocks. Form always have at least the default block. @giuliaghisini
+- Fix default target for links in text blocks @giuliaghisini
+
+### Internal
+
+## 8.8.0 (2020-11-02)
+
+### Feature
+
+- Add support for the new active LTS NodeJS version 14. NodeJS 10 eol will happen on 2021-04-30 and Volto will update accordingly. More information on https://nodejs.org/en/about/releases @sneridagh
+
+## 8.7.1 (2020-10-29)
 
 ### Bugfix
 
+- Added loading icon when doing actions in folder-contents @giuliaghisini
+- Fix German translation "from" -> "E-Mail" in contact form @tisto
+
+## 8.7.0 (2020-10-27)
+
+### Feature
+
+- Manage translations view @sneridagh
+
+### Internal
+
+- Update docs build and include pygments support for jsx @sneridagh
+
+## 8.6.0 (2020-10-25)
+
+### Feature
+
+- Added placeholder background color same as selected one @iFlameing
+- Showing notification when user sort the folder-content @iFlameing
+- Render full language name (e.g. "English") instead of 2 character language code in language selector, matching Plone default behavior. @mikejmets
+
+### Bugfix
+
+- A pathname like /policy/edit does not show the Unauthorized or Forbidden component when not logged in, ref #1936. @silviubogan
 - Fixes secondary views in toolbar @iFlameing @sneridagh
 - Fixing overlay expansion during link assign from objectbrowser in edit mode @iFlameing
 
@@ -20,6 +61,7 @@
 
 - Added new in productions sites to README @wkbkhard
 - Writing test for the lisiting block location relative criteria @iFlameing
+- Add `UniversalLink` to handle internal/external/download links @nzambello
 
 ## 8.5.4 (2020-10-23)
 
