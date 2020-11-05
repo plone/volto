@@ -2,17 +2,11 @@
 
 ## 8.8.2 (unreleased)
 
-### Breaking
-
 ### Feature
-- Added Dropzone in FileWidget @iFlameing
 
+- Added Dropzone in FileWidget @iFlameing
 - Making inline link toolbar, location aware in content browser @iFlameing.
 - Detect if the link typed or pasted in the link widget of the text block is internal @sneridagh
-
-### Bugfix
-
-### Internal
 
 ## 8.8.1 (2020-11-04)
 
