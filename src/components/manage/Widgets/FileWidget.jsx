@@ -5,11 +5,14 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Input, Button, Image } from 'semantic-ui-react';
+import { Input, Button, Image, Dimmer } from 'semantic-ui-react';
 import { readAsDataURL } from 'promise-file-reader';
 import { injectIntl } from 'react-intl';
 import deleteSVG from '@plone/volto/icons/delete.svg';
 import { Icon, FormFieldWrapper } from '@plone/volto/components';
+import Dropzone from 'react-dropzone';
+import { flattenToAppURL } from '@plone/volto/helpers';
+import { defineMessages, useIntl } from 'react-intl';
 
 const imageMimetypes = [
   'image/png',
@@ -20,6 +23,29 @@ const imageMimetypes = [
   'image/svg+xml',
 ];
 
+const messages = defineMessages({
+  releaseDrag: {
+    id: 'Drop files here ....',
+    defaultMessage: 'Drop files here ....',
+  },
+  editFile: {
+    id: 'Drag to replace the file item',
+    defaultMessage: 'Drag to replace the file item',
+  },
+  fileDrag: {
+    id: 'Drag the new item to upload',
+    defaultMessage: 'Drag the new item to upload',
+  },
+  replaceFile: {
+    id: 'Replace existing File/Image',
+    defaultMessage: 'Replace existing File/Image',
+  },
+  addNewFile: {
+    id: 'Choose a File/Image',
+    defaultMessage: 'Choose a File/Image',
+  },
+});
+
 /**
  * FileWidget component class.
  * @function FileWidget
@@ -28,49 +54,121 @@ const imageMimetypes = [
 const FileWidget = (props) => {
   const { id, value, onChange } = props;
   const fileInput = React.useRef(null);
-  const [fileType, setFileType] = React.useState(true);
+  const [fileType, setFileType] = React.useState(false);
+  const intl = useIntl();
+
+  React.useEffect(() => {
+    if (value && imageMimetypes.includes(value['content-type'])) {
+      setFileType(true);
+    }
+  }, [value]);
+
+  /**
+   * Drop handler
+   * @method onDrop
+   * @param {array} files File objects
+   * @returns {undefined}
+   */
+  const onDrop = (files) => {
+    const file = files[0];
+    readAsDataURL(file).then((data) => {
+      const fields = data.match(/^data:(.*);(.*),(.*)$/);
+      onChange(id, {
+        data: fields[3],
+        encoding: fields[2],
+        'content-type': fields[1],
+        filename: file.name,
+      });
+    });
+
+    let reader = new FileReader();
+    reader.onload = function () {
+      const fields = reader.result.match(/^data:(.*);(.*),(.*)$/);
+      if (imageMimetypes.includes(fields[1])) {
+        setFileType(true);
+        let imagePreview = document.getElementById(`field-${id}-image`);
+        imagePreview.src = reader.result;
+      } else {
+        setFileType(false);
+      }
+    };
+    reader.readAsDataURL(files[0]);
+  };
 
   return (
     <FormFieldWrapper {...props}>
-      {fileType ? (
-        <Image
-          className="image-preview"
-          id={`field-${id}-image`}
-          size="small"
-        />
-      ) : null}
-      <Input
-        id={`field-${id}`}
-        name={id}
-        type="file"
-        ref={fileInput}
-        disabled={props.isDisabled}
-        onChange={({ target }) => {
-          const file = target.files[0];
-          readAsDataURL(file).then((data) => {
-            const fields = data.match(/^data:(.*);(.*),(.*)$/);
-            onChange(id, {
-              data: fields[3],
-              encoding: fields[2],
-              'content-type': fields[1],
-              filename: file.name,
-            });
-          });
+      <Dropzone onDrop={onDrop}>
+        {({ getRootProps, getInputProps, isDragActive }) => (
+          <div className="file-widget-dropzone" {...getRootProps()}>
+            {isDragActive && <Dimmer active></Dimmer>}
+            {fileType ? (
+              <Image
+                className="image-preview"
+                id={`field-${id}-image`}
+                size="small"
+                src={value?.download ? flattenToAppURL(value.download) : null}
+              />
+            ) : (
+              <div className="dropzone-placeholder">
+                {isDragActive ? (
+                  <p className="dropzone-text">
+                    {intl.formatMessage(messages.releaseDrag)}
+                  </p>
+                ) : value ? (
+                  <p className="dropzone-text">
+                    {intl.formatMessage(messages.editFile)}
+                  </p>
+                ) : (
+                  <p className="dropzone-text">
+                    {intl.formatMessage(messages.fileDrag)}
+                  </p>
+                )}
+              </div>
+            )}
 
-          let reader = new FileReader();
-          reader.onload = function () {
-            const fields = reader.result.match(/^data:(.*);(.*),(.*)$/);
-            if (imageMimetypes.includes(fields[1])) {
-              setFileType(true);
-              let imagePreview = document.getElementById(`field-${id}-image`);
-              imagePreview.src = reader.result;
-            } else {
-              setFileType(false);
-            }
-          };
-          reader.readAsDataURL(target.files[0]);
-        }}
-      />
+            <label className="label-file-widget-input" htmlFor={`field-${id}`}>
+              {value
+                ? intl.formatMessage(messages.replaceFile)
+                : intl.formatMessage(messages.addNewFile)}
+            </label>
+            <Input
+              {...getInputProps}
+              id={`field-${id}`}
+              name={id}
+              className="file-widget-input"
+              type="file"
+              ref={fileInput}
+              onChange={({ target }) => {
+                const file = target.files[0];
+                readAsDataURL(file).then((data) => {
+                  const fields = data.match(/^data:(.*);(.*),(.*)$/);
+                  onChange(id, {
+                    data: fields[3],
+                    encoding: fields[2],
+                    'content-type': fields[1],
+                    filename: file.name,
+                  });
+                });
+
+                let reader = new FileReader();
+                reader.onload = function () {
+                  const fields = reader.result.match(/^data:(.*);(.*),(.*)$/);
+                  if (imageMimetypes.includes(fields[1])) {
+                    setFileType(true);
+                    let imagePreview = document.getElementById(
+                      `field-${id}-image`,
+                    );
+                    imagePreview.src = reader.result;
+                  } else {
+                    setFileType(false);
+                  }
+                };
+                reader.readAsDataURL(target.files[0]);
+              }}
+            />
+          </div>
+        )}
+      </Dropzone>
       <div className="field-file-name">
         {value && value.filename}
         {value && (

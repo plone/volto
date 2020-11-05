@@ -157,19 +157,43 @@ exports[`PersonalInformation renders a personal information component 1`] = `
               <div
                 className="eight wide column"
               >
-                <img
-                  className="ui small image image-preview"
-                  id="field-portrait-image"
-                />
                 <div
-                  className="ui input"
+                  className="file-widget-dropzone"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onDragEnter={[Function]}
+                  onDragLeave={[Function]}
+                  onDragOver={[Function]}
+                  onDrop={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  tabIndex={0}
                 >
-                  <input
-                    id="field-portrait"
-                    name="portrait"
-                    onChange={[Function]}
-                    type="file"
-                  />
+                  <div
+                    className="dropzone-placeholder"
+                  >
+                    <p
+                      className="dropzone-text"
+                    >
+                      Drag the new item to upload
+                    </p>
+                  </div>
+                  <label
+                    className="label-file-widget-input"
+                    htmlFor="field-portrait"
+                  >
+                    Choose a File/Image
+                  </label>
+                  <div
+                    className="ui input file-widget-input"
+                  >
+                    <input
+                      id="field-portrait"
+                      name="portrait"
+                      onChange={[Function]}
+                      type="file"
+                    />
+                  </div>
                 </div>
                 <div
                   className="field-file-name"
@@ -525,19 +549,43 @@ exports[`PersonalInformation renders a personal information component embedded i
               <div
                 className="eight wide column"
               >
-                <img
-                  className="ui small image image-preview"
-                  id="field-portrait-image"
-                />
                 <div
-                  className="ui input"
+                  className="file-widget-dropzone"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onDragEnter={[Function]}
+                  onDragLeave={[Function]}
+                  onDragOver={[Function]}
+                  onDrop={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  tabIndex={0}
                 >
-                  <input
-                    id="field-portrait"
-                    name="portrait"
-                    onChange={[Function]}
-                    type="file"
-                  />
+                  <div
+                    className="dropzone-placeholder"
+                  >
+                    <p
+                      className="dropzone-text"
+                    >
+                      Drag the new item to upload
+                    </p>
+                  </div>
+                  <label
+                    className="label-file-widget-input"
+                    htmlFor="field-portrait"
+                  >
+                    Choose a File/Image
+                  </label>
+                  <div
+                    className="ui input file-widget-input"
+                  >
+                    <input
+                      id="field-portrait"
+                      name="portrait"
+                      onChange={[Function]}
+                      type="file"
+                    />
+                  </div>
                 </div>
                 <div
                   className="field-file-name"

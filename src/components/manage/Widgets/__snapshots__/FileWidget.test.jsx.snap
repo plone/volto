@@ -28,19 +28,43 @@ Array [
         <div
           className="eight wide column"
         >
-          <img
-            className="ui small image image-preview"
-            id="field-my-field-image"
-          />
           <div
-            className="ui input"
+            className="file-widget-dropzone"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragEnter={[Function]}
+            onDragLeave={[Function]}
+            onDragOver={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            tabIndex={0}
           >
-            <input
-              id="field-my-field"
-              name="my-field"
-              onChange={[Function]}
-              type="file"
-            />
+            <div
+              className="dropzone-placeholder"
+            >
+              <p
+                className="dropzone-text"
+              >
+                Drag the new item to upload
+              </p>
+            </div>
+            <label
+              className="label-file-widget-input"
+              htmlFor="field-my-field"
+            >
+              Choose a File/Image
+            </label>
+            <div
+              className="ui input file-widget-input"
+            >
+              <input
+                id="field-my-field"
+                name="my-field"
+                onChange={[Function]}
+                type="file"
+              />
+            </div>
           </div>
           <div
             className="field-file-name"
