@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix SSR rendering in table blocks @sneridagh
+
 ### Internal
 
 ## 8.9.0 (2020-11-05)
