@@ -214,7 +214,6 @@
     "node": "^10 || ^12 || ^14"
   },
   "dependencies": {
-    "@babel/plugin-proposal-decorators": "7.10.5",
     "@babel/plugin-proposal-export-default-from": "7.10.4",
     "@babel/plugin-proposal-export-namespace-from": "7.10.4",
     "@babel/plugin-proposal-json-strings": "7.10.4",

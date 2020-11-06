@@ -10,6 +10,64 @@ This upgrade guide lists all breaking changes in Volto and explains the
     dependencies might do when dealing with upgrades. We keep the generator up
     to date and in sync with current Volto release.
 
+## Upgrading to Volto 9.x.x
+
+### Babel config housekeeping
+
+Historically, Volto was using "stage-0" TC-39 proposals. The configuration is starting
+showing its age, since Babel 7 dedided to stop maintaining the presets for stages, so we
+moved to use an static configuration instead of a managed one. That lead to a "living on
+the edge" situation since we supported proposals that they didn't make the cut. For more
+information about the TC39 approval process (https://tc39.es/process-document/)
+
+We decided to put a bit of order to caos and declare that Volto will support only
+stage-4 approved proposals. They are supported by `@babel/preset-env` out of the box and provide a good sensible default baseline for Volto.
+
+Proposal deprecations:
+
+- @babel/plugin-proposal-decorators
+- @babel/plugin-proposal-function-bind
+- @babel/plugin-proposal-do-expressions
+- @babel/plugin-proposal-logical-assignment-operators
+- @babel/plugin-proposal-pipeline-operator
+- @babel/plugin-proposal-function-sent
+
+In fact, Volto core only used the first one (decorators) and we did the move to not use
+them long time ago. However, if you were using some of the others, your code will stop
+compiling. Migrate your code or if you want to use the proposal anyways, you'll need to
+provide the configuration to your own project (babel.config.js) in your project root
+folder.
+
+If you were not using any of the deprecated proposals (the most common use case), then
+you are good to go and you don't have to do anything.
+
+### Hoisting problems on some setups
+
+Some people were experimenting weird hoisting issues when installing dependencies. This
+was caused by Babel deprecated proposals packages and its peer dependencies that
+sometimes conflicted with other installed packages.
+
+Volto's new Babel configuration uses the configuration provided by `babel-razzle-preset`
+package (Razzle dependency) and delegates the dependencies management to it, except a
+few Babel plugins that Volto still needs to work.
+
+In order for your projects not have any problem with the new configuration and comply
+with the new model, you need to remove any local dependency for `@babel/core` and let
+Volto handle them.
+
+```diff
+diff --git a/package.json b/package.json
+--- a/package.json
++++ b/package.json
+@@ -183,7 +183,6 @@
+     "node": "^10 || ^12 "
+   },
+   "dependencies": {
+-    "@babel/core": "7.11.1",
+     "@plone/volto": "8.9.2",
+     "mrs-developer": "1.2.0",
+```
+
 ## Upgrading to Volto 8.x.x
 
 ### Upgrade package.json testing configuration
