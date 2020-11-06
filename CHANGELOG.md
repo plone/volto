@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Revert type-in detection in draftjs link widget, as that leads to a regression @sneridagh
+
 ### Internal
 
 ## 8.9.1 (2020-11-06)
