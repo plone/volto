@@ -51,20 +51,24 @@ Array [
             </div>
             <label
               className="label-file-widget-input"
-              htmlFor="field-my-field"
             >
               Choose a File/Image
             </label>
-            <div
-              className="ui input file-widget-input"
-            >
-              <input
-                id="field-my-field"
-                name="my-field"
-                onChange={[Function]}
-                type="file"
-              />
-            </div>
+            <input
+              autoComplete="off"
+              id="field-my-field"
+              multiple={true}
+              name="my-field"
+              onChange={[Function]}
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+              tabIndex={-1}
+              type="file"
+            />
           </div>
           <div
             className="field-file-name"

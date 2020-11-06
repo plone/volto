@@ -12,6 +12,8 @@
 
 ### Internal
 
+- Refactoring FileWidget @iFlameing
+
 ## 8.9.1 (2020-11-06)
 
 ### Bugfix
