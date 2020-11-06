@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Use `flattenToAppURL` instead of `addAppURL` in link widget. @sneridagh
+
 ### Internal
 
 ## 8.9.1 (2020-11-06)

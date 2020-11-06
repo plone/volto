@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 
 import unionClassNames from 'union-class-names';
-import { addAppURL } from '@plone/volto/helpers';
+import { flattenToAppURL } from '@plone/volto/helpers';
 import EditorUtils from 'draft-js-plugins-utils';
 
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
@@ -287,7 +287,7 @@ class AddLinkForm extends Component {
                         mode: 'link',
                         overlay: true,
                         onSelectItem: (url) => {
-                          this.onChange(addAppURL(url));
+                          this.onChange(flattenToAppURL(url));
                           this.onSubmit();
                         },
                       });
