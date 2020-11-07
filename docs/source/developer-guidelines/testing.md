@@ -15,6 +15,8 @@ or slightly modify it. Volto provide a way to do it using a `jest.config.js` fil
 pointing the test runner to a file of your choice, using `RAZZLE_JEST_CONFIG`
 environment variable.
 
+    RAZZLE_JEST_CONFIG=my-custom-jest-config.js yarn test
+
 !!! Note
     Both configurations are merged in a way that the keys of the config provided override  the initial (`package.json`) default config, either in Volto or in your projects.
 
