@@ -43,3 +43,9 @@ Razzle supports `@babel/preset-env`, that supports including `browserlist` in
 
 This supports the query specific DSL for `browserlist` targeting the browsers
 that you need to add.
+
+## Pre-transpiling
+
+Some packages in `node_modules` are ES6 only, for some older browsers, you might want to add a pre (or post) transpiling. There's a script `pre-build-transpiling.js` (Volto root folder) that might help you with it. Also this command line might help:
+
+    ./node_modules/.bin/babel --presets="@babel/env" XXX --out-dir XXX
