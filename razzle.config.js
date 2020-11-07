@@ -180,7 +180,7 @@ const defaultPlugins = [
   'bundle-analyzer',
   require('./webpack-less-plugin')({ registry }),
   require('./webpack-sentry-plugin'),
-  require('./webpack-svg-plugin').svgPlugin,
+  require('./webpack-svg-plugin'),
   require('./jest-extender-plugin'),
 ];
 
