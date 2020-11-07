@@ -15,22 +15,26 @@ maintainers mainly target the node world.
 
 Then in the project that should target it, these changes are required:
 
-add as a dependency `babel-polyfill` (as we are still in Babel 6).
+add as a dependency `@babel/polyfill`.
 
-  yarn add babel-polyfill
+    yarn add @babel/polyfill
 
 and in `src/client.jsx`:
 
+```js
+import '@babel/polyfill';
 ```
-import 'babel-polyfill';
-```
+
+!!! note
+    See https://babeljs.io/docs/en/babel-polyfill for more updated information
+
 
 ## babel-env
 
-Razzle supports babel-env, that supports including `browserlist` in
+Razzle supports `@babel/preset-env`, that supports including `browserlist` in
 `package.json`. So you can add this to `package.json`:
 
-```
+```json
   "browserslist": [
     "last 2 version",
     "IE 11"

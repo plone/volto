@@ -38,6 +38,10 @@ compiling. Migrate your code or if you want to use the proposal anyways, you'll 
 provide the configuration to your own project (babel.config.js) in your project root
 folder.
 
+You might still be using old-style connecting your components to the Redux store using
+`@connect` decorator, in that case, take a look at any connected component in Volto to
+take a glimpse on how to migrate the code.
+
 If you were not using any of the deprecated proposals (the most common use case), then
 you are good to go and you don't have to do anything.
 
