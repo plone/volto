@@ -179,7 +179,7 @@ const addonExtenders = registry.getAddonExtenders().map((m) => require(m));
 const defaultPlugins = [
   'bundle-analyzer',
   require('./webpack-less-plugin')({ registry }),
-  require('./webpack-sentry-plugin').sentryPlugin,
+  require('./webpack-sentry-plugin'),
   require('./webpack-svg-plugin').svgPlugin,
   require('./jest-extender-plugin'),
 ];
