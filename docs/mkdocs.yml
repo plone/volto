@@ -67,6 +67,7 @@ nav:
       - Routing: 'developer-guidelines/routing.md'
       - Linting: 'developer-guidelines/linting.md'
       - Language features: 'developer-guidelines/language-features.md'
+      - Testing: 'developer-guidelines/testing.md'
       - Acceptance tests: 'developer-guidelines/acceptance-tests.md'
   - Contributing:
       - Guidelines: 'contributing/guidelines.md'
