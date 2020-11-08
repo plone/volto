@@ -11,7 +11,7 @@ class RelativeResolverPlugin {
     ); // map of [addon_name]:path
   }
 
-  isAddon = (request) => {
+  isAddon(request) {
     const addonPaths = Object.values(this.addonPaths);
     const issuer = request.context.issuer;
 
@@ -20,9 +20,9 @@ class RelativeResolverPlugin {
 
     const resourcePath = path.join(request.path, request.request);
     return addonPaths.findIndex((p) => resourcePath.startsWith(p)) > -1;
-  };
+  }
 
-  getResolvePath = (request) => {
+  getResolvePath(request) {
     const resourcePath = path.join(request.path, request.request);
     const addon = Object.keys(this.addonPaths).find((name) => {
       return resourcePath.startsWith(this.addonPaths[name]);
@@ -30,7 +30,7 @@ class RelativeResolverPlugin {
     const addonPath = this.addonPaths[addon];
     const localPath = request.path.slice(addonPath.length);
     return path.join(addon, localPath, request.request);
-  };
+  }
 
   apply(resolver) {
     resolver.plugin('resolve', (request, callback) => {
