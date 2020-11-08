@@ -131,7 +131,6 @@ const defaultModify = (config, { target, dev }, webpack) => {
     // be able to reference current package from customized package
     '@package': `${projectRootPath}/src`,
   };
-  console.log(config.resolve.alias);
 
   config.performance = {
     maxAssetSize: 10000000,
