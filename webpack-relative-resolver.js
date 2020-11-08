@@ -1,6 +1,6 @@
 const path = require('path');
 
-class LocalResolverPlugin {
+class RelativeResolverPlugin {
   constructor(registry) {
     this.registry = registry;
     this.addonPaths = Object.assign(
@@ -59,4 +59,4 @@ class LocalResolverPlugin {
   }
 }
 
-module.exports = LocalResolverPlugin;
+module.exports = RelativeResolverPlugin;
