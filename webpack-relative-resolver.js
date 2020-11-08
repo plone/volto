@@ -33,20 +33,14 @@ class RelativeResolverPlugin {
   };
 
   apply(resolver) {
-    const isAddon = this.isAddon;
-    const getResolvePath = this.getResolvePath;
-
-    resolver.plugin('resolve', function RelativeBackResolver(
-      request,
-      callback,
-    ) {
+    resolver.plugin('resolve', (request, callback) => {
       if (
         request.request.startsWith('.') &&
         request.context &&
         request.context.issuer &&
-        isAddon(request)
+        this.isAddon(request)
       ) {
-        const normalizedResourceName = getResolvePath(request);
+        const normalizedResourceName = this.getResolvePath(request);
         const nextRequest = Object.assign({}, request, {
           request: normalizedResourceName,
         });
