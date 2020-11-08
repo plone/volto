@@ -5,6 +5,7 @@ const LoadablePlugin = require('@loadable/webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const fs = require('fs');
 const RootResolverPlugin = require('./webpack-root-resolver');
+const LocalResolverPlugin = require('./webpack-local-resolver');
 const createAddonsLoader = require('./create-addons-loader');
 const AddonConfigurationRegistry = require('./addon-registry');
 
@@ -111,7 +112,10 @@ const defaultModify = (config, { target, dev }, webpack) => {
 
   const addonsLoaderPath = createAddonsLoader(packageJson.addons || []);
 
-  config.resolve.plugins = [new RootResolverPlugin()];
+  config.resolve.plugins = [
+    new LocalResolverPlugin(registry),
+    new RootResolverPlugin(),
+  ];
 
   config.resolve.alias = {
     ...registry.getAddonCustomizationPaths(),
@@ -127,6 +131,7 @@ const defaultModify = (config, { target, dev }, webpack) => {
     // be able to reference current package from customized package
     '@package': `${projectRootPath}/src`,
   };
+  console.log(config.resolve.alias);
 
   config.performance = {
     maxAssetSize: 10000000,

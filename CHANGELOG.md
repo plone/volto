@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Add `webpack-local-resolver` plugin. For addons, it normalizes local imports to package-rooted imports. An import such as `import Something from './Something' would be rerouted internally as `import Something from @collective/someaddon/Something/Something`. By doing so it enables easier customization of addons, as they don't have to be so strict with their import/exports @tiberiuichim
+
 ### Bugfix
 
 ### Internal
