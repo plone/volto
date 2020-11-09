@@ -1,6 +1,6 @@
 # Change Log
 
-## 8.9.1 (unreleased)
+## 8.9.3 (unreleased)
 
 ### Breaking
 
@@ -9,6 +9,19 @@
 ### Bugfix
 
 ### Internal
+
+## 8.9.2 (2020-11-06)
+
+### Bugfix
+
+- Revert type-in detection in draftjs link widget, as that leads to a regression @sneridagh
+- Fix and refactoring FileWidget @iFlameing
+
+## 8.9.1 (2020-11-06)
+
+### Bugfix
+
+- Fix SSR rendering in table blocks @sneridagh
 
 ## 8.9.0 (2020-11-05)
 

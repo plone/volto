@@ -5,7 +5,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Input, Button, Image, Dimmer } from 'semantic-ui-react';
+import { Button, Image, Dimmer } from 'semantic-ui-react';
 import { readAsDataURL } from 'promise-file-reader';
 import { injectIntl } from 'react-intl';
 import deleteSVG from '@plone/volto/icons/delete.svg';
@@ -53,7 +53,6 @@ const messages = defineMessages({
  */
 const FileWidget = (props) => {
   const { id, value, onChange } = props;
-  const fileInput = React.useRef(null);
   const [fileType, setFileType] = React.useState(false);
   const intl = useIntl();
 
@@ -106,7 +105,11 @@ const FileWidget = (props) => {
                 className="image-preview"
                 id={`field-${id}-image`}
                 size="small"
-                src={value?.download ? flattenToAppURL(value.download) : null}
+                src={
+                  value?.download
+                    ? `${flattenToAppURL(value.download)}?id=${Date.now()}`
+                    : null
+                }
               />
             ) : (
               <div className="dropzone-placeholder">
@@ -126,45 +129,19 @@ const FileWidget = (props) => {
               </div>
             )}
 
-            <label className="label-file-widget-input" htmlFor={`field-${id}`}>
+            <label className="label-file-widget-input">
               {value
                 ? intl.formatMessage(messages.replaceFile)
                 : intl.formatMessage(messages.addNewFile)}
             </label>
-            <Input
-              {...getInputProps}
+            <input
+              {...getInputProps({
+                type: 'file',
+                style: { display: 'none' },
+              })}
               id={`field-${id}`}
               name={id}
-              className="file-widget-input"
               type="file"
-              ref={fileInput}
-              onChange={({ target }) => {
-                const file = target.files[0];
-                readAsDataURL(file).then((data) => {
-                  const fields = data.match(/^data:(.*);(.*),(.*)$/);
-                  onChange(id, {
-                    data: fields[3],
-                    encoding: fields[2],
-                    'content-type': fields[1],
-                    filename: file.name,
-                  });
-                });
-
-                let reader = new FileReader();
-                reader.onload = function () {
-                  const fields = reader.result.match(/^data:(.*);(.*),(.*)$/);
-                  if (imageMimetypes.includes(fields[1])) {
-                    setFileType(true);
-                    let imagePreview = document.getElementById(
-                      `field-${id}-image`,
-                    );
-                    imagePreview.src = reader.result;
-                  } else {
-                    setFileType(false);
-                  }
-                };
-                reader.readAsDataURL(target.files[0]);
-              }}
             />
           </div>
         )}
@@ -180,7 +157,6 @@ const FileWidget = (props) => {
             onClick={() => {
               onChange(id, null);
               setFileType(false);
-              fileInput.current.inputRef.current.value = null;
             }}
           >
             <Icon name={deleteSVG} size="20px" />

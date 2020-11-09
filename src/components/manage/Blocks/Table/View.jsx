@@ -16,41 +16,39 @@ import { settings } from '~/config';
  * @class View
  * @extends Component
  */
-const View = ({ data }) => (
-  <p>
-    {data && data.table && (
-      <Table
-        fixed={data.table.fixed}
-        compact={data.table.compact}
-        basic={data.table.basic ? 'very' : false}
-        celled={data.table.celled}
-        inverted={data.table.inverted}
-        striped={data.table.striped}
-      >
-        <Table.Body>
-          {map(data.table.rows, (row) => (
-            <Table.Row key={row.key}>
-              {map(row.cells, (cell) => (
-                <Table.Cell
-                  key={cell.key}
-                  as={cell.type === 'header' ? 'th' : 'td'}
-                >
-                  {cell.value && cell.value.blocks && cell.value.blocks[0].text
-                    ? redraft(
-                        cell.value,
-                        settings.ToHTMLRenderers,
-                        settings.ToHTMLOptions,
-                      )
-                    : '\u00A0'}
-                </Table.Cell>
-              ))}
-            </Table.Row>
-          ))}
-        </Table.Body>
-      </Table>
-    )}
-  </p>
-);
+const View = ({ data }) =>
+  data &&
+  data.table && (
+    <Table
+      fixed={data.table.fixed}
+      compact={data.table.compact}
+      basic={data.table.basic ? 'very' : false}
+      celled={data.table.celled}
+      inverted={data.table.inverted}
+      striped={data.table.striped}
+    >
+      <Table.Body>
+        {map(data.table.rows, (row) => (
+          <Table.Row key={row.key}>
+            {map(row.cells, (cell) => (
+              <Table.Cell
+                key={cell.key}
+                as={cell.type === 'header' ? 'th' : 'td'}
+              >
+                {cell.value && cell.value.blocks && cell.value.blocks[0].text
+                  ? redraft(
+                      cell.value,
+                      settings.ToHTMLRenderers,
+                      settings.ToHTMLOptions,
+                    )
+                  : '\u00A0'}
+              </Table.Cell>
+            ))}
+          </Table.Row>
+        ))}
+      </Table.Body>
+    </Table>
+  );
 
 /**
  * Property types.
