@@ -19,3 +19,17 @@ The default block type in Volto is "text", which uses the current DraftJS-based 
 With this property you can configure Content Types icons.
 Those are visible in Contents view (ex "Folder contents").
 The default ones are in [config/ContentIcons.jsx](https://github.com/plone/volto/tree/master/src/config/ContentIcons.jsx) and you can extend them in your project's config for custom content types using `settings.contentIcons`.
+
+In Volto projects, you can configure this for custom content types like:
+
+```js
+import * as config from '@plone/volto/config';
+import courseSVG from './icons/course.svg';
+
+export const settings = {
+  ...config.settings,
+  contentIcons: {
+    ...config.settings.contentIcons,
+    Course: courseSVG,
+};
+```
