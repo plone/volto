@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fixing bug related to initiation of table block with previous table block data @iFlameing
+
 ### Internal
 
 ## 8.9.2 (2020-11-06)
