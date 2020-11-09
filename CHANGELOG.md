@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Refactor CT icons helper: add getContentIcons @nzambello
+
 ### Bugfix
 
 ### Internal
