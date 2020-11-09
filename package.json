@@ -219,7 +219,6 @@
     "@babel/plugin-proposal-export-namespace-from": "7.10.4",
     "@babel/plugin-proposal-json-strings": "7.10.4",
     "@babel/plugin-proposal-throw-expressions": "7.10.4",
-    "@babel/plugin-syntax-import-meta": "7.10.4",
     "@loadable/babel-plugin": "5.12.0",
     "@loadable/component": "5.12.0",
     "@loadable/server": "5.12.0",
