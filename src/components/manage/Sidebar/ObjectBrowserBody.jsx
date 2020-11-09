@@ -13,12 +13,10 @@ import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 
 import { settings } from '~/config';
 import backSVG from '@plone/volto/icons/back.svg';
-import pageSVG from '@plone/volto/icons/page.svg';
 import folderSVG from '@plone/volto/icons/folder.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import searchSVG from '@plone/volto/icons/zoom.svg';
 import linkSVG from '@plone/volto/icons/link.svg';
-import imageSVG from '@plone/volto/icons/image.svg';
 
 import ObjectBrowserNav from '@plone/volto/components/manage/Sidebar/ObjectBrowserNav';
 
@@ -168,21 +166,6 @@ class ObjectBrowserBody extends Component {
         },
         `${this.props.block}-${mode}`,
       );
-    }
-  };
-
-  getIcon = (icon) => {
-    switch (icon) {
-      case 'Folder':
-        return <Icon name={folderSVG} size="24px" />;
-      case 'Document':
-        return <Icon name={pageSVG} size="24px" />;
-      case 'Image':
-        return <Icon name={imageSVG} size="24px" />;
-      case 'File':
-        return <Icon name={pageSVG} size="24px" />;
-      default:
-        return <Icon name={pageSVG} size="24px" />;
     }
   };
 
@@ -448,7 +431,6 @@ class ObjectBrowserBody extends Component {
                     },
                   ]
             }
-            getIcon={this.getIcon}
             handleClickOnItem={this.handleClickOnItem}
             handleDoubleClickOnItem={this.handleDoubleClickOnItem}
             mode={this.props.mode}

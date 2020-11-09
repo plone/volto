@@ -18,33 +18,6 @@ const packageJson = require(path.join(projectRootPath, 'package.json'));
 
 const registry = new AddonConfigurationRegistry(projectRootPath);
 
-const SentryCliPlugin = require('@sentry/webpack-plugin');
-
-const svgPlugin = (config) => {
-  const SVGLOADER = {
-    test: /icons\/.*\.svg$/,
-    use: [
-      {
-        loader: 'svg-loader',
-      },
-      {
-        loader: 'svgo-loader',
-        options: {
-          plugins: [
-            { removeTitle: true },
-            { convertPathData: false },
-            { removeUselessStrokeAndFill: true },
-            { removeViewBox: false },
-          ],
-        },
-      },
-    ],
-  };
-
-  config.module.rules.push(SVGLOADER);
-  return config;
-};
-
 const defaultModify = (config, { target, dev }, webpack) => {
   if (dev) {
     config.plugins.unshift(
@@ -60,30 +33,11 @@ const defaultModify = (config, { target, dev }, webpack) => {
     );
   }
 
-  let SENTRY = undefined;
-  if (process.env.SENTRY_DSN) {
-    SENTRY = {
-      SENTRY_DSN: process.env.SENTRY_DSN,
-    };
-  }
-
   if (target === 'web') {
-    if (SENTRY && process.env.SENTRY_FRONTEND_CONFIG) {
-      try {
-        SENTRY.SENTRY_CONFIG = JSON.parse(process.env.SENTRY_FRONTEND_CONFIG);
-        if (process.env.SENTRY_RELEASE !== undefined) {
-          SENTRY.SENTRY_CONFIG.release = process.env.SENTRY_RELEASE;
-        }
-      } catch (e) {
-        console.log('Error parsing SENTRY_FRONTEND_CONFIG');
-        throw e;
-      }
-    }
     config.plugins.unshift(
       new webpack.DefinePlugin({
         __CLIENT__: true,
         __SERVER__: false,
-        __SENTRY__: SENTRY ? JSON.stringify(SENTRY) : undefined,
       }),
     );
 
@@ -135,25 +89,10 @@ const defaultModify = (config, { target, dev }, webpack) => {
   }
 
   if (target === 'node') {
-    if (SENTRY) {
-      SENTRY.SENTRY_CONFIG = undefined;
-      if (process.env.SENTRY_BACKEND_CONFIG) {
-        try {
-          SENTRY.SENTRY_CONFIG = JSON.parse(process.env.SENTRY_BACKEND_CONFIG);
-          if (process.env.SENTRY_RELEASE !== undefined) {
-            SENTRY.SENTRY_CONFIG.release = process.env.SENTRY_RELEASE;
-          }
-        } catch (e) {
-          console.log('Error parsing SENTRY_BACKEND_CONFIG');
-          throw e;
-        }
-      }
-    }
     config.plugins.unshift(
       new webpack.DefinePlugin({
         __CLIENT__: false,
         __SERVER__: true,
-        __SENTRY__: SENTRY ? JSON.stringify(SENTRY) : undefined,
       }),
     );
   }
@@ -228,31 +167,16 @@ const defaultModify = (config, { target, dev }, webpack) => {
           }),
         ]
       : [];
-  if (
-    process.env.SENTRY_AUTH_TOKEN !== undefined &&
-    process.env.SENTRY_URL !== undefined &&
-    process.env.SENTRY_ORG !== undefined &&
-    process.env.SENTRY_PROJECT !== undefined &&
-    process.env.SENTRY_RELEASE !== undefined
-  ) {
-    if (target === 'web') {
-      config.plugins.push(
-        new SentryCliPlugin({
-          include: './build/public',
-          ignore: ['node_modules', 'webpack.config.js'],
-          release: process.env.SENTRY_RELEASE,
-        }),
-      );
-    }
-  }
   return config;
 };
 
 const addonExtenders = registry.getAddonExtenders().map((m) => require(m));
+
 const defaultPlugins = [
   'bundle-analyzer',
-  svgPlugin,
-  require('./less-plugin')({ registry }),
+  require('./webpack-less-plugin')({ registry }),
+  require('./webpack-sentry-plugin').sentryPlugin,
+  require('./webpack-svg-plugin').svgPlugin,
 ];
 
 const plugins = addonExtenders.reduce(

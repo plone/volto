@@ -84,11 +84,11 @@ export const customSelectStyles = {
   option: (styles, state) => ({
     ...styles,
     backgroundColor: null,
-    height: '50px',
+    minHeight: '50px',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: '14px 12px',
+    padding: '12px 12px',
     color: state.isSelected
       ? '#007bc1'
       : state.isFocused
@@ -96,6 +96,9 @@ export const customSelectStyles = {
       : 'inherit',
     ':active': {
       backgroundColor: null,
+    },
+    svg: {
+      flex: '0 0 auto',
     },
   }),
 };

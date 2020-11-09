@@ -4,6 +4,7 @@
  */
 
 import { omitBy, mapKeys, pickBy, map, keys, endsWith, find } from 'lodash';
+import { settings } from '~/config';
 
 /**
  * Nest content.
@@ -45,4 +46,19 @@ export function getLayoutFieldname(props) {
   return (
     find(keys(props), (key) => endsWith(key, 'content_layout')) || 'layout'
   );
+}
+
+/**
+ * Get content icon.
+ * @description Configurable in config
+ * @function getContentIcon
+ * @param {string} type Content type
+ * @param {boolean} isFolderish
+ * @returns {Object} Icon component
+ */
+export function getContentIcon(type, isFolderish) {
+  const { contentIcons } = settings;
+
+  if (type in contentIcons) return contentIcons[type];
+  return isFolderish ? contentIcons.Folder : contentIcons.File;
 }

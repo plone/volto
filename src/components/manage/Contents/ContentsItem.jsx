@@ -12,13 +12,8 @@ import moment from 'moment';
 import { DragSource, DropTarget } from 'react-dnd';
 import { useIntl, defineMessages, FormattedMessage } from 'react-intl';
 import { Icon, Circle } from '@plone/volto/components';
+import { getContentIcon } from '@plone/volto/helpers';
 import moreSVG from '@plone/volto/icons/more.svg';
-import documentSVG from '@plone/volto/icons/content-existing.svg';
-import linkSVG from '@plone/volto/icons/link.svg';
-import calendarSVG from '@plone/volto/icons/calendar.svg';
-import folderSVG from '@plone/volto/icons/folder.svg';
-import fileSVG from '@plone/volto/icons/file.svg';
-import imageSVG from '@plone/volto/icons/image.svg';
 import checkboxUncheckedSVG from '@plone/volto/icons/checkbox-unchecked.svg';
 import checkboxCheckedSVG from '@plone/volto/icons/checkbox-checked.svg';
 import cutSVG from '@plone/volto/icons/cut.svg';
@@ -53,24 +48,6 @@ const messages = defineMessages({
     defaultMessage: 'No workflow state',
   },
 });
-
-export function getIcon(type, isFolderish) {
-  switch (type) {
-    case 'Document':
-    case 'News Item':
-      return documentSVG;
-    case 'Image':
-      return imageSVG;
-    case 'File':
-      return fileSVG;
-    case 'Link':
-      return linkSVG;
-    case 'Event':
-      return calendarSVG;
-    default:
-      return isFolderish ? folderSVG : fileSVG;
-  }
-}
 
 function getColor(string) {
   switch (string) {
@@ -166,7 +143,7 @@ export const ContentsItemComponent = ({
           >
             <div className="expire-align">
               <Icon
-                name={getIcon(item['@type'], item.is_folderish)}
+                name={getContentIcon(item['@type'], item.is_folderish)}
                 size="20px"
                 className="icon-margin"
                 color="#878f93"
