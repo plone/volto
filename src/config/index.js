@@ -27,6 +27,7 @@ import {
   blocksConfig,
   initialBlocks,
 } from './Blocks';
+import { contentIcons } from './ContentIcons';
 import applyAddonConfiguration from 'load-volto-addons';
 
 const host = process.env.HOST || 'localhost';
@@ -73,6 +74,7 @@ let config = {
     expressMiddleware: [],
     defaultBlockType: 'text',
     verticalFormTabs: false,
+    contentIcons: contentIcons,
   },
   widgets: {
     ...widgetMapping,
