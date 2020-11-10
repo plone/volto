@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Now you can prettify the html code in HTML block @iFlameing
+
 ### Bugfix
 
 - Fixing bug related to initiation of table block with previous table block data @iFlameing
