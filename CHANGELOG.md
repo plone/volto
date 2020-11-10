@@ -8,6 +8,7 @@
 
 ### Bugfix
 
+- Fixing bug related to initiation of table block with previous table block data @iFlameing
 - enabled no-folderish CT to be translated @giuliaghisini
  
 ### Internal
