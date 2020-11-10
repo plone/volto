@@ -14,7 +14,7 @@ import { Button } from 'semantic-ui-react';
 import { Portal } from 'react-portal';
 import qs from 'query-string';
 import { find } from 'lodash';
-import { toast } from 'react-toastify';
+import loadable from '@loadable/component';
 
 import {
   Forbidden,
@@ -35,6 +35,8 @@ import { getBaseUrl, hasBlocksData } from '@plone/volto/helpers';
 
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
+
+const LoadableToast = loadable.lib(() => import('react-toastify'));
 
 const messages = defineMessages({
   edit: {
@@ -169,7 +171,7 @@ class Edit extends Component {
 
       this.setState({ error: error });
 
-      toast.error(
+      this.toast.error(
         <Toast
           error
           title={this.props.intl.formatMessage(messages.error)}
@@ -211,98 +213,112 @@ class Edit extends Component {
     const editPermission = find(this.props.objectActions, { id: 'edit' });
 
     return (
-      <div id="page-edit">
-        {this.props.objectActions?.length > 0 && (
-          <>
-            {editPermission && (
-              <>
-                <Helmet
-                  title={
-                    this.props?.schema?.title
-                      ? this.props.intl.formatMessage(messages.edit, {
-                          title: this.props.schema.title,
-                        })
-                      : null
-                  }
-                />
-                <Form
-                  isEditForm
-                  ref={this.form}
-                  schema={this.props.schema}
-                  formData={this.props.content}
-                  requestError={this.state.error}
-                  onSubmit={this.onSubmit}
-                  hideActions
-                  pathname={this.props.pathname}
-                  visual={this.state.visual}
-                  title={
-                    this.props?.schema?.title
-                      ? this.props.intl.formatMessage(messages.edit, {
-                          title: this.props.schema.title,
-                        })
-                      : null
-                  }
-                  loading={this.props.updateRequest.loading}
-                />
-              </>
-            )}
+      <LoadableToast>
+        {({ toast }) => {
+          this.toast = toast;
 
-            {editPermission && this.state.visual && this.state.isClient && (
-              <Portal node={document.getElementById('sidebar')}>
-                <Sidebar />
-              </Portal>
-            )}
-          </>
-        )}
-        {!editPermission && (
-          <>
-            {this.props.token ? (
-              <Forbidden pathname={this.props.pathname} />
-            ) : (
-              <Unauthorized pathname={this.props.pathname} />
-            )}
-          </>
-        )}
-        {this.state.isClient && (
-          <Portal node={document.getElementById('toolbar')}>
-            <Toolbar
-              pathname={this.props.pathname}
-              hideDefaultViewButtons
-              inner={
+          return (
+            <div id="page-edit">
+              {this.props.objectActions?.length > 0 && (
                 <>
-                  <Button
-                    id="toolbar-save"
-                    className="save"
-                    aria-label={this.props.intl.formatMessage(messages.save)}
-                    onClick={() => this.form.current.onSubmit()}
-                    disabled={this.props.updateRequest.loading}
-                    loading={this.props.updateRequest.loading}
-                  >
-                    <Icon
-                      name={saveSVG}
-                      className="circled"
-                      size="30px"
-                      title={this.props.intl.formatMessage(messages.save)}
-                    />
-                  </Button>
-                  <Button
-                    className="cancel"
-                    aria-label={this.props.intl.formatMessage(messages.cancel)}
-                    onClick={() => this.onCancel()}
-                  >
-                    <Icon
-                      name={clearSVG}
-                      className="circled"
-                      size="30px"
-                      title={this.props.intl.formatMessage(messages.cancel)}
-                    />
-                  </Button>
+                  {editPermission && (
+                    <>
+                      <Helmet
+                        title={
+                          this.props?.schema?.title
+                            ? this.props.intl.formatMessage(messages.edit, {
+                                title: this.props.schema.title,
+                              })
+                            : null
+                        }
+                      />
+                      <Form
+                        isEditForm
+                        ref={this.form}
+                        schema={this.props.schema}
+                        formData={this.props.content}
+                        requestError={this.state.error}
+                        onSubmit={this.onSubmit}
+                        hideActions
+                        pathname={this.props.pathname}
+                        visual={this.state.visual}
+                        title={
+                          this.props?.schema?.title
+                            ? this.props.intl.formatMessage(messages.edit, {
+                                title: this.props.schema.title,
+                              })
+                            : null
+                        }
+                        loading={this.props.updateRequest.loading}
+                      />
+                    </>
+                  )}
+
+                  {editPermission && this.state.visual && this.state.isClient && (
+                    <Portal node={document.getElementById('sidebar')}>
+                      <Sidebar />
+                    </Portal>
+                  )}
                 </>
-              }
-            />
-          </Portal>
-        )}
-      </div>
+              )}
+              {!editPermission && (
+                <>
+                  {this.props.token ? (
+                    <Forbidden pathname={this.props.pathname} />
+                  ) : (
+                    <Unauthorized pathname={this.props.pathname} />
+                  )}
+                </>
+              )}
+              {this.state.isClient && (
+                <Portal node={document.getElementById('toolbar')}>
+                  <Toolbar
+                    pathname={this.props.pathname}
+                    hideDefaultViewButtons
+                    inner={
+                      <>
+                        <Button
+                          id="toolbar-save"
+                          className="save"
+                          aria-label={this.props.intl.formatMessage(
+                            messages.save,
+                          )}
+                          onClick={() => this.form.current.onSubmit()}
+                          disabled={this.props.updateRequest.loading}
+                          loading={this.props.updateRequest.loading}
+                        >
+                          <Icon
+                            name={saveSVG}
+                            className="circled"
+                            size="30px"
+                            title={this.props.intl.formatMessage(messages.save)}
+                          />
+                        </Button>
+                        <Button
+                          className="cancel"
+                          aria-label={this.props.intl.formatMessage(
+                            messages.cancel,
+                          )}
+                          onClick={() => this.onCancel()}
+                        >
+                          <Icon
+                            name={clearSVG}
+                            className="circled"
+                            size="30px"
+                            title={this.props.intl.formatMessage(
+                              messages.cancel,
+                            )}
+                          />
+                        </Button>
+                      </>
+                    }
+                  />
+                </Portal>
+              )}
+            </div>
+          );
+        }}
+      </LoadableToast>
     );
   }
 }

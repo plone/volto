@@ -31,7 +31,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { Portal } from 'react-portal';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import loadable from '@loadable/component';
 import { bindActionCreators, compose } from 'redux';
 import {
   Button,
@@ -43,6 +43,8 @@ import {
   Segment,
   Table,
 } from 'semantic-ui-react';
+
+const LoadableToast = loadable.lib(() => import('react-toastify'));
 
 /**
  * UsersControlpanel class.
@@ -399,7 +401,7 @@ class UsersControlpanel extends Component {
       addUserError: undefined,
       addUserSetFormDataCallback: undefined,
     });
-    toast.success(
+    this.toast.success(
       <Toast
         success
         title={this.props.intl.formatMessage(messages.success)}
@@ -420,7 +422,7 @@ class UsersControlpanel extends Component {
       addGroupError: undefined,
       addGroupSetFormDataCallback: undefined,
     });
-    toast.success(
+    this.toast.success(
       <Toast
         success
         title={this.props.intl.formatMessage(messages.success)}
@@ -488,379 +490,407 @@ class UsersControlpanel extends Component {
       : '';
 
     return (
-      <Container className="users-control-panel">
-        <Helmet
-          title={this.props.intl.formatMessage(messages.usersAndGroups)}
-        />
-        <div className="container">
-          <Confirm
-            open={this.state.showDelete}
-            header={
-              this.state.groupToDelete
-                ? this.props.intl.formatMessage(
-                    messages.deleteGroupConfirmTitle,
-                  )
-                : this.props.intl.formatMessage(messages.deleteUserConfirmTitle)
-            }
-            content={
-              this.state.groupToDelete ? (
-                <div className="content">
-                  <ul className="content">
-                    <FormattedMessage
-                      id="Do you really want to delete the group {groupname}?"
-                      defaultMessage="Do you really want to delete the group {groupname}?"
-                      values={{
-                        groupname: <b>{groupNameToDelete}</b>,
-                      }}
-                    />
-                  </ul>
-                </div>
-              ) : (
-                <div className="content">
-                  <ul className="content">
-                    <FormattedMessage
-                      id="Do you really want to delete the user {username}?"
-                      defaultMessage="Do you really want to delete the user {username}?"
-                      values={{
-                        username: <b>{usernameToDelete}</b>,
-                      }}
-                    />
-                  </ul>
-                </div>
-              )
-            }
-            onCancel={this.onDeleteCancel}
-            onConfirm={this.onDeleteOk}
-            size={null}
-          />
-          {this.state.showAddUser ? (
-            <ModalForm
-              open={this.state.showAddUser}
-              className="modal"
-              onSubmit={this.onAddUserSubmit}
-              submitError={this.state.addUserError}
-              onCancel={() => this.setState({ showAddUser: false })}
-              title={this.props.intl.formatMessage(messages.addUserFormTitle)}
-              loading={this.props.createRequest.loading}
-              schema={{
-                fieldsets: [
-                  {
-                    id: 'default',
-                    title: 'FIXME: User Data',
-                    fields: [
-                      'username',
-                      'fullname',
-                      'email',
-                      'password',
-                      'roles',
-                      'groups',
-                    ],
-                  },
-                ],
-                properties: {
-                  username: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserFormUsernameTitle,
-                    ),
-                    type: 'string',
-                    description: '',
-                  },
-                  fullname: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserFormFullnameTitle,
-                    ),
-                    type: 'string',
-                    description: '',
-                  },
-                  email: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserFormEmailTitle,
-                    ),
-                    type: 'string',
-                    description: '',
-                    widget: 'email',
-                  },
-                  password: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserFormPasswordTitle,
-                    ),
-                    type: 'password',
-                    description: '',
-                    widget: 'password',
-                  },
-                  roles: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserFormRolesTitle,
-                    ),
-                    type: 'array',
-                    choices: this.props.roles.map((role) => [role.id, role.id]),
-                    description: '',
-                  },
-                  groups: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserGroupNameTitle,
-                    ),
-                    type: 'array',
-                    choices: this.props.groups.map((group) => [
-                      group.id,
-                      group.id,
-                    ]),
-                    description: '',
-                  },
-                },
-                required: ['username', 'fullname', 'email', 'password'],
-              }}
-            />
-          ) : null}
+      <LoadableToast>
+        {({ toast }) => {
+          this.toast = toast;
 
-          {this.state.showAddGroup ? (
-            <ModalForm
-              open={this.state.showAddGroup}
-              className="modal"
-              onSubmit={this.onAddGroupSubmit}
-              submitError={this.state.addGroupError}
-              onCancel={() => this.setState({ showAddGroup: false })}
-              title={this.props.intl.formatMessage(messages.addGroupsFormTitle)}
-              loading={this.props.createGroupRequest.loading}
-              schema={{
-                fieldsets: [
-                  {
-                    id: 'default',
-                    title: 'FIXME: Group Data',
-                    fields: [
-                      'title',
-                      'description',
-                      'groupname',
-                      'email',
-                      'roles',
-                    ],
-                  },
-                ],
-                properties: {
-                  title: {
-                    title: this.props.intl.formatMessage(
-                      messages.addGroupsFormTitleTitle,
-                    ),
-                    type: 'string',
-                    description: '',
-                  },
-                  description: {
-                    title: this.props.intl.formatMessage(
-                      messages.addGroupsFormDescriptionTitle,
-                    ),
-                    type: 'string',
-                    description: '',
-                  },
-                  groupname: {
-                    title: this.props.intl.formatMessage(
-                      messages.addGroupsFormGroupNameTitle,
-                    ),
-                    type: 'string',
-                    description: '',
-                  },
-                  email: {
-                    title: this.props.intl.formatMessage(
-                      messages.addGroupsFormEmailTitle,
-                    ),
-                    type: 'string',
-                    description: '',
-                    widget: 'email',
-                  },
-                  roles: {
-                    title: this.props.intl.formatMessage(
-                      messages.addGroupsFormRolesTitle,
-                    ),
-                    type: 'array',
-                    choices: this.props.roles.map((role) => [role.id, role.id]),
-                    description: '',
-                  },
-                },
-                required: [
-                  'title',
-                  'description',
-                  'groupname',
-                  'email',
-                  'roles',
-                ],
-              }}
-            />
-          ) : null}
-        </div>
-        <Segment.Group raised>
-          <Segment className="primary">
-            <FormattedMessage
-              id="Users and groups settings"
-              defaultMessage="Users and groups settings"
-            />
-          </Segment>
-          <Segment>
-            <FormattedMessage id="Users" defaultMessage="Users" />
-          </Segment>
-          <Segment>
-            <Form onSubmit={this.onSearch}>
-              <Form.Field>
-                <Input
-                  name="SearchableText"
-                  action={{ icon: 'search' }}
-                  placeholder={this.props.intl.formatMessage(
-                    messages.searchUsers,
-                  )}
-                  onChange={this.onChangeSearch}
-                  id="user-search-input"
-                />
-              </Form.Field>
-            </Form>
-          </Segment>
-          <Form onSubmit={this.onSubmit}>
-            <div className="table">
-              <Table padded striped attached unstackable>
-                <Table.Header>
-                  <Table.Row>
-                    <Table.HeaderCell>
-                      <FormattedMessage
-                        id="User name"
-                        defaultMessage="User name"
-                      />
-                    </Table.HeaderCell>
-                    {this.props.roles.map((role) => (
-                      <Table.HeaderCell key={role.id}>
-                        {role.id}
-                      </Table.HeaderCell>
-                    ))}
-                    <Table.HeaderCell>
-                      <FormattedMessage id="Actions" defaultMessage="Actions" />
-                    </Table.HeaderCell>
-                  </Table.Row>
-                </Table.Header>
-                <Table.Body>
-                  {this.state.entries.map((user) => (
-                    <UsersControlpanelUser
-                      key={user.id}
-                      onDelete={this.delete}
-                      roles={this.props.roles}
-                      user={user}
-                      updateUser={this.updateUserRole}
-                    />
-                  ))}
-                </Table.Body>
-              </Table>
-            </div>
-          </Form>
-          <Segment clearing className="actions">
-            {this.props.intl.formatMessage(messages.addUserButtonTitle)}
-            <Button
-              basic
-              primary
-              floated="right"
-              onClick={() => {
-                this.setState({ showAddUser: true });
-              }}
-            >
-              <Icon
-                name={addSvg}
-                size="30px"
-                color="#007eb1"
-                className="addSVG"
-                title={this.props.intl.formatMessage(messages.add)}
+          return (
+            <Container className="users-control-panel">
+              <Helmet
+                title={this.props.intl.formatMessage(messages.usersAndGroups)}
               />
-            </Button>
-          </Segment>
-          <Divider />
-          <Segment>
-            <FormattedMessage id="Groups" defaultMessage="Groups" />
-          </Segment>
-          <Segment>
-            <Form onSubmit={this.onSearchGroups}>
-              <Form.Field>
-                <Input
-                  name="SearchableText"
-                  action={{ icon: 'search' }}
-                  placeholder={this.props.intl.formatMessage(
-                    messages.searchGroups,
-                  )}
-                  onChange={this.onChangeSearch}
-                  id="group-search-input"
+              <div className="container">
+                <Confirm
+                  open={this.state.showDelete}
+                  header={
+                    this.state.groupToDelete
+                      ? this.props.intl.formatMessage(
+                          messages.deleteGroupConfirmTitle,
+                        )
+                      : this.props.intl.formatMessage(
+                          messages.deleteUserConfirmTitle,
+                        )
+                  }
+                  content={
+                    this.state.groupToDelete ? (
+                      <div className="content">
+                        <ul className="content">
+                          <FormattedMessage
+                            id="Do you really want to delete the group {groupname}?"
+                            defaultMessage="Do you really want to delete the group {groupname}?"
+                            values={{
+                              groupname: <b>{groupNameToDelete}</b>,
+                            }}
+                          />
+                        </ul>
+                      </div>
+                    ) : (
+                      <div className="content">
+                        <ul className="content">
+                          <FormattedMessage
+                            id="Do you really want to delete the user {username}?"
+                            defaultMessage="Do you really want to delete the user {username}?"
+                            values={{
+                              username: <b>{usernameToDelete}</b>,
+                            }}
+                          />
+                        </ul>
+                      </div>
+                    )
+                  }
+                  onCancel={this.onDeleteCancel}
+                  onConfirm={this.onDeleteOk}
+                  size={null}
                 />
-              </Form.Field>
-            </Form>
-          </Segment>
-          <Form onSubmit={this.onSubmit}>
-            <div className="table">
-              <Table padded striped attached unstackable>
-                <Table.Header>
-                  <Table.Row>
-                    <Table.HeaderCell>
-                      <FormattedMessage
-                        id="Groupname"
-                        defaultMessage="Groupname"
+                {this.state.showAddUser ? (
+                  <ModalForm
+                    open={this.state.showAddUser}
+                    className="modal"
+                    onSubmit={this.onAddUserSubmit}
+                    submitError={this.state.addUserError}
+                    onCancel={() => this.setState({ showAddUser: false })}
+                    title={this.props.intl.formatMessage(
+                      messages.addUserFormTitle,
+                    )}
+                    loading={this.props.createRequest.loading}
+                    schema={{
+                      fieldsets: [
+                        {
+                          id: 'default',
+                          title: 'FIXME: User Data',
+                          fields: [
+                            'username',
+                            'fullname',
+                            'email',
+                            'password',
+                            'roles',
+                            'groups',
+                          ],
+                        },
+                      ],
+                      properties: {
+                        username: {
+                          title: this.props.intl.formatMessage(
+                            messages.addUserFormUsernameTitle,
+                          ),
+                          type: 'string',
+                          description: '',
+                        },
+                        fullname: {
+                          title: this.props.intl.formatMessage(
+                            messages.addUserFormFullnameTitle,
+                          ),
+                          type: 'string',
+                          description: '',
+                        },
+                        email: {
+                          title: this.props.intl.formatMessage(
+                            messages.addUserFormEmailTitle,
+                          ),
+                          type: 'string',
+                          description: '',
+                          widget: 'email',
+                        },
+                        password: {
+                          title: this.props.intl.formatMessage(
+                            messages.addUserFormPasswordTitle,
+                          ),
+                          type: 'password',
+                          description: '',
+                          widget: 'password',
+                        },
+                        roles: {
+                          title: this.props.intl.formatMessage(
+                            messages.addUserFormRolesTitle,
+                          ),
+                          type: 'array',
+                          choices: this.props.roles.map((role) => [
+                            role.id,
+                            role.id,
+                          ]),
+                          description: '',
+                        },
+                        groups: {
+                          title: this.props.intl.formatMessage(
+                            messages.addUserGroupNameTitle,
+                          ),
+                          type: 'array',
+                          choices: this.props.groups.map((group) => [
+                            group.id,
+                            group.id,
+                          ]),
+                          description: '',
+                        },
+                      },
+                      required: ['username', 'fullname', 'email', 'password'],
+                    }}
+                  />
+                ) : null}
+
+                {this.state.showAddGroup ? (
+                  <ModalForm
+                    open={this.state.showAddGroup}
+                    className="modal"
+                    onSubmit={this.onAddGroupSubmit}
+                    submitError={this.state.addGroupError}
+                    onCancel={() => this.setState({ showAddGroup: false })}
+                    title={this.props.intl.formatMessage(
+                      messages.addGroupsFormTitle,
+                    )}
+                    loading={this.props.createGroupRequest.loading}
+                    schema={{
+                      fieldsets: [
+                        {
+                          id: 'default',
+                          title: 'FIXME: Group Data',
+                          fields: [
+                            'title',
+                            'description',
+                            'groupname',
+                            'email',
+                            'roles',
+                          ],
+                        },
+                      ],
+                      properties: {
+                        title: {
+                          title: this.props.intl.formatMessage(
+                            messages.addGroupsFormTitleTitle,
+                          ),
+                          type: 'string',
+                          description: '',
+                        },
+                        description: {
+                          title: this.props.intl.formatMessage(
+                            messages.addGroupsFormDescriptionTitle,
+                          ),
+                          type: 'string',
+                          description: '',
+                        },
+                        groupname: {
+                          title: this.props.intl.formatMessage(
+                            messages.addGroupsFormGroupNameTitle,
+                          ),
+                          type: 'string',
+                          description: '',
+                        },
+                        email: {
+                          title: this.props.intl.formatMessage(
+                            messages.addGroupsFormEmailTitle,
+                          ),
+                          type: 'string',
+                          description: '',
+                          widget: 'email',
+                        },
+                        roles: {
+                          title: this.props.intl.formatMessage(
+                            messages.addGroupsFormRolesTitle,
+                          ),
+                          type: 'array',
+                          choices: this.props.roles.map((role) => [
+                            role.id,
+                            role.id,
+                          ]),
+                          description: '',
+                        },
+                      },
+                      required: [
+                        'title',
+                        'description',
+                        'groupname',
+                        'email',
+                        'roles',
+                      ],
+                    }}
+                  />
+                ) : null}
+              </div>
+              <Segment.Group raised>
+                <Segment className="primary">
+                  <FormattedMessage
+                    id="Users and groups settings"
+                    defaultMessage="Users and groups settings"
+                  />
+                </Segment>
+                <Segment>
+                  <FormattedMessage id="Users" defaultMessage="Users" />
+                </Segment>
+                <Segment>
+                  <Form onSubmit={this.onSearch}>
+                    <Form.Field>
+                      <Input
+                        name="SearchableText"
+                        action={{ icon: 'search' }}
+                        placeholder={this.props.intl.formatMessage(
+                          messages.searchUsers,
+                        )}
+                        onChange={this.onChangeSearch}
+                        id="user-search-input"
                       />
-                    </Table.HeaderCell>
-                    {this.props.roles.map((role) => (
-                      <Table.HeaderCell key={role.id}>
-                        {role.id}
-                      </Table.HeaderCell>
-                    ))}
-                    <Table.HeaderCell>
-                      <FormattedMessage id="Actions" defaultMessage="Actions" />
-                    </Table.HeaderCell>
-                  </Table.Row>
-                </Table.Header>
-                <Table.Body>
-                  {this.state.groupEntries.map((groups) => (
-                    <UsersControlpanelGroups
-                      key={groups.id}
-                      onDelete={this.deleteGroup}
-                      roles={this.props.roles}
-                      groups={groups}
-                      updateGroups={this.updateGroupRole}
-                    />
-                  ))}
-                </Table.Body>
-              </Table>
-            </div>
-          </Form>
-          <Segment clearing className="actions">
-            {this.props.intl.formatMessage(messages.addGroupsButtonTitle)}
-            <Button
-              basic
-              primary
-              floated="right"
-              onClick={() => {
-                this.setState({ showAddGroup: true });
-              }}
-            >
-              <Icon
-                name={addSvg}
-                size="30px"
-                color="#007eb1"
-                classname="addgroupSVG"
-                title={this.props.intl.formatMessage(messages.add)}
-              />
-            </Button>
-          </Segment>
-        </Segment.Group>
-        {this.state.isClient && (
-          <Portal node={document.getElementById('toolbar')}>
-            <Toolbar
-              pathname={this.props.pathname}
-              hideDefaultViewButtons
-              inner={
-                <>
-                  <Link to="/controlpanel" className="item">
+                    </Form.Field>
+                  </Form>
+                </Segment>
+                <Form onSubmit={this.onSubmit}>
+                  <div className="table">
+                    <Table padded striped attached unstackable>
+                      <Table.Header>
+                        <Table.Row>
+                          <Table.HeaderCell>
+                            <FormattedMessage
+                              id="User name"
+                              defaultMessage="User name"
+                            />
+                          </Table.HeaderCell>
+                          {this.props.roles.map((role) => (
+                            <Table.HeaderCell key={role.id}>
+                              {role.id}
+                            </Table.HeaderCell>
+                          ))}
+                          <Table.HeaderCell>
+                            <FormattedMessage
+                              id="Actions"
+                              defaultMessage="Actions"
+                            />
+                          </Table.HeaderCell>
+                        </Table.Row>
+                      </Table.Header>
+                      <Table.Body>
+                        {this.state.entries.map((user) => (
+                          <UsersControlpanelUser
+                            key={user.id}
+                            onDelete={this.delete}
+                            roles={this.props.roles}
+                            user={user}
+                            updateUser={this.updateUserRole}
+                          />
+                        ))}
+                      </Table.Body>
+                    </Table>
+                  </div>
+                </Form>
+                <Segment clearing className="actions">
+                  {this.props.intl.formatMessage(messages.addUserButtonTitle)}
+                  <Button
+                    basic
+                    primary
+                    floated="right"
+                    onClick={() => {
+                      this.setState({ showAddUser: true });
+                    }}
+                  >
                     <Icon
-                      name={backSVG}
-                      aria-label={this.props.intl.formatMessage(messages.back)}
-                      className="contents circled"
+                      name={addSvg}
                       size="30px"
-                      title={this.props.intl.formatMessage(messages.back)}
+                      color="#007eb1"
+                      className="addSVG"
+                      title={this.props.intl.formatMessage(messages.add)}
                     />
-                  </Link>
-                </>
-              }
-            />
-          </Portal>
-        )}
-      </Container>
+                  </Button>
+                </Segment>
+                <Divider />
+                <Segment>
+                  <FormattedMessage id="Groups" defaultMessage="Groups" />
+                </Segment>
+                <Segment>
+                  <Form onSubmit={this.onSearchGroups}>
+                    <Form.Field>
+                      <Input
+                        name="SearchableText"
+                        action={{ icon: 'search' }}
+                        placeholder={this.props.intl.formatMessage(
+                          messages.searchGroups,
+                        )}
+                        onChange={this.onChangeSearch}
+                        id="group-search-input"
+                      />
+                    </Form.Field>
+                  </Form>
+                </Segment>
+                <Form onSubmit={this.onSubmit}>
+                  <div className="table">
+                    <Table padded striped attached unstackable>
+                      <Table.Header>
+                        <Table.Row>
+                          <Table.HeaderCell>
+                            <FormattedMessage
+                              id="Groupname"
+                              defaultMessage="Groupname"
+                            />
+                          </Table.HeaderCell>
+                          {this.props.roles.map((role) => (
+                            <Table.HeaderCell key={role.id}>
+                              {role.id}
+                            </Table.HeaderCell>
+                          ))}
+                          <Table.HeaderCell>
+                            <FormattedMessage
+                              id="Actions"
+                              defaultMessage="Actions"
+                            />
+                          </Table.HeaderCell>
+                        </Table.Row>
+                      </Table.Header>
+                      <Table.Body>
+                        {this.state.groupEntries.map((groups) => (
+                          <UsersControlpanelGroups
+                            key={groups.id}
+                            onDelete={this.deleteGroup}
+                            roles={this.props.roles}
+                            groups={groups}
+                            updateGroups={this.updateGroupRole}
+                          />
+                        ))}
+                      </Table.Body>
+                    </Table>
+                  </div>
+                </Form>
+                <Segment clearing className="actions">
+                  {this.props.intl.formatMessage(messages.addGroupsButtonTitle)}
+                  <Button
+                    basic
+                    primary
+                    floated="right"
+                    onClick={() => {
+                      this.setState({ showAddGroup: true });
+                    }}
+                  >
+                    <Icon
+                      name={addSvg}
+                      size="30px"
+                      color="#007eb1"
+                      classname="addgroupSVG"
+                      title={this.props.intl.formatMessage(messages.add)}
+                    />
+                  </Button>
+                </Segment>
+              </Segment.Group>
+              {this.state.isClient && (
+                <Portal node={document.getElementById('toolbar')}>
+                  <Toolbar
+                    pathname={this.props.pathname}
+                    hideDefaultViewButtons
+                    inner={
+                      <>
+                        <Link to="/controlpanel" className="item">
+                          <Icon
+                            name={backSVG}
+                            aria-label={this.props.intl.formatMessage(
+                              messages.back,
+                            )}
+                            className="contents circled"
+                            size="30px"
+                            title={this.props.intl.formatMessage(messages.back)}
+                          />
+                        </Link>
+                      </>
+                    }
+                  />
+                </Portal>
+              )}
+            </Container>
+          );
+        }}
+      </LoadableToast>
     );
   }
 }

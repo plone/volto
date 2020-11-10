@@ -12,13 +12,15 @@ import { Helmet } from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
 import { Button, Container } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
-import { toast } from 'react-toastify';
+import loadable from '@loadable/component';
 
 import { Form, Icon, Toolbar, Toast } from '@plone/volto/components';
 import { updateControlpanel, getControlpanel } from '@plone/volto/actions';
 
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
+
+const LoadableToast = loadable.lib(() => import('react-toastify'));
 
 const messages = defineMessages({
   changesSaved: {
@@ -119,7 +121,7 @@ class Controlpanel extends Component {
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
-      toast.info(
+      this.toast.info(
         <Toast
           info
           title={this.props.intl.formatMessage(messages.info)}
@@ -157,65 +159,89 @@ class Controlpanel extends Component {
   render() {
     if (this.props.controlpanel) {
       return (
-        <div id="page-controlpanel">
-          <Helmet title={this.props.controlpanel.title} />
-          <Container>
-            <Form
-              ref={this.form}
-              title={this.props.controlpanel.title}
-              schema={this.props.controlpanel.schema}
-              formData={this.props.controlpanel.data}
-              onSubmit={this.onSubmit}
-              onCancel={this.onCancel}
-              hideActions
-              loading={this.props.updateRequest.loading}
-            />
-          </Container>
-          {this.state.isClient && (
-            <Portal node={document.getElementById('toolbar')}>
-              <Toolbar
-                pathname={this.props.pathname}
-                hideDefaultViewButtons
-                inner={
-                  <>
-                    <Button
-                      id="toolbar-save"
-                      className="save"
-                      aria-label={this.props.intl.formatMessage(messages.save)}
-                      onClick={() => this.form.current.onSubmit()}
-                      disabled={this.props.updateRequest.loading}
-                      loading={this.props.updateRequest.loading}
-                    >
-                      <Icon
-                        name={saveSVG}
-                        className="circled"
-                        size="30px"
-                        title={this.props.intl.formatMessage(messages.save)}
-                      />
-                    </Button>
-                    <Button
-                      className="cancel"
-                      aria-label={this.props.intl.formatMessage(
-                        messages.cancel,
-                      )}
-                      onClick={() => this.onCancel()}
-                    >
-                      <Icon
-                        name={clearSVG}
-                        className="circled"
-                        size="30px"
-                        title={this.props.intl.formatMessage(messages.cancel)}
-                      />
-                    </Button>
-                  </>
-                }
-              />
-            </Portal>
-          )}
-        </div>
+        <LoadableToast>
+          {({ toast }) => {
+            this.toast = toast;
+
+            return (
+              <div id="page-controlpanel">
+                <Helmet title={this.props.controlpanel.title} />
+                <Container>
+                  div
+                  <Form
+                    ref={this.form}
+                    title={this.props.controlpanel.title}
+                    schema={this.props.controlpanel.schema}
+                    formData={this.props.controlpanel.data}
+                    onSubmit={this.onSubmit}
+                    onCancel={this.onCancel}
+                    hideActions
+                    loading={this.props.updateRequest.loading}
+                  />
+                </Container>
+                {this.state.isClient && (
+                  <Portal node={document.getElementById('toolbar')}>
+                    <Toolbar
+                      pathname={this.props.pathname}
+                      hideDefaultViewButtons
+                      inner={
+                        <>
+                          <Button
+                            id="toolbar-save"
+                            className="save"
+                            aria-label={this.props.intl.formatMessage(
+                              messages.save,
+                            )}
+                            onClick={() => this.form.current.onSubmit()}
+                            disabled={this.props.updateRequest.loading}
+                            loading={this.props.updateRequest.loading}
+                          >
+                            <Icon
+                              name={saveSVG}
+                              className="circled"
+                              size="30px"
+                              title={this.props.intl.formatMessage(
+                                messages.save,
+                              )}
+                            />
+                          </Button>
+                          <Button
+                            className="cancel"
+                            aria-label={this.props.intl.formatMessage(
+                              messages.cancel,
+                            )}
+                            onClick={() => this.onCancel()}
+                          >
+                            <Icon
+                              name={clearSVG}
+                              className="circled"
+                              size="30px"
+                              title={this.props.intl.formatMessage(
+                                messages.cancel,
+                              )}
+                            />
+                          </Button>
+                        </>
+                      }
+                    />
+                  </Portal>
+                )}
+              </div>
+            );
+          }}
+        </LoadableToast>
       );
     }
-    return <div />;
+
+    return (
+      <LoadableToast>
+        {({ toast }) => {
+          this.toast = toast;
+
+          return <div />;
+        }}
+      </LoadableToast>
+    );
   }
 }
 

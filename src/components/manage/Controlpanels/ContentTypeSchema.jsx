@@ -14,9 +14,11 @@ import React, { Component } from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Portal } from 'react-portal';
 import { connect } from 'react-redux';
-import { toast } from 'react-toastify';
+import loadable from '@loadable/component';
 import { compose } from 'redux';
 import { Button, Header } from 'semantic-ui-react';
+
+const LoadableToast = loadable.lib(() => import('react-toastify'));
 
 const messages = defineMessages({
   title: {
@@ -154,7 +156,7 @@ class ContentTypeSchema extends Component {
       nextProps.schemaRequest.put.loaded
     ) {
       // this.props.getSchema(this.props.id);
-      toast.info(
+      this.toast.info(
         <Toast
           info
           title={this.props.intl.formatMessage(messages.info)}
@@ -168,7 +170,7 @@ class ContentTypeSchema extends Component {
       this.props.schemaRequest.put.loading &&
       nextProps.schemaRequest.put.error
     ) {
-      toast.error(
+      this.toast.error(
         <Toast
           error
           title={this.props.intl.formatMessage(messages.error)}
@@ -268,7 +270,15 @@ class ContentTypeSchema extends Component {
   render() {
     // Error
     if (this.state.error) {
-      return <Error error={this.state.error} />;
+      return (
+        <LoadableToast>
+          {({ toast }) => {
+            this.toast = toast;
+
+            return <Error error={this.state.error} />;
+          }}
+        </LoadableToast>
+      );
     }
 
     if (this.state.schema) {
@@ -276,67 +286,89 @@ class ContentTypeSchema extends Component {
       const schemaData = this.makeSchemaData(this.state.schema, this.props.id);
 
       return (
-        <div id="page-controlpanel-schema" className="ui container">
-          <Header disabled>
-            {this.props.intl.formatMessage(messages.title, {
-              id: this.props?.schema?.title || this.props.id,
-            })}
-          </Header>
-          <Form
-            ref={this.form}
-            schema={contentTypeSchema}
-            formData={schemaData}
-            pathname={this.props.pathname}
-            onSubmit={this.onSubmit}
-            onCancel={this.onCancel}
-            hideActions
-          />
-          {this.state.isClient && (
-            <Portal node={document.getElementById('toolbar')}>
-              <Toolbar
-                pathname={this.props.pathname}
-                hideDefaultViewButtons
-                inner={
-                  <>
-                    <Button
-                      id="toolbar-save"
-                      className="save"
-                      aria-label={this.props.intl.formatMessage(messages.save)}
-                      onClick={() => this.form.current.onSubmit()}
-                      disabled={this.props.schemaRequest.put.loading}
-                      loading={this.props.schemaRequest.put.loading}
-                    >
-                      <Icon
-                        name={saveSVG}
-                        className="circled"
-                        size="30px"
-                        title={this.props.intl.formatMessage(messages.save)}
-                      />
-                    </Button>
-                    <Button
-                      className="cancel"
-                      aria-label={this.props.intl.formatMessage(
-                        messages.cancel,
-                      )}
-                      onClick={() => this.onCancel()}
-                    >
-                      <Icon
-                        name={clearSVG}
-                        className="circled"
-                        size="30px"
-                        title={this.props.intl.formatMessage(messages.cancel)}
-                      />
-                    </Button>
-                  </>
-                }
-              />
-            </Portal>
-          )}
-        </div>
+        <LoadableToast>
+          {({ toast }) => {
+            this.toast = toast;
+
+            return (
+              <div id="page-controlpanel-schema" className="ui container">
+                <Header disabled>
+                  {this.props.intl.formatMessage(messages.title, {
+                    id: this.props?.schema?.title || this.props.id,
+                  })}
+                </Header>
+                <Form
+                  ref={this.form}
+                  schema={contentTypeSchema}
+                  formData={schemaData}
+                  pathname={this.props.pathname}
+                  onSubmit={this.onSubmit}
+                  onCancel={this.onCancel}
+                  hideActions
+                />
+                {this.state.isClient && (
+                  <Portal node={document.getElementById('toolbar')}>
+                    <Toolbar
+                      pathname={this.props.pathname}
+                      hideDefaultViewButtons
+                      inner={
+                        <>
+                          <Button
+                            id="toolbar-save"
+                            className="save"
+                            aria-label={this.props.intl.formatMessage(
+                              messages.save,
+                            )}
+                            onClick={() => this.form.current.onSubmit()}
+                            disabled={this.props.schemaRequest.put.loading}
+                            loading={this.props.schemaRequest.put.loading}
+                          >
+                            <Icon
+                              name={saveSVG}
+                              className="circled"
+                              size="30px"
+                              title={this.props.intl.formatMessage(
+                                messages.save,
+                              )}
+                            />
+                          </Button>
+                          <Button
+                            className="cancel"
+                            aria-label={this.props.intl.formatMessage(
+                              messages.cancel,
+                            )}
+                            onClick={() => this.onCancel()}
+                          >
+                            <Icon
+                              name={clearSVG}
+                              className="circled"
+                              size="30px"
+                              title={this.props.intl.formatMessage(
+                                messages.cancel,
+                              )}
+                            />
+                          </Button>
+                        </>
+                      }
+                    />
+                  </Portal>
+                )}
+              </div>
+            );
+          }}
+        </LoadableToast>
       );
     }
 
-    return <div />;
+    return (
+      <LoadableToast>
+        {({ toast }) => {
+          this.toast = toast;
+
+          return <div />;
+        }}
+      </LoadableToast>
+    );
   }
 }
 

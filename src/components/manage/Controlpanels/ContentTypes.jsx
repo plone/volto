@@ -12,7 +12,7 @@ import { getParentUrl } from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
 import { last } from 'lodash';
 import { Confirm, Container, Table, Button, Header } from 'semantic-ui-react';
-import { toast } from 'react-toastify';
+import loadable from '@loadable/component';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import {
   Error,
@@ -31,6 +31,8 @@ import { getId } from '@plone/volto/helpers';
 
 import addSVG from '@plone/volto/icons/add-document.svg';
 import backSVG from '@plone/volto/icons/back.svg';
+
+const LoadableToast = loadable.lib(() => import('react-toastify'));
 
 const messages = defineMessages({
   add: {
@@ -238,7 +240,7 @@ class ContentTypes extends Component {
       addTypeError: undefined,
       addTypeSetFormDataCallback: undefined,
     });
-    toast.success(
+    this.toast.success(
       <Toast
         success
         title={this.props.intl.formatMessage(messages.success)}
@@ -332,7 +334,7 @@ class ContentTypes extends Component {
    * @returns {undefined}
    */
   onDeleteTypeSuccess() {
-    toast.success(
+    this.toast.success(
       <Toast
         success
         title={this.props.intl.formatMessage(messages.success)}
@@ -348,160 +350,202 @@ class ContentTypes extends Component {
   render() {
     // Error
     if (this.state.error) {
-      return <Error error={this.state.error} />;
+      return (
+        <LoadableToast>
+          {({ toast }) => {
+            this.toast = toast;
+
+            return <Error error={this.state.error} />;
+          }}
+        </LoadableToast>
+      );
     }
 
     if (!this.props.controlpanel) {
-      return <div />;
+      return (
+        <LoadableToast>
+          {({ toast }) => {
+            this.toast = toast;
+
+            return <div />;
+          }}
+        </LoadableToast>
+      );
     }
+
     return (
-      <Container className="types-control-panel">
-        <div className="container">
-          <Confirm
-            open={this.state.showDelete}
-            header={this.props.intl.formatMessage(messages.deleteConfirmTitle)}
-            cancelButton={this.props.intl.formatMessage(messages.no)}
-            confirmButton={this.props.intl.formatMessage(messages.yes)}
-            content={
-              <div className="content">
-                <ul className="content">
-                  <FormattedMessage
-                    id="Do you really want to delete the type {typename}?"
-                    defaultMessage="Do you really want to delete type {typename}?"
-                    values={{
-                      typename: <b>{getId(this.state.typeToDelete || '')}</b>,
-                    }}
-                  />
-                </ul>
-              </div>
-            }
-            onCancel={this.onDeleteCancel}
-            onConfirm={this.onDeleteOk}
-          />
-          <ModalForm
-            open={this.state.showAddType}
-            className="modal"
-            onSubmit={this.onAddTypeSubmit}
-            submitError={this.state.addTypeError}
-            onCancel={() => this.setState({ showAddType: false })}
-            title={this.props.intl.formatMessage(messages.addTypeFormTitle)}
-            loading={this.props.cpanelRequest.post.loading}
-            schema={{
-              fieldsets: [
-                {
-                  id: 'default',
-                  title: 'Content type',
-                  fields: ['title', 'description'],
-                },
-              ],
-              properties: {
-                title: {
-                  title: this.props.intl.formatMessage(
-                    messages.addTypeFormTitleTitle,
-                  ),
-                  type: 'string',
-                  description: '',
-                },
-                description: {
-                  title: this.props.intl.formatMessage(
-                    messages.addTypeFormDescriptionTitle,
-                  ),
-                  type: 'string',
-                  description: '',
-                },
-              },
-              required: ['title'],
-            }}
-          />
-        </div>
-        <Container>
-          <article id="content">
-            <Header disabled>{this.props.controlpanel.title}</Header>
-            <section id="content-core">
-              <Table compact singleLine striped>
-                <Table.Header>
-                  <Table.Row>
-                    <Table.HeaderCell>
-                      <FormattedMessage id="Type" defaultMessage="Type" />
-                    </Table.HeaderCell>
-                    <Table.HeaderCell>
-                      <FormattedMessage
-                        id="Description"
-                        defaultMessage="Description"
-                      />
-                    </Table.HeaderCell>
-                    <Table.HeaderCell>
-                      <FormattedMessage id="Items" defaultMessage="Items" />
-                    </Table.HeaderCell>
-                    <Table.HeaderCell textAlign="right">
-                      <FormattedMessage id="Actions" defaultMessage="Actions" />
-                    </Table.HeaderCell>
-                  </Table.Row>
-                </Table.Header>
-                <Table.Body>
-                  {this.props.controlpanel.items.map((item) => (
-                    <Table.Row key={item['@id']}>
-                      <Table.Cell>
-                        <Link to={`${this.props.pathname}/${item['id']}`}>
-                          {item.title}
-                        </Link>
-                      </Table.Cell>
-                      <Table.Cell>{item.description}</Table.Cell>
-                      <Table.Cell>{item.count}</Table.Cell>
-                      <Table.Cell textAlign="right">
-                        <ContentTypesActions
-                          item={item}
-                          path={this.props.pathname}
-                          onEdit={this.onEdit}
-                          onDelete={this.onDelete}
-                          onSchema={this.onSchema}
-                          onLayout={this.onLayout}
+      <LoadableToast>
+        {({ toast }) => {
+          this.toast = toast;
+
+          return (
+            <Container className="types-control-panel">
+              <div className="container">
+                <Confirm
+                  open={this.state.showDelete}
+                  header={this.props.intl.formatMessage(
+                    messages.deleteConfirmTitle,
+                  )}
+                  cancelButton={this.props.intl.formatMessage(messages.no)}
+                  confirmButton={this.props.intl.formatMessage(messages.yes)}
+                  content={
+                    <div className="content">
+                      <ul className="content">
+                        <FormattedMessage
+                          id="Do you really want to delete the type {typename}?"
+                          defaultMessage="Do you really want to delete type {typename}?"
+                          values={{
+                            typename: (
+                              <b>{getId(this.state.typeToDelete || '')}</b>
+                            ),
+                          }}
                         />
-                      </Table.Cell>
-                    </Table.Row>
-                  ))}
-                </Table.Body>
-              </Table>
-            </section>
-          </article>
-        </Container>
-        {this.state.isClient && (
-          <Portal node={document.getElementById('toolbar')}>
-            <Toolbar
-              pathname={this.props.pathname}
-              hideDefaultViewButtons
-              inner={
-                <>
-                  <Link to={getParentUrl(this.props.pathname)} className="item">
-                    <Icon
-                      name={backSVG}
-                      size="30px"
-                      className="contents circled"
-                      title={this.props.intl.formatMessage(messages.back)}
-                    />
-                  </Link>
-                  <Button
-                    className="add"
-                    aria-label={this.props.intl.formatMessage(messages.add)}
-                    tabIndex={0}
-                    id="toolbar-add"
-                    onClick={() => {
-                      this.setState({ showAddType: true });
-                    }}
-                  >
-                    <Icon
-                      name={addSVG}
-                      title={this.props.intl.formatMessage(
-                        messages.addTypeButtonTitle,
-                      )}
-                    />
-                  </Button>
-                </>
-              }
-            />
-          </Portal>
-        )}
-      </Container>
+                      </ul>
+                    </div>
+                  }
+                  onCancel={this.onDeleteCancel}
+                  onConfirm={this.onDeleteOk}
+                />
+                <ModalForm
+                  open={this.state.showAddType}
+                  className="modal"
+                  onSubmit={this.onAddTypeSubmit}
+                  submitError={this.state.addTypeError}
+                  onCancel={() => this.setState({ showAddType: false })}
+                  title={this.props.intl.formatMessage(
+                    messages.addTypeFormTitle,
+                  )}
+                  loading={this.props.cpanelRequest.post.loading}
+                  schema={{
+                    fieldsets: [
+                      {
+                        id: 'default',
+                        title: 'Content type',
+                        fields: ['title', 'description'],
+                      },
+                    ],
+                    properties: {
+                      title: {
+                        title: this.props.intl.formatMessage(
+                          messages.addTypeFormTitleTitle,
+                        ),
+                        type: 'string',
+                        description: '',
+                      },
+                      description: {
+                        title: this.props.intl.formatMessage(
+                          messages.addTypeFormDescriptionTitle,
+                        ),
+                        type: 'string',
+                        description: '',
+                      },
+                    },
+                    required: ['title'],
+                  }}
+                />
+              </div>
+              <Container>
+                <article id="content">
+                  <Header disabled>{this.props.controlpanel.title}</Header>
+                  <section id="content-core">
+                    <Table compact singleLine striped>
+                      <Table.Header>
+                        <Table.Row>
+                          <Table.HeaderCell>
+                            <FormattedMessage id="Type" defaultMessage="Type" />
+                          </Table.HeaderCell>
+                          <Table.HeaderCell>
+                            <FormattedMessage
+                              id="Description"
+                              defaultMessage="Description"
+                            />
+                          </Table.HeaderCell>
+                          <Table.HeaderCell>
+                            <FormattedMessage
+                              id="Items"
+                              defaultMessage="Items"
+                            />
+                          </Table.HeaderCell>
+                          <Table.HeaderCell textAlign="right">
+                            <FormattedMessage
+                              id="Actions"
+                              defaultMessage="Actions"
+                            />
+                          </Table.HeaderCell>
+                        </Table.Row>
+                      </Table.Header>
+                      <Table.Body>
+                        {this.props.controlpanel.items.map((item) => (
+                          <Table.Row key={item['@id']}>
+                            <Table.Cell>
+                              <Link to={`${this.props.pathname}/${item['id']}`}>
+                                {item.title}
+                              </Link>
+                            </Table.Cell>
+                            <Table.Cell>{item.description}</Table.Cell>
+                            <Table.Cell>{item.count}</Table.Cell>
+                            <Table.Cell textAlign="right">
+                              <ContentTypesActions
+                                item={item}
+                                path={this.props.pathname}
+                                onEdit={this.onEdit}
+                                onDelete={this.onDelete}
+                                onSchema={this.onSchema}
+                                onLayout={this.onLayout}
+                              />
+                            </Table.Cell>
+                          </Table.Row>
+                        ))}
+                      </Table.Body>
+                    </Table>
+                  </section>
+                </article>
+              </Container>
+              {this.state.isClient && (
+                <Portal node={document.getElementById('toolbar')}>
+                  <Toolbar
+                    pathname={this.props.pathname}
+                    hideDefaultViewButtons
+                    inner={
+                      <>
+                        <Link
+                          to={getParentUrl(this.props.pathname)}
+                          className="item"
+                        >
+                          <Icon
+                            name={backSVG}
+                            size="30px"
+                            className="contents circled"
+                            title={this.props.intl.formatMessage(messages.back)}
+                          />
+                        </Link>
+                        <Button
+                          className="add"
+                          aria-label={this.props.intl.formatMessage(
+                            messages.add,
+                          )}
+                          tabIndex={0}
+                          id="toolbar-add"
+                          onClick={() => {
+                            this.setState({ showAddType: true });
+                          }}
+                        >
+                          <Icon
+                            name={addSVG}
+                            title={this.props.intl.formatMessage(
+                              messages.addTypeButtonTitle,
+                            )}
+                          />
+                        </Button>
+                      </>
+                    }
+                  />
+                </Portal>
+              )}
+            </Container>
+          );
+        }}
+      </LoadableToast>
     );
   }
 }

@@ -11,13 +11,15 @@ import { getParentUrl } from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
 import { Button, Header } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
-import { toast } from 'react-toastify';
+import loadable from '@loadable/component';
 import { last, nth, join } from 'lodash';
 import { Error, Form, Icon, Toolbar, Toast } from '@plone/volto/components';
 import { getControlpanel, updateControlpanel } from '@plone/volto/actions';
 
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
+
+const LoadableToast = loadable.lib(() => import('react-toastify'));
 
 const messages = defineMessages({
   title: {
@@ -141,7 +143,7 @@ class ContentType extends Component {
       this.props.cpanelRequest.update.loading &&
       nextProps.cpanelRequest.update.loaded
     ) {
-      toast.info(
+      this.toast.info(
         <Toast
           info
           title={this.props.intl.formatMessage(messages.info)}
@@ -200,66 +202,80 @@ class ContentType extends Component {
         }
       }
       return (
-        <div id="page-controlpanel" className="ui container">
-          <Header disabled>
-            {this.props.intl.formatMessage(messages.title, {
-              id: controlpanel.title,
-            })}
-          </Header>
-          <Form
-            isEditForm
-            ref={this.form}
-            schema={controlpanel.schema}
-            formData={controlpanel.data}
-            onSubmit={this.onSubmit}
-            onCancel={this.onCancel}
-            pathname={this.props.pathname}
-            visual={this.state.visual}
-            hideActions
-            loading={this.props.cpanelRequest.update.loading}
-          />
-          {this.state.isClient && (
-            <Portal node={document.getElementById('toolbar')}>
-              <Toolbar
-                pathname={this.props.pathname}
-                hideDefaultViewButtons
-                inner={
-                  <>
-                    <Button
-                      id="toolbar-save"
-                      className="save"
-                      aria-label={this.props.intl.formatMessage(messages.save)}
-                      onClick={() => this.form.current.onSubmit()}
-                      disabled={this.props.cpanelRequest.update.loading}
-                      loading={this.props.cpanelRequest.update.loading}
-                    >
-                      <Icon
-                        name={saveSVG}
-                        className="circled"
-                        size="30px"
-                        title={this.props.intl.formatMessage(messages.save)}
-                      />
-                    </Button>
-                    <Button
-                      className="cancel"
-                      aria-label={this.props.intl.formatMessage(
-                        messages.cancel,
-                      )}
-                      onClick={() => this.onCancel()}
-                    >
-                      <Icon
-                        name={clearSVG}
-                        className="circled"
-                        size="30px"
-                        title={this.props.intl.formatMessage(messages.cancel)}
-                      />
-                    </Button>
-                  </>
-                }
-              />
-            </Portal>
-          )}
-        </div>
+        <LoadableToast>
+          {({ toast }) => {
+            this.toast = toast;
+
+            return (
+              <div id="page-controlpanel" className="ui container">
+                <Header disabled>
+                  {this.props.intl.formatMessage(messages.title, {
+                    id: controlpanel.title,
+                  })}
+                </Header>
+                <Form
+                  isEditForm
+                  ref={this.form}
+                  schema={controlpanel.schema}
+                  formData={controlpanel.data}
+                  onSubmit={this.onSubmit}
+                  onCancel={this.onCancel}
+                  pathname={this.props.pathname}
+                  visual={this.state.visual}
+                  hideActions
+                  loading={this.props.cpanelRequest.update.loading}
+                />
+                {this.state.isClient && (
+                  <Portal node={document.getElementById('toolbar')}>
+                    <Toolbar
+                      pathname={this.props.pathname}
+                      hideDefaultViewButtons
+                      inner={
+                        <>
+                          <Button
+                            id="toolbar-save"
+                            className="save"
+                            aria-label={this.props.intl.formatMessage(
+                              messages.save,
+                            )}
+                            onClick={() => this.form.current.onSubmit()}
+                            disabled={this.props.cpanelRequest.update.loading}
+                            loading={this.props.cpanelRequest.update.loading}
+                          >
+                            <Icon
+                              name={saveSVG}
+                              className="circled"
+                              size="30px"
+                              title={this.props.intl.formatMessage(
+                                messages.save,
+                              )}
+                            />
+                          </Button>
+                          <Button
+                            className="cancel"
+                            aria-label={this.props.intl.formatMessage(
+                              messages.cancel,
+                            )}
+                            onClick={() => this.onCancel()}
+                          >
+                            <Icon
+                              name={clearSVG}
+                              className="circled"
+                              size="30px"
+                              title={this.props.intl.formatMessage(
+                                messages.cancel,
+                              )}
+                            />
+                          </Button>
+                        </>
+                      }
+                    />
+                  </Portal>
+                )}
+              </div>
+            );
+          }}
+        </LoadableToast>
       );
     }
     return <div />;

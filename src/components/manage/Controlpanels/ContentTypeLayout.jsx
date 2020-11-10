@@ -16,7 +16,7 @@ import {
 } from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
 import { Button, Segment } from 'semantic-ui-react';
-import { toast } from 'react-toastify';
+import loadable from '@loadable/component';
 import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
 import { nth, join } from 'lodash';
 import {
@@ -37,6 +37,8 @@ import {
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import backSVG from '@plone/volto/icons/back.svg';
+
+const LoadableToast = loadable.lib(() => import('react-toastify'));
 
 const messages = defineMessages({
   changesSaved: {
@@ -212,7 +214,7 @@ class ContentTypeLayout extends Component {
       nextProps.schemaRequest.update.loaded
     ) {
       this.props.getSchema(this.props.id);
-      toast.info(
+      this.toast.info(
         <Toast
           info
           title={this.props.intl.formatMessage(messages.info)}
@@ -305,110 +307,154 @@ class ContentTypeLayout extends Component {
   render() {
     // Error
     if (this.state.error) {
-      return <Error error={this.state.error} />;
+      return (
+        <LoadableToast>
+          {({ toast }) => {
+            this.toast = toast;
+
+            return <Error error={this.state.error} />;
+          }}
+        </LoadableToast>
+      );
     }
 
     if (!this.state.visual) {
       // Still loading
       if (!this.state.content) {
-        return <div />;
+        return (
+          <LoadableToast>
+            {({ toast }) => {
+              this.toast = toast;
+
+              return <div />;
+            }}
+          </LoadableToast>
+        );
       }
 
       // Blocks are not enabled
       return (
-        <>
-          <Segment
-            placeholder
-            id="page-controlpanel-layout"
-            className="ui container center aligned"
-          >
-            <div>
-              <FormattedMessage
-                id="Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled"
-                defaultMessage="Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled"
-                values={{
-                  strong: (...chunks) => <strong>{chunks}</strong>,
-                  type: this.props?.controlpanel?.title || this.props.id,
-                }}
-              />
-            </div>
-            <div className="ui divider"></div>
-            <Button
-              primary
-              onClick={this.onEnableBlocks}
-              content={this.props.intl.formatMessage(messages.enable)}
-            />
-          </Segment>
-          <Portal
-            node={this.state.isClient && document.getElementById('toolbar')}
-          >
-            <Toolbar
-              pathname={this.props.pathname}
-              hideDefaultViewButtons
-              inner={
-                <>
-                  <Link className="item" to="#" onClick={() => this.onCancel()}>
-                    <Icon
-                      name={backSVG}
-                      size="30px"
-                      className="contents circled"
-                      title={this.props.intl.formatMessage(messages.back)}
+        <LoadableToast>
+          {({ toast }) => {
+            this.toast = toast;
+
+            return (
+              <>
+                <Segment
+                  placeholder
+                  id="page-controlpanel-layout"
+                  className="ui container center aligned"
+                >
+                  <div>
+                    <FormattedMessage
+                      id="Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled"
+                      defaultMessage="Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled"
+                      values={{
+                        strong: (...chunks) => <strong>{chunks}</strong>,
+                        type: this.props?.controlpanel?.title || this.props.id,
+                      }}
                     />
-                  </Link>
-                </>
-              }
-            />
-          </Portal>
-        </>
+                  </div>
+                  <div className="ui divider"></div>
+                  <Button
+                    primary
+                    onClick={this.onEnableBlocks}
+                    content={this.props.intl.formatMessage(messages.enable)}
+                  />
+                </Segment>
+                <Portal
+                  node={
+                    this.state.isClient && document.getElementById('toolbar')
+                  }
+                >
+                  <Toolbar
+                    pathname={this.props.pathname}
+                    hideDefaultViewButtons
+                    inner={
+                      <>
+                        <Link
+                          className="item"
+                          to="#"
+                          onClick={() => this.onCancel()}
+                        >
+                          <Icon
+                            name={backSVG}
+                            size="30px"
+                            className="contents circled"
+                            title={this.props.intl.formatMessage(messages.back)}
+                          />
+                        </Link>
+                      </>
+                    }
+                  />
+                </Portal>
+              </>
+            );
+          }}
+        </LoadableToast>
       );
     }
 
     if (this.state.readOnlyBehavior) {
       return (
-        <>
-          <Segment
-            placeholder
-            id="page-controlpanel-layout"
-            className="ui container center aligned"
-          >
-            <div>
-              <FormattedMessage
-                id="Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>"
-                defaultMessage="Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>"
-                values={{
-                  strong: (...chunks) => <strong>{chunks}</strong>,
-                  type: this.props?.controlpanel?.title || this.props.id,
-                }}
-              />
-            </div>
-            <div className="ui divider"></div>
-            <Button
-              primary
-              onClick={this.onDisableBlocksBehavior}
-              content={this.props.intl.formatMessage(messages.enable)}
-            />
-          </Segment>
-          <Portal
-            node={this.state.isClient && document.getElementById('toolbar')}
-          >
-            <Toolbar
-              pathname={this.props.pathname}
-              hideDefaultViewButtons
-              inner={
-                <>
-                  <Link className="item" to="#" onClick={() => this.onCancel()}>
-                    <Icon
-                      name={backSVG}
-                      size="30px"
-                      className="contents circled"
-                      title={this.props.intl.formatMessage(messages.back)}
+        <LoadableToast>
+          {({ toast }) => {
+            this.toast = toast;
+
+            return (
+              <>
+                <Segment
+                  placeholder
+                  id="page-controlpanel-layout"
+                  className="ui container center aligned"
+                >
+                  <div>
+                    <FormattedMessage
+                      id="Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>"
+                      defaultMessage="Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>"
+                      values={{
+                        strong: (...chunks) => <strong>{chunks}</strong>,
+                        type: this.props?.controlpanel?.title || this.props.id,
+                      }}
                     />
-                  </Link>
-                </>
-              }
-            />
-          </Portal>
-        </>
+                  </div>
+                  <div className="ui divider"></div>
+                  <Button
+                    primary
+                    onClick={this.onDisableBlocksBehavior}
+                    content={this.props.intl.formatMessage(messages.enable)}
+                  />
+                </Segment>
+                <Portal
+                  node={
+                    this.state.isClient && document.getElementById('toolbar')
+                  }
+                >
+                  <Toolbar
+                    pathname={this.props.pathname}
+                    hideDefaultViewButtons
+                    inner={
+                      <>
+                        <Link
+                          className="item"
+                          to="#"
+                          onClick={() => this.onCancel()}
+                        >
+                          <Icon
+                            name={backSVG}
+                            size="30px"
+                            className="contents circled"
+                            title={this.props.intl.formatMessage(messages.back)}
+                          />
+                        </Link>
+                      </>
+                    }
+                  />
+                </Portal>
+              </>
+            );
+          }}
+        </LoadableToast>
       );
     }
 
@@ -420,76 +466,88 @@ class ContentTypeLayout extends Component {
       this.props.schema?.properties || {},
     );
     return (
-      <div id="page-controlpanel-layout">
-        <Form
-          isAdminForm
-          ref={this.form}
-          schema={{
-            fieldsets: [
-              {
-                id: 'layout',
-                title: 'Layout',
-                fields: [blocksFieldName, blocksLayoutFieldname],
-              },
-            ],
-            properties: {
-              ...this.props.schema.properties[blocksFieldName],
-              ...this.props.schema.properties[blocksLayoutFieldname],
-            },
-            required: [],
-          }}
-          formData={this.state.content}
-          onSubmit={this.onSubmit}
-          onCancel={this.onCancel}
-          pathname={this.props.pathname}
-          visual={this.state.visual}
-          hideActions
-        />
-        <Portal
-          node={this.state.isClient && document.getElementById('sidebar')}
-        >
-          <Sidebar settingsTab={true} documentTab={false} />
-        </Portal>
-        <Portal
-          node={this.state.isClient && document.getElementById('toolbar')}
-        >
-          <Toolbar
-            pathname={this.props.pathname}
-            hideDefaultViewButtons
-            inner={
-              <>
-                <Button
-                  id="toolbar-save"
-                  className="save"
-                  aria-label={this.props.intl.formatMessage(messages.save)}
-                  onClick={() => this.form.current.onSubmit()}
-                  disabled={this.props.schemaRequest.update.loading}
-                  loading={this.props.schemaRequest.update.loading}
-                >
-                  <Icon
-                    name={saveSVG}
-                    className="circled"
-                    size="30px"
-                    title={this.props.intl.formatMessage(messages.save)}
-                  />
-                </Button>
-                <Button
-                  className="cancel"
-                  aria-label={this.props.intl.formatMessage(messages.cancel)}
-                  onClick={() => this.onCancel()}
-                >
-                  <Icon
-                    name={clearSVG}
-                    className="circled"
-                    size="30px"
-                    title={this.props.intl.formatMessage(messages.cancel)}
-                  />
-                </Button>
-              </>
-            }
-          />
-        </Portal>
-      </div>
+      <LoadableToast>
+        {({ toast }) => {
+          this.toast = toast;
+
+          return (
+            <div id="page-controlpanel-layout">
+              <Form
+                isAdminForm
+                ref={this.form}
+                schema={{
+                  fieldsets: [
+                    {
+                      id: 'layout',
+                      title: 'Layout',
+                      fields: [blocksFieldName, blocksLayoutFieldname],
+                    },
+                  ],
+                  properties: {
+                    ...this.props.schema.properties[blocksFieldName],
+                    ...this.props.schema.properties[blocksLayoutFieldname],
+                  },
+                  required: [],
+                }}
+                formData={this.state.content}
+                onSubmit={this.onSubmit}
+                onCancel={this.onCancel}
+                pathname={this.props.pathname}
+                visual={this.state.visual}
+                hideActions
+              />
+              <Portal
+                node={this.state.isClient && document.getElementById('sidebar')}
+              >
+                <Sidebar settingsTab={true} documentTab={false} />
+              </Portal>
+              <Portal
+                node={this.state.isClient && document.getElementById('toolbar')}
+              >
+                <Toolbar
+                  pathname={this.props.pathname}
+                  hideDefaultViewButtons
+                  inner={
+                    <>
+                      <Button
+                        id="toolbar-save"
+                        className="save"
+                        aria-label={this.props.intl.formatMessage(
+                          messages.save,
+                        )}
+                        onClick={() => this.form.current.onSubmit()}
+                        disabled={this.props.schemaRequest.update.loading}
+                        loading={this.props.schemaRequest.update.loading}
+                      >
+                        <Icon
+                          name={saveSVG}
+                          className="circled"
+                          size="30px"
+                          title={this.props.intl.formatMessage(messages.save)}
+                        />
+                      </Button>
+                      <Button
+                        className="cancel"
+                        aria-label={this.props.intl.formatMessage(
+                          messages.cancel,
+                        )}
+                        onClick={() => this.onCancel()}
+                      >
+                        <Icon
+                          name={clearSVG}
+                          className="circled"
+                          size="30px"
+                          title={this.props.intl.formatMessage(messages.cancel)}
+                        />
+                      </Button>
+                    </>
+                  }
+                />
+              </Portal>
+            </div>
+          );
+        }}
+      </LoadableToast>
     );
   }
 }
