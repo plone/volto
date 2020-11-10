@@ -6,6 +6,9 @@
 
 ### Feature
 
+- Posibility to configure Sentry via `settings.sentryOptions` configuration key @avoinea
+- Catch `console.error` by default with Sentry @avoinea
+
 ### Bugfix
 
 - enabled no-folderish CT to be translated @giuliaghisini
