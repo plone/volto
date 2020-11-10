@@ -9,8 +9,10 @@
 ### Bugfix
 
 - enabled no-folderish CT to be translated @giuliaghisini
- 
+
 ### Internal
+
+- Move Guillotina CI job to GH actions @sneridagh
 
 ## 8.9.2 (2020-11-06)
 
