@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-10-27T12:13:27.176Z\n"
+"POT-Creation-Date: 2020-11-04T19:34:34.651Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -354,6 +354,11 @@ msgstr ""
 msgid "Choose Target"
 msgstr ""
 
+#: components/manage/Widgets/FileWidget
+# defaultMessage: Choose a File/Image
+msgid "Choose a File/Image"
+msgstr ""
+
 #: components/theme/View/ImageView
 # defaultMessage: Click to download full sized image
 msgid "Click to download full sized image"
@@ -420,11 +425,6 @@ msgstr ""
 #: components/manage/Blocks/Listing/ListingSidebar
 # defaultMessage: Content
 msgid "Content"
-msgstr ""
-
-#: components/manage/Multilingual/ManageTranslations
-# defaultMessage: Content linked
-msgid "Content linked"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
@@ -659,6 +659,21 @@ msgstr ""
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Drag and drop files from your computer onto this area or click the “Browse” button.
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
+msgstr ""
+
+#: components/manage/Widgets/FileWidget
+# defaultMessage: Drag the new item to upload
+msgid "Drag the new item to upload"
+msgstr ""
+
+#: components/manage/Widgets/FileWidget
+# defaultMessage: Drag to replace the file item
+msgid "Drag to replace the file item"
+msgstr ""
+
+#: components/manage/Widgets/FileWidget
+# defaultMessage: Drop files here ....
+msgid "Drop files here ...."
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
@@ -1686,6 +1701,11 @@ msgstr ""
 msgid "Repeat on"
 msgstr ""
 
+#: components/manage/Widgets/FileWidget
+# defaultMessage: Replace existing File/Image
+msgid "Replace existing File/Image"
+msgstr ""
+
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -2231,8 +2251,13 @@ msgid "Translate to {lang}"
 msgstr ""
 
 #: components/manage/Multilingual/ManageTranslations
-# defaultMessage: Translation deleted
-msgid "Translation deleted"
+# defaultMessage: Translation linked
+msgid "Translation linked"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+# defaultMessage: Translation linking removed
+msgid "Translation linking removed"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
@@ -2665,6 +2690,11 @@ msgstr ""
 #: config/Blocks
 # defaultMessage: Listing
 msgid "listing"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Loading
+msgid "loading"
 msgstr ""
 
 #: components/theme/Unauthorized/Unauthorized
