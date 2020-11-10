@@ -310,6 +310,10 @@ msgstr "Choisir une image"
 msgid "Choose Target"
 msgstr "Choisir une cible"
 
+#: components/manage/Widgets/FileWidget
+msgid "Choose a File/Image"
+msgstr ""
+
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
 msgstr "Cliquer pour télécharger l'image en taille réelle"
@@ -364,10 +368,6 @@ msgstr "Eléments contenants"
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Content"
 msgstr "Contenu"
-
-#: components/manage/Multilingual/ManageTranslations
-msgid "Content linked"
-msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
@@ -563,6 +563,18 @@ msgstr "Document"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Glisser et déposer les fichiers depuis votre ordinateur dans la zone ou cliquer sur le bouton “Explore“"
+
+#: components/manage/Widgets/FileWidget
+msgid "Drag the new item to upload"
+msgstr ""
+
+#: components/manage/Widgets/FileWidget
+msgid "Drag to replace the file item"
+msgstr ""
+
+#: components/manage/Widgets/FileWidget
+msgid "Drop files here ...."
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
@@ -1401,6 +1413,10 @@ msgstr ""
 msgid "Repeat on"
 msgstr ""
 
+#: components/manage/Widgets/FileWidget
+msgid "Replace existing File/Image"
+msgstr ""
+
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -1847,7 +1863,11 @@ msgid "Translate to {lang}"
 msgstr "Traduire en {lang}"
 
 #: components/manage/Multilingual/ManageTranslations
-msgid "Translation deleted"
+msgid "Translation linked"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Translation linking removed"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
@@ -2193,6 +2213,10 @@ msgstr "image de garde"
 #: config/Blocks
 msgid "listing"
 msgstr "listing"
+
+#: components/manage/Contents/Contents
+msgid "loading"
+msgstr ""
 
 #: components/theme/Unauthorized/Unauthorized
 msgid "log in"
