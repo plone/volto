@@ -5,7 +5,7 @@
 Volto can be installed in any operating system assuming that this requirements
 are met:
 
-- [Node.js LTS (12.x)](https://nodejs.org/)
+- [Node.js LTS (14.x)](https://nodejs.org/)
 - [Python 3.7.x / 2.7.x](https://python.org/) or
 - [Docker](https://www.docker.com/get-started) (if using the Plone/Guillotina
   docker images)
@@ -31,11 +31,14 @@ source ~/.bash_profile
 nvm version
 ```
 
-4. Install a LTS version of NodeJS:
+4. Install any active LTS version of NodeJS (https://nodejs.org/en/about/releases/):
 ```
 nvm install 12.16.1
 nvm use 12.16.1
 ```
+
+!!! note
+    Volto supports all currently active NodeJS LTS versions based on https://nodejs.org/en/about/releases/. On  	2021-04-30 Volto will not support Node 10 as it will reach its end of life.
 
 5. Test NodeJS:
 ```
