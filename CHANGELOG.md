@@ -1,6 +1,6 @@
 # Change Log
 
-## 8.8.1 (unreleased)
+## 8.9.3 (unreleased)
 
 ### Breaking
 
@@ -9,6 +9,42 @@
 ### Bugfix
 
 - Properly return 404, 401 and 403 on SSR, when appropriate @tiberiuichim
+
+### Internal
+
+## 8.9.2 (2020-11-06)
+
+### Bugfix
+
+- Revert type-in detection in draftjs link widget, as that leads to a regression @sneridagh
+- Fix and refactoring FileWidget @iFlameing
+
+## 8.9.1 (2020-11-06)
+
+### Bugfix
+
+- Fix SSR rendering in table blocks @sneridagh
+
+## 8.9.0 (2020-11-05)
+
+### Feature
+
+- Added Dropzone in FileWidget @iFlameing
+- Making inline link toolbar, location aware in content browser @iFlameing.
+- Detect if the link typed or pasted in the link widget of the text block is internal @sneridagh
+
+## 8.8.1 (2020-11-04)
+
+### Bugfix
+
+- Improve misleading translations deleted message @sneridagh
+- Fixing overlap of labels with each other in select widget @iFlameing
+- Throw error in crashReporter; also log sentry errors in server @tiberiuichim
+
+### Internal
+
+- Split razzle svg and sentry loaders to separate files @tiberiuichim
+- prevent form without blocks. Form always have at least the default block. @giuliaghisini
 - Fix default target for links in text blocks @giuliaghisini
 
 ### Internal

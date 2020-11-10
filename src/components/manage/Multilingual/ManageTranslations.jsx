@@ -29,12 +29,12 @@ const messages = defineMessages({
     defaultMessage: 'Success',
   },
   linked: {
-    id: 'Content linked',
-    defaultMessage: 'Content linked',
+    id: 'Translation linked',
+    defaultMessage: 'Translation linked',
   },
   unlinked: {
-    id: 'Translation deleted',
-    defaultMessage: 'Translation deleted',
+    id: 'Translation linking removed',
+    defaultMessage: 'Translation linking removed',
   },
   ManageTranslations: {
     id: 'Manage Translations',
