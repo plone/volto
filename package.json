@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "8.5.0-alpha.0",
+  "version": "8.9.2",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -99,7 +99,8 @@
       "~/config": "<rootDir>/src/config",
       "~/../locales/${lang}.json": "<rootDir>/locales/en.json",
       "(.*)/locales/(.*)": "<rootDir>/locales/$2",
-      "load-volto-addons": "<rootDir>/jest-addons-loader.js"
+      "load-volto-addons": "<rootDir>/jest-addons-loader.js",
+      "\\.(css|less|scss|sass)$": "identity-obj-proxy"
     },
     "coverageThreshold": {
       "global": {
@@ -210,7 +211,7 @@
     ]
   },
   "engines": {
-    "node": "^10 || ^12"
+    "node": "^10 || ^12 || ^14"
   },
   "dependencies": {
     "@babel/core": "7.11.1",
@@ -234,6 +235,9 @@
     "@loadable/component": "5.12.0",
     "@loadable/server": "5.12.0",
     "@loadable/webpack-plugin": "5.12.0",
+    "@sentry/browser": "5.12.1",
+    "@sentry/node": "5.12.3",
+    "@sentry/webpack-plugin": "1.12.1",
     "@testing-library/jest-dom": "4.2.4",
     "@testing-library/react": "9.3.2",
     "autoprefixer": "9.7.6",
@@ -282,6 +286,7 @@
     "history": "4.10.1",
     "http-proxy-middleware": "1.0.4",
     "husky": "4.2.5",
+    "identity-obj-proxy": "3.0.0",
     "jest-css-modules": "1.1.0",
     "jest-file": "1.0.0",
     "js-yaml": "3.13.1",
@@ -298,8 +303,6 @@
     "mem": "4.0.0",
     "mini-css-extract-plugin": "0.9.0",
     "moment": "2.24.0",
-    "moment-locales-webpack-plugin": "1.2.0",
-    "moment-timezone": "^0.5.31",
     "pofile": "1.0.10",
     "postcss-flexbugs-fixes": "4.2.1",
     "postcss-loader": "3.0.0",
@@ -348,14 +351,11 @@
     "redux-devtools-extension": "2.13.8",
     "redux-mock-store": "1.5.4",
     "redux-thunk": "2.3.0",
-    "release-it": "14.0.3",
+    "release-it": "14.2.0",
     "rrule": "2.6.4",
     "semantic-ui-less": "2.4.1",
     "semantic-ui-react": "0.88.1",
     "semver": "5.6.0",
-    "@sentry/browser": "5.12.1",
-    "@sentry/node": "5.12.3",
-    "@sentry/webpack-plugin": "1.12.1",
     "serialize-javascript": "3.1.0",
     "start-server-and-test": "1.10.6",
     "stylelint": "13.3.3",

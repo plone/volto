@@ -168,6 +168,7 @@ msgstr "Disponibil"
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Diff/Diff
 #: components/manage/History/History
+#: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -291,6 +292,10 @@ msgstr "Alegeți imaginea"
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Choose Target"
 msgstr "Alegeți ținta"
+
+#: components/manage/Widgets/FileWidget
+msgid "Choose a File/Image"
+msgstr ""
 
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
@@ -541,6 +546,18 @@ msgstr "Document"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Trageți și fixați fișierele de pe computer în această zonă sau faceți clic pe butonul Răsfoiește."
+
+#: components/manage/Widgets/FileWidget
+msgid "Drag the new item to upload"
+msgstr ""
+
+#: components/manage/Widgets/FileWidget
+msgid "Drag to replace the file item"
+msgstr ""
+
+#: components/manage/Widgets/FileWidget
+msgid "Drop files here ...."
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
@@ -888,12 +905,20 @@ msgid "Item batch size"
 msgstr "Dimensiunea lotului obiectului"
 
 #: components/manage/Contents/Contents
+msgid "Item succesfully moved."
+msgstr ""
+
+#: components/manage/Contents/Contents
 msgid "Item(s) copied."
 msgstr "Obiect(e) copiat."
 
 #: components/manage/Contents/Contents
 msgid "Item(s) cut."
 msgstr "Obiect(e) tăiat(e)."
+
+#: components/manage/Contents/Contents
+msgid "Item(s) has been sorted."
+msgstr ""
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -995,6 +1020,15 @@ msgstr "Nume de autentificare"
 #: components/manage/Blocks/Table/Edit
 msgid "Make the table compact"
 msgstr "Compactati tabelul"
+
+#: components/manage/Multilingual/ManageTranslations
+#: components/manage/Toolbar/More
+msgid "Manage Translations"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Manage translations for {title}"
+msgstr ""
 
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "Map"
@@ -1362,6 +1396,10 @@ msgstr ""
 msgid "Repeat on"
 msgstr ""
 
+#: components/manage/Widgets/FileWidget
+msgid "Replace existing File/Image"
+msgstr ""
+
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -1656,6 +1694,7 @@ msgstr "Subiect"
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -1809,6 +1848,14 @@ msgstr ""
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
 msgstr "Traduceți în {lang}"
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Translation linked"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Translation linking removed"
+msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
@@ -2153,6 +2200,10 @@ msgstr "Imagine (copertă)"
 #: config/Blocks
 msgid "listing"
 msgstr "Listare"
+
+#: components/manage/Contents/Contents
+msgid "loading"
+msgstr ""
 
 #: components/theme/Unauthorized/Unauthorized
 msgid "log in"
