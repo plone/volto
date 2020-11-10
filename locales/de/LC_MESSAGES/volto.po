@@ -308,6 +308,10 @@ msgstr "Bild auswählen"
 msgid "Choose Target"
 msgstr "Ziel auswählen"
 
+#: components/manage/Widgets/FileWidget
+msgid "Choose a File/Image"
+msgstr ""
+
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
 msgstr ""
@@ -370,10 +374,6 @@ msgstr "Enthaltene Elemente"
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Content"
 msgstr "Inhalt"
-
-#: components/manage/Multilingual/ManageTranslations
-msgid "Content linked"
-msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
@@ -570,6 +570,18 @@ msgstr "Seite"
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Ziehen Sie Dateien von Ihrem Computer auf diesen Bereich oder drücken Sie den “Durchsuchen”-Knopf."
 
+#: components/manage/Widgets/FileWidget
+msgid "Drag the new item to upload"
+msgstr ""
+
+#: components/manage/Widgets/FileWidget
+msgid "Drag to replace the file item"
+msgstr ""
+
+#: components/manage/Widgets/FileWidget
+msgid "Drop files here ...."
+msgstr ""
+
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
 msgid "E-mail"
@@ -750,7 +762,7 @@ msgstr "Vierter"
 
 #: components/theme/ContactForm/ContactForm
 msgid "From"
-msgstr "Von"
+msgstr "E-Mail"
 
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
@@ -1407,6 +1419,10 @@ msgstr "Wiederhole jeden"
 msgid "Repeat on"
 msgstr "Wiederhole am"
 
+#: components/manage/Widgets/FileWidget
+msgid "Replace existing File/Image"
+msgstr ""
+
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -1853,7 +1869,11 @@ msgid "Translate to {lang}"
 msgstr "Auf {lang} übersetzen"
 
 #: components/manage/Multilingual/ManageTranslations
-msgid "Translation deleted"
+msgid "Translation linked"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Translation linking removed"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
@@ -2199,6 +2219,10 @@ msgstr "leadimage"
 #: config/Blocks
 msgid "listing"
 msgstr "listing"
+
+#: components/manage/Contents/Contents
+msgid "loading"
+msgstr ""
 
 #: components/theme/Unauthorized/Unauthorized
 msgid "log in"
