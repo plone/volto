@@ -35,7 +35,7 @@ body {
 }
 
 .overlay-container {
-  position: absolute;
+  position: fixed;
   z-index: 110;
   top: 0;
   left: 0;
@@ -353,6 +353,47 @@ button {
     .stretched.nine.wide.column {
       align-self: start;
     }
+  }
+}
+
+// File Widget
+.ui.small.image.image-preview {
+  margin-top: 20px;
+}
+
+.label-file-widget-input {
+  display: inline-block;
+  padding: 7px 10px;
+  border: 2px solid #007eb1;
+  margin-top: 20px;
+  border-radius: 10px;
+  color: #007eb1;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.dropzone-placeholder {
+  width: 100%;
+  padding: 20px;
+  border: 2px dashed #c7d5d8;
+  margin-top: 20px;
+}
+
+.dropzone-text {
+  height: 100%;
+  text-align: center;
+}
+
+.file-widget-dropzone {
+  outline: none;
+}
+
+#page-manage-translations .manage-multilingual-tools {
+  .ui.button {
+    padding: 4px;
+    margin-left: 4px;
+    border-radius: 1px;
+    color: #826a6a !important;
   }
 }
 

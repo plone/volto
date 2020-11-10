@@ -168,6 +168,7 @@ msgstr ""
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Diff/Diff
 #: components/manage/History/History
+#: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -290,6 +291,10 @@ msgstr ""
 
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Choose Target"
+msgstr ""
+
+#: components/manage/Widgets/FileWidget
+msgid "Choose a File/Image"
 msgstr ""
 
 #: components/theme/View/ImageView
@@ -540,6 +545,18 @@ msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
+msgstr ""
+
+#: components/manage/Widgets/FileWidget
+msgid "Drag the new item to upload"
+msgstr ""
+
+#: components/manage/Widgets/FileWidget
+msgid "Drag to replace the file item"
+msgstr ""
+
+#: components/manage/Widgets/FileWidget
+msgid "Drop files here ...."
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
@@ -884,11 +901,19 @@ msgid "Item batch size"
 msgstr ""
 
 #: components/manage/Contents/Contents
+msgid "Item succesfully moved."
+msgstr ""
+
+#: components/manage/Contents/Contents
 msgid "Item(s) copied."
 msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Item(s) cut."
+msgstr ""
+
+#: components/manage/Contents/Contents
+msgid "Item(s) has been sorted."
 msgstr ""
 
 #: components/manage/Actions/Actions
@@ -990,6 +1015,15 @@ msgstr ""
 
 #: components/manage/Blocks/Table/Edit
 msgid "Make the table compact"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+#: components/manage/Toolbar/More
+msgid "Manage Translations"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Manage translations for {title}"
 msgstr ""
 
 #: components/manage/Blocks/Maps/MapsSidebar
@@ -1358,6 +1392,10 @@ msgstr ""
 msgid "Repeat on"
 msgstr ""
 
+#: components/manage/Widgets/FileWidget
+msgid "Replace existing File/Image"
+msgstr ""
+
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -1648,6 +1686,7 @@ msgstr ""
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -1800,6 +1839,14 @@ msgstr ""
 
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Translation linked"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Translation linking removed"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
@@ -2144,6 +2191,10 @@ msgstr ""
 
 #: config/Blocks
 msgid "listing"
+msgstr ""
+
+#: components/manage/Contents/Contents
+msgid "loading"
 msgstr ""
 
 #: components/theme/Unauthorized/Unauthorized

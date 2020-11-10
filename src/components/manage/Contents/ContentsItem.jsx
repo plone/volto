@@ -29,6 +29,7 @@ import moveUpSVG from '@plone/volto/icons/move-up.svg';
 import moveDownSVG from '@plone/volto/icons/move-down.svg';
 import editingSVG from '@plone/volto/icons/editing.svg';
 import dragSVG from '@plone/volto/icons/drag.svg';
+import cx from 'classnames';
 
 const messages = defineMessages({
   private: {
@@ -111,8 +112,8 @@ export const ContentsItemComponent = ({
 
   return connectDropTarget(
     connectDragPreview(
-      <tr key={item['@id']} style={{ opacity: isDragging ? 0 : 1 }}>
-        <Table.Cell>
+      <tr key={item['@id']} className={cx('', { 'dragging-row': isDragging })}>
+        <Table.Cell className={cx('', { 'dragging-cell': isDragging })}>
           {connectDragSource(
             <div style={{ display: 'inline-block' }}>
               <Button icon basic>
@@ -126,7 +127,7 @@ export const ContentsItemComponent = ({
             </div>,
           )}
         </Table.Cell>
-        <Table.Cell>
+        <Table.Cell className={cx('', { 'dragging-cell': isDragging })}>
           {selected ? (
             <Button
               icon
@@ -157,7 +158,7 @@ export const ContentsItemComponent = ({
             </Button>
           )}
         </Table.Cell>
-        <Table.Cell>
+        <Table.Cell className={cx('', { 'dragging-cell': isDragging })}>
           <Link
             className="icon-align-name"
             to={`${item['@id']}${item.is_folderish ? '/contents' : ''}`}
@@ -182,7 +183,10 @@ export const ContentsItemComponent = ({
           </Link>
         </Table.Cell>
         {map(indexes, (index) => (
-          <Table.Cell key={index.id}>
+          <Table.Cell
+            className={cx('', { 'dragging-cell': isDragging })}
+            key={index.id}
+          >
             {index.type === 'boolean' &&
               (item[index.id] ? (
                 <FormattedMessage id="Yes" defaultMessage="Yes" />
@@ -221,7 +225,10 @@ export const ContentsItemComponent = ({
             )}
           </Table.Cell>
         ))}
-        <Table.Cell textAlign="right">
+        <Table.Cell
+          className={cx('', { 'dragging-cell': isDragging })}
+          textAlign="right"
+        >
           <Dropdown
             className="row-actions"
             icon={<Icon name={moreSVG} size="24px" color="#007eb1" />}

@@ -168,6 +168,7 @@ msgstr "Disponibile"
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Diff/Diff
 #: components/manage/History/History
+#: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -291,6 +292,10 @@ msgstr "Seleziona un'immagine"
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Choose Target"
 msgstr "Seleziona la destinazione"
+
+#: components/manage/Widgets/FileWidget
+msgid "Choose a File/Image"
+msgstr ""
 
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
@@ -541,6 +546,18 @@ msgstr "Pagina"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Trascina in quest'area i file dal tuo computer o clicca su “Sfoglia”."
+
+#: components/manage/Widgets/FileWidget
+msgid "Drag the new item to upload"
+msgstr ""
+
+#: components/manage/Widgets/FileWidget
+msgid "Drag to replace the file item"
+msgstr ""
+
+#: components/manage/Widgets/FileWidget
+msgid "Drop files here ...."
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
@@ -884,12 +901,20 @@ msgid "Item batch size"
 msgstr "Risultati per pagina"
 
 #: components/manage/Contents/Contents
+msgid "Item succesfully moved."
+msgstr ""
+
+#: components/manage/Contents/Contents
 msgid "Item(s) copied."
 msgstr "Elemento/i copiato/i."
 
 #: components/manage/Contents/Contents
 msgid "Item(s) cut."
 msgstr "Elemento/i tagliato/i."
+
+#: components/manage/Contents/Contents
+msgid "Item(s) has been sorted."
+msgstr ""
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -991,6 +1016,15 @@ msgstr "Nome utente"
 #: components/manage/Blocks/Table/Edit
 msgid "Make the table compact"
 msgstr "Rendi la tabella compatta"
+
+#: components/manage/Multilingual/ManageTranslations
+#: components/manage/Toolbar/More
+msgid "Manage Translations"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Manage translations for {title}"
+msgstr ""
 
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "Map"
@@ -1358,6 +1392,10 @@ msgstr "Ogni"
 msgid "Repeat on"
 msgstr "Ripeti ogni"
 
+#: components/manage/Widgets/FileWidget
+msgid "Replace existing File/Image"
+msgstr ""
+
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -1648,6 +1686,7 @@ msgstr "Oggetto"
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -1801,6 +1840,14 @@ msgstr "Numero totale di oggetti nel database"
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
 msgstr "Traduci in {lang}"
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Translation linked"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Translation linking removed"
+msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
@@ -2145,6 +2192,10 @@ msgstr "Immagine di testata"
 #: config/Blocks
 msgid "listing"
 msgstr "Elenco"
+
+#: components/manage/Contents/Contents
+msgid "loading"
+msgstr ""
 
 #: components/theme/Unauthorized/Unauthorized
 msgid "log in"
