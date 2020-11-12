@@ -1121,8 +1121,8 @@ msgid "Item(s) cut."
 msgstr ""
 
 #: components/manage/Contents/Contents
-# defaultMessage: Item(s) has been sorted.
-msgid "Item(s) has been sorted."
+# defaultMessage: Item(s) has been updated.
+msgid "Item(s) has been updated."
 msgstr ""
 
 #: components/manage/Actions/Actions

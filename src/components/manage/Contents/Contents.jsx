@@ -139,9 +139,9 @@ const messages = defineMessages({
     id: 'Item(s) cut.',
     defaultMessage: 'Item(s) cut.',
   },
-  messageSort: {
-    id: 'Item(s) has been sorted.',
-    defaultMessage: 'Item(s) has been sorted.',
+  messageUpdate: {
+    id: 'Item(s) has been updated.',
+    defaultMessage: 'Item(s) has been updated.',
   },
   messageReorder: {
     id: 'Item succesfully moved.',
@@ -443,7 +443,7 @@ class Contents extends Component {
         <Toast
           success
           title={this.props.intl.formatMessage(messages.success)}
-          content={this.props.intl.formatMessage(messages.messageSort)}
+          content={this.props.intl.formatMessage(messages.messageUpdate)}
         />,
       );
     }

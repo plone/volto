@@ -17,6 +17,7 @@
  
 ### Internal
 
+- Changing checkbox widget of exclude-nav to select widget @iFlameing
 ## 8.9.2 (2020-11-06)
 
 ### Bugfix
