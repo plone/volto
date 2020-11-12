@@ -304,6 +304,10 @@ msgstr "Aukeratu helburua"
 msgid "Choose a File/Image"
 msgstr ""
 
+#: components/manage/Blocks/HTML/Edit
+msgid "Clear"
+msgstr ""
+
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
 msgstr "Egin klik tamaina osoko irudia deskargatzeko..."
@@ -315,6 +319,10 @@ msgstr "Itxi"
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
 msgstr "Itxi menua"
+
+#: components/manage/Blocks/HTML/Edit
+msgid "Code"
+msgstr ""
 
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"
@@ -1310,6 +1318,10 @@ msgid "Preferences"
 msgstr "Hobespenak"
 
 #: components/manage/Blocks/HTML/Edit
+msgid "Prettify your code"
+msgstr ""
+
+#: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
 msgid "Preview"
 msgstr "Aurreikusi"
@@ -2079,6 +2091,10 @@ msgstr "Bertsioen arteko aldeak ikusi ditzakezu"
 #: components/manage/History/History
 msgid "You can view the history of your item below."
 msgstr "Zure elementuaren historia ikusi dezakezu."
+
+#: components/manage/Contents/Contents
+msgid "You can't paste this content here"
+msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Your email is required for reset your password."
