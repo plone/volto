@@ -314,6 +314,10 @@ msgstr "Choisir une cible"
 msgid "Choose a File/Image"
 msgstr ""
 
+#: components/manage/Blocks/HTML/Edit
+msgid "Clear"
+msgstr ""
+
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
 msgstr "Cliquer pour télécharger l'image en taille réelle"
@@ -325,6 +329,10 @@ msgstr "Fermer"
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
 msgstr "Fermer le menu"
+
+#: components/manage/Blocks/HTML/Edit
+msgid "Code"
+msgstr ""
 
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"
@@ -1318,6 +1326,10 @@ msgstr "Alimenté par Plone & Python"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr "Préférences"
+
+#: components/manage/Blocks/HTML/Edit
+msgid "Prettify your code"
+msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal

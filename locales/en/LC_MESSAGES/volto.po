@@ -297,6 +297,10 @@ msgstr ""
 msgid "Choose a File/Image"
 msgstr ""
 
+#: components/manage/Blocks/HTML/Edit
+msgid "Clear"
+msgstr ""
+
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
 msgstr ""
@@ -307,6 +311,10 @@ msgstr ""
 
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
+msgstr ""
+
+#: components/manage/Blocks/HTML/Edit
+msgid "Code"
 msgstr ""
 
 #: components/manage/Toolbar/Toolbar
@@ -1300,6 +1308,10 @@ msgstr ""
 
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
+msgstr ""
+
+#: components/manage/Blocks/HTML/Edit
+msgid "Prettify your code"
 msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
