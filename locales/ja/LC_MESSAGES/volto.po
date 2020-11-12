@@ -645,6 +645,10 @@ msgstr "終了日付"
 msgid "Enter URL or select an item"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Enter a username above to search or click 'Show All'"
+msgstr ""
+
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 msgstr "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere. (未翻訳)"
@@ -1603,6 +1607,10 @@ msgstr "ショートネーム"
 #: components/theme/Pagination/Pagination
 msgid "Show"
 msgstr "表示件数"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Show All"
+msgstr ""
 
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"

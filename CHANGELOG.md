@@ -5,6 +5,7 @@
 ### Breaking
 
 ### Feature
+- Adding show all button in UsersControlpanel @iFlameing
 
 - Now you can prettify the html code in HTML block @iFlameing
 

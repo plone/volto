@@ -773,6 +773,11 @@ msgstr ""
 msgid "Enter URL or select an item"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Enter a username above to search or click 'Show All'
+msgid "Enter a username above to search or click 'Show All'"
+msgstr ""
+
 #: components/theme/Register/Register
 # defaultMessage: Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
@@ -1950,6 +1955,11 @@ msgstr ""
 #: components/theme/Pagination/Pagination
 # defaultMessage: Show
 msgid "Show"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Show All
+msgid "Show All"
 msgstr ""
 
 #: components/manage/Sidebar/Sidebar
