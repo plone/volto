@@ -2092,6 +2092,10 @@ msgstr "Bertsioen arteko aldeak ikusi ditzakezu"
 msgid "You can view the history of your item below."
 msgstr "Zure elementuaren historia ikusi dezakezu."
 
+#: components/manage/Contents/Contents
+msgid "You can't paste this content here"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Your email is required for reset your password."
 msgstr "Eposta derrigorrezkoa da zure pasahitza berrezartzeko."

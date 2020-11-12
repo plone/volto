@@ -2557,6 +2557,11 @@ msgstr ""
 msgid "You can view the history of your item below."
 msgstr ""
 
+#: components/manage/Contents/Contents
+# defaultMessage: You can't paste this content here
+msgid "You can't paste this content here"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Your email is required for reset your password.
 msgid "Your email is required for reset your password."

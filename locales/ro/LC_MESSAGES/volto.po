@@ -2085,6 +2085,10 @@ msgstr "Puteți vedea diferența reviziilor de mai jos."
 msgid "You can view the history of your item below."
 msgstr "Puteți vedea istoricul articolului dvs. mai jos."
 
+#: components/manage/Contents/Contents
+msgid "You can't paste this content here"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Your email is required for reset your password."
 msgstr "E-mailul dvs. este necesar pentru resetarea parolei."
