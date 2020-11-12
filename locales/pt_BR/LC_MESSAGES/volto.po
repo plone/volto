@@ -305,6 +305,10 @@ msgstr "Escolha Alvo"
 msgid "Choose a File/Image"
 msgstr ""
 
+#: components/manage/Blocks/HTML/Edit
+msgid "Clear"
+msgstr ""
+
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
 msgstr ""
@@ -316,6 +320,10 @@ msgstr "Fechar"
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
 msgstr "Fechar menu"
+
+#: components/manage/Blocks/HTML/Edit
+msgid "Code"
+msgstr ""
 
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"
@@ -1311,6 +1319,10 @@ msgid "Preferences"
 msgstr "Preferências"
 
 #: components/manage/Blocks/HTML/Edit
+msgid "Prettify your code"
+msgstr ""
+
+#: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
 msgid "Preview"
 msgstr "Pré-visualização"
@@ -2080,6 +2092,10 @@ msgstr "Pode ver a diferença das revisões abaixo."
 #: components/manage/History/History
 msgid "You can view the history of your item below."
 msgstr "Pode ver o histórico do seu item abaixo."
+
+#: components/manage/Contents/Contents
+msgid "You can't paste this content here"
+msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Your email is required for reset your password."
