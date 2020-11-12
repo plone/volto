@@ -9,6 +9,8 @@
 
 - Now you can prettify the html code in HTML block @iFlameing
 
+- Adding preview image placeholder in Video Block @iFlameing
+
 ### Bugfix
 
 - Fix error object in clipboard reducer @iFlameing

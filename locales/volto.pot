@@ -1616,6 +1616,11 @@ msgstr ""
 msgid "Preview"
 msgstr ""
 
+#: components/manage/Blocks/Video/VideoSidebar
+# defaultMessage: Preview Image URL
+msgid "Preview Image URL"
+msgstr ""
+
 #: components/manage/Toolbar/PersonalTools
 # defaultMessage: Profile
 msgid "Profile"
