@@ -1,6 +1,6 @@
 # Change Log
 
-## 8.9.3 (unreleased)
+## 8.10.0 (2020-11-12)
 
 ### Feature
 
