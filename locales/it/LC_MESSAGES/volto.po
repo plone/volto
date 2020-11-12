@@ -297,6 +297,10 @@ msgstr "Seleziona la destinazione"
 msgid "Choose a File/Image"
 msgstr ""
 
+#: components/manage/Blocks/HTML/Edit
+msgid "Clear"
+msgstr ""
+
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
 msgstr "Clicca per scaricare l'immagine in dimensione originale"
@@ -308,6 +312,10 @@ msgstr "Chiudi"
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
 msgstr "Chiudi menu"
+
+#: components/manage/Blocks/HTML/Edit
+msgid "Code"
+msgstr ""
 
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"
@@ -917,7 +925,7 @@ msgid "Item(s) cut."
 msgstr "Elemento/i tagliato/i."
 
 #: components/manage/Contents/Contents
-msgid "Item(s) has been sorted."
+msgid "Item(s) has been updated."
 msgstr ""
 
 #: components/manage/Actions/Actions
@@ -1305,6 +1313,10 @@ msgstr "Realizzato con Plone &amp; Python"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr "Preferenze"
+
+#: components/manage/Blocks/HTML/Edit
+msgid "Prettify your code"
+msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
@@ -2080,6 +2092,10 @@ msgstr "Puoi visualizzare la differenza delle revisioni qui sotto."
 #: components/manage/History/History
 msgid "You can view the history of your item below."
 msgstr "Puoi visualizzare la cronologia del tuo articolo qui sotto."
+
+#: components/manage/Contents/Contents
+msgid "You can't paste this content here"
+msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Your email is required for reset your password."

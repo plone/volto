@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-11-04T19:34:34.651Z\n"
+"POT-Creation-Date: 2020-11-10T14:47:42.132Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -359,6 +359,11 @@ msgstr ""
 msgid "Choose a File/Image"
 msgstr ""
 
+#: components/manage/Blocks/HTML/Edit
+# defaultMessage: Clear
+msgid "Clear"
+msgstr ""
+
 #: components/theme/View/ImageView
 # defaultMessage: Click to download full sized image
 msgid "Click to download full sized image"
@@ -372,6 +377,11 @@ msgstr ""
 #: components/theme/Navigation/Navigation
 # defaultMessage: Close menu
 msgid "Close menu"
+msgstr ""
+
+#: components/manage/Blocks/HTML/Edit
+# defaultMessage: Code
+msgid "Code"
 msgstr ""
 
 #: components/manage/Toolbar/Toolbar
@@ -1116,8 +1126,8 @@ msgid "Item(s) cut."
 msgstr ""
 
 #: components/manage/Contents/Contents
-# defaultMessage: Item(s) has been sorted.
-msgid "Item(s) has been sorted."
+# defaultMessage: Item(s) has been updated.
+msgid "Item(s) has been updated."
 msgstr ""
 
 #: components/manage/Actions/Actions
@@ -1593,6 +1603,11 @@ msgstr ""
 #: components/manage/Toolbar/PersonalTools
 # defaultMessage: Preferences
 msgid "Preferences"
+msgstr ""
+
+#: components/manage/Blocks/HTML/Edit
+# defaultMessage: Prettify your code
+msgid "Prettify your code"
 msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
@@ -2550,6 +2565,11 @@ msgstr ""
 #: components/manage/History/History
 # defaultMessage: You can view the history of your item below.
 msgid "You can view the history of your item below."
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: You can't paste this content here
+msgid "You can't paste this content here"
 msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset

@@ -297,6 +297,10 @@ msgstr "Alegeți ținta"
 msgid "Choose a File/Image"
 msgstr ""
 
+#: components/manage/Blocks/HTML/Edit
+msgid "Clear"
+msgstr ""
+
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
 msgstr "Faceți clic pentru a descărca imaginea cu dimensiuni complete"
@@ -308,6 +312,10 @@ msgstr "Închideți"
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
 msgstr "Închidere meniu"
+
+#: components/manage/Blocks/HTML/Edit
+msgid "Code"
+msgstr ""
 
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"
@@ -917,7 +925,7 @@ msgid "Item(s) cut."
 msgstr "Obiect(e) tăiat(e)."
 
 #: components/manage/Contents/Contents
-msgid "Item(s) has been sorted."
+msgid "Item(s) has been updated."
 msgstr ""
 
 #: components/manage/Actions/Actions
@@ -1305,6 +1313,10 @@ msgstr "Powered by Plone & Python"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr "Preferințe"
+
+#: components/manage/Blocks/HTML/Edit
+msgid "Prettify your code"
+msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
@@ -2080,6 +2092,10 @@ msgstr "Puteți vedea diferența reviziilor de mai jos."
 #: components/manage/History/History
 msgid "You can view the history of your item below."
 msgstr "Puteți vedea istoricul articolului dvs. mai jos."
+
+#: components/manage/Contents/Contents
+msgid "You can't paste this content here"
+msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Your email is required for reset your password."

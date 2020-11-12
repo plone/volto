@@ -7,12 +7,18 @@
 ### Feature
 - Adding show all button in UsersControlpanel @iFlameing
 
+- Now you can prettify the html code in HTML block @iFlameing
+
 ### Bugfix
 
+- Fix error object in clipboard reducer @iFlameing
+- Making QuerystringWidget more resilient by handeling null value @iFlameing
+- Fixing bug related to initiation of table block with previous table block data @iFlameing
 - enabled no-folderish CT to be translated @giuliaghisini
  
 ### Internal
 
+- Changing checkbox widget of exclude-nav to select widget @iFlameing
 ## 8.9.2 (2020-11-06)
 
 ### Bugfix
