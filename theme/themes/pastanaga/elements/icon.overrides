@@ -1991,7 +1991,7 @@ i.icon.backward:before {
 }
 
 i.icon.play:before {
-  content: '\f04b';
+  content: '\e9bc';
 }
 
 i.icon.pause:before {
