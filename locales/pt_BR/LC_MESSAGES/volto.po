@@ -306,6 +306,10 @@ msgstr "Escolha Alvo"
 msgid "Choose a File/Image"
 msgstr ""
 
+#: components/manage/Blocks/HTML/Edit
+msgid "Clear"
+msgstr ""
+
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
 msgstr ""
@@ -317,6 +321,10 @@ msgstr "Fechar"
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
 msgstr "Fechar menu"
+
+#: components/manage/Blocks/HTML/Edit
+msgid "Code"
+msgstr ""
 
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"
@@ -640,6 +648,10 @@ msgstr ""
 msgid "Enter URL or select an item"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Enter a username above to search or click 'Show All'"
+msgstr ""
+
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 msgstr "Escreva um endereço de email. Este será o seu nome de sessão. Respeitamos a sua privacidade e nunca iremos ceder o seu endereço a terceiros ou expô-lo onde quer que seja."
@@ -924,7 +936,7 @@ msgid "Item(s) cut."
 msgstr "Item(ns) cortado(s)."
 
 #: components/manage/Contents/Contents
-msgid "Item(s) has been sorted."
+msgid "Item(s) has been updated."
 msgstr ""
 
 #: components/manage/Actions/Actions
@@ -1314,9 +1326,17 @@ msgid "Preferences"
 msgstr "Preferências"
 
 #: components/manage/Blocks/HTML/Edit
+msgid "Prettify your code"
+msgstr ""
+
+#: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
 msgid "Preview"
 msgstr "Pré-visualização"
+
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "Preview Image URL"
+msgstr ""
 
 #: components/manage/Toolbar/PersonalTools
 msgid "Profile"
@@ -1594,6 +1614,10 @@ msgstr "Nome curto"
 
 #: components/theme/Pagination/Pagination
 msgid "Show"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Show All"
 msgstr ""
 
 #: components/manage/Sidebar/Sidebar
@@ -2091,6 +2115,10 @@ msgstr "Pode ver a diferença das revisões abaixo."
 #: components/manage/History/History
 msgid "You can view the history of your item below."
 msgstr "Pode ver o histórico do seu item abaixo."
+
+#: components/manage/Contents/Contents
+msgid "You can't paste this content here"
+msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Your email is required for reset your password."

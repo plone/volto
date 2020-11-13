@@ -8,7 +8,7 @@ import { Input, Segment } from 'semantic-ui-react';
 import { join } from 'lodash';
 import { searchContent } from '@plone/volto/actions';
 import { Icon } from '@plone/volto/components';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 
 import { settings } from '~/config';
@@ -144,7 +144,7 @@ class ObjectBrowserBody extends Component {
         : mode === 'image'
         ? this.state.selectedImage
         : this.state.selectedHref;
-    if (currentSelected) {
+    if (currentSelected && isInternalURL(currentSelected)) {
       this.props.searchContent(
         getParentURL(currentSelected),
         {
