@@ -14,11 +14,13 @@ import {
   UPDATE_USER,
   INITIAL_PASSWORD,
   RESET_PASSWORD,
+  Show_All_USERS,
 } from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
   user: {},
   users: [],
+  showAllUser: false,
   create: {
     error: null,
     loaded: false,
@@ -172,6 +174,12 @@ export default function users(state = initialState, action = {}) {
           error: action.error.error,
         },
       };
+    case Show_All_USERS: {
+      return {
+        ...state,
+        showAllUser: true,
+      };
+    }
     default:
       return state;
   }

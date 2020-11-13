@@ -657,6 +657,10 @@ msgstr ""
 msgid "Enter URL or select an item"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Enter a username above to search or click 'Show All'"
+msgstr ""
+
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 msgstr ""
@@ -940,7 +944,7 @@ msgid "Item(s) cut."
 msgstr "Item(d) geknipt."
 
 #: components/manage/Contents/Contents
-msgid "Item(s) has been sorted."
+msgid "Item(s) has been updated."
 msgstr ""
 
 #: components/manage/Actions/Actions
@@ -1338,6 +1342,10 @@ msgstr ""
 msgid "Preview"
 msgstr "Voorvertoning"
 
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "Preview Image URL"
+msgstr ""
+
 #: components/manage/Toolbar/PersonalTools
 msgid "Profile"
 msgstr ""
@@ -1614,6 +1622,10 @@ msgstr "Korte naam"
 
 #: components/theme/Pagination/Pagination
 msgid "Show"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Show All"
 msgstr ""
 
 #: components/manage/Sidebar/Sidebar
@@ -2103,6 +2115,10 @@ msgstr "U kunt de verschillen tussen de revisies hieronder bekijken."
 #: components/manage/History/History
 msgid "You can view the history of your item below."
 msgstr "U kunt de geschiedenis van uw item hieronder bekijken."
+
+#: components/manage/Contents/Contents
+msgid "You can't paste this content here"
+msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Your email is required for reset your password."
