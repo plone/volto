@@ -12,8 +12,11 @@ This upgrade guide lists all breaking changes in Volto and explains the
 
 ## Upgrading to Volto 9.x.x
 
+### Content Types icons
 Helper method `getIcon` from `Url` has been removed in favor of `getContentIcon`
 from `Content` which is now configurable.
+
+See [contentIcons docs](../configuration/settings-reference.md#contenticons).
 
 
 ## Upgrading to Volto 8.x.x
