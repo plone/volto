@@ -2,10 +2,6 @@
 
 ## 8.10.1 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Fix leaking input CSS in the link widget in draftjs @sneridagh
