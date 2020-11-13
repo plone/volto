@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Move Guillotina CI job to GH actions @sneridagh
+
 ## 8.10.0 (2020-11-12)
 
 ### Feature
