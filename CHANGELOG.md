@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix leaking input CSS in the link widget in draftjs @sneridagh
+
 ### Internal
 
 - Move Guillotina CI job to GH actions @sneridagh
