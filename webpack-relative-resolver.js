@@ -4,7 +4,7 @@ class RelativeResolverPlugin {
   constructor(registry) {
     this.registry = registry;
     this.voltoPaths = Object.assign(
-      { '@plone/volto': `${registry.voltoPath}/src` },
+      { '@plone/volto/': `${registry.voltoPath}/src` },
       ...Object.keys(registry.packages).map((k) => ({
         [k]: registry.packages[k].modulePath,
       })),
