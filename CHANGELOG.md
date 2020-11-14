@@ -6,7 +6,10 @@
 
 ### Feature
 
+- Posibility to configure Sentry via `settings.sentryOptions` configuration key @avoinea
+- Catch `console.error` by default with Sentry @avoinea
 - Refactor CT icons helper: add getContentIcons @nzambello
+
 ### Bugfix
 
 - Properly return 404, 401 and 403 on SSR, when appropriate @tiberiuichim

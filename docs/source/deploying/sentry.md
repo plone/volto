@@ -40,6 +40,37 @@ SENTRY_URL=https://mysentry.com SENTRY_AUTH_TOKEN=foo SENTRY_ORG=my_organization
 node build/server.js
 ```
 ### 2. Runtime
+Within your Volto project or a dedicated Volto add-on you can configure Sentry via `settings.sentryOptions` configuration key:
+
+```js
+import {
+  settings as defaultSettings,
+} from '@plone/volto/config';
+
+const settings = {
+  ...defaultSettings,
+  sentryOptions: {
+    ...defaultSettings.sentryOptions,
+    dsn: 'https://key@sentry.io/1',
+    environment: 'production',
+    release: '1.2.3',
+    serverName: 'volto',
+    tags: {
+      site: 'foo.bar',
+      app: 'test_app',
+      logger: 'volto',
+    },
+    extras: {
+      key: 'value',
+    },
+    integrations: [
+        ...defaultSettings.sentryOptions.integrations,
+        // new MyAwesomeIntegration()
+    ]
+  }
+};
+See more about [Sentry Custom Integrations](https://docs.sentry.io/platforms/javascript/configuration/integrations)
+
 In case you plan to use the application using docker, you will not want to have the sentry setup in the docker image.
 The configuration for setting up sentry on runtime is very similar as how we set it up for buildtime, but with some small differences:
 
