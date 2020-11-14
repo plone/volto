@@ -257,9 +257,15 @@ class Edit extends Component {
         {!editPermission && (
           <>
             {this.props.token ? (
-              <Forbidden pathname={this.props.pathname} />
+              <Forbidden
+                pathname={this.props.pathname}
+                staticContext={this.props.staticContext}
+              />
             ) : (
-              <Unauthorized pathname={this.props.pathname} />
+              <Unauthorized
+                pathname={this.props.pathname}
+                staticContext={this.props.staticContext}
+              />
             )}
           </>
         )}

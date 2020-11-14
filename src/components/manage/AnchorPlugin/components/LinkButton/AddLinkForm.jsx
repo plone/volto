@@ -272,7 +272,7 @@ class AddLinkForm extends Component {
                       this.clear();
                     }}
                   >
-                    <Icon name={clearSVG} size="30px" />
+                    <Icon name={clearSVG} size="24px" />
                   </Button>
                 </Button.Group>
               ) : (
@@ -308,7 +308,7 @@ class AddLinkForm extends Component {
                     this.onSubmit();
                   }}
                 >
-                  <Icon name={aheadSVG} size="30px" />
+                  <Icon name={aheadSVG} size="24px" />
                 </Button>
               </Button.Group>
             </div>
