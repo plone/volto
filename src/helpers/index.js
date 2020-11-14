@@ -18,7 +18,6 @@ export {
   isInternalURL,
   getParentUrl,
   getBaseUrl,
-  getIcon,
   getView,
   isCmsUi,
   getId,
@@ -27,6 +26,7 @@ export { generateSitemap } from '@plone/volto/helpers/Sitemap/Sitemap';
 export {
   nestContent,
   getLayoutFieldname,
+  getContentIcon,
 } from '@plone/volto/helpers/Content/Content';
 export {
   getBlocks,

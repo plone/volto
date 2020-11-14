@@ -6,6 +6,7 @@
 
 ### Feature
 
+- Refactor CT icons helper: add getContentIcons @nzambello
 ### Bugfix
 
 - Properly return 404, 401 and 403 on SSR, when appropriate @tiberiuichim
