@@ -103,3 +103,29 @@ describe('WebpackRelativeResolver', () => {
     );
   });
 });
+
+describe('functions as a Webpack resolver plugin', () => {
+  const plugin = new WebpackRelativeResolver(makeRegistry());
+  const req = makeLocalAddonRequest();
+  const flag = [];
+  const resolved = [];
+
+  const resolver = {
+    plugin(typ, resolveCallback) {
+      resolveCallback(req, () => flag.push(true));
+    },
+    doResolve(type, req, _, callback) {
+      flag.push(true);
+      resolved.push(req.request);
+    },
+  };
+
+  plugin.apply(resolver);
+
+  it('always resolves', () => expect(flag).toStrictEqual([true]));
+
+  it('always resolves to full paths', () =>
+    expect(resolved).toStrictEqual([
+      '@plone/volto-addon/components/manage/Form/InlineForm',
+    ]));
+});
