@@ -300,6 +300,14 @@ msgstr "Aukeratu irudia"
 msgid "Choose Target"
 msgstr "Aukeratu helburua"
 
+#: components/manage/Widgets/FileWidget
+msgid "Choose a File/Image"
+msgstr ""
+
+#: components/manage/Blocks/HTML/Edit
+msgid "Clear"
+msgstr ""
+
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
 msgstr "Egin klik tamaina osoko irudia deskargatzeko..."
@@ -311,6 +319,10 @@ msgstr "Itxi"
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
 msgstr "Itxi menua"
+
+#: components/manage/Blocks/HTML/Edit
+msgid "Code"
+msgstr ""
 
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"
@@ -354,10 +366,6 @@ msgstr "Barneko elementuak"
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Content"
 msgstr "Edukia"
-
-#: components/manage/Multilingual/ManageTranslations
-msgid "Content linked"
-msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
@@ -554,6 +562,18 @@ msgstr "Dokumentua"
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Arrastatu fitxategiak hona edo erabili Arakatu botoia."
 
+#: components/manage/Widgets/FileWidget
+msgid "Drag the new item to upload"
+msgstr ""
+
+#: components/manage/Widgets/FileWidget
+msgid "Drag to replace the file item"
+msgstr ""
+
+#: components/manage/Widgets/FileWidget
+msgid "Drop files here ...."
+msgstr ""
+
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
 msgid "E-mail"
@@ -624,6 +644,10 @@ msgstr "Bukaera data"
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 msgid "Enter URL or select an item"
 msgstr "Sartu URL bat edo aukeratu elementu bat"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Enter a username above to search or click 'Show All'"
+msgstr ""
 
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
@@ -908,7 +932,7 @@ msgid "Item(s) cut."
 msgstr "Elementuak ondo ebaki dira."
 
 #: components/manage/Contents/Contents
-msgid "Item(s) has been sorted."
+msgid "Item(s) has been updated."
 msgstr ""
 
 #: components/manage/Actions/Actions
@@ -1298,9 +1322,17 @@ msgid "Preferences"
 msgstr "Hobespenak"
 
 #: components/manage/Blocks/HTML/Edit
+msgid "Prettify your code"
+msgstr ""
+
+#: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
 msgid "Preview"
 msgstr "Aurreikusi"
+
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "Preview Image URL"
+msgstr ""
 
 #: components/manage/Toolbar/PersonalTools
 msgid "Profile"
@@ -1386,6 +1418,10 @@ msgstr "Errepikatu"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Repeat on"
 msgstr "Egun honetan errepikatu"
+
+#: components/manage/Widgets/FileWidget
+msgid "Replace existing File/Image"
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
@@ -1575,6 +1611,10 @@ msgstr "Izen-laburra"
 #: components/theme/Pagination/Pagination
 msgid "Show"
 msgstr "Erakutsi"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Show All"
+msgstr ""
 
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
@@ -1833,7 +1873,11 @@ msgid "Translate to {lang}"
 msgstr "{lang} hizkuntzara itzuli"
 
 #: components/manage/Multilingual/ManageTranslations
-msgid "Translation deleted"
+msgid "Translation linked"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Translation linking removed"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
@@ -2059,6 +2103,10 @@ msgstr "Bertsioen arteko aldeak ikusi ditzakezu"
 #: components/manage/History/History
 msgid "You can view the history of your item below."
 msgstr "Zure elementuaren historia ikusi dezakezu."
+
+#: components/manage/Contents/Contents
+msgid "You can't paste this content here"
+msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Your email is required for reset your password."

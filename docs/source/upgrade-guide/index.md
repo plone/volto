@@ -72,6 +72,27 @@ diff --git a/package.json b/package.json
      "mrs-developer": "1.2.0",
 ```
 
+### New webpack resolver plugin
+
+A new webpack resolver plugin has been integrated with Volto, it reroutes
+'local' resolve requests (for example `import Something from './Something'`) to
+'absolute' resolve requests (like
+`import Something from '@plone/myaddon/Something`). This allows the
+shadow-based customization mechanisms to work consistently with addons and
+Volto.
+
+This is not a breaking change and it shouldn't affect any existing code, but by
+its very nature, a resolver plugin has the potential to introduce unexpected
+behavior. Just be aware of its existence and take it into consideration if you
+notice anything strange.
+
+### Content Types icons
+Helper method `getIcon` from `Url` has been removed in favor of `getContentIcon`
+from `Content` which is now configurable.
+
+See [contentIcons docs](../configuration/settings-reference.md#contenticons).
+
+
 ## Upgrading to Volto 8.x.x
 
 ### Upgrade package.json testing configuration

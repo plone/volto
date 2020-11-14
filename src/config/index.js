@@ -27,6 +27,10 @@ import {
   blocksConfig,
   initialBlocks,
 } from './Blocks';
+
+import { sentryOptions } from './Sentry';
+import { contentIcons } from './ContentIcons';
+
 import applyAddonConfiguration from 'load-volto-addons';
 
 const host = process.env.HOST || 'localhost';
@@ -73,6 +77,10 @@ let config = {
     expressMiddleware: [],
     defaultBlockType: 'text',
     verticalFormTabs: false,
+    sentryOptions: {
+      ...sentryOptions,
+    },
+    contentIcons: contentIcons,
   },
   widgets: {
     ...widgetMapping,

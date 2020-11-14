@@ -178,3 +178,4 @@ export BlockSettingsSchema from '@plone/volto/components/manage/Blocks/Block/Sch
 export TextSettingsSchema from '@plone/volto/components/manage/Blocks/Text/Schema';
 export ImageSettingsSchema from '@plone/volto/components/manage/Blocks/Image/Schema';
 export ToCSettingsSchema from '@plone/volto/components/manage/Blocks/ToC/Schema';
+export InlineForm from './manage/Form/InlineForm';

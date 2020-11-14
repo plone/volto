@@ -1,6 +1,6 @@
 # Change Log
 
-## 8.8.1 (unreleased)
+## 8.10.2 (unreleased)
 
 ### Breaking
 
@@ -15,8 +15,74 @@
 
 ### Feature
 
+- Add `webpack-relative-resolver` plugin. For addons and Volto, it normalizes local relative imports to package-rooted imports. An import such as `import Something from './Something'` would be rerouted internally as `import Something from '@collective/someaddon/Something'`. By doing so we get easier customization of addons, as they don't have to be so strict with their import and exports @tiberiuichim
+- Posibility to configure Sentry via `settings.sentryOptions` configuration key @avoinea
+- Catch `console.error` by default with Sentry @avoinea
+- Refactor CT icons helper: add getContentIcons @nzambello
+
 ### Bugfix
 
+- Properly return 404, 401 and 403 on SSR, when appropriate @tiberiuichim
+- Fix Guillotina PATCH by adding the `@static_behaviors` field inconditionally @sneridagh
+
+### Internal
+
+## 8.10.1 (2020-11-13)
+
+### Bugfix
+
+- Fix leaking input CSS in the link widget in draftjs @sneridagh
+
+### Internal
+
+- Move Guillotina CI job to GH actions @sneridagh
+
+## 8.10.0 (2020-11-12)
+
+### Feature
+
+- Adding show all button in UsersControlpanel @iFlameing
+- Now you can prettify the html code in HTML block @iFlameing
+- Adding preview image placeholder in Video Block @iFlameing
+
+### Bugfix
+
+- Fix error object in clipboard reducer @iFlameing
+- Making QuerystringWidget more resilient by handeling null value @iFlameing
+- Fixing bug related to initiation of table block with previous table block data @iFlameing
+- enabled no-folderish CT to be translated @giuliaghisini
+
+### Internal
+
+- Changing checkbox widget of exclude-nav to select widget @iFlameing
+
+## 8.9.2 (2020-11-06)
+
+### Bugfix
+
+- Revert type-in detection in draftjs link widget, as that leads to a regression @sneridagh
+- Fix and refactoring FileWidget @iFlameing
+
+## 8.9.1 (2020-11-06)
+
+### Bugfix
+
+- Fix SSR rendering in table blocks @sneridagh
+
+## 8.9.0 (2020-11-05)
+
+### Feature
+
+- Added Dropzone in FileWidget @iFlameing
+- Making inline link toolbar, location aware in content browser @iFlameing.
+- Detect if the link typed or pasted in the link widget of the text block is internal @sneridagh
+
+## 8.8.1 (2020-11-04)
+
+### Bugfix
+
+- Improve misleading translations deleted message @sneridagh
+- Fixing overlap of labels with each other in select widget @iFlameing
 - Throw error in crashReporter; also log sentry errors in server @tiberiuichim
 
 ### Internal
