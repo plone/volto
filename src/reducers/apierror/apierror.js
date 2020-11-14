@@ -16,7 +16,7 @@ const initialState = {
 };
 
 /**
- * Breadcrumbs reducer.
+ * apierror reducer.
  * @function apierror
  * @param {Object} state Current state.
  * @param {Object} action Action to be handled.

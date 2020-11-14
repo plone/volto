@@ -26,6 +26,12 @@ its very nature, a resolver plugin has the potential to introduce unexpected
 behavior. Just be aware of its existence and take it into consideration if you
 notice anything strange.
 
+### Content Types icons
+Helper method `getIcon` from `Url` has been removed in favor of `getContentIcon`
+from `Content` which is now configurable.
+
+See [contentIcons docs](../configuration/settings-reference.md#contenticons).
+
 ## Upgrading to Volto 8.x.x
 
 ### Upgrade package.json testing configuration
