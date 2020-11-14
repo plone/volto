@@ -23,6 +23,22 @@ project's package.json:
 "load-volto-addons": "<rootDir>/node_modules/@plone/volto/jest-addons-loader.js",
 ```
 
+## Upgrading to Volto 9.x.x
+
+### New webpack resolver plugin
+
+A new webpack resolver plugin has been integrated with Volto, it reroutes
+'local' resolve requests (for example `import Something from './Something'`) to
+'absolute' resolve requests (like
+`import Something from '@plone/myaddon/Something`). This allows the
+shadow-based customization mechanisms to work consistently with addons and
+Volto.
+
+This is not a breaking change and it shouldn't affect any existing code, but by
+its very nature, a resolver plugin has the potential to introduce unexpected
+behavior. Just be aware of its existence and take it into consideration if you
+notice anything strange.
+
 ## Upgrading to Volto 7.x.x
 
 A misspelled file has been renamed. If you import `strickthrough.svg` in your
