@@ -4,7 +4,7 @@ class RelativeResolverPlugin {
   constructor(registry) {
     this.registry = registry;
     this.addonPaths = Object.assign(
-      {},
+      { '@plone/volto': `${registry.voltoPath}/src` },
       ...Object.keys(registry.packages).map((k) => ({
         [k]: registry.packages[k].modulePath,
       })),
@@ -43,6 +43,7 @@ class RelativeResolverPlugin {
         const normalizedResourceName = this.getResolvePath(request);
         const nextRequest = Object.assign({}, request, {
           request: normalizedResourceName,
+          path: this.registry.projectRootPath,
         });
 
         resolver.doResolve('resolve', nextRequest, '', callback);
