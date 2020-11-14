@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Properly return 404, 401 and 403 on SSR, when appropriate @tiberiuichim
+
 ### Internal
 
 ## 8.10.1 (2020-11-13)

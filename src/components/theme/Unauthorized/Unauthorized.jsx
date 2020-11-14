@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
+import { withServerErrorCode } from '@plone/volto/helpers/Utils/Utils';
 
 /**
  * unauthorized function.
@@ -60,4 +61,4 @@ const Unauthorized = () => {
   );
 };
 
-export default Unauthorized;
+export default withServerErrorCode(401)(Unauthorized);

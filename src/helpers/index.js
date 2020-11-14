@@ -53,4 +53,5 @@ export {
   difference,
   safeWrapper,
   applyConfig,
+  withServerErrorCode,
 } from '@plone/volto/helpers/Utils/Utils';
