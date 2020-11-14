@@ -6,6 +6,7 @@
 
 ### Feature
 
+- Add `webpack-relative-resolver` plugin. For addons and Volto, it normalizes local relative imports to package-rooted imports. An import such as `import Something from './Something'` would be rerouted internally as `import Something from '@collective/someaddon/Something'`. By doing so we get easier customization of addons, as they don't have to be so strict with their import and exports @tiberiuichim
 - Posibility to configure Sentry via `settings.sentryOptions` configuration key @avoinea
 - Catch `console.error` by default with Sentry @avoinea
 - Refactor CT icons helper: add getContentIcons @nzambello

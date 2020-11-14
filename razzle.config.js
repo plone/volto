@@ -5,6 +5,7 @@ const LoadablePlugin = require('@loadable/webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const fs = require('fs');
 const RootResolverPlugin = require('./webpack-root-resolver');
+const RelativeResolverPlugin = require('./webpack-relative-resolver');
 const createAddonsLoader = require('./create-addons-loader');
 const AddonConfigurationRegistry = require('./addon-registry');
 
@@ -111,7 +112,10 @@ const defaultModify = (config, { target, dev }, webpack) => {
 
   const addonsLoaderPath = createAddonsLoader(packageJson.addons || []);
 
-  config.resolve.plugins = [new RootResolverPlugin()];
+  config.resolve.plugins = [
+    new RelativeResolverPlugin(registry),
+    new RootResolverPlugin(),
+  ];
 
   config.resolve.alias = {
     ...registry.getAddonCustomizationPaths(),
