@@ -10,19 +10,6 @@ This upgrade guide lists all breaking changes in Volto and explains the
     dependencies might do when dealing with upgrades. We keep the generator up
     to date and in sync with current Volto release.
 
-## Upgrading to Volto 8.x.x
-
-### Upgrade package.json testing configuration
-
-The `dummy-addons-loader.js` file has been renamed to `jest-addons-loader.js`,
-to be more in line with the rest of the existing files. You should add the
-following value to the `moduleNameMapper` property of the `jest` key in your
-project's package.json:
-
-```
-"load-volto-addons": "<rootDir>/node_modules/@plone/volto/jest-addons-loader.js",
-```
-
 ## Upgrading to Volto 9.x.x
 
 ### New webpack resolver plugin
@@ -38,6 +25,19 @@ This is not a breaking change and it shouldn't affect any existing code, but by
 its very nature, a resolver plugin has the potential to introduce unexpected
 behavior. Just be aware of its existence and take it into consideration if you
 notice anything strange.
+
+## Upgrading to Volto 8.x.x
+
+### Upgrade package.json testing configuration
+
+The `dummy-addons-loader.js` file has been renamed to `jest-addons-loader.js`,
+to be more in line with the rest of the existing files. You should add the
+following value to the `moduleNameMapper` property of the `jest` key in your
+project's package.json:
+
+```
+"load-volto-addons": "<rootDir>/node_modules/@plone/volto/jest-addons-loader.js",
+```
 
 ## Upgrading to Volto 7.x.x
 
