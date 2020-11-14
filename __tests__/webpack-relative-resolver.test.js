@@ -46,6 +46,14 @@ const makeLocalAddonRequest = () => ({
   request: './manage/Form/InlineForm',
 });
 
+const makeForeignRequest = () => ({
+  context: {
+    issuer: `/somewhere/node_modules/@some/react-pkg/index.js`,
+  },
+  path: `/somewhere/node_modules/@some/react-pkg`,
+  request: './manage/Form/InlineForm',
+});
+
 describe('WebpackRelativeResolver', () => {
   it('knows about volto and its addons', () => {
     const resolver = new WebpackRelativeResolver(makeRegistry());
@@ -105,27 +113,47 @@ describe('WebpackRelativeResolver', () => {
 });
 
 describe('functions as a Webpack resolver plugin', () => {
-  const plugin = new WebpackRelativeResolver(makeRegistry());
-  const req = makeLocalAddonRequest();
-  const flag = [];
-  const resolved = [];
+  it('resolves addon module paths', () => {
+    const plugin = new WebpackRelativeResolver(makeRegistry());
+    const req = makeLocalAddonRequest();
+    const flag = [];
+    const resolved = [];
 
-  const resolver = {
-    plugin(typ, resolveCallback) {
-      resolveCallback(req, () => flag.push(true));
-    },
-    doResolve(type, req, _, callback) {
-      flag.push(true);
-      resolved.push(req.request);
-    },
-  };
+    const resolver = {
+      plugin(typ, resolveCallback) {
+        resolveCallback(req, () => flag.push(true));
+      },
+      doResolve(type, req, _, callback) {
+        flag.push(true);
+        resolved.push(req.request);
+      },
+    };
 
-  plugin.apply(resolver);
-
-  it('always resolves', () => expect(flag).toStrictEqual([true]));
-
-  it('always resolves to full paths', () =>
+    plugin.apply(resolver);
+    expect(flag).toStrictEqual([true]);
     expect(resolved).toStrictEqual([
       '@plone/volto-addon/components/manage/Form/InlineForm',
-    ]));
+    ]);
+  });
+
+  it('does nothing on non-addon paths', () => {
+    const plugin = new WebpackRelativeResolver(makeRegistry());
+    const req = makeForeignRequest();
+    const flag = [];
+    const resolved = [];
+
+    const resolver = {
+      plugin(typ, resolveCallback) {
+        resolveCallback(req, () => flag.push(true));
+      },
+      doResolve(type, req, _, callback) {
+        flag.push(true);
+        resolved.push(req.request);
+      },
+    };
+
+    plugin.apply(resolver);
+    expect(flag).toStrictEqual([true]);
+    expect(resolved).toStrictEqual([]);
+  });
 });
