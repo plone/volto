@@ -3,7 +3,7 @@ const path = require('path');
 class RelativeResolverPlugin {
   constructor(registry) {
     this.registry = registry;
-    this.addonPaths = Object.assign(
+    this.voltoPaths = Object.assign(
       { '@plone/volto': `${registry.voltoPath}/src` },
       ...Object.keys(registry.packages).map((k) => ({
         [k]: registry.packages[k].modulePath,
@@ -12,22 +12,22 @@ class RelativeResolverPlugin {
   }
 
   isAddon(request) {
-    const addonPaths = Object.values(this.addonPaths);
+    const voltoPaths = Object.values(this.voltoPaths);
     const issuer = request.context.issuer;
 
-    // is issuer path an addon module?
-    if (addonPaths.findIndex((p) => issuer.startsWith(p)) === -1) return false;
+    // is issuer path a Volto-compiled module?
+    if (voltoPaths.findIndex((p) => issuer.startsWith(p)) === -1) return false;
 
     const resourcePath = path.join(request.path, request.request);
-    return addonPaths.findIndex((p) => resourcePath.startsWith(p)) > -1;
+    return voltoPaths.findIndex((p) => resourcePath.startsWith(p)) > -1;
   }
 
   getResolvePath(request) {
     const resourcePath = path.join(request.path, request.request);
-    const addon = Object.keys(this.addonPaths).find((name) => {
-      return resourcePath.startsWith(this.addonPaths[name]);
+    const addon = Object.keys(this.voltoPaths).find((name) => {
+      return resourcePath.startsWith(this.voltoPaths[name]);
     });
-    const addonPath = this.addonPaths[addon];
+    const addonPath = this.voltoPaths[addon];
     const localPath = request.path.slice(addonPath.length);
     return path.join(addon, localPath, request.request);
   }

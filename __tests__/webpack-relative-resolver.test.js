@@ -57,8 +57,8 @@ const makeForeignRequest = () => ({
 describe('WebpackRelativeResolver', () => {
   it('knows about volto and its addons', () => {
     const resolver = new WebpackRelativeResolver(makeRegistry());
-    expect(resolver.addonPaths['@plone/volto']).toStrictEqual(`${base}/src`);
-    expect(resolver.addonPaths['@plone/volto-addon']).toStrictEqual(
+    expect(resolver.voltoPaths['@plone/volto']).toStrictEqual(`${base}/src`);
+    expect(resolver.voltoPaths['@plone/volto-addon']).toStrictEqual(
       '/somewhere/volto-addon/src',
     );
   });
