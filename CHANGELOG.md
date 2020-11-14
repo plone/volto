@@ -13,6 +13,7 @@
 ### Bugfix
 
 - Properly return 404, 401 and 403 on SSR, when appropriate @tiberiuichim
+- Fix Guillotina PATCH by adding the `@static_behaviors` field inconditionally @sneridagh
 
 ### Internal
 
