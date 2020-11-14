@@ -19,7 +19,9 @@ extra_css:
   - 'stylesheets/pygments.css'
 
 nav:
-  - Getting Started: 'getting-started/install.md'
+  - Getting Started:
+      - Bootstrap Volto: 'getting-started/install.md'
+      - Developer roadmap: 'getting-started/roadmap.md'
   - Design principles: 'design-principles/index.md'
   - Configuration:
       - What is configurable?: 'configuration/how-to.md'
@@ -34,7 +36,7 @@ nav:
   - Theming:
       - Theming strategy: 'theming/theming-strategy.md'
       - Custom styling: 'theming/custom-styling.md'
-      - Intregrate third party: 'theming/integrate-third-party.md'
+      - Integrate third party: 'theming/integrate-third-party.md'
   - Customizing:
       - Creating a project: 'customizing/creating-project.md'
       - Folder structure: 'customizing/folder-structure.md'
