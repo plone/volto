@@ -113,6 +113,25 @@ diff --git a/package.json b/package.json
      "mrs-developer": "1.2.0",
 ```
 
+### Recomended `browserslist` in `package.json`
+
+Not a breaking change, but you might want to narrow the targets your Votlo project is
+targeting to. This might improve your build times, as well as your bundle size. This is
+the recomended `browserlist` you should include in your local `package.json`.
+
+```json
+  "browserslist": [
+    ">1%",
+    "last 4 versions",
+    "Firefox ESR",
+    "not ie 11",
+    "not dead"
+  ],
+```
+
+!!! note
+    Please notice that it does not target dead and deprecated browsers by its vendors.
+
 ### New webpack resolver plugin
 
 A new webpack resolver plugin has been integrated with Volto, it reroutes
