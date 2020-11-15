@@ -1,4 +1,4 @@
-<!-- ## Best practices for addon development -->
+# Best practices for addons
 
 Although the addon framework is relatively new in Volto's world, there are
 quite a few generic addons that can be used in any Volto project.
