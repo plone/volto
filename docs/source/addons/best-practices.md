@@ -1,12 +1,11 @@
 <!-- ## Best practices for addon development -->
 
-Here's a rough guideline on addon development. Although the addon framework is
-relatively new in Volto's world, there are quite a few generic addons that can
-be used in any Volto project.
+Although the addon framework is relatively new in Volto's world, there are
+quite a few generic addons that can be used in any Volto project.
 
-From the experience developing some of these open source addons, we
-recommend that you follow (no need for strictness, of course) this rough
-guideline:
+Based on the experience gained developing some of these addons, we
+recommend that you follow (no need for strictness, of course) these rough
+guidelines:
 
 ### Integrate your addon with Volto's addon framework
 
