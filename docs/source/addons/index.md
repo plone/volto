@@ -12,8 +12,6 @@ repositories using `mrs-developer` helper package.
 We can use them to easily reuse components across projects, like custom blocks,
 views, widgets, or any other Volto or React artifact.
 
-
-
 ## Configuring a Volto project to use a Volto addon
 
 ### Add mrs-developer dependency and related script

@@ -14,12 +14,13 @@ complete and accurate picture of the Volto framework.
 
 ## The foundation
 
-As for similar modern SPA applications, you should know:
+As is the case with similar modern Javascript-based applications, you should know:
 
 - Modern Javascript development. Volto uses next-generation Javascript. Follow
   the ES6 guide to get up to speed.
 - React knowledge - basic level is fine for the beginning, you'll progress
   along the way. React itself is a simple and well documented framework.
+- A basic understanding of Javascript packages, Yarn, Babel and Webpack
 
 ## Basic Volto development
 
@@ -44,9 +45,6 @@ there is nothing on the level of ZCA that needs to be internalized before you
 can be really productive.
 
 ## Normal, everyday Volto development
-
-For the next steps in Volto development, you'll be exposed to a wider variety
-of technologies.
 
 - Write new Redux actions and reducers
 - Create new views for Plone content.

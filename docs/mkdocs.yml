@@ -43,7 +43,6 @@ nav:
       - Customizing components: 'customizing/customizing-components.md'
       - Customizing views: 'customizing/customizing-views.md'
       - Creating new views: 'customizing/creating-views.md'
-      - Creating Add-on packages: 'customizing/add-ons.md'
       - Internationalization: 'customizing/i18n.md'
       - Express middleware: 'customizing/express.md'
   - Blocks:
@@ -51,6 +50,9 @@ nav:
       - Anatomy: 'blocks/anatomy.md'
       - Settings: 'blocks/settings.md'
       - Edit components: 'blocks/editcomponent.md'
+  - Addons:
+      - Introduction: 'addons/index.md'
+      - Best practices: 'addons/best-practices.md'
   - Recipes:
       - App component insertion point: 'recipes/appextras.md'
       - Lazy loading and code splitting: 'recipes/lazyload.md'
