@@ -264,19 +264,12 @@ you don't have to do anything to have automatic integration with ESLint,
 otherwise make sure to upgrade your project's `.eslintrc` to the `.eslintrc.js`
 version, according to the [Upgrade Guide](/upgrade-guide).
 
-### Add several layers of customizations
+### Customizations
 
-In `package.json` we can add more customization layers that will be added to the
-current ones. These will be added to the aliases list, with the last ones
-having more precedence. You have to keep sanity in the overriding layers, since
-Volto is not yet ready to do it for you.
-
-Set them up in the `customizationPaths` key in the `package.json` file on your
-Volto project.
-
-```json
-"customizationPaths": ["src/customizations", "src/addons/@plone/my-volto-addon/src/customizations"],
-```
+Addon packages can include customization folders, just like the Volto projects.
+The customizations are resolved in the order: addons (as sorted in the `addons`
+key of your project's `package.json`) then the customizations in the Volto
+project, last one wins.
 
 !!! tip
     See the [Advanced customization scenarios](../../customizing-components/)
