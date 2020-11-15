@@ -22,6 +22,7 @@ nav:
   - Getting Started:
       - Bootstrap Volto: 'getting-started/install.md'
       - Developer roadmap: 'getting-started/roadmap.md'
+      - Learning resources: 'getting-started/others.md'
   - Design principles: 'design-principles/index.md'
   - Configuration:
       - What is configurable?: 'configuration/how-to.md'
