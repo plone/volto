@@ -38,14 +38,15 @@ See the documentation of Razzle for more information: https://razzlejs.org/
 
 ### Babel config housekeeping
 
-Historically, Volto was using "stage-0" TC-39 proposals. The configuration is starting
-showing its age, since Babel 7 dedided to stop maintaining the presets for stages, so we
+Historically, Volto was using "stage-0" TC-39 proposals. The configuration was starting
+showing its age, since Babel 7 dedided to stop maintaining the presets for stages, we
 moved to use an static configuration instead of a managed one. That lead to a "living on
 the edge" situation since we supported proposals that they didn't make the cut. For more
-information about the TC39 approval process (https://tc39.es/process-document/)
+information about the TC39 approval process read (https://tc39.es/process-document/)
 
 We decided to put a bit of order to caos and declare that Volto will support only
-stage-4 approved proposals. They are supported by `@babel/preset-env` out of the box and provide a good sensible default baseline for Volto.
+stage-4 approved proposals. They are supported by `@babel/preset-env` out of the box and
+provide a good sensible default baseline for Volto.
 
 Proposal deprecations:
 
@@ -111,11 +112,11 @@ behavior. Just be aware of its existence and take it into consideration if you
 notice anything strange.
 
 ### Content Types icons
+
 Helper method `getIcon` from `Url` has been removed in favor of `getContentIcon`
 from `Content` which is now configurable.
 
 See [contentIcons docs](../configuration/settings-reference.md#contenticons).
-
 
 ## Upgrading to Volto 8.x.x
 

@@ -10,7 +10,8 @@
   unifies the extensibility story at the cost of change the signature of the
   `razzle.config.js` and how plugins are declared. It also enables by default the new
   *React Fast Refresh* feature implemented by the React community, which improves the
-  refresh of the code while in development. See the upgrade-guide for more information.
+  refresh of the code while in development.
+
 - Babel plugins housekeeping
 
   Deprecated proposals:
@@ -19,6 +20,9 @@
   - @babel/plugin-proposal-logical-assignment-operators
   - @babel/plugin-proposal-pipeline-operator
   - @babel/plugin-proposal-function-sent
+
+For a complete list of actions to follow, please read the upgrade guide
+https://docs.voltocms.com/upgrade-guide/
 
 ### Feature
 
