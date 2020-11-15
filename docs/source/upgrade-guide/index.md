@@ -15,26 +15,42 @@ This upgrade guide lists all breaking changes in Volto and explains the
 ### Internal upgrade to use Razzle 3.3.7
 
 !!!note
-    If you haven't customized your `razzle.config.js` in your project, or have any custom plugin in place, you don't have to do anything.
+    If you haven't customized your `razzle.config.js` in your project, or have any
+    custom plugin in place, you don't have to do anything.
 
 Razzle is the isometric build system for both the server and the client parts on the top
 of which Volto is built. Recently, it has been under heavy development and some new
-exciting features have been added to it. The Razzle configuration is now more flexible and extensible than ever.
+exciting features have been added to it. The Razzle configuration is now more flexible
+and extensible than ever.
 
 This change *might* be breaking for you if you customized the `razzle.config.js` heavily
 in your projects. Since the new version adds a new way to extend Razzle configuration,
-you should adapt your extensions to the new way of doing it. See the documentation for more information: https://razzlejs.org/docs/customization#extending-webpack
+you should adapt your extensions to the new way of doing it. See the documentation for
+more information: https://razzlejs.org/docs/customization#extending-webpack
 
 It also unifies the way the things are extended in Razzle plugins as well, so if you are
 using any official or third party Razzle plugins you should upgrade them to the last
 version. If you have developed your own Razzle plugin, you should adapt its signature as
-well. See the documentation for more information: https://razzlejs.org/docs/customization#plugins
+well. See the documentation for more information:
+https://razzlejs.org/docs/customization#plugins
 
 Razzle 3.3 also has some new *experimental* features, that will be default in the
 upcoming Razzle 4, such as the new *React Fast Refresh* feature, which fixes the
 annoying breaking of the router after any live refresh.
 
 See the documentation of Razzle for more information: https://razzlejs.org/
+
+#### Changes involved
+
+We need to patch an internal Razzle utility in order to allow the use of non-released
+Razzle plugins. This feature will be in Razzle 4, unfortunatelly at this point the
+development the Razzle 3 branch is freezed already so we need to amend the original
+using the patch. The patch will be obsolete and no longer required once we move to
+Razzle 4 (see https://github.com/jaredpalmer/razzle/pull/1467).
+
+Copy (and overwrite) the `patches` folder into your local project
+https://github.com/plone/volto/tree/master/patches or, if you want to be more accurate,
+just copy `patches/razzle-plugins.patch` file and overwrite `patches/patchit.sh` file.
 
 ### Babel config housekeeping
 
