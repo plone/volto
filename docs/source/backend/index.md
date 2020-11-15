@@ -28,6 +28,8 @@ plone.restapi documentation:
   this type of feature, for example to automatically convert incoming links in
   block values to resolveuid-based links (and to convert them back to absolute
   URLs when retrieving the block value from the frontend).
+- **Search and indexing integration**: by providing the right adapters, you can
+  extract searchable text from blocks.
 
 !!! note
     This section contains pointers for backend integration with Plone.
