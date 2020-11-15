@@ -8,15 +8,12 @@ exports[`renders an edit video block component 1`] = `
     className="video-inner"
   >
     <div
-      className="ui blocker"
-    />
-    <div
       className="ui active embed"
       onClick={[Function]}
     >
       <i
         aria-hidden="true"
-        className="arrow right icon"
+        className="play icon"
         onClick={[Function]}
       />
       <div

@@ -61,8 +61,8 @@ nav:
   - Upgrade Guide: 'upgrade-guide/index.md'
   - Developer Guidelines:
       - Accessibility: 'developer-guidelines/accessibility-guidelines.md'
+      - Language features: 'developer-guidelines/language-features.md'
       - React: 'developer-guidelines/react.md'
-      - Babel: 'developer-guidelines/babel.md'
       - Redux: 'developer-guidelines/redux.md'
       - Routing: 'developer-guidelines/routing.md'
       - Linting: 'developer-guidelines/linting.md'

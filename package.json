@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "8.8.1",
+  "version": "8.10.1",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -60,8 +60,8 @@
     "cy:test:fixture:teardown": "node cypress/support/reset-fixture.js teardown",
     "ci:start-api-plone": "make test-acceptance-server",
     "ci:start-api-guillotina": "make test-acceptance-guillotina",
-    "ci:start-frontend": "RAZZLE_API_PATH=http://localhost:55001/plone yarn build && start-test start:prod http-get://localhost:3000 cypress:run",
-    "ci:start-frontend-guillotina": "RAZZLE_API_PATH=http://localhost:8081/db/container yarn build && start-test start:prod http-get://localhost:3000 cypress:run:guillotina",
+    "ci:start-frontend": "RAZZLE_API_PATH=http://localhost:55001/plone yarn build && start-test start:prod http://localhost:3000 cypress:run",
+    "ci:start-frontend-guillotina": "RAZZLE_API_PATH=http://localhost:8081/db/container yarn build && start-test start:prod http://localhost:3000 cypress:run:guillotina",
     "ci:cypress:run": "start-test ci:start-api-plone http-get://localhost:55001/plone ci:start-frontend",
     "ci:cypress:run:guillotina": "start-test ci:start-api-guillotina http-get://localhost:8081 ci:start-frontend-guillotina",
     "dry-release": "release-it --dry-run",
@@ -162,7 +162,8 @@
     ">1%",
     "last 4 versions",
     "Firefox ESR",
-    "not ie < 9"
+    "not ie 11",
+    "not dead"
   ],
   "release-it": {
     "hooks": {
@@ -214,28 +215,16 @@
     "node": "^10 || ^12 || ^14"
   },
   "dependencies": {
-    "@babel/core": "7.11.1",
-    "@babel/plugin-proposal-decorators": "7.10.5",
-    "@babel/plugin-proposal-do-expressions": "7.10.4",
     "@babel/plugin-proposal-export-default-from": "7.10.4",
     "@babel/plugin-proposal-export-namespace-from": "7.10.4",
-    "@babel/plugin-proposal-function-bind": "7.11.5",
-    "@babel/plugin-proposal-function-sent": "7.10.4",
     "@babel/plugin-proposal-json-strings": "7.10.4",
-    "@babel/plugin-proposal-logical-assignment-operators": "7.11.0",
-    "@babel/plugin-proposal-nullish-coalescing-operator": "7.10.4",
-    "@babel/plugin-proposal-numeric-separator": "7.10.4",
-    "@babel/plugin-proposal-optional-chaining": "7.11.0",
-    "@babel/plugin-proposal-pipeline-operator": "7.10.5",
     "@babel/plugin-proposal-throw-expressions": "7.10.4",
-    "@babel/plugin-syntax-dynamic-import": "7.8.3",
-    "@babel/plugin-syntax-import-meta": "7.10.4",
-    "@babel/plugin-transform-modules-commonjs": "7.10.4",
     "@loadable/babel-plugin": "5.12.0",
     "@loadable/component": "5.12.0",
     "@loadable/server": "5.12.0",
     "@loadable/webpack-plugin": "5.12.0",
     "@sentry/browser": "5.12.1",
+    "@sentry/integrations": "5.27.3",
     "@sentry/node": "5.12.3",
     "@sentry/webpack-plugin": "1.12.1",
     "@testing-library/jest-dom": "4.2.4",
@@ -308,7 +297,6 @@
     "postcss-loader": "3.0.0",
     "postcss-overrides": "3.1.4",
     "prettier": "2.0.5",
-    "pretty": "2.0.0",
     "pretty-bytes": "5.3.0",
     "prismjs": "1.21.0",
     "promise-file-reader": "1.0.2",
