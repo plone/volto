@@ -147,6 +147,8 @@ use the final ones from the very beginning. This means that you can use imports
 such as `import { Something } from '@plone/my-volto-addon'` without any extra
 configuration.
 
+### Use mrs-developer to manage the development cycle
+
 #### Add mrs-developer dependency and related script
 
 [Eric Brehault](https://github.com/ebrehault) ported this amazing Python tool,
@@ -235,35 +237,6 @@ to use mrs-developer, you'll have to add something like this to your
     You should use the `src` path inside your package and point the `main` key
     in `package.json` to the `index.js` file in `src/index.js`.
 
-#### Fix test infrastructure
-
-We should let jest know about our aliases and make them available to it to
-resolve them, so in `package.json`:
-
-```json hl_lines="6"
-  "jest": {
-    "moduleNameMapper": {
-      "@plone/volto/(.*)$": "<rootDir>/node_modules/@plone/volto/src/$1",
-      "@package/(.*)$": "<rootDir>/src/$1",
-      "@plone/some-volto-addon/(.*)$": "<rootDir>/src/addons/@plone/some-volto-addon/src/$1",
-      'my-volto-addon/(.*)$': '<rootDir>/src/addons/my-volto-addon/src/$1',
-      "~/(.*)$": "<rootDir>/src/$1"
-    },
-```
-
-!!! tip
-    We're in the process of moving the default scaffolding generators to
-    provide a `jest.config.js` file in Volto, making this step unneeded.
-
-You can use `yarn test src/addons/addon-name` to run tests.
-
-#### .eslintrc
-
-If you have generated your Volto project recently (after the summer of 2020),
-you don't have to do anything to have automatic integration with ESLint,
-otherwise make sure to upgrade your project's `.eslintrc` to the `.eslintrc.js`
-version, according to the [Upgrade Guide](/upgrade-guide).
-
 ### Customizations
 
 Addon packages can include customization folders, just like the Volto projects.
@@ -315,7 +288,7 @@ And the `package.json` file of your addon:
 !!! warning
     An addon's default configuration method will always be loaded.
 
-### Providing multiple addon configurations
+#### Multiple addon configurations
 
 You can export additional configuration functions from your addon's main
 `index.js`.
@@ -362,3 +335,33 @@ to run the `yarn add` command with the `-W` switch:
 ```
 yarn add -W some-dependency
 ```
+
+## Testing addons
+
+We should let jest know about our aliases and make them available to it to
+resolve them, so in `package.json`:
+
+```json hl_lines="6"
+  "jest": {
+    "moduleNameMapper": {
+      "@plone/volto/(.*)$": "<rootDir>/node_modules/@plone/volto/src/$1",
+      "@package/(.*)$": "<rootDir>/src/$1",
+      "@plone/some-volto-addon/(.*)$": "<rootDir>/src/addons/@plone/some-volto-addon/src/$1",
+      'my-volto-addon/(.*)$': '<rootDir>/src/addons/my-volto-addon/src/$1',
+      "~/(.*)$": "<rootDir>/src/$1"
+    },
+```
+
+!!! tip
+    We're in the process of moving the default scaffolding generators to
+    provide a `jest.config.js` file in Volto, making this step unneeded.
+
+You can use `yarn test src/addons/addon-name` to run tests.
+
+## Code linting
+
+If you have generated your Volto project recently (after the summer of 2020),
+you don't have to do anything to have automatic integration with ESLint,
+otherwise make sure to upgrade your project's `.eslintrc` to the `.eslintrc.js`
+version, according to the [Upgrade Guide](/upgrade-guide).
+
