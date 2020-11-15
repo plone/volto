@@ -279,9 +279,9 @@ Volto project.
 ```
 
 !!! tip
-  See the [Advanced customization scenarios](../../customizing-components/)
-  section on how to enhance this pattern and how to include customizations
-  inside addons.
+    See the [Advanced customization scenarios](../../customizing-components/)
+    section on how to enhance this pattern and how to include customizations
+    inside addons.
 
 ### Providing addon configuration
 
