@@ -19,7 +19,11 @@ const packageJson = require(path.join(projectRootPath, 'package.json'));
 
 const registry = new AddonConfigurationRegistry(projectRootPath);
 
-const defaultModify = (config, { target, dev }, webpack) => {
+const defaultModify = ({
+  env: { target, dev },
+  webpackConfig: config,
+  webpackObject: webpack,
+}) => {
   if (dev) {
     config.plugins.unshift(
       new webpack.DefinePlugin({
@@ -179,8 +183,9 @@ const addonExtenders = registry.getAddonExtenders().map((m) => require(m));
 const defaultPlugins = [
   'bundle-analyzer',
   require('./webpack-less-plugin')({ registry }),
-  require('./webpack-sentry-plugin').sentryPlugin,
-  require('./webpack-svg-plugin').svgPlugin,
+  require('./webpack-sentry-plugin'),
+  require('./webpack-svg-plugin'),
+  require('./jest-extender-plugin'),
 ];
 
 const plugins = addonExtenders.reduce(
@@ -190,12 +195,23 @@ const plugins = addonExtenders.reduce(
 
 module.exports = {
   plugins,
-  modify: (config, { target, dev }, webpack) => {
-    const defaultConfig = defaultModify(config, { target, dev }, webpack);
+  modifyWebpackConfig: ({
+    env: { target, dev },
+    webpackConfig,
+    webpackObject,
+  }) => {
+    const defaultConfig = defaultModify({
+      env: { target, dev },
+      webpackConfig,
+      webpackObject,
+    });
     const res = addonExtenders.reduce(
-      (acc, extender) => extender.modify(acc, { target, dev }, webpack),
+      (acc, extender) => extender.modify(acc, { target, dev }, webpackConfig),
       defaultConfig,
     );
     return res;
+  },
+  experimental: {
+    reactRefresh: true,
   },
 };

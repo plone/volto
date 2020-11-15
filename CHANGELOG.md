@@ -4,6 +4,13 @@
 
 ### Breaking
 
+- Upgrade Razzle to 3.3.7 @tiberiuichim @sneridagh
+
+  Razzle 3.3.7 prepares the transition to the upcoming Razzle 4 so it improves and
+  unifies the extensibility story at the cost of change the signature of the
+  `razzle.config.js` and how plugins are declared. It also enables by default the new
+  *React Fast Refresh* feature implemented by the React community, which improves the
+  refresh of the code while in development. See the upgrade-guide for more information.
 - Babel plugins housekeeping
 
   Deprecated proposals:
