@@ -38,14 +38,17 @@ nav:
       - Theming strategy: 'theming/theming-strategy.md'
       - Custom styling: 'theming/custom-styling.md'
       - Integrate third party: 'theming/integrate-third-party.md'
-  - Customizing:
-      - Creating a project: 'customizing/creating-project.md'
-      - Folder structure: 'customizing/folder-structure.md'
-      - Customizing components: 'customizing/customizing-components.md'
-      - Customizing views: 'customizing/customizing-views.md'
-      - Creating new views: 'customizing/creating-views.md'
-      - Internationalization: 'customizing/i18n.md'
-      - Express middleware: 'customizing/express.md'
+  - Development recipes:
+      - Creating a project: 'recipes/creating-project.md'
+      - Folder structure: 'recipes/folder-structure.md'
+      - Customizing components: 'recipes/customizing-components.md'
+      - Customizing views: 'recipes/customizing-views.md'
+      - Creating new views: 'recipes/creating-views.md'
+      - Internationalization: 'recipes/i18n.md'
+      - Express middleware: 'recipes/express.md'
+      - Lazy loading and code splitting: 'recipes/lazyload.md'
+      - Overriding i18n messages: 'recipes/overridei18n.md'
+      - App component insertion point: 'recipes/appextras.md'
   - Blocks:
       - Introduction: 'blocks/introduction.md'
       - Anatomy: 'blocks/anatomy.md'
@@ -54,10 +57,6 @@ nav:
   - Addons:
       - Introduction: 'addons/index.md'
       - Best practices: 'addons/best-practices.md'
-  - Recipes:
-      - App component insertion point: 'recipes/appextras.md'
-      - Lazy loading and code splitting: 'recipes/lazyload.md'
-      - Overriding i18n messages: 'recipes/overridei18n.md'
   - Deploying:
       - Simple deployment: 'deploying/simple.md'
       - Using PM2: 'deploying/pm2.md'
