@@ -5,7 +5,7 @@ relatively new in Volto's world, there are quite a few generic addons that can
 be used in any Volto project.
 
 From the experience developing some of these open source addons, we
-recommand that you follow (no need for strictness, of course) this rough
+recommend that you follow (no need for strictness, of course) this rough
 guideline:
 
 ### Integrate your addon with Volto's addon framework
@@ -59,3 +59,11 @@ possible settings.
 It is not easy, right now, to ship an addon with a self-bootstraping and
 testing framework. But you can create a separate minimal Volto project that can
 hold the Cypress integration tests and trigger the CI tests.
+
+### Include in collective/awesome-volto
+
+Even if you think your addon is not generic or it's tricky to integrate, please
+consider including your addon in the
+[collective/awesome-volto](https://github.com/collective/awesome-volto) addons
+list. This provides visibility to your addon but also further solidifies
+Volto's possition in our Plone community.
