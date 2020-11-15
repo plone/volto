@@ -30,11 +30,10 @@ nav:
       - Internal proxy: 'configuration/internalproxy.md'
       - Richeditor settings: 'configuration/richeditor-settings.md'
       - Multilingual: 'configuration/multilingual.md'
-  - Semantic UI:
-      - About Semantic UI: 'semantic-ui/about-semantic.md'
-      - Semantic UI Theming: 'semantic-ui/semanticui-theming.md'
-      - Theming Engine: 'semantic-ui/theming-engine.md'
-  - Theming:
+  - Theming & Semantic UI:
+      - About Semantic UI: 'theming/about-semantic.md'
+      - Semantic UI Theming: 'theming/semanticui-theming.md'
+      - Theming Engine: 'theming/theming-engine.md'
       - Theming strategy: 'theming/theming-strategy.md'
       - Custom styling: 'theming/custom-styling.md'
       - Integrate third party: 'theming/integrate-third-party.md'
