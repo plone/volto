@@ -1,6 +1,6 @@
 # Change Log
 
-## 8.10.2 (unreleased)
+## 9.0.0 (2020-11-15)
 
 ### Breaking
 
