@@ -28,10 +28,10 @@ multiple instances of that color widget with custom color palettes.
 
 #### Provide additional configuration
 
-It is possible, for addons, to ship with multiple Volto configuration loaders.
-This makes it possible to provide configuration methods for demo purposes, for
-example, or to ship with a default "shallow" integration, then provide
-another separate configuration loader for a deeper integration.
+An addon can ship with multiple Volto configuration loaders. This makes it
+possible to provide configuration methods for demo purposes, for example, or to
+ship with a default "shallow" integration, then provide another separate
+configuration loader for a deeper integration.
 
 ### Avoid shadowing Volto files
 
@@ -39,10 +39,11 @@ This rule is meant to be broken. If you find that you need to customize
 a particular file from Volto and you have multiple projects, better to create
 an addon that holds that customized file, so that you have a single place to
 maintain that "file fork", but otherwise it's a good idea to avoid shipping
-generic addons with Volto customizations.
+generic addons with Volto customizations. Make sure to include this information
+as a warning in your addon description!
 
 See if your use case is generic enough, maybe Volto needs to be extended to
-cover that use case, directly in core!
+cover that use case, directly in core.
 
 ### Minimal documentation
 
