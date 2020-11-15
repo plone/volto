@@ -15,6 +15,10 @@ are assuming a MacOS/Linux machine:
 
 ## Install nvm (NodeJS version manager)
 
+If you have a working nodejs development setup on your machine, this step is
+not required. But it's a good idea to integrate nvm for development, as it
+provides easy access to any Nodejs released version.
+
 1. Open a terminal console and type:
 ```bash
 touch ~/.bash_profile
@@ -37,17 +41,22 @@ nvm install 12.16.1
 nvm use 12.16.1
 ```
 
-!!! note
-    Volto supports all currently active NodeJS LTS versions based on https://nodejs.org/en/about/releases/. On  	2021-04-30 Volto will not support Node 10 as it will reach its end of life.
-
 5. Test NodeJS:
 ```
 node -v
 ```
 
+!!! note
+    If you're using the fish shell, you can use [nvm.fish](https://github.com/jorgebucaran/nvm.fish)
+
+!!! note
+    Volto supports all currently active NodeJS LTS versions based on [NodeJS
+    Releases page](https://nodejs.org/en/about/releases/). On 2021-04-30 Volto
+    will not support Node 10 as it will reach its end of life.
+
 ## Yarn (NodeJS package manager)
 
-Install the classic version, not the 2.x one, of the popular node package manager.
+Install the Yarn Classic version (not the 2.x one!), of the popular node package manager.
 
 1. Open a terminal and type:
 ```
@@ -116,7 +125,11 @@ for you and it's ready to use in your own projects.
 You can run an standard Plone docker container with the proper configuration using `kitconcept.volto` right away by issuing:
 
 ```shell
-docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="kitconcept.volto" -e ZCML="kitconcept.volto.cors" -e PROFILES="kitconcept.volto:default-homepage" plone
+docker run -it --rm --name=plone \
+  -p 8080:8080 -e SITE=Plone -e ADDONS="kitconcept.volto" \
+  -e ZCML="kitconcept.volto.cors" \
+  -e PROFILES="kitconcept.volto:default-homepage" \
+  plone
 ```
 
 ## Install Volto
@@ -128,23 +141,12 @@ Use the `create-volto-app` helper utility.
 npm -g i @plone/create-volto-app
 ```
 
-!!! tip Installing it using npx
-    Optionally, you can also use `npx` utility to install `create-volto-app`
-    without having to install it globally. On the other hand, in order to do it, you
-    have to install `npx` globally. The advantage is that you don't have to
-    upgrade `create-volto-app` each time you want to use it, because `npx` does
-    it for you:
-
-    `npx @plone/create-volto-app myvoltoapp`
-
 2. Create a new Volto app using the recently added command, providing the name of the new app (folder) to be created.
-
 ```
 create-volto-app myvoltoapp
 ```
 
 3. Change directory to the newly created folder `myvoltoapp` (or the one you've chosen):
-
 ```
 cd myvoltoapp
 ```
@@ -157,6 +159,12 @@ yarn start
 
 This command will build an in-memory bundle and execute Volto in development mode. Open a browser to
 take a look at http://localhost:3000
+
+!!! tip Try the new Yeoman based generator
+    The Volto developer community is working on a new [enhanced
+    generator](https://github.com/plone/generator-volto.git). In addition to
+    bootstrapping standalone Volto projects, it can also bootstrap Volto
+    addons. Give it a try!
 
 ## Build the production bundle
 
