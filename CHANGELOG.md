@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Wrap objectBrowserWidget with FormFieldWrapper @nileshgulia1
+
 ### Internal
 
 ## 9.0.0 (2020-11-15)
@@ -19,12 +21,13 @@
   Razzle 3.3.7 prepares the transition to the upcoming Razzle 4 so it improves and
   unifies the extensibility story at the cost of change the signature of the
   `razzle.config.js` and how plugins are declared. It also enables by default the new
-  *React Fast Refresh* feature implemented by the React community, which improves the
+  _React Fast Refresh_ feature implemented by the React community, which improves the
   refresh of the code while in development.
 
 - Babel plugins housekeeping
 
   Deprecated proposals:
+
   - @babel/plugin-proposal-function-bind
   - @babel/plugin-proposal-do-expressions
   - @babel/plugin-proposal-logical-assignment-operators

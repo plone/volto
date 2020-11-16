@@ -8,18 +8,11 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { map, remove } from 'lodash';
 
-import {
-  Form,
-  Grid,
-  Label,
-  Popup,
-  Button,
-  Icon as IconOld,
-} from 'semantic-ui-react';
+import { Grid, Label, Popup, Button, Icon as IconOld } from 'semantic-ui-react';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import { defineMessages, injectIntl } from 'react-intl';
-import { Icon } from '@plone/volto/components';
+import { Icon, FormFieldWrapper } from '@plone/volto/components';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import homeSVG from '@plone/volto/icons/home.svg';
@@ -197,14 +190,12 @@ class ObjectBrowserWidget extends Component {
     const {
       id,
       title,
-      required,
       description,
       error,
       value,
       mode,
       onEdit,
       onDelete,
-      fieldSet,
       onChange,
       draggable,
       isDisabled,
@@ -224,12 +215,9 @@ class ObjectBrowserWidget extends Component {
     let items = value ? value.filter((item) => item != null) : [];
 
     return (
-      <Form.Field
-        inline
-        required={required}
-        error={error.length > 0}
+      <FormFieldWrapper
+        {...this.props}
         className={description ? 'help text' : 'text'}
-        id={`${fieldSet || 'field'}-${id}`}
       >
         <Grid>
           <Grid.Row stretched>
@@ -317,7 +305,7 @@ class ObjectBrowserWidget extends Component {
             </Grid.Row>
           )}
         </Grid>
-      </Form.Field>
+      </FormFieldWrapper>
     );
   }
 }
