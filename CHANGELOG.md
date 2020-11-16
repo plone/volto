@@ -1,12 +1,50 @@
 # Change Log
 
-## 8.10.2 (unreleased)
+## 9.0.1 (unreleased)
 
 ### Breaking
 
 ### Feature
 
 ### Bugfix
+
+### Internal
+
+## 9.0.0 (2020-11-15)
+
+### Breaking
+
+- Upgrade Razzle to 3.3.7 @tiberiuichim @sneridagh
+
+  Razzle 3.3.7 prepares the transition to the upcoming Razzle 4 so it improves and
+  unifies the extensibility story at the cost of change the signature of the
+  `razzle.config.js` and how plugins are declared. It also enables by default the new
+  *React Fast Refresh* feature implemented by the React community, which improves the
+  refresh of the code while in development.
+
+- Babel plugins housekeeping
+
+  Deprecated proposals:
+  - @babel/plugin-proposal-function-bind
+  - @babel/plugin-proposal-do-expressions
+  - @babel/plugin-proposal-logical-assignment-operators
+  - @babel/plugin-proposal-pipeline-operator
+  - @babel/plugin-proposal-function-sent
+
+For a complete list of actions to follow, please read the upgrade guide
+https://docs.voltocms.com/upgrade-guide/
+
+### Feature
+
+- Add `webpack-relative-resolver` plugin. For addons and Volto, it normalizes local relative imports to package-rooted imports. An import such as `import Something from './Something'` would be rerouted internally as `import Something from '@collective/someaddon/Something'`. By doing so we get easier customization of addons, as they don't have to be so strict with their import and exports @tiberiuichim
+- Posibility to configure Sentry via `settings.sentryOptions` configuration key @avoinea
+- Catch `console.error` by default with Sentry @avoinea
+- Refactor CT icons helper: add getContentIcons @nzambello
+
+### Bugfix
+
+- Properly return 404, 401 and 403 on SSR, when appropriate @tiberiuichim
+- Fix Guillotina PATCH by adding the `@static_behaviors` field inconditionally @sneridagh
 
 ### Internal
 
