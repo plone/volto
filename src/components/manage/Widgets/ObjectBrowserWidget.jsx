@@ -6,9 +6,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
-import { map, remove } from 'lodash';
+import { remove } from 'lodash';
 
-import { Grid, Label, Popup, Button, Icon as IconOld } from 'semantic-ui-react';
+import { Label, Popup, Button } from 'semantic-ui-react';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import { defineMessages, injectIntl } from 'react-intl';
@@ -187,20 +187,7 @@ class ObjectBrowserWidget extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const {
-      id,
-      title,
-      description,
-      error,
-      value,
-      mode,
-      onEdit,
-      onDelete,
-      onChange,
-      draggable,
-      isDisabled,
-      intl,
-    } = this.props;
+    const { id, description, value, mode, onChange, isDisabled } = this.props;
 
     let icon =
       mode === 'multiple' || value.length === 0 ? navTreeSVG : clearSVG;
@@ -219,92 +206,32 @@ class ObjectBrowserWidget extends Component {
         {...this.props}
         className={description ? 'help text' : 'text'}
       >
-        <Grid>
-          <Grid.Row stretched>
-            <Grid.Column width="4">
-              <div className="wrapper">
-                <label htmlFor={`field-${id}`}>
-                  {draggable && onEdit && (
-                    <i
-                      aria-hidden="true"
-                      className="grey bars icon drag handle"
-                    />
-                  )}
-                  {title}
-                </label>
+        <div className="objectbrowser-field">
+          <div
+            className="selected-values"
+            onClick={this.handleSelectedItemsRefClick}
+            onKeyDown={this.handleSelectedItemsRefClick}
+            role="searchbox"
+            tabIndex={0}
+            ref={this.selectedItemsRef}
+          >
+            {items.map((item) => this.renderLabel(item))}
+
+            {items.length === 0 && (
+              <div className="placeholder" ref={this.placeholderRef}>
+                {this.props.intl.formatMessage(messages.placeholder)}
               </div>
-            </Grid.Column>
-            <Grid.Column width="8">
-              {onEdit && !isDisabled && (
-                <div className="toolbar">
-                  <button
-                    aria-label={intl.formatMessage(messages.edit)}
-                    className="item ui noborder button"
-                    onClick={(evt) => {
-                      evt.preventDefault();
-                      onEdit(id);
-                    }}
-                  >
-                    <IconOld name="write square" size="large" color="blue" />
-                  </button>
-                  <button
-                    aria-label={intl.formatMessage(messages.delete)}
-                    className="item ui noborder button"
-                    onClick={(evt) => {
-                      evt.preventDefault();
-                      onDelete(id);
-                    }}
-                  >
-                    <IconOld name="close" size="large" color="red" />
-                  </button>
-                </div>
-              )}
-              <div className="objectbrowser-field">
-                <div
-                  className="selected-values"
-                  onClick={this.handleSelectedItemsRefClick}
-                  onKeyDown={this.handleSelectedItemsRefClick}
-                  role="searchbox"
-                  tabIndex={0}
-                  ref={this.selectedItemsRef}
-                >
-                  {items.map((item) => this.renderLabel(item))}
+            )}
+          </div>
 
-                  {items.length === 0 && (
-                    <div className="placeholder" ref={this.placeholderRef}>
-                      {this.props.intl.formatMessage(messages.placeholder)}
-                    </div>
-                  )}
-                </div>
-
-                {/* <Button onClick={this.showObjectBrowser} className="action">
+          {/* <Button onClick={this.showObjectBrowser} className="action">
                   <Icon name={navTreeSVG} size="18px" />
                 </Button> */}
 
-                <Button
-                  onClick={iconAction}
-                  className="action"
-                  disabled={isDisabled}
-                >
-                  <Icon name={icon} size="18px" />
-                </Button>
-              </div>
-
-              {map(error, (message) => (
-                <Label key={message} basic color="red" pointing>
-                  {message}
-                </Label>
-              ))}
-            </Grid.Column>
-          </Grid.Row>
-          {description && (
-            <Grid.Row stretched>
-              <Grid.Column stretched width="12">
-                <p className="help">{description}</p>
-              </Grid.Column>
-            </Grid.Row>
-          )}
-        </Grid>
+          <Button onClick={iconAction} className="action" disabled={isDisabled}>
+            <Icon name={icon} size="18px" />
+          </Button>
+        </div>
       </FormFieldWrapper>
     );
   }

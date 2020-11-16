@@ -28,69 +28,44 @@ exports[`renders a objectBrowser widget component 1`] = `
         className="eight wide column"
       >
         <div
-          className="ui grid"
+          className="objectbrowser-field"
         >
           <div
-            className="stretched row"
+            className="selected-values"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            role="searchbox"
+            tabIndex={0}
           >
             <div
-              className="four wide column"
+              className="placeholder"
             >
-              <div
-                className="wrapper"
-              >
-                <label
-                  htmlFor="field-my-field"
-                >
-                  My field
-                </label>
-              </div>
-            </div>
-            <div
-              className="eight wide column"
-            >
-              <div
-                className="objectbrowser-field"
-              >
-                <div
-                  className="selected-values"
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
-                  role="searchbox"
-                  tabIndex={0}
-                >
-                  <div
-                    className="placeholder"
-                  >
-                    No items selected
-                  </div>
-                </div>
-                <button
-                  className="ui button action"
-                  onClick={[Function]}
-                >
-                  <svg
-                    className="icon"
-                    dangerouslySetInnerHTML={
-                      Object {
-                        "__html": undefined,
-                      }
-                    }
-                    onClick={null}
-                    style={
-                      Object {
-                        "fill": "currentColor",
-                        "height": "18px",
-                        "width": "auto",
-                      }
-                    }
-                    viewBox=""
-                    xmlns=""
-                  />
-                </button>
-              </div>
+              No items selected
             </div>
           </div>
+          <button
+            className="ui button action"
+            onClick={[Function]}
+          >
+            <svg
+              className="icon"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": undefined,
+                }
+              }
+              onClick={null}
+              style={
+                Object {
+                  "fill": "currentColor",
+                  "height": "18px",
+                  "width": "auto",
+                }
+              }
+              viewBox=""
+              xmlns=""
+            />
+          </button>
         </div>
       </div>
     </div>
