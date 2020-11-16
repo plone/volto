@@ -51,6 +51,9 @@ let config = {
     // not require CORS to work.
     apiPath,
     devProxyToApiPath: 'http://localhost:8080/Plone', // Set it to '' for disabling the proxy
+    // proxyRewriteTarget Set it for set a custom target for the proxy or overide the internal VHM rewrite
+    // proxyRewriteTarget: '/VirtualHostBase/http/localhost:8080/Plone/VirtualHostRoot/_vh_api'
+    // proxyRewriteTarget: 'https://myvoltositeinproduction.com'
     // apiPath: process.env.RAZZLE_API_PATH || 'http://localhost:8000', // for Volto reference
     // apiPath: process.env.RAZZLE_API_PATH || 'http://localhost:8081/db/web', // for guillotina
     actions_raising_api_errors: ['GET_CONTENT', 'UPDATE_CONTENT'],

@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Extend the internal proxy capabilities, now the target is overridable and SSL aware @sneridagh
+
 ### Bugfix
 
 ### Internal
