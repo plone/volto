@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix Sentry tags and extra via settings.sentryOptions @avoinea
+
 ### Internal
 
 ## 9.0.0 (2020-11-15)
