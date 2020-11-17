@@ -25,10 +25,11 @@ const addBreaklinesInline = (children) => {
       : children[0];
 
     if (s.split('\n').length > 1) {
+      const last = s.split('\n').length - 1;
       return s.split('\n').map((child, index) => (
         <React.Fragment key={child + index}>
           {child}
-          <br />
+          {last !== index && <br />}
         </React.Fragment>
       ));
     }
