@@ -36,7 +36,7 @@ nav:
       - Theming Engine: 'theming/theming-engine.md'
       - Theming strategy: 'theming/theming-strategy.md'
       - Custom styling: 'theming/custom-styling.md'
-      - Integrate third party: 'theming/integrate-third-party.md'
+      - Use another theming engine: 'theming/using-third-party-themes.md'
   - Development recipes:
       - Creating a project: 'recipes/creating-project.md'
       - Folder structure: 'recipes/folder-structure.md'
