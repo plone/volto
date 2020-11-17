@@ -67,15 +67,14 @@ nav:
       - Using sentry: 'deploying/sentry.md'
   - Upgrade Guide: 'upgrade-guide/index.md'
   - Developer Guidelines:
-      - Accessibility: 'developer-guidelines/accessibility-guidelines.md'
       - Language features: 'developer-guidelines/language-features.md'
+      - Linting: 'developer-guidelines/linting.md'
       - React: 'developer-guidelines/react.md'
       - Redux: 'developer-guidelines/redux.md'
       - Routing: 'developer-guidelines/routing.md'
-      - Linting: 'developer-guidelines/linting.md'
-      - Language features: 'developer-guidelines/language-features.md'
       - Testing: 'developer-guidelines/testing.md'
       - Acceptance tests: 'developer-guidelines/acceptance-tests.md'
+      - Accessibility: 'developer-guidelines/accessibility-guidelines.md'
   - Contributing:
       - Guidelines: 'contributing/guidelines.md'
 
@@ -93,3 +92,4 @@ markdown_extensions:
       emoji_generator: !!python/name:pymdownx.emoji.to_svg
   - toc:
       permalink: '#'
+  - markdown.extensions.def_list

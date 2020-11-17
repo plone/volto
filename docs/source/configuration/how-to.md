@@ -58,55 +58,51 @@ This allows Volto to work the same way in either standalone version (when
 developing Volto itself), but also when used as a library, referenced from
 a Volto project.
 
-#### settings
+**settings**
+:    The `settings` object of the `~/config` is a big registry of miscellaneous
+     settings. See the [Settings reference](/configuration/settings-reference)
+     for a bit more details.
 
-The `settings` object of the `~/config` is a big registry of miscellaneous
-settings. See the [Settings reference](/configuration/settings-reference) for
-a bit more details.
+**widgets**
+:    The `widgets` object holds the widget registry, used to decide which
+     widget should be used when rendering forms. Check [its
+     definition](https://github.com/plone/volto/blob/master/src/config/Widgets.jsx)
+     but also the [lookup
+     mechanism](https://github.com/plone/volto/blob/6fd62cb2860bc7cf3cb7c36ea86bfd8bd03247d9/src/components/manage/Form/Field.jsx#L112)
+     to understand how things work.
 
-#### widgets
+**views**
+:   The `views` registry allows configuration of the components that will be
+    used to render the content. There are 4 types of views:
 
-The `widgets` object holds the widget registry, used to decide which widget
-should be used when rendering forms. Check [its
-definition](https://github.com/plone/volto/blob/master/src/config/Widgets.jsx)
-but also the
-[lookup mechanism](https://github.com/plone/volto/blob/6fd62cb2860bc7cf3cb7c36ea86bfd8bd03247d9/src/components/manage/Form/Field.jsx#L112)
-to understand how things work.
+    - layout views, which are used based on the `layout` field of the incoming
+      content
+    - content type views, registered view components per Plone content type
+    - the default view, which can render the composite page Volto blocks
+    - and the error views, to be used for regular error pages (Forbidden, Not
+      Found, etc).
 
-#### views
-The `views` registry allows configuration of the components that will be used
-to render the content. There are 4 types of views:
+**addonReducers**
+:   In the `addonReducers` you can register and potentially override (by name)
+    any registered reducer from Volto or other loaded Volto addons.
 
-- layout views, which are used based on the `layout` field of the incoming
-  content
-- content type views, registered view components per Plone content type
-- the default view, which can render the composite page Volto blocks
-- and the error views, to be used for regular error pages (Forbidden, Not
-  Found, etc).
+**addonRoutes**
+:   The `addonRoutes` is a list of routes declaration, to be used as child
+    sub-routes for the App component. A route declaration looks like this (an
+    example):
 
-#### addonReducers
+    ```
+      {
+        path: '/**/chat',
+        component: Chat,
+      }
+    ```
 
-In the `addonReducers` you can register and potentially override (by name)
-any registered reducer from Volto or other loaded Volto addons.
+    The `addonRoutes` have a higher priority compared to the default routes, so you
+    can use them to override the existing routes, as well. See `src/routes.js` for
+    more details. In its configuration, an addon would push additional routes to
+    this data structure:
 
-#### addonRoutes
-
-The `addonRoutes` is a list of routes declaration, to be used as child
-sub-routes for the App component. A route declaration looks like this (an
-example):
-
-```
-  {
-    path: '/**/chat',
-    component: Chat,
-  }
-```
-
-The `addonRoutes` have a higher priority compared to the default routes, so you
-can use them to override the existing routes, as well. See `src/routes.js` for
-more details. In its configuration, an addon would push additional routes to
-this data structure:
-
-```
-config.addonRoutes.push({ path: '/**/chat', component: Chat });
-```
+    ```
+    config.addonRoutes.push({ path: '/**/chat', component: Chat });
+    ```
