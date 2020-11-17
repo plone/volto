@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Segment, Popup } from 'semantic-ui-react';
 import cx from 'classnames';
 import { Icon } from '@plone/volto/components';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { flattenToAppURL, getContentIcon } from '@plone/volto/helpers';
 import { settings } from '~/config';
 import rightArrowSVG from '@plone/volto/icons/right-key.svg';
 import homeSVG from '@plone/volto/icons/home.svg';
@@ -10,7 +10,6 @@ import homeSVG from '@plone/volto/icons/home.svg';
 const ObjectBrowserNav = ({
   currentSearchResults,
   selected,
-  getIcon,
   handleClickOnItem,
   handleDoubleClickOnItem,
   mode,
@@ -59,7 +58,14 @@ const ObjectBrowserNav = ({
                     {flattenToAppURL(item['@id'])} ( {item['@type']})
                   </>
                 }
-                trigger={<span>{getIcon(item['@type'])}</span>}
+                trigger={
+                  <span>
+                    <Icon
+                      name={getContentIcon(item['@type'], item.is_folderish)}
+                      size="24px"
+                    />
+                  </span>
+                }
               />
 
               {item.title}

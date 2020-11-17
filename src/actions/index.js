@@ -88,6 +88,7 @@ export {
   resetPassword,
   updatePassword,
   updateUser,
+  showAllUsers,
 } from '@plone/volto/actions/users/users';
 export {
   login,
@@ -105,4 +106,8 @@ export {
 export { getQuerystring } from '@plone/volto/actions/querystring/querystring';
 export { getQueryStringResults } from '@plone/volto/actions/querystringsearch/querystringsearch';
 export { setSidebarTab } from '@plone/volto/actions/sidebar/sidebar';
-export { getTranslationLocator } from '@plone/volto/actions/translations/translations';
+export {
+  deleteLinkTranslation,
+  getTranslationLocator,
+  linkTranslation,
+} from '@plone/volto/actions/translations/translations';

@@ -22,6 +22,8 @@ import navTreeSVG from '@plone/volto/icons/nav.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
+import { withRouter } from 'react-router';
+
 import { Icon } from '@plone/volto/components';
 
 const messages = defineMessages({
@@ -270,7 +272,7 @@ class AddLinkForm extends Component {
                       this.clear();
                     }}
                   >
-                    <Icon name={clearSVG} size="30px" />
+                    <Icon name={clearSVG} size="24px" />
                   </Button>
                 </Button.Group>
               ) : (
@@ -306,7 +308,7 @@ class AddLinkForm extends Component {
                     this.onSubmit();
                   }}
                 >
-                  <Icon name={aheadSVG} size="30px" />
+                  <Icon name={aheadSVG} size="24px" />
                 </Button>
               </Button.Group>
             </div>
@@ -317,4 +319,4 @@ class AddLinkForm extends Component {
   }
 }
 
-export default compose(injectIntl, withObjectBrowser)(AddLinkForm);
+export default compose(injectIntl, withRouter, withObjectBrowser)(AddLinkForm);

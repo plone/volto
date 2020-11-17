@@ -5,7 +5,7 @@ repo_url: 'https://github.com/plone/volto'
 copyright: 'Made with ❤️ by the Plone Community - All code owned by the Plone Foundation'
 theme:
   name: 'material'
-  custom_dir: 'theme'
+#   custom_dir: 'theme'
   logo: 'images/volto-h-transparent.svg'
   favicon: 'images/favicon.ico'
   palette:
@@ -15,7 +15,8 @@ theme:
     text: 'Poppins'
     code: 'Source Code Pro'
 extra_css:
-  - 'stylesheets/extra.css'
+  - 'stylesheets/extra.oct2020.css'
+  - 'stylesheets/pygments.css'
 
 nav:
   - Getting Started: 'getting-started/install.md'
@@ -60,12 +61,13 @@ nav:
   - Upgrade Guide: 'upgrade-guide/index.md'
   - Developer Guidelines:
       - Accessibility: 'developer-guidelines/accessibility-guidelines.md'
+      - Language features: 'developer-guidelines/language-features.md'
       - React: 'developer-guidelines/react.md'
-      - Babel: 'developer-guidelines/babel.md'
       - Redux: 'developer-guidelines/redux.md'
       - Routing: 'developer-guidelines/routing.md'
       - Linting: 'developer-guidelines/linting.md'
       - Language features: 'developer-guidelines/language-features.md'
+      - Testing: 'developer-guidelines/testing.md'
       - Acceptance tests: 'developer-guidelines/acceptance-tests.md'
   - Contributing:
       - Guidelines: 'contributing/guidelines.md'
@@ -79,6 +81,7 @@ markdown_extensions:
   - pymdownx.mark
   - pymdownx.details
   - pymdownx.tasklist
+  - pymdownx.tabbed
   - pymdownx.emoji:
       emoji_generator: !!python/name:pymdownx.emoji.to_svg
   - toc:
