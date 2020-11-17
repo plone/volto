@@ -14,36 +14,36 @@ This list is still incomplete, contributions are welcomed!
 **sentryOptions**
 :    Sentry configuration:
 
-```js
-import {
-  settings as defaultSettings,
-} from '@plone/volto/config';
+    ```js
+    import {
+      settings as defaultSettings,
+    } from '@plone/volto/config';
 
-const settings = {
-  ...defaultSettings,
-  sentryOptions: {
-    ...defaultSettings.sentryOptions,
-    dsn: 'https://key@sentry.io/1',
-    environment: 'production',
-    release: '1.2.3',
-    serverName: 'volto',
-    tags: {
-      site: 'foo.bar',
-      app: 'test_app',
-      logger: 'volto',
-    },
-    extras: {
-      key: 'value',
-    },
-    integrations: [
-        ...defaultSettings.sentryOptions.integrations,
-        // new MyAwesomeIntegration()
-    ]
-  }
-};
-```
+    const settings = {
+      ...defaultSettings,
+      sentryOptions: {
+        ...defaultSettings.sentryOptions,
+        dsn: 'https://key@sentry.io/1',
+        environment: 'production',
+        release: '1.2.3',
+        serverName: 'volto',
+        tags: {
+          site: 'foo.bar',
+          app: 'test_app',
+          logger: 'volto',
+        },
+        extras: {
+          key: 'value',
+        },
+        integrations: [
+            ...defaultSettings.sentryOptions.integrations,
+            // new MyAwesomeIntegration()
+        ]
+      }
+    };
+    ```
 
-See more about [Sentry integration](../deploying/sentry.md).
+    See more about [Sentry integration](../deploying/sentry.md).
 
 **contentIcons**
 :    With this property you can configure Content Types icons.
@@ -53,16 +53,16 @@ See more about [Sentry integration](../deploying/sentry.md).
      and you can extend them in your project's config for custom content types
      using `settings.contentIcons`.
 
-In Volto projects, you can configure this for custom content types like:
+    In Volto projects, you can configure this for custom content types like:
 
-```js
-import * as config from '@plone/volto/config';
-import courseSVG from './icons/course.svg';
+    ```js
+    import * as config from '@plone/volto/config';
+    import courseSVG from './icons/course.svg';
 
-export const settings = {
-  ...config.settings,
-  contentIcons: {
-    ...config.settings.contentIcons,
-    Course: courseSVG,
-};
-```
+    export const settings = {
+      ...config.settings,
+      contentIcons: {
+        ...config.settings.contentIcons,
+        Course: courseSVG,
+    };
+    ```
