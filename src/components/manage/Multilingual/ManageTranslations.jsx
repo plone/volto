@@ -16,12 +16,15 @@ import {
 import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
 import { useSelector, useDispatch } from 'react-redux';
 import { Portal } from 'react-portal';
-import { toast } from 'react-toastify';
 
 import addSVG from '@plone/volto/icons/add.svg';
 import backSVG from '@plone/volto/icons/back.svg';
 import linkSVG from '@plone/volto/icons/link.svg';
 import unlinkSVG from '@plone/volto/icons/unlink.svg';
+
+import loadable from '@loadable/component';
+
+const LoadableToast = loadable.lib(() => import('react-toastify'));
 
 const messages = defineMessages({
   success: {
@@ -66,13 +69,13 @@ const ManageTranslations = (props) => {
     }
   }, [dispatch, content, pathname]);
 
-  React.useEffect(() => {
+  React.useEffectt(() => {
     // Only execute the link API call on the final item selected, once the ObjectBrowser
     // is closed
     if (!isObjectBrowserOpen && currentSelectedItem.current) {
       dispatch(linkTranslation(content['@id'], currentSelectedItem.current))
         .then((resp) => {
-          toast.success(
+          this.toast.success(
             <Toast
               success
               title={intl.formatMessage(messages.success)}
@@ -85,7 +88,7 @@ const ManageTranslations = (props) => {
           // TODO: The true error sent by the API is shadowed by the superagent one
           // Update this when this issue is fixed.
           const shadowedError = JSON.parse(error.response.text);
-          toast.error(
+          this.toast.error(
             <Toast
               error
               title={shadowedError.error.type}
@@ -122,7 +125,7 @@ const ManageTranslations = (props) => {
   function onDeleteTranslation(lang) {
     dispatch(deleteLinkTranslation(content['@id'], lang))
       .then((resp) => {
-        toast.success(
+        this.toast.success(
           <Toast
             success
             title={intl.formatMessage(messages.success)}
@@ -135,7 +138,7 @@ const ManageTranslations = (props) => {
         // TODO: The true error sent by the API is shadowed by the superagent one
         // Update this when this issue is fixed.
         const shadowedError = JSON.parse(error.response.text);
-        toast.error(
+        this.toast.error(
           <Toast
             error
             title={shadowedError.error.type}
@@ -147,129 +150,137 @@ const ManageTranslations = (props) => {
   }
 
   return (
-    <Container id="page-manage-translations">
-      <Helmet title={intl.formatMessage(messages.ManageTranslations)} />
-      <Segment.Group raised>
-        <Segment className="primary">
-          <FormattedMessage
-            id="Manage translations for {title}"
-            defaultMessage="Manage translations for {title}"
-            values={{ title: <q>{content.title}</q> }}
-          />
-        </Segment>
-        {content && (
-          <Table selectable compact singleLine attached>
-            <Table.Header>
-              <Table.Row>
-                <Table.HeaderCell>Language</Table.HeaderCell>
-                <Table.HeaderCell>Path</Table.HeaderCell>
-                <Table.HeaderCell textAlign="right">Tools</Table.HeaderCell>
-              </Table.Row>
-            </Table.Header>
-            <Table.Body>
-              {settings.supportedLanguages.map((lang) => (
-                <Table.Row key={lang}>
-                  <Table.Cell collapsing>
-                    {lang === content.language.token ? (
-                      <strong>{langmap[lang].nativeName}</strong>
-                    ) : (
-                      langmap[lang].nativeName
-                    )}
-                  </Table.Cell>
-                  <Table.Cell>
-                    <Link to={flattenToAppURL(translations[lang]?.url || '')}>
-                      {flattenToAppURL(translations[lang]?.url || '')}
-                    </Link>
-                  </Table.Cell>
-                  <Table.Cell
-                    textAlign="right"
-                    className="manage-multilingual-tools"
-                  >
-                    <Button.Group>
-                      <Button
-                        basic
-                        icon
-                        disabled={
-                          lang === content.language.token ||
-                          translations?.[lang]
-                        }
-                        as={Link}
-                        to={{
-                          pathname: `${pathname}/create-translation`,
-                          state: {
-                            type: content['@type'],
-                            translationOf: flattenToAppURL(content['@id']),
-                            language: lang,
-                          },
-                        }}
-                      >
-                        <Icon name={addSVG} size="24px" />
-                      </Button>
-                    </Button.Group>
-                    {translations?.[lang] ? (
-                      <Button.Group>
-                        <Button
-                          basic
-                          icon
-                          disabled={lang === content.language.token}
-                          onClick={() => onDeleteTranslation(lang)}
+    <LoadableToast>
+      {({ toast }) => {
+        this.toast = toast;
+
+        return (
+          <Container id="page-manage-translations">
+            <Helmet title={intl.formatMessage(messages.ManageTranslations)} />
+            <Segment.Group raised>
+              <Segment className="primary">
+                <FormattedMessage
+                  id="Manage translations for {title}"
+                  defaultMessage="Manage translations for {title}"
+                  values={{ title: <q>{content.title}</q> }}
+                />
+              </Segment>
+              {content && (
+                <Table selectable compact singleLine attached>
+                  <Table.Header>
+                    <Table.Row>
+                      <Table.HeaderCell>Language</Table.HeaderCell>
+                      <Table.HeaderCell>Path</Table.HeaderCell>
+                      <Table.HeaderCell textAlign="right">Tools</Table.HeaderCell>
+                    </Table.Row>
+                  </Table.Header>
+                  <Table.Body>
+                    {settings.supportedLanguages.map((lang) => (
+                      <Table.Row key={lang}>
+                        <Table.Cell collapsing>
+                          {lang === content.language.token ? (
+                            <strong>{langmap[lang].nativeName}</strong>
+                          ) : (
+                            langmap[lang].nativeName
+                          )}
+                        </Table.Cell>
+                        <Table.Cell>
+                          <Link to={flattenToAppURL(translations[lang]?.url || '')}>
+                            {flattenToAppURL(translations[lang]?.url || '')}
+                          </Link>
+                        </Table.Cell>
+                        <Table.Cell
+                          textAlign="right"
+                          className="manage-multilingual-tools"
                         >
-                          <Icon
-                            name={
-                              lang === content.language.token
-                                ? linkSVG
-                                : unlinkSVG
-                            }
-                            size="24px"
-                          />
-                        </Button>
-                      </Button.Group>
-                    ) : (
-                      <Button.Group>
-                        <Button
-                          basic
-                          icon
-                          disabled={lang === content.language.token}
-                          onClick={() =>
-                            openObjectBrowser({
-                              mode: 'link',
-                              overlay: true,
-                              onSelectItem: (url) => {
-                                onSelectTarget(url, isObjectBrowserOpen);
-                              },
-                            })
-                          }
-                        >
-                          <Icon name={linkSVG} size="24px" />
-                        </Button>
-                      </Button.Group>
-                    )}
-                  </Table.Cell>
-                </Table.Row>
-              ))}
-            </Table.Body>
-          </Table>
-        )}
-        {__CLIENT__ && (
-          <Portal node={document.getElementById('toolbar')}>
-            <Toolbar
-              pathname={pathname}
-              hideDefaultViewButtons
-              inner={
-                <Link to={`${getBaseUrl(pathname)}`} className="item">
-                  <Icon
-                    name={backSVG}
-                    className="contents circled"
-                    size="30px"
-                    title={intl.formatMessage(messages.back)}
+                          <Button.Group>
+                            <Button
+                              basic
+                              icon
+                              disabled={
+                                lang === content.language.token ||
+                                translations?.[lang]
+                              }
+                              as={Link}
+                              to={{
+                                pathname: `${pathname}/create-translation`,
+                                state: {
+                                  type: content['@type'],
+                                  translationOf: flattenToAppURL(content['@id']),
+                                  language: lang,
+                                },
+                              }}
+                            >
+                              <Icon name={addSVG} size="24px" />
+                            </Button>
+                          </Button.Group>
+                          {translations?.[lang] ? (
+                            <Button.Group>
+                              <Button
+                                basic
+                                icon
+                                disabled={lang === content.language.token}
+                                onClick={() => onDeleteTranslation(lang)}
+                              >
+                                <Icon
+                                  name={
+                                    lang === content.language.token
+                                      ? linkSVG
+                                      : unlinkSVG
+                                  }
+                                  size="24px"
+                                />
+                              </Button>
+                            </Button.Group>
+                          ) : (
+                            <Button.Group>
+                              <Button
+                                basic
+                                icon
+                                disabled={lang === content.language.token}
+                                onClick={() =>
+                                  openObjectBrowser({
+                                    mode: 'link',
+                                    overlay: true,
+                                    onSelectItem: (url) => {
+                                      onSelectTarget(url, isObjectBrowserOpen);
+                                    },
+                                  })
+                                }
+                              >
+                                <Icon name={linkSVG} size="24px" />
+                              </Button>
+                            </Button.Group>
+                          )}
+                        </Table.Cell>
+                      </Table.Row>
+                    ))}
+                  </Table.Body>
+                </Table>
+              )}
+              {__CLIENT__ && (
+                <Portal node={document.getElementById('toolbar')}>
+                  <Toolbar
+                    pathname={pathname}
+                    hideDefaultViewButtons
+                    inner={
+                      <Link to={`${getBaseUrl(pathname)}`} className="item">
+                        <Icon
+                          name={backSVG}
+                          className="contents circled"
+                          size="30px"
+                          title={intl.formatMessage(messages.back)}
+                        />
+                      </Link>
+                    }
                   />
-                </Link>
-              }
-            />
-          </Portal>
-        )}
-      </Segment.Group>
-    </Container>
+                </Portal>
+              )}
+            </Segment.Group>
+          </Container>
+        );
+      }}
+    </LoadableToast>
   );
 };
 
