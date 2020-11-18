@@ -9,10 +9,13 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { defineMessages, injectIntl } from 'react-intl';
 import jwtDecode from 'jwt-decode';
-import { toast } from 'react-toastify';
 
 import { Form, Toast } from '@plone/volto/components';
 import { getUser, updateUser } from '@plone/volto/actions';
+
+import loadable from '@loadable/component';
+
+const LoadableToast = loadable.lib(() => import('react-toastify'));
 
 const messages = defineMessages({
   personalInformation: {
@@ -141,7 +144,7 @@ class PersonalInformation extends Component {
     delete data.username;
     delete data.roles;
     this.props.updateUser(this.props.userId, data);
-    toast.success(
+    this.toast.success(
       <Toast
         success
         title={this.props.intl.formatMessage(messages.success)}
@@ -167,65 +170,81 @@ class PersonalInformation extends Component {
    */
   render() {
     return (
-      <Form
-        formData={this.props.user}
-        schema={{
-          fieldsets: [
-            {
-              id: 'default',
-              title: this.props.intl.formatMessage(messages.default),
-              fields: [
-                'fullname',
-                'email',
-                'portrait',
-                'home_page',
-                'location',
-              ],
-            },
-          ],
-          properties: {
-            fullname: {
-              description: this.props.intl.formatMessage(
-                messages.fullnameDescription,
-              ),
-              title: this.props.intl.formatMessage(messages.fullnameTitle),
-              type: 'string',
-            },
-            email: {
-              description: this.props.intl.formatMessage(
-                messages.emailDescription,
-              ),
-              title: this.props.intl.formatMessage(messages.emailTitle),
-              type: 'string',
-            },
-            portrait: {
-              description: this.props.intl.formatMessage(
-                messages.portraitDescription,
-              ),
-              title: this.props.intl.formatMessage(messages.portraitTitle),
-              type: 'object',
-            },
-            home_page: {
-              description: this.props.intl.formatMessage(
-                messages.homePageDescription,
-              ),
-              title: this.props.intl.formatMessage(messages.homePageTitle),
-              type: 'string',
-            },
-            location: {
-              description: this.props.intl.formatMessage(
-                messages.locationDescription,
-              ),
-              title: this.props.intl.formatMessage(messages.locationTitle),
-              type: 'string',
-            },
-          },
-          required: ['email'],
+      <LoadableToast>
+        {({ toast }) => {
+          this.toast = toast;
+
+          return (
+            <Form
+              formData={this.props.user}
+              schema={{
+                fieldsets: [
+                  {
+                    id: 'default',
+                    title: this.props.intl.formatMessage(messages.default),
+                    fields: [
+                      'fullname',
+                      'email',
+                      'portrait',
+                      'home_page',
+                      'location',
+                    ],
+                  },
+                ],
+                properties: {
+                  fullname: {
+                    description: this.props.intl.formatMessage(
+                      messages.fullnameDescription,
+                    ),
+                    title: this.props.intl.formatMessage(
+                      messages.fullnameTitle,
+                    ),
+                    type: 'string',
+                  },
+                  email: {
+                    description: this.props.intl.formatMessage(
+                      messages.emailDescription,
+                    ),
+                    title: this.props.intl.formatMessage(messages.emailTitle),
+                    type: 'string',
+                  },
+                  portrait: {
+                    description: this.props.intl.formatMessage(
+                      messages.portraitDescription,
+                    ),
+                    title: this.props.intl.formatMessage(
+                      messages.portraitTitle,
+                    ),
+                    type: 'object',
+                  },
+                  home_page: {
+                    description: this.props.intl.formatMessage(
+                      messages.homePageDescription,
+                    ),
+                    title: this.props.intl.formatMessage(
+                      messages.homePageTitle,
+                    ),
+                    type: 'string',
+                  },
+                  location: {
+                    description: this.props.intl.formatMessage(
+                      messages.locationDescription,
+                    ),
+                    title: this.props.intl.formatMessage(
+                      messages.locationTitle,
+                    ),
+                    type: 'string',
+                  },
+                },
+                required: ['email'],
+              }}
+              onSubmit={this.onSubmit}
+              onCancel={this.onCancel}
+              loading={this.props.loading}
+            />
+          );
         }}
-        onSubmit={this.onSubmit}
-        onCancel={this.onCancel}
-        loading={this.props.loading}
-      />
+      </LoadableToast>
     );
   }
 }

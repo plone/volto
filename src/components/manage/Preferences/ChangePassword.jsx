@@ -166,7 +166,11 @@ class ChangePassword extends Component {
                     {
                       id: 'default',
                       title: this.props.intl.formatMessage(messages.default),
-                      fields: ['oldPassword', 'newPassword', 'newPasswordRepeat'],
+                      fields: [
+                        'oldPassword',
+                        'newPassword',
+                        'newPasswordRepeat',
+                      ],
                     },
                   ],
                   properties: {
@@ -174,7 +178,9 @@ class ChangePassword extends Component {
                       description: this.props.intl.formatMessage(
                         messages.oldPasswordDescription,
                       ),
-                      title: this.props.intl.formatMessage(messages.oldPasswordTitle),
+                      title: this.props.intl.formatMessage(
+                        messages.oldPasswordTitle,
+                      ),
                       type: 'string',
                       widget: 'password',
                     },
@@ -182,7 +188,9 @@ class ChangePassword extends Component {
                       description: this.props.intl.formatMessage(
                         messages.newPasswordDescription,
                       ),
-                      title: this.props.intl.formatMessage(messages.newPasswordTitle),
+                      title: this.props.intl.formatMessage(
+                        messages.newPasswordTitle,
+                      ),
                       type: 'string',
                       widget: 'password',
                     },
