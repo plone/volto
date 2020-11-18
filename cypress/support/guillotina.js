@@ -9,22 +9,22 @@ export function setupGuillotina() {
     method: 'POST',
     url: api_url,
     headers,
-    body: { '@type': 'Container', id: 'container' },
-  }).then(response => console.log('container created'));
+    body: { '@type': 'Site', id: 'container', title: 'Guillotina Volto Site' },
+  }).then((response) => console.log('container created'));
 
   cy.request({
     method: 'POST',
     url: `${api_url}/container/@addons`,
     headers,
     body: { id: 'cms' },
-  }).then(response => console.log('cms add-on installed'));
+  }).then((response) => console.log('cms add-on installed'));
 
   cy.request({
     method: 'POST',
     url: `${api_url}/container/@addons`,
     headers,
     body: { id: 'dbusers' },
-  }).then(response => console.log('dbusers add-on installed'));
+  }).then((response) => console.log('dbusers add-on installed'));
 
   // guillotina_dbusers is no longer installed in the guillotina_cms docker image
   // cy.request({
@@ -83,5 +83,5 @@ export function tearDownGuillotina() {
     method: 'DELETE',
     url: `${api_url}/container`,
     headers,
-  }).then(response => console.log('container deleted'));
+  }).then((response) => console.log('container deleted'));
 }
