@@ -645,6 +645,10 @@ msgstr "Bukaera data"
 msgid "Enter URL or select an item"
 msgstr "Sartu URL bat edo aukeratu elementu bat"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Enter a username above to search or click 'Show All'"
+msgstr ""
+
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 msgstr "Idatzi eposta helbidea. Hau zure erabiltzaile-izena izango da. Zure pribatutasuna errespetatzen dugu eta ez dugu helbidea argitaratu edo inori emango."
@@ -928,7 +932,7 @@ msgid "Item(s) cut."
 msgstr "Elementuak ondo ebaki dira."
 
 #: components/manage/Contents/Contents
-msgid "Item(s) has been sorted."
+msgid "Item(s) has been updated."
 msgstr ""
 
 #: components/manage/Actions/Actions
@@ -1326,6 +1330,10 @@ msgstr ""
 msgid "Preview"
 msgstr "Aurreikusi"
 
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "Preview Image URL"
+msgstr ""
+
 #: components/manage/Toolbar/PersonalTools
 msgid "Profile"
 msgstr "Profila"
@@ -1603,6 +1611,10 @@ msgstr "Izen-laburra"
 #: components/theme/Pagination/Pagination
 msgid "Show"
 msgstr "Erakutsi"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Show All"
+msgstr ""
 
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"

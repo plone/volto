@@ -14,7 +14,6 @@ import { Button } from 'semantic-ui-react';
 import { Portal } from 'react-portal';
 import qs from 'query-string';
 import { find } from 'lodash';
-import loadable from '@loadable/component';
 
 import {
   Forbidden,
@@ -35,6 +34,8 @@ import { getBaseUrl, hasBlocksData } from '@plone/volto/helpers';
 
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
+
+import loadable from '@loadable/component';
 
 const LoadableToast = loadable.lib(() => import('react-toastify'));
 
@@ -264,9 +265,15 @@ class Edit extends Component {
               {!editPermission && (
                 <>
                   {this.props.token ? (
-                    <Forbidden pathname={this.props.pathname} />
+                    <Forbidden
+                      pathname={this.props.pathname}
+                      staticContext={this.props.staticContext}
+                    />
                   ) : (
-                    <Unauthorized pathname={this.props.pathname} />
+                    <Unauthorized
+                      pathname={this.props.pathname}
+                      staticContext={this.props.staticContext}
+                    />
                   )}
                 </>
               )}

@@ -773,6 +773,11 @@ msgstr ""
 msgid "Enter URL or select an item"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Enter a username above to search or click 'Show All'
+msgid "Enter a username above to search or click 'Show All'"
+msgstr ""
+
 #: components/theme/Register/Register
 # defaultMessage: Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
@@ -1121,8 +1126,8 @@ msgid "Item(s) cut."
 msgstr ""
 
 #: components/manage/Contents/Contents
-# defaultMessage: Item(s) has been sorted.
-msgid "Item(s) has been sorted."
+# defaultMessage: Item(s) has been updated.
+msgid "Item(s) has been updated."
 msgstr ""
 
 #: components/manage/Actions/Actions
@@ -1611,6 +1616,11 @@ msgstr ""
 msgid "Preview"
 msgstr ""
 
+#: components/manage/Blocks/Video/VideoSidebar
+# defaultMessage: Preview Image URL
+msgid "Preview Image URL"
+msgstr ""
+
 #: components/manage/Toolbar/PersonalTools
 # defaultMessage: Profile
 msgid "Profile"
@@ -1950,6 +1960,11 @@ msgstr ""
 #: components/theme/Pagination/Pagination
 # defaultMessage: Show
 msgid "Show"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Show All
+msgid "Show All"
 msgstr ""
 
 #: components/manage/Sidebar/Sidebar

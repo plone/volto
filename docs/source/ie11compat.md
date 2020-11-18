@@ -15,22 +15,26 @@ maintainers mainly target the node world.
 
 Then in the project that should target it, these changes are required:
 
-add as a dependency `babel-polyfill` (as we are still in Babel 6).
+add as a dependency `@babel/polyfill`.
 
-  yarn add babel-polyfill
+    yarn add @babel/polyfill
 
 and in `src/client.jsx`:
 
+```js
+import '@babel/polyfill';
 ```
-import 'babel-polyfill';
-```
+
+!!! note
+    See https://babeljs.io/docs/en/babel-polyfill for more updated information
+
 
 ## babel-env
 
-Razzle supports babel-env, that supports including `browserlist` in
+Razzle supports `@babel/preset-env`, that supports including `browserlist` in
 `package.json`. So you can add this to `package.json`:
 
-```
+```json
   "browserslist": [
     "last 2 version",
     "IE 11"
@@ -39,3 +43,9 @@ Razzle supports babel-env, that supports including `browserlist` in
 
 This supports the query specific DSL for `browserlist` targeting the browsers
 that you need to add.
+
+## Pre-transpiling
+
+Some packages in `node_modules` are ES6 only, for some older browsers, you might want to add a pre (or post) transpiling. There's a script `pre-build-transpiling.js` (Volto root folder) that might help you with it. Also this command line might help:
+
+    ./node_modules/.bin/babel --presets="@babel/env" XXX --out-dir XXX

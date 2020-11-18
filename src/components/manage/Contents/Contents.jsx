@@ -68,7 +68,6 @@ import {
   Icon,
   Unauthorized,
 } from '@plone/volto/components';
-import loadable from '@loadable/component';
 
 import backSVG from '@plone/volto/icons/back.svg';
 import cutSVG from '@plone/volto/icons/cut.svg';
@@ -89,9 +88,9 @@ import sortDownSVG from '@plone/volto/icons/sort-down.svg';
 import sortUpSVG from '@plone/volto/icons/sort-up.svg';
 import downKeySVG from '@plone/volto/icons/down-key.svg';
 import moreSVG from '@plone/volto/icons/more.svg';
-// import Actions from '../Actions/Actions';
 
-// TODO: test this too!
+import loadable from '@loadable/component';
+
 const LoadableToast = loadable.lib(() => import('react-toastify'));
 
 const messages = defineMessages({
@@ -143,9 +142,9 @@ const messages = defineMessages({
     id: 'Item(s) cut.',
     defaultMessage: 'Item(s) cut.',
   },
-  messageSort: {
-    id: 'Item(s) has been sorted.',
-    defaultMessage: 'Item(s) has been sorted.',
+  messageUpdate: {
+    id: 'Item(s) has been updated.',
+    defaultMessage: 'Item(s) has been updated.',
   },
   messageReorder: {
     id: 'Item succesfully moved.',
@@ -447,7 +446,7 @@ class Contents extends Component {
         <Toast
           success
           title={this.props.intl.formatMessage(messages.success)}
-          content={this.props.intl.formatMessage(messages.messageSort)}
+          content={this.props.intl.formatMessage(messages.messageUpdate)}
         />,
       );
     }
@@ -1048,30 +1047,13 @@ class Contents extends Component {
       (this.props.orderRequest?.loading && !this.props.orderRequest?.error) ||
       (this.props.searchRequest?.loading && !this.props.searchRequest?.error);
 
-    return this.props.token && this.props.objectActions.length > 0 ? (
+    return (
       <LoadableToast>
         {({ toast }) => {
           this.toast = toast;
 
-          return (
+          return this.props.token && this.props.objectActions.length > 0 ? (
             <>
-              {/* TODO: After doing it for other components, test Actions too: */}
-              {/* <Actions
-                // actions={[
-                //   {
-                //     object: [{}, {}, {}],
-                //     object_buttons: [{}, {}],
-                //     user: [{}],
-                //   },
-                // ]}
-                pathname="/etc/abc"
-                id="etc-abc"
-                title="My Actions"
-                cut={() => {}}
-                copy={() => {}}
-                copyContent={() => {}}
-                moveContent={() => {}}
-              /> */}
               {folderContentsAction ? (
                 <Container id="page-contents" className="folder-contents">
                   <Dimmer.Dimmable as="div" blurring dimmed={loading}>
@@ -1773,14 +1755,14 @@ class Contents extends Component {
                   </Dimmer.Dimmable>
                 </Container>
               ) : (
-                <Unauthorized />
+                <Unauthorized staticContext={this.props.staticContext} />
               )}
             </>
+          ) : (
+            <Unauthorized staticContext={this.props.staticContext} />
           );
         }}
       </LoadableToast>
-    ) : (
-      <Unauthorized />
     );
   }
 }

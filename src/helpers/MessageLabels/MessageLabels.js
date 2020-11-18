@@ -162,4 +162,12 @@ export const messages = defineMessages({
     id: 'Users and Groups',
     defaultMessage: 'Users and Groups',
   },
+  showAllUserButton: {
+    id: 'Show All',
+    defaultMessage: 'Show All',
+  },
+  showAllUserText: {
+    id: "Enter a username above to search or click 'Show All'",
+    defaultMessage: "Enter a username above to search or click 'Show All'",
+  },
 });
