@@ -13,13 +13,16 @@ import { Portal } from 'react-portal';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Container } from 'semantic-ui-react';
 import jwtDecode from 'jwt-decode';
-import { toast } from 'react-toastify';
 
 import { Form, Icon, Toast, Toolbar } from '@plone/volto/components';
 import { updatePassword } from '@plone/volto/actions';
 import { getBaseUrl } from '@plone/volto/helpers';
 
 import backSVG from '@plone/volto/icons/back.svg';
+
+import loadable from '@loadable/component';
+
+const LoadableToast = loadable.lib(() => import('react-toastify'));
 
 const messages = defineMessages({
   changePassword: {
@@ -122,7 +125,7 @@ class ChangePassword extends Component {
         data.oldPassword,
         data.newPassword,
       );
-      toast.success(
+      this.toast.success(
         <Toast
           success
           title={this.props.intl.formatMessage(messages.success)}
@@ -148,75 +151,83 @@ class ChangePassword extends Component {
    */
   render() {
     return (
-      <Container id="page-change-password">
-        <Helmet
-          title={this.props.intl.formatMessage(messages.changePassword)}
-        />
-        <Form
-          schema={{
-            fieldsets: [
-              {
-                id: 'default',
-                title: this.props.intl.formatMessage(messages.default),
-                fields: ['oldPassword', 'newPassword', 'newPasswordRepeat'],
-              },
-            ],
-            properties: {
-              oldPassword: {
-                description: this.props.intl.formatMessage(
-                  messages.oldPasswordDescription,
-                ),
-                title: this.props.intl.formatMessage(messages.oldPasswordTitle),
-                type: 'string',
-                widget: 'password',
-              },
-              newPassword: {
-                description: this.props.intl.formatMessage(
-                  messages.newPasswordDescription,
-                ),
-                title: this.props.intl.formatMessage(messages.newPasswordTitle),
-                type: 'string',
-                widget: 'password',
-              },
-              newPasswordRepeat: {
-                description: this.props.intl.formatMessage(
-                  messages.newPasswordRepeatDescription,
-                ),
-                title: this.props.intl.formatMessage(
-                  messages.newPasswordRepeatTitle,
-                ),
-                type: 'string',
-                widget: 'password',
-              },
-            },
-            required: ['oldPassword', 'newPassword', 'newPasswordRepeat'],
-          }}
-          onSubmit={this.onSubmit}
-          onCancel={this.onCancel}
-          loading={this.props.loading}
-        />
-        {this.state.isClient && (
-          <Portal node={document.getElementById('toolbar')}>
-            <Toolbar
-              pathname={this.props.pathname}
-              hideDefaultViewButtons
-              inner={
-                <Link
-                  to={`${getBaseUrl(this.props.pathname)}`}
-                  className="item"
-                >
-                  <Icon
-                    name={backSVG}
-                    className="contents circled"
-                    size="30px"
-                    title={this.props.intl.formatMessage(messages.back)}
+      <LoadableToast>
+        {({ toast }) => {
+          this.toast = toast;
+
+          return (
+            <Container id="page-change-password">
+              <Helmet
+                title={this.props.intl.formatMessage(messages.changePassword)}
+              />
+              <Form
+                schema={{
+                  fieldsets: [
+                    {
+                      id: 'default',
+                      title: this.props.intl.formatMessage(messages.default),
+                      fields: ['oldPassword', 'newPassword', 'newPasswordRepeat'],
+                    },
+                  ],
+                  properties: {
+                    oldPassword: {
+                      description: this.props.intl.formatMessage(
+                        messages.oldPasswordDescription,
+                      ),
+                      title: this.props.intl.formatMessage(messages.oldPasswordTitle),
+                      type: 'string',
+                      widget: 'password',
+                    },
+                    newPassword: {
+                      description: this.props.intl.formatMessage(
+                        messages.newPasswordDescription,
+                      ),
+                      title: this.props.intl.formatMessage(messages.newPasswordTitle),
+                      type: 'string',
+                      widget: 'password',
+                    },
+                    newPasswordRepeat: {
+                      description: this.props.intl.formatMessage(
+                        messages.newPasswordRepeatDescription,
+                      ),
+                      title: this.props.intl.formatMessage(
+                        messages.newPasswordRepeatTitle,
+                      ),
+                      type: 'string',
+                      widget: 'password',
+                    },
+                  },
+                  required: ['oldPassword', 'newPassword', 'newPasswordRepeat'],
+                }}
+                onSubmit={this.onSubmit}
+                onCancel={this.onCancel}
+                loading={this.props.loading}
+              />
+              {this.state.isClient && (
+                <Portal node={document.getElementById('toolbar')}>
+                  <Toolbar
+                    pathname={this.props.pathname}
+                    hideDefaultViewButtons
+                    inner={
+                      <Link
+                        to={`${getBaseUrl(this.props.pathname)}`}
+                        className="item"
+                      >
+                        <Icon
+                          name={backSVG}
+                          className="contents circled"
+                          size="30px"
+                          title={this.props.intl.formatMessage(messages.back)}
+                        />
+                      </Link>
+                    }
                   />
-                </Link>
-              }
-            />
-          </Portal>
-        )}
-      </Container>
+                </Portal>
+              )}
+            </Container>
+          );
+        }}
+      </LoadableToast>
     );
   }
 }
