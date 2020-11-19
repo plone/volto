@@ -6,6 +6,10 @@
 
 ### Feature
 
+- Enhance `AppExtras` component to make it pluggable and lookup a new
+  `~/config` export, the `appExtras`. These are router-path filtered components
+  that are rendered inside the `AppExtras` component @tiberiuichim
+
 ### Bugfix
 
 ### Internal
