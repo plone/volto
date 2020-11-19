@@ -167,7 +167,6 @@ class Controlpanel extends Component {
               <div id="page-controlpanel">
                 <Helmet title={this.props.controlpanel.title} />
                 <Container>
-                  div
                   <Form
                     ref={this.form}
                     title={this.props.controlpanel.title}

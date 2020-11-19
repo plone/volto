@@ -69,7 +69,7 @@ const ManageTranslations = (props) => {
     }
   }, [dispatch, content, pathname]);
 
-  React.useEffectt(() => {
+  React.useEffect(() => {
     // Only execute the link API call on the final item selected, once the ObjectBrowser
     // is closed
     if (!isObjectBrowserOpen && currentSelectedItem.current) {
