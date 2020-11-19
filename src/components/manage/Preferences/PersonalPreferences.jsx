@@ -12,10 +12,13 @@ import { map, keys } from 'lodash';
 import cookie from 'react-cookie';
 import request from 'superagent';
 import { defineMessages, injectIntl } from 'react-intl';
-import { toast } from 'react-toastify';
 
 import { Form, Toast } from '@plone/volto/components';
 import languages from '@plone/volto/constants/Languages';
+
+import loadable from '@loadable/component';
+
+const LoadableToast = loadable.lib(() => import('react-toastify'));
 
 const messages = defineMessages({
   personalPreferences: {
@@ -93,7 +96,7 @@ class PersonalPreferences extends Component {
           locale: locale.language || 'en',
           messages: locale.body,
         });
-        toast.success(
+        this.toast.success(
           <Toast
             success
             title={this.props.intl.formatMessage(messages.success)}
@@ -102,7 +105,7 @@ class PersonalPreferences extends Component {
         );
       },
     );
-    toast.success(
+    this.toast.success(
       <Toast success title={this.props.intl.formatMessage(messages.saved)} />,
     );
     this.props.closeMenu();
@@ -124,31 +127,42 @@ class PersonalPreferences extends Component {
    */
   render() {
     return (
-      <Form
-        formData={{ language: cookie.load('I18N_LANGUAGE') || '' }}
-        schema={{
-          fieldsets: [
-            {
-              id: 'default',
-              title: this.props.intl.formatMessage(messages.default),
-              fields: ['language'],
-            },
-          ],
-          properties: {
-            language: {
-              description: this.props.intl.formatMessage(
-                messages.languageDescription,
-              ),
-              title: this.props.intl.formatMessage(messages.language),
-              type: 'string',
-              choices: map(keys(languages), (lang) => [lang, languages[lang]]),
-            },
-          },
-          required: [],
+      <LoadableToast>
+        {({ toast }) => {
+          this.toast = toast;
+
+          return (
+            <Form
+              formData={{ language: cookie.load('I18N_LANGUAGE') || '' }}
+              schema={{
+                fieldsets: [
+                  {
+                    id: 'default',
+                    title: this.props.intl.formatMessage(messages.default),
+                    fields: ['language'],
+                  },
+                ],
+                properties: {
+                  language: {
+                    description: this.props.intl.formatMessage(
+                      messages.languageDescription,
+                    ),
+                    title: this.props.intl.formatMessage(messages.language),
+                    type: 'string',
+                    choices: map(keys(languages), (lang) => [
+                      lang,
+                      languages[lang],
+                    ]),
+                  },
+                },
+                required: [],
+              }}
+              onSubmit={this.onSubmit}
+              onCancel={this.onCancel}
+            />
+          );
         }}
-        onSubmit={this.onSubmit}
-        onCancel={this.onCancel}
-      />
+      </LoadableToast>
     );
   }
 }
