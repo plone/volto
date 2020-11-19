@@ -31,6 +31,9 @@ export settings = {
     {
       match: '',
       component: GoogleAnalyticsPing
+      props: {
+        'google-tag': '123456'
+      }
     },
     {
       match: {
