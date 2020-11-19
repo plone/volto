@@ -9,7 +9,6 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { uniqBy } from 'lodash';
 import loadable from '@loadable/component';
-import { toast } from 'react-toastify';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import getWorkflowMapping from '@plone/volto/constants/Workflows';
 import { Icon, Toast } from '@plone/volto/components';
@@ -26,6 +25,7 @@ import upSVG from '@plone/volto/icons/up-key.svg';
 import checkSVG from '@plone/volto/icons/check.svg';
 
 const ReactSelect = loadable.lib(() => import('react-select'));
+const LoadableToast = loadable.lib(() => import('react-toastify'));
 
 const messages = defineMessages({
   messageUpdated: {
@@ -254,7 +254,7 @@ class Workflow extends Component {
       selectedOption.url.replace(settings.apiPath, ''),
     );
     this.setState({ selectedOption });
-    toast.success(
+    this.toast.success(
       <Toast
         success
         title={this.props.intl.formatMessage(messages.messageUpdated)}
@@ -311,50 +311,58 @@ class Workflow extends Component {
     const { selectedOption } = this.state;
 
     return (
-      <Fragment>
-        <label htmlFor="state-select">
-          <FormattedMessage id="State" defaultMessage="State" />
-        </label>
-        <ReactSelect>
-          {({ default: Select }) => (
-            <Select
-              name="display-select"
-              className="react-select-container"
-              classNamePrefix="react-select"
-              isDisabled={
-                !this.props.content.review_state ||
-                this.props.transitions.length === 0
-              }
-              options={uniqBy(
-                this.props.transitions.map((transition) =>
-                  getWorkflowMapping(transition['@id']),
-                ),
-                'label',
-              ).concat(selectedOption)}
-              styles={customSelectStyles}
-              theme={selectTheme}
-              components={{
-                DropdownIndicator,
-                Placeholder,
-                Option,
-                SingleValue,
-              }}
-              onChange={this.transition}
-              defaultValue={
-                this.props.content.review_state
-                  ? selectedOption
-                  : {
-                      label: this.props.intl.formatMessage(
-                        messages.messageNoWorkflow,
-                      ),
-                      value: 'noworkflow',
+      <LoadableToast>
+        {({ toast }) => {
+          this.toast = toast;
+
+          return (
+            <Fragment>
+              <label htmlFor="state-select">
+                <FormattedMessage id="State" defaultMessage="State" />
+              </label>
+              <ReactSelect>
+                {({ default: Select }) => (
+                  <Select
+                    name="display-select"
+                    className="react-select-container"
+                    classNamePrefix="react-select"
+                    isDisabled={
+                      !this.props.content.review_state ||
+                      this.props.transitions.length === 0
                     }
-              }
-              isSearchable={false}
-            />
-          )}
-        </ReactSelect>
-      </Fragment>
+                    options={uniqBy(
+                      this.props.transitions.map((transition) =>
+                        getWorkflowMapping(transition['@id']),
+                      ),
+                      'label',
+                    ).concat(selectedOption)}
+                    styles={customSelectStyles}
+                    theme={selectTheme}
+                    components={{
+                      DropdownIndicator,
+                      Placeholder,
+                      Option,
+                      SingleValue,
+                    }}
+                    onChange={this.transition}
+                    defaultValue={
+                      this.props.content.review_state
+                        ? selectedOption
+                        : {
+                            label: this.props.intl.formatMessage(
+                              messages.messageNoWorkflow,
+                            ),
+                            value: 'noworkflow',
+                          }
+                    }
+                    isSearchable={false}
+                  />
+                )}
+              </ReactSelect>
+            </Fragment>
+          );
+        }}
+      </LoadableToast>
     );
   }
 }
