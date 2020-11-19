@@ -48,9 +48,6 @@ nav:
       - Lazy loading and code splitting: 'recipes/lazyload.md'
       - Overriding i18n messages: 'recipes/overridei18n.md'
       - App component insertion point: 'recipes/appextras.md'
-      - Create a widget: 'recipes/widget.md'
-      - Write Redux action/reducers: 'recipes/action-reducers.md'
-      - Fetch data: 'recipes/fetch-data.md'
   - Blocks:
       - Introduction: 'blocks/introduction.md'
       - Anatomy: 'blocks/anatomy.md'
