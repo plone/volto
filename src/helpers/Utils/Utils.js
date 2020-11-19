@@ -1,6 +1,10 @@
 import React from 'react';
 import { transform, isEqual, isObject } from 'lodash';
 
+import loadable from '@loadable/component';
+
+const LoadableToast = loadable.lib(() => import('react-toastify'));
+
 /**
  * Deep diff between two object, using lodash
  * @param  {Object} object Object compared
@@ -57,4 +61,40 @@ export function withServerErrorCode(code) {
     }
     return <WrappedComponent {...props} />;
   };
+}
+
+/**
+ * withToastify. A HOC that lazy-loads react-toastify and injects it as
+ * the `toastify` property to the wrapped component
+ *
+ * @param {} WrappedComponent
+ * @return Component
+ */
+export function withToastify(WrappedComponent) {
+  class WithLoadableToastify extends React.Component {
+    toastify = React.createRef();
+
+    render() {
+      return (
+        <>
+          <LoadableToast ref={this.toastify} />
+          <WrappedComponent
+            {...this.props}
+            toastify={
+              this.toastify.current ? this.toastify.current.toast : null
+            }
+          />
+        </>
+      );
+    }
+  }
+
+  WithLoadableToastify.displayName = `WithLoadableToastify(${getDisplayName(
+    WrappedComponent,
+  )})`;
+  return WithLoadableToastify;
+}
+
+function getDisplayName(WrappedComponent) {
+  return WrappedComponent.displayName || WrappedComponent.name || 'Component';
 }

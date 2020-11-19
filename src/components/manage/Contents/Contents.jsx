@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Portal } from 'react-portal';
-import { Helmet } from '@plone/volto/helpers';
+import { Helmet, withToastify } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import {
   Button,
@@ -68,7 +68,6 @@ import {
   Icon,
   Unauthorized,
 } from '@plone/volto/components';
-import { toast } from 'react-toastify';
 
 import backSVG from '@plone/volto/icons/back.svg';
 import cutSVG from '@plone/volto/icons/cut.svg';
@@ -439,7 +438,7 @@ class Contents extends Component {
       this.fetchContents(nextProps.pathname);
     }
     if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
-      toast.success(
+      this.props.toastify.success(
         <Toast
           success
           title={this.props.intl.formatMessage(messages.success)}
@@ -464,7 +463,7 @@ class Contents extends Component {
       this.props.clipboardRequest.loading &&
       nextProps.clipboardRequest.error
     ) {
-      toast.error(
+      this.props.toastify.error(
         <Toast
           error
           title={this.props.intl.formatMessage(messages.error)}
@@ -477,7 +476,7 @@ class Contents extends Component {
       this.props.clipboardRequest.loading &&
       nextProps.clipboardRequest.loaded
     ) {
-      toast.success(
+      this.props.toastify.success(
         <Toast
           success
           title={this.props.intl.formatMessage(messages.success)}
@@ -486,7 +485,7 @@ class Contents extends Component {
       );
     }
     if (this.props.orderRequest.loading && nextProps.orderRequest.loaded) {
-      toast.success(
+      this.props.toastify.success(
         <Toast
           success
           title={this.props.intl.formatMessage(messages.success)}
@@ -907,7 +906,7 @@ class Contents extends Component {
   cut(event, { value }) {
     this.props.cut(value ? [value] : this.state.selected);
     this.onSelectNone();
-    toast.success(
+    this.props.toastify.success(
       <Toast
         success
         title={this.props.intl.formatMessage(messages.success)}
@@ -926,7 +925,7 @@ class Contents extends Component {
   copy(event, { value }) {
     this.props.copy(value ? [value] : this.state.selected);
     this.onSelectNone();
-    toast.success(
+    this.props.toastify.success(
       <Toast
         success
         title={this.props.intl.formatMessage(messages.success)}
@@ -1803,6 +1802,7 @@ export default compose(
       updateColumnsContent,
     },
   ),
+  withToastify,
   asyncConnect([
     {
       key: 'actions',

@@ -4,6 +4,13 @@
  * @example import { Api, Html } from 'helpers';
  */
 
+export {
+  difference,
+  safeWrapper,
+  applyConfig,
+  withServerErrorCode,
+  withToastify, // this export needs to be in front, circular imports?
+} from '@plone/volto/helpers/Utils/Utils';
 export Api from '@plone/volto/helpers/Api/Api';
 export { getAPIResourceWithAuth } from '@plone/volto/helpers/Api/APIResourceWithAuth';
 export Html from '@plone/volto/helpers/Html/Html';
@@ -49,9 +56,3 @@ export AlignBlock from '@plone/volto/helpers/AlignBlock/AlignBlock';
 export Helmet from './Helmet/Helmet';
 export FormValidation from './FormValidation/FormValidation';
 export { messages } from './MessageLabels/MessageLabels';
-export {
-  difference,
-  safeWrapper,
-  applyConfig,
-  withServerErrorCode,
-} from '@plone/volto/helpers/Utils/Utils';
