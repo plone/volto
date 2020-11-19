@@ -11,11 +11,13 @@ You can either use it by overriding it via Component Shadowing by placing
 a custom `src/customizations/components/theme/AppExtras/AppExtras.jsx`...
 
 Or you can use the new key of `config.settings`, the `appExtras`. This is
-a list of registrations, each registration is an object with `match` and
-`component`. The `match` key is for objects compatible with [react-router's
+a list of registrations, each registration is an object with:
+
+- `match`: The `match` key is for objects compatible with [react-router's
 matchPath](https://reactrouter.com/web/api/matchPath), so it can be either
-a simple string or a match object. Use the `component` to link the component to
-be used.
+a simple string or a match object.
+- `component`. Use the `component` to link the component to be used.
+- `props`: Extra props to be inject to the actual component used.
 
 For example:
 

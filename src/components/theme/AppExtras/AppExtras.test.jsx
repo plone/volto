@@ -18,7 +18,13 @@ jest.mock('~/config', () => ({
         match: {
           path: '/all-blogs/*',
         },
-        component: jest.fn((props) => <div className="blog-listing" />),
+        component: jest.fn((props) => (
+          <div className="blog-listing" one={props.one} three={props.three} />
+        )),
+        props: {
+          one: 'two',
+          three: 'four',
+        },
       },
       {
         match: {
@@ -69,6 +75,14 @@ describe('AppExtras', () => {
   it('can take string path as match', () => {
     const component = renderer.create(
       <AppExtras pathname="/something"></AppExtras>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
+
+  it('can take string extra parameters to be used from the actual component', () => {
+    const component = renderer.create(
+      <AppExtras pathname="/all-blogs/1"></AppExtras>,
     );
     const json = component.toJSON();
     expect(json).toMatchSnapshot();

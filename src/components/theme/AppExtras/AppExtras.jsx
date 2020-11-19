@@ -13,9 +13,11 @@ const AppExtras = (props) => {
     })
     .filter((reg) => reg);
 
-  return active.map(({ reg: { component }, match }, i) => {
+  return active.map(({ reg: { component, props: extraProps }, match }, i) => {
     const Insert = component;
-    return <Insert key={`appextra-${i}`} match={match} {...props} />;
+    return (
+      <Insert key={`appextra-${i}`} match={match} {...props} {...extraProps} />
+    );
   });
 };
 
