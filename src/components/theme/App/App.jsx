@@ -156,7 +156,7 @@ class App extends Component {
             </MultilingualRedirector>
             <Footer />
             <ToastContainer
-              position={this.toast.POSITION.BOTTOM_CENTER}
+              position={toast.POSITION.BOTTOM_CENTER}
               hideProgressBar
               transition={Slide}
               autoClose={5000}
