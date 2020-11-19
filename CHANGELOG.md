@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Improve developer documentation. Add several new chapters @tiberiuichim
+
 ## 9.0.0 (2020-11-15)
 
 ### Breaking
