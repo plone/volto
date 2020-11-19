@@ -220,90 +220,88 @@ class Actions extends Component {
    */
   render() {
     return (
-      <>
+      <Dropdown
+        item
+        id="toolbar-actions"
+        trigger={
+          <span>
+            <Icon name="lightning" size="big" />{' '}
+            <FormattedMessage id="Actions" defaultMessage="Actions" />
+          </span>
+        }
+      >
         <LoadableToast ref={this.loadableToastRef} />
-        <Dropdown
-          item
-          id="toolbar-actions"
-          trigger={
-            <span>
-              <Icon name="lightning" size="big" />{' '}
-              <FormattedMessage id="Actions" defaultMessage="Actions" />
-            </span>
-          }
-        >
-          <Dropdown.Menu>
-            {this.props.actions.object_buttons &&
-              this.props.actions.object_buttons.map((item) => {
-                switch (item.id) {
-                  case 'cut':
-                    return (
-                      <Dropdown.Item
-                        key={item.id}
-                        icon="cut"
-                        text={item.title}
-                        onClick={this.cut}
-                      />
-                    );
-                  case 'copy':
-                    return (
-                      <Dropdown.Item
-                        key={item.id}
-                        icon="copy"
-                        text={item.title}
-                        onClick={this.copy}
-                      />
-                    );
-                  case 'paste':
-                    return (
-                      <Dropdown.Item
-                        key={item.id}
-                        icon="paste"
-                        text={item.title}
-                        onClick={this.paste}
-                        disabled={this.props.action === null}
-                      />
-                    );
-                  case 'delete':
-                    return (
-                      <Link
-                        key={item.id}
-                        to={`${this.props.pathname}/delete`}
-                        className="item"
-                      >
-                        <Icon name="trash" />
-                        {item.title}
-                      </Link>
-                    );
-                  case 'rename':
-                    return (
-                      <Dropdown.Item
-                        key={item.id}
-                        icon="text cursor"
-                        text={item.title}
-                        onClick={this.rename}
-                      />
-                    );
-                  default:
-                    return null;
-                }
-              })}
+        <Dropdown.Menu>
+          {this.props.actions.object_buttons &&
+            this.props.actions.object_buttons.map((item) => {
+              switch (item.id) {
+                case 'cut':
+                  return (
+                    <Dropdown.Item
+                      key={item.id}
+                      icon="cut"
+                      text={item.title}
+                      onClick={this.cut}
+                    />
+                  );
+                case 'copy':
+                  return (
+                    <Dropdown.Item
+                      key={item.id}
+                      icon="copy"
+                      text={item.title}
+                      onClick={this.copy}
+                    />
+                  );
+                case 'paste':
+                  return (
+                    <Dropdown.Item
+                      key={item.id}
+                      icon="paste"
+                      text={item.title}
+                      onClick={this.paste}
+                      disabled={this.props.action === null}
+                    />
+                  );
+                case 'delete':
+                  return (
+                    <Link
+                      key={item.id}
+                      to={`${this.props.pathname}/delete`}
+                      className="item"
+                    >
+                      <Icon name="trash" />
+                      {item.title}
+                    </Link>
+                  );
+                case 'rename':
+                  return (
+                    <Dropdown.Item
+                      key={item.id}
+                      icon="text cursor"
+                      text={item.title}
+                      onClick={this.rename}
+                    />
+                  );
+                default:
+                  return null;
+              }
+            })}
 
-            <ContentsRenameModal
-              open={this.state.showRename}
-              onCancel={this.onRenameCancel}
-              onOk={this.onRenameOk}
-              items={[
-                {
-                  url: this.props.pathname,
-                  title: this.props.title,
-                  id: this.props.id,
-                },
-              ]}
-            />
-          </Dropdown.Menu>
-        </Dropdown>
-      </>
+          <ContentsRenameModal
+            open={this.state.showRename}
+            onCancel={this.onRenameCancel}
+            onOk={this.onRenameOk}
+            items={[
+              {
+                url: this.props.pathname,
+                title: this.props.title,
+                id: this.props.id,
+              },
+            ]}
+          />
+        </Dropdown.Menu>
+      </Dropdown>
     );
   }
 }
