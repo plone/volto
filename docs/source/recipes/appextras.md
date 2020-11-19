@@ -8,11 +8,11 @@ component.
 ## How to use it
 
 You can either use it by overriding it via Component Shadowing by placing
-a custom `src/customizations/components/theme/AppExtras/AppExtras.jsx`.
+a custom `src/customizations/components/theme/AppExtras/AppExtras.jsx`...
 
-Or you can use the new export of `~/config`, the `appExtras`. This is a list of
-registrations, each registration is an object with `match` and `component`. The
-`match` key is for objects compatible with [react-router's
+Or you can use the new key of `config.settings`, the `appExtras`. This is
+a list of registrations, each registration is an object with `match` and
+`component`. The `match` key is for objects compatible with [react-router's
 matchPath](https://reactrouter.com/web/api/matchPath), so it can be either
 a simple string or a match object. Use the `component` to link the component to
 be used.
@@ -20,26 +20,29 @@ be used.
 For example:
 
 ``` jsx
-import { appExtras as defaultAppExtras } from '@plone/volto/config'
+import { settings as defaultSettings } from '@plone/volto/config'
 
-export appExtras = [
-  ...appExtras,
-  {
-    match: '',
-    component: GoogleAnalyticsPing
-  },
-  {
-    match: {
-      path: '/blogs',
-      exact: true,
+export settings = {
+  ...defaultSettings,
+  appExtras: [
+    ...defaultSettings.appExtras,
+    {
+      match: '',
+      component: GoogleAnalyticsPing
     },
-    component: WordClouds
-  },
-  {
-    path: '/blog/**/edit',
-    component: ExtraToolbarButton,
-  }
-]
+    {
+      match: {
+        path: '/blogs',
+        exact: true,
+      },
+      component: WordClouds
+    },
+    {
+      path: '/blog/**/edit',
+      component: ExtraToolbarButton,
+    }
+  ]
+}
 ```
 
 You can use this to render, for example, `<Portal>` components to be inserted

@@ -1,10 +1,10 @@
 import React from 'react';
 import { matchPath } from 'react-router';
 
-import * as config from '~/config';
+import { settings } from '~/config';
 
 const AppExtras = (props) => {
-  const { appExtras = [] } = config;
+  const { appExtras = [] } = settings;
   const { pathname } = props;
   const active = appExtras
     .map((reg) => {
