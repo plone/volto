@@ -12,11 +12,14 @@ import { Portal } from 'react-portal';
 import { Container, Message, Icon } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Link, withRouter } from 'react-router-dom';
-import { toast } from 'react-toastify';
 
 import { Form, Toolbar, Toast } from '@plone/volto/components';
 import { emailNotification } from '@plone/volto/actions';
 import { getBaseUrl } from '@plone/volto/helpers';
+
+import loadable from '@loadable/component';
+
+const LoadableToast = loadable.lib(() => import('react-toastify'));
 
 const messages = defineMessages({
   send: {
@@ -118,7 +121,7 @@ class ContactForm extends Component {
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.loading && nextProps.loaded) {
-      toast.success(
+      this.toast.success(
         <Toast
           success
           title={this.props.intl.formatMessage(messages.success)}
@@ -167,78 +170,88 @@ class ContactForm extends Component {
    */
   render() {
     return (
-      <div id="contact-form">
-        <Container>
-          <Helmet title={this.props.intl.formatMessage(messages.contactForm)} />
-          {this.props.error && (
-            <Message
-              icon="warning"
-              negative
-              attached
-              header={this.props.intl.formatMessage(messages.error)}
-              content={this.props.error.message}
-            />
-          )}
-          <Form
-            onSubmit={this.onSubmit}
-            onCancel={this.onCancel}
-            formData={{ blocksLayoutFieldname: {} }}
-            submitLabel={this.props.intl.formatMessage(messages.send)}
-            resetAfterSubmit
-            title={this.props.intl.formatMessage(messages.contactForm)}
-            loading={this.props.loading}
-            schema={{
-              fieldsets: [
-                {
-                  fields: ['name', 'from', 'subject', 'message'],
-                  id: 'default',
-                  title: this.props.intl.formatMessage(messages.default),
-                },
-              ],
-              properties: {
-                name: {
-                  title: this.props.intl.formatMessage(messages.name),
-                  type: 'string',
-                },
-                from: {
-                  title: this.props.intl.formatMessage(messages.from),
-                  type: 'string',
-                },
-                subject: {
-                  title: this.props.intl.formatMessage(messages.subject),
-                  type: 'string',
-                },
-                message: {
-                  title: this.props.intl.formatMessage(messages.message),
-                  type: 'string',
-                  widget: 'textarea',
-                },
-              },
-              required: ['from', 'message'],
-            }}
-          />
-          {this.state.isClient && (
-            <Portal node={document.getElementById('toolbar')}>
-              <Toolbar
-                pathname={this.props.pathname}
-                inner={
-                  <Link
-                    to={`${getBaseUrl(this.props.pathname)}`}
-                    className="item"
-                  >
-                    <Icon
-                      name="arrow left"
-                      size="big"
-                      color="blue"
-                      title={this.props.intl.formatMessage(messages.back)}
+      <LoadableToast>
+        {({ toast }) => {
+          this.toast = toast;
+
+          return (
+            <div id="contact-form">
+              <Container>
+                <Helmet
+                  title={this.props.intl.formatMessage(messages.contactForm)}
+                />
+                {this.props.error && (
+                  <Message
+                    icon="warning"
+                    negative
+                    attached
+                    header={this.props.intl.formatMessage(messages.error)}
+                    content={this.props.error.message}
+                  />
+                )}
+                <Form
+                  onSubmit={this.onSubmit}
+                  onCancel={this.onCancel}
+                  formData={{ blocksLayoutFieldname: {} }}
+                  submitLabel={this.props.intl.formatMessage(messages.send)}
+                  resetAfterSubmit
+                  title={this.props.intl.formatMessage(messages.contactForm)}
+                  loading={this.props.loading}
+                  schema={{
+                    fieldsets: [
+                      {
+                        fields: ['name', 'from', 'subject', 'message'],
+                        id: 'default',
+                        title: this.props.intl.formatMessage(messages.default),
+                      },
+                    ],
+                    properties: {
+                      name: {
+                        title: this.props.intl.formatMessage(messages.name),
+                        type: 'string',
+                      },
+                      from: {
+                        title: this.props.intl.formatMessage(messages.from),
+                        type: 'string',
+                      },
+                      subject: {
+                        title: this.props.intl.formatMessage(messages.subject),
+                        type: 'string',
+                      },
+                      message: {
+                        title: this.props.intl.formatMessage(messages.message),
+                        type: 'string',
+                        widget: 'textarea',
+                      },
+                    },
+                    required: ['from', 'message'],
+                  }}
+                />
+                {this.state.isClient && (
+                  <Portal node={document.getElementById('toolbar')}>
+                    <Toolbar
+                      pathname={this.props.pathname}
+                      inner={
+                        <Link
+                          to={`${getBaseUrl(this.props.pathname)}`}
+                          className="item"
+                        >
+                          <Icon
+                            name="arrow left"
+                            size="big"
+                            color="blue"
+                            title={this.props.intl.formatMessage(messages.back)}
+                          />
+                        </Link>
+                      }
                     />
-                  </Link>
-                }
-              />
-            </Portal>
-          )}
-        </Container>
-      </div>
+                  </Portal>
+                )}
+              </Container>
+            </div>
+          );
+        }}
+      </LoadableToast>
     );
   }
 }
