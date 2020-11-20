@@ -185,6 +185,7 @@ const defaultPlugins = [
   require('./webpack-less-plugin')({ registry }),
   require('./webpack-sentry-plugin'),
   require('./webpack-svg-plugin'),
+  require('./webpack-bundle-analyze-plugin'),
   require('./jest-extender-plugin'),
 ];
 
