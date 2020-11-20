@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Extend the internal proxy capabilities, now the target is overridable and SSL aware @sneridagh
+- Added new environment variables for the internal proxy `RAZZLE_PROXY_REWRITE_TARGET` and `RAZZLE_PROXY_REWRITE_TARGET` @sneridagh
 - Enhance `AppExtras` component to make it pluggable through the
   `config.settings.appExtras`. These are router-path filtered components that
   are rendered inside the `AppExtras` component @tiberiuichim
