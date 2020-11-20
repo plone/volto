@@ -46,37 +46,92 @@ export function withToastify(WrappedComponent) {
   return WithLoadableToastify;
 }
 
-export function withLoadable(name) {
+// export function withLoadable(name) {
+//   function _wrapped(WrappedComponent) {
+//     class WithLoadableLibrary extends React.Component {
+//       constructor(props) {
+//         super(props);
+//
+//         this.state = {
+//           loaded: false,
+//         };
+//
+//         this.libraryRef = React.createRef();
+//       }
+//
+//       LoadableLibrary = loadables[name];
+//
+//       render() {
+//         const LoadableLibrary = this.LoadableLibrary;
+//         return (
+//           <>
+//             <LoadableLibrary
+//               ref={(val) => {
+//                 this.libraryRef.current = val;
+//                 this.setState({ loaded: true });
+//               }}
+//             />
+//             {this.state.loaded ? (
+//               <WrappedComponent
+//                 {...this.props}
+//                 {...{
+//                   [name]: this.libraryRef,
+//                 }}
+//               />
+//             ) : null}
+//           </>
+//         );
+//       }
+//     }
+//
+//     WithLoadableLibrary.displayName = `WithLoadableLibrary(${name})(${getDisplayName(
+//       WrappedComponent,
+//     )})`;
+//
+//     return WithLoadableLibrary;
+//   }
+//   return _wrapped;
+// }
+
+export function withLoadable(maybeNames) {
+  const libraries = Array.isArray(maybeNames) ? maybeNames : [maybeNames];
+
   function _wrapped(WrappedComponent) {
     class WithLoadableLibrary extends React.Component {
       constructor(props) {
         super(props);
 
         this.state = {
-          loaded: false,
+          loadedLibraries: {},
         };
 
-        this.libraryRef = React.createRef();
+        this.libraryRefs = React.createRef({});
       }
 
-      LoadableLibrary = loadables[name];
+      // LoadableLibrary = loadables[name];
 
       render() {
         const LoadableLibrary = this.LoadableLibrary;
+        const isLoaded =
+          Object.keys(this.state.loadedLibraries).length === libraries.length;
+
         return (
           <>
-            <LoadableLibrary
-              ref={(val) => {
-                this.libraryRef.current = val;
-                this.setState({ loaded: true });
-              }}
-            />
-            {this.state.loaded ? (
+            {libraries.map((name) => (
+              <LoadableLibrary
+                key={name}
+                ref={(val) => {
+                  this.libraryRefs[name].current = val;
+                  this.setState((state) => ({
+                    loadedLibraries: { ...state.loadedLibraries, [name]: val },
+                  }));
+                }}
+              />
+            ))}
+            {isLoaded ? (
               <WrappedComponent
                 {...this.props}
-                {...{
-                  [name]: this.libraryRef,
-                }}
+                {...this.state.loadedLibraries}
               />
             ) : null}
           </>
@@ -84,9 +139,9 @@ export function withLoadable(name) {
       }
     }
 
-    WithLoadableLibrary.displayName = `WithLoadableLibrary(${name})(${getDisplayName(
-      WrappedComponent,
-    )})`;
+    WithLoadableLibrary.displayName = `WithLoadableLibrary(${libraries.join(
+      ',',
+    )})(${getDisplayName(WrappedComponent)})`;
 
     return WithLoadableLibrary;
   }

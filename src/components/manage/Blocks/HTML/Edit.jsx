@@ -274,9 +274,15 @@ class Edit extends Component {
 }
 
 export default compose(
-  withLoadable('prettier/standalone'),
-  withLoadable('prettier/parser-html'),
-  withLoadable('prismjs/components/prism-core'),
-  withLoadable('prismjs/components/prism-markup'),
+  // withLoadable('prettier/standalone'),
+  // withLoadable('prettier/parser-html'),
+  // withLoadable('prismjs/components/prism-core'),
+  // withLoadable('prismjs/components/prism-markup'),
+  withLoadable([
+    'prettier/standalone',
+    'prettier/parser-html',
+    'prismjs/components/prism-core',
+    'prismjs/components/prism-markup',
+  ]),
   injectIntl,
 )(Edit);
