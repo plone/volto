@@ -69,8 +69,8 @@ package names, like:
 !!! warning
     Adding the addon package to the `addons` key is obligatory! It allows Volto
     to treat that package properly and provide it with BabelJS language
-    features. It is the equivalent of including a Python egg to the `zcml`
-    section of zc.buildout.
+    features. In Plone terminology, it is like including a Python egg to the
+    `zcml` section of zc.buildout.
 
 Some addons might choose to allow the Volto project to selectively load some of
 their configuration, so they may offer additional configuration functions,
