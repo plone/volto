@@ -21,7 +21,7 @@ An addon can be almost anything that a Volto project can be. They can:
 - register custom routes
 - provide custom Redux actions and reducers
 - register custom Express middleware for Volto's server process
-- tweak Volto's webpak configuration, load custom Razzle and Webpack plugins
+- tweak Volto's Webpack configuration, load custom Razzle and Webpack plugins
 - even provide a custom theme, just like a regular Volto project does.
 
 ## Configuring a Volto project to use an addon
