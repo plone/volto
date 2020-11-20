@@ -9,10 +9,11 @@
 ### Bugfix
 
 - Fix `yarn analyze` command by packing our own version of
-  webpack-bundle-analyzer integration. It has a few differences in
-  configuration to the previous integration: it saves the bundle stats by
-  default and doesn't open an HTTP server. Check output of `yarn analyze`
-  command to identify the path to the `reports.html` file @tiberiuichim
+  webpack-bundle-analyzer integration. It has a few changes to the old default
+  configuration. There is an alternative way of triggering the bundle analyzer,
+  with the `OFFLINE_BUNDLE_ANALYZE=true` env variable, which avoids starting
+  the HTTP bundle analyzer server. Also, it always saves a report html file.
+  @tiberiuichim
 
 ### Internal
 
