@@ -6,6 +6,10 @@
 
 ### Feature
 
+- Enhance `AppExtras` component to make it pluggable through the
+  `config.settings.appExtras`. These are router-path filtered components that
+  are rendered inside the `AppExtras` component @tiberiuichim
+
 ### Bugfix
 
 - Fix `yarn analyze` command by packing our own version of

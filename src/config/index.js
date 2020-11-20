@@ -101,6 +101,7 @@ let config = {
 
   addonRoutes: [],
   addonReducers: {},
+  appExtras: [],
 };
 
 config = applyAddonConfiguration(config);
@@ -111,3 +112,4 @@ export const views = config.views;
 export const blocks = config.blocks;
 export const addonRoutes = [...config.addonRoutes];
 export const addonReducers = { ...config.addonReducers };
+export const appExtras = config.appExtras;
