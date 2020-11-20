@@ -8,6 +8,12 @@
 
 ### Bugfix
 
+- Fix `yarn analyze` command by packing our own version of
+  webpack-bundle-analyzer integration. It has a few differences in
+  configuration to the previous integration: it saves the bundle stats by
+  default and doesn't open an HTTP server. Check output of `yarn analyze`
+  command to identify the path to the `reports.html` file @tiberiuichim
+
 ### Internal
 
 ## 9.0.0 (2020-11-15)
