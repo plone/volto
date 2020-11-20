@@ -9,8 +9,10 @@ const loadables = {
   'prettier/standalone': loadable.lib(() => import('prettier/standalone')),
   'prettier/parser-html': loadable.lib(() => import('prettier/parser-html')),
   'prismjs/components/prism-core': loadable.lib(() => {
-    // import('prismjs/components/prism-markup');
-    // import('prismjs/components/prism-core');
+    return import('prismjs/components/prism-core');
+  }),
+  'prismjs/components/prism-markup': loadable.lib(() => {
+    return import('prismjs/components/prism-markup');
   }),
 };
 
@@ -49,20 +51,36 @@ export function withToastify(WrappedComponent) {
 export function withLoadable(name) {
   function _wrapped(WrappedComponent) {
     class WithLoadableLibrary extends React.Component {
-      libraryRef = React.createRef();
+      constructor(props) {
+        super(props);
+
+        this.state = {
+          loaded: false,
+        };
+
+        this.libraryRef = React.createRef();
+      }
+
       LoadableLibrary = loadables[name];
 
       render() {
         const LoadableLibrary = this.LoadableLibrary;
         return (
           <>
-            <LoadableLibrary ref={this.libraryRef} />
-            <WrappedComponent
-              {...this.props}
-              {...{
-                [name]: this.libraryRef,
+            <LoadableLibrary
+              ref={(val) => {
+                this.libraryRef.current = val;
+                this.setState({ loaded: true });
               }}
             />
+            {this.state.loaded && (
+              <WrappedComponent
+                {...this.props}
+                {...{
+                  [name]: this.libraryRef,
+                }}
+              />
+            )}
           </>
         );
       }

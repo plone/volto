@@ -7,7 +7,6 @@ import { compose } from 'redux';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Editor from 'react-simple-code-editor';
-// import { highlight, languages } from 'prismjs/components/prism-core';
 import { Button, Popup } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import { withLoadable } from '@plone/volto/helpers';
@@ -272,5 +271,6 @@ export default compose(
   withLoadable('prettier/standalone'),
   withLoadable('prettier/parser-html'),
   withLoadable('prismjs/components/prism-core'),
+  withLoadable('prismjs/components/prism-markup'),
   injectIntl,
 )(Edit);
