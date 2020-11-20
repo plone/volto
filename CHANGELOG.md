@@ -6,7 +6,20 @@
 
 ### Feature
 
+- Extend the internal proxy capabilities, now the target is overridable and SSL aware @sneridagh
+- Added new environment variables for the internal proxy `RAZZLE_PROXY_REWRITE_TARGET` and `RAZZLE_PROXY_REWRITE_TARGET` @sneridagh
+- Enhance `AppExtras` component to make it pluggable through the
+  `config.settings.appExtras`. These are router-path filtered components that
+  are rendered inside the `AppExtras` component @tiberiuichim
+
 ### Bugfix
+
+- Fix Sentry tags and extra via settings.sentryOptions @avoinea
+- Fix `yarn analyze` command by packing our own version of
+  webpack-bundle-analyzer integration. It has a few differences in
+  configuration to the previous integration: it saves the bundle stats by
+  default and doesn't open an HTTP server. Check output of `yarn analyze`
+  command to identify the path to the `reports.html` file @tiberiuichim
 
 ### Internal
 

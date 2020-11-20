@@ -60,9 +60,15 @@ if (__DEVELOPMENT__ && settings.devProxyToApiPath) {
     createProxyMiddleware({
       target: serverURL,
       pathRewrite: {
-        '^/api': `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot/_vh_api`,
+        '^/api':
+          settings.proxyRewriteTarget ||
+          `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot/_vh_api`,
       },
       logLevel: 'silent',
+      ...(settings?.proxyRewriteTarget?.startsWith('https') && {
+        changeOrigin: true,
+        secure: false,
+      }),
     }),
   );
 }
