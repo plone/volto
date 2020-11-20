@@ -3,41 +3,46 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
+import { waitFor, screen, render, act } from '@testing-library/react';
+
 import Edit from './Edit';
+
+import { loadables } from '@plone/volto/helpers/Loadable/Loadable';
 
 const mockStore = configureStore();
 
-// Loadable components is tied to webpack, seems most people use webpack in their tests.
-// Rather than that, we mock the loadable function to load the module eagarly and expose a load() function to be able to await the load
-function loadable(load) {
-  let Component;
-  // Capture the component from the module load function
-  const loadPromise = load().then((val) => {
-    console.log('val', val);
-    return (Component = val.default);
-  });
-  // Create a react component which renders the loaded component
-  const Loadable = (props) => {
-    if (!Component) {
-      throw new Error(
-        'Bundle split module not loaded yet, ensure you beforeAll(() => MyLazyComponent.load()) in your test, import statement: ' +
-          load.toString(),
-      );
-    }
-    return <Component {...props} />;
-  };
-  Loadable.load = () => loadPromise;
-  return Loadable;
-}
+let mockAllLoadables = {};
 
-jest.mock('@plone/volto/helpers', () => {
+beforeAll(async () => {
+  const resolved = await Promise.all(
+    Object.keys(loadables).map(async (n) => {
+      const lib = await Promise.all([loadables[n].load()]);
+      return [n, { current: lib }];
+    }),
+  );
+  resolved.forEach(([name, lib]) => {
+    mockAllLoadables[name] = lib;
+  });
+});
+
+jest.mock('@plone/volto/helpers', function () {
+  const originalModule = jest.requireActual('@plone/volto/helpers');
+
   return {
-    withLoadable: jest.fn((libStr) => loadable(() => import(libStr))),
+    __esModule: true,
+    ...originalModule,
+    withLoadable: jest.fn().mockImplementation(function (libStr) {
+      return jest.fn((WrappedComponent) =>
+        jest.fn((props) => {
+          // console.log('prop', props, WrappedComponent.name);
+          return <WrappedComponent {...props} {...mockAllLoadables} />;
+        }),
+      );
+    }),
   };
 });
-// import { withLoadable } from '@plone/volto/helpers';
 
-test('renders an edit html block component', () => {
+test('renders an edit html block component', async () => {
   const store = mockStore({
     content: {
       create: {},
@@ -48,6 +53,7 @@ test('renders an edit html block component', () => {
       messages: {},
     },
   });
+
   const component = renderer.create(
     <Provider store={store}>
       <Edit
@@ -64,6 +70,7 @@ test('renders an edit html block component', () => {
       />
     </Provider>,
   );
+
   const json = component.toJSON();
   expect(json).toMatchSnapshot();
 });

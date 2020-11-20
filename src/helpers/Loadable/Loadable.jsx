@@ -2,18 +2,16 @@ import React from 'react';
 import loadable from '@loadable/component';
 
 const LoadableToast = loadable.lib(() => import('react-toastify'));
-// const Prettier = loadable.lib(() => import('prettier/standalone'));
-// const ParserHtml = loadable.lib(() => import('prettier/parser-html'));
 
-const loadables = {
+export const loadables = {
   'prettier/standalone': loadable.lib(() => import('prettier/standalone')),
   'prettier/parser-html': loadable.lib(() => import('prettier/parser-html')),
-  'prismjs/components/prism-core': loadable.lib(() => {
-    return import('prismjs/components/prism-core');
-  }),
-  'prismjs/components/prism-markup': loadable.lib(() => {
-    return import('prismjs/components/prism-markup');
-  }),
+  'prismjs/components/prism-core': loadable.lib(() =>
+    import('prismjs/components/prism-core'),
+  ),
+  'prismjs/components/prism-markup': loadable.lib(() =>
+    import('prismjs/components/prism-markup'),
+  ),
 };
 
 /**
@@ -73,14 +71,14 @@ export function withLoadable(name) {
                 this.setState({ loaded: true });
               }}
             />
-            {this.state.loaded && (
+            {this.state.loaded ? (
               <WrappedComponent
                 {...this.props}
                 {...{
                   [name]: this.libraryRef,
                 }}
               />
-            )}
+            ) : null}
           </>
         );
       }

@@ -26,6 +26,7 @@ module.exports = {
         config = { ...config, ...jestConfig };
       }
     }
+    config.testEnvironment = 'jest-environment-jsdom-fifteen';
     return config;
   },
 };

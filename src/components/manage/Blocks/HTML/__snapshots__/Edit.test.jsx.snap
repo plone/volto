@@ -65,11 +65,6 @@ exports[`renders an edit html block component 1`] = `
   />
   <pre
     aria-hidden="true"
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "<span class=\\"token tag\\"><span class=\\"token tag\\"><span class=\\"token punctuation\\">&lt;</span>h1</span><span class=\\"token punctuation\\">></span></span><span class=\\"token tag\\"><span class=\\"token tag\\"><span class=\\"token punctuation\\">&lt;/</span>h1</span><span class=\\"token punctuation\\">></span></span><br />",
-      }
-    }
     style={
       Object {
         "border": 0,

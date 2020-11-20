@@ -84,6 +84,8 @@ class Edit extends Component {
     this.prettier = this.props['prettier/standalone'];
     this.parserHtml = this.props['prettier/parser-html'];
     this.prismCore = this.props['prismjs/components/prism-core'];
+
+    // console.log(this.prismCore.current);
   }
 
   /**
@@ -249,11 +251,15 @@ class Edit extends Component {
             value={this.state.code}
             placeholder={placeholder}
             onValueChange={(code) => this.onChangeCode(code)}
-            highlight={(code) =>
-              this.prismCore.current.highlight(
-                code,
-                this.prismCore.current.languages.html,
-              )
+            highlight={
+              this.prismCore.current?.highlight &&
+              this.prismCore.current?.languages
+                ? (code) =>
+                    this.prismCore.current.highlight(
+                      code,
+                      this.prismCore.current.languages.html,
+                    )
+                : () => {}
             }
             padding={8}
             className="html-editor"
