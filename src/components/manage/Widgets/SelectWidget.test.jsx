@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
-import { waitFor, wait } from '@testing-library/react';
+import { waitFor } from '@testing-library/react';
 
 import SelectWidget from './SelectWidget';
 

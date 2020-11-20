@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import Editor from 'react-simple-code-editor';
 import { Button, Popup } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
-import { withLoadable } from '@plone/volto/helpers';
+import { withLoadables } from '@plone/volto/helpers';
 
 import { Icon } from '@plone/volto/components';
 import showSVG from '@plone/volto/icons/show.svg';
@@ -274,11 +274,7 @@ class Edit extends Component {
 }
 
 export default compose(
-  // withLoadable('prettier/standalone'),
-  // withLoadable('prettier/parser-html'),
-  // withLoadable('prismjs/components/prism-core'),
-  // withLoadable('prismjs/components/prism-markup'),
-  withLoadable([
+  withLoadables([
     'prettier/standalone',
     'prettier/parser-html',
     'prismjs/components/prism-core',

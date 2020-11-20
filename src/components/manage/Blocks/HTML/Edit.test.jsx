@@ -3,11 +3,9 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
-import { waitFor, screen, render, act } from '@testing-library/react';
-
 import Edit from './Edit';
 
-import { loadables } from '@plone/volto/helpers/Loadable/Loadable';
+import { loadables } from '@plone/volto/config/Loadables';
 
 const mockStore = configureStore();
 
@@ -31,10 +29,9 @@ jest.mock('@plone/volto/helpers', function () {
   return {
     __esModule: true,
     ...originalModule,
-    withLoadable: jest.fn().mockImplementation(function (libStr) {
+    withLoadables: jest.fn().mockImplementation(function (libStr) {
       return jest.fn((WrappedComponent) =>
         jest.fn((props) => {
-          // console.log('prop', props, WrappedComponent.name);
           return <WrappedComponent {...props} {...mockAllLoadables} />;
         }),
       );

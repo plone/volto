@@ -4,7 +4,7 @@
  * @example import { Api, Html } from 'helpers';
  */
 
-export { withToastify, withLoadable } from './Loadable/Loadable';
+export { withToastify, withLoadables } from './Loadable/Loadable';
 export Api from '@plone/volto/helpers/Api/Api';
 export { getAPIResourceWithAuth } from '@plone/volto/helpers/Api/APIResourceWithAuth';
 export Html from '@plone/volto/helpers/Html/Html';

@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Portal } from 'react-portal';
-import { Helmet, withToastify } from '@plone/volto/helpers';
+import { Helmet } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import {
   Button,
@@ -1802,7 +1802,7 @@ export default compose(
       updateColumnsContent,
     },
   ),
-  withToastify,
+  // withToastify,
   asyncConnect([
     {
       key: 'actions',

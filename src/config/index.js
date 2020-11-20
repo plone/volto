@@ -27,6 +27,7 @@ import {
   blocksConfig,
   initialBlocks,
 } from './Blocks';
+import { loadables } from './Loadables';
 
 import { sentryOptions } from './Sentry';
 import { contentIcons } from './ContentIcons';
@@ -86,6 +87,7 @@ let config = {
       ...sentryOptions,
     },
     contentIcons: contentIcons,
+    loadables,
   },
   widgets: {
     ...widgetMapping,

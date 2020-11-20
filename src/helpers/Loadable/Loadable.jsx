@@ -1,18 +1,8 @@
 import React from 'react';
 import loadable from '@loadable/component';
+import { settings } from '~/config';
 
 const LoadableToast = loadable.lib(() => import('react-toastify'));
-
-export const loadables = {
-  'prettier/standalone': loadable.lib(() => import('prettier/standalone')),
-  'prettier/parser-html': loadable.lib(() => import('prettier/parser-html')),
-  'prismjs/components/prism-core': loadable.lib(() =>
-    import('prismjs/components/prism-core'),
-  ),
-  'prismjs/components/prism-markup': loadable.lib(() =>
-    import('prismjs/components/prism-markup'),
-  ),
-};
 
 /**
  * withToastify. A HOC that lazy-loads react-toastify and injects it as
@@ -46,58 +36,11 @@ export function withToastify(WrappedComponent) {
   return WithLoadableToastify;
 }
 
-// export function withLoadable(name) {
-//   function _wrapped(WrappedComponent) {
-//     class WithLoadableLibrary extends React.Component {
-//       constructor(props) {
-//         super(props);
-//
-//         this.state = {
-//           loaded: false,
-//         };
-//
-//         this.libraryRef = React.createRef();
-//       }
-//
-//       LoadableLibrary = loadables[name];
-//
-//       render() {
-//         const LoadableLibrary = this.LoadableLibrary;
-//         return (
-//           <>
-//             <LoadableLibrary
-//               ref={(val) => {
-//                 this.libraryRef.current = val;
-//                 this.setState({ loaded: true });
-//               }}
-//             />
-//             {this.state.loaded ? (
-//               <WrappedComponent
-//                 {...this.props}
-//                 {...{
-//                   [name]: this.libraryRef,
-//                 }}
-//               />
-//             ) : null}
-//           </>
-//         );
-//       }
-//     }
-//
-//     WithLoadableLibrary.displayName = `WithLoadableLibrary(${name})(${getDisplayName(
-//       WrappedComponent,
-//     )})`;
-//
-//     return WithLoadableLibrary;
-//   }
-//   return _wrapped;
-// }
-
-export function withLoadable(maybeNames) {
+export function withLoadables(maybeNames) {
   const libraries = Array.isArray(maybeNames) ? maybeNames : [maybeNames];
 
   function _wrapped(WrappedComponent) {
-    class WithLoadableLibrary extends React.Component {
+    class WithLoadables extends React.Component {
       constructor(props) {
         super(props);
 
@@ -108,26 +51,29 @@ export function withLoadable(maybeNames) {
         this.libraryRefs = React.createRef({});
       }
 
-      // LoadableLibrary = loadables[name];
-
       render() {
-        const LoadableLibrary = this.LoadableLibrary;
         const isLoaded =
           Object.keys(this.state.loadedLibraries).length === libraries.length;
 
         return (
           <>
-            {libraries.map((name) => (
-              <LoadableLibrary
-                key={name}
-                ref={(val) => {
-                  this.libraryRefs[name].current = val;
-                  this.setState((state) => ({
-                    loadedLibraries: { ...state.loadedLibraries, [name]: val },
-                  }));
-                }}
-              />
-            ))}
+            {libraries.map((name) => {
+              const LoadableLibrary = settings.loadables[name];
+              return (
+                <LoadableLibrary
+                  key={name}
+                  ref={(val) => {
+                    this.libraryRefs[name].current = val;
+                    this.setState((state) => ({
+                      loadedLibraries: {
+                        ...state.loadedLibraries,
+                        [name]: val,
+                      },
+                    }));
+                  }}
+                />
+              );
+            })}
             {isLoaded ? (
               <WrappedComponent
                 {...this.props}
@@ -139,11 +85,11 @@ export function withLoadable(maybeNames) {
       }
     }
 
-    WithLoadableLibrary.displayName = `WithLoadableLibrary(${libraries.join(
+    WithLoadables.displayName = `WithLoadables(${libraries.join(
       ',',
     )})(${getDisplayName(WrappedComponent)})`;
 
-    return WithLoadableLibrary;
+    return WithLoadables;
   }
   return _wrapped;
 }
