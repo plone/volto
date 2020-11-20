@@ -186,6 +186,7 @@ const defaultPlugins = [
   require('./webpack-sentry-plugin'),
   require('./webpack-svg-plugin'),
   require('./webpack-bundle-analyze-plugin'),
+
   require('./jest-extender-plugin'),
 ];
 

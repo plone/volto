@@ -3,23 +3,20 @@
  * @module components/manage/Blocks/HTML/Edit
  */
 
+import { compose } from 'redux';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Editor from 'react-simple-code-editor';
-import { highlight, languages } from 'prismjs/components/prism-core';
-import 'prismjs/components/prism-markup';
+// import { highlight, languages } from 'prismjs/components/prism-core';
 import { Button, Popup } from 'semantic-ui-react';
-import loadable from '@loadable/component';
 import { defineMessages, injectIntl } from 'react-intl';
+import { withLoadable } from '@plone/volto/helpers';
 
 import { Icon } from '@plone/volto/components';
 import showSVG from '@plone/volto/icons/show.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import codeSVG from '@plone/volto/icons/code.svg';
 import indentSVG from '@plone/volto/icons/indent.svg';
-
-const Prettier = loadable.lib(() => import('prettier/standalone'));
-const ParserHtml = loadable.lib(() => import('prettier/parser-html'));
 
 const messages = defineMessages({
   source: {
@@ -84,6 +81,10 @@ class Edit extends Component {
     this.onChangeCode = this.onChangeCode.bind(this);
     this.onPreview = this.onPreview.bind(this);
     this.onCodeEditor = this.onCodeEditor.bind(this);
+
+    this.prettier = this.props['prettier/standalone'];
+    this.parserHtml = this.props['prettier/parser-html'];
+    this.prismCore = this.props['prismjs/components/prism-core'];
   }
 
   /**
@@ -131,10 +132,10 @@ class Edit extends Component {
   onPreview() {
     this.setState({
       isPreview: !this.state.isPreview,
-      code: this.prettier.current.default
+      code: this.prettier.current
         .format(this.state.code, {
           parser: 'html',
-          plugins: [this.parserHtml.current.default],
+          plugins: [this.parserHtml.current],
         })
         .trim(),
     });
@@ -148,10 +149,10 @@ class Edit extends Component {
 
   onPrettify = () => {
     this.setState({
-      code: this.prettier.current.default
+      code: this.prettier.current
         .format(this.state.code, {
           parser: 'html',
-          plugins: [this.parserHtml.current.default],
+          plugins: [this.parserHtml.current],
         })
         .trim(),
     });
@@ -166,10 +167,6 @@ class Edit extends Component {
     this.setState({ isPreview: !this.state.isPreview });
   }
 
-  //ref
-  prettier = React.createRef();
-  parserHtml = React.createRef();
-
   /**
    * Render method.
    * @method render
@@ -181,8 +178,6 @@ class Edit extends Component {
       this.props.intl.formatMessage(messages.placeholder);
     return (
       <>
-        <Prettier ref={this.prettier} />
-        <ParserHtml ref={this.parserHtml} />
         {this.props.selected && !!this.state.code && (
           <div className="toolbar">
             <Popup
@@ -255,7 +250,12 @@ class Edit extends Component {
             value={this.state.code}
             placeholder={placeholder}
             onValueChange={(code) => this.onChangeCode(code)}
-            highlight={(code) => highlight(code, languages.html)}
+            highlight={(code) =>
+              this.prismCore.current.highlight(
+                code,
+                this.prismCore.current.languages.html,
+              )
+            }
             padding={8}
             className="html-editor"
             ref={(node) => {
@@ -268,4 +268,9 @@ class Edit extends Component {
   }
 }
 
-export default injectIntl(Edit);
+export default compose(
+  withLoadable('prettier/standalone'),
+  withLoadable('prettier/parser-html'),
+  withLoadable('prismjs/components/prism-core'),
+  injectIntl,
+)(Edit);
