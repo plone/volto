@@ -2,8 +2,6 @@
 
 ## 9.0.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Extend the internal proxy capabilities, now the target is overridable and SSL aware @sneridagh
