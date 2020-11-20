@@ -9,4 +9,5 @@ export const loadables = {
   'prismjs/components/prism-markup': loadable.lib(() =>
     import('prismjs/components/prism-markup'),
   ),
+  'react-select': loadable.lib(() => import('react-select')),
 };

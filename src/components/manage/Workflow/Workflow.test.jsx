@@ -2,11 +2,43 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
-import { wait } from '@testing-library/react';
+// import { waitFor } from '@testing-library/react';
 
 import Workflow from './Workflow';
 
+import { loadables } from '@plone/volto/config/Loadables';
+
 const mockStore = configureStore();
+
+let mockAllLoadables = {};
+
+beforeAll(async () => {
+  const resolved = await Promise.all(
+    Object.keys(loadables).map(async (n) => {
+      const lib = await Promise.all([loadables[n].load()]);
+      return [n, { current: lib ? lib[0] : lib }];
+    }),
+  );
+  resolved.forEach(([name, lib]) => {
+    mockAllLoadables[name] = lib;
+  });
+});
+
+jest.mock('@plone/volto/helpers', function () {
+  const originalModule = jest.requireActual('@plone/volto/helpers');
+
+  return {
+    __esModule: true,
+    ...originalModule,
+    withLoadables: jest.fn().mockImplementation(function (libStr) {
+      return jest.fn((WrappedComponent) =>
+        jest.fn((props) => {
+          return <WrappedComponent {...props} {...mockAllLoadables} />;
+        }),
+      );
+    }),
+  };
+});
 
 describe('Workflow', () => {
   it('renders an empty workflow component', async () => {
@@ -23,9 +55,7 @@ describe('Workflow', () => {
         <Workflow pathname="/test" />
       </Provider>,
     );
-    await wait(() => {
-      expect(component.toJSON()).toMatchSnapshot();
-    });
+    expect(component.toJSON()).toMatchSnapshot();
   });
 
   it('renders a workflow component', async () => {
@@ -46,8 +76,6 @@ describe('Workflow', () => {
         <Workflow pathname="/test" />
       </Provider>,
     );
-    await wait(() => {
-      expect(component.toJSON()).toMatchSnapshot();
-    });
+    expect(component.toJSON()).toMatchSnapshot();
   });
 });
