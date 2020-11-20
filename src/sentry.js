@@ -72,6 +72,12 @@ const initSentry = (Sentry) => {
       });
     }
     Sentry.init(sentry_options);
+    if (sentry_options?.tags) {
+      Sentry.setTags(sentry_options.tags);
+    }
+    if (sentry_options?.extras) {
+      Sentry.setExtras(sentry_options.extras);
+    }
 
     if (sentry_config?.SENTRY_CONFIG !== undefined) {
       if (sentry_config?.SENTRY_CONFIG?.tags !== undefined) {

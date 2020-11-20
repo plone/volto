@@ -12,6 +12,7 @@
 
 ### Bugfix
 
+- Fix Sentry tags and extra via settings.sentryOptions @avoinea
 - Fix `yarn analyze` command by packing our own version of
   webpack-bundle-analyzer integration. It has a few differences in
   configuration to the previous integration: it saves the bundle stats by
