@@ -4,6 +4,7 @@ import { loadables } from '@plone/volto/config/Loadables';
 let mockAllLoadables = Object.create(null);
 
 export const __setLoadables = async () => {
+  if (Object.keys(mockAllLoadables).length > 0) return;
   const resolved = await Promise.all(
     Object.keys(loadables).map(async (n) => {
       const lib = await Promise.all([loadables[n].load()]);

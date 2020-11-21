@@ -1725,6 +1725,7 @@ class Contents extends Component {
 
 export const __test__ = compose(
   injectIntl,
+  withLoadables(['toastify']),
   connect(
     (store, props) => {
       return {
@@ -1802,7 +1803,7 @@ export default compose(
       updateColumnsContent,
     },
   ),
-  withLoadables(['react-toastify']),
+  withLoadables(['toastify']),
   asyncConnect([
     {
       key: 'actions',

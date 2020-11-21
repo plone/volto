@@ -10,4 +10,7 @@ export const loadables = {
     import('prismjs/components/prism-markup'),
   ),
   'react-select': loadable.lib(() => import('react-select')),
+  toastify: loadable.lib(() => import('react-toastify'), {
+    resolveComponent: (lib) => lib.toast,
+  }),
 };

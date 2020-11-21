@@ -84,8 +84,6 @@ class Edit extends Component {
     this.prettier = this.props['prettier/standalone'];
     this.parserHtml = this.props['prettier/parser-html'];
     this.prismCore = this.props['prismjs/components/prism-core'];
-
-    // console.log(this.prismCore.current);
   }
 
   /**
