@@ -289,7 +289,6 @@ class Workflow extends Component {
 
   render() {
     const { selectedOption } = this.state;
-    console.log('rps', this.props['react-select'], this.props);
     const { Placeholder } = this.props['react-select'].current.components;
     const Select = this.props['react-select'].current.default;
 

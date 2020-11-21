@@ -52,7 +52,7 @@ import {
   sortContent,
   updateColumnsContent,
 } from '@plone/volto/actions';
-import { getBaseUrl } from '@plone/volto/helpers';
+import { withLoadables, getBaseUrl } from '@plone/volto/helpers';
 import Indexes, { defaultIndexes } from '@plone/volto/constants/Indexes';
 import {
   ContentsIndexHeader,
@@ -1802,7 +1802,7 @@ export default compose(
       updateColumnsContent,
     },
   ),
-  // withToastify,
+  withLoadables(['react-toastify']),
   asyncConnect([
     {
       key: 'actions',

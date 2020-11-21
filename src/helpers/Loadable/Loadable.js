@@ -2,39 +2,39 @@ import React from 'react';
 import loadable from '@loadable/component';
 import { settings } from '~/config';
 
-const LoadableToast = loadable.lib(() => import('react-toastify'));
-
-/**
- * withToastify. A HOC that lazy-loads react-toastify and injects it as
- * the `toastify` property to the wrapped component
- *
- * @param {} WrappedComponent
- * @return Component
- */
-export function withToastify(WrappedComponent) {
-  class WithLoadableToastify extends React.Component {
-    toastify = React.createRef();
-
-    render() {
-      return (
-        <>
-          <LoadableToast ref={this.toastify} />
-          <WrappedComponent
-            {...this.props}
-            toastify={
-              this.toastify.current ? this.toastify.current.toast : null
-            }
-          />
-        </>
-      );
-    }
-  }
-
-  WithLoadableToastify.displayName = `WithLoadableToastify(${getDisplayName(
-    WrappedComponent,
-  )})`;
-  return WithLoadableToastify;
-}
+// const LoadableToast = loadable.lib(() => import('react-toastify'));
+//
+// /**
+//  * withToastify. A HOC that lazy-loads react-toastify and injects it as
+//  * the `toastify` property to the wrapped component
+//  *
+//  * @param {} WrappedComponent
+//  * @return Component
+//  */
+// export function withToastify(WrappedComponent) {
+//   class WithLoadableToastify extends React.Component {
+//     toastify = React.createRef();
+//
+//     render() {
+//       return (
+//         <>
+//           <LoadableToast ref={this.toastify} />
+//           <WrappedComponent
+//             {...this.props}
+//             toastify={
+//               this.toastify.current ? this.toastify.current.toast : null
+//             }
+//           />
+//         </>
+//       );
+//     }
+//   }
+//
+//   WithLoadableToastify.displayName = `WithLoadableToastify(${getDisplayName(
+//     WrappedComponent,
+//   )})`;
+//   return WithLoadableToastify;
+// }
 
 export function withLoadables(maybeNames) {
   const libraries = Array.isArray(maybeNames) ? maybeNames : [maybeNames];

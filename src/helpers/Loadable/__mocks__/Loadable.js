@@ -22,9 +22,3 @@ export const withLoadables = jest.fn().mockImplementation(function (libStr) {
     }),
   );
 });
-
-// Loadable.__setLoadables = __setLoadables;
-// Loadable.withLoadables = withLoadables;
-// const withToastify = Loadable.withToastify;
-// console.log('with toastify', withToastify);
-// // export {withToastify} from Loadable;
