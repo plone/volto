@@ -75,15 +75,12 @@ class Edit extends Component {
     super(props);
     this.state = {
       code: this.props.data.html || '',
+      loaded: false,
       isPreview: false,
     };
     this.onChangeCode = this.onChangeCode.bind(this);
     this.onPreview = this.onPreview.bind(this);
     this.onCodeEditor = this.onCodeEditor.bind(this);
-
-    this.prettier = this.props['prettier/standalone'];
-    this.parserHtml = this.props['prettier/parser-html'];
-    this.prismCore = this.props['prismjs/components/prism-core'];
   }
 
   /**
@@ -94,6 +91,19 @@ class Edit extends Component {
   componentDidMount() {
     if (this.props.selected) {
       this.codeEditor._input.focus();
+    }
+    if (this.props.prismCore && !this.state.loaded) {
+      import('prismjs/components/prism-markup').then(() =>
+        this.setState({ loaded: true }),
+      );
+    }
+  }
+
+  componentDidUpdate() {
+    if (this.props.prismCore && !this.state.loaded) {
+      import('prismjs/components/prism-markup').then(() =>
+        this.setState({ loaded: true }),
+      );
     }
   }
 
@@ -131,10 +141,10 @@ class Edit extends Component {
   onPreview() {
     this.setState({
       isPreview: !this.state.isPreview,
-      code: this.prettier.current
+      code: this.props.prettierStandalone
         .format(this.state.code, {
           parser: 'html',
-          plugins: [this.parserHtml.current],
+          plugins: [this.props.parserHtml],
         })
         .trim(),
     });
@@ -148,10 +158,10 @@ class Edit extends Component {
 
   onPrettify = () => {
     this.setState({
-      code: this.prettier.current
+      code: this.props.prettierStandalone
         .format(this.state.code, {
           parser: 'html',
-          plugins: [this.parserHtml.current],
+          plugins: [this.props.prettierParserHtml],
         })
         .trim(),
     });
@@ -244,18 +254,17 @@ class Edit extends Component {
         {this.state.isPreview && (
           <div dangerouslySetInnerHTML={{ __html: this.state.code }} />
         )}
-        {!this.state.isPreview && (
+        {!this.state.isPreview && this.state.loaded && (
           <Editor
             value={this.state.code}
             placeholder={placeholder}
             onValueChange={(code) => this.onChangeCode(code)}
             highlight={
-              this.prismCore.current?.highlight &&
-              this.prismCore.current?.languages
+              this.props.prismCore?.highlight && this.props.prismCore?.languages
                 ? (code) =>
-                    this.prismCore.current.highlight(
+                    this.props.prismCore.highlight(
                       code,
-                      this.prismCore.current.languages.html,
+                      this.props.prismCore.languages.html,
                     )
                 : () => {}
             }
@@ -273,10 +282,10 @@ class Edit extends Component {
 
 export default compose(
   withLoadables([
-    'prettier/standalone',
-    'prettier/parser-html',
-    'prismjs/components/prism-core',
-    'prismjs/components/prism-markup',
+    'prettierStandalone',
+    'prettierParserHtml',
+    'prismCore',
+    // 'prismMarkup',
   ]),
   injectIntl,
 )(Edit);

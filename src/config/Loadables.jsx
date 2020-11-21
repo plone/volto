@@ -1,15 +1,11 @@
 import loadable from '@loadable/component';
 
 export const loadables = {
-  'prettier/standalone': loadable.lib(() => import('prettier/standalone')),
-  'prettier/parser-html': loadable.lib(() => import('prettier/parser-html')),
-  'prismjs/components/prism-core': loadable.lib(() =>
-    import('prismjs/components/prism-core'),
-  ),
-  'prismjs/components/prism-markup': loadable.lib(() =>
-    import('prismjs/components/prism-markup'),
-  ),
-  'react-select': loadable.lib(() => import('react-select')),
+  prettierStandalone: loadable.lib(() => import('prettier/standalone')),
+  prettierParserHtml: loadable.lib(() => import('prettier/parser-html')),
+  prismCore: loadable.lib(() => import('prismjs/components/prism-core')),
+  // prismMarkup: loadable.lib(() => import('prismjs/components/prism-markup')),
+  reactSelect: loadable.lib(() => import('react-select')),
   toastify: loadable.lib(() => import('react-toastify'), {
     resolveComponent: (lib) => lib.toast,
   }),

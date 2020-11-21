@@ -1,5 +1,6 @@
 import React from 'react';
 import { settings } from '~/config';
+import { isEqual } from 'lodash';
 
 export function withLoadables(maybeNames) {
   const libraries = Array.isArray(maybeNames) ? maybeNames : [maybeNames];
@@ -12,16 +13,32 @@ export function withLoadables(maybeNames) {
         this.state = {
           loadedLibraries: {},
         };
-        // this.refs = Object.assign(
-        //   {},
-        //   ...libraries.map((name) => ({ [name]: React.createRef() })),
-        // );
+      }
+
+      getLoadables() {
+        const { loadables } = settings;
+        return {
+          ...Object.assign(
+            {},
+            ...libraries.map((name) =>
+              !isEqual(Object.keys(loadables[name]).sort(), [
+                '$$typeof',
+                'load',
+                'preload',
+                'render',
+              ])
+                ? { [name]: loadables[name] }
+                : {},
+            ),
+          ), // this is to support "loadables" that are already loaded
+          ...this.state.loadedLibraries,
+        };
       }
 
       render() {
         const { loadables } = settings;
-        // const isLoaded =
-        //   Object.keys(this.state.loadedLibraries).length === libraries.length;
+        const loaded = this.getLoadables();
+        const isLoaded = Object.keys(loaded).length === libraries.length;
 
         return (
           <>
@@ -31,8 +48,6 @@ export function withLoadables(maybeNames) {
                 <LoadableLibrary
                   key={name}
                   ref={(val) => {
-                    console.log('val', val);
-                    // this.refs[name] = val;
                     this.setState((state) => ({
                       loadedLibraries: {
                         ...state.loadedLibraries,
@@ -43,14 +58,7 @@ export function withLoadables(maybeNames) {
                 />
               );
             })}
-            <WrappedComponent
-              {...this.props}
-              {...Object.assign(
-                {},
-                ...libraries.map((name) => ({ [name]: loadables[name] })),
-              )}
-              {...this.state.loadedLibraries}
-            />
+            {isLoaded ? <WrappedComponent {...this.props} {...loaded} /> : null}
           </>
         );
       }
@@ -68,9 +76,3 @@ export function withLoadables(maybeNames) {
 function getDisplayName(WrappedComponent) {
   return WrappedComponent.displayName || WrappedComponent.name || 'Component';
 }
-// Object.assign(
-//   {},
-//   ...libraries.map((name) =>
-//     loadables[name].preload ? {} : { [name]: loadables[name] },
-//   ),
-// ),
