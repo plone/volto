@@ -75,7 +75,7 @@ class Edit extends Component {
     super(props);
     this.state = {
       code: this.props.data.html || '',
-      loaded: false,
+      loaded: true,
       isPreview: false,
     };
     this.onChangeCode = this.onChangeCode.bind(this);
@@ -91,19 +91,6 @@ class Edit extends Component {
   componentDidMount() {
     if (this.props.selected) {
       this.codeEditor._input.focus();
-    }
-    if (this.props.prismCore && !this.state.loaded) {
-      import('prismjs/components/prism-markup').then(() =>
-        this.setState({ loaded: true }),
-      );
-    }
-  }
-
-  componentDidUpdate() {
-    if (this.props.prismCore && !this.state.loaded) {
-      import('prismjs/components/prism-markup').then(() =>
-        this.setState({ loaded: true }),
-      );
     }
   }
 
@@ -280,12 +267,24 @@ class Edit extends Component {
   }
 }
 
+const withPrismMarkup = (WrappedComponent) => (props) => {
+  const [loaded, setLoaded] = React.useState();
+
+  React.useEffect(() => {
+    import('prismjs/components/prism-markup').then(() => setLoaded(true));
+    return;
+  }, []);
+
+  return loaded ? <WrappedComponent {...props} /> : null;
+};
+
+export const __test__ = compose(
+  withLoadables(['prettierStandalone', 'prettierParserHtml', 'prismCore']),
+  injectIntl,
+)(Edit);
+
 export default compose(
-  withLoadables([
-    'prettierStandalone',
-    'prettierParserHtml',
-    'prismCore',
-    // 'prismMarkup',
-  ]),
+  withLoadables(['prettierStandalone', 'prettierParserHtml', 'prismCore']),
+  withPrismMarkup,
   injectIntl,
 )(Edit);
