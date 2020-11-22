@@ -6,7 +6,7 @@ Volto can be installed in any operating system assuming that this requirements
 are met:
 
 - [Node.js LTS (14.x)](https://nodejs.org/)
-- [Python 3.7.x / 2.7.x](https://python.org/) or
+- [Python 3.7.x / 3.8.x](https://python.org/) or
 - [Docker](https://www.docker.com/get-started) (if using the Plone/Guillotina
   docker images)
 
@@ -37,8 +37,8 @@ nvm version
 
 4. Install any active LTS version of NodeJS (https://nodejs.org/en/about/releases/):
 ```
-nvm install 12.16.1
-nvm use 12.16.1
+nvm install 14.15.1
+nvm use 14.15.1
 ```
 
 5. Test NodeJS:
@@ -73,11 +73,13 @@ yarn -v
     platform you are on. Take a look at the original `yarn`
     [documentation](https://classic.yarnpkg.com/lang/en/) for a list of them.
 
-## Docker for Mac
+## Use or Install Docker 
 
-In order to run the API backend, in a quick an easy and hassle way, it's recommended to start running it in a container.
+In order to run the API backend, it's recommended to start run it in a container.
+For this getting started section we assume you are either using Linux, or Mac. Most
+modern Linux distributions have docker in their package manager available. 
 
-Here are the detailed instructions:
+To install Docker desktop for Mac, here are the detailed instructions:
 
     https://hub.docker.com/editions/community/docker-ce-desktop-mac
 
@@ -98,31 +100,9 @@ docker ps
 
 should not throw an error and show the current running containers.
 
-## Get Plone ready for Volto
+## Run a Volto ready Plone Docker container
 
-In order to fully support all Volto features, Plone needs to be prepared for Volto. This
-involves configuration, add-ons installation and some patches to the core.
-
-There's a package published called `kitconcept.volto` that does all the heavy lifting
-for you and it's ready to use in your own projects.
-
-!!! note
-    However, this package is oppinionated and might not fit your needs, so if you
-    want to use your own integration package instead, just take a look to the features
-    it provides and extract the ones you need for your project and tailor your own
-    integration package.
-
-        https://github.com/kitconcept/kitconcept.volto
-
-!!! tip
-    From Volto 5.1 and above, Volto features an internal proxy to your API server. So
-    you don't have to deal with CORS. It's enabled by default, pointing to the server
-    specified in the `devProxyToApiPath` Volto settings (http://localhost:8080/Plone).
-    See [here](../configuration/internalproxy.md) for more details.
-
-### Run a Volto ready Plone Docker container
-
-You can run an standard Plone docker container with the proper configuration using `kitconcept.volto` right away by issuing:
+When you have installed Docker, you can run an standard Plone Docker container with the proper configuration for Volto using the `kitconcept.volto` add'on right away by issuing:
 
 ```shell
 docker run -it --rm --name=plone \
@@ -131,6 +111,22 @@ docker run -it --rm --name=plone \
   -e PROFILES="kitconcept.volto:default-homepage" \
   plone
 ```
+
+!!! note
+    The example above does not persist yet any changes you make through Volto in 
+    the Plone docker container backend! For this you need to map the /data directory
+    in the container properly. Check Docker 
+    [storage documentation](https://docs.docker.com/storage/) for more information.
+
+    As a quick example: if you add
+    `--mount type=bind,source="$(pwd)/plone-data",target=/data`
+    to the previous example. The local subdirectory plone-data relative to where you
+    execute `docker run` will be use to persist the backend server data.
+
+If you are somewhat familiar with Python development, you can also install Plone locally
+without using Docker. Check the [backend configuration](../configuration/backend.md) section.
+It also has more information on kitconcept.volto. 
+
 
 ## Install Volto
 
