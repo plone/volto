@@ -7,19 +7,21 @@ export const __setLoadables = async () => {
   if (Object.keys(mockAllLoadables).length > 0) return;
   const resolved = await Promise.all(
     Object.keys(loadables).map(async (n) => {
-      const lib = await Promise.all([loadables[n].load()]);
+      const lib = await Promise.resolve(loadables[n].load());
       return [n, { current: lib }];
     }),
   );
   resolved.forEach(([name, { current }]) => {
-    mockAllLoadables[name] = { current: current[0] };
+    mockAllLoadables[name] = { current };
   });
 };
 
-export const withLoadables = jest.fn().mockImplementation(function (libStr) {
-  return jest.fn((WrappedComponent) =>
-    jest.fn((props) => {
-      return <WrappedComponent {...props} {...mockAllLoadables} />;
-    }),
-  );
-});
+export const withLoadables = jest
+  .fn()
+  .mockImplementation(function ([libraries]) {
+    return jest.fn((WrappedComponent) =>
+      jest.fn((props) => {
+        return <WrappedComponent {...props} {...mockAllLoadables} />;
+      }),
+    );
+  });
