@@ -1,8 +1,13 @@
 import 'cypress-axe';
 import 'cypress-file-upload';
-import 'cypress-plugin-retries';
 import './commands';
 import { setupGuillotina, tearDownGuillotina } from './guillotina';
+
+before(function () {
+  if (Cypress.env('API') === 'guillotina') {
+    tearDownGuillotina({ allowFail: true });
+  }
+});
 
 beforeEach(function () {
   cy.log('Setting up API fixture');
@@ -19,6 +24,6 @@ afterEach(function () {
     cy.exec('yarn cy:test:fixture:teardown');
   } else {
     cy.clearCookies();
-    // tearDownGuillotina();
+    tearDownGuillotina();
   }
 });
