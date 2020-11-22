@@ -163,7 +163,7 @@ class App extends Component {
             />
           }
         />
-        <AppExtras />
+        <AppExtras {...this.props} />
       </Fragment>
     );
   }
