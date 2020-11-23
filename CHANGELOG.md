@@ -9,6 +9,7 @@
 ### Bugfix
 
 ### Internal
+- Make filewidget label more consistent @tisto
 
 ## 9.1.0 (2020-11-20)
 
