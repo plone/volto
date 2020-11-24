@@ -48,9 +48,12 @@ development the Razzle 3 branch is freezed already so we need to amend the origi
 using the patch. The patch will be obsolete and no longer required once we move to
 Razzle 4 (see https://github.com/jaredpalmer/razzle/pull/1467).
 
-Copy (and overwrite) the `patches` folder into your local project
+!!! note
+    Since Volto 9.2.0 the next step IS NOT required anymore.
+
+~~Copy (and overwrite) the `patches` folder into your local project
 https://github.com/plone/volto/tree/master/patches or, if you want to be more accurate,
-just copy `patches/razzle-plugins.patch` file and overwrite `patches/patchit.sh` file.
+just copy `patches/razzle-plugins.patch` file and overwrite `patches/patchit.sh` file.~~
 
 ### Babel config housekeeping
 

@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Remove the Razzle patch for the local, "inline" Volto Razzle plugins @tiberiuichim @sneridagh
+
 ### Bugfix
 
 ### Internal
