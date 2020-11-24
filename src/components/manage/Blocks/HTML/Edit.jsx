@@ -5,9 +5,6 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import Editor from 'react-simple-code-editor';
-// import { highlight, languages } from 'prismjs/components/prism-core';
-// import 'prismjs/components/prism-markup';
 import { Button, Popup } from 'semantic-ui-react';
 import loadable from '@loadable/component';
 import { defineMessages, injectIntl } from 'react-intl';
@@ -21,6 +18,9 @@ import indentSVG from '@plone/volto/icons/indent.svg';
 const Editor = loadable(() => import('react-simple-code-editor'));
 const Prettier = loadable.lib(() => import('prettier/standalone'));
 const ParserHtml = loadable.lib(() => import('prettier/parser-html'));
+const Refractor = loadable.lib(() => import('refractor'));
+const LangHtml = loadable.lib(() => import('refractor/lang/markup'));
+const ToHTML = loadable.lib(() => import('hast-util-to-html'));
 
 const messages = defineMessages({
   source: {
@@ -244,10 +244,7 @@ class Edit extends Component {
             value={this.state.code}
             placeholder={placeholder}
             onValueChange={(code) => this.onChangeCode(code)}
-            highlight={(code) => {
-              const res = this.props.highlight(code, 'html');
-              return [res];
-            }}
+            highlight={this.props.highlight}
             padding={8}
             className="html-editor"
             ref={(node) => {
@@ -260,28 +257,34 @@ class Edit extends Component {
   }
 }
 
-const Refractor = loadable.lib(() => import('refractor'));
-const LangHtml = loadable.lib(() => import('refractor/lang/markup'));
-
 function withRefractor(WrappedComponent) {
-  // { highlight: fallbackHighlight }
-  const fallbackHighlight = (code) => code;
   return (props) => {
+    const fallbackHighlight = (code) => code;
+    const refractorRef = React.useRef();
+    const langRef = React.useRef();
+    const toHtmlRef = React.useRef();
+
+    let { current: refractor } = refractorRef;
+    refractor = refractor && refractor.default ? refractor.default : refractor;
+    let { current: html } = langRef;
+    html = html && html.default ? html.default : html;
+    let { current: toHtml } = toHtmlRef;
+    toHtml = toHtml && toHtml.default ? toHtml.default : toHtml;
+
     return (
-      <Refractor fallback={null}>
-        {(refractor) => (
-          <LangHtml fallback={null}>
-            {(html) => (
-              <WrappedComponent
-                {...props}
-                highlight={
-                  html && refractor ? refractor.highlight : fallbackHighlight
-                }
-              />
-            )}
-          </LangHtml>
-        )}
-      </Refractor>
+      <>
+        <Refractor ref={refractorRef} />
+        <LangHtml ref={langRef} />
+        <ToHTML ref={toHtmlRef} />
+        <WrappedComponent
+          {...props}
+          highlight={
+            html && refractor && toHtml
+              ? (code) => toHtml(refractor.highlight(code, 'html'))
+              : fallbackHighlight
+          }
+        />
+      </>
     );
   };
 }
