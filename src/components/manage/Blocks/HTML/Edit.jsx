@@ -79,7 +79,7 @@ class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      code: this.props.data.html || '',
+      // code: this.props.data.html || '',
       isPreview: false,
     };
     this.onChangeCode = this.onChangeCode.bind(this);
@@ -109,7 +109,10 @@ class Edit extends Component {
       ...this.props.data,
       html: code,
     });
-    this.setState({ code });
+  }
+
+  getValue() {
+    return this.props.data.html || '';
   }
 
   /**
@@ -118,15 +121,19 @@ class Edit extends Component {
    * @returns {undefined}
    */
   onPreview() {
-    this.setState({
-      isPreview: !this.state.isPreview,
-      code: this.prettier.current.default
-        .format(this.state.code, {
-          parser: 'html',
-          plugins: [this.parserHtml.current.default],
-        })
-        .trim(),
-    });
+    const code = this.prettier.current.default
+      .format(this.getValue(), {
+        parser: 'html',
+        plugins: [this.parserHtml.current.default],
+      })
+      .trim();
+
+    this.setState(
+      {
+        isPreview: !this.state.isPreview,
+      },
+      () => this.onChangeCode(code),
+    );
   }
 
   /**
@@ -136,14 +143,14 @@ class Edit extends Component {
    */
 
   onPrettify = () => {
-    this.setState({
-      code: this.prettier.current.default
-        .format(this.state.code, {
+    this.onChangeCode(
+      this.prettier.current.default
+        .format(this.getValue(), {
           parser: 'html',
           plugins: [this.parserHtml.current.default],
         })
         .trim(),
-    });
+    );
   };
 
   /**
@@ -165,6 +172,7 @@ class Edit extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    // console.log(this.state, this.props);
     const placeholder =
       this.props.data.placeholder ||
       this.props.intl.formatMessage(messages.placeholder);
@@ -172,7 +180,7 @@ class Edit extends Component {
       <>
         <Prettier ref={this.prettier} />
         <ParserHtml ref={this.parserHtml} />
-        {this.props.selected && !!this.state.code && (
+        {this.props.selected && !!this.getValue() && (
           <div className="toolbar">
             <Popup
               trigger={
@@ -237,11 +245,11 @@ class Edit extends Component {
           </div>
         )}
         {this.state.isPreview && (
-          <div dangerouslySetInnerHTML={{ __html: this.state.code }} />
+          <div dangerouslySetInnerHTML={{ __html: this.getValue() }} />
         )}
-        {!this.state.isPreview && (
+        {!this.state.isPreview && this.props.highlight && (
           <Editor
-            value={this.state.code}
+            value={this.getValue()}
             placeholder={placeholder}
             onValueChange={(code) => this.onChangeCode(code)}
             highlight={this.props.highlight}
@@ -259,29 +267,24 @@ class Edit extends Component {
 
 function withRefractor(WrappedComponent) {
   return (props) => {
-    const fallbackHighlight = (code) => code;
-    const refractorRef = React.useRef();
-    const langRef = React.useRef();
-    const toHtmlRef = React.useRef();
+    const [libs, setLibs] = React.useState({});
+    let { html, refractor, toHtml } = libs;
 
-    let { current: refractor } = refractorRef;
     refractor = refractor && refractor.default ? refractor.default : refractor;
-    let { current: html } = langRef;
     html = html && html.default ? html.default : html;
-    let { current: toHtml } = toHtmlRef;
     toHtml = toHtml && toHtml.default ? toHtml.default : toHtml;
 
     return (
       <>
-        <Refractor ref={refractorRef} />
-        <LangHtml ref={langRef} />
-        <ToHTML ref={toHtmlRef} />
+        <Refractor ref={(ref) => setLibs({ ...libs, refractor: ref })} />
+        <LangHtml ref={(ref) => setLibs({ ...libs, html: ref })} />
+        <ToHTML ref={(ref) => setLibs({ ...libs, toHtml: ref })} />
         <WrappedComponent
           {...props}
           highlight={
             html && refractor && toHtml
               ? (code) => toHtml(refractor.highlight(code, 'html'))
-              : fallbackHighlight
+              : null
           }
         />
       </>
