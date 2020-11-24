@@ -5,9 +5,9 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Editor from 'react-simple-code-editor';
-import { highlight, languages } from 'prismjs/components/prism-core';
-import 'prismjs/components/prism-markup';
+// import Editor from 'react-simple-code-editor';
+// import { highlight, languages } from 'prismjs/components/prism-core';
+// import 'prismjs/components/prism-markup';
 import { Button, Popup } from 'semantic-ui-react';
 import loadable from '@loadable/component';
 import { defineMessages, injectIntl } from 'react-intl';
@@ -18,6 +18,7 @@ import clearSVG from '@plone/volto/icons/clear.svg';
 import codeSVG from '@plone/volto/icons/code.svg';
 import indentSVG from '@plone/volto/icons/indent.svg';
 
+const Editor = loadable(() => import('react-simple-code-editor'));
 const Prettier = loadable.lib(() => import('prettier/standalone'));
 const ParserHtml = loadable.lib(() => import('prettier/parser-html'));
 
@@ -87,24 +88,12 @@ class Edit extends Component {
   }
 
   /**
-   * Component will receive props
-   * @method componentDidMount
+   * Component did update
+   * @method componentDidUpdate
    * @returns {undefined}
    */
-  componentDidMount() {
-    if (this.props.selected) {
-      this.codeEditor._input.focus();
-    }
-  }
-
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.selected) {
+  componentDidUpdate(prevProps, prevState) {
+    if (this.codeEditor && this.props.selected && !prevProps.selected) {
       this.codeEditor._input.focus();
     }
   }
@@ -255,7 +244,10 @@ class Edit extends Component {
             value={this.state.code}
             placeholder={placeholder}
             onValueChange={(code) => this.onChangeCode(code)}
-            highlight={(code) => highlight(code, languages.html)}
+            highlight={(code) => {
+              const res = this.props.highlight(code, 'html');
+              return [res];
+            }}
             padding={8}
             className="html-editor"
             ref={(node) => {
@@ -268,4 +260,30 @@ class Edit extends Component {
   }
 }
 
-export default injectIntl(Edit);
+const Refractor = loadable.lib(() => import('refractor'));
+const LangHtml = loadable.lib(() => import('refractor/lang/markup'));
+
+function withRefractor(WrappedComponent) {
+  // { highlight: fallbackHighlight }
+  const fallbackHighlight = (code) => code;
+  return (props) => {
+    return (
+      <Refractor fallback={null}>
+        {(refractor) => (
+          <LangHtml fallback={null}>
+            {(html) => (
+              <WrappedComponent
+                {...props}
+                highlight={
+                  html && refractor ? refractor.highlight : fallbackHighlight
+                }
+              />
+            )}
+          </LangHtml>
+        )}
+      </Refractor>
+    );
+  };
+}
+
+export default injectIntl(withRefractor(Edit));
