@@ -9,4 +9,11 @@ export const loadables = {
   toastify: loadable.lib(() => import('react-toastify'), {
     resolveComponent: (lib) => lib.toast,
   }),
+  Select: loadable(
+    () => import('react-select'),
+    // {
+    //   resolveComponent: (lib) => lib.default,
+    // }
+  ),
+  AsyncPaginate: loadable(() => import('react-select-async-paginate')),
 };

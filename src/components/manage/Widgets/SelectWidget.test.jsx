@@ -6,6 +6,12 @@ import { waitFor } from '@testing-library/react';
 
 import SelectWidget from './SelectWidget';
 
+jest.mock('@plone/volto/helpers/Loadable/Loadable');
+beforeAll(
+  async () =>
+    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
+);
+
 const mockStore = configureStore();
 
 test('renders a select widget component', async () => {
