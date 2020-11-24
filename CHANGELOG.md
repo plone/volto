@@ -1,5 +1,15 @@
 # Change Log
 
+## 9.2.1 (unreleased)
+
+### Breaking
+
+### Feature
+
+### Bugfix
+
+### Internal
+
 ## 9.2.0 (2020-11-24)
 
 ### Feature
