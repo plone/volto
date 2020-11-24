@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Move missplaced `appExtras` into settings @sneridagh
+
 ### Internal
 
 ## 9.1.0 (2020-11-20)
