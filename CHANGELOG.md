@@ -1,6 +1,6 @@
 # Change Log
 
-## 9.1.1 (unreleased)
+## 9.2.1 (unreleased)
 
 ### Breaking
 
@@ -9,6 +9,20 @@
 ### Bugfix
 
 ### Internal
+
+## 9.2.0 (2020-11-24)
+
+### Feature
+
+- Remove the Razzle patch for the local, "inline" Volto Razzle plugins @tiberiuichim @sneridagh
+
+### Bugfix
+
+- Move missplaced `appExtras` into settings @sneridagh
+
+### Internal
+
+- Make filewidget label more consistent @tisto
 
 ## 9.1.0 (2020-11-20)
 
