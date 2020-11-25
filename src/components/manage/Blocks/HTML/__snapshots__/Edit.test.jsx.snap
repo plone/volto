@@ -1,107 +1,71 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders an edit html block component 1`] = `
-<div
-  className="html-editor"
-  style={
-    Object {
-      "boxSizing": "border-box",
-      "padding": 0,
-      "position": "relative",
-      "textAlign": "left",
-      "whiteSpace": "pre-wrap",
-      "wordBreak": "keep-all",
-    }
-  }
->
-  <textarea
-    autoCapitalize="off"
-    autoComplete="off"
-    autoCorrect="off"
-    className="npm__react-simple-code-editor__textarea "
-    data-gramm={false}
-    onChange={[Function]}
-    onKeyDown={[Function]}
-    placeholder="<p>Add some HTML here</p>"
-    spellCheck={false}
-    style={
-      Object {
-        "MozOsxFontSmoothing": "grayscale",
-        "WebkitFontSmoothing": "antialiased",
-        "WebkitTextFillColor": "transparent",
-        "background": "none",
-        "border": 0,
-        "boxSizing": "inherit",
-        "color": "inherit",
-        "display": "inherit",
-        "fontFamily": "inherit",
-        "fontSize": "inherit",
-        "fontStyle": "inherit",
-        "fontVariantLigatures": "inherit",
-        "fontWeight": "inherit",
-        "height": "100%",
-        "left": 0,
-        "letterSpacing": "inherit",
-        "lineHeight": "inherit",
-        "margin": 0,
-        "overflow": "hidden",
-        "paddingBottom": 8,
-        "paddingLeft": 8,
-        "paddingRight": 8,
-        "paddingTop": 8,
-        "position": "absolute",
-        "resize": "none",
-        "tabSize": "inherit",
-        "textIndent": "inherit",
-        "textRendering": "inherit",
-        "textTransform": "inherit",
-        "top": 0,
-        "whiteSpace": "inherit",
-        "width": "100%",
-        "wordBreak": "inherit",
-      }
-    }
-    value="<h1></h1>"
-  />
-  <pre
-    aria-hidden="true"
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "<span class=\\"token tag\\"><span class=\\"token tag\\"><span class=\\"token punctuation\\">&lt;</span>h1</span><span class=\\"token punctuation\\">></span></span><span class=\\"token tag\\"><span class=\\"token tag\\"><span class=\\"token punctuation\\">&lt;/</span>h1</span><span class=\\"token punctuation\\">></span></span><br />",
-      }
-    }
-    style={
-      Object {
-        "border": 0,
-        "boxSizing": "inherit",
-        "display": "inherit",
-        "fontFamily": "inherit",
-        "fontSize": "inherit",
-        "fontStyle": "inherit",
-        "fontVariantLigatures": "inherit",
-        "fontWeight": "inherit",
-        "letterSpacing": "inherit",
-        "lineHeight": "inherit",
-        "margin": 0,
-        "paddingBottom": 8,
-        "paddingLeft": 8,
-        "paddingRight": 8,
-        "paddingTop": 8,
-        "pointerEvents": "none",
-        "position": "relative",
-        "tabSize": "inherit",
-        "textIndent": "inherit",
-        "textRendering": "inherit",
-        "textTransform": "inherit",
-        "whiteSpace": "inherit",
-        "wordBreak": "inherit",
-      }
-    }
-  />
-  <style
-    type="text/css"
+<DocumentFragment>
+  <div
+    class="html-editor"
+    style="position: relative; text-align: left; white-space: pre-wrap; word-break: keep-all; box-sizing: border-box; padding: 0px;"
   >
-    
+    <textarea
+      autocapitalize="off"
+      autocomplete="off"
+      autocorrect="off"
+      class="npm__react-simple-code-editor__textarea "
+      data-gramm="false"
+      placeholder="<p>Add some HTML here</p>"
+      spellcheck="false"
+      style="box-sizing: inherit; display: inherit; font-family: inherit; font-style: inherit; font-variant-ligatures: inherit; font-weight: inherit; letter-spacing: inherit; line-height: inherit; tab-size: inherit; text-indent: inherit; text-rendering: inherit; text-transform: inherit; white-space: inherit; word-break: inherit; position: absolute; top: 0px; left: 0px; height: 100%; width: 100%; margin: 0px; border: 0px; resize: none; background: none; overflow: hidden; padding: 8px 8px 8px 8px;"
+    >
+      &lt;h1&gt;&lt;/h1&gt;
+    </textarea>
+    <pre
+      aria-hidden="true"
+      style="box-sizing: inherit; display: inherit; font-family: inherit; font-style: inherit; font-variant-ligatures: inherit; font-weight: inherit; letter-spacing: inherit; line-height: inherit; tab-size: inherit; text-indent: inherit; text-rendering: inherit; text-transform: inherit; white-space: inherit; word-break: inherit; position: relative; margin: 0px; border: 0px; pointer-events: none; padding: 8px 8px 8px 8px;"
+    >
+      <span
+        class="token tag"
+      >
+        <span
+          class="token tag"
+        >
+          <span
+            class="token punctuation"
+          >
+            &lt;
+          </span>
+          h1
+        </span>
+        <span
+          class="token punctuation"
+        >
+          &gt;
+        </span>
+      </span>
+      <span
+        class="token tag"
+      >
+        <span
+          class="token tag"
+        >
+          <span
+            class="token punctuation"
+          >
+            &lt;/
+          </span>
+          h1
+        </span>
+        <span
+          class="token punctuation"
+        >
+          &gt;
+        </span>
+      </span>
+      <br />
+    </pre>
+    <style
+      type="text/css"
+    >
+      
 /**
  * Reset the text fill color so that placeholder is visible
  */
@@ -123,6 +87,7 @@ exports[`renders an edit html block component 1`] = `
   color: transparent !important;
 }
 
-  </style>
-</div>
+    </style>
+  </div>
+</DocumentFragment>
 `;

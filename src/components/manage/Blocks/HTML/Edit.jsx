@@ -172,7 +172,6 @@ class Edit extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    // console.log(this.state, this.props);
     const placeholder =
       this.props.data.placeholder ||
       this.props.intl.formatMessage(messages.placeholder);
@@ -270,9 +269,9 @@ function withRefractor(WrappedComponent) {
     const [libs, setLibs] = React.useState({});
     let { html, refractor, toHtml } = libs;
 
-    refractor = refractor && refractor.default ? refractor.default : refractor;
-    html = html && html.default ? html.default : html;
-    toHtml = toHtml && toHtml.default ? toHtml.default : toHtml;
+    refractor = refractor && refractor.default;
+    html = html && html.default;
+    toHtml = toHtml && toHtml.default;
 
     return (
       <>
