@@ -181,7 +181,6 @@ const defaultModify = ({
 const addonExtenders = registry.getAddonExtenders().map((m) => require(m));
 
 const defaultPlugins = [
-  'bundle-analyzer',
   { object: require('./webpack-less-plugin')({ registry }) },
   { object: require('./webpack-sentry-plugin') },
   { object: require('./webpack-svg-plugin') },
