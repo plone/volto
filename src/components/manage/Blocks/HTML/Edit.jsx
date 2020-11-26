@@ -5,6 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { compose } from 'redux';
 import { Button, Popup } from 'semantic-ui-react';
 import loadable from '@loadable/component';
 import { defineMessages, injectIntl } from 'react-intl';
@@ -18,9 +19,7 @@ import indentSVG from '@plone/volto/icons/indent.svg';
 const Editor = loadable(() => import('react-simple-code-editor'));
 const Prettier = loadable.lib(() => import('prettier/standalone'));
 const ParserHtml = loadable.lib(() => import('prettier/parser-html'));
-const Refractor = loadable.lib(() => import('refractor'));
-const LangHtml = loadable.lib(() => import('refractor/lang/markup'));
-const ToHTML = loadable.lib(() => import('hast-util-to-html'));
+const PrismCore = loadable.lib(() => import('prismjs/components/prism-core'));
 
 const messages = defineMessages({
   source: {
@@ -264,25 +263,21 @@ class Edit extends Component {
   }
 }
 
-function withRefractor(WrappedComponent) {
+function withPrism(WrappedComponent) {
   return (props) => {
     const [libs, setLibs] = React.useState({});
-    let { html, refractor, toHtml } = libs;
+    let { prismCore } = libs;
 
-    refractor = refractor && refractor.default;
-    html = html && html.default;
-    toHtml = toHtml && toHtml.default;
+    prismCore = prismCore?.default || prismCore;
 
     return (
       <>
-        <Refractor ref={(ref) => setLibs({ ...libs, refractor: ref })} />
-        <LangHtml ref={(ref) => setLibs({ ...libs, html: ref })} />
-        <ToHTML ref={(ref) => setLibs({ ...libs, toHtml: ref })} />
+        <PrismCore ref={(ref) => setLibs({ ...libs, prismCore: ref })} />
         <WrappedComponent
           {...props}
           highlight={
-            html && refractor && toHtml
-              ? (code) => toHtml(refractor.highlight(code, 'html'))
+            prismCore
+              ? (code) => prismCore.highlight(code, prismCore.languages.html)
               : null
           }
         />
@@ -291,4 +286,18 @@ function withRefractor(WrappedComponent) {
   };
 }
 
-export default injectIntl(withRefractor(Edit));
+const withPrismMarkup = (WrappedComponent) => (props) => {
+  const [loaded, setLoaded] = React.useState();
+  React.useEffect(() => {
+    import('prismjs/components/prism-markup').then(() => setLoaded(true));
+    return;
+  }, []);
+
+  return loaded ? <WrappedComponent {...props} /> : null;
+};
+
+export default compose(
+  injectIntl,
+  withPrism,
+  withPrismMarkup, // needs to be loaded after withPrism
+)(Edit);
