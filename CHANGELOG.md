@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Remove dangling analyzer plugin @sneridagh
+
 ## 9.2.0 (2020-11-24)
 
 ### Feature
