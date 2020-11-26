@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix link to login in the Unauthorised component @sneridagh
+
 ### Internal
 
 - Remove dangling analyzer plugin @sneridagh
