@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix link to login in the Unauthorised component @sneridagh
+
 ### Internal
 
 ## 9.2.0 (2020-11-24)
