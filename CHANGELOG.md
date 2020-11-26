@@ -11,7 +11,7 @@
 ### Internal
 
 - Upgrade `@testing-library/react` to 11.2.2. Add `jest-environment-jsdom-sixteen as upgraded jsdom implementation @tiberiuichim
-- Use [refractor](https://github.com/wooorm/refractor) (which is a wrapper around prismjs) and [hast-util-`to-html](https://github.com/syntax-tree/hast-util-to-html) to syntax highlight code in the HTML block editor @tiberiuichim
+- Split some small prismjs related files (used in HTML block) in separate chunks @tiberiuichim
 
 ## 9.2.0 (2020-11-24)
 
