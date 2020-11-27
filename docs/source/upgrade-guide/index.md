@@ -10,6 +10,16 @@ This upgrade guide lists all breaking changes in Volto and explains the
     dependencies might do when dealing with upgrades. We keep the generator up
     to date and in sync with current Volto release.
 
+## Upgrading to Volto 10.x.x
+
+### getContent changes
+
+The content is no longer fetched from Volto with the `fullobjects` flag in the
+request. If your code relied on children being fully serialized with their
+parent, you should refactor it. Alternatively, you can set
+`settings.bbb_getContentFetchesFullobjects` to `true` to get the old behavior.
+
+
 ## Upgrading to Volto 9.x.x
 
 ### Internal upgrade to use Razzle 3.3.7
