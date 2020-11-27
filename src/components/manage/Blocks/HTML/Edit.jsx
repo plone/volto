@@ -5,9 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Editor from 'react-simple-code-editor';
-import { highlight, languages } from 'prismjs/components/prism-core';
-import 'prismjs/components/prism-markup';
+import { compose } from 'redux';
 import { Button, Popup } from 'semantic-ui-react';
 import loadable from '@loadable/component';
 import { defineMessages, injectIntl } from 'react-intl';
@@ -18,8 +16,10 @@ import clearSVG from '@plone/volto/icons/clear.svg';
 import codeSVG from '@plone/volto/icons/code.svg';
 import indentSVG from '@plone/volto/icons/indent.svg';
 
+const Editor = loadable(() => import('react-simple-code-editor'));
 const Prettier = loadable.lib(() => import('prettier/standalone'));
 const ParserHtml = loadable.lib(() => import('prettier/parser-html'));
+const PrismCore = loadable.lib(() => import('prismjs/components/prism-core'));
 
 const messages = defineMessages({
   source: {
@@ -78,7 +78,7 @@ class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      code: this.props.data.html || '',
+      // code: this.props.data.html || '',
       isPreview: false,
     };
     this.onChangeCode = this.onChangeCode.bind(this);
@@ -87,24 +87,12 @@ class Edit extends Component {
   }
 
   /**
-   * Component will receive props
-   * @method componentDidMount
+   * Component did update
+   * @method componentDidUpdate
    * @returns {undefined}
    */
-  componentDidMount() {
-    if (this.props.selected) {
-      this.codeEditor._input.focus();
-    }
-  }
-
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.selected) {
+  componentDidUpdate(prevProps, prevState) {
+    if (this.codeEditor && this.props.selected && !prevProps.selected) {
       this.codeEditor._input.focus();
     }
   }
@@ -120,7 +108,10 @@ class Edit extends Component {
       ...this.props.data,
       html: code,
     });
-    this.setState({ code });
+  }
+
+  getValue() {
+    return this.props.data.html || '';
   }
 
   /**
@@ -129,15 +120,19 @@ class Edit extends Component {
    * @returns {undefined}
    */
   onPreview() {
-    this.setState({
-      isPreview: !this.state.isPreview,
-      code: this.prettier.current.default
-        .format(this.state.code, {
-          parser: 'html',
-          plugins: [this.parserHtml.current.default],
-        })
-        .trim(),
-    });
+    const code = this.prettier.current.default
+      .format(this.getValue(), {
+        parser: 'html',
+        plugins: [this.parserHtml.current.default],
+      })
+      .trim();
+
+    this.setState(
+      {
+        isPreview: !this.state.isPreview,
+      },
+      () => this.onChangeCode(code),
+    );
   }
 
   /**
@@ -147,14 +142,14 @@ class Edit extends Component {
    */
 
   onPrettify = () => {
-    this.setState({
-      code: this.prettier.current.default
-        .format(this.state.code, {
+    this.onChangeCode(
+      this.prettier.current.default
+        .format(this.getValue(), {
           parser: 'html',
           plugins: [this.parserHtml.current.default],
         })
         .trim(),
-    });
+    );
   };
 
   /**
@@ -183,7 +178,7 @@ class Edit extends Component {
       <>
         <Prettier ref={this.prettier} />
         <ParserHtml ref={this.parserHtml} />
-        {this.props.selected && !!this.state.code && (
+        {this.props.selected && !!this.getValue() && (
           <div className="toolbar">
             <Popup
               trigger={
@@ -248,14 +243,14 @@ class Edit extends Component {
           </div>
         )}
         {this.state.isPreview && (
-          <div dangerouslySetInnerHTML={{ __html: this.state.code }} />
+          <div dangerouslySetInnerHTML={{ __html: this.getValue() }} />
         )}
-        {!this.state.isPreview && (
+        {!this.state.isPreview && this.props.highlight && (
           <Editor
-            value={this.state.code}
+            value={this.getValue()}
             placeholder={placeholder}
             onValueChange={(code) => this.onChangeCode(code)}
-            highlight={(code) => highlight(code, languages.html)}
+            highlight={this.props.highlight}
             padding={8}
             className="html-editor"
             ref={(node) => {
@@ -268,4 +263,41 @@ class Edit extends Component {
   }
 }
 
-export default injectIntl(Edit);
+function withPrism(WrappedComponent) {
+  return (props) => {
+    const [libs, setLibs] = React.useState({});
+    let { prismCore } = libs;
+
+    prismCore = prismCore?.default || prismCore;
+
+    return (
+      <>
+        <PrismCore ref={(ref) => setLibs({ ...libs, prismCore: ref })} />
+        <WrappedComponent
+          {...props}
+          highlight={
+            prismCore
+              ? (code) => prismCore.highlight(code, prismCore.languages.html)
+              : null
+          }
+        />
+      </>
+    );
+  };
+}
+
+const withPrismMarkup = (WrappedComponent) => (props) => {
+  const [loaded, setLoaded] = React.useState();
+  React.useEffect(() => {
+    import('prismjs/components/prism-markup').then(() => setLoaded(true));
+    return;
+  }, []);
+
+  return loaded ? <WrappedComponent {...props} /> : null;
+};
+
+export default compose(
+  injectIntl,
+  withPrism,
+  withPrismMarkup, // needs to be loaded after withPrism
+)(Edit);
