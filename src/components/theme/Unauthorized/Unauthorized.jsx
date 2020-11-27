@@ -9,6 +9,7 @@ import { Container } from 'semantic-ui-react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { withServerErrorCode } from '@plone/volto/helpers/Utils/Utils';
+import { getBaseUrl } from '@plone/volto/helpers';
 
 /**
  * unauthorized function.
@@ -31,7 +32,7 @@ const Unauthorized = () => {
           defaultMessage="You are trying to access a protected resource, please {login} first."
           values={{
             login: (
-              <Link to={`${location.pathname}/login`}>
+              <Link to={`${getBaseUrl(location.pathname)}/login`}>
                 <FormattedMessage id="log in" defaultMessage="log in" />
               </Link>
             ),

@@ -91,3 +91,4 @@ markdown_extensions:
   - toc:
       permalink: '#'
   - markdown.extensions.def_list
+  - pymdownx.tilde

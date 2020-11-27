@@ -86,6 +86,7 @@ let config = {
       ...sentryOptions,
     },
     contentIcons: contentIcons,
+    appExtras: [],
   },
   widgets: {
     ...widgetMapping,
@@ -106,7 +107,6 @@ let config = {
 
   addonRoutes: [],
   addonReducers: {},
-  appExtras: [],
 };
 
 config = applyAddonConfiguration(config);
