@@ -18,7 +18,7 @@ exports[`Generic Error renders a not found component 1`] = `
     >
       You are trying to access a protected resource, please 
       <a
-        href="//login"
+        href="/login"
         onClick={[Function]}
       >
         log in

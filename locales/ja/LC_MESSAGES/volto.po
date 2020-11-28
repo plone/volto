@@ -300,6 +300,14 @@ msgstr "イメージを選択"
 msgid "Choose Target"
 msgstr "ターゲットを選択"
 
+#: components/manage/Widgets/FileWidget
+msgid "Choose a file"
+msgstr ""
+
+#: components/manage/Blocks/HTML/Edit
+msgid "Clear"
+msgstr ""
+
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
 msgstr "クリックしてフルサイズ画像をダウンロード"
@@ -311,6 +319,10 @@ msgstr "閉じる"
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
 msgstr "メニューを閉じる"
+
+#: components/manage/Blocks/HTML/Edit
+msgid "Code"
+msgstr ""
 
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"
@@ -354,10 +366,6 @@ msgstr "含まれるアイテム"
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Content"
 msgstr "コンテント"
-
-#: components/manage/Multilingual/ManageTranslations
-msgid "Content linked"
-msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
@@ -562,6 +570,18 @@ msgstr "文書"
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "ここにファイルをドラッグ、または「参照」ボタンをクリック"
 
+#: components/manage/Widgets/FileWidget
+msgid "Drop file here to replace the existing file"
+msgstr ""
+
+#: components/manage/Widgets/FileWidget
+msgid "Drop file here to upload a new file"
+msgstr ""
+
+#: components/manage/Widgets/FileWidget
+msgid "Drop files here ..."
+msgstr ""
+
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
 msgid "E-mail"
@@ -631,6 +651,10 @@ msgstr "終了日付"
 
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 msgid "Enter URL or select an item"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Enter a username above to search or click 'Show All'"
 msgstr ""
 
 #: components/theme/Register/Register
@@ -916,7 +940,7 @@ msgid "Item(s) cut."
 msgstr "アイテムがカットされました。"
 
 #: components/manage/Contents/Contents
-msgid "Item(s) has been sorted."
+msgid "Item(s) has been updated."
 msgstr ""
 
 #: components/manage/Actions/Actions
@@ -1310,9 +1334,17 @@ msgid "Preferences"
 msgstr "個別設定"
 
 #: components/manage/Blocks/HTML/Edit
+msgid "Prettify your code"
+msgstr ""
+
+#: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
 msgid "Preview"
 msgstr "プレビュー"
+
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "Preview Image URL"
+msgstr ""
 
 #: components/manage/Toolbar/PersonalTools
 msgid "Profile"
@@ -1398,6 +1430,10 @@ msgstr "繰り返す間隔"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Repeat on"
 msgstr "日または曜日"
+
+#: components/manage/Widgets/FileWidget
+msgid "Replace existing file"
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
@@ -1587,6 +1623,10 @@ msgstr "ショートネーム"
 #: components/theme/Pagination/Pagination
 msgid "Show"
 msgstr "表示件数"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Show All"
+msgstr ""
 
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
@@ -1845,7 +1885,11 @@ msgid "Translate to {lang}"
 msgstr "{lang} に翻訳する"
 
 #: components/manage/Multilingual/ManageTranslations
-msgid "Translation deleted"
+msgid "Translation linked"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Translation linking removed"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
@@ -2072,6 +2116,10 @@ msgstr "You can view the difference of the revisions below. (未翻訳)"
 msgid "You can view the history of your item below."
 msgstr "You can view the history of your item below. (未翻訳)"
 
+#: components/manage/Contents/Contents
+msgid "You can't paste this content here"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Your email is required for reset your password."
 msgstr "Your email is required for reset your password. (未翻訳)"
@@ -2191,6 +2239,10 @@ msgstr "リード画像"
 #: config/Blocks
 msgid "listing"
 msgstr "リスティング"
+
+#: components/manage/Contents/Contents
+msgid "loading"
+msgstr ""
 
 #: components/theme/Unauthorized/Unauthorized
 msgid "log in"

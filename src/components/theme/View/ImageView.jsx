@@ -26,24 +26,26 @@ const ImageView = ({ content }) => (
     {content.description && (
       <p className="documentDescription">{content.description}</p>
     )}
-    <a href={flattenToAppURL(content.image.download)}>
-      <img
-        alt={content.title}
-        src={flattenToAppURL(content.image.scales.preview.download)}
-      />
-      <figcaption>
-        <FormattedMessage
-          id="Size: {size}"
-          defaultMessage="Size: {size}"
-          values={{ size: prettybytes(content.image.size) }}
+    {content?.image?.download && (
+      <a href={flattenToAppURL(content.image.download)}>
+        <img
+          alt={content.title}
+          src={flattenToAppURL(content.image.scales.preview.download)}
         />
-        &nbsp; &mdash; &nbsp;
-        <FormattedMessage
-          id="Click to download full sized image"
-          defaultMessage="Click to download full sized image"
-        />
-      </figcaption>
-    </a>
+        <figcaption>
+          <FormattedMessage
+            id="Size: {size}"
+            defaultMessage="Size: {size}"
+            values={{ size: prettybytes(content.image.size) }}
+          />
+          &nbsp; &mdash; &nbsp;
+          <FormattedMessage
+            id="Click to download full sized image"
+            defaultMessage="Click to download full sized image"
+          />
+        </figcaption>
+      </a>
+    )}
   </Container>
 );
 

@@ -88,6 +88,7 @@ export {
   resetPassword,
   updatePassword,
   updateUser,
+  showAllUsers,
 } from '@plone/volto/actions/users/users';
 export {
   login,

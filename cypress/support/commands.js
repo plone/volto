@@ -2,9 +2,9 @@
 Cypress.Commands.add('autologin', () => {
   let api_url, user, password;
   if (Cypress.env('API') === 'guillotina') {
-    api_url = 'http://localhost:8081/db/container';
-    user = 'root';
-    password = 'root';
+    api_url = 'http://localhost:8081/db/web';
+    user = 'admin';
+    password = 'admin';
   } else {
     api_url = 'http://localhost:55001/plone';
     user = 'admin';
@@ -33,7 +33,7 @@ Cypress.Commands.add(
   }) => {
     let api_url, auth;
     if (Cypress.env('API') === 'guillotina') {
-      api_url = 'http://localhost:8081/db/container';
+      api_url = 'http://localhost:8081/db/web';
       auth = {
         user: 'root',
         pass: 'root',

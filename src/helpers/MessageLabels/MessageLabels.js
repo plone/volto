@@ -174,4 +174,12 @@ export const messages = defineMessages({
     id: 'Paste blocks',
     defaultMesages: 'Paste blocks',
   },
+  showAllUserButton: {
+    id: 'Show All',
+    defaultMessage: 'Show All',
+  },
+  showAllUserText: {
+    id: "Enter a username above to search or click 'Show All'",
+    defaultMessage: "Enter a username above to search or click 'Show All'",
+  },
 });
