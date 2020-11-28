@@ -23,7 +23,7 @@ initSentry(Sentry);
 function reactIntlErrorHandler(error) {
   if (process.env.NODE_ENV !== 'production') {
     /* eslint no-console: 0 */
-    console.warn(error);
+    console.info(error);
   }
 }
 
