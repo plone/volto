@@ -4,6 +4,8 @@
 
 ### Breaking
 
+- Fetched content with `getContent` no longer includes fullobjects by default @tiberiuichim
+
 ### Feature
 
 ### Bugfix
