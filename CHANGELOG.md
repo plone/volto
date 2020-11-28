@@ -12,6 +12,7 @@
 
 ### Internal
 
+- Add details on how to run Cypress integration tests @tiberiuichim
 - Remove dangling analyzer plugin @sneridagh
 
 ## 9.2.0 (2020-11-24)
