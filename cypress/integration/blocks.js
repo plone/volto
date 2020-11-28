@@ -173,7 +173,6 @@ if (Cypress.env('API') !== 'guillotina') {
 
       // Save
       cy.get('#toolbar-save').click();
-      cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
       cy.waitForResourceToLoad('@navigation');
       cy.waitForResourceToLoad('@breadcrumbs');
       cy.waitForResourceToLoad('@actions');
@@ -195,7 +194,15 @@ if (Cypress.env('API') !== 'guillotina') {
       );
 
       // Edit
-      cy.visit('/my-page/edit');
+      cy.navigate('/my-page/edit');
+      cy.waitForResourceToLoad('my-page');
+      cy.waitForResourceToLoad('@navigation');
+      cy.waitForResourceToLoad('@breadcrumbs');
+      cy.waitForResourceToLoad('@actions');
+      cy.waitForResourceToLoad('@types');
+
+      cy.get('#toolbar-save').should('be.visible');
+
       cy.get('.celled.fixed.table tr:first-child() th:nth-child(2)').click();
 
       // without the second click the test fails. so this makes the test green.
@@ -211,15 +218,11 @@ if (Cypress.env('API') !== 'guillotina') {
 
       // Save
       cy.get('#toolbar-save').click();
-      cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
-      cy.waitForResourceToLoad('@navigation');
-      cy.waitForResourceToLoad('@breadcrumbs');
-      cy.waitForResourceToLoad('@actions');
-      cy.waitForResourceToLoad('@types');
       cy.waitForResourceToLoad('my-page');
 
       // View
-      cy.get('.celled.fixed.table tr th:first-child()').contains(
+      cy.get('.celled.fixed.table tr th:first-child()').should(
+        'contain',
         'column 1 / row 1',
       );
       cy.get('th:nth-child(2)> p ').should('have.text', 'column 2 / row 1');
