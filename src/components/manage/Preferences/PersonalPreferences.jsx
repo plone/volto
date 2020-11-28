@@ -83,7 +83,7 @@ class PersonalPreferences extends Component {
    * @returns {undefined}
    */
   onSubmit(data) {
-    cookie.save('lang', data.language || '', {
+    cookie.save('I18N_LANGUAGE', data.language || '', {
       expires: new Date((2 ** 31 - 1) * 1000),
       path: '/',
     });
@@ -125,7 +125,7 @@ class PersonalPreferences extends Component {
   render() {
     return (
       <Form
-        formData={{ language: cookie.load('lang') || '' }}
+        formData={{ language: cookie.load('I18N_LANGUAGE') || '' }}
         schema={{
           fieldsets: [
             {

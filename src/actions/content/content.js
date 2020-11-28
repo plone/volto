@@ -10,6 +10,7 @@ import {
   GET_CONTENT,
   ORDER_CONTENT,
   RESET_CONTENT,
+  UPDATECOLUMNS_CONTENT,
 } from '@plone/volto/constants/ActionTypes';
 import { nestContent } from '@plone/volto/helpers';
 import { settings } from '~/config';
@@ -117,6 +118,7 @@ export function sortContent(url, on, order) {
  * @param {string} url Content url
  * @param {string} version Version id
  * @param {string} subrequest Key of the subrequest.
+ * @param {boolean} fullobjects If full object information should be retrieved
  * @returns {Object} Get content action
  */
 export function getContent(
@@ -124,23 +126,35 @@ export function getContent(
   version = null,
   subrequest = null,
   page = null,
+  fullobjects = false,
 ) {
-  let qs = page
-    ? `?fullobjects&b_start=${settings.defaultPageSize * (page - 1)}&b_size=${
-        settings.defaultPageSize
-      }`
-    : '?fullobjects';
+  const query = Object.assign(
+    {},
+    fullobjects || settings.bbb_getContentFetchesFullobjects
+      ? { fullobjects: true }
+      : {},
+    page
+      ? {
+          b_start: settings.defaultPageSize * (page - 1),
+          b_size: settings.defaultPageSize,
+        }
+      : {},
+  );
 
-  if (settings.isMultilingual) {
-    qs = qs + '&expand=translations';
-  }
+  const qs = Object.keys(query)
+    .map(function (key) {
+      return key + '=' + query[key];
+    })
+    .join('&');
 
   return {
     type: GET_CONTENT,
     subrequest,
     request: {
       op: 'get',
-      path: `${url}${version ? `/@history/${version}` : ''}${qs}`,
+      path: `${url}${version ? `/@history/${version}` : ''}${
+        qs ? `?${qs}` : ''
+      }`,
     },
   };
 }
@@ -155,5 +169,18 @@ export function resetContent(subrequest = null) {
   return {
     type: RESET_CONTENT,
     subrequest,
+  };
+}
+
+/**
+ * Add, remove or order indexes
+ * @param {string} url Content url
+ * @param {string} index indexes with order
+ * @returns {Object} Index content action
+ */
+export function updateColumnsContent(url, index) {
+  return {
+    type: UPDATECOLUMNS_CONTENT,
+    indexcolumns: index,
   };
 }

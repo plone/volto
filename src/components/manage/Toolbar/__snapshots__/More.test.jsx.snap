@@ -3,6 +3,11 @@
 exports[`Toolbar More component renders a Toolbar More component 1`] = `
 <div
   className="menu-more pastanaga-menu"
+  style={
+    Object {
+      "flex": "0 0 320px",
+    }
+  }
 >
   <header>
     <h2 />

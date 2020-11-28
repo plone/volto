@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [10.x, 12.x]
+        node-version: [10.x, 12.x, 14.x]
         python-version: [3.7]
     steps:
       - uses: actions/checkout@v2
@@ -33,11 +33,6 @@ jobs:
 
       # node install
       - run: yarn install --frozen-lockfile
-
-      # node code analysis
-      - run: yarn run prettier
-      - run: yarn run lint
-      - run: yarn run i18n:ci
 
       # node test
       - run: yarn test:ci

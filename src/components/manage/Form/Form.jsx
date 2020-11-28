@@ -24,6 +24,7 @@ import {
   omit,
   pickBy,
   without,
+  cloneDeep,
 } from 'lodash';
 import move from 'lodash-move';
 import isBoolean from 'lodash/isBoolean';
@@ -164,7 +165,7 @@ class Form extends Component {
     }
     this.state = {
       formData,
-      initialFormData: { ...formData },
+      initialFormData: cloneDeep(formData),
       errors: {},
       selected:
         formData.hasOwnProperty(blocksLayoutFieldname) &&
@@ -387,20 +388,30 @@ class Form extends Component {
     const blocksFieldname = getBlocksFieldname(this.state.formData);
     const blocksLayoutFieldname = getBlocksLayoutFieldname(this.state.formData);
 
-    this.setState({
-      formData: {
-        ...this.state.formData,
-        [blocksLayoutFieldname]: {
-          items: without(this.state.formData[blocksLayoutFieldname].items, id),
+    this.setState(
+      {
+        formData: {
+          ...this.state.formData,
+          [blocksLayoutFieldname]: {
+            items: without(
+              this.state.formData[blocksLayoutFieldname].items,
+              id,
+            ),
+          },
+          [blocksFieldname]: omit(this.state.formData[blocksFieldname], [id]),
         },
-        [blocksFieldname]: omit(this.state.formData[blocksFieldname], [id]),
+        selected: selectPrev
+          ? this.state.formData[blocksLayoutFieldname].items[
+              this.state.formData[blocksLayoutFieldname].items.indexOf(id) - 1
+            ]
+          : null,
       },
-      selected: selectPrev
-        ? this.state.formData[blocksLayoutFieldname].items[
-            this.state.formData[blocksLayoutFieldname].items.indexOf(id) - 1
-          ]
-        : null,
-    });
+      (newState) => {
+        if (this.state.formData[blocksLayoutFieldname].items.length === 0) {
+          this.onAddBlock(settings.defaultBlockType, 0);
+        }
+      },
+    );
   }
 
   /**
@@ -514,9 +525,14 @@ class Form extends Component {
     const fieldsModified = Object.keys(
       difference(this.state.formData, this.state.initialFormData),
     );
-    return pickBy(this.state.formData, (value, key) =>
-      fieldsModified.includes(key),
-    );
+    return {
+      ...pickBy(this.state.formData, (value, key) =>
+        fieldsModified.includes(key),
+      ),
+      ...(this.state.formData['@static_behaviors'] && {
+        '@static_behaviors': this.state.formData['@static_behaviors'],
+      }),
+    };
   };
 
   /**

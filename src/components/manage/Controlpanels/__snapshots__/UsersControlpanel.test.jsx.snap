@@ -84,7 +84,30 @@ exports[`UsersControlpanel renders a user control component 1`] = `
           </thead>
           <tbody
             className=""
-          />
+          >
+            <tr
+              className=""
+            >
+              <th
+                className=""
+                colspan={9}
+              >
+                <div
+                  className="show-all-users"
+                >
+                  <p>
+                    Enter a username above to search or click 'Show All'
+                  </p>
+                  <button
+                    className="ui button show-all-users"
+                    onClick={[Function]}
+                  >
+                    Show All
+                  </button>
+                </div>
+              </th>
+            </tr>
+          </tbody>
         </table>
       </div>
     </form>

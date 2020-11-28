@@ -152,27 +152,53 @@ exports[`Sharing renders a sharing component 1`] = `
       >
         <button
           aria-label="Save"
-          className="ui big basic circular icon primary right floated button"
+          className="ui basic primary right floated button"
           onClick={[Function]}
           title="Save"
           type="submit"
         >
-          <i
-            aria-hidden="true"
-            className="arrow right icon"
-            onClick={[Function]}
+          <svg
+            className="icon circled"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "currentColor",
+                "height": "30px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
           />
         </button>
         <button
           aria-label="Cancel"
-          className="ui big basic circular icon secondary right floated button"
+          className="ui basic secondary right floated button"
           onClick={[Function]}
           title="Cancel"
         >
-          <i
-            aria-hidden="true"
-            className="remove icon"
-            onClick={[Function]}
+          <svg
+            className="icon circled"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "currentColor",
+                "height": "30px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
           />
         </button>
       </div>

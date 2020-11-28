@@ -1,7 +1,5 @@
 # RichEditor Settings
 
-## Rich Text Editor Settings
-
 You can customize how the Rich Text Editor behaves and its features. These are
 controlled from the `config.js` settings.
 
@@ -12,7 +10,7 @@ We will add a button to the toolbar to underline the selected text.
 
 In the `config.js` file we will create a new button.
 
-```js
+```jsx
 import React from 'react';
 import createInlineStyleButton from 'draft-js-buttons/lib/utils/createInlineStyleButton';
 import Icon from '@plone/volto/components/theme/Icon/Icon';

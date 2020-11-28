@@ -30,7 +30,12 @@ describe('Toolbar Personal Tools component', () => {
     const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter>
-          <PersonalTools loadComponent={() => {}} />
+          <PersonalTools
+            loadComponent={() => {}}
+            theToolbar={{
+              current: { getBoundingClientRect: () => ({ width: '320' }) },
+            }}
+          />
         </MemoryRouter>
       </Provider>,
     );
