@@ -29,36 +29,43 @@ Volto uses [Cypress](https://cypress.io) to run integration tests. When
 developing or debugging Cypress tests, it's useful to be able to replicate the
 test environment.
 
+### Start Cypress
+
 You can start Cypress by running:
 
 ```
-RAZZLE_API_PATH=http://localhost:55001/plone yarn cypress:open
+make start-test
 ```
 
 This will open Cypress in a browser, where you can see the available registered
 tests and you can start them manually. You can even open the browser's
 developer console and inspect network traffic and logging errors.
 
-Notice that we've started cypress with a different `API_PATH`. Cypress tests
+### Start Plone
+
+Notice that we've started Cypress with a different `API_PATH`. Cypress tests
 need to communicate with Plone through XMLRPC, to do rollbacks and cleanups
-after each test. So, to start Zope and Plone, run:
+after each test. To start Zope and Plone, run:
 
 ```
 make test-acceptance-server
 ```
 
-If your test fails, it won't cleanup after itself, you may get errors about
-content that already exists, etc. Just restart the test-acceptance-server, as
+If your test fails and won't cleanup after itself, you may get errors about
+content that already exists, etc. Just restart the test acceptance server, as
 it uses a non-persistent database.
 
-Finally, you'll have to start Volto with:
+### Start Volto
+
+Finally, you can to start Volto with:
+
+```
+make start-test-frontend
+```
+
+If you're developing in parallel the code and the test, you can start Volto in
+development mode by running:
 
 ```
 RAZZLE_API_PATH=http://localhost:55001/plone yarn start
 ```
-
-
-!!! note
-    [fish shell](https://fishshell.com/) users need to prefix their commands
-    with `env`, like:
-    `env RAZZLE_API_PATH=http://localhost:55001/plone yarn start`
