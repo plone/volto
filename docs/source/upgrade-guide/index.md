@@ -32,6 +32,13 @@ request. If your code relied on children being fully serialized with their
 parent, you should refactor it. Alternatively, you can set
 `settings.bbb_getContentFetchesFullobjects` to `true` to get the old behavior.
 
+### `@testing-library/react` upgrade notice
+
+`@testing-library/react` has been upgraded too, and it comes with some internal API
+changes too, so if you make heavy use of it in your tests, you could need to update your
+testing code to adapt them. Please refer to the `@testing-library/react` documentation
+for further information if needed.
+
 ## Upgrading to Volto 9.x.x
 
 ### Internal upgrade to use Razzle 3.3.7
