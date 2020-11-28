@@ -14,7 +14,12 @@
 
 ### Internal
 
+- Upgrade `@testing-library/react` to 11.2.2. Add `jest-environment-jsdom-sixteen as upgraded jsdom implementation @tiberiuichim
+- Split some small prismjs related files (used in HTML block) in separate chunks @tiberiuichim
+
 - Remove dangling analyzer plugin @sneridagh
+- Support for Guillotina 6 @bloodbare @sneridagh
+- Update Cypress to version 5.6.0 @sneridagh
 
 ## 9.2.0 (2020-11-24)
 
