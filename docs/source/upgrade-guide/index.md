@@ -12,13 +12,25 @@ This upgrade guide lists all breaking changes in Volto and explains the
 
 ## Upgrading to Volto 10.x.x
 
+### Remove the Razzle plugins patch
+
+!!! warning
+    If you haven't upgraded your project to Volto 9.x.x and followed the upgrade guide
+    instructions, you are set and you do not need to do anything.
+
+In order to have support for Razzle plugins as local modules we introduced a patch in
+9.0.0 that addressed the lack of support in Razzle 3.3.7 . Unfortunately, not only that
+introduced more headaches than benefits, but inadvertently we introduced a bug on the
+patch. We've found a workaround to still support plugins as local modules without
+patching Razzle, however that forces you to delete the patch introduced in your projects
+if you followed the 9.x.x upgrade guide steps.
+
 ### getContent changes
 
 The content is no longer fetched from Volto with the `fullobjects` flag in the
 request. If your code relied on children being fully serialized with their
 parent, you should refactor it. Alternatively, you can set
 `settings.bbb_getContentFetchesFullobjects` to `true` to get the old behavior.
-
 
 ## Upgrading to Volto 9.x.x
 

@@ -4,9 +4,9 @@
 
 ### Breaking
 
+- Removal of the Razzle patch that was introduced in 9.0.0 @sneridagh
+  See https://docs.voltocms.com/upgrade-guide/ for more details.
 - Fetched content with `getContent` no longer includes fullobjects by default @tiberiuichim
-
-### Feature
 
 ### Bugfix
 
@@ -22,6 +22,9 @@
 - Update Cypress to version 5.6.0 @sneridagh
 
 ## 9.2.0 (2020-11-24)
+
+**This is a brown bag release and should not be used, upgrade to Volto 10.x.x instead.**
+See https://docs.voltocms.com/upgrade-guide/ for more information.
 
 ### Feature
 
