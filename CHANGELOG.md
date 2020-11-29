@@ -5,6 +5,7 @@
 ### Feature
 
 - Provide operations on multiple-selected blocks: delete, cut/copy and paste.  You can trigger the "multiselected blocks" by holding the shift key and clicking on another block. You can add/remove blocks to the selection with the Control key. Holding Control when you click on the Paste button doesn't clear the clipboard, so you can paste multiple times. The blocks clipboard uses the browser's local storage to synchronize between tabs. @tiberiuichim
+- Allow reducers to be persisted using localstorage @tiberiuichim
 
 ### Breaking
 
@@ -149,9 +150,6 @@ https://docs.voltocms.com/upgrade-guide/
 ## 8.9.0 (2020-11-05)
 
 ### Feature
-
-- Implement multi-block copy/paste @tiberiuichim
-- Allow reducers to be persisted using localstorage @tiberiuichim
 
 - Added Dropzone in FileWidget @iFlameing
 - Making inline link toolbar, location aware in content browser @iFlameing.
