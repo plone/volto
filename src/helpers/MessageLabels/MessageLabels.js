@@ -174,6 +174,10 @@ export const messages = defineMessages({
     id: 'Paste blocks',
     defaultMesages: 'Paste blocks',
   },
+  deleteBlocks: {
+    id: 'Delete blocks',
+    defaultMesages: 'Delete blocks',
+  },
   showAllUserButton: {
     id: 'Show All',
     defaultMessage: 'Show All',

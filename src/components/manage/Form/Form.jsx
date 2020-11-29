@@ -43,7 +43,7 @@ import {
 } from 'semantic-ui-react';
 import { v4 as uuid } from 'uuid';
 import { toast } from 'react-toastify';
-import { BlocksClipboard } from '@plone/volto/components';
+import { BlocksToolbar } from '@plone/volto/components';
 import { settings } from '~/config';
 
 /**
@@ -379,6 +379,7 @@ class Form extends Component {
     let selected = id;
 
     if (isMultipleSelection) {
+      selected = null;
       const blocksLayoutFieldname = getBlocksLayoutFieldname(
         this.state.formData,
       );
@@ -445,6 +446,7 @@ class Form extends Component {
               this.state.formData[blocksLayoutFieldname].items.indexOf(id) - 1
             ]
           : null,
+        multiSelected: without(this.state.multiSelected || [], id),
       },
       (newState) => {
         if (this.state.formData[blocksLayoutFieldname].items.length === 0) {
@@ -841,13 +843,10 @@ class Form extends Component {
       // but draftJS don't like it much and the hydration gets messed up
       this.state.isClient && (
         <div className="ui container">
-          <BlocksClipboard
+          <BlocksToolbar
             formData={this.state.formData}
+            selectedBlock={this.state.selected}
             selectedBlocks={this.state.multiSelected}
-            onSetSelectedBlocks={(blockIds) =>
-              this.setState({ multiSelected: blockIds })
-            }
-            onSelectBlock={this.onSelectBlock}
             onChangeBlocks={(newBlockData) =>
               this.setState({
                 formData: {
@@ -856,7 +855,10 @@ class Form extends Component {
                 },
               })
             }
-            selectedBlock={this.state.selected}
+            onSetSelectedBlocks={(blockIds) =>
+              this.setState({ multiSelected: blockIds })
+            }
+            onSelectBlock={this.onSelectBlock}
           />
           <DragDropContext
             onDragEnd={this.onDragEnd}

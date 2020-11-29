@@ -19,13 +19,25 @@ import { blocks } from '~/config';
 import copySVG from '@plone/volto/icons/copy.svg';
 import cutSVG from '@plone/volto/icons/cut.svg';
 import pasteSVG from '@plone/volto/icons/paste.svg';
+import trashSVG from '@plone/volto/icons/delete.svg';
 
-class BlockClipboardHandler extends React.Component {
-  loadFromStorage = () => {
+class BlocksToolbar extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.copyBlocksToClipboard = this.copyBlocksToClipboard.bind(this);
+    this.cutBlocksToClipboard = this.cutBlocksToClipboard.bind(this);
+    this.deleteBlocks = this.deleteBlocks.bind(this);
+    this.loadFromStorage = this.loadFromStorage.bind(this);
+    this.pasteBlocks = this.pasteBlocks.bind(this);
+    this.setBlocksClipboard = this.setBlocksClipboard.bind(this);
+  }
+
+  loadFromStorage() {
     const clipboard = load({ states: ['blocksClipboard'] })?.blocksClipboard;
     if (!isEqual(clipboard, this.props.blocksClipboard))
       this.props.setBlocksClipboard(clipboard);
-  };
+  }
 
   componentDidMount() {
     window.addEventListener('storage', this.loadFromStorage, true);
@@ -35,11 +47,7 @@ class BlockClipboardHandler extends React.Component {
     window.removeEventListener('storage', this.loadFromStorage);
   }
 
-  copyBlocksToClipboard = () => {
-    this.setBlocksClipboard('copy');
-  };
-
-  cutBlocksToClipboard = () => {
+  deleteBlocks() {
     const blockIds = this.props.selectedBlocks;
 
     const { formData } = this.props;
@@ -47,7 +55,6 @@ class BlockClipboardHandler extends React.Component {
     const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
 
     // Might need ReactDOM.unstable_batchedUpdates()
-    this.setBlocksClipboard('cut');
     this.props.onSelectBlock(null);
     const newBlockData = {
       [blocksFieldname]: omit(formData[blocksFieldname], blockIds),
@@ -57,9 +64,18 @@ class BlockClipboardHandler extends React.Component {
       },
     };
     this.props.onChangeBlocks(newBlockData);
-  };
+  }
 
-  setBlocksClipboard = (actionType) => {
+  copyBlocksToClipboard() {
+    this.setBlocksClipboard('copy');
+  }
+
+  cutBlocksToClipboard() {
+    this.setBlocksClipboard('cut');
+    this.deleteBlocks();
+  }
+
+  setBlocksClipboard(actionType) {
     const { formData } = this.props;
     const blocksFieldname = getBlocksFieldname(formData);
     const blocks = formData[blocksFieldname];
@@ -68,9 +84,9 @@ class BlockClipboardHandler extends React.Component {
     );
     this.props.setBlocksClipboard({ [actionType]: blocksData });
     this.props.onSetSelectedBlocks([]);
-  };
+  }
 
-  pasteBlocks = () => {
+  pasteBlocks() {
     const { formData, blocksClipboard = {}, selectedBlock } = this.props;
     const mode = Object.keys(blocksClipboard).includes('cut') ? 'cut' : 'copy';
     const blocksData = blocksClipboard[mode] || [];
@@ -110,7 +126,7 @@ class BlockClipboardHandler extends React.Component {
 
     this.props.resetBlocksClipboard();
     this.props.onChangeBlocks(newBlockData);
-  };
+  }
 
   render() {
     const {
@@ -121,7 +137,7 @@ class BlockClipboardHandler extends React.Component {
     } = this.props;
     return (
       <>
-        {selectedBlock && selectedBlocks.length > 0 ? (
+        {selectedBlocks.length > 0 ? (
           <Portal
             node={
               __CLIENT__ && document.querySelector('#toolbar .toolbar-actions')
@@ -144,6 +160,15 @@ class BlockClipboardHandler extends React.Component {
               id="toolbar-cut-blocks"
             >
               <Icon name={cutSVG} size="30px" className="circled" />
+            </button>
+            <button
+              aria-label={intl.formatMessage(messages.deleteBlocks)}
+              onClick={this.deleteBlocks}
+              tabIndex={0}
+              className="deleteBlocks"
+              id="toolbar-delete-blocks"
+            >
+              <Icon name={trashSVG} size="30px" className="circled" />
             </button>
           </Portal>
         ) : (
@@ -186,4 +211,4 @@ export default compose(
     },
     { setBlocksClipboard, resetBlocksClipboard },
   ),
-)(BlockClipboardHandler);
+)(BlocksToolbar);
