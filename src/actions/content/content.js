@@ -12,7 +12,7 @@ import {
   RESET_CONTENT,
   UPDATECOLUMNS_CONTENT,
 } from '@plone/volto/constants/ActionTypes';
-import { nestContent } from '@plone/volto/helpers';
+import { nestContent } from '@plone/volto/helpers/Content/Content';
 import { settings } from '~/config';
 
 /**
