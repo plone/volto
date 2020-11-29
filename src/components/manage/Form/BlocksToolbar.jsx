@@ -86,7 +86,7 @@ class BlocksToolbar extends React.Component {
     this.props.onSetSelectedBlocks([]);
   }
 
-  pasteBlocks() {
+  pasteBlocks(e) {
     const { formData, blocksClipboard = {}, selectedBlock } = this.props;
     const mode = Object.keys(blocksClipboard).includes('cut') ? 'cut' : 'copy';
     const blocksData = blocksClipboard[mode] || [];
@@ -124,7 +124,7 @@ class BlocksToolbar extends React.Component {
       },
     };
 
-    this.props.resetBlocksClipboard();
+    if (!e.ctrlKey) this.props.resetBlocksClipboard();
     this.props.onChangeBlocks(newBlockData);
   }
 
