@@ -2,6 +2,10 @@
 
 ## 9.2.1 (unreleased)
 
+### Feature
+
+- Provide operations on multiple-selected blocks: delete, cut/copy and paste. You can trigger the "multiselected blocks" by holding the shift key and clicking on another block. You can add/remove blocks to the selection with the Control key. The blocks clipboard uses the browser's local storage to synchronize between tabs @tiberiuichim
+
 ### Breaking
 
 - Removal of the Razzle patch that was introduced in 9.0.0 @sneridagh

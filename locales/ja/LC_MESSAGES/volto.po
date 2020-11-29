@@ -503,6 +503,10 @@ msgstr "コンテンツを削除"
 msgid "Delete User"
 msgstr "ユーザを削除"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Delete blocks"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 msgid "Delete col"
 msgstr "列を削除"

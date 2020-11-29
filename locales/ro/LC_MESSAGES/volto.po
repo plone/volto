@@ -496,6 +496,10 @@ msgstr "Ștergeți tipul"
 msgid "Delete User"
 msgstr "Ștergeți utilizatorul"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Delete blocks"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 msgid "Delete col"
 msgstr "Șterge coloană"

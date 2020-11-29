@@ -513,6 +513,10 @@ msgstr "Supprimer le type"
 msgid "Delete User"
 msgstr "Supprimer l'utilisateur"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Delete blocks"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 msgid "Delete col"
 msgstr "Supprimer la colonne"

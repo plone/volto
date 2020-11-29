@@ -504,6 +504,10 @@ msgstr ""
 msgid "Delete User"
 msgstr "Eliminar Usuário"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Delete blocks"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 msgid "Delete col"
 msgstr "Eliminar coluna"

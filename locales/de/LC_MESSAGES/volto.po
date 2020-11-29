@@ -511,6 +511,10 @@ msgstr "Inhaltstype löschen"
 msgid "Delete User"
 msgstr "Benutzer löschen"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Delete blocks"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 msgid "Delete col"
 msgstr "Spalte löschen"

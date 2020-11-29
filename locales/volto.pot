@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-11-28T18:06:17.084Z\n"
+"POT-Creation-Date: 2020-11-29T06:32:25.193Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -597,6 +597,11 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Delete User
 msgid "Delete User"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: undefined
+msgid "Delete blocks"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
