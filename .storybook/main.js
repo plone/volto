@@ -7,7 +7,7 @@ const projectRootPath = path.resolve('.');
 const createAddonsLoader = require('../create-addons-loader');
 const lessPlugin = require('../webpack-less-plugin');
 
-const createConfig = require('../node_modules/razzle/config/createConfigAsync.js');
+const createConfig = require('razzle/config/createConfigAsync.js');
 const razzleConfig = require(path.join(projectRootPath, 'razzle.config.js'));
 
 const SVGLOADER = {
@@ -95,7 +95,7 @@ module.exports = {
       plugins: [
         ...options.plugins,
         [
-          '/Users/sneridagh/Development/plone/volto/node_modules/babel-plugin-root-import/build/index.js',
+          'babel-plugin-root-import/build/index.js',
           {
             rootPathSuffix: './src',
           },
