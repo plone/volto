@@ -6,9 +6,9 @@ import { connect } from 'react-redux';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import { Input, Segment } from 'semantic-ui-react';
 import { join } from 'lodash';
-import { searchContent } from '@plone/volto/actions';
+import { searchContent } from '@plone/volto/actions/search/search';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
-import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
+import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers/Url/Url';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 
 import { settings } from '~/config';
@@ -18,7 +18,7 @@ import clearSVG from '@plone/volto/icons/clear.svg';
 import searchSVG from '@plone/volto/icons/zoom.svg';
 import linkSVG from '@plone/volto/icons/link.svg';
 
-import ObjectBrowserNav from '@plone/volto/components/manage/Sidebar/ObjectBrowserNav';
+import ObjectBrowserNav from './ObjectBrowserNav';
 
 const messages = defineMessages({
   SearchInputPlaceholder: {
@@ -41,7 +41,7 @@ export function getParentURL(url) {
  * @class ObjectBrowserBody
  * @extends Component
  */
-class ObjectBrowserBody extends Component {
+export class ObjectBrowserBodyComponent extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -452,4 +452,4 @@ export default compose(
     }),
     { searchContent },
   ),
-)(ObjectBrowserBody);
+)(ObjectBrowserBodyComponent);

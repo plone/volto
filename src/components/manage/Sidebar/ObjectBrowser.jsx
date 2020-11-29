@@ -1,8 +1,8 @@
 import React from 'react';
 import { CSSTransition } from 'react-transition-group';
-import ObjectBrowserBody from '@plone/volto/components/manage/Sidebar/ObjectBrowserBody';
 import ReactDOM from 'react-dom';
-import { getParentURL } from '@plone/volto/components/manage/Sidebar/ObjectBrowserBody';
+
+import ObjectBrowserBody, { getParentURL } from './ObjectBrowserBody';
 
 const DEFAULT_TIMEOUT = 500;
 
@@ -128,4 +128,6 @@ const withObjectBrowser = (WrappedComponent) =>
       );
     }
   };
+
+// console.log('original', withObjectBrowser);
 export default withObjectBrowser;
