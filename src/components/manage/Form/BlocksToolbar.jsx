@@ -140,17 +140,17 @@ class BlocksToolbar extends React.Component {
         {selectedBlocks.length > 0 ? (
           <Portal
             node={
-              __CLIENT__ && document.querySelector('#toolbar .toolbar-actions')
+              __CLIENT__ && document.querySelector('#toolbar .toolbar-bottom')
             }
           >
             <button
-              aria-label={intl.formatMessage(messages.copyBlocks)}
-              onClick={this.copyBlocksToClipboard}
+              aria-label={intl.formatMessage(messages.deleteBlocks)}
+              onClick={this.deleteBlocks}
               tabIndex={0}
-              className="copyBlocks"
-              id="toolbar-copy-blocks"
+              className="deleteBlocks"
+              id="toolbar-delete-blocks"
             >
-              <Icon name={copySVG} size="30px" className="circled" />
+              <Icon name={trashSVG} size="30px" className="circled" />
             </button>
             <button
               aria-label={intl.formatMessage(messages.cutBlocks)}
@@ -162,13 +162,13 @@ class BlocksToolbar extends React.Component {
               <Icon name={cutSVG} size="30px" className="circled" />
             </button>
             <button
-              aria-label={intl.formatMessage(messages.deleteBlocks)}
-              onClick={this.deleteBlocks}
+              aria-label={intl.formatMessage(messages.copyBlocks)}
+              onClick={this.copyBlocksToClipboard}
               tabIndex={0}
-              className="deleteBlocks"
-              id="toolbar-delete-blocks"
+              className="copyBlocks"
+              id="toolbar-copy-blocks"
             >
-              <Icon name={trashSVG} size="30px" className="circled" />
+              <Icon name={copySVG} size="30px" className="circled" />
             </button>
           </Portal>
         ) : (
@@ -177,7 +177,7 @@ class BlocksToolbar extends React.Component {
         {selectedBlock && (blocksClipboard?.cut || blocksClipboard?.copy) ? (
           <Portal
             node={
-              __CLIENT__ && document.querySelector('#toolbar .toolbar-actions')
+              __CLIENT__ && document.querySelector('#toolbar .toolbar-bottom')
             }
           >
             <button
