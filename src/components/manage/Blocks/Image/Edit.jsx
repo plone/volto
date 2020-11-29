@@ -13,7 +13,10 @@ import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 import Dropzone from 'react-dropzone';
 
-import { Icon, ImageSidebar, SidebarPortal } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import ImageSidebar from '@plone/volto/components/manage/Blocks/Image/ImageSidebar';
+import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
+
 import { createContent } from '@plone/volto/actions';
 import {
   flattenToAppURL,

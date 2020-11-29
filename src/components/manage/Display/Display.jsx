@@ -6,7 +6,7 @@ import loadable from '@loadable/component';
 import { getSchema, updateContent, getContent } from '@plone/volto/actions';
 import layouts from '@plone/volto/constants/Layouts';
 import { getLayoutFieldname } from '@plone/volto/helpers';
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { FormattedMessage } from 'react-intl';
 import { views } from '~/config';
 

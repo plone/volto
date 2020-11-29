@@ -9,7 +9,7 @@ import { defineMessages, injectIntl } from 'react-intl';
 import moment from 'moment';
 import cx from 'classnames';
 import { List, Button, Header, Label } from 'semantic-ui-react';
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import addSVG from '@plone/volto/icons/circle-plus.svg';
 import trashSVG from '@plone/volto/icons/delete.svg';
 

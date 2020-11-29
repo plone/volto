@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { Form } from 'semantic-ui-react';
 import { Grid, Segment } from 'semantic-ui-react';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
-import { Icon, TextWidget } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import TextWidget from '@plone/volto/components/manage/Widgets/TextWidget';
 import { AlignBlock } from '@plone/volto/helpers';
 
 import globeSVG from '@plone/volto/icons/globe.svg';

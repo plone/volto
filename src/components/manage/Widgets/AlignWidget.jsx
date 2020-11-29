@@ -7,7 +7,7 @@
 import React from 'react';
 import { injectIntl } from 'react-intl';
 
-import { FormFieldWrapper } from '@plone/volto/components';
+import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 import { AlignBlock } from '@plone/volto/helpers';
 
 const AlignWidget = (props) => {

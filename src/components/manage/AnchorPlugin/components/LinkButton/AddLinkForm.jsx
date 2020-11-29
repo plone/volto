@@ -24,7 +24,7 @@ import aheadSVG from '@plone/volto/icons/ahead.svg';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import { withRouter } from 'react-router';
 
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 
 const messages = defineMessages({
   placeholder: {

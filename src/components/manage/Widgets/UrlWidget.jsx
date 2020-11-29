@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { FormFieldWrapper } from '@plone/volto/components';
+import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 import PropTypes from 'prop-types';
 import { Input } from 'semantic-ui-react';
 

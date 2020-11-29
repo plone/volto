@@ -25,7 +25,7 @@ import {
   listActions,
   setExpandedToolbar,
 } from '@plone/volto/actions';
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { BodyClass, getBaseUrl } from '@plone/volto/helpers';
 
 import pastanagaSmall from '@plone/volto/components/manage/Toolbar/pastanaga-small.svg';

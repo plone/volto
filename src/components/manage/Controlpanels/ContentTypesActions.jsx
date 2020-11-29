@@ -6,7 +6,7 @@
 import React from 'react';
 import { Dropdown } from 'semantic-ui-react';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import trashSVG from '@plone/volto/icons/delete.svg';
 import layoutSVG from '@plone/volto/icons/file.svg';
 import folderSVG from '@plone/volto/icons/folder.svg';

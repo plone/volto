@@ -17,7 +17,7 @@ import cx from 'classnames';
 
 import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
 import { createContent } from '@plone/volto/actions';
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
 

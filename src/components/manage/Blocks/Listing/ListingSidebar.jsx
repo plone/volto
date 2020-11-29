@@ -3,13 +3,10 @@ import PropTypes from 'prop-types';
 import { Segment, Accordion } from 'semantic-ui-react';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 
-import {
-  ListingBlockData as ListingData,
-  ListingBlockStyle as ListingStyle,
-  ListingBlockMore as ListingMore,
-  Icon,
-} from '@plone/volto/components';
-
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import ListingData from '@plone/volto/components/manage/Blocks/Listing/ListingData';
+import ListingStyle from '@plone/volto/components/manage/Blocks/Listing/ListingStyle';
+import ListingMore from '@plone/volto/components/manage/Blocks/Listing/ListingMore';
 import upSVG from '@plone/volto/icons/up-key.svg';
 import downSVG from '@plone/volto/icons/down-key.svg';
 

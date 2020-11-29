@@ -21,7 +21,9 @@ import {
   Header,
 } from 'semantic-ui-react';
 
-import { SelectWidget, Icon, DatetimeWidget } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import SelectWidget from '@plone/volto/components/manage/Widgets/SelectWidget';
+import DatetimeWidget from '@plone/volto/components/manage/Widgets/DatetimeWidget';
 
 import saveSVG from '@plone/volto/icons/save.svg';
 import editingSVG from '@plone/volto/icons/editing.svg';

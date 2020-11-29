@@ -5,7 +5,7 @@ import 'react-image-gallery/styles/css/image-gallery.css';
 import { settings } from '~/config';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import { Button } from 'semantic-ui-react';
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import galleryLeftSVG from '@plone/volto/icons/left-key.svg';
 import galleryRightSVG from '@plone/volto/icons/right-key.svg';
 import galleryPlaySVG from '@plone/volto/icons/play.svg';

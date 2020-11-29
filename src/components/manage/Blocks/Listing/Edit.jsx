@@ -2,11 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
 
-import {
-  SidebarPortal,
-  ListingBlockBody as ListingBody,
-  ListingBlockSidebar as ListingSidebar,
-} from '@plone/volto/components';
+import ListingBody from '@plone/volto/components/manage/Blocks/Listing/ListingBody';
+import ListingSidebar from '@plone/volto/components/manage/Blocks/Listing/ListingSidebar';
+import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
+
 import { getBaseUrl } from '@plone/volto/helpers';
 
 const messages = defineMessages({

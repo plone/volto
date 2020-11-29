@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 import { Breadcrumb, Container, Segment } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { getBreadcrumbs } from '@plone/volto/actions';
 import { getBaseUrl } from '@plone/volto/helpers';
 
@@ -33,7 +33,7 @@ const messages = defineMessages({
  * @class Breadcrumbs
  * @extends Component
  */
-class BreadcrumbsComponent extends Component {
+class Breadcrumbs extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -113,7 +113,7 @@ class BreadcrumbsComponent extends Component {
   }
 }
 
-export { BreadcrumbsComponent };
+export const _Breadcrumbs = injectIntl(Breadcrumbs);
 
 export default compose(
   injectIntl,
@@ -123,4 +123,4 @@ export default compose(
     }),
     { getBreadcrumbs },
   ),
-)(BreadcrumbsComponent);
+)(Breadcrumbs);

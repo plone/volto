@@ -12,7 +12,7 @@ import cookie from 'react-cookie';
 import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 import { BodyClass } from '@plone/volto/helpers';
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import forbiddenSVG from '@plone/volto/icons/forbidden.svg';
 import { setSidebarTab } from '@plone/volto/actions';
 import expandSVG from '@plone/volto/icons/left-key.svg';

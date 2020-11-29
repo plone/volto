@@ -14,11 +14,9 @@ import { defineMessages, injectIntl } from 'react-intl';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import { getFieldsVocabulary } from '@plone/volto/helpers';
 
-import {
-  Field,
-  ModalForm,
-  SchemaWidgetFieldset,
-} from '@plone/volto/components';
+import Field from '@plone/volto/components/manage/Form/Field';
+import ModalForm from '@plone/volto/components/manage/Form/ModalForm';
+import SchemaWidgetFieldset from '@plone/volto/components/manage/Widgets/SchemaWidgetFieldset';
 
 const messages = defineMessages({
   add: {

@@ -3,12 +3,10 @@ import PropTypes from 'prop-types';
 import { Form } from 'semantic-ui-react';
 import { Accordion, Grid, Segment } from 'semantic-ui-react';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
-import {
-  CheckboxWidget,
-  Icon,
-  FormFieldWrapper,
-  TextWidget,
-} from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import CheckboxWidget from '@plone/volto/components/manage/Widgets/CheckboxWidget';
+import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
+import TextWidget from '@plone/volto/components/manage/Widgets/TextWidget';
 import {
   AlignBlock,
   flattenToAppURL,

@@ -1,9 +1,14 @@
+const webpack = require('webpack');
+const path = require('path');
 const makeLoaderFinder = require('razzle-dev-utils/makeLoaderFinder');
 const fileLoaderFinder = makeLoaderFinder('file-loader');
 
-const path = require('path');
 const projectRootPath = path.resolve('.');
 const createAddonsLoader = require('../create-addons-loader');
+const lessPlugin = require('../webpack-less-plugin');
+
+const createConfig = require('../node_modules/razzle/config/createConfigAsync.js');
+const razzleConfig = require(path.join(projectRootPath, 'razzle.config.js'));
 
 const SVGLOADER = {
   test: /icons\/.*\.svg$/,
@@ -32,30 +37,59 @@ module.exports = {
     '@storybook/addon-essentials',
     '@storybook/addon-controls',
   ],
-  // webpackFinal: config => console.dir(config, { depth: null }) || config,
   webpackFinal: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
     // You can change the configuration based on that.
     // 'PRODUCTION' is used when building the static version of storybook.
 
     // Make whatever fine-grained changes you need
-    config.module.rules.push(SVGLOADER);
+    let baseConfig;
+    baseConfig = await createConfig(
+      'web',
+      'dev',
+      {
+        // clearConsole: false,
+        modifyWebpackConfig: razzleConfig.modifyWebpackConfig,
+        plugins: razzleConfig.plugins,
+      },
+      webpack,
+    );
+    const AddonConfigurationRegistry = require('../addon-registry');
+
+    const registry = new AddonConfigurationRegistry(projectRootPath);
+
+    config = lessPlugin({ registry }).modifyWebpackConfig({
+      env: { target: 'web', dev: 'dev' },
+      webpackConfig: config,
+      webpackObject: webpack,
+      options: {},
+    });
+
+    // putting SVG loader on top, fix the fileloader manually (Volto plugin does not
+    // work) since it needs to go first
+    config.module.rules.unshift(SVGLOADER);
     const fileLoader = config.module.rules.find(fileLoaderFinder);
     fileLoader.exclude = [/\.(config|variables|overrides)$/, /icons\/.*\.svg$/];
 
-    const packageJson = require(path.join(projectRootPath, 'package.json'));
-    const addonsLoaderPath = createAddonsLoader(packageJson.addons || []);
+    config.plugins.unshift(
+      new webpack.DefinePlugin({
+        __DEVELOPMENT__: true,
+      }),
+    );
 
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      'load-volto-addons': addonsLoaderPath,
-      '@plone/volto': `${projectRootPath}/src`,
+    const resultConfig = {
+      ...config,
+      resolve: {
+        ...config.resolve,
+        alias: { ...config.resolve.alias, ...baseConfig.resolve.alias },
+      },
     };
-    // Return the altered config
-    return config;
+
+    // console.dir(resultConfig, { depth: null });
+
+    return resultConfig;
   },
   babel: async (options) => {
-    console.log(options.plugins);
     return {
       ...options,
       plugins: [

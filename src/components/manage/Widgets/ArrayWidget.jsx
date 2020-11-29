@@ -25,7 +25,7 @@ import {
   customSelectStyles,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
 
-import { FormFieldWrapper } from '@plone/volto/components';
+import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 
 const AsyncPaginate = loadable(() => import('react-select-async-paginate'));
 const CreatableSelect = loadable(() => import('react-select/creatable'));
