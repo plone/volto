@@ -1,6 +1,7 @@
 import React from 'react';
 import { hydrate } from 'react-dom';
-import { Provider } from 'react-intl-redux';
+import { Provider } from 'react-redux';
+import { IntlProvider } from 'react-intl-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
 import { ReduxAsyncConnect } from 'redux-connect';
@@ -19,6 +20,13 @@ export const history = createBrowserHistory();
 
 initSentry(Sentry);
 
+function reactIntlErrorHandler(error) {
+  if (process.env.NODE_ENV !== 'production') {
+    /* eslint no-console: 0 */
+    console.info(error);
+  }
+}
+
 export default () => {
   const api = new Api();
 
@@ -36,11 +44,13 @@ export default () => {
   loadableReady(() => {
     hydrate(
       <Provider store={store}>
-        <ConnectedRouter history={history}>
-          <ScrollToTop>
-            <ReduxAsyncConnect routes={routes} helpers={api} />
-          </ScrollToTop>
-        </ConnectedRouter>
+        <IntlProvider onError={reactIntlErrorHandler}>
+          <ConnectedRouter history={history}>
+            <ScrollToTop>
+              <ReduxAsyncConnect routes={routes} helpers={api} />
+            </ScrollToTop>
+          </ConnectedRouter>
+        </IntlProvider>
       </Provider>,
       document.getElementById('main'),
     );
