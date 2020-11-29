@@ -185,6 +185,7 @@ const defaultPlugins = [
   { object: require('./webpack-sentry-plugin') },
   { object: require('./webpack-svg-plugin') },
   { object: require('./webpack-bundle-analyze-plugin') },
+  { object: require('./webpack-circular-deps-plugin') },
   { object: require('./jest-extender-plugin') },
 ];
 
