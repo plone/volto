@@ -374,8 +374,9 @@ class Form extends Component {
    * @param {string} isMultipleSelection true if multiple blocks are selected
    * @returns {undefined}
    */
-  onSelectBlock(id, isMultipleSelection) {
+  onSelectBlock(id, isMultipleSelection, event) {
     let multiSelected = [];
+    let selected = id;
 
     if (isMultipleSelection) {
       const blocksLayoutFieldname = getBlocksLayoutFieldname(
@@ -384,22 +385,34 @@ class Form extends Component {
 
       const blocks_layout = this.state.formData[blocksLayoutFieldname].items;
 
-      const anchor =
-        this.state.multiSelected.length > 0
-          ? blocks_layout.indexOf(this.state.multiSelected[0])
-          : blocks_layout.indexOf(this.state.selected);
-      const focus = blocks_layout.indexOf(id);
+      if (event.shiftKey) {
+        const anchor =
+          this.state.multiSelected.length > 0
+            ? blocks_layout.indexOf(this.state.multiSelected[0])
+            : blocks_layout.indexOf(this.state.selected);
+        const focus = blocks_layout.indexOf(id);
 
-      if (anchor === focus) {
-        multiSelected = [id];
-      } else if (focus > anchor) {
-        multiSelected = [...blocks_layout.slice(anchor, focus + 1)];
-      } else {
-        multiSelected = [...blocks_layout.slice(focus, anchor + 1)];
+        if (anchor === focus) {
+          multiSelected = [id];
+        } else if (focus > anchor) {
+          multiSelected = [...blocks_layout.slice(anchor, focus + 1)];
+        } else {
+          multiSelected = [...blocks_layout.slice(focus, anchor + 1)];
+        }
+      }
+
+      if (event.ctrlKey && !event.shiftKey) {
+        if (this.state.multiSelected.includes(id)) {
+          selected = null;
+          multiSelected = without(this.state.multiSelected, id);
+        } else {
+          multiSelected = [...(this.state.multiSelected || []), id];
+        }
       }
     }
+
     this.setState({
-      selected: id,
+      selected,
       multiSelected,
     });
   }
