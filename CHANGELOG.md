@@ -2,13 +2,9 @@
 
 ## 10.0.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
-### Bugfix
-
-### Internal
+- Add missing German translations @tisto
 
 ## 10.0.0 (2020-11-30)
 
@@ -17,10 +13,6 @@
 - Removal of the Razzle patch that was introduced in 9.0.0 @sneridagh
   See https://docs.voltocms.com/upgrade-guide/ for more details.
 - Fetched content with `getContent` no longer includes fullobjects by default @tiberiuichim
-
-### Feature
-
-- Add missing German translations @tisto
 
 ### Bugfix
 
