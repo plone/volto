@@ -82,7 +82,7 @@ const ListingData = ({
           }}
         />
 
-        {data.query.filter((q) => q.i === 'path').length > 0 && (
+        {data?.query?.filter((q) => q.i === 'path').length > 0 && (
           <TextWidget
             id="depth"
             title={intl.formatMessage(messages.depth)}
