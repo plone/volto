@@ -18,6 +18,10 @@
   See https://docs.voltocms.com/upgrade-guide/ for more details.
 - Fetched content with `getContent` no longer includes fullobjects by default @tiberiuichim
 
+### Feature
+
+- Add missing German translations @tisto
+
 ### Bugfix
 
 - Fix link to login in the Unauthorised component @sneridagh
