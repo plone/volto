@@ -6,8 +6,6 @@ import { connect } from 'react-redux';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import { Input, Segment } from 'semantic-ui-react';
 import { join } from 'lodash';
-import { searchContent } from '@plone/volto/internal';
-import { flattenToAppURL, isInternalURL } from '@plone/volto/internal';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 
 import { settings } from '~/config';
@@ -18,8 +16,11 @@ import searchSVG from '@plone/volto/icons/zoom.svg';
 import linkSVG from '@plone/volto/icons/link.svg';
 
 import { getParentURL } from './utils';
-import { ObjectBrowserNav } from '@plone/volto/internal';
+import { searchContent } from '@plone/volto/internal';
+import { flattenToAppURL, isInternalURL } from '@plone/volto/internal';
 import { Icon } from '@plone/volto/internal';
+
+import ObjectBrowserNav from './ObjectBrowserNav';
 
 const messages = defineMessages({
   SearchInputPlaceholder: {

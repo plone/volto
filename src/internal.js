@@ -12,6 +12,25 @@
 
 import loadable from '@loadable/component';
 
+export { withServerErrorCode } from '@plone/volto/helpers/Utils/withServerErrorCode';
+// Object browser. This is a delicate component with regards to order
+// export ObjectBrowserNav from '@plone/volto/components/manage/Sidebar/ObjectBrowserNav';
+// export ObjectBrowserBody from '@plone/volto/components/manage/Sidebar/ObjectBrowserBody';
+
+export withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
+
+export {
+  addAppURL,
+  flattenHTMLToAppURL,
+  flattenToAppURL,
+  isInternalURL,
+  getParentUrl,
+  getBaseUrl,
+  getView,
+  isCmsUi,
+  getId,
+} from '@plone/volto/helpers/Url/Url';
+
 export FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 export CheckboxWidget from '@plone/volto/components/manage/Widgets/CheckboxWidget';
 export Icon from '@plone/volto/components/theme/Icon/Icon';
@@ -26,17 +45,6 @@ export {
   getAuthToken,
   persistAuthToken,
 } from '@plone/volto/helpers/AuthToken/AuthToken';
-export {
-  addAppURL,
-  flattenHTMLToAppURL,
-  flattenToAppURL,
-  isInternalURL,
-  getParentUrl,
-  getBaseUrl,
-  getView,
-  isCmsUi,
-  getId,
-} from '@plone/volto/helpers/Url/Url';
 export { generateSitemap } from '@plone/volto/helpers/Sitemap/Sitemap';
 export {
   nestContent,
@@ -68,7 +76,6 @@ export {
   difference,
   safeWrapper,
   applyConfig,
-  withServerErrorCode,
 } from '@plone/volto/helpers/Utils/Utils';
 
 export TextWidget from '@plone/volto/components/manage/Widgets/TextWidget';
@@ -193,11 +200,6 @@ export {
 /**
  * Components
  */
-
-// Object browser. This is a delicate component with regards to order
-export ObjectBrowserNav from '@plone/volto/components/manage/Sidebar/ObjectBrowserNav';
-export ObjectBrowserBody from '@plone/volto/components/manage/Sidebar/ObjectBrowserBody';
-export withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 
 export ObjectBrowserWidget from '@plone/volto/components/manage/Widgets/ObjectBrowserWidget';
 export ObjectBrowserWidgetMode from '@plone/volto/components/manage/Widgets/ObjectBrowserWidget';

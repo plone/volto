@@ -1,7 +1,8 @@
 import React from 'react';
 import { CSSTransition } from 'react-transition-group';
-import { ObjectBrowserBody } from '@plone/volto/internal';
 import ReactDOM from 'react-dom';
+
+import ObjectBrowserBody from './ObjectBrowserBody';
 import { getParentURL } from './utils';
 
 const DEFAULT_TIMEOUT = 500;

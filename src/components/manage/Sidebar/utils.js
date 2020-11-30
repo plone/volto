@@ -1,4 +1,5 @@
 import { join } from 'lodash';
+
 import { flattenToAppURL } from '@plone/volto/internal';
 
 export function getParentURL(url) {
