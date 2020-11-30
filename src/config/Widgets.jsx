@@ -4,31 +4,42 @@
 import loadable from '@loadable/component';
 
 import AlignWidget from '@plone/volto/components/manage/Widgets/AlignWidget';
-import ArrayWidget from '@plone/volto/components/manage/Widgets/ArrayWidget';
+// import ArrayWidget from '@plone/volto/components/manage/Widgets/ArrayWidget';
 import CheckboxWidget from '@plone/volto/components/manage/Widgets/CheckboxWidget';
 import FileWidget from '@plone/volto/components/manage/Widgets/FileWidget';
 import PasswordWidget from '@plone/volto/components/manage/Widgets/PasswordWidget';
 import QuerystringWidget from '@plone/volto/components/manage/Widgets/QuerystringWidget';
 import SchemaWidget from '@plone/volto/components/manage/Widgets/SchemaWidget';
-import SelectWidget from '@plone/volto/components/manage/Widgets/SelectWidget';
+// import SelectWidget from '@plone/volto/components/manage/Widgets/SelectWidget';
 import TextareaWidget from '@plone/volto/components/manage/Widgets/TextareaWidget';
 import TextWidget from '@plone/volto/components/manage/Widgets/TextWidget';
-import TokenWidget from '@plone/volto/components/manage/Widgets/TokenWidget';
+// import TokenWidget from '@plone/volto/components/manage/Widgets/TokenWidget';
 import WysiwygWidget from '@plone/volto/components/manage/Widgets/WysiwygWidget';
 import UrlWidget from '@plone/volto/components/manage/Widgets/UrlWidget';
 import EmailWidget from '@plone/volto/components/manage/Widgets/EmailWidget';
 import NumberWidget from '@plone/volto/components/manage/Widgets/NumberWidget';
 
 import ReferenceWidget from '@plone/volto/components/manage/Widgets/ReferenceWidget';
-import ObjectBrowserWidget from '@plone/volto/internal';
+import { ObjectBrowserWidget } from '@plone/volto/internal';
+
+export const ArrayWidget = loadable(() =>
+  import('@plone/volto/components/manage/Widgets/ArrayWidget'),
+);
 
 export const DatetimeWidget = loadable(() =>
   import('@plone/volto/components/manage/Widgets/DatetimeWidget'),
 );
+
 export const RecurrenceWidget = loadable(() =>
   import(
     '@plone/volto/components/manage/Widgets/RecurrenceWidget/RecurrenceWidget'
   ),
+);
+export const TokenWidget = loadable(() =>
+  import('@plone/volto/components/manage/Widgets/TokenWidget'),
+);
+export const SelectWidget = loadable(() =>
+  import('@plone/volto/components/manage/Widgets/SelectWidget'),
 );
 
 // Widgets mapping

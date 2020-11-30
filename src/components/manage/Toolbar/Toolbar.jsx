@@ -13,10 +13,6 @@ import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import cookie from 'react-cookie';
 import { filter, find } from 'lodash';
 import cx from 'classnames';
-import { settings } from '~/config';
-import { More } from '@plone/volto/internal';
-import { PersonalTools } from '@plone/volto/internal';
-import { Types } from '@plone/volto/internal';
 import { PersonalInformation } from '@plone/volto/internal';
 import { PersonalPreferences } from '@plone/volto/internal';
 import { StandardWrapper } from '@plone/volto/internal';
@@ -36,6 +32,12 @@ import addSVG from '@plone/volto/icons/add-document.svg';
 import moreSVG from '@plone/volto/icons/more.svg';
 import userSVG from '@plone/volto/icons/user.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
+
+import { More } from '@plone/volto/internal';
+import { PersonalTools } from '@plone/volto/internal';
+import { Types } from '@plone/volto/internal';
+
+import { settings } from '~/config';
 
 const messages = defineMessages({
   edit: {

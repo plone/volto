@@ -12,12 +12,8 @@
 
 import loadable from '@loadable/component';
 
+export BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
 export { withServerErrorCode } from '@plone/volto/helpers/Utils/withServerErrorCode';
-// Object browser. This is a delicate component with regards to order
-// export ObjectBrowserNav from '@plone/volto/components/manage/Sidebar/ObjectBrowserNav';
-// export ObjectBrowserBody from '@plone/volto/components/manage/Sidebar/ObjectBrowserBody';
-
-// export withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 
 export {
   addAppURL,
@@ -58,7 +54,6 @@ export {
   hasBlocksData,
   blockHasValue,
 } from '@plone/volto/helpers/Blocks/Blocks';
-export BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
 export ScrollToTop from '@plone/volto/helpers/ScrollToTop/ScrollToTop';
 export {
   getBoolean,
@@ -77,13 +72,6 @@ export {
   safeWrapper,
   applyConfig,
 } from '@plone/volto/helpers/Utils/Utils';
-
-export TextWidget from '@plone/volto/components/manage/Widgets/TextWidget';
-
-export Error from '@plone/volto/components/theme/Error/Error';
-export NotFound from '@plone/volto/components/theme/NotFound/NotFound';
-export Forbidden from '@plone/volto/components/theme/Forbidden/Forbidden';
-export Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
 
 /**
  * Actions
@@ -201,8 +189,15 @@ export {
  * Components
  */
 
+export TextWidget from '@plone/volto/components/manage/Widgets/TextWidget';
+
+export Error from '@plone/volto/components/theme/Error/Error';
+export NotFound from '@plone/volto/components/theme/NotFound/NotFound';
+export Forbidden from '@plone/volto/components/theme/Forbidden/Forbidden';
+export Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
+
 export ObjectBrowserWidget from '@plone/volto/components/manage/Widgets/ObjectBrowserWidget';
-export ObjectBrowserWidgetMode from '@plone/volto/components/manage/Widgets/ObjectBrowserWidget';
+export { ObjectBrowserWidgetMode } from '@plone/volto/components/manage/Widgets/ObjectBrowserWidget';
 
 //  Do not lazy load them, since it has not much sense (they will live in the main chunk)
 export AppExtras from '@plone/volto/components/theme/AppExtras/AppExtras';
@@ -285,15 +280,15 @@ export BlockChooser from '@plone/volto/components/manage/BlockChooser/BlockChoos
 
 export Sidebar from '@plone/volto/components/manage/Sidebar/Sidebar';
 export SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
-export PersonalTools from '@plone/volto/components/manage/Toolbar/PersonalTools';
 
 // Toolbar components
-export Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+export PersonalTools from '@plone/volto/components/manage/Toolbar/PersonalTools';
 export More from '@plone/volto/components/manage/Toolbar/More';
 export Types from '@plone/volto/components/manage/Toolbar/Types';
 export Toast from '@plone/volto/components/manage/Toast/Toast';
 export StandardWrapper from '@plone/volto/components/manage/Toolbar/StandardWrapper';
 export ManageTranslations from '@plone/volto/components/manage/Multilingual/ManageTranslations';
+export Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
 
 // Potentially could ve removed from index, since they are internal components and
 // we don't want them to end up in the main chunk
