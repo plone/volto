@@ -16,9 +16,9 @@ import qs from 'query-string';
 import classNames from 'classnames';
 
 import { settings } from '~/config';
-import { Helmet } from '@plone/volto/helpers';
-import { searchContent } from '@plone/volto/actions';
-import { SearchTags, Toolbar, Icon } from '@plone/volto/components';
+import { Helmet } from '@plone/volto/internal';
+import { searchContent } from '@plone/volto/internal';
+import { SearchTags, Toolbar, Icon } from '@plone/volto/internal';
 
 import paginationLeftSVG from '@plone/volto/icons/left-key.svg';
 import paginationRightSVG from '@plone/volto/icons/right-key.svg';

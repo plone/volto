@@ -5,7 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { isInternalURL } from '@plone/volto/helpers';
+import { isInternalURL } from '@plone/volto/internal';
 import { Link } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
 

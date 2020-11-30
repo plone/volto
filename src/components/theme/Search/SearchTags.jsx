@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { getVocabulary } from '@plone/volto/actions';
+import { getVocabulary } from '@plone/volto/internal';
 
 const vocabulary = 'plone.app.vocabularies.Keywords';
 

@@ -7,7 +7,7 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
-import { withServerErrorCode } from '@plone/volto/helpers/Utils/Utils';
+import { withServerErrorCode } from '@plone/volto/internal';
 
 /**
  * Not found function.

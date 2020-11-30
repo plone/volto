@@ -8,8 +8,8 @@ import { Link } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import { withServerErrorCode } from '@plone/volto/helpers/Utils/Utils';
-import { getBaseUrl } from '@plone/volto/helpers';
+import { withServerErrorCode } from '@plone/volto/internal';
+import { getBaseUrl } from '@plone/volto/internal';
 
 /**
  * unauthorized function.

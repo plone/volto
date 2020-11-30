@@ -14,7 +14,7 @@ import {
   Logo,
   Navigation,
   SearchWidget,
-} from '@plone/volto/components';
+} from '@plone/volto/internal';
 
 /**
  * Header component class.

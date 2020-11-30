@@ -9,8 +9,8 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { defineMessages, injectIntl } from 'react-intl';
 
-import { updateComment } from '@plone/volto/actions';
-import { ModalForm } from '@plone/volto/components';
+import { updateComment } from '@plone/volto/internal';
+import { ModalForm } from '@plone/volto/internal';
 
 const messages = defineMessages({
   editComment: {

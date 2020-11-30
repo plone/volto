@@ -6,7 +6,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
-import { flattenHTMLToAppURL } from '@plone/volto/helpers';
+import { flattenHTMLToAppURL } from '@plone/volto/internal';
 import { Container, Image, Segment, Header, List } from 'semantic-ui-react';
 
 import {

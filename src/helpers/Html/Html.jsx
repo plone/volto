@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { Helmet } from '@plone/volto/helpers';
 import serialize from 'serialize-javascript';
 import { join } from 'lodash';
-import { BodyClass } from '@plone/volto/helpers';
+import { BodyClass } from '@plone/volto/internal';
 import { runtimeConfig } from '@plone/volto/runtime_config';
 
 /**

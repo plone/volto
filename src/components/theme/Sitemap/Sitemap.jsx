@@ -9,11 +9,11 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Container } from 'semantic-ui-react';
-import { Helmet } from '@plone/volto/helpers';
+import { Helmet } from '@plone/volto/internal';
 import { Link } from 'react-router-dom';
 import { settings } from '~/config';
 
-import { getNavigation } from '@plone/volto/actions';
+import { getNavigation } from '@plone/volto/internal';
 
 const messages = defineMessages({
   Sitemap: {

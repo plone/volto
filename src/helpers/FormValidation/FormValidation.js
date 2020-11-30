@@ -1,5 +1,5 @@
 import { map, uniq } from 'lodash';
-import { messages } from '../MessageLabels/MessageLabels';
+import { messages } from '@plone/volto/internal';
 
 /**
  * Will return the intl message if invalid

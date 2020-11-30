@@ -9,12 +9,12 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Portal } from 'react-portal';
 import { injectIntl } from 'react-intl';
-import { Helmet } from '@plone/volto/helpers';
+import { Helmet } from '@plone/volto/internal';
 import qs from 'query-string';
 import { views } from '~/config';
 
-import { Comments, Tags, Toolbar } from '@plone/volto/components';
-import { listActions, getContent } from '@plone/volto/actions';
+import { Comments, Tags, Toolbar } from '@plone/volto/internal';
+import { listActions, getContent } from '@plone/volto/internal';
 import {
   BodyClass,
   getBaseUrl,

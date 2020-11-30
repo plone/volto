@@ -5,7 +5,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Container } from 'semantic-ui-react';
-import { withServerErrorCode } from '@plone/volto/helpers/Utils/Utils';
+import { withServerErrorCode } from '@plone/volto/internal';
 
 /**
  * forbidden function.

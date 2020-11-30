@@ -27,18 +27,18 @@ import {
   Icon,
   OutdatedBrowser,
   AppExtras,
-} from '@plone/volto/components';
-import { BodyClass, getBaseUrl, getView, isCmsUi } from '@plone/volto/helpers';
+} from '@plone/volto/internal';
+import { BodyClass, getBaseUrl, getView, isCmsUi } from '@plone/volto/internal';
 import {
   getBreadcrumbs,
   getContent,
   getNavigation,
   getTypes,
   getWorkflow,
-} from '@plone/volto/actions';
+} from '@plone/volto/internal';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
-import MultilingualRedirector from '../MultilingualRedirector/MultilingualRedirector';
+import MultilingualRedirector from '@plone/volto/internal';
 
 import * as Sentry from '@sentry/browser';
 

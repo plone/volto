@@ -11,9 +11,9 @@ import { Link } from 'react-router-dom';
 import { Breadcrumb, Container, Segment } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 
-import { Icon } from '@plone/volto/components';
-import { getBreadcrumbs } from '@plone/volto/actions';
-import { getBaseUrl } from '@plone/volto/helpers';
+import { Icon } from '@plone/volto/internal';
+import { getBreadcrumbs } from '@plone/volto/internal';
+import { getBaseUrl } from '@plone/volto/internal';
 
 import homeSVG from '@plone/volto/icons/home.svg';
 

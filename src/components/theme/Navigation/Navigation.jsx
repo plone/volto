@@ -11,10 +11,10 @@ import { NavLink } from 'react-router-dom';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Menu } from 'semantic-ui-react';
 import cx from 'classnames';
-import { getBaseUrl } from '@plone/volto/helpers';
+import { getBaseUrl } from '@plone/volto/internal';
 import { settings } from '~/config';
 
-import { getNavigation } from '@plone/volto/actions';
+import { getNavigation } from '@plone/volto/internal';
 
 const messages = defineMessages({
   closeMobileMenu: {

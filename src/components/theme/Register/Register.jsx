@@ -4,7 +4,7 @@
  */
 
 import React, { Component } from 'react';
-import { Helmet } from '@plone/volto/helpers';
+import { Helmet } from '@plone/volto/internal';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { defineMessages, injectIntl } from 'react-intl';
@@ -12,8 +12,8 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import { Form, Toast } from '@plone/volto/components';
-import { createUser } from '@plone/volto/actions';
+import { Form, Toast } from '@plone/volto/internal';
+import { createUser } from '@plone/volto/internal';
 
 const messages = defineMessages({
   title: {

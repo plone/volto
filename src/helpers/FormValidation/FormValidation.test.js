@@ -1,5 +1,5 @@
 import FormValidation from './FormValidation';
-import { messages } from '../MessageLabels/MessageLabels';
+import { messages } from '@plone/volto/internal';
 
 const schema = {
   properties: {

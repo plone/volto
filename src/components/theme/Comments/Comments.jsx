@@ -12,9 +12,9 @@ import moment from 'moment';
 import { Button, Grid, Segment, Container } from 'semantic-ui-react';
 import { settings } from '~/config';
 
-import { addComment, deleteComment, listComments } from '@plone/volto/actions';
-import { getBaseUrl } from '@plone/volto/helpers';
-import { CommentEditModal, Form } from '@plone/volto/components';
+import { addComment, deleteComment, listComments } from '@plone/volto/internal';
+import { getBaseUrl } from '@plone/volto/internal';
+import { CommentEditModal, Form } from '@plone/volto/internal';
 
 const messages = defineMessages({
   comment: {

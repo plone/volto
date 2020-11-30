@@ -21,10 +21,10 @@ import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import qs from 'query-string';
 import { withRouter } from 'react-router-dom';
 
-import { Icon } from '@plone/volto/components';
-import { getNavigation, login } from '@plone/volto/actions';
+import { Icon } from '@plone/volto/internal';
+import { getNavigation, login } from '@plone/volto/internal';
 import { toast } from 'react-toastify';
-import { Toast } from '@plone/volto/components';
+import { Toast } from '@plone/volto/internal';
 
 import { settings } from '~/config';
 
