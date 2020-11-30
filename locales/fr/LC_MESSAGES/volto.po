@@ -505,6 +505,10 @@ msgstr "Supprimer la colonne"
 msgid "Delete row"
 msgstr "Supprimer la ligne"
 
+#: components/manage/Blocks/Listing/ListingData
+msgid "Depth"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Descending"
 msgstr "Descendant"

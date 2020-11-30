@@ -13,7 +13,7 @@ msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
 msgid "<p>Add some HTML here</p>"
-msgstr ""
+msgstr "<p>Aggiungi dell'HTML qui</p>"
 
 #: components/theme/Footer/Footer
 msgid "Accessibility"
@@ -350,7 +350,7 @@ msgstr "Contenuto"
 
 #: components/manage/Multilingual/ManageTranslations
 msgid "Content linked"
-msgstr ""
+msgstr "Contenuto collegato"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
@@ -488,6 +488,10 @@ msgstr "Elimina colonna"
 msgid "Delete row"
 msgstr "Elimina riga"
 
+#: components/manage/Blocks/Listing/ListingData
+msgid "Depth"
+msgstr "Profondità di ricerca"
+
 #: components/manage/Contents/Contents
 msgid "Descending"
 msgstr "Decrescente"
@@ -608,7 +612,7 @@ msgstr "Google Maps incorporata"
 
 #: components/manage/Controlpanels/ContentTypeLayout
 msgid "Enable editable Blocks"
-msgstr ""
+msgstr "Abilita i blocchi editabili"
 
 #: components/manage/Contents/Contents
 msgid "End Date"
@@ -890,7 +894,7 @@ msgstr "Risultati per pagina"
 
 #: components/manage/Contents/Contents
 msgid "Item succesfully moved."
-msgstr ""
+msgstr "Elemento spostato correttamente."
 
 #: components/manage/Contents/Contents
 msgid "Item(s) copied."
@@ -902,7 +906,7 @@ msgstr "Elemento/i tagliato/i."
 
 #: components/manage/Contents/Contents
 msgid "Item(s) has been sorted."
-msgstr ""
+msgstr "Elemento/i ordinato/i"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -940,7 +944,7 @@ msgstr "Ultima versione"
 
 #: components/manage/Controlpanels/ContentTypesActions
 msgid "Layout"
-msgstr ""
+msgstr "Layout"
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Lead Image"
@@ -1008,11 +1012,11 @@ msgstr "Rendi la tabella compatta"
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Toolbar/More
 msgid "Manage Translations"
-msgstr ""
+msgstr "Gestisci traduzioni"
 
 #: components/manage/Multilingual/ManageTranslations
 msgid "Manage translations for {title}"
-msgstr ""
+msgstr "Gestisci le traduzioni per {title}"
 
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "Map"
@@ -1024,11 +1028,11 @@ msgstr "URL di Maps"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Maximum length is {len}."
-msgstr ""
+msgstr "La lunghezza massima è {len}."
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Maximum value is {len}."
-msgstr ""
+msgstr "Il valore massimo è {len}."
 
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
@@ -1041,7 +1045,7 @@ msgstr "La lunghezza minima è {len}"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Minimum value is {len}."
-msgstr ""
+msgstr "Il valore minimo è {len}."
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Moderate Comments"
@@ -1280,7 +1284,7 @@ msgstr "Ritratto"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Possible values"
-msgstr ""
+msgstr "Valori possibili"
 
 #: components/theme/Footer/Footer
 msgid "Powered by Plone & Python"
@@ -1543,7 +1547,7 @@ msgstr "Specifica la tua password"
 
 #: components/manage/Sidebar/Sidebar
 msgid "Settings"
-msgstr ""
+msgstr "Impostazioni"
 
 #: components/manage/Sharing/Sharing
 #: components/manage/Toolbar/More
@@ -1745,7 +1749,7 @@ msgstr "Il backend sta rispondendo, ma i CORS headers non sono adeguatamente con
 
 #: components/theme/CorsError/CorsError
 msgid "The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
-msgstr ""
+msgstr "Il server di backend del tuo sito web non risponde, ci scusiamo per l'inconveniente. Prova a ricaricare la pagina e riprova. Se il problema persiste, contattare gli amministratori del sito."
 
 #: components/theme/Register/Register
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
@@ -1827,7 +1831,7 @@ msgstr "Traduci in {lang}"
 
 #: components/manage/Multilingual/ManageTranslations
 msgid "Translation deleted"
-msgstr ""
+msgstr "Traduzione eliminata"
 
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
@@ -1894,7 +1898,7 @@ msgstr "Carica un'Immagine di testata nel campo del contenuto."
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 msgid "Upload a new image"
-msgstr ""
+msgstr "Carica una nuova immagine"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Upload files"
@@ -2155,7 +2159,7 @@ msgstr "Immagine"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "integer"
-msgstr ""
+msgstr "intero"
 
 #: components/manage/Contents/ContentsItem
 msgid "intranet"
@@ -2215,7 +2219,7 @@ msgstr "Nessun stato di workflow"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "number"
-msgstr ""
+msgstr "numero"
 
 #: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
 #: components/manage/Widgets/RecurrenceWidget/ByYearField
