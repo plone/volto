@@ -25,24 +25,24 @@ const imageMimetypes = [
 
 const messages = defineMessages({
   releaseDrag: {
-    id: 'Drop files here ....',
-    defaultMessage: 'Drop files here ....',
+    id: 'Drop files here ...',
+    defaultMessage: 'Drop files here ...',
   },
   editFile: {
-    id: 'Drag to replace the file item',
-    defaultMessage: 'Drag to replace the file item',
+    id: 'Drop file here to replace the existing file',
+    defaultMessage: 'Drop file here to replace the existing file',
   },
   fileDrag: {
-    id: 'Drag the new item to upload',
-    defaultMessage: 'Drag the new item to upload',
+    id: 'Drop file here to upload a new file',
+    defaultMessage: 'Drop file here to upload a new file',
   },
   replaceFile: {
-    id: 'Replace existing File/Image',
-    defaultMessage: 'Replace existing File/Image',
+    id: 'Replace existing file',
+    defaultMessage: 'Replace existing file',
   },
   addNewFile: {
-    id: 'Choose a File/Image',
-    defaultMessage: 'Choose a File/Image',
+    id: 'Choose a file',
+    defaultMessage: 'Choose a file',
   },
 });
 

@@ -142,7 +142,9 @@ class App extends Component {
                   stackTrace={this.state.errorInfo.componentStack}
                 />
               ) : (
-                renderRoutes(this.props.route.routes)
+                renderRoutes(this.props.route.routes, {
+                  staticContext: this.props.staticContext,
+                })
               )}
             </main>
           </Segment>
@@ -161,7 +163,7 @@ class App extends Component {
             />
           }
         />
-        <AppExtras />
+        <AppExtras {...this.props} />
       </Fragment>
     );
   }
@@ -217,6 +219,6 @@ export default compose(
       apiError: state.apierror.error,
       connectionRefused: state.apierror.connectionRefused,
     }),
-    {},
+    null,
   ),
 )(App);

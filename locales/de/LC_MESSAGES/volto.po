@@ -310,7 +310,7 @@ msgid "Choose Target"
 msgstr "Ziel auswählen"
 
 #: components/manage/Widgets/FileWidget
-msgid "Choose a File/Image"
+msgid "Choose a file"
 msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
@@ -577,15 +577,15 @@ msgid "Drag and drop files from your computer onto this area or click the “Bro
 msgstr "Ziehen Sie Dateien von Ihrem Computer auf diesen Bereich oder drücken Sie den “Durchsuchen”-Knopf."
 
 #: components/manage/Widgets/FileWidget
-msgid "Drag the new item to upload"
+msgid "Drop file here to replace the existing file"
 msgstr ""
 
 #: components/manage/Widgets/FileWidget
-msgid "Drag to replace the file item"
+msgid "Drop file here to upload a new file"
 msgstr ""
 
 #: components/manage/Widgets/FileWidget
-msgid "Drop files here ...."
+msgid "Drop files here ..."
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
@@ -1435,7 +1435,7 @@ msgid "Repeat on"
 msgstr "Wiederhole am"
 
 #: components/manage/Widgets/FileWidget
-msgid "Replace existing File/Image"
+msgid "Replace existing file"
 msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget

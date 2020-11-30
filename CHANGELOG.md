@@ -8,18 +8,129 @@
 - Improved form validation. Tested required fields when field is array or richtext @giuliaghisini
 - fixed bug in render lists in draftjs, when there's some styles inside list-item (links or bold text ecc..) @giuliaghisini
 ## 8.10.1 (unreleased)
+## 10.0.1 (unreleased)
 
 ### Breaking
 
 ### Feature
 
-- Refactor CT icons helper: add getContentIcons @nzambello
-
-### Bugfix
+- added search depth in listing and updated it locales @giuliaghisini
 
 ### Bugfix
 
 ### Internal
+
+## 10.0.0 (2020-11-30)
+
+### Breaking
+
+- Removal of the Razzle patch that was introduced in 9.0.0 @sneridagh
+  See https://docs.voltocms.com/upgrade-guide/ for more details.
+- Fetched content with `getContent` no longer includes fullobjects by default @tiberiuichim
+
+### Bugfix
+
+- Fix link to login in the Unauthorised component @sneridagh
+
+### Internal
+
+- Add details on how to run Cypress integration tests @tiberiuichim
+- Upgrade `@testing-library/react` to 11.2.2. Add `jest-environment-jsdom-sixteen as upgraded jsdom implementation @tiberiuichim
+- Split some small prismjs related files (used in HTML block) in separate chunks @tiberiuichim
+- Remove dangling analyzer plugin @sneridagh
+- Support for Guillotina 6 @bloodbare @sneridagh
+- Update Cypress to version 5.6.0 @sneridagh
+- Terse `react-intl` errors in console during development turning them into warnings @sneridagh
+
+## 9.2.0 (2020-11-24)
+
+**This is a brown bag release and should not be used, upgrade to Volto 10.x.x instead.**
+See https://docs.voltocms.com/upgrade-guide/ for more information.
+
+### Feature
+
+- Remove the Razzle patch for the local, "inline" Volto Razzle plugins @tiberiuichim @sneridagh
+
+### Bugfix
+
+- Move missplaced `appExtras` into settings @sneridagh
+
+### Internal
+
+- Make filewidget label more consistent @tisto
+
+## 9.1.0 (2020-11-20)
+
+### Feature
+
+- Extend the internal proxy capabilities, now the target is overridable and SSL aware @sneridagh
+- Added new environment variables for the internal proxy `RAZZLE_PROXY_REWRITE_TARGET` and `RAZZLE_PROXY_REWRITE_TARGET` @sneridagh
+- Enhance `AppExtras` component to make it pluggable through the
+  `config.settings.appExtras`. These are router-path filtered components that
+  are rendered inside the `AppExtras` component @tiberiuichim
+
+### Bugfix
+
+- Fix Sentry tags and extra via settings.sentryOptions @avoinea
+- Fix `yarn analyze` command by packing our own version of
+  webpack-bundle-analyzer integration. It has a few changes to the old default
+  configuration. There is an alternative way of triggering the bundle analyzer,
+  with the `OFFLINE_BUNDLE_ANALYZE=true` env variable, which avoids starting
+  the HTTP bundle analyzer server. Also, it always saves a report html file.
+  @tiberiuichim
+
+### Internal
+
+- Improve developer documentation. Add several new chapters @tiberiuichim
+
+## 9.0.0 (2020-11-15)
+
+### Breaking
+
+- Upgrade Razzle to 3.3.7 @tiberiuichim @sneridagh
+
+  Razzle 3.3.7 prepares the transition to the upcoming Razzle 4 so it improves and
+  unifies the extensibility story at the cost of change the signature of the
+  `razzle.config.js` and how plugins are declared. It also enables by default the new
+  _React Fast Refresh_ feature implemented by the React community, which improves the
+  refresh of the code while in development.
+
+- Babel plugins housekeeping
+
+  Deprecated proposals:
+
+  - @babel/plugin-proposal-function-bind
+  - @babel/plugin-proposal-do-expressions
+  - @babel/plugin-proposal-logical-assignment-operators
+  - @babel/plugin-proposal-pipeline-operator
+  - @babel/plugin-proposal-function-sent
+
+For a complete list of actions to follow, please read the upgrade guide
+https://docs.voltocms.com/upgrade-guide/
+
+### Feature
+
+- Add `webpack-relative-resolver` plugin. For addons and Volto, it normalizes local relative imports to package-rooted imports. An import such as `import Something from './Something'` would be rerouted internally as `import Something from '@collective/someaddon/Something'`. By doing so we get easier customization of addons, as they don't have to be so strict with their import and exports @tiberiuichim
+- Posibility to configure Sentry via `settings.sentryOptions` configuration key @avoinea
+- Catch `console.error` by default with Sentry @avoinea
+- Refactor CT icons helper: add getContentIcons @nzambello
+
+### Bugfix
+
+- Properly return 404, 401 and 403 on SSR, when appropriate @tiberiuichim
+- Fix Guillotina PATCH by adding the `@static_behaviors` field inconditionally @sneridagh
+
+### Internal
+
+## 8.10.1 (2020-11-13)
+
+### Bugfix
+
+- Fix leaking input CSS in the link widget in draftjs @sneridagh
+
+### Internal
+
+- Move Guillotina CI job to GH actions @sneridagh
 
 ## 8.10.0 (2020-11-12)
 

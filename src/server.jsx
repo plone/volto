@@ -61,9 +61,15 @@ if (__DEVELOPMENT__ && settings.devProxyToApiPath) {
     createProxyMiddleware({
       target: serverURL,
       pathRewrite: {
-        '^/api': `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot/_vh_api`,
+        '^/api':
+          settings.proxyRewriteTarget ||
+          `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot/_vh_api`,
       },
       logLevel: 'silent',
+      ...(settings?.proxyRewriteTarget?.startsWith('https') && {
+        changeOrigin: true,
+        secure: false,
+      }),
     }),
   );
 }
@@ -74,6 +80,10 @@ if ((settings.expressMiddleware || []).length)
 server
   .disable('x-powered-by')
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
+  .head('/*', function (req, res) {
+    // Support for HEAD requests. Required by start-test utility in CI.
+    res.send('');
+  })
   .get('/*', (req, res) => {
     plugToRequest(req, res);
     const api = new Api(req);
@@ -171,6 +181,23 @@ server
 
           if (context.url) {
             res.redirect(context.url);
+          } else if (context.error_code) {
+            res.set({
+              'Cache-Control': 'no-cache',
+            });
+
+            res.status(context.error_code).send(
+              `<!doctype html>
+                ${renderToString(
+                  <Html
+                    extractor={extractor}
+                    markup={markup}
+                    store={store}
+                    extractScripts={process.env.NODE_ENV !== 'production'}
+                  />,
+                )}
+              `,
+            );
           } else {
             res.status(200).send(
               `<!doctype html>

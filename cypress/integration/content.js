@@ -7,7 +7,7 @@ describe('Add Content Tests', () => {
     cy.waitForResourceToLoad('@breadcrumbs');
     cy.waitForResourceToLoad('@actions');
     cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('?fullobjects');
+    cy.waitForResourceToLoad('');
   });
   it('As editor I can add a page', function () {
     // when I add a page

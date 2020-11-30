@@ -1715,11 +1715,11 @@ class Contents extends Component {
             </Dimmer.Dimmable>
           </Container>
         ) : (
-          <Unauthorized />
+          <Unauthorized staticContext={this.props.staticContext} />
         )}
       </>
     ) : (
-      <Unauthorized />
+      <Unauthorized staticContext={this.props.staticContext} />
     );
   }
 }

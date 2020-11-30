@@ -559,9 +559,14 @@ class Form extends Component {
     const fieldsModified = Object.keys(
       difference(this.state.formData, this.state.initialFormData),
     );
-    return pickBy(this.state.formData, (value, key) =>
-      fieldsModified.includes(key),
-    );
+    return {
+      ...pickBy(this.state.formData, (value, key) =>
+        fieldsModified.includes(key),
+      ),
+      ...(this.state.formData['@static_behaviors'] && {
+        '@static_behaviors': this.state.formData['@static_behaviors'],
+      }),
+    };
   };
 
   /**

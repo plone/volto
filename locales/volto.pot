@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-11-30T11:29:00.500Z\n"
+"POT-Creation-Date: 2020-11-30T13:57:36.873Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -356,8 +356,8 @@ msgid "Choose Target"
 msgstr ""
 
 #: components/manage/Widgets/FileWidget
-# defaultMessage: Choose a File/Image
-msgid "Choose a File/Image"
+# defaultMessage: Choose a file
+msgid "Choose a file"
 msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
@@ -679,18 +679,18 @@ msgid "Drag and drop files from your computer onto this area or click the “Bro
 msgstr ""
 
 #: components/manage/Widgets/FileWidget
-# defaultMessage: Drag the new item to upload
-msgid "Drag the new item to upload"
+# defaultMessage: Drop file here to replace the existing file
+msgid "Drop file here to replace the existing file"
 msgstr ""
 
 #: components/manage/Widgets/FileWidget
-# defaultMessage: Drag to replace the file item
-msgid "Drag to replace the file item"
+# defaultMessage: Drop file here to upload a new file
+msgid "Drop file here to upload a new file"
 msgstr ""
 
 #: components/manage/Widgets/FileWidget
-# defaultMessage: Drop files here ....
-msgid "Drop files here ...."
+# defaultMessage: Drop files here ...
+msgid "Drop files here ..."
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
@@ -1735,8 +1735,8 @@ msgid "Repeat on"
 msgstr ""
 
 #: components/manage/Widgets/FileWidget
-# defaultMessage: Replace existing File/Image
-msgid "Replace existing File/Image"
+# defaultMessage: Replace existing file
+msgid "Replace existing file"
 msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
