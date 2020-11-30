@@ -4,13 +4,10 @@
  * @example import { Api, Html } from 'helpers';
  */
 
-export Api from '@plone/volto/helpers/Api/Api';
-export { getAPIResourceWithAuth } from '@plone/volto/helpers/Api/APIResourceWithAuth';
-export Html from '@plone/volto/helpers/Html/Html';
-export {
-  getAuthToken,
-  persistAuthToken,
-} from '@plone/volto/helpers/AuthToken/AuthToken';
+export { Api } from '@plone/volto/internal';
+export { getAPIResourceWithAuth } from '@plone/volto/internal';
+export { Html } from '@plone/volto/internal';
+export { getAuthToken, persistAuthToken } from '@plone/volto/internal';
 export {
   addAppURL,
   flattenHTMLToAppURL,
@@ -21,37 +18,37 @@ export {
   getView,
   isCmsUi,
   getId,
-} from '@plone/volto/helpers/Url/Url';
-export { generateSitemap } from '@plone/volto/helpers/Sitemap/Sitemap';
+} from '@plone/volto/internal';
+export { generateSitemap } from '@plone/volto/internal';
 export {
   nestContent,
   getLayoutFieldname,
   getContentIcon,
-} from '@plone/volto/helpers/Content/Content';
+} from '@plone/volto/internal';
 export {
   getBlocks,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
   hasBlocksData,
   blockHasValue,
-} from '@plone/volto/helpers/Blocks/Blocks';
-export BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
-export ScrollToTop from '@plone/volto/helpers/ScrollToTop/ScrollToTop';
+} from '@plone/volto/internal';
+export BodyClass from '@plone/volto/internal';
+export ScrollToTop from '@plone/volto/internal';
 export {
   getBoolean,
   getVocabFromHint,
   getVocabFromField,
   getVocabFromItems,
   getFieldsVocabulary,
-} from '@plone/volto/helpers/Vocabularies/Vocabularies';
-export AlignBlock from '@plone/volto/helpers/AlignBlock/AlignBlock';
+} from '@plone/volto/internal';
+export { AlignBlock } from '@plone/volto/internal';
 
-export Helmet from './Helmet/Helmet';
-export FormValidation from './FormValidation/FormValidation';
-export { messages } from './MessageLabels/MessageLabels';
+export { Helmet } from '@plone/volto/internal';
+export { FormValidation } from '@plone/volto/internal';
+export { messages } from '@plone/volto/internal';
 export {
   difference,
   safeWrapper,
   applyConfig,
   withServerErrorCode,
-} from '@plone/volto/helpers/Utils/Utils';
+} from '@plone/volto/internal';

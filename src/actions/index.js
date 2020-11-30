@@ -4,27 +4,22 @@
  * @example import { getSchema } from 'actions';
  */
 
-export { listActions } from '@plone/volto/actions/actions/actions';
-export { getBreadcrumbs } from '@plone/volto/actions/breadcrumbs/breadcrumbs';
-export { setExpandedToolbar } from '@plone/volto/actions/toolbar/toolbar';
-export {
-  copy,
-  cut,
-  copyContent,
-  moveContent,
-} from '@plone/volto/actions/clipboard/clipboard';
+export { listActions } from '@plone/volto/internal';
+export { getBreadcrumbs } from '@plone/volto/internal';
+export { setExpandedToolbar } from '@plone/volto/internal';
+export { copy, cut, copyContent, moveContent } from '@plone/volto/internal';
 export {
   installAddon,
   listAddons,
   uninstallAddon,
   upgradeAddon,
-} from './addons/addons';
+} from '@plone/volto/internal';
 export {
   addComment,
   deleteComment,
   listComments,
   updateComment,
-} from '@plone/volto/actions/comments/comments';
+} from '@plone/volto/internal';
 export {
   createContent,
   deleteContent,
@@ -34,7 +29,7 @@ export {
   sortContent,
   resetContent,
   updateColumnsContent,
-} from '@plone/volto/actions/content/content';
+} from '@plone/volto/internal';
 export {
   getControlpanel,
   postControlpanel,
@@ -43,42 +38,33 @@ export {
   updateControlpanel,
   getSystemInformation,
   getDatabaseInformation,
-} from '@plone/volto/actions/controlpanels/controlpanels';
-export { getDiff } from '@plone/volto/actions/diff/diff';
-export { emailNotification } from '@plone/volto/actions/emailNotification/emailNotification';
+} from '@plone/volto/internal';
+export { getDiff } from '@plone/volto/internal';
+export { emailNotification } from '@plone/volto/internal';
 export {
   createGroup,
   deleteGroup,
   getGroup,
   listGroups,
   updateGroup,
-} from '@plone/volto/actions/groups/groups';
-export {
-  getHistory,
-  revertHistory,
-} from '@plone/volto/actions/history/history';
+} from '@plone/volto/internal';
+export { getHistory, revertHistory } from '@plone/volto/internal';
 export {
   addMessage,
   removeMessage,
   purgeMessages,
-} from '@plone/volto/actions/messages/messages';
-export { getNavigation } from '@plone/volto/actions/navigation/navigation';
-export { listRoles } from '@plone/volto/actions/roles/roles';
+} from '@plone/volto/internal';
+export { getNavigation } from '@plone/volto/internal';
+export { listRoles } from '@plone/volto/internal';
 export {
   getSchema,
   postSchema,
   putSchema,
   updateSchema,
-} from '@plone/volto/actions/schema/schema';
-export {
-  resetSearchContent,
-  searchContent,
-} from '@plone/volto/actions/search/search';
-export {
-  updateSharing,
-  getSharing,
-} from '@plone/volto/actions/sharing/sharing';
-export { getTypes } from '@plone/volto/actions/types/types';
+} from '@plone/volto/internal';
+export { resetSearchContent, searchContent } from '@plone/volto/internal';
+export { updateSharing, getSharing } from '@plone/volto/internal';
+export { getTypes } from '@plone/volto/internal';
 export {
   createUser,
   deleteUser,
@@ -89,25 +75,15 @@ export {
   updatePassword,
   updateUser,
   showAllUsers,
-} from '@plone/volto/actions/users/users';
-export {
-  login,
-  loginRenew,
-  logout,
-} from '@plone/volto/actions/userSession/userSession';
-export {
-  getVocabulary,
-  getVocabularyTokenTitle,
-} from '@plone/volto/actions/vocabularies/vocabularies';
-export {
-  getWorkflow,
-  transitionWorkflow,
-} from '@plone/volto/actions/workflow/workflow';
-export { getQuerystring } from '@plone/volto/actions/querystring/querystring';
-export { getQueryStringResults } from '@plone/volto/actions/querystringsearch/querystringsearch';
-export { setSidebarTab } from '@plone/volto/actions/sidebar/sidebar';
+} from '@plone/volto/internal';
+export { login, loginRenew, logout } from '@plone/volto/internal';
+export { getVocabulary, getVocabularyTokenTitle } from '@plone/volto/internal';
+export { getWorkflow, transitionWorkflow } from '@plone/volto/internal';
+export { getQuerystring } from '@plone/volto/internal';
+export { getQueryStringResults } from '@plone/volto/internal';
+export { setSidebarTab } from '@plone/volto/internal';
 export {
   deleteLinkTranslation,
   getTranslationLocator,
   linkTranslation,
-} from '@plone/volto/actions/translations/translations';
+} from '@plone/volto/internal';

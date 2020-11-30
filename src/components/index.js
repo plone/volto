@@ -2,180 +2,169 @@
  * Point of contact for component modules.
  * @module components
  */
-import loadable from '@loadable/component';
 
-//  Do not lazy load them, since it has not much sense (they will live in the main chunk)
-export App from '@plone/volto/components/theme/App/App';
-export AppExtras from '@plone/volto/components/theme/AppExtras/AppExtras';
-export View from '@plone/volto/components/theme/View/View';
-export Header from '@plone/volto/components/theme/Header/Header';
-export Logo from '@plone/volto/components/theme/Logo/Logo';
-export Anontools from '@plone/volto/components/theme/Anontools/Anontools';
-export Navigation from '@plone/volto/components/theme/Navigation/Navigation';
-export Breadcrumbs from '@plone/volto/components/theme/Breadcrumbs/Breadcrumbs';
-export SearchWidget from '@plone/volto/components/theme/SearchWidget/SearchWidget';
-export Footer from '@plone/volto/components/theme/Footer/Footer';
-export Title from '@plone/volto/components/theme/Title/Title';
-export DefaultView from '@plone/volto/components/theme/View/DefaultView';
-export Pagination from '@plone/volto/components/theme/Pagination/Pagination';
-export Tags from '@plone/volto/components/theme/Tags/Tags';
-export OutdatedBrowser from '@plone/volto/components/theme/OutdatedBrowser/OutdatedBrowser';
-export LanguageSelector from '@plone/volto/components/theme/LanguageSelector/LanguageSelector';
+export { App } from '@plone/volto/internal';
+export { AppExtras } from '@plone/volto/internal';
+export { View } from '@plone/volto/internal';
+export { Header } from '@plone/volto/internal';
+export { Logo } from '@plone/volto/internal';
+export { Anontools } from '@plone/volto/internal';
+export { Navigation } from '@plone/volto/internal';
+export { Breadcrumbs } from '@plone/volto/internal';
+export { SearchWidget } from '@plone/volto/internal';
+export { Footer } from '@plone/volto/internal';
+export { Title } from '@plone/volto/internal';
+export { DefaultView } from '@plone/volto/internal';
+export { Pagination } from '@plone/volto/internal';
+export { Tags } from '@plone/volto/internal';
+export { OutdatedBrowser } from '@plone/volto/internal';
+export { LanguageSelector } from '@plone/volto/internal';
 
-export Error from '@plone/volto/components/theme/Error/Error';
-export NotFound from '@plone/volto/components/theme/NotFound/NotFound';
-export Forbidden from '@plone/volto/components/theme/Forbidden/Forbidden';
-export Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
+export { Error } from '@plone/volto/internal';
+export { NotFound } from '@plone/volto/internal';
+export { Forbidden } from '@plone/volto/internal';
+export { Unauthorized } from '@plone/volto/internal';
 
-export Icon from '@plone/volto/components/theme/Icon/Icon';
-export ConditionalLink from '@plone/volto/components/manage/ConditionalLink/ConditionalLink';
-export UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
+export { Icon } from '@plone/volto/internal';
+export { ConditionalLink } from '@plone/volto/internal';
+export { UniversalLink } from '@plone/volto/internal';
 
-// Lazy load them, since we want them and its deps to be in its own chunk
-export ContactForm from '@plone/volto/components/theme/ContactForm/ContactForm';
-export Login from '@plone/volto/components/theme/Login/Login';
-export Logout from '@plone/volto/components/theme/Logout/Logout';
-export Sitemap from '@plone/volto/components/theme/Sitemap/Sitemap';
-export Search from '@plone/volto/components/theme/Search/Search';
-export Comments from '@plone/volto/components/theme/Comments/Comments';
-export SocialSharing from '@plone/volto/components/theme/SocialSharing/SocialSharing';
-export Register from '@plone/volto/components/theme/Register/Register';
-export PasswordReset from '@plone/volto/components/theme/PasswordReset/PasswordReset';
-export RequestPasswordReset from '@plone/volto/components/theme/PasswordReset/RequestPasswordReset';
-export ChangePassword from '@plone/volto/components/manage/Preferences/ChangePassword';
-export PersonalPreferences from '@plone/volto/components/manage/Preferences/PersonalPreferences';
-export PersonalInformation from '@plone/volto/components/manage/Preferences/PersonalInformation';
-export CreateTranslation from '@plone/volto/components/manage/Multilingual/CreateTranslation';
+export { ContactForm } from '@plone/volto/internal';
+export { Login } from '@plone/volto/internal';
+export { Logout } from '@plone/volto/internal';
+export { Sitemap } from '@plone/volto/internal';
+export { Search } from '@plone/volto/internal';
+export { Comments } from '@plone/volto/internal';
+export { SocialSharing } from '@plone/volto/internal';
+export { Register } from '@plone/volto/internal';
+export { PasswordReset } from '@plone/volto/internal';
+export { RequestPasswordReset } from '@plone/volto/internal';
+export { ChangePassword } from '@plone/volto/internal';
+export { PersonalPreferences } from '@plone/volto/internal';
+export { PersonalInformation } from '@plone/volto/internal';
+export { CreateTranslation } from '@plone/volto/internal';
 
-export FileView from '@plone/volto/components/theme/View/FileView';
-export ImageView from '@plone/volto/components/theme/View/ImageView';
-export NewsItemView from '@plone/volto/components/theme/View/NewsItemView';
+export { FileView } from '@plone/volto/internal';
+export { ImageView } from '@plone/volto/internal';
+export { NewsItemView } from '@plone/volto/internal';
 
-export const EventView = loadable(() =>
-  import('@plone/volto/components/theme/View/EventView'),
-);
+export { EventView } from '@plone/volto/internal';
 
-export ListingView from '@plone/volto/components/theme/View/ListingView';
-export SummaryView from '@plone/volto/components/theme/View/SummaryView';
-export TabularView from '@plone/volto/components/theme/View/TabularView';
-export AlbumView from '@plone/volto/components/theme/View/AlbumView';
+export { ListingView } from '@plone/volto/internal';
+export { SummaryView } from '@plone/volto/internal';
+export { TabularView } from '@plone/volto/internal';
+export { AlbumView } from '@plone/volto/internal';
 
-export Actions from '@plone/volto/components/manage/Actions/Actions';
-export Add from '@plone/volto/components/manage/Add/Add';
-export AddonsControlpanel from '@plone/volto/components/manage/Controlpanels/AddonsControlpanel';
-export Contents from '@plone/volto/components/manage/Contents/Contents';
-export Circle from '@plone/volto/components/manage/Contents/circle';
-export DatabaseInformation from '@plone/volto/components/manage/Controlpanels/DatabaseInformation';
-export Controlpanel from '@plone/volto/components/manage/Controlpanels/Controlpanel';
-export Controlpanels from '@plone/volto/components/manage/Controlpanels/Controlpanels';
-export ContentTypes from '@plone/volto/components/manage/Controlpanels/ContentTypes';
-export ContentType from '@plone/volto/components/manage/Controlpanels/ContentType';
-export ContentTypeLayout from '@plone/volto/components/manage/Controlpanels/ContentTypeLayout';
-export ContentTypeSchema from '@plone/volto/components/manage/Controlpanels/ContentTypeSchema';
-export ContentTypesActions from '@plone/volto/components/manage/Controlpanels/ContentTypesActions';
-export UsersControlpanel from '@plone/volto/components/manage/Controlpanels/UsersControlpanel';
-export ModerateComments from '@plone/volto/components/manage/Controlpanels/ModerateComments';
-export VersionOverview from '@plone/volto/components/manage/Controlpanels/VersionOverview';
-export Delete from '@plone/volto/components/manage/Delete/Delete';
-export Diff from '@plone/volto/components/manage/Diff/Diff';
-export Display from '@plone/volto/components/manage/Display/Display';
-export Edit from '@plone/volto/components/manage/Edit/Edit';
-export ModalForm from '@plone/volto/components/manage/Form/ModalForm';
-export History from '@plone/volto/components/manage/History/History';
-export Sharing from '@plone/volto/components/manage/Sharing/Sharing';
-export Workflow from '@plone/volto/components/manage/Workflow/Workflow';
-export Messages from '@plone/volto/components/manage/Messages/Messages';
-export BlockChooser from '@plone/volto/components/manage/BlockChooser/BlockChooser';
-export Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
-export Sidebar from '@plone/volto/components/manage/Sidebar/Sidebar';
-export SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
-export PersonalTools from '@plone/volto/components/manage/Toolbar/PersonalTools';
-export More from '@plone/volto/components/manage/Toolbar/More';
-export Types from '@plone/volto/components/manage/Toolbar/Types';
-export Toast from '@plone/volto/components/manage/Toast/Toast';
-export ManageTranslations from '@plone/volto/components/manage/Multilingual/ManageTranslations';
+export { Actions } from '@plone/volto/internal';
+export { Add } from '@plone/volto/internal';
+export { AddonsControlpanel } from '@plone/volto/internal';
+export { Contents } from '@plone/volto/internal';
+export { Circle } from '@plone/volto/internal';
+export { DatabaseInformation } from '@plone/volto/internal';
+export { Controlpanel } from '@plone/volto/internal';
+export { Controlpanels } from '@plone/volto/internal';
+export { ContentTypes } from '@plone/volto/internal';
+export { ContentType } from '@plone/volto/internal';
+export { ContentTypeLayout } from '@plone/volto/internal';
+export { ContentTypeSchema } from '@plone/volto/internal';
+export { ContentTypesActions } from '@plone/volto/internal';
+export { UsersControlpanel } from '@plone/volto/internal';
+export { ModerateComments } from '@plone/volto/internal';
+export { VersionOverview } from '@plone/volto/internal';
+export { Delete } from '@plone/volto/internal';
+export { Diff } from '@plone/volto/internal';
+export { Display } from '@plone/volto/internal';
+export { Edit } from '@plone/volto/internal';
+export { ModalForm } from '@plone/volto/internal';
+export { History } from '@plone/volto/internal';
+export { Sharing } from '@plone/volto/internal';
+export { Workflow } from '@plone/volto/internal';
+export { Messages } from '@plone/volto/internal';
+export { BlockChooser } from '@plone/volto/internal';
+export { Toolbar } from '@plone/volto/internal';
+export { Sidebar } from '@plone/volto/internal';
+export { SidebarPortal } from '@plone/volto/internal';
+export { PersonalTools } from '@plone/volto/internal';
+export { More } from '@plone/volto/internal';
+export { Types } from '@plone/volto/internal';
+export { Toast } from '@plone/volto/internal';
+export { ManageTranslations } from '@plone/volto/internal';
 
 // Potentially could ve removed from index, since they are internal components and
 // we don't want them to end up in the main chunk
-export Form from '@plone/volto/components/manage/Form/Form';
-export Field from '@plone/volto/components/manage/Form/Field';
-export SearchTags from '@plone/volto/components/theme/Search/SearchTags';
-export CommentEditModal from '@plone/volto/components/theme/Comments/CommentEditModal';
-export ContentsIndexHeader from '@plone/volto/components/manage/Contents/ContentsIndexHeader';
-export ContentsItem from '@plone/volto/components/manage/Contents/ContentsItem';
-export ContentsUploadModal from '@plone/volto/components/manage/Contents/ContentsUploadModal';
-export ContentsPropertiesModal from '@plone/volto/components/manage/Contents/ContentsPropertiesModal';
-export ContentsRenameModal from '@plone/volto/components/manage/Contents/ContentsRenameModal';
-export ContentsWorkflowModal from '@plone/volto/components/manage/Contents/ContentsWorkflowModal';
-export ContentsTagsModal from '@plone/volto/components/manage/Contents/ContentsTagsModal';
-export UsersControlpanelUser from '@plone/volto/components/manage/Controlpanels/UsersControlpanelUser';
-export UsersControlpanelGroups from '@plone/volto/components/manage/Controlpanels/UsersControlpanelGroups';
-export DiffField from '@plone/volto/components/manage/Diff/DiffField';
+export { Form } from '@plone/volto/internal';
+export { Field } from '@plone/volto/internal';
+export { SearchTags } from '@plone/volto/internal';
+export { CommentEditModal } from '@plone/volto/internal';
+export { ContentsIndexHeader } from '@plone/volto/internal';
+export { ContentsItem } from '@plone/volto/internal';
+export { ContentsUploadModal } from '@plone/volto/internal';
+export { ContentsPropertiesModal } from '@plone/volto/internal';
+export { ContentsRenameModal } from '@plone/volto/internal';
+export { ContentsWorkflowModal } from '@plone/volto/internal';
+export { ContentsTagsModal } from '@plone/volto/internal';
+export { UsersControlpanelUser } from '@plone/volto/internal';
+export { UsersControlpanelGroups } from '@plone/volto/internal';
+export { DiffField } from '@plone/volto/internal';
 
-export FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
-export ArrayWidget from '@plone/volto/components/manage/Widgets/ArrayWidget';
-export CheckboxWidget from '@plone/volto/components/manage/Widgets/CheckboxWidget';
+export { FormFieldWrapper } from '@plone/volto/internal';
+export { ArrayWidget } from '@plone/volto/internal';
+export { CheckboxWidget } from '@plone/volto/internal';
 
-export const DatetimeWidget = loadable(() =>
-  import('@plone/volto/components/manage/Widgets/DatetimeWidget'),
-);
-export const RecurrenceWidget = loadable(() =>
-  import(
-    '@plone/volto/components/manage/Widgets/RecurrenceWidget/RecurrenceWidget'
-  ),
-);
+export { DatetimeWidget } from '@plone/volto/internal';
+export { RecurrenceWidget } from '@plone/volto/internal';
 
-export FileWidget from '@plone/volto/components/manage/Widgets/FileWidget';
-export PasswordWidget from '@plone/volto/components/manage/Widgets/PasswordWidget';
-export ReferenceWidget from '@plone/volto/components/manage/Widgets/ReferenceWidget';
-export SchemaWidget from '@plone/volto/components/manage/Widgets/SchemaWidget';
-export SchemaWidgetFieldset from '@plone/volto/components/manage/Widgets/SchemaWidgetFieldset';
-export SelectWidget from '@plone/volto/components/manage/Widgets/SelectWidget';
-export TextareaWidget from '@plone/volto/components/manage/Widgets/TextareaWidget';
-export TextWidget from '@plone/volto/components/manage/Widgets/TextWidget';
-export WysiwygWidget from '@plone/volto/components/manage/Widgets/WysiwygWidget';
-export ObjectBrowserWidget from '@plone/volto/components/manage/Widgets/ObjectBrowserWidget';
-export ObjectBrowserWidgetMode from '@plone/volto/components/manage/Widgets/ObjectBrowserWidget';
+export { FileWidget } from '@plone/volto/internal';
+export { PasswordWidget } from '@plone/volto/internal';
+export { ReferenceWidget } from '@plone/volto/internal';
+export { SchemaWidget } from '@plone/volto/internal';
+export { SchemaWidgetFieldset } from '@plone/volto/internal';
+export { SelectWidget } from '@plone/volto/internal';
+export { TextareaWidget } from '@plone/volto/internal';
+export { TextWidget } from '@plone/volto/internal';
+export { WysiwygWidget } from '@plone/volto/internal';
+export { ObjectBrowserWidget } from '@plone/volto/internal';
+export { ObjectBrowserWidgetMode } from '@plone/volto/internal';
 
-export EditDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/Edit';
-export EditTitleBlock from '@plone/volto/components/manage/Blocks/Title/Edit';
-export EditToCBlock from '@plone/volto/components/manage/Blocks/ToC/Edit';
-export EditTextBlock from '@plone/volto/components/manage/Blocks/Text/Edit';
-export EditImageBlock from '@plone/volto/components/manage/Blocks/Image/Edit';
-export EditListingBlock from '@plone/volto/components/manage/Blocks/Listing/Edit';
-export EditVideoBlock from '@plone/volto/components/manage/Blocks/Video/Edit';
-export EditBlock from '@plone/volto/components/manage/Blocks/Block/Edit';
-export EditHeroImageLeftBlock from '@plone/volto/components/manage/Blocks/HeroImageLeft/Edit';
-export ViewHeroImageLeftBlock from '@plone/volto/components/manage/Blocks/HeroImageLeft/View';
-export EditMapBlock from '@plone/volto/components/manage/Blocks/Maps/Edit';
-export EditHTMLBlock from '@plone/volto/components/manage/Blocks/HTML/Edit';
+export { EditDescriptionBlock } from '@plone/volto/internal';
+export { EditTitleBlock } from '@plone/volto/internal';
+export { EditToCBlock } from '@plone/volto/internal';
+export { EditTextBlock } from '@plone/volto/internal';
+export { EditImageBlock } from '@plone/volto/internal';
+export { EditListingBlock } from '@plone/volto/internal';
+export { EditVideoBlock } from '@plone/volto/internal';
+export { EditBlock } from '@plone/volto/internal';
+export { EditHeroImageLeftBlock } from '@plone/volto/internal';
+export { ViewHeroImageLeftBlock } from '@plone/volto/internal';
+export { EditMapBlock } from '@plone/volto/internal';
+export { EditHTMLBlock } from '@plone/volto/internal';
 
-export ViewDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/View';
-export ViewTitleBlock from '@plone/volto/components/manage/Blocks/Title/View';
-export ViewToCBlock from '@plone/volto/components/manage/Blocks/ToC/View';
-export ViewTextBlock from '@plone/volto/components/manage/Blocks/Text/View';
-export ViewImageBlock from '@plone/volto/components/manage/Blocks/Image/View';
-export ViewListingBlock from '@plone/volto/components/manage/Blocks/Listing/View';
-export ViewVideoBlock from '@plone/volto/components/manage/Blocks/Video/View';
-export ViewMapBlock from '@plone/volto/components/manage/Blocks/Maps/View';
-export ViewHTMLBlock from '@plone/volto/components/manage/Blocks/HTML/View';
+export { ViewDescriptionBlock } from '@plone/volto/internal';
+export { ViewTitleBlock } from '@plone/volto/internal';
+export { ViewToCBlock } from '@plone/volto/internal';
+export { ViewTextBlock } from '@plone/volto/internal';
+export { ViewImageBlock } from '@plone/volto/internal';
+export { ViewListingBlock } from '@plone/volto/internal';
+export { ViewVideoBlock } from '@plone/volto/internal';
+export { ViewMapBlock } from '@plone/volto/internal';
+export { ViewHTMLBlock } from '@plone/volto/internal';
 
-export ListingBlockBody from '@plone/volto/components/manage/Blocks/Listing/ListingBody';
-export ListingBlockData from '@plone/volto/components/manage/Blocks/Listing/ListingData';
-export ListingBlockStyle from '@plone/volto/components/manage/Blocks/Listing/ListingStyle';
-export ListingBlockMore from '@plone/volto/components/manage/Blocks/Listing/ListingMore';
-export ListingBlockSidebar from '@plone/volto/components/manage/Blocks/Listing/ListingSidebar';
-export QuerystringWidget from '@plone/volto/components/manage/Blocks/Listing/QuerystringWidget';
+export { ListingBlockBody } from '@plone/volto/internal';
+export { ListingBlockData } from '@plone/volto/internal';
+export { ListingBlockStyle } from '@plone/volto/internal';
+export { ListingBlockMore } from '@plone/volto/internal';
+export { ListingBlockSidebar } from '@plone/volto/internal';
+export { QuerystringWidget } from '@plone/volto/internal';
 
-export ImageSidebar from '@plone/volto/components/manage/Blocks/Image/ImageSidebar';
-export MapsSidebar from '@plone/volto/components/manage/Blocks/Maps/MapsSidebar';
-export VideoSidebar from '@plone/volto/components/manage/Blocks/Video/VideoSidebar';
-export LeadImageSidebar from '@plone/volto/components/manage/Blocks/LeadImage/LeadImageSidebar';
+export { ImageSidebar } from '@plone/volto/internal';
+export { MapsSidebar } from '@plone/volto/internal';
+export { VideoSidebar } from '@plone/volto/internal';
+export { LeadImageSidebar } from '@plone/volto/internal';
 
-export Style from '@plone/volto/components/manage/Blocks/Block/Style';
-export BlockSettingsSidebar from '@plone/volto/components/manage/Blocks/Block/Settings';
-export BlockSettingsSchema from '@plone/volto/components/manage/Blocks/Block/Schema';
-export TextSettingsSchema from '@plone/volto/components/manage/Blocks/Text/Schema';
-export ImageSettingsSchema from '@plone/volto/components/manage/Blocks/Image/Schema';
-export ToCSettingsSchema from '@plone/volto/components/manage/Blocks/ToC/Schema';
-export InlineForm from './manage/Form/InlineForm';
+export { Style } from '@plone/volto/internal';
+export { BlockSettingsSidebar } from '@plone/volto/internal';
+export { BlockSettingsSchema } from '@plone/volto/internal';
+export { TextSettingsSchema } from '@plone/volto/internal';
+export { ImageSettingsSchema } from '@plone/volto/internal';
+export { ToCSettingsSchema } from '@plone/volto/internal';
+export { InlineForm } from '@plone/volto/internal';

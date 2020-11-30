@@ -8,7 +8,7 @@ import {
   LIST_ADDONS,
   UNINSTALL_ADDON,
   UPGRADE_ADDON,
-} from '../../constants/ActionTypes';
+} from '@plone/volto/constants/ActionTypes';
 
 /**
  * List addons function
