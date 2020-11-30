@@ -8,7 +8,6 @@ import { Input, Segment } from 'semantic-ui-react';
 import { join } from 'lodash';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 
-import { settings } from '~/config';
 import backSVG from '@plone/volto/icons/back.svg';
 import folderSVG from '@plone/volto/icons/folder.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -21,6 +20,8 @@ import { flattenToAppURL, isInternalURL } from '@plone/volto/internal';
 import { Icon } from '@plone/volto/internal';
 
 import ObjectBrowserNav from './ObjectBrowserNav';
+
+import { settings } from '~/config';
 
 const messages = defineMessages({
   SearchInputPlaceholder: {

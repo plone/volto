@@ -17,7 +17,7 @@ export { withServerErrorCode } from '@plone/volto/helpers/Utils/withServerErrorC
 // export ObjectBrowserNav from '@plone/volto/components/manage/Sidebar/ObjectBrowserNav';
 // export ObjectBrowserBody from '@plone/volto/components/manage/Sidebar/ObjectBrowserBody';
 
-export withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
+// export withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 
 export {
   addAppURL,
@@ -205,7 +205,6 @@ export ObjectBrowserWidget from '@plone/volto/components/manage/Widgets/ObjectBr
 export ObjectBrowserWidgetMode from '@plone/volto/components/manage/Widgets/ObjectBrowserWidget';
 
 //  Do not lazy load them, since it has not much sense (they will live in the main chunk)
-export App from '@plone/volto/components/theme/App/App';
 export AppExtras from '@plone/volto/components/theme/AppExtras/AppExtras';
 export View from '@plone/volto/components/theme/View/View';
 export Header from '@plone/volto/components/theme/Header/Header';
@@ -221,7 +220,7 @@ export Pagination from '@plone/volto/components/theme/Pagination/Pagination';
 export Tags from '@plone/volto/components/theme/Tags/Tags';
 export OutdatedBrowser from '@plone/volto/components/theme/OutdatedBrowser/OutdatedBrowser';
 export LanguageSelector from '@plone/volto/components/theme/LanguageSelector/LanguageSelector';
-export Multilingual from '@plone/volto/components/theme/MultilingualRedirector/MultilingualRedirector';
+export MultilingualRedirector from '@plone/volto/components/theme/MultilingualRedirector/MultilingualRedirector';
 
 export ConditionalLink from '@plone/volto/components/manage/ConditionalLink/ConditionalLink';
 export UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
@@ -375,3 +374,5 @@ export TextSettingsSchema from '@plone/volto/components/manage/Blocks/Text/Schem
 export ImageSettingsSchema from '@plone/volto/components/manage/Blocks/Image/Schema';
 export ToCSettingsSchema from '@plone/volto/components/manage/Blocks/ToC/Schema';
 export InlineForm from './components/manage/Form/InlineForm';
+
+export App from '@plone/volto/components/theme/App/App';

@@ -17,7 +17,7 @@ import {
   Icon as IconOld,
 } from 'semantic-ui-react';
 import { flattenToAppURL } from '@plone/volto/internal';
-import { withObjectBrowser } from '@plone/volto/internal';
+import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Icon } from '@plone/volto/internal';
 import navTreeSVG from '@plone/volto/icons/nav.svg';

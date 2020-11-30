@@ -1,22 +1,23 @@
 import React from 'react';
 import { Button, Container, Segment, Table } from 'semantic-ui-react';
-import { Helmet } from '@plone/volto/internal';
 import langmap from 'langmap';
-import { flattenToAppURL, getBaseUrl } from '@plone/volto/internal';
 import { reduce } from 'lodash';
 import { Link, useLocation } from 'react-router-dom';
-import { Icon, Toast, Toolbar } from '@plone/volto/internal';
-import { settings } from '~/config';
-import { withObjectBrowser } from '@plone/volto/internal';
+import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
+import { useSelector, useDispatch } from 'react-redux';
+import { Portal } from 'react-portal';
+import { toast } from 'react-toastify';
+import { flattenToAppURL, getBaseUrl } from '@plone/volto/internal';
 import {
   deleteLinkTranslation,
   getContent,
   linkTranslation,
 } from '@plone/volto/internal';
-import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
-import { useSelector, useDispatch } from 'react-redux';
-import { Portal } from 'react-portal';
-import { toast } from 'react-toastify';
+import { Helmet } from '@plone/volto/internal';
+import { Icon, Toast, Toolbar } from '@plone/volto/internal';
+import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
+
+import { settings } from '~/config';
 
 import addSVG from '@plone/volto/icons/add.svg';
 import backSVG from '@plone/volto/icons/back.svg';

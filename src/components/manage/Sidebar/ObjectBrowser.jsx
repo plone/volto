@@ -2,8 +2,9 @@ import React from 'react';
 import { CSSTransition } from 'react-transition-group';
 import ReactDOM from 'react-dom';
 
-import ObjectBrowserBody from './ObjectBrowserBody';
+import loadable from '@loadable/component';
 import { getParentURL } from './utils';
+const ObjectBrowserBody = loadable(() => import('./ObjectBrowserBody'));
 
 const DEFAULT_TIMEOUT = 500;
 

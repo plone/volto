@@ -21,6 +21,15 @@ import { settings, views } from '~/config';
 import Error from '@plone/volto/error';
 
 import {
+  getBreadcrumbs,
+  getContent,
+  getNavigation,
+  getTypes,
+  getWorkflow,
+} from '@plone/volto/internal';
+import { BodyClass, getBaseUrl, getView, isCmsUi } from '@plone/volto/internal';
+
+import {
   Breadcrumbs,
   Footer,
   Header,
@@ -28,17 +37,9 @@ import {
   OutdatedBrowser,
   AppExtras,
 } from '@plone/volto/internal';
-import { BodyClass, getBaseUrl, getView, isCmsUi } from '@plone/volto/internal';
-import {
-  getBreadcrumbs,
-  getContent,
-  getNavigation,
-  getTypes,
-  getWorkflow,
-} from '@plone/volto/internal';
+import { MultilingualRedirector } from '@plone/volto/internal';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
-import MultilingualRedirector from '@plone/volto/internal';
 
 import * as Sentry from '@sentry/browser';
 

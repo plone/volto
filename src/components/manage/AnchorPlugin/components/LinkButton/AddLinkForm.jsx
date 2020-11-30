@@ -17,14 +17,14 @@ import { defineMessages, injectIntl } from 'react-intl';
 
 import URLUtils from '@plone/volto/components/manage/AnchorPlugin/utils/URLUtils';
 
-import clearSVG from '@plone/volto/icons/clear.svg';
-import navTreeSVG from '@plone/volto/icons/nav.svg';
-import aheadSVG from '@plone/volto/icons/ahead.svg';
-
-import { withObjectBrowser } from '@plone/volto/internal';
+import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import { withRouter } from 'react-router';
 
 import { Icon } from '@plone/volto/internal';
+
+import clearSVG from '@plone/volto/icons/clear.svg';
+import navTreeSVG from '@plone/volto/icons/nav.svg';
+import aheadSVG from '@plone/volto/icons/ahead.svg';
 
 const messages = defineMessages({
   placeholder: {

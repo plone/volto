@@ -15,7 +15,7 @@ import isBoolean from 'lodash/isBoolean';
 import cx from 'classnames';
 import { setSidebarTab } from '@plone/volto/internal';
 
-import withObjectBrowser from '@plone/volto/internal';
+import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import trashSVG from '@plone/volto/icons/delete.svg';
 import {
