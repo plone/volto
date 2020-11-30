@@ -497,6 +497,10 @@ msgstr "Șterge coloană"
 msgid "Delete row"
 msgstr "Șterge rând"
 
+#: components/manage/Blocks/Listing/ListingData
+msgid "Depth"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Descending"
 msgstr "Descrescător"

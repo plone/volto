@@ -13,7 +13,7 @@ msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
 msgid "<p>Add some HTML here</p>"
-msgstr "<p>Aggiungi qui dell'HTML</p>"
+msgstr "<p>Aggiungi dell'HTML qui</p>"
 
 #: components/theme/Footer/Footer
 msgid "Accessibility"
@@ -497,6 +497,10 @@ msgstr "Elimina colonna"
 msgid "Delete row"
 msgstr "Elimina riga"
 
+#: components/manage/Blocks/Listing/ListingData
+msgid "Depth"
+msgstr "Profondità di ricerca"
+
 #: components/manage/Contents/Contents
 msgid "Descending"
 msgstr "Decrescente"
@@ -630,7 +634,7 @@ msgstr "Google Maps incorporata"
 
 #: components/manage/Controlpanels/ContentTypeLayout
 msgid "Enable editable Blocks"
-msgstr ""
+msgstr "Abilita i blocchi editabili"
 
 #: components/manage/Contents/Contents
 msgid "End Date"
@@ -917,7 +921,7 @@ msgstr "Risultati per pagina"
 
 #: components/manage/Contents/Contents
 msgid "Item succesfully moved."
-msgstr ""
+msgstr "Elemento spostato correttamente."
 
 #: components/manage/Contents/Contents
 msgid "Item(s) copied."
@@ -967,7 +971,7 @@ msgstr "Ultima versione"
 
 #: components/manage/Controlpanels/ContentTypesActions
 msgid "Layout"
-msgstr ""
+msgstr "Layout"
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Lead Image"
@@ -1035,11 +1039,11 @@ msgstr "Rendi la tabella compatta"
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Toolbar/More
 msgid "Manage Translations"
-msgstr ""
+msgstr "Gestisci traduzioni"
 
 #: components/manage/Multilingual/ManageTranslations
 msgid "Manage translations for {title}"
-msgstr ""
+msgstr "Gestisci le traduzioni per {title}"
 
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "Map"
@@ -1788,7 +1792,7 @@ msgstr "Il backend sta rispondendo, ma i CORS headers non sono adeguatamente con
 
 #: components/theme/CorsError/CorsError
 msgid "The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
-msgstr ""
+msgstr "Il server di backend del tuo sito web non risponde, ci scusiamo per l'inconveniente. Prova a ricaricare la pagina e riprova. Se il problema persiste, contattare gli amministratori del sito."
 
 #: components/theme/Register/Register
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
