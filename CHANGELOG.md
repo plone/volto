@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Generate language file of added missing German translations by @tisto. @ksuess
+
 ### Bugfix
 
 ### Internal
