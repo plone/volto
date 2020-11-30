@@ -9,8 +9,8 @@ import { Link } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 import cx from 'classnames';
 import { FormattedMessage, injectIntl, defineMessages } from 'react-intl';
-import { Icon } from '@plone/volto/components';
-import { getUser } from '@plone/volto/actions';
+import { Icon } from '@plone/volto/internal';
+import { getUser } from '@plone/volto/internal';
 import logoutSVG from '@plone/volto/icons/log-out.svg';
 import rightArrowSVG from '@plone/volto/icons/right-key.svg';
 

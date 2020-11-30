@@ -19,7 +19,7 @@ import {
   BodyClass,
   getBaseUrl,
   getLayoutFieldname,
-} from '@plone/volto/helpers';
+} from '@plone/volto/internal';
 
 /**
  * View container class.

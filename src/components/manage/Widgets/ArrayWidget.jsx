@@ -15,7 +15,7 @@ import {
   getVocabFromHint,
   getVocabFromField,
   getVocabFromItems,
-} from '@plone/volto/helpers';
+} from '@plone/volto/internal';
 import { getVocabulary } from '@plone/volto/internal';
 
 import {

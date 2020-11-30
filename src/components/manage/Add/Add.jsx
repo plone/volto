@@ -26,7 +26,7 @@ import {
   hasBlocksData,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
-} from '@plone/volto/helpers';
+} from '@plone/volto/internal';
 
 import { blocks } from '~/config';
 

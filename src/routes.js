@@ -34,7 +34,7 @@ import {
   Sitemap,
   UsersControlpanel,
   View,
-} from '@plone/volto/components';
+} from '@plone/volto/internal';
 import { addonRoutes } from '~/config';
 
 /**

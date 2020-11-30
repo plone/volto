@@ -3,10 +3,10 @@
  * @module components/manage/Controlpanels/ContentTypeSchema
  */
 
-import { getSchema, putSchema } from '@plone/volto/actions';
-import { getParentUrl } from '@plone/volto/helpers';
+import { getSchema, putSchema } from '@plone/volto/internal';
+import { getParentUrl } from '@plone/volto/internal';
 import { nth } from 'lodash';
-import { Error, Form, Icon, Toast, Toolbar } from '@plone/volto/components';
+import { Error, Form, Icon, Toast, Toolbar } from '@plone/volto/internal';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import saveSVG from '@plone/volto/icons/save.svg';
 import PropTypes from 'prop-types';

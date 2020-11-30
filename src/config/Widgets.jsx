@@ -20,7 +20,7 @@ import EmailWidget from '@plone/volto/components/manage/Widgets/EmailWidget';
 import NumberWidget from '@plone/volto/components/manage/Widgets/NumberWidget';
 
 import ReferenceWidget from '@plone/volto/components/manage/Widgets/ReferenceWidget';
-import ObjectBrowserWidget from '@plone/volto/components/manage/Widgets/ObjectBrowserWidget';
+import ObjectBrowserWidget from '@plone/volto/internal';
 
 export const DatetimeWidget = loadable(() =>
   import('@plone/volto/components/manage/Widgets/DatetimeWidget'),

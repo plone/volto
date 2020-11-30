@@ -14,7 +14,7 @@ import openSVG from '@plone/volto/icons/open.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import backSVG from '@plone/volto/icons/back.svg';
 
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { flattenToAppURL } from '@plone/volto/internal';
 
 /**
  * Album view component class.

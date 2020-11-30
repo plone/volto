@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
-import { ContentsIndexHeader } from '@plone/volto/components';
+import { ContentsIndexHeader } from '@plone/volto/internal';
 
 const mockStore = configureStore();
 

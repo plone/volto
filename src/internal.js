@@ -12,6 +12,10 @@
 
 import loadable from '@loadable/component';
 
+export FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
+export CheckboxWidget from '@plone/volto/components/manage/Widgets/CheckboxWidget';
+export Icon from '@plone/volto/components/theme/Icon/Icon';
+
 /**
  * Helpers
  */
@@ -66,6 +70,13 @@ export {
   applyConfig,
   withServerErrorCode,
 } from '@plone/volto/helpers/Utils/Utils';
+
+export TextWidget from '@plone/volto/components/manage/Widgets/TextWidget';
+
+export Error from '@plone/volto/components/theme/Error/Error';
+export NotFound from '@plone/volto/components/theme/NotFound/NotFound';
+export Forbidden from '@plone/volto/components/theme/Forbidden/Forbidden';
+export Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
 
 /**
  * Actions
@@ -183,6 +194,14 @@ export {
  * Components
  */
 
+// Object browser. This is a delicate component with regards to order
+export ObjectBrowserNav from '@plone/volto/components/manage/Sidebar/ObjectBrowserNav';
+export ObjectBrowserBody from '@plone/volto/components/manage/Sidebar/ObjectBrowserBody';
+export withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
+
+export ObjectBrowserWidget from '@plone/volto/components/manage/Widgets/ObjectBrowserWidget';
+export ObjectBrowserWidgetMode from '@plone/volto/components/manage/Widgets/ObjectBrowserWidget';
+
 //  Do not lazy load them, since it has not much sense (they will live in the main chunk)
 export App from '@plone/volto/components/theme/App/App';
 export AppExtras from '@plone/volto/components/theme/AppExtras/AppExtras';
@@ -202,12 +221,6 @@ export OutdatedBrowser from '@plone/volto/components/theme/OutdatedBrowser/Outda
 export LanguageSelector from '@plone/volto/components/theme/LanguageSelector/LanguageSelector';
 export Multilingual from '@plone/volto/components/theme/MultilingualRedirector/MultilingualRedirector';
 
-export Error from '@plone/volto/components/theme/Error/Error';
-export NotFound from '@plone/volto/components/theme/NotFound/NotFound';
-export Forbidden from '@plone/volto/components/theme/Forbidden/Forbidden';
-export Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
-
-export Icon from '@plone/volto/components/theme/Icon/Icon';
 export ConditionalLink from '@plone/volto/components/manage/ConditionalLink/ConditionalLink';
 export UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 
@@ -268,8 +281,7 @@ export Messages from '@plone/volto/components/manage/Messages/Messages';
 export BlockChooser from '@plone/volto/components/manage/BlockChooser/BlockChooser';
 
 // Sidebar components
-export ObjectBrowserNav from '@plone/volto/components/manage/Sidebar/ObjectBrowserNav';
-export ObjectBrowserBody from '@plone/volto/components/manage/Sidebar/ObjectBrowserBody';
+
 export Sidebar from '@plone/volto/components/manage/Sidebar/Sidebar';
 export SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
 export PersonalTools from '@plone/volto/components/manage/Toolbar/PersonalTools';
@@ -299,9 +311,7 @@ export UsersControlpanelUser from '@plone/volto/components/manage/Controlpanels/
 export UsersControlpanelGroups from '@plone/volto/components/manage/Controlpanels/UsersControlpanelGroups';
 export DiffField from '@plone/volto/components/manage/Diff/DiffField';
 
-export FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 export ArrayWidget from '@plone/volto/components/manage/Widgets/ArrayWidget';
-export CheckboxWidget from '@plone/volto/components/manage/Widgets/CheckboxWidget';
 
 export const DatetimeWidget = loadable(() =>
   import('@plone/volto/components/manage/Widgets/DatetimeWidget'),
@@ -319,10 +329,7 @@ export SchemaWidget from '@plone/volto/components/manage/Widgets/SchemaWidget';
 export SchemaWidgetFieldset from '@plone/volto/components/manage/Widgets/SchemaWidgetFieldset';
 export SelectWidget from '@plone/volto/components/manage/Widgets/SelectWidget';
 export TextareaWidget from '@plone/volto/components/manage/Widgets/TextareaWidget';
-export TextWidget from '@plone/volto/components/manage/Widgets/TextWidget';
 export WysiwygWidget from '@plone/volto/components/manage/Widgets/WysiwygWidget';
-export ObjectBrowserWidget from '@plone/volto/components/manage/Widgets/ObjectBrowserWidget';
-export ObjectBrowserWidgetMode from '@plone/volto/components/manage/Widgets/ObjectBrowserWidget';
 
 export EditDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/Edit';
 export EditTitleBlock from '@plone/volto/components/manage/Blocks/Title/Edit';

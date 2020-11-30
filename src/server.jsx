@@ -26,7 +26,7 @@ import {
   persistAuthToken,
   generateSitemap,
   getAPIResourceWithAuth,
-} from '@plone/volto/helpers';
+} from '@plone/volto/internal';
 
 import userSession from '@plone/volto/reducers/userSession/userSession';
 

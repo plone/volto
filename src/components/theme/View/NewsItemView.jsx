@@ -7,7 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Image } from 'semantic-ui-react';
 
-import { flattenToAppURL, flattenHTMLToAppURL } from '@plone/volto/helpers';
+import { flattenToAppURL, flattenHTMLToAppURL } from '@plone/volto/internal';
 
 /**
  * NewsItemView view component class.

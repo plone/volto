@@ -11,8 +11,8 @@ import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import { find } from 'lodash';
 
-import { Icon, Display, Workflow } from '@plone/volto/components';
-import { getBaseUrl } from '@plone/volto/helpers';
+import { Icon, Display, Workflow } from '@plone/volto/internal';
+import { getBaseUrl } from '@plone/volto/internal';
 
 import rightArrowSVG from '@plone/volto/icons/right-key.svg';
 import userSVG from '@plone/volto/icons/user.svg';

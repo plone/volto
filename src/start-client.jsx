@@ -11,7 +11,7 @@ import { settings } from '~/config';
 import '~/theme';
 
 import configureStore from '@plone/volto/store';
-import { Api, persistAuthToken, ScrollToTop } from '@plone/volto/helpers';
+import { Api, persistAuthToken, ScrollToTop } from '@plone/volto/internal';
 
 import * as Sentry from '@sentry/browser';
 import initSentry from '@plone/volto/sentry';

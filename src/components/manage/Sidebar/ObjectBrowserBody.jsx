@@ -7,7 +7,6 @@ import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import { Input, Segment } from 'semantic-ui-react';
 import { join } from 'lodash';
 import { searchContent } from '@plone/volto/internal';
-import { Icon } from '@plone/volto/internal';
 import { flattenToAppURL, isInternalURL } from '@plone/volto/internal';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 
@@ -20,6 +19,7 @@ import linkSVG from '@plone/volto/icons/link.svg';
 
 import { getParentURL } from './utils';
 import { ObjectBrowserNav } from '@plone/volto/internal';
+import { Icon } from '@plone/volto/internal';
 
 const messages = defineMessages({
   SearchInputPlaceholder: {

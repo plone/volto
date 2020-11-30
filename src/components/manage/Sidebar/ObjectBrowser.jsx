@@ -128,4 +128,5 @@ const withObjectBrowser = (WrappedComponent) =>
       );
     }
   };
+
 export default withObjectBrowser;
