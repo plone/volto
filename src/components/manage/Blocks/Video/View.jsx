@@ -11,7 +11,7 @@ import {
   isInternalURL,
   getParentUrl,
   flattenToAppURL,
-} from '@plone/volto/helpers';
+} from '@plone/volto/internal';
 import { settings } from '~/config';
 
 /**

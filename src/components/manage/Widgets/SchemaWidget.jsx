@@ -12,13 +12,9 @@ import move from 'lodash-move';
 import { Confirm, Form, Grid, Icon, Message, Segment } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
-import { getFieldsVocabulary } from '@plone/volto/helpers';
+import { getFieldsVocabulary } from '@plone/volto/internal';
 
-import {
-  Field,
-  ModalForm,
-  SchemaWidgetFieldset,
-} from '@plone/volto/components';
+import { Field, ModalForm, SchemaWidgetFieldset } from '@plone/volto/internal';
 
 const messages = defineMessages({
   add: {

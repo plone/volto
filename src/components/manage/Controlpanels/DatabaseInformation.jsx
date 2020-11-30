@@ -11,9 +11,9 @@ import { Portal } from 'react-portal';
 import { Container, Divider, Message, Segment, Table } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import { getDatabaseInformation } from '@plone/volto/actions';
-import { Helmet } from '@plone/volto/helpers';
-import { Icon, Toolbar } from '@plone/volto/components';
+import { getDatabaseInformation } from '@plone/volto/internal';
+import { Helmet } from '@plone/volto/internal';
+import { Icon, Toolbar } from '@plone/volto/internal';
 import backSVG from '@plone/volto/icons/back.svg';
 
 const messages = defineMessages({

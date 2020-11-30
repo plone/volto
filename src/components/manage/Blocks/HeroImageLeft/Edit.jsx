@@ -15,9 +15,9 @@ import { Editor, DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
 import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 
-import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
-import { createContent } from '@plone/volto/actions';
-import { Icon } from '@plone/volto/components';
+import { flattenToAppURL, getBaseUrl } from '@plone/volto/internal';
+import { createContent } from '@plone/volto/internal';
+import { Icon } from '@plone/volto/internal';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
 

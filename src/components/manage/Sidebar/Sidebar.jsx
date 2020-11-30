@@ -11,10 +11,10 @@ import { compose } from 'redux';
 import cookie from 'react-cookie';
 import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
-import { BodyClass } from '@plone/volto/helpers';
-import { Icon } from '@plone/volto/components';
+import { BodyClass } from '@plone/volto/internal';
+import { Icon } from '@plone/volto/internal';
 import forbiddenSVG from '@plone/volto/icons/forbidden.svg';
-import { setSidebarTab } from '@plone/volto/actions';
+import { setSidebarTab } from '@plone/volto/internal';
 import expandSVG from '@plone/volto/icons/left-key.svg';
 import collapseSVG from '@plone/volto/icons/right-key.svg';
 

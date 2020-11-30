@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
 import React from 'react';
 import { keys, map } from 'lodash';
-import { Field } from '@plone/volto/components';
+import { Field } from '@plone/volto/internal';
 import { Segment, Message } from 'semantic-ui-react';
 
 const messages = defineMessages({

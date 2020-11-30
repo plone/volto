@@ -5,7 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from '@plone/volto/helpers';
+import { Helmet } from '@plone/volto/internal';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { keys, isEmpty } from 'lodash';
@@ -19,8 +19,8 @@ import qs from 'query-string';
 import { settings } from '~/config';
 import { toast } from 'react-toastify';
 
-import { createContent, getSchema } from '@plone/volto/actions';
-import { Form, Icon, Toolbar, Sidebar, Toast } from '@plone/volto/components';
+import { createContent, getSchema } from '@plone/volto/internal';
+import { Form, Icon, Toolbar, Sidebar, Toast } from '@plone/volto/internal';
 import {
   getBaseUrl,
   hasBlocksData,

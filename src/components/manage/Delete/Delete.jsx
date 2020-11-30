@@ -5,7 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from '@plone/volto/helpers';
+import { Helmet } from '@plone/volto/internal';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
@@ -14,8 +14,8 @@ import { Button, Container, List, Segment } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import qs from 'query-string';
 
-import { deleteContent, getContent } from '@plone/volto/actions';
-import { Toolbar } from '@plone/volto/components';
+import { deleteContent, getContent } from '@plone/volto/internal';
+import { Toolbar } from '@plone/volto/internal';
 
 const messages = defineMessages({
   delete: {

@@ -16,7 +16,7 @@ import {
   getVocabFromField,
   getVocabFromItems,
 } from '@plone/volto/helpers';
-import { getVocabulary } from '@plone/volto/actions';
+import { getVocabulary } from '@plone/volto/internal';
 
 import {
   Option,
@@ -25,7 +25,7 @@ import {
   customSelectStyles,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
 
-import { FormFieldWrapper } from '@plone/volto/components';
+import { FormFieldWrapper } from '@plone/volto/internal';
 
 const AsyncPaginate = loadable(() => import('react-select-async-paginate'));
 const CreatableSelect = loadable(() => import('react-select/creatable'));

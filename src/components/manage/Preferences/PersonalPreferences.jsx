@@ -14,7 +14,7 @@ import request from 'superagent';
 import { defineMessages, injectIntl } from 'react-intl';
 import { toast } from 'react-toastify';
 
-import { Form, Toast } from '@plone/volto/components';
+import { Form, Toast } from '@plone/volto/internal';
 import languages from '@plone/volto/constants/Languages';
 
 const messages = defineMessages({

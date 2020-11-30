@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { filter, find, isEmpty, map } from 'lodash';
 import { FormattedMessage } from 'react-intl';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { flattenToAppURL } from '@plone/volto/internal';
 import { settings } from '~/config';
 
 const Types = ({ types, pathname, content, currentLanguage }) => {

@@ -4,7 +4,7 @@
  */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from '@plone/volto/helpers';
+import { Helmet } from '@plone/volto/internal';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link, withRouter } from 'react-router-dom';
@@ -23,9 +23,9 @@ import {
 import jwtDecode from 'jwt-decode';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import { updateSharing, getSharing } from '@plone/volto/actions';
-import { getBaseUrl } from '@plone/volto/helpers';
-import { Icon, Toolbar } from '@plone/volto/components';
+import { updateSharing, getSharing } from '@plone/volto/internal';
+import { getBaseUrl } from '@plone/volto/internal';
+import { Icon, Toolbar } from '@plone/volto/internal';
 
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';

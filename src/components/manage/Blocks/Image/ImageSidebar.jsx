@@ -8,19 +8,19 @@ import {
   Icon,
   FormFieldWrapper,
   TextWidget,
-} from '@plone/volto/components';
+} from '@plone/volto/internal';
 import {
   AlignBlock,
   flattenToAppURL,
   isInternalURL,
-} from '@plone/volto/helpers';
+} from '@plone/volto/internal';
 
 import imageSVG from '@plone/volto/icons/image.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import upSVG from '@plone/volto/icons/up-key.svg';
 import downSVG from '@plone/volto/icons/down-key.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
-import ImageSizeWidget from '@plone/volto/components/manage/Blocks/Image/ImageSizeWidget';
+import ImageSizeWidget from './ImageSizeWidget';
 
 const messages = defineMessages({
   Image: {

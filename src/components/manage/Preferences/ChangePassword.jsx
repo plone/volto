@@ -5,7 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from '@plone/volto/helpers';
+import { Helmet } from '@plone/volto/internal';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link, withRouter } from 'react-router-dom';
@@ -15,9 +15,9 @@ import { Container } from 'semantic-ui-react';
 import jwtDecode from 'jwt-decode';
 import { toast } from 'react-toastify';
 
-import { Form, Icon, Toast, Toolbar } from '@plone/volto/components';
-import { updatePassword } from '@plone/volto/actions';
-import { getBaseUrl } from '@plone/volto/helpers';
+import { Form, Icon, Toast, Toolbar } from '@plone/volto/internal';
+import { updatePassword } from '@plone/volto/internal';
+import { getBaseUrl } from '@plone/volto/internal';
 
 import backSVG from '@plone/volto/icons/back.svg';
 

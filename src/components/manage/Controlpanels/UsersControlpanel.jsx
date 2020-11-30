@@ -13,7 +13,7 @@ import {
   updateGroup,
   showAllUsers,
   updateUser,
-} from '@plone/volto/actions';
+} from '@plone/volto/internal';
 import {
   Icon,
   ModalForm,
@@ -21,8 +21,8 @@ import {
   Toolbar,
   UsersControlpanelGroups,
   UsersControlpanelUser,
-} from '@plone/volto/components';
-import { getBaseUrl, Helmet, messages } from '@plone/volto/helpers';
+} from '@plone/volto/internal';
+import { getBaseUrl, Helmet, messages } from '@plone/volto/internal';
 import backSVG from '@plone/volto/icons/back.svg';
 import addSvg from '@plone/volto/icons/circle-plus.svg';
 import { find, isEqual, map } from 'lodash';

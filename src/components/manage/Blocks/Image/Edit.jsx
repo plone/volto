@@ -13,15 +13,15 @@ import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 import Dropzone from 'react-dropzone';
 
-import { Icon, ImageSidebar, SidebarPortal } from '@plone/volto/components';
-import { createContent } from '@plone/volto/actions';
+import { Icon, ImageSidebar, SidebarPortal } from '@plone/volto/internal';
+import { createContent } from '@plone/volto/internal';
 import {
   flattenToAppURL,
   getBaseUrl,
   isInternalURL,
-} from '@plone/volto/helpers';
+} from '@plone/volto/internal';
 
-import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
+import imageBlockSVG from './block-image.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';

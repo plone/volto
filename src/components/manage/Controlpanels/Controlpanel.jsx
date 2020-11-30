@@ -8,14 +8,14 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
-import { Helmet } from '@plone/volto/helpers';
+import { Helmet } from '@plone/volto/internal';
 import { Portal } from 'react-portal';
 import { Button, Container } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import { toast } from 'react-toastify';
 
-import { Form, Icon, Toolbar, Toast } from '@plone/volto/components';
-import { updateControlpanel, getControlpanel } from '@plone/volto/actions';
+import { Form, Icon, Toolbar, Toast } from '@plone/volto/internal';
+import { updateControlpanel, getControlpanel } from '@plone/volto/internal';
 
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';

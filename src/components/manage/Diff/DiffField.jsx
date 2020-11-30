@@ -14,9 +14,9 @@ import { Provider } from 'react-intl-redux';
 import { createBrowserHistory } from 'history';
 import { ConnectedRouter } from 'connected-react-router';
 
-import { Api } from '@plone/volto/helpers';
+import { Api } from '@plone/volto/internal';
 import configureStore from '@plone/volto/store';
-import { DefaultView } from '@plone/volto/components/';
+import { DefaultView } from '@plone/volto/internal';
 
 /**
  * Enhanced diff words utility

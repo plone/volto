@@ -1,18 +1,18 @@
 import React from 'react';
 import { Button, Container, Segment, Table } from 'semantic-ui-react';
-import { Helmet } from '@plone/volto/helpers';
+import { Helmet } from '@plone/volto/internal';
 import langmap from 'langmap';
-import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
+import { flattenToAppURL, getBaseUrl } from '@plone/volto/internal';
 import { reduce } from 'lodash';
 import { Link, useLocation } from 'react-router-dom';
-import { Icon, Toast, Toolbar } from '@plone/volto/components';
+import { Icon, Toast, Toolbar } from '@plone/volto/internal';
 import { settings } from '~/config';
-import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
+import { withObjectBrowser } from '@plone/volto/internal';
 import {
   deleteLinkTranslation,
   getContent,
   linkTranslation,
-} from '@plone/volto/actions';
+} from '@plone/volto/internal';
 import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
 import { useSelector, useDispatch } from 'react-redux';
 import { Portal } from 'react-portal';

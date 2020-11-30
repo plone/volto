@@ -5,7 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from '@plone/volto/helpers';
+import { Helmet } from '@plone/volto/internal';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -15,9 +15,9 @@ import { Portal } from 'react-portal';
 import moment from 'moment';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import { Icon as IconNext, Toolbar } from '@plone/volto/components';
-import { getHistory, revertHistory } from '@plone/volto/actions';
-import { getBaseUrl } from '@plone/volto/helpers';
+import { Icon as IconNext, Toolbar } from '@plone/volto/internal';
+import { getHistory, revertHistory } from '@plone/volto/internal';
+import { getBaseUrl } from '@plone/volto/internal';
 
 import backSVG from '@plone/volto/icons/back.svg';
 

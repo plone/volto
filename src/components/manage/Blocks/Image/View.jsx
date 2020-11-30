@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import cx from 'classnames';
 
-import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
+import { flattenToAppURL, isInternalURL } from '@plone/volto/internal';
 
 /**
  * View image block class.

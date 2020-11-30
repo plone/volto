@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-import { ListingBlockBody as ListingBody } from '@plone/volto/components';
+import { ListingBlockBody as ListingBody } from '@plone/volto/internal';
 
 const View = ({ data, properties, block, path }) => {
   return (

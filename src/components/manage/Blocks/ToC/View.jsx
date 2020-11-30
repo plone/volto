@@ -13,7 +13,7 @@ import AnchorLink from 'react-anchor-link-smooth-scroll';
 import {
   getBlocksFieldname,
   getBlocksLayoutFieldname,
-} from '@plone/volto/helpers';
+} from '@plone/volto/internal';
 
 const messages = defineMessages({
   text: {

@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { Input } from 'semantic-ui-react';
 
 import { injectIntl } from 'react-intl';
-import { Icon, FormFieldWrapper } from '@plone/volto/components';
+import { Icon, FormFieldWrapper } from '@plone/volto/internal';
 
 /**
  * TextWidget component class.

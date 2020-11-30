@@ -10,8 +10,8 @@ import { compose } from 'redux';
 import { isEmpty, map } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 
-import { updateContent } from '@plone/volto/actions';
-import { ModalForm } from '@plone/volto/components';
+import { updateContent } from '@plone/volto/internal';
+import { ModalForm } from '@plone/volto/internal';
 
 const messages = defineMessages({
   properties: {

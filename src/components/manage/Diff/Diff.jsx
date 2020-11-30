@@ -5,7 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from '@plone/volto/helpers';
+import { Helmet } from '@plone/volto/internal';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { filter, isEqual, map } from 'lodash';
@@ -16,14 +16,14 @@ import moment from 'moment';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import qs from 'query-string';
 
-import { getDiff, getSchema, getHistory } from '@plone/volto/actions';
+import { getDiff, getSchema, getHistory } from '@plone/volto/internal';
 import {
   getBaseUrl,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
   hasBlocksData,
-} from '@plone/volto/helpers';
-import { DiffField, Icon, Toolbar } from '@plone/volto/components';
+} from '@plone/volto/internal';
+import { DiffField, Icon, Toolbar } from '@plone/volto/internal';
 
 import backSVG from '@plone/volto/icons/back.svg';
 

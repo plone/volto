@@ -10,18 +10,18 @@ import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import { concat, filter, last, map, uniqBy } from 'lodash';
 import { Portal } from 'react-portal';
-import { Helmet } from '@plone/volto/helpers';
+import { Helmet } from '@plone/volto/internal';
 import { Container, Grid, Header, Icon, Segment } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import Icons from '@plone/volto/constants/ControlpanelIcons';
-import { listControlpanels, getSystemInformation } from '@plone/volto/actions';
+import { listControlpanels, getSystemInformation } from '@plone/volto/internal';
 import {
   Error,
   Icon as IconNext,
   Toolbar,
   VersionOverview,
-} from '@plone/volto/components';
+} from '@plone/volto/internal';
 
 import backSVG from '@plone/volto/icons/back.svg';
 

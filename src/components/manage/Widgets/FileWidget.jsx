@@ -9,9 +9,9 @@ import { Button, Image, Dimmer } from 'semantic-ui-react';
 import { readAsDataURL } from 'promise-file-reader';
 import { injectIntl } from 'react-intl';
 import deleteSVG from '@plone/volto/icons/delete.svg';
-import { Icon, FormFieldWrapper } from '@plone/volto/components';
+import { Icon, FormFieldWrapper } from '@plone/volto/internal';
 import Dropzone from 'react-dropzone';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { flattenToAppURL } from '@plone/volto/internal';
 import { defineMessages, useIntl } from 'react-intl';
 
 const imageMimetypes = [

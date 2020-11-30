@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Portal } from 'react-portal';
-import { Helmet } from '@plone/volto/helpers';
+import { Helmet } from '@plone/volto/internal';
 import { Link } from 'react-router-dom';
 import {
   Button,
@@ -51,8 +51,8 @@ import {
   orderContent,
   sortContent,
   updateColumnsContent,
-} from '@plone/volto/actions';
-import { getBaseUrl } from '@plone/volto/helpers';
+} from '@plone/volto/internal';
+import { getBaseUrl } from '@plone/volto/internal';
 import Indexes, { defaultIndexes } from '@plone/volto/constants/Indexes';
 import {
   ContentsIndexHeader,
@@ -67,7 +67,7 @@ import {
   Toast,
   Icon,
   Unauthorized,
-} from '@plone/volto/components';
+} from '@plone/volto/internal';
 import { toast } from 'react-toastify';
 
 import backSVG from '@plone/volto/icons/back.svg';

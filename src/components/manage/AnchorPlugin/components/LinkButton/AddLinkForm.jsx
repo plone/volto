@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 
 import unionClassNames from 'union-class-names';
-import { addAppURL } from '@plone/volto/helpers';
+import { addAppURL } from '@plone/volto/internal';
 import EditorUtils from 'draft-js-plugins-utils';
 
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
@@ -21,10 +21,10 @@ import clearSVG from '@plone/volto/icons/clear.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 
-import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
+import { withObjectBrowser } from '@plone/volto/internal';
 import { withRouter } from 'react-router';
 
-import { Icon } from '@plone/volto/components';
+import { Icon } from '@plone/volto/internal';
 
 const messages = defineMessages({
   placeholder: {

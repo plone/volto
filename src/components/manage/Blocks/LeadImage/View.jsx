@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import cx from 'classnames';
 import { settings } from '~/config';
 
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { flattenToAppURL } from '@plone/volto/internal';
 
 /**
  * View image block class.

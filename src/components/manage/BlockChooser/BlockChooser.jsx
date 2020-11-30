@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { filter, map, groupBy } from 'lodash';
 import { Accordion, Button } from 'semantic-ui-react';
 import { injectIntl } from 'react-intl';
-import { Icon } from '@plone/volto/components';
+import { Icon } from '@plone/volto/internal';
 import AnimateHeight from 'react-animate-height';
 import { blocks } from '~/config';
 

@@ -13,8 +13,8 @@ import {
   getVocabFromHint,
   getVocabFromField,
   getVocabFromItems,
-} from '@plone/volto/helpers';
-import { getVocabulary } from '@plone/volto/actions';
+} from '@plone/volto/internal';
+import { getVocabulary } from '@plone/volto/internal';
 
 import {
   Option,
@@ -23,7 +23,7 @@ import {
   customSelectStyles,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
 
-import { FormFieldWrapper } from '@plone/volto/components';
+import { FormFieldWrapper } from '@plone/volto/internal';
 
 const AsyncCreatable = loadable.lib(() =>
   import('react-select/async-creatable'),

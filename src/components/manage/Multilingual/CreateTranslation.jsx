@@ -2,8 +2,8 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { updateIntl } from 'react-intl-redux';
-import { getTranslationLocator } from '@plone/volto/actions';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { getTranslationLocator } from '@plone/volto/internal';
+import { flattenToAppURL } from '@plone/volto/internal';
 import { settings } from '~/config';
 
 let locales = {};

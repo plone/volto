@@ -13,7 +13,7 @@ import cx from 'classnames';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import Cell from '@plone/volto/components/manage/Blocks/Table/Cell';
-import { Field, Icon } from '@plone/volto/components';
+import { Field, Icon } from '@plone/volto/internal';
 
 import rowSVG from '@plone/volto/icons/row.svg';
 import colSVG from '@plone/volto/icons/column.svg';

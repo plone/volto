@@ -13,7 +13,7 @@ import {
   hasBlocksData,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
-} from '@plone/volto/helpers';
+} from '@plone/volto/internal';
 import { Portal } from 'react-portal';
 import { Button, Segment } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
@@ -26,13 +26,13 @@ import {
   Toolbar,
   Sidebar,
   Toast,
-} from '@plone/volto/components';
+} from '@plone/volto/internal';
 import {
   getSchema,
   updateSchema,
   getControlpanel,
   updateControlpanel,
-} from '@plone/volto/actions';
+} from '@plone/volto/internal';
 
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';

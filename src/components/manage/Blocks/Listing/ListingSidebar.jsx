@@ -8,7 +8,7 @@ import {
   ListingBlockStyle as ListingStyle,
   ListingBlockMore as ListingMore,
   Icon,
-} from '@plone/volto/components';
+} from '@plone/volto/internal';
 
 import upSVG from '@plone/volto/icons/up-key.svg';
 import downSVG from '@plone/volto/icons/down-key.svg';

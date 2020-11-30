@@ -9,7 +9,7 @@ import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import { Button, Input, Embed, Message } from 'semantic-ui-react';
 import cx from 'classnames';
 
-import { Icon, SidebarPortal, VideoSidebar } from '@plone/volto/components';
+import { Icon, SidebarPortal, VideoSidebar } from '@plone/volto/internal';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import videoBlockSVG from '@plone/volto/components/manage/Blocks/Video/block-video.svg';
@@ -17,7 +17,7 @@ import {
   isInternalURL,
   getParentUrl,
   flattenToAppURL,
-} from '@plone/volto/helpers';
+} from '@plone/volto/internal';
 import { settings } from '~/config';
 
 const messages = defineMessages({

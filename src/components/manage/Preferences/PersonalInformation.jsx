@@ -11,8 +11,8 @@ import { defineMessages, injectIntl } from 'react-intl';
 import jwtDecode from 'jwt-decode';
 import { toast } from 'react-toastify';
 
-import { Form, Toast } from '@plone/volto/components';
-import { getUser, updateUser } from '@plone/volto/actions';
+import { Form, Toast } from '@plone/volto/internal';
+import { getUser, updateUser } from '@plone/volto/internal';
 
 const messages = defineMessages({
   personalInformation: {

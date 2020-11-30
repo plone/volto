@@ -7,14 +7,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { getParentUrl } from '@plone/volto/helpers';
+import { getParentUrl } from '@plone/volto/internal';
 import { Portal } from 'react-portal';
 import { Button, Header } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import { toast } from 'react-toastify';
 import { last, nth, join } from 'lodash';
-import { Error, Form, Icon, Toolbar, Toast } from '@plone/volto/components';
-import { getControlpanel, updateControlpanel } from '@plone/volto/actions';
+import { Error, Form, Icon, Toolbar, Toast } from '@plone/volto/internal';
+import { getControlpanel, updateControlpanel } from '@plone/volto/internal';
 
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';

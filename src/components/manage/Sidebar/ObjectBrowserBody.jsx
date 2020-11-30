@@ -6,9 +6,9 @@ import { connect } from 'react-redux';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import { Input, Segment } from 'semantic-ui-react';
 import { join } from 'lodash';
-import { searchContent } from '@plone/volto/actions';
-import { Icon } from '@plone/volto/components';
-import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
+import { searchContent } from '@plone/volto/internal';
+import { Icon } from '@plone/volto/internal';
+import { flattenToAppURL, isInternalURL } from '@plone/volto/internal';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 
 import { settings } from '~/config';
@@ -18,7 +18,8 @@ import clearSVG from '@plone/volto/icons/clear.svg';
 import searchSVG from '@plone/volto/icons/zoom.svg';
 import linkSVG from '@plone/volto/icons/link.svg';
 
-import ObjectBrowserNav from '@plone/volto/components/manage/Sidebar/ObjectBrowserNav';
+import { getParentURL } from './utils';
+import { ObjectBrowserNav } from '@plone/volto/internal';
 
 const messages = defineMessages({
   SearchInputPlaceholder: {
@@ -31,10 +32,6 @@ const messages = defineMessages({
   },
   of: { id: 'Selected items - x of y', defaultMessage: 'of' },
 });
-
-export function getParentURL(url) {
-  return flattenToAppURL(`${join(url.split('/').slice(0, -1), '/')}`) || '/';
-}
 
 /**
  * ObjectBrowserBody container class.

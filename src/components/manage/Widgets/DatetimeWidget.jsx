@@ -9,7 +9,7 @@ import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 import TimePicker from 'rc-time-picker';
 import cx from 'classnames';
-import { Icon, FormFieldWrapper } from '@plone/volto/components';
+import { Icon, FormFieldWrapper } from '@plone/volto/internal';
 import leftKey from '@plone/volto/icons/left-key.svg';
 import rightKey from '@plone/volto/icons/right-key.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';

@@ -11,8 +11,8 @@ import { Label, Dropdown, Popup, Icon } from 'semantic-ui-react';
 import { compact, concat, fromPairs, map, values, uniqBy } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 import { settings } from '~/config';
-import { FormFieldWrapper } from '@plone/volto/components';
-import { resetSearchContent, searchContent } from '@plone/volto/actions';
+import { FormFieldWrapper } from '@plone/volto/internal';
+import { resetSearchContent, searchContent } from '@plone/volto/internal';
 
 const messages = defineMessages({
   no_results_found: {

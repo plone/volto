@@ -10,8 +10,8 @@ import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 import { Message } from 'semantic-ui-react';
 
-import { LeadImageSidebar, SidebarPortal } from '@plone/volto/components';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { LeadImageSidebar, SidebarPortal } from '@plone/volto/internal';
+import { flattenToAppURL } from '@plone/volto/internal';
 
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
 

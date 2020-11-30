@@ -266,13 +266,20 @@ export Sharing from '@plone/volto/components/manage/Sharing/Sharing';
 export Workflow from '@plone/volto/components/manage/Workflow/Workflow';
 export Messages from '@plone/volto/components/manage/Messages/Messages';
 export BlockChooser from '@plone/volto/components/manage/BlockChooser/BlockChooser';
-export Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+
+// Sidebar components
+export ObjectBrowserNav from '@plone/volto/components/manage/Sidebar/ObjectBrowserNav';
+export ObjectBrowserBody from '@plone/volto/components/manage/Sidebar/ObjectBrowserBody';
 export Sidebar from '@plone/volto/components/manage/Sidebar/Sidebar';
 export SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
 export PersonalTools from '@plone/volto/components/manage/Toolbar/PersonalTools';
+
+// Toolbar components
+export Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
 export More from '@plone/volto/components/manage/Toolbar/More';
 export Types from '@plone/volto/components/manage/Toolbar/Types';
 export Toast from '@plone/volto/components/manage/Toast/Toast';
+export StandardWrapper from '@plone/volto/components/manage/Toolbar/StandardWrapper';
 export ManageTranslations from '@plone/volto/components/manage/Multilingual/ManageTranslations';
 
 // Potentially could ve removed from index, since they are internal components and

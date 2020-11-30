@@ -12,14 +12,14 @@ import loadable from '@loadable/component';
 import { toast } from 'react-toastify';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import getWorkflowMapping from '@plone/volto/constants/Workflows';
-import { Icon, Toast } from '@plone/volto/components';
+import { Icon, Toast } from '@plone/volto/internal';
 import { settings } from '~/config';
 
 import {
   getContent,
   getWorkflow,
   transitionWorkflow,
-} from '@plone/volto/actions';
+} from '@plone/volto/internal';
 
 import downSVG from '@plone/volto/icons/down-key.svg';
 import upSVG from '@plone/volto/icons/up-key.svg';

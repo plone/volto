@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ConditionalLink } from '@plone/volto/components';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { ConditionalLink } from '@plone/volto/internal';
+import { flattenToAppURL } from '@plone/volto/internal';
 import { settings } from '~/config';
 
 import DefaultImageSVG from '@plone/volto/components/manage/Blocks/Listing/default-image.svg';
-import { isInternalURL } from '@plone/volto/helpers/Url/Url';
+import { isInternalURL } from '@plone/volto/internal';
 
 const DefaultTemplate = ({ items, linkMore, isEditMode }) => {
   let link = null;

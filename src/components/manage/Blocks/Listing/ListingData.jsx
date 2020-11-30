@@ -4,12 +4,12 @@ import { Grid, Form, Segment } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import { toPairs, groupBy, map } from 'lodash';
 import loadable from '@loadable/component';
-import { CheckboxWidget, TextWidget } from '@plone/volto/components';
+import { CheckboxWidget, TextWidget } from '@plone/volto/internal';
 import { compose } from 'redux';
 import { useSelector } from 'react-redux';
-import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
+import { withObjectBrowser } from '@plone/volto/internal';
 
-import QuerystringWidget from '@plone/volto/components/manage/Blocks/Listing/QuerystringWidget';
+import QuerystringWidget from './QuerystringWidget';
 
 import {
   Option,

@@ -13,16 +13,16 @@ import { Button } from 'semantic-ui-react';
 import includes from 'lodash/includes';
 import isBoolean from 'lodash/isBoolean';
 import cx from 'classnames';
-import { setSidebarTab } from '@plone/volto/actions';
+import { setSidebarTab } from '@plone/volto/internal';
 
-import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
+import withObjectBrowser from '@plone/volto/internal';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import trashSVG from '@plone/volto/icons/delete.svg';
 import {
   SidebarPortal,
   BlockSettingsSidebar,
   BlockSettingsSchema,
-} from '@plone/volto/components';
+} from '@plone/volto/internal';
 
 const messages = defineMessages({
   unknownBlock: {

@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { defineMessages, injectIntl } from 'react-intl';
 
-import { TextWidget } from '@plone/volto/components';
+import { TextWidget } from '@plone/volto/internal';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
-import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
+import { withObjectBrowser } from '@plone/volto/internal';
 
 const messages = defineMessages({
   LinkTitle: {

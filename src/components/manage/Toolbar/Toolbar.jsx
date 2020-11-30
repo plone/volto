@@ -14,19 +14,19 @@ import cookie from 'react-cookie';
 import { filter, find } from 'lodash';
 import cx from 'classnames';
 import { settings } from '~/config';
-import More from '@plone/volto/components/manage/Toolbar/More';
-import PersonalTools from '@plone/volto/components/manage/Toolbar/PersonalTools';
-import Types from '@plone/volto/components/manage/Toolbar/Types';
-import PersonalInformation from '@plone/volto/components/manage/Preferences/PersonalInformation';
-import PersonalPreferences from '@plone/volto/components/manage/Preferences/PersonalPreferences';
-import StandardWrapper from '@plone/volto/components/manage/Toolbar/StandardWrapper';
+import { More } from '@plone/volto/internal';
+import { PersonalTools } from '@plone/volto/internal';
+import { Types } from '@plone/volto/internal';
+import { PersonalInformation } from '@plone/volto/internal';
+import { PersonalPreferences } from '@plone/volto/internal';
+import { StandardWrapper } from '@plone/volto/internal';
 import {
   getTypes,
   listActions,
   setExpandedToolbar,
-} from '@plone/volto/actions';
-import { Icon } from '@plone/volto/components';
-import { BodyClass, getBaseUrl } from '@plone/volto/helpers';
+} from '@plone/volto/internal';
+import { Icon } from '@plone/volto/internal';
+import { BodyClass, getBaseUrl } from '@plone/volto/internal';
 
 import pastanagaSmall from '@plone/volto/components/manage/Toolbar/pastanaga-small.svg';
 import pastanagalogo from '@plone/volto/components/manage/Toolbar/pastanaga.svg';

@@ -6,8 +6,8 @@ import {
   SidebarPortal,
   ListingBlockBody as ListingBody,
   ListingBlockSidebar as ListingSidebar,
-} from '@plone/volto/components';
-import { getBaseUrl } from '@plone/volto/helpers';
+} from '@plone/volto/internal';
+import { getBaseUrl } from '@plone/volto/internal';
 
 const messages = defineMessages({
   results: {

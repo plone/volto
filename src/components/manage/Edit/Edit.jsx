@@ -5,7 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from '@plone/volto/helpers';
+import { Helmet } from '@plone/volto/internal';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { asyncConnect } from 'redux-connect';
@@ -24,14 +24,14 @@ import {
   Toast,
   Toolbar,
   Unauthorized,
-} from '@plone/volto/components';
+} from '@plone/volto/internal';
 import {
   updateContent,
   getContent,
   getSchema,
   listActions,
-} from '@plone/volto/actions';
-import { getBaseUrl, hasBlocksData } from '@plone/volto/helpers';
+} from '@plone/volto/internal';
+import { getBaseUrl, hasBlocksData } from '@plone/volto/internal';
 
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';

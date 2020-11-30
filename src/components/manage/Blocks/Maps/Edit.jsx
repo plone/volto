@@ -9,7 +9,7 @@ import { Button, Input, Message } from 'semantic-ui-react';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import cx from 'classnames';
 
-import { Icon, SidebarPortal, MapsSidebar } from '@plone/volto/components';
+import { Icon, SidebarPortal, MapsSidebar } from '@plone/volto/internal';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import mapsBlockSVG from '@plone/volto/components/manage/Blocks/Maps/block-maps.svg';

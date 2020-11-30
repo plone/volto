@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { Form } from 'semantic-ui-react';
 import { Accordion, Grid, Segment } from 'semantic-ui-react';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
-import { CheckboxWidget, Icon, TextWidget } from '@plone/volto/components';
-import { AlignBlock, flattenToAppURL } from '@plone/volto/helpers';
+import { CheckboxWidget, Icon, TextWidget } from '@plone/volto/internal';
+import { AlignBlock, flattenToAppURL } from '@plone/volto/internal';
 
 import imageSVG from '@plone/volto/icons/image.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';

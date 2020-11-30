@@ -16,9 +16,9 @@ import {
   getVocabFromHint,
   getVocabFromField,
   getVocabFromItems,
-} from '@plone/volto/helpers';
-import { FormFieldWrapper } from '@plone/volto/components';
-import { getVocabulary, getVocabularyTokenTitle } from '@plone/volto/actions';
+} from '@plone/volto/internal';
+import { FormFieldWrapper } from '@plone/volto/internal';
+import { getVocabulary, getVocabularyTokenTitle } from '@plone/volto/internal';
 
 import {
   Option,

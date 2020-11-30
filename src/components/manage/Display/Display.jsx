@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import loadable from '@loadable/component';
 
-import { getSchema, updateContent, getContent } from '@plone/volto/actions';
+import { getSchema, updateContent, getContent } from '@plone/volto/internal';
 import layouts from '@plone/volto/constants/Layouts';
-import { getLayoutFieldname } from '@plone/volto/helpers';
-import { Icon } from '@plone/volto/components';
+import { getLayoutFieldname } from '@plone/volto/internal';
+import { Icon } from '@plone/volto/internal';
 import { FormattedMessage } from 'react-intl';
 import { views } from '~/config';
 

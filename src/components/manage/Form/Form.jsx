@@ -3,7 +3,7 @@
  * @module components/manage/Form/Form
  */
 
-import { EditBlock, Field, Icon, Toast } from '@plone/volto/components';
+import { EditBlock, Field, Icon, Toast } from '@plone/volto/internal';
 import {
   blockHasValue,
   difference,
@@ -11,7 +11,7 @@ import {
   getBlocksFieldname,
   getBlocksLayoutFieldname,
   messages,
-} from '@plone/volto/helpers';
+} from '@plone/volto/internal';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import dragSVG from '@plone/volto/icons/drag.svg';

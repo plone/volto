@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import { getParentUrl } from '@plone/volto/helpers';
+import { getParentUrl } from '@plone/volto/internal';
 import { Portal } from 'react-portal';
 import { last } from 'lodash';
 import { Confirm, Container, Table, Button, Header } from 'semantic-ui-react';
@@ -21,13 +21,13 @@ import {
   Toolbar,
   Toast,
   ContentTypesActions,
-} from '@plone/volto/components';
+} from '@plone/volto/internal';
 import {
   getControlpanel,
   postControlpanel,
   deleteControlpanel,
-} from '@plone/volto/actions';
-import { getId } from '@plone/volto/helpers';
+} from '@plone/volto/internal';
+import { getId } from '@plone/volto/internal';
 
 import addSVG from '@plone/volto/icons/add-document.svg';
 import backSVG from '@plone/volto/icons/back.svg';

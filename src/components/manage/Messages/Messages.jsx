@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { Message, Container } from 'semantic-ui-react';
 import { map } from 'lodash';
 
-import { removeMessage } from '@plone/volto/actions';
+import { removeMessage } from '@plone/volto/internal';
 
 /**
  * Messages container class.

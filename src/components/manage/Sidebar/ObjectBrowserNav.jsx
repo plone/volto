@@ -1,8 +1,8 @@
 import React from 'react';
 import { Button, Segment, Popup } from 'semantic-ui-react';
 import cx from 'classnames';
-import { Icon } from '@plone/volto/components';
-import { flattenToAppURL, getContentIcon } from '@plone/volto/helpers';
+import { Icon } from '@plone/volto/internal';
+import { flattenToAppURL, getContentIcon } from '@plone/volto/internal';
 import { settings } from '~/config';
 import rightArrowSVG from '@plone/volto/icons/right-key.svg';
 import homeSVG from '@plone/volto/icons/home.svg';

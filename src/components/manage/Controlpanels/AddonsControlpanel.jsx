@@ -25,9 +25,9 @@ import {
   listAddons,
   uninstallAddon,
   upgradeAddon,
-} from '@plone/volto/actions';
-import { Helmet } from '@plone/volto/helpers';
-import { Icon, Toolbar } from '@plone/volto/components';
+} from '@plone/volto/internal';
+import { Helmet } from '@plone/volto/internal';
+import { Icon, Toolbar } from '@plone/volto/internal';
 import circleBottomSVG from '@plone/volto/icons/circle-bottom.svg';
 import circleTopSVG from '@plone/volto/icons/circle-top.svg';
 import backSVG from '@plone/volto/icons/back.svg';

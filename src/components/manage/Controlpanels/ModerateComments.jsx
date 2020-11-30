@@ -14,9 +14,9 @@ import { Container, Button, Table } from 'semantic-ui-react';
 import moment from 'moment';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import { deleteComment, searchContent } from '@plone/volto/actions';
-import { CommentEditModal, Icon, Toolbar } from '@plone/volto/components';
-import { getBaseUrl } from '@plone/volto/helpers';
+import { deleteComment, searchContent } from '@plone/volto/internal';
+import { CommentEditModal, Icon, Toolbar } from '@plone/volto/internal';
+import { getBaseUrl } from '@plone/volto/internal';
 
 import backSVG from '@plone/volto/icons/back.svg';
 
