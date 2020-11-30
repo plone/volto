@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Tweak Cypress command `waitForResourceToLoad` to timeout after 50 tries.  @tiberiuichim
+
 ## 10.1.0 (2020-11-30)
 
 ### Feature
