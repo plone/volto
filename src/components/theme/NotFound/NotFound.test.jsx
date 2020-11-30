@@ -6,6 +6,8 @@ import { MemoryRouter } from 'react-router-dom';
 
 import NotFound from './NotFound';
 
+global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
+
 const mockStore = configureStore();
 
 describe('NotFound', () => {
