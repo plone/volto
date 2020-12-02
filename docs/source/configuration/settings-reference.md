@@ -75,3 +75,19 @@ This list is still incomplete, contributions are welcomed!
         Course: courseSVG,
     };
     ```
+
+## `bbb_getContentFetchesFullobjects`
+
+!!! block ""
+
+    Before Volto 10, the main content-grabbing request, triggered as a result of
+    `getContent` action, always used the `fullobjects` flag, which fully serialized
+    the immediate children of the context request. If your code depends on this
+    behavior, set this flag to `true` in the `settings` object.
+
+    !!! note
+        You should probably refactor your code to avoid depending on this
+        behavior. It can cause performance issues when you have large children
+        (for example content with lots of text) and you need to batch requests
+        anyway, if you want to be sure to display all the children.
+
