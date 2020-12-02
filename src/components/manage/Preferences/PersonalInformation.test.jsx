@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, waitFor, screen } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
 import jwt from 'jsonwebtoken';
@@ -77,7 +77,7 @@ describe('PersonalInformation', () => {
         </MemoryRouter>
       </Provider>,
     );
-    await waitFor(() => screen.getByText(/Choose a file/i));
+    await waitFor(() => {});
     expect(container.firstChild).toMatchSnapshot();
   });
 });
