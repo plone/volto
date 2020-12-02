@@ -4,6 +4,8 @@
 
 ### Breaking
 
+- Change default Listing Template to include only Text and renamed the old default Template to Summary Template
+
 ### Feature
 
 - Generate language file of added missing German translations by @tisto. @ksuess
