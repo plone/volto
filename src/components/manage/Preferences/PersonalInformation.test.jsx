@@ -1,5 +1,5 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render, waitFor, screen } from '@testing-library/react';
 import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
 import jwt from 'jsonwebtoken';
@@ -14,7 +14,7 @@ jest.mock('react-portal', () => ({
 }));
 
 describe('PersonalInformation', () => {
-  it('renders a personal information component', () => {
+  it('renders a personal information component', async () => {
     const store = mockStore({
       userSession: {
         token: jwt.sign({ sub: 'john' }, 'secret'),
@@ -33,7 +33,7 @@ describe('PersonalInformation', () => {
         messages: {},
       },
     });
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <MemoryRouter>
           <PersonalInformation
@@ -43,10 +43,11 @@ describe('PersonalInformation', () => {
         </MemoryRouter>
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+
+    await waitFor(() => screen.getByText(/Choose a file/i));
+    expect(container.firstChild.firstChild).toMatchSnapshot();
   });
-  it('renders a personal information component embedded in the Toolbar', () => {
+  it('renders a personal information component embedded in the Toolbar', async () => {
     const store = mockStore({
       userSession: {
         token: jwt.sign({ sub: 'john' }, 'secret'),
@@ -65,7 +66,7 @@ describe('PersonalInformation', () => {
         messages: {},
       },
     });
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <MemoryRouter>
           <PersonalInformation
@@ -76,7 +77,7 @@ describe('PersonalInformation', () => {
         </MemoryRouter>
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    await waitFor(() => screen.getByText(/Choose a file/i));
+    expect(container.firstChild.firstChild).toMatchSnapshot();
   });
 });
