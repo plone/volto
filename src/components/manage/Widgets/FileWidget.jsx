@@ -10,7 +10,7 @@ import { readAsDataURL } from 'promise-file-reader';
 import { injectIntl } from 'react-intl';
 import deleteSVG from '@plone/volto/icons/delete.svg';
 import { Icon, FormFieldWrapper } from '@plone/volto/components';
-import Dropzone from 'react-dropzone';
+import loadable from '@loadable/component';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import { defineMessages, useIntl } from 'react-intl';
 
@@ -22,6 +22,9 @@ const imageMimetypes = [
   'image/gif',
   'image/svg+xml',
 ];
+const Dropzone = loadable(() => import('react-dropzone'), {
+  resolveComponent: (components) => components.Dropzone,
+});
 
 const messages = defineMessages({
   releaseDrag: {
