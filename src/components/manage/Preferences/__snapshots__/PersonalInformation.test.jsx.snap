@@ -1,663 +1,671 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PersonalInformation renders a personal information component 1`] = `
-<form
-  class="ui form"
-  method="post"
+<div
+  class="ui container"
 >
-  <div
-    class="ui raised segments"
+  <form
+    class="ui form"
+    method="post"
   >
     <div
-      class="ui segment"
+      class="ui raised segments"
     >
       <div
-        class="inline field help text"
-        id="field-fullname"
+        class="ui segment"
       >
         <div
-          class="ui grid"
+          class="inline field help text"
+          id="field-fullname"
         >
           <div
-            class="stretched row"
+            class="ui grid"
           >
             <div
-              class="four wide column"
+              class="stretched row"
             >
               <div
-                class="wrapper"
-              >
-                <label
-                  for="field-fullname"
-                >
-                  Full Name
-                </label>
-              </div>
-            </div>
-            <div
-              class="eight wide column"
-            >
-              <div
-                class="ui input"
-              >
-                <input
-                  id="field-fullname"
-                  name="fullname"
-                  type="text"
-                  value=""
-                />
-              </div>
-            </div>
-          </div>
-          <div
-            class="stretched row"
-          >
-            <div
-              class="stretched twelve wide column"
-            >
-              <p
-                class="help"
-              >
-                Enter full name, e.g. John Smith.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="inline required field help text"
-        id="field-email"
-      >
-        <div
-          class="ui grid"
-        >
-          <div
-            class="stretched row"
-          >
-            <div
-              class="four wide column"
-            >
-              <div
-                class="wrapper"
-              >
-                <label
-                  for="field-email"
-                >
-                  E-mail
-                </label>
-              </div>
-            </div>
-            <div
-              class="eight wide column"
-            >
-              <div
-                class="ui input"
-              >
-                <input
-                  id="field-email"
-                  name="email"
-                  type="text"
-                  value=""
-                />
-              </div>
-            </div>
-          </div>
-          <div
-            class="stretched row"
-          >
-            <div
-              class="stretched twelve wide column"
-            >
-              <p
-                class="help"
-              >
-                We will use this address if you need to recover your password
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="inline field help"
-        id="field-portrait"
-      >
-        <div
-          class="ui grid"
-        >
-          <div
-            class="stretched row"
-          >
-            <div
-              class="four wide column"
-            >
-              <div
-                class="wrapper"
-              >
-                <label
-                  for="field-portrait"
-                >
-                  Portrait
-                </label>
-              </div>
-            </div>
-            <div
-              class="eight wide column"
-            >
-              <div
-                class="file-widget-dropzone"
-                tabindex="0"
+                class="four wide column"
               >
                 <div
-                  class="dropzone-placeholder"
+                  class="wrapper"
                 >
-                  <p
-                    class="dropzone-text"
+                  <label
+                    for="field-fullname"
                   >
-                    Drop file here to upload a new file
-                  </p>
+                    Full Name
+                  </label>
                 </div>
-                <label
-                  class="label-file-widget-input"
-                >
-                  Choose a file
-                </label>
-                <input
-                  autocomplete="off"
-                  id="field-portrait"
-                  multiple=""
-                  name="portrait"
-                  style="display: none;"
-                  tabindex="-1"
-                  type="file"
-                />
               </div>
               <div
-                class="field-file-name"
-              />
+                class="eight wide column"
+              >
+                <div
+                  class="ui input"
+                >
+                  <input
+                    id="field-fullname"
+                    name="fullname"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class="stretched row"
+            >
+              <div
+                class="stretched twelve wide column"
+              >
+                <p
+                  class="help"
+                >
+                  Enter full name, e.g. John Smith.
+                </p>
+              </div>
             </div>
           </div>
+        </div>
+        <div
+          class="inline required field help text"
+          id="field-email"
+        >
           <div
-            class="stretched row"
+            class="ui grid"
           >
             <div
-              class="stretched twelve wide column"
+              class="stretched row"
             >
-              <p
-                class="help"
+              <div
+                class="four wide column"
               >
-                The user portrait/avatar
-              </p>
+                <div
+                  class="wrapper"
+                >
+                  <label
+                    for="field-email"
+                  >
+                    E-mail
+                  </label>
+                </div>
+              </div>
+              <div
+                class="eight wide column"
+              >
+                <div
+                  class="ui input"
+                >
+                  <input
+                    id="field-email"
+                    name="email"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class="stretched row"
+            >
+              <div
+                class="stretched twelve wide column"
+              >
+                <p
+                  class="help"
+                >
+                  We will use this address if you need to recover your password
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="inline field help"
+          id="field-portrait"
+        >
+          <div
+            class="ui grid"
+          >
+            <div
+              class="stretched row"
+            >
+              <div
+                class="four wide column"
+              >
+                <div
+                  class="wrapper"
+                >
+                  <label
+                    for="field-portrait"
+                  >
+                    Portrait
+                  </label>
+                </div>
+              </div>
+              <div
+                class="eight wide column"
+              >
+                <div
+                  class="file-widget-dropzone"
+                  tabindex="0"
+                >
+                  <div
+                    class="dropzone-placeholder"
+                  >
+                    <p
+                      class="dropzone-text"
+                    >
+                      Drop file here to upload a new file
+                    </p>
+                  </div>
+                  <label
+                    class="label-file-widget-input"
+                  >
+                    Choose a file
+                  </label>
+                  <input
+                    autocomplete="off"
+                    id="field-portrait"
+                    multiple=""
+                    name="portrait"
+                    style="display: none;"
+                    tabindex="-1"
+                    type="file"
+                  />
+                </div>
+                <div
+                  class="field-file-name"
+                />
+              </div>
+            </div>
+            <div
+              class="stretched row"
+            >
+              <div
+                class="stretched twelve wide column"
+              >
+                <p
+                  class="help"
+                >
+                  The user portrait/avatar
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="inline field help text"
+          id="field-home_page"
+        >
+          <div
+            class="ui grid"
+          >
+            <div
+              class="stretched row"
+            >
+              <div
+                class="four wide column"
+              >
+                <div
+                  class="wrapper"
+                >
+                  <label
+                    for="field-home_page"
+                  >
+                    Home page
+                  </label>
+                </div>
+              </div>
+              <div
+                class="eight wide column"
+              >
+                <div
+                  class="ui input"
+                >
+                  <input
+                    id="field-home_page"
+                    name="home_page"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class="stretched row"
+            >
+              <div
+                class="stretched twelve wide column"
+              >
+                <p
+                  class="help"
+                >
+                  The URL for your external home page, if you have one.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="inline field help text"
+          id="field-location"
+        >
+          <div
+            class="ui grid"
+          >
+            <div
+              class="stretched row"
+            >
+              <div
+                class="four wide column"
+              >
+                <div
+                  class="wrapper"
+                >
+                  <label
+                    for="field-location"
+                  >
+                    Location
+                  </label>
+                </div>
+              </div>
+              <div
+                class="eight wide column"
+              >
+                <div
+                  class="ui input"
+                >
+                  <input
+                    id="field-location"
+                    name="location"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class="stretched row"
+            >
+              <div
+                class="stretched twelve wide column"
+              >
+                <p
+                  class="help"
+                >
+                  Your location - either city and country - or in a company setting, where your office is located.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div
-        class="inline field help text"
-        id="field-home_page"
+        class="ui clearing segment actions"
       >
-        <div
-          class="ui grid"
+        <button
+          aria-label="Save"
+          class="ui basic primary right floated button"
+          title="Save"
+          type="submit"
         >
-          <div
-            class="stretched row"
-          >
-            <div
-              class="four wide column"
-            >
-              <div
-                class="wrapper"
-              >
-                <label
-                  for="field-home_page"
-                >
-                  Home page
-                </label>
-              </div>
-            </div>
-            <div
-              class="eight wide column"
-            >
-              <div
-                class="ui input"
-              >
-                <input
-                  id="field-home_page"
-                  name="home_page"
-                  type="text"
-                  value=""
-                />
-              </div>
-            </div>
-          </div>
-          <div
-            class="stretched row"
-          >
-            <div
-              class="stretched twelve wide column"
-            >
-              <p
-                class="help"
-              >
-                The URL for your external home page, if you have one.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="inline field help text"
-        id="field-location"
-      >
-        <div
-          class="ui grid"
+          <svg
+            class="icon circled"
+            style="height: 30px; width: auto; fill: currentColor;"
+            viewBox=""
+            xmlns=""
+          />
+        </button>
+        <button
+          aria-label="Cancel"
+          class="ui basic secondary right floated button"
+          title="Cancel"
         >
-          <div
-            class="stretched row"
-          >
-            <div
-              class="four wide column"
-            >
-              <div
-                class="wrapper"
-              >
-                <label
-                  for="field-location"
-                >
-                  Location
-                </label>
-              </div>
-            </div>
-            <div
-              class="eight wide column"
-            >
-              <div
-                class="ui input"
-              >
-                <input
-                  id="field-location"
-                  name="location"
-                  type="text"
-                  value=""
-                />
-              </div>
-            </div>
-          </div>
-          <div
-            class="stretched row"
-          >
-            <div
-              class="stretched twelve wide column"
-            >
-              <p
-                class="help"
-              >
-                Your location - either city and country - or in a company setting, where your office is located.
-              </p>
-            </div>
-          </div>
-        </div>
+          <svg
+            class="icon circled"
+            style="height: 30px; width: auto; fill: currentColor;"
+            viewBox=""
+            xmlns=""
+          />
+        </button>
       </div>
     </div>
-    <div
-      class="ui clearing segment actions"
-    >
-      <button
-        aria-label="Save"
-        class="ui basic primary right floated button"
-        title="Save"
-        type="submit"
-      >
-        <svg
-          class="icon circled"
-          style="height: 30px; width: auto; fill: currentColor;"
-          viewBox=""
-          xmlns=""
-        />
-      </button>
-      <button
-        aria-label="Cancel"
-        class="ui basic secondary right floated button"
-        title="Cancel"
-      >
-        <svg
-          class="icon circled"
-          style="height: 30px; width: auto; fill: currentColor;"
-          viewBox=""
-          xmlns=""
-        />
-      </button>
-    </div>
-  </div>
-</form>
+  </form>
+</div>
 `;
 
 exports[`PersonalInformation renders a personal information component embedded in the Toolbar 1`] = `
-<form
-  class="ui form"
-  method="post"
+<div
+  class="ui container"
 >
-  <div
-    class="ui raised segments"
+  <form
+    class="ui form"
+    method="post"
   >
     <div
-      class="ui segment"
+      class="ui raised segments"
     >
       <div
-        class="inline field help text"
-        id="field-fullname"
+        class="ui segment"
       >
         <div
-          class="ui grid"
+          class="inline field help text"
+          id="field-fullname"
         >
           <div
-            class="stretched row"
+            class="ui grid"
           >
             <div
-              class="four wide column"
+              class="stretched row"
             >
               <div
-                class="wrapper"
-              >
-                <label
-                  for="field-fullname"
-                >
-                  Full Name
-                </label>
-              </div>
-            </div>
-            <div
-              class="eight wide column"
-            >
-              <div
-                class="ui input"
-              >
-                <input
-                  id="field-fullname"
-                  name="fullname"
-                  type="text"
-                  value=""
-                />
-              </div>
-            </div>
-          </div>
-          <div
-            class="stretched row"
-          >
-            <div
-              class="stretched twelve wide column"
-            >
-              <p
-                class="help"
-              >
-                Enter full name, e.g. John Smith.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="inline required field help text"
-        id="field-email"
-      >
-        <div
-          class="ui grid"
-        >
-          <div
-            class="stretched row"
-          >
-            <div
-              class="four wide column"
-            >
-              <div
-                class="wrapper"
-              >
-                <label
-                  for="field-email"
-                >
-                  E-mail
-                </label>
-              </div>
-            </div>
-            <div
-              class="eight wide column"
-            >
-              <div
-                class="ui input"
-              >
-                <input
-                  id="field-email"
-                  name="email"
-                  type="text"
-                  value=""
-                />
-              </div>
-            </div>
-          </div>
-          <div
-            class="stretched row"
-          >
-            <div
-              class="stretched twelve wide column"
-            >
-              <p
-                class="help"
-              >
-                We will use this address if you need to recover your password
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="inline field help"
-        id="field-portrait"
-      >
-        <div
-          class="ui grid"
-        >
-          <div
-            class="stretched row"
-          >
-            <div
-              class="four wide column"
-            >
-              <div
-                class="wrapper"
-              >
-                <label
-                  for="field-portrait"
-                >
-                  Portrait
-                </label>
-              </div>
-            </div>
-            <div
-              class="eight wide column"
-            >
-              <div
-                class="file-widget-dropzone"
-                tabindex="0"
+                class="four wide column"
               >
                 <div
-                  class="dropzone-placeholder"
+                  class="wrapper"
                 >
-                  <p
-                    class="dropzone-text"
+                  <label
+                    for="field-fullname"
                   >
-                    Drop file here to upload a new file
-                  </p>
+                    Full Name
+                  </label>
                 </div>
-                <label
-                  class="label-file-widget-input"
-                >
-                  Choose a file
-                </label>
-                <input
-                  autocomplete="off"
-                  id="field-portrait"
-                  multiple=""
-                  name="portrait"
-                  style="display: none;"
-                  tabindex="-1"
-                  type="file"
-                />
               </div>
               <div
-                class="field-file-name"
-              />
+                class="eight wide column"
+              >
+                <div
+                  class="ui input"
+                >
+                  <input
+                    id="field-fullname"
+                    name="fullname"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class="stretched row"
+            >
+              <div
+                class="stretched twelve wide column"
+              >
+                <p
+                  class="help"
+                >
+                  Enter full name, e.g. John Smith.
+                </p>
+              </div>
             </div>
           </div>
+        </div>
+        <div
+          class="inline required field help text"
+          id="field-email"
+        >
           <div
-            class="stretched row"
+            class="ui grid"
           >
             <div
-              class="stretched twelve wide column"
+              class="stretched row"
             >
-              <p
-                class="help"
+              <div
+                class="four wide column"
               >
-                The user portrait/avatar
-              </p>
+                <div
+                  class="wrapper"
+                >
+                  <label
+                    for="field-email"
+                  >
+                    E-mail
+                  </label>
+                </div>
+              </div>
+              <div
+                class="eight wide column"
+              >
+                <div
+                  class="ui input"
+                >
+                  <input
+                    id="field-email"
+                    name="email"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class="stretched row"
+            >
+              <div
+                class="stretched twelve wide column"
+              >
+                <p
+                  class="help"
+                >
+                  We will use this address if you need to recover your password
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="inline field help"
+          id="field-portrait"
+        >
+          <div
+            class="ui grid"
+          >
+            <div
+              class="stretched row"
+            >
+              <div
+                class="four wide column"
+              >
+                <div
+                  class="wrapper"
+                >
+                  <label
+                    for="field-portrait"
+                  >
+                    Portrait
+                  </label>
+                </div>
+              </div>
+              <div
+                class="eight wide column"
+              >
+                <div
+                  class="file-widget-dropzone"
+                  tabindex="0"
+                >
+                  <div
+                    class="dropzone-placeholder"
+                  >
+                    <p
+                      class="dropzone-text"
+                    >
+                      Drop file here to upload a new file
+                    </p>
+                  </div>
+                  <label
+                    class="label-file-widget-input"
+                  >
+                    Choose a file
+                  </label>
+                  <input
+                    autocomplete="off"
+                    id="field-portrait"
+                    multiple=""
+                    name="portrait"
+                    style="display: none;"
+                    tabindex="-1"
+                    type="file"
+                  />
+                </div>
+                <div
+                  class="field-file-name"
+                />
+              </div>
+            </div>
+            <div
+              class="stretched row"
+            >
+              <div
+                class="stretched twelve wide column"
+              >
+                <p
+                  class="help"
+                >
+                  The user portrait/avatar
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="inline field help text"
+          id="field-home_page"
+        >
+          <div
+            class="ui grid"
+          >
+            <div
+              class="stretched row"
+            >
+              <div
+                class="four wide column"
+              >
+                <div
+                  class="wrapper"
+                >
+                  <label
+                    for="field-home_page"
+                  >
+                    Home page
+                  </label>
+                </div>
+              </div>
+              <div
+                class="eight wide column"
+              >
+                <div
+                  class="ui input"
+                >
+                  <input
+                    id="field-home_page"
+                    name="home_page"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class="stretched row"
+            >
+              <div
+                class="stretched twelve wide column"
+              >
+                <p
+                  class="help"
+                >
+                  The URL for your external home page, if you have one.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="inline field help text"
+          id="field-location"
+        >
+          <div
+            class="ui grid"
+          >
+            <div
+              class="stretched row"
+            >
+              <div
+                class="four wide column"
+              >
+                <div
+                  class="wrapper"
+                >
+                  <label
+                    for="field-location"
+                  >
+                    Location
+                  </label>
+                </div>
+              </div>
+              <div
+                class="eight wide column"
+              >
+                <div
+                  class="ui input"
+                >
+                  <input
+                    id="field-location"
+                    name="location"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class="stretched row"
+            >
+              <div
+                class="stretched twelve wide column"
+              >
+                <p
+                  class="help"
+                >
+                  Your location - either city and country - or in a company setting, where your office is located.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div
-        class="inline field help text"
-        id="field-home_page"
+        class="ui clearing segment actions"
       >
-        <div
-          class="ui grid"
+        <button
+          aria-label="Save"
+          class="ui basic primary right floated button"
+          title="Save"
+          type="submit"
         >
-          <div
-            class="stretched row"
-          >
-            <div
-              class="four wide column"
-            >
-              <div
-                class="wrapper"
-              >
-                <label
-                  for="field-home_page"
-                >
-                  Home page
-                </label>
-              </div>
-            </div>
-            <div
-              class="eight wide column"
-            >
-              <div
-                class="ui input"
-              >
-                <input
-                  id="field-home_page"
-                  name="home_page"
-                  type="text"
-                  value=""
-                />
-              </div>
-            </div>
-          </div>
-          <div
-            class="stretched row"
-          >
-            <div
-              class="stretched twelve wide column"
-            >
-              <p
-                class="help"
-              >
-                The URL for your external home page, if you have one.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="inline field help text"
-        id="field-location"
-      >
-        <div
-          class="ui grid"
+          <svg
+            class="icon circled"
+            style="height: 30px; width: auto; fill: currentColor;"
+            viewBox=""
+            xmlns=""
+          />
+        </button>
+        <button
+          aria-label="Cancel"
+          class="ui basic secondary right floated button"
+          title="Cancel"
         >
-          <div
-            class="stretched row"
-          >
-            <div
-              class="four wide column"
-            >
-              <div
-                class="wrapper"
-              >
-                <label
-                  for="field-location"
-                >
-                  Location
-                </label>
-              </div>
-            </div>
-            <div
-              class="eight wide column"
-            >
-              <div
-                class="ui input"
-              >
-                <input
-                  id="field-location"
-                  name="location"
-                  type="text"
-                  value=""
-                />
-              </div>
-            </div>
-          </div>
-          <div
-            class="stretched row"
-          >
-            <div
-              class="stretched twelve wide column"
-            >
-              <p
-                class="help"
-              >
-                Your location - either city and country - or in a company setting, where your office is located.
-              </p>
-            </div>
-          </div>
-        </div>
+          <svg
+            class="icon circled"
+            style="height: 30px; width: auto; fill: currentColor;"
+            viewBox=""
+            xmlns=""
+          />
+        </button>
       </div>
     </div>
-    <div
-      class="ui clearing segment actions"
-    >
-      <button
-        aria-label="Save"
-        class="ui basic primary right floated button"
-        title="Save"
-        type="submit"
-      >
-        <svg
-          class="icon circled"
-          style="height: 30px; width: auto; fill: currentColor;"
-          viewBox=""
-          xmlns=""
-        />
-      </button>
-      <button
-        aria-label="Cancel"
-        class="ui basic secondary right floated button"
-        title="Cancel"
-      >
-        <svg
-          class="icon circled"
-          style="height: 30px; width: auto; fill: currentColor;"
-          viewBox=""
-          xmlns=""
-        />
-      </button>
-    </div>
-  </div>
-</form>
+  </form>
+</div>
 `;

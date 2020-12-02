@@ -45,7 +45,7 @@ describe('PersonalInformation', () => {
     );
 
     await waitFor(() => screen.getByText(/Choose a file/i));
-    expect(container.firstChild.firstChild).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
   it('renders a personal information component embedded in the Toolbar', async () => {
     const store = mockStore({
@@ -78,6 +78,6 @@ describe('PersonalInformation', () => {
       </Provider>,
     );
     await waitFor(() => screen.getByText(/Choose a file/i));
-    expect(container.firstChild.firstChild).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 });
