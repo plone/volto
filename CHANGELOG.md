@@ -9,16 +9,25 @@
 - fixed bug in render lists in draftjs, when there's some styles inside list-item (links or bold text ecc..) @giuliaghisini
 ## 8.10.1 (unreleased)
 ## 10.0.1 (unreleased)
+## 10.1.1 (unreleased)
 
 ### Breaking
 
 ### Feature
 
 - added search depth in listing and updated it locales @giuliaghisini
+- Generate language file of added missing German translations by @tisto. @ksuess
+- Add emailSend action @nzambello
 
 ### Bugfix
 
 ### Internal
+
+## 10.1.0 (2020-11-30)
+
+### Feature
+
+- Add missing German translations @tisto
 
 ## 10.0.0 (2020-11-30)
 
