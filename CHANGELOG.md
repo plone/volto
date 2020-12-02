@@ -4,7 +4,7 @@
 
 ### Breaking
 
-- Change default Listing Template to include only Text and renamed the old default Template to Summary Template
+- Change default Listing Template to include only Text and renamed the old default Template to Summary Template @jackahl
 
 ### Feature
 
