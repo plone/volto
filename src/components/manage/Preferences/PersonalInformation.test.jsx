@@ -44,7 +44,7 @@ describe('PersonalInformation', () => {
       </Provider>,
     );
 
-    await waitFor(() => screen.getByText(/Choose a file/i));
+    await waitFor(() => {});
     expect(container.firstChild).toMatchSnapshot();
   });
   it('renders a personal information component embedded in the Toolbar', async () => {
