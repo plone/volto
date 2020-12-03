@@ -150,7 +150,7 @@ export class BlocksToolbarComponent extends React.Component {
               className="deleteBlocks"
               id="toolbar-delete-blocks"
             >
-              <Icon name={trashSVG} size="30px" className="circled" />
+              <Icon name={trashSVG} size="30px" />
             </button>
             <button
               aria-label={intl.formatMessage(messages.cutBlocks)}
