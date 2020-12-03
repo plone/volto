@@ -21,7 +21,7 @@ import cutSVG from '@plone/volto/icons/cut.svg';
 import pasteSVG from '@plone/volto/icons/paste.svg';
 import trashSVG from '@plone/volto/icons/delete.svg';
 
-class BlocksToolbar extends React.Component {
+export class BlocksToolbarComponent extends React.Component {
   constructor(props) {
     super(props);
 
@@ -159,7 +159,7 @@ class BlocksToolbar extends React.Component {
               className="cutBlocks"
               id="toolbar-cut-blocks"
             >
-              <Icon name={cutSVG} size="30px" className="circled" />
+              <Icon name={cutSVG} size="30px" />
             </button>
             <button
               aria-label={intl.formatMessage(messages.copyBlocks)}
@@ -168,7 +168,7 @@ class BlocksToolbar extends React.Component {
               className="copyBlocks"
               id="toolbar-copy-blocks"
             >
-              <Icon name={copySVG} size="30px" className="circled" />
+              <Icon name={copySVG} size="30px" />
             </button>
           </Portal>
         ) : (
@@ -190,7 +190,7 @@ class BlocksToolbar extends React.Component {
               <span class="blockCount">
                 {(blocksClipboard.cut || blocksClipboard.copy).length}
               </span>
-              <Icon name={pasteSVG} size="30px" className="circled" />
+              <Icon name={pasteSVG} size="30px" />
             </button>
           </Portal>
         ) : (
@@ -211,4 +211,4 @@ export default compose(
     },
     { setBlocksClipboard, resetBlocksClipboard },
   ),
-)(BlocksToolbar);
+)(BlocksToolbarComponent);
