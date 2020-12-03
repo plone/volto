@@ -1,65 +1,82 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a file widget component 1`] = `
-<div
-  class="inline field"
-  id="field-my-field"
->
+Array [
   <div
-    class="ui grid"
+    className="inline field"
+    id="field-my-field"
   >
     <div
-      class="stretched row"
+      className="ui grid"
     >
       <div
-        class="four wide column"
+        className="stretched row"
       >
         <div
-          class="wrapper"
-        >
-          <label
-            for="field-my-field"
-          >
-            My field
-          </label>
-        </div>
-      </div>
-      <div
-        class="eight wide column"
-      >
-        <div
-          class="file-widget-dropzone"
-          tabindex="0"
+          className="four wide column"
         >
           <div
-            class="dropzone-placeholder"
+            className="wrapper"
           >
-            <p
-              class="dropzone-text"
+            <label
+              htmlFor="field-my-field"
             >
-              Drop file here to upload a new file
-            </p>
+              My field
+            </label>
           </div>
-          <label
-            class="label-file-widget-input"
-          >
-            Choose a file
-          </label>
-          <input
-            autocomplete="off"
-            id="field-my-field"
-            multiple=""
-            name="my-field"
-            style="display: none;"
-            tabindex="-1"
-            type="file"
-          />
         </div>
         <div
-          class="field-file-name"
-        />
+          className="eight wide column"
+        >
+          <div
+            className="file-widget-dropzone"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragEnter={[Function]}
+            onDragLeave={[Function]}
+            onDragOver={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            tabIndex={0}
+          >
+            <div
+              className="dropzone-placeholder"
+            >
+              <p
+                className="dropzone-text"
+              >
+                Drop file here to upload a new file
+              </p>
+            </div>
+            <label
+              className="label-file-widget-input"
+            >
+              Choose a file
+            </label>
+            <input
+              autoComplete="off"
+              id="field-my-field"
+              multiple={true}
+              name="my-field"
+              onChange={[Function]}
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+              tabIndex={-1}
+              type="file"
+            />
+          </div>
+          <div
+            className="field-file-name"
+          />
+        </div>
       </div>
     </div>
-  </div>
-</div>
+  </div>,
+  ",",
+]
 `;

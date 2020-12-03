@@ -1,5 +1,6 @@
 import React from 'react';
-import { render, waitFor, screen } from '@testing-library/react';
+import { waitFor } from '@testing-library/react';
+import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import FileWidget from './FileWidget';
 import { Provider } from 'react-intl-redux';
@@ -14,12 +15,12 @@ test('renders a file widget component', async () => {
     },
   });
 
-  const { container } = render(
+  const component = renderer.create(
     <Provider store={store}>
       <FileWidget id="my-field" title="My field" onChange={() => {}} />,
     </Provider>,
   );
 
-  await waitFor(() => screen.getByText(/Choose a file/i));
-  expect(container.firstChild).toMatchSnapshot();
+  await waitFor(() => {});
+  expect(component.toJSON()).toMatchSnapshot();
 });

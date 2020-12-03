@@ -1,5 +1,6 @@
 import React from 'react';
-import { render, waitFor } from '@testing-library/react';
+import { waitFor } from '@testing-library/react';
+import renderer from 'react-test-renderer';
 import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
 import jwt from 'jsonwebtoken';
@@ -33,7 +34,7 @@ describe('PersonalInformation', () => {
         messages: {},
       },
     });
-    const { container } = render(
+    const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter>
           <PersonalInformation
@@ -45,7 +46,7 @@ describe('PersonalInformation', () => {
     );
 
     await waitFor(() => {});
-    expect(container.firstChild).toMatchSnapshot();
+    expect(component.toJSON()).toMatchSnapshot();
   });
   it('renders a personal information component embedded in the Toolbar', async () => {
     const store = mockStore({
@@ -66,7 +67,7 @@ describe('PersonalInformation', () => {
         messages: {},
       },
     });
-    const { container } = render(
+    const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter>
           <PersonalInformation
@@ -78,6 +79,6 @@ describe('PersonalInformation', () => {
       </Provider>,
     );
     await waitFor(() => {});
-    expect(container.firstChild).toMatchSnapshot();
+    expect(component.toJSON()).toMatchSnapshot();
   });
 });

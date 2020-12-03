@@ -2,50 +2,56 @@
 
 exports[`PersonalInformation renders a personal information component 1`] = `
 <div
-  class="ui container"
+  className="ui container"
 >
   <form
-    class="ui form"
+    className="ui form"
     method="post"
+    onSubmit={[Function]}
   >
     <div
-      class="ui raised segments"
+      className="ui raised segments"
     >
       <div
-        class="ui segment"
+        className="ui segment"
       >
         <div
-          class="inline field help text"
+          className="inline field help text"
           id="field-fullname"
         >
           <div
-            class="ui grid"
+            className="ui grid"
           >
             <div
-              class="stretched row"
+              className="stretched row"
             >
               <div
-                class="four wide column"
+                className="four wide column"
               >
                 <div
-                  class="wrapper"
+                  className="wrapper"
                 >
                   <label
-                    for="field-fullname"
+                    htmlFor="field-fullname"
                   >
                     Full Name
                   </label>
                 </div>
               </div>
               <div
-                class="eight wide column"
+                className="eight wide column"
               >
                 <div
-                  class="ui input"
+                  className="ui input"
                 >
                   <input
                     id="field-fullname"
+                    maxLength={null}
+                    minLength={null}
                     name="fullname"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onClick={[Function]}
                     type="text"
                     value=""
                   />
@@ -53,13 +59,13 @@ exports[`PersonalInformation renders a personal information component 1`] = `
               </div>
             </div>
             <div
-              class="stretched row"
+              className="stretched row"
             >
               <div
-                class="stretched twelve wide column"
+                className="stretched twelve wide column"
               >
                 <p
-                  class="help"
+                  className="help"
                 >
                   Enter full name, e.g. John Smith.
                 </p>
@@ -68,37 +74,42 @@ exports[`PersonalInformation renders a personal information component 1`] = `
           </div>
         </div>
         <div
-          class="inline required field help text"
+          className="inline required field help text"
           id="field-email"
         >
           <div
-            class="ui grid"
+            className="ui grid"
           >
             <div
-              class="stretched row"
+              className="stretched row"
             >
               <div
-                class="four wide column"
+                className="four wide column"
               >
                 <div
-                  class="wrapper"
+                  className="wrapper"
                 >
                   <label
-                    for="field-email"
+                    htmlFor="field-email"
                   >
                     E-mail
                   </label>
                 </div>
               </div>
               <div
-                class="eight wide column"
+                className="eight wide column"
               >
                 <div
-                  class="ui input"
+                  className="ui input"
                 >
                   <input
                     id="field-email"
+                    maxLength={null}
+                    minLength={null}
                     name="email"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onClick={[Function]}
                     type="text"
                     value=""
                   />
@@ -106,13 +117,13 @@ exports[`PersonalInformation renders a personal information component 1`] = `
               </div>
             </div>
             <div
-              class="stretched row"
+              className="stretched row"
             >
               <div
-                class="stretched twelve wide column"
+                className="stretched twelve wide column"
               >
                 <p
-                  class="help"
+                  className="help"
                 >
                   We will use this address if you need to recover your password
                 </p>
@@ -121,72 +132,86 @@ exports[`PersonalInformation renders a personal information component 1`] = `
           </div>
         </div>
         <div
-          class="inline field help"
+          className="inline field help"
           id="field-portrait"
         >
           <div
-            class="ui grid"
+            className="ui grid"
           >
             <div
-              class="stretched row"
+              className="stretched row"
             >
               <div
-                class="four wide column"
+                className="four wide column"
               >
                 <div
-                  class="wrapper"
+                  className="wrapper"
                 >
                   <label
-                    for="field-portrait"
+                    htmlFor="field-portrait"
                   >
                     Portrait
                   </label>
                 </div>
               </div>
               <div
-                class="eight wide column"
+                className="eight wide column"
               >
                 <div
-                  class="file-widget-dropzone"
-                  tabindex="0"
+                  className="file-widget-dropzone"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onDragEnter={[Function]}
+                  onDragLeave={[Function]}
+                  onDragOver={[Function]}
+                  onDrop={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  tabIndex={0}
                 >
                   <div
-                    class="dropzone-placeholder"
+                    className="dropzone-placeholder"
                   >
                     <p
-                      class="dropzone-text"
+                      className="dropzone-text"
                     >
                       Drop file here to upload a new file
                     </p>
                   </div>
                   <label
-                    class="label-file-widget-input"
+                    className="label-file-widget-input"
                   >
                     Choose a file
                   </label>
                   <input
-                    autocomplete="off"
+                    autoComplete="off"
                     id="field-portrait"
-                    multiple=""
+                    multiple={true}
                     name="portrait"
-                    style="display: none;"
-                    tabindex="-1"
+                    onChange={[Function]}
+                    onClick={[Function]}
+                    style={
+                      Object {
+                        "display": "none",
+                      }
+                    }
+                    tabIndex={-1}
                     type="file"
                   />
                 </div>
                 <div
-                  class="field-file-name"
+                  className="field-file-name"
                 />
               </div>
             </div>
             <div
-              class="stretched row"
+              className="stretched row"
             >
               <div
-                class="stretched twelve wide column"
+                className="stretched twelve wide column"
               >
                 <p
-                  class="help"
+                  className="help"
                 >
                   The user portrait/avatar
                 </p>
@@ -195,37 +220,42 @@ exports[`PersonalInformation renders a personal information component 1`] = `
           </div>
         </div>
         <div
-          class="inline field help text"
+          className="inline field help text"
           id="field-home_page"
         >
           <div
-            class="ui grid"
+            className="ui grid"
           >
             <div
-              class="stretched row"
+              className="stretched row"
             >
               <div
-                class="four wide column"
+                className="four wide column"
               >
                 <div
-                  class="wrapper"
+                  className="wrapper"
                 >
                   <label
-                    for="field-home_page"
+                    htmlFor="field-home_page"
                   >
                     Home page
                   </label>
                 </div>
               </div>
               <div
-                class="eight wide column"
+                className="eight wide column"
               >
                 <div
-                  class="ui input"
+                  className="ui input"
                 >
                   <input
                     id="field-home_page"
+                    maxLength={null}
+                    minLength={null}
                     name="home_page"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onClick={[Function]}
                     type="text"
                     value=""
                   />
@@ -233,13 +263,13 @@ exports[`PersonalInformation renders a personal information component 1`] = `
               </div>
             </div>
             <div
-              class="stretched row"
+              className="stretched row"
             >
               <div
-                class="stretched twelve wide column"
+                className="stretched twelve wide column"
               >
                 <p
-                  class="help"
+                  className="help"
                 >
                   The URL for your external home page, if you have one.
                 </p>
@@ -248,37 +278,42 @@ exports[`PersonalInformation renders a personal information component 1`] = `
           </div>
         </div>
         <div
-          class="inline field help text"
+          className="inline field help text"
           id="field-location"
         >
           <div
-            class="ui grid"
+            className="ui grid"
           >
             <div
-              class="stretched row"
+              className="stretched row"
             >
               <div
-                class="four wide column"
+                className="four wide column"
               >
                 <div
-                  class="wrapper"
+                  className="wrapper"
                 >
                   <label
-                    for="field-location"
+                    htmlFor="field-location"
                   >
                     Location
                   </label>
                 </div>
               </div>
               <div
-                class="eight wide column"
+                className="eight wide column"
               >
                 <div
-                  class="ui input"
+                  className="ui input"
                 >
                   <input
                     id="field-location"
+                    maxLength={null}
+                    minLength={null}
                     name="location"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onClick={[Function]}
                     type="text"
                     value=""
                   />
@@ -286,13 +321,13 @@ exports[`PersonalInformation renders a personal information component 1`] = `
               </div>
             </div>
             <div
-              class="stretched row"
+              className="stretched row"
             >
               <div
-                class="stretched twelve wide column"
+                className="stretched twelve wide column"
               >
                 <p
-                  class="help"
+                  className="help"
                 >
                   Your location - either city and country - or in a company setting, where your office is located.
                 </p>
@@ -302,29 +337,55 @@ exports[`PersonalInformation renders a personal information component 1`] = `
         </div>
       </div>
       <div
-        class="ui clearing segment actions"
+        className="ui clearing segment actions"
       >
         <button
           aria-label="Save"
-          class="ui basic primary right floated button"
+          className="ui basic primary right floated button"
+          onClick={[Function]}
           title="Save"
           type="submit"
         >
           <svg
-            class="icon circled"
-            style="height: 30px; width: auto; fill: currentColor;"
+            className="icon circled"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "currentColor",
+                "height": "30px",
+                "width": "auto",
+              }
+            }
             viewBox=""
             xmlns=""
           />
         </button>
         <button
           aria-label="Cancel"
-          class="ui basic secondary right floated button"
+          className="ui basic secondary right floated button"
+          onClick={[Function]}
           title="Cancel"
         >
           <svg
-            class="icon circled"
-            style="height: 30px; width: auto; fill: currentColor;"
+            className="icon circled"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "currentColor",
+                "height": "30px",
+                "width": "auto",
+              }
+            }
             viewBox=""
             xmlns=""
           />
@@ -337,50 +398,56 @@ exports[`PersonalInformation renders a personal information component 1`] = `
 
 exports[`PersonalInformation renders a personal information component embedded in the Toolbar 1`] = `
 <div
-  class="ui container"
+  className="ui container"
 >
   <form
-    class="ui form"
+    className="ui form"
     method="post"
+    onSubmit={[Function]}
   >
     <div
-      class="ui raised segments"
+      className="ui raised segments"
     >
       <div
-        class="ui segment"
+        className="ui segment"
       >
         <div
-          class="inline field help text"
+          className="inline field help text"
           id="field-fullname"
         >
           <div
-            class="ui grid"
+            className="ui grid"
           >
             <div
-              class="stretched row"
+              className="stretched row"
             >
               <div
-                class="four wide column"
+                className="four wide column"
               >
                 <div
-                  class="wrapper"
+                  className="wrapper"
                 >
                   <label
-                    for="field-fullname"
+                    htmlFor="field-fullname"
                   >
                     Full Name
                   </label>
                 </div>
               </div>
               <div
-                class="eight wide column"
+                className="eight wide column"
               >
                 <div
-                  class="ui input"
+                  className="ui input"
                 >
                   <input
                     id="field-fullname"
+                    maxLength={null}
+                    minLength={null}
                     name="fullname"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onClick={[Function]}
                     type="text"
                     value=""
                   />
@@ -388,13 +455,13 @@ exports[`PersonalInformation renders a personal information component embedded i
               </div>
             </div>
             <div
-              class="stretched row"
+              className="stretched row"
             >
               <div
-                class="stretched twelve wide column"
+                className="stretched twelve wide column"
               >
                 <p
-                  class="help"
+                  className="help"
                 >
                   Enter full name, e.g. John Smith.
                 </p>
@@ -403,37 +470,42 @@ exports[`PersonalInformation renders a personal information component embedded i
           </div>
         </div>
         <div
-          class="inline required field help text"
+          className="inline required field help text"
           id="field-email"
         >
           <div
-            class="ui grid"
+            className="ui grid"
           >
             <div
-              class="stretched row"
+              className="stretched row"
             >
               <div
-                class="four wide column"
+                className="four wide column"
               >
                 <div
-                  class="wrapper"
+                  className="wrapper"
                 >
                   <label
-                    for="field-email"
+                    htmlFor="field-email"
                   >
                     E-mail
                   </label>
                 </div>
               </div>
               <div
-                class="eight wide column"
+                className="eight wide column"
               >
                 <div
-                  class="ui input"
+                  className="ui input"
                 >
                   <input
                     id="field-email"
+                    maxLength={null}
+                    minLength={null}
                     name="email"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onClick={[Function]}
                     type="text"
                     value=""
                   />
@@ -441,13 +513,13 @@ exports[`PersonalInformation renders a personal information component embedded i
               </div>
             </div>
             <div
-              class="stretched row"
+              className="stretched row"
             >
               <div
-                class="stretched twelve wide column"
+                className="stretched twelve wide column"
               >
                 <p
-                  class="help"
+                  className="help"
                 >
                   We will use this address if you need to recover your password
                 </p>
@@ -456,72 +528,86 @@ exports[`PersonalInformation renders a personal information component embedded i
           </div>
         </div>
         <div
-          class="inline field help"
+          className="inline field help"
           id="field-portrait"
         >
           <div
-            class="ui grid"
+            className="ui grid"
           >
             <div
-              class="stretched row"
+              className="stretched row"
             >
               <div
-                class="four wide column"
+                className="four wide column"
               >
                 <div
-                  class="wrapper"
+                  className="wrapper"
                 >
                   <label
-                    for="field-portrait"
+                    htmlFor="field-portrait"
                   >
                     Portrait
                   </label>
                 </div>
               </div>
               <div
-                class="eight wide column"
+                className="eight wide column"
               >
                 <div
-                  class="file-widget-dropzone"
-                  tabindex="0"
+                  className="file-widget-dropzone"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onDragEnter={[Function]}
+                  onDragLeave={[Function]}
+                  onDragOver={[Function]}
+                  onDrop={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  tabIndex={0}
                 >
                   <div
-                    class="dropzone-placeholder"
+                    className="dropzone-placeholder"
                   >
                     <p
-                      class="dropzone-text"
+                      className="dropzone-text"
                     >
                       Drop file here to upload a new file
                     </p>
                   </div>
                   <label
-                    class="label-file-widget-input"
+                    className="label-file-widget-input"
                   >
                     Choose a file
                   </label>
                   <input
-                    autocomplete="off"
+                    autoComplete="off"
                     id="field-portrait"
-                    multiple=""
+                    multiple={true}
                     name="portrait"
-                    style="display: none;"
-                    tabindex="-1"
+                    onChange={[Function]}
+                    onClick={[Function]}
+                    style={
+                      Object {
+                        "display": "none",
+                      }
+                    }
+                    tabIndex={-1}
                     type="file"
                   />
                 </div>
                 <div
-                  class="field-file-name"
+                  className="field-file-name"
                 />
               </div>
             </div>
             <div
-              class="stretched row"
+              className="stretched row"
             >
               <div
-                class="stretched twelve wide column"
+                className="stretched twelve wide column"
               >
                 <p
-                  class="help"
+                  className="help"
                 >
                   The user portrait/avatar
                 </p>
@@ -530,37 +616,42 @@ exports[`PersonalInformation renders a personal information component embedded i
           </div>
         </div>
         <div
-          class="inline field help text"
+          className="inline field help text"
           id="field-home_page"
         >
           <div
-            class="ui grid"
+            className="ui grid"
           >
             <div
-              class="stretched row"
+              className="stretched row"
             >
               <div
-                class="four wide column"
+                className="four wide column"
               >
                 <div
-                  class="wrapper"
+                  className="wrapper"
                 >
                   <label
-                    for="field-home_page"
+                    htmlFor="field-home_page"
                   >
                     Home page
                   </label>
                 </div>
               </div>
               <div
-                class="eight wide column"
+                className="eight wide column"
               >
                 <div
-                  class="ui input"
+                  className="ui input"
                 >
                   <input
                     id="field-home_page"
+                    maxLength={null}
+                    minLength={null}
                     name="home_page"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onClick={[Function]}
                     type="text"
                     value=""
                   />
@@ -568,13 +659,13 @@ exports[`PersonalInformation renders a personal information component embedded i
               </div>
             </div>
             <div
-              class="stretched row"
+              className="stretched row"
             >
               <div
-                class="stretched twelve wide column"
+                className="stretched twelve wide column"
               >
                 <p
-                  class="help"
+                  className="help"
                 >
                   The URL for your external home page, if you have one.
                 </p>
@@ -583,37 +674,42 @@ exports[`PersonalInformation renders a personal information component embedded i
           </div>
         </div>
         <div
-          class="inline field help text"
+          className="inline field help text"
           id="field-location"
         >
           <div
-            class="ui grid"
+            className="ui grid"
           >
             <div
-              class="stretched row"
+              className="stretched row"
             >
               <div
-                class="four wide column"
+                className="four wide column"
               >
                 <div
-                  class="wrapper"
+                  className="wrapper"
                 >
                   <label
-                    for="field-location"
+                    htmlFor="field-location"
                   >
                     Location
                   </label>
                 </div>
               </div>
               <div
-                class="eight wide column"
+                className="eight wide column"
               >
                 <div
-                  class="ui input"
+                  className="ui input"
                 >
                   <input
                     id="field-location"
+                    maxLength={null}
+                    minLength={null}
                     name="location"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onClick={[Function]}
                     type="text"
                     value=""
                   />
@@ -621,13 +717,13 @@ exports[`PersonalInformation renders a personal information component embedded i
               </div>
             </div>
             <div
-              class="stretched row"
+              className="stretched row"
             >
               <div
-                class="stretched twelve wide column"
+                className="stretched twelve wide column"
               >
                 <p
-                  class="help"
+                  className="help"
                 >
                   Your location - either city and country - or in a company setting, where your office is located.
                 </p>
@@ -637,29 +733,55 @@ exports[`PersonalInformation renders a personal information component embedded i
         </div>
       </div>
       <div
-        class="ui clearing segment actions"
+        className="ui clearing segment actions"
       >
         <button
           aria-label="Save"
-          class="ui basic primary right floated button"
+          className="ui basic primary right floated button"
+          onClick={[Function]}
           title="Save"
           type="submit"
         >
           <svg
-            class="icon circled"
-            style="height: 30px; width: auto; fill: currentColor;"
+            className="icon circled"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "currentColor",
+                "height": "30px",
+                "width": "auto",
+              }
+            }
             viewBox=""
             xmlns=""
           />
         </button>
         <button
           aria-label="Cancel"
-          class="ui basic secondary right floated button"
+          className="ui basic secondary right floated button"
+          onClick={[Function]}
           title="Cancel"
         >
           <svg
-            class="icon circled"
-            style="height: 30px; width: auto; fill: currentColor;"
+            className="icon circled"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "currentColor",
+                "height": "30px",
+                "width": "auto",
+              }
+            }
             viewBox=""
             xmlns=""
           />
