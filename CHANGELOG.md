@@ -12,6 +12,8 @@
 
 ### Internal
 
+- For python3.9 compatibility, install wheel package in build-backend targets @tiberiuichim
+
 ## 10.1.0 (2020-11-30)
 
 ### Feature
