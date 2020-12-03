@@ -1,6 +1,24 @@
 # Change Log
 
-## 9.2.1 (unreleased)
+## 10.1.1 (unreleased)
+
+### Breaking
+
+### Feature
+
+- Generate language file of added missing German translations by @tisto. @ksuess
+
+### Bugfix
+
+### Internal
+
+## 10.1.0 (2020-11-30)
+
+### Feature
+
+- Add missing German translations @tisto
+
+## 10.0.0 (2020-11-30)
 
 ### Feature
 
@@ -25,6 +43,7 @@
 - Remove dangling analyzer plugin @sneridagh
 - Support for Guillotina 6 @bloodbare @sneridagh
 - Update Cypress to version 5.6.0 @sneridagh
+- Terse `react-intl` errors in console during development turning them into warnings @sneridagh
 
 ## 9.2.0 (2020-11-24)
 
