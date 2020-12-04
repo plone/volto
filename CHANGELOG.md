@@ -1,6 +1,6 @@
 # Change Log
 
-## 7.0.2 (unreleased)
+## 10.2.1 (unreleased)
 
 ### Breaking
 
@@ -11,6 +11,737 @@
 ### Bugfix
 
 ### Internal
+
+## 10.2.0 (2020-12-04)
+
+### Feature
+
+- Generate language file of added missing German translations by @tisto. @ksuess
+
+### Bugfix
+
+- Fix regression in the `getContent` action with the expandable missing @sneridagh
+
+## 10.1.0 (2020-11-30)
+
+### Feature
+
+- Add missing German translations @tisto
+
+## 10.0.0 (2020-11-30)
+
+### Breaking
+
+- Removal of the Razzle patch that was introduced in 9.0.0 @sneridagh
+  See https://docs.voltocms.com/upgrade-guide/ for more details.
+- Fetched content with `getContent` no longer includes fullobjects by default @tiberiuichim
+
+### Bugfix
+
+- Fix link to login in the Unauthorised component @sneridagh
+
+### Internal
+
+- Add details on how to run Cypress integration tests @tiberiuichim
+- Upgrade `@testing-library/react` to 11.2.2. Add `jest-environment-jsdom-sixteen as upgraded jsdom implementation @tiberiuichim
+- Split some small prismjs related files (used in HTML block) in separate chunks @tiberiuichim
+- Remove dangling analyzer plugin @sneridagh
+- Support for Guillotina 6 @bloodbare @sneridagh
+- Update Cypress to version 5.6.0 @sneridagh
+- Terse `react-intl` errors in console during development turning them into warnings @sneridagh
+
+## 9.2.0 (2020-11-24)
+
+**This is a brown bag release and should not be used, upgrade to Volto 10.x.x instead.**
+See https://docs.voltocms.com/upgrade-guide/ for more information.
+
+### Feature
+
+- Remove the Razzle patch for the local, "inline" Volto Razzle plugins @tiberiuichim @sneridagh
+
+### Bugfix
+
+- Move missplaced `appExtras` into settings @sneridagh
+
+### Internal
+
+- Make filewidget label more consistent @tisto
+
+## 9.1.0 (2020-11-20)
+
+### Feature
+
+- Extend the internal proxy capabilities, now the target is overridable and SSL aware @sneridagh
+- Added new environment variables for the internal proxy `RAZZLE_PROXY_REWRITE_TARGET` and `RAZZLE_PROXY_REWRITE_TARGET` @sneridagh
+- Enhance `AppExtras` component to make it pluggable through the
+  `config.settings.appExtras`. These are router-path filtered components that
+  are rendered inside the `AppExtras` component @tiberiuichim
+
+### Bugfix
+
+- Fix Sentry tags and extra via settings.sentryOptions @avoinea
+- Fix `yarn analyze` command by packing our own version of
+  webpack-bundle-analyzer integration. It has a few changes to the old default
+  configuration. There is an alternative way of triggering the bundle analyzer,
+  with the `OFFLINE_BUNDLE_ANALYZE=true` env variable, which avoids starting
+  the HTTP bundle analyzer server. Also, it always saves a report html file.
+  @tiberiuichim
+
+### Internal
+
+- Improve developer documentation. Add several new chapters @tiberiuichim
+
+## 9.0.0 (2020-11-15)
+
+### Breaking
+
+- Upgrade Razzle to 3.3.7 @tiberiuichim @sneridagh
+
+  Razzle 3.3.7 prepares the transition to the upcoming Razzle 4 so it improves and
+  unifies the extensibility story at the cost of change the signature of the
+  `razzle.config.js` and how plugins are declared. It also enables by default the new
+  *React Fast Refresh* feature implemented by the React community, which improves the
+  refresh of the code while in development.
+
+- Babel plugins housekeeping
+
+  Deprecated proposals:
+  - @babel/plugin-proposal-function-bind
+  - @babel/plugin-proposal-do-expressions
+  - @babel/plugin-proposal-logical-assignment-operators
+  - @babel/plugin-proposal-pipeline-operator
+  - @babel/plugin-proposal-function-sent
+
+For a complete list of actions to follow, please read the upgrade guide
+https://docs.voltocms.com/upgrade-guide/
+
+### Feature
+
+- Add `webpack-relative-resolver` plugin. For addons and Volto, it normalizes local relative imports to package-rooted imports. An import such as `import Something from './Something'` would be rerouted internally as `import Something from '@collective/someaddon/Something'`. By doing so we get easier customization of addons, as they don't have to be so strict with their import and exports @tiberiuichim
+- Posibility to configure Sentry via `settings.sentryOptions` configuration key @avoinea
+- Catch `console.error` by default with Sentry @avoinea
+- Refactor CT icons helper: add getContentIcons @nzambello
+
+### Bugfix
+
+- Properly return 404, 401 and 403 on SSR, when appropriate @tiberiuichim
+- Fix Guillotina PATCH by adding the `@static_behaviors` field inconditionally @sneridagh
+
+### Internal
+
+## 8.10.1 (2020-11-13)
+
+### Bugfix
+
+- Fix leaking input CSS in the link widget in draftjs @sneridagh
+
+### Internal
+
+- Move Guillotina CI job to GH actions @sneridagh
+
+## 8.10.0 (2020-11-12)
+
+### Feature
+
+- Adding show all button in UsersControlpanel @iFlameing
+- Now you can prettify the html code in HTML block @iFlameing
+- Adding preview image placeholder in Video Block @iFlameing
+
+### Bugfix
+
+- Fix error object in clipboard reducer @iFlameing
+- Making QuerystringWidget more resilient by handeling null value @iFlameing
+- Fixing bug related to initiation of table block with previous table block data @iFlameing
+- enabled no-folderish CT to be translated @giuliaghisini
+
+### Internal
+
+- Changing checkbox widget of exclude-nav to select widget @iFlameing
+
+## 8.9.2 (2020-11-06)
+
+### Bugfix
+
+- Revert type-in detection in draftjs link widget, as that leads to a regression @sneridagh
+- Fix and refactoring FileWidget @iFlameing
+
+## 8.9.1 (2020-11-06)
+
+### Bugfix
+
+- Fix SSR rendering in table blocks @sneridagh
+
+## 8.9.0 (2020-11-05)
+
+### Feature
+
+- Added Dropzone in FileWidget @iFlameing
+- Making inline link toolbar, location aware in content browser @iFlameing.
+- Detect if the link typed or pasted in the link widget of the text block is internal @sneridagh
+
+## 8.8.1 (2020-11-04)
+
+### Bugfix
+
+- Improve misleading translations deleted message @sneridagh
+- Fixing overlap of labels with each other in select widget @iFlameing
+- Throw error in crashReporter; also log sentry errors in server @tiberiuichim
+
+### Internal
+
+- Split razzle svg and sentry loaders to separate files @tiberiuichim
+- prevent form without blocks. Form always have at least the default block. @giuliaghisini
+- Fix default target for links in text blocks @giuliaghisini
+
+### Internal
+
+## 8.8.0 (2020-11-02)
+
+### Feature
+
+- Add support for the new active LTS NodeJS version 14. NodeJS 10 eol will happen on 2021-04-30 and Volto will update accordingly. More information on https://nodejs.org/en/about/releases @sneridagh
+
+## 8.7.1 (2020-10-29)
+
+### Bugfix
+
+- Added loading icon when doing actions in folder-contents @giuliaghisini
+- Fix German translation "from" -> "E-Mail" in contact form @tisto
+
+## 8.7.0 (2020-10-27)
+
+### Feature
+
+- Manage translations view @sneridagh
+
+### Internal
+
+- Update docs build and include pygments support for jsx @sneridagh
+
+## 8.6.0 (2020-10-25)
+
+### Feature
+
+- Added placeholder background color same as selected one @iFlameing
+- Showing notification when user sort the folder-content @iFlameing
+- Render full language name (e.g. "English") instead of 2 character language code in language selector, matching Plone default behavior. @mikejmets
+
+### Bugfix
+
+- A pathname like /policy/edit does not show the Unauthorized or Forbidden component when not logged in, ref #1936. @silviubogan
+- Fixes secondary views in toolbar @iFlameing @sneridagh
+- Fixing overlay expansion during link assign from objectbrowser in edit mode @iFlameing
+
+### Internal
+
+- Added new in productions sites to README @wkbkhard
+- Writing test for the lisiting block location relative criteria @iFlameing
+- Add `UniversalLink` to handle internal/external/download links @nzambello
+
+## 8.5.4 (2020-10-23)
+
+### Breaking
+
+### Feature
+
+### Bugfix
+
+- Fixing bug for link when inseting break lines in list tag for view mode @iFlameing
+
+## 8.5.3 (2020-10-22)
+
+### Bugfix
+
+- Removed timezone initialization for DatetimeWidget, ref #1923. @razvanMiu
+
+## 8.5.2 (2020-10-21)
+
+### Bugfix
+
+- Showing error notification when user try to paste disallowed content type. @iFlameing
+
+### Internal
+
+- Added environment parameter `RAZZLE_BIND_ADDRESS` to be able to bind server to localhost or other specific IPs instead of 0.0.0.0 @achimwilde
+
+## 8.5.1 (2020-10-21)
+
+### Bugfix
+
+- Fix sharing for when users has dots on them @sneridagh
+
+## 8.5.0 (2020-10-20)
+
+### Bugfix
+
+- Japanese translation updated @terapyon
+
+## 8.5.0-alpha.2 (2020-10-20)
+
+### Bugfix
+
+- Update German translation @ksuess
+
+### Internal
+
+- Fix runtimeConfig relative vs absolute import @avoinea
+
+## 8.5.1-alpha.0 (2020-10-19)
+
+### Feature
+
+- Adding softlinebreak in list tag @iFlameing
+
+### Bugfix
+
+- Errors catched by the default error handler are sent to sentry @zotya
+- Fixed a problem what occured when RAZZLE*SENTRY_DSN was missing but the other RAZZLE_SENTRY*\* variables were set @zotya
+
+### Internal
+
+- Fix sentry docs markdown format @avoinea
+
+## 8.5.0-alpha.0 (2020-10-14)
+
+### Feature
+
+- Sentry integration @zotya
+- All the environment variables defined at runtime that have the `RAZZLE_` prefix, are now available in the browser under window.env @zotya
+
+## 8.4.0 (2020-10-14)
+
+### Feature
+
+- Add `Style`, a wrapper component that applies float and width classes to wrapped content (typically blocks) @tiberiuichim
+- Add `AlignWidget`, a widget that wraps the `AlignBlock` helper @tiberiuichim
+
+### Bugfix
+
+- Folder contents view: Save additional columns and updated order of columns @ksuess
+- Fixed edit link in draft-js when link is selected from word-end to word-start @giuliaghisini
+- Revert PR No. 1820 to fix linebreaks on inline links in draftJS @steffenri
+
+### Internal
+
+- Keep `@babel/core` in Volto core in sync with `babel-preset-razzle` it fixes #1897 @sneridagh
+
+## 8.3.0 (2020-10-12)
+
+### Feature
+
+- Adding droppable placeholder for Image Block @iFlameing
+
+### Bugfix
+
+- Test if content exists in ListingBody, for addon Dropdownmenu @giuliaghisini
+
+## 8.2.6 (2020-10-12)
+
+### Bugfix
+
+- Fix break-line in view mode @iFlameing
+
+## 8.2.5 (2020-10-08)
+
+### Bugfix
+
+- Fixing the bleed out of the modal for long filename @iFlameing
+
+## 8.2.4 (2020-10-08)
+
+### Bugfix
+
+- Fixing table block edit @iFlameing
+
+## 8.2.3 (2020-10-07)
+
+### Bugfix
+
+- Use Plone `I18N_LANGUAGE` cookie instead of `language` @cekk
+
+## 8.2.2 (2020-10-06)
+
+### Bugfix
+
+- Upgrade react-dropzone from 5.1.0 to 11.1.0 @nileshgulia1
+- Update German translations @tisto
+
+## 8.2.1 (2020-10-06)
+
+### Bugfix
+
+- Querystingsearch action now uses correct relative path, if specified. Fixes #1861 @jackahl
+- Fixing ObjectBrowser search input reload @iFlameing
+- Fix broken current folder by default in content browser for image links, solves #1860 @sneridagh
+
+## 8.2.0 (2020-09-27)
+
+### Feature
+
+- Add Basque translation @erral
+
+### Bugfix
+
+- Added prop resettable to DatetimeWidget @damiDevRT
+- Removed the ability to reset the datepicker in the recurrence widget to prevent the uncontrolled creation of recurrences @damiDevRT
+- Fix regression in setting selected sidebar tab by blocks @tiberiuichim
+
+## 8.1.1 (2020-09-27)
+
+### Bugfix
+
+- Japanese translation updated @terapyon
+
+## 8.1.0 (2020-09-22)
+
+### Breaking
+
+### Feature
+
+- Create link in Draftjs using Objectbrowser @giuliaghisini
+
+### Bugfix
+
+- Allow select widget to reset when the incoming props change. The react-select widget has its own internal state, so if you initialise the widget without choices, then populate the choices, it wouldn't properly show the default value @tiberiuichim
+
+### Internal
+
+- Fix console warning in ToHTML @iFlameing
+
+## 8.0.1 (2020-09-22)
+
+### Bugfix
+
+- Fix word overflow from html-block @iFlameing
+- Fix Cypress test for image upload @zotya
+
+### Internal
+
+- Improve developer experience, don't logout on hot-reload @tiberiuichim
+- Cleanup eslint in razzle.config.js @tiberiuichim
+
+## 8.0.0 (2020-09-18)
+
+### Breaking
+
+- Change dummy-addons-loader.js fixture name to `jest-addons-loader.js`, to match existing `jest-svgsystem-transform.js` @tiberiuichim
+
+### Feature
+
+- Added Schema Editor within Dexterity Content-Types Controlpanel @rexalex @avoinea #1517
+- Added Blocks Layout Editor within Dexterity Content-Types Controlpanel @avoinea #1517
+- Added missing components for Email and Url widgets #1246 @rexalex
+- Use content title instead of image id in alt tag @nileshgulia1
+
+### Bugfix
+
+- Fix the broken profile view in Toolbar @iFlameing
+
+### Internal
+
+- Hide block chooser button using React logic instead of CSS. This makes it easier to support nested blocks @tiberiuichim
+
+- Wrap addon configuration loaders in a wrapper to check that they return back config @tiberiuichim
+
+## 7.15.0 (2020-09-15)
+
+### Feature
+
+- Added missing components for Email and Url widgets #1246 @rexalex
+- Show backend validation errors on corresponding fields #1246 @rexalex
+- Validation implemented for add user/group @rexalex
+- Show Username when Firstname attr is missing in UsersControlPanelUser @iFlameing
+
+### Bugfix
+
+- When dealing with authentication token expiration set to 0, auto-refresh token in one hour instead of logging out use @tiberiuichim
+- Fixed front-end field validation #1246 @rexalex
+- Fixed date only widget rendering #1246 @rexalex
+- Fix errors with SelectWidget when removing the only element @rexalex
+
+## 7.14.2 (2020-09-10)
+
+### Bugfix
+
+- Hyphenate sidebar labels @ksuess
+- Update German translations @tisto
+
+## 7.14.1 (2020-09-09)
+
+### Bugfix
+
+- Fix customization mechanism where customization paths end with `/` @tiberiuichim
+
+## 7.14.0 (2020-09-08)
+
+### Feature
+
+- Render form with vertical tabs, setting the property `verticalFormTabs` in config.js @giuliaghisini
+
+### Bugfix
+
+- Imported locales by razzle and fixed import locale @giuliaghisini
+- Fix console warning due to uncontrolled selectWidget component @nileshgulia1
+
+## 7.13.0 (2020-09-07)
+
+### Feature
+
+- Add NumberWidget, an input widget for numbers @tiberiuichim
+
+### Bugfix
+
+- Fixing the Image size settings in sidebar when Image alignment changes @iFlameing
+
+## 7.12.1 (2020-09-04)
+
+### Bugfix
+
+- Fix checkbox widget styles @nzambello
+
+## 7.12.0 (2020-09-04)
+
+### Feature
+
+- Allow Volto projects to customize (via webpack resolve aliases) addons. Allow addons to customize Volto and other addons. Allow Volto projects to customize Volto in a `src/customizations/volto` folder, for better organization of the customizations folder. @tiberiuichim @sneridagh
+
+## 7.11.3 (2020-08-28)
+
+### Bugfix
+
+- On image upload in a block, don't overwrite the global `state.content.data` with new image data @tiberiuichim @silviubogan
+
+### Internal
+
+- Add a `subrequest` option to the `createContent` action @tiberiuichim @silviubogan
+
+## 7.11.2 (2020-08-28)
+
+### Bugfix
+
+- Fix bug introduced in 7.9.0, properly return a list of results when dealing with batched api requests @tiberiuichim
+- In folder contents batch upload, use a subrequest to avoid breaking the global `content.data` state @tiberiuichim
+- Fix `null` response issue when passing custom `Accept:` headers to actions #1771 @avoinea
+- Removed all `<<<<<HEAD` artifacts from translations @steffenri
+- Increase z-index of `block-add-button` @steffenri
+
+## 7.11.1 (2020-08-27)
+
+### Breaking
+
+### Feature
+
+### Bugfix
+
+- Update German translations @tisto
+
+### Internal
+
+## 7.11.0 (2020-08-27)
+
+### Feature
+
+- Add sort option to search @iFlameing
+
+### Bugfix
+
+- Turn autocomplete off for the search input field @timo
+
+## 7.10.0 (2020-08-26)
+
+### Feature
+
+- Added toast notifications for form errors @nzambello @avoinea
+- Added italian translations and translated array, token and select widget. @giuliaghisini
+
+## 7.9.2 (2020-08-26)
+
+### Bugfix
+
+- Open content browser sidebar on parent object when editing an existing document. @iFlameing
+
+### Internal
+
+- Added developer-guidelines/redux documentation @tiberiuichim
+
+## 7.9.1 (2020-08-25)
+
+### Bugfix
+
+- Fix bug related to closing the More menu of Toolbar @iFlameing
+
+- Fix cosmetic issue, add links were not properly generated in Contents view not under the root. This didn't impact functionality as the content was properly created @tiberiuichim
+
+- Fix bug for text block with new line and styles applyed to all text. @giuliaghisini
+
+### Internal
+
+- Removed unused component `src/components/manage/Contents/ContentsToolbar.jsx` @tiberiuichim
+- Add no-console eslint rule @tisto
+
+## 7.9.0 (2020-08-24)
+
+### Breaking
+
+### Feature
+
+- Adding support of pasting link of voltoCMS video link to video blocks @iFlameing
+- Allow serial processing of API requests when `mode:'serial'` is passed in the action. @tiberiuichim
+- Adding cypress test from image-gallery in edit mode @iFlameing
+
+### Bugfix
+
+- On mutating a block, don't create extra placeholder block if such block already exists @tiberiuichim
+- Fixing broken file-preview placeholder for other file type than image @iFlameing
+
+### Internal
+
+- When passed an array of items (for example in batch upload content), the `createContent` action now serializes those requests @tiberiuichim
+
+## 7.8.3 (2020-08-21)
+
+### Bugfix
+
+- Change ImageGallery image scale from preview to large. @tisto
+- Also use `settings.internalApiPath` in url helpers `isInternalURL`, `flattenToAppUrl` and `flattenHTMLToAppURL` @tiberiuichim
+- Fix getBlocks helper when blocks_layout has no `items` (default PloneSite with no volto homepage) @avoinea
+
+### Internal
+
+- Docs: Review of "How to use and addon" @ksuess
+- Addon: Hint for addon developers if function applying config is missing @ksuess
+
+## 7.8.2 (2020-08-18)
+
+### Bugfix
+
+- Include cypress folder in release @timo
+
+## 7.8.1 (2020-08-18)
+
+### Bugfix
+
+- Remove supposed fix to form.jsx again, as it apparently did not really fix anything but only broke stuff @jackahl
+
+## 7.8.0 (2020-08-18)
+
+### Breaking
+
+### Feature
+
+- Add cms-only theme that allows to completely remove semantic-ui from public facing views @pnicolli @nzambello
+
+### Internal
+
+## 7.7.2 (2020-08-18)
+
+### Bugfix
+
+- Fix bug showing wrong data in the edit view, that occured in some cases, when one would enter the edit view of a page from another page @jackahl
+
+### Internal
+
+- Remove "\$" from all examples in install docs and README @timo
+
+## 7.7.1 (2020-08-12)
+
+### Bugfix
+
+- Japanese translation updated @terapyon
+- Bugfix Edit page through Contents list #1594 @terapyon @csenger
+
+### Internal
+
+- Bump serialize-javascript from 2.1.1 to 3.1.0 @timo
+- Bump prismjs from 1.17.1 to 1.21.0 @timo
+- Make Table Block Cypress test more reliable @timo
+- Make listing template Cypress test more reliable @timo
+
+## 7.7.0 (2020-08-04)
+
+### Feature
+
+- Allow addons to provide less files @tiberiuichim
+- Making Content browser aware of context @iFlameing
+
+### Bugfix
+
+- Fix click-select block on unknown block type @nileshgulia1
+- Fix Image Gallery Template in Listing Block crashing when no criteria are set (#1722) @jackahl
+
+## 7.6.0 (2020-07-31)
+
+### Feature
+
+- Added recurrence widget @giuliaghisini
+
+## 7.5.1 (2020-07-29)
+
+### Bugfix
+
+- Avoid React hydration complaining about mismatched server output in toolbar. In component rendering, replaced the use of `__CLIENT__` with a state-stored `isClient`, as that is more correct. @tiberiuichim
+
+## 7.5.0 (2020-07-29)
+
+### Feature
+
+- Used moment-timezone to set a specific server timezone as default for DatetimeWidget. @razvanMiu
+
+## 7.4.0 (2020-07-29)
+
+### Feature
+
+- Highlight the sidebar toggle button with a small flashing animation @silviubogan @tiberiuichim
+
+## 7.3.1 (2020-07-28)
+
+### Bugfix
+
+- Solved a browser console error in /contents view (#1695) @silviubogan
+- Pagination icon fix @nileshgulia1
+
+## 7.3.0 (2020-07-26)
+
+### Feature
+
+- Add Placeholder attribute to Textwidget and TextAreaWidget @iFlameing
+- Make the default block type (currently draftjs text) configurable @tiberiuichim @silviubogan
+
+### Internal
+
+- Upgrade lodash dependency to 4.17.19 @tisto
+- Add a new blocks helper method, `getBlocks`. It simplifies using `getBlocksFieldname` and `getBlocksLayoutFieldname` under a single method that returns ordered pairs of `[blockid, blockvalue]` @tiberiuichim
+
+## 7.2.1 (2020-07-16)
+
+### Internal
+
+- Upgrade to Cypress 4.10.0 @tisto
+- Upgrade to cypress-file-upload 4.0.7 @iFlameing
+
+## 7.2.0 (2020-07-13)
+
+### Feature
+
+- Provide a new webpack alias, `volto-themes`, which points to Volto's theme folder. See details in the https://docs.voltocms.com/upgrade-guide/
+
+### Internal
+
+- Upgrade razzle to `^3.1.5`. @tiberiuichim
+
+## 7.1.0 (2020-07-09)
+
+### Feature
+
+- Addons can optionally include a `razzle.extend.js` file in their root. This module needs to follow the same rules as the `razzle.config.js`. They change the default Volto Razzle configuration, before it is passed to the Volto project @tiberiuichim @sneridagh
+
+### Bugfix
+
+- Managed hidden fields @giuliaghisini
+- Fix bug in addon loading with namespaced packages @tiberiuichim
+- Japanese translation updated @terapyon
+
+- Upgrade razzle to `^3.1.5`. @tiberiuichim
 
 ## 7.0.1 (2020-07-07)
 
@@ -70,7 +801,7 @@
 
 - Translated workflow state in contents @nzambello
 - Added item type as a tooltip in contents @nzambello
-- Added italian translations and translated array, token and select widget. @giuliaghisini
+- Added Italian translations and translated array, token and select widget. @giuliaghisini
 - Added uploading image preview in FileWidget @iFlameing
 - Allow custom express middleware declared with `settings.expressMiddleware`. See [Customizing Express](docs/source/customizing/express.md) @tiberiuichim
 
@@ -88,13 +819,13 @@
 
 ### Feature
 
-- Added Italian translations and translated array, token and select widget. @giuliaghisini
 - Added internationalization for French language @bsuttor #1588
+- use of maximumSelectionSize from plone in ObjectBrowserWidget. @giuliaghisini
 - Added selectableTypes in ObjectBrowserWidget @giuliaghisini
 
 ### Bugfix
 
-- added export for ObjectBrowserWidget in component/index.js @giuliaghisini
+- Added export for ObjectBrowserWidget in component/index.js @giuliaghisini
 - Fixed duplicated items in SelectWidget and ArrayWidget @giuliaghisini
 - Update German translation @timo
 - Removed broken preview image in ContentsUploadModal if uploaded item is not an image. @giuliaghisini

@@ -5,8 +5,8 @@
 Volto can be installed in any operating system assuming that this requirements
 are met:
 
-- [Node.js LTS (12.x)](https://nodejs.org/)
-- [Python 3.7.x / 2.7.x](https://python.org/) or
+- [Node.js LTS (14.x)](https://nodejs.org/)
+- [Python 3.7.x / 3.8.x](https://python.org/) or
 - [Docker](https://www.docker.com/get-started) (if using the Plone/Guillotina
   docker images)
 
@@ -15,45 +15,57 @@ are assuming a MacOS/Linux machine:
 
 ## Install nvm (NodeJS version manager)
 
+If you have a working nodejs development setup on your machine, this step is
+not required. But it's a good idea to integrate nvm for development, as it
+provides easy access to any Nodejs released version.
+
 1. Open a terminal console and type:
 ```bash
-$ touch ~/.bash_profile
-$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+touch ~/.bash_profile
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
 ```
 
 2. Close the terminal and open a new one or execute:
 ```
-$ source ~/.bash_profile
+source ~/.bash_profile
 ```
 
 3. Test it:
 ```
-$ nvm version
+nvm version
 ```
 
-4. Install a LTS version of NodeJS:
+4. Install any active LTS version of NodeJS (https://nodejs.org/en/about/releases/):
 ```
-$ nvm install 12.16.1
-$ nvm use 12.16.1
+nvm install 14.15.1
+nvm use 14.15.1
 ```
 
 5. Test NodeJS:
 ```
-$ node -v
+node -v
 ```
+
+!!! note
+    If you're using the fish shell, you can use [nvm.fish](https://github.com/jorgebucaran/nvm.fish)
+
+!!! note
+    Volto supports all currently active NodeJS LTS versions based on [NodeJS
+    Releases page](https://nodejs.org/en/about/releases/). On 2021-04-30 Volto
+    will not support Node 10 as it will reach its end of life.
 
 ## Yarn (NodeJS package manager)
 
-Install the classic version, not the 2.x one, of the popular node package manager.
+Install the Yarn Classic version (not the 2.x one!), of the popular node package manager.
 
 1. Open a terminal and type:
 ```
-$ curl -o- -L https://yarnpkg.com/install.sh | bash
+curl -o- -L https://yarnpkg.com/install.sh | bash
 ```
 
 2. Test it, running:
 ```
-$ yarn -v
+yarn -v
 ```
 
 !!! tip Alternative methods
@@ -61,11 +73,13 @@ $ yarn -v
     platform you are on. Take a look at the original `yarn`
     [documentation](https://classic.yarnpkg.com/lang/en/) for a list of them.
 
-## Docker for Mac
+## Use or Install Docker 
 
-In order to run the API backend, in a quick an easy and hassle way, it's recommended to start running it in a container.
+In order to run the API backend, it's recommended to start run it in a container.
+For this getting started section we assume you are either using Linux, or Mac. Most
+modern Linux distributions have docker in their package manager available. 
 
-Here are the detailed instructions:
+To install Docker desktop for Mac, here are the detailed instructions:
 
     https://hub.docker.com/editions/community/docker-ce-desktop-mac
 
@@ -81,40 +95,38 @@ Here are the detailed instructions:
 3. Check that docker is installed correctly, open a new terminal and type:
 
 ```shell
-$ docker ps
+docker ps
 ```
 
 should not throw an error and show the current running containers.
 
-## Get Plone ready for Volto
+## Run a Volto ready Plone Docker container
 
-In order to fully support all Volto features, Plone needs to be prepared for Volto. This
-involves configuration, add-ons installation and some patches to the core.
-
-There's a package published called `kitconcept.volto` that does all the heavy lifting
-for you and it's ready to use in your own projects.
-
-!!! note
-    However, this package is oppinionated and might not fit your needs, so if you
-    want to use your own integration package instead, just take a look to the features
-    it provides and extract the ones you need for your project and tailor your own
-    integration package.
-
-        https://github.com/kitconcept/kitconcept.volto
-
-!!! tip
-    From Volto 5.1 and above, Volto features an internal proxy to your API server. So
-    you don't have to deal with CORS. It's enabled by default, pointing to the server
-    specified in the `devProxyToApiPath` Volto settings (http://localhost:8080/Plone).
-    See [here](../configuration/internalproxy.md) for more details.
-
-### Run a Volto ready Plone Docker container
-
-You can run an standard Plone docker container with the proper configuration using `kitconcept.volto` right away by issuing:
+When you have installed Docker, you can run an standard Plone Docker container with the proper configuration for Volto using the `kitconcept.volto` add'on right away by issuing:
 
 ```shell
-$ docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="kitconcept.volto" -e ZCML="kitconcept.volto.cors" -e PROFILES="kitconcept.volto:default-homepage" plone
+docker run -it --rm --name=plone \
+  -p 8080:8080 -e SITE=Plone -e ADDONS="kitconcept.volto" \
+  -e ZCML="kitconcept.volto.cors" \
+  -e PROFILES="kitconcept.volto:default-homepage" \
+  plone
 ```
+
+!!! note
+    The example above does not persist yet any changes you make through Volto in 
+    the Plone docker container backend! For this you need to map the /data directory
+    in the container properly. Check Docker 
+    [storage documentation](https://docs.docker.com/storage/) for more information.
+
+    As a quick example: if you add
+    `--mount type=bind,source="$(pwd)/plone-data",target=/data`
+    to the previous example. The local subdirectory plone-data relative to where you
+    execute `docker run` will be use to persist the backend server data.
+
+If you are somewhat familiar with Python development, you can also install Plone locally
+without using Docker. Check the [backend configuration](../configuration/backend.md) section.
+It also has more information on kitconcept.volto. 
+
 
 ## Install Volto
 
@@ -122,32 +134,33 @@ Use the `create-volto-app` helper utility.
 
 1. Open a terminal and execute:
 ```
-$ npm -g i @plone/create-volto-app
+npm -g i @plone/create-volto-app
 ```
 
-!!! tip Installing it using npx
-    Optionally, you can also use `npx` utility to install `create-volto-app`
-    without having to install it globally. On the other hand, in order to do it, you
-    have to install `npx` globally. The advantage is that you don't have to
-    upgrade `create-volto-app` each time you want to use it, because `npx` does
-    it for you:
-
-    `npx @plone/create-volto-app myvoltoapp`
-
-2. Create a new Volto app using the recently added command, providing the name
-   of the new app (folder) to be created.
+2. Create a new Volto app using the recently added command, providing the name of the new app (folder) to be created.
 ```
-$ create-volto-app myvoltoapp
+create-volto-app myvoltoapp
 ```
 
-3. Change directory to the newly created folder `myvoltoapp` (or the one you've
-   chosen). Then:
+3. Change directory to the newly created folder `myvoltoapp` (or the one you've chosen):
 ```
-$ yarn start
+cd myvoltoapp
+```
+
+Then start Volto with:
+
+```
+yarn start
 ```
 
 This command will build an in-memory bundle and execute Volto in development mode. Open a browser to
 take a look at http://localhost:3000
+
+!!! tip Try the new Yeoman based generator
+    The Volto developer community is working on a new [enhanced
+    generator](https://github.com/plone/generator-volto.git). In addition to
+    bootstrapping standalone Volto projects, it can also bootstrap Volto
+    addons. Give it a try!
 
 ## Build the production bundle
 
@@ -158,18 +171,18 @@ side rendering process.
 
 1. Compile the app using the command:
 ```
-$ yarn build
+yarn build
 ```
 The resultant build is available in the `build` folder.
 
 2. Run the Volto Nodejs process
 ```
-$ yarn start:prod
+yarn start:prod
 ```
 
 to run the node process with the production build. You can also run it
 manually:
 ```
-$ NODE_ENV=production node build/server.js
+NODE_ENV=production node build/server.js
 ```
 Your production ready Volto will be available in http://localhost:3000

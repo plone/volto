@@ -8,39 +8,45 @@ import { flattenToAppURL } from '@plone/volto/helpers';
 import { settings } from '~/config';
 
 const Types = ({ types, pathname, content, currentLanguage }) => {
-  return types.length > 0 ? (
+  return types.length > 0 ||
+    (settings.isMultilingual && content['@components'].translations) ? (
     <div className="menu-more pastanaga-menu">
-      <header>
-        <FormattedMessage id="Add Content" defaultMessage="Add Content…" />
-      </header>
-      <div className="pastanaga-menu-list">
-        <ul>
-          {map(filter(types), (item) => {
-            // Strip the type for the item we want to add
-            const contentTypeToAdd = item['@id'].split('@types/')[1];
-            // If we are in the root or in /contents, we need to strip the preceeding / and /contents
-            const currentPath =
-              pathname === '/' || pathname === '/contents' ? '' : pathname;
-            // Finally build the route URL
-            const addContentTypeRoute = `${currentPath}/add?type=${contentTypeToAdd}`;
-            return (
-              <li key={item['@id']}>
-                <Link
-                  to={addContentTypeRoute}
-                  id={`toolbar-add-${item['@id']
-                    .split('@types/')[1]
-                    .toLowerCase()
-                    .replace(' ', '-')}`}
-                  className="item"
-                  key={item.title}
-                >
-                  <FormattedMessage id={item.title} />
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+      {types.length > 0 && (
+        <>
+          <header>
+            <FormattedMessage id="Add Content" defaultMessage="Add Content…" />
+          </header>
+          <div className="pastanaga-menu-list">
+            <ul>
+              {map(filter(types), (item) => {
+                // Strip the type for the item we want to add
+                const contentTypeToAdd = item['@id'].split('@types/')[1];
+                // If we are in the root or in /contents, we need to strip the preceeding / and /contents
+                const currentPath = pathname
+                  .replace(/\/contents$/, '')
+                  .replace(/\/$/, '');
+                // Finally build the route URL
+                const addContentTypeRoute = `${currentPath}/add?type=${contentTypeToAdd}`;
+                return (
+                  <li key={item['@id']}>
+                    <Link
+                      to={addContentTypeRoute}
+                      id={`toolbar-add-${item['@id']
+                        .split('@types/')[1]
+                        .toLowerCase()
+                        .replace(' ', '-')}`}
+                      className="item"
+                      key={item.title}
+                    >
+                      <FormattedMessage id={item.title} />
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </>
+      )}
       {settings.isMultilingual &&
         content['@components'].translations &&
         (() => {

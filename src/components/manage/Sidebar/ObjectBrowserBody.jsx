@@ -8,17 +8,15 @@ import { Input, Segment } from 'semantic-ui-react';
 import { join } from 'lodash';
 import { searchContent } from '@plone/volto/actions';
 import { Icon } from '@plone/volto/components';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 
 import { settings } from '~/config';
 import backSVG from '@plone/volto/icons/back.svg';
-import pageSVG from '@plone/volto/icons/page.svg';
 import folderSVG from '@plone/volto/icons/folder.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import searchSVG from '@plone/volto/icons/zoom.svg';
 import linkSVG from '@plone/volto/icons/link.svg';
-import imageSVG from '@plone/volto/icons/image.svg';
 
 import ObjectBrowserNav from '@plone/volto/components/manage/Sidebar/ObjectBrowserNav';
 
@@ -31,9 +29,10 @@ const messages = defineMessages({
     id: 'Selected items',
     defaultMessage: 'Selected items',
   },
+  of: { id: 'Selected items - x of y', defaultMessage: 'of' },
 });
 
-function getParentURL(url) {
+export function getParentURL(url) {
   return flattenToAppURL(`${join(url.split('/').slice(0, -1), '/')}`) || '/';
 }
 
@@ -58,6 +57,7 @@ class ObjectBrowserBody extends Component {
     onChangeBlock: PropTypes.func.isRequired,
     onSelectItem: PropTypes.func,
     dataName: PropTypes.string,
+    maximumSelectionSize: PropTypes.number,
   };
 
   /**
@@ -71,6 +71,7 @@ class ObjectBrowserBody extends Component {
     onSelectItem: null,
     dataName: null,
     selectableTypes: [],
+    maximumSelectionSize: null,
   };
 
   /**
@@ -85,8 +86,8 @@ class ObjectBrowserBody extends Component {
       currentFolder:
         this.props.mode === 'multiple'
           ? '/'
-          : this.props.data?.url
-          ? getParentURL(this.props.data.url)
+          : this.props.data?.contextURL
+          ? getParentURL(this.props.data.contextURL)
           : '/',
       currentImageFolder:
         this.props.mode === 'multiple'
@@ -143,7 +144,7 @@ class ObjectBrowserBody extends Component {
         : mode === 'image'
         ? this.state.selectedImage
         : this.state.selectedHref;
-    if (currentSelected) {
+    if (currentSelected && isInternalURL(currentSelected)) {
       this.props.searchContent(
         getParentURL(currentSelected),
         {
@@ -156,7 +157,7 @@ class ObjectBrowserBody extends Component {
       );
     } else {
       this.props.searchContent(
-        '/',
+        this.state.currentFolder,
         {
           'path.depth': 1,
           sort_on: 'getObjPositionInParent',
@@ -165,21 +166,6 @@ class ObjectBrowserBody extends Component {
         },
         `${this.props.block}-${mode}`,
       );
-    }
-  };
-
-  getIcon = (icon) => {
-    switch (icon) {
-      case 'Folder':
-        return <Icon name={folderSVG} size="24px" />;
-      case 'Document':
-        return <Icon name={pageSVG} size="24px" />;
-      case 'Image':
-        return <Icon name={imageSVG} size="24px" />;
-      case 'File':
-        return <Icon name={pageSVG} size="24px" />;
-      default:
-        return <Icon name={pageSVG} size="24px" />;
     }
   };
 
@@ -308,7 +294,19 @@ class ObjectBrowserBody extends Component {
       }
     } else {
       if (this.isSelectable(item)) {
-        this.onSelectItem(item);
+        if (
+          !this.props.maximumSelectionSize ||
+          !this.props.data ||
+          this.props.data.length < this.props.maximumSelectionSize
+        ) {
+          this.onSelectItem(item);
+          let length = this.props.data ? this.props.data.length : 0;
+          if (length + 1 >= this.props.maximumSelectionSize) {
+            this.props.closeObjectBrowser();
+          }
+        } else {
+          this.props.closeObjectBrowser();
+        }
       } else {
         this.navigateTo(item['@id']);
       }
@@ -325,14 +323,13 @@ class ObjectBrowserBody extends Component {
         this.props.closeObjectBrowser();
       }
     } else {
-      if (
-        this.props.selectableTypes.length > 0 &&
-        this.props.selectableTypes.indexOf(item['@type']) < 0
-      ) {
-        this.navigateTo(item['@id']);
-      } else {
-        this.onSelectItem(item);
+      if (this.isSelectable(item)) {
+        if (this.props.data.length < this.props.maximumSelectionSize) {
+          this.onSelectItem(item);
+        }
         this.props.closeObjectBrowser();
+      } else {
+        this.navigateTo(item['@id']);
       }
     }
   };
@@ -372,15 +369,13 @@ class ObjectBrowserBody extends Component {
               />
             )}
             {this.state.showSearchInput ? (
-              <form>
-                <Input
-                  className="search"
-                  onChange={this.onSearch}
-                  placeholder={this.props.intl.formatMessage(
-                    messages.SearchInputPlaceholder,
-                  )}
-                />
-              </form>
+              <Input
+                className="search"
+                onChange={this.onSearch}
+                placeholder={this.props.intl.formatMessage(
+                  messages.SearchInputPlaceholder,
+                )}
+              />
             ) : this.props.mode === 'image' ? (
               <h2>
                 <FormattedMessage
@@ -409,6 +404,13 @@ class ObjectBrowserBody extends Component {
             <Segment className="infos">
               {this.props.intl.formatMessage(messages.SelectedItems)}:{' '}
               {this.props.data?.length}
+              {this.props.maximumSelectionSize && (
+                <>
+                  {' '}
+                  {this.props.intl.formatMessage(messages.of)}{' '}
+                  {this.props.maximumSelectionSize}
+                </>
+              )}
             </Segment>
           )}
           <ObjectBrowserNav
@@ -429,7 +431,6 @@ class ObjectBrowserBody extends Component {
                     },
                   ]
             }
-            getIcon={this.getIcon}
             handleClickOnItem={this.handleClickOnItem}
             handleDoubleClickOnItem={this.handleDoubleClickOnItem}
             mode={this.props.mode}

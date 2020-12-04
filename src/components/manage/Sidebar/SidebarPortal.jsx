@@ -6,14 +6,13 @@ import { Portal } from 'react-portal';
  * Portal that wraps Sidebar components
  * @param {Array} children Sidebar content
  * @param {bool} selected Sidebar needs to know when the related block is selected
+ * @param {string} tab Element id where to insert sidebar content, default: sidebar-properties
  * @returns {string} Rendered sidebar
  */
-const SidebarPortal = ({ children, selected }) => (
+const SidebarPortal = ({ children, selected, tab = 'sidebar-properties' }) => (
   <>
     {selected && (
-      <Portal
-        node={__CLIENT__ && document.getElementById('sidebar-properties')}
-      >
+      <Portal node={__CLIENT__ && document.getElementById(tab)}>
         <div role="form" style={{ height: '100%' }}>
           <div
             style={{ height: '100%' }}

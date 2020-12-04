@@ -28,7 +28,7 @@ const valueToDraft = (value) => ({
       depth: 0,
       entityRanges: [],
       inlineStyleRanges: [],
-      key: 'co3kh',
+      key: getId(),
       text: value,
       type: 'unstyled',
     },
@@ -47,7 +47,7 @@ const emptyRow = (cells) => ({
   cells: map(cells, () => emptyCell()),
 });
 
-const initialTable = {
+const initialTable = () => ({
   fixed: true,
   compact: false,
   basic: false,
@@ -86,7 +86,7 @@ const initialTable = {
       ],
     },
   ],
-};
+});
 
 const messages = defineMessages({
   insertRowBefore: {
@@ -187,6 +187,7 @@ class Edit extends Component {
         row: 0,
         cell: 0,
       },
+      isClient: false,
     };
     this.onSelectCell = this.onSelectCell.bind(this);
     this.onInsertRowBefore = this.onInsertRowBefore.bind(this);
@@ -215,9 +216,10 @@ class Edit extends Component {
     if (!this.props.data.table) {
       this.props.onChangeBlock(this.props.block, {
         ...this.props.data,
-        table: initialTable,
+        table: initialTable(),
       });
     }
+    this.setState({ isClient: true });
   }
 
   /**
@@ -230,7 +232,7 @@ class Edit extends Component {
     if (!nextProps.data.table) {
       this.props.onChangeBlock(nextProps.block, {
         ...nextProps.data,
-        table: initialTable,
+        table: initialTable(),
       });
     }
   }
@@ -648,6 +650,7 @@ class Edit extends Component {
                         onSelectBlock={this.props.onSelectBlock}
                         onChange={this.onChangeCell}
                         index={this.props.index}
+                        disableNewBlocks={this.props.data?.disableNewBlocks}
                       />
                     </Table.Cell>
                   ))}
@@ -656,10 +659,8 @@ class Edit extends Component {
             </Table.Body>
           </Table>
         )}
-        {this.props.selected && (
-          <Portal
-            node={__CLIENT__ && document.getElementById('sidebar-properties')}
-          >
+        {this.props.selected && this.state.isClient && (
+          <Portal node={document.getElementById('sidebar-properties')}>
             <Form method="post" onSubmit={(event) => event.preventDefault()}>
               <Segment secondary attached>
                 <FormattedMessage id="Table" defaultMessage="Table" />

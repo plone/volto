@@ -1,4 +1,4 @@
-import { difference } from './Utils';
+import { difference, applyConfig, safeWrapper } from './Utils';
 
 describe('Utils tests', () => {
   describe('difference', () => {
@@ -197,6 +197,45 @@ describe('Utils tests', () => {
           },
         },
       });
+    });
+  });
+
+  describe('safeWrapper', () => {
+    it('calls the function with config', () => {
+      expect(
+        safeWrapper((config) => ({ ...config, a: 1 }))({ b: 2 }),
+      ).toStrictEqual({
+        a: 1,
+        b: 2,
+      });
+    });
+    it('fails when the function returns nothing', () => {
+      expect(safeWrapper((config) => {})).toThrow();
+    });
+  });
+
+  describe('applyConfig', () => {
+    it('applies configuration methods', () => {
+      expect(
+        applyConfig(
+          [
+            (config) => ({ ...config, b: 2 }),
+            (config) => ({ ...config, c: 3 }),
+          ],
+          { a: 1 },
+        ),
+      ).toStrictEqual({ a: 1, b: 2, c: 3 });
+    });
+
+    it('throws error on broken config method', () => {
+      let ok = false;
+      try {
+        applyConfig([(config) => ({ ...config, b: 2 }), (config) => {}], {
+          a: 1,
+        });
+        ok = true;
+      } catch {}
+      expect(ok).toBe(false);
     });
   });
 });

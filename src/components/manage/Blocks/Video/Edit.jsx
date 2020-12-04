@@ -13,6 +13,12 @@ import { Icon, SidebarPortal, VideoSidebar } from '@plone/volto/components';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import videoBlockSVG from '@plone/volto/components/manage/Blocks/Video/block-video.svg';
+import {
+  isInternalURL,
+  getParentUrl,
+  flattenToAppURL,
+} from '@plone/volto/helpers';
+import { settings } from '~/config';
 
 const messages = defineMessages({
   VideoFormDescription: {
@@ -123,6 +129,9 @@ class Edit extends Component {
    */
   render() {
     const { data } = this.props;
+    const placeholder =
+      this.props.data.placeholder ||
+      this.props.intl.formatMessage(messages.VideoBlockInputPlaceholder);
     return (
       <div
         className={cx(
@@ -142,14 +151,48 @@ class Edit extends Component {
           >
             {data.url.match('youtu') ? (
               <>
-                <div className="ui blocker" />
                 {data.url.match('list') ? (
+                  data.preview_image ? (
+                    <Embed
+                      url={`https://www.youtube.com/embed/videoseries?list=${
+                        data.url.match(/^.*\?list=(.*)$/)[1]
+                      }`}
+                      placeholder={
+                        isInternalURL(data.preview_image)
+                          ? `${flattenToAppURL(
+                              data.preview_image,
+                            )}/@@images/image`
+                          : data.preview_image
+                      }
+                      defaultActive
+                      autoplay={false}
+                    />
+                  ) : (
+                    <Embed
+                      url={`https://www.youtube.com/embed/videoseries?list=${
+                        data.url.match(/^.*\?list=(.*)$/)[1]
+                      }`}
+                      icon="play"
+                      defaultActive
+                      autoplay={false}
+                    />
+                  )
+                ) : data.preview_image ? (
                   <Embed
-                    url={`https://www.youtube.com/embed/videoseries?list=${
-                      data.url.match(/^.*\?list=(.*)$/)[1]
-                    }`}
-                    icon="arrow right"
-                    defaultActive
+                    id={
+                      data.url.match(/.be\//)
+                        ? data.url.match(/^.*\.be\/(.*)/)[1]
+                        : data.url.match(/^.*\?v=(.*)$/)[1]
+                    }
+                    source="youtube"
+                    placeholder={
+                      isInternalURL(data.preview_image)
+                        ? `${flattenToAppURL(
+                            data.preview_image,
+                          )}/@@images/image`
+                        : data.preview_image
+                    }
+                    icon="play"
                     autoplay={false}
                   />
                 ) : (
@@ -160,7 +203,7 @@ class Edit extends Component {
                         : data.url.match(/^.*\?v=(.*)$/)[1]
                     }
                     source="youtube"
-                    icon="arrow right"
+                    icon="play"
                     defaultActive
                     autoplay={false}
                   />
@@ -170,19 +213,48 @@ class Edit extends Component {
               <>
                 <div className="ui blocker" />
                 {data.url.match('vimeo') ? (
-                  <Embed
-                    id={data.url.match(/^.*\.com\/(.*)/)[1]}
-                    source="vimeo"
-                    icon="arrow right"
-                    defaultActive
-                    autoplay={false}
-                  />
+                  data.preview_image ? (
+                    <Embed
+                      id={data.url.match(/^.*\.com\/(.*)/)[1]}
+                      source="vimeo"
+                      placeholder={
+                        isInternalURL(data.preview_image)
+                          ? `${flattenToAppURL(
+                              data.preview_image,
+                            )}/@@images/image`
+                          : data.preview_image
+                      }
+                      icon="play"
+                      autoplay={false}
+                    />
+                  ) : (
+                    <Embed
+                      id={data.url.match(/^.*\.com\/(.*)/)[1]}
+                      source="vimeo"
+                      icon="play"
+                      defaultActive
+                      autoplay={false}
+                    />
+                  )
                 ) : (
                   <>
                     <div className="ui blocker" />
                     {data.url.match('.mp4') ? (
                       // eslint-disable-next-line jsx-a11y/media-has-caption
-                      <video src={data.url} controls type="video/mp4" />
+                      <video
+                        src={
+                          isInternalURL(
+                            data.url.replace(
+                              getParentUrl(settings.apiPath),
+                              '',
+                            ),
+                          )
+                            ? `${data.url}/@@download/file`
+                            : data.url
+                        }
+                        controls
+                        type="video/mp4"
+                      />
                     ) : (
                       <div>
                         <Message>
@@ -208,9 +280,7 @@ class Edit extends Component {
                 <Input
                   onKeyDown={this.onKeyDownVariantMenuForm}
                   onChange={this.onChangeUrl}
-                  placeholder={this.props.intl.formatMessage(
-                    messages.VideoBlockInputPlaceholder,
-                  )}
+                  placeholder={placeholder}
                   value={this.state.url}
                   // Prevents propagation to the Dropzone and the opening
                   // of the upload browser dialog

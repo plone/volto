@@ -45,10 +45,13 @@ exports[`PersonalInformation renders a personal information component 1`] = `
                   className="ui input"
                 >
                   <input
-                    disabled={false}
                     id="field-fullname"
+                    maxLength={null}
+                    minLength={null}
                     name="fullname"
+                    onBlur={[Function]}
                     onChange={[Function]}
+                    onClick={[Function]}
                     type="text"
                     value=""
                   />
@@ -100,10 +103,13 @@ exports[`PersonalInformation renders a personal information component 1`] = `
                   className="ui input"
                 >
                   <input
-                    disabled={false}
                     id="field-email"
+                    maxLength={null}
+                    minLength={null}
                     name="email"
+                    onBlur={[Function]}
                     onChange={[Function]}
+                    onClick={[Function]}
                     type="text"
                     value=""
                   />
@@ -151,17 +157,45 @@ exports[`PersonalInformation renders a personal information component 1`] = `
               <div
                 className="eight wide column"
               >
-                <img
-                  className="ui small image image-preview"
-                  id="field-portrait-image"
-                />
                 <div
-                  className="ui input"
+                  className="file-widget-dropzone"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onDragEnter={[Function]}
+                  onDragLeave={[Function]}
+                  onDragOver={[Function]}
+                  onDrop={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  tabIndex={0}
                 >
+                  <div
+                    className="dropzone-placeholder"
+                  >
+                    <p
+                      className="dropzone-text"
+                    >
+                      Drop file here to upload a new file
+                    </p>
+                  </div>
+                  <label
+                    className="label-file-widget-input"
+                  >
+                    Choose a file
+                  </label>
                   <input
+                    autoComplete="off"
                     id="field-portrait"
+                    multiple={true}
                     name="portrait"
                     onChange={[Function]}
+                    onClick={[Function]}
+                    style={
+                      Object {
+                        "display": "none",
+                      }
+                    }
+                    tabIndex={-1}
                     type="file"
                   />
                 </div>
@@ -215,10 +249,13 @@ exports[`PersonalInformation renders a personal information component 1`] = `
                   className="ui input"
                 >
                   <input
-                    disabled={false}
                     id="field-home_page"
+                    maxLength={null}
+                    minLength={null}
                     name="home_page"
+                    onBlur={[Function]}
                     onChange={[Function]}
+                    onClick={[Function]}
                     type="text"
                     value=""
                   />
@@ -270,10 +307,13 @@ exports[`PersonalInformation renders a personal information component 1`] = `
                   className="ui input"
                 >
                   <input
-                    disabled={false}
                     id="field-location"
+                    maxLength={null}
+                    minLength={null}
                     name="location"
+                    onBlur={[Function]}
                     onChange={[Function]}
+                    onClick={[Function]}
                     type="text"
                     value=""
                   />
@@ -401,10 +441,13 @@ exports[`PersonalInformation renders a personal information component embedded i
                   className="ui input"
                 >
                   <input
-                    disabled={false}
                     id="field-fullname"
+                    maxLength={null}
+                    minLength={null}
                     name="fullname"
+                    onBlur={[Function]}
                     onChange={[Function]}
+                    onClick={[Function]}
                     type="text"
                     value=""
                   />
@@ -456,10 +499,13 @@ exports[`PersonalInformation renders a personal information component embedded i
                   className="ui input"
                 >
                   <input
-                    disabled={false}
                     id="field-email"
+                    maxLength={null}
+                    minLength={null}
                     name="email"
+                    onBlur={[Function]}
                     onChange={[Function]}
+                    onClick={[Function]}
                     type="text"
                     value=""
                   />
@@ -507,17 +553,45 @@ exports[`PersonalInformation renders a personal information component embedded i
               <div
                 className="eight wide column"
               >
-                <img
-                  className="ui small image image-preview"
-                  id="field-portrait-image"
-                />
                 <div
-                  className="ui input"
+                  className="file-widget-dropzone"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onDragEnter={[Function]}
+                  onDragLeave={[Function]}
+                  onDragOver={[Function]}
+                  onDrop={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  tabIndex={0}
                 >
+                  <div
+                    className="dropzone-placeholder"
+                  >
+                    <p
+                      className="dropzone-text"
+                    >
+                      Drop file here to upload a new file
+                    </p>
+                  </div>
+                  <label
+                    className="label-file-widget-input"
+                  >
+                    Choose a file
+                  </label>
                   <input
+                    autoComplete="off"
                     id="field-portrait"
+                    multiple={true}
                     name="portrait"
                     onChange={[Function]}
+                    onClick={[Function]}
+                    style={
+                      Object {
+                        "display": "none",
+                      }
+                    }
+                    tabIndex={-1}
                     type="file"
                   />
                 </div>
@@ -571,10 +645,13 @@ exports[`PersonalInformation renders a personal information component embedded i
                   className="ui input"
                 >
                   <input
-                    disabled={false}
                     id="field-home_page"
+                    maxLength={null}
+                    minLength={null}
                     name="home_page"
+                    onBlur={[Function]}
                     onChange={[Function]}
+                    onClick={[Function]}
                     type="text"
                     value=""
                   />
@@ -626,10 +703,13 @@ exports[`PersonalInformation renders a personal information component embedded i
                   className="ui input"
                 >
                   <input
-                    disabled={false}
                     id="field-location"
+                    maxLength={null}
+                    minLength={null}
                     name="location"
+                    onBlur={[Function]}
                     onChange={[Function]}
+                    onClick={[Function]}
                     type="text"
                     value=""
                   />

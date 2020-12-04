@@ -18,19 +18,22 @@ export {
   isInternalURL,
   getParentUrl,
   getBaseUrl,
-  getIcon,
   getView,
+  isCmsUi,
   getId,
 } from '@plone/volto/helpers/Url/Url';
 export { generateSitemap } from '@plone/volto/helpers/Sitemap/Sitemap';
 export {
   nestContent,
   getLayoutFieldname,
+  getContentIcon,
 } from '@plone/volto/helpers/Content/Content';
 export {
+  getBlocks,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
   hasBlocksData,
+  blockHasValue,
 } from '@plone/volto/helpers/Blocks/Blocks';
 export BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
 export ScrollToTop from '@plone/volto/helpers/ScrollToTop/ScrollToTop';
@@ -39,8 +42,16 @@ export {
   getVocabFromHint,
   getVocabFromField,
   getVocabFromItems,
+  getFieldsVocabulary,
 } from '@plone/volto/helpers/Vocabularies/Vocabularies';
 export AlignBlock from '@plone/volto/helpers/AlignBlock/AlignBlock';
 
 export Helmet from './Helmet/Helmet';
-export { difference } from '@plone/volto/helpers/Utils/Utils';
+export FormValidation from './FormValidation/FormValidation';
+export { messages } from './MessageLabels/MessageLabels';
+export {
+  difference,
+  safeWrapper,
+  applyConfig,
+  withServerErrorCode,
+} from '@plone/volto/helpers/Utils/Utils';

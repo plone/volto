@@ -25,10 +25,6 @@
 }
 
 .block .block-add-button {
-  display: none;
-}
-
-.block.selected .block-add-button {
   display: inline-block;
 }
 
@@ -409,6 +405,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 .ui.basic.button.block-add-button {
   // .ui.basic.button.block-delete-button {
   position: absolute;
+  z-index: 2;
   // margin-top: -21px;
   top: -2px;
   padding: 0;
@@ -509,6 +506,8 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 }
 
 .separator {
+  position: relative;
+  top: 5px;
   display: inline-block;
   height: 24px;
   border-right: 1px solid #ddd;
@@ -523,6 +522,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
   border-radius: 4px;
   font-family: monospace;
   font-size: @16px;
+  word-break: break-all !important;
 
   &:focus-within textarea {
     caret-color: #e40166;
@@ -602,6 +602,11 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 }
 
 .link-form-container {
+  .inline.field .wrapper {
+    min-height: initial;
+    border-bottom: none;
+  }
+
   button {
     padding: 0;
     border: 0;
@@ -614,6 +619,10 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     &:focus {
       outline: none;
     }
+  }
+
+  .ui.input {
+    min-width: 250px;
   }
 }
 

@@ -15,15 +15,11 @@ if (Cypress.env('API') !== 'guillotina') {
 
     it('Changing name of the Page content type', () => {
       cy.get('a[href="/controlpanel/dexterity-types/Document"]').click();
-      cy.get('input[id="field-title"]')
-        .clear()
-        .type('Page1{enter}');
+      cy.get('input[id="field-title"]').clear().type('Page1{enter}');
       cy.get('textarea[id="field-description"]').type(
         'This is Page Content Type{enter}',
       );
-      cy.get('#field-filter_content_types')
-        .click()
-        .type('all{enter}');
+      cy.get('#field-filter_content_types').click().type('all{enter}');
       cy.get('button[id="toolbar-save"]').click();
       cy.visit('/controlpanel/dexterity-types');
 
