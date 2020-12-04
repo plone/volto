@@ -379,6 +379,10 @@ msgstr "Contenuti"
 msgid "Copy"
 msgstr "Copia"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Copy blocks"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "Copyright"
 msgstr "Copyright"
@@ -412,6 +416,10 @@ msgstr "Password corrente"
 #: components/manage/Contents/ContentsItem
 msgid "Cut"
 msgstr "Taglia"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Cut blocks"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Daily"
@@ -487,6 +495,10 @@ msgstr "Rimuovi tipo di contenuto"
 #: helpers/MessageLabels/MessageLabels
 msgid "Delete User"
 msgstr "Elimina utente"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Delete blocks"
+msgstr ""
 
 #: components/manage/Blocks/Table/Edit
 msgid "Delete col"
@@ -1254,6 +1266,10 @@ msgstr "Le password non corrispondono."
 #: components/manage/Contents/Contents
 msgid "Paste"
 msgstr "Incolla"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Paste blocks"
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Toolbar/Toolbar
