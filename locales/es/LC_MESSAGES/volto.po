@@ -518,6 +518,10 @@ msgstr "Eliminar columna"
 msgid "Delete row"
 msgstr "Eliminar fila"
 
+#: components/manage/Blocks/Listing/ListingData
+msgid "Depth"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Descending"
 msgstr "Descendente"

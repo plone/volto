@@ -6,6 +6,8 @@
 
 ### Feature
 
+- added search depth in listing and updated it locales @giuliaghisini
+
 ### Bugfix
 
 ### Internal

@@ -508,6 +508,10 @@ msgstr ""
 msgid "Delete row"
 msgstr ""
 
+#: components/manage/Blocks/Listing/ListingData
+msgid "Depth"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Descending"
 msgstr ""
