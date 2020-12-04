@@ -10,6 +10,8 @@
 
 ### Bugfix
 
+- Fix addons loader name generation on Windows @tiberiuichim
+
 ### Internal
 
 - Tweak Cypress command `waitForResourceToLoad` to timeout after 50 tries.  @tiberiuichim
