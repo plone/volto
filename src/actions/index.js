@@ -111,3 +111,7 @@ export {
   getTranslationLocator,
   linkTranslation,
 } from '@plone/volto/actions/translations/translations';
+export {
+  setBlocksClipboard,
+  resetBlocksClipboard,
+} from '@plone/volto/actions/blocksClipboard/blocksClipboard';

@@ -266,6 +266,7 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
 
     &-bottom {
       display: flex;
+      flex-direction: row-reverse;
       // flex: 1;
       align-items: center;
 
@@ -421,8 +422,8 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
 
       &-bottom {
         flex: 1;
-        flex-direction: column;
-        justify-content: flex-end;
+        flex-direction: column-reverse;
+        justify-content: flex-start;
 
         .user {
           display: block;

@@ -379,6 +379,10 @@ msgstr "Cuprins"
 msgid "Copy"
 msgstr "Copiere"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Copy blocks"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "Copyright"
 msgstr "Drepturi de autor"
@@ -412,6 +416,10 @@ msgstr "Parolă curentă"
 #: components/manage/Contents/ContentsItem
 msgid "Cut"
 msgstr "Taie"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Cut blocks"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Daily"
@@ -487,6 +495,10 @@ msgstr "Ștergeți tipul"
 #: helpers/MessageLabels/MessageLabels
 msgid "Delete User"
 msgstr "Ștergeți utilizatorul"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Delete blocks"
+msgstr ""
 
 #: components/manage/Blocks/Table/Edit
 msgid "Delete col"
@@ -1254,6 +1266,10 @@ msgstr "Parolele nu se potrivesc."
 #: components/manage/Contents/Contents
 msgid "Paste"
 msgstr "Lipire"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Paste blocks"
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Toolbar/Toolbar

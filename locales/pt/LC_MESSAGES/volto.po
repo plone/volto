@@ -387,6 +387,10 @@ msgstr "Conteúdo"
 msgid "Copy"
 msgstr "Copiar"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Copy blocks"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "Copyright"
 msgstr "Copyright"
@@ -420,6 +424,10 @@ msgstr "Senha actual"
 #: components/manage/Contents/ContentsItem
 msgid "Cut"
 msgstr "Cortar"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Cut blocks"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Daily"
@@ -495,6 +503,10 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 msgid "Delete User"
 msgstr "Eliminar Utilizador"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Delete blocks"
+msgstr ""
 
 #: components/manage/Blocks/Table/Edit
 msgid "Delete col"
@@ -1262,6 +1274,10 @@ msgstr "As senhas não coincidem."
 #: components/manage/Contents/Contents
 msgid "Paste"
 msgstr "Colar"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Paste blocks"
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Toolbar/Toolbar
