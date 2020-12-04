@@ -10,6 +10,8 @@
 
 ### Bugfix
 
+- Fix regression in the `getContent` action with the expandable missing @sneridagh
+
 ### Internal
 
 ## 10.1.0 (2020-11-30)
