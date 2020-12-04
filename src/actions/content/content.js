@@ -139,9 +139,10 @@ export function getContent(
           b_size: settings.defaultPageSize,
         }
       : {},
+    settings.isMultilingual ? { expand: 'translations' } : {},
   );
 
-  const qs = Object.keys(query)
+  let qs = Object.keys(query)
     .map(function (key) {
       return key + '=' + query[key];
     })

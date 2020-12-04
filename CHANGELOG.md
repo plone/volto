@@ -1,6 +1,6 @@
 # Change Log
 
-## 10.0.1 (unreleased)
+## 10.2.1 (unreleased)
 
 ### Breaking
 
@@ -12,7 +12,33 @@
 
 ### Internal
 
+## 10.2.0 (2020-12-04)
+
+### Feature
+
+- Generate language file of added missing German translations by @tisto. @ksuess
+- Add emailSend action @nzambello
+
+### Bugfix
+
+- Fix regression in the `getContent` action with the expandable missing @sneridagh
+
+- For python3.9 compatibility, install wheel package in build-backend targets @tiberiuichim
+
+- lazy load react-dropzone @nileshgulia1
+
+## 10.1.0 (2020-11-30)
+
+### Feature
+
+- Add missing German translations @tisto
+
 ## 10.0.0 (2020-11-30)
+
+### Feature
+
+- Provide operations on multiple-selected blocks: delete, cut/copy and paste.  You can trigger the "multiselected blocks" by holding the shift key and clicking on another block. You can add/remove blocks to the selection with the Control key. Holding Control when you click on the Paste button doesn't clear the clipboard, so you can paste multiple times. The blocks clipboard uses the browser's local storage to synchronize between tabs. @tiberiuichim
+- Allow reducers to be persisted using localstorage @tiberiuichim
 
 ### Breaking
 

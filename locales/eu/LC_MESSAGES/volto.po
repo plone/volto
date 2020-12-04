@@ -386,6 +386,10 @@ msgstr "Edukiak"
 msgid "Copy"
 msgstr "Kopiatu"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Copy blocks"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "Copyright"
 msgstr "Copyright"
@@ -419,6 +423,10 @@ msgstr "Oraingo pasahitza"
 #: components/manage/Contents/ContentsItem
 msgid "Cut"
 msgstr "Ebaki"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Cut blocks"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Daily"
@@ -494,6 +502,10 @@ msgstr "Ezabatu elementu-mota"
 #: helpers/MessageLabels/MessageLabels
 msgid "Delete User"
 msgstr "Ezabatu erabiltzailea"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Delete blocks"
+msgstr ""
 
 #: components/manage/Blocks/Table/Edit
 msgid "Delete col"
@@ -1265,6 +1277,10 @@ msgstr "Pasahitzak ez datoz bat."
 #: components/manage/Contents/Contents
 msgid "Paste"
 msgstr "Itsatsi"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Paste blocks"
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Toolbar/Toolbar

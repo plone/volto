@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-11-30T13:57:36.873Z\n"
+"POT-Creation-Date: 2020-12-04T18:24:03.145Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -460,6 +460,11 @@ msgstr ""
 msgid "Copy"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: undefined
+msgid "Copy blocks"
+msgstr ""
+
 #: components/theme/Footer/Footer
 # defaultMessage: Copyright
 msgid "Copyright"
@@ -500,6 +505,11 @@ msgstr ""
 #: components/manage/Contents/ContentsItem
 # defaultMessage: Cut
 msgid "Cut"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: undefined
+msgid "Cut blocks"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
@@ -587,6 +597,11 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Delete User
 msgid "Delete User"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: undefined
+msgid "Delete blocks"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
@@ -1535,6 +1550,11 @@ msgstr ""
 #: components/manage/Contents/Contents
 # defaultMessage: Paste
 msgid "Paste"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: undefined
+msgid "Paste blocks"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
