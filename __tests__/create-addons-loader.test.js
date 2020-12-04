@@ -223,6 +223,11 @@ describe('create-addons-loader default name generation', () => {
     expect(name.length).toBe(10);
     expect(new RegExp(/[abcdefghjk]+/).exec(name)[0].length > 0).toBe(true);
   });
+  test('passing a backspaced path strips backspace', () => {
+    const name = getName('c:\\nodeprojects');
+    expect(name).toBe('cnodeprojects');
+    expect(new RegExp(/[abcdefghjk]+/).exec(name)[0].length > 0).toBe(true);
+  });
 });
 
 function transpile(fpath) {

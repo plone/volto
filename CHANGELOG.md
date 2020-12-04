@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix addons loader name generation on Windows @tiberiuichim
+
 ### Internal
 
 ## 10.2.0 (2020-12-04)
