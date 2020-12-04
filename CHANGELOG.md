@@ -2,8 +2,6 @@
 
 ## 10.1.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Generate language file of added missing German translations by @tisto. @ksuess
@@ -11,8 +9,6 @@
 ### Bugfix
 
 - Fix regression in the `getContent` action with the expandable missing @sneridagh
-
-### Internal
 
 ## 10.1.0 (2020-11-30)
 
