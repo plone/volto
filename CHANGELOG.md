@@ -15,6 +15,7 @@
 ### Feature
 
 - Generate language file of added missing German translations by @tisto. @ksuess
+- Add emailSend action @nzambello
 
 ### Bugfix
 
