@@ -9,7 +9,7 @@ const titleCase = (w) => w.slice(0, 1).toUpperCase() + w.slice(1, w.length);
  */
 function nameFromPackage(name) {
   name =
-    name.replace(/[@~./\\:]/gi, '') ||
+    name.replace(/[@~./\\:\s]/gi, '') ||
     cryptoRandomString({ length: 10, characters: 'abcdefghijk' });
   return name
     .split('-')
