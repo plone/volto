@@ -2,15 +2,16 @@
 
 ## 10.2.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - added search depth in listing and updated it locales @giuliaghisini
+- Add emailSend action @nzambello
+- lazy load react-dropzone @nileshgulia1
 
 ### Bugfix
 
 - Fix addons loader name generation on Windows @tiberiuichim
+- For python3.9 compatibility, install wheel package in build-backend targets @tiberiuichim
 
 ### Internal
 
@@ -21,15 +22,10 @@
 ### Feature
 
 - Generate language file of added missing German translations by @tisto. @ksuess
-- Add emailSend action @nzambello
 
 ### Bugfix
 
 - Fix regression in the `getContent` action with the expandable missing @sneridagh
-
-- For python3.9 compatibility, install wheel package in build-backend targets @tiberiuichim
-
-- lazy load react-dropzone @nileshgulia1
 
 ## 10.1.0 (2020-11-30)
 
