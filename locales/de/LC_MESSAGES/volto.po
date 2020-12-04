@@ -310,7 +310,7 @@ msgstr "Ziel auswählen"
 
 #: components/manage/Widgets/FileWidget
 msgid "Choose a file"
-msgstr "||||||| a5f08f67a"
+msgstr "Datei wählen"
 
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
@@ -584,15 +584,15 @@ msgstr "Ziehen Sie Dateien von Ihrem Computer auf diesen Bereich oder drücken S
 
 #: components/manage/Widgets/FileWidget
 msgid "Drop file here to replace the existing file"
-msgstr "||||||| a5f08f67a"
+msgstr "Datei hier ablegen um die bestehende Datei zu ersetzen"
 
 #: components/manage/Widgets/FileWidget
 msgid "Drop file here to upload a new file"
-msgstr "||||||| a5f08f67a"
+msgstr "Datei hier ablegen um neue Datei hochzuladen"
 
 #: components/manage/Widgets/FileWidget
 msgid "Drop files here ..."
-msgstr "||||||| a5f08f67a"
+msgstr "Dateien hier ablegen..."
 
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
@@ -1445,7 +1445,7 @@ msgstr "Wiederhole am"
 
 #: components/manage/Widgets/FileWidget
 msgid "Replace existing file"
-msgstr "||||||| a5f08f67a"
+msgstr "Bestehende Datei ersetzen"
 
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
