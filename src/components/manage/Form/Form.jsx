@@ -402,7 +402,7 @@ class Form extends Component {
         }
       }
 
-      if (event.ctrlKey && !event.shiftKey) {
+      if ((event.ctrlKey || event.metaKey) && !event.shiftKey) {
         if (this.state.multiSelected.includes(id)) {
           selected = null;
           multiSelected = without(this.state.multiSelected, id);

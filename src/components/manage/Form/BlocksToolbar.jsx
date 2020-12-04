@@ -124,7 +124,7 @@ export class BlocksToolbarComponent extends React.Component {
       },
     };
 
-    if (!e.ctrlKey) this.props.resetBlocksClipboard();
+    if (!(e.ctrlKey || e.metaKey)) this.props.resetBlocksClipboard();
     this.props.onChangeBlocks(newBlockData);
   }
 

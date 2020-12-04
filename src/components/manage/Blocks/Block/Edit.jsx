@@ -140,7 +140,7 @@ class Edit extends Component {
           <div
             role="presentation"
             onClick={(e) => {
-              const isMultipleSelection = e.shiftKey || e.ctrlKey;
+              const isMultipleSelection = e.shiftKey || e.ctrlKey || e.metaKey;
               this.props.onSelectBlock(
                 this.props.id,
                 this.props.selected ? false : isMultipleSelection,
