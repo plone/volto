@@ -87,7 +87,7 @@ const ImageCropWidget = ({
   const [upImg, setUpImg] = useState();
   const imgRef = useRef(null);
   const previewCanvasRef = useRef(null);
-  const [crop, setCrop] = useState({ unit: '%', width: 30, aspect: 16 / 9 });
+  const [crop, setCrop] = useState({ unit: '%', width: 30, aspect: 4 / 3 });
   const [completedCrop, setCompletedCrop] = useState(null);
   const [fileName, setFilename] = useState(null);
 
