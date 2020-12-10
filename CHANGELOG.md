@@ -6,6 +6,9 @@
 
 ### Feature
 
+- Add ability to filter the attributes that are saved in the ObjectBrowserWidget @sneridagh
+- Add `object_browser` as widget @sneridagh
+
 ### Bugfix
 
 ### Internal

@@ -49,6 +49,7 @@ export const widgetMapping = {
     align: AlignWidget,
     url: UrlWidget,
     email: EmailWidget,
+    object_browser: ObjectBrowserWidget,
   },
   vocabulary: {
     'plone.app.vocabularies.Catalog': ObjectBrowserWidget,
