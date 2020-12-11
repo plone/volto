@@ -5,7 +5,6 @@
 import {
   Add,
   AddonsControlpanel,
-  App,
   ChangePassword,
   ContactForm,
   Contents,
@@ -35,6 +34,9 @@ import {
   UsersControlpanel,
   View,
 } from '@plone/volto/components';
+
+import App from '@plone/volto/components/theme/App/App';
+
 import { addonRoutes } from '~/config';
 
 /**
