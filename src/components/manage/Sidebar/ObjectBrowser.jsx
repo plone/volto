@@ -1,8 +1,13 @@
 import React from 'react';
 import { CSSTransition } from 'react-transition-group';
-import ObjectBrowserBody from '@plone/volto/components/manage/Sidebar/ObjectBrowserBody';
 import ReactDOM from 'react-dom';
+import loadable from '@loadable/component';
+
 import { getParentURL } from '@plone/volto/components/manage/Sidebar/ObjectBrowserBody';
+
+const ObjectBrowserBody = loadable(
+  '@plone/volto/components/manage/Sidebar/ObjectBrowserBody',
+);
 
 const DEFAULT_TIMEOUT = 500;
 
