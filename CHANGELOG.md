@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Adding video thumbnail for the .mp4 extension @iFlameing.
+
 ### Internal
 
 ## 10.3.0 (2020-12-04)
