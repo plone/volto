@@ -361,6 +361,7 @@
     "yarnhook": "0.4.3"
   },
   "devDependencies": {
+    "circular-dependency-plugin": "5.2.2",
     "crypto-random-string": "3.2.0",
     "jest-environment-jsdom-sixteen": "1.0.3",
     "tmp": "0.2.1"
