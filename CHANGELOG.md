@@ -15,6 +15,8 @@
 
 ### Internal
 
+- Added new in productions sites to README @terapyon
+
 ## 10.3.0 (2020-12-04)
 
 ### Feature
