@@ -4,6 +4,8 @@
 
 ### Breaking
 
+- [circular deps] Move `Align` component to its rightful place @sneridagh
+
 ### Feature
 
 ### Bugfix
