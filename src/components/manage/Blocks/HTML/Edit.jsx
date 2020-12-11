@@ -265,22 +265,22 @@ class Edit extends Component {
 
 function withPrism(WrappedComponent) {
   return (props) => {
-    const [libs, setLibs] = React.useState({});
-    let { prismCore } = libs;
-
-    prismCore = prismCore?.default || prismCore;
+    const [prism, setPrism] = React.useState();
+    const prismCore = prism?.default;
 
     return (
       <>
-        <PrismCore ref={(ref) => setLibs({ ...libs, prismCore: ref })} />
-        <WrappedComponent
-          {...props}
-          highlight={
-            prismCore
-              ? (code) => prismCore.highlight(code, prismCore.languages.html)
-              : null
-          }
-        />
+        <PrismCore ref={(ref) => setPrism(ref)} />
+        {prism && (
+          <WrappedComponent
+            {...props}
+            highlight={
+              prismCore
+                ? (code) => prismCore.highlight(code, prismCore.languages.html)
+                : null
+            }
+          />
+        )}
       </>
     );
   };
