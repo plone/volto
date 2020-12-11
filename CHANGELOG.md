@@ -2,8 +2,6 @@
 
 ## 10.3.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Add ability to filter the attributes that are saved in the ObjectBrowserWidget @sneridagh
