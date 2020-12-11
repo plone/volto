@@ -358,10 +358,10 @@
     "tlds": "1.203.1",
     "xmlrpc": "1.3.2",
     "yarn-deduplicate": "2.0.0",
+    "circular-dependency-plugin": "5.2.2",
     "yarnhook": "0.4.3"
   },
   "devDependencies": {
-    "circular-dependency-plugin": "5.2.2",
     "crypto-random-string": "3.2.0",
     "jest-environment-jsdom-sixteen": "1.0.3",
     "tmp": "0.2.1"
