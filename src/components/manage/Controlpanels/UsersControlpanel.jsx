@@ -25,7 +25,7 @@ import {
 import { getBaseUrl, Helmet, messages } from '@plone/volto/helpers';
 import backSVG from '@plone/volto/icons/back.svg';
 import addSvg from '@plone/volto/icons/circle-plus.svg';
-import { find, isEqual, map, remove } from 'lodash';
+import { find, map, remove } from 'lodash';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
@@ -109,7 +109,6 @@ class UsersControlpanel extends Component {
     this.onAddGroupSuccess = this.onAddGroupSuccess.bind(this);
     this.updateUserRole = this.updateUserRole.bind(this);
     this.updateGroupRole = this.updateGroupRole.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
     this.onCancel = this.onCancel.bind(this);
     this.onShowAllUser = this.onShowAllUser.bind(this);
     this.state = {
@@ -317,15 +316,30 @@ class UsersControlpanel extends Component {
    * @memberof UsersControlpanel
    */
   updateUserRole(name, value) {
-    this.setState({
-      entries: map(this.state.entries, (entry) => ({
-        ...entry,
-        roles:
-          entry.id === name && !entry.roles.includes(value)
-            ? [...entry.roles, value]
-            : remove(entry.roles, (item) => item === value),
-      })),
-    });
+    const userData = { roles: {} };
+    this.setState(
+      {
+        entries: map(this.state.entries, (entry) => ({
+          ...entry,
+          roles:
+            entry.id === name && !entry.roles.includes(value)
+              ? [...entry.roles, value]
+              : entry.id !== name
+              ? entry.roles
+              : remove(entry.roles, (item) => {
+                  if (item !== value) {
+                    userData.roles[value] = false;
+                    return true;
+                  }
+                }),
+        })),
+      },
+      () => {
+        const user = this.state.entries.find((item) => item.id === name);
+        user.roles.forEach((item) => (userData.roles[item] = true));
+        return this.props.updateUser(name, userData);
+      },
+    );
   }
   /**
    *
@@ -334,15 +348,30 @@ class UsersControlpanel extends Component {
    * @memberof UsersControlpanel
    */
   updateGroupRole(name, value) {
-    this.setState({
-      groupEntries: map(this.state.groupEntries, (entry) => ({
-        ...entry,
-        roles:
-          entry.id === name && !entry.roles.includes(value)
-            ? [...entry.roles, value]
-            : remove(entry.roles, (item) => item === value),
-      })),
-    });
+    const groupData = { roles: {} };
+    this.setState(
+      {
+        groupEntries: map(this.state.groupEntries, (entry) => ({
+          ...entry,
+          roles:
+            entry.id === name && !entry.roles.includes(value)
+              ? [...entry.roles, value]
+              : entry.id !== name
+              ? entry.roles
+              : remove(entry.roles, (item) => {
+                  if (item !== value) {
+                    groupData.roles[value] = false;
+                    return true;
+                  }
+                }),
+        })),
+      },
+      () => {
+        const group = this.state.groupEntries.find((item) => item.id === name);
+        group.roles.forEach((item) => (groupData.roles[item] = true));
+        return this.props.updateGroup(name, groupData);
+      },
+    );
   }
 
   /**
@@ -424,39 +453,6 @@ class UsersControlpanel extends Component {
         content={this.props.intl.formatMessage(messages.groupCreated)}
       />,
     );
-  }
-
-  /**
-   * Submit handler
-   * @method onSubmit
-   * @param {object} event Event object.
-   * @returns {undefined}
-   */
-  onSubmit(event) {
-    const userData = { roles: {} };
-    const groupData = { roles: {} };
-
-    event.preventDefault();
-    for (let i = 0; i < this.props.users.length; i += 1) {
-      if (!isEqual(this.props.users[i].roles, this.state.entries[i].roles)) {
-        this.state.entries[i].roles.forEach((item) => {
-          userData.roles[item] = true;
-        });
-        userData.id = this.state.entries[i].id;
-        this.props.updateUser(userData.id, userData);
-      }
-    }
-    for (let i = 0; i < this.props.groups.length; i += 1) {
-      if (
-        !isEqual(this.props.groups[i].roles, this.state.groupEntries[i].roles)
-      ) {
-        this.state.groupEntries[i].roles.forEach((item) => {
-          groupData.roles[item] = true;
-        });
-        groupData.id = this.state.groupEntries[i].id;
-        this.props.updateGroup(groupData.id, groupData);
-      }
-    }
   }
 
   /**
@@ -718,7 +714,7 @@ class UsersControlpanel extends Component {
               </Form.Field>
             </Form>
           </Segment>
-          <Form onSubmit={this.onSubmit}>
+          <Form>
             <div className="table">
               <Table padded striped attached unstackable>
                 <Table.Header>
@@ -812,7 +808,7 @@ class UsersControlpanel extends Component {
               </Form.Field>
             </Form>
           </Segment>
-          <Form onSubmit={this.onSubmit}>
+          <Form>
             <div className="table">
               <Table padded striped attached unstackable>
                 <Table.Header>
