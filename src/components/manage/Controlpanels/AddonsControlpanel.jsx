@@ -27,7 +27,7 @@ import {
   upgradeAddon,
 } from '@plone/volto/actions';
 import { Helmet } from '@plone/volto/helpers';
-import { Icon, Toolbar } from '@plone/volto/components';
+import { Error, Icon, Toolbar } from '@plone/volto/components';
 import circleBottomSVG from '@plone/volto/icons/circle-bottom.svg';
 import circleTopSVG from '@plone/volto/icons/circle-top.svg';
 import backSVG from '@plone/volto/icons/back.svg';
@@ -162,6 +162,7 @@ class AddonsControlpanel extends Component {
       availableAddons: [],
       upgradableAddons: [],
       isClient: false,
+      error: null,
     };
   }
 
@@ -172,6 +173,15 @@ class AddonsControlpanel extends Component {
    */
   componentWillMount() {
     this.props.listAddons();
+  }
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    // Control Panel GET
+    if (this.props.addonsRequest.loading && nextProps.addonsRequest.error) {
+      this.setState({
+        error: nextProps.addonsRequest.error,
+      });
+    }
   }
 
   /**
@@ -238,6 +248,11 @@ class AddonsControlpanel extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    // Error
+    if (this.state.error) {
+      return <Error error={this.state.error} />;
+    }
+
     return (
       <Container id="page-addons" className="controlpanel-addons">
         <Helmet title="Addons" />
@@ -469,6 +484,7 @@ export default compose(
   injectIntl,
   connect(
     (state, props) => ({
+      addonsRequest: state.addons,
       installedAddons: state.addons.installedAddons,
       availableAddons: state.addons.availableAddons,
       upgradableAddons: state.addons.upgradableAddons,
