@@ -14,7 +14,7 @@ import isSoftNewlineEvent from 'draft-js/lib/isSoftNewlineEvent';
 import { defineMessages, injectIntl } from 'react-intl';
 import { includes, isEqual } from 'lodash';
 import { filterEditorState } from 'draftjs-filters';
-import { settings, blocks } from '~/config';
+import { settings } from '~/config';
 
 import { Icon, BlockChooser } from '@plone/volto/components';
 import addSVG from '@plone/volto/icons/circle-plus.svg';
@@ -285,11 +285,12 @@ class Edit extends Component {
           }}
         />
         <InlineToolbar />
-        {this.props.selected &&
-          !disableNewBlocks &&
-          !blocks.blocksConfig[
-            this.props.data?.['@type'] || 'text'
-          ].blockHasValue(this.props.data) && (
+        {!disableNewBlocks &&
+          (!this.props.data.text ||
+            (this.props.data.text &&
+              this.props.data.text.blocks &&
+              this.props.data.text.blocks.length === 1 &&
+              this.props.data.text.blocks[0].text === '')) && (
             <Button
               basic
               icon

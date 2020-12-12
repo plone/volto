@@ -81,9 +81,9 @@ const BlockChooser = ({ currentBlock, onMutateBlock, allowedBlocks, intl }) => {
                         icon
                         basic
                         className={block.id}
-                        onClick={() =>
-                          onMutateBlock(currentBlock, { '@type': block.id })
-                        }
+                        onClick={() => {
+                          onMutateBlock(currentBlock, { '@type': block.id });
+                        }}
                       >
                         <Icon name={block.icon} size="36px" />
                         {intl.formatMessage({

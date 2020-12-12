@@ -1,10 +1,12 @@
 import React from 'react';
 import { isEmpty } from 'lodash';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
+import { v4 as uuid } from 'uuid';
 
 const DragDropList = (props) => {
-  const { childList, renderChild, onMoveItem } = props;
+  const { childList, children, onMoveItem, as = 'div' } = props; //renderChild
   const [placeholderProps, setPlaceholderProps] = React.useState({});
+  const [uid] = React.useState(uuid());
 
   const handleDragStart = React.useCallback((event) => {
     const queryAttr = 'data-rbd-draggable-id';
@@ -66,6 +68,7 @@ const DragDropList = (props) => {
     var clientY =
       parseFloat(window.getComputedStyle(draggedDOM.parentNode).paddingTop) +
       updatedArray.slice(0, destinationIndex).reduce((total, curr) => {
+        if (!curr) return total;
         const style = curr.currentStyle || window.getComputedStyle(curr);
         const marginBottom = parseFloat(style.marginBottom);
         return total + curr.clientHeight + marginBottom;
@@ -81,6 +84,7 @@ const DragDropList = (props) => {
     });
   }, []);
 
+  const AsDomComponent = as;
   return (
     <DragDropContext
       onDragEnd={(result) => {
@@ -90,18 +94,24 @@ const DragDropList = (props) => {
       onDragStart={handleDragStart}
       onDragUpdate={onDragUpdate}
     >
-      <Droppable droppableId="edit-form">
+      <Droppable droppableId={uid}>
         {(provided, snapshot) => (
-          <div
+          <AsDomComponent
             ref={provided.innerRef}
             {...provided.droppableProps}
             style={{ position: 'relative' }}
           >
-            {childList.map(([childId, child], index) => (
-              <Draggable draggableId={childId} index={index} key={childId}>
-                {(draginfo) => renderChild(child, childId, index, draginfo)}
-              </Draggable>
-            ))}
+            {childList
+              .filter(([id, child]) => id && child) // beware numbers!
+              .map(([childId, child], index) => (
+                <Draggable
+                  draggableId={childId.toString()}
+                  index={index}
+                  key={childId}
+                >
+                  {(draginfo) => children({ child, childId, index, draginfo })}
+                </Draggable>
+              ))}
             {provided.placeholder}
             {!isEmpty(placeholderProps) && (
               <div
@@ -115,7 +125,7 @@ const DragDropList = (props) => {
                 }}
               />
             )}
-          </div>
+          </AsDomComponent>
         )}
       </Droppable>
     </DragDropContext>
