@@ -38,7 +38,13 @@ const MultilingualRedirector = (props) => {
         }),
       );
     }
-  }, [pathname, dispatch, redirectToLanguage]);
+  }, [
+    pathname,
+    dispatch,
+    redirectToLanguage,
+    locales,
+    settings.isMultilingual,
+  ]);
 
   return pathname === '/' && settings.isMultilingual ? (
     <Redirect to={`/${redirectToLanguage}`} />
