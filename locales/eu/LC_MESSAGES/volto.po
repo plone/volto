@@ -175,6 +175,7 @@ msgstr "Aukerak"
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Diff/Diff
 #: components/manage/History/History
+#: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -299,6 +300,14 @@ msgstr "Aukeratu irudia"
 msgid "Choose Target"
 msgstr "Aukeratu helburua"
 
+#: components/manage/Widgets/FileWidget
+msgid "Choose a file"
+msgstr ""
+
+#: components/manage/Blocks/HTML/Edit
+msgid "Clear"
+msgstr ""
+
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
 msgstr "Egin klik tamaina osoko irudia deskargatzeko..."
@@ -310,6 +319,10 @@ msgstr "Itxi"
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
 msgstr "Itxi menua"
+
+#: components/manage/Blocks/HTML/Edit
+msgid "Code"
+msgstr ""
 
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"
@@ -373,6 +386,10 @@ msgstr "Edukiak"
 msgid "Copy"
 msgstr "Kopiatu"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Copy blocks"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "Copyright"
 msgstr "Copyright"
@@ -406,6 +423,10 @@ msgstr "Oraingo pasahitza"
 #: components/manage/Contents/ContentsItem
 msgid "Cut"
 msgstr "Ebaki"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Cut blocks"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Daily"
@@ -482,6 +503,10 @@ msgstr "Ezabatu elementu-mota"
 msgid "Delete User"
 msgstr "Ezabatu erabiltzailea"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Delete blocks"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 msgid "Delete col"
 msgstr "Ezabatu zutabea"
@@ -489,6 +514,10 @@ msgstr "Ezabatu zutabea"
 #: components/manage/Blocks/Table/Edit
 msgid "Delete row"
 msgstr "Ezabatu errenkada"
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "Depth"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Descending"
@@ -548,6 +577,18 @@ msgstr "Dokumentua"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Arrastatu fitxategiak hona edo erabili Arakatu botoia."
+
+#: components/manage/Widgets/FileWidget
+msgid "Drop file here to replace the existing file"
+msgstr ""
+
+#: components/manage/Widgets/FileWidget
+msgid "Drop file here to upload a new file"
+msgstr ""
+
+#: components/manage/Widgets/FileWidget
+msgid "Drop files here ..."
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
@@ -619,6 +660,10 @@ msgstr "Bukaera data"
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 msgid "Enter URL or select an item"
 msgstr "Sartu URL bat edo aukeratu elementu bat"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Enter a username above to search or click 'Show All'"
+msgstr ""
 
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
@@ -903,7 +948,7 @@ msgid "Item(s) cut."
 msgstr "Elementuak ondo ebaki dira."
 
 #: components/manage/Contents/Contents
-msgid "Item(s) has been sorted."
+msgid "Item(s) has been updated."
 msgstr ""
 
 #: components/manage/Actions/Actions
@@ -1006,6 +1051,15 @@ msgstr "Erabiltzaile-izena"
 #: components/manage/Blocks/Table/Edit
 msgid "Make the table compact"
 msgstr "Taula trinkotu"
+
+#: components/manage/Multilingual/ManageTranslations
+#: components/manage/Toolbar/More
+msgid "Manage Translations"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Manage translations for {title}"
+msgstr ""
 
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "Map"
@@ -1224,6 +1278,10 @@ msgstr "Pasahitzak ez datoz bat."
 msgid "Paste"
 msgstr "Itsatsi"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Paste blocks"
+msgstr ""
+
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Toolbar/Toolbar
 msgid "Personal Information"
@@ -1284,9 +1342,17 @@ msgid "Preferences"
 msgstr "Hobespenak"
 
 #: components/manage/Blocks/HTML/Edit
+msgid "Prettify your code"
+msgstr ""
+
+#: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
 msgid "Preview"
 msgstr "Aurreikusi"
+
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "Preview Image URL"
+msgstr ""
 
 #: components/manage/Toolbar/PersonalTools
 msgid "Profile"
@@ -1372,6 +1438,10 @@ msgstr "Errepikatu"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Repeat on"
 msgstr "Egun honetan errepikatu"
+
+#: components/manage/Widgets/FileWidget
+msgid "Replace existing file"
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
@@ -1562,6 +1632,10 @@ msgstr "Izen-laburra"
 msgid "Show"
 msgstr "Erakutsi"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Show All"
+msgstr ""
+
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
 msgstr "Txikitu alboko barra"
@@ -1663,6 +1737,7 @@ msgstr "Gaia"
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -1816,6 +1891,14 @@ msgstr "Datu-basean dagoen elementu kopurua"
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
 msgstr "{lang} hizkuntzara itzuli"
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Translation linked"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Translation linking removed"
+msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
@@ -2042,6 +2125,10 @@ msgstr "Bertsioen arteko aldeak ikusi ditzakezu"
 msgid "You can view the history of your item below."
 msgstr "Zure elementuaren historia ikusi dezakezu."
 
+#: components/manage/Contents/Contents
+msgid "You can't paste this content here"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Your email is required for reset your password."
 msgstr "Eposta derrigorrezkoa da zure pasahitza berrezartzeko."
@@ -2161,6 +2248,10 @@ msgstr "Irudi nagusiaren eremua"
 #: config/Blocks
 msgid "listing"
 msgstr "Zerrenda"
+
+#: components/manage/Contents/Contents
+msgid "loading"
+msgstr ""
 
 #: components/theme/Unauthorized/Unauthorized
 msgid "log in"

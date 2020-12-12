@@ -175,6 +175,7 @@ msgstr "利用可能"
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Diff/Diff
 #: components/manage/History/History
+#: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -299,6 +300,14 @@ msgstr "イメージを選択"
 msgid "Choose Target"
 msgstr "ターゲットを選択"
 
+#: components/manage/Widgets/FileWidget
+msgid "Choose a file"
+msgstr ""
+
+#: components/manage/Blocks/HTML/Edit
+msgid "Clear"
+msgstr ""
+
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
 msgstr "クリックしてフルサイズ画像をダウンロード"
@@ -310,6 +319,10 @@ msgstr "閉じる"
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
 msgstr "メニューを閉じる"
+
+#: components/manage/Blocks/HTML/Edit
+msgid "Code"
+msgstr ""
 
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"
@@ -373,6 +386,10 @@ msgstr "コンテンツ"
 msgid "Copy"
 msgstr "コピー"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Copy blocks"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "Copyright"
 msgstr "著作権"
@@ -406,6 +423,10 @@ msgstr "現在のパスワード"
 #: components/manage/Contents/ContentsItem
 msgid "Cut"
 msgstr "カット"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Cut blocks"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Daily"
@@ -482,6 +503,10 @@ msgstr "コンテンツを削除"
 msgid "Delete User"
 msgstr "ユーザを削除"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Delete blocks"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 msgid "Delete col"
 msgstr "列を削除"
@@ -489,6 +514,10 @@ msgstr "列を削除"
 #: components/manage/Blocks/Table/Edit
 msgid "Delete row"
 msgstr "行を削除"
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "Depth"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Descending"
@@ -548,6 +577,18 @@ msgstr "文書"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "ここにファイルをドラッグ、または「参照」ボタンをクリック"
+
+#: components/manage/Widgets/FileWidget
+msgid "Drop file here to replace the existing file"
+msgstr ""
+
+#: components/manage/Widgets/FileWidget
+msgid "Drop file here to upload a new file"
+msgstr ""
+
+#: components/manage/Widgets/FileWidget
+msgid "Drop files here ..."
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
@@ -618,6 +659,10 @@ msgstr "終了日付"
 
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 msgid "Enter URL or select an item"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Enter a username above to search or click 'Show All'"
 msgstr ""
 
 #: components/theme/Register/Register
@@ -903,7 +948,7 @@ msgid "Item(s) cut."
 msgstr "アイテムがカットされました。"
 
 #: components/manage/Contents/Contents
-msgid "Item(s) has been sorted."
+msgid "Item(s) has been updated."
 msgstr ""
 
 #: components/manage/Actions/Actions
@@ -1006,6 +1051,15 @@ msgstr "ログイン名"
 #: components/manage/Blocks/Table/Edit
 msgid "Make the table compact"
 msgstr "コンパクトな表示"
+
+#: components/manage/Multilingual/ManageTranslations
+#: components/manage/Toolbar/More
+msgid "Manage Translations"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Manage translations for {title}"
+msgstr ""
 
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "Map"
@@ -1224,6 +1278,10 @@ msgstr "パスワードが一致しません"
 msgid "Paste"
 msgstr "ペースト"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Paste blocks"
+msgstr ""
+
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Toolbar/Toolbar
 msgid "Personal Information"
@@ -1284,9 +1342,17 @@ msgid "Preferences"
 msgstr "個別設定"
 
 #: components/manage/Blocks/HTML/Edit
+msgid "Prettify your code"
+msgstr ""
+
+#: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
 msgid "Preview"
 msgstr "プレビュー"
+
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "Preview Image URL"
+msgstr ""
 
 #: components/manage/Toolbar/PersonalTools
 msgid "Profile"
@@ -1372,6 +1438,10 @@ msgstr "繰り返す間隔"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Repeat on"
 msgstr "日または曜日"
+
+#: components/manage/Widgets/FileWidget
+msgid "Replace existing file"
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
@@ -1562,6 +1632,10 @@ msgstr "ショートネーム"
 msgid "Show"
 msgstr "表示件数"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Show All"
+msgstr ""
+
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
 msgstr "サイドバーを閉じる"
@@ -1663,6 +1737,7 @@ msgstr "件名"
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -1816,6 +1891,14 @@ msgstr "データベースの中にあるオブジェクト数"
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
 msgstr "{lang} に翻訳する"
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Translation linked"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Translation linking removed"
+msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
@@ -2042,6 +2125,10 @@ msgstr "You can view the difference of the revisions below. (未翻訳)"
 msgid "You can view the history of your item below."
 msgstr "You can view the history of your item below. (未翻訳)"
 
+#: components/manage/Contents/Contents
+msgid "You can't paste this content here"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Your email is required for reset your password."
 msgstr "Your email is required for reset your password. (未翻訳)"
@@ -2161,6 +2248,10 @@ msgstr "リード画像"
 #: config/Blocks
 msgid "listing"
 msgstr "リスティング"
+
+#: components/manage/Contents/Contents
+msgid "loading"
+msgstr ""
 
 #: components/theme/Unauthorized/Unauthorized
 msgid "log in"

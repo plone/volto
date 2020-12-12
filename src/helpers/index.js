@@ -18,7 +18,6 @@ export {
   isInternalURL,
   getParentUrl,
   getBaseUrl,
-  getIcon,
   getView,
   isCmsUi,
   getId,
@@ -27,6 +26,7 @@ export { generateSitemap } from '@plone/volto/helpers/Sitemap/Sitemap';
 export {
   nestContent,
   getLayoutFieldname,
+  getContentIcon,
 } from '@plone/volto/helpers/Content/Content';
 export BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
 export ScrollToTop from '@plone/volto/helpers/ScrollToTop/ScrollToTop';
@@ -46,5 +46,6 @@ export {
   difference,
   safeWrapper,
   applyConfig,
+  withServerErrorCode,
 } from '@plone/volto/helpers/Utils/Utils';
 export * from '@plone/volto/helpers/Blocks/Blocks';

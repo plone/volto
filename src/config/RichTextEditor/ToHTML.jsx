@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { isEmpty } from 'lodash';
+import { UniversalLink } from '@plone/volto/components';
 
 const styles = {
   code: {
@@ -223,27 +222,17 @@ const blocks = {
 
 const LinkEntity = connect((state) => ({
   token: state.userSession.token,
-}))(({ token, key, url, target = '_blank', targetUrl, download, children }) => {
+}))(({ token, key, url, target, targetUrl, download, children }) => {
   const to = token ? url : targetUrl || url;
-  if (download) {
-    return token ? (
-      <Link key={key} to={flattenToAppURL(to)}>
-        {children}
-      </Link>
-    ) : (
-      <a key={key} href={download}>
-        {children}
-      </a>
-    );
-  }
-  return isInternalURL(to) ? (
-    <Link key={key} to={flattenToAppURL(to)}>
+
+  return (
+    <UniversalLink
+      href={to}
+      openLinkInNewTab={target === '_blank'}
+      download={download}
+    >
       {children}
-    </Link>
-  ) : (
-    <a key={key} href={to} target={target} rel="noopener noreferrer">
-      {children}
-    </a>
+    </UniversalLink>
   );
 });
 

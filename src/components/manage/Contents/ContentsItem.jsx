@@ -12,13 +12,8 @@ import moment from 'moment';
 import { DragSource, DropTarget } from 'react-dnd';
 import { useIntl, defineMessages, FormattedMessage } from 'react-intl';
 import { Icon, Circle } from '@plone/volto/components';
+import { getContentIcon } from '@plone/volto/helpers';
 import moreSVG from '@plone/volto/icons/more.svg';
-import documentSVG from '@plone/volto/icons/content-existing.svg';
-import linkSVG from '@plone/volto/icons/link.svg';
-import calendarSVG from '@plone/volto/icons/calendar.svg';
-import folderSVG from '@plone/volto/icons/folder.svg';
-import fileSVG from '@plone/volto/icons/file.svg';
-import imageSVG from '@plone/volto/icons/image.svg';
 import checkboxUncheckedSVG from '@plone/volto/icons/checkbox-unchecked.svg';
 import checkboxCheckedSVG from '@plone/volto/icons/checkbox-checked.svg';
 import cutSVG from '@plone/volto/icons/cut.svg';
@@ -29,6 +24,7 @@ import moveUpSVG from '@plone/volto/icons/move-up.svg';
 import moveDownSVG from '@plone/volto/icons/move-down.svg';
 import editingSVG from '@plone/volto/icons/editing.svg';
 import dragSVG from '@plone/volto/icons/drag.svg';
+import cx from 'classnames';
 
 const messages = defineMessages({
   private: {
@@ -52,24 +48,6 @@ const messages = defineMessages({
     defaultMessage: 'No workflow state',
   },
 });
-
-export function getIcon(type, isFolderish) {
-  switch (type) {
-    case 'Document':
-    case 'News Item':
-      return documentSVG;
-    case 'Image':
-      return imageSVG;
-    case 'File':
-      return fileSVG;
-    case 'Link':
-      return linkSVG;
-    case 'Event':
-      return calendarSVG;
-    default:
-      return isFolderish ? folderSVG : fileSVG;
-  }
-}
 
 function getColor(string) {
   switch (string) {
@@ -111,8 +89,8 @@ export const ContentsItemComponent = ({
 
   return connectDropTarget(
     connectDragPreview(
-      <tr key={item['@id']} style={{ opacity: isDragging ? 0 : 1 }}>
-        <Table.Cell>
+      <tr key={item['@id']} className={cx('', { 'dragging-row': isDragging })}>
+        <Table.Cell className={cx('', { 'dragging-cell': isDragging })}>
           {connectDragSource(
             <div style={{ display: 'inline-block' }}>
               <Button icon basic>
@@ -126,7 +104,7 @@ export const ContentsItemComponent = ({
             </div>,
           )}
         </Table.Cell>
-        <Table.Cell>
+        <Table.Cell className={cx('', { 'dragging-cell': isDragging })}>
           {selected ? (
             <Button
               icon
@@ -157,7 +135,7 @@ export const ContentsItemComponent = ({
             </Button>
           )}
         </Table.Cell>
-        <Table.Cell>
+        <Table.Cell className={cx('', { 'dragging-cell': isDragging })}>
           <Link
             className="icon-align-name"
             to={`${item['@id']}${item.is_folderish ? '/contents' : ''}`}
@@ -165,7 +143,7 @@ export const ContentsItemComponent = ({
           >
             <div className="expire-align">
               <Icon
-                name={getIcon(item['@type'], item.is_folderish)}
+                name={getContentIcon(item['@type'], item.is_folderish)}
                 size="20px"
                 className="icon-margin"
                 color="#878f93"
@@ -182,7 +160,10 @@ export const ContentsItemComponent = ({
           </Link>
         </Table.Cell>
         {map(indexes, (index) => (
-          <Table.Cell key={index.id}>
+          <Table.Cell
+            className={cx('', { 'dragging-cell': isDragging })}
+            key={index.id}
+          >
             {index.type === 'boolean' &&
               (item[index.id] ? (
                 <FormattedMessage id="Yes" defaultMessage="Yes" />
@@ -221,7 +202,10 @@ export const ContentsItemComponent = ({
             )}
           </Table.Cell>
         ))}
-        <Table.Cell textAlign="right">
+        <Table.Cell
+          className={cx('', { 'dragging-cell': isDragging })}
+          textAlign="right"
+        >
           <Dropdown
             className="row-actions"
             icon={<Icon name={moreSVG} size="24px" color="#007eb1" />}

@@ -10,6 +10,181 @@ This upgrade guide lists all breaking changes in Volto and explains the
     dependencies might do when dealing with upgrades. We keep the generator up
     to date and in sync with current Volto release.
 
+## Upgrading to Volto 10.x.x
+
+### Remove the Razzle plugins patch
+
+!!! warning
+    If you haven't upgraded your project to Volto 9.x.x and followed the upgrade guide
+    instructions, you are set and you do not need to do anything.
+
+In order to have support for Razzle plugins as local modules we introduced a patch in
+9.0.0 that addressed the lack of support in Razzle 3.3.7 . Unfortunately, not only that
+introduced more headaches than benefits, but inadvertently we introduced a bug on the
+patch. We've found a workaround to still support plugins as local modules without
+patching Razzle, however that forces you to delete the patch introduced in your projects
+if you followed the 9.x.x upgrade guide steps.
+
+### getContent changes
+
+The content is no longer fetched from Volto with the `fullobjects` flag in the
+request. If your code relied on children being fully serialized with their
+parent, you should refactor it. Alternatively, you can set
+`settings.bbb_getContentFetchesFullobjects` to `true` to get the old behavior.
+
+### `@testing-library/react` upgrade notice
+
+`@testing-library/react` has been upgraded too, and it comes with some internal API
+changes too, so if you make heavy use of it in your tests, you could need to update your
+testing code to adapt them. Please refer to the `@testing-library/react` documentation
+for further information if needed.
+
+## Upgrading to Volto 9.x.x
+
+### Internal upgrade to use Razzle 3.3.7
+
+!!!note
+    If you haven't customized your `razzle.config.js` in your project, or have any
+    custom plugin in place, you don't have to do anything.
+
+Razzle is the isometric build system for both the server and the client parts on the top
+of which Volto is built. Recently, it has been under heavy development and some new
+exciting features have been added to it. The Razzle configuration is now more flexible
+and extensible than ever.
+
+This change *might* be breaking for you if you customized the `razzle.config.js` heavily
+in your projects. Since the new version adds a new way to extend Razzle configuration,
+you should adapt your extensions to the new way of doing it. See the documentation for
+more information: https://razzlejs.org/docs/customization#extending-webpack
+
+It also unifies the way the things are extended in Razzle plugins as well, so if you are
+using any official or third party Razzle plugins you should upgrade them to the last
+version. If you have developed your own Razzle plugin, you should adapt its signature as
+well. See the documentation for more information:
+https://razzlejs.org/docs/customization#plugins
+
+Razzle 3.3 also has some new *experimental* features, that will be default in the
+upcoming Razzle 4, such as the new *React Fast Refresh* feature, which fixes the
+annoying breaking of the router after any live refresh.
+
+See the documentation of Razzle for more information: https://razzlejs.org/
+
+#### Changes involved
+
+We need to patch an internal Razzle utility in order to allow the use of non-released
+Razzle plugins. This feature will be in Razzle 4, unfortunatelly at this point the
+development the Razzle 3 branch is freezed already so we need to amend the original
+using the patch. The patch will be obsolete and no longer required once we move to
+Razzle 4 (see https://github.com/jaredpalmer/razzle/pull/1467).
+
+!!! note
+    Since Volto 9.2.0 the next step IS NOT required anymore.
+
+~~Copy (and overwrite) the `patches` folder into your local project
+https://github.com/plone/volto/tree/master/patches or, if you want to be more accurate,
+just copy `patches/razzle-plugins.patch` file and overwrite `patches/patchit.sh` file.~~
+
+### Babel config housekeeping
+
+Historically, Volto was using "stage-0" TC-39 proposals. The configuration was starting
+showing its age, since Babel 7 dedided to stop maintaining the presets for stages, we
+moved to use an static configuration instead of a managed one. That lead to a "living on
+the edge" situation since we supported proposals that they didn't make the cut. For more
+information about the TC39 approval process read (https://tc39.es/process-document/)
+
+We decided to put a bit of order to caos and declare that Volto will support only
+stage-4 approved proposals. They are supported by `@babel/preset-env` out of the box and
+provide a good sensible default baseline for Volto.
+
+Proposal deprecations:
+
+- @babel/plugin-proposal-decorators
+- @babel/plugin-proposal-function-bind
+- @babel/plugin-proposal-do-expressions
+- @babel/plugin-proposal-logical-assignment-operators
+- @babel/plugin-proposal-pipeline-operator
+- @babel/plugin-proposal-function-sent
+
+In fact, Volto core only used the first one (decorators) and we did the move to not use
+them long time ago. However, if you were using some of the others, your code will stop
+compiling. Migrate your code or if you want to use the proposal anyways, you'll need to
+provide the configuration to your own project (babel.config.js) in your project root
+folder.
+
+You might still be using old-style connecting your components to the Redux store using
+`@connect` decorator, in that case, take a look at any connected component in Volto to
+take a glimpse on how to migrate the code.
+
+If you were not using any of the deprecated proposals (the most common use case), then
+you are good to go and you don't have to do anything.
+
+### Hoisting problems on some setups
+
+Some people were experimenting weird hoisting issues when installing dependencies. This
+was caused by Babel deprecated proposals packages and its peer dependencies that
+sometimes conflicted with other installed packages.
+
+Volto's new Babel configuration uses the configuration provided by `babel-razzle-preset`
+package (Razzle dependency) and delegates the dependencies management to it, except a
+few Babel plugins that Volto still needs to work.
+
+In order for your projects not have any problem with the new configuration and comply
+with the new model, you need to remove any local dependency for `@babel/core` and let
+Volto handle them.
+
+```diff
+diff --git a/package.json b/package.json
+--- a/package.json
++++ b/package.json
+@@ -183,7 +183,6 @@
+     "node": "^10 || ^12 "
+   },
+   "dependencies": {
+-    "@babel/core": "7.11.1",
+     "@plone/volto": "8.9.2",
+     "mrs-developer": "1.2.0",
+```
+
+### Recomended `browserslist` in `package.json`
+
+Not a breaking change, but you might want to narrow the targets your Votlo project is
+targeting to. This might improve your build times, as well as your bundle size. This is
+the recomended `browserlist` you should include in your local `package.json`.
+
+```json
+  "browserslist": [
+    ">1%",
+    "last 4 versions",
+    "Firefox ESR",
+    "not ie 11",
+    "not dead"
+  ],
+```
+
+!!! note
+    Please notice that it does not target dead and deprecated browsers by its vendors.
+
+### New webpack resolver plugin
+
+A new webpack resolver plugin has been integrated with Volto, it reroutes
+'local' resolve requests (for example `import Something from './Something'`) to
+'absolute' resolve requests (like
+`import Something from '@plone/myaddon/Something`). This allows the
+shadow-based customization mechanisms to work consistently with addons and
+Volto.
+
+This is not a breaking change and it shouldn't affect any existing code, but by
+its very nature, a resolver plugin has the potential to introduce unexpected
+behavior. Just be aware of its existence and take it into consideration if you
+notice anything strange.
+
+### Content Types icons
+
+Helper method `getIcon` from `Url` has been removed in favor of `getContentIcon`
+from `Content` which is now configurable.
+
+See [contentIcons docs](../configuration/settings-reference.md#contenticons).
+
 ## Upgrading to Volto 8.x.x
 
 ### Upgrade package.json testing configuration
@@ -233,7 +408,7 @@ async construction before the test is fired. See this Codepen example:
 
 https://codesandbox.io/s/loadable-async-tests-l2bx9
 
-```js
+```jsx
 import React from "react";
 import { render } from "@testing-library/react";
 import App from "./App";
@@ -672,7 +847,7 @@ features from the blocks themselves and now it takes care of them by its own.
 This change only applies to your existing blocks, you have to update them
 accordingly by delete the trash icon and action from the end of your blocks
 
-```js
+```jsx
 {this.props.selected && (
   <Button
     icon
@@ -687,7 +862,7 @@ accordingly by delete the trash icon and action from the end of your blocks
 
 Modify the parent element of your block making this changes:
 
-```js
+```jsx
 <div
   role="presentation"
   onClick={() => this.props.onSelectBlock(this.props.block)}
@@ -711,7 +886,7 @@ Modify the parent element of your block making this changes:
 
 - Add the keylisteners to the parent element of your block
 
-```js
+```jsx
   onKeyDown={e =>
     this.props.handleKeyDown(
       e,
@@ -724,7 +899,7 @@ Modify the parent element of your block making this changes:
 
 - Add a ref to it and assign it to `this.node`.
 
-```js
+```jsx
   ref={node => {
     this.node = node;
   }}
@@ -732,7 +907,7 @@ Modify the parent element of your block making this changes:
 
 - Add a proper role for it
 
-```js
+```jsx
   role="presentation"
 ```
 
