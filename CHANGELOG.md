@@ -10,6 +10,15 @@
 
 ### Internal
 
+- Fix some key points to improve the circular imports problem @sneridagh
+
+  - `App` and `View` components are meant to be used only by Volto internals, so it's no
+    point into having them exported in `components/index.js` that facilitated a path for
+    circular imports.
+  - `withObjectBrowser` and friends also are prone to facilitate a path for having
+    circular imports, so we are using there only absolute imports.
+  - All these changes are non-breaking and non-intrusive.
+
 ## 10.4.1 (2020-12-12)
 
 ### Bugfix
