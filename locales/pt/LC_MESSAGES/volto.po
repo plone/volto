@@ -2154,7 +2154,7 @@ msgstr "box_forgot_password_option"
 msgid "common"
 msgstr "comum"
 
-#: components/manage/Blocks/Block/Edit
+#: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"
 msgstr "eliminar"
 
