@@ -82,6 +82,7 @@ let config = {
     expressMiddleware: [],
     defaultBlockType: 'text',
     verticalFormTabs: false,
+    persistentReducers: ['blocksClipboard'],
     sentryOptions: {
       ...sentryOptions,
     },

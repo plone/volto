@@ -5,7 +5,7 @@
 import loadable from '@loadable/component';
 
 //  Do not lazy load them, since it has not much sense (they will live in the main chunk)
-export App from '@plone/volto/components/theme/App/App';
+// export App from '@plone/volto/components/theme/App/App';
 export AppExtras from '@plone/volto/components/theme/AppExtras/AppExtras';
 export View from '@plone/volto/components/theme/View/View';
 export Header from '@plone/volto/components/theme/Header/Header';
@@ -98,6 +98,7 @@ export ManageTranslations from '@plone/volto/components/manage/Multilingual/Mana
 // Potentially could ve removed from index, since they are internal components and
 // we don't want them to end up in the main chunk
 export Form from '@plone/volto/components/manage/Form/Form';
+export BlocksToolbar from '@plone/volto/components/manage/Form/BlocksToolbar';
 export Field from '@plone/volto/components/manage/Form/Field';
 export SearchTags from '@plone/volto/components/theme/Search/SearchTags';
 export CommentEditModal from '@plone/volto/components/theme/Comments/CommentEditModal';

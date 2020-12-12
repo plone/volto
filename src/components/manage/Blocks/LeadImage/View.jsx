@@ -7,7 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import cx from 'classnames';
-import { settings } from '~/config';
+import { ConfigContext } from '@plone/volto/components/theme/App/App';
 
 import { flattenToAppURL } from '@plone/volto/helpers';
 
@@ -16,57 +16,62 @@ import { flattenToAppURL } from '@plone/volto/helpers';
  * @class View
  * @extends Component
  */
-const View = ({ data, properties }) => (
-  <p
-    className={cx(
-      'block image align',
-      {
-        center: !Boolean(data.align),
-      },
-      data.align,
-    )}
-  >
-    {properties.image && (
-      <>
-        {(() => {
-          const image = (
-            <img
-              className={cx({ 'full-width': data.align === 'full' })}
-              src={flattenToAppURL(properties.image.download)}
-              alt={properties.image_caption || ''}
-            />
-          );
-          if (data.href) {
-            if (
-              (data.href.startsWith('http') || data.href.startsWith('https')) &&
-              !data.href.includes(settings.apiPath)
-            ) {
-              return (
-                <a
-                  target={data.openLinkInNewTab ? '_blank' : null}
-                  href={data.href}
-                >
-                  {image}
-                </a>
-              );
+const View = ({ data, properties }) => {
+  const { settings } = React.useContext(ConfigContext);
+
+  return (
+    <p
+      className={cx(
+        'block image align',
+        {
+          center: !Boolean(data.align),
+        },
+        data.align,
+      )}
+    >
+      {properties.image && (
+        <>
+          {(() => {
+            const image = (
+              <img
+                className={cx({ 'full-width': data.align === 'full' })}
+                src={flattenToAppURL(properties.image.download)}
+                alt={properties.image_caption || ''}
+              />
+            );
+            if (data.href) {
+              if (
+                (data.href.startsWith('http') ||
+                  data.href.startsWith('https')) &&
+                !data.href.includes(settings.apiPath)
+              ) {
+                return (
+                  <a
+                    target={data.openLinkInNewTab ? '_blank' : null}
+                    href={data.href}
+                  >
+                    {image}
+                  </a>
+                );
+              } else {
+                return (
+                  <Link
+                    to={data.href.replace(settings.apiPath, '')}
+                    target={data.openLinkInNewTab ? '_blank' : null}
+                  >
+                    {image}
+                  </Link>
+                );
+              }
             } else {
-              return (
-                <Link
-                  to={data.href.replace(settings.apiPath, '')}
-                  target={data.openLinkInNewTab ? '_blank' : null}
-                >
-                  {image}
-                </Link>
-              );
+              return image;
             }
-          } else {
-            return image;
-          }
-        })()}
-      </>
-    )}
-  </p>
-);
+          })()}
+        </>
+      )}
+    </p>
+  );
+};
 
 /**
  * Property types.

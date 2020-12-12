@@ -1,6 +1,69 @@
 # Change Log
 
-## 9.2.1 (unreleased)
+## 10.4.1 (unreleased)
+
+### Breaking
+
+### Feature
+
+### Bugfix
+
+### Internal
+
+## 10.4.0 (2020-12-11)
+
+### Feature
+
+- Add ability to filter the attributes that are saved in the ObjectBrowserWidget @sneridagh
+- Add `object_browser` as widget @sneridagh
+
+### Bugfix
+
+- Adding video thumbnail for the .mp4 extension @iFlameing.
+
+### Internal
+
+- Added new in productions sites to README @terapyon
+
+## 10.3.0 (2020-12-04)
+
+### Feature
+
+- added search depth in listing and updated it locales @giuliaghisini
+- Add emailSend action @nzambello
+- lazy load react-dropzone @nileshgulia1
+
+### Bugfix
+
+- Fix addons loader name generation on Windows @tiberiuichim
+- For python3.9 compatibility, install wheel package in build-backend targets @tiberiuichim
+
+### Internal
+
+- Tweak Cypress command `waitForResourceToLoad` to timeout after 50 tries.  @tiberiuichim
+
+## 10.2.0 (2020-12-04)
+
+### Feature
+
+- Generate language file of added missing German translations by @tisto. @ksuess
+
+### Bugfix
+
+- Fix regression in the `getContent` action with the expandable missing @sneridagh
+
+## 10.1.0 (2020-11-30)
+
+### Feature
+
+- Add missing German translations @tisto
+
+## 10.0.0 (2020-11-30)
+
+### Feature
+
+- Provide operations on multiple-selected blocks: delete, cut/copy and paste.  You can trigger the "multiselected blocks" by holding the shift key and clicking on another block. You can add/remove blocks to the selection with the Control key. Holding Control when you click on the Paste button doesn't clear the clipboard, so you can paste multiple times. The blocks clipboard uses the browser's local storage to synchronize between tabs. @tiberiuichim
+- Allow reducers to be persisted using localstorage @tiberiuichim
 
 ### Breaking
 
@@ -20,6 +83,7 @@
 - Remove dangling analyzer plugin @sneridagh
 - Support for Guillotina 6 @bloodbare @sneridagh
 - Update Cypress to version 5.6.0 @sneridagh
+- Terse `react-intl` errors in console during development turning them into warnings @sneridagh
 
 ## 9.2.0 (2020-11-24)
 
@@ -71,12 +135,13 @@ See https://docs.voltocms.com/upgrade-guide/ for more information.
   Razzle 3.3.7 prepares the transition to the upcoming Razzle 4 so it improves and
   unifies the extensibility story at the cost of change the signature of the
   `razzle.config.js` and how plugins are declared. It also enables by default the new
-  *React Fast Refresh* feature implemented by the React community, which improves the
+  _React Fast Refresh_ feature implemented by the React community, which improves the
   refresh of the code while in development.
 
 - Babel plugins housekeeping
 
   Deprecated proposals:
+
   - @babel/plugin-proposal-function-bind
   - @babel/plugin-proposal-do-expressions
   - @babel/plugin-proposal-logical-assignment-operators
