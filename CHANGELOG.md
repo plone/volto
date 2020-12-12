@@ -2,10 +2,6 @@
 
 ## 10.4.1 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Make sure that prism is loaded before rendering HTML block @tiberiuichim
