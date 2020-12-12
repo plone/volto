@@ -74,6 +74,8 @@ module.exports = {
     config.plugins.unshift(
       new webpack.DefinePlugin({
         __DEVELOPMENT__: true,
+        __CLIENT__: true,
+        __SERVER__: false,
       }),
     );
 
@@ -83,10 +85,10 @@ module.exports = {
         ...config.resolve,
         alias: { ...config.resolve.alias, ...baseConfig.resolve.alias },
       },
-      entry: [
-        '/Users/sneridagh/Development/plone/volto/src/client',
-        ...config.entry,
-      ],
+      // entry: [
+      //   // '/Users/sneridagh/Development/plone/volto/src/client',
+      //   ...config.entry,
+      // ],
     };
 
     console.dir(resultConfig, { depth: null });
