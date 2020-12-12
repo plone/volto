@@ -1,5 +1,15 @@
 # Change Log
 
+## 10.4.2 (unreleased)
+
+### Breaking
+
+### Feature
+
+### Bugfix
+
+### Internal
+
 ## 10.4.1 (2020-12-12)
 
 ### Bugfix
