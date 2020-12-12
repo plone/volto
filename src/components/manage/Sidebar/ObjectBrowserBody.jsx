@@ -12,7 +12,7 @@ import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 // to cut circular import problems, this file should never use them. This is because of
 // the very nature of the functionality of the component and its relationship with others
 import { searchContent } from '@plone/volto/actions/search/search';
-import { Icon } from '@plone/volto/components/theme/Icon/Icon';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers/Url/Url';
 
 import { settings } from '~/config';
