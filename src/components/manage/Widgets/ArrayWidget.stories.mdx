@@ -1,0 +1,32 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { ArrayWidgetComponent } from './ArrayWidget';
+
+<Meta
+  title="ArrayWidget"
+  decorators={[
+    (Story) => (
+      <div style={{ width: '400px' }}>
+        <Story />
+      </div>
+    ),
+  ]}
+/>
+
+# ArrayWidget
+
+Form field
+
+export const ArrayWidget = (args) => (
+  <ArrayWidgetComponent
+    {...args}
+    id="ArrayWidget"
+    title="Array Field"
+    choices={[['Foo', 'Foo']]}
+  />
+);
+
+<Story name="ArrayWidget">{ArrayWidget.bind({})}</Story>
+
+# Props
+
+<ArgsTable of={ArrayWidgetComponent} />
