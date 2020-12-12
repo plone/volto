@@ -11,6 +11,7 @@ import { Icon } from '@plone/volto/components';
 import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 
+import { settings } from '~/config';
 import backSVG from '@plone/volto/icons/back.svg';
 import folderSVG from '@plone/volto/icons/folder.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -18,7 +19,6 @@ import searchSVG from '@plone/volto/icons/zoom.svg';
 import linkSVG from '@plone/volto/icons/link.svg';
 
 import ObjectBrowserNav from '@plone/volto/components/manage/Sidebar/ObjectBrowserNav';
-import { ConfigContext } from '@plone/volto/components/theme/App/App';
 
 const messages = defineMessages({
   SearchInputPlaceholder: {
@@ -42,8 +42,6 @@ export function getParentURL(url) {
  * @extends Component
  */
 class ObjectBrowserBody extends Component {
-  static contextType = ConfigContext;
-
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -291,7 +289,7 @@ class ObjectBrowserBody extends Component {
       if (item.is_folderish) {
         this.navigateTo(item['@id']);
       }
-      if (this.context.settings.imageObjects.includes(item['@type'])) {
+      if (settings.imageObjects.includes(item['@type'])) {
         this.onSelectItem(item);
       }
     } else {
@@ -320,7 +318,7 @@ class ObjectBrowserBody extends Component {
       if (item.is_folderish) {
         this.navigateTo(item['@id']);
       }
-      if (this.context.settings.imageObjects.includes(item['@type'])) {
+      if (settings.imageObjects.includes(item['@type'])) {
         this.onSelectItem(item);
         this.props.closeObjectBrowser();
       }

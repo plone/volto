@@ -33,7 +33,7 @@ const messages = defineMessages({
  * @class Breadcrumbs
  * @extends Component
  */
-export class BreadcrumbsComponent extends Component {
+class BreadCrumbs extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -80,7 +80,7 @@ export class BreadcrumbsComponent extends Component {
     return (
       <Segment
         role="navigation"
-        // aria-label={this.props.intl.formatMessage(messages.breadcrumbs)}
+        aria-label={this.props.intl.formatMessage(messages.breadcrumbs)}
         className="breadcrumbs"
         secondary
         vertical
@@ -90,7 +90,7 @@ export class BreadcrumbsComponent extends Component {
             <Link
               to="/"
               className="section"
-              // title={this.props.intl.formatMessage(messages.home)}
+              title={this.props.intl.formatMessage(messages.home)}
             >
               <Icon name={homeSVG} size="18px" />
             </Link>
@@ -112,6 +112,7 @@ export class BreadcrumbsComponent extends Component {
     );
   }
 }
+export const BreadcrumbsComponent = injectIntl(BreadCrumbs);
 
 export default compose(
   injectIntl,
@@ -121,4 +122,4 @@ export default compose(
     }),
     { getBreadcrumbs },
   ),
-)(BreadcrumbsComponent);
+)(BreadCrumbs);
