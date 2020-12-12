@@ -3,9 +3,15 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
-import { ConfigContext } from '@plone/volto/components/theme/App/App';
 
 import MultilingualRedirector from './MultilingualRedirector';
+
+jest.mock('~/config', () => ({
+  settings: {
+    isMultilingual: true,
+    supportedLanguages: ['de', 'es'],
+  },
+}));
 
 const mockStore = configureStore();
 
@@ -20,16 +26,7 @@ describe('MultilingualRedirector', () => {
     const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter>
-          <ConfigContext.Provider
-            value={{
-              settings: {
-                isMultilingual: true,
-                supportedLanguages: ['de', 'es'],
-              },
-            }}
-          >
-            <MultilingualRedirector pathname={'/'} />
-          </ConfigContext.Provider>
+          <MultilingualRedirector pathname={'/'} />
         </MemoryRouter>
       </Provider>,
     );
