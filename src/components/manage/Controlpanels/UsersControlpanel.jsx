@@ -25,7 +25,7 @@ import {
 import { getBaseUrl, Helmet, messages } from '@plone/volto/helpers';
 import backSVG from '@plone/volto/icons/back.svg';
 import addSvg from '@plone/volto/icons/circle-plus.svg';
-import { find, isEqual, map } from 'lodash';
+import { find, isEqual, map, remove } from 'lodash';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
@@ -321,11 +321,9 @@ class UsersControlpanel extends Component {
       entries: map(this.state.entries, (entry) => ({
         ...entry,
         roles:
-          entry.id === name
-            ? entry.roles.includes(value) === false
-              ? entry.roles.concat([value])
-              : [].concat(entry.roles.filter((e) => e !== value))
-            : entry.roles,
+          entry.id === name && !entry.roles.includes(value)
+            ? [...entry.roles, value]
+            : remove(entry.roles, (item) => item === value),
       })),
     });
   }
@@ -340,11 +338,9 @@ class UsersControlpanel extends Component {
       groupEntries: map(this.state.groupEntries, (entry) => ({
         ...entry,
         roles:
-          entry.id === name
-            ? entry.roles.includes(value) === false
-              ? entry.roles.concat([value])
-              : [].concat(entry.roles.filter((e) => e !== value))
-            : entry.roles,
+          entry.id === name && !entry.roles.includes(value)
+            ? [...entry.roles, value]
+            : remove(entry.roles, (item) => item === value),
       })),
     });
   }

@@ -28,5 +28,14 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('.icon.button:first').click();
       cy.get('.fullname').should('have.text', 'Alok Kumar');
     });
+    it('Should update user roles', () => {
+      cy.get('.ui:nth-child(4) td:nth-child(4) label').click();
+      cy.get('.contents').click();
+      cy.get('.ui:nth-child(9) > .ui .ui').click();
+      cy.get('.ui:nth-child(4) td:nth-child(4) label').should(
+        'have.attr',
+        'checked',
+      );
+    });
   });
 }
