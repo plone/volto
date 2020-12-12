@@ -1,0 +1,47 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import IconComponent from './Icon';
+import addIcon from '../../../icons/add.svg';
+
+import icons from '../../../icons/load-icons';
+
+<Meta title="Icon" />
+
+# Icon
+
+You can load icons from Volto with:
+
+```js static
+import { Icon } from '@plone/volto/components';
+import addIcon from '@plone/volto/icons/add.svg';
+
+const IconTest = () => <Icon name={addIcon} size="18px" />;
+```
+
+# Props
+
+<ArgsTable of={IconComponent} />
+
+All icons:
+
+export const iconElements = Object.keys(icons).map((iconName) => {
+  const icon = icons[iconName];
+  return (
+    <center
+      style={{
+        float: 'left',
+        width: '150px',
+        display: 'inline-block',
+        height: '100px',
+      }}
+    >
+      <IconComponent key={iconName} name={icon} /> <br />
+      {`${iconName}.svg`}
+    </center>
+  );
+});
+
+export const Icon = (args) => (
+  <div style={{ overflow: 'hidden' }}>{iconElements}</div>
+);
+
+<Story name="Icon">{Icon.bind({})}</Story>
