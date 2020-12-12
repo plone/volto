@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Make sure that prism is loaded before rendering HTML block @tiberiuichim
+
 ### Internal
 
 ## 10.4.0 (2020-12-11)
