@@ -1,6 +1,6 @@
 import React from 'react';
 import { getBaseUrl } from '@plone/volto/helpers';
-import { defineMessages } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import { map } from 'lodash';
 import {
   getBlocksFieldname,
@@ -52,4 +52,4 @@ const RenderBlocks = (props) => {
   );
 };
 
-export default RenderBlocks;
+export default injectIntl(RenderBlocks);
