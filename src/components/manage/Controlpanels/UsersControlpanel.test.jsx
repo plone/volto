@@ -14,6 +14,15 @@ jest.mock('react-portal', () => ({
 describe('UsersControlpanel', () => {
   it('renders a user control component', () => {
     const store = mockStore({
+      controlpanels: {
+        controlpanel: [
+          {
+            '@id': 'http://localhost:8080/Plone/@controlpanels/security',
+            group: 'Security',
+            title: 'Security',
+          },
+        ],
+      },
       roles: { roles: [] },
       users: {
         users: [],

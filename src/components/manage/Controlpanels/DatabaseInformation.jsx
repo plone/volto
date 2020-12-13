@@ -11,9 +11,12 @@ import { Portal } from 'react-portal';
 import { Container, Divider, Message, Segment, Table } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import { getDatabaseInformation } from '@plone/volto/actions';
+import {
+  getDatabaseInformation,
+  listControlpanels,
+} from '@plone/volto/actions';
 import { Helmet } from '@plone/volto/helpers';
-import { Icon, Toolbar } from '@plone/volto/components';
+import { Error, Icon, Toolbar } from '@plone/volto/components';
 import backSVG from '@plone/volto/icons/back.svg';
 
 const messages = defineMessages({
@@ -46,7 +49,10 @@ class DatabaseInformation extends Component {
    */
   constructor(props) {
     super(props);
-    this.state = { isClient: false };
+    this.state = {
+      error: null,
+      isClient: false,
+    };
   }
 
   /**
@@ -54,7 +60,8 @@ class DatabaseInformation extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
+    this.props.listControlpanels();
     this.props.getDatabaseInformation();
   }
 
@@ -67,12 +74,29 @@ class DatabaseInformation extends Component {
     this.setState({ isClient: true });
   }
 
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    // Error
+    if (
+      this.props.controlpanelsRequest.loading &&
+      nextProps.controlpanelsRequest.error
+    ) {
+      this.setState({
+        error: nextProps.controlpanelsRequest.error,
+      });
+    }
+  }
+
   /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
   render() {
+    // Error
+    if (this.state.error) {
+      return <Error error={this.state.error} />;
+    }
+
     return this.props.databaseInformation ? (
       <Container id="database-page" className="controlpanel-database">
         <Helmet title="DatabaseInformation" />
@@ -248,9 +272,10 @@ export default compose(
   injectIntl,
   connect(
     (state, props) => ({
+      controlpanelsRequest: state.controlpanels,
       databaseInformation: state.controlpanels.databaseinformation,
       pathname: props.location.pathname,
     }),
-    { getDatabaseInformation },
+    { getDatabaseInformation, listControlpanels },
   ),
 )(DatabaseInformation);

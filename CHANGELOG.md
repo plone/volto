@@ -9,6 +9,7 @@
 ### Bugfix
 
 ### Internal
+- Ensure user is authorised before viewing controlpanels database, users and moderate comments
 
 ## 10.4.1 (2020-12-12)
 

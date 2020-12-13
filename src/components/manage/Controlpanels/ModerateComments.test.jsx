@@ -17,6 +17,15 @@ jest.mock('../../theme/Comments/CommentEditModal', () =>
 describe('ModerateComments', () => {
   it('renders a moderate comments component', () => {
     const store = mockStore({
+      controlpanels: {
+        controlpanel: [
+          {
+            '@id': 'http://localhost:8080/Plone/@controlpanels/security',
+            group: 'Security',
+            title: 'Security',
+          },
+        ],
+      },
       search: {
         items: [],
       },

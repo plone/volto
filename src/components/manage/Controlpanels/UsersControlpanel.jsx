@@ -7,6 +7,7 @@ import {
   createUser,
   deleteGroup,
   deleteUser,
+  listControlpanels,
   listGroups,
   listRoles,
   listUsers,
@@ -15,6 +16,7 @@ import {
   updateUser,
 } from '@plone/volto/actions';
 import {
+  Error,
   Icon,
   ModalForm,
   Toast,
@@ -126,6 +128,7 @@ class UsersControlpanel extends Component {
       entries: props.users,
       groupEntries: props.groups,
       isClient: false,
+      error: null,
     };
   }
 
@@ -140,7 +143,26 @@ class UsersControlpanel extends Component {
     this.setState({ isClient: true });
   }
 
+  /**
+   * Component will mount
+   * @method componentWillMount
+   * @returns {undefined}
+   */
+  UNSAFE_componentWillMount() {
+    this.props.listControlpanels();
+  }
+
   UNSAFE_componentWillReceiveProps(nextProps) {
+    // Error
+    if (
+      this.props.controlpanelsRequest.loading &&
+      nextProps.controlpanelsRequest.error
+    ) {
+      this.setState({
+        error: nextProps.controlpanelsRequest.error,
+      });
+      return;
+    }
     if (
       (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) ||
       (this.props.createRequest.loading && nextProps.createRequest.loaded)
@@ -488,6 +510,10 @@ class UsersControlpanel extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    // Error
+    if (this.state.error) {
+      return <Error error={this.state.error} />;
+    }
     let usernameToDelete = this.state.userToDelete
       ? this.state.userToDelete.username
       : '';
@@ -901,6 +927,7 @@ export default compose(
   injectIntl,
   connect(
     (state, props) => ({
+      controlpanelsRequest: state.controlpanels.list,
       roles: state.roles.roles,
       users: state.users.users,
       showAllUser: state.users.showAllUser,
@@ -915,6 +942,7 @@ export default compose(
     (dispatch) =>
       bindActionCreators(
         {
+          listControlpanels,
           listRoles,
           listUsers,
           deleteUser,

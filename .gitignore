@@ -18,6 +18,7 @@ lighthouse-report.html
 .vscode/
 .#*
 *~
+*.swp
 
 # Python
 /api/eggs/

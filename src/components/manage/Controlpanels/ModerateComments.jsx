@@ -14,8 +14,17 @@ import { Container, Button, Table } from 'semantic-ui-react';
 import moment from 'moment';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import { deleteComment, searchContent } from '@plone/volto/actions';
-import { CommentEditModal, Icon, Toolbar } from '@plone/volto/components';
+import {
+  deleteComment,
+  listControlpanels,
+  searchContent,
+} from '@plone/volto/actions';
+import {
+  CommentEditModal,
+  Error,
+  Icon,
+  Toolbar,
+} from '@plone/volto/components';
 import { getBaseUrl } from '@plone/volto/helpers';
 
 import backSVG from '@plone/volto/icons/back.svg';
@@ -81,6 +90,7 @@ class ModerateComments extends Component {
       editId: null,
       editText: null,
       isClient: false,
+      error: null,
     };
   }
 
@@ -90,6 +100,7 @@ class ModerateComments extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillMount() {
+    this.props.listControlpanels();
     this.props.searchContent('', {
       portal_type: 'Discussion Item',
       fullobjects: true,
@@ -112,6 +123,14 @@ class ModerateComments extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
+    if (
+      this.props.controlpanelsRequest.loading &&
+      nextProps.controlpanelsRequest.error
+    ) {
+      this.setState({
+        error: nextProps.controlpanelsRequest.error,
+      });
+    }
     if (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) {
       this.props.searchContent('', {
         portal_type: 'Discussion Item',
@@ -182,6 +201,9 @@ class ModerateComments extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    if (this.state.error) {
+      return <Error error={this.state.error} />;
+    }
     return (
       <div id="page-moderate-comments">
         <CommentEditModal
@@ -295,10 +317,11 @@ export default compose(
   injectIntl,
   connect(
     (state, props) => ({
+      controlpanelsRequest: state.controlpanels.list,
       items: state.search.items,
       deleteRequest: state.comments.delete,
       pathname: props.location.pathname,
     }),
-    { deleteComment, searchContent },
+    { deleteComment, listControlpanels, searchContent },
   ),
 )(ModerateComments);
