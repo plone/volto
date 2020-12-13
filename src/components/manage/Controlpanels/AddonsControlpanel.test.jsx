@@ -52,6 +52,9 @@ describe('AddonsControlpanel', () => {
           },
         ],
       },
+      userSession: {
+        token: 'someToken',
+      },
       intl: {
         locale: 'en',
         messages: {},
