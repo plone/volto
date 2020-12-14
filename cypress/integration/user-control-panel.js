@@ -30,8 +30,7 @@ if (Cypress.env('API') !== 'guillotina') {
     });
     it('Should update user roles', () => {
       cy.get('.ui:nth-child(4) td:nth-child(4) label').click();
-      cy.get('.contents').click();
-      cy.get('.ui:nth-child(9) > .ui .ui').click();
+      cy.reload();
       cy.get('.ui:nth-child(4) td:nth-child(4) label').should(
         'have.attr',
         'checked',
