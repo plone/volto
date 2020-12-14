@@ -29,6 +29,14 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('.fullname').should('have.text', 'Alok Kumar');
     });
     it('Should update user roles', () => {
+      // add user
+      cy.get('.addSVG').click();
+      cy.get('input[id="field-username"]').clear().type('iFlameing');
+      cy.get('input[id="field-fullname"]').clear().type('Alok Kumar');
+      cy.get('input[id ="field-email"]').clear().type('info@example.com');
+      cy.get('input[id="field-password"]').clear().type('test@test');
+      cy.get('button[title="Save"]').click();
+
       cy.get('.ui:nth-child(4) td:nth-child(4) label').click();
       cy.reload();
       cy.get('.ui:nth-child(4) td:nth-child(4) label').should(
