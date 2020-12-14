@@ -272,7 +272,7 @@ export default compose(
   injectIntl,
   connect(
     (state, props) => ({
-      controlpanelsRequest: state.controlpanels,
+      controlpanelsRequest: state.controlpanels.list,
       databaseInformation: state.controlpanels.databaseinformation,
       pathname: props.location.pathname,
     }),

@@ -42,7 +42,7 @@ describe('ModerateComments', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <ModerateComments location={{ pathname: '/blog' }} />
+        <ModerateComments location={{ pathname: '/moderate-comments' }} />
       </Provider>,
     );
     const json = component.toJSON();

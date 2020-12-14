@@ -3,16 +3,19 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
-import UsersControlpanel from './UsersControlpanel';
+import DatabaseInformation from './DatabaseInformation';
 
 const mockStore = configureStore();
 
 jest.mock('react-portal', () => ({
   Portal: jest.fn(() => <div id="Portal" />),
 }));
+jest.mock('../../theme/Comments/CommentEditModal', () =>
+  jest.fn(() => <div id="modal" />),
+);
 
-describe('UsersControlpanel', () => {
-  it('renders a user control component', () => {
+describe('DatabaseInformation', () => {
+  it('renders a database information component', () => {
     const store = mockStore({
       controlpanels: {
         controlpanel: [
@@ -23,15 +26,6 @@ describe('UsersControlpanel', () => {
           },
         ],
       },
-      roles: { roles: [] },
-      users: {
-        users: [],
-        create: { loading: false },
-      },
-      groups: {
-        groups: [],
-        create: { loading: false },
-      },
       intl: {
         locale: 'en',
         messages: {},
@@ -39,7 +33,7 @@ describe('UsersControlpanel', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <UsersControlpanel location={{ pathname: '/users' }} />
+        <DatabaseInformation location={{ pathname: '/database' }} />
       </Provider>,
     );
     const json = component.toJSON();
