@@ -37,9 +37,9 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('input[id="field-password"]').clear().type('test@test');
       cy.get('button[title="Save"]').click();
 
-      cy.get('.ui:nth-child(4) td:nth-child(4) label').first().click();
+      cy.get('.ui:nth-child(4) td:nth-child(4) input').first().click();
       cy.reload();
-      cy.get('.ui:nth-child(4) td:nth-child(4) label')
+      cy.get('.ui:nth-child(4) td:nth-child(4) input')
         .first()
         .should('have.attr', 'checked');
     });
