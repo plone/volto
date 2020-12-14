@@ -24,12 +24,12 @@ const VersionOverview = ({
         {voltoVersion && (
           <List.Item key="volto">Volto {voltoVersion}</List.Item>
         )}
-        <List.Item key="volto">Plone {plone_version}</List.Item>
+        <List.Item key="plone">Plone {plone_version}</List.Item>
 
-        <List.Item key="volto"> CMF {cmf_version}</List.Item>
-        <List.Item key="volto">Zope {zope_version}</List.Item>
-        <List.Item key="volto">Python {python_version}</List.Item>
-        <List.Item key="volto">PIL {pil_version}</List.Item>
+        <List.Item key="cmf"> CMF {cmf_version}</List.Item>
+        <List.Item key="zope">Zope {zope_version}</List.Item>
+        <List.Item key="python">Python {python_version}</List.Item>
+        <List.Item key="pil">PIL {pil_version}</List.Item>
       </List>
       <p>
         <FormattedMessage
