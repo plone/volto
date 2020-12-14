@@ -15,6 +15,7 @@
 ### Bugfix
 
 - Make sure that prism is loaded before rendering HTML block @tiberiuichim
+- fix not updating roles in users controlpanel @nileshgulia1
 
 ### Internal
 
@@ -48,7 +49,7 @@
 
 ### Internal
 
-- Tweak Cypress command `waitForResourceToLoad` to timeout after 50 tries.  @tiberiuichim
+- Tweak Cypress command `waitForResourceToLoad` to timeout after 50 tries. @tiberiuichim
 
 ## 10.2.0 (2020-12-04)
 
@@ -70,7 +71,7 @@
 
 ### Feature
 
-- Provide operations on multiple-selected blocks: delete, cut/copy and paste.  You can trigger the "multiselected blocks" by holding the shift key and clicking on another block. You can add/remove blocks to the selection with the Control key. Holding Control when you click on the Paste button doesn't clear the clipboard, so you can paste multiple times. The blocks clipboard uses the browser's local storage to synchronize between tabs. @tiberiuichim
+- Provide operations on multiple-selected blocks: delete, cut/copy and paste. You can trigger the "multiselected blocks" by holding the shift key and clicking on another block. You can add/remove blocks to the selection with the Control key. Holding Control when you click on the Paste button doesn't clear the clipboard, so you can paste multiple times. The blocks clipboard uses the browser's local storage to synchronize between tabs. @tiberiuichim
 - Allow reducers to be persisted using localstorage @tiberiuichim
 
 ### Breaking
