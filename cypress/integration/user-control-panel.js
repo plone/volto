@@ -20,7 +20,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('input[id="field-fullname"]').clear().type('Alok Kumar');
       cy.get('input[id ="field-email"]').clear().type('info@example.com');
       cy.get('input[id="field-password"]').clear().type('test@test');
-      cy.get('button[title="Save"]').click();
+      cy.get('button[title="Save"]').click(-50, -50, { force: true });
 
       // then the user section must contains a fullname when I searched the
       // same with the same username
@@ -31,17 +31,17 @@ if (Cypress.env('API') !== 'guillotina') {
     it('Should update user roles', () => {
       // add user
       cy.get('.addSVG').click();
-      cy.get('input[id="field-username"]').clear().type('iFlameing');
-      cy.get('input[id="field-fullname"]').clear().type('Alok Kumar');
-      cy.get('input[id ="field-email"]').clear().type('info@example.com');
-      cy.get('input[id="field-password"]').clear().type('test@test');
-      cy.get('button[title="Save"]').click();
-
-      cy.get('.ui:nth-child(4) td:nth-child(4) input').first().click();
+      cy.get('.input > #field-username').click();
+      cy.get('.input > #field-username').type('nileshgulia');
+      cy.get('.content > .ui').click();
+      cy.get('.input > #field-fullname').type('Nilesh Gulia');
+      cy.get('.input > #field-email').type('nileshgulia@gmail.com');
+      cy.get('.input > #field-password').click();
+      cy.get('.input > #field-password').type('test1234');
+      cy.get('button[title="Save"]').click(-50, -50, { force: true });
+      cy.get('div.checkbox').first().click();
       cy.reload();
-      cy.get('.ui:nth-child(4) td:nth-child(4) input')
-        .first()
-        .should('have.attr', 'checked');
+      cy.get('div.checkbox').first().should('have.class', 'checked');
     });
   });
 }
