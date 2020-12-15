@@ -1,13 +1,16 @@
 /**
- * Point of contact for component modules.
+ * Point of contact for component modules. This file is quite sensitive regarding the
+ * order in which it's loaded. e.g. if the component depends on others to work, it
+ * should ideally be loaded after them. If you start seeing imported components as
+ * undefined, check the order of imports in this file.
  * @module components
  */
 import loadable from '@loadable/component';
 
 //  Do not lazy load them, since it has not much sense (they will live in the main chunk)
-export App from '@plone/volto/components/theme/App/App';
+// The App and View component are deliberatelly left out of this index.js file!
+// They should be used by Volto and only by Volto internally
 export AppExtras from '@plone/volto/components/theme/AppExtras/AppExtras';
-export View from '@plone/volto/components/theme/View/View';
 export Header from '@plone/volto/components/theme/Header/Header';
 export Logo from '@plone/volto/components/theme/Logo/Logo';
 export Anontools from '@plone/volto/components/theme/Anontools/Anontools';
