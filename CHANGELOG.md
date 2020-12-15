@@ -2,15 +2,14 @@
 
 ## 10.4.3 (unreleased)
 
-### Breaking
-
-### Feature
-
-### Bugfix
-
 ### Internal
 
+- Bring back `App` to `components/index.js` for now, since it's breaking the projects
+  where it gets referenced from `routes.js`. @sneridagh
+
 ## 10.4.2 (2020-12-15)
+
+**This is a brown bag release and should not be used, upgrade to Volto 10.4.3 instead.**
 
 ### Bugfix
 
