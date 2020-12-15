@@ -2,11 +2,10 @@
 
 ## 10.4.2 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
+
+- Fix numeric widget console warnings regarding flex styling refs #2059 @ichim-david
+- Fix numeric widget crash once we click inside it refs #2059 @ichim-david
 
 ### Internal
 
@@ -23,11 +22,7 @@
 
 ### Bugfix
 
-- Fix numeric widget console warnings regarding flex styling refs #2059 @ichim-david
-- Fix numeric widget crash once we click inside it refs #2059 @ichim-david
 - Make sure that prism is loaded before rendering HTML block @tiberiuichim
-
-### Internal
 
 ## 10.4.0 (2020-12-11)
 
