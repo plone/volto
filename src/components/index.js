@@ -9,7 +9,6 @@ import loadable from '@loadable/component';
 
 //  Do not lazy load them, since it has not much sense (they will live in the main chunk)
 // The App and View component are deliberatelly left out of this index.js file!
-export App from '@plone/volto/components/theme/App/App';
 // They should be used by Volto and only by Volto internally
 export AppExtras from '@plone/volto/components/theme/AppExtras/AppExtras';
 export Header from '@plone/volto/components/theme/Header/Header';
@@ -184,3 +183,6 @@ export TextSettingsSchema from '@plone/volto/components/manage/Blocks/Text/Schem
 export ImageSettingsSchema from '@plone/volto/components/manage/Blocks/Image/Schema';
 export ToCSettingsSchema from '@plone/volto/components/manage/Blocks/ToC/Schema';
 export InlineForm from './manage/Form/InlineForm';
+
+// Temporarilly re-added because of #2068
+export App from '@plone/volto/components/theme/App/App';
