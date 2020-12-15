@@ -1,8 +1,7 @@
 # Volto
 <img align="right" width="300" alt="Volto png" src="./docs/logos/volto-colorful.png" />
 
-[![Build Status](https://travis-ci.org/plone/volto.svg?branch=master)](https://travis-ci.org/plone/volto)
-[![Coverage](https://img.shields.io/coveralls/plone/volto.svg)](https://coveralls.io/github/plone/volto)
+[![Build Status](https://github.com/plone/volto/workflows/Volto%20CI/badge.svg)](https://github.com/plone/volto/actions)
 [![Dependencies](https://img.shields.io/david/plone/volto.svg)](https://github.com/plone/volto/blob/master/package.json)
 [![Dev Dependencies](https://img.shields.io/david/dev/plone/volto.svg)](https://github.com/plone/volto/blob/master/package.json)
 [![NPM](https://img.shields.io/npm/v/@plone/volto.svg)](https://www.npmjs.com/package/@plone/volto)
