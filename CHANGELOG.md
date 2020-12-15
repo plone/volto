@@ -23,6 +23,8 @@
 
 ### Bugfix
 
+- Fix numeric widget console warnings regarding flex styling refs #2059 @ichim-david
+- Fix numeric widget crash once we click inside it refs #2059 @ichim-david
 - Make sure that prism is loaded before rendering HTML block @tiberiuichim
 
 ### Internal
