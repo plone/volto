@@ -1,6 +1,6 @@
 # Change Log
 
-## 10.4.3 (unreleased)
+## 10.4.3 (2020-12-15)
 
 ### Internal
 
