@@ -1,6 +1,6 @@
 # Change Log
 
-## 10.4.2 (unreleased)
+## 10.4.4 (unreleased)
 
 ### Breaking
 
@@ -10,14 +10,40 @@
 
 ### Internal
 
-## 10.4.1 (2020-12-12)
+## 10.4.3 (2020-12-15)
+
+### Internal
+
+- Bring back `App` to `components/index.js` for now, since it's breaking the projects
+  where it gets referenced from `routes.js`. @sneridagh
+
+## 10.4.2 (2020-12-15)
+
+**This is a brown bag release and should not be used, upgrade to Volto 10.4.3 instead.**
 
 ### Bugfix
 
 - Make sure that prism is loaded before rendering HTML block @tiberiuichim
 - fix not updating roles in users controlpanel @nileshgulia1
+- Fix numeric widget console warnings regarding flex styling refs #2059 @ichim-david
+- Fix numeric widget crash once we click inside it refs #2059 @ichim-david
 
 ### Internal
+
+- Fix some key points to improve the circular imports problem @sneridagh
+
+  - `App` and `View` components are meant to be used only by Volto internals, so it's no
+    point into having them exported in `components/index.js` that facilitated a path for
+    circular imports.
+  - `withObjectBrowser` and friends also are prone to facilitate a path for having
+    circular imports, so we are using there only absolute imports.
+  - All these changes are non-breaking and non-intrusive.
+
+## 10.4.1 (2020-12-12)
+
+### Bugfix
+
+- Make sure that prism is loaded before rendering HTML block @tiberiuichim
 
 ## 10.4.0 (2020-12-11)
 
