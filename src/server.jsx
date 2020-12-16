@@ -16,6 +16,7 @@ import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
 import { createProxyMiddleware } from 'http-proxy-middleware';
 import { updateIntl } from 'react-intl-redux';
 import { resetServerContext } from 'react-beautiful-dnd';
+import { flattenToAppURL } from '@plone/volto/helpers';
 
 import routes from '~/routes';
 import { settings } from '~/config';
@@ -183,7 +184,7 @@ server
           );
 
           if (context.url) {
-            res.redirect(context.url);
+            res.redirect(flattenToAppURL(context.url));
           } else if (context.error_code) {
             res.set({
               'Cache-Control': 'no-cache',
