@@ -195,14 +195,17 @@ class ContentsPropertiesModal extends Component {
                 type: 'array',
               },
               exclude_from_nav: {
-                default: false,
                 description: this.props.intl.formatMessage(
                   messages.excludeFromNavDescription,
                 ),
                 title: this.props.intl.formatMessage(
                   messages.excludeFromNavTitle,
                 ),
-                type: 'boolean',
+                type: 'array',
+                choices: [
+                  [true, 'Yes'],
+                  [false, 'No'],
+                ],
               },
             },
             required: [],
