@@ -137,7 +137,6 @@ class ObjectBrowserWidget extends Component {
     if (maxSize === 1 && value.length === 1) {
       value = []; //enable replace of selected item with another value, if maxsize is 1
     }
-
     let exists = false;
     let index = -1;
     value.forEach((_item, _index) => {
@@ -150,8 +149,26 @@ class ObjectBrowserWidget extends Component {
     //   '@id': flattenToAppURL(item['@id']),
     // });
     if (!exists) {
-      //add item
-      value.push(item);
+      // add item
+      // Check if we want to filter the attributes of the selected item
+      let resultantItem = item;
+      if (this.props.selectedItemAttrs) {
+        const allowedItemKeys = [
+          ...this.props.selectedItemAttrs,
+          // Add the required attributes for the widget to work
+          '@id',
+          'title',
+        ];
+        resultantItem = Object.keys(item)
+          .filter((key) => allowedItemKeys.includes(key))
+          .reduce((obj, key) => {
+            obj[key] = item[key];
+            return obj;
+          }, {});
+      }
+      // Add required @id field, just in case
+      resultantItem = { ...resultantItem, '@id': item['@id'] };
+      value.push(resultantItem);
       this.props.onChange(this.props.id, value);
     } else {
       //remove item

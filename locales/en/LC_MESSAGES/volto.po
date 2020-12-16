@@ -380,6 +380,10 @@ msgstr ""
 msgid "Copy"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Copy blocks"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "Copyright"
 msgstr ""
@@ -412,6 +416,10 @@ msgstr ""
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
 msgid "Cut"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Cut blocks"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
@@ -487,6 +495,10 @@ msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Delete User"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Delete blocks"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
@@ -1260,6 +1272,10 @@ msgstr ""
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 msgid "Paste"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Paste blocks"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation

@@ -149,7 +149,14 @@ class Edit extends Component {
         {Block !== null ? (
           <div
             role="presentation"
-            onClick={() => this.props.onSelectBlock(this.props.id)}
+            onClick={(e) => {
+              const isMultipleSelection = e.shiftKey || e.ctrlKey || e.metaKey;
+              this.props.onSelectBlock(
+                this.props.id,
+                this.props.selected ? false : isMultipleSelection,
+                e,
+              );
+            }}
             onKeyDown={
               !(blockHasOwnFocusManagement || disableNewBlocks)
                 ? (e) =>
@@ -161,7 +168,10 @@ class Edit extends Component {
                     )
                 : null
             }
-            className={cx(`block ${type}`, { selected: this.props.selected })}
+            className={cx(`block ${type}`, {
+              selected: this.props.selected || this.props.multiSelected,
+              multiSelected: this.props.multiSelected,
+            })}
             style={{ outline: 'none' }}
             ref={this.blockNode}
             // The tabIndex is required for the keyboard navigation

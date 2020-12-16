@@ -17,8 +17,8 @@ exports[`renders a schema widget component 1`] = `
         Object {
           "background": "transparent",
           "display": "flex",
-          "flex-direction": "row",
-          "flex-wrap": "wrap",
+          "flexDirection": "row",
+          "flexWrap": "wrap",
         }
       }
     >
