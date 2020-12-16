@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Adding `All` button to folder content @iFlameing
+
 ### Bugfix
 
 ### Internal
