@@ -77,6 +77,7 @@ class LinkView extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const { remoteUrl } = this.props.content;
     return (
       <Container id="page-document">
         <h1 className="documentFirstHeading">{this.props.content.title}</h1>
@@ -85,40 +86,38 @@ class LinkView extends Component {
             {this.props.content.description}
           </p>
         )}
-        {this.props.content.remoteUrl && (
+        {remoteUrl && (
           <span>
             The link address is:
-            {isInternalURL(this.props.content.remoteUrl) ? (
-              <Link to={flattenToAppURL(this.props.content.remoteUrl)}>
-                {this.props.content.remoteUrl}
+            {isInternalURL(remoteUrl) ? (
+              <Link to={flattenToAppURL(remoteUrl)}>
+                {flattenToAppURL(remoteUrl)}
               </Link>
             ) : (
               <>
-                {URLUtils.isMail('mailto:' + this.props.content.remoteUrl) ? (
+                {URLUtils.isMail('mailto:' + remoteUrl) ? (
                   <a
-                    href={URLUtils.normaliseMail(this.props.content.remoteUrl)}
+                    href={URLUtils.normaliseMail(remoteUrl)}
                     rel="noopener noreferrer"
                   >
-                    {this.props.content.remoteUrl}
+                    {remoteUrl}
                   </a>
                 ) : (
                   <>
-                    {URLUtils.isTelephone(this.props.content.remoteUrl) ? (
+                    {URLUtils.isTelephone(remoteUrl) ? (
                       <a
-                        href={URLUtils.normalizeTelephone(
-                          this.props.content.remoteUrl,
-                        )}
+                        href={URLUtils.normalizeTelephone(remoteUrl)}
                         rel="noopener noreferrer"
                       >
-                        {this.props.content.remoteUrl}
+                        {remoteUrl}
                       </a>
                     ) : (
                       <a
-                        href={this.props.content.remoteUrl}
+                        href={remoteUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        {this.props.content.remoteUrl}
+                        {remoteUrl}
                       </a>
                     )}
                   </>
