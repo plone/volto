@@ -2,8 +2,6 @@
 
 ## 10.4.4 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Adding `All` button to folder content @iFlameing
@@ -11,8 +9,6 @@
 ### Bugfix
 
 - Fix "is client" check for SidebarPortal @tiberiuichim @sneridagh
-
-### Internal
 
 ## 10.4.3 (2020-12-15)
 
