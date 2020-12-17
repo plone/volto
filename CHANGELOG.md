@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix "is client" check for SidebarPortal @tiberiuichim @sneridagh
+
 ### Internal
 
 ## 10.4.3 (2020-12-15)
