@@ -28,7 +28,7 @@ const valueToDraft = (value) => ({
       depth: 0,
       entityRanges: [],
       inlineStyleRanges: [],
-      key: 'co3kh',
+      key: getId(),
       text: value,
       type: 'unstyled',
     },
@@ -47,7 +47,7 @@ const emptyRow = (cells) => ({
   cells: map(cells, () => emptyCell()),
 });
 
-const initialTable = {
+const initialTable = () => ({
   fixed: true,
   compact: false,
   basic: false,
@@ -86,7 +86,7 @@ const initialTable = {
       ],
     },
   ],
-};
+});
 
 const messages = defineMessages({
   insertRowBefore: {
@@ -216,7 +216,7 @@ class Edit extends Component {
     if (!this.props.data.table) {
       this.props.onChangeBlock(this.props.block, {
         ...this.props.data,
-        table: initialTable,
+        table: initialTable(),
       });
     }
     this.setState({ isClient: true });
@@ -232,7 +232,7 @@ class Edit extends Component {
     if (!nextProps.data.table) {
       this.props.onChangeBlock(nextProps.block, {
         ...nextProps.data,
-        table: initialTable,
+        table: initialTable(),
       });
     }
   }

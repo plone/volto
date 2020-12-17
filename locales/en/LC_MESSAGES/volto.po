@@ -168,6 +168,7 @@ msgstr ""
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Diff/Diff
 #: components/manage/History/History
+#: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -292,6 +293,14 @@ msgstr ""
 msgid "Choose Target"
 msgstr ""
 
+#: components/manage/Widgets/FileWidget
+msgid "Choose a file"
+msgstr ""
+
+#: components/manage/Blocks/HTML/Edit
+msgid "Clear"
+msgstr ""
+
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
 msgstr ""
@@ -302,6 +311,10 @@ msgstr ""
 
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
+msgstr ""
+
+#: components/manage/Blocks/HTML/Edit
+msgid "Code"
 msgstr ""
 
 #: components/manage/Toolbar/Toolbar
@@ -366,6 +379,10 @@ msgstr ""
 msgid "Copy"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Copy blocks"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "Copyright"
 msgstr ""
@@ -398,6 +415,10 @@ msgstr ""
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
 msgid "Cut"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Cut blocks"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
@@ -475,12 +496,20 @@ msgstr ""
 msgid "Delete User"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Delete blocks"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 msgid "Delete col"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
 msgid "Delete row"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "Depth"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -540,6 +569,18 @@ msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
+msgstr ""
+
+#: components/manage/Widgets/FileWidget
+msgid "Drop file here to replace the existing file"
+msgstr ""
+
+#: components/manage/Widgets/FileWidget
+msgid "Drop file here to upload a new file"
+msgstr ""
+
+#: components/manage/Widgets/FileWidget
+msgid "Drop files here ..."
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
@@ -611,6 +652,10 @@ msgstr ""
 
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 msgid "Enter URL or select an item"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Enter a username above to search or click 'Show All'"
 msgstr ""
 
 #: components/theme/Register/Register
@@ -884,11 +929,19 @@ msgid "Item batch size"
 msgstr ""
 
 #: components/manage/Contents/Contents
+msgid "Item succesfully moved."
+msgstr ""
+
+#: components/manage/Contents/Contents
 msgid "Item(s) copied."
 msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Item(s) cut."
+msgstr ""
+
+#: components/manage/Contents/Contents
+msgid "Item(s) has been updated."
 msgstr ""
 
 #: components/manage/Actions/Actions
@@ -990,6 +1043,15 @@ msgstr ""
 
 #: components/manage/Blocks/Table/Edit
 msgid "Make the table compact"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+#: components/manage/Toolbar/More
+msgid "Manage Translations"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Manage translations for {title}"
 msgstr ""
 
 #: components/manage/Blocks/Maps/MapsSidebar
@@ -1209,6 +1271,10 @@ msgstr ""
 msgid "Paste"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Paste blocks"
+msgstr ""
+
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Toolbar/Toolbar
 msgid "Personal Information"
@@ -1269,8 +1335,16 @@ msgid "Preferences"
 msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
+msgid "Prettify your code"
+msgstr ""
+
+#: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
 msgid "Preview"
+msgstr ""
+
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "Preview Image URL"
 msgstr ""
 
 #: components/manage/Toolbar/PersonalTools
@@ -1356,6 +1430,10 @@ msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Repeat on"
+msgstr ""
+
+#: components/manage/Widgets/FileWidget
+msgid "Replace existing file"
 msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
@@ -1547,6 +1625,10 @@ msgstr ""
 msgid "Show"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Show All"
+msgstr ""
+
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
 msgstr ""
@@ -1648,6 +1730,7 @@ msgstr ""
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -1800,6 +1883,14 @@ msgstr ""
 
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Translation linked"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Translation linking removed"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
@@ -2026,6 +2117,10 @@ msgstr ""
 msgid "You can view the history of your item below."
 msgstr ""
 
+#: components/manage/Contents/Contents
+msgid "You can't paste this content here"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Your email is required for reset your password."
 msgstr ""
@@ -2144,6 +2239,10 @@ msgstr ""
 
 #: config/Blocks
 msgid "listing"
+msgstr ""
+
+#: components/manage/Contents/Contents
+msgid "loading"
 msgstr ""
 
 #: components/theme/Unauthorized/Unauthorized

@@ -5,7 +5,7 @@ This is made possible by code splitting, where interfaces have a marker CSS clas
 
 ## The problem
 
-The main purpuse could be to use a sass based theme like Bootstrap.
+The main purpose could be to use a sass based theme like Bootstrap.
 If you want to load a different styling library using the base Volto configuration, you will load a huge bundle with both having weight and performance issues thus this would likely imply conflicts on base elements as containers.
 
 ## The solution
@@ -77,7 +77,7 @@ module.exports = Object.assign({}, volto_config, {
 });
 ```
 
-Complete example in an active project:  
+Complete example in an active project:
 https://github.com/RedTurtle/design-volto-theme/blob/master/razzle.config.js
 
 In that project, there is the sass loader and the svg loader, too.
@@ -97,7 +97,7 @@ body.cms-ui {
 }
 ```
 
-to avoid troubles on basical stuff: this is useful to have the correct font in the public-ui component showed while in a cms-view.
+to avoid troubles on basic stuff: this is useful to have the correct font in the public-ui component showed while in a cms-view.
 
 !!! tip
     Consider adding `public-ui` CSS class as a wrapper for your components, so they will be using your public theme. A good example of this is for the blocks, that need the public-ui styles both while viewing the object and while editing it.

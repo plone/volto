@@ -19,7 +19,26 @@ exports[`renders a view image component 1`] = `
         onFocus={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-      />
+      >
+        <svg
+          className="icon"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": undefined,
+            }
+          }
+          onClick={null}
+          style={
+            Object {
+              "fill": "currentColor",
+              "height": "24px",
+              "width": "auto",
+            }
+          }
+          viewBox=""
+          xmlns=""
+        />
+      </span>
       Welcome to Plone
     </span>
   </li>
@@ -38,7 +57,26 @@ exports[`renders a view image component 1`] = `
         onFocus={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-      />
+      >
+        <svg
+          className="icon"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": undefined,
+            }
+          }
+          onClick={null}
+          style={
+            Object {
+              "fill": "currentColor",
+              "height": "24px",
+              "width": "auto",
+            }
+          }
+          viewBox=""
+          xmlns=""
+        />
+      </span>
       News
     </span>
   </li>

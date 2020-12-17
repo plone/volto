@@ -140,7 +140,16 @@ describe('Content action', () => {
 
       expect(action.type).toEqual(GET_CONTENT);
       expect(action.request.op).toEqual('get');
-      expect(action.request.path).toEqual(`${url}?fullobjects`);
+      expect(action.request.path).toEqual(`${url}`);
+    });
+
+    it('should create an action to get content and full objects', () => {
+      const url = 'http://localhost';
+      const action = getContent(url, null, null, null, true);
+
+      expect(action.type).toEqual(GET_CONTENT);
+      expect(action.request.op).toEqual('get');
+      expect(action.request.path).toEqual(`${url}?fullobjects=true`);
     });
 
     it('should create an action to get content with version', () => {
@@ -150,8 +159,18 @@ describe('Content action', () => {
 
       expect(action.type).toEqual(GET_CONTENT);
       expect(action.request.op).toEqual('get');
+      expect(action.request.path).toEqual(`${url}/@history/${version}`);
+    });
+
+    it('should create an action to get content with version and fullobjects', () => {
+      const url = 'http://localhost';
+      const version = '0';
+      const action = getContent(url, version, null, null, true);
+
+      expect(action.type).toEqual(GET_CONTENT);
+      expect(action.request.op).toEqual('get');
       expect(action.request.path).toEqual(
-        `${url}/@history/${version}?fullobjects`,
+        `${url}/@history/${version}?fullobjects=true`,
       );
     });
 
@@ -162,7 +181,7 @@ describe('Content action', () => {
       expect(action.type).toEqual(GET_CONTENT);
       expect(action.subrequest).toEqual('my-subrequest');
       expect(action.request.op).toEqual('get');
-      expect(action.request.path).toEqual(`${url}?fullobjects`);
+      expect(action.request.path).toEqual(`${url}`);
     });
 
     it('should create an action to get content with a pagination page', () => {
@@ -171,9 +190,7 @@ describe('Content action', () => {
 
       expect(action.type).toEqual(GET_CONTENT);
       expect(action.request.op).toEqual('get');
-      expect(action.request.path).toEqual(
-        `${url}?fullobjects&b_start=25&b_size=25`,
-      );
+      expect(action.request.path).toEqual(`${url}?b_start=25&b_size=25`);
     });
   });
 

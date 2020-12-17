@@ -246,20 +246,26 @@ class Edit extends Component {
                 />
               </>
             )}
-            {!editPermission && (
-              <>
-                {this.props.token ? (
-                  <Forbidden pathname={this.props.pathname} />
-                ) : (
-                  <Unauthorized pathname={this.props.pathname} />
-                )}
-              </>
-            )}
 
             {editPermission && this.state.visual && this.state.isClient && (
               <Portal node={document.getElementById('sidebar')}>
                 <Sidebar />
               </Portal>
+            )}
+          </>
+        )}
+        {!editPermission && (
+          <>
+            {this.props.token ? (
+              <Forbidden
+                pathname={this.props.pathname}
+                staticContext={this.props.staticContext}
+              />
+            ) : (
+              <Unauthorized
+                pathname={this.props.pathname}
+                staticContext={this.props.staticContext}
+              />
             )}
           </>
         )}
