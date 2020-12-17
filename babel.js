@@ -3,39 +3,22 @@ module.exports = function (api) {
   const presets = ['razzle/babel'];
   const plugins = [
     'lodash',
-    '@babel/plugin-proposal-function-bind',
-    '@babel/plugin-proposal-do-expressions',
-    '@babel/plugin-proposal-export-default-from',
-    '@babel/plugin-proposal-export-namespace-from',
-    '@babel/plugin-proposal-function-sent',
-    '@babel/plugin-proposal-json-strings',
-    '@babel/plugin-proposal-logical-assignment-operators',
-    '@babel/plugin-proposal-nullish-coalescing-operator',
-    '@babel/plugin-proposal-numeric-separator',
-    '@babel/plugin-proposal-optional-chaining',
-    ['@babel/plugin-proposal-pipeline-operator', { proposal: 'minimal' }],
-    '@babel/plugin-proposal-throw-expressions',
-    '@babel/plugin-syntax-import-meta',
-    '@babel/plugin-syntax-dynamic-import',
+    '@babel/plugin-proposal-export-default-from', // Stage 1
+    '@babel/plugin-syntax-export-namespace-from', // Stage 4
+    '@babel/plugin-proposal-throw-expressions', // Stage 2
     [
-      '@babel/plugin-proposal-decorators',
-      {
-        legacy: true,
-      },
-    ],
-    [
-      'babel-plugin-root-import',
+      'babel-plugin-root-import', // Required for the ~ imports to work
       {
         rootPathSuffix: 'src',
       },
     ],
     [
-      'react-intl',
+      'react-intl', // React Intl extractor, required for the whole i18n infrastructure to work
       {
         messagesDir: './build/messages/',
       },
     ],
-    '@loadable/babel-plugin',
+    '@loadable/babel-plugin', // Required by the @loadable plugin
   ];
 
   return {

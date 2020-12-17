@@ -107,6 +107,10 @@ const messages = defineMessages({
     id: 'Cut',
     defaultMessage: 'Cut',
   },
+  error: {
+    id: "You can't paste this content here",
+    defaultMessage: "You can't paste this content here",
+  },
   delete: {
     id: 'Delete',
     defaultMessage: 'Delete',
@@ -135,9 +139,9 @@ const messages = defineMessages({
     id: 'Item(s) cut.',
     defaultMessage: 'Item(s) cut.',
   },
-  messageSort: {
-    id: 'Item(s) has been sorted.',
-    defaultMessage: 'Item(s) has been sorted.',
+  messageUpdate: {
+    id: 'Item(s) has been updated.',
+    defaultMessage: 'Item(s) has been updated.',
   },
   messageReorder: {
     id: 'Item succesfully moved.',
@@ -439,7 +443,7 @@ class Contents extends Component {
         <Toast
           success
           title={this.props.intl.formatMessage(messages.success)}
-          content={this.props.intl.formatMessage(messages.messageSort)}
+          content={this.props.intl.formatMessage(messages.messageUpdate)}
         />,
       );
     }
@@ -1711,11 +1715,11 @@ class Contents extends Component {
             </Dimmer.Dimmable>
           </Container>
         ) : (
-          <Unauthorized />
+          <Unauthorized staticContext={this.props.staticContext} />
         )}
       </>
     ) : (
-      <Unauthorized />
+      <Unauthorized staticContext={this.props.staticContext} />
     );
   }
 }
