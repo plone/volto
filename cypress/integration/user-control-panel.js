@@ -28,19 +28,17 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('.icon.button:first').click();
       cy.get('.fullname').should('have.text', 'Alok Kumar');
     });
-    it('Should update user roles', () => {
-      // add user
-      cy.get('.addSVG').click();
-      cy.get('.input > #field-username').click();
-      cy.get('.input > #field-username').type('nileshgulia');
-      cy.get('.content > .ui').click();
-      cy.get('.input > #field-fullname').type('Nilesh Gulia');
-      cy.get('.input > #field-email').type('nileshgulia@gmail.com');
-      cy.get('.input > #field-password').click();
-      cy.get('.input > #field-password').type('test1234');
-      cy.get('button[title="Save"]').click(-50, -50, { force: true });
-      cy.get('div.checkbox').first().click();
+    it('Should update group roles', () => {
+      cy.get('input[type="checkbox"').first().check({ force: true });
       cy.reload();
+      cy.get('div.checkbox').first().should('have.class', 'checked');
+    });
+    it('Should update user roles', () => {
+      cy.get('.show-all-users:nth-child(2)').click();
+
+      cy.get('input[type="checkbox"').first().check({ force: true });
+      cy.reload();
+      cy.get('.show-all-users:nth-child(2)').click();
       cy.get('div.checkbox').first().should('have.class', 'checked');
     });
   });
