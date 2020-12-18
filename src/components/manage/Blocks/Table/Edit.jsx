@@ -520,7 +520,7 @@ class Edit extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    if (__SERVER__) {
+    if (!this.state.isClient) {
       return <div />;
     }
 
