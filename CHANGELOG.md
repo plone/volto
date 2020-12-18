@@ -10,6 +10,8 @@
 
 ### Bugfix
 
+- Replace `__SERVER__` occurrence from table `Edit` component @sneridagh
+
 ### Internal
 
 ## 10.5.0 (2020-12-17)
