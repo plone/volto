@@ -5,7 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { map, remove, isEqual } from 'lodash';
+import { map, remove } from 'lodash';
 import { Button, Segment, Table, Form } from 'semantic-ui-react';
 import { convertToRaw } from 'draft-js';
 import { Portal } from 'react-portal';
@@ -235,20 +235,6 @@ class Edit extends Component {
         table: initialTable(),
       });
     }
-  }
-
-  /**
-   * Component will receive props
-   * @method shouldComponentUpdate
-   * @param {Object} nextProps Next properties
-   * @returns {Boolean}
-   */
-  shouldComponentUpdate(nextProps) {
-    return (
-      this.props.selected ||
-      nextProps.selected ||
-      !isEqual(this.props.data, nextProps.data)
-    );
   }
 
   /**
