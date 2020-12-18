@@ -1,6 +1,6 @@
 # Change Log
 
-## 10.5.1 (unreleased)
+## 10.6.1 (unreleased)
 
 ### Breaking
 
@@ -9,6 +9,16 @@
 ### Bugfix
 
 ### Internal
+
+## 10.6.0 (2020-12-18)
+
+### Feature
+
+- Allow setting a custom robots.txt from environment with the `VOLTO_ROBOTSTXT` environment variable @tiberiuichim
+
+### Bugfix
+
+- Replace `__SERVER__` occurrence from table `Edit` component @sneridagh
 
 ## 10.5.0 (2020-12-17)
 
