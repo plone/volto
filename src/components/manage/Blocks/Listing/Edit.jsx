@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
+import { isEqual } from 'lodash';
 
 import {
   SidebarPortal,
@@ -60,6 +61,8 @@ const Edit = React.memo(
       </>
     );
   },
+  (prevProps, nextProps) =>
+    !(nextProps.selected || !isEqual(prevProps.data, nextProps.data)),
 );
 
 Edit.propTypes = {
