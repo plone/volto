@@ -1,8 +1,13 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { ArrayWidgetComponent } from './ArrayWidget';
+import { injectIntl } from 'react-intl';
 
 <Meta
   title="ArrayWidget"
+  argTypes={{
+    title: { control: 'text' },
+    choices: { control: 'object' },
+  }}
   decorators={[
     (Story) => (
       <div style={{ width: '400px' }}>
@@ -18,14 +23,14 @@ Form field
 
 export const ArrayWidget = (args) => (
   <ArrayWidgetComponent
-    {...args}
     id="ArrayWidget"
     title="Array Field"
     choices={[['Foo', 'Foo']]}
+    {...args}
   />
 );
 
-<Story name="ArrayWidget">{ArrayWidget.bind({})}</Story>
+<Story name="ArrayWidget">{injectIntl(ArrayWidget).bind({})}</Story>
 
 # Props
 

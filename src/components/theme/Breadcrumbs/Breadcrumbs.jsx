@@ -113,7 +113,7 @@ class Breadcrumbs extends Component {
   }
 }
 
-export const BreadcrumbsComponent = injectIntl(Breadcrumbs);
+export const BreadcrumbsComponent = Breadcrumbs;
 export default compose(
   injectIntl,
   connect(
