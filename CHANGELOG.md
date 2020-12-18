@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Allow setting a custom robots.txt from environment with the `VOLTO_ROBOTSTXT` environment variable @tiberiuichim
+
 ### Bugfix
 
 ### Internal
