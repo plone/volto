@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Remove useless RobotFramework related packages, keep only the minimum required ones @sneridagh
+
 ## 10.6.0 (2020-12-18)
 
 ### Feature
@@ -19,6 +21,7 @@
 ### Bugfix
 
 - Replace `__SERVER__` occurrence from table `Edit` component @sneridagh
+
 
 ## 10.5.0 (2020-12-17)
 
