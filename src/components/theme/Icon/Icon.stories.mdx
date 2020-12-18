@@ -4,11 +4,19 @@ import addIcon from '../../../icons/add.svg';
 
 import icons from '../../../icons/load-icons';
 
-<Meta title="Icon" />
+<Meta
+  title="Icons"
+  argTypes={{
+    color: { control: 'color' },
+    size: {
+      control: { type: 'range', min: 24, max: 100, step: 4 },
+    },
+  }}
+/>
 
-# Icon
+## Icon component
 
-You can load icons from Volto with:
+You can load icons from Volto using the `Icon` component:
 
 ```jsx static
 import { Icon } from '@plone/volto/components';
@@ -17,11 +25,22 @@ import addIcon from '@plone/volto/icons/add.svg';
 const IconTest = () => <Icon name={addIcon} size="18px" />;
 ```
 
-# Props
+## Single Icon
+
+export const SingleIcon = (args) => <IconComponent {...args} />;
+
+<Story
+  name="Single Icon"
+  args={{ name: addIcon, color: 'black', size: '32px' }}
+>
+  {SingleIcon.bind({})}
+</Story>
+
+## Props
 
 <ArgsTable of={IconComponent} />
 
-All icons:
+## Pastanaga Icon Set
 
 export const iconElements = Object.keys(icons).map((iconName) => {
   const icon = icons[iconName];
@@ -40,8 +59,8 @@ export const iconElements = Object.keys(icons).map((iconName) => {
   );
 });
 
-export const Icon = (args) => (
+export const PastanagaIcons = (args) => (
   <div style={{ overflow: 'hidden' }}>{iconElements}</div>
 );
 
-<Story name="Icon">{Icon.bind({})}</Story>
+<Story name="Pastanaga Icon Set">{PastanagaIcons.bind({})}</Story>
