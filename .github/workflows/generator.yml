@@ -47,44 +47,19 @@ jobs:
       - run: yo @plone/volto my-volto-app --description "test volto project" --no-interactive
 
       - name: Install yalc
-      - run: npm -g install yalc
+        run: npm -g install yalc
 
       - name: Install a yalc'ed version of the current Volto in the project - publish
-      - run: yalc publish
+        run: yalc publish
       - name: Install a yalc'ed version of the current Volto in the project - add
-      - run: yalc add @plone/volto --no-pure
+        run: yalc add @plone/volto --no-pure
         working-directory: ${{env.project-directory}}
       - name: Install a yalc'ed version of the current Volto in the project - install
-      - run: yarn --force
+        run: yarn --force
         working-directory: ${{env.project-directory}}
 
       # Cypress install
       - run: yarn cy:install
-
-      # python setup
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v1
-        with:
-          python-version: ${{ matrix.python-version }}
-
-      # python cache
-      - uses: actions/cache@v1
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-
-      # python install
-      - run: pip install virtualenv
-      - name: pip install
-        working-directory: api
-        run: pip install -r requirements.txt
-      - name: buildout
-        working-directory: api
-        run: buildout
-        env:
-          CI: true
 
       - name: Cypress acceptance tests
         run: yarn ci:cypress:run
