@@ -9,7 +9,7 @@ jobs:
         python-version: [3.7]
     env:
       generator-directory: ./packages/generator-volto
-      project-directory: ./packages/generator-volto
+      project-directory: ./my-volto-app
 
     steps:
       - uses: actions/checkout@v2
