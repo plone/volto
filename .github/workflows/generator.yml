@@ -34,7 +34,7 @@ jobs:
 
       # Generator own tests
       - name: Generator tests
-        run:  yarn test
+        run:  yarn && yarn test
         working-directory: ${{env.generator-directory}}
 
       # install Yeoman and the generator
