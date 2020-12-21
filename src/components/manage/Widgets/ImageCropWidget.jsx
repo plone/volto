@@ -4,13 +4,36 @@
  */
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
-import ReactCrop from 'react-image-crop';
+import loadable from '@loadable/component';
 import 'react-image-crop/dist/ReactCrop.css';
 import PropTypes from 'prop-types';
-import { Input, Button } from 'semantic-ui-react';
+import { Button, Image, Dimmer } from 'semantic-ui-react';
 import deleteSVG from '@plone/volto/icons/delete.svg';
 import { Icon, FormFieldWrapper } from '@plone/volto/components';
+import { flattenToAppURL } from '@plone/volto/helpers';
+import { defineMessages, useIntl } from 'react-intl';
 
+const messages = defineMessages({
+  replaceFile: {
+    id: 'Replace existing Image',
+    defaultMessage: 'Replace existing image',
+  },
+  addNewFile: {
+    id: 'Choose a image',
+    defaultMessage: 'Choose a image',
+  },
+  fileDrag: {
+    id: 'Drop image here to upload a new image',
+    defaultMessage: 'Drop image here to upload a new image',
+  },
+});
+
+const ReactCrop = loadable(() => import('react-image-crop'), {
+  resolveComponent: (components) => components.ReactCrop,
+});
+const Dropzone = loadable(() => import('react-dropzone'), {
+  resolveComponent: (components) => components.Dropzone,
+});
 // Setting a high pixel ratio avoids blurriness in the canvas crop preview.
 const pixelRatio = 4;
 
@@ -83,13 +106,13 @@ const ImageCropWidget = ({
   fieldSet,
   wrapped,
 }) => {
-  const fileInput = React.useRef(null);
   const [upImg, setUpImg] = useState();
   const imgRef = useRef(null);
   const previewCanvasRef = useRef(null);
   const [crop, setCrop] = useState({ unit: '%', width: 30, aspect: 4 / 3 });
   const [completedCrop, setCompletedCrop] = useState(null);
   const [fileName, setFilename] = useState(null);
+  const intl = useIntl();
 
   const onLoad = useCallback((img) => {
     imgRef.current = img;
@@ -134,6 +157,16 @@ const ImageCropWidget = ({
     );
   }, [completedCrop, id, onChange, fileName]);
 
+  const onDrop = (files) => {
+    const file = files[0];
+    setFilename(file.name);
+    let reader = new FileReader();
+    reader.onload = function () {
+      setUpImg(reader.result);
+    };
+    reader.readAsDataURL(file);
+  };
+
   return (
     <FormFieldWrapper
       id={id}
@@ -144,39 +177,67 @@ const ImageCropWidget = ({
       wrapped={wrapped}
       fieldSet={fieldSet}
     >
-      <div>
-        <canvas
-          ref={previewCanvasRef}
-          style={{
-            width: completedCrop?.width ?? 0,
-            height: completedCrop?.height ?? 0,
-          }}
-          className="image-preview"
+      <Dropzone onDrop={onDrop}>
+        {({ getRootProps, getInputProps, isDragActive }) => (
+          <div className="file-widget-dropzone" {...getRootProps()}>
+            {isDragActive && <Dimmer active></Dimmer>}
+            {upImg ? (
+              <canvas
+                ref={previewCanvasRef}
+                style={{
+                  width: completedCrop?.width ?? 0,
+                  height: completedCrop?.height ?? 0,
+                }}
+                className="image-preview"
+              />
+            ) : value ? (
+              <Image
+                className="image-preview"
+                id={`field-${id}-image`}
+                size="small"
+                src={
+                  value?.download
+                    ? `${flattenToAppURL(value.download)}?id=${Date.now()}`
+                    : null
+                }
+              />
+            ) : (
+              <div className="dropzone-placeholder">
+                {' '}
+                <p className="dropzone-text">
+                  {intl.formatMessage(messages.fileDrag)}
+                </p>
+              </div>
+            )}
+            <div>
+              <label className="label-file-widget-input">
+                {value
+                  ? intl.formatMessage(messages.replaceFile)
+                  : intl.formatMessage(messages.addNewFile)}
+              </label>
+            </div>
+            <input
+              {...getInputProps({
+                type: 'file',
+                style: { display: 'none' },
+              })}
+              id={`field-${id}`}
+              name={id}
+              type="file"
+            />
+          </div>
+        )}
+      </Dropzone>
+      {upImg && (
+        <ReactCrop
+          style={{ marginTop: '20px' }}
+          src={upImg}
+          onImageLoaded={onLoad}
+          crop={crop}
+          onChange={(c) => setCrop(c)}
+          onComplete={(c) => setCompletedCrop(c)}
         />
-      </div>
-      <ReactCrop
-        src={upImg}
-        onImageLoaded={onLoad}
-        crop={crop}
-        onChange={(c) => setCrop(c)}
-        onComplete={(c) => setCompletedCrop(c)}
-      />
-
-      <Input
-        id={`field-${id}`}
-        name={id}
-        type="file"
-        ref={fileInput}
-        onChange={({ target }) => {
-          const file = target.files[0];
-          setFilename(file.name);
-          let reader = new FileReader();
-          reader.onload = function () {
-            setUpImg(reader.result);
-          };
-          reader.readAsDataURL(target.files[0]);
-        }}
-      />
+      )}
       <div className="field-file-name">
         {value && value.filename}
         {value && (
@@ -187,7 +248,6 @@ const ImageCropWidget = ({
             aria-label="delete file"
             onClick={() => {
               onChange(id, null);
-              fileInput.current.inputRef.value = null;
             }}
           >
             <Icon name={deleteSVG} size="20px" />
