@@ -310,7 +310,7 @@ msgstr "Ziel auswählen"
 
 #: components/manage/Widgets/FileWidget
 msgid "Choose a file"
-msgstr "Datei wählen"
+msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
@@ -394,6 +394,10 @@ msgstr "Inhaltsverzeichnis"
 msgid "Copy"
 msgstr "Kopieren"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Copy blocks"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "Copyright"
 msgstr "Urheberrecht"
@@ -427,6 +431,10 @@ msgstr "Aktuelles Passwort"
 #: components/manage/Contents/ContentsItem
 msgid "Cut"
 msgstr "Ausschneiden"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Cut blocks"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Daily"
@@ -503,6 +511,10 @@ msgstr "Inhaltstype löschen"
 msgid "Delete User"
 msgstr "Benutzer löschen"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Delete blocks"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 msgid "Delete col"
 msgstr "Spalte löschen"
@@ -510,6 +522,10 @@ msgstr "Spalte löschen"
 #: components/manage/Blocks/Table/Edit
 msgid "Delete row"
 msgstr "Zeile löschen"
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "Depth"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Descending"
@@ -572,15 +588,15 @@ msgstr "Ziehen Sie Dateien von Ihrem Computer auf diesen Bereich oder drücken S
 
 #: components/manage/Widgets/FileWidget
 msgid "Drop file here to replace the existing file"
-msgstr "Datei hier ablegen um die bestehende Datei zu ersetzen"
+msgstr ""
 
 #: components/manage/Widgets/FileWidget
 msgid "Drop file here to upload a new file"
-msgstr "Datei hier ablegen um neue Datei hochzuladen"
+msgstr ""
 
 #: components/manage/Widgets/FileWidget
 msgid "Drop files here ..."
-msgstr "Dateien hier ablegen..."
+msgstr "Datei hier ablegen um die bestehende Datei zu ersetzen"
 
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
@@ -1270,6 +1286,10 @@ msgstr "Die Passwörter stimmen nicht überein."
 msgid "Paste"
 msgstr "Einfügen"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Paste blocks"
+msgstr ""
+
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Toolbar/Toolbar
 msgid "Personal Information"
@@ -1429,7 +1449,7 @@ msgstr "Wiederhole am"
 
 #: components/manage/Widgets/FileWidget
 msgid "Replace existing file"
-msgstr "Bestehende Datei ersetzen"
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget

@@ -91,3 +91,10 @@ This list is still incomplete, contributions are welcomed!
         (for example content with lots of text) and you need to batch requests
         anyway, if you want to be sure to display all the children.
 
+
+## persistentReducers
+
+!!! block ""
+
+    A list of reducer names that should use the browser's localstorage to
+    persist their data.

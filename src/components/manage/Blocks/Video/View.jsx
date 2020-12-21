@@ -128,6 +128,15 @@ const View = ({ data }) => (
                         : data.url
                     }
                     controls
+                    poster={
+                      data.preview_image
+                        ? isInternalURL(data.preview_image)
+                          ? `${flattenToAppURL(
+                              data.preview_image,
+                            )}/@@images/image`
+                          : data.preview_image
+                        : ''
+                    }
                     type="video/mp4"
                   />
                 ) : (
