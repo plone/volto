@@ -75,6 +75,13 @@ if (__DEVELOPMENT__ && settings.devProxyToApiPath) {
   );
 }
 
+if (process.env.VOLTO_ROBOTSTXT) {
+  server.use('/robots.txt', function (req, res) {
+    res.type('text/plain');
+    res.send(process.env.VOLTO_ROBOTSTXT);
+  });
+}
+
 if ((settings.expressMiddleware || []).length)
   server.use('/', settings.expressMiddleware);
 
