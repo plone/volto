@@ -1,6 +1,6 @@
 # Change Log
 
-## 10.6.1 (unreleased)
+## 10.6.1 (2020-12-21)
 
 ### Bugfix
 
