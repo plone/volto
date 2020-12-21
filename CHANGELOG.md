@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Better API helper end request handling, since the existing one was causing problems and rendered the SSR server unusable in case of the request was rejected @sneridagh
+
 ### Internal
 
 - Add a paragraph on dealing with CORS errors in Deploying doc page @tiberiuichim
