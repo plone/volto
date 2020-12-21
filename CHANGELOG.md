@@ -1,6 +1,6 @@
 # Change Log
 
-## 9.0.1 (unreleased)
+## 10.6.1 (unreleased)
 
 ### Breaking
 
@@ -8,7 +8,182 @@
 
 ### Bugfix
 
+- Better API helper end request handling, since the existing one was causing problems and rendered the SSR server unusable in case of the request was rejected @sneridagh
+
 ### Internal
+
+- Add a paragraph on dealing with CORS errors in Deploying doc page @tiberiuichim
+- Remove useless RobotFramework related packages, keep only the minimum required ones @sneridagh
+
+## 10.6.0 (2020-12-18)
+
+### Feature
+
+- Allow setting a custom robots.txt from environment with the `VOLTO_ROBOTSTXT` environment variable @tiberiuichim
+
+### Bugfix
+
+- Replace `__SERVER__` occurrence from table `Edit` component @sneridagh
+
+
+## 10.5.0 (2020-12-17)
+
+### Feature
+
+- Adding `All` button to folder content @iFlameing
+
+### Bugfix
+
+- Fix "is client" check for SidebarPortal @tiberiuichim @sneridagh
+
+## 10.4.3 (2020-12-15)
+
+### Internal
+
+- Bring back `App` to `components/index.js` for now, since it's breaking the projects
+  where it gets referenced from `routes.js`. @sneridagh
+
+## 10.4.2 (2020-12-15)
+
+**This is a brown bag release and should not be used, upgrade to Volto 10.4.3 instead.**
+
+### Bugfix
+
+- Fix numeric widget console warnings regarding flex styling refs #2059 @ichim-david
+- Fix numeric widget crash once we click inside it refs #2059 @ichim-david
+
+### Internal
+
+- Fix some key points to improve the circular imports problem @sneridagh
+
+  - `App` and `View` components are meant to be used only by Volto internals, so it's no
+    point into having them exported in `components/index.js` that facilitated a path for
+    circular imports.
+  - `withObjectBrowser` and friends also are prone to facilitate a path for having
+    circular imports, so we are using there only absolute imports.
+  - All these changes are non-breaking and non-intrusive.
+
+## 10.4.1 (2020-12-12)
+
+### Bugfix
+
+- Make sure that prism is loaded before rendering HTML block @tiberiuichim
+
+## 10.4.0 (2020-12-11)
+
+### Feature
+
+- Add ability to filter the attributes that are saved in the ObjectBrowserWidget @sneridagh
+- Add `object_browser` as widget @sneridagh
+
+### Bugfix
+
+- Adding video thumbnail for the .mp4 extension @iFlameing.
+
+### Internal
+
+- Added new in productions sites to README @terapyon
+
+## 10.3.0 (2020-12-04)
+
+### Feature
+
+- added search depth in listing and updated it locales @giuliaghisini
+- Add emailSend action @nzambello
+- lazy load react-dropzone @nileshgulia1
+
+### Bugfix
+
+- Fix addons loader name generation on Windows @tiberiuichim
+- For python3.9 compatibility, install wheel package in build-backend targets @tiberiuichim
+
+### Internal
+
+- Tweak Cypress command `waitForResourceToLoad` to timeout after 50 tries.  @tiberiuichim
+
+## 10.2.0 (2020-12-04)
+
+### Feature
+
+- Generate language file of added missing German translations by @tisto. @ksuess
+
+### Bugfix
+
+- Fix regression in the `getContent` action with the expandable missing @sneridagh
+
+## 10.1.0 (2020-11-30)
+
+### Feature
+
+- Add missing German translations @tisto
+
+## 10.0.0 (2020-11-30)
+
+### Feature
+
+- Provide operations on multiple-selected blocks: delete, cut/copy and paste.  You can trigger the "multiselected blocks" by holding the shift key and clicking on another block. You can add/remove blocks to the selection with the Control key. Holding Control when you click on the Paste button doesn't clear the clipboard, so you can paste multiple times. The blocks clipboard uses the browser's local storage to synchronize between tabs. @tiberiuichim
+- Allow reducers to be persisted using localstorage @tiberiuichim
+
+### Breaking
+
+- Removal of the Razzle patch that was introduced in 9.0.0 @sneridagh
+  See https://docs.voltocms.com/upgrade-guide/ for more details.
+- Fetched content with `getContent` no longer includes fullobjects by default @tiberiuichim
+
+### Bugfix
+
+- Fix link to login in the Unauthorised component @sneridagh
+
+### Internal
+
+- Add details on how to run Cypress integration tests @tiberiuichim
+- Upgrade `@testing-library/react` to 11.2.2. Add `jest-environment-jsdom-sixteen as upgraded jsdom implementation @tiberiuichim
+- Split some small prismjs related files (used in HTML block) in separate chunks @tiberiuichim
+- Remove dangling analyzer plugin @sneridagh
+- Support for Guillotina 6 @bloodbare @sneridagh
+- Update Cypress to version 5.6.0 @sneridagh
+- Terse `react-intl` errors in console during development turning them into warnings @sneridagh
+
+## 9.2.0 (2020-11-24)
+
+**This is a brown bag release and should not be used, upgrade to Volto 10.x.x instead.**
+See https://docs.voltocms.com/upgrade-guide/ for more information.
+
+### Feature
+
+- Remove the Razzle patch for the local, "inline" Volto Razzle plugins @tiberiuichim @sneridagh
+
+### Bugfix
+
+- Move missplaced `appExtras` into settings @sneridagh
+
+### Internal
+
+- Make filewidget label more consistent @tisto
+
+## 9.1.0 (2020-11-20)
+
+### Feature
+
+- Extend the internal proxy capabilities, now the target is overridable and SSL aware @sneridagh
+- Added new environment variables for the internal proxy `RAZZLE_PROXY_REWRITE_TARGET` and `RAZZLE_PROXY_REWRITE_TARGET` @sneridagh
+- Enhance `AppExtras` component to make it pluggable through the
+  `config.settings.appExtras`. These are router-path filtered components that
+  are rendered inside the `AppExtras` component @tiberiuichim
+
+### Bugfix
+
+- Fix Sentry tags and extra via settings.sentryOptions @avoinea
+- Fix `yarn analyze` command by packing our own version of
+  webpack-bundle-analyzer integration. It has a few changes to the old default
+  configuration. There is an alternative way of triggering the bundle analyzer,
+  with the `OFFLINE_BUNDLE_ANALYZE=true` env variable, which avoids starting
+  the HTTP bundle analyzer server. Also, it always saves a report html file.
+  @tiberiuichim
+
+### Internal
+
+- Improve developer documentation. Add several new chapters @tiberiuichim
 
 ## 9.0.0 (2020-11-15)
 
@@ -19,12 +194,13 @@
   Razzle 3.3.7 prepares the transition to the upcoming Razzle 4 so it improves and
   unifies the extensibility story at the cost of change the signature of the
   `razzle.config.js` and how plugins are declared. It also enables by default the new
-  *React Fast Refresh* feature implemented by the React community, which improves the
+  _React Fast Refresh_ feature implemented by the React community, which improves the
   refresh of the code while in development.
 
 - Babel plugins housekeeping
 
   Deprecated proposals:
+
   - @babel/plugin-proposal-function-bind
   - @babel/plugin-proposal-do-expressions
   - @babel/plugin-proposal-logical-assignment-operators

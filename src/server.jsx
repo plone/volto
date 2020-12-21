@@ -60,11 +60,24 @@ if (__DEVELOPMENT__ && settings.devProxyToApiPath) {
     createProxyMiddleware({
       target: serverURL,
       pathRewrite: {
-        '^/api': `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot/_vh_api`,
+        '^/api':
+          settings.proxyRewriteTarget ||
+          `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot/_vh_api`,
       },
       logLevel: 'silent',
+      ...(settings?.proxyRewriteTarget?.startsWith('https') && {
+        changeOrigin: true,
+        secure: false,
+      }),
     }),
   );
+}
+
+if (process.env.VOLTO_ROBOTSTXT) {
+  server.use('/robots.txt', function (req, res) {
+    res.type('text/plain');
+    res.send(process.env.VOLTO_ROBOTSTXT);
+  });
 }
 
 if ((settings.expressMiddleware || []).length)

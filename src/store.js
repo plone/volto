@@ -2,7 +2,9 @@ import { combineReducers, createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
+import { save, load } from 'redux-localstorage-simple';
 
+import { settings } from '~/config';
 import reducers from '~/reducers';
 
 import { api, crashReporter } from '@plone/volto/middleware';
@@ -10,10 +12,15 @@ import { api, crashReporter } from '@plone/volto/middleware';
 const configureStore = (initialState, history, apiHelper) => {
   const middlewares = composeWithDevTools(
     applyMiddleware(
-      routerMiddleware(history),
-      crashReporter,
-      thunk,
-      api(apiHelper),
+      ...[
+        routerMiddleware(history),
+        crashReporter,
+        thunk,
+        api(apiHelper),
+        ...(__CLIENT__
+          ? [save({ states: settings.persistentReducers, debounce: 500 })]
+          : []),
+      ],
     ),
   );
   const store = createStore(
@@ -21,7 +28,10 @@ const configureStore = (initialState, history, apiHelper) => {
       router: connectRouter(history),
       ...reducers,
     }),
-    initialState,
+    {
+      ...initialState,
+      ...(__CLIENT__ ? load({ states: settings.persistentReducers }) : {}),
+    },
     middlewares,
   );
 

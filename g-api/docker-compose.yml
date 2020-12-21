@@ -1,18 +1,28 @@
 version: '3'
 services:
-  postgres:
-    image: postgres:9.6.16
-    container_name: postgres_test
-    environment:
-        POSTGRES_DB: guillotina
-        POSTGRES_USER: guillotina
   guillotina:
-    image: plone/guillotina_cms:volto
+    image: plone/guillotina-volto
     command: sh -c "sleep 5 && g -c /usr/src/app/config.yml"
     ports:
-    - "8081:8081"
-    - "50101:50101"
+      - "8081:8081"
     links:
-     - postgres
+      - postgres
     volumes:
-      - ${PWD}/g-api/config.yml:/usr/src/app/config.yml
+      - ${PWD}/g-api/docker-compose-local.yml:/usr/src/app/config.yml
+
+  postgres:
+    image: postgres:12
+    container_name: gcms_dev_pg
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
+      POSTGRES_INITDB_ARGS: --data-checksums
+      POSTGRES_DB: guillotina
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data_cms:/var/lib/postgresql/data
+
+volumes:
+  logvolume01: {}
+  postgres_data_cms: {}

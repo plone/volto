@@ -2,7 +2,6 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
-import { wait } from '@testing-library/react';
 
 import Display from './Display';
 
@@ -25,13 +24,16 @@ describe('Display', () => {
         messages: {},
       },
     });
-    const component = renderer.create(
+
+    const { act } = renderer;
+    let component = renderer.create(
       <Provider store={store}>
         <Display pathname="/test" />
       </Provider>,
     );
-    await wait(() => {
-      expect(component.toJSON()).toMatchSnapshot();
-    });
+
+    await act(async () => {});
+
+    expect(component.toJSON()).toMatchSnapshot();
   });
 });

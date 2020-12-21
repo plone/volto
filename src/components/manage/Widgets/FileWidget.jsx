@@ -10,7 +10,7 @@ import { readAsDataURL } from 'promise-file-reader';
 import { injectIntl } from 'react-intl';
 import deleteSVG from '@plone/volto/icons/delete.svg';
 import { Icon, FormFieldWrapper } from '@plone/volto/components';
-import Dropzone from 'react-dropzone';
+import loadable from '@loadable/component';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import { defineMessages, useIntl } from 'react-intl';
 
@@ -22,27 +22,30 @@ const imageMimetypes = [
   'image/gif',
   'image/svg+xml',
 ];
+const Dropzone = loadable(() => import('react-dropzone'), {
+  resolveComponent: (components) => components.Dropzone,
+});
 
 const messages = defineMessages({
   releaseDrag: {
-    id: 'Drop files here ....',
-    defaultMessage: 'Drop files here ....',
+    id: 'Drop files here ...',
+    defaultMessage: 'Drop files here ...',
   },
   editFile: {
-    id: 'Drag to replace the file item',
-    defaultMessage: 'Drag to replace the file item',
+    id: 'Drop file here to replace the existing file',
+    defaultMessage: 'Drop file here to replace the existing file',
   },
   fileDrag: {
-    id: 'Drag the new item to upload',
-    defaultMessage: 'Drag the new item to upload',
+    id: 'Drop file here to upload a new file',
+    defaultMessage: 'Drop file here to upload a new file',
   },
   replaceFile: {
-    id: 'Replace existing File/Image',
-    defaultMessage: 'Replace existing File/Image',
+    id: 'Replace existing file',
+    defaultMessage: 'Replace existing file',
   },
   addNewFile: {
-    id: 'Choose a File/Image',
-    defaultMessage: 'Choose a File/Image',
+    id: 'Choose a file',
+    defaultMessage: 'Choose a file',
   },
 });
 

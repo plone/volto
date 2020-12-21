@@ -1,7 +1,5 @@
 # RichEditor Settings
 
-## Rich Text Editor Settings
-
 You can customize how the Rich Text Editor behaves and its features. These are
 controlled from the `config.js` settings.
 

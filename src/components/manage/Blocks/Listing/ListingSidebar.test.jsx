@@ -1,7 +1,7 @@
 import React from 'react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
-import { render, wait } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 
 import ListingSidebar from './ListingSidebar';
 
@@ -35,7 +35,6 @@ test('renders a Listing Block Sidebar component', async () => {
       />
     </Provider>,
   );
-  await wait(() => {
-    expect(container.firstChild).toMatchSnapshot();
-  });
+  await waitFor(() => {});
+  expect(container.firstChild).toMatchSnapshot();
 });
