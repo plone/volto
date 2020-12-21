@@ -8,6 +8,7 @@
 
 ### Bugfix
 
+- Fix redirection for Link objects. @cekk
 ### Internal
 
 ## 10.6.1 (2020-12-21)
