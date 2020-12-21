@@ -10,6 +10,7 @@
 
 ### Internal
 
+- Add a paragraph on dealing with CORS errors in Deploying doc page @tiberiuichim
 - Remove useless RobotFramework related packages, keep only the minimum required ones @sneridagh
 
 ## 10.6.0 (2020-12-18)
