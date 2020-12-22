@@ -65,43 +65,6 @@ const addBreaklines = (children) =>
     ]);
   });
 
-const addBreaklinesBlockquote = (children) => {
-  return children.map((child) => {
-    if (Array.isArray(child)) {
-      const last = child.length - 1;
-      return child.map((subchild, index, src) => {
-        if (typeof subchild == 'object' || typeof src[index + 1] == 'object') {
-          return <React.Fragment key={index}>{subchild}</React.Fragment>;
-        } else {
-          return (
-            <React.Fragment key={subchild}>
-              {subchild}
-              {index !== last && <br />}
-            </React.Fragment>
-          );
-        }
-      });
-    } else {
-      return child;
-    }
-  });
-};
-
-const splitBySoftLines = (children) =>
-  children[0].map((item) => {
-    if (Array.isArray(item)) {
-      return item.reduce((acc, value) => {
-        if (typeof value === 'string') {
-          let splitarray = value.split('\n');
-          return [...acc, ...splitarray];
-        } else {
-          return [...acc, value];
-        }
-      }, []);
-    }
-    return [item];
-  });
-
 // splitSoftLines for <li> tag
 const splitSoftLinesOfLists = (children) =>
   children.map((child, index) => {
@@ -196,11 +159,33 @@ const blocks = {
     return processChildren(children, keys);
   },
   atomic: (children) => children[0],
-  blockquote: (children, { keys }) => (
-    <blockquote key={keys[0]}>
-      {addBreaklinesBlockquote(splitBySoftLines(children))}
-    </blockquote>
-  ),
+  blockquote: (children, { keys }) => {
+    return (
+      <blockquote key={keys[0]}>
+        {children.map((child, index) => {
+          return child.map((subchild) => {
+            if (Array.isArray(subchild)) {
+              return subchild.map((subchildren) => {
+                if (typeof subchildren === 'string') {
+                  const last = subchildren.split('\n').length - 1;
+                  return subchildren.split('\n').map((item, index) => (
+                    <React.Fragment key={index}>
+                      {item}
+                      {index !== last && <br />}
+                    </React.Fragment>
+                  ));
+                } else {
+                  return subchildren;
+                }
+              });
+            } else {
+              return subchild;
+            }
+          });
+        })}
+      </blockquote>
+    );
+  },
   'header-one': (children, { keys }) =>
     children.map((child, i) => <h1 key={keys[i]}>{child}</h1>),
   'header-two': (children, { keys }) =>
@@ -240,12 +225,31 @@ const blocks = {
   ),
   'unordered-list-item': getList(),
   'ordered-list-item': getList(true),
-  callout: (children, { keys }) =>
-    children.map((child, i) => (
+  callout: (children, { keys }) => {
+    return children.map((child, i) => (
       <p key={keys[i]} className="callout">
-        {child}
+        {child.map((subchild) => {
+          if (Array.isArray(subchild)) {
+            return subchild.map((subchildren) => {
+              if (typeof subchildren === 'string') {
+                const last = subchildren.split('\n').length - 1;
+                return subchildren.split('\n').map((item, index) => (
+                  <React.Fragment key={index}>
+                    {item}
+                    {index !== last && <br />}
+                  </React.Fragment>
+                ));
+              } else {
+                return subchildren;
+              }
+            });
+          } else {
+            return subchild;
+          }
+        })}
       </p>
-    )),
+    ));
+  },
 };
 
 const LinkEntity = connect((state) => ({
