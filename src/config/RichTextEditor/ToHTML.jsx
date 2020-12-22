@@ -65,19 +65,27 @@ const addBreaklines = (children) =>
     ]);
   });
 
-const addBreaklinesBlockquote = (children) =>
-  children[1].reduce((acc, child, index, src) => {
-    if (typeof src[index + 1] == 'object' || typeof child == 'object') {
-      return acc.concat([<React.Fragment key={index}>{child}</React.Fragment>]);
+const addBreaklinesBlockquote = (children) => {
+  return children.map((child) => {
+    if (Array.isArray(child)) {
+      const last = child.length - 1;
+      return child.map((subchild, index, src) => {
+        if (typeof subchild == 'object' || typeof src[index + 1] == 'object') {
+          return <React.Fragment key={index}>{subchild}</React.Fragment>;
+        } else {
+          return (
+            <React.Fragment key={subchild}>
+              {subchild}
+              {index !== last && <br />}
+            </React.Fragment>
+          );
+        }
+      });
     } else {
-      return acc.concat([
-        <React.Fragment key={child}>
-          {child}
-          <br />
-        </React.Fragment>,
-      ]);
+      return child;
     }
-  }, []);
+  });
+};
 
 const splitBySoftLines = (children) =>
   children[0].map((item) => {
