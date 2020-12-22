@@ -3,6 +3,7 @@
 ## 8.9.3 (unreleased)
 ## 10.4.4 (unreleased)
 ## 10.6.1 (unreleased)
+## 10.6.2 (unreleased)
 
 - added objectBrowser to UrlWidget, and attached UrlWidget to remoteUrl field of ContentType Link @giuliaghisini
 - managed tel link in UrlWidget and draftjs @giuliaghisini
@@ -23,12 +24,19 @@
 ### Bugfix
 
 - Fix redirection for Link objects. @cekk
+### Internal
+
+## 10.6.1 (2020-12-21)
+
+### Bugfix
+
 - Better API helper end request handling, since the existing one was causing problems and rendered the SSR server unusable in case of the request was rejected @sneridagh
 
 ### Internal
 
 - Add a paragraph on dealing with CORS errors in Deploying doc page @tiberiuichim
 - Remove useless RobotFramework related packages, keep only the minimum required ones @sneridagh
+- Updated italian translations @nzambello
 
 ## 10.6.0 (2020-12-18)
 
