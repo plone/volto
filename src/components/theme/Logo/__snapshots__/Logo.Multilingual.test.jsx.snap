@@ -12,6 +12,7 @@ exports[`Multilingual Logo renders a logo component with multilingual 1`] = `
     height={64}
     src="Logo.svg"
     title="Plone Site"
+    width={170}
   />
 </a>
 `;

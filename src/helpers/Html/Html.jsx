@@ -71,6 +71,8 @@ class Html extends Component {
           {head.link.toComponent()}
           {head.script.toComponent()}
 
+          {/* <link rel="preconnect" href="http://localhost:3001"></link> */}
+
           <script
             dangerouslySetInnerHTML={{
               __html: `window.env = ${serialize(runtimeConfig)};`,
@@ -82,7 +84,7 @@ class Html extends Component {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="apple-mobile-web-app-capable" content="yes" />
           {/* Add the crossorigin while in development */}
-          {extractor.getLinkElements().map((elem) =>
+          {extractor.getLinkElements({ rel: 'preload' }).map((elem) =>
             React.cloneElement(elem, {
               crossOrigin:
                 process.env.NODE_ENV === 'production' ? undefined : 'true',
@@ -106,7 +108,7 @@ class Html extends Component {
           />
           {/* Add the crossorigin while in development */}
           {this.props.extractScripts !== false
-            ? extractor.getScriptElements().map((elem) =>
+            ? extractor.getScriptElements({ rel: 'preload' }).map((elem) =>
                 React.cloneElement(elem, {
                   crossOrigin:
                     process.env.NODE_ENV === 'production' ? undefined : 'true',

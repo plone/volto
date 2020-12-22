@@ -189,7 +189,9 @@ Array [
         >
           <img
             alt=""
+            height={19}
             src="pastanaga.svg"
+            width={68}
           />
         </div>
       </div>

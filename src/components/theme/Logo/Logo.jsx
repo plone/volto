@@ -43,6 +43,7 @@ const Logo = () => {
         alt={intl.formatMessage(messages.plonesite)}
         title={intl.formatMessage(messages.plonesite)}
         height={64}
+        width={170}
       />
     </Link>
   );

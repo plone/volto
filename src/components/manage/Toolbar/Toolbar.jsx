@@ -483,7 +483,7 @@ class Toolbar extends Component {
                 )}
                 <div className="divider" />
                 <div className="pastanagalogo">
-                  <img src={pastanagalogo} alt="" />
+                  <img src={pastanagalogo} alt="" width={68} height={19} />
                 </div>
               </div>
             </div>
