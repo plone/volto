@@ -13,6 +13,8 @@
 
 ### Internal
 
+- Translations german: Unauthorized, Login/Register @ksuess
+
 ## 10.6.1 (2020-12-21)
 
 ### Bugfix
