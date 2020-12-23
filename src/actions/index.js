@@ -116,3 +116,4 @@ export {
   setBlocksClipboard,
   resetBlocksClipboard,
 } from '@plone/volto/actions/blocksClipboard/blocksClipboard';
+export { getNavPortlet } from '@plone/volto/actions/navPortlet/navPortlet';

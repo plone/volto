@@ -6,6 +6,17 @@
 
 ### Feature
 
+- Add `NavPortlet` component, it can fetch the `@navportlet` plone.restapi
+  endpoint and display a navigation portlet, similar to Plone's classic
+  navigation portlet. To use it, import it and insert it somewhere in your
+  render tree:
+
+```
+import NavPortlet from '@plone/volto/components/theme/Navigation/NavPortlet';
+
+...  <NavPortlet params={{ currentFolderOnly: true }} />
+```
+
 ### Bugfix
 
 - Fix redirection for Link objects. @cekk

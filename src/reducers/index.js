@@ -37,6 +37,7 @@ import vocabularies from '@plone/volto/reducers/vocabularies/vocabularies';
 import workflow from '@plone/volto/reducers/workflow/workflow';
 import toolbar from '@plone/volto/reducers/toolbar/toolbar';
 import blocksClipboard from '@plone/volto/reducers/blocksClipboard/blocksClipboard';
+import navPortlet from '@plone/volto/reducers/navPortlet/navPortlet';
 import { addonReducers } from '~/config';
 
 /**
@@ -80,6 +81,7 @@ const reducers = {
   workflow,
   toolbar,
   blocksClipboard,
+  navPortlet,
   ...addonReducers,
 };
 
