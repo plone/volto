@@ -1,5 +1,21 @@
 # Change Log
 
+## 10.6.2 (unreleased)
+
+### Breaking
+
+### Feature
+
+### Bugfix
+
+- Fix redirection for Link objects. @cekk
+- Fix import order in server.jsx. @cekk @tiberiuichim
+
+### Internal
+
+- Translations german: Unauthorized, Login/Register @ksuess
+- Use react-toastify only through loadable @silviubogan
+
 ## 10.6.1 (2020-12-21)
 
 ### Bugfix
