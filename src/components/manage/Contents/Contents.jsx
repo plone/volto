@@ -68,7 +68,6 @@ import {
   Icon,
   Unauthorized,
 } from '@plone/volto/components';
-import { toast } from 'react-toastify';
 
 import backSVG from '@plone/volto/icons/back.svg';
 import cutSVG from '@plone/volto/icons/cut.svg';
@@ -89,6 +88,9 @@ import sortDownSVG from '@plone/volto/icons/sort-down.svg';
 import sortUpSVG from '@plone/volto/icons/sort-up.svg';
 import downKeySVG from '@plone/volto/icons/down-key.svg';
 import moreSVG from '@plone/volto/icons/more.svg';
+
+import loadable from '@loadable/component';
+const LibReactToastify = loadable.lib(() => import('react-toastify'));
 
 const messages = defineMessages({
   back: {
@@ -405,6 +407,8 @@ class Contents extends Component {
     this.filterTimeout = null;
   }
 
+  libReactToastifyRef = React.createRef();
+
   /**
    * Component will mount
    * @method componentWillMount
@@ -439,7 +443,7 @@ class Contents extends Component {
       this.fetchContents(nextProps.pathname);
     }
     if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
-      toast.success(
+      this.libReactToastifyRef.current.toast.success(
         <Toast
           success
           title={this.props.intl.formatMessage(messages.success)}
@@ -464,7 +468,7 @@ class Contents extends Component {
       this.props.clipboardRequest.loading &&
       nextProps.clipboardRequest.error
     ) {
-      toast.error(
+      this.libReactToastifyRef.current.toast.error(
         <Toast
           error
           title={this.props.intl.formatMessage(messages.error)}
@@ -477,7 +481,7 @@ class Contents extends Component {
       this.props.clipboardRequest.loading &&
       nextProps.clipboardRequest.loaded
     ) {
-      toast.success(
+      this.libReactToastifyRef.current.toast.success(
         <Toast
           success
           title={this.props.intl.formatMessage(messages.success)}
@@ -486,7 +490,7 @@ class Contents extends Component {
       );
     }
     if (this.props.orderRequest.loading && nextProps.orderRequest.loaded) {
-      toast.success(
+      this.libReactToastifyRef.current.toast.success(
         <Toast
           success
           title={this.props.intl.formatMessage(messages.success)}
@@ -917,7 +921,7 @@ class Contents extends Component {
   cut(event, { value }) {
     this.props.cut(value ? [value] : this.state.selected);
     this.onSelectNone();
-    toast.success(
+    this.libReactToastifyRef.current.toast.success(
       <Toast
         success
         title={this.props.intl.formatMessage(messages.success)}
@@ -936,7 +940,7 @@ class Contents extends Component {
   copy(event, { value }) {
     this.props.copy(value ? [value] : this.state.selected);
     this.onSelectNone();
-    toast.success(
+    this.libReactToastifyRef.current.toast.success(
       <Toast
         success
         title={this.props.intl.formatMessage(messages.success)}
@@ -1056,6 +1060,7 @@ class Contents extends Component {
 
     return this.props.token && this.props.objectActions.length > 0 ? (
       <>
+        <LibReactToastify ref={this.libReactToastifyRef} />
         {folderContentsAction ? (
           <Container id="page-contents" className="folder-contents">
             <Dimmer.Dimmable as="div" blurring dimmed={loading}>
@@ -1729,7 +1734,10 @@ class Contents extends Component {
         )}
       </>
     ) : (
-      <Unauthorized staticContext={this.props.staticContext} />
+      <>
+        <LibReactToastify ref={this.libReactToastifyRef} />
+        <Unauthorized staticContext={this.props.staticContext} />
+      </>
     );
   }
 }

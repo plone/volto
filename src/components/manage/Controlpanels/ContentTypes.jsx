@@ -12,7 +12,6 @@ import { getParentUrl } from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
 import { last } from 'lodash';
 import { Confirm, Container, Table, Button, Header } from 'semantic-ui-react';
-import { toast } from 'react-toastify';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import {
   Error,
@@ -31,6 +30,9 @@ import { getId } from '@plone/volto/helpers';
 
 import addSVG from '@plone/volto/icons/add-document.svg';
 import backSVG from '@plone/volto/icons/back.svg';
+
+import loadable from '@loadable/component';
+const LibReactToastify = loadable.lib(() => import('react-toastify'));
 
 const messages = defineMessages({
   add: {
@@ -143,6 +145,8 @@ class ContentTypes extends Component {
     };
   }
 
+  libReactToastifyRef = React.createRef();
+
   /**
    * Component will mount
    * @method componentWillMount
@@ -238,7 +242,7 @@ class ContentTypes extends Component {
       addTypeError: undefined,
       addTypeSetFormDataCallback: undefined,
     });
-    toast.success(
+    this.libReactToastifyRef.current.toast.success(
       <Toast
         success
         title={this.props.intl.formatMessage(messages.success)}
@@ -332,7 +336,7 @@ class ContentTypes extends Component {
    * @returns {undefined}
    */
   onDeleteTypeSuccess() {
-    toast.success(
+    this.libReactToastifyRef.current.toast.success(
       <Toast
         success
         title={this.props.intl.formatMessage(messages.success)}
@@ -348,14 +352,24 @@ class ContentTypes extends Component {
   render() {
     // Error
     if (this.state.error) {
-      return <Error error={this.state.error} />;
+      return (
+        <>
+          <LibReactToastify ref={this.libReactToastifyRef} />
+          <Error error={this.state.error} />
+        </>
+      );
     }
 
     if (!this.props.controlpanel) {
-      return <div />;
+      return (
+        <div>
+          <LibReactToastify ref={this.libReactToastifyRef} />
+        </div>
+      );
     }
     return (
       <Container className="types-control-panel">
+        <LibReactToastify ref={this.libReactToastifyRef} />
         <div className="container">
           <Confirm
             open={this.state.showDelete}

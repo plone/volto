@@ -9,12 +9,14 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Dropdown, Icon } from 'semantic-ui-react';
-import { toast } from 'react-toastify';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import { cut, copy, copyContent, moveContent } from '@plone/volto/actions';
 import { getBaseUrl } from '@plone/volto/helpers';
 import { ContentsRenameModal, Toast } from '@plone/volto/components';
+
+import loadable from '@loadable/component';
+const LibReactToastify = loadable.lib(() => import('react-toastify'));
 
 const messages = defineMessages({
   cut: {
@@ -113,6 +115,8 @@ class Actions extends Component {
     };
   }
 
+  libReactToastifyRef = React.createRef();
+
   /**
    * On rename ok
    * @method onRenameOk
@@ -142,7 +146,7 @@ class Actions extends Component {
    */
   cut() {
     this.props.cut([getBaseUrl(this.props.pathname)]);
-    toast.success(
+    this.libReactToastifyRef.current.toast.success(
       <Toast
         success
         title={this.props.intl.formatMessage(messages.success)}
@@ -160,7 +164,7 @@ class Actions extends Component {
    */
   copy() {
     this.props.copy([getBaseUrl(this.props.pathname)]);
-    toast.success(
+    this.libReactToastifyRef.current.toast.success(
       <Toast
         success
         title={this.props.intl.formatMessage(messages.success)}
@@ -189,7 +193,7 @@ class Actions extends Component {
         getBaseUrl(this.props.pathname),
       );
     }
-    toast.success(
+    this.libReactToastifyRef.current.toast.success(
       <Toast
         success
         title={this.props.intl.formatMessage(messages.success)}
@@ -227,6 +231,7 @@ class Actions extends Component {
         }
       >
         <Dropdown.Menu>
+          <LibReactToastify ref={this.libReactToastifyRef} />
           {this.props.actions.object_buttons &&
             this.props.actions.object_buttons.map((item) => {
               switch (item.id) {

@@ -12,13 +12,15 @@ import { Helmet } from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
 import { Button, Container } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
-import { toast } from 'react-toastify';
 
 import { Form, Icon, Toolbar, Toast } from '@plone/volto/components';
 import { updateControlpanel, getControlpanel } from '@plone/volto/actions';
 
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
+
+import loadable from '@loadable/component';
+const LibReactToastify = loadable.lib(() => import('react-toastify'));
 
 const messages = defineMessages({
   changesSaved: {
@@ -93,6 +95,8 @@ class Controlpanel extends Component {
     this.state = { isClient: false };
   }
 
+  libReactToastifyRef = React.createRef();
+
   /**
    * Component will mount
    * @method componentWillMount
@@ -119,7 +123,7 @@ class Controlpanel extends Component {
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
-      toast.info(
+      this.libReactToastifyRef.current.toast.info(
         <Toast
           info
           title={this.props.intl.formatMessage(messages.info)}
@@ -158,6 +162,7 @@ class Controlpanel extends Component {
     if (this.props.controlpanel) {
       return (
         <div id="page-controlpanel">
+          <LibReactToastify ref={this.libReactToastifyRef} />
           <Helmet title={this.props.controlpanel.title} />
           <Container>
             <Form
@@ -215,7 +220,11 @@ class Controlpanel extends Component {
         </div>
       );
     }
-    return <div />;
+    return (
+      <div>
+        <LibReactToastify ref={this.libReactToastifyRef} />
+      </div>
+    );
   }
 }
 

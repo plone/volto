@@ -16,7 +16,6 @@ import {
 } from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
 import { Button, Segment } from 'semantic-ui-react';
-import { toast } from 'react-toastify';
 import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
 import { nth, join } from 'lodash';
 import {
@@ -37,6 +36,9 @@ import {
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import backSVG from '@plone/volto/icons/back.svg';
+
+import loadable from '@loadable/component';
+const LibReactToastify = loadable.lib(() => import('react-toastify'));
 
 const messages = defineMessages({
   changesSaved: {
@@ -129,6 +131,8 @@ class ContentTypeLayout extends Component {
     this.form = React.createRef();
   }
 
+  libReactToastifyRef = React.createRef();
+
   /**
    * Component will mount
    * @method componentWillMount
@@ -212,7 +216,7 @@ class ContentTypeLayout extends Component {
       nextProps.schemaRequest.update.loaded
     ) {
       this.props.getSchema(this.props.id);
-      toast.info(
+      this.libReactToastifyRef.current.toast.info(
         <Toast
           info
           title={this.props.intl.formatMessage(messages.info)}
@@ -305,18 +309,28 @@ class ContentTypeLayout extends Component {
   render() {
     // Error
     if (this.state.error) {
-      return <Error error={this.state.error} />;
+      return (
+        <>
+          <LibReactToastify ref={this.libReactToastifyRef} />
+          <Error error={this.state.error} />
+        </>
+      );
     }
 
     if (!this.state.visual) {
       // Still loading
       if (!this.state.content) {
-        return <div />;
+        return (
+          <div>
+            <LibReactToastify ref={this.libReactToastifyRef} />
+          </div>
+        );
       }
 
       // Blocks are not enabled
       return (
         <>
+          <LibReactToastify ref={this.libReactToastifyRef} />
           <Segment
             placeholder
             id="page-controlpanel-layout"
@@ -366,6 +380,7 @@ class ContentTypeLayout extends Component {
     if (this.state.readOnlyBehavior) {
       return (
         <>
+          <LibReactToastify ref={this.libReactToastifyRef} />
           <Segment
             placeholder
             id="page-controlpanel-layout"
@@ -421,6 +436,7 @@ class ContentTypeLayout extends Component {
     );
     return (
       <div id="page-controlpanel-layout">
+        <LibReactToastify ref={this.libReactToastifyRef} />
         <Form
           isAdminForm
           ref={this.form}

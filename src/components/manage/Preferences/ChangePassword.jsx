@@ -13,13 +13,15 @@ import { Portal } from 'react-portal';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Container } from 'semantic-ui-react';
 import jwtDecode from 'jwt-decode';
-import { toast } from 'react-toastify';
 
 import { Form, Icon, Toast, Toolbar } from '@plone/volto/components';
 import { updatePassword } from '@plone/volto/actions';
 import { getBaseUrl } from '@plone/volto/helpers';
 
 import backSVG from '@plone/volto/icons/back.svg';
+
+import loadable from '@loadable/component';
+const LibReactToastify = loadable.lib(() => import('react-toastify'));
 
 const messages = defineMessages({
   changePassword: {
@@ -100,6 +102,8 @@ class ChangePassword extends Component {
     this.state = { isClient: false };
   }
 
+  libReactToastifyRef = React.createRef();
+
   /**
    * Component did mount
    * @method componentDidMount
@@ -122,7 +126,7 @@ class ChangePassword extends Component {
         data.oldPassword,
         data.newPassword,
       );
-      toast.success(
+      this.libReactToastifyRef.current.toast.success(
         <Toast
           success
           title={this.props.intl.formatMessage(messages.success)}
@@ -149,6 +153,7 @@ class ChangePassword extends Component {
   render() {
     return (
       <Container id="page-change-password">
+        <LibReactToastify ref={this.libReactToastifyRef} />
         <Helmet
           title={this.props.intl.formatMessage(messages.changePassword)}
         />

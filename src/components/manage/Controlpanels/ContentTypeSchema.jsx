@@ -14,9 +14,11 @@ import React, { Component } from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Portal } from 'react-portal';
 import { connect } from 'react-redux';
-import { toast } from 'react-toastify';
 import { compose } from 'redux';
 import { Button, Header } from 'semantic-ui-react';
+
+import loadable from '@loadable/component';
+const LibReactToastify = loadable.lib(() => import('react-toastify'));
 
 const messages = defineMessages({
   title: {
@@ -98,6 +100,8 @@ class ContentTypeSchema extends Component {
     this.form = React.createRef();
   }
 
+  libReactToastifyRef = React.createRef();
+
   /**
    * Component will mount
    * @method componentWillMount
@@ -154,7 +158,7 @@ class ContentTypeSchema extends Component {
       nextProps.schemaRequest.put.loaded
     ) {
       // this.props.getSchema(this.props.id);
-      toast.info(
+      this.libReactToastifyRef.current.toast.info(
         <Toast
           info
           title={this.props.intl.formatMessage(messages.info)}
@@ -168,7 +172,7 @@ class ContentTypeSchema extends Component {
       this.props.schemaRequest.put.loading &&
       nextProps.schemaRequest.put.error
     ) {
-      toast.error(
+      this.libReactToastifyRef.current.toast.error(
         <Toast
           error
           title={this.props.intl.formatMessage(messages.error)}
@@ -268,7 +272,12 @@ class ContentTypeSchema extends Component {
   render() {
     // Error
     if (this.state.error) {
-      return <Error error={this.state.error} />;
+      return (
+        <>
+          <LibReactToastify ref={this.libReactToastifyRef} />
+          <Error error={this.state.error} />
+        </>
+      );
     }
 
     if (this.state.schema) {
@@ -277,6 +286,7 @@ class ContentTypeSchema extends Component {
 
       return (
         <div id="page-controlpanel-schema" className="ui container">
+          <LibReactToastify ref={this.libReactToastifyRef} />
           <Header disabled>
             {this.props.intl.formatMessage(messages.title, {
               id: this.props?.schema?.title || this.props.id,
@@ -336,7 +346,11 @@ class ContentTypeSchema extends Component {
       );
     }
 
-    return <div />;
+    return (
+      <div>
+        <LibReactToastify ref={this.libReactToastifyRef} />
+      </div>
+    );
   }
 }
 

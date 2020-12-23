@@ -9,10 +9,12 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { defineMessages, injectIntl } from 'react-intl';
 import jwtDecode from 'jwt-decode';
-import { toast } from 'react-toastify';
 
 import { Form, Toast } from '@plone/volto/components';
 import { getUser, updateUser } from '@plone/volto/actions';
+
+import loadable from '@loadable/component';
+const LibReactToastify = loadable.lib(() => import('react-toastify'));
 
 const messages = defineMessages({
   personalInformation: {
@@ -118,6 +120,8 @@ class PersonalInformation extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
+  libReactToastifyRef = React.createRef();
+
   /**
    * Component will mount
    * @method componentWillMount
@@ -141,7 +145,7 @@ class PersonalInformation extends Component {
     delete data.username;
     delete data.roles;
     this.props.updateUser(this.props.userId, data);
-    toast.success(
+    this.libReactToastifyRef.current.toast.success(
       <Toast
         success
         title={this.props.intl.formatMessage(messages.success)}
@@ -225,7 +229,9 @@ class PersonalInformation extends Component {
         onSubmit={this.onSubmit}
         onCancel={this.onCancel}
         loading={this.props.loading}
-      />
+      >
+        <LibReactToastify ref={this.libReactToastifyRef} />
+      </Form>
     );
   }
 }

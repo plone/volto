@@ -12,11 +12,13 @@ import { Portal } from 'react-portal';
 import { Container, Message, Icon } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Link, withRouter } from 'react-router-dom';
-import { toast } from 'react-toastify';
 
 import { Form, Toolbar, Toast } from '@plone/volto/components';
 import { emailNotification } from '@plone/volto/actions';
 import { getBaseUrl } from '@plone/volto/helpers';
+
+import loadable from '@loadable/component';
+const LibReactToastify = loadable.lib(() => import('react-toastify'));
 
 const messages = defineMessages({
   send: {
@@ -110,6 +112,8 @@ class ContactForm extends Component {
     this.state = { isClient: false };
   }
 
+  libReactToastifyRef = React.createRef();
+
   /**
    * Component will receive props
    * @method componentWillReceiveProps
@@ -118,7 +122,7 @@ class ContactForm extends Component {
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.loading && nextProps.loaded) {
-      toast.success(
+      this.libReactToastifyRef.current.toast.success(
         <Toast
           success
           title={this.props.intl.formatMessage(messages.success)}
@@ -168,6 +172,7 @@ class ContactForm extends Component {
   render() {
     return (
       <div id="contact-form">
+        <LibReactToastify ref={this.libReactToastifyRef} />
         <Container>
           <Helmet title={this.props.intl.formatMessage(messages.contactForm)} />
           {this.props.error && (

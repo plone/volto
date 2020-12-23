@@ -10,10 +10,12 @@ import { compose } from 'redux';
 import { defineMessages, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-import { toast } from 'react-toastify';
 
 import { Form, Toast } from '@plone/volto/components';
 import { createUser } from '@plone/volto/actions';
+
+import loadable from '@loadable/component';
+const LibReactToastify = loadable.lib(() => import('react-toastify'));
 
 const messages = defineMessages({
   title: {
@@ -101,6 +103,8 @@ class Register extends Component {
     };
   }
 
+  libReactToastifyRef = React.createRef();
+
   /**
    * Component will receive props
    * @method componentWillReceiveProps
@@ -109,7 +113,7 @@ class Register extends Component {
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.loading && nextProps.loaded) {
-      toast.success(
+      this.libReactToastifyRef.current.toast.success(
         <Toast
           success
           title={this.props.intl.formatMessage(
@@ -149,6 +153,7 @@ class Register extends Component {
   render() {
     return (
       <div id="page-register">
+        <LibReactToastify ref={this.libReactToastifyRef} />
         <Helmet title={this.props.intl.formatMessage(messages.register)} />
         <Form
           onSubmit={this.onSubmit}

@@ -14,7 +14,6 @@ import { Button } from 'semantic-ui-react';
 import { Portal } from 'react-portal';
 import qs from 'query-string';
 import { find } from 'lodash';
-import { toast } from 'react-toastify';
 
 import {
   Forbidden,
@@ -35,6 +34,9 @@ import { getBaseUrl, hasBlocksData } from '@plone/volto/helpers';
 
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
+
+import loadable from '@loadable/component';
+const LibReactToastify = loadable.lib(() => import('react-toastify'));
 
 const messages = defineMessages({
   edit: {
@@ -119,6 +121,8 @@ class Edit extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
+  libReactToastifyRef = React.createRef();
+
   /**
    * Component did mount
    * @method componentDidMount
@@ -169,7 +173,7 @@ class Edit extends Component {
 
       this.setState({ error: error });
 
-      toast.error(
+      this.libReactToastifyRef.current.toast.error(
         <Toast
           error
           title={this.props.intl.formatMessage(messages.error)}
@@ -212,6 +216,7 @@ class Edit extends Component {
 
     return (
       <div id="page-edit">
+        <LibReactToastify ref={this.libReactToastifyRef} />
         {this.props.objectActions?.length > 0 && (
           <>
             {editPermission && (

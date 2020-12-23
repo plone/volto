@@ -12,10 +12,12 @@ import { map, keys } from 'lodash';
 import cookie from 'react-cookie';
 import request from 'superagent';
 import { defineMessages, injectIntl } from 'react-intl';
-import { toast } from 'react-toastify';
 
 import { Form, Toast } from '@plone/volto/components';
 import languages from '@plone/volto/constants/Languages';
+
+import loadable from '@loadable/component';
+const LibReactToastify = loadable.lib(() => import('react-toastify'));
 
 const messages = defineMessages({
   personalPreferences: {
@@ -76,6 +78,8 @@ class PersonalPreferences extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
+  libReactToastifyRef = React.createRef();
+
   /**
    * Submit handler
    * @method onSubmit
@@ -93,7 +97,7 @@ class PersonalPreferences extends Component {
           locale: locale.language || 'en',
           messages: locale.body,
         });
-        toast.success(
+        this.libReactToastifyRef.current.toast.success(
           <Toast
             success
             title={this.props.intl.formatMessage(messages.success)}
@@ -102,7 +106,7 @@ class PersonalPreferences extends Component {
         );
       },
     );
-    toast.success(
+    this.libReactToastifyRef.current.toast.success(
       <Toast success title={this.props.intl.formatMessage(messages.saved)} />,
     );
     this.props.closeMenu();
@@ -148,7 +152,9 @@ class PersonalPreferences extends Component {
         }}
         onSubmit={this.onSubmit}
         onCancel={this.onCancel}
-      />
+      >
+        <LibReactToastify ref={this.libReactToastifyRef} />
+      </Form>
     );
   }
 }

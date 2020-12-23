@@ -11,13 +11,15 @@ import { getParentUrl } from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
 import { Button, Header } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
-import { toast } from 'react-toastify';
 import { last, nth, join } from 'lodash';
 import { Error, Form, Icon, Toolbar, Toast } from '@plone/volto/components';
 import { getControlpanel, updateControlpanel } from '@plone/volto/actions';
 
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
+
+import loadable from '@loadable/component';
+const LibReactToastify = loadable.lib(() => import('react-toastify'));
 
 const messages = defineMessages({
   title: {
@@ -101,6 +103,8 @@ class ContentType extends Component {
     this.form = React.createRef();
   }
 
+  libReactToastifyRef = React.createRef();
+
   /**
    * Component will mount
    * @method componentWillMount
@@ -141,7 +145,7 @@ class ContentType extends Component {
       this.props.cpanelRequest.update.loading &&
       nextProps.cpanelRequest.update.loaded
     ) {
-      toast.info(
+      this.libReactToastifyRef.current.toast.info(
         <Toast
           info
           title={this.props.intl.formatMessage(messages.info)}
@@ -178,7 +182,12 @@ class ContentType extends Component {
   render() {
     // Error
     if (this.state.error) {
-      return <Error error={this.state.error} />;
+      return (
+        <>
+          <LibReactToastify ref={this.libReactToastifyRef} />
+          <Error error={this.state.error} />
+        </>
+      );
     }
 
     if (this.props.controlpanel) {
@@ -201,6 +210,7 @@ class ContentType extends Component {
       }
       return (
         <div id="page-controlpanel" className="ui container">
+          <LibReactToastify ref={this.libReactToastifyRef} />
           <Header disabled>
             {this.props.intl.formatMessage(messages.title, {
               id: controlpanel.title,
@@ -262,7 +272,11 @@ class ContentType extends Component {
         </div>
       );
     }
-    return <div />;
+    return (
+      <div>
+        <LibReactToastify ref={this.libReactToastifyRef} />
+      </div>
+    );
   }
 }
 

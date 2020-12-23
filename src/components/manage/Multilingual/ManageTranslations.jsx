@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Button, Container, Segment, Table } from 'semantic-ui-react';
 import { Helmet } from '@plone/volto/helpers';
 import langmap from 'langmap';
@@ -16,12 +16,14 @@ import {
 import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
 import { useSelector, useDispatch } from 'react-redux';
 import { Portal } from 'react-portal';
-import { toast } from 'react-toastify';
 
 import addSVG from '@plone/volto/icons/add.svg';
 import backSVG from '@plone/volto/icons/back.svg';
 import linkSVG from '@plone/volto/icons/link.svg';
 import unlinkSVG from '@plone/volto/icons/unlink.svg';
+
+import loadable from '@loadable/component';
+const LibReactToastify = loadable.lib(() => import('react-toastify'));
 
 const messages = defineMessages({
   success: {
@@ -55,6 +57,7 @@ const ManageTranslations = (props) => {
   const pathname = useLocation().pathname;
   const content = useSelector((state) => state.content.data);
   const dispatch = useDispatch();
+  const libReactToastifyRef = useRef();
 
   const { isObjectBrowserOpen, openObjectBrowser } = props;
 
@@ -72,7 +75,7 @@ const ManageTranslations = (props) => {
     if (!isObjectBrowserOpen && currentSelectedItem.current) {
       dispatch(linkTranslation(content['@id'], currentSelectedItem.current))
         .then((resp) => {
-          toast.success(
+          libReactToastifyRef.current.toast.success(
             <Toast
               success
               title={intl.formatMessage(messages.success)}
@@ -85,7 +88,7 @@ const ManageTranslations = (props) => {
           // TODO: The true error sent by the API is shadowed by the superagent one
           // Update this when this issue is fixed.
           const shadowedError = JSON.parse(error.response.text);
-          toast.error(
+          libReactToastifyRef.current.toast.error(
             <Toast
               error
               title={shadowedError.error.type}
@@ -122,7 +125,7 @@ const ManageTranslations = (props) => {
   function onDeleteTranslation(lang) {
     dispatch(deleteLinkTranslation(content['@id'], lang))
       .then((resp) => {
-        toast.success(
+        libReactToastifyRef.current.toast.success(
           <Toast
             success
             title={intl.formatMessage(messages.success)}
@@ -135,7 +138,7 @@ const ManageTranslations = (props) => {
         // TODO: The true error sent by the API is shadowed by the superagent one
         // Update this when this issue is fixed.
         const shadowedError = JSON.parse(error.response.text);
-        toast.error(
+        libReactToastifyRef.current.toast.error(
           <Toast
             error
             title={shadowedError.error.type}
@@ -148,6 +151,7 @@ const ManageTranslations = (props) => {
 
   return (
     <Container id="page-manage-translations">
+      <LibReactToastify ref={libReactToastifyRef} />
       <Helmet title={intl.formatMessage(messages.ManageTranslations)} />
       <Segment.Group raised>
         <Segment className="primary">

@@ -23,13 +23,15 @@ import { withRouter } from 'react-router-dom';
 
 import { Icon } from '@plone/volto/components';
 import { getNavigation, login } from '@plone/volto/actions';
-import { toast } from 'react-toastify';
 import { Toast } from '@plone/volto/components';
 
 import { settings } from '~/config';
 
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
+
+import loadable from '@loadable/component';
+const LibReactToastify = loadable.lib(() => import('react-toastify'));
 
 const messages = defineMessages({
   login: {
@@ -112,6 +114,8 @@ class Login extends Component {
     this.onLogin = this.onLogin.bind(this);
   }
 
+  libReactToastifyRef = React.createRef();
+
   /**
    * Component will receive props
    * @method componentWillReceiveProps
@@ -121,13 +125,13 @@ class Login extends Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.token) {
       this.props.history.push(this.props.returnUrl || '/');
-      if (toast.isActive('loginFailed')) {
-        toast.dismiss('loginFailed');
+      if (this.libReactToastifyRef.current.toast.isActive('loginFailed')) {
+        this.libReactToastifyRef.current.toast.dismiss('loginFailed');
       }
     }
     if (nextProps.error) {
-      if (!toast.isActive('loginFailed')) {
-        toast.error(
+      if (!this.libReactToastifyRef.current.toast.isActive('loginFailed')) {
+        this.libReactToastifyRef.current.toast.error(
           <Toast
             error
             title={this.props.intl.formatMessage(messages.loginFailed)}
@@ -154,8 +158,8 @@ class Login extends Component {
       this.props.getNavigation('/', settings.navDepth);
     }
 
-    if (toast.isActive('loginFailed')) {
-      toast.dismiss('loginFailed');
+    if (this.libReactToastifyRef.current.toast.isActive('loginFailed')) {
+      this.libReactToastifyRef.current.toast.dismiss('loginFailed');
     }
   }
 
@@ -181,6 +185,7 @@ class Login extends Component {
   render() {
     return (
       <div id="page-login">
+        <LibReactToastify ref={this.libReactToastifyRef} />
         <Helmet title={this.props.intl.formatMessage(messages.Login)} />
         <Container text>
           <Form method="post" onSubmit={this.onLogin}>

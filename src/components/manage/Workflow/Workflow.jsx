@@ -8,8 +8,6 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { uniqBy } from 'lodash';
-import loadable from '@loadable/component';
-import { toast } from 'react-toastify';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import getWorkflowMapping from '@plone/volto/constants/Workflows';
 import { Icon, Toast } from '@plone/volto/components';
@@ -24,6 +22,9 @@ import {
 import downSVG from '@plone/volto/icons/down-key.svg';
 import upSVG from '@plone/volto/icons/up-key.svg';
 import checkSVG from '@plone/volto/icons/check.svg';
+
+import loadable from '@loadable/component';
+const LibReactToastify = loadable.lib(() => import('react-toastify'));
 
 const ReactSelect = loadable.lib(() => import('react-select'));
 
@@ -218,6 +219,8 @@ class Workflow extends Component {
       : {},
   };
 
+  libReactToastifyRef = React.createRef();
+
   /**
    * Component will mount
    * @method componentWillMount
@@ -254,7 +257,7 @@ class Workflow extends Component {
       selectedOption.url.replace(settings.apiPath, ''),
     );
     this.setState({ selectedOption });
-    toast.success(
+    this.libReactToastifyRef.current.toast.success(
       <Toast
         success
         title={this.props.intl.formatMessage(messages.messageUpdated)}
@@ -312,6 +315,7 @@ class Workflow extends Component {
 
     return (
       <Fragment>
+        <LibReactToastify ref={this.libReactToastifyRef} />
         <label htmlFor="state-select">
           <FormattedMessage id="State" defaultMessage="State" />
         </label>

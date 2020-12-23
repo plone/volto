@@ -32,7 +32,6 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { Portal } from 'react-portal';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import { bindActionCreators, compose } from 'redux';
 import {
   Button,
@@ -44,6 +43,9 @@ import {
   Segment,
   Table,
 } from 'semantic-ui-react';
+
+import loadable from '@loadable/component';
+const LibReactToastify = loadable.lib(() => import('react-toastify'));
 
 /**
  * UsersControlpanel class.
@@ -128,6 +130,8 @@ class UsersControlpanel extends Component {
       isClient: false,
     };
   }
+
+  libReactToastifyRef = React.createRef();
 
   /**
    * Component did mount
@@ -400,7 +404,7 @@ class UsersControlpanel extends Component {
       addUserError: undefined,
       addUserSetFormDataCallback: undefined,
     });
-    toast.success(
+    this.libReactToastifyRef.current.toast.success(
       <Toast
         success
         title={this.props.intl.formatMessage(messages.success)}
@@ -421,7 +425,7 @@ class UsersControlpanel extends Component {
       addGroupError: undefined,
       addGroupSetFormDataCallback: undefined,
     });
-    toast.success(
+    this.libReactToastifyRef.current.toast.success(
       <Toast
         success
         title={this.props.intl.formatMessage(messages.success)}
@@ -500,6 +504,7 @@ class UsersControlpanel extends Component {
 
     return (
       <Container className="users-control-panel">
+        <LibReactToastify ref={this.libReactToastifyRef} />
         <Helmet
           title={this.props.intl.formatMessage(messages.usersAndGroups)}
         />

@@ -42,9 +42,11 @@ import {
   Tab,
 } from 'semantic-ui-react';
 import { v4 as uuid } from 'uuid';
-import { toast } from 'react-toastify';
 import { BlocksToolbar } from '@plone/volto/components';
 import { settings } from '~/config';
+
+import loadable from '@loadable/component';
+const LibReactToastify = loadable.lib(() => import('react-toastify'));
 
 /**
  * Form container class.
@@ -192,6 +194,8 @@ class Form extends Component {
     this.onBlurField = this.onBlurField.bind(this);
     this.onClickInput = this.onClickInput.bind(this);
   }
+
+  libReactToastifyRef = React.createRef();
 
   /**
    * On updates caused by props change
@@ -532,7 +536,7 @@ class Form extends Component {
         },
         () => {
           Object.keys(errors).forEach((err) =>
-            toast.error(
+            this.libReactToastifyRef.current.toast.error(
               <Toast error title={err} content={errors[err].join(', ')} />,
             ),
           );
@@ -843,6 +847,7 @@ class Form extends Component {
       // but draftJS don't like it much and the hydration gets messed up
       this.state.isClient && (
         <div className="ui container">
+          <LibReactToastify ref={this.libReactToastifyRef} />
           <BlocksToolbar
             formData={this.state.formData}
             selectedBlock={this.state.selected}
@@ -982,6 +987,7 @@ class Form extends Component {
       )
     ) : (
       <Container>
+        <LibReactToastify ref={this.libReactToastifyRef} />
         <UiForm
           method="post"
           onSubmit={this.onSubmit}

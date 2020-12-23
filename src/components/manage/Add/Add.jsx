@@ -17,7 +17,6 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import { v4 as uuid } from 'uuid';
 import qs from 'query-string';
 import { settings } from '~/config';
-import { toast } from 'react-toastify';
 
 import { createContent, getSchema } from '@plone/volto/actions';
 import { Form, Icon, Toolbar, Sidebar, Toast } from '@plone/volto/components';
@@ -32,6 +31,9 @@ import { blocks } from '~/config';
 
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
+
+import loadable from '@loadable/component';
+const LibReactToastify = loadable.lib(() => import('react-toastify'));
 
 const messages = defineMessages({
   add: {
@@ -127,6 +129,8 @@ class Add extends Component {
     };
   }
 
+  libReactToastifyRef = React.createRef();
+
   /**
    * Component did mount
    * @method componentDidMount
@@ -166,7 +170,7 @@ class Add extends Component {
 
       this.setState({ error: error });
 
-      toast.error(
+      this.libReactToastifyRef.current.toast.error(
         <Toast
           error
           title={this.props.intl.formatMessage(messages.error)}
@@ -246,6 +250,7 @@ class Add extends Component {
 
       return (
         <div id="page-add">
+          <LibReactToastify ref={this.libReactToastifyRef} />
           <Helmet
             title={this.props.intl.formatMessage(messages.add, {
               type: this.props.type,

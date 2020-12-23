@@ -10,7 +10,6 @@ import { compose } from 'redux';
 import { asyncConnect } from 'redux-connect';
 import { Segment } from 'semantic-ui-react';
 import { renderRoutes } from 'react-router-config';
-import { Slide, ToastContainer, toast } from 'react-toastify';
 import split from 'lodash/split';
 import join from 'lodash/join';
 import trim from 'lodash/trim';
@@ -42,6 +41,9 @@ import MultilingualRedirector from '../MultilingualRedirector/MultilingualRedire
 
 import * as Sentry from '@sentry/browser';
 
+import loadable from '@loadable/component';
+const LibReactToastify = loadable.lib(() => import('react-toastify'));
+
 /**
  * @export
  * @class App
@@ -62,6 +64,8 @@ class App extends Component {
     error: null,
     errorInfo: null,
   };
+
+  libReactToastifyRef = React.createRef();
 
   /**
    * @method componentWillReceiveProps
@@ -106,7 +110,6 @@ class App extends Component {
     return (
       <Fragment>
         <BodyClass className={`view-${action}view`} />
-
         {/* Body class depending on content type */}
         {this.props.content && this.props.content['@type'] && (
           <BodyClass
@@ -115,7 +118,6 @@ class App extends Component {
               .toLowerCase()}`}
           />
         )}
-
         {/* Body class depending on sections */}
         <BodyClass
           className={cx({
@@ -150,19 +152,25 @@ class App extends Component {
           </Segment>
         </MultilingualRedirector>
         <Footer />
-        <ToastContainer
-          position={toast.POSITION.BOTTOM_CENTER}
-          hideProgressBar
-          transition={Slide}
-          autoClose={5000}
-          closeButton={
-            <Icon
-              className="toast-dismiss-action"
-              name={clearSVG}
-              size="18px"
-            />
-          }
-        />
+        <LibReactToastify>
+          {({ ToastContainer, Slide, toast }) => {
+            return (
+              <ToastContainer
+                position={toast.POSITION.BOTTOM_CENTER}
+                hideProgressBar
+                transition={Slide}
+                autoClose={5000}
+                closeButton={
+                  <Icon
+                    className="toast-dismiss-action"
+                    name={clearSVG}
+                    size="18px"
+                  />
+                }
+              />
+            );
+          }}
+        </LibReactToastify>
         <AppExtras {...this.props} />
       </Fragment>
     );
