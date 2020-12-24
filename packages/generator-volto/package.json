@@ -36,7 +36,7 @@
     "generators"
   ],
   "scripts": {
-    "pretest": "eslint .",
+    "pretest": "eslint -c .eslintrc.js .",
     "test": "jest",
     "cypress:run": "CYPRESS_API=plone cypress run",
     "cypress:run:guillotina": "CYPRESS_API=guillotina cypress run",
@@ -113,9 +113,9 @@
   "devDependencies": {
     "coveralls": "^3.0.7",
     "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.6.0",
+    "eslint-config-prettier": "6.11.0",
     "eslint-config-xo": "^0.27.2",
-    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-prettier": "3.1.3",
     "husky": "^3.0.9",
     "jest": "^24.8.0",
     "lint-staged": "^9.4.3",
