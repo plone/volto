@@ -66,7 +66,7 @@ function NavPortlet(props) {
 
   let qs = Object.keys(params)
     .sort()
-    .map((key) => `${key}=${params[key]}`)
+    .map((key) => `expand.navportlet.${key}=${params[key]}`)
     .join('&');
   const path = `${url}/@navportlet${qs ? `?${qs}` : ''}`;
 

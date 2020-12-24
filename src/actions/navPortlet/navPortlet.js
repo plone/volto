@@ -13,10 +13,9 @@ import { GET_NAVPORTLET } from '@plone/volto/constants/ActionTypes';
  * @returns {Object} Get navigation portlet.
  */
 export function getNavPortlet(url, params = {}) {
-  // expand.navportlet.
   let qs = Object.keys(params)
     .sort()
-    .map((key) => `${key}=${params[key]}`)
+    .map((key) => `expand.navportlet.${key}=${params[key]}`)
     .join('&');
   const path = `${url}/@navportlet${qs ? `?${qs}` : ''}`;
 
