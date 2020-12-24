@@ -36,7 +36,7 @@
     "generators"
   ],
   "scripts": {
-    "pretest": "eslint -c .eslintrc.js .",
+    "pretest": "eslint .",
     "test": "jest",
     "cypress:run": "CYPRESS_API=plone cypress run",
     "cypress:run:guillotina": "CYPRESS_API=guillotina cypress run",
