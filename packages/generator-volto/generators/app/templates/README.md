@@ -8,7 +8,7 @@ Below is a list of commands you will probably find useful.
 
 ### `yarn start`
 
-Runs the project in development mode.  
+Runs the project in development mode.
 You can view your application at `http://localhost:3000`
 
 The page will reload if you make edits.
@@ -37,16 +37,21 @@ Runs the test i18n runner which extracts all the translation strings and
 generates the needed files.
 
 
-### mr_developer
+### mrs-developer
 
-[mr_developer](https://www.npmjs.com/package/mr-developer) is a great tool
+[mrs-developer](https://github.com/collective/mrs-developer) is a great tool
 for developing multiple packages at the same time.
 
-mr_developer should work with this project by using the `--config` config option:
+mrs-developer should work with this project by running the configured shortcut script:
 
 ```bash
-mrdeveloper --config=jsconfig.json
+yarn develop
 ```
 
-Volto's latest razzle config will pay attention to your jsconfig.json file
-for any customizations.
+Volto's latest razzle config will pay attention to your jsconfig.json file for any customizations.
+
+In case you don't want (or can't) install mrs-developer globally, you can install it in this project by running:
+
+```bash
+yarn add -W mrs-developer
+```

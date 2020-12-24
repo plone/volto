@@ -7,16 +7,16 @@ async function getVoltoYarnLock(version) {
   const url = `https://raw.githubusercontent.com/plone/volto/${version}/yarn.lock`;
   return new Promise((resolve, reject) => {
     https
-      .get(url, resp => {
+      .get(url, (resp) => {
         let data = '';
-        resp.on('data', chunk => {
+        resp.on('data', (chunk) => {
           data += chunk;
         });
         resp.on('end', () => {
           resolve(data);
         });
       })
-      .on('error', err => {
+      .on('error', (err) => {
         reject(err);
         // This.log("Error in retrieving Volto's yarn.lock: " + err.message);
       });
@@ -34,9 +34,9 @@ async function getLatestVoltoVersion() {
       .get(
         url,
         { headers: { Accept: 'application/vnd.npm.install-v1+json' } },
-        resp => {
+        (resp) => {
           let data = [];
-          resp.on('data', chunk => {
+          resp.on('data', (chunk) => {
             data.push(chunk);
           });
           resp.on('end', () => {
@@ -45,7 +45,7 @@ async function getLatestVoltoVersion() {
           });
         },
       )
-      .on('error', err => {
+      .on('error', (err) => {
         reject(err.message);
       });
   });

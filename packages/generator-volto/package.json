@@ -76,25 +76,6 @@
   "jest": {
     "testEnvironment": "node"
   },
-  "eslintConfig": {
-    "extends": [
-      "prettier"
-    ],
-    "parserOptions": {
-      "ecmaVersion": 8
-    },
-    "env": {
-      "jest": true,
-      "node": true,
-      "es6": true
-    },
-    "rules": {
-      "prettier/prettier": "error"
-    },
-    "plugins": [
-      "prettier"
-    ]
-  },
   "lint-staged": {
     "*.js": [
       "eslint --fix",
@@ -115,8 +96,10 @@
   },
   "dependencies": {
     "ansi-escapes": "2.0.0",
+    "chalk": "^2.1.0",
     "commander": "2.9.0",
     "cross-spawn": "5.1.0",
+    "eslint-config-standard": "^16.0.2",
     "execa": "0.6.3",
     "fs-extra": "3.0.0",
     "mkdirp-then": "1.2.0",
@@ -124,21 +107,21 @@
     "mz": "2.6.0",
     "ora": "1.2.0",
     "promise": "7.1.1",
-    "yeoman-generator": "^2.0.1",
-    "chalk": "^2.1.0"
+    "update-notifier": "^5.0.1",
+    "yeoman-generator": "^2.0.1"
   },
   "devDependencies": {
-    "release-it": "^12.4.3",
-    "yeoman-test": "^1.7.0",
-    "yeoman-assert": "^3.1.0",
     "coveralls": "^3.0.7",
-    "eslint": "^6.6.0",
-    "prettier": "^1.19.1",
-    "husky": "^3.0.9",
-    "lint-staged": "^9.4.3",
+    "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.6.0",
-    "eslint-plugin-prettier": "^3.1.1",
     "eslint-config-xo": "^0.27.2",
-    "jest": "^24.8.0"
+    "eslint-plugin-prettier": "^3.1.1",
+    "husky": "^3.0.9",
+    "jest": "^24.8.0",
+    "lint-staged": "^9.4.3",
+    "prettier": "2.0.5",
+    "release-it": "^14.2.2",
+    "yeoman-assert": "^3.1.0",
+    "yeoman-test": "^1.7.0"
   }
 }

@@ -1,7 +1,6 @@
-'use strict';
-
 const path = require('path');
 const Generator = require('yeoman-generator');
+
 const currentDir = path.basename(process.cwd());
 
 module.exports = class extends Generator {
@@ -9,7 +8,7 @@ module.exports = class extends Generator {
     super(args, opts);
     this.argument('addonName', {
       type: String,
-      desc: 'Addon name, e.g.: @corp/volto-custom-block',
+      desc: 'Addon name, e.g.: @plone-collective/volto-custom-block',
       default: currentDir,
     });
     this.option('interactive', {
@@ -23,6 +22,22 @@ module.exports = class extends Generator {
   }
 
   async prompting() {
+    const updateNotifier = require('update-notifier');
+    const pkg = require('../../package.json');
+    const notifier = updateNotifier({
+      pkg,
+      shouldNotifyInNpmScript: true,
+      updateCheckInterval: 0,
+    });
+    notifier.notify({
+      defer: false,
+      message: `Update available: {currentVersion} -> {latestVersion}
+
+It's important to have the generators updated!
+
+Run "npm install -g @plone/generator-volto" to update.`,
+    });
+
     this.globals = {
       addonName: '',
       name: '',
@@ -31,7 +46,7 @@ module.exports = class extends Generator {
     let props;
 
     // Add-on name
-    if (!!this.args[0]) {
+    if (this.args[0]) {
       this.globals.addonName = this.args[0];
     } else {
       if (this.opts['interactive']) {
@@ -39,7 +54,7 @@ module.exports = class extends Generator {
           {
             type: 'input',
             name: 'addonName',
-            message: 'Addon name, e.g.: @corp/volto-custom-block',
+            message: 'Addon name, e.g.: @plone-collective/volto-custom-block',
             default: path.basename(process.cwd()),
           },
         ]);

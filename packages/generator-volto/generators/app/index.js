@@ -1,5 +1,3 @@
-'use strict';
-
 const path = require('path');
 const chalk = require('chalk');
 const Generator = require('yeoman-generator');
@@ -7,7 +5,7 @@ const utils = require('./utils');
 
 const currentDir = path.basename(process.cwd());
 
-const validateAddonName = name => {
+const validateAddonName = (name) => {
   if (!name) return false;
 
   const bits = name.split(':');
@@ -19,7 +17,7 @@ const validateAddonName = name => {
   return true;
 };
 
-const validateWorkspacePath = path => {
+const validateWorkspacePath = (path) => {
   if (!path) return false;
 
   const bits = path.split('/');
@@ -81,7 +79,7 @@ module.exports = class extends Generator {
       desc: "Don't ask for addons as part of the scaffolding",
     });
     this.option('addon', {
-      type: arr => arr,
+      type: (arr) => arr,
       desc:
         'Addon loader string, like: some-volto-addon:loadExtra,loadOtherExtra',
     });
@@ -90,7 +88,7 @@ module.exports = class extends Generator {
       desc: "Don't ask for workspaces as part of the scaffolding",
     });
     this.option('workspace', {
-      type: arr => arr,
+      type: (arr) => arr,
       desc: 'Yarn workspace, like: src/addons/some-volto-addon',
     });
     this.option('description', {
@@ -103,6 +101,22 @@ module.exports = class extends Generator {
   }
 
   async prompting() {
+    const updateNotifier = require('update-notifier');
+    const pkg = require('../../package.json');
+    const notifier = updateNotifier({
+      pkg,
+      shouldNotifyInNpmScript: true,
+      updateCheckInterval: 0,
+    });
+    notifier.notify({
+      defer: false,
+      message: `Update available: {currentVersion} -> {latestVersion}
+
+It's important to have the generators updated!
+
+Run "npm install -g @plone/generator-volto" to update.`,
+    });
+
     this.log(chalk.red('Getting latest Volto version'));
     const voltoVersion = await utils.getLatestVoltoVersion();
 
@@ -120,7 +134,7 @@ module.exports = class extends Generator {
     let props;
 
     // Project name
-    if (!!this.args[0]) {
+    if (this.args[0]) {
       this.globals.projectName = this.args[0];
     } else if (this.opts.addon) {
       this.globals.projectName = path.basename(process.cwd());
