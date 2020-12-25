@@ -13,7 +13,7 @@ describe('NavPortlet action', () => {
     });
 
     it('should create an action to get the navigation portlet with options', () => {
-      const url = 'http://localhost';
+      const base = 'http://localhost';
       const params = {
         name: 'Custom navigation',
         root_path: '/test/folder',
@@ -25,13 +25,13 @@ describe('NavPortlet action', () => {
         thumb_scale: 'mini',
         no_thumbs: true,
       };
-      const action = getNavPortlet(url, params);
+      const action = getNavPortlet(base, params);
+      const url = `${base}/@navportlet?expand.navportlet.bottomLevel=99&expand.navportlet.currentFolderOnly=false&expand.navportlet.includeTop=true&expand.navportlet.name=Custom navigation&expand.navportlet.no_icons=true&expand.navportlet.no_thumbs=true&expand.navportlet.root_path=/test/folder&expand.navportlet.thumb_scale=mini&expand.navportlet.topLevel=10`;
 
       expect(action.type).toEqual(GET_NAVPORTLET);
       expect(action.request.op).toEqual('get');
-      expect(action.request.path).toEqual(
-        `${url}/@navportlet?expand.navportlet.bottomLevel=99&expand.navportlet.currentFolderOnly=false&expand.navportlet.includeTop=true&expand.navportlet.name=Custom navigation&expand.navportlet.no_icons=true&expand.navportlet.no_thumbs=true&expand.navportlet.root_path=/test/folder&expand.navportlet.thumb_scale=mini&expand.navportlet.topLevel=10`,
-      );
+      expect(action.request.path).toEqual(url);
+      expect(action.url).toEqual(url);
     });
   });
 });
