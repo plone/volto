@@ -47,7 +47,7 @@ function renderNode(node) {
  * portlet. It uses the same API, so the options are similar to
  * INavigationPortlet
  *
- * @param {string} name Content url.
+ * @param {string} pathname Optional pathname to use for this portlet
  * @param {params} params Options for the navigation portlet
  *
  * name - The title of the navigation tree.
@@ -62,13 +62,17 @@ function renderNode(node) {
  *
  */
 function NavPortlet(props) {
-  const { location, url = getBaseUrl(location.pathname), params = {} } = props;
+  const {
+    location,
+    pathname = getBaseUrl(location.pathname),
+    params = {},
+  } = props;
 
   let qs = Object.keys(params)
     .sort()
     .map((key) => `expand.navportlet.${key}=${params[key]}`)
     .join('&');
-  const path = `${url}${url.endsWith('/') ? '' : '/'}@navportlet${
+  const path = `${pathname}${pathname.endsWith('/') ? '' : '/'}@navportlet${
     qs ? `?${qs}` : ''
   }`;
 
@@ -78,8 +82,8 @@ function NavPortlet(props) {
   const { items = [] } = portlet || {};
 
   useDeepCompareEffect(() => {
-    dispatch(getNavPortlet(url, params));
-  }, [url, dispatch, params]);
+    dispatch(getNavPortlet(pathname, params));
+  }, [pathname, dispatch, params]);
 
   return items.length ? (
     <div className="navigation-portlet">

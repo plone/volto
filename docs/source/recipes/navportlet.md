@@ -21,7 +21,7 @@ By default it uses the current location path to fetch the portlet listing, but
 you can compute and pass a custom path like:
 
 ```
-<NavPortlet url="/my-section" params={{ currentFolderOnly: true }} />
+<NavPortlet pathname="/my-section" params={{ currentFolderOnly: true }} />
 ```
 
 As parameters you can use:

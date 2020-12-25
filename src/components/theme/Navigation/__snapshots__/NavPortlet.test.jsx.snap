@@ -1,5 +1,99 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`NavPortlet renders a navigation component with an active item 1`] = `
+<div
+  className="navigation-portlet"
+>
+  
+  <div
+    className="ui list"
+    role="list"
+  >
+    <div
+      className="item"
+      onClick={[Function]}
+      role="listitem"
+    >
+      <div
+        className="content"
+      >
+        <a
+          className="contenttype-undefined"
+          href="/front-page"
+          onClick={[Function]}
+        >
+          
+          Welcome to Plone!
+          
+        </a>
+        
+      </div>
+    </div>
+    <div
+      className="active item"
+      onClick={[Function]}
+      role="listitem"
+    >
+      <div
+        className="content"
+      >
+        <a
+          className="contenttype-undefined in_path"
+          href="/blog"
+          onClick={[Function]}
+        >
+          
+          Blog
+          <div
+            className="content active-indicator"
+          >
+            <svg
+              className="icon"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": undefined,
+                }
+              }
+              onClick={null}
+              style={
+                Object {
+                  "fill": "currentColor",
+                  "height": "30px",
+                  "width": "auto",
+                }
+              }
+              viewBox=""
+              xmlns=""
+            />
+          </div>
+        </a>
+        
+      </div>
+    </div>
+    <div
+      className="item"
+      onClick={[Function]}
+      role="listitem"
+    >
+      <div
+        className="content"
+      >
+        <a
+          className="contenttype-undefined"
+          href="/users"
+          onClick={[Function]}
+        >
+          
+          Users
+          
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`NavPortlet renders a navigation portlet component without active items 1`] = `
 <div
   className="navigation-portlet"

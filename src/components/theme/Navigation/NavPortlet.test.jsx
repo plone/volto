@@ -57,31 +57,52 @@ describe('NavPortlet', () => {
     expect(json).toMatchSnapshot();
   });
 
-  // it('renders a navigation component with an active item', () => {
-  //   const store = mockStore({
-  //     navigation: {
-  //       items: [
-  //         { title: 'Blog', url: '/blog' },
-  //         { title: 'Users', url: '/users' },
-  //       ],
-  //     },
-  //     userSession: { token: '1234' },
-  //     intl: {
-  //       locale: 'en',
-  //       messages: {},
-  //     },
-  //   });
-  //   const component = renderer.create(
-  //     <Provider store={store}>
-  //       <MemoryRouter initialEntries={[{ pathname: '/blog' }]}>
-  //         <Navigation pathname="/blog" />
-  //       </MemoryRouter>
-  //     </Provider>,
-  //   );
-  //   const json = component.toJSON();
-  //   expect(json).toMatchSnapshot();
-  // });
-  //
+  it('renders a navigation component with an active item', () => {
+    const store = mockStore({
+      navPortlet: {
+        '/blog/@navportlet': {
+          data: {
+            '@id': 'http://localhost:8080/Plone/blog/@navportlet',
+            title: 'Navigation',
+            items: [
+              {
+                '@id': '/front-page',
+                title: 'Welcome to Plone!',
+                href: '/front-page',
+              },
+              {
+                '@id': '/blog',
+                title: 'Blog',
+                href: '/blog',
+                is_current: true,
+                is_folderish: true,
+                is_in_path: true,
+              },
+              { '@id': '/users', title: 'Users', href: '/users' },
+            ],
+          },
+          error: undefined,
+          loaded: true,
+          loading: false,
+        },
+      },
+      userSession: { token: '1234' },
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    const component = renderer.create(
+      <Provider store={store}>
+        <MemoryRouter initialEntries={[{ pathname: '/blog' }]}>
+          <NavPortlet pathname="/blog" />
+        </MemoryRouter>
+      </Provider>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
+
   // it('renders a navigation component with an active item when its subchildren are accessed', () => {
   //   const store = mockStore({
   //     navigation: {
