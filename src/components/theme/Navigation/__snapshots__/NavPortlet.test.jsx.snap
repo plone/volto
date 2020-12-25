@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavPortlet renders a navigation portlet component without active items 1`] = `
+<div
+  className="navigation-portlet"
+>
+  
+  <div
+    className="ui list"
+    role="list"
+  >
+    <div
+      className="item"
+      onClick={[Function]}
+      role="listitem"
+    >
+      <div
+        className="content"
+      >
+        <a
+          className="contenttype-undefined"
+          href="/front-page"
+          onClick={[Function]}
+        >
+          
+          Welcome to Plone!
+          
+        </a>
+        
+      </div>
+    </div>
+    <div
+      className="item"
+      onClick={[Function]}
+      role="listitem"
+    >
+      <div
+        className="content"
+      >
+        <a
+          className="contenttype-undefined"
+          href="/blog"
+          onClick={[Function]}
+        >
+          
+          Blog
+          
+        </a>
+        
+      </div>
+    </div>
+    <div
+      className="item"
+      onClick={[Function]}
+      role="listitem"
+    >
+      <div
+        className="content"
+      >
+        <a
+          className="contenttype-undefined"
+          href="/users"
+          onClick={[Function]}
+        >
+          
+          Users
+          
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+`;

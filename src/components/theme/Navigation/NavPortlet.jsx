@@ -33,7 +33,7 @@ function renderNode(node) {
           )}
         </RouterLink>
 
-        {(node.items.length && (
+        {(node.items?.length && (
           <List.List>{node.items.map(renderNode)}</List.List>
         )) ||
           ''}
@@ -68,7 +68,9 @@ function NavPortlet(props) {
     .sort()
     .map((key) => `expand.navportlet.${key}=${params[key]}`)
     .join('&');
-  const path = `${url}/@navportlet${qs ? `?${qs}` : ''}`;
+  const path = `${url}${url.endsWith('/') ? '' : '/'}@navportlet${
+    qs ? `?${qs}` : ''
+  }`;
 
   const dispatch = useDispatch();
   const portlet = useSelector((state) => state.navPortlet?.[path]?.data);
