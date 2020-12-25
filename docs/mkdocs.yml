@@ -50,6 +50,7 @@ nav:
       - Lazy loading and code splitting: 'recipes/lazyload.md'
       - Overriding i18n messages: 'recipes/overridei18n.md'
       - App component insertion point: 'recipes/appextras.md'
+      - Navigation Portlet: 'recipes/navportlet.md'
   - Blocks:
       - Introduction: 'blocks/introduction.md'
       - Anatomy: 'blocks/anatomy.md'
