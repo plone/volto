@@ -32,9 +32,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      # main build environment
+      # Build main Volto environment
       - name: Build main Volto environment
-        run:  yarn
+        run: yarn install --frozen-lockfile
 
       # Generator own tests
       - name: Generator tests
@@ -66,7 +66,7 @@ jobs:
       - run: yarn cy:install
 
       - name: Cypress acceptance tests
-        run: yarn ci:cypress:run
+        run: yarn ci:cypress:project:run
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1
