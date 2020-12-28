@@ -9,28 +9,34 @@ import { Portal } from 'react-portal';
  * @param {string} tab Element id where to insert sidebar content, default: sidebar-properties
  * @returns {string} Rendered sidebar
  */
-const SidebarPortal = ({ children, selected, tab = 'sidebar-properties' }) => (
-  <>
-    {selected && (
-      <Portal node={__CLIENT__ && document.getElementById(tab)}>
-        <div role="form" style={{ height: '100%' }}>
-          <div
-            style={{ height: '100%' }}
-            role="presentation"
-            onClick={(e) => {
-              e.stopPropagation();
-            }}
-            onKeyDown={(e) => {
-              e.stopPropagation();
-            }}
-          >
-            {children}
+const SidebarPortal = ({ children, selected, tab = 'sidebar-properties' }) => {
+  const [isClient, setIsClient] = React.useState(null);
+
+  React.useEffect(() => setIsClient(true), []);
+
+  return (
+    <>
+      {selected && (
+        <Portal node={isClient && document.getElementById(tab)}>
+          <div role="form" style={{ height: '100%' }}>
+            <div
+              style={{ height: '100%' }}
+              role="presentation"
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+              onKeyDown={(e) => {
+                e.stopPropagation();
+              }}
+            >
+              {children}
+            </div>
           </div>
-        </div>
-      </Portal>
-    )}
-  </>
-);
+        </Portal>
+      )}
+    </>
+  );
+};
 
 SidebarPortal.propTypes = {
   children: PropTypes.any,

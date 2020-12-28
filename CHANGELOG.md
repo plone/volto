@@ -1,6 +1,6 @@
 # Change Log
 
-## 10.4.4 (unreleased)
+## 10.6.2 (unreleased)
 
 ### Breaking
 
@@ -8,7 +8,45 @@
 
 ### Bugfix
 
+- Fix redirection for Link objects. @cekk
+- Fix import order in server.jsx. @cekk @tiberiuichim
+
 ### Internal
+
+- Translations german: Unauthorized, Login/Register @ksuess
+
+## 10.6.1 (2020-12-21)
+
+### Bugfix
+
+- Better API helper end request handling, since the existing one was causing problems and rendered the SSR server unusable in case of the request was rejected @sneridagh
+
+### Internal
+
+- Add a paragraph on dealing with CORS errors in Deploying doc page @tiberiuichim
+- Remove useless RobotFramework related packages, keep only the minimum required ones @sneridagh
+- Updated italian translations @nzambello
+
+## 10.6.0 (2020-12-18)
+
+### Feature
+
+- Allow setting a custom robots.txt from environment with the `VOLTO_ROBOTSTXT` environment variable @tiberiuichim
+
+### Bugfix
+
+- Replace `__SERVER__` occurrence from table `Edit` component @sneridagh
+
+
+## 10.5.0 (2020-12-17)
+
+### Feature
+
+- Adding `All` button to folder content @iFlameing
+
+### Bugfix
+
+- Fix "is client" check for SidebarPortal @tiberiuichim @sneridagh
 
 ## 10.4.3 (2020-12-15)
 
