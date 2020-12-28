@@ -1,5 +1,20 @@
 # Change Log
 
+## 10.6.2 (unreleased)
+
+### Breaking
+
+### Feature
+
+### Bugfix
+
+- Fix redirection for Link objects. @cekk
+- Fix import order in server.jsx. @cekk @tiberiuichim
+
+### Internal
+
+- Translations german: Unauthorized, Login/Register @ksuess
+
 ## 10.6.1 (2020-12-21)
 
 ### Bugfix
@@ -10,6 +25,7 @@
 
 - Add a paragraph on dealing with CORS errors in Deploying doc page @tiberiuichim
 - Remove useless RobotFramework related packages, keep only the minimum required ones @sneridagh
+- Updated italian translations @nzambello
 
 ## 10.6.0 (2020-12-18)
 
