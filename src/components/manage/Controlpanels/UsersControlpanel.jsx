@@ -25,7 +25,8 @@ import {
 import { getBaseUrl, Helmet, messages } from '@plone/volto/helpers';
 import backSVG from '@plone/volto/icons/back.svg';
 import addSvg from '@plone/volto/icons/circle-plus.svg';
-import { find, map, remove } from 'lodash';
+import saveSVG from '@plone/volto/icons/save.svg';
+import { find, map, remove, difference } from 'lodash';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
@@ -316,31 +317,48 @@ class UsersControlpanel extends Component {
    * @memberof UsersControlpanel
    */
   updateUserRole(name, value) {
-    const userData = { roles: {} };
-    this.setState(
-      {
-        entries: map(this.state.entries, (entry) => ({
-          ...entry,
-          roles:
-            entry.id === name && !entry.roles.includes(value)
-              ? [...entry.roles, value]
-              : entry.id !== name
-              ? entry.roles
-              : remove(entry.roles, (item) => {
-                  if (item !== value) {
-                    userData.roles[value] = false;
-                    return true;
-                  }
-                }),
-        })),
-      },
-      () => {
-        const user = this.state.entries.find((item) => item.id === name);
-        user.roles.forEach((item) => (userData.roles[item] = true));
-        return this.props.updateUser(name, userData);
-      },
-    );
+    this.setState({
+      entries: map(this.state.entries, (entry) => ({
+        ...entry,
+        roles:
+          entry.id === name && !entry.roles.includes(value)
+            ? [...entry.roles, value]
+            : entry.id !== name
+            ? entry.roles
+            : remove(entry.roles, (item) => item !== value),
+      })),
+    });
   }
+  /**
+   *
+   * @param {*} event
+   * @memberof UsersControlpanel
+   */
+  updateUserRoleSubmit = (e) => {
+    e.stopPropagation();
+
+    const roles = this.props.roles.map((item) => item.id);
+    this.state.entries.forEach((item) => {
+      const userData = { roles: {} };
+      const removedRoles = difference(roles, item.roles);
+
+      removedRoles.forEach((role) => {
+        userData.roles[role] = false;
+      });
+      item.roles.forEach((role) => {
+        userData.roles[role] = true;
+      });
+      this.props.updateUser(item.id, userData);
+    });
+    toast.success(
+      <Toast
+        success
+        title={this.props.intl.formatMessage(messages.success)}
+        content={this.props.intl.formatMessage(messages.updateRoles)}
+      />,
+    );
+  };
+
   /**
    *
    * @param {*} name
@@ -348,32 +366,46 @@ class UsersControlpanel extends Component {
    * @memberof UsersControlpanel
    */
   updateGroupRole(name, value) {
-    const groupData = { roles: {} };
-    this.setState(
-      {
-        groupEntries: map(this.state.groupEntries, (entry) => ({
-          ...entry,
-          roles:
-            entry.id === name && !entry.roles.includes(value)
-              ? [...entry.roles, value]
-              : entry.id !== name
-              ? entry.roles
-              : remove(entry.roles, (item) => {
-                  if (item !== value) {
-                    groupData.roles[value] = false;
-                    return true;
-                  }
-                }),
-        })),
-      },
-      () => {
-        const group = this.state.groupEntries.find((item) => item.id === name);
-        group.roles.forEach((item) => (groupData.roles[item] = true));
-        return this.props.updateGroup(name, groupData);
-      },
-    );
+    this.setState({
+      groupEntries: map(this.state.groupEntries, (entry) => ({
+        ...entry,
+        roles:
+          entry.id === name && !entry.roles.includes(value)
+            ? [...entry.roles, value]
+            : entry.id !== name
+            ? entry.roles
+            : remove(entry.roles, (item) => item !== value),
+      })),
+    });
   }
+  /**
+   * @param {*} event
+   * @memberof UsersControlpanel
+   */
+  updateGroupRoleSubmit = (e) => {
+    e.stopPropagation();
 
+    const roles = this.props.roles.map((item) => item.id);
+    this.state.groupEntries.forEach((item) => {
+      const groupData = { roles: {} };
+      const removedRoles = difference(roles, item.roles);
+
+      removedRoles.forEach((role) => {
+        groupData.roles[role] = false;
+      });
+      item.roles.forEach((role) => {
+        groupData.roles[role] = true;
+      });
+      this.props.updateGroup(item.id, groupData);
+    });
+    toast.success(
+      <Toast
+        success
+        title={this.props.intl.formatMessage(messages.success)}
+        content={this.props.intl.formatMessage(messages.updateGroups)}
+      />,
+    );
+  };
   /**
    *
    *
@@ -771,23 +803,40 @@ class UsersControlpanel extends Component {
             </div>
           </Form>
           <Segment clearing className="actions">
-            {this.props.intl.formatMessage(messages.addUserButtonTitle)}
-            <Button
-              basic
-              primary
-              floated="right"
-              onClick={() => {
-                this.setState({ showAddUser: true });
-              }}
-            >
-              <Icon
-                name={addSvg}
-                size="30px"
-                color="#007eb1"
-                className="addSVG"
-                title={this.props.intl.formatMessage(messages.add)}
-              />
-            </Button>
+            <div style={{ display: 'inline-flex', float: 'left' }}>
+              <Button
+                basic
+                primary
+                onClick={() => {
+                  this.setState({ showAddUser: true });
+                }}
+              >
+                <Icon
+                  name={addSvg}
+                  size="30px"
+                  color="#007eb1"
+                  className="addSVG"
+                  title={this.props.intl.formatMessage(messages.add)}
+                />
+              </Button>
+              <label style={{ margin: 'auto' }}>
+                {this.props.intl.formatMessage(messages.addUserButtonTitle)}
+              </label>
+            </div>
+            <div style={{ display: 'inline-flex', float: 'right' }}>
+              <Button basic primary onClick={this.updateUserRoleSubmit}>
+                <Icon
+                  name={saveSVG}
+                  size="30px"
+                  color="#007eb1"
+                  className="addSVG"
+                  title={this.props.intl.formatMessage(messages.save)}
+                />
+              </Button>
+              <label style={{ margin: 'auto' }}>
+                {this.props.intl.formatMessage(messages.save)}
+              </label>
+            </div>
           </Segment>
           <Divider />
           <Segment>
@@ -844,23 +893,40 @@ class UsersControlpanel extends Component {
             </div>
           </Form>
           <Segment clearing className="actions">
-            {this.props.intl.formatMessage(messages.addGroupsButtonTitle)}
-            <Button
-              basic
-              primary
-              floated="right"
-              onClick={() => {
-                this.setState({ showAddGroup: true });
-              }}
-            >
-              <Icon
-                name={addSvg}
-                size="30px"
-                color="#007eb1"
-                classname="addgroupSVG"
-                title={this.props.intl.formatMessage(messages.add)}
-              />
-            </Button>
+            <div style={{ display: 'inline-flex', float: 'left' }}>
+              <Button
+                basic
+                primary
+                onClick={() => {
+                  this.setState({ showAddUser: true });
+                }}
+              >
+                <Icon
+                  name={addSvg}
+                  size="30px"
+                  color="#007eb1"
+                  className="addSVG"
+                  title={this.props.intl.formatMessage(messages.add)}
+                />
+              </Button>
+              <label style={{ margin: 'auto' }}>
+                {this.props.intl.formatMessage(messages.addGroupsButtonTitle)}
+              </label>
+            </div>
+            <div style={{ display: 'inline-flex', float: 'right' }}>
+              <Button basic primary onClick={this.updateGroupRoleSubmit}>
+                <Icon
+                  name={saveSVG}
+                  size="30px"
+                  color="#007eb1"
+                  className="addSVG"
+                  title={this.props.intl.formatMessage(messages.save)}
+                />
+              </Button>
+              <label style={{ margin: 'auto' }}>
+                {this.props.intl.formatMessage(messages.save)}
+              </label>
+            </div>
           </Segment>
         </Segment.Group>
         {this.state.isClient && (

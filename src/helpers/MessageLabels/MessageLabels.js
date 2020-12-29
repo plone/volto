@@ -142,6 +142,14 @@ export const messages = defineMessages({
     id: 'Roles',
     defaultMessage: 'Roles',
   },
+  updateRoles: {
+    id: 'User roles updated',
+    defaultMessage: 'User roles updated',
+  },
+  updateGroups: {
+    id: 'Group roles updated',
+    defaultMessage: 'Group roles updated',
+  },
   addGroupsFormRolesTitle: {
     id: 'Roles',
     defaultMessage: 'Roles',
