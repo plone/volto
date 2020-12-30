@@ -114,30 +114,88 @@ exports[`UsersControlpanel renders a user control component 1`] = `
     <div
       className="ui clearing segment actions"
     >
-      Add new user
-      <button
-        className="ui basic primary right floated button"
-        onClick={[Function]}
-      >
-        <svg
-          className="icon addSVG"
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "<title>Add</title>undefined",
-            }
+      <div
+        style={
+          Object {
+            "display": "inline-flex",
+            "float": "left",
           }
-          onClick={null}
+        }
+      >
+        <button
+          className="ui basic primary button"
+          onClick={[Function]}
+        >
+          <svg
+            className="icon addSVG"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<title>Add</title>undefined",
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "#007eb1",
+                "height": "30px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
+          />
+        </button>
+        <label
           style={
             Object {
-              "fill": "#007eb1",
-              "height": "30px",
-              "width": "auto",
+              "margin": "auto",
             }
           }
-          viewBox=""
-          xmlns=""
-        />
-      </button>
+        >
+          Add new user
+        </label>
+      </div>
+      <div
+        style={
+          Object {
+            "display": "inline-flex",
+            "float": "right",
+          }
+        }
+      >
+        <button
+          className="ui basic primary button"
+          onClick={[Function]}
+        >
+          <svg
+            className="icon addSVG"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<title>Save</title>undefined",
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "#007eb1",
+                "height": "30px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
+          />
+        </button>
+        <label
+          style={
+            Object {
+              "margin": "auto",
+            }
+          }
+        >
+          Save
+        </label>
+      </div>
     </div>
     <div
       className="ui divider"
@@ -218,30 +276,88 @@ exports[`UsersControlpanel renders a user control component 1`] = `
     <div
       className="ui clearing segment actions"
     >
-      Add new group
-      <button
-        className="ui basic primary right floated button"
-        onClick={[Function]}
-      >
-        <svg
-          className="icon"
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "<title>Add</title>undefined",
-            }
+      <div
+        style={
+          Object {
+            "display": "inline-flex",
+            "float": "left",
           }
-          onClick={null}
+        }
+      >
+        <button
+          className="ui basic primary button"
+          onClick={[Function]}
+        >
+          <svg
+            className="icon addSVG"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<title>Add</title>undefined",
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "#007eb1",
+                "height": "30px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
+          />
+        </button>
+        <label
           style={
             Object {
-              "fill": "#007eb1",
-              "height": "30px",
-              "width": "auto",
+              "margin": "auto",
             }
           }
-          viewBox=""
-          xmlns=""
-        />
-      </button>
+        >
+          Add new group
+        </label>
+      </div>
+      <div
+        style={
+          Object {
+            "display": "inline-flex",
+            "float": "right",
+          }
+        }
+      >
+        <button
+          className="ui basic primary button"
+          onClick={[Function]}
+        >
+          <svg
+            className="icon addSVG"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<title>Save</title>undefined",
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "#007eb1",
+                "height": "30px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
+          />
+        </button>
+        <label
+          style={
+            Object {
+              "margin": "auto",
+            }
+          }
+        >
+          Save
+        </label>
+      </div>
     </div>
   </div>
   <div

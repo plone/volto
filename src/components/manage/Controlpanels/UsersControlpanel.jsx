@@ -120,7 +120,6 @@ class UsersControlpanel extends Component {
       addGroupError: '',
       showDelete: false,
       userToDelete: undefined,
-      updateUser: undefined,
       groupToDelete: undefined,
       showAddGroup: false,
       entries: props.users,
@@ -137,7 +136,11 @@ class UsersControlpanel extends Component {
   componentDidMount() {
     this.props.listRoles();
     this.props.listGroups();
-    this.setState({ isClient: true });
+    this.props.listUsers();
+
+    this.setState({
+      isClient: true,
+    });
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -170,22 +173,6 @@ class UsersControlpanel extends Component {
     if (this.props.createRequest.loading && nextProps.createRequest.error) {
       this.onAddGroupError(nextProps.createRequest.error);
     }
-    this.setState({
-      entries: map(nextProps.users, (entry) => {
-        const values = find(this.state.entries, { id: entry.id });
-        return {
-          ...entry,
-          roles: values ? values.roles : entry.roles,
-        };
-      }),
-      groupEntries: map(nextProps.groups, (entry) => {
-        const values = find(this.state.groupEntries, { id: entry.id });
-        return {
-          ...entry,
-          roles: values ? values.roles : entry.roles,
-        };
-      }),
-    });
   }
 
   getUserFromProps(value) {
@@ -444,7 +431,13 @@ class UsersControlpanel extends Component {
       addGroupError: error.message,
     });
   }
-
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.users !== prevProps.users) {
+      this.setState({
+        entries: this.props.users,
+      });
+    }
+  }
   /**
    * Handle Success after createUser()
    *
@@ -898,7 +891,7 @@ class UsersControlpanel extends Component {
                 basic
                 primary
                 onClick={() => {
-                  this.setState({ showAddUser: true });
+                  this.setState({ showAddGroup: true });
                 }}
               >
                 <Icon
