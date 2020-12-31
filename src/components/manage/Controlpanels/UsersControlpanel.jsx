@@ -122,25 +122,32 @@ class UsersControlpanel extends Component {
       userToDelete: undefined,
       groupToDelete: undefined,
       showAddGroup: false,
-      entries: props.users,
-      groupEntries: props.groups,
+      entries: [],
+      groupEntries: [],
       isClient: false,
     };
   }
 
+  fetchData = async () => {
+    this.props.listRoles();
+    this.props.listGroups();
+    await this.props.listUsers();
+
+    this.setState({
+      entries: this.props.users,
+      groupEntries: this.props.groups,
+    });
+  };
   /**
    * Component did mount
    * @method componentDidMount
    * @returns {undefined}
    */
   componentDidMount() {
-    this.props.listRoles();
-    this.props.listGroups();
-    this.props.listUsers();
-
     this.setState({
       isClient: true,
     });
+    this.fetchData();
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {

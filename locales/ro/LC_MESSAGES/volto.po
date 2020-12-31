@@ -804,6 +804,10 @@ msgstr "Grup"
 msgid "Group created"
 msgstr "Grup creat"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Group roles updated"
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 #: helpers/MessageLabels/MessageLabels
 msgid "Groupname"
@@ -1986,6 +1990,10 @@ msgstr "Utilizator creat"
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "User name"
 msgstr "Nume utilizator"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "User roles updated"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Username"

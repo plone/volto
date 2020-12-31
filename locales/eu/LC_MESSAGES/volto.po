@@ -811,6 +811,10 @@ msgstr "Taldea"
 msgid "Group created"
 msgstr "Taldea ondo sortu da"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Group roles updated"
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 #: helpers/MessageLabels/MessageLabels
 msgid "Groupname"
@@ -1993,6 +1997,10 @@ msgstr "Erabiltzailea ondo sortu da"
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "User name"
 msgstr "Erabiltzaile Izena"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "User roles updated"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Username"

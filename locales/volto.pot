@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-12-04T18:24:03.145Z\n"
+"POT-Creation-Date: 2020-12-30T12:56:56.638Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -975,6 +975,11 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Group created
 msgid "Group created"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Group roles updated
+msgid "Group roles updated"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
@@ -2429,6 +2434,11 @@ msgstr ""
 #: components/manage/Controlpanels/UsersControlpanel
 # defaultMessage: User name
 msgid "User name"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User roles updated
+msgid "User roles updated"
 msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
