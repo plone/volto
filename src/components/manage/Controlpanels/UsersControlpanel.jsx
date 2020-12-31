@@ -11,7 +11,6 @@ import {
   listRoles,
   listUsers,
   updateGroup,
-  showAllUsers,
   updateUser,
 } from '@plone/volto/actions';
 import {
@@ -111,7 +110,6 @@ class UsersControlpanel extends Component {
     this.updateUserRole = this.updateUserRole.bind(this);
     this.updateGroupRole = this.updateGroupRole.bind(this);
     this.onCancel = this.onCancel.bind(this);
-    this.onShowAllUser = this.onShowAllUser.bind(this);
     this.state = {
       search: '',
       showAddUser: false,
@@ -497,16 +495,6 @@ class UsersControlpanel extends Component {
   }
 
   /**
-   * ShowAllUser handler
-   * @method onShowAllUser
-   * @returns {undefined}
-   */
-  onShowAllUser() {
-    this.props.showAllUsers();
-    this.props.listUsers();
-  }
-
-  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -768,27 +756,6 @@ class UsersControlpanel extends Component {
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
-                  <Table.Row>
-                    {this.props.showAllUser ? null : (
-                      <Table.HeaderCell colspan={9}>
-                        <div className="show-all-users">
-                          <p>
-                            {this.props.intl.formatMessage(
-                              messages.showAllUserText,
-                            )}
-                          </p>
-                          <Button
-                            className="show-all-users"
-                            onClick={this.onShowAllUser}
-                          >
-                            {this.props.intl.formatMessage(
-                              messages.showAllUserButton,
-                            )}
-                          </Button>
-                        </div>
-                      </Table.HeaderCell>
-                    )}
-                  </Table.Row>
                   {this.state.entries.map((user) => (
                     <UsersControlpanelUser
                       key={user.id}
@@ -961,7 +928,6 @@ export default compose(
     (state, props) => ({
       roles: state.roles.roles,
       users: state.users.users,
-      showAllUser: state.users.showAllUser,
       groups: state.groups.groups,
       description: state.description,
       pathname: props.location.pathname,
@@ -982,7 +948,6 @@ export default compose(
           createGroup,
           updateUser,
           updateGroup,
-          showAllUsers,
         },
         dispatch,
       ),

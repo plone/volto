@@ -8,7 +8,6 @@ import {
   UPDATE_USER,
   INITIAL_PASSWORD,
   RESET_PASSWORD,
-  Show_All_USERS,
 } from '@plone/volto/constants/ActionTypes';
 
 describe('Users reducer', () => {
@@ -16,7 +15,6 @@ describe('Users reducer', () => {
     expect(users()).toEqual({
       user: {},
       users: [],
-      showAllUser: false,
       create: {
         error: null,
         loaded: false,
@@ -428,15 +426,6 @@ describe('Users reducer', () => {
         loaded: false,
         loading: false,
       },
-    });
-  });
-  it('should handle Show_All_USERS', () => {
-    expect(
-      users(undefined, {
-        type: Show_All_USERS,
-      }),
-    ).toMatchObject({
-      showAllUser: true,
     });
   });
 });
