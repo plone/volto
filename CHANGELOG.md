@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Lazy load image in blocks Image and HeroImage @mamico
+
 ### Bugfix
 
 - Fix redirection for Link objects. @cekk
