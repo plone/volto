@@ -376,19 +376,8 @@ class UsersControlpanel extends Component {
    */
   updateGroupRoleSubmit = (e) => {
     e.stopPropagation();
-
-    const roles = this.props.roles.map((item) => item.id);
     this.state.groupEntries.forEach((item) => {
-      const groupData = { roles: {} };
-      const removedRoles = difference(roles, item.roles);
-
-      removedRoles.forEach((role) => {
-        groupData.roles[role] = false;
-      });
-      item.roles.forEach((role) => {
-        groupData.roles[role] = true;
-      });
-      this.props.updateGroup(item.id, groupData);
+      this.props.updateGroup(item.id, item);
     });
     toast.success(
       <Toast
@@ -440,6 +429,11 @@ class UsersControlpanel extends Component {
     if (this.props.users !== prevProps.users) {
       this.setState({
         entries: this.props.users,
+      });
+    }
+    if (this.props.groups !== prevProps.groups) {
+      this.setState({
+        groupEntries: this.props.groups,
       });
     }
   }
