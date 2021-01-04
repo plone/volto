@@ -749,7 +749,7 @@ class UsersControlpanel extends Component {
                     </Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>
-                <Table.Body>
+                <Table.Body data-user="users">
                   {this.state.entries.map((user) => (
                     <UsersControlpanelUser
                       key={user.id}
@@ -839,7 +839,7 @@ class UsersControlpanel extends Component {
                     </Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>
-                <Table.Body>
+                <Table.Body data-group="groups">
                   {this.state.groupEntries.map((groups) => (
                     <UsersControlpanelGroups
                       key={groups.id}
@@ -880,7 +880,6 @@ class UsersControlpanel extends Component {
                   name={saveSVG}
                   size="30px"
                   color="#007eb1"
-                  className="addSVG"
                   title={this.props.intl.formatMessage(messages.save)}
                 />
               </Button>

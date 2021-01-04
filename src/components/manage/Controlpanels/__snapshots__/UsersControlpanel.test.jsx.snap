@@ -84,6 +84,7 @@ exports[`UsersControlpanel renders a user control component 1`] = `
           </thead>
           <tbody
             className=""
+            data-user="users"
           />
         </table>
       </div>
@@ -246,6 +247,7 @@ exports[`UsersControlpanel renders a user control component 1`] = `
           </thead>
           <tbody
             className=""
+            data-group="groups"
           />
         </table>
       </div>
@@ -307,7 +309,7 @@ exports[`UsersControlpanel renders a user control component 1`] = `
           onClick={[Function]}
         >
           <svg
-            className="icon addSVG"
+            className="icon"
             dangerouslySetInnerHTML={
               Object {
                 "__html": "<title>Save</title>undefined",

@@ -15,7 +15,7 @@ if (Cypress.env('API') !== 'guillotina') {
 
     it('Should add User to controlPanel', () => {
       // when I added a user from controlPanel
-      cy.get('.addSVG').click();
+      cy.get('.addSVG').first().click();
       cy.get('input[id="field-username"]').clear().type('iFlameing');
       cy.get('input[id="field-fullname"]').clear().type('Alok Kumar');
       cy.get('input[id ="field-email"]').clear().type('info@example.com');
@@ -29,17 +29,28 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('.fullname').should('have.text', 'Alok Kumar');
     });
     it('Should update group roles', () => {
-      cy.get('input[type="checkbox"').first().check({ force: true });
+      cy.get('[data-group="groups"] input[type="checkbox"')
+        .first()
+        .check({ force: true });
+      cy.get('.ui:nth-child(10) > div:nth-child(2) .icon').click();
+
       cy.reload();
-      cy.get('div.checkbox').first().should('have.class', 'checked');
+      cy.get('[data-group="groups"] div.checkbox')
+        .first()
+        .should('have.class', 'checked');
     });
     it('Should update user roles', () => {
-      cy.get('.show-all-users:nth-child(2)').click();
+      cy.get('[data-user="users"] input[type="checkbox"')
+        .first()
+        .check({ force: true });
 
-      cy.get('input[type="checkbox"').first().check({ force: true });
+      cy.get('.ui:nth-child(5) > div:nth-child(2) .icon').click();
+
       cy.reload();
-      cy.get('.show-all-users:nth-child(2)').click();
-      cy.get('div.checkbox').first().should('have.class', 'checked');
+
+      cy.get('[data-user="users"] div.checkbox')
+        .first()
+        .should('have.class', 'checked');
     });
   });
 }
