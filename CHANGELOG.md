@@ -7,6 +7,7 @@
 ### Feature
 
 - Lazy load image in blocks Image and HeroImage @mamico
+- Add ImageFromUrl with srcset and lazy loading using Plone miniatures @nzambello
 
 ### Bugfix
 
