@@ -14,7 +14,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.waitForResourceToLoad('@breadcrumbs');
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('my-page?fullobjects');
+      cy.waitForResourceToLoad('my-page');
       cy.navigate('/my-page/edit');
       cy.get(`.block.title [data-contents]`);
     });
@@ -32,13 +32,13 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.waitForResourceToLoad('@breadcrumbs');
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('my-page?fullobjects');
+      cy.waitForResourceToLoad('my-page');
 
       // then the page view should contain the text block
       cy.get('#page-document p').contains('My text');
     });
 
-    it('As editor I can add a link to a text block', function() {
+    it('As editor I can add a link to a text block', function () {
       cy.get('.documentFirstHeading > .public-DraftStyleDefault-block');
 
       // when I create a link
@@ -55,7 +55,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.waitForResourceToLoad('@breadcrumbs');
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('my-page?fullobjects');
+      cy.waitForResourceToLoad('my-page');
 
       // then the page view should contain a link
       cy.get('.ui.container p').contains(
@@ -66,7 +66,7 @@ if (Cypress.env('API') !== 'guillotina') {
         .and('include', 'https://google.com');
     });
 
-    it('As editor I can add a mailto link to a text block', function() {
+    it('As editor I can add a mailto link to a text block', function () {
       cy.get('.documentFirstHeading > .public-DraftStyleDefault-block');
 
       // when I create a mailto link
@@ -85,7 +85,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.waitForResourceToLoad('@breadcrumbs');
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('my-page?fullobjects');
+      cy.waitForResourceToLoad('my-page');
 
       // then the page view should contain a mailto link
       cy.get('.ui.container p').contains(

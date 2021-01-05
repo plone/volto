@@ -10,6 +10,35 @@ This upgrade guide lists all breaking changes in Volto and explains the
     dependencies might do when dealing with upgrades. We keep the generator up
     to date and in sync with current Volto release.
 
+## Upgrading to Volto 10.x.x
+
+### Remove the Razzle plugins patch
+
+!!! warning
+    If you haven't upgraded your project to Volto 9.x.x and followed the upgrade guide
+    instructions, you are set and you do not need to do anything.
+
+In order to have support for Razzle plugins as local modules we introduced a patch in
+9.0.0 that addressed the lack of support in Razzle 3.3.7 . Unfortunately, not only that
+introduced more headaches than benefits, but inadvertently we introduced a bug on the
+patch. We've found a workaround to still support plugins as local modules without
+patching Razzle, however that forces you to delete the patch introduced in your projects
+if you followed the 9.x.x upgrade guide steps.
+
+### getContent changes
+
+The content is no longer fetched from Volto with the `fullobjects` flag in the
+request. If your code relied on children being fully serialized with their
+parent, you should refactor it. Alternatively, you can set
+`settings.bbb_getContentFetchesFullobjects` to `true` to get the old behavior.
+
+### `@testing-library/react` upgrade notice
+
+`@testing-library/react` has been upgraded too, and it comes with some internal API
+changes too, so if you make heavy use of it in your tests, you could need to update your
+testing code to adapt them. Please refer to the `@testing-library/react` documentation
+for further information if needed.
+
 ## Upgrading to Volto 9.x.x
 
 ### Internal upgrade to use Razzle 3.3.7
@@ -48,9 +77,12 @@ development the Razzle 3 branch is freezed already so we need to amend the origi
 using the patch. The patch will be obsolete and no longer required once we move to
 Razzle 4 (see https://github.com/jaredpalmer/razzle/pull/1467).
 
-Copy (and overwrite) the `patches` folder into your local project
+!!! note
+    Since Volto 9.2.0 the next step IS NOT required anymore.
+
+~~Copy (and overwrite) the `patches` folder into your local project
 https://github.com/plone/volto/tree/master/patches or, if you want to be more accurate,
-just copy `patches/razzle-plugins.patch` file and overwrite `patches/patchit.sh` file.
+just copy `patches/razzle-plugins.patch` file and overwrite `patches/patchit.sh` file.~~
 
 ### Babel config housekeeping
 

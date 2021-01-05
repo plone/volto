@@ -6,16 +6,18 @@
 import { compose } from 'redux';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Editor from 'react-simple-code-editor';
 import { Button, Popup } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import { withLoadables } from '@plone/volto/helpers';
+import loadable from '@loadable/component';
 
 import { Icon } from '@plone/volto/components';
 import showSVG from '@plone/volto/icons/show.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import codeSVG from '@plone/volto/icons/code.svg';
 import indentSVG from '@plone/volto/icons/indent.svg';
+
+const Editor = loadable(() => import('react-simple-code-editor'));
 
 const messages = defineMessages({
   source: {
@@ -84,24 +86,12 @@ class Edit extends Component {
   }
 
   /**
-   * Component will receive props
-   * @method componentDidMount
+   * Component did update
+   * @method componentDidUpdate
    * @returns {undefined}
    */
-  componentDidMount() {
-    if (this.props.selected) {
-      this.codeEditor._input.focus();
-    }
-  }
-
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.selected) {
+  componentDidUpdate(prevProps, prevState) {
+    if (this.codeEditor && this.props.selected && !prevProps.selected) {
       this.codeEditor._input.focus();
     }
   }
@@ -117,7 +107,10 @@ class Edit extends Component {
       ...this.props.data,
       html: code,
     });
-    this.setState({ code });
+  }
+
+  getValue() {
+    return this.props.data.html || '';
   }
 
   /**
@@ -239,11 +232,11 @@ class Edit extends Component {
           </div>
         )}
         {this.state.isPreview && (
-          <div dangerouslySetInnerHTML={{ __html: this.state.code }} />
+          <div dangerouslySetInnerHTML={{ __html: this.getValue() }} />
         )}
         {!this.state.isPreview && this.state.loaded && (
           <Editor
-            value={this.state.code}
+            value={this.getValue()}
             placeholder={placeholder}
             onValueChange={(code) => this.onChangeCode(code)}
             highlight={

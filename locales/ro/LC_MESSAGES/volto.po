@@ -294,7 +294,7 @@ msgid "Choose Target"
 msgstr "Alegeți ținta"
 
 #: components/manage/Widgets/FileWidget
-msgid "Choose a File/Image"
+msgid "Choose a file"
 msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
@@ -379,6 +379,10 @@ msgstr "Cuprins"
 msgid "Copy"
 msgstr "Copiere"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Copy blocks"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "Copyright"
 msgstr "Drepturi de autor"
@@ -412,6 +416,10 @@ msgstr "Parolă curentă"
 #: components/manage/Contents/ContentsItem
 msgid "Cut"
 msgstr "Taie"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Cut blocks"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Daily"
@@ -488,6 +496,10 @@ msgstr "Ștergeți tipul"
 msgid "Delete User"
 msgstr "Ștergeți utilizatorul"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Delete blocks"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 msgid "Delete col"
 msgstr "Șterge coloană"
@@ -495,6 +507,10 @@ msgstr "Șterge coloană"
 #: components/manage/Blocks/Table/Edit
 msgid "Delete row"
 msgstr "Șterge rând"
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "Depth"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Descending"
@@ -556,15 +572,15 @@ msgid "Drag and drop files from your computer onto this area or click the “Bro
 msgstr "Trageți și fixați fișierele de pe computer în această zonă sau faceți clic pe butonul Răsfoiește."
 
 #: components/manage/Widgets/FileWidget
-msgid "Drag the new item to upload"
+msgid "Drop file here to replace the existing file"
 msgstr ""
 
 #: components/manage/Widgets/FileWidget
-msgid "Drag to replace the file item"
+msgid "Drop file here to upload a new file"
 msgstr ""
 
 #: components/manage/Widgets/FileWidget
-msgid "Drop files here ...."
+msgid "Drop files here ..."
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
@@ -1255,6 +1271,10 @@ msgstr "Parolele nu se potrivesc."
 msgid "Paste"
 msgstr "Lipire"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Paste blocks"
+msgstr ""
+
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Toolbar/Toolbar
 msgid "Personal Information"
@@ -1413,7 +1433,7 @@ msgid "Repeat on"
 msgstr ""
 
 #: components/manage/Widgets/FileWidget
-msgid "Replace existing File/Image"
+msgid "Replace existing file"
 msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget

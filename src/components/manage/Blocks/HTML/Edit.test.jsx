@@ -1,8 +1,7 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
-// import { waitFor } from '@testing-library/react';
+import { waitFor, render, screen } from '@testing-library/react';
 
 import { __test__ as Edit } from './Edit';
 
@@ -26,7 +25,7 @@ test('renders an edit html block component', async () => {
     },
   });
 
-  const component = renderer.create(
+  const { container } = render(
     <Provider store={store}>
       <Edit
         data={{ html: '<h1></h1>' }}
@@ -42,7 +41,6 @@ test('renders an edit html block component', async () => {
       />
     </Provider>,
   );
-
-  const json = component.toJSON();
-  expect(json).toMatchSnapshot();
+  await waitFor(() => screen.getByPlaceholderText('<p>Add some HTML here</p>'));
+  expect(container.firstChild).toMatchSnapshot();
 });

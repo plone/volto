@@ -19,6 +19,7 @@ import { resetServerContext } from 'react-beautiful-dnd';
 
 import routes from '~/routes';
 import { settings } from '~/config';
+import { flattenToAppURL } from '@plone/volto/helpers';
 
 import {
   Html,
@@ -71,6 +72,13 @@ if (__DEVELOPMENT__ && settings.devProxyToApiPath) {
       }),
     }),
   );
+}
+
+if (process.env.VOLTO_ROBOTSTXT) {
+  server.use('/robots.txt', function (req, res) {
+    res.type('text/plain');
+    res.send(process.env.VOLTO_ROBOTSTXT);
+  });
 }
 
 if ((settings.expressMiddleware || []).length)
@@ -183,7 +191,7 @@ server
           );
 
           if (context.url) {
-            res.redirect(context.url);
+            res.redirect(flattenToAppURL(context.url));
           } else if (context.error_code) {
             res.set({
               'Cache-Control': 'no-cache',

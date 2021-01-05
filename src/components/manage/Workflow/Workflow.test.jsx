@@ -2,6 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import { waitFor } from '@testing-library/react';
 
 import Workflow from './Workflow';
 
@@ -44,11 +45,13 @@ describe('Workflow', () => {
       },
       content: { data: { review_state: 'private' } },
     });
+
     const component = renderer.create(
       <Provider store={store}>
         <Workflow pathname="/test" />
       </Provider>,
     );
+    await waitFor(() => {});
     expect(component.toJSON()).toMatchSnapshot();
   });
 });

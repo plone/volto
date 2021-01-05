@@ -83,11 +83,14 @@ let config = {
     expressMiddleware: [],
     defaultBlockType: 'text',
     verticalFormTabs: false,
+    persistentReducers: ['blocksClipboard'],
     sentryOptions: {
       ...sentryOptions,
     },
     contentIcons: contentIcons,
     loadables,
+    appExtras: [],
+    maxResponseSize: 2000000000, // This is superagent default (200 mb)
   },
   widgets: {
     ...widgetMapping,
@@ -108,7 +111,6 @@ let config = {
 
   addonRoutes: [],
   addonReducers: {},
-  appExtras: [],
 };
 
 config = applyAddonConfiguration(config);
