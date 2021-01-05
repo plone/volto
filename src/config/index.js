@@ -30,6 +30,7 @@ import {
 
 import { sentryOptions } from './Sentry';
 import { contentIcons } from './ContentIcons';
+import { imageScales } from './ImageScales';
 
 import applyAddonConfiguration from 'load-volto-addons';
 
@@ -86,7 +87,8 @@ let config = {
     sentryOptions: {
       ...sentryOptions,
     },
-    contentIcons: contentIcons,
+    contentIcons,
+    imageScales,
     appExtras: [],
   },
   widgets: {
@@ -105,7 +107,6 @@ let config = {
     groupBlocksOrder,
     initialBlocks,
   },
-
   addonRoutes: [],
   addonReducers: {},
 };

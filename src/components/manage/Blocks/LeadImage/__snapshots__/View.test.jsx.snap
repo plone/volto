@@ -7,7 +7,11 @@ exports[`renders a view image component 1`] = `
   <img
     alt=""
     className=""
-    src="image.png"
+    loading="lazy"
+    role="img"
+    sizes={null}
+    src="/test-images/@@images/image.jpeg"
+    srcSet="/test-images/@@images/image.jpeg 768w, /test-images/@@images/image.jpeg 400w, /test-images/@@images/image.jpeg 200w, /test-images/@@images/image.jpeg 128w, /test-images/@@images/image.jpeg 64w, /test-images/@@images/image.jpeg 32w, /test-images/@@images/image.jpeg 16w"
   />
 </p>
 `;

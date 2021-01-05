@@ -7,6 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import cx from 'classnames';
+import ImageFromUrl from '@plone/volto/components/theme/ImageFromUrl/ImageFromUrl';
 
 import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
 
@@ -30,33 +31,28 @@ const View = ({ data, detached }) => (
       <>
         {(() => {
           const image = (
-            <img
+            <ImageFromUrl
+              url={data.url}
+              alt={data.alt}
               className={cx({
                 'full-width': data.align === 'full',
                 large: data.size === 'l',
                 medium: data.size === 'm',
                 small: data.size === 's',
               })}
-              src={
-                isInternalURL(data.url)
-                  ? // Backwards compat in the case that the block is storing the full server URL
-                    (() => {
-                      if (data.size === 'l')
-                        return `${flattenToAppURL(data.url)}/@@images/image`;
-                      if (data.size === 'm')
-                        return `${flattenToAppURL(
-                          data.url,
-                        )}/@@images/image/preview`;
-                      if (data.size === 's')
-                        return `${flattenToAppURL(
-                          data.url,
-                        )}/@@images/image/mini`;
-                      return `${flattenToAppURL(data.url)}/@@images/image`;
-                    })()
-                  : data.url
-              }
-              alt={data.alt || ''}
-              loading="lazy"
+              size={(() => {
+                switch (data.size) {
+                  case 'm':
+                    return 'preview';
+
+                  case 's':
+                    return 'mini';
+
+                  case 'l':
+                  default:
+                    return null;
+                }
+              })()}
             />
           );
           if (data.href) {

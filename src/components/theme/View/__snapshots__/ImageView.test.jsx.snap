@@ -19,6 +19,8 @@ exports[`renders an image view component 1`] = `
   >
     <img
       alt="Hello World!"
+      loading="lazy"
+      role="img"
       src="file:///preview.jpg"
     />
     <figcaption>

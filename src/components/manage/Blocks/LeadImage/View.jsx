@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import cx from 'classnames';
 import { settings } from '~/config';
 
-import { flattenToAppURL } from '@plone/volto/helpers';
+import ImageFromUrl from '@plone/volto/components/theme/ImageFromUrl/ImageFromUrl';
 
 /**
  * View image block class.
@@ -30,10 +30,10 @@ const View = ({ data, properties }) => (
       <>
         {(() => {
           const image = (
-            <img
+            <ImageFromUrl
+              image={properties.image}
+              alt={properties.image_caption}
               className={cx({ 'full-width': data.align === 'full' })}
-              src={flattenToAppURL(properties.image.download)}
-              alt={properties.image_caption || ''}
             />
           );
           if (data.href) {
