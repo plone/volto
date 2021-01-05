@@ -14,6 +14,7 @@
 - Fix import order in server.jsx. @cekk @tiberiuichim
 - Make sentry config more resilient to edge cases (SPA, storybook) @sneridagh
 - Remove test dependant on the year in `Copyright` footer section @sneridagh
+- Increase maxResponseSize for superagent calls. Now is 500mb (#2098) @cekk
 
 ### Internal
 
