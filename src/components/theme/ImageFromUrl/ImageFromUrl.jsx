@@ -6,7 +6,15 @@ import {
   getSrcSet,
 } from '@plone/volto/helpers';
 
-const ImageFromUrl = ({ image, url, alt = '', className, size, role }) => {
+const ImageFromUrl = ({
+  image,
+  url,
+  alt = '',
+  className,
+  size,
+  role,
+  ...imageProps
+}) => {
   let src = image && image?.scales ? image.download : url;
 
   if (!src) return null;
@@ -26,6 +34,7 @@ const ImageFromUrl = ({ image, url, alt = '', className, size, role }) => {
       loading="lazy"
       className={className}
       {...(isInternal ? getSrcSet(image?.scales ? image : src, size) : {})}
+      {...imageProps}
     />
   );
 };
