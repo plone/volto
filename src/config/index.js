@@ -88,6 +88,7 @@ let config = {
     },
     contentIcons: contentIcons,
     appExtras: [],
+    maxResponseSize: 2000000000, // This is superagent default (200 mb)
   },
   widgets: {
     ...widgetMapping,

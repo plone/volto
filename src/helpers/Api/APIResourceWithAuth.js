@@ -24,6 +24,7 @@ export const getAPIResourceWithAuth = (req) =>
     }
     const request = superagent
       .get(`${apiPath}${req.path}`)
+      .maxResponseSize(settings.maxResponseSize)
       .responseType('blob');
     const authToken = cookie.load('auth_token');
     if (authToken) {
