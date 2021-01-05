@@ -1,6 +1,6 @@
 # Change Log
 
-## 10.6.2 (unreleased)
+## 10.7.0 (2021-01-05)
 
 ### Feature
 
