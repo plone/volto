@@ -25,7 +25,6 @@ exports[`Register renders a register component 1`] = `
           </div>
           <div
             className="inline required field help text"
-            id="field-fullname"
           >
             <div
               className="ui grid"
@@ -83,7 +82,6 @@ exports[`Register renders a register component 1`] = `
           </div>
           <div
             className="inline required field help text"
-            id="field-email"
           >
             <div
               className="ui grid"
