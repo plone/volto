@@ -2,8 +2,6 @@
 
 ## 10.6.2 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Lazy load image in blocks Image and HeroImage @mamico
