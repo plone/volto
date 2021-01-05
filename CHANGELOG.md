@@ -6,10 +6,13 @@
 
 ### Feature
 
+- Lazy load image in blocks Image and HeroImage @mamico
+
 ### Bugfix
 
 - Fix redirection for Link objects. @cekk
 - Fix import order in server.jsx. @cekk @tiberiuichim
+- Make sentry config more resilient to edge cases (SPA, storybook) @sneridagh
 
 ### Internal
 
