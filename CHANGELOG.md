@@ -7,6 +7,7 @@
 ### Feature
 
 - Lazy load image in blocks Image and HeroImage @mamico
+- Provide `withLoadables()` wrapper and `settings.loadables` config to deal with loadable libraries @tiberiuichim
 
 ### Bugfix
 

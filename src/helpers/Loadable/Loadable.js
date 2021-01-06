@@ -48,12 +48,14 @@ export function withLoadables(maybeNames) {
                 <LoadableLibrary
                   key={name}
                   ref={(val) => {
-                    this.setState((state) => ({
-                      loadedLibraries: {
-                        ...state.loadedLibraries,
-                        [name]: val,
-                      },
-                    }));
+                    if (!this.state[name] && val) {
+                      this.setState((state) => ({
+                        loadedLibraries: {
+                          ...state.loadedLibraries,
+                          [name]: val,
+                        },
+                      }));
+                    }
                   }}
                 />
               );

@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { map, find, isBoolean, isObject, intersection } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
-// import loadable from '@loadable/component';
+import loadable from '@loadable/component';
 
 import {
   getBoolean,
@@ -26,10 +26,10 @@ import {
   selectTheme,
   customSelectStyles,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
-import { withLoadables } from '@plone/volto/helpers/Loadable/Loadable';
+// import { withLoadables } from '@plone/volto/helpers/Loadable/Loadable';
 
-// const Select = loadable(() => import('react-select'));
-// const AsyncPaginate = loadable(() => import('react-select-async-paginate'));
+const Select = loadable(() => import('react-select'));
+const AsyncPaginate = loadable(() => import('react-select-async-paginate'));
 
 const messages = defineMessages({
   default: {
@@ -243,8 +243,9 @@ class SelectWidget extends Component {
    */
   render() {
     const { id, choices, value, onChange } = this.props;
-    const Select = this.props.Select.current.default;
-    const AsyncPaginate = this.props.AsyncPaginate.current.default;
+    // const { Select, AsyncPaginate } = this.props;
+    // console.log('Select', Select);
+    // console.log('AsyncPaginate', AsyncPaginate);
 
     return (
       <FormFieldWrapper {...this.props}>
@@ -321,7 +322,7 @@ class SelectWidget extends Component {
 
 export default compose(
   injectIntl,
-  withLoadables(['Select', 'AsyncPaginate']),
+  // withLoadables(['Select', 'AsyncPaginate']),
   connect(
     (state, props) => {
       const vocabBaseUrl = !props.choices

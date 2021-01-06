@@ -4,16 +4,8 @@ export const loadables = {
   prettierStandalone: loadable.lib(() => import('prettier/standalone')),
   prettierParserHtml: loadable.lib(() => import('prettier/parser-html')),
   prismCore: loadable.lib(() => import('prismjs/components/prism-core')),
-  // prismMarkup: loadable.lib(() => import('prismjs/components/prism-markup')),
-  reactSelect: loadable.lib(() => import('react-select')),
   toastify: loadable.lib(() => import('react-toastify'), {
     resolveComponent: (lib) => lib.toast,
   }),
-  Select: loadable(
-    () => import('react-select'),
-    // {
-    //   resolveComponent: (lib) => lib.default,
-    // }
-  ),
-  AsyncPaginate: loadable(() => import('react-select-async-paginate')),
+  reactSelect: loadable.lib(() => import('react-select')),
 };
