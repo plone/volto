@@ -21,6 +21,7 @@
 - Fix redirection for Link objects. @cekk
 - Fix import order in server.jsx. @cekk @tiberiuichim
 - Make sentry config more resilient to edge cases (SPA, storybook) @sneridagh
+- Handle errors on file and image download (#2098) @cekk
 - Remove test dependant on the year in `Copyright` footer section @sneridagh
 - Increase maxResponseSize for superagent calls. Now is 500mb (#2098) @cekk
 
