@@ -12,7 +12,7 @@ import { toast } from 'react-toastify';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import getWorkflowMapping from '@plone/volto/constants/Workflows';
 import { Icon, Toast } from '@plone/volto/components';
-import { withLoadables } from '@plone/volto/helpers';
+import { withLoadables } from '@plone/volto/helpers/Loadable/Loadable';
 import { settings } from '~/config';
 
 import {
@@ -47,7 +47,7 @@ const SingleValue = withLoadables('react-select')(({ children, ...props }) => {
     width: '10px',
     borderRadius: '50%',
   };
-  const { SingleValue } = props['react-select'].current.components;
+  const { SingleValue } = props.reactSelect.current.components;
   return (
     <SingleValue {...props}>
       <span style={stateDecorator} />
@@ -89,9 +89,9 @@ const Option = withLoadables('react-select')((props) => {
 });
 
 const DropdownIndicator = withLoadables('react-select')((props) => {
-  const { DropdownIndicator } = props['react-select'].current.components;
+  const { DropdownIndicator } = props.reactSelect.current.components;
   return (
-    <DropdownIndicator {...props}>
+    <DropdownIndicator {...props} data-testid="workflow-select-dropdown">
       {props.selectProps.menuIsOpen ? (
         <Icon name={upSVG} size="24px" color="#007bc1" />
       ) : (
@@ -289,8 +289,8 @@ class Workflow extends Component {
 
   render() {
     const { selectedOption } = this.state;
-    const { Placeholder } = this.props['react-select'].current.components;
-    const Select = this.props['react-select'].current.default;
+    const { Placeholder } = this.props.reactSelect.current.components;
+    const Select = this.props.reactSelect.current.default;
 
     return (
       <Fragment>
@@ -298,7 +298,7 @@ class Workflow extends Component {
           <FormattedMessage id="State" defaultMessage="State" />
         </label>
         <Select
-          name="display-select"
+          name="state-select"
           className="react-select-container"
           classNamePrefix="react-select"
           isDisabled={
@@ -339,7 +339,7 @@ class Workflow extends Component {
 
 export default compose(
   injectIntl,
-  withLoadables('react-select'),
+  withLoadables(['react-select']),
   connect(
     (state) => ({
       loaded: state.workflow.transition.loaded,

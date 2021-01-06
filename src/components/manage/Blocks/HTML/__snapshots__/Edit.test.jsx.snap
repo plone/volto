@@ -19,38 +19,12 @@ exports[`renders an edit html block component 1`] = `
   </textarea>
   <pre
     aria-hidden="true"
-    style={
-      Object {
-        "border": 0,
-        "boxSizing": "inherit",
-        "display": "inherit",
-        "fontFamily": "inherit",
-        "fontSize": "inherit",
-        "fontStyle": "inherit",
-        "fontVariantLigatures": "inherit",
-        "fontWeight": "inherit",
-        "letterSpacing": "inherit",
-        "lineHeight": "inherit",
-        "margin": 0,
-        "paddingBottom": 8,
-        "paddingLeft": 8,
-        "paddingRight": 8,
-        "paddingTop": 8,
-        "pointerEvents": "none",
-        "position": "relative",
-        "tabSize": "inherit",
-        "textIndent": "inherit",
-        "textRendering": "inherit",
-        "textTransform": "inherit",
-        "whiteSpace": "inherit",
-        "wordBreak": "inherit",
-      }
-    }
+    style="box-sizing: inherit; display: inherit; font-family: inherit; font-style: inherit; font-variant-ligatures: inherit; font-weight: inherit; letter-spacing: inherit; line-height: inherit; tab-size: inherit; text-indent: inherit; text-rendering: inherit; text-transform: inherit; white-space: inherit; word-break: inherit; position: relative; margin: 0px; border: 0px; pointer-events: none; padding: 8px 8px 8px 8px;"
   />
   <style
     type="text/css"
   >
-
+    
 /**
  * Reset the text fill color so that placeholder is visible
  */

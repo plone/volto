@@ -16,7 +16,6 @@ import {
   getVocabFromHint,
   getVocabFromField,
   getVocabFromItems,
-  withLoadables,
 } from '@plone/volto/helpers';
 import { FormFieldWrapper } from '@plone/volto/components';
 import { getVocabulary, getVocabularyTokenTitle } from '@plone/volto/actions';
@@ -27,6 +26,7 @@ import {
   selectTheme,
   customSelectStyles,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
+import { withLoadables } from '@plone/volto/helpers/Loadable/Loadable';
 
 // const Select = loadable(() => import('react-select'));
 // const AsyncPaginate = loadable(() => import('react-select-async-paginate'));

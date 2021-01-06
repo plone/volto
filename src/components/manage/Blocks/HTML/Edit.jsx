@@ -8,10 +8,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Popup } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
-import { withLoadables } from '@plone/volto/helpers';
 import loadable from '@loadable/component';
 
 import { Icon } from '@plone/volto/components';
+import { withLoadables } from '@plone/volto/helpers/Loadable/Loadable';
 import showSVG from '@plone/volto/icons/show.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import codeSVG from '@plone/volto/icons/code.svg';

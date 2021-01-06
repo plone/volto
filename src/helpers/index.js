@@ -4,7 +4,6 @@
  * @example import { Api, Html } from 'helpers';
  */
 
-export { withLoadables } from './Loadable/Loadable';
 export Api from '@plone/volto/helpers/Api/Api';
 export { getAPIResourceWithAuth } from '@plone/volto/helpers/Api/APIResourceWithAuth';
 export Html from '@plone/volto/helpers/Html/Html';
@@ -56,3 +55,4 @@ export {
   applyConfig,
   withServerErrorCode,
 } from '@plone/volto/helpers/Utils/Utils';
+export { withLoadables } from './Loadable/Loadable';

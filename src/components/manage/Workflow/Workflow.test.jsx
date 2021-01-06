@@ -1,8 +1,7 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
-import { waitFor } from '@testing-library/react';
+import { waitFor, render, screen } from '@testing-library/react';
 
 import Workflow from './Workflow';
 
@@ -24,12 +23,13 @@ describe('Workflow', () => {
       },
       content: { data: { review_state: 'published' } },
     });
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <Workflow pathname="/test" />
       </Provider>,
     );
-    expect(component.toJSON()).toMatchSnapshot();
+    await waitFor(() => screen.getByText(/Public/));
+    expect(container).toMatchSnapshot();
   });
 
   it('renders a workflow component', async () => {
@@ -46,12 +46,12 @@ describe('Workflow', () => {
       content: { data: { review_state: 'private' } },
     });
 
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <Workflow pathname="/test" />
       </Provider>,
     );
-    await waitFor(() => {});
-    expect(component.toJSON()).toMatchSnapshot();
+    await waitFor(() => screen.getByText('Private'));
+    expect(container).toMatchSnapshot();
   });
 });
