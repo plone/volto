@@ -76,7 +76,6 @@ class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      code: this.props.data.html || null,
       isPreview: false,
     };
     this.onChangeCode = this.onChangeCode.bind(this);
@@ -118,15 +117,18 @@ class Edit extends Component {
    * @returns {undefined}
    */
   onPreview() {
-    this.setState({
-      isPreview: !this.state.isPreview,
-      code: this.props.prettierStandalone
-        .format(this.getValue(), {
-          parser: 'html',
-          plugins: [this.props.prettierParserHtml],
-        })
-        .trim(),
-    });
+    const code = this.props.prettierStandalone
+      .format(this.getValue(), {
+        parser: 'html',
+        plugins: [this.props.prettierParserHtml],
+      })
+      .trim();
+    this.setState(
+      {
+        isPreview: !this.state.isPreview,
+      },
+      () => this.onChangeCode(code),
+    );
   }
 
   /**
@@ -136,14 +138,13 @@ class Edit extends Component {
    */
 
   onPrettify = () => {
-    this.setState({
-      code: this.props.prettierStandalone
-        .format(this.state.code, {
-          parser: 'html',
-          plugins: [this.props.prettierParserHtml],
-        })
-        .trim(),
-    });
+    const code = this.props.prettierStandalone
+      .format(this.getValue(), {
+        parser: 'html',
+        plugins: [this.props.prettierParserHtml],
+      })
+      .trim();
+    this.onChangeCode(code);
   };
 
   /**
