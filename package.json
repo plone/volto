@@ -362,6 +362,7 @@
   },
   "devDependencies": {
     "crypto-random-string": "3.2.0",
+    "html-critical-webpack-plugin": "2.1.0",
     "jest-environment-jsdom-sixteen": "1.0.3",
     "tmp": "0.2.1"
   },

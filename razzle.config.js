@@ -2,6 +2,7 @@ const path = require('path');
 const makeLoaderFinder = require('razzle-dev-utils/makeLoaderFinder');
 const nodeExternals = require('webpack-node-externals');
 const LoadablePlugin = require('@loadable/webpack-plugin');
+const HtmlCriticalWebpackPlugin = require('html-critical-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const fs = require('fs');
 const RootResolverPlugin = require('./webpack-root-resolver');
@@ -52,7 +53,21 @@ const defaultModify = ({
         writeToDisk: { filename: path.resolve(`${projectRootPath}/build`) },
       }),
     );
-
+    config.plugins.push(
+      new HtmlCriticalWebpackPlugin({
+        base: path.resolve(`${projectRootPath}/build`),
+        src: path.resolve(`${projectRootPath}/public/index.html.spa`),
+        inline: true,
+        minify: true,
+        extract: true,
+        target: {
+          css: 'critical.css',
+          html: 'index-critical.html',
+          uncritical: 'cms.css',
+        },
+        css: [`${projectRootPath}/theme/themes/pastanaga/extras/toolbar.less`],
+      }),
+    );
     config.output.filename = dev
       ? 'static/js/[name].js'
       : 'static/js/[name].[chunkhash:8].js';
