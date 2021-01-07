@@ -2,6 +2,8 @@ import React from 'react';
 import { settings } from '~/config';
 import { isEqual } from 'lodash';
 
+const _loadablesCache = {};
+
 export function withLoadables(maybeNames) {
   const libraries = Array.isArray(maybeNames) ? maybeNames : [maybeNames];
 
@@ -32,6 +34,7 @@ export function withLoadables(maybeNames) {
             ),
           ), // this is to support "loadables" that are already loaded
           ...this.state.loadedLibraries,
+          ..._loadablesCache,
         };
       }
 
@@ -49,12 +52,17 @@ export function withLoadables(maybeNames) {
                   key={name}
                   ref={(val) => {
                     if (!this.state[name] && val) {
-                      this.setState((state) => ({
-                        loadedLibraries: {
-                          ...state.loadedLibraries,
-                          [name]: val,
+                      this.setState(
+                        (state) => ({
+                          loadedLibraries: {
+                            ...state.loadedLibraries,
+                            [name]: val,
+                          },
+                        }),
+                        () => {
+                          _loadablesCache[name] = val;
                         },
-                      }));
+                      );
                     }
                   }}
                 />

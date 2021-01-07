@@ -76,8 +76,7 @@ class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      code: this.props.data.html || '',
-      loaded: true,
+      code: this.props.data.html || null,
       isPreview: false,
     };
     this.onChangeCode = this.onChangeCode.bind(this);
@@ -122,9 +121,9 @@ class Edit extends Component {
     this.setState({
       isPreview: !this.state.isPreview,
       code: this.props.prettierStandalone
-        .format(this.state.code, {
+        .format(this.getValue(), {
           parser: 'html',
-          plugins: [this.props.parserHtml],
+          plugins: [this.props.prettierParserHtml],
         })
         .trim(),
     });
@@ -165,9 +164,10 @@ class Edit extends Component {
     const placeholder =
       this.props.data.placeholder ||
       this.props.intl.formatMessage(messages.placeholder);
+    const value = this.getValue();
     return (
       <>
-        {this.props.selected && !!this.state.code && (
+        {this.props.selected && value && (
           <div className="toolbar">
             <Popup
               trigger={
@@ -231,12 +231,11 @@ class Edit extends Component {
             />
           </div>
         )}
-        {this.state.isPreview && (
-          <div dangerouslySetInnerHTML={{ __html: this.getValue() }} />
-        )}
-        {!this.state.isPreview && this.state.loaded && (
+        {this.state.isPreview ? (
+          <div dangerouslySetInnerHTML={{ __html: value }} />
+        ) : (
           <Editor
-            value={this.getValue()}
+            value={value}
             placeholder={placeholder}
             onValueChange={(code) => this.onChangeCode(code)}
             highlight={
