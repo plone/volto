@@ -2,8 +2,8 @@ const path = require('path');
 const makeLoaderFinder = require('razzle-dev-utils/makeLoaderFinder');
 const nodeExternals = require('webpack-node-externals');
 const LoadablePlugin = require('@loadable/webpack-plugin');
-const HtmlCriticalWebpackPlugin = require('html-critical-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+const isEqual = require('lodash/isEqual');
 const fs = require('fs');
 const RootResolverPlugin = require('./webpack-root-resolver');
 const RelativeResolverPlugin = require('./webpack-relative-resolver');
@@ -51,21 +51,6 @@ const defaultModify = ({
       new LoadablePlugin({
         outputAsset: false,
         writeToDisk: { filename: path.resolve(`${projectRootPath}/build`) },
-      }),
-    );
-    config.plugins.push(
-      new HtmlCriticalWebpackPlugin({
-        base: path.resolve(`${projectRootPath}/build`),
-        src: path.resolve(`${projectRootPath}/public/index.html.spa`),
-        inline: true,
-        minify: true,
-        extract: true,
-        target: {
-          css: 'critical.css',
-          html: 'index-critical.html',
-          uncritical: 'cms.css',
-        },
-        css: [`${projectRootPath}/theme/themes/pastanaga/extras/toolbar.less`],
       }),
     );
     config.output.filename = dev
@@ -125,6 +110,11 @@ const defaultModify = ({
     /icons\/.*\.svg$/,
     ...fileLoader.exclude,
   ];
+
+  const cssRule = config.module.rules.find((item) =>
+    isEqual(item.test, /\.css$/),
+  );
+  cssRule.use = [require.resolve('isomorphic-style-loader'), ...cssRule.use];
 
   // Disabling the ESlint pre loader
   config.module.rules.splice(0, 1);
