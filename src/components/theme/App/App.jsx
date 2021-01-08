@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { asyncConnect } from 'redux-connect';
+import withStyles from 'isomorphic-style-loader/withStyles';
 import { Segment } from 'semantic-ui-react';
 import { renderRoutes } from 'react-router-config';
 import { Slide, ToastContainer, toast } from 'react-toastify';
@@ -16,6 +17,7 @@ import join from 'lodash/join';
 import trim from 'lodash/trim';
 import cx from 'classnames';
 
+//import css from './critical.css'
 import { settings, views } from '~/config';
 
 import Error from '@plone/volto/error';
@@ -181,6 +183,7 @@ export const __test__ = connect(
 )(App);
 
 export default compose(
+  withStyles(),
   asyncConnect([
     {
       key: 'breadcrumbs',

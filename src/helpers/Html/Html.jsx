@@ -57,7 +57,7 @@ class Html extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { extractor, markup, store } = this.props;
+    const { extractor, markup, store, css } = this.props;
     const head = Helmet.rewind();
     const bodyClass = join(BodyClass.rewind(), ' ');
 
@@ -93,6 +93,8 @@ class Html extends Component {
           {process.env.NODE_ENV === 'production' && (
             <>{extractor.getStyleElements()}</>
           )}
+
+          <style>{[...css].join('')}</style>
         </head>
         <body className={bodyClass}>
           <div role="navigation" aria-label="Toolbar" id="toolbar" />

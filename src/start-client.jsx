@@ -3,6 +3,7 @@ import { hydrate } from 'react-dom';
 import { Provider } from 'react-redux';
 import { IntlProvider } from 'react-intl-redux';
 import { ConnectedRouter } from 'connected-react-router';
+import StyleContext from 'isomorphic-style-loader/StyleContext';
 import { createBrowserHistory } from 'history';
 import { ReduxAsyncConnect } from 'redux-connect';
 import { loadableReady } from '@loadable/component';
@@ -29,7 +30,10 @@ function reactIntlErrorHandler(error) {
 
 export default () => {
   const api = new Api();
-
+  const insertCss = (...styles) => {
+    const removeCss = styles.map((style) => style._insertCss());
+    return () => removeCss.forEach((dispose) => dispose());
+  };
   const store = configureStore(window.__data, history, api);
   persistAuthToken(store);
 
@@ -43,15 +47,17 @@ export default () => {
 
   loadableReady(() => {
     hydrate(
-      <Provider store={store}>
-        <IntlProvider onError={reactIntlErrorHandler}>
-          <ConnectedRouter history={history}>
-            <ScrollToTop>
-              <ReduxAsyncConnect routes={routes} helpers={api} />
-            </ScrollToTop>
-          </ConnectedRouter>
-        </IntlProvider>
-      </Provider>,
+      <StyleContext.Provider value={{ insertCss }}>
+        <Provider store={store}>
+          <IntlProvider onError={reactIntlErrorHandler}>
+            <ConnectedRouter history={history}>
+              <ScrollToTop>
+                <ReduxAsyncConnect routes={routes} helpers={api} />
+              </ScrollToTop>
+            </ConnectedRouter>
+          </IntlProvider>
+        </Provider>
+      </StyleContext.Provider>,
       document.getElementById('main'),
     );
   });

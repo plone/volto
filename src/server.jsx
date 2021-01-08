@@ -6,6 +6,7 @@ import express from 'express';
 import { renderToString } from 'react-dom/server';
 import { createMemoryHistory } from 'history';
 import { ReduxAsyncConnect, loadOnServer } from 'redux-connect';
+import StyleContext from 'isomorphic-style-loader/StyleContext';
 import { parse as parseUrl } from 'url';
 import { keys } from 'lodash';
 import cookie, { plugToRequest } from 'react-cookie';
@@ -196,17 +197,21 @@ server
               messages: locales[updatedLang],
             }),
           );
-
+          const css = new Set(); // CSS for all rendered React components
+          const insertCss = (...styles) =>
+            styles.forEach((style) => css.add(style._getCss()));
           const context = {};
           resetServerContext();
           const markup = renderToString(
-            <ChunkExtractorManager extractor={extractor}>
-              <Provider store={store}>
-                <StaticRouter context={context} location={req.url}>
-                  <ReduxAsyncConnect routes={routes} helpers={api} />
-                </StaticRouter>
-              </Provider>
-            </ChunkExtractorManager>,
+            <StyleContext.Provider value={{ insertCss }}>
+              <ChunkExtractorManager extractor={extractor}>
+                <Provider store={store}>
+                  <StaticRouter context={context} location={req.url}>
+                    <ReduxAsyncConnect routes={routes} helpers={api} />
+                  </StaticRouter>
+                </Provider>
+              </ChunkExtractorManager>
+            </StyleContext.Provider>,
           );
 
           if (context.url) {
@@ -232,7 +237,12 @@ server
             res.status(200).send(
               `<!doctype html>
                 ${renderToString(
-                  <Html extractor={extractor} markup={markup} store={store} />,
+                  <Html
+                    extractor={extractor}
+                    markup={markup}
+                    store={store}
+                    css={css}
+                  />,
                 )}
               `,
             );
