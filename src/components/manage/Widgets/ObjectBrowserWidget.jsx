@@ -99,14 +99,6 @@ class ObjectBrowserWidget extends Component {
                   this.removeItem(item);
                 }}
               />
-
-              // <OldIcon
-              //   name="delete"
-              //   onClick={event => {
-              //     event.preventDefault();
-              //     this.removeItem(item);
-              //   }}
-              // />
             )}
           </Label>
         }
@@ -240,10 +232,6 @@ class ObjectBrowserWidget extends Component {
               </div>
             )}
           </div>
-
-          {/* <Button onClick={this.showObjectBrowser} className="action">
-                  <Icon name={navTreeSVG} size="18px" />
-                </Button> */}
 
           <Button onClick={iconAction} className="action" disabled={isDisabled}>
             <Icon name={icon} size="18px" />
