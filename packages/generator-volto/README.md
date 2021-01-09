@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/plone/generator-volto.svg?branch=master)](https://travis-ci.org/plone/generator-volto)
-
 # Yeoman Volto App Generator
 
 @plone/generator-volto is a Yeoman generator that helps you to set up Volto via command line.

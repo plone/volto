@@ -69,7 +69,7 @@
     },
     "github": {
       "release": true,
-      "releaseName": "${version}",
+      "releaseName": "@plone/generator-volto ${version}",
       "releaseNotes": "node changelogupdater.js excerpt"
     }
   },
