@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import { isInternalURL } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
+import { flattenToAppURL } from '@plone/volto/helpers';
 
 /**
  * View container class.
@@ -46,26 +47,11 @@ class LinkView extends Component {
    */
   UNSAFE_componentWillMount() {
     if (!this.props.token) {
-      if (isInternalURL(this.props.content.remoteUrl)) {
-        this.props.history.replace(this.props.content.remoteUrl);
+      const { remoteUrl } = this.props.content;
+      if (isInternalURL(remoteUrl)) {
+        this.props.history.replace(flattenToAppURL(remoteUrl));
       } else if (!__SERVER__) {
-        window.location.href = this.props.content.remoteUrl;
-      }
-    }
-  }
-
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (!this.props.token) {
-      if (isInternalURL(this.props.content.remoteUrl)) {
-        this.props.history.replace(this.props.content.remoteUrl);
-      } else if (!__SERVER__) {
-        window.location.href = this.props.content.remoteUrl;
+        window.location.href = flattenToAppURL(remoteUrl);
       }
     }
   }

@@ -301,7 +301,7 @@ msgid "Choose Target"
 msgstr "Aukeratu helburua"
 
 #: components/manage/Widgets/FileWidget
-msgid "Choose a File/Image"
+msgid "Choose a file"
 msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
@@ -386,6 +386,10 @@ msgstr "Edukiak"
 msgid "Copy"
 msgstr "Kopiatu"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Copy blocks"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "Copyright"
 msgstr "Copyright"
@@ -419,6 +423,10 @@ msgstr "Oraingo pasahitza"
 #: components/manage/Contents/ContentsItem
 msgid "Cut"
 msgstr "Ebaki"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Cut blocks"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Daily"
@@ -495,6 +503,10 @@ msgstr "Ezabatu elementu-mota"
 msgid "Delete User"
 msgstr "Ezabatu erabiltzailea"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Delete blocks"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 msgid "Delete col"
 msgstr "Ezabatu zutabea"
@@ -502,6 +514,10 @@ msgstr "Ezabatu zutabea"
 #: components/manage/Blocks/Table/Edit
 msgid "Delete row"
 msgstr "Ezabatu errenkada"
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "Depth"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Descending"
@@ -563,15 +579,15 @@ msgid "Drag and drop files from your computer onto this area or click the “Bro
 msgstr "Arrastatu fitxategiak hona edo erabili Arakatu botoia."
 
 #: components/manage/Widgets/FileWidget
-msgid "Drag the new item to upload"
+msgid "Drop file here to replace the existing file"
 msgstr ""
 
 #: components/manage/Widgets/FileWidget
-msgid "Drag to replace the file item"
+msgid "Drop file here to upload a new file"
 msgstr ""
 
 #: components/manage/Widgets/FileWidget
-msgid "Drop files here ...."
+msgid "Drop files here ..."
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
@@ -1262,6 +1278,10 @@ msgstr "Pasahitzak ez datoz bat."
 msgid "Paste"
 msgstr "Itsatsi"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Paste blocks"
+msgstr ""
+
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Toolbar/Toolbar
 msgid "Personal Information"
@@ -1420,7 +1440,7 @@ msgid "Repeat on"
 msgstr "Egun honetan errepikatu"
 
 #: components/manage/Widgets/FileWidget
-msgid "Replace existing File/Image"
+msgid "Replace existing file"
 msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget

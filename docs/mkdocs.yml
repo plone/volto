@@ -19,40 +19,46 @@ extra_css:
   - 'stylesheets/pygments.css'
 
 nav:
-  - Getting Started: 'getting-started/install.md'
+  - Getting Started:
+      - Bootstrap Volto: 'getting-started/install.md'
+      - Developer roadmap: 'getting-started/roadmap.md'
+      - Learning resources: 'getting-started/others.md'
   - Design principles: 'design-principles/index.md'
   - Configuration:
       - What is configurable?: 'configuration/how-to.md'
       - Settings reference guide: 'configuration/settings-reference.md'
       - Internal proxy: 'configuration/internalproxy.md'
+      - Backend configuration: 'configuration/backend.md'
       - Richeditor settings: 'configuration/richeditor-settings.md'
       - Multilingual: 'configuration/multilingual.md'
-  - Semantic UI:
-      - About Semantic UI: 'semantic-ui/about-semantic.md'
-      - Semantic UI Theming: 'semantic-ui/semanticui-theming.md'
-      - Theming Engine: 'semantic-ui/theming-engine.md'
-  - Theming:
+      - Environment variables: 'configuration/environmentvariables.md'
+  - Theming & Semantic UI:
+      - About Semantic UI: 'theming/about-semantic.md'
+      - Semantic UI Theming: 'theming/semanticui-theming.md'
+      - Theming Engine: 'theming/theming-engine.md'
       - Theming strategy: 'theming/theming-strategy.md'
       - Custom styling: 'theming/custom-styling.md'
-      - Intregrate third party: 'theming/integrate-third-party.md'
-  - Customizing:
-      - Creating a project: 'customizing/creating-project.md'
-      - Folder structure: 'customizing/folder-structure.md'
-      - Customizing components: 'customizing/customizing-components.md'
-      - Customizing views: 'customizing/customizing-views.md'
-      - Creating new views: 'customizing/creating-views.md'
-      - Creating Add-on packages: 'customizing/add-ons.md'
-      - Internationalization: 'customizing/i18n.md'
-      - Express middleware: 'customizing/express.md'
+      - Use another theming engine: 'theming/using-third-party-themes.md'
+  - Development recipes:
+      - Creating a project: 'recipes/creating-project.md'
+      - Folder structure: 'recipes/folder-structure.md'
+      - Customizing components: 'recipes/customizing-components.md'
+      - Customizing views: 'recipes/customizing-views.md'
+      - Creating new views: 'recipes/creating-views.md'
+      - Internationalization: 'recipes/i18n.md'
+      - Express middleware: 'recipes/express.md'
+      - Lazy loading and code splitting: 'recipes/lazyload.md'
+      - Overriding i18n messages: 'recipes/overridei18n.md'
+      - App component insertion point: 'recipes/appextras.md'
   - Blocks:
       - Introduction: 'blocks/introduction.md'
       - Anatomy: 'blocks/anatomy.md'
       - Settings: 'blocks/settings.md'
       - Edit components: 'blocks/editcomponent.md'
-  - Recipes:
-      - App component insertion point: 'recipes/appextras.md'
-      - Lazy loading and code splitting: 'recipes/lazyload.md'
-      - Overriding i18n messages: 'recipes/overridei18n.md'
+  - Addons:
+      - Introduction: 'addons/index.md'
+      - Best practices: 'addons/best-practices.md'
+  - Backend integration: 'backend/index.md'
   - Deploying:
       - Simple deployment: 'deploying/simple.md'
       - Using PM2: 'deploying/pm2.md'
@@ -60,15 +66,14 @@ nav:
       - Using sentry: 'deploying/sentry.md'
   - Upgrade Guide: 'upgrade-guide/index.md'
   - Developer Guidelines:
-      - Accessibility: 'developer-guidelines/accessibility-guidelines.md'
       - Language features: 'developer-guidelines/language-features.md'
+      - Linting: 'developer-guidelines/linting.md'
       - React: 'developer-guidelines/react.md'
       - Redux: 'developer-guidelines/redux.md'
       - Routing: 'developer-guidelines/routing.md'
-      - Linting: 'developer-guidelines/linting.md'
-      - Language features: 'developer-guidelines/language-features.md'
       - Testing: 'developer-guidelines/testing.md'
       - Acceptance tests: 'developer-guidelines/acceptance-tests.md'
+      - Accessibility: 'developer-guidelines/accessibility-guidelines.md'
   - Contributing:
       - Guidelines: 'contributing/guidelines.md'
 
@@ -86,3 +91,5 @@ markdown_extensions:
       emoji_generator: !!python/name:pymdownx.emoji.to_svg
   - toc:
       permalink: '#'
+  - markdown.extensions.def_list
+  - pymdownx.tilde

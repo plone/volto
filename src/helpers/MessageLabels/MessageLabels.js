@@ -162,6 +162,22 @@ export const messages = defineMessages({
     id: 'Users and Groups',
     defaultMessage: 'Users and Groups',
   },
+  copyBlocks: {
+    id: 'Copy blocks',
+    defaultMesages: 'Copy blocks',
+  },
+  cutBlocks: {
+    id: 'Cut blocks',
+    defaultMesages: 'Cut blocks',
+  },
+  pasteBlocks: {
+    id: 'Paste blocks',
+    defaultMesages: 'Paste blocks',
+  },
+  deleteBlocks: {
+    id: 'Delete blocks',
+    defaultMesages: 'Delete blocks',
+  },
   showAllUserButton: {
     id: 'Show All',
     defaultMessage: 'Show All',
