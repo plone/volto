@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.2.1 (unreleased)
+
+### Added
+
+### Changes
+
 ## 2.2.0 (2021-01-09)
 
 ### Added
