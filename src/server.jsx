@@ -59,7 +59,7 @@ if (__DEVELOPMENT__ && settings.devProxyToApiPath) {
           settings.proxyRewriteTarget ||
           `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot/_vh_api`,
       },
-      logLevel: 'debug',
+      logLevel: 'silent', // change to 'debug' to see all requests
       ...(settings?.proxyRewriteTarget?.startsWith('https') && {
         changeOrigin: true,
         secure: false,
