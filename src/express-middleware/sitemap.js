@@ -10,14 +10,12 @@ export const sitemap = function (req, res, next) {
 };
 
 export default function () {
-  if (!window) {
+  if (typeof __SERVER__ !== 'undefined' && __SERVER__) {
     const express = require('express');
     const middleware = express.Router();
 
     middleware.all('**/sitemap.xml.gz', sitemap);
     middleware.id = 'sitemap.xml.gz';
-    return [middleware];
-  } else {
-    return [];
+    return middleware;
   }
 }
