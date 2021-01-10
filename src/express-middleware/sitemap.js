@@ -10,7 +10,7 @@ export const sitemap = function (req, res, next) {
 };
 
 export default function () {
-  if (__SERVER__) {
+  if (!window) {
     const express = require('express');
     const middleware = express.Router();
 

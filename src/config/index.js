@@ -30,7 +30,7 @@ import {
 
 import { sentryOptions } from './Sentry';
 import { contentIcons } from './ContentIcons';
-import sitemapMiddleware from '@plone/volto/express/sitemap';
+import sitemapMiddleware from '@plone/volto/express-middleware/sitemap';
 
 import applyAddonConfiguration from 'load-volto-addons';
 
