@@ -1,18 +1,18 @@
 import { getAPIResourceWithAuth } from '@plone/volto/helpers';
 
+const HEADERS = ['content-type', 'content-disposition', 'cache-control'];
+
 function imageMiddleware(req, res, next) {
   const { errorHandler } = req.app.locals;
   getAPIResourceWithAuth(req)
     .then((resource) => {
-      function forwardHeaders(headers) {
-        headers.forEach((header) => {
-          if (resource.headers[header]) {
-            res.set(header, resource.headers[header]);
-          }
-        });
-      }
       // Just forward the headers that we need
-      forwardHeaders(['content-type', 'content-disposition', 'cache-control']);
+      HEADERS.forEach((header) => {
+        if (resource.headers[header]) {
+          res.set(header, resource.headers[header]);
+        }
+      });
+
       res.send(resource.body);
     }, errorHandler)
     .catch(errorHandler);
