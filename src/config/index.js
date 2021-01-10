@@ -30,6 +30,7 @@ import {
 
 import { sentryOptions } from './Sentry';
 import { contentIcons } from './ContentIcons';
+import sitemapMiddleware from '@plone/volto/express/sitemap';
 
 import applyAddonConfiguration from 'load-volto-addons';
 
@@ -79,7 +80,7 @@ let config = {
     supportedLanguages: ['en'],
     defaultLanguage: 'en',
     navDepth: 1,
-    expressMiddleware: [],
+    expressMiddleware: [...sitemapMiddleware()],
     defaultBlockType: 'text',
     verticalFormTabs: false,
     persistentReducers: ['blocksClipboard'],

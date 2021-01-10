@@ -25,7 +25,7 @@ import {
   Html,
   Api,
   persistAuthToken,
-  generateSitemap,
+  // generateSitemap,
   getAPIResourceWithAuth,
 } from '@plone/volto/helpers';
 
@@ -135,14 +135,9 @@ server
 
     persistAuthToken(store);
 
-    if (req.path === '/sitemap.xml.gz') {
-      generateSitemap(req).then((sitemap) => {
-        res.set('Content-Type', 'application/x-gzip');
-        res.set('Content-Encoding', 'gzip');
-        res.set('Content-Disposition', 'attachment; filename="sitemap.xml.gz"');
-        res.send(sitemap);
-      });
-    } else if (
+    // if (req.path === '/sitemap.xml.gz') {
+    // } else if (
+    if (
       req.path.match(/(.*)\/@@images\/(.*)/) ||
       req.path.match(/(.*)\/@@download\/(.*)/)
     ) {
