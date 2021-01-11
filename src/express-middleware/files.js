@@ -23,7 +23,7 @@ export default function () {
     const middleware = express.Router();
 
     middleware.all(['**/@@download/*'], fileMiddleware);
-    middleware.id = 'staticResourcesProcessor';
+    middleware.id = 'filesResourcesProcessor';
     return middleware;
   }
 }

@@ -23,8 +23,8 @@ export default function () {
     const express = require('express');
     const middleware = express.Router();
 
-    middleware.all(['**/@@images/*', '**/@@download/*'], imageMiddleware);
-    middleware.id = 'staticResourcesProcessor';
+    middleware.all(['**/@@images/*'], imageMiddleware);
+    middleware.id = 'imageResourcesProcessor';
     return middleware;
   }
 }
