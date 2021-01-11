@@ -1,6 +1,6 @@
 # Change Log
 
-## 10.7.1 (unreleased)
+## 10.8.1 (unreleased)
 
 ### Breaking
 
@@ -9,6 +9,17 @@
 ### Bugfix
 
 ### Internal
+
+## 10.8.0 (2021-01-11)
+
+### Feature
+
+- Add proper icons to the table block @sneridagh
+
+### Internal
+
+- Add `packages` directory to the `modulePathIgnorePatterns` for the jest tests @sneridagh
+- Add `packages` directory in npmignore @sneridagh
 
 ## 10.7.0 (2021-01-05)
 

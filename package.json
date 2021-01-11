@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "10.7.0",
+  "version": "10.8.0",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -86,7 +86,8 @@
   },
   "jest": {
     "modulePathIgnorePatterns": [
-      "api"
+      "api",
+      "packages"
     ],
     "transform": {
       "^.+\\.js(x)?$": "babel-jest",
