@@ -8,7 +8,11 @@
 
 ### Bugfix
 
+- Better handling of @@images pipeline errors @tiberiuichim
+
 ### Internal
+
+- Move express middleware routes (sitemap, download, images and robotstxt) out of server.jsx into their own `express-middleware/*.js` modules. All express middleware now has access to the redux store, api middleware and an errorHandler, available under `req.app.locals` @tiberiuichim
 
 ## 10.8.0 (2021-01-11)
 
