@@ -68,9 +68,11 @@ if (__DEVELOPMENT__ && settings.devProxyToApiPath) {
   );
 }
 
-server.use(setupStore);
+server.all('*', setupStore);
 
 function setupStore(req, res, next) {
+  plugToRequest(req, res);
+
   const api = new Api(req);
 
   const browserdetect = detect(req.headers['user-agent']);
@@ -146,8 +148,6 @@ server
     res.send('');
   })
   .get('/*', (req, res) => {
-    plugToRequest(req, res);
-
     const { store, api, errorHandler } = req.app.locals;
 
     // @loadable/server extractor
