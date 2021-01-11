@@ -12,6 +12,9 @@
 
 ### Internal
 
+- Add `packages` directory to the `modulePathIgnorePatterns` for the jest tests @sneridagh
+- Add `packages` directory in npmignore @sneridagh
+
 ## 10.7.0 (2021-01-05)
 
 ### Feature
