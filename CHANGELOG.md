@@ -4,6 +4,7 @@
 ## 10.4.4 (unreleased)
 ## 10.6.1 (unreleased)
 ## 10.6.2 (unreleased)
+## 10.7.1 (unreleased)
 
 - added objectBrowser to UrlWidget, and attached UrlWidget to remoteUrl field of ContentType Link @giuliaghisini
 - managed tel link in UrlWidget and draftjs @giuliaghisini
@@ -23,9 +24,23 @@
 - Add emailSend action @nzambello
 ### Bugfix
 
+### Internal
+
+## 10.7.0 (2021-01-05)
+
+### Feature
+
+- Lazy load image in blocks Image and HeroImage @mamico
+
+### Bugfix
+
 - Fix redirection for Link objects. @cekk
 - Fix import order in server.jsx. @cekk @tiberiuichim
 - Fixed field type for 'from' field in ContactForm @giuliaghisini
+- Make sentry config more resilient to edge cases (SPA, storybook) @sneridagh
+- Handle errors on file and image download (#2098) @cekk
+- Remove test dependant on the year in `Copyright` footer section @sneridagh
+- Increase maxResponseSize for superagent calls. Now is 500mb (#2098) @cekk
 
 ### Internal
 

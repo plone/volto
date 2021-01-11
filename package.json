@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "10.6.1",
+  "version": "10.7.0",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -61,8 +61,10 @@
     "ci:start-api-plone": "make test-acceptance-server",
     "ci:start-api-guillotina": "make test-acceptance-guillotina",
     "ci:start-frontend": "RAZZLE_API_PATH=http://localhost:55001/plone yarn build && start-test start:prod http://localhost:3000 cypress:run",
+    "ci:start-project-frontend": "cd my-volto-app && RAZZLE_API_PATH=http://localhost:55001/plone yarn build && start-test start:prod http://localhost:3000 'cd .. && yarn cypress:run'",
     "ci:start-frontend-guillotina": "RAZZLE_API_PATH=http://localhost:8081/db/web yarn build && start-test start:prod http://localhost:3000 cypress:run:guillotina",
     "ci:cypress:run": "start-test ci:start-api-plone http-get://localhost:55001/plone ci:start-frontend",
+    "ci:cypress:project:run": "start-test ci:start-api-plone http-get://localhost:55001/plone ci:start-project-frontend",
     "ci:cypress:run:guillotina": "start-test ci:start-api-guillotina http-get://localhost:8081 ci:start-frontend-guillotina",
     "dry-release": "release-it --dry-run",
     "release": "release-it",
@@ -95,6 +97,7 @@
       "^.+\\.(svg)$": "./jest-svgsystem-transform.js"
     },
     "moduleNameMapper": {
+      "@plone/volto/babel": "<rootDir>/node_modules/@plone/volto/babel",
       "@plone/volto/(.*)$": "<rootDir>/src/$1",
       "~/config": "<rootDir>/src/config",
       "~/../locales/${lang}.json": "<rootDir>/locales/en.json",

@@ -35,19 +35,19 @@ const initSentry = (Sentry) => {
   }
 
   if (__CLIENT__) {
-    if (window.env.RAZZLE_SENTRY_DSN) {
+    if (window?.env?.RAZZLE_SENTRY_DSN) {
       if (!sentry_config) {
         sentry_config = {};
       }
       sentry_config.SENTRY_DSN = window.env.RAZZLE_SENTRY_DSN;
     }
     if (sentry_config) {
-      if (window.env.RAZZLE_SENTRY_FRONTEND_CONFIG) {
+      if (window?.env?.RAZZLE_SENTRY_FRONTEND_CONFIG) {
         sentry_config.SENTRY_CONFIG = JSON.parse(
           window.env.RAZZLE_SENTRY_FRONTEND_CONFIG,
         );
       }
-      if (window.env.RAZZLE_SENTRY_RELEASE) {
+      if (window?.env?.RAZZLE_SENTRY_RELEASE) {
         if (!sentry_config.SENTRY_CONFIG) {
           sentry_config.SENTRY_CONFIG = {};
         }

@@ -90,3 +90,21 @@ Sentry configuration:
         behavior. It can cause performance issues when you have large children
         (for example content with lots of text) and you need to batch requests
         anyway, if you want to be sure to display all the children.
+
+## persistentReducers
+
+!!! block ""
+
+    A list of reducer names that should use the browser's localstorage to
+    persist their data.
+
+## maxResponseSize
+
+!!! block ""
+
+    The library that we use to get files and images from the backend (superagent)
+    has a response size limit of 200 mb, so if you want to get a file bigger than 200 mb
+    from Plone, the SSR will throw an error.
+
+    You can edit this limit in the `settings` object setting a new value in bytes
+    (for example, to set 500 mb you need to write 5000000000).
