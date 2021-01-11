@@ -2,11 +2,7 @@ import { getAPIResourceWithAuth } from '@plone/volto/helpers';
 
 const HEADERS = ['content-type', 'content-disposition', 'cache-control'];
 
-function imageMiddleware(req, res, next) {
-  let sharp;
-  if (__SERVER__) {
-    sharp = require('sharp');
-  }
+function fileMiddleware(req, res, next) {
   const { errorHandler } = req.app.locals;
   getAPIResourceWithAuth(req)
     .then((resource) => {
@@ -16,18 +12,7 @@ function imageMiddleware(req, res, next) {
           res.set(header, resource.headers[header]);
         }
       });
-
-      const pipeline = sharp(resource.body);
-
-      const toFormat = 'webp'; // heif // avif // jpeg
-      const quality = 80;
-      pipeline.toFormat(toFormat, {
-        quality,
-      });
-      pipeline.toBuffer((err, data, info) => {
-        res.setHeader('Content-Type', `image/${info.format}`);
-        res.status(200).send(data);
-      });
+      res.send(resource.body);
     }, errorHandler)
     .catch(errorHandler);
 }
@@ -37,7 +22,7 @@ export default function () {
     const express = require('express');
     const middleware = express.Router();
 
-    middleware.all(['**/@@images/*', '**/@@download/*'], imageMiddleware);
+    middleware.all(['**/@@download/*'], fileMiddleware);
     middleware.id = 'staticResourcesProcessor';
     return middleware;
   }
