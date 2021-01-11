@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Add proper icons to the table block @sneridagh
+
 ### Bugfix
 
 ### Internal
