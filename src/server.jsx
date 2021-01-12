@@ -214,7 +214,7 @@ server
               `,
           );
         }
-      })
+      }, errorHandler)
       .catch(errorHandler);
   });
 
