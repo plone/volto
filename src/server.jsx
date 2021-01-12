@@ -43,7 +43,14 @@ if (settings) {
 
 const supported = new locale.Locales(keys(languages), 'en');
 
-const server = express();
+const server = express()
+  .disable('x-powered-by')
+  .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
+  .head('/*', function (req, res) {
+    // Support for HEAD requests. Required by start-test utility in CI.
+    res.send('');
+  });
+
 // Internal proxy to bypass CORS while developing.
 if (__DEVELOPMENT__ && settings.devProxyToApiPath) {
   const apiPathURL = parseUrl(settings.apiPath);
@@ -68,9 +75,9 @@ if (__DEVELOPMENT__ && settings.devProxyToApiPath) {
   );
 }
 
-server.all('*', setupStore);
+server.all('*', setupServer);
 
-function setupStore(req, res, next) {
+function setupServer(req, res, next) {
   plugToRequest(req, res);
 
   const api = new Api(req);
@@ -138,63 +145,56 @@ function setupStore(req, res, next) {
 const expressMiddleware = (settings.expressMiddleware || []).filter(
   (m) => typeof m !== 'undefined',
 );
-if (expressMiddleware) server.use('/', expressMiddleware);
+if (expressMiddleware.length) server.use('/', expressMiddleware);
 
-server
-  .disable('x-powered-by')
-  .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
-  .head('/*', function (req, res) {
-    // Support for HEAD requests. Required by start-test utility in CI.
-    res.send('');
-  })
-  .get('/*', (req, res) => {
-    const { store, api, errorHandler } = req.app.locals;
+server.get('/*', (req, res) => {
+  const { store, api, errorHandler } = req.app.locals;
 
-    // @loadable/server extractor
-    const extractor = new ChunkExtractor({
-      statsFile: path.resolve('build/loadable-stats.json'),
-      entrypoints: ['client'],
-    });
+  // @loadable/server extractor
+  const extractor = new ChunkExtractor({
+    statsFile: path.resolve('build/loadable-stats.json'),
+    entrypoints: ['client'],
+  });
 
-    const url = req.originalUrl || req.url;
-    const location = parseUrl(url);
+  const url = req.originalUrl || req.url;
+  const location = parseUrl(url);
 
-    loadOnServer({ store, location, routes, api })
-      .then(() => {
-        // The content info is in the store at this point thanks to the asynconnect
-        // features, then we can force the current language info into the store when
-        // coming from an SSR request
-        const updatedLang =
-          store.getState().content.data?.language?.token ||
-          settings.defaultLanguage;
-        store.dispatch(
-          updateIntl({
-            locale: updatedLang,
-            messages: locales[updatedLang],
-          }),
-        );
+  loadOnServer({ store, location, routes, api })
+    .then(() => {
+      // The content info is in the store at this point thanks to the asynconnect
+      // features, then we can force the current language info into the store when
+      // coming from an SSR request
+      const updatedLang =
+        store.getState().content.data?.language?.token ||
+        settings.defaultLanguage;
+      store.dispatch(
+        updateIntl({
+          locale: updatedLang,
+          messages: locales[updatedLang],
+        }),
+      );
 
-        const context = {};
-        resetServerContext();
-        const markup = renderToString(
-          <ChunkExtractorManager extractor={extractor}>
-            <Provider store={store}>
-              <StaticRouter context={context} location={req.url}>
-                <ReduxAsyncConnect routes={routes} helpers={api} />
-              </StaticRouter>
-            </Provider>
-          </ChunkExtractorManager>,
-        );
+      const context = {};
+      resetServerContext();
+      const markup = renderToString(
+        <ChunkExtractorManager extractor={extractor}>
+          <Provider store={store}>
+            <StaticRouter context={context} location={req.url}>
+              <ReduxAsyncConnect routes={routes} helpers={api} />
+            </StaticRouter>
+          </Provider>
+        </ChunkExtractorManager>,
+      );
 
-        if (context.url) {
-          res.redirect(flattenToAppURL(context.url));
-        } else if (context.error_code) {
-          res.set({
-            'Cache-Control': 'no-cache',
-          });
+      if (context.url) {
+        res.redirect(flattenToAppURL(context.url));
+      } else if (context.error_code) {
+        res.set({
+          'Cache-Control': 'no-cache',
+        });
 
-          res.status(context.error_code).send(
-            `<!doctype html>
+        res.status(context.error_code).send(
+          `<!doctype html>
                 ${renderToString(
                   <Html
                     extractor={extractor}
@@ -204,20 +204,21 @@ server
                   />,
                 )}
               `,
-          );
-        } else {
-          res.status(200).send(
-            `<!doctype html>
+        );
+      } else {
+        res.status(200).send(
+          `<!doctype html>
                 ${renderToString(
                   <Html extractor={extractor} markup={markup} store={store} />,
                 )}
               `,
-          );
-        }
-      }, errorHandler)
-      .catch(errorHandler);
-  });
+        );
+      }
+    }, errorHandler)
+    .catch(errorHandler);
+});
 
 server.apiPath = settings.apiPath;
 server.devProxyToApiPath = settings.devProxyToApiPath;
+
 export default server;
