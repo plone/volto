@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix 'All' button batch size in Contents @nzambello
+
 ### Internal
 
 ## 10.8.0 (2021-01-11)
