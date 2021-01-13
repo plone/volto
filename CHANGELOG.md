@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Enhance `BlockChooser` by adding support for `allowedBlocks` and `showRestricted` @avoinea @sneridagh
+
 ### Bugfix
 
 ### Internal
