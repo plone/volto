@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix `More` menu when using with Plone 4 backend / history action is undefined @avoinea
+
 ### Internal
 
 ## 10.8.0 (2021-01-11)
