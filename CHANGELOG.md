@@ -1,6 +1,6 @@
 # Change Log
 
-## 10.4.2 (unreleased)
+## 10.8.1 (unreleased)
 
 ### Breaking
 
@@ -11,13 +11,101 @@
 
 ### Internal
 
+## 10.8.0 (2021-01-11)
+
+### Feature
+
+- Add proper icons to the table block @sneridagh
+
+### Internal
+
+- Add `packages` directory to the `modulePathIgnorePatterns` for the jest tests @sneridagh
+- Add `packages` directory in npmignore @sneridagh
+
+## 10.7.0 (2021-01-05)
+
+### Feature
+
+- Lazy load image in blocks Image and HeroImage @mamico
+
+### Bugfix
+
+- Fix redirection for Link objects. @cekk
+- Fix import order in server.jsx. @cekk @tiberiuichim
+- Make sentry config more resilient to edge cases (SPA, storybook) @sneridagh
+- Handle errors on file and image download (#2098) @cekk
+- Remove test dependant on the year in `Copyright` footer section @sneridagh
+- Increase maxResponseSize for superagent calls. Now is 500mb (#2098) @cekk
+
+### Internal
+
+- Translations german: Unauthorized, Login/Register @ksuess
+
+## 10.6.1 (2020-12-21)
+
+### Bugfix
+
+- Better API helper end request handling, since the existing one was causing problems and rendered the SSR server unusable in case of the request was rejected @sneridagh
+
+### Internal
+
+- Add a paragraph on dealing with CORS errors in Deploying doc page @tiberiuichim
+- Remove useless RobotFramework related packages, keep only the minimum required ones @sneridagh
+- Updated italian translations @nzambello
+
+## 10.6.0 (2020-12-18)
+
+### Feature
+
+- Allow setting a custom robots.txt from environment with the `VOLTO_ROBOTSTXT` environment variable @tiberiuichim
+
+### Bugfix
+
+- Replace `__SERVER__` occurrence from table `Edit` component @sneridagh
+
+
+## 10.5.0 (2020-12-17)
+
+### Feature
+
+- Adding `All` button to folder content @iFlameing
+
+### Bugfix
+
+- Fix "is client" check for SidebarPortal @tiberiuichim @sneridagh
+
+## 10.4.3 (2020-12-15)
+
+### Internal
+
+- Bring back `App` to `components/index.js` for now, since it's breaking the projects
+  where it gets referenced from `routes.js`. @sneridagh
+
+## 10.4.2 (2020-12-15)
+
+**This is a brown bag release and should not be used, upgrade to Volto 10.4.3 instead.**
+
+### Bugfix
+
+- Fix numeric widget console warnings regarding flex styling refs #2059 @ichim-david
+- Fix numeric widget crash once we click inside it refs #2059 @ichim-david
+
+### Internal
+
+- Fix some key points to improve the circular imports problem @sneridagh
+
+  - `App` and `View` components are meant to be used only by Volto internals, so it's no
+    point into having them exported in `components/index.js` that facilitated a path for
+    circular imports.
+  - `withObjectBrowser` and friends also are prone to facilitate a path for having
+    circular imports, so we are using there only absolute imports.
+  - All these changes are non-breaking and non-intrusive.
+
 ## 10.4.1 (2020-12-12)
 
 ### Bugfix
 
 - Make sure that prism is loaded before rendering HTML block @tiberiuichim
-
-### Internal
 
 ## 10.4.0 (2020-12-11)
 

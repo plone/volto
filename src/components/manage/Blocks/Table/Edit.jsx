@@ -15,9 +15,12 @@ import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import Cell from '@plone/volto/components/manage/Blocks/Table/Cell';
 import { Field, Icon } from '@plone/volto/components';
 
-import rowSVG from '@plone/volto/icons/row.svg';
-import colSVG from '@plone/volto/icons/column.svg';
-import deleteSVG from '@plone/volto/icons/delete.svg';
+import rowBeforeSVG from '@plone/volto/icons/row-before.svg';
+import rowAfterSVG from '@plone/volto/icons/row-after.svg';
+import colBeforeSVG from '@plone/volto/icons/column-before.svg';
+import colAfterSVG from '@plone/volto/icons/column-after.svg';
+import rowDeleteSVG from '@plone/volto/icons/row-delete.svg';
+import colDeleteSVG from '@plone/volto/icons/column-delete.svg';
 
 const getId = () => Math.floor(Math.random() * Math.pow(2, 24)).toString(32);
 
@@ -520,7 +523,7 @@ class Edit extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    if (__SERVER__) {
+    if (!this.state.isClient) {
       return <div />;
     }
 
@@ -538,7 +541,7 @@ class Edit extends Component {
                   messages.insertRowBefore,
                 )}
               >
-                <Icon name={rowSVG} size="24px" />
+                <Icon name={rowBeforeSVG} size="24px" />
               </Button>
             </Button.Group>
             <Button.Group>
@@ -551,7 +554,7 @@ class Edit extends Component {
                   messages.insertRowAfter,
                 )}
               >
-                <Icon name={rowSVG} size="24px" />
+                <Icon name={rowAfterSVG} size="24px" />
               </Button>
             </Button.Group>
             <Button.Group>
@@ -566,7 +569,7 @@ class Edit extends Component {
                 title={this.props.intl.formatMessage(messages.deleteRow)}
                 aria-label={this.props.intl.formatMessage(messages.deleteRow)}
               >
-                <Icon name={deleteSVG} size="24px" />
+                <Icon name={rowDeleteSVG} size="24px" />
               </Button>
             </Button.Group>
             <Button.Group>
@@ -579,7 +582,7 @@ class Edit extends Component {
                   messages.insertColBefore,
                 )}
               >
-                <Icon name={colSVG} size="24px" />
+                <Icon name={colBeforeSVG} size="24px" />
               </Button>
             </Button.Group>
             <Button.Group>
@@ -592,7 +595,7 @@ class Edit extends Component {
                   messages.insertColAfter,
                 )}
               >
-                <Icon name={colSVG} size="24px" />
+                <Icon name={colAfterSVG} size="24px" />
               </Button>
             </Button.Group>
             <Button.Group>
@@ -607,7 +610,7 @@ class Edit extends Component {
                 title={this.props.intl.formatMessage(messages.deleteCol)}
                 aria-label={this.props.intl.formatMessage(messages.deleteCol)}
               >
-                <Icon name={deleteSVG} size="24px" />
+                <Icon name={colDeleteSVG} size="24px" />
               </Button>
             </Button.Group>
           </div>
