@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix `/sharing` page when using with Guillotina (#2122) @avoinea
+
 ### Internal
 
 ## 10.8.0 (2021-01-11)
