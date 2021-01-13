@@ -16,7 +16,7 @@ We can use the new sidebar when building our blocks' edit components.
 The sidebar is a new UI asset that is available in Volto 4.
 You need to instantiate it this way:
 
-```js
+```jsx
 import { SidebarPortal } from '@plone/volto/components';
 
 [...]
@@ -188,6 +188,36 @@ if we use object browser widget for fields:
 - **related_pages**: propDataName is _related_pages_ and dataName is null,
 - **image**: dataName is _url_ and propDataName is null
 - **link**: dataName is _href_ and propDataName is null
+
+#### Usage in blocks schema
+
+Used in along with `InlineForm`, one can instantiate and configure it using the widget props like this:
+
+```js
+{
+  title: 'Item',
+  fieldsets: [
+    {
+      id: 'default',
+      title: 'Default',
+      fields: ['href'],
+    },
+  ],
+  properties: {
+    href: {
+      title: 'title',
+      widget: 'object_browser',
+      mode: 'link',
+      selectedItemAttrs: ['Title', 'Description'],
+    },
+}
+```
+
+#### selectedItemAttrs
+
+You can select the attributes from the object (coming from the metadata brain from
+@search endpoint used in the browser) using the `selectedItemAttrs` prop as shown in the
+last example.
 
 #### ObjectBrowserWidgetMode()
 

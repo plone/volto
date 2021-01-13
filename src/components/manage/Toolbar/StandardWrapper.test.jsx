@@ -31,6 +31,9 @@ describe('Toolbar Personal Tools component', () => {
             unloadComponent={() => {}}
             closeMenu={() => {}}
             hasActions
+            theToolbar={{
+              current: { getBoundingClientRect: () => ({ width: '320' }) },
+            }}
           />
         </MemoryRouter>
       </Provider>,

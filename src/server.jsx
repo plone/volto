@@ -19,6 +19,7 @@ import { resetServerContext } from 'react-beautiful-dnd';
 
 import routes from '~/routes';
 import { settings } from '~/config';
+import { flattenToAppURL } from '@plone/volto/helpers';
 
 import {
   Html,
@@ -61,11 +62,24 @@ if (__DEVELOPMENT__ && settings.devProxyToApiPath) {
     createProxyMiddleware({
       target: serverURL,
       pathRewrite: {
-        '^/api': `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot/_vh_api`,
+        '^/api':
+          settings.proxyRewriteTarget ||
+          `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot/_vh_api`,
       },
       logLevel: 'silent',
+      ...(settings?.proxyRewriteTarget?.startsWith('https') && {
+        changeOrigin: true,
+        secure: false,
+      }),
     }),
   );
+}
+
+if (process.env.VOLTO_ROBOTSTXT) {
+  server.use('/robots.txt', function (req, res) {
+    res.type('text/plain');
+    res.send(process.env.VOLTO_ROBOTSTXT);
+  });
 }
 
 if ((settings.expressMiddleware || []).length)
@@ -74,6 +88,10 @@ if ((settings.expressMiddleware || []).length)
 server
   .disable('x-powered-by')
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
+  .head('/*', function (req, res) {
+    // Support for HEAD requests. Required by start-test utility in CI.
+    res.send('');
+  })
   .get('/*', (req, res) => {
     plugToRequest(req, res);
     const api = new Api(req);
@@ -129,22 +147,41 @@ server
       req.path.match(/(.*)\/@@images\/(.*)/) ||
       req.path.match(/(.*)\/@@download\/(.*)/)
     ) {
-      getAPIResourceWithAuth(req).then((resource) => {
-        function forwardHeaders(headers) {
-          headers.forEach((header) => {
-            if (resource.headers[header]) {
-              res.set(header, resource.headers[header]);
-            }
+      getAPIResourceWithAuth(req)
+        .then((resource) => {
+          function forwardHeaders(headers) {
+            headers.forEach((header) => {
+              if (resource.headers[header]) {
+                res.set(header, resource.headers[header]);
+              }
+            });
+          }
+          // Just forward the headers that we need
+          forwardHeaders([
+            'content-type',
+            'content-disposition',
+            'cache-control',
+          ]);
+          res.send(resource.body);
+        })
+        .catch((error) => {
+          const errorPage = (
+            <Provider store={store}>
+              <StaticRouter context={{}} location={req.url}>
+                <ErrorPage message={error.message} />
+              </StaticRouter>
+            </Provider>
+          );
+
+          res.set({
+            'Cache-Control': 'public, max-age=60, no-transform',
           });
-        }
-        // Just forward the headers that we need
-        forwardHeaders([
-          'content-type',
-          'content-disposition',
-          'cache-control',
-        ]);
-        res.send(resource.body);
-      });
+
+          // Displays error in console
+          console.error(error);
+
+          res.status(500).send(`<!doctype html> ${renderToString(errorPage)}`);
+        });
     } else {
       loadOnServer({ store, location, routes, api })
         .then(() => {
@@ -170,7 +207,24 @@ server
           );
 
           if (context.url) {
-            res.redirect(context.url);
+            res.redirect(flattenToAppURL(context.url));
+          } else if (context.error_code) {
+            res.set({
+              'Cache-Control': 'no-cache',
+            });
+
+            res.status(context.error_code).send(
+              `<!doctype html>
+                ${renderToString(
+                  <Html
+                    extractor={extractor}
+                    markup={markup}
+                    store={store}
+                    extractScripts={process.env.NODE_ENV !== 'production'}
+                  />,
+                )}
+              `,
+            );
           } else {
             res.status(200).send(
               `<!doctype html>

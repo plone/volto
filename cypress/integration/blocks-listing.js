@@ -15,12 +15,13 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.waitForResourceToLoad('@breadcrumbs');
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('my-page?fullobjects');
+      cy.waitForResourceToLoad('my-page');
       cy.navigate('/my-page/edit');
       cy.get(`.block.title [data-contents]`);
     });
 
     it('Add Listing block', () => {
+      // Given One Document My Page Test and One News Item MY News and One Folder My Folder
       cy.createContent({
         contentType: 'Document',
         contentId: 'my-page-test',
@@ -45,22 +46,16 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.waitForResourceToLoad('@breadcrumbs');
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('my-page?fullobjects');
+      cy.waitForResourceToLoad('my-page');
       cy.navigate('/my-page/edit');
 
-      cy.get(`.block.title [data-contents]`)
-        .clear()
-        .type('My title');
+      cy.get(`.block.title [data-contents]`).clear().type('My title');
 
       //add listing block
       cy.get('.block.text [contenteditable]').click();
       cy.get('button.block-add-button').click();
-      cy.get('.blocks-chooser .title')
-        .contains('Common')
-        .click();
-      cy.get('.blocks-chooser .common')
-        .contains('Listing')
-        .click();
+      cy.get('.blocks-chooser .title').contains('Common').click();
+      cy.get('.blocks-chooser .common').contains('Listing').click();
 
       //verify before save
       cy.get(`.block.listing .listing-body:first-of-type`).contains(
@@ -111,22 +106,16 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.waitForResourceToLoad('@breadcrumbs');
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('my-page?fullobjects');
+      cy.waitForResourceToLoad('my-page');
       cy.navigate('/my-page/edit');
 
-      cy.get(`.block.title [data-contents]`)
-        .clear()
-        .type('My title');
+      cy.get(`.block.title [data-contents]`).clear().type('My title');
 
       //add listing block
       cy.get('.block.text [contenteditable]').click();
       cy.get('button.block-add-button').click();
-      cy.get('.blocks-chooser .title')
-        .contains('Common')
-        .click();
-      cy.get('.blocks-chooser .common')
-        .contains('Listing')
-        .click();
+      cy.get('.blocks-chooser .title').contains('Common').click();
+      cy.get('.blocks-chooser .common').contains('Listing').click();
 
       //verify before save
       cy.get(`.block.listing .listing-body:first-of-type`).contains('Page One');
@@ -152,6 +141,7 @@ if (Cypress.env('API') !== 'guillotina') {
     });
 
     it('Listing block - Test Criteria: short-name', () => {
+      // Given three Document in My Page i.e My News, My Folder and My Page Test
       cy.createContent({
         contentType: 'Document',
         contentId: 'my-page-test',
@@ -176,7 +166,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.waitForResourceToLoad('@breadcrumbs');
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('my-page?fullobjects');
+      cy.waitForResourceToLoad('my-page');
       cy.navigate('/my-page/edit');
 
       cy.get(`.block.title [data-contents]`)
@@ -186,20 +176,14 @@ if (Cypress.env('API') !== 'guillotina') {
       //add listing block
       cy.get('.block.text [contenteditable]').click();
       cy.get('button.block-add-button').click();
-      cy.get('.blocks-chooser .title')
-        .contains('Common')
-        .click();
-      cy.get('.blocks-chooser .common')
-        .contains('Listing')
-        .click();
+      cy.get('.blocks-chooser .title').contains('Common').click();
+      cy.get('.blocks-chooser .common').contains('Listing').click();
 
       //********  add short-name criteria filter
       cy.get('.sidebar-container .tabs-wrapper .menu .item')
         .contains('Block')
         .click();
-      cy.get('.sidebar-listing-data .fields')
-        .contains('Add criteria')
-        .click();
+      cy.get('.sidebar-listing-data .fields').contains('Add criteria').click();
       cy.get(
         '.sidebar-listing-data .fields:first-of-type .field:first-of-type .react-select__menu .react-select__option',
       )
@@ -243,6 +227,8 @@ if (Cypress.env('API') !== 'guillotina') {
     });
 
     it('Listing block - Test Criteria: Location relative', () => {
+      // Given two Document in My Page i.e Document outside Folder and My Folder
+      // And One Document in My Folder i.e Document within Folder
       cy.createContent({
         contentType: 'Document',
         contentId: 'document-outside-folder',
@@ -269,7 +255,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.waitForResourceToLoad('@breadcrumbs');
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('my-folder?fullobjects');
+      cy.waitForResourceToLoad('my-folder');
       cy.navigate('/my-page/my-folder/edit');
 
       cy.get(`.block.title [data-contents]`)
@@ -279,20 +265,14 @@ if (Cypress.env('API') !== 'guillotina') {
       //add listing block
       cy.get('.block.text [contenteditable]').click();
       cy.get('button.block-add-button').click();
-      cy.get('.blocks-chooser .title')
-        .contains('Common')
-        .click();
-      cy.get('.blocks-chooser .common')
-        .contains('Listing')
-        .click();
+      cy.get('.blocks-chooser .title').contains('Common').click();
+      cy.get('.blocks-chooser .common').contains('Listing').click();
 
       //********  add location criteria filter
       cy.get('.sidebar-container .tabs-wrapper .menu .item')
         .contains('Block')
         .click();
-      cy.get('.sidebar-listing-data .fields')
-        .contains('Add criteria')
-        .click();
+      cy.get('.sidebar-listing-data .fields').contains('Add criteria').click();
       cy.get(
         '.sidebar-listing-data .fields:first-of-type .field:first-of-type .react-select__menu .react-select__option',
       )
@@ -335,6 +315,8 @@ if (Cypress.env('API') !== 'guillotina') {
     });
 
     it('Listing block - Test Criteria: Location absolute', () => {
+      // Given two Document in My Page i.e Document outside Folder and My Folder
+      // And One Document in My Folder i.e Document within Folder
       cy.createContent({
         contentType: 'Document',
         contentId: 'document-outside-folder',
@@ -361,7 +343,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.waitForResourceToLoad('@breadcrumbs');
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('my-folder?fullobjects');
+      cy.waitForResourceToLoad('my-folder');
       cy.navigate('/my-page/my-folder/edit');
 
       cy.get(`.block.title [data-contents]`)
@@ -371,20 +353,14 @@ if (Cypress.env('API') !== 'guillotina') {
       //add listing block
       cy.get('.block.text [contenteditable]').click();
       cy.get('button.block-add-button').click();
-      cy.get('.blocks-chooser .title')
-        .contains('Common')
-        .click();
-      cy.get('.blocks-chooser .common')
-        .contains('Listing')
-        .click();
+      cy.get('.blocks-chooser .title').contains('Common').click();
+      cy.get('.blocks-chooser .common').contains('Listing').click();
 
       //********  add location criteria filter
       cy.get('.sidebar-container .tabs-wrapper .menu .item')
         .contains('Block')
         .click();
-      cy.get('.sidebar-listing-data .fields')
-        .contains('Add criteria')
-        .click();
+      cy.get('.sidebar-listing-data .fields').contains('Add criteria').click();
       cy.get(
         '.sidebar-listing-data .fields:first-of-type .field:first-of-type .react-select__menu .react-select__option',
       )
@@ -425,7 +401,89 @@ if (Cypress.env('API') !== 'guillotina') {
         .contains('Document outside Folder')
         .should('not.exist');
     });
-    it('Listing block - Test Criteria: Location Navigation path', () => {
+    it('Listing block - Test Criteria: Location relative with some outside content', () => {
+      // Given we have two document about us, contact at portal route and two document in My Page
+      // i.e News Item One and News Item Two
+      cy.createContent({
+        contentType: 'Document',
+        contentId: 'about-us',
+        contentTitle: 'about us',
+        path: '/',
+      });
+      cy.createContent({
+        contentType: 'Document',
+        contentId: 'contact',
+        contentTitle: 'contact',
+        path: '/',
+      });
+
+      cy.createContent({
+        contentType: 'Document',
+        contentId: 'news-item-one',
+        contentTitle: 'News Item One',
+        path: 'my-page',
+      });
+
+      cy.createContent({
+        contentType: 'Document',
+        contentId: 'news-item-two',
+        contentTitle: 'News Item Two',
+        path: 'my-page',
+      });
+
+      //add listing block
+      cy.get('.block.text [contenteditable]').click();
+      cy.get('button.block-add-button').click();
+      cy.get('.blocks-chooser .title').contains('Common').click();
+      cy.get('.blocks-chooser .common').contains('Listing').click();
+
+      //********  add location criteria filter
+      cy.get('.sidebar-container .tabs-wrapper .menu .item')
+        .contains('Block')
+        .click();
+      cy.get('.sidebar-listing-data .fields').contains('Add criteria').click();
+      cy.get(
+        '.sidebar-listing-data .fields:first-of-type .field:first-of-type .react-select__menu .react-select__option',
+      )
+        .contains('Location')
+        .click();
+      //location relative..
+      cy.get(
+        '.sidebar-listing-data .fields:first-of-type .main-fields-wrapper .field:last-of-type',
+      ).click();
+      cy.get(
+        '.sidebar-listing-data .fields:first-of-type .main-fields-wrapper .field:last-of-type .react-select__menu .react-select__option',
+      )
+        .contains('Relative path')
+        .click();
+
+      //insert relative path
+      cy.get('.sidebar-listing-data .fields:first-of-type > .field input')
+        .clear()
+        .type('.');
+
+      // verify if in list there's a page with name "Document within Folder"
+      cy.get(`.block.listing .listing-body:first-of-type`).contains(
+        'News Item One',
+      );
+      // verify if in list there isn't page with name "Document outside Folder"
+      cy.get(`.block.listing .listing-body`)
+        .contains('about us')
+        .should('not.exist');
+
+      // save;
+      cy.get('#toolbar-save').click();
+
+      //test location relative criteria after save
+      cy.get(`.block.listing .listing-body:first-of-type`).contains(
+        'News Item One',
+      );
+      cy.get(`.block.listing .listing-body`)
+        .contains('about us')
+        .should('not.exist');
+    });
+
+    it('Listing block - Test Criteria: Location Navigation', () => {
       /*not implemented because Navigation ui is not yet developed in Listing Block sidebar*/
     });
   });

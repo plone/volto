@@ -5,10 +5,8 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Editor from 'react-simple-code-editor';
-import { highlight, languages } from 'prismjs/components/prism-core';
-import 'prismjs/components/prism-markup';
-import { Button } from 'semantic-ui-react';
+import { compose } from 'redux';
+import { Button, Popup } from 'semantic-ui-react';
 import loadable from '@loadable/component';
 import { defineMessages, injectIntl } from 'react-intl';
 
@@ -16,8 +14,12 @@ import { Icon } from '@plone/volto/components';
 import showSVG from '@plone/volto/icons/show.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import codeSVG from '@plone/volto/icons/code.svg';
+import indentSVG from '@plone/volto/icons/indent.svg';
 
-const Pretty = loadable.lib(() => import('pretty'));
+const Editor = loadable(() => import('react-simple-code-editor'));
+const Prettier = loadable.lib(() => import('prettier/standalone'));
+const ParserHtml = loadable.lib(() => import('prettier/parser-html'));
+const PrismCore = loadable.lib(() => import('prismjs/components/prism-core'));
 
 const messages = defineMessages({
   source: {
@@ -31,6 +33,18 @@ const messages = defineMessages({
   placeholder: {
     id: '<p>Add some HTML here</p>',
     defaultMessage: '<p>Add some HTML here</p>',
+  },
+  prettier: {
+    id: 'Prettify your code',
+    defaultMessage: 'Prettify your code',
+  },
+  clear: {
+    id: 'Clear',
+    defaultMessage: 'Clear',
+  },
+  code: {
+    id: 'Code',
+    defaultMessage: 'Code',
   },
 });
 
@@ -74,7 +88,7 @@ class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      code: this.props.data.html || '',
+      // code: this.props.data.html || '',
       isPreview: false,
     };
     this.onChangeCode = this.onChangeCode.bind(this);
@@ -83,24 +97,12 @@ class Edit extends Component {
   }
 
   /**
-   * Component will receive props
-   * @method componentDidMount
+   * Component did update
+   * @method componentDidUpdate
    * @returns {undefined}
    */
-  componentDidMount() {
-    if (this.props.selected) {
-      this.codeEditor._input.focus();
-    }
-  }
-
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.selected) {
+  componentDidUpdate(prevProps, prevState) {
+    if (this.codeEditor && this.props.selected && !prevProps.selected) {
       this.codeEditor._input.focus();
     }
   }
@@ -116,10 +118,11 @@ class Edit extends Component {
       ...this.props.data,
       html: code,
     });
-    this.setState({ code });
   }
 
-  pretty = React.createRef();
+  getValue() {
+    return this.props.data.html || '';
+  }
 
   /**
    * Preview mode handler
@@ -127,11 +130,37 @@ class Edit extends Component {
    * @returns {undefined}
    */
   onPreview() {
-    this.setState({
-      isPreview: !this.state.isPreview,
-      code: this.pretty.current.default(this.state.code),
-    });
+    const code = this.prettier.current.default
+      .format(this.getValue(), {
+        parser: 'html',
+        plugins: [this.parserHtml.current.default],
+      })
+      .trim();
+
+    this.setState(
+      {
+        isPreview: !this.state.isPreview,
+      },
+      () => this.onChangeCode(code),
+    );
   }
+
+  /**
+   * Prettify handler
+   * @method onPrettify
+   * @returns {undefined}
+   */
+
+  onPrettify = () => {
+    this.onChangeCode(
+      this.prettier.current.default
+        .format(this.getValue(), {
+          parser: 'html',
+          plugins: [this.parserHtml.current.default],
+        })
+        .trim(),
+    );
+  };
 
   /**
    * Code Editor mode handler
@@ -141,6 +170,10 @@ class Edit extends Component {
   onCodeEditor() {
     this.setState({ isPreview: !this.state.isPreview });
   }
+
+  //ref
+  prettier = React.createRef();
+  parserHtml = React.createRef();
 
   /**
    * Render method.
@@ -153,49 +186,82 @@ class Edit extends Component {
       this.props.intl.formatMessage(messages.placeholder);
     return (
       <>
-        <Pretty ref={this.pretty} />
-        {this.props.selected && !!this.state.code && (
+        <Prettier ref={this.prettier} />
+        <ParserHtml ref={this.parserHtml} />
+        {this.props.selected && !!this.getValue() && (
           <div className="toolbar">
-            <Button.Group>
-              <Button
-                icon
-                basic
-                aria-label={this.props.intl.formatMessage(messages.source)}
-                active={!this.state.isPreview}
-                onClick={this.onCodeEditor}
-              >
-                <Icon name={codeSVG} size="24px" />
-              </Button>
-            </Button.Group>
-            <Button.Group>
-              <Button
-                icon
-                basic
-                aria-label={this.props.intl.formatMessage(messages.preview)}
-                active={this.state.isPreview}
-                onClick={this.onPreview}
-              >
-                <Icon name={showSVG} size="24px" />
-              </Button>
-            </Button.Group>
+            <Popup
+              trigger={
+                <Button
+                  icon
+                  basic
+                  aria-label={this.props.intl.formatMessage(messages.source)}
+                  active={!this.state.isPreview}
+                  onClick={this.onCodeEditor}
+                >
+                  <Icon name={codeSVG} size="24px" />
+                </Button>
+              }
+              position="top center"
+              content={this.props.intl.formatMessage(messages.code)}
+              size="mini"
+            />
+            <Popup
+              trigger={
+                <Button
+                  icon
+                  basic
+                  aria-label={this.props.intl.formatMessage(messages.preview)}
+                  active={this.state.isPreview}
+                  onClick={this.onPreview}
+                >
+                  <Icon name={showSVG} size="24px" />
+                </Button>
+              }
+              position="top center"
+              content={this.props.intl.formatMessage(messages.preview)}
+              size="mini"
+            />
+            <Popup
+              trigger={
+                <Button
+                  icon
+                  basic
+                  aria-label={this.props.intl.formatMessage(messages.prettier)}
+                  onClick={this.onPrettify}
+                >
+                  <Icon name={indentSVG} size="24px" />
+                </Button>
+              }
+              position="top center"
+              content={this.props.intl.formatMessage(messages.prettier)}
+              size="mini"
+            />
             <div className="separator" />
-            <Button.Group>
-              <Button icon basic onClick={() => this.onChangeCode('')}>
-                <Icon name={clearSVG} size="24px" color="#e40166" />
-              </Button>
-            </Button.Group>
+            <Popup
+              trigger={
+                <Button.Group>
+                  <Button icon basic onClick={() => this.onChangeCode('')}>
+                    <Icon name={clearSVG} size="24px" color="#e40166" />
+                  </Button>
+                </Button.Group>
+              }
+              position="top center"
+              content={this.props.intl.formatMessage(messages.clear)}
+              size="mini"
+            />
           </div>
         )}
         {this.state.isPreview && (
-          <div dangerouslySetInnerHTML={{ __html: this.state.code }} />
+          <div dangerouslySetInnerHTML={{ __html: this.getValue() }} />
         )}
-        {!this.state.isPreview && (
+        {!this.state.isPreview && this.props.highlight && (
           <Editor
             readOnly={!this.props.editable}
-            value={this.state.code}
+            value={this.getValue()}
             placeholder={placeholder}
             onValueChange={(code) => this.onChangeCode(code)}
-            highlight={(code) => highlight(code, languages.html)}
+            highlight={this.props.highlight}
             padding={8}
             className="html-editor"
             ref={(node) => {
@@ -208,4 +274,41 @@ class Edit extends Component {
   }
 }
 
-export default injectIntl(Edit);
+function withPrism(WrappedComponent) {
+  return (props) => {
+    const [prism, setPrism] = React.useState();
+    const prismCore = prism?.default;
+
+    return (
+      <>
+        <PrismCore ref={(ref) => setPrism(ref)} />
+        {prism && (
+          <WrappedComponent
+            {...props}
+            highlight={
+              prismCore
+                ? (code) => prismCore.highlight(code, prismCore.languages.html)
+                : null
+            }
+          />
+        )}
+      </>
+    );
+  };
+}
+
+const withPrismMarkup = (WrappedComponent) => (props) => {
+  const [loaded, setLoaded] = React.useState();
+  React.useEffect(() => {
+    import('prismjs/components/prism-markup').then(() => setLoaded(true));
+    return;
+  }, []);
+
+  return loaded ? <WrappedComponent {...props} /> : null;
+};
+
+export default compose(
+  injectIntl,
+  withPrism,
+  withPrismMarkup, // needs to be loaded after withPrism
+)(Edit);

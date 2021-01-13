@@ -3,6 +3,11 @@
 exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools component 1`] = `
 <div
   className="personal-tools pastanaga-menu"
+  style={
+    Object {
+      "flex": "0 0 320px",
+    }
+  }
 >
   <header
     className="header"

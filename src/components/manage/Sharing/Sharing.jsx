@@ -15,7 +15,7 @@ import {
   Checkbox,
   Container,
   Form,
-  Icon,
+  Icon as IconOld,
   Input,
   Segment,
   Table,
@@ -25,8 +25,10 @@ import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import { updateSharing, getSharing } from '@plone/volto/actions';
 import { getBaseUrl } from '@plone/volto/helpers';
-import { Icon as IconNext, Toolbar } from '@plone/volto/components';
+import { Icon, Toolbar } from '@plone/volto/components';
 
+import aheadSVG from '@plone/volto/icons/ahead.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 import backSVG from '@plone/volto/icons/back.svg';
 
 const messages = defineMessages({
@@ -237,7 +239,7 @@ class SharingComponent extends Component {
    * @returns {undefined}
    */
   onChange(event, { value }) {
-    const [principal, role] = value.split('.');
+    const [principal, role] = value.split(':');
     this.setState({
       entries: map(this.state.entries, (entry) => ({
         ...entry,
@@ -316,7 +318,7 @@ class SharingComponent extends Component {
                 {this.state.entries.map((entry) => (
                   <Table.Row key={entry.id}>
                     <Table.Cell>
-                      <Icon
+                      <IconOld
                         name={entry.type === 'user' ? 'user' : 'users'}
                         title={
                           entry.type === 'user'
@@ -330,7 +332,7 @@ class SharingComponent extends Component {
                     {this.props.available_roles.map((role) => (
                       <Table.Cell key={role.id}>
                         {entry.roles[role.id] === 'global' && (
-                          <Icon
+                          <IconOld
                             name="check circle outline"
                             title={this.props.intl.formatMessage(
                               messages.globalRole,
@@ -339,7 +341,7 @@ class SharingComponent extends Component {
                           />
                         )}
                         {entry.roles[role.id] === 'acquired' && (
-                          <Icon
+                          <IconOld
                             name="check circle outline"
                             color="green"
                             title={this.props.intl.formatMessage(
@@ -350,7 +352,7 @@ class SharingComponent extends Component {
                         {typeof entry.roles[role.id] === 'boolean' && (
                           <Checkbox
                             onChange={this.onChange}
-                            value={`${entry.id}.${role.id}`}
+                            value={`${entry.id}:${role.id}`}
                             checked={entry.roles[role.id]}
                             disabled={entry.login === this.props.login}
                           />
@@ -375,9 +377,11 @@ class SharingComponent extends Component {
                   defaultMessage="By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
                   values={{
                     inherited: (
-                      <Icon name="check circle outline" color="green" />
+                      <IconOld name="check circle outline" color="green" />
                     ),
-                    global: <Icon name="check circle outline" color="blue" />,
+                    global: (
+                      <IconOld name="check circle outline" color="blue" />
+                    ),
                   }}
                 />
               </p>
@@ -385,27 +389,26 @@ class SharingComponent extends Component {
             <Segment className="actions" attached clearing>
               <Button
                 basic
-                circular
                 primary
-                type="submit"
                 floated="right"
-                icon="arrow right"
+                type="submit"
                 aria-label={this.props.intl.formatMessage(messages.save)}
                 title={this.props.intl.formatMessage(messages.save)}
-                size="big"
+                loading={this.props.loading}
                 onClick={this.onSubmit}
-              />
+              >
+                <Icon className="circled" name={aheadSVG} size="30px" />
+              </Button>
               <Button
                 basic
-                circular
                 secondary
-                icon="remove"
                 aria-label={this.props.intl.formatMessage(messages.cancel)}
                 title={this.props.intl.formatMessage(messages.cancel)}
                 floated="right"
-                size="big"
                 onClick={this.onCancel}
-              />
+              >
+                <Icon className="circled" name={clearSVG} size="30px" />
+              </Button>
             </Segment>
           </Form>
         </Segment.Group>
@@ -419,7 +422,7 @@ class SharingComponent extends Component {
                   to={`${getBaseUrl(this.props.pathname)}`}
                   className="item"
                 >
-                  <IconNext
+                  <Icon
                     name={backSVG}
                     className="contents circled"
                     size="30px"

@@ -55,9 +55,7 @@ describe('Clipboard reducer', () => {
     expect(
       clipboard(undefined, {
         type: `${COPY_CONTENT}_FAIL`,
-        error: {
-          error: 'failed',
-        },
+        error: 'failed',
       }),
     ).toEqual({
       action: null,
@@ -106,9 +104,7 @@ describe('Clipboard reducer', () => {
     expect(
       clipboard(undefined, {
         type: `${MOVE_CONTENT}_FAIL`,
-        error: {
-          error: 'failed',
-        },
+        error: 'failed',
       }),
     ).toEqual({
       action: null,
