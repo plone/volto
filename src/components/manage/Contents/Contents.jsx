@@ -1813,7 +1813,6 @@ export default compose(
       updateColumnsContent,
     },
   ),
-  withLoadables(['toastify']),
   asyncConnect([
     {
       key: 'actions',
@@ -1823,4 +1822,5 @@ export default compose(
         await dispatch(listActions(getBaseUrl(location.pathname))),
     },
   ]),
+  withLoadables(['toastify']),
 )(Contents);
