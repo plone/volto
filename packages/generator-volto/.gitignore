@@ -1,33 +1,9 @@
-# https://docs.npmjs.com/using-npm/developers.html#keeping-files-out-of-your-package
-
-# Directories
 api/
-bin/
-build/
-lib/
-g-api/
-tests/
-
-# Files
-.travis.yml
-requirements-docs.txt
-requirements-tests.txt
-yarn.lock
-.dockerignore
-.gitattributes
-.yarnrc
-.nvmrc
-changelogupdater.js
-pip-selfcheck.json
-Dockerfile
-CNAME
-entrypoint.sh
-Jenkinsfile
-Makefile
 
 # Logs
 logs
 *.log
+package-lock.json
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -46,6 +22,12 @@ coverage
 
 # nyc test coverage
 .nyc_output
+
+# Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
+.grunt
+
+# Bower dependency directory (https://bower.io/)
+bower_components
 
 # node-waf configuration
 .lock-wscript
@@ -81,6 +63,4 @@ typings/
 # next.js build output
 .next
 
-styleguide.config
-.vscode
-packages
+*~
