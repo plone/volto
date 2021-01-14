@@ -1,6 +1,6 @@
 # Change Log
 
-## 10.9.1 (unreleased)
+## 10.9.1 (2021-01-14)
 
 ### Bugfix
 
