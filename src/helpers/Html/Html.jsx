@@ -61,6 +61,9 @@ class Html extends Component {
     const head = Helmet.rewind();
     const bodyClass = join(BodyClass.rewind(), ' ');
 
+    const linkOptions =
+      process.env.NODE_ENV === 'production' ? { rel: 'preload' } : {};
+
     return (
       <html lang="en">
         <head>
@@ -81,8 +84,13 @@ class Html extends Component {
           <meta name="generator" content="Volto - http://plone.org" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="apple-mobile-web-app-capable" content="yes" />
+          {process.env.NODE_ENV === 'production' && this.props.criticalCss && (
+            <style
+              dangerouslySetInnerHTML={{ __html: this.props.criticalCss }}
+            />
+          )}
           {/* Add the crossorigin while in development */}
-          {extractor.getLinkElements().map((elem) =>
+          {extractor.getLinkElements(linkOptions).map((elem) =>
             React.cloneElement(elem, {
               crossOrigin:
                 process.env.NODE_ENV === 'production' ? undefined : 'true',

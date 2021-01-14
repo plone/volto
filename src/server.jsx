@@ -37,6 +37,8 @@ import languages from '@plone/volto/constants/Languages';
 
 import configureStore from '@plone/volto/store';
 
+import { readFileSync } from 'fs';
+
 let locales = {};
 
 if (settings) {
@@ -224,6 +226,9 @@ server
                     markup={markup}
                     store={store}
                     extractScripts={process.env.NODE_ENV !== 'production'}
+                    criticalCss={readFileSync('public/critical.css', {
+                      encoding: 'utf-8',
+                    })}
                   />,
                 )}
               `,
@@ -232,7 +237,14 @@ server
             res.status(200).send(
               `<!doctype html>
                 ${renderToString(
-                  <Html extractor={extractor} markup={markup} store={store} />,
+                  <Html
+                    extractor={extractor}
+                    markup={markup}
+                    store={store}
+                    criticalCss={readFileSync('public/critical.css', {
+                      encoding: 'utf-8',
+                    })}
+                  />,
                 )}
               `,
             );
