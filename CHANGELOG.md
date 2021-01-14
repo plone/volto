@@ -13,6 +13,7 @@
 - Better handling of @@images pipeline errors @tiberiuichim
 - Fix `More` menu when using with Plone 4 backend / history action is undefined (#2120) @avoinea
 - Fix `/sharing` page when using with Guillotina (#2122) @avoinea
+- Improve CSS in the inner toolbar for the image block to support narrower width (like for using it inside grid blocks) @sneridagh
 
 ### Internal
 
