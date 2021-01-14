@@ -4,6 +4,8 @@
 
 ### Added
 
+- Add generator-volto missing locales: eu fr ro @avoinea
+
 ### Changes
 
 ## 2.2.0 (2021-01-09)
