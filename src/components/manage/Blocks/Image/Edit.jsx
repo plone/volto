@@ -307,7 +307,7 @@ class Edit extends Component {
                           <Loader indeterminate>Uploading image</Loader>
                         </Dimmer>
                       )}
-                      <center>
+                      <div className="no-image-wrapper">
                         <img src={imageBlockSVG} alt="" />
                         <div className="toolbar-inner">
                           <Button.Group>
@@ -371,7 +371,7 @@ class Edit extends Component {
                             </Button>
                           </Button.Group>
                         </div>
-                      </center>
+                      </div>
                     </Message>
                   </div>
                 )}
