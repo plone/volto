@@ -1,8 +1,16 @@
 # Change Log
 
-## 10.8.1 (unreleased)
+## 10.9.1 (unreleased)
 
 ### Breaking
+
+### Feature
+
+### Bugfix
+
+### Internal
+
+## 10.9.0 (2021-01-14)
 
 ### Feature
 
@@ -10,11 +18,15 @@
 
 ### Bugfix
 
+- Better handling of @@images pipeline errors @tiberiuichim
 - Fix `More` menu when using with Plone 4 backend / history action is undefined (#2120) @avoinea
 - Fix `/sharing` page when using with Guillotina (#2122) @avoinea
 - Make a cypress test more resilient to platform differences @tiberiuichim
+- Improve CSS in the inner toolbar for the image block to support narrower width (like for using it inside grid blocks) @sneridagh
 
 ### Internal
+
+- Move express middleware routes (sitemap, download, images and robotstxt) out of server.jsx into their own `express-middleware/*.js` modules. All express middleware now has access to the redux store, api middleware and an errorHandler, available under `req.app.locals` @tiberiuichim
 
 ## 10.8.0 (2021-01-11)
 
