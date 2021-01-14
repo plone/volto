@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix regression introduced by improve CSS in the inner toolbar for the image block to support narrower width (like for using it inside grid blocks) @sneridagh
+
 ### Internal
 
 ## 10.9.0 (2021-01-14)
