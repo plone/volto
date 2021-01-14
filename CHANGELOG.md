@@ -2,8 +2,6 @@
 
 ## 10.8.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Enhance `BlockChooser` by adding support for `allowedBlocks` and `showRestricted` @avoinea @sneridagh
