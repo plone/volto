@@ -10,7 +10,13 @@ import { blocks } from '~/config';
 import upSVG from '@plone/volto/icons/up-key.svg';
 import downSVG from '@plone/volto/icons/down-key.svg';
 
-const BlockChooser = ({ currentBlock, onMutateBlock, allowedBlocks, intl }) => {
+const BlockChooser = ({
+  currentBlock,
+  onMutateBlock,
+  allowedBlocks,
+  showRestricted,
+  intl,
+}) => {
   const blocksConfig = filter(
     blocks.blocksConfig,
     (item) => isEmpty(allowedBlocks) || allowedBlocks.includes(item.id),
@@ -73,7 +79,7 @@ const BlockChooser = ({ currentBlock, onMutateBlock, allowedBlocks, intl }) => {
                 {map(
                   filter(
                     blocksAvailable[groupName.id],
-                    (block) => !block.restricted,
+                    (block) => showRestricted || !block.restricted,
                   ),
                   (block) => (
                     <Button.Group key={block.id}>
@@ -81,9 +87,9 @@ const BlockChooser = ({ currentBlock, onMutateBlock, allowedBlocks, intl }) => {
                         icon
                         basic
                         className={block.id}
-                        onClick={() => {
-                          onMutateBlock(currentBlock, { '@type': block.id });
-                        }}
+                        onClick={() =>
+                          onMutateBlock(currentBlock, { '@type': block.id })
+                        }
                       >
                         <Icon name={block.icon} size="36px" />
                         {intl.formatMessage({
