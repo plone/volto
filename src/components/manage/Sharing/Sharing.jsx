@@ -307,7 +307,7 @@ class SharingComponent extends Component {
                   <Table.HeaderCell>
                     <FormattedMessage id="Name" defaultMessage="Name" />
                   </Table.HeaderCell>
-                  {this.props.available_roles.map((role) => (
+                  {this.props.available_roles?.map((role) => (
                     <Table.HeaderCell key={role.id}>
                       {role.title}
                     </Table.HeaderCell>
@@ -315,7 +315,7 @@ class SharingComponent extends Component {
                 </Table.Row>
               </Table.Header>
               <Table.Body>
-                {this.state.entries.map((entry) => (
+                {this.state.entries?.map((entry) => (
                   <Table.Row key={entry.id}>
                     <Table.Cell>
                       <IconOld
@@ -329,7 +329,7 @@ class SharingComponent extends Component {
                       {entry.title}
                       {entry.login && ` (${entry.login})`}
                     </Table.Cell>
-                    {this.props.available_roles.map((role) => (
+                    {this.props.available_roles?.map((role) => (
                       <Table.Cell key={role.id}>
                         {entry.roles[role.id] === 'global' && (
                           <IconOld

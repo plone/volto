@@ -6,9 +6,12 @@
 
 ### Feature
 
+- Enhance `BlockChooser` by adding support for `allowedBlocks` and `showRestricted` @avoinea @sneridagh
+
 ### Bugfix
 
 - Better handling of @@images pipeline errors @tiberiuichim
+- Fix `/sharing` page when using with Guillotina (#2122) @avoinea
 
 ### Internal
 
