@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Make a cypress test more resilient to platform differences @tiberiuichim
+
 ### Internal
 
 ## 10.9.0 (2021-01-14)
@@ -21,7 +23,6 @@
 - Better handling of @@images pipeline errors @tiberiuichim
 - Fix `More` menu when using with Plone 4 backend / history action is undefined (#2120) @avoinea
 - Fix `/sharing` page when using with Guillotina (#2122) @avoinea
-- Make a cypress test more resilient to platform differences @tiberiuichim
 - Improve CSS in the inner toolbar for the image block to support narrower width (like for using it inside grid blocks) @sneridagh
 
 ### Internal
