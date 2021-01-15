@@ -1,6 +1,7 @@
 if (Cypress.env('API') !== 'guillotina') {
   describe('Blocks copy/paste', () => {
     beforeEach(() => {
+      cy.clearLocalStorage();
       cy.autologin();
       cy.createContent({
         contentType: 'Document',
