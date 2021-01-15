@@ -59,3 +59,5 @@ export {
   applyConfig,
   withServerErrorCode,
 } from '@plone/volto/helpers/Utils/Utils';
+
+export { getImageAttributes } from './Image/Image';

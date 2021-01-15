@@ -30,6 +30,7 @@ import {
 
 import { sentryOptions } from './Sentry';
 import { contentIcons } from './ContentIcons';
+import { imageScales } from './ImageScales';
 
 import imagesMiddleware from '@plone/volto/express-middleware/images';
 import filesMiddleware from '@plone/volto/express-middleware/files';
@@ -96,7 +97,8 @@ let config = {
     sentryOptions: {
       ...sentryOptions,
     },
-    contentIcons: contentIcons,
+    contentIcons,
+    imageScales,
     appExtras: [],
     maxResponseSize: 2000000000, // This is superagent default (200 mb)
   },
@@ -116,7 +118,6 @@ let config = {
     groupBlocksOrder,
     initialBlocks,
   },
-
   addonRoutes: [],
   addonReducers: {},
 };
