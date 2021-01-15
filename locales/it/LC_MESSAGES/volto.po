@@ -813,6 +813,10 @@ msgstr "Nome del gruppo"
 msgid "Groups"
 msgstr "Gruppi"
 
+#: components/manage/Blocks/Table/Edit
+msgid "Header cell"
+msgstr ""
+
 #: components/manage/History/History
 #: components/manage/Toolbar/More
 msgid "History"
