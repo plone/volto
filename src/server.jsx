@@ -19,7 +19,7 @@ import { resetServerContext } from 'react-beautiful-dnd';
 
 import routes from '~/routes';
 import { settings } from '~/config';
-import { flattenToAppURL, readCriticalCss } from '@plone/volto/helpers';
+import { flattenToAppURL } from '@plone/volto/helpers';
 
 import { Html, Api, persistAuthToken } from '@plone/volto/helpers';
 
@@ -30,6 +30,8 @@ import ErrorPage from '@plone/volto/error';
 import languages from '@plone/volto/constants/Languages';
 
 import configureStore from '@plone/volto/store';
+
+import { readCriticalCss } from '@plone/volto/critical-css';
 
 let locales = {};
 
