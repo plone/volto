@@ -27,6 +27,7 @@
 
 - babel view [giuliaghisini]
 - added og tags for social sharing [giuliaghisini]
+- added support for allowedBlocks and showRestricted for BlockChooser in Form [@giuliaghisini]
 
 ### Bugfix
 

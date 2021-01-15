@@ -94,6 +94,8 @@ class Form extends Component {
     editable: PropTypes.bool,
     requestError: PropTypes.string,
     onChangeFormData: PropTypes.func,
+    allowedBlocks: PropTypes.arrayOf(PropTypes.string),
+    showRestricted: PropTypes.bool,
   };
 
   /**
@@ -122,6 +124,7 @@ class Form extends Component {
     onSelectForm: null,
     editable: true,
     requestError: null,
+    allowedBlocks: null,
   };
 
   /**
@@ -934,33 +937,34 @@ class Form extends Component {
                                 <Icon name={dragSVG} size="18px" />
                               </div>
 
-                              <EditBlock
-                                id={block}
-                                index={index}
-                                type={blocksDict[block]['@type']}
-                                key={block}
-                                handleKeyDown={this.handleKeyDown}
-                                onAddBlock={this.onAddBlock}
-                                onChangeBlock={this.onChangeBlock}
-                                onMutateBlock={this.onMutateBlock}
-                                onChangeField={this.onChangeField}
-                                onDeleteBlock={this.onDeleteBlock}
-                                onSelectBlock={this.onSelectBlock}
-                                onMoveBlock={this.onMoveBlock}
-                                onFocusPreviousBlock={this.onFocusPreviousBlock}
-                                onFocusNextBlock={this.onFocusNextBlock}
-                                properties={formData}
-                                data={blocksDict[block]}
-                                pathname={this.props.pathname}
-                                block={block}
-                                selected={this.state.selected === block}
-                                multiSelected={this.state.multiSelected.includes(
-                                  block,
-                                )}
-                                editable={this.props.editable}
-                                manage={this.props.isAdminForm}
-                              />
-                            </div>
+                            <EditBlock
+                              id={block}
+                              index={index}
+                              type={blocksDict[block]['@type']}
+                              key={block}
+                              handleKeyDown={this.handleKeyDown}
+                              onAddBlock={this.onAddBlock}
+                              onChangeBlock={this.onChangeBlock}
+                              onMutateBlock={this.onMutateBlock}
+                              onChangeField={this.onChangeField}
+                              onDeleteBlock={this.onDeleteBlock}
+                              onSelectBlock={this.onSelectBlock}
+                              onMoveBlock={this.onMoveBlock}
+                              onFocusPreviousBlock={this.onFocusPreviousBlock}
+                              onFocusNextBlock={this.onFocusNextBlock}
+                              properties={formData}
+                              data={blocksDict[block]}
+                              pathname={this.props.pathname}
+                              block={block}
+                              selected={this.state.selected === block}
+                              multiSelected={this.state.multiSelected.includes(
+                                block,
+                              )}
+                              editable={this.props.editable}
+                              manage={this.props.isAdminForm}
+                              allowedBlocks={this.props.allowedBlocks}
+                              showRestricted={this.props.showRestricted}
+                            />
                           </div>
                         )}
                       </Draggable>
