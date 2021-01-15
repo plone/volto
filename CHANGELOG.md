@@ -10,6 +10,8 @@
 
 ### Internal
 
+- i18n for a literal in the table block @sneridagh
+
 ## 10.9.1 (2021-01-14)
 
 ### Bugfix
