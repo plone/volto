@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Avoid a bug in cypress tests caused by multi-block copy/paste @tiberiuichim
+
 ### Internal
 
 - i18n for a literal in the table block @sneridagh
