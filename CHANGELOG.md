@@ -6,6 +6,9 @@
 
 ### Feature
 
+- Simple optional critical-CSS inclusion feature (without the actual building of
+  the critical CSS) @silviubogan @tiberiuichim
+
 ### Bugfix
 
 ### Internal
