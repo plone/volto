@@ -15,6 +15,7 @@ export {
   addAppURL,
   flattenHTMLToAppURL,
   flattenToAppURL,
+  toPublicURL,
   isInternalURL,
   getParentUrl,
   getBaseUrl,
