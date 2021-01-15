@@ -37,7 +37,7 @@ import languages from '@plone/volto/constants/Languages';
 
 import configureStore from '@plone/volto/store';
 
-import { readFileSync } from 'fs';
+import { readFileSync, existsSync, lstatSync } from 'fs';
 
 let locales = {};
 
@@ -85,6 +85,25 @@ if (process.env.VOLTO_ROBOTSTXT) {
 
 if ((settings.expressMiddleware || []).length)
   server.use('/', settings.expressMiddleware);
+
+const criticalCssPath = 'public/critical.css';
+
+const hasCriticalCss = () => {
+  return existsSync(criticalCssPath) && lstatSync(criticalCssPath).isFile();
+};
+
+/**
+ * Checks if there is a CSS file 'critical.css' inside the 'public' directory.
+ * If it is there, returns its contents.
+ *
+ * @returns {string|null}
+ */
+const readCriticalCss = () => {
+  if (!hasCriticalCss()) {
+    return null;
+  }
+  return readFileSync(criticalCssPath);
+};
 
 server
   .disable('x-powered-by')
@@ -226,9 +245,7 @@ server
                     markup={markup}
                     store={store}
                     extractScripts={process.env.NODE_ENV !== 'production'}
-                    criticalCss={readFileSync('public/critical.css', {
-                      encoding: 'utf-8',
-                    })}
+                    criticalCss={readCriticalCss()}
                   />,
                 )}
               `,
@@ -241,9 +258,7 @@ server
                     extractor={extractor}
                     markup={markup}
                     store={store}
-                    criticalCss={readFileSync('public/critical.css', {
-                      encoding: 'utf-8',
-                    })}
+                    criticalCss={readCriticalCss()}
                   />,
                 )}
               `,

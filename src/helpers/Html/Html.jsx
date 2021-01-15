@@ -62,7 +62,9 @@ class Html extends Component {
     const bodyClass = join(BodyClass.rewind(), ' ');
 
     const linkOptions =
-      process.env.NODE_ENV === 'production' ? { rel: 'preload' } : {};
+      process.env.NODE_ENV === 'production' && this.props.criticalCss
+        ? { rel: 'preload' }
+        : {};
 
     return (
       <html lang="en">
