@@ -7,7 +7,7 @@
 ### Feature
 
 ### Bugfix
-
+- Fixing All button in Folder content to show all items instead of default 25 items @iFlameing
 ### Internal
 
 ## 10.9.2 (2021-01-15)
