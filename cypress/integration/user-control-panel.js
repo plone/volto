@@ -20,7 +20,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('input[id="field-fullname"]').clear().type('Alok Kumar');
       cy.get('input[id ="field-email"]').clear().type('info@example.com');
       cy.get('input[id="field-password"]').clear().type('test@test');
-      cy.get('button[title="Save"]').click();
+      cy.get('button[title="Save"]').focus().click();
 
       // then the user section must contains a fullname when I searched the
       // same with the same username

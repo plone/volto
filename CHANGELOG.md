@@ -6,6 +6,7 @@
 ## 10.6.2 (unreleased)
 ## 10.7.1 (unreleased)
 ## 10.9.2 (unreleased)
+## 10.9.3 (unreleased)
 
 - added objectBrowser to UrlWidget, and attached UrlWidget to remoteUrl field of ContentType Link @giuliaghisini
 - managed tel link in UrlWidget and draftjs @giuliaghisini
@@ -28,6 +29,18 @@
 ### Bugfix
 
 ### Internal
+
+## 10.9.2 (2021-01-15)
+
+### Bugfix
+
+- Make a cypress test more resilient to platform differences @tiberiuichim
+- Fix regression introduced by improve CSS in the inner toolbar for the image block to support narrower width (like for using it inside grid blocks) @sneridagh
+- Avoid a bug in cypress tests caused by multi-block copy/paste @tiberiuichim
+
+### Internal
+
+- i18n for a literal in the table block @sneridagh
 
 ## 10.9.1 (2021-01-14)
 
