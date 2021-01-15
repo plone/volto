@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import cx from 'classnames';
 import { settings } from '~/config';
 
-import ImageFromUrl from '@plone/volto/components/theme/ImageFromUrl/ImageFromUrl';
+import Image from '@plone/volto/components/theme/Image/Image';
 
 /**
  * View image block class.
@@ -30,7 +30,7 @@ const View = ({ data, properties }) => (
       <>
         {(() => {
           const image = (
-            <ImageFromUrl
+            <Image
               image={properties.image}
               alt={properties.image_caption}
               className={cx({ 'full-width': data.align === 'full' })}

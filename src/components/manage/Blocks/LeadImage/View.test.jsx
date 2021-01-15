@@ -8,57 +8,45 @@ test('renders a view image component', () => {
       data={{}}
       properties={{
         image: {
-          'content-type': 'image/jpeg',
-          download:
-            'http://localhost:8080/Plone/test-images/@@images/image.jpeg',
-          filename: 'image.jpg',
-          height: 1280,
+          download: 'http://localhost:8080/Plone/test-images/@@images/image',
+          width: 1920,
           scales: {
-            icon: {
-              download:
-                'http://localhost:8080/Plone/test-images/@@images/image.jpeg',
-              height: 21,
-              width: 32,
-            },
-            large: {
-              download:
-                'http://localhost:8080/Plone/test-images/@@images/image.jpeg',
-              height: 512,
-              width: 768,
-            },
             listing: {
               download:
-                'http://localhost:8080/Plone/test-images/@@images/image.jpeg',
-              height: 10,
+                'http://localhost:8080/Plone/test-images/@@images/image/listing',
               width: 16,
+            },
+            icon: {
+              download:
+                'http://localhost:8080/Plone/test-images/@@images/image/icon',
+              width: 32,
+            },
+            tile: {
+              download:
+                'http://localhost:8080/Plone/test-images/@@images/image/tile',
+              width: 64,
+            },
+            thumb: {
+              download:
+                'http://localhost:8080/Plone/test-images/@@images/image/thumb',
+              width: 128,
             },
             mini: {
               download:
-                'http://localhost:8080/Plone/test-images/@@images/image.jpeg',
-              height: 133,
+                'http://localhost:8080/Plone/test-images/@@images/image/mini',
               width: 200,
             },
             preview: {
               download:
-                'http://localhost:8080/Plone/test-images/@@images/image.jpeg',
-              height: 266,
+                'http://localhost:8080/Plone/test-images/@@images/image/preview',
               width: 400,
             },
-            thumb: {
+            large: {
               download:
-                'http://localhost:8080/Plone/test-images/@@images/image.jpeg',
-              height: 85,
-              width: 128,
-            },
-            tile: {
-              download:
-                'http://localhost:8080/Plone/test-images/@@images/image.jpeg',
-              height: 42,
-              width: 64,
+                'http://localhost:8080/Plone/test-images/@@images/image/large',
+              width: 768,
             },
           },
-          size: 186918,
-          width: 1920,
         },
       }}
     />,

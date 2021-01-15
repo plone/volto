@@ -56,4 +56,4 @@ export {
   withServerErrorCode,
 } from '@plone/volto/helpers/Utils/Utils';
 
-export { getSrcSet } from './Image/Image';
+export { getImageAttributes } from './Image/Image';

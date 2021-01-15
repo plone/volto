@@ -4,7 +4,7 @@ import { ConditionalLink } from '@plone/volto/components';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import { settings } from '~/config';
 
-import ImageFromUrl from '@plone/volto/components/theme/ImageFromUrl/ImageFromUrl';
+import Image from '@plone/volto/components/theme/Image/Image';
 import DefaultImageSVG from '@plone/volto/components/manage/Blocks/Listing/default-image.svg';
 import { isInternalURL } from '@plone/volto/helpers/Url/Url';
 
@@ -35,9 +35,8 @@ const DefaultTemplate = ({ items, linkMore, isEditMode }) => {
                 <img src={DefaultImageSVG} alt="" />
               )}
               {item[settings.listingPreviewImageField] && (
-                <ImageFromUrl
+                <Image
                   image={item[settings.listingPreviewImageField]}
-                  size="preview"
                   alt={item.title}
                 />
               )}

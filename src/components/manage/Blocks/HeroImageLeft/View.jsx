@@ -5,7 +5,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import ImageFromUrl from '@plone/volto/components/theme/ImageFromUrl/ImageFromUrl';
+import Image from '@plone/volto/components/theme/Image/Image';
 
 /**
  * View image block class.
@@ -15,7 +15,7 @@ import ImageFromUrl from '@plone/volto/components/theme/ImageFromUrl/ImageFromUr
 const View = ({ data }) => (
   <div className="block hero">
     <div className="block-inner-wrapper">
-      {data.url && <ImageFromUrl url={data.url} className="hero-image" />}
+      {data.url && <Image image={data.url} className="hero-image" />}
       <div className="hero-body">
         {data.title && <h1>{data.title}</h1>}
         {data.description && <p>{data.description}</p>}

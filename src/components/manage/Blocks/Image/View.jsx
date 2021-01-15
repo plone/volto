@@ -7,7 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import cx from 'classnames';
-import ImageFromUrl from '@plone/volto/components/theme/ImageFromUrl/ImageFromUrl';
+import Image from '@plone/volto/components/theme/Image/Image';
 
 import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
 
@@ -31,8 +31,8 @@ const View = ({ data, detached }) => (
       <>
         {(() => {
           const image = (
-            <ImageFromUrl
-              url={data.url}
+            <Image
+              image={data.url}
               alt={data.alt}
               className={cx({
                 'full-width': data.align === 'full',
@@ -40,19 +40,6 @@ const View = ({ data, detached }) => (
                 medium: data.size === 'm',
                 small: data.size === 's',
               })}
-              size={(() => {
-                switch (data.size) {
-                  case 'm':
-                    return 'preview';
-
-                  case 's':
-                    return 'mini';
-
-                  case 'l':
-                  default:
-                    return null;
-                }
-              })()}
             />
           );
           if (data.href) {
