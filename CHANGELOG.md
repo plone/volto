@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Avoid a bug in cypress tests caused by multi-block copy/paste @tiberiuichim
+
 ### Internal
 
 ## 10.9.1 (2021-01-14)

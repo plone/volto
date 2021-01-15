@@ -76,7 +76,7 @@ describe('Add Content Tests', () => {
         subjectType: 'input',
       });
     }
-    cy.get('#toolbar-save').click();
+    cy.get('#toolbar-save').focus().click();
 
     // then a new file should have been created
     if (Cypress.env('API') === 'guillotina') {
