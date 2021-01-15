@@ -37,6 +37,7 @@
 - Make a cypress test more resilient to platform differences @tiberiuichim
 - Fix regression introduced by improve CSS in the inner toolbar for the image block to support narrower width (like for using it inside grid blocks) @sneridagh
 - Avoid a bug in cypress tests caused by multi-block copy/paste @tiberiuichim
+- Fix 'All' button batch size in Contents @nzambello
 
 ### Internal
 
