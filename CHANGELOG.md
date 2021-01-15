@@ -2,10 +2,6 @@
 
 ## 10.9.2 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Make a cypress test more resilient to platform differences @tiberiuichim
