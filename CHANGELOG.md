@@ -1,6 +1,6 @@
 # Change Log
 
-## 10.4.4 (unreleased)
+## 10.9.3 (unreleased)
 
 - added objectBrowser to UrlWidget, and attached UrlWidget to remoteUrl field of ContentType Link @giuliaghisini
 - managed tel link in UrlWidget and draftjs @giuliaghisini
@@ -12,6 +12,104 @@
 ### Bugfix
 
 ### Internal
+
+## 10.9.2 (2021-01-15)
+
+### Bugfix
+
+- Make a cypress test more resilient to platform differences @tiberiuichim
+- Fix regression introduced by improve CSS in the inner toolbar for the image block to support narrower width (like for using it inside grid blocks) @sneridagh
+- Avoid a bug in cypress tests caused by multi-block copy/paste @tiberiuichim
+
+### Internal
+
+- i18n for a literal in the table block @sneridagh
+
+## 10.9.1 (2021-01-14)
+
+### Bugfix
+
+- Fix regression introduced by improve CSS in the inner toolbar for the image block to support narrower width (like for using it inside grid blocks) @sneridagh
+
+## 10.9.0 (2021-01-14)
+
+### Feature
+
+- Enhance `BlockChooser` by adding support for `allowedBlocks` and `showRestricted` @avoinea @sneridagh
+
+### Bugfix
+
+- Better handling of @@images pipeline errors @tiberiuichim
+- Fix `More` menu when using with Plone 4 backend / history action is undefined (#2120) @avoinea
+- Fix `/sharing` page when using with Guillotina (#2122) @avoinea
+- Improve CSS in the inner toolbar for the image block to support narrower width (like for using it inside grid blocks) @sneridagh
+
+### Internal
+
+- Move express middleware routes (sitemap, download, images and robotstxt) out of server.jsx into their own `express-middleware/*.js` modules. All express middleware now has access to the redux store, api middleware and an errorHandler, available under `req.app.locals` @tiberiuichim
+
+## 10.8.0 (2021-01-11)
+
+### Feature
+
+- Add proper icons to the table block @sneridagh
+
+### Internal
+
+- Add `packages` directory to the `modulePathIgnorePatterns` for the jest tests @sneridagh
+- Add `packages` directory in npmignore @sneridagh
+
+## 10.7.0 (2021-01-05)
+
+### Feature
+
+- Lazy load image in blocks Image and HeroImage @mamico
+
+### Bugfix
+
+- Fix redirection for Link objects. @cekk
+- Fix import order in server.jsx. @cekk @tiberiuichim
+- Make sentry config more resilient to edge cases (SPA, storybook) @sneridagh
+- Handle errors on file and image download (#2098) @cekk
+- Remove test dependant on the year in `Copyright` footer section @sneridagh
+- Increase maxResponseSize for superagent calls. Now is 500mb (#2098) @cekk
+
+### Internal
+
+- Translations german: Unauthorized, Login/Register @ksuess
+
+## 10.6.1 (2020-12-21)
+
+### Bugfix
+
+- Better API helper end request handling, since the existing one was causing problems and rendered the SSR server unusable in case of the request was rejected @sneridagh
+
+### Internal
+
+- Add a paragraph on dealing with CORS errors in Deploying doc page @tiberiuichim
+- Remove useless RobotFramework related packages, keep only the minimum required ones @sneridagh
+- Updated italian translations @nzambello
+
+## 10.6.0 (2020-12-18)
+
+### Feature
+
+- Allow setting a custom robots.txt from environment with the `VOLTO_ROBOTSTXT` environment variable @tiberiuichim
+
+### Bugfix
+
+- Replace `__SERVER__` occurrence from table `Edit` component @sneridagh
+
+
+## 10.5.0 (2020-12-17)
+
+### Feature
+
+- Adding `All` button to folder content @iFlameing
+
+### Bugfix
+
+- Fix "is client" check for SidebarPortal @tiberiuichim @sneridagh
 
 ## 10.4.3 (2020-12-15)
 
