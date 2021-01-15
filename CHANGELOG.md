@@ -26,6 +26,8 @@
 - Add emailSend action @nzambello
 
 - babel view [giuliaghisini]
+- added og tags for social sharing [giuliaghisini]
+
 ### Bugfix
 
 ### Internal
