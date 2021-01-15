@@ -126,30 +126,18 @@ class More extends Component {
               {editAction && <Display pathname={path} />}
             </li>
             <li>
-              {historyAction ? (
-                <Link to={`${path}/history`}>
-                  <button>
-                    <div>
-                      <span className="pastanaga-menu-label">
-                        {this.props.intl.formatMessage(messages.history)}
-                      </span>
-                      <span className="pastanaga-menu-value" />
-                    </div>
-                    <Icon name={rightArrowSVG} size="24px" />
-                  </button>
-                </Link>
-              ) : (
-                <button
-                  aria-label={this.props.intl.formatMessage(messages.history)}
-                >
+              <Link to={`${path}/history`}>
+                <button>
                   <div>
                     <span className="pastanaga-menu-label">
-                      {historyAction.title}
+                      {historyAction?.title ||
+                        this.props.intl.formatMessage(messages.history)}
                     </span>
                     <span className="pastanaga-menu-value" />
                   </div>
+                  <Icon name={rightArrowSVG} size="24px" />
                 </button>
-              )}
+              </Link>
             </li>
             {sharingAction && (
               <li>
