@@ -19,7 +19,7 @@ import { resetServerContext } from 'react-beautiful-dnd';
 
 import routes from '~/routes';
 import { settings } from '~/config';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { flattenToAppURL, readCriticalCss } from '@plone/volto/helpers';
 
 import { Html, Api, persistAuthToken } from '@plone/volto/helpers';
 
@@ -30,27 +30,6 @@ import ErrorPage from '@plone/volto/error';
 import languages from '@plone/volto/constants/Languages';
 
 import configureStore from '@plone/volto/store';
-
-import { existsSync, lstatSync, readFileSync } from 'fs';
-
-const criticalCssPath = 'public/critical.css';
-
-const hasCriticalCss = () => {
-  return existsSync(criticalCssPath) && lstatSync(criticalCssPath).isFile();
-};
-
-/**
- * Checks if there is a CSS file 'critical.css' inside the 'public' directory.
- * If it is there, returns its contents.
- *
- * @returns {string|null}
- */
-const readCriticalCss = () => {
-  if (!hasCriticalCss()) {
-    return null;
-  }
-  return readFileSync(criticalCssPath);
-};
 
 let locales = {};
 

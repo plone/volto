@@ -55,3 +55,8 @@ export {
   applyConfig,
   withServerErrorCode,
 } from '@plone/volto/helpers/Utils/Utils';
+
+export {
+  hasCriticalCss,
+  readCriticalCss,
+} from '@plone/volto/helpers/CriticalCSS';
