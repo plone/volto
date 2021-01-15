@@ -32,6 +32,11 @@ import { loadables } from './Loadables';
 import { sentryOptions } from './Sentry';
 import { contentIcons } from './ContentIcons';
 
+import imagesMiddleware from '@plone/volto/express-middleware/images';
+import filesMiddleware from '@plone/volto/express-middleware/files';
+import robotstxtMiddleware from '@plone/volto/express-middleware/robotstxt';
+import sitemapMiddleware from '@plone/volto/express-middleware/sitemap';
+
 import applyAddonConfiguration from 'load-volto-addons';
 
 const host = process.env.HOST || 'localhost';
@@ -80,7 +85,12 @@ let config = {
     supportedLanguages: ['en'],
     defaultLanguage: 'en',
     navDepth: 1,
-    expressMiddleware: [],
+    expressMiddleware: [
+      filesMiddleware(),
+      imagesMiddleware(),
+      robotstxtMiddleware(),
+      sitemapMiddleware(),
+    ],
     defaultBlockType: 'text',
     verticalFormTabs: false,
     persistentReducers: ['blocksClipboard'],
