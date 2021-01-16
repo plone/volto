@@ -1,65 +1,67 @@
 import React from 'react';
 import { settings } from '~/config';
 import { isEqual } from 'lodash';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadLazyLibrary } from '@plone/volto/actions';
 
-const _loadablesCache = {};
+function getLoadables(libraries, loadedLibraries) {
+  const { loadables } = settings;
+  return {
+    ...Object.assign(
+      {},
+      ...libraries.map((name) =>
+        !isEqual(Object.keys(loadables[name]).sort(), [
+          '$$typeof',
+          'load',
+          'preload',
+          'render',
+        ])
+          ? { [name]: loadables[name] }
+          : {},
+      ),
+    ), // this is to support "loadables" that are already loaded
+    ...loadedLibraries,
+  };
+}
 
 export function withLoadables(maybeNames) {
   const libraries = Array.isArray(maybeNames) ? maybeNames : [maybeNames];
 
-  function _wrapped(WrappedComponent) {
-    class WithLoadables extends React.Component {
-      getLoadables() {
-        const { loadables } = settings;
-        return {
-          ...Object.assign(
-            {},
-            ...libraries.map((name) =>
-              !isEqual(Object.keys(loadables[name]).sort(), [
-                '$$typeof',
-                'load',
-                'preload',
-                'render',
-              ])
-                ? { [name]: loadables[name] }
-                : {},
-            ),
-          ), // this is to support "loadables" that are already loaded
-          ..._loadablesCache,
-        };
-      }
+  function decorator(WrappedComponent) {
+    function WithLoadables(props) {
+      const { loadables } = settings;
+      const dispatch = useDispatch();
 
-      render() {
-        const { loadables } = settings;
-        const loaded = this.getLoadables();
-        const isLoaded = Object.keys(loaded).length === libraries.length;
+      const globalLoadedLibraries = useSelector(
+        (state) => state.lazyLibraries || {},
+      );
+      const loaded = getLoadables(libraries, globalLoadedLibraries);
+      const isLoaded = Object.keys(loaded).length === libraries.length;
 
-        return (
-          <>
-            {libraries.map((name) => {
-              const LoadableLibrary = loadables[name];
-              return (
-                <LoadableLibrary
-                  key={name}
-                  ref={(val) => {
-                    if (!_loadablesCache[name] && val) {
-                      _loadablesCache[name] = val;
-                      this.forceUpdate();
-                    }
-                  }}
-                />
-              );
-            })}
-            {isLoaded ? (
-              <WrappedComponent
-                key={Object.keys(loaded).join('|')}
-                {...this.props}
-                {...loaded}
+      return (
+        <>
+          {libraries.map((name) => {
+            const LoadableLibrary = loadables[name];
+            return (
+              <LoadableLibrary
+                key={name}
+                ref={(val) => {
+                  if (!globalLoadedLibraries[name] && val) {
+                    dispatch(loadLazyLibrary(name, val));
+                  }
+                }}
               />
-            ) : null}
-          </>
-        );
-      }
+            );
+          })}
+          {isLoaded ? (
+            <WrappedComponent
+              key={Object.keys(loaded).join('|')}
+              {...props}
+              {...loaded}
+            />
+          ) : null}
+        </>
+      );
     }
 
     WithLoadables.displayName = `WithLoadables(${libraries.join(
@@ -68,7 +70,7 @@ export function withLoadables(maybeNames) {
 
     return WithLoadables;
   }
-  return _wrapped;
+  return decorator;
 }
 
 function getDisplayName(WrappedComponent) {
