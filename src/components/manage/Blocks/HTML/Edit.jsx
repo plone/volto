@@ -240,11 +240,13 @@ class Edit extends Component {
             placeholder={placeholder}
             onValueChange={(code) => this.onChangeCode(code)}
             highlight={
-              this.props.prismCore?.highlight && this.props.prismCore?.languages
+              this.props.prismCore?.highlight &&
+              this.props.prismCore?.languages?.html
                 ? (code) =>
                     this.props.prismCore.highlight(
                       code,
                       this.props.prismCore.languages.html,
+                      'html',
                     )
                 : () => {}
             }

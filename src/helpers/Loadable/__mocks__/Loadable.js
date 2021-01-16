@@ -12,7 +12,7 @@ export const __setLoadables = async () => {
     }),
   );
   resolved.forEach(([name, { current }]) => {
-    mockAllLoadables[name] = { current };
+    mockAllLoadables[name] = current;
   });
 };
 

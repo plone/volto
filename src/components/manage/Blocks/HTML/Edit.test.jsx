@@ -41,6 +41,8 @@ test('renders an edit html block component', async () => {
       />
     </Provider>,
   );
+
   await waitFor(() => screen.getByPlaceholderText('<p>Add some HTML here</p>'));
+
   expect(container.firstChild).toMatchSnapshot();
 });

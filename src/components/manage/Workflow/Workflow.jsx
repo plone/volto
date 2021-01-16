@@ -47,7 +47,7 @@ const SingleValue = withLoadables('reactSelect')(({ children, ...props }) => {
     width: '10px',
     borderRadius: '50%',
   };
-  const { SingleValue } = props.reactSelect.current.components;
+  const { SingleValue } = props.reactSelect.components;
   return (
     <SingleValue {...props}>
       <span style={stateDecorator} />
@@ -75,7 +75,7 @@ const Option = withLoadables('reactSelect')((props) => {
         : null,
   };
 
-  const { Option } = props['react-select'].current.components;
+  const { Option } = props['reactSelect'].components;
   return (
     <Option {...props}>
       <span style={stateDecorator} />
@@ -89,7 +89,7 @@ const Option = withLoadables('reactSelect')((props) => {
 });
 
 const DropdownIndicator = withLoadables('reactSelect')((props) => {
-  const { DropdownIndicator } = props.reactSelect.current.components;
+  const { DropdownIndicator } = props.reactSelect.components;
   return (
     <DropdownIndicator {...props} data-testid="workflow-select-dropdown">
       {props.selectProps.menuIsOpen ? (
@@ -289,8 +289,8 @@ class Workflow extends Component {
 
   render() {
     const { selectedOption } = this.state;
-    const { Placeholder } = this.props.reactSelect.current.components;
-    const Select = this.props.reactSelect.current.default;
+    const { Placeholder } = this.props.reactSelect.components;
+    const Select = this.props.reactSelect.default;
 
     return (
       <Fragment>
