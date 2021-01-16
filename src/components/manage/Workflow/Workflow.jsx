@@ -36,7 +36,7 @@ const messages = defineMessages({
   },
 });
 
-const SingleValue = withLoadables('react-select')(({ children, ...props }) => {
+const SingleValue = withLoadables('reactSelect')(({ children, ...props }) => {
   const stateDecorator = {
     marginLeft: '10px',
     marginRight: '10px',
@@ -56,7 +56,7 @@ const SingleValue = withLoadables('react-select')(({ children, ...props }) => {
   );
 });
 
-const Option = withLoadables('react-select')((props) => {
+const Option = withLoadables('reactSelect')((props) => {
   const stateDecorator = {
     marginLeft: '10px',
     marginRight: '10px',
@@ -88,7 +88,7 @@ const Option = withLoadables('react-select')((props) => {
   );
 });
 
-const DropdownIndicator = withLoadables('react-select')((props) => {
+const DropdownIndicator = withLoadables('reactSelect')((props) => {
   const { DropdownIndicator } = props.reactSelect.current.components;
   return (
     <DropdownIndicator {...props} data-testid="workflow-select-dropdown">
@@ -339,7 +339,7 @@ class Workflow extends Component {
 
 export default compose(
   injectIntl,
-  withLoadables(['react-select']),
+  withLoadables(['reactSelect']),
   connect(
     (state) => ({
       loaded: state.workflow.transition.loaded,

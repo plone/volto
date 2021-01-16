@@ -9,14 +9,6 @@ export function withLoadables(maybeNames) {
 
   function _wrapped(WrappedComponent) {
     class WithLoadables extends React.Component {
-      constructor(props) {
-        super(props);
-
-        this.state = {
-          loadedLibraries: {},
-        };
-      }
-
       getLoadables() {
         const { loadables } = settings;
         return {
@@ -33,7 +25,6 @@ export function withLoadables(maybeNames) {
                 : {},
             ),
           ), // this is to support "loadables" that are already loaded
-          ...this.state.loadedLibraries,
           ..._loadablesCache,
         };
       }
@@ -51,24 +42,21 @@ export function withLoadables(maybeNames) {
                 <LoadableLibrary
                   key={name}
                   ref={(val) => {
-                    if (!this.state[name] && val) {
-                      this.setState(
-                        (state) => ({
-                          loadedLibraries: {
-                            ...state.loadedLibraries,
-                            [name]: val,
-                          },
-                        }),
-                        () => {
-                          _loadablesCache[name] = val;
-                        },
-                      );
+                    if (!_loadablesCache[name] && val) {
+                      _loadablesCache[name] = val;
+                      this.forceUpdate();
                     }
                   }}
                 />
               );
             })}
-            {isLoaded ? <WrappedComponent {...this.props} {...loaded} /> : null}
+            {isLoaded ? (
+              <WrappedComponent
+                key={Object.keys(loaded).join('|')}
+                {...this.props}
+                {...loaded}
+              />
+            ) : null}
           </>
         );
       }
