@@ -76,3 +76,27 @@ export function withLoadables(maybeNames) {
 function getDisplayName(WrappedComponent) {
   return WrappedComponent.displayName || WrappedComponent.name || 'Component';
 }
+
+export function useLoadables(maybeNames) {
+  const libraries = Array.isArray(maybeNames) ? maybeNames : [maybeNames];
+  const { loadables } = settings;
+  const dispatch = useDispatch();
+
+  const globalLoadedLibraries = useSelector(
+    (state) => state.lazyLibraries || {},
+  );
+  const loaded = getLoadables(libraries, globalLoadedLibraries);
+  const isLoaded = Object.keys(loaded).length === libraries.length;
+
+  libraries.forEach((name) => {
+    const LoadableLibrary = loadables[name];
+    LoadableLibrary.load().then((val) => {
+      if (!globalLoadedLibraries[name] && val) {
+        dispatch(loadLazyLibrary(name, val));
+      }
+    });
+    return;
+  });
+
+  return isLoaded ? loaded : {};
+}
