@@ -26,7 +26,6 @@ import {
   selectTheme,
   customSelectStyles,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
-// import { withLoadables } from '@plone/volto/helpers/Loadable/Loadable';
 
 const Select = loadable(() => import('react-select'));
 const AsyncPaginate = loadable(() => import('react-select-async-paginate'));
@@ -243,9 +242,6 @@ class SelectWidget extends Component {
    */
   render() {
     const { id, choices, value, onChange } = this.props;
-    // const { Select, AsyncPaginate } = this.props;
-    // console.log('Select', Select);
-    // console.log('AsyncPaginate', AsyncPaginate);
 
     return (
       <FormFieldWrapper {...this.props}>
@@ -322,7 +318,6 @@ class SelectWidget extends Component {
 
 export default compose(
   injectIntl,
-  // withLoadables(['Select', 'AsyncPaginate']),
   connect(
     (state, props) => {
       const vocabBaseUrl = !props.choices
