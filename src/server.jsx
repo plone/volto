@@ -190,37 +190,43 @@ server.get('/*', (req, res) => {
 
       if (context.url) {
         res.redirect(flattenToAppURL(context.url));
-      } else if (context.error_code) {
-        res.set({
-          'Cache-Control': 'no-cache',
-        });
-
-        res.status(context.error_code).send(
-          `<!doctype html>
-                ${renderToString(
-                  <Html
-                    extractor={extractor}
-                    markup={markup}
-                    store={store}
-                    extractScripts={process.env.NODE_ENV !== 'production'}
-                    criticalCss={readCriticalCss()}
-                  />,
-                )}
-              `,
-        );
       } else {
-        res.status(200).send(
-          `<!doctype html>
-                ${renderToString(
-                  <Html
-                    extractor={extractor}
-                    markup={markup}
-                    store={store}
-                    criticalCss={readCriticalCss()}
-                  />,
-                )}
-              `,
-        );
+        readCriticalCss((err, data) => {
+          const criticalCss = (!err && data) || null;
+
+          if (context.error_code) {
+            res.set({
+              'Cache-Control': 'no-cache',
+            });
+
+            res.status(context.error_code).send(
+              `<!doctype html>
+              ${renderToString(
+                <Html
+                  extractor={extractor}
+                  markup={markup}
+                  store={store}
+                  extractScripts={process.env.NODE_ENV !== 'production'}
+                  criticalCss={criticalCss}
+                />,
+              )}
+            `,
+            );
+          } else {
+            res.status(200).send(
+              `<!doctype html>
+              ${renderToString(
+                <Html
+                  extractor={extractor}
+                  markup={markup}
+                  store={store}
+                  criticalCss={criticalCss}
+                />,
+              )}
+            `,
+            );
+          }
+        });
       }
     }, errorHandler)
     .catch(errorHandler);

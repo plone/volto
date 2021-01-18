@@ -1,54 +1,39 @@
-import { existsSync, lstatSync, readFileSync } from 'fs';
+import { exists, lstat, readFile } from 'fs';
 
 const criticalCssPath = 'public/critical.css';
-const cacheLifetime = 5 * 60 * 1000; // 5 minutes
-
-let cache = null;
-let cacheTimeout = null;
 
 /**
  * Returns whether the critical CSS file exists or not.
  *
- * @returns {boolean}
+ * @param callback {function} Receives a boolean parameter.
  */
-export const hasCriticalCss = () => {
-  return existsSync(criticalCssPath) && lstatSync(criticalCssPath).isFile();
+export const hasCriticalCss = (callback) => {
+  exists(criticalCssPath, (exists) => {
+    lstat(criticalCssPath, (err, stats) => {
+      callback(exists && !err && stats.isFile());
+    });
+  });
 };
 
 /**
  * Checks if there is a valid CSS file in the relative path `criticalCssPath`.
- * If it is there, returns its contents after caching it for `cacheLifetime`
- * milliseconds. If not, returns null and attempts to update the cache on each
- * call.
+ * If it is there, returns its contents, and if not, returns null.
  *
- * @returns {string|null}
+ * @param callback {function} Receives an error parameter then a data parameter
+ * which can be null.
  */
-export const updateCriticalCss = () => {
-  if (!hasCriticalCss()) {
-    cache = null;
-    return null;
-  } else {
-    cache = readFileSync(criticalCssPath);
-  }
-
-  if (cacheTimeout) {
-    clearTimeout(cacheTimeout);
-  }
-  cacheTimeout = setTimeout(() => {
-    cache = null;
-  }, cacheLifetime);
-  return cache;
-};
-
-/**
- * Reads the critical CSS cache. If well suited, updates the cache.
- *
- * @returns {string|null}
- */
-export const readCriticalCss = () => {
-  if (cache) {
-    return cache;
-  }
-  updateCriticalCss();
-  return cache;
+export const readCriticalCss = (callback) => {
+  hasCriticalCss((has) => {
+    if (!has) {
+      callback(null, null);
+    } else {
+      readFile(criticalCssPath, null, (err, data) => {
+        if (err) {
+          callback(err);
+        } else {
+          callback(null, data);
+        }
+      });
+    }
+  });
 };
