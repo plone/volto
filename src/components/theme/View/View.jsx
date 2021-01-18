@@ -250,6 +250,7 @@ class View extends Component {
               content={this.props.content.description}
             />
           )}
+          <meta name="twitter:card" content="summary_large_image">
         </Helmet>
         {/* Body class if displayName in component is set */}
         <BodyClass
