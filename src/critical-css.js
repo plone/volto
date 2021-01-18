@@ -25,7 +25,7 @@ export const hasCriticalCss = () => {
 export const readCriticalCss = () => {
   const has = hasCriticalCss();
   if (has) {
-    return readFileSync(criticalCssPath);
+    return readFileSync(criticalCssPath, { encoding: 'utf-8' });
   }
   return null;
 };
