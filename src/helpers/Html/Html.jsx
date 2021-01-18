@@ -61,11 +61,6 @@ class Html extends Component {
     const head = Helmet.rewind();
     const bodyClass = join(BodyClass.rewind(), ' ');
 
-    const linkOptions =
-      process.env.NODE_ENV === 'production' && this.props.criticalCss
-        ? { rel: 'preload' }
-        : {};
-
     return (
       <html lang="en">
         <head>
@@ -92,7 +87,7 @@ class Html extends Component {
             />
           )}
           {/* Add the crossorigin while in development */}
-          {extractor.getLinkElements(linkOptions).map((elem) =>
+          {extractor.getLinkElements().map((elem) =>
             React.cloneElement(elem, {
               crossOrigin:
                 process.env.NODE_ENV === 'production' ? undefined : 'true',

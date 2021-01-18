@@ -1,39 +1,31 @@
-import { exists, lstat, readFile } from 'fs';
+import { existsSync, lstatSync, readFileSync } from 'fs';
 
-const criticalCssPath = 'public/critical.css';
+export const criticalCssPath = 'public/critical.css';
 
 /**
  * Returns whether the critical CSS file exists or not.
  *
- * @param callback {function} Receives a boolean parameter.
+ * @returns {boolean}
  */
-export const hasCriticalCss = (callback) => {
-  exists(criticalCssPath, (exists) => {
-    lstat(criticalCssPath, (err, stats) => {
-      callback(exists && !err && stats.isFile());
-    });
-  });
+export const hasCriticalCss = () => {
+  const e = existsSync(criticalCssPath);
+  if (e) {
+    const f = lstatSync(criticalCssPath);
+    return f.isFile();
+  }
+  return false;
 };
 
 /**
  * Checks if there is a valid CSS file in the relative path `criticalCssPath`.
  * If it is there, returns its contents, and if not, returns null.
  *
- * @param callback {function} Receives an error parameter then a data parameter
- * which can be null.
+ * @returns {string|null}
  */
-export const readCriticalCss = (callback) => {
-  hasCriticalCss((has) => {
-    if (!has) {
-      callback(null, null);
-    } else {
-      readFile(criticalCssPath, null, (err, data) => {
-        if (err) {
-          callback(err);
-        } else {
-          callback(null, data);
-        }
-      });
-    }
-  });
+export const readCriticalCss = () => {
+  const has = hasCriticalCss();
+  if (has) {
+    return readFileSync(criticalCssPath);
+  }
+  return null;
 };

@@ -190,43 +190,37 @@ server.get('/*', (req, res) => {
 
       if (context.url) {
         res.redirect(flattenToAppURL(context.url));
-      } else {
-        readCriticalCss((err, data) => {
-          const criticalCss = (!err && data) || null;
+      } else if (context.error_code) {
+        res.set({
+          'Cache-Control': 'no-cache',
+        });
 
-          if (context.error_code) {
-            res.set({
-              'Cache-Control': 'no-cache',
-            });
-
-            res.status(context.error_code).send(
-              `<!doctype html>
+        res.status(context.error_code).send(
+          `<!doctype html>
               ${renderToString(
                 <Html
                   extractor={extractor}
                   markup={markup}
                   store={store}
                   extractScripts={process.env.NODE_ENV !== 'production'}
-                  criticalCss={criticalCss}
+                  criticalCss={readCriticalCss()}
                 />,
               )}
             `,
-            );
-          } else {
-            res.status(200).send(
-              `<!doctype html>
+        );
+      } else {
+        res.status(200).send(
+          `<!doctype html>
               ${renderToString(
                 <Html
                   extractor={extractor}
                   markup={markup}
                   store={store}
-                  criticalCss={criticalCss}
+                  criticalCss={readCriticalCss()}
                 />,
               )}
             `,
-            );
-          }
-        });
+        );
       }
     }, errorHandler)
     .catch(errorHandler);
