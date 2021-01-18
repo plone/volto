@@ -36,7 +36,7 @@ export class BlocksToolbarComponent extends React.Component {
   loadFromStorage() {
     const clipboard = load({ states: ['blocksClipboard'] })?.blocksClipboard;
     if (!isEqual(clipboard, this.props.blocksClipboard))
-      this.props.setBlocksClipboard(clipboard);
+      this.props.setBlocksClipboard(clipboard || {});
   }
 
   componentDidMount() {
