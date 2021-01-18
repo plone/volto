@@ -232,7 +232,6 @@ class View extends Component {
           <meta name="description" content={this.props.content.description} />
 
           <meta property="og:title" content={this.props.content.title} />
-          {/* <meta property="og:type" content="" /> */}
           <meta
             property="og:url"
             content={toPublicURL(this.props.content['@id'])}
