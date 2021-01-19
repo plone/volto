@@ -42,7 +42,10 @@ const apiPath =
     ? `http://${host}:${port}/api`
     : 'http://localhost:8080/Plone');
 
-const serverSettings = __SERVER__ ? require('./server').default : {};
+const serverSettings =
+  typeof __SERVER__ !== 'undefined' && __SERVER__
+    ? require('./server').default
+    : {};
 
 let config = {
   settings: {
