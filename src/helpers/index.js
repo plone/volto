@@ -28,6 +28,21 @@ export {
   getLayoutFieldname,
   getContentIcon,
 } from '@plone/volto/helpers/Content/Content';
+export {
+  addBlock,
+  blockHasValue,
+  changeBlock,
+  deleteBlock,
+  emptyBlocksForm,
+  getBlocks,
+  getBlocksFieldname,
+  getBlocksLayoutFieldname,
+  hasBlocksData,
+  moveBlock,
+  mutateBlock,
+  nextBlockId,
+  previousBlockId,
+} from '@plone/volto/helpers/Blocks/Blocks';
 export BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
 export ScrollToTop from '@plone/volto/helpers/ScrollToTop/ScrollToTop';
 export {
@@ -48,4 +63,3 @@ export {
   applyConfig,
   withServerErrorCode,
 } from '@plone/volto/helpers/Utils/Utils';
-export * from '@plone/volto/helpers/Blocks/Blocks';
