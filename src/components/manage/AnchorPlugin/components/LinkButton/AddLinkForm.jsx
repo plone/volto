@@ -9,7 +9,6 @@ import { compose } from 'redux';
 
 import unionClassNames from 'union-class-names';
 import { addAppURL } from '@plone/volto/helpers';
-import EditorUtils from 'draft-js-plugins-utils';
 
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import { Input, Form, Button } from 'semantic-ui-react';
@@ -25,6 +24,9 @@ import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrow
 import { withRouter } from 'react-router';
 
 import { Icon } from '@plone/volto/components';
+
+import loadable from '@loadable/component';
+const LibEditorUtils = loadable.lib(() => import('draft-js-plugins-utils'));
 
 const messages = defineMessages({
   placeholder: {
@@ -106,6 +108,7 @@ class AddLinkForm extends Component {
   }
 
   linkFormContainer = React.createRef();
+  libEditorUtilsRef = React.createRef();
 
   /**
    * Change handler
@@ -127,7 +130,9 @@ class AddLinkForm extends Component {
 
     if (clear) {
       this.props.setEditorState(
-        EditorUtils.removeLinkAtSelection(this.props.getEditorState()),
+        this.libEditorUtilsRef.current.removeLinkAtSelection(
+          this.props.getEditorState(),
+        ),
       );
     }
   }
@@ -146,7 +151,10 @@ class AddLinkForm extends Component {
       isInvalid: false,
     });
     this.props.setEditorState(
-      EditorUtils.createLinkAtSelection(this.props.getEditorState(), url),
+      this.libEditorUtilsRef.current.createLinkAtSelection(
+        this.props.getEditorState(),
+        url,
+      ),
     );
   };
 
@@ -161,7 +169,9 @@ class AddLinkForm extends Component {
     this.setState(nextState);
 
     this.props.setEditorState(
-      EditorUtils.removeLinkAtSelection(this.props.getEditorState()),
+      this.libEditorUtilsRef.current.removeLinkAtSelection(
+        this.props.getEditorState(),
+      ),
     );
   }
 
@@ -209,7 +219,12 @@ class AddLinkForm extends Component {
       url = URLUtils.normaliseMail(url);
     }
 
-    setEditorState(EditorUtils.createLinkAtSelection(getEditorState(), url));
+    setEditorState(
+      this.libEditorUtilsRef.current.createLinkAtSelection(
+        getEditorState(),
+        url,
+      ),
+    );
     this.onClose();
   }
 
@@ -230,6 +245,7 @@ class AddLinkForm extends Component {
 
     return (
       <div className="link-form-container" ref={this.linkFormContainer}>
+        <LibEditorUtils ref={this.libEditorUtilsRef} />
         <div
           style={{ marginLeft: '5px', display: 'flex', alignItems: 'center' }}
         >
