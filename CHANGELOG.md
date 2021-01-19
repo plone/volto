@@ -13,6 +13,8 @@
 
 ### Bugfix
 
+- Fixed field type for 'from' field in ContactForm @giuliaghisini
+
 ### Internal
 
 ## 10.9.2 (2021-01-15)
