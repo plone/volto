@@ -57,7 +57,7 @@ class Html extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { extractor, markup, store } = this.props;
+    const { extractor, markup, store, criticalCss } = this.props;
     const head = Helmet.rewind();
     const bodyClass = join(BodyClass.rewind(), ' ');
 
@@ -81,7 +81,7 @@ class Html extends Component {
           <meta name="generator" content="Volto - http://plone.org" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="apple-mobile-web-app-capable" content="yes" />
-          {process.env.NODE_ENV === 'production' && this.props.criticalCss && (
+          {process.env.NODE_ENV === 'production' && criticalCss && (
             <style
               dangerouslySetInnerHTML={{ __html: this.props.criticalCss }}
             />
@@ -95,9 +95,18 @@ class Html extends Component {
           )}
           {/* Styles in development are loaded with Webpack's style-loader, in production,
               they need to be static*/}
-          {process.env.NODE_ENV === 'production' && (
-            <>{extractor.getStyleElements()}</>
-          )}
+          {process.env.NODE_ENV === 'production' &&
+            (criticalCss
+              ? extractor.getStyleElements().map((elem) => (
+                  <>
+                    {React.cloneElement(elem, {
+                      as: 'style',
+                      rel: 'preload',
+                    })}
+                    <noscript>{elem}</noscript>
+                  </>
+                ))
+              : extractor.getStyleElements())}
         </head>
         <body className={bodyClass}>
           <div role="navigation" aria-label="Toolbar" id="toolbar" />

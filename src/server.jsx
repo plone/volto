@@ -31,8 +31,6 @@ import languages from '@plone/volto/constants/Languages';
 
 import configureStore from '@plone/volto/store';
 
-import { readCriticalCss } from '@plone/volto/critical-css';
-
 let locales = {};
 
 if (settings) {
@@ -203,7 +201,7 @@ server.get('/*', (req, res) => {
                   markup={markup}
                   store={store}
                   extractScripts={process.env.NODE_ENV !== 'production'}
-                  criticalCss={readCriticalCss()}
+                  criticalCss={settings.serverConfig.readCriticalCss(req)}
                 />,
               )}
             `,
@@ -216,7 +214,7 @@ server.get('/*', (req, res) => {
                   extractor={extractor}
                   markup={markup}
                   store={store}
-                  criticalCss={readCriticalCss()}
+                  criticalCss={settings.serverConfig.readCriticalCss(req)}
                 />,
               )}
             `,
