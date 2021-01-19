@@ -2,7 +2,7 @@
 
 exports[`renders an url widget component 1`] = `
 <div
-  className="inline field url"
+  className="inline field url wide"
   id="field-test-url"
 >
   <div
@@ -28,19 +28,50 @@ exports[`renders an url widget component 1`] = `
         className="eight wide column"
       >
         <div
-          className="ui input"
+          className="wrapper"
         >
-          <input
-            id="field-test-url"
-            maxLength={null}
-            minLength={null}
-            name="test-url"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onClick={[Function]}
-            type="url"
-            value=""
-          />
+          <div
+            className="ui input"
+          >
+            <input
+              id="field-test-url"
+              maxLength={null}
+              minLength={null}
+              name="test-url"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              type="url"
+              value=""
+            />
+          </div>
+          <div
+            className="ui buttons"
+          >
+            <button
+              className="ui basic icon button"
+              onClick={[Function]}
+            >
+              <svg
+                className="icon"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": undefined,
+                  }
+                }
+                onClick={null}
+                style={
+                  Object {
+                    "fill": "currentColor",
+                    "height": "24px",
+                    "width": "auto",
+                  }
+                }
+                viewBox=""
+                xmlns=""
+              />
+            </button>
+          </div>
         </div>
       </div>
     </div>
