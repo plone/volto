@@ -10,6 +10,28 @@ This upgrade guide lists all breaking changes in Volto and explains the
     dependencies might do when dealing with upgrades. We keep the generator up
     to date and in sync with current Volto release.
 
+## Upgrading to Volto 11.x.x
+
+### App component is no longer exported in `src/components/index.js`
+
+It proved to be a source of circular dependencies problems. Also, the tests run a 25% quicker with this change. You have to update the boilerplate of your Volto project `routes.js` and replace it with:
+
+```diff
+diff --git a/src/routes.js b/src/routes.js
+index c31d9e8c3..1ba14a437 100644
+--- a/src/routes.js
++++ b/src/routes.js
+@@ -3,7 +3,7 @@
+  * @module routes
+  */
+
+-import { App } from '@plone/volto/components';
++import App from '@plone/volto/components/theme/App/App';
+ import { defaultRoutes } from '@plone/volto/routes';
+
+ /**
+```
+
 ## Upgrading to Volto 10.x.x
 
 ### Remove the Razzle plugins patch

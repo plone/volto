@@ -4,6 +4,8 @@
 
 ### Breaking
 
+- Remove `App` from the main `src/components/index.js` @sneridagh
+
 ### Feature
 
 ### Bugfix
