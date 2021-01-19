@@ -1,3 +1,4 @@
+import express from 'express';
 import { generateSitemap } from '@plone/volto/helpers';
 
 export const sitemap = function (req, res, next) {
@@ -10,12 +11,9 @@ export const sitemap = function (req, res, next) {
 };
 
 export default function () {
-  if (typeof __SERVER__ !== 'undefined' && __SERVER__) {
-    const express = require('express');
-    const middleware = express.Router();
+  const middleware = express.Router();
 
-    middleware.all('**/sitemap.xml.gz', sitemap);
-    middleware.id = 'sitemap.xml.gz';
-    return middleware;
-  }
+  middleware.all('**/sitemap.xml.gz', sitemap);
+  middleware.id = 'sitemap.xml.gz';
+  return middleware;
 }
