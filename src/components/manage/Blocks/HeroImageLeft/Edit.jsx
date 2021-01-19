@@ -98,7 +98,15 @@ class Edit extends Component {
     if (!__SERVER__) {
       this.state = {
         uploading: false,
+        // TODO: correct this, compute it to createEmpty() return value before it
+        // is rendered! Currently it is rendered before replacing this editorState
+        // with smth consistent. Neither null nor undefined works as editorState
+        // here:
         titleEditorState: null,
+        // TODO: correct this, compute it to createEmpty() return value before it
+        // is rendered! Currently it is rendered before replacing this editorState
+        // with smth consistent. Neither null nor undefined works as editorState
+        // here:
         descriptionEditorState: null,
         currentFocused: 'title',
       };
@@ -305,8 +313,18 @@ class Edit extends Component {
           selected: this.props.selected,
         })}
       >
-        <LibDraftJs ref={this.libDraftJsRef}>
+        <LibDraftJs
+          ref={(val) => {
+            // TODO: check which of these console.log-s are executed
+            // and the order in which they are executed, so you can know where
+            // to move all the pieces, all in one place: either in
+            // componentDidMount or in the children function prop.
+            console.log('val', val); // TODO: remove this line
+            this.libDraftJsRef.current = val;
+          }}
+        >
           {({ Editor }) => {
+            console.log('val.Editor', Editor); // TODO: remove this line
             return (
               <LibDraftJsImportHtml ref={this.libDraftJsImportHtmlRef}>
                 {() => {

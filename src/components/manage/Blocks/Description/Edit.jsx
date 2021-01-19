@@ -61,6 +61,10 @@ class Edit extends Component {
     super(props);
 
     if (!__SERVER__) {
+      // TODO: correct this, compute it to createEmpty() return value before it
+      // is rendered! Currently it is rendered before replacing this editorState
+      // with smth consistent. Neither null nor undefined works as editorState
+      // here:
       this.state = { editorState: null, focus: false };
     }
 
