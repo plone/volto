@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Use draft.js-related modules through loadable @silviubogan
+
 ## 10.9.2 (2021-01-15)
 
 ### Bugfix
