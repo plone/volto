@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2021-01-15T12:57:32.708Z\n"
+"POT-Creation-Date: 2021-01-19T12:57:12.942Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -2638,6 +2638,7 @@ msgstr ""
 msgid "common"
 msgstr ""
 
+#: components/manage/Blocks/Block/Edit
 #: components/manage/Blocks/Block/EditBlockWrapper
 # defaultMessage: delete
 msgid "delete"

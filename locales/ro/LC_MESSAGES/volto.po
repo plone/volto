@@ -2150,6 +2150,7 @@ msgstr "Ați uitat parola?"
 msgid "common"
 msgstr "Comun"
 
+#: components/manage/Blocks/Block/Edit
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"
 msgstr "Ștergeți"
