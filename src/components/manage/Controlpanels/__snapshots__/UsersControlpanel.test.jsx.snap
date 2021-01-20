@@ -95,15 +95,26 @@ exports[`UsersControlpanel renders a user control component 1`] = `
       <div
         style={
           Object {
+            "cursor": "pointer",
             "display": "inline-flex",
             "float": "left",
           }
         }
       >
-        <button
-          className="ui basic primary button"
+        <h4
+          className="ui icon center aligned header"
           onClick={[Function]}
         >
+          <div
+            className="content"
+            style={
+              Object {
+                "marginTop": "3px",
+              }
+            }
+          >
+            Add new user
+          </div>
           <svg
             className="icon addSVG"
             dangerouslySetInnerHTML={
@@ -114,37 +125,39 @@ exports[`UsersControlpanel renders a user control component 1`] = `
             onClick={null}
             style={
               Object {
-                "fill": "#007eb1",
-                "height": "30px",
+                "fill": "currentColor",
+                "height": "28px",
                 "width": "auto",
               }
             }
             viewBox=""
             xmlns=""
           />
-        </button>
-        <label
-          style={
-            Object {
-              "margin": "auto",
-            }
-          }
-        >
-          Add new user
-        </label>
+        </h4>
       </div>
       <div
         style={
           Object {
+            "cursor": "pointer",
             "display": "inline-flex",
             "float": "right",
           }
         }
       >
-        <button
-          className="ui basic primary button"
+        <h4
+          className="ui center aligned header"
           onClick={[Function]}
         >
+          <div
+            className="content"
+            style={
+              Object {
+                "marginTop": "3px",
+              }
+            }
+          >
+            Save
+          </div>
           <svg
             className="icon addSVG"
             dangerouslySetInnerHTML={
@@ -155,24 +168,15 @@ exports[`UsersControlpanel renders a user control component 1`] = `
             onClick={null}
             style={
               Object {
-                "fill": "#007eb1",
-                "height": "30px",
+                "fill": "currentColor",
+                "height": "28px",
                 "width": "auto",
               }
             }
             viewBox=""
             xmlns=""
           />
-        </button>
-        <label
-          style={
-            Object {
-              "margin": "auto",
-            }
-          }
-        >
-          Save
-        </label>
+        </h4>
       </div>
     </div>
     <div
@@ -258,15 +262,26 @@ exports[`UsersControlpanel renders a user control component 1`] = `
       <div
         style={
           Object {
+            "cursor": "pointer",
             "display": "inline-flex",
             "float": "left",
           }
         }
       >
-        <button
-          className="ui basic primary button"
+        <h4
+          className="ui icon center aligned header"
           onClick={[Function]}
         >
+          <div
+            className="content"
+            style={
+              Object {
+                "marginTop": "3px",
+              }
+            }
+          >
+            Add new group
+          </div>
           <svg
             className="icon addSVG"
             dangerouslySetInnerHTML={
@@ -277,39 +292,41 @@ exports[`UsersControlpanel renders a user control component 1`] = `
             onClick={null}
             style={
               Object {
-                "fill": "#007eb1",
-                "height": "30px",
+                "fill": "currentColor",
+                "height": "28px",
                 "width": "auto",
               }
             }
             viewBox=""
             xmlns=""
           />
-        </button>
-        <label
-          style={
-            Object {
-              "margin": "auto",
-            }
-          }
-        >
-          Add new group
-        </label>
+        </h4>
       </div>
       <div
         style={
           Object {
+            "cursor": "pointer",
             "display": "inline-flex",
             "float": "right",
           }
         }
       >
-        <button
-          className="ui basic primary button"
+        <h4
+          className="ui center aligned header"
           onClick={[Function]}
         >
+          <div
+            className="content"
+            style={
+              Object {
+                "marginTop": "3px",
+              }
+            }
+          >
+            Save
+          </div>
           <svg
-            className="icon"
+            className="icon addSVG"
             dangerouslySetInnerHTML={
               Object {
                 "__html": "<title>Save</title>undefined",
@@ -318,24 +335,15 @@ exports[`UsersControlpanel renders a user control component 1`] = `
             onClick={null}
             style={
               Object {
-                "fill": "#007eb1",
-                "height": "30px",
+                "fill": "currentColor",
+                "height": "28px",
                 "width": "auto",
               }
             }
             viewBox=""
             xmlns=""
           />
-        </button>
-        <label
-          style={
-            Object {
-              "margin": "auto",
-            }
-          }
-        >
-          Save
-        </label>
+        </h4>
       </div>
     </div>
   </div>

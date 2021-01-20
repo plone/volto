@@ -35,12 +35,12 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { bindActionCreators, compose } from 'redux';
 import {
-  Button,
   Confirm,
   Container,
   Divider,
   Form,
   Input,
+  Header,
   Segment,
   Table,
 } from 'semantic-ui-react';
@@ -764,39 +764,56 @@ class UsersControlpanel extends Component {
             </div>
           </Form>
           <Segment clearing className="actions">
-            <div style={{ display: 'inline-flex', float: 'left' }}>
-              <Button
-                basic
-                primary
+            <div
+              style={{
+                display: 'inline-flex',
+                float: 'left',
+                cursor: 'pointer',
+              }}
+            >
+              <Header
+                as="h4"
+                icon
+                textAlign="center"
                 onClick={() => {
                   this.setState({ showAddUser: true });
                 }}
               >
+                <Header.Content style={{ marginTop: '3px' }}>
+                  {this.props.intl.formatMessage(messages.addUserButtonTitle)}
+                </Header.Content>
+
                 <Icon
                   name={addSvg}
-                  size="30px"
-                  color="#007eb1"
+                  size="28px"
                   className="addSVG"
                   title={this.props.intl.formatMessage(messages.add)}
                 />
-              </Button>
-              <label style={{ margin: 'auto' }}>
-                {this.props.intl.formatMessage(messages.addUserButtonTitle)}
-              </label>
+              </Header>
             </div>
-            <div style={{ display: 'inline-flex', float: 'right' }}>
-              <Button basic primary onClick={this.updateUserRoleSubmit}>
+            <div
+              style={{
+                display: 'inline-flex',
+                float: 'right',
+                cursor: 'pointer',
+              }}
+            >
+              <Header
+                as="h4"
+                textAlign="center"
+                onClick={this.updateUserRoleSubmit}
+              >
+                <Header.Content style={{ marginTop: '3px' }}>
+                  {this.props.intl.formatMessage(messages.save)}
+                </Header.Content>
+
                 <Icon
                   name={saveSVG}
-                  size="30px"
-                  color="#007eb1"
+                  size="28px"
                   className="addSVG"
                   title={this.props.intl.formatMessage(messages.save)}
                 />
-              </Button>
-              <label style={{ margin: 'auto' }}>
-                {this.props.intl.formatMessage(messages.save)}
-              </label>
+              </Header>
             </div>
           </Segment>
           <Divider />
@@ -854,38 +871,56 @@ class UsersControlpanel extends Component {
             </div>
           </Form>
           <Segment clearing className="actions">
-            <div style={{ display: 'inline-flex', float: 'left' }}>
-              <Button
-                basic
-                primary
+            <div
+              style={{
+                display: 'inline-flex',
+                float: 'left',
+                cursor: 'pointer',
+              }}
+            >
+              <Header
+                as="h4"
+                icon
+                textAlign="center"
                 onClick={() => {
                   this.setState({ showAddGroup: true });
                 }}
               >
+                <Header.Content style={{ marginTop: '3px' }}>
+                  {this.props.intl.formatMessage(messages.addGroupsButtonTitle)}
+                </Header.Content>
+
                 <Icon
                   name={addSvg}
-                  size="30px"
-                  color="#007eb1"
+                  size="28px"
                   className="addSVG"
                   title={this.props.intl.formatMessage(messages.add)}
                 />
-              </Button>
-              <label style={{ margin: 'auto' }}>
-                {this.props.intl.formatMessage(messages.addGroupsButtonTitle)}
-              </label>
+              </Header>
             </div>
-            <div style={{ display: 'inline-flex', float: 'right' }}>
-              <Button basic primary onClick={this.updateGroupRoleSubmit}>
+            <div
+              style={{
+                display: 'inline-flex',
+                float: 'right',
+                cursor: 'pointer',
+              }}
+            >
+              <Header
+                as="h4"
+                textAlign="center"
+                onClick={this.updateGroupRoleSubmit}
+              >
+                <Header.Content style={{ marginTop: '3px' }}>
+                  {this.props.intl.formatMessage(messages.save)}
+                </Header.Content>
+
                 <Icon
                   name={saveSVG}
-                  size="30px"
-                  color="#007eb1"
+                  size="28px"
+                  className="addSVG"
                   title={this.props.intl.formatMessage(messages.save)}
                 />
-              </Button>
-              <label style={{ margin: 'auto' }}>
-                {this.props.intl.formatMessage(messages.save)}
-              </label>
+              </Header>
             </div>
           </Segment>
         </Segment.Group>
