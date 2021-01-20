@@ -10,8 +10,8 @@ import { compose } from 'redux';
 import { readAsDataURL } from 'promise-file-reader';
 import { Button, Dimmer, Input, Loader, Message } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
+import loadable from '@loadable/component';
 import cx from 'classnames';
-import Dropzone from 'react-dropzone';
 
 import { Icon, ImageSidebar, SidebarPortal } from '@plone/volto/components';
 import { createContent } from '@plone/volto/actions';
@@ -26,6 +26,10 @@ import clearSVG from '@plone/volto/icons/clear.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import uploadSVG from '@plone/volto/icons/upload.svg';
+
+const Dropzone = loadable(() => import('react-dropzone'), {
+  resolveComponent: (components) => components.Dropzone,
+});
 
 const messages = defineMessages({
   ImageBlockInputPlaceholder: {
@@ -292,7 +296,7 @@ class Edit extends Component {
                         <Loader indeterminate>Uploading image</Loader>
                       </Dimmer>
                     )}
-                    <center>
+                    <div className="no-image-wrapper">
                       <img src={imageBlockSVG} alt="" />
                       <div className="toolbar-inner">
                         <Button.Group>
@@ -356,7 +360,7 @@ class Edit extends Component {
                           </Button>
                         </Button.Group>
                       </div>
-                    </center>
+                    </div>
                   </Message>
                 </div>
               )}

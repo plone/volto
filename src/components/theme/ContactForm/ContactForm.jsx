@@ -202,7 +202,7 @@ class ContactForm extends Component {
                 },
                 from: {
                   title: this.props.intl.formatMessage(messages.from),
-                  type: 'string',
+                  type: 'email',
                 },
                 subject: {
                   title: this.props.intl.formatMessage(messages.subject),

@@ -7,7 +7,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.waitForResourceToLoad('@breadcrumbs');
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('?fullobjects');
+      cy.waitForResourceToLoad('');
     });
     it('As anonymous user I can see the search results ordered by search rank,', () => {
       // Given document Colorless and Color and feeding some text into it.

@@ -15,7 +15,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.waitForResourceToLoad('@breadcrumbs');
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('my-page?fullobjects');
+      cy.waitForResourceToLoad('my-page');
       cy.navigate('/my-page/edit');
       cy.get(`.block.title [data-contents]`);
     });
@@ -37,7 +37,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.waitForResourceToLoad('@breadcrumbs');
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('my-page?fullobjects');
+      cy.waitForResourceToLoad('my-page');
 
       // then the page view should contain the maps block
       cy.get('#page-document iframe')
@@ -142,7 +142,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.waitForResourceToLoad('@breadcrumbs');
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('my-page?fullobjects');
+      cy.waitForResourceToLoad('my-page');
 
       // Check if HTML is present in the page view
       cy.get('#page-document pre').should('have.text', 'This is HTML');
@@ -173,12 +173,11 @@ if (Cypress.env('API') !== 'guillotina') {
 
       // Save
       cy.get('#toolbar-save').click();
-      cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
       cy.waitForResourceToLoad('@navigation');
       cy.waitForResourceToLoad('@breadcrumbs');
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('my-page?fullobjects');
+      cy.waitForResourceToLoad('my-page');
 
       // View
       cy.get('.celled.fixed.table tr th:first-child()').contains(
@@ -195,7 +194,15 @@ if (Cypress.env('API') !== 'guillotina') {
       );
 
       // Edit
-      cy.visit('/my-page/edit');
+      cy.navigate('/my-page/edit');
+      cy.waitForResourceToLoad('my-page');
+      cy.waitForResourceToLoad('@navigation');
+      cy.waitForResourceToLoad('@breadcrumbs');
+      cy.waitForResourceToLoad('@actions');
+      cy.waitForResourceToLoad('@types');
+
+      cy.get('#toolbar-save').should('be.visible');
+
       cy.get('.celled.fixed.table tr:first-child() th:nth-child(2)').click();
 
       // without the second click the test fails. so this makes the test green.
@@ -211,15 +218,11 @@ if (Cypress.env('API') !== 'guillotina') {
 
       // Save
       cy.get('#toolbar-save').click();
-      cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
-      cy.waitForResourceToLoad('@navigation');
-      cy.waitForResourceToLoad('@breadcrumbs');
-      cy.waitForResourceToLoad('@actions');
-      cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('my-page?fullobjects');
+      cy.waitForResourceToLoad('my-page');
 
       // View
-      cy.get('.celled.fixed.table tr th:first-child()').contains(
+      cy.get('.celled.fixed.table tr th:first-child()').should(
+        'contain',
         'column 1 / row 1',
       );
       cy.get('th:nth-child(2)> p ').should('have.text', 'column 2 / row 1');
@@ -253,7 +256,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.waitForResourceToLoad('@breadcrumbs');
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('?fullobjects');
+      cy.waitForResourceToLoad('');
 
       // then the ToC block should contain the H2 headline
       cy.get('.block.table-of-contents .ui.list a').contains(

@@ -25,6 +25,10 @@ const messages = defineMessages({
     id: 'Source',
     defaultMessage: 'Source',
   },
+  depth: {
+    id: 'Depth',
+    defaultMessage: 'Depth',
+  },
   SortOn: {
     id: 'Sort on',
     defaultMessage: 'Sort on',
@@ -58,6 +62,7 @@ const ListingData = ({
   const sortable_indexes = useSelector(
     (state) => state.querystring.sortable_indexes,
   );
+  const [depth, setDepth] = React.useState(data.depth || '');
   const [limit, setLimit] = React.useState(data.limit || '');
   const [itemBatchSize, setItemBatchSize] = React.useState(data.b_size || '');
 
@@ -76,6 +81,22 @@ const ListingData = ({
             });
           }}
         />
+
+        {data?.query?.filter((q) => q.i === 'path').length > 0 && (
+          <TextWidget
+            id="depth"
+            title={intl.formatMessage(messages.depth)}
+            required={false}
+            value={depth}
+            onChange={(name, value) => {
+              onChangeBlock(block, {
+                ...data,
+                depth: value,
+              });
+              setDepth(value);
+            }}
+          />
+        )}
 
         <Form.Field inline id="field-listingblock-sort-on">
           <Grid>
