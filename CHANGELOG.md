@@ -6,6 +6,8 @@
 
 ### Feature
 
+- added interface for plone seo extensions to use values added by them as metadata @jackahl
+
 - added og tags for social sharing [giuliaghisini]
 
 ### Bugfix
