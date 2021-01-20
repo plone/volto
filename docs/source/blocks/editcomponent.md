@@ -81,11 +81,11 @@ To render this form and make it available to the edit component:
 ```jsx
 import schema from './schema';
 import InlineForm from '@plone/volto/components/manage/Form/InlineForm';
-import { Icon as VoltoIcon } from '@plone/volto/components';
+import { Icon } from '@plone/volto/components';
 
 <SidebarPortal selected={this.props.selected}>
   <InlineForm
-    icon={<VoltoIcon size="24px" name={nameSVG} />}
+    icon={<Icon size="24px" name={nameSVG} />}
     schema={schema}
     title={schema.title}
     headerActions={<button onClick={() => {}}>Action</button>}
