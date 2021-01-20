@@ -1,17 +1,26 @@
 /**
  * Edit text cell block.
- * @module components/manage/Blocks/Title/Cell
+ * @module components/manage/Blocks/Table/Cell
  */
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Editor from 'draft-js-plugins-editor';
-import { convertFromRaw, EditorState, RichUtils } from 'draft-js';
-import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
-import isSoftNewlineEvent from 'draft-js/lib/isSoftNewlineEvent';
+
 import { includes } from 'lodash';
 
 import { settings } from '~/config';
+
+import loadable from '@loadable/component';
+const LibDraftJsPluginsEditor = loadable.lib(() =>
+  import('draft-js-plugins-editor'),
+);
+const LibDraftJs = loadable.lib(() => import('draft-js'));
+const LibDraftJsInlineToolbarPlugin = loadable.lib(() =>
+  import('draft-js-inline-toolbar-plugin'),
+);
+const LibDraftJsIsSoftNewlineEvent = loadable.lib(() =>
+  import('draft-js/lib/isSoftNewlineEvent'),
+);
 
 /**
  * Edit text cell class.
@@ -53,19 +62,7 @@ class Cell extends Component {
   constructor(props) {
     super(props);
 
-    if (!__SERVER__) {
-      let editorState;
-      editorState = EditorState.createWithContent(convertFromRaw(props.value));
-
-      const inlineToolbarPlugin = createInlineToolbarPlugin({
-        structure: settings.richTextEditorInlineToolbarButtons,
-      });
-
-      this.state = {
-        editorState,
-        inlineToolbarPlugin,
-      };
-    }
+    this.state = {};
 
     this.onChange = this.onChange.bind(this);
   }
@@ -113,6 +110,8 @@ class Cell extends Component {
     });
   }
 
+  firstRender = true;
+
   /**
    * Render method.
    * @method render
@@ -123,54 +122,115 @@ class Cell extends Component {
       return <div />;
     }
 
-    const { InlineToolbar } = this.state.inlineToolbarPlugin;
-
     return (
-      <div>
-        <Editor
-          onChange={this.onChange}
-          editorState={this.state.editorState}
-          plugins={[
-            this.state.inlineToolbarPlugin,
-            ...settings.richTextEditorPlugins,
-          ]}
-          blockRenderMap={settings.extendedBlockRenderMap}
-          blockStyleFn={settings.blockStyleFn}
-          customStyleMap={settings.customStyleMap}
-          handleReturn={(e) => {
-            if (isSoftNewlineEvent(e)) {
-              this.onChange(
-                RichUtils.insertSoftNewline(this.state.editorState),
-              );
-              return 'handled';
-            }
-            if (!this.props.detached && !this.props.disableNewBlocks) {
-              const selectionState = this.state.editorState.getSelection();
-              const anchorKey = selectionState.getAnchorKey();
-              const currentContent = this.state.editorState.getCurrentContent();
-              const currentContentBlock = currentContent.getBlockForKey(
-                anchorKey,
-              );
-              const blockType = currentContentBlock.getType();
-              if (!includes(settings.listBlockTypes, blockType)) {
-                this.props.onSelectBlock(
-                  this.props.onAddBlock(
-                    settings.defaultBlockType,
-                    this.props.index + 1,
-                  ),
+      <LibDraftJsIsSoftNewlineEvent>
+        {({ default: isSoftNewlineEvent }) => {
+          return (
+            <LibDraftJsPluginsEditor>
+              {({ default: Editor }) => {
+                return (
+                  <LibDraftJsInlineToolbarPlugin>
+                    {({ default: createInlineToolbarPlugin }) => {
+                      return (
+                        <LibDraftJs>
+                          {({ convertFromRaw, EditorState, RichUtils }) => {
+                            if (!__SERVER__ && this.firstRender) {
+                              this.firstRender = false;
+
+                              let editorState;
+                              editorState = EditorState.createWithContent(
+                                convertFromRaw(this.props.value),
+                              );
+
+                              const inlineToolbarPlugin = createInlineToolbarPlugin(
+                                {
+                                  structure:
+                                    settings.richTextEditorInlineToolbarButtons,
+                                },
+                              );
+
+                              this.setState({
+                                editorState,
+                                inlineToolbarPlugin,
+                              });
+                            }
+
+                            const InlineToolbar = this.state
+                              ?.inlineToolbarPlugin?.InlineToolbar;
+
+                            return (
+                              !!this.state.editorState &&
+                              !!this.state.inlineToolbarPlugin && (
+                                <div>
+                                  <Editor
+                                    onChange={this.onChange}
+                                    editorState={this.state.editorState}
+                                    plugins={[
+                                      this.state.inlineToolbarPlugin,
+                                      ...settings.richTextEditorPlugins,
+                                    ]}
+                                    blockRenderMap={
+                                      settings.extendedBlockRenderMap
+                                    }
+                                    blockStyleFn={settings.blockStyleFn}
+                                    customStyleMap={settings.customStyleMap}
+                                    handleReturn={(e) => {
+                                      if (isSoftNewlineEvent(e)) {
+                                        this.onChange(
+                                          RichUtils.insertSoftNewline(
+                                            this.state.editorState,
+                                          ),
+                                        );
+                                        return 'handled';
+                                      }
+                                      if (
+                                        !this.props.detached &&
+                                        !this.props.disableNewBlocks
+                                      ) {
+                                        const selectionState = this.state.editorState.getSelection();
+                                        const anchorKey = selectionState.getAnchorKey();
+                                        const currentContent = this.state.editorState.getCurrentContent();
+                                        const currentContentBlock = currentContent.getBlockForKey(
+                                          anchorKey,
+                                        );
+                                        const blockType = currentContentBlock.getType();
+                                        if (
+                                          !includes(
+                                            settings.listBlockTypes,
+                                            blockType,
+                                          )
+                                        ) {
+                                          this.props.onSelectBlock(
+                                            this.props.onAddBlock(
+                                              settings.defaultBlockType,
+                                              this.props.index + 1,
+                                            ),
+                                          );
+                                          return 'handled';
+                                        }
+                                        return 'un-handled';
+                                      }
+                                      return {};
+                                    }}
+                                    ref={(node) => {
+                                      this.node = node;
+                                    }}
+                                  />
+                                  <InlineToolbar />
+                                </div>
+                              )
+                            );
+                          }}
+                        </LibDraftJs>
+                      );
+                    }}
+                  </LibDraftJsInlineToolbarPlugin>
                 );
-                return 'handled';
-              }
-              return 'un-handled';
-            }
-            return {};
-          }}
-          ref={(node) => {
-            this.node = node;
-          }}
-        />
-        <InlineToolbar />
-      </div>
+              }}
+            </LibDraftJsPluginsEditor>
+          );
+        }}
+      </LibDraftJsIsSoftNewlineEvent>
     );
   }
 }
