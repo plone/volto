@@ -2,11 +2,21 @@
 
 ## 10.9.3 (unreleased)
 
+- added objectBrowser to UrlWidget, and attached UrlWidget to remoteUrl field of ContentType Link @giuliaghisini
+- managed tel link in UrlWidget and draftjs @giuliaghisini
+
 ### Breaking
 
 ### Feature
 
+- added support for allowedBlocks and showRestricted for BlockChooser in Form [@giuliaghisini]
+- Improvements in InlineForm @nileshgulia1
+
 ### Bugfix
+
+- Fixed field type for 'from' field in ContactForm @giuliaghisini
+- handle SelectWidget null value and isMulti(#1915) &(1878) @nileshgulia1
+- Wrap objectBrowserWidget with FormFieldWrapper @nileshgulia1
 
 ### Internal
 
@@ -99,7 +109,6 @@
 
 - Replace `__SERVER__` occurrence from table `Edit` component @sneridagh
 
-
 ## 10.5.0 (2020-12-17)
 
 ### Feature
@@ -173,7 +182,7 @@
 
 ### Internal
 
-- Tweak Cypress command `waitForResourceToLoad` to timeout after 50 tries.  @tiberiuichim
+- Tweak Cypress command `waitForResourceToLoad` to timeout after 50 tries. @tiberiuichim
 
 ## 10.2.0 (2020-12-04)
 
@@ -195,7 +204,7 @@
 
 ### Feature
 
-- Provide operations on multiple-selected blocks: delete, cut/copy and paste.  You can trigger the "multiselected blocks" by holding the shift key and clicking on another block. You can add/remove blocks to the selection with the Control key. Holding Control when you click on the Paste button doesn't clear the clipboard, so you can paste multiple times. The blocks clipboard uses the browser's local storage to synchronize between tabs. @tiberiuichim
+- Provide operations on multiple-selected blocks: delete, cut/copy and paste. You can trigger the "multiselected blocks" by holding the shift key and clicking on another block. You can add/remove blocks to the selection with the Control key. Holding Control when you click on the Paste button doesn't clear the clipboard, so you can paste multiple times. The blocks clipboard uses the browser's local storage to synchronize between tabs. @tiberiuichim
 - Allow reducers to be persisted using localstorage @tiberiuichim
 
 ### Breaking
