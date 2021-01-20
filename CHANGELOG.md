@@ -16,6 +16,7 @@
 
 - Fixed field type for 'from' field in ContactForm @giuliaghisini
 - handle SelectWidget null value and isMulti(#1915) &(1878) @nileshgulia1
+- Fix typo in ita locales @nzambello
 - Wrap objectBrowserWidget with FormFieldWrapper @nileshgulia1
 
 ### Internal
