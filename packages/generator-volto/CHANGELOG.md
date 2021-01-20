@@ -8,6 +8,8 @@
 
 ### Changes
 
+- Fix addon routes in generator @sneridagh
+
 ## 2.2.0 (2021-01-09)
 
 ### Added
