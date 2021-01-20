@@ -19,14 +19,9 @@ import { resetServerContext } from 'react-beautiful-dnd';
 
 import routes from '~/routes';
 import { settings } from '~/config';
+import { flattenToAppURL } from '@plone/volto/helpers';
 
-import {
-  Html,
-  Api,
-  persistAuthToken,
-  generateSitemap,
-  getAPIResourceWithAuth,
-} from '@plone/volto/helpers';
+import { Html, Api, persistAuthToken } from '@plone/volto/helpers';
 
 import userSession from '@plone/volto/reducers/userSession/userSession';
 
@@ -48,7 +43,14 @@ if (settings) {
 
 const supported = new locale.Locales(keys(languages), 'en');
 
-const server = express();
+const server = express()
+  .disable('x-powered-by')
+  .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
+  .head('/*', function (req, res) {
+    // Support for HEAD requests. Required by start-test utility in CI.
+    res.send('');
+  });
+
 // Internal proxy to bypass CORS while developing.
 if (__DEVELOPMENT__ && settings.devProxyToApiPath) {
   const apiPathURL = parseUrl(settings.apiPath);
@@ -64,7 +66,7 @@ if (__DEVELOPMENT__ && settings.devProxyToApiPath) {
           settings.proxyRewriteTarget ||
           `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot/_vh_api`,
       },
-      logLevel: 'silent',
+      logLevel: 'silent', // change to 'debug' to see all requests
       ...(settings?.proxyRewriteTarget?.startsWith('https') && {
         changeOrigin: true,
         secure: false,
@@ -73,124 +75,126 @@ if (__DEVELOPMENT__ && settings.devProxyToApiPath) {
   );
 }
 
-if ((settings.expressMiddleware || []).length)
-  server.use('/', settings.expressMiddleware);
+server.all('*', setupServer);
 
-server
-  .disable('x-powered-by')
-  .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
-  .head('/*', function (req, res) {
-    // Support for HEAD requests. Required by start-test utility in CI.
-    res.send('');
-  })
-  .get('/*', (req, res) => {
-    plugToRequest(req, res);
-    const api = new Api(req);
+function setupServer(req, res, next) {
+  plugToRequest(req, res);
 
-    const url = req.originalUrl || req.url;
-    const location = parseUrl(url);
+  const api = new Api(req);
 
-    const browserdetect = detect(req.headers['user-agent']);
+  const browserdetect = detect(req.headers['user-agent']);
 
-    const lang = new locale.Locales(
-      cookie.load('I18N_LANGUAGE') ||
-        settings.defaultLanguage ||
-        req.headers['accept-language'],
-    )
-      .best(supported)
-      .toString();
+  const lang = new locale.Locales(
+    cookie.load('I18N_LANGUAGE') ||
+      settings.defaultLanguage ||
+      req.headers['accept-language'],
+  )
+    .best(supported)
+    .toString();
 
-    const authToken = cookie.load('auth_token');
+  const authToken = cookie.load('auth_token');
 
-    const initialState = {
-      userSession: { ...userSession(), token: authToken },
-      form: req.body,
-      intl: {
-        defaultLocale: 'en',
-        locale: lang,
-        messages: locales[lang],
-      },
-      browserdetect,
-    };
-    const history = createMemoryHistory({
-      initialEntries: [req.url],
+  const initialState = {
+    userSession: { ...userSession(), token: authToken },
+    form: req.body,
+    intl: {
+      defaultLocale: 'en',
+      locale: lang,
+      messages: locales[lang],
+    },
+    browserdetect,
+  };
+  const history = createMemoryHistory({
+    initialEntries: [req.url],
+  });
+
+  // Create a new Redux store instance
+  const store = configureStore(initialState, history, api);
+
+  persistAuthToken(store);
+
+  function errorHandler(error) {
+    const errorPage = (
+      <Provider store={store}>
+        <StaticRouter context={{}} location={req.url}>
+          <ErrorPage message={error.message} />
+        </StaticRouter>
+      </Provider>
+    );
+
+    res.set({
+      'Cache-Control': 'public, max-age=60, no-transform',
     });
 
-    // @loadable/server extractor
-    const extractor = new ChunkExtractor({
-      statsFile: path.resolve('build/loadable-stats.json'),
-      entrypoints: ['client'],
-    });
+    // Displays error in console
+    console.error(error);
 
-    // Create a new Redux store instance
-    const store = configureStore(initialState, history, api);
+    res.status(500).send(`<!doctype html> ${renderToString(errorPage)}`);
+  }
 
-    persistAuthToken(store);
+  req.app.locals = {
+    ...req.app.locals,
+    store,
+    api,
+    errorHandler,
+  };
 
-    if (req.path === '/sitemap.xml.gz') {
-      generateSitemap(req).then((sitemap) => {
-        res.set('Content-Type', 'application/x-gzip');
-        res.set('Content-Encoding', 'gzip');
-        res.set('Content-Disposition', 'attachment; filename="sitemap.xml.gz"');
-        res.send(sitemap);
-      });
-    } else if (
-      req.path.match(/(.*)\/@@images\/(.*)/) ||
-      req.path.match(/(.*)\/@@download\/(.*)/)
-    ) {
-      getAPIResourceWithAuth(req).then((resource) => {
-        function forwardHeaders(headers) {
-          headers.forEach((header) => {
-            if (resource.headers[header]) {
-              res.set(header, resource.headers[header]);
-            }
-          });
-        }
-        // Just forward the headers that we need
-        forwardHeaders([
-          'content-type',
-          'content-disposition',
-          'cache-control',
-        ]);
-        res.send(resource.body);
-      });
-    } else {
-      loadOnServer({ store, location, routes, api })
-        .then(() => {
-          // The content info is in the store at this point thanks to the asynconnect
-          // features, then we can force the current language info into the store when
-          // coming from an SSR request
-          const updatedLang =
-            store.getState().content.data?.language?.token ||
-            settings.defaultLanguage;
-          store.dispatch(
-            updateIntl({
-              locale: updatedLang,
-              messages: locales[updatedLang],
-            }),
-          );
+  next();
+}
 
-          const context = {};
-          resetServerContext();
-          const markup = renderToString(
-            <ChunkExtractorManager extractor={extractor}>
-              <Provider store={store}>
-                <StaticRouter context={context} location={req.url}>
-                  <ReduxAsyncConnect routes={routes} helpers={api} />
-                </StaticRouter>
-              </Provider>
-            </ChunkExtractorManager>,
-          );
+const expressMiddleware = (settings.expressMiddleware || []).filter(
+  (m) => typeof m !== 'undefined',
+);
+if (expressMiddleware.length) server.use('/', expressMiddleware);
 
-          if (context.url) {
-            res.redirect(context.url);
-          } else if (context.error_code) {
-            res.set({
-              'Cache-Control': 'no-cache',
-            });
+server.get('/*', (req, res) => {
+  const { store, api, errorHandler } = req.app.locals;
 
-            res.status(context.error_code).send(
-              `<!doctype html>
+  // @loadable/server extractor
+  const extractor = new ChunkExtractor({
+    statsFile: path.resolve('build/loadable-stats.json'),
+    entrypoints: ['client'],
+  });
+
+  const url = req.originalUrl || req.url;
+  const location = parseUrl(url);
+
+  loadOnServer({ store, location, routes, api })
+    .then(() => {
+      // The content info is in the store at this point thanks to the asynconnect
+      // features, then we can force the current language info into the store when
+      // coming from an SSR request
+      const updatedLang =
+        store.getState().content.data?.language?.token ||
+        settings.defaultLanguage;
+      store.dispatch(
+        updateIntl({
+          locale: updatedLang,
+          messages: locales[updatedLang],
+        }),
+      );
+
+      const context = {};
+      resetServerContext();
+      const markup = renderToString(
+        <ChunkExtractorManager extractor={extractor}>
+          <Provider store={store}>
+            <StaticRouter context={context} location={req.url}>
+              <ReduxAsyncConnect routes={routes} helpers={api} />
+            </StaticRouter>
+          </Provider>
+        </ChunkExtractorManager>,
+      );
+
+      if (context.url) {
+        res.redirect(flattenToAppURL(context.url));
+      } else if (context.error_code) {
+        res.set({
+          'Cache-Control': 'no-cache',
+        });
+
+        res.status(context.error_code).send(
+          `<!doctype html>
                 ${renderToString(
                   <Html
                     extractor={extractor}
@@ -200,38 +204,21 @@ server
                   />,
                 )}
               `,
-            );
-          } else {
-            res.status(200).send(
-              `<!doctype html>
+        );
+      } else {
+        res.status(200).send(
+          `<!doctype html>
                 ${renderToString(
                   <Html extractor={extractor} markup={markup} store={store} />,
                 )}
               `,
-            );
-          }
-        })
-        .catch((error) => {
-          const errorPage = (
-            <Provider store={store}>
-              <StaticRouter context={{}} location={req.url}>
-                <ErrorPage message={error.message} />
-              </StaticRouter>
-            </Provider>
-          );
-
-          res.set({
-            'Cache-Control': 'public, max-age=60, no-transform',
-          });
-
-          // Displays error in console
-          console.error(error);
-
-          res.status(500).send(`<!doctype html> ${renderToString(errorPage)}`);
-        });
-    }
-  });
+        );
+      }
+    }, errorHandler)
+    .catch(errorHandler);
+});
 
 server.apiPath = settings.apiPath;
 server.devProxyToApiPath = settings.devProxyToApiPath;
+
 export default server;

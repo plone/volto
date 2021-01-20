@@ -886,15 +886,25 @@ class Contents extends Component {
    * @returns {undefined}
    */
   fetchContents(pathname) {
-    this.props.searchContent(getBaseUrl(pathname || this.props.pathname), {
-      'path.depth': 1,
-      sort_on: this.state.sort_on,
-      sort_order: this.state.sort_order,
-      metadata_fields: '_all',
-      ...(this.state.filter && { SearchableText: `${this.state.filter}*` }),
-      b_size: this.state.pageSize,
-      b_start: this.state.currentPage * this.state.pageSize,
-    });
+    if (this.state.pageSize === 'All') {
+      this.props.searchContent(getBaseUrl(pathname || this.props.pathname), {
+        'path.depth': 1,
+        sort_on: this.state.sort_on,
+        sort_order: this.state.sort_order,
+        metadata_fields: '_all',
+        ...(this.state.filter && { SearchableText: `${this.state.filter}*` }),
+      });
+    } else {
+      this.props.searchContent(getBaseUrl(pathname || this.props.pathname), {
+        'path.depth': 1,
+        sort_on: this.state.sort_on,
+        sort_order: this.state.sort_order,
+        metadata_fields: '_all',
+        ...(this.state.filter && { SearchableText: `${this.state.filter}*` }),
+        b_size: this.state.pageSize,
+        b_start: this.state.currentPage * this.state.pageSize,
+      });
+    }
   }
 
   /**
@@ -1681,7 +1691,7 @@ class Contents extends Component {
                             this.props.total / this.state.pageSize,
                           )}
                           pageSize={this.state.pageSize}
-                          pageSizes={[15, 30, 50]}
+                          pageSizes={[15, 30, 50, 'All']}
                           onChangePage={this.onChangePage}
                           onChangePageSize={this.onChangePageSize}
                         />

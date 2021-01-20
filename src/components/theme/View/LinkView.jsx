@@ -5,9 +5,10 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { isInternalURL } from '@plone/volto/helpers';
+import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
+import URLUtils from '@plone/volto/components/manage/AnchorPlugin/utils/URLUtils';
 
 /**
  * View container class.
@@ -46,26 +47,11 @@ class LinkView extends Component {
    */
   UNSAFE_componentWillMount() {
     if (!this.props.token) {
-      if (isInternalURL(this.props.content.remoteUrl)) {
-        this.props.history.replace(this.props.content.remoteUrl);
+      const { remoteUrl } = this.props.content;
+      if (isInternalURL(remoteUrl)) {
+        this.props.history.replace(flattenToAppURL(remoteUrl));
       } else if (!__SERVER__) {
-        window.location.href = this.props.content.remoteUrl;
-      }
-    }
-  }
-
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (!this.props.token) {
-      if (isInternalURL(this.props.content.remoteUrl)) {
-        this.props.history.replace(this.props.content.remoteUrl);
-      } else if (!__SERVER__) {
-        window.location.href = this.props.content.remoteUrl;
+        window.location.href = flattenToAppURL(remoteUrl);
       }
     }
   }
@@ -76,6 +62,7 @@ class LinkView extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const { remoteUrl } = this.props.content;
     return (
       <Container id="page-document">
         <h1 className="documentFirstHeading">{this.props.content.title}</h1>
@@ -84,21 +71,43 @@ class LinkView extends Component {
             {this.props.content.description}
           </p>
         )}
-        {this.props.content.remoteUrl && (
+        {remoteUrl && (
           <span>
             The link address is:
-            {isInternalURL(this.props.content.remoteUrl) ? (
-              <Link to={this.props.content.remoteUrl}>
-                {this.props.content.remoteUrl}
+            {isInternalURL(remoteUrl) ? (
+              <Link to={flattenToAppURL(remoteUrl)}>
+                {flattenToAppURL(remoteUrl)}
               </Link>
             ) : (
-              <a
-                href={this.props.content.remoteUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {this.props.content.remoteUrl}
-              </a>
+              <>
+                {URLUtils.isMail('mailto:' + remoteUrl) ? (
+                  <a
+                    href={URLUtils.normaliseMail(remoteUrl)}
+                    rel="noopener noreferrer"
+                  >
+                    {remoteUrl}
+                  </a>
+                ) : (
+                  <>
+                    {URLUtils.isTelephone(remoteUrl) ? (
+                      <a
+                        href={URLUtils.normalizeTelephone(remoteUrl)}
+                        rel="noopener noreferrer"
+                      >
+                        {remoteUrl}
+                      </a>
+                    ) : (
+                      <a
+                        href={remoteUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {remoteUrl}
+                      </a>
+                    )}
+                  </>
+                )}
+              </>
             )}
           </span>
         )}
