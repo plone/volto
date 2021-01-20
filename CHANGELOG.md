@@ -14,6 +14,7 @@
 ### Bugfix
 
 - Fixed field type for 'from' field in ContactForm @giuliaghisini
+- handle SelectWidget null value and isMulti(#1915) &(1878) @nileshgulia1
 
 ### Internal
 
@@ -467,7 +468,6 @@ https://docs.voltocms.com/upgrade-guide/
 
 ### Bugfix
 
-- handle SelectWidget null value and isMulti(#1915) &(1878) @nileshgulia1
 - Errors catched by the default error handler are sent to sentry @zotya
 - Fixed a problem what occured when RAZZLE*SENTRY_DSN was missing but the other RAZZLE_SENTRY*\* variables were set @zotya
 
