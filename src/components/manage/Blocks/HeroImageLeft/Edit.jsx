@@ -319,9 +319,6 @@ class Edit extends Component {
                           <Editor
                             ref={(node) => {
                               this.titleEditor = node;
-                              if (this.props.selected && this.titleEditor) {
-                                this.titleEditor.focus();
-                              }
                             }}
                             onChange={this.onChangeTitle}
                             editorState={this.state.titleEditorState}
@@ -350,24 +347,22 @@ class Edit extends Component {
                             onDownArrow={() => {
                               const selectionState = this.state.titleEditorState.getSelection();
                               const { titleEditorState } = this.state;
-                              // if (
-                              //   titleEditorState
-                              //     .getCurrentContent()
-                              //     .getBlockMap()
-                              //     .last()
-                              //     .getKey() === selectionState.getFocusKey()
-                              // ) {
-                              this.setState(
-                                () => ({
-                                  currentFocused: 'description',
-                                }),
-                                () => {
-                                  debugger;
-                                  this.descriptionEditor.focus();
-                                },
-                              );
-                              //   }
-                              // }}
+                              if (
+                                titleEditorState
+                                  .getCurrentContent()
+                                  .getBlockMap()
+                                  .last()
+                                  .getKey() === selectionState.getFocusKey()
+                              ) {
+                                this.setState(
+                                  () => ({
+                                    currentFocused: 'description',
+                                  }),
+                                  () => {
+                                    this.descriptionEditor.focus();
+                                  },
+                                );
+                              }
                             }}
                           />
                           <Editor
