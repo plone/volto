@@ -61,10 +61,6 @@ class Edit extends Component {
     super(props);
 
     if (!__SERVER__) {
-      // TODO: correct this, compute it to createEmpty() return value before it
-      // is rendered! Currently it is rendered before replacing this editorState
-      // with smth consistent. Neither null nor undefined works as editorState
-      // here:
       this.state = { editorState: null, focus: false };
     }
 
@@ -81,21 +77,6 @@ class Edit extends Component {
       this.node._onBlur = () => this.setState({ focus: false });
       this.node._onFocus = () => this.setState({ focus: true });
     }
-
-    if (!__SERVER__) {
-      let editorState;
-      if (this.props.properties && this.props.properties.description) {
-        const contentState = this.libDraftJsImportHtmlRef.current.stateFromHTML(
-          this.props.properties.description,
-        );
-        editorState = this.libDraftJsRef.current.EditorState.createWithContent(
-          contentState,
-        );
-      } else {
-        editorState = this.libDraftJsRef.current.EditorState.createEmpty();
-      }
-      this.setState({ editorState, focus: false });
-    }
   }
 
   /**
@@ -105,23 +86,6 @@ class Edit extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (
-      nextProps.properties.description &&
-      this.props.properties.description !== nextProps.properties.description &&
-      !this.state.focus
-    ) {
-      const contentState = this.libDraftJsImportHtmlRef.current.stateFromHTML(
-        nextProps.properties.description,
-      );
-      this.setState({
-        editorState: nextProps.properties.description
-          ? this.libDraftJsRef.current.EditorState.createWithContent(
-              contentState,
-            )
-          : this.libDraftJsRef.current.EditorState.createEmpty(),
-      });
-    }
-
     if (!this.props.selected && nextProps.selected) {
       this.node.focus();
       this.setState({ focus: true });
@@ -143,8 +107,7 @@ class Edit extends Component {
     });
   }
 
-  libDraftJsRef = React.createRef();
-  libDraftJsImportHtmlRef = React.createRef();
+  firstRender = true;
 
   /**
    * Render method.
@@ -153,26 +116,38 @@ class Edit extends Component {
    */
   render() {
     if (__SERVER__) {
-      return (
-        <>
-          <LibDraftJs ref={this.libDraftJsRef} />
-          <LibDraftJsImportHtml ref={this.libDraftJsImportHtmlRef} />
-          <div />
-        </>
-      );
+      return <div />;
     }
     return (
       <div
         className={cx('block description', { selected: this.props.selected })}
       >
-        <LibDraftJsImportHtml ref={this.libDraftJsImportHtmlRef}>
+        <LibDraftJsImportHtml>
           {({ stateFromHTML }) => {
             return (
-              <LibDraftJs ref={this.libDraftJsRef}>
+              <LibDraftJs>
                 {({ Editor, DefaultDraftBlockRenderMap, EditorState }) => {
                   const extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(
                     blockRenderMap,
                   );
+
+                  if (!__SERVER__ && this.firstRender) {
+                    this.firstRender = false;
+
+                    let editorState;
+                    if (
+                      this.props.properties &&
+                      this.props.properties.description
+                    ) {
+                      const contentState = stateFromHTML(
+                        this.props.properties.description,
+                      );
+                      editorState = EditorState.createWithContent(contentState);
+                    } else {
+                      editorState = EditorState.createEmpty();
+                    }
+                    this.setState({ editorState });
+                  }
 
                   return (
                     <Editor
