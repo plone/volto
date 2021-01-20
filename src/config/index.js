@@ -38,14 +38,17 @@ import sitemapMiddleware from '@plone/volto/express-middleware/sitemap';
 
 import applyAddonConfiguration from 'load-volto-addons';
 
-const host = process.env.HOST || 'localhost';
-const port = process.env.PORT || '3000';
-
-const apiPath =
-  process.env.RAZZLE_API_PATH ||
-  (__DEVELOPMENT__
-    ? `http://${host}:${port}/api`
-    : 'http://localhost:8080/Plone');
+import {
+  apiPath,
+  internalApiPath,
+  host,
+  port,
+  websockets,
+  actions_raising_api_errors,
+  maxResponseSize,
+  isMultilingual,
+  defaultPageSize,
+} from './settings';
 
 let config = {
   settings: {
@@ -63,9 +66,9 @@ let config = {
     proxyRewriteTarget: process.env.RAZZLE_PROXY_REWRITE_TARGET || undefined,
     // apiPath: process.env.RAZZLE_API_PATH || 'http://localhost:8000', // for Volto reference
     // apiPath: process.env.RAZZLE_API_PATH || 'http://localhost:8081/db/web', // for guillotina
-    actions_raising_api_errors: ['GET_CONTENT', 'UPDATE_CONTENT'],
-    internalApiPath: process.env.RAZZLE_INTERNAL_API_PATH || undefined,
-    websockets: process.env.RAZZLE_WEBSOCKETS || false,
+    actions_raising_api_errors,
+    internalApiPath,
+    websockets,
     nonContentRoutes,
     extendedBlockRenderMap,
     blockStyleFn,
@@ -79,8 +82,8 @@ let config = {
     listingPreviewImageField: 'image',
     customStyleMap: null,
     notSupportedBrowsers: ['ie'],
-    defaultPageSize: 25,
-    isMultilingual: false,
+    defaultPageSize,
+    isMultilingual,
     supportedLanguages: ['en'],
     defaultLanguage: 'en',
     navDepth: 1,
@@ -98,7 +101,7 @@ let config = {
     },
     contentIcons: contentIcons,
     appExtras: [],
-    maxResponseSize: 2000000000, // This is superagent default (200 mb)
+    maxResponseSize,
   },
   widgets: {
     ...widgetMapping,

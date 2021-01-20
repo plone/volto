@@ -6,7 +6,7 @@
 import superagent from 'superagent';
 import cookie from 'react-cookie';
 
-import { settings } from '~/config';
+import { apiPath, internalApiPath } from '~/config/settings';
 
 const methods = ['get', 'post', 'put', 'patch', 'del'];
 
@@ -20,13 +20,13 @@ function formatUrl(path) {
   if (path.startsWith('http://') || path.startsWith('https://')) return path;
 
   const adjustedPath = path[0] !== '/' ? `/${path}` : path;
-  let apiPath = '';
-  if (settings.internalApiPath && __SERVER__) {
-    apiPath = settings.internalApiPath;
+  let resultantApiPath = '';
+  if (internalApiPath && __SERVER__) {
+    resultantApiPath = internalApiPath;
   } else {
-    apiPath = settings.apiPath;
+    resultantApiPath = apiPath;
   }
-  return `${apiPath}${adjustedPath}`;
+  return `${resultantApiPath}${adjustedPath}`;
 }
 
 /**

@@ -6,7 +6,7 @@
 import superagent from 'superagent';
 import cookie from 'react-cookie';
 
-import { settings } from '~/config';
+import { apiPath, internalApiPath, maxResponseSize } from '~/config/settings';
 
 /**
  * Get a resource image/file with authenticated (if token exist) API headers
@@ -16,15 +16,15 @@ import { settings } from '~/config';
  */
 export const getAPIResourceWithAuth = (req) =>
   new Promise((resolve, reject) => {
-    let apiPath = '';
-    if (settings.internalApiPath && __SERVER__) {
-      apiPath = settings.internalApiPath;
+    let resultantApiPath = '';
+    if (internalApiPath && __SERVER__) {
+      resultantApiPath = internalApiPath;
     } else {
-      apiPath = settings.apiPath;
+      resultantApiPath = apiPath;
     }
     const request = superagent
-      .get(`${apiPath}${req.path}`)
-      .maxResponseSize(settings.maxResponseSize)
+      .get(`${resultantApiPath}${req.path}`)
+      .maxResponseSize(maxResponseSize)
       .responseType('blob');
     const authToken = cookie.load('auth_token');
     if (authToken) {
