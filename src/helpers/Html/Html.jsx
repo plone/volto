@@ -52,6 +52,32 @@ class Html extends Component {
   };
 
   /**
+   * Add the crossorigin while in development.
+   * When criticalCss is present, we remove the style links as they'll be
+   * inserted at the end of body
+   */
+  // getHeadLinkElements(extractor, criticalCss) {
+  //   if (!criticalCss) {
+  //     return extractor.getLinkElements().map((elem) => {
+  //       return React.cloneElement(elem, {
+  //         crossOrigin:
+  //           process.env.NODE_ENV === 'production' ? undefined : 'true',
+  //       });
+  //     });
+  //   }
+  //
+  //   return extractor
+  //     .getLinkElements()
+  //     .filter((elem) => elem.props.as === 'script')
+  //     .map((elem) =>
+  //       React.cloneElement(elem, {
+  //         crossOrigin:
+  //           process.env.NODE_ENV === 'production' ? undefined : 'true',
+  //       }),
+  //     );
+  // }
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -86,6 +112,7 @@ class Html extends Component {
               dangerouslySetInnerHTML={{ __html: this.props.criticalCss }}
             />
           )}
+          {/* {this.getHeadLinkElements(extractor, criticalCss)} */}
           {/* Add the crossorigin while in development */}
           {extractor.getLinkElements().map((elem) =>
             React.cloneElement(elem, {
@@ -96,17 +123,8 @@ class Html extends Component {
           {/* Styles in development are loaded with Webpack's style-loader, in production,
               they need to be static*/}
           {process.env.NODE_ENV === 'production' &&
-            (criticalCss
-              ? extractor.getStyleElements().map((elem) => (
-                  <>
-                    {React.cloneElement(elem, {
-                      as: 'style',
-                      rel: 'preload',
-                    })}
-                    <noscript>{elem}</noscript>
-                  </>
-                ))
-              : extractor.getStyleElements())}
+            !criticalCss &&
+            extractor.getStyleElements()}
         </head>
         <body className={bodyClass}>
           <div role="navigation" aria-label="Toolbar" id="toolbar" />
@@ -127,6 +145,7 @@ class Html extends Component {
                 }),
               )
             : ''}
+          {criticalCss && extractor.getStyleElements()}
         </body>
       </html>
     );
