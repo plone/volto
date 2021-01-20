@@ -1,4 +1,5 @@
 /* eslint no-console: 0 */
+import { existsSync, lstatSync, readFileSync } from 'fs';
 import React from 'react';
 import { StaticRouter } from 'react-router-dom';
 import { Provider } from 'react-intl-redux';
@@ -186,6 +187,10 @@ server.get('/*', (req, res) => {
         </ChunkExtractorManager>,
       );
 
+      const {
+        readCriticalCss = defaultReadCriticalCss,
+      } = settings.serverConfig;
+
       if (context.url) {
         res.redirect(flattenToAppURL(context.url));
       } else if (context.error_code) {
@@ -201,7 +206,7 @@ server.get('/*', (req, res) => {
                   markup={markup}
                   store={store}
                   extractScripts={process.env.NODE_ENV !== 'production'}
-                  criticalCss={settings.serverConfig.readCriticalCss(req)}
+                  criticalCss={readCriticalCss(req)}
                 />,
               )}
             `,
@@ -214,7 +219,7 @@ server.get('/*', (req, res) => {
                   extractor={extractor}
                   markup={markup}
                   store={store}
-                  criticalCss={settings.serverConfig.readCriticalCss(req)}
+                  criticalCss={readCriticalCss(req)}
                 />,
               )}
             `,
@@ -223,6 +228,18 @@ server.get('/*', (req, res) => {
     }, errorHandler)
     .catch(errorHandler);
 });
+
+export const defaultReadCriticalCss = () => {
+  const { criticalCssPath } = settings.serverConfig;
+
+  const e = existsSync(criticalCssPath);
+  if (!e) return;
+
+  const f = lstatSync(criticalCssPath);
+  if (!f.isFile()) return;
+
+  return readFileSync(criticalCssPath, { encoding: 'utf-8' });
+};
 
 server.apiPath = settings.apiPath;
 server.devProxyToApiPath = settings.devProxyToApiPath;
