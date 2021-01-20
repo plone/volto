@@ -7,7 +7,7 @@ describe('Add Content Tests', () => {
     cy.waitForResourceToLoad('@breadcrumbs');
     cy.waitForResourceToLoad('@actions');
     cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('?fullobjects');
+    cy.waitForResourceToLoad('');
   });
   it('As editor I can add a page', function () {
     // when I add a page
@@ -70,18 +70,13 @@ describe('Add Content Tests', () => {
           { fileContent, fileName: 'file.pdf', mimeType: 'application/pdf' },
           { subjectType: 'input' },
         );
-        cy.get('#field-file').parent().parent().contains('file.pdf');
       });
     } else {
-      cy.fixture('file.pdf', 'base64').then((fileContent) => {
-        cy.get('input#field-file').attachFile(
-          { fileContent, fileName: 'file.pdf', mimeType: 'application/pdf' },
-          { subjectType: 'input' },
-        );
+      cy.get('input[id="field-file"]').attachFile('file.pdf', {
+        subjectType: 'input',
       });
-      cy.get('#field-file').parent().parent().contains('file.pdf');
     }
-    cy.get('#toolbar-save').click();
+    cy.get('#toolbar-save').focus().click();
 
     // then a new file should have been created
     if (Cypress.env('API') === 'guillotina') {
@@ -108,23 +103,27 @@ describe('Add Content Tests', () => {
     if (Cypress.env('API') === 'guillotina') {
       // Guillotina wants the file handler instead than the base64 encoding
       cy.fixture('image.png')
-        .then( fc => {return Cypress.Blob.base64StringToBlob( fc ) })
+        .then((fc) => {
+          return Cypress.Blob.base64StringToBlob(fc);
+        })
         .then((fileContent) => {
           cy.get('#field-image').attachFile(
             { fileContent, fileName: 'image.png', mimeType: 'image/png' },
             { subjectType: 'input' },
           );
-          cy.get('#field-image').parent().parent().contains('image.png');
+          cy.get('#field-image-image').parent().parent().contains('image.png');
         });
     } else {
       cy.fixture('image.png', 'base64')
-        .then( fc => {return Cypress.Blob.base64StringToBlob( fc ) })
+        .then((fc) => {
+          return Cypress.Blob.base64StringToBlob(fc);
+        })
         .then((fileContent) => {
           cy.get('input#field-image').attachFile(
             { fileContent, fileName: 'image.png', mimeType: 'image/png' },
             { subjectType: 'input' },
           );
-          cy.get('#field-image').parent().parent().contains('image.png');
+          cy.get('#field-image-image').parent().parent().contains('image.png');
         });
     }
     cy.get('#toolbar-save').click();

@@ -5,6 +5,7 @@ const LoadablePlugin = require('@loadable/webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const fs = require('fs');
 const RootResolverPlugin = require('./webpack-root-resolver');
+const RelativeResolverPlugin = require('./webpack-relative-resolver');
 const createAddonsLoader = require('./create-addons-loader');
 const AddonConfigurationRegistry = require('./addon-registry');
 
@@ -18,7 +19,11 @@ const packageJson = require(path.join(projectRootPath, 'package.json'));
 
 const registry = new AddonConfigurationRegistry(projectRootPath);
 
-const defaultModify = (config, { target, dev }, webpack) => {
+const defaultModify = ({
+  env: { target, dev },
+  webpackConfig: config,
+  webpackObject: webpack,
+}) => {
   if (dev) {
     config.plugins.unshift(
       new webpack.DefinePlugin({
@@ -111,7 +116,10 @@ const defaultModify = (config, { target, dev }, webpack) => {
 
   const addonsLoaderPath = createAddonsLoader(packageJson.addons || []);
 
-  config.resolve.plugins = [new RootResolverPlugin()];
+  config.resolve.plugins = [
+    new RelativeResolverPlugin(registry),
+    new RootResolverPlugin(),
+  ];
 
   config.resolve.alias = {
     ...registry.getAddonCustomizationPaths(),
@@ -173,10 +181,11 @@ const defaultModify = (config, { target, dev }, webpack) => {
 const addonExtenders = registry.getAddonExtenders().map((m) => require(m));
 
 const defaultPlugins = [
-  'bundle-analyzer',
-  require('./webpack-less-plugin')({ registry }),
-  require('./webpack-sentry-plugin').sentryPlugin,
-  require('./webpack-svg-plugin').svgPlugin,
+  { object: require('./webpack-less-plugin')({ registry }) },
+  { object: require('./webpack-sentry-plugin') },
+  { object: require('./webpack-svg-plugin') },
+  { object: require('./webpack-bundle-analyze-plugin') },
+  { object: require('./jest-extender-plugin') },
 ];
 
 const plugins = addonExtenders.reduce(
@@ -186,12 +195,23 @@ const plugins = addonExtenders.reduce(
 
 module.exports = {
   plugins,
-  modify: (config, { target, dev }, webpack) => {
-    const defaultConfig = defaultModify(config, { target, dev }, webpack);
+  modifyWebpackConfig: ({
+    env: { target, dev },
+    webpackConfig,
+    webpackObject,
+  }) => {
+    const defaultConfig = defaultModify({
+      env: { target, dev },
+      webpackConfig,
+      webpackObject,
+    });
     const res = addonExtenders.reduce(
-      (acc, extender) => extender.modify(acc, { target, dev }, webpack),
+      (acc, extender) => extender.modify(acc, { target, dev }, webpackConfig),
       defaultConfig,
     );
     return res;
+  },
+  experimental: {
+    reactRefresh: true,
   },
 };

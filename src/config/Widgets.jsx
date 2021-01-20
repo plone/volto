@@ -38,6 +38,7 @@ export const widgetMapping = {
     subjects: TokenWidget,
     query: QuerystringWidget,
     recurrence: RecurrenceWidget,
+    remoteUrl: UrlWidget,
   },
   widget: {
     richtext: WysiwygWidget,
@@ -49,6 +50,7 @@ export const widgetMapping = {
     align: AlignWidget,
     url: UrlWidget,
     email: EmailWidget,
+    object_browser: ObjectBrowserWidget,
   },
   vocabulary: {
     'plone.app.vocabularies.Catalog': ObjectBrowserWidget,

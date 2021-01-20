@@ -4,8 +4,7 @@ import http from 'http';
 import app from './server';
 
 import * as Sentry from '@sentry/node';
-
-import initSentry from './sentry';
+import initSentry from '@plone/volto/sentry';
 
 initSentry(Sentry);
 

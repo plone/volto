@@ -12,7 +12,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.waitForResourceToLoad('@breadcrumbs');
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('my-page?fullobjects');
+      cy.waitForResourceToLoad('my-page');
       cy.navigate('/my-page/edit');
     });
 
@@ -26,9 +26,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('#toolbar-save').click();
 
       // WHEN: I search for Avram
-      cy.get('input[name="SearchableText"]')
-        .clear()
-        .type('Avram');
+      cy.get('input[name="SearchableText"]').clear().type('Avram');
       cy.get('button[aria-label="Search"]').click();
 
       // THEN: The search results should contain the page 'Noam Avram Chomsky'

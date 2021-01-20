@@ -6,20 +6,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
-import { map, remove } from 'lodash';
+import { remove } from 'lodash';
 
-import {
-  Form,
-  Grid,
-  Label,
-  Popup,
-  Button,
-  Icon as IconOld,
-} from 'semantic-ui-react';
+import { Label, Popup, Button } from 'semantic-ui-react';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import { defineMessages, injectIntl } from 'react-intl';
-import { Icon } from '@plone/volto/components';
+import { Icon, FormFieldWrapper } from '@plone/volto/components';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import homeSVG from '@plone/volto/icons/home.svg';
@@ -106,14 +99,6 @@ class ObjectBrowserWidget extends Component {
                   this.removeItem(item);
                 }}
               />
-
-              // <OldIcon
-              //   name="delete"
-              //   onClick={event => {
-              //     event.preventDefault();
-              //     this.removeItem(item);
-              //   }}
-              // />
             )}
           </Label>
         }
@@ -137,7 +122,6 @@ class ObjectBrowserWidget extends Component {
     if (maxSize === 1 && value.length === 1) {
       value = []; //enable replace of selected item with another value, if maxsize is 1
     }
-
     let exists = false;
     let index = -1;
     value.forEach((_item, _index) => {
@@ -150,8 +134,26 @@ class ObjectBrowserWidget extends Component {
     //   '@id': flattenToAppURL(item['@id']),
     // });
     if (!exists) {
-      //add item
-      value.push(item);
+      // add item
+      // Check if we want to filter the attributes of the selected item
+      let resultantItem = item;
+      if (this.props.selectedItemAttrs) {
+        const allowedItemKeys = [
+          ...this.props.selectedItemAttrs,
+          // Add the required attributes for the widget to work
+          '@id',
+          'title',
+        ];
+        resultantItem = Object.keys(item)
+          .filter((key) => allowedItemKeys.includes(key))
+          .reduce((obj, key) => {
+            obj[key] = item[key];
+            return obj;
+          }, {});
+      }
+      // Add required @id field, just in case
+      resultantItem = { ...resultantItem, '@id': item['@id'] };
+      value.push(resultantItem);
       this.props.onChange(this.props.id, value);
     } else {
       //remove item
@@ -194,22 +196,7 @@ class ObjectBrowserWidget extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const {
-      id,
-      title,
-      required,
-      description,
-      error,
-      value,
-      mode,
-      onEdit,
-      onDelete,
-      fieldSet,
-      onChange,
-      draggable,
-      isDisabled,
-      intl,
-    } = this.props;
+    const { id, description, value, mode, onChange, isDisabled } = this.props;
 
     let icon =
       mode === 'multiple' || value.length === 0 ? navTreeSVG : clearSVG;
@@ -224,100 +211,33 @@ class ObjectBrowserWidget extends Component {
     let items = value ? value.filter((item) => item != null) : [];
 
     return (
-      <Form.Field
-        inline
-        required={required}
-        error={error.length > 0}
+      <FormFieldWrapper
+        {...this.props}
         className={description ? 'help text' : 'text'}
-        id={`${fieldSet || 'field'}-${id}`}
       >
-        <Grid>
-          <Grid.Row stretched>
-            <Grid.Column width="4">
-              <div className="wrapper">
-                <label htmlFor={`field-${id}`}>
-                  {draggable && onEdit && (
-                    <i
-                      aria-hidden="true"
-                      className="grey bars icon drag handle"
-                    />
-                  )}
-                  {title}
-                </label>
+        <div className="objectbrowser-field">
+          <div
+            className="selected-values"
+            onClick={this.handleSelectedItemsRefClick}
+            onKeyDown={this.handleSelectedItemsRefClick}
+            role="searchbox"
+            tabIndex={0}
+            ref={this.selectedItemsRef}
+          >
+            {items.map((item) => this.renderLabel(item))}
+
+            {items.length === 0 && (
+              <div className="placeholder" ref={this.placeholderRef}>
+                {this.props.intl.formatMessage(messages.placeholder)}
               </div>
-            </Grid.Column>
-            <Grid.Column width="8">
-              {onEdit && !isDisabled && (
-                <div className="toolbar">
-                  <button
-                    aria-label={intl.formatMessage(messages.edit)}
-                    className="item ui noborder button"
-                    onClick={(evt) => {
-                      evt.preventDefault();
-                      onEdit(id);
-                    }}
-                  >
-                    <IconOld name="write square" size="large" color="blue" />
-                  </button>
-                  <button
-                    aria-label={intl.formatMessage(messages.delete)}
-                    className="item ui noborder button"
-                    onClick={(evt) => {
-                      evt.preventDefault();
-                      onDelete(id);
-                    }}
-                  >
-                    <IconOld name="close" size="large" color="red" />
-                  </button>
-                </div>
-              )}
-              <div className="objectbrowser-field">
-                <div
-                  className="selected-values"
-                  onClick={this.handleSelectedItemsRefClick}
-                  onKeyDown={this.handleSelectedItemsRefClick}
-                  role="searchbox"
-                  tabIndex={0}
-                  ref={this.selectedItemsRef}
-                >
-                  {items.map((item) => this.renderLabel(item))}
+            )}
+          </div>
 
-                  {items.length === 0 && (
-                    <div className="placeholder" ref={this.placeholderRef}>
-                      {this.props.intl.formatMessage(messages.placeholder)}
-                    </div>
-                  )}
-                </div>
-
-                {/* <Button onClick={this.showObjectBrowser} className="action">
-                  <Icon name={navTreeSVG} size="18px" />
-                </Button> */}
-
-                <Button
-                  onClick={iconAction}
-                  className="action"
-                  disabled={isDisabled}
-                >
-                  <Icon name={icon} size="18px" />
-                </Button>
-              </div>
-
-              {map(error, (message) => (
-                <Label key={message} basic color="red" pointing>
-                  {message}
-                </Label>
-              ))}
-            </Grid.Column>
-          </Grid.Row>
-          {description && (
-            <Grid.Row stretched>
-              <Grid.Column stretched width="12">
-                <p className="help">{description}</p>
-              </Grid.Column>
-            </Grid.Row>
-          )}
-        </Grid>
-      </Form.Field>
+          <Button onClick={iconAction} className="action" disabled={isDisabled}>
+            <Icon name={icon} size="18px" />
+          </Button>
+        </div>
+      </FormFieldWrapper>
     );
   }
 }

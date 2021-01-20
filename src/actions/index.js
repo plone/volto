@@ -46,6 +46,7 @@ export {
 } from '@plone/volto/actions/controlpanels/controlpanels';
 export { getDiff } from '@plone/volto/actions/diff/diff';
 export { emailNotification } from '@plone/volto/actions/emailNotification/emailNotification';
+export { emailSend } from '@plone/volto/actions/emailSend/emailSend';
 export {
   createGroup,
   deleteGroup,
@@ -88,6 +89,7 @@ export {
   resetPassword,
   updatePassword,
   updateUser,
+  showAllUsers,
 } from '@plone/volto/actions/users/users';
 export {
   login,
@@ -110,3 +112,7 @@ export {
   getTranslationLocator,
   linkTranslation,
 } from '@plone/volto/actions/translations/translations';
+export {
+  setBlocksClipboard,
+  resetBlocksClipboard,
+} from '@plone/volto/actions/blocksClipboard/blocksClipboard';

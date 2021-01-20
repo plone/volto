@@ -1,0 +1,214 @@
+# Internationalization
+
+Internationalization (i18n) is the process of creating user interfaces which are suitable for different languages and cultural contexts.
+Volto uses the library [react-intl](https://www.npmjs.com/package/react-intl) to provide translations for any potential language.
+Anything you can read in the [official documentation of react-intl](https://github.com/formatjs/react-intl/blob/master/docs/README.md) also applies for Volto.
+
+However this section teaches you about the most common use cases relating to i18n you probably will have when developing your [own Add-on](/addons/) or contributing to the Volto core itself.
+
+## Broad overview
+
+The workflow for creating *new* translatable texts is as follows:
+
+1. Create translatable i18n strings in your code
+2. Extract all i18n strings from your code with a script and create artifacts like `.po` and `.pot` files
+3. Use your favorite editor to translate all i18n strings (i.e. edit the `.po` files)
+4. Re-run the script, which then moves the translations from the `.po` files into for Volto usable `.json` files
+
+This way of organizing translations relies on [gettext](https://en.wikipedia.org/wiki/Gettext), a proven and established system with great tool support.
+
+All translation files are located under the directory `locales`.
+This might look like this:
+
+```shell
+$ tree locales/
+locales/
+├── de
+│   └── LC_MESSAGES
+│       └── volto.po
+├── de.json
+├── en
+│   └── LC_MESSAGES
+│       └── volto.po
+├── en.json
+├── es
+│   └── LC_MESSAGES
+│       └── volto.po
+├── es.json
+├── it
+│   └── LC_MESSAGES
+│       └── volto.po
+├── it.json
+├── ja
+│   └── LC_MESSAGES
+│       └── volto.po
+├── ja.json
+├── nl
+│   └── LC_MESSAGES
+│       └── volto.po
+├── nl.json
+└── volto.pot
+
+12 directories, 13 files
+```
+
+The file `volto.pot` holds all extracted i18n strings and acts as master template for all the `*.po` files.
+The translation for each language is stored within a dedicated sub-directory (like `en` for English, `it` for Italian, etc.) and are stored as `*.po` file and separately stored directly under `locales` as `*.json` file.
+
+
+## Creating i18n Strings
+
+### Translating Text Within HTML Elements
+
+`react-intl` can identify translatable texts with the `FormattedMessage` components.
+As the name of this component suggests, it is also possible to format your messages as your liking.
+
+This is an example of how you can write a text with contents `Hello World`, which can be identified via `hello_world`:
+
+```
+import { FormattedMessage } from 'react-intl';
+
+function HelloWorld(props) {
+  return (
+    <div>
+      <FormattedMessage
+        id="hello_world"
+        defaultMessage="Hello World"
+      />
+    </div>
+  );
+}
+```
+
+The identifier `hello_world` is then commonly used between all the translations.
+There are also more features available such as using placeholders. See the docs for all features in the [FormattedMessage component](https://github.com/formatjs/react-intl/blob/master/docs/Components.md#formattedmessage).
+
+### Translating Attributes
+
+As `FormatMessage` is only suitable for creating text within HTML elements, it cannot be used for translating individual attributes.
+But with the method [formatMessage](https://github.com/formatjs/react-intl/blob/master/docs/API.md#formatmessage) there exists another way to translate primitive strings.
+
+This approach can be best explained with an example: Assume you have a component called `TeaserImage` which contains an image that has for accessibility reasons the `alt` attribute.
+
+To translate the `alt` attribute, you have to do the following steps:
+
+1. Import the following necessary methods:
+```
+import { defineMessages, injectIntl, intlShape } from 'react-intl';
+```
+2. Define a message (or more) via [defineMessages](https://github.com/formatjs/react-intl/blob/master/docs/API.md#definemessages):
+```
+const messages = defineMessages({
+  teaserAltText: {
+    id: 'teaser_alt_text',
+    defaultMessage: 'Teaser Alt Text',
+  },
+});
+```
+3. As the method `formatMessage` in our component class/function is needed, there is a special propery `intl`, that needs to be injected with *either* the following ways:
+```
+// When using a pure function:
+export default injectIntl(TeaserImage);
+
+// OR when using a component:
+@injectIntl
+class TeaserImage extends Component {
+  ...
+}
+```
+Since you now have another prop available, it has to be to properly defined in the propTypes:
+```
+TeaserImage.propTypes = {
+  intl: intlShape.isRequired,
+  ...
+};
+```
+4. As last step, the method can be used like this:
+```
+<img src="..." alt={intl.formatMessage(messages.teaserAltText)}>
+```
+
+## Extracting i18n Strings
+
+Volto provides an i18n extraction script to get all translatable strings from your application.
+
+This script can be invoked by this command:
+
+```sh
+$ yarn i18n
+```
+
+This will generate the following output:
+
+```
+Extracting messages from source files...
+Synchronizing messages to pot file...
+Synchronizing messages to po files...
+Generating the json files...
+done!
+```
+
+As the output suggests it will first extract all messages from the source files into `.json` files.
+Then it will synchronize the extracted messages with the `.pot` master template and with all the `.po` files found in the project.
+This script will combine the messages located in Volto itself and the current project, and combine them into the `.json` files.
+
+## Contributing translations for a unsupported language
+
+The Volto project welcomes all speakers from the world to include any language, which is not supported yet.
+
+You can contribute to translate Volto into severals languages at [Transifex.net](https://www.transifex.com/plone/plone5/volto-pot/).
+
+When you done your translation resource at Transifex.net, you need to add the locales files into Volto project, for that you need use [transifex-client](https://docs.transifex.com/client/introduction) tool and [install it](https://docs.transifex.com/client/installing-the-client).
+
+### Update language from Transifex
+
+To get translate the latest translation changes, you have to do the following steps:
+
+1. You can pull the latest changes for a specific language, for example **'de'** from **Transifex.net** for *Volto project*, by this command:
+```sh
+$ tx pull -f -l de
+```
+This will generate the following output:
+```sh
+tx INFO: Pulling translations for resource plone5.volto-pot (source: locales/volto.pot)
+tx INFO:  -> de: locales/de/LC_MESSAGES/volto.po
+tx INFO: Done.
+```
+Also can pull the latest changes for all languages available at from **Transifex.net** for *Volto project*, by this command:
+```sh
+$ tx pull -f --all
+```
+2. You need updated the json file for the language updated from **Transifex.net** for *Volto project*, by this command:
+```sh
+$ yarn i18n
+```
+This command generate again the ``locales/de.json`` file updated, it is needed for Volto app.
+3. Please, update the ``CHANGELOG.md`` file, make commits and push the changes via pull request at the repository.
+
+**Tip:** For more information about each command, use ``tx <command> --help``. As an example, to learn more about the ``tx pull`` command, run ``tx pull --help``.
+
+### Add new language from Transifex
+
+1. You should check what languages are available in **Transifex.net** to translate for the [Volto project](https://www.transifex.com/plone/plone5/volto-pot/). If the language to be translated does not exist, please [request it](https://docs.transifex.com/projects/adding-and-removing-project-languages).
+2. You can pull the new language for example *Portuguese (Brazil)* aka **'pt_BR'** from **Transifex.net** for *Volto project*, by this command:
+```sh
+$ tx pull -f -l pt_BR
+```
+3. You new to modify the ``src/server.jsx`` file and add in the *'import section'* as the follow:
+```
+import ptBrLocale from '~/../locales/pt_BR.json';
+```
+Also you need define the new locale into *'locales const'* as the follow:
+```
+  pt: ptBrLocale,
+```
+4. You new to modify the ``src/constants/Languages.js`` file and add a new line at *'module.exports'* section as the follow:
+```
+  pt_BR: 'Português (Brasil)',
+```
+5. You need create the json file for the language created from **Transifex.net** for *Volto project*, by this command:
+```sh
+$ yarn i18n
+```
+This command generate the ``locales/pt_BR.json`` file, it is needed for Volto app.
+6. Please, update the ``CHANGELOG.md`` file, make commits and push the changes via pull request at the repository.

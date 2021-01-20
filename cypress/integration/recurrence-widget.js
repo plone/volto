@@ -13,15 +13,15 @@ if (Cypress.env('API') === 'plone') {
     cy.get('.modal .occurences .list > .item').should('have.length', 13);
   };
 
-  const saveEvent = () => {
-    cy.get('#toolbar-save').click();
-    cy.url().should('eq', Cypress.config().baseUrl + '/test-recurrence');
-    if (Cypress.env('API') === 'plone') {
-      cy.get('.navigation .item.active').should('have.text', 'Test recurrence');
-    } else {
-      cy.contains('Test recurrence');
-    }
-  };
+  // const saveEvent = () => {
+  //   cy.get('#toolbar-save').click();
+  //   cy.url().should('eq', Cypress.config().baseUrl + '/test-recurrence');
+  //   if (Cypress.env('API') === 'plone') {
+  //     cy.get('.navigation .item.active').should('have.text', 'Test recurrence');
+  //   } else {
+  //     cy.contains('Test recurrence');
+  //   }
+  // };
 
   describe('Test recurrence widget', () => {
     beforeEach(() => {
@@ -32,7 +32,7 @@ if (Cypress.env('API') === 'plone') {
       cy.waitForResourceToLoad('@breadcrumbs');
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('?fullobjects');
+      cy.waitForResourceToLoad('');
 
       createEvent();
       openRecurrenceModal();
