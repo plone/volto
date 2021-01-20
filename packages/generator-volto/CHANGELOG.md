@@ -4,7 +4,11 @@
 
 ### Added
 
+- Add generator-volto missing locales: eu fr ro @avoinea
+
 ### Changes
+
+- Fix addon routes in generator @sneridagh
 
 ## 2.2.0 (2021-01-09)
 
