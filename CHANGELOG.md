@@ -10,6 +10,7 @@
 ### Feature
 
 - added support for allowedBlocks and showRestricted for BlockChooser in Form [@giuliaghisini]
+- Improvements in InlineForm @nileshgulia1
 
 ### Bugfix
 
