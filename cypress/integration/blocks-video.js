@@ -13,7 +13,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.waitForResourceToLoad('@breadcrumbs');
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('my-page?fullobjects');
+      cy.waitForResourceToLoad('my-page');
       cy.navigate('/my-page/edit');
       cy.get(`.block.title [data-contents]`);
     });
@@ -27,9 +27,7 @@ if (Cypress.env('API') !== 'guillotina') {
       // when I create a video block with a YouTube video
       cy.get('.block.inner.text .public-DraftEditor-content').click();
       cy.get('.ui.basic.icon.button.block-add-button').click();
-      cy.get('.ui.basic.icon.button.video')
-        .contains('Video')
-        .click();
+      cy.get('.ui.basic.icon.button.video').contains('Video').click();
       cy.get('.toolbar-inner > .ui > input')
         .click()
         .type('https://youtu.be/T6J3d35oIAY')
@@ -41,7 +39,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.waitForResourceToLoad('@breadcrumbs');
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('my-page?fullobjects');
+      cy.waitForResourceToLoad('my-page');
 
       // then the page view should contain an embedded YouTube video
       cy.get('.block.video iframe')
@@ -53,9 +51,7 @@ if (Cypress.env('API') !== 'guillotina') {
       // when I create a video block with a Vimeo video
       cy.get('.block.inner.text .public-DraftEditor-content').click();
       cy.get('.ui.basic.icon.button.block-add-button').click();
-      cy.get('.ui.basic.icon.button.video')
-        .contains('Video')
-        .click();
+      cy.get('.ui.basic.icon.button.video').contains('Video').click();
       cy.get('.toolbar-inner > .ui > input')
         .click()
         .type('https://vimeo.com/85804536')
@@ -73,9 +69,7 @@ if (Cypress.env('API') !== 'guillotina') {
       // when I create a video block with an MP4 video
       cy.get('.block.inner.text .public-DraftEditor-content').click();
       cy.get('.ui.basic.icon.button.block-add-button').click();
-      cy.get('.ui.basic.icon.button.video')
-        .contains('Video')
-        .click();
+      cy.get('.ui.basic.icon.button.video').contains('Video').click();
       cy.get('.toolbar-inner > .ui > input')
         .click()
         .type('https://1.videolyser.de/videos/1714848/11745228_hd.mp4')

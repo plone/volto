@@ -5,6 +5,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Container } from 'semantic-ui-react';
+import { withServerErrorCode } from '@plone/volto/helpers/Utils/Utils';
 
 /**
  * forbidden function.
@@ -25,4 +26,4 @@ const Forbidden = () => (
   </Container>
 );
 
-export default Forbidden;
+export default withServerErrorCode(403)(Forbidden);
