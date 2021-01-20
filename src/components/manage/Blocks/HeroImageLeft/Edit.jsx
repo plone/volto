@@ -98,15 +98,7 @@ class Edit extends Component {
     if (!__SERVER__) {
       this.state = {
         uploading: false,
-        // TODO: correct this, compute it to createEmpty() return value before it
-        // is rendered! Currently it is rendered before replacing this editorState
-        // with smth consistent. Neither null nor undefined works as editorState
-        // here:
         titleEditorState: null,
-        // TODO: correct this, compute it to createEmpty() return value before it
-        // is rendered! Currently it is rendered before replacing this editorState
-        // with smth consistent. Neither null nor undefined works as editorState
-        // here:
         descriptionEditorState: null,
         currentFocused: 'title',
       };
@@ -118,58 +110,6 @@ class Edit extends Component {
 
   extendedBlockRenderMap = null;
   extendedDescripBlockRenderMap = null;
-  libDraftJsRef = React.createRef();
-  libDraftJsImportHtmlRef = React.createRef();
-
-  /**
-   * Component did mount
-   * @method componentDidMount
-   * @returns {undefined}
-   */
-  componentDidMount() {
-    if (this.props.selected) {
-      this.titleEditor.focus();
-    }
-
-    const ddbrm = this.libDraftJsRef.current.DefaultDraftBlockRenderMap;
-
-    this.extendedBlockRenderMap = ddbrm.DraftBlockRenderMap.merge(
-      blockTitleRenderMap,
-    );
-
-    this.extendedDescripBlockRenderMap = ddbrm.DefaultDraftBlockRenderMap.merge(
-      blockDescriptionRenderMap,
-    );
-
-    if (!__SERVER__) {
-      let titleEditorState;
-      let descriptionEditorState;
-      if (this.props.data && this.props.data.title) {
-        titleEditorState = this.libDraftJsRef.current.EditorState.createWithContent(
-          this.libDraftJsImportHtmlRef.current.stateFromHTML(
-            this.props.data.title,
-          ),
-        );
-      } else {
-        titleEditorState = this.libDraftJsRef.current.EditorState.createEmpty();
-      }
-      if (this.props.data && this.props.data.description) {
-        descriptionEditorState = this.libDraftJsRef.current.EditorState.createWithContent(
-          this.libDraftJsImportHtmlRef.current.stateFromHTML(
-            this.props.data.description,
-          ),
-        );
-      } else {
-        descriptionEditorState = this.libDraftJsRef.current.EditorState.createEmpty();
-      }
-      this.setState({
-        uploading: false,
-        titleEditorState,
-        descriptionEditorState,
-        currentFocused: 'title',
-      });
-    }
-  }
 
   /**
    * Component will receive props
@@ -192,47 +132,13 @@ class Edit extends Component {
       });
     }
 
-    if (
-      nextProps.data.title &&
-      this.props.data.title !== nextProps.data.title &&
-      !this.props.selected
-    ) {
-      const contentState = this.libDraftJsImportHtmlRef.current.stateFromHTML(
-        nextProps.data.title,
-      );
-      this.setState({
-        titleEditorState: nextProps.data.title
-          ? this.libDraftJsRef.current.EditorState.createWithContent(
-              contentState,
-            )
-          : this.libDraftJsRef.current.EditorState.createEmpty(),
-      });
-    }
-
-    if (
-      nextProps.data.description &&
-      this.props.data.description !== nextProps.data.description &&
-      !this.props.selected
-    ) {
-      const contentState = this.libDraftJsImportHtmlRef.current.stateFromHTML(
-        nextProps.data.description,
-      );
-      this.setState({
-        descriptionEditorState: nextProps.data.description
-          ? this.libDraftJsRef.current.EditorState.createWithContent(
-              contentState,
-            )
-          : this.libDraftJsRef.current.EditorState.createEmpty(),
-      });
-    }
-
-    if (nextProps.selected !== this.props.selected) {
-      if (this.state.currentFocused === 'title') {
-        this.titleEditor.focus();
-      } else {
-        this.descriptionEditor.focus();
-      }
-    }
+    // if (nextProps.selected !== this.props.selected) {
+    //   if (this.state.currentFocused === 'title') {
+    //     this.titleEditor.focus();
+    //   } else {
+    //     this.descriptionEditor.focus();
+    //   }
+    // }
   }
 
   /**
@@ -289,6 +195,8 @@ class Edit extends Component {
     });
   }
 
+  firstRender = true;
+
   /**
    * Render method.
    * @method render
@@ -296,13 +204,7 @@ class Edit extends Component {
    */
   render() {
     if (__SERVER__) {
-      return (
-        <>
-          <LibDraftJs ref={this.libDraftJsRef} />
-          <LibDraftJsImportHtml ref={this.libDraftJsImportHtmlRef} />
-          <div />
-        </>
-      );
+      return <div />;
     }
     const placeholder =
       this.props.data.placeholder ||
@@ -313,168 +215,207 @@ class Edit extends Component {
           selected: this.props.selected,
         })}
       >
-        <LibDraftJs
-          ref={(val) => {
-            // TODO: check which of these console.log-s are executed
-            // and the order in which they are executed, so you can know where
-            // to move all the pieces, all in one place: either in
-            // componentDidMount or in the children function prop.
-            console.log('val', val); // TODO: remove this line
-            this.libDraftJsRef.current = val;
-          }}
-        >
-          {({ Editor }) => {
-            console.log('val.Editor', Editor); // TODO: remove this line
+        <LibDraftJs>
+          {({ Editor, EditorState, DefaultDraftBlockRenderMap }) => {
             return (
-              <LibDraftJsImportHtml ref={this.libDraftJsImportHtmlRef}>
-                {() => {
+              <LibDraftJsImportHtml>
+                {({ stateFromHTML }) => {
+                  this.extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(
+                    blockTitleRenderMap,
+                  );
+
+                  this.extendedDescripBlockRenderMap = DefaultDraftBlockRenderMap.merge(
+                    blockDescriptionRenderMap,
+                  );
+
+                  if (!__SERVER__ && this.firstRender) {
+                    this.firstRender = false;
+
+                    let titleEditorState;
+                    let descriptionEditorState;
+                    if (this.props.data && this.props.data.title) {
+                      titleEditorState = EditorState.createWithContent(
+                        stateFromHTML(this.props.data.title),
+                      );
+                    } else {
+                      titleEditorState = EditorState.createEmpty();
+                    }
+                    if (this.props.data && this.props.data.description) {
+                      descriptionEditorState = EditorState.createWithContent(
+                        stateFromHTML(this.props.data.description),
+                      );
+                    } else {
+                      descriptionEditorState = EditorState.createEmpty();
+                    }
+
+                    this.setState({
+                      uploading: false,
+                      titleEditorState,
+                      descriptionEditorState,
+                      currentFocused: 'title',
+                    });
+                  }
+
+                  console.log('ts', this.state.titleEditorState);
+                  console.log('ds', this.state.descriptionEditorState);
+
                   return (
-                    <>
-                      {this.props.selected && !!this.props.data.url && (
-                        <div className="toolbar">
-                          <Button.Group>
-                            <Button
-                              icon
-                              basic
-                              onClick={() =>
-                                this.props.onChangeBlock(this.props.block, {
-                                  ...this.props.data,
-                                  url: '',
-                                })
-                              }
-                            >
-                              <Icon
-                                name={clearSVG}
-                                size="24px"
-                                color="#e40166"
-                              />
-                            </Button>
-                          </Button.Group>
-                        </div>
-                      )}
-                      <div className="block-inner-wrapper">
-                        {this.props.data.url ? (
-                          <img
-                            className="hero-image"
-                            src={`${flattenToAppURL(
-                              this.props.data.url,
-                            )}/@@images/image`}
-                            alt=""
-                          />
-                        ) : (
-                          <div className="image-add">
-                            <Message className="image-message">
-                              {this.state.uploading && (
-                                <Dimmer active>
-                                  <Loader indeterminate>Uploading image</Loader>
-                                </Dimmer>
-                              )}
-                              <center>
-                                <h4>Image</h4>
-                                <p>{placeholder}</p>
-                                <p>
-                                  <label className="ui button file">
-                                    Browse
-                                    <input
-                                      type="file"
-                                      onChange={this.onUploadImage}
-                                      style={{ display: 'none' }}
-                                    />
-                                  </label>
-                                </p>
-                              </center>
-                            </Message>
+                    this.state.titleEditorState &&
+                    this.state.descriptionEditorState && (
+                      <>
+                        {this.props.selected && !!this.props.data.url && (
+                          <div className="toolbar">
+                            <Button.Group>
+                              <Button
+                                icon
+                                basic
+                                onClick={() =>
+                                  this.props.onChangeBlock(this.props.block, {
+                                    ...this.props.data,
+                                    url: '',
+                                  })
+                                }
+                              >
+                                <Icon
+                                  name={clearSVG}
+                                  size="24px"
+                                  color="#e40166"
+                                />
+                              </Button>
+                            </Button.Group>
                           </div>
                         )}
-                        <div className="hero-body">
-                          <Editor
-                            ref={(node) => {
-                              this.titleEditor = node;
-                            }}
-                            onChange={this.onChangeTitle}
-                            editorState={this.state.titleEditorState}
-                            blockRenderMap={this.extendedBlockRenderMap}
-                            handleReturn={() => true}
-                            placeholder={this.props.intl.formatMessage(
-                              messages.title,
-                            )}
-                            blockStyleFn={() => 'title-editor'}
-                            onUpArrow={() => {
-                              const selectionState = this.state.titleEditorState.getSelection();
-                              const { titleEditorState } = this.state;
-                              if (
-                                titleEditorState
-                                  .getCurrentContent()
-                                  .getBlockMap()
-                                  .first()
-                                  .getKey() === selectionState.getFocusKey()
-                              ) {
-                                this.props.onFocusPreviousBlock(
-                                  this.props.block,
-                                  this.props.blockNode.current,
-                                );
+                        <div className="block-inner-wrapper">
+                          {this.props.data.url ? (
+                            <img
+                              className="hero-image"
+                              src={`${flattenToAppURL(
+                                this.props.data.url,
+                              )}/@@images/image`}
+                              alt=""
+                            />
+                          ) : (
+                            <div className="image-add">
+                              <Message className="image-message">
+                                {this.state.uploading && (
+                                  <Dimmer active>
+                                    <Loader indeterminate>
+                                      Uploading image
+                                    </Loader>
+                                  </Dimmer>
+                                )}
+                                <center>
+                                  <h4>Image</h4>
+                                  <p>{placeholder}</p>
+                                  <p>
+                                    <label className="ui button file">
+                                      Browse
+                                      <input
+                                        type="file"
+                                        onChange={this.onUploadImage}
+                                        style={{ display: 'none' }}
+                                      />
+                                    </label>
+                                  </p>
+                                </center>
+                              </Message>
+                            </div>
+                          )}
+                          <div className="hero-body">
+                            <Editor
+                              ref={(node) => {
+                                this.titleEditor = node;
+                                if (this.props.selected && this.titleEditor) {
+                                  this.titleEditor.focus();
+                                }
+                              }}
+                              onChange={this.onChangeTitle}
+                              editorState={this.state.titleEditorState}
+                              blockRenderMap={this.extendedBlockRenderMap}
+                              handleReturn={() => true}
+                              placeholder={this.props.intl.formatMessage(
+                                messages.title,
+                              )}
+                              blockStyleFn={() => 'title-editor'}
+                              onUpArrow={() => {
+                                const selectionState = this.state.titleEditorState.getSelection();
+                                const { titleEditorState } = this.state;
+                                if (
+                                  titleEditorState
+                                    .getCurrentContent()
+                                    .getBlockMap()
+                                    .first()
+                                    .getKey() === selectionState.getFocusKey()
+                                ) {
+                                  this.props.onFocusPreviousBlock(
+                                    this.props.block,
+                                    this.props.blockNode.current,
+                                  );
+                                }
+                              }}
+                              onDownArrow={() => {
+                                const selectionState = this.state.titleEditorState.getSelection();
+                                const { titleEditorState } = this.state;
+                                if (
+                                  titleEditorState
+                                    .getCurrentContent()
+                                    .getBlockMap()
+                                    .last()
+                                    .getKey() === selectionState.getFocusKey()
+                                ) {
+                                  this.setState(() => ({
+                                    currentFocused: 'description',
+                                  }));
+                                  this.descriptionEditor.focus();
+                                }
+                              }}
+                            />
+                            <Editor
+                              ref={(node) => {
+                                this.descriptionEditor = node;
+                              }}
+                              onChange={this.onChangeDescription}
+                              editorState={this.state.descriptionEditorState}
+                              blockRenderMap={
+                                this.extendedDescripBlockRenderMap
                               }
-                            }}
-                            onDownArrow={() => {
-                              const selectionState = this.state.titleEditorState.getSelection();
-                              const { titleEditorState } = this.state;
-                              if (
-                                titleEditorState
-                                  .getCurrentContent()
-                                  .getBlockMap()
-                                  .last()
-                                  .getKey() === selectionState.getFocusKey()
-                              ) {
-                                this.setState(() => ({
-                                  currentFocused: 'description',
-                                }));
-                                this.descriptionEditor.focus();
-                              }
-                            }}
-                          />
-                          <Editor
-                            ref={(node) => {
-                              this.descriptionEditor = node;
-                            }}
-                            onChange={this.onChangeDescription}
-                            editorState={this.state.descriptionEditorState}
-                            blockRenderMap={this.extendedDescripBlockRenderMap}
-                            handleReturn={() => true}
-                            placeholder={this.props.intl.formatMessage(
-                              messages.description,
-                            )}
-                            blockStyleFn={() => 'description-editor'}
-                            onUpArrow={() => {
-                              const selectionState = this.state.descriptionEditorState.getSelection();
-                              const currentCursorPosition = selectionState.getStartOffset();
+                              handleReturn={() => true}
+                              placeholder={this.props.intl.formatMessage(
+                                messages.description,
+                              )}
+                              blockStyleFn={() => 'description-editor'}
+                              onUpArrow={() => {
+                                const selectionState = this.state.descriptionEditorState.getSelection();
+                                const currentCursorPosition = selectionState.getStartOffset();
 
-                              if (currentCursorPosition === 0) {
-                                this.setState(() => ({
-                                  currentFocused: 'title',
-                                }));
-                                this.titleEditor.focus();
-                              }
-                            }}
-                            onDownArrow={() => {
-                              const selectionState = this.state.descriptionEditorState.getSelection();
-                              const { descriptionEditorState } = this.state;
-                              const currentCursorPosition = selectionState.getStartOffset();
-                              const blockLength = descriptionEditorState
-                                .getCurrentContent()
-                                .getFirstBlock()
-                                .getLength();
+                                if (currentCursorPosition === 0) {
+                                  this.setState(() => ({
+                                    currentFocused: 'title',
+                                  }));
+                                  this.titleEditor.focus();
+                                }
+                              }}
+                              onDownArrow={() => {
+                                const selectionState = this.state.descriptionEditorState.getSelection();
+                                const { descriptionEditorState } = this.state;
+                                const currentCursorPosition = selectionState.getStartOffset();
+                                const blockLength = descriptionEditorState
+                                  .getCurrentContent()
+                                  .getFirstBlock()
+                                  .getLength();
 
-                              if (currentCursorPosition === blockLength) {
-                                this.props.onFocusNextBlock(
-                                  this.props.block,
-                                  this.props.blockNode.current,
-                                );
-                              }
-                            }}
-                          />
+                                if (currentCursorPosition === blockLength) {
+                                  this.props.onFocusNextBlock(
+                                    this.props.block,
+                                    this.props.blockNode.current,
+                                  );
+                                }
+                              }}
+                            />
+                          </div>
                         </div>
-                      </div>
-                    </>
+                      </>
+                    )
                   );
                 }}
               </LibDraftJsImportHtml>
