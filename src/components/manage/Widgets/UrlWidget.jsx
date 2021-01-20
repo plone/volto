@@ -56,13 +56,15 @@ const UrlWidget = (props) => {
     newValue = isInternalURL(newValue) ? addAppURL(newValue) : newValue;
 
     if (!isInternalURL(newValue) && newValue.length > 0) {
-      if (!URLUtils.isMail(URLUtils.normaliseMail(newValue))) {
+      if (URLUtils.isMail(URLUtils.normaliseMail(newValue))) {
+        newValue = URLUtils.normaliseMail(newValue);
+      } else if (URLUtils.isTelephone(newValue)) {
+        newValue = URLUtils.normalizeTelephone(newValue);
+      } else {
         newValue = URLUtils.normalizeUrl(newValue);
         if (!URLUtils.isUrl(newValue)) {
           setIsInvalid(true);
         }
-      } else {
-        newValue = URLUtils.normaliseMail(newValue);
       }
     }
 

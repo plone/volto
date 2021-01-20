@@ -5,7 +5,6 @@
 import {
   Add,
   AddonsControlpanel,
-  App,
   ChangePassword,
   ContactForm,
   Contents,
@@ -23,6 +22,7 @@ import {
   History,
   Login,
   Logout,
+  ManageTranslations,
   ModerateComments,
   NotFound,
   PasswordReset,
@@ -32,8 +32,13 @@ import {
   Sharing,
   Sitemap,
   UsersControlpanel,
-  View,
 } from '@plone/volto/components';
+
+// Deliberatelly use of absolute path of these components, since we do not want them
+// in the components/index.js file.
+import App from '@plone/volto/components/theme/App/App';
+import View from '@plone/volto/components/theme/View/View';
+
 import { addonRoutes } from '~/config';
 
 /**
@@ -163,6 +168,10 @@ export const defaultRoutes = [
   {
     path: '/**/sharing',
     component: Sharing,
+  },
+  {
+    path: '/**/manage-translations',
+    component: ManageTranslations,
   },
   {
     path: '/**/login',

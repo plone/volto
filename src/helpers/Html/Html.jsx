@@ -9,6 +9,7 @@ import { Helmet } from '@plone/volto/helpers';
 import serialize from 'serialize-javascript';
 import { join } from 'lodash';
 import { BodyClass } from '@plone/volto/helpers';
+import { runtimeConfig } from '@plone/volto/runtime_config';
 
 /**
  * Html class.
@@ -70,6 +71,12 @@ class Html extends Component {
           {head.link.toComponent()}
           {head.script.toComponent()}
 
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `window.env = ${serialize(runtimeConfig)};`,
+            }}
+          />
+
           <link rel="shortcut icon" href="/favicon.ico" />
           <meta name="generator" content="Volto - http://plone.org" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -98,12 +105,14 @@ class Html extends Component {
             charSet="UTF-8"
           />
           {/* Add the crossorigin while in development */}
-          {extractor.getScriptElements().map((elem) =>
-            React.cloneElement(elem, {
-              crossOrigin:
-                process.env.NODE_ENV === 'production' ? undefined : 'true',
-            }),
-          )}
+          {this.props.extractScripts !== false
+            ? extractor.getScriptElements().map((elem) =>
+                React.cloneElement(elem, {
+                  crossOrigin:
+                    process.env.NODE_ENV === 'production' ? undefined : 'true',
+                }),
+              )
+            : ''}
         </body>
       </html>
     );

@@ -1,13 +1,16 @@
 /**
- * Point of contact for component modules.
+ * Point of contact for component modules. This file is quite sensitive regarding the
+ * order in which it's loaded. e.g. if the component depends on others to work, it
+ * should ideally be loaded after them. If you start seeing imported components as
+ * undefined, check the order of imports in this file.
  * @module components
  */
 import loadable from '@loadable/component';
 
 //  Do not lazy load them, since it has not much sense (they will live in the main chunk)
-export App from '@plone/volto/components/theme/App/App';
+// The App and View component are deliberatelly left out of this index.js file!
+// They should be used by Volto and only by Volto internally
 export AppExtras from '@plone/volto/components/theme/AppExtras/AppExtras';
-export View from '@plone/volto/components/theme/View/View';
 export Header from '@plone/volto/components/theme/Header/Header';
 export Logo from '@plone/volto/components/theme/Logo/Logo';
 export Anontools from '@plone/volto/components/theme/Anontools/Anontools';
@@ -29,6 +32,7 @@ export Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorize
 
 export Icon from '@plone/volto/components/theme/Icon/Icon';
 export ConditionalLink from '@plone/volto/components/manage/ConditionalLink/ConditionalLink';
+export UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 
 // Lazy load them, since we want them and its deps to be in its own chunk
 export ContactForm from '@plone/volto/components/theme/ContactForm/ContactForm';
@@ -92,10 +96,12 @@ export PersonalTools from '@plone/volto/components/manage/Toolbar/PersonalTools'
 export More from '@plone/volto/components/manage/Toolbar/More';
 export Types from '@plone/volto/components/manage/Toolbar/Types';
 export Toast from '@plone/volto/components/manage/Toast/Toast';
+export ManageTranslations from '@plone/volto/components/manage/Multilingual/ManageTranslations';
 
 // Potentially could ve removed from index, since they are internal components and
 // we don't want them to end up in the main chunk
 export Form from '@plone/volto/components/manage/Form/Form';
+export BlocksToolbar from '@plone/volto/components/manage/Form/BlocksToolbar';
 export Field from '@plone/volto/components/manage/Form/Field';
 export SearchTags from '@plone/volto/components/theme/Search/SearchTags';
 export CommentEditModal from '@plone/volto/components/theme/Comments/CommentEditModal';
@@ -176,3 +182,7 @@ export BlockSettingsSchema from '@plone/volto/components/manage/Blocks/Block/Sch
 export TextSettingsSchema from '@plone/volto/components/manage/Blocks/Text/Schema';
 export ImageSettingsSchema from '@plone/volto/components/manage/Blocks/Image/Schema';
 export ToCSettingsSchema from '@plone/volto/components/manage/Blocks/ToC/Schema';
+export InlineForm from './manage/Form/InlineForm';
+
+// Temporarilly re-added because of #2068
+export App from '@plone/volto/components/theme/App/App';

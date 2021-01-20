@@ -6,19 +6,21 @@ import { connect } from 'react-redux';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import { Input, Segment } from 'semantic-ui-react';
 import { join } from 'lodash';
-import { searchContent } from '@plone/volto/actions';
-import { Icon } from '@plone/volto/components';
-import { flattenToAppURL } from '@plone/volto/helpers';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
+
+// These absolute imports (without using the corresponding centralized index.js) are required
+// to cut circular import problems, this file should never use them. This is because of
+// the very nature of the functionality of the component and its relationship with others
+import { searchContent } from '@plone/volto/actions/search/search';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers/Url/Url';
 
 import { settings } from '~/config';
 import backSVG from '@plone/volto/icons/back.svg';
-import pageSVG from '@plone/volto/icons/page.svg';
 import folderSVG from '@plone/volto/icons/folder.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import searchSVG from '@plone/volto/icons/zoom.svg';
 import linkSVG from '@plone/volto/icons/link.svg';
-import imageSVG from '@plone/volto/icons/image.svg';
 
 import ObjectBrowserNav from '@plone/volto/components/manage/Sidebar/ObjectBrowserNav';
 
@@ -146,7 +148,7 @@ class ObjectBrowserBody extends Component {
         : mode === 'image'
         ? this.state.selectedImage
         : this.state.selectedHref;
-    if (currentSelected) {
+    if (currentSelected && isInternalURL(currentSelected)) {
       this.props.searchContent(
         getParentURL(currentSelected),
         {
@@ -168,21 +170,6 @@ class ObjectBrowserBody extends Component {
         },
         `${this.props.block}-${mode}`,
       );
-    }
-  };
-
-  getIcon = (icon) => {
-    switch (icon) {
-      case 'Folder':
-        return <Icon name={folderSVG} size="24px" />;
-      case 'Document':
-        return <Icon name={pageSVG} size="24px" />;
-      case 'Image':
-        return <Icon name={imageSVG} size="24px" />;
-      case 'File':
-        return <Icon name={pageSVG} size="24px" />;
-      default:
-        return <Icon name={pageSVG} size="24px" />;
     }
   };
 
@@ -448,7 +435,6 @@ class ObjectBrowserBody extends Component {
                     },
                   ]
             }
-            getIcon={this.getIcon}
             handleClickOnItem={this.handleClickOnItem}
             handleDoubleClickOnItem={this.handleDoubleClickOnItem}
             mode={this.props.mode}

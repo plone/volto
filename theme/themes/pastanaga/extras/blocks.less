@@ -38,6 +38,18 @@
   border-color: rgba(120, 192, 215, 0.375);
 }
 
+.block .block.multiSelected::before {
+  z-index: 1;
+  background-color: rgba(120, 192, 215, 0.375);
+}
+
+#toolbar .toolbar-actions .blockCount {
+  position: absolute;
+  margin-top: 18px;
+  margin-left: 15px;
+  font-size: x-small;
+}
+
 .block.video,
 .block.image {
   /* This fixes two left floated items in a row */
@@ -292,7 +304,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 
   .toolbar-inner {
     display: flex;
-    width: 450px;
+    width: ~'min(100%, 450px)';
     height: 40px;
     padding: 4px;
     background-color: rgba(255, 255, 255, 0.975);
@@ -506,6 +518,8 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 }
 
 .separator {
+  position: relative;
+  top: 5px;
   display: inline-block;
   height: 24px;
   border-right: 1px solid #ddd;
@@ -600,6 +614,11 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 }
 
 .link-form-container {
+  .inline.field .wrapper {
+    min-height: initial;
+    border-bottom: none;
+  }
+
   button {
     padding: 0;
     border: 0;
@@ -836,4 +855,8 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
       max-width: 15%;
     }
   }
+}
+
+.block.image .no-image-wrapper {
+  width: ~'min(100%, 450px)';
 }

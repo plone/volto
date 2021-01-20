@@ -4,8 +4,8 @@ const nodeExternals = require('webpack-node-externals');
 const LoadablePlugin = require('@loadable/webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const fs = require('fs');
-const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const RootResolverPlugin = require('./webpack-root-resolver');
+const RelativeResolverPlugin = require('./webpack-relative-resolver');
 const createAddonsLoader = require('./create-addons-loader');
 const AddonConfigurationRegistry = require('./addon-registry');
 
@@ -19,47 +19,11 @@ const packageJson = require(path.join(projectRootPath, 'package.json'));
 
 const registry = new AddonConfigurationRegistry(projectRootPath);
 
-const svgPlugin = (config) => {
-  const SVGLOADER = {
-    test: /icons\/.*\.svg$/,
-    use: [
-      {
-        loader: 'svg-loader',
-      },
-      {
-        loader: 'svgo-loader',
-        options: {
-          plugins: [
-            { removeTitle: true },
-            { convertPathData: false },
-            { removeUselessStrokeAndFill: true },
-            { removeViewBox: false },
-          ],
-        },
-      },
-    ],
-  };
-
-  config.module.rules.push(SVGLOADER);
-  return config;
-};
-
-const defaultModify = (config, { target, dev }, webpack) => {
-  //  Prevent moment from loading all locales
-  config.plugins.push(
-    new MomentLocalesPlugin({
-      localesToKeep: Object.keys(languages),
-    }),
-  );
-
-  //  Load only desired timezones
-  config.plugins.push(
-    new webpack.NormalModuleReplacementPlugin(
-      /moment-timezone\/data\/packed\/latest\.json/,
-      require.resolve('./timezone-definitions'),
-    ),
-  );
-
+const defaultModify = ({
+  env: { target, dev },
+  webpackConfig: config,
+  webpackObject: webpack,
+}) => {
   if (dev) {
     config.plugins.unshift(
       new webpack.DefinePlugin({
@@ -152,7 +116,10 @@ const defaultModify = (config, { target, dev }, webpack) => {
 
   const addonsLoaderPath = createAddonsLoader(packageJson.addons || []);
 
-  config.resolve.plugins = [new RootResolverPlugin()];
+  config.resolve.plugins = [
+    new RelativeResolverPlugin(registry),
+    new RootResolverPlugin(),
+  ];
 
   config.resolve.alias = {
     ...registry.getAddonCustomizationPaths(),
@@ -208,15 +175,17 @@ const defaultModify = (config, { target, dev }, webpack) => {
           }),
         ]
       : [];
-
   return config;
 };
 
 const addonExtenders = registry.getAddonExtenders().map((m) => require(m));
+
 const defaultPlugins = [
-  'bundle-analyzer',
-  svgPlugin,
-  require('./less-plugin')({ registry }),
+  { object: require('./webpack-less-plugin')({ registry }) },
+  { object: require('./webpack-sentry-plugin') },
+  { object: require('./webpack-svg-plugin') },
+  { object: require('./webpack-bundle-analyze-plugin') },
+  { object: require('./jest-extender-plugin') },
 ];
 
 const plugins = addonExtenders.reduce(
@@ -226,12 +195,23 @@ const plugins = addonExtenders.reduce(
 
 module.exports = {
   plugins,
-  modify: (config, { target, dev }, webpack) => {
-    const defaultConfig = defaultModify(config, { target, dev }, webpack);
+  modifyWebpackConfig: ({
+    env: { target, dev },
+    webpackConfig,
+    webpackObject,
+  }) => {
+    const defaultConfig = defaultModify({
+      env: { target, dev },
+      webpackConfig,
+      webpackObject,
+    });
     const res = addonExtenders.reduce(
-      (acc, extender) => extender.modify(acc, { target, dev }, webpack),
+      (acc, extender) => extender.modify(acc, { target, dev }, webpackConfig),
       defaultConfig,
     );
     return res;
+  },
+  experimental: {
+    reactRefresh: true,
   },
 };

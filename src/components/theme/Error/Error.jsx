@@ -5,11 +5,12 @@
 import React from 'react';
 import { views } from '~/config';
 /**
- * unauthorized function.
- * @function Unauthorized
- * @returns {string} Markup of the unauthorized page.
+ * Error function.
+ * @function Error
+ * @returns {string} Markup of the error page.
  */
-const Error = ({ error }) => {
+const Error = (props) => {
+  const { error } = props;
   let FoundView;
   if (error.status === undefined) {
     // For some reason, while development and if CORS is in place and the
@@ -24,7 +25,7 @@ const Error = ({ error }) => {
   }
   return (
     <div id="view">
-      <FoundView />
+      <FoundView {...props} />
     </div>
   );
 };
