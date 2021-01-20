@@ -15,6 +15,7 @@
 ### Bugfix
 
 - Fixed field type for 'from' field in ContactForm @giuliaghisini
+- handle SelectWidget null value and isMulti(#1915) &(1878) @nileshgulia1
 
 ### Internal
 
