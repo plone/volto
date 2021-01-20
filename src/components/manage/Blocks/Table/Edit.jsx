@@ -7,7 +7,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { map, remove } from 'lodash';
 import { Button, Segment, Table, Form } from 'semantic-ui-react';
-import { convertToRaw } from 'draft-js';
 import { Portal } from 'react-portal';
 import cx from 'classnames';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
@@ -21,6 +20,9 @@ import colBeforeSVG from '@plone/volto/icons/column-before.svg';
 import colAfterSVG from '@plone/volto/icons/column-after.svg';
 import rowDeleteSVG from '@plone/volto/icons/row-delete.svg';
 import colDeleteSVG from '@plone/volto/icons/column-delete.svg';
+
+import loadable from '@loadable/component';
+const LibDraftJs = loadable.lib(() => import('draft-js'));
 
 const getId = () => Math.floor(Math.random() * Math.pow(2, 24)).toString(32);
 
@@ -263,16 +265,22 @@ class Edit extends Component {
    * @param {Object} editorState Editor state.
    * @returns {undefined}
    */
-  onChangeCell(row, cell, editorState) {
+  onChangeCell = (row, cell, editorState) => {
+    // onChangeCell gets called before the first render is
+    // done so I put this if:
+    if (!this.libDraftJsRef.current) {
+      return;
+    }
+
     const table = { ...this.props.data.table };
-    table.rows[row].cells[cell].value = convertToRaw(
+    table.rows[row].cells[cell].value = this.libDraftJsRef.current.convertToRaw(
       editorState.getCurrentContent(),
     );
     this.props.onChangeBlock(this.props.block, {
       ...this.props.data,
       table,
     });
-  }
+  };
 
   /**
    * Toggle cell type
@@ -521,6 +529,8 @@ class Edit extends Component {
     this.toggleBool('striped');
   }
 
+  libDraftJsRef = React.createRef();
+
   /**
    * Render method.
    * @method render
@@ -533,6 +543,7 @@ class Edit extends Component {
 
     return (
       <div className={cx('block table', { selected: this.props.selected })}>
+        <LibDraftJs ref={this.libDraftJsRef} />
         {this.props.selected && (
           <div className="toolbar">
             <Button.Group>
