@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { settings } from '~/config';
 import { flattenToAppURL } from '@plone/volto/helpers';
+import URLUtils from '@plone/volto/components/manage/AnchorPlugin/utils/URLUtils';
 
 const UniversalLink = ({
   href,
@@ -19,7 +20,9 @@ const UniversalLink = ({
   ...props
 }) => {
   const isExternal =
-    href.startsWith('http') && !href.includes(settings.apiPath);
+    (href.startsWith('http') && !href.includes(settings.apiPath)) ||
+    URLUtils.isMail(href) ||
+    URLUtils.isTelephone(href);
   const isDownload = (!isExternal && href.includes('@@download')) || download;
 
   return isExternal ? (

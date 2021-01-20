@@ -824,6 +824,10 @@ msgstr "Taldearen izena"
 msgid "Groups"
 msgstr "Taldeak"
 
+#: components/manage/Blocks/Table/Edit
+msgid "Header cell"
+msgstr ""
+
 #: components/manage/History/History
 #: components/manage/Toolbar/More
 msgid "History"

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a BlockChooser component 1`] = `
+exports[`BlocksChooser renders a BlockChooser component 1`] = `
 <div
   className="blocks-chooser"
 >
