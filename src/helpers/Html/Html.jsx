@@ -91,6 +91,12 @@ class Html extends Component {
             React.cloneElement(elem, {
               crossOrigin:
                 process.env.NODE_ENV === 'production' ? undefined : 'true',
+              rel:
+                elem.props.as !== 'style'
+                  ? 'preload'
+                  : criticalCss
+                  ? 'prefetch'
+                  : 'preload',
             }),
           )}
           {/* Styles in development are loaded with Webpack's style-loader, in production,
