@@ -892,6 +892,7 @@ class Contents extends Component {
         sort_on: this.state.sort_on,
         sort_order: this.state.sort_order,
         metadata_fields: '_all',
+        b_size: 100000000,
         ...(this.state.filter && { SearchableText: `${this.state.filter}*` }),
       });
     } else {

@@ -1,8 +1,79 @@
 # Change Log
 
-## 10.6.2 (unreleased)
+## 10.9.3 (unreleased)
 
 ### Breaking
+
+### Feature
+
+- added support for allowedBlocks and showRestricted for BlockChooser in Form @giuliaghisini
+- added objectBrowser to UrlWidget, and attached UrlWidget to remoteUrl field of ContentType Link @giuliaghisini
+- managed tel link in UrlWidget and draftjs @giuliaghisini
+- added support for allowedBlocks and showRestricted for BlockChooser in Form [@giuliaghisini]
+- Improvements in InlineForm @nileshgulia1
+- Improved form validation. Tested required fields when field is array or richtext @giuliaghisini
+
+### Bugfix
+
+- Fix 'All' button batch size in Contents @nzambello
+- Fixed field type for 'from' field in ContactForm @giuliaghisini
+- handle SelectWidget null value and isMulti(#1915) &(1878) @nileshgulia1
+- Fix typo in ita locales @nzambello
+- Wrap objectBrowserWidget with FormFieldWrapper @nileshgulia1
+- Added preventDefault and stopPropagation for toolbar buttons of Table block. @giuliaghisini
+
+### Internal
+
+- Update browserlist and caniuse-lite @sneridagh
+- Document deprecation of `@plone/create-volto-app` @sneridagh @nileshgulia1
+
+## 10.9.2 (2021-01-15)
+
+### Bugfix
+
+- Make a cypress test more resilient to platform differences @tiberiuichim
+- Fix regression introduced by improve CSS in the inner toolbar for the image block to support narrower width (like for using it inside grid blocks) @sneridagh
+- Avoid a bug in cypress tests caused by multi-block copy/paste @tiberiuichim
+
+### Internal
+
+- i18n for a literal in the table block @sneridagh
+
+## 10.9.1 (2021-01-14)
+
+### Bugfix
+
+- Fix regression introduced by improve CSS in the inner toolbar for the image block to support narrower width (like for using it inside grid blocks) @sneridagh
+
+## 10.9.0 (2021-01-14)
+
+### Feature
+
+- Enhance `BlockChooser` by adding support for `allowedBlocks` and `showRestricted` @avoinea @sneridagh
+
+### Bugfix
+
+- Better handling of @@images pipeline errors @tiberiuichim
+- Fix `More` menu when using with Plone 4 backend / history action is undefined (#2120) @avoinea
+- Fix `/sharing` page when using with Guillotina (#2122) @avoinea
+- Improve CSS in the inner toolbar for the image block to support narrower width (like for using it inside grid blocks) @sneridagh
+
+### Internal
+
+- Move express middleware routes (sitemap, download, images and robotstxt) out of server.jsx into their own `express-middleware/*.js` modules. All express middleware now has access to the redux store, api middleware and an errorHandler, available under `req.app.locals` @tiberiuichim
+
+## 10.8.0 (2021-01-11)
+
+### Feature
+
+- Add proper icons to the table block @sneridagh
+
+### Internal
+
+- Add `packages` directory to the `modulePathIgnorePatterns` for the jest tests @sneridagh
+- Add `packages` directory in npmignore @sneridagh
+
+## 10.7.0 (2021-01-05)
 
 ### Feature
 
@@ -13,6 +84,9 @@
 - Fix redirection for Link objects. @cekk
 - Fix import order in server.jsx. @cekk @tiberiuichim
 - Make sentry config more resilient to edge cases (SPA, storybook) @sneridagh
+- Handle errors on file and image download (#2098) @cekk
+- Remove test dependant on the year in `Copyright` footer section @sneridagh
+- Increase maxResponseSize for superagent calls. Now is 500mb (#2098) @cekk
 
 ### Internal
 
@@ -40,7 +114,6 @@
 ### Bugfix
 
 - Replace `__SERVER__` occurrence from table `Edit` component @sneridagh
-
 
 ## 10.5.0 (2020-12-17)
 
@@ -115,7 +188,7 @@
 
 ### Internal
 
-- Tweak Cypress command `waitForResourceToLoad` to timeout after 50 tries.  @tiberiuichim
+- Tweak Cypress command `waitForResourceToLoad` to timeout after 50 tries. @tiberiuichim
 
 ## 10.2.0 (2020-12-04)
 
@@ -137,7 +210,7 @@
 
 ### Feature
 
-- Provide operations on multiple-selected blocks: delete, cut/copy and paste.  You can trigger the "multiselected blocks" by holding the shift key and clicking on another block. You can add/remove blocks to the selection with the Control key. Holding Control when you click on the Paste button doesn't clear the clipboard, so you can paste multiple times. The blocks clipboard uses the browser's local storage to synchronize between tabs. @tiberiuichim
+- Provide operations on multiple-selected blocks: delete, cut/copy and paste. You can trigger the "multiselected blocks" by holding the shift key and clicking on another block. You can add/remove blocks to the selection with the Control key. Holding Control when you click on the Paste button doesn't clear the clipboard, so you can paste multiple times. The blocks clipboard uses the browser's local storage to synchronize between tabs. @tiberiuichim
 - Allow reducers to be persisted using localstorage @tiberiuichim
 
 ### Breaking
