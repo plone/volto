@@ -14,12 +14,11 @@ to every deployed website and, if maximum performance is desired, the critical
 CSS could be specific to each page in a CMS.
 
 Fortunately there are ways to automate extracting the critical CSS. One such
-tool is provided from the Volto repository:
-[critical-css-cli](https://github.com/collective/critical-css-cli) which can
-generate a `critical.css` file from a live website. This tool uses internally
-[critical](https://github.com/addyosmani/critical) and a [headless Chrome
-instance](https://pptr.dev/) to extract the critical css from a running
-website.
+tool is provided from the Plone [critical-css-cli](https://github.com/plone/critical-css-cli)
+repository which can generate a `critical.css` file from a live website. This
+tool uses internally [critical](https://github.com/addyosmani/critical) and
+a [headless Chrome instance](https://pptr.dev/) to extract the critical css
+from a running website.
 
 Run it like:
 
