@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src/",
+    "paths": {
+      "@plone/volto/*": ["./src/*"],
+      "~/config": ["./src/config"]
+    }
+  },
+  "exclude": "build"
+}

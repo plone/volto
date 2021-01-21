@@ -1,27 +1,32 @@
 /**
  * WysiwygWidget container.
- * @module components/manage/WysiwygWidget/WysiwygWidget
+ * @module components/manage/Widgets/WysiwygWidget
  */
 
 import React, { Component } from 'react';
 import ReactDOMServer from 'react-dom/server';
 import PropTypes from 'prop-types';
-import { Provider } from 'react-redux';
-import { connect } from 'react-redux';
+import { Provider, connect } from 'react-redux';
 import { compose } from 'redux';
-import Editor from 'draft-js-plugins-editor';
-import { stateFromHTML } from 'draft-js-import-html';
-import { convertToRaw, EditorState } from 'draft-js';
-import redraft from 'redraft';
 import { Form, Label, TextArea } from 'semantic-ui-react';
 import { map } from 'lodash';
-import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import { defineMessages, injectIntl } from 'react-intl';
 import configureStore from 'redux-mock-store';
 import { MemoryRouter } from 'react-router-dom';
 
 import { settings } from '~/config';
 import { FormFieldWrapper } from '@plone/volto/components';
+
+import loadable from '@loadable/component';
+const LibDraftJsPluginsEditor = loadable(() =>
+  import('draft-js-plugins-editor'),
+);
+const LibDraftJsImportHtml = loadable.lib(() => import('draft-js-import-html'));
+const LibDraftJs = loadable.lib(() => import('draft-js'));
+const LibRedraft = loadable.lib(() => import('redraft'));
+const LibDraftJsInlineToolbarPlugin = loadable.lib(() =>
+  import('draft-js-inline-toolbar-plugin'),
+);
 
 const messages = defineMessages({
   default: {
@@ -147,25 +152,11 @@ class WysiwygWidget extends Component {
    * @constructs WysiwygWidget
    */
   constructor(props) {
+    console.log('adfsaf');
     super(props);
+    console.log('adfsaf');
 
-    if (!__SERVER__) {
-      let editorState;
-      if (props.value && props.value.data) {
-        const contentState = stateFromHTML(props.value.data, {
-          customBlockFn: settings.FromHTMLCustomBlockFn,
-        });
-        editorState = EditorState.createWithContent(contentState);
-      } else {
-        editorState = EditorState.createEmpty();
-      }
-
-      const inlineToolbarPlugin = createInlineToolbarPlugin({
-        structure: settings.richTextEditorInlineToolbarButtons,
-      });
-
-      this.state = { editorState, inlineToolbarPlugin };
-    }
+    this.state = { editorState: null, inlineToolbarPlugin: null };
 
     this.schema = {
       fieldsets: [
@@ -225,8 +216,10 @@ class WysiwygWidget extends Component {
           })}
         >
           <MemoryRouter>
-            {redraft(
-              convertToRaw(editorState.getCurrentContent()),
+            {this.libRedraftRef.current.redraft(
+              this.libDraftJsRef.current.convertToRaw(
+                editorState.getCurrentContent(),
+              ),
               settings.ToHTMLRenderers,
               settings.ToHTMLOptions,
             )}
@@ -235,6 +228,10 @@ class WysiwygWidget extends Component {
       ),
     });
   }
+
+  firstRender = true;
+  libRedraftRef = React.createRef();
+  libDraftJsRef = React.createRef();
 
   /**
    * Render method.
@@ -274,33 +271,97 @@ class WysiwygWidget extends Component {
         </Form.Field>
       );
     }
-    const { InlineToolbar } = this.state.inlineToolbarPlugin;
 
     return (
-      <FormFieldWrapper {...this.props} className="wysiwyg">
-        <div style={{ boxSizing: 'initial' }}>
-          {this.props.onChange ? (
-            <>
-              <Editor
-                id={`field-${id}`}
-                readOnly={this.props.isDisabled}
-                onChange={this.onChange}
-                editorState={this.state.editorState}
-                plugins={[
-                  this.state.inlineToolbarPlugin,
-                  ...settings.richTextEditorPlugins,
-                ]}
-                blockRenderMap={settings.extendedBlockRenderMap}
-                blockStyleFn={settings.blockStyleFn}
-                customStyleMap={settings.customStyleMap}
-              />
-              {this.props.onChange && <InlineToolbar />}
-            </>
-          ) : (
-            <div className="DraftEditor-root" />
-          )}
-        </div>
-      </FormFieldWrapper>
+      <>
+        <LibRedraft ref={this.libRedraftRef} />
+        <LibDraftJsInlineToolbarPlugin>
+          {({ default: createInlineToolbarPlugin }) => {
+            return (
+              <LibDraftJsImportHtml>
+                {({ stateFromHTML }) => {
+                  return (
+                    <LibDraftJs ref={this.libDraftJsRef}>
+                      {({ EditorState }) => {
+                        if (!__SERVER__ && this.firstRender) {
+                          this.firstRender = false;
+
+                          let editorState;
+                          if (this.props.value && this.props.value.data) {
+                            const contentState = stateFromHTML(
+                              this.props.value.data,
+                              {
+                                customBlockFn: settings.FromHTMLCustomBlockFn,
+                              },
+                            );
+                            editorState = EditorState.createWithContent(
+                              contentState,
+                            );
+                          } else {
+                            editorState = EditorState.createEmpty();
+                          }
+
+                          const inlineToolbarPlugin = createInlineToolbarPlugin(
+                            {
+                              structure:
+                                settings.richTextEditorInlineToolbarButtons,
+                            },
+                          );
+
+                          this.setState({ editorState, inlineToolbarPlugin });
+                        }
+
+                        if (!this.state?.inlineToolbarPlugin) {
+                          return null;
+                        }
+
+                        const {
+                          InlineToolbar,
+                        } = this.state.inlineToolbarPlugin;
+
+                        return (
+                          !!this.state.editorState &&
+                          !!this.state.inlineToolbarPlugin && (
+                            <FormFieldWrapper
+                              {...this.props}
+                              className="wysiwyg"
+                            >
+                              <div style={{ boxSizing: 'initial' }}>
+                                {this.props.onChange ? (
+                                  <>
+                                    <LibDraftJsPluginsEditor
+                                      id={`field-${id}`}
+                                      readOnly={this.props.isDisabled}
+                                      onChange={this.onChange}
+                                      editorState={this.state.editorState}
+                                      plugins={[
+                                        this.state.inlineToolbarPlugin,
+                                        ...settings.richTextEditorPlugins,
+                                      ]}
+                                      blockRenderMap={
+                                        settings.extendedBlockRenderMap
+                                      }
+                                      blockStyleFn={settings.blockStyleFn}
+                                      customStyleMap={settings.customStyleMap}
+                                    />
+                                    {this.props.onChange && <InlineToolbar />}
+                                  </>
+                                ) : (
+                                  <div className="DraftEditor-root" />
+                                )}
+                              </div>
+                            </FormFieldWrapper>
+                          )
+                        );
+                      }}
+                    </LibDraftJs>
+                  );
+                }}
+              </LibDraftJsImportHtml>
+            );
+          }}
+        </LibDraftJsInlineToolbarPlugin>
+      </>
     );
   }
 }
