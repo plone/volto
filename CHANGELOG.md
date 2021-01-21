@@ -24,6 +24,8 @@
 
 ### Internal
 
+- Add support for `nav_title` in breadcrumbs and navigation @sneridagh
+
 ## 10.9.2 (2021-01-15)
 
 ### Bugfix

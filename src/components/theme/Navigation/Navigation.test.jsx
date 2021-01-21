@@ -42,6 +42,31 @@ describe('Navigation', () => {
     expect(json).toMatchSnapshot();
   });
 
+  it('renders a navigation component without active items and containing a nav_item', () => {
+    const store = mockStore({
+      navigation: {
+        items: [
+          { title: 'Blog', url: '/blog', nav_item: 'The Blog' },
+          { title: 'Users', url: '/users' },
+        ],
+      },
+      userSession: { token: '1234' },
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    const component = renderer.create(
+      <Provider store={store}>
+        <MemoryRouter>
+          <Navigation pathname="/" />
+        </MemoryRouter>
+      </Provider>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
+
   it('renders a navigation component with an active item', () => {
     const store = mockStore({
       navigation: {
