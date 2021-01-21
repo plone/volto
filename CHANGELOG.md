@@ -24,6 +24,7 @@
 
 ### Internal
 
+- Update browserlist and caniuse-lite @sneridagh
 - Document deprecation of `@plone/create-volto-app` @sneridagh @nileshgulia1
 
 ## 10.9.2 (2021-01-15)
