@@ -46,7 +46,7 @@ describe('Navigation', () => {
     const store = mockStore({
       navigation: {
         items: [
-          { title: 'Blog', url: '/blog', nav_item: 'The Blog' },
+          { title: 'Blog', url: '/blog', nav_title: 'The Blog' },
           { title: 'Users', url: '/users' },
         ],
       },
