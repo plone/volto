@@ -1,5 +1,4 @@
 # Volto
-
 <img align="right" width="300" alt="Volto png" src="./docs/logos/volto-colorful.png" />
 
 [![Build Status](https://github.com/plone/volto/workflows/Volto%20CI/badge.svg)](https://github.com/plone/volto/actions)
@@ -61,17 +60,6 @@ boilerplate to start customizing your Volto site.
 Although we install and use `yarn`, the `@plone/generator-volto` tool still needs to be
 installed using `npm -g` because `yarn` has a different implementation of
 global installs.
-
-Alternatively, instead of global installing the `@plone/generator-volto` utility we can use
-[create-yo](https://boneskull.com/create-yo/) package to bootstrap a volto project.
-
-    $ npm init yo @plone/volto
-
-If we want addons:
-
-    $ npm init yo @plone/volto:addon
-
-<b>Note:</b> This command requires `npm v6.1.0+` and `Node.js v8.0.0+`
 
 ### Bootstrap the Plone API backend
 
@@ -327,6 +315,7 @@ yarn ci:start-api-plone-guillotina
 ## Translations
 
 If you would like contribute to translate Volto into several languages, please, read the [Internationalization (i18n) guide](https://docs.voltocms.com/customizing/i18n/).
+
 
 ## License
 

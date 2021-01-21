@@ -11,7 +11,6 @@
 - managed tel link in UrlWidget and draftjs @giuliaghisini
 - added support for allowedBlocks and showRestricted for BlockChooser in Form [@giuliaghisini]
 - Improvements in InlineForm @nileshgulia1
-- deprecate create-volto-app docs,add create-yo generator docs @sneridagh @nileshgulia1
 
 ### Bugfix
 
