@@ -393,10 +393,15 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
   }
 
   picture {
+    width: 100%;
     max-width: 50%;
 
     img.hero-image {
       max-width: none;
+    }
+
+    @media only screen and (max-width: (@largestMobileScreen)) {
+      max-width: 100%;
     }
   }
 
@@ -412,6 +417,10 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     position: relative;
     z-index: 1;
     display: flex;
+
+    @media only screen and (max-width: (@largestMobileScreen)) {
+      flex-wrap: wrap;
+    }
   }
 
   .title-editor,
