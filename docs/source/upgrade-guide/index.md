@@ -25,6 +25,10 @@ patch. We've found a workaround to still support plugins as local modules withou
 patching Razzle, however that forces you to delete the patch introduced in your projects
 if you followed the 9.x.x upgrade guide steps.
 
+### id is removed from FormFieldWrapper
+
+We have removed the id from the FormFieldWrapper because it is coincide with the label id if we don't provide the fieldset. If you have cypress test which depends on this id then just remove the id from the test and if test fails then just add `.react-select-container` in place of your id.
+
 ### getContent changes
 
 The content is no longer fetched from Volto with the `fullobjects` flag in the

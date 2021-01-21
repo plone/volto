@@ -26,6 +26,7 @@
 
 - Update browserlist and caniuse-lite @sneridagh
 - Document deprecation of `@plone/create-volto-app` @sneridagh @nileshgulia1
+- Removing id from FormFieldWrapper @iFlameing
 
 ## 10.9.2 (2021-01-15)
 
@@ -91,7 +92,6 @@
 ### Internal
 
 - Translations german: Unauthorized, Login/Register @ksuess
-- Removing id from FormFieldWrapper @iFlameing
 
 ## 10.6.1 (2020-12-21)
 
