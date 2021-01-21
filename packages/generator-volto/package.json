@@ -50,6 +50,7 @@
     "ci:cypress:run": "start-test ci:start-api-plone http-get://localhost:55001/plone ci:start-frontend",
     "ci:cypress:run:guillotina": "start-test ci:start-api-guillotina http-get://localhost:8081 ci:start-frontend-guillotina",
     "dry-release": "release-it --dry-run",
+    "prerelease": "tar cvfz generator-volto.tgz .",
     "release": "release-it",
     "release-alpha": "release-it major --preRelease=alpha"
   },
@@ -73,7 +74,10 @@
     "github": {
       "release": true,
       "releaseName": "@plone/generator-volto ${version}",
-      "releaseNotes": "node changelogupdater.js excerpt"
+      "releaseNotes": "node changelogupdater.js excerpt",
+      "assets": [
+        "*.tgz"
+      ]
     }
   },
   "jest": {
