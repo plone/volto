@@ -187,9 +187,8 @@ server.get('/*', (req, res) => {
         </ChunkExtractorManager>,
       );
 
-      const {
-        readCriticalCss = defaultReadCriticalCss,
-      } = settings.serverConfig;
+      const readCriticalCss =
+        settings.serverConfig.readCriticalCss || defaultReadCriticalCss;
 
       if (context.url) {
         res.redirect(flattenToAppURL(context.url));
