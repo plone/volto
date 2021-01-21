@@ -4,7 +4,7 @@ Volto has a central configuration object used to parameterize Volto. It lives in
 
 You can find it in Volto in the `src/config` module.
 
-When you create your project via `create-volto-app` you can find it in `src/config.js`.
+When you create your project via the generator, you can find it in `src/config.js`.
 
 ```js
 import {
