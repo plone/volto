@@ -2,14 +2,13 @@
 
 ## 10.9.3 (unreleased)
 
-- added objectBrowser to UrlWidget, and attached UrlWidget to remoteUrl field of ContentType Link @giuliaghisini
-- managed tel link in UrlWidget and draftjs @giuliaghisini
-
 ### Breaking
 
 ### Feature
 
-- added support for allowedBlocks and showRestricted for BlockChooser in Form [@giuliaghisini]
+- added support for allowedBlocks and showRestricted for BlockChooser in Form @giuliaghisini
+- added objectBrowser to UrlWidget, and attached UrlWidget to remoteUrl field of ContentType Link @giuliaghisini
+- managed tel link in UrlWidget and draftjs @giuliaghisini
 
 ### Bugfix
 
@@ -264,8 +263,6 @@ See https://docs.voltocms.com/upgrade-guide/ for more information.
 - Improve developer documentation. Add several new chapters @tiberiuichim
 
 ## 9.0.0 (2020-11-15)
-
-- added objectBrowser to UrlWidget, and attached UrlWidget to remoteUrl field of ContentType Link @giuliaghisini
 
 ### Breaking
 
