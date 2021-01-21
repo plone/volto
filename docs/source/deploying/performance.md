@@ -17,7 +17,7 @@ Fortunately there are ways to automate extracting the critical CSS. One such
 tool is provided from the Volto repository:
 [critical-css-cli](https://github.com/collective/critical-css-cli) which can
 generate a `critical.css` file from a live website. This tool uses internally
-[Penthouse](https://github.com/pocketjoso/penthouse) and a [headless Chrome
+[critical](https://github.com/addyosmani/critical) and a [headless Chrome
 instance](https://pptr.dev/) to extract the critical css from a running
 website.
 
@@ -49,4 +49,7 @@ the generated HTML.
 
 The ideal scenario when dealing with the critical css is to generate it for
 each possible page, but this complicates the overall architecture: storage,
-invalidations, async workers, etc have to be taken into account.
+invalidations, async workers, etc have to be taken into account. In case you
+want to implement this type of scenario, look at
+[Penthouse](https://github.com/pocketjoso/penthouse) and override the
+`settings.serverConfig.readCriticalCss` function with your own implementation.
