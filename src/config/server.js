@@ -11,6 +11,7 @@ const settings = {
     sitemapMiddleware(),
   ],
   criticalCssPath: 'public/critical.css',
+  readCriticalCss: null, // so it will be defaultReadCriticalCss
 };
 
 export default settings;
