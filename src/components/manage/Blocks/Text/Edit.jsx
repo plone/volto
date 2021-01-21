@@ -7,17 +7,25 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'semantic-ui-react';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
-import Editor from 'draft-js-plugins-editor';
-import { convertFromRaw, convertToRaw, EditorState, RichUtils } from 'draft-js';
-import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
-import isSoftNewlineEvent from 'draft-js/lib/isSoftNewlineEvent';
 import { defineMessages, injectIntl } from 'react-intl';
 import { includes, isEqual } from 'lodash';
-import { filterEditorState } from 'draftjs-filters';
 import { settings, blocks } from '~/config';
 
 import { Icon, BlockChooser } from '@plone/volto/components';
 import addSVG from '@plone/volto/icons/circle-plus.svg';
+
+import loadable from '@loadable/component';
+const LibDraftJsPluginsEditor = loadable(() =>
+  import('draft-js-plugins-editor'),
+);
+const LibDraftJs = loadable.lib(() => import('draft-js'));
+const LibDraftJsInlineToolbarPlugin = loadable.lib(() =>
+  import('draft-js-inline-toolbar-plugin'),
+);
+const LibDraftJsIsSoftNewlineEvent = loadable.lib(() =>
+  import('draft-js/lib/isSoftNewlineEvent'),
+);
+const LibDraftJsFilters = loadable.lib(() => import('draftjs-filters'));
 
 const messages = defineMessages({
   text: {
@@ -63,38 +71,7 @@ class Edit extends Component {
     detached: false,
   };
 
-  /**
-   * Constructor
-   * @method constructor
-   * @param {Object} props Component properties
-   * @constructs WysiwygEditor
-   */
-  constructor(props) {
-    super(props);
-
-    if (!__SERVER__) {
-      let editorState;
-      if (props.data && props.data.text) {
-        editorState = EditorState.createWithContent(
-          convertFromRaw(props.data.text),
-        );
-      } else {
-        editorState = EditorState.createEmpty();
-      }
-
-      const inlineToolbarPlugin = createInlineToolbarPlugin({
-        structure: settings.richTextEditorInlineToolbarButtons,
-      });
-
-      this.state = {
-        editorState,
-        inlineToolbarPlugin,
-        addNewBlockOpened: false,
-      };
-    }
-
-    this.onChange = this.onChange.bind(this);
-  }
+  state = {};
 
   /**
    * Component will receive props
@@ -116,11 +93,17 @@ class Edit extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (!this.props.selected && nextProps.selected) {
+    if (
+      !this.props.selected &&
+      nextProps.selected &&
+      this.libDraftJsRef.current
+    ) {
       // See https://github.com/draft-js-plugins/draft-js-plugins/issues/800
       setTimeout(this.node.focus, 0);
       this.setState({
-        editorState: EditorState.moveFocusToEnd(this.state.editorState),
+        editorState: this.libDraftJsRef.current.EditorState.moveFocusToEnd(
+          this.state.editorState,
+        ),
       });
     }
   }
@@ -140,19 +123,27 @@ class Edit extends Component {
    * @param {object} editorState Editor state.
    * @returns {undefined}
    */
-  onChange(editorState) {
+  onChange = (editorState) => {
+    if (!this.libDraftJsRef.current || !this.libDraftJsFiltersRef.current) {
+      return;
+    }
+
     const shouldFilterPaste =
       editorState.getLastChangeType() === 'insert-fragment';
 
     if (
       !isEqual(
-        convertToRaw(editorState.getCurrentContent()),
-        convertToRaw(this.state.editorState.getCurrentContent()),
+        this.libDraftJsRef.current.convertToRaw(
+          editorState.getCurrentContent(),
+        ),
+        this.libDraftJsRef.current.convertToRaw(
+          this.state.editorState.getCurrentContent(),
+        ),
       )
     ) {
       if (shouldFilterPaste) {
         let filteredState = editorState;
-        filteredState = filterEditorState(
+        filteredState = this.libDraftJsFiltersRef.current.filterEditorState(
           {
             blocks: ['unordered-list-item', 'ordered-list-item'],
             styles: ['BOLD', 'ITALIC'],
@@ -170,11 +161,13 @@ class Edit extends Component {
       }
       this.props.onChangeBlock(this.props.block, {
         ...this.props.data,
-        text: convertToRaw(editorState.getCurrentContent()),
+        text: this.libDraftJsRef.current.convertToRaw(
+          editorState.getCurrentContent(),
+        ),
       });
     }
     this.setState({ editorState });
-  }
+  };
 
   toggleAddNewBlock = () =>
     this.setState((state) => ({ addNewBlockOpened: !state.addNewBlockOpened }));
@@ -189,6 +182,10 @@ class Edit extends Component {
       addNewBlockOpened: false,
     }));
   };
+
+  firstRender = true;
+  libDraftJsRef = React.createRef();
+  libDraftJsFiltersRef = React.createRef();
 
   /**
    * Render method.
@@ -206,105 +203,183 @@ class Edit extends Component {
 
     const disableNewBlocks =
       this.props.data?.disableNewBlocks || this.props.detached;
-    const { InlineToolbar } = this.state.inlineToolbarPlugin;
 
     return (
       <>
-        <Editor
-          onChange={this.onChange}
-          editorState={this.state.editorState}
-          plugins={[
-            this.state.inlineToolbarPlugin,
-            ...settings.richTextEditorPlugins,
-          ]}
-          blockRenderMap={settings.extendedBlockRenderMap}
-          blockStyleFn={settings.blockStyleFn}
-          customStyleMap={settings.customStyleMap}
-          placeholder={placeholder}
-          handleReturn={(e) => {
-            if (isSoftNewlineEvent(e)) {
-              this.onChange(
-                RichUtils.insertSoftNewline(this.state.editorState),
-              );
-              return 'handled';
-            }
-            if (!disableNewBlocks) {
-              const selectionState = this.state.editorState.getSelection();
-              const anchorKey = selectionState.getAnchorKey();
-              const currentContent = this.state.editorState.getCurrentContent();
-              const currentContentBlock = currentContent.getBlockForKey(
-                anchorKey,
-              );
-              const blockType = currentContentBlock.getType();
-              if (!includes(settings.listBlockTypes, blockType)) {
-                this.props.onSelectBlock(
-                  this.props.onAddBlock('text', this.props.index + 1),
-                );
-                return 'handled';
-              }
-              return 'un-handled';
-            }
-            return {};
-          }}
-          handleKeyCommand={(command, editorState) => {
-            if (this.props.data.required) {
-              return;
-            }
-            if (
-              command === 'backspace' &&
-              editorState.getCurrentContent().getPlainText().length === 0
-            ) {
-              this.props.onDeleteBlock(this.props.block, true);
-            }
-          }}
-          onUpArrow={() => {
-            const selectionState = this.state.editorState.getSelection();
-            const currentCursorPosition = selectionState.getStartOffset();
+        <LibDraftJsFilters ref={this.libDraftJsFiltersRef} />
+        <LibDraftJsIsSoftNewlineEvent>
+          {({ default: isSoftNewlineEvent }) => {
+            return (
+              <LibDraftJsInlineToolbarPlugin>
+                {({ default: createInlineToolbarPlugin }) => {
+                  return (
+                    <LibDraftJs ref={this.libDraftJsRef}>
+                      {({ convertFromRaw, EditorState, RichUtils }) => {
+                        if (!__SERVER__ && this.firstRender) {
+                          this.firstRender = false;
 
-            if (currentCursorPosition === 0) {
-              this.props.onFocusPreviousBlock(this.props.block, this.node);
-            }
-          }}
-          onDownArrow={() => {
-            const selectionState = this.state.editorState.getSelection();
-            const { editorState } = this.state;
-            const currentCursorPosition = selectionState.getStartOffset();
-            const blockLength = editorState
-              .getCurrentContent()
-              .getFirstBlock()
-              .getLength();
+                          let editorState;
+                          if (this.props.data && this.props.data.text) {
+                            editorState = EditorState.createWithContent(
+                              convertFromRaw(this.props.data.text),
+                            );
+                          } else {
+                            editorState = EditorState.createEmpty();
+                          }
 
-            if (currentCursorPosition === blockLength) {
-              this.props.onFocusNextBlock(this.props.block, this.node);
-            }
+                          const inlineToolbarPlugin = createInlineToolbarPlugin(
+                            {
+                              structure:
+                                settings.richTextEditorInlineToolbarButtons,
+                            },
+                          );
+
+                          this.setState({
+                            editorState,
+                            inlineToolbarPlugin,
+                            addNewBlockOpened: false,
+                          });
+                        }
+
+                        if (!this.state?.inlineToolbarPlugin) {
+                          return null;
+                        }
+
+                        const {
+                          InlineToolbar,
+                        } = this.state.inlineToolbarPlugin;
+
+                        return (
+                          <>
+                            <LibDraftJsPluginsEditor
+                              onChange={this.onChange}
+                              editorState={this.state.editorState}
+                              plugins={[
+                                this.state.inlineToolbarPlugin,
+                                ...settings.richTextEditorPlugins,
+                              ]}
+                              blockRenderMap={settings.extendedBlockRenderMap}
+                              blockStyleFn={settings.blockStyleFn}
+                              customStyleMap={settings.customStyleMap}
+                              placeholder={placeholder}
+                              handleReturn={(e) => {
+                                if (isSoftNewlineEvent(e)) {
+                                  this.onChange(
+                                    RichUtils.insertSoftNewline(
+                                      this.state.editorState,
+                                    ),
+                                  );
+                                  return 'handled';
+                                }
+                                if (!disableNewBlocks) {
+                                  const selectionState = this.state.editorState.getSelection();
+                                  const anchorKey = selectionState.getAnchorKey();
+                                  const currentContent = this.state.editorState.getCurrentContent();
+                                  const currentContentBlock = currentContent.getBlockForKey(
+                                    anchorKey,
+                                  );
+                                  const blockType = currentContentBlock.getType();
+                                  if (
+                                    !includes(
+                                      settings.listBlockTypes,
+                                      blockType,
+                                    )
+                                  ) {
+                                    this.props.onSelectBlock(
+                                      this.props.onAddBlock(
+                                        'text',
+                                        this.props.index + 1,
+                                      ),
+                                    );
+                                    return 'handled';
+                                  }
+                                  return 'un-handled';
+                                }
+                                return {};
+                              }}
+                              handleKeyCommand={(command, editorState) => {
+                                if (this.props.data.required) {
+                                  return;
+                                }
+                                if (
+                                  command === 'backspace' &&
+                                  editorState.getCurrentContent().getPlainText()
+                                    .length === 0
+                                ) {
+                                  this.props.onDeleteBlock(
+                                    this.props.block,
+                                    true,
+                                  );
+                                }
+                              }}
+                              onUpArrow={() => {
+                                const selectionState = this.state.editorState.getSelection();
+                                const currentCursorPosition = selectionState.getStartOffset();
+
+                                if (currentCursorPosition === 0) {
+                                  this.props.onFocusPreviousBlock(
+                                    this.props.block,
+                                    this.node,
+                                  );
+                                }
+                              }}
+                              onDownArrow={() => {
+                                const selectionState = this.state.editorState.getSelection();
+                                const { editorState } = this.state;
+                                const currentCursorPosition = selectionState.getStartOffset();
+                                const blockLength = editorState
+                                  .getCurrentContent()
+                                  .getFirstBlock()
+                                  .getLength();
+
+                                if (currentCursorPosition === blockLength) {
+                                  this.props.onFocusNextBlock(
+                                    this.props.block,
+                                    this.node,
+                                  );
+                                }
+                              }}
+                              ref={(node) => {
+                                this.node = node;
+                              }}
+                            />
+                            <InlineToolbar />
+                            {this.props.selected &&
+                              !disableNewBlocks &&
+                              !blocks.blocksConfig[
+                                this.props.data?.['@type'] || 'text'
+                              ].blockHasValue(this.props.data) && (
+                                <Button
+                                  basic
+                                  icon
+                                  onClick={this.toggleAddNewBlock}
+                                  className="block-add-button"
+                                >
+                                  <Icon
+                                    name={addSVG}
+                                    className="block-add-button"
+                                    size="24px"
+                                  />
+                                </Button>
+                              )}
+                            {this.state.addNewBlockOpened && (
+                              <BlockChooser
+                                onMutateBlock={this.props.onMutateBlock}
+                                currentBlock={this.props.block}
+                                allowedBlocks={this.props.allowedBlocks}
+                                showRestricted={this.props.showRestricted}
+                              />
+                            )}
+                          </>
+                        );
+                      }}
+                    </LibDraftJs>
+                  );
+                }}
+              </LibDraftJsInlineToolbarPlugin>
+            );
           }}
-          ref={(node) => {
-            this.node = node;
-          }}
-        />
-        <InlineToolbar />
-        {this.props.selected &&
-          !disableNewBlocks &&
-          !blocks.blocksConfig[
-            this.props.data?.['@type'] || 'text'
-          ].blockHasValue(this.props.data) && (
-            <Button
-              basic
-              icon
-              onClick={this.toggleAddNewBlock}
-              className="block-add-button"
-            >
-              <Icon name={addSVG} className="block-add-button" size="24px" />
-            </Button>
-          )}
-        {this.state.addNewBlockOpened && (
-          <BlockChooser
-            onMutateBlock={this.props.onMutateBlock}
-            currentBlock={this.props.block}
-            allowedBlocks={this.props.allowedBlocks}
-            showRestricted={this.props.showRestricted}
-          />
-        )}
+        </LibDraftJsIsSoftNewlineEvent>
       </>
     );
   }
