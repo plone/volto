@@ -25,6 +25,7 @@
 ### Internal
 
 - Add support for `nav_title` in breadcrumbs and navigation @sneridagh
+- Document deprecation of `@plone/create-volto-app` @sneridagh @nileshgulia1
 
 ## 10.9.2 (2021-01-15)
 
