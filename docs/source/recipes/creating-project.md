@@ -4,25 +4,22 @@ For using Volto for a project (i.e. use Volto as a library), You should use Volt
 
 1. Open a terminal and execute:
 ```
-$ npm install -g yo
-$ npm install -g @plone/generator-volto
+npm init yo @plone/volto
 ```
 
-!!! warning
-    It's not recommended to use yarn for installing the generator, use npm instead.
+2. Answer to the prompted questions and provide the name of the new app (folder) to be created. For the sake of this documentation, provide `myvoltoproject` as project name then.
 
-!!! tip Installing it using npx
-    Optionally, you can also use `npx` utility to install `@plone/generator-volto` without having to install it globally. On the other hand, in order to do it, you have to install `npx` globally. The advantage is that you don't have to upgrade `@plone/generator-volto` each time you want to use it, because `npx` does it for you:
+!!! info
+    This is the shortcut for using `npm init` command. It uses Yeoman (`yo`) and `@plone/generator-volto` and execute them without having to be installed globally. However, more advanced options for the generator are available, but you'll have to install it and run it without `npm init`:
 
-    `npx @plone/generator-volto myvoltoapp`
+    ```console
+    $ npm install -g yo
+    $ npm install -g @plone/generator-volto
+    $ yo @plone/volto --help
+    ```
+    take a look at the full [README](https://github.com/plone/volto/blob/master/packages/generator-volto/README.md) for more information.
 
-2. Create a new Volto app using the recently added command, providing the name
-   of the new app (folder) to be created.
-```
-$ yo @plone/volto
-```
-
-3. Change the directory to `myvoltoapp`.
+3. Change directory to the newly created folder `myvoltoapp` (or the one you've chosen).
 ```
 $ cd myvoltoapp
 ```

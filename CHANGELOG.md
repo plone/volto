@@ -22,6 +22,8 @@
 
 ### Internal
 
+- Document deprecation of `@plone/create-volto-app` @sneridagh
+
 ## 10.9.2 (2021-01-15)
 
 ### Bugfix

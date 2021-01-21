@@ -134,22 +134,20 @@ Use the project generator helper utility.
 
 1. Open a terminal and execute:
 ```
-$ npm install -g yo
-$ npm install -g @plone/generator-volto
+npm init yo @plone/volto
 ```
 
-2. Create a new Volto app using the recently added command, providing the name of the new app (folder) to be created.
-```
-$ yo @plone/volto
-```
+2. Answer to the prompted questions and provide the name of the new app (folder) to be created. For the sake of this documentation, provide `myvoltoproject` as project name then.
 
-!!! note
-    For more options for the generator
+!!! info
+    This is the shortcut for using `npm init` command. It uses Yeoman (`yo`) and `@plone/generator-volto` and execute them without having to be installed globally. However, more advanced options for the generator are available, but you'll have to install it and run it without `npm init`:
 
     ```console
+    $ npm install -g yo
+    $ npm install -g @plone/generator-volto
     $ yo @plone/volto --help
     ```
-    or take a look at the full [README](https://github.com/plone/volto/blob/master/packages/generator-volto/README.md)
+    take a look at the full [README](https://github.com/plone/volto/blob/master/packages/generator-volto/README.md) for more information.
 
 3. Change directory to the newly created folder `myvoltoapp` (or the one you've chosen):
 ```

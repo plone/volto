@@ -44,22 +44,18 @@ First get all the requirements installed on your system.
 - [Python 3.7.x / 2.7.x](https://python.org/) or
 - [Docker](https://www.docker.com/get-started) (if using the Plone/Guillotina docker images)
 
-### Create Volto App
+### Create a Volto project using the generator
 
 Create a new Volto project by using the `@plone/generator-volto` utility.
 
 It will bootstrap a Volto project in a folder of your choice with all the required
 boilerplate to start customizing your Volto site.
 
-    $ npm install -g yarn
-    $ npm install -g yo
-    $ npm install -g @plone/generator-volto
-    $ yo @plone/volto
-    $ cd myvoltoproject
+    $ npm init yo @plone/volto
 
-Although we install and use `yarn`, the `@plone/generator-volto` tool still needs to be
-installed using `npm -g` because `yarn` has a different implementation of
-global installs.
+follow the prompts questions, provide `myvoltoproject` as project name then, when it finishes:
+
+    $ cd myvoltoproject
 
 ### Bootstrap the Plone API backend
 
