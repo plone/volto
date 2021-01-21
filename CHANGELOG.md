@@ -2,13 +2,13 @@
 
 ## 10.9.3 (unreleased)
 
-- added objectBrowser to UrlWidget, and attached UrlWidget to remoteUrl field of ContentType Link @giuliaghisini
-- managed tel link in UrlWidget and draftjs @giuliaghisini
-
 ### Breaking
 
 ### Feature
 
+- added support for allowedBlocks and showRestricted for BlockChooser in Form @giuliaghisini
+- added objectBrowser to UrlWidget, and attached UrlWidget to remoteUrl field of ContentType Link @giuliaghisini
+- managed tel link in UrlWidget and draftjs @giuliaghisini
 - added support for allowedBlocks and showRestricted for BlockChooser in Form [@giuliaghisini]
 - Improvements in InlineForm @nileshgulia1
 
