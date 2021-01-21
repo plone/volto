@@ -10,7 +10,7 @@
     }
   ],
   "license": "MIT",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/plone/generator-volto.git"
@@ -50,7 +50,7 @@
     "ci:cypress:run": "start-test ci:start-api-plone http-get://localhost:55001/plone ci:start-frontend",
     "ci:cypress:run:guillotina": "start-test ci:start-api-guillotina http-get://localhost:8081 ci:start-frontend-guillotina",
     "dry-release": "release-it --dry-run",
-    "prerelease": "tar cvfz generator-volto.tgz .",
+    "prerelease": "tar --exclude=node_modules -cvfz generator-volto.tgz .",
     "release": "release-it",
     "release-alpha": "release-it major --preRelease=alpha"
   },
