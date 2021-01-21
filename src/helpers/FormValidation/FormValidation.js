@@ -180,8 +180,9 @@ const validateRequiredFields = (schema, formData, formatMessage) => {
   const errors = {};
 
   map(schema.required, (requiredField) => {
-    const type = schema.properties[requiredField].type;
-    const widget = schema.properties[requiredField].widget;
+    const type = schema.properties[requiredField]?.type;
+    const widget = schema.properties[requiredField]?.widget;
+
     let isEmpty = !formData[requiredField];
     if (!isEmpty) {
       if (type === 'array') {

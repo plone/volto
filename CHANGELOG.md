@@ -33,6 +33,7 @@
 - managed tel link in UrlWidget and draftjs @giuliaghisini
 - added support for allowedBlocks and showRestricted for BlockChooser in Form [@giuliaghisini]
 - Improvements in InlineForm @nileshgulia1
+- Improved form validation. Tested required fields when field is array or richtext @giuliaghisini
 
 ### Bugfix
 
@@ -41,6 +42,7 @@
 - handle SelectWidget null value and isMulti(#1915) &(1878) @nileshgulia1
 - Fix typo in ita locales @nzambello
 - Wrap objectBrowserWidget with FormFieldWrapper @nileshgulia1
+- Added preventDefault and stopPropagation for toolbar buttons of Table block. @giuliaghisini
 
 ### Internal
 
