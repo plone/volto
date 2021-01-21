@@ -11,6 +11,7 @@
 - managed tel link in UrlWidget and draftjs @giuliaghisini
 - added support for allowedBlocks and showRestricted for BlockChooser in Form [@giuliaghisini]
 - Improvements in InlineForm @nileshgulia1
+- Improved form validation. Tested required fields when field is array or richtext @giuliaghisini
 
 ### Bugfix
 
