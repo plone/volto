@@ -81,11 +81,15 @@ To render this form and make it available to the edit component:
 ```jsx
 import schema from './schema';
 import InlineForm from '@plone/volto/components/manage/Form/InlineForm';
+import { Icon } from '@plone/volto/components';
 
 <SidebarPortal selected={this.props.selected}>
   <InlineForm
+    icon={<Icon size="24px" name={nameSVG} />}
     schema={schema}
     title={schema.title}
+    headerActions={<button onClick={() => {}}>Action</button>}
+    footer={<div>I'm footer</div>}
     onChangeField={(id, value) => {
       this.props.onChangeBlock(this.props.block, {
         ...this.props.data,
@@ -120,7 +124,7 @@ By default, it's enabled for all the component tree under the Blocks Editor, so 
 However, if you need to instantiate it somewhere else, you can do it anyways by wrapping your component with it.
 
 !!! note
-  The default image block in Volto features both the Sidebar and the object browser, take a look at its source code in case you need more context on how they work.
+    The default image block in Volto features both the Sidebar and the object browser, take a look at its source code in case you need more context on how they work.
 
 ### openObjectBrowser handler API
 
@@ -188,6 +192,36 @@ if we use object browser widget for fields:
 - **related_pages**: propDataName is _related_pages_ and dataName is null,
 - **image**: dataName is _url_ and propDataName is null
 - **link**: dataName is _href_ and propDataName is null
+
+#### Usage in blocks schema
+
+Used in along with `InlineForm`, one can instantiate and configure it using the widget props like this:
+
+```js
+{
+  title: 'Item',
+  fieldsets: [
+    {
+      id: 'default',
+      title: 'Default',
+      fields: ['href'],
+    },
+  ],
+  properties: {
+    href: {
+      title: 'title',
+      widget: 'object_browser',
+      mode: 'link',
+      selectedItemAttrs: ['Title', 'Description'],
+    },
+}
+```
+
+#### selectedItemAttrs
+
+You can select the attributes from the object (coming from the metadata brain from
+@search endpoint used in the browser) using the `selectedItemAttrs` prop as shown in the
+last example.
 
 #### ObjectBrowserWidgetMode()
 

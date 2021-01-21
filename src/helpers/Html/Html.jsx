@@ -105,12 +105,14 @@ class Html extends Component {
             charSet="UTF-8"
           />
           {/* Add the crossorigin while in development */}
-          {extractor.getScriptElements().map((elem) =>
-            React.cloneElement(elem, {
-              crossOrigin:
-                process.env.NODE_ENV === 'production' ? undefined : 'true',
-            }),
-          )}
+          {this.props.extractScripts !== false
+            ? extractor.getScriptElements().map((elem) =>
+                React.cloneElement(elem, {
+                  crossOrigin:
+                    process.env.NODE_ENV === 'production' ? undefined : 'true',
+                }),
+              )
+            : ''}
         </body>
       </html>
     );

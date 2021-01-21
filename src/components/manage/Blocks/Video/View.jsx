@@ -7,7 +7,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Embed } from 'semantic-ui-react';
 import cx from 'classnames';
-import { isInternalURL, getParentUrl } from '@plone/volto/helpers';
+import {
+  isInternalURL,
+  getParentUrl,
+  flattenToAppURL,
+} from '@plone/volto/helpers';
 import { settings } from '~/config';
 
 /**
@@ -34,12 +38,43 @@ const View = ({ data }) => (
         {data.url.match('youtu') ? (
           <>
             {data.url.match('list') ? (
+              data.preview_image ? (
+                <Embed
+                  url={`https://www.youtube.com/embed/videoseries?list=${
+                    data.url.match(/^.*\?list=(.*)$/)[1]
+                  }`}
+                  placeholder={
+                    isInternalURL(data.preview_image)
+                      ? `${flattenToAppURL(data.preview_image)}/@@images/image`
+                      : data.preview_image
+                  }
+                  defaultActive
+                  autoplay={false}
+                />
+              ) : (
+                <Embed
+                  url={`https://www.youtube.com/embed/videoseries?list=${
+                    data.url.match(/^.*\?list=(.*)$/)[1]
+                  }`}
+                  icon="play"
+                  defaultActive
+                  autoplay={false}
+                />
+              )
+            ) : data.preview_image ? (
               <Embed
-                url={`https://www.youtube.com/embed/videoseries?list=${
-                  data.url.match(/^.*\?list=(.*)$/)[1]
-                }`}
-                icon="arrow right"
-                defaultActive
+                id={
+                  data.url.match(/.be\//)
+                    ? data.url.match(/^.*\.be\/(.*)/)[1]
+                    : data.url.match(/^.*\?v=(.*)$/)[1]
+                }
+                source="youtube"
+                placeholder={
+                  isInternalURL(data.preview_image)
+                    ? `${flattenToAppURL(data.preview_image)}/@@images/image`
+                    : data.preview_image
+                }
+                icon="play"
                 autoplay={false}
               />
             ) : (
@@ -50,7 +85,7 @@ const View = ({ data }) => (
                     : data.url.match(/^.*\?v=(.*)$/)[1]
                 }
                 source="youtube"
-                icon="arrow right"
+                icon="play"
                 defaultActive
                 autoplay={false}
               />
@@ -59,13 +94,27 @@ const View = ({ data }) => (
         ) : (
           <>
             {data.url.match('vimeo') ? (
-              <Embed
-                id={data.url.match(/^.*\.com\/(.*)/)[1]}
-                source="vimeo"
-                icon="arrow right"
-                defaultActive
-                autoplay={false}
-              />
+              data.preview_image ? (
+                <Embed
+                  id={data.url.match(/^.*\.com\/(.*)/)[1]}
+                  source="vimeo"
+                  placeholder={
+                    isInternalURL(data.preview_image)
+                      ? `${flattenToAppURL(data.preview_image)}/@@images/image`
+                      : data.preview_image
+                  }
+                  icon="play"
+                  autoplay={false}
+                />
+              ) : (
+                <Embed
+                  id={data.url.match(/^.*\.com\/(.*)/)[1]}
+                  source="vimeo"
+                  icon="play"
+                  defaultActive
+                  autoplay={false}
+                />
+              )
             ) : (
               <>
                 {data.url.match('.mp4') ? (
@@ -79,6 +128,15 @@ const View = ({ data }) => (
                         : data.url
                     }
                     controls
+                    poster={
+                      data.preview_image
+                        ? isInternalURL(data.preview_image)
+                          ? `${flattenToAppURL(
+                              data.preview_image,
+                            )}/@@images/image`
+                          : data.preview_image
+                        : ''
+                    }
                     type="video/mp4"
                   />
                 ) : (

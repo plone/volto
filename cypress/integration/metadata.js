@@ -7,11 +7,11 @@ if (Cypress.env('API') === 'plone') {
       cy.waitForResourceToLoad('@breadcrumbs');
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('?fullobjects');
+      cy.waitForResourceToLoad('');
       cy.get('#toolbar-add').click();
       cy.get('#toolbar-add-document').click();
     });
-    it('As an editor I can set the effective date of a page', function() {
+    it('As an editor I can set the effective date of a page', function () {
       cy.get('.documentFirstHeading > .public-DraftStyleDefault-block')
         .type('My Page')
         .get('.documentFirstHeading span[data-text]')
@@ -32,7 +32,7 @@ if (Cypress.env('API') === 'plone') {
       cy.waitForResourceToLoad('@breadcrumbs');
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('my-page?fullobjects');
+      cy.waitForResourceToLoad('my-page');
 
       cy.get('input#effective-date').should('have.value', '12/24/2050');
       cy.get('input#effective-time').should('have.value', '10:00 AM');

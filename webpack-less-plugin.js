@@ -58,88 +58,92 @@ const defaultOptions = {
   style: {},
 };
 
-module.exports = (userOptions = {}) => (
-  defaultConfig,
-  { target, dev },
-  webpack,
-) => {
-  const isServer = target !== 'web';
-  const constantEnv = dev ? 'dev' : 'prod';
+module.exports = (userOptions = {}) => ({
+  modifyWebpackConfig({
+    env: { target, dev },
+    webpackConfig: defaultConfig,
+    webpackObject,
+    options: { pluginOptions, razzleOptions, webpackOptions },
+    paths,
+  }) {
+    const isServer = target !== 'web';
+    const constantEnv = dev ? 'dev' : 'prod';
 
-  const config = Object.assign({}, defaultConfig);
-  const { registry } = userOptions;
-  if (!registry) {
-    throw new Error(
-      'You need to pass an AddonsConfigurationRegistry object as option',
-    );
-  }
+    const config = Object.assign({}, defaultConfig);
+    const { registry } = userOptions;
+    if (!registry) {
+      throw new Error(
+        'You need to pass an AddonsConfigurationRegistry object as option',
+      );
+    }
 
-  const options = Object.assign({}, defaultOptions, userOptions);
+    const options = Object.assign({}, defaultOptions, userOptions);
 
-  const styleLoader = {
-    loader: require.resolve('style-loader'),
-    options: options.style,
-  };
+    const styleLoader = {
+      loader: require.resolve('style-loader'),
+      options: options.style,
+    };
 
-  const cssLoader = {
-    loader: require.resolve('css-loader'),
-    options: options.css[constantEnv],
-  };
+    const cssLoader = {
+      loader: require.resolve('css-loader'),
+      options: options.css[constantEnv],
+    };
 
-  // resolveUrlLoader is not compatible with semantic-ui-react
-  // See https://github.com/Semantic-Org/Semantic-UI-React/issues/3761
-  // Maybe also https://github.com/Semantic-Org/Semantic-UI-React/issues/3844
-  // const resolveUrlLoader = {
-  //   loader: require.resolve('resolve-url-loader'),
-  //   options: options.resolveUrl[constantEnv],
-  // };
+    // resolveUrlLoader is not compatible with semantic-ui-react
+    // See https://github.com/Semantic-Org/Semantic-UI-React/issues/3761
+    // Maybe also https://github.com/Semantic-Org/Semantic-UI-React/issues/3844
+    // const resolveUrlLoader = {
+    //   loader: require.resolve('resolve-url-loader'),
+    //   options: options.resolveUrl[constantEnv],
+    // };
 
-  const postCssLoader = {
-    loader: require.resolve('postcss-loader'),
-    options: hasPostCssConfig()
-      ? undefined
-      : Object.assign({}, options.postcss[constantEnv], {
-          plugins: () => options.postcss.plugins,
-        }),
-  };
+    const postCssLoader = {
+      loader: require.resolve('postcss-loader'),
+      options: hasPostCssConfig()
+        ? undefined
+        : Object.assign({}, options.postcss[constantEnv], {
+            plugins: () => options.postcss.plugins,
+          }),
+    };
 
-  const lessLoader = {
-    loader: require.resolve('less-loader'),
-    options: Object.assign({}, options.less[constantEnv]),
-  };
+    const lessLoader = {
+      loader: require.resolve('less-loader'),
+      options: Object.assign({}, options.less[constantEnv]),
+    };
 
-  config.module.rules = [
-    ...config.module.rules,
-    {
-      test: /\.less$/,
-      include: [
-        path.resolve('./theme'),
-        /node_modules\/@plone\/volto\/theme/,
-        /plone\.volto\/theme/,
-        /node_modules\/semantic-ui-less/,
-        ...Object.values(registry.getResolveAliases()),
-      ],
-      use: isServer
-        ? [
-            {
-              loader: require.resolve('css-loader'),
-              options: Object.assign({}, options.css[constantEnv], {
-                onlyLocals: true,
-              }),
-            },
-            // resolveUrlLoader,
-            postCssLoader,
-            lessLoader,
-          ]
-        : [
-            dev ? styleLoader : MiniCssExtractPlugin.loader,
-            cssLoader,
-            postCssLoader,
-            // resolveUrlLoader,
-            lessLoader,
-          ],
-    },
-  ];
+    config.module.rules = [
+      ...config.module.rules,
+      {
+        test: /\.less$/,
+        include: [
+          path.resolve('./theme'),
+          /node_modules\/@plone\/volto\/theme/,
+          /plone\.volto\/theme/,
+          /node_modules\/semantic-ui-less/,
+          ...Object.values(registry.getResolveAliases()),
+        ],
+        use: isServer
+          ? [
+              {
+                loader: require.resolve('css-loader'),
+                options: Object.assign({}, options.css[constantEnv], {
+                  onlyLocals: true,
+                }),
+              },
+              // resolveUrlLoader,
+              postCssLoader,
+              lessLoader,
+            ]
+          : [
+              dev ? styleLoader : MiniCssExtractPlugin.loader,
+              cssLoader,
+              postCssLoader,
+              // resolveUrlLoader,
+              lessLoader,
+            ],
+      },
+    ];
 
-  return config;
-};
+    return config;
+  },
+});

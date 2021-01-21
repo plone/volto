@@ -79,30 +79,6 @@ export function getView(url) {
 }
 
 /**
- * Get icon
- * @method getIcon
- * @param {string} type Type of the item.
- * @param {bool} isFolderish Is folderish.
- * @returns {string} Icon name.
- */
-export function getIcon(type, isFolderish) {
-  switch (type) {
-    case 'Document':
-      return 'file text outline';
-    case 'Image':
-      return 'file image outline';
-    case 'File':
-      return 'attach';
-    case 'Link':
-      return 'linkify';
-    case 'Event':
-      return 'calendar';
-    default:
-      return isFolderish ? 'folder open outline' : 'file outline';
-  }
-}
-
-/**
  * Flatten to app server URL - Given a URL if it starts with the API server URL
  * this method flattens it (removes) the server part
  * TODO: Update it when implementing non-root based app location (on a
@@ -159,7 +135,9 @@ export function flattenHTMLToAppURL(html) {
  * @returns {string} New URL with app
  */
 export function addAppURL(url) {
-  return `${settings.apiPath}${url}`;
+  return url.indexOf(settings.apiPath) === 0
+    ? url
+    : `${settings.apiPath}${url}`;
 }
 
 /**

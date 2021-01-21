@@ -2,6 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import { waitFor } from '@testing-library/react';
 
 import Edit from './Edit';
 
@@ -9,7 +10,7 @@ const mockStore = configureStore();
 
 const blockId = '1234';
 
-test('renders an edit image block component', () => {
+test('renders an edit image block component', async () => {
   const store = mockStore({
     content: {
       create: {},
@@ -48,5 +49,6 @@ test('renders an edit image block component', () => {
     </Provider>,
   );
   const json = component.toJSON();
+  await waitFor(() => {});
   expect(json).toMatchSnapshot();
 });

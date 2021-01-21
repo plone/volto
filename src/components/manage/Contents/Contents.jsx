@@ -107,6 +107,10 @@ const messages = defineMessages({
     id: 'Cut',
     defaultMessage: 'Cut',
   },
+  error: {
+    id: "You can't paste this content here",
+    defaultMessage: "You can't paste this content here",
+  },
   delete: {
     id: 'Delete',
     defaultMessage: 'Delete',
@@ -135,9 +139,9 @@ const messages = defineMessages({
     id: 'Item(s) cut.',
     defaultMessage: 'Item(s) cut.',
   },
-  messageSort: {
-    id: 'Item(s) has been sorted.',
-    defaultMessage: 'Item(s) has been sorted.',
+  messageUpdate: {
+    id: 'Item(s) has been updated.',
+    defaultMessage: 'Item(s) has been updated.',
   },
   messageReorder: {
     id: 'Item succesfully moved.',
@@ -439,7 +443,7 @@ class Contents extends Component {
         <Toast
           success
           title={this.props.intl.formatMessage(messages.success)}
-          content={this.props.intl.formatMessage(messages.messageSort)}
+          content={this.props.intl.formatMessage(messages.messageUpdate)}
         />,
       );
     }
@@ -882,15 +886,26 @@ class Contents extends Component {
    * @returns {undefined}
    */
   fetchContents(pathname) {
-    this.props.searchContent(getBaseUrl(pathname || this.props.pathname), {
-      'path.depth': 1,
-      sort_on: this.state.sort_on,
-      sort_order: this.state.sort_order,
-      metadata_fields: '_all',
-      ...(this.state.filter && { SearchableText: `${this.state.filter}*` }),
-      b_size: this.state.pageSize,
-      b_start: this.state.currentPage * this.state.pageSize,
-    });
+    if (this.state.pageSize === 'All') {
+      this.props.searchContent(getBaseUrl(pathname || this.props.pathname), {
+        'path.depth': 1,
+        sort_on: this.state.sort_on,
+        sort_order: this.state.sort_order,
+        metadata_fields: '_all',
+        b_size: 100000000,
+        ...(this.state.filter && { SearchableText: `${this.state.filter}*` }),
+      });
+    } else {
+      this.props.searchContent(getBaseUrl(pathname || this.props.pathname), {
+        'path.depth': 1,
+        sort_on: this.state.sort_on,
+        sort_order: this.state.sort_order,
+        metadata_fields: '_all',
+        ...(this.state.filter && { SearchableText: `${this.state.filter}*` }),
+        b_size: this.state.pageSize,
+        b_start: this.state.currentPage * this.state.pageSize,
+      });
+    }
   }
 
   /**
@@ -1677,7 +1692,7 @@ class Contents extends Component {
                             this.props.total / this.state.pageSize,
                           )}
                           pageSize={this.state.pageSize}
-                          pageSizes={[15, 30, 50]}
+                          pageSizes={[15, 30, 50, 'All']}
                           onChangePage={this.onChangePage}
                           onChangePageSize={this.onChangePageSize}
                         />
@@ -1711,11 +1726,11 @@ class Contents extends Component {
             </Dimmer.Dimmable>
           </Container>
         ) : (
-          <Unauthorized />
+          <Unauthorized staticContext={this.props.staticContext} />
         )}
       </>
     ) : (
-      <Unauthorized />
+      <Unauthorized staticContext={this.props.staticContext} />
     );
   }
 }
