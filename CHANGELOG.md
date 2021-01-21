@@ -20,6 +20,7 @@
 - handle SelectWidget null value and isMulti(#1915) &(1878) @nileshgulia1
 - Fix typo in ita locales @nzambello
 - Wrap objectBrowserWidget with FormFieldWrapper @nileshgulia1
+- Added preventDefault and stopPropagation for toolbar buttons of Table block. @giuliaghisini
 
 ### Internal
 
