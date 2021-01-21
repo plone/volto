@@ -46,17 +46,18 @@ First get all the requirements installed on your system.
 
 ### Create Volto App
 
-Create a new Volto project by using the `create-volto-app` utility.
+Create a new Volto project by using the `@plone/generator-volto` utility.
 
 It will bootstrap a Volto project in a folder of your choice with all the required
 boilerplate to start customizing your Volto site.
 
     $ npm install -g yarn
-    $ npm install -g @plone/create-volto-app
-    $ create-volto-app myvoltoproject
+    $ npm install -g yo
+    $ npm install -g @plone/generator-volto
+    $ yo @plone/volto
     $ cd myvoltoproject
 
-Although we install and use `yarn`, the `create-volto-app` tool still needs to be
+Although we install and use `yarn`, the `@plone/generator-volto` tool still needs to be
 installed using `npm -g` because `yarn` has a different implementation of
 global installs.
 

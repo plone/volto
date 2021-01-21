@@ -1,30 +1,25 @@
 # Creating a new Volto project
 
-For using Volto for a project (i.e. use Volto as a library), You should use the
-`create-volto-app` command. It's a boilerplate generator that will provide you with 
-the basic files and folder structure to bootstrap a Volto site.
+For using Volto for a project (i.e. use Volto as a library), You should use Volto's project generator `@plone/generator-volto`. It's a boilerplate generator based in Yeoman that will provide you with the basic files and folder structure to bootstrap a Volto site. In addition to bootstrapping standalone Volto projects, it can also bootstrap Volto addons.
 
 1. Open a terminal and execute:
 ```
-$ npm -g i @plone/create-volto-app
+$ npm install -g yo
+$ npm install -g @plone/generator-volto
 ```
 
 !!! warning
-    It's not recommended to use yarn for installing `create-volto-app`, use npm instead.
+    It's not recommended to use yarn for installing the generator, use npm instead.
 
 !!! tip Installing it using npx
-    Optionally, you can also use `npx` utility to install `create-volto-app`
-    without having to install it globally. On the other hand, in order to do it, you
-    have to install `npx` globally. The advantage is that you don't have to
-    upgrade `create-volto-app` each time you want to use it, because `npx` does
-    it for you:
+    Optionally, you can also use `npx` utility to install `@plone/generator-volto` without having to install it globally. On the other hand, in order to do it, you have to install `npx` globally. The advantage is that you don't have to upgrade `@plone/generator-volto` each time you want to use it, because `npx` does it for you:
 
-    `npx @plone/create-volto-app myvoltoapp`
+    `npx @plone/generator-volto myvoltoapp`
 
 2. Create a new Volto app using the recently added command, providing the name
    of the new app (folder) to be created.
 ```
-$ create-volto-app myvoltoapp
+$ yo @plone/volto
 ```
 
 3. Change the directory to `myvoltoapp`.
@@ -32,7 +27,7 @@ $ create-volto-app myvoltoapp
 $ cd myvoltoapp
 ```
 
-4. The project is ready to be started, `create-volto-app` already has run the
+4. The project is ready to be started, `@plone/generator-volto` already has run the
    dependencies installations for you.
 ```
 $ yarn start

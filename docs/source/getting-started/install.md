@@ -73,11 +73,11 @@ yarn -v
     platform you are on. Take a look at the original `yarn`
     [documentation](https://classic.yarnpkg.com/lang/en/) for a list of them.
 
-## Use or Install Docker 
+## Use or Install Docker
 
 In order to run the API backend, it's recommended to start run it in a container.
 For this getting started section we assume you are either using Linux, or Mac. Most
-modern Linux distributions have docker in their package manager available. 
+modern Linux distributions have docker in their package manager available.
 
 To install Docker desktop for Mac, here are the detailed instructions:
 
@@ -113,9 +113,9 @@ docker run -it --rm --name=plone \
 ```
 
 !!! note
-    The example above does not persist yet any changes you make through Volto in 
+    The example above does not persist yet any changes you make through Volto in
     the Plone docker container backend! For this you need to map the /data directory
-    in the container properly. Check Docker 
+    in the container properly. Check Docker
     [storage documentation](https://docs.docker.com/storage/) for more information.
 
     As a quick example: if you add
@@ -125,22 +125,31 @@ docker run -it --rm --name=plone \
 
 If you are somewhat familiar with Python development, you can also install Plone locally
 without using Docker. Check the [backend configuration](../configuration/backend.md) section.
-It also has more information on kitconcept.volto. 
+It also has more information on kitconcept.volto.
 
 
 ## Install Volto
 
-Use the `create-volto-app` helper utility.
+Use the project generator helper utility.
 
 1. Open a terminal and execute:
 ```
-npm -g i @plone/create-volto-app
+$ npm install -g yo
+$ npm install -g @plone/generator-volto
 ```
 
 2. Create a new Volto app using the recently added command, providing the name of the new app (folder) to be created.
 ```
-create-volto-app myvoltoapp
+$ yo @plone/volto
 ```
+
+!!! note
+    For more options for the generator
+
+    ```console
+    $ yo @plone/volto --help
+    ```
+    or take a look at the full [README](https://github.com/plone/volto/blob/master/packages/generator-volto/README.md)
 
 3. Change directory to the newly created folder `myvoltoapp` (or the one you've chosen):
 ```
@@ -156,11 +165,8 @@ yarn start
 This command will build an in-memory bundle and execute Volto in development mode. Open a browser to
 take a look at http://localhost:3000
 
-!!! tip Try the new Yeoman based generator
-    The Volto developer community is working on a new [enhanced
-    generator](https://github.com/plone/generator-volto.git). In addition to
-    bootstrapping standalone Volto projects, it can also bootstrap Volto
-    addons. Give it a try!
+!!! warning `@plone/create-volto-app` is deprecated
+    It was deprecated from January 2021, in favor of [@plone/generator-volto](https://github.com/plone/generator-volto.git).
 
 ## Build the production bundle
 
