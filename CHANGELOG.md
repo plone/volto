@@ -24,6 +24,8 @@
 
 ### Internal
 
+- Update browserlist and caniuse-lite @sneridagh
+
 ## 10.9.2 (2021-01-15)
 
 ### Bugfix
