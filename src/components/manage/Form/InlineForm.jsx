@@ -29,6 +29,9 @@ const InlineForm = ({
   onChangeField,
   schema,
   title,
+  icon,
+  headerActions,
+  footer,
   intl,
 }) => {
   const _ = intl.formatMessage;
@@ -37,7 +40,9 @@ const InlineForm = ({
   return (
     <Segment.Group raised className="form">
       <header className="header pulled">
+        {icon}
         <h2>{title || _(messages.editValues)}</h2>
+        {headerActions}
       </header>
       {description && (
         <Segment secondary className="attached">
@@ -64,24 +69,22 @@ const InlineForm = ({
       )}
 
       <div id={`blockform-fieldset-${defaultFieldset.id}`}>
-        <Segment className="attached">
-          {map(defaultFieldset.fields, (field, index) => (
-            <Field
-              {...schema.properties[field]}
-              id={field}
-              fieldSet={defaultFieldset.title.toLowerCase()}
-              focus={index === 0}
-              value={formData[field]}
-              required={schema.required.indexOf(field) !== -1}
-              onChange={(id, value) => {
-                onChangeField(id, value);
-              }}
-              key={field}
-              error={errors[field]}
-              block={block}
-            />
-          ))}
-        </Segment>
+        {map(defaultFieldset.fields, (field, index) => (
+          <Field
+            {...schema.properties[field]}
+            id={field}
+            fieldSet={defaultFieldset.title.toLowerCase()}
+            focus={index === 0}
+            value={formData[field] || schema.properties[field].default}
+            required={schema.required.indexOf(field) !== -1}
+            onChange={(id, value) => {
+              onChangeField(id, value);
+            }}
+            key={field}
+            error={errors[field]}
+            block={block}
+          />
+        ))}
       </div>
 
       {other.map((fieldset) => (
@@ -94,7 +97,7 @@ const InlineForm = ({
               <Field
                 {...schema.properties[field]}
                 id={field}
-                value={formData[field]}
+                value={formData[field] || schema.properties[field].default}
                 required={schema.required.indexOf(field) !== -1}
                 onChange={(id, value) => {
                   onChangeField(id, value);
@@ -107,6 +110,7 @@ const InlineForm = ({
           </Segment>
         </div>
       ))}
+      {footer}
     </Segment.Group>
   );
 };
