@@ -28,8 +28,19 @@
 - babel view [giuliaghisini]
 - added og tags for social sharing [giuliaghisini]
 - added support for allowedBlocks and showRestricted for BlockChooser in Form [@giuliaghisini]
+- added support for allowedBlocks and showRestricted for BlockChooser in Form @giuliaghisini
+- added objectBrowser to UrlWidget, and attached UrlWidget to remoteUrl field of ContentType Link @giuliaghisini
+- managed tel link in UrlWidget and draftjs @giuliaghisini
+- added support for allowedBlocks and showRestricted for BlockChooser in Form [@giuliaghisini]
+- Improvements in InlineForm @nileshgulia1
 
 ### Bugfix
+
+- Fix 'All' button batch size in Contents @nzambello
+- Fixed field type for 'from' field in ContactForm @giuliaghisini
+- handle SelectWidget null value and isMulti(#1915) &(1878) @nileshgulia1
+- Fix typo in ita locales @nzambello
+- Wrap objectBrowserWidget with FormFieldWrapper @nileshgulia1
 
 ### Internal
 
