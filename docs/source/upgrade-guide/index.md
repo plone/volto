@@ -10,6 +10,12 @@ This upgrade guide lists all breaking changes in Volto and explains the
     dependencies might do when dealing with upgrades. We keep the generator up
     to date and in sync with current Volto release. Please notice that the generator is able to tell you when it runs that it's outdated. The generator is also able to "update" your project with the latest changes and propose you if you want to merge them. Just run it on the top of your project.
 
+## Upgrading to Volto 11.x.x
+
+### id is removed from FormFieldWrapper
+
+We have removed the id from the FormFieldWrapper because it is coincide with the label id if we don't provide the fieldset. If you have cypress test which depends on this id then just remove the id from the test and if test fails then just add `.react-select-container` in place of your id.
+
 ## Upgrading to Volto 10.x.x
 
 ### Remove the Razzle plugins patch
@@ -24,10 +30,6 @@ introduced more headaches than benefits, but inadvertently we introduced a bug o
 patch. We've found a workaround to still support plugins as local modules without
 patching Razzle, however that forces you to delete the patch introduced in your projects
 if you followed the 9.x.x upgrade guide steps.
-
-### id is removed from FormFieldWrapper
-
-We have removed the id from the FormFieldWrapper because it is coincide with the label id if we don't provide the fieldset. If you have cypress test which depends on this id then just remove the id from the test and if test fails then just add `.react-select-container` in place of your id.
 
 ### getContent changes
 
