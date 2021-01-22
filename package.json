@@ -271,6 +271,7 @@
     "eslint-plugin-react": "7.20.0",
     "eslint-plugin-react-hooks": "4.0.2",
     "express": "4.17.1",
+    "express-sharp": "4.2.22",
     "glob": "7.1.6",
     "hamburgers": "1.1.3",
     "handlebars": "4.7.0",
