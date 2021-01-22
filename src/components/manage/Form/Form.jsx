@@ -88,6 +88,8 @@ class Form extends Component {
     visual: PropTypes.bool,
     blocks: PropTypes.arrayOf(PropTypes.object),
     requestError: PropTypes.string,
+    allowedBlocks: PropTypes.arrayOf(PropTypes.string),
+    showRestricted: PropTypes.bool,
   };
 
   /**
@@ -113,6 +115,7 @@ class Form extends Component {
     pathname: '',
     schema: {},
     requestError: null,
+    allowedBlocks: null,
   };
 
   /**
@@ -920,6 +923,8 @@ class Form extends Component {
                                 block,
                               )}
                               manage={this.props.isAdminForm}
+                              allowedBlocks={this.props.allowedBlocks}
+                              showRestricted={this.props.showRestricted}
                             />
                           </div>
                         </div>
