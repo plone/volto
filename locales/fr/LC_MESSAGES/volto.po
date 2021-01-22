@@ -855,6 +855,7 @@ msgid "History of {title}"
 msgstr "Historique de {title}"
 
 #: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsBreadcrumbs
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Home"
 msgstr "Accueil"
@@ -1521,6 +1522,10 @@ msgstr "Droits"
 #: helpers/MessageLabels/MessageLabels
 msgid "Roles"
 msgstr "Rôles"
+
+#: components/manage/Contents/ContentsBreadcrumbs
+msgid "Root"
+msgstr ""
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentType

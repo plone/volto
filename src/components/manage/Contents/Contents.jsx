@@ -12,7 +12,6 @@ import { Helmet } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import {
   Button,
-  Breadcrumb,
   Confirm,
   Container,
   Dropdown,
@@ -68,6 +67,8 @@ import {
   Icon,
   Unauthorized,
 } from '@plone/volto/components';
+import ContentsBreadcrumbs from './ContentsBreadcrumbs';
+
 import { toast } from 'react-toastify';
 
 import backSVG from '@plone/volto/icons/back.svg';
@@ -1370,35 +1371,7 @@ class Contents extends Component {
                         attached
                         className="contents-breadcrumbs"
                       >
-                        <Breadcrumb>
-                          <Link
-                            to="/contents"
-                            className="section"
-                            title={this.props.intl.formatMessage(messages.home)}
-                          >
-                            {this.props.intl.formatMessage(messages.home)}
-                          </Link>
-                          {this.props.breadcrumbs.map(
-                            (breadcrumb, index, breadcrumbs) => [
-                              <Breadcrumb.Divider
-                                key={`divider-${breadcrumb.url}`}
-                              />,
-                              index < breadcrumbs.length - 1 ? (
-                                <Link
-                                  key={breadcrumb.url}
-                                  to={`${breadcrumb.url}/contents`}
-                                  className="section"
-                                >
-                                  {breadcrumb.title}
-                                </Link>
-                              ) : (
-                                <Breadcrumb.Section key={breadcrumb.url} active>
-                                  {breadcrumb.title}
-                                </Breadcrumb.Section>
-                              ),
-                            ],
-                          )}
-                        </Breadcrumb>
+                        <ContentsBreadcrumbs items={this.props.breadcrumbs} />
                         <Dropdown
                           item
                           icon={

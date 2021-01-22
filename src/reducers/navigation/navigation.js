@@ -4,7 +4,7 @@
  */
 
 import { map } from 'lodash';
-import { settings } from '~/config';
+import { flattenToAppURL } from '@plone/volto/helpers';
 
 import { GET_NAVIGATION } from '@plone/volto/constants/ActionTypes';
 
@@ -25,7 +25,8 @@ const initialState = {
 function getRecursiveItems(items) {
   return map(items, (item) => ({
     title: item.title,
-    url: item['@id'].replace(settings.apiPath, ''),
+    url: flattenToAppURL(item['@id']),
+    nav_title: item.nav_title,
     ...(item.items && { items: getRecursiveItems(item.items) }),
   }));
 }

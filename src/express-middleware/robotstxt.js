@@ -1,10 +1,7 @@
+import express from 'express';
+
 export default function () {
-  if (
-    typeof __SERVER__ !== 'undefined' &&
-    __SERVER__ &&
-    process.env.VOLTO_ROBOTSTXT
-  ) {
-    const express = require('express');
+  if (process.env.VOLTO_ROBOTSTXT) {
     const middleware = express.Router();
 
     middleware.all('**/robots.txt', function (req, res) {
@@ -12,6 +9,7 @@ export default function () {
       res.send(process.env.VOLTO_ROBOTSTXT);
     });
     middleware.id = 'robots.txt';
+
     return middleware;
   }
 }
