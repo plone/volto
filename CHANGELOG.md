@@ -2,17 +2,14 @@
 
 ## 10.9.3 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Simple optional critical-CSS inclusion feature (without the actual building of
   the critical CSS) @silviubogan @tiberiuichim @nileshgulia1
-
 - added support for allowedBlocks and showRestricted for BlockChooser in Form @giuliaghisini
 - added objectBrowser to UrlWidget, and attached UrlWidget to remoteUrl field of ContentType Link @giuliaghisini
 - managed tel link in UrlWidget and draftjs @giuliaghisini
-- added support for allowedBlocks and showRestricted for BlockChooser in Form [@giuliaghisini]
+- added support for allowedBlocks and showRestricted for BlockChooser in Form @giuliaghisini
 - Improvements in InlineForm @nileshgulia1
 - Improved form validation. Tested required fields when field is array or richtext @giuliaghisini
 
