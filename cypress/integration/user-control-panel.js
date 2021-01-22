@@ -6,16 +6,15 @@ if (Cypress.env('API') !== 'guillotina') {
       // and the folder contents view
       cy.visit('/');
       cy.autologin();
+    });
+    it('Should add User to controlPanel', () => {
       cy.visit('/controlpanel/users');
       cy.waitForResourceToLoad('@navigation');
       cy.waitForResourceToLoad('@breadcrumbs');
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
-    });
-
-    it('Should add User to controlPanel', () => {
       // when I added a user from controlPanel
-      cy.get('.addSVG').first().click();
+      cy.get('Button[id="toolbar-add"]').click();
       cy.get('input[id="field-username"]').clear().type('iFlameing');
       cy.get('input[id="field-fullname"]').clear().type('Alok Kumar');
       cy.get('input[id ="field-email"]').clear().type('info@example.com');
@@ -29,22 +28,33 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('.fullname').should('have.text', 'Alok Kumar');
     });
     it('Should update group roles', () => {
+      cy.visit('/controlpanel/groups');
+      cy.waitForResourceToLoad('@navigation');
+      cy.waitForResourceToLoad('@breadcrumbs');
+      cy.waitForResourceToLoad('@actions');
+      cy.waitForResourceToLoad('@types');
+
       cy.get('[data-group="groups"] input[type="checkbox"')
         .first()
         .check({ force: true });
-      cy.get('.ui:nth-child(10) > div:nth-child(2) .icon').click();
-
+      cy.get('Button[id="toolbar-save"]').click();
       cy.reload();
       cy.get('[data-group="groups"] div.checkbox')
         .first()
         .should('have.class', 'checked');
     });
     it('Should update user roles', () => {
+      cy.visit('/controlpanel/users');
+      cy.waitForResourceToLoad('@navigation');
+      cy.waitForResourceToLoad('@breadcrumbs');
+      cy.waitForResourceToLoad('@actions');
+      cy.waitForResourceToLoad('@types');
+
       cy.get('[data-user="users"] input[type="checkbox"')
         .first()
         .check({ force: true });
 
-      cy.get('.ui:nth-child(5) > div:nth-child(2) .icon').click();
+      cy.get('Button[id="toolbar-save"]').click();
 
       cy.reload();
 
