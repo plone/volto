@@ -37,6 +37,14 @@ if (window.addEventListener) {
  * The only thing this component doesn't (and can't) include is the
  * HTML doctype declaration, which is added to the rendered output
  * by the server.js file.
+ *
+ * Critical.css behaviour: when a file `public/critical.css` is present, the
+ * loading of stylesheets is changed. The styles in critical.css are inlined in
+ * the generated HTML, and the whole story needs to change completely: instead
+ * of treating stylesheets as priority for rendering, we want to defer their
+ * loading as much as possible. So we have a special script that loads the
+ * stylesheets dynamically and in the header we have them as prefetch resources
+ *
  * @function Html
  * @param {Object} props Component properties.
  * @param {Object} props.assets Assets to be rendered.
