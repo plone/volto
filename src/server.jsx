@@ -52,29 +52,31 @@ const server = express()
     res.send('');
   });
 
-// Internal proxy to bypass CORS while developing.
-if (__DEVELOPMENT__ && settings.devProxyToApiPath) {
-  const apiPathURL = parseUrl(settings.apiPath);
-  const proxyURL = parseUrl(settings.devProxyToApiPath);
-  const serverURL = `${proxyURL.protocol}//${proxyURL.host}`;
-  const instancePath = proxyURL.pathname;
-  server.use(
-    '/api',
-    createProxyMiddleware({
-      target: serverURL,
-      pathRewrite: {
-        '^/api':
-          settings.proxyRewriteTarget ||
-          `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot/_vh_api`,
-      },
-      logLevel: 'silent', // change to 'debug' to see all requests
-      ...(settings?.proxyRewriteTarget?.startsWith('https') && {
-        changeOrigin: true,
-        secure: false,
-      }),
+// This is the proxy to the API in case the accept header is 'application/json'
+const filter = function (pathname, req) {
+  return req.headers.accept === 'application/json';
+};
+
+const apiPathURL = parseUrl(settings.apiPath);
+const proxyURL = parseUrl(settings.devProxyToApiPath);
+const serverURL = `${proxyURL.protocol}//${proxyURL.host}`;
+const instancePath = proxyURL.pathname;
+
+server.use(
+  createProxyMiddleware(filter, {
+    target: serverURL,
+    pathRewrite: {
+      '^/':
+        settings.proxyRewriteTarget ||
+        `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot/`,
+    },
+    logLevel: 'silent', // change to 'debug' to see all requests
+    ...(settings?.proxyRewriteTarget?.startsWith('https') && {
+      changeOrigin: true,
+      secure: false,
     }),
-  );
-}
+  }),
+);
 
 server.all('*', setupServer);
 

@@ -36,11 +36,7 @@ import applyAddonConfiguration from 'load-volto-addons';
 const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || '3000';
 
-const apiPath =
-  process.env.RAZZLE_API_PATH ||
-  (__DEVELOPMENT__
-    ? `http://${host}:${port}/api`
-    : 'http://localhost:8080/Plone');
+const apiPath = process.env.RAZZLE_API_PATH || `http://${host}:${port}`;
 
 const serverConfig =
   typeof __SERVER__ !== 'undefined' && __SERVER__
