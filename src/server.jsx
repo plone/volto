@@ -58,9 +58,9 @@ const filter = function (pathname, req) {
 };
 
 const apiPathURL = parseUrl(settings.apiPath);
-const proxyURL = parseUrl(settings.devProxyToApiPath);
-const serverURL = `${proxyURL.protocol}//${proxyURL.host}`;
-const instancePath = proxyURL.pathname;
+const backendAPIPath = parseUrl(settings.backendAPIPath);
+const serverURL = `${backendAPIPath.protocol}//${backendAPIPath.host}`;
+const instancePath = backendAPIPath.pathname;
 
 server.use(
   createProxyMiddleware(filter, {
