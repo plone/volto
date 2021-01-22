@@ -6,6 +6,9 @@
 
 ### Feature
 
+- Simple optional critical-CSS inclusion feature (without the actual building of
+  the critical CSS) @silviubogan @tiberiuichim @nileshgulia1
+
 - added support for allowedBlocks and showRestricted for BlockChooser in Form @giuliaghisini
 - added objectBrowser to UrlWidget, and attached UrlWidget to remoteUrl field of ContentType Link @giuliaghisini
 - managed tel link in UrlWidget and draftjs @giuliaghisini
@@ -23,6 +26,8 @@
 - Added preventDefault and stopPropagation for toolbar buttons of Table block. @giuliaghisini
 
 ### Internal
+
+- Add `settings.serverConfig` in the settings object of `~/config`. Add another module, `config/server.js` which is conditionally imported if `__SERVER__`. This module will host settings that are only relevant to the server. Being conditionally imported means that the code is safe to require server-only nodejs packages. @tiberiuichim
 
 - Update browserlist and caniuse-lite @sneridagh
 - Document deprecation of `@plone/create-volto-app` @sneridagh @nileshgulia1

@@ -1,3 +1,4 @@
+import express from 'express';
 import { getAPIResourceWithAuth } from '@plone/volto/helpers';
 
 const HEADERS = ['content-type', 'content-disposition', 'cache-control'];
@@ -18,12 +19,9 @@ function fileMiddleware(req, res, next) {
 }
 
 export default function () {
-  if (typeof __SERVER__ !== 'undefined' && __SERVER__) {
-    const express = require('express');
-    const middleware = express.Router();
+  const middleware = express.Router();
 
-    middleware.all(['**/@@download/*'], fileMiddleware);
-    middleware.id = 'filesResourcesProcessor';
-    return middleware;
-  }
+  middleware.all(['**/@@download/*'], fileMiddleware);
+  middleware.id = 'filesResourcesProcessor';
+  return middleware;
 }
