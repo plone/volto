@@ -14,6 +14,7 @@
 - managed tel link in UrlWidget and draftjs @giuliaghisini
 - added support for allowedBlocks and showRestricted for BlockChooser in Form [@giuliaghisini]
 - Improvements in InlineForm @nileshgulia1
+- Improved form validation. Tested required fields when field is array or richtext @giuliaghisini
 
 ### Bugfix
 
@@ -22,10 +23,14 @@
 - handle SelectWidget null value and isMulti(#1915) &(1878) @nileshgulia1
 - Fix typo in ita locales @nzambello
 - Wrap objectBrowserWidget with FormFieldWrapper @nileshgulia1
+- Added preventDefault and stopPropagation for toolbar buttons of Table block. @giuliaghisini
 
 ### Internal
 
 - Add `settings.serverConfig` in the settings object of `~/config`. Add another module, `config/server.js` which is conditionally imported if `__SERVER__`. This module will host settings that are only relevant to the server. Being conditionally imported means that the code is safe to require server-only nodejs packages. @tiberiuichim
+
+- Update browserlist and caniuse-lite @sneridagh
+- Document deprecation of `@plone/create-volto-app` @sneridagh @nileshgulia1
 
 ## 10.9.2 (2021-01-15)
 
