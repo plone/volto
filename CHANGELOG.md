@@ -26,6 +26,7 @@
 
 - Update browserlist and caniuse-lite @sneridagh
 - Document deprecation of `@plone/create-volto-app` @sneridagh @nileshgulia1
+- Adding classname in TextWidget and ObjectBrowserBody so that we can target those element in tests. @iFlameing
 
 ## 10.9.2 (2021-01-15)
 

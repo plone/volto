@@ -544,7 +544,9 @@ exports[`renders a Listing Block Sidebar component 1`] = `
                   class="icon"
                 />
               </div>
-              <button>
+              <button
+                class="field-linkHref"
+              >
                 <svg
                   class="icon"
                   style="height: 18px; width: auto; fill: currentColor;"
