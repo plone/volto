@@ -53,7 +53,9 @@ let config = {
     apiPath,
     // The real path to the API not the Volto internal one (itself)
     backendAPIPath:
-      process.env.RAZZLE_BACKEND_API_PATH || 'http://localhost:8080/Plone', // Set it to '' for disabling the proxy
+      process.env.RAZZLE_BACKEND_API_PATH ||
+      process.env.RAZZLE_API_PATH ||
+      'http://localhost:8080/Plone', // Set it to '' for disabling the proxy
     // proxyRewriteTarget Set it for set a custom target for the proxy or overide the internal VHM rewrite
     // proxyRewriteTarget: '/VirtualHostBase/http/localhost:8080/Plone/VirtualHostRoot/_vh_api'
     // proxyRewriteTarget: 'https://myvoltositeinproduction.com'
