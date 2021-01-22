@@ -10,6 +10,18 @@ This upgrade guide lists all breaking changes in Volto and explains the
     dependencies might do when dealing with upgrades. We keep the generator up
     to date and in sync with current Volto release. Please notice that the generator is able to tell you when it runs that it's outdated. The generator is also able to "update" your project with the latest changes and propose you if you want to merge them. Just run it on the top of your project.
 
+## Upgrading to Volto 11.x.x
+
+Due to problems with circular dependencies, the `AlignBlock` was moved to helpers and used from there.
+Unfortunately, it was proven to be worse overall. We move it (with a know workaround) to its rightful place again.
+
+If your code is importing it from helpers, you should update it to the new path:
+
+```diff
+- import { AlignBlock } from '@plone/volto/helpers';
++ import AlignBlock from '@plone/volto/components/manage/Sidebar/AlignBlock';
+```
+
 ## Upgrading to Volto 10.x.x
 
 ### Remove the Razzle plugins patch
