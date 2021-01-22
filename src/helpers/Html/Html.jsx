@@ -11,21 +11,13 @@ import { join } from 'lodash';
 import { BodyClass } from '@plone/volto/helpers';
 import { runtimeConfig } from '@plone/volto/runtime_config';
 
-const CRITICAL_CSS_TEMPLATE = `function lCss(u, m) {
-  var l = document.createElement('link');
-  l.rel = 'stylesheet';
-  l.type = 'text/css';
-  l.href = u;
-  l.media = m;
-  document.getElementsByTagName('head')[0].appendChild(l)
-}
-function dCss() {
-PLACEHOLDER
+const CRITICAL_CSS_TEMPLATE = `function alter() {
+  document.querySelectorAll("head link[rel='prefetch']").forEach(function(el) { el.rel = 'stylesheet'});
 }
 if (window.addEventListener) {
-  window.addEventListener('DOMContentLoaded', dCss, false)
+  window.addEventListener('DOMContentLoaded', alter, false) // dCss
 } else {
-  window.onload=dCss
+  window.onload=alter
 }`;
 
 /**
@@ -42,8 +34,8 @@ if (window.addEventListener) {
  * loading of stylesheets is changed. The styles in critical.css are inlined in
  * the generated HTML, and the whole story needs to change completely: instead
  * of treating stylesheets as priority for rendering, we want to defer their
- * loading as much as possible. So we have a special script that loads the
- * stylesheets dynamically and in the header we have them as prefetch resources
+ * loading as much as possible. So we change the stylesheets to be prefetched
+ * and we switch their rel back to stylesheets at document ready even.
  *
  * @function Html
  * @param {Object} props Component properties.
@@ -112,51 +104,45 @@ class Html extends Component {
             />
           )}
           {/* Add the crossorigin while in development */}
-          {extractor
-            .getLinkElements()
-            // .filter((elem) => (!criticalCss ? true : elem.props.as !== 'style'))
-            .map((elem) =>
-              React.cloneElement(elem, {
-                crossOrigin:
-                  process.env.NODE_ENV === 'production' ? undefined : 'true',
-                rel: !criticalCss
-                  ? elem.props.rel
-                  : elem.props.as === 'style'
-                  ? 'prefetch'
-                  : elem.props.rel,
-              }),
-            )}
+          {extractor.getLinkElements().map((elem) =>
+            React.cloneElement(elem, {
+              crossOrigin:
+                process.env.NODE_ENV === 'production' ? undefined : 'true',
+              rel: !criticalCss
+                ? elem.props.rel
+                : elem.props.as === 'style'
+                ? 'prefetch'
+                : elem.props.rel,
+            }),
+          )}
           {/* Styles in development are loaded with Webpack's style-loader, in production,
               they need to be static*/}
-          {process.env.NODE_ENV === 'production' &&
-            !criticalCss &&
-            extractor.getStyleElements()}
-          {process.env.NODE_ENV === 'production' && criticalCss && (
-            <>
-              <script
-                dangerouslySetInnerHTML={{
-                  __html: CRITICAL_CSS_TEMPLATE.replace(
-                    'PLACEHOLDER',
-                    extractor
-                      .getStyleElements()
-                      .map((el) => `lCss('${el.props.href}', 'all');`)
-                      .join('\n'),
-                  ),
-                }}
-              ></script>
-              {extractor.getStyleElements().map((elem) => (
-                <noscript>
-                  {React.cloneElement(elem, {
-                    rel: 'stylesheet',
-                    crossOrigin:
-                      process.env.NODE_ENV === 'production'
-                        ? undefined
-                        : 'true',
-                  })}
-                </noscript>
-              ))}
-            </>
-          )}
+          {process.env.NODE_ENV === 'production'
+            ? criticalCss
+              ? process.env.NODE_ENV === 'production' &&
+                criticalCss && (
+                  <>
+                    <script
+                      dangerouslySetInnerHTML={{
+                        __html: CRITICAL_CSS_TEMPLATE,
+                      }}
+                    ></script>
+                    {extractor.getStyleElements().map((elem) => (
+                      <noscript>
+                        {React.cloneElement(elem, {
+                          rel: 'stylesheet',
+                          crossOrigin:
+                            process.env.NODE_ENV === 'production'
+                              ? undefined
+                              : 'true',
+                        })}
+                      </noscript>
+                    ))}
+                  </>
+                )
+              : extractor.getStyleElements()
+            : undefined}
+          {}
         </head>
         <body className={bodyClass}>
           <div role="navigation" aria-label="Toolbar" id="toolbar" />
