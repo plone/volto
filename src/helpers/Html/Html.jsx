@@ -11,6 +11,23 @@ import { join } from 'lodash';
 import { BodyClass } from '@plone/volto/helpers';
 import { runtimeConfig } from '@plone/volto/runtime_config';
 
+const CRITICAL_CSS_TEMPLATE = `function lCss(u, m) {
+  var l = document.createElement('link');
+  l.rel = 'stylesheet';
+  l.type = 'text/css';
+  l.href = u;
+  l.media = m;
+  document.getElementsByTagName('head')[0].appendChild(l)
+}
+function dCss() {
+PLACEHOLDER
+}
+if (window.addEventListener) {
+  window.addEventListener('DOMContentLoaded', dCss, false)
+} else {
+  window.onload=dCss
+}`;
+
 /**
  * Html class.
  * Wrapper component containing HTML metadata and boilerplate tags.
@@ -87,23 +104,51 @@ class Html extends Component {
             />
           )}
           {/* Add the crossorigin while in development */}
-          {extractor.getLinkElements().map((elem) =>
-            React.cloneElement(elem, {
-              crossOrigin:
-                process.env.NODE_ENV === 'production' ? undefined : 'true',
-              rel:
-                elem.props.as !== 'style'
-                  ? 'preload'
-                  : criticalCss
+          {extractor
+            .getLinkElements()
+            // .filter((elem) => (!criticalCss ? true : elem.props.as !== 'style'))
+            .map((elem) =>
+              React.cloneElement(elem, {
+                crossOrigin:
+                  process.env.NODE_ENV === 'production' ? undefined : 'true',
+                rel: !criticalCss
+                  ? elem.props.rel
+                  : elem.props.as === 'style'
                   ? 'prefetch'
-                  : 'preload',
-            }),
-          )}
+                  : elem.props.rel,
+              }),
+            )}
           {/* Styles in development are loaded with Webpack's style-loader, in production,
               they need to be static*/}
           {process.env.NODE_ENV === 'production' &&
             !criticalCss &&
             extractor.getStyleElements()}
+          {process.env.NODE_ENV === 'production' && criticalCss && (
+            <>
+              <script
+                dangerouslySetInnerHTML={{
+                  __html: CRITICAL_CSS_TEMPLATE.replace(
+                    'PLACEHOLDER',
+                    extractor
+                      .getStyleElements()
+                      .map((el) => `lCss('${el.props.href}', 'all');`)
+                      .join('\n'),
+                  ),
+                }}
+              ></script>
+              {extractor.getStyleElements().map((elem) => (
+                <noscript>
+                  {React.cloneElement(elem, {
+                    rel: 'stylesheet',
+                    crossOrigin:
+                      process.env.NODE_ENV === 'production'
+                        ? undefined
+                        : 'true',
+                  })}
+                </noscript>
+              ))}
+            </>
+          )}
         </head>
         <body className={bodyClass}>
           <div role="navigation" aria-label="Toolbar" id="toolbar" />
@@ -124,7 +169,6 @@ class Html extends Component {
                 }),
               )
             : ''}
-          {criticalCss && extractor.getStyleElements()}
         </body>
       </html>
     );
