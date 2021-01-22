@@ -37,11 +37,11 @@ import { bindActionCreators, compose } from 'redux';
 import {
   Confirm,
   Container,
-  Divider,
   Form,
   Input,
   Header,
   Segment,
+  Tab,
   Table,
 } from 'semantic-ui-react';
 
@@ -437,6 +437,11 @@ class UsersControlpanel extends Component {
       });
     }
   }
+
+  onTabChange = (e, { activeIndex }) => {
+    this.setState({ activeIndex });
+  };
+
   /**
    * Handle Success after createUser()
    *
@@ -704,225 +709,255 @@ class UsersControlpanel extends Component {
           ) : null}
         </div>
         <Segment.Group raised>
-          <Segment className="primary">
-            <FormattedMessage
-              id="Users and groups settings"
-              defaultMessage="Users and groups settings"
-            />
-          </Segment>
-          <Segment>
-            <FormattedMessage id="Users" defaultMessage="Users" />
-          </Segment>
-          <Segment>
-            <Form onSubmit={this.onSearch}>
-              <Form.Field>
-                <Input
-                  name="SearchableText"
-                  action={{ icon: 'search' }}
-                  placeholder={this.props.intl.formatMessage(
-                    messages.searchUsers,
-                  )}
-                  onChange={this.onChangeSearch}
-                  id="user-search-input"
-                />
-              </Form.Field>
-            </Form>
-          </Segment>
-          <Form>
-            <div className="table">
-              <Table padded striped attached unstackable>
-                <Table.Header>
-                  <Table.Row>
-                    <Table.HeaderCell>
-                      <FormattedMessage
-                        id="User name"
-                        defaultMessage="User name"
-                      />
-                    </Table.HeaderCell>
-                    {this.props.roles.map((role) => (
-                      <Table.HeaderCell key={role.id}>
-                        {role.id}
-                      </Table.HeaderCell>
-                    ))}
-                    <Table.HeaderCell>
-                      <FormattedMessage id="Actions" defaultMessage="Actions" />
-                    </Table.HeaderCell>
-                  </Table.Row>
-                </Table.Header>
-                <Table.Body data-user="users">
-                  {this.state.entries.map((user) => (
-                    <UsersControlpanelUser
-                      key={user.id}
-                      onDelete={this.delete}
-                      roles={this.props.roles}
-                      user={user}
-                      updateUser={this.updateUserRole}
-                    />
-                  ))}
-                </Table.Body>
-              </Table>
-            </div>
-          </Form>
-          <Segment clearing className="actions">
-            <div
-              style={{
-                display: 'inline-flex',
-                float: 'left',
-                cursor: 'pointer',
-              }}
-            >
-              <Header
-                as="h4"
-                icon
-                textAlign="center"
-                onClick={() => {
-                  this.setState({ showAddUser: true });
-                }}
-              >
-                <Header.Content style={{ marginTop: '3px' }}>
-                  {this.props.intl.formatMessage(messages.addUserButtonTitle)}
-                </Header.Content>
+          <Tab
+            menu={{
+              secondary: true,
+              pointing: true,
+              attached: true,
+              tabular: true,
+              className: 'formtabs',
+              vertical: false,
+            }}
+            grid={{ paneWidth: 9, tabWidth: 3, stackable: true }}
+            onTabChange={this.onTabChange}
+            activeIndex={this.state.activeIndex}
+            panes={[
+              {
+                menuItem: (
+                  <FormattedMessage id="Users" defaultMessage="Users" />
+                ),
+                render: () => (
+                  <>
+                    <Segment>
+                      <Form onSubmit={this.onSearch}>
+                        <Form.Field>
+                          <Input
+                            name="SearchableText"
+                            action={{ icon: 'search' }}
+                            placeholder={this.props.intl.formatMessage(
+                              messages.searchUsers,
+                            )}
+                            onChange={this.onChangeSearch}
+                            id="user-search-input"
+                          />
+                        </Form.Field>
+                      </Form>
+                    </Segment>
+                    <Form>
+                      <div className="table">
+                        <Table padded striped attached unstackable>
+                          <Table.Header>
+                            <Table.Row>
+                              <Table.HeaderCell>
+                                <FormattedMessage
+                                  id="User name"
+                                  defaultMessage="User name"
+                                />
+                              </Table.HeaderCell>
+                              {this.props.roles.map((role) => (
+                                <Table.HeaderCell key={role.id}>
+                                  {role.id}
+                                </Table.HeaderCell>
+                              ))}
+                              <Table.HeaderCell>
+                                <FormattedMessage
+                                  id="Actions"
+                                  defaultMessage="Actions"
+                                />
+                              </Table.HeaderCell>
+                            </Table.Row>
+                          </Table.Header>
+                          <Table.Body data-user="users">
+                            {this.state.entries.map((user) => (
+                              <UsersControlpanelUser
+                                key={user.id}
+                                onDelete={this.delete}
+                                roles={this.props.roles}
+                                user={user}
+                                updateUser={this.updateUserRole}
+                              />
+                            ))}
+                          </Table.Body>
+                        </Table>
+                      </div>
+                    </Form>
+                    <Segment clearing className="actions">
+                      <div
+                        style={{
+                          display: 'inline-flex',
+                          float: 'left',
+                          cursor: 'pointer',
+                        }}
+                      >
+                        <Header
+                          as="h4"
+                          icon
+                          textAlign="center"
+                          onClick={() => {
+                            this.setState({ showAddUser: true });
+                          }}
+                        >
+                          <Header.Content style={{ marginTop: '3px' }}>
+                            {this.props.intl.formatMessage(
+                              messages.addUserButtonTitle,
+                            )}
+                          </Header.Content>
 
-                <Icon
-                  name={addSvg}
-                  size="28px"
-                  className="addSVG"
-                  title={this.props.intl.formatMessage(messages.add)}
-                />
-              </Header>
-            </div>
-            <div
-              style={{
-                display: 'inline-flex',
-                float: 'right',
-                cursor: 'pointer',
-              }}
-            >
-              <Header
-                as="h4"
-                textAlign="center"
-                onClick={this.updateUserRoleSubmit}
-              >
-                <Header.Content style={{ marginTop: '3px' }}>
-                  {this.props.intl.formatMessage(messages.save)}
-                </Header.Content>
+                          <Icon
+                            name={addSvg}
+                            size="28px"
+                            className="addSVG"
+                            title={this.props.intl.formatMessage(messages.add)}
+                          />
+                        </Header>
+                      </div>
+                      <div
+                        style={{
+                          display: 'inline-flex',
+                          float: 'right',
+                          cursor: 'pointer',
+                        }}
+                      >
+                        <Header
+                          as="h4"
+                          textAlign="center"
+                          onClick={this.updateUserRoleSubmit}
+                        >
+                          <Header.Content style={{ marginTop: '3px' }}>
+                            {this.props.intl.formatMessage(messages.save)}
+                          </Header.Content>
 
-                <Icon
-                  name={saveSVG}
-                  size="28px"
-                  className="addSVG"
-                  title={this.props.intl.formatMessage(messages.save)}
-                />
-              </Header>
-            </div>
-          </Segment>
-          <Divider />
-          <Segment>
-            <FormattedMessage id="Groups" defaultMessage="Groups" />
-          </Segment>
-          <Segment>
-            <Form onSubmit={this.onSearchGroups}>
-              <Form.Field>
-                <Input
-                  name="SearchableText"
-                  action={{ icon: 'search' }}
-                  placeholder={this.props.intl.formatMessage(
-                    messages.searchGroups,
-                  )}
-                  onChange={this.onChangeSearch}
-                  id="group-search-input"
-                />
-              </Form.Field>
-            </Form>
-          </Segment>
-          <Form>
-            <div className="table">
-              <Table padded striped attached unstackable>
-                <Table.Header>
-                  <Table.Row>
-                    <Table.HeaderCell>
-                      <FormattedMessage
-                        id="Groupname"
-                        defaultMessage="Groupname"
-                      />
-                    </Table.HeaderCell>
-                    {this.props.roles.map((role) => (
-                      <Table.HeaderCell key={role.id}>
-                        {role.id}
-                      </Table.HeaderCell>
-                    ))}
-                    <Table.HeaderCell>
-                      <FormattedMessage id="Actions" defaultMessage="Actions" />
-                    </Table.HeaderCell>
-                  </Table.Row>
-                </Table.Header>
-                <Table.Body data-group="groups">
-                  {this.state.groupEntries.map((groups) => (
-                    <UsersControlpanelGroups
-                      key={groups.id}
-                      onDelete={this.deleteGroup}
-                      roles={this.props.roles}
-                      groups={groups}
-                      updateGroups={this.updateGroupRole}
-                    />
-                  ))}
-                </Table.Body>
-              </Table>
-            </div>
-          </Form>
-          <Segment clearing className="actions">
-            <div
-              style={{
-                display: 'inline-flex',
-                float: 'left',
-                cursor: 'pointer',
-              }}
-            >
-              <Header
-                as="h4"
-                icon
-                textAlign="center"
-                onClick={() => {
-                  this.setState({ showAddGroup: true });
-                }}
-              >
-                <Header.Content style={{ marginTop: '3px' }}>
-                  {this.props.intl.formatMessage(messages.addGroupsButtonTitle)}
-                </Header.Content>
+                          <Icon
+                            name={saveSVG}
+                            size="28px"
+                            className="addSVG"
+                            title={this.props.intl.formatMessage(messages.save)}
+                          />
+                        </Header>
+                      </div>
+                    </Segment>
+                  </>
+                ),
+              },
+              {
+                menuItem: (
+                  <FormattedMessage id="Groups" defaultMessage="Groups" />
+                ),
+                render: () => (
+                  <>
+                    <Segment>
+                      <Form onSubmit={this.onSearchGroups}>
+                        <Form.Field>
+                          <Input
+                            name="SearchableText"
+                            action={{ icon: 'search' }}
+                            placeholder={this.props.intl.formatMessage(
+                              messages.searchGroups,
+                            )}
+                            onChange={this.onChangeSearch}
+                            id="group-search-input"
+                          />
+                        </Form.Field>
+                      </Form>
+                    </Segment>
+                    <Form>
+                      <div className="table">
+                        <Table padded striped attached unstackable>
+                          <Table.Header>
+                            <Table.Row>
+                              <Table.HeaderCell>
+                                <FormattedMessage
+                                  id="Groupname"
+                                  defaultMessage="Groupname"
+                                />
+                              </Table.HeaderCell>
+                              {this.props.roles.map((role) => (
+                                <Table.HeaderCell key={role.id}>
+                                  {role.id}
+                                </Table.HeaderCell>
+                              ))}
+                              <Table.HeaderCell>
+                                <FormattedMessage
+                                  id="Actions"
+                                  defaultMessage="Actions"
+                                />
+                              </Table.HeaderCell>
+                            </Table.Row>
+                          </Table.Header>
+                          <Table.Body data-group="groups">
+                            {this.state.groupEntries.map((groups) => (
+                              <UsersControlpanelGroups
+                                key={groups.id}
+                                onDelete={this.deleteGroup}
+                                roles={this.props.roles}
+                                groups={groups}
+                                updateGroups={this.updateGroupRole}
+                              />
+                            ))}
+                          </Table.Body>
+                        </Table>
+                      </div>
+                    </Form>
+                    <Segment clearing className="actions">
+                      <div
+                        style={{
+                          display: 'inline-flex',
+                          float: 'left',
+                          cursor: 'pointer',
+                        }}
+                      >
+                        <Header
+                          as="h4"
+                          icon
+                          textAlign="center"
+                          onClick={() => {
+                            this.setState({ showAddGroup: true });
+                          }}
+                        >
+                          <Header.Content style={{ marginTop: '3px' }}>
+                            {this.props.intl.formatMessage(
+                              messages.addGroupsButtonTitle,
+                            )}
+                          </Header.Content>
 
-                <Icon
-                  name={addSvg}
-                  size="28px"
-                  className="addSVG"
-                  title={this.props.intl.formatMessage(messages.add)}
-                />
-              </Header>
-            </div>
-            <div
-              style={{
-                display: 'inline-flex',
-                float: 'right',
-                cursor: 'pointer',
-              }}
-            >
-              <Header
-                as="h4"
-                textAlign="center"
-                onClick={this.updateGroupRoleSubmit}
-              >
-                <Header.Content style={{ marginTop: '3px' }}>
-                  {this.props.intl.formatMessage(messages.save)}
-                </Header.Content>
+                          <Icon
+                            name={addSvg}
+                            size="28px"
+                            className="addSVG"
+                            title={this.props.intl.formatMessage(messages.add)}
+                          />
+                        </Header>
+                      </div>
+                      <div
+                        style={{
+                          display: 'inline-flex',
+                          float: 'right',
+                          cursor: 'pointer',
+                        }}
+                      >
+                        <Header
+                          as="h4"
+                          textAlign="center"
+                          onClick={this.updateGroupRoleSubmit}
+                        >
+                          <Header.Content style={{ marginTop: '3px' }}>
+                            {this.props.intl.formatMessage(messages.save)}
+                          </Header.Content>
 
-                <Icon
-                  name={saveSVG}
-                  size="28px"
-                  className="addSVG"
-                  title={this.props.intl.formatMessage(messages.save)}
-                />
-              </Header>
-            </div>
-          </Segment>
+                          <Icon
+                            name={saveSVG}
+                            size="28px"
+                            className="addSVG"
+                            title={this.props.intl.formatMessage(messages.save)}
+                          />
+                        </Header>
+                      </div>
+                    </Segment>
+                  </>
+                ),
+              },
+            ]}
+          />
         </Segment.Group>
         {this.state.isClient && (
           <Portal node={document.getElementById('toolbar')}>

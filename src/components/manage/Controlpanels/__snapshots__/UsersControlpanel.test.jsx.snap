@@ -10,340 +10,171 @@ exports[`UsersControlpanel renders a user control component 1`] = `
   <div
     className="ui raised segments"
   >
-    <div
-      className="ui segment primary"
-    >
-      Users and groups settings
-    </div>
-    <div
-      className="ui segment"
-    >
-      Users
-    </div>
-    <div
-      className="ui segment"
-    >
+    <div>
+      <div
+        className="ui pointing secondary attached tabular formtabs menu"
+      >
+        Users
+        Groups
+      </div>
+      <div
+        className="ui segment"
+      >
+        <form
+          className="ui form"
+          onSubmit={[Function]}
+        >
+          <div
+            className="field"
+          >
+            <div
+              className="ui action input"
+            >
+              <input
+                id="user-search-input"
+                name="SearchableText"
+                onChange={[Function]}
+                placeholder="Search users…"
+                type="text"
+              />
+              <button
+                className="ui icon button"
+                onClick={[Function]}
+              >
+                <i
+                  aria-hidden="true"
+                  className="search icon"
+                  onClick={[Function]}
+                />
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
       <form
         className="ui form"
         onSubmit={[Function]}
       >
         <div
-          className="field"
+          className="table"
         >
-          <div
-            className="ui action input"
+          <table
+            className="ui striped unstackable attached padded table"
           >
-            <input
-              id="user-search-input"
-              name="SearchableText"
-              onChange={[Function]}
-              placeholder="Search users…"
-              type="text"
-            />
-            <button
-              className="ui icon button"
-              onClick={[Function]}
-            >
-              <i
-                aria-hidden="true"
-                className="search icon"
-                onClick={[Function]}
-              />
-            </button>
-          </div>
-        </div>
-      </form>
-    </div>
-    <form
-      className="ui form"
-      onSubmit={[Function]}
-    >
-      <div
-        className="table"
-      >
-        <table
-          className="ui striped unstackable attached padded table"
-        >
-          <thead
-            className=""
-          >
-            <tr
+            <thead
               className=""
             >
-              <th
+              <tr
                 className=""
               >
-                User name
-              </th>
-              <th
-                className=""
-              >
-                Actions
-              </th>
-            </tr>
-          </thead>
-          <tbody
-            className=""
-            data-user="users"
-          />
-        </table>
-      </div>
-    </form>
-    <div
-      className="ui clearing segment actions"
-    >
+                <th
+                  className=""
+                >
+                  User name
+                </th>
+                <th
+                  className=""
+                >
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody
+              className=""
+              data-user="users"
+            />
+          </table>
+        </div>
+      </form>
       <div
-        style={
-          Object {
-            "cursor": "pointer",
-            "display": "inline-flex",
-            "float": "left",
-          }
-        }
-      >
-        <h4
-          className="ui icon center aligned header"
-          onClick={[Function]}
-        >
-          <div
-            className="content"
-            style={
-              Object {
-                "marginTop": "3px",
-              }
-            }
-          >
-            Add new user
-          </div>
-          <svg
-            className="icon addSVG"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "<title>Add</title>undefined",
-              }
-            }
-            onClick={null}
-            style={
-              Object {
-                "fill": "currentColor",
-                "height": "28px",
-                "width": "auto",
-              }
-            }
-            viewBox=""
-            xmlns=""
-          />
-        </h4>
-      </div>
-      <div
-        style={
-          Object {
-            "cursor": "pointer",
-            "display": "inline-flex",
-            "float": "right",
-          }
-        }
-      >
-        <h4
-          className="ui center aligned header"
-          onClick={[Function]}
-        >
-          <div
-            className="content"
-            style={
-              Object {
-                "marginTop": "3px",
-              }
-            }
-          >
-            Save
-          </div>
-          <svg
-            className="icon addSVG"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "<title>Save</title>undefined",
-              }
-            }
-            onClick={null}
-            style={
-              Object {
-                "fill": "currentColor",
-                "height": "28px",
-                "width": "auto",
-              }
-            }
-            viewBox=""
-            xmlns=""
-          />
-        </h4>
-      </div>
-    </div>
-    <div
-      className="ui divider"
-    />
-    <div
-      className="ui segment"
-    >
-      Groups
-    </div>
-    <div
-      className="ui segment"
-    >
-      <form
-        className="ui form"
-        onSubmit={[Function]}
+        className="ui clearing segment actions"
       >
         <div
-          className="field"
+          style={
+            Object {
+              "cursor": "pointer",
+              "display": "inline-flex",
+              "float": "left",
+            }
+          }
         >
-          <div
-            className="ui action input"
+          <h4
+            className="ui icon center aligned header"
+            onClick={[Function]}
           >
-            <input
-              id="group-search-input"
-              name="SearchableText"
-              onChange={[Function]}
-              placeholder="Search group…"
-              type="text"
+            <div
+              className="content"
+              style={
+                Object {
+                  "marginTop": "3px",
+                }
+              }
+            >
+              Add new user
+            </div>
+            <svg
+              className="icon addSVG"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "<title>Add</title>undefined",
+                }
+              }
+              onClick={null}
+              style={
+                Object {
+                  "fill": "currentColor",
+                  "height": "28px",
+                  "width": "auto",
+                }
+              }
+              viewBox=""
+              xmlns=""
             />
-            <button
-              className="ui icon button"
-              onClick={[Function]}
-            >
-              <i
-                aria-hidden="true"
-                className="search icon"
-                onClick={[Function]}
-              />
-            </button>
-          </div>
+          </h4>
         </div>
-      </form>
-    </div>
-    <form
-      className="ui form"
-      onSubmit={[Function]}
-    >
-      <div
-        className="table"
-      >
-        <table
-          className="ui striped unstackable attached padded table"
+        <div
+          style={
+            Object {
+              "cursor": "pointer",
+              "display": "inline-flex",
+              "float": "right",
+            }
+          }
         >
-          <thead
-            className=""
+          <h4
+            className="ui center aligned header"
+            onClick={[Function]}
           >
-            <tr
-              className=""
+            <div
+              className="content"
+              style={
+                Object {
+                  "marginTop": "3px",
+                }
+              }
             >
-              <th
-                className=""
-              >
-                Groupname
-              </th>
-              <th
-                className=""
-              >
-                Actions
-              </th>
-            </tr>
-          </thead>
-          <tbody
-            className=""
-            data-group="groups"
-          />
-        </table>
-      </div>
-    </form>
-    <div
-      className="ui clearing segment actions"
-    >
-      <div
-        style={
-          Object {
-            "cursor": "pointer",
-            "display": "inline-flex",
-            "float": "left",
-          }
-        }
-      >
-        <h4
-          className="ui icon center aligned header"
-          onClick={[Function]}
-        >
-          <div
-            className="content"
-            style={
-              Object {
-                "marginTop": "3px",
+              Save
+            </div>
+            <svg
+              className="icon addSVG"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "<title>Save</title>undefined",
+                }
               }
-            }
-          >
-            Add new group
-          </div>
-          <svg
-            className="icon addSVG"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "<title>Add</title>undefined",
+              onClick={null}
+              style={
+                Object {
+                  "fill": "currentColor",
+                  "height": "28px",
+                  "width": "auto",
+                }
               }
-            }
-            onClick={null}
-            style={
-              Object {
-                "fill": "currentColor",
-                "height": "28px",
-                "width": "auto",
-              }
-            }
-            viewBox=""
-            xmlns=""
-          />
-        </h4>
-      </div>
-      <div
-        style={
-          Object {
-            "cursor": "pointer",
-            "display": "inline-flex",
-            "float": "right",
-          }
-        }
-      >
-        <h4
-          className="ui center aligned header"
-          onClick={[Function]}
-        >
-          <div
-            className="content"
-            style={
-              Object {
-                "marginTop": "3px",
-              }
-            }
-          >
-            Save
-          </div>
-          <svg
-            className="icon addSVG"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "<title>Save</title>undefined",
-              }
-            }
-            onClick={null}
-            style={
-              Object {
-                "fill": "currentColor",
-                "height": "28px",
-                "width": "auto",
-              }
-            }
-            viewBox=""
-            xmlns=""
-          />
-        </h4>
+              viewBox=""
+              xmlns=""
+            />
+          </h4>
+        </div>
       </div>
     </div>
   </div>
