@@ -15,7 +15,7 @@ const CRITICAL_CSS_TEMPLATE = `function alter() {
   document.querySelectorAll("head link[rel='prefetch']").forEach(function(el) { el.rel = 'stylesheet'});
 }
 if (window.addEventListener) {
-  window.addEventListener('DOMContentLoaded', alter, false) // dCss
+  window.addEventListener('DOMContentLoaded', alter, false)
 } else {
   window.onload=alter
 }`;
@@ -35,7 +35,7 @@ if (window.addEventListener) {
  * the generated HTML, and the whole story needs to change completely: instead
  * of treating stylesheets as priority for rendering, we want to defer their
  * loading as much as possible. So we change the stylesheets to be prefetched
- * and we switch their rel back to stylesheets at document ready even.
+ * and we switch their rel back to stylesheets at document ready event.
  *
  * @function Html
  * @param {Object} props Component properties.
@@ -117,32 +117,30 @@ class Html extends Component {
           )}
           {/* Styles in development are loaded with Webpack's style-loader, in production,
               they need to be static*/}
-          {process.env.NODE_ENV === 'production'
-            ? criticalCss
-              ? process.env.NODE_ENV === 'production' &&
-                criticalCss && (
-                  <>
-                    <script
-                      dangerouslySetInnerHTML={{
-                        __html: CRITICAL_CSS_TEMPLATE,
-                      }}
-                    ></script>
-                    {extractor.getStyleElements().map((elem) => (
-                      <noscript>
-                        {React.cloneElement(elem, {
-                          rel: 'stylesheet',
-                          crossOrigin:
-                            process.env.NODE_ENV === 'production'
-                              ? undefined
-                              : 'true',
-                        })}
-                      </noscript>
-                    ))}
-                  </>
-                )
-              : extractor.getStyleElements()
-            : undefined}
-          {}
+          {process.env.NODE_ENV === 'production' ? (
+            criticalCss ? (
+              <>
+                <script
+                  dangerouslySetInnerHTML={{
+                    __html: CRITICAL_CSS_TEMPLATE,
+                  }}
+                ></script>
+                {extractor.getStyleElements().map((elem) => (
+                  <noscript>
+                    {React.cloneElement(elem, {
+                      rel: 'stylesheet',
+                      crossOrigin:
+                        process.env.NODE_ENV === 'production'
+                          ? undefined
+                          : 'true',
+                    })}
+                  </noscript>
+                ))}
+              </>
+            ) : (
+              extractor.getStyleElements()
+            )
+          ) : undefined}
         </head>
         <body className={bodyClass}>
           <div role="navigation" aria-label="Toolbar" id="toolbar" />
