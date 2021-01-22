@@ -545,7 +545,7 @@ exports[`renders a Listing Block Sidebar component 1`] = `
                 />
               </div>
               <button
-                class="field-linkHref"
+                class="field-linkHref-action-button"
               >
                 <svg
                   class="icon"

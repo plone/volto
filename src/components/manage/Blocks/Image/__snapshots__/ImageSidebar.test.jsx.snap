@@ -81,7 +81,7 @@ exports[`renders an Image Block Sidebar component 1`] = `
               />
             </div>
             <button
-              className="field-external"
+              className="field-external-action-button"
               onClick={[Function]}
             >
               <svg
@@ -160,7 +160,7 @@ exports[`renders an Image Block Sidebar component 1`] = `
               />
             </div>
             <button
-              className="field-alt"
+              className="field-alt-action-button"
               onClick={[Function]}
             >
               <svg
@@ -490,7 +490,7 @@ exports[`renders an Image Block Sidebar component 1`] = `
                 />
               </div>
               <button
-                className="field-link"
+                className="field-link-action-button"
                 onClick={[Function]}
               >
                 <svg
