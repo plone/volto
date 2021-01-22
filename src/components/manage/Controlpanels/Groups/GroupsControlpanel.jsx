@@ -3,49 +3,49 @@
  * @module components/manage/Controlpanels/UsersControlpanel
  */
 import {
-  createUser,
-  deleteUser,
-  listRoles,
+  createGroup,
+  deleteGroup,
   listGroups,
-  listUsers,
-  updateUser,
+  listRoles,
+  updateGroup,
 } from '@plone/volto/actions';
 import {
   Icon,
   ModalForm,
   Toast,
   Toolbar,
-  RenderUsers,
+  RenderGroups,
 } from '@plone/volto/components';
 import { getBaseUrl, Helmet, messages } from '@plone/volto/helpers';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import addUserSvg from '@plone/volto/icons/add-user.svg';
 import saveSVG from '@plone/volto/icons/save.svg';
 import ploneSVG from '@plone/volto/icons/plone.svg';
-import { find, map, remove, difference } from 'lodash';
+import { find, map, remove } from 'lodash';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { Portal } from 'react-portal';
 import { connect } from 'react-redux';
+
 import { toast } from 'react-toastify';
 import { bindActionCreators, compose } from 'redux';
 import {
   Confirm,
   Container,
+  Button,
   Form,
   Input,
-  Button,
   Segment,
   Table,
 } from 'semantic-ui-react';
 
 /**
- * UsersControlpanel class.
- * @class UsersControlpanel
+ * GroupsControlpanel class.
+ * @class GroupsControlpanel
  * @extends Component
  */
-class UsersControlpanel extends Component {
+class GroupsControlpanel extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -53,8 +53,6 @@ class UsersControlpanel extends Component {
    */
   static propTypes = {
     listRoles: PropTypes.func.isRequired,
-    listUsers: PropTypes.func.isRequired,
-    updateUser: PropTypes.func,
     listGroups: PropTypes.func.isRequired,
     pathname: PropTypes.string.isRequired,
     roles: PropTypes.arrayOf(
@@ -64,11 +62,12 @@ class UsersControlpanel extends Component {
         id: PropTypes.string,
       }),
     ).isRequired,
-    users: PropTypes.arrayOf(
+    groups: PropTypes.arrayOf(
       PropTypes.shape({
-        username: PropTypes.string,
-        fullname: PropTypes.string,
+        Title: PropTypes.string,
+        Description: PropTypes.string,
         roles: PropTypes.arrayOf(PropTypes.string),
+        groupname: PropTypes.string,
       }),
     ).isRequired,
   };
@@ -82,34 +81,31 @@ class UsersControlpanel extends Component {
   constructor(props) {
     super(props);
     this.onChangeSearch = this.onChangeSearch.bind(this);
-    this.onSearch = this.onSearch.bind(this);
-    this.delete = this.delete.bind(this);
-
+    this.onSearchGroups = this.onSearchGroups.bind(this);
+    this.deleteGroup = this.deleteGroup.bind(this);
     this.onDeleteOk = this.onDeleteOk.bind(this);
     this.onDeleteCancel = this.onDeleteCancel.bind(this);
-    this.onAddUserSubmit = this.onAddUserSubmit.bind(this);
-    this.onAddUserError = this.onAddUserError.bind(this);
-    this.onAddUserSuccess = this.onAddUserSuccess.bind(this);
-    this.updateUserRole = this.updateUserRole.bind(this);
+    this.onAddGroupSubmit = this.onAddGroupSubmit.bind(this);
+    this.onAddGroupError = this.onAddGroupError.bind(this);
+    this.onAddGroupSuccess = this.onAddGroupSuccess.bind(this);
+    this.updateGroupRole = this.updateGroupRole.bind(this);
     this.onCancel = this.onCancel.bind(this);
     this.state = {
       search: '',
-      showAddUser: false,
-      showAddUserErrorConfirm: false,
-      addUserError: '',
+      addGroupError: '',
       showDelete: false,
-      userToDelete: undefined,
-      entries: [],
+      groupToDelete: undefined,
+      showAddGroup: false,
+      groupEntries: [],
       isClient: false,
     };
   }
 
   fetchData = async () => {
     this.props.listRoles();
-    this.props.listGroups();
-    await this.props.listUsers();
+    await this.props.listGroups();
     this.setState({
-      entries: this.props.users,
+      groupEntries: this.props.groups,
     });
   };
   /**
@@ -126,32 +122,41 @@ class UsersControlpanel extends Component {
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (
-      (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) ||
-      (this.props.createRequest.loading && nextProps.createRequest.loaded)
+      (this.props.deleteGroupRequest.loading &&
+        nextProps.deleteGroupRequest.loaded) ||
+      (this.props.createGroupRequest.loading &&
+        nextProps.createGroupRequest.loaded)
     ) {
-      this.props.listUsers(this.state.search);
+      this.props.listGroups(this.state.search);
     }
-    if (this.props.createRequest.loading && nextProps.createRequest.loaded) {
-      this.onAddUserSuccess();
+    if (
+      this.props.createGroupRequest.loading &&
+      nextProps.createGroupRequest.loaded
+    ) {
+      this.onAddGroupSuccess();
     }
-    if (this.props.createRequest.loading && nextProps.createRequest.error) {
-      this.onAddUserError(nextProps.createRequest.error);
+    if (
+      this.props.createGroupRequest.loading &&
+      nextProps.createGroupRequest.error
+    ) {
+      this.onAddGroupError(nextProps.createRequest.error);
     }
   }
 
-  getUserFromProps(value) {
-    return find(this.props.users, ['@id', value]);
+  getGroupFromProps(value) {
+    return find(this.props.groups, ['@id', value]);
   }
 
   /**
-   * Search handler
-   * @method onSearch
-   * @param {object} event Event object.
+   *
+   *
+   * @param {*} event Event object
+   * @memberof GroupsControlpanel
    * @returns {undefined}
    */
-  onSearch(event) {
+  onSearchGroups(event) {
     event.preventDefault();
-    this.props.listUsers(this.state.search);
+    this.props.listGroups(this.state.search);
   }
 
   /**
@@ -167,17 +172,18 @@ class UsersControlpanel extends Component {
   }
 
   /**
-   * Delete a user
-   * @method delete
-   * @param {object} event Event object.
-   * @param {string} value username.
+   *
+   *
+   * @param {*} event Event object.
+   * @param {*} { value } id (groupname)
+   * @memberof GroupsControlpanel
    * @returns {undefined}
    */
-  delete(event, { value }) {
+  deleteGroup(event, { value }) {
     if (value) {
       this.setState({
         showDelete: true,
-        userToDelete: this.getUserFromProps(value),
+        groupToDelete: this.getGroupFromProps(value),
       });
     }
   }
@@ -188,11 +194,11 @@ class UsersControlpanel extends Component {
    * @returns {undefined}
    */
   onDeleteOk() {
-    if (this.state.userToDelete) {
-      this.props.deleteUser(this.state.userToDelete.id);
+    if (this.state.groupToDelete) {
+      this.props.deleteGroup(this.state.groupToDelete.id);
       this.setState({
         showDelete: false,
-        userToDelete: undefined,
+        groupToDelete: undefined,
       });
     }
   }
@@ -210,50 +216,14 @@ class UsersControlpanel extends Component {
   }
 
   /**
-   * Callback to be called by the ModalForm when the form is submitted.
    *
-   * @param {object} data Form data from the ModalForm.
-   * @param {func} callback to set new form data in the ModalForm
-   * @returns {undefined}
+   * @param {*} name
+   * @param {*} value
+   * @memberof GroupsControlpanel
    */
-  onAddUserSubmit(data, callback) {
-    this.props.createUser(data);
+  updateGroupRole(name, value) {
     this.setState({
-      addUserSetFormDataCallback: callback,
-    });
-  }
-
-  /**
-   * Handle Success after createUser()
-   *
-   * @returns {undefined}
-   */
-  onAddUserSuccess() {
-    this.state.addUserSetFormDataCallback({});
-    this.setState({
-      showAddUser: false,
-      addUserError: undefined,
-      addUserSetFormDataCallback: undefined,
-    });
-    toast.success(
-      <Toast
-        success
-        title={this.props.intl.formatMessage(messages.success)}
-        content={this.props.intl.formatMessage(messages.userCreated)}
-      />,
-    );
-  }
-
-  /**
-   *
-   *
-   * @param {*} data
-   * @param {*} callback
-   * @memberof UsersControlpanel
-   */
-  updateUserRole(name, value) {
-    this.setState({
-      entries: map(this.state.entries, (entry) => ({
+      groupEntries: map(this.state.groupEntries, (entry) => ({
         ...entry,
         roles:
           entry.id === name && !entry.roles.includes(value)
@@ -265,53 +235,78 @@ class UsersControlpanel extends Component {
     });
   }
   /**
-   *
    * @param {*} event
-   * @memberof UsersControlpanel
+   * @memberof GroupsControlpanel
    */
-  updateUserRoleSubmit = (e) => {
+  updateGroupRoleSubmit = (e) => {
     e.stopPropagation();
-
-    const roles = this.props.roles.map((item) => item.id);
-    this.state.entries.forEach((item) => {
-      const userData = { roles: {} };
-      const removedRoles = difference(roles, item.roles);
-
-      removedRoles.forEach((role) => {
-        userData.roles[role] = false;
-      });
-      item.roles.forEach((role) => {
-        userData.roles[role] = true;
-      });
-      this.props.updateUser(item.id, userData);
+    this.state.groupEntries.forEach((item) => {
+      this.props.updateGroup(item.id, item);
     });
     toast.success(
       <Toast
         success
         title={this.props.intl.formatMessage(messages.success)}
-        content={this.props.intl.formatMessage(messages.updateRoles)}
+        content={this.props.intl.formatMessage(messages.updateGroups)}
       />,
     );
   };
-
   /**
-   * Handle Errors after createUser()
    *
-   * @param {object} error object. Requires the property .message
+   *
+   * @param {object} data Form data from the ModalForm.
+   * @param {func} callback to set new form data in the ModalForm
+   * @memberof GroupsControlpanel
    * @returns {undefined}
    */
-  onAddUserError(error) {
+  onAddGroupSubmit(data, callback) {
+    this.props.createGroup(data);
     this.setState({
-      addUserError: error.message,
+      addGroupSetFormDataCallback: callback,
+    });
+  }
+
+  /**
+   * Handle Errors after createGroup()
+   *
+   * @param {*} error object. Requires the property .message
+   * @memberof GroupsControlpanel
+   * @returns {undefined}
+   */
+  onAddGroupError(error) {
+    this.setState({
+      addGroupError: error.message,
     });
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.props.users !== prevProps.users) {
+    if (this.props.groups !== prevProps.groups) {
       this.setState({
-        entries: this.props.users,
+        groupEntries: this.props.groups,
       });
     }
+  }
+
+  /**
+   * Handle Success after createGroup()
+   *
+   * @memberof GroupsControlpanel
+   * @returns {undefined}
+   */
+  onAddGroupSuccess() {
+    this.state.addGroupSetFormDataCallback({});
+    this.setState({
+      showAddGroup: false,
+      addGroupError: undefined,
+      addGroupSetFormDataCallback: undefined,
+    });
+    toast.success(
+      <Toast
+        success
+        title={this.props.intl.formatMessage(messages.success)}
+        content={this.props.intl.formatMessage(messages.groupCreated)}
+      />,
+    );
   }
 
   /**
@@ -329,29 +324,30 @@ class UsersControlpanel extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    /*let fullnameToDelete = this.state.userToDelete
-        ? this.state.userToDelete.fullname
+    /*let fullnameToDelete = this.state.groupToDelete
+        ? this.state.groupToDelete.fullname
         : '';*/
-    let usernameToDelete = this.state.userToDelete
-      ? this.state.userToDelete.username
+    let groupNameToDelete = this.state.groupToDelete
+      ? this.state.groupToDelete.id
       : '';
+
     return (
       <Container className="users-control-panel">
-        <Helmet title={this.props.intl.formatMessage(messages.users)} />
+        <Helmet title={this.props.intl.formatMessage(messages.groups)} />
         <div className="container">
           <Confirm
             open={this.state.showDelete}
             header={this.props.intl.formatMessage(
-              messages.deleteUserConfirmTitle,
+              messages.deleteGroupConfirmTitle,
             )}
             content={
               <div className="content">
                 <ul className="content">
                   <FormattedMessage
-                    id="Do you really want to delete the user {username}?"
-                    defaultMessage="Do you really want to delete the user {username}?"
+                    id="Do you really want to delete the group {groupname}?"
+                    defaultMessage="Do you really want to delete the group {groupname}?"
                     values={{
-                      username: <b>{usernameToDelete}</b>,
+                      groupname: <b>{groupNameToDelete}</b>,
                     }}
                   />
                 </ul>
@@ -361,94 +357,87 @@ class UsersControlpanel extends Component {
             onConfirm={this.onDeleteOk}
             size={null}
           />
-          {this.state.showAddUser ? (
+          {this.state.showAddGroup ? (
             <ModalForm
-              open={this.state.showAddUser}
+              open={this.state.showAddGroup}
               className="modal"
-              onSubmit={this.onAddUserSubmit}
-              submitError={this.state.addUserError}
-              onCancel={() => this.setState({ showAddUser: false })}
-              title={this.props.intl.formatMessage(messages.addUserFormTitle)}
-              loading={this.props.createRequest.loading}
+              onSubmit={this.onAddGroupSubmit}
+              submitError={this.state.addGroupError}
+              onCancel={() => this.setState({ showAddGroup: false })}
+              title={this.props.intl.formatMessage(messages.addGroupsFormTitle)}
+              loading={this.props.createGroupRequest.loading}
               schema={{
                 fieldsets: [
                   {
                     id: 'default',
-                    title: 'FIXME: User Data',
+                    title: 'FIXME: Group Data',
                     fields: [
-                      'username',
-                      'fullname',
+                      'title',
+                      'description',
+                      'groupname',
                       'email',
-                      'password',
                       'roles',
-                      'groups',
                     ],
                   },
                 ],
                 properties: {
-                  username: {
+                  title: {
                     title: this.props.intl.formatMessage(
-                      messages.addUserFormUsernameTitle,
+                      messages.addGroupsFormTitleTitle,
                     ),
                     type: 'string',
                     description: '',
                   },
-                  fullname: {
+                  description: {
                     title: this.props.intl.formatMessage(
-                      messages.addUserFormFullnameTitle,
+                      messages.addGroupsFormDescriptionTitle,
+                    ),
+                    type: 'string',
+                    description: '',
+                  },
+                  groupname: {
+                    title: this.props.intl.formatMessage(
+                      messages.addGroupsFormGroupNameTitle,
                     ),
                     type: 'string',
                     description: '',
                   },
                   email: {
                     title: this.props.intl.formatMessage(
-                      messages.addUserFormEmailTitle,
+                      messages.addGroupsFormEmailTitle,
                     ),
                     type: 'string',
                     description: '',
                     widget: 'email',
                   },
-                  password: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserFormPasswordTitle,
-                    ),
-                    type: 'password',
-                    description: '',
-                    widget: 'password',
-                  },
                   roles: {
                     title: this.props.intl.formatMessage(
-                      messages.addUserFormRolesTitle,
+                      messages.addGroupsFormRolesTitle,
                     ),
                     type: 'array',
                     choices: this.props.roles.map((role) => [role.id, role.id]),
                     description: '',
                   },
-                  groups: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserGroupNameTitle,
-                    ),
-                    type: 'array',
-                    choices: this.props.groups.map((group) => [
-                      group.id,
-                      group.id,
-                    ]),
-                    description: '',
-                  },
                 },
-                required: ['username', 'fullname', 'email', 'password'],
+                required: [
+                  'title',
+                  'description',
+                  'groupname',
+                  'email',
+                  'roles',
+                ],
               }}
             />
           ) : null}
         </div>
         <Segment.Group raised>
           <Segment className="primary">
-            <FormattedMessage id="Users" defaultMessage="Users" />
+            <FormattedMessage id="Groups" defaultMessage="Groups" />
           </Segment>
           <Segment secondary>
             <FormattedMessage
-              id="Note that roles set here apply directly to a user. The symbol{plone_svg}indicates a role inherited from membership in a group."
-              defaultMessage="Note that roles set here apply directly to a user. The symbol{plone_svg}indicates a role inherited from membership in a group."
+              id="Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol{plone_svg}indicates a role inherited from membership in another group."
+              defaultMessage="Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol{plone_svg}indicates a role inherited from membership in another group."
               values={{
                 plone_svg: (
                   <Icon
@@ -462,16 +451,16 @@ class UsersControlpanel extends Component {
             />
           </Segment>
           <Segment>
-            <Form onSubmit={this.onSearch}>
+            <Form onSubmit={this.onSearchGroups}>
               <Form.Field>
                 <Input
                   name="SearchableText"
                   action={{ icon: 'search' }}
                   placeholder={this.props.intl.formatMessage(
-                    messages.searchUsers,
+                    messages.searchGroups,
                   )}
                   onChange={this.onChangeSearch}
-                  id="user-search-input"
+                  id="group-search-input"
                 />
               </Form.Field>
             </Form>
@@ -483,8 +472,8 @@ class UsersControlpanel extends Component {
                   <Table.Row>
                     <Table.HeaderCell>
                       <FormattedMessage
-                        id="User name"
-                        defaultMessage="User name"
+                        id="Groupname"
+                        defaultMessage="Groupname"
                       />
                     </Table.HeaderCell>
                     {this.props.roles.map((role) => (
@@ -497,14 +486,14 @@ class UsersControlpanel extends Component {
                     </Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>
-                <Table.Body data-user="users">
-                  {this.state.entries.map((user) => (
-                    <RenderUsers
-                      key={user.id}
-                      onDelete={this.delete}
+                <Table.Body data-group="groups">
+                  {this.state.groupEntries.map((groups) => (
+                    <RenderGroups
+                      key={groups.id}
+                      onDelete={this.deleteGroup}
                       roles={this.props.roles}
-                      user={user}
-                      updateUser={this.updateUserRole}
+                      groups={groups}
+                      updateGroups={this.updateGroupRole}
                     />
                   ))}
                 </Table.Body>
@@ -523,8 +512,8 @@ class UsersControlpanel extends Component {
                     id="toolbar-save"
                     className="save"
                     aria-label={this.props.intl.formatMessage(messages.save)}
-                    onClick={this.updateUserRoleSubmit}
-                    loading={this.props.createRequest.loading}
+                    onClick={this.updateGroupRoleSubmit}
+                    loading={this.props.createGroupRequest.loading}
                   >
                     <Icon
                       name={saveSVG}
@@ -547,19 +536,19 @@ class UsersControlpanel extends Component {
                   <Button
                     id="toolbar-add"
                     aria-label={this.props.intl.formatMessage(
-                      messages.addUserButtonTitle,
+                      messages.addGroupsButtonTitle,
                     )}
                     onClick={() => {
-                      this.setState({ showAddUser: true });
+                      this.setState({ showAddGroup: true });
                     }}
-                    loading={this.props.createRequest.loading}
+                    loading={this.props.createGroupRequest.loading}
                   >
                     <Icon
                       name={addUserSvg}
                       size="45px"
                       color="#826A6A"
                       title={this.props.intl.formatMessage(
-                        messages.addUserButtonTitle,
+                        messages.addGroupsButtonTitle,
                       )}
                     />
                   </Button>
@@ -578,24 +567,22 @@ export default compose(
   connect(
     (state, props) => ({
       roles: state.roles.roles,
-      users: state.users.users,
       groups: state.groups.groups,
       description: state.description,
       pathname: props.location.pathname,
-      deleteRequest: state.users.delete,
-      createRequest: state.users.create,
+      deleteGroupRequest: state.groups.delete,
+      createGroupRequest: state.groups.create,
     }),
     (dispatch) =>
       bindActionCreators(
         {
           listRoles,
-          listUsers,
           listGroups,
-          deleteUser,
-          createUser,
-          updateUser,
+          deleteGroup,
+          createGroup,
+          updateGroup,
         },
         dispatch,
       ),
   ),
-)(UsersControlpanel);
+)(GroupsControlpanel);

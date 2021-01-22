@@ -13,12 +13,12 @@ exports[`UsersControlpanel renders a user control component 1`] = `
     <div
       className="ui segment primary"
     >
-      Users
+      Groups
     </div>
     <div
       className="ui secondary segment"
     >
-      Note that roles set here apply directly to a user. The symbol
+      Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol
       <svg
         className="icon"
         dangerouslySetInnerHTML={
@@ -37,7 +37,7 @@ exports[`UsersControlpanel renders a user control component 1`] = `
         viewBox=""
         xmlns=""
       />
-      indicates a role inherited from membership in a group.
+      indicates a role inherited from membership in another group.
     </div>
     <div
       className="ui segment"
@@ -53,10 +53,10 @@ exports[`UsersControlpanel renders a user control component 1`] = `
             className="ui action input"
           >
             <input
-              id="user-search-input"
+              id="group-search-input"
               name="SearchableText"
               onChange={[Function]}
-              placeholder="Search users…"
+              placeholder="Search group…"
               type="text"
             />
             <button
@@ -92,7 +92,7 @@ exports[`UsersControlpanel renders a user control component 1`] = `
               <th
                 className=""
               >
-                User name
+                Groupname
               </th>
               <th
                 className=""
@@ -103,7 +103,7 @@ exports[`UsersControlpanel renders a user control component 1`] = `
           </thead>
           <tbody
             className=""
-            data-user="users"
+            data-group="groups"
           />
         </table>
       </div>

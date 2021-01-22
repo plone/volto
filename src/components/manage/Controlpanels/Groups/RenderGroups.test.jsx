@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
-import UsersControlpanelGroups from './UsersControlpanelGroups';
+import RenderGroups from './RenderGroups';
 
 const mockStore = configureStore();
 
@@ -45,7 +45,7 @@ describe('UsersControlpanelGroups', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <UsersControlpanelGroups
+        <RenderGroups
           groups={testGroups}
           roles={testRoles}
           onDelete={() => {}}

@@ -14,7 +14,7 @@ import { Icon } from '@plone/volto/components';
  * @class UsersControlpanelGroups
  * @extends Component
  */
-class UsersControlpanelGroups extends Component {
+class RenderGroups extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -93,4 +93,4 @@ class UsersControlpanelGroups extends Component {
   }
 }
 
-export default injectIntl(UsersControlpanelGroups);
+export default injectIntl(RenderGroups);
