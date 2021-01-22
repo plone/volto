@@ -72,6 +72,23 @@ class Edit extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
+    if (
+      nextProps.properties.description &&
+      this.props.properties.description !== nextProps.properties.description &&
+      !this.state.focus
+    ) {
+      const contentState = this.libDraftJsImportHtmlRef.current.stateFromHTML(
+        nextProps.properties.description,
+      );
+      this.setState({
+        editorState: nextProps.properties.description
+          ? this.libDraftJsRef.current.EditorState.createWithContent(
+              contentState,
+            )
+          : this.libDraftJsRef.current.EditorState.createEmpty(),
+      });
+    }
+
     if (!this.props.selected && nextProps.selected) {
       this.node.focus();
       this.setState({ focus: true });
