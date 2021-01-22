@@ -832,6 +832,10 @@ msgstr ""
 msgid "Groups"
 msgstr ""
 
+#: components/manage/Blocks/Table/Edit
+msgid "Header cell"
+msgstr ""
+
 #: components/manage/History/History
 #: components/manage/Toolbar/More
 msgid "History"
@@ -842,6 +846,7 @@ msgid "History of {title}"
 msgstr "Geschiedenis van {title}"
 
 #: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsBreadcrumbs
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Home"
 msgstr "Home"
@@ -1503,6 +1508,10 @@ msgstr "Rechten"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Roles"
+msgstr ""
+
+#: components/manage/Contents/ContentsBreadcrumbs
+msgid "Root"
 msgstr ""
 
 #: components/manage/Add/Add

@@ -31,6 +31,7 @@ nav:
       - Backend configuration: 'configuration/backend.md'
       - Richeditor settings: 'configuration/richeditor-settings.md'
       - Multilingual: 'configuration/multilingual.md'
+      - Environment variables: 'configuration/environmentvariables.md'
   - Theming & Semantic UI:
       - About Semantic UI: 'theming/about-semantic.md'
       - Semantic UI Theming: 'theming/semanticui-theming.md'
@@ -63,6 +64,7 @@ nav:
       - Using PM2: 'deploying/pm2.md'
       - Using apache: 'deploying/apache.md'
       - Using sentry: 'deploying/sentry.md'
+      - Performance improvements: 'deploying/performance.md'
   - Upgrade Guide: 'upgrade-guide/index.md'
   - Developer Guidelines:
       - Language features: 'developer-guidelines/language-features.md'

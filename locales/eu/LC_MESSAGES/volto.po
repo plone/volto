@@ -820,6 +820,10 @@ msgstr "Taldearen izena"
 msgid "Groups"
 msgstr "Taldeak"
 
+#: components/manage/Blocks/Table/Edit
+msgid "Header cell"
+msgstr ""
+
 #: components/manage/History/History
 #: components/manage/Toolbar/More
 msgid "History"
@@ -830,6 +834,7 @@ msgid "History of {title}"
 msgstr "{title} elementuaren historia"
 
 #: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsBreadcrumbs
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Home"
 msgstr "Hasiera"
@@ -1492,6 +1497,10 @@ msgstr "Eskubideak"
 #: helpers/MessageLabels/MessageLabels
 msgid "Roles"
 msgstr "Rolak"
+
+#: components/manage/Contents/ContentsBreadcrumbs
+msgid "Root"
+msgstr ""
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentType

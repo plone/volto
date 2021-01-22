@@ -1,8 +1,7 @@
 # Volto
 <img align="right" width="300" alt="Volto png" src="./docs/logos/volto-colorful.png" />
 
-[![Build Status](https://travis-ci.org/plone/volto.svg?branch=master)](https://travis-ci.org/plone/volto)
-[![Coverage](https://img.shields.io/coveralls/plone/volto.svg)](https://coveralls.io/github/plone/volto)
+[![Build Status](https://github.com/plone/volto/workflows/Volto%20CI/badge.svg)](https://github.com/plone/volto/actions)
 [![Dependencies](https://img.shields.io/david/plone/volto.svg)](https://github.com/plone/volto/blob/master/package.json)
 [![Dev Dependencies](https://img.shields.io/david/dev/plone/volto.svg)](https://github.com/plone/volto/blob/master/package.json)
 [![NPM](https://img.shields.io/npm/v/@plone/volto.svg)](https://www.npmjs.com/package/@plone/volto)
@@ -45,21 +44,18 @@ First get all the requirements installed on your system.
 - [Python 3.7.x / 2.7.x](https://python.org/) or
 - [Docker](https://www.docker.com/get-started) (if using the Plone/Guillotina docker images)
 
-### Create Volto App
+### Create a Volto project using the generator
 
-Create a new Volto project by using the `create-volto-app` utility.
+Create a new Volto project by using the `@plone/generator-volto` utility.
 
 It will bootstrap a Volto project in a folder of your choice with all the required
 boilerplate to start customizing your Volto site.
 
-    $ npm install -g yarn
-    $ npm install -g @plone/create-volto-app
-    $ create-volto-app myvoltoproject
-    $ cd myvoltoproject
+    $ npm init yo @plone/volto
 
-Although we install and use `yarn`, the `create-volto-app` tool still needs to be
-installed using `npm -g` because `yarn` has a different implementation of
-global installs.
+follow the prompts questions, provide `myvoltoproject` as project name then, when it finishes:
+
+    $ cd myvoltoproject
 
 ### Bootstrap the Plone API backend
 

@@ -12,7 +12,6 @@ import { Helmet } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import {
   Button,
-  Breadcrumb,
   Confirm,
   Container,
   Dropdown,
@@ -68,6 +67,8 @@ import {
   Icon,
   Unauthorized,
 } from '@plone/volto/components';
+import ContentsBreadcrumbs from './ContentsBreadcrumbs';
+
 import { toast } from 'react-toastify';
 
 import backSVG from '@plone/volto/icons/back.svg';
@@ -886,15 +887,26 @@ class Contents extends Component {
    * @returns {undefined}
    */
   fetchContents(pathname) {
-    this.props.searchContent(getBaseUrl(pathname || this.props.pathname), {
-      'path.depth': 1,
-      sort_on: this.state.sort_on,
-      sort_order: this.state.sort_order,
-      metadata_fields: '_all',
-      ...(this.state.filter && { SearchableText: `${this.state.filter}*` }),
-      b_size: this.state.pageSize,
-      b_start: this.state.currentPage * this.state.pageSize,
-    });
+    if (this.state.pageSize === 'All') {
+      this.props.searchContent(getBaseUrl(pathname || this.props.pathname), {
+        'path.depth': 1,
+        sort_on: this.state.sort_on,
+        sort_order: this.state.sort_order,
+        metadata_fields: '_all',
+        b_size: 100000000,
+        ...(this.state.filter && { SearchableText: `${this.state.filter}*` }),
+      });
+    } else {
+      this.props.searchContent(getBaseUrl(pathname || this.props.pathname), {
+        'path.depth': 1,
+        sort_on: this.state.sort_on,
+        sort_order: this.state.sort_order,
+        metadata_fields: '_all',
+        ...(this.state.filter && { SearchableText: `${this.state.filter}*` }),
+        b_size: this.state.pageSize,
+        b_start: this.state.currentPage * this.state.pageSize,
+      });
+    }
   }
 
   /**
@@ -1359,35 +1371,7 @@ class Contents extends Component {
                         attached
                         className="contents-breadcrumbs"
                       >
-                        <Breadcrumb>
-                          <Link
-                            to="/contents"
-                            className="section"
-                            title={this.props.intl.formatMessage(messages.home)}
-                          >
-                            {this.props.intl.formatMessage(messages.home)}
-                          </Link>
-                          {this.props.breadcrumbs.map(
-                            (breadcrumb, index, breadcrumbs) => [
-                              <Breadcrumb.Divider
-                                key={`divider-${breadcrumb.url}`}
-                              />,
-                              index < breadcrumbs.length - 1 ? (
-                                <Link
-                                  key={breadcrumb.url}
-                                  to={`${breadcrumb.url}/contents`}
-                                  className="section"
-                                >
-                                  {breadcrumb.title}
-                                </Link>
-                              ) : (
-                                <Breadcrumb.Section key={breadcrumb.url} active>
-                                  {breadcrumb.title}
-                                </Breadcrumb.Section>
-                              ),
-                            ],
-                          )}
-                        </Breadcrumb>
+                        <ContentsBreadcrumbs items={this.props.breadcrumbs} />
                         <Dropdown
                           item
                           icon={
@@ -1681,7 +1665,7 @@ class Contents extends Component {
                             this.props.total / this.state.pageSize,
                           )}
                           pageSize={this.state.pageSize}
-                          pageSizes={[15, 30, 50]}
+                          pageSizes={[15, 30, 50, 'All']}
                           onChangePage={this.onChangePage}
                           onChangePageSize={this.onChangePageSize}
                         />

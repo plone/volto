@@ -56,6 +56,7 @@ const View = ({ data, detached }) => (
                   : data.url
               }
               alt={data.alt || ''}
+              loading="lazy"
             />
           );
           if (data.href) {
