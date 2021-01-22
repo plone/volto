@@ -61,7 +61,7 @@
   "release-it": {
     "hooks": {
       "after:bump": "node changelogupdater.js bump ${version}",
-      "after:release": "node changelogupdater.js back ${version} && git add . && git commit -am 'Back to development (generator-volto)' && git push"
+      "after:release": "node changelogupdater.js back ${version} && git commit -am 'Back to development (generator-volto)' && git push"
     },
     "git": {
       "changelog": "node changelogupdater.js excerpt",
