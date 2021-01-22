@@ -27,8 +27,8 @@
 
 ### Internal
 
+- Add support for `nav_title` in breadcrumbs and navigation @sneridagh
 - Add `settings.serverConfig` in the settings object of `~/config`. Add another module, `config/server.js` which is conditionally imported if `__SERVER__`. This module will host settings that are only relevant to the server. Being conditionally imported means that the code is safe to require server-only nodejs packages. @tiberiuichim
-
 - Update browserlist and caniuse-lite @sneridagh
 - Document deprecation of `@plone/create-volto-app` @sneridagh @nileshgulia1
 

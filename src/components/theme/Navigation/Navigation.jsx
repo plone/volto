@@ -177,7 +177,7 @@ class Navigation extends Component {
                   : item.url === ''
               }
             >
-              {item.title}
+              {item.nav_title || item.title}
             </NavLink>
           ))}
         </Menu>

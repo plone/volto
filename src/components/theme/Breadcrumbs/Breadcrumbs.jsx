@@ -98,11 +98,11 @@ class Breadcrumbs extends Component {
               <Breadcrumb.Divider key={`divider-${item.url}`} />,
               index < items.length - 1 ? (
                 <Link key={item.url} to={item.url} className="section">
-                  {item.title}
+                  {item.nav_title || item.title}
                 </Link>
               ) : (
                 <Breadcrumb.Section key={item.url} active>
-                  {item.title}
+                  {item.nav_title || item.title}
                 </Breadcrumb.Section>
               ),
             ])}
