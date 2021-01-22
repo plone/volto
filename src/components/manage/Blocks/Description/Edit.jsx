@@ -60,9 +60,7 @@ class Edit extends Component {
   constructor(props) {
     super(props);
 
-    if (!__SERVER__) {
-      this.state = { editorState: null, focus: false };
-    }
+    this.state = { editorState: null, focus: false };
 
     this.onChange = this.onChange.bind(this);
   }
@@ -131,7 +129,7 @@ class Edit extends Component {
                     blockRenderMap,
                   );
 
-                  if (!__SERVER__ && this.firstRender) {
+                  if (this.firstRender) {
                     this.firstRender = false;
 
                     let editorState;
@@ -147,10 +145,11 @@ class Edit extends Component {
                       editorState = EditorState.createEmpty();
                     }
                     this.setState({ editorState });
+                    return null;
                   }
 
                   return (
-                    this.state.editorState && (
+                    !!this.state.editorState && (
                       <Editor
                         onChange={this.onChange}
                         editorState={this.state.editorState}

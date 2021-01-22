@@ -134,7 +134,7 @@ class Cell extends Component {
                       return (
                         <LibDraftJs>
                           {({ convertFromRaw, EditorState, RichUtils }) => {
-                            if (!__SERVER__ && this.firstRender) {
+                            if (this.firstRender) {
                               this.firstRender = false;
 
                               let editorState;
@@ -153,6 +153,8 @@ class Cell extends Component {
                                 editorState,
                                 inlineToolbarPlugin,
                               });
+
+                              return null;
                             }
 
                             const InlineToolbar = this.state

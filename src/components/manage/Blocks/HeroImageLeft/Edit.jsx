@@ -91,18 +91,13 @@ class Edit extends Component {
     super(props);
 
     this.onUploadImage = this.onUploadImage.bind(this);
+
     this.state = {
       uploading: false,
+      titleEditorState: null,
+      descriptionEditorState: null,
+      currentFocused: 'title',
     };
-
-    if (!__SERVER__) {
-      this.state = {
-        uploading: false,
-        titleEditorState: null,
-        descriptionEditorState: null,
-        currentFocused: 'title',
-      };
-    }
 
     this.onChangeTitle = this.onChangeTitle.bind(this);
     this.onChangeDescription = this.onChangeDescription.bind(this);
@@ -215,7 +210,7 @@ class Edit extends Component {
           return (
             <LibDraftJsImportHtml>
               {({ stateFromHTML }) => {
-                if (!__SERVER__ && this.firstRender) {
+                if (this.firstRender) {
                   this.firstRender = false;
 
                   this.extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(
@@ -249,11 +244,12 @@ class Edit extends Component {
                     descriptionEditorState,
                     currentFocused: 'title',
                   });
+                  return null;
                 }
 
                 return (
-                  this.state.titleEditorState &&
-                  this.state.descriptionEditorState && (
+                  !!this.state.titleEditorState &&
+                  !!this.state.descriptionEditorState && (
                     <div
                       className={cx('block hero', {
                         selected: this.props.selected,

@@ -134,7 +134,7 @@ class Edit extends Component {
           return (
             <LibDraftJs ref={this.libDraftJsRef}>
               {({ Editor, DefaultDraftBlockRenderMap, EditorState }) => {
-                if (!__SERVER__ && this.firstRender) {
+                if (this.firstRender) {
                   this.firstRender = false;
 
                   let editorState;
@@ -146,7 +146,8 @@ class Edit extends Component {
                   } else {
                     editorState = EditorState.createEmpty();
                   }
-                  this.setState(() => ({ editorState, focus: true }));
+                  this.setState({ editorState, focus: true });
+                  return null;
                 }
 
                 return (

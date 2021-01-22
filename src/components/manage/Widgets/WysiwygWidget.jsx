@@ -8,6 +8,18 @@ import ReactDOMServer from 'react-dom/server';
 import PropTypes from 'prop-types';
 import { Provider, connect } from 'react-redux';
 import { compose } from 'redux';
+
+// NOTE: you can uncomment this and the bug is gone but then the Editor is not
+// loaded through Loadable:
+//import Editor from 'draft-js-plugins-editor';
+
+// TODO: remove the imports of draft.js related modules from below, which are
+// not loaded through Loadable:
+import { stateFromHTML } from 'draft-js-import-html';
+import { convertToRaw, EditorState } from 'draft-js';
+import redraft from 'redraft';
+import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
+
 import { Form, Label, TextArea } from 'semantic-ui-react';
 import { map } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
@@ -18,7 +30,7 @@ import { settings } from '~/config';
 import { FormFieldWrapper } from '@plone/volto/components';
 
 import loadable from '@loadable/component';
-const LibDraftJsPluginsEditor = loadable(() =>
+const LibDraftJsPluginsEditor = loadable.lib(() =>
   import('draft-js-plugins-editor'),
 );
 const LibDraftJsImportHtml = loadable.lib(() => import('draft-js-import-html'));
@@ -152,9 +164,7 @@ class WysiwygWidget extends Component {
    * @constructs WysiwygWidget
    */
   constructor(props) {
-    console.log('adfsaf');
     super(props);
-    console.log('adfsaf');
 
     this.state = { editorState: null, inlineToolbarPlugin: null };
 
@@ -275,92 +285,107 @@ class WysiwygWidget extends Component {
     return (
       <>
         <LibRedraft ref={this.libRedraftRef} />
-        <LibDraftJsInlineToolbarPlugin>
-          {({ default: createInlineToolbarPlugin }) => {
+        <LibDraftJsPluginsEditor>
+          {({ default: Editor }) => {
             return (
-              <LibDraftJsImportHtml>
-                {({ stateFromHTML }) => {
+              <LibDraftJsInlineToolbarPlugin>
+                {({ default: createInlineToolbarPlugin }) => {
                   return (
-                    <LibDraftJs ref={this.libDraftJsRef}>
-                      {({ EditorState }) => {
-                        if (!__SERVER__ && this.firstRender) {
-                          this.firstRender = false;
-
-                          let editorState;
-                          if (this.props.value && this.props.value.data) {
-                            const contentState = stateFromHTML(
-                              this.props.value.data,
-                              {
-                                customBlockFn: settings.FromHTMLCustomBlockFn,
-                              },
-                            );
-                            editorState = EditorState.createWithContent(
-                              contentState,
-                            );
-                          } else {
-                            editorState = EditorState.createEmpty();
-                          }
-
-                          const inlineToolbarPlugin = createInlineToolbarPlugin(
-                            {
-                              structure:
-                                settings.richTextEditorInlineToolbarButtons,
-                            },
-                          );
-
-                          this.setState({ editorState, inlineToolbarPlugin });
-                        }
-
-                        if (!this.state?.inlineToolbarPlugin) {
-                          return null;
-                        }
-
-                        const {
-                          InlineToolbar,
-                        } = this.state.inlineToolbarPlugin;
-
+                    <LibDraftJsImportHtml>
+                      {({ stateFromHTML }) => {
                         return (
-                          !!this.state.editorState &&
-                          !!this.state.inlineToolbarPlugin && (
-                            <FormFieldWrapper
-                              {...this.props}
-                              className="wysiwyg"
-                            >
-                              <div style={{ boxSizing: 'initial' }}>
-                                {this.props.onChange ? (
-                                  <>
-                                    <LibDraftJsPluginsEditor
-                                      id={`field-${id}`}
-                                      readOnly={this.props.isDisabled}
-                                      onChange={this.onChange}
-                                      editorState={this.state.editorState}
-                                      plugins={[
-                                        this.state.inlineToolbarPlugin,
-                                        ...settings.richTextEditorPlugins,
-                                      ]}
-                                      blockRenderMap={
-                                        settings.extendedBlockRenderMap
-                                      }
-                                      blockStyleFn={settings.blockStyleFn}
-                                      customStyleMap={settings.customStyleMap}
-                                    />
-                                    {this.props.onChange && <InlineToolbar />}
-                                  </>
-                                ) : (
-                                  <div className="DraftEditor-root" />
-                                )}
-                              </div>
-                            </FormFieldWrapper>
-                          )
+                          <LibDraftJs ref={this.libDraftJsRef}>
+                            {({ EditorState }) => {
+                              if (this.firstRender) {
+                                this.firstRender = false;
+
+                                let editorState;
+                                if (this.props.value && this.props.value.data) {
+                                  const contentState = stateFromHTML(
+                                    this.props.value.data,
+                                    {
+                                      customBlockFn:
+                                        settings.FromHTMLCustomBlockFn,
+                                    },
+                                  );
+                                  editorState = EditorState.createWithContent(
+                                    contentState,
+                                  );
+                                } else {
+                                  editorState = EditorState.createEmpty();
+                                }
+
+                                const inlineToolbarPlugin = createInlineToolbarPlugin(
+                                  {
+                                    structure:
+                                      settings.richTextEditorInlineToolbarButtons,
+                                  },
+                                );
+
+                                this.setState({
+                                  editorState,
+                                  inlineToolbarPlugin,
+                                });
+                                return null;
+                              }
+
+                              if (!this.state?.inlineToolbarPlugin) {
+                                return null;
+                              }
+
+                              const {
+                                InlineToolbar,
+                              } = this.state.inlineToolbarPlugin;
+
+                              return (
+                                !!this.state.editorState &&
+                                !!this.state.inlineToolbarPlugin && (
+                                  <FormFieldWrapper
+                                    {...this.props}
+                                    className="wysiwyg"
+                                  >
+                                    <div style={{ boxSizing: 'initial' }}>
+                                      {this.props.onChange ? (
+                                        <>
+                                          <Editor
+                                            id={`field-${id}`}
+                                            readOnly={this.props.isDisabled}
+                                            onChange={this.onChange}
+                                            editorState={this.state.editorState}
+                                            plugins={[
+                                              this.state.inlineToolbarPlugin,
+                                              ...settings.richTextEditorPlugins,
+                                            ]}
+                                            blockRenderMap={
+                                              settings.extendedBlockRenderMap
+                                            }
+                                            blockStyleFn={settings.blockStyleFn}
+                                            customStyleMap={
+                                              settings.customStyleMap
+                                            }
+                                          />
+                                          {this.props.onChange && (
+                                            <InlineToolbar />
+                                          )}
+                                        </>
+                                      ) : (
+                                        <div className="DraftEditor-root" />
+                                      )}
+                                    </div>
+                                  </FormFieldWrapper>
+                                )
+                              );
+                            }}
+                          </LibDraftJs>
                         );
                       }}
-                    </LibDraftJs>
+                    </LibDraftJsImportHtml>
                   );
                 }}
-              </LibDraftJsImportHtml>
+              </LibDraftJsInlineToolbarPlugin>
             );
           }}
-        </LibDraftJsInlineToolbarPlugin>
+        </LibDraftJsPluginsEditor>
       </>
     );
   }

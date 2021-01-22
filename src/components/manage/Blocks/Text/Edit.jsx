@@ -215,7 +215,7 @@ class Edit extends Component {
                   return (
                     <LibDraftJs ref={this.libDraftJsRef}>
                       {({ convertFromRaw, EditorState, RichUtils }) => {
-                        if (!__SERVER__ && this.firstRender) {
+                        if (this.firstRender) {
                           this.firstRender = false;
 
                           let editorState;
@@ -239,6 +239,8 @@ class Edit extends Component {
                             inlineToolbarPlugin,
                             addNewBlockOpened: false,
                           });
+
+                          return null;
                         }
 
                         if (!this.state?.inlineToolbarPlugin) {
