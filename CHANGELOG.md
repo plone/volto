@@ -21,6 +21,7 @@
 - Fix typo in ita locales @nzambello
 - Wrap objectBrowserWidget with FormFieldWrapper @nileshgulia1
 - Added preventDefault and stopPropagation for toolbar buttons of Table block. @giuliaghisini
+- Fix `Contents` breadcrumbs for multilingual sites @sneridagh
 
 ### Internal
 
