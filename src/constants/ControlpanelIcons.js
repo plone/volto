@@ -17,6 +17,7 @@ export default {
   markup: 'code',
   'moderate-comments': 'comments',
   security: 'lock',
-  users: 'users',
+  users: 'user',
+  groups: 'users',
   addons: 'add-on',
 };

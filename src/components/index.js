@@ -76,7 +76,7 @@ export ContentType from '@plone/volto/components/manage/Controlpanels/ContentTyp
 export ContentTypeLayout from '@plone/volto/components/manage/Controlpanels/ContentTypeLayout';
 export ContentTypeSchema from '@plone/volto/components/manage/Controlpanels/ContentTypeSchema';
 export ContentTypesActions from '@plone/volto/components/manage/Controlpanels/ContentTypesActions';
-export UsersControlpanel from '@plone/volto/components/manage/Controlpanels/UsersControlpanel';
+export UsersControlpanel from '@plone/volto/components/manage/Controlpanels/Users/UsersControlpanel';
 export ModerateComments from '@plone/volto/components/manage/Controlpanels/ModerateComments';
 export VersionOverview from '@plone/volto/components/manage/Controlpanels/VersionOverview';
 export Delete from '@plone/volto/components/manage/Delete/Delete';
@@ -112,7 +112,7 @@ export ContentsPropertiesModal from '@plone/volto/components/manage/Contents/Con
 export ContentsRenameModal from '@plone/volto/components/manage/Contents/ContentsRenameModal';
 export ContentsWorkflowModal from '@plone/volto/components/manage/Contents/ContentsWorkflowModal';
 export ContentsTagsModal from '@plone/volto/components/manage/Contents/ContentsTagsModal';
-export UsersControlpanelUser from '@plone/volto/components/manage/Controlpanels/UsersControlpanelUser';
+export RenderUsers from '@plone/volto/components/manage/Controlpanels/Users/RenderUsers';
 export UsersControlpanelGroups from '@plone/volto/components/manage/Controlpanels/UsersControlpanelGroups';
 export DiffField from '@plone/volto/components/manage/Diff/DiffField';
 

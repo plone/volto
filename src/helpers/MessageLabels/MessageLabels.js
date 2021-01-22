@@ -166,9 +166,13 @@ export const messages = defineMessages({
     id: 'Group created',
     defaultMessage: 'Group created',
   },
-  usersAndGroups: {
-    id: 'Users and Groups',
-    defaultMessage: 'Users and Groups',
+  users: {
+    id: 'Users',
+    defaultMessage: 'Users',
+  },
+  groups: {
+    id: 'Groups',
+    defaultMessage: 'Groups',
   },
   copyBlocks: {
     id: 'Copy blocks',

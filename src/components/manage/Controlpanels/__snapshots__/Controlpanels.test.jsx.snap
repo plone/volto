@@ -230,7 +230,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
       <div
         className="ui secondary segment"
       >
-        Users
+        Users and Groups
       </div>
       <div
         className="ui attached segment"
@@ -253,13 +253,36 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                 >
                   <i
                     aria-hidden="true"
+                    className="user icon"
+                    onClick={[Function]}
+                  />
+                  <div
+                    className="content"
+                  >
+                    Users
+                  </div>
+                </h3>
+              </a>
+            </div>
+            <div
+              className="column"
+            >
+              <a
+                href="/controlpanel/groups"
+                onClick={[Function]}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <i
+                    aria-hidden="true"
                     className="users icon"
                     onClick={[Function]}
                   />
                   <div
                     className="content"
                   >
-                    Users and Groups
+                    Groups
                   </div>
                 </h3>
               </a>

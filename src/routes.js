@@ -110,6 +110,10 @@ export const defaultRoutes = [
     component: UsersControlpanel,
   },
   {
+    path: '/controlpanel/groups',
+    component: UsersControlpanel,
+  },
+  {
     path: '/controlpanel/:id',
     component: Controlpanel,
   },
