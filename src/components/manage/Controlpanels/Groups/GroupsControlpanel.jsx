@@ -15,6 +15,7 @@ import {
   Toast,
   Toolbar,
   RenderGroups,
+  Error,
 } from '@plone/volto/components';
 import { Link } from 'react-router-dom';
 import { Helmet, messages } from '@plone/volto/helpers';
@@ -102,7 +103,7 @@ class GroupsControlpanel extends Component {
   }
 
   fetchData = async () => {
-    this.props.listRoles();
+    await this.props.listRoles();
     await this.props.listGroups();
     this.setState({
       groupEntries: this.props.groups,
@@ -140,6 +141,14 @@ class GroupsControlpanel extends Component {
       nextProps.createGroupRequest.error
     ) {
       this.onAddGroupError(nextProps.createRequest.error);
+    }
+    if (
+      this.props.loadRolesRequest.loading &&
+      nextProps.loadRolesRequest.error
+    ) {
+      this.setState({
+        error: nextProps.loadRolesRequest.error,
+      });
     }
   }
 
@@ -315,6 +324,9 @@ class GroupsControlpanel extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    if (this.state.error) {
+      return <Error error={this.state.error} />;
+    }
     /*let fullnameToDelete = this.state.groupToDelete
         ? this.state.groupToDelete.fullname
         : '';*/
@@ -558,6 +570,7 @@ export default compose(
       pathname: props.location.pathname,
       deleteGroupRequest: state.groups.delete,
       createGroupRequest: state.groups.create,
+      loadRolesRequest: state.roles,
     }),
     (dispatch) =>
       bindActionCreators(

@@ -16,6 +16,7 @@ import {
   Toast,
   Toolbar,
   RenderUsers,
+  Error,
 } from '@plone/volto/components';
 import { Link } from 'react-router-dom';
 import { Helmet, messages } from '@plone/volto/helpers';
@@ -105,7 +106,7 @@ class UsersControlpanel extends Component {
   }
 
   fetchData = async () => {
-    this.props.listRoles();
+    await this.props.listRoles();
     this.props.listGroups();
     await this.props.listUsers();
     this.setState({
@@ -136,6 +137,14 @@ class UsersControlpanel extends Component {
     }
     if (this.props.createRequest.loading && nextProps.createRequest.error) {
       this.onAddUserError(nextProps.createRequest.error);
+    }
+    if (
+      this.props.loadRolesRequest.loading &&
+      nextProps.loadRolesRequest.error
+    ) {
+      this.setState({
+        error: nextProps.loadRolesRequest.error,
+      });
     }
   }
 
@@ -320,6 +329,9 @@ class UsersControlpanel extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    if (this.state.error) {
+      return <Error error={this.state.error} />;
+    }
     /*let fullnameToDelete = this.state.userToDelete
         ? this.state.userToDelete.fullname
         : '';*/
@@ -578,6 +590,7 @@ export default compose(
       pathname: props.location.pathname,
       deleteRequest: state.users.delete,
       createRequest: state.users.create,
+      loadRolesRequest: state.roles,
     }),
     (dispatch) =>
       bindActionCreators(
