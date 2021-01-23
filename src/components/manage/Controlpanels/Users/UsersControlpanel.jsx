@@ -17,7 +17,8 @@ import {
   Toolbar,
   RenderUsers,
 } from '@plone/volto/components';
-import { getBaseUrl, Helmet, messages } from '@plone/volto/helpers';
+import { Link } from 'react-router-dom';
+import { Helmet, messages } from '@plone/volto/helpers';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import addUserSvg from '@plone/volto/icons/add-user.svg';
 import saveSVG from '@plone/volto/icons/save.svg';
@@ -91,7 +92,6 @@ class UsersControlpanel extends Component {
     this.onAddUserError = this.onAddUserError.bind(this);
     this.onAddUserSuccess = this.onAddUserSuccess.bind(this);
     this.updateUserRole = this.updateUserRole.bind(this);
-    this.onCancel = this.onCancel.bind(this);
     this.state = {
       search: '',
       showAddUser: false,
@@ -315,15 +315,6 @@ class UsersControlpanel extends Component {
   }
 
   /**
-   * Cancel handler
-   * @method onCancel
-   * @returns {undefined}
-   */
-  onCancel() {
-    this.props.history.push(getBaseUrl(this.props.pathname));
-  }
-
-  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -391,21 +382,23 @@ class UsersControlpanel extends Component {
                       messages.addUserFormUsernameTitle,
                     ),
                     type: 'string',
-                    description: '',
+                    description:
+                      'Enter a user name, usually something like "jsmith". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in.',
                   },
                   fullname: {
                     title: this.props.intl.formatMessage(
                       messages.addUserFormFullnameTitle,
                     ),
                     type: 'string',
-                    description: '',
+                    description: 'Enter full name, e.g. John Smith.',
                   },
                   email: {
                     title: this.props.intl.formatMessage(
                       messages.addUserFormEmailTitle,
                     ),
                     type: 'string',
-                    description: '',
+                    description:
+                      'Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.',
                     widget: 'email',
                   },
                   password: {
@@ -413,7 +406,8 @@ class UsersControlpanel extends Component {
                       messages.addUserFormPasswordTitle,
                     ),
                     type: 'password',
-                    description: '',
+                    description:
+                      'Enter your new password. Minimum 5 characters.',
                     widget: 'password',
                   },
                   roles: {
@@ -533,7 +527,7 @@ class UsersControlpanel extends Component {
                       title={this.props.intl.formatMessage(messages.save)}
                     />
                   </Button>
-                  <Button className="cancel" onClick={() => this.onCancel()}>
+                  <Link to="/controlpanel" className="cancel">
                     <Icon
                       name={clearSVG}
                       className="circled"
@@ -543,7 +537,7 @@ class UsersControlpanel extends Component {
                       size="30px"
                       title={this.props.intl.formatMessage(messages.cancel)}
                     />
-                  </Button>
+                  </Link>
                   <Button
                     id="toolbar-add"
                     aria-label={this.props.intl.formatMessage(

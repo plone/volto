@@ -16,8 +16,7 @@ import {
   Toolbar,
   RenderGroups,
 } from '@plone/volto/components';
-import { Link } from 'react-router-dom';
-import { Helmet, messages } from '@plone/volto/helpers';
+import { getBaseUrl, Helmet, messages } from '@plone/volto/helpers';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import addUserSvg from '@plone/volto/icons/add-user.svg';
 import saveSVG from '@plone/volto/icons/save.svg';
@@ -90,6 +89,7 @@ class GroupsControlpanel extends Component {
     this.onAddGroupError = this.onAddGroupError.bind(this);
     this.onAddGroupSuccess = this.onAddGroupSuccess.bind(this);
     this.updateGroupRole = this.updateGroupRole.bind(this);
+    this.onCancel = this.onCancel.bind(this);
     this.state = {
       search: '',
       addGroupError: '',
@@ -310,6 +310,15 @@ class GroupsControlpanel extends Component {
   }
 
   /**
+   * Cancel handler
+   * @method onCancel
+   * @returns {undefined}
+   */
+  onCancel() {
+    this.props.history.push(getBaseUrl(this.props.pathname));
+  }
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -391,8 +400,7 @@ class GroupsControlpanel extends Component {
                       messages.addGroupsFormGroupNameTitle,
                     ),
                     type: 'string',
-                    description:
-                      'A unique identifier for the group. Can not be changed after creation.',
+                    description: '',
                   },
                   email: {
                     title: this.props.intl.formatMessage(
@@ -411,7 +419,13 @@ class GroupsControlpanel extends Component {
                     description: '',
                   },
                 },
-                required: ['groupname'],
+                required: [
+                  'title',
+                  'description',
+                  'groupname',
+                  'email',
+                  'roles',
+                ],
               }}
             />
           ) : null}
@@ -508,7 +522,7 @@ class GroupsControlpanel extends Component {
                       title={this.props.intl.formatMessage(messages.save)}
                     />
                   </Button>
-                  <Link to="/controlpanel" className="cancel">
+                  <Button className="cancel" onClick={() => this.onCancel()}>
                     <Icon
                       name={clearSVG}
                       className="circled"
@@ -518,7 +532,7 @@ class GroupsControlpanel extends Component {
                       size="30px"
                       title={this.props.intl.formatMessage(messages.cancel)}
                     />
-                  </Link>
+                  </Button>
                   <Button
                     id="toolbar-add"
                     aria-label={this.props.intl.formatMessage(
