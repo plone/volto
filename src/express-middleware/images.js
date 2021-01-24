@@ -1,22 +1,20 @@
 import express from 'express';
-import { getAPIResourceWithAuth } from '@plone/volto/helpers';
+import ImageCache from './image-proxy/cache';
+import { Image } from './image-proxy/Image';
 
-const HEADERS = ['content-type', 'content-disposition', 'cache-control'];
-
-function imageMiddleware(req, res, next) {
+async function imageMiddleware(req, res, next) {
   const { errorHandler } = req.app.locals;
-  getAPIResourceWithAuth(req)
-    .then((resource) => {
-      // Just forward the headers that we need
-      HEADERS.forEach((header) => {
-        if (resource.headers[header]) {
-          res.set(header, resource.headers[header]);
-        }
-      });
+  const cache = ImageCache();
 
-      res.send(resource.body);
-    }, errorHandler)
-    .catch(errorHandler);
+  const image = new Image(req, cache, errorHandler);
+  try {
+    const output = await image.getData();
+
+    res.setHeader('Content-Type', `image/${output.format}`);
+    res.status(200).send(output.data);
+  } catch (err) {
+    errorHandler(err);
+  }
 }
 
 export default function () {
