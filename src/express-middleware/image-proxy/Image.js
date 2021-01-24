@@ -6,7 +6,7 @@ import { getLogger } from '@plone/volto/express-middleware/logger';
 
 import { settings } from '~/config';
 
-const debug = getLogger('image-proxy:debug');
+const debug = getLogger('image-proxy');
 
 const HEADERS = ['content-disposition', 'cache-control']; // 'content-type'
 
@@ -30,7 +30,9 @@ function etag(headers) {
 }
 
 /**
- * Architecture:
+ * @class Image
+ *
+ * A utility object to deal with data fetching, cache storing and conversions
  *
  * - two caches:
  *   - ProcessedCache, for thumbnails and optimized images
@@ -39,11 +41,10 @@ function etag(headers) {
  * - image fetching layer ->
  *    -> get context full URL
  *    -> connect to backend, check last-modified HEAD
- *        -> use it to compute cache keys:
+ *        -> use it to create cache keys:
  *          - original (in UnprocessedCache)
  *          - thumbnail/optimized (in ProcessedCache)
  *    -> is it a thumbnail?
- *        -> use it to compute cache keys
  *        -> fetch from thumbnail cache
  *          -> is it in ProcessedCache?
  *            -> return data
@@ -60,9 +61,7 @@ function etag(headers) {
  *            -> store original in UnprocessedCache
  *            -> convert/optimize original
  *            - store it in ProcessedCache
- *            return data
- *
- * - caching layer
+ *            -> return data
  *
  */
 export class Image {
@@ -99,13 +98,13 @@ export class Image {
 
   async getFromProcessedCache() {
     const key = this.cacheKey();
-    debug(`Get from cache.processed: ${key}`);
+    debug(`cache.processed - get: ${key}`);
     return await this.cache.processed.get(this.cacheKey());
   }
 
   async getFromUnprocessedCache() {
     const key = this.cacheKeyOriginal();
-    debug(`Get from cache.unprocessed: ${key}`);
+    debug(`cache.unprocessed - get: ${key}`);
     return await this.cache.unprocessed.get(key);
   }
 
@@ -134,7 +133,7 @@ export class Image {
 
     const cacheKey = this.cacheKeyOriginal();
 
-    debug(`Store in cache.unprocessed : ${cacheKey}`);
+    debug(`cache.unprocessed - store: ${cacheKey}`);
     this.cache.unprocessed.set(cacheKey, container);
 
     return container;
@@ -162,7 +161,7 @@ export class Image {
 
     const cacheKey = this.cacheKey();
 
-    debug(`Store converted original in cache.processed : ${cacheKey}`);
+    debug(`cache.processed - store converted original: ${cacheKey}`);
     this.cache.processed.set(cacheKey, converted);
 
     return converted;
@@ -183,7 +182,7 @@ export class Image {
     };
 
     const cacheKey = this.cacheKey();
-    debug(`Store resized in cache.processed : ${cacheKey}`);
+    debug(`cache.processed - store resized: ${cacheKey}`);
     this.cache.processed.set(cacheKey, converted);
 
     return converted;
@@ -198,18 +197,18 @@ export class Image {
     container = await this.getFromProcessedCache();
 
     if (container) {
-      debug(`Found in cache.processed: ${this.cacheKey()}`);
+      debug(`cache.processed - found: ${this.cacheKey()}`);
       return container;
     }
 
-    debug(`Not in cache.processed: ${this.cacheKey()}`);
+    debug(`cache.processed - not found: ${this.cacheKey()}`);
 
     original = await this.getFromUnprocessedCache();
 
     if (!original) {
       original = await this.fetchOriginalFromBackend();
     } else {
-      debug(`Found in cache.unprocessed: ${this.cacheKeyOriginal()}`);
+      debug(`cache.unprocessed - found: ${this.cacheKeyOriginal()}`);
     }
 
     container = this.isThumbnail()
