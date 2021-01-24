@@ -10,7 +10,13 @@ async function imageMiddleware(req, res, next) {
   try {
     const output = await image.getData();
 
+    // copy headers coming from the backend
+    Object.keys(output.headers).forEach((h) => {
+      res.setHeader(h, output.headers[h]);
+    });
+
     res.setHeader('Content-Type', `image/${output.format}`);
+
     res.status(200).send(output.data);
   } catch (err) {
     errorHandler(err);
