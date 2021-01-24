@@ -57,6 +57,7 @@ export const LIST_COMMENTS = 'LIST_COMMENTS';
 export const LIST_CONTROLPANELS = 'LIST_CONTROLPANELS';
 export const LIST_GROUPS = 'LIST_GROUPS';
 export const LIST_ROLES = 'LIST_ROLES';
+export const AUTH_ROLE = 'AUTH_ROLE';
 export const LIST_USERS = 'LIST_USERS';
 export const LOGIN = 'LOGIN';
 export const LOGIN_RENEW = 'LOGIN_RENEW';

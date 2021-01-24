@@ -9,6 +9,7 @@ import {
   GET_GROUP,
   LIST_GROUPS,
   UPDATE_GROUP,
+  AUTH_ROLE,
 } from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
@@ -38,6 +39,7 @@ const initialState = {
     error: null,
   },
   groups: [],
+  authenticatedRole: null,
   group: {},
 };
 
@@ -82,6 +84,11 @@ export default function groups(state = initialState, action = {}) {
           loaded: true,
           error: null,
         },
+      };
+    case AUTH_ROLE:
+      return {
+        ...state,
+        authenticatedRole: action.result,
       };
     case `${LIST_GROUPS}_SUCCESS`:
       return {

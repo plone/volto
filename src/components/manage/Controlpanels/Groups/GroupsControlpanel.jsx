@@ -8,6 +8,7 @@ import {
   listGroups,
   listRoles,
   updateGroup,
+  authenticatedRole,
 } from '@plone/volto/actions';
 import {
   Icon,
@@ -241,6 +242,7 @@ class GroupsControlpanel extends Component {
             ? entry.roles
             : remove(entry.roles, (item) => item !== value),
       })),
+      authenticatedRole: name === 'AuthenticatedUsers' ? value : null,
     });
   }
   /**
@@ -252,6 +254,7 @@ class GroupsControlpanel extends Component {
     this.state.groupEntries.forEach((item) => {
       this.props.updateGroup(item.id, item);
     });
+    this.props.authenticatedRole(this.state.authenticatedRole);
     toast.success(
       <Toast
         success
@@ -580,6 +583,7 @@ export default compose(
           deleteGroup,
           createGroup,
           updateGroup,
+          authenticatedRole,
         },
         dispatch,
       ),

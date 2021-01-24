@@ -9,6 +9,7 @@ import {
   GET_GROUP,
   LIST_GROUPS,
   UPDATE_GROUP,
+  AUTH_ROLE,
 } from '@plone/volto/constants/ActionTypes';
 
 /**
@@ -95,5 +96,12 @@ export function updateGroup(id, data) {
       path: `/@groups/${id}`,
       data,
     },
+  };
+}
+
+export function authenticatedRole(role) {
+  return {
+    type: AUTH_ROLE,
+    result: role,
   };
 }

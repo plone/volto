@@ -53,6 +53,7 @@ export {
   getGroup,
   listGroups,
   updateGroup,
+  authenticatedRole,
 } from '@plone/volto/actions/groups/groups';
 export {
   getHistory,

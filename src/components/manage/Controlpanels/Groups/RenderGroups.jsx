@@ -7,6 +7,7 @@ import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { Dropdown, Table, Checkbox } from 'semantic-ui-react';
 import trashSVG from '@plone/volto/icons/delete.svg';
+import ploneSVG from '@plone/volto/icons/plone.svg';
 import { Icon } from '@plone/volto/components';
 
 /**
@@ -68,6 +69,14 @@ class RenderGroups extends Component {
         <Table.Cell>{this.props.groups.groupname}</Table.Cell>
         {this.props.roles.map((role) => (
           <Table.Cell key={role.id}>
+            {/* {this.props.groups.roles.includes('Authenticated') ? (
+              <Icon
+                name={ploneSVG}
+                size="20px"
+                color="#007EB1"
+                title={'plone-svg'}
+              />
+            ) : ( */}
             <Checkbox
               checked={this.props.groups.roles.includes(role.id)}
               onChange={this.onChange}
