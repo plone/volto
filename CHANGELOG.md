@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Better handling of a condition in the new breadcrumbs @sneridagh
+
 ### Internal
 
 ## 10.10.0 (2021-01-22)
