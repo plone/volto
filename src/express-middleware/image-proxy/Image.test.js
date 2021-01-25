@@ -1,4 +1,20 @@
+import React from 'react';
+import superagent from 'superagent';
 import { Image } from '@plone/volto/express-middleware/image-proxy/Image.js';
+
+jest.mock('superagent');
+jest.mock('~/config', () => ({
+  settings: {
+    nonContentRoutes: [],
+    supportedLanguages: ['en'],
+    navDepth: 1,
+  },
+  views: {
+    errorViews: {
+      ECONNREFUSED: () => <div className="ECONNREFUSED" />,
+    },
+  },
+}));
 
 describe('Images are represented by the Image class', () => {
   it('Is constructed from a request with an image path', () => {
@@ -55,5 +71,43 @@ describe('Images are represented by the Image class', () => {
 
     img = new Image({ path: '/a/@@images/logo' });
     expect(img.isThumbnail()).toBe(false);
+  });
+
+  it('Fetches metadata with a HEAD call', async () => {
+    const resp = { headers: { 'last-modified': 1, eta: 2 } };
+    superagent.head.mockResolvedValue(resp);
+
+    let img = new Image({ path: '/a/@@images/logo/mini' });
+    await img.syncMetadataFromBackend();
+
+    expect(img.metadata).toEqual(resp.headers);
+  });
+
+  it('Fetches holds references to a cache', () => {
+    const cache = { processed: {}, unprocessed: {} };
+
+    let img = new Image({ path: '/a/@@images/logo/mini' }, cache);
+
+    expect(img.cache).toEqual(cache);
+  });
+
+  it('Gets data from caches', async () => {
+    const cache = {
+      processed: {
+        get(key) {
+          return new Promise((resolve) => resolve('from processed'));
+        },
+      },
+      unprocessed: {
+        get(key) {
+          return new Promise((resolve) => resolve('from unprocessed'));
+        },
+      },
+    };
+
+    let img = new Image({ path: '/a/@@images/logo/mini' }, cache);
+
+    expect(await img.getFromProcessedCache()).toEqual('from processed');
+    expect(await img.getFromUnprocessedCache()).toEqual('from unprocessed');
   });
 });
