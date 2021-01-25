@@ -6,6 +6,8 @@
 
 ### Feature
 
+- added Linkify library to parse emails and links in text into clickable links @giuliaghisini
+
 ### Bugfix
 
 - Better handling of a condition in the new breadcrumbs @sneridagh

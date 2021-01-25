@@ -321,6 +321,7 @@
     "react-image-gallery": "1.0.7",
     "react-intl": "3.8.0",
     "react-intl-redux": "2.2.0",
+    "react-linkify": "1.0.0-alpha",
     "react-medium-image-zoom": "3.0.15",
     "react-portal": "4.2.1",
     "react-redux": "7.2.0",
