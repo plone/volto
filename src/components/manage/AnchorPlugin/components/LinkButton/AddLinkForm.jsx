@@ -261,12 +261,7 @@ class AddLinkForm extends Component {
 
     return (
       <div className="link-form-container" ref={this.linkFormContainer}>
-        <LibEditorUtils
-          ref={(val) => {
-            this.libEditorUtilsRef.current = val;
-            console.log('lib', val);
-          }}
-        />
+        <LibEditorUtils ref={this.libEditorUtilsRef} />
         <div
           style={{ marginLeft: '5px', display: 'flex', alignItems: 'center' }}
         >
