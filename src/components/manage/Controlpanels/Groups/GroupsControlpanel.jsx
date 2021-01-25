@@ -24,7 +24,7 @@ import clearSVG from '@plone/volto/icons/clear.svg';
 import addUserSvg from '@plone/volto/icons/add-user.svg';
 import saveSVG from '@plone/volto/icons/save.svg';
 import ploneSVG from '@plone/volto/icons/plone.svg';
-import { find, map, remove } from 'lodash';
+import { find, map, pull } from 'lodash';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
@@ -100,6 +100,7 @@ class GroupsControlpanel extends Component {
       showAddGroup: false,
       groupEntries: [],
       isClient: false,
+      authenticatedRole: props.inheritedRole || [],
     };
   }
 
@@ -232,7 +233,7 @@ class GroupsControlpanel extends Component {
    * @memberof GroupsControlpanel
    */
   updateGroupRole(name, value) {
-    this.setState({
+    this.setState((prevState) => ({
       groupEntries: map(this.state.groupEntries, (entry) => ({
         ...entry,
         roles:
@@ -240,10 +241,16 @@ class GroupsControlpanel extends Component {
             ? [...entry.roles, value]
             : entry.id !== name
             ? entry.roles
-            : remove(entry.roles, (item) => item !== value),
+            : pull(entry.roles, value),
       })),
-      authenticatedRole: name === 'AuthenticatedUsers' ? value : null,
-    });
+      authenticatedRole:
+        name === 'AuthenticatedUsers' &&
+        !prevState.authenticatedRole.includes(value)
+          ? [...prevState.authenticatedRole, value]
+          : name !== 'AuthenticatedUsers'
+          ? prevState.authenticatedRole
+          : pull(prevState.authenticatedRole, value),
+    }));
   }
   /**
    * @param {*} event
@@ -495,6 +502,7 @@ class GroupsControlpanel extends Component {
                       roles={this.props.roles}
                       groups={groups}
                       updateGroups={this.updateGroupRole}
+                      inheritedRole={this.props.inheritedRole}
                     />
                   ))}
                 </Table.Body>
@@ -574,6 +582,7 @@ export default compose(
       deleteGroupRequest: state.groups.delete,
       createGroupRequest: state.groups.create,
       loadRolesRequest: state.roles,
+      inheritedRole: state.groups.authenticatedRole,
     }),
     (dispatch) =>
       bindActionCreators(

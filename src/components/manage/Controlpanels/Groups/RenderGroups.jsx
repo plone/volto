@@ -69,19 +69,22 @@ class RenderGroups extends Component {
         <Table.Cell>{this.props.groups.groupname}</Table.Cell>
         {this.props.roles.map((role) => (
           <Table.Cell key={role.id}>
-            {/* {this.props.groups.roles.includes('Authenticated') ? (
+            {this.props.inheritedRole &&
+            this.props.inheritedRole.includes(role.id) &&
+            this.props.groups.roles.includes('Authenticated') ? (
               <Icon
                 name={ploneSVG}
                 size="20px"
                 color="#007EB1"
                 title={'plone-svg'}
               />
-            ) : ( */}
-            <Checkbox
-              checked={this.props.groups.roles.includes(role.id)}
-              onChange={this.onChange}
-              value={`${this.props.groups.id}.${role.id}`}
-            />
+            ) : (
+              <Checkbox
+                checked={this.props.groups.roles.includes(role.id)}
+                onChange={this.onChange}
+                value={`${this.props.groups.id}.${role.id}`}
+              />
+            )}
           </Table.Cell>
         ))}
         <Table.Cell textAlign="right">
