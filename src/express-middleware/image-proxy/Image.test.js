@@ -1,8 +1,11 @@
 import React from 'react';
 import superagent from 'superagent';
 import { Image } from '@plone/volto/express-middleware/image-proxy/Image.js';
+import * as helpers from '@plone/volto/helpers';
 
 jest.mock('superagent');
+jest.mock('@plone/volto/helpers');
+
 jest.mock('~/config', () => ({
   settings: {
     nonContentRoutes: [],
@@ -109,5 +112,50 @@ describe('Images are represented by the Image class', () => {
 
     expect(await img.getFromProcessedCache()).toEqual('from processed');
     expect(await img.getFromUnprocessedCache()).toEqual('from unprocessed');
+  });
+
+  it('Can fetch an original image from backend', async () => {
+    const cache = {
+      processed: {
+        get(key) {
+          return new Promise((resolve) => resolve('from processed'));
+        },
+        set(key, value) {
+          this._k = key;
+          this._v = value;
+        },
+      },
+      unprocessed: {
+        set(key, value) {
+          this._k = key;
+          this._v = value;
+        },
+        get(key) {
+          return new Promise((resolve) => resolve('from unprocessed'));
+        },
+      },
+    };
+
+    let img = new Image({ path: '/a/@@images/logo/mini' }, cache);
+
+    const resp = {
+      body: 'body',
+      headers: {
+        'content-type': 'image/png',
+        'last-modified': '1',
+        etag: '2',
+      },
+    };
+    helpers.getAPIResourceWithAuth.mockResolvedValue(resp);
+    const container = await img.fetchOriginalFromBackend();
+    expect(container).toEqual({
+      data: 'body',
+      format: 'png',
+      headers: { 'content-disposition': undefined, 'cache-control': undefined },
+    });
+  });
+
+  it('Can optimize original while preserving format', async () => {
+    //
   });
 });
