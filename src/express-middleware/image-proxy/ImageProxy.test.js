@@ -1,6 +1,6 @@
 import React from 'react';
 import superagent from 'superagent';
-import { Image } from '@plone/volto/express-middleware/image-proxy/Image.js';
+import Image from '@plone/volto/express-middleware/image-proxy/ImageProxy.js';
 import * as helpers from '@plone/volto/helpers';
 import sharp from 'sharp';
 

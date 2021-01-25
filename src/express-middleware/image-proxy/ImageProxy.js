@@ -30,7 +30,7 @@ function etag(headers) {
 }
 
 /**
- * @class Image
+ * @class ImageProxy
  *
  * A utility object to deal with data fetching, cache storing and conversions
  *
@@ -64,7 +64,7 @@ function etag(headers) {
  *            -> return data
  *
  */
-export class Image {
+export default class ImageProxy {
   constructor(request, cache, errorHandler) {
     const { path } = request;
     let [contextUrl, imageName] = path.split('/@@images/');
