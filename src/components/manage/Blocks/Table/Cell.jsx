@@ -169,7 +169,7 @@ class Cell extends Component {
         <LibDraftJsInlineToolbarPlugin
           ref={this.libDraftJsInlineToolbarPluginLoaded}
         />
-        <LibDraftJs ref={this.libDraftJsLoaded} />;
+        <LibDraftJs ref={this.libDraftJsLoaded} />
         {!!this.state.editorState && !!this.state.inlineToolbarPlugin && (
           <div>
             <this.Editor
