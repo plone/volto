@@ -183,10 +183,6 @@ class Cell extends Component {
               blockStyleFn={settings.blockStyleFn}
               customStyleMap={settings.customStyleMap}
               handleReturn={(e) => {
-                console.log(
-                  'handling return',
-                  this.libDraftJsIsSoftNewlineEventRef.current,
-                );
                 if (this.libDraftJsIsSoftNewlineEventRef.current.default(e)) {
                   this.onChange(
                     this.libDraftJsRef.current.RichUtils.insertSoftNewline(
