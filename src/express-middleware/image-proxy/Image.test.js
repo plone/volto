@@ -2,9 +2,21 @@ import React from 'react';
 import superagent from 'superagent';
 import { Image } from '@plone/volto/express-middleware/image-proxy/Image.js';
 import * as helpers from '@plone/volto/helpers';
+import sharp from 'sharp';
 
 jest.mock('superagent');
+jest.mock('sharp');
 jest.mock('@plone/volto/helpers');
+
+const pipeline = {
+  toFormat: jest.fn(),
+  resize: jest.fn(),
+  toBuffer: jest.fn((cb) => cb()),
+};
+
+sharp.mockImplementation(function (dataStream) {
+  return pipeline;
+});
 
 jest.mock('~/config', () => ({
   settings: {
@@ -156,6 +168,8 @@ describe('Images are represented by the Image class', () => {
   });
 
   it('Can optimize original while preserving format', async () => {
-    //
+    let img = new Image({ path: '/a/@@images/logo/mini' }, {});
+    await img.convert('data');
+    expect(pipeline.toBuffer).toHaveBeenCalled();
   });
 });
