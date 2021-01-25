@@ -1,14 +1,14 @@
 import express from 'express';
-import ImageCache from './image-proxy/cache';
-import { Image } from './image-proxy/Image';
+import getCache from './image-proxy/cache';
+import ImageProxy from './image-proxy/ImageProxy';
 
 async function imageMiddleware(req, res, next) {
   const { errorHandler } = req.app.locals;
-  const cache = ImageCache();
+  const cache = getCache();
 
-  const image = new Image(req, cache, errorHandler);
+  const proxy = new ImageProxy(req, cache, errorHandler);
   try {
-    const output = await image.getData();
+    const output = await proxy.getData();
 
     // copy headers coming from the backend
     Object.keys(output.headers).forEach((h) => {
