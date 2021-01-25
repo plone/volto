@@ -32,4 +32,31 @@ describe('Breadcrumbs', () => {
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
+  it('renders a breadcrumbs component containing items with nav_title', () => {
+    const store = mockStore({
+      breadcrumbs: {
+        items: [
+          { title: 'Blog', url: '/blog' },
+          {
+            title: 'My first blog',
+            url: '/blog/my-first-blog',
+            nav_title: 'First one',
+          },
+        ],
+      },
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    const component = renderer.create(
+      <Provider store={store}>
+        <MemoryRouter>
+          <Breadcrumbs pathname="/blog" />
+        </MemoryRouter>
+      </Provider>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
 });
