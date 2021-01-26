@@ -58,7 +58,9 @@ export function withLoadables(maybeNames) {
 function getLoadables(names, loadedLibraries) {
   return Object.assign(
     {},
-    ...names.map((libName) => ({ [libName]: loadedLibraries[libName] })),
+    ...names.map((libName) =>
+      loadedLibraries[libName] ? { [libName]: loadedLibraries[libName] } : {},
+    ),
   );
 }
 

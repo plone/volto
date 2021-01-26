@@ -8,4 +8,5 @@ export const loadables = {
     resolveComponent: (lib) => lib.toast,
   }),
   reactSelect: loadable.lib(() => import('react-select')),
+  diffLib: loadable.lib(() => import('diff')),
 };
