@@ -9,6 +9,11 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.checkA11y(); // fail for a11y violations
     });
 
+    it('Contact form has not a11y violations', () => {
+      cy.navigate('/contact-form');
+      cy.checkA11y();
+    });
+
     /*
     it('Has no a11y violations after button click', () => {
       cy.get('button').click();

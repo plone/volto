@@ -1,4 +1,5 @@
 /* eslint no-console: 0 */
+import { existsSync, lstatSync, readFileSync } from 'fs';
 import React from 'react';
 import { StaticRouter } from 'react-router-dom';
 import { Provider } from 'react-intl-redux';
@@ -186,6 +187,9 @@ server.get('/*', (req, res) => {
         </ChunkExtractorManager>,
       );
 
+      const readCriticalCss =
+        settings.serverConfig.readCriticalCss || defaultReadCriticalCss;
+
       if (context.url) {
         res.redirect(flattenToAppURL(context.url));
       } else if (context.error_code) {
@@ -195,28 +199,46 @@ server.get('/*', (req, res) => {
 
         res.status(context.error_code).send(
           `<!doctype html>
-                ${renderToString(
-                  <Html
-                    extractor={extractor}
-                    markup={markup}
-                    store={store}
-                    extractScripts={process.env.NODE_ENV !== 'production'}
-                  />,
-                )}
-              `,
+              ${renderToString(
+                <Html
+                  extractor={extractor}
+                  markup={markup}
+                  store={store}
+                  extractScripts={process.env.NODE_ENV !== 'production'}
+                  criticalCss={readCriticalCss(req)}
+                />,
+              )}
+            `,
         );
       } else {
         res.status(200).send(
           `<!doctype html>
-                ${renderToString(
-                  <Html extractor={extractor} markup={markup} store={store} />,
-                )}
-              `,
+              ${renderToString(
+                <Html
+                  extractor={extractor}
+                  markup={markup}
+                  store={store}
+                  criticalCss={readCriticalCss(req)}
+                />,
+              )}
+            `,
         );
       }
     }, errorHandler)
     .catch(errorHandler);
 });
+
+export const defaultReadCriticalCss = () => {
+  const { criticalCssPath } = settings.serverConfig;
+
+  const e = existsSync(criticalCssPath);
+  if (!e) return;
+
+  const f = lstatSync(criticalCssPath);
+  if (!f.isFile()) return;
+
+  return readFileSync(criticalCssPath, { encoding: 'utf-8' });
+};
 
 server.apiPath = settings.apiPath;
 server.devProxyToApiPath = settings.devProxyToApiPath;

@@ -56,7 +56,7 @@ if (Cypress.env('API') === 'plone') {
       cy.get('.modal #recurrenceEndsUntil').check({ force: true });
 
       //test add date
-      cy.get('.modal #field-addDate input').type('{selectall}05/20/2020');
+      cy.get('.modal input').type('{selectall}05/20/2020');
       cy.get('.modal .occurences .list > .item').should('have.length', 14);
 
       //test exclude date
@@ -88,7 +88,7 @@ if (Cypress.env('API') === 'plone') {
     it.skip('Test Monday and Friday recurrence', function () {
       //change freq
 
-      cy.get('.modal .field#field-freq')
+      cy.get('.modal .field .react-select-container')
         .click()
         .type('Monday and Friday {enter}');
       cy.get('.modal .occurences .list > .item').should('have.length', 4);
@@ -126,7 +126,9 @@ if (Cypress.env('API') === 'plone') {
 
     it.skip('Test Weekday recurrence', function () {
       //change freq
-      cy.get('.modal .field#field-freq').click().type('Weekday {enter}');
+      cy.get('.modal .field .react-select-container')
+        .click()
+        .type('Weekday {enter}');
       cy.get('.modal .occurences .list > .item').should('have.length', 10);
 
       //test recurrence end after N recurrences
@@ -165,7 +167,9 @@ if (Cypress.env('API') === 'plone') {
 
     it.skip('Test Weekly recurrence', function () {
       //change freq
-      cy.get('.modal .field#field-freq').click().type('Weekly {enter}');
+      cy.get('.modal .field .react-select-container')
+        .click()
+        .type('Weekly {enter}');
       cy.get('.modal .byday-field .ui.button.active').click(); //deactivate selected days
 
       cy.get('.modal .byday-field .ui.button').contains('Tue').click(); //select Tuesday
@@ -209,7 +213,9 @@ if (Cypress.env('API') === 'plone') {
 
     it.skip('Test Monthly recurrence', function () {
       //change freq
-      cy.get('.modal .field#field-freq').click().type('Monthly {enter}');
+      cy.get('.modal .field .react-select-container')
+        .click()
+        .type('Monthly {enter}');
 
       cy.get('.modal input#bymonthday').should('have.attr', 'value', '4');
       cy.get('.modal .occurences .list .item:last-of-type .content').contains(
@@ -278,7 +284,9 @@ if (Cypress.env('API') === 'plone') {
 
     it('Test Yearly recurrence', function () {
       //change freq
-      cy.get('.modal .field#field-freq').click().type('Yearly {enter}');
+      cy.get('.modal .field .react-select-container')
+        .click()
+        .type('Yearly {enter}');
 
       cy.get('.modal #until-date').type('{selectall}12/31/2030');
       cy.get('.modal .occurences .list > .item').should('have.length', 11);

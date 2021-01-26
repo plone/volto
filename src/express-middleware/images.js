@@ -1,3 +1,4 @@
+import express from 'express';
 import { getAPIResourceWithAuth } from '@plone/volto/helpers';
 
 const HEADERS = ['content-type', 'content-disposition', 'cache-control'];
@@ -19,12 +20,9 @@ function imageMiddleware(req, res, next) {
 }
 
 export default function () {
-  if (typeof __SERVER__ !== 'undefined' && __SERVER__) {
-    const express = require('express');
-    const middleware = express.Router();
+  const middleware = express.Router();
 
-    middleware.all(['**/@@images/*'], imageMiddleware);
-    middleware.id = 'imageResourcesProcessor';
-    return middleware;
-  }
+  middleware.all(['**/@@images/*'], imageMiddleware);
+  middleware.id = 'imageResourcesProcessor';
+  return middleware;
 }
