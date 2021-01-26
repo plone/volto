@@ -55,6 +55,15 @@ class Cell extends Component {
 
   state = {};
 
+  constructor(props) {
+    super(props);
+
+    settings.getRichTextEditorSettings().then((lib) => {
+      this.libRichTextEditorSettingsRef.current = lib;
+      this.checkLibs();
+    });
+  }
+
   /**
    * Component did mount lifecycle method
    * @method componentDidMount
@@ -103,7 +112,8 @@ class Cell extends Component {
       !this.libDraftJsRef.current ||
       !this.libDraftJsInlineToolbarPluginRef.current ||
       !this.libDraftJsPluginsEditorRef.current ||
-      !this.libDraftJsIsSoftNewlineEventRef.current
+      !this.libDraftJsIsSoftNewlineEventRef.current ||
+      !this.libRichTextEditorSettingsRef.current
     ) {
       return;
     }
@@ -148,6 +158,7 @@ class Cell extends Component {
   libDraftJsRef = React.createRef();
   libDraftJsInlineToolbarPluginRef = React.createRef();
   libDraftJsIsSoftNewlineEventRef = React.createRef();
+  libRichTextEditorSettingsRef = React.createRef();
 
   /**
    * Render method.
@@ -177,11 +188,18 @@ class Cell extends Component {
               editorState={this.state.editorState}
               plugins={[
                 this.state.inlineToolbarPlugin,
-                ...settings.richTextEditorPlugins,
+                ...this.libRichTextEditorSettingsRef.current
+                  .richTextEditorPlugins,
               ]}
-              blockRenderMap={settings.extendedBlockRenderMap}
-              blockStyleFn={settings.blockStyleFn}
-              customStyleMap={settings.customStyleMap}
+              blockRenderMap={
+                this.libRichTextEditorSettingsRef.current.extendedBlockRenderMap
+              }
+              blockStyleFn={
+                this.libRichTextEditorSettingsRef.current.blockStyleFn
+              }
+              customStyleMap={
+                this.libRichTextEditorSettingsRef.current.customStyleMap
+              }
               handleReturn={(e) => {
                 if (this.libDraftJsIsSoftNewlineEventRef.current.default(e)) {
                   this.onChange(
@@ -199,7 +217,12 @@ class Cell extends Component {
                     anchorKey,
                   );
                   const blockType = currentContentBlock.getType();
-                  if (!includes(settings.listBlockTypes, blockType)) {
+                  if (
+                    !includes(
+                      this.libRichTextEditorSettingsRef.current.listBlockTypes,
+                      blockType,
+                    )
+                  ) {
                     this.props.onSelectBlock(
                       this.props.onAddBlock(
                         settings.defaultBlockType,
