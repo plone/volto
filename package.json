@@ -327,7 +327,7 @@
     "react-router": "5.2.0",
     "react-router-config": "5.1.1",
     "react-router-dom": "5.2.0",
-    "react-select": "3.0.8",
+    "react-select": "4.0.2",
     "react-select-async-paginate": "0.3.10",
     "react-share": "2.3.1",
     "react-side-effect": "2.1.0",
