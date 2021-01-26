@@ -35,7 +35,7 @@ const ContentsBreadcrumbs = (props) => {
           <Breadcrumb.Divider />
         </>
       )}
-      {settings.isMultilingual && pathname.split('/').length > 2 && (
+      {settings.isMultilingual && pathname?.split('/')?.length > 2 && (
         <Link
           to={`/${lang}/contents`}
           className="section"
