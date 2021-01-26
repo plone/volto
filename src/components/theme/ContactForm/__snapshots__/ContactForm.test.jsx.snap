@@ -46,7 +46,16 @@ exports[`Contact form renders a contact form 1`] = `
               <div
                 className="ui segment primary"
               >
-                Contact form
+                <h1
+                  style={
+                    Object {
+                      "fontSize": "16px",
+                    }
+                  }
+                >
+                   
+                  Contact form
+                </h1>
               </div>
               <div
                 className="inline field text"
@@ -333,7 +342,16 @@ exports[`Contact form renders a contact form with error message 1`] = `
               <div
                 className="ui segment primary"
               >
-                Contact form
+                <h1
+                  style={
+                    Object {
+                      "fontSize": "16px",
+                    }
+                  }
+                >
+                   
+                  Contact form
+                </h1>
               </div>
               <div
                 className="inline field text"

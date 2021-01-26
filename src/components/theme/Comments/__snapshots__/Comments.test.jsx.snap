@@ -77,7 +77,16 @@ exports[`Comments renders a comments component 1`] = `
             <div
               className="ui segment primary"
             >
-              Comment
+              <h1
+                style={
+                  Object {
+                    "fontSize": "16px",
+                  }
+                }
+              >
+                 
+                Comment
+              </h1>
             </div>
             <div
               className="inline required field textarea"
