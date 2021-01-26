@@ -4,67 +4,53 @@ import { isEqual } from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadLazyLibrary } from '@plone/volto/actions';
 
-function getLoadables(libraries, loadedLibraries) {
+const isLoadableLoaded = (l) => {
+  return !isEqual(Object.keys(l).sort(), [
+    '$$typeof',
+    'load',
+    'preload',
+    'render',
+  ]);
+};
+
+const mergeLibs = (libNames) => {
   const { loadables } = settings;
+  return Object.assign(
+    {},
+    ...libNames.map((name) =>
+      isLoadableLoaded(loadables[name]) ? { [name]: loadables[name] } : {},
+    ),
+  );
+};
+
+function getLoadables(libNames, loadedLibs) {
   return {
-    ...Object.assign(
-      {},
-      ...libraries.map((name) =>
-        !isEqual(Object.keys(loadables[name]).sort(), [
-          '$$typeof',
-          'load',
-          'preload',
-          'render',
-        ])
-          ? { [name]: loadables[name] }
-          : {},
-      ),
-    ), // this is to support "loadables" that are already loaded
-    ...loadedLibraries,
+    ...mergeLibs(libNames),
+
+    // this is to support "loadables" that are already loaded
+    ...loadedLibs,
   };
 }
 
 export function withLoadables(maybeNames) {
-  const libraries = Array.isArray(maybeNames) ? maybeNames : [maybeNames];
+  const libNames = Array.isArray(maybeNames) ? maybeNames : [maybeNames];
 
   function decorator(WrappedComponent) {
     function WithLoadables(props) {
-      const { loadables } = settings;
-      const dispatch = useDispatch();
-
-      const globalLoadedLibraries = useSelector(
-        (state) => state.lazyLibraries || {},
-      );
-      const loaded = getLoadables(libraries, globalLoadedLibraries);
-      const isLoaded = Object.keys(loaded).length === libraries.length;
+      const loadedLibs = useLoadables(libNames);
 
       return (
-        <>
-          {libraries.map((name) => {
-            const LoadableLibrary = loadables[name];
-            return (
-              <LoadableLibrary
-                key={name}
-                ref={(val) => {
-                  if (!globalLoadedLibraries[name] && val) {
-                    dispatch(loadLazyLibrary(name, val));
-                  }
-                }}
-              />
-            );
-          })}
-          {isLoaded ? (
-            <WrappedComponent
-              key={Object.keys(loaded).join('|')}
-              {...props}
-              {...loaded}
-            />
-          ) : null}
-        </>
+        Object.keys(loadedLibs).length > 0 && (
+          <WrappedComponent
+            key={Object.keys(loadedLibs).join('|')}
+            {...props}
+            {...loadedLibs}
+          />
+        )
       );
     }
 
-    WithLoadables.displayName = `WithLoadables(${libraries.join(
+    WithLoadables.displayName = `WithLoadables(${libNames.join(
       ',',
     )})(${getDisplayName(WrappedComponent)})`;
 
@@ -78,25 +64,22 @@ function getDisplayName(WrappedComponent) {
 }
 
 export function useLoadables(maybeNames) {
-  const libraries = Array.isArray(maybeNames) ? maybeNames : [maybeNames];
+  const libNames = Array.isArray(maybeNames) ? maybeNames : [maybeNames];
   const { loadables } = settings;
   const dispatch = useDispatch();
 
-  const globalLoadedLibraries = useSelector(
-    (state) => state.lazyLibraries || {},
-  );
-  const loaded = getLoadables(libraries, globalLoadedLibraries);
-  const isLoaded = Object.keys(loaded).length === libraries.length;
+  const globalLoadedLibs = useSelector((state) => state.lazyLibraries || {});
+  const loadedLibs = getLoadables(libNames, globalLoadedLibs);
+  const allLoaded = Object.keys(loadedLibs).length === libNames.length;
 
-  libraries.forEach((name) => {
+  libNames.forEach((name) => {
     const LoadableLibrary = loadables[name];
     LoadableLibrary.load().then((val) => {
-      if (!globalLoadedLibraries[name] && val) {
+      if (!globalLoadedLibs[name] && val) {
         dispatch(loadLazyLibrary(name, val));
       }
     });
-    return;
   });
 
-  return isLoaded ? loaded : {};
+  return allLoaded ? loadedLibs : {};
 }
