@@ -126,6 +126,16 @@ class Edit extends Component {
   }
 
   /**
+   * @param {*} nextProps
+   * @param {*} nextState
+   * @returns {boolean}
+   * @memberof Edit
+   */
+  shouldComponentUpdate(nextProps) {
+    return this.props.selected || !isEqual(this.props.data, nextProps.data);
+  }
+
+  /**
    * Component will unmount
    * @method componentWillUnmount
    * @returns {undefined}
