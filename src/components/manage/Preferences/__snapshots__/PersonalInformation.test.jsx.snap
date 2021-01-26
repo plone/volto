@@ -21,7 +21,6 @@ exports[`PersonalInformation renders a personal information component 1`] = `
         >
           <div
             className="inline field help text"
-            id="field-fullname"
           >
             <div
               className="ui grid"
@@ -79,7 +78,6 @@ exports[`PersonalInformation renders a personal information component 1`] = `
           </div>
           <div
             className="inline required field help text"
-            id="field-email"
           >
             <div
               className="ui grid"
@@ -137,7 +135,6 @@ exports[`PersonalInformation renders a personal information component 1`] = `
           </div>
           <div
             className="inline field help"
-            id="field-portrait"
           >
             <div
               className="ui grid"
@@ -225,7 +222,6 @@ exports[`PersonalInformation renders a personal information component 1`] = `
           </div>
           <div
             className="inline field help text"
-            id="field-home_page"
           >
             <div
               className="ui grid"
@@ -283,7 +279,6 @@ exports[`PersonalInformation renders a personal information component 1`] = `
           </div>
           <div
             className="inline field help text"
-            id="field-location"
           >
             <div
               className="ui grid"
@@ -422,7 +417,6 @@ exports[`PersonalInformation renders a personal information component embedded i
         >
           <div
             className="inline field help text"
-            id="field-fullname"
           >
             <div
               className="ui grid"
@@ -480,7 +474,6 @@ exports[`PersonalInformation renders a personal information component embedded i
           </div>
           <div
             className="inline required field help text"
-            id="field-email"
           >
             <div
               className="ui grid"
@@ -538,7 +531,6 @@ exports[`PersonalInformation renders a personal information component embedded i
           </div>
           <div
             className="inline field help"
-            id="field-portrait"
           >
             <div
               className="ui grid"
@@ -626,7 +618,6 @@ exports[`PersonalInformation renders a personal information component embedded i
           </div>
           <div
             className="inline field help text"
-            id="field-home_page"
           >
             <div
               className="ui grid"
@@ -684,7 +675,6 @@ exports[`PersonalInformation renders a personal information component embedded i
           </div>
           <div
             className="inline field help text"
-            id="field-location"
           >
             <div
               className="ui grid"

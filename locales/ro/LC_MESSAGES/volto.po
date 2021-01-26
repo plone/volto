@@ -829,6 +829,7 @@ msgid "History of {title}"
 msgstr "Istoricul {title}"
 
 #: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsBreadcrumbs
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Home"
 msgstr "Acasă"
@@ -1492,6 +1493,10 @@ msgstr "Drepturi"
 #: helpers/MessageLabels/MessageLabels
 msgid "Roles"
 msgstr "Roluri"
+
+#: components/manage/Contents/ContentsBreadcrumbs
+msgid "Root"
+msgstr ""
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentType

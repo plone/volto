@@ -51,6 +51,8 @@ class Edit extends Component {
     onFocusNextBlock: PropTypes.func.isRequired,
     onSelectBlock: PropTypes.func.isRequired,
     editable: PropTypes.bool,
+    allowedBlocks: PropTypes.arrayOf(PropTypes.string),
+    showRestricted: PropTypes.bool,
   };
 
   /**
@@ -302,6 +304,8 @@ class Edit extends Component {
           <BlockChooser
             onMutateBlock={this.props.onMutateBlock}
             currentBlock={this.props.block}
+            allowedBlocks={this.props.allowedBlocks}
+            showRestricted={this.props.showRestricted}
           />
         )}
       </>

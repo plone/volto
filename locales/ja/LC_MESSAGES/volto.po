@@ -836,6 +836,7 @@ msgid "History of {title}"
 msgstr "{title} の履歴"
 
 #: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsBreadcrumbs
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Home"
 msgstr "ホーム"
@@ -1499,6 +1500,10 @@ msgstr "権利"
 #: helpers/MessageLabels/MessageLabels
 msgid "Roles"
 msgstr "ロール"
+
+#: components/manage/Contents/ContentsBreadcrumbs
+msgid "Root"
+msgstr ""
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentType

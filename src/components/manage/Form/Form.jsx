@@ -93,6 +93,8 @@ class Form extends Component {
     onSelectForm: PropTypes.func,
     editable: PropTypes.bool,
     requestError: PropTypes.string,
+    allowedBlocks: PropTypes.arrayOf(PropTypes.string),
+    showRestricted: PropTypes.bool,
   };
 
   /**
@@ -121,6 +123,7 @@ class Form extends Component {
     onSelectForm: null,
     editable: true,
     requestError: null,
+    allowedBlocks: null,
   };
 
   /**
@@ -948,8 +951,10 @@ class Form extends Component {
                                 multiSelected={this.state.multiSelected.includes(
                                   block,
                                 )}
-                                editable={this.props.editable}
                                 manage={this.props.isAdminForm}
+                                editable={this.props.editable}
+                                allowedBlocks={this.props.allowedBlocks}
+                                showRestricted={this.props.showRestricted}
                               />
                             </div>
                           </div>
