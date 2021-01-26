@@ -244,7 +244,7 @@ msgstr "Celulă"
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Center"
 msgstr "Centrează"
 
@@ -770,7 +770,7 @@ msgid "From"
 msgstr "Din"
 
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Full"
 msgstr "Complet"
 
@@ -827,6 +827,7 @@ msgid "History of {title}"
 msgstr "Istoricul {title}"
 
 #: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsBreadcrumbs
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Home"
 msgstr "Acasă"
@@ -992,7 +993,7 @@ msgstr "Imaginea de start"
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Left"
 msgstr "Stânga"
 
@@ -1478,7 +1479,7 @@ msgstr "Richtext"
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Right"
 msgstr "Dreapta"
 
@@ -1489,6 +1490,10 @@ msgstr "Drepturi"
 #: helpers/MessageLabels/MessageLabels
 msgid "Roles"
 msgstr "Roluri"
+
+#: components/manage/Contents/ContentsBreadcrumbs
+msgid "Root"
+msgstr ""
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentType

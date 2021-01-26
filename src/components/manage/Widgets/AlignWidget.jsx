@@ -8,7 +8,7 @@ import React from 'react';
 import { injectIntl } from 'react-intl';
 
 import { FormFieldWrapper } from '@plone/volto/components';
-import { AlignBlock } from '@plone/volto/helpers';
+import AlignBlock from '@plone/volto/components/manage/Sidebar/AlignBlock';
 
 const AlignWidget = (props) => {
   const { id, onChange, value } = props;

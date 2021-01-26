@@ -14,7 +14,7 @@ exports[`Workflow renders a workflow component 1`] = `
       class="react-select__control css-yjz7n5-control"
     >
       <div
-        class="react-select__value-container react-select__value-container--has-value css-1hwfws3"
+        class="react-select__value-container react-select__value-container--has-value css-g1d714-ValueContainer"
       >
         <div
           class="react-select__single-value css-1uccc91-singleValue"
@@ -25,7 +25,8 @@ exports[`Workflow renders a workflow component 1`] = `
           Private
         </div>
         <input
-          class="css-62g3xt-dummyInput"
+          aria-autocomplete="list"
+          class="css-wmatm6-dummyInput-DummyInput"
           id="react-select-3-input"
           readonly=""
           tabindex="0"
@@ -74,7 +75,7 @@ exports[`Workflow renders an empty workflow component 1`] = `
       class="react-select__control react-select__control--is-disabled css-1g1dlbm-control"
     >
       <div
-        class="react-select__value-container react-select__value-container--has-value css-1hwfws3"
+        class="react-select__value-container react-select__value-container--has-value css-g1d714-ValueContainer"
       >
         <div
           class="react-select__single-value react-select__single-value--is-disabled css-107lb6w-singleValue"
@@ -85,7 +86,8 @@ exports[`Workflow renders an empty workflow component 1`] = `
           Public
         </div>
         <input
-          class="css-62g3xt-dummyInput"
+          aria-autocomplete="list"
+          class="css-wmatm6-dummyInput-DummyInput"
           disabled=""
           id="react-select-2-input"
           readonly=""
