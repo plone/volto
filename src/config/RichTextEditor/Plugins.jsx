@@ -2,6 +2,8 @@ import { Separator } from 'draft-js-inline-toolbar-plugin';
 
 import createBlockBreakoutPlugin from 'draft-js-block-breakout-plugin';
 import createLinkPlugin from '@plone/volto/components/manage/AnchorPlugin';
+import createLinkDetectionPlugin from 'draft-js-link-detection-plugin';
+
 import {
   BlockquoteButton,
   BoldButton,
@@ -31,6 +33,7 @@ const breakOutOptions = {
 
 const blockBreakoutPlugin = createBlockBreakoutPlugin(breakOutOptions);
 const linkPlugin = createLinkPlugin();
+const linkDetectionPlugin = createLinkDetectionPlugin();
 
 export const inlineToolbarButtons = [
   BoldButton,
@@ -45,6 +48,6 @@ export const inlineToolbarButtons = [
   CalloutButton,
 ];
 
-const plugins = [linkPlugin, blockBreakoutPlugin];
+const plugins = [linkPlugin, blockBreakoutPlugin, linkDetectionPlugin];
 
 export default plugins;

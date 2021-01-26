@@ -6,7 +6,7 @@
 
 ### Feature
 
-- added Linkify library to parse emails and links in text into clickable links @giuliaghisini
+- added linkDetectionPlugin plugin to draftjs to automatically create links for urls and mails when editing text. @giuliaghisini
 
 ### Bugfix
 

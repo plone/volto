@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { isEmpty } from 'lodash';
-import Linkify from 'react-linkify';
 import { UniversalLink } from '@plone/volto/components';
 
 const styles = {
@@ -144,7 +143,7 @@ const processChildren = (children, keys) => {
             const last = subchild.split('\n').length - 1;
             return subchild.split('\n').map((item, index) => (
               <React.Fragment key={index}>
-                <Linkify>{item}</Linkify>
+                {item}
                 {index !== last && <br />}
               </React.Fragment>
             ));
