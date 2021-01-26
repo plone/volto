@@ -10,7 +10,7 @@
     }
   ],
   "license": "MIT",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/plone/generator-volto.git"
@@ -50,6 +50,7 @@
     "ci:cypress:run": "start-test ci:start-api-plone http-get://localhost:55001/plone ci:start-frontend",
     "ci:cypress:run:guillotina": "start-test ci:start-api-guillotina http-get://localhost:8081 ci:start-frontend-guillotina",
     "dry-release": "release-it --dry-run",
+    "prerelease": "tar --exclude=node_modules -cvfz generator-volto.tgz .",
     "release": "release-it",
     "release-alpha": "release-it major --preRelease=alpha"
   },
@@ -60,7 +61,7 @@
   "release-it": {
     "hooks": {
       "after:bump": "node changelogupdater.js bump ${version}",
-      "after:release": "node changelogupdater.js back ${version} && git add . && git commit -am 'Back to development (generator-volto)' && git push"
+      "after:release": "node changelogupdater.js back ${version} && git commit -am 'Back to development (generator-volto)' && git push"
     },
     "git": {
       "changelog": "node changelogupdater.js excerpt",
@@ -73,7 +74,10 @@
     "github": {
       "release": true,
       "releaseName": "@plone/generator-volto ${version}",
-      "releaseNotes": "node changelogupdater.js excerpt"
+      "releaseNotes": "node changelogupdater.js excerpt",
+      "assets": [
+        "*.tgz"
+      ]
     }
   },
   "jest": {
@@ -111,7 +115,7 @@
     "ora": "1.2.0",
     "promise": "7.1.1",
     "update-notifier": "^5.0.1",
-    "yeoman-generator": "^2.0.1"
+    "yeoman-generator": "^4.12.0"
   },
   "devDependencies": {
     "coveralls": "^3.0.7",

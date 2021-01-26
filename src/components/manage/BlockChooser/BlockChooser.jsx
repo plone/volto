@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { filter, map, groupBy } from 'lodash';
+import { filter, map, groupBy, isEmpty } from 'lodash';
 import { Accordion, Button } from 'semantic-ui-react';
 import { injectIntl } from 'react-intl';
 import { Icon } from '@plone/volto/components';
@@ -10,10 +10,32 @@ import { blocks } from '~/config';
 import upSVG from '@plone/volto/icons/up-key.svg';
 import downSVG from '@plone/volto/icons/down-key.svg';
 
-const BlockChooser = ({ currentBlock, onMutateBlock, intl }) => {
-  const mostUsedBlocks = filter(blocks.blocksConfig, (item) => item.mostUsed);
-  const groupedBlocks = groupBy(blocks.blocksConfig, (item) => item.group);
-  const blocksAvailable = { mostUsed: mostUsedBlocks, ...groupedBlocks };
+const BlockChooser = ({
+  currentBlock,
+  onMutateBlock,
+  allowedBlocks,
+  showRestricted,
+  intl,
+}) => {
+  const blocksConfig = filter(
+    blocks.blocksConfig,
+    (item) => isEmpty(allowedBlocks) || allowedBlocks.includes(item.id),
+  );
+
+  let blocksAvailable = {};
+  const mostUsedBlocks = filter(blocksConfig, (item) => item.mostUsed);
+  if (mostUsedBlocks) {
+    blocksAvailable.mostUsed = mostUsedBlocks;
+  }
+  const groupedBlocks = groupBy(blocksConfig, (item) => item.group);
+  blocksAvailable = {
+    ...blocksAvailable,
+    ...groupedBlocks,
+  };
+
+  const groupBlocksOrder = filter(blocks.groupBlocksOrder, (item) =>
+    Object.keys(blocksAvailable).includes(item.id),
+  );
   const [activeIndex, setActiveIndex] = React.useState(0);
 
   function handleClick(e, titleProps) {
@@ -26,7 +48,7 @@ const BlockChooser = ({ currentBlock, onMutateBlock, intl }) => {
   return (
     <div className="blocks-chooser">
       <Accordion fluid styled className="form">
-        {map(blocks.groupBlocksOrder, (groupName, index) => (
+        {map(groupBlocksOrder, (groupName, index) => (
           <React.Fragment key={groupName.id}>
             <Accordion.Title
               active={activeIndex === index}
@@ -57,7 +79,7 @@ const BlockChooser = ({ currentBlock, onMutateBlock, intl }) => {
                 {map(
                   filter(
                     blocksAvailable[groupName.id],
-                    (block) => !block.restricted,
+                    (block) => showRestricted || !block.restricted,
                   ),
                   (block) => (
                     <Button.Group key={block.id}>
@@ -90,6 +112,7 @@ const BlockChooser = ({ currentBlock, onMutateBlock, intl }) => {
 BlockChooser.propTypes = {
   currentBlock: PropTypes.string.isRequired,
   onMutateBlock: PropTypes.func.isRequired,
+  allowedBlocks: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default injectIntl(BlockChooser);

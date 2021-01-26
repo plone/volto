@@ -52,7 +52,7 @@ exports[`renders an Listing Data Sidebar component 1`] = `
                   onTouchEnd={[Function]}
                 >
                   <div
-                    className="react-select__value-container css-1dvrfad"
+                    className="react-select__value-container css-1a9cv00-ValueContainer"
                   >
                     <div
                       className="react-select__placeholder css-1wa3eu0-placeholder"
@@ -199,7 +199,7 @@ exports[`renders an Listing Data Sidebar component 1`] = `
               onTouchEnd={[Function]}
             >
               <div
-                className="react-select__value-container react-select__value-container--has-value css-1dvrfad"
+                className="react-select__value-container react-select__value-container--has-value css-1a9cv00-ValueContainer"
               >
                 <div
                   className="react-select__single-value css-1uccc91-singleValue"

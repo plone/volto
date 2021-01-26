@@ -140,6 +140,10 @@ const messages = defineMessages({
     id: 'Stripe alternate rows with color',
     defaultMessage: 'Stripe alternate rows with color',
   },
+  headerCell: {
+    id: 'Header cell',
+    defaultMessage: 'Header cell',
+  },
 });
 
 /**
@@ -292,7 +296,9 @@ class Edit extends Component {
    * @method onInsertRowBefore
    * @returns {undefined}
    */
-  onInsertRowBefore() {
+  onInsertRowBefore(e) {
+    e.preventDefault();
+    e.stopPropagation();
     const table = this.props.data.table;
     this.props.onChangeBlock(this.props.block, {
       ...this.props.data,
@@ -318,7 +324,9 @@ class Edit extends Component {
    * @method onInsertRowAfter
    * @returns {undefined}
    */
-  onInsertRowAfter() {
+  onInsertRowAfter(e) {
+    e.preventDefault();
+    e.stopPropagation();
     const table = this.props.data.table;
     this.props.onChangeBlock(this.props.block, {
       ...this.props.data,
@@ -338,7 +346,9 @@ class Edit extends Component {
    * @method onInsertColBefore
    * @returns {undefined}
    */
-  onInsertColBefore() {
+  onInsertColBefore(e) {
+    e.preventDefault();
+    e.stopPropagation();
     const table = this.props.data.table;
     this.props.onChangeBlock(this.props.block, {
       ...this.props.data,
@@ -367,7 +377,9 @@ class Edit extends Component {
    * @method onInsertColAfter
    * @returns {undefined}
    */
-  onInsertColAfter() {
+  onInsertColAfter(e) {
+    e.preventDefault();
+    e.stopPropagation();
     const table = this.props.data.table;
     this.props.onChangeBlock(this.props.block, {
       ...this.props.data,
@@ -390,7 +402,9 @@ class Edit extends Component {
    * @method onDeleteCol
    * @returns {undefined}
    */
-  onDeleteCol() {
+  onDeleteCol(e) {
+    e.preventDefault();
+    e.stopPropagation();
     const table = this.props.data.table;
 
     if (this.state.selected.cell === table.rows[0].cells.length - 1) {
@@ -422,7 +436,9 @@ class Edit extends Component {
    * @method onDeleteRow
    * @returns {undefined}
    */
-  onDeleteRow() {
+  onDeleteRow(e) {
+    e.preventDefault();
+    e.stopPropagation();
     const table = this.props.data.table;
 
     if (this.state.selected.row === table.rows.length - 1) {
@@ -664,7 +680,13 @@ class Edit extends Component {
         )}
         {this.props.selected && this.state.isClient && (
           <Portal node={document.getElementById('sidebar-properties')}>
-            <Form method="post" onSubmit={(event) => event.preventDefault()}>
+            <Form
+              method="post"
+              onSubmit={(event) => {
+                event.preventDefault();
+                event.stopPropagation();
+              }}
+            >
               <Segment secondary attached>
                 <FormattedMessage id="Table" defaultMessage="Table" />
               </Segment>
@@ -720,7 +742,7 @@ class Edit extends Component {
               <Segment attached>
                 <Field
                   id="celltype"
-                  title="Header cell"
+                  title={this.props.intl.formatMessage(messages.headerCell)}
                   type="boolean"
                   value={
                     this.props.data.table &&

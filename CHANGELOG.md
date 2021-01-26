@@ -1,14 +1,89 @@
 # Change Log
 
-## 10.8.1 (unreleased)
+## 10.10.1 (unreleased)
 
 ### Breaking
+
+- Removing id from FormFieldWrapper @iFlameing
+- Change default Listing Template to include only Text and renamed the old default Template to Summary Template @jackahl
 
 ### Feature
 
 ### Bugfix
 
+- Better handling of a condition in the new breadcrumbs @sneridagh
+
 ### Internal
+
+- Upgrade react-select to 4.0.2 @sneridagh
+- Upgrade react ecosystem to 13.14.0 @sneridagh
+
+## 10.10.0 (2021-01-22)
+
+### Feature
+
+- Simple optional critical-CSS inclusion feature (without the actual building of
+  the critical CSS) @silviubogan @tiberiuichim @nileshgulia1
+- added support for allowedBlocks and showRestricted for BlockChooser in Form @giuliaghisini
+- added objectBrowser to UrlWidget, and attached UrlWidget to remoteUrl field of ContentType Link @giuliaghisini
+- managed tel link in UrlWidget and draftjs @giuliaghisini
+- added support for allowedBlocks and showRestricted for BlockChooser in Form @giuliaghisini
+- Improvements in InlineForm @nileshgulia1
+- Improved form validation. Tested required fields when field is array or richtext @giuliaghisini
+
+### Bugfix
+
+- Fix 'All' button batch size in Contents @nzambello
+- Fixed field type for 'from' field in ContactForm @giuliaghisini
+- handle SelectWidget null value and isMulti(#1915) &(1878) @nileshgulia1
+- Fix typo in ita locales @nzambello
+- Wrap objectBrowserWidget with FormFieldWrapper @nileshgulia1
+- Added preventDefault and stopPropagation for toolbar buttons of Table block. @giuliaghisini
+- Fix `Contents` breadcrumbs for multilingual sites @sneridagh
+
+### Internal
+
+- Add support for `nav_title` in breadcrumbs and navigation @sneridagh
+- Add `settings.serverConfig` in the settings object of `~/config`. Add another module, `config/server.js` which is conditionally imported if `__SERVER__`. This module will host settings that are only relevant to the server. Being conditionally imported means that the code is safe to require server-only nodejs packages. @tiberiuichim
+- Update browserlist and caniuse-lite @sneridagh
+- Document deprecation of `@plone/create-volto-app` @sneridagh @nileshgulia1
+- Adding classname in TextWidget and ObjectBrowserBody so that we can target those element in tests. @iFlameing
+- Add support for `nav_title` in breadcrumbs and navigation @sneridagh
+
+## 10.9.2 (2021-01-15)
+
+### Bugfix
+
+- Make a cypress test more resilient to platform differences @tiberiuichim
+- Fix regression introduced by improve CSS in the inner toolbar for the image block to support narrower width (like for using it inside grid blocks) @sneridagh
+- Avoid a bug in cypress tests caused by multi-block copy/paste @tiberiuichim
+
+### Internal
+
+- i18n for a literal in the table block @sneridagh
+
+## 10.9.1 (2021-01-14)
+
+### Bugfix
+
+- Fix regression introduced by improve CSS in the inner toolbar for the image block to support narrower width (like for using it inside grid blocks) @sneridagh
+
+## 10.9.0 (2021-01-14)
+
+### Feature
+
+- Enhance `BlockChooser` by adding support for `allowedBlocks` and `showRestricted` @avoinea @sneridagh
+
+### Bugfix
+
+- Better handling of @@images pipeline errors @tiberiuichim
+- Fix `More` menu when using with Plone 4 backend / history action is undefined (#2120) @avoinea
+- Fix `/sharing` page when using with Guillotina (#2122) @avoinea
+- Improve CSS in the inner toolbar for the image block to support narrower width (like for using it inside grid blocks) @sneridagh
+
+### Internal
+
+- Move express middleware routes (sitemap, download, images and robotstxt) out of server.jsx into their own `express-middleware/*.js` modules. All express middleware now has access to the redux store, api middleware and an errorHandler, available under `req.app.locals` @tiberiuichim
 
 ## 10.8.0 (2021-01-11)
 
@@ -62,7 +137,6 @@
 ### Bugfix
 
 - Replace `__SERVER__` occurrence from table `Edit` component @sneridagh
-
 
 ## 10.5.0 (2020-12-17)
 
@@ -137,7 +211,7 @@
 
 ### Internal
 
-- Tweak Cypress command `waitForResourceToLoad` to timeout after 50 tries.  @tiberiuichim
+- Tweak Cypress command `waitForResourceToLoad` to timeout after 50 tries. @tiberiuichim
 
 ## 10.2.0 (2020-12-04)
 
@@ -159,7 +233,7 @@
 
 ### Feature
 
-- Provide operations on multiple-selected blocks: delete, cut/copy and paste.  You can trigger the "multiselected blocks" by holding the shift key and clicking on another block. You can add/remove blocks to the selection with the Control key. Holding Control when you click on the Paste button doesn't clear the clipboard, so you can paste multiple times. The blocks clipboard uses the browser's local storage to synchronize between tabs. @tiberiuichim
+- Provide operations on multiple-selected blocks: delete, cut/copy and paste. You can trigger the "multiselected blocks" by holding the shift key and clicking on another block. You can add/remove blocks to the selection with the Control key. Holding Control when you click on the Paste button doesn't clear the clipboard, so you can paste multiple times. The blocks clipboard uses the browser's local storage to synchronize between tabs. @tiberiuichim
 - Allow reducers to be persisted using localstorage @tiberiuichim
 
 ### Breaking

@@ -1,10 +1,20 @@
 # Change Log
 
-## 2.2.1 (unreleased)
+## 2.3.1 (unreleased)
 
 ### Added
 
 ### Changes
+
+## 2.3.0 (2021-01-21)
+
+### Added
+
+- Add generator-volto missing locales: eu fr ro @avoinea
+
+### Changes
+
+- Fix addon routes in generator @sneridagh
 
 ## 2.2.0 (2021-01-09)
 

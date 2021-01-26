@@ -51,7 +51,7 @@ exports[`renders a Listing Block Sidebar component 1`] = `
                   class="react-select__control css-1ard45z-control"
                 >
                   <div
-                    class="react-select__value-container react-select__value-container--has-value css-1dvrfad"
+                    class="react-select__value-container react-select__value-container--has-value css-1a9cv00-ValueContainer"
                   >
                     <div
                       class="react-select__single-value css-1uccc91-singleValue"
@@ -171,7 +171,7 @@ exports[`renders a Listing Block Sidebar component 1`] = `
                         class="react-select__control css-1ard45z-control"
                       >
                         <div
-                          class="react-select__value-container css-1dvrfad"
+                          class="react-select__value-container css-1a9cv00-ValueContainer"
                         >
                           <div
                             class="react-select__placeholder css-1wa3eu0-placeholder"
@@ -268,7 +268,7 @@ exports[`renders a Listing Block Sidebar component 1`] = `
                     class="react-select__control css-1ard45z-control"
                   >
                     <div
-                      class="react-select__value-container react-select__value-container--has-value css-1dvrfad"
+                      class="react-select__value-container react-select__value-container--has-value css-1a9cv00-ValueContainer"
                     >
                       <div
                         class="react-select__single-value css-1uccc91-singleValue"
@@ -539,7 +539,9 @@ exports[`renders a Listing Block Sidebar component 1`] = `
                   class="icon"
                 />
               </div>
-              <button>
+              <button
+                class="field-linkHref-action-button"
+              >
                 <svg
                   class="icon"
                   style="height: 18px; width: auto; fill: currentColor;"

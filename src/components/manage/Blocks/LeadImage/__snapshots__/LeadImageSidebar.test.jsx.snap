@@ -74,6 +74,7 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
               />
             </div>
             <button
+              className="field-alt-action-button"
               onClick={[Function]}
             >
               <svg
@@ -325,6 +326,7 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
                 />
               </div>
               <button
+                className="field-link-action-button"
                 onClick={[Function]}
               >
                 <svg
