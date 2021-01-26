@@ -4,6 +4,7 @@
 
 ### Breaking
 
+- [circular deps] Move `Align` component to its rightful place @sneridagh
 - Removing id from FormFieldWrapper @iFlameing
 - Change default Listing Template to include only Text and renamed the old default Template to Summary Template @jackahl
 
@@ -116,6 +117,7 @@
 ### Internal
 
 - Translations german: Unauthorized, Login/Register @ksuess
+- Removing id from FormFieldWrapper @iFlameing
 
 ## 10.6.1 (2020-12-21)
 

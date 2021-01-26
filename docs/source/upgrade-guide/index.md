@@ -12,6 +12,18 @@ This upgrade guide lists all breaking changes in Volto and explains the
 
 ## Upgrading to Volto 11.x.x
 
+### AlignBlock component new placement and import path
+
+Due to problems with circular dependencies, the `AlignBlock` was moved to helpers and used from there.
+Unfortunately, it was proven to be worse overall. We move it (with a know workaround) to its rightful place again.
+
+If your code is importing it from helpers, you should update it to the new path:
+
+```diff
+- import { AlignBlock } from '@plone/volto/helpers';
++ import AlignBlock from '@plone/volto/components/manage/Sidebar/AlignBlock';
+```
+
 ### id is removed from FormFieldWrapper
 
 We have removed the id from the FormFieldWrapper because it is coincide with the label id if we don't provide the fieldset.
