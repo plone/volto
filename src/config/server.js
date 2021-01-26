@@ -12,7 +12,7 @@ const settings = {
   ],
   criticalCssPath: 'public/critical.css',
   readCriticalCss: null, // so it will be defaultReadCriticalCss
-  initialReducers: [],
+  initialReducers: [], // add reducers to be used as initial states
 };
 
 export default settings;
