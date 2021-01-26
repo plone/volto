@@ -268,10 +268,19 @@ class Edit extends Component {
 
 const withPrismMarkup = (WrappedComponent) => (props) => {
   const [loaded, setLoaded] = React.useState();
+  const promise = React.useRef(null);
+  const cancelled = React.useRef(false);
 
   React.useEffect(() => {
-    import('prismjs/components/prism-markup').then(() => setLoaded(true));
-    return;
+    promise.current = import('prismjs/components/prism-markup');
+    promise.current.then(() => {
+      if (!cancelled.current) {
+        setLoaded(true);
+      }
+    });
+    return () => {
+      cancelled.current = true;
+    };
   }, []);
 
   return loaded ? <WrappedComponent {...props} /> : null;
