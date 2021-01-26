@@ -1976,11 +1976,6 @@
   dependencies:
     "@sentry/cli" "^1.55.0"
 
-"@seznam/compose-react-refs@^1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@seznam/compose-react-refs/-/compose-react-refs-1.0.5.tgz#151750dea81d0937d004245133c52924cb75e60e"
-  integrity sha512-1g4QJywCPQNMW5pURqtcljjXvhyzeSSLGJOcMDFg3LCH1/g5uhFkvYUPOepCwOZxfrvR7UrWOhyBMoc5LIeMHA==
-
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.14.0.tgz#9fb3a3cf3132328151f353de4632e01e52102bea"
@@ -13289,11 +13284,6 @@ react-intl@3.8.0:
     invariant "^2.1.1"
     shallow-equal "^1.1.0"
 
-react-is-mounted-hook@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/react-is-mounted-hook/-/react-is-mounted-hook-1.0.3.tgz#297e3ccc9f3c5eb2e3a867576e1c9e5c59c3d39e"
-  integrity sha512-YCCYcTVYMPfTi6WhWIwM9EYBcpHoivjjkE90O5ScsE9wXSbeXGZvLDMGt4mdSNcWshhc8JD0AzgBmsleCSdSFA==
-
 react-is@^16.6.0, react-is@^16.6.3, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.6, react-is@^16.9.0:
   version "16.12.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.12.0.tgz#2cc0fe0fba742d97fd527c42a13bec4eeb06241c"
@@ -13408,15 +13398,13 @@ react-router@5.2.0:
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
 
-react-select-async-paginate@0.5.3:
-  version "0.5.3"
-  resolved "https://registry.yarnpkg.com/react-select-async-paginate/-/react-select-async-paginate-0.5.3.tgz#c5e6e27ee887078c52653d3214214c81f7e62cc8"
-  integrity sha512-SWX1twi/jzViDpQa1nS+xyjrFtn9RBezbL4aIjcJXCABKMY+8JhH4iAKqAW3pryZbm439/DaMtQeZADH17v7bQ==
+react-select-async-paginate@0.3.10:
+  version "0.3.10"
+  resolved "https://registry.yarnpkg.com/react-select-async-paginate/-/react-select-async-paginate-0.3.10.tgz#c6e552b5ec660f55913871fe7c18d16b2abfd363"
+  integrity sha512-p/MBs5g7XCdXVxPIc/5hGaGLeDyCm+F8BZRO9bCEJ4vlzmhDj4EUzGuK0RV4PolRwYJBQmVvnGNBiE8sTCQ+Rw==
   dependencies:
-    "@babel/runtime" "^7.12.5"
-    "@seznam/compose-react-refs" "^1.0.5"
-    react-is-mounted-hook "^1.0.3"
-    sleep-promise "^9.1.0"
+    "@babel/runtime" "^7.6.3"
+    prop-types "^15.7.2"
 
 react-select@4.0.2:
   version "4.0.2"
@@ -14721,11 +14709,6 @@ slash@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/slash/-/slash-3.0.0.tgz#6539be870c165adbd5240220dbe361f1bc4d4634"
   integrity sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==
-
-sleep-promise@^9.1.0:
-  version "9.1.0"
-  resolved "https://registry.yarnpkg.com/sleep-promise/-/sleep-promise-9.1.0.tgz#101ebe65700bcd184709da95d960967b02b79d03"
-  integrity sha512-UHYzVpz9Xn8b+jikYSD6bqvf754xL2uBUzDFwiU6NcdZeifPr6UfgU43xpkPu67VMS88+TI2PSI7Eohgqf2fKA==
 
 slice-ansi@0.0.4:
   version "0.0.4"
