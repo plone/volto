@@ -14,9 +14,9 @@ This upgrade guide lists all breaking changes in Volto and explains the
 
 ### id is removed from FormFieldWrapper
 
-We have removed the id from the FormFieldWrapper because it is coincide with the label id if we don't provide the fieldset. 
-If you have cypress test which depends on this id then just remove the id from the test and if test fails then just 
-add `.react-select-container` instead of your id.
+We have removed the id from the FormFieldWrapper because it is coincide with the label id if we don't provide the fieldset.
+
+If you have cypress test which depends on this id then just remove the id from the test and if test fails then just add `.react-select-container` instead of your id. See https://github.com/plone/volto/pull/2102 for more details.
 
 ### New Default Listing Template
 
