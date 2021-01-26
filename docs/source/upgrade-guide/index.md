@@ -12,6 +12,12 @@ This upgrade guide lists all breaking changes in Volto and explains the
 
 ## Upgrading to Volto 11.x.x
 
+### id is removed from FormFieldWrapper
+
+We have removed the id from the FormFieldWrapper because it is coincide with the label id if we don't provide the fieldset. 
+If you have cypress test which depends on this id then just remove the id from the test and if test fails then just 
+add `.react-select-container` instead of your id.
+
 ### New Default Listing Template
 
 !!! note

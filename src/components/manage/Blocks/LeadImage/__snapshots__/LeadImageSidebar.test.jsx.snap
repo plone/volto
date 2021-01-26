@@ -24,7 +24,6 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
   >
     <div
       className="inline field text"
-      id="field-alt"
     >
       <div
         className="ui grid"
@@ -277,7 +276,6 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
     >
       <div
         className="inline field text"
-        id="field-link"
       >
         <div
           className="ui grid"
@@ -356,7 +354,6 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
       </div>
       <div
         className="inline field"
-        id="field-openLinkInNewTab"
       >
         <div
           className="ui grid"

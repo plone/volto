@@ -331,7 +331,6 @@ exports[`renders a Listing Block Sidebar component 1`] = `
         </div>
         <div
           class="inline field"
-          id="field-listingblock-sort-on-reverse"
         >
           <div
             class="ui grid"
@@ -369,7 +368,6 @@ exports[`renders a Listing Block Sidebar component 1`] = `
         </div>
         <div
           class="inline field text"
-          id="field-limit"
         >
           <div
             class="ui grid"
@@ -409,7 +407,6 @@ exports[`renders a Listing Block Sidebar component 1`] = `
         </div>
         <div
           class="inline field text"
-          id="field-itembatchsize"
         >
           <div
             class="ui grid"
@@ -465,7 +462,6 @@ exports[`renders a Listing Block Sidebar component 1`] = `
     >
       <div
         class="inline field text"
-        id="field-linkTitle"
       >
         <div
           class="ui grid"
@@ -505,7 +501,6 @@ exports[`renders a Listing Block Sidebar component 1`] = `
       </div>
       <div
         class="inline field text"
-        id="field-linkHref"
       >
         <div
           class="ui grid"
