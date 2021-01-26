@@ -52,7 +52,7 @@ exports[`PersonalPreferences renders a personal preferences component 1`] = `
                     onTouchEnd={[Function]}
                   >
                     <div
-                      className="react-select__value-container css-1dvrfad"
+                      className="react-select__value-container css-1a9cv00-ValueContainer"
                     >
                       <div
                         className="react-select__placeholder css-1wa3eu0-placeholder"

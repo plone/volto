@@ -12,6 +12,8 @@
 
 ### Internal
 
+- Upgrade react-select to 4.0.2 @sneridagh
+
 ## 10.10.0 (2021-01-22)
 
 ### Feature
