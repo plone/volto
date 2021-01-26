@@ -1,27 +1,33 @@
 import React from 'react';
 import { settings } from '~/config';
-import { isEqual } from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadLazyLibrary } from '@plone/volto/actions';
 
-function getLoadables(libraries, loadedLibraries) {
+export function useLoadables(maybeNames) {
+  const libraries = Array.isArray(maybeNames) ? maybeNames : [maybeNames];
   const { loadables } = settings;
-  return {
-    ...Object.assign(
-      {},
-      ...libraries.map((name) =>
-        !isEqual(Object.keys(loadables[name]).sort(), [
-          '$$typeof',
-          'load',
-          'preload',
-          'render',
-        ])
-          ? { [name]: loadables[name] }
-          : {},
-      ),
-    ), // this is to support "loadables" that are already loaded
-    ...loadedLibraries,
-  };
+  const dispatch = useDispatch();
+
+  const globalLoadedLibraries = useSelector(
+    (state) => state.lazyLibraries || {},
+  );
+
+  const loaded = getLoadables(libraries, globalLoadedLibraries);
+
+  libraries.forEach((name) => {
+    const LoadableLibrary = loadables[name];
+    if (!globalLoadedLibraries[name]) {
+      LoadableLibrary.load().then((val) => {
+        if (!globalLoadedLibraries[name] && val) {
+          dispatch(loadLazyLibrary(name, val));
+        }
+      });
+    }
+    return;
+  });
+
+  // The component is rendered when all libraries are loaded!
+  return loaded;
 }
 
 export function withLoadables(maybeNames) {
@@ -29,39 +35,15 @@ export function withLoadables(maybeNames) {
 
   function decorator(WrappedComponent) {
     function WithLoadables(props) {
-      const { loadables } = settings;
-      const dispatch = useDispatch();
-
-      const globalLoadedLibraries = useSelector(
-        (state) => state.lazyLibraries || {},
-      );
-      const loaded = getLoadables(libraries, globalLoadedLibraries);
+      const loaded = useLoadables(libraries);
       const isLoaded = Object.keys(loaded).length === libraries.length;
-
-      return (
-        <>
-          {libraries.map((name) => {
-            const LoadableLibrary = loadables[name];
-            return (
-              <LoadableLibrary
-                key={name}
-                ref={(val) => {
-                  if (!globalLoadedLibraries[name] && val) {
-                    dispatch(loadLazyLibrary(name, val));
-                  }
-                }}
-              />
-            );
-          })}
-          {isLoaded ? (
-            <WrappedComponent
-              key={Object.keys(loaded).join('|')}
-              {...props}
-              {...loaded}
-            />
-          ) : null}
-        </>
-      );
+      return isLoaded ? (
+        <WrappedComponent
+          key={Object.keys(loaded).join('|')}
+          {...props}
+          {...loaded}
+        />
+      ) : null;
     }
 
     WithLoadables.displayName = `WithLoadables(${libraries.join(
@@ -73,30 +55,13 @@ export function withLoadables(maybeNames) {
   return decorator;
 }
 
-function getDisplayName(WrappedComponent) {
-  return WrappedComponent.displayName || WrappedComponent.name || 'Component';
+function getLoadables(names, loadedLibraries) {
+  return Object.assign(
+    {},
+    ...names.map((libName) => ({ [libName]: loadedLibraries[libName] })),
+  );
 }
 
-export function useLoadables(maybeNames) {
-  const libraries = Array.isArray(maybeNames) ? maybeNames : [maybeNames];
-  const { loadables } = settings;
-  const dispatch = useDispatch();
-
-  const globalLoadedLibraries = useSelector(
-    (state) => state.lazyLibraries || {},
-  );
-  const loaded = getLoadables(libraries, globalLoadedLibraries);
-  const isLoaded = Object.keys(loaded).length === libraries.length;
-
-  libraries.forEach((name) => {
-    const LoadableLibrary = loadables[name];
-    LoadableLibrary.load().then((val) => {
-      if (!globalLoadedLibraries[name] && val) {
-        dispatch(loadLazyLibrary(name, val));
-      }
-    });
-    return;
-  });
-
-  return isLoaded ? loaded : {};
+function getDisplayName(WrappedComponent) {
+  return WrappedComponent.displayName || WrappedComponent.name || 'Component';
 }
