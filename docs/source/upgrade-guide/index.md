@@ -10,6 +10,16 @@ This upgrade guide lists all breaking changes in Volto and explains the
     dependencies might do when dealing with upgrades. We keep the generator up
     to date and in sync with current Volto release. Please notice that the generator is able to tell you when it runs that it's outdated. The generator is also able to "update" your project with the latest changes and propose you if you want to merge them. Just run it on the top of your project.
 
+## Upgrading to Volto 11.x.xml
+
+### New Default Listing Template
+
+!!! note
+    If you have customized the default listing template this change possibly does not have an effect on  your project.
+
+The default Template for the Listing Block now does no longer contain an image. The old default Template has been renamed to "Summary". This will lead to every Listing Block in your Project that uses the default Template now using the new default Template.
+
+To resolve this you can change the template of the affected Listing Blocks either manually or by writing a script for that. 
 ## Upgrading to Volto 10.x.x
 
 ### Remove the Razzle plugins patch
