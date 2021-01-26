@@ -89,8 +89,8 @@ class Edit extends Component {
    * @returns {undefined}
    */
   componentDidUpdate(prevProps, prevState) {
-    if (this.codeEditor && this.props.selected && !prevProps.selected) {
-      this.codeEditor._input.focus();
+    if (this.props.selected && this.state.codeEditor?._input) {
+      this.state.codeEditor._input.focus();
     }
   }
 
@@ -253,7 +253,11 @@ class Edit extends Component {
             padding={8}
             className="html-editor"
             ref={(node) => {
-              this.codeEditor = node;
+              if (!this.state.codeEditor) {
+                setTimeout(() => {
+                  this.setState({ codeEditor: node });
+                }, 0);
+              }
             }}
           />
         )}
