@@ -12,6 +12,8 @@ This upgrade guide lists all breaking changes in Volto and explains the
 
 ## Upgrading to Volto 11.x.x
 
+### AlignBlock component new placement and import path
+
 Due to problems with circular dependencies, the `AlignBlock` was moved to helpers and used from there.
 Unfortunately, it was proven to be worse overall. We move it (with a know workaround) to its rightful place again.
 
@@ -21,6 +23,21 @@ If your code is importing it from helpers, you should update it to the new path:
 - import { AlignBlock } from '@plone/volto/helpers';
 + import AlignBlock from '@plone/volto/components/manage/Sidebar/AlignBlock';
 ```
+
+### id is removed from FormFieldWrapper
+
+We have removed the id from the FormFieldWrapper because it is coincide with the label id if we don't provide the fieldset.
+
+If you have cypress test which depends on this id then just remove the id from the test and if test fails then just add `.react-select-container` instead of your id. See https://github.com/plone/volto/pull/2102 for more details.
+
+### New Default Listing Template
+
+!!! note
+    If you have customized the default listing template this change possibly does not have an effect on  your project.
+
+The default Template for the Listing Block now does no longer contain an image. The old default Template has been renamed to "Summary". This will lead to every Listing Block in your Project that uses the default Template now using the new default Template, and thus, not showing the image.
+
+To resolve this you can change the template of the affected Listing Blocks either manually or by writing a backend script for that.
 
 ## Upgrading to Volto 10.x.x
 

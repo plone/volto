@@ -3,7 +3,6 @@
 exports[`renders an align widget component 1`] = `
 <div
   className="inline field align-widget"
-  id="field-align"
 >
   <div
     className="ui grid"

@@ -5,12 +5,19 @@
 ### Breaking
 
 - [circular deps] Move `Align` component to its rightful place @sneridagh
+- Removing id from FormFieldWrapper @iFlameing
+- Change default Listing Template to include only Text and renamed the old default Template to Summary Template @jackahl
 
 ### Feature
 
 ### Bugfix
 
+- Better handling of a condition in the new breadcrumbs @sneridagh
+
 ### Internal
+
+- Upgrade react-select to 4.0.2 @sneridagh
+- Upgrade react ecosystem to 13.14.0 @sneridagh
 
 ## 10.10.0 (2021-01-22)
 
