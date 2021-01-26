@@ -104,6 +104,7 @@ function setupServer(req, res, next) {
       messages: locales[lang],
     },
     browserdetect,
+    ...settings.serverConfig.initialReducers,
   };
   const history = createMemoryHistory({
     initialEntries: [req.url],
