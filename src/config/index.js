@@ -95,6 +95,7 @@ let config = {
       'actions',
       'breadcrumbs',
       'types',
+      'content',
     ], // add reducers to be only whitelisted in browser to load
     sentryOptions: {
       ...sentryOptions,

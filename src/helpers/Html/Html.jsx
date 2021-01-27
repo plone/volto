@@ -20,12 +20,16 @@ if (window.addEventListener) {
 } else {
   window.onload=alter
 }`;
+
 export const loadReducers = (state = {}) => {
-  const reducers = settings.initialReducers.map((reducer) => ({
-    [reducer]: state[reducer],
-  }));
-  return Object.assign({}, ...reducers);
+  return Object.assign(
+    {},
+    ...settings.initialReducers.map((name) =>
+      state[name] ? { [name]: state[name] } : {},
+    ),
+  );
 };
+
 /**
  * Html class.
  * Wrapper component containing HTML metadata and boilerplate tags.
