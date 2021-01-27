@@ -93,7 +93,6 @@ This list is still incomplete, contributions are welcomed!
         (for example content with lots of text) and you need to batch requests
         anyway, if you want to be sure to display all the children.
 
-
 ### persistentReducers
 
 !!! block ""
@@ -111,6 +110,18 @@ This list is still incomplete, contributions are welcomed!
 
     You can edit this limit in the `settings` object setting a new value in bytes
     (for example, to set 500 mb you need to write 5000000000).
+
+### initialReducers
+
+!!! block ""
+
+    The initial state passed from server to browser needs to be minimal in order to optimize the resultant html generated. This state gets stored in `window.__data` and received in client.
+
+    We whitelisted a few required reducers that are needed to make volto work specially in SSR so that the `initialState` are not different. You can edit this list and add reducers specific to your requirements.
+
+    ```
+    initialReducers: ['userSession','content', ...your reducers here]
+    ```
 
 ## Server-specific serverConfig
 
