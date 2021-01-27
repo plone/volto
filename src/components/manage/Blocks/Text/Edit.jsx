@@ -51,6 +51,7 @@ class Edit extends Component {
     onFocusNextBlock: PropTypes.func.isRequired,
     onSelectBlock: PropTypes.func.isRequired,
     allowedBlocks: PropTypes.arrayOf(PropTypes.string),
+    showRestricted: PropTypes.bool,
     formTitle: PropTypes.string,
     formDescription: PropTypes.string,
   };
@@ -124,6 +125,16 @@ class Edit extends Component {
         editorState: EditorState.moveFocusToEnd(this.state.editorState),
       });
     }
+  }
+
+  /**
+   * @param {*} nextProps
+   * @param {*} nextState
+   * @returns {boolean}
+   * @memberof Edit
+   */
+  shouldComponentUpdate(nextProps) {
+    return this.props.selected || !isEqual(this.props.data, nextProps.data);
   }
 
   /**

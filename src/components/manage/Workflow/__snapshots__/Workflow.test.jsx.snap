@@ -17,7 +17,7 @@ Array [
       onTouchEnd={[Function]}
     >
       <div
-        className="react-select__value-container react-select__value-container--has-value css-1hwfws3"
+        className="react-select__value-container react-select__value-container--has-value css-g1d714-ValueContainer"
       >
         <div
           className="react-select__single-value css-1uccc91-singleValue"
@@ -39,7 +39,8 @@ Array [
           Private
         </div>
         <input
-          className="css-62g3xt-dummyInput"
+          aria-autocomplete="list"
+          className="css-wmatm6-dummyInput-DummyInput"
           disabled={false}
           id="react-select-3-input"
           onBlur={[Function]}
@@ -109,7 +110,7 @@ Array [
       onTouchEnd={[Function]}
     >
       <div
-        className="react-select__value-container react-select__value-container--has-value css-1hwfws3"
+        className="react-select__value-container react-select__value-container--has-value css-g1d714-ValueContainer"
       >
         <div
           className="react-select__single-value react-select__single-value--is-disabled css-107lb6w-singleValue"
@@ -131,7 +132,8 @@ Array [
           Public
         </div>
         <input
-          className="css-62g3xt-dummyInput"
+          aria-autocomplete="list"
+          className="css-wmatm6-dummyInput-DummyInput"
           disabled={true}
           id="react-select-2-input"
           onBlur={[Function]}
