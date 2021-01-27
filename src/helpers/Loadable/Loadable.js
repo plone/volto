@@ -1,56 +1,52 @@
 import React from 'react';
 import { settings } from '~/config';
-import { isEqual } from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadLazyLibrary } from '@plone/volto/actions';
 
-const isLoadableLoaded = (l) => {
-  return !isEqual(Object.keys(l).sort(), [
-    '$$typeof',
-    'load',
-    'preload',
-    'render',
-  ]);
-};
-
-const mergeLibs = (libNames) => {
+export function useLoadables(maybeNames) {
+  const libraries = Array.isArray(maybeNames) ? maybeNames : [maybeNames];
   const { loadables } = settings;
-  return Object.assign(
-    {},
-    ...libNames.map((name) =>
-      isLoadableLoaded(loadables[name]) ? { [name]: loadables[name] } : {},
-    ),
+  const dispatch = useDispatch();
+
+  const globalLoadedLibraries = useSelector(
+    (state) => state.lazyLibraries || {},
   );
-};
 
-function getLoadables(libNames, loadedLibs) {
-  return {
-    ...mergeLibs(libNames),
+  const loaded = getLoadables(libraries, globalLoadedLibraries);
 
-    // this is to support "loadables" that are already loaded
-    ...loadedLibs,
-  };
+  libraries.forEach((name) => {
+    const LoadableLibrary = loadables[name];
+    if (!globalLoadedLibraries[name]) {
+      LoadableLibrary.load().then((val) => {
+        if (!globalLoadedLibraries[name] && val) {
+          dispatch(loadLazyLibrary(name, val));
+        }
+      });
+    }
+    return;
+  });
+
+  // The component is rendered when all libraries are loaded!
+  return loaded;
 }
 
 export function withLoadables(maybeNames) {
-  const libNames = Array.isArray(maybeNames) ? maybeNames : [maybeNames];
+  const libraries = Array.isArray(maybeNames) ? maybeNames : [maybeNames];
 
   function decorator(WrappedComponent) {
     function WithLoadables(props) {
-      const loadedLibs = useLoadables(libNames);
-
-      return (
-        Object.keys(loadedLibs).length > 0 && (
-          <WrappedComponent
-            key={Object.keys(loadedLibs).join('|')}
-            {...props}
-            {...loadedLibs}
-          />
-        )
-      );
+      const loaded = useLoadables(libraries);
+      const isLoaded = Object.keys(loaded).length === libraries.length;
+      return isLoaded ? (
+        <WrappedComponent
+          key={Object.keys(loaded).join('|')}
+          {...props}
+          {...loaded}
+        />
+      ) : null;
     }
 
-    WithLoadables.displayName = `WithLoadables(${libNames.join(
+    WithLoadables.displayName = `WithLoadables(${libraries.join(
       ',',
     )})(${getDisplayName(WrappedComponent)})`;
 
@@ -59,27 +55,15 @@ export function withLoadables(maybeNames) {
   return decorator;
 }
 
-function getDisplayName(WrappedComponent) {
-  return WrappedComponent.displayName || WrappedComponent.name || 'Component';
+function getLoadables(names, loadedLibraries) {
+  return Object.assign(
+    {},
+    ...names.map((libName) =>
+      loadedLibraries[libName] ? { [libName]: loadedLibraries[libName] } : {},
+    ),
+  );
 }
 
-export function useLoadables(maybeNames) {
-  const libNames = Array.isArray(maybeNames) ? maybeNames : [maybeNames];
-  const { loadables } = settings;
-  const dispatch = useDispatch();
-
-  const globalLoadedLibs = useSelector((state) => state.lazyLibraries || {});
-  const loadedLibs = getLoadables(libNames, globalLoadedLibs);
-  const allLoaded = Object.keys(loadedLibs).length === libNames.length;
-
-  libNames.forEach((name) => {
-    const LoadableLibrary = loadables[name];
-    LoadableLibrary.load().then((val) => {
-      if (!globalLoadedLibs[name] && val) {
-        dispatch(loadLazyLibrary(name, val));
-      }
-    });
-  });
-
-  return allLoaded ? loadedLibs : {};
+function getDisplayName(WrappedComponent) {
+  return WrappedComponent.displayName || WrappedComponent.name || 'Component';
 }

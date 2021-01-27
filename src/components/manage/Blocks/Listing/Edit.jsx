@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
+import { isEqual } from 'lodash';
 
 import {
   SidebarPortal,
@@ -20,53 +21,49 @@ const messages = defineMessages({
   },
 });
 
-const Edit = ({
-  data,
-  onChangeBlock,
-  block,
-  selected,
-  properties,
-  pathname,
-  intl,
-}) => {
-  // componentDidMount
-  React.useEffect(() => {
-    if (!data.query) {
-      onChangeBlock(block, {
-        ...data,
-        query: [],
-        block,
-      });
-    }
-    /* eslint-disable react-hooks/exhaustive-deps */
-  }, []);
+const Edit = React.memo(
+  ({ data, onChangeBlock, block, selected, properties, pathname, intl }) => {
+    // componentDidMount
+    React.useEffect(() => {
+      if (!data.query) {
+        onChangeBlock(block, {
+          ...data,
+          query: [],
+          block,
+        });
+      }
+      /* eslint-disable react-hooks/exhaustive-deps */
+    }, []);
 
-  const placeholder =
-    data.placeholder ||
-    (data?.query?.length
-      ? intl.formatMessage(messages.results)
-      : intl.formatMessage(messages.items));
+    const placeholder =
+      data.placeholder ||
+      (data?.query?.length
+        ? intl.formatMessage(messages.results)
+        : intl.formatMessage(messages.items));
 
-  return (
-    <>
-      <p className="items-preview">{placeholder}</p>
-      <ListingBody
-        data={data}
-        properties={properties}
-        block={block}
-        path={getBaseUrl(pathname)}
-        isEditMode
-      />
-      <SidebarPortal selected={selected}>
-        <ListingSidebar
+    return (
+      <>
+        <p className="items-preview">{placeholder}</p>
+        <ListingBody
           data={data}
+          properties={properties}
           block={block}
-          onChangeBlock={onChangeBlock}
+          path={getBaseUrl(pathname)}
+          isEditMode
         />
-      </SidebarPortal>
-    </>
-  );
-};
+        <SidebarPortal selected={selected}>
+          <ListingSidebar
+            data={data}
+            block={block}
+            onChangeBlock={onChangeBlock}
+          />
+        </SidebarPortal>
+      </>
+    );
+  },
+  (prevProps, nextProps) =>
+    !(nextProps.selected || !isEqual(prevProps.data, nextProps.data)),
+);
 
 Edit.propTypes = {
   data: PropTypes.objectOf(PropTypes.any).isRequired,
