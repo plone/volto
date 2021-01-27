@@ -24,8 +24,10 @@ if (window.addEventListener) {
 export const loadReducers = (state = {}) => {
   return Object.assign(
     {},
-    ...settings.initialReducers.map((name) =>
-      state[name] ? { [name]: state[name] } : {},
+    ...Object.keys(state).map((name) =>
+      settings.initialReducersBlacklist.includes(name)
+        ? {}
+        : { [name]: state[name] },
     ),
   );
 };

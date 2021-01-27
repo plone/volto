@@ -26,6 +26,12 @@ jest.mock('../BodyClass/BodyClass', () => ({
   rewind: () => ['class1', 'class2'],
 }));
 
+jest.mock('~/config', () => ({
+  settings: {
+    initialReducersBlacklist: ['navigation'],
+  },
+}));
+
 describe('Html', () => {
   it('renders a html component', () => {
     const component = renderer.create(
