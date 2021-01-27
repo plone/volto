@@ -18,6 +18,12 @@ jest.mock('moment', () =>
   })),
 );
 
+jest.mock('@plone/volto/helpers/Loadable/Loadable');
+beforeAll(
+  async () =>
+    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
+);
+
 describe('Diff', () => {
   it('renders a diff component', async () => {
     const store = mockStore({
@@ -71,7 +77,7 @@ describe('Diff', () => {
         messages: {},
       },
     });
-    const component = render(
+    const { container } = render(
       <Provider store={store}>
         <MemoryRouter initialEntries={['/blog?one=0&two=1']}>
           <Diff />
@@ -79,6 +85,6 @@ describe('Diff', () => {
       </Provider>,
     );
     await waitFor(() => screen.getByTestId('DiffField'));
-    expect(component).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });
