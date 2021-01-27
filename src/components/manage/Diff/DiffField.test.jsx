@@ -27,7 +27,7 @@ describe('DiffField', () => {
         messages: {},
       },
     });
-    const component = render(
+    const { container } = render(
       <Provider store={store}>
         <DiffField
           pathname="/blog"
@@ -39,7 +39,7 @@ describe('DiffField', () => {
       </Provider>,
     );
     await waitFor(() => screen.getByTestId('DiffField'));
-    expect(component).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it('renders a diff field in unified mode', async () => {

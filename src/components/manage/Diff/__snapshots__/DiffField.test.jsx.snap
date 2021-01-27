@@ -138,188 +138,69 @@ exports[`DiffField renders a datetime field 1`] = `
 `;
 
 exports[`DiffField renders a diff field in split mode 1`] = `
-Object {
-  "asFragment": [Function],
-  "baseElement": <body>
-    <div>
-      <table
-        class="ui compact table"
-        data-testid="DiffField"
-      >
-        <thead
-          class=""
-        >
-          <tr
-            class=""
-          >
-            <th
-              class=""
-              colspan="2"
-            >
-              Title
-            </th>
-          </tr>
-        </thead>
-        <tbody
-          class=""
-        >
-          <tr
-            class=""
-          >
-            <td
-              class="top aligned eight wide"
-            >
-              <span>
-                <span>
-                  My 
-                </span>
-                <span
-                  class="deletion"
-                >
-                  old
-                </span>
-                <span>
-                   string
-                </span>
-              </span>
-            </td>
-            <td
-              class="top aligned eight wide"
-            >
-              <span>
-                <span>
-                  My 
-                </span>
-                <span
-                  class="addition"
-                >
-                  new
-                </span>
-                <span>
-                   string
-                </span>
-              </span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </body>,
-  "container": <div>
-    <table
-      class="ui compact table"
-      data-testid="DiffField"
+<div>
+  <table
+    class="ui compact table"
+    data-testid="DiffField"
+  >
+    <thead
+      class=""
     >
-      <thead
+      <tr
         class=""
       >
-        <tr
+        <th
           class=""
+          colspan="2"
         >
-          <th
-            class=""
-            colspan="2"
-          >
-            Title
-          </th>
-        </tr>
-      </thead>
-      <tbody
+          Title
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class=""
+    >
+      <tr
         class=""
       >
-        <tr
-          class=""
+        <td
+          class="top aligned eight wide"
         >
-          <td
-            class="top aligned eight wide"
-          >
+          <span>
             <span>
-              <span>
-                My 
-              </span>
-              <span
-                class="deletion"
-              >
-                old
-              </span>
-              <span>
-                 string
-              </span>
+              My 
             </span>
-          </td>
-          <td
-            class="top aligned eight wide"
-          >
+            <span
+              class="deletion"
+            >
+              old
+            </span>
             <span>
-              <span>
-                My 
-              </span>
-              <span
-                class="addition"
-              >
-                new
-              </span>
-              <span>
-                 string
-              </span>
+               string
             </span>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>,
-  "debug": [Function],
-  "findAllByAltText": [Function],
-  "findAllByDisplayValue": [Function],
-  "findAllByLabelText": [Function],
-  "findAllByPlaceholderText": [Function],
-  "findAllByRole": [Function],
-  "findAllByTestId": [Function],
-  "findAllByText": [Function],
-  "findAllByTitle": [Function],
-  "findByAltText": [Function],
-  "findByDisplayValue": [Function],
-  "findByLabelText": [Function],
-  "findByPlaceholderText": [Function],
-  "findByRole": [Function],
-  "findByTestId": [Function],
-  "findByText": [Function],
-  "findByTitle": [Function],
-  "getAllByAltText": [Function],
-  "getAllByDisplayValue": [Function],
-  "getAllByLabelText": [Function],
-  "getAllByPlaceholderText": [Function],
-  "getAllByRole": [Function],
-  "getAllByTestId": [Function],
-  "getAllByText": [Function],
-  "getAllByTitle": [Function],
-  "getByAltText": [Function],
-  "getByDisplayValue": [Function],
-  "getByLabelText": [Function],
-  "getByPlaceholderText": [Function],
-  "getByRole": [Function],
-  "getByTestId": [Function],
-  "getByText": [Function],
-  "getByTitle": [Function],
-  "queryAllByAltText": [Function],
-  "queryAllByDisplayValue": [Function],
-  "queryAllByLabelText": [Function],
-  "queryAllByPlaceholderText": [Function],
-  "queryAllByRole": [Function],
-  "queryAllByTestId": [Function],
-  "queryAllByText": [Function],
-  "queryAllByTitle": [Function],
-  "queryByAltText": [Function],
-  "queryByDisplayValue": [Function],
-  "queryByLabelText": [Function],
-  "queryByPlaceholderText": [Function],
-  "queryByRole": [Function],
-  "queryByTestId": [Function],
-  "queryByText": [Function],
-  "queryByTitle": [Function],
-  "rerender": [Function],
-  "unmount": [Function],
-}
+          </span>
+        </td>
+        <td
+          class="top aligned eight wide"
+        >
+          <span>
+            <span>
+              My 
+            </span>
+            <span
+              class="addition"
+            >
+              new
+            </span>
+            <span>
+               string
+            </span>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 `;
 
 exports[`DiffField renders a diff field in unified mode 1`] = `
