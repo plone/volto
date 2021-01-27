@@ -31,6 +31,7 @@ export default () => {
   const api = new Api();
 
   const store = configureStore(window.__data, history, api);
+  console.log(window.__data);
   persistAuthToken(store);
 
   // On Cypress we expose the history, the store and the settings
