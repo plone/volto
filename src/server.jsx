@@ -94,12 +94,6 @@ function setupServer(req, res, next) {
     .toString();
 
   const authToken = cookie.load('auth_token');
-  const initialReducers = settings.serverConfig.initialReducers.map(
-    (reducer) => ({
-      [reducer]: reducer,
-    }),
-  );
-  const reducers = Object.assign({}, ...initialReducers);
   const initialState = {
     userSession: { ...userSession(), token: authToken },
     form: req.body,
@@ -109,7 +103,6 @@ function setupServer(req, res, next) {
       messages: locales[lang],
     },
     browserdetect,
-    ...reducers,
   };
 
   const history = createMemoryHistory({

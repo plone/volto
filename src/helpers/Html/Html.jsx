@@ -10,6 +10,7 @@ import serialize from 'serialize-javascript';
 import { join } from 'lodash';
 import { BodyClass } from '@plone/volto/helpers';
 import { runtimeConfig } from '@plone/volto/runtime_config';
+import { settings } from '~/config';
 
 const CRITICAL_CSS_TEMPLATE = `function alter() {
   document.querySelectorAll("head link[rel='prefetch']").forEach(function(el) { el.rel = 'stylesheet'});
@@ -19,7 +20,12 @@ if (window.addEventListener) {
 } else {
   window.onload=alter
 }`;
-
+export const loadReducers = (state = {}) => {
+  const reducers = settings.initialReducers.map((reducer) => ({
+    [reducer]: state[reducer],
+  }));
+  return Object.assign({}, ...reducers);
+};
 /**
  * Html class.
  * Wrapper component containing HTML metadata and boilerplate tags.
@@ -77,7 +83,6 @@ class Html extends Component {
     const { extractor, markup, store, criticalCss } = this.props;
     const head = Helmet.rewind();
     const bodyClass = join(BodyClass.rewind(), ' ');
-
     return (
       <html lang="en">
         <head>
@@ -148,7 +153,9 @@ class Html extends Component {
           <div id="sidebar" />
           <script
             dangerouslySetInnerHTML={{
-              __html: `window.__data=${serialize(store.getState())};`,
+              __html: `window.__data=${serialize(
+                loadReducers(store.getState()),
+              )};`,
             }}
             charSet="UTF-8"
           />

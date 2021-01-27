@@ -67,7 +67,7 @@ exports[`Html renders a html component 1`] = `
       charSet="UTF-8"
       dangerouslySetInnerHTML={
         Object {
-          "__html": "window.__data=undefined;",
+          "__html": "window.__data={\\"userSession\\":undefined,\\"router\\":undefined};",
         }
       }
     />
