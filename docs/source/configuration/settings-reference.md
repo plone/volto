@@ -119,8 +119,16 @@ This list is still incomplete, contributions are welcomed!
 
     We whitelisted a few required reducers that are needed to make volto work specially in SSR so that the `initialState` are not different. You can edit this list and add reducers specific to your requirements.
 
-    ```
-    initialReducers: ['userSession','content', ...your reducers here]
+    ```js
+    import * as config from '@plone/volto/config';
+
+    export const settings = {
+      ...config.settings,
+      initialReducers: [
+        ...config.settings.initialReducers,
+        'yourReducer',
+      ]
+    };
     ```
 
 ## Server-specific serverConfig
