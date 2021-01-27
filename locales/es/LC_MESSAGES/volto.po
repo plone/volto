@@ -254,7 +254,7 @@ msgstr "Celda"
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Center"
 msgstr "Centro"
 
@@ -780,7 +780,7 @@ msgid "From"
 msgstr "De"
 
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Full"
 msgstr "Completo"
 
@@ -1003,7 +1003,7 @@ msgstr ""
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Left"
 msgstr "Izquierda"
 
@@ -1489,7 +1489,7 @@ msgstr "Texto formateado"
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Right"
 msgstr "Derecha"
 
