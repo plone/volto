@@ -88,15 +88,7 @@ let config = {
     defaultBlockType: 'text',
     verticalFormTabs: false,
     persistentReducers: ['blocksClipboard'],
-    initialReducers: [
-      'userSession',
-      'router',
-      'navigation',
-      'actions',
-      'breadcrumbs',
-      'types',
-      'content',
-    ], // add reducers to be only whitelisted in browser to load
+    initialReducersBlacklist: [], // reducers in this list won't be hydrated in windows.__data
     sentryOptions: {
       ...sentryOptions,
     },
