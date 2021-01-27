@@ -88,7 +88,14 @@ let config = {
     defaultBlockType: 'text',
     verticalFormTabs: false,
     persistentReducers: ['blocksClipboard'],
-    initialReducers: ['userSession', 'router', 'navigation'], // add reducers to be only whitelisted in browser to load
+    initialReducers: [
+      'userSession',
+      'router',
+      'navigation',
+      'actions',
+      'breadcrumbs',
+      'types',
+    ], // add reducers to be only whitelisted in browser to load
     sentryOptions: {
       ...sentryOptions,
     },
