@@ -439,7 +439,7 @@ class Contents extends Component {
       this.fetchContents(nextProps.pathname);
     }
     if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
-      this.props.toastify.success(
+      this.props.toastify.toast.success(
         <Toast
           success
           title={this.props.intl.formatMessage(messages.success)}
@@ -464,7 +464,7 @@ class Contents extends Component {
       this.props.clipboardRequest.loading &&
       nextProps.clipboardRequest.error
     ) {
-      this.props.toastify.error(
+      this.props.toastify.toast.error(
         <Toast
           error
           title={this.props.intl.formatMessage(messages.error)}
@@ -477,7 +477,7 @@ class Contents extends Component {
       this.props.clipboardRequest.loading &&
       nextProps.clipboardRequest.loaded
     ) {
-      this.props.toastify.success(
+      this.props.toastify.toast.success(
         <Toast
           success
           title={this.props.intl.formatMessage(messages.success)}
@@ -486,7 +486,7 @@ class Contents extends Component {
       );
     }
     if (this.props.orderRequest.loading && nextProps.orderRequest.loaded) {
-      this.props.toastify.success(
+      this.props.toastify.toast.success(
         <Toast
           success
           title={this.props.intl.formatMessage(messages.success)}
@@ -918,7 +918,7 @@ class Contents extends Component {
   cut(event, { value }) {
     this.props.cut(value ? [value] : this.state.selected);
     this.onSelectNone();
-    this.props.toastify.success(
+    this.props.toastify.toast.success(
       <Toast
         success
         title={this.props.intl.formatMessage(messages.success)}
@@ -937,7 +937,7 @@ class Contents extends Component {
   copy(event, { value }) {
     this.props.copy(value ? [value] : this.state.selected);
     this.onSelectNone();
-    this.props.toastify.success(
+    this.props.toastify.toast.success(
       <Toast
         success
         title={this.props.intl.formatMessage(messages.success)}
