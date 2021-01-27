@@ -18,6 +18,7 @@
 
 - Upgrade react-select to 4.0.2 @sneridagh
 - Upgrade react ecosystem to 13.14.0 @sneridagh
+- Add shouldComponentUpdate to blocks @nileshgulia1
 
 ## 10.10.0 (2021-01-22)
 
@@ -609,7 +610,6 @@ https://docs.voltocms.com/upgrade-guide/
 
 - Create link in Draftjs using Objectbrowser @giuliaghisini
 
- - add shouldComponentUpdate to blocks @nileshgulia1
 ### Bugfix
 
 - Allow select widget to reset when the incoming props change. The react-select widget has its own internal state, so if you initialise the widget without choices, then populate the choices, it wouldn't properly show the default value @tiberiuichim
