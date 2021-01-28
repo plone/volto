@@ -142,7 +142,7 @@ class GroupsControlpanel extends Component {
       this.props.createGroupRequest.loading &&
       nextProps.createGroupRequest.error
     ) {
-      this.onAddGroupError(nextProps.createRequest.error);
+      this.onAddGroupError(nextProps.createGroupRequest.error);
     }
     if (
       this.props.loadRolesRequest.loading &&
@@ -294,7 +294,7 @@ class GroupsControlpanel extends Component {
    */
   onAddGroupError(error) {
     this.setState({
-      addGroupError: error.message,
+      addGroupError: error.response.body.message,
     });
   }
 
