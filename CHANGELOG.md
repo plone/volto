@@ -4,15 +4,29 @@
 
 ### Breaking
 
+- [circular deps] Move `Align` component to its rightful place @sneridagh
+- Removing id from FormFieldWrapper @iFlameing
+- Change default Listing Template to include only Text and renamed the old default Template to Summary Template @jackahl
+
 ### Feature
 
 - added linkDetectionPlugin plugin to draftjs to automatically create links for urls and mails when editing text. @giuliaghisini
+- An initial Storybook setup. Start it with `yarn storybook`. Feel free to contribute more stories! @sneridagh
+- make and load configurable reducers in the client `window.__data`, decreasing the html size @nileshgulia1 @tiberiuichim
+- Custom group component for selectStyling @nileshgulia1
+- Add new components: RenderBlocks, BlocksForm, DragDropList and EditBlockWrapper @tiberiuichim
+- Add `noValueOption` prop to `SelectWidget` so you can opt-out from the "no-value" option so the choices are a closed list @sneridagh
 
 ### Bugfix
 
 - Better handling of a condition in the new breadcrumbs @sneridagh
 
 ### Internal
+
+- Upgrade react-select to 4.0.2 @sneridagh
+- Upgrade react ecosystem to 13.14.0 @sneridagh
+- Add shouldComponentUpdate to blocks @nileshgulia1
+- Update old entry in upgrade guide @tiberiuichim
 
 ## 10.10.0 (2021-01-22)
 
@@ -110,6 +124,7 @@
 ### Internal
 
 - Translations german: Unauthorized, Login/Register @ksuess
+- Removing id from FormFieldWrapper @iFlameing
 
 ## 10.6.1 (2020-12-21)
 

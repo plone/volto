@@ -94,7 +94,6 @@ function setupServer(req, res, next) {
     .toString();
 
   const authToken = cookie.load('auth_token');
-
   const initialState = {
     userSession: { ...userSession(), token: authToken },
     form: req.body,
@@ -105,6 +104,7 @@ function setupServer(req, res, next) {
     },
     browserdetect,
   };
+
   const history = createMemoryHistory({
     initialEntries: [req.url],
   });
