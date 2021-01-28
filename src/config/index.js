@@ -87,7 +87,7 @@ let config = {
     expressMiddleware: serverConfig.expressMiddleware, // BBB
     defaultBlockType: 'text',
     verticalFormTabs: false,
-    persistentReducers: ['blocksClipboard'],
+    persistentReducers: ['blocksClipboard', 'groups'],
     sentryOptions: {
       ...sentryOptions,
     },
