@@ -10,6 +10,8 @@
 
 ### Feature
 
+- An initial Storybook setup. Start it with `yarn storybook`. Feel free to contribute more stories! @sneridagh
+
 ### Bugfix
 
 - Better handling of a condition in the new breadcrumbs @sneridagh
