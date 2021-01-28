@@ -84,14 +84,18 @@ class Edit extends Component {
     this.onCodeEditor = this.onCodeEditor.bind(this);
   }
 
+  codeEditorRef = React.createRef();
+
   /**
    * Component did update
    * @method componentDidUpdate
    * @returns {undefined}
    */
-  componentDidUpdate(prevProps, prevState) {
-    if (this.props.selected && this.state.codeEditor?._input) {
-      this.state.codeEditor._input.focus();
+  componentDidUpdate() {
+    if (this.props.selected && this.codeEditorRef.current) {
+      if (this.state?.codeEditor?._input) {
+        this.state.codeEditor._input.focus();
+      }
     }
   }
 
@@ -128,18 +132,23 @@ class Edit extends Component {
    * @returns {undefined}
    */
   onPreview() {
-    const code = this.props.prettierStandalone
-      .format(this.getValue(), {
-        parser: 'html',
-        plugins: [this.props.prettierParserHtml],
-      })
-      .trim();
-    this.setState(
-      {
-        isPreview: !this.state.isPreview,
-      },
-      () => this.onChangeCode(code),
-    );
+    try {
+      const code = this.props.prettierStandalone
+        .format(this.getValue(), {
+          parser: 'html',
+          plugins: [this.props.prettierParserHtml],
+        })
+        .trim();
+      this.setState(
+        {
+          isPreview: !this.state.isPreview,
+        },
+        () => this.onChangeCode(code),
+      );
+    } catch (ex) {
+      // error while parsing the user-typed HTML
+      // TODO: show a toast notification or something similar to the user
+    }
   }
 
   /**
@@ -149,13 +158,18 @@ class Edit extends Component {
    */
 
   onPrettify = () => {
-    const code = this.props.prettierStandalone
-      .format(this.getValue(), {
-        parser: 'html',
-        plugins: [this.props.prettierParserHtml],
-      })
-      .trim();
-    this.onChangeCode(code);
+    try {
+      const code = this.props.prettierStandalone
+        .format(this.getValue(), {
+          parser: 'html',
+          plugins: [this.props.prettierParserHtml],
+        })
+        .trim();
+      this.onChangeCode(code);
+    } catch (ex) {
+      // error while parsing the user-typed HTML
+      // TODO: show a toast notification or something similar to the user
+    }
   };
 
   /**
@@ -264,10 +278,8 @@ class Edit extends Component {
             padding={8}
             className="html-editor"
             ref={(node) => {
-              if (!this.state.codeEditor) {
-                setTimeout(() => {
-                  this.setState({ codeEditor: node });
-                }, 0);
+              if (node) {
+                this.codeEditorRef.current = node;
               }
             }}
           />

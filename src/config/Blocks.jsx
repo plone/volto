@@ -306,6 +306,7 @@ const blocksConfig = {
     schema: BlockSettingsSchema,
     restricted: false,
     mostUsed: false,
+    blockHasOwnFocusManagement: true,
     sidebarTab: 0,
     security: {
       addPermission: [],
