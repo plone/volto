@@ -17,7 +17,7 @@ export const __setLoadables = async () => {
 };
 
 // TODO: filter mockAllLoadables
-export const withLoadables = jest
+export const injectLazyLibs = jest
   .fn()
   .mockImplementation(function ([libraries]) {
     return jest.fn((WrappedComponent) =>

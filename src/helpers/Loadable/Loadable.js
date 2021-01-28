@@ -1,15 +1,20 @@
 import React from 'react';
 import { settings } from '~/config';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { loadLazyLibrary } from '@plone/volto/actions';
+import { omit } from 'lodash';
+import hoistNonReactStatics from 'hoist-non-react-statics';
 
-export function useLoadables(maybeNames) {
+// TODO: make an unit test that checks if it is possible to have multiple
+// useLoadables hooks inside a single component?
+export function useLazyLibs(maybeNames, shouldRerender = true) {
   const libraries = Array.isArray(maybeNames) ? maybeNames : [maybeNames];
   const { loadables } = settings;
   const dispatch = useDispatch();
 
   const globalLoadedLibraries = useSelector(
     (state) => state.lazyLibraries || {},
+    (left, right) => (shouldRerender ? shallowEqual(left, right) : true),
   );
 
   const loaded = getLoadables(libraries, globalLoadedLibraries);
@@ -30,18 +35,27 @@ export function useLoadables(maybeNames) {
   return loaded;
 }
 
-export function withLoadables(maybeNames) {
+export function preloadLazyLibs(maybeNames, forwardRef = false) {
+  return injectLazyLibs(maybeNames, forwardRef, false);
+}
+
+export function injectLazyLibs(
+  maybeNames,
+  forwardRef = false,
+  shouldRerender = true,
+) {
   const libraries = Array.isArray(maybeNames) ? maybeNames : [maybeNames];
 
-  function decorator(WrappedComponent) {
+  const decorator = (WrappedComponent) => {
     function WithLoadables(props) {
-      const loaded = useLoadables(libraries);
+      const loaded = useLazyLibs(libraries, shouldRerender);
       const isLoaded = Object.keys(loaded).length === libraries.length;
       return isLoaded ? (
         <WrappedComponent
           key={Object.keys(loaded).join('|')}
-          {...props}
+          {...omit(props, 'forwardedRef')}
           {...loaded}
+          ref={forwardRef ? props.forwardedRef : null}
         />
       ) : null;
     }
@@ -50,8 +64,18 @@ export function withLoadables(maybeNames) {
       ',',
     )})(${getDisplayName(WrappedComponent)})`;
 
-    return WithLoadables;
-  }
+    if (forwardRef) {
+      return hoistNonReactStatics(
+        React.forwardRef((props, ref) => {
+          return <WithLoadables {...props} forwardedRef={ref} />;
+        }),
+        WrappedComponent,
+      );
+    }
+
+    return hoistNonReactStatics(WithLoadables, WrappedComponent);
+  };
+
   return decorator;
 }
 
