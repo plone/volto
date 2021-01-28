@@ -468,6 +468,7 @@ https://docs.voltocms.com/upgrade-guide/
 - Removed timezone initialization for DatetimeWidget, ref #1923. @razvanMiu
 
 ## 8.5.2 (2020-10-21)
+- Custom group component for selectStyling @nileshgulia1
 
 ### Bugfix
 
