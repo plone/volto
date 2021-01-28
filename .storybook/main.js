@@ -97,7 +97,7 @@ module.exports = {
       plugins: [
         ...options.plugins,
         [
-          '/Users/sneridagh/Development/plone/volto/node_modules/babel-plugin-root-import/build/index.js',
+          './node_modules/babel-plugin-root-import/build/index.js',
           {
             rootPathSuffix: './src',
           },
