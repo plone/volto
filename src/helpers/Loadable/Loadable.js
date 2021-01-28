@@ -1,6 +1,6 @@
 import React from 'react';
 import { settings } from '~/config';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { loadLazyLibrary } from '@plone/volto/actions';
 import { omit } from 'lodash';
 import hoistNonReactStatics from 'hoist-non-react-statics';
@@ -8,13 +8,14 @@ import hoistNonReactStatics from 'hoist-non-react-statics';
 // TODO: make an unit test that checks if it is possible to have multiple
 // useLoadables hooks inside a single component?
 // TODO: rename this to useLibs?
-export function useLoadables(maybeNames) {
+export function useLoadables(maybeNames, shouldRerender = true) {
   const libraries = Array.isArray(maybeNames) ? maybeNames : [maybeNames];
   const { loadables } = settings;
   const dispatch = useDispatch();
 
   const globalLoadedLibraries = useSelector(
     (state) => state.lazyLibraries || {},
+    (left, right) => (shouldRerender ? shallowEqual(left, right) : true),
   );
 
   const loaded = getLoadables(libraries, globalLoadedLibraries);
@@ -35,13 +36,21 @@ export function useLoadables(maybeNames) {
   return loaded;
 }
 
+export function preloadLazyLibs(maybeNames, forwardRef = false) {
+  return withLoadables(maybeNames, forwardRef, false);
+}
+
 // TODO: rename this to injectLibs
-export function withLoadables(maybeNames, forwardRef = false) {
+export function withLoadables(
+  maybeNames,
+  forwardRef = false,
+  shouldRerender = true,
+) {
   const libraries = Array.isArray(maybeNames) ? maybeNames : [maybeNames];
 
   const decorator = (WrappedComponent) => {
     function WithLoadables(props) {
-      const loaded = useLoadables(libraries);
+      const loaded = useLoadables(libraries, shouldRerender);
       const isLoaded = Object.keys(loaded).length === libraries.length;
       return isLoaded ? (
         <WrappedComponent
