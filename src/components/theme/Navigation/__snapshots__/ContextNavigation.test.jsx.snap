@@ -5,7 +5,7 @@ exports[`ContextNavigation renders a navigation component with an active item 1`
   <div
     class="context-navigation"
   >
-    
+    Navigation
     <div
       class="ui list"
       role="list"
@@ -83,7 +83,7 @@ exports[`ContextNavigation renders a navigation component with an active item wh
   <div
     class="context-navigation"
   >
-    
+    Navigation
     <div
       class="ui list"
       role="list"
@@ -170,7 +170,7 @@ exports[`ContextNavigation renders a navigation slot component without active it
   <div
     class="context-navigation"
   >
-    
+    Navigation
     <div
       class="ui list"
       role="list"

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { List, Image } from 'semantic-ui-react';
 import { Link as RouterLink } from 'react-router-dom';
@@ -11,7 +12,7 @@ import { Icon } from '@plone/volto/components';
 
 import leftIcon from '@plone/volto/icons/left-key.svg';
 
-function renderNode(node) {
+function renderNode(node, level) {
   return (
     <List.Item key={node['@id']} active={node.is_current}>
       <List.Content>
@@ -47,21 +48,20 @@ function renderNode(node) {
  * portlet. It uses the same API, so the options are similar to
  * INavigationPortlet
  *
- * @param {string} pathname Optional pathname to use for this component
- * @param {params} params Options for the @contextnavigation endpoint
+ * Options passed in params can be:
  *
- * name - The title of the navigation tree.
- * root_path - Root node path, can be "frontend path", derived from router
- * includeTop - Bool, Include top nodeschema
- * currentFolderOnly - Bool, Only show the contents of the current folder.
- * topLevel - Int, Start level
- * bottomLevel - Int, Navigation tree depth
- * no_icons - Bool, Suppress Icons
- * thumb_scale - String, Override thumb scale
- * no_thumbs = Bool, Suppress thumbs
+ * - name - The title of the navigation tree.
+ * - root_path - Root node path, can be "frontend path", derived from router
+ * - includeTop - Bool, Include top nodeschema
+ * - currentFolderOnly - Bool, Only show the contents of the current folder.
+ * - topLevel - Int, Start level
+ * - bottomLevel - Int, Navigation tree depth
+ * - no_icons - Bool, Suppress Icons
+ * - thumb_scale - String, Override thumb scale
+ * - no_thumbs = Bool, Suppress thumbs
  *
  */
-function ContextNavigation(props) {
+export function ContextNavigationComponent(props) {
   const {
     location,
     pathname = getBaseUrl(location.pathname),
@@ -77,7 +77,9 @@ function ContextNavigation(props) {
   }@contextnavigation${qs ? `?${qs}` : ''}`;
 
   const dispatch = useDispatch();
-  const nav = useSelector((state) => state.contextNavigation?.[path]?.data);
+  const nav = useSelector((state) => {
+    return state.contextNavigation?.[path]?.data;
+  });
 
   const { items = [] } = nav || {};
 
@@ -89,12 +91,12 @@ function ContextNavigation(props) {
     <div className="context-navigation">
       {nav.has_custom_name ? (
         <div className="context-navigation-header">
-          <RouterLink to={flattenToAppURL(nav.contextnavigation?.url || '')}>
-            {nav.contextnavigation.title}
+          <RouterLink to={flattenToAppURL(nav.url || '')}>
+            {nav.title}
           </RouterLink>
         </div>
       ) : (
-        ''
+        'Navigation'
       )}
       <List>{items.map(renderNode)}</List>
     </div>
@@ -103,4 +105,27 @@ function ContextNavigation(props) {
   );
 }
 
-export default withRouter(ContextNavigation);
+ContextNavigationComponent.propTypes = {
+  /**
+   * Location, from router
+   */
+  location: PropTypes.shape({
+    pathname: PropTypes.string,
+  }),
+  /**
+   * Parameters passed to the @contextnavigation endpoint
+   */
+  params: PropTypes.shape({
+    name: PropTypes.string,
+    root_path: PropTypes.string,
+    includeTop: PropTypes.bool,
+    currentFolderOnly: PropTypes.bool,
+    topLevel: PropTypes.number,
+    bottomLevel: PropTypes.number,
+    no_icons: PropTypes.bool,
+    thumb_scale: PropTypes.string,
+    no_thumbs: PropTypes.bool,
+  }),
+};
+
+export default withRouter(ContextNavigationComponent);
