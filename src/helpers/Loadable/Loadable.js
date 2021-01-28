@@ -36,40 +36,40 @@ export function useLoadables(maybeNames) {
 }
 
 // TODO: rename this to injectLibs
-export function withLoadables(
-  WrappedComponent,
-  maybeNames,
-  forwardRef = false,
-) {
+export function withLoadables(maybeNames, forwardRef = false) {
   const libraries = Array.isArray(maybeNames) ? maybeNames : [maybeNames];
 
-  function WithLoadables(props) {
-    const loaded = useLoadables(libraries);
-    const isLoaded = Object.keys(loaded).length === libraries.length;
-    return isLoaded ? (
-      <WrappedComponent
-        key={Object.keys(loaded).join('|')}
-        {...omit(props, 'forwardedRef')}
-        {...loaded}
-        ref={forwardRef ? props.forwardedRef : null}
-      />
-    ) : null;
-  }
+  const decorator = (WrappedComponent) => {
+    function WithLoadables(props) {
+      const loaded = useLoadables(libraries);
+      const isLoaded = Object.keys(loaded).length === libraries.length;
+      return isLoaded ? (
+        <WrappedComponent
+          key={Object.keys(loaded).join('|')}
+          {...omit(props, 'forwardedRef')}
+          {...loaded}
+          ref={forwardRef ? props.forwardedRef : null}
+        />
+      ) : null;
+    }
 
-  WithLoadables.displayName = `WithLoadables(${libraries.join(
-    ',',
-  )})(${getDisplayName(WrappedComponent)})`;
+    WithLoadables.displayName = `WithLoadables(${libraries.join(
+      ',',
+    )})(${getDisplayName(WrappedComponent)})`;
 
-  if (forwardRef) {
-    return hoistNonReactStatics(
-      React.forwardRef((props, ref) => {
-        return <WithLoadables {...props} forwardedRef={ref} />;
-      }),
-      WrappedComponent,
-    );
-  }
+    if (forwardRef) {
+      return hoistNonReactStatics(
+        React.forwardRef((props, ref) => {
+          return <WithLoadables {...props} forwardedRef={ref} />;
+        }),
+        WrappedComponent,
+      );
+    }
 
-  return hoistNonReactStatics(WithLoadables, WrappedComponent);
+    return hoistNonReactStatics(WithLoadables, WrappedComponent);
+  };
+
+  return decorator;
 }
 
 function getLoadables(names, loadedLibraries) {
