@@ -1972,6 +1972,7 @@ msgstr ""
 
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
+#: components/theme/View/RenderBlocks
 msgid "Unknown Block"
 msgstr ""
 
@@ -2190,6 +2191,7 @@ msgid "common"
 msgstr ""
 
 #: components/manage/Blocks/Block/Edit
+#: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"
 msgstr ""
 

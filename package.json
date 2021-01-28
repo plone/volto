@@ -68,7 +68,9 @@
     "ci:cypress:run:guillotina": "start-test ci:start-api-guillotina http-get://localhost:8081 ci:start-frontend-guillotina",
     "dry-release": "release-it --dry-run",
     "release": "release-it",
-    "release-alpha": "release-it major --preRelease=alpha"
+    "release-alpha": "release-it major --preRelease=alpha",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "bundlesize": [
     {
@@ -230,6 +232,7 @@
     "@sentry/integrations": "5.27.3",
     "@sentry/node": "5.12.3",
     "@sentry/webpack-plugin": "1.12.1",
+    "@testing-library/cypress": "7.0.3",
     "@testing-library/jest-dom": "4.2.4",
     "@testing-library/react": "11.2.2",
     "autoprefixer": "9.7.6",
@@ -286,6 +289,7 @@
     "langmap": "0.0.16",
     "less": "3.11.1",
     "less-loader": "6.1.0",
+    "linkify-it": "3.0.2",
     "lint-staged": "10.2.2",
     "locale": "0.1.0",
     "lodash": "4.17.19",
@@ -364,9 +368,16 @@
     "yarnhook": "0.4.3"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^6.0.22",
+    "@storybook/addon-controls": "6.1.11",
+    "@storybook/addon-essentials": "^6.0.22",
+    "@storybook/addon-links": "^6.0.22",
+    "@storybook/react": "^6.1.8",
+    "babel-loader": "^8.1.0",
     "crypto-random-string": "3.2.0",
     "identity-obj-proxy": "3.0.0",
     "jest-environment-jsdom-sixteen": "1.0.3",
+    "react-is": "^16.13.1",
     "tmp": "0.2.1"
   },
   "resolutions": {
