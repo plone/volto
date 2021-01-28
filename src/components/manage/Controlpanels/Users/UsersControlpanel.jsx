@@ -511,6 +511,7 @@ class UsersControlpanel extends Component {
                       roles={this.props.roles}
                       user={user}
                       updateUser={this.updateUserRole}
+                      inheritedRole={this.props.inheritedRole}
                     />
                   ))}
                 </Table.Body>
@@ -591,6 +592,7 @@ export default compose(
       deleteRequest: state.users.delete,
       createRequest: state.users.create,
       loadRolesRequest: state.roles,
+      inheritedRole: state.groups.authenticatedRole,
     }),
     (dispatch) =>
       bindActionCreators(
