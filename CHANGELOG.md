@@ -10,6 +10,7 @@
 
 ### Feature
 
+- An initial Storybook setup. Start it with `yarn storybook`. Feel free to contribute more stories! @sneridagh
 - make and load configurable reducers in the client `window.__data`, decreasing the html size @nileshgulia1 @tiberiuichim
 
 ### Bugfix
