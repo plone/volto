@@ -311,7 +311,7 @@ class UsersControlpanel extends Component {
    */
   onAddUserError(error) {
     this.setState({
-      addUserError: error.message,
+      addUserError: error.response.body.error.message,
     });
   }
 

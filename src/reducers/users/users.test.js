@@ -95,9 +95,7 @@ describe('Users reducer', () => {
     expect(
       users(undefined, {
         type: `${CREATE_USER}_FAIL`,
-        error: {
-          error: 'failed',
-        },
+        error: 'failed',
       }),
     ).toMatchObject({
       create: {
@@ -140,9 +138,7 @@ describe('Users reducer', () => {
     expect(
       users(undefined, {
         type: `${DELETE_USER}_FAIL`,
-        error: {
-          error: 'failed',
-        },
+        error: 'failed',
       }),
     ).toMatchObject({
       delete: {
@@ -187,9 +183,7 @@ describe('Users reducer', () => {
     expect(
       users(undefined, {
         type: `${GET_USER}_FAIL`,
-        error: {
-          error: 'failed',
-        },
+        error: 'failed',
       }),
     ).toMatchObject({
       user: {},
@@ -235,9 +229,7 @@ describe('Users reducer', () => {
     expect(
       users(undefined, {
         type: `${LIST_USERS}_FAIL`,
-        error: {
-          error: 'failed',
-        },
+        error: 'failed',
       }),
     ).toMatchObject({
       users: {},
@@ -281,9 +273,7 @@ describe('Users reducer', () => {
     expect(
       users(undefined, {
         type: `${UPDATE_PASSWORD}_FAIL`,
-        error: {
-          error: 'failed',
-        },
+        error: 'failed',
       }),
     ).toMatchObject({
       update_password: {
@@ -326,9 +316,7 @@ describe('Users reducer', () => {
     expect(
       users(undefined, {
         type: `${UPDATE_USER}_FAIL`,
-        error: {
-          error: 'failed',
-        },
+        error: 'failed',
       }),
     ).toMatchObject({
       update: {
@@ -371,9 +359,7 @@ describe('Users reducer', () => {
     expect(
       users(undefined, {
         type: `${INITIAL_PASSWORD}_FAIL`,
-        error: {
-          error: 'failed',
-        },
+        error: 'failed',
       }),
     ).toMatchObject({
       initial: {
@@ -416,9 +402,7 @@ describe('Users reducer', () => {
     expect(
       users(undefined, {
         type: `${RESET_PASSWORD}_FAIL`,
-        error: {
-          error: 'failed',
-        },
+        error: 'failed',
       }),
     ).toMatchObject({
       reset: {
