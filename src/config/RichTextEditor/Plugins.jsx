@@ -2,7 +2,7 @@ import { Separator } from 'draft-js-inline-toolbar-plugin';
 
 import createBlockBreakoutPlugin from 'draft-js-block-breakout-plugin';
 import createLinkPlugin from '@plone/volto/components/manage/AnchorPlugin';
-import createLinkDetectionPlugin from 'draft-js-link-detection-plugin';
+import createLinkDetectionPlugin from '@plone/volto/components/manage/DraftJS/LinkDetectionPlugin/plugin/link-detection-plugin';
 
 import {
   BlockquoteButton,
