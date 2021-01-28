@@ -134,7 +134,7 @@ export default class ImageProxy {
     const cacheKey = this.cacheKeyOriginal();
 
     debug(`cache.unprocessed - store: ${cacheKey}`);
-    this.cache.unprocessed.set(cacheKey, container);
+    this.cache.unprocessed.set(this.contextUrl, container);
 
     return container;
   }
