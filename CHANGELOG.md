@@ -11,6 +11,7 @@
 ### Feature
 
 - An initial Storybook setup. Start it with `yarn storybook`. Feel free to contribute more stories! @sneridagh
+- make and load configurable reducers in the client `window.__data`, decreasing the html size @nileshgulia1 @tiberiuichim
 
 ### Bugfix
 
@@ -21,11 +22,13 @@
 - Upgrade react-select to 4.0.2 @sneridagh
 - Upgrade react ecosystem to 13.14.0 @sneridagh
 - Add shouldComponentUpdate to blocks @nileshgulia1
+- Update old entry in upgrade guide @tiberiuichim
 
 ## 10.10.0 (2021-01-22)
 
 ### Feature
 
+- Add new components: RenderBlocks, BlocksForm, DragDropList and EditBlockWrapper @tiberiuichim
 - Simple optional critical-CSS inclusion feature (without the actual building of
   the critical CSS) @silviubogan @tiberiuichim @nileshgulia1
 - added support for allowedBlocks and showRestricted for BlockChooser in Form @giuliaghisini
@@ -466,6 +469,7 @@ https://docs.voltocms.com/upgrade-guide/
 - Removed timezone initialization for DatetimeWidget, ref #1923. @razvanMiu
 
 ## 8.5.2 (2020-10-21)
+- Custom group component for selectStyling @nileshgulia1
 
 ### Bugfix
 
