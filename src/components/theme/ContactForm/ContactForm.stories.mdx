@@ -1,23 +1,39 @@
-Contact form example source:
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { ContactFormComponent } from './ContactForm';
+import Wrapper from '@plone/volto/storybook';
+import { defineMessages, injectIntl } from 'react-intl';
 
-```jsx noeditor
-const { Provider } = require('react-intl-redux');
-const configureStore = require('redux-mock-store').default;
-const store = configureStore()({
-  emailNotification: {
-    error: {},
-    loading: false,
-    loaded: false,
-  },
-  intl: {
-    locale: 'en',
-    messages: {},
-  },
-});
+<Meta
+  title="Contact form"
+  argTypes={{
+    error: { control: 'text' },
+  }}
+/>
 
-<div className={'rsg--pre-42'}>
-  <Provider store={store}>
-    <ContactForm error={(message = '')} loading={false} loaded={false} />
-  </Provider>
-</div>;
+# Contact form
+
+```jsx static
+    <ContactForm error={{message : 'Something'}} loading={false} loaded={false} />
 ```
+
+export const ContactForm = (props) => {
+  const IntlContactFormComponent = injectIntl(ContactFormComponent);
+  return (
+    <Wrapper>
+      <div id="toolbar" style={{display: "none"}} />
+      <IntlContactFormComponent
+        {...props}
+        pathname="/contact"
+        error={props.error ? {message: props.error} : null}
+        />
+    </Wrapper>
+  )
+};
+
+<Story name="Contact form">
+  {ContactForm.bind({})}
+</Story>
+
+## Props
+
+<ArgsTable of={ContactForm} />

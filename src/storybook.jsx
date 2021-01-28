@@ -1390,7 +1390,9 @@ export default class Wrapper extends Component {
       <Provider store={store}>
         <IntlProvider locale="en">
           <StaticRouter location={this.props.location}>
-            <div className="volto-rsg-container">{this.props.children}</div>
+            <div className="volto-storybook-container">
+              {this.props.children}
+            </div>
           </StaticRouter>
         </IntlProvider>
       </Provider>
