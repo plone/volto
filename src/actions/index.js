@@ -116,4 +116,4 @@ export {
   setBlocksClipboard,
   resetBlocksClipboard,
 } from '@plone/volto/actions/blocksClipboard/blocksClipboard';
-export { getNavPortlet } from '@plone/volto/actions/navPortlet/navPortlet';
+export { getContextNavigation } from '@plone/volto/actions/contextNavigation/contextNavigation';

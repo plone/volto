@@ -1,17 +1,17 @@
-import navPortlet from './navPortlet';
-import { GET_NAVPORTLET } from '@plone/volto/constants/ActionTypes';
+import getContextNavigation from './contextNavigation';
+import { GET_CONTEXT_NAVIGATION } from '@plone/volto/constants/ActionTypes';
 
-describe('Navigation Portlet reducer', () => {
+describe('Context Navigation reducer', () => {
   it('should return the initial state', () => {
-    expect(navPortlet()).toEqual({});
+    expect(getContextNavigation()).toEqual({});
   });
 
-  it('should handle GET_NAVPORTLET_PENDING', () => {
+  it('should handle GET_CONTEXT_NAVIGATION', () => {
     expect(
-      navPortlet(undefined, {
+      getContextNavigation(undefined, {
         url: '/',
         result: {},
-        type: `${GET_NAVPORTLET}_PENDING`,
+        type: `${GET_CONTEXT_NAVIGATION}_PENDING`,
       }),
     ).toEqual({
       '/': {
@@ -22,9 +22,9 @@ describe('Navigation Portlet reducer', () => {
     });
   });
 
-  it('should handle GET_NAVPORTLET_SUCCESS', () => {
+  it('should handle GET_CONTEXT_NAVIGATION_SUCCESS', () => {
     expect(
-      navPortlet(
+      getContextNavigation(
         {
           '/': {
             error: undefined,
@@ -33,10 +33,10 @@ describe('Navigation Portlet reducer', () => {
           },
         },
         {
-          type: `${GET_NAVPORTLET}_SUCCESS`,
+          type: `${GET_CONTEXT_NAVIGATION}_SUCCESS`,
           url: '/',
           result: {
-            '@id': 'http://localhost:8080/Plone/@navportlet',
+            '@id': 'http://localhost:8080/Plone/@contextnavigation',
             title: 'Navigation',
             items: [
               {
@@ -50,7 +50,7 @@ describe('Navigation Portlet reducer', () => {
     ).toEqual({
       '/': {
         data: {
-          '@id': 'http://localhost:8080/Plone/@navportlet',
+          '@id': 'http://localhost:8080/Plone/@contextnavigation',
           title: 'Navigation',
           items: [
             {
@@ -66,11 +66,11 @@ describe('Navigation Portlet reducer', () => {
     });
   });
 
-  it('should handle GET_NAVIGATION_FAIL', () => {
+  it('should handle GET_CONTEXT_NAVIGATION_FAIL', () => {
     expect(
-      navPortlet(undefined, {
+      getContextNavigation(undefined, {
         url: '/',
-        type: `${GET_NAVPORTLET}_FAIL`,
+        type: `${GET_CONTEXT_NAVIGATION}_FAIL`,
         error: 'failed',
       }),
     ).toEqual({

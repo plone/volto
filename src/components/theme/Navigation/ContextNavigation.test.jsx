@@ -1,10 +1,10 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
+import { render } from '@testing-library/react';
 
-import NavPortlet from './NavPortlet';
+import ContextNavigation from './ContextNavigation';
 
 const mockStore = configureStore();
 
@@ -17,13 +17,13 @@ jest.mock('~/config', () => ({
   },
 }));
 
-describe('NavPortlet', () => {
-  it('renders a navigation portlet component without active items', () => {
+describe('ContextNavigation', () => {
+  it('renders a navigation slot component without active items', () => {
     const store = mockStore({
-      navPortlet: {
-        '/@navportlet': {
+      contextNavigation: {
+        '/@contextnavigation': {
           data: {
-            '@id': 'http://localhost:8080/Plone/@navportlet',
+            '@id': 'http://localhost:8080/Plone/@contextnavigation',
             title: 'Navigation',
             items: [
               {
@@ -47,23 +47,22 @@ describe('NavPortlet', () => {
         messages: {},
       },
     });
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <MemoryRouter>
-          <NavPortlet params={{}} url="/" />
+          <ContextNavigation params={{}} url="/" />
         </MemoryRouter>
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it('renders a navigation component with an active item', () => {
     const store = mockStore({
-      navPortlet: {
-        '/blog/@navportlet': {
+      contextNavigation: {
+        '/blog/@contextnavigation': {
           data: {
-            '@id': 'http://localhost:8080/Plone/blog/@navportlet',
+            '@id': 'http://localhost:8080/Plone/blog/@contextnavigation',
             title: 'Navigation',
             items: [
               {
@@ -93,24 +92,23 @@ describe('NavPortlet', () => {
         messages: {},
       },
     });
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <MemoryRouter initialEntries={[{ pathname: '/blog' }]}>
-          <NavPortlet pathname="/blog" />
+          <ContextNavigation pathname="/blog" />
         </MemoryRouter>
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it('renders a navigation component with an active item when its subchildren are accessed', () => {
     const store = mockStore({
-      navPortlet: {
-        '/folder2/folder21/doc212/@navportlet': {
+      contextNavigation: {
+        '/folder2/folder21/doc212/@contextnavigation': {
           data: {
             '@id':
-              'http://localhost:3000/api/folder2/folder21/doc212/@navportlet',
+              'http://localhost:3000/api/folder2/folder21/doc212/@contextnavigation',
             available: true,
             has_custom_name: false,
             items: [
@@ -171,26 +169,25 @@ describe('NavPortlet', () => {
         messages: {},
       },
     });
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <MemoryRouter
           initialEntries={[{ pathname: '/folder2/folder21/doc212' }]}
         >
-          <NavPortlet pathname="/folder2/folder21/doc212" />
+          <ContextNavigation pathname="/folder2/folder21/doc212" />
         </MemoryRouter>
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it('renders a navigation component with only one active item even if there are similar item names', () => {
     const store = mockStore({
-      navPortlet: {
-        '/folder2/folder21/doc212/@navportlet': {
+      contextNavigation: {
+        '/folder2/folder21/doc212/@contextnavigation': {
           data: {
             '@id':
-              'http://localhost:3000/api/folder2/folder21/doc212/@navportlet',
+              'http://localhost:3000/api/folder2/folder21/doc212/@contextnavigation',
             available: true,
             has_custom_name: false,
             items: [
@@ -251,16 +248,15 @@ describe('NavPortlet', () => {
         messages: {},
       },
     });
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <MemoryRouter
           initialEntries={[{ pathname: '/folder2/folder21/doc211' }]}
         >
-          <NavPortlet />
+          <ContextNavigation />
         </MemoryRouter>
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });

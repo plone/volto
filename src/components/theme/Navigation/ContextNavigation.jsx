@@ -5,7 +5,7 @@ import cx from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router';
 import useDeepCompareEffect from 'use-deep-compare-effect';
-import { getNavPortlet } from '@plone/volto/actions';
+import { getContextNavigation } from '@plone/volto/actions';
 import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
 import { Icon } from '@plone/volto/components';
 
@@ -43,12 +43,12 @@ function renderNode(node) {
 }
 
 /**
- * A navigation portlet implementation, similar to the classic Plone navigation
+ * A navigation slot implementation, similar to the classic Plone navigation
  * portlet. It uses the same API, so the options are similar to
  * INavigationPortlet
  *
- * @param {string} pathname Optional pathname to use for this portlet
- * @param {params} params Options for the navigation portlet
+ * @param {string} pathname Optional pathname to use for this component
+ * @param {params} params Options for the @contextnavigation endpoint
  *
  * name - The title of the navigation tree.
  * root_path - Root node path, can be "frontend path", derived from router
@@ -61,7 +61,7 @@ function renderNode(node) {
  * no_thumbs = Bool, Suppress thumbs
  *
  */
-function NavPortlet(props) {
+function ContextNavigation(props) {
   const {
     location,
     pathname = getBaseUrl(location.pathname),
@@ -70,29 +70,27 @@ function NavPortlet(props) {
 
   let qs = Object.keys(params)
     .sort()
-    .map((key) => `expand.navportlet.${key}=${params[key]}`)
+    .map((key) => `expand.contextnavigation.${key}=${params[key]}`)
     .join('&');
-  const path = `${pathname}${pathname.endsWith('/') ? '' : '/'}@navportlet${
-    qs ? `?${qs}` : ''
-  }`;
+  const path = `${pathname}${
+    pathname.endsWith('/') ? '' : '/'
+  }@contextnavigation${qs ? `?${qs}` : ''}`;
 
   const dispatch = useDispatch();
-  const portlet = useSelector((state) => state.navPortlet?.[path]?.data);
+  const nav = useSelector((state) => state.contextNavigation?.[path]?.data);
 
-  const { items = [] } = portlet || {};
+  const { items = [] } = nav || {};
 
   useDeepCompareEffect(() => {
-    dispatch(getNavPortlet(pathname, params));
+    dispatch(getContextNavigation(pathname, params));
   }, [pathname, dispatch, params]);
 
   return items.length ? (
-    <div className="navigation-portlet">
-      {portlet.navigationportlet?.has_custom_name ? (
-        <div className="nav-portlet-header">
-          <RouterLink
-            to={flattenToAppURL(portlet.navigationportlet?.url || '')}
-          >
-            {portlet.navigationportlet.title}
+    <div className="context-navigation">
+      {nav.has_custom_name ? (
+        <div className="context-navigation-header">
+          <RouterLink to={flattenToAppURL(nav.contextnavigation?.url || '')}>
+            {nav.contextnavigation.title}
           </RouterLink>
         </div>
       ) : (
@@ -105,4 +103,4 @@ function NavPortlet(props) {
   );
 }
 
-export default withRouter(NavPortlet);
+export default withRouter(ContextNavigation);

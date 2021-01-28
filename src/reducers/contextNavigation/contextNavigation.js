@@ -1,10 +1,17 @@
-import { GET_NAVPORTLET } from '@plone/volto/constants/ActionTypes';
+import { GET_CONTEXT_NAVIGATION } from '@plone/volto/constants/ActionTypes';
 
+/**
+ * Context Navigation reducer.
+ * @function navigation
+ * @param {Object} state Current state.
+ * @param {Object} action Action to be handled.
+ * @returns {Object} New state.
+ */
 export default function rawdata(state = {}, action = {}) {
   let { result, url } = action;
 
   switch (action.type) {
-    case `${GET_NAVPORTLET}_PENDING`:
+    case `${GET_CONTEXT_NAVIGATION}_PENDING`:
       return {
         ...state,
         [url]: {
@@ -14,7 +21,7 @@ export default function rawdata(state = {}, action = {}) {
           error: undefined,
         },
       };
-    case `${GET_NAVPORTLET}_SUCCESS`:
+    case `${GET_CONTEXT_NAVIGATION}_SUCCESS`:
       return {
         ...state,
         [url]: {
@@ -25,7 +32,7 @@ export default function rawdata(state = {}, action = {}) {
           data: result,
         },
       };
-    case `${GET_NAVPORTLET}_FAIL`:
+    case `${GET_CONTEXT_NAVIGATION}_FAIL`:
       return {
         ...state,
         [url]: {
