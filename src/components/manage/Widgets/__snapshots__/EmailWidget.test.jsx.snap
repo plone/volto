@@ -3,7 +3,6 @@
 exports[`renders an email widget component 1`] = `
 <div
   className="inline field email"
-  id="field-test-email"
 >
   <div
     className="ui grid"

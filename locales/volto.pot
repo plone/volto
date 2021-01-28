@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-12-04T18:24:03.145Z\n"
+"POT-Creation-Date: 2021-01-19T12:57:12.942Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -294,7 +294,7 @@ msgstr ""
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 # defaultMessage: Center
 msgid "Center"
 msgstr ""
@@ -935,7 +935,7 @@ msgid "From"
 msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 # defaultMessage: Full
 msgid "Full"
 msgstr ""
@@ -988,6 +988,11 @@ msgstr ""
 msgid "Groups"
 msgstr ""
 
+#: components/manage/Blocks/Table/Edit
+# defaultMessage: Header cell
+msgid "Header cell"
+msgstr ""
+
 #: components/manage/History/History
 #: components/manage/Toolbar/More
 # defaultMessage: History
@@ -1000,6 +1005,7 @@ msgid "History of {title}"
 msgstr ""
 
 #: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsBreadcrumbs
 #: components/theme/Breadcrumbs/Breadcrumbs
 # defaultMessage: Home
 msgid "Home"
@@ -1204,7 +1210,7 @@ msgstr ""
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 # defaultMessage: Left
 msgid "Left"
 msgstr ""
@@ -1802,7 +1808,7 @@ msgstr ""
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 # defaultMessage: Right
 msgid "Right"
 msgstr ""
@@ -1815,6 +1821,11 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Roles
 msgid "Roles"
+msgstr ""
+
+#: components/manage/Contents/ContentsBreadcrumbs
+# defaultMessage: Root
+msgid "Root"
 msgstr ""
 
 #: components/manage/Add/Add
@@ -2359,6 +2370,7 @@ msgstr ""
 
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
+#: components/theme/View/RenderBlocks
 # defaultMessage: Unknown Block {block}
 msgid "Unknown Block"
 msgstr ""
@@ -2633,6 +2645,7 @@ msgid "common"
 msgstr ""
 
 #: components/manage/Blocks/Block/Edit
+#: components/manage/Blocks/Block/EditBlockWrapper
 # defaultMessage: delete
 msgid "delete"
 msgstr ""

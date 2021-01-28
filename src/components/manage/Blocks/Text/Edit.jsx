@@ -14,7 +14,7 @@ import isSoftNewlineEvent from 'draft-js/lib/isSoftNewlineEvent';
 import { defineMessages, injectIntl } from 'react-intl';
 import { includes, isEqual } from 'lodash';
 import { filterEditorState } from 'draftjs-filters';
-import { settings, blocks } from '~/config';
+import { blocks, settings } from '~/config';
 
 import { Icon, BlockChooser } from '@plone/volto/components';
 import addSVG from '@plone/volto/icons/circle-plus.svg';
@@ -50,6 +50,10 @@ class Edit extends Component {
     onFocusPreviousBlock: PropTypes.func.isRequired,
     onFocusNextBlock: PropTypes.func.isRequired,
     onSelectBlock: PropTypes.func.isRequired,
+    allowedBlocks: PropTypes.arrayOf(PropTypes.string),
+    showRestricted: PropTypes.bool,
+    formTitle: PropTypes.string,
+    formDescription: PropTypes.string,
   };
 
   /**
@@ -121,6 +125,16 @@ class Edit extends Component {
         editorState: EditorState.moveFocusToEnd(this.state.editorState),
       });
     }
+  }
+
+  /**
+   * @param {*} nextProps
+   * @param {*} nextState
+   * @returns {boolean}
+   * @memberof Edit
+   */
+  shouldComponentUpdate(nextProps) {
+    return this.props.selected || !isEqual(this.props.data, nextProps.data);
   }
 
   /**
@@ -200,6 +214,7 @@ class Edit extends Component {
 
     const placeholder =
       this.props.data.placeholder ||
+      this.props.formTitle ||
       this.props.intl.formatMessage(messages.text);
 
     const disableNewBlocks =
@@ -299,6 +314,8 @@ class Edit extends Component {
           <BlockChooser
             onMutateBlock={this.props.onMutateBlock}
             currentBlock={this.props.block}
+            allowedBlocks={this.props.allowedBlocks}
+            showRestricted={this.props.showRestricted}
           />
         )}
       </>

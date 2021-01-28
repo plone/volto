@@ -42,6 +42,11 @@ const apiPath =
     ? `http://${host}:${port}/api`
     : 'http://localhost:8080/Plone');
 
+const serverConfig =
+  typeof __SERVER__ !== 'undefined' && __SERVER__
+    ? require('./server').default
+    : {};
+
 let config = {
   settings: {
     host,
@@ -79,15 +84,18 @@ let config = {
     supportedLanguages: ['en'],
     defaultLanguage: 'en',
     navDepth: 1,
-    expressMiddleware: [],
+    expressMiddleware: serverConfig.expressMiddleware, // BBB
     defaultBlockType: 'text',
     verticalFormTabs: false,
     persistentReducers: ['blocksClipboard'],
+    initialReducersBlacklist: [], // reducers in this list won't be hydrated in windows.__data
     sentryOptions: {
       ...sentryOptions,
     },
     contentIcons: contentIcons,
     appExtras: [],
+    maxResponseSize: 2000000000, // This is superagent default (200 mb)
+    serverConfig,
   },
   widgets: {
     ...widgetMapping,

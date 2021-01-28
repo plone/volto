@@ -12,6 +12,7 @@ import { Button, Dimmer, Input, Loader, Message } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import loadable from '@loadable/component';
 import cx from 'classnames';
+import { isEqual } from 'lodash';
 
 import { Icon, ImageSidebar, SidebarPortal } from '@plone/volto/components';
 import { createContent } from '@plone/volto/actions';
@@ -97,6 +98,19 @@ class Edit extends Component {
         alt: nextProps.properties.title,
       });
     }
+  }
+
+  /**
+   * @param {*} nextProps
+   * @returns {boolean}
+   * @memberof Edit
+   */
+  shouldComponentUpdate(nextProps) {
+    return (
+      this.props.selected ||
+      nextProps.selected ||
+      !isEqual(this.props.data, nextProps.data)
+    );
   }
 
   /**
@@ -296,7 +310,7 @@ class Edit extends Component {
                         <Loader indeterminate>Uploading image</Loader>
                       </Dimmer>
                     )}
-                    <center>
+                    <div className="no-image-wrapper">
                       <img src={imageBlockSVG} alt="" />
                       <div className="toolbar-inner">
                         <Button.Group>
@@ -360,7 +374,7 @@ class Edit extends Component {
                           </Button>
                         </Button.Group>
                       </div>
-                    </center>
+                    </div>
                   </Message>
                 </div>
               )}

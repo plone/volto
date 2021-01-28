@@ -259,7 +259,7 @@ msgstr "Zelle"
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Center"
 msgstr "Mittig"
 
@@ -785,7 +785,7 @@ msgid "From"
 msgstr "E-Mail"
 
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Full"
 msgstr "Volle Breite"
 
@@ -828,6 +828,10 @@ msgstr "Gruppenname"
 msgid "Groups"
 msgstr "Gruppen"
 
+#: components/manage/Blocks/Table/Edit
+msgid "Header cell"
+msgstr "Kopfzeile"
+
 #: components/manage/History/History
 #: components/manage/Toolbar/More
 msgid "History"
@@ -838,6 +842,7 @@ msgid "History of {title}"
 msgstr "Historie von {title}"
 
 #: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsBreadcrumbs
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Home"
 msgstr "Startseite"
@@ -1003,7 +1008,7 @@ msgstr "Leadbild"
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Left"
 msgstr "Links"
 
@@ -1489,7 +1494,7 @@ msgstr "Richtext"
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Right"
 msgstr "Rechte"
 
@@ -1500,6 +1505,10 @@ msgstr "Rechte"
 #: helpers/MessageLabels/MessageLabels
 msgid "Roles"
 msgstr "Rollen"
+
+#: components/manage/Contents/ContentsBreadcrumbs
+msgid "Root"
+msgstr ""
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentType
@@ -1944,6 +1953,7 @@ msgstr "Deinstallieren"
 
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
+#: components/theme/View/RenderBlocks
 msgid "Unknown Block"
 msgstr "Unbekannter Block"
 
@@ -2161,6 +2171,7 @@ msgid "common"
 msgstr "Allgemein"
 
 #: components/manage/Blocks/Block/Edit
+#: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"
 msgstr "Löschen"
 
