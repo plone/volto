@@ -155,6 +155,7 @@ class SelectWidget extends Component {
     onDelete: PropTypes.func,
     itemsTotal: PropTypes.number,
     wrapped: PropTypes.bool,
+    noValueOption: PropTypes.bool,
   };
 
   /**
@@ -180,6 +181,7 @@ class SelectWidget extends Component {
     onClick: () => {},
     onEdit: null,
     onDelete: null,
+    noValueOption: true,
   };
 
   state = {
@@ -293,10 +295,14 @@ class SelectWidget extends Component {
                   // Fix "None" on the serializer, to remove when fixed in p.restapi
                   option[1] !== 'None' && option[1] ? option[1] : option[0],
               })),
-              {
-                label: this.props.intl.formatMessage(messages.no_value),
-                value: 'no-value',
-              },
+              ...(this.props.noValueOption
+                ? [
+                    {
+                      label: this.props.intl.formatMessage(messages.no_value),
+                      value: 'no-value',
+                    },
+                  ]
+                : []),
             ]}
             styles={customSelectStyles}
             theme={selectTheme}
