@@ -26,7 +26,6 @@ function getRecursiveItems(items) {
   return map(items, (item) => ({
     title: item.title,
     url: flattenToAppURL(item['@id']),
-    nav_title: item.nav_title,
     ...(item.items && { items: getRecursiveItems(item.items) }),
   }));
 }
