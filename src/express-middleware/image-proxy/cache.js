@@ -1,5 +1,5 @@
 import Keyv from 'keyv';
-
+import FileCache from './file-cache';
 import { settings } from '~/config';
 import QuickLRU from './quick-lru';
 import { getLogger } from '../logger';
@@ -15,7 +15,7 @@ export default function get() {
 
     _unprocessed = new Keyv({
       namespace: 'raw',
-      store: new QuickLRU({ maxSize: 100 }),
+      store: FileCache,
       ...settings.serverConfig.rawImagesCache,
     });
 
