@@ -1953,6 +1953,7 @@ msgstr "Deinstallieren"
 
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
+#: components/theme/View/RenderBlocks
 msgid "Unknown Block"
 msgstr "Unbekannter Block"
 
@@ -2170,6 +2171,7 @@ msgid "common"
 msgstr "Allgemein"
 
 #: components/manage/Blocks/Block/Edit
+#: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"
 msgstr "Löschen"
 

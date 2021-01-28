@@ -10,6 +10,11 @@
 
 ### Feature
 
+- An initial Storybook setup. Start it with `yarn storybook`. Feel free to contribute more stories! @sneridagh
+- make and load configurable reducers in the client `window.__data`, decreasing the html size @nileshgulia1 @tiberiuichim
+- Custom group component for selectStyling @nileshgulia1
+- Add new components: RenderBlocks, BlocksForm, DragDropList and EditBlockWrapper @tiberiuichim
+
 ### Bugfix
 
 - Better handling of a condition in the new breadcrumbs @sneridagh
@@ -19,6 +24,7 @@
 - Upgrade react-select to 4.0.2 @sneridagh
 - Upgrade react ecosystem to 13.14.0 @sneridagh
 - Add shouldComponentUpdate to blocks @nileshgulia1
+- Update old entry in upgrade guide @tiberiuichim
 
 ## 10.10.0 (2021-01-22)
 
