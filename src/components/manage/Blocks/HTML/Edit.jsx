@@ -86,17 +86,46 @@ class Edit extends Component {
 
   codeEditorRef = React.createRef();
 
-  /**
-   * Component did update
-   * @method componentDidUpdate
-   * @returns {undefined}
-   */
-  componentDidUpdate() {
-    if (this.props.selected && this.codeEditorRef.current) {
-      if (this.state?.codeEditor?._input) {
-        this.state.codeEditor._input.focus();
-      }
-    }
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    this.snapshot = snapshot;
+
+    console.log('stored saved snapshot in class field');
+    // if (!prevProps.selected && this.props.selected) {
+    // if (this.props.selected) {
+    console.log(
+      'updated with old selected = ',
+      prevProps.selected,
+      'new selected = ',
+      this.props.selected,
+    );
+    this.doSmth(this.codeEditorRef.current);
+
+    // if (this.codeEditorRef.current?._input) {
+    //   this.codeEditorRef.current._input.focus();
+    // }
+    // }
+
+    // if (this.codeEditorRef.current) {
+    //   debugger;
+    //   this.codeEditorRef.current._input.selectionStart =
+    //     snapshot.selectionStart;
+    //   this.codeEditorRef.current._input.selectionEnd = snapshot.selectionEnd;
+    //   if (this.props.selected) {
+    //     if (this.codeEditorRef.current?._input) {
+    //       this.codeEditorRef.current._input.focus();
+    //     }
+    //   }
+    // }
+    // if (this.codeEditorRef.current._input.selectionStart) {
+    //   o.selectionStart = this.codeEditorRef.current._input.selectionStart;
+    // }
+    // if (this.codeEditorRef.current._input.selectionEnd) {
+    //   o.selectionEnd = this.codeEditorRef.current._input.selectionEnd;
+    // }
+  }
+
+  componentDidMount() {
+    // this.snapshot = this.saveSnapshot();
   }
 
   /**
@@ -156,7 +185,6 @@ class Edit extends Component {
    * @method onPrettify
    * @returns {undefined}
    */
-
   onPrettify = () => {
     try {
       const code = this.props.prettierStandalone
@@ -180,6 +208,47 @@ class Edit extends Component {
   onCodeEditor() {
     this.setState({ isPreview: !this.state.isPreview });
   }
+
+  saveSnapshot = () => {
+    const o = {};
+    if (this.codeEditorRef.current._input.selectionStart) {
+      o.selectionStart = this.codeEditorRef.current._input.selectionStart;
+    }
+    if (this.codeEditorRef.current._input.selectionEnd) {
+      o.selectionEnd = this.codeEditorRef.current._input.selectionEnd;
+    }
+    console.log('snapshot saved', o);
+    return o;
+  };
+
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    return saveSnapshot();
+  }
+
+  doSmth = (node) => {
+    console.log('>> doing smth');
+    debugger;
+    if (
+      this.props.selected &&
+      // this.codeEditorRef?.current?._input &&
+      // typeof this.codeEditorRef.current._input.selectionStart ===
+      //   'number' &&
+      // typeof this.codeEditorRef.current._input.selectionEnd ===
+      //   'number' &&
+      typeof this.snapshot?.selectionStart === 'number' &&
+      typeof this.snapshot?.selectionEnd === 'number'
+    ) {
+      console.log('resetting old selection');
+      // debugger;
+      this.codeEditorRef.current._input.selectionStart =
+        this.snapshot?.selectionStart || 0;
+      this.codeEditorRef.current._input.selectionEnd =
+        this.snapshot?.selectionEnd || 0;
+      this.codeEditorRef.current._input.focus();
+    }
+    this.codeEditorRef.current = node;
+    // }, 200);
+  };
 
   /**
    * Render method.
@@ -278,18 +347,23 @@ class Edit extends Component {
             padding={8}
             className="html-editor"
             ref={(node) => {
+              console.log('editor node ref remade');
               if (node) {
                 this.codeEditorRef.current = node;
+                this.saveSnapshot();
+                console.log('> set to', node);
+                // setTimeout(() => {
+                this.doSmth(node);
               }
             }}
             onClick={(e) => {
-              // console.log('props', this.props);
-              this.props.onSelectBlock(this.props.block);
-              e.persist();
-              this.setState({}, () => {
-                e.stopPropagation();
-                e.preventDefault();
-              });
+              // // console.log('props', this.props);
+              // this.props.onSelectBlock(this.props.block);
+              // e.persist();
+              // this.setState({}, () => {
+              //   e.stopPropagation();
+              //   e.preventDefault();
+              // });
             }}
             ignoreTabKey={true}
           />
