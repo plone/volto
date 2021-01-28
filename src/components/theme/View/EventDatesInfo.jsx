@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { List } from 'semantic-ui-react';
 import moment from 'moment';
+import { useIntl } from 'react-intl';
 import cx from 'classnames';
 import { RRule, rrulestr } from 'rrule';
 
@@ -24,6 +25,9 @@ export const datesForDisplay = (start, end) => {
 };
 
 export const When = ({ start, end, whole_day, open_end }) => {
+  const intl = useIntl();
+  moment.locale(intl.locale);
+
   const datesInfo = datesForDisplay(start, end);
   if (!datesInfo) {
     return;

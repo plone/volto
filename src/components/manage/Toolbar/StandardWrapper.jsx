@@ -14,6 +14,11 @@ const StandardWrapper = (props) => {
       className={cx(`${props.componentName} pastanaga-menu`, {
         'has-inner-actions': props.hasActions,
       })}
+      style={{
+        flex: props.theToolbar.current
+          ? `0 0 ${props.theToolbar.current.getBoundingClientRect().width}px`
+          : null,
+      }}
     >
       <header className="header pulled">
         <button onClick={pull}>

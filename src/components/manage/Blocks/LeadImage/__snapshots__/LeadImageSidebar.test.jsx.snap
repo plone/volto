@@ -24,7 +24,6 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
   >
     <div
       className="inline field text"
-      id="field-alt"
     >
       <div
         className="ui grid"
@@ -52,10 +51,13 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
               className="ui icon input"
             >
               <input
-                disabled={false}
                 id="field-alt"
+                maxLength={null}
+                minLength={null}
                 name="alt"
+                onBlur={[Function]}
                 onChange={[Function]}
+                onClick={[Function]}
                 type="text"
                 value="alternate text"
               />
@@ -72,6 +74,7 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
               />
             </div>
             <button
+              className="field-alt-action-button"
               onClick={[Function]}
             >
               <svg
@@ -273,7 +276,6 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
     >
       <div
         className="inline field text"
-        id="field-link"
       >
         <div
           className="ui grid"
@@ -301,10 +303,13 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
                 className="ui icon input"
               >
                 <input
-                  disabled={false}
                   id="field-link"
+                  maxLength={null}
+                  minLength={null}
                   name="link"
+                  onBlur={[Function]}
                   onChange={[Function]}
+                  onClick={[Function]}
                   type="text"
                   value=""
                 />
@@ -321,6 +326,7 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
                 />
               </div>
               <button
+                className="field-link-action-button"
                 onClick={[Function]}
               >
                 <svg
@@ -348,7 +354,6 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
       </div>
       <div
         className="inline field"
-        id="field-openLinkInNewTab"
       >
         <div
           className="ui grid"
@@ -372,7 +377,6 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
                   <input
                     checked={false}
                     className="hidden"
-                    disabled={false}
                     name="field-openLinkInNewTab"
                     readOnly={true}
                     tabIndex={0}

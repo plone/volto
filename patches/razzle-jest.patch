@@ -1,10 +1,10 @@
---- node_modules/razzle/config/createJestConfig.js	2020-05-09 19:48:07.276871617 +0200
-+++ patched.js	2020-05-09 19:50:07.049471664 +0200
-@@ -60,6 +60,7 @@
-     'moduleDirectories',
-     'moduleFileExtensions',
-     'moduleNameMapper',
-+    'modulePathIgnorePatterns',
-     'modulePaths',
-     'snapshotSerializers',
-     'setupFiles',
+--- /Users/sneridagh/Development/plone/volto/node_modules/razzle/config/createJestConfig.js	2020-11-07 16:11:14.489360747 +0100
++++ /Users/sneridagh/Development/plone/volto/node_modules/razzle/config/createJestConfigNew.js	2020-11-07 16:13:44.816817775 +0100
+@@ -84,6 +84,7 @@
+       'mapCoverage',
+       'moduleDirectories',
+       'moduleFileExtensions',
++      'modulePathIgnorePatterns',
+       'moduleNameMapper',
+       'modulePaths',
+       'snapshotSerializers',

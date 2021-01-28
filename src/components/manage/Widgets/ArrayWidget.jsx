@@ -213,6 +213,7 @@ class ArrayWidget extends Component {
       <FormFieldWrapper {...this.props}>
         {!this.props.items?.choices && this.vocabBaseUrl ? (
           <AsyncPaginate
+            isDisabled={this.props.isDisabled}
             className="react-select-container"
             classNamePrefix="react-select"
             options={this.props.choices || []}
@@ -259,6 +260,7 @@ class ArrayWidget extends Component {
                   ]
             }
             styles={customSelectStyles}
+            isDisabled={this.props.isDisabled}
             theme={selectTheme}
             components={{ DropdownIndicator, Option }}
             value={selectedOption || []}

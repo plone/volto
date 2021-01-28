@@ -5,11 +5,14 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Input, Button, Image } from 'semantic-ui-react';
+import { Button, Image, Dimmer } from 'semantic-ui-react';
 import { readAsDataURL } from 'promise-file-reader';
-
+import { injectIntl } from 'react-intl';
 import deleteSVG from '@plone/volto/icons/delete.svg';
 import { Icon, FormFieldWrapper } from '@plone/volto/components';
+import loadable from '@loadable/component';
+import { flattenToAppURL } from '@plone/volto/helpers';
+import { defineMessages, useIntl } from 'react-intl';
 
 const imageMimetypes = [
   'image/png',
@@ -19,74 +22,133 @@ const imageMimetypes = [
   'image/gif',
   'image/svg+xml',
 ];
+const Dropzone = loadable(() => import('react-dropzone'), {
+  resolveComponent: (components) => components.Dropzone,
+});
+
+const messages = defineMessages({
+  releaseDrag: {
+    id: 'Drop files here ...',
+    defaultMessage: 'Drop files here ...',
+  },
+  editFile: {
+    id: 'Drop file here to replace the existing file',
+    defaultMessage: 'Drop file here to replace the existing file',
+  },
+  fileDrag: {
+    id: 'Drop file here to upload a new file',
+    defaultMessage: 'Drop file here to upload a new file',
+  },
+  replaceFile: {
+    id: 'Replace existing file',
+    defaultMessage: 'Replace existing file',
+  },
+  addNewFile: {
+    id: 'Choose a file',
+    defaultMessage: 'Choose a file',
+  },
+});
 
 /**
  * FileWidget component class.
  * @function FileWidget
  * @returns {string} Markup of the component.
  */
-const FileWidget = ({
-  id,
-  title,
-  required,
-  description,
-  error,
-  value,
-  onChange,
-  fieldSet,
-  wrapped,
-}) => {
-  const fileInput = React.useRef(null);
-  const [fileType, setFileType] = React.useState(true);
+const FileWidget = (props) => {
+  const { id, value, onChange } = props;
+  const [fileType, setFileType] = React.useState(false);
+  const intl = useIntl();
+
+  React.useEffect(() => {
+    if (value && imageMimetypes.includes(value['content-type'])) {
+      setFileType(true);
+    }
+  }, [value]);
+
+  /**
+   * Drop handler
+   * @method onDrop
+   * @param {array} files File objects
+   * @returns {undefined}
+   */
+  const onDrop = (files) => {
+    const file = files[0];
+    readAsDataURL(file).then((data) => {
+      const fields = data.match(/^data:(.*);(.*),(.*)$/);
+      onChange(id, {
+        data: fields[3],
+        encoding: fields[2],
+        'content-type': fields[1],
+        filename: file.name,
+      });
+    });
+
+    let reader = new FileReader();
+    reader.onload = function () {
+      const fields = reader.result.match(/^data:(.*);(.*),(.*)$/);
+      if (imageMimetypes.includes(fields[1])) {
+        setFileType(true);
+        let imagePreview = document.getElementById(`field-${id}-image`);
+        imagePreview.src = reader.result;
+      } else {
+        setFileType(false);
+      }
+    };
+    reader.readAsDataURL(files[0]);
+  };
 
   return (
-    <FormFieldWrapper
-      id={id}
-      title={title}
-      description={description}
-      required={required}
-      error={error}
-      wrapped={wrapped}
-      fieldSet={fieldSet}
-    >
-      {fileType ? (
-        <Image
-          className="image-preview"
-          id={`field-${id}-image`}
-          size="small"
-        />
-      ) : null}
-      <Input
-        id={`field-${id}`}
-        name={id}
-        type="file"
-        ref={fileInput}
-        onChange={({ target }) => {
-          const file = target.files[0];
-          readAsDataURL(file).then((data) => {
-            const fields = data.match(/^data:(.*);(.*),(.*)$/);
-            onChange(id, {
-              data: fields[3],
-              encoding: fields[2],
-              'content-type': fields[1],
-              filename: file.name,
-            });
-          });
+    <FormFieldWrapper {...props}>
+      <Dropzone onDrop={onDrop}>
+        {({ getRootProps, getInputProps, isDragActive }) => (
+          <div className="file-widget-dropzone" {...getRootProps()}>
+            {isDragActive && <Dimmer active></Dimmer>}
+            {fileType ? (
+              <Image
+                className="image-preview"
+                id={`field-${id}-image`}
+                size="small"
+                src={
+                  value?.download
+                    ? `${flattenToAppURL(value.download)}?id=${Date.now()}`
+                    : null
+                }
+              />
+            ) : (
+              <div className="dropzone-placeholder">
+                {isDragActive ? (
+                  <p className="dropzone-text">
+                    {intl.formatMessage(messages.releaseDrag)}
+                  </p>
+                ) : value ? (
+                  <p className="dropzone-text">
+                    {intl.formatMessage(messages.editFile)}
+                  </p>
+                ) : (
+                  <p className="dropzone-text">
+                    {intl.formatMessage(messages.fileDrag)}
+                  </p>
+                )}
+              </div>
+            )}
 
-          let reader = new FileReader();
-          reader.onload = function () {
-            const fields = reader.result.match(/^data:(.*);(.*),(.*)$/);
-            if (imageMimetypes.includes(fields[1])) {
-              setFileType(true);
-              let imagePreview = document.getElementById(`field-${id}-image`);
-              imagePreview.src = reader.result;
-            } else {
-              setFileType(false);
-            }
-          };
-          reader.readAsDataURL(target.files[0]);
-        }}
-      />
+            <label className="label-file-widget-input">
+              {value
+                ? intl.formatMessage(messages.replaceFile)
+                : intl.formatMessage(messages.addNewFile)}
+            </label>
+            <input
+              {...getInputProps({
+                type: 'file',
+                style: { display: 'none' },
+              })}
+              id={`field-${id}`}
+              name={id}
+              type="file"
+            />
+          </div>
+        )}
+      </Dropzone>
       <div className="field-file-name">
         {value && value.filename}
         {value && (
@@ -98,7 +160,6 @@ const FileWidget = ({
             onClick={() => {
               onChange(id, null);
               setFileType(false);
-              fileInput.current.inputRef.current.value = null;
             }}
           >
             <Icon name={deleteSVG} size="20px" />
@@ -140,4 +201,4 @@ FileWidget.defaultProps = {
   value: null,
 };
 
-export default FileWidget;
+export default injectIntl(FileWidget);

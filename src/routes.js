@@ -5,33 +5,40 @@
 import {
   Add,
   AddonsControlpanel,
-  App,
   ChangePassword,
   ContactForm,
   Contents,
+  ContentType,
+  ContentTypeLayout,
+  ContentTypeSchema,
+  ContentTypes,
   Controlpanel,
   Controlpanels,
   CreateTranslation,
-  Edit,
-  Diff,
+  DatabaseInformation,
   Delete,
+  Diff,
+  Edit,
   History,
-  View,
-  NotFound,
   Login,
   Logout,
+  ManageTranslations,
   ModerateComments,
+  NotFound,
   PasswordReset,
   Register,
   RequestPasswordReset,
   Search,
-  Sitemap,
   Sharing,
+  Sitemap,
   UsersControlpanel,
-  ContentTypes,
-  ContentType,
-  DatabaseInformation,
 } from '@plone/volto/components';
+
+// Deliberatelly use of absolute path of these components, since we do not want them
+// in the components/index.js file.
+import App from '@plone/volto/components/theme/App/App';
+import View from '@plone/volto/components/theme/View/View';
+
 import { addonRoutes } from '~/config';
 
 /**
@@ -69,6 +76,14 @@ export const defaultRoutes = [
     path: '/controlpanel',
     exact: true,
     component: Controlpanels,
+  },
+  {
+    path: '/controlpanel/dexterity-types/:id/layout',
+    component: ContentTypeLayout,
+  },
+  {
+    path: '/controlpanel/dexterity-types/:id/schema',
+    component: ContentTypeSchema,
   },
   {
     path: '/controlpanel/dexterity-types/:id',
@@ -153,6 +168,10 @@ export const defaultRoutes = [
   {
     path: '/**/sharing',
     component: Sharing,
+  },
+  {
+    path: '/**/manage-translations',
+    component: ManageTranslations,
   },
   {
     path: '/**/login',

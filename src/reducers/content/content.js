@@ -3,9 +3,9 @@
  * @module reducers/content/content
  */
 
-import { omit, map, mapKeys } from 'lodash';
+import { map, mapKeys, omit } from 'lodash';
 
-import { settings } from '~/config';
+import { flattenToAppURL } from '@plone/volto/helpers';
 
 import {
   CREATE_CONTENT,
@@ -14,6 +14,7 @@ import {
   ORDER_CONTENT,
   RESET_CONTENT,
   UPDATE_CONTENT,
+  UPDATECOLUMNS_CONTENT,
 } from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
@@ -27,17 +28,22 @@ const initialState = {
     loading: false,
     error: null,
   },
-  update: {
-    loaded: false,
-    loading: false,
-    error: null,
-  },
   get: {
     loaded: false,
     loading: false,
     error: null,
   },
   order: {
+    loaded: false,
+    loading: false,
+    error: null,
+  },
+  update: {
+    loaded: false,
+    loading: false,
+    error: null,
+  },
+  updatecolumns: {
     loaded: false,
     loading: false,
     error: null,
@@ -66,6 +72,16 @@ function getRequestKey(actionType) {
 export default function content(state = initialState, action = {}) {
   let { result } = action;
   switch (action.type) {
+    case `${UPDATECOLUMNS_CONTENT}`:
+      return {
+        ...state,
+        [getRequestKey(action.type)]: {
+          loading: false,
+          loaded: true,
+          error: null,
+          idx: action.indexcolumns,
+        },
+      };
     case `${CREATE_CONTENT}_PENDING`:
     case `${DELETE_CONTENT}_PENDING`:
     case `${UPDATE_CONTENT}_PENDING`:
@@ -95,6 +111,62 @@ export default function content(state = initialState, action = {}) {
             },
           };
     case `${CREATE_CONTENT}_SUCCESS`:
+      if (result['@static_behaviors']) {
+        map(result['@static_behaviors'], (behavior) => {
+          result = {
+            ...omit(result, behavior),
+            ...mapKeys(result[behavior], (value, key) => `${behavior}.${key}`),
+          };
+        });
+      }
+      const data = action.subrequest
+        ? Array.isArray(result)
+          ? result.map((item) => ({
+              ...item,
+              url: flattenToAppURL(item['@id']),
+            }))
+          : {
+              ...result,
+              items:
+                action.result &&
+                action.result.items &&
+                action.result.items.map((item) => ({
+                  ...item,
+                  url: flattenToAppURL(item['@id']),
+                })),
+            }
+        : {
+            ...result,
+            items:
+              action.result &&
+              action.result.items &&
+              action.result.items.map((item) => ({
+                ...item,
+                url: flattenToAppURL(item['@id']),
+              })),
+          };
+      return action.subrequest
+        ? {
+            ...state,
+            subrequests: {
+              ...state.subrequests,
+              [action.subrequest]: {
+                loading: false,
+                loaded: true,
+                error: null,
+                data,
+              },
+            },
+          }
+        : {
+            ...state,
+            data,
+            [getRequestKey(action.type)]: {
+              loading: false,
+              loaded: true,
+              error: null,
+            },
+          };
     case `${GET_CONTENT}_SUCCESS`:
       if (result['@static_behaviors']) {
         map(result['@static_behaviors'], (behavior) => {
@@ -120,7 +192,7 @@ export default function content(state = initialState, action = {}) {
                     action.result.items &&
                     action.result.items.map((item) => ({
                       ...item,
-                      url: item['@id'].replace(settings.apiPath, ''),
+                      url: flattenToAppURL(item['@id']),
                     })),
                 },
               },
@@ -135,7 +207,7 @@ export default function content(state = initialState, action = {}) {
                 action.result.items &&
                 action.result.items.map((item) => ({
                   ...item,
-                  url: item['@id'].replace(settings.apiPath, ''),
+                  url: flattenToAppURL(item['@id']),
                 })),
             },
             [getRequestKey(action.type)]: {
@@ -144,9 +216,22 @@ export default function content(state = initialState, action = {}) {
               error: null,
             },
           };
-    case `${UPDATE_CONTENT}_SUCCESS`:
     case `${DELETE_CONTENT}_SUCCESS`:
     case `${ORDER_CONTENT}_SUCCESS`:
+      return {
+        ...state,
+        [getRequestKey(action.type)]: {
+          loading: false,
+          loaded: true,
+          error: null,
+          sort: {
+            on: action.sort?.on,
+            order: action.sort?.order,
+          },
+          index: action.index,
+        },
+      };
+    case `${UPDATE_CONTENT}_SUCCESS`:
       return {
         ...state,
         [getRequestKey(action.type)]: {

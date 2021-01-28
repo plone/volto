@@ -18,7 +18,6 @@ export {
   isInternalURL,
   getParentUrl,
   getBaseUrl,
-  getIcon,
   getView,
   isCmsUi,
   getId,
@@ -27,6 +26,7 @@ export { generateSitemap } from '@plone/volto/helpers/Sitemap/Sitemap';
 export {
   nestContent,
   getLayoutFieldname,
+  getContentIcon,
 } from '@plone/volto/helpers/Content/Content';
 export {
   getBlocks,
@@ -42,8 +42,15 @@ export {
   getVocabFromHint,
   getVocabFromField,
   getVocabFromItems,
+  getFieldsVocabulary,
 } from '@plone/volto/helpers/Vocabularies/Vocabularies';
-export AlignBlock from '@plone/volto/helpers/AlignBlock/AlignBlock';
 
 export Helmet from './Helmet/Helmet';
-export { difference } from '@plone/volto/helpers/Utils/Utils';
+export FormValidation from './FormValidation/FormValidation';
+export { messages } from './MessageLabels/MessageLabels';
+export {
+  difference,
+  safeWrapper,
+  applyConfig,
+  withServerErrorCode,
+} from '@plone/volto/helpers/Utils/Utils';

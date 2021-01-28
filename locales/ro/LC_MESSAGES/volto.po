@@ -11,6 +11,10 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
+#: components/manage/Blocks/HTML/Edit
+msgid "<p>Add some HTML here</p>"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "Accessibility"
 msgstr "Accesibilitate"
@@ -39,9 +43,9 @@ msgid "Activate and deactivate"
 msgstr "Activare și dezactivare"
 
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/SchemaWidget
+#: helpers/MessageLabels/MessageLabels
 msgid "Add"
 msgstr "Adăugare"
 
@@ -57,7 +61,7 @@ msgstr "Adăugare conținut"
 msgid "Add Translation…"
 msgstr ""
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Add User"
 msgstr "Adăugare utilizator"
 
@@ -65,7 +69,7 @@ msgstr "Adăugare utilizator"
 msgid "Add a description…"
 msgstr "Adăugați o descriere …"
 
-#: components/manage/Form/Form
+#: helpers/MessageLabels/MessageLabels
 msgid "Add block…"
 msgstr "Adăugare bloc …"
 
@@ -85,7 +89,7 @@ msgstr "Adăugare câmp"
 msgid "Add fieldset"
 msgstr "Adăugare set de câmpuri"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Add group"
 msgstr "Adăugare grup"
 
@@ -93,15 +97,15 @@ msgstr "Adăugare grup"
 msgid "Add new content type"
 msgstr "Adăugare tip de conținut nou"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Add new group"
 msgstr "Adăugare grup nou"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Add new user"
 msgstr "Adăugare utilizator nou"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Add to Groups"
 msgstr "Adăugare la grupuri"
 
@@ -128,6 +132,10 @@ msgstr "Aliniere"
 msgid "All"
 msgstr "Toate"
 
+#: components/theme/Search/Search
+msgid "Alphabetically"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Alt text"
@@ -152,20 +160,22 @@ msgstr "Disponibil"
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/DatabaseInformation
 #: components/manage/Controlpanels/ModerateComments
-#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Diff/Diff
 #: components/manage/History/History
+#: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
+#: helpers/MessageLabels/MessageLabels
 msgid "Back"
 msgstr "Înapoi"
 
@@ -205,17 +215,26 @@ msgstr "În mod implicit, permisiunile din containerul acestui articol sunt moș
 msgid "Cache Name"
 msgstr ""
 
+#: components/manage/Controlpanels/ContentTypeLayout
+msgid "Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypeLayout
+msgid "Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>"
+msgstr ""
+
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
-#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Delete/Delete
 #: components/manage/Edit/Edit
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 #: components/theme/Login/Login
+#: helpers/MessageLabels/MessageLabels
 msgid "Cancel"
 msgstr "Anulează"
 
@@ -225,7 +244,7 @@ msgstr "Celulă"
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Center"
 msgstr "Centrează"
 
@@ -252,6 +271,8 @@ msgid "Changes saved"
 msgstr "Modificări salvate"
 
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
 msgid "Changes saved."
 msgstr "Modificări salvate."
@@ -272,6 +293,14 @@ msgstr "Alegeți imaginea"
 msgid "Choose Target"
 msgstr "Alegeți ținta"
 
+#: components/manage/Widgets/FileWidget
+msgid "Choose a file"
+msgstr ""
+
+#: components/manage/Blocks/HTML/Edit
+msgid "Clear"
+msgstr ""
+
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
 msgstr "Faceți clic pentru a descărca imaginea cu dimensiuni complete"
@@ -283,6 +312,10 @@ msgstr "Închideți"
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
 msgstr "Închidere meniu"
+
+#: components/manage/Blocks/HTML/Edit
+msgid "Code"
+msgstr ""
 
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"
@@ -346,6 +379,10 @@ msgstr "Cuprins"
 msgid "Copy"
 msgstr "Copiere"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Copy blocks"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "Copyright"
 msgstr "Drepturi de autor"
@@ -380,6 +417,10 @@ msgstr "Parolă curentă"
 msgid "Cut"
 msgstr "Taie"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Cut blocks"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Daily"
 msgstr ""
@@ -405,6 +446,10 @@ msgstr ""
 msgid "Date"
 msgstr "Data"
 
+#: components/theme/Search/Search
+msgid "Date (newest first)"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Contents/ContentsTagsModal
@@ -412,12 +457,9 @@ msgstr "Data"
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
-#: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/TextareaWidget
-#: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/CommentEditModal
 #: components/theme/Comments/Comments
@@ -430,20 +472,19 @@ msgstr "Implicit"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
-#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/UsersControlpanelGroups
 #: components/manage/Controlpanels/UsersControlpanelUser
 #: components/manage/Delete/Delete
-#: components/manage/Widgets/CheckboxWidget
-#: components/manage/Widgets/TextareaWidget
-#: components/manage/Widgets/TextWidget
+#: components/manage/Widgets/FormFieldWrapper
+#: components/manage/Widgets/ObjectBrowserWidget
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/Comments
 msgid "Delete"
 msgstr "Ștergeți"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Delete Group"
 msgstr "Ștergeți grupul"
 
@@ -451,9 +492,13 @@ msgstr "Ștergeți grupul"
 msgid "Delete Type"
 msgstr "Ștergeți tipul"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Delete User"
 msgstr "Ștergeți utilizatorul"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Delete blocks"
+msgstr ""
 
 #: components/manage/Blocks/Table/Edit
 msgid "Delete col"
@@ -463,21 +508,22 @@ msgstr "Șterge coloană"
 msgid "Delete row"
 msgstr "Șterge rând"
 
+#: components/manage/Blocks/Listing/ListingData
+msgid "Depth"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Descending"
 msgstr "Descrescător"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Controlpanels/UsersControlpanel
-#: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/TextareaWidget
-#: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
+#: helpers/MessageLabels/MessageLabels
 msgid "Description"
 msgstr "Descriere"
 
@@ -525,6 +571,18 @@ msgstr "Document"
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Trageți și fixați fișierele de pe computer în această zonă sau faceți clic pe butonul Răsfoiește."
 
+#: components/manage/Widgets/FileWidget
+msgid "Drop file here to replace the existing file"
+msgstr ""
+
+#: components/manage/Widgets/FileWidget
+msgid "Drop file here to upload a new file"
+msgstr ""
+
+#: components/manage/Widgets/FileWidget
+msgid "Drop files here ..."
+msgstr ""
+
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
 msgid "E-mail"
@@ -535,10 +593,11 @@ msgid "E-mail addresses do not match."
 msgstr "Adresele de e-mail nu se potrivesc."
 
 #: components/manage/Contents/ContentsItem
-#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Toolbar/Toolbar
-#: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/FormFieldWrapper
+#: components/manage/Widgets/ObjectBrowserWidget
 #: components/theme/Comments/Comments
 msgid "Edit"
 msgstr "Editează"
@@ -567,7 +626,7 @@ msgstr "Editează valori"
 msgid "Edit {title}"
 msgstr "Editează {title}"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Email"
 msgstr "Email"
 
@@ -583,13 +642,21 @@ msgstr "Eroare de cod integrat, urmați instrucțiunile și încercați din nou.
 msgid "Embeded Google Maps"
 msgstr "Harti Google integrate"
 
+#: components/manage/Controlpanels/ContentTypeLayout
+msgid "Enable editable Blocks"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "End Date"
 msgstr "Data de încheiere"
 
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
-msgid "Enter URL or title"
-msgstr "Introdu URL sau titlu"
+msgid "Enter URL or select an item"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Enter a username above to search or click 'Show All'"
+msgstr ""
 
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
@@ -619,12 +686,13 @@ msgid "Enter your new password. Minimum 5 characters."
 msgstr "Introduceți noua parolă. Minim 5 caractere."
 
 #: components/manage/Add/Add
+#: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Edit/Edit
-#: components/manage/Form/Form
 #: components/manage/Form/InlineForm
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
+#: helpers/MessageLabels/MessageLabels
 msgid "Error"
 msgstr "Eroare"
 
@@ -702,7 +770,7 @@ msgid "From"
 msgstr "Din"
 
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Full"
 msgstr "Complet"
 
@@ -712,7 +780,7 @@ msgstr "Complet"
 msgid "Full Name"
 msgstr "Numele complet"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Fullname"
 msgstr "Numele complet"
 
@@ -732,17 +800,22 @@ msgstr "Bloc te tip Google Maps"
 msgid "Group"
 msgstr "Grup"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Group created"
 msgstr "Grup creat"
 
 #: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Groupname"
 msgstr "Nume de grup"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Groups"
 msgstr "Grupuri"
+
+#: components/manage/Blocks/Table/Edit
+msgid "Header cell"
+msgstr ""
 
 #: components/manage/History/History
 #: components/manage/Toolbar/More
@@ -754,6 +827,7 @@ msgid "History of {title}"
 msgstr "Istoricul {title}"
 
 #: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsBreadcrumbs
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Home"
 msgstr "Acasă"
@@ -797,6 +871,8 @@ msgid "Include this occurence"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
 msgid "Info"
 msgstr "Info"
@@ -858,12 +934,20 @@ msgid "Item batch size"
 msgstr "Dimensiunea lotului obiectului"
 
 #: components/manage/Contents/Contents
+msgid "Item succesfully moved."
+msgstr ""
+
+#: components/manage/Contents/Contents
 msgid "Item(s) copied."
 msgstr "Obiect(e) copiat."
 
 #: components/manage/Contents/Contents
 msgid "Item(s) cut."
 msgstr "Obiect(e) tăiat(e)."
+
+#: components/manage/Contents/Contents
+msgid "Item(s) has been updated."
+msgstr ""
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -874,8 +958,8 @@ msgstr "Obiect(e) lipit(e)."
 msgid "Items"
 msgstr "Obiecte"
 
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
 msgid "Items must be unique."
 msgstr "Obiectele trebuie să fie unice."
 
@@ -899,13 +983,17 @@ msgstr "Ultima modificare"
 msgid "Latest version"
 msgstr "Ultima versiune"
 
+#: components/manage/Controlpanels/ContentTypesActions
+msgid "Layout"
+msgstr ""
+
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Lead Image"
 msgstr "Imaginea de start"
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Left"
 msgstr "Stânga"
 
@@ -962,6 +1050,15 @@ msgstr "Nume de autentificare"
 msgid "Make the table compact"
 msgstr "Compactati tabelul"
 
+#: components/manage/Multilingual/ManageTranslations
+#: components/manage/Toolbar/More
+msgid "Manage Translations"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Manage translations for {title}"
+msgstr ""
+
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "Map"
 msgstr "Hartă"
@@ -970,14 +1067,26 @@ msgstr "Hartă"
 msgid "Maps URL"
 msgstr "URL Hartă"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "Maximum length is {len}."
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Maximum value is {len}."
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
 msgstr "Mesaj"
 
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
 msgid "Minimum length is {len}."
 msgstr "Lungimea minimă este {len}."
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Minimum value is {len}."
+msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Moderate Comments"
@@ -1072,6 +1181,10 @@ msgstr ""
 msgid "No options"
 msgstr ""
 
+#: components/theme/Search/Search
+msgid "No results found"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
@@ -1140,8 +1253,12 @@ msgstr "Origine"
 msgid "Page"
 msgstr "Pagina"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: components/manage/Widgets/SchemaWidget
+msgid "Parent fieldset"
+msgstr ""
+
 #: components/theme/Login/Login
+#: helpers/MessageLabels/MessageLabels
 msgid "Password"
 msgstr "Parolă"
 
@@ -1158,6 +1275,10 @@ msgstr "Parolele nu se potrivesc."
 #: components/manage/Contents/Contents
 msgid "Paste"
 msgstr "Lipire"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Paste blocks"
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Toolbar/Toolbar
@@ -1206,6 +1327,10 @@ msgstr "Plone{reg} CMS/WCM Open Source"
 msgid "Portrait"
 msgstr "Portret"
 
+#: components/manage/Widgets/SchemaWidget
+msgid "Possible values"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "Powered by Plone & Python"
 msgstr "Powered by Plone & Python"
@@ -1215,9 +1340,17 @@ msgid "Preferences"
 msgstr "Preferințe"
 
 #: components/manage/Blocks/HTML/Edit
+msgid "Prettify your code"
+msgstr ""
+
+#: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
 msgid "Preview"
 msgstr "Previzualizare"
+
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "Preview Image URL"
+msgstr ""
 
 #: components/manage/Toolbar/PersonalTools
 msgid "Profile"
@@ -1275,6 +1408,10 @@ msgstr "Înregistrare"
 msgid "Registration form"
 msgstr "Formular de înregistrare"
 
+#: components/theme/Search/Search
+msgid "Relevance"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
 msgstr ""
@@ -1300,18 +1437,19 @@ msgstr ""
 msgid "Repeat on"
 msgstr ""
 
-#: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/FileWidget
+msgid "Replace existing file"
+msgstr ""
+
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/TextareaWidget
-#: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 msgid "Required"
 msgstr "Obligatoriu"
 
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
 msgid "Required input is missing."
 msgstr "Câmpul este obligatoriu."
 
@@ -1341,7 +1479,7 @@ msgstr "Richtext"
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Right"
 msgstr "Dreapta"
 
@@ -1349,23 +1487,36 @@ msgstr "Dreapta"
 msgid "Rights"
 msgstr "Drepturi"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Roles"
 msgstr "Roluri"
 
+#: components/manage/Contents/ContentsBreadcrumbs
+msgid "Root"
+msgstr ""
+
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
-#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: helpers/MessageLabels/MessageLabels
 msgid "Save"
 msgstr "Salvare"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Save recurrence"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypesActions
+msgid "Schema"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypeSchema
+msgid "Schema updates"
 msgstr ""
 
 #: components/theme/SearchWidget/SearchWidget
@@ -1384,7 +1535,7 @@ msgstr "Căutare conținut"
 msgid "Search for user or group"
 msgstr "Căutare utilizator sau grup"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Search group…"
 msgstr ""
 
@@ -1396,7 +1547,7 @@ msgstr "Rezultatele căutării"
 msgid "Search results for {term}"
 msgstr "Rezultatele căutării pentru {term}"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Search users…"
 msgstr ""
 
@@ -1455,6 +1606,10 @@ msgstr "Setați parola mea"
 msgid "Set your password"
 msgstr "Setați parola"
 
+#: components/manage/Sidebar/Sidebar
+msgid "Settings"
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 #: components/manage/Toolbar/More
 msgid "Sharing"
@@ -1464,12 +1619,9 @@ msgstr "Partajare"
 msgid "Sharing for {title}"
 msgstr "Partajare pentru {title}"
 
-#: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/TextareaWidget
-#: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 msgid "Short Name"
 msgstr "Nume"
@@ -1481,6 +1633,10 @@ msgstr "Nume"
 #: components/theme/Pagination/Pagination
 msgid "Show"
 msgstr "Afișați"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Show All"
+msgstr ""
 
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
@@ -1527,6 +1683,10 @@ msgstr "Mărime: {size}"
 #: error
 msgid "Sorry, something went wrong with your request"
 msgstr "Ne pare rău, a apârut o eroare"
+
+#: components/theme/Search/Search
+msgid "Sort By:"
+msgstr ""
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "Sort on"
@@ -1578,11 +1738,13 @@ msgstr "Subiect"
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Controlpanels/UsersControlpanel
+#: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/theme/ContactForm/ContactForm
+#: helpers/MessageLabels/MessageLabels
 msgid "Success"
 msgstr "Succes"
 
@@ -1674,8 +1836,8 @@ msgstr "Există o problemă de configurare pe backend"
 msgid "There were some errors"
 msgstr "Au aparut unele erori"
 
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
 msgid "There were some errors."
 msgstr "Au aparut unele erori."
 
@@ -1699,15 +1861,12 @@ msgstr ""
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Controlpanels/UsersControlpanel
-#: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/TextareaWidget
-#: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
+#: helpers/MessageLabels/MessageLabels
 msgid "Title"
 msgstr "Titlu"
 
@@ -1734,6 +1893,14 @@ msgstr ""
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
 msgstr "Traduceți în {lang}"
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Translation linked"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Translation linking removed"
+msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
@@ -1798,24 +1965,21 @@ msgstr "Încărcare"
 msgid "Upload a lead image in the 'Lead Image' content field."
 msgstr "Încărcați o imagine de start în câmpul de conținut 'Imagine de start'."
 
+#: components/manage/Blocks/HeroImageLeft/Edit
+msgid "Upload a new image"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 msgid "Upload files"
 msgstr "Încărcați fișiere"
 
 #: components/manage/Contents/ContentsUploadModal
-msgid "Upload {count, plural, one {# file} other {# files}}"
-msgstr "Încărcați {count, plural, one {# file} other {# files}}"
-
-#: components/manage/Contents/ContentsUploadModal
 msgid "Uploading files"
 msgstr "Încărcarea fișierelor"
 
-#: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/TextareaWidget
-#: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 msgid "Used for programmatic access to the fieldset."
 msgstr "Folosit pentru acces programatic la setul de câmpuri."
@@ -1824,7 +1988,7 @@ msgstr "Folosit pentru acces programatic la setul de câmpuri."
 msgid "User"
 msgstr "Utilizator"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "User created"
 msgstr "Utilizator creat"
 
@@ -1832,7 +1996,7 @@ msgstr "Utilizator creat"
 msgid "User name"
 msgstr "Nume utilizator"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Username"
 msgstr "Nume utilizator"
 
@@ -1841,7 +2005,7 @@ msgid "Users"
 msgstr "Utilizatori"
 
 #: components/manage/Controlpanels/Controlpanels
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Users and Groups"
 msgstr "Utilizatori și grupuri"
 
@@ -1962,6 +2126,10 @@ msgstr "Puteți vedea diferența reviziilor de mai jos."
 msgid "You can view the history of your item below."
 msgstr "Puteți vedea istoricul articolului dvs. mai jos."
 
+#: components/manage/Contents/Contents
+msgid "You can't paste this content here"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Your email is required for reset your password."
 msgstr "E-mailul dvs. este necesar pentru resetarea parolei."
@@ -2008,6 +2176,10 @@ msgstr "Parola este în curs de schimbare. Urmați instrucțiunile primite pe ad
 
 #: components/manage/Contents/ContentsItem
 msgid "draft"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+msgid "email"
 msgstr ""
 
 #: components/theme/View/EventView
@@ -2058,6 +2230,10 @@ msgstr "HTML"
 msgid "image"
 msgstr "Imagine"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "integer"
+msgstr ""
+
 #: components/manage/Contents/ContentsItem
 msgid "intranet"
 msgstr ""
@@ -2074,6 +2250,10 @@ msgstr "Imagine (copertă)"
 msgid "listing"
 msgstr "Listare"
 
+#: components/manage/Contents/Contents
+msgid "loading"
+msgstr ""
+
 #: components/theme/Unauthorized/Unauthorized
 msgid "log in"
 msgstr "autentificați-vă"
@@ -2082,9 +2262,25 @@ msgstr "autentificați-vă"
 msgid "maps"
 msgstr "Harta"
 
+#: components/manage/Widgets/SchemaWidget
+msgid "maxLength"
+msgstr ""
+
+#: components/manage/Widgets/SchemaWidget
+msgid "maximum"
+msgstr ""
+
 #: config/Blocks
 msgid "media"
 msgstr "Media"
+
+#: components/manage/Widgets/SchemaWidget
+msgid "minLength"
+msgstr ""
+
+#: components/manage/Widgets/SchemaWidget
+msgid "minimum"
+msgstr ""
 
 #: config/Blocks
 msgid "mostUsed"
@@ -2092,6 +2288,10 @@ msgstr "Cele mai utilizate"
 
 #: components/manage/Contents/ContentsItem
 msgid "no workflow state"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+msgid "number"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
@@ -2279,6 +2479,10 @@ msgstr "Titlu"
 msgid "toc"
 msgstr "Cuprins"
 
+#: helpers/MessageLabels/MessageLabels
+msgid "url"
+msgstr ""
+
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"
 msgstr "avatarul utilizatorului"
@@ -2295,9 +2499,21 @@ msgstr "Vizitează site extern"
 msgid "we can send you a new one"
 msgstr "vă putem trimite unul nou"
 
+#: components/manage/Contents/ContentsUploadModal
+msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "{count} selected"
 msgstr "{count} selectat"
+
+#: components/manage/Controlpanels/ContentType
+msgid "{id} Content Type"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypeSchema
+msgid "{id} Schema"
+msgstr ""
 
 #: components/manage/Actions/Actions
 msgid "{title} copied."

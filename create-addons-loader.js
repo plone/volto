@@ -1,5 +1,4 @@
 const fs = require('fs');
-const path = require('path');
 const tmp = require('tmp');
 const cryptoRandomString = require('crypto-random-string');
 
@@ -9,22 +8,9 @@ const titleCase = (w) => w.slice(0, 1).toUpperCase() + w.slice(1, w.length);
  * Transforms a package name to javascript variable name
  */
 function nameFromPackage(name) {
-  if (
-    name.startsWith('@') ||
-    name.startsWith('~') ||
-    name.startsWith('.') ||
-    name.startsWith(path.sep)
-  ) {
-    name =
-      name
-        .replace('@', '')
-        .replace('~', '')
-        .split('.')
-        .join('')
-        .split(path.sep)
-        .join('') ||
-      cryptoRandomString({ length: 10, characters: 'abcdefghijk' });
-  }
+  name =
+    name.replace(/[@~./\\:\s]/gi, '') ||
+    cryptoRandomString({ length: 10, characters: 'abcdefghijk' });
   return name
     .split('-')
     .map((w, i) => (i > 0 ? titleCase(w) : w))
@@ -73,6 +59,14 @@ Instead, change the "addons" setting in your package.json file.
   });
 
   buf += `
+const safeWrapper = (func) => (config) => {
+  const res = func(config);
+  if (typeof res === 'undefined') {
+    throw new Error("Configuration function doesn't return config");
+  }
+  return res;
+}
+
 const load = (config) => {
   const addonLoaders = [${configsToLoad.join(', ')}];
   if(!addonLoaders.every((el) => typeof el === "function")) {
@@ -80,7 +74,7 @@ const load = (config) => {
       'Each addon has to provide a function applying its configuration to the projects configuration.',
     );
   }
-  return addonLoaders.reduce((acc, apply) => apply(acc), config);
+  return addonLoaders.reduce((acc, apply) => safeWrapper(apply)(acc), config);
 };
 export default load;
 `;

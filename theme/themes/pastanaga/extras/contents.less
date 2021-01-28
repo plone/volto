@@ -83,6 +83,7 @@
 
     svg {
       flex-shrink: 0;
+      color: @lightGrey;
     }
 
     span {
@@ -123,5 +124,22 @@
   .ui.secondary.menu a.item:hover,
   .ui.secondary.menu a.item.active {
     background-color: #edf1f2 !important;
+  }
+}
+
+#content-core {
+  .dragging-cell {
+    opacity: 0;
+  }
+
+  .dragging-row {
+    background: rgba(0, 0, 0, 0.05);
+  }
+}
+
+.ui.page.modals .content {
+  .upload-row {
+    white-space: normal;
+    word-break: break-all;
   }
 }

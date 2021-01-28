@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
-import { wait } from '@testing-library/react';
+import { waitFor } from '@testing-library/react';
 
 import SelectWidget from './SelectWidget';
 
@@ -24,10 +24,15 @@ test('renders a select widget component', async () => {
 
   const component = renderer.create(
     <Provider store={store}>
-      <SelectWidget id="my-field" title="My field" onChange={() => {}} />
+      <SelectWidget
+        id="my-field"
+        title="My field"
+        onChange={() => {}}
+        onBlur={() => {}}
+        onClick={() => {}}
+      />
     </Provider>,
   );
-  await wait(() => {
-    expect(component.toJSON()).toMatchSnapshot();
-  });
+  await waitFor(() => {});
+  expect(component.toJSON()).toMatchSnapshot();
 });
