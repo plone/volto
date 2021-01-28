@@ -54,4 +54,4 @@ export {
   applyConfig,
   withServerErrorCode,
 } from '@plone/volto/helpers/Utils/Utils';
-export { withLoadables } from './Loadable/Loadable';
+export { injectLazyLibs } from './Loadable/Loadable';

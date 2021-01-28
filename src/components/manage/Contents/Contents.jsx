@@ -67,7 +67,7 @@ import {
   Unauthorized,
 } from '@plone/volto/components';
 
-import { withLoadables } from '@plone/volto/helpers/Loadable/Loadable';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import ContentsBreadcrumbs from './ContentsBreadcrumbs';
 
 import backSVG from '@plone/volto/icons/back.svg';
@@ -1709,7 +1709,7 @@ class Contents extends Component {
 
 export const __test__ = compose(
   injectIntl,
-  withLoadables(['toastify']),
+  injectLazyLibs(['toastify']),
   connect(
     (store, props) => {
       return {
@@ -1796,5 +1796,5 @@ export default compose(
         await dispatch(listActions(getBaseUrl(location.pathname))),
     },
   ]),
-  withLoadables(['toastify']),
+  injectLazyLibs(['toastify']),
 )(Contents);

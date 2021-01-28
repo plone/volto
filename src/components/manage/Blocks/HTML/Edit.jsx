@@ -12,7 +12,7 @@ import loadable from '@loadable/component';
 import { isEqual } from 'lodash';
 
 import { Icon } from '@plone/volto/components';
-import { withLoadables } from '@plone/volto/helpers/Loadable/Loadable';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import showSVG from '@plone/volto/icons/show.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import codeSVG from '@plone/volto/icons/code.svg';
@@ -298,12 +298,12 @@ const withPrismMarkup = (WrappedComponent) => (props) => {
 };
 
 export const __test__ = compose(
-  withLoadables(['prettierStandalone', 'prettierParserHtml', 'prismCore']),
+  injectLazyLibs(['prettierStandalone', 'prettierParserHtml', 'prismCore']),
   injectIntl,
 )(Edit);
 
 export default compose(
-  withLoadables(['prettierStandalone', 'prettierParserHtml', 'prismCore']),
+  injectLazyLibs(['prettierStandalone', 'prettierParserHtml', 'prismCore']),
   withPrismMarkup,
   injectIntl,
 )(Edit);

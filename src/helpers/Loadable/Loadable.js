@@ -37,11 +37,11 @@ export function useLoadables(maybeNames, shouldRerender = true) {
 }
 
 export function preloadLazyLibs(maybeNames, forwardRef = false) {
-  return withLoadables(maybeNames, forwardRef, false);
+  return injectLazyLibs(maybeNames, forwardRef, false);
 }
 
 // TODO: rename this to injectLibs
-export function withLoadables(
+export function injectLazyLibs(
   maybeNames,
   forwardRef = false,
   shouldRerender = true,

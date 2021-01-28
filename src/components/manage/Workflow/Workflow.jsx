@@ -12,7 +12,7 @@ import { toast } from 'react-toastify';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import getWorkflowMapping from '@plone/volto/constants/Workflows';
 import { Icon, Toast } from '@plone/volto/components';
-import { withLoadables } from '@plone/volto/helpers/Loadable/Loadable';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { settings } from '~/config';
 
 import {
@@ -36,7 +36,7 @@ const messages = defineMessages({
   },
 });
 
-const SingleValue = withLoadables('reactSelect')(({ children, ...props }) => {
+const SingleValue = injectLazyLibs('reactSelect')(({ children, ...props }) => {
   const stateDecorator = {
     marginLeft: '10px',
     marginRight: '10px',
@@ -56,7 +56,7 @@ const SingleValue = withLoadables('reactSelect')(({ children, ...props }) => {
   );
 });
 
-const Option = withLoadables('reactSelect')((props) => {
+const Option = injectLazyLibs('reactSelect')((props) => {
   const stateDecorator = {
     marginLeft: '10px',
     marginRight: '10px',
@@ -88,7 +88,7 @@ const Option = withLoadables('reactSelect')((props) => {
   );
 });
 
-const DropdownIndicator = withLoadables('reactSelect')((props) => {
+const DropdownIndicator = injectLazyLibs('reactSelect')((props) => {
   const { DropdownIndicator } = props.reactSelect.components;
   return (
     <DropdownIndicator {...props} data-testid="workflow-select-dropdown">
@@ -339,7 +339,7 @@ class Workflow extends Component {
 
 export default compose(
   injectIntl,
-  withLoadables(['reactSelect']),
+  injectLazyLibs(['reactSelect']),
   connect(
     (state) => ({
       loaded: state.workflow.transition.loaded,
