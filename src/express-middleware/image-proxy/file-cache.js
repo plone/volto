@@ -8,7 +8,7 @@ function save(key, value) {
   fs.outputFileSync(path.resolve(__dirname, filePath), value);
 }
 function read(key) {
-  const filePath = `./var/public/${key.split('/').pop()}`;
+  const filePath = key.split('/').pop();
   return fs.readFileSync(filePath, 'utf8');
 }
 
