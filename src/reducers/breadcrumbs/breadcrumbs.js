@@ -4,7 +4,7 @@
  */
 
 import { map } from 'lodash';
-import { settings } from '~/config';
+import { flattenToAppURL } from '@plone/volto/helpers';
 
 import { GET_BREADCRUMBS } from '@plone/volto/constants/ActionTypes';
 
@@ -37,7 +37,7 @@ export default function breadcrumbs(state = initialState, action = {}) {
         error: null,
         items: map(action.result.items, (item) => ({
           title: item.title,
-          url: item['@id'].replace(settings.apiPath, ''),
+          url: flattenToAppURL(item['@id']),
         })),
         loaded: true,
         loading: false,

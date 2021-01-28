@@ -334,8 +334,8 @@ const getItemStyle = (isDragging, draggableStyle) => ({
 const getTabStyle = (isDraggingOver) => ({
   background: isDraggingOver ? '#f4f4f4' : 'transparent',
   display: 'flex',
-  'flex-direction': 'row',
-  'flex-wrap': 'wrap',
+  flexDirection: 'row',
+  flexWrap: 'wrap',
 });
 
 const getFieldStyle = (isDraggingOver) => ({

@@ -16,7 +16,6 @@ exports[`renders an Image Block Sidebar component 1`] = `
   >
     <div
       className="inline field text"
-      id="field-external"
     >
       <div
         className="ui grid"
@@ -67,6 +66,7 @@ exports[`renders an Image Block Sidebar component 1`] = `
               />
             </div>
             <button
+              className="field-external-action-button"
               onClick={[Function]}
             >
               <svg
@@ -94,7 +94,6 @@ exports[`renders an Image Block Sidebar component 1`] = `
     </div>
     <div
       className="inline field text"
-      id="field-video-preview-image"
     >
       <div
         className="ui grid"
@@ -145,6 +144,7 @@ exports[`renders an Image Block Sidebar component 1`] = `
               />
             </div>
             <button
+              className="field-video-preview-image-action-button"
               onClick={[Function]}
             >
               <svg
