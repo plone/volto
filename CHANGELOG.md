@@ -27,6 +27,7 @@
 
 ### Feature
 
+- Add new components: RenderBlocks, BlocksForm, DragDropList and EditBlockWrapper @tiberiuichim
 - Simple optional critical-CSS inclusion feature (without the actual building of
   the critical CSS) @silviubogan @tiberiuichim @nileshgulia1
 - added support for allowedBlocks and showRestricted for BlockChooser in Form @giuliaghisini
