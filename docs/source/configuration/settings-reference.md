@@ -111,21 +111,21 @@ This list is still incomplete, contributions are welcomed!
     You can edit this limit in the `settings` object setting a new value in bytes
     (for example, to set 500 mb you need to write 5000000000).
 
-### initialReducers
+### initialReducersBlacklist
 
 !!! block ""
 
     The initial state passed from server to browser needs to be minimal in order to optimize the resultant html generated. This state gets stored in `window.__data` and received in client.
 
-    We whitelisted a few required reducers that are needed to make volto work specially in SSR so that the `initialState` are not different. You can edit this list and add reducers specific to your requirements.
+    You can blacklist a few reducers that you don't want to be part of `window.__data`,thus decreasing the initial html size for performance gains.
 
     ```js
     import * as config from '@plone/volto/config';
 
     export const settings = {
       ...config.settings,
-      initialReducers: [
-        ...config.settings.initialReducers,
+      initialReducersBlacklist: [
+        ...config.settings.initialReducersBlacklist,
         'yourReducer',
       ]
     };

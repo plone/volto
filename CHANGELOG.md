@@ -10,7 +10,7 @@
 
 ### Feature
 
-- make and load configurable reducers in the client `window.__data`, decreasing the html size @nileshgulia1
+- make and load configurable reducers in the client `window.__data`, decreasing the html size @nileshgulia1 @tiberiuichim
 
 ### Bugfix
 
