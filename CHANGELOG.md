@@ -11,6 +11,7 @@
 ### Feature
 
 - An initial Storybook setup. Start it with `yarn storybook`. Feel free to contribute more stories! @sneridagh
+- Add storybook wrapper. Add ContactForm initial story @tiberiuichim
 - make and load configurable reducers in the client `window.__data`, decreasing the html size @nileshgulia1 @tiberiuichim
 - Custom group component for selectStyling @nileshgulia1
 - Add new components: RenderBlocks, BlocksForm, DragDropList and EditBlockWrapper @tiberiuichim
