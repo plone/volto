@@ -14,6 +14,7 @@
 - make and load configurable reducers in the client `window.__data`, decreasing the html size @nileshgulia1 @tiberiuichim
 - Custom group component for selectStyling @nileshgulia1
 - Add new components: RenderBlocks, BlocksForm, DragDropList and EditBlockWrapper @tiberiuichim
+- Add `removeNoValue` prop to `SelectWidget` so you can opt-out from the "no-value" option so the choices are a closed list @sneridagh
 
 ### Bugfix
 
