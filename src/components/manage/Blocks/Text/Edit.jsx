@@ -315,6 +315,7 @@ class Edit extends Component {
             onMutateBlock={this.props.onMutateBlock}
             currentBlock={this.props.block}
             allowedBlocks={this.props.allowedBlocks}
+            showRestricted={this.props.showRestricted}
           />
         )}
       </>
