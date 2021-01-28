@@ -282,6 +282,16 @@ class Edit extends Component {
                 this.codeEditorRef.current = node;
               }
             }}
+            onClick={(e) => {
+              // console.log('props', this.props);
+              this.props.onSelectBlock(this.props.block);
+              e.persist();
+              this.setState({}, () => {
+                e.stopPropagation();
+                e.preventDefault();
+              });
+            }}
+            ignoreTabKey={true}
           />
         )}
       </>
