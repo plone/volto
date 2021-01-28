@@ -27,6 +27,7 @@
 - Upgrade react ecosystem to 13.14.0 @sneridagh
 - Add shouldComponentUpdate to blocks @nileshgulia1
 - Update old entry in upgrade guide @tiberiuichim
+- Add `@testing-library/cypress` as a dep @sneridagh
 
 ## 10.10.0 (2021-01-22)
 
