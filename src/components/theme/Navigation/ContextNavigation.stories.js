@@ -1,7 +1,132 @@
-import { ContextNavigationComponent } from './ContextNavigation';
+import ContextNavigationDefault, {
+  ContextNavigationComponent as CNC,
+} from './ContextNavigation';
 import Wrapper from '@plone/volto/storybook';
-import { injectIntl } from 'react-intl';
 import React from 'react';
+
+const navigation = {
+  '@id': 'http://localhost:3000/api/folder2/folder21/doc212/@contextnavigation',
+  available: true,
+  has_custom_name: true,
+  items: [
+    {
+      '@id': 'http://localhost:3000/api/folder1',
+      description: '',
+      href: 'http://localhost:3000/api/folder1',
+      icon: '',
+      is_current: false,
+      is_folderish: true,
+      is_in_path: false,
+      items: [],
+      normalized_id: 'folder1',
+      review_state: 'private',
+      thumb: '',
+      title: 'Folder1',
+      type: 'folder',
+    },
+    {
+      '@id': 'http://localhost:3000/api/folder2/folder21',
+      description: '',
+      href: 'http://localhost:3000/api/folder2/folder21',
+      icon: '',
+      is_current: false,
+      is_folderish: true,
+      is_in_path: true,
+      items: [
+        {
+          '@id': 'http://localhost:3000/api/folder2/folder21/doc211',
+          description: '',
+          href: 'http://localhost:3000/api/folder2/folder21/doc211',
+          icon: '',
+          is_current: false,
+          is_folderish: false,
+          is_in_path: false,
+          items: [],
+          normalized_id: 'doc211',
+          review_state: 'private',
+          thumb: '',
+          title: 'Doc211',
+          type: 'document',
+        },
+        {
+          '@id': 'http://localhost:3000/api/folder2/folder21/doc211-copy',
+          description: '',
+          href: 'http://localhost:3000/api/folder2/folder21/doc211-copy',
+          icon: '',
+          is_current: true,
+          is_folderish: false,
+          is_in_path: false,
+          items: [],
+          normalized_id: 'doc212',
+          review_state: 'private',
+          thumb: '',
+          title: 'Doc212',
+          type: 'document',
+        },
+      ],
+      normalized_id: 'folder21',
+      review_state: 'private',
+      thumb: '',
+      title: 'Folder21',
+      type: 'folder',
+    },
+  ],
+  title: 'NavTree',
+  url: 'http://localhost:3000/api/folder2/sitemap',
+};
+
+const customStore = {
+  contextNavigation: {
+    '/folder2/folder21/doc212/@contextnavigation': {
+      data: navigation,
+    },
+  },
+  userSession: { token: '1234' },
+  intl: {
+    locale: 'en',
+    messages: {},
+  },
+};
+
+const ContextNavigationComponent = (args) => {
+  return (
+    <Wrapper>
+      <style dangerouslySetInnerHTML={{ __html: style }}></style>
+      <CNC {...args} navigation={navigation} />
+    </Wrapper>
+  );
+};
+
+const ContextNavigation = (args) => {
+  return (
+    <Wrapper
+      location={{ pathname: '/folder2/folder21/doc212' }}
+      customStore={customStore}
+    >
+      <style dangerouslySetInnerHTML={{ __html: style }}></style>
+      <ContextNavigationDefault />
+    </Wrapper>
+  );
+};
+
+export default {
+  title: 'Context navigation',
+  component: CNC,
+  decorators: [
+    (Story) => (
+      <div style={{ margin: '3em' }}>
+        <Story />
+      </div>
+    ),
+  ],
+  // subcomponents: { ArgsTable },
+};
+
+export const Renderer = () => (
+  <ContextNavigationComponent navigation={navigation} />
+);
+
+export const Connected = () => <ContextNavigation />;
 
 const style = `
 .list .content .list a {
@@ -88,119 +213,4 @@ const style = `
 .context-navigation .item a:hover .active-indicator {
   color     : white !important;
 }
-
 `;
-
-const customStore = {
-  contextNavigation: {
-    '/folder2/folder21/doc212/@contextnavigation': {
-      data: {
-        '@id':
-          'http://localhost:3000/api/folder2/folder21/doc212/@contextnavigation',
-        available: true,
-        has_custom_name: true,
-        items: [
-          {
-            '@id': 'http://localhost:3000/api/folder1',
-            description: '',
-            href: 'http://localhost:3000/api/folder1',
-            icon: '',
-            is_current: false,
-            is_folderish: true,
-            is_in_path: false,
-            items: [],
-            normalized_id: 'folder1',
-            review_state: 'private',
-            thumb: '',
-            title: 'Folder1',
-            type: 'folder',
-          },
-          {
-            '@id': 'http://localhost:3000/api/folder2/folder21',
-            description: '',
-            href: 'http://localhost:3000/api/folder2/folder21',
-            icon: '',
-            is_current: false,
-            is_folderish: true,
-            is_in_path: true,
-            items: [
-              {
-                '@id': 'http://localhost:3000/api/folder2/folder21/doc211',
-                description: '',
-                href: 'http://localhost:3000/api/folder2/folder21/doc211',
-                icon: '',
-                is_current: false,
-                is_folderish: false,
-                is_in_path: false,
-                items: [],
-                normalized_id: 'doc211',
-                review_state: 'private',
-                thumb: '',
-                title: 'Doc211',
-                type: 'document',
-              },
-              {
-                '@id': 'http://localhost:3000/api/folder2/folder21/doc211-copy',
-                description: '',
-                href: 'http://localhost:3000/api/folder2/folder21/doc211-copy',
-                icon: '',
-                is_current: true,
-                is_folderish: false,
-                is_in_path: false,
-                items: [],
-                normalized_id: 'doc212',
-                review_state: 'private',
-                thumb: '',
-                title: 'Doc212',
-                type: 'document',
-              },
-            ],
-            normalized_id: 'folder21',
-            review_state: 'private',
-            thumb: '',
-            title: 'Folder21',
-            type: 'folder',
-          },
-        ],
-        title: 'NavTree',
-        url: 'http://localhost:3000/api/folder2/sitemap',
-      },
-    },
-  },
-  userSession: { token: '1234' },
-  intl: {
-    locale: 'en',
-    messages: {},
-  },
-};
-
-const ContextNavigation = (args) => {
-  const IntlContextNavigation = injectIntl(ContextNavigationComponent);
-
-  return (
-    <Wrapper customStore={customStore}>
-      <style dangerouslySetInnerHTML={{ __html: style }}></style>
-      <IntlContextNavigation
-        {...args}
-        location={{ pathname: '/folder2/folder21/doc212' }}
-      />
-    </Wrapper>
-  );
-};
-
-export default {
-  title: 'Context navigation',
-  component: ContextNavigationComponent,
-  decorators: [
-    (Story) => (
-      <div style={{ margin: '3em' }}>
-        <Story />
-      </div>
-    ),
-  ],
-  // subcomponents: { ArgsTable },
-};
-
-export const Primary = () => (
-  <ContextNavigation location={{ pathname: '/folder2/folder21/doc212' }} />
-);
