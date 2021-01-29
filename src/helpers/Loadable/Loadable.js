@@ -10,6 +10,7 @@ const validateLibs = (maybeLibs) => {
   if (Array.isArray(maybeLibs)) {
     return maybeLibs.map(validateLibs).filter((x) => !!x).length > 0;
   }
+
   const { loadables, lazyBundles } = settings;
 
   return (
@@ -25,6 +26,10 @@ const validateLibs = (maybeLibs) => {
 const flattenLazyBundle = (maybeNames) => {
   const { lazyBundles } = settings;
 
+  if (!validateLibs(maybeNames)) {
+    throw new Error(`Invalid lib or bundle name ${maybeNames}`);
+  }
+
   if (
     typeof maybeNames === 'string' &&
     typeof lazyBundles === 'object' &&
@@ -32,15 +37,9 @@ const flattenLazyBundle = (maybeNames) => {
   ) {
     const val = lazyBundles[maybeNames];
 
-    if (!validateLibs(maybeNames)) {
-      throw new Error(`Invalid lib or bundle name ${maybeNames}`);
-    }
     return Array.isArray(val) ? val : [val];
   }
 
-  if (!validateLibs(maybeNames)) {
-    throw new Error(`Invalid lib or bundle name ${maybeNames}`);
-  }
   return Array.isArray(maybeNames) ? maybeNames : [maybeNames];
 };
 
@@ -76,20 +75,17 @@ export function useLazyLibs(maybeNames, options = {}) {
 
 export function preloadLazyLibs(maybeNames, forwardRef = true) {
   const decorator = (WrappedComponent) => {
-    let libraries;
-
     function PreloadLoadables(props) {
-      libraries = libraries || flattenLazyBundle(maybeNames);
+      useLazyLibs(maybeNames, { shouldRerender: false });
+      const key = Array.isArray(maybeNames) ? maybeNames.join(',') : maybeNames;
 
-      useLazyLibs(libraries, { shouldRerender: false });
-
-      PreloadLoadables.displayName = `PreloadLoadables(${libraries.join(
-        ',',
-      )})(${getDisplayName(WrappedComponent)})`;
+      PreloadLoadables.displayName = `PreloadLoadables(${key})(${getDisplayName(
+        WrappedComponent,
+      )})`;
 
       return (
         <WrappedComponent
-          key={libraries.join('|')}
+          key={key}
           {...omit(props, 'forwardedRef')}
           ref={forwardRef ? props.forwardedRef : null}
         />

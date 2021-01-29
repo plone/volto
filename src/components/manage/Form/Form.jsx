@@ -44,7 +44,6 @@ import {
 import { v4 as uuid } from 'uuid';
 import { toast } from 'react-toastify';
 import { BlocksToolbar } from '@plone/volto/components';
-import { preloadLazyLibs } from '@plone/volto/helpers/Loadable';
 import { settings } from '~/config';
 
 /**
@@ -1132,4 +1131,4 @@ class Form extends Component {
   }
 }
 
-export default preloadLazyLibs('cms')(injectIntl(Form, { forwardRef: true }));
+export default injectIntl(Form, { forwardRef: true });
