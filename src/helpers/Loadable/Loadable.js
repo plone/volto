@@ -17,8 +17,8 @@ const validateLibs = (libs) => {
 };
 
 /**
- * @param name {string|string[]} The name of a registered bundle, of a a lib or an
- * array of registered lib names.
+ * @param name {string|string[]} The name of a registered bundle, of a a lib or
+ * an array of registered lib names.
  * @returns {string[]}
  */
 const flattenLazyBundle = (name) => {
@@ -58,8 +58,6 @@ export function useLazyLibs(maybeNames, options = {}) {
     (left, right) => (shouldRerender ? shallowEqual(left, right) : true),
   );
 
-  if (__SERVER__) return {};
-
   const loaded = getLoadables(libraries, globalLoadedLibraries);
 
   libraries.forEach((name) => {
@@ -83,9 +81,9 @@ export function preloadLazyLibs(maybeNames, forwardRef = false) {
 }
 
 export function injectLazyLibs(maybeNames, forwardRef = false) {
-  let libraries;
-
   const decorator = (WrappedComponent) => {
+    let libraries;
+
     function WithLoadables(props) {
       libraries = libraries || flattenLazyBundle(maybeNames);
 

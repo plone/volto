@@ -1132,6 +1132,7 @@ class Form extends Component {
   }
 }
 
-export default preloadLazyLibs(['toastify', 'prettierStandalone'])(
-  injectIntl(Form, { forwardRef: true }),
-);
+export default preloadLazyLibs(
+  ['toastify', 'prettierStandalone'],
+  true,
+)(injectIntl(Form, { forwardRef: true }));
