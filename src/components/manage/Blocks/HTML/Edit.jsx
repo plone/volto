@@ -208,6 +208,7 @@ class Edit extends Component {
     // Don't restore selection when the block is not selected.
     if (
       this.props.selected &&
+      editor._input &&
       typeof this.savedSelection?.selectionStart === 'number' &&
       typeof this.savedSelection?.selectionEnd === 'number'
     ) {
