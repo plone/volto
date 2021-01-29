@@ -74,7 +74,7 @@ export function useLazyLibs(maybeNames, options = {}) {
   return loaded;
 }
 
-export function preloadLazyLibs(maybeNames, forwardRef = false) {
+export function preloadLazyLibs(maybeNames, forwardRef = true) {
   const decorator = (WrappedComponent) => {
     let libraries;
 
