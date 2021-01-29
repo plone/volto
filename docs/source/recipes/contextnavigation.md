@@ -1,19 +1,19 @@
-# Navigation portlet
+# Context navigation component
 
-A navigation portlet component is available in Volto, but it needs to be
+A contextual navigation component is available in Volto, but it needs to be
 integrated with your own website. To use it, customize any appropriate Volto
 theme component (for example `App.jsx` or `DefaultView.jsx`) and insert the
-NavPortlet component:
+ContextNavigation component:
 
 ```jsx
-import NavPortlet from '@plone/volto/components/theme/Navigation/NavPortlet
+import ContextNavigation from '@plone/volto/components/theme/Navigation/ContextNavigation
 
 // and insert it like:
 
-<NavPortlet params={{includeTop: true}} />
+<ContextNavigation params={{includeTop: true}} />
 
 // or:
-<NavPortlet params={{ currentFolderOnly: true }} />
+<ContextNavigation params={{ currentFolderOnly: true }} />
 
 ```
 
@@ -21,7 +21,7 @@ By default it uses the current location path to fetch the portlet listing, but
 you can compute and pass a custom path like:
 
 ```
-<NavPortlet pathname="/my-section" params={{ currentFolderOnly: true }} />
+<ContextNavigation pathname="/my-section" params={{ currentFolderOnly: true }} />
 ```
 
 As parameters you can use:
