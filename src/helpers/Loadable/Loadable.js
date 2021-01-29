@@ -1,9 +1,10 @@
 import React from 'react';
-import { settings } from '~/config';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
-import { loadLazyLibrary } from '@plone/volto/actions';
 import { omit } from 'lodash';
 import hoistNonReactStatics from 'hoist-non-react-statics';
+import { loadLazyLibrary } from '@plone/volto/actions';
+
+import { settings } from '~/config';
 
 const validateLibs = (libs) => {
   if (Array.isArray(libs)) {

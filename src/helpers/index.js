@@ -4,6 +4,7 @@
  * @example import { Api, Html } from 'helpers';
  */
 
+// export { injectLazyLibs } from './Loadable/Loadable';
 export Api from '@plone/volto/helpers/Api/Api';
 export { getAPIResourceWithAuth } from '@plone/volto/helpers/Api/APIResourceWithAuth';
 export Html from '@plone/volto/helpers/Html/Html';
@@ -55,11 +56,11 @@ export {
 
 export Helmet from './Helmet/Helmet';
 export FormValidation from './FormValidation/FormValidation';
-export { messages } from './MessageLabels/MessageLabels';
 export {
   difference,
   safeWrapper,
   applyConfig,
   withServerErrorCode,
 } from '@plone/volto/helpers/Utils/Utils';
-export { injectLazyLibs } from './Loadable/Loadable';
+export { messages } from './MessageLabels/MessageLabels';
+// export { injectLazyLibs } from './Loadable/Loadable';

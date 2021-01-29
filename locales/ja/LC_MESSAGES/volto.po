@@ -1140,6 +1140,10 @@ msgstr "名前"
 msgid "Navigate back"
 msgstr "元に戻る"
 
+#: components/theme/Navigation/ContextNavigation
+msgid "Navigation"
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "New password"

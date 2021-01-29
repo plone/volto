@@ -1,18 +1,31 @@
 # Change Log
 
-## 10.10.1 (unreleased)
+## 11.0.1 (unreleased)
 
 ### Breaking
 
-- [circular deps] Move `Align` component to its rightful place @sneridagh
+### Feature
+
+### Bugfix
+
+### Internal
+
+## 11.0.0 (2021-01-29)
+
+### Breaking
+
+- [circular deps] Move `AlignBlock` component to its rightful place @sneridagh
 - Removing id from FormFieldWrapper @iFlameing
 - Change default Listing Template to include only Text and renamed the old default Template to Summary Template @jackahl
 
 ### Feature
 
+- Add `ContextNavigation` component, it can fetch the `@contextnavigation` plone.restapi
+  endpoint and display a navigation portlet, similar to Plone's classic
+  navigation portlet.
 - added linkDetectionPlugin plugin to draftjs to automatically create links for urls and mails when editing text. @giuliaghisini
 - An initial Storybook setup. Start it with `yarn storybook`. Feel free to contribute more stories! @sneridagh
-- Add storybook wrapper. Add ContactForm initial story @tiberiuichim
+- Add storybook Wrapper utility component. Add ContactForm initial story @tiberiuichim
 - make and load configurable reducers in the client `window.__data`, decreasing the html size @nileshgulia1 @tiberiuichim
 - Custom group component for selectStyling @nileshgulia1
 - Add new components: RenderBlocks, BlocksForm, DragDropList and EditBlockWrapper @tiberiuichim
@@ -30,6 +43,7 @@
 - Add shouldComponentUpdate to blocks @nileshgulia1
 - Update old entry in upgrade guide @tiberiuichim
 - Add `@testing-library/cypress` as a dep @sneridagh
+- Fix an internal link in documentation @tiberiuichim
 
 ## 10.10.0 (2021-01-22)
 
