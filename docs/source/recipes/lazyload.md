@@ -79,7 +79,9 @@ In functional components you can use the `useLazyLibs` hook, which allows
 greater flexibility (the `injectLazyLibs` hook uses `useLazyLibs` internally).
 You can call the hook like:
 
-```
+```jsx
+import { useLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+
 useLazyLibs(['toastify', 'reactDnd'])
 // or:
 useLazyLibs(['toastify', 'reactDnd'], {shouldRerender: false})
@@ -88,6 +90,28 @@ useLazyLibs(['toastify', 'reactDnd'], {shouldRerender: false})
 Passing the `shouldRerender` as false as options will cause the component to
 avoid re-rendering the component once the lazy library has been loaded
 successfully.
+
+### Define bundles of lazy libraries and preload them all at once
+
+You can define a "bundle" of multiple lazy libraries in the settings
+`lazyBundles` key:
+
+```jsx
+settings.lazyBundles = {
+  cms: ['prettierStandalone', 'prettierParserHtml', ...]
+}
+```
+
+You can quickly load these bundles by wrapping your component in the
+`preloadLazyLibs` HOC:
+
+```jsx
+import { useLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+
+const SomeComponent = (props) => <div>Hello</div>;
+
+export default preloadLazyLibs('cms')(SomeComponent);
+```
 
 ### Testing with lazy loaded libraries integrated
 
