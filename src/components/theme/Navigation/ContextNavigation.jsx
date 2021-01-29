@@ -4,15 +4,20 @@ import { List, Image } from 'semantic-ui-react';
 import { Link as RouterLink } from 'react-router-dom';
 import cx from 'classnames';
 import { compose } from 'redux';
-import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router';
-import useDeepCompareEffect from 'use-deep-compare-effect';
-
-import { getContextNavigation } from '@plone/volto/actions';
-import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
 import { Icon } from '@plone/volto/components';
+import { defineMessages, useIntl } from 'react-intl';
+import { flattenToAppURL } from '@plone/volto/helpers';
+import { withContentNavigation } from './withContentNavigation';
 
 import leftIcon from '@plone/volto/icons/left-key.svg';
+
+const messages = defineMessages({
+  navigation: {
+    id: 'Navigation',
+    defaultMessage: 'Navigation',
+  },
+});
 
 function renderNode(node, level) {
   return (
@@ -53,6 +58,7 @@ function renderNode(node, level) {
 export function ContextNavigationComponent(props) {
   const { navigation = {} } = props;
   const { items = [] } = navigation;
+  const intl = useIntl();
 
   return items.length ? (
     <div className="context-navigation">
@@ -63,7 +69,9 @@ export function ContextNavigationComponent(props) {
           </RouterLink>
         </div>
       ) : (
-        'Navigation'
+        <div className="context-navigation-header">
+          {intl.formatMessage(messages.navigation)}
+        </div>
       )}
       <List>{items.map(renderNode)}</List>
     </div>
@@ -87,82 +95,6 @@ ContextNavigationComponent.propTypes = {
     title: PropTypes.string,
   }),
 };
-
-export function withContentNavigation(WrappedComponent) {
-  /**
-   * Options passed in params can be:
-   *
-   * - name - The title of the navigation tree.
-   * - root_path - Root node path, can be "frontend path", derived from router
-   * - includeTop - Bool, Include top nodeschema
-   * - currentFolderOnly - Bool, Only show the contents of the current folder.
-   * - topLevel - Int, Start level
-   * - bottomLevel - Int, Navigation tree depth
-   * - no_icons - Bool, Suppress Icons
-   * - thumb_scale - String, Override thumb scale
-   * - no_thumbs = Bool, Suppress thumbs
-   *
-   */
-  function Wrapped(props) {
-    const {
-      location,
-      pathname = getBaseUrl(location.pathname),
-      params = {},
-    } = props;
-
-    let qs = Object.keys(params)
-      .sort()
-      .map((key) => `expand.contextnavigation.${key}=${params[key]}`)
-      .join('&');
-    const path = `${pathname}${
-      pathname.endsWith('/') ? '' : '/'
-    }@contextnavigation${qs ? `?${qs}` : ''}`;
-
-    const dispatch = useDispatch();
-    const nav = useSelector((state) => {
-      return state.contextNavigation?.[path]?.data;
-    });
-
-    useDeepCompareEffect(() => {
-      dispatch(getContextNavigation(pathname, params));
-    }, [pathname, dispatch, params]);
-
-    return <WrappedComponent {...props} navigation={nav} />;
-  }
-
-  Wrapped.propTypes = {
-    /**
-     * Location, from router
-     */
-    location: PropTypes.shape({
-      pathname: PropTypes.string,
-    }),
-    /**
-     * Parameters passed to the @contextnavigation endpoint
-     */
-    params: PropTypes.shape({
-      name: PropTypes.string,
-      root_path: PropTypes.string,
-      includeTop: PropTypes.bool,
-      currentFolderOnly: PropTypes.bool,
-      topLevel: PropTypes.number,
-      bottomLevel: PropTypes.number,
-      no_icons: PropTypes.bool,
-      thumb_scale: PropTypes.string,
-      no_thumbs: PropTypes.bool,
-    }),
-  };
-
-  Wrapped.displayName = `WithContextNavigation(${getDisplayName(
-    WrappedComponent,
-  )})`;
-
-  return Wrapped;
-}
-
-function getDisplayName(WrappedComponent) {
-  return WrappedComponent.displayName || WrappedComponent.name || 'Component';
-}
 
 export default compose(
   withRouter,

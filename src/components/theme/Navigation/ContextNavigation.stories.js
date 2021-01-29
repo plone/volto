@@ -7,7 +7,7 @@ import React from 'react';
 const navigation = {
   '@id': 'http://localhost:3000/api/folder2/folder21/doc212/@contextnavigation',
   available: true,
-  has_custom_name: true,
+  has_custom_name: false,
   items: [
     {
       '@id': 'http://localhost:3000/api/folder1',
