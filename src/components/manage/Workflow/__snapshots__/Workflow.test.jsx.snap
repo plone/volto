@@ -1,83 +1,51 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Workflow renders a workflow component 1`] = `
-Array [
+<div>
   <label
-    htmlFor="state-select"
+    for="state-select"
   >
     State
-  </label>,
+  </label>
   <div
-    className="react-select-container css-2b097c-container"
-    onKeyDown={[Function]}
+    class="react-select-container css-2b097c-container"
   >
     <div
-      className="react-select__control css-yjz7n5-control"
-      onMouseDown={[Function]}
-      onTouchEnd={[Function]}
+      class="react-select__control css-yjz7n5-control"
     >
       <div
-        className="react-select__value-container react-select__value-container--has-value css-g1d714-ValueContainer"
+        class="react-select__value-container react-select__value-container--has-value css-g1d714-ValueContainer"
       >
         <div
-          className="react-select__single-value css-1uccc91-singleValue"
+          class="react-select__single-value css-1uccc91-singleValue"
         >
           <span
-            style={
-              Object {
-                "backgroundColor": "#ed4033",
-                "borderRadius": "50%",
-                "content": " ",
-                "display": "inline-block",
-                "height": "10px",
-                "marginLeft": "10px",
-                "marginRight": "10px",
-                "width": "10px",
-              }
-            }
+            style="margin-left: 10px; margin-right: 10px; display: inline-block; background-color: rgb(237, 64, 51); height: 10px; width: 10px; border-radius: 50%;"
           />
           Private
         </div>
         <input
           aria-autocomplete="list"
-          className="css-wmatm6-dummyInput-DummyInput"
-          disabled={false}
+          class="css-wmatm6-dummyInput-DummyInput"
           id="react-select-3-input"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          readOnly={true}
-          tabIndex="0"
+          readonly=""
+          tabindex="0"
           value=""
         />
       </div>
       <div
-        className="react-select__indicators css-1hb7zxy-IndicatorsContainer"
+        class="react-select__indicators css-1hb7zxy-IndicatorsContainer"
       >
         <span
-          className="react-select__indicator-separator css-6fp5c8-indicatorSeparator"
+          class="react-select__indicator-separator css-6fp5c8-indicatorSeparator"
         />
         <div
           aria-hidden="true"
-          className="react-select__indicator react-select__dropdown-indicator css-tlfecz-indicatorContainer"
-          onMouseDown={[Function]}
-          onTouchEnd={[Function]}
+          class="react-select__indicator react-select__dropdown-indicator css-tlfecz-indicatorContainer"
         >
           <svg
-            className="icon"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": undefined,
-              }
-            }
-            onClick={null}
-            style={
-              Object {
-                "fill": "#007bc1",
-                "height": "24px",
-                "width": "auto",
-              }
-            }
+            class="icon"
+            style="height: 24px; width: auto; fill: #007bc1;"
             viewBox=""
             xmlns=""
           />
@@ -85,98 +53,67 @@ Array [
       </div>
     </div>
     <input
-      name="display-select"
+      name="state-select"
       type="hidden"
       value="private"
     />
-  </div>,
-]
+  </div>
+</div>
 `;
 
 exports[`Workflow renders an empty workflow component 1`] = `
-Array [
+<div>
   <label
-    htmlFor="state-select"
+    for="state-select"
   >
     State
-  </label>,
+  </label>
   <div
-    className="react-select-container react-select--is-disabled css-14jk2my-container"
-    onKeyDown={[Function]}
+    class="react-select-container react-select--is-disabled css-14jk2my-container"
   >
     <div
-      className="react-select__control react-select__control--is-disabled css-1g1dlbm-control"
-      onMouseDown={[Function]}
-      onTouchEnd={[Function]}
+      class="react-select__control react-select__control--is-disabled css-1g1dlbm-control"
     >
       <div
-        className="react-select__value-container react-select__value-container--has-value css-g1d714-ValueContainer"
+        class="react-select__value-container react-select__value-container--has-value css-g1d714-ValueContainer"
       >
         <div
-          className="react-select__single-value react-select__single-value--is-disabled css-107lb6w-singleValue"
+          class="react-select__single-value react-select__single-value--is-disabled css-107lb6w-singleValue"
         >
           <span
-            style={
-              Object {
-                "backgroundColor": "#007bc1",
-                "borderRadius": "50%",
-                "content": " ",
-                "display": "inline-block",
-                "height": "10px",
-                "marginLeft": "10px",
-                "marginRight": "10px",
-                "width": "10px",
-              }
-            }
+            style="margin-left: 10px; margin-right: 10px; display: inline-block; background-color: rgb(0, 123, 193); height: 10px; width: 10px; border-radius: 50%;"
           />
           Public
         </div>
         <input
           aria-autocomplete="list"
-          className="css-wmatm6-dummyInput-DummyInput"
-          disabled={true}
+          class="css-wmatm6-dummyInput-DummyInput"
+          disabled=""
           id="react-select-2-input"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          readOnly={true}
-          tabIndex="0"
+          readonly=""
+          tabindex="0"
           value=""
         />
       </div>
       <div
-        className="react-select__indicators css-1hb7zxy-IndicatorsContainer"
+        class="react-select__indicators css-1hb7zxy-IndicatorsContainer"
       >
         <span
-          className="react-select__indicator-separator css-8z7nta-indicatorSeparator"
+          class="react-select__indicator-separator css-8z7nta-indicatorSeparator"
         />
         <div
           aria-hidden="true"
-          className="react-select__indicator react-select__dropdown-indicator css-tlfecz-indicatorContainer"
-          onMouseDown={[Function]}
-          onTouchEnd={[Function]}
+          class="react-select__indicator react-select__dropdown-indicator css-tlfecz-indicatorContainer"
         >
           <svg
-            className="icon"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": undefined,
-              }
-            }
-            onClick={null}
-            style={
-              Object {
-                "fill": "#007bc1",
-                "height": "24px",
-                "width": "auto",
-              }
-            }
+            class="icon"
+            style="height: 24px; width: auto; fill: #007bc1;"
             viewBox=""
             xmlns=""
           />
         </div>
       </div>
     </div>
-  </div>,
-]
+  </div>
+</div>
 `;

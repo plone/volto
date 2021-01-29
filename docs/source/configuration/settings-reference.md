@@ -151,3 +151,11 @@ in the `config.settings.serverConfig` object.
     this file exists it is loaded and its content is embedded inline into the
     generated HTML. By default this path is `public/critical.css`. See the
     [Performance](/deploying/performance) section for more details.
+
+### loadables
+
+!!! block ""
+
+    A mapping of loadable libraries that can be injected into components using
+    the `injectLazyLibs` HOC wrapper. See the [Lazy
+    loading](../recipes/lazyload) page for more details.
