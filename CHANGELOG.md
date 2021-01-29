@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Add `preloadLazyLibs` and `settings.lazyBundles` to allow preloading bundles of lazy libraries @tiberiuichim @silviubogan
+
 ### Bugfix
 
 ### Internal
