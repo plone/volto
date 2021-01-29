@@ -190,6 +190,10 @@ class Edit extends Component {
   }
 
   getSelection = (editor) => {
+    if (!editor._input) {
+      return {};
+    }
+
     const o = {};
     if (editor._input.selectionStart) {
       o.selectionStart = editor._input.selectionStart;
