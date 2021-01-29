@@ -1,15 +1,22 @@
 const fs = require('fs-extra');
 const path = require('path');
-
 const cache = new Map();
 
 function save(key, value) {
   const filePath = key.split('/').pop();
-  fs.outputFileSync(path.resolve(__dirname, filePath), value);
+  const { value: data } = JSON.parse(value);
+  try {
+    const dir = path.resolve(__dirname, `../public/cache/${filePath}`);
+    fs.outputFileSync(dir, data.data);
+    console.log(`file written at ./public/cache/${filePath}`);
+  } catch (e) {
+    throw Error(e);
+  }
 }
 function read(key) {
   const filePath = key.split('/').pop();
-  return fs.readFileSync(filePath, 'utf8');
+  const dir = path.resolve(__dirname, `../public/cache/${filePath}`);
+  if (fs.existsSync(dir)) return fs.readFileSync(dir, 'utf8');
 }
 
 module.exports = {
