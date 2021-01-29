@@ -14,7 +14,7 @@ import isSoftNewlineEvent from 'draft-js/lib/isSoftNewlineEvent';
 import { defineMessages, injectIntl } from 'react-intl';
 import { includes, isEqual } from 'lodash';
 import { filterEditorState } from 'draftjs-filters';
-import { settings } from '~/config';
+import { settings, blocks } from '~/config';
 
 import { Icon, BlockChooser } from '@plone/volto/components';
 import addSVG from '@plone/volto/icons/circle-plus.svg';
@@ -50,6 +50,8 @@ class Edit extends Component {
     onFocusPreviousBlock: PropTypes.func.isRequired,
     onFocusNextBlock: PropTypes.func.isRequired,
     onSelectBlock: PropTypes.func.isRequired,
+    allowedBlocks: PropTypes.arrayOf(PropTypes.string),
+    showRestricted: PropTypes.bool,
   };
 
   /**
@@ -121,6 +123,16 @@ class Edit extends Component {
         editorState: EditorState.moveFocusToEnd(this.state.editorState),
       });
     }
+  }
+
+  /**
+   * @param {*} nextProps
+   * @param {*} nextState
+   * @returns {boolean}
+   * @memberof Edit
+   */
+  shouldComponentUpdate(nextProps) {
+    return this.props.selected || !isEqual(this.props.data, nextProps.data);
   }
 
   /**
@@ -198,6 +210,12 @@ class Edit extends Component {
       return <div />;
     }
 
+    const placeholder =
+      this.props.data.placeholder ||
+      this.props.intl.formatMessage(messages.text);
+
+    const disableNewBlocks =
+      this.props.data?.disableNewBlocks || this.props.detached;
     const { InlineToolbar } = this.state.inlineToolbarPlugin;
 
     return (
@@ -212,7 +230,7 @@ class Edit extends Component {
           blockRenderMap={settings.extendedBlockRenderMap}
           blockStyleFn={settings.blockStyleFn}
           customStyleMap={settings.customStyleMap}
-          placeholder={this.props.intl.formatMessage(messages.text)}
+          placeholder={placeholder}
           handleReturn={(e) => {
             if (isSoftNewlineEvent(e)) {
               this.onChange(
@@ -220,7 +238,7 @@ class Edit extends Component {
               );
               return 'handled';
             }
-            if (!this.props.detached) {
+            if (!disableNewBlocks) {
               const selectionState = this.state.editorState.getSelection();
               const anchorKey = selectionState.getAnchorKey();
               const currentContent = this.state.editorState.getCurrentContent();
@@ -239,6 +257,9 @@ class Edit extends Component {
             return {};
           }}
           handleKeyCommand={(command, editorState) => {
+            if (this.props.data.required) {
+              return;
+            }
             if (
               command === 'backspace' &&
               editorState.getCurrentContent().getPlainText().length === 0
@@ -272,12 +293,11 @@ class Edit extends Component {
           }}
         />
         <InlineToolbar />
-        {!this.props.detached &&
-          (!this.props.data.text ||
-            (this.props.data.text &&
-              this.props.data.text.blocks &&
-              this.props.data.text.blocks.length === 1 &&
-              this.props.data.text.blocks[0].text === '')) && (
+        {this.props.selected &&
+          !disableNewBlocks &&
+          !blocks.blocksConfig[
+            this.props.data?.['@type'] || 'text'
+          ].blockHasValue(this.props.data) && (
             <Button
               basic
               icon
@@ -291,6 +311,8 @@ class Edit extends Component {
           <BlockChooser
             onMutateBlock={this.props.onMutateBlock}
             currentBlock={this.props.block}
+            allowedBlocks={this.props.allowedBlocks}
+            showRestricted={this.props.showRestricted}
           />
         )}
       </>

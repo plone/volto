@@ -68,7 +68,7 @@ export default function clipboard(state = initialState, action = {}) {
         request: {
           loading: false,
           loaded: false,
-          error: action.error.error,
+          error: action.error,
         },
       };
     default:

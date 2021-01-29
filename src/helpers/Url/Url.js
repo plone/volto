@@ -70,35 +70,12 @@ export function getView(url) {
       'diff',
       'history',
       'sharing',
+      'controlpanel',
     ].indexOf(view) === -1
   ) {
     return 'view';
   }
   return view === 'layout' ? 'edit' : view;
-}
-
-/**
- * Get icon
- * @method getIcon
- * @param {string} type Type of the item.
- * @param {bool} isFolderish Is folderish.
- * @returns {string} Icon name.
- */
-export function getIcon(type, isFolderish) {
-  switch (type) {
-    case 'Document':
-      return 'file text outline';
-    case 'Image':
-      return 'file image outline';
-    case 'File':
-      return 'attach';
-    case 'Link':
-      return 'linkify';
-    case 'Event':
-      return 'calendar';
-    default:
-      return isFolderish ? 'folder open outline' : 'file outline';
-  }
 }
 
 /**
@@ -111,8 +88,28 @@ export function getIcon(type, isFolderish) {
  * @returns {string} Flattened URL to the app server
  */
 export function flattenToAppURL(url) {
-  return url.replace(settings.apiPath, '');
+  return url
+    .replace(settings.internalApiPath, '')
+    .replace(settings.apiPath, '');
 }
+
+/**
+ * Returns true if the current view is a cms ui view
+ * @method isCmsUi
+ * @param {string} currentPathname pathname of the current view
+ * @returns {boolean} true if the current view is a cms ui view
+ */
+export const isCmsUi = memoize((currentPathname) => {
+  const fullPath = currentPathname.replace(/\?.*$/, '');
+  // WARNING:
+  // not working properly for paths like /editors or similar
+  // because the regexp test does not take that into account
+  // https://github.com/plone/volto/issues/870
+  return settings.nonContentRoutes.reduce(
+    (acc, route) => acc || new RegExp(route).test(`/${fullPath}`),
+    false,
+  );
+});
 
 /**
  * Flatten to app server HTML - Given a text if it contains some urls that starts
@@ -124,7 +121,11 @@ export function flattenToAppURL(url) {
  * @returns {string} Same HTML with Flattened URLs to the app server
  */
 export function flattenHTMLToAppURL(html) {
-  return html.replace(new RegExp(settings.apiPath, 'g'), '');
+  return settings.internalApiPath
+    ? html
+        .replace(new RegExp(settings.internalApiPath, 'g'), '')
+        .replace(new RegExp(settings.apiPath, 'g'), '')
+    : html.replace(new RegExp(settings.apiPath, 'g'), '');
 }
 
 /**
@@ -134,7 +135,9 @@ export function flattenHTMLToAppURL(html) {
  * @returns {string} New URL with app
  */
 export function addAppURL(url) {
-  return `${settings.apiPath}${url}`;
+  return url.indexOf(settings.apiPath) === 0
+    ? url
+    : `${settings.apiPath}${url}`;
 }
 
 /**
@@ -145,8 +148,10 @@ export function addAppURL(url) {
  */
 export function isInternalURL(url) {
   return (
+    url.indexOf(settings.internalApiPath) !== -1 ||
     url.indexOf(settings.apiPath) !== -1 ||
     url.charAt(0) === '/' ||
+    url.charAt(0) === '.' ||
     url.startsWith('#')
   );
 }

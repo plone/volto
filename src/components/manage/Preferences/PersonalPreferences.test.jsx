@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
 import { MemoryRouter } from 'react-router-dom';
-import { wait } from '@testing-library/react';
+import { waitFor } from '@testing-library/react';
 
 import PersonalPreferences from './PersonalPreferences';
 
@@ -37,8 +37,7 @@ describe('PersonalPreferences', () => {
         </MemoryRouter>
       </Provider>,
     );
-    await wait(() => {
-      expect(component.toJSON()).toMatchSnapshot();
-    });
+    await waitFor(() => {});
+    expect(component.toJSON()).toMatchSnapshot();
   });
 });

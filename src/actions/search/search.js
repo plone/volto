@@ -3,7 +3,16 @@
  * @module actions/search/search
  */
 
-import { compact, concat, isArray, join, map, pickBy, toPairs } from 'lodash';
+import {
+  compact,
+  concat,
+  isArray,
+  join,
+  map,
+  pickBy,
+  toPairs,
+  identity,
+} from 'lodash';
 
 import {
   RESET_SEARCH_CONTENT,
@@ -20,6 +29,7 @@ import {
  */
 export function searchContent(url, options, subrequest = null) {
   let queryArray = [];
+  options = pickBy(options, identity);
   const arrayOptions = pickBy(options, (item) => isArray(item));
 
   queryArray = concat(

@@ -3,7 +3,6 @@
 exports[`renders a text widget component 1`] = `
 <div
   className="inline field text"
-  id="field-my-field"
 >
   <div
     className="ui grid"
@@ -31,10 +30,13 @@ exports[`renders a text widget component 1`] = `
           className="ui input"
         >
           <input
-            disabled={false}
             id="field-my-field"
+            maxLength={null}
+            minLength={null}
             name="my-field"
+            onBlur={[Function]}
             onChange={[Function]}
+            onClick={[Function]}
             type="text"
             value=""
           />

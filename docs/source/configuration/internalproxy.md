@@ -25,11 +25,18 @@ Here are some examples.
 
 ### Redefining the proxy target
 
+You can redefine the local proxy target by using the `RAZZLE_DEV_PROXY_API_PATH` or `devProxyToApiPath` in the configuration object.
+
 ```js
 export const settings = {
   ...defaultSettings,
   devProxyToApiPath: 'http://localhost:8081/mysite',
 };
+```
+
+or use the environment variable:
+```bash
+RAZZLE_DEV_PROXY_API_PATH=http://localhost:8081/mysite yarn start
 ```
 
 ### Disabling the proxy
@@ -45,4 +52,14 @@ export const settings = {
 or use the environment variable:
 ```bash
 RAZZLE_API_PATH=http://localhost:8081/mysite yarn start
+```
+
+### Advanced usage
+
+It's possible to define the proxy target more accuratelly using the `RAZZLE_PROXY_REWRITE_TARGET` environment variable, or the `proxyRewriteTarget` setting in the configuration object.
+
+This allows you to run Volto against an external (not local) site, e.g. for debugging purposes. In theory then, this is possible:
+
+```bash
+RAZZLE_PROXY_REWRITE_TARGET=https://plone.org RAZZLE_DEV_PROXY_API_PATH=https://plone.org yarn start
 ```

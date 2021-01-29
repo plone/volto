@@ -17,6 +17,7 @@ import controlpanels from '@plone/volto/reducers/controlpanels/controlpanels';
 import clipboard from '@plone/volto/reducers/clipboard/clipboard';
 import diff from '@plone/volto/reducers/diff/diff';
 import emailNotification from '@plone/volto/reducers/emailNotification/emailNotification';
+import emailSend from '@plone/volto/reducers/emailSend/emailSend';
 import form from '@plone/volto/reducers/form/form';
 import history from '@plone/volto/reducers/history/history';
 import groups from '@plone/volto/reducers/groups/groups';
@@ -35,6 +36,7 @@ import userSession from '@plone/volto/reducers/userSession/userSession';
 import vocabularies from '@plone/volto/reducers/vocabularies/vocabularies';
 import workflow from '@plone/volto/reducers/workflow/workflow';
 import toolbar from '@plone/volto/reducers/toolbar/toolbar';
+import blocksClipboard from '@plone/volto/reducers/blocksClipboard/blocksClipboard';
 import { addonReducers } from '~/config';
 
 /**
@@ -58,6 +60,7 @@ const reducers = {
   clipboard,
   diff,
   emailNotification,
+  emailSend,
   form,
   groups,
   history,
@@ -76,6 +79,7 @@ const reducers = {
   vocabularies,
   workflow,
   toolbar,
+  blocksClipboard,
   ...addonReducers,
 };
 

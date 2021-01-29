@@ -7,6 +7,7 @@ import React, { Component } from 'react';
 import { Map } from 'immutable';
 import PropTypes from 'prop-types';
 import { stateFromHTML } from 'draft-js-import-html';
+import { isEqual } from 'lodash';
 import { Editor, DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
 import { defineMessages, injectIntl } from 'react-intl';
 import { settings } from '~/config';
@@ -87,6 +88,14 @@ class Edit extends Component {
   }
 
   /**
+   * @param {*} nextProps
+   * @returns {boolean}
+   * @memberof Edit
+   */
+  shouldComponentUpdate(nextProps) {
+    return this.props.selected || !isEqual(this.props.data, nextProps.data);
+  }
+  /**
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
@@ -136,12 +145,20 @@ class Edit extends Component {
     if (__SERVER__) {
       return <div />;
     }
+
+    const placeholder =
+      this.props.data.placeholder ||
+      this.props.intl.formatMessage(messages.title);
+
     return (
       <Editor
         onChange={this.onChange}
         editorState={this.state.editorState}
         blockRenderMap={extendedBlockRenderMap}
         handleReturn={() => {
+          if (this.props.data.disableNewBlocks) {
+            return 'handled';
+          }
           this.props.onSelectBlock(
             this.props.onAddBlock(
               settings.defaultBlockType,
@@ -150,7 +167,7 @@ class Edit extends Component {
           );
           return 'handled';
         }}
-        placeholder={this.props.intl.formatMessage(messages.title)}
+        placeholder={placeholder}
         blockStyleFn={() => 'documentFirstHeading'}
         onUpArrow={() => {
           const selectionState = this.state.editorState.getSelection();
