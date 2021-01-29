@@ -12,10 +12,7 @@ import loadable from '@loadable/component';
 import { isEqual } from 'lodash';
 
 import { Icon } from '@plone/volto/components';
-//
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
-// import { injectLazyLibs } from '@plone/volto/helpers';
-
 import showSVG from '@plone/volto/icons/show.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import codeSVG from '@plone/volto/icons/code.svg';

@@ -12,7 +12,6 @@ import { toast } from 'react-toastify';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import getWorkflowMapping from '@plone/volto/constants/Workflows';
 import { Icon, Toast } from '@plone/volto/components';
-// import { injectLazyLibs } from '@plone/volto/helpers';
 import { settings } from '~/config';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
