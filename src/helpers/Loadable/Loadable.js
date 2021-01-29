@@ -6,44 +6,42 @@ import { loadLazyLibrary } from '@plone/volto/actions';
 
 import { settings } from '~/config';
 
-const validateLibs = (libs) => {
-  if (Array.isArray(libs)) {
-    return libs.map(validateLibs).filter((x) => !!x).length > 0;
+const validateLibs = (maybeLibs) => {
+  if (Array.isArray(maybeLibs)) {
+    return maybeLibs.map(validateLibs).filter((x) => !!x).length > 0;
   }
   const { loadables, lazyBundles } = settings;
+
   return (
-    Object.keys(lazyBundles).includes(libs) ||
-    Object.keys(loadables).includes(libs)
+    Object.keys(lazyBundles).includes(maybeLibs) ||
+    Object.keys(loadables).includes(maybeLibs)
   );
 };
 
 /**
- * @param name {string|string[]} The name of a registered bundle, of a a lib or
- * an array of registered lib names.
- * @returns {string[]}
+ * @param name {string|string[]} Name or names of a register bundle or lazy lib
+ * @returns {string[]} an array of registered lib names.
  */
-const flattenLazyBundle = (name) => {
+const flattenLazyBundle = (maybeNames) => {
   const { lazyBundles } = settings;
 
   if (
-    typeof name === 'string' &&
+    typeof maybeNames === 'string' &&
     typeof lazyBundles === 'object' &&
-    Object.keys(lazyBundles).includes(name)
+    Object.keys(lazyBundles).includes(maybeNames)
   ) {
-    const val = lazyBundles[name];
+    const val = lazyBundles[maybeNames];
 
-    if (!validateLibs(name)) {
-      debugger;
-      throw new Error(`Invalid lib or bundle name ${name}`);
+    if (!validateLibs(maybeNames)) {
+      throw new Error(`Invalid lib or bundle name ${maybeNames}`);
     }
     return Array.isArray(val) ? val : [val];
   }
 
-  if (!validateLibs(name)) {
-    debugger;
-    throw new Error(`Invalid lib or bundle name ${name}`);
+  if (!validateLibs(maybeNames)) {
+    throw new Error(`Invalid lib or bundle name ${maybeNames}`);
   }
-  return Array.isArray(name) ? name : [name];
+  return Array.isArray(maybeNames) ? maybeNames : [maybeNames];
 };
 
 // TODO: make an unit test that checks if it is possible to have multiple
@@ -73,12 +71,44 @@ export function useLazyLibs(maybeNames, options = {}) {
     return;
   });
 
-  // The component is rendered when all libraries are loaded!
   return loaded;
 }
 
 export function preloadLazyLibs(maybeNames, forwardRef = false) {
-  return injectLazyLibs(maybeNames, forwardRef);
+  const decorator = (WrappedComponent) => {
+    let libraries;
+
+    function PreloadLoadables(props) {
+      libraries = libraries || flattenLazyBundle(maybeNames);
+
+      useLazyLibs(libraries, { shouldRerender: false });
+
+      PreloadLoadables.displayName = `PreloadLoadables(${libraries.join(
+        ',',
+      )})(${getDisplayName(WrappedComponent)})`;
+
+      return (
+        <WrappedComponent
+          key={libraries.join('|')}
+          {...omit(props, 'forwardedRef')}
+          ref={forwardRef ? props.forwardedRef : null}
+        />
+      );
+    }
+
+    if (forwardRef) {
+      return hoistNonReactStatics(
+        React.forwardRef((props, ref) => {
+          return <PreloadLoadables {...props} forwardedRef={ref} />;
+        }),
+        WrappedComponent,
+      );
+    }
+
+    return hoistNonReactStatics(PreloadLoadables, WrappedComponent);
+  };
+
+  return decorator;
 }
 
 export function injectLazyLibs(maybeNames, forwardRef = false) {
@@ -95,6 +125,7 @@ export function injectLazyLibs(maybeNames, forwardRef = false) {
         ',',
       )})(${getDisplayName(WrappedComponent)})`;
 
+      // The component is rendered when all libraries are loaded!
       return isLoaded ? (
         <WrappedComponent
           key={Object.keys(loaded).join('|')}

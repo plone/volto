@@ -96,7 +96,14 @@ let config = {
     contentIcons: contentIcons,
     loadables,
     lazyBundles: {
-      htmlBlock: ['prettierStandalone', 'prettierParserHtml', 'prismCore'],
+      cms: [
+        'prettierStandalone',
+        'prettierParserHtml',
+        'prismCore',
+        'toastify',
+        'reactSelect',
+        // 'diffLib',
+      ],
     },
     appExtras: [],
     maxResponseSize: 2000000000, // This is superagent default (200 mb)
