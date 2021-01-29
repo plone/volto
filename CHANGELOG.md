@@ -29,6 +29,7 @@
 - Add shouldComponentUpdate to blocks @nileshgulia1
 - Update old entry in upgrade guide @tiberiuichim
 - Add `@testing-library/cypress` as a dep @sneridagh
+- Fix an internal link in documentation @tiberiuichim
 
 ## 10.10.0 (2021-01-22)
 
