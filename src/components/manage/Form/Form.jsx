@@ -1133,6 +1133,6 @@ class Form extends Component {
 }
 
 export default preloadLazyLibs(
-  ['toastify', 'prettierStandalone'],
+  'htmlBlock',
   true,
 )(injectIntl(Form, { forwardRef: true }));
