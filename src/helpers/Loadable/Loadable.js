@@ -5,11 +5,51 @@ import { loadLazyLibrary } from '@plone/volto/actions';
 import { omit } from 'lodash';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 
+const validateLibs = (libs) => {
+  if (Array.isArray(libs)) {
+    return libs.map(validateLibs).filter((x) => !!x).length > 0;
+  }
+  const { loadables, lazyBundles } = settings;
+  return (
+    Object.keys(lazyBundles).includes(libs) ||
+    Object.keys(loadables).includes(libs)
+  );
+};
+
+/**
+ * @param name {string|string[]} The name of a registered bundle, of a a lib or an
+ * array of registered lib names.
+ * @returns {string[]}
+ */
+const flattenLazyBundle = (name) => {
+  const { lazyBundles } = settings;
+
+  if (
+    typeof name === 'string' &&
+    typeof lazyBundles === 'object' &&
+    Object.keys(lazyBundles).includes(name)
+  ) {
+    const val = lazyBundles[name];
+
+    if (!validateLibs(name)) {
+      debugger;
+      throw new Error(`Invalid lib or bundle name ${name}`);
+    }
+    return Array.isArray(val) ? val : [val];
+  }
+
+  if (!validateLibs(name)) {
+    debugger;
+    throw new Error(`Invalid lib or bundle name ${name}`);
+  }
+  return Array.isArray(name) ? name : [name];
+};
+
 // TODO: make an unit test that checks if it is possible to have multiple
 // useLoadables hooks inside a single component?
 export function useLazyLibs(maybeNames, options = {}) {
+  const libraries = flattenLazyBundle(maybeNames);
   const { shouldRerender = true } = options;
-  const libraries = Array.isArray(maybeNames) ? maybeNames : [maybeNames];
   const { loadables } = settings;
   const dispatch = useDispatch();
 
@@ -17,6 +57,8 @@ export function useLazyLibs(maybeNames, options = {}) {
     (state) => state.lazyLibraries || {},
     (left, right) => (shouldRerender ? shallowEqual(left, right) : true),
   );
+
+  if (__SERVER__) return {};
 
   const loaded = getLoadables(libraries, globalLoadedLibraries);
 
@@ -37,20 +79,23 @@ export function useLazyLibs(maybeNames, options = {}) {
 }
 
 export function preloadLazyLibs(maybeNames, forwardRef = false) {
-  return injectLazyLibs(maybeNames, forwardRef, false);
+  return injectLazyLibs(maybeNames, forwardRef);
 }
 
-export function injectLazyLibs(
-  maybeNames,
-  forwardRef = false,
-  shouldRerender = true,
-) {
-  const libraries = Array.isArray(maybeNames) ? maybeNames : [maybeNames];
+export function injectLazyLibs(maybeNames, forwardRef = false) {
+  let libraries;
 
   const decorator = (WrappedComponent) => {
     function WithLoadables(props) {
+      libraries = libraries || flattenLazyBundle(maybeNames);
+
       const loaded = useLazyLibs(libraries, { shouldRerender: true });
       const isLoaded = Object.keys(loaded).length === libraries.length;
+
+      WithLoadables.displayName = `WithLoadables(${libraries.join(
+        ',',
+      )})(${getDisplayName(WrappedComponent)})`;
+
       return isLoaded ? (
         <WrappedComponent
           key={Object.keys(loaded).join('|')}
@@ -60,10 +105,6 @@ export function injectLazyLibs(
         />
       ) : null;
     }
-
-    WithLoadables.displayName = `WithLoadables(${libraries.join(
-      ',',
-    )})(${getDisplayName(WrappedComponent)})`;
 
     if (forwardRef) {
       return hoistNonReactStatics(
