@@ -1,4 +1,5 @@
 import { getLogger } from '@plone/volto/express-middleware/logger';
+import serialize from 'serialize-javascript';
 import fs from 'fs-extra';
 import path from 'path';
 
@@ -10,7 +11,7 @@ function save(key, value) {
   const { value: data } = JSON.parse(value);
   try {
     const dir = path.resolve(__dirname, `../public/cache/${filePath}`);
-    fs.outputFileSync(dir, data.data);
+    fs.outputFileSync(dir, serialize(data));
     debug(`file written at ${dir}`);
   } catch (e) {
     throw Error(e);
