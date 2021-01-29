@@ -17,7 +17,8 @@ import { ConnectedRouter } from 'connected-react-router';
 import { Api } from '@plone/volto/helpers';
 import configureStore from '@plone/volto/store';
 import { DefaultView } from '@plone/volto/components/';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable';
+
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 /**
  * Enhanced diff words utility

@@ -8,7 +8,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Portal } from 'react-portal';
-import { Helmet, getBaseUrl } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import {
   Button,
@@ -67,8 +66,9 @@ import {
   Unauthorized,
 } from '@plone/volto/components';
 
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import ContentsBreadcrumbs from './ContentsBreadcrumbs';
+import { Helmet, getBaseUrl } from '@plone/volto/helpers';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 import backSVG from '@plone/volto/icons/back.svg';
 import cutSVG from '@plone/volto/icons/cut.svg';

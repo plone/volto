@@ -38,6 +38,7 @@ import workflow from '@plone/volto/reducers/workflow/workflow';
 import toolbar from '@plone/volto/reducers/toolbar/toolbar';
 import blocksClipboard from '@plone/volto/reducers/blocksClipboard/blocksClipboard';
 import lazyLibraries from '@plone/volto/reducers/lazyLibraries/lazyLibraries';
+import contextNavigation from '@plone/volto/reducers/contextNavigation/contextNavigation';
 import { addonReducers } from '~/config';
 
 /**
@@ -82,6 +83,7 @@ const reducers = {
   toolbar,
   blocksClipboard,
   lazyLibraries,
+  contextNavigation,
   ...addonReducers,
 };
 
