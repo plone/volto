@@ -15,6 +15,7 @@
 - Custom group component for selectStyling @nileshgulia1
 - Add new components: RenderBlocks, BlocksForm, DragDropList and EditBlockWrapper @tiberiuichim
 - Add `noValueOption` prop to `SelectWidget` so you can opt-out from the "no-value" option so the choices are a closed list @sneridagh
+- Provide `injectLazyLibs()` wrapper and `settings.loadables` config to deal with loadable libraries @tiberiuichim
 
 ### Bugfix
 
@@ -110,7 +111,6 @@
 ### Feature
 
 - Lazy load image in blocks Image and HeroImage @mamico
-- Provide `withLoadables()` wrapper and `settings.loadables` config to deal with loadable libraries @tiberiuichim
 
 ### Bugfix
 

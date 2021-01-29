@@ -7,7 +7,8 @@ import hoistNonReactStatics from 'hoist-non-react-statics';
 
 // TODO: make an unit test that checks if it is possible to have multiple
 // useLoadables hooks inside a single component?
-export function useLazyLibs(maybeNames, shouldRerender = true) {
+export function useLazyLibs(maybeNames, options = {}) {
+  const { shouldRerender = true } = options;
   const libraries = Array.isArray(maybeNames) ? maybeNames : [maybeNames];
   const { loadables } = settings;
   const dispatch = useDispatch();
@@ -48,7 +49,7 @@ export function injectLazyLibs(
 
   const decorator = (WrappedComponent) => {
     function WithLoadables(props) {
-      const loaded = useLazyLibs(libraries, shouldRerender);
+      const loaded = useLazyLibs(libraries, { shouldRerender: true });
       const isLoaded = Object.keys(loaded).length === libraries.length;
       return isLoaded ? (
         <WrappedComponent
