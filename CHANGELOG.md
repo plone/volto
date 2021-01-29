@@ -4,7 +4,7 @@
 
 ### Breaking
 
-- [circular deps] Move `Align` component to its rightful place @sneridagh
+- [circular deps] Move `AlignBlock` component to its rightful place @sneridagh
 - Removing id from FormFieldWrapper @iFlameing
 - Change default Listing Template to include only Text and renamed the old default Template to Summary Template @jackahl
 
