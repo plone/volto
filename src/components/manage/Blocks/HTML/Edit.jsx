@@ -88,8 +88,10 @@ class Edit extends Component {
   savedSelection = {};
 
   componentDidUpdate(prevProps, prevState, snapshot) {
+    // The selection is saved in the snapshot.
     this.savedSelection = snapshot;
-    this.restoreSelection(this.codeEditorRef.current);
+
+    this.restoreSelectionAndFocus(this.codeEditorRef.current);
   }
 
   /**
@@ -99,7 +101,21 @@ class Edit extends Component {
    * @memberof Edit
    */
   shouldComponentUpdate(nextProps) {
-    return this.props.selected || !isEqual(this.props.data, nextProps.data);
+    // Always rerender when the DOM node is not created for the Editor (the
+    // first call to shouldComponentUpdate).
+    if (!this._input) {
+      return true;
+    }
+
+    // Rerender the entire component when the Editor in it changes its selection
+    // because this way we get a call to getSnapshotBeforeUpdate where we can
+    // save the selection.
+    return (
+      this.props.selected ||
+      !isEqual(this.props.data, nextProps.data) ||
+      this._input.selectionStart !== this.savedSelection.selectionStart ||
+      this._input.selectionEnd !== this.savedSelection.selectionEnd
+    );
   }
 
   /**
@@ -173,7 +189,7 @@ class Edit extends Component {
     this.setState({ isPreview: !this.state.isPreview });
   }
 
-  saveSnapshot = (editor) => {
+  getSelection = (editor) => {
     const o = {};
     if (editor._input.selectionStart) {
       o.selectionStart = editor._input.selectionStart;
@@ -185,20 +201,20 @@ class Edit extends Component {
   };
 
   getSnapshotBeforeUpdate(prevProps, prevState) {
-    return this.saveSnapshot(this.codeEditorRef.current);
+    return this.getSelection(this.codeEditorRef.current);
   }
 
-  restoreSelection = (node) => {
+  restoreSelectionAndFocus = (editor) => {
+    // Don't restore selection when the block is not selected.
     if (
       this.props.selected &&
       typeof this.savedSelection?.selectionStart === 'number' &&
       typeof this.savedSelection?.selectionEnd === 'number'
     ) {
-      this.codeEditorRef.current._input.selectionStart = this.savedSelection?.selectionStart;
-      this.codeEditorRef.current._input.selectionEnd = this.savedSelection?.selectionEnd;
-      this.codeEditorRef.current._input.focus();
+      editor._input.selectionStart = this.savedSelection?.selectionStart;
+      editor._input.selectionEnd = this.savedSelection?.selectionEnd;
+      editor._input.focus();
     }
-    this.codeEditorRef.current = node;
   };
 
   /**
