@@ -3,7 +3,7 @@ import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { waitFor, render, screen } from '@testing-library/react';
 
-import { __test__ as Edit } from './Edit';
+import Edit from './Edit';
 
 const mockStore = configureStore();
 
@@ -44,5 +44,5 @@ test('renders an edit html block component', async () => {
 
   await waitFor(() => screen.getByPlaceholderText('<p>Add some HTML here</p>'));
 
-  expect(container.firstChild).toMatchSnapshot();
+  expect(container).toMatchSnapshot();
 });

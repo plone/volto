@@ -351,11 +351,6 @@ const withPrismMarkup = (WrappedComponent) => (props) => {
   return loaded ? <WrappedComponent {...props} /> : null;
 };
 
-export const __test__ = compose(
-  injectLazyLibs(['prettierStandalone', 'prettierParserHtml', 'prismCore']),
-  injectIntl,
-)(Edit);
-
 export default compose(
   injectLazyLibs(['prettierStandalone', 'prettierParserHtml', 'prismCore']),
   withPrismMarkup,
