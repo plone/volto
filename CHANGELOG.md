@@ -1,6 +1,6 @@
 # Change Log
 
-## 10.10.1 (unreleased)
+## 11.0.0 (2021-01-29)
 
 ### Breaking
 
