@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { diffWords as dWords } from 'diff';
+// import { diffWords as dWords } from 'diff';
 import { join, map } from 'lodash';
 import PropTypes from 'prop-types';
 import { Table } from 'semantic-ui-react';
@@ -17,6 +17,7 @@ import { ConnectedRouter } from 'connected-react-router';
 import { Api } from '@plone/volto/helpers';
 import configureStore from '@plone/volto/store';
 import { DefaultView } from '@plone/volto/components/';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable';
 
 /**
  * Enhanced diff words utility
@@ -24,9 +25,6 @@ import { DefaultView } from '@plone/volto/components/';
  * @param oneStr Field one
  * @param twoStr Field two
  */
-const diffWords = (oneStr, twoStr) => {
-  return dWords(String(oneStr), String(twoStr));
-};
 
 /**
  * Diff field component.
@@ -36,7 +34,19 @@ const diffWords = (oneStr, twoStr) => {
  * @param {Object} schema Field schema
  * @returns {string} Markup of the component.
  */
-const DiffField = ({ one, two, contentOne, contentTwo, view, schema }) => {
+const DiffField = ({
+  one,
+  two,
+  contentOne,
+  contentTwo,
+  view,
+  schema,
+  diffLib,
+}) => {
+  const diffWords = (oneStr, twoStr) => {
+    return diffLib.diffWords(String(oneStr), String(twoStr));
+  };
+
   let parts, oneArray, twoArray;
   if (schema.widget) {
     switch (schema.widget) {
@@ -85,7 +95,7 @@ const DiffField = ({ one, two, contentOne, contentTwo, view, schema }) => {
     parts = diffWords(one?.title || one, two?.title || two);
   }
   return (
-    <Table compact>
+    <Table compact data-testid="DiffField">
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell colSpan={2}>{schema.title}</Table.HeaderCell>
@@ -175,4 +185,4 @@ DiffField.propTypes = {
   }).isRequired,
 };
 
-export default DiffField;
+export default injectLazyLibs('diffLib')(DiffField);
