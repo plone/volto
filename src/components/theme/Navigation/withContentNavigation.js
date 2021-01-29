@@ -3,8 +3,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import useDeepCompareEffect from 'use-deep-compare-effect';
 
-import { getContextNavigation } from '@plone/volto/actions';
 import { getBaseUrl } from '@plone/volto/helpers';
+import { getContextNavigation } from '@plone/volto/actions';
 
 export function withContentNavigation(WrappedComponent) {
   /**

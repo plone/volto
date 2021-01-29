@@ -31,3 +31,77 @@ $ yarn analyze
 ```
 
 A browser will open with the bundle inspector.
+
+## Lazy-loading libraries
+
+Lazy-loading libraries is not as straight-forward as with the React components.
+The API offered by `@loadable/component` is not very ergonomic and
+importing a library as lazy library introduces a lot of pain points in your
+code: you have to alway check if the library is loaded, depending on multiple
+lazy libraries further complicates the code, etc. To aleviate this and to
+promote the use of lazy libraries everywhere, we have the `injectLazyLibs` HOC
+wrapper that can automatically inject lazy-loaded libraries as props to your
+components. To use it:
+
+```jsx
+
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+
+function MyComponent({toastify}) {
+  useEffect(() => {toastify.toast.success('Hello')}};
+}
+
+export default injectLazyLibs(['toastify'])(MyComponent);
+```
+
+Wrapping a component in `injectLazyLibs` makes sure that the component is only
+rendered once all the libraries are loaded, simplifying the internal component
+logic.
+
+To define new libraries, use the new `settings.loadables` entry:
+
+```jsx
+import loadable from '@loadable/component';
+
+...
+settings.loadables['reactDnd'] = loadable.lib(() => import('react-dnd'));
+```
+
+Notice that we still use the `@loadable/component` API to load these libraries.
+It is not possible to have completely dynamic imports in a webpack-powered
+system. According to [webpack documentation](https://webpack.js.org/api/module-methods/#dynamic-expressions-in-import),
+**The import() must contain at least some information about where the module is
+located**.
+
+### The useLazyLibs hook
+
+In functional components you can use the `useLazyLibs` hook, which allows
+greater flexibility (the `injectLazyLibs` hook uses `useLazyLibs` internally).
+You can call the hook like:
+
+```
+useLazyLibs(['toastify', 'reactDnd'])
+// or:
+useLazyLibs(['toastify', 'reactDnd'], {shouldRerender: false})
+```
+
+Passing the `shouldRerender` as false as options will cause the component to
+avoid re-rendering the component once the lazy library has been loaded
+successfully.
+
+### Testing with lazy loaded libraries integrated
+
+Sometimes you'll find that it's difficult to get the lazy loaded libraries
+properly loaded in your jest tests. In that case, add this to the top of your
+test:
+
+```
+jest.mock('@plone/volto/helpers/Loadable/Loadable');
+beforeAll(
+  async () =>
+    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
+);
+```
+
+This ensures that all libraries are loaded and injected into a mock before any
+test is run.
