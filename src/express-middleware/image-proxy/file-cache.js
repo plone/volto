@@ -1,6 +1,9 @@
-const fs = require('fs-extra');
-const path = require('path');
+import { getLogger } from '@plone/volto/express-middleware/logger';
+import fs from 'fs-extra';
+import path from 'path';
+
 const cache = new Map();
+const debug = getLogger('image-proxy');
 
 function save(key, value) {
   const filePath = key.split('/').pop();
@@ -8,7 +11,7 @@ function save(key, value) {
   try {
     const dir = path.resolve(__dirname, `../public/cache/${filePath}`);
     fs.outputFileSync(dir, data.data);
-    console.log(`file written at ./public/cache/${filePath}`);
+    debug(`file written at ${dir}`);
   } catch (e) {
     throw Error(e);
   }
@@ -16,10 +19,11 @@ function save(key, value) {
 function read(key) {
   const filePath = key.split('/').pop();
   const dir = path.resolve(__dirname, `../public/cache/${filePath}`);
+  debug(`file read ${dir}`);
   if (fs.existsSync(dir)) return fs.readFileSync(dir, 'utf8');
 }
 
-module.exports = {
+export default {
   has(key) {
     return cache.has(key);
   },
