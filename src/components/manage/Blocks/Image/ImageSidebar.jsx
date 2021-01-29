@@ -9,11 +9,8 @@ import {
   FormFieldWrapper,
   TextWidget,
 } from '@plone/volto/components';
-import {
-  AlignBlock,
-  flattenToAppURL,
-  isInternalURL,
-} from '@plone/volto/helpers';
+import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
+import AlignBlock from '@plone/volto/components/manage/Sidebar/AlignBlock';
 
 import imageSVG from '@plone/volto/icons/image.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';

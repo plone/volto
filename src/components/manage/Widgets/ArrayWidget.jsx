@@ -274,6 +274,8 @@ class ArrayWidget extends Component {
   }
 }
 
+export const ArrayWidgetComponent = ArrayWidget;
+
 export default compose(
   injectIntl,
   connect(

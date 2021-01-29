@@ -252,7 +252,7 @@ msgstr "Zelda"
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Center"
 msgstr "Erdiratu"
 
@@ -779,7 +779,7 @@ msgid "From"
 msgstr "Nok"
 
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Full"
 msgstr "Osoa"
 
@@ -836,6 +836,7 @@ msgid "History of {title}"
 msgstr "{title} elementuaren historia"
 
 #: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsBreadcrumbs
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Home"
 msgstr "Hasiera"
@@ -1002,7 +1003,7 @@ msgstr "Irudia"
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Left"
 msgstr "Ezkerrean"
 
@@ -1488,7 +1489,7 @@ msgstr "Testu aberatsa"
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Right"
 msgstr "Eskuman"
 
@@ -1499,6 +1500,10 @@ msgstr "Eskubideak"
 #: helpers/MessageLabels/MessageLabels
 msgid "Roles"
 msgstr "Rolak"
+
+#: components/manage/Contents/ContentsBreadcrumbs
+msgid "Root"
+msgstr ""
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentType
@@ -1947,6 +1952,7 @@ msgstr "Desinstalatu"
 
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
+#: components/theme/View/RenderBlocks
 msgid "Unknown Block"
 msgstr "Bloke ezezaguna"
 
@@ -2176,6 +2182,7 @@ msgid "compare_to_nothing"
 msgstr ""
 
 #: components/manage/Blocks/Block/Edit
+#: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"
 msgstr "Ezabatu"
 

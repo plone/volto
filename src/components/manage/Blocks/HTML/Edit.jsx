@@ -9,6 +9,7 @@ import { compose } from 'redux';
 import { Button, Popup } from 'semantic-ui-react';
 import loadable from '@loadable/component';
 import { defineMessages, injectIntl } from 'react-intl';
+import { isEqual } from 'lodash';
 
 import { Icon } from '@plone/volto/components';
 import showSVG from '@plone/volto/icons/show.svg';
@@ -105,6 +106,16 @@ class Edit extends Component {
     if (this.codeEditor && this.props.selected && !prevProps.selected) {
       this.codeEditor._input.focus();
     }
+  }
+
+  /**
+   * @param {*} nextProps
+   * @param {*} nextState
+   * @returns {boolean}
+   * @memberof Edit
+   */
+  shouldComponentUpdate(nextProps) {
+    return this.props.selected || !isEqual(this.props.data, nextProps.data);
   }
 
   /**

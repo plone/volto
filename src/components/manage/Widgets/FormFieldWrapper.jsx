@@ -75,7 +75,6 @@ class FormFieldWrapper extends Component {
       description,
       required,
       error,
-      fieldSet,
       wrapped,
       columns,
       draggable,
@@ -103,7 +102,6 @@ class FormFieldWrapper extends Component {
         required={required}
         error={error.length > 0}
         className={cx(description ? 'help' : '', className)}
-        id={`${fieldSet || 'field'}-${id}`}
       >
         <Grid>
           <Grid.Row stretched>

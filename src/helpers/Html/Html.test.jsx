@@ -26,6 +26,12 @@ jest.mock('../BodyClass/BodyClass', () => ({
   rewind: () => ['class1', 'class2'],
 }));
 
+jest.mock('~/config', () => ({
+  settings: {
+    initialReducersBlacklist: ['navigation'],
+  },
+}));
+
 describe('Html', () => {
   it('renders a html component', () => {
     const component = renderer.create(
@@ -33,6 +39,7 @@ describe('Html', () => {
         extractor={{
           getLinkElements: () => [
             <link
+              key={1}
               data-chunk="client"
               rel="preload"
               as="script"
@@ -46,7 +53,10 @@ describe('Html', () => {
         }}
         markup="<div />"
         store={{
-          getState: () => {},
+          getState: () => ({
+            content: { '@id': 'http://dummy' },
+            navigation: { '@id': 'dummy-navigation' },
+          }),
         }}
       />,
     );

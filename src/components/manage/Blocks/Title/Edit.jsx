@@ -7,6 +7,7 @@ import React, { Component } from 'react';
 import { Map } from 'immutable';
 import PropTypes from 'prop-types';
 import { stateFromHTML } from 'draft-js-import-html';
+import { isEqual } from 'lodash';
 import { Editor, DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
 import { defineMessages, injectIntl } from 'react-intl';
 import { settings } from '~/config';
@@ -96,6 +97,14 @@ class Edit extends Component {
     }
   }
 
+  /**
+   * @param {*} nextProps
+   * @returns {boolean}
+   * @memberof Edit
+   */
+  shouldComponentUpdate(nextProps) {
+    return this.props.selected || !isEqual(this.props.data, nextProps.data);
+  }
   /**
    * Component will receive props
    * @method componentWillReceiveProps

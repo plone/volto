@@ -7,6 +7,7 @@
 ## 10.7.1 (unreleased)
 ## 10.9.2 (unreleased)
 ## 10.9.3 (unreleased)
+## 10.10.1 (unreleased)
 
 - added objectBrowser to UrlWidget, and attached UrlWidget to remoteUrl field of ContentType Link @giuliaghisini
 - managed tel link in UrlWidget and draftjs @giuliaghisini
@@ -19,6 +20,10 @@
 
 ### Breaking
 
+- [circular deps] Move `Align` component to its rightful place @sneridagh
+- Removing id from FormFieldWrapper @iFlameing
+- Change default Listing Template to include only Text and renamed the old default Template to Summary Template @jackahl
+
 ### Feature
 
 - added search depth in listing and updated it locales @giuliaghisini
@@ -28,10 +33,36 @@
 - babel view [giuliaghisini]
 - added og tags for social sharing [giuliaghisini]
 - added support for allowedBlocks and showRestricted for BlockChooser in Form [@giuliaghisini]
+- added linkDetectionPlugin plugin to draftjs to automatically create links for urls and mails when editing text. @giuliaghisini
+- An initial Storybook setup. Start it with `yarn storybook`. Feel free to contribute more stories! @sneridagh
+- Add storybook wrapper. Add ContactForm initial story @tiberiuichim
+- make and load configurable reducers in the client `window.__data`, decreasing the html size @nileshgulia1 @tiberiuichim
+- Custom group component for selectStyling @nileshgulia1
+- Add new components: RenderBlocks, BlocksForm, DragDropList and EditBlockWrapper @tiberiuichim
+- Add `noValueOption` prop to `SelectWidget` so you can opt-out from the "no-value" option so the choices are a closed list @sneridagh
+
+### Bugfix
+
+- Better handling of a condition in the new breadcrumbs @sneridagh
+
+### Internal
+
+- Upgrade react-select to 4.0.2 @sneridagh
+- Upgrade react ecosystem to 13.14.0 @sneridagh
+- Add shouldComponentUpdate to blocks @nileshgulia1
+- Update old entry in upgrade guide @tiberiuichim
+- Add `@testing-library/cypress` as a dep @sneridagh
+
+## 10.10.0 (2021-01-22)
+
+### Feature
+
+- Simple optional critical-CSS inclusion feature (without the actual building of
+  the critical CSS) @silviubogan @tiberiuichim @nileshgulia1
 - added support for allowedBlocks and showRestricted for BlockChooser in Form @giuliaghisini
 - added objectBrowser to UrlWidget, and attached UrlWidget to remoteUrl field of ContentType Link @giuliaghisini
 - managed tel link in UrlWidget and draftjs @giuliaghisini
-- added support for allowedBlocks and showRestricted for BlockChooser in Form [@giuliaghisini]
+- added support for allowedBlocks and showRestricted for BlockChooser in Form @giuliaghisini
 - Improvements in InlineForm @nileshgulia1
 - Improved form validation. Tested required fields when field is array or richtext @giuliaghisini
 
@@ -43,8 +74,16 @@
 - Fix typo in ita locales @nzambello
 - Wrap objectBrowserWidget with FormFieldWrapper @nileshgulia1
 - Added preventDefault and stopPropagation for toolbar buttons of Table block. @giuliaghisini
+- Fix `Contents` breadcrumbs for multilingual sites @sneridagh
 
 ### Internal
+
+- Add support for `nav_title` in breadcrumbs and navigation @sneridagh
+- Add `settings.serverConfig` in the settings object of `~/config`. Add another module, `config/server.js` which is conditionally imported if `__SERVER__`. This module will host settings that are only relevant to the server. Being conditionally imported means that the code is safe to require server-only nodejs packages. @tiberiuichim
+- Update browserlist and caniuse-lite @sneridagh
+- Document deprecation of `@plone/create-volto-app` @sneridagh @nileshgulia1
+- Adding classname in TextWidget and ObjectBrowserBody so that we can target those element in tests. @iFlameing
+- Add support for `nav_title` in breadcrumbs and navigation @sneridagh
 
 ## 10.9.2 (2021-01-15)
 
@@ -113,6 +152,7 @@
 ### Internal
 
 - Translations german: Unauthorized, Login/Register @ksuess
+- Removing id from FormFieldWrapper @iFlameing
 
 ## 10.6.1 (2020-12-21)
 

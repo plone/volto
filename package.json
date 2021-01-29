@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "10.9.2",
+  "version": "10.10.0",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -68,7 +68,9 @@
     "ci:cypress:run:guillotina": "start-test ci:start-api-guillotina http-get://localhost:8081 ci:start-frontend-guillotina",
     "dry-release": "release-it --dry-run",
     "release": "release-it",
-    "release-alpha": "release-it major --preRelease=alpha"
+    "release-alpha": "release-it major --preRelease=alpha",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "bundlesize": [
     {
@@ -172,7 +174,7 @@
   "release-it": {
     "hooks": {
       "after:bump": "node changelogupdater.js bump ${version}",
-      "after:release": "node changelogupdater.js back ${version} && git add . && git commit -am 'Back to development' && git push"
+      "after:release": "node changelogupdater.js back ${version} && git commit -am 'Back to development' && git push"
     },
     "git": {
       "changelog": "node changelogupdater.js excerpt",
@@ -231,6 +233,7 @@
     "@sentry/integrations": "5.27.3",
     "@sentry/node": "5.12.3",
     "@sentry/webpack-plugin": "1.12.1",
+    "@testing-library/cypress": "7.0.3",
     "@testing-library/jest-dom": "4.2.4",
     "@testing-library/react": "11.2.2",
     "autoprefixer": "9.7.6",
@@ -287,6 +290,7 @@
     "langmap": "0.0.16",
     "less": "3.11.1",
     "less-loader": "6.1.0",
+    "linkify-it": "3.0.2",
     "lint-staged": "10.2.2",
     "locale": "0.1.0",
     "lodash": "4.17.19",
@@ -308,7 +312,7 @@
     "razzle": "3.3.7",
     "razzle-plugin-bundle-analyzer": "1.2.0",
     "rc-time-picker": "3.7.3",
-    "react": "16.13.1",
+    "react": "16.14.0",
     "react-anchor-link-smooth-scroll": "1.0.12",
     "react-animate-height": "2.0.17",
     "react-beautiful-dnd": "13.0.0",
@@ -316,7 +320,7 @@
     "react-dates": "21.5.1",
     "react-dnd": "5.0.0",
     "react-dnd-html5-backend": "5.0.1",
-    "react-dom": "16.13.1",
+    "react-dom": "16.14.0",
     "react-dropzone": "11.1.0",
     "react-fast-compare": "2.0.4",
     "react-image-gallery": "1.0.7",
@@ -328,12 +332,12 @@
     "react-router": "5.2.0",
     "react-router-config": "5.1.1",
     "react-router-dom": "5.2.0",
-    "react-select": "3.0.8",
+    "react-select": "4.0.2",
     "react-select-async-paginate": "0.3.10",
     "react-share": "2.3.1",
     "react-side-effect": "2.1.0",
     "react-simple-code-editor": "0.7.1",
-    "react-test-renderer": "16.13.1",
+    "react-test-renderer": "16.14.0",
     "react-toastify": "5.4.1",
     "redraft": "0.10.2",
     "redux": "4.0.5",
@@ -365,9 +369,16 @@
     "yarnhook": "0.4.3"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^6.0.22",
+    "@storybook/addon-controls": "6.1.11",
+    "@storybook/addon-essentials": "^6.0.22",
+    "@storybook/addon-links": "^6.0.22",
+    "@storybook/react": "^6.1.8",
+    "babel-loader": "^8.1.0",
     "crypto-random-string": "3.2.0",
     "identity-obj-proxy": "3.0.0",
     "jest-environment-jsdom-sixteen": "1.0.3",
+    "react-is": "^16.13.1",
     "tmp": "0.2.1"
   },
   "resolutions": {
