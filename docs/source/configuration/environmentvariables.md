@@ -12,3 +12,14 @@ In the frontend we can access this variable with:
 ```
 window.env.RAZZLE_MY_VARIABLE
 ```
+
+## VOLTO_ROBOTSTXT
+
+You can override the robots.txt file with an environment variable called
+`VOLTO_ROBOTSTXT`. This is useful when using the same build on multiple
+websites (for example a test website) to forbid robots from crawling it.
+
+```
+$ VOLTO_ROBOTSTXT="User-agent: *
+Disallow: /" yarn start
+```

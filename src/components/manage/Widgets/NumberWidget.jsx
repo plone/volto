@@ -77,6 +77,9 @@ NumberWidget.defaultProps = {
   required: false,
   error: [],
   value: null,
+  onChange: () => {},
+  onBlur: () => {},
+  onClick: () => {},
 };
 
 export default injectIntl(NumberWidget);

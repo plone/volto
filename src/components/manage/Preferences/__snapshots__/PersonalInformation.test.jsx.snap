@@ -17,7 +17,6 @@ exports[`PersonalInformation renders a personal information component 1`] = `
       >
         <div
           className="inline field help text"
-          id="field-fullname"
         >
           <div
             className="ui grid"
@@ -75,7 +74,6 @@ exports[`PersonalInformation renders a personal information component 1`] = `
         </div>
         <div
           className="inline required field help text"
-          id="field-email"
         >
           <div
             className="ui grid"
@@ -133,7 +131,6 @@ exports[`PersonalInformation renders a personal information component 1`] = `
         </div>
         <div
           className="inline field help"
-          id="field-portrait"
         >
           <div
             className="ui grid"
@@ -157,17 +154,45 @@ exports[`PersonalInformation renders a personal information component 1`] = `
               <div
                 className="eight wide column"
               >
-                <img
-                  className="ui small image image-preview"
-                  id="field-portrait-image"
-                />
                 <div
-                  className="ui input"
+                  className="file-widget-dropzone"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onDragEnter={[Function]}
+                  onDragLeave={[Function]}
+                  onDragOver={[Function]}
+                  onDrop={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  tabIndex={0}
                 >
+                  <div
+                    className="dropzone-placeholder"
+                  >
+                    <p
+                      className="dropzone-text"
+                    >
+                      Drop file here to upload a new file
+                    </p>
+                  </div>
+                  <label
+                    className="label-file-widget-input"
+                  >
+                    Choose a file
+                  </label>
                   <input
+                    autoComplete="off"
                     id="field-portrait"
+                    multiple={true}
                     name="portrait"
                     onChange={[Function]}
+                    onClick={[Function]}
+                    style={
+                      Object {
+                        "display": "none",
+                      }
+                    }
+                    tabIndex={-1}
                     type="file"
                   />
                 </div>
@@ -193,7 +218,6 @@ exports[`PersonalInformation renders a personal information component 1`] = `
         </div>
         <div
           className="inline field help text"
-          id="field-home_page"
         >
           <div
             className="ui grid"
@@ -251,7 +275,6 @@ exports[`PersonalInformation renders a personal information component 1`] = `
         </div>
         <div
           className="inline field help text"
-          id="field-location"
         >
           <div
             className="ui grid"
@@ -385,7 +408,6 @@ exports[`PersonalInformation renders a personal information component embedded i
       >
         <div
           className="inline field help text"
-          id="field-fullname"
         >
           <div
             className="ui grid"
@@ -443,7 +465,6 @@ exports[`PersonalInformation renders a personal information component embedded i
         </div>
         <div
           className="inline required field help text"
-          id="field-email"
         >
           <div
             className="ui grid"
@@ -501,7 +522,6 @@ exports[`PersonalInformation renders a personal information component embedded i
         </div>
         <div
           className="inline field help"
-          id="field-portrait"
         >
           <div
             className="ui grid"
@@ -525,17 +545,45 @@ exports[`PersonalInformation renders a personal information component embedded i
               <div
                 className="eight wide column"
               >
-                <img
-                  className="ui small image image-preview"
-                  id="field-portrait-image"
-                />
                 <div
-                  className="ui input"
+                  className="file-widget-dropzone"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onDragEnter={[Function]}
+                  onDragLeave={[Function]}
+                  onDragOver={[Function]}
+                  onDrop={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  tabIndex={0}
                 >
+                  <div
+                    className="dropzone-placeholder"
+                  >
+                    <p
+                      className="dropzone-text"
+                    >
+                      Drop file here to upload a new file
+                    </p>
+                  </div>
+                  <label
+                    className="label-file-widget-input"
+                  >
+                    Choose a file
+                  </label>
                   <input
+                    autoComplete="off"
                     id="field-portrait"
+                    multiple={true}
                     name="portrait"
                     onChange={[Function]}
+                    onClick={[Function]}
+                    style={
+                      Object {
+                        "display": "none",
+                      }
+                    }
+                    tabIndex={-1}
                     type="file"
                   />
                 </div>
@@ -561,7 +609,6 @@ exports[`PersonalInformation renders a personal information component embedded i
         </div>
         <div
           className="inline field help text"
-          id="field-home_page"
         >
           <div
             className="ui grid"
@@ -619,7 +666,6 @@ exports[`PersonalInformation renders a personal information component embedded i
         </div>
         <div
           className="inline field help text"
-          id="field-location"
         >
           <div
             className="ui grid"

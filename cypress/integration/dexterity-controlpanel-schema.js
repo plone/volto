@@ -31,9 +31,7 @@ if (Cypress.env('API') !== 'guillotina') {
 
       // Add field
       cy.get('button[id=addfield]').click();
-      cy.get('.modal [id="field-factory"] .react-select-container')
-        .click()
-        .type('Choice{enter}');
+      cy.get('.modal .react-select-container').click().type('Choice{enter}');
       cy.get('.modal input[id="field-title"]')
         .type('Color')
         .should('have.value', 'Color');
@@ -54,7 +52,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get(
         '[data-rbd-draggable-id="Color"] .toolbar button[aria-label="Edit"]',
       ).click();
-      cy.get('.modal [id="field-parentFieldSet"] .react-select-container')
+      cy.get('.modal .react-select-container')
         .click()
         .type('Specifications{enter}');
       cy.get('.modal textarea[id="field-values"]').type(

@@ -4,7 +4,8 @@ import { Form } from 'semantic-ui-react';
 import { Accordion, Grid, Segment } from 'semantic-ui-react';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import { CheckboxWidget, Icon, TextWidget } from '@plone/volto/components';
-import { AlignBlock, flattenToAppURL } from '@plone/volto/helpers';
+import { flattenToAppURL } from '@plone/volto/helpers';
+import AlignBlock from '@plone/volto/components/manage/Sidebar/AlignBlock';
 
 import imageSVG from '@plone/volto/icons/image.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';

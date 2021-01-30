@@ -1,9 +1,8 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
 import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
 import { MemoryRouter } from 'react-router-dom';
-import { wait } from '@testing-library/react';
+import { waitFor, render, screen } from '@testing-library/react';
 
 import PersonalPreferences from './PersonalPreferences';
 
@@ -12,6 +11,12 @@ const mockStore = configureStore();
 jest.mock('react-portal', () => ({
   Portal: jest.fn(() => <div id="Portal" />),
 }));
+
+jest.mock('@plone/volto/helpers/Loadable/Loadable');
+beforeAll(
+  async () =>
+    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
+);
 
 describe('PersonalPreferences', () => {
   it('renders a personal preferences component', async () => {
@@ -27,7 +32,7 @@ describe('PersonalPreferences', () => {
         },
       },
     });
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <MemoryRouter>
           <PersonalPreferences
@@ -37,8 +42,9 @@ describe('PersonalPreferences', () => {
         </MemoryRouter>
       </Provider>,
     );
-    await wait(() => {
-      expect(component.toJSON()).toMatchSnapshot();
+    await waitFor(() => {
+      screen.getByTitle('Cancel');
     });
+    expect(container).toMatchSnapshot();
   });
 });

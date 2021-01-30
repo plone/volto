@@ -6,8 +6,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { settings } from '~/config';
-import { flattenToAppURL } from '@plone/volto/helpers';
+
+import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
+import URLUtils from '@plone/volto/components/manage/AnchorPlugin/utils/URLUtils';
 
 const UniversalLink = ({
   href,
@@ -18,15 +19,18 @@ const UniversalLink = ({
   title = null,
   ...props
 }) => {
-  const isExternal =
-    href.startsWith('http') && !href.includes(settings.apiPath);
+  const isExternal = !isInternalURL(href);
   const isDownload = (!isExternal && href.includes('@@download')) || download;
 
   return isExternal ? (
     <a
       href={href}
       title={title}
-      target={openLinkInNewTab ?? true ? '_blank' : null}
+      target={
+        !URLUtils.isMail(href) && !(openLinkInNewTab === false)
+          ? '_blank'
+          : null
+      }
       rel="noopener noreferrer"
       className={className}
       {...props}
