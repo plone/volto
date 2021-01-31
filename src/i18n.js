@@ -132,6 +132,7 @@ msgstr ""
 function poToJson() {
   map(glob('locales/**/*.po'), (filename) => {
     let { items } = Pofile.parse(fs.readFileSync(filename, 'utf8'));
+    const lang = filename.match(/locales\/(.*)\/LC_MESSAGES\//)[1];
 
     // Merge addons locales
     if (packageJson.addons) {
@@ -142,7 +143,7 @@ function poToJson() {
           const addonItems = Pofile.parse(fs.readFileSync(addonlocale, 'utf8'))
             .items;
           items = [...addonItems, ...items];
-          console.log(`->merging ${addonlocale}`);
+          console.log(`Merging ${addon} locales for ${lang}`);
         }
       });
     }
@@ -155,7 +156,6 @@ function poToJson() {
     }
 
     // Write it
-    const lang = filename.match(/locales\/(.*)\/LC_MESSAGES\//)[1];
     fs.writeFileSync(
       `locales/${lang}.json`,
       JSON.stringify(
