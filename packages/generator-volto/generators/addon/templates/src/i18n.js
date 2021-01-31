@@ -4,17 +4,11 @@
  * @module scripts/i18n
  */
 
-const { find, keys, map, concat, reduce, zipObject } = require('lodash');
+const { find, keys, map, concat, reduce } = require('lodash');
 const glob = require('glob').sync;
 const fs = require('fs');
 const Pofile = require('pofile');
 const babel = require('@babel/core');
-
-const path = require('path');
-const projectRootPath = path.resolve('.');
-const packageJson = require(path.join(projectRootPath, 'package.json'));
-const AddonConfigurationRegistry = require('../addon-registry');
-const registry = new AddonConfigurationRegistry(projectRootPath);
 
 /**
  * Extract messages into separate JSON files
@@ -44,13 +38,8 @@ function getMessages() {
         // We ignore the existing customized shadowed components ones, since most
         // probably we won't be overriding them
         // If so, we should do it in the config object or somewhere else
-        // We also ignore the addons folder since they are populated using
-        // their own locales files and taken care separatedly in this script
         glob('build/messages/src/**/*.json', {
-          ignore: [
-            'build/messages/src/customizations/**',
-            'build/messages/src/addons/**',
-          ],
+          ignore: 'build/messages/src/customizations/**',
         }),
         (filename) =>
           map(JSON.parse(fs.readFileSync(filename, 'utf8')), (message) => ({
@@ -125,50 +114,6 @@ msgstr ""
 }
 
 /**
- * Convert po files into json
- * @function poToJson
- * @return {undefined}
- */
-function poToJson() {
-  map(glob('locales/**/*.po'), (filename) => {
-    let { items } = Pofile.parse(fs.readFileSync(filename, 'utf8'));
-
-    // Merge addons locales
-    if (packageJson.addons) {
-      registry.addonNames.forEach((addon) => {
-        const addonlocale = `${registry.packages[addon].modulePath}/../${filename}`;
-        console.log(addonlocale);
-        if (fs.existsSync(addonlocale)) {
-          const addonItems = Pofile.parse(fs.readFileSync(addonlocale, 'utf8'))
-            .items;
-          items = [...addonItems, ...items];
-          console.log(`->merging ${addonlocale}`);
-        }
-      });
-    }
-
-    // Merge project locales, the project customization wins
-    const lib = `node_modules/@plone/volto/${filename}`;
-    if (fs.existsSync(lib)) {
-      const libItems = Pofile.parse(fs.readFileSync(lib, 'utf8')).items;
-      items = [...libItems, ...items];
-    }
-
-    // Write it
-    const lang = filename.match(/locales\/(.*)\/LC_MESSAGES\//)[1];
-    fs.writeFileSync(
-      `locales/${lang}.json`,
-      JSON.stringify(
-        zipObject(
-          map(items, (item) => item.msgid),
-          map(items, (item) => item.msgstr[0]),
-        ),
-      ),
-    );
-  });
-}
-
-/**
  * Format header
  * @function formatHeader
  * @param {Array} comments Array of comments
@@ -210,6 +155,8 @@ ${map(pot.items, (item) => {
     );
   });
 }
+
+// Main tasks
 console.log('Extracting messages from source files...');
 extractMessages();
 console.log('Synchronizing messages to pot file...');
@@ -230,6 +177,4 @@ if (newPot !== oldPot) {
 }
 console.log('Synchronizing messages to po files...');
 syncPoByPot();
-console.log('Generating the json files...');
-poToJson();
 console.log('done!');
