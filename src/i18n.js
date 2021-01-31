@@ -138,7 +138,6 @@ function poToJson() {
     if (packageJson.addons) {
       registry.addonNames.forEach((addon) => {
         const addonlocale = `${registry.packages[addon].modulePath}/../${filename}`;
-        console.log(addonlocale);
         if (fs.existsSync(addonlocale)) {
           const addonItems = Pofile.parse(fs.readFileSync(addonlocale, 'utf8'))
             .items;
