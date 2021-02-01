@@ -15,7 +15,7 @@ export default function get() {
 
     _unprocessed = new Keyv({
       namespace: 'raw',
-      store: FileCache,
+      store: new FileCache(),
       ...settings.serverConfig.rawImagesCache,
     });
 
