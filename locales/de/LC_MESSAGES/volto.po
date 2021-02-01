@@ -386,7 +386,7 @@ msgstr "Inhaltstyp gelöscht"
 #: components/manage/Contents/Contents
 #: components/manage/Toolbar/Toolbar
 msgid "Contents"
-msgstr "Inhaltsverzeichnis"
+msgstr "Inhalte"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
