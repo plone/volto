@@ -106,7 +106,6 @@ export default class ImageProxy {
   async getFromUnprocessedCache() {
     const key = this.cacheKeyOriginal();
     debug(`cache.unprocessed - get: ${key}`);
-    debug(this.cache.unprocessed.get(key));
     return await this.cache.unprocessed.get(key);
   }
 

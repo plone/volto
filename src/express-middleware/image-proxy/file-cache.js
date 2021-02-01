@@ -36,7 +36,7 @@ class FileCache {
     let name = key
       .split('-')
       .slice(-1)[0]
-      .replace(/[^a-zA-Z ]/g, '');
+      .replace(/[^a-zA-Z0-9 ]/g, '');
 
     if (this.ns) {
       name = `${this.ns}-${name}`;
@@ -51,12 +51,12 @@ class FileCache {
     const dir = path.join(__dirname, `${key}`);
     const metadataPath = `${dir.replace(path.extname(dir), '.metadata')}`;
     debug(`file read ${dir}`);
-    debug(fs.existsSync(dir));
-    if (fs.existsSync(dir))
+    if (fs.existsSync(dir)) {
       return {
-        data: fs.readFileSync(dir, 'utf8'),
-        metadata: fs.readFileSync(path.join(__dirname, metadataPath), 'utf8'),
+        data: fs.readFileSync(dir, 'base64'),
+        metadata: fs.readFileSync(metadataPath),
       };
+    }
   }
 
   isExpired(data) {
@@ -66,12 +66,12 @@ class FileCache {
   get(key) {
     try {
       const fileData = this.read(this.path(key));
-      const metadata = JSON.parse(fileData.metadata);
       if (!fileData) {
         return;
       } else if (this.isExpired(fileData)) {
-        return this.remove(key);
+        return this.remove(this.path(key));
       } else {
+        const metadata = JSON.parse(fileData?.metadata);
         return {
           ...metadata,
           data: fileData.data,
@@ -91,7 +91,8 @@ class FileCache {
     try {
       const dir = path.join(__dirname, `${key}`);
       const metadataPath = `${dir.replace(path.extname(dir), '.metadata')}`;
-      fs.outputFileSync(dir, data.data);
+      const imageData = data.data.replace(/^data:image\/\w+;base64,/, '');
+      fs.outputFileSync(dir, imageData, { encoding: 'base64' });
       debug(`file written at ${dir}`);
       fs.outputFileSync(metadataPath, JSON.stringify(data));
       debug(`metadata file written at ${metadataPath}`);
@@ -103,12 +104,8 @@ class FileCache {
    *
    * @param key
    * @param value
-   * @param ttl time-to-live, seconds
    */
-  set(key, value, ttl) {
-    if (ttl === 0) {
-      ttl = undefined;
-    }
+  set(key, value) {
     this.save(this.path(key), value);
   }
 
@@ -118,8 +115,7 @@ class FileCache {
    * @return undefined
    */
   remove(key) {
-    const filePath = key.split('/').pop();
-    const dir = path.resolve(__dirname, `../public/cache/${filePath}`);
+    const dir = path.join(__dirname, `${key}`);
     return fs.removeSync(dir);
   }
 
@@ -128,7 +124,7 @@ class FileCache {
    * @return undefined
    */
   clear() {
-    const dir = path.resolve(__dirname, `../public/cache/`);
+    const dir = path.resolve(__dirname, this.basePath);
     return fs.removeSync(dir);
   }
 }
