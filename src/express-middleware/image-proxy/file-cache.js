@@ -6,6 +6,7 @@ const debug = getLogger('file-cache');
 export const defaultOpts = {
   basePath: `../public/cache`,
   extension: '.jpg',
+  ns: 'main',
 };
 
 function isNumber(val) {
@@ -23,30 +24,39 @@ class FileCache {
     }
   }
 
-  // /**
-  //  * Generates the path to the cached files.
-  //  * @param {string} key: The key of the cache item.
-  //  * @return {string}.
-  //  */
-  // path(key) {
-  //   if (!key) {
-  //     throw new Error(`Path requires a cache key.`);
-  //   }
-  //   let name = key;
-  //   if (this.ns) {
-  //     name = `${this.ns}-${name}`;
-  //   }
-  //   if (this.extension) {
-  //     name = `${name}.${this.extension.replace(/^\./, '')}`;
-  //   }
-  //   return `${this.basePath}/${name}`;
-  // }
+  /**
+   * Generates the path to the cached files.
+   * @param {string} key: The key of the cache item.
+   * @return {string}.
+   */
+  path(key) {
+    if (!key) {
+      throw new Error(`Path requires a cache key.`);
+    }
+    let name = key
+      .split('-')
+      .slice(-1)[0]
+      .replace(/[^a-zA-Z ]/g, '');
+
+    if (this.ns) {
+      name = `${this.ns}-${name}`;
+    }
+    if (this.extension) {
+      name = `${name}.${this.extension.replace(/^\./, '')}`;
+    }
+    return `${this.basePath}/${name}`;
+  }
 
   read(key) {
-    const filePath = key.split('/').pop();
-    const dir = path.resolve(__dirname, `../public/cache/${filePath}`);
+    const dir = path.join(__dirname, `${key}`);
+    const metadataPath = `${dir.replace(path.extname(dir), '.metadata')}`;
     debug(`file read ${dir}`);
-    if (fs.existsSync(dir)) return fs.readFileSync(dir, 'utf8');
+    debug(fs.existsSync(dir));
+    if (fs.existsSync(dir))
+      return {
+        data: fs.readFileSync(dir, 'utf8'),
+        metadata: fs.readFileSync(path.join(__dirname, metadataPath), 'utf8'),
+      };
   }
 
   isExpired(data) {
@@ -55,13 +65,17 @@ class FileCache {
 
   get(key) {
     try {
-      const data = this.read(key);
-      if (!data) {
+      const fileData = this.read(this.path(key));
+      const metadata = JSON.parse(fileData.metadata);
+      if (!fileData) {
         return;
-      } else if (this.isExpired(data)) {
+      } else if (this.isExpired(fileData)) {
         return this.remove(key);
       } else {
-        return { data, format: 'jpg', headers: {} };
+        return {
+          ...metadata,
+          data: fileData.data,
+        };
       }
     } catch (error) {
       debug(error);
@@ -73,12 +87,14 @@ class FileCache {
   }
 
   save(key, value) {
-    const filePath = key.split('/').pop();
     const { value: data } = JSON.parse(value);
     try {
-      const dir = path.resolve(__dirname, `../public/cache/${filePath}`);
+      const dir = path.join(__dirname, `${key}`);
+      const metadataPath = `${dir.replace(path.extname(dir), '.metadata')}`;
       fs.outputFileSync(dir, data.data);
       debug(`file written at ${dir}`);
+      fs.outputFileSync(metadataPath, JSON.stringify(data));
+      debug(`metadata file written at ${metadataPath}`);
     } catch (e) {
       throw Error(e);
     }
@@ -93,7 +109,7 @@ class FileCache {
     if (ttl === 0) {
       ttl = undefined;
     }
-    this.save(key, value);
+    this.save(this.path(key), value);
   }
 
   /**
