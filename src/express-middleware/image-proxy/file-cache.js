@@ -59,7 +59,7 @@ class FileCache {
         // } else if (this.isExpired(data)) {
         //   return this.delete(key);
       } else {
-        return { data };
+        return { data, format: 'jpg', headers: {} };
       }
     } catch (error) {
       debug(error);
