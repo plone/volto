@@ -77,6 +77,7 @@ export default class ImageProxy {
 
     this.request = request;
     this.fieldName = fieldName;
+    this.imageName = imageName;
     this.path = path;
     this.thumbSize = thumbSize;
     this.fullImagePath = fullImagePath;
