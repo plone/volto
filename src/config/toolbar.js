@@ -13,6 +13,7 @@ import {
   AddButton,
   ContentsButton,
   MoreButton,
+  WorkflowAction,
   DisplayAction,
   HistoryAction,
   SharingAction,
@@ -109,6 +110,7 @@ const bottom = (actions) => {
 };
 
 const defaultMoreActions = [
+  WorkflowAction,
   DisplayAction,
   HistoryAction,
   SharingAction,

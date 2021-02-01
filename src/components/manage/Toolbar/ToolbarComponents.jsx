@@ -209,7 +209,7 @@ export const MoreButtonComponent = (props) => {
 
 export const MoreButton = connectAction(MoreButtonComponent);
 
-export const WorkflowAction = (props) => {
+export const WorkflowActionComponent = (props) => {
   const path = getBaseUrl(props.pathname);
   return (
     <li className="state-select">
@@ -217,6 +217,8 @@ export const WorkflowAction = (props) => {
     </li>
   );
 };
+
+export const WorkflowAction = connectAction(WorkflowActionComponent);
 
 export const DisplayActionComponent = (props) => {
   const path = getBaseUrl(props.pathname);
