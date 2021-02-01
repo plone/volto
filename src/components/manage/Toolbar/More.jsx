@@ -70,6 +70,7 @@ class More extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const actionComponents = this.props.extras || [];
     return (
       <div
         className="menu-more pastanaga-menu"
@@ -93,7 +94,11 @@ class More extends Component {
           </button>
         </header>
         <div className="pastanaga-menu-list">
-          <ul>{this.props.actionComponents}</ul>
+          <ul>
+            {actionComponents.map((ActionComponent, index) => (
+              <ActionComponent {...this.props} key={index} />
+            ))}
+          </ul>
         </div>
       </div>
     );

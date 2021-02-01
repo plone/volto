@@ -186,13 +186,14 @@ export const AddButton = connectAction(AddButtonComponent);
 
 export const MoreButtonComponent = (props) => {
   // TODO: state.showMenu
+  console.log('props in but', props);
   return (
     <>
       <div className="toolbar-button-spacer" />
       <button
         className="more"
         aria-label={props.intl.formatMessage(messages.more)}
-        onClick={(e) => props.toggleMenu(e, 'more')}
+        onClick={(e) => props.toggleMenu(e, 'more', props.actionComponents)}
         tabIndex={0}
         id="toolbar-more"
       >

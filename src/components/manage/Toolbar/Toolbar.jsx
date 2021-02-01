@@ -161,7 +161,7 @@ class BasicToolbarComponent extends Component {
     }));
   };
 
-  toggleMenu = (e, selector) => {
+  toggleMenu = (e, selector, extras = []) => {
     if (this.state.showMenu) {
       this.closeMenu();
       return;
@@ -171,11 +171,13 @@ class BasicToolbarComponent extends Component {
       this.setState((state) => ({
         showMenu: !state.showMenu,
         menuStyle: { bottom: 0 },
+        extras,
       }));
     } else {
       this.setState((state) => ({
         showMenu: !state.showMenu,
         menuStyle: { top: 0, overflow: 'initial' },
+        extras,
       }));
     }
     this.loadComponent(selector);
@@ -192,7 +194,7 @@ class BasicToolbarComponent extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { top = [], bottom: Bottom } = this.props;
+    const { top = [], bottom = [] } = this.props;
     const { expanded } = this.state;
 
     return (
@@ -250,6 +252,7 @@ class BasicToolbarComponent extends Component {
                         key={`personalToolsComponent-${index}`}
                         closeMenu={this.closeMenu}
                         hasActions={haveActions}
+                        extras={this.state.extras}
                       >
                         <ToolbarComponent
                           pathname={this.props.pathname}
@@ -258,6 +261,7 @@ class BasicToolbarComponent extends Component {
                           componentIndex={index}
                           theToolbar={this.toolbarWindow}
                           closeMenu={this.closeMenu}
+                          extras={this.state.extras}
                           isToolbarEmbedded
                         />
                       </WrapperComponent>
@@ -272,6 +276,7 @@ class BasicToolbarComponent extends Component {
                         theToolbar={this.toolbarWindow}
                         key={`personalToolsComponent-${index}`}
                         closeMenu={this.closeMenu}
+                        extras={this.state.extras}
                         content={
                           toolbar.toolbarComponents[component].contentAsProps
                             ? this.props.content
@@ -294,6 +299,7 @@ class BasicToolbarComponent extends Component {
                   <>
                     {top.map((ActionComponent, index) => (
                       <ActionComponent
+                        {...this.props}
                         key={index}
                         toggleMenu={this.toggleMenu}
                       />
@@ -302,7 +308,13 @@ class BasicToolbarComponent extends Component {
                 )}
               </div>
               <div className="toolbar-bottom">
-                {Bottom && <Bottom toggleMenu={this.toggleMenu} />}
+                {bottom.map((BottomComponent, index) => (
+                  <BottomComponent
+                    {...this.props}
+                    key={index}
+                    toggleMenu={this.toggleMenu}
+                  />
+                ))}
               </div>
             </div>
             <div className="toolbar-handler">
@@ -340,6 +352,6 @@ export const BasicToolbar = compose(
 )(BasicToolbarComponent);
 
 export default (props) => {
-  const activity = toolbar.activities[props.mode] || [];
+  const activity = toolbar.activities[props.activity || 'view'] || [];
   return <BasicToolbar {...props} {...activity}></BasicToolbar>;
 };
