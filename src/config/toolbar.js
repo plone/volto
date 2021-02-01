@@ -69,7 +69,12 @@ const defaultMoreActions = [
   SharingAction,
   ManageTranslations,
 ];
-
+const defaultViewActions = [
+  EditButton,
+  ContentsButton,
+  AddButton,
+  moreMenu(defaultMoreActions),
+];
 const defaultBottomActions = [UserButton];
 
 const activities = {
@@ -78,7 +83,7 @@ const activities = {
     bottom: [],
   },
   view: {
-    top: [EditButton, ContentsButton, AddButton, moreMenu(defaultMoreActions)],
+    top: [...defaultViewActions],
     bottom: [bottom(defaultBottomActions)],
   },
   add: {
@@ -90,7 +95,7 @@ const activities = {
     bottom: [],
   },
   contents: {
-    top: [EditButton, ContentsButton, AddButton, moreMenu(defaultMoreActions)],
+    top: [...defaultViewActions],
     bottom: [bottom(defaultBottomActions)],
   },
 };
@@ -100,4 +105,5 @@ export const defaultToolbar = {
   activities,
   defaultMoreActions,
   defaultBottomActions,
+  defaultViewActions,
 };
