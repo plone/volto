@@ -56,8 +56,8 @@ class FileCache {
       const data = this.read(key);
       if (!data) {
         return;
-        // } else if (this.isExpired(data)) {
-        //   return this.delete(key);
+      } else if (this.isExpired(data)) {
+        return this.remove(key);
       } else {
         return { data, format: 'jpg', headers: {} };
       }
@@ -95,35 +95,25 @@ class FileCache {
     this.save(key, value);
   }
 
-  //   /**
-  //    * Removes the item from the file-system.
-  //    * @param {string} key: The key of the cache item.
-  //    * @return {Promise}
-  //    */
-  //   remove(key) {
-  //     return fs.removeFileP(key);
-  //   }
+  /**
+   * Removes the item from the file-system.
+   * @param {string} key: The key of the cache item.
+   * @return undefined
+   */
+  remove(key) {
+    const filePath = key.split('/').pop();
+    const dir = path.resolve(__dirname, `../public/cache/${filePath}`);
+    return fs.removeSync(dir);
+  }
 
-  //   clear() {
-  //     return new Promise((resolve, reject) => {
-  //       fs.filePathsP(this.basePath, this.ns)
-  //         .then((paths) => {
-  //           const remove = (index) => {
-  //             const path = paths[index];
-  //             if (path) {
-  //               fs.removeFileP(path)
-  //                 .then(() => remove(index + 1)) // RECURSIVE Remove.
-  //                 .catch((err) => reject(err));
-  //             } else {
-  //               resolve(); // All files have been removed.
-  //             }
-  //           };
-  //           remove(0);
-  //         })
-  //         .catch((err) => reject(err));
-  //     });
-  //   }
-  // }
+  /**
+   * Removes all items from the cache.
+   * @return undefined
+   */
+  clear() {
+    const dir = path.resolve(__dirname, `../public/cache/`);
+    return fs.removeSync(dir);
+  }
 }
 
 export default FileCache;
