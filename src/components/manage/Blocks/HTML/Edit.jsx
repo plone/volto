@@ -3,24 +3,22 @@
  * @module components/manage/Blocks/HTML/Edit
  */
 
+import { compose } from 'redux';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { compose } from 'redux';
 import { Button, Popup } from 'semantic-ui-react';
-import loadable from '@loadable/component';
 import { defineMessages, injectIntl } from 'react-intl';
+import loadable from '@loadable/component';
 import { isEqual } from 'lodash';
 
 import { Icon } from '@plone/volto/components';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import showSVG from '@plone/volto/icons/show.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import codeSVG from '@plone/volto/icons/code.svg';
 import indentSVG from '@plone/volto/icons/indent.svg';
 
 const Editor = loadable(() => import('react-simple-code-editor'));
-const Prettier = loadable.lib(() => import('prettier/standalone'));
-const ParserHtml = loadable.lib(() => import('prettier/parser-html'));
-const PrismCore = loadable.lib(() => import('prismjs/components/prism-core'));
 
 const messages = defineMessages({
   source: {
@@ -89,7 +87,6 @@ class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // code: this.props.data.html || '',
       isPreview: false,
     };
     this.onChangeCode = this.onChangeCode.bind(this);
@@ -97,15 +94,14 @@ class Edit extends Component {
     this.onCodeEditor = this.onCodeEditor.bind(this);
   }
 
-  /**
-   * Component did update
-   * @method componentDidUpdate
-   * @returns {undefined}
-   */
-  componentDidUpdate(prevProps, prevState) {
-    if (this.codeEditor && this.props.selected && !prevProps.selected) {
-      this.codeEditor._input.focus();
-    }
+  codeEditorRef = React.createRef();
+  savedSelection = {};
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    // The selection is saved in the snapshot.
+    this.savedSelection = snapshot;
+
+    this.restoreSelectionAndFocus(this.codeEditorRef.current);
   }
 
   /**
@@ -115,7 +111,21 @@ class Edit extends Component {
    * @memberof Edit
    */
   shouldComponentUpdate(nextProps) {
-    return this.props.selected || !isEqual(this.props.data, nextProps.data);
+    // Always rerender when the DOM node is not created for the Editor (the
+    // first call to shouldComponentUpdate).
+    if (!this._input) {
+      return true;
+    }
+
+    // Rerender the entire component when the Editor in it changes its selection
+    // because this way we get a call to getSnapshotBeforeUpdate where we can
+    // save the selection.
+    return (
+      this.props.selected ||
+      !isEqual(this.props.data, nextProps.data) ||
+      this._input.selectionStart !== this.savedSelection.selectionStart ||
+      this._input.selectionEnd !== this.savedSelection.selectionEnd
+    );
   }
 
   /**
@@ -141,19 +151,23 @@ class Edit extends Component {
    * @returns {undefined}
    */
   onPreview() {
-    const code = this.prettier.current.default
-      .format(this.getValue(), {
-        parser: 'html',
-        plugins: [this.parserHtml.current.default],
-      })
-      .trim();
-
-    this.setState(
-      {
-        isPreview: !this.state.isPreview,
-      },
-      () => this.onChangeCode(code),
-    );
+    try {
+      const code = this.props.prettierStandalone
+        .format(this.getValue(), {
+          parser: 'html',
+          plugins: [this.props.prettierParserHtml],
+        })
+        .trim();
+      this.setState(
+        {
+          isPreview: !this.state.isPreview,
+        },
+        () => this.onChangeCode(code),
+      );
+    } catch (ex) {
+      // error while parsing the user-typed HTML
+      // TODO: show a toast notification or something similar to the user
+    }
   }
 
   /**
@@ -161,16 +175,19 @@ class Edit extends Component {
    * @method onPrettify
    * @returns {undefined}
    */
-
   onPrettify = () => {
-    this.onChangeCode(
-      this.prettier.current.default
+    try {
+      const code = this.props.prettierStandalone
         .format(this.getValue(), {
           parser: 'html',
-          plugins: [this.parserHtml.current.default],
+          plugins: [this.props.prettierParserHtml],
         })
-        .trim(),
-    );
+        .trim();
+      this.onChangeCode(code);
+    } catch (ex) {
+      // error while parsing the user-typed HTML
+      // TODO: show a toast notification or something similar to the user
+    }
   };
 
   /**
@@ -182,9 +199,38 @@ class Edit extends Component {
     this.setState({ isPreview: !this.state.isPreview });
   }
 
-  //ref
-  prettier = React.createRef();
-  parserHtml = React.createRef();
+  getSelection = (editor) => {
+    if (!editor._input) {
+      return {};
+    }
+
+    const o = {};
+    if (editor._input.selectionStart) {
+      o.selectionStart = editor._input.selectionStart;
+    }
+    if (editor._input.selectionEnd) {
+      o.selectionEnd = editor._input.selectionEnd;
+    }
+    return o;
+  };
+
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    return this.getSelection(this.codeEditorRef.current);
+  }
+
+  restoreSelectionAndFocus = (editor) => {
+    // Don't restore selection when the block is not selected.
+    if (
+      this.props.selected &&
+      editor._input &&
+      typeof this.savedSelection?.selectionStart === 'number' &&
+      typeof this.savedSelection?.selectionEnd === 'number'
+    ) {
+      editor._input.selectionStart = this.savedSelection?.selectionStart;
+      editor._input.selectionEnd = this.savedSelection?.selectionEnd;
+      editor._input.focus();
+    }
+  };
 
   /**
    * Render method.
@@ -195,11 +241,10 @@ class Edit extends Component {
     const placeholder =
       this.props.data.placeholder ||
       this.props.intl.formatMessage(messages.placeholder);
+    const value = this.getValue();
     return (
       <>
-        <Prettier ref={this.prettier} />
-        <ParserHtml ref={this.parserHtml} />
-        {this.props.selected && !!this.getValue() && (
+        {this.props.selected && value && (
           <div className="toolbar">
             <Popup
               trigger={
@@ -263,21 +308,33 @@ class Edit extends Component {
             />
           </div>
         )}
-        {this.state.isPreview && (
-          <div dangerouslySetInnerHTML={{ __html: this.getValue() }} />
-        )}
-        {!this.state.isPreview && this.props.highlight && (
+        {this.state.isPreview ? (
+          <div dangerouslySetInnerHTML={{ __html: value }} />
+        ) : (
           <Editor
             readOnly={!this.props.editable}
-            value={this.getValue()}
+            value={value}
             placeholder={placeholder}
             onValueChange={(code) => this.onChangeCode(code)}
-            highlight={this.props.highlight}
+            highlight={
+              this.props.prismCore?.highlight &&
+              this.props.prismCore?.languages?.html
+                ? (code) =>
+                    this.props.prismCore.highlight(
+                      code,
+                      this.props.prismCore.languages.html,
+                      'html',
+                    )
+                : () => {}
+            }
             padding={8}
             className="html-editor"
             ref={(node) => {
-              this.codeEditor = node;
+              if (node) {
+                this.codeEditorRef.current = node;
+              }
             }}
+            ignoreTabKey={true}
           />
         )}
       </>
@@ -285,41 +342,28 @@ class Edit extends Component {
   }
 }
 
-function withPrism(WrappedComponent) {
-  return (props) => {
-    const [prism, setPrism] = React.useState();
-    const prismCore = prism?.default;
-
-    return (
-      <>
-        <PrismCore ref={(ref) => setPrism(ref)} />
-        {prism && (
-          <WrappedComponent
-            {...props}
-            highlight={
-              prismCore
-                ? (code) => prismCore.highlight(code, prismCore.languages.html)
-                : null
-            }
-          />
-        )}
-      </>
-    );
-  };
-}
-
 const withPrismMarkup = (WrappedComponent) => (props) => {
   const [loaded, setLoaded] = React.useState();
+  const promise = React.useRef(null);
+  const cancelled = React.useRef(false);
+
   React.useEffect(() => {
-    import('prismjs/components/prism-markup').then(() => setLoaded(true));
-    return;
+    promise.current = import('prismjs/components/prism-markup');
+    promise.current.then(() => {
+      if (!cancelled.current) {
+        setLoaded(true);
+      }
+    });
+    return () => {
+      cancelled.current = true;
+    };
   }, []);
 
   return loaded ? <WrappedComponent {...props} /> : null;
 };
 
 export default compose(
+  injectLazyLibs(['prettierStandalone', 'prettierParserHtml', 'prismCore']),
+  withPrismMarkup,
   injectIntl,
-  withPrism,
-  withPrismMarkup, // needs to be loaded after withPrism
 )(Edit);

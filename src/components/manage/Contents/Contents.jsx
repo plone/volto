@@ -8,7 +8,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Portal } from 'react-portal';
-import { Helmet } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import {
   Button,
@@ -51,7 +50,6 @@ import {
   sortContent,
   updateColumnsContent,
 } from '@plone/volto/actions';
-import { getBaseUrl } from '@plone/volto/helpers';
 import Indexes, { defaultIndexes } from '@plone/volto/constants/Indexes';
 import {
   ContentsIndexHeader,
@@ -67,9 +65,10 @@ import {
   Icon,
   Unauthorized,
 } from '@plone/volto/components';
-import ContentsBreadcrumbs from './ContentsBreadcrumbs';
 
-import { toast } from 'react-toastify';
+import ContentsBreadcrumbs from './ContentsBreadcrumbs';
+import { Helmet, getBaseUrl } from '@plone/volto/helpers';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 import backSVG from '@plone/volto/icons/back.svg';
 import cutSVG from '@plone/volto/icons/cut.svg';
@@ -440,7 +439,7 @@ class Contents extends Component {
       this.fetchContents(nextProps.pathname);
     }
     if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
-      toast.success(
+      this.props.toastify.toast.success(
         <Toast
           success
           title={this.props.intl.formatMessage(messages.success)}
@@ -465,7 +464,7 @@ class Contents extends Component {
       this.props.clipboardRequest.loading &&
       nextProps.clipboardRequest.error
     ) {
-      toast.error(
+      this.props.toastify.toast.error(
         <Toast
           error
           title={this.props.intl.formatMessage(messages.error)}
@@ -478,7 +477,7 @@ class Contents extends Component {
       this.props.clipboardRequest.loading &&
       nextProps.clipboardRequest.loaded
     ) {
-      toast.success(
+      this.props.toastify.toast.success(
         <Toast
           success
           title={this.props.intl.formatMessage(messages.success)}
@@ -487,7 +486,7 @@ class Contents extends Component {
       );
     }
     if (this.props.orderRequest.loading && nextProps.orderRequest.loaded) {
-      toast.success(
+      this.props.toastify.toast.success(
         <Toast
           success
           title={this.props.intl.formatMessage(messages.success)}
@@ -919,7 +918,7 @@ class Contents extends Component {
   cut(event, { value }) {
     this.props.cut(value ? [value] : this.state.selected);
     this.onSelectNone();
-    toast.success(
+    this.props.toastify.toast.success(
       <Toast
         success
         title={this.props.intl.formatMessage(messages.success)}
@@ -938,7 +937,7 @@ class Contents extends Component {
   copy(event, { value }) {
     this.props.copy(value ? [value] : this.state.selected);
     this.onSelectNone();
-    toast.success(
+    this.props.toastify.toast.success(
       <Toast
         success
         title={this.props.intl.formatMessage(messages.success)}
@@ -1710,6 +1709,7 @@ class Contents extends Component {
 
 export const __test__ = compose(
   injectIntl,
+  injectLazyLibs(['toastify']),
   connect(
     (store, props) => {
       return {
@@ -1796,4 +1796,5 @@ export default compose(
         await dispatch(listActions(getBaseUrl(location.pathname))),
     },
   ]),
+  injectLazyLibs(['toastify']),
 )(Contents);

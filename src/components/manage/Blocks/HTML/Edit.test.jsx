@@ -1,11 +1,17 @@
 import React from 'react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
-import { render, waitFor, screen } from '@testing-library/react';
+import { waitFor, render, screen } from '@testing-library/react';
 
 import Edit from './Edit';
 
 const mockStore = configureStore();
+
+jest.mock('@plone/volto/helpers/Loadable/Loadable');
+beforeAll(
+  async () =>
+    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
+);
 
 test('renders an edit html block component', async () => {
   const store = mockStore({
@@ -18,6 +24,7 @@ test('renders an edit html block component', async () => {
       messages: {},
     },
   });
+
   const { container } = render(
     <Provider store={store}>
       <Edit
@@ -34,6 +41,8 @@ test('renders an edit html block component', async () => {
       />
     </Provider>,
   );
+
   await waitFor(() => screen.getByPlaceholderText('<p>Add some HTML here</p>'));
-  expect(container.firstChild).toMatchSnapshot();
+
+  expect(container).toMatchSnapshot();
 });
