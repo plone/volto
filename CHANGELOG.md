@@ -13,6 +13,7 @@
 ### Internal
 
 - Update docs: configuration of routes and addonRoutes @ksuess
+- Translation de: aria-label "Contents". "Inhalte" not "Inhaltsverzeichnis" @ksuess
 
 ## 11.0.0 (2021-01-29)
 
