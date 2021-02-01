@@ -5,6 +5,7 @@ const debug = getLogger('file-cache');
 
 export const defaultOpts = {
   basePath: `../public/cache`,
+  extension: '.jpg',
 };
 
 function isNumber(val) {
@@ -15,8 +16,9 @@ class FileCache {
   constructor(opts = defaultOpts) {
     this.ttlSupport = true;
     this.basePath = opts.basePath;
-    this.ns = opts.ns; //namespace
+    this.ns = opts.ns; //namespace, we have a namespace from keyu-file
     if (opts.extension) {
+      //optional, we can specify file extensions
       this.extension = opts.extension;
     }
   }
@@ -65,7 +67,6 @@ class FileCache {
       debug(error);
     }
   }
-  //get(key, defaultValue) { return getValueP(this.path(key), defaultValue); }
 
   has(key) {
     return typeof this.get(key) !== 'undefined';
