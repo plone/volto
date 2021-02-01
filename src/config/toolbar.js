@@ -1,4 +1,5 @@
-import { defineMessages, injectIntl } from 'react-intl';
+import React from 'react';
+import { defineMessages } from 'react-intl';
 
 import More from '@plone/volto/components/manage/Toolbar/More';
 import PersonalTools from '@plone/volto/components/manage/Toolbar/PersonalTools';
@@ -7,7 +8,16 @@ import PersonalInformation from '@plone/volto/components/manage/Preferences/Pers
 import PersonalPreferences from '@plone/volto/components/manage/Preferences/PersonalPreferences';
 import StandardWrapper from '@plone/volto/components/manage/Toolbar/StandardWrapper';
 
-import { EditAction } from '@plone/volto/components/manage/Toolbar/ToolbarActions';
+import {
+  EditButton,
+  AddButton,
+  ContentsButton,
+  MoreButton,
+  DisplayAction,
+  HistoryAction,
+  SharingAction,
+  ManageTranslations,
+} from '@plone/volto/components/manage/Toolbar/ToolbarComponents';
 
 const messages = defineMessages({
   edit: {
@@ -86,11 +96,42 @@ const toolbarComponents = {
   },
 };
 
-const defaultActions = {
-  add: [EditAction],
-  edit: [],
+const more = (actions) => {
+  return () => <MoreButton />;
 };
 
-export const toolbar = {
+const bottom = (actions) => {
+  return () => <div>Bottom</div>;
+};
+
+const defaultMoreActions = [
+  DisplayAction,
+  HistoryAction,
+  SharingAction,
+  ManageTranslations,
+];
+
+const defaultBottomActions = [
+  //
+];
+
+const activities = {
+  view: {
+    top: [EditButton, ContentsButton, AddButton, more(defaultMoreActions)],
+    bottom: [bottom(defaultBottomActions)],
+  },
+  add: {
+    top: [],
+    bottom: [bottom(defaultBottomActions)],
+  },
+  edit: {
+    top: [],
+    bottom: [bottom(defaultBottomActions)],
+  },
+};
+
+export const defaultToolbar = {
   toolbarComponents,
+  activities,
+  defaultMoreActions,
 };
