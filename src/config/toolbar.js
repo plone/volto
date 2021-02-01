@@ -18,7 +18,8 @@ import {
   HistoryAction,
   SharingAction,
   ManageTranslations,
-  BottomComponent,
+  Bottom,
+  UserButton,
 } from '@plone/volto/components/manage/Toolbar/ToolbarComponents';
 
 const messages = defineMessages({
@@ -58,7 +59,7 @@ const moreMenu = (actions) => {
 };
 
 const bottom = (actions) => {
-  return (props) => <BottomComponent {...props} />;
+  return (props) => <Bottom actionComponents={actions} {...props} />;
 };
 
 const defaultMoreActions = [
@@ -69,9 +70,7 @@ const defaultMoreActions = [
   ManageTranslations,
 ];
 
-const defaultBottomActions = [
-  //
-];
+const defaultBottomActions = [UserButton];
 
 const activities = {
   view: {
@@ -92,4 +91,5 @@ export const defaultToolbar = {
   toolbarComponents,
   activities,
   defaultMoreActions,
+  defaultBottomActions,
 };

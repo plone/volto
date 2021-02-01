@@ -90,6 +90,10 @@ const messages = defineMessages({
   },
 });
 
+/**
+ * A connect function that provides most of the default props for potential new
+ * actions to be used in the Toolbar
+ */
 export const connectAction = compose(
   injectIntl,
   connect(
@@ -104,7 +108,7 @@ export const connectAction = compose(
   ),
 );
 
-export const EditButtonComponent = (props) => {
+export const EditButton = (props) => {
   const editAction = find(props.actions.object, { id: 'edit' });
   const path = getBaseUrl(props.pathname);
 
@@ -121,9 +125,7 @@ export const EditButtonComponent = (props) => {
   );
 };
 
-export const EditButton = connectAction(EditButtonComponent);
-
-export const ContentsButtonComponent = (props) => {
+export const ContentsButton = (props) => {
   const folderContentsAction = find(props.actions.object, {
     id: 'folderContents',
   });
@@ -161,9 +163,7 @@ export const ContentsButtonComponent = (props) => {
   );
 };
 
-export const ContentsButton = connectAction(ContentsButtonComponent);
-
-export const AddButtonComponent = (props) => {
+export const AddButton = (props) => {
   return (
     props.content &&
     ((props.content.is_folderish && props.types.length > 0) ||
@@ -182,9 +182,7 @@ export const AddButtonComponent = (props) => {
   );
 };
 
-export const AddButton = connectAction(AddButtonComponent);
-
-export const MoreButtonComponent = (props) => {
+export const MoreButton = (props) => {
   // TODO: state.showMenu
   return (
     <>
@@ -207,9 +205,7 @@ export const MoreButtonComponent = (props) => {
   );
 };
 
-export const MoreButton = connectAction(MoreButtonComponent);
-
-export const WorkflowActionComponent = (props) => {
+export const WorkflowAction = (props) => {
   const path = getBaseUrl(props.pathname);
   return (
     <li className="state-select">
@@ -218,9 +214,7 @@ export const WorkflowActionComponent = (props) => {
   );
 };
 
-export const WorkflowAction = connectAction(WorkflowActionComponent);
-
-export const DisplayActionComponent = (props) => {
+export const DisplayAction = (props) => {
   const path = getBaseUrl(props.pathname);
   const editAction = find(props.actions.object, { id: 'edit' });
   return (
@@ -230,9 +224,7 @@ export const DisplayActionComponent = (props) => {
   );
 };
 
-export const DisplayAction = connectAction(DisplayActionComponent);
-
-export const HistoryActionComponent = (props) => {
+export const HistoryAction = (props) => {
   const path = getBaseUrl(props.pathname);
   const historyAction = find(props.actions.object, { id: 'history' });
   return (
@@ -253,9 +245,7 @@ export const HistoryActionComponent = (props) => {
   );
 };
 
-export const HistoryAction = connectAction(HistoryActionComponent);
-
-export const SharingActionComponent = (props) => {
+export const SharingAction = (props) => {
   const path = getBaseUrl(props.pathname);
   const sharingAction = find(props.actions.object, {
     id: 'local_roles',
@@ -274,9 +264,7 @@ export const SharingActionComponent = (props) => {
   );
 };
 
-export const SharingAction = connectAction(SharingActionComponent);
-
-export const ManageTranslationsComponent = (props) => {
+export const ManageTranslations = (props) => {
   const editAction = find(props.actions.object, { id: 'edit' });
   const path = getBaseUrl(props.pathname);
   return (
@@ -297,23 +285,27 @@ export const ManageTranslationsComponent = (props) => {
   );
 };
 
-export const ManageTranslations = connectAction(ManageTranslationsComponent);
+export const UserButton = (props) => (
+  <button
+    className="user"
+    aria-label={props.intl.formatMessage(messages.personalTools)}
+    onClick={(e) => props.toggleMenu(e, 'personalTools')}
+    tabIndex={0}
+    id="toolbar-personal"
+  >
+    <Icon name={userSVG} size="30px" />
+  </button>
+);
 
-export const BottomComponent = (props) => {
+export const Bottom = (props) => {
+  const { actionComponents = [] } = props;
   return (
     <>
       <img className="minipastanaga" src={pastanagaSmall} alt="" />
-      {!props.hideDefaultViewButtons && (
-        <button
-          className="user"
-          aria-label={props.intl.formatMessage(messages.personalTools)}
-          onClick={(e) => props.toggleMenu(e, 'personalTools')}
-          tabIndex={0}
-          id="toolbar-personal"
-        >
-          <Icon name={userSVG} size="30px" />
-        </button>
-      )}
+      {!props.hideDefaultViewButtons &&
+        actionComponents.map((BottomComponent, index) => (
+          <BottomComponent {...props} key={index} />
+        ))}
       <div className="divider" />
       <div className="pastanagalogo">
         <img src={pastanagalogo} alt="" />
@@ -321,5 +313,3 @@ export const BottomComponent = (props) => {
     </>
   );
 };
-
-export const Bottom = connectAction(BottomComponent);
