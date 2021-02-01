@@ -4,7 +4,7 @@ import ViewTitleBlock from '@plone/volto/components/manage/Blocks/Title/View';
 import ViewDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/View';
 import ViewToCBlock from '@plone/volto/components/manage/Blocks/ToC/View';
 import ViewTextBlock from '@plone/volto/components/manage/Blocks/Text/View';
-import ViewImageBlock from '@plone/volto/components/manage/Blocks/Image/View';
+// import ViewImageBlock from '@plone/volto/components/manage/Blocks/Image/View';
 import ViewLeadImageBlock from '@plone/volto/components/manage/Blocks/LeadImage/View';
 import ViewListingBlock from '@plone/volto/components/manage/Blocks/Listing/View';
 import ViewVideoBlock from '@plone/volto/components/manage/Blocks/Video/View';
@@ -17,7 +17,7 @@ import EditTitleBlock from '@plone/volto/components/manage/Blocks/Title/Edit';
 import EditDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/Edit';
 import EditToCBlock from '@plone/volto/components/manage/Blocks/ToC/Edit';
 import EditTextBlock from '@plone/volto/components/manage/Blocks/Text/Edit';
-import EditImageBlock from '@plone/volto/components/manage/Blocks/Image/Edit';
+// import EditImageBlock from '@plone/volto/components/manage/Blocks/Image/Edit';
 import EditLeadImageBlock from '@plone/volto/components/manage/Blocks/LeadImage/Edit';
 import EditListingBlock from '@plone/volto/components/manage/Blocks/Listing/Edit';
 import DefaultListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/DefaultTemplate';
@@ -43,7 +43,7 @@ import tocSVG from '@plone/volto/icons/list-bullet.svg';
 import ImageGalleryListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/ImageGallery';
 import BlockSettingsSchema from '@plone/volto/components/manage/Blocks/Block/Schema';
 import TextSettingsSchema from '@plone/volto/components/manage/Blocks/Text/Schema';
-import ImageSettingsSchema from '@plone/volto/components/manage/Blocks/Image/Schema';
+// import ImageSettingsSchema from '@plone/volto/components/manage/Blocks/Image/Schema';
 import ToCSettingsSchema from '@plone/volto/components/manage/Blocks/ToC/Schema';
 
 defineMessages({
@@ -175,22 +175,22 @@ const blocksConfig = {
       return !isEmpty;
     },
   },
-  image: {
-    id: 'image',
-    title: 'Image',
-    icon: cameraSVG,
-    group: 'media',
-    view: ViewImageBlock,
-    edit: EditImageBlock,
-    schema: ImageSettingsSchema,
-    restricted: false,
-    mostUsed: true,
-    sidebarTab: 1,
-    security: {
-      addPermission: [],
-      view: [],
-    },
-  },
+  // image: {
+  //   id: 'image',
+  //   title: 'Image',
+  //   icon: cameraSVG,
+  //   group: 'media',
+  //   view: ViewImageBlock,
+  //   edit: EditImageBlock,
+  //   schema: ImageSettingsSchema,
+  //   restricted: false,
+  //   mostUsed: true,
+  //   sidebarTab: 1,
+  //   security: {
+  //     addPermission: [],
+  //     view: [],
+  //   },
+  // },
   leadimage: {
     id: 'leadimage',
     title: 'Lead Image Field',

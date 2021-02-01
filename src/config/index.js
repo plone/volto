@@ -3,6 +3,7 @@
  * @module config
  */
 
+import { merge } from 'lodash';
 import { defaultWidget, widgetMapping } from './Widgets';
 import {
   layoutViews,
@@ -31,6 +32,8 @@ import { loadables } from './Loadables';
 
 import { sentryOptions } from './Sentry';
 import { contentIcons } from './ContentIcons';
+
+import { get as internalConfig } from '@plone/volto/helpers/Config';
 
 import applyAddonConfiguration from 'load-volto-addons';
 
@@ -120,6 +123,7 @@ let config = {
   addonReducers: {},
 };
 
+config = merge(config, internalConfig());
 config = applyAddonConfiguration(config);
 
 export const settings = config.settings;

@@ -15,6 +15,8 @@ import AlbumView from '@plone/volto/components/theme/View/AlbumView';
 import Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
 import Forbidden from '@plone/volto/components/theme/Forbidden/Forbidden';
 
+import '@plone/volto/components/manage/Blocks/Image';
+
 const EventView = loadable(() =>
   import('@plone/volto/components/theme/View/EventView'),
 );
