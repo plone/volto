@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Internationalization story for add-ons @sneridagh
+
 ### Bugfix
 
 ### Internal
