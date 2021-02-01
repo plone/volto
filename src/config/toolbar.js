@@ -73,16 +73,24 @@ const defaultMoreActions = [
 const defaultBottomActions = [UserButton];
 
 const activities = {
+  default: {
+    top: [],
+    bottom: [],
+  },
   view: {
     top: [EditButton, ContentsButton, AddButton, moreMenu(defaultMoreActions)],
     bottom: [bottom(defaultBottomActions)],
   },
   add: {
     top: [],
-    bottom: [bottom(defaultBottomActions)],
+    bottom: [],
   },
   edit: {
     top: [],
+    bottom: [],
+  },
+  contents: {
+    top: [EditButton, ContentsButton, AddButton, moreMenu(defaultMoreActions)],
     bottom: [bottom(defaultBottomActions)],
   },
 };

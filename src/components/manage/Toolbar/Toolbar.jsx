@@ -78,8 +78,8 @@ class BasicToolbarComponent extends Component {
     types: [],
   };
 
-  getCookieName = () =>
-    `${this.props.name ? `${this.props.name}-` : ''}toolbar_expanded`;
+  getCookieName = () => 'toolbar_expanded';
+  // `${this.props.activity ? `${this.props.activity}-` : ''}toolbar_expanded`;
 
   state = {
     expanded: cookie.load(this.getCookieName()) !== 'false',
@@ -295,20 +295,14 @@ class BasicToolbarComponent extends Component {
           <div className={this.state.expanded ? 'toolbar expanded' : 'toolbar'}>
             <div className="toolbar-body">
               <div className="toolbar-actions">
-                {this.props.hideDefaultViewButtons && this.props.inner && (
-                  <>{this.props.inner}</>
-                )}
-                {!this.props.hideDefaultViewButtons && (
-                  <>
-                    {top.map((ActionComponent, index) => (
-                      <ActionComponent
-                        {...this.props}
-                        key={index}
-                        toggleMenu={this.toggleMenu}
-                      />
-                    ))}
-                  </>
-                )}
+                {this.props.inner}
+                {top.map((ActionComponent, index) => (
+                  <ActionComponent
+                    {...this.props}
+                    key={index}
+                    toggleMenu={this.toggleMenu}
+                  />
+                ))}
               </div>
               <div className="toolbar-bottom">
                 {bottom.map((BottomComponent, index) => (
@@ -354,7 +348,9 @@ export const BasicToolbar = compose(
   ),
 )(BasicToolbarComponent);
 
-export default (props) => {
-  const activity = toolbar.activities[props.activity || 'view'] || [];
+const Toolbar = (props) => {
+  const activity = toolbar.activities[props.activity || 'default'] || [];
   return <BasicToolbar {...props} {...activity}></BasicToolbar>;
 };
+
+export default Toolbar;
