@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Allow configuration of Toolbar actions @tiberiuichim
+
 ### Bugfix
 
 ### Internal

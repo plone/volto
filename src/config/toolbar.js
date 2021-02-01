@@ -22,30 +22,6 @@ import {
 } from '@plone/volto/components/manage/Toolbar/ToolbarComponents';
 
 const messages = defineMessages({
-  edit: {
-    id: 'Edit',
-    defaultMessage: 'Edit',
-  },
-  contents: {
-    id: 'Contents',
-    defaultMessage: 'Contents',
-  },
-  add: {
-    id: 'Add',
-    defaultMessage: 'Add',
-  },
-  more: {
-    id: 'More',
-    defaultMessage: 'More',
-  },
-  personalTools: {
-    id: 'Personal tools',
-    defaultMessage: 'Personal tools',
-  },
-  shrinkToolbar: {
-    id: 'Shrink toolbar',
-    defaultMessage: 'Shrink toolbar',
-  },
   personalInformation: {
     id: 'Personal Information',
     defaultMessage: 'Personal Information',
@@ -53,30 +29,6 @@ const messages = defineMessages({
   personalPreferences: {
     id: 'Personal Preferences',
     defaultMessage: 'Personal Preferences',
-  },
-  collection: {
-    id: 'Collection',
-    defaultMessage: 'Collection',
-  },
-  file: {
-    id: 'File',
-    defaultMessage: 'File',
-  },
-  link: {
-    id: 'Link',
-    defaultMessage: 'Link',
-  },
-  newsItem: {
-    id: 'News Item',
-    defaultMessage: 'News Item',
-  },
-  page: {
-    id: 'Page',
-    defaultMessage: 'Page',
-  },
-  back: {
-    id: 'Back',
-    defaultMessage: 'Back',
   },
 });
 
