@@ -13,6 +13,7 @@
 ### Internal
 
 - Translation de: aria-label "Contents". "Inhalte" not "Inhaltsverzeichnis" @ksuess
+- show toolbar menu label with general font @fontName @ksuess
 
 ## 11.0.0 (2021-01-29)
 
