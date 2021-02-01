@@ -186,7 +186,6 @@ export const AddButton = connectAction(AddButtonComponent);
 
 export const MoreButtonComponent = (props) => {
   // TODO: state.showMenu
-  console.log('props in but', props);
   return (
     <>
       <div className="toolbar-button-spacer" />

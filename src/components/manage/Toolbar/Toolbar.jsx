@@ -253,6 +253,7 @@ class BasicToolbarComponent extends Component {
                         closeMenu={this.closeMenu}
                         hasActions={haveActions}
                         extras={this.state.extras}
+                        showMenu={this.state.showMenu}
                       >
                         <ToolbarComponent
                           pathname={this.props.pathname}
@@ -262,6 +263,7 @@ class BasicToolbarComponent extends Component {
                           theToolbar={this.toolbarWindow}
                           closeMenu={this.closeMenu}
                           extras={this.state.extras}
+                          showMenu={this.state.showMenu}
                           isToolbarEmbedded
                         />
                       </WrapperComponent>
@@ -277,6 +279,7 @@ class BasicToolbarComponent extends Component {
                         key={`personalToolsComponent-${index}`}
                         closeMenu={this.closeMenu}
                         extras={this.state.extras}
+                        showMenu={this.state.showMenu}
                         content={
                           toolbar.toolbarComponents[component].contentAsProps
                             ? this.props.content
