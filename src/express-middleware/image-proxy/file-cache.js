@@ -56,10 +56,10 @@ class FileCache {
       const data = this.read(key);
       if (!data) {
         return;
-      } else if (this.isExpired(data)) {
-        return this.delete(key);
+        // } else if (this.isExpired(data)) {
+        //   return this.delete(key);
       } else {
-        return data;
+        return { data };
       }
     } catch (error) {
       debug(error);
@@ -95,34 +95,35 @@ class FileCache {
     this.save(key, value);
   }
 
-//   /**
-//    * Removes the item from the file-system.
-//    * @param {string} key: The key of the cache item.
-//    * @return {Promise}
-//    */
-//   remove(key) {
-//     return fs.removeFileP(key);
-//   }
+  //   /**
+  //    * Removes the item from the file-system.
+  //    * @param {string} key: The key of the cache item.
+  //    * @return {Promise}
+  //    */
+  //   remove(key) {
+  //     return fs.removeFileP(key);
+  //   }
 
-//   clear() {
-//     return new Promise((resolve, reject) => {
-//       fs.filePathsP(this.basePath, this.ns)
-//         .then((paths) => {
-//           const remove = (index) => {
-//             const path = paths[index];
-//             if (path) {
-//               fs.removeFileP(path)
-//                 .then(() => remove(index + 1)) // RECURSIVE Remove.
-//                 .catch((err) => reject(err));
-//             } else {
-//               resolve(); // All files have been removed.
-//             }
-//           };
-//           remove(0);
-//         })
-//         .catch((err) => reject(err));
-//     });
-//   }
-// }
+  //   clear() {
+  //     return new Promise((resolve, reject) => {
+  //       fs.filePathsP(this.basePath, this.ns)
+  //         .then((paths) => {
+  //           const remove = (index) => {
+  //             const path = paths[index];
+  //             if (path) {
+  //               fs.removeFileP(path)
+  //                 .then(() => remove(index + 1)) // RECURSIVE Remove.
+  //                 .catch((err) => reject(err));
+  //             } else {
+  //               resolve(); // All files have been removed.
+  //             }
+  //           };
+  //           remove(0);
+  //         })
+  //         .catch((err) => reject(err));
+  //     });
+  //   }
+  // }
+}
 
 export default FileCache;
