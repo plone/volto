@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import { Button, Input, Message } from 'semantic-ui-react';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import cx from 'classnames';
+import { isEqual } from 'lodash';
 
 import { Icon, SidebarPortal, MapsSidebar } from '@plone/volto/components';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -81,6 +82,19 @@ class Edit extends Component {
     };
     this.onSubmitUrl = this.onSubmitUrl.bind(this);
     this.onKeyDownVariantMenuForm = this.onKeyDownVariantMenuForm.bind(this);
+  }
+
+  /**
+   * @param {*} nextProps
+   * @returns {boolean}
+   * @memberof Edit
+   */
+  shouldComponentUpdate(nextProps) {
+    return (
+      this.props.selected ||
+      nextProps.selected ||
+      !isEqual(this.props.data, nextProps.data)
+    );
   }
 
   /**

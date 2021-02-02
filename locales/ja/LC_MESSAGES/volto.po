@@ -251,7 +251,7 @@ msgstr "セル"
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Center"
 msgstr "中央"
 
@@ -777,7 +777,7 @@ msgid "From"
 msgstr "メールアドレス"
 
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Full"
 msgstr "フルサイズ"
 
@@ -834,6 +834,7 @@ msgid "History of {title}"
 msgstr "{title} の履歴"
 
 #: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsBreadcrumbs
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Home"
 msgstr "ホーム"
@@ -999,7 +1000,7 @@ msgstr "リード画像"
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Left"
 msgstr "左"
 
@@ -1138,6 +1139,10 @@ msgstr "名前"
 #: error
 msgid "Navigate back"
 msgstr "元に戻る"
+
+#: components/theme/Navigation/ContextNavigation
+msgid "Navigation"
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
@@ -1485,7 +1490,7 @@ msgstr "Richtext"
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Right"
 msgstr "右"
 
@@ -1496,6 +1501,10 @@ msgstr "権利"
 #: helpers/MessageLabels/MessageLabels
 msgid "Roles"
 msgstr "ロール"
+
+#: components/manage/Contents/ContentsBreadcrumbs
+msgid "Root"
+msgstr ""
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentType
@@ -1940,6 +1949,7 @@ msgstr "アンインストール"
 
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
+#: components/theme/View/RenderBlocks
 msgid "Unknown Block"
 msgstr "不明なブロック"
 
@@ -2157,6 +2167,7 @@ msgid "common"
 msgstr "一般"
 
 #: components/manage/Blocks/Block/Edit
+#: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"
 msgstr "削除"
 

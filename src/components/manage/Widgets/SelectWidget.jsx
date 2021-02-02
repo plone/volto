@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { map, find, isBoolean, isObject, intersection } from 'lodash';
+import { map, find, isBoolean, isObject, intersection, isArray } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 import loadable from '@loadable/component';
 
@@ -89,6 +89,7 @@ function getDefaultValues(choices, value) {
         }
       : {};
   }
+  if (!value || value.length === 0) return null;
   if (value === 'no-value') {
     return {
       label: this.props.intl.formatMessage(messages.no_value),
@@ -101,10 +102,15 @@ function getDefaultValues(choices, value) {
       value: value.token,
     };
   }
-  if (value && choices.length > 0) {
+  if (isArray(value) && choices.length > 0) {
+    return value.map((v) => ({
+      label: find(choices, (o) => o[0] === v)?.[1] || v,
+      value: v,
+    }));
+  } else if (value && choices.length > 0) {
     return { label: find(choices, (o) => o[0] === value)?.[1] || value, value };
   } else {
-    return {};
+    return [];
   }
 }
 
@@ -149,6 +155,7 @@ class SelectWidget extends Component {
     onDelete: PropTypes.func,
     itemsTotal: PropTypes.number,
     wrapped: PropTypes.bool,
+    noValueOption: PropTypes.bool,
   };
 
   /**
@@ -174,6 +181,7 @@ class SelectWidget extends Component {
     onClick: () => {},
     onEdit: null,
     onDelete: null,
+    noValueOption: true,
   };
 
   state = {
@@ -275,7 +283,11 @@ class SelectWidget extends Component {
             isDisabled={this.props.isDisabled}
             className="react-select-container"
             classNamePrefix="react-select"
-            isMulti={id === 'roles' || id === 'groups'}
+            isMulti={
+              this.props.isMulti
+                ? this.props.isMulti
+                : id === 'roles' || id === 'groups'
+            }
             options={[
               ...map(choices, (option) => ({
                 value: option[0],
@@ -283,19 +295,19 @@ class SelectWidget extends Component {
                   // Fix "None" on the serializer, to remove when fixed in p.restapi
                   option[1] !== 'None' && option[1] ? option[1] : option[0],
               })),
-              {
-                label: this.props.intl.formatMessage(messages.no_value),
-                value: 'no-value',
-              },
+              ...(this.props.noValueOption
+                ? [
+                    {
+                      label: this.props.intl.formatMessage(messages.no_value),
+                      value: 'no-value',
+                    },
+                  ]
+                : []),
             ]}
             styles={customSelectStyles}
             theme={selectTheme}
             components={{ DropdownIndicator, Option }}
-            defaultValue={
-              id === 'roles' || id === 'groups'
-                ? null
-                : getDefaultValues(choices, value)
-            }
+            defaultValue={getDefaultValues(choices, value)}
             onChange={(data) => {
               let dataValue = [];
               if (Array.isArray(data)) {
@@ -306,7 +318,7 @@ class SelectWidget extends Component {
               }
               return onChange(
                 id,
-                data.value === 'no-value' ? undefined : data.value,
+                data && data.value !== 'no-value' ? data.value : undefined,
               );
             }}
           />
