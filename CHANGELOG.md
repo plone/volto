@@ -6,11 +6,13 @@
 
 ### Feature
 
+- Added onChangeFormData prop to Form component @giuliaghisini
 - Internationalization story for add-ons @sneridagh
 
 ### Bugfix
 
 - temporarly removed linkDetectionPlugin for draftjs (for some conflicts with AnchorPlugin) @giuliaghisini
+- German translation: aria-label of '/contents' button : "Inhalte" not "Inhaltsverzeichnis" @ksuess
 
 ### Internal
 
