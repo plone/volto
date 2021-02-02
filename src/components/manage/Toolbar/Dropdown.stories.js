@@ -6,7 +6,6 @@ import addSVG from '@plone/volto/icons/add-document.svg';
 import { BasicToolbar } from '@plone/volto/components/manage/Toolbar/Toolbar';
 import { Bottom } from '@plone/volto/components/manage/Toolbar/ToolbarComponents';
 import { Container } from 'semantic-ui-react';
-import { Portal } from 'react-portal';
 import { toolbar } from '~/config';
 // import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 // import { defineMessages, injectIntl } from 'react-intl';
@@ -17,11 +16,23 @@ export default {
   component: DropdownWithButton,
   decorators: [
     (Story) => (
-      <div style={{ margin: '0em' }}>
-        <Story />
-      </div>
+      <Wrapper location={{ pathname: '/folder2/folder21/doc212' }}>
+        <Container>
+          <Story />
+        </Container>
+      </Wrapper>
     ),
   ],
+  parameters: {
+    docs: {
+      description: {
+        component: `### Custom dropdown component
+
+You can register a custom dropdown with the DropdownWithButton component.
+      `,
+      },
+    },
+  },
 };
 
 export const DropdownWithMenu = () => {
@@ -50,14 +61,31 @@ export const DropdownWithMenu = () => {
     ],
   };
   return (
-    <Wrapper location={{ pathname: '/folder2/folder21/doc212' }}>
-      <Container>
-        <Portal node={document.getElementById('toolbar')}>
-          <div role="navigation" id="toolbar">
-            <BasicToolbar {...activity} pathname="/folder2/folder21/doc212" />
-          </div>
-        </Portal>
-      </Container>
-    </Wrapper>
+    <div role="navigation" id="toolbar">
+      <BasicToolbar {...activity} pathname="/folder2/folder21/doc212" />
+    </div>
   );
+};
+
+DropdownWithMenu.storyName = 'Dropdown';
+DropdownWithMenu.parameters = {
+  docs: {
+    source: {
+      code: `
+        <DropdownWithButton
+          {...props}
+          name="new-add"
+          title="Add content"
+          icon={<Icon name={addSVG} size="30px" />}
+          headerActions={
+            <button aria-label={'Add'} onClick={() => {}} tabIndex={0}>
+              <Icon name={addSVG} size="30px" />
+            </button>
+          }
+        >
+          <div>Hello!</div>
+        </DropdownWithButton>
+      `,
+    },
+  },
 };
