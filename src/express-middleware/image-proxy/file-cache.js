@@ -5,8 +5,6 @@ const debug = getLogger('file-cache');
 
 export const defaultOpts = {
   basePath: `../public/cache`,
-  extension: '.jpg',
-  ns: 'main',
   maxSize: 100,
 };
 
@@ -16,14 +14,8 @@ function isNumber(val) {
 
 class FileCache {
   constructor(opts = defaultOpts) {
-    this.ttlSupport = true;
     this.basePath = opts.basePath;
     this.maxSize = opts.maxSize;
-    this.ns = opts.ns; //namespace, we have a namespace from keyu-file
-    if (opts.extension) {
-      //optional, we can specify file extensions
-      this.extension = opts.extension;
-    }
   }
 
   /**
@@ -35,17 +27,9 @@ class FileCache {
     if (!key) {
       throw new Error(`Path requires a cache key.`);
     }
-    let name = key
-      .split('-')
-      .slice(-1)[0]
-      .replace(/[^a-zA-Z0-9 ]/g, '');
+    let name = key.split('/').slice(-1)[0];
 
-    if (this.ns) {
-      name = `${this.ns}-${name}`;
-    }
-    if (this.extension) {
-      name = `${name}.${this.extension.replace(/^\./, '')}`;
-    }
+    name = `${key.split(':')[0]}-${name}`;
     return `${this.basePath}/${name}`;
   }
 
@@ -88,18 +72,17 @@ class FileCache {
     return typeof this.get(key) !== 'undefined';
   }
 
-  save(key, value) {
-    const { value: data } = JSON.parse(value);
+  save(key, data) {
+    const { value } = data;
     try {
       const dir = path.join(__dirname, `${key}`);
       const metadataPath = `${dir.replace(path.extname(dir), '.metadata')}`;
-      const imageData = data.data.replace(/^data:image\/\w+;base64,/, '');
       if (
         !fs.existsSync(path.join(__dirname, this.basePath)) ||
         fs.readdirSync(path.join(__dirname, this.basePath)).length <
           this.maxSize
       ) {
-        fs.outputFileSync(dir, imageData);
+        fs.outputFileSync(dir, value.data, { encoding: null });
         debug(`file written at ${dir}`);
         fs.outputFileSync(metadataPath, JSON.stringify(data));
         debug(`metadata file written at ${metadataPath}`);
