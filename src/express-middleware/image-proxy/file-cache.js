@@ -6,6 +6,8 @@ const debug = getLogger('file-cache');
 export const defaultOpts = {
   basePath: `../public/cache`,
   maxSize: 100,
+  extension: '.jpg',
+  ns: 'main',
 };
 
 function isNumber(val) {
@@ -16,6 +18,11 @@ class FileCache {
   constructor(opts = defaultOpts) {
     this.basePath = opts.basePath;
     this.maxSize = opts.maxSize;
+    this.ns = opts.ns; //namespace, we have a namespace from keyu-file
+    if (opts.extension) {
+      //optional, we can specify file extensions
+      this.extension = opts.extension;
+    }
   }
 
   /**
@@ -27,9 +34,16 @@ class FileCache {
     if (!key) {
       throw new Error(`Path requires a cache key.`);
     }
-    let name = key.split('/').slice(-1)[0];
-
-    name = `${key.split(':')[0]}-${name}`;
+    let name = key
+      .split('-')
+      .slice(-1)[0]
+      .replace(/[^a-zA-Z0-9 ]/g, '');
+    if (this.ns) {
+      name = `${this.ns}-${name}`;
+    }
+    if (this.extension) {
+      name = `${name}.${this.extension.replace(/^\./, '')}`;
+    }
     return `${this.basePath}/${name}`;
   }
 
