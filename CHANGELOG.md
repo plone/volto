@@ -12,6 +12,8 @@
 
 ### Internal
 
+- Update docs: configuration of routes and addonRoutes @ksuess
+
 ## 11.0.0 (2021-01-29)
 
 ### Breaking

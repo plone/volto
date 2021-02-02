@@ -12,6 +12,7 @@ import {
   views as defaultViews,
   widgets as defaultWidgets,
   blocks as defaultBlocks,
+  addonRoutes as defaultAddonRoutes,
   addonReducers as defaultAddonReducers,
 } from '@plone/volto/config';
 
@@ -31,11 +32,8 @@ export const blocks = {
   ...defaultBlocks,
 };
 
-export const addonRoutes = [];
-
-export const addonReducers = {
-  ...defaultAddonReducers,
-}
+export const addonRoutes = [...defaultAddonRoutes];
+export const addonReducers = { ...defaultAddonReducers };
 ```
 
 It gets the default config from Volto and leave it available to you to customize it in your project.
@@ -43,7 +41,7 @@ It gets the default config from Volto and leave it available to you to customize
 Reading the source code for the `~/config` registry is an absolute key in
 understanding Volto and what can be configured.
 
-As you can see from the snipet above, in your Volto project you'll have
+As you can see from the snippet above, in your Volto project you'll have
 a `src/config.js` file. This file is referenced throughout the codebase as
 `~/config`. You can see that, in its default version, all it does is import
 Volto's default configuration objects and export them further.
