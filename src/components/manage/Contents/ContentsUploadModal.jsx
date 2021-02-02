@@ -18,13 +18,15 @@ import {
   Table,
   Segment,
 } from 'semantic-ui-react';
-import Dropzone from 'react-dropzone';
+import loadable from '@loadable/component';
 import { concat, filter, map } from 'lodash';
 import moment from 'moment';
 import filesize from 'filesize';
 import { readAsDataURL } from 'promise-file-reader';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { createContent } from '@plone/volto/actions';
+
+const Dropzone = loadable(() => import('react-dropzone'));
 
 const messages = defineMessages({
   cancel: {

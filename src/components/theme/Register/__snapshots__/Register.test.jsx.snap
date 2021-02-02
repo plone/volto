@@ -21,11 +21,19 @@ exports[`Register renders a register component 1`] = `
           <div
             className="ui segment primary"
           >
-            Registration form
+            <h1
+              style={
+                Object {
+                  "fontSize": "16px",
+                }
+              }
+            >
+               
+              Registration form
+            </h1>
           </div>
           <div
             className="inline required field help text"
-            id="field-fullname"
           >
             <div
               className="ui grid"
@@ -83,7 +91,6 @@ exports[`Register renders a register component 1`] = `
           </div>
           <div
             className="inline required field help text"
-            id="field-email"
           >
             <div
               className="ui grid"

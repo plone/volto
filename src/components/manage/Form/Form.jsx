@@ -43,6 +43,7 @@ import {
 } from 'semantic-ui-react';
 import { v4 as uuid } from 'uuid';
 import { toast } from 'react-toastify';
+import { BlocksToolbar } from '@plone/volto/components';
 import { settings } from '~/config';
 
 /**
@@ -88,6 +89,8 @@ class Form extends Component {
     blocks: PropTypes.arrayOf(PropTypes.object),
     onChangeFormData: PropTypes.func,
     requestError: PropTypes.string,
+    allowedBlocks: PropTypes.arrayOf(PropTypes.string),
+    showRestricted: PropTypes.bool,
   };
 
   /**
@@ -113,6 +116,7 @@ class Form extends Component {
     pathname: '',
     schema: {},
     requestError: null,
+    allowedBlocks: null,
   };
 
   /**
@@ -173,6 +177,7 @@ class Form extends Component {
         formData[blocksLayoutFieldname].items.length > 0
           ? formData[blocksLayoutFieldname].items[0]
           : null,
+      multiSelected: [],
       placeholderProps: {},
       isClient: false,
     };
@@ -379,11 +384,50 @@ class Form extends Component {
    * Select block handler
    * @method onSelectBlock
    * @param {string} id Id of the field
+   * @param {string} isMultipleSelection true if multiple blocks are selected
    * @returns {undefined}
    */
-  onSelectBlock(id) {
+  onSelectBlock(id, isMultipleSelection, event) {
+    let multiSelected = [];
+    let selected = id;
+
+    if (isMultipleSelection) {
+      selected = null;
+      const blocksLayoutFieldname = getBlocksLayoutFieldname(
+        this.state.formData,
+      );
+
+      const blocks_layout = this.state.formData[blocksLayoutFieldname].items;
+
+      if (event.shiftKey) {
+        const anchor =
+          this.state.multiSelected.length > 0
+            ? blocks_layout.indexOf(this.state.multiSelected[0])
+            : blocks_layout.indexOf(this.state.selected);
+        const focus = blocks_layout.indexOf(id);
+
+        if (anchor === focus) {
+          multiSelected = [id];
+        } else if (focus > anchor) {
+          multiSelected = [...blocks_layout.slice(anchor, focus + 1)];
+        } else {
+          multiSelected = [...blocks_layout.slice(focus, anchor + 1)];
+        }
+      }
+
+      if ((event.ctrlKey || event.metaKey) && !event.shiftKey) {
+        if (this.state.multiSelected.includes(id)) {
+          selected = null;
+          multiSelected = without(this.state.multiSelected, id);
+        } else {
+          multiSelected = [...(this.state.multiSelected || []), id];
+        }
+      }
+    }
+
     this.setState({
-      selected: id,
+      selected,
+      multiSelected,
     });
   }
 
@@ -415,6 +459,7 @@ class Form extends Component {
               this.state.formData[blocksLayoutFieldname].items.indexOf(id) - 1
             ]
           : null,
+        multiSelected: without(this.state.multiSelected || [], id),
       },
       (newState) => {
         if (this.state.formData[blocksLayoutFieldname].items.length === 0) {
@@ -535,9 +580,14 @@ class Form extends Component {
     const fieldsModified = Object.keys(
       difference(this.state.formData, this.state.initialFormData),
     );
-    return pickBy(this.state.formData, (value, key) =>
-      fieldsModified.includes(key),
-    );
+    return {
+      ...pickBy(this.state.formData, (value, key) =>
+        fieldsModified.includes(key),
+      ),
+      ...(this.state.formData['@static_behaviors'] && {
+        '@static_behaviors': this.state.formData['@static_behaviors'],
+      }),
+    };
   };
 
   /**
@@ -569,9 +619,10 @@ class Form extends Component {
    * @method onFocusPreviousBlock
    * @param {string} currentBlock The id of the current block
    * @param {node} blockNode The id of the current block
+   * @param {boolean} isMultipleSelection true if multiple blocks selected
    * @returns {undefined}
    */
-  onFocusPreviousBlock(currentBlock, blockNode) {
+  onFocusPreviousBlock(currentBlock, blockNode, isMultipleSelection) {
     const blocksLayoutFieldname = getBlocksLayoutFieldname(this.state.formData);
     const currentIndex = this.state.formData[
       blocksLayoutFieldname
@@ -586,6 +637,7 @@ class Form extends Component {
 
     this.onSelectBlock(
       this.state.formData[blocksLayoutFieldname].items[newindex],
+      isMultipleSelection,
     );
   }
 
@@ -594,9 +646,10 @@ class Form extends Component {
    * @method onFocusNextBlock
    * @param {string} currentBlock The id of the current block
    * @param {node} blockNode The id of the current block
+   * @param {boolean} isMultipleSelection true if multiple blocks selected
    * @returns {undefined}
    */
-  onFocusNextBlock(currentBlock, blockNode) {
+  onFocusNextBlock(currentBlock, blockNode, isMultipleSelection) {
     const blocksLayoutFieldname = getBlocksLayoutFieldname(this.state.formData);
     const currentIndex = this.state.formData[
       blocksLayoutFieldname
@@ -615,6 +668,7 @@ class Form extends Component {
 
     this.onSelectBlock(
       this.state.formData[blocksLayoutFieldname].items[newindex],
+      isMultipleSelection,
     );
   }
 
@@ -639,12 +693,13 @@ class Form extends Component {
       disableArrowDown = false,
     } = {},
   ) {
+    const isMultipleSelection = e.shiftKey;
     if (e.key === 'ArrowUp' && !disableArrowUp) {
-      this.onFocusPreviousBlock(block, node);
+      this.onFocusPreviousBlock(block, node, isMultipleSelection);
       e.preventDefault();
     }
     if (e.key === 'ArrowDown' && !disableArrowDown) {
-      this.onFocusNextBlock(block, node);
+      this.onFocusNextBlock(block, node, isMultipleSelection);
       e.preventDefault();
     }
     if (e.key === 'Enter' && !disableEnter) {
@@ -801,6 +856,23 @@ class Form extends Component {
       // but draftJS don't like it much and the hydration gets messed up
       this.state.isClient && (
         <div className="ui container">
+          <BlocksToolbar
+            formData={this.state.formData}
+            selectedBlock={this.state.selected}
+            selectedBlocks={this.state.multiSelected}
+            onChangeBlocks={(newBlockData) =>
+              this.setState({
+                formData: {
+                  ...formData,
+                  ...newBlockData,
+                },
+              })
+            }
+            onSetSelectedBlocks={(blockIds) =>
+              this.setState({ multiSelected: blockIds })
+            }
+            onSelectBlock={this.onSelectBlock}
+          />
           <DragDropContext
             onDragEnd={this.onDragEnd}
             onDragStart={this.handleDragStart}
@@ -857,7 +929,12 @@ class Form extends Component {
                               pathname={this.props.pathname}
                               block={block}
                               selected={this.state.selected === block}
+                              multiSelected={this.state.multiSelected.includes(
+                                block,
+                              )}
                               manage={this.props.isAdminForm}
+                              allowedBlocks={this.props.allowedBlocks}
+                              showRestricted={this.props.showRestricted}
                             />
                           </div>
                         </div>
@@ -978,7 +1055,9 @@ class Form extends Component {
             {schema && schema.fieldsets.length === 1 && (
               <Segment>
                 {this.props.title && (
-                  <Segment className="primary">{this.props.title}</Segment>
+                  <Segment className="primary">
+                    <h1 style={{ fontSize: '16px' }}> {this.props.title}</h1>
+                  </Segment>
                 )}
                 {this.props.description && (
                   <Segment secondary>{this.props.description}</Segment>

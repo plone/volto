@@ -12,6 +12,7 @@ import { readAsDataURL } from 'promise-file-reader';
 import { Button, Dimmer, Loader, Message } from 'semantic-ui-react';
 import { stateFromHTML } from 'draft-js-import-html';
 import { Editor, DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
+import { isEqual } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 
@@ -195,6 +196,16 @@ class Edit extends Component {
         this.descriptionEditor.focus();
       }
     }
+  }
+
+  /**
+   * @param {*} nextProps
+   * @param {*} nextState
+   * @returns {boolean}
+   * @memberof Edit
+   */
+  shouldComponentUpdate(nextProps) {
+    return this.props.selected || !isEqual(this.props.data, nextProps.data);
   }
 
   /**

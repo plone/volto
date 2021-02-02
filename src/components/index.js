@@ -1,13 +1,16 @@
 /**
- * Point of contact for component modules.
+ * Point of contact for component modules. This file is quite sensitive regarding the
+ * order in which it's loaded. e.g. if the component depends on others to work, it
+ * should ideally be loaded after them. If you start seeing imported components as
+ * undefined, check the order of imports in this file.
  * @module components
  */
 import loadable from '@loadable/component';
 
 //  Do not lazy load them, since it has not much sense (they will live in the main chunk)
-export App from '@plone/volto/components/theme/App/App';
+// The App and View component are deliberatelly left out of this index.js file!
+// They should be used by Volto and only by Volto internally
 export AppExtras from '@plone/volto/components/theme/AppExtras/AppExtras';
-export View from '@plone/volto/components/theme/View/View';
 export Header from '@plone/volto/components/theme/Header/Header';
 export Logo from '@plone/volto/components/theme/Logo/Logo';
 export Anontools from '@plone/volto/components/theme/Anontools/Anontools';
@@ -21,6 +24,7 @@ export Pagination from '@plone/volto/components/theme/Pagination/Pagination';
 export Tags from '@plone/volto/components/theme/Tags/Tags';
 export OutdatedBrowser from '@plone/volto/components/theme/OutdatedBrowser/OutdatedBrowser';
 export LanguageSelector from '@plone/volto/components/theme/LanguageSelector/LanguageSelector';
+export RenderBlocks from '@plone/volto/components/theme/View/RenderBlocks';
 
 export Error from '@plone/volto/components/theme/Error/Error';
 export NotFound from '@plone/volto/components/theme/NotFound/NotFound';
@@ -98,6 +102,7 @@ export ManageTranslations from '@plone/volto/components/manage/Multilingual/Mana
 // Potentially could ve removed from index, since they are internal components and
 // we don't want them to end up in the main chunk
 export Form from '@plone/volto/components/manage/Form/Form';
+export BlocksToolbar from '@plone/volto/components/manage/Form/BlocksToolbar';
 export Field from '@plone/volto/components/manage/Form/Field';
 export SearchTags from '@plone/volto/components/theme/Search/SearchTags';
 export CommentEditModal from '@plone/volto/components/theme/Comments/CommentEditModal';
@@ -111,6 +116,9 @@ export ContentsTagsModal from '@plone/volto/components/manage/Contents/ContentsT
 export UsersControlpanelUser from '@plone/volto/components/manage/Controlpanels/UsersControlpanelUser';
 export UsersControlpanelGroups from '@plone/volto/components/manage/Controlpanels/UsersControlpanelGroups';
 export DiffField from '@plone/volto/components/manage/Diff/DiffField';
+export DragDropList from '@plone/volto/components/manage/DragDropList/DragDropList';
+export InlineForm from '@plone/volto/components/manage/Form/InlineForm';
+export BlocksForm from '@plone/volto/components/manage/Blocks/Block/BlocksForm';
 
 export FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 export ArrayWidget from '@plone/volto/components/manage/Widgets/ArrayWidget';
@@ -178,3 +186,6 @@ export BlockSettingsSchema from '@plone/volto/components/manage/Blocks/Block/Sch
 export TextSettingsSchema from '@plone/volto/components/manage/Blocks/Text/Schema';
 export ImageSettingsSchema from '@plone/volto/components/manage/Blocks/Image/Schema';
 export ToCSettingsSchema from '@plone/volto/components/manage/Blocks/ToC/Schema';
+
+// Temporarilly re-added because of #2068
+export App from '@plone/volto/components/theme/App/App';

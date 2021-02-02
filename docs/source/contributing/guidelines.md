@@ -34,7 +34,7 @@ If the feature includes a breaking change, you should also add the breaking and 
 upgrade in the [upgrade guide](../upgrade-guide/index.md).
 
 All text that can be shown in a browser must be translatable. Please mark all such
-strings as translatable as defined in the [i18n guide](../customizing/i18n.md)
+strings as translatable as defined in the [i18n guide](../recipes/i18n.md)
 
 Code formatting and linting are already enforced in Volto.
 

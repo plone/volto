@@ -8,11 +8,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Portal } from 'react-portal';
-import { Helmet } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import {
   Button,
-  Breadcrumb,
   Confirm,
   Container,
   Dropdown,
@@ -52,7 +50,6 @@ import {
   sortContent,
   updateColumnsContent,
 } from '@plone/volto/actions';
-import { getBaseUrl } from '@plone/volto/helpers';
 import Indexes, { defaultIndexes } from '@plone/volto/constants/Indexes';
 import {
   ContentsIndexHeader,
@@ -68,7 +65,10 @@ import {
   Icon,
   Unauthorized,
 } from '@plone/volto/components';
-import { toast } from 'react-toastify';
+
+import ContentsBreadcrumbs from './ContentsBreadcrumbs';
+import { Helmet, getBaseUrl } from '@plone/volto/helpers';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 import backSVG from '@plone/volto/icons/back.svg';
 import cutSVG from '@plone/volto/icons/cut.svg';
@@ -107,6 +107,10 @@ const messages = defineMessages({
     id: 'Cut',
     defaultMessage: 'Cut',
   },
+  error: {
+    id: "You can't paste this content here",
+    defaultMessage: "You can't paste this content here",
+  },
   delete: {
     id: 'Delete',
     defaultMessage: 'Delete',
@@ -135,9 +139,9 @@ const messages = defineMessages({
     id: 'Item(s) cut.',
     defaultMessage: 'Item(s) cut.',
   },
-  messageSort: {
-    id: 'Item(s) has been sorted.',
-    defaultMessage: 'Item(s) has been sorted.',
+  messageUpdate: {
+    id: 'Item(s) has been updated.',
+    defaultMessage: 'Item(s) has been updated.',
   },
   messageReorder: {
     id: 'Item succesfully moved.',
@@ -435,11 +439,11 @@ class Contents extends Component {
       this.fetchContents(nextProps.pathname);
     }
     if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
-      toast.success(
+      this.props.toastify.toast.success(
         <Toast
           success
           title={this.props.intl.formatMessage(messages.success)}
-          content={this.props.intl.formatMessage(messages.messageSort)}
+          content={this.props.intl.formatMessage(messages.messageUpdate)}
         />,
       );
     }
@@ -460,7 +464,7 @@ class Contents extends Component {
       this.props.clipboardRequest.loading &&
       nextProps.clipboardRequest.error
     ) {
-      toast.error(
+      this.props.toastify.toast.error(
         <Toast
           error
           title={this.props.intl.formatMessage(messages.error)}
@@ -473,7 +477,7 @@ class Contents extends Component {
       this.props.clipboardRequest.loading &&
       nextProps.clipboardRequest.loaded
     ) {
-      toast.success(
+      this.props.toastify.toast.success(
         <Toast
           success
           title={this.props.intl.formatMessage(messages.success)}
@@ -482,7 +486,7 @@ class Contents extends Component {
       );
     }
     if (this.props.orderRequest.loading && nextProps.orderRequest.loaded) {
-      toast.success(
+      this.props.toastify.toast.success(
         <Toast
           success
           title={this.props.intl.formatMessage(messages.success)}
@@ -882,15 +886,26 @@ class Contents extends Component {
    * @returns {undefined}
    */
   fetchContents(pathname) {
-    this.props.searchContent(getBaseUrl(pathname || this.props.pathname), {
-      'path.depth': 1,
-      sort_on: this.state.sort_on,
-      sort_order: this.state.sort_order,
-      metadata_fields: '_all',
-      ...(this.state.filter && { SearchableText: `${this.state.filter}*` }),
-      b_size: this.state.pageSize,
-      b_start: this.state.currentPage * this.state.pageSize,
-    });
+    if (this.state.pageSize === 'All') {
+      this.props.searchContent(getBaseUrl(pathname || this.props.pathname), {
+        'path.depth': 1,
+        sort_on: this.state.sort_on,
+        sort_order: this.state.sort_order,
+        metadata_fields: '_all',
+        b_size: 100000000,
+        ...(this.state.filter && { SearchableText: `${this.state.filter}*` }),
+      });
+    } else {
+      this.props.searchContent(getBaseUrl(pathname || this.props.pathname), {
+        'path.depth': 1,
+        sort_on: this.state.sort_on,
+        sort_order: this.state.sort_order,
+        metadata_fields: '_all',
+        ...(this.state.filter && { SearchableText: `${this.state.filter}*` }),
+        b_size: this.state.pageSize,
+        b_start: this.state.currentPage * this.state.pageSize,
+      });
+    }
   }
 
   /**
@@ -903,7 +918,7 @@ class Contents extends Component {
   cut(event, { value }) {
     this.props.cut(value ? [value] : this.state.selected);
     this.onSelectNone();
-    toast.success(
+    this.props.toastify.toast.success(
       <Toast
         success
         title={this.props.intl.formatMessage(messages.success)}
@@ -922,7 +937,7 @@ class Contents extends Component {
   copy(event, { value }) {
     this.props.copy(value ? [value] : this.state.selected);
     this.onSelectNone();
-    toast.success(
+    this.props.toastify.toast.success(
       <Toast
         success
         title={this.props.intl.formatMessage(messages.success)}
@@ -1355,35 +1370,7 @@ class Contents extends Component {
                         attached
                         className="contents-breadcrumbs"
                       >
-                        <Breadcrumb>
-                          <Link
-                            to="/contents"
-                            className="section"
-                            title={this.props.intl.formatMessage(messages.home)}
-                          >
-                            {this.props.intl.formatMessage(messages.home)}
-                          </Link>
-                          {this.props.breadcrumbs.map(
-                            (breadcrumb, index, breadcrumbs) => [
-                              <Breadcrumb.Divider
-                                key={`divider-${breadcrumb.url}`}
-                              />,
-                              index < breadcrumbs.length - 1 ? (
-                                <Link
-                                  key={breadcrumb.url}
-                                  to={`${breadcrumb.url}/contents`}
-                                  className="section"
-                                >
-                                  {breadcrumb.title}
-                                </Link>
-                              ) : (
-                                <Breadcrumb.Section key={breadcrumb.url} active>
-                                  {breadcrumb.title}
-                                </Breadcrumb.Section>
-                              ),
-                            ],
-                          )}
-                        </Breadcrumb>
+                        <ContentsBreadcrumbs items={this.props.breadcrumbs} />
                         <Dropdown
                           item
                           icon={
@@ -1677,7 +1664,7 @@ class Contents extends Component {
                             this.props.total / this.state.pageSize,
                           )}
                           pageSize={this.state.pageSize}
-                          pageSizes={[15, 30, 50]}
+                          pageSizes={[15, 30, 50, 'All']}
                           onChangePage={this.onChangePage}
                           onChangePageSize={this.onChangePageSize}
                         />
@@ -1711,17 +1698,18 @@ class Contents extends Component {
             </Dimmer.Dimmable>
           </Container>
         ) : (
-          <Unauthorized />
+          <Unauthorized staticContext={this.props.staticContext} />
         )}
       </>
     ) : (
-      <Unauthorized />
+      <Unauthorized staticContext={this.props.staticContext} />
     );
   }
 }
 
 export const __test__ = compose(
   injectIntl,
+  injectLazyLibs(['toastify']),
   connect(
     (store, props) => {
       return {
@@ -1808,4 +1796,5 @@ export default compose(
         await dispatch(listActions(getBaseUrl(location.pathname))),
     },
   ]),
+  injectLazyLibs(['toastify']),
 )(Contents);
