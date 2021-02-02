@@ -7,6 +7,7 @@
 ### Feature
 
 - Internationalization story for add-ons @sneridagh
+- UniversalLink and ConditionalLink accepts also an item to link to. If item is of @type Link, a direct link to remote url is generated if user is not logged. @giuliaghisini
 
 ### Bugfix
 

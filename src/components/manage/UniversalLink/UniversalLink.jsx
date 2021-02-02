@@ -6,30 +6,40 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-
+import { useSelector } from 'react-redux';
 import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
 import URLUtils from '@plone/volto/components/manage/AnchorPlugin/utils/URLUtils';
 
 const UniversalLink = ({
   href,
+  item,
   openLinkInNewTab,
   download = false,
   children,
   className = null,
   title = null,
+  link = null,
   ...props
 }) => {
-  const isExternal = !isInternalURL(href);
-  const isDownload = (!isExternal && href.includes('@@download')) || download;
+  const token = useSelector((state) => state.userSession?.token);
+
+  let url = href;
+  if (!href) {
+    url = flattenToAppURL(item['@id']);
+    if (!token && item.remoteUrl) {
+      url = item.remoteUrl;
+    }
+  }
+
+  const isExternal = !isInternalURL(url);
+  const isDownload = (!isExternal && url.includes('@@download')) || download;
 
   return isExternal ? (
     <a
-      href={href}
+      href={url}
       title={title}
       target={
-        !URLUtils.isMail(href) && !(openLinkInNewTab === false)
-          ? '_blank'
-          : null
+        !URLUtils.isMail(url) && !(openLinkInNewTab === false) ? '_blank' : null
       }
       rel="noopener noreferrer"
       className={className}
@@ -38,12 +48,12 @@ const UniversalLink = ({
       {children}
     </a>
   ) : isDownload ? (
-    <a href={href} download title={title} className={className} {...props}>
+    <a href={url} download title={title} className={className} {...props}>
       {children}
     </a>
   ) : (
     <Link
-      to={flattenToAppURL(href)}
+      to={flattenToAppURL(url)}
       target={openLinkInNewTab ?? false ? '_blank' : null}
       title={title}
       className={className}
@@ -60,6 +70,10 @@ UniversalLink.propTypes = {
   download: PropTypes.bool,
   className: PropTypes.string,
   title: PropTypes.string,
+  item: PropTypes.shape({
+    '@id': PropTypes.string,
+    remoteUrl: PropTypes.string, //of plone @type 'Link'
+  }),
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
