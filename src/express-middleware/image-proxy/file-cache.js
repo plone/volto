@@ -99,7 +99,7 @@ class FileCache {
         fs.readdirSync(path.join(__dirname, this.basePath)).length <
           this.maxSize
       ) {
-        fs.outputFileSync(dir, imageData, { encoding: 'base64' });
+        fs.outputFileSync(dir, imageData);
         debug(`file written at ${dir}`);
         fs.outputFileSync(metadataPath, JSON.stringify(data));
         debug(`metadata file written at ${metadataPath}`);
