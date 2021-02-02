@@ -52,7 +52,6 @@ class More extends Component {
     content: null,
   };
   state = {
-    openManageTranslations: false,
     pushed: false,
   };
 

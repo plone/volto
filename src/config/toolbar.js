@@ -77,6 +77,11 @@ const defaultViewActions = [
 ];
 const defaultBottomActions = [UserButton];
 
+/**
+ * Registered activities in volto:
+ * - view, add, edit, contents, contact-form, search, history, sharing,
+ *   manage-translations, diff, control-panel
+ */
 const activities = {
   default: {
     top: [],
@@ -85,14 +90,6 @@ const activities = {
   view: {
     top: [...defaultViewActions],
     bottom: [bottom(defaultBottomActions)],
-  },
-  add: {
-    top: [],
-    bottom: [],
-  },
-  edit: {
-    top: [],
-    bottom: [],
   },
   contents: {
     top: [...defaultViewActions],
