@@ -48,6 +48,6 @@ export const inlineToolbarButtons = [
   CalloutButton,
 ];
 
-const plugins = [linkPlugin, blockBreakoutPlugin]; //,linkDetectionPlugin
+const plugins = [linkPlugin, blockBreakoutPlugin]; //linkDetectionPlugin
 
 export default plugins;

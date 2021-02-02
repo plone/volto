@@ -58,6 +58,7 @@ nav:
       - Edit components: 'blocks/editcomponent.md'
   - Addons:
       - Introduction: 'addons/index.md'
+      - Internationalization: 'addons/i18n.md'
       - Best practices: 'addons/best-practices.md'
   - Backend integration: 'backend/index.md'
   - Deploying:
