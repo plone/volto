@@ -26,10 +26,7 @@ const DefaultTemplate = ({ items, linkMore, isEditMode }) => {
       <div className="items">
         {items.map((item) => (
           <div className="listing-item" key={item['@id']}>
-            <ConditionalLink
-              to={flattenToAppURL(item['@id'])}
-              condition={!isEditMode}
-            >
+            <ConditionalLink item={item} condition={!isEditMode}>
               {!item[settings.listingPreviewImageField] && (
                 <img src={DefaultImageSVG} alt="" />
               )}
