@@ -7,6 +7,7 @@ export const defaultOpts = {
   basePath: `../public/cache`,
   extension: '.jpg',
   ns: 'main',
+  maxSize: 100,
 };
 
 function isNumber(val) {
@@ -17,6 +18,7 @@ class FileCache {
   constructor(opts = defaultOpts) {
     this.ttlSupport = true;
     this.basePath = opts.basePath;
+    this.maxSize = opts.maxSize;
     this.ns = opts.ns; //namespace, we have a namespace from keyu-file
     if (opts.extension) {
       //optional, we can specify file extensions
@@ -92,10 +94,18 @@ class FileCache {
       const dir = path.join(__dirname, `${key}`);
       const metadataPath = `${dir.replace(path.extname(dir), '.metadata')}`;
       const imageData = data.data.replace(/^data:image\/\w+;base64,/, '');
-      fs.outputFileSync(dir, imageData, { encoding: 'base64' });
-      debug(`file written at ${dir}`);
-      fs.outputFileSync(metadataPath, JSON.stringify(data));
-      debug(`metadata file written at ${metadataPath}`);
+      if (
+        !fs.existsSync(path.join(__dirname, this.basePath)) ||
+        fs.readdirSync(path.join(__dirname, this.basePath)).length <
+          this.maxSize
+      ) {
+        fs.outputFileSync(dir, imageData, { encoding: 'base64' });
+        debug(`file written at ${dir}`);
+        fs.outputFileSync(metadataPath, JSON.stringify(data));
+        debug(`metadata file written at ${metadataPath}`);
+      } else {
+        debug('Directory size reached max limit');
+      }
     } catch (e) {
       throw Error(e);
     }
