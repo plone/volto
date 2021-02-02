@@ -189,7 +189,9 @@ export const MoreButton = (props) => {
       <button
         className="more"
         aria-label={props.intl.formatMessage(messages.more)}
-        onClick={(e) => props.toggleMenu(e, 'more', props.actionComponents)}
+        onClick={(e) =>
+          props.toggleMenu(e, 'more', { extras: props.actionComponents })
+        }
         tabIndex={0}
         id="toolbar-more"
       >

@@ -142,12 +142,16 @@ class BasicToolbarComponent extends Component {
 
   loadComponent = (type) => {
     const { loadedComponents } = this.state;
-    if (!this.state.loadedComponents.includes(type)) {
-      this.setState({
-        loadedComponents: [...loadedComponents, type],
-        hideToolbarBody:
-          toolbar.toolbarComponents[type].hideToolbarBody || false,
-      });
+    if (type) {
+      if (!this.state.loadedComponents.includes(type)) {
+        this.setState({
+          loadedComponents: [...loadedComponents, type],
+          hideToolbarBody:
+            toolbar.toolbarComponents[type].hideToolbarBody || false,
+        });
+      }
+    } else {
+      this.setState({ loadedComponents: [] });
     }
   };
 
@@ -161,7 +165,12 @@ class BasicToolbarComponent extends Component {
     }));
   };
 
-  toggleMenu = (e, selector, extras = []) => {
+  toggleMenu = (e, selector, options = {}) => {
+    const {
+      extras = [],
+      menuStyle = { top: 0, overflow: 'initial' },
+      loadedComponentName = 'default',
+    } = options;
     if (this.state.showMenu) {
       this.closeMenu();
       return;
@@ -172,12 +181,14 @@ class BasicToolbarComponent extends Component {
         showMenu: !state.showMenu,
         menuStyle: { bottom: 0 },
         extras,
+        loadedComponentName,
       }));
     } else {
       this.setState((state) => ({
         showMenu: !state.showMenu,
-        menuStyle: { top: 0, overflow: 'initial' },
+        menuStyle,
         extras,
+        loadedComponentName,
       }));
     }
     this.loadComponent(selector);
@@ -254,6 +265,7 @@ class BasicToolbarComponent extends Component {
                         hasActions={haveActions}
                         extras={this.state.extras}
                         showMenu={this.state.showMenu}
+                        loadedComponentName={this.state.loadedComponentName}
                       >
                         <ToolbarComponent
                           pathname={this.props.pathname}
@@ -265,6 +277,7 @@ class BasicToolbarComponent extends Component {
                           extras={this.state.extras}
                           showMenu={this.state.showMenu}
                           isToolbarEmbedded
+                          loadedComponentName={this.state.loadedComponentName}
                         />
                       </WrapperComponent>
                     );
@@ -280,6 +293,7 @@ class BasicToolbarComponent extends Component {
                         closeMenu={this.closeMenu}
                         extras={this.state.extras}
                         showMenu={this.state.showMenu}
+                        loadedComponentName={this.state.loadedComponentName}
                         content={
                           toolbar.toolbarComponents[component].contentAsProps
                             ? this.props.content
@@ -302,6 +316,8 @@ class BasicToolbarComponent extends Component {
                     key={index}
                     toggleMenu={this.toggleMenu}
                     showMenu={this.state.showMenu}
+                    theToolbar={this.toolbarWindow}
+                    loadedComponentName={this.state.loadedComponentName}
                   />
                 ))}
               </div>
@@ -312,6 +328,8 @@ class BasicToolbarComponent extends Component {
                     key={index}
                     toggleMenu={this.toggleMenu}
                     showMenu={this.state.showMenu}
+                    theToolbar={this.toolbarWindow}
+                    loadedComponentName={this.state.loadedComponentName}
                   />
                 ))}
               </div>
