@@ -5,7 +5,6 @@
 
 import superagent from 'superagent';
 import cookie from 'react-cookie';
-import { toPublicURL } from '@plone/volto/helpers';
 import { settings } from '~/config';
 
 /**
@@ -26,12 +25,10 @@ export const generateRobots = (req) =>
     }
 
     request.end((error, { text }) => {
-      let robotstxt = toPublicURL(text); //to transform sitemap.xml.gz url
-
       if (error) {
-        resolve(robotstxt || error);
+        resolve(text || error);
       } else {
-        resolve(robotstxt);
+        resolve(text);
       }
     });
   });
