@@ -7,10 +7,16 @@
 ### Feature
 
 - Add `preloadLazyLibs` and `settings.lazyBundles` to allow preloading bundles of lazy libraries @tiberiuichim @silviubogan
+- Added onChangeFormData prop to Form component @giuliaghisini
+- Internationalization story for add-ons @sneridagh
 
 ### Bugfix
 
+- German translation: aria-label of '/contents' button : "Inhalte" not "Inhaltsverzeichnis" @ksuess
+
 ### Internal
+
+- Update docs: configuration of routes and addonRoutes @ksuess
 
 ## 11.0.0 (2021-01-29)
 
