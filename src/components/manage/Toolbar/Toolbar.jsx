@@ -33,7 +33,7 @@ const messages = defineMessages({
  * @class BasicToolbar
  * @extends Component
  */
-class BasicToolbarComponent extends Component {
+export class BasicToolbarComponent extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.

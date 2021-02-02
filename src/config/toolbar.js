@@ -58,7 +58,7 @@ const moreMenu = (actions) => {
   return (props) => <MoreButton actionComponents={actions} {...props} />;
 };
 
-const bottom = (actions) => {
+export const bottom = (actions) => {
   return (props) => <Bottom actionComponents={actions} {...props} />;
 };
 
