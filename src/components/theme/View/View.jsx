@@ -234,7 +234,7 @@ class View extends Component {
           <meta
             name="description"
             content={
-              this.props.content.seo_desciption ||
+              this.props.content.seo_description ||
               this.props.content.description
             }
           />
@@ -249,17 +249,21 @@ class View extends Component {
           />
           <meta
             property="og:url"
-            content={toPublicURL(this.props.content['@id'])}
+            content={
+              this.props.content.seo_canonical_url ||
+              toPublicURL(this.props.content['@id'])
+            }
           />
-          {this.props.content.image?.scales?.large?.download && (
-            <meta
-              property="og:image"
-              content={toPublicURL(
-                this.props.content.opengraph_image.download ||
-                  this.props.content.image?.scales?.large?.download,
-              )}
-            />
-          )}
+          {this.props.content.image?.scales?.large?.download ||
+            (this.props.content.opengraph_image?.scales?.large?.download && (
+              <meta
+                property="og:image"
+                content={toPublicURL(
+                  this.props.content.opengraph_image?.scales?.large?.download ||
+                    this.props.content.image?.scales?.large?.download,
+                )}
+              />
+            ))}
           {(this.props.content.opengraph_description ||
             this.props.content.seo_description ||
             this.props.content.description) && (
@@ -272,7 +276,6 @@ class View extends Component {
               }
             />
           )}
-          {this.props.content.seo_canonical_url}
           <meta name="twitter:card" content="summary_large_image" />
         </Helmet>
         {/* Body class if displayName in component is set */}
