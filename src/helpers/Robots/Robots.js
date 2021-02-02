@@ -16,7 +16,7 @@ import { settings } from '~/config';
 export const generateRobots = (req) =>
   new Promise((resolve) => {
     //const url = `${req.protocol}://${req.get('Host')}`;
-    const request = superagent.get(`${settings.apiPath}/robots.txt`);
+    const request = superagent.get(`${settings.internalApiPath ?? settings.apiPath}/robots.txt`);
     request.set('Accept', 'text/plain');
 
     const authToken = cookie.load('auth_token');
