@@ -6,11 +6,17 @@
 
 ### Feature
 
+- Added onChangeFormData prop to Form component @giuliaghisini
+- Internationalization story for add-ons @sneridagh
 - Allow configuration of Toolbar actions @tiberiuichim
 
 ### Bugfix
 
+- German translation: aria-label of '/contents' button : "Inhalte" not "Inhaltsverzeichnis" @ksuess
+
 ### Internal
+
+- Update docs: configuration of routes and addonRoutes @ksuess
 
 ## 11.0.0 (2021-01-29)
 
