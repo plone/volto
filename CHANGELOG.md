@@ -10,6 +10,8 @@
 
 ### Bugfix
 
+- German translation: aria-label of '/contents' button : "Inhalte" not "Inhaltsverzeichnis" @ksuess
+
 ### Internal
 
 - Update docs: configuration of routes and addonRoutes @ksuess
