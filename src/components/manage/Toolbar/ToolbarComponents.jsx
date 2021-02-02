@@ -183,7 +183,6 @@ export const AddButton = (props) => {
 };
 
 export const MoreButton = (props) => {
-  // TODO: state.showMenu
   return (
     <>
       <div className="toolbar-button-spacer" />

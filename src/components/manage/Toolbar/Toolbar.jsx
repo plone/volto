@@ -301,6 +301,7 @@ class BasicToolbarComponent extends Component {
                     {...this.props}
                     key={index}
                     toggleMenu={this.toggleMenu}
+                    showMenu={this.state.showMenu}
                   />
                 ))}
               </div>
@@ -310,6 +311,7 @@ class BasicToolbarComponent extends Component {
                     {...this.props}
                     key={index}
                     toggleMenu={this.toggleMenu}
+                    showMenu={this.state.showMenu}
                   />
                 ))}
               </div>
