@@ -63,6 +63,7 @@ exports[`Diff renders a diff component 1`] = `
             onChange={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
+            onKeyDown={[Function]}
             onMouseDown={[Function]}
             role="listbox"
             tabIndex={0}
@@ -70,7 +71,7 @@ exports[`Diff renders a diff component 1`] = `
             <div
               aria-atomic={true}
               aria-live="polite"
-              className="text"
+              className="divider text"
               role="alert"
             >
               0 (Sunday, April 23, 2017 3:38 AM, Web Admin)
@@ -133,6 +134,7 @@ exports[`Diff renders a diff component 1`] = `
             onChange={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
+            onKeyDown={[Function]}
             onMouseDown={[Function]}
             role="listbox"
             tabIndex={0}
@@ -140,7 +142,7 @@ exports[`Diff renders a diff component 1`] = `
             <div
               aria-atomic={true}
               aria-live="polite"
-              className="text"
+              className="divider text"
               role="alert"
             >
               Current (Sunday, April 23, 2017 3:38 AM, Web Admin)
