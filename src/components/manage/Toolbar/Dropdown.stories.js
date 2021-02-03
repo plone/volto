@@ -25,6 +25,7 @@ export default {
   ],
   parameters: {
     docs: {
+      inlineStories: false,
       description: {
         component: `### Custom dropdown component
 

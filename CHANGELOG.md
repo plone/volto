@@ -4,6 +4,8 @@
 
 ### Breaking
 
+- Add a new config registry, the `toolbar`. You should migrate your project's `config.js` to export the `toolbar` registry. @tiberiuichim
+
 ### Feature
 
 - Added onChangeFormData prop to Form component @giuliaghisini
