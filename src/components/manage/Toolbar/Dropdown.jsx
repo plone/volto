@@ -11,31 +11,6 @@ import { Portal } from 'react-portal';
  * A response dropdown popup (a toolbar aside component)
  */
 export class DropdownMenu extends Component {
-  // static propTypes = {
-  //   actions: PropTypes.shape({
-  //     object: PropTypes.arrayOf(PropTypes.object),
-  //     object_buttons: PropTypes.arrayOf(PropTypes.object),
-  //     user: PropTypes.arrayOf(PropTypes.object),
-  //   }),
-  //   pathname: PropTypes.string.isRequired,
-  //   content: PropTypes.shape({
-  //     title: PropTypes.string,
-  //     '@type': PropTypes.string,
-  //     is_folderish: PropTypes.bool,
-  //     review_state: PropTypes.string,
-  //   }),
-  //   loadComponent: PropTypes.func.isRequired,
-  // };
-
-  /**
-   * Default properties.
-   * @property {Object} defaultProps Default properties.
-   * @static
-   */
-  static defaultProps = {
-    actions: null,
-    content: null,
-  };
   state = {
     pushed: false,
   };
