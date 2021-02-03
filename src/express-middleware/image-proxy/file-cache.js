@@ -34,10 +34,7 @@ class FileCache {
     if (!key) {
       throw new Error(`Path requires a cache key.`);
     }
-    let name = key
-      .split('-')
-      .slice(-1)[0]
-      .replace(/[^a-zA-Z0-9 ]/g, '');
+    let name = key.replace(/[^a-zA-Z ]/g, '');
     if (this.ns) {
       name = `${this.ns}-${name}`;
     }
