@@ -23,6 +23,14 @@ class Registry {
   set settings(settings) {
     this._data.settings = settings;
   }
+
+  get slots() {
+    return this._data.slots;
+  }
+
+  set slots(slots) {
+    this._data.slots = slots;
+  }
 }
 
 const instance = new Registry();

@@ -50,11 +50,14 @@ nav:
       - Lazy loading and code splitting: 'recipes/lazyload.md'
       - Overriding i18n messages: 'recipes/overridei18n.md'
       - App component insertion point: 'recipes/appextras.md'
+      - Context navigation component: 'recipes/contextnavigation.md'
   - Blocks:
       - Introduction: 'blocks/introduction.md'
       - Anatomy: 'blocks/anatomy.md'
       - Settings: 'blocks/settings.md'
       - Edit components: 'blocks/editcomponent.md'
+  - Slots:
+      - Anatomy: 'slots/anatomy.md'
   - Addons:
       - Introduction: 'addons/index.md'
       - Best practices: 'addons/best-practices.md'
@@ -64,6 +67,7 @@ nav:
       - Using PM2: 'deploying/pm2.md'
       - Using apache: 'deploying/apache.md'
       - Using sentry: 'deploying/sentry.md'
+      - Performance improvements: 'deploying/performance.md'
   - Upgrade Guide: 'upgrade-guide/index.md'
   - Developer Guidelines:
       - Language features: 'developer-guidelines/language-features.md'

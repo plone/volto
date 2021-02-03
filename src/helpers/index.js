@@ -4,6 +4,7 @@
  * @example import { Api, Html } from 'helpers';
  */
 
+// export { injectLazyLibs } from './Loadable/Loadable';
 export Api from '@plone/volto/helpers/Api/Api';
 export { getAPIResourceWithAuth } from '@plone/volto/helpers/Api/APIResourceWithAuth';
 export Html from '@plone/volto/helpers/Html/Html';
@@ -29,11 +30,19 @@ export {
   getContentIcon,
 } from '@plone/volto/helpers/Content/Content';
 export {
+  addBlock,
+  blockHasValue,
+  changeBlock,
+  deleteBlock,
+  emptyBlocksForm,
   getBlocks,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
   hasBlocksData,
-  blockHasValue,
+  moveBlock,
+  mutateBlock,
+  nextBlockId,
+  previousBlockId,
 } from '@plone/volto/helpers/Blocks/Blocks';
 export BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
 export ScrollToTop from '@plone/volto/helpers/ScrollToTop/ScrollToTop';
@@ -44,14 +53,14 @@ export {
   getVocabFromItems,
   getFieldsVocabulary,
 } from '@plone/volto/helpers/Vocabularies/Vocabularies';
-export AlignBlock from '@plone/volto/helpers/AlignBlock/AlignBlock';
 
 export Helmet from './Helmet/Helmet';
 export FormValidation from './FormValidation/FormValidation';
-export { messages } from './MessageLabels/MessageLabels';
 export {
   difference,
   safeWrapper,
   applyConfig,
   withServerErrorCode,
 } from '@plone/volto/helpers/Utils/Utils';
+export { messages } from './MessageLabels/MessageLabels';
+// export { injectLazyLibs } from './Loadable/Loadable';

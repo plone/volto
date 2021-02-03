@@ -8,11 +8,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Portal } from 'react-portal';
-import { Helmet } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import {
   Button,
-  Breadcrumb,
   Confirm,
   Container,
   Dropdown,
@@ -52,7 +50,6 @@ import {
   sortContent,
   updateColumnsContent,
 } from '@plone/volto/actions';
-import { getBaseUrl } from '@plone/volto/helpers';
 import Indexes, { defaultIndexes } from '@plone/volto/constants/Indexes';
 import {
   ContentsIndexHeader,
@@ -68,7 +65,10 @@ import {
   Icon,
   Unauthorized,
 } from '@plone/volto/components';
-import { toast } from 'react-toastify';
+
+import ContentsBreadcrumbs from './ContentsBreadcrumbs';
+import { Helmet, getBaseUrl } from '@plone/volto/helpers';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 import backSVG from '@plone/volto/icons/back.svg';
 import cutSVG from '@plone/volto/icons/cut.svg';
@@ -439,7 +439,7 @@ class Contents extends Component {
       this.fetchContents(nextProps.pathname);
     }
     if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
-      toast.success(
+      this.props.toastify.toast.success(
         <Toast
           success
           title={this.props.intl.formatMessage(messages.success)}
@@ -464,7 +464,7 @@ class Contents extends Component {
       this.props.clipboardRequest.loading &&
       nextProps.clipboardRequest.error
     ) {
-      toast.error(
+      this.props.toastify.toast.error(
         <Toast
           error
           title={this.props.intl.formatMessage(messages.error)}
@@ -477,7 +477,7 @@ class Contents extends Component {
       this.props.clipboardRequest.loading &&
       nextProps.clipboardRequest.loaded
     ) {
-      toast.success(
+      this.props.toastify.toast.success(
         <Toast
           success
           title={this.props.intl.formatMessage(messages.success)}
@@ -486,7 +486,7 @@ class Contents extends Component {
       );
     }
     if (this.props.orderRequest.loading && nextProps.orderRequest.loaded) {
-      toast.success(
+      this.props.toastify.toast.success(
         <Toast
           success
           title={this.props.intl.formatMessage(messages.success)}
@@ -892,6 +892,7 @@ class Contents extends Component {
         sort_on: this.state.sort_on,
         sort_order: this.state.sort_order,
         metadata_fields: '_all',
+        b_size: 100000000,
         ...(this.state.filter && { SearchableText: `${this.state.filter}*` }),
       });
     } else {
@@ -917,7 +918,7 @@ class Contents extends Component {
   cut(event, { value }) {
     this.props.cut(value ? [value] : this.state.selected);
     this.onSelectNone();
-    toast.success(
+    this.props.toastify.toast.success(
       <Toast
         success
         title={this.props.intl.formatMessage(messages.success)}
@@ -936,7 +937,7 @@ class Contents extends Component {
   copy(event, { value }) {
     this.props.copy(value ? [value] : this.state.selected);
     this.onSelectNone();
-    toast.success(
+    this.props.toastify.toast.success(
       <Toast
         success
         title={this.props.intl.formatMessage(messages.success)}
@@ -1369,35 +1370,7 @@ class Contents extends Component {
                         attached
                         className="contents-breadcrumbs"
                       >
-                        <Breadcrumb>
-                          <Link
-                            to="/contents"
-                            className="section"
-                            title={this.props.intl.formatMessage(messages.home)}
-                          >
-                            {this.props.intl.formatMessage(messages.home)}
-                          </Link>
-                          {this.props.breadcrumbs.map(
-                            (breadcrumb, index, breadcrumbs) => [
-                              <Breadcrumb.Divider
-                                key={`divider-${breadcrumb.url}`}
-                              />,
-                              index < breadcrumbs.length - 1 ? (
-                                <Link
-                                  key={breadcrumb.url}
-                                  to={`${breadcrumb.url}/contents`}
-                                  className="section"
-                                >
-                                  {breadcrumb.title}
-                                </Link>
-                              ) : (
-                                <Breadcrumb.Section key={breadcrumb.url} active>
-                                  {breadcrumb.title}
-                                </Breadcrumb.Section>
-                              ),
-                            ],
-                          )}
-                        </Breadcrumb>
+                        <ContentsBreadcrumbs items={this.props.breadcrumbs} />
                         <Dropdown
                           item
                           icon={
@@ -1736,6 +1709,7 @@ class Contents extends Component {
 
 export const __test__ = compose(
   injectIntl,
+  injectLazyLibs(['toastify']),
   connect(
     (store, props) => {
       return {
@@ -1822,4 +1796,5 @@ export default compose(
         await dispatch(listActions(getBaseUrl(location.pathname))),
     },
   ]),
+  injectLazyLibs(['toastify']),
 )(Contents);

@@ -33,7 +33,6 @@ import { sentryOptions } from './Sentry';
 import { contentIcons } from './ContentIcons';
 
 import applyAddonConfiguration from 'load-volto-addons';
-
 import Registry from '@plone/volto/registry';
 
 const host = process.env.HOST || 'localhost';
@@ -135,3 +134,4 @@ export const appExtras = config.appExtras;
 export const slots = { ...config.slots };
 
 Registry.settings = settings;
+Registry.slots = slots;
