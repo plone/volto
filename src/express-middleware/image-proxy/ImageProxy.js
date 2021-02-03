@@ -142,7 +142,7 @@ export default class ImageProxy {
 
   async convertOriginal(original) {
     const { data, format } = original;
-    const res = await this.convert(data.data, format);
+    const res = await this.convert(data.data ?? data, format);
 
     // info: {
     //   format: 'webp',
@@ -173,7 +173,7 @@ export default class ImageProxy {
 
     const width = imageScales[this.thumbSize];
     const { data, format, headers } = original;
-    const res = await this.convert(data.data, format, undefined, width);
+    const res = await this.convert(data.data ?? data, format, undefined, width);
 
     const converted = {
       data: res.data,
