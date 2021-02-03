@@ -7,7 +7,8 @@ import Registry from '@plone/volto/registry';
 
 const ContentContainer = ({ children, content }) => {
   const pathname = useLocation().pathname;
-  const slots = Registry.get('slots');
+  const { slots } = Registry;
+
   const hasSlot = (name) => {
     if (!slots[name]) {
       return null;

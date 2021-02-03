@@ -15,7 +15,7 @@ afterAll(() => {
 
 describe('SlotRenderer Component', () => {
   test('renders a SlotRenderer component for the aboveContentTitle with two slots in the root', () => {
-    Registry.get('slots').aboveContentTitle = [
+    Registry.slots.aboveContentTitle = [
       {
         path: '/',
         component: (props) => <div {...props} />,
@@ -39,7 +39,7 @@ describe('SlotRenderer Component', () => {
     expect(asideSlot).toHaveClass('slot-component');
   });
   test('renders a SlotRenderer component for the aboveContentTitle with one slots in the root and other in other place', () => {
-    Registry.get('slots').aboveContentTitle = [
+    Registry.slots.aboveContentTitle = [
       {
         path: '/',
         component: (props) => <div {...props} />,
@@ -63,14 +63,14 @@ describe('SlotRenderer Component', () => {
     expect(asideSlot).toBe(null);
   });
   test('renders a SlotRenderer component for the aboveContentTitle and belowContentTitle, only renders the appropiate one', () => {
-    Registry.get('slots').aboveContentTitle = [
+    Registry.slots.aboveContentTitle = [
       {
         path: '/',
         component: (props) => <div {...props} />,
         props: { className: 'slot-component-aboveContentTitle' },
       },
     ];
-    Registry.get('slots').belowContentTitle = [
+    Registry.slots.belowContentTitle = [
       {
         path: '/',
         component: (props) => <aside {...props} />,
@@ -89,14 +89,14 @@ describe('SlotRenderer Component', () => {
     expect(asideSlot).toBe(null);
   });
   test('renders a SlotRenderer component for the aboveContentTitle and belowContentTitle with different paths, only renders the appropiate one', () => {
-    Registry.get('slots').aboveContentTitle = [
+    Registry.slots.aboveContentTitle = [
       {
         path: '/other-place',
         component: (props) => <div {...props} />,
         props: { className: 'slot-component-aboveContentTitle' },
       },
     ];
-    Registry.get('slots').belowContentTitle = [
+    Registry.slots.belowContentTitle = [
       {
         path: '/',
         component: (props) => <aside {...props} />,
@@ -115,7 +115,7 @@ describe('SlotRenderer Component', () => {
     expect(asideSlot).toBe(null);
   });
   test('renders a SlotRenderer component for the aboveContentTitle with inheritance', () => {
-    Registry.get('slots').aboveContentTitle = [
+    Registry.slots.aboveContentTitle = [
       {
         path: '/other-place',
         component: (props) => <div {...props} />,
@@ -132,7 +132,7 @@ describe('SlotRenderer Component', () => {
     expect(divSlot).toHaveClass('slot-component-aboveContentTitle');
   });
   test('renders a SlotRenderer component for the aboveContentTitle disable inheritance', () => {
-    Registry.get('slots').aboveContentTitle = [
+    Registry.slots.aboveContentTitle = [
       {
         path: '/other-place',
         component: (props) => <div {...props} />,

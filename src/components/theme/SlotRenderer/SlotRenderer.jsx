@@ -5,7 +5,7 @@ import Registry from '@plone/volto/registry';
 
 const SlotRenderer = ({ name }) => {
   const pathname = useLocation().pathname;
-  const slots = Registry.get('slots');
+  const { slots } = Registry;
 
   if (!slots[name]) {
     return null;
