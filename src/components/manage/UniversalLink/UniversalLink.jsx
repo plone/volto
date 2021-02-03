@@ -64,7 +64,7 @@ const UniversalLink = ({
 };
 
 UniversalLink.propTypes = {
-  href: PropTypes.string.isRequired,
+  href: PropTypes.string,
   openLinkInNewTab: PropTypes.bool,
   download: PropTypes.bool,
   className: PropTypes.string,
