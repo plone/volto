@@ -15,8 +15,6 @@ import {
 import { nestContent } from '@plone/volto/helpers';
 import Registry from '@plone/volto/registry';
 
-const { settings } = Registry;
-
 /**
  * Create content function.
  * @function createContent
@@ -130,6 +128,7 @@ export function getContent(
   page = null,
   fullobjects = false,
 ) {
+  const { settings } = Registry;
   const query = Object.assign(
     {},
     fullobjects || settings.bbb_getContentFetchesFullobjects

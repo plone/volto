@@ -24,6 +24,22 @@ class Registry {
     this._data.settings = settings;
   }
 
+  get blocks() {
+    return this._data.blocks;
+  }
+
+  set blocks(blocks) {
+    this._data.blocks = blocks;
+  }
+
+  get views() {
+    return this._data.views;
+  }
+
+  set views(views) {
+    this._data.views = views;
+  }
+
   get slots() {
     return this._data.slots;
   }

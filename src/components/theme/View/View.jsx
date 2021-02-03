@@ -11,7 +11,7 @@ import { Portal } from 'react-portal';
 import { injectIntl } from 'react-intl';
 import { Helmet } from '@plone/volto/helpers';
 import qs from 'query-string';
-import { views } from '~/config';
+import Registry from '@plone/volto/registry';
 
 import {
   ContentContainer,
@@ -160,7 +160,7 @@ class View extends Component {
    * @method getViewDefault
    * @returns {string} Markup for component.
    */
-  getViewDefault = () => views.defaultView;
+  getViewDefault = () => Registry.views.defaultView;
 
   /**
    * Get view by content type
@@ -168,7 +168,7 @@ class View extends Component {
    * @returns {string} Markup for component.
    */
   getViewByType = () =>
-    views.contentTypesViews[this.props.content['@type']] || null;
+    Registry.views.contentTypesViews[this.props.content['@type']] || null;
 
   /**
    * Get view by content layout property
@@ -176,7 +176,7 @@ class View extends Component {
    * @returns {string} Markup for component.
    */
   getViewByLayout = () =>
-    views.layoutViews[
+    Registry.views.layoutViews[
       this.props.content[getLayoutFieldname(this.props.content)]
     ] || null;
 
@@ -201,6 +201,7 @@ class View extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const { views } = Registry;
     if (this.props.error && !this.props.connectionRefused) {
       let FoundView;
       if (this.props.error.status === undefined) {

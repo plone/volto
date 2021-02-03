@@ -134,4 +134,6 @@ export const appExtras = config.appExtras;
 export const slots = { ...config.slots };
 
 Registry.settings = settings;
+Registry.blocks = blocks;
+Registry.views = views;
 Registry.slots = slots;
