@@ -34,7 +34,10 @@ class FileCache {
     if (!key) {
       throw new Error(`Path requires a cache key.`);
     }
-    let name = key.replace(/[^a-zA-Z0-9 ]/g, '');
+    let name = key
+      .split('-')
+      .slice(-1)[0]
+      .replace(/[^a-zA-Z0-9 ]/g, '');
     if (this.ns) {
       name = `${this.ns}-${name}`;
     }
@@ -57,7 +60,7 @@ class FileCache {
   }
 
   isExpired(data) {
-    return isNumber(data.expire) && data.expire <= Date.now();
+    return isNumber(data.expires) && data.expires <= Date.now();
   }
 
   get(key) {
@@ -65,7 +68,7 @@ class FileCache {
       const fileData = this.read(this.path(key));
       if (!fileData) {
         return;
-      } else if (this.isExpired(fileData)) {
+      } else if (this.isExpired(JSON.parse(fileData?.metadata))) {
         return this.remove(this.path(key));
       } else {
         const metadata = JSON.parse(fileData?.metadata);
