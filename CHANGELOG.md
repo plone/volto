@@ -8,6 +8,7 @@
 
 - Added onChangeFormData prop to Form component @giuliaghisini
 - Internationalization story for add-ons @sneridagh
+- Bump semantic-ui-react to v2.0.3 @nileshgulia1
 
 ### Bugfix
 
