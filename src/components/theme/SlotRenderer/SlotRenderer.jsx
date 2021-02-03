@@ -1,10 +1,11 @@
 import React from 'react';
 import { matchPath, useLocation } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
-import { slots } from '~/config';
+import Registry from '@plone/volto/registry';
 
 const SlotRenderer = ({ name }) => {
   const pathname = useLocation().pathname;
+  const slots = Registry.get('slots');
 
   if (!slots[name]) {
     return null;

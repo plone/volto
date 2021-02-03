@@ -3,8 +3,17 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
+import Registry from '@plone/volto/registry';
 
 import View from './View';
+
+beforeAll(() => {
+  Registry.set('slots', {});
+});
+
+afterAll(() => {
+  Registry.set('slots', {});
+});
 
 jest.mock('~/config', () => ({
   settings: {
