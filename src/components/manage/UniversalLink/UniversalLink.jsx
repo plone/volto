@@ -18,7 +18,6 @@ const UniversalLink = ({
   children,
   className = null,
   title = null,
-  link = null,
   ...props
 }) => {
   const token = useSelector((state) => state.userSession?.token);
