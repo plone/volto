@@ -27,14 +27,10 @@ import {
   blocksConfig,
   initialBlocks,
 } from './Blocks';
+import { loadables } from './Loadables';
 
 import { sentryOptions } from './Sentry';
 import { contentIcons } from './ContentIcons';
-
-import imagesMiddleware from '@plone/volto/express-middleware/images';
-import filesMiddleware from '@plone/volto/express-middleware/files';
-import robotstxtMiddleware from '@plone/volto/express-middleware/robotstxt';
-import sitemapMiddleware from '@plone/volto/express-middleware/sitemap';
 
 import applyAddonConfiguration from 'load-volto-addons';
 
@@ -46,6 +42,11 @@ const apiPath =
   (__DEVELOPMENT__
     ? `http://${host}:${port}/api`
     : 'http://localhost:8080/Plone');
+
+const serverConfig =
+  typeof __SERVER__ !== 'undefined' && __SERVER__
+    ? require('./server').default
+    : {};
 
 let config = {
   settings: {
@@ -84,21 +85,29 @@ let config = {
     supportedLanguages: ['en'],
     defaultLanguage: 'en',
     navDepth: 1,
-    expressMiddleware: [
-      filesMiddleware(),
-      imagesMiddleware(),
-      robotstxtMiddleware(),
-      sitemapMiddleware(),
-    ],
+    expressMiddleware: serverConfig.expressMiddleware, // BBB
     defaultBlockType: 'text',
     verticalFormTabs: false,
     persistentReducers: ['blocksClipboard'],
+    initialReducersBlacklist: [], // reducers in this list won't be hydrated in windows.__data
     sentryOptions: {
       ...sentryOptions,
     },
     contentIcons: contentIcons,
+    loadables,
+    lazyBundles: {
+      cms: [
+        'prettierStandalone',
+        'prettierParserHtml',
+        'prismCore',
+        'toastify',
+        'reactSelect',
+        // 'diffLib',
+      ],
+    },
     appExtras: [],
     maxResponseSize: 2000000000, // This is superagent default (200 mb)
+    serverConfig,
   },
   widgets: {
     ...widgetMapping,

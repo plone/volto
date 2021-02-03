@@ -70,7 +70,7 @@ const messages = defineMessages({
  * @class ContactForm
  * @extends Component
  */
-class ContactForm extends Component {
+export class ContactFormComponent extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -202,7 +202,7 @@ class ContactForm extends Component {
                 },
                 from: {
                   title: this.props.intl.formatMessage(messages.from),
-                  type: 'string',
+                  type: 'email',
                 },
                 subject: {
                   title: this.props.intl.formatMessage(messages.subject),
@@ -255,4 +255,4 @@ export default compose(
     }),
     { emailNotification },
   ),
-)(ContactForm);
+)(ContactFormComponent);

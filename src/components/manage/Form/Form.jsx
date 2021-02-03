@@ -87,7 +87,10 @@ class Form extends Component {
     description: PropTypes.string,
     visual: PropTypes.bool,
     blocks: PropTypes.arrayOf(PropTypes.object),
+    onChangeFormData: PropTypes.func,
     requestError: PropTypes.string,
+    allowedBlocks: PropTypes.arrayOf(PropTypes.string),
+    showRestricted: PropTypes.bool,
   };
 
   /**
@@ -113,6 +116,7 @@ class Form extends Component {
     pathname: '',
     schema: {},
     requestError: null,
+    allowedBlocks: null,
   };
 
   /**
@@ -199,7 +203,7 @@ class Form extends Component {
    * also the first Tab to have any errors will be selected
    * @param {Object} prevProps
    */
-  componentDidUpdate(prevProps) {
+  async componentDidUpdate(prevProps, prevState) {
     let { requestError } = this.props;
     let errors = {};
     let activeIndex = 0;
@@ -217,6 +221,15 @@ class Form extends Component {
         errors,
         activeIndex,
       });
+    }
+
+    if (this.props.onChangeFormData) {
+      if (
+        JSON.stringify(prevState?.formData) !==
+        JSON.stringify(this.state.formData)
+      ) {
+        this.props.onChangeFormData(this.state.formData);
+      }
     }
   }
 
@@ -920,6 +933,8 @@ class Form extends Component {
                                 block,
                               )}
                               manage={this.props.isAdminForm}
+                              allowedBlocks={this.props.allowedBlocks}
+                              showRestricted={this.props.showRestricted}
                             />
                           </div>
                         </div>
@@ -1040,7 +1055,9 @@ class Form extends Component {
             {schema && schema.fieldsets.length === 1 && (
               <Segment>
                 {this.props.title && (
-                  <Segment className="primary">{this.props.title}</Segment>
+                  <Segment className="primary">
+                    <h1 style={{ fontSize: '16px' }}> {this.props.title}</h1>
+                  </Segment>
                 )}
                 {this.props.description && (
                   <Segment secondary>{this.props.description}</Segment>
