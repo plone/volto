@@ -4,8 +4,7 @@
  */
 
 import { last, memoize } from 'lodash';
-import { apiPath, internalApiPath } from '~/config/settings';
-import { nonContentRoutes } from '~/config/NonContentRoutes.jsx';
+import { settings } from '~/config';
 
 /**
  * Get base url.
@@ -14,9 +13,9 @@ import { nonContentRoutes } from '~/config/NonContentRoutes.jsx';
  * @return {string} Base url of content object.
  */
 export const getBaseUrl = memoize((url) => {
-  // We allow nonContentRoutes to have strings (that are supposed to match
+  // We allow settings.nonContentRoutes to have strings (that are supposed to match
   // ending strings of pathnames, so we are converting them to RegEx to match also
-  const normalized_nonContentRoutes = nonContentRoutes.map((item) => {
+  const normalized_nonContentRoutes = settings.nonContentRoutes.map((item) => {
     if (item.test) {
       return item;
     } else {
@@ -89,7 +88,9 @@ export function getView(url) {
  * @returns {string} Flattened URL to the app server
  */
 export function flattenToAppURL(url) {
-  return url.replace(internalApiPath, '').replace(apiPath, '');
+  return url
+    .replace(settings.internalApiPath, '')
+    .replace(settings.apiPath, '');
 }
 
 /**
@@ -104,7 +105,7 @@ export const isCmsUi = memoize((currentPathname) => {
   // not working properly for paths like /editors or similar
   // because the regexp test does not take that into account
   // https://github.com/plone/volto/issues/870
-  return nonContentRoutes.reduce(
+  return settings.nonContentRoutes.reduce(
     (acc, route) => acc || new RegExp(route).test(`/${fullPath}`),
     false,
   );
@@ -120,11 +121,11 @@ export const isCmsUi = memoize((currentPathname) => {
  * @returns {string} Same HTML with Flattened URLs to the app server
  */
 export function flattenHTMLToAppURL(html) {
-  return internalApiPath
+  return settings.internalApiPath
     ? html
-        .replace(new RegExp(internalApiPath, 'g'), '')
-        .replace(new RegExp(apiPath, 'g'), '')
-    : html.replace(new RegExp(apiPath, 'g'), '');
+        .replace(new RegExp(settings.internalApiPath, 'g'), '')
+        .replace(new RegExp(settings.apiPath, 'g'), '')
+    : html.replace(new RegExp(settings.apiPath, 'g'), '');
 }
 
 /**
@@ -134,7 +135,9 @@ export function flattenHTMLToAppURL(html) {
  * @returns {string} New URL with app
  */
 export function addAppURL(url) {
-  return url.indexOf(apiPath) === 0 ? url : `${apiPath}${url}`;
+  return url.indexOf(settings.apiPath) === 0
+    ? url
+    : `${settings.apiPath}${url}`;
 }
 
 /**
@@ -145,8 +148,8 @@ export function addAppURL(url) {
  */
 export function isInternalURL(url) {
   return (
-    url.indexOf(internalApiPath) !== -1 ||
-    url.indexOf(apiPath) !== -1 ||
+    url.indexOf(settings.internalApiPath) !== -1 ||
+    url.indexOf(settings.apiPath) !== -1 ||
     url.charAt(0) === '/' ||
     url.charAt(0) === '.' ||
     url.startsWith('#')

@@ -13,11 +13,9 @@ import {
   UPDATECOLUMNS_CONTENT,
 } from '@plone/volto/constants/ActionTypes';
 import { nestContent } from '@plone/volto/helpers';
-import {
-  defaultPageSize,
-  isMultilingual,
-  bbb_getContentFetchesFullobjects,
-} from '~/config/settings';
+import Registry from '@plone/volto/registry';
+
+const { settings } = Registry;
 
 /**
  * Create content function.
@@ -134,16 +132,16 @@ export function getContent(
 ) {
   const query = Object.assign(
     {},
-    fullobjects || bbb_getContentFetchesFullobjects
+    fullobjects || settings.bbb_getContentFetchesFullobjects
       ? { fullobjects: true }
       : {},
     page
       ? {
-          b_start: defaultPageSize * (page - 1),
-          b_size: defaultPageSize,
+          b_start: settings.defaultPageSize * (page - 1),
+          b_size: settings.defaultPageSize,
         }
       : {},
-    isMultilingual ? { expand: 'translations' } : {},
+    settings.isMultilingual ? { expand: 'translations' } : {},
   );
 
   let qs = Object.keys(query)

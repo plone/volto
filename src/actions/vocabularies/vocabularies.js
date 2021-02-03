@@ -3,7 +3,7 @@
  * @module actions/vocabularies/vocabularies
  */
 
-import { apiPath } from '~/config/settings';
+import { settings } from '~/config';
 import {
   GET_VOCABULARY,
   GET_VOCABULARY_TOKEN_TITLE,
@@ -20,7 +20,8 @@ import {
 export function getVocabulary(vocabNameOrURL, query = null, start = 0) {
   // In case we have a URL, we have to get the vocabulary name
   const vocabulary =
-    vocabNameOrURL && vocabNameOrURL.replace(`${apiPath}/@vocabularies/`, '');
+    vocabNameOrURL &&
+    vocabNameOrURL.replace(`${settings.apiPath}/@vocabularies/`, '');
   let queryString = `b_start=${start}`;
   if (query) {
     queryString = `${queryString}&title=${query}`;
@@ -46,7 +47,10 @@ export function getVocabulary(vocabNameOrURL, query = null, start = 0) {
  */
 export function getVocabularyTokenTitle(vocabNameOrURL, token = null) {
   // In case we have a URL, we have to get the vocabulary name
-  const vocabulary = vocabNameOrURL.replace(`${apiPath}/@vocabularies/`, '');
+  const vocabulary = vocabNameOrURL.replace(
+    `${settings.apiPath}/@vocabularies/`,
+    '',
+  );
 
   return {
     type: GET_VOCABULARY_TOKEN_TITLE,

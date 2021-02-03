@@ -9,7 +9,7 @@ import {
   TRANSITION_WORKFLOW,
 } from '@plone/volto/constants/ActionTypes';
 
-import { apiPath } from '~/config/settings';
+import { settings } from '~/config';
 
 /**
  * Get workflow function.
@@ -41,12 +41,12 @@ export function transitionWorkflow(urls, include_children = false) {
       typeof urls === 'string'
         ? {
             op: 'post',
-            path: urls.replace(apiPath, ''),
+            path: urls.replace(settings.apiPath, ''),
             data: { include_children },
           }
         : urls.map((url) => ({
             op: 'post',
-            path: url.replace(apiPath, ''),
+            path: url.replace(settings.apiPath, ''),
             data: { include_children },
           })),
   };

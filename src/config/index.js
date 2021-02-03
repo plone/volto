@@ -27,28 +27,28 @@ import {
   blocksConfig,
   initialBlocks,
 } from './Blocks';
+import { loadables } from './Loadables';
 
 import { sentryOptions } from './Sentry';
 import { contentIcons } from './ContentIcons';
 
-import imagesMiddleware from '@plone/volto/express-middleware/images';
-import filesMiddleware from '@plone/volto/express-middleware/files';
-import robotstxtMiddleware from '@plone/volto/express-middleware/robotstxt';
-import sitemapMiddleware from '@plone/volto/express-middleware/sitemap';
-
 import applyAddonConfiguration from 'load-volto-addons';
 
-import {
-  apiPath,
-  internalApiPath,
-  host,
-  port,
-  websockets,
-  actions_raising_api_errors,
-  maxResponseSize,
-  isMultilingual,
-  defaultPageSize,
-} from './settings';
+import Registry from '@plone/volto/registry';
+
+const host = process.env.HOST || 'localhost';
+const port = process.env.PORT || '3000';
+
+const apiPath =
+  process.env.RAZZLE_API_PATH ||
+  (__DEVELOPMENT__
+    ? `http://${host}:${port}/api`
+    : 'http://localhost:8080/Plone');
+
+const serverConfig =
+  typeof __SERVER__ !== 'undefined' && __SERVER__
+    ? require('./server').default
+    : {};
 
 let config = {
   settings: {
@@ -66,9 +66,9 @@ let config = {
     proxyRewriteTarget: process.env.RAZZLE_PROXY_REWRITE_TARGET || undefined,
     // apiPath: process.env.RAZZLE_API_PATH || 'http://localhost:8000', // for Volto reference
     // apiPath: process.env.RAZZLE_API_PATH || 'http://localhost:8081/db/web', // for guillotina
-    actions_raising_api_errors,
-    internalApiPath,
-    websockets,
+    actions_raising_api_errors: ['GET_CONTENT', 'UPDATE_CONTENT'],
+    internalApiPath: process.env.RAZZLE_INTERNAL_API_PATH || undefined,
+    websockets: process.env.RAZZLE_WEBSOCKETS || false,
     nonContentRoutes,
     extendedBlockRenderMap,
     blockStyleFn,
@@ -82,26 +82,24 @@ let config = {
     listingPreviewImageField: 'image',
     customStyleMap: null,
     notSupportedBrowsers: ['ie'],
-    defaultPageSize,
-    isMultilingual,
+    defaultPageSize: 25,
+    isMultilingual: false,
     supportedLanguages: ['en'],
     defaultLanguage: 'en',
     navDepth: 1,
-    expressMiddleware: [
-      filesMiddleware(),
-      imagesMiddleware(),
-      robotstxtMiddleware(),
-      sitemapMiddleware(),
-    ],
+    expressMiddleware: serverConfig.expressMiddleware, // BBB
     defaultBlockType: 'text',
     verticalFormTabs: false,
     persistentReducers: ['blocksClipboard'],
+    initialReducersBlacklist: [], // reducers in this list won't be hydrated in windows.__data
     sentryOptions: {
       ...sentryOptions,
     },
     contentIcons: contentIcons,
+    loadables,
     appExtras: [],
-    maxResponseSize,
+    maxResponseSize: 2000000000, // This is superagent default (200 mb)
+    serverConfig,
   },
   widgets: {
     ...widgetMapping,
@@ -122,6 +120,7 @@ let config = {
 
   addonRoutes: [],
   addonReducers: {},
+  slots: {},
 };
 
 config = applyAddonConfiguration(config);
@@ -133,3 +132,6 @@ export const blocks = config.blocks;
 export const addonRoutes = [...config.addonRoutes];
 export const addonReducers = { ...config.addonReducers };
 export const appExtras = config.appExtras;
+export const slots = { ...config.slots };
+
+Registry.settings = settings;

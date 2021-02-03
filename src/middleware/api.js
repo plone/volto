@@ -6,11 +6,7 @@
 import cookie from 'react-cookie';
 import jwtDecode from 'jwt-decode';
 
-import {
-  apiPath,
-  websockets,
-  actions_raising_api_errors,
-} from '~/config/settings';
+import { settings } from '~/config';
 
 import {
   LOGIN,
@@ -105,14 +101,16 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
             type: RESET_APIERROR,
           });
         }
-        if (type === LOGIN && websockets) {
+        if (type === LOGIN && settings.websockets) {
           cookie.save('auth_token', result.token, {
             path: '/',
             expires: new Date(jwtDecode(result.token).exp * 1000),
           });
           api.get('/@wstoken').then((res) => {
             socket = new WebSocket(
-              `${apiPath.replace('http', 'ws')}/@ws?ws_token=${res.token}`,
+              `${settings.apiPath.replace('http', 'ws')}/@ws?ws_token=${
+                res.token
+              }`,
             );
             socket.onmessage = (message) => {
               const packet = JSON.parse(message.data);
@@ -166,7 +164,7 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
           });
 
           // The rest
-        } else if (actions_raising_api_errors.includes(action.type)) {
+        } else if (settings.actions_raising_api_errors.includes(action.type)) {
           if (error.response.statusCode === 401) {
             next({
               ...rest,

@@ -8,7 +8,7 @@ import { map } from 'lodash';
 import cookie from 'react-cookie';
 import zlib from 'zlib';
 
-import { apiPath } from '~/config/settings';
+import { settings } from '~/config';
 
 /**
  * Generate sitemap
@@ -20,7 +20,7 @@ export const generateSitemap = (req) =>
   new Promise((resolve) => {
     const url = `${req.protocol}://${req.get('Host')}`;
     const request = superagent.get(
-      `${apiPath}/@search?metadata_fields=modified&b_size=100000000`,
+      `${settings.apiPath}/@search?metadata_fields=modified&b_size=100000000`,
     );
     request.set('Accept', 'application/json');
     const authToken = cookie.load('auth_token');
@@ -35,7 +35,7 @@ export const generateSitemap = (req) =>
           body.items,
           (item) =>
             `  <url>\n    <loc>${item['@id'].replace(
-              apiPath,
+              settings.apiPath,
               url,
             )}</loc>\n    <lastmod>${item.modified}</lastmod>\n  </url>`,
         );
