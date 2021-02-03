@@ -10,11 +10,12 @@ import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import Editor from 'draft-js-plugins-editor';
 import { convertFromRaw, convertToRaw, EditorState, RichUtils } from 'draft-js';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
+
 import isSoftNewlineEvent from 'draft-js/lib/isSoftNewlineEvent';
 import { defineMessages, injectIntl } from 'react-intl';
 import { includes, isEqual } from 'lodash';
 import { filterEditorState } from 'draftjs-filters';
-import { settings, blocks } from '~/config';
+import { blocks, settings } from '~/config';
 
 import { Icon, BlockChooser } from '@plone/volto/components';
 import addSVG from '@plone/volto/icons/circle-plus.svg';
@@ -52,6 +53,8 @@ class Edit extends Component {
     onSelectBlock: PropTypes.func.isRequired,
     allowedBlocks: PropTypes.arrayOf(PropTypes.string),
     showRestricted: PropTypes.bool,
+    formTitle: PropTypes.string,
+    formDescription: PropTypes.string,
   };
 
   /**
@@ -126,6 +129,16 @@ class Edit extends Component {
   }
 
   /**
+   * @param {*} nextProps
+   * @param {*} nextState
+   * @returns {boolean}
+   * @memberof Edit
+   */
+  shouldComponentUpdate(nextProps) {
+    return this.props.selected || !isEqual(this.props.data, nextProps.data);
+  }
+
+  /**
    * Component will unmount
    * @method componentWillUnmount
    * @returns {undefined}
@@ -176,8 +189,10 @@ class Edit extends Component {
     this.setState({ editorState });
   }
 
-  toggleAddNewBlock = () =>
+  toggleAddNewBlock = (e) => {
+    e.preventDefault();
     this.setState((state) => ({ addNewBlockOpened: !state.addNewBlockOpened }));
+  };
 
   handleClickOutside = (e) => {
     if (
@@ -202,6 +217,7 @@ class Edit extends Component {
 
     const placeholder =
       this.props.data.placeholder ||
+      this.props.formTitle ||
       this.props.intl.formatMessage(messages.text);
 
     const disableNewBlocks =

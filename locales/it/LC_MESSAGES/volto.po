@@ -244,7 +244,7 @@ msgstr "Cella"
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Center"
 msgstr "Centrato"
 
@@ -770,7 +770,7 @@ msgid "From"
 msgstr "Da"
 
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Full"
 msgstr "A tutta larghezza"
 
@@ -993,7 +993,7 @@ msgstr "Immagine di testata"
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Left"
 msgstr "Sinistra"
 
@@ -1132,6 +1132,10 @@ msgstr "Nome"
 #: error
 msgid "Navigate back"
 msgstr "Torna indietro"
+
+#: components/theme/Navigation/ContextNavigation
+msgid "Navigation"
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
@@ -1479,7 +1483,7 @@ msgstr "Testo formattato"
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Right"
 msgstr "Destra"
 
@@ -1938,6 +1942,7 @@ msgstr "Disinstalla"
 
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
+#: components/theme/View/RenderBlocks
 msgid "Unknown Block"
 msgstr "Blocco sconosciuto"
 
@@ -2155,6 +2160,7 @@ msgid "common"
 msgstr "Comuni"
 
 #: components/manage/Blocks/Block/Edit
+#: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"
 msgstr "Elimina"
 

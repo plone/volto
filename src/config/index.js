@@ -27,6 +27,7 @@ import {
   blocksConfig,
   initialBlocks,
 } from './Blocks';
+import { loadables } from './Loadables';
 
 import { sentryOptions } from './Sentry';
 import { contentIcons } from './ContentIcons';
@@ -89,11 +90,13 @@ let config = {
     defaultBlockType: 'text',
     verticalFormTabs: false,
     persistentReducers: ['blocksClipboard'],
+    initialReducersBlacklist: [], // reducers in this list won't be hydrated in windows.__data
     sentryOptions: {
       ...sentryOptions,
     },
     contentIcons,
     imageScales,
+    loadables,
     appExtras: [],
     maxResponseSize: 2000000000, // This is superagent default (200 mb)
     serverConfig,

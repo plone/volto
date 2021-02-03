@@ -252,7 +252,7 @@ msgstr "Célula"
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Center"
 msgstr "Centro"
 
@@ -778,7 +778,7 @@ msgid "From"
 msgstr "De"
 
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Full"
 msgstr "Cheio"
 
@@ -1001,7 +1001,7 @@ msgstr ""
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Left"
 msgstr "Esquerda"
 
@@ -1139,6 +1139,10 @@ msgstr "Nome"
 
 #: error
 msgid "Navigate back"
+msgstr ""
+
+#: components/theme/Navigation/ContextNavigation
+msgid "Navigation"
 msgstr ""
 
 #: components/manage/Preferences/ChangePassword
@@ -1487,7 +1491,7 @@ msgstr "Richtext"
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Right"
 msgstr "Direita"
 
@@ -1946,6 +1950,7 @@ msgstr ""
 
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
+#: components/theme/View/RenderBlocks
 msgid "Unknown Block"
 msgstr "Bloco Desconhecido"
 
@@ -2163,6 +2168,7 @@ msgid "common"
 msgstr "comum"
 
 #: components/manage/Blocks/Block/Edit
+#: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"
 msgstr "eliminar"
 

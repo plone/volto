@@ -1,14 +1,56 @@
 # Change Log
 
-## 10.10.1 (unreleased)
+## 11.0.1 (unreleased)
 
 ### Breaking
 
 ### Feature
 
+- Added onChangeFormData prop to Form component @giuliaghisini
+- Internationalization story for add-ons @sneridagh
+
 ### Bugfix
 
+- German translation: aria-label of '/contents' button : "Inhalte" not "Inhaltsverzeichnis" @ksuess
+
 ### Internal
+
+- Update docs: configuration of routes and addonRoutes @ksuess
+
+## 11.0.0 (2021-01-29)
+
+### Breaking
+
+- [circular deps] Move `AlignBlock` component to its rightful place @sneridagh
+- Removing id from FormFieldWrapper @iFlameing
+- Change default Listing Template to include only Text and renamed the old default Template to Summary Template @jackahl
+
+### Feature
+
+- Add `ContextNavigation` component, it can fetch the `@contextnavigation` plone.restapi
+  endpoint and display a navigation portlet, similar to Plone's classic
+  navigation portlet.
+- added linkDetectionPlugin plugin to draftjs to automatically create links for urls and mails when editing text. @giuliaghisini
+- An initial Storybook setup. Start it with `yarn storybook`. Feel free to contribute more stories! @sneridagh
+- Add storybook Wrapper utility component. Add ContactForm initial story @tiberiuichim
+- make and load configurable reducers in the client `window.__data`, decreasing the html size @nileshgulia1 @tiberiuichim
+- Custom group component for selectStyling @nileshgulia1
+- Add new components: RenderBlocks, BlocksForm, DragDropList and EditBlockWrapper @tiberiuichim
+- Add `noValueOption` prop to `SelectWidget` so you can opt-out from the "no-value" option so the choices are a closed list @sneridagh
+- Provide `injectLazyLibs()` wrapper and `settings.loadables` config to deal with loadable libraries @tiberiuichim
+
+### Bugfix
+
+- Better handling of a condition in the new breadcrumbs @sneridagh
+
+### Internal
+
+- Upgrade react-select to 4.0.2 @sneridagh
+- Upgrade react ecosystem to 13.14.0 @sneridagh
+- Add shouldComponentUpdate to blocks @nileshgulia1
+- Update old entry in upgrade guide @tiberiuichim
+- Add `@testing-library/cypress` as a dep @sneridagh
+- Fix an internal link in documentation @tiberiuichim
 
 ## 10.10.0 (2021-01-22)
 
@@ -107,6 +149,7 @@
 ### Internal
 
 - Translations german: Unauthorized, Login/Register @ksuess
+- Removing id from FormFieldWrapper @iFlameing
 
 ## 10.6.1 (2020-12-21)
 

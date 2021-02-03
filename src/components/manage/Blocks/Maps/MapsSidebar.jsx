@@ -4,7 +4,7 @@ import { Form } from 'semantic-ui-react';
 import { Grid, Segment } from 'semantic-ui-react';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import { Icon, TextWidget } from '@plone/volto/components';
-import { AlignBlock } from '@plone/volto/helpers';
+import AlignBlock from '@plone/volto/components/manage/Sidebar/AlignBlock';
 
 import globeSVG from '@plone/volto/icons/globe.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';

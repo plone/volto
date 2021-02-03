@@ -93,7 +93,6 @@ This list is still incomplete, contributions are welcomed!
         (for example content with lots of text) and you need to batch requests
         anyway, if you want to be sure to display all the children.
 
-
 ### persistentReducers
 
 !!! block ""
@@ -111,6 +110,26 @@ This list is still incomplete, contributions are welcomed!
 
     You can edit this limit in the `settings` object setting a new value in bytes
     (for example, to set 500 mb you need to write 5000000000).
+
+### initialReducersBlacklist
+
+!!! block ""
+
+    The initial state passed from server to browser needs to be minimal in order to optimize the resultant html generated. This state gets stored in `window.__data` and received in client.
+
+    You can blacklist a few reducers that you don't want to be part of `window.__data`,thus decreasing the initial html size for performance gains.
+
+    ```js
+    import * as config from '@plone/volto/config';
+
+    export const settings = {
+      ...config.settings,
+      initialReducersBlacklist: [
+        ...config.settings.initialReducersBlacklist,
+        'yourReducer',
+      ]
+    };
+    ```
 
 ## Server-specific serverConfig
 
@@ -131,4 +150,12 @@ in the `config.settings.serverConfig` object.
     A path relative to the project root that points to an optional CSS file. If
     this file exists it is loaded and its content is embedded inline into the
     generated HTML. By default this path is `public/critical.css`. See the
-    [Performance](../deploying/performance) section for more details.
+    [Performance](/deploying/performance) section for more details.
+
+### loadables
+
+!!! block ""
+
+    A mapping of loadable libraries that can be injected into components using
+    the `injectLazyLibs` HOC wrapper. See the [Lazy
+    loading](../recipes/lazyload) page for more details.

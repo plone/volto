@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ConditionalLink } from '@plone/volto/components';
 import { flattenToAppURL } from '@plone/volto/helpers';
-import { settings } from '~/config';
 
 import Image from '@plone/volto/components/theme/Image/Image';
 import DefaultImageSVG from '@plone/volto/components/manage/Blocks/Listing/default-image.svg';
@@ -31,17 +30,8 @@ const DefaultTemplate = ({ items, linkMore, isEditMode }) => {
               to={flattenToAppURL(item['@id'])}
               condition={!isEditMode}
             >
-              {!item[settings.listingPreviewImageField] && (
-                <img src={DefaultImageSVG} alt="" />
-              )}
-              {item[settings.listingPreviewImageField] && (
-                <Image
-                  image={item[settings.listingPreviewImageField]}
-                  alt={item.title}
-                />
-              )}
               <div className="listing-body">
-                <h3>{item.title ? item.title : item.id}</h3>
+                <h4>{item.title ? item.title : item.id}</h4>
                 <p>{item.description}</p>
               </div>
             </ConditionalLink>
@@ -53,11 +43,9 @@ const DefaultTemplate = ({ items, linkMore, isEditMode }) => {
     </>
   );
 };
-
 DefaultTemplate.propTypes = {
   items: PropTypes.arrayOf(PropTypes.any).isRequired,
   linkMore: PropTypes.any,
   isEditMode: PropTypes.bool,
 };
-
 export default DefaultTemplate;
