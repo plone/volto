@@ -87,6 +87,7 @@ class Form extends Component {
     description: PropTypes.string,
     visual: PropTypes.bool,
     blocks: PropTypes.arrayOf(PropTypes.object),
+    onChangeFormData: PropTypes.func,
     requestError: PropTypes.string,
     allowedBlocks: PropTypes.arrayOf(PropTypes.string),
     showRestricted: PropTypes.bool,
@@ -202,7 +203,7 @@ class Form extends Component {
    * also the first Tab to have any errors will be selected
    * @param {Object} prevProps
    */
-  componentDidUpdate(prevProps) {
+  async componentDidUpdate(prevProps, prevState) {
     let { requestError } = this.props;
     let errors = {};
     let activeIndex = 0;
@@ -220,6 +221,15 @@ class Form extends Component {
         errors,
         activeIndex,
       });
+    }
+
+    if (this.props.onChangeFormData) {
+      if (
+        JSON.stringify(prevState?.formData) !==
+        JSON.stringify(this.state.formData)
+      ) {
+        this.props.onChangeFormData(this.state.formData);
+      }
     }
   }
 
