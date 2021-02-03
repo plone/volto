@@ -28,9 +28,7 @@ import navTreeSVG from '@plone/volto/icons/nav.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import uploadSVG from '@plone/volto/icons/upload.svg';
 
-const Dropzone = loadable(() => import('react-dropzone'), {
-  resolveComponent: (components) => components.Dropzone,
-});
+const Dropzone = loadable(() => import('react-dropzone'));
 
 const messages = defineMessages({
   ImageBlockInputPlaceholder: {
@@ -319,6 +317,7 @@ class Edit extends Component {
                             icon
                             onClick={(e) => {
                               e.stopPropagation();
+                              e.preventDefault();
                               this.props.openObjectBrowser();
                             }}
                           >

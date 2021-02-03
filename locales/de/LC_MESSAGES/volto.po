@@ -386,7 +386,7 @@ msgstr "Inhaltstyp gelöscht"
 #: components/manage/Contents/Contents
 #: components/manage/Toolbar/Toolbar
 msgid "Contents"
-msgstr "Inhaltsverzeichnis"
+msgstr "Inhalte"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -1147,6 +1147,10 @@ msgstr "Name"
 #: error
 msgid "Navigate back"
 msgstr "Zurück navigieren"
+
+#: components/theme/Navigation/ContextNavigation
+msgid "Navigation"
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
@@ -1953,6 +1957,7 @@ msgstr "Deinstallieren"
 
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
+#: components/theme/View/RenderBlocks
 msgid "Unknown Block"
 msgstr "Unbekannter Block"
 
@@ -2170,6 +2175,7 @@ msgid "common"
 msgstr "Allgemein"
 
 #: components/manage/Blocks/Block/Edit
+#: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"
 msgstr "Löschen"
 

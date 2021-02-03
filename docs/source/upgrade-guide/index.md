@@ -317,7 +317,7 @@ Add this key to the `jest.moduleNameMapper`:
   }
 ```
 
-because new Jest is a bit more picky when importing externals.
+because new Jest is a bit more picky when importing externals. Attention, this mapping needs to be the first, it needs to come before the ``@plone/volto/(.*)$`` key.
 
 ### Prettier
 
@@ -394,9 +394,31 @@ review and adapt them.
 Add these to the `config.js` of your project:
 
 ```js
-export const addonRoutes = [];
+import {
+  addonRoutes as defaultAddonRoutes,
+  addonReducers as defaultAddonReducers,
+} from '@plone/volto/config';
 
-export const addonReducers = {};
+export const addonRoutes = [...defaultAddonRoutes];
+export const addonReducers = { ...defaultAddonReducers };
+```
+
+Update the `routes.js` of your project:
+
+```js
+import { addonRoutes } from '~/config';
+
+const routes = [
+  {
+    path: '/',
+    component: App, // Change this if you want a different component
+    routes: [
+      // Add your routes here
+      ...(addonRoutes || []),
+      ...defaultRoutes,
+    ],
+  },
+];
 ```
 
 ## Upgrading to Volto 5.x.x

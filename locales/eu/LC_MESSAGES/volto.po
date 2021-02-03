@@ -1140,6 +1140,10 @@ msgstr "Izena"
 msgid "Navigate back"
 msgstr "Atzera joan"
 
+#: components/theme/Navigation/ContextNavigation
+msgid "Navigation"
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "New password"
@@ -1945,6 +1949,7 @@ msgstr "Desinstalatu"
 
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
+#: components/theme/View/RenderBlocks
 msgid "Unknown Block"
 msgstr "Bloke ezezaguna"
 
@@ -2162,6 +2167,7 @@ msgid "common"
 msgstr "Ohikoa"
 
 #: components/manage/Blocks/Block/Edit
+#: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"
 msgstr "Ezabatu"
 

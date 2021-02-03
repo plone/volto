@@ -1133,6 +1133,10 @@ msgstr "Nome"
 msgid "Navigate back"
 msgstr "Torna indietro"
 
+#: components/theme/Navigation/ContextNavigation
+msgid "Navigation"
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "New password"
@@ -1938,6 +1942,7 @@ msgstr "Disinstalla"
 
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
+#: components/theme/View/RenderBlocks
 msgid "Unknown Block"
 msgstr "Blocco sconosciuto"
 
@@ -2155,6 +2160,7 @@ msgid "common"
 msgstr "Comuni"
 
 #: components/manage/Blocks/Block/Edit
+#: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"
 msgstr "Elimina"
 

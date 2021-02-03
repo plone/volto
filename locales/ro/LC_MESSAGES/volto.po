@@ -1133,6 +1133,10 @@ msgstr "Nume"
 msgid "Navigate back"
 msgstr "Navigați înapoi"
 
+#: components/theme/Navigation/ContextNavigation
+msgid "Navigation"
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "New password"
@@ -1938,6 +1942,7 @@ msgstr "Dezinstalare"
 
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
+#: components/theme/View/RenderBlocks
 msgid "Unknown Block"
 msgstr "Bloc necunoscut"
 
@@ -2155,6 +2160,7 @@ msgid "common"
 msgstr "Comun"
 
 #: components/manage/Blocks/Block/Edit
+#: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"
 msgstr "Ștergeți"
 
