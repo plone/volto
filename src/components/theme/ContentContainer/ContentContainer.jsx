@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Grid } from 'semantic-ui-react';
 import { SlotRenderer } from '@plone/volto/components';
 import { matchPath, useLocation } from 'react-router-dom';
+import { isEmpty } from 'lodash';
 import { slots } from '~/config';
 
 const ContentContainer = ({ children, content }) => {
@@ -14,8 +15,8 @@ const ContentContainer = ({ children, content }) => {
       matchPath(pathname, { path: slot.path, exact: slot.exact }),
     );
   };
-  const hasLeftSlot = hasSlot('asideLeftSlot');
-  const hasRightSlot = hasSlot('asideRightSlot');
+  const hasLeftSlot = !isEmpty(hasSlot('asideLeftSlot'));
+  const hasRightSlot = !isEmpty(hasSlot('asideRightSlot'));
 
   const contentWidth = () => {
     if (hasLeftSlot && hasRightSlot) {
