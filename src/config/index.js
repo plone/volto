@@ -133,4 +133,4 @@ export const addonReducers = { ...config.addonReducers };
 export const appExtras = config.appExtras;
 export const slots = { ...config.slots };
 
-Registry.set('slots', slots);
+Registry.slots = slots;

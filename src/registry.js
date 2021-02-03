@@ -15,6 +15,14 @@ class Registry {
   get(registry) {
     return this._data[registry];
   }
+
+  get slots() {
+    return this._data.slots;
+  }
+
+  set slots(slots) {
+    this._data.slots = slots;
+  }
 }
 
 const instance = new Registry();
