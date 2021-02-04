@@ -35,6 +35,7 @@ import {
   listActions,
 } from '@plone/volto/actions';
 import { getBaseUrl, hasBlocksData } from '@plone/volto/helpers';
+import { preloadLazyLibs } from '@plone/volto/helpers/Loadable';
 
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -452,4 +453,5 @@ export default compose(
       getSchema,
     },
   ),
+  preloadLazyLibs('cms'),
 )(Edit);

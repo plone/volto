@@ -136,8 +136,12 @@ class Edit extends Component {
    * @returns {boolean}
    * @memberof Edit
    */
-  shouldComponentUpdate(nextProps) {
-    return this.props.selected || !isEqual(this.props.data, nextProps.data);
+  shouldComponentUpdate(nextProps, nextState) {
+    return (
+      this.props.selected ||
+      !isEqual(this.props.data, nextProps.data) ||
+      !isEqual(this.state.editorState, nextState.editorState)
+    );
   }
 
   /**

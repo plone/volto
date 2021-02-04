@@ -26,3 +26,13 @@ export const injectLazyLibs = jest
       }),
     );
   });
+
+export const preloadLazyLibs = jest
+  .fn()
+  .mockImplementation(function ([libraries]) {
+    return jest.fn((WrappedComponent) =>
+      jest.fn((props) => {
+        return <WrappedComponent {...props} />;
+      }),
+    );
+  });

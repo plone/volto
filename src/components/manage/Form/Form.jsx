@@ -92,8 +92,8 @@ class Form extends Component {
     isFormSelected: PropTypes.bool,
     onSelectForm: PropTypes.func,
     editable: PropTypes.bool,
-    requestError: PropTypes.string,
     onChangeFormData: PropTypes.func,
+    requestError: PropTypes.string,
     allowedBlocks: PropTypes.arrayOf(PropTypes.string),
     showRestricted: PropTypes.bool,
   };

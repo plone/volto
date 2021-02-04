@@ -36,6 +36,7 @@ import {
   getBlocksFieldname,
   getBlocksLayoutFieldname,
 } from '@plone/volto/helpers';
+import { preloadLazyLibs } from '@plone/volto/helpers/Loadable';
 
 import { blocks } from '~/config';
 
@@ -425,4 +426,5 @@ export default compose(
     }),
     { createContent, getSchema },
   ),
+  preloadLazyLibs('cms'),
 )(Add);
