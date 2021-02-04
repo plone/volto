@@ -31,6 +31,7 @@ import { loadables } from './Loadables';
 
 import { sentryOptions } from './Sentry';
 import { contentIcons } from './ContentIcons';
+import defaultSlots from './slots';
 
 import applyAddonConfiguration from 'load-volto-addons';
 import Registry from '@plone/volto/registry';
@@ -119,7 +120,7 @@ let config = {
 
   addonRoutes: [],
   addonReducers: {},
-  slots: {},
+  slots: defaultSlots,
 };
 
 config = applyAddonConfiguration(config);

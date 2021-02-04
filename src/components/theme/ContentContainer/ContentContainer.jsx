@@ -4,6 +4,7 @@ import { SlotRenderer } from '@plone/volto/components';
 import { matchPath, useLocation } from 'react-router-dom';
 import { isEmpty } from 'lodash';
 import Registry from '@plone/volto/registry';
+import useSlots from '@plone/volto/helpers/Slots/useSlots';
 
 const ContentContainer = ({ children, content }) => {
   const pathname = useLocation().pathname;
@@ -13,12 +14,14 @@ const ContentContainer = ({ children, content }) => {
     if (!slots[name]) {
       return null;
     }
-    return slots[name].filter((slot) =>
-      matchPath(pathname, { path: slot.path, exact: slot.exact }),
-    );
+    return slots[name].staticFills.filter((slot) => {
+      return matchPath(pathname, { path: slot.path, exact: slot.exact });
+    });
   };
   const hasLeftSlot = !isEmpty(hasSlot('asideLeftSlot'));
   const hasRightSlot = !isEmpty(hasSlot('asideRightSlot'));
+
+  const contentSlots = useSlots(pathname);
 
   const contentWidth = () => {
     if (hasLeftSlot && hasRightSlot) {

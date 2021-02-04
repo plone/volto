@@ -118,3 +118,4 @@ export {
 } from '@plone/volto/actions/blocksClipboard/blocksClipboard';
 export { loadLazyLibrary } from '@plone/volto/actions/lazyLibraries/lazyLibraries';
 export { getContextNavigation } from '@plone/volto/actions/contextNavigation/contextNavigation';
+export { getSlots } from './slots/slots';
