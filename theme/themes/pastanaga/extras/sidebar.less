@@ -105,6 +105,15 @@
     }
   }
 
+  @media (max-width: 400px) {
+    width: 100vw;
+    max-width: 375px;
+
+    &.collapsed {
+      right: calc(-100vw + 20px);
+    }
+  }
+
   .ui.raised.segments {
     display: flex;
     height: 100%;
