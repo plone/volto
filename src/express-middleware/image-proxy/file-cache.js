@@ -94,6 +94,7 @@ class FileCache {
         debug(
           'Directory size reached max limit, Removing least recent used element...',
         );
+        //TODO: add max age condition
         const entries = Array.from(this.cache.entries());
         let count = entries[0];
         entries.forEach((item, ind) => {
@@ -121,7 +122,10 @@ class FileCache {
    */
   remove(key) {
     const dir = path.join(__dirname, `${key}`);
-    return fs.removeSync(dir);
+    const metadataPath = `${dir.replace(path.extname(dir), '.metadata')}`;
+    fs.removeSync(dir);
+    fs.removeSync(metadataPath);
+    return;
   }
 
   /**
