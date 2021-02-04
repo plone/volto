@@ -1,9 +1,10 @@
 import sharp from 'sharp';
 import superagent from 'superagent';
-
+import fs from 'fs-extra';
 import { getAPIResourceWithAuth } from '@plone/volto/helpers';
 import { getLogger } from '@plone/volto/express-middleware/logger';
-
+import FileCache, { defaultOpts } from './file-cache';
+import fspath from 'path';
 import { settings } from '~/config';
 
 const debug = getLogger('image-proxy');
@@ -82,9 +83,11 @@ export default class ImageProxy {
     this.thumbSize = thumbSize;
     this.fullImagePath = fullImagePath;
     this.contextUrl = contextUrl;
-
     this.metadata = {};
     this.cache = cache;
+    if (fs.existsSync(fspath.join(__dirname, defaultOpts.basePath))) {
+      new FileCache().initialize(fspath.join(__dirname, defaultOpts.basePath));
+    }
   }
 
   isThumbnail() {
