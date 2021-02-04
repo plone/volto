@@ -15,6 +15,7 @@
 
 - temporarly removed linkDetectionPlugin for draftjs (for some conflicts with AnchorPlugin) @giuliaghisini
 - German translation: aria-label of '/contents' button : "Inhalte" not "Inhaltsverzeichnis" @ksuess
+- fix view links and others styles of entities on editing Text Block. @giuliaghisini
 
 ### Internal
 
