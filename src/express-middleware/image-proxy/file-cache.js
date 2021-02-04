@@ -16,10 +16,26 @@ class FileCache {
   constructor(opts = defaultOpts) {
     this.basePath = opts.basePath;
     this.maxSize = opts.maxSize;
-    this.cache = new Map(); //for keeping count of how many times the file is read
-    this.clear();
+    this.cache = new Map(); // keeping count of how many times the file is accessed
   }
 
+  /**
+   * Initialise the cache.
+   * @param {string} dirPath: The base directory.
+   * @return {undefined}.
+   */
+  initialize(dirPath) {
+    const files = fs.readdirSync(dirPath);
+
+    files.forEach((file) => {
+      if (fs.statSync(dirPath + '/' + file).isDirectory()) {
+        //if we move each file in a directory in future.
+        initialize(dirPath + '/' + file);
+      } else {
+        this.cache.set(file, 0);
+      }
+    });
+  }
   /**
    * Generates the path to the cached files.
    * @param {string} key: The key of the cache item.
@@ -35,15 +51,18 @@ class FileCache {
   }
 
   read(key) {
-    const dir = path.join(__dirname, `${key}`);
-    const metadataPath = `${dir.replace(path.extname(dir), '.metadata')}`;
-    debug(`file read ${dir}`);
-    if (fs.existsSync(dir)) {
+    const filePath = path.join(__dirname, `${key}`);
+    const metadataPath = `${filePath.replace(
+      path.extname(filePath),
+      '.metadata',
+    )}`;
+    debug(`file read ${filePath}`);
+    if (fs.existsSync(filePath)) {
       let count = this.cache.get(key);
       this.cache.set(key, ++count);
       debug(this.cache.get(key));
       return {
-        data: fs.readFileSync(dir, { encoding: null }),
+        data: fs.readFileSync(filePath, { encoding: null }),
         metadata: fs.readFileSync(metadataPath),
       };
     }
@@ -122,9 +141,12 @@ class FileCache {
    * @return undefined
    */
   remove(key) {
-    const dir = path.join(__dirname, `${key}`);
-    const metadataPath = `${dir.replace(path.extname(dir), '.metadata')}`;
-    fs.removeSync(dir);
+    const filePath = path.join(__dirname, `${key}`);
+    const metadataPath = `${filePath.replace(
+      path.extname(filePath),
+      '.metadata',
+    )}`;
+    fs.removeSync(filePath);
     fs.removeSync(metadataPath);
     this.cache.delete(key);
     return;
