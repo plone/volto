@@ -10,6 +10,27 @@ This upgrade guide lists all breaking changes in Volto and explains the
     dependencies might do when dealing with upgrades. We keep the generator up
     to date and in sync with current Volto release. Please notice that the generator is able to tell you when it runs that it's outdated. The generator is also able to "update" your project with the latest changes and propose you if you want to merge them. Just run it on the top of your project.
 
+## Upgrading to Volto 12.x.x
+
+### Toolbar configuration
+
+A new configuration object has been added to allow customizing the toolbar.
+Update your project's `config.js`:
+
+```diff
+  import {
+    settings as defaultSettings,
+    views as defaultViews,
+    widgets as defaultWidgets,
+    blocks as defaultBlocks,
+    addonReducers as defaultAddonReducers,
+    addonRoutes as defaultAddonRoutes,
++   toolbar as defaultToolbar,
+  } from '@plone/volto/config';
+
++ export const toolbar = { ...defaultToolbar };
+```
+
 ## Upgrading to Volto 11.x.x
 
 ### AlignBlock component new placement and import path
@@ -394,9 +415,31 @@ review and adapt them.
 Add these to the `config.js` of your project:
 
 ```js
-export const addonRoutes = [];
+import {
+  addonRoutes as defaultAddonRoutes,
+  addonReducers as defaultAddonReducers,
+} from '@plone/volto/config';
 
-export const addonReducers = {};
+export const addonRoutes = [...defaultAddonRoutes];
+export const addonReducers = { ...defaultAddonReducers };
+```
+
+Update the `routes.js` of your project:
+
+```js
+import { addonRoutes } from '~/config';
+
+const routes = [
+  {
+    path: '/',
+    component: App, // Change this if you want a different component
+    routes: [
+      // Add your routes here
+      ...(addonRoutes || []),
+      ...defaultRoutes,
+    ],
+  },
+];
 ```
 
 ## Upgrading to Volto 5.x.x

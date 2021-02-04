@@ -274,6 +274,7 @@ class Edit extends Component {
             <Toolbar
               pathname={this.props.pathname}
               hideDefaultViewButtons
+              activity="edit"
               inner={
                 <>
                   <Button
