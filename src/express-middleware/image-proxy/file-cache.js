@@ -16,6 +16,7 @@ class FileCache {
   constructor(opts = defaultOpts) {
     this.basePath = opts.basePath;
     this.maxSize = opts.maxSize;
+    this.cache = new Map(); //for keeping count of how many times the file is read
   }
 
   /**
@@ -37,6 +38,9 @@ class FileCache {
     const metadataPath = `${dir.replace(path.extname(dir), '.metadata')}`;
     debug(`file read ${dir}`);
     if (fs.existsSync(dir)) {
+      let count = this.cache.get(key);
+      this.cache.set(key, ++count);
+      debug(this.cache.get(key));
       return {
         data: fs.readFileSync(dir, { encoding: null }),
         metadata: fs.readFileSync(metadataPath),
@@ -85,8 +89,17 @@ class FileCache {
         debug(`file written at ${dir}`);
         fs.outputFileSync(metadataPath, JSON.stringify(data));
         debug(`metadata file written at ${metadataPath}`);
+        this.cache.set(key, 0);
       } else {
-        debug('Directory size reached max limit');
+        debug(
+          'Directory size reached max limit, Removing least recent used element...',
+        );
+        const entries = Array.from(this.cache.entries());
+        let count = entries[0];
+        entries.forEach((item, ind) => {
+          if (item[1] < count[1]) count = item;
+        });
+        this.remove(count[0]);
       }
     } catch (e) {
       throw Error(e);
