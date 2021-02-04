@@ -16,7 +16,7 @@ export default function get() {
     _unprocessed = new Keyv({
       namespace: 'raw',
       store: new FileCache({
-        maxSize: 10,
+        maxSize: 6,
         basePath: '../public/cache',
       }),
       serialize: (value) => value,

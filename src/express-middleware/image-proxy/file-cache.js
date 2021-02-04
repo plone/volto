@@ -17,6 +17,7 @@ class FileCache {
     this.basePath = opts.basePath;
     this.maxSize = opts.maxSize;
     this.cache = new Map(); //for keeping count of how many times the file is read
+    this.clear();
   }
 
   /**
@@ -28,8 +29,8 @@ class FileCache {
     if (!key) {
       throw new Error(`Path requires a cache key.`);
     }
-    const ext = key.substr(key.indexOf('.') + 1).split('/')[0];
-    let name = key.replace(/[^a-zA-Z ]/g, '');
+    const ext = key.substr(key.indexOf('.') + 1).split('/')[0]; //append the extension
+    let name = Buffer.from(key).toString('base64');
     return `${this.basePath}/${name}.${ext}`;
   }
 
@@ -125,6 +126,7 @@ class FileCache {
     const metadataPath = `${dir.replace(path.extname(dir), '.metadata')}`;
     fs.removeSync(dir);
     fs.removeSync(metadataPath);
+    this.cache.delete(key);
     return;
   }
 
