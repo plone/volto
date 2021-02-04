@@ -1,4 +1,5 @@
-import { GET_SLOTS, UPDATE_SLOTS } from '@plone/volto/constants/ActionTypes';
+import { GET_SLOTS } from '@plone/volto/constants/ActionTypes';
+//, UPDATE_SLOTS
 
 /**
  * Get request key
