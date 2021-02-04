@@ -31,7 +31,7 @@ class FileCache {
       if (fs.statSync(dirPath + '/' + file).isDirectory()) {
         //if we move each file in a directory in future.
         initialize(dirPath + '/' + file);
-      } else {
+      } else if (!file.includes('.metadata')) {
         this.cache.set(file, 0);
       }
     });
