@@ -15,6 +15,7 @@
 
 - temporarly removed linkDetectionPlugin for draftjs (for some conflicts with AnchorPlugin) @giuliaghisini
 - German translation: aria-label of '/contents' button : "Inhalte" not "Inhaltsverzeichnis" @ksuess
+- Fix regresion on the imagesizes styling due to the removal of the id in 11 @sneridagh
 
 ### Internal
 
