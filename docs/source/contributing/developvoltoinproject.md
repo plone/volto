@@ -83,9 +83,12 @@ Add to your jsconfig.json
 Upgrade moduleNameMapper in package.json
 
 ```json
-"moduleNameMapper": {
-  "@plone/volto/babel": "<rootDir>/voltodevelopment/volto/babel",
-  "@plone/volto/(.*)$": "<rootDir>/voltodevelopment/volto/src/$1",
+{
+  "moduleNameMapper": {
+    "@plone/volto/babel": "<rootDir>/voltodevelopment/volto/babel",
+    "@plone/volto/(.*)$": "<rootDir>/voltodevelopment/volto/src/$1",
+  }
+}
 ```
 
 Run 
