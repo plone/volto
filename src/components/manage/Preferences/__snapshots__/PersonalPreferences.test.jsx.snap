@@ -143,6 +143,7 @@ exports[`PersonalPreferences renders a personal preferences component 1`] = `
             aria-label="Cancel"
             class="ui basic secondary right floated button"
             title="Cancel"
+            type="button"
           >
             <svg
               class="icon circled"

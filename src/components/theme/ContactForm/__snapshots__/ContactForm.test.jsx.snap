@@ -257,6 +257,7 @@ exports[`Contact form renders a contact form 1`] = `
               className="ui basic secondary right floated button"
               onClick={[Function]}
               title="Cancel"
+              type="button"
             >
               <svg
                 className="icon circled"
@@ -548,6 +549,7 @@ exports[`Contact form renders a contact form with error message 1`] = `
               className="ui basic secondary right floated button"
               onClick={[Function]}
               title="Cancel"
+              type="button"
             >
               <svg
                 className="icon circled"
