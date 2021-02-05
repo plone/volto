@@ -9,7 +9,7 @@
 - Add `preloadLazyLibs` and `settings.lazyBundles` to allow preloading bundles of lazy libraries @tiberiuichim @silviubogan
 - Added onChangeFormData prop to Form component @giuliaghisini
 - Internationalization story for add-ons @sneridagh
-- robots.txt from plone as default (if /public/robots.txt not exists and .env VOLTO_ROBOTSTXT variable not exists.) @giuliaghisini
+- robots.txt from plone as fallback (if /public/robots.txt not exists and .env VOLTO_ROBOTSTXT variable not exists.) @giuliaghisini
 - UniversalLink and ConditionalLink accepts also an item to link to. If item is of @type Link, a direct link to remote url is generated if user is not logged. @giuliaghisini
 
 ### Bugfix
