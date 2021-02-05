@@ -1,6 +1,7 @@
 import express from 'express';
 import getCache from './image-proxy/cache';
 import ImageProxy from './image-proxy/ImageProxy';
+import FileCache from './image-proxy/file-cache';
 
 async function imageMiddleware(req, res, next) {
   const { errorHandler } = req.app.locals;
@@ -26,7 +27,7 @@ async function imageMiddleware(req, res, next) {
 
 export default function () {
   const middleware = express.Router();
-
+  new FileCache();
   middleware.all(['**/@@images/*'], imageMiddleware);
   middleware.id = 'imageResourcesProcessor';
   return middleware;

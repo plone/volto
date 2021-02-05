@@ -17,6 +17,9 @@ class FileCache {
     this.basePath = opts.basePath;
     this.maxSize = opts.maxSize;
     this.cache = new Map(); // keeping count of how many times the file is accessed
+    if (__SERVER__ && fs.existsSync(path.join(__dirname, this.basePath))) {
+      this.initialize(path.join(__dirname, this.basePath));
+    }
   }
 
   /**
@@ -28,10 +31,11 @@ class FileCache {
     const files = fs.readdirSync(dirPath);
 
     files.forEach((file) => {
-      if (fs.statSync(dirPath + '/' + file).isDirectory()) {
-        //if we move each file in a directory in future.
-        this.initialize(dirPath + '/' + file);
-      } else if (!file.includes('.metadata')) {
+      // if (fs.statSync(dirPath + '/' + file).isDirectory()) {
+      //   //if we move each file in a directory in future.
+      //   this.initialize(dirPath + '/' + file);
+      // } else
+      if (!file.includes('.metadata')) {
         this.cache.set(file, 0);
       }
     });
