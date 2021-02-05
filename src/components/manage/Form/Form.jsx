@@ -3,7 +3,7 @@
  * @module components/manage/Form/Form
  */
 
-import { EditBlock, Field, Icon } from '@plone/volto/components';
+import { EditBlock, Field, Icon, Toast } from '@plone/volto/components';
 import {
   blockHasValue,
   difference,
@@ -42,6 +42,7 @@ import {
   Tab,
 } from 'semantic-ui-react';
 import { v4 as uuid } from 'uuid';
+import { toast } from 'react-toastify';
 import { BlocksToolbar } from '@plone/volto/components';
 import { settings } from '~/config';
 
@@ -537,10 +538,19 @@ class Form extends Component {
         errors,
         schema: this.props.schema,
       });
-      this.setState({
-        errors,
-        activeIndex,
-      });
+      this.setState(
+        {
+          errors,
+          activeIndex,
+        },
+        () => {
+          Object.keys(errors).forEach((err) =>
+            toast.error(
+              <Toast error title={err} content={errors[err].join(', ')} />,
+            ),
+          );
+        },
+      );
     } else {
       // Get only the values that have been modified (Edit forms), send all in case that
       // it's an add form
@@ -1114,6 +1124,7 @@ class Form extends Component {
                   <Button
                     basic
                     secondary
+                    type="button"
                     aria-label={this.props.intl.formatMessage(messages.cancel)}
                     title={this.props.intl.formatMessage(messages.cancel)}
                     floated="right"
