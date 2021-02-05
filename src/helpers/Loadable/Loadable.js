@@ -1,16 +1,55 @@
 import React from 'react';
+import hoistNonReactStatics from 'hoist-non-react-statics';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { omit } from 'lodash';
-import hoistNonReactStatics from 'hoist-non-react-statics';
 import { loadLazyLibrary } from '@plone/volto/actions';
 import Registry from '@plone/volto/registry';
+
+const validateLibs = (maybeLibs) => {
+  if (Array.isArray(maybeLibs)) {
+    return maybeLibs.map(validateLibs).filter((x) => !!x).length > 0;
+  }
+
+  const { settings } = Registry;
+  const { loadables, lazyBundles } = settings;
+
+  return (
+    Object.keys(lazyBundles).includes(maybeLibs) ||
+    Object.keys(loadables).includes(maybeLibs)
+  );
+};
+
+/**
+ * @param name {string|string[]} Name or names of a register bundle or lazy lib
+ * @returns {string[]} an array of registered lib names.
+ */
+const flattenLazyBundle = (maybeNames) => {
+  const { settings } = Registry;
+  const { lazyBundles } = settings;
+
+  if (!validateLibs(maybeNames)) {
+    throw new Error(`Invalid lib or bundle name ${maybeNames}`);
+  }
+
+  if (
+    typeof maybeNames === 'string' &&
+    typeof lazyBundles === 'object' &&
+    Object.keys(lazyBundles).includes(maybeNames)
+  ) {
+    const val = lazyBundles[maybeNames];
+
+    return Array.isArray(val) ? val : [val];
+  }
+
+  return Array.isArray(maybeNames) ? maybeNames : [maybeNames];
+};
 
 // TODO: make an unit test that checks if it is possible to have multiple
 // useLoadables hooks inside a single component?
 export function useLazyLibs(maybeNames, options = {}) {
+  const libraries = flattenLazyBundle(maybeNames);
   const { settings } = Registry;
   const { shouldRerender = true } = options;
-  const libraries = Array.isArray(maybeNames) ? maybeNames : [maybeNames];
   const { loadables } = settings;
   const dispatch = useDispatch();
 
@@ -33,25 +72,58 @@ export function useLazyLibs(maybeNames, options = {}) {
     return;
   });
 
-  // The component is rendered when all libraries are loaded!
   return loaded;
 }
 
-export function preloadLazyLibs(maybeNames, forwardRef = false) {
-  return injectLazyLibs(maybeNames, forwardRef, false);
+export function preloadLazyLibs(maybeNames, forwardRef = true) {
+  const decorator = (WrappedComponent) => {
+    function PreloadLoadables(props) {
+      useLazyLibs(maybeNames, { shouldRerender: false });
+      const key = Array.isArray(maybeNames) ? maybeNames.join(',') : maybeNames;
+
+      PreloadLoadables.displayName = `PreloadLoadables(${key})(${getDisplayName(
+        WrappedComponent,
+      )})`;
+
+      return (
+        <WrappedComponent
+          key={key}
+          {...omit(props, 'forwardedRef')}
+          ref={forwardRef ? props.forwardedRef : null}
+        />
+      );
+    }
+
+    if (forwardRef) {
+      return hoistNonReactStatics(
+        React.forwardRef((props, ref) => {
+          return <PreloadLoadables {...props} forwardedRef={ref} />;
+        }),
+        WrappedComponent,
+      );
+    }
+
+    return hoistNonReactStatics(PreloadLoadables, WrappedComponent);
+  };
+
+  return decorator;
 }
 
-export function injectLazyLibs(
-  maybeNames,
-  forwardRef = false,
-  shouldRerender = true,
-) {
-  const libraries = Array.isArray(maybeNames) ? maybeNames : [maybeNames];
-
+export function injectLazyLibs(maybeNames, forwardRef = false) {
   const decorator = (WrappedComponent) => {
+    let libraries;
+
     function WithLoadables(props) {
+      libraries = libraries || flattenLazyBundle(maybeNames);
+
       const loaded = useLazyLibs(libraries, { shouldRerender: true });
       const isLoaded = Object.keys(loaded).length === libraries.length;
+
+      WithLoadables.displayName = `WithLoadables(${libraries.join(
+        ',',
+      )})(${getDisplayName(WrappedComponent)})`;
+
+      // The component is rendered when all libraries are loaded!
       return isLoaded ? (
         <WrappedComponent
           key={Object.keys(loaded).join('|')}
@@ -61,10 +133,6 @@ export function injectLazyLibs(
         />
       ) : null;
     }
-
-    WithLoadables.displayName = `WithLoadables(${libraries.join(
-      ',',
-    )})(${getDisplayName(WrappedComponent)})`;
 
     if (forwardRef) {
       return hoistNonReactStatics(

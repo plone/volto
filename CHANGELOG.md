@@ -8,13 +8,19 @@
 
 ### Feature
 
+- Add `preloadLazyLibs` and `settings.lazyBundles` to allow preloading bundles of lazy libraries @tiberiuichim @silviubogan
 - Added onChangeFormData prop to Form component @giuliaghisini
 - Internationalization story for add-ons @sneridagh
 - Allow configuration of Toolbar actions @tiberiuichim
+- UniversalLink and ConditionalLink accepts also an item to link to. If item is of @type Link, a direct link to remote url is generated if user is not logged. @giuliaghisini
 
 ### Bugfix
 
+- temporarly removed linkDetectionPlugin for draftjs (for some conflicts with AnchorPlugin) @giuliaghisini
 - German translation: aria-label of '/contents' button : "Inhalte" not "Inhaltsverzeichnis" @ksuess
+- fix view links and others styles of entities on editing Text Block. @giuliaghisini
+- Make sidebar-collapsed visible on small mobile. @giuliaghisini
+- Fix regresion on the imagesizes styling due to the removal of the id in 11 @sneridagh
 
 ### Internal
 
