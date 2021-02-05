@@ -23,10 +23,7 @@ const DefaultTemplate = ({ items, linkMore, isEditMode }) => {
       <div className="items">
         {items.map((item) => (
           <div className="listing-item" key={item['@id']}>
-            <ConditionalLink
-              to={flattenToAppURL(item['@id'])}
-              condition={!isEditMode}
-            >
+            <ConditionalLink item={item} condition={!isEditMode}>
               <div className="listing-body">
                 <h4>{item.title ? item.title : item.id}</h4>
                 <p>{item.description}</p>
