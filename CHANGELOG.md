@@ -12,6 +12,7 @@
 ### Bugfix
 
 - German translation: aria-label of '/contents' button : "Inhalte" not "Inhaltsverzeichnis" @ksuess
+- Fix secondary button behaving as type submit @nileshgulia1
 
 ### Internal
 
