@@ -3,6 +3,8 @@ import FileCache from '@plone/volto/express-middleware/image-proxy/file-cache.js
 import path from 'path';
 import fs from 'fs-extra';
 
+global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
+
 describe('Test File Cache', () => {
   it('Initialize cache on server start if local files are present', () => {
     const initialize = (FileCache.prototype.initialize = jest.fn());
