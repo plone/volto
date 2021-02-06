@@ -51,7 +51,7 @@ const workspacePrompt = [
     type: 'input',
     name: 'workspacePath',
     message: 'Workspace path, like: src/addons/volto-addon',
-    default: '',
+    default: 'src/addons/*',
     validate: validateWorkspacePath,
   },
   {
