@@ -63,38 +63,23 @@ dropdown menus, use the `DropdownWithButton` component for that:
 ```jsx
 import { DropdownWithButton } from '@plone/volto/components/manage/Toolbar/Dropdown';
 
-export default function(config) {
-  const { defaultViewActions, defaultBottomActions } = config.toolbar;
-  const activity = {
-    top: [
-      ...defaultViewActions,
-      (props) => (
-        <DropdownWithButton
-          {...props}
-          name="add-something"
-          title="Add something"
-          icon={<Icon name={addSVG} size="30px" />}
-          headerActions={
-            <button aria-label={'Add'} onClick={() => {}} tabIndex={0}>
-              <Icon name={addSVG} size="30px" />
-            </button>
-          }
-        >
-          <div>Hello!</div>
-        </DropdownWithButton>
-      ),
-    ],
-    bottom: [
-      (props) => <Bottom {...props} actionComponents={defaultBottomActions} />,
-    ],
-  };
-
-  config.toolbar.activities.myCustomActivity = activity;
+const applyConfig = (config) => {
+  config.toolbar.activities.someActivity.top.push((props) => (
+    <DropdownWithButton
+      {...props}
+      name="add-something"
+      title="Add something"
+      icon={<Icon name={addSVG} size="30px" />}
+      headerActions={
+        <button aria-label={'Add'} onClick={() => {}} tabIndex={0}>
+          <Icon name={addSVG} size="30px" />
+        </button>
+      }
+    >
+      <div>Hello!</div>
+    </DropdownWithButton>
+  ));
+  return config;
 }
-```
 
-Then the buttons would be used for a toolbar created like:
-
-```
-<Toolbar activity="myCustomActivity" inner={<></>} />
-```
+export default applyConfig;
