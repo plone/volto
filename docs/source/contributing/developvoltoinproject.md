@@ -85,8 +85,8 @@ Upgrade moduleNameMapper in package.json
 ```json
 {
   "moduleNameMapper": {
-    "@plone/volto/babel": "<rootDir>/voltodevelopment/volto/babel",
-    "@plone/volto/(.*)$": "<rootDir>/voltodevelopment/volto/src/$1",
+    "@plone/volto/babel": "<rootDir>/src/voltodevelopment/volto/babel",
+    "@plone/volto/(.*)$": "<rootDir>/src/voltodevelopment/volto/src/$1",
   }
 }
 ```
