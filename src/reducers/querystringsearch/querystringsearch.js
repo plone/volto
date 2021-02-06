@@ -1,5 +1,5 @@
 import { map, omit } from 'lodash';
-import Registry from '@plone/volto/registry';
+import config from '@plone/volto/registry';
 
 const GET_QUERYSTRING_RESULTS = 'GET_QUERYSTRING_RESULTS';
 const RESET_QUERYSTRING_RESULTS = 'RESET_QUERYSTRING_RESULTS';
@@ -22,7 +22,7 @@ const initialState = {
  * @returns {Object} New state.
  */
 export default function querystringsearch(state = initialState, action = {}) {
-  const { settings } = Registry;
+  const { settings } = config;
   switch (action.type) {
     case `${GET_QUERYSTRING_RESULTS}_PENDING`:
       return action.subrequest

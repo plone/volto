@@ -5,7 +5,7 @@
 
 import cookie from 'react-cookie';
 import jwtDecode from 'jwt-decode';
-import Registry from '@plone/volto/registry';
+import config from '@plone/volto/registry';
 
 import {
   LOGIN,
@@ -94,7 +94,7 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
         });
     actionPromise.then(
       (result) => {
-        const { settings } = Registry;
+        const { settings } = config;
         if (getState().apierror.connectionRefused) {
           next({
             ...rest,
@@ -131,7 +131,7 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
         return next({ ...rest, result, type: `${type}_SUCCESS` });
       },
       (error) => {
-        const { settings } = Registry;
+        const { settings } = config;
         // Only SRR can set ECONNREFUSED
         if (error.code === 'ECONNREFUSED') {
           next({

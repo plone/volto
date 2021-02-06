@@ -5,7 +5,7 @@
 
 import superagent from 'superagent';
 import cookie from 'react-cookie';
-import Registry from '@plone/volto/registry';
+import config from '@plone/volto/registry';
 
 const methods = ['get', 'post', 'put', 'patch', 'del'];
 
@@ -16,7 +16,7 @@ const methods = ['get', 'post', 'put', 'patch', 'del'];
  * @returns {string} Formatted path.
  */
 function formatUrl(path) {
-  const { settings } = Registry;
+  const { settings } = config;
   if (path.startsWith('http://') || path.startsWith('https://')) return path;
 
   const adjustedPath = path[0] !== '/' ? `/${path}` : path;

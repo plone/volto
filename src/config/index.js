@@ -34,7 +34,7 @@ import { contentIcons } from './ContentIcons';
 
 import applyAddonConfiguration from 'load-volto-addons';
 
-import Registry from '@plone/volto/registry';
+import ConfigRegistry from '@plone/volto/registry';
 
 const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || '3000';
@@ -142,6 +142,6 @@ export const addonRoutes = [...config.addonRoutes];
 export const addonReducers = { ...config.addonReducers };
 export const appExtras = config.appExtras;
 
-Registry.settings = settings;
-Registry.blocks = blocks;
-Registry.views = views;
+ConfigRegistry.settings = settings;
+ConfigRegistry.blocks = blocks;
+ConfigRegistry.views = views;

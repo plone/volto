@@ -6,7 +6,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Container } from 'semantic-ui-react';
-import Registry from '@plone/volto/registry';
+import config from '@plone/volto/registry';
 
 const ConnectionRefused = () => (
   <Container
@@ -28,7 +28,7 @@ const ConnectionRefused = () => (
       {__DEVELOPMENT__ && (
         <>
           <br />
-          <a href={Registry.settings.apiPath}>{Registry.settings.apiPath}</a>
+          <a href={config.settings.apiPath}>{config.settings.apiPath}</a>
         </>
       )}
     </h1>

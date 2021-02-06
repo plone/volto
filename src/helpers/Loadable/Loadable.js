@@ -3,12 +3,12 @@ import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { omit } from 'lodash';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import { loadLazyLibrary } from '@plone/volto/actions';
-import Registry from '@plone/volto/registry';
+import config from '@plone/volto/registry';
 
 // TODO: make an unit test that checks if it is possible to have multiple
 // useLoadables hooks inside a single component?
 export function useLazyLibs(maybeNames, options = {}) {
-  const { settings } = Registry;
+  const { settings } = config;
   const { shouldRerender = true } = options;
   const libraries = Array.isArray(maybeNames) ? maybeNames : [maybeNames];
   const { loadables } = settings;

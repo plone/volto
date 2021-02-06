@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import Registry from '@plone/volto/registry';
+import config from '@plone/volto/registry';
 
 /**
  * Error function.
@@ -11,7 +11,7 @@ import Registry from '@plone/volto/registry';
  * @returns {string} Markup of the error page.
  */
 const Error = (props) => {
-  const { views } = Registry;
+  const { views } = config;
   const { error } = props;
   let FoundView;
   if (error.status === undefined) {

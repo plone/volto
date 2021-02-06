@@ -1,8 +1,8 @@
-import Registry from '@plone/volto/registry';
+import config from '@plone/volto/registry';
 const reserved_option_names = ['tags', 'extras'];
 
 const initSentry = (Sentry) => {
-  const { settings } = Registry;
+  const { settings } = config;
   let sentry_config = __SENTRY__;
 
   if (__SENTRY__) {

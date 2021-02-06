@@ -25,7 +25,7 @@ import { Icon } from '@plone/volto/components';
 import { getNavigation, login } from '@plone/volto/actions';
 import { toast } from 'react-toastify';
 import { Toast } from '@plone/volto/components';
-import Registry from '@plone/volto/registry';
+import config from '@plone/volto/registry';
 
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -139,7 +139,7 @@ class Login extends Component {
   }
 
   UNSAFE_componentWillMount() {
-    const { settings } = Registry;
+    const { settings } = config;
     if (settings.isMultilingual) {
       this.props.getNavigation(`/${this.props.lang}`, settings.navDepth);
     } else {
@@ -148,7 +148,7 @@ class Login extends Component {
   }
 
   componentWillUnmount() {
-    const { settings } = Registry;
+    const { settings } = config;
     if (settings.isMultilingual) {
       this.props.getNavigation(`/${this.props.lang}`, settings.navDepth);
     } else {
