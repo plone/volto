@@ -3,7 +3,8 @@ import { Button, Segment, Popup } from 'semantic-ui-react';
 import cx from 'classnames';
 import { Icon } from '@plone/volto/components';
 import { flattenToAppURL, getContentIcon } from '@plone/volto/helpers';
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
+
 import rightArrowSVG from '@plone/volto/icons/right-key.svg';
 import homeSVG from '@plone/volto/icons/home.svg';
 
@@ -42,7 +43,7 @@ const ObjectBrowserNav = ({
 
               disabled:
                 mode === 'image'
-                  ? !settings.imageObjects.includes(item['@type']) &&
+                  ? !config.settings.imageObjects.includes(item['@type']) &&
                     !item.is_folderish
                   : !isSelectable(item),
             })}

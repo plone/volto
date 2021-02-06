@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ConditionalLink } from '@plone/volto/components';
 import { flattenToAppURL } from '@plone/volto/helpers';
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 import DefaultImageSVG from '@plone/volto/components/manage/Blocks/Listing/default-image.svg';
 import { isInternalURL } from '@plone/volto/helpers/Url/Url';
@@ -20,6 +20,8 @@ const SummaryTemplate = ({ items, linkMore, isEditMode }) => {
   } else if (href) {
     link = <a href={href}>{linkMore?.title || href}</a>;
   }
+
+  const { settings } = config;
 
   return (
     <>

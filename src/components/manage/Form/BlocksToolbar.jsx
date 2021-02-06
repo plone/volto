@@ -14,7 +14,7 @@ import { load } from 'redux-localstorage-simple';
 import { isEqual, omit, without } from 'lodash';
 
 import { setBlocksClipboard, resetBlocksClipboard } from '@plone/volto/actions';
-import { blocks } from '~/config';
+import config from '@plone/volto/registry';
 
 import copySVG from '@plone/volto/icons/copy.svg';
 import cutSVG from '@plone/volto/icons/cut.svg';
@@ -93,7 +93,7 @@ export class BlocksToolbarComponent extends React.Component {
     const cloneWithIds = blocksData
       .filter((blockData) => !!blockData['@type'])
       .map((blockData) => {
-        const blockConfig = blocks.blocksConfig[blockData['@type']];
+        const blockConfig = config.blocks.blocksConfig[blockData['@type']];
         return mode === 'copy'
           ? blockConfig.cloneData
             ? blockConfig.cloneData(blockData)

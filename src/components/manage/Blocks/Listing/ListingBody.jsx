@@ -5,10 +5,10 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { getContent, getQueryStringResults } from '@plone/volto/actions';
 import { Pagination } from 'semantic-ui-react';
 import { Icon } from '@plone/volto/components';
+import config from '@plone/volto/registry';
+
 import paginationLeftSVG from '@plone/volto/icons/left-key.svg';
 import paginationRightSVG from '@plone/volto/icons/right-key.svg';
-
-import { blocks, settings } from '~/config';
 
 const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
   const [currentPage, setCurrentPage] = React.useState(1);
@@ -59,7 +59,7 @@ const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
         []
       : folderItems;
 
-  const templateConfig = blocks.blocksConfig.listing.templates;
+  const templateConfig = config.blocks.blocksConfig.listing.templates;
 
   let templateName =
     data.template && !!templateConfig[data.template]
@@ -86,6 +86,7 @@ const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
       ),
     );
   }
+  const { settings } = config;
 
   return (
     <>

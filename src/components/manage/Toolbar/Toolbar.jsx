@@ -13,7 +13,8 @@ import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import cookie from 'react-cookie';
 import { filter, find } from 'lodash';
 import cx from 'classnames';
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
+
 import More from '@plone/volto/components/manage/Toolbar/More';
 import PersonalTools from '@plone/volto/components/manage/Toolbar/PersonalTools';
 import Types from '@plone/volto/components/manage/Toolbar/Types';
@@ -422,7 +423,7 @@ class Toolbar extends Component {
                     {this.props.content &&
                       ((this.props.content.is_folderish &&
                         this.props.types.length > 0) ||
-                        (settings.isMultilingual &&
+                        (config.settings.isMultilingual &&
                           this.props.content['@components'].translations)) && (
                         <button
                           className="add"
