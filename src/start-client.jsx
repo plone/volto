@@ -1,4 +1,5 @@
 import React from 'react';
+import '~/config';
 import { hydrate } from 'react-dom';
 import { Provider } from 'react-redux';
 import { IntlProvider } from 'react-intl-redux';
@@ -7,7 +8,7 @@ import { createBrowserHistory } from 'history';
 import { ReduxAsyncConnect } from 'redux-connect';
 import { loadableReady } from '@loadable/component';
 import routes from '~/routes';
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 import '~/theme';
 
 import configureStore from '@plone/volto/store';
@@ -38,7 +39,7 @@ export default () => {
   if (window.Cypress) {
     window.appHistory = history;
     window.store = store;
-    window.settings = settings;
+    window.settings = config.settings;
   }
 
   loadableReady(() => {

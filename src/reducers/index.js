@@ -39,7 +39,7 @@ import toolbar from '@plone/volto/reducers/toolbar/toolbar';
 import blocksClipboard from '@plone/volto/reducers/blocksClipboard/blocksClipboard';
 import lazyLibraries from '@plone/volto/reducers/lazyLibraries/lazyLibraries';
 import contextNavigation from '@plone/volto/reducers/contextNavigation/contextNavigation';
-import { addonReducers } from '~/config';
+import config from '@plone/volto/registry';
 
 /**
  * Root reducer.
@@ -84,7 +84,7 @@ const reducers = {
   blocksClipboard,
   lazyLibraries,
   contextNavigation,
-  ...addonReducers,
+  ...config.addonReducers,
 };
 
 export default reducers;
