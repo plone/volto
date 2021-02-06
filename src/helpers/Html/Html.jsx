@@ -10,7 +10,7 @@ import serialize from 'serialize-javascript';
 import { join } from 'lodash';
 import { BodyClass } from '@plone/volto/helpers';
 import { runtimeConfig } from '@plone/volto/runtime_config';
-import { settings } from '~/config';
+import Registry from '@plone/volto/registry';
 
 const CRITICAL_CSS_TEMPLATE = `function alter() {
   document.querySelectorAll("head link[rel='prefetch']").forEach(function(el) { el.rel = 'stylesheet'});
@@ -22,6 +22,7 @@ if (window.addEventListener) {
 }`;
 
 export const loadReducers = (state = {}) => {
+  const { settings } = Registry;
   return Object.assign(
     {},
     ...Object.keys(state).map((name) =>

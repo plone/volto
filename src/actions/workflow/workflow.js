@@ -8,8 +8,7 @@ import {
   GET_WORKFLOW_MULTIPLE,
   TRANSITION_WORKFLOW,
 } from '@plone/volto/constants/ActionTypes';
-
-import { settings } from '~/config';
+import Registry from '@plone/volto/registry';
 
 /**
  * Get workflow function.
@@ -35,6 +34,7 @@ export function getWorkflow(urls) {
  * @returns {Object} Transition workflow action.
  */
 export function transitionWorkflow(urls, include_children = false) {
+  const { settings } = Registry;
   return {
     type: TRANSITION_WORKFLOW,
     request:

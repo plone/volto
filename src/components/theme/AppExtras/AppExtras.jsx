@@ -1,9 +1,9 @@
 import React from 'react';
 import { matchPath } from 'react-router';
-
-import { settings } from '~/config';
+import Registry from '@plone/volto/registry';
 
 const AppExtras = (props) => {
+  const { settings } = Registry;
   const { appExtras = [] } = settings;
   const { pathname } = props;
   const active = appExtras
