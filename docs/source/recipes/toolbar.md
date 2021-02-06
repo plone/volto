@@ -18,17 +18,15 @@ diff, control-panel.
 To add a new button to the toolbar, insert it in your configuration scripts:
 
 
-```jsx
-import {ButtonA, ButtonB}  from './components';
+import {ButtonA, ButtonB} from './components';
 
-export default function (config) {
-  config.toolbar.activities.edit = {
-    top : [ButtonA],
-    bottom: [ButtonB],
-  }
+const applyConfig = (config) => {
+  config.toolbar.activities.view.top.push(ButtonA)
+  config.toolbar.activities.view.bottom.push(ButtonB)
   return config;
-}
-```
+};
+
+export default applyConfig;
 
 To insert new actions to the More component menu, use the `defaultMoreActions`
 key:
