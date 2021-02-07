@@ -4,6 +4,8 @@
 
 ### Added
 
+- Default workspaces path @nileshgulia1
+
 ### Changes
 
 ## 2.3.0 (2021-01-21)
