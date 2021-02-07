@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Segment, Popup } from 'semantic-ui-react';
 import cx from 'classnames';
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { flattenToAppURL, getContentIcon } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 

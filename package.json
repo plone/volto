@@ -116,7 +116,8 @@
       }
     },
     "setupFiles": [
-      "./test-setup.js"
+      "./test-setup-globals.js",
+      "./test-setup-config.js"
     ],
     "globalSetup": "./global-test-setup.js",
     "globals": {

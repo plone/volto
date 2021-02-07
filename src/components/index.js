@@ -5,6 +5,7 @@
  * undefined, check the order of imports in this file.
  * @module components
  */
+// import '~/config';
 import loadable from '@loadable/component';
 
 //  Do not lazy load them, since it has not much sense (they will live in the main chunk)

@@ -33,118 +33,20 @@ exports[`Register renders a register component 1`] = `
             </h1>
           </div>
           <div
-            className="inline required field help text"
+            className="default-widget"
+            id="field-fullname"
           >
-            <div
-              className="ui grid"
-            >
-              <div
-                className="stretched row"
-              >
-                <div
-                  className="four wide column"
-                >
-                  <div
-                    className="wrapper"
-                  >
-                    <label
-                      htmlFor="field-fullname"
-                    >
-                      Full Name
-                    </label>
-                  </div>
-                </div>
-                <div
-                  className="eight wide column"
-                >
-                  <div
-                    className="ui input"
-                  >
-                    <input
-                      id="field-fullname"
-                      maxLength={null}
-                      minLength={null}
-                      name="fullname"
-                      onBlur={[Function]}
-                      onChange={[Function]}
-                      onClick={[Function]}
-                      type="text"
-                      value=""
-                    />
-                  </div>
-                </div>
-              </div>
-              <div
-                className="stretched row"
-              >
-                <div
-                  className="stretched twelve wide column"
-                >
-                  <p
-                    className="help"
-                  >
-                    Enter full name, e.g. John Smith.
-                  </p>
-                </div>
-              </div>
-            </div>
+            Full Name
+             - 
+            Enter full name, e.g. John Smith.
           </div>
           <div
-            className="inline required field help text"
+            className="default-widget"
+            id="field-email"
           >
-            <div
-              className="ui grid"
-            >
-              <div
-                className="stretched row"
-              >
-                <div
-                  className="four wide column"
-                >
-                  <div
-                    className="wrapper"
-                  >
-                    <label
-                      htmlFor="field-email"
-                    >
-                      E-mail
-                    </label>
-                  </div>
-                </div>
-                <div
-                  className="eight wide column"
-                >
-                  <div
-                    className="ui input"
-                  >
-                    <input
-                      id="field-email"
-                      maxLength={null}
-                      minLength={null}
-                      name="email"
-                      onBlur={[Function]}
-                      onChange={[Function]}
-                      onClick={[Function]}
-                      type="text"
-                      value=""
-                    />
-                  </div>
-                </div>
-              </div>
-              <div
-                className="stretched row"
-              >
-                <div
-                  className="stretched twelve wide column"
-                >
-                  <p
-                    className="help"
-                  >
-                    Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
-                  </p>
-                </div>
-              </div>
-            </div>
+            E-mail
+             - 
+            Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
           </div>
         </div>
         <div

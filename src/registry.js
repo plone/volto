@@ -40,6 +40,14 @@ class Config {
     this._data.views = views;
   }
 
+  get widgets() {
+    return this._data.widgets;
+  }
+
+  set widgets(widgets) {
+    this._data.widgets = widgets;
+  }
+
   get slots() {
     return this._data.slots;
   }

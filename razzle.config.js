@@ -71,6 +71,8 @@ const defaultModify = ({
         // `onEnd` is called before the cycle detection ends
         onEnd({ compilation }) {
           console.log(`Detected ${compilation.warnings.length}`);
+          // compilation.warnings.forEach((item) => console.log(item.message));
+          // console.log(compilation.warnings[0].message);
         },
       }),
     );

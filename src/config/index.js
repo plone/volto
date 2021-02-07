@@ -145,3 +145,4 @@ export const appExtras = config.appExtras;
 ConfigRegistry.settings = settings;
 ConfigRegistry.blocks = blocks;
 ConfigRegistry.views = views;
+ConfigRegistry.widgets = widgets;
