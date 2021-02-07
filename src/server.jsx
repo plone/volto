@@ -1,5 +1,5 @@
 /* eslint no-console: 0 */
-import '~/config';
+import { bootstrapConfig } from '~/config';
 import { existsSync, lstatSync, readFileSync } from 'fs';
 import React from 'react';
 import { StaticRouter } from 'react-router-dom';
@@ -33,6 +33,8 @@ import ErrorPage from '@plone/volto/error';
 import languages from '@plone/volto/constants/Languages';
 
 import configureStore from '@plone/volto/store';
+
+bootstrapConfig();
 
 let locales = {};
 
