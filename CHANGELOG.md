@@ -1,6 +1,6 @@
 # Change Log
 
-## 11.0.1 (unreleased)
+## 11.1.0 (2021-02-08)
 
 ### Feature
 
