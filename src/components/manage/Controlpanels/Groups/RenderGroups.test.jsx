@@ -46,7 +46,7 @@ describe('UsersControlpanelGroups', () => {
     const component = renderer.create(
       <Provider store={store}>
         <RenderGroups
-          groups={testGroups}
+          group={testGroups}
           roles={testRoles}
           onDelete={() => {}}
         />
