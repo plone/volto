@@ -24,6 +24,7 @@ export {
   getId,
 } from '@plone/volto/helpers/Url/Url';
 export { generateSitemap } from '@plone/volto/helpers/Sitemap/Sitemap';
+export { generateRobots } from '@plone/volto/helpers/Robots/Robots';
 export {
   nestContent,
   getLayoutFieldname,
