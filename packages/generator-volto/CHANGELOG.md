@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.4.1 (unreleased)
+
+### Added
+
+### Changes
+
 ## 2.4.0 (2021-02-08)
 
 ### Added
