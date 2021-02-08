@@ -22,18 +22,21 @@ class RenderGroups extends Component {
    * @static
    */
   static propTypes = {
-    groups: PropTypes.shape({
+    //single group
+    group: PropTypes.shape({
       title: PropTypes.string,
       description: PropTypes.string,
       email: PropTypes.string,
       groupname: PropTypes.string,
       roles: PropTypes.arrayOf(PropTypes.string),
     }).isRequired,
+
     roles: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string,
       }),
     ).isRequired,
+    inheritedRole: PropTypes.array,
     onDelete: PropTypes.func.isRequired,
   };
 
@@ -59,19 +62,27 @@ class RenderGroups extends Component {
   }
 
   /**
+   *@param {*}
+   *@returns {Boolean}
+   *@memberof RenderGroups
+   */
+  isAuthGroup = (roleId) => {
+    return this.props.inheritedRole.includes(roleId);
+  };
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
   render() {
     return (
-      <Table.Row key={this.props.groups.title}>
-        <Table.Cell>{this.props.groups.groupname}</Table.Cell>
+      <Table.Row key={this.props.group.title}>
+        <Table.Cell>{this.props.group.groupname}</Table.Cell>
         {this.props.roles.map((role) => (
           <Table.Cell key={role.id}>
             {this.props.inheritedRole &&
             this.props.inheritedRole.includes(role.id) &&
-            this.props.groups.roles.includes('Authenticated') ? (
+            this.props.group.roles.includes('Authenticated') ? (
               <Icon
                 name={ploneSVG}
                 size="20px"
@@ -80,9 +91,13 @@ class RenderGroups extends Component {
               />
             ) : (
               <Checkbox
-                checked={this.props.groups.roles.includes(role.id)}
+                checked={
+                  this.props.group.id === 'AuthenticatedUsers'
+                    ? this.isAuthGroup(role.id)
+                    : this.props.group.roles.includes(role.id)
+                }
                 onChange={this.onChange}
-                value={`${this.props.groups.id}.${role.id}`}
+                value={`${this.props.group.id}.${role.id}`}
               />
             )}
           </Table.Cell>
@@ -92,7 +107,7 @@ class RenderGroups extends Component {
             <Dropdown.Menu className="left">
               <Dropdown.Item
                 onClick={this.props.onDelete}
-                value={this.props.groups['@id']}
+                value={this.props.group['@id']}
               >
                 <Icon name={trashSVG} size="15px" />
                 <FormattedMessage id="Delete" defaultMessage="Delete" />

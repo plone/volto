@@ -495,14 +495,14 @@ class GroupsControlpanel extends Component {
                   </Table.Row>
                 </Table.Header>
                 <Table.Body data-group="groups">
-                  {this.state.groupEntries.map((groups) => (
+                  {this.state.groupEntries.map((group) => (
                     <RenderGroups
-                      key={groups.id}
+                      key={group.id}
                       onDelete={this.deleteGroup}
                       roles={this.props.roles}
-                      groups={groups}
+                      group={group}
                       updateGroups={this.updateGroupRole}
-                      inheritedRole={this.props.inheritedRole}
+                      inheritedRole={this.state.authenticatedRole}
                     />
                   ))}
                 </Table.Body>

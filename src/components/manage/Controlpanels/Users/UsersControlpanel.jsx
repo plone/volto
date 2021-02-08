@@ -9,6 +9,7 @@ import {
   listGroups,
   listUsers,
   updateUser,
+  updateGroup,
 } from '@plone/volto/actions';
 import {
   Icon,
@@ -24,7 +25,7 @@ import clearSVG from '@plone/volto/icons/clear.svg';
 import addUserSvg from '@plone/volto/icons/add-user.svg';
 import saveSVG from '@plone/volto/icons/save.svg';
 import ploneSVG from '@plone/volto/icons/plone.svg';
-import { find, map, remove, difference } from 'lodash';
+import { find, map, pull, difference } from 'lodash';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
@@ -219,6 +220,22 @@ class UsersControlpanel extends Component {
   }
 
   /**
+   *@param {object} user
+   *@returns {undefined}
+   *@memberof UsersControlpanel
+   */
+  addUserToGroup = (user) => {
+    const { groups, username } = user;
+    groups.forEach((group) => {
+      this.props.updateGroup(group, {
+        users: {
+          [username]: true,
+        },
+      });
+    });
+  };
+
+  /**
    * Callback to be called by the ModalForm when the form is submitted.
    *
    * @param {object} data Form data from the ModalForm.
@@ -226,6 +243,7 @@ class UsersControlpanel extends Component {
    * @returns {undefined}
    */
   onAddUserSubmit(data, callback) {
+    if (data.groups.length > 0) this.addUserToGroup(data);
     this.props.createUser(data);
     this.setState({
       addUserSetFormDataCallback: callback,
@@ -269,7 +287,7 @@ class UsersControlpanel extends Component {
             ? [...entry.roles, value]
             : entry.id !== name
             ? entry.roles
-            : remove(entry.roles, (item) => item !== value),
+            : pull(entry.roles, value),
       })),
     });
   }
@@ -603,6 +621,7 @@ export default compose(
           deleteUser,
           createUser,
           updateUser,
+          updateGroup,
         },
         dispatch,
       ),
