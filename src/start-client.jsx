@@ -1,5 +1,5 @@
+import '~/config'; // This is the bootstrap for the global config - client side
 import React from 'react';
-import { bootstrapConfig } from '~/config';
 import { hydrate } from 'react-dom';
 import { Provider } from 'react-redux';
 import { IntlProvider } from 'react-intl-redux';
@@ -19,7 +19,6 @@ import initSentry from '@plone/volto/sentry';
 
 export const history = createBrowserHistory();
 
-bootstrapConfig();
 initSentry(Sentry);
 
 function reactIntlErrorHandler(error) {

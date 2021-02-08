@@ -142,9 +142,7 @@ export const addonRoutes = [...config.addonRoutes];
 export const addonReducers = { ...config.addonReducers };
 export const appExtras = config.appExtras;
 
-export const bootstrapConfig = () => {
-  ConfigRegistry.settings = settings;
-  ConfigRegistry.blocks = blocks;
-  ConfigRegistry.views = views;
-  ConfigRegistry.widgets = widgets;
-};
+ConfigRegistry.settings = settings;
+ConfigRegistry.blocks = blocks;
+ConfigRegistry.views = views;
+ConfigRegistry.widgets = widgets;

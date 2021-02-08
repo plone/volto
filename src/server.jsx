@@ -1,5 +1,5 @@
 /* eslint no-console: 0 */
-import { bootstrapConfig } from '~/config';
+import '~/config'; // This is the bootstrap for the global config - server side
 import { existsSync, lstatSync, readFileSync } from 'fs';
 import React from 'react';
 import { StaticRouter } from 'react-router-dom';
@@ -33,8 +33,6 @@ import ErrorPage from '@plone/volto/error';
 import languages from '@plone/volto/constants/Languages';
 
 import configureStore from '@plone/volto/store';
-
-bootstrapConfig();
 
 let locales = {};
 
