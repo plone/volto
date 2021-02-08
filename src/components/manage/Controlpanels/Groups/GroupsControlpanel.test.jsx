@@ -17,6 +17,9 @@ describe('UsersControlpanel', () => {
         groups: [],
         create: { loading: false },
       },
+      authRole: {
+        authenticatedRole: [],
+      },
       intl: {
         locale: 'en',
         messages: {},

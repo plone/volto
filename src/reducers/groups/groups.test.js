@@ -37,7 +37,6 @@ describe('Groups reducer', () => {
       },
       group: {},
       groups: [],
-      authenticatedRole: null,
     });
   });
 

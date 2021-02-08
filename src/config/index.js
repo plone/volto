@@ -88,7 +88,7 @@ let config = {
     expressMiddleware: serverConfig.expressMiddleware, // BBB
     defaultBlockType: 'text',
     verticalFormTabs: false,
-    persistentReducers: ['blocksClipboard', 'groups'],
+    persistentReducers: ['blocksClipboard', 'authRole'],
     initialReducersBlacklist: [], // reducers in this list won't be hydrated in windows.__data
     sentryOptions: {
       ...sentryOptions,

@@ -592,7 +592,7 @@ export default compose(
       deleteRequest: state.users.delete,
       createRequest: state.users.create,
       loadRolesRequest: state.roles,
-      inheritedRole: state.groups.authenticatedRole,
+      inheritedRole: state.authRole.authenticatedRole,
     }),
     (dispatch) =>
       bindActionCreators(
