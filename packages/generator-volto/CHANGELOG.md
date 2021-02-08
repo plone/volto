@@ -4,7 +4,7 @@
 
 ### Added
 
-### Changes
+- Added i18n for addons support @sneridagh
 
 ## 2.3.0 (2021-01-21)
 
