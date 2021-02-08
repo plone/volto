@@ -243,7 +243,8 @@ class UsersControlpanel extends Component {
    * @returns {undefined}
    */
   onAddUserSubmit(data, callback) {
-    if (data.groups.length > 0) this.addUserToGroup(data);
+    const { groups } = data;
+    if (groups && groups.length > 0) this.addUserToGroup(data);
     this.props.createUser(data);
     this.setState({
       addUserSetFormDataCallback: callback,
