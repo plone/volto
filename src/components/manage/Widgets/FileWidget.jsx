@@ -22,9 +22,7 @@ const imageMimetypes = [
   'image/gif',
   'image/svg+xml',
 ];
-const Dropzone = loadable(() => import('react-dropzone'), {
-  resolveComponent: (components) => components.Dropzone,
-});
+const Dropzone = loadable(() => import('react-dropzone'));
 
 const messages = defineMessages({
   releaseDrag: {

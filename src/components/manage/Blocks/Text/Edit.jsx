@@ -134,8 +134,12 @@ class Edit extends Component {
    * @returns {boolean}
    * @memberof Edit
    */
-  shouldComponentUpdate(nextProps) {
-    return this.props.selected || !isEqual(this.props.data, nextProps.data);
+  shouldComponentUpdate(nextProps, nextState) {
+    return (
+      this.props.selected ||
+      !isEqual(this.props.data, nextProps.data) ||
+      !isEqual(this.state.editorState, nextState.editorState)
+    );
   }
 
   /**
@@ -189,8 +193,10 @@ class Edit extends Component {
     this.setState({ editorState });
   }
 
-  toggleAddNewBlock = () =>
+  toggleAddNewBlock = (e) => {
+    e.preventDefault();
     this.setState((state) => ({ addNewBlockOpened: !state.addNewBlockOpened }));
+  };
 
   handleClickOutside = (e) => {
     if (

@@ -387,7 +387,7 @@ msgstr "Inhaltstyp gelöscht"
 #: components/manage/Contents/Contents
 #: components/manage/Toolbar/Toolbar
 msgid "Contents"
-msgstr "Inhaltsverzeichnis"
+msgstr "Inhalte"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -1158,6 +1158,10 @@ msgstr "Name"
 #: error
 msgid "Navigate back"
 msgstr "Zurück navigieren"
+
+#: components/theme/Navigation/ContextNavigation
+msgid "Navigation"
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset

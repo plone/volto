@@ -1144,6 +1144,10 @@ msgstr "Nume"
 msgid "Navigate back"
 msgstr "Navigați înapoi"
 
+#: components/theme/Navigation/ContextNavigation
+msgid "Navigation"
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "New password"
