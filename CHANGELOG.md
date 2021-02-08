@@ -2,8 +2,6 @@
 
 ## 11.0.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Add `preloadLazyLibs` and `settings.lazyBundles` to allow preloading bundles of lazy libraries @tiberiuichim @silviubogan
