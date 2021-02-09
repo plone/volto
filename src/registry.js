@@ -48,6 +48,30 @@ class Config {
     this._data.widgets = widgets;
   }
 
+  get addonReducers() {
+    return this._data.addonReducers;
+  }
+
+  set addonReducers(addonReducers) {
+    this._data.addonReducers = addonReducers;
+  }
+
+  get addonRoutes() {
+    return this._data.addonRoutes;
+  }
+
+  set addonRoutes(addonRoutes) {
+    this._data.addonRoutes = addonRoutes;
+  }
+
+  get appExtras() {
+    return this._data.appExtras;
+  }
+
+  set appExtras(appExtras) {
+    this._data.appExtras = appExtras;
+  }
+
   get slots() {
     return this._data.slots;
   }

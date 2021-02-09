@@ -1,3 +1,4 @@
+/* eslint no-console: 0 */
 const path = require('path');
 const makeLoaderFinder = require('razzle-dev-utils/makeLoaderFinder');
 const nodeExternals = require('webpack-node-externals');
@@ -54,7 +55,7 @@ const defaultModify = ({
       }),
     );
 
-    if (dev) {
+    if (dev && process.env.DEBUG_CIRCULAR) {
       config.plugins.push(
         new CircularDependencyPlugin({
           exclude: /node_modules/,
@@ -71,9 +72,14 @@ const defaultModify = ({
           },
           // `onEnd` is called before the cycle detection ends
           onEnd({ compilation }) {
-            console.log(`Detected ${compilation.warnings.length}`);
-            // compilation.warnings.forEach((item) => console.log(item.message));
-            // console.log(compilation.warnings[0].message);
+            console.log(
+              `Detected ${compilation.warnings.length} circular dependencies`,
+            );
+            compilation.warnings.forEach((item) => {
+              if (item.message.includes('config')) {
+                console.log(item.message);
+              }
+            });
           },
         }),
       );

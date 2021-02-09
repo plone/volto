@@ -146,3 +146,6 @@ ConfigRegistry.settings = settings;
 ConfigRegistry.blocks = blocks;
 ConfigRegistry.views = views;
 ConfigRegistry.widgets = widgets;
+ConfigRegistry.addonRoutes = addonRoutes;
+ConfigRegistry.addonReducers = addonReducers;
+ConfigRegistry.appExtras = appExtras;
