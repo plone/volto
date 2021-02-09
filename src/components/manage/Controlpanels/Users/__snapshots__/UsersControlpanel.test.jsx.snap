@@ -107,6 +107,17 @@ exports[`UsersControlpanel renders a user control component 1`] = `
           />
         </table>
       </div>
+      <div
+        className="contents-pagination"
+      >
+        <div
+          className="ui secondary attached menu"
+        >
+          <div
+            className="menu"
+          />
+        </div>
+      </div>
     </form>
   </div>
   <div

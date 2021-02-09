@@ -16,6 +16,7 @@ import {
   Toast,
   Toolbar,
   RenderGroups,
+  Pagination,
   Error,
 } from '@plone/volto/components';
 import { Link } from 'react-router-dom';
@@ -101,6 +102,8 @@ class GroupsControlpanel extends Component {
       groupEntries: [],
       isClient: false,
       authenticatedRole: props.inheritedRole || [],
+      currentPage: 0,
+      pageSize: 10,
     };
   }
 
@@ -329,6 +332,19 @@ class GroupsControlpanel extends Component {
   }
 
   /**
+   * On change page
+   * @method onChangePage
+   * @param {object} event Event object.
+   * @param {string} value Page value.
+   * @returns {undefined}
+   */
+  onChangePage = (event, { value }) => {
+    this.setState({
+      currentPage: value,
+    });
+  };
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -495,18 +511,32 @@ class GroupsControlpanel extends Component {
                   </Table.Row>
                 </Table.Header>
                 <Table.Body data-group="groups">
-                  {this.state.groupEntries.map((group) => (
-                    <RenderGroups
-                      key={group.id}
-                      onDelete={this.deleteGroup}
-                      roles={this.props.roles}
-                      group={group}
-                      updateGroups={this.updateGroupRole}
-                      inheritedRole={this.state.authenticatedRole}
-                    />
-                  ))}
+                  {this.state.groupEntries
+                    .slice(
+                      this.state.currentPage * 10,
+                      this.state.pageSize * (this.state.currentPage + 1),
+                    )
+                    .map((group) => (
+                      <RenderGroups
+                        key={group.id}
+                        onDelete={this.deleteGroup}
+                        roles={this.props.roles}
+                        group={group}
+                        updateGroups={this.updateGroupRole}
+                        inheritedRole={this.state.authenticatedRole}
+                      />
+                    ))}
                 </Table.Body>
               </Table>
+            </div>
+            <div className="contents-pagination">
+              <Pagination
+                current={this.state.currentPage}
+                total={Math.ceil(
+                  this.state.groupEntries?.length / this.state.pageSize,
+                )}
+                onChangePage={this.onChangePage}
+              />
             </div>
           </Form>
         </Segment.Group>

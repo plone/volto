@@ -17,6 +17,7 @@ import {
   Toast,
   Toolbar,
   RenderUsers,
+  Pagination,
   Error,
 } from '@plone/volto/components';
 import { Link } from 'react-router-dom';
@@ -103,6 +104,8 @@ class UsersControlpanel extends Component {
       userToDelete: undefined,
       entries: [],
       isClient: false,
+      currentPage: 0,
+      pageSize: 10,
     };
   }
 
@@ -334,6 +337,19 @@ class UsersControlpanel extends Component {
     });
   }
 
+  /**
+   * On change page
+   * @method onChangePage
+   * @param {object} event Event object.
+   * @param {string} value Page value.
+   * @returns {undefined}
+   */
+  onChangePage = (event, { value }) => {
+    this.setState({
+      currentPage: value,
+    });
+  };
+
   componentDidUpdate(prevProps, prevState) {
     if (this.props.users !== prevProps.users) {
       this.setState({
@@ -523,18 +539,32 @@ class UsersControlpanel extends Component {
                   </Table.Row>
                 </Table.Header>
                 <Table.Body data-user="users">
-                  {this.state.entries.map((user) => (
-                    <RenderUsers
-                      key={user.id}
-                      onDelete={this.delete}
-                      roles={this.props.roles}
-                      user={user}
-                      updateUser={this.updateUserRole}
-                      inheritedRole={this.props.inheritedRole}
-                    />
-                  ))}
+                  {this.state.entries
+                    .slice(
+                      this.state.currentPage * 10,
+                      this.state.pageSize * (this.state.currentPage + 1),
+                    )
+                    .map((user) => (
+                      <RenderUsers
+                        key={user.id}
+                        onDelete={this.delete}
+                        roles={this.props.roles}
+                        user={user}
+                        updateUser={this.updateUserRole}
+                        inheritedRole={this.props.inheritedRole}
+                      />
+                    ))}
                 </Table.Body>
               </Table>
+            </div>
+            <div className="contents-pagination">
+              <Pagination
+                current={this.state.currentPage}
+                total={Math.ceil(
+                  this.state.entries?.length / this.state.pageSize,
+                )}
+                onChangePage={this.onChangePage}
+              />
             </div>
           </Form>
         </Segment.Group>
