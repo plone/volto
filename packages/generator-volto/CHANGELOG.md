@@ -1,10 +1,16 @@
 # Change Log
 
-## 2.3.1 (unreleased)
+## 2.4.1 (unreleased)
 
 ### Added
 
 ### Changes
+
+## 2.4.0 (2021-02-08)
+
+### Added
+
+- Added i18n for addons support @sneridagh
 
 ## 2.3.0 (2021-01-21)
 
