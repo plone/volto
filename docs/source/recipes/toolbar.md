@@ -15,18 +15,24 @@ diff, control-panel.
 
 ## Customization
 
-To add a new button to the toolbar, insert it in your configuration scripts:
+To add a new button to the toolbar, insert it in your configuration script:
 
-
+```jsx
 import {ButtonA, ButtonB} from './components';
 
 const applyConfig = (config) => {
   config.toolbar.activities.view.top.push(ButtonA)
-  config.toolbar.activities.view.bottom.push(ButtonB)
+  config.toolbar.activities.view.bottom.push({
+    match: '/documentation',
+    component: ButtonB,
+  })
   return config;
 };
 
 export default applyConfig;
+```
+
+ButtonB shows up only on /documentation.
 
 To insert new actions to the More component menu, use the `defaultMoreActions`
 key:
@@ -83,3 +89,34 @@ const applyConfig = (config) => {
 }
 
 export default applyConfig;
+```
+
+Same dropdown menu as above but restricted to route '/documentation':
+
+```jsx
+import { DropdownWithButton } from '@plone/volto/components/manage/Toolbar/Dropdown';
+
+const applyConfig = (config) => {
+  config.toolbar.activities.someActivity.top.push({
+    match: '/documentation',
+    component: (props) => (
+      <DropdownWithButton
+        {...props}
+        name="add-something"
+        title="Add something"
+        icon={<Icon name={addSVG} size="30px" />}
+        headerActions={
+          <button aria-label={'Add'} onClick={() => {}} tabIndex={0}>
+            <Icon name={addSVG} size="30px" />
+          </button>
+        }
+      >
+        <div>Hello!</div>
+      </DropdownWithButton>
+    ),
+});
+  return config;
+}
+
+export default applyConfig;
+```

@@ -310,28 +310,40 @@ export class BasicToolbarComponent extends Component {
             <div className="toolbar-body">
               <div className="toolbar-actions">
                 {this.props.inner}
-                {top.map((ActionComponent, index) => (
-                  <ActionComponent
-                    {...this.props}
-                    key={index}
-                    toggleMenu={this.toggleMenu}
-                    showMenu={this.state.showMenu}
-                    theToolbar={this.toolbarWindow}
-                    loadedComponentName={this.state.loadedComponentName}
-                  />
-                ))}
+                {top.map((ActionComponent, index) => {
+                  let Cmp = ActionComponent.hasOwnProperty('component')
+                    ? ActionComponent.component
+                    : ActionComponent;
+                  return !ActionComponent.hasOwnProperty('match') ||
+                    this.props.pathname === ActionComponent.match ? (
+                    <Cmp
+                      {...this.props}
+                      key={index}
+                      toggleMenu={this.toggleMenu}
+                      showMenu={this.state.showMenu}
+                      theToolbar={this.toolbarWindow}
+                      loadedComponentName={this.state.loadedComponentName}
+                    />
+                  ) : null;
+                })}
               </div>
               <div className="toolbar-bottom">
-                {bottom.map((BottomComponent, index) => (
-                  <BottomComponent
-                    {...this.props}
-                    key={index}
-                    toggleMenu={this.toggleMenu}
-                    showMenu={this.state.showMenu}
-                    theToolbar={this.toolbarWindow}
-                    loadedComponentName={this.state.loadedComponentName}
-                  />
-                ))}
+                {bottom.map((BottomComponent, index) => {
+                  let Cmp = BottomComponent.hasOwnProperty('component')
+                    ? BottomComponent.component
+                    : BottomComponent;
+                  return !BottomComponent.hasOwnProperty('match') ||
+                    this.props.pathname === BottomComponent.match ? (
+                    <Cmp
+                      {...this.props}
+                      key={index}
+                      toggleMenu={this.toggleMenu}
+                      showMenu={this.state.showMenu}
+                      theToolbar={this.toolbarWindow}
+                      loadedComponentName={this.state.loadedComponentName}
+                    />
+                  ) : null;
+                })}
               </div>
             </div>
             <div className="toolbar-handler">
