@@ -8,7 +8,148 @@ This upgrade guide lists all breaking changes in Volto and explains the
     `@plone/generator-volto`) is enough to fulfill all the changes. If you
     haven't heavilly modified it, moving things around and copying over your
     dependencies might do when dealing with upgrades. We keep the generator up
-    to date and in sync with current Volto release. Please notice that the generator is able to tell you when it runs that it's outdated. The generator is also able to "update" your project with the latest changes and propose you if you want to merge them. Just run it on the top of your project.
+    to date and in sync with current Volto release. Please notice that the generator is able to tell you when it runs that it's outdated. The generator is also able to "update" your project with the latest changes and propose you if you want to merge them, run it on the top of your project and answer the prompt.
+
+## Upgrading to Volto 12.x.x
+
+### Volto's Configuration Registry
+
+The configuration object in Volto is located in the `~/config` module and uses it as container of Volto's config taking advantage of the ES6 module system. So we "import" the config every time we need it, then the exported config data in that module "magically" is there whenever we want to access to it.
+
+It's been a while since we are experiencing undesired side-effects from "circular import dependency" problems in Volto, due to the very nature of the solution (importing the `~/config`). Although they aren't much noticeable, they are there, waiting for bitting us. In fact, these kind of problems are common in NodeJS world, and the very nature of how it works make them "workable" thanks to the NodeJS own import resolution algorithm. So the "build" always works, although we have them, but that leads to weird problems like (just to mention one of them) the HMR (Hot Module Reloader) does not work properly.
+
+That's why in this version we are introducing Volto's Configuration Registry. It's a centralised singleton that it is populated from the core config module and can be modified by the addons and the project itself. The code, instead of using imports to get it, it imports the singleton, then calls the proper registry inside it (`settings`, `blocks`, `views`, etc...)
+
+#### Changes your code (and local customizations)
+
+This is the old way:
+```js
+import { settings } from '~/config'
+...
+
+console.log(settings.apiPath)
+...
+```
+
+This is the new way:
+
+```js
+import config from '@plone/volto/registry'
+...
+
+console.log(config.settings.apiPath)
+config.settings.isMultilingual = true
+...
+```
+
+Your custom code (and Volto customizations using the shadowing engine) has
+to adapt to the new way of reading the config from the new Volto's Configuration
+although it won't be mandatory until Volto 14.
+
+!!warning Deprecation notice
+    The old way using the imports will still be working as long as you support it
+    in your project `src/config` but it will be deprecated, and stop working, from *Volto
+    14* on.
+
+#### Changes in your project's `routes` module
+
+```diff
+--- a/src/routes.js
++++ b/src/routes.js
+@@ -5,7 +5,7 @@
+
+ import { App } from '@plone/volto/components';
+ import { defaultRoutes } from '@plone/volto/routes';
+-import { addonRoutes } from '~/config';
++import config from '@plone/volto/registry';
+
+ /**
+  * Routes array.
+@@ -18,7 +18,7 @@ const routes = [
+     component: App, // Change this if you want a different component
+     routes: [
+       // Add your routes here
+-      ...(addonRoutes || []),
++      ...(config.addonRoutes || []),
+       ...defaultRoutes,
+     ],
+   },
+```
+
+#### Changes in in your project's `config` module
+
+You have to add this at the end of your `src/config.js` module:
+
+```js
+export default function applyConfig(config) {
+  // Add here your project config
+  return config;
+}
+```
+
+It has the same signature and it's used like the `applyConfig()` function in `index.js`
+module add-ons. You should place your configuration and mutate the config like you do in addons.
+
+Let's show it in an example. Let's say you have this config in your project's `src/config` module:
+
+```js
+export const settings = {
+  ...defaultSettings,
+  isMultilingual: true,
+  supportedLanguages: ['en', 'de'],
+  defaultLanguage: 'de',
+  navDepth: 3,
+};
+```
+
+then you'll add the `applyConfig()` function as default export and copy that settings key in it:
+
+```js
+export default function applyConfig(config) {
+  config.settings = {
+    ...config,
+    isMultilingual: true,
+    supportedLanguages: ['en', 'de'],
+    defaultLanguage: 'de',
+    navDepth: 3,
+  };
+  return config;
+}
+```
+
+After that, if you still have old code using imports, and you don't want to migrate it
+yet, you need to deal with duplication in the `src/config`, maintaining both, or if you
+want to prevent duplication you can use this trick:
+
+Change code like this:
+
+```js
+export const settings = {
+  ...defaultSettings,
+};
+```
+
+into this:
+
+```js
+import configRegistry from '@plone/volto/registry';
+
+export const settings = configRegistry.settings;
+```
+
+!!! note Recommended
+    Although you can keep both ways of using Volto's config it is
+    recommended you use the new registry based configuration as soon as possible and we
+    discourage you to continue using the old way.
+
+#### Going all in with the new Volto configuration registry
+
+1. Add `applyConfig()` function as default export, migrate your config there
+2. Completely remove all imports and exports from your project's `src/config`
+
+!!! warning
+    Of course, the add-ons you might be using might need to migrate to use the new
+    configuration registry too. Make sure all of them are already migrated.
 
 ## Upgrading to Volto 11.x.x
 
