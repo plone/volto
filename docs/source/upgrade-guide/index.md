@@ -107,7 +107,7 @@ then you'll add the `applyConfig()` function as default export and copy that set
 ```js
 export default function applyConfig(config) {
   config.settings = {
-    ...config,
+    ...config.settings,
     isMultilingual: true,
     supportedLanguages: ['en', 'de'],
     defaultLanguage: 'de',
@@ -148,7 +148,7 @@ export const settings = configRegistry.settings;
 2. Completely remove all imports and exports from your project's `src/config`
 
 !!! warning
-    Of course, the add-ons you might be using might need to migrate to use the new
+    The add-ons you might be using might need to migrate to use the new
     configuration registry too. Make sure all of them are already migrated.
 
 ## Upgrading to Volto 11.x.x
