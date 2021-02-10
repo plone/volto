@@ -101,7 +101,10 @@ export function flattenToAppURL(url) {
  * @returns {string} public URL
  */
 export function toPublicURL(url) {
-  return url ? window.location.origin.toString() + flattenToAppURL(url) : null;
+  const publicRoot = settings.apiPath
+    ?.replace('/api', '')
+    ?.replace('/Plone', '');
+  return url?.replace(settings.apiPath, publicRoot);
 }
 
 /**
