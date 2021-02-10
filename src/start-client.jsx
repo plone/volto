@@ -8,6 +8,7 @@ import { ReduxAsyncConnect } from 'redux-connect';
 import { loadableReady } from '@loadable/component';
 import routes from '~/routes';
 import { settings } from '~/config';
+import * as OfflinePluginRuntime from 'offline-plugin/runtime';
 import '~/theme';
 
 import configureStore from '@plone/volto/store';
@@ -19,6 +20,12 @@ import initSentry from '@plone/volto/sentry';
 export const history = createBrowserHistory();
 
 initSentry(Sentry);
+
+OfflinePluginRuntime.install({
+  onInstalled: () => {
+    console.log('Service worker installed');
+  },
+});
 
 function reactIntlErrorHandler(error) {
   if (process.env.NODE_ENV !== 'production') {

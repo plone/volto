@@ -2,6 +2,7 @@ const path = require('path');
 const makeLoaderFinder = require('razzle-dev-utils/makeLoaderFinder');
 const nodeExternals = require('webpack-node-externals');
 const LoadablePlugin = require('@loadable/webpack-plugin');
+const OfflinePlugin = require('offline-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const fs = require('fs');
 const RootResolverPlugin = require('./webpack-root-resolver');
@@ -50,6 +51,12 @@ const defaultModify = ({
       new LoadablePlugin({
         outputAsset: false,
         writeToDisk: { filename: path.resolve(`${projectRootPath}/build`) },
+      }),
+    );
+
+    config.plugins.push(
+      new OfflinePlugin({
+        responseStrategy: 'network-first',
       }),
     );
 
