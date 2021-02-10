@@ -21,7 +21,7 @@ const packageJson = require(path.join(projectRootPath, 'package.json'));
 const registry = new AddonConfigurationRegistry(projectRootPath);
 
 const defaultModify = ({
-  env: { target, dev, prod },
+  env: { target, dev },
   webpackConfig: config,
   webpackObject: webpack,
 }) => {

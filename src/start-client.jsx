@@ -21,7 +21,7 @@ export const history = createBrowserHistory();
 initSentry(Sentry);
 
 if (process.env.NODE_ENV === 'production') {
-  import('offline-plugin/runtime').then((plugin) => plugin.install()); // eslint-disable-line global-require
+  import('offline-plugin/runtime').then((plugin) => plugin.install());
 }
 
 function reactIntlErrorHandler(error) {
