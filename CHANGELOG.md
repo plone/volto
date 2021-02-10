@@ -6,6 +6,8 @@
 
 ### Feature
 
+- service worker for caching webpack assets via offline-plugin @nileshgulia1
+
 ### Bugfix
 
 ### Internal

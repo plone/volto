@@ -21,7 +21,7 @@ const packageJson = require(path.join(projectRootPath, 'package.json'));
 const registry = new AddonConfigurationRegistry(projectRootPath);
 
 const defaultModify = ({
-  env: { target, dev },
+  env: { target, dev, prod },
   webpackConfig: config,
   webpackObject: webpack,
 }) => {
@@ -35,6 +35,20 @@ const defaultModify = ({
     config.plugins.unshift(
       new webpack.DefinePlugin({
         __DEVELOPMENT__: false,
+      }),
+    );
+    config.plugins.push(
+      new OfflinePlugin({
+        appShell: '/',
+        caches: {
+          main: [':rest:'],
+          // All chunks marked as `additional`, loaded after main section
+          // and do not prevent SW to install. Change to `optional` if
+          // do not want them to be preloaded at all (cached only when first loaded)
+          additional: ['[name].[chunkhash:8].js'],
+        },
+        // Removes warning for about `additional` section usage
+        safeToUseOptionalCaches: true,
       }),
     );
   }
@@ -51,12 +65,6 @@ const defaultModify = ({
       new LoadablePlugin({
         outputAsset: false,
         writeToDisk: { filename: path.resolve(`${projectRootPath}/build`) },
-      }),
-    );
-
-    config.plugins.push(
-      new OfflinePlugin({
-        responseStrategy: 'network-first',
       }),
     );
 
