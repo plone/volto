@@ -37,20 +37,6 @@ const defaultModify = ({
         __DEVELOPMENT__: false,
       }),
     );
-    config.plugins.push(
-      new OfflinePlugin({
-        appShell: '/',
-        caches: {
-          main: [':rest:'],
-          // All chunks marked as `additional`, loaded after main section
-          // and do not prevent SW to install. Change to `optional` if
-          // do not want them to be preloaded at all (cached only when first loaded)
-          additional: ['[name].[chunkhash:8].js'],
-        },
-        // Removes warning for about `additional` section usage
-        safeToUseOptionalCaches: true,
-      }),
-    );
   }
 
   if (target === 'web') {
@@ -79,7 +65,22 @@ const defaultModify = ({
         name: dev,
       },
     });
-
+    if (process.env.NODE_ENV === 'production') {
+      config.plugins.push(
+        new OfflinePlugin({
+          appShell: '/',
+          caches: {
+            main: [':rest:'],
+            // All chunks marked as `additional`, loaded after main section
+            // and do not prevent SW to install. Change to `optional` if
+            // do not want them to be preloaded at all (cached only when first loaded)
+            additional: ['[name].[chunkhash:8].js'],
+          },
+          // Removes warning for about `additional` section usage
+          safeToUseOptionalCaches: true,
+        }),
+      );
+    }
     config.plugins.unshift(
       // restrict moment.js locales to en/de
       // see https://github.com/jmblog/how-to-optimize-momentjs-with-webpack for details
