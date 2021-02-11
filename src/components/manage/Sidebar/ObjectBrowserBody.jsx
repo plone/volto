@@ -6,19 +6,21 @@ import { connect } from 'react-redux';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import { Input, Segment } from 'semantic-ui-react';
 import { join } from 'lodash';
-import { searchContent } from '@plone/volto/actions';
-import { Icon } from '@plone/volto/components';
-import { flattenToAppURL } from '@plone/volto/helpers';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
+
+// These absolute imports (without using the corresponding centralized index.js) are required
+// to cut circular import problems, this file should never use them. This is because of
+// the very nature of the functionality of the component and its relationship with others
+import { searchContent } from '@plone/volto/actions/search/search';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers/Url/Url';
 
 import { settings } from '~/config';
 import backSVG from '@plone/volto/icons/back.svg';
-import pageSVG from '@plone/volto/icons/page.svg';
 import folderSVG from '@plone/volto/icons/folder.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import searchSVG from '@plone/volto/icons/zoom.svg';
 import linkSVG from '@plone/volto/icons/link.svg';
-import imageSVG from '@plone/volto/icons/image.svg';
 
 import ObjectBrowserNav from '@plone/volto/components/manage/Sidebar/ObjectBrowserNav';
 
@@ -31,9 +33,10 @@ const messages = defineMessages({
     id: 'Selected items',
     defaultMessage: 'Selected items',
   },
+  of: { id: 'Selected items - x of y', defaultMessage: 'of' },
 });
 
-function getParentURL(url) {
+export function getParentURL(url) {
   return flattenToAppURL(`${join(url.split('/').slice(0, -1), '/')}`) || '/';
 }
 
@@ -58,6 +61,7 @@ class ObjectBrowserBody extends Component {
     onChangeBlock: PropTypes.func.isRequired,
     onSelectItem: PropTypes.func,
     dataName: PropTypes.string,
+    maximumSelectionSize: PropTypes.number,
   };
 
   /**
@@ -70,6 +74,8 @@ class ObjectBrowserBody extends Component {
     href: '',
     onSelectItem: null,
     dataName: null,
+    selectableTypes: [],
+    maximumSelectionSize: null,
   };
 
   /**
@@ -84,8 +90,8 @@ class ObjectBrowserBody extends Component {
       currentFolder:
         this.props.mode === 'multiple'
           ? '/'
-          : this.props.data?.url
-          ? getParentURL(this.props.data.url)
+          : this.props.data?.contextURL
+          ? getParentURL(this.props.data.contextURL)
           : '/',
       currentImageFolder:
         this.props.mode === 'multiple'
@@ -142,7 +148,7 @@ class ObjectBrowserBody extends Component {
         : mode === 'image'
         ? this.state.selectedImage
         : this.state.selectedHref;
-    if (currentSelected) {
+    if (currentSelected && isInternalURL(currentSelected)) {
       this.props.searchContent(
         getParentURL(currentSelected),
         {
@@ -155,7 +161,7 @@ class ObjectBrowserBody extends Component {
       );
     } else {
       this.props.searchContent(
-        '/',
+        this.state.currentFolder,
         {
           'path.depth': 1,
           sort_on: 'getObjPositionInParent',
@@ -164,21 +170,6 @@ class ObjectBrowserBody extends Component {
         },
         `${this.props.block}-${mode}`,
       );
-    }
-  };
-
-  getIcon = (icon) => {
-    switch (icon) {
-      case 'Folder':
-        return <Icon name={folderSVG} size="24px" />;
-      case 'Document':
-        return <Icon name={pageSVG} size="24px" />;
-      case 'Image':
-        return <Icon name={imageSVG} size="24px" />;
-      case 'File':
-        return <Icon name={pageSVG} size="24px" />;
-      default:
-        return <Icon name={pageSVG} size="24px" />;
     }
   };
 
@@ -272,7 +263,7 @@ class ObjectBrowserBody extends Component {
     } else if (mode === 'image') {
       onChangeBlock(block, {
         ...data,
-        url,
+        url: item.getURL,
         alt: title,
       });
     } else if (mode === 'link') {
@@ -291,6 +282,12 @@ class ObjectBrowserBody extends Component {
     });
   };
 
+  isSelectable = (item) => {
+    return this.props.selectableTypes.length > 0
+      ? this.props.selectableTypes.indexOf(item['@type']) >= 0
+      : true;
+  };
+
   handleClickOnItem = (item) => {
     if (this.props.mode === 'image') {
       if (item.is_folderish) {
@@ -300,7 +297,23 @@ class ObjectBrowserBody extends Component {
         this.onSelectItem(item);
       }
     } else {
-      this.onSelectItem(item);
+      if (this.isSelectable(item)) {
+        if (
+          !this.props.maximumSelectionSize ||
+          !this.props.data ||
+          this.props.data.length < this.props.maximumSelectionSize
+        ) {
+          this.onSelectItem(item);
+          let length = this.props.data ? this.props.data.length : 0;
+          if (length + 1 >= this.props.maximumSelectionSize) {
+            this.props.closeObjectBrowser();
+          }
+        } else {
+          this.props.closeObjectBrowser();
+        }
+      } else {
+        this.navigateTo(item['@id']);
+      }
     }
   };
 
@@ -314,8 +327,14 @@ class ObjectBrowserBody extends Component {
         this.props.closeObjectBrowser();
       }
     } else {
-      this.onSelectItem(item);
-      this.props.closeObjectBrowser();
+      if (this.isSelectable(item)) {
+        if (this.props.data.length < this.props.maximumSelectionSize) {
+          this.onSelectItem(item);
+        }
+        this.props.closeObjectBrowser();
+      } else {
+        this.navigateTo(item['@id']);
+      }
     }
   };
 
@@ -354,15 +373,13 @@ class ObjectBrowserBody extends Component {
               />
             )}
             {this.state.showSearchInput ? (
-              <form>
-                <Input
-                  className="search"
-                  onChange={this.onSearch}
-                  placeholder={this.props.intl.formatMessage(
-                    messages.SearchInputPlaceholder,
-                  )}
-                />
-              </form>
+              <Input
+                className="search"
+                onChange={this.onSearch}
+                placeholder={this.props.intl.formatMessage(
+                  messages.SearchInputPlaceholder,
+                )}
+              />
             ) : this.props.mode === 'image' ? (
               <h2>
                 <FormattedMessage
@@ -382,7 +399,10 @@ class ObjectBrowserBody extends Component {
             <button onClick={this.toggleSearchInput}>
               <Icon name={searchSVG} size="24px" />
             </button>
-            <button onClick={this.props.closeObjectBrowser}>
+            <button
+              className="clearSVG"
+              onClick={this.props.closeObjectBrowser}
+            >
               <Icon name={clearSVG} size="24px" />
             </button>
           </header>
@@ -391,6 +411,13 @@ class ObjectBrowserBody extends Component {
             <Segment className="infos">
               {this.props.intl.formatMessage(messages.SelectedItems)}:{' '}
               {this.props.data?.length}
+              {this.props.maximumSelectionSize && (
+                <>
+                  {' '}
+                  {this.props.intl.formatMessage(messages.of)}{' '}
+                  {this.props.maximumSelectionSize}
+                </>
+              )}
             </Segment>
           )}
           <ObjectBrowserNav
@@ -411,11 +438,11 @@ class ObjectBrowserBody extends Component {
                     },
                   ]
             }
-            getIcon={this.getIcon}
             handleClickOnItem={this.handleClickOnItem}
             handleDoubleClickOnItem={this.handleDoubleClickOnItem}
             mode={this.props.mode}
             navigateTo={this.navigateTo}
+            isSelectable={this.isSelectable}
           />
         </Segment.Group>
       </aside>,

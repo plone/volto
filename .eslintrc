@@ -19,6 +19,7 @@
   "rules": {
     "import/no-unresolved": 1,
     "no-alert": 1,
+    "no-console": 1,
     "no-debugger": 1,
     "prettier/prettier": [
       "error",
@@ -36,7 +37,8 @@
       "babel-plugin-root-import": {
         "rootPathSuffix": "src"
       }
-    }
+    },
+    "import/core-modules": [ "load-volto-addons" ]
   },
   "globals": {
     "root": true,
@@ -47,6 +49,7 @@
     "__DEVTOOLS__": true,
     "__DEBUG__": true,
     "__SSR__": true,
+    "__SENTRY__": true,
     "cy": true,
     "Cypress": true,
     "jest": true,

@@ -3,7 +3,6 @@
 exports[`renders a textarea widget component 1`] = `
 <div
   className="inline field textarea"
-  id="field-my-field"
 >
   <div
     className="ui grid"
@@ -28,7 +27,6 @@ exports[`renders a textarea widget component 1`] = `
         className="eight wide column"
       >
         <textarea
-          disabled={false}
           id="field-my-field"
           name="my-field"
           onChange={[Function]}

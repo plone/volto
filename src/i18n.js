@@ -1,3 +1,4 @@
+/* eslint no-console: 0 */
 /**
  * i18n script.
  * @module scripts/i18n
@@ -8,6 +9,12 @@ const glob = require('glob').sync;
 const fs = require('fs');
 const Pofile = require('pofile');
 const babel = require('@babel/core');
+
+const path = require('path');
+const projectRootPath = path.resolve('.');
+const packageJson = require(path.join(projectRootPath, 'package.json'));
+const AddonConfigurationRegistry = require('../addon-registry');
+const registry = new AddonConfigurationRegistry(projectRootPath);
 
 /**
  * Extract messages into separate JSON files
@@ -37,8 +44,13 @@ function getMessages() {
         // We ignore the existing customized shadowed components ones, since most
         // probably we won't be overriding them
         // If so, we should do it in the config object or somewhere else
+        // We also ignore the addons folder since they are populated using
+        // their own locales files and taken care separatedly in this script
         glob('build/messages/src/**/*.json', {
-          ignore: 'build/messages/src/customizations/**',
+          ignore: [
+            'build/messages/src/customizations/**',
+            'build/messages/src/addons/**',
+          ],
         }),
         (filename) =>
           map(JSON.parse(fs.readFileSync(filename, 'utf8')), (message) => ({
@@ -120,12 +132,29 @@ msgstr ""
 function poToJson() {
   map(glob('locales/**/*.po'), (filename) => {
     let { items } = Pofile.parse(fs.readFileSync(filename, 'utf8'));
+    const lang = filename.match(/locales\/(.*)\/LC_MESSAGES\//)[1];
+
+    // Merge addons locales
+    if (packageJson.addons) {
+      registry.addonNames.forEach((addon) => {
+        const addonlocale = `${registry.packages[addon].modulePath}/../${filename}`;
+        if (fs.existsSync(addonlocale)) {
+          const addonItems = Pofile.parse(fs.readFileSync(addonlocale, 'utf8'))
+            .items;
+          items = [...addonItems, ...items];
+          console.log(`Merging ${addon} locales for ${lang}`);
+        }
+      });
+    }
+
+    // Merge project locales, the project customization wins
     const lib = `node_modules/@plone/volto/${filename}`;
     if (fs.existsSync(lib)) {
       const libItems = Pofile.parse(fs.readFileSync(lib, 'utf8')).items;
       items = [...libItems, ...items];
     }
-    const lang = filename.match(/locales\/(.*)\/LC_MESSAGES\//)[1];
+
+    // Write it
     fs.writeFileSync(
       `locales/${lang}.json`,
       JSON.stringify(

@@ -42,11 +42,19 @@ exports[`Contact form renders a contact form 1`] = `
             <div
               className="ui segment primary"
             >
-              Contact form
+              <h1
+                style={
+                  Object {
+                    "fontSize": "16px",
+                  }
+                }
+              >
+                 
+                Contact form
+              </h1>
             </div>
             <div
               className="inline field text"
-              id="field-name"
             >
               <div
                 className="ui grid"
@@ -74,10 +82,13 @@ exports[`Contact form renders a contact form 1`] = `
                       className="ui input"
                     >
                       <input
-                        disabled={false}
                         id="field-name"
+                        maxLength={null}
+                        minLength={null}
                         name="name"
+                        onBlur={[Function]}
                         onChange={[Function]}
+                        onClick={[Function]}
                         type="text"
                         value=""
                       />
@@ -88,7 +99,6 @@ exports[`Contact form renders a contact form 1`] = `
             </div>
             <div
               className="inline required field text"
-              id="field-from"
             >
               <div
                 className="ui grid"
@@ -116,10 +126,13 @@ exports[`Contact form renders a contact form 1`] = `
                       className="ui input"
                     >
                       <input
-                        disabled={false}
                         id="field-from"
+                        maxLength={null}
+                        minLength={null}
                         name="from"
+                        onBlur={[Function]}
                         onChange={[Function]}
+                        onClick={[Function]}
                         type="text"
                         value=""
                       />
@@ -130,7 +143,6 @@ exports[`Contact form renders a contact form 1`] = `
             </div>
             <div
               className="inline field text"
-              id="field-subject"
             >
               <div
                 className="ui grid"
@@ -158,10 +170,13 @@ exports[`Contact form renders a contact form 1`] = `
                       className="ui input"
                     >
                       <input
-                        disabled={false}
                         id="field-subject"
+                        maxLength={null}
+                        minLength={null}
                         name="subject"
+                        onBlur={[Function]}
                         onChange={[Function]}
+                        onClick={[Function]}
                         type="text"
                         value=""
                       />
@@ -172,7 +187,6 @@ exports[`Contact form renders a contact form 1`] = `
             </div>
             <div
               className="inline required field textarea"
-              id="field-message"
             >
               <div
                 className="ui grid"
@@ -197,7 +211,6 @@ exports[`Contact form renders a contact form 1`] = `
                     className="eight wide column"
                   >
                     <textarea
-                      disabled={false}
                       id="field-message"
                       name="message"
                       onChange={[Function]}
@@ -320,11 +333,19 @@ exports[`Contact form renders a contact form with error message 1`] = `
             <div
               className="ui segment primary"
             >
-              Contact form
+              <h1
+                style={
+                  Object {
+                    "fontSize": "16px",
+                  }
+                }
+              >
+                 
+                Contact form
+              </h1>
             </div>
             <div
               className="inline field text"
-              id="field-name"
             >
               <div
                 className="ui grid"
@@ -352,10 +373,13 @@ exports[`Contact form renders a contact form with error message 1`] = `
                       className="ui input"
                     >
                       <input
-                        disabled={false}
                         id="field-name"
+                        maxLength={null}
+                        minLength={null}
                         name="name"
+                        onBlur={[Function]}
                         onChange={[Function]}
+                        onClick={[Function]}
                         type="text"
                         value=""
                       />
@@ -366,7 +390,6 @@ exports[`Contact form renders a contact form with error message 1`] = `
             </div>
             <div
               className="inline required field text"
-              id="field-from"
             >
               <div
                 className="ui grid"
@@ -394,10 +417,13 @@ exports[`Contact form renders a contact form with error message 1`] = `
                       className="ui input"
                     >
                       <input
-                        disabled={false}
                         id="field-from"
+                        maxLength={null}
+                        minLength={null}
                         name="from"
+                        onBlur={[Function]}
                         onChange={[Function]}
+                        onClick={[Function]}
                         type="text"
                         value=""
                       />
@@ -408,7 +434,6 @@ exports[`Contact form renders a contact form with error message 1`] = `
             </div>
             <div
               className="inline field text"
-              id="field-subject"
             >
               <div
                 className="ui grid"
@@ -436,10 +461,13 @@ exports[`Contact form renders a contact form with error message 1`] = `
                       className="ui input"
                     >
                       <input
-                        disabled={false}
                         id="field-subject"
+                        maxLength={null}
+                        minLength={null}
                         name="subject"
+                        onBlur={[Function]}
                         onChange={[Function]}
+                        onClick={[Function]}
                         type="text"
                         value=""
                       />
@@ -450,7 +478,6 @@ exports[`Contact form renders a contact form with error message 1`] = `
             </div>
             <div
               className="inline required field textarea"
-              id="field-message"
             >
               <div
                 className="ui grid"
@@ -475,7 +502,6 @@ exports[`Contact form renders a contact form with error message 1`] = `
                     className="eight wide column"
                   >
                     <textarea
-                      disabled={false}
                       id="field-message"
                       name="message"
                       onChange={[Function]}

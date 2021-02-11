@@ -13,10 +13,12 @@ const methods = ['get', 'post', 'put', 'patch', 'del'];
 /**
  * Format the url.
  * @function formatUrl
- * @param {string} path Path to be formatted.
+ * @param {string} path Path (or URL) to be formatted.
  * @returns {string} Formatted path.
  */
 function formatUrl(path) {
+  if (path.startsWith('http://') || path.startsWith('https://')) return path;
+
   const adjustedPath = path[0] !== '/' ? `/${path}` : path;
   let apiPath = '';
   if (settings.internalApiPath && __SERVER__) {
@@ -65,8 +67,8 @@ class Api {
             request.send(data);
           }
 
-          request.end((err, { body } = {}) =>
-            err ? reject(err) : resolve(body),
+          request.end((err, response) =>
+            err ? reject(err) : resolve(response.body || response.text),
           );
         });
         promise.request = request;

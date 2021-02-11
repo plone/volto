@@ -29,17 +29,26 @@ const InlineForm = ({
   onChangeField,
   schema,
   title,
+  icon,
+  headerActions,
+  footer,
   intl,
 }) => {
   const _ = intl.formatMessage;
   const defaultFieldset = schema.fieldsets.find((o) => o.id === 'default');
   const other = schema.fieldsets.filter((o) => o.id !== 'default');
   return (
-    <Segment.Group raised>
+    <Segment.Group raised className="form">
       <header className="header pulled">
+        {icon}
         <h2>{title || _(messages.editValues)}</h2>
+        {headerActions}
       </header>
-      {description && <Segment secondary>{description}</Segment>}
+      {description && (
+        <Segment secondary className="attached">
+          {description}
+        </Segment>
+      )}
       {keys(errors).length > 0 && (
         <Message
           icon="warning"
@@ -60,35 +69,35 @@ const InlineForm = ({
       )}
 
       <div id={`blockform-fieldset-${defaultFieldset.id}`}>
-        <Segment className="form sidebar-image-data">
-          {map(defaultFieldset.fields, (field, index) => (
-            <Field
-              {...schema.properties[field]}
-              id={field}
-              fieldSet={defaultFieldset.title.toLowerCase()}
-              focus={index === 0}
-              value={formData[field]}
-              required={schema.required.indexOf(field) !== -1}
-              onChange={(id, value) => {
-                onChangeField(id, value);
-              }}
-              key={field}
-              error={errors[field]}
-              block={block}
-            />
-          ))}
-        </Segment>
+        {map(defaultFieldset.fields, (field, index) => (
+          <Field
+            {...schema.properties[field]}
+            id={field}
+            fieldSet={defaultFieldset.title.toLowerCase()}
+            focus={index === 0}
+            value={formData[field] || schema.properties[field].default}
+            required={schema.required.indexOf(field) !== -1}
+            onChange={(id, value) => {
+              onChangeField(id, value);
+            }}
+            key={field}
+            error={errors[field]}
+            block={block}
+          />
+        ))}
       </div>
 
       {other.map((fieldset) => (
         <div key={fieldset.id} id={`blockform-fieldset-${fieldset.id}`}>
-          {title && <Segment className="secondary">{fieldset.title}</Segment>}
-          <Segment className="form sidebar-image-data">
+          {title && (
+            <Segment className="secondary attached">{fieldset.title}</Segment>
+          )}
+          <Segment className="attached">
             {map(fieldset.fields, (field) => (
               <Field
                 {...schema.properties[field]}
                 id={field}
-                value={formData[field]}
+                value={formData[field] || schema.properties[field].default}
                 required={schema.required.indexOf(field) !== -1}
                 onChange={(id, value) => {
                   onChangeField(id, value);
@@ -101,6 +110,7 @@ const InlineForm = ({
           </Segment>
         </div>
       ))}
+      {footer}
     </Segment.Group>
   );
 };

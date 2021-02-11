@@ -1,0 +1,2545 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Plone\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-15T08:53:14.294Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
+"Language: eu\n"
+"Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Language-Code: eu\n"
+"Language-Name: Basque\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: volto\n"
+"X-Generator: Poedit 2.3\n"
+"X-Poedit-Bookmarks: -1,38,-1,-1,-1,-1,-1,-1,-1,-1\n"
+
+#: components/manage/Blocks/HTML/Edit
+msgid "<p>Add some HTML here</p>"
+msgstr "<p>HTMLa idatzi hemen</p>"
+
+#: components/theme/Footer/Footer
+msgid "Accessibility"
+msgstr "Irisgarritasuna"
+
+#: components/theme/Register/Register
+msgid "Account Registration Completed"
+msgstr "Izen-ematea ondo egin da"
+
+#: components/theme/PasswordReset/PasswordReset
+msgid "Account activation completed"
+msgstr "Erabiltzaile kontua ondo sortu da"
+
+#: components/manage/Controlpanels/ModerateComments
+msgid "Action"
+msgstr "Ekintza"
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Actions"
+msgstr "Ekintzak"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Activate and deactivate"
+msgstr "Aktibatu eta desaktibatu"
+
+#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Toolbar/Toolbar
+#: components/manage/Widgets/SchemaWidget
+#: helpers/MessageLabels/MessageLabels
+msgid "Add"
+msgstr "Gehitu"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Add Addons"
+msgstr "Gehitu gehigarriak"
+
+#: components/manage/Toolbar/Types
+msgid "Add Content"
+msgstr "Gehitu edukia"
+
+#: components/manage/Toolbar/Types
+msgid "Add Translation…"
+msgstr "Gehitu itzulpena..."
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Add User"
+msgstr "Gehitu erabiltzailea"
+
+#: components/manage/Blocks/Description/Edit
+msgid "Add a description…"
+msgstr "Gehitu deskribapena..."
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Add block…"
+msgstr "Gehitu blokea..."
+
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "Add criteria"
+msgstr "Gehitu irizpidea"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Add date"
+msgstr "Gehitu data"
+
+#: components/manage/Widgets/SchemaWidget
+msgid "Add field"
+msgstr "Gehitu eremua"
+
+#: components/manage/Widgets/SchemaWidget
+msgid "Add fieldset"
+msgstr "Gehitu eremu-multzoa"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Add group"
+msgstr "Gehitu taldea"
+
+#: components/manage/Controlpanels/ContentTypes
+msgid "Add new content type"
+msgstr "Gehitu elementu-mota berria"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Add new group"
+msgstr "Gehitu talde berria"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Add new user"
+msgstr "Gehitu erabiltzaile berria"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Add to Groups"
+msgstr "Gehitu taldeetara"
+
+#: components/manage/Add/Add
+msgid "Add {type}"
+msgstr "Gehitu {type}"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Add-ons Settings"
+msgstr "Gehigarrien ezarpenak"
+
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+msgid "Additional date"
+msgstr "Data gehigarria"
+
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "Alignment"
+msgstr "Alineazio-estiloak"
+
+#: components/manage/Contents/Contents
+msgid "All"
+msgstr "Guztiak"
+
+#: components/theme/Search/Search
+msgid "Alphabetically"
+msgstr "Alfabetikoki"
+
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+msgid "Alt text"
+msgstr "Ordezko testua (alt)"
+
+#: components/manage/Widgets/SchemaWidget
+msgid "Are you sure you want to delete this field?"
+msgstr "Eremu hau ezabatu egin nahi duzu?"
+
+#: components/manage/Widgets/SchemaWidget
+msgid "Are you sure you want to delete this fieldset including all fields?"
+msgstr "Eremu-multzo hau eta bere eremu guztiak ezabatu nahi dituzu?"
+
+#: components/manage/Contents/Contents
+msgid "Ascending"
+msgstr "Goraka"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Available"
+msgstr "Aukerak"
+
+#: components/manage/Contents/Contents
+#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/DatabaseInformation
+#: components/manage/Controlpanels/ModerateComments
+#: components/manage/Diff/Diff
+#: components/manage/History/History
+#: components/manage/Multilingual/ManageTranslations
+#: components/manage/Preferences/ChangePassword
+#: components/manage/Preferences/PersonalInformation
+#: components/manage/Preferences/PersonalPreferences
+#: components/manage/Sharing/Sharing
+#: components/manage/Toolbar/Toolbar
+#: components/theme/ContactForm/ContactForm
+#: helpers/MessageLabels/MessageLabels
+msgid "Back"
+msgstr "Atzera"
+
+#: components/manage/Diff/Diff
+msgid "Base"
+msgstr "Oinarria"
+
+#: components/manage/Sidebar/Sidebar
+msgid "Block"
+msgstr "Blokea"
+
+#: components/manage/Blocks/Listing/ListingSidebar
+msgid "Block style"
+msgstr "Blokearen estiloa"
+
+#: components/theme/Login/Login
+msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
+msgstr "Bai e-posta helbideak eta bai pasahitzak maiuskula eta minuskulak bereizten dituzte, egiaztatu maiuskulak blokeatzeko tekla ez dagoela aktibatuta."
+
+#: components/theme/Breadcrumbs/Breadcrumbs
+msgid "Breadcrumbs"
+msgstr "Nabigazio arrastoa"
+
+#: components/manage/Contents/ContentsUploadModal
+msgid "Browse"
+msgstr "Arakatu"
+
+#: components/manage/Blocks/Image/Edit
+msgid "Browse the site, drop an image, or type an URL"
+msgstr "Atarian bilatu, irudi bat hona arrastatu edo URL bat idatzi"
+
+#: components/manage/Sharing/Sharing
+msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+msgstr "Defektuz, elementu hau barnean duen karpetaren baimenak heredatu egiten dira. Hau desaktibatzen baduzu, hemen zehaztutako baimenak bakarrik aplikatuko dira. {inherited} ikurrak heredatutako balioa adierazten du. Era berean, {global} ikurrak rol globala adierazten du, atariaren kudeatzaileak kudeatzen duen rola."
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Cache Name"
+msgstr "Katxearen izena"
+
+#: components/manage/Controlpanels/ContentTypeLayout
+msgid "Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled"
+msgstr "Ezin da <strong>{type}</strong> elementu-motaren itxura aldatu, ez baitu <strong>Volto Blocks</strong> portaera aktibatuta"
+
+#: components/manage/Controlpanels/ContentTypeLayout
+msgid "Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>"
+msgstr "Ezin da <strong>{type}</strong> elementu-motaren itxura aldatu, <strong>Volto Blocks</strong> portaera aktibatuta izan arren <strong>irakurtzeko-moduan bakarrik</strong> baitago"
+
+#: components/manage/Add/Add
+#: components/manage/Contents/ContentsUploadModal
+#: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Controlpanels/Controlpanel
+#: components/manage/Delete/Delete
+#: components/manage/Edit/Edit
+#: components/manage/Form/ModalForm
+#: components/manage/Sharing/Sharing
+#: components/theme/Login/Login
+#: helpers/MessageLabels/MessageLabels
+msgid "Cancel"
+msgstr "Utzi"
+
+#: components/manage/Blocks/Table/Edit
+msgid "Cell"
+msgstr "Zelda"
+
+#: components/manage/Blocks/Image/ImageSizeWidget
+#: components/manage/Blocks/Maps/Edit
+#: components/manage/Sidebar/AlignBlock
+msgid "Center"
+msgstr "Erdiratu"
+
+#: components/manage/History/History
+msgid "Change Note"
+msgstr "Aldaketaren inguruko oharra"
+
+#: components/manage/Preferences/ChangePassword
+msgid "Change Password"
+msgstr "Pasahitza aldatu"
+
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Change State"
+msgstr "Egoera aldatu"
+
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Change workflow state recursively"
+msgstr "Lan-fluxuaren egoera errekurtsiboki aldatu"
+
+#: components/manage/Preferences/ChangePassword
+#: components/manage/Preferences/PersonalInformation
+#: components/manage/Preferences/PersonalPreferences
+msgid "Changes saved"
+msgstr "Aldaketak ondo gorde dira"
+
+#: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Controlpanels/Controlpanel
+msgid "Changes saved."
+msgstr "Aldaketak ondo gorde dira."
+
+#: components/manage/Widgets/SchemaWidget
+msgid "Checkbox"
+msgstr "Aukeraketa-kutxa"
+
+#: components/manage/Widgets/SelectWidget
+msgid "Choices"
+msgstr "Aukerak"
+
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Choose Image"
+msgstr "Aukeratu irudia"
+
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Choose Target"
+msgstr "Aukeratu helburua"
+
+#: components/manage/Widgets/FileWidget
+msgid "Choose a file"
+msgstr ""
+
+#: components/manage/Blocks/HTML/Edit
+msgid "Clear"
+msgstr ""
+
+#: components/theme/View/ImageView
+msgid "Click to download full sized image"
+msgstr "Egin klik tamaina osoko irudia deskargatzeko..."
+
+#: components/manage/Widgets/SelectWidget
+msgid "Close"
+msgstr "Itxi"
+
+#: components/theme/Navigation/Navigation
+msgid "Close menu"
+msgstr "Itxi menua"
+
+#: components/manage/Blocks/HTML/Edit
+msgid "Code"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
+msgid "Collection"
+msgstr "Bilduma"
+
+#: components/manage/Controlpanels/ModerateComments
+#: components/theme/Comments/CommentEditModal
+#: components/theme/Comments/Comments
+msgid "Comment"
+msgstr "Iruzkina"
+
+#: components/manage/Controlpanels/ModerateComments
+msgid "Commenter"
+msgstr "Erantzuna eman duena"
+
+#: components/manage/Diff/Diff
+msgid "Compare"
+msgstr "Alderatu"
+
+#: components/manage/Preferences/ChangePassword
+#: components/theme/PasswordReset/PasswordReset
+msgid "Confirm password"
+msgstr "Pasahitza berretsi"
+
+#: components/theme/ConnectionRefused/ConnectionRefused
+msgid "Connection refused"
+msgstr "Konexioak huts egin du"
+
+#: components/theme/Footer/Footer
+msgid "Contact"
+msgstr "Kontaktua"
+
+#: components/theme/ContactForm/ContactForm
+msgid "Contact form"
+msgstr "Kontaktu-formularioa"
+
+#: components/manage/Blocks/Listing/Edit
+msgid "Contained items"
+msgstr "Barneko elementuak"
+
+#: components/manage/Blocks/Listing/ListingSidebar
+msgid "Content"
+msgstr "Edukia"
+
+#: components/manage/Controlpanels/ContentTypes
+msgid "Content type created"
+msgstr "Elementu-mota gehitu da"
+
+#: components/manage/Controlpanels/ContentTypes
+msgid "Content type deleted"
+msgstr "Elementu-mota ezabatu da"
+
+#: components/manage/Contents/Contents
+#: components/manage/Toolbar/Toolbar
+msgid "Contents"
+msgstr "Edukiak"
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsItem
+msgid "Copy"
+msgstr "Kopiatu"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Copy blocks"
+msgstr ""
+
+#: components/theme/Footer/Footer
+msgid "Copyright"
+msgstr "Copyright"
+
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "Copyright statement or other rights information on this item."
+msgstr "Elementu honen Copyright adierazpena"
+
+#: components/manage/Contents/Contents
+msgid "Created on"
+msgstr "Sorrera data"
+
+#: components/manage/Contents/Contents
+msgid "Creator"
+msgstr "Sortzailea"
+
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "Creators"
+msgstr "Sortzaileak"
+
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "Criteria"
+msgstr "Irizpidea"
+
+#: components/manage/Preferences/ChangePassword
+msgid "Current password"
+msgstr "Oraingo pasahitza"
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsItem
+msgid "Cut"
+msgstr "Ebaki"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Cut blocks"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Daily"
+msgstr "Egunero"
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Database Information"
+msgstr "Datu-basearen informazioa"
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Database Location"
+msgstr "Datu-basearen kokalekua"
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Database Size"
+msgstr "Datu-basearen tamaina"
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Database main"
+msgstr "Datu-base nagusia"
+
+#: components/manage/Controlpanels/ModerateComments
+#: components/manage/Widgets/DatetimeWidget
+msgid "Date"
+msgstr "Data"
+
+#: components/theme/Search/Search
+msgid "Date (newest first)"
+msgstr "Data (berriena lehenengo)"
+
+#: components/manage/Contents/ContentsPropertiesModal
+#: components/manage/Contents/ContentsRenameModal
+#: components/manage/Contents/ContentsTagsModal
+#: components/manage/Contents/ContentsWorkflowModal
+#: components/manage/Preferences/ChangePassword
+#: components/manage/Preferences/PersonalInformation
+#: components/manage/Preferences/PersonalPreferences
+#: components/manage/Widgets/QuerystringWidget
+#: components/manage/Widgets/SchemaWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/WysiwygWidget
+#: components/theme/Comments/CommentEditModal
+#: components/theme/Comments/Comments
+#: components/theme/ContactForm/ContactForm
+#: components/theme/PasswordReset/PasswordReset
+#: components/theme/PasswordReset/RequestPasswordReset
+#: components/theme/Register/Register
+msgid "Default"
+msgstr "Defektuzkoa"
+
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypesActions
+#: components/manage/Controlpanels/ModerateComments
+#: components/manage/Controlpanels/UsersControlpanelGroups
+#: components/manage/Controlpanels/UsersControlpanelUser
+#: components/manage/Delete/Delete
+#: components/manage/Widgets/FormFieldWrapper
+#: components/manage/Widgets/ObjectBrowserWidget
+#: components/manage/Widgets/WysiwygWidget
+#: components/theme/Comments/Comments
+msgid "Delete"
+msgstr "Ezabatu"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Delete Group"
+msgstr "Ezabatu taldea"
+
+#: components/manage/Controlpanels/ContentTypes
+msgid "Delete Type"
+msgstr "Ezabatu elementu-mota"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Delete User"
+msgstr "Ezabatu erabiltzailea"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Delete blocks"
+msgstr ""
+
+#: components/manage/Blocks/Table/Edit
+msgid "Delete col"
+msgstr "Ezabatu zutabea"
+
+#: components/manage/Blocks/Table/Edit
+msgid "Delete row"
+msgstr "Ezabatu errenkada"
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "Depth"
+msgstr ""
+
+#: components/manage/Contents/Contents
+msgid "Descending"
+msgstr "Beheraka"
+
+#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Widgets/QuerystringWidget
+#: components/manage/Widgets/SchemaWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/WysiwygWidget
+#: components/theme/View/TabularView
+#: helpers/MessageLabels/MessageLabels
+msgid "Description"
+msgstr "Deskribapena"
+
+#: components/manage/Diff/Diff
+msgid "Diff"
+msgstr "Desberdintasunak"
+
+#: components/manage/Diff/Diff
+msgid "Difference between revision {one} and {two} of {title}"
+msgstr "{title} elementuaren {one} eta {two} errebisioen arteko desberdintasunak"
+
+#: components/theme/Footer/Footer
+msgid "Distributed under the {license}."
+msgstr "{license} lizentziapean banatuta."
+
+#: components/manage/Blocks/Table/Edit
+msgid "Divide each row into separate cells"
+msgstr "Errenkada bakoitza zeldatan banatu"
+
+#: components/manage/Contents/Contents
+msgid "Do you really want to delete the following items?"
+msgstr "Elementu hauek ezabatu egin nahi dituzu?"
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Do you really want to delete the group {groupname}?"
+msgstr "{groupname} taldea ezabatu egin nahi duzu?"
+
+#: components/manage/Controlpanels/ContentTypes
+msgid "Do you really want to delete the type {typename}?"
+msgstr "{typename} elementu-mota ezabatu egin nahi duzu?"
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Do you really want to delete the user {username}?"
+msgstr "{username} erabiltzailea ezabatu egin nahi duzu?"
+
+#: components/manage/Delete/Delete
+msgid "Do you really want to delete this item?"
+msgstr "Elementu hau ezabatu egin nahi duzu?"
+
+#: components/manage/Sidebar/Sidebar
+msgid "Document"
+msgstr "Dokumentua"
+
+#: components/manage/Contents/ContentsUploadModal
+msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
+msgstr "Arrastatu fitxategiak hona edo erabili Arakatu botoia."
+
+#: components/manage/Widgets/FileWidget
+msgid "Drop file here to replace the existing file"
+msgstr ""
+
+#: components/manage/Widgets/FileWidget
+msgid "Drop file here to upload a new file"
+msgstr ""
+
+#: components/manage/Widgets/FileWidget
+msgid "Drop files here ..."
+msgstr ""
+
+#: components/manage/Preferences/PersonalInformation
+#: components/theme/Register/Register
+msgid "E-mail"
+msgstr "Eposta"
+
+#: components/theme/PasswordReset/PasswordReset
+msgid "E-mail addresses do not match."
+msgstr "Eposta helbideak ez datoz bat"
+
+#: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypesActions
+#: components/manage/Controlpanels/ModerateComments
+#: components/manage/Toolbar/Toolbar
+#: components/manage/Widgets/FormFieldWrapper
+#: components/manage/Widgets/ObjectBrowserWidget
+#: components/theme/Comments/Comments
+msgid "Edit"
+msgstr "Editatu"
+
+#: components/theme/Comments/CommentEditModal
+msgid "Edit comment"
+msgstr "Editatu erantzuna"
+
+#: components/manage/Widgets/SchemaWidget
+msgid "Edit field"
+msgstr "Editatu eramua"
+
+#: components/manage/Widgets/SchemaWidget
+msgid "Edit fieldset"
+msgstr "Editatu eremu-multzoa"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Edit recurrence"
+msgstr "Editatu errepikapena"
+
+#: components/manage/Form/InlineForm
+msgid "Edit values"
+msgstr "Editatu balioak"
+
+#: components/manage/Edit/Edit
+msgid "Edit {title}"
+msgstr "Editatu {title}"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Email"
+msgstr "Eposta"
+
+#: components/theme/ContactForm/ContactForm
+msgid "Email sent"
+msgstr "Eposta ondo bidali da"
+
+#: components/manage/Blocks/Maps/Edit
+msgid "Embed code error, please follow the instructions and try again."
+msgstr "Itsatsitako kodearen errorea, jarraitu argibideak eta saiatu berriz."
+
+#: components/manage/Blocks/Maps/View
+msgid "Embeded Google Maps"
+msgstr "Itsatsitako Google Maps"
+
+#: components/manage/Controlpanels/ContentTypeLayout
+msgid "Enable editable Blocks"
+msgstr "Aktibatu editatu daitezkeen blokeak"
+
+#: components/manage/Contents/Contents
+msgid "End Date"
+msgstr "Bukaera data"
+
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
+msgid "Enter URL or select an item"
+msgstr "Sartu URL bat edo aukeratu elementu bat"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Enter a username above to search or click 'Show All'"
+msgstr ""
+
+#: components/theme/Register/Register
+msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
+msgstr "Idatzi eposta helbidea. Hau zure erabiltzaile-izena izango da. Zure pribatutasuna errespetatzen dugu eta ez dugu helbidea argitaratu edo inori emango."
+
+#: components/manage/Preferences/PersonalInformation
+#: components/theme/PasswordReset/PasswordReset
+#: components/theme/Register/Register
+msgid "Enter full name, e.g. John Smith."
+msgstr "Idatzi izen osoa, adb. Jon Garmendia."
+
+#: components/manage/Blocks/Maps/Edit
+msgid "Enter map Embed Code"
+msgstr "Sartu itsasteko kodea"
+
+#: components/manage/Preferences/ChangePassword
+msgid "Enter your current password."
+msgstr "Idatzi zure pasahitza."
+
+#: components/theme/PasswordReset/PasswordReset
+msgid "Enter your email address for verification."
+msgstr "Idatzi zure eposta helbidea egiaztatu dezagun."
+
+#: components/manage/Preferences/ChangePassword
+#: components/theme/PasswordReset/PasswordReset
+msgid "Enter your new password. Minimum 5 characters."
+msgstr "Idatzi zure pasahitz berria. Gutxienez 5 karaktere."
+
+#: components/manage/Add/Add
+#: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Edit/Edit
+#: components/manage/Form/InlineForm
+#: components/manage/Widgets/SchemaWidget
+#: components/theme/ContactForm/ContactForm
+#: components/theme/Login/Login
+#: helpers/MessageLabels/MessageLabels
+msgid "Error"
+msgstr "Erroea"
+
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "Exclude from navigation"
+msgstr "Nabigaziotik baztertu"
+
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+msgid "Exclude this occurence"
+msgstr "Kendu agerpen hau"
+
+#: components/manage/Contents/Contents
+msgid "Excluded from navigation"
+msgstr "Nabigaziotik baztertuta"
+
+#: components/manage/Sidebar/Sidebar
+msgid "Expand sidebar"
+msgstr "Alboko barra zabaldu"
+
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "Expiration Date"
+msgstr "Iraungitze-data"
+
+#: components/manage/Contents/Contents
+msgid "Expiration date"
+msgstr "Iraungitze-data"
+
+#: components/manage/Contents/ContentsItem
+msgid "Expired"
+msgstr "Iraungita"
+
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+msgid "External URL"
+msgstr "Kanpoko URLa"
+
+#: components/manage/Toolbar/Toolbar
+msgid "File"
+msgstr "Fitxategia"
+
+#: components/manage/Contents/ContentsUploadModal
+msgid "File size"
+msgstr "Fitxategiaren tamaina"
+
+#: components/manage/Contents/ContentsUploadModal
+msgid "Filename"
+msgstr "Fitxategi izena"
+
+#: components/manage/Contents/Contents
+msgid "Filter…"
+msgstr "Filtratu..."
+
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+msgid "First"
+msgstr "Lehenengo"
+
+#: components/manage/Blocks/Table/Edit
+msgid "Fixed width table cells"
+msgstr "Tamaina finkoko taularen zeldak"
+
+#: components/manage/Contents/Contents
+msgid "Folder"
+msgstr "Karpeta"
+
+#: components/theme/Forbidden/Forbidden
+msgid "Forbidden"
+msgstr "Debekatuta"
+
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+msgid "Fourth"
+msgstr "Laugarren"
+
+#: components/theme/ContactForm/ContactForm
+msgid "From"
+msgstr "Nok"
+
+#: components/manage/Blocks/Maps/Edit
+#: components/manage/Sidebar/AlignBlock
+msgid "Full"
+msgstr "Osoa"
+
+#: components/manage/Preferences/PersonalInformation
+#: components/theme/PasswordReset/PasswordReset
+#: components/theme/Register/Register
+msgid "Full Name"
+msgstr "Izen-abizenak"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Fullname"
+msgstr "Izen-abizenak"
+
+#: components/theme/Footer/Footer
+msgid "GNU GPL license"
+msgstr "GNU GPL"
+
+#: components/manage/Sharing/Sharing
+msgid "Global role"
+msgstr "Rol globala"
+
+#: components/manage/Blocks/Maps/Edit
+msgid "Google Maps Embedded Block"
+msgstr "Google Maps itsasteko blokea"
+
+#: components/manage/Sharing/Sharing
+msgid "Group"
+msgstr "Taldea"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Group created"
+msgstr "Taldea ondo sortu da"
+
+#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
+msgid "Groupname"
+msgstr "Taldearen izena"
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Groups"
+msgstr "Taldeak"
+
+#: components/manage/Blocks/Table/Edit
+msgid "Header cell"
+msgstr ""
+
+#: components/manage/History/History
+#: components/manage/Toolbar/More
+msgid "History"
+msgstr "Historia"
+
+#: components/manage/History/History
+msgid "History of {title}"
+msgstr "{title} elementuaren historia"
+
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsBreadcrumbs
+#: components/theme/Breadcrumbs/Breadcrumbs
+msgid "Home"
+msgstr "Hasiera"
+
+#: components/manage/Preferences/PersonalInformation
+msgid "Home page"
+msgstr "Hasiera orrialdea"
+
+#: components/manage/Contents/Contents
+msgid "ID"
+msgstr "ID"
+
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "If selected, this item will not appear in the navigation tree"
+msgstr "Aukeratuta badago, elementu hau ez da nabigazio zuhaitzean agertuko"
+
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "If this date is in the future, the content will not show up in listings and searches until this date."
+msgstr "Data hau etorkizunekoa bada, edukia ez da agertuko data hori iritsi arte"
+
+#: components/theme/NotFound/NotFound
+#: components/theme/Unauthorized/Unauthorized
+msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
+msgstr "Ziurtatu helbide zuzenean zaudena, hala ere errorea baduzu jarri kontaktuan {site_admin}."
+
+#: components/theme/Login/Login
+msgid "If you have forgotten your password, {forgotpassword}"
+msgstr "Pasahitza ahaztu baduzu, {forgotpassword}"
+
+#: components/theme/Login/Login
+msgid "If you you do not have an account here, head over to the {registrationform}."
+msgstr "Ez baduzu erabiltzaile-konturik, zoaz {registrationform}."
+
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+msgid "Image"
+msgstr "Irudia"
+
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+msgid "Include this occurence"
+msgstr "Sartu agerpen hau"
+
+#: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Controlpanels/Controlpanel
+msgid "Info"
+msgstr "informazioa"
+
+#: components/manage/Sharing/Sharing
+msgid "Inherit permissions from higher levels"
+msgstr "Baimenak goragoko mailetatik heredatu"
+
+#: components/manage/Sharing/Sharing
+msgid "Inherited value"
+msgstr "Heredatutako balioa"
+
+#: components/manage/Blocks/Table/Edit
+msgid "Insert col after"
+msgstr "Sartu zutabea ondoren"
+
+#: components/manage/Blocks/Table/Edit
+msgid "Insert col before"
+msgstr "Sartu zutabea aurretik"
+
+#: components/manage/Blocks/Table/Edit
+msgid "Insert row after"
+msgstr "Sartu errenkada ondoren"
+
+#: components/manage/Blocks/Table/Edit
+msgid "Insert row before"
+msgstr "Sartu errendaka aurretik"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Install"
+msgstr "Instalatu"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Installed"
+msgstr "Instalatuta"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Installed version"
+msgstr "Instalatutako bertsioa"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Interval Daily"
+msgstr "egunean behin"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Interval Monthly"
+msgstr "hilean behin"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Interval Weekly"
+msgstr "astean behin"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Interval Yearly"
+msgstr "urtean behin"
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "Item batch size"
+msgstr "Elementu-multzoaren tamaina"
+
+#: components/manage/Contents/Contents
+msgid "Item succesfully moved."
+msgstr ""
+
+#: components/manage/Contents/Contents
+msgid "Item(s) copied."
+msgstr "Elementuak ondo kopiatu dira."
+
+#: components/manage/Contents/Contents
+msgid "Item(s) cut."
+msgstr "Elementuak ondo ebaki dira."
+
+#: components/manage/Contents/Contents
+msgid "Item(s) has been updated."
+msgstr ""
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+msgid "Item(s) pasted."
+msgstr "Elementuak ondo itsatsi dira."
+
+#: components/manage/Controlpanels/ContentTypes
+msgid "Items"
+msgstr "Elementuak"
+
+#: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
+msgid "Items must be unique."
+msgstr "Elementuak bakarrak izan behar dira."
+
+#: components/manage/Preferences/PersonalPreferences
+msgid "Language"
+msgstr "Hizkuntza"
+
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+msgid "Last"
+msgstr "Azkena"
+
+#: components/manage/Contents/Contents
+msgid "Last comment date"
+msgstr "Azken komentarioaren data"
+
+#: components/manage/Contents/ContentsUploadModal
+msgid "Last modified"
+msgstr "Azken aldaketa"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Latest version"
+msgstr "Azken bertsioa"
+
+#: components/manage/Controlpanels/ContentTypesActions
+msgid "Layout"
+msgstr "Itxura"
+
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+msgid "Lead Image"
+msgstr "Irudia"
+
+#: components/manage/Blocks/Image/ImageSizeWidget
+#: components/manage/Blocks/Maps/Edit
+#: components/manage/Sidebar/AlignBlock
+msgid "Left"
+msgstr "Ezkerrean"
+
+#: components/manage/Toolbar/Toolbar
+msgid "Link"
+msgstr "Esteka"
+
+#: components/manage/Blocks/Listing/ListingSidebar
+msgid "Link more"
+msgstr ""Gehiago" estekatu"
+
+#: components/manage/Blocks/Listing/ListingMore
+msgid "Link title"
+msgstr "Izenburua estekatu"
+
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Listing/ListingMore
+#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "Link to"
+msgstr "Esteka"
+
+#: components/manage/Blocks/Listing/ListingSidebar
+msgid "Listing"
+msgstr "Zerrenda"
+
+#: components/manage/Preferences/PersonalInformation
+msgid "Location"
+msgstr "Kokalekua"
+
+#: components/theme/Login/Login
+msgid "Log In"
+msgstr "Sartu"
+
+#: components/theme/Anontools/Anontools
+#: components/theme/Login/Login
+msgid "Log in"
+msgstr "Sartu"
+
+#: components/theme/Login/Login
+msgid "Login"
+msgstr "Sartu"
+
+#: components/theme/Login/Login
+msgid "Login Failed"
+msgstr "Sartzeak huts egin du"
+
+#: components/theme/Login/Login
+msgid "Login Name"
+msgstr "Erabiltzaile-izena"
+
+#: components/manage/Blocks/Table/Edit
+msgid "Make the table compact"
+msgstr "Taula trinkotu"
+
+#: components/manage/Multilingual/ManageTranslations
+#: components/manage/Toolbar/More
+msgid "Manage Translations"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Manage translations for {title}"
+msgstr ""
+
+#: components/manage/Blocks/Maps/MapsSidebar
+msgid "Map"
+msgstr "Mapa"
+
+#: components/manage/Blocks/Maps/MapsSidebar
+msgid "Maps URL"
+msgstr "Maparen URLa"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Maximum length is {len}."
+msgstr "Gehienezko luzera {len} da."
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Maximum value is {len}."
+msgstr "Balio handiena {len} da."
+
+#: components/theme/ContactForm/ContactForm
+msgid "Message"
+msgstr "Mezua"
+
+#: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
+msgid "Minimum length is {len}."
+msgstr "Gutxienezko luzera {len} da."
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Minimum value is {len}."
+msgstr "Balio txikiena {len} da."
+
+#: components/manage/Controlpanels/Controlpanels
+msgid "Moderate Comments"
+msgstr "Erantzunak moderatu"
+
+#: components/manage/Controlpanels/ModerateComments
+msgid "Moderate comments"
+msgstr "Erantzunak moderatu"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Monday and Friday"
+msgstr "Astelehen eta ostiraletan"
+
+#: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
+msgid "Month day"
+msgstr "Hilabeteko"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Monthly"
+msgstr "Hilero"
+
+#: components/manage/Toolbar/Toolbar
+msgid "More"
+msgstr "Gehiago"
+
+#: components/manage/Contents/ContentsItem
+msgid "Move to bottom of folder"
+msgstr "Karpetaren barrenera mugitu"
+
+#: components/manage/Contents/ContentsItem
+msgid "Move to top of folder"
+msgstr "Karpetaren gorengo tokira mugitu"
+
+#: components/theme/PasswordReset/PasswordReset
+msgid "My email address is"
+msgstr "Nire helbidea hauxe da: "
+
+#: components/manage/Sharing/Sharing
+#: components/theme/ContactForm/ContactForm
+msgid "Name"
+msgstr "Izena"
+
+#: error
+msgid "Navigate back"
+msgstr "Atzera joan"
+
+#: components/theme/Navigation/ContextNavigation
+msgid "Navigation"
+msgstr ""
+
+#: components/manage/Preferences/ChangePassword
+#: components/theme/PasswordReset/PasswordReset
+msgid "New password"
+msgstr "Pasahitz berria"
+
+#: components/manage/Toolbar/Toolbar
+msgid "News Item"
+msgstr "Albistea ikusi"
+
+#: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypes
+msgid "No"
+msgstr "Ez"
+
+#: components/manage/Blocks/Image/ImageSidebar
+msgid "No image selected"
+msgstr "Ez da irudirik aukeratu"
+
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+msgid "No image set in Lead Image content field"
+msgstr "Ez dago irudirik dagokion eremuan"
+
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+msgid "No image set in image content field"
+msgstr "Ez dago irudirik dagokion eremuan"
+
+#: components/manage/Blocks/Listing/ListingBody
+msgid "No items found in this container."
+msgstr "Karpeta honetan ez dago elementurik"
+
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "No items selected"
+msgstr "Ez da elementurik aukeratu"
+
+#: components/manage/Blocks/Maps/MapsSidebar
+msgid "No map selected"
+msgstr "Ez da maparik auekratu"
+
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+msgid "No occurences set"
+msgstr "Ez da agerpenik ezarri"
+
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
+msgid "No options"
+msgstr "Ez du aukerarik"
+
+#: components/theme/Search/Search
+msgid "No results found"
+msgstr "Ez da emaitzarik aurkitu."
+
+#: components/manage/Blocks/Listing/ListingBody
+#: components/manage/Widgets/ReferenceWidget
+msgid "No results found."
+msgstr "Ez da emaitzarik aurkitu."
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "No selection"
+msgstr "Ez da ezer aukeratu"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "No uninstall profile"
+msgstr "Ez du desinstalatzeko profilik"
+
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/ReferenceWidget
+#: components/manage/Widgets/SelectWidget
+msgid "No value"
+msgstr "Ez du baliorik"
+
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "No video selected"
+msgstr "Ez da bideorik aukeratu"
+
+#: components/manage/Workflow/Workflow
+msgid "No workflow"
+msgstr "Ez du workflowrik"
+
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsItem
+msgid "None"
+msgstr "Bat ere ez"
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Number of active objects"
+msgstr "Aktibo dagoen objektu kopurua"
+
+#: components/manage/Contents/Contents
+msgid "Object Size"
+msgstr "Objektuaren tamaina"
+
+#: components/manage/Widgets/RecurrenceWidget/EndField
+msgid "Occurences"
+msgstr "agerpenen ondoren"
+
+#: components/manage/Delete/Delete
+msgid "Ok"
+msgstr "Ados"
+
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "Open in a new tab"
+msgstr "Fitxa berrian ireki"
+
+#: components/theme/Navigation/Navigation
+msgid "Open menu"
+msgstr "Menua ireki"
+
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+msgid "Origin"
+msgstr "Jatorria"
+
+#: components/manage/Toolbar/Toolbar
+msgid "Page"
+msgstr "Orria"
+
+#: components/manage/Widgets/SchemaWidget
+msgid "Parent fieldset"
+msgstr "Guraso den eremu-multzoa"
+
+#: components/theme/Login/Login
+#: helpers/MessageLabels/MessageLabels
+msgid "Password"
+msgstr "Pasahitza"
+
+#: components/theme/PasswordReset/PasswordReset
+#: components/theme/PasswordReset/RequestPasswordReset
+msgid "Password reset"
+msgstr "Pasahitza berrezarri"
+
+#: components/theme/PasswordReset/PasswordReset
+msgid "Passwords do not match."
+msgstr "Pasahitzak ez datoz bat."
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+msgid "Paste"
+msgstr "Itsatsi"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Paste blocks"
+msgstr ""
+
+#: components/manage/Preferences/PersonalInformation
+#: components/manage/Toolbar/Toolbar
+msgid "Personal Information"
+msgstr "Informazio pertsonala"
+
+#: components/manage/Preferences/PersonalPreferences
+#: components/manage/Toolbar/Toolbar
+msgid "Personal Preferences"
+msgstr "Hobespen Pertsonalak"
+
+#: components/manage/Toolbar/More
+#: components/manage/Toolbar/Toolbar
+msgid "Personal tools"
+msgstr "Tresna pertsonalak"
+
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
+msgstr "Elementu honen edukia sortzearen arduradunak. Idatzi erabiltzaile-izen bat lerro bakoitzean. Egile nagusia lehenengoa izan beharko litzateke."
+
+#: components/manage/Blocks/Video/Edit
+msgid "Please enter a valid URL by deleting the block and adding a new video block."
+msgstr "Txertatu URL zuzen bat blokea ezabatu eta bideo bloke berri bat gehituz."
+
+#: components/manage/Blocks/Maps/Edit
+msgid "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
+msgstr "Txertatu Google Mapsek ematen duen txertatzeko kodea. <iframe> etiketa bat izan behar du."
+
+#: components/theme/PasswordReset/PasswordReset
+msgid "Please fill out the form below to set your password."
+msgstr "Bete formulario hau zure pasahitza ezartzeko."
+
+#: components/theme/Footer/Footer
+msgid "Plone Foundation"
+msgstr "Plone Fundazioa"
+
+#: components/theme/Logo/Logo
+msgid "Plone Site"
+msgstr "Plone Ataria"
+
+#: components/theme/Footer/Footer
+msgid "Plone{reg} Open Source CMS/WCM"
+msgstr "Plone{reg} Open Source CMS/WCM"
+
+#: components/manage/Preferences/PersonalInformation
+msgid "Portrait"
+msgstr "Argazkia"
+
+#: components/manage/Widgets/SchemaWidget
+msgid "Possible values"
+msgstr "Balio posibleak"
+
+#: components/theme/Footer/Footer
+msgid "Powered by Plone & Python"
+msgstr "Plone eta Pythonekin eginda"
+
+#: components/manage/Toolbar/PersonalTools
+msgid "Preferences"
+msgstr "Hobespenak"
+
+#: components/manage/Blocks/HTML/Edit
+msgid "Prettify your code"
+msgstr ""
+
+#: components/manage/Blocks/HTML/Edit
+#: components/manage/Contents/ContentsUploadModal
+msgid "Preview"
+msgstr "Aurreikusi"
+
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "Preview Image URL"
+msgstr ""
+
+#: components/manage/Toolbar/PersonalTools
+msgid "Profile"
+msgstr "Profila"
+
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "Properties"
+msgstr "Propietateak"
+
+#: components/manage/Contents/Contents
+msgid "Publication date"
+msgstr "Argitaratze-data"
+
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "Publishing Date"
+msgstr "Argitaratze-data"
+
+#: components/manage/Preferences/ChangePassword
+#: components/theme/PasswordReset/PasswordReset
+msgid "Re-enter the password. Make sure the passwords are identical."
+msgstr "Idatzi pasahitza berriro eta ziurtatu idatzitako biak berdinak direla."
+
+#: components/theme/Search/Search
+#: components/theme/View/SummaryView
+msgid "Read More…"
+msgstr "Gehiago irakurri"
+
+#: components/manage/Contents/Contents
+msgid "Rearrange items by…"
+msgstr "Elementuak honen arabera berrantolatu..."
+
+#: components/manage/Widgets/RecurrenceWidget/EndField
+msgid "Recurrence ends"
+msgstr "Errepikapenaren amaiera"
+
+#: components/manage/Widgets/RecurrenceWidget/EndField
+msgid "Recurrence ends after"
+msgstr "Amaitu"
+
+#: components/manage/Widgets/RecurrenceWidget/EndField
+msgid "Recurrence ends on"
+msgstr "Egun honetan amaitu"
+
+#: components/manage/Blocks/Table/Edit
+msgid "Reduce complexity"
+msgstr "Konplexutasuna gutxitu"
+
+#: components/theme/Anontools/Anontools
+#: components/theme/Register/Register
+msgid "Register"
+msgstr "Izena eman"
+
+#: components/theme/Register/Register
+msgid "Registration form"
+msgstr "Erregistro formularioa"
+
+#: components/theme/Search/Search
+msgid "Relevance"
+msgstr "Errelebantzia"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Remove recurrence"
+msgstr "Errepikapena ezabatu"
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+msgid "Rename"
+msgstr "Berrizendatu"
+
+#: components/manage/Contents/ContentsRenameModal
+msgid "Rename items"
+msgstr "Elementuak berrizendatu"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Repeat"
+msgstr "Errepikatu"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Repeat every"
+msgstr "Errepikatu"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Repeat on"
+msgstr "Egun honetan errepikatu"
+
+#: components/manage/Widgets/FileWidget
+msgid "Replace existing file"
+msgstr ""
+
+#: components/manage/Widgets/QuerystringWidget
+#: components/manage/Widgets/SchemaWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/WysiwygWidget
+msgid "Required"
+msgstr "Beharrezkoa"
+
+#: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
+msgid "Required input is missing."
+msgstr "Beharrezko balioak falta dira"
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "Results limit"
+msgstr "Emaitzen muga"
+
+#: components/manage/Blocks/Listing/Edit
+msgid "Results preview"
+msgstr "Emaitzen aurreikuspena"
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "Reversed order"
+msgstr "Alderantzizko ordena"
+
+#: components/manage/History/History
+msgid "Revert to this revision"
+msgstr "Bertsio honetara itzuli"
+
+#: components/manage/Contents/Contents
+msgid "Review state"
+msgstr "Egoera"
+
+#: components/manage/Widgets/SchemaWidget
+msgid "Richtext"
+msgstr "Testu aberatsa"
+
+#: components/manage/Blocks/Image/ImageSizeWidget
+#: components/manage/Blocks/Maps/Edit
+#: components/manage/Sidebar/AlignBlock
+msgid "Right"
+msgstr "Eskuman"
+
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "Rights"
+msgstr "Eskubideak"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Roles"
+msgstr "Rolak"
+
+#: components/manage/Contents/ContentsBreadcrumbs
+msgid "Root"
+msgstr ""
+
+#: components/manage/Add/Add
+#: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Controlpanels/Controlpanel
+#: components/manage/Edit/Edit
+#: components/manage/Form/ModalForm
+#: components/manage/Sharing/Sharing
+#: helpers/MessageLabels/MessageLabels
+msgid "Save"
+msgstr "Gorde"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Save recurrence"
+msgstr "Gorde errepikapena"
+
+#: components/manage/Controlpanels/ContentTypesActions
+msgid "Schema"
+msgstr "Eskema"
+
+#: components/manage/Controlpanels/ContentTypeSchema
+msgid "Schema updates"
+msgstr "Eskemaren eguneraketak"
+
+#: components/theme/SearchWidget/SearchWidget
+msgid "Search"
+msgstr "Bilatu"
+
+#: components/theme/SearchWidget/SearchWidget
+msgid "Search Site"
+msgstr "Atarian bilatu"
+
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Search content"
+msgstr "Bilatu edukia"
+
+#: components/manage/Sharing/Sharing
+msgid "Search for user or group"
+msgstr "Bilatu erabiltzailea edo taldea"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Search group…"
+msgstr "Bilatu taldea..."
+
+#: components/theme/Search/Search
+msgid "Search results"
+msgstr "Bilaketaren emaitzak"
+
+#: components/theme/Search/Search
+msgid "Search results for {term}"
+msgstr "${term} bilatuz aurkitu dena"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Search users…"
+msgstr "Bilatu erabiltzaileak..."
+
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+msgid "Second"
+msgstr "Bigarren"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Select a date to add to recurrence"
+msgstr "Aukeratu data eta gehitu errepikapenera"
+
+#: components/manage/Contents/Contents
+msgid "Select columns to show"
+msgstr "Aukeratu erakutsiko diren zutabeak"
+
+#: components/manage/Widgets/QuerystringWidget
+msgid "Select criteria"
+msgstr "Aukeraketa irizpideak"
+
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Select the transition to be used for modifying the items state."
+msgstr "Aukeratu elementuaren egoera aldatzeko trantsizioa."
+
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+msgid "Selected dates"
+msgstr "Aukeratutako datak"
+
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Selected items"
+msgstr "Aukeratutako elementuak"
+
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Selected items - x of y"
+msgstr "Aukeratutako elementuak x/y"
+
+#: components/manage/Widgets/SchemaWidget
+msgid "Selection"
+msgstr "Aukeraketa"
+
+#: components/manage/Contents/Contents
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
+msgid "Select…"
+msgstr "Aukeratu..."
+
+#: components/theme/ContactForm/ContactForm
+msgid "Send"
+msgstr "Bidali"
+
+#: components/theme/PasswordReset/PasswordReset
+msgid "Set my password"
+msgstr "Ezarri nire pasahitza"
+
+#: components/theme/PasswordReset/PasswordReset
+msgid "Set your password"
+msgstr "Ezarri zure pasahitza"
+
+#: components/manage/Sidebar/Sidebar
+msgid "Settings"
+msgstr "Ezarpenak"
+
+#: components/manage/Sharing/Sharing
+#: components/manage/Toolbar/More
+msgid "Sharing"
+msgstr "Partekatzea"
+
+#: components/manage/Sharing/Sharing
+msgid "Sharing for {title}"
+msgstr "{title} elementuaren partekatze-aukerak"
+
+#: components/manage/Widgets/QuerystringWidget
+#: components/manage/Widgets/SchemaWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/WysiwygWidget
+msgid "Short Name"
+msgstr "Izen-laburra"
+
+#: components/manage/Contents/ContentsRenameModal
+msgid "Short name"
+msgstr "Izen-laburra"
+
+#: components/theme/Pagination/Pagination
+msgid "Show"
+msgstr "Erakutsi"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Show All"
+msgstr ""
+
+#: components/manage/Sidebar/Sidebar
+msgid "Shrink sidebar"
+msgstr "Txikitu alboko barra"
+
+#: components/manage/Toolbar/Toolbar
+msgid "Shrink toolbar"
+msgstr "Txikitu tresna-barra"
+
+#: components/theme/Login/Login
+msgid "Sign in to start session"
+msgstr "Sartu saioa hasteko"
+
+#: components/theme/Logo/Logo
+msgid "Site"
+msgstr "Ataria"
+
+#: components/theme/NotFound/NotFound
+#: components/theme/Unauthorized/Unauthorized
+msgid "Site Administration"
+msgstr "Atariaren kudeaketa"
+
+#: components/theme/Footer/Footer
+msgid "Site Map"
+msgstr "Web mapa"
+
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Toolbar/PersonalTools
+msgid "Site Setup"
+msgstr "Atariaren konfigurazioa"
+
+#: components/theme/Sitemap/Sitemap
+msgid "Sitemap"
+msgstr "Web mapa"
+
+#: components/manage/Blocks/Image/ImageSidebar
+msgid "Size"
+msgstr "Tamaina"
+
+#: components/theme/View/ImageView
+msgid "Size: {size}"
+msgstr "Tamaina: {size}"
+
+#: error
+msgid "Sorry, something went wrong with your request"
+msgstr "Barkatu, zerbait ez da ondo irten zure eskaeran"
+
+#: components/theme/Search/Search
+msgid "Sort By:"
+msgstr "Ordenazioa:"
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "Sort on"
+msgstr "Ordenazioa"
+
+#: components/manage/Blocks/HTML/Edit
+#: components/manage/Blocks/Listing/ListingData
+msgid "Source"
+msgstr "Iturburua"
+
+#: components/manage/Blocks/Video/Edit
+msgid "Specify a youtube video or playlist url"
+msgstr "YouTubeko bideo edo erreprodukzio-zerrenda baten URLa adierazi"
+
+#: components/manage/Diff/Diff
+msgid "Split"
+msgstr "Banatu"
+
+#: components/manage/Contents/Contents
+msgid "Start Date"
+msgstr "Hasiera-data"
+
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+msgid "Start of the recurrence"
+msgstr "Errepikapenaren hasiera"
+
+#: components/theme/PasswordReset/RequestPasswordReset
+msgid "Start password reset"
+msgstr "Pasahitza berrezartzea abiatu"
+
+#: components/manage/Contents/Contents
+#: components/manage/Workflow/Workflow
+#: components/theme/View/TabularView
+msgid "State"
+msgstr "Egoera"
+
+#: components/manage/Widgets/SchemaWidget
+msgid "String"
+msgstr "Karaktere-katea"
+
+#: components/manage/Blocks/Table/Edit
+msgid "Stripe alternate rows with color"
+msgstr "Errenkaden koloreak aldatzen joan"
+
+#: components/theme/ContactForm/ContactForm
+msgid "Subject"
+msgstr "Gaia"
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Multilingual/ManageTranslations
+#: components/manage/Preferences/ChangePassword
+#: components/manage/Preferences/PersonalInformation
+#: components/manage/Preferences/PersonalPreferences
+#: components/theme/ContactForm/ContactForm
+#: helpers/MessageLabels/MessageLabels
+msgid "Success"
+msgstr "Arrakasta"
+
+#: components/manage/Blocks/Table/Edit
+msgid "Table"
+msgstr "Taula"
+
+#: components/manage/Blocks/Table/Edit
+msgid "Table color inverted"
+msgstr "Taularen kolorea inbertitu"
+
+#: components/manage/Blocks/ToC/View
+msgid "Table of Contents"
+msgstr "Edukien taula"
+
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsTagsModal
+msgid "Tags"
+msgstr "Etiketak"
+
+#: components/manage/Contents/ContentsTagsModal
+msgid "Tags to add"
+msgstr "Gehitu beharreko etiketak"
+
+#: components/manage/Contents/ContentsTagsModal
+msgid "Tags to remove"
+msgstr "Kendu beharreko etiketak"
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Target memory size per cache in bytes"
+msgstr "Katxe bakoitzaren tamaina "
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Target number of objects in memory per cache"
+msgstr "Katxe bakoitzaren elementu-kopurua"
+
+#: components/manage/Blocks/Listing/TemplateWidget
+msgid "Template"
+msgstr "Txantiloia"
+
+#: components/manage/Widgets/SchemaWidget
+msgid "Text"
+msgstr "Testua"
+
+#: components/theme/ConnectionRefused/ConnectionRefused
+#: components/theme/CorsError/CorsError
+#: components/theme/NotFound/NotFound
+#: components/theme/Unauthorized/Unauthorized
+msgid "Thank you."
+msgstr "Eskerrik asko."
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "The Database Manager allow you to view database status information"
+msgstr "Datu-basearen kudeatzaileak datu-basearen egoera erakusten ditu"
+
+#: components/manage/Preferences/PersonalInformation
+msgid "The URL for your external home page, if you have one."
+msgstr "Idatzi zure webgunearen helbidea, bat baldin baduzu."
+
+#: components/theme/ConnectionRefused/ConnectionRefused
+msgid "The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable."
+msgstr "Zerbitzaria ez dago ondo, egiaztatu Plone martxan dagoela, egiaztatu zure proiektuaren konfigurazio-objektuaren apiPath ezarpena (edo barne-proxya badarabilzu, devProxyToApiPath) edo RAZZLE_API_PATH ingurune-aldagaia."
+
+#: components/theme/CorsError/CorsError
+msgid "The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources."
+msgstr "Zerbitzaria ondo dago baina CORS goiburukoak ez dira zuzenak."
+
+#: components/theme/CorsError/CorsError
+msgid "The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
+msgstr "Zerbitzaria ez dago ondo, barkatu eragozpenak. Saiatu orrialdea freskatzen. Arazoak jarraitzen badu jarri kontaktuan atariaren kudeatzailearekin."
+
+#: components/theme/Register/Register
+msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
+msgstr "Izen-emate prozesua ondo egin duzu. Begiratu zure eposta, kontua aktibatzeko informazioa bertara bidali dizugu-eta."
+
+#: components/manage/Preferences/PersonalInformation
+msgid "The user portrait/avatar"
+msgstr "Erabiltzailearen argazkia"
+
+#: components/theme/Footer/Footer
+msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
+msgstr "{plonecms} {copyright} 2000-{current_year} - {plonefoundation} eta lagunak."
+
+#: components/theme/CorsError/CorsError
+msgid "There is a configuration problem on the backend"
+msgstr "Zerbitzariak konfigurazio arazo bat du"
+
+#: components/manage/Form/InlineForm
+msgid "There were some errors"
+msgstr "Errorea gertatu da"
+
+#: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
+msgid "There were some errors."
+msgstr "Errorea gertatu da"
+
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+msgid "Third"
+msgstr "Hirugarren"
+
+#: components/manage/Contents/ContentsRenameModal
+msgid "This name will be displayed in the URL."
+msgstr "Izen hau URLan agertuko da"
+
+#: components/theme/NotFound/NotFound
+msgid "This page does not seem to exist…"
+msgstr "Orrialde hau ez da existitzen..."
+
+#: components/manage/Widgets/DatetimeWidget
+msgid "Time"
+msgstr "Ordua"
+
+#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsRenameModal
+#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Widgets/QuerystringWidget
+#: components/manage/Widgets/SchemaWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/WysiwygWidget
+#: components/theme/View/TabularView
+#: helpers/MessageLabels/MessageLabels
+msgid "Title"
+msgstr "Izenburua"
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Total active and non-active objects"
+msgstr "Objektu aktibo eta ez-aktiboak"
+
+#: components/manage/Contents/Contents
+msgid "Total comments"
+msgstr "Erantzun kopurua"
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Total number of objects in each cache"
+msgstr "Katxe bakoitzeko objektu kopurua"
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Total number of objects in memory from all caches"
+msgstr "Katxe guztietan dagoen elementu kopurua"
+
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Total number of objects in the database"
+msgstr "Datu-basean dagoen elementu kopurua"
+
+#: components/manage/Toolbar/Types
+msgid "Translate to {lang}"
+msgstr "{lang} hizkuntzara itzuli"
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Translation linked"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Translation linking removed"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Widgets/SchemaWidget
+#: components/theme/View/TabularView
+msgid "Type"
+msgstr "Elementu mota"
+
+#: components/manage/Blocks/Video/Edit
+msgid "Type a Video (YouTube, Vimeo or mp4) URL"
+msgstr "Idatzi bideo baten URLa (YouTube, Vimeo edo mp4)"
+
+#: components/manage/Blocks/Text/Edit
+msgid "Type text…"
+msgstr "Idatzi testua..."
+
+#: components/manage/Blocks/Title/Edit
+msgid "Type the title…"
+msgstr "Idatzi izenburua..."
+
+#: components/manage/Contents/Contents
+msgid "UID"
+msgstr "UID"
+
+#: components/theme/Unauthorized/Unauthorized
+msgid "Unauthorized"
+msgstr "Ez duzu baimenik"
+
+#: components/manage/Diff/Diff
+msgid "Unified"
+msgstr "Elkartuta"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Uninstall"
+msgstr "Desinstalatu"
+
+#: components/manage/Blocks/Block/Edit
+#: components/theme/View/DefaultView
+#: components/theme/View/RenderBlocks
+msgid "Unknown Block"
+msgstr "Bloke ezezaguna"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Update"
+msgstr "Eguneratu"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Update installed addons"
+msgstr "Eguneratu instalatutako gehigarriak"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Update installed addons:"
+msgstr "Eguneratu instalatutako gehigarriak"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Updates available"
+msgstr "Instalatu daitezkeen eguneraketak"
+
+#: components/manage/Contents/Contents
+msgid "Upload"
+msgstr "Kargatu"
+
+#: components/manage/Blocks/LeadImage/Edit
+msgid "Upload a lead image in the 'Lead Image' content field."
+msgstr "Kargatu irudia"
+
+#: components/manage/Blocks/HeroImageLeft/Edit
+msgid "Upload a new image"
+msgstr "Kargatu irudi berria"
+
+#: components/manage/Contents/ContentsUploadModal
+msgid "Upload files"
+msgstr "Kargatu fitxategiak"
+
+#: components/manage/Contents/ContentsUploadModal
+msgid "Uploading files"
+msgstr "Fitxategiak kargatzen"
+
+#: components/manage/Widgets/QuerystringWidget
+#: components/manage/Widgets/SchemaWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/WysiwygWidget
+msgid "Used for programmatic access to the fieldset."
+msgstr "Eremu-multzoa programaziotik atzitzeko izena"
+
+#: components/manage/Sharing/Sharing
+msgid "User"
+msgstr "Erabiltzailea"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "User created"
+msgstr "Erabiltzailea ondo sortu da"
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "User name"
+msgstr "Erabiltzaile Izena"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "Username"
+msgstr "Erabiltzaile izena"
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Users"
+msgstr "Erabiltzaileak"
+
+#: components/manage/Controlpanels/Controlpanels
+#: helpers/MessageLabels/MessageLabels
+msgid "Users and Groups"
+msgstr "Erabiltzaile eta taldeak"
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Users and groups settings"
+msgstr "Erabiltzaile eta taldeen ezarpenak"
+
+#: components/manage/Controlpanels/Controlpanels
+msgid "Version Overview"
+msgstr "Bertsioen informazioa"
+
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "Video"
+msgstr "Bideoa"
+
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "Video URL"
+msgstr "Bideoaren URLa"
+
+#: components/manage/Contents/ContentsItem
+msgid "View"
+msgstr "Ikusi"
+
+#: components/manage/History/History
+msgid "View changes"
+msgstr "Aldaketak ikusi"
+
+#: components/manage/History/History
+msgid "View this revision"
+msgstr "Bertsio hau ikusi"
+
+#: components/manage/Display/Display
+msgid "Viewmode"
+msgstr "Bistaratze modua"
+
+#: components/manage/Controlpanels/VersionOverview
+msgid "Warning Regarding debug mode"
+msgstr ""Debug moduan" diharduzu. Modu hau garapenean dauden atarientzako da"
+
+#: components/theme/ConnectionRefused/ConnectionRefused
+msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later."
+msgstr "Barkatu eragozpenak baina zerbitzaria ez dago konektatuta. Saiatu beranduago mesedez."
+
+#: components/theme/NotFound/NotFound
+msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
+msgstr "Barkatu eragozpenak baina orrialde horren helbidea ez da zuzena. erabili beheko loturak bilatu nahi duzuna aurkitzeko."
+
+#: components/theme/Forbidden/Forbidden
+msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
+msgstr "Barkatu eragozpenak baina ez duzu orrialde hau ikusteko baimenik."
+
+#: components/manage/Preferences/PersonalInformation
+msgid "We will use this address if you need to recover your password"
+msgstr "Helbide hau erabiliko dugu pasahitza berreskuratu behar baduzu"
+
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+msgid "Weeek day of month"
+msgstr "Hilabeteko"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Weekday"
+msgstr "Astegunetan"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Weekly"
+msgstr "Astero"
+
+#: components/manage/History/History
+msgid "What"
+msgstr "Zer"
+
+#: components/manage/History/History
+msgid "When"
+msgstr "Noiz"
+
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "When this date is reached, the content will nolonger be visible in listings and searches."
+msgstr "Data hau iristean, elementua ez da erakutsiko bilaketa eta zerrendetan"
+
+#: components/manage/History/History
+msgid "Who"
+msgstr "Nor"
+
+#: components/manage/Workflow/Workflow
+msgid "Workflow updated."
+msgstr "Workflowa eguneratu egin da"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Yearly"
+msgstr "Urtero"
+
+#: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypes
+msgid "Yes"
+msgstr "Bai"
+
+#: components/theme/Unauthorized/Unauthorized
+msgid "You are trying to access a protected resource, please {login} first."
+msgstr "Babestutako orrialde batera sartu nahian zabiltza, {login} lehenengo."
+
+#: components/theme/OutdatedBrowser/OutdatedBrowser
+msgid "You are using an outdated browser"
+msgstr "Zure nabigatzailea zaharra da."
+
+#: components/theme/Comments/Comments
+msgid "You can add a comment by filling out the form below. Plain text formatting."
+msgstr "Erantzun bat utzi dezakezu. Testu hutsez idatzi."
+
+#: components/manage/Sharing/Sharing
+msgid "You can control who can view and edit your item using the list below."
+msgstr "Zure elementua nork ikusi eta aldatu dezakeen kontrolatu dezakezu."
+
+#: components/manage/Diff/Diff
+msgid "You can view the difference of the revisions below."
+msgstr "Bertsioen arteko aldeak ikusi ditzakezu"
+
+#: components/manage/History/History
+msgid "You can view the history of your item below."
+msgstr "Zure elementuaren historia ikusi dezakezu."
+
+#: components/manage/Contents/Contents
+msgid "You can't paste this content here"
+msgstr ""
+
+#: components/theme/PasswordReset/RequestPasswordReset
+msgid "Your email is required for reset your password."
+msgstr "Eposta derrigorrezkoa da zure pasahitza berrezartzeko."
+
+#: components/manage/Preferences/PersonalInformation
+msgid "Your location - either city and country - or in a company setting, where your office is located."
+msgstr "Zure kokalekua."
+
+#: components/theme/PasswordReset/PasswordReset
+msgid "Your password has been set successfully. You may now {link} with your new password."
+msgstr "Zure pasahitza ondo berrezarri da. Orain zure pasahitz berriarekin {link}"
+
+#: components/manage/Preferences/PersonalPreferences
+msgid "Your preferred language"
+msgstr "Zure hizkuntza"
+
+#: components/theme/PasswordReset/RequestPasswordReset
+msgid "box_forgot_password_option"
+msgstr "Pasahitza ahaztuta?"
+
+#: config/Blocks
+msgid "common"
+msgstr "Ohikoa"
+
+#: components/manage/Blocks/Block/Edit
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "delete"
+msgstr "Ezabatu"
+
+#: components/theme/OutdatedBrowser/OutdatedBrowser
+msgid "deprecated_browser_notice_message"
+msgstr "{browsername} {browserversion} erabilzen ari zara eta hori zaharkituta gelditu da. Ez duzu segurtasun-eguneraketarik jasoko eta ez dago prest egungo webguneetarako. Eguneratu zure nabigatzailea"
+
+#: config/Blocks
+msgid "description"
+msgstr "Deskribapena"
+
+#: components/theme/PasswordReset/RequestPasswordReset
+msgid "description_lost_password"
+msgstr "Segurtasun arazoak ekiditeko, zure pasahitza zifratuta gordetzen da gure sisteman eta ezin dizugu e-postaz bidali. Zure pasahitza berrezarri bahi baduzu, bete beheko formularioa eta erregistratu zinenean eman zenuen epostara bidaliko dizugu pasahitza berrezartzeko egin beharrekoaren berri."
+
+#: components/theme/PasswordReset/RequestPasswordReset
+msgid "description_sent_password"
+msgstr "Pasahitza berrezartzeko eskaera e-postaz bidali dizugu. Momentu batetik bestera jasoko duzu zure eposta kontuan. Mezua jasotzen duzunean, egin klik hango loturan zure pasahitza berrezartzeko."
+
+#: components/manage/Contents/ContentsItem
+msgid "draft"
+msgstr "Zirriborroa"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "email"
+msgstr "Eposta zuzen bat idatzi behar duzu (izena@domeinua.eus)"
+
+#: components/theme/View/EventView
+msgid "event_alldates"
+msgstr "Data guztiak"
+
+#: components/theme/View/EventView
+msgid "event_attendees"
+msgstr "Bertaratutakoak"
+
+#: components/theme/View/EventView
+msgid "event_contactname"
+msgstr "Kontaktuaren izena"
+
+#: components/theme/View/EventView
+msgid "event_contactphone"
+msgstr "Kontaktuaren telefonoa"
+
+#: components/theme/View/EventView
+msgid "event_website"
+msgstr "Hitzorduaren webgunea"
+
+#: components/theme/View/EventView
+msgid "event_what"
+msgstr "Zer"
+
+#: components/theme/View/EventView
+msgid "event_when"
+msgstr "Noiz"
+
+#: components/theme/View/EventView
+msgid "event_where"
+msgstr "Non"
+
+#: components/theme/PasswordReset/RequestPasswordReset
+msgid "heading_sent_password"
+msgstr "Pasahitza aldatzeko eskaera bidalia"
+
+#: config/Blocks
+msgid "hero"
+msgstr "Hero"
+
+#: config/Blocks
+msgid "html"
+msgstr "HTML"
+
+#: config/Blocks
+msgid "image"
+msgstr "Irudia"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "integer"
+msgstr "Zenbaki osoa izan behar da"
+
+#: components/manage/Contents/ContentsItem
+msgid "intranet"
+msgstr "Intraneta"
+
+#: components/theme/PasswordReset/RequestPasswordReset
+msgid "label_my_email_address_is"
+msgstr "Nire helbidea hauxe da: "
+
+#: config/Blocks
+msgid "leadimage"
+msgstr "Irudi nagusiaren eremua"
+
+#: config/Blocks
+msgid "listing"
+msgstr "Zerrenda"
+
+#: components/manage/Contents/Contents
+msgid "loading"
+msgstr ""
+
+#: components/theme/Unauthorized/Unauthorized
+msgid "log in"
+msgstr "Sartu"
+
+#: config/Blocks
+msgid "maps"
+msgstr "Mapak"
+
+#: components/manage/Widgets/SchemaWidget
+msgid "maxLength"
+msgstr "Luzera maximoa"
+
+#: components/manage/Widgets/SchemaWidget
+msgid "maximum"
+msgstr "Balio maximoa"
+
+#: config/Blocks
+msgid "media"
+msgstr "Media"
+
+#: components/manage/Widgets/SchemaWidget
+msgid "minLength"
+msgstr "Luzera minimoa"
+
+#: components/manage/Widgets/SchemaWidget
+msgid "minimum"
+msgstr "Balio minimoa"
+
+#: config/Blocks
+msgid "mostUsed"
+msgstr "Gehien erabilia"
+
+#: components/manage/Contents/ContentsItem
+msgid "no workflow state"
+msgstr "Ez du workflowrik"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "number"
+msgstr "Zenbakia idatzi behar duzu"
+
+#: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
+#: components/manage/Widgets/RecurrenceWidget/ByYearField
+msgid "of the month"
+msgstr ". egunean"
+
+#: error
+msgid "or try a different page."
+msgstr "edo beste orrialde bat probatu."
+
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+msgid "others"
+msgstr "besteak"
+
+#: components/manage/Contents/ContentsItem
+msgid "private"
+msgstr "Pribatua"
+
+#: components/manage/Contents/ContentsItem
+msgid "published"
+msgstr "Argitaratuta"
+
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "querystring-widget-select"
+msgstr "Aukeratu..."
+
+#: components/theme/Login/Login
+msgid "registration form"
+msgstr "Erregistro formularioa"
+
+#: components/theme/Search/Search
+msgid "results found"
+msgstr "Emaitzak"
+
+#: error
+msgid "return to the site root"
+msgstr "Atariaren errora itzuli"
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_and"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_approximate"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_at"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_dateFormat"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_day"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_days"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_every"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_for"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_hour"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_hours"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_in"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_last"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_minutes"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_month"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_months"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_nd"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_on"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_on the"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_or"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_rd"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_st"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_th"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_the"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_time"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_times"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_until"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_week"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_weekday"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_weekdays"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_weeks"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_year"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_years"
+msgstr ""
+
+#: components/manage/Contents/Contents
+msgid "sort"
+msgstr "Ordenatu"
+
+#: config/Blocks
+msgid "table"
+msgstr "Taula"
+
+#: config/Blocks
+msgid "text"
+msgstr "Testua"
+
+#: config/Blocks
+msgid "title"
+msgstr "Izenburua"
+
+#: config/Blocks
+msgid "toc"
+msgstr "Edukien taula"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "url"
+msgstr "URL zuzen bat izan behar da (www.zerbait.eus) edo http(s)://www.zerbitzaria.eus)"
+
+#: components/manage/Toolbar/PersonalTools
+msgid "user avatar"
+msgstr "Erabiltzailearen argazkia"
+
+#: config/Blocks
+msgid "video"
+msgstr "Bideoa"
+
+#: components/theme/View/EventView
+msgid "visit_external_website"
+msgstr "Webgunea ikusi"
+
+#: components/theme/Login/Login
+msgid "we can send you a new one"
+msgstr "berri bat bidali diezazukegu"
+
+#: components/manage/Contents/ContentsUploadModal
+msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
+msgstr ""
+
+#: components/manage/Contents/Contents
+msgid "{count} selected"
+msgstr "{count} aukeratu tituzu"
+
+#: components/manage/Controlpanels/ContentType
+msgid "{id} Content Type"
+msgstr "{id} elementu-mota"
+
+#: components/manage/Controlpanels/ContentTypeSchema
+msgid "{id} Schema"
+msgstr "{id} eskema"
+
+#: components/manage/Actions/Actions
+msgid "{title} copied."
+msgstr "{title} kopiatu egin da."
+
+#: components/manage/Actions/Actions
+msgid "{title} cut."
+msgstr "{title} moztu egin da."
+
+#: components/manage/Actions/Actions
+msgid "{title} has been deleted."
+msgstr "{title} ezabatu egin da."
+
+#: components/theme/Comments/Comments
+msgid "{user} says:"
+msgstr "{user} erabiltzaileak zera dio:"

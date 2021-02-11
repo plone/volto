@@ -20,6 +20,7 @@ const View = ({ data }) => (
           src={`${flattenToAppURL(data.url)}/@@images/image`}
           alt=""
           className="hero-image"
+          loading="lazy"
         />
       )}
       <div className="hero-body">

@@ -2,11 +2,7 @@
 
 exports[`ContentsItem renders a contents item component 1`] = `
 <tr
-  style={
-    Object {
-      "opacity": 1,
-    }
-  }
+  className=""
 >
   <td
     className=""
@@ -78,6 +74,7 @@ exports[`ContentsItem renders a contents item component 1`] = `
       className="icon-align-name"
       href="/blog"
       onClick={[Function]}
+      title="Document"
     >
       <div
         className="expire-align"

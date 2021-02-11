@@ -4,6 +4,7 @@
  */
 
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { Button, Tab } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -26,6 +27,10 @@ const messages = defineMessages({
     id: 'Block',
     defaultMessage: 'Block',
   },
+  settings: {
+    id: 'Settings',
+    defaultMessage: 'Settings',
+  },
   shrinkSidebar: {
     id: 'Shrink sidebar',
     defaultMessage: 'Shrink sidebar',
@@ -47,7 +52,22 @@ class Sidebar extends Component {
    * @property {Object} propTypes Property types.
    * @static
    */
-  static propTypes = {};
+  static propTypes = {
+    documentTab: PropTypes.bool,
+    blockTab: PropTypes.bool,
+    settingsTab: PropTypes.bool,
+  };
+
+  /**
+   * Default properties.
+   * @property {Object} defaultProps Default properties.
+   * @static
+   */
+  static defaultProps = {
+    documentTab: true,
+    blockTab: true,
+    settingsTab: false,
+  };
 
   /**
    * Constructor
@@ -195,7 +215,7 @@ class Sidebar extends Component {
             activeIndex={this.props.tab}
             onTabChange={this.onTabChange}
             panes={[
-              {
+              !!this.props.documentTab && {
                 menuItem: this.props.intl.formatMessage(messages.document),
                 pane: (
                   <Tab.Pane
@@ -205,7 +225,7 @@ class Sidebar extends Component {
                   />
                 ),
               },
-              {
+              !!this.props.blockTab && {
                 menuItem: this.props.intl.formatMessage(messages.block),
                 pane: (
                   <Tab.Pane
@@ -221,7 +241,23 @@ class Sidebar extends Component {
                   </Tab.Pane>
                 ),
               },
-            ]}
+              !!this.props.settingsTab && {
+                menuItem: this.props.intl.formatMessage(messages.settings),
+                pane: (
+                  <Tab.Pane
+                    key="settings"
+                    className="tab-wrapper"
+                    id="sidebar-settings"
+                  >
+                    <Icon
+                      className="tab-forbidden"
+                      name={forbiddenSVG}
+                      size="48px"
+                    />
+                  </Tab.Pane>
+                ),
+              },
+            ].filter((tab) => tab)}
           />
         </div>
         <div className={this.state.expanded ? 'pusher expanded' : 'pusher'} />

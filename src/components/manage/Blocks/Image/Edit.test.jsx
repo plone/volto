@@ -2,16 +2,22 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import { waitFor } from '@testing-library/react';
 
 import Edit from './Edit';
 
 const mockStore = configureStore();
 
-test('renders an edit image block component', () => {
+const blockId = '1234';
+
+test('renders an edit image block component', async () => {
   const store = mockStore({
     content: {
       create: {},
       data: {},
+      subrequests: {
+        [blockId]: {},
+      },
     },
     intl: {
       locale: 'en',
@@ -23,7 +29,7 @@ test('renders an edit image block component', () => {
       <Edit
         data={{ url: 'image' }}
         selected={false}
-        block="1234"
+        block={blockId}
         content={{}}
         request={{
           loading: false,
@@ -43,5 +49,6 @@ test('renders an edit image block component', () => {
     </Provider>,
   );
   const json = component.toJSON();
+  await waitFor(() => {});
   expect(json).toMatchSnapshot();
 });

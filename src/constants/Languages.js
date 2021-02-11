@@ -13,4 +13,5 @@ module.exports = {
   pt_BR: 'Português (Brasil)',
   es: 'Spanish',
   it: 'Italian',
+  eu: 'Euskara',
 };

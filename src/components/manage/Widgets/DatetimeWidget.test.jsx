@@ -1,10 +1,10 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import DatetimeWidget from './DatetimeWidget';
 import moment from 'moment';
-import configureStore from 'redux-mock-store';
-import { Provider } from 'react-intl-redux';
 import TimePicker from 'rc-time-picker';
+import React from 'react';
+import { Provider } from 'react-intl-redux';
+import renderer from 'react-test-renderer';
+import configureStore from 'redux-mock-store';
+import DatetimeWidget from './DatetimeWidget';
 
 const mockStore = configureStore();
 
