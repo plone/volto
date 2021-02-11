@@ -1,10 +1,10 @@
 import * as fs from 'fs-extra';
 import path from 'path';
 import { getLogger } from '@plone/volto/express-middleware/logger';
+import { settings } from '~/config';
 const debug = getLogger('file-cache');
 
 export const defaultOpts = {
-  basePath: `../public/cache`,
   maxSize: 100,
 };
 
@@ -14,11 +14,15 @@ function isNumber(val) {
 
 class FileCache {
   constructor(opts = defaultOpts) {
-    this.basePath = opts.basePath;
+    // NOTE: the next line, when uncommented, works better whan the following
+    // one:
+    //this.basePath = 'public/cache';
+    this.basePath = opts.basePath || settings.serverConfig.fileCacheBasePath;
+    this.absBasePath = path.join(process.cwd(), this.basePath);
     this.maxSize = opts.maxSize;
     this.cache = new Map(); // keeping count of how many times the file is accessed
-    if (__SERVER__ && fs.existsSync(path.join(__dirname, this.basePath))) {
-      this.initialize(path.join(__dirname, this.basePath));
+    if (__SERVER__ && fs.existsSync(this.absBasePath)) {
+      this.initialize(this.absBasePath);
     }
   }
 
@@ -51,7 +55,7 @@ class FileCache {
     }
     const ext = key.substr(key.indexOf('.') + 1).split('/')[0]; //append the extension
     let name = Buffer.from(key).toString('base64');
-    return `${this.basePath}/${name}.${ext}`;
+    return `${this.absBasePath}/${name}.${ext}`;
   }
 
   read(key) {
@@ -105,8 +109,8 @@ class FileCache {
       const dir = path.join(__dirname, `${key}`);
       const metadataPath = `${dir.replace(path.extname(dir), '.metadata')}`;
       if (
-        !fs.existsSync(path.join(__dirname, this.basePath)) ||
-        fs.readdirSync(path.join(__dirname, this.basePath)).length <
+        !fs.existsSync(path.join(__dirname, this.absBasePath)) ||
+        fs.readdirSync(path.join(__dirname, this.absBasePath)).length <
           this.maxSize
       ) {
         fs.outputFileSync(dir, value.data, { encoding: null });
@@ -161,7 +165,7 @@ class FileCache {
    * @return undefined
    */
   clear() {
-    const dir = path.resolve(__dirname, this.basePath);
+    const dir = this.absBasePath;
     return fs.removeSync(dir);
   }
 }

@@ -1,5 +1,6 @@
 import FileCache from '@plone/volto/express-middleware/image-proxy/file-cache.js';
 import fs from 'fs-extra';
+import path from 'path';
 
 global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
 
@@ -9,7 +10,8 @@ describe('Test File Cache', () => {
     const initialize = (FileCache.prototype.initialize = jest.fn());
     const cache = new FileCache();
     const opts = {
-      basePath: `../public/cache`,
+      basePath: `public/cache`,
+      absBasePath: path.join(process.cwd(), 'public/cache'),
       maxSize: 100,
       cache: new Map(),
     };
