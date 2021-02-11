@@ -11,6 +11,10 @@ jest.mock('~/config', () => ({
   settings: {
     isMultilingual: false,
     supportedLanguages: ['de'],
+    lazyBundles: {
+      cms: [],
+    },
+    loadables: {},
   },
 }));
 
