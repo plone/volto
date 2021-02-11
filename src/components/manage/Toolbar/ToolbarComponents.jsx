@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { filter, find } from 'lodash';
+import { matchPath } from 'react-router';
 import { Link } from 'react-router-dom';
 import { defineMessages, injectIntl } from 'react-intl';
 
@@ -299,14 +300,10 @@ export const UserButton = (props) => (
 );
 
 export const Bottom = (props) => {
-  const { actionComponents = [] } = props;
   return (
     <>
       <img className="minipastanaga" src={pastanagaSmall} alt="" />
-      {!props.hideDefaultViewButtons &&
-        actionComponents.map((BottomComponent, index) => (
-          <BottomComponent {...props} key={index} />
-        ))}
+      {!props.hideDefaultViewButtons && props.children}
       <div className="divider" />
       <div className="pastanagalogo">
         <img src={pastanagalogo} alt="" />
