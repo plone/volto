@@ -14,7 +14,7 @@ function isNumber(val) {
 
 class FileCache {
   constructor(opts = defaultOpts) {
-    // NOTE: the next line, when uncommented, works better whan the following
+    // NOTE: the next line, when uncommented, works better than the following
     // one:
     //this.basePath = 'public/cache';
     this.basePath = opts.basePath || settings.serverConfig.fileCacheBasePath;
