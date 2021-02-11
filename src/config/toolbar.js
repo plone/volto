@@ -18,7 +18,6 @@ import {
   HistoryAction,
   SharingAction,
   ManageTranslations,
-  Bottom,
   UserButton,
 } from '@plone/volto/components/manage/Toolbar/ToolbarComponents';
 
@@ -58,10 +57,6 @@ const moreMenu = (actions) => {
   return (props) => <MoreButton actionComponents={actions} {...props} />;
 };
 
-export const bottom = (actions) => {
-  return (props) => <Bottom actionComponents={actions} {...props} />;
-};
-
 const defaultMoreActions = [
   WorkflowAction,
   DisplayAction,
@@ -70,12 +65,39 @@ const defaultMoreActions = [
   ManageTranslations,
 ];
 const defaultViewActions = [
-  EditButton,
-  ContentsButton,
-  AddButton,
-  moreMenu(defaultMoreActions),
+  {
+    match: {
+      path: '/',
+    },
+    component: EditButton,
+  },
+  {
+    match: {
+      path: '/',
+    },
+    component: ContentsButton,
+  },
+  {
+    match: {
+      path: '/',
+    },
+    component: AddButton,
+  },
+  {
+    match: {
+      path: '/',
+    },
+    component: moreMenu(defaultMoreActions),
+  },
 ];
-const defaultBottomActions = [UserButton];
+const defaultBottomActions = [
+  {
+    match: {
+      path: '/',
+    },
+    component: UserButton,
+  },
+];
 
 /**
  * Registered activities in volto:
@@ -89,11 +111,11 @@ const activities = {
   },
   view: {
     top: [...defaultViewActions],
-    bottom: [bottom(defaultBottomActions)],
+    bottom: [...defaultBottomActions],
   },
   contents: {
     top: [...defaultViewActions],
-    bottom: [bottom(defaultBottomActions)],
+    bottom: [...defaultBottomActions],
   },
 };
 

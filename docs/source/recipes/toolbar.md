@@ -21,9 +21,16 @@ To add a new button to the toolbar, insert it in your configuration script:
 import {ButtonA, ButtonB} from './components';
 
 const applyConfig = (config) => {
-  config.toolbar.activities.view.top.push(ButtonA)
+  config.toolbar.activities.view.top.push({
+    match: {
+      path: '/',
+    },
+    component: ButtonA,
+  })
   config.toolbar.activities.view.bottom.push({
-    match: '/documentation',
+    match: {
+      path: '/documentation',
+    },
     component: ButtonB,
   })
   return config;
@@ -40,26 +47,48 @@ key:
 ```jsx
 import {MyAction}  from './components';
 
-export default function (config) {
+const applyConfig = (config) => {
   config.toolbar.defaultMoreActions.push(MyAction);
 
   return config;
-}
+};
+
+export default applyConfig;
 ```
 
 It's also possible to configure the "default view actions", which are, by
 default, defined as:
 
-```
+```jsx
 const defaultViewActions = [
-  EditButton,
-  ContentsButton,
-  AddButton,
-  moreMenu(defaultMoreActions),
+  {
+    match: {
+      path: '/',
+    },
+    component: EditButton,
+  },
+  {
+    match: {
+      path: '/',
+    },
+    component: ContentsButton,
+  },
+  {
+    match: {
+      path: '/',
+    },
+    component: AddButton,
+  },
+  {
+    match: {
+      path: '/',
+    },
+    component: moreMenu(defaultMoreActions),
+  },
 ];
 ```
 
-This is exposed as `config.toolbar.defaultViewActions`.
+They are exposed as `config.toolbar.defaultViewActions`.
 
 ### Dropdown menus
 
@@ -70,35 +99,10 @@ dropdown menus, use the `DropdownWithButton` component for that:
 import { DropdownWithButton } from '@plone/volto/components/manage/Toolbar/Dropdown';
 
 const applyConfig = (config) => {
-  config.toolbar.activities.someActivity.top.push((props) => (
-    <DropdownWithButton
-      {...props}
-      name="add-something"
-      title="Add something"
-      icon={<Icon name={addSVG} size="30px" />}
-      headerActions={
-        <button aria-label={'Add'} onClick={() => {}} tabIndex={0}>
-          <Icon name={addSVG} size="30px" />
-        </button>
-      }
-    >
-      <div>Hello!</div>
-    </DropdownWithButton>
-  ));
-  return config;
-}
-
-export default applyConfig;
-```
-
-Same dropdown menu as above but restricted to route '/documentation':
-
-```jsx
-import { DropdownWithButton } from '@plone/volto/components/manage/Toolbar/Dropdown';
-
-const applyConfig = (config) => {
   config.toolbar.activities.someActivity.top.push({
-    match: '/documentation',
+    match: {
+      path: '/',
+    },
     component: (props) => (
       <DropdownWithButton
         {...props}
@@ -115,6 +119,24 @@ const applyConfig = (config) => {
       </DropdownWithButton>
     ),
 });
+  return config;
+}
+
+export default applyConfig;
+```
+
+With a menu component living in /components:
+
+```jsx
+import { MenuA } from './components';
+
+const applyConfig = (config) => {
+  config.toolbar.activities.someActivity.top.push({
+    match: {
+      path: '/',
+    },
+    component: (props) => <MenuA {...props} />,
+  });
   return config;
 }
 

@@ -5,6 +5,7 @@
 
 import React, { Component } from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
+import { matchPath } from 'react-router';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -18,6 +19,7 @@ import {
   setExpandedToolbar,
 } from '@plone/volto/actions';
 import { BodyClass, getBaseUrl } from '@plone/volto/helpers';
+import { Bottom } from '@plone/volto/components/manage/Toolbar/ToolbarComponents';
 
 import { toolbar } from '~/config';
 
@@ -311,12 +313,12 @@ export class BasicToolbarComponent extends Component {
               <div className="toolbar-actions">
                 {this.props.inner}
                 {top.map((ActionComponent, index) => {
-                  let Cmp = ActionComponent.hasOwnProperty('component')
-                    ? ActionComponent.component
-                    : ActionComponent;
-                  return !ActionComponent.hasOwnProperty('match') ||
-                    this.props.pathname === ActionComponent.match ? (
-                    <Cmp
+                  return matchPath(
+                    this.props.pathname,
+                    ActionComponent.match,
+                  ) ? (
+                    // eslint-disable-next-line react/jsx-pascal-case
+                    <ActionComponent.component
                       {...this.props}
                       key={index}
                       toggleMenu={this.toggleMenu}
@@ -328,22 +330,24 @@ export class BasicToolbarComponent extends Component {
                 })}
               </div>
               <div className="toolbar-bottom">
-                {bottom.map((BottomComponent, index) => {
-                  let Cmp = BottomComponent.hasOwnProperty('component')
-                    ? BottomComponent.component
-                    : BottomComponent;
-                  return !BottomComponent.hasOwnProperty('match') ||
-                    this.props.pathname === BottomComponent.match ? (
-                    <Cmp
-                      {...this.props}
-                      key={index}
-                      toggleMenu={this.toggleMenu}
-                      showMenu={this.state.showMenu}
-                      theToolbar={this.toolbarWindow}
-                      loadedComponentName={this.state.loadedComponentName}
-                    />
-                  ) : null;
-                })}
+                <Bottom {...this.props}>
+                  {bottom.map((BottomComponent, index) => {
+                    return matchPath(
+                      this.props.pathname,
+                      BottomComponent.match,
+                    ) ? (
+                      // eslint-disable-next-line react/jsx-pascal-case
+                      <BottomComponent.component
+                        {...this.props}
+                        key={index}
+                        toggleMenu={this.toggleMenu}
+                        showMenu={this.state.showMenu}
+                        theToolbar={this.toolbarWindow}
+                        loadedComponentName={this.state.loadedComponentName}
+                      />
+                    ) : null;
+                  })}
+                </Bottom>
               </div>
             </div>
             <div className="toolbar-handler">

@@ -4,7 +4,7 @@
 
 ### Breaking
 
-- Add a new config registry, the `toolbar`. You should migrate your project's `config.js` to export the `toolbar` registry. @tiberiuichim @ksuess
+- Add a new config registry, the `toolbar`. You should migrate your projects `config.js` to export the `toolbar` registry. @tiberiuichim @ksuess
 
 ### Feature
 
