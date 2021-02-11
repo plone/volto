@@ -52,3 +52,30 @@ invalidations, async workers, etc have to be taken into account. In case you
 want to implement this type of scenario, look at
 [Penthouse](https://github.com/pocketjoso/penthouse) and override the
 `settings.serverConfig.readCriticalCss` function with your own implementation.
+
+# caching webpack assets and prefetch using a service worker
+
+Service Workers help us run a script in a separate thread other than the DOM thread that renders our views. We can avoid clogging up our browser view by running expensive ops in the worker thread.
+
+[offline-plugin](https://github.com/NekR/offline-plugin) is a webpack plugin to provide PWA support for webpack projects.
+It creates a `sw.js`(by default) service worker file on the build time, which have all webpack assets output as minified.
+
+In your webpack config `razzle.config.js`
+
+```
+if (process.env.NODE_ENV === 'production') {
+      config.plugins.push(new OfflinePlugin());
+    }
+```
+
+and require it in client entry file:
+
+```
+if (process.env.NODE_ENV === 'production') {
+  import('offline-plugin/runtime').then((plugin) => plugin.install());
+}
+```
+
+!!! note
+    While its good to go with default options most of the times, It can accept custom options which are particular to different use cases. https://github.com/NekR/offline-plugin/blob/master/docs/options.md
+
