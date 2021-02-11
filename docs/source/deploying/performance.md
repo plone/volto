@@ -55,7 +55,9 @@ want to implement this type of scenario, look at
 
 # caching webpack assets and prefetch using a service worker
 
-Service Workers help us run a script in a separate thread other than the DOM thread that renders our views. We can avoid clogging up our browser view by running expensive ops in the worker thread.
+In production environments sometimes we get this nasty "ChunkLoadError" or "Failed to load chunk". This error originates when a chunk changed its name based on the content and when a browser requests it, the old chunk would not be there.
+
+The idea is to cache chunknames using a worker and let the user to load it from `cache first` to avoid the error.
 
 [offline-plugin](https://github.com/NekR/offline-plugin) is a webpack plugin to provide PWA support for webpack projects.
 It creates a `sw.js`(by default) service worker file on the build time, which have all webpack assets output as minified.
@@ -78,4 +80,3 @@ if (process.env.NODE_ENV === 'production') {
 
 !!! note
     While its good to go with default options most of the times, It can accept custom options which are particular to different use cases. https://github.com/NekR/offline-plugin/blob/master/docs/options.md
-
