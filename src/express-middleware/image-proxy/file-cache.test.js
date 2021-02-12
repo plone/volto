@@ -1,6 +1,5 @@
 import FileCache from '@plone/volto/express-middleware/image-proxy/file-cache.js';
 import fs from 'fs-extra';
-import path from 'path';
 
 global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
 
@@ -11,14 +10,16 @@ describe('Test File Cache', () => {
     const cache = new FileCache();
     const opts = {
       basePath: `public/cache`,
-      absBasePath: path.join(process.cwd(), 'public/cache'),
       maxSize: 100,
       cache: new Map(),
     };
     cache.initialize();
 
     expect(initialize).toHaveBeenCalledTimes(1);
-    expect(cache).toEqual(opts);
+
+    expect(cache.basePath).toEqual(opts.basePath);
+    expect(cache.maxSize).toEqual(opts.maxSize);
+    expect(cache.cache).toEqual(opts.cache);
   });
 
   it('should write file to disk', () => {

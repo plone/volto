@@ -27,7 +27,7 @@ class FileCache {
   /**
    * Initialize the cache.
    * @param {string} dirPath: The base directory.
-   * @return {undefined}.
+   * @return {undefined}
    */
   initialize(dirPath) {
     const files = fs.readdirSync(dirPath);
@@ -45,17 +45,29 @@ class FileCache {
   /**
    * Generates the path to the cached files.
    * @param {string} key: The key of the cache item.
-   * @return {string}.
+   * @return {string}
    */
   path(key) {
     if (!key) {
       throw new Error(`Path requires a cache key.`);
     }
-    const ext = key.substr(key.indexOf('.') + 1).split('/')[0]; //append the extension
+    const ext = key.substr(key.indexOf('.') + 1).split('/')[0]; // append the extension
     let name = md5(key);
     return `${this.absBasePath}/${name}.${ext}`;
   }
 
+  /**
+   * @param {string} key
+   */
+  incrementForKey = (key) => {
+    let count = this.cache.get(key);
+    this.cache.set(key, ++count);
+    debug(this.cache.get(key));
+  };
+
+  /**
+   * @param {string} key
+   */
   read(key) {
     const filePath = this.path(key);
     const metadataPath = `${filePath.replace(
@@ -64,9 +76,7 @@ class FileCache {
     )}`;
     debug(`file read ${filePath}`);
     if (fs.existsSync(filePath)) {
-      let count = this.cache.get(key);
-      this.cache.set(key, ++count);
-      debug(this.cache.get(key));
+      this.incrementForKey(key);
       return {
         data: fs.readFileSync(filePath, { encoding: null }),
         metadata: fs.readFileSync(metadataPath),
@@ -136,8 +146,8 @@ class FileCache {
   }
   /**
    *
-   * @param key
-   * @param value
+   * @param {string} key
+   * @param {number} value
    */
   set(key, value) {
     this.save(key, value);
@@ -145,7 +155,7 @@ class FileCache {
 
   /**
    * Removes the item from the file-system.
-   * @param {string} key: The key of the cache item.
+   * @param {string} key The key of the cache item.
    * @return undefined
    */
   remove(key) {
