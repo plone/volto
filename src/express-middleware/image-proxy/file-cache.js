@@ -56,7 +56,7 @@ class FileCache {
   }
 
   read(key) {
-    const filePath = path.join(__dirname, `${key}`);
+    const filePath = this.path(key);
     const metadataPath = `${filePath.replace(
       path.extname(filePath),
       '.metadata',
@@ -103,15 +103,17 @@ class FileCache {
   save(key, data) {
     const { value } = data;
     try {
-      const dir = path.join(__dirname, `${key}`);
-      const metadataPath = `${dir.replace(path.extname(dir), '.metadata')}`;
+      const filePath = this.path(key);
+      const metadataPath = `${filePath.replace(
+        path.extname(filePath),
+        '.metadata',
+      )}`;
       if (
-        !fs.existsSync(path.join(__dirname, this.absBasePath)) ||
-        fs.readdirSync(path.join(__dirname, this.absBasePath)).length <
-          this.maxSize
+        !fs.existsSync(this.absBasePath) ||
+        fs.readdirSync(this.absBasePath).length < this.maxSize
       ) {
-        fs.outputFileSync(dir, value.data, { encoding: null });
-        debug(`file written at ${dir}`);
+        fs.outputFileSync(filePath, value.data, { encoding: null });
+        debug(`file written at ${filePath}`);
         fs.outputFileSync(metadataPath, JSON.stringify(data));
         debug(`metadata file written at ${metadataPath}`);
         this.cache.set(key, 0);
@@ -146,7 +148,7 @@ class FileCache {
    * @return undefined
    */
   remove(key) {
-    const filePath = path.join(__dirname, `${key}`);
+    const filePath = this.path(key);
     const metadataPath = `${filePath.replace(
       path.extname(filePath),
       '.metadata',
