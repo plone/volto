@@ -123,11 +123,11 @@ class FileCache {
         );
         //TODO: add max age condition
         const entries = Array.from(this.cache.entries());
-        let count = entries[0];
-        entries.forEach((item, ind) => {
-          if (item[1] < count[1]) count = item;
+        let anchorEntry = entries[0];
+        entries.forEach((crtEntry /*, ind */) => {
+          if (crtEntry[1] < anchorEntry[1]) anchorEntry = crtEntry;
         });
-        this.remove(count[0]);
+        this.remove(anchorEntry[0]);
       }
     } catch (e) {
       throw Error(e);
