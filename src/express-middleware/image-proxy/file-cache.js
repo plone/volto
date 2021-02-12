@@ -14,8 +14,7 @@ function isNumber(val) {
 
 class FileCache {
   constructor(opts = defaultOpts) {
-    // TODO: documentation for FILE_CACHE_BASE_PATH env var used below:
-    this.basePath = opts.basePath || process.env.FILE_CACHE_BASE_PATH;
+    this.basePath = process.env.VOLTO_FILE_CACHE_BASE_PATH || opts.basePath;
     this.absBasePath = path.resolve(process.cwd(), this.basePath);
     this.maxSize = opts.maxSize;
     this.cache = new Map(); // keeping count of how many times the file is accessed
