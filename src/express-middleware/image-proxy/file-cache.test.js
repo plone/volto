@@ -48,4 +48,55 @@ describe('Test File Cache', () => {
     fs.existsSync.mockReturnValue(true);
     expect(remove).toHaveBeenCalled();
   });
+
+  it('should look up in cache and have a cache hit', () => {
+    const cache = new FileCache();
+    cache.initialize();
+
+    const p = cache.path('my unit test file');
+
+    cache.set(p, 'file contents');
+
+    const r = cache.read(p);
+
+    try {
+      if (!r) {
+        expect(false);
+      } else if (this.isExpired(JSON.parse(r?.metadata))) {
+        expect(false);
+      } else {
+        expect(r.Data.data).toEqual('file contents');
+      }
+    } catch (error) {
+      expect(false, 'Error thrown while reading cache');
+    }
+
+    cache.remove(p);
+  });
+
+  it('should look up in cache and have a cache miss', () => {
+    const cache = new FileCache();
+    cache.initialize();
+
+    const p = cache.path('my unit test file');
+    const p2 = cache.path('my nonexistent file');
+
+    cache.set(p, 'file contents');
+
+    const r = cache.read(p2);
+
+    try {
+      if (!r) {
+        expect(true);
+      } else if (this.isExpired(JSON.parse(r?.metadata))) {
+        expect(true);
+      } else {
+        expect(r.Data.data).toNotEqual('file contents');
+      }
+    } catch (error) {
+      expect(true, 'Error thrown while reading cache');
+    }
+
+    cache.remove(p);
+  });
 });
