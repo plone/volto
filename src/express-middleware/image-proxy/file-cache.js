@@ -51,7 +51,7 @@ class FileCache {
       throw new Error(`Path requires a cache key.`);
     }
     const ext = key.substr(key.indexOf('.') + 1).split('/')[0]; //append the extension
-    let name = Buffer.from(key).toString('base64');
+    let name = Buffer.from(key).toString('base64').substr(0, 32);
     return `${this.absBasePath}/${name}.${ext}`;
   }
 
