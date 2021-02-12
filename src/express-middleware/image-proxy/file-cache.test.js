@@ -99,4 +99,15 @@ describe('Test File Cache', () => {
 
     cache.remove(p);
   });
+
+  it('should look up in cache and have 2 items', () => {
+    const cache = new FileCache();
+    cache.initialize();
+
+    cache.set('my unit test file', { data: 'file contents' });
+
+    cache.set('my second unit test file', { data: 'my other file contents' });
+
+    expect(Array.from(cache.cache.entries()).length).toEqual(2);
+  });
 });
