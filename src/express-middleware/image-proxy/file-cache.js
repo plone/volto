@@ -1,10 +1,10 @@
 import * as fs from 'fs-extra';
 import path from 'path';
 import { getLogger } from '@plone/volto/express-middleware/logger';
-import { settings } from '~/config';
 const debug = getLogger('file-cache');
 
 export const defaultOpts = {
+  basePath: 'public/cache',
   maxSize: 100,
 };
 
@@ -14,11 +14,9 @@ function isNumber(val) {
 
 class FileCache {
   constructor(opts = defaultOpts) {
-    // NOTE: the next line, when uncommented, works better than the following
-    // one:
-    //this.basePath = 'public/cache';
-    this.basePath = opts.basePath || settings.serverConfig.fileCacheBasePath;
-    this.absBasePath = path.join(process.cwd(), this.basePath);
+    // TODO: documentation for FILE_CACHE_BASE_PATH env var used below:
+    this.basePath = opts.basePath || process.env.FILE_CACHE_BASE_PATH;
+    this.absBasePath = path.resolve(process.cwd(), this.basePath);
     this.maxSize = opts.maxSize;
     this.cache = new Map(); // keeping count of how many times the file is accessed
     if (__SERVER__ && fs.existsSync(this.absBasePath)) {

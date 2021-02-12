@@ -12,7 +12,6 @@ const settings = {
   ],
   criticalCssPath: 'public/critical.css',
   readCriticalCss: null, // so it will be defaultReadCriticalCss
-  fileCacheBasePath: 'public/cache',
 };
 
 export default settings;
