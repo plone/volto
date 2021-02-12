@@ -1,6 +1,7 @@
 import * as fs from 'fs-extra';
 import path from 'path';
 import { getLogger } from '@plone/volto/express-middleware/logger';
+import md5 from 'md5';
 const debug = getLogger('file-cache');
 
 export const defaultOpts = {
@@ -51,7 +52,7 @@ class FileCache {
       throw new Error(`Path requires a cache key.`);
     }
     const ext = key.substr(key.indexOf('.') + 1).split('/')[0]; //append the extension
-    let name = Buffer.from(key).toString('base64').substr(0, 32);
+    let name = md5(key);
     return `${this.absBasePath}/${name}.${ext}`;
   }
 

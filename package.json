@@ -299,6 +299,7 @@
     "lodash": "4.17.19",
     "lodash-move": "1.1.1",
     "lodash-webpack-plugin": "0.11.5",
+    "md5": "2.3.0",
     "mem": "4.0.0",
     "mini-css-extract-plugin": "0.9.0",
     "moment": "2.24.0",
