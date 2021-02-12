@@ -24,7 +24,7 @@ class FileCache {
   }
 
   /**
-   * Initialise the cache.
+   * Initialize the cache.
    * @param {string} dirPath: The base directory.
    * @return {undefined}.
    */
@@ -139,7 +139,7 @@ class FileCache {
    * @param value
    */
   set(key, value) {
-    this.save(this.path(key), value);
+    this.save(key, value);
   }
 
   /**
