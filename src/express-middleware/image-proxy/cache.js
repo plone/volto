@@ -3,6 +3,7 @@ import FileCache from './file-cache';
 import { settings } from '~/config';
 import QuickLRU from './quick-lru';
 import { getLogger } from '../logger';
+import path from 'path';
 
 const debug = getLogger('image-proxy:cache');
 
@@ -17,7 +18,10 @@ export default function get() {
       namespace: 'raw',
       store: new FileCache({
         maxSize: 6,
-        basePath: '../public/cache',
+        basePath: path.resolve(
+          process.cwd(),
+          process.env.VOLTO_FILE_CACHE_BASE_PATH || 'public/cache',
+        ),
       }),
       serialize: (value) => value,
       ...settings.serverConfig.rawImagesCache,
