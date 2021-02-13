@@ -36,7 +36,7 @@ modified by the addons and the project itself. The code, instead of using import
 it, imports the singleton and then access the proper registry key inside it (`settings`,
 `blocks`, `views`, etc...)
 
-#### Changes your code (and local customizations)
+#### Changes in your code (and local customizations)
 
 This was the old way:
 ```js

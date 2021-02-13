@@ -45,7 +45,7 @@ section.
 ### Loading addon configuration
 
 As a convenience, an addon can export configuration functions that can mutate,
-in-place, the overall ``~/config`` registry. An addon can export multiple
+in-place, the overall Volto's configuration registry. An addon can export multiple
 configurations methods, making it possible to selectively choose which specific
 addon functionality you want to load.
 
