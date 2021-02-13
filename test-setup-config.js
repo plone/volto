@@ -21,6 +21,7 @@ import {
 import { contentIcons } from '@plone/volto/config/ContentIcons';
 
 import FromHTMLCustomBlockFn from '@plone/volto/config/RichTextEditor/FromHTML';
+// import { defaultToolbar } from '@plone/volto/config/toolbar';
 
 config.set('settings', {
   apiPath: 'http://localhost:8080/Plone',
@@ -129,12 +130,32 @@ config.set('widgets', {
 config.set('toolbar', {
   activities: {
     default: {
-      top: [() => <div className="view-button">Default View Button</div>],
-      bottom: [() => <div className="view-button">Default bottom buttons</div>],
+      top: [
+        {
+          match: '/',
+          component: () => <div className="view-button">Default View</div>,
+        },
+      ],
+      bottom: [
+        {
+          match: '/',
+          component: () => <div className="view-button">Default bottom</div>,
+        },
+      ],
     },
     view: {
-      top: [() => <div className="view-button">View button</div>],
-      bottom: [() => <div className="view-button">Bottom buttons</div>],
+      top: [
+        {
+          match: '/',
+          component: () => <div className="view-button">View</div>,
+        },
+      ],
+      bottom: [
+        {
+          match: '/',
+          component: () => <div className="view-button">Bottom</div>,
+        },
+      ],
     },
   },
 });

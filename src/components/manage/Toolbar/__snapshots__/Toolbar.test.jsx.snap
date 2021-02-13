@@ -28,16 +28,32 @@ Array [
         <div
           className="view-button"
         >
-          View button
+          View
         </div>
       </div>
       <div
         className="toolbar-bottom"
       >
+        <img
+          alt=""
+          className="minipastanaga"
+          src="pastanaga-small.svg"
+        />
         <div
           className="view-button"
         >
-          Bottom buttons
+          Bottom
+        </div>
+        <div
+          className="divider"
+        />
+        <div
+          className="pastanagalogo"
+        >
+          <img
+            alt=""
+            src="pastanaga.svg"
+          />
         </div>
       </div>
     </div>

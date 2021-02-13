@@ -4,7 +4,18 @@
 
 ### Breaking
 
-- Add a new config registry, the `toolbar`. You should migrate your project's `config.js` to export the `toolbar` registry. @tiberiuichim
+- Add a new config registry, the `toolbar`. You should migrate your projects `config.js` to export the `toolbar` registry. @tiberiuichim @ksuess
+
+- Introduction of the new Volto's Configuration Registry @sneridagh @tiberiuichim
+  For more information about this breaking change: https://docs.voltocms.com/upgrade-guide/#upgrading-to-volto-12xx
+
+### Feature
+
+### Bugfix
+
+### Internal
+
+## 11.1.0 (2021-02-08)
 
 - Introduction of the new Volto's Configuration Registry @sneridagh @tiberiuichim
   For more information about this breaking change: https://docs.voltocms.com/upgrade-guide/#upgrading-to-volto-12xx
