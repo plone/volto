@@ -4,7 +4,7 @@
  */
 
 import { map, omit } from 'lodash';
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 import {
   RESET_SEARCH_CONTENT,
@@ -29,6 +29,7 @@ const initialState = {
  * @returns {Object} New state.
  */
 export default function search(state = initialState, action = {}) {
+  const { settings } = config;
   switch (action.type) {
     case `${SEARCH_CONTENT}_PENDING`:
       return action.subrequest

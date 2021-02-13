@@ -10,7 +10,8 @@ import { compose } from 'redux';
 import { Label, Dropdown, Popup, Icon } from 'semantic-ui-react';
 import { compact, concat, fromPairs, map, values, uniqBy } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
+
 import { FormFieldWrapper } from '@plone/volto/components';
 import { resetSearchContent, searchContent } from '@plone/volto/actions';
 
@@ -93,7 +94,7 @@ class ReferenceWidget extends Component {
                 value['@id'],
                 {
                   key: value['@id'],
-                  text: value['@id']?.replace(settings.apiPath, ''),
+                  text: value['@id']?.replace(config.settings.apiPath, ''),
                   value: value['@id'],
                   label: {
                     content: value.title,
@@ -105,7 +106,7 @@ class ReferenceWidget extends Component {
           : {
               [props.value['@id']]: {
                 key: props.value['@id'],
-                text: props.value?.replace(settings.apiPath, ''),
+                text: props.value?.replace(config.settings.apiPath, ''),
                 value: props.value['@id'],
                 label: {
                   content: props.value.title,
@@ -148,7 +149,7 @@ class ReferenceWidget extends Component {
                 compact(concat(nextProps.value, nextProps.search)),
                 (item) => ({
                   ...item,
-                  '@id': item['@id'].replace(settings.apiPath, ''),
+                  '@id': item['@id'].replace(config.settings.apiPath, ''),
                 }),
               ),
               '@id',
@@ -157,7 +158,7 @@ class ReferenceWidget extends Component {
               value['@id'],
               {
                 key: value['@id'],
-                text: value['@id']?.replace(settings.apiPath, ''),
+                text: value['@id']?.replace(config.settings.apiPath, ''),
                 value: value['@id'],
                 label: {
                   content: value.title,
@@ -245,12 +246,12 @@ class ReferenceWidget extends Component {
               ? value
                 ? map(value, (item) =>
                     item && item['@id']
-                      ? item['@id'].replace(settings.apiPath, '')
+                      ? item['@id'].replace(config.settings.apiPath, '')
                       : item,
                   )
                 : []
               : value
-              ? value['@id']?.replace(settings.apiPath, '')
+              ? value['@id']?.replace(config.settings.apiPath, '')
               : ''
           }
           onChange={(event, data) => {

@@ -352,7 +352,9 @@ exports[`renders an Image Block Sidebar component 1`] = `
           <div
             className="eight wide column"
           >
-            <div>
+            <div
+              className="field-image_size"
+            >
               <div
                 className="ui buttons"
               >

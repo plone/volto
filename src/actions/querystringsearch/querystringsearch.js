@@ -1,5 +1,5 @@
 import { GET_QUERYSTRING_RESULTS } from '@plone/volto/constants/ActionTypes';
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 /**
  * Get querystring results.
@@ -8,6 +8,7 @@ import { settings } from '~/config';
  * @returns {Object} Get querystringsearch results action.
  */
 export function getQueryStringResults(path, data, subrequest, page) {
+  const { settings } = config;
   // fixes https://github.com/plone/volto/issues/1059
 
   let requestData = JSON.parse(JSON.stringify(data));

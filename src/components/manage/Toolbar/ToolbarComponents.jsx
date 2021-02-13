@@ -2,13 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { filter, find } from 'lodash';
-import { matchPath } from 'react-router';
 import { Link } from 'react-router-dom';
 import { defineMessages, injectIntl } from 'react-intl';
 
 import { Icon, Display, Workflow } from '@plone/volto/components';
 import { getBaseUrl } from '@plone/volto/helpers';
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 import addSVG from '@plone/volto/icons/add-document.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -19,6 +18,8 @@ import pastanagalogo from '@plone/volto/components/manage/Toolbar/pastanaga.svg'
 import penSVG from '@plone/volto/icons/pen.svg';
 import rightArrowSVG from '@plone/volto/icons/right-key.svg';
 import userSVG from '@plone/volto/icons/user.svg';
+
+// import { matchPath } from 'react-router';
 
 const messages = defineMessages({
   edit: {
@@ -165,6 +166,7 @@ export const ContentsButton = (props) => {
 };
 
 export const AddButton = (props) => {
+  const { settings } = config;
   return (
     props.content &&
     ((props.content.is_folderish && props.types.length > 0) ||
@@ -269,6 +271,7 @@ export const SharingAction = (props) => {
 export const ManageTranslations = (props) => {
   const editAction = find(props.actions.object, { id: 'edit' });
   const path = getBaseUrl(props.pathname);
+  const { settings } = config;
   return (
     editAction &&
     settings.isMultilingual && (

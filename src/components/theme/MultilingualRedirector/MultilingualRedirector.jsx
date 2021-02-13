@@ -3,12 +3,12 @@ import { Redirect } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { updateIntl } from 'react-intl-redux';
 import cookie from 'react-cookie';
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 let locales = {};
 
-if (settings) {
-  settings.supportedLanguages.forEach((lang) => {
+if (config.settings) {
+  config.settings.supportedLanguages.forEach((lang) => {
     import('~/../locales/' + lang + '.json').then((locale) => {
       locales = { ...locales, [lang]: locale.default };
     });
@@ -16,6 +16,7 @@ if (settings) {
 }
 
 const MultilingualRedirector = (props) => {
+  const { settings } = config;
   const { pathname, children } = props;
   const currentLanguage =
     cookie.load('I18N_LANGUAGE') || settings.defaultLanguage;
@@ -37,7 +38,7 @@ const MultilingualRedirector = (props) => {
         }),
       );
     }
-  }, [pathname, dispatch, redirectToLanguage]);
+  }, [pathname, dispatch, redirectToLanguage, settings.isMultilingual]);
 
   return pathname === '/' && settings.isMultilingual ? (
     <Redirect to={`/${redirectToLanguage}`} />

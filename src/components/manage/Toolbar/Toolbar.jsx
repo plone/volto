@@ -20,8 +20,7 @@ import {
 } from '@plone/volto/actions';
 import { BodyClass, getBaseUrl } from '@plone/volto/helpers';
 import { Bottom } from '@plone/volto/components/manage/Toolbar/ToolbarComponents';
-
-import { toolbar } from '~/config';
+import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   shrinkToolbar: {
@@ -143,6 +142,7 @@ export class BasicToolbarComponent extends Component {
     this.setState(() => ({ showMenu: false, loadedComponents: [] }));
 
   loadComponent = (type) => {
+    const { toolbar } = config;
     const { loadedComponents } = this.state;
     if (type) {
       if (!this.state.loadedComponents.includes(type)) {
@@ -158,6 +158,7 @@ export class BasicToolbarComponent extends Component {
   };
 
   unloadComponent = () => {
+    const { toolbar } = config;
     this.setState((state) => ({
       loadedComponents: state.loadedComponents.slice(0, -1),
       hideToolbarBody:
@@ -209,6 +210,7 @@ export class BasicToolbarComponent extends Component {
   render() {
     const { top = [], bottom = [] } = this.props;
     const { expanded } = this.state;
+    const { toolbar } = config;
 
     return (
       this.props.token && (
@@ -385,6 +387,7 @@ export const BasicToolbar = compose(
 )(BasicToolbarComponent);
 
 const Toolbar = (props) => {
+  const { toolbar } = config;
   const activity = toolbar.activities[props.activity || 'default'] || [];
   return <BasicToolbar {...props} {...activity}></BasicToolbar>;
 };
