@@ -35,7 +35,8 @@ import { defaultToolbar } from './toolbar';
 import defaultSlots from './slots';
 
 import applyAddonConfiguration from 'load-volto-addons';
-import Registry from '@plone/volto/registry';
+
+import ConfigRegistry from '@plone/volto/registry';
 
 const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || '3000';
@@ -144,10 +145,15 @@ export const blocks = config.blocks;
 export const addonRoutes = [...config.addonRoutes];
 export const addonReducers = { ...config.addonReducers };
 export const appExtras = config.appExtras;
-export const toolbar = { ...config.toolbar };
-export const slots = { ...config.slots };
+export const toolbar = config.toolbar;
+export const slots = config.slots;
 
-Registry.settings = settings;
-Registry.blocks = blocks;
-Registry.views = views;
-Registry.slots = slots;
+ConfigRegistry.settings = settings;
+ConfigRegistry.blocks = blocks;
+ConfigRegistry.views = views;
+ConfigRegistry.widgets = widgets;
+ConfigRegistry.addonRoutes = addonRoutes;
+ConfigRegistry.addonReducers = addonReducers;
+ConfigRegistry.appExtras = appExtras;
+ConfigRegistry.slots = slots;
+ConfigRegistry.toolbar = toolbar;

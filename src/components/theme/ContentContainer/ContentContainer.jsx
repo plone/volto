@@ -3,18 +3,18 @@ import { Container, Grid } from 'semantic-ui-react';
 import { SlotRenderer } from '@plone/volto/components';
 import { matchPath, useLocation } from 'react-router-dom';
 import { isEmpty } from 'lodash';
-import Registry from '@plone/volto/registry';
+import config from '@plone/volto/registry';
 // import useSlots from '@plone/volto/helpers/Slots/useSlots';
 
 const ContentContainer = ({ children, content }) => {
   const pathname = useLocation().pathname;
-  const { slots } = Registry;
+  const { slots } = config;
 
   const hasSlot = (name) => {
     if (!slots[name]) {
       return null;
     }
-    return slots[name].staticFills.filter((slot) => {
+    return slots[name].filter((slot) => {
       return matchPath(pathname, { path: slot.path, exact: slot.exact });
     });
   };

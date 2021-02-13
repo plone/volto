@@ -6,7 +6,8 @@ import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
 import { reduce } from 'lodash';
 import { Link, useLocation } from 'react-router-dom';
 import { Icon, Toast, Toolbar } from '@plone/volto/components';
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
+
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import {
   deleteLinkTranslation,
@@ -167,7 +168,7 @@ const ManageTranslations = (props) => {
               </Table.Row>
             </Table.Header>
             <Table.Body>
-              {settings.supportedLanguages.map((lang) => (
+              {config.settings.supportedLanguages.map((lang) => (
                 <Table.Row key={lang}>
                   <Table.Cell collapsing>
                     {lang === content.language.token ? (

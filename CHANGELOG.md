@@ -1,10 +1,21 @@
 # Change Log
 
-## 11.0.1 (unreleased)
+## 11.1.1 (unreleased)
 
 ### Breaking
 
 - Add a new config registry, the `toolbar`. You should migrate your project's `config.js` to export the `toolbar` registry. @tiberiuichim
+
+- Introduction of the new Volto's Configuration Registry @sneridagh @tiberiuichim
+  For more information about this breaking change: https://docs.voltocms.com/upgrade-guide/#upgrading-to-volto-12xx
+
+### Feature
+
+### Bugfix
+
+### Internal
+
+## 11.1.0 (2021-02-08)
 
 ### Feature
 
@@ -12,6 +23,7 @@
 - Added onChangeFormData prop to Form component @giuliaghisini
 - Internationalization story for add-ons @sneridagh
 - Allow configuration of Toolbar actions @tiberiuichim
+- robots.txt from plone as fallback (if /public/robots.txt not exists and .env VOLTO_ROBOTSTXT variable not exists.) @giuliaghisini
 - UniversalLink and ConditionalLink accepts also an item to link to. If item is of @type Link, a direct link to remote url is generated if user is not logged. @giuliaghisini
 
 ### Bugfix

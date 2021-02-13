@@ -6,7 +6,7 @@
 import { omit, without, endsWith, find, keys } from 'lodash';
 import move from 'lodash-move';
 import { v4 as uuid } from 'uuid';
-import Registry from '@plone/volto/registry';
+import config from '@plone/volto/registry';
 
 /**
  * Get blocks field.
@@ -60,7 +60,7 @@ export function hasBlocksData(props) {
  * @return {boolean} True if block has a non-empty value
  */
 export function blockHasValue(data) {
-  const { blocks } = Registry;
+  const { blocks } = config;
   const blockType = data['@type'];
   const check = blocks.blocksConfig[blockType]?.blockHasValue;
   if (!check) {
@@ -110,7 +110,7 @@ export function deleteBlock(formData, blockId) {
 }
 
 export function addBlock(formData, type, index) {
-  const { settings } = Registry;
+  const { settings } = config;
   const id = uuid();
   const idTrailingBlock = uuid();
   const blocksFieldname = getBlocksFieldname(formData);
@@ -146,7 +146,7 @@ export function addBlock(formData, type, index) {
 }
 
 export function mutateBlock(formData, id, value) {
-  const { settings } = Registry;
+  const { settings } = config;
   const blocksFieldname = getBlocksFieldname(formData);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
   const index = formData[blocksLayoutFieldname].items.indexOf(id) + 1;
@@ -227,7 +227,7 @@ export function previousBlockId(formData, currentBlock) {
 }
 
 export function emptyBlocksForm() {
-  const { settings } = Registry;
+  const { settings } = config;
   const id = uuid();
   return {
     blocks: {

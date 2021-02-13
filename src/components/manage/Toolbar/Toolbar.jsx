@@ -12,14 +12,13 @@ import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import cookie from 'react-cookie';
 import { filter } from 'lodash';
 import cx from 'classnames';
+import config from '@plone/volto/registry';
 import {
   getTypes,
   listActions,
   setExpandedToolbar,
 } from '@plone/volto/actions';
 import { BodyClass, getBaseUrl } from '@plone/volto/helpers';
-
-import { toolbar } from '~/config';
 
 const messages = defineMessages({
   shrinkToolbar: {
@@ -141,6 +140,7 @@ export class BasicToolbarComponent extends Component {
     this.setState(() => ({ showMenu: false, loadedComponents: [] }));
 
   loadComponent = (type) => {
+    const { toolbar } = config;
     const { loadedComponents } = this.state;
     if (type) {
       if (!this.state.loadedComponents.includes(type)) {
@@ -156,6 +156,7 @@ export class BasicToolbarComponent extends Component {
   };
 
   unloadComponent = () => {
+    const { toolbar } = config;
     this.setState((state) => ({
       loadedComponents: state.loadedComponents.slice(0, -1),
       hideToolbarBody:
@@ -205,6 +206,7 @@ export class BasicToolbarComponent extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const { toolbar } = config;
     const { top = [], bottom = [] } = this.props;
     const { expanded } = this.state;
 
@@ -369,6 +371,7 @@ export const BasicToolbar = compose(
 )(BasicToolbarComponent);
 
 const Toolbar = (props) => {
+  const { toolbar } = config;
   const activity = toolbar.activities[props.activity || 'default'] || [];
   return <BasicToolbar {...props} {...activity}></BasicToolbar>;
 };

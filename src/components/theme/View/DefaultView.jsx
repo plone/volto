@@ -9,7 +9,7 @@ import { defineMessages, injectIntl } from 'react-intl';
 
 import { Container, Image } from 'semantic-ui-react';
 import { map } from 'lodash';
-import Registry from '@plone/volto/registry';
+import config from '@plone/volto/registry';
 
 import {
   getBlocksFieldname,
@@ -39,7 +39,7 @@ const DefaultView = ({ content, intl, location }) => {
     <div id="page-document" className="ui container">
       {map(content[blocksLayoutFieldname].items, (block) => {
         const Block =
-          Registry.blocks.blocksConfig[
+          config.blocks.blocksConfig[
             content[blocksFieldname]?.[block]?.['@type']
           ]?.['view'] || null;
         return Block !== null ? (

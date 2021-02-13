@@ -7,7 +7,7 @@ import {
   getBlocksLayoutFieldname,
   hasBlocksData,
 } from '@plone/volto/helpers';
-import { blocks } from '~/config';
+import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   unknownBlock: {
@@ -26,9 +26,9 @@ const RenderBlocks = (props) => {
     <CustomTag>
       {map(content[blocksLayoutFieldname].items, (block) => {
         const Block =
-          blocks.blocksConfig[content[blocksFieldname]?.[block]?.['@type']]?.[
-            'view'
-          ] || null;
+          config.blocks.blocksConfig[
+            content[blocksFieldname]?.[block]?.['@type']
+          ]?.['view'] || null;
         return Block !== null ? (
           <Block
             key={block}

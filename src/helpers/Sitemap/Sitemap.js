@@ -7,7 +7,7 @@ import superagent from 'superagent';
 import { map } from 'lodash';
 import cookie from 'react-cookie';
 import zlib from 'zlib';
-import Registry from '@plone/volto/registry';
+import config from '@plone/volto/registry';
 
 /**
  * Generate sitemap
@@ -17,7 +17,7 @@ import Registry from '@plone/volto/registry';
  */
 export const generateSitemap = (req) =>
   new Promise((resolve) => {
-    const { settings } = Registry;
+    const { settings } = config;
     const url = `${req.protocol}://${req.get('Host')}`;
     const request = superagent.get(
       `${settings.apiPath}/@search?metadata_fields=modified&b_size=100000000`,

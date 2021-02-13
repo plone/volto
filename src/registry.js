@@ -1,11 +1,11 @@
-class Registry {
+class Config {
   constructor() {
-    if (!Registry.instance) {
+    if (!Config.instance) {
       this._data = {};
-      Registry.instance = this;
+      Config.instance = this;
     }
 
-    return Registry.instance;
+    return Config.instance;
   }
 
   set(registry, item) {
@@ -40,6 +40,38 @@ class Registry {
     this._data.views = views;
   }
 
+  get widgets() {
+    return this._data.widgets;
+  }
+
+  set widgets(widgets) {
+    this._data.widgets = widgets;
+  }
+
+  get addonReducers() {
+    return this._data.addonReducers;
+  }
+
+  set addonReducers(addonReducers) {
+    this._data.addonReducers = addonReducers;
+  }
+
+  get addonRoutes() {
+    return this._data.addonRoutes;
+  }
+
+  set addonRoutes(addonRoutes) {
+    this._data.addonRoutes = addonRoutes;
+  }
+
+  get appExtras() {
+    return this._data.appExtras;
+  }
+
+  set appExtras(appExtras) {
+    this._data.appExtras = appExtras;
+  }
+
   get slots() {
     return this._data.slots;
   }
@@ -47,9 +79,17 @@ class Registry {
   set slots(slots) {
     this._data.slots = slots;
   }
+
+  get toolbar() {
+    return this._data.toolbar;
+  }
+
+  set toolbar(toolbar) {
+    this._data.toolbar = toolbar;
+  }
 }
 
-const instance = new Registry();
+const instance = new Config();
 Object.freeze(instance);
 
 export default instance;

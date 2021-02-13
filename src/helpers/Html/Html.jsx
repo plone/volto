@@ -5,12 +5,12 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from '@plone/volto/helpers';
+import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import serialize from 'serialize-javascript';
 import { join } from 'lodash';
-import { BodyClass } from '@plone/volto/helpers';
+import BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
 import { runtimeConfig } from '@plone/volto/runtime_config';
-import Registry from '@plone/volto/registry';
+import config from '@plone/volto/registry';
 
 const CRITICAL_CSS_TEMPLATE = `function alter() {
   document.querySelectorAll("head link[rel='prefetch']").forEach(function(el) { el.rel = 'stylesheet'});
@@ -22,7 +22,7 @@ if (window.addEventListener) {
 }`;
 
 export const loadReducers = (state = {}) => {
-  const { settings } = Registry;
+  const { settings } = config;
   return Object.assign(
     {},
     ...Object.keys(state).map((name) =>

@@ -15,7 +15,7 @@ import { Container, Pagination, Button, Header } from 'semantic-ui-react';
 import qs from 'query-string';
 import classNames from 'classnames';
 
-import Registry from '@plone/volto/registry';
+import config from '@plone/volto/registry';
 import { Helmet } from '@plone/volto/helpers';
 import { searchContent } from '@plone/volto/actions';
 import { SearchTags, Toolbar, Icon } from '@plone/volto/components';
@@ -113,7 +113,7 @@ class Search extends Component {
   };
 
   handleQueryPaginationChange = (e, { activePage }) => {
-    const { settings } = Registry;
+    const { settings } = config;
     window.scrollTo(0, 0);
     let options = qs.parse(this.props.history.location.search);
     this.setState({ currentPage: activePage }, () => {
@@ -147,7 +147,7 @@ class Search extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { settings } = Registry;
+    const { settings } = config;
     return (
       <Container id="page-search">
         <Helmet title="Search" />

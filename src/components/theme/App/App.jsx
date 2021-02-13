@@ -15,7 +15,7 @@ import split from 'lodash/split';
 import join from 'lodash/join';
 import trim from 'lodash/trim';
 import cx from 'classnames';
-import Registry from '@plone/volto/registry';
+import config from '@plone/volto/registry';
 
 import Error from '@plone/volto/error';
 
@@ -97,7 +97,7 @@ class App extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { views } = Registry;
+    const { views } = config;
     const path = getBaseUrl(this.props.pathname);
     const action = getView(this.props.pathname);
     const isCmsUI = isCmsUi(this.props.pathname);
@@ -199,7 +199,7 @@ export default compose(
         dispatch(
           getNavigation(
             getBaseUrl(location.pathname),
-            Registry.settings.navDepth,
+            config.settings.navDepth,
           ),
         ),
     },

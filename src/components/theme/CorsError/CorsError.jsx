@@ -6,7 +6,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Container } from 'semantic-ui-react';
-import Registry from '@plone/volto/registry';
+import config from '@plone/volto/registry';
 
 /**
  * Not found function.
@@ -33,7 +33,7 @@ const CorsError = () => (
             defaultMessage="There is a configuration problem on the backend"
           />
           <br />
-          <a href={Registry.settings.apiPath}>{Registry.settings.apiPath}</a>
+          <a href={config.settings.apiPath}>{config.settings.apiPath}</a>
         </h1>
         <p
           className="description"

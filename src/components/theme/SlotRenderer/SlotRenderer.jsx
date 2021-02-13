@@ -12,7 +12,7 @@ const SlotRenderer = ({ name }) => {
   }
 
   const currentSlot = slots[name];
-  const active = currentSlot.staticFills.filter((slot) =>
+  const active = currentSlot.filter((slot) =>
     matchPath(pathname, { path: slot.path, exact: slot.exact }),
   );
 

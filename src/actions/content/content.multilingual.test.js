@@ -1,12 +1,9 @@
 import { getContent } from './content';
 import { GET_CONTENT } from '@plone/volto/constants/ActionTypes';
+import config from '@plone/volto/registry';
 
-jest.mock('~/config', () => ({
-  settings: {
-    isMultilingual: true,
-    supportedLanguages: ['de', 'es'],
-  },
-}));
+config.settings.isMultilingual = true;
+config.settings.supportedLanguages = ['de', 'es'];
 
 describe('getContent', () => {
   it('[Multilingual] should create an action to get content', () => {

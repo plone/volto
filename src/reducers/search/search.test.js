@@ -1,10 +1,11 @@
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 import search from './search';
 import {
   RESET_SEARCH_CONTENT,
   SEARCH_CONTENT,
 } from '@plone/volto/constants/ActionTypes';
 
+const { settings } = config;
 describe('Search reducer', () => {
   it('should return the initial state', () => {
     expect(search()).toEqual({
