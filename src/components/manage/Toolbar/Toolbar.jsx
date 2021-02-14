@@ -155,6 +155,8 @@ export class BasicToolbarComponent extends Component {
     } else {
       this.setState({ loadedComponents: [] });
     }
+    // testing tibi
+    document.removeEventListener('mousedown', this.handleClickOutside, false);
   };
 
   unloadComponent = () => {
@@ -198,7 +200,16 @@ export class BasicToolbarComponent extends Component {
   };
 
   handleClickOutside = (e) => {
-    if (this.pusher && doesNodeContainClick(this.pusher, e)) return;
+    const isOriginalMoreMenu =
+      this.pusher && doesNodeContainClick(this.pusher, e);
+
+    // if it's the extended dropdown menu, it needs to handle click outside on
+    // its own
+    const isExtendedDropdownMenu = this.state.showMenu && this.state.extras;
+
+    if (isOriginalMoreMenu || isExtendedDropdownMenu) {
+      return;
+    }
     this.closeMenu();
   };
 

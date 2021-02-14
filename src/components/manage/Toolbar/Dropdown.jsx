@@ -3,6 +3,7 @@
  * @module components/manage/Toolbar/Dropdown
  */
 
+import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import React, { Component } from 'react';
 import { BodyClass } from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
@@ -14,16 +15,6 @@ export class DropdownMenu extends Component {
   state = {
     pushed: false,
   };
-
-  push = (selector) => {
-    this.setState(() => ({
-      pushed: true,
-    }));
-    this.props.loadComponent(selector);
-    document.removeEventListener('mousedown', this.handleClickOutside, false);
-  };
-
-  pusher = React.createRef();
 
   /**
    * Render method.
@@ -37,6 +28,7 @@ export class DropdownMenu extends Component {
       theToolbar,
       showMenu,
       loadedComponentName,
+      pusherRef,
     } = this.props;
 
     return showMenu && loadedComponentName === name ? (
@@ -48,7 +40,7 @@ export class DropdownMenu extends Component {
         <Portal node={document.querySelector('.toolbar-content')}>
           <div
             className="pusher-puller"
-            ref={(node) => (this.pusher.current = node)}
+            ref={(node) => (pusherRef.current = node)}
             style={{
               transform: theToolbar.current ? `translateX(0px)` : null,
             }}
@@ -87,7 +79,29 @@ export class DropdownMenu extends Component {
  * A dropdown trigger button, to be included as a Toolbar action
  */
 export const DropdownWithButton = (props) => {
-  const { icon, label, name } = props;
+  const { icon, label, name, toggleMenu, loadedComponentName } = props;
+  const pusherRef = React.useRef();
+  const { showMenu } = props;
+
+  const handleClickOutside = React.useCallback(
+    (e) => {
+      if (showMenu && loadedComponentName === name) {
+        if (doesNodeContainClick(pusherRef.current, e)) {
+          return;
+        } else {
+          toggleMenu(e, null, { loadedComponentName: name });
+        }
+      }
+    },
+    [showMenu, toggleMenu, name, loadedComponentName],
+  );
+
+  React.useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside, false);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside, false);
+    };
+  }, [handleClickOutside]);
 
   return (
     <>
@@ -97,6 +111,7 @@ export const DropdownWithButton = (props) => {
         onClick={(e) => {
           // selector null triggers the alternate code path in
           // Toolbar.loadComponent
+
           props.toggleMenu(e, null, { loadedComponentName: name });
         }}
         tabIndex={0}
@@ -104,7 +119,7 @@ export const DropdownWithButton = (props) => {
       >
         {icon}
       </button>
-      <DropdownMenu {...props} />
+      <DropdownMenu {...props} pusherRef={pusherRef} />
     </>
   );
 };

@@ -8,6 +8,8 @@ import PersonalInformation from '@plone/volto/components/manage/Preferences/Pers
 import PersonalPreferences from '@plone/volto/components/manage/Preferences/PersonalPreferences';
 import StandardWrapper from '@plone/volto/components/manage/Toolbar/StandardWrapper';
 
+import ManageSlotsButton from '@plone/volto/components/manage/EditSlot/ManageSlotsButton';
+
 import {
   EditButton,
   AddButton,
@@ -64,32 +66,45 @@ const defaultMoreActions = [
   SharingAction,
   ManageTranslations,
 ];
+
 const defaultViewActions = [
   {
+    id: 'EditButton',
     match: {
       path: '/',
     },
     component: EditButton,
   },
   {
+    id: 'ContentsButton',
     match: {
       path: '/',
     },
     component: ContentsButton,
   },
   {
+    id: 'AddButton',
     match: {
       path: '/',
     },
     component: AddButton,
   },
   {
+    id: 'MoreMenu',
     match: {
       path: '/',
     },
     component: moreMenu(defaultMoreActions),
   },
+  {
+    id: 'SlotsMenu',
+    match: {
+      path: '/',
+    },
+    component: ManageSlotsButton,
+  },
 ];
+
 const defaultBottomActions = [
   {
     match: {

@@ -25,9 +25,6 @@ export default function slots(state = {}, action = {}) {
     case `${GET_SLOTS}_PENDING`:
       return {
         ...state,
-        data: {
-          ...state.data,
-        },
         [getRequestKey(action.type)]: {
           loading: true,
           loaded: false,

@@ -87,6 +87,7 @@ export Delete from '@plone/volto/components/manage/Delete/Delete';
 export Diff from '@plone/volto/components/manage/Diff/Diff';
 export Display from '@plone/volto/components/manage/Display/Display';
 export Edit from '@plone/volto/components/manage/Edit/Edit';
+export EditSlot from '@plone/volto/components/manage/EditSlot/EditSlot';
 export ModalForm from '@plone/volto/components/manage/Form/ModalForm';
 export History from '@plone/volto/components/manage/History/History';
 export Sharing from '@plone/volto/components/manage/Sharing/Sharing';
