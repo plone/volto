@@ -272,22 +272,17 @@ export const ManageTranslations = (props) => {
   const editAction = find(props.actions.object, { id: 'edit' });
   const path = getBaseUrl(props.pathname);
   const { settings } = config;
-  return (
-    editAction &&
-    settings.isMultilingual && (
-      <>
-        <li>
-          <Link to={`${path}/manage-translations`}>
-            <button>
-              {props.intl.formatMessage(messages.ManageTranslations)}
+  return editAction && settings.isMultilingual ? (
+    <li>
+      <Link to={`${path}/manage-translations`}>
+        <button>
+          {props.intl.formatMessage(messages.ManageTranslations)}
 
-              <Icon name={rightArrowSVG} size="24px" />
-            </button>
-          </Link>
-        </li>
-      </>
-    )
-  );
+          <Icon name={rightArrowSVG} size="24px" />
+        </button>
+      </Link>
+    </li>
+  ) : null;
 };
 
 export const UserButton = (props) => (
