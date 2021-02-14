@@ -64,4 +64,5 @@ export {
   withServerErrorCode,
 } from '@plone/volto/helpers/Utils/Utils';
 export { messages } from './MessageLabels/MessageLabels';
+export useSlots from './Slots/useSlots';
 // export { injectLazyLibs } from './Loadable/Loadable';

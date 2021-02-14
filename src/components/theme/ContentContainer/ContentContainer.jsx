@@ -1,27 +1,26 @@
 import React from 'react';
 import { Container, Grid } from 'semantic-ui-react';
 import { SlotRenderer } from '@plone/volto/components';
-import { matchPath, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { isEmpty } from 'lodash';
 import config from '@plone/volto/registry';
-// import useSlots from '@plone/volto/helpers/Slots/useSlots';
 
 const ContentContainer = ({ children, content }) => {
   const pathname = useLocation().pathname;
   const { slots } = config;
+  const slotData = useSelector((state) => state.slots?.data || {});
 
   const hasSlot = (name) => {
     if (!slots[name]) {
       return null;
     }
-    return slots[name].filter((slot) => {
-      return matchPath(pathname, { path: slot.path, exact: slot.exact });
-    });
+    return slots[name].items.filter((slot) =>
+      slot.available({ pathname, slotData }),
+    );
   };
   const hasLeftSlot = !isEmpty(hasSlot('asideLeftSlot'));
   const hasRightSlot = !isEmpty(hasSlot('asideRightSlot'));
-
-  // const contentSlots = useSlots(pathname);
 
   const contentWidth = () => {
     if (hasLeftSlot && hasRightSlot) {

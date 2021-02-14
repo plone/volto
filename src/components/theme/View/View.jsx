@@ -19,7 +19,7 @@ import {
   Tags,
   Toolbar,
 } from '@plone/volto/components';
-import { listActions, getContent } from '@plone/volto/actions';
+import { listActions, getContent, getSlots } from '@plone/volto/actions';
 import {
   BodyClass,
   getBaseUrl,
@@ -126,6 +126,7 @@ class View extends Component {
       getBaseUrl(this.props.pathname),
       this.props.versionId,
     );
+    this.props.getSlots(getBaseUrl(this.props.pathname));
   }
 
   componentDidMount() {
@@ -298,6 +299,7 @@ export default compose(
     {
       listActions,
       getContent,
+      getSlots,
     },
   ),
 )(View);

@@ -38,10 +38,7 @@ export default function slots(state = {}, action = {}) {
       return {
         ...state,
         data: {
-          ...result.map((item) => {
-            const [name] = item['@id'].split('/').reverse();
-            return { [name]: item };
-          }),
+          ...result,
         },
         [getRequestKey(action.type)]: {
           loading: false,
