@@ -45,4 +45,17 @@ describe('Test File Cache', () => {
     fs.existsSync.mockReturnValue(true);
     expect(remove).toHaveBeenCalled();
   });
+  it('should expel least recent used item fom cache', () => {
+    const cache = new FileCache({ maxSize: 2, basePath: '../public/cache' });
+    cache.initialize();
+
+    cache.set('my unit test file', { data: 'file contents' });
+
+    cache.set('my second unit test file', { data: 'my other file contents' });
+    cache.remove('my unit test file');
+
+    expect(Array.from(cache.cache.entries()).length).toBeLessThan(
+      cache.maxSize,
+    );
+  });
 });
