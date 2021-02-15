@@ -45,7 +45,7 @@ describe('Test File Cache', () => {
     fs.existsSync.mockReturnValue(true);
     expect(remove).toHaveBeenCalled();
   });
-  it('should expel least recent used item fom cache', () => {
+  it('should expel least recent used item from cache', () => {
     const cache = new FileCache({ maxSize: 2, basePath: '../public/cache' });
     cache.initialize();
 
