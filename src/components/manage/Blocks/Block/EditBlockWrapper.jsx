@@ -2,29 +2,29 @@ import React from 'react';
 import { Icon } from '@plone/volto/components';
 import { blockHasValue } from '@plone/volto/helpers';
 import dragSVG from '@plone/volto/icons/drag.svg';
-import { Button } from 'semantic-ui-react';
-import includes from 'lodash/includes';
-import isBoolean from 'lodash/isBoolean';
-import { defineMessages, injectIntl } from 'react-intl';
-import config from '@plone/volto/registry';
+import { injectIntl } from 'react-intl'; //defineMessages,
 
-import trashSVG from '@plone/volto/icons/delete.svg';
-
-const messages = defineMessages({
-  delete: {
-    id: 'delete',
-    defaultMessage: 'delete',
-  },
-});
+// import config from '@plone/volto/registry';
+// import { Button } from 'semantic-ui-react';
+// import includes from 'lodash/includes';
+// import isBoolean from 'lodash/isBoolean';
+// import trashSVG from '@plone/volto/icons/delete.svg';
+//
+// const messages = defineMessages({
+//   delete: {
+//     id: 'delete',
+//     defaultMessage: 'delete',
+//   },
+// });
 
 const EditBlockWrapper = (props) => {
-  const { intl, blockProps, draginfo, children } = props;
-  const { block, selected, type, onDeleteBlock, data } = blockProps;
+  const { blockProps, draginfo, children } = props; // intl,
+  const { selected, type, data } = blockProps; // block, onDeleteBlock,
   const visible = selected && blockHasValue(data) && !data?.fixed;
 
-  const required = isBoolean(data.required)
-    ? data.required
-    : includes(config.blocks.requiredBlocks, type);
+  // const required = isBoolean(data.required)
+  //   ? data.required
+  //   : includes(config.blocks.requiredBlocks, type);
 
   return (
     <div
@@ -45,17 +45,17 @@ const EditBlockWrapper = (props) => {
         </div>
         <div className={`ui drag block inner ${type}`}>{children}</div>
 
-        {selected && !required && (
-          <Button
-            icon
-            basic
-            onClick={() => onDeleteBlock(block)}
-            className="delete-button"
-            aria-label={intl.formatMessage(messages.delete)}
-          >
-            <Icon name={trashSVG} size="18px" />
-          </Button>
-        )}
+        {/* {selected && !required && ( */}
+        {/*   <Button */}
+        {/*     icon */}
+        {/*     basic */}
+        {/*     onClick={() => onDeleteBlock(block)} */}
+        {/*     className="delete-button" */}
+        {/*     aria-label={intl.formatMessage(messages.delete)} */}
+        {/*   > */}
+        {/*     <Icon name={trashSVG} size="18px" /> */}
+        {/*   </Button> */}
+        {/* )} */}
       </div>
     </div>
   );

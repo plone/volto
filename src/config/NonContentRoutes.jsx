@@ -27,4 +27,6 @@ export const nonContentRoutes = [
   '/password-reset',
   '/create-translation',
   '/manage-translations',
+  '/edit-slot',
+  /\/edit-slot\/.*$/,
 ];
