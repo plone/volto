@@ -32,7 +32,7 @@ export default function ManageSlotsButton(props) {
         {editableSlots.map(({ id, title }) => (
           <Link
             key={id}
-            to={`${flattenToAppURL(content['@id'])}edit-slot/${id}`}
+            to={`${flattenToAppURL(content['@id'])}/edit-slot/${id}`}
           >
             {title}
           </Link>

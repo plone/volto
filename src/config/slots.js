@@ -24,8 +24,9 @@ const defaultSlots = {
         id: 'PersistentSlotFills',
         component: PersistentSlotRenderer,
         props: {},
-        available: ({ slotData }) =>
-          slotData?.asideRightSlot?.blocks_layout?.items,
+        available: ({ slotData }) => {
+          return slotData?.items?.asideRightSlot?.blocks_layout?.items;
+        },
       },
     ],
     render: (fills) => fills,

@@ -89,3 +89,4 @@ export const LOAD_LAZY_LIBRARY = 'LOAD_LAZY_LIBRARY';
 export const GET_CONTEXT_NAVIGATION = 'GET_CONTEXT_NAVIGATION';
 export const GET_SLOTS = 'GET_SLOTS';
 export const GET_SLOT = 'GET_SLOT';
+export const SAVE_SLOT = 'SAVE_SLOT';

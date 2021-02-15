@@ -4,7 +4,11 @@
  */
 
 import { flattenToAppURL } from '@plone/volto/helpers';
-import { GET_SLOTS, GET_SLOT } from '@plone/volto/constants/ActionTypes';
+import {
+  GET_SLOTS,
+  GET_SLOT,
+  SAVE_SLOT,
+} from '@plone/volto/constants/ActionTypes';
 
 /**
  * Get slots.
@@ -37,6 +41,17 @@ export function getSlot(url, slotName) {
     request: {
       op: 'get',
       path: `${url}/@slots/${slotName}`,
+    },
+  };
+}
+
+export function saveSlot(contextUrl, slotName, data) {
+  return {
+    type: SAVE_SLOT,
+    request: {
+      op: 'patch',
+      path: `${contextUrl}/@slots/${slotName}`,
+      data,
     },
   };
 }
