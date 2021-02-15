@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix UniversalLink for download link. @giuliaghisini
+
 ### Internal
 
 ## 11.1.0 (2021-02-08)
