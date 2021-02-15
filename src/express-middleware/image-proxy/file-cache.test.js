@@ -49,10 +49,15 @@ describe('Test File Cache', () => {
     const cache = new FileCache({ maxSize: 2, basePath: '../public/cache' });
     cache.initialize();
 
-    cache.set('my unit test file', { data: 'file contents' });
+    cache.cache.set('my unit test file', 1);
 
-    cache.set('my second unit test file', { data: 'my other file contents' });
-    cache.remove('my unit test file');
+    cache.cache.set('my second unit test file', 2);
+    const entries = Array.from(cache.cache.entries());
+    let count = entries[0];
+    entries.forEach((item, ind) => {
+      if (item[1] < count[1]) count = item;
+    });
+    cache.cache.delete(count[0]);
 
     expect(Array.from(cache.cache.entries()).length).toBeLessThan(
       cache.maxSize,
