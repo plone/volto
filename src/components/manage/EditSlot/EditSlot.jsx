@@ -7,7 +7,7 @@ import { Portal } from 'react-portal';
 import { Button } from 'semantic-ui-react';
 import { isEmpty } from 'lodash';
 
-import { saveSlot } from '@plone/volto/actions';
+import { getSlots, saveSlot } from '@plone/volto/actions';
 import BlocksForm from '@plone/volto/components/manage/Blocks/Block/BlocksForm';
 import { emptyBlocksForm } from '@plone/volto/helpers/Blocks/Blocks';
 import { Helmet, getBaseUrl } from '@plone/volto/helpers';
@@ -35,8 +35,8 @@ class EditSlot extends React.Component {
   constructor(props) {
     super(props);
 
-    const { slot_data } = props;
-    const data = isEmpty(slot_data?.blocks) ? emptyBlocksForm() : slot_data;
+    const { slotData } = props;
+    const data = isEmpty(slotData?.blocks) ? emptyBlocksForm() : slotData;
 
     this.state = {
       isClient: false,
@@ -47,10 +47,14 @@ class EditSlot extends React.Component {
     // special variable, needed to support blocks that rely on `onChangeBlock`
     // API to change the whole blocks + layout of the form
     this.blocksState = {};
+
+    this.onCancel = this.onCancel.bind(this);
+    this.onSave = this.onSave.bind(this);
   }
 
   componentDidMount() {
     this.setState({ isClient: true });
+    this.props.getSlots(getBaseUrl(this.props.pathname));
   }
 
   componentDidUpdate() {
@@ -59,8 +63,20 @@ class EditSlot extends React.Component {
     }
   }
 
+  onCancel() {
+    this.props.history.push(getBaseUrl(this.props.pathname));
+  }
+
+  onSave() {
+    const { saveSlot, pathname, slotId } = this.props;
+    const { data } = this.state;
+    saveSlot(getBaseUrl(pathname), slotId, data).then(() => {
+      this.props.history.push(getBaseUrl(this.props.pathname));
+    });
+  }
+
   render() {
-    const { pathname, content, slotId, saveSlot } = this.props;
+    const { pathname, content } = this.props;
     const { data, selectedBlock } = this.state;
     return (
       <div id="slot-edit">
@@ -99,9 +115,7 @@ class EditSlot extends React.Component {
                       id="toolbar-save"
                       className="save"
                       aria-label={this.props.intl.formatMessage(messages.save)}
-                      onClick={() =>
-                        saveSlot(getBaseUrl(pathname), slotId, data)
-                      }
+                      onClick={this.onSave}
                       disabled={this.props.updateRequest.loading}
                       loading={this.props.updateRequest.loading}
                     >
@@ -117,7 +131,7 @@ class EditSlot extends React.Component {
                       aria-label={this.props.intl.formatMessage(
                         messages.cancel,
                       )}
-                      onClick={() => this.onCancel()}
+                      onClick={this.onCancel}
                     >
                       <Icon
                         name={clearSVG}
@@ -145,15 +159,18 @@ export default compose(
   injectIntl,
   connect(
     (state, props) => {
+      const slotId = props.match.params.id;
       return {
-        slotId: props.match.params.id,
+        slotId,
         pathname: props.location.pathname,
         content: state.content.data,
-        updateRequest: {},
+        updateRequest: state.slots?.patch || {},
+        slotData: state.slots.data?.items?.[slotId],
       };
     },
     {
       saveSlot,
+      getSlots,
     },
   ),
 )(EditSlot);

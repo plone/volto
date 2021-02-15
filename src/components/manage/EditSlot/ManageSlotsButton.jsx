@@ -29,14 +29,17 @@ export default function ManageSlotsButton(props) {
       icon={<Icon name={manageSlotsSVG} size="30px" />}
     >
       <>
-        {editableSlots.map(({ id, title }) => (
-          <Link
-            key={id}
-            to={`${flattenToAppURL(content['@id'])}/edit-slot/${id}`}
-          >
-            {title}
-          </Link>
-        ))}
+        {editableSlots.map(({ id, title }) => {
+          const url = flattenToAppURL(content['@id']);
+          return (
+            <Link
+              key={id}
+              to={`${url}${url.endsWith('/') ? '' : '/'}edit-slot/${id}`}
+            >
+              {title}
+            </Link>
+          );
+        })}
       </>
     </DropdownWithButton>
   ) : undefined;
