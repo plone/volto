@@ -5,9 +5,21 @@ global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
 
 jest.mock('fs-extra');
 describe('Test File Cache', () => {
+  beforeAll(() => {
+    // jest.spyOn(FileCache.prototype, 'initialize').mockImplementation(jest.fn());
+    // jest.spyOn(FileCache.prototype, 'save').mockImplementation(jest.fn());
+    // const save = (FileCache.prototype.save = jest.fn());
+  });
+
+  afterAll(() => {
+    // jest.restoreAllMocks();
+  });
+
   it('Initialize cache on server start if local files are present', () => {
-    const initialize = (FileCache.prototype.initialize = jest.fn());
     const cache = new FileCache();
+
+    let spy = jest.spyOn(cache, 'initialize').mockImplementation(jest.fn());
+
     const opts = {
       basePath: `public/cache`,
       maxSize: 100,
@@ -15,63 +27,96 @@ describe('Test File Cache', () => {
     };
     cache.initialize();
 
-    expect(initialize).toHaveBeenCalledTimes(1);
+    expect(cache.initialize).toHaveBeenCalledTimes(1);
 
     expect(cache.basePath).toEqual(opts.basePath);
     expect(cache.maxSize).toEqual(opts.maxSize);
     expect(cache.cache).toEqual(opts.cache);
+
+    spy.mockRestore();
   });
 
   it('should write file to disk', () => {
     const mockFile = 'Some data';
-    const save = (FileCache.prototype.save = jest.fn());
     const cache = new FileCache();
-    cache.set('SDE354FF', mockFile);
+
+    const spy = jest.spyOn(cache, 'save').mockImplementation(jest.fn());
+
+    cache.set('SDE354FF.jpg', mockFile);
     fs.outputFileSync.mockReturnValue(undefined);
-    jest.spyOn(fs, 'existsSync').mockImplementation(() => false);
-    expect(save).toHaveBeenCalledTimes(1);
+    const spy2 = jest.spyOn(fs, 'existsSync').mockImplementation(() => false);
+
+    expect(cache.save).toHaveBeenCalledTimes(1);
+
+    spy.mockRestore();
+    spy2.mockRestore();
   });
 
   it('should read file from local disk', () => {
-    const read = (FileCache.prototype.read = jest.fn());
     const cache = new FileCache();
-    cache.get('SDE354FF');
+
+    const spy = jest.spyOn(cache, 'read').mockImplementation(jest.fn());
+
+    cache.get('SDE354FF.png');
     jest.spyOn(fs, 'readFileSync');
     jest.spyOn(fs, 'existsSync').mockImplementation(() => true);
-    expect(read).toHaveBeenCalledTimes(1);
+
+    expect(cache.read).toHaveBeenCalledTimes(1);
+
+    spy.mockRestore();
   });
+
   it('should delete file from local disk', () => {
-    const remove = (FileCache.prototype.remove = jest.fn());
+    const spy2 = jest
+      .spyOn(FileCache.prototype, 'initialize')
+      .mockImplementation(jest.fn());
+
     const cache = new FileCache();
-    cache.remove('SDE354FF');
+
+    const spy = jest.spyOn(cache, 'remove').mockImplementation(jest.fn());
+
+    cache.remove('SDE354FF.png');
     fs.removeSync.mockReturnValue(undefined);
     fs.existsSync.mockReturnValue(true);
-    expect(remove).toHaveBeenCalled();
+
+    expect(cache.remove).toHaveBeenCalled();
+
+    spy.mockRestore();
+    spy2.mockRestore();
   });
 
   it('should look up in cache and have a cache hit', () => {
+    const spy = jest
+      .spyOn(FileCache.prototype, 'initialize')
+      .mockImplementation(jest.fn());
+    // const spy2 = jest.spyOn(fs, 'readdirSync').mockImplementation(() => []);
+    // const spy3 = jest.spyOn(fs, 'existsSync').mockImplementation(() => true);
+    // const spy4 = jest.spyOn(fs, 'outputFileSync').mockImplementation(() => {});
+
     const cache = new FileCache();
-    cache.initialize();
+    const k = 'my unit test file.jpg';
+    const c = 'file contents';
+    const p = cache.path(k);
+    cache.set(k, { value: { data: c } });
+    const r = cache.read(k);
 
-    const p = cache.path('my unit test file');
-
-    cache.set(p, 'file contents');
-
-    const r = cache.read(p);
-
+    console.log('r', r);
     try {
       if (!r) {
-        expect(false);
-      } else if (this.isExpired(JSON.parse(r?.metadata))) {
-        expect(false);
+        expect(true).toEqual(false);
+      } else if (cache.isExpired(JSON.parse(r?.metadata))) {
+        expect(true).toEqual(false);
       } else {
-        expect(r.Data.data).toEqual('file contents');
+        expect(r.data.data).toEqual(c);
       }
     } catch (error) {
-      expect(false, 'Error thrown while reading cache');
+      throw error;
+      expect(true).toEqual(false, 'Error thrown while reading cache');
     }
 
-    cache.remove(p);
+    cache.remove(k);
+
+    [spy, spy2, spy3, spy4].forEach((x) => x.mockRestore());
   });
 
   it('should look up in cache and have a cache miss', () => {
@@ -87,14 +132,14 @@ describe('Test File Cache', () => {
 
     try {
       if (!r) {
-        expect(true);
+        expect(true).toBe(true);
       } else if (this.isExpired(JSON.parse(r?.metadata))) {
-        expect(true);
+        expect(true).toBe(true);
       } else {
-        expect(r.Data.data).toNotEqual('file contents');
+        expect(r.Data.data).toEqual('file contents');
       }
     } catch (error) {
-      expect(true, 'Error thrown while reading cache');
+      expect(true).toBe(true);
     }
 
     cache.remove(p);

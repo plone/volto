@@ -1,4 +1,9 @@
 import * as fs from 'fs-extra';
+
+// in some cases the fs.readdirSync import above returns undefined for an
+// existing directory absolute path containing some files that are not symlinks
+import { readdirSync, readFileSync, existsSync } from 'fs';
+
 import path from 'path';
 import { getLogger } from '@plone/volto/express-middleware/logger';
 import md5 from 'md5';
@@ -51,6 +56,9 @@ class FileCache {
     if (!key) {
       throw new Error(`Path requires a cache key.`);
     }
+    if (key.indexOf('.') < 0) {
+      throw new Error(`The file name should have an extension.`);
+    }
     const ext = key.substr(key.indexOf('.') + 1).split('/')[0]; // append the extension
     let name = md5(key);
     return `${this.absBasePath}/${name}.${ext}`;
@@ -74,12 +82,14 @@ class FileCache {
       path.extname(filePath),
       '.metadata',
     )}`;
+    console.log('read(key)');
     debug(`file read ${filePath}`);
-    if (fs.existsSync(filePath)) {
+    if (existsSync(filePath)) {
+      console.log('19873', filePath, metadataPath);
       this.incrementForKey(key);
       return {
-        data: fs.readFileSync(filePath, { encoding: null }),
-        metadata: fs.readFileSync(metadataPath),
+        data: readFileSync(filePath, { encoding: null }),
+        metadata: readFileSync(metadataPath),
       };
     }
   }
@@ -89,8 +99,11 @@ class FileCache {
   }
 
   get(key) {
+    console.log('get y');
     try {
+      console.log('get z');
       const fileData = this.read(this.path(key));
+      console.log('get alpha', key, fileData);
       if (!fileData) {
         return;
       } else if (this.isExpired(JSON.parse(fileData?.metadata))) {
@@ -103,6 +116,7 @@ class FileCache {
         };
       }
     } catch (error) {
+      console.log('debug', error);
       debug(error);
     }
   }
@@ -112,36 +126,36 @@ class FileCache {
   }
 
   save(key, data) {
+    // console.log('p', this.absBasePath);
+
+    // console.log('ppp', fs.readdirSync(this.absBasePath));
+
     const { value } = data;
-    try {
-      const filePath = this.path(key);
-      const metadataPath = `${filePath.replace(
-        path.extname(filePath),
-        '.metadata',
-      )}`;
-      if (
-        !fs.existsSync(this.absBasePath) ||
-        fs.readdirSync(this.absBasePath).length < this.maxSize
-      ) {
-        fs.outputFileSync(filePath, value.data, { encoding: null });
-        debug(`file written at ${filePath}`);
-        fs.outputFileSync(metadataPath, JSON.stringify(data));
-        debug(`metadata file written at ${metadataPath}`);
-        this.cache.set(key, 0);
-      } else {
-        debug(
-          'Directory size reached max limit, Removing least recent used element...',
-        );
-        //TODO: add max age condition
-        const entries = Array.from(this.cache.entries());
-        let anchorEntry = entries[0];
-        entries.forEach((crtEntry /*, ind */) => {
-          if (crtEntry[1] < anchorEntry[1]) anchorEntry = crtEntry;
-        });
-        this.remove(anchorEntry[0]);
-      }
-    } catch (e) {
-      throw Error(e);
+    const filePath = this.path(key);
+    const metadataPath = `${filePath.replace(
+      path.extname(filePath),
+      '.metadata',
+    )}`;
+    if (
+      !fs.existsSync(this.absBasePath) ||
+      readdirSync(this.absBasePath).length < this.maxSize
+    ) {
+      fs.outputFileSync(filePath, value.data, { encoding: null });
+      debug(`file written at ${filePath}`);
+      fs.outputFileSync(metadataPath, JSON.stringify(data));
+      debug(`metadata file written at ${metadataPath}`);
+      this.cache.set(key, 0);
+    } else {
+      debug(
+        'Directory size reached max limit, Removing least recent used element...',
+      );
+      //TODO: add max age condition
+      const entries = Array.from(this.cache.entries());
+      let anchorEntry = entries[0];
+      entries.forEach((crtEntry /*, ind */) => {
+        if (crtEntry[1] < anchorEntry[1]) anchorEntry = crtEntry;
+      });
+      this.remove(anchorEntry[0]);
     }
   }
   /**
@@ -167,7 +181,6 @@ class FileCache {
     fs.removeSync(filePath);
     fs.removeSync(metadataPath);
     this.cache.delete(key);
-    return;
   }
 
   /**
