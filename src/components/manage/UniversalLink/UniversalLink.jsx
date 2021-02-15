@@ -47,7 +47,13 @@ const UniversalLink = ({
       {children}
     </a>
   ) : isDownload ? (
-    <a href={url} download title={title} className={className} {...props}>
+    <a
+      href={flattenToAppURL(url)}
+      download
+      title={title}
+      className={className}
+      {...props}
+    >
       {children}
     </a>
   ) : (

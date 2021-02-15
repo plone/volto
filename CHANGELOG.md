@@ -9,6 +9,7 @@
 ## 10.9.3 (unreleased)
 ## 10.10.1 (unreleased)
 ## 11.0.1 (unreleased)
+## 11.1.1 (unreleased)
 
 - added objectBrowser to UrlWidget, and attached UrlWidget to remoteUrl field of ContentType Link @giuliaghisini
 - managed tel link in UrlWidget and draftjs @giuliaghisini
@@ -23,10 +24,21 @@
 
 ### Feature
 
+### Bugfix
+
+- Fix UniversalLink for download link. @giuliaghisini
+
+### Internal
+
+## 11.1.0 (2021-02-08)
+
+### Feature
+
 - Add `preloadLazyLibs` and `settings.lazyBundles` to allow preloading bundles of lazy libraries @tiberiuichim @silviubogan
 - Added onChangeFormData prop to Form component @giuliaghisini
 - Internationalization story for add-ons @sneridagh
 - robots.txt from plone as default (if /public/robots.txt not exists and .env VOLTO_ROBOTSTXT variable not exists.) @giuliaghisini
+- robots.txt from plone as fallback (if /public/robots.txt not exists and .env VOLTO_ROBOTSTXT variable not exists.) @giuliaghisini
 - UniversalLink and ConditionalLink accepts also an item to link to. If item is of @type Link, a direct link to remote url is generated if user is not logged. @giuliaghisini
 
 ### Bugfix
@@ -35,6 +47,7 @@
 - German translation: aria-label of '/contents' button : "Inhalte" not "Inhaltsverzeichnis" @ksuess
 - fix view links and others styles of entities on editing Text Block. @giuliaghisini
 - Make sidebar-collapsed visible on small mobile. @giuliaghisini
+- Fix regresion on the imagesizes styling due to the removal of the id in 11 @sneridagh
 
 ### Internal
 
