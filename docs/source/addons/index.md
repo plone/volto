@@ -45,7 +45,7 @@ section.
 ### Loading addon configuration
 
 As a convenience, an addon can export configuration functions that can mutate,
-in-place, the overall Volto's configuration registry. An addon can export multiple
+in-place, the overall Volto configuration registry. An addon can export multiple
 configurations methods, making it possible to selectively choose which specific
 addon functionality you want to load.
 
@@ -364,4 +364,3 @@ If you have generated your Volto project recently (after the summer of 2020),
 you don't have to do anything to have automatic integration with ESLint,
 otherwise make sure to upgrade your project's `.eslintrc` to the `.eslintrc.js`
 version, according to the [Upgrade Guide](/upgrade-guide).
-
