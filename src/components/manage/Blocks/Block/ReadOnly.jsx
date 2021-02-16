@@ -13,33 +13,30 @@ const ReadOnly = (props) => {
       doesNodeContainClick(props.blockNode.current, e)
     )
       return;
-    setAddNewBlockOpened({
-      addNewBlockOpened: false,
-    });
+    setAddNewBlockOpened(false);
   };
 
   React.useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside, false);
-  }, []);
+  });
 
   const toggleAddNewBlock = (e) => {
     e.preventDefault();
-    setAddNewBlockOpened((state) => ({
-      addNewBlockOpened: !state.addNewBlockOpened,
-    }));
+    setAddNewBlockOpened((state) => !state);
   };
 
   const disableNewBlocks = props.data?.disableNewBlocks || props.detached;
+  const Block = blocks.blocksConfig?.[props.type]?.['view'] || null;
 
   return (
     <>
-      {blocks.blocksConfig?.[props.type]?.['view'] || null}
+      <Block {...props} />
       {props.selected && !disableNewBlocks && (
         <Button
           basic
           icon
           onClick={toggleAddNewBlock}
-          className="block-add-button"
+          className="block-add-button read-only"
         >
           <Icon name={addSVG} className="block-add-button" size="24px" />
         </Button>
