@@ -33,16 +33,16 @@ exports[`Register renders a register component 1`] = `
             </h1>
           </div>
           <div
-            className="default-widget"
-            id="field-fullname"
+            className="mocked-default-widget"
+            id="mocked-field-fullname"
           >
             Full Name
              - 
             Enter full name, e.g. John Smith.
           </div>
           <div
-            className="default-widget"
-            id="field-email"
+            className="mocked-default-widget"
+            id="mocked-field-email"
           >
             E-mail
              - 

@@ -15,7 +15,7 @@ This upgrade guide lists all breaking changes in Volto and explains the
 
 ## Upgrading to Volto 12.x.x
 
-### Volto's Configuration Registry
+### Volto Configuration Registry
 
 The configuration object in Volto is located in the `~/config` module and uses it as
 container of Volto's config taking advantage of the ES6 module system. So we "import"
@@ -36,7 +36,7 @@ modified by the addons and the project itself. The code, instead of using import
 it, imports the singleton and then access the proper registry key inside it (`settings`,
 `blocks`, `views`, etc...)
 
-#### Changes in your code (and local customizations)
+### Changes in your code (and local customizations)
 
 This was the old way:
 ```js
@@ -58,7 +58,7 @@ config.settings.isMultilingual = true
 ...
 ```
 
-!! warning Deprecation notice
+!!! warning Deprecation notice
     The old way using the import to get Volto's configuration will still be working as
     long as you support it in your project `src/config` but it will be deprecated and
     will stop working from *Volto 14* on.
@@ -67,6 +67,16 @@ It is *highly* recommendable that you use the new configuration registry right a
 custom code (and Volto customizations using the shadowing engine) has to adapt to the
 new way of reading the config from the new Volto's Configuration. However, it won't be
 mandatory until Volto 14, leaving the community time to adapt their code and projects.
+
+!!! tip Recommended for addons
+    If you are an addon maintainer and you migrate your add-on to be Volto 12 compatible,
+    it's recommended that you add it as `peerDependencies` for Volto 12.
+
+    ```json
+      "peerDependencies": {
+        "@plone/volto": ">= 12.0.0"
+      }
+    ```
 
 #### Changes in your project's `routes` module
 
@@ -187,6 +197,24 @@ export default function applyConfig(config) {
 !!! tip
     Although might be daunting, the migration is quite straight forward, and the refactoring
     of the required code is undergo through a series of "search and replace" in your IDE of choice.
+
+#### Changes in your project's `package.json`
+
+You need to update the `setupFiles` key of your `jest` configuration:
+
+```diff
+     "setupFiles": [
+-      "@plone/volto/test-setup.js"
++      "@plone/volto/test-setup-globals.js",
++      "@plone/volto/test-setup-config.js"
+     ],
+```
+
+#### Changes in snapshots tests in your project
+
+Please note that your tests' snapshots will also change because of the new testing mocks
+(in widgets, blocks and in views). You should review them, make sure that the mocks are
+there instead of the real mocked components and accept them.
 
 ### Alternative - both configurations coexisting
 

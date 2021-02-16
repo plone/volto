@@ -53,15 +53,19 @@ config.set('blocks', {
       templates: {
         default: {
           label: 'Default',
-          template: () => <div className="default-listing-template"></div>,
+          template: () => (
+            <div className="mocked-default-listing-template"></div>
+          ),
         },
         imageGallery: {
           label: 'Image gallery',
-          template: () => <div className="image-listing-template"></div>,
+          template: () => <div className="mocked-image-listing-template"></div>,
         },
         summary: {
           label: 'Summary',
-          template: () => <div className="summary-listing-template"></div>,
+          template: () => (
+            <div className="mocked-summary-listing-template"></div>
+          ),
         },
       },
     },
@@ -84,7 +88,7 @@ config.set('views', {
 
 function BaseWidget(name) {
   return (props) => (
-    <div id={`field-${props.id}`} className={`${name}-widget`}>
+    <div id={`mocked-field-${props.id}`} className={`mocked-${name}-widget`}>
       {props.title || 'No title'} - {props.description || 'No description'}
     </div>
   );

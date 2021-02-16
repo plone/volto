@@ -54,32 +54,32 @@ exports[`Contact form renders a contact form 1`] = `
               </h1>
             </div>
             <div
-              className="default-widget"
-              id="field-name"
+              className="mocked-default-widget"
+              id="mocked-field-name"
             >
               Name
                - 
               No description
             </div>
             <div
-              className="default-widget"
-              id="field-from"
+              className="mocked-default-widget"
+              id="mocked-field-from"
             >
               From
                - 
               No description
             </div>
             <div
-              className="default-widget"
-              id="field-subject"
+              className="mocked-default-widget"
+              id="mocked-field-subject"
             >
               Subject
                - 
               No description
             </div>
             <div
-              className="textarea-widget"
-              id="field-message"
+              className="mocked-textarea-widget"
+              id="mocked-field-message"
             >
               Message
                - 
@@ -208,32 +208,32 @@ exports[`Contact form renders a contact form with error message 1`] = `
               </h1>
             </div>
             <div
-              className="default-widget"
-              id="field-name"
+              className="mocked-default-widget"
+              id="mocked-field-name"
             >
               Name
                - 
               No description
             </div>
             <div
-              className="default-widget"
-              id="field-from"
+              className="mocked-default-widget"
+              id="mocked-field-from"
             >
               From
                - 
               No description
             </div>
             <div
-              className="default-widget"
-              id="field-subject"
+              className="mocked-default-widget"
+              id="mocked-field-subject"
             >
               Subject
                - 
               No description
             </div>
             <div
-              className="textarea-widget"
-              id="field-message"
+              className="mocked-textarea-widget"
+              id="mocked-field-message"
             >
               Message
                - 
