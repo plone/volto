@@ -1,17 +1,40 @@
-import * as fs from 'fs-extra';
+// import * as fs from 'fs-extra';
 
-// in some cases the fs.readdirSync import above returns undefined for an
+// TODO: find an alternative to fs-extra that works in testing environment
+// because in some cases the fs imports commented above return undefined for an
 // existing directory absolute path containing some files that are not symlinks
-import { readdirSync, readFileSync, existsSync } from 'fs';
+// (or make fs-extra work well if possible)
+import {
+  readdirSync,
+  readFileSync,
+  existsSync,
+  mkdirsSync,
+  writeFileSync,
+  unlinkSync,
+  rmdirSync,
+} from 'fs';
+
+// TODO: make sure the fs API used in this file is available on all Node.js
+// versions that are supported by Volto
 
 import path from 'path';
 import { getLogger } from '@plone/volto/express-middleware/logger';
 import md5 from 'md5';
 const debug = getLogger('file-cache');
 
+function outputFileSync(file, ...args) {
+  const dir = path.dirname(file);
+  if (existsSync(dir)) {
+    return writeFileSync(file, ...args);
+  }
+  mkdirsSync(dir);
+  writeFileSync(file, ...args);
+}
+
 export const defaultOpts = {
   basePath: 'public/cache',
   maxSize: 100,
+  rebuildFromFs: true,
 };
 
 function isNumber(val) {
@@ -19,12 +42,17 @@ function isNumber(val) {
 }
 
 class FileCache {
-  constructor(opts = defaultOpts) {
+  constructor(opts = {}) {
+    opts = {
+      ...defaultOpts,
+      ...opts,
+    };
+
     this.basePath = process.env.VOLTO_FILE_CACHE_BASE_PATH || opts.basePath;
     this.absBasePath = path.resolve(process.cwd(), this.basePath);
     this.maxSize = opts.maxSize;
     this.cache = new Map(); // keeping count of how many times the file is accessed
-    if (__SERVER__ && fs.existsSync(this.absBasePath)) {
+    if (__SERVER__ && existsSync(this.absBasePath) && opts.rebuildFromFs) {
       this.initialize(this.absBasePath);
     }
   }
@@ -35,7 +63,7 @@ class FileCache {
    * @return {undefined}
    */
   initialize(dirPath) {
-    const files = fs.readdirSync(dirPath);
+    const files = readdirSync(dirPath);
 
     files.forEach((file) => {
       // if (fs.statSync(dirPath + '/' + file).isDirectory()) {
@@ -61,7 +89,7 @@ class FileCache {
     }
     const ext = key.substr(key.indexOf('.') + 1).split('/')[0]; // append the extension
     let name = md5(key);
-    return `${this.absBasePath}/${name}.${ext}`;
+    return path.join(this.absBasePath, `${name}.${ext}`);
   }
 
   /**
@@ -82,8 +110,8 @@ class FileCache {
       path.extname(filePath),
       '.metadata',
     )}`;
-    console.log('read(key)');
     debug(`file read ${filePath}`);
+    console.log('fp', filePath);
     if (existsSync(filePath)) {
       console.log('19873', filePath, metadataPath);
       this.incrementForKey(key);
@@ -137,12 +165,13 @@ class FileCache {
       '.metadata',
     )}`;
     if (
-      !fs.existsSync(this.absBasePath) ||
+      !existsSync(this.absBasePath) ||
       readdirSync(this.absBasePath).length < this.maxSize
     ) {
-      fs.outputFileSync(filePath, value.data, { encoding: null });
+      console.log('y19');
+      outputFileSync(filePath, value.data, { encoding: null });
       debug(`file written at ${filePath}`);
-      fs.outputFileSync(metadataPath, JSON.stringify(data));
+      outputFileSync(metadataPath, JSON.stringify(data));
       debug(`metadata file written at ${metadataPath}`);
       this.cache.set(key, 0);
     } else {
@@ -163,9 +192,9 @@ class FileCache {
    * @param {string} key
    * @param {number} value
    */
-  set(key, value) {
+  set = (key, value) => {
     this.save(key, value);
-  }
+  };
 
   /**
    * Removes the item from the file-system.
@@ -178,8 +207,8 @@ class FileCache {
       path.extname(filePath),
       '.metadata',
     )}`;
-    fs.removeSync(filePath);
-    fs.removeSync(metadataPath);
+    unlinkSync(filePath);
+    unlinkSync(metadataPath);
     this.cache.delete(key);
   }
 
@@ -189,7 +218,7 @@ class FileCache {
    */
   clear() {
     const dir = this.absBasePath;
-    return fs.removeSync(dir);
+    return rmdirSync(dir, { recursive: true });
   }
 }
 
