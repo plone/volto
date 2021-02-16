@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { defineMessages, injectIntl } from 'react-intl';
+import ReadOnly from './ReadOnly';
 import { blocks } from '~/config';
 import { Button } from 'semantic-ui-react';
 import includes from 'lodash/includes';
@@ -127,7 +128,7 @@ class Edit extends Component {
 
     let Block = blocks.blocksConfig?.[type]?.['edit'] || null;
     if (this.props.data?.readOnly) {
-      Block = blocks.blocksConfig?.[type]?.['view'] || null;
+      Block = ReadOnly;
     }
     const schema =
       blocks.blocksConfig?.[type]?.['schema'] || BlockSettingsSchema;
