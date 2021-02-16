@@ -9,9 +9,13 @@ import { isEmpty } from 'lodash';
 
 import { getSlots, saveSlot } from '@plone/volto/actions';
 import BlocksForm from '@plone/volto/components/manage/Blocks/Block/BlocksForm';
-import { emptyBlocksForm } from '@plone/volto/helpers/Blocks/Blocks';
+import {
+  emptyBlocksForm,
+  addEmptyBlock,
+} from '@plone/volto/helpers/Blocks/Blocks';
 import { Helmet, getBaseUrl } from '@plone/volto/helpers';
 import { Icon, Sidebar, Toolbar } from '@plone/volto/components';
+import EditBlockWrapper from './SlotEditBlockWrapper';
 
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -36,7 +40,9 @@ class EditSlot extends React.Component {
     super(props);
 
     const { slotData } = props;
-    const data = isEmpty(slotData?.blocks) ? emptyBlocksForm() : slotData;
+    const data = addEmptyBlock(
+      isEmpty(slotData?.blocks) ? emptyBlocksForm() : slotData,
+    );
 
     this.state = {
       isClient: false,
@@ -103,7 +109,13 @@ class EditSlot extends React.Component {
               title="Edit slot"
               metadata={content}
               properties={data}
-            />
+            >
+              {({ draginfo }, editBlock, blockProps) => (
+                <EditBlockWrapper draginfo={draginfo} blockProps={blockProps}>
+                  {editBlock}
+                </EditBlockWrapper>
+              )}
+            </BlocksForm>
             <Portal node={document.getElementById('toolbar')}>
               <Toolbar
                 pathname={this.props.pathname}
