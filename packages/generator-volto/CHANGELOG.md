@@ -2,9 +2,12 @@
 
 ## 4.0.0 (unreleased)
 
+Released another major alpha accidentally, continuing with this major then :/
+(Volto 12.0.0 and above compatible)
+
 ### Added
 
-### Changes
+Add comment on where to place the project imports in `config.js` @sneridagh
 
 ## 4.0.0-alpha.0 (2021-02-17)
 
