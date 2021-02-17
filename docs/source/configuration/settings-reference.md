@@ -148,6 +148,24 @@ This list is still incomplete, contributions are welcomed!
     lazy libraries (with `preloadLazyLibs`) or quickly load them with
     `injectLazyLibs`.
 
+### asyncConnect
+
+!!! block ""
+
+    A list of async actions to be dispatched with `asyncConnect` on the SSR.
+    See the [Redux guideline](../developer-guidelines/redux.md) for more details.
+
+    ```js
+    config.asyncConnectExtras = [
+      ...config.asyncConnectExtras,
+      {
+        key: 'dropdownMenuNavItems',
+        promise: ({ location, store: { dispatch } }) =>
+          __SERVER__ && dispatch(getDropdownMenuNavitems()),
+      },
+    ];
+    ```
+
 ## Server-specific serverConfig
 
 Settings that are relevant to the Express-powered Volto SSR server are stored

@@ -72,6 +72,14 @@ class Config {
     this._data.appExtras = appExtras;
   }
 
+  get asyncConnectExtras() {
+    return this._data.asyncConnectExtras;
+  }
+
+  set asyncConnectExtras(asyncConnectExtras) {
+    this._data.asyncConnectExtras = asyncConnectExtras;
+  }
+
   get slots() {
     return this._data.slots;
   }

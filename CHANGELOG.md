@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Add `asyncConnectExtras` in `config` to extend the list of asyncConnect calls @nzambello
+
 ### Bugfix
 
 ### Internal

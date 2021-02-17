@@ -127,7 +127,7 @@ let config = {
     groupBlocksOrder,
     initialBlocks,
   },
-
+  asyncConnectExtras: [],
   addonRoutes: [],
   addonReducers: {},
 };
@@ -141,6 +141,7 @@ export const blocks = config.blocks;
 export const addonRoutes = [...config.addonRoutes];
 export const addonReducers = { ...config.addonReducers };
 export const appExtras = config.appExtras;
+export const asyncConnectExtras = [...config.asyncConnectExtras];
 
 ConfigRegistry.settings = settings;
 ConfigRegistry.blocks = blocks;
@@ -149,3 +150,4 @@ ConfigRegistry.widgets = widgets;
 ConfigRegistry.addonRoutes = addonRoutes;
 ConfigRegistry.addonReducers = addonReducers;
 ConfigRegistry.appExtras = appExtras;
+ConfigRegistry.asyncConnectExtras = asyncConnectExtras;

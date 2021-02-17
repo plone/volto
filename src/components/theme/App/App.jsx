@@ -213,6 +213,7 @@ export default compose(
       promise: ({ location, store: { dispatch } }) =>
         __SERVER__ && dispatch(getWorkflow(getBaseUrl(location.pathname))),
     },
+    ...(config.asyncConnectExtras || []),
   ]),
   connect(
     (state, props) => ({

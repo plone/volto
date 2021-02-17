@@ -57,6 +57,10 @@ backend and available as props.
     inspecting the content, so it is not possible to use asyncConnect in any
     view/layout component!
 
+Due to this, you can add entries to the list of action to be handled by
+`asyncConnect` extending `config.asyncConnectExtras` as referenced
+[here](../configuration/settings-reference.md#asyncConnect).
+
 Notice the `emailNotification` action being passed to `connect` in the above
 example. All action (which trigger global state updates) need to be passed as
 props by `connect`. You can't properly trigger an action unless you access it
