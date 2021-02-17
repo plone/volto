@@ -3,7 +3,6 @@
  * @module actions
  * @example import { getSchema } from 'actions';
  */
-
 export { listActions } from '@plone/volto/actions/actions/actions';
 export { getBreadcrumbs } from '@plone/volto/actions/breadcrumbs/breadcrumbs';
 export { setExpandedToolbar } from '@plone/volto/actions/toolbar/toolbar';

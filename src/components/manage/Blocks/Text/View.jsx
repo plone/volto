@@ -6,8 +6,7 @@
 import PropTypes from 'prop-types';
 import redraft from 'redraft';
 import React from 'react';
-
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 /**
  * View text block class.
@@ -16,7 +15,11 @@ import { settings } from '~/config';
  */
 const View = ({ data }) =>
   data.text ? (
-    redraft(data.text, settings.ToHTMLRenderers, settings.ToHTMLOptions)
+    redraft(
+      data.text,
+      config.settings.ToHTMLRenderers,
+      config.settings.ToHTMLOptions,
+    )
   ) : (
     <br />
   );

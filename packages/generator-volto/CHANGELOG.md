@@ -1,10 +1,26 @@
 # Change Log
 
-## 2.3.1 (unreleased)
+## 3.0.0 (unreleased)
 
 ### Added
 
 ### Changes
+
+## 3.0.0-alpha.0 (2021-02-17)
+
+### Breaking
+
+- Upgrade to Volto 12.0.0 - This generator is only compatible with Volto 12 and above. @sneridagh
+
+### Bug Fixes
+
+- bug fix package.json of add-on generator: json format @ksuess
+
+## 2.4.0 (2021-02-08)
+
+### Added
+
+- Added i18n for addons support @sneridagh
 
 ## 2.3.0 (2021-01-21)
 

@@ -3,19 +3,16 @@ import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
 import { render } from '@testing-library/react';
+import config from '@plone/volto/registry';
 
 import ContextNavigation from './ContextNavigation';
 
 const mockStore = configureStore();
 
-jest.mock('~/config', () => ({
-  settings: {
-    apiPath: 'http://localhost:3000/api',
-    nonContentRoutes: [],
-    supportedLanguages: ['en'],
-    navDepth: 1,
-  },
-}));
+beforeAll(() => {
+  config.settings.apiPath = 'http://localhost:3000/api';
+  config.settings.navDepth = 1;
+});
 
 describe('ContextNavigation', () => {
   it('renders a navigation slot component without active items', () => {

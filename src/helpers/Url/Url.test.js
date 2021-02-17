@@ -1,4 +1,4 @@
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 import {
   flattenToAppURL,
@@ -8,6 +8,8 @@ import {
   isCmsUi,
   isInternalURL,
 } from './Url';
+
+const { settings } = config;
 
 describe('Url', () => {
   describe('getBaseUrl', () => {
