@@ -5,8 +5,7 @@
 
 import superagent from 'superagent';
 import cookie from 'react-cookie';
-
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 /**
  * Get a resource image/file with authenticated (if token exist) API headers
@@ -16,6 +15,7 @@ import { settings } from '~/config';
  */
 export const getAPIResourceWithAuth = (req) =>
   new Promise((resolve, reject) => {
+    const { settings } = config;
     let apiPath = '';
     if (settings.internalApiPath && __SERVER__) {
       apiPath = settings.internalApiPath;

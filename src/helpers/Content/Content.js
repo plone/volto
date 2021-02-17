@@ -4,7 +4,7 @@
  */
 
 import { omitBy, mapKeys, pickBy, map, keys, endsWith, find } from 'lodash';
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 /**
  * Nest content.
@@ -57,6 +57,7 @@ export function getLayoutFieldname(props) {
  * @returns {Object} Icon component
  */
 export function getContentIcon(type, isFolderish) {
+  const { settings } = config;
   const { contentIcons } = settings;
 
   if (type in contentIcons) return contentIcons[type];

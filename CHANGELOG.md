@@ -4,6 +4,9 @@
 
 ### Breaking
 
+- Introduction of the new Volto Configuration Registry @sneridagh @tiberiuichim
+  For more information about this breaking change: https://docs.voltocms.com/upgrade-guide/#upgrading-to-volto-12xx
+
 ### Feature
 
 ### Bugfix

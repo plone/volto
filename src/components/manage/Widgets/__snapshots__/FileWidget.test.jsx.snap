@@ -1,81 +1,67 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a file widget component 1`] = `
-Array [
+<div>
   <div
-    className="inline field"
+    class="inline field"
   >
     <div
-      className="ui grid"
+      class="ui grid"
     >
       <div
-        className="stretched row"
+        class="stretched row"
       >
         <div
-          className="four wide column"
+          class="four wide column"
         >
           <div
-            className="wrapper"
+            class="wrapper"
           >
             <label
-              htmlFor="field-my-field"
+              for="field-my-field"
             >
               My field
             </label>
           </div>
         </div>
         <div
-          className="eight wide column"
+          class="eight wide column"
         >
           <div
-            className="file-widget-dropzone"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDragEnter={[Function]}
-            onDragLeave={[Function]}
-            onDragOver={[Function]}
-            onDrop={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            tabIndex={0}
+            class="file-widget-dropzone"
+            tabindex="0"
           >
             <div
-              className="dropzone-placeholder"
+              class="dropzone-placeholder"
             >
               <p
-                className="dropzone-text"
+                class="dropzone-text"
               >
                 Drop file here to upload a new file
               </p>
             </div>
             <label
-              className="label-file-widget-input"
+              class="label-file-widget-input"
             >
               Choose a file
             </label>
             <input
-              autoComplete="off"
+              autocomplete="off"
               id="field-my-field"
-              multiple={true}
+              multiple=""
               name="my-field"
-              onChange={[Function]}
-              onClick={[Function]}
-              style={
-                Object {
-                  "display": "none",
-                }
-              }
-              tabIndex={-1}
+              style="display: none;"
+              tabindex="-1"
               type="file"
             />
           </div>
           <div
-            className="field-file-name"
+            class="field-file-name"
           />
         </div>
       </div>
     </div>
-  </div>,
-  ",",
-]
+  </div>
+  ,
+</div>
 `;
