@@ -16,8 +16,8 @@ exports[`PersonalPreferences renders a personal preferences component 1`] = `
           class="ui segment"
         >
           <div
-            class="choices-widget"
-            id="field-language"
+            class="mocked-choices-widget"
+            id="mocked-field-language"
           >
             Language
              - 

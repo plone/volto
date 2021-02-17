@@ -21,7 +21,6 @@ test('renders a file widget component', async () => {
     </Provider>,
   );
 
-  await waitFor(() => {
-    expect(container).toMatchSnapshot();
-  });
+  await waitFor(() => {});
+  expect(container).toMatchSnapshot();
 });

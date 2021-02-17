@@ -85,8 +85,8 @@ exports[`Comments renders a comments component 1`] = `
             </h1>
           </div>
           <div
-            className="textarea-widget"
-            id="field-comment"
+            className="mocked-textarea-widget"
+            id="mocked-field-comment"
           >
             Comment
              - 
