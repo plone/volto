@@ -1,40 +1,37 @@
 import FileCache from '@plone/volto/express-middleware/image-proxy/file-cache.js';
 import fs from 'fs-extra';
 
-global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
-
-jest.mock('fs-extra');
 describe('Test File Cache', () => {
-  beforeAll(() => {
-    // jest.spyOn(FileCache.prototype, 'initialize').mockImplementation(jest.fn());
-    // jest.spyOn(FileCache.prototype, 'save').mockImplementation(jest.fn());
-    // const save = (FileCache.prototype.save = jest.fn());
-  });
-
-  afterAll(() => {
-    // jest.restoreAllMocks();
-  });
-
-  it('Initialize cache on server start if local files are present', () => {
+  it('should initialize cache on server start if local files are present', () => {
+    const fn = jest.fn();
     let spy = jest
       .spyOn(FileCache.prototype, 'initialize')
-      .mockImplementation(jest.fn());
+      .mockImplementation(fn);
 
-    const cache = new FileCache({ rebuildFromFs: false });
+    const cache = new FileCache({ rebuildFromFs: true });
 
     const opts = {
       basePath: `public/cache`,
       maxSize: 100,
-      cache: new Map(),
     };
 
-    // TODO: make a unit test that tests how initialize remakes the metadata in
-    // the cache from the file system
-    // expect(cache.initialize).toHaveBeenCalledTimes(1);
+    const arr = [];
+    const data = fs.existsSync(cache.absBasePath)
+      ? fs.readdirSync(cache.absBasePath)
+      : [];
+    if (data) {
+      Array.from(data).forEach((d) => {
+        if (d.endsWith('.metadata')) {
+          arr.push(d);
+        }
+      });
+    }
+
+    expect(fn).toHaveBeenCalledTimes(1);
 
     expect(cache.basePath).toEqual(opts.basePath);
     expect(cache.maxSize).toEqual(opts.maxSize);
-    expect(cache.cache).toEqual(opts.cache);
+    expect(cache.cache.size).toEqual(arr.length);
 
     spy.mockRestore();
   });
@@ -46,7 +43,7 @@ describe('Test File Cache', () => {
     const spy = jest.spyOn(cache, 'save').mockImplementation(jest.fn());
 
     cache.set('SDE354FF.jpg', mockFile);
-    fs.outputFileSync.mockReturnValue(undefined);
+
     const spy2 = jest.spyOn(fs, 'existsSync').mockImplementation(() => false);
 
     expect(cache.save).toHaveBeenCalledTimes(1);
@@ -61,8 +58,6 @@ describe('Test File Cache', () => {
     const spy = jest.spyOn(cache, 'read').mockImplementation(jest.fn());
 
     cache.get('SDE354FF.png');
-    jest.spyOn(fs, 'readFileSync');
-    jest.spyOn(fs, 'existsSync').mockImplementation(() => true);
 
     expect(cache.read).toHaveBeenCalledTimes(1);
 
@@ -79,8 +74,6 @@ describe('Test File Cache', () => {
     const spy = jest.spyOn(cache, 'remove').mockImplementation(jest.fn());
 
     cache.remove('SDE354FF.png');
-    fs.removeSync.mockReturnValue(undefined);
-    fs.existsSync.mockReturnValue(true);
 
     expect(cache.remove).toHaveBeenCalled();
 
@@ -92,9 +85,6 @@ describe('Test File Cache', () => {
     const spy = jest
       .spyOn(FileCache.prototype, 'initialize')
       .mockImplementation(jest.fn());
-    // const spy2 = jest.spyOn(fs, 'readdirSync').mockImplementation(() => []);
-    // const spy3 = jest.spyOn(fs, 'existsSync').mockImplementation(() => true);
-    // const spy4 = jest.spyOn(fs, 'outputFileSync').mockImplementation(() => {});
 
     const cache = new FileCache();
     const k = 'my unit test file.jpg';
@@ -102,7 +92,6 @@ describe('Test File Cache', () => {
     cache.set(k, { value: { data: c } });
     const r = cache.read(k);
 
-    console.log('r', r);
     try {
       if (!r) {
         expect(true).toEqual(false);
@@ -112,49 +101,65 @@ describe('Test File Cache', () => {
         expect(r.data.toString()).toEqual(c);
       }
     } catch (error) {
-      throw error;
       expect(true).toEqual(false, 'Error thrown while reading cache');
     }
 
     cache.remove(k);
 
-    [spy /* , spy2, spy3, spy4 */].forEach((x) => x.mockRestore());
+    [spy].forEach((x) => x.mockRestore());
   });
 
   it('should look up in cache and have a cache miss', () => {
+    const spy = jest
+      .spyOn(FileCache.prototype, 'initialize')
+      .mockImplementation(jest.fn());
+
     const cache = new FileCache();
-    cache.initialize();
 
-    const p = cache.path('my unit test file');
-    const p2 = cache.path('my nonexistent file');
+    const k = 'my unit test file.jpg';
+    const k2 = 'my second unit test file.png';
+    const c = 'file contents';
+    // const c2 = 'second file contents';
+    cache.set(k, { value: { data: c } });
+    // cache.set(k2, { value: { data: c2 } });
 
-    cache.set(p, 'file contents');
-
-    const r = cache.read(p2);
+    const r = cache.read(k2);
 
     try {
       if (!r) {
-        expect(true).toBe(true);
+        expect(true).toEqual(true);
       } else if (this.isExpired(JSON.parse(r?.metadata))) {
-        expect(true).toBe(true);
+        expect(true).toEqual(true);
       } else {
-        expect(r.Data.data).toEqual('file contents');
+        expect(r.data.toString()).toNotEqual(c);
       }
     } catch (error) {
-      expect(true).toBe(true);
+      expect(true).toEqual(true);
     }
 
-    cache.remove(p);
+    cache.remove(k2);
+
+    [spy].forEach((x) => x.mockRestore());
   });
 
   it('should look up in cache and have 2 items', () => {
+    const spy = jest
+      .spyOn(FileCache.prototype, 'initialize')
+      .mockImplementation(jest.fn());
+
     const cache = new FileCache();
-    cache.initialize();
 
-    cache.set('my unit test file', { data: 'file contents' });
+    const k = 'my unit test file.jpg';
+    const k2 = 'my second unit test file.png';
+    const c = 'file contents';
+    const c2 = 'my file contents';
+    cache.set(k, { value: { data: c } });
+    cache.set(k2, { value: { data: c2 } });
 
-    cache.set('my second unit test file', { data: 'my other file contents' });
+    expect(cache.cache.size).toEqual(2);
 
-    expect(Array.from(cache.cache.entries()).length).toEqual(2);
+    cache.clear();
+
+    [spy].forEach((x) => x.mockRestore());
   });
 });

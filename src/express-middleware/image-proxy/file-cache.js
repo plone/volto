@@ -8,10 +8,10 @@ import {
   readdirSync,
   readFileSync,
   existsSync,
-  mkdirsSync,
   writeFileSync,
   unlinkSync,
   rmdirSync,
+  mkdirSync,
 } from 'fs';
 
 // TODO: make sure the fs API used in this file is available on all Node.js
@@ -26,9 +26,10 @@ function outputFileSync(file, ...args) {
   const dir = path.dirname(file);
   if (existsSync(dir)) {
     return writeFileSync(file, ...args);
+  } else {
+    mkdirSync(dir);
+    writeFileSync(file, ...args);
   }
-  mkdirsSync(dir);
-  writeFileSync(file, ...args);
 }
 
 export const defaultOpts = {
@@ -52,7 +53,7 @@ class FileCache {
     this.absBasePath = path.resolve(process.cwd(), this.basePath);
     this.maxSize = opts.maxSize;
     this.cache = new Map(); // keeping count of how many times the file is accessed
-    if (__SERVER__ && existsSync(this.absBasePath) && opts.rebuildFromFs) {
+    if (opts.rebuildFromFs) {
       this.initialize(this.absBasePath);
     }
   }
@@ -63,6 +64,10 @@ class FileCache {
    * @return {undefined}
    */
   initialize(dirPath) {
+    if (!existsSync(dirPath)) {
+      mkdirSync(dirPath);
+    }
+
     const files = readdirSync(dirPath);
 
     files.forEach((file) => {
@@ -89,7 +94,8 @@ class FileCache {
     }
     const ext = key.substr(key.indexOf('.') + 1).split('/')[0]; // append the extension
     let name = md5(key);
-    return path.join(this.absBasePath, `${name}.${ext}`);
+    const p = path.join(this.absBasePath, `${name}.${ext}`);
+    return p;
   }
 
   /**
@@ -111,9 +117,7 @@ class FileCache {
       '.metadata',
     )}`;
     debug(`file read ${filePath}`);
-    console.log('fp', filePath);
     if (existsSync(filePath)) {
-      console.log('19873', filePath, metadataPath);
       this.incrementForKey(key);
       return {
         data: readFileSync(filePath, { encoding: null }),
@@ -127,11 +131,8 @@ class FileCache {
   }
 
   get(key) {
-    console.log('get y');
     try {
-      console.log('get z');
       const fileData = this.read(this.path(key));
-      console.log('get alpha', key, fileData);
       if (!fileData) {
         return;
       } else if (this.isExpired(JSON.parse(fileData?.metadata))) {
@@ -144,7 +145,6 @@ class FileCache {
         };
       }
     } catch (error) {
-      console.log('debug', error);
       debug(error);
     }
   }
@@ -154,11 +154,6 @@ class FileCache {
   }
 
   save(key, data) {
-    // console.log('p', this.absBasePath);
-
-    // console.log('ppp', fs.readdirSync(this.absBasePath));
-
-    const { value } = data;
     const filePath = this.path(key);
     const metadataPath = `${filePath.replace(
       path.extname(filePath),
@@ -168,10 +163,16 @@ class FileCache {
       !existsSync(this.absBasePath) ||
       readdirSync(this.absBasePath).length < this.maxSize
     ) {
-      console.log('y19');
-      outputFileSync(filePath, value.data, { encoding: null });
+      outputFileSync(filePath, data.value.data, { encoding: null });
       debug(`file written at ${filePath}`);
-      outputFileSync(metadataPath, JSON.stringify(data));
+      outputFileSync(
+        metadataPath,
+        JSON.stringify({
+          format: data.value.format,
+          size: data.value.size,
+          headers: data.value.headers,
+        }),
+      );
       debug(`metadata file written at ${metadataPath}`);
       this.cache.set(key, 0);
     } else {
@@ -207,8 +208,12 @@ class FileCache {
       path.extname(filePath),
       '.metadata',
     )}`;
-    unlinkSync(filePath);
-    unlinkSync(metadataPath);
+    if (existsSync(filePath)) {
+      unlinkSync(filePath);
+    }
+    if (existsSync(metadataPath)) {
+      unlinkSync(metadataPath);
+    }
     this.cache.delete(key);
   }
 
