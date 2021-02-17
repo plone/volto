@@ -251,7 +251,14 @@ Run "npm install -g @plone/generator-volto" to update.`,
       },
     });
 
+    this.fs.copyTpl(
+      this.templatePath('.gitignorefile'),
+      this.destinationPath('.gitignore'),
+      this.globals,
+    );
+
     this.fs.delete(this.destinationPath(base, 'package.json.tpl'));
+    this.fs.delete(this.destinationPath(base, '.gitignorefile'));
   }
 
   install() {
