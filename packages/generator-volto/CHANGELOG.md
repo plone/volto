@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.0.0 (unreleased)
+
+### Added
+
+### Changes
+
 ## 4.0.0-alpha.1 (2021-02-17)
 
 Released another major alpha accidentally, continuing with this major then :/
