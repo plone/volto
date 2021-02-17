@@ -1,30 +1,69 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { v4 as uuid } from 'uuid';
+import RenderSlotFill from './RenderSlotFill';
 
 import Registry from '@plone/volto/registry';
 
-const SlotRenderer = ({ name }) => {
-  const pathname = useLocation().pathname;
-  const { slots } = Registry;
-  const slotData = useSelector((state) => state.slots?.data || {});
+const DefaultSlotWrapper = ({ name, children }) => (
+  <div className={`slot-${name}`}>{children}</div>
+);
 
+const defaultComputeLayout = ({ staticFills, persistentFills }) => [
+  ...(persistentFills.blocks_layout?.items || []),
+  ...(staticFills || []).map(({ id }) => id),
+];
+
+const SlotRenderer = ({ name, metadata }) => {
+  const { pathname } = useLocation();
+
+  // a 'properties' like object, with blocks_layout and blocks
+  const persistentFillsData = useSelector((state) => {
+    return state.slots?.data?.items?.[name] || {};
+  });
+
+  const { slots } = Registry;
   if (!slots[name]) {
     return null;
   }
 
-  const currentSlot = slots[name];
-  const active = currentSlot.items?.filter((slot) =>
-    slot.available({ pathname, slotData }),
+  const slotDefinition = slots[name];
+  const {
+    computeLayout = defaultComputeLayout,
+    RenderChild = RenderSlotFill,
+    component: SlotWrapper = DefaultSlotWrapper,
+    items: staticFillsData = [],
+    // available = defaultAvailable,
+  } = slotDefinition;
+
+  const components = Object.assign(
+    {
+      ...persistentFillsData.blocks,
+    },
+    ...staticFillsData.map((info) => ({
+      [info.id]: { '@type': 'staticFill', ...info },
+    })),
   );
 
-  return active.map(({ component, props }) => {
-    // TODO: use id from slot fill definition?
-    const id = uuid();
-    const SlotFill = component;
-    return <SlotFill {...props} slotName={name} key={id} id={id} />;
+  const layout = computeLayout({
+    staticFills: staticFillsData,
+    persistentFills: persistentFillsData,
   });
+
+  return (
+    <SlotWrapper name={name}>
+      {layout.map((id) => (
+        <RenderChild
+          key={id}
+          id={id}
+          slotName={name}
+          pathname={pathname}
+          properties={components[id]}
+          metadata={metadata}
+        />
+      ))}
+    </SlotWrapper>
+  );
 };
 
 export default SlotRenderer;

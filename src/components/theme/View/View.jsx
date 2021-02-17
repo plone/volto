@@ -146,6 +146,7 @@ class View extends Component {
         getBaseUrl(nextProps.pathname),
         this.props.versionId,
       );
+      this.props.getSlots(getBaseUrl(this.props.pathname));
     }
 
     if (nextProps.actions.object_buttons) {

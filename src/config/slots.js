@@ -1,15 +1,12 @@
 import ContextNavigation from '@plone/volto/components/theme/Navigation/ContextNavigation';
-import PersistentSlotRenderer from '@plone/volto/components/theme/SlotRenderer/PersistentSlotRenderer';
-import { matchPath } from 'react-router-dom';
-
-function restrictToPath(match) {
-  return ({ pathname }) => matchPath(pathname, match);
-}
+import { restrictToPath } from '@plone/volto/helpers';
+// import { matchPath } from 'react-router-dom';
 
 const defaultSlots = {
   asideRightSlot: {
     title: 'Right column',
     manage: true,
+
     items: [
       {
         id: 'ContextNavigation',
@@ -20,16 +17,22 @@ const defaultSlots = {
           exact: false,
         }),
       },
-      {
-        id: 'PersistentSlotFills',
-        component: PersistentSlotRenderer,
-        props: {},
-        available: ({ slotData }) => {
-          return slotData?.items?.asideRightSlot?.blocks_layout?.items;
-        },
-      },
     ],
-    render: (fills) => fills,
+
+    // available: ({ pathname, slotData }) => true,
+
+    // optional
+    // computeLayout(staticFills, persistentFills) {
+    //   return [...persistentFills, ...staticFills];
+    // },
+
+    // optional
+    // RenderChild: (props) => {
+    //   return <div className="portlet"></div>;
+    // },
+
+    // optional
+    // component: FooterSlotRenderer,
   },
 };
 
