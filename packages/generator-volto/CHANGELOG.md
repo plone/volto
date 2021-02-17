@@ -4,7 +4,7 @@
 
 ### Breaking
 
-- Upgrade to Volto 12.0.0 - This generator is only compatible with @sneridagh
+- Upgrade to Volto 12.0.0 - This generator is only compatible with Volto 12 and above. @sneridagh
 
 ## 2.4.0 (2021-02-08)
 
