@@ -1,6 +1,5 @@
 import ContextNavigation from '@plone/volto/components/theme/Navigation/ContextNavigation';
 import { restrictToPath } from '@plone/volto/helpers';
-// import { matchPath } from 'react-router-dom';
 
 const defaultSlots = {
   asideRightSlot: {
@@ -19,11 +18,11 @@ const defaultSlots = {
       },
     ],
 
-    // available: ({ pathname, slotData }) => true,
+    // available: ({ pathname, slotData, slotName, slots }) => true,
 
     // optional
-    // computeLayout(staticFills, persistentFills) {
-    //   return [...persistentFills, ...staticFills];
+    // computeLayout({staticFills, persistentFills}) {
+    //   return [...persistentFillsIds, ...staticFillsIds];
     // },
 
     // optional
