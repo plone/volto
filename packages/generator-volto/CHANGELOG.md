@@ -2,9 +2,9 @@
 
 ## 2.4.1 (unreleased)
 
-### Added
+### Breaking
 
-### Changes
+- Upgrade to Volto 12.0.0 - This generator is only compatible with @sneridagh
 
 ## 2.4.0 (2021-02-08)
 
