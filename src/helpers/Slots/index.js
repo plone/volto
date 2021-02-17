@@ -4,7 +4,7 @@ export function restrictToPath(match) {
   return ({ pathname }) => matchPath(pathname, match);
 }
 
-export function slotIsAvailable({ slotName, pathname, slotData, slots }) {
+export function isSlotAvailable({ slotName, pathname, slotData, slots }) {
   return (
     [
       ...(slotData?.items?.[slotName]?.blocks_layout?.items || []),

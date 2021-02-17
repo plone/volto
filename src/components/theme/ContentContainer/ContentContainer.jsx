@@ -4,7 +4,7 @@ import { SlotRenderer } from '@plone/volto/components';
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import config from '@plone/volto/registry';
-import { slotIsAvailable } from '@plone/volto/helpers';
+import { isSlotAvailable } from '@plone/volto/helpers';
 // import { isEmpty } from 'lodash';
 
 const ContentContainer = ({ children, content }) => {
@@ -12,18 +12,18 @@ const ContentContainer = ({ children, content }) => {
   const { slots } = config;
   const slotData = useSelector((state) => state.slots?.data || {});
 
-  const isSlotAvailable = (name) => {
+  const available = (name) => {
     if (!slots[name]) {
       return null;
     }
     const props = { pathname, slotData, slotName: name, slots };
     return slots[name].available
       ? slots[name].available(props)
-      : slotIsAvailable(props);
+      : isSlotAvailable(props);
   };
 
-  const hasLeftSlot = isSlotAvailable('asideLeftSlot');
-  const hasRightSlot = isSlotAvailable('asideRightSlot');
+  const hasLeftSlot = available('asideLeftSlot');
+  const hasRightSlot = available('asideRightSlot');
 
   const contentWidth = () => {
     if (hasLeftSlot && hasRightSlot) {
