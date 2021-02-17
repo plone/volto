@@ -7,12 +7,6 @@
 - Introduction of the new Volto Configuration Registry @sneridagh @tiberiuichim
   For more information about this breaking change: https://docs.voltocms.com/upgrade-guide/#upgrading-to-volto-12xx
 
-### Feature
-
-### Bugfix
-
-### Internal
-
 ## 11.1.0 (2021-02-08)
 
 ### Feature
