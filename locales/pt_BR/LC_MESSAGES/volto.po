@@ -239,6 +239,7 @@ msgstr ""
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Delete/Delete
 #: components/manage/Edit/Edit
+#: components/manage/EditSlot/EditSlot
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 #: components/theme/Login/Login
@@ -696,6 +697,7 @@ msgstr "Escreva uma senha nova. Mínimo de 5 caracteres."
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Edit/Edit
+#: components/manage/EditSlot/EditSlot
 #: components/manage/Form/InlineForm
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
@@ -1515,6 +1517,7 @@ msgstr ""
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Edit/Edit
+#: components/manage/EditSlot/EditSlot
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 #: helpers/MessageLabels/MessageLabels
@@ -1952,6 +1955,8 @@ msgid "Uninstall"
 msgstr ""
 
 #: components/manage/Blocks/Block/Edit
+#: components/manage/Blocks/Block/WrapperlessBlockEdit
+#: components/theme/SlotRenderer/RenderSlotFill
 #: components/theme/View/DefaultView
 #: components/theme/View/RenderBlocks
 msgid "Unknown Block"
@@ -2172,6 +2177,7 @@ msgstr "comum"
 
 #: components/manage/Blocks/Block/Edit
 #: components/manage/Blocks/Block/EditBlockWrapper
+#: components/manage/EditSlot/SlotEditBlockWrapper
 msgid "delete"
 msgstr "eliminar"
 

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2021-02-01T18:49:42.271Z\n"
+"POT-Creation-Date: 2021-02-17T15:44:09.075Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -279,6 +279,7 @@ msgstr ""
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Delete/Delete
 #: components/manage/Edit/Edit
+#: components/manage/EditSlot/EditSlot
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 #: components/theme/Login/Login
@@ -834,6 +835,7 @@ msgstr ""
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Edit/Edit
+#: components/manage/EditSlot/EditSlot
 #: components/manage/Form/InlineForm
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
@@ -1841,6 +1843,7 @@ msgstr ""
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Edit/Edit
+#: components/manage/EditSlot/EditSlot
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 #: helpers/MessageLabels/MessageLabels
@@ -2377,6 +2380,8 @@ msgid "Uninstall"
 msgstr ""
 
 #: components/manage/Blocks/Block/Edit
+#: components/manage/Blocks/Block/WrapperlessBlockEdit
+#: components/theme/SlotRenderer/RenderSlotFill
 #: components/theme/View/DefaultView
 #: components/theme/View/RenderBlocks
 # defaultMessage: Unknown Block {block}
@@ -2654,6 +2659,7 @@ msgstr ""
 
 #: components/manage/Blocks/Block/Edit
 #: components/manage/Blocks/Block/EditBlockWrapper
+#: components/manage/EditSlot/SlotEditBlockWrapper
 # defaultMessage: delete
 msgid "delete"
 msgstr ""
