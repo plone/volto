@@ -13,6 +13,7 @@ async function imageMiddleware(req, res, next) {
     // copy headers coming from the backend
     Object.keys(output.headers).forEach((h) => {
       const v = output.headers[h];
+      console.log('HEADER', h, v);
       if (v) res.setHeader(h, v);
     });
 

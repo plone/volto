@@ -88,10 +88,19 @@ export default class ImageProxy {
     return !!this.thumbSize;
   }
 
+  getRelevantHeaders = (response) => {
+    return Object.fromEntries(
+      Object.entries(response.headers).filter(([h]) =>
+        HEADERS.includes(h.toLowerCase()),
+      ),
+    );
+  };
+
   async syncMetadataFromBackend() {
     const { apiPath } = settings;
     const response = await superagent.head(`${apiPath}${this.contextUrl}`);
-    this.metadata = response.headers;
+    console.log('rh', response.headers);
+    this.metadata.headers = this.getRelevantHeaders(response);
   }
 
   async getFromProcessedCache() {
@@ -188,6 +197,8 @@ export default class ImageProxy {
 
   async getData() {
     await this.syncMetadataFromBackend();
+
+    console.log(this.metadata);
 
     // container is like { format: 'image/jpeg', data: Buffer(), size: 123 };
     let container, original;

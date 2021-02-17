@@ -1,11 +1,41 @@
-import * as fs from 'fs-extra';
+// import * as fs from 'fs-extra';
+
+// TODO: find an alternative to fs-extra that works in testing environment
+// because in some cases the fs imports commented above return undefined for an
+// existing directory absolute path containing some files that are not symlinks
+// (or make fs-extra work well if possible)
+import {
+  readdirSync,
+  readFileSync,
+  existsSync,
+  writeFileSync,
+  unlinkSync,
+  rmdirSync,
+  mkdirSync,
+} from 'fs';
+
+// TODO: make sure the fs API used in this file is available on all Node.js
+// versions that are supported by Volto
+
 import path from 'path';
 import { getLogger } from '@plone/volto/express-middleware/logger';
+import md5 from 'md5';
 const debug = getLogger('file-cache');
 
+function outputFileSync(file, ...args) {
+  const dir = path.dirname(file);
+  if (existsSync(dir)) {
+    return writeFileSync(file, ...args);
+  } else {
+    mkdirSync(dir);
+    writeFileSync(file, ...args);
+  }
+}
+
 export const defaultOpts = {
-  basePath: `../public/cache`,
+  basePath: 'public/cache',
   maxSize: 100,
+  rebuildFromFs: true,
 };
 
 function isNumber(val) {
@@ -13,22 +43,32 @@ function isNumber(val) {
 }
 
 class FileCache {
-  constructor(opts = defaultOpts) {
-    this.basePath = opts.basePath;
+  constructor(opts = {}) {
+    opts = {
+      ...defaultOpts,
+      ...opts,
+    };
+
+    this.basePath = process.env.VOLTO_FILE_CACHE_BASE_PATH || opts.basePath;
+    this.absBasePath = path.resolve(process.cwd(), this.basePath);
     this.maxSize = opts.maxSize;
     this.cache = new Map(); // keeping count of how many times the file is accessed
-    if (__SERVER__ && fs.existsSync(path.join(__dirname, this.basePath))) {
-      this.initialize(path.join(__dirname, this.basePath));
+    if (opts.rebuildFromFs) {
+      this.initialize(this.absBasePath);
     }
   }
 
   /**
-   * Initialise the cache.
+   * Initialize the cache.
    * @param {string} dirPath: The base directory.
-   * @return {undefined}.
+   * @return {undefined}
    */
   initialize(dirPath) {
-    const files = fs.readdirSync(dirPath);
+    if (!existsSync(dirPath)) {
+      mkdirSync(dirPath);
+    }
+
+    const files = readdirSync(dirPath);
 
     files.forEach((file) => {
       // if (fs.statSync(dirPath + '/' + file).isDirectory()) {
@@ -43,31 +83,45 @@ class FileCache {
   /**
    * Generates the path to the cached files.
    * @param {string} key: The key of the cache item.
-   * @return {string}.
+   * @return {string}
    */
   path(key) {
     if (!key) {
       throw new Error(`Path requires a cache key.`);
     }
-    const ext = key.substr(key.indexOf('.') + 1).split('/')[0]; //append the extension
-    let name = Buffer.from(key).toString('base64');
-    return `${this.basePath}/${name}.${ext}`;
+    if (key.indexOf('.') < 0) {
+      throw new Error(`The file name should have an extension.`);
+    }
+    const ext = key.substr(key.indexOf('.') + 1).split('/')[0]; // append the extension
+    let name = md5(key);
+    const p = path.join(this.absBasePath, `${name}.${ext}`);
+    return p;
   }
 
+  /**
+   * @param {string} key
+   */
+  incrementForKey = (key) => {
+    let count = this.cache.get(key);
+    this.cache.set(key, ++count);
+    debug(this.cache.get(key));
+  };
+
+  /**
+   * @param {string} key
+   */
   read(key) {
-    const filePath = path.join(__dirname, `${key}`);
+    const filePath = this.path(key);
     const metadataPath = `${filePath.replace(
       path.extname(filePath),
       '.metadata',
     )}`;
     debug(`file read ${filePath}`);
-    if (fs.existsSync(filePath)) {
-      let count = this.cache.get(key);
-      this.cache.set(key, ++count);
-      debug(this.cache.get(key));
+    if (existsSync(filePath)) {
+      this.incrementForKey(key);
       return {
-        data: fs.readFileSync(filePath, { encoding: null }),
-        metadata: fs.readFileSync(metadataPath),
+        data: readFileSync(filePath, { encoding: null }),
+        metadata: readFileSync(metadataPath),
       };
     }
   }
@@ -100,60 +154,67 @@ class FileCache {
   }
 
   save(key, data) {
-    const { value } = data;
-    try {
-      const dir = path.join(__dirname, `${key}`);
-      const metadataPath = `${dir.replace(path.extname(dir), '.metadata')}`;
-      if (
-        !fs.existsSync(path.join(__dirname, this.basePath)) ||
-        fs.readdirSync(path.join(__dirname, this.basePath)).length <
-          this.maxSize
-      ) {
-        fs.outputFileSync(dir, value.data, { encoding: null });
-        debug(`file written at ${dir}`);
-        fs.outputFileSync(metadataPath, JSON.stringify(data));
-        debug(`metadata file written at ${metadataPath}`);
-        this.cache.set(key, 0);
-      } else {
-        debug(
-          'Directory size reached max limit, Removing least recent used element...',
-        );
-        //TODO: add max age condition
-        const entries = Array.from(this.cache.entries());
-        let count = entries[0];
-        entries.forEach((item, ind) => {
-          if (item[1] < count[1]) count = item;
-        });
-        this.remove(count[0]);
-      }
-    } catch (e) {
-      throw Error(e);
-    }
-  }
-  /**
-   *
-   * @param key
-   * @param value
-   */
-  set(key, value) {
-    this.save(this.path(key), value);
-  }
-
-  /**
-   * Removes the item from the file-system.
-   * @param {string} key: The key of the cache item.
-   * @return undefined
-   */
-  remove(key) {
-    const filePath = path.join(__dirname, `${key}`);
+    const filePath = this.path(key);
     const metadataPath = `${filePath.replace(
       path.extname(filePath),
       '.metadata',
     )}`;
-    fs.removeSync(filePath);
-    fs.removeSync(metadataPath);
+    if (
+      !existsSync(this.absBasePath) ||
+      readdirSync(this.absBasePath).length < this.maxSize
+    ) {
+      outputFileSync(filePath, data.value.data, { encoding: null });
+      debug(`file written at ${filePath}`);
+      outputFileSync(
+        metadataPath,
+        JSON.stringify({
+          format: data.value.format,
+          size: data.value.size,
+          headers: data.value.headers,
+        }),
+      );
+      debug(`metadata file written at ${metadataPath}`);
+      this.cache.set(key, 0);
+    } else {
+      debug(
+        'Directory size reached max limit, Removing least recent used element...',
+      );
+      //TODO: add max age condition
+      const entries = Array.from(this.cache.entries());
+      let anchorEntry = entries[0];
+      entries.forEach((crtEntry /*, ind */) => {
+        if (crtEntry[1] < anchorEntry[1]) anchorEntry = crtEntry;
+      });
+      this.remove(anchorEntry[0]);
+    }
+  }
+  /**
+   *
+   * @param {string} key
+   * @param {number} value
+   */
+  set = (key, value) => {
+    this.save(key, value);
+  };
+
+  /**
+   * Removes the item from the file-system.
+   * @param {string} key The key of the cache item.
+   * @return undefined
+   */
+  remove(key) {
+    const filePath = this.path(key);
+    const metadataPath = `${filePath.replace(
+      path.extname(filePath),
+      '.metadata',
+    )}`;
+    if (existsSync(filePath)) {
+      unlinkSync(filePath);
+    }
+    if (existsSync(metadataPath)) {
+      unlinkSync(metadataPath);
+    }
     this.cache.delete(key);
-    return;
   }
 
   /**
@@ -161,8 +222,8 @@ class FileCache {
    * @return undefined
    */
   clear() {
-    const dir = path.resolve(__dirname, this.basePath);
-    return fs.removeSync(dir);
+    const dir = this.absBasePath;
+    return rmdirSync(dir, { recursive: true });
   }
 }
 

@@ -23,3 +23,12 @@ websites (for example a test website) to forbid robots from crawling it.
 $ VOLTO_ROBOTSTXT="User-agent: *
 Disallow: /" yarn start
 ```
+
+## VOLTO_FILE_CACHE_BASE_PATH
+
+This environment variable is an absolute path or a path relative to the Volto
+directory (the one which contains the ``public`` directory). If it is not
+specified, ``public/cache`` is used.
+
+It is used to contain the files created by the file cache module which is used
+by the image proxy bundled with Volto.
