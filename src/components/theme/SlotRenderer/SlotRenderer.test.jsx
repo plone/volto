@@ -36,12 +36,16 @@ describe('SlotRenderer Component', () => {
       items: [
         {
           available: restrictToPath({ path: '/' }),
-          component: (props) => <div {...props} />,
+          component: ({ className, id }) => (
+            <div className={className} id={id} />
+          ),
           props: { className: 'slot-component' },
         },
         {
           available: restrictToPath({ path: '/' }),
-          component: (props) => <aside {...props} />,
+          component: ({ className, id }) => (
+            <aside className={className} id={id} />
+          ),
           props: { className: 'slot-component' },
         },
       ],
@@ -54,21 +58,24 @@ describe('SlotRenderer Component', () => {
         </Provider>
       </MemoryRouter>,
     );
-    const divSlot = container.querySelector('div');
+
+    const divSlot = container.querySelector('.slot-aboveContentTitle div');
     expect(divSlot).toHaveClass('slot-component');
-    const asideSlot = container.querySelector('aside');
+
+    const asideSlot = container.querySelector('.slot-aboveContentTitle aside');
     expect(asideSlot).toHaveClass('slot-component');
   });
+
   test('renders a SlotRenderer component for the aboveContentTitle with one slots in the root and other in other place', () => {
     Registry.slots.aboveContentTitle = {
       items: [
         {
-          component: (props) => <div {...props} />,
+          component: ({ className }) => <div className={className} />,
           available: restrictToPath({ path: '/' }),
           props: { className: 'slot-component' },
         },
         {
-          component: (props) => <aside {...props} />,
+          component: ({ className }) => <aside className={className} />,
           available: restrictToPath({ path: '/other-place' }),
           props: { className: 'slot-component' },
         },
@@ -82,17 +89,18 @@ describe('SlotRenderer Component', () => {
         </Provider>
       </MemoryRouter>,
     );
-    const divSlot = container.querySelector('div');
+    const divSlot = container.querySelector('.slot-aboveContentTitle div');
     expect(divSlot).toHaveClass('slot-component');
-    const asideSlot = container.querySelector('aside');
+    const asideSlot = container.querySelector('.slot-aboveContentTitle aside');
     expect(asideSlot).toBe(null);
   });
+
   test('renders a SlotRenderer component for the aboveContentTitle and belowContentTitle, only renders the appropiate one', () => {
     Registry.slots.aboveContentTitle = {
       items: [
         {
           available: restrictToPath({ path: '/' }),
-          component: (props) => <div {...props} />,
+          component: ({ className }) => <div className={className} />,
           props: { className: 'slot-component-aboveContentTitle' },
         },
       ],
@@ -101,7 +109,7 @@ describe('SlotRenderer Component', () => {
       items: [
         {
           available: restrictToPath({ path: '/' }),
-          component: (props) => <aside {...props} />,
+          component: ({ className }) => <aside className={className} />,
           props: { className: 'slot-component-belowContentTitle' },
         },
       ],
@@ -114,17 +122,19 @@ describe('SlotRenderer Component', () => {
         </Provider>
       </MemoryRouter>,
     );
-    const divSlot = container.querySelector('div');
+
+    const divSlot = container.querySelector('.slot-aboveContentTitle div');
     expect(divSlot).toHaveClass('slot-component-aboveContentTitle');
-    const asideSlot = container.querySelector('aside');
+    const asideSlot = container.querySelector('.slot-aboveContentTitle aside');
     expect(asideSlot).toBe(null);
   });
+
   test('renders a SlotRenderer component for the aboveContentTitle and belowContentTitle with different paths, only renders the appropiate one', () => {
     Registry.slots.aboveContentTitle = {
       items: [
         {
           available: restrictToPath({ path: '/other-place' }),
-          component: (props) => <div {...props} />,
+          component: ({ className }) => <div className={className} />,
           props: { className: 'slot-component-aboveContentTitle' },
         },
       ],
@@ -133,7 +143,7 @@ describe('SlotRenderer Component', () => {
       items: [
         {
           available: restrictToPath({ path: '/' }),
-          component: (props) => <aside {...props} />,
+          component: ({ className }) => <aside className={className} />,
           props: { className: 'slot-component-belowContentTitle' },
         },
       ],
@@ -146,17 +156,18 @@ describe('SlotRenderer Component', () => {
         </Provider>
       </MemoryRouter>,
     );
-    const divSlot = container.querySelector('div');
+    const divSlot = container.querySelector('.slot-aboveContentTitle div');
     expect(divSlot).toHaveClass('slot-component-aboveContentTitle');
     const asideSlot = container.querySelector('aside');
     expect(asideSlot).toBe(null);
   });
+
   test('renders a SlotRenderer component for the aboveContentTitle with inheritance', () => {
     Registry.slots.aboveContentTitle = {
       items: [
         {
           available: restrictToPath({ path: '/other-place' }),
-          component: (props) => <div {...props} />,
+          component: ({ className }) => <div className={className} />,
           props: { className: 'slot-component-aboveContentTitle' },
         },
       ],
@@ -169,15 +180,16 @@ describe('SlotRenderer Component', () => {
         </Provider>
       </MemoryRouter>,
     );
-    const divSlot = container.querySelector('div');
+    const divSlot = container.querySelector('.slot-aboveContentTitle div');
     expect(divSlot).toHaveClass('slot-component-aboveContentTitle');
   });
+
   test('renders a SlotRenderer component for the aboveContentTitle disable inheritance', () => {
     Registry.slots.aboveContentTitle = {
       items: [
         {
           available: restrictToPath({ path: '/other-place', exact: true }),
-          component: (props) => <div {...props} />,
+          component: ({ className }) => <div className={className} />,
           props: { className: 'slot-component-aboveContentTitle' },
         },
       ],
@@ -190,7 +202,7 @@ describe('SlotRenderer Component', () => {
         </Provider>
       </MemoryRouter>,
     );
-    const divSlot = container.querySelector('div');
+    const divSlot = container.querySelector('.slot-aboveContentTitle div');
     expect(divSlot).toBe(null);
   });
 });

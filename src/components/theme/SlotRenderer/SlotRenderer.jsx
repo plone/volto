@@ -2,6 +2,7 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import RenderSlotFill from './RenderSlotFill';
+import { v4 as uuid } from 'uuid';
 
 import Registry from '@plone/volto/registry';
 
@@ -33,8 +34,13 @@ const SlotRenderer = ({ name, metadata }) => {
     RenderChild = RenderSlotFill,
     component: SlotWrapper = DefaultSlotWrapper,
     items: staticFillsData = [],
-    // available = defaultAvailable,
   } = slotDefinition;
+
+  // assign ids to static fills, if they don't exist
+  // this mutatates the config registry!
+  staticFillsData.forEach((item) => {
+    if (!item.id) item.id = uuid();
+  });
 
   const components = Object.assign(
     {

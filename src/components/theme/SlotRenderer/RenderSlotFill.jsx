@@ -9,12 +9,14 @@ const messages = defineMessages({
   },
 });
 
+const defaultAvailable = () => true;
+
 export const RenderSlotFillComponent = (props) => {
   const { id, properties = {}, pathname, slotName, metadata, intl } = props;
   const type = properties['@type'];
 
   if (type === 'staticFill') {
-    const { component, props, available } = properties;
+    const { component, props, available = defaultAvailable } = properties;
     const SlotFill = component;
     return available({ pathname }) ? (
       <SlotFill {...props} id={id} slotName={slotName} />
