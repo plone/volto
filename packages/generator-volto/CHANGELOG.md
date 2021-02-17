@@ -1,6 +1,6 @@
 # Change Log
 
-## 2.4.1 (unreleased)
+## 3.0.0-alpha.0 (2021-02-17)
 
 ### Breaking
 
