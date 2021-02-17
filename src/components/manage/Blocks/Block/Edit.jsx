@@ -207,17 +207,6 @@ class Edit extends Component {
             })}
           </div>
         )}
-        {selected && !required && (
-          <Button
-            icon
-            basic
-            onClick={() => this.props.onDeleteBlock(id)}
-            className="delete-button"
-            aria-label={this.props.intl.formatMessage(messages.delete)}
-          >
-            <Icon name={trashSVG} size="18px" />
-          </Button>
-        )}
       </div>
     );
   }

@@ -3,7 +3,13 @@
  * @module components/manage/Form/Form
  */
 
-import { EditBlock, Field, Icon, Toast } from '@plone/volto/components';
+import {
+  BlocksForm,
+  Field,
+  Icon,
+  Toast,
+  EditBlock,
+} from '@plone/volto/components';
 import {
   blockHasValue,
   difference,
@@ -182,16 +188,8 @@ class Form extends Component {
       isClient: false,
     };
     this.onChangeField = this.onChangeField.bind(this);
-    this.onChangeBlock = this.onChangeBlock.bind(this);
-    this.onMutateBlock = this.onMutateBlock.bind(this);
     this.onSelectBlock = this.onSelectBlock.bind(this);
-    this.onDeleteBlock = this.onDeleteBlock.bind(this);
-    this.onAddBlock = this.onAddBlock.bind(this);
-    this.onMoveBlock = this.onMoveBlock.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    this.onFocusPreviousBlock = this.onFocusPreviousBlock.bind(this);
-    this.onFocusNextBlock = this.onFocusNextBlock.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
     this.onTabChange = this.onTabChange.bind(this);
     this.onBlurField = this.onBlurField.bind(this);
     this.onClickInput = this.onClickInput.bind(this);
@@ -308,79 +306,6 @@ class Form extends Component {
   };
 
   /**
-   * Change block handler
-   * @method onChangeBlock
-   * @param {string} id Id of the block
-   * @param {*} value Value of the field
-   * @returns {undefined}
-   */
-  onChangeBlock(id, value) {
-    const blocksFieldname = getBlocksFieldname(this.state.formData);
-    this.setState({
-      formData: {
-        ...this.state.formData,
-        [blocksFieldname]: {
-          ...this.state.formData[blocksFieldname],
-          [id]: value || null,
-        },
-      },
-    });
-  }
-
-  /**
-   * Change block handler
-   * @method onMutateBlock
-   * @param {string} id Id of the block
-   * @param {*} value Value of the field
-   * @returns {undefined}
-   */
-  onMutateBlock(id, value) {
-    const blocksFieldname = getBlocksFieldname(this.state.formData);
-    const blocksLayoutFieldname = getBlocksLayoutFieldname(this.state.formData);
-    const index =
-      this.state.formData[blocksLayoutFieldname].items.indexOf(id) + 1;
-
-    // Test if block at index is already a placeholder (trailing) block
-    const trailId = this.state.formData[blocksLayoutFieldname].items[index];
-    if (trailId) {
-      const block = this.state.formData[blocksFieldname][trailId];
-      if (!blockHasValue(block)) {
-        this.setState({
-          formData: {
-            ...this.state.formData,
-            [blocksFieldname]: {
-              ...this.state.formData[blocksFieldname],
-              [id]: value || null,
-            },
-          },
-        });
-        return;
-      }
-    }
-
-    const idTrailingBlock = uuid();
-    this.setState({
-      formData: {
-        ...this.state.formData,
-        [blocksFieldname]: {
-          ...this.state.formData[blocksFieldname],
-          [id]: value || null,
-          [idTrailingBlock]: {
-            '@type': config.settings.defaultBlockType,
-          },
-        },
-        [blocksLayoutFieldname]: {
-          items: [
-            ...this.state.formData[blocksLayoutFieldname].items.slice(0, index),
-            idTrailingBlock,
-            ...this.state.formData[blocksLayoutFieldname].items.slice(index),
-          ],
-        },
-      },
-    });
-  }
-
-  /**
    * Select block handler
    * @method onSelectBlock
    * @param {string} id Id of the field
@@ -429,93 +354,6 @@ class Form extends Component {
       selected,
       multiSelected,
     });
-  }
-
-  /**
-   * Delete block handler
-   * @method onDeleteBlock
-   * @param {string} id Id of the field
-   * @param {bool} selectPrev True if previous should be selected
-   * @returns {undefined}
-   */
-  onDeleteBlock(id, selectPrev) {
-    const { settings } = config;
-    const blocksFieldname = getBlocksFieldname(this.state.formData);
-    const blocksLayoutFieldname = getBlocksLayoutFieldname(this.state.formData);
-
-    this.setState(
-      {
-        formData: {
-          ...this.state.formData,
-          [blocksLayoutFieldname]: {
-            items: without(
-              this.state.formData[blocksLayoutFieldname].items,
-              id,
-            ),
-          },
-          [blocksFieldname]: omit(this.state.formData[blocksFieldname], [id]),
-        },
-        selected: selectPrev
-          ? this.state.formData[blocksLayoutFieldname].items[
-              this.state.formData[blocksLayoutFieldname].items.indexOf(id) - 1
-            ]
-          : null,
-        multiSelected: without(this.state.multiSelected || [], id),
-      },
-      (newState) => {
-        if (this.state.formData[blocksLayoutFieldname].items.length === 0) {
-          this.onAddBlock(settings.defaultBlockType, 0);
-        }
-      },
-    );
-  }
-
-  /**
-   * Add block handler
-   * @method onAddBlock
-   * @param {string} type Type of the block
-   * @param {Number} index Index where to add the block
-   * @returns {string} Id of the block
-   */
-  onAddBlock(type, index) {
-    const { settings } = config;
-    const id = uuid();
-    const idTrailingBlock = uuid();
-    const blocksFieldname = getBlocksFieldname(this.state.formData);
-    const blocksLayoutFieldname = getBlocksLayoutFieldname(this.state.formData);
-    const totalItems = this.state.formData[blocksLayoutFieldname].items.length;
-    const insert = index === -1 ? totalItems : index;
-
-    this.setState({
-      formData: {
-        ...this.state.formData,
-        [blocksLayoutFieldname]: {
-          items: [
-            ...this.state.formData[blocksLayoutFieldname].items.slice(
-              0,
-              insert,
-            ),
-            id,
-            ...(type !== settings.defaultBlockType ? [idTrailingBlock] : []),
-            ...this.state.formData[blocksLayoutFieldname].items.slice(insert),
-          ],
-        },
-        [blocksFieldname]: {
-          ...this.state.formData[blocksFieldname],
-          [id]: {
-            '@type': type,
-          },
-          ...(type !== settings.defaultBlockType && {
-            [idTrailingBlock]: {
-              '@type': settings.defaultBlockType,
-            },
-          }),
-        },
-      },
-      selected: id,
-    });
-
-    return id;
   }
 
   /**
@@ -591,125 +429,6 @@ class Form extends Component {
       }),
     };
   };
-
-  /**
-   * Move block handler
-   * @method onMoveBlock
-   * @param {number} dragIndex Drag index.
-   * @param {number} hoverIndex Hover index.
-   * @returns {undefined}
-   */
-  onMoveBlock(dragIndex, hoverIndex) {
-    const blocksLayoutFieldname = getBlocksLayoutFieldname(this.state.formData);
-
-    this.setState({
-      formData: {
-        ...this.state.formData,
-        [blocksLayoutFieldname]: {
-          items: move(
-            this.state.formData[blocksLayoutFieldname].items,
-            dragIndex,
-            hoverIndex,
-          ),
-        },
-      },
-    });
-  }
-
-  /**
-   *
-   * @method onFocusPreviousBlock
-   * @param {string} currentBlock The id of the current block
-   * @param {node} blockNode The id of the current block
-   * @param {boolean} isMultipleSelection true if multiple blocks selected
-   * @returns {undefined}
-   */
-  onFocusPreviousBlock(currentBlock, blockNode, isMultipleSelection) {
-    const blocksLayoutFieldname = getBlocksLayoutFieldname(this.state.formData);
-    const currentIndex = this.state.formData[
-      blocksLayoutFieldname
-    ].items.indexOf(currentBlock);
-
-    if (currentIndex === 0) {
-      // We are already at the top block don't do anything
-      return;
-    }
-    const newindex = currentIndex - 1;
-    blockNode.blur();
-
-    this.onSelectBlock(
-      this.state.formData[blocksLayoutFieldname].items[newindex],
-      isMultipleSelection,
-    );
-  }
-
-  /**
-   *
-   * @method onFocusNextBlock
-   * @param {string} currentBlock The id of the current block
-   * @param {node} blockNode The id of the current block
-   * @param {boolean} isMultipleSelection true if multiple blocks selected
-   * @returns {undefined}
-   */
-  onFocusNextBlock(currentBlock, blockNode, isMultipleSelection) {
-    const blocksLayoutFieldname = getBlocksLayoutFieldname(this.state.formData);
-    const currentIndex = this.state.formData[
-      blocksLayoutFieldname
-    ].items.indexOf(currentBlock);
-
-    if (
-      currentIndex ===
-      this.state.formData[blocksLayoutFieldname].items.length - 1
-    ) {
-      // We are already at the bottom block don't do anything
-      return;
-    }
-
-    const newindex = currentIndex + 1;
-    blockNode.blur();
-
-    this.onSelectBlock(
-      this.state.formData[blocksLayoutFieldname].items[newindex],
-      isMultipleSelection,
-    );
-  }
-
-  /**
-   * handleKeyDown, sports a way to disable the listeners via an options named
-   * parameter
-   * @method handleKeyDown
-   * @param {object} e Event
-   * @param {number} index Block index
-   * @param {string} block Block type
-   * @param {node} node The block node
-   * @returns {undefined}
-   */
-  handleKeyDown(
-    e,
-    index,
-    block,
-    node,
-    {
-      disableEnter = false,
-      disableArrowUp = false,
-      disableArrowDown = false,
-    } = {},
-  ) {
-    const { settings } = config;
-    const isMultipleSelection = e.shiftKey;
-    if (e.key === 'ArrowUp' && !disableArrowUp) {
-      this.onFocusPreviousBlock(block, node, isMultipleSelection);
-      e.preventDefault();
-    }
-    if (e.key === 'ArrowDown' && !disableArrowDown) {
-      this.onFocusNextBlock(block, node, isMultipleSelection);
-      e.preventDefault();
-    }
-    if (e.key === 'Enter' && !disableEnter) {
-      this.onAddBlock(settings.defaultBlockType, index + 1);
-      e.preventDefault();
-    }
-  }
 
   /**
    * Removed blocks and blocks_layout fields from the form.
@@ -912,27 +631,16 @@ class Form extends Component {
                             >
                               <Icon name={dragSVG} size="18px" />
                             </div>
-
-                            <EditBlock
-                              id={block}
-                              index={index}
-                              type={blocksDict[block]['@type']}
+                            <BlocksForm
                               key={block}
-                              handleKeyDown={this.handleKeyDown}
-                              onAddBlock={this.onAddBlock}
-                              onChangeBlock={this.onChangeBlock}
-                              onMutateBlock={this.onMutateBlock}
+                              onChangeFormData={() =>
+                                this.props.onChangeFormData
+                              }
                               onChangeField={this.onChangeField}
-                              onDeleteBlock={this.onDeleteBlock}
                               onSelectBlock={this.onSelectBlock}
-                              onMoveBlock={this.onMoveBlock}
-                              onFocusPreviousBlock={this.onFocusPreviousBlock}
-                              onFocusNextBlock={this.onFocusNextBlock}
                               properties={formData}
-                              data={blocksDict[block]}
                               pathname={this.props.pathname}
-                              block={block}
-                              selected={this.state.selected === block}
+                              selectedBlock={this.state.selected === block}
                               multiSelected={this.state.multiSelected.includes(
                                 block,
                               )}
