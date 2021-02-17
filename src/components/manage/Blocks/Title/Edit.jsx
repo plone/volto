@@ -10,7 +10,7 @@ import { stateFromHTML } from 'draft-js-import-html';
 import { isEqual } from 'lodash';
 import { Editor, DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
 import { defineMessages, injectIntl } from 'react-intl';
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   title: {
@@ -161,7 +161,7 @@ class Edit extends Component {
           }
           this.props.onSelectBlock(
             this.props.onAddBlock(
-              settings.defaultBlockType,
+              config.settings.defaultBlockType,
               this.props.index + 1,
             ),
           );

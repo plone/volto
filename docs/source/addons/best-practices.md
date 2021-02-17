@@ -15,7 +15,7 @@ register the most basic configuration of that widget with a name that can be
 used.
 
 On more complicated cases, see if you can structure your code to use the
-`settings` registry of `~/config`, or stash your configuration in your block
+`settings` configuration registry, or stash your configuration in your block
 registration, for example.
 
 As an example: let's say we're building a Color Picker widget and we want to

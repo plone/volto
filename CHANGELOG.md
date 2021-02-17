@@ -1,6 +1,6 @@
 # Change Log
 
-## 11.1.1 (unreleased)
+## 12.0.0 (unreleased)
 
 ### Breaking
 
@@ -9,6 +9,13 @@
 ### Bugfix
 
 ### Internal
+
+## 12.0.0-alpha.0 (2021-02-17)
+
+### Breaking
+
+- Introduction of the new Volto Configuration Registry @sneridagh @tiberiuichim
+  For more information about this breaking change: https://docs.voltocms.com/upgrade-guide/#upgrading-to-volto-12xx
 
 ## 11.1.0 (2021-02-08)
 

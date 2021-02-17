@@ -4,7 +4,7 @@ import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { save, load } from 'redux-localstorage-simple';
 
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 import reducers from '~/reducers';
 
 import { api, crashReporter } from '@plone/volto/middleware';
@@ -18,7 +18,12 @@ const configureStore = (initialState, history, apiHelper) => {
         thunk,
         api(apiHelper),
         ...(__CLIENT__
-          ? [save({ states: settings.persistentReducers, debounce: 500 })]
+          ? [
+              save({
+                states: config.settings.persistentReducers,
+                debounce: 500,
+              }),
+            ]
           : []),
       ],
     ),
@@ -30,7 +35,9 @@ const configureStore = (initialState, history, apiHelper) => {
     }),
     {
       ...initialState,
-      ...(__CLIENT__ ? load({ states: settings.persistentReducers }) : {}),
+      ...(__CLIENT__
+        ? load({ states: config.settings.persistentReducers })
+        : {}),
     },
     middlewares,
   );

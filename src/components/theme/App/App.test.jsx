@@ -3,21 +3,16 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
+import config from '@plone/volto/registry';
 
 import { __test__ as App } from './App';
 
-jest.mock('~/config', () => ({
-  settings: {
-    nonContentRoutes: [],
-    supportedLanguages: ['en'],
-    navDepth: 1,
-  },
-  views: {
-    errorViews: {
-      ECONNREFUSED: () => <div className="ECONNREFUSED" />,
-    },
-  },
-}));
+beforeAll(() => {
+  config.settings.navDepth = 1;
+  config.views.errorViews = {
+    ECONNREFUSED: () => <div className="ECONNREFUSED" />,
+  };
+});
 
 const mockStore = configureStore();
 

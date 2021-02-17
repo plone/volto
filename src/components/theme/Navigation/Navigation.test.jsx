@@ -3,18 +3,16 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
+import config from '@plone/volto/registry';
 
 import Navigation from './Navigation';
 
 const mockStore = configureStore();
 
-jest.mock('~/config', () => ({
-  settings: {
-    nonContentRoutes: [],
-    supportedLanguages: ['en'],
-    navDepth: 1,
-  },
-}));
+beforeAll(() => {
+  config.settings.nonContentRoutes = [];
+  config.settings.navDepth = 1;
+});
 
 describe('Navigation', () => {
   it('renders a navigation component without active items', () => {
