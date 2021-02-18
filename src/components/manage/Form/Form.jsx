@@ -457,108 +457,6 @@ class Form extends Component {
     return newSchema;
   };
 
-  onDragEnd = (result) => {
-    const { source, destination } = result;
-    if (!destination) {
-      return;
-    }
-    const blocksLayoutFieldname = getBlocksLayoutFieldname(this.state.formData);
-    this.setState({
-      placeholderProps: {},
-    });
-    this.setState({
-      formData: {
-        ...this.state.formData,
-        [blocksLayoutFieldname]: {
-          items: move(
-            this.state.formData[blocksLayoutFieldname].items,
-            source.index,
-            destination.index,
-          ),
-        },
-      },
-    });
-  };
-
-  handleDragStart = (event) => {
-    const queryAttr = 'data-rbd-draggable-id';
-    const domQuery = `[${queryAttr}='${event.draggableId}']`;
-    const draggedDOM = document.querySelector(domQuery);
-
-    if (!draggedDOM) {
-      return;
-    }
-
-    const { clientHeight, clientWidth } = draggedDOM;
-    const sourceIndex = event.source.index;
-    var clientY =
-      parseFloat(window.getComputedStyle(draggedDOM.parentNode).paddingTop) +
-      [...draggedDOM.parentNode.children]
-        .slice(0, sourceIndex)
-        .reduce((total, curr) => {
-          const style = curr.currentStyle || window.getComputedStyle(curr);
-          const marginBottom = parseFloat(style.marginBottom);
-          return total + curr.clientHeight + marginBottom;
-        }, 0);
-
-    this.setState({
-      placeholderProps: {
-        clientHeight,
-        clientWidth,
-        clientY,
-        clientX: parseFloat(
-          window.getComputedStyle(draggedDOM.parentNode).paddingLeft,
-        ),
-      },
-    });
-  };
-
-  onDragUpdate = (update) => {
-    if (!update.destination) {
-      return;
-    }
-    const draggableId = update.draggableId;
-    const destinationIndex = update.destination.index;
-
-    const queryAttr = 'data-rbd-draggable-id';
-    const domQuery = `[${queryAttr}='${draggableId}']`;
-    const draggedDOM = document.querySelector(domQuery);
-
-    if (!draggedDOM) {
-      return;
-    }
-    const { clientHeight, clientWidth } = draggedDOM;
-    const sourceIndex = update.source.index;
-    const childrenArray = [...draggedDOM.parentNode.children];
-    const movedItem = childrenArray[sourceIndex];
-    childrenArray.splice(sourceIndex, 1);
-
-    const updatedArray = [
-      ...childrenArray.slice(0, destinationIndex),
-      movedItem,
-      ...childrenArray.slice(destinationIndex + 1),
-    ];
-
-    var clientY =
-      parseFloat(window.getComputedStyle(draggedDOM.parentNode).paddingTop) +
-      updatedArray.slice(0, destinationIndex).reduce((total, curr) => {
-        const style = curr.currentStyle || window.getComputedStyle(curr);
-        const marginBottom = parseFloat(style.marginBottom);
-        return total + curr.clientHeight + marginBottom;
-      }, 0);
-
-    this.setState({
-      placeholderProps: {
-        clientHeight,
-        clientWidth,
-        clientY,
-        clientX: parseFloat(
-          window.getComputedStyle(draggedDOM.parentNode).paddingLeft,
-        ),
-      },
-    });
-  };
-
   /**
    * Render method.
    * @method render
@@ -596,115 +494,56 @@ class Form extends Component {
             }
             onSelectBlock={this.onSelectBlock}
           />
-          <DragDropContext
-            onDragEnd={this.onDragEnd}
-            onDragStart={this.handleDragStart}
-            onDragUpdate={this.onDragUpdate}
-          >
-            <Droppable droppableId="edit-form">
-              {(provided, snapshot) => (
-                <div
-                  ref={provided.innerRef}
-                  {...provided.droppableProps}
-                  style={{ position: 'relative' }}
-                >
-                  {map(renderBlocks, (block, index) => (
-                    <Draggable draggableId={block} index={index} key={block}>
-                      {(provided) => (
-                        <div
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          className={`block-editor-${blocksDict[block]['@type']}`}
-                        >
-                          <div style={{ position: 'relative' }}>
-                            <div
-                              style={{
-                                visibility:
-                                  this.state.selected === block &&
-                                  !this.hideHandler(blocksDict[block])
-                                    ? 'visible'
-                                    : 'hidden',
-                                display: 'inline-block',
-                              }}
-                              {...provided.dragHandleProps}
-                              className="drag handle wrapper"
-                            >
-                              <Icon name={dragSVG} size="18px" />
-                            </div>
-                            <BlocksForm
-                              key={block}
-                              onChangeFormData={() =>
-                                this.props.onChangeFormData
-                              }
-                              onChangeField={this.onChangeField}
-                              onSelectBlock={this.onSelectBlock}
-                              properties={formData}
-                              pathname={this.props.pathname}
-                              selectedBlock={this.state.selected === block}
-                              multiSelected={this.state.multiSelected.includes(
-                                block,
-                              )}
-                              manage={this.props.isAdminForm}
-                              allowedBlocks={this.props.allowedBlocks}
-                              showRestricted={this.props.showRestricted}
-                            />
-                          </div>
-                        </div>
-                      )}
-                    </Draggable>
-                  ))}
-                  {provided.placeholder}
-                  {!isEmpty(placeholderProps) && (
-                    <div
-                      style={{
-                        position: 'absolute',
-                        top: `${placeholderProps.clientY}px`,
-                        height: `${placeholderProps.clientHeight + 18}px`,
-                        background: '#eee',
-                        width: `${placeholderProps.clientWidth}px`,
-                        borderRadius: '3px',
-                      }}
-                    ></div>
-                  )}
-                </div>
-              )}
-            </Droppable>
-            {this.state.isClient && (
-              <Portal
-                node={__CLIENT__ && document.getElementById('sidebar-metadata')}
+          {map(renderBlocks, (block, index) => (
+            <BlocksForm
+              key={block}
+              onChangeFormData={() => this.props.onChangeFormData}
+              onChangeField={this.onChangeField}
+              onSelectBlock={this.onSelectBlock}
+              properties={formData}
+              pathname={this.props.pathname}
+              selectedBlock={this.state.selected === block}
+              multiSelected={this.state.multiSelected.includes(block)}
+              manage={this.props.isAdminForm}
+              allowedBlocks={this.props.allowedBlocks}
+              showRestricted={this.props.showRestricted}
+            />
+          ))}
+          {this.state.isClient && (
+            <Portal
+              node={__CLIENT__ && document.getElementById('sidebar-metadata')}
+            >
+              <UiForm
+                method="post"
+                onSubmit={this.onSubmit}
+                error={keys(this.state.errors).length > 0}
               >
-                <UiForm
-                  method="post"
-                  onSubmit={this.onSubmit}
-                  error={keys(this.state.errors).length > 0}
-                >
-                  {schema &&
-                    map(schema.fieldsets, (item) => [
-                      <Segment secondary attached key={item.title}>
-                        {item.title}
-                      </Segment>,
-                      <Segment attached key={`fieldset-contents-${item.title}`}>
-                        {map(item.fields, (field, index) => (
-                          <Field
-                            {...schema.properties[field]}
-                            id={field}
-                            formData={this.state.formData}
-                            focus={false}
-                            value={this.state.formData?.[field]}
-                            required={schema.required.indexOf(field) !== -1}
-                            onChange={this.onChangeField}
-                            onBlur={this.onBlurField}
-                            onClick={this.onClickInput}
-                            key={field}
-                            error={this.state.errors[field]}
-                          />
-                        ))}
-                      </Segment>,
-                    ])}
-                </UiForm>
-              </Portal>
-            )}
-          </DragDropContext>
+                {schema &&
+                  map(schema.fieldsets, (item) => [
+                    <Segment secondary attached key={item.title}>
+                      {item.title}
+                    </Segment>,
+                    <Segment attached key={`fieldset-contents-${item.title}`}>
+                      {map(item.fields, (field, index) => (
+                        <Field
+                          {...schema.properties[field]}
+                          id={field}
+                          formData={this.state.formData}
+                          focus={false}
+                          value={this.state.formData?.[field]}
+                          required={schema.required.indexOf(field) !== -1}
+                          onChange={this.onChangeField}
+                          onBlur={this.onBlurField}
+                          onClick={this.onClickInput}
+                          key={field}
+                          error={this.state.errors[field]}
+                        />
+                      ))}
+                    </Segment>,
+                  ])}
+              </UiForm>
+            </Portal>
+          )}
         </div>
       )
     ) : (
