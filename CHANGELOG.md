@@ -22,6 +22,8 @@
 
 ### Feature
 
+- New breadcrumbs `INavigationRoot` aware for the *Home* icon. This allows inner subsites navigation and better support for multilingual sites.  @sneridagh
+
 ### Bugfix
 
 ### Internal

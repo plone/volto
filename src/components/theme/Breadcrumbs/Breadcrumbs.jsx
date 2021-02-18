@@ -42,6 +42,7 @@ class Breadcrumbs extends Component {
   static propTypes = {
     getBreadcrumbs: PropTypes.func.isRequired,
     pathname: PropTypes.string.isRequired,
+    root: PropTypes.string,
     items: PropTypes.arrayOf(
       PropTypes.shape({
         title: PropTypes.string,
@@ -88,7 +89,7 @@ class Breadcrumbs extends Component {
         <Container>
           <Breadcrumb>
             <Link
-              to="/"
+              to={this.props.root || '/'}
               className="section"
               title={this.props.intl.formatMessage(messages.home)}
             >
@@ -119,6 +120,7 @@ export default compose(
   connect(
     (state) => ({
       items: state.breadcrumbs.items,
+      root: state.breadcrumbs.root,
     }),
     { getBreadcrumbs },
   ),

@@ -74,7 +74,7 @@ mandatory until Volto 14, leaving the community time to adapt their code and pro
 
     ```json
       "peerDependencies": {
-        "@plone/volto": ">= 12.0.0"
+        "@plone/volto": ">=12.0.0"
       }
     ```
 
@@ -144,9 +144,10 @@ Remove the imports and the exports in your `src/config.js`:
 -export const addonReducers = { ...defaultAddonReducers };
 ```
 
-notice from the diff, that you must add this import at the top of the file:
+notice from the diff, that you must add this import *AFTER* all your imports:
 
 ```js
+// All your imports required for the config here BEFORE this line
 import '@plone/volto/config';
 ```
 
