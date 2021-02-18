@@ -4,16 +4,16 @@
 
 ### Added
 
-### Changes
+- Added command line option where you can specify the Volto version you want to use like: `yo @plone/volto --volto=12.0.0-alpha.0` @sneridagh
 
 ## 4.0.0-alpha.1 (2021-02-17)
 
-Released another major alpha accidentally, continuing with this major then :/
+- Released another major alpha accidentally, continuing with this major then :/
 (Volto 12.0.0 and above compatible)
 
 ### Added
 
-Add comment on where to place the project imports in `config.js` @sneridagh
+- Add comment on where to place the project imports in `config.js` @sneridagh
 
 ## 4.0.0-alpha.0 (2021-02-17)
 

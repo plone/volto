@@ -53,6 +53,12 @@ Arguments:
 
 to see a full list of options and arguments.
 
+You can provide an specific Volto version like:
+
+```
+yo @plone/volto --volto=12.0.0-alpha.0
+```
+
 You can use it in full non-interactive mode by passing something like:
 
 ```
