@@ -973,6 +973,10 @@ msgstr ""
 msgid "Item(s) pasted."
 msgstr "Item(s) geplakt."
 
+#: components/manage/Contents/Contents
+msgid "Item(s) workflow has been updated."
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 msgid "Items"
 msgstr ""
@@ -1038,6 +1042,10 @@ msgstr ""
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
+msgstr ""
+
+#: components/manage/Form/ModalForm
+msgid "Loading"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
@@ -1443,6 +1451,10 @@ msgstr ""
 #: components/manage/Contents/Contents
 msgid "Rename"
 msgstr "Naam wijzigen"
+
+#: components/manage/Contents/ContentsRenameModal
+msgid "Rename Items Loading Message"
+msgstr ""
 
 #: components/manage/Contents/ContentsRenameModal
 msgid "Rename items"
@@ -2112,6 +2124,10 @@ msgstr "Wanneer deze datum bereikt is zal de inhoud niet langer zichtbaar zijn i
 #: components/manage/History/History
 msgid "Who"
 msgstr "Wie"
+
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Workflow Change Loading Message"
+msgstr ""
 
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
