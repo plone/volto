@@ -50,7 +50,7 @@ const server = express()
     maxAge: '1m',
     setHeaders: function (res, path) {
       if (path.startsWith(process.env.RAZZLE_PUBLIC_DIR + '/static/')) {
-          // stable resources never changes. 31536000 seconds == 365 days
+          // stable resources never change. 31536000 seconds == 365 days
           res.setHeader('Cache-Control', 'public, max-age=31536000');
       }
     }    
