@@ -8,6 +8,7 @@
 
 - New breadcrumbs `INavigationRoot` aware for the *Home* icon. This allows inner subsites navigation and better support for multilingual sites.  @sneridagh
 
+- insert a dimmer with the loading message in the form when the status changes in the content folder. @martina.bustacchini
 ### Bugfix
 
 ### Internal

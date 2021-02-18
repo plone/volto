@@ -13,6 +13,8 @@ import {
   Menu,
   Message,
   Modal,
+  Dimmer,
+  Loader,
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { FormValidation } from '@plone/volto/helpers';
@@ -74,6 +76,7 @@ class ModalForm extends Component {
     open: PropTypes.bool,
     submitLabel: PropTypes.string,
     loading: PropTypes.bool,
+    loadingMessage: PropTypes.string,
     className: PropTypes.string,
   };
 
@@ -88,6 +91,7 @@ class ModalForm extends Component {
     formData: {},
     open: true,
     loading: null,
+    loadingMessage: null,
     submitError: null,
     className: null,
   };
@@ -221,7 +225,14 @@ class ModalForm extends Component {
     return (
       <Modal open={this.props.open} className={this.props.className}>
         <Header>{this.props.title}</Header>
-        <Modal.Content>
+        <Dimmer active={this.props.loading}>
+          <Loader>
+            {this.props.loadingMessage || (
+              <FormattedMessage id="Loading" defaultMessage="Loading." />
+            )}
+          </Loader>
+        </Dimmer>
+        <Modal.Content scrolling>
           <UiForm
             method="post"
             onSubmit={this.onSubmit}
