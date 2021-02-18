@@ -7,6 +7,7 @@
 ### Feature
 
 - Add `asyncConnectExtras` in `config` to extend the list of asyncConnect calls @nzambello
+- New breadcrumbs `INavigationRoot` aware for the *Home* icon. This allows inner subsites navigation and better support for multilingual sites.  @sneridagh
 
 ### Bugfix
 
