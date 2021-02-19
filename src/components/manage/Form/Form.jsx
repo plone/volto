@@ -3,28 +3,27 @@
  * @module components/manage/Form/Form
  */
 
-import { EditBlock, Field, Icon, Toast } from '@plone/volto/components';
+import { BlocksToolbar, EditBlock, Field, Icon, Toast } from '@plone/volto/components';
 import {
   blockHasValue,
   difference,
   FormValidation,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
-  messages,
+  messages
 } from '@plone/volto/helpers';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import dragSVG from '@plone/volto/icons/drag.svg';
 import {
-  findIndex,
+  cloneDeep, findIndex,
   isEmpty,
   keys,
   map,
   mapValues,
   omit,
   pickBy,
-  without,
-  cloneDeep,
+  without
 } from 'lodash';
 import move from 'lodash-move';
 import isBoolean from 'lodash/isBoolean';
@@ -33,17 +32,16 @@ import React, { Component } from 'react';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import { injectIntl } from 'react-intl';
 import { Portal } from 'react-portal';
+import { toast } from 'react-toastify';
 import {
   Button,
   Container,
   Form as UiForm,
   Message,
   Segment,
-  Tab,
+  Tab
 } from 'semantic-ui-react';
 import { v4 as uuid } from 'uuid';
-import { toast } from 'react-toastify';
-import { BlocksToolbar } from '@plone/volto/components';
 import { settings } from '~/config';
 
 /**
@@ -189,6 +187,7 @@ class Form extends Component {
     this.onAddBlock = this.onAddBlock.bind(this);
     this.onMoveBlock = this.onMoveBlock.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onCancel = this.onCancel.bind(this);
     this.onFocusPreviousBlock = this.onFocusPreviousBlock.bind(this);
     this.onFocusNextBlock = this.onFocusNextBlock.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
@@ -514,6 +513,18 @@ class Form extends Component {
     });
 
     return id;
+  }
+
+  onCancel(event) {
+    if (event) {
+      event.preventDefault();
+    }
+    if (this.props.resetAfterSubmit) {
+      this.setState({
+        formData: this.props.formData,
+      });
+    }
+    this.props.onCancel(event);
   }
 
   /**
@@ -1127,7 +1138,7 @@ class Form extends Component {
                     aria-label={this.props.intl.formatMessage(messages.cancel)}
                     title={this.props.intl.formatMessage(messages.cancel)}
                     floated="right"
-                    onClick={onCancel}
+                    onClick={this.onCancel}
                   >
                     <Icon className="circled" name={clearSVG} size="30px" />
                   </Button>

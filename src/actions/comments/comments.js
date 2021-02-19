@@ -6,8 +6,9 @@
 import {
   ADD_COMMENT,
   DELETE_COMMENT,
-  UPDATE_COMMENT,
   LIST_COMMENTS,
+  LIST_MORE_COMMENTS,
+  UPDATE_COMMENT
 } from '@plone/volto/constants/ActionTypes';
 
 /**
@@ -17,12 +18,14 @@ import {
  * @param {string} text Body of the comment.
  * @returns {Object} Add comment action.
  */
-export function addComment(url, text) {
+export function addComment(url, text, commentId) {
+  const path = commentId ? `${url}/@comments/${commentId}` : `${url}/@comments`;
+
   return {
     type: ADD_COMMENT,
     request: {
       op: 'post',
-      path: `${url}/@comments`,
+      path,
       data: { text },
     },
   };
@@ -40,6 +43,16 @@ export function listComments(url) {
     request: {
       op: 'get',
       path: `${url}/@comments`,
+    },
+  };
+}
+
+export function listMoreComments(url) {
+  return {
+    type: LIST_MORE_COMMENTS,
+    request: {
+      op: 'get',
+      path: `${url}`,
     },
   };
 }

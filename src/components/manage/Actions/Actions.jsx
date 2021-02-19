@@ -3,18 +3,18 @@
  * @module components/manage/Actions/Actions
  */
 
-import React, { Component } from 'react';
+import { copy, copyContent, cut, moveContent } from '@plone/volto/actions';
+import { ContentsRenameModal, Toast } from '@plone/volto/components';
+import { getBaseUrl } from '@plone/volto/helpers';
 import PropTypes from 'prop-types';
-import { compose } from 'redux';
+import React, { Component } from 'react';
+import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Dropdown, Icon } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
-import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
+import { compose } from 'redux';
+import { Dropdown, Icon } from 'semantic-ui-react';
 
-import { cut, copy, copyContent, moveContent } from '@plone/volto/actions';
-import { getBaseUrl } from '@plone/volto/helpers';
-import { ContentsRenameModal, Toast } from '@plone/volto/components';
 
 const messages = defineMessages({
   cut: {
