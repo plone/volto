@@ -153,7 +153,7 @@ This list is still incomplete, contributions are welcomed!
 !!! block ""
 
     A list of callables with signature `(middlewaresList) => middlewaresList`.
-    Such as callable receives the whole stack of middlewares used in Volto and
+    These callables receive the whole stack of middlewares used in Volto and
     they can add new middleware or tweak this list.
 
 ## Server-specific serverConfig
