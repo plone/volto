@@ -4,14 +4,14 @@ import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { omit } from 'lodash';
 
 import { loadLazyLibrary } from '@plone/volto/actions';
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 const validateLibs = (maybeLibs) => {
   if (Array.isArray(maybeLibs)) {
     return maybeLibs.map(validateLibs).filter((x) => !!x).length > 0;
   }
 
-  const { loadables, lazyBundles } = settings;
+  const { loadables, lazyBundles } = config.settings;
 
   return (
     Object.keys(lazyBundles).includes(maybeLibs) ||
@@ -24,7 +24,7 @@ const validateLibs = (maybeLibs) => {
  * @returns {string[]} an array of registered lib names.
  */
 const flattenLazyBundle = (maybeNames) => {
-  const { lazyBundles } = settings;
+  const { lazyBundles } = config.settings;
 
   if (!validateLibs(maybeNames)) {
     throw new Error(`Invalid lib or bundle name ${maybeNames}`);
@@ -48,7 +48,7 @@ const flattenLazyBundle = (maybeNames) => {
 export function useLazyLibs(maybeNames, options = {}) {
   const libraries = flattenLazyBundle(maybeNames);
   const { shouldRerender = true } = options;
-  const { loadables } = settings;
+  const { loadables } = config.settings;
   const dispatch = useDispatch();
 
   const globalLoadedLibraries = useSelector(

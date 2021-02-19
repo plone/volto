@@ -9,8 +9,8 @@
     "volto",
     "plone",
     "react"
-  ]
+  ],
   "scripts": {
-    "i18n": "NODE_ENV=production node src/i18n.js",
+    "i18n": "NODE_ENV=production node src/i18n.js"
   }
 }

@@ -2,7 +2,7 @@
  * Controlpanels reducer.
  * @module reducers/controlpanels/controlpanels
  */
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 import {
   GET_CONTROLPANEL,
   POST_CONTROLPANEL,
@@ -63,6 +63,7 @@ function getRequestKey(actionType) {
  * @returns {Object} New state.
  */
 export default function controlpanels(state = initialState, action = {}) {
+  const { settings } = config;
   switch (action.type) {
     case `${GET_CONTROLPANEL}_PENDING`:
     case `${LIST_CONTROLPANELS}_PENDING`:

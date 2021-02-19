@@ -2,14 +2,11 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import config from '@plone/volto/registry';
 
 import Field from './Field';
-
-jest.mock('~/config', () => ({
-  settings: {
-    apiPath: 'http://localhost:8080/Plone',
-  },
-  widgets: {
+beforeAll(() => {
+  config.widgets = {
     id: {
       schema: () => <div className="SchemaWidget" />,
       subjects: () => <div className="TokenWidget" />,
@@ -36,8 +33,8 @@ jest.mock('~/config', () => ({
       password: () => <div className="PasswordWidget" />,
     },
     default: () => <div className="TextWidget" />,
-  },
-}));
+  };
+});
 
 const mockStore = configureStore();
 

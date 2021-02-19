@@ -11,7 +11,7 @@ import { defineMessages, injectIntl } from 'react-intl';
 import { Container } from 'semantic-ui-react';
 import { Helmet } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 import { getNavigation } from '@plone/volto/actions';
 
@@ -42,6 +42,7 @@ class Sitemap extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillMount() {
+    const { settings } = config;
     if (settings.isMultilingual) {
       this.props.getNavigation(`/${this.props.lang}`, 4);
     } else {

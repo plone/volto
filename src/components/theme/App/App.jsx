@@ -15,8 +15,7 @@ import split from 'lodash/split';
 import join from 'lodash/join';
 import trim from 'lodash/trim';
 import cx from 'classnames';
-
-import { settings, views } from '~/config';
+import config from '@plone/volto/registry';
 
 import Error from '@plone/volto/error';
 
@@ -98,6 +97,7 @@ class App extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const { views } = config;
     const path = getBaseUrl(this.props.pathname);
     const action = getView(this.props.pathname);
     const isCmsUI = isCmsUi(this.props.pathname);
@@ -197,7 +197,10 @@ export default compose(
       promise: ({ location, store: { dispatch } }) =>
         __SERVER__ &&
         dispatch(
-          getNavigation(getBaseUrl(location.pathname), settings.navDepth),
+          getNavigation(
+            getBaseUrl(location.pathname),
+            config.settings.navDepth,
+          ),
         ),
     },
     {
