@@ -10,12 +10,14 @@ import { loadableReady } from '@loadable/component';
 import routes from '~/routes';
 import config from '@plone/volto/registry';
 import '~/theme';
-
 import configureStore from '@plone/volto/store';
 import { Api, persistAuthToken, ScrollToTop } from '@plone/volto/helpers';
 
 import * as Sentry from '@sentry/browser';
 import initSentry from '@plone/volto/sentry';
+
+import * as OfflinePluginRuntime from 'offline-plugin/runtime';
+OfflinePluginRuntime.install();
 
 export const history = createBrowserHistory();
 

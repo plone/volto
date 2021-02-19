@@ -98,7 +98,13 @@ const defaultModify = ({
       },
     });
     if (process.env.NODE_ENV === 'production') {
-      config.plugins.push(new OfflinePlugin());
+      config.plugins.push(
+        new OfflinePlugin({
+          ServiceWorker: {
+            minify: false,
+          },
+        }),
+      );
     }
     config.plugins.unshift(
       // restrict moment.js locales to en/de
