@@ -1,6 +1,6 @@
 # Change Log
 
-## 11.1.1 (unreleased)
+## 12.0.0 (unreleased)
 
 ### Breaking
 
@@ -8,9 +8,18 @@
 
 - service worker for caching webpack assets via offline-plugin @nileshgulia1
 
+- New breadcrumbs `INavigationRoot` aware for the *Home* icon. This allows inner subsites navigation and better support for multilingual sites.  @sneridagh
+
 ### Bugfix
 
 ### Internal
+
+## 12.0.0-alpha.0 (2021-02-17)
+
+### Breaking
+
+- Introduction of the new Volto Configuration Registry @sneridagh @tiberiuichim
+  For more information about this breaking change: https://docs.voltocms.com/upgrade-guide/#upgrading-to-volto-12xx
 
 ## 11.1.0 (2021-02-08)
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import config from '@plone/volto/registry';
 import Html from './Html';
 
 jest.mock('../Helmet/Helmet', () => ({
@@ -26,11 +27,8 @@ jest.mock('../BodyClass/BodyClass', () => ({
   rewind: () => ['class1', 'class2'],
 }));
 
-jest.mock('~/config', () => ({
-  settings: {
-    initialReducersBlacklist: ['navigation'],
-  },
-}));
+config.settings = {};
+config.settings.initialReducersBlacklist = ['navigation'];
 
 describe('Html', () => {
   it('renders a html component', () => {

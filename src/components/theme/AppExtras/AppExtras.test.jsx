@@ -1,55 +1,53 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import config from '@plone/volto/registry';
 import AppExtras from './AppExtras';
 
-jest.mock('~/config', () => ({
-  views: {},
-  settings: {
-    appExtras: [
-      {
-        match: {
-          path: '',
-        },
-        component: jest.fn((props) => (
-          <div className="everywhere">{props.pathname}</div>
-        )),
+beforeAll(() => {
+  config.settings.appExtras = [
+    {
+      match: {
+        path: '',
       },
-      {
-        match: {
-          path: '/all-blogs/*',
-        },
-        component: jest.fn((props) => (
-          <div className="blog-listing" one={props.one} three={props.three} />
-        )),
-        props: {
-          one: 'two',
-          three: 'four',
-        },
+      component: jest.fn((props) => (
+        <div className="everywhere">{props.pathname}</div>
+      )),
+    },
+    {
+      match: {
+        path: '/all-blogs/*',
       },
-      {
-        match: {
-          path: '/blog/edit',
-        },
-        component: jest.fn((props) => <div className="blog-edit" />),
+      component: jest.fn((props) => (
+        <div className="blog-listing" one={props.one} three={props.three} />
+      )),
+      props: {
+        one: 'two',
+        three: 'four',
       },
-      {
-        match: {
-          path: '/blog',
-          exact: true,
-        },
-        component: jest.fn((props) => (
-          <div className="blog-view">{JSON.stringify(props.match)}</div>
-        )),
+    },
+    {
+      match: {
+        path: '/blog/edit',
       },
-      {
-        match: '/something',
-        component: jest.fn((props) => (
-          <div className="something">{JSON.stringify(props.match)}</div>
-        )),
+      component: jest.fn((props) => <div className="blog-edit" />),
+    },
+    {
+      match: {
+        path: '/blog',
+        exact: true,
       },
-    ],
-  },
-}));
+      component: jest.fn((props) => (
+        <div className="blog-view">{JSON.stringify(props.match)}</div>
+      )),
+    },
+    {
+      match: '/something',
+      component: jest.fn((props) => (
+        <div className="something">{JSON.stringify(props.match)}</div>
+      )),
+    },
+  ];
+});
 
 describe('AppExtras', () => {
   it('renders one app extras registered on empty string', () => {
