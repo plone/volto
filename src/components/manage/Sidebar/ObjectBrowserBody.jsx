@@ -14,8 +14,8 @@ import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import { searchContent } from '@plone/volto/actions/search/search';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers/Url/Url';
+import config from '@plone/volto/registry';
 
-import { settings } from '~/config';
 import backSVG from '@plone/volto/icons/back.svg';
 import folderSVG from '@plone/volto/icons/folder.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -293,7 +293,7 @@ class ObjectBrowserBody extends Component {
       if (item.is_folderish) {
         this.navigateTo(item['@id']);
       }
-      if (settings.imageObjects.includes(item['@type'])) {
+      if (config.settings.imageObjects.includes(item['@type'])) {
         this.onSelectItem(item);
       }
     } else {
@@ -322,7 +322,7 @@ class ObjectBrowserBody extends Component {
       if (item.is_folderish) {
         this.navigateTo(item['@id']);
       }
-      if (settings.imageObjects.includes(item['@type'])) {
+      if (config.settings.imageObjects.includes(item['@type'])) {
         this.onSelectItem(item);
         this.props.closeObjectBrowser();
       }
