@@ -1,37 +1,26 @@
-/**
- * Edit block.
- * @module components/manage/Blocks/Block/Edit
+/*
+ * Customized copy of Edit block. It moves the block utilities outside of it
+ * (drag wrapper, delete button)
  */
-
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { defineMessages, injectIntl } from 'react-intl';
-import { Button } from 'semantic-ui-react';
-import includes from 'lodash/includes';
-import isBoolean from 'lodash/isBoolean';
 import cx from 'classnames';
 import { setSidebarTab } from '@plone/volto/actions';
-import config from '@plone/volto/registry';
-
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
-import Icon from '@plone/volto/components/theme/Icon/Icon';
-import trashSVG from '@plone/volto/icons/delete.svg';
 import {
   SidebarPortal,
   BlockSettingsSidebar,
   BlockSettingsSchema,
 } from '@plone/volto/components';
+import { blocks } from '~/config';
 
 const messages = defineMessages({
   unknownBlock: {
     id: 'Unknown Block',
     defaultMessage: 'Unknown Block {block}',
-  },
-  delete: {
-    id: 'delete',
-    defaultMessage: 'delete',
   },
 });
 
@@ -40,7 +29,7 @@ const messages = defineMessages({
  * @class Edit
  * @extends Component
  */
-class Edit extends Component {
+export class Edit extends React.Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -71,8 +60,7 @@ class Edit extends Component {
   componentDidMount() {
     const { type } = this.props;
     const blockHasOwnFocusManagement =
-      config.blocks.blocksConfig?.[type]?.['blockHasOwnFocusManagement'] ||
-      null;
+      blocks.blocksConfig?.[type]?.['blockHasOwnFocusManagement'] || null;
     if (
       !blockHasOwnFocusManagement &&
       this.props.selected &&
@@ -82,7 +70,7 @@ class Edit extends Component {
     }
     const tab = this.props.manage
       ? 1
-      : config.blocks.blocksConfig?.[type]?.sidebarTab || 0;
+      : blocks.blocksConfig?.[type]?.sidebarTab || 0;
     if (this.props.selected) {
       this.props.setSidebarTab(tab);
     }
@@ -91,8 +79,7 @@ class Edit extends Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
     const { selected, type } = this.props;
     const blockHasOwnFocusManagement =
-      config.blocks.blocksConfig?.[type]?.['blockHasOwnFocusManagement'] ||
-      null;
+      blocks.blocksConfig?.[type]?.['blockHasOwnFocusManagement'] || null;
     if (
       !blockHasOwnFocusManagement &&
       nextProps.selected &&
@@ -107,7 +94,7 @@ class Edit extends Component {
     ) {
       const tab = this.props.manage
         ? 1
-        : config.blocks.blocksConfig?.[nextProps.type]?.sidebarTab || 0;
+        : blocks.blocksConfig?.[nextProps.type]?.sidebarTab || 0;
       this.props.setSidebarTab(tab);
     }
   }
@@ -120,12 +107,7 @@ class Edit extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { blocks } = config;
-    const { id, type, selected } = this.props;
-    const required = isBoolean(this.props.data.required)
-      ? this.props.data.required
-      : includes(blocks.requiredBlocks, type);
-
+    const { type, intl } = this.props;
     const disableNewBlocks = this.props.data?.disableNewBlocks;
 
     let Block = blocks.blocksConfig?.[type]?.['edit'] || null;
@@ -137,76 +119,59 @@ class Edit extends Component {
     const blockHasOwnFocusManagement =
       blocks.blocksConfig?.[type]?.['blockHasOwnFocusManagement'] || null;
 
-    return (
-      <div className={`ui drag block inner ${type}`}>
-        {Block !== null ? (
-          <div
-            role="presentation"
-            onClick={(e) => {
-              const isMultipleSelection = e.shiftKey || e.ctrlKey || e.metaKey;
-              this.props.onSelectBlock(
-                this.props.id,
-                this.props.selected ? false : isMultipleSelection,
-                e,
-              );
-            }}
-            onKeyDown={
-              !(blockHasOwnFocusManagement || disableNewBlocks)
-                ? (e) =>
-                    this.props.handleKeyDown(
-                      e,
-                      this.props.index,
-                      this.props.id,
-                      this.blockNode.current,
-                    )
-                : null
-            }
-            className={cx(`block ${type}`, {
-              selected: this.props.selected || this.props.multiSelected,
-              multiSelected: this.props.multiSelected,
-            })}
-            style={{ outline: 'none' }}
-            ref={this.blockNode}
-            // The tabIndex is required for the keyboard navigation
-            /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
-            tabIndex={!blockHasOwnFocusManagement ? -1 : null}
-          >
-            <Block {...this.props} blockNode={this.blockNode} />
-            {this.props.manage && (
-              <SidebarPortal
-                selected={this.props.selected}
-                tab="sidebar-settings"
-              >
-                <BlockSettingsSidebar {...this.props} schema={schema} />
-              </SidebarPortal>
-            )}
-          </div>
-        ) : (
-          <div
-            role="presentation"
-            onClick={() => this.props.onSelectBlock(this.props.id)}
-            onKeyDown={
-              !(blockHasOwnFocusManagement || disableNewBlocks)
-                ? (e) =>
-                    this.props.handleKeyDown(
-                      e,
-                      this.props.index,
-                      this.props.id,
-                      this.blockNode.current,
-                    )
-                : null
-            }
-            className={cx(`block ${type}`, { selected: this.props.selected })}
-            style={{ outline: 'none' }}
-            ref={this.blockNode}
-            // The tabIndex is required for the keyboard navigation
-            tabIndex={-1}
-          >
-            {this.props.intl.formatMessage(messages.unknownBlock, {
-              block: type,
-            })}
-          </div>
+    return Block !== null ? (
+      <div
+        role="presentation"
+        onClick={() => this.props.onSelectBlock(this.props.id)}
+        onKeyDown={
+          !(blockHasOwnFocusManagement || disableNewBlocks)
+            ? (e) =>
+                this.props.handleKeyDown(
+                  e,
+                  this.props.index,
+                  this.props.id,
+                  this.blockNode.current,
+                )
+            : null
+        }
+        className={cx(`block ${type}`, { selected: this.props.selected })}
+        style={{ outline: 'none' }}
+        ref={this.blockNode}
+        // The tabIndex is required for the keyboard navigation
+        /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
+        tabIndex={!blockHasOwnFocusManagement ? -1 : null}
+      >
+        <Block {...this.props} blockNode={this.blockNode} />
+        {this.props.manage && (
+          <SidebarPortal selected={this.props.selected} tab="sidebar-settings">
+            <BlockSettingsSidebar {...this.props} schema={schema} />
+          </SidebarPortal>
         )}
+      </div>
+    ) : (
+      <div
+        role="presentation"
+        onClick={() => this.props.onSelectBlock(this.props.id)}
+        onKeyDown={
+          !disableNewBlocks
+            ? (e) =>
+                this.props.handleKeyDown(
+                  e,
+                  this.props.index,
+                  this.props.id,
+                  this.blockNode.current,
+                )
+            : null
+        }
+        className={cx(`block ${type}`, { selected: this.props.selected })}
+        style={{ outline: 'none' }}
+        ref={this.blockNode}
+        // The tabIndex is required for the keyboard navigation
+        tabIndex={-1}
+      >
+        {intl.formatMessage(messages.unknownBlock, {
+          block: type,
+        })}
       </div>
     );
   }

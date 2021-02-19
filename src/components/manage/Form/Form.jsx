@@ -494,21 +494,18 @@ class Form extends Component {
             }
             onSelectBlock={this.onSelectBlock}
           />
-          {map(renderBlocks, (block, index) => (
-            <BlocksForm
-              key={block}
-              onChangeFormData={() => this.props.onChangeFormData}
-              onChangeField={this.onChangeField}
-              onSelectBlock={this.onSelectBlock}
-              properties={formData}
-              pathname={this.props.pathname}
-              selectedBlock={this.state.selected === block}
-              multiSelected={this.state.multiSelected.includes(block)}
-              manage={this.props.isAdminForm}
-              allowedBlocks={this.props.allowedBlocks}
-              showRestricted={this.props.showRestricted}
-            />
-          ))}
+          <BlocksForm
+            onChangeFormData={() => this.props.onChangeFormData}
+            onChangeField={this.onChangeField}
+            onSelectBlock={this.onSelectBlock}
+            properties={formData}
+            pathname={this.props.pathname}
+            //selectedBlock={this.state.selected === block}
+            //multiSelected={this.state.multiSelected.includes(block)}
+            manage={this.props.isAdminForm}
+            allowedBlocks={this.props.allowedBlocks}
+            showRestricted={this.props.showRestricted}
+          />
           {this.state.isClient && (
             <Portal
               node={__CLIENT__ && document.getElementById('sidebar-metadata')}
