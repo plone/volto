@@ -27,6 +27,7 @@ import {
   blocksConfig,
   initialBlocks,
 } from './Blocks';
+import defaultAsyncInitialProps from './AsyncInitialProps';
 import { loadables } from './Loadables';
 
 import { sentryOptions } from './Sentry';
@@ -127,7 +128,7 @@ let config = {
     groupBlocksOrder,
     initialBlocks,
   },
-
+  asyncInitialProps: defaultAsyncInitialProps,
   addonRoutes: [],
   addonReducers: {},
 };
@@ -141,6 +142,7 @@ export const blocks = config.blocks;
 export const addonRoutes = [...config.addonRoutes];
 export const addonReducers = { ...config.addonReducers };
 export const appExtras = config.appExtras;
+export const asyncInitialProps = [...config.asyncInitialProps];
 
 ConfigRegistry.settings = settings;
 ConfigRegistry.blocks = blocks;
@@ -149,3 +151,4 @@ ConfigRegistry.widgets = widgets;
 ConfigRegistry.addonRoutes = addonRoutes;
 ConfigRegistry.addonReducers = addonReducers;
 ConfigRegistry.appExtras = appExtras;
+ConfigRegistry.asyncInitialProps = asyncInitialProps;
