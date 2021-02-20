@@ -23,7 +23,7 @@
 
 ### Internal
 
-- Upgrade plone.restapi to 7.0.0 and Plone to 5.3.3 @sneridagh
+- Upgrade plone.restapi to 7.0.0 and Plone to 5.2.3 @sneridagh
 
 ## 12.0.0-alpha.0 (2021-02-17)
 
