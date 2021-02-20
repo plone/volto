@@ -2,6 +2,10 @@
 
 ## 4.0.0 (unreleased)
 
+### Breaking
+
+- Upgrade to Volto 12.0.0 - This generator is only compatible with Volto 12 and above. @sneridagh
+
 ### Added
 
 - Added command line option where you can specify the Volto version you want to use like: `yo @plone/volto --volto=12.0.0-alpha.0` @sneridagh
