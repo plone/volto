@@ -10,8 +10,6 @@
 
 ### Bugfix
 
-- Translations german: Login/Register @ksuess
-
 ### Internal
 
 ## 12.0.0-alpha.0 (2021-02-17)
