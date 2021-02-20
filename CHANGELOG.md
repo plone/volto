@@ -1,6 +1,6 @@
 # Change Log
 
-## 12.0.0 (unreleased)
+## 12.0.0 (2021-02-20)
 
 ### Breaking
 
