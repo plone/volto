@@ -30,7 +30,7 @@ export function isPromise(obj) {
 }
 
 // options is: { location, store: { dispatch }, route, match, routes }
-const addLoader = (Component, asyncItems = []) => {
+const wrapWithDispatch = (Component, asyncItems = []) => {
   return [
     {
       key: 'voltoLoadAsyncProps',
@@ -40,16 +40,9 @@ const addLoader = (Component, asyncItems = []) => {
           location: { pathname },
         } = options;
 
-        const extenders = matchRoutes(
-          config.settings.asyncPropExtenders || [],
-          pathname,
-        );
-        const nexts = extenders.reduce(
-          (acc, extender) => extender.extend(acc),
-          asyncItems,
-        );
+        const foundAsyncItems = applyExtenders(asyncItems, pathname);
 
-        const connects = nexts.map((item) => {
+        const connects = foundAsyncItems.map((item) => {
           const { key } = item;
           if (!key) return item;
           const next = item.promise(options);
@@ -76,8 +69,7 @@ const addLoader = (Component, asyncItems = []) => {
   ];
 };
 
-const getAsyncItems = (asyncItems, state) => {
-  const { pathname } = state.router.location;
+const applyExtenders = (asyncItems, pathname) => {
   const extenders = matchRoutes(
     config.settings.asyncPropExtenders || [],
     pathname,
@@ -114,10 +106,11 @@ export function asyncConnect(
   options,
 ) {
   return (Component) => {
-    Component.reduxAsyncConnect = addLoader(Component, asyncItems);
+    Component.reduxAsyncConnect = wrapWithDispatch(Component, asyncItems);
 
     const finalMapStateToProps = (state, ownProps) => {
-      const foundAsyncItems = getAsyncItems(asyncItems, state);
+      const { pathname } = state.router.location;
+      const foundAsyncItems = applyExtenders(asyncItems, pathname);
       const mutableState = getMutableState(state);
       const asyncStateToProps = foundAsyncItems.reduce((result, { key }) => {
         if (!key) {

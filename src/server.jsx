@@ -7,7 +7,7 @@ import { Provider } from 'react-intl-redux';
 import express from 'express';
 import { renderToString } from 'react-dom/server';
 import { createMemoryHistory } from 'history';
-import { ReduxAsyncConnect } from 'redux-connect';
+import ReduxAsyncConnect from '@plone/volto/helpers/AsyncConnect/AsyncConnect';
 import { loadOnServer } from './helpers/AsyncConnect';
 import { parse as parseUrl } from 'url';
 import { keys } from 'lodash';
