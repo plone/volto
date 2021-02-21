@@ -148,6 +148,17 @@ This list is still incomplete, contributions are welcomed!
     lazy libraries (with `preloadLazyLibs`) or quickly load them with
     `injectLazyLibs`.
 
+### asyncPropsExtenders
+
+!!! block ""
+
+    Per-route customizable `asyncConnect` action dispatcher. These enable
+    proper server-side rendering of content that depends on additional async
+    props coming from backend calls. It is a list of route-like configuration
+    objects. Instead of the `component` key you should provide an `extend`
+    method with signature `asyncItems => asyncItems`, so it receives a list of
+    asyncConnect key+promise objects and returns a similar list.
+
 ## Server-specific serverConfig
 
 Settings that are relevant to the Express-powered Volto SSR server are stored

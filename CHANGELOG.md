@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Introduce `config.settings.asyncPropsExtenders` which allows customizing, per route, the `asyncConnected` actions @tiberiuichim @sneridagh
+
 ### Bugfix
 
 ### Internal
