@@ -41,13 +41,17 @@ const addLoader = (Component, asyncItems = []) => {
       promise: (options) => {
         const {
           store: { dispatch },
+          location: { pathname },
         } = options;
 
-        // TODO: don't hardcode, match router;
-        const nexts = [
-          ...config.asyncInitialProps[0].asyncProps,
-          ...asyncItems,
-        ];
+        const extenders = matchRoutes(
+          config.settings.asyncPropExtenders || [],
+          pathname,
+        );
+        const nexts = extenders.reduce(
+          (acc, extender) => extender.extend(acc),
+          asyncItems,
+        );
 
         const connects = nexts.map((item) => {
           const { key } = item;
@@ -84,10 +88,10 @@ export function asyncConnect(
   options,
 ) {
   return (Component) => {
-    Component.reduxAsyncConnect = addLoader(Component, asyncItems); //wrapWithDispatch(asyncItems);
+    Component.reduxAsyncConnect = addLoader(Component, asyncItems);
 
     const finalMapStateToProps = (state, ownProps) => {
-      const asyncItems = getAsyncItems(state);
+      const asyncItems = getAsyncItems(state); // TODO: implement this?
       const mutableState = getMutableState(state);
       const asyncStateToProps = asyncItems.reduce((result, { key }) => {
         if (!key) {

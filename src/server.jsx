@@ -8,7 +8,7 @@ import express from 'express';
 import { renderToString } from 'react-dom/server';
 import { createMemoryHistory } from 'history';
 import { ReduxAsyncConnect } from 'redux-connect';
-import { loadOnServer } from './helpers/AsyncInitialProps';
+import { loadOnServer } from './helpers/AsyncConnect';
 import { parse as parseUrl } from 'url';
 import { keys } from 'lodash';
 import cookie, { plugToRequest } from 'react-cookie';
