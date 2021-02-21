@@ -11,7 +11,7 @@ import {
   loadFail,
   beginGlobalLoad,
   endGlobalLoad,
-} from './actions';
+} from '@plone/volto/actions';
 export { loadOnServer, loadAsyncConnect } from './ssr';
 
 const identity = (arg) => arg;
