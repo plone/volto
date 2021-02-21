@@ -43,19 +43,20 @@ const EditBlockWrapper = (props) => {
         >
           <Icon name={dragSVG} size="18px" />
         </div>
-        <div className={`ui drag block inner ${type}`}>{children}</div>
-
-        {selected && !required && (
-          <Button
-            icon
-            basic
-            onClick={() => onDeleteBlock(block)}
-            className="delete-button"
-            aria-label={intl.formatMessage(messages.delete)}
-          >
-            <Icon name={trashSVG} size="18px" />
-          </Button>
-        )}
+        <div className={`ui drag block inner ${type}`}>
+          {children}
+          {selected && !required && (
+            <Button
+              icon
+              basic
+              onClick={() => onDeleteBlock(block)}
+              className="delete-button"
+              aria-label={intl.formatMessage(messages.delete)}
+            >
+              <Icon name={trashSVG} size="18px" />
+            </Button>
+          )}
+        </div>
       </div>
     </div>
   );
