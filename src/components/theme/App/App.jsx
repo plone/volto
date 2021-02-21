@@ -186,7 +186,7 @@ export default compose(
   asyncConnect([
     {
       key: 'breadcrumbs',
-      promise: ({ location, store: { dispatch }, ...rest }) =>
+      promise: ({ location, store: { dispatch } }) =>
         __SERVER__ && dispatch(getBreadcrumbs(getBaseUrl(location.pathname))),
     },
     {

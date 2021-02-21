@@ -29,10 +29,6 @@ export function isPromise(obj) {
   return typeof obj === 'object' && obj && obj.then instanceof Function;
 }
 
-const getAsyncItems = (state) => {
-  return [];
-};
-
 // options is: { location, store: { dispatch }, route, match, routes }
 const addLoader = (Component, asyncItems = []) => {
   return [
@@ -80,6 +76,20 @@ const addLoader = (Component, asyncItems = []) => {
   ];
 };
 
+const getAsyncItems = (asyncItems, state) => {
+  const { pathname } = state.router.location;
+  const extenders = matchRoutes(
+    config.settings.asyncPropExtenders || [],
+    pathname,
+  );
+  const foundAsyncItems = extenders.reduce(
+    (acc, extender) => extender.extend(acc),
+    asyncItems,
+  );
+
+  return foundAsyncItems;
+};
+
 export function asyncConnect(
   asyncItems,
   mapStateToProps,
@@ -91,9 +101,9 @@ export function asyncConnect(
     Component.reduxAsyncConnect = addLoader(Component, asyncItems);
 
     const finalMapStateToProps = (state, ownProps) => {
-      const asyncItems = getAsyncItems(state); // TODO: implement this?
+      const foundAsyncItems = getAsyncItems(asyncItems, state); // TODO: implement this?
       const mutableState = getMutableState(state);
-      const asyncStateToProps = asyncItems.reduce((result, { key }) => {
+      const asyncStateToProps = foundAsyncItems.reduce((result, { key }) => {
         if (!key) {
           return result;
         }
