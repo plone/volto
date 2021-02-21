@@ -28,13 +28,13 @@ import {
   AppExtras,
 } from '@plone/volto/components';
 import { BodyClass, getBaseUrl, getView, isCmsUi } from '@plone/volto/helpers';
-// import {
-//   getBreadcrumbs,
-//   getContent,
-//   getNavigation,
-//   getTypes,
-//   getWorkflow,
-// } from '@plone/volto/actions';
+import {
+  getBreadcrumbs,
+  getContent,
+  getNavigation,
+  getTypes,
+  getWorkflow,
+} from '@plone/volto/actions';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
 import MultilingualRedirector from '../MultilingualRedirector/MultilingualRedirector';
@@ -182,88 +182,40 @@ export const __test__ = connect(
   {},
 )(App);
 
-// function withAsyncProps(WrappedComponent) {
-//   // console.log('first', config.asyncInitialProps);
-//   // const Component = (props) => {
-//   //   const routes = config.asyncInitialProps[0].asyncProps;
-//   //   console.log('asyncprops', routes);
-//   //   const AsyncComponent = asyncConnect(routes)(WrappedComponent);
-//   //   return <AsyncComponent {...props} mymarker={true} />;
-//   // };
-//
-//   WrappedComponent.reduxAsyncConnect = wrapWithDispatch();
-//   return asyncConnect([])(WrappedComponent);
-// }
-
 export default compose(
-  asyncConnect([]),
-  // asyncConnect(
-  //   ((bla) => {
-  //     console.log(bla, config.asyncInitialProps);
-  //     return [];
-  //   })(),
-  // ),
-  // [
-  // {
-  //   promise: ({ location, store: { dispatch }, route, match, routes }) => {
-  //     return config.asyncInitialProps[0].asyncProps;
-  //   },
-  // },
-  // ...config.asyncInitialProps[0].asyncProps,
-  // {
-  //   key: 'asyncProps',
-  //   promise: (
-  //     { location, store: { dispatch }, route, match, routes },
-  //     ...rest
-  //   ) => {
-  //     console.log('props promise', config.asyncInitialProps);
-  //     const promises = config.asyncInitialProps[0].asyncProps;
-  //
-  //     return Promise.resolve('bla');
-  //     // return new Promise((aa) => {
-  //     //   console.log('from inside', aa);
-  //     //   dispatch(getBreadcrumbs(getBaseUrl(location.pathname)));
-  //     //   // return Promise.resolve('hello');
-  //     // });
-  //   },
-  // },
-  // {
-  //   key: 'breadcrumbs',
-  //   promise: ({ location, store: { dispatch }, ...rest }) => {
-  //     console.log('bread', rest);
-  //     return (
-  //       __SERVER__ && dispatch(getBreadcrumbs(getBaseUrl(location.pathname)))
-  //     );
-  //   },
-  // },
-  // {
-  //   key: 'content',
-  //   promise: ({ location, store: { dispatch } }) =>
-  //     __SERVER__ && dispatch(getContent(getBaseUrl(location.pathname))),
-  // },
-  // {
-  //   key: 'navigation',
-  //   promise: ({ location, store: { dispatch } }) =>
-  //     __SERVER__ &&
-  //     dispatch(
-  //       getNavigation(
-  //         getBaseUrl(location.pathname),
-  //         config.settings.navDepth,
-  //       ),
-  //     ),
-  // },
-  // {
-  //   key: 'types',
-  //   promise: ({ location, store: { dispatch } }) =>
-  //     __SERVER__ && dispatch(getTypes(getBaseUrl(location.pathname))),
-  // },
-  // {
-  //   key: 'workflow',
-  //   promise: ({ location, store: { dispatch } }) =>
-  //     __SERVER__ && dispatch(getWorkflow(getBaseUrl(location.pathname))),
-  // },
-  // ...(config.asyncConnectExtras || []),
-  // ]
+  asyncConnect([
+    {
+      key: 'breadcrumbs',
+      promise: ({ location, store: { dispatch }, ...rest }) =>
+        __SERVER__ && dispatch(getBreadcrumbs(getBaseUrl(location.pathname))),
+    },
+    {
+      key: 'content',
+      promise: ({ location, store: { dispatch } }) =>
+        __SERVER__ && dispatch(getContent(getBaseUrl(location.pathname))),
+    },
+    {
+      key: 'navigation',
+      promise: ({ location, store: { dispatch } }) =>
+        __SERVER__ &&
+        dispatch(
+          getNavigation(
+            getBaseUrl(location.pathname),
+            config.settings.navDepth,
+          ),
+        ),
+    },
+    {
+      key: 'types',
+      promise: ({ location, store: { dispatch } }) =>
+        __SERVER__ && dispatch(getTypes(getBaseUrl(location.pathname))),
+    },
+    {
+      key: 'workflow',
+      promise: ({ location, store: { dispatch } }) =>
+        __SERVER__ && dispatch(getWorkflow(getBaseUrl(location.pathname))),
+    },
+  ]),
   connect(
     (state, props) => ({
       pathname: props.location.pathname,

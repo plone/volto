@@ -34,7 +34,7 @@ const getAsyncItems = (state) => {
 };
 
 // options is: { location, store: { dispatch }, route, match, routes }
-const addLoader = (Component) => {
+const addLoader = (Component, asyncItems = []) => {
   return [
     {
       key: 'voltoLoadAsyncProps',
@@ -44,7 +44,10 @@ const addLoader = (Component) => {
         } = options;
 
         // TODO: don't hardcode, match router;
-        const nexts = config.asyncInitialProps[0].asyncProps;
+        const nexts = [
+          ...config.asyncInitialProps[0].asyncProps,
+          ...asyncItems,
+        ];
 
         const connects = nexts.map((item) => {
           const { key } = item;
@@ -74,14 +77,14 @@ const addLoader = (Component) => {
 };
 
 export function asyncConnect(
-  // asyncItems,    // TODO: support classic asyncConnect api
+  asyncItems,
   mapStateToProps,
   mapDispatchToProps,
   mergeProps,
   options,
 ) {
   return (Component) => {
-    Component.reduxAsyncConnect = addLoader(Component); //wrapWithDispatch(asyncItems);
+    Component.reduxAsyncConnect = addLoader(Component, asyncItems); //wrapWithDispatch(asyncItems);
 
     const finalMapStateToProps = (state, ownProps) => {
       const asyncItems = getAsyncItems(state);
