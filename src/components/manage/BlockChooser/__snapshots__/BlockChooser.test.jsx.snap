@@ -9,6 +9,7 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
       class="accordion ui fluid styled form"
     >
       <div
+        aria-label="Fold Most used blocks"
         class="active title"
       >
         Most used
@@ -77,6 +78,7 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
         </div>
       </div>
       <div
+        aria-label="Unfold Text blocks"
         class="title"
       >
         Text
@@ -119,6 +121,7 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
         </div>
       </div>
       <div
+        aria-label="Unfold Media blocks"
         class="title"
       >
         Media
@@ -187,6 +190,7 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
         </div>
       </div>
       <div
+        aria-label="Unfold Common blocks"
         class="title"
       >
         Common

@@ -19,6 +19,7 @@ Array [
           >
             <label
               htmlFor="field-linkTitle"
+              id="fieldset-undefined-field-label-linkTitle"
             >
               Link Title
             </label>
@@ -63,6 +64,7 @@ Array [
           >
             <label
               htmlFor="field-linkHref"
+              id="fieldset-undefined-field-label-linkHref"
             >
               Link to
             </label>
