@@ -3,13 +3,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Route } from 'react-router';
 import { renderRoutes } from 'react-router-config';
-import { connect, ReactReduxContext } from 'react-redux';
-import { withRouter } from 'react-router';
+import { ReactReduxContext } from 'react-redux';
 import {
   loadAsyncConnect,
   getMutableState,
-  beginGlobalLoad,
-  endGlobalLoad,
 } from '@plone/volto/helpers/AsyncConnect';
 
 export class AsyncConnect extends Component {
@@ -140,8 +137,3 @@ export const AsyncConnectWithContext = ({ context, ...otherProps }) => {
 AsyncConnectWithContext.propTypes = {
   context: PropTypes.object,
 };
-
-export default connect(null, {
-  beginGlobalLoad,
-  endGlobalLoad,
-})(withRouter(AsyncConnectWithContext));

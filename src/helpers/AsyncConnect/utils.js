@@ -1,3 +1,7 @@
+export function isPromise(obj) {
+  return typeof obj === 'object' && obj && obj.then instanceof Function;
+}
+
 export const mapSeries =
   Promise.mapSeries ||
   function promiseMapSeries(iterable, iterator) {

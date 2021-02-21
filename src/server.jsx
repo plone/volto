@@ -7,8 +7,6 @@ import { Provider } from 'react-intl-redux';
 import express from 'express';
 import { renderToString } from 'react-dom/server';
 import { createMemoryHistory } from 'history';
-import ReduxAsyncConnect from '@plone/volto/helpers/AsyncConnect/AsyncConnect';
-import { loadOnServer } from './helpers/AsyncConnect';
 import { parse as parseUrl } from 'url';
 import { keys } from 'lodash';
 import cookie, { plugToRequest } from 'react-cookie';
@@ -34,6 +32,7 @@ import ErrorPage from '@plone/volto/error';
 import languages from '@plone/volto/constants/Languages';
 
 import configureStore from '@plone/volto/store';
+import ReduxAsyncConnect, { loadOnServer } from './helpers/AsyncConnect';
 
 let locales = {};
 
