@@ -103,8 +103,6 @@ class App extends Component {
     const isCmsUI = isCmsUi(this.props.pathname);
     const ConnectionRefusedView = views.errorViews.ECONNREFUSED;
 
-    // console.log('app props', this.props);
-
     return (
       <Fragment>
         <BodyClass className={`view-${action}view`} />
