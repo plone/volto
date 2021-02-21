@@ -133,7 +133,7 @@ export function asyncConnect(
   };
 }
 
-export default connect(null, {
+export const ReduxAsyncConnect = connect(null, {
   beginGlobalLoad,
   endGlobalLoad,
 })(withRouter(AsyncConnectWithContext));

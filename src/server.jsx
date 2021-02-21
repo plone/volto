@@ -32,7 +32,7 @@ import ErrorPage from '@plone/volto/error';
 import languages from '@plone/volto/constants/Languages';
 
 import configureStore from '@plone/volto/store';
-import ReduxAsyncConnect, { loadOnServer } from './helpers/AsyncConnect';
+import { ReduxAsyncConnect, loadOnServer } from './helpers/AsyncConnect';
 
 let locales = {};
 
