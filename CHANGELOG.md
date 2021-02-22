@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Adapt to BlocksForm in Blocks Engine @nileshgulia1
+
 ### Internal
 
 ## 12.0.0-alpha.0 (2021-02-17)
