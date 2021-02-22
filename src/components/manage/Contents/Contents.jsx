@@ -152,8 +152,8 @@ const messages = defineMessages({
     defaultMessage: 'Item(s) pasted.',
   },
   messageWorkflowUpdate: {
-    id: 'Item(s) workflow has been updated.',
-    defaultMessage: 'Item(s) workflow has been updated.',
+    id: 'Item(s) state has been updated.',
+    defaultMessage: 'Item(s) state has been updated.',
   },
   paste: {
     id: 'Paste',

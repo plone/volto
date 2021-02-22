@@ -962,7 +962,7 @@ msgid "Item(s) pasted."
 msgstr "Elementuak ondo itsatsi dira."
 
 #: components/manage/Contents/Contents
-msgid "Item(s) workflow has been updated."
+msgid "Item(s) state has been updated."
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes

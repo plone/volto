@@ -965,7 +965,7 @@ msgid "Item(s) pasted."
 msgstr "Elemento(s) pegado(s)."
 
 #: components/manage/Contents/Contents
-msgid "Item(s) workflow has been updated."
+msgid "Item(s) state has been updated."
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes

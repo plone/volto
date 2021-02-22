@@ -955,8 +955,8 @@ msgid "Item(s) pasted."
 msgstr "Elemento/i incollato/i."
 
 #: components/manage/Contents/Contents
-msgid "Item(s) workflow has been updated."
-msgstr ""
+msgid "Item(s) state has been updated."
+msgstr "Stato/i aggiornato/i"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Items"
@@ -1027,7 +1027,7 @@ msgstr "Elenco"
 
 #: components/manage/Form/ModalForm
 msgid "Loading"
-msgstr ""
+msgstr "Caricamento"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Location"
@@ -1435,7 +1435,7 @@ msgstr "Rinomina"
 
 #: components/manage/Contents/ContentsRenameModal
 msgid "Rename Items Loading Message"
-msgstr ""
+msgstr "Aggiornando gli elementi..."
 
 #: components/manage/Contents/ContentsRenameModal
 msgid "Rename items"
@@ -2108,7 +2108,7 @@ msgstr "Chi"
 
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Workflow Change Loading Message"
-msgstr ""
+msgstr "Aggiornando gli stati..."
 
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
