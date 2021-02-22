@@ -15,7 +15,7 @@ import {
   BlockSettingsSidebar,
   BlockSettingsSchema,
 } from '@plone/volto/components';
-import { blocks } from '~/config';
+import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   unknownBlock: {
@@ -58,6 +58,7 @@ export class Edit extends React.Component {
   };
 
   componentDidMount() {
+    const { blocks } = config;
     const { type } = this.props;
     const blockHasOwnFocusManagement =
       blocks.blocksConfig?.[type]?.['blockHasOwnFocusManagement'] || null;
@@ -77,6 +78,7 @@ export class Edit extends React.Component {
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
+    const { blocks } = config;
     const { selected, type } = this.props;
     const blockHasOwnFocusManagement =
       blocks.blocksConfig?.[type]?.['blockHasOwnFocusManagement'] || null;
@@ -107,6 +109,7 @@ export class Edit extends React.Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const { blocks } = config;
     const { type, intl } = this.props;
     const disableNewBlocks = this.props.data?.disableNewBlocks;
 
