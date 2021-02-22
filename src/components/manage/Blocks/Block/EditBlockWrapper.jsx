@@ -18,9 +18,13 @@ const messages = defineMessages({
 });
 
 const EditBlockWrapper = (props) => {
+  const hideHandler = (data) => {
+    return !!data.fixed || !blockHasValue(data);
+  };
+
   const { intl, blockProps, draginfo, children } = props;
   const { block, selected, type, onDeleteBlock, data } = blockProps;
-  const visible = selected && blockHasValue(data) && !data?.fixed;
+  const visible = selected && !hideHandler(data);
 
   const required = isBoolean(data.required)
     ? data.required

@@ -3,15 +3,8 @@
  * @module components/manage/Form/Form
  */
 
+import { BlocksForm, Field, Icon, Toast } from '@plone/volto/components';
 import {
-  BlocksForm,
-  Field,
-  Icon,
-  Toast,
-  EditBlock,
-} from '@plone/volto/components';
-import {
-  blockHasValue,
   difference,
   FormValidation,
   getBlocksFieldname,
@@ -20,23 +13,19 @@ import {
 } from '@plone/volto/helpers';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
-import dragSVG from '@plone/volto/icons/drag.svg';
 import {
   findIndex,
   isEmpty,
   keys,
   map,
   mapValues,
-  omit,
   pickBy,
   without,
   cloneDeep,
 } from 'lodash';
-import move from 'lodash-move';
 import isBoolean from 'lodash/isBoolean';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import { injectIntl } from 'react-intl';
 import { Portal } from 'react-portal';
 import {
@@ -184,7 +173,6 @@ class Form extends Component {
           ? formData[blocksLayoutFieldname].items[0]
           : null,
       multiSelected: [],
-      placeholderProps: {},
       isClient: false,
     };
     this.onChangeField = this.onChangeField.bind(this);
@@ -300,10 +288,6 @@ class Form extends Component {
       };
     });
   }
-
-  hideHandler = (data) => {
-    return !!data.fixed || !blockHasValue(data);
-  };
 
   /**
    * Select block handler
@@ -465,11 +449,7 @@ class Form extends Component {
   render() {
     const { settings } = config;
     const { schema: originalSchema, onCancel, onSubmit } = this.props;
-    const { formData, placeholderProps } = this.state;
-    const blocksFieldname = getBlocksFieldname(formData);
-    const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
-    const renderBlocks = formData?.[blocksLayoutFieldname]?.items;
-    const blocksDict = formData?.[blocksFieldname];
+    const { formData } = this.state;
     const schema = this.removeBlocksLayoutFields(originalSchema);
 
     return this.props.visual ? (
@@ -495,7 +475,11 @@ class Form extends Component {
             onSelectBlock={this.onSelectBlock}
           />
           <BlocksForm
-            onChangeFormData={() => this.props.onChangeFormData}
+            onChangeFormData={(newFormData) =>
+              this.setState({
+                formData: newFormData,
+              })
+            }
             onChangeField={this.onChangeField}
             onSelectBlock={this.onSelectBlock}
             properties={formData}
