@@ -1,6 +1,6 @@
 # Change Log
 
-## 12.0.0 (unreleased)
+## 12.0.1 (unreleased)
 
 ### Breaking
 
@@ -12,6 +12,21 @@
 ### Bugfix
 
 ### Internal
+
+## 12.0.0 (2021-02-20)
+
+### Breaking
+
+- Introduction of the new Volto Configuration Registry @sneridagh @tiberiuichim
+  For more information about this breaking change: https://docs.voltocms.com/upgrade-guide/#upgrading-to-volto-12xx
+
+### Feature
+
+- New breadcrumbs `INavigationRoot` aware for the *Home* icon. This allows inner subsites navigation and better support for multilingual sites.  @sneridagh
+
+### Internal
+
+- Upgrade plone.restapi to 7.0.0 and Plone to 5.2.3 @sneridagh
 
 ## 12.0.0-alpha.0 (2021-02-17)
 
