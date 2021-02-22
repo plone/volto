@@ -14,12 +14,6 @@ import {
 } from '@plone/volto/actions';
 export { loadOnServer, loadAsyncConnect } from './ssr';
 
-const identity = (arg) => arg;
-let immutableStateFunc = identity;
-let mutableStateFunc = identity;
-export const getImmutableState = (state) => immutableStateFunc(state);
-export const getMutableState = (state) => mutableStateFunc(state);
-
 // options is: { location, store: { dispatch }, route, match, routes }
 const wrapWithDispatch = (Component, asyncItems = []) => {
   return [
@@ -102,7 +96,6 @@ export function asyncConnect(
     const finalMapStateToProps = (state, ownProps) => {
       const { pathname } = state.router.location;
       const foundAsyncItems = applyExtenders(asyncItems, pathname);
-      const mutableState = getMutableState(state);
       const asyncStateToProps = foundAsyncItems.reduce((result, { key }) => {
         if (!key) {
           return result;
@@ -110,7 +103,7 @@ export function asyncConnect(
 
         return {
           ...result,
-          [key]: mutableState.reduxAsyncConnect[key],
+          [key]: state.reduxAsyncConnect[key],
         };
       }, {});
 
@@ -119,7 +112,7 @@ export function asyncConnect(
       }
 
       return {
-        ...mapStateToProps(getImmutableState(mutableState), ownProps),
+        ...mapStateToProps(state, ownProps),
         ...asyncStateToProps,
       };
     };
