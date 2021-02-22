@@ -155,9 +155,25 @@ This list is still incomplete, contributions are welcomed!
     Per-route customizable `asyncConnect` action dispatcher. These enable
     proper server-side rendering of content that depends on additional async
     props coming from backend calls. It is a list of route-like configuration
-    objects. Instead of the `component` key you should provide an `extend`
+    objects (they are matched using
+    [matchRoutes](https://github.com/ReactTraining/react-router/blob/ea44618e68f6a112e48404b2ea0da3e207daf4f0/packages/react-router-config/modules/matchRoutes.js).
+    Instead of the `component` key you should provide an `extend`
     method with signature `asyncItems => asyncItems`, so it receives a list of
-    asyncConnect key+promise objects and returns a similar list.
+    asyncConnect "prop" objects and returns a similar list. You can add
+    new asyncConnected props as well as removing them, so you could, for
+    example, have something like this to exclude the breadcrumbs from being
+    requested:
+
+```
+config.settings.asyncPropsExtenders = [
+  ...config.settings.asyncPropsExtenders,
+  {
+    path: '/',
+    extend: (dispatchActions) => dispatchActions.filter(asyncAction=> asyncAction.key !== 'breadcrumb')
+  }
+]
+
+```
 
 ## Server-specific serverConfig
 
