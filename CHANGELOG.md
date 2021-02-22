@@ -12,6 +12,8 @@
 
 ### Internal
 
+- Fork redux-connect code in `src/helpers/AsyncConnect`, to allow mixing in config-based asyncConnects. Provide a webpack alias that overloads the redux-connect imports. @tiberiuichim
+
 ## 12.0.0 (2021-02-20)
 
 ### Breaking
