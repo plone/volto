@@ -69,6 +69,11 @@ module.exports = class extends Generator {
       type: String,
       default: currentDir,
     });
+    this.option('volto', {
+      type: String,
+      desc:
+        'Desired Volto version, if not provided, the most recent will be used',
+    });
     this.option('interactive', {
       type: Boolean,
       desc: 'Enable/disable interactive prompt',
@@ -117,13 +122,19 @@ It's important to have the generators updated!
 Run "npm install -g @plone/generator-volto" to update.`,
     });
 
-    this.log(chalk.red('Getting latest Volto version'));
-    const voltoVersion = await utils.getLatestVoltoVersion();
+    let voltoVersion;
+    if (this.opts.volto) {
+      voltoVersion = this.opts.volto;
+      this.log(`Using chosen Volto version: ${voltoVersion}`);
+    } else {
+      this.log(chalk.red('Getting latest Volto version'));
+      voltoVersion = await utils.getLatestVoltoVersion();
+      this.log(`Using latest released Volto version: ${voltoVersion}`);
+    }
 
     this.log(chalk.red("Retrieving Volto's yarn.lock"));
     this.voltoYarnLock = await utils.getVoltoYarnLock(voltoVersion);
 
-    this.log(`Using latest released Volto version: ${voltoVersion}`);
     this.globals = {
       addons: [],
       voltoVersion,
