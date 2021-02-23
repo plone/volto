@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { IntlProvider } from 'react-intl-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
-import { ReduxAsyncConnect } from 'redux-connect';
+import { ReduxAsyncConnect } from '@plone/volto/helpers/AsyncConnect';
 import { loadableReady } from '@loadable/component';
 import routes from '~/routes';
 import config from '@plone/volto/registry';

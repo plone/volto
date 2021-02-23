@@ -1,6 +1,16 @@
 # Change Log
 
-## 4.0.0 (unreleased)
+## 4.0.1 (unreleased)
+
+### Added
+
+### Changes
+
+## 4.0.0 (2021-02-20)
+
+### Breaking
+
+- Upgrade to Volto 12.0.0 - This generator is only compatible with Volto 12 and above. @sneridagh
 
 ### Added
 

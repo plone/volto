@@ -92,6 +92,7 @@ let config = {
     verticalFormTabs: false,
     persistentReducers: ['blocksClipboard'],
     initialReducersBlacklist: [], // reducers in this list won't be hydrated in windows.__data
+    asyncPropsExtenders: [], // per route asyncConnect customizers
     sentryOptions: {
       ...sentryOptions,
     },
@@ -128,7 +129,6 @@ let config = {
     groupBlocksOrder,
     initialBlocks,
   },
-
   addonRoutes: [],
   addonReducers: {},
 };
