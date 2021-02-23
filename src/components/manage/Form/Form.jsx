@@ -525,10 +525,12 @@ class Form extends Component {
   }
 
   /**
-   * will prevent event from triggering submit
-   * will reset form if props.resetAfterSubmit
-   * will call the props.onCancel
-   * @param {Object} event
+   * Cancel handler
+   * It prevents event from triggering submit, reset form if props.resetAfterSubmit
+   * and calls this.props.onCancel
+   * @method onCancel
+   * @param {Object} event Event object.
+   * @returns {undefined}
    */
   onCancel(event) {
     if (event) {
