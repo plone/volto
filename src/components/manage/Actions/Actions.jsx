@@ -15,7 +15,6 @@ import { toast } from 'react-toastify';
 import { compose } from 'redux';
 import { Dropdown, Icon } from 'semantic-ui-react';
 
-
 const messages = defineMessages({
   cut: {
     id: 'Cut',

@@ -8,7 +8,7 @@ import {
   DELETE_COMMENT,
   LIST_COMMENTS,
   LIST_MORE_COMMENTS,
-  UPDATE_COMMENT
+  UPDATE_COMMENT,
 } from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
@@ -73,7 +73,7 @@ export default function comments(state = initialState, action = {}) {
       return {
         ...state,
         items: action.result.items,
-        next: action.result.batching.next,
+        next: action.result.batching?.next,
         items_total: action.result.items_total,
         [getRequestKey(action.type)]: {
           loading: false,
@@ -85,7 +85,7 @@ export default function comments(state = initialState, action = {}) {
       return {
         ...state,
         items: [...state.items, ...action.result.items],
-        next: action.result.batching.next,
+        next: action.result.batching?.next,
         [getRequestKey(action.type)]: {
           loading: false,
           loaded: true,

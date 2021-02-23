@@ -338,6 +338,10 @@ msgstr "コメント"
 msgid "Commenter"
 msgstr "投稿者"
 
+#: components/theme/Comments/Comments
+msgid "Comments"
+msgstr ""
+
 #: components/manage/Diff/Diff
 msgid "Compare"
 msgstr "比較"
@@ -824,6 +828,10 @@ msgstr "グループ"
 msgid "Header cell"
 msgstr ""
 
+#: components/theme/Comments/Comments
+msgid "Hide Replies"
+msgstr ""
+
 #: components/manage/History/History
 #: components/manage/Toolbar/More
 msgid "History"
@@ -1027,6 +1035,10 @@ msgstr "リンク先"
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
 msgstr "リスティング"
+
+#: components/theme/Comments/Comments
+msgid "Load more"
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Location"
@@ -1452,6 +1464,10 @@ msgstr "日または曜日"
 msgid "Replace existing file"
 msgstr ""
 
+#: components/theme/Comments/Comments
+msgid "Reply"
+msgstr ""
+
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -1647,6 +1663,10 @@ msgstr "表示件数"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Show All"
+msgstr ""
+
+#: components/theme/Comments/Comments
+msgid "Show Replies"
 msgstr ""
 
 #: components/manage/Sidebar/Sidebar
@@ -2539,7 +2559,3 @@ msgstr "「{title}」をカットしました。"
 #: components/manage/Actions/Actions
 msgid "{title} has been deleted."
 msgstr "「{title}」を削除しました。"
-
-#: components/theme/Comments/Comments
-msgid "{user} says:"
-msgstr "{user} :"
