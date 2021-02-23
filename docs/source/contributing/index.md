@@ -1,8 +1,7 @@
 # Basic design principles
 
 Since the very beginning, Volto has been developed with a set of principles in mind,
-brought from the years of experience developing [Plone](https://plone.org "Link to website of Plone") core and implementing projects on
-it.
+brought from the years of experience developing [Plone](https://plone.org "Link to website of Plone") core and implementing projects on it.
 
 - Approachability
 - Developer experience first
@@ -92,7 +91,8 @@ decisions and answer questions like:
 ## Focus on the UI/UX implementation and upcoming challenges
 
 Volto is a frontend UI implementation of a CMS backend.
-We need to focus on this instead of focusing on the relationship with the backend(s). JavaScriot world advances quick,
-and we have to keep pace with it.
+We need to focus on this instead of focusing on the relationship with the backend(s).
+JavaScript world advances quick, and we have to keep pace with it.
+
 React's own async (Suspense) mode it's on its way, and that will change enough
 things in React world and we have to keep up with these changes.
