@@ -317,34 +317,31 @@ class Comments extends Component {
     // each iteration will show replies to the specific comment using allCommentsWithCildren
     const commentElement = (comment) => (
       <Comment key={comment.comment_id}>
-        <Comment.Avatar
-          className="circular"
-          color="teal"
-          src={
-            comment.author_image || (
-              // makes an avatar with a color and initials from name, all colours will be different
-              <svg width="30" height="30">
-                <circle
-                  cx="15"
-                  cy="15"
-                  r="15"
-                  fill={getUserColor(comment.author_username)}
-                />
-                <text
-                  x="50%"
-                  y="50%"
-                  textAnchor="middle"
-                  fill="white"
-                  fontSize="15px"
-                  fontFamily="Arial"
-                  dy=".3em"
-                >
-                  {getInitialsFromName(comment.author_name)}
-                </text>
-              </svg>
-            )
-          }
-        ></Comment.Avatar>
+        <div className="avatar circular">
+          {comment.author_image ? (
+            <img src={comment.author_image} alt="user avatar"></img>
+          ) : (
+            <svg width="30" height="30">
+              <circle
+                cx="15"
+                cy="15"
+                r="15"
+                fill={getUserColor(comment.author_username)}
+              />
+              <text
+                x="50%"
+                y="50%"
+                textAnchor="middle"
+                fill="white"
+                fontSize="15px"
+                fontFamily="Arial"
+                dy=".3em"
+              >
+                {getInitialsFromName(comment.author_name)}
+              </text>
+            </svg>
+          )}
+        </div>
         <Comment.Content>
           <Comment.Author>{comment.author_name}</Comment.Author>
           <Comment.Metadata>

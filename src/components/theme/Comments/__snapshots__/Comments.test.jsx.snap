@@ -97,7 +97,6 @@ exports[`Comments renders a comments component 1`] = `
     >
       <div
         className="avatar circular"
-        color="teal"
       >
         <svg
           height="30"
