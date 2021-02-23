@@ -97,16 +97,17 @@ exports[`Comments renders a comments component 1`] = `
     >
       <div
         className="avatar circular"
+        title="admin"
       >
         <svg
-          height="30"
-          width="30"
+          height={30}
+          width={30}
         >
           <circle
-            cx="15"
-            cy="15"
-            fill="purple"
-            r="15"
+            cx={15}
+            cy={15}
+            fill="Teal"
+            r={15}
           />
           <text
             dy=".3em"
@@ -188,7 +189,7 @@ exports[`Comments renders a comments component 1`] = `
           />
         </div>
         <div
-          id="reply-place-undefined"
+          id="reply-place-1614094601171408"
         />
       </div>
     </div>

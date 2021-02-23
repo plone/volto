@@ -47,8 +47,8 @@ export {
 export {
   applyConfig,
   difference,
-  getInitialsFromName,
-  getUserColor,
+  getInitials,
+  getColor,
   safeWrapper,
   withServerErrorCode,
 } from '@plone/volto/helpers/Utils/Utils';

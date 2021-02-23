@@ -9,12 +9,8 @@ import {
   listComments,
   listMoreComments,
 } from '@plone/volto/actions';
-import { CommentEditModal, Form } from '@plone/volto/components';
-import {
-  getBaseUrl,
-  getInitialsFromName,
-  getUserColor,
-} from '@plone/volto/helpers';
+import { Avatar, CommentEditModal, Form } from '@plone/volto/components';
+import { getBaseUrl, getColor } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 import moment from 'moment';
 import PropTypes from 'prop-types';
@@ -317,31 +313,11 @@ class Comments extends Component {
     // each iteration will show replies to the specific comment using allCommentsWithCildren
     const commentElement = (comment) => (
       <Comment key={comment.comment_id}>
-        <div className="avatar circular">
-          {comment.author_image ? (
-            <img src={comment.author_image} alt="user avatar"></img>
-          ) : (
-            <svg width="30" height="30">
-              <circle
-                cx="15"
-                cy="15"
-                r="15"
-                fill={getUserColor(comment.author_username)}
-              />
-              <text
-                x="50%"
-                y="50%"
-                textAnchor="middle"
-                fill="white"
-                fontSize="15px"
-                fontFamily="Arial"
-                dy=".3em"
-              >
-                {getInitialsFromName(comment.author_name)}
-              </text>
-            </svg>
-          )}
-        </div>
+        <Avatar
+          src={comment.author_image}
+          title={comment.author_name}
+          color={getColor(comment.author_username)}
+        />
         <Comment.Content>
           <Comment.Author>{comment.author_name}</Comment.Author>
           <Comment.Metadata>
