@@ -10,7 +10,11 @@ import {
   listMoreComments
 } from '@plone/volto/actions';
 import { CommentEditModal, Form } from '@plone/volto/components';
-import { getBaseUrl } from '@plone/volto/helpers';
+import {
+  getBaseUrl,
+  getInitialsFromName,
+  getUserColor
+} from '@plone/volto/helpers';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
@@ -20,50 +24,6 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Button, Comment, Container, Icon } from 'semantic-ui-react';
 import { settings } from '~/config';
-
-// import {
-//   Button,
-//   Container,
-//   Grid,
-//   Icon,
-//   Label,
-//   Segment,
-// Header,
-// Comment
-// } from 'semantic-ui-react';
-
-const colors = [
-  'red',
-  'orange',
-  'yellow',
-  'olive',
-  'green',
-  'teal',
-  'pink',
-  'blue',
-  'violet',
-  'purple',
-];
-const userColors = {};
-
-const getInitialsFromName = (name) =>
-  name
-    .split(' ')
-    .map((n) => n[0].toUpperCase())
-    .join('');
-
-const getUserColor = (userId) => {
-  const userColor = userColors[userId]
-    ? userColors[userId]
-    : colors.length > 0
-    ? colors.pop()
-    : `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-  if (!userColors[userId]) {
-    userColors[userId] = userColor;
-  }
-
-  return userColor;
-};
 
 const messages = defineMessages({
   comment: {
@@ -104,8 +64,15 @@ const messages = defineMessages({
     id: 'Show Replies',
     defaultMessage: 'Show Replies',
   },
+  loadMoreComments: {
+    id: 'Load more',
+    defaultMessage: 'Load more...',
+  },
 });
-
+/**
+ * Schema for the Form components to show an input field with it's label
+ * @param {Object} intl
+ */
 const makeFormSchema = (intl) => ({
   fieldsets: [
     {
@@ -227,10 +194,17 @@ class Comments extends Component {
     this.setState({ replyTo: null });
   }
 
+  /**
+   * The id of the comment that will receive a reply
+   * @param {string} commentId
+   */
   setReplyTo(commentId) {
     this.setState({ replyTo: commentId });
   }
 
+  /**
+   * Calls the action listMoreComments passing the received url for next array of comments
+   */
   loadMoreComments() {
     this.props.listMoreComments(this.props.next);
   }
@@ -246,6 +220,11 @@ class Comments extends Component {
     this.props.deleteComment(value);
   }
 
+  /**
+   * Will hide all replies to the specific comment
+   * including replies to any of the replies
+   * @param {string} commentId
+   */
   hideReply(commentId) {
     this.setState((prevState) => {
       const hasComment = prevState.collapsedComments[commentId];
@@ -303,6 +282,23 @@ class Comments extends Component {
     });
   }
 
+  addRepliesAsChildrenToComments(items) {
+    let initialValue = {};
+    const allCommentsWithCildren = items.reduce((accumulator, item) => {
+      return {
+        [item.comment_id]: { comment: item, children: [] },
+        ...accumulator,
+      };
+    }, initialValue);
+
+    items.forEach((comment) => {
+      if (comment.in_reply_to) {
+        allCommentsWithCildren[comment.in_reply_to].children.push(comment);
+      }
+    });
+    return allCommentsWithCildren;
+  }
+
   /**
    * Render method.
    * @method render
@@ -311,21 +307,13 @@ class Comments extends Component {
   render() {
     const { items } = this.props;
     const { collapsedComments } = this.state;
-    let initialValue = {};
-    console.log(this.props);
-    const allCommentsWithCildren = items.reduce((accumulator, item) => {
-      return {
-        [item.comment_id]: { comment: item, children: [] },
-        ...accumulator,
-      };
-    }, initialValue);
-    items.forEach((comment) => {
-      if (comment.in_reply_to) {
-        allCommentsWithCildren[comment.in_reply_to].children.push(comment);
-      }
-    });
+    // object with comment ids, to easily verify if any comment has children
+    const allCommentsWithCildren = this.addRepliesAsChildrenToComments(items);
+    // all comments that are not a reply will be shown in the first iteration
     const allPrimaryComments = items.filter((comment) => !comment.in_reply_to);
 
+    // recursively makes comments with their replies nested
+    // each iteration will show replies to the specific comment using allCommentsWithCildren
     const commentElement = (comment) => (
       <Comment key={comment.comment_id}>
         <Comment.Avatar
@@ -333,6 +321,7 @@ class Comments extends Component {
           color="teal"
           src={
             comment.author_image || (
+              // makes an avatar with a color and initials from name, all colours will be different
               <svg width="30" height="30">
                 <circle
                   cx="15"
@@ -488,7 +477,7 @@ class Comments extends Component {
         {/* load more button */}
         {this.props.items_total > this.props.items.length && (
           <Button fluid basic color="blue" onClick={this.loadMoreComments}>
-            Load more...
+            <FormattedMessage id="Load more" defaultMessage="Load more..." />
           </Button>
         )}
 

@@ -7,8 +7,8 @@ import {
   ADD_COMMENT,
   DELETE_COMMENT,
   LIST_COMMENTS,
-
-  LIST_MORE_COMMENTS, UPDATE_COMMENT
+  LIST_MORE_COMMENTS,
+  UPDATE_COMMENT
 } from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
