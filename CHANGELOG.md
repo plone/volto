@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- a11y improvements in `ObjectBrowser` and `BlockChooser` @sneridagh
+
 ### Internal
 
 ## 12.0.0 (2021-02-20)
