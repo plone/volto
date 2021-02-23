@@ -61,12 +61,11 @@ const wrapWithDispatch = (Component, asyncItems = []) => {
 };
 
 const applyExtenders = (asyncItems, pathname) => {
-  const extenders = matchRoutes(
-    config.settings.asyncPropsExtenders || [],
-    pathname,
-  );
+  const { asyncPropsExtenders = [] } = config.settings;
+  const extenders = matchRoutes(asyncPropsExtenders, pathname);
+
   const foundAsyncItems = extenders.reduce(
-    (acc, extender) => extender.extend(acc),
+    (acc, extender) => extender.route.extend(acc),
     asyncItems,
   );
 
