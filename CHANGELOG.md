@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Improved comments @rexalex @avoinea
+
 ### Bugfix
 
 ### Internal
