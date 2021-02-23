@@ -8,7 +8,7 @@ import {
   EditBlock,
   Field,
   Icon,
-  Toast
+  Toast,
 } from '@plone/volto/components';
 import {
   blockHasValue,
@@ -16,7 +16,7 @@ import {
   FormValidation,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
-  messages
+  messages,
 } from '@plone/volto/helpers';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -31,7 +31,7 @@ import {
   mapValues,
   omit,
   pickBy,
-  without
+  without,
 } from 'lodash';
 import move from 'lodash-move';
 import isBoolean from 'lodash/isBoolean';
@@ -47,7 +47,7 @@ import {
   Form as UiForm,
   Message,
   Segment,
-  Tab
+  Tab,
 } from 'semantic-ui-react';
 import { v4 as uuid } from 'uuid';
 

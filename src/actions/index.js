@@ -6,21 +6,21 @@
 export { listActions } from '@plone/volto/actions/actions/actions';
 export {
   resetBlocksClipboard,
-  setBlocksClipboard
+  setBlocksClipboard,
 } from '@plone/volto/actions/blocksClipboard/blocksClipboard';
 export { getBreadcrumbs } from '@plone/volto/actions/breadcrumbs/breadcrumbs';
 export {
   copy,
   copyContent,
   cut,
-  moveContent
+  moveContent,
 } from '@plone/volto/actions/clipboard/clipboard';
 export {
   addComment,
   deleteComment,
   listComments,
   listMoreComments,
-  updateComment
+  updateComment,
 } from '@plone/volto/actions/comments/comments';
 export {
   createContent,
@@ -30,7 +30,7 @@ export {
   resetContent,
   sortContent,
   updateColumnsContent,
-  updateContent
+  updateContent,
 } from '@plone/volto/actions/content/content';
 export { getContextNavigation } from '@plone/volto/actions/contextNavigation/contextNavigation';
 export {
@@ -40,7 +40,7 @@ export {
   getSystemInformation,
   listControlpanels,
   postControlpanel,
-  updateControlpanel
+  updateControlpanel,
 } from '@plone/volto/actions/controlpanels/controlpanels';
 export { getDiff } from '@plone/volto/actions/diff/diff';
 export { emailNotification } from '@plone/volto/actions/emailNotification/emailNotification';
@@ -50,17 +50,17 @@ export {
   deleteGroup,
   getGroup,
   listGroups,
-  updateGroup
+  updateGroup,
 } from '@plone/volto/actions/groups/groups';
 export {
   getHistory,
-  revertHistory
+  revertHistory,
 } from '@plone/volto/actions/history/history';
 export { loadLazyLibrary } from '@plone/volto/actions/lazyLibraries/lazyLibraries';
 export {
   addMessage,
   purgeMessages,
-  removeMessage
+  removeMessage,
 } from '@plone/volto/actions/messages/messages';
 export { getNavigation } from '@plone/volto/actions/navigation/navigation';
 export { getQuerystring } from '@plone/volto/actions/querystring/querystring';
@@ -70,22 +70,22 @@ export {
   getSchema,
   postSchema,
   putSchema,
-  updateSchema
+  updateSchema,
 } from '@plone/volto/actions/schema/schema';
 export {
   resetSearchContent,
-  searchContent
+  searchContent,
 } from '@plone/volto/actions/search/search';
 export {
   getSharing,
-  updateSharing
+  updateSharing,
 } from '@plone/volto/actions/sharing/sharing';
 export { setSidebarTab } from '@plone/volto/actions/sidebar/sidebar';
 export { setExpandedToolbar } from '@plone/volto/actions/toolbar/toolbar';
 export {
   deleteLinkTranslation,
   getTranslationLocator,
-  linkTranslation
+  linkTranslation,
 } from '@plone/volto/actions/translations/translations';
 export { getTypes } from '@plone/volto/actions/types/types';
 export {
@@ -97,25 +97,24 @@ export {
   setInitialPassword,
   showAllUsers,
   updatePassword,
-  updateUser
+  updateUser,
 } from '@plone/volto/actions/users/users';
 export {
   login,
   loginRenew,
-  logout
+  logout,
 } from '@plone/volto/actions/userSession/userSession';
 export {
   getVocabulary,
-  getVocabularyTokenTitle
+  getVocabularyTokenTitle,
 } from '@plone/volto/actions/vocabularies/vocabularies';
 export {
   getWorkflow,
-  transitionWorkflow
+  transitionWorkflow,
 } from '@plone/volto/actions/workflow/workflow';
 export {
   installAddon,
   listAddons,
   uninstallAddon,
-  upgradeAddon
+  upgradeAddon,
 } from './addons/addons';
-

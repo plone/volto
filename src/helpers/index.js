@@ -9,7 +9,7 @@ export Api from '@plone/volto/helpers/Api/Api';
 export { getAPIResourceWithAuth } from '@plone/volto/helpers/Api/APIResourceWithAuth';
 export {
   getAuthToken,
-  persistAuthToken
+  persistAuthToken,
 } from '@plone/volto/helpers/AuthToken/AuthToken';
 export {
   addBlock,
@@ -24,12 +24,12 @@ export {
   moveBlock,
   mutateBlock,
   nextBlockId,
-  previousBlockId
+  previousBlockId,
 } from '@plone/volto/helpers/Blocks/Blocks';
 export {
   getContentIcon,
   getLayoutFieldname,
-  nestContent
+  nestContent,
 } from '@plone/volto/helpers/Content/Content';
 export { generateRobots } from '@plone/volto/helpers/Robots/Robots';
 export { generateSitemap } from '@plone/volto/helpers/Sitemap/Sitemap';
@@ -42,7 +42,7 @@ export {
   getParentUrl,
   getView,
   isCmsUi,
-  isInternalURL
+  isInternalURL,
 } from '@plone/volto/helpers/Url/Url';
 export {
   applyConfig,
@@ -50,14 +50,14 @@ export {
   getInitialsFromName,
   getUserColor,
   safeWrapper,
-  withServerErrorCode
+  withServerErrorCode,
 } from '@plone/volto/helpers/Utils/Utils';
 export {
   getBoolean,
   getFieldsVocabulary,
   getVocabFromField,
   getVocabFromHint,
-  getVocabFromItems
+  getVocabFromItems,
 } from '@plone/volto/helpers/Vocabularies/Vocabularies';
 export { messages } from './MessageLabels/MessageLabels';
 export Html from '@plone/volto/helpers/Html/Html';
