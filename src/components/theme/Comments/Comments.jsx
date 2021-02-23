@@ -7,13 +7,13 @@ import {
   addComment,
   deleteComment,
   listComments,
-  listMoreComments
+  listMoreComments,
 } from '@plone/volto/actions';
 import { CommentEditModal, Form } from '@plone/volto/components';
 import {
   getBaseUrl,
   getInitialsFromName,
-  getUserColor
+  getUserColor,
 } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 import moment from 'moment';
@@ -24,7 +24,6 @@ import { Portal } from 'react-portal';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Button, Comment, Container, Icon } from 'semantic-ui-react';
-
 
 const messages = defineMessages({
   comment: {
@@ -334,10 +333,10 @@ class Comments extends Component {
                 <text
                   x="50%"
                   y="50%"
-                  text-anchor="middle"
+                  textAnchor="middle"
                   fill="white"
-                  font-size="15px"
-                  font-family="Arial"
+                  fontSize="15px"
+                  fontFamily="Arial"
                   dy=".3em"
                 >
                   {getInitialsFromName(comment.author_name)}
