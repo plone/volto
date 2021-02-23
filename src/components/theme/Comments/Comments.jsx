@@ -343,6 +343,7 @@ class Comments extends Component {
           <Comment.Actions>
             <Comment.Action
               as="a"
+              aria-label={this.props.intl.formatMessage(messages.reply)}
               onClick={() => this.setReplyTo(comment.comment_id)}
             >
               <FormattedMessage id="Reply" defaultMessage="Reply" />

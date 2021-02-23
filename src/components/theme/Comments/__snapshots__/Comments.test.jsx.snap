@@ -152,6 +152,7 @@ exports[`Comments renders a comments component 1`] = `
           className="actions"
         >
           <a
+            aria-label="Reply"
             className=""
             onClick={[Function]}
           >
