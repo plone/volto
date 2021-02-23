@@ -1,5 +1,5 @@
+import { isEqual, isObject, transform } from 'lodash';
 import React from 'react';
-import { transform, isEqual, isObject } from 'lodash';
 
 /**
  * Deep diff between two object, using lodash
@@ -58,3 +58,44 @@ export function withServerErrorCode(code) {
     return <WrappedComponent {...props} />;
   };
 }
+
+const colors = [
+  'red',
+  'orange',
+  'olive',
+  'green',
+  'teal',
+  'pink',
+  'blue',
+  'violet',
+  'purple',
+];
+const userColors = {};
+/**
+ * Will generate initials from string
+ * @param {string} name
+ * @returns {string} only one letter if received only one name
+ */
+export const getInitialsFromName = (name) =>
+  name
+    .split(' ')
+    .map((n) => n[0].toUpperCase())
+    .join('');
+
+/**
+ * Will generate a random color hex
+ * Will also remmember the color for each userId
+ * @param {string} userId
+ */
+export const getUserColor = (userId) => {
+  const userColor = userColors[userId]
+    ? userColors[userId]
+    : colors.length > 0
+    ? colors.pop()
+    : `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+  if (!userColors[userId]) {
+    userColors[userId] = userColor;
+  }
+
+  return userColor;
+};
