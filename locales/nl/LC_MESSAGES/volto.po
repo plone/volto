@@ -350,6 +350,10 @@ msgstr ""
 msgid "Commenter"
 msgstr ""
 
+#: components/theme/Comments/Comments
+msgid "Comments"
+msgstr ""
+
 #: components/manage/Diff/Diff
 msgid "Compare"
 msgstr "Vergelijken"
@@ -836,6 +840,10 @@ msgstr ""
 msgid "Header cell"
 msgstr ""
 
+#: components/theme/Comments/Comments
+msgid "Hide Replies"
+msgstr ""
+
 #: components/manage/History/History
 #: components/manage/Toolbar/More
 msgid "History"
@@ -1038,6 +1046,10 @@ msgstr ""
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
+msgstr ""
+
+#: components/theme/Comments/Comments
+msgid "Load more"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
@@ -1464,6 +1476,10 @@ msgstr ""
 msgid "Replace existing file"
 msgstr ""
 
+#: components/theme/Comments/Comments
+msgid "Reply"
+msgstr ""
+
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -1659,6 +1675,10 @@ msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Show All"
+msgstr ""
+
+#: components/theme/Comments/Comments
+msgid "Show Replies"
 msgstr ""
 
 #: components/manage/Sidebar/Sidebar
@@ -2551,7 +2571,3 @@ msgstr "{title} geknipt."
 #: components/manage/Actions/Actions
 msgid "{title} has been deleted."
 msgstr "{title} is verwijderd."
-
-#: components/theme/Comments/Comments
-msgid "{user} says:"
-msgstr ""

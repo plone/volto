@@ -348,6 +348,10 @@ msgstr "Commentaire"
 msgid "Commenter"
 msgstr "Commenter"
 
+#: components/theme/Comments/Comments
+msgid "Comments"
+msgstr ""
+
 #: components/manage/Diff/Diff
 msgid "Compare"
 msgstr "Comparer"
@@ -834,6 +838,10 @@ msgstr "Groupes"
 msgid "Header cell"
 msgstr ""
 
+#: components/theme/Comments/Comments
+msgid "Hide Replies"
+msgstr ""
+
 #: components/manage/History/History
 #: components/manage/Toolbar/More
 msgid "History"
@@ -1037,6 +1045,10 @@ msgstr "Lien vers"
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
 msgstr "Listing"
+
+#: components/theme/Comments/Comments
+msgid "Load more"
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Location"
@@ -1462,6 +1474,10 @@ msgstr ""
 msgid "Replace existing file"
 msgstr ""
 
+#: components/theme/Comments/Comments
+msgid "Reply"
+msgstr ""
+
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -1657,6 +1673,10 @@ msgstr "Voir"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Show All"
+msgstr ""
+
+#: components/theme/Comments/Comments
+msgid "Show Replies"
 msgstr ""
 
 #: components/manage/Sidebar/Sidebar
@@ -2549,7 +2569,3 @@ msgstr "{title} coupé."
 #: components/manage/Actions/Actions
 msgid "{title} has been deleted."
 msgstr "{title} a été supprimé"
-
-#: components/theme/Comments/Comments
-msgid "{user} says:"
-msgstr "{user} dit :"
