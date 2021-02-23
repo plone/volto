@@ -22,41 +22,12 @@ exports[`Comments renders a comments component 1`] = `
             className="ui segment"
           >
             <div
-              className="inline field textarea"
+              className="mocked-textarea-widget"
+              id="mocked-field-comment"
             >
-              <div
-                className="ui grid"
-              >
-                <div
-                  className="stretched row"
-                >
-                  <div
-                    className="four wide column"
-                  >
-                    <div
-                      className="wrapper"
-                    >
-                      <label
-                        htmlFor="field-comment"
-                      >
-                        Comment
-                      </label>
-                    </div>
-                  </div>
-                  <div
-                    className="eight wide column"
-                  >
-                    <textarea
-                      id="field-comment"
-                      name="comment"
-                      onChange={[Function]}
-                      onInput={[Function]}
-                      rows={3}
-                      value=""
-                    />
-                  </div>
-                </div>
-              </div>
+              Comment
+               - 
+              No description
             </div>
           </div>
           <div
@@ -126,7 +97,6 @@ exports[`Comments renders a comments component 1`] = `
     >
       <div
         className="avatar circular"
-        color="teal"
       >
         <svg
           height="30"
@@ -141,9 +111,9 @@ exports[`Comments renders a comments component 1`] = `
           <text
             dy=".3em"
             fill="white"
-            font-family="Arial"
-            font-size="15px"
-            text-anchor="middle"
+            fontFamily="Arial"
+            fontSize="15px"
+            textAnchor="middle"
             x="50%"
             y="50%"
           >
