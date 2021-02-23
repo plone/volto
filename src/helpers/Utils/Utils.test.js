@@ -1,4 +1,10 @@
-import { difference, applyConfig, safeWrapper } from './Utils';
+import {
+  applyConfig,
+  difference,
+  getColor,
+  getInitials,
+  safeWrapper,
+} from './Utils';
 
 describe('Utils tests', () => {
   describe('difference', () => {
@@ -197,6 +203,33 @@ describe('Utils tests', () => {
           },
         },
       });
+    });
+  });
+
+  describe('getInitials', () => {
+    it('basic test empty', () => {
+      expect(getInitials('')).toEqual('');
+    });
+    it('basic test', () => {
+      expect(getInitials('Plone is the best CMS in the World!')).toEqual(
+        'PITBCITW',
+      );
+    });
+    it('basic test with limit', () => {
+      expect(getInitials('Plone is the best CMS in the World!', 2)).toEqual(
+        'PI',
+      );
+    });
+    it('basic test with trailing spaces', () => {
+      expect(getInitials('  Plone  rocks!   ', 2)).toEqual('PR');
+    });
+  });
+
+  describe('getColor', () => {
+    it('basic test empty', () => {
+      expect(getColor(1)).toEqual('Teal');
+      expect(getColor(2)).toEqual('SteelBlue');
+      expect(getColor(1)).toEqual('Teal');
     });
   });
 

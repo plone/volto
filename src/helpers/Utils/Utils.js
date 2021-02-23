@@ -113,13 +113,13 @@ const namedColors = {};
  * @param {integer} count
  * @returns {string} only one letter if received only one name
  */
-export const getInitials = (title, count) => {
+export const getInitials = (title, limit) => {
   const text = title
     .split(' ')
-    .map((n) => n[0].toUpperCase())
+    .map((n) => (n[0] ? n[0].toUpperCase() : ''))
     .join('');
-  if (count) {
-    return text.substring(0, count);
+  if (limit) {
+    return text.substring(0, limit);
   }
   return text;
 };
