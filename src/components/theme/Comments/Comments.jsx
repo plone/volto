@@ -15,6 +15,7 @@ import {
   getInitialsFromName,
   getUserColor
 } from '@plone/volto/helpers';
+import config from '@plone/volto/registry';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
@@ -23,7 +24,7 @@ import { Portal } from 'react-portal';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Button, Comment, Container, Icon } from 'semantic-ui-react';
-import { settings } from '~/config';
+
 
 const messages = defineMessages({
   comment: {
@@ -305,6 +306,7 @@ class Comments extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const { settings } = config;
     const { items } = this.props;
     const { collapsedComments } = this.state;
     // object with comment ids, to easily verify if any comment has children

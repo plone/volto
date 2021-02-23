@@ -3,7 +3,13 @@
  * @module components/manage/Form/Form
  */
 
-import { BlocksToolbar, EditBlock, Field, Icon, Toast } from '@plone/volto/components';
+import {
+  BlocksToolbar,
+  EditBlock,
+  Field,
+  Icon,
+  Toast
+} from '@plone/volto/components';
 import {
   blockHasValue,
   difference,
@@ -15,8 +21,10 @@ import {
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import dragSVG from '@plone/volto/icons/drag.svg';
+import config from '@plone/volto/registry';
 import {
-  cloneDeep, findIndex,
+  cloneDeep,
+  findIndex,
   isEmpty,
   keys,
   map,
@@ -42,7 +50,6 @@ import {
   Tab
 } from 'semantic-ui-react';
 import { v4 as uuid } from 'uuid';
-import { settings } from '~/config';
 
 /**
  * Form container class.
@@ -161,7 +168,7 @@ class Form extends Component {
             '@type': 'title',
           },
           [ids.text]: {
-            '@type': settings.defaultBlockType,
+            '@type': config.settings.defaultBlockType,
           },
         };
       }
@@ -365,7 +372,7 @@ class Form extends Component {
           ...this.state.formData[blocksFieldname],
           [id]: value || null,
           [idTrailingBlock]: {
-            '@type': settings.defaultBlockType,
+            '@type': config.settings.defaultBlockType,
           },
         },
         [blocksLayoutFieldname]: {
@@ -438,6 +445,7 @@ class Form extends Component {
    * @returns {undefined}
    */
   onDeleteBlock(id, selectPrev) {
+    const { settings } = config;
     const blocksFieldname = getBlocksFieldname(this.state.formData);
     const blocksLayoutFieldname = getBlocksLayoutFieldname(this.state.formData);
 
@@ -476,6 +484,7 @@ class Form extends Component {
    * @returns {string} Id of the block
    */
   onAddBlock(type, index) {
+    const { settings } = config;
     const id = uuid();
     const idTrailingBlock = uuid();
     const blocksFieldname = getBlocksFieldname(this.state.formData);
@@ -515,6 +524,12 @@ class Form extends Component {
     return id;
   }
 
+  /**
+   * will prevent event from triggering submit
+   * will reset form if props.resetAfterSubmit
+   * will call the props.onCancel
+   * @param {Object} event
+   */
   onCancel(event) {
     if (event) {
       event.preventDefault();
@@ -704,6 +719,7 @@ class Form extends Component {
       disableArrowDown = false,
     } = {},
   ) {
+    const { settings } = config;
     const isMultipleSelection = e.shiftKey;
     if (e.key === 'ArrowUp' && !disableArrowUp) {
       this.onFocusPreviousBlock(block, node, isMultipleSelection);
@@ -854,6 +870,7 @@ class Form extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const { settings } = config;
     const { schema: originalSchema, onCancel, onSubmit } = this.props;
     const { formData, placeholderProps } = this.state;
     const blocksFieldname = getBlocksFieldname(formData);

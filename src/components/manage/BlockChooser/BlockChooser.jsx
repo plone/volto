@@ -5,7 +5,7 @@ import { Accordion, Button } from 'semantic-ui-react';
 import { injectIntl } from 'react-intl';
 import { Icon } from '@plone/volto/components';
 import AnimateHeight from 'react-animate-height';
-import { blocks } from '~/config';
+import config from '@plone/volto/registry';
 
 import upSVG from '@plone/volto/icons/up-key.svg';
 import downSVG from '@plone/volto/icons/down-key.svg';
@@ -18,7 +18,7 @@ const BlockChooser = ({
   intl,
 }) => {
   const blocksConfig = filter(
-    blocks.blocksConfig,
+    config.blocks.blocksConfig,
     (item) => isEmpty(allowedBlocks) || allowedBlocks.includes(item.id),
   );
 
@@ -33,7 +33,7 @@ const BlockChooser = ({
     ...groupedBlocks,
   };
 
-  const groupBlocksOrder = filter(blocks.groupBlocksOrder, (item) =>
+  const groupBlocksOrder = filter(config.blocks.groupBlocksOrder, (item) =>
     Object.keys(blocksAvailable).includes(item.id),
   );
   const [activeIndex, setActiveIndex] = React.useState(0);

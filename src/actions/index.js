@@ -3,7 +3,6 @@
  * @module actions
  * @example import { getSchema } from 'actions';
  */
-
 export { listActions } from '@plone/volto/actions/actions/actions';
 export {
   resetBlocksClipboard,

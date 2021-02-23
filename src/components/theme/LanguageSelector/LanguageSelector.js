@@ -14,14 +14,14 @@ import { updateIntl } from 'react-intl-redux';
 import langmap from 'langmap';
 import { Helmet } from '@plone/volto/helpers';
 
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 import { flattenToAppURL } from '@plone/volto/helpers';
 
 let locales = {};
 
-if (settings) {
-  settings.supportedLanguages.forEach((lang) => {
+if (config.settings) {
+  config.settings.supportedLanguages.forEach((lang) => {
     import('~/../locales/' + lang + '.json').then((locale) => {
       locales = { ...locales, [lang]: locale.default };
     });
@@ -48,6 +48,7 @@ const LanguageSelector = (props) => {
       }),
     );
   }
+  const { settings } = config;
 
   return settings.isMultilingual ? (
     <div className="language-selector">

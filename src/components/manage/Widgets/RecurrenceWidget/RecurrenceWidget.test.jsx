@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
-import { wait } from '@testing-library/react';
+import { waitFor } from '@testing-library/react';
 
 import RecurrenceWidget from './RecurrenceWidget';
 
@@ -29,7 +29,7 @@ test('renders a recurrence widget component', async () => {
       />
     </Provider>,
   );
-  await wait(() => {
+  await waitFor(() => {
     expect(component.toJSON()).toMatchSnapshot();
   });
 });

@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { defineMessages, useIntl } from 'react-intl';
 import { Image } from 'semantic-ui-react';
 import { useSelector } from 'react-redux';
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 import LogoImage from '@plone/volto/components/theme/Logo/Logo.svg';
 
@@ -30,6 +30,7 @@ const messages = defineMessages({
  * @returns {string} Markup of the component.
  */
 const Logo = () => {
+  const { settings } = config;
   const lang = useSelector((state) => state.intl.locale);
   const intl = useIntl();
 

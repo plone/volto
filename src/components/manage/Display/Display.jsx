@@ -8,7 +8,7 @@ import layouts from '@plone/volto/constants/Layouts';
 import { getLayoutFieldname } from '@plone/volto/helpers';
 import { Icon } from '@plone/volto/components';
 import { FormattedMessage } from 'react-intl';
-import { views } from '~/config';
+import config from '@plone/volto/registry';
 
 import downSVG from '@plone/volto/icons/down-key.svg';
 import upSVG from '@plone/volto/icons/up-key.svg';
@@ -212,8 +212,9 @@ class DisplaySelect extends Component {
               options={this.props.layouts
                 .filter(
                   (layout) =>
-                    Object.keys(views.contentTypesViews).includes(layout) ||
-                    Object.keys(views.layoutViews).includes(layout),
+                    Object.keys(config.views.contentTypesViews).includes(
+                      layout,
+                    ) || Object.keys(config.views.layoutViews).includes(layout),
                 )
                 .map((item) => ({
                   value: item,

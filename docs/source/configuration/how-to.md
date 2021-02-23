@@ -1,50 +1,53 @@
-# The configuration object
+# The configuration registry
 
-Volto has a central configuration object used to parameterize Volto. It lives in Volto itself but it can be customized in a per project basis.
-
-You can find it in Volto in the `src/config` module.
-
-When you create your project via the generator, you can find it in `src/config.js`.
+Volto has a centralized configuration registry used to parameterize Volto. It has the
+form of a singleton that can be called and queried from anywhere in your code like this:
 
 ```js
-import {
-  settings as defaultSettings,
-  views as defaultViews,
-  widgets as defaultWidgets,
-  blocks as defaultBlocks,
-  addonRoutes as defaultAddonRoutes,
-  addonReducers as defaultAddonReducers,
-} from '@plone/volto/config';
-
-export const settings = {
-  ...defaultSettings,
-};
-
-export const views = {
-  ...defaultViews,
-};
-
-export const widgets = {
-  ...defaultWidgets,
-};
-
-export const blocks = {
-  ...defaultBlocks,
-};
-
-export const addonRoutes = [...defaultAddonRoutes];
-export const addonReducers = { ...defaultAddonReducers };
+import config from '@plone/volto/registry';
 ```
 
-It gets the default config from Volto and leave it available to you to customize it in your project.
+then access any of its internal configuration to retrieve the configuration you require
+like:
 
-Reading the source code for the `~/config` registry is an absolute key in
-understanding Volto and what can be configured.
+```js
+const absoluteUrl = `${config.settings.apiPath}/${content.url}`
+```
 
-As you can see from the snippet above, in your Volto project you'll have
-a `src/config.js` file. This file is referenced throughout the codebase as
-`~/config`. You can see that, in its default version, all it does is import
-Volto's default configuration objects and export them further.
+Both add-ons and projects can extend Volto's configuration registry. First the add-ons
+configuration is applied, in the order they are defined in `package.json`, then finally
+the project configuration is applied. Visualized like a pipe would be:
+
+> Default Volto configuration -> Add-on 1 -> Add-on 2 -> ... -> Add-on n -> Project
+
+Both use the same method, using a function as the default export. This function takes a
+`config` and should return the `config` once you've ended your modifications. For
+add-ons, it must be provided in the main `index.js` module of the add-on. For project's
+it must be provided in the `src/config.js` module of the project.
+
+See the [Add-ons](/addons) section for extended information on how to work with add-ons.
+
+## Extending configuration in a project
+
+You must provide a function as default export in your `src/config.js`:
+
+```js
+export default function applyConfig(config) {
+  config.settings = {
+    ...config.settings,
+    isMultilingual: true,
+    supportedLanguages: ['en', 'de'],
+    defaultLanguage: 'de',
+    navDepth: 3,
+  };
+
+  return config;
+}
+```
+
+you have all Volto's default configuration and the already applied from your project's
+add-ons configuration in `config` argument. Next, perform all the required modifications
+to the config and finally, return the config object.
 
 By reading Volto's
 [src/config/index.js](https://github.com/plone/volto/tree/master/src/config/index.js),
@@ -58,7 +61,7 @@ a Volto project.
 
 ## settings
 
-The `settings` object of the `~/config` is a big registry of miscellaneous
+The `settings` object of the configruration registry is a big registry of miscellaneous
 settings. See the [Settings reference](/configuration/settings-reference) for
 a bit more details.
 
@@ -82,6 +85,17 @@ to render the content. There are 4 types of views:
 - the default view, which can render the composite page Volto blocks
 - and the error views, to be used for regular error pages (Forbidden, Not
   Found, etc).
+
+## blocks
+
+The `blocks` registry holds the information of all the registered blocks in Volto. There are 4 configurations available:
+
+- blocksConfig
+- requiredBlocks
+- groupBlocksOrder
+- initialBlocks
+
+See [Blocks](/blocks/settings) for more information.
 
 ## addonReducers
 
