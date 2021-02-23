@@ -10,24 +10,20 @@ import reducers from '~/reducers';
 import { api, crashReporter } from '@plone/volto/middleware';
 
 const configureStore = (initialState, history, apiHelper) => {
-  const middlewares = composeWithDevTools(
-    applyMiddleware(
-      ...[
-        routerMiddleware(history),
-        crashReporter,
-        thunk,
-        api(apiHelper),
-        ...(__CLIENT__
-          ? [
-              save({
-                states: config.settings.persistentReducers,
-                debounce: 500,
-              }),
-            ]
-          : []),
-      ],
-    ),
+  let stack = [
+    routerMiddleware(history),
+    crashReporter,
+    thunk,
+    api(apiHelper),
+    ...(__CLIENT__
+      ? [save({ states: config.settings.persistentReducers, debounce: 500 })]
+      : []),
+  ];
+  stack = config.settings.storeExtenders.reduce(
+    (acc, extender) => extender(acc),
+    stack,
   );
+  const middlewares = composeWithDevTools(applyMiddleware(...stack));
   const store = createStore(
     combineReducers({
       router: connectRouter(history),

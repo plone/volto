@@ -7,6 +7,8 @@
 ### Feature
 
 - Improved comments @rexalex @avoinea
+- New breadcrumbs `INavigationRoot` aware for the *Home* icon. This allows inner subsites navigation and better support for multilingual sites.  @sneridagh
+- A new setting, `config.settings.storeExtenders` which allows customization of used Redux middleware @tiberiuichim
 - Introduce `config.settings.asyncPropsExtenders` which allows customizing, per route, the `asyncConnected` actions @tiberiuichim @sneridagh
 
 ### Bugfix

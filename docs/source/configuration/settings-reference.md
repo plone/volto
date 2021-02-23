@@ -148,6 +148,14 @@ This list is still incomplete, contributions are welcomed!
     lazy libraries (with `preloadLazyLibs`) or quickly load them with
     `injectLazyLibs`.
 
+### storeExtenders
+
+!!! block ""
+
+    A list of callables with signature `(middlewaresList) => middlewaresList`.
+    These callables receive the whole stack of middlewares used in Volto and
+    they can add new middleware or tweak this list.
+
 ### asyncPropsExtenders
 
 !!! block ""
