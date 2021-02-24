@@ -17,7 +17,12 @@ test('renders an array widget component', () => {
   });
   const component = renderer.create(
     <Provider store={store}>
-      <ReferenceWidget id="my-field" title="My field" onChange={() => {}} />
+      <ReferenceWidget
+        id="my-field"
+        title="My field"
+        fieldSet="default"
+        onChange={() => {}}
+      />
     </Provider>,
   );
   const json = component.toJSON();

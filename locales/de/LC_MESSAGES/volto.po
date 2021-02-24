@@ -215,6 +215,7 @@ msgid "Breadcrumbs"
 msgstr "Brotkrumen"
 
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
 msgstr "Durchsuchen"
 
@@ -768,6 +769,10 @@ msgstr "Erster Tag des Monats"
 msgid "Fixed width table cells"
 msgstr "Tabellen-Zellen mit fester Breite"
 
+#: components/manage/BlockChooser/BlockChooser
+msgid "Fold"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Folder"
 msgstr "Ordner"
@@ -1263,6 +1268,10 @@ msgstr "In neuem Browser-Tab öffnen"
 msgid "Open menu"
 msgstr "Menü öffnen"
 
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "Open object browser"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Origin"
@@ -1573,6 +1582,10 @@ msgstr "Nach Nutzern suchen…"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Second"
 msgstr "Zweiter"
+
+#: components/manage/Sidebar/ObjectBrowserNav
+msgid "Select"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Select a date to add to recurrence"
@@ -1946,6 +1959,10 @@ msgstr "UID"
 #: components/theme/Unauthorized/Unauthorized
 msgid "Unauthorized"
 msgstr "Nicht autorisiert"
+
+#: components/manage/BlockChooser/BlockChooser
+msgid "Unfold"
+msgstr ""
 
 #: components/manage/Diff/Diff
 msgid "Unified"
