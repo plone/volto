@@ -161,7 +161,7 @@ class AddonConfigurationRegistry {
   getResolveAliases() {
     const pairs = Object.keys(this.packages).map((o) => [
       o,
-      this.packages[o].modulePath,
+      fs.realpathSync(this.packages[o].modulePath),
     ]);
     return fromEntries(pairs);
   }
