@@ -295,7 +295,7 @@ msgstr "Seleziona la destinazione"
 
 #: components/manage/Widgets/FileWidget
 msgid "Choose a file"
-msgstr ""
+msgstr "Scegli un file"
 
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
@@ -381,7 +381,7 @@ msgstr "Copia"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Copy blocks"
-msgstr ""
+msgstr "Copia blocchi"
 
 #: components/theme/Footer/Footer
 msgid "Copyright"
@@ -419,7 +419,7 @@ msgstr "Taglia"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Cut blocks"
-msgstr ""
+msgstr "Taglia blocchi"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Daily"
@@ -498,7 +498,7 @@ msgstr "Elimina utente"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Delete blocks"
-msgstr ""
+msgstr "Elimina blocchi"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Delete col"
@@ -2464,6 +2464,18 @@ msgstr "anno"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_years"
 msgstr "anni"
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-footer"
+msgstr "Salta al footer"
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-main-content"
+msgstr "Salta al contenuto"
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-navigation"
+msgstr "Salta alla navigazione"
 
 #: components/manage/Contents/Contents
 msgid "sort"

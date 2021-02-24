@@ -2472,6 +2472,18 @@ msgstr ""
 msgid "rrule_years"
 msgstr ""
 
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-footer"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-main-content"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-navigation"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "sort"
 msgstr "並べ替え"
