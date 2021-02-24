@@ -20,6 +20,7 @@ test('renders a text widget component', () => {
       <TextWidget
         id="my-field"
         title="My field"
+        fieldSet="default"
         onChange={() => {}}
         onBlur={() => {}}
         onClick={() => {}}

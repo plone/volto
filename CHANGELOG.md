@@ -1,23 +1,35 @@
 # Change Log
 
-## 12.0.1 (unreleased)
+## 12.1.1 (unreleased)
 
 ### Breaking
 
 ### Feature
 
-- New breadcrumbs `INavigationRoot` aware for the *Home* icon. This allows inner subsites navigation and better support for multilingual sites.  @sneridagh
+### Bugfix
+
+### Internal
+
+## 12.1.0 (2021-02-24)
+
+### Feature
+
 - A new setting, `config.settings.storeExtenders` which allows customization of used Redux middleware @tiberiuichim
 - Introduce `config.settings.asyncPropsExtenders` which allows customizing, per route, the `asyncConnected` actions @tiberiuichim @sneridagh
 
 ### Bugfix
 
 - Adapt to BlocksForm in Blocks Engine @nileshgulia1
+- a11y improvements in `ObjectBrowser` and `BlockChooser` @sneridagh
 - Fix UniversalLink for download link. @giuliaghisini
 
 ### Internal
 
 - Fork redux-connect code in `src/helpers/AsyncConnect`, to allow mixing in config-based asyncConnects. Provide a webpack alias that overloads the redux-connect imports. @tiberiuichim
+
+### Docs
+
+- Update wording @svx
 
 ## 12.0.0 (2021-02-20)
 
