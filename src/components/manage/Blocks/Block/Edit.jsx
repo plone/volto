@@ -43,6 +43,7 @@ export class Edit extends Component {
     // properties is mapped to formData, so it's not connected to changes of the object
     properties: PropTypes.objectOf(PropTypes.any).isRequired,
     selected: PropTypes.bool.isRequired,
+    multiSelected: PropTypes.array,
     index: PropTypes.number.isRequired,
     id: PropTypes.string.isRequired,
     manage: PropTypes.bool,

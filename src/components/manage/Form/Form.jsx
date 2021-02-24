@@ -485,6 +485,7 @@ class Form extends Component {
             properties={formData}
             pathname={this.props.pathname}
             selectedBlock={this.state.selected}
+            multiSelected={this.state.multiSelected}
             manage={this.props.isAdminForm}
             allowedBlocks={this.props.allowedBlocks}
             showRestricted={this.props.showRestricted}

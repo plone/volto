@@ -18,14 +18,13 @@ const BlocksForm = (props) => {
   const {
     pathname,
     onChangeField,
-    metadata,
     properties,
     onChangeFormData,
     selectedBlock,
+    multiSelected,
     onSelectBlock,
     allowedBlocks,
-    title,
-    description,
+    showRestricted,
     manage,
     children,
   } = props;
@@ -114,7 +113,7 @@ const BlocksForm = (props) => {
   const editBlockWrapper = children || defaultBlockWrapper;
 
   return (
-    <div className="blocks-form" title={title}>
+    <div className="blocks-form">
       <DragDropList
         childList={blockList}
         onMoveItem={(result) => {
@@ -135,6 +134,7 @@ const BlocksForm = (props) => {
           const { child, childId, index } = dragProps;
           const blockProps = {
             allowedBlocks,
+            showRestricted,
             block: childId,
             data: child,
             handleKeyDown,
@@ -151,19 +151,14 @@ const BlocksForm = (props) => {
             onMutateBlock,
             onSelectBlock,
             pathname,
-            metadata,
             properties,
             selected: selectedBlock === childId,
+            multiSelected: multiSelected.includes(childId),
             type: child['@type'],
           };
           return editBlockWrapper(
             dragProps,
-            <EditBlock
-              key={childId}
-              {...blockProps}
-              formTitle={title}
-              formDescription={description}
-            />,
+            <EditBlock key={childId} {...blockProps} />,
             blockProps,
           );
         }}
