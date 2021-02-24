@@ -6,6 +6,9 @@
 
 ### Feature
 
+- Adds skiplinks @nzambello
+- Fix some semantic tags as nav @nzambello
+
 ### Bugfix
 
 ### Internal
