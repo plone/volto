@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import { asyncConnect } from 'redux-connect';
+import { asyncConnect } from '@plone/volto/helpers';
 import { FormattedMessage } from 'react-intl';
 import { Portal } from 'react-portal';
 import { Container, Pagination, Button, Header } from 'semantic-ui-react';

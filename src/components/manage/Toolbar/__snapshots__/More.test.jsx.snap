@@ -120,6 +120,7 @@ exports[`Toolbar More component renders a Toolbar More component 1`] = `
           </button>
         </a>
       </li>
+      <div />
     </ul>
   </div>
 </div>

@@ -3,7 +3,6 @@
  * @module reducers/root
  */
 
-import { reducer as reduxAsyncConnect } from 'redux-connect';
 import { intlReducer } from 'react-intl-redux';
 
 import actions from '@plone/volto/reducers/actions/actions';
@@ -40,6 +39,7 @@ import blocksClipboard from '@plone/volto/reducers/blocksClipboard/blocksClipboa
 import lazyLibraries from '@plone/volto/reducers/lazyLibraries/lazyLibraries';
 import contextNavigation from '@plone/volto/reducers/contextNavigation/contextNavigation';
 import slots from './slots/slots';
+import reduxAsyncConnect from './asyncConnect/asyncConnect';
 import config from '@plone/volto/registry';
 
 /**
