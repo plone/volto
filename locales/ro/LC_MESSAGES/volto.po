@@ -200,6 +200,7 @@ msgid "Breadcrumbs"
 msgstr "Breadcrumbs"
 
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
 msgstr "Răsfoiește"
 
@@ -753,6 +754,10 @@ msgstr ""
 msgid "Fixed width table cells"
 msgstr "Celule de tabel cu lățimea fixă"
 
+#: components/manage/BlockChooser/BlockChooser
+msgid "Fold"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Folder"
 msgstr "Director"
@@ -1248,6 +1253,10 @@ msgstr "Deschideți într-o fereastra nouă"
 msgid "Open menu"
 msgstr "Deschideți meniul"
 
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "Open object browser"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Origin"
@@ -1557,6 +1566,10 @@ msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Second"
+msgstr ""
+
+#: components/manage/Sidebar/ObjectBrowserNav
+msgid "Select"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
@@ -1931,6 +1944,10 @@ msgstr "UID"
 #: components/theme/Unauthorized/Unauthorized
 msgid "Unauthorized"
 msgstr "Neautorizat"
+
+#: components/manage/BlockChooser/BlockChooser
+msgid "Unfold"
+msgstr ""
 
 #: components/manage/Diff/Diff
 msgid "Unified"

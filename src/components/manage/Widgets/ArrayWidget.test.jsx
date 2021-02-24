@@ -26,6 +26,7 @@ test('renders an array widget component', async () => {
       <ArrayWidget
         id="my-field"
         title="My field"
+        fieldSet="default"
         onChange={() => {}}
         items={{ vocabulary: { '@id': 'plone.app.vocabularies.Keywords' } }}
       />

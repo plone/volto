@@ -17,7 +17,13 @@ test('renders a file widget component', async () => {
 
   const { container } = render(
     <Provider store={store}>
-      <FileWidget id="my-field" title="My field" onChange={() => {}} />,
+      <FileWidget
+        id="my-field"
+        title="My field"
+        fieldSet="default"
+        onChange={() => {}}
+      />
+      ,
     </Provider>,
   );
 
