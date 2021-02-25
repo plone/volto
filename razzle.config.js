@@ -102,10 +102,8 @@ const defaultModify = ({
         new OfflinePlugin({
           caches: {
             main: [':rest:'],
-            // All chunks marked as `additional`, loaded after main section
-            // and do not prevent SW to install.
             //https://github.com/NekR/offline-plugin/blob/master/docs/caches.md#advanced-usage
-            additional: ['*.chunk.js'],
+            safeToUseOptionalCaches: true,
           },
           ServiceWorker: {
             minify: false,
