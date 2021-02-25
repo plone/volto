@@ -115,7 +115,7 @@ class AddonConfigurationRegistry {
       packageJson.addons || [],
       (name) => {
         this.initPublishedPackage(name);
-        return this.packages[name].addons || [];
+        return this.packages[name].addons || []; // TODO: implement
       },
     );
 
@@ -135,11 +135,15 @@ class AddonConfigurationRegistry {
 
       Object.keys(pathsConfig).forEach((name) => {
         const packagePath = `${this.projectRootPath}/${jsConfig.baseUrl}/${pathsConfig[name][0]}`;
+        const packageJsonPath = `${getPackageBasePath(
+          packagePath,
+        )}/package.json`;
         const pkg = {
           modulePath: packagePath,
-          packageJson: `${getPackageBasePath(packagePath)}/package.json`,
+          packageJson: packageJsonPath,
           isPublishedPackage: false,
           name,
+          addons: require(packageJsonPath).addons || [],
         };
 
         this.packages[name] = Object.assign(this.packages[name] || {}, pkg);
@@ -170,6 +174,7 @@ class AddonConfigurationRegistry {
         isPublishedPackage: true,
         modulePath,
         packageJson,
+        addons: pkg.addons || [],
       };
     }
   }

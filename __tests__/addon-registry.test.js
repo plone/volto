@@ -35,6 +35,7 @@ describe('AddonConfigurationRegistry', () => {
         modulePath: `${base}/addons/test-addon/src`,
         name: 'test-addon',
         packageJson: `${base}/addons/test-addon/package.json`,
+        addons: [],
       },
       'test-released-addon': {
         extraConfigLoaders: ['extra'],
@@ -42,6 +43,7 @@ describe('AddonConfigurationRegistry', () => {
         modulePath: `${base}/node_modules/test-released-addon`,
         name: 'test-released-addon',
         packageJson: `${base}/node_modules/test-released-addon/package.json`,
+        addons: [],
         // serverConfig: `${base}/node_modules/test-released-addon/server.config.js`,
       },
       'test-released-source-addon': {
@@ -51,6 +53,7 @@ describe('AddonConfigurationRegistry', () => {
         name: 'test-released-source-addon',
         packageJson: `${base}/node_modules/test-released-source-addon/package.json`,
         razzleExtender: `${base}/node_modules/test-released-source-addon/razzle.extend.js`,
+        addons: [],
       },
     });
   });
