@@ -3,6 +3,7 @@ import React from 'react';
 import { hydrate } from 'react-dom';
 import { Provider } from 'react-redux';
 import { IntlProvider } from 'react-intl-redux';
+import cookie from 'react-cookie';
 import { ConnectedRouter } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
 import { ReduxAsyncConnect } from 'redux-connect';
@@ -23,7 +24,7 @@ export const history = createBrowserHistory();
 
 initSentry(Sentry);
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production' && cookie.load('auth_token')) {
   import('offline-plugin/runtime').then((plugin) => plugin.install());
 }
 
