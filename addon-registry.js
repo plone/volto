@@ -3,6 +3,7 @@ const path = require('path');
 const fs = require('fs');
 
 const { map } = require('lodash');
+const { DepGraph } = require('dependency-graph');
 
 function getPackageBasePath(base) {
   while (!fs.existsSync(`${base}/package.json`)) {
@@ -17,6 +18,56 @@ function fromEntries(pairs) {
     res[p[0]] = p[1];
   });
   return res;
+}
+
+/**
+ * Given an addons loader string, it generates an addons loader string with
+ * a resolved chain of dependencies
+ */
+function getAddonsLoaderChain(addons, extractDependency) {
+  const graph = new DepGraph({ circular: true });
+  graph.addNode('@package');
+
+  const seen = [];
+  const stack = [['@package', addons]];
+
+  while (stack.length > 0) {
+    const [pkgName, addons] = stack.shift();
+    if (!graph.hasNode(pkgName)) {
+      graph.addNode(pkgName, []);
+    }
+
+    if (!seen.includes(pkgName)) {
+      stack.push([pkgName, extractDependency(pkgName)]);
+      seen.push(pkgName);
+    }
+
+    addons.forEach((loaderString) => {
+      const [name, extra] = loaderString.split(':');
+      if (!graph.hasNode(name)) {
+        graph.addNode(name, []);
+      }
+
+      const data = graph.getNodeData(name) || [];
+      if (extra) {
+        extra.split(',').forEach((funcName) => {
+          if (!data.includes(funcName)) data.push(funcName);
+        });
+      }
+      graph.setNodeData(name, data);
+
+      graph.addDependency(pkgName, name);
+
+      if (!seen.includes(name)) {
+        stack.push([name, extractDependency(name)]);
+      }
+    });
+  }
+
+  return graph.dependenciesOf('@package').map((name) => {
+    const extras = graph.getNodeData(name) || [].join(',');
+    return extras.length ? `${name}:${extras}` : name;
+  });
 }
 
 /*
@@ -89,6 +140,7 @@ class AddonConfigurationRegistry {
    * default.
    */
   initPublishedPackages() {
+    // TODO: discover dependencies and treat them as addons
     this.addonNames.forEach((name) => {
       if (!(name in this.packages)) {
         const basePath = `${this.projectRootPath}/node_modules/${name}`;
@@ -272,6 +324,11 @@ class AddonConfigurationRegistry {
     });
     return aliases;
   }
+
+  getAddonDependencies(name) {
+    return this.packages[name].dependencies;
+  }
 }
 
 module.exports = AddonConfigurationRegistry;
+module.exports.getAddonsLoaderChain = getAddonsLoaderChain;

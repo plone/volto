@@ -1,5 +1,6 @@
 const path = require('path');
 const AddonConfigurationRegistry = require('../addon-registry');
+const getAddonsLoaderChain = require('../addon-registry').getAddonsLoaderChain;
 
 describe('AddonConfigurationRegistry', () => {
   it('works in Volto', () => {
@@ -96,5 +97,53 @@ describe('AddonConfigurationRegistry', () => {
       '@plone/volto/server': `${base}/addons/test-addon/src/custom-addons/volto/server.jsx`,
       'test-released-source-addon/index': `${base}/addons/test-addon/src/custom-addons/test-released-source-addon/index.js`,
     });
+  });
+});
+
+describe('Addon chain loading dependencies', () => {
+  const depTree = {
+    add0: ['add1'],
+    add1: ['add2:e0', 'add4'],
+    add2: ['add3:e6', 'add5', 'add6'],
+    add3: ['add0'],
+    add4: ['add2:e1,e3'],
+    add5: ['add6'],
+  };
+  const extractor = (name) => depTree[name] || [];
+
+  test('no addons', () => {
+    const deps = getAddonsLoaderChain([], extractor);
+    expect(deps).toEqual([]);
+  });
+
+  test('one addon', () => {
+    const deps = getAddonsLoaderChain(['volto-addon1'], extractor);
+    expect(deps).toEqual(['volto-addon1']);
+  });
+
+  test('two addons', () => {
+    const deps = getAddonsLoaderChain(
+      ['volto-addon1', 'volto-addon2'],
+      extractor,
+    );
+    expect(deps).toEqual(['volto-addon1', 'volto-addon2']);
+  });
+
+  test('one addon with dependency', () => {
+    const deps = getAddonsLoaderChain(['add5'], extractor);
+    expect(deps).toEqual(['add6', 'add5']);
+  });
+
+  test('one addon with circular dependencies', () => {
+    const deps = getAddonsLoaderChain(['add0'], extractor);
+    expect(deps).toEqual([
+      'add3:e6',
+      'add6',
+      'add5',
+      'add2:e0,e1,e3',
+      'add4',
+      'add1',
+      'add0',
+    ]);
   });
 });
