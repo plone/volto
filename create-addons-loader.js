@@ -87,13 +87,15 @@ export default load;
   return buf;
 }
 
-module.exports = (addons) => {
+module.exports = (registry) => {
+  const addons = registry.packageJson.addons || [];
+
   // const addonsLoaderPath = path.join(
   //   process.cwd(),
   //   'src',
   //   'load-volto-addons.js',
   // );
-  //
+
   const addonsLoaderPath = tmp.tmpNameSync({ postfix: '.js' });
   const code = getAddonsLoaderCode(addons);
   fs.writeFileSync(addonsLoaderPath, new Buffer.from(code));
