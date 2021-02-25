@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Allow addons to specify their own dependencies in their package.json `addons` key, just like the regular Volto projects. This means that it's no longer required to list all possible addons in the Volto project and they can be bootstrapped as being part of a dependency @tiberiuichim
+
 ### Bugfix
 
 ### Internal
