@@ -1,6 +1,9 @@
 const path = require('path');
 const AddonConfigurationRegistry = require('../addon-registry');
-const getAddonsLoaderChain = require('../addon-registry').getAddonsLoaderChain;
+const {
+  buildDependencyGraph,
+  getAddonsLoaderChain,
+} = AddonConfigurationRegistry;
 
 describe('AddonConfigurationRegistry', () => {
   it('works in Volto', () => {
@@ -28,14 +31,14 @@ describe('AddonConfigurationRegistry', () => {
     expect(reg.packages).toEqual({
       'test-addon': {
         extraConfigLoaders: [],
-        isAddon: false,
+        isPublishedPackage: false,
         modulePath: `${base}/addons/test-addon/src`,
         name: 'test-addon',
         packageJson: `${base}/addons/test-addon/package.json`,
       },
       'test-released-addon': {
         extraConfigLoaders: ['extra'],
-        isAddon: true,
+        isPublishedPackage: true,
         modulePath: `${base}/node_modules/test-released-addon`,
         name: 'test-released-addon',
         packageJson: `${base}/node_modules/test-released-addon/package.json`,
@@ -43,7 +46,7 @@ describe('AddonConfigurationRegistry', () => {
       },
       'test-released-source-addon': {
         extraConfigLoaders: [],
-        isAddon: true,
+        isPublishedPackage: true,
         modulePath: `${base}/node_modules/test-released-source-addon/src`,
         name: 'test-released-source-addon',
         packageJson: `${base}/node_modules/test-released-source-addon/package.json`,
@@ -112,30 +115,35 @@ describe('Addon chain loading dependencies', () => {
   const extractor = (name) => depTree[name] || [];
 
   test('no addons', () => {
-    const deps = getAddonsLoaderChain([], extractor);
+    const graph = buildDependencyGraph([], extractor);
+    const deps = getAddonsLoaderChain(graph);
     expect(deps).toEqual([]);
   });
 
   test('one addon', () => {
-    const deps = getAddonsLoaderChain(['volto-addon1'], extractor);
+    const graph = buildDependencyGraph(['volto-addon1'], extractor);
+    const deps = getAddonsLoaderChain(graph);
     expect(deps).toEqual(['volto-addon1']);
   });
 
   test('two addons', () => {
-    const deps = getAddonsLoaderChain(
+    const graph = buildDependencyGraph(
       ['volto-addon1', 'volto-addon2'],
       extractor,
     );
+    const deps = getAddonsLoaderChain(graph);
     expect(deps).toEqual(['volto-addon1', 'volto-addon2']);
   });
 
   test('one addon with dependency', () => {
-    const deps = getAddonsLoaderChain(['add5'], extractor);
+    const graph = buildDependencyGraph(['add5'], extractor);
+    const deps = getAddonsLoaderChain(graph);
     expect(deps).toEqual(['add6', 'add5']);
   });
 
   test('one addon with circular dependencies', () => {
-    const deps = getAddonsLoaderChain(['add0'], extractor);
+    const graph = buildDependencyGraph(['add0'], extractor);
+    const deps = getAddonsLoaderChain(graph);
     expect(deps).toEqual([
       'add3:e6',
       'add6',

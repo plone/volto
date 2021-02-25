@@ -20,15 +20,12 @@ function fromEntries(pairs) {
   return res;
 }
 
-/**
- * Given an addons loader string, it generates an addons loader string with
- * a resolved chain of dependencies
- */
-function getAddonsLoaderChain(addons, extractDependency) {
+function buildDependencyGraph(addons, extractDependency) {
+  // getAddonsLoaderChain
   const graph = new DepGraph({ circular: true });
   graph.addNode('@package');
 
-  const seen = [];
+  const seen = ['@package'];
   const stack = [['@package', addons]];
 
   while (stack.length > 0) {
@@ -64,13 +61,21 @@ function getAddonsLoaderChain(addons, extractDependency) {
     });
   }
 
+  return graph;
+}
+
+/**
+ * Given an addons loader string, it generates an addons loader string with
+ * a resolved chain of dependencies
+ */
+function getAddonsLoaderChain(graph) {
   return graph.dependenciesOf('@package').map((name) => {
     const extras = graph.getNodeData(name) || [].join(',');
     return extras.length ? `${name}:${extras}` : name;
   });
 }
 
-/*
+/**
  * A registry to discover and publish information about the structure of Volto
  * projects and their addons.
  *
@@ -78,7 +83,7 @@ function getAddonsLoaderChain(addons, extractDependency) {
  * packages, structured as an object with the following information:
  *
  * - name
- * - isAddon (to distinguish addons from other Javascript development packages)
+ * - isPublishedPackage (just for info, to distinguish addons from other Javascript development packages)
  * - modulePath (the path that would be resolved from Javascript package name)
  * - packageJson (the path to the addon's package.json file)
  * - extraConfigLoaders (names for extra functions to be loaded from the addon
@@ -106,12 +111,21 @@ class AddonConfigurationRegistry {
     this.initDevelopmentPackages();
     this.initPublishedPackages();
 
+    this.dependencyGraph = buildDependencyGraph(
+      packageJson.addons || [],
+      (name) => {
+        this.initPublishedPackage(name);
+        return this.packages[name].addons || [];
+      },
+    );
+
     this.initRazzleExtenders();
     this.initAddonLoaders();
   }
 
-  /*
+  /**
    * Use jsconfig.js to get paths for "development" packages/addons (coming from mrs.developer.json)
+   * Not all of these packages have to be Volto addons.
    */
   initDevelopmentPackages() {
     if (fs.existsSync(`${this.projectRootPath}/jsconfig.json`)) {
@@ -124,7 +138,7 @@ class AddonConfigurationRegistry {
         const pkg = {
           modulePath: packagePath,
           packageJson: `${getPackageBasePath(packagePath)}/package.json`,
-          isAddon: false,
+          isPublishedPackage: false,
           name,
         };
 
@@ -133,7 +147,7 @@ class AddonConfigurationRegistry {
     }
   }
 
-  /*
+  /**
    * Add path to the "src" of npm-released packages. These packages can
    * release their source code in src, or transpile. The "main" of their
    * package.json needs to point to the module that exports `applyConfig` as
@@ -141,24 +155,26 @@ class AddonConfigurationRegistry {
    */
   initPublishedPackages() {
     // TODO: discover dependencies and treat them as addons
-    this.addonNames.forEach((name) => {
-      if (!(name in this.packages)) {
-        const basePath = `${this.projectRootPath}/node_modules/${name}`;
-        const packageJson = `${basePath}/package.json`;
-        const pkg = require(packageJson);
-        const main = pkg.main || 'src/index.js';
-        const modulePath = path.dirname(require.resolve(`${basePath}/${main}`));
-        this.packages[name] = {
-          name,
-          isAddon: true,
-          modulePath,
-          packageJson,
-        };
-      }
-    });
+    this.addonNames.forEach((name) => this.initPublishedPackage);
   }
 
-  /*
+  initPublishedPackage(name) {
+    if (!(name in this.packages)) {
+      const basePath = `${this.projectRootPath}/node_modules/${name}`;
+      const packageJson = `${basePath}/package.json`;
+      const pkg = require(packageJson);
+      const main = pkg.main || 'src/index.js';
+      const modulePath = path.dirname(require.resolve(`${basePath}/${main}`));
+      this.packages[name] = {
+        name,
+        isPublishedPackage: true,
+        modulePath,
+        packageJson,
+      };
+    }
+  }
+
+  /**
    * Allow addons to provide razzle.config extenders. These extenders
    * modules (named razzle.extend.js) need to provide two functions:
    * `plugins(defaultPlugins) => plugins` and
@@ -174,9 +190,10 @@ class AddonConfigurationRegistry {
     });
   }
 
-  /*
+  /**
    * Maps extra configuration loaders for addons:
    * - extra loaders (from the addon loader string in package.addons
+   *  TODO: where in the ecosystem is this used?
    */
   initAddonLoaders() {
     (this.packageJson.addons || []).forEach((addonConfigString) => {
@@ -192,13 +209,17 @@ class AddonConfigurationRegistry {
     });
   }
 
-  /*
+  /**
    * Returns the addon records, respects order from package.json:addons
    */
   getAddons() {
-    return (this.packageJson.addons || []).map(
-      (s) => this.packages[s.split(':')[0]],
-    );
+    return this.dependencyGraph
+      .dependenciesOf('@package')
+      .map((name) => this.packages[name]);
+
+    // return (this.packageJson.addons || []).map(
+    //   (s) => this.packages[s.split(':')[0]],
+    // );
   }
 
   getAddonExtenders() {
@@ -207,7 +228,7 @@ class AddonConfigurationRegistry {
       .filter((e) => e);
   }
 
-  /*
+  /**
    * Returns a mapping name:diskpath to be uses in webpack's resolve aliases
    */
   getResolveAliases() {
@@ -218,7 +239,7 @@ class AddonConfigurationRegistry {
     return fromEntries(pairs);
   }
 
-  /*
+  /**
    * Retrieves a mapping (to be used in resolve aliases) of module name to
    * filestype paths, to be used as customization paths.
    *
@@ -232,7 +253,6 @@ class AddonConfigurationRegistry {
    * addons along with Volto customization, so we need separate folders. By
    * convention, we use a folder called "volto" inside customizations folder
    * and separate folder for each addon, identified by its addon (package) name.
-   *
    */
   getCustomizationPaths(packageJson, rootPath) {
     const aliases = {};
@@ -301,7 +321,7 @@ class AddonConfigurationRegistry {
     return this.getCustomizationPaths(this.packageJson, this.projectRootPath);
   }
 
-  /*
+  /**
    * Allow addons to customize Volto and other addons.
    *
    * We follow the same logic for overriding as the main `package.json:addons`.
@@ -309,7 +329,6 @@ class AddonConfigurationRegistry {
    * means: customization in volto-addonA will potentially be rewritten by
    * customizations in volto-addonB if the declaration in package.json is like:
    * `addons:volto-addonA,volto-addonB`
-   *
    */
   getAddonCustomizationPaths() {
     let aliases = {};
@@ -325,10 +344,14 @@ class AddonConfigurationRegistry {
     return aliases;
   }
 
-  getAddonDependencies(name) {
-    return this.packages[name].dependencies;
+  /**
+   * Returns an agregated, dependency-resolved list of addon loader strings
+   */
+  getAddonDependencies() {
+    return getAddonsLoaderChain(this.dependencyGraph);
   }
 }
 
 module.exports = AddonConfigurationRegistry;
 module.exports.getAddonsLoaderChain = getAddonsLoaderChain;
+module.exports.buildDependencyGraph = buildDependencyGraph;

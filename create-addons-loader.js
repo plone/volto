@@ -87,9 +87,7 @@ export default load;
   return buf;
 }
 
-module.exports = (registry) => {
-  const addons = registry.packageJson.addons || [];
-
+module.exports = (addons) => {
   // const addonsLoaderPath = path.join(
   //   process.cwd(),
   //   'src',

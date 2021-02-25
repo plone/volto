@@ -145,12 +145,7 @@ function makeAddonLoader(addons, load = true) {
       : require.resolve(name),
   );
 
-  const registry = {
-    packageJson: {
-      addons,
-    },
-  };
-  const loaderPath = getLoader(registry); // addons
+  const loaderPath = getLoader(addons);
 
   transpile(loaderPath);
 
