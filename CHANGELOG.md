@@ -7,10 +7,17 @@
 ### Feature
 
 - Improved comments @rexalex @avoinea
+- New breadcrumbs `INavigationRoot` aware for the *Home* icon. This allows inner subsites navigation and better support for multilingual sites.  @sneridagh
+- A new setting, `config.settings.storeExtenders` which allows customization of used Redux middleware @tiberiuichim
+- Introduce `config.settings.asyncPropsExtenders` which allows customizing, per route, the `asyncConnected` actions @tiberiuichim @sneridagh
 
 ### Bugfix
 
+- Fix UniversalLink for download link. @giuliaghisini
+
 ### Internal
+
+- Fork redux-connect code in `src/helpers/AsyncConnect`, to allow mixing in config-based asyncConnects. Provide a webpack alias that overloads the redux-connect imports. @tiberiuichim
 
 ## 12.0.0 (2021-02-20)
 
