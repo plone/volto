@@ -2,17 +2,13 @@
 
 ## 12.1.1 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Import asyncConnected actions directly from actions module, the resolution order is different in projects @tiberiuichim @avoinea
 
-### Internal
-
 ## 12.1.0 (2021-02-24)
+
+**This is a brown bag release and should not be used, upgrade to Volto 12.1.1 instead.**
 
 ### Feature
 
