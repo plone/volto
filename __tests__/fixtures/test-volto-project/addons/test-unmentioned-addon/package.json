@@ -1,0 +1,6 @@
+{
+  "name": "test-unmentioned-addon",
+  "customizationPaths": [
+    "src/custom-addons"
+  ]
+}
