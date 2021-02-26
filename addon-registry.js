@@ -159,7 +159,7 @@ class AddonConfigurationRegistry {
    */
   initPublishedPackages() {
     // TODO: discover dependencies and treat them as addons
-    this.addonNames.forEach((name) => this.initPublishedPackage);
+    this.addonNames.forEach(this.initPublishedPackage.bind(this));
   }
 
   initPublishedPackage(name) {
