@@ -2,8 +2,6 @@ import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import config from '@plone/volto/registry';
 import { matchRoutes } from 'react-router-config';
-import { isPromise } from './utils';
-import { AsyncConnectWithContext } from './AsyncConnect';
 
 import {
   load,
@@ -11,14 +9,11 @@ import {
   loadFail,
   beginGlobalLoad,
   endGlobalLoad,
-} from '@plone/volto/actions';
-export { loadOnServer, loadAsyncConnect } from './ssr';
+} from '@plone/volto/actions/asyncConnect/asyncConnect';
 
-const identity = (arg) => arg;
-let immutableStateFunc = identity;
-let mutableStateFunc = identity;
-export const getImmutableState = (state) => immutableStateFunc(state);
-export const getMutableState = (state) => mutableStateFunc(state);
+import { isPromise, getMutableState, getImmutableState } from './utils';
+import { AsyncConnectWithContext } from './AsyncConnect';
+export { loadOnServer, loadAsyncConnect } from './ssr';
 
 // options is: { location, store: { dispatch }, route, match, routes }
 const wrapWithDispatch = (Component, asyncItems = []) => {

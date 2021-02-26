@@ -1,6 +1,6 @@
 import { matchRoutes } from 'react-router-config';
 import { mapSeries, isPromise } from './utils';
-import { endGlobalLoad } from '@plone/volto/actions';
+import { endGlobalLoad } from '@plone/volto/actions/asyncConnect/asyncConnect';
 
 export function filterComponents(branch) {
   return branch.reduce((result, { route, match }) => {

@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Import asyncConnected actions directly from actions module, the resolution order is different in projects @tiberiuichim @avoinea
+
 ### Internal
 
 ## 12.1.0 (2021-02-24)
