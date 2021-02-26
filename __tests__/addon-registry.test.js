@@ -59,29 +59,25 @@ describe('AddonConfigurationRegistry', () => {
       'test-released-unmentioned': {
         addons: [],
         isPublishedPackage: true,
-        modulePath:
-          '/home/tibi/work/volto/__tests__/fixtures/test-volto-project/node_modules/test-released-unmentioned',
+        modulePath: `${base}/node_modules/test-released-unmentioned`,
         name: 'test-released-unmentioned',
-        packageJson:
-          '/home/tibi/work/volto/__tests__/fixtures/test-volto-project/node_modules/test-released-unmentioned/package.json',
+        packageJson: `${base}/node_modules/test-released-unmentioned/package.json`,
       },
       'test-released-dummy': {
         addons: ['test-released-unmentioned'],
         isPublishedPackage: false,
-        modulePath:
-          '/home/tibi/work/volto/__tests__/fixtures/test-volto-project/addons/test-released-dummy',
+        modulePath: `${base}/addons/test-released-dummy`,
         name: 'test-released-dummy',
-        packageJson:
-          '/home/tibi/work/volto/__tests__/fixtures/test-volto-project/addons/test-released-dummy/package.json',
+        packageJson: `${base}/addons/test-released-dummy/package.json`,
       },
       // 'test-unmentioned-addon': {
       //   addons: [],
       //   isPublishedPackage: false,
       //   modulePath:
-      //     '/home/tibi/work/volto/__tests__/fixtures/test-volto-project/addons/test-unmentioned-addon/src',
+      //     '${base}/addons/test-unmentioned-addon/src',
       //   name: 'test-unmentioned-addon',
       //   packageJson:
-      //     '/home/tibi/work/volto/__tests__/fixtures/test-volto-project/addons/test-unmentioned-addon/package.json',
+      //     '${base}/addons/test-unmentioned-addon/package.json',
       // },
     });
   });
@@ -92,13 +88,11 @@ describe('AddonConfigurationRegistry', () => {
     expect(reg.getResolveAliases()).toStrictEqual({
       'test-addon': `${base}/addons/test-addon/src`,
       'test-released-addon': `${base}/node_modules/test-released-addon`,
-      'test-released-dummy':
-        '/home/tibi/work/volto/__tests__/fixtures/test-volto-project/addons/test-released-dummy',
+      'test-released-dummy': `${base}/addons/test-released-dummy`,
       'test-released-source-addon': `${base}/node_modules/test-released-source-addon/src`,
-      'test-released-unmentioned':
-        '/home/tibi/work/volto/__tests__/fixtures/test-volto-project/node_modules/test-released-unmentioned',
+      'test-released-unmentioned': `${base}/node_modules/test-released-unmentioned`,
       // 'test-unmentioned-addon':
-      //   '/home/tibi/work/volto/__tests__/fixtures/test-volto-project/addons/test-unmentioned-addon/src',
+      //   '${base}/addons/test-unmentioned-addon/src',
     });
   });
 
