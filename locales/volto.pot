@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2021-02-23T11:43:35.166Z\n"
+"POT-Creation-Date: 2021-02-21T16:45:58.331Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -242,6 +242,7 @@ msgid "Breadcrumbs"
 msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Sidebar/ObjectBrowserNav
 # defaultMessage: Browse
 msgid "Browse"
 msgstr ""
@@ -399,11 +400,6 @@ msgstr ""
 #: components/manage/Controlpanels/ModerateComments
 # defaultMessage: Commenter
 msgid "Commenter"
-msgstr ""
-
-#: components/theme/Comments/Comments
-# defaultMessage: Comments
-msgid "Comments"
 msgstr ""
 
 #: components/manage/Diff/Diff
@@ -919,6 +915,11 @@ msgstr ""
 msgid "Fixed width table cells"
 msgstr ""
 
+#: components/manage/BlockChooser/BlockChooser
+# defaultMessage: Fold
+msgid "Fold"
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: Folder
 msgid "Folder"
@@ -996,11 +997,6 @@ msgstr ""
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Header cell
 msgid "Header cell"
-msgstr ""
-
-#: components/theme/Comments/Comments
-# defaultMessage: Hide Replies
-msgid "Hide Replies"
 msgstr ""
 
 #: components/manage/History/History
@@ -1252,11 +1248,6 @@ msgstr ""
 #: components/manage/Blocks/Listing/ListingSidebar
 # defaultMessage: Listing
 msgid "Listing"
-msgstr ""
-
-#: components/theme/Comments/Comments
-# defaultMessage: Load more...
-msgid "Load more"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
@@ -1539,6 +1530,11 @@ msgstr ""
 msgid "Open menu"
 msgstr ""
 
+#: components/manage/Widgets/ObjectBrowserWidget
+# defaultMessage: Open object browser
+msgid "Open object browser"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Origin
@@ -1782,11 +1778,6 @@ msgstr ""
 msgid "Replace existing file"
 msgstr ""
 
-#: components/theme/Comments/Comments
-# defaultMessage: Reply
-msgid "Reply"
-msgstr ""
-
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -1926,6 +1917,11 @@ msgstr ""
 msgid "Second"
 msgstr ""
 
+#: components/manage/Sidebar/ObjectBrowserNav
+# defaultMessage: Select
+msgid "Select"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: Select a date to add to recurrence
 msgid "Select a date to add to recurrence"
@@ -2026,11 +2022,6 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Show All
 msgid "Show All"
-msgstr ""
-
-#: components/theme/Comments/Comments
-# defaultMessage: Show Replies
-msgid "Show Replies"
 msgstr ""
 
 #: components/manage/Sidebar/Sidebar
@@ -2386,6 +2377,11 @@ msgstr ""
 #: components/theme/Unauthorized/Unauthorized
 # defaultMessage: Unauthorized
 msgid "Unauthorized"
+msgstr ""
+
+#: components/manage/BlockChooser/BlockChooser
+# defaultMessage: Unfold
+msgid "Unfold"
 msgstr ""
 
 #: components/manage/Diff/Diff
@@ -3139,4 +3135,9 @@ msgstr ""
 #: components/manage/Actions/Actions
 # defaultMessage: {title} has been deleted.
 msgid "{title} has been deleted."
+msgstr ""
+
+#: components/theme/Comments/Comments
+# defaultMessage: {user} says:
+msgid "{user} says:"
 msgstr ""

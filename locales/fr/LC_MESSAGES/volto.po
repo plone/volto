@@ -217,6 +217,7 @@ msgid "Breadcrumbs"
 msgstr "Fil d'Ariane"
 
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
 msgstr "Explore"
 
@@ -774,6 +775,10 @@ msgstr ""
 msgid "Fixed width table cells"
 msgstr "Taille de la cellule de la table fixé"
 
+#: components/manage/BlockChooser/BlockChooser
+msgid "Fold"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Folder"
 msgstr "Dossier"
@@ -1277,6 +1282,10 @@ msgstr "Ouvrir dans un nouvel onglet"
 msgid "Open menu"
 msgstr "Ouvrir le menu"
 
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "Open object browser"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Origin"
@@ -1590,6 +1599,10 @@ msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Second"
+msgstr ""
+
+#: components/manage/Sidebar/ObjectBrowserNav
+msgid "Select"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
@@ -1968,6 +1981,10 @@ msgstr "UID"
 #: components/theme/Unauthorized/Unauthorized
 msgid "Unauthorized"
 msgstr "Non autorisé"
+
+#: components/manage/BlockChooser/BlockChooser
+msgid "Unfold"
+msgstr ""
 
 #: components/manage/Diff/Diff
 msgid "Unified"

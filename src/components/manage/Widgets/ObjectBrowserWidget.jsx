@@ -31,6 +31,10 @@ const messages = defineMessages({
     id: 'Delete',
     defaultMessage: 'Delete',
   },
+  openObjectBrowser: {
+    id: 'Open object browser',
+    defaultMessage: 'Open object browser',
+  },
 });
 
 /**
@@ -197,7 +201,15 @@ class ObjectBrowserWidget extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { id, description, value, mode, onChange, isDisabled } = this.props;
+    const {
+      id,
+      description,
+      fieldSet,
+      value,
+      mode,
+      onChange,
+      isDisabled,
+    } = this.props;
 
     let icon =
       mode === 'multiple' || value.length === 0 ? navTreeSVG : clearSVG;
@@ -216,7 +228,10 @@ class ObjectBrowserWidget extends Component {
         {...this.props}
         className={description ? 'help text' : 'text'}
       >
-        <div className="objectbrowser-field">
+        <div
+          className="objectbrowser-field"
+          aria-labelledby={`fieldset-${fieldSet}-field-label-${id}`}
+        >
           <div
             className="selected-values"
             onClick={this.handleSelectedItemsRefClick}
@@ -234,7 +249,14 @@ class ObjectBrowserWidget extends Component {
             )}
           </div>
 
-          <Button onClick={iconAction} className="action" disabled={isDisabled}>
+          <Button
+            aria-label={this.props.intl.formatMessage(
+              messages.openObjectBrowser,
+            )}
+            onClick={iconAction}
+            className="action"
+            disabled={isDisabled}
+          >
             <Icon name={icon} size="18px" />
           </Button>
         </div>
