@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Use correct status code for static files error handling @nzambello
+
 ## 12.1.0 (2021-02-24)
 
 ### Feature
