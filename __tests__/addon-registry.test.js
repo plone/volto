@@ -26,6 +26,7 @@ describe('AddonConfigurationRegistry', () => {
       'test-addon',
       'test-released-addon',
       'test-released-source-addon',
+      'test-released-unmentioned',
     ]);
 
     expect(reg.packages).toEqual({
@@ -43,7 +44,7 @@ describe('AddonConfigurationRegistry', () => {
         modulePath: `${base}/node_modules/test-released-addon`,
         name: 'test-released-addon',
         packageJson: `${base}/node_modules/test-released-addon/package.json`,
-        addons: [],
+        addons: ['test-released-unmentioned:extra1,extra2'],
         // serverConfig: `${base}/node_modules/test-released-addon/server.config.js`,
       },
       'test-released-source-addon': {
@@ -55,6 +56,15 @@ describe('AddonConfigurationRegistry', () => {
         razzleExtender: `${base}/node_modules/test-released-source-addon/razzle.extend.js`,
         addons: [],
       },
+      'test-released-unmentioned': {
+        addons: [],
+        isPublishedPackage: true,
+        modulePath:
+          '/home/tibi/work/volto/__tests__/fixtures/test-volto-project/node_modules/test-released-unmentioned',
+        name: 'test-released-unmentioned',
+        packageJson:
+          '/home/tibi/work/volto/__tests__/fixtures/test-volto-project/node_modules/test-released-unmentioned/package.json',
+      },
     });
   });
 
@@ -65,6 +75,8 @@ describe('AddonConfigurationRegistry', () => {
       'test-addon': `${base}/addons/test-addon/src`,
       'test-released-addon': `${base}/node_modules/test-released-addon`,
       'test-released-source-addon': `${base}/node_modules/test-released-source-addon/src`,
+      'test-released-unmentioned':
+        '/home/tibi/work/volto/__tests__/fixtures/test-volto-project/node_modules/test-released-unmentioned',
     });
   });
 
@@ -80,6 +92,7 @@ describe('AddonConfigurationRegistry', () => {
     const addons = reg.getAddons();
     expect(addons.map((a) => a.name)).toStrictEqual([
       'test-addon',
+      'test-released-unmentioned',
       'test-released-addon',
       'test-released-source-addon',
     ]);
