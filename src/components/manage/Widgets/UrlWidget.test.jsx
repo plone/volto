@@ -20,6 +20,7 @@ test('renders an url widget component', () => {
       <UrlWidget
         id="test-url"
         title="My Url"
+        fieldSet="default"
         onChange={() => {}}
         onBlur={() => {}}
         onClick={() => {}}
