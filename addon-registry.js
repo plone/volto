@@ -134,6 +134,8 @@ class AddonConfigurationRegistry {
       const pathsConfig = jsConfig.paths;
 
       Object.keys(pathsConfig).forEach((name) => {
+        console.log('init devel package', name);
+        if (!this.addonNames.includes(name)) this.addonNames.push(name);
         const packagePath = `${this.projectRootPath}/${jsConfig.baseUrl}/${pathsConfig[name][0]}`;
         const packageJsonPath = `${getPackageBasePath(
           packagePath,
@@ -164,9 +166,12 @@ class AddonConfigurationRegistry {
 
   initPublishedPackage(name) {
     if (!Object.keys(this.packages).includes(name)) {
+      console.log('init published name', name);
       if (!this.addonNames.includes(name)) this.addonNames.push(name);
-      const basePath = `${this.projectRootPath}/node_modules/${name}`;
-      const packageJson = `${basePath}/package.json`;
+      const resolved = require.resolve(name);
+      const basePath = getPackageBasePath(resolved);
+      const packageJson = path.join(basePath, 'package.json');
+      console.log('packageJson', name, packageJson);
       const pkg = require(packageJson);
       const main = pkg.main || 'src/index.js';
       const modulePath = path.dirname(require.resolve(`${basePath}/${main}`));
@@ -201,6 +206,7 @@ class AddonConfigurationRegistry {
    * - extra loaders (from the addon loader string in package.addons
    *  TODO: where in the ecosystem is this used?
    */
+  // TODO: needs to be updated
   initAddonLoaders() {
     (this.packageJson.addons || []).forEach((addonConfigString) => {
       let extras = [];

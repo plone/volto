@@ -175,6 +175,8 @@ const defaultModify = ({
     maxEntrypointSize: 10000000,
   };
 
+  let addonsAsExternals = [];
+
   const babelLoader = config.module.rules.find(babelLoaderFinder);
   const { include } = babelLoader;
   if (packageJson.name !== '@plone/volto') {
@@ -182,14 +184,20 @@ const defaultModify = ({
   }
   // Add babel support external (ie. node_modules npm published packages)
   if (packageJson.addons) {
-    registry.addonNames.forEach((addon) =>
-      include.push(fs.realpathSync(registry.packages[addon].modulePath)),
-    );
+    registry.addonNames.forEach((addon) => {
+      const p = fs.realpathSync(registry.packages[addon].modulePath);
+      if (include.indexOf(p) === -1) {
+        include.push(p);
+        console.log('include addon', addon, p);
+      }
+    });
+    addonsAsExternals = registry.addonNames.map((addon) => new RegExp(addon));
   }
 
-  let addonsAsExternals = [];
-  if (packageJson.addons) {
-    addonsAsExternals = registry.addonNames.map((addon) => new RegExp(addon));
+  if (target === 'node') {
+    console.log('include', include);
+    console.log('----');
+    console.log(registry);
   }
 
   config.externals =
