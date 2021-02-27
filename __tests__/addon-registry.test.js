@@ -32,7 +32,6 @@ describe('AddonConfigurationRegistry', () => {
 
     expect(reg.packages).toEqual({
       'test-addon': {
-        extraConfigLoaders: [],
         isPublishedPackage: false,
         modulePath: `${base}/addons/test-addon/src`,
         name: 'test-addon',
@@ -40,16 +39,13 @@ describe('AddonConfigurationRegistry', () => {
         addons: ['test-released-dummy'],
       },
       'test-released-addon': {
-        extraConfigLoaders: ['extra'],
         isPublishedPackage: true,
         modulePath: `${base}/node_modules/test-released-addon`,
         name: 'test-released-addon',
         packageJson: `${base}/node_modules/test-released-addon/package.json`,
         addons: ['test-released-unmentioned:extra1,extra2'],
-        // serverConfig: `${base}/node_modules/test-released-addon/server.config.js`,
       },
       'test-released-source-addon': {
-        extraConfigLoaders: [],
         isPublishedPackage: true,
         modulePath: `${base}/node_modules/test-released-source-addon/src`,
         name: 'test-released-source-addon',
@@ -71,15 +67,6 @@ describe('AddonConfigurationRegistry', () => {
         name: 'test-released-dummy',
         packageJson: `${base}/addons/test-released-dummy/package.json`,
       },
-      // 'test-unmentioned-addon': {
-      //   addons: [],
-      //   isPublishedPackage: false,
-      //   modulePath:
-      //     '${base}/addons/test-unmentioned-addon/src',
-      //   name: 'test-unmentioned-addon',
-      //   packageJson:
-      //     '${base}/addons/test-unmentioned-addon/package.json',
-      // },
     });
   });
 
@@ -92,8 +79,6 @@ describe('AddonConfigurationRegistry', () => {
       'test-released-dummy': `${base}/addons/test-released-dummy`,
       'test-released-source-addon': `${base}/node_modules/test-released-source-addon/src`,
       'test-released-unmentioned': `${base}/node_modules/test-released-unmentioned`,
-      // 'test-unmentioned-addon':
-      //   '${base}/addons/test-unmentioned-addon/src',
     });
   });
 

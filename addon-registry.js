@@ -116,12 +116,11 @@ class AddonConfigurationRegistry {
       packageJson.addons || [],
       (name) => {
         this.initPublishedPackage(name);
-        return this.packages[name].addons || []; // TODO: implement
+        return this.packages[name].addons || [];
       },
     );
 
     this.initRazzleExtenders();
-    this.initAddonLoaders();
   }
 
   /**
@@ -160,7 +159,6 @@ class AddonConfigurationRegistry {
    * default.
    */
   initPublishedPackages() {
-    // TODO: discover dependencies and treat them as addons
     this.addonNames.forEach(this.initPublishedPackage.bind(this));
   }
 
@@ -200,36 +198,12 @@ class AddonConfigurationRegistry {
   }
 
   /**
-   * Maps extra configuration loaders for addons:
-   * - extra loaders (from the addon loader string in package.addons
-   *  TODO: where in the ecosystem is this used?
-   */
-  // TODO: needs to be updated
-  initAddonLoaders() {
-    (this.packageJson.addons || []).forEach((addonConfigString) => {
-      let extras = [];
-      const addonConfigLoadInfo = addonConfigString.split(':');
-      const pkgName = addonConfigLoadInfo[0];
-      if (addonConfigLoadInfo.length > 1) {
-        extras = addonConfigLoadInfo[1].split(',');
-      }
-
-      const addon = this.packages[pkgName];
-      addon.extraConfigLoaders = extras;
-    });
-  }
-
-  /**
    * Returns the addon records, respects order from package.json:addons
    */
   getAddons() {
     return this.dependencyGraph
       .dependenciesOf('@package')
       .map((name) => this.packages[name]);
-
-    // return (this.packageJson.addons || []).map(
-    //   (s) => this.packages[s.split(':')[0]],
-    // );
   }
 
   getAddonExtenders() {
