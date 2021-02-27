@@ -26,6 +26,7 @@ describe('AddonConfigurationRegistry', () => {
       'test-addon',
       'test-released-addon',
       'test-released-source-addon',
+      'test-released-dummy',
       'test-released-unmentioned',
     ]);
 

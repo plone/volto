@@ -167,7 +167,7 @@ class AddonConfigurationRegistry {
   initPublishedPackage(name) {
     if (!Object.keys(this.packages).includes(name)) {
       if (!this.addonNames.includes(name)) this.addonNames.push(name);
-      const resolved = require.resolve(name);
+      const resolved = require.resolve(name, { paths: [this.projectRootPath] });
       const basePath = getPackageBasePath(resolved);
       const packageJson = path.join(basePath, 'package.json');
       const pkg = require(packageJson);
