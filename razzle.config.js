@@ -188,16 +188,9 @@ const defaultModify = ({
       const p = fs.realpathSync(registry.packages[addon].modulePath);
       if (include.indexOf(p) === -1) {
         include.push(p);
-        console.log('include addon', addon, p);
       }
     });
     addonsAsExternals = registry.addonNames.map((addon) => new RegExp(addon));
-  }
-
-  if (target === 'node') {
-    console.log('include', include);
-    console.log('----');
-    console.log(registry);
   }
 
   config.externals =

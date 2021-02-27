@@ -1,3 +1,4 @@
+/* eslint no-console: 0 */
 const glob = require('glob').sync;
 const path = require('path');
 const fs = require('fs');
@@ -134,7 +135,6 @@ class AddonConfigurationRegistry {
       const pathsConfig = jsConfig.paths;
 
       Object.keys(pathsConfig).forEach((name) => {
-        console.log('init devel package', name);
         if (!this.addonNames.includes(name)) this.addonNames.push(name);
         const packagePath = `${this.projectRootPath}/${jsConfig.baseUrl}/${pathsConfig[name][0]}`;
         const packageJsonPath = `${getPackageBasePath(
@@ -166,12 +166,10 @@ class AddonConfigurationRegistry {
 
   initPublishedPackage(name) {
     if (!Object.keys(this.packages).includes(name)) {
-      console.log('init published name', name);
       if (!this.addonNames.includes(name)) this.addonNames.push(name);
       const resolved = require.resolve(name);
       const basePath = getPackageBasePath(resolved);
       const packageJson = path.join(basePath, 'package.json');
-      console.log('packageJson', name, packageJson);
       const pkg = require(packageJson);
       const main = pkg.main || 'src/index.js';
       const modulePath = path.dirname(require.resolve(`${basePath}/${main}`));
