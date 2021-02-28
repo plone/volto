@@ -99,15 +99,15 @@ const getWidgetByChoices = (props) => {
 };
 
 const getWidgetByItem = (props) => {
-  if (props.items) {
-    return config.widgets.items;
+  if (props.items?.choices) {
+    return config.widgets?.items;
   }
 
   if (props.vocabulary) {
     // If vocabulary exists, then it means it's a choice field in disguise with
     // no widget specified that probably contains a string then we force it
     // to be a select widget instead
-    return config.widgets.items;
+    return config.widgets?.items;
   }
 
   return null;
