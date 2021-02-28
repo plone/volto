@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix addon reducers registration @tiberiuichim
+
 ### Internal
 
 ## 12.1.1 (2021-02-26)
