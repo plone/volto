@@ -88,12 +88,12 @@ const getWidgetByChoices = (props) => {
     return config.widgets.choices;
   }
 
-  if (props.vocabulary) {
-    // If vocabulary exists, then it means it's a choice field in disguise with
-    // no widget specified that probably contains a string then we force it
-    // to be a select widget instead
-    return config.widgets.choices;
-  }
+  // if (props.vocabulary) {
+  //   // If vocabulary exists, then it means it's a choice field in disguise with
+  //   // no widget specified that probably contains a string then we force it
+  //   // to be a select widget instead
+  //   return config.widgets.choices;
+  // }
 
   return null;
 };
@@ -103,12 +103,12 @@ const getWidgetByItem = (props) => {
     return config.widgets?.items;
   }
 
-  if (props.vocabulary) {
-    // If vocabulary exists, then it means it's a choice field in disguise with
-    // no widget specified that probably contains a string then we force it
-    // to be a select widget instead
-    return config.widgets?.items;
-  }
+  // if (props.vocabulary) {
+  //   // If vocabulary exists, then it means it's a choice field in disguise with
+  //   // no widget specified that probably contains a string then we force it
+  //   // to be a select widget instead
+  //   return config.widgets?.items;
+  // }
 
   return null;
 };
