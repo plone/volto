@@ -10,10 +10,9 @@ import { compose } from 'redux';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import moment from 'moment';
 import { Button, Grid, Segment, Container } from 'semantic-ui-react';
-import config from '@plone/volto/registry';
 
 import { addComment, deleteComment, listComments } from '@plone/volto/actions';
-import { getBaseUrl } from '@plone/volto/helpers';
+import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
 import { CommentEditModal, Form } from '@plone/volto/components';
 
 const messages = defineMessages({
@@ -193,7 +192,6 @@ class Comments extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { settings } = config;
     return (
       <Container className="comments">
         <CommentEditModal
@@ -231,7 +229,7 @@ class Comments extends Component {
                 <Button
                   aria-label={this.props.intl.formatMessage(messages.delete)}
                   onClick={this.onDelete}
-                  value={item['@id'].replace(settings.apiPath, '')}
+                  value={flattenToAppURL(item['@id'])}
                   color="red"
                   floated="right"
                 >
@@ -244,7 +242,7 @@ class Comments extends Component {
                   onClick={this.onEdit}
                   floated="right"
                   value={{
-                    id: item['@id'].replace(settings.apiPath, ''),
+                    id: flattenToAppURL(item['@id']),
                     text: item.text.data,
                   }}
                 >
