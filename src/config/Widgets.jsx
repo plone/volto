@@ -59,6 +59,7 @@ export const widgetMapping = {
     'Relation List': ObjectBrowserWidget,
     'Relation Choice': ReferenceWidget,
   },
+  items: SelectWidget,
   choices: SelectWidget,
   type: {
     boolean: CheckboxWidget,

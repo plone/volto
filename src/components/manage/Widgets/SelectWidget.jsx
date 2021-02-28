@@ -341,9 +341,9 @@ export default compose(
 
       // If the schema already has the choices in it, then do not try to get the vocab,
       // even if there is one
-      if (props.choices) {
+      if (props.choices || props.items?.choices) {
         return {
-          choices: props.choices,
+          choices: props.choices || props.items?.choices,
         };
       } else if (vocabState) {
         return {
