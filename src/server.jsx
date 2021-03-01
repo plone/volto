@@ -134,7 +134,9 @@ function setupServer(req, res, next) {
     // Displays error in console
     console.error(error);
 
-    res.status(500).send(`<!doctype html> ${renderToString(errorPage)}`);
+    res
+      .status(error.status)
+      .send(`<!doctype html> ${renderToString(errorPage)}`);
   }
 
   req.app.locals = {

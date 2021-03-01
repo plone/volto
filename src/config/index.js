@@ -32,6 +32,7 @@ import { loadables } from './Loadables';
 import { sentryOptions } from './Sentry';
 import { contentIcons } from './ContentIcons';
 import { imageScales } from './ImageScales';
+import { extendableAsyncConnect } from './AsyncConnected';
 
 import applyAddonConfiguration from 'load-volto-addons';
 
@@ -97,6 +98,7 @@ let config = {
     contentIcons: contentIcons,
     imageScales,
     loadables,
+    extendableAsyncConnect,
     lazyBundles: {
       cms: [
         'prettierStandalone',
