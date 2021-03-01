@@ -1,6 +1,6 @@
 # Change Log
 
-## 12.1.2 (unreleased)
+## 12.1.3 (unreleased)
 
 ### Breaking
 
@@ -11,6 +11,12 @@
 ### Bugfix
 
 ### Internal
+
+## 12.1.2 (2021-02-28)
+
+### Bugfix
+
+- Fix addon reducers registration @tiberiuichim
 
 ## 12.1.1 (2021-02-26)
 

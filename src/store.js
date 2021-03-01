@@ -28,6 +28,7 @@ const configureStore = (initialState, history, apiHelper) => {
     combineReducers({
       router: connectRouter(history),
       ...reducers,
+      ...config.addonReducers,
     }),
     {
       ...initialState,
