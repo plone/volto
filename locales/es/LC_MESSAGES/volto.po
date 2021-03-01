@@ -210,6 +210,7 @@ msgid "Breadcrumbs"
 msgstr "Barra de ruta"
 
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
 msgstr "Navegue"
 
@@ -763,6 +764,10 @@ msgstr ""
 msgid "Fixed width table cells"
 msgstr "Celdas de tabla de ancho fijo"
 
+#: components/manage/BlockChooser/BlockChooser
+msgid "Fold"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Folder"
 msgstr ""
@@ -1266,6 +1271,10 @@ msgstr "Abrir en un nueva pestaña"
 msgid "Open menu"
 msgstr "Abrir menú"
 
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "Open object browser"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Origin"
@@ -1579,6 +1588,10 @@ msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Second"
+msgstr ""
+
+#: components/manage/Sidebar/ObjectBrowserNav
+msgid "Select"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
@@ -1952,6 +1965,10 @@ msgstr ""
 
 #: components/theme/Unauthorized/Unauthorized
 msgid "Unauthorized"
+msgstr ""
+
+#: components/manage/BlockChooser/BlockChooser
+msgid "Unfold"
 msgstr ""
 
 #: components/manage/Diff/Diff

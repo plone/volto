@@ -19,6 +19,7 @@ Array [
           >
             <label
               htmlFor="field-my-field"
+              id="fieldset-default-field-label-my-field"
             >
               My field
             </label>

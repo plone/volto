@@ -19,6 +19,7 @@ exports[`renders a file widget component 1`] = `
           >
             <label
               for="field-my-field"
+              id="fieldset-default-field-label-my-field"
             >
               My field
             </label>

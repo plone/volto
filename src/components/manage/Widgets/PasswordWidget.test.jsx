@@ -19,6 +19,7 @@ test('renders a password widget component', () => {
       <PasswordWidget
         id="my-field"
         title="My field"
+        fieldSet="default"
         onChange={() => {}}
         onBlur={() => {}}
         onClick={() => {}}

@@ -207,6 +207,7 @@ msgid "Breadcrumbs"
 msgstr "パンくず"
 
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
 msgstr "参照"
 
@@ -760,6 +761,10 @@ msgstr "第1"
 msgid "Fixed width table cells"
 msgstr "テーブルのセル幅を固定"
 
+#: components/manage/BlockChooser/BlockChooser
+msgid "Fold"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Folder"
 msgstr "フォルダ"
@@ -1263,6 +1268,10 @@ msgstr "新しいタブで開く"
 msgid "Open menu"
 msgstr "Open menu (未翻訳)"
 
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "Open object browser"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Origin"
@@ -1577,6 +1586,10 @@ msgstr "ユーザーを検索…"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Second"
 msgstr "第2"
+
+#: components/manage/Sidebar/ObjectBrowserNav
+msgid "Select"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Select a date to add to recurrence"
@@ -1950,6 +1963,10 @@ msgstr "UID"
 #: components/theme/Unauthorized/Unauthorized
 msgid "Unauthorized"
 msgstr "Unauthorized(未翻訳)"
+
+#: components/manage/BlockChooser/BlockChooser
+msgid "Unfold"
+msgstr ""
 
 #: components/manage/Diff/Diff
 msgid "Unified"

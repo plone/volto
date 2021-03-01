@@ -18,6 +18,7 @@ exports[`renders a objectBrowser widget component 1`] = `
         >
           <label
             htmlFor="field-my-field"
+            id="fieldset-default-field-label-my-field"
           >
             My field
           </label>
@@ -27,6 +28,7 @@ exports[`renders a objectBrowser widget component 1`] = `
         className="eight wide column"
       >
         <div
+          aria-labelledby="fieldset-default-field-label-my-field"
           className="objectbrowser-field"
         >
           <div
@@ -43,6 +45,7 @@ exports[`renders a objectBrowser widget component 1`] = `
             </div>
           </div>
           <button
+            aria-label="Open object browser"
             className="ui button action"
             onClick={[Function]}
           >
