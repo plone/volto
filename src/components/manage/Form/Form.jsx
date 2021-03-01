@@ -477,7 +477,10 @@ class Form extends Component {
           <BlocksForm
             onChangeFormData={(newFormData) =>
               this.setState({
-                formData: newFormData,
+                formData: {
+                  ...formData,
+                  ...newFormData,
+                },
               })
             }
             onChangeField={this.onChangeField}
