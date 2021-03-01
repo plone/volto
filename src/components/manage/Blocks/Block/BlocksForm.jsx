@@ -42,12 +42,13 @@ const BlocksForm = (props) => {
       disableArrowDown = false,
     } = {},
   ) => {
+    const isMultipleSelection = e.shiftKey;
     if (e.key === 'ArrowUp' && !disableArrowUp) {
-      onFocusPreviousBlock(block, node);
+      onFocusPreviousBlock(block, node, isMultipleSelection);
       e.preventDefault();
     }
     if (e.key === 'ArrowDown' && !disableArrowDown) {
-      onFocusNextBlock(block, node);
+      onFocusNextBlock(block, node, isMultipleSelection);
       e.preventDefault();
     }
     if (e.key === 'Enter' && !disableEnter) {
@@ -56,22 +57,26 @@ const BlocksForm = (props) => {
     }
   };
 
-  const onFocusPreviousBlock = (currentBlock, blockNode) => {
+  const onFocusPreviousBlock = (
+    currentBlock,
+    blockNode,
+    isMultipleSelection,
+  ) => {
     const prev = previousBlockId(properties, currentBlock);
     if (prev === null) return;
 
     blockNode.blur();
 
-    onSelectBlock(prev);
+    onSelectBlock(prev, isMultipleSelection);
   };
 
-  const onFocusNextBlock = (currentBlock, blockNode) => {
+  const onFocusNextBlock = (currentBlock, blockNode, isMultipleSelection) => {
     const next = nextBlockId(properties, currentBlock);
     if (next === null) return;
 
     blockNode.blur();
 
-    onSelectBlock(next);
+    onSelectBlock(next, isMultipleSelection);
   };
 
   const onMutateBlock = (id, value) => {
