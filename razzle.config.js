@@ -100,9 +100,12 @@ const defaultModify = ({
     if (process.env.NODE_ENV === 'production') {
       config.plugins.push(
         new OfflinePlugin({
+          appShell: '/',
           caches: {
             main: [':rest:'],
-            //https://github.com/NekR/offline-plugin/blob/master/docs/caches.md#advanced-usage
+            // Change to `optional` if
+            // do not want them to be preloaded at all (cached only when first loaded)
+            additional: ['*.chunk.js'],
             safeToUseOptionalCaches: true,
           },
           ServiceWorker: {
