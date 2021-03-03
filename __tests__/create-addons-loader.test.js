@@ -144,6 +144,7 @@ function makeAddonLoader(addons, load = true) {
         )}`
       : require.resolve(name),
   );
+
   const loaderPath = getLoader(addons);
 
   transpile(loaderPath);
