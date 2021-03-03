@@ -101,6 +101,14 @@ const defaultModify = ({
       config.plugins.push(
         new OfflinePlugin({
           appShell: '/',
+          cacheMaps: [
+            {
+              match: (requestUrl) => {
+                return new URL('/', requestUrl);
+              },
+              requestTypes: ['navigate'],
+            },
+          ],
           caches: {
             main: [':rest:'],
           },
