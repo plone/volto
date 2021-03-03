@@ -966,6 +966,10 @@ msgstr ""
 msgid "Item(s) pasted."
 msgstr "アイテムがペーストされました。"
 
+#: components/manage/Contents/Contents
+msgid "Item(s) state has been updated."
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 msgid "Items"
 msgstr "アイテム数"
@@ -1032,6 +1036,10 @@ msgstr "リンク先"
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
 msgstr "リスティング"
+
+#: components/manage/Form/ModalForm
+msgid "Loading"
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Location"
@@ -1440,6 +1448,10 @@ msgstr "繰り返しを削除"
 #: components/manage/Contents/Contents
 msgid "Rename"
 msgstr "名前の変更"
+
+#: components/manage/Contents/ContentsRenameModal
+msgid "Rename Items Loading Message"
+msgstr ""
 
 #: components/manage/Contents/ContentsRenameModal
 msgid "Rename items"
@@ -2117,6 +2129,10 @@ msgstr "When this date is reached, the content will nolonger be visible in listi
 #: components/manage/History/History
 msgid "Who"
 msgstr "誰が"
+
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Workflow Change Loading Message"
+msgstr ""
 
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
