@@ -18,6 +18,7 @@
 ### Internal
 
 - Use correct status code for static files error handling @nzambello
+- Remove dangling `.replaces(...` for the apiPath and use flattenToAppURL instead @sneridagh
 
 ## 12.1.2 (2021-02-28)
 
