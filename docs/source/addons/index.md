@@ -8,6 +8,13 @@ Javascript packages that can be included in any Volto project. By doing so we
 can provide code and component reutilization across projects and, of course,
 benefit from open source collaboration.
 
+!!! note
+    By declaring a Javascript package as a "Volto addon", Volto provides
+    several integration features: language features (so they can be transpiled
+    by Babel), whole-process customization via razzle.extend.js and
+    integration with Volto's configuration registry.
+
+
 The addon can be published to an NPM registry or directly installed from github
 by Yarn. By using [mrs-develop](https://github.com/collective/mrs-developer),
 it's possible to have a workflow similar to zc.buildout's mr.developer, where
@@ -335,6 +342,65 @@ to run the `yarn add` command with the `-W` switch:
 ```
 yarn add -W some-dependency
 ```
+
+## Extending Razzle from an addon
+
+Just like you can extend Razzle's configuration from the project, you can do so
+with an addon, as well. You should provide a `razzle.extend.js` file in your
+addon root folder. An example of such file where the theme.config alias is
+changed, to enable a custom Semantic theme inside the addon:
+
+
+```
+const analyzerPlugin = {
+  name: 'bundle-analyzer',
+  options: {
+    analyzerHost: '0.0.0.0',
+    analyzerMode: 'static',
+    generateStatsFile: true,
+    statsFilename: 'stats.json',
+    reportFilename: 'reports.html',
+    openAnalyzer: false,
+  },
+};
+
+const plugins = (defaultPlugins) => {
+  return defaultPlugins.concat([analyzerPlugin]);
+};
+const modify = (config, { target, dev }, webpack) => {
+  const themeConfigPath = `${__dirname}/theme/theme.config`;
+  config.resolve.alias['../../theme.config$'] = themeConfigPath;
+
+  return config;
+};
+
+module.exports = {
+  plugins,
+  modify,
+};
+```
+
+## Addon dependencies
+
+Sometimes your addon depends on another addon. You can declare addon dependency
+in your addon's `addons` key, just like you do in your project. By doing so,
+that other addon's configuration loader is executed first, so you can depend on
+the configuration being already applied. Another benefit is that you'll have
+to declare only the "top level" addon in your project, the dependencies will be
+discovered and automatically treated as Volto addons. For example, volto-slate
+depends on volto-object-widget's configuration being already applied, so
+volto-slate can declare in its package.json:
+
+```
+{
+  "name": "volto-slate",
+  ...
+  "addons": ['@eeacms/volto-object-widget']
+}
+```
+
+And of course, the dependency addon can depend, on its turn, on other addons
+which will be loaded as well. Circular dependencies should be avoided.
 
 ## Testing addons
 

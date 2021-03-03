@@ -255,6 +255,7 @@
     "cypress": "5.6.0",
     "cypress-axe": "0.8.1",
     "cypress-file-upload": "4.1.1",
+    "dependency-graph": "0.10.0",
     "detect-browser": "5.1.0",
     "diff": "3.5.0",
     "draft-js": "0.10.5",
