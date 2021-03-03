@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Adds skiplinks @nzambello
+- Fix some semantic tags as nav @nzambello
 - Allow addons to specify their own dependencies in their package.json `addons` key, just like the regular Volto projects. This means that it's no longer required to list all possible addons in the Volto project and they can be bootstrapped as being part of a dependency @tiberiuichim
 - insert a dimmer with the loading message in the form when the status changes in the content folder. @martina.bustacchini
 

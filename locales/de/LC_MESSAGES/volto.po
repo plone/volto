@@ -2513,6 +2513,18 @@ msgstr "Regel Jahr"
 msgid "rrule_years"
 msgstr "Regel Jahre"
 
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-footer"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-main-content"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-navigation"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "sort"
 msgstr "sortieren"

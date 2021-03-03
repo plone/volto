@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2021-02-21T16:45:58.331Z\n"
+"POT-Creation-Date: 2021-02-24T09:41:44.737Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -3070,6 +3070,21 @@ msgstr ""
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: years
 msgid "rrule_years"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+# defaultMessage: Skip to footer
+msgid "skiplink-footer"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+# defaultMessage: Skip to main content
+msgid "skiplink-main-content"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+# defaultMessage: Skip to navigation
+msgid "skiplink-navigation"
 msgstr ""
 
 #: components/manage/Contents/Contents
