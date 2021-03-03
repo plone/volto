@@ -10,6 +10,8 @@
 
 ### Bugfix
 
+- Enable draftjs links to open in target blank if is external url. @giuliaghisini
+
 ### Internal
 
 - Use correct status code for static files error handling @nzambello
@@ -58,7 +60,7 @@
 
 ### Feature
 
-- New breadcrumbs `INavigationRoot` aware for the *Home* icon. This allows inner subsites navigation and better support for multilingual sites.  @sneridagh
+- New breadcrumbs `INavigationRoot` aware for the _Home_ icon. This allows inner subsites navigation and better support for multilingual sites. @sneridagh
 
 ### Internal
 
