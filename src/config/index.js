@@ -31,6 +31,7 @@ import { loadables } from './Loadables';
 
 import { sentryOptions } from './Sentry';
 import { contentIcons } from './ContentIcons';
+import { imageScales } from './ImageScales';
 
 import applyAddonConfiguration from 'load-volto-addons';
 
@@ -97,6 +98,7 @@ let config = {
       ...sentryOptions,
     },
     contentIcons: contentIcons,
+    imageScales,
     loadables,
     lazyBundles: {
       cms: [
