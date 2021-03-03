@@ -103,10 +103,6 @@ const defaultModify = ({
           appShell: '/',
           caches: {
             main: [':rest:'],
-            // Change to `optional` if
-            // do not want them to be preloaded at all (cached only when first loaded)
-            additional: ['*.chunk.js'],
-            safeToUseOptionalCaches: true,
           },
           ServiceWorker: {
             minify: false,
