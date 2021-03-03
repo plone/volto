@@ -4,10 +4,8 @@ import PropTypes from 'prop-types';
 import { Route } from 'react-router';
 import { renderRoutes } from 'react-router-config';
 import { ReactReduxContext } from 'react-redux';
-import {
-  loadAsyncConnect,
-  getMutableState,
-} from '@plone/volto/helpers/AsyncConnect';
+import { loadAsyncConnect } from './ssr';
+import { getMutableState } from './utils';
 
 export class AsyncConnect extends Component {
   constructor(props) {

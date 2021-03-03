@@ -1,10 +1,12 @@
 # Change Log
 
-## 12.1.1 (unreleased)
+## 12.1.3 (unreleased)
 
 ### Breaking
 
 ### Feature
+
+- insert a dimmer with the loading message in the form when the status changes in the content folder. @martina.bustacchini
 
 ### Bugfix
 
@@ -12,7 +14,22 @@
 
 - Use correct status code for static files error handling @nzambello
 
+## 12.1.2 (2021-02-28)
+
+### Bugfix
+
+- Fix addon reducers registration @tiberiuichim
+
+## 12.1.1 (2021-02-26)
+
+### Bugfix
+
+- Import asyncConnected actions directly from actions module, the resolution order is different in projects @tiberiuichim @avoinea
+
+
 ## 12.1.0 (2021-02-24)
+
+**This is a brown bag release and should not be used, upgrade to Volto 12.1.1 instead.**
 
 ### Feature
 
