@@ -100,15 +100,6 @@ const defaultModify = ({
     if (process.env.NODE_ENV === 'production') {
       config.plugins.push(
         new OfflinePlugin({
-          appShell: '/',
-          cacheMaps: [
-            {
-              match: (requestUrl) => {
-                return new URL('/', requestUrl);
-              },
-              requestTypes: ['navigate'],
-            },
-          ],
           caches: {
             main: [':rest:'],
           },
