@@ -974,6 +974,10 @@ msgstr "Objekt(e) wurde(n) aktualisiert"
 msgid "Item(s) pasted."
 msgstr "Artikel eingefügt."
 
+#: components/manage/Contents/Contents
+msgid "Item(s) state has been updated."
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 msgid "Items"
 msgstr "Elemente"
@@ -1040,6 +1044,10 @@ msgstr "Link auf"
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
 msgstr "Auflistung"
+
+#: components/manage/Form/ModalForm
+msgid "Loading"
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Location"
@@ -1448,6 +1456,10 @@ msgstr "Wiederkehrende Einstellung entfernen"
 #: components/manage/Contents/Contents
 msgid "Rename"
 msgstr "Umbenennen"
+
+#: components/manage/Contents/ContentsRenameModal
+msgid "Rename Items Loading Message"
+msgstr ""
 
 #: components/manage/Contents/ContentsRenameModal
 msgid "Rename items"
@@ -2125,6 +2137,10 @@ msgstr "Wenn dieses Datum erreicht wird, wird der Inhalt nicht länger in Auflis
 #: components/manage/History/History
 msgid "Who"
 msgstr "Wer"
+
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Workflow Change Loading Message"
+msgstr ""
 
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."

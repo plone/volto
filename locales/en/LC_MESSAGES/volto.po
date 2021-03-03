@@ -959,6 +959,10 @@ msgstr ""
 msgid "Item(s) pasted."
 msgstr ""
 
+#: components/manage/Contents/Contents
+msgid "Item(s) state has been updated."
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 msgid "Items"
 msgstr ""
@@ -1024,6 +1028,10 @@ msgstr ""
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
+msgstr ""
+
+#: components/manage/Form/ModalForm
+msgid "Loading"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
@@ -1432,6 +1440,10 @@ msgstr ""
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 msgid "Rename"
+msgstr ""
+
+#: components/manage/Contents/ContentsRenameModal
+msgid "Rename Items Loading Message"
 msgstr ""
 
 #: components/manage/Contents/ContentsRenameModal
@@ -2109,6 +2121,10 @@ msgstr ""
 
 #: components/manage/History/History
 msgid "Who"
+msgstr ""
+
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Workflow Change Loading Message"
 msgstr ""
 
 #: components/manage/Workflow/Workflow
