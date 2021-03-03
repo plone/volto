@@ -6,12 +6,13 @@
 
 ### Feature
 
-- New breadcrumbs `INavigationRoot` aware for the *Home* icon. This allows inner subsites navigation and better support for multilingual sites.  @sneridagh
-
 - insert a dimmer with the loading message in the form when the status changes in the content folder. @martina.bustacchini
+
 ### Bugfix
 
 ### Internal
+
+- Use correct status code for static files error handling @nzambello
 
 ## 12.1.2 (2021-02-28)
 
@@ -24,6 +25,7 @@
 ### Bugfix
 
 - Import asyncConnected actions directly from actions module, the resolution order is different in projects @tiberiuichim @avoinea
+
 
 ## 12.1.0 (2021-02-24)
 
