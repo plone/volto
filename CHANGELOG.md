@@ -2,8 +2,6 @@
 
 ## 12.1.3 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Adds skiplinks @nzambello
