@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix storybook initial config registry setup @sneridagh
+
 ### Internal
 
 ## 12.2.0 (2021-03-03)
