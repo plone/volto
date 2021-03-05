@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Updated "Volto in Production" list @alecghica
+
 ### Bugfix
 
 - Fix storybook initial config registry setup @sneridagh
