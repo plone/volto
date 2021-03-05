@@ -4,6 +4,8 @@
  */
 
 import { last, memoize } from 'lodash';
+import urlRegex from './urlRegex';
+import prependHttp from 'prepend-http';
 import config from '@plone/volto/registry';
 
 /**
@@ -92,7 +94,10 @@ export function flattenToAppURL(url) {
   const { settings } = config;
   return (
     url &&
-    url.replace(settings.internalApiPath, '').replace(settings.apiPath, '')
+    url
+      .replace(settings.internalApiPath, '')
+      .replace(settings.apiPath, '')
+      .replace(settings.publicURL, '')
   );
 }
 
@@ -155,10 +160,29 @@ export function addAppURL(url) {
 export function isInternalURL(url) {
   const { settings } = config;
   return (
+    url.indexOf(settings.publicURL) !== -1 ||
     url.indexOf(settings.internalApiPath) !== -1 ||
     url.indexOf(settings.apiPath) !== -1 ||
     url.charAt(0) === '/' ||
     url.charAt(0) === '.' ||
     url.startsWith('#')
   );
+}
+
+/**
+ * Check if it's a valid url
+ * @method isUrl
+ * @param {string} url URL of the object
+ * @returns {boolean} True if is a valid url
+ */
+export function isUrl(url) {
+  return urlRegex().test(url);
+}
+
+export function normalizeUrl(url) {
+  return prependHttp(url);
+}
+
+export function removeProtocol(url) {
+  return url.replace('https://', '').replace('http://', '');
 }
