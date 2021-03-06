@@ -179,10 +179,22 @@ export function isUrl(url) {
   return urlRegex().test(url);
 }
 
+/**
+ * Normalize URL, adds protocol (if required eg. user has not entered the protocol)
+ * @method normalizeUrl
+ * @param {string} url URL of the object
+ * @returns {boolean} URL with the protocol
+ */
 export function normalizeUrl(url) {
   return prependHttp(url);
 }
 
+/**
+ * Removes protocol from URL (for display)
+ * @method removeProtocol
+ * @param {string} url URL of the object
+ * @returns {string} URL without the protocol part
+ */
 export function removeProtocol(url) {
   return url.replace('https://', '').replace('http://', '');
 }
