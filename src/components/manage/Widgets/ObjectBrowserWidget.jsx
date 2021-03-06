@@ -71,6 +71,7 @@ export class ObjectBrowserWidgetComponent extends Component {
     ]),
     onChange: PropTypes.func.isRequired,
     openObjectBrowser: PropTypes.func.isRequired,
+    allowedExternal: PropTypes.bool,
   };
 
   /**
@@ -84,6 +85,7 @@ export class ObjectBrowserWidgetComponent extends Component {
     error: [],
     value: [],
     mode: 'multiple',
+    allowedExternal: false,
   };
 
   state = {
