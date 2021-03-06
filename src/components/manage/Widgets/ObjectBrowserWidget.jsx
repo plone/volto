@@ -342,6 +342,9 @@ export class ObjectBrowserWidgetComponent extends Component {
                 onKeyDown={this.onKeyDownManualLink}
                 onChange={this.onManualLinkInput}
                 value={this.state.manualLinkInput}
+                placeholder={this.props.intl.formatMessage(
+                  messages.placeholder,
+                )}
               />
             )}
           </div>
