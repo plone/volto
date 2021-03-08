@@ -6,13 +6,13 @@
 
 ### Feature
 
-- Updated "Volto in Production" list @alecghica
-
 ### Bugfix
 
 - Fix storybook initial config registry setup @sneridagh
 
 ### Internal
+
+- Updated "Volto in Production" list @alecghica
 
 ## 12.2.0 (2021-03-03)
 
