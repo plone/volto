@@ -228,7 +228,7 @@ const LinkEntity = connect((state) => ({
   return (
     <UniversalLink
       href={to}
-      openLinkInNewTab={target === '_blank'}
+      openLinkInNewTab={target === '_blank' || undefined}
       download={download}
     >
       {children}

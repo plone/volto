@@ -1,6 +1,10 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import ObjectBrowserNav from './ObjectBrowserNav';
+import { Provider } from 'react-intl-redux';
+import configureStore from 'redux-mock-store';
+
+const mockStore = configureStore();
 
 const currentSearchResults = {
   items: [
@@ -96,13 +100,21 @@ const currentSearchResults = {
 };
 
 test('renders a view image component', () => {
+  const store = mockStore({
+    intl: {
+      locale: 'en',
+      messages: {},
+    },
+  });
   const component = renderer.create(
-    <ObjectBrowserNav
-      currentSearchResults={currentSearchResults}
-      isSelectable={() => {
-        return true;
-      }}
-    />,
+    <Provider store={store}>
+      <ObjectBrowserNav
+        currentSearchResults={currentSearchResults}
+        isSelectable={() => {
+          return true;
+        }}
+      />
+    </Provider>,
   );
   const json = component.toJSON();
   expect(json).toMatchSnapshot();

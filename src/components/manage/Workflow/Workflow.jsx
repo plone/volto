@@ -12,7 +12,7 @@ import { toast } from 'react-toastify';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import getWorkflowMapping from '@plone/volto/constants/Workflows';
 import { Icon, Toast } from '@plone/volto/components';
-import config from '@plone/volto/registry';
+import { flattenToAppURL } from '@plone/volto/helpers';
 
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
@@ -231,9 +231,7 @@ class Workflow extends Component {
    * @returns {undefined}
    */
   transition = (selectedOption) => {
-    this.props.transitionWorkflow(
-      selectedOption.url.replace(config.settings.apiPath, ''),
-    );
+    this.props.transitionWorkflow(flattenToAppURL(selectedOption.url));
     this.setState({ selectedOption });
     toast.success(
       <Toast

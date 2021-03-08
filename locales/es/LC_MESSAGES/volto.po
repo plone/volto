@@ -210,6 +210,7 @@ msgid "Breadcrumbs"
 msgstr "Barra de ruta"
 
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
 msgstr "Navegue"
 
@@ -765,6 +766,10 @@ msgstr ""
 msgid "Fixed width table cells"
 msgstr "Celdas de tabla de ancho fijo"
 
+#: components/manage/BlockChooser/BlockChooser
+msgid "Fold"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Folder"
 msgstr ""
@@ -966,6 +971,10 @@ msgstr ""
 msgid "Item(s) pasted."
 msgstr "Elemento(s) pegado(s)."
 
+#: components/manage/Contents/Contents
+msgid "Item(s) state has been updated."
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 msgid "Items"
 msgstr ""
@@ -1031,6 +1040,10 @@ msgstr "Enlazar a"
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
+msgstr ""
+
+#: components/manage/Form/ModalForm
+msgid "Loading"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
@@ -1260,6 +1273,10 @@ msgstr "Abrir en un nueva pestaña"
 msgid "Open menu"
 msgstr "Abrir menú"
 
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "Open object browser"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Origin"
@@ -1440,6 +1457,10 @@ msgid "Rename"
 msgstr "Renombrar"
 
 #: components/manage/Contents/ContentsRenameModal
+msgid "Rename Items Loading Message"
+msgstr ""
+
+#: components/manage/Contents/ContentsRenameModal
 msgid "Rename items"
 msgstr "Renombrar elementos"
 
@@ -1572,6 +1593,10 @@ msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Second"
+msgstr ""
+
+#: components/manage/Sidebar/ObjectBrowserNav
+msgid "Select"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
@@ -1948,6 +1973,10 @@ msgstr ""
 msgid "Unauthorized"
 msgstr ""
 
+#: components/manage/BlockChooser/BlockChooser
+msgid "Unfold"
+msgstr ""
+
 #: components/manage/Diff/Diff
 msgid "Unified"
 msgstr "Unificado"
@@ -2111,6 +2140,10 @@ msgstr "Cuando se alcanza esta fecha, el contenido ya no será visible en listas
 #: components/manage/History/History
 msgid "Who"
 msgstr "Quien"
+
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Workflow Change Loading Message"
+msgstr ""
 
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
@@ -2482,6 +2515,18 @@ msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_years"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-footer"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-main-content"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-navigation"
 msgstr ""
 
 #: components/manage/Contents/Contents

@@ -219,6 +219,7 @@ msgid "Breadcrumbs"
 msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
 msgstr "Bladeren"
 
@@ -774,6 +775,10 @@ msgstr ""
 msgid "Fixed width table cells"
 msgstr ""
 
+#: components/manage/BlockChooser/BlockChooser
+msgid "Fold"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Folder"
 msgstr ""
@@ -975,6 +980,10 @@ msgstr ""
 msgid "Item(s) pasted."
 msgstr "Item(s) geplakt."
 
+#: components/manage/Contents/Contents
+msgid "Item(s) state has been updated."
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 msgid "Items"
 msgstr ""
@@ -1040,6 +1049,10 @@ msgstr ""
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
+msgstr ""
+
+#: components/manage/Form/ModalForm
+msgid "Loading"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
@@ -1269,6 +1282,10 @@ msgstr ""
 msgid "Open menu"
 msgstr ""
 
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "Open object browser"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Origin"
@@ -1449,6 +1466,10 @@ msgid "Rename"
 msgstr "Naam wijzigen"
 
 #: components/manage/Contents/ContentsRenameModal
+msgid "Rename Items Loading Message"
+msgstr ""
+
+#: components/manage/Contents/ContentsRenameModal
 msgid "Rename items"
 msgstr "Naam wijzigen"
 
@@ -1581,6 +1602,10 @@ msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Second"
+msgstr ""
+
+#: components/manage/Sidebar/ObjectBrowserNav
+msgid "Select"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
@@ -1957,6 +1982,10 @@ msgstr ""
 msgid "Unauthorized"
 msgstr ""
 
+#: components/manage/BlockChooser/BlockChooser
+msgid "Unfold"
+msgstr ""
+
 #: components/manage/Diff/Diff
 msgid "Unified"
 msgstr ""
@@ -2120,6 +2149,10 @@ msgstr "Wanneer deze datum bereikt is zal de inhoud niet langer zichtbaar zijn i
 #: components/manage/History/History
 msgid "Who"
 msgstr "Wie"
+
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Workflow Change Loading Message"
+msgstr ""
 
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
@@ -2491,6 +2524,18 @@ msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_years"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-footer"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-main-content"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-navigation"
 msgstr ""
 
 #: components/manage/Contents/Contents

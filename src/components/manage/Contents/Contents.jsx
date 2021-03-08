@@ -149,6 +149,10 @@ const messages = defineMessages({
     id: 'Item(s) pasted.',
     defaultMessage: 'Item(s) pasted.',
   },
+  messageWorkflowUpdate: {
+    id: 'Item(s) state has been updated.',
+    defaultMessage: 'Item(s) state has been updated.',
+  },
   paste: {
     id: 'Paste',
     defaultMessage: 'Paste',
@@ -852,6 +856,13 @@ class Contents extends Component {
       showWorkflow: false,
       selected: [],
     });
+    this.props.toastify.toast.success(
+      <Toast
+        success
+        title={this.props.intl.formatMessage(messages.success)}
+        content={this.props.intl.formatMessage(messages.messageWorkflowUpdate)}
+      />,
+    );
   }
 
   /**

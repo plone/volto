@@ -26,6 +26,7 @@ test('renders a token widget component', async () => {
       <TokenWidget
         id="my-field"
         title="My field"
+        fieldSet="default"
         onChange={() => {}}
         items={{ vocabulary: { '@id': 'plone.app.vocabularies.Keywords' } }}
       />

@@ -90,9 +90,10 @@ export function getView(url) {
  */
 export function flattenToAppURL(url) {
   const { settings } = config;
-  return url
-    .replace(settings.internalApiPath, '')
-    .replace(settings.apiPath, '');
+  return (
+    url &&
+    url.replace(settings.internalApiPath, '').replace(settings.apiPath, '')
+  );
 }
 
 /**

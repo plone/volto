@@ -2,7 +2,7 @@
 
 exports[`ContextNavigation renders a navigation component with an active item 1`] = `
 <div>
-  <div
+  <nav
     class="context-navigation"
   >
     <div
@@ -78,13 +78,13 @@ exports[`ContextNavigation renders a navigation component with an active item 1`
         </div>
       </div>
     </div>
-  </div>
+  </nav>
 </div>
 `;
 
 exports[`ContextNavigation renders a navigation component with an active item when its subchildren are accessed 1`] = `
 <div>
-  <div
+  <nav
     class="context-navigation"
   >
     <div
@@ -163,7 +163,7 @@ exports[`ContextNavigation renders a navigation component with an active item wh
         </div>
       </div>
     </div>
-  </div>
+  </nav>
 </div>
 `;
 
@@ -175,7 +175,7 @@ exports[`ContextNavigation renders a navigation component with only one active i
 
 exports[`ContextNavigation renders a navigation slot component without active items 1`] = `
 <div>
-  <div
+  <nav
     class="context-navigation"
   >
     <div
@@ -242,6 +242,6 @@ exports[`ContextNavigation renders a navigation slot component without active it
         </div>
       </div>
     </div>
-  </div>
+  </nav>
 </div>
 `;

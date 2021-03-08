@@ -26,6 +26,7 @@ import {
   Icon,
   OutdatedBrowser,
   AppExtras,
+  SkipLinks,
 } from '@plone/volto/components';
 import { BodyClass, getBaseUrl, getView, isCmsUi } from '@plone/volto/helpers';
 import {
@@ -129,6 +130,7 @@ class App extends Component {
             'public-ui': !isCmsUI,
           })}
         />
+        <SkipLinks />
         <Header pathname={path} />
         <Breadcrumbs pathname={path} />
         <MultilingualRedirector pathname={this.props.pathname}>
