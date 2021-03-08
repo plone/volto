@@ -12,6 +12,8 @@
 
 ### Internal
 
+- Add "Humboldt Labor" to show cases.
+
 ## 12.2.0 (2021-03-03)
 
 ### Feature
