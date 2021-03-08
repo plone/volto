@@ -210,7 +210,7 @@ export default compose(
       promise: ({ location, store: { dispatch } }) =>
         __SERVER__ && dispatch(getWorkflow(getBaseUrl(location.pathname))),
     },
-    ...settings.extendableAsyncConnect,
+    ...(settings?.extendableAsyncConnect ?? []),
   ]),
   connect(
     (state, props) => ({

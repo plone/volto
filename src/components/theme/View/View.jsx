@@ -222,6 +222,7 @@ class View extends Component {
     const RenderedView =
       this.getViewByType() || this.getViewByLayout() || this.getViewDefault();
 
+    const ogImage = this.props.content.image?.scales?.large;
     return (
       <div id="view">
         <Helmet>
@@ -236,24 +237,17 @@ class View extends Component {
             property="og:url"
             content={toPublicURL(this.props.content['@id'])}
           />
-          {this.props.content.image?.scales?.large?.download && (
-            <>
-              <meta
-                property="og:image"
-                content={toPublicURL(
-                  this.props.content.image?.scales?.large?.download,
-                )}
-              />
-              <meta
-                property="og:image:width"
-                content={this.props.content.image?.scales?.large?.width}
-              />
-              <meta
-                property="og:image:height"
-                content={this.props.content.image?.scales?.large?.height}
-              />
-            </>
+
+          {ogImage?.download && (
+            <meta property="og:image" content={toPublicURL(ogImage.download)} />
           )}
+          {ogImage?.download && (
+            <meta property="og:image:width" content={ogImage.width} />
+          )}
+          {ogImage?.download && (
+            <meta property="og:image:height" content={ogImage.height} />
+          )}
+
           {this.props.content.description && (
             <meta
               property="og:description"
