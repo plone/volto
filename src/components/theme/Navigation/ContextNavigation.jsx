@@ -80,7 +80,7 @@ export function ContextNavigationComponent(props) {
           {intl.formatMessage(messages.navigation)}
         </div>
       )}
-      <List>{items.map(renderNode)}</List>
+      <List>{items.map((node) => renderNode(node, 0))}</List>
     </nav>
   ) : (
     ''
