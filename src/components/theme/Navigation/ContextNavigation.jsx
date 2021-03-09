@@ -20,9 +20,14 @@ const messages = defineMessages({
   },
 });
 
-function renderNode(node, level) {
+function renderNode(node, parentLevel) {
+  const level = parentLevel + 1;
   return (
-    <List.Item key={node['@id']} active={node.is_current}>
+    <List.Item
+      key={node['@id']}
+      active={node.is_current}
+      className={`level-${level}`}
+    >
       <List.Content>
         <RouterLink
           to={flattenToAppURL(node.href)}
@@ -41,9 +46,10 @@ function renderNode(node, level) {
             ''
           )}
         </RouterLink>
-
         {(node.items?.length && (
-          <List.List>{node.items.map(renderNode)}</List.List>
+          <List.List>
+            {node.items.map((node) => renderNode(node, level))}
+          </List.List>
         )) ||
           ''}
       </List.Content>
