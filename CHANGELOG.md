@@ -9,6 +9,7 @@
 ### Bugfix
 
 - Fix storybook initial config registry setup @sneridagh
+- Search page now follows Plone's ISearchSchema settings @tiberiuichim
 
 ### Internal
 
