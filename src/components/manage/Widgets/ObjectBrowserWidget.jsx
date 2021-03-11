@@ -104,14 +104,15 @@ export class ObjectBrowserWidgetComponent extends Component {
       <Popup
         key={flattenToAppURL(href)}
         content={
-          <>
+          <div style={{ display: 'flex' }}>
             {isInternalURL(href) ? (
               <Icon name={homeSVG} size="18px" />
             ) : (
               <Icon name={blankSVG} size="18px" />
             )}
+            &nbsp;
             {flattenToAppURL(href)}
-          </>
+          </div>
         }
         trigger={
           <Label>
@@ -339,16 +340,18 @@ export class ObjectBrowserWidgetComponent extends Component {
                 {this.props.intl.formatMessage(messages.placeholder)}
               </div>
             )}
-            {items.length === 0 && this.props.mode !== 'multiple' && (
-              <input
-                onKeyDown={this.onKeyDownManualLink}
-                onChange={this.onManualLinkInput}
-                value={this.state.manualLinkInput}
-                placeholder={this.props.intl.formatMessage(
-                  messages.placeholder,
-                )}
-              />
-            )}
+            {this.props.allowExternals &&
+              items.length === 0 &&
+              this.props.mode !== 'multiple' && (
+                <input
+                  onKeyDown={this.onKeyDownManualLink}
+                  onChange={this.onManualLinkInput}
+                  value={this.state.manualLinkInput}
+                  placeholder={this.props.intl.formatMessage(
+                    messages.placeholder,
+                  )}
+                />
+              )}
           </div>
           {this.state.manualLinkInput && isEmpty(items) && (
             <Button.Group>
