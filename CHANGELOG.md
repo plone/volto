@@ -13,6 +13,7 @@
 ### Internal
 
 - Add "Humboldt Labor" to show cases.
+- Updated "Volto in Production" list @alecghica
 
 ## 12.2.0 (2021-03-03)
 
