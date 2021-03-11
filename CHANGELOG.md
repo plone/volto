@@ -12,6 +12,8 @@
 
 ### Internal
 
+- Updated "Volto in Production" list @alecghica
+
 ## 12.2.0 (2021-03-03)
 
 ### Feature
