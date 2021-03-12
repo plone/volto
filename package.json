@@ -38,6 +38,8 @@
     "test:ci": "CI=true razzle test --env=jest-environment-jsdom-sixteen",
     "test:husky": "CI=true yarn test --bail --findRelatedTests",
     "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
+    "test:setup-testing-addon": "cd testing && node setuptestaddon",
+    "test:teardown-testing-addon": "git checkout -- package.json && rm jsconfig.json",
     "start:prod": "NODE_ENV=production node build/server.js",
     "prettier": "./node_modules/.bin/prettier --single-quote --check 'src/**/*.{js,jsx,ts,tsx,json}'",
     "prettier:fix": "./node_modules/.bin/prettier --single-quote --write 'src/**/*.{js,jsx,ts,tsx,json}'",

@@ -12,6 +12,8 @@
 
 ### Internal
 
+- Add testing add-on for enable special testing use cases and configuration options @sneridagh
+
 ## 12.2.0 (2021-03-03)
 
 ### Feature
