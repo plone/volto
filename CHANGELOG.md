@@ -13,6 +13,8 @@
 ### Internal
 
 - Add testing add-on for enable special testing use cases and configuration options @sneridagh
+- Add "Humboldt Labor" to show cases.
+- Updated "Volto in Production" list @alecghica
 
 ## 12.2.0 (2021-03-03)
 
