@@ -30,7 +30,7 @@ Instead, change the "addons" setting in your package.json file.
 const projectConfigLoader = require('@package/config');
 let voltoConfFileConfigLoader;
 try {
-  voltoConfFileConfigLoader = require('@package-root/volto.conf.js');
+  voltoConfFileConfigLoader = require('@package-root/volto.conf');
 } catch (e) {
   voltoConfFileConfigLoader = false;
 }
