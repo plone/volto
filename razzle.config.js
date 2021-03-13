@@ -166,6 +166,7 @@ const defaultModify = ({
     '@plone/volto-original': `${registry.voltoPath}/src`,
     // be able to reference current package from customized package
     '@package': `${projectRootPath}/src`,
+    '@package-root': `${projectRootPath}`,
     // we're incorporating redux-connect
     'redux-connect': `${registry.voltoPath}/src/helpers/AsyncConnect`,
   };
