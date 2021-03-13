@@ -148,6 +148,13 @@ const defaultModify = ({
 
   const addonsLoaderPath = createAddonsLoader(registry.getAddonDependencies());
 
+  let voltoConfFileLocation;
+  if (fs.existsSync(`${projectRootPath}/volto.config.js`)) {
+    voltoConfFileLocation = `${projectRootPath}/volto.config.js`;
+  } else {
+    voltoConfFileLocation = `${registry.voltoPath}/volto.config.js`;
+  }
+
   config.resolve.plugins = [
     new RelativeResolverPlugin(registry),
     new RootResolverPlugin(),
@@ -166,9 +173,9 @@ const defaultModify = ({
     '@plone/volto-original': `${registry.voltoPath}/src`,
     // be able to reference current package from customized package
     '@package': `${projectRootPath}/src`,
-    '@package-root': `${projectRootPath}`,
     // we're incorporating redux-connect
     'redux-connect': `${registry.voltoPath}/src/helpers/AsyncConnect`,
+    '@voltoconf': voltoConfFileLocation,
   };
 
   config.performance = {

@@ -28,12 +28,7 @@ Instead, change the "addons" setting in your package.json file.
 */
 
 const projectConfigLoader = require('@package/config');
-let voltoConfFileConfigLoader;
-try {
-  voltoConfFileConfigLoader = require('@package-root/volto.conf.js');
-} catch (e) {
-  voltoConfFileConfigLoader = false;
-}
+const voltoConfFileConfigLoader = require('@voltoconf');
 `;
   let configsToLoad = [],
     counter = 0;
@@ -75,11 +70,7 @@ const safeWrapper = (func) => (config) => {
 }
 
 const voltoConfFileConfig = (config) => {
-  if (voltoConfFileConfigLoader) {
-    return typeof voltoConfFileConfigLoader.default === "function" ? voltoConfFileConfigLoader.default(config) : config;
-  } else {
-    return config;
-  }
+  return typeof voltoConfFileConfigLoader.default === "function" ? voltoConfFileConfigLoader.default(config) : config;
 }
 
 const projectConfig = (config) => {
