@@ -56,18 +56,21 @@ const server = express()
 
 // Internal proxy to bypass CORS while developing.
 if (__DEVELOPMENT__ && config.settings.devProxyToApiPath) {
+  // This is the proxy to the API in case the accept header is 'application/json'
+  const filter = function (pathname, req) {
+    return req.headers.accept === 'application/json';
+  };
   const apiPathURL = parseUrl(config.settings.apiPath);
   const proxyURL = parseUrl(config.settings.devProxyToApiPath);
   const serverURL = `${proxyURL.protocol}//${proxyURL.host}`;
   const instancePath = proxyURL.pathname;
   server.use(
-    '/api',
-    createProxyMiddleware({
+    createProxyMiddleware(filter, {
       target: serverURL,
       pathRewrite: {
-        '^/api':
+        '^/':
           config.settings.proxyRewriteTarget ||
-          `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot/_vh_api`,
+          `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot/`,
       },
       logLevel: 'silent', // change to 'debug' to see all requests
       ...(config.settings?.proxyRewriteTarget?.startsWith('https') && {

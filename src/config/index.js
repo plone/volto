@@ -39,12 +39,6 @@ import ConfigRegistry from '@plone/volto/registry';
 const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || '3000';
 
-const apiPath =
-  process.env.RAZZLE_API_PATH ||
-  (__DEVELOPMENT__
-    ? `http://${host}:${port}/api`
-    : 'http://localhost:8080/Plone');
-
 const getServerURL = (url) => {
   if (!url) return;
   const apiPathURL = parseUrl(url);
@@ -76,7 +70,8 @@ let config = {
     // Internal proxy to bypass CORS *while developing*. Not intended for production use.
     // In production, the proxy is disabled, make sure you specify an apiPath that does
     // not require CORS to work.
-    apiPath,
+    apiPath: publicURL,
+    // The real path to the API not the Volto internal one (itself)
     devProxyToApiPath:
       process.env.RAZZLE_DEV_PROXY_API_PATH || 'http://localhost:8080/Plone', // Set it to '' for disabling the proxy
     // proxyRewriteTarget Set it for set a custom target for the proxy or overide the internal VHM rewrite
