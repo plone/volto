@@ -16,14 +16,14 @@ import config from '@plone/volto/registry';
 export const getAPIResourceWithAuth = (req) =>
   new Promise((resolve, reject) => {
     const { settings } = config;
-    let apiPath = '';
+    let backendAPIPath = '';
     if (settings.internalApiPath && __SERVER__) {
-      apiPath = settings.internalApiPath;
+      backendAPIPath = settings.internalApiPath;
     } else {
-      apiPath = settings.apiPath;
+      backendAPIPath = settings.backendAPIPath;
     }
     const request = superagent
-      .get(`${apiPath}${req.path}`)
+      .get(`${backendAPIPath}${req.path}`)
       .maxResponseSize(settings.maxResponseSize)
       .responseType('blob');
     const authToken = cookie.load('auth_token');
