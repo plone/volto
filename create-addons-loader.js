@@ -28,7 +28,7 @@ Instead, change the "addons" setting in your package.json file.
 */
 
 const projectConfigLoader = require('@package/config');
-const voltoConfFileConfigLoader = require('@voltoconf');
+const voltoConfFileConfigLoader = require('@voltoconfig');
 `;
   let configsToLoad = [],
     counter = 0;

@@ -175,7 +175,7 @@ const defaultModify = ({
     '@package': `${projectRootPath}/src`,
     // we're incorporating redux-connect
     'redux-connect': `${registry.voltoPath}/src/helpers/AsyncConnect`,
-    '@voltoconf': voltoConfFileLocation,
+    '@voltoconfig': voltoConfFileLocation,
   };
 
   config.performance = {
