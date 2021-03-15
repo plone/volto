@@ -61,6 +61,10 @@ describe('Url', () => {
       expect(flattenToAppURL(`${settings.apiPath}/edit`)).toBe('/edit');
     });
 
+    it('does not fail if url is undefined', () => {
+      expect(flattenToAppURL()).toBe(undefined);
+    });
+
     it('flattens a given URL to the app URL, with settings.internalApiPath', () => {
       const url = 'http://plone:8080/Plone/something';
       const saved = settings.internalApiPath;

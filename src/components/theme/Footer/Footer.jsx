@@ -29,6 +29,7 @@ const Footer = ({ intl }) => (
     inverted
     color="grey"
     textAlign="center"
+    id="footer"
   >
     <Container>
       <Segment basic inverted color="grey" className="discreet">

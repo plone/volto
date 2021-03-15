@@ -62,7 +62,7 @@ export function ContextNavigationComponent(props) {
   const intl = useIntl();
 
   return items.length ? (
-    <div className="context-navigation">
+    <nav className="context-navigation">
       {navigation.has_custom_name ? (
         <div className="context-navigation-header">
           <RouterLink to={flattenToAppURL(navigation.url || '')}>
@@ -75,7 +75,7 @@ export function ContextNavigationComponent(props) {
         </div>
       )}
       <List>{items.map(renderNode)}</List>
-    </div>
+    </nav>
   ) : (
     ''
   );

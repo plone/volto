@@ -10,8 +10,7 @@ import {
   listMoreComments,
 } from '@plone/volto/actions';
 import { Avatar, CommentEditModal, Form } from '@plone/volto/components';
-import { getBaseUrl, getColor } from '@plone/volto/helpers';
-import config from '@plone/volto/registry';
+import { flattenToAppURL, getBaseUrl, getColor } from '@plone/volto/helpers';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
@@ -20,6 +19,7 @@ import { Portal } from 'react-portal';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Button, Comment, Container, Icon } from 'semantic-ui-react';
+// import { Button, Grid, Segment, Container } from 'semantic-ui-react';
 
 const messages = defineMessages({
   comment: {
@@ -301,7 +301,6 @@ class Comments extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { settings } = config;
     const { items } = this.props;
     const { collapsedComments } = this.state;
     // object with comment ids, to easily verify if any comment has children
@@ -352,13 +351,13 @@ class Comments extends Component {
               <Comment.Action
                 onClick={() =>
                   this.onEdit({
-                    id: comment['@id'].replace(settings.apiPath, ''),
+                    id: flattenToAppURL(comment['@id']),
                     text: comment.text.data,
                   })
                 }
                 aria-label={this.props.intl.formatMessage(messages.edit)}
                 value={{
-                  id: comment['@id'].replace(settings.apiPath, ''),
+                  id: flattenToAppURL(comment['@id']),
                   text: comment.text.data,
                 }}
               >
@@ -368,9 +367,7 @@ class Comments extends Component {
             {comment.is_deletable && (
               <Comment.Action
                 aria-label={this.props.intl.formatMessage(messages.delete)}
-                onClick={() =>
-                  this.onDelete(comment['@id'].replace(settings.apiPath, ''))
-                }
+                onClick={() => this.onDelete(flattenToAppURL(comment['@id']))}
                 color="red"
               >
                 <Icon name="delete" color="red" />

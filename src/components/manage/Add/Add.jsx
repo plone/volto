@@ -23,6 +23,7 @@ import { Form, Icon, Toolbar, Sidebar, Toast } from '@plone/volto/components';
 import {
   getBaseUrl,
   hasBlocksData,
+  flattenToAppURL,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
 } from '@plone/volto/helpers';
@@ -150,8 +151,7 @@ class Add extends Component {
       nextProps.content['@type'] === this.props.type
     ) {
       this.props.history.push(
-        this.props.returnUrl ||
-          nextProps.content['@id'].replace(config.settings.apiPath, ''),
+        this.props.returnUrl || flattenToAppURL(nextProps.content['@id']),
       );
     }
 
