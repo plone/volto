@@ -7,7 +7,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { asyncConnect } from 'redux-connect';
+import { asyncConnect } from '@plone/volto/helpers';
 import { Segment } from 'semantic-ui-react';
 import { renderRoutes } from 'react-router-config';
 import { Slide, ToastContainer, toast } from 'react-toastify';
@@ -15,8 +15,7 @@ import split from 'lodash/split';
 import join from 'lodash/join';
 import trim from 'lodash/trim';
 import cx from 'classnames';
-
-import { settings, views } from '~/config';
+import config from '@plone/volto/registry';
 
 import Error from '@plone/volto/error';
 
@@ -27,6 +26,7 @@ import {
   Icon,
   OutdatedBrowser,
   AppExtras,
+  SkipLinks,
 } from '@plone/volto/components';
 import { BodyClass, getBaseUrl, getView, isCmsUi } from '@plone/volto/helpers';
 import {
@@ -98,6 +98,7 @@ class App extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const { views } = config;
     const path = getBaseUrl(this.props.pathname);
     const action = getView(this.props.pathname);
     const isCmsUI = isCmsUi(this.props.pathname);
@@ -128,6 +129,7 @@ class App extends Component {
             'public-ui': !isCmsUI,
           })}
         />
+        <SkipLinks />
         <Header pathname={path} />
         <Breadcrumbs pathname={path} />
         <MultilingualRedirector pathname={this.props.pathname}>
@@ -197,7 +199,10 @@ export default compose(
       promise: ({ location, store: { dispatch } }) =>
         __SERVER__ &&
         dispatch(
-          getNavigation(getBaseUrl(location.pathname), settings.navDepth),
+          getNavigation(
+            getBaseUrl(location.pathname),
+            config.settings.navDepth,
+          ),
         ),
     },
     {

@@ -8,8 +8,7 @@ import PropTypes from 'prop-types';
 import { Table } from 'semantic-ui-react';
 import { map } from 'lodash';
 import redraft from 'redraft';
-
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 /**
  * View table block class.
@@ -38,8 +37,8 @@ const View = ({ data }) =>
                 {cell.value && cell.value.blocks && cell.value.blocks[0].text
                   ? redraft(
                       cell.value,
-                      settings.ToHTMLRenderers,
-                      settings.ToHTMLOptions,
+                      config.settings.ToHTMLRenderers,
+                      config.settings.ToHTMLOptions,
                     )
                   : '\u00A0'}
               </Table.Cell>

@@ -31,6 +31,10 @@ const messages = defineMessages({
     defaultMessage:
       'Select the transition to be used for modifying the items state.',
   },
+  loadingMessage: {
+    id: 'Workflow Change Loading Message',
+    defaultMessage: 'Updating workflow states...',
+  },
 });
 
 /**
@@ -133,6 +137,10 @@ class ContentsWorkflowModal extends Component {
       this.props.workflows.length > 0 && (
         <ModalForm
           open={this.props.open}
+          loading={this.props.request.loading}
+          loadingMessage={this.props.intl.formatMessage(
+            messages.loadingMessage,
+          )}
           onSubmit={this.onSubmit}
           onCancel={this.props.onCancel}
           title={this.props.intl.formatMessage(messages.stateTitle)}

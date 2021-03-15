@@ -207,6 +207,7 @@ msgid "Breadcrumbs"
 msgstr "Nabigazio arrastoa"
 
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
 msgstr "Arakatu"
 
@@ -760,6 +761,10 @@ msgstr "Lehenengo"
 msgid "Fixed width table cells"
 msgstr "Tamaina finkoko taularen zeldak"
 
+#: components/manage/BlockChooser/BlockChooser
+msgid "Fold"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Folder"
 msgstr "Karpeta"
@@ -961,6 +966,10 @@ msgstr ""
 msgid "Item(s) pasted."
 msgstr "Elementuak ondo itsatsi dira."
 
+#: components/manage/Contents/Contents
+msgid "Item(s) state has been updated."
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 msgid "Items"
 msgstr "Elementuak"
@@ -1027,6 +1036,10 @@ msgstr "Esteka"
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
 msgstr "Zerrenda"
+
+#: components/manage/Form/ModalForm
+msgid "Loading"
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Location"
@@ -1255,6 +1268,10 @@ msgstr "Fitxa berrian ireki"
 msgid "Open menu"
 msgstr "Menua ireki"
 
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "Open object browser"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Origin"
@@ -1433,6 +1450,10 @@ msgid "Rename"
 msgstr "Berrizendatu"
 
 #: components/manage/Contents/ContentsRenameModal
+msgid "Rename Items Loading Message"
+msgstr ""
+
+#: components/manage/Contents/ContentsRenameModal
 msgid "Rename items"
 msgstr "Elementuak berrizendatu"
 
@@ -1565,6 +1586,10 @@ msgstr "Bilatu erabiltzaileak..."
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Second"
 msgstr "Bigarren"
+
+#: components/manage/Sidebar/ObjectBrowserNav
+msgid "Select"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Select a date to add to recurrence"
@@ -1939,6 +1964,10 @@ msgstr "UID"
 msgid "Unauthorized"
 msgstr "Ez duzu baimenik"
 
+#: components/manage/BlockChooser/BlockChooser
+msgid "Unfold"
+msgstr ""
+
 #: components/manage/Diff/Diff
 msgid "Unified"
 msgstr "Elkartuta"
@@ -2100,6 +2129,10 @@ msgstr "Data hau iristean, elementua ez da erakutsiko bilaketa eta zerrendetan"
 #: components/manage/History/History
 msgid "Who"
 msgstr "Nor"
+
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Workflow Change Loading Message"
+msgstr ""
 
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
@@ -2470,6 +2503,18 @@ msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_years"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-footer"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-main-content"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-navigation"
 msgstr ""
 
 #: components/manage/Contents/Contents

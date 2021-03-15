@@ -1,4 +1,4 @@
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 import {
   flattenToAppURL,
@@ -8,6 +8,8 @@ import {
   isCmsUi,
   isInternalURL,
 } from './Url';
+
+const { settings } = config;
 
 describe('Url', () => {
   describe('getBaseUrl', () => {
@@ -57,6 +59,10 @@ describe('Url', () => {
   describe('flattenToAppURL', () => {
     it('flattens a given URL to the app URL', () => {
       expect(flattenToAppURL(`${settings.apiPath}/edit`)).toBe('/edit');
+    });
+
+    it('does not fail if url is undefined', () => {
+      expect(flattenToAppURL()).toBe(undefined);
     });
 
     it('flattens a given URL to the app URL, with settings.internalApiPath', () => {

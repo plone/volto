@@ -13,6 +13,10 @@ describe('generator-create-volto-app:app', () => {
   });
 
   it('creates files', () => {
-    assert.file(['test-volto/package.json', 'test-volto/yarn.lock']);
+    assert.file([
+      'test-volto/package.json',
+      'test-volto/yarn.lock',
+      'test-volto/.gitignore',
+    ]);
   });
 });

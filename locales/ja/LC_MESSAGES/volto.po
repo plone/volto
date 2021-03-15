@@ -207,6 +207,7 @@ msgid "Breadcrumbs"
 msgstr "パンくず"
 
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
 msgstr "参照"
 
@@ -760,6 +761,10 @@ msgstr "第1"
 msgid "Fixed width table cells"
 msgstr "テーブルのセル幅を固定"
 
+#: components/manage/BlockChooser/BlockChooser
+msgid "Fold"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Folder"
 msgstr "フォルダ"
@@ -961,6 +966,10 @@ msgstr ""
 msgid "Item(s) pasted."
 msgstr "アイテムがペーストされました。"
 
+#: components/manage/Contents/Contents
+msgid "Item(s) state has been updated."
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 msgid "Items"
 msgstr "アイテム数"
@@ -1027,6 +1036,10 @@ msgstr "リンク先"
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
 msgstr "リスティング"
+
+#: components/manage/Form/ModalForm
+msgid "Loading"
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Location"
@@ -1255,6 +1268,10 @@ msgstr "新しいタブで開く"
 msgid "Open menu"
 msgstr "Open menu (未翻訳)"
 
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "Open object browser"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Origin"
@@ -1433,6 +1450,10 @@ msgid "Rename"
 msgstr "名前の変更"
 
 #: components/manage/Contents/ContentsRenameModal
+msgid "Rename Items Loading Message"
+msgstr ""
+
+#: components/manage/Contents/ContentsRenameModal
 msgid "Rename items"
 msgstr "名前の変更"
 
@@ -1565,6 +1586,10 @@ msgstr "ユーザーを検索…"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Second"
 msgstr "第2"
+
+#: components/manage/Sidebar/ObjectBrowserNav
+msgid "Select"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Select a date to add to recurrence"
@@ -1939,6 +1964,10 @@ msgstr "UID"
 msgid "Unauthorized"
 msgstr "Unauthorized(未翻訳)"
 
+#: components/manage/BlockChooser/BlockChooser
+msgid "Unfold"
+msgstr ""
+
 #: components/manage/Diff/Diff
 msgid "Unified"
 msgstr "Unified (未翻訳)"
@@ -2100,6 +2129,10 @@ msgstr "When this date is reached, the content will nolonger be visible in listi
 #: components/manage/History/History
 msgid "Who"
 msgstr "誰が"
+
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Workflow Change Loading Message"
+msgstr ""
 
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
@@ -2470,6 +2503,18 @@ msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_years"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-footer"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-main-content"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-navigation"
 msgstr ""
 
 #: components/manage/Contents/Contents

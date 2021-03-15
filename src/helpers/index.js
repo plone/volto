@@ -24,6 +24,7 @@ export {
   getId,
 } from '@plone/volto/helpers/Url/Url';
 export { generateSitemap } from '@plone/volto/helpers/Sitemap/Sitemap';
+export { generateRobots } from '@plone/volto/helpers/Robots/Robots';
 export {
   nestContent,
   getLayoutFieldname,
@@ -63,4 +64,5 @@ export {
   withServerErrorCode,
 } from '@plone/volto/helpers/Utils/Utils';
 export { messages } from './MessageLabels/MessageLabels';
+export { asyncConnect } from './AsyncConnect';
 // export { injectLazyLibs } from './Loadable/Loadable';

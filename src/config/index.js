@@ -34,6 +34,8 @@ import { contentIcons } from './ContentIcons';
 
 import applyAddonConfiguration from 'load-volto-addons';
 
+import ConfigRegistry from '@plone/volto/registry';
+
 const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || '3000';
 
@@ -90,6 +92,7 @@ let config = {
     verticalFormTabs: false,
     persistentReducers: ['blocksClipboard'],
     initialReducersBlacklist: [], // reducers in this list won't be hydrated in windows.__data
+    asyncPropsExtenders: [], // per route asyncConnect customizers
     sentryOptions: {
       ...sentryOptions,
     },
@@ -108,6 +111,7 @@ let config = {
     appExtras: [],
     maxResponseSize: 2000000000, // This is superagent default (200 mb)
     serverConfig,
+    storeExtenders: [],
   },
   widgets: {
     ...widgetMapping,
@@ -125,7 +129,6 @@ let config = {
     groupBlocksOrder,
     initialBlocks,
   },
-
   addonRoutes: [],
   addonReducers: {},
 };
@@ -139,3 +142,11 @@ export const blocks = config.blocks;
 export const addonRoutes = [...config.addonRoutes];
 export const addonReducers = { ...config.addonReducers };
 export const appExtras = config.appExtras;
+
+ConfigRegistry.settings = settings;
+ConfigRegistry.blocks = blocks;
+ConfigRegistry.views = views;
+ConfigRegistry.widgets = widgets;
+ConfigRegistry.addonRoutes = addonRoutes;
+ConfigRegistry.addonReducers = addonReducers;
+ConfigRegistry.appExtras = appExtras;

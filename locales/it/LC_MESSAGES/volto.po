@@ -200,6 +200,7 @@ msgid "Breadcrumbs"
 msgstr "Briciole di pane"
 
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
 msgstr "Sfoglia"
 
@@ -295,7 +296,7 @@ msgstr "Seleziona la destinazione"
 
 #: components/manage/Widgets/FileWidget
 msgid "Choose a file"
-msgstr ""
+msgstr "Scegli un file"
 
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
@@ -381,7 +382,7 @@ msgstr "Copia"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Copy blocks"
-msgstr ""
+msgstr "Copia blocchi"
 
 #: components/theme/Footer/Footer
 msgid "Copyright"
@@ -419,7 +420,7 @@ msgstr "Taglia"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Cut blocks"
-msgstr ""
+msgstr "Taglia blocchi"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Daily"
@@ -498,7 +499,7 @@ msgstr "Elimina utente"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Delete blocks"
-msgstr ""
+msgstr "Elimina blocchi"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Delete col"
@@ -753,6 +754,10 @@ msgstr "Primo"
 msgid "Fixed width table cells"
 msgstr "Celle della tabella a larghezza fissata"
 
+#: components/manage/BlockChooser/BlockChooser
+msgid "Fold"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Folder"
 msgstr "Cartella"
@@ -954,6 +959,10 @@ msgstr "Elemento/i aggiornati."
 msgid "Item(s) pasted."
 msgstr "Elemento/i incollato/i."
 
+#: components/manage/Contents/Contents
+msgid "Item(s) state has been updated."
+msgstr "Stato/i aggiornato/i"
+
 #: components/manage/Controlpanels/ContentTypes
 msgid "Items"
 msgstr "Elementi"
@@ -1020,6 +1029,10 @@ msgstr "Link a"
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
 msgstr "Elenco"
+
+#: components/manage/Form/ModalForm
+msgid "Loading"
+msgstr "Caricamento"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Location"
@@ -1248,6 +1261,10 @@ msgstr "Apri in un nuovo tab"
 msgid "Open menu"
 msgstr "Apri menu"
 
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "Open object browser"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Origin"
@@ -1426,6 +1443,10 @@ msgid "Rename"
 msgstr "Rinomina"
 
 #: components/manage/Contents/ContentsRenameModal
+msgid "Rename Items Loading Message"
+msgstr "Aggiornando gli elementi..."
+
+#: components/manage/Contents/ContentsRenameModal
 msgid "Rename items"
 msgstr "Rinomina elementi"
 
@@ -1558,6 +1579,10 @@ msgstr "Cerca utenti…"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Second"
 msgstr "Secondo"
+
+#: components/manage/Sidebar/ObjectBrowserNav
+msgid "Select"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Select a date to add to recurrence"
@@ -1932,6 +1957,10 @@ msgstr "UID"
 msgid "Unauthorized"
 msgstr "Non autorizzato"
 
+#: components/manage/BlockChooser/BlockChooser
+msgid "Unfold"
+msgstr ""
+
 #: components/manage/Diff/Diff
 msgid "Unified"
 msgstr "Unificato"
@@ -2093,6 +2122,10 @@ msgstr "Quando questa data sarà raggiunta, il contenuto non sarà più visibile
 #: components/manage/History/History
 msgid "Who"
 msgstr "Chi"
+
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Workflow Change Loading Message"
+msgstr "Aggiornando gli stati..."
 
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
@@ -2464,6 +2497,18 @@ msgstr "anno"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_years"
 msgstr "anni"
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-footer"
+msgstr "Salta al footer"
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-main-content"
+msgstr "Salta al contenuto"
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-navigation"
+msgstr "Salta alla navigazione"
 
 #: components/manage/Contents/Contents
 msgid "sort"

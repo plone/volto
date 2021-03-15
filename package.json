@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "11.0.0",
+  "version": "12.2.0",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -68,7 +68,8 @@
     "ci:cypress:run:guillotina": "start-test ci:start-api-guillotina http-get://localhost:8081 ci:start-frontend-guillotina",
     "dry-release": "release-it --dry-run",
     "release": "release-it",
-    "release-alpha": "release-it major --preRelease=alpha",
+    "release-major-alpha": "release-it major --preRelease=alpha",
+    "release-alpha": "release-it --preRelease=alpha",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -105,6 +106,7 @@
       "~/../locales/${lang}.json": "<rootDir>/locales/en.json",
       "(.*)/locales/(.*)": "<rootDir>/locales/$2",
       "load-volto-addons": "<rootDir>/jest-addons-loader.js",
+      "@package/config": "<rootDir>/jest-addons-loader.js",
       "\\.(css|less|scss|sass)$": "identity-obj-proxy"
     },
     "coverageThreshold": {
@@ -116,7 +118,8 @@
       }
     },
     "setupFiles": [
-      "./test-setup.js"
+      "./test-setup-globals.js",
+      "./test-setup-config.js"
     ],
     "globalSetup": "./global-test-setup.js",
     "globals": {
@@ -245,12 +248,14 @@
     "babel-plugin-root-import": "6.1.0",
     "bundlesize": "0.18.0",
     "bundlewatch": "0.2.7",
+    "circular-dependency-plugin": "5.2.2",
     "classnames": "2.2.6",
     "connected-react-router": "6.8.0",
     "coveralls": "3.0.2",
     "cypress": "5.6.0",
     "cypress-axe": "0.8.1",
     "cypress-file-upload": "4.1.1",
+    "dependency-graph": "0.10.0",
     "detect-browser": "5.1.0",
     "diff": "3.5.0",
     "draft-js": "0.10.5",
@@ -305,7 +310,7 @@
     "postcss-overrides": "3.1.4",
     "prettier": "2.0.5",
     "pretty-bytes": "5.3.0",
-    "prismjs": "1.21.0",
+    "prismjs": "1.23.0",
     "promise-file-reader": "1.0.2",
     "prop-types": "15.7.2",
     "query-string": "4.1.0",

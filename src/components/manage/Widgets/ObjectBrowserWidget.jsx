@@ -12,7 +12,8 @@ import { Label, Popup, Button } from 'semantic-ui-react';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import { defineMessages, injectIntl } from 'react-intl';
-import { Icon, FormFieldWrapper } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import homeSVG from '@plone/volto/icons/home.svg';
@@ -29,6 +30,10 @@ const messages = defineMessages({
   delete: {
     id: 'Delete',
     defaultMessage: 'Delete',
+  },
+  openObjectBrowser: {
+    id: 'Open object browser',
+    defaultMessage: 'Open object browser',
   },
 });
 
@@ -196,7 +201,15 @@ class ObjectBrowserWidget extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { id, description, value, mode, onChange, isDisabled } = this.props;
+    const {
+      id,
+      description,
+      fieldSet,
+      value,
+      mode,
+      onChange,
+      isDisabled,
+    } = this.props;
 
     let icon =
       mode === 'multiple' || value.length === 0 ? navTreeSVG : clearSVG;
@@ -215,7 +228,10 @@ class ObjectBrowserWidget extends Component {
         {...this.props}
         className={description ? 'help text' : 'text'}
       >
-        <div className="objectbrowser-field">
+        <div
+          className="objectbrowser-field"
+          aria-labelledby={`fieldset-${fieldSet}-field-label-${id}`}
+        >
           <div
             className="selected-values"
             onClick={this.handleSelectedItemsRefClick}
@@ -233,7 +249,14 @@ class ObjectBrowserWidget extends Component {
             )}
           </div>
 
-          <Button onClick={iconAction} className="action" disabled={isDisabled}>
+          <Button
+            aria-label={this.props.intl.formatMessage(
+              messages.openObjectBrowser,
+            )}
+            onClick={iconAction}
+            className="action"
+            disabled={isDisabled}
+          >
             <Icon name={icon} size="18px" />
           </Button>
         </div>

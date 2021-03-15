@@ -4,7 +4,7 @@
  */
 
 import { last, memoize } from 'lodash';
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 /**
  * Get base url.
@@ -13,6 +13,7 @@ import { settings } from '~/config';
  * @return {string} Base url of content object.
  */
 export const getBaseUrl = memoize((url) => {
+  const { settings } = config;
   // We allow settings.nonContentRoutes to have strings (that are supposed to match
   // ending strings of pathnames, so we are converting them to RegEx to match also
   const normalized_nonContentRoutes = settings.nonContentRoutes.map((item) => {
@@ -88,9 +89,11 @@ export function getView(url) {
  * @returns {string} Flattened URL to the app server
  */
 export function flattenToAppURL(url) {
-  return url
-    .replace(settings.internalApiPath, '')
-    .replace(settings.apiPath, '');
+  const { settings } = config;
+  return (
+    url &&
+    url.replace(settings.internalApiPath, '').replace(settings.apiPath, '')
+  );
 }
 
 /**
@@ -100,6 +103,7 @@ export function flattenToAppURL(url) {
  * @returns {boolean} true if the current view is a cms ui view
  */
 export const isCmsUi = memoize((currentPathname) => {
+  const { settings } = config;
   const fullPath = currentPathname.replace(/\?.*$/, '');
   // WARNING:
   // not working properly for paths like /editors or similar
@@ -121,6 +125,7 @@ export const isCmsUi = memoize((currentPathname) => {
  * @returns {string} Same HTML with Flattened URLs to the app server
  */
 export function flattenHTMLToAppURL(html) {
+  const { settings } = config;
   return settings.internalApiPath
     ? html
         .replace(new RegExp(settings.internalApiPath, 'g'), '')
@@ -135,6 +140,7 @@ export function flattenHTMLToAppURL(html) {
  * @returns {string} New URL with app
  */
 export function addAppURL(url) {
+  const { settings } = config;
   return url.indexOf(settings.apiPath) === 0
     ? url
     : `${settings.apiPath}${url}`;
@@ -147,6 +153,7 @@ export function addAppURL(url) {
  * @returns {boolean} True if internal url
  */
 export function isInternalURL(url) {
+  const { settings } = config;
   return (
     url.indexOf(settings.internalApiPath) !== -1 ||
     url.indexOf(settings.apiPath) !== -1 ||
