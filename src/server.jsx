@@ -48,17 +48,6 @@ const supported = new locale.Locales(keys(languages), 'en');
 
 const server = express()
   .disable('x-powered-by')
-  .use(
-    express.static(process.env.RAZZLE_PUBLIC_DIR, {
-      maxAge: '1m',
-      setHeaders: function (res, path) {
-        if (path.startsWith(process.env.RAZZLE_PUBLIC_DIR + '/static/')) {
-          // stable resources never change. 31536000 seconds == 365 days
-          res.setHeader('Cache-Control', 'public, max-age=31536000');
-        }
-      },
-    }),
-  )
   .head('/*', function (req, res) {
     // Support for HEAD requests. Required by start-test utility in CI.
     res.send('');
