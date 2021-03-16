@@ -146,14 +146,15 @@ const defaultModify = ({
   // Disabling the ESlint pre loader
   config.module.rules.splice(0, 1);
 
-  const addonsLoaderPath = createAddonsLoader(registry.getAddonDependencies());
-
-  let voltoConfFileLocation;
-  if (fs.existsSync(`${projectRootPath}/volto.config.js`)) {
-    voltoConfFileLocation = `${projectRootPath}/volto.config.js`;
-  } else {
-    voltoConfFileLocation = `${registry.voltoPath}/volto.config.js`;
+  let testingAddons = [];
+  if (process.env.RAZZLE_TESTING_ADDONS) {
+    testingAddons = process.env.RAZZLE_TESTING_ADDONS.split(',');
   }
+
+  const addonsLoaderPath = createAddonsLoader([
+    ...registry.getAddonDependencies(),
+    ...testingAddons,
+  ]);
 
   config.resolve.plugins = [
     new RelativeResolverPlugin(registry),
@@ -175,7 +176,6 @@ const defaultModify = ({
     '@package': `${projectRootPath}/src`,
     // we're incorporating redux-connect
     'redux-connect': `${registry.voltoPath}/src/helpers/AsyncConnect`,
-    '@voltoconfig': voltoConfFileLocation,
   };
 
   config.performance = {

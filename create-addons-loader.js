@@ -28,7 +28,6 @@ Instead, change the "addons" setting in your package.json file.
 */
 
 const projectConfigLoader = require('@package/config');
-const voltoConfFileConfigLoader = require('@voltoconfig');
 `;
   let configsToLoad = [],
     counter = 0;
@@ -69,10 +68,6 @@ const safeWrapper = (func) => (config) => {
   return res;
 }
 
-const voltoConfFileConfig = (config) => {
-  return typeof voltoConfFileConfigLoader.default === "function" ? voltoConfFileConfigLoader.default(config) : config;
-}
-
 const projectConfig = (config) => {
   return typeof projectConfigLoader.default === "function" ? projectConfigLoader.default(config) : config;
 }
@@ -84,7 +79,7 @@ const load = (config) => {
       'Each addon has to provide a function applying its configuration to the projects configuration.',
     );
   }
-  return voltoConfFileConfig(projectConfig(addonLoaders.reduce((acc, apply) => safeWrapper(apply)(acc), config)));
+  return projectConfig(addonLoaders.reduce((acc, apply) => safeWrapper(apply)(acc), config));
 };
 export default load;
 `;
