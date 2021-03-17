@@ -223,7 +223,7 @@ You can select the attributes from the object (coming from the metadata brain fr
 @search endpoint used in the browser) using the `selectedItemAttrs` prop as shown in the
 last example.
 
-#### allowedExternal
+#### allowExternals
 
 You can allow users to type manually an URL (internal or external). Once validated, it
 will tokenize the value. As a feature, you can paste an internal URL (eg. the user copy

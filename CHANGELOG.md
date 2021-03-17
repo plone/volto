@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Improve `ObjectBrowserWidget` adding a manual input field and allow external URLs. Add feature to paste internal URLs and convert them to selected objects. Added the `allowExternals` prop in order to allow this behavior (opt-in).
+
 ### Bugfix
 
 - Fix storybook initial config registry setup @sneridagh
