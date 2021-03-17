@@ -15,7 +15,7 @@ exports[`ContextNavigation renders a navigation component with an active item 1`
       role="list"
     >
       <div
-        class="item"
+        class="item level-1"
         role="listitem"
       >
         <div
@@ -33,7 +33,7 @@ exports[`ContextNavigation renders a navigation component with an active item 1`
         </div>
       </div>
       <div
-        class="active item"
+        class="active item level-1"
         role="listitem"
       >
         <div
@@ -60,7 +60,7 @@ exports[`ContextNavigation renders a navigation component with an active item 1`
         </div>
       </div>
       <div
-        class="item"
+        class="item level-1"
         role="listitem"
       >
         <div
@@ -97,7 +97,7 @@ exports[`ContextNavigation renders a navigation component with an active item wh
       role="list"
     >
       <div
-        class="item"
+        class="item level-1"
         role="listitem"
       >
         <div
@@ -116,7 +116,7 @@ exports[`ContextNavigation renders a navigation component with an active item wh
         </div>
       </div>
       <div
-        class="item"
+        class="item level-1"
         role="listitem"
       >
         <div
@@ -135,7 +135,7 @@ exports[`ContextNavigation renders a navigation component with an active item wh
         </div>
       </div>
       <div
-        class="active item"
+        class="active item level-1"
         role="listitem"
       >
         <div
@@ -188,7 +188,7 @@ exports[`ContextNavigation renders a navigation slot component without active it
       role="list"
     >
       <div
-        class="item"
+        class="item level-1"
         role="listitem"
       >
         <div
@@ -206,7 +206,7 @@ exports[`ContextNavigation renders a navigation slot component without active it
         </div>
       </div>
       <div
-        class="item"
+        class="item level-1"
         role="listitem"
       >
         <div
@@ -224,7 +224,7 @@ exports[`ContextNavigation renders a navigation slot component without active it
         </div>
       </div>
       <div
-        class="item"
+        class="item level-1"
         role="listitem"
       >
         <div
