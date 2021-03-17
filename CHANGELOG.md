@@ -9,6 +9,7 @@
 ### Bugfix
 
 - Fix storybook initial config registry setup @sneridagh
+- Improve `ContextNavigation` component, adding the level you are in each iteration @sneridagh
 
 ### Internal
 
