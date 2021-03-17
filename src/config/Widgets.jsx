@@ -8,6 +8,7 @@ import ArrayWidget from '@plone/volto/components/manage/Widgets/ArrayWidget';
 import CheckboxWidget from '@plone/volto/components/manage/Widgets/CheckboxWidget';
 import FileWidget from '@plone/volto/components/manage/Widgets/FileWidget';
 import PasswordWidget from '@plone/volto/components/manage/Widgets/PasswordWidget';
+import QuerystringWidget from '@plone/volto/components/manage/Widgets/QuerystringWidget';
 import QuerystringSidebarWidget from '@plone/volto/components/manage/Widgets/QuerystringSidebarWidget';
 import SchemaWidget from '@plone/volto/components/manage/Widgets/SchemaWidget';
 import SelectWidget from '@plone/volto/components/manage/Widgets/SelectWidget';
@@ -36,7 +37,7 @@ export const widgetMapping = {
   id: {
     schema: SchemaWidget,
     subjects: TokenWidget,
-    query: QuerystringSidebarWidget,
+    query: QuerystringWidget,
     recurrence: RecurrenceWidget,
     remoteUrl: UrlWidget,
   },
@@ -51,6 +52,7 @@ export const widgetMapping = {
     url: UrlWidget,
     email: EmailWidget,
     object_browser: ObjectBrowserWidget,
+    query_sidebar: QuerystringSidebarWidget,
   },
   vocabulary: {
     'plone.app.vocabularies.Catalog': ObjectBrowserWidget,

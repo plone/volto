@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { Button, Form, Grid, Input, Label } from 'semantic-ui-react';
+import { Button, Form, Grid, Input, Label, Segment } from 'semantic-ui-react';
 import { filter, remove, toPairs, groupBy, isEmpty, map } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 import { getQuerystring } from '@plone/volto/actions';
@@ -255,115 +255,142 @@ class QuerystringSidebarWidget extends Component {
     } = this.props;
 
     return (
-      <Form.Field
-        inline
-        required={required}
-        error={error.length > 0}
-        className={description ? 'help' : ''}
-        id={`${fieldSet || 'field'}-${id}`}
-      >
-        <Grid>
-          <Grid.Row stretched>
-            <Grid.Column width="12">
-              <div className="simple-field-name">
-                {intl.formatMessage(messages.Criteria)}
-              </div>
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row stretched>
-            <Grid.Column width="12">
-              {indexes &&
-                !isEmpty(indexes) &&
-                map(value, (row, index) => (
-                  <Form.Group key={index}>
-                    <div className="main-fields-wrapper">
-                      <Form.Field
-                        style={{ flex: '1 0 auto', marginRight: '10px' }}
-                      >
-                        <Select
-                          id={`field-${id}`}
-                          name={id}
-                          disabled={onEdit !== null}
-                          className="react-select-container"
-                          classNamePrefix="react-select"
-                          options={map(
-                            toPairs(
-                              groupBy(
-                                toPairs(indexes),
-                                (item) => item[1].group,
+      <Segment className="form sidebar-listing-data">
+        <Form.Field
+          inline
+          required={required}
+          error={error.length > 0}
+          className={description ? 'help' : ''}
+          id={`${fieldSet || 'field'}-${id}`}
+        >
+          <Grid>
+            <Grid.Row stretched>
+              <Grid.Column width="12">
+                <div className="simple-field-name">
+                  {intl.formatMessage(messages.Criteria)}
+                </div>
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row stretched>
+              <Grid.Column width="12">
+                {indexes &&
+                  !isEmpty(indexes) &&
+                  map(value, (row, index) => (
+                    <Form.Group key={index}>
+                      <div className="main-fields-wrapper">
+                        <Form.Field
+                          style={{ flex: '1 0 auto', marginRight: '10px' }}
+                        >
+                          <Select
+                            id={`field-${id}`}
+                            name={id}
+                            disabled={onEdit !== null}
+                            className="react-select-container"
+                            classNamePrefix="react-select"
+                            options={map(
+                              toPairs(
+                                groupBy(
+                                  toPairs(indexes),
+                                  (item) => item[1].group,
+                                ),
                               ),
-                            ),
-                            (group) => ({
-                              label: group[0],
-                              options: map(group[1], (field) => ({
-                                label: field[1].title,
-                                value: field[0],
-                              })),
-                            }),
-                          )}
-                          styles={customSelectStyles}
-                          theme={selectTheme}
-                          placeholder={intl.formatMessage(messages.select)}
-                          components={{ DropdownIndicator, Option }}
-                          value={{
-                            value: row.i,
-                            label: indexes[row.i]?.title,
-                          }}
-                          onChange={(data) =>
-                            onChange(
-                              id,
-                              map(value, (curRow, curIndex) =>
-                                curIndex === index
-                                  ? {
-                                      i: data.value,
-                                      o: indexes[data.value].operations[0],
-                                      v: '',
-                                    }
-                                  : curRow,
-                              ),
-                            )
-                          }
-                        />
-                      </Form.Field>
-                      <Form.Field style={{ flex: '1 0 auto' }}>
-                        <Select
-                          id={`field-${id}`}
-                          name={id}
-                          disabled={onEdit !== null}
-                          className="react-select-container"
-                          classNamePrefix="react-select"
-                          options={map(
-                            indexes[row.i].operations,
-                            (operation) => ({
-                              value: operation,
-                              label: indexes[row.i].operators[operation].title,
-                            }),
-                          )}
-                          styles={customSelectStyles}
-                          theme={selectTheme}
-                          placeholder={intl.formatMessage(messages.select)}
-                          components={{ DropdownIndicator, Option }}
-                          value={{
-                            value: row.o,
-                            label: indexes[row.i].operators[row.o].title,
-                          }}
-                          onChange={(data) =>
-                            onChange(
-                              id,
-                              map(value, (curRow, curIndex) =>
-                                curIndex === index
-                                  ? {
-                                      i: row.i,
-                                      o: data.value,
-                                      v: '',
-                                    }
-                                  : curRow,
-                              ),
-                            )
-                          }
-                        />
-                      </Form.Field>
-                      {!this.props.indexes[row.i].operators[row.o].widget && (
+                              (group) => ({
+                                label: group[0],
+                                options: map(group[1], (field) => ({
+                                  label: field[1].title,
+                                  value: field[0],
+                                })),
+                              }),
+                            )}
+                            styles={customSelectStyles}
+                            theme={selectTheme}
+                            placeholder={intl.formatMessage(messages.select)}
+                            components={{ DropdownIndicator, Option }}
+                            value={{
+                              value: row.i,
+                              label: indexes[row.i]?.title,
+                            }}
+                            onChange={(data) =>
+                              onChange(
+                                id,
+                                map(value, (curRow, curIndex) =>
+                                  curIndex === index
+                                    ? {
+                                        i: data.value,
+                                        o: indexes[data.value].operations[0],
+                                        v: '',
+                                      }
+                                    : curRow,
+                                ),
+                              )
+                            }
+                          />
+                        </Form.Field>
+                        <Form.Field style={{ flex: '1 0 auto' }}>
+                          <Select
+                            id={`field-${id}`}
+                            name={id}
+                            disabled={onEdit !== null}
+                            className="react-select-container"
+                            classNamePrefix="react-select"
+                            options={map(
+                              indexes[row.i].operations,
+                              (operation) => ({
+                                value: operation,
+                                label:
+                                  indexes[row.i].operators[operation].title,
+                              }),
+                            )}
+                            styles={customSelectStyles}
+                            theme={selectTheme}
+                            placeholder={intl.formatMessage(messages.select)}
+                            components={{ DropdownIndicator, Option }}
+                            value={{
+                              value: row.o,
+                              label: indexes[row.i].operators[row.o].title,
+                            }}
+                            onChange={(data) =>
+                              onChange(
+                                id,
+                                map(value, (curRow, curIndex) =>
+                                  curIndex === index
+                                    ? {
+                                        i: row.i,
+                                        o: data.value,
+                                        v: '',
+                                      }
+                                    : curRow,
+                                ),
+                              )
+                            }
+                          />
+                        </Form.Field>
+                        {!this.props.indexes[row.i].operators[row.o].widget && (
+                          <Button
+                            onClick={(event) => {
+                              onChange(
+                                id,
+                                remove(value, (v, i) => i !== index),
+                              );
+                              event.preventDefault();
+                            }}
+                            style={{
+                              background: 'none',
+                              paddingRight: 0,
+                              paddingLeft: 0,
+                              margin: 0,
+                            }}
+                          >
+                            <Icon
+                              name={clearSVG}
+                              size="24px"
+                              className="close"
+                            />
+                          </Button>
+                        )}
+                      </div>
+                      {this.getWidget(row, index)}
+                      {this.props.indexes[row.i].operators[row.o].widget && (
                         <Button
                           onClick={(event) => {
                             onChange(
@@ -382,86 +409,66 @@ class QuerystringSidebarWidget extends Component {
                           <Icon name={clearSVG} size="24px" className="close" />
                         </Button>
                       )}
-                    </div>
-                    {this.getWidget(row, index)}
-                    {this.props.indexes[row.i].operators[row.o].widget && (
-                      <Button
-                        onClick={(event) => {
-                          onChange(
-                            id,
-                            remove(value, (v, i) => i !== index),
-                          );
-                          event.preventDefault();
-                        }}
-                        style={{
-                          background: 'none',
-                          paddingRight: 0,
-                          paddingLeft: 0,
-                          margin: 0,
-                        }}
-                      >
-                        <Icon name={clearSVG} size="24px" className="close" />
-                      </Button>
-                    )}
-                  </Form.Group>
-                ))}
-              <Form.Group>
-                <Form.Field style={{ flex: '1 0 auto' }}>
-                  <Select
-                    id={`field-${id}`}
-                    name={id}
-                    disabled={onEdit !== null}
-                    className="react-select-container"
-                    classNamePrefix="react-select"
-                    placeholder={intl.formatMessage(messages.AddCriteria)}
-                    options={map(
-                      toPairs(
-                        groupBy(toPairs(indexes), (item) => item[1].group),
-                      ),
-                      (group) => ({
-                        label: group[0],
-                        options: map(
-                          filter(group[1], (item) => item[1].enabled),
-                          (field) => ({
-                            label: field[1].title,
-                            value: field[0],
-                          }),
+                    </Form.Group>
+                  ))}
+                <Form.Group>
+                  <Form.Field style={{ flex: '1 0 auto' }}>
+                    <Select
+                      id={`field-${id}`}
+                      name={id}
+                      disabled={onEdit !== null}
+                      className="react-select-container"
+                      classNamePrefix="react-select"
+                      placeholder={intl.formatMessage(messages.AddCriteria)}
+                      options={map(
+                        toPairs(
+                          groupBy(toPairs(indexes), (item) => item[1].group),
                         ),
-                      }),
-                    )}
-                    styles={customSelectStyles}
-                    theme={selectTheme}
-                    components={{ DropdownIndicator, Option }}
-                    value={null}
-                    onChange={(data) => {
-                      onChange(id, [
-                        ...(value || []),
-                        {
-                          i: data.value,
-                          o: indexes[data.value].operations[0],
-                          v: '',
-                        },
-                      ]);
-                    }}
-                  />
-                </Form.Field>
-              </Form.Group>
-              {map(error, (message) => (
-                <Label key={message} basic color="red" pointing>
-                  {message}
-                </Label>
-              ))}
-            </Grid.Column>
-          </Grid.Row>
-          {description && (
-            <Grid.Row stretched>
-              <Grid.Column stretched width="12">
-                <p className="help">{description}</p>
+                        (group) => ({
+                          label: group[0],
+                          options: map(
+                            filter(group[1], (item) => item[1].enabled),
+                            (field) => ({
+                              label: field[1].title,
+                              value: field[0],
+                            }),
+                          ),
+                        }),
+                      )}
+                      styles={customSelectStyles}
+                      theme={selectTheme}
+                      components={{ DropdownIndicator, Option }}
+                      value={null}
+                      onChange={(data) => {
+                        onChange(id, [
+                          ...(value || []),
+                          {
+                            i: data.value,
+                            o: indexes[data.value].operations[0],
+                            v: '',
+                          },
+                        ]);
+                      }}
+                    />
+                  </Form.Field>
+                </Form.Group>
+                {map(error, (message) => (
+                  <Label key={message} basic color="red" pointing>
+                    {message}
+                  </Label>
+                ))}
               </Grid.Column>
             </Grid.Row>
-          )}
-        </Grid>
-      </Form.Field>
+            {description && (
+              <Grid.Row stretched>
+                <Grid.Column stretched width="12">
+                  <p className="help">{description}</p>
+                </Grid.Column>
+              </Grid.Row>
+            )}
+          </Grid>
+        </Form.Field>
+      </Segment>
     );
   }
 }
