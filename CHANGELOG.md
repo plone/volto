@@ -5,6 +5,7 @@
 ### Breaking
 
 ### Feature
+- Adding QuerystringSidebarWidget @iFlameing
 
 ### Bugfix
 

@@ -81,6 +81,7 @@ msgid "Add block…"
 msgstr "Gehitu blokea..."
 
 #: components/manage/Blocks/Listing/QuerystringWidget
+#: components/manage/Widgets/QuerystringSidebarWidget
 msgid "Add criteria"
 msgstr "Gehitu irizpidea"
 
@@ -412,6 +413,7 @@ msgid "Creators"
 msgstr "Sortzaileak"
 
 #: components/manage/Blocks/Listing/QuerystringWidget
+#: components/manage/Widgets/QuerystringSidebarWidget
 msgid "Criteria"
 msgstr "Irizpidea"
 
@@ -2362,6 +2364,7 @@ msgid "published"
 msgstr "Argitaratuta"
 
 #: components/manage/Blocks/Listing/QuerystringWidget
+#: components/manage/Widgets/QuerystringSidebarWidget
 msgid "querystring-widget-select"
 msgstr "Aukeratu..."
 

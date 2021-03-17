@@ -81,6 +81,7 @@ msgid "Add block…"
 msgstr "ブロックを追加…"
 
 #: components/manage/Blocks/Listing/QuerystringWidget
+#: components/manage/Widgets/QuerystringSidebarWidget
 msgid "Add criteria"
 msgstr "基準を追加"
 
@@ -412,6 +413,7 @@ msgid "Creators"
 msgstr "作成者"
 
 #: components/manage/Blocks/Listing/QuerystringWidget
+#: components/manage/Widgets/QuerystringSidebarWidget
 msgid "Criteria"
 msgstr "基準"
 
@@ -2362,6 +2364,7 @@ msgid "published"
 msgstr "公開中"
 
 #: components/manage/Blocks/Listing/QuerystringWidget
+#: components/manage/Widgets/QuerystringSidebarWidget
 msgid "querystring-widget-select"
 msgstr ""
 

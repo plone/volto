@@ -74,6 +74,7 @@ msgid "Add block…"
 msgstr "Adăugare bloc …"
 
 #: components/manage/Blocks/Listing/QuerystringWidget
+#: components/manage/Widgets/QuerystringSidebarWidget
 msgid "Add criteria"
 msgstr "Adăugare criterii"
 
@@ -405,6 +406,7 @@ msgid "Creators"
 msgstr "Creatori"
 
 #: components/manage/Blocks/Listing/QuerystringWidget
+#: components/manage/Widgets/QuerystringSidebarWidget
 msgid "Criteria"
 msgstr "Criterii"
 
@@ -2355,6 +2357,7 @@ msgid "published"
 msgstr ""
 
 #: components/manage/Blocks/Listing/QuerystringWidget
+#: components/manage/Widgets/QuerystringSidebarWidget
 msgid "querystring-widget-select"
 msgstr ""
 
