@@ -8,7 +8,7 @@ import ArrayWidget from '@plone/volto/components/manage/Widgets/ArrayWidget';
 import CheckboxWidget from '@plone/volto/components/manage/Widgets/CheckboxWidget';
 import FileWidget from '@plone/volto/components/manage/Widgets/FileWidget';
 import PasswordWidget from '@plone/volto/components/manage/Widgets/PasswordWidget';
-import QuerystringWidget from '@plone/volto/components/manage/Widgets/QuerystringWidget';
+import QuerystringSidebarWidget from '@plone/volto/components/manage/Widgets/QuerystringSidebarWidget';
 import SchemaWidget from '@plone/volto/components/manage/Widgets/SchemaWidget';
 import SelectWidget from '@plone/volto/components/manage/Widgets/SelectWidget';
 import TextareaWidget from '@plone/volto/components/manage/Widgets/TextareaWidget';
@@ -36,7 +36,7 @@ export const widgetMapping = {
   id: {
     schema: SchemaWidget,
     subjects: TokenWidget,
-    query: QuerystringWidget,
+    query: QuerystringSidebarWidget,
     recurrence: RecurrenceWidget,
     remoteUrl: UrlWidget,
   },
