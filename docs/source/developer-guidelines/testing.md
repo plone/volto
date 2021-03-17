@@ -22,6 +22,11 @@ environment variable.
 
 This is specially useful in CI while developing add-ons, so you can pass an specific configuration that deals with the addon config properly.
 
+## Add addons for testing purposes
+
+Quite often, you need different configurations and enabling components for testing purposes. You can use the `RAZZLE_TESTING_ADDONS` environment variable to dafine them. This addons does not have the capacity to install dependencies (as opposed to define them properly as a true addon) but all the rest of the addon features works as expected.
+
+    RAZZLE_TESTING_ADDONS=test-addon,test-addon2 yarn start
 
 ## Developing Cypress tests
 

@@ -13,6 +13,7 @@
 ### Internal
 
 - Add testing add-on for enable special testing use cases and configuration options @sneridagh
+- Add `RAZZLE_TESTING_ADDONS` environment variable for adding addons for testing purposes @sneridagh
 - Add "Humboldt Labor" to show cases.
 - Updated "Volto in Production" list @alecghica
 
