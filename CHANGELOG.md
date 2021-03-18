@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- fixed italian translations for block 'Maps" @giuliaghisini
+
 ### Internal
 
 ## 12.3.0 (2021-03-18)
@@ -62,7 +64,6 @@
 ### Bugfix
 
 - Import asyncConnected actions directly from actions module, the resolution order is different in projects @tiberiuichim @avoinea
-
 
 ## 12.1.0 (2021-02-24)
 
