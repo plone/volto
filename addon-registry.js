@@ -111,6 +111,7 @@ class AddonConfigurationRegistry {
 
     this.initDevelopmentPackages();
     this.initPublishedPackages();
+    this.initTestingPackages();
 
     this.dependencyGraph = buildDependencyGraph(
       packageJson.addons || [],
@@ -178,6 +179,33 @@ class AddonConfigurationRegistry {
         packageJson,
         addons: pkg.addons || [],
       };
+    }
+  }
+
+  initTestingPackages() {
+    if (process.env.RAZZLE_TESTING_ADDONS) {
+      process.env.RAZZLE_TESTING_ADDONS.split(',').forEach(
+        this.initTestingPackage.bind(this),
+      );
+    }
+  }
+
+  initTestingPackage(name) {
+    const testingPackagePath = `${this.projectRootPath}/packages/${name}/src`;
+    if (fs.existsSync(testingPackagePath)) {
+      const basePath = getPackageBasePath(testingPackagePath);
+      const packageJson = path.join(basePath, 'package.json');
+
+      if (!this.addonNames.includes(name)) this.addonNames.push(name);
+      const pkg = {
+        modulePath: testingPackagePath,
+        packageJson: packageJson,
+        isPublishedPackage: false,
+        name,
+        addons: require(packageJson).addons || [],
+      };
+
+      this.packages[name] = Object.assign(this.packages[name] || {}, pkg);
     }
   }
 
