@@ -1,21 +1,32 @@
 # Change Log
 
-## 12.2.1 (unreleased)
+## 12.3.1 (unreleased)
 
 ### Breaking
 
 ### Feature
 
 - Improved comments @rexalex @avoinea
+### Bugfix
+
+### Internal
+
+## 12.3.0 (2021-03-18)
+
+### Feature
+
 - Improve `ObjectBrowserWidget` adding a manual input field and allow external URLs. Add feature to paste internal URLs and convert them to selected objects. Added the `allowExternals` prop in order to allow this behavior (opt-in).
 
 ### Bugfix
 
 - Fix storybook initial config registry setup @sneridagh
+- Search page now follows Plone's ISearchSchema settings @tiberiuichim
 - Improve `ContextNavigation` component, adding the level you are in each iteration @sneridagh
 
 ### Internal
 
+- Add testing add-on for enable special testing use cases and configuration options @sneridagh
+- Add `RAZZLE_TESTING_ADDONS` environment variable for adding addons for testing purposes @sneridagh
 - Add "Humboldt Labor" to show cases.
 - Updated "Volto in Production" list @alecghica
 

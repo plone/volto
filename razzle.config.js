@@ -146,7 +146,15 @@ const defaultModify = ({
   // Disabling the ESlint pre loader
   config.module.rules.splice(0, 1);
 
-  const addonsLoaderPath = createAddonsLoader(registry.getAddonDependencies());
+  let testingAddons = [];
+  if (process.env.RAZZLE_TESTING_ADDONS) {
+    testingAddons = process.env.RAZZLE_TESTING_ADDONS.split(',');
+  }
+
+  const addonsLoaderPath = createAddonsLoader([
+    ...registry.getAddonDependencies(),
+    ...testingAddons,
+  ]);
 
   config.resolve.plugins = [
     new RelativeResolverPlugin(registry),
