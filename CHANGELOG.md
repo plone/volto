@@ -8,14 +8,21 @@
 
 - Improved comments @rexalex @avoinea
 - New breadcrumbs `INavigationRoot` aware for the *Home* icon. This allows inner subsites navigation and better support for multilingual sites.  @sneridagh
+- Improve `ObjectBrowserWidget` adding a manual input field and allow external URLs. Add feature to paste internal URLs and convert them to selected objects. Added the `allowExternals` prop in order to allow this behavior (opt-in).
+
 ### Bugfix
 
 - Fix storybook initial config registry setup @sneridagh
+- Improve `ContextNavigation` component, adding the level you are in each iteration @sneridagh
 
 ### Internal
 
 - Add "Humboldt Labor" to show cases.
 - Updated "Volto in Production" list @alecghica
+
+### Docs
+
+- Explicitly mention `src/config` in the "Internal proxy to API" documentation @pigeonflight
 
 ## 12.2.0 (2021-03-03)
 

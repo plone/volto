@@ -44,6 +44,7 @@ exports[`renders a objectBrowser widget component 1`] = `
               No items selected
             </div>
           </div>
+          
           <button
             aria-label="Open object browser"
             className="ui button action"
