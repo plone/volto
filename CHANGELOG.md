@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Added SidebarPopup component for extra sidebar handling @avoinea
+
 ### Bugfix
 
 - fixed italian translations for block 'Maps" @giuliaghisini

@@ -93,6 +93,7 @@ export Messages from '@plone/volto/components/manage/Messages/Messages';
 export BlockChooser from '@plone/volto/components/manage/BlockChooser/BlockChooser';
 export Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
 export Sidebar from '@plone/volto/components/manage/Sidebar/Sidebar';
+export SidebarPopup from '@plone/volto/components/manage/Sidebar/SidebarPopup';
 export SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
 export PersonalTools from '@plone/volto/components/manage/Toolbar/PersonalTools';
 export More from '@plone/volto/components/manage/Toolbar/More';
