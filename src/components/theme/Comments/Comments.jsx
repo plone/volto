@@ -314,7 +314,7 @@ class Comments extends Component {
       <Comment key={comment.comment_id}>
         <Avatar
           src={comment.author_image}
-          title={comment.author_name}
+          title={comment.author_name || 'Anonymous'}
           color={getColor(comment.author_username)}
         />
         <Comment.Content>
