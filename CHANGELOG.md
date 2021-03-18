@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- fixed italian translations for block 'Maps" @giuliaghisini
+
 ### Internal
 
 - Upgrade API to Plone 5.2.4 and p.restapi 7.1.0 @sneridagh
@@ -64,7 +66,6 @@
 ### Bugfix
 
 - Import asyncConnected actions directly from actions module, the resolution order is different in projects @tiberiuichim @avoinea
-
 
 ## 12.1.0 (2021-02-24)
 
