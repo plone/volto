@@ -1330,7 +1330,7 @@ msgstr "Inserisci un URL valido eliminando il blocco e aggiungendo un nuovo bloc
 
 #: components/manage/Blocks/Maps/Edit
 msgid "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
-msgstr "Per favore inserisci il codice di incorporamento fornito da Google Maps -> Condividi -> Incorporare una mappa. Dovrebbe contenere un <iframe>."
+msgstr "Per favore inserisci il codice di incorporamento fornito da Google Maps. Per incorporare la mappa di un luogo clicca su 'Condividi' -> 'Incorporare una mappa' -> 'Copia HTML'. Se invece vuoi incorporare una mappa con MyMaps clicca su 'Incorpora nel mio sito' -> 'Copia HTML'. Deve contenere un <iframe>."
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Please fill out the form below to set your password."

@@ -1,6 +1,6 @@
 # Change Log
 
-## 12.2.1 (unreleased)
+## 12.3.1 (unreleased)
 
 ### Breaking
 
@@ -24,9 +24,34 @@
 
 ### Bugfix
 
-- Fix storybook initial config registry setup @sneridagh
+- fixed italian translations for block 'Maps" @giuliaghisini
 
 ### Internal
+
+- Upgrade API to Plone 5.2.4 and p.restapi 7.1.0 @sneridagh
+
+## 12.3.0 (2021-03-18)
+
+### Feature
+
+- Improve `ObjectBrowserWidget` adding a manual input field and allow external URLs. Add feature to paste internal URLs and convert them to selected objects. Added the `allowExternals` prop in order to allow this behavior (opt-in).
+
+### Bugfix
+
+- Fix storybook initial config registry setup @sneridagh
+- Search page now follows Plone's ISearchSchema settings @tiberiuichim
+- Improve `ContextNavigation` component, adding the level you are in each iteration @sneridagh
+
+### Internal
+
+- Add testing add-on for enable special testing use cases and configuration options @sneridagh
+- Add `RAZZLE_TESTING_ADDONS` environment variable for adding addons for testing purposes @sneridagh
+- Add "Humboldt Labor" to show cases.
+- Updated "Volto in Production" list @alecghica
+
+### Docs
+
+- Explicitly mention `src/config` in the "Internal proxy to API" documentation @pigeonflight
 
 ## 12.2.0 (2021-03-03)
 
@@ -57,7 +82,6 @@
 ### Bugfix
 
 - Import asyncConnected actions directly from actions module, the resolution order is different in projects @tiberiuichim @avoinea
-
 
 ## 12.1.0 (2021-02-24)
 

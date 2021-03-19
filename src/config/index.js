@@ -2,7 +2,7 @@
  * Config.
  * @module config
  */
-
+import { parse as parseUrl } from 'url';
 import { defaultWidget, widgetMapping } from './Widgets';
 import {
   layoutViews,
@@ -47,6 +47,23 @@ const apiPath =
     ? `http://${host}:${port}/api`
     : 'http://localhost:8080/Plone');
 
+const getServerURL = (url) => {
+  if (!url) return;
+  const apiPathURL = parseUrl(url);
+  return `${apiPathURL.protocol}//${apiPathURL.hostname}:${apiPathURL.port}`;
+};
+
+// Sensible defaults for publicURL
+// if RAZZLE_PUBLIC_URL is present, use it
+// if in DEV, use the host/port combination by default
+// if in PROD, assume it's RAZZLE_API_PATH server name (no /api or alikes) or fallback
+// to DEV settings if RAZZLE_API_PATH is not present
+const publicURL =
+  process.env.RAZZLE_PUBLIC_URL ||
+  (__DEVELOPMENT__
+    ? `http://${host}:${port}`
+    : getServerURL(process.env.RAZZLE_API_PATH) || `http://${host}:${port}`);
+
 const serverConfig =
   typeof __SERVER__ !== 'undefined' && __SERVER__
     ? require('./server').default
@@ -56,6 +73,8 @@ let config = {
   settings: {
     host,
     port,
+    // The URL Volto is going to be served (see sensible defaults above)
+    publicURL,
     // Internal proxy to bypass CORS *while developing*. Not intended for production use.
     // In production, the proxy is disabled, make sure you specify an apiPath that does
     // not require CORS to work.

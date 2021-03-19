@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "12.2.0",
+  "version": "12.3.0",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -107,6 +107,7 @@
       "(.*)/locales/(.*)": "<rootDir>/locales/$2",
       "load-volto-addons": "<rootDir>/jest-addons-loader.js",
       "@package/config": "<rootDir>/jest-addons-loader.js",
+      "@voltoconfig": "<rootDir>/jest-addons-loader.js",
       "\\.(css|less|scss|sass)$": "identity-obj-proxy"
     },
     "coverageThreshold": {
