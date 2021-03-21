@@ -1,11 +1,11 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { CSSTransition } from 'react-transition-group';
 import ObjectBrowserBody from '@plone/volto/components/manage/Sidebar/ObjectBrowserBody';
-import ReactDOM from 'react-dom';
 import { getParentURL } from '@plone/volto/components/manage/Sidebar/ObjectBrowserBody';
+import { SidebarPopup } from '@plone/volto/components';
 
 const DEFAULT_TIMEOUT = 500;
-
 const withObjectBrowser = (WrappedComponent) =>
   class extends React.Component {
     /**
@@ -102,12 +102,7 @@ const withObjectBrowser = (WrappedComponent) =>
                   )}
               </>
             </CSSTransition>
-            <CSSTransition
-              in={this.state.isObjectBrowserOpen}
-              timeout={DEFAULT_TIMEOUT}
-              classNames="sidebar-container"
-              unmountOnExit
-            >
+            <SidebarPopup open={this.state.isObjectBrowserOpen}>
               <ObjectBrowserBody
                 {...this.props}
                 data={
@@ -122,7 +117,7 @@ const withObjectBrowser = (WrappedComponent) =>
                 selectableTypes={this.state.selectableTypes}
                 maximumSelectionSize={this.state.maximumSelectionSize}
               />
-            </CSSTransition>
+            </SidebarPopup>
           </>
         </>
       );
