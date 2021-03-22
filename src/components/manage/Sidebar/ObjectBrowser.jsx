@@ -1,11 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { CSSTransition } from 'react-transition-group';
 import ObjectBrowserBody from '@plone/volto/components/manage/Sidebar/ObjectBrowserBody';
 import { getParentURL } from '@plone/volto/components/manage/Sidebar/ObjectBrowserBody';
 import SidebarPopup from '@plone/volto/components/manage/Sidebar/SidebarPopup';
 
-const DEFAULT_TIMEOUT = 500;
 const withObjectBrowser = (WrappedComponent) =>
   class extends React.Component {
     /**
@@ -88,20 +85,10 @@ const withObjectBrowser = (WrappedComponent) =>
           />
 
           <>
-            <CSSTransition
-              in={this.state.isObjectBrowserOpen && this.state.overlay}
-              timeout={DEFAULT_TIMEOUT}
-              classNames="overlay-container"
-              unmountOnExit
-            >
-              <>
-                {__CLIENT__ &&
-                  ReactDOM.createPortal(
-                    <div className="overlay-container"></div>,
-                    document.body,
-                  )}
-              </>
-            </CSSTransition>
+            <SidebarPopup
+              open={this.state.isObjectBrowserOpen}
+              overlay={this.state.overlay}
+            />
             <SidebarPopup open={this.state.isObjectBrowserOpen}>
               <ObjectBrowserBody
                 {...this.props}
