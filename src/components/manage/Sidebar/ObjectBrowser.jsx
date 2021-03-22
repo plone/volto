@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { CSSTransition } from 'react-transition-group';
 import ObjectBrowserBody from '@plone/volto/components/manage/Sidebar/ObjectBrowserBody';
 import { getParentURL } from '@plone/volto/components/manage/Sidebar/ObjectBrowserBody';
-import { SidebarPopup } from '@plone/volto/components';
+import SidebarPopup from '@plone/volto/components/manage/Sidebar/SidebarPopup';
 
 const DEFAULT_TIMEOUT = 500;
 const withObjectBrowser = (WrappedComponent) =>
