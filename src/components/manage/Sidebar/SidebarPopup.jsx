@@ -8,17 +8,25 @@ const DEFAULT_TIMEOUT = 500;
 const SidebarPopup = (props, ref) => {
   const { children, open, overlay } = props;
   return (
-    <CSSTransition
-      in={open}
-      timeout={DEFAULT_TIMEOUT}
-      classNames={overlay ? 'overlay-container' : 'sidebar-container'}
-      unmountOnExit
-    >
-      {overlay ? (
-        <Portal node={document?.body}>
-          <div className="overlay-container"></div>
-        </Portal>
-      ) : (
+    <>
+      {overlay && (
+        <CSSTransition
+          in={open}
+          timeout={DEFAULT_TIMEOUT}
+          classNames="overlay-container"
+          unmountOnExit
+        >
+          <Portal node={document?.body}>
+            <div className="overlay-container"></div>
+          </Portal>
+        </CSSTransition>
+      )}
+      <CSSTransition
+        in={open}
+        timeout={DEFAULT_TIMEOUT}
+        classNames="sidebar-container"
+        unmountOnExit
+      >
         <Portal>
           <aside
             role="presentation"
@@ -36,17 +44,19 @@ const SidebarPopup = (props, ref) => {
             {children}
           </aside>
         </Portal>
-      )}
-    </CSSTransition>
+      </CSSTransition>
+    </>
   );
 };
 
 SidebarPopup.propTypes = {
   open: PropTypes.bool,
+  overlay: PropTypes.bool,
 };
 
 SidebarPopup.defaultProps = {
   open: false,
+  overlay: false,
 };
 
 export default React.forwardRef(SidebarPopup);
