@@ -1,7 +1,9 @@
 import React from 'react';
 import { Label, Grid, Dropdown } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
-import { settings } from '~/config';
+
+import config from '@plone/volto/registry';
+
 const messages = defineMessages({
   compare_to: {
     id: 'compare_to',
@@ -21,7 +23,7 @@ const CompareLanguages = ({
 }) => {
   const intl = useIntl();
 
-  const translations = settings.isMultilingual
+  const translations = config.settings.isMultilingual
     ? content?.['@components']?.translations?.items || []
     : [];
 
@@ -47,7 +49,7 @@ const CompareLanguages = ({
     translationsObject[t.language] = t['@id'];
   });
 
-  return settings.isMultilingual && compareOptions.length > 0 ? (
+  return config.settings.isMultilingual && compareOptions.length > 0 ? (
     <Grid>
       <Grid.Row>
         <Grid.Column width={6}>

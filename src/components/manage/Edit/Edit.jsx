@@ -15,7 +15,6 @@ import { Portal } from 'react-portal';
 import qs from 'query-string';
 import { find } from 'lodash';
 import { toast } from 'react-toastify';
-import { settings } from '~/config';
 
 import {
   Forbidden,
@@ -39,6 +38,8 @@ import { preloadLazyLibs } from '@plone/volto/helpers/Loadable';
 
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
+
+import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   edit: {
@@ -271,7 +272,7 @@ class Edit extends Component {
                   }
                 />
 
-                {settings.isMultilingual && (
+                {config.settings.isMultilingual && (
                   <div className="ui container">
                     <CompareLanguages
                       content={this.props.content}

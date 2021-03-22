@@ -58,177 +58,36 @@ exports[`Contact form renders a contact form 1`] = `
                 </h1>
               </div>
               <div
-                className="inline field text"
+                className="mocked-default-widget"
+                id="mocked-field-name"
               >
-                <div
-                  className="ui grid"
-                >
-                  <div
-                    className="stretched row"
-                  >
-                    <div
-                      className="four wide column"
-                    >
-                      <div
-                        className="wrapper"
-                      >
-                        <label
-                          htmlFor="field-name"
-                          id="fieldset-undefined-field-label-name"
-                        >
-                          Name
-                        </label>
-                      </div>
-                    </div>
-                    <div
-                      className="eight wide column"
-                    >
-                      <div
-                        className="ui input"
-                      >
-                        <input
-                          id="field-name"
-                          maxLength={null}
-                          minLength={null}
-                          name="name"
-                          onBlur={[Function]}
-                          onChange={[Function]}
-                          onClick={[Function]}
-                          type="text"
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                Name
+                 - 
+                No description
               </div>
               <div
-                className="inline required field text"
+                className="mocked-default-widget"
+                id="mocked-field-from"
               >
-                <div
-                  className="ui grid"
-                >
-                  <div
-                    className="stretched row"
-                  >
-                    <div
-                      className="four wide column"
-                    >
-                      <div
-                        className="wrapper"
-                      >
-                        <label
-                          htmlFor="field-from"
-                          id="fieldset-undefined-field-label-from"
-                        >
-                          From
-                        </label>
-                      </div>
-                    </div>
-                    <div
-                      className="eight wide column"
-                    >
-                      <div
-                        className="ui input"
-                      >
-                        <input
-                          id="field-from"
-                          maxLength={null}
-                          minLength={null}
-                          name="from"
-                          onBlur={[Function]}
-                          onChange={[Function]}
-                          onClick={[Function]}
-                          type="text"
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                From
+                 - 
+                No description
               </div>
               <div
-                className="inline field text"
+                className="mocked-default-widget"
+                id="mocked-field-subject"
               >
-                <div
-                  className="ui grid"
-                >
-                  <div
-                    className="stretched row"
-                  >
-                    <div
-                      className="four wide column"
-                    >
-                      <div
-                        className="wrapper"
-                      >
-                        <label
-                          htmlFor="field-subject"
-                          id="fieldset-undefined-field-label-subject"
-                        >
-                          Subject
-                        </label>
-                      </div>
-                    </div>
-                    <div
-                      className="eight wide column"
-                    >
-                      <div
-                        className="ui input"
-                      >
-                        <input
-                          id="field-subject"
-                          maxLength={null}
-                          minLength={null}
-                          name="subject"
-                          onBlur={[Function]}
-                          onChange={[Function]}
-                          onClick={[Function]}
-                          type="text"
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                Subject
+                 - 
+                No description
               </div>
               <div
-                className="inline required field textarea"
+                className="mocked-textarea-widget"
+                id="mocked-field-message"
               >
-                <div
-                  className="ui grid"
-                >
-                  <div
-                    className="stretched row"
-                  >
-                    <div
-                      className="four wide column"
-                    >
-                      <div
-                        className="wrapper"
-                      >
-                        <label
-                          htmlFor="field-message"
-                          id="fieldset-undefined-field-label-message"
-                        >
-                          Message
-                        </label>
-                      </div>
-                    </div>
-                    <div
-                      className="eight wide column"
-                    >
-                      <textarea
-                        id="field-message"
-                        name="message"
-                        onChange={[Function]}
-                        onInput={[Function]}
-                        rows={3}
-                        value=""
-                      />
-                    </div>
-                  </div>
-                </div>
+                Message
+                 - 
+                No description
               </div>
             </div>
             <div
@@ -358,177 +217,36 @@ exports[`Contact form renders a contact form with error message 1`] = `
                 </h1>
               </div>
               <div
-                className="inline field text"
+                className="mocked-default-widget"
+                id="mocked-field-name"
               >
-                <div
-                  className="ui grid"
-                >
-                  <div
-                    className="stretched row"
-                  >
-                    <div
-                      className="four wide column"
-                    >
-                      <div
-                        className="wrapper"
-                      >
-                        <label
-                          htmlFor="field-name"
-                          id="fieldset-undefined-field-label-name"
-                        >
-                          Name
-                        </label>
-                      </div>
-                    </div>
-                    <div
-                      className="eight wide column"
-                    >
-                      <div
-                        className="ui input"
-                      >
-                        <input
-                          id="field-name"
-                          maxLength={null}
-                          minLength={null}
-                          name="name"
-                          onBlur={[Function]}
-                          onChange={[Function]}
-                          onClick={[Function]}
-                          type="text"
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                Name
+                 - 
+                No description
               </div>
               <div
-                className="inline required field text"
+                className="mocked-default-widget"
+                id="mocked-field-from"
               >
-                <div
-                  className="ui grid"
-                >
-                  <div
-                    className="stretched row"
-                  >
-                    <div
-                      className="four wide column"
-                    >
-                      <div
-                        className="wrapper"
-                      >
-                        <label
-                          htmlFor="field-from"
-                          id="fieldset-undefined-field-label-from"
-                        >
-                          From
-                        </label>
-                      </div>
-                    </div>
-                    <div
-                      className="eight wide column"
-                    >
-                      <div
-                        className="ui input"
-                      >
-                        <input
-                          id="field-from"
-                          maxLength={null}
-                          minLength={null}
-                          name="from"
-                          onBlur={[Function]}
-                          onChange={[Function]}
-                          onClick={[Function]}
-                          type="text"
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                From
+                 - 
+                No description
               </div>
               <div
-                className="inline field text"
+                className="mocked-default-widget"
+                id="mocked-field-subject"
               >
-                <div
-                  className="ui grid"
-                >
-                  <div
-                    className="stretched row"
-                  >
-                    <div
-                      className="four wide column"
-                    >
-                      <div
-                        className="wrapper"
-                      >
-                        <label
-                          htmlFor="field-subject"
-                          id="fieldset-undefined-field-label-subject"
-                        >
-                          Subject
-                        </label>
-                      </div>
-                    </div>
-                    <div
-                      className="eight wide column"
-                    >
-                      <div
-                        className="ui input"
-                      >
-                        <input
-                          id="field-subject"
-                          maxLength={null}
-                          minLength={null}
-                          name="subject"
-                          onBlur={[Function]}
-                          onChange={[Function]}
-                          onClick={[Function]}
-                          type="text"
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                Subject
+                 - 
+                No description
               </div>
               <div
-                className="inline required field textarea"
+                className="mocked-textarea-widget"
+                id="mocked-field-message"
               >
-                <div
-                  className="ui grid"
-                >
-                  <div
-                    className="stretched row"
-                  >
-                    <div
-                      className="four wide column"
-                    >
-                      <div
-                        className="wrapper"
-                      >
-                        <label
-                          htmlFor="field-message"
-                          id="fieldset-undefined-field-label-message"
-                        >
-                          Message
-                        </label>
-                      </div>
-                    </div>
-                    <div
-                      className="eight wide column"
-                    >
-                      <textarea
-                        id="field-message"
-                        name="message"
-                        onChange={[Function]}
-                        onInput={[Function]}
-                        rows={3}
-                        value=""
-                      />
-                    </div>
-                  </div>
-                </div>
+                Message
+                 - 
+                No description
               </div>
             </div>
             <div
