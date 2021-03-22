@@ -6,6 +6,8 @@
 
 ### Feature
 
+- as in Plone, hide controlpanel for users that are no 'Manager' or 'Site Administrator'. @giuliaghisini
+
 ### Bugfix
 
 - fixed italian translations for block 'Maps" @giuliaghisini
