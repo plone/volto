@@ -8,12 +8,12 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { defineMessages, injectIntl } from 'react-intl';
-import { blocks } from '~/config';
 import { Button } from 'semantic-ui-react';
 import includes from 'lodash/includes';
 import isBoolean from 'lodash/isBoolean';
 import cx from 'classnames';
 import { setSidebarTab } from '@plone/volto/actions';
+import config from '@plone/volto/registry';
 
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
@@ -80,7 +80,8 @@ class Edit extends Component {
   componentDidMount() {
     const { type } = this.props;
     const blockHasOwnFocusManagement =
-      blocks.blocksConfig?.[type]?.['blockHasOwnFocusManagement'] || null;
+      config.blocks.blocksConfig?.[type]?.['blockHasOwnFocusManagement'] ||
+      null;
     if (
       !blockHasOwnFocusManagement &&
       this.props.selected &&
@@ -90,7 +91,7 @@ class Edit extends Component {
     }
     const tab = this.props.manage
       ? 1
-      : blocks.blocksConfig?.[type]?.sidebarTab || 0;
+      : config.blocks.blocksConfig?.[type]?.sidebarTab || 0;
     if (this.props.selected && this.props.editable) {
       this.props.setSidebarTab(tab);
     }
@@ -99,7 +100,8 @@ class Edit extends Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
     const { selected, type } = this.props;
     const blockHasOwnFocusManagement =
-      blocks.blocksConfig?.[type]?.['blockHasOwnFocusManagement'] || null;
+      config.blocks.blocksConfig?.[type]?.['blockHasOwnFocusManagement'] ||
+      null;
     if (
       !blockHasOwnFocusManagement &&
       nextProps.selected &&
@@ -115,7 +117,7 @@ class Edit extends Component {
     ) {
       const tab = this.props.manage
         ? 1
-        : blocks.blocksConfig?.[nextProps.type]?.sidebarTab || 0;
+        : config.blocks.blocksConfig?.[nextProps.type]?.sidebarTab || 0;
       this.props.setSidebarTab(tab);
     }
   }
@@ -128,6 +130,7 @@ class Edit extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const { blocks } = config;
     const { id, type, selected, editable } = this.props;
     const required = isBoolean(this.props.data.required)
       ? this.props.data.required

@@ -12,6 +12,7 @@ import { Button, Dimmer, Input, Loader, Message } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import loadable from '@loadable/component';
 import cx from 'classnames';
+import { isEqual } from 'lodash';
 
 import { Icon, ImageSidebar, SidebarPortal } from '@plone/volto/components';
 import { createContent } from '@plone/volto/actions';
@@ -27,9 +28,7 @@ import navTreeSVG from '@plone/volto/icons/nav.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import uploadSVG from '@plone/volto/icons/upload.svg';
 
-const Dropzone = loadable(() => import('react-dropzone'), {
-  resolveComponent: (components) => components.Dropzone,
-});
+const Dropzone = loadable(() => import('react-dropzone'));
 
 const messages = defineMessages({
   ImageBlockInputPlaceholder: {
@@ -68,16 +67,6 @@ class Edit extends Component {
     handleKeyDown: PropTypes.func.isRequired,
     createContent: PropTypes.func.isRequired,
     openObjectBrowser: PropTypes.func.isRequired,
-    editable: PropTypes.bool,
-  };
-
-  /**
-   * Default properties
-   * @property {Object} defaultProps Default properties.
-   * @static
-   */
-  static defaultProps = {
-    editable: true,
   };
 
   state = {
@@ -107,6 +96,19 @@ class Edit extends Component {
         alt: nextProps.properties.title,
       });
     }
+  }
+
+  /**
+   * @param {*} nextProps
+   * @returns {boolean}
+   * @memberof Edit
+   */
+  shouldComponentUpdate(nextProps) {
+    return (
+      this.props.selected ||
+      nextProps.selected ||
+      !isEqual(this.props.data, nextProps.data)
+    );
   }
 
   /**
@@ -316,6 +318,7 @@ class Edit extends Component {
                               icon
                               onClick={(e) => {
                                 e.stopPropagation();
+                                e.preventDefault();
                                 this.props.openObjectBrowser();
                               }}
                             >

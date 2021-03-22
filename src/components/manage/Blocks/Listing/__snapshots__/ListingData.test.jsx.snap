@@ -365,6 +365,7 @@ exports[`renders an Listing Data Sidebar component 1`] = `
           >
             <label
               htmlFor="field-limit"
+              id="fieldset-undefined-field-label-limit"
             >
               Results limit
             </label>
@@ -409,6 +410,7 @@ exports[`renders an Listing Data Sidebar component 1`] = `
           >
             <label
               htmlFor="field-itembatchsize"
+              id="fieldset-undefined-field-label-itembatchsize"
             >
               Item batch size
             </label>

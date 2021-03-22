@@ -6,12 +6,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { settings } from '~/config';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { useSelector } from 'react-redux';
+import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers/Url/Url';
 import URLUtils from '@plone/volto/components/manage/AnchorPlugin/utils/URLUtils';
 
 const UniversalLink = ({
   href,
+  item,
   openLinkInNewTab,
   download = false,
   children,
@@ -19,17 +20,26 @@ const UniversalLink = ({
   title = null,
   ...props
 }) => {
-  const isExternal =
-    (href.startsWith('http') && !href.includes(settings.apiPath)) ||
-    URLUtils.isMail(href) ||
-    URLUtils.isTelephone(href);
-  const isDownload = (!isExternal && href.includes('@@download')) || download;
+  const token = useSelector((state) => state.userSession?.token);
+
+  let url = href;
+  if (!href) {
+    url = flattenToAppURL(item['@id']);
+    if (!token && item.remoteUrl) {
+      url = item.remoteUrl;
+    }
+  }
+
+  const isExternal = !isInternalURL(url);
+  const isDownload = (!isExternal && url.includes('@@download')) || download;
 
   return isExternal ? (
     <a
-      href={href}
+      href={url}
       title={title}
-      target={openLinkInNewTab ?? true ? '_blank' : null}
+      target={
+        !URLUtils.isMail(url) && !(openLinkInNewTab === false) ? '_blank' : null
+      }
       rel="noopener noreferrer"
       className={className}
       {...props}
@@ -37,12 +47,18 @@ const UniversalLink = ({
       {children}
     </a>
   ) : isDownload ? (
-    <a href={href} download title={title} className={className} {...props}>
+    <a
+      href={flattenToAppURL(url)}
+      download
+      title={title}
+      className={className}
+      {...props}
+    >
       {children}
     </a>
   ) : (
     <Link
-      to={flattenToAppURL(href)}
+      to={flattenToAppURL(url)}
       target={openLinkInNewTab ?? false ? '_blank' : null}
       title={title}
       className={className}
@@ -54,11 +70,15 @@ const UniversalLink = ({
 };
 
 UniversalLink.propTypes = {
-  href: PropTypes.string.isRequired,
+  href: PropTypes.string,
   openLinkInNewTab: PropTypes.bool,
   download: PropTypes.bool,
   className: PropTypes.string,
   title: PropTypes.string,
+  item: PropTypes.shape({
+    '@id': PropTypes.string,
+    remoteUrl: PropTypes.string, //of plone @type 'Link'
+  }),
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,

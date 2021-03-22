@@ -46,7 +46,7 @@ import { injectIntl } from 'react-intl';
 import { v4 as uuid } from 'uuid';
 import { toast } from 'react-toastify';
 import { BlocksToolbar } from '@plone/volto/components';
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 /**
  * Form container class.
@@ -92,6 +92,7 @@ class Form extends Component {
     isFormSelected: PropTypes.bool,
     onSelectForm: PropTypes.func,
     editable: PropTypes.bool,
+    onChangeFormData: PropTypes.func,
     requestError: PropTypes.string,
     allowedBlocks: PropTypes.arrayOf(PropTypes.string),
     showRestricted: PropTypes.bool,
@@ -170,7 +171,7 @@ class Form extends Component {
             '@type': 'title',
           },
           [ids.text]: {
-            '@type': settings.defaultBlockType,
+            '@type': config.settings.defaultBlockType,
           },
         };
       }
@@ -210,7 +211,7 @@ class Form extends Component {
    * also the first Tab to have any errors will be selected
    * @param {Object} prevProps
    */
-  componentDidUpdate(prevProps) {
+  async componentDidUpdate(prevProps, prevState) {
     let { requestError } = this.props;
     let errors = {};
     let activeIndex = 0;
@@ -228,6 +229,15 @@ class Form extends Component {
         errors,
         activeIndex,
       });
+    }
+
+    if (this.props.onChangeFormData) {
+      if (
+        JSON.stringify(prevState?.formData) !==
+        JSON.stringify(this.state.formData)
+      ) {
+        this.props.onChangeFormData(this.state.formData);
+      }
     }
   }
 
@@ -373,7 +383,7 @@ class Form extends Component {
           ...this.state.formData[blocksFieldname],
           [id]: value || null,
           [idTrailingBlock]: {
-            '@type': settings.defaultBlockType,
+            '@type': config.settings.defaultBlockType,
           },
         },
         [blocksLayoutFieldname]: {
@@ -449,6 +459,7 @@ class Form extends Component {
    * @returns {undefined}
    */
   onDeleteBlock(id, selectPrev) {
+    const { settings } = config;
     const blocksFieldname = getBlocksFieldname(this.state.formData);
     const blocksLayoutFieldname = getBlocksLayoutFieldname(this.state.formData);
 
@@ -488,6 +499,7 @@ class Form extends Component {
    */
   onAddBlock(type, index) {
     if (this.props.editable) {
+      const { settings } = config;
       const id = uuid();
       const idTrailingBlock = uuid();
       const blocksFieldname = getBlocksFieldname(this.state.formData);
@@ -708,6 +720,7 @@ class Form extends Component {
       disableArrowDown = false,
     } = {},
   ) {
+    const { settings } = config;
     const isMultipleSelection = e.shiftKey;
     if (e.key === 'ArrowUp' && !disableArrowUp) {
       this.onFocusPreviousBlock(block, node, isMultipleSelection);
@@ -858,6 +871,7 @@ class Form extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const { settings } = config;
     const { schema: originalSchema, onCancel, onSubmit } = this.props;
     const { formData, placeholderProps } = this.state;
     const blocksFieldname = getBlocksFieldname(formData);

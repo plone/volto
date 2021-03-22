@@ -2,7 +2,7 @@
  * Config.
  * @module config
  */
-
+import { parse as parseUrl } from 'url';
 import { defaultWidget, widgetMapping } from './Widgets';
 import {
   layoutViews,
@@ -27,11 +27,14 @@ import {
   blocksConfig,
   initialBlocks,
 } from './Blocks';
+import { loadables } from './Loadables';
 
 import { sentryOptions } from './Sentry';
 import { contentIcons } from './ContentIcons';
 
 import applyAddonConfiguration from 'load-volto-addons';
+
+import ConfigRegistry from '@plone/volto/registry';
 
 const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || '3000';
@@ -42,6 +45,23 @@ const apiPath =
     ? `http://${host}:${port}/api`
     : 'http://localhost:8080/Plone');
 
+const getServerURL = (url) => {
+  if (!url) return;
+  const apiPathURL = parseUrl(url);
+  return `${apiPathURL.protocol}//${apiPathURL.hostname}:${apiPathURL.port}`;
+};
+
+// Sensible defaults for publicURL
+// if RAZZLE_PUBLIC_URL is present, use it
+// if in DEV, use the host/port combination by default
+// if in PROD, assume it's RAZZLE_API_PATH server name (no /api or alikes) or fallback
+// to DEV settings if RAZZLE_API_PATH is not present
+const publicURL =
+  process.env.RAZZLE_PUBLIC_URL ||
+  (__DEVELOPMENT__
+    ? `http://${host}:${port}`
+    : getServerURL(process.env.RAZZLE_API_PATH) || `http://${host}:${port}`);
+
 const serverConfig =
   typeof __SERVER__ !== 'undefined' && __SERVER__
     ? require('./server').default
@@ -51,6 +71,8 @@ let config = {
   settings: {
     host,
     port,
+    // The URL Volto is going to be served (see sensible defaults above)
+    publicURL,
     // Internal proxy to bypass CORS *while developing*. Not intended for production use.
     // In production, the proxy is disabled, make sure you specify an apiPath that does
     // not require CORS to work.
@@ -88,13 +110,27 @@ let config = {
     defaultBlockType: 'text',
     verticalFormTabs: false,
     persistentReducers: ['blocksClipboard'],
+    initialReducersBlacklist: [], // reducers in this list won't be hydrated in windows.__data
+    asyncPropsExtenders: [], // per route asyncConnect customizers
     sentryOptions: {
       ...sentryOptions,
     },
     contentIcons: contentIcons,
+    loadables,
+    lazyBundles: {
+      cms: [
+        'prettierStandalone',
+        'prettierParserHtml',
+        'prismCore',
+        'toastify',
+        'reactSelect',
+        // 'diffLib',
+      ],
+    },
     appExtras: [],
     maxResponseSize: 2000000000, // This is superagent default (200 mb)
     serverConfig,
+    storeExtenders: [],
   },
   widgets: {
     ...widgetMapping,
@@ -112,7 +148,6 @@ let config = {
     groupBlocksOrder,
     initialBlocks,
   },
-
   addonRoutes: [],
   addonReducers: {},
 };
@@ -126,3 +161,11 @@ export const blocks = config.blocks;
 export const addonRoutes = [...config.addonRoutes];
 export const addonReducers = { ...config.addonReducers };
 export const appExtras = config.appExtras;
+
+ConfigRegistry.settings = settings;
+ConfigRegistry.blocks = blocks;
+ConfigRegistry.views = views;
+ConfigRegistry.widgets = widgets;
+ConfigRegistry.addonRoutes = addonRoutes;
+ConfigRegistry.addonReducers = addonReducers;
+ConfigRegistry.appExtras = appExtras;

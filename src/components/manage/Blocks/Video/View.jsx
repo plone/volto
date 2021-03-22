@@ -12,7 +12,7 @@ import {
   getParentUrl,
   flattenToAppURL,
 } from '@plone/volto/helpers';
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 /**
  * View video block class.
@@ -122,7 +122,10 @@ const View = ({ data }) => (
                   <video
                     src={
                       isInternalURL(
-                        data.url.replace(getParentUrl(settings.apiPath), ''),
+                        data.url.replace(
+                          getParentUrl(config.settings.apiPath),
+                          '',
+                        ),
                       )
                         ? `${data.url}/@@download/file`
                         : data.url

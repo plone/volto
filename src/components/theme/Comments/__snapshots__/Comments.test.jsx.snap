@@ -105,6 +105,7 @@ exports[`Comments renders a comments component 1`] = `
                     >
                       <label
                         htmlFor="field-comment"
+                        id="fieldset-undefined-field-label-comment"
                       >
                         Comment
                       </label>

@@ -2,9 +2,10 @@ import React from 'react';
 import { Message, Container } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
 import { useSelector } from 'react-redux';
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 const OutdatedBrowser = () => {
+  const { settings } = config;
   const browserdetect = useSelector((state) => state.browserdetect);
   return (
     settings.notSupportedBrowsers.includes(browserdetect?.name) && (

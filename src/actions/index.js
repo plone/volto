@@ -3,7 +3,6 @@
  * @module actions
  * @example import { getSchema } from 'actions';
  */
-
 export { listActions } from '@plone/volto/actions/actions/actions';
 export { getBreadcrumbs } from '@plone/volto/actions/breadcrumbs/breadcrumbs';
 export { setExpandedToolbar } from '@plone/volto/actions/toolbar/toolbar';
@@ -116,3 +115,6 @@ export {
   setBlocksClipboard,
   resetBlocksClipboard,
 } from '@plone/volto/actions/blocksClipboard/blocksClipboard';
+export { loadLazyLibrary } from '@plone/volto/actions/lazyLibraries/lazyLibraries';
+export { getContextNavigation } from '@plone/volto/actions/contextNavigation/contextNavigation';
+export * from './asyncConnect/asyncConnect';

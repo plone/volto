@@ -1,10 +1,12 @@
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 import controlpanels from './controlpanels';
 import {
   GET_CONTROLPANEL,
   LIST_CONTROLPANELS,
   UPDATE_CONTROLPANEL,
 } from '@plone/volto/constants/ActionTypes';
+
+const { settings } = config;
 
 describe('Controlpanels reducer', () => {
   it('should return the initial state', () => {

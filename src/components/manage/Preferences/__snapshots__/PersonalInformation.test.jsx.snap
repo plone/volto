@@ -36,6 +36,7 @@ exports[`PersonalInformation renders a personal information component 1`] = `
                   >
                     <label
                       htmlFor="field-fullname"
+                      id="fieldset-undefined-field-label-fullname"
                     >
                       Full Name
                     </label>
@@ -93,6 +94,7 @@ exports[`PersonalInformation renders a personal information component 1`] = `
                   >
                     <label
                       htmlFor="field-email"
+                      id="fieldset-undefined-field-label-email"
                     >
                       E-mail
                     </label>
@@ -150,6 +152,7 @@ exports[`PersonalInformation renders a personal information component 1`] = `
                   >
                     <label
                       htmlFor="field-portrait"
+                      id="fieldset-undefined-field-label-portrait"
                     >
                       Portrait
                     </label>
@@ -237,6 +240,7 @@ exports[`PersonalInformation renders a personal information component 1`] = `
                   >
                     <label
                       htmlFor="field-home_page"
+                      id="fieldset-undefined-field-label-home_page"
                     >
                       Home page
                     </label>
@@ -294,6 +298,7 @@ exports[`PersonalInformation renders a personal information component 1`] = `
                   >
                     <label
                       htmlFor="field-location"
+                      id="fieldset-undefined-field-label-location"
                     >
                       Location
                     </label>
@@ -432,6 +437,7 @@ exports[`PersonalInformation renders a personal information component embedded i
                   >
                     <label
                       htmlFor="field-fullname"
+                      id="fieldset-undefined-field-label-fullname"
                     >
                       Full Name
                     </label>
@@ -489,6 +495,7 @@ exports[`PersonalInformation renders a personal information component embedded i
                   >
                     <label
                       htmlFor="field-email"
+                      id="fieldset-undefined-field-label-email"
                     >
                       E-mail
                     </label>
@@ -546,6 +553,7 @@ exports[`PersonalInformation renders a personal information component embedded i
                   >
                     <label
                       htmlFor="field-portrait"
+                      id="fieldset-undefined-field-label-portrait"
                     >
                       Portrait
                     </label>
@@ -633,6 +641,7 @@ exports[`PersonalInformation renders a personal information component embedded i
                   >
                     <label
                       htmlFor="field-home_page"
+                      id="fieldset-undefined-field-label-home_page"
                     >
                       Home page
                     </label>
@@ -690,6 +699,7 @@ exports[`PersonalInformation renders a personal information component embedded i
                   >
                     <label
                       htmlFor="field-location"
+                      id="fieldset-undefined-field-label-location"
                     >
                       Location
                     </label>

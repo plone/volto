@@ -17,8 +17,6 @@ import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { v4 as uuid } from 'uuid';
 import qs from 'query-string';
-
-import { settings } from '~/config';
 import { toast } from 'react-toastify';
 import { Grid, Container } from 'semantic-ui-react';
 import { createContent, getSchema } from '@plone/volto/actions';
@@ -33,11 +31,13 @@ import {
 import {
   getBaseUrl,
   hasBlocksData,
+  flattenToAppURL,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
 } from '@plone/volto/helpers';
+import { preloadLazyLibs } from '@plone/volto/helpers/Loadable';
 
-import { blocks } from '~/config';
+import config from '@plone/volto/registry';
 
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -122,14 +122,14 @@ class Add extends Component {
     this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
-    if (blocks?.initialBlocks[props.type]) {
-      this.initialBlocksLayout = blocks.initialBlocks[props.type].map((item) =>
-        uuid(),
-      );
+    if (config.blocks?.initialBlocks[props.type]) {
+      this.initialBlocksLayout = config.blocks.initialBlocks[
+        props.type
+      ].map((item) => uuid());
       this.initialBlocks = this.initialBlocksLayout.reduce(
         (acc, value, index) => ({
           ...acc,
-          [value]: { '@type': blocks.initialBlocks[props.type][index] },
+          [value]: { '@type': config.blocks.initialBlocks[props.type][index] },
         }),
         {},
       );
@@ -163,8 +163,7 @@ class Add extends Component {
       nextProps.content['@type'] === this.props.type
     ) {
       this.props.history.push(
-        this.props.returnUrl ||
-          nextProps.content['@id'].replace(settings.apiPath, ''),
+        this.props.returnUrl || flattenToAppURL(nextProps.content['@id']),
       );
     }
 
@@ -202,7 +201,7 @@ class Add extends Component {
         ? keys(this.props.schema.definitions)
         : null,
       '@type': this.props.type,
-      ...(settings.isMultilingual &&
+      ...(config.settings.isMultilingual &&
         this.props.location?.state?.translationOf && {
           translation_of: this.props.location.state.translationOf,
           language: this.props.location.state.language,
@@ -425,4 +424,5 @@ export default compose(
     }),
     { createContent, getSchema },
   ),
+  preloadLazyLibs('cms'),
 )(Add);

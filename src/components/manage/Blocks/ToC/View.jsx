@@ -70,4 +70,4 @@ View.propTypes = {
   properties: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
-export default injectIntl(View);
+export default React.memo(injectIntl(View));

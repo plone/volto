@@ -9,6 +9,7 @@ import { compose } from 'redux';
 import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 import { Message } from 'semantic-ui-react';
+import { isEqual } from 'lodash';
 
 import { LeadImageSidebar, SidebarPortal } from '@plone/volto/components';
 import { flattenToAppURL } from '@plone/volto/helpers';
@@ -55,6 +56,15 @@ class Edit extends Component {
       ...this.props.data,
       align,
     });
+  }
+
+  /**
+   * @param {*} nextProps
+   * @returns {boolean}
+   * @memberof Edit
+   */
+  shouldComponentUpdate(nextProps) {
+    return this.props.selected || !isEqual(this.props.data, nextProps.data);
   }
 
   node = React.createRef();

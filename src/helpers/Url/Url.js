@@ -4,7 +4,9 @@
  */
 
 import { last, memoize } from 'lodash';
-import { settings } from '~/config';
+import urlRegex from './urlRegex';
+import prependHttp from 'prepend-http';
+import config from '@plone/volto/registry';
 
 /**
  * Get base url.
@@ -13,6 +15,7 @@ import { settings } from '~/config';
  * @return {string} Base url of content object.
  */
 export const getBaseUrl = memoize((url) => {
+  const { settings } = config;
   // We allow settings.nonContentRoutes to have strings (that are supposed to match
   // ending strings of pathnames, so we are converting them to RegEx to match also
   const normalized_nonContentRoutes = settings.nonContentRoutes.map((item) => {
@@ -88,9 +91,14 @@ export function getView(url) {
  * @returns {string} Flattened URL to the app server
  */
 export function flattenToAppURL(url) {
-  return url
-    .replace(settings.internalApiPath, '')
-    .replace(settings.apiPath, '');
+  const { settings } = config;
+  return (
+    url &&
+    url
+      .replace(settings.internalApiPath, '')
+      .replace(settings.apiPath, '')
+      .replace(settings.publicURL, '')
+  );
 }
 
 /**
@@ -100,6 +108,7 @@ export function flattenToAppURL(url) {
  * @returns {boolean} true if the current view is a cms ui view
  */
 export const isCmsUi = memoize((currentPathname) => {
+  const { settings } = config;
   const fullPath = currentPathname.replace(/\?.*$/, '');
   // WARNING:
   // not working properly for paths like /editors or similar
@@ -121,6 +130,7 @@ export const isCmsUi = memoize((currentPathname) => {
  * @returns {string} Same HTML with Flattened URLs to the app server
  */
 export function flattenHTMLToAppURL(html) {
+  const { settings } = config;
   return settings.internalApiPath
     ? html
         .replace(new RegExp(settings.internalApiPath, 'g'), '')
@@ -135,6 +145,7 @@ export function flattenHTMLToAppURL(html) {
  * @returns {string} New URL with app
  */
 export function addAppURL(url) {
+  const { settings } = config;
   return url.indexOf(settings.apiPath) === 0
     ? url
     : `${settings.apiPath}${url}`;
@@ -147,11 +158,43 @@ export function addAppURL(url) {
  * @returns {boolean} True if internal url
  */
 export function isInternalURL(url) {
+  const { settings } = config;
   return (
+    url.indexOf(settings.publicURL) !== -1 ||
     url.indexOf(settings.internalApiPath) !== -1 ||
     url.indexOf(settings.apiPath) !== -1 ||
     url.charAt(0) === '/' ||
     url.charAt(0) === '.' ||
     url.startsWith('#')
   );
+}
+
+/**
+ * Check if it's a valid url
+ * @method isUrl
+ * @param {string} url URL of the object
+ * @returns {boolean} True if is a valid url
+ */
+export function isUrl(url) {
+  return urlRegex().test(url);
+}
+
+/**
+ * Normalize URL, adds protocol (if required eg. user has not entered the protocol)
+ * @method normalizeUrl
+ * @param {string} url URL of the object
+ * @returns {boolean} URL with the protocol
+ */
+export function normalizeUrl(url) {
+  return prependHttp(url);
+}
+
+/**
+ * Removes protocol from URL (for display)
+ * @method removeProtocol
+ * @param {string} url URL of the object
+ * @returns {string} URL without the protocol part
+ */
+export function removeProtocol(url) {
+  return url.replace('https://', '').replace('http://', '');
 }

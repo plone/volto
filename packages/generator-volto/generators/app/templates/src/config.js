@@ -2,40 +2,21 @@
  * Add your config changes here.
  * @module config
  * @example
- * export const settings = {
- *   ...defaultSettings,
- *   port: 4300,
- *   listBlockTypes: {
- *     ...defaultSettings.listBlockTypes,
- *     'my-list-item',
- *   }
+ * export default function applyConfig(config) {
+ *   config.settings = {
+ *     ...config.settings,
+ *     port: 4300,
+ *     listBlockTypes: {
+ *       ...config.settings.listBlockTypes,
+ *       'my-list-item',
+ *    }
  * }
  */
 
-import {
-  settings as defaultSettings,
-  views as defaultViews,
-  widgets as defaultWidgets,
-  blocks as defaultBlocks,
-  addonReducers as defaultAddonReducers,
-  addonRoutes as defaultAddonRoutes,
-} from '@plone/volto/config';
+// All your imports required for the config here BEFORE this line
+import '@plone/volto/config';
 
-export const settings = {
-  ...defaultSettings,
-};
-
-export const views = {
-  ...defaultViews,
-};
-
-export const widgets = {
-  ...defaultWidgets,
-};
-
-export const blocks = {
-  ...defaultBlocks,
-};
-
-export const addonRoutes = [...defaultAddonRoutes];
-export const addonReducers = { ...defaultAddonReducers };
+export default function applyConfig(config) {
+  // Add here your project's configuration here by modifying `config` accordingly
+  return config;
+}

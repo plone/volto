@@ -218,6 +218,7 @@ msgstr "Fil d'Ariane"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
 msgstr "Explore"
 
@@ -772,6 +773,10 @@ msgstr ""
 msgid "Fixed width table cells"
 msgstr "Taille de la cellule de la table fixé"
 
+#: components/manage/BlockChooser/BlockChooser
+msgid "Fold"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Folder"
 msgstr "Dossier"
@@ -974,6 +979,10 @@ msgstr ""
 msgid "Item(s) pasted."
 msgstr "Elément(s) collé(s)"
 
+#: components/manage/Contents/Contents
+msgid "Item(s) state has been updated."
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 msgid "Items"
 msgstr "Eléments"
@@ -1040,6 +1049,10 @@ msgstr "Lien vers"
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
 msgstr "Listing"
+
+#: components/manage/Form/ModalForm
+msgid "Loading"
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Location"
@@ -1153,6 +1166,10 @@ msgstr "Nom"
 msgid "Navigate back"
 msgstr "Retour en arrière"
 
+#: components/theme/Navigation/ContextNavigation
+msgid "Navigation"
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "New password"
@@ -1263,6 +1280,10 @@ msgstr "Ouvrir dans un nouvel onglet"
 #: components/theme/Navigation/Navigation
 msgid "Open menu"
 msgstr "Ouvrir le menu"
+
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "Open object browser"
+msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -1442,6 +1463,10 @@ msgid "Rename"
 msgstr "Renomer"
 
 #: components/manage/Contents/ContentsRenameModal
+msgid "Rename Items Loading Message"
+msgstr ""
+
+#: components/manage/Contents/ContentsRenameModal
 msgid "Rename items"
 msgstr "Renommer les éléments"
 
@@ -1573,6 +1598,10 @@ msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Second"
+msgstr ""
+
+#: components/manage/Sidebar/ObjectBrowserNav
+msgid "Select"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
@@ -1952,6 +1981,10 @@ msgstr "UID"
 msgid "Unauthorized"
 msgstr "Non autorisé"
 
+#: components/manage/BlockChooser/BlockChooser
+msgid "Unfold"
+msgstr ""
+
 #: components/manage/Diff/Diff
 msgid "Unified"
 msgstr "Unifié"
@@ -1962,6 +1995,7 @@ msgstr "Désinstaller"
 
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
+#: components/theme/View/RenderBlocks
 msgid "Unknown Block"
 msgstr "Bloc inconnu"
 
@@ -2117,6 +2151,10 @@ msgstr "Lorsque cette date est atteinte, le contenu ne sera plus visible dans le
 msgid "Who"
 msgstr "Qui"
 
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Workflow Change Loading Message"
+msgstr ""
+
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
 msgstr "Workflow mis à jour."
@@ -2191,6 +2229,7 @@ msgid "compare_to_nothing"
 msgstr ""
 
 #: components/manage/Blocks/Block/Edit
+#: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"
 msgstr "supprimer"
 
@@ -2493,6 +2532,18 @@ msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_years"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-footer"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-main-content"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-navigation"
 msgstr ""
 
 #: components/manage/Contents/Contents

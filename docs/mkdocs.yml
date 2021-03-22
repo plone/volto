@@ -50,6 +50,7 @@ nav:
       - Lazy loading and code splitting: 'recipes/lazyload.md'
       - Overriding i18n messages: 'recipes/overridei18n.md'
       - App component insertion point: 'recipes/appextras.md'
+      - Context navigation component: 'recipes/contextnavigation.md'
   - Blocks:
       - Introduction: 'blocks/introduction.md'
       - Anatomy: 'blocks/anatomy.md'
@@ -57,6 +58,7 @@ nav:
       - Edit components: 'blocks/editcomponent.md'
   - Addons:
       - Introduction: 'addons/index.md'
+      - Internationalization: 'addons/i18n.md'
       - Best practices: 'addons/best-practices.md'
   - Backend integration: 'backend/index.md'
   - Deploying:

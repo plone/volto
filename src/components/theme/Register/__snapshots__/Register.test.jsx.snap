@@ -53,6 +53,7 @@ exports[`Register renders a register component 1`] = `
                     >
                       <label
                         htmlFor="field-fullname"
+                        id="fieldset-undefined-field-label-fullname"
                       >
                         Full Name
                       </label>
@@ -110,6 +111,7 @@ exports[`Register renders a register component 1`] = `
                     >
                       <label
                         htmlFor="field-email"
+                        id="fieldset-undefined-field-label-email"
                       >
                         E-mail
                       </label>

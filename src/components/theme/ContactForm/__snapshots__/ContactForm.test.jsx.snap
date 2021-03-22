@@ -74,6 +74,7 @@ exports[`Contact form renders a contact form 1`] = `
                       >
                         <label
                           htmlFor="field-name"
+                          id="fieldset-undefined-field-label-name"
                         >
                           Name
                         </label>
@@ -118,6 +119,7 @@ exports[`Contact form renders a contact form 1`] = `
                       >
                         <label
                           htmlFor="field-from"
+                          id="fieldset-undefined-field-label-from"
                         >
                           From
                         </label>
@@ -162,6 +164,7 @@ exports[`Contact form renders a contact form 1`] = `
                       >
                         <label
                           htmlFor="field-subject"
+                          id="fieldset-undefined-field-label-subject"
                         >
                           Subject
                         </label>
@@ -206,6 +209,7 @@ exports[`Contact form renders a contact form 1`] = `
                       >
                         <label
                           htmlFor="field-message"
+                          id="fieldset-undefined-field-label-message"
                         >
                           Message
                         </label>
@@ -370,6 +374,7 @@ exports[`Contact form renders a contact form with error message 1`] = `
                       >
                         <label
                           htmlFor="field-name"
+                          id="fieldset-undefined-field-label-name"
                         >
                           Name
                         </label>
@@ -414,6 +419,7 @@ exports[`Contact form renders a contact form with error message 1`] = `
                       >
                         <label
                           htmlFor="field-from"
+                          id="fieldset-undefined-field-label-from"
                         >
                           From
                         </label>
@@ -458,6 +464,7 @@ exports[`Contact form renders a contact form with error message 1`] = `
                       >
                         <label
                           htmlFor="field-subject"
+                          id="fieldset-undefined-field-label-subject"
                         >
                           Subject
                         </label>
@@ -502,6 +509,7 @@ exports[`Contact form renders a contact form with error message 1`] = `
                       >
                         <label
                           htmlFor="field-message"
+                          id="fieldset-undefined-field-label-message"
                         >
                           Message
                         </label>

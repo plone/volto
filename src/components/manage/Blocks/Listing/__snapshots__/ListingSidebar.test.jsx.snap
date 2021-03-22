@@ -383,6 +383,7 @@ exports[`renders a Listing Block Sidebar component 1`] = `
                 >
                   <label
                     for="field-limit"
+                    id="fieldset-undefined-field-label-limit"
                   >
                     Results limit
                   </label>
@@ -422,6 +423,7 @@ exports[`renders a Listing Block Sidebar component 1`] = `
                 >
                   <label
                     for="field-itembatchsize"
+                    id="fieldset-undefined-field-label-itembatchsize"
                   >
                     Item batch size
                   </label>
@@ -477,6 +479,7 @@ exports[`renders a Listing Block Sidebar component 1`] = `
               >
                 <label
                   for="field-linkTitle"
+                  id="fieldset-undefined-field-label-linkTitle"
                 >
                   Link Title
                 </label>
@@ -516,6 +519,7 @@ exports[`renders a Listing Block Sidebar component 1`] = `
               >
                 <label
                   for="field-linkHref"
+                  id="fieldset-undefined-field-label-linkHref"
                 >
                   Link to
                 </label>

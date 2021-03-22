@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { asyncConnect } from 'redux-connect';
+import { asyncConnect } from '@plone/volto/helpers';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Button, Grid, Container, Menu } from 'semantic-ui-react';
 import { Portal } from 'react-portal';
@@ -35,6 +35,7 @@ import {
   listActions,
 } from '@plone/volto/actions';
 import { getBaseUrl, hasBlocksData } from '@plone/volto/helpers';
+import { preloadLazyLibs } from '@plone/volto/helpers/Loadable';
 
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -452,4 +453,5 @@ export default compose(
       getSchema,
     },
   ),
+  preloadLazyLibs('cms'),
 )(Edit);
