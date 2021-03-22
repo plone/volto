@@ -42,6 +42,7 @@ class Breadcrumbs extends Component {
   static propTypes = {
     getBreadcrumbs: PropTypes.func.isRequired,
     pathname: PropTypes.string.isRequired,
+    root: PropTypes.string,
     items: PropTypes.arrayOf(
       PropTypes.shape({
         title: PropTypes.string,
@@ -88,7 +89,7 @@ class Breadcrumbs extends Component {
         <Container>
           <Breadcrumb>
             <Link
-              to="/"
+              to={this.props.root || '/'}
               className="section"
               title={this.props.intl.formatMessage(messages.home)}
             >
@@ -98,11 +99,11 @@ class Breadcrumbs extends Component {
               <Breadcrumb.Divider key={`divider-${item.url}`} />,
               index < items.length - 1 ? (
                 <Link key={item.url} to={item.url} className="section">
-                  {item.nav_title || item.title}
+                  {item.title}
                 </Link>
               ) : (
                 <Breadcrumb.Section key={item.url} active>
-                  {item.nav_title || item.title}
+                  {item.title}
                 </Breadcrumb.Section>
               ),
             ])}
@@ -113,11 +114,13 @@ class Breadcrumbs extends Component {
   }
 }
 
+export const BreadcrumbsComponent = Breadcrumbs;
 export default compose(
   injectIntl,
   connect(
     (state) => ({
       items: state.breadcrumbs.items,
+      root: state.breadcrumbs.root,
     }),
     { getBreadcrumbs },
   ),

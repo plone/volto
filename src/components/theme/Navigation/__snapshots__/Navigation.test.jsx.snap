@@ -3,6 +3,7 @@
 exports[`Navigation renders a navigation component with an active item 1`] = `
 <nav
   className="navigation"
+  id="navigation"
 >
   <div
     className="hamburger-wrapper mobile tablet only"
@@ -51,6 +52,7 @@ exports[`Navigation renders a navigation component with an active item 1`] = `
 exports[`Navigation renders a navigation component with an active item when its subchildren are accessed 1`] = `
 <nav
   className="navigation"
+  id="navigation"
 >
   <div
     className="hamburger-wrapper mobile tablet only"
@@ -99,6 +101,7 @@ exports[`Navigation renders a navigation component with an active item when its 
 exports[`Navigation renders a navigation component with only one active item even if there are similar item names 1`] = `
 <nav
   className="navigation"
+  id="navigation"
 >
   <div
     className="hamburger-wrapper mobile tablet only"
@@ -155,6 +158,7 @@ exports[`Navigation renders a navigation component with only one active item eve
 exports[`Navigation renders a navigation component without active items 1`] = `
 <nav
   className="navigation"
+  id="navigation"
 >
   <div
     className="hamburger-wrapper mobile tablet only"
@@ -186,53 +190,6 @@ exports[`Navigation renders a navigation component without active items 1`] = `
       onClick={[Function]}
     >
       Blog
-    </a>
-    <a
-      aria-current={null}
-      className="item"
-      href="/users"
-      onClick={[Function]}
-    >
-      Users
-    </a>
-  </div>
-</nav>
-`;
-
-exports[`Navigation renders a navigation component without active items and containing a nav_item 1`] = `
-<nav
-  className="navigation"
->
-  <div
-    className="hamburger-wrapper mobile tablet only"
-  >
-    <button
-      aria-label="Open menu"
-      className="hamburger hamburger--collapse"
-      onClick={[Function]}
-      title="Open menu"
-      type="button"
-    >
-      <span
-        className="hamburger-box"
-      >
-        <span
-          className="hamburger-inner"
-        />
-      </span>
-    </button>
-  </div>
-  <div
-    className="ui pointing secondary stackable computer large screen widescreen only menu"
-    onClick={[Function]}
-  >
-    <a
-      aria-current={null}
-      className="item"
-      href="/blog"
-      onClick={[Function]}
-    >
-      The Blog
     </a>
     <a
       aria-current={null}

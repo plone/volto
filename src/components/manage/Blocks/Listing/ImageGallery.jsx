@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import loadable from '@loadable/component';
 import 'react-image-gallery/styles/css/image-gallery.css';
-import { settings } from '~/config';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import { Button } from 'semantic-ui-react';
 import { Icon } from '@plone/volto/components';
+import config from '@plone/volto/registry';
+
 import galleryLeftSVG from '@plone/volto/icons/left-key.svg';
 import galleryRightSVG from '@plone/volto/icons/right-key.svg';
 import galleryPlaySVG from '@plone/volto/icons/play.svg';
@@ -71,6 +72,7 @@ const renderFullscreenButton = (onClick, isFullscreen) => {
 };
 
 const ImageGalleryTemplate = ({ items }) => {
+  const { settings } = config;
   const renderItems = items.filter((content) =>
     settings.imageObjects.includes(content['@type']),
   );

@@ -30,7 +30,6 @@ exports[`renders an Image Block Sidebar component 1`] = `
   >
     <div
       className="inline field text"
-      id="field-external"
     >
       <div
         className="ui grid"
@@ -46,6 +45,7 @@ exports[`renders an Image Block Sidebar component 1`] = `
             >
               <label
                 htmlFor="field-external"
+                id="fieldset-undefined-field-label-external"
               >
                 External URL
               </label>
@@ -109,7 +109,6 @@ exports[`renders an Image Block Sidebar component 1`] = `
     </div>
     <div
       className="inline field text"
-      id="field-alt"
     >
       <div
         className="ui grid"
@@ -125,6 +124,7 @@ exports[`renders an Image Block Sidebar component 1`] = `
             >
               <label
                 htmlFor="field-alt"
+                id="fieldset-undefined-field-label-alt"
               >
                 Alt text
               </label>
@@ -331,7 +331,6 @@ exports[`renders an Image Block Sidebar component 1`] = `
     </div>
     <div
       className="inline field"
-      id="field-image_size"
     >
       <div
         className="ui grid"
@@ -347,6 +346,7 @@ exports[`renders an Image Block Sidebar component 1`] = `
             >
               <label
                 htmlFor="field-image_size"
+                id="fieldset-undefined-field-label-image_size"
               >
                 Size
               </label>
@@ -355,7 +355,9 @@ exports[`renders an Image Block Sidebar component 1`] = `
           <div
             className="eight wide column"
           >
-            <div>
+            <div
+              className="field-image_size"
+            >
               <div
                 className="ui buttons"
               >
@@ -439,7 +441,6 @@ exports[`renders an Image Block Sidebar component 1`] = `
     >
       <div
         className="inline field text"
-        id="field-link"
       >
         <div
           className="ui grid"
@@ -455,6 +456,7 @@ exports[`renders an Image Block Sidebar component 1`] = `
               >
                 <label
                   htmlFor="field-link"
+                  id="fieldset-undefined-field-label-link"
                 >
                   Link to
                 </label>
@@ -518,7 +520,6 @@ exports[`renders an Image Block Sidebar component 1`] = `
       </div>
       <div
         className="inline field"
-        id="field-openLinkInNewTab"
       >
         <div
           className="ui grid"

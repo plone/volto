@@ -2,6 +2,18 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import View from './View';
 
+import config from '@plone/volto/registry';
+
+config.settings.imageScales = {
+  large: 768,
+  preview: 400,
+  mini: 200,
+  thumb: 128,
+  tile: 64,
+  icon: 32,
+  listing: 16,
+};
+
 test('renders a view image component', () => {
   const component = renderer.create(
     <View

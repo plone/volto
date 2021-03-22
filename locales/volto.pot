@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2021-01-22T12:10:15.511Z\n"
+"POT-Creation-Date: 2021-02-24T09:41:44.737Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -242,6 +242,7 @@ msgid "Breadcrumbs"
 msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Sidebar/ObjectBrowserNav
 # defaultMessage: Browse
 msgid "Browse"
 msgstr ""
@@ -294,7 +295,7 @@ msgstr ""
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 # defaultMessage: Center
 msgid "Center"
 msgstr ""
@@ -914,6 +915,11 @@ msgstr ""
 msgid "Fixed width table cells"
 msgstr ""
 
+#: components/manage/BlockChooser/BlockChooser
+# defaultMessage: Fold
+msgid "Fold"
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: Folder
 msgid "Folder"
@@ -935,7 +941,7 @@ msgid "From"
 msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 # defaultMessage: Full
 msgid "Full"
 msgstr ""
@@ -1162,6 +1168,11 @@ msgstr ""
 msgid "Item(s) pasted."
 msgstr ""
 
+#: components/manage/Contents/Contents
+# defaultMessage: Item(s) state has been updated.
+msgid "Item(s) state has been updated."
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Items
 msgid "Items"
@@ -1210,7 +1221,7 @@ msgstr ""
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 # defaultMessage: Left
 msgid "Left"
 msgstr ""
@@ -1242,6 +1253,11 @@ msgstr ""
 #: components/manage/Blocks/Listing/ListingSidebar
 # defaultMessage: Listing
 msgid "Listing"
+msgstr ""
+
+#: components/manage/Form/ModalForm
+# defaultMessage: Loading.
+msgid "Loading"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
@@ -1383,6 +1399,11 @@ msgstr ""
 msgid "Navigate back"
 msgstr ""
 
+#: components/theme/Navigation/ContextNavigation
+# defaultMessage: Navigation
+msgid "Navigation"
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: New password
@@ -1517,6 +1538,11 @@ msgstr ""
 #: components/theme/Navigation/Navigation
 # defaultMessage: Open menu
 msgid "Open menu"
+msgstr ""
+
+#: components/manage/Widgets/ObjectBrowserWidget
+# defaultMessage: Open object browser
+msgid "Open object browser"
 msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
@@ -1738,6 +1764,11 @@ msgid "Rename"
 msgstr ""
 
 #: components/manage/Contents/ContentsRenameModal
+# defaultMessage: Renaming items...
+msgid "Rename Items Loading Message"
+msgstr ""
+
+#: components/manage/Contents/ContentsRenameModal
 # defaultMessage: Rename items
 msgid "Rename items"
 msgstr ""
@@ -1808,7 +1839,7 @@ msgstr ""
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 # defaultMessage: Right
 msgid "Right"
 msgstr ""
@@ -1899,6 +1930,11 @@ msgstr ""
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Second
 msgid "Second"
+msgstr ""
+
+#: components/manage/Sidebar/ObjectBrowserNav
+# defaultMessage: Select
+msgid "Select"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
@@ -2358,6 +2394,11 @@ msgstr ""
 msgid "Unauthorized"
 msgstr ""
 
+#: components/manage/BlockChooser/BlockChooser
+# defaultMessage: Unfold
+msgid "Unfold"
+msgstr ""
+
 #: components/manage/Diff/Diff
 # defaultMessage: Unified
 msgid "Unified"
@@ -2370,6 +2411,7 @@ msgstr ""
 
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
+#: components/theme/View/RenderBlocks
 # defaultMessage: Unknown Block {block}
 msgid "Unknown Block"
 msgstr ""
@@ -2562,6 +2604,11 @@ msgstr ""
 msgid "Who"
 msgstr ""
 
+#: components/manage/Contents/ContentsWorkflowModal
+# defaultMessage: Updating workflow states...
+msgid "Workflow Change Loading Message"
+msgstr ""
+
 #: components/manage/Workflow/Workflow
 # defaultMessage: Workflow updated.
 msgid "Workflow updated."
@@ -2644,6 +2691,7 @@ msgid "common"
 msgstr ""
 
 #: components/manage/Blocks/Block/Edit
+#: components/manage/Blocks/Block/EditBlockWrapper
 # defaultMessage: delete
 msgid "delete"
 msgstr ""
@@ -3022,6 +3070,21 @@ msgstr ""
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: years
 msgid "rrule_years"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+# defaultMessage: Skip to footer
+msgid "skiplink-footer"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+# defaultMessage: Skip to main content
+msgid "skiplink-main-content"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+# defaultMessage: Skip to navigation
+msgid "skiplink-navigation"
 msgstr ""
 
 #: components/manage/Contents/Contents

@@ -72,7 +72,7 @@ class AlbumView extends Component {
             <Grid doubling stackable columns={4}>
               {content.items &&
                 content.items.map((item, index) => (
-                  <>
+                  <React.Fragment key={item.url}>
                     {item.image && (
                       <Modal
                         className="gallery"
@@ -169,7 +169,7 @@ class AlbumView extends Component {
                         </Grid>
                       </Modal>
                     )}
-                  </>
+                  </React.Fragment>
                 ))}
             </Grid>
           </section>

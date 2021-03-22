@@ -10,11 +10,12 @@ import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import Editor from 'draft-js-plugins-editor';
 import { convertFromRaw, convertToRaw, EditorState, RichUtils } from 'draft-js';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
+
 import isSoftNewlineEvent from 'draft-js/lib/isSoftNewlineEvent';
 import { defineMessages, injectIntl } from 'react-intl';
 import { includes, isEqual } from 'lodash';
 import { filterEditorState } from 'draftjs-filters';
-import { settings, blocks } from '~/config';
+import config from '@plone/volto/registry';
 
 import { Icon, BlockChooser } from '@plone/volto/components';
 import addSVG from '@plone/volto/icons/circle-plus.svg';
@@ -52,6 +53,8 @@ class Edit extends Component {
     onSelectBlock: PropTypes.func.isRequired,
     allowedBlocks: PropTypes.arrayOf(PropTypes.string),
     showRestricted: PropTypes.bool,
+    formTitle: PropTypes.string,
+    formDescription: PropTypes.string,
   };
 
   /**
@@ -83,7 +86,7 @@ class Edit extends Component {
       }
 
       const inlineToolbarPlugin = createInlineToolbarPlugin({
-        structure: settings.richTextEditorInlineToolbarButtons,
+        structure: config.settings.richTextEditorInlineToolbarButtons,
       });
 
       this.state = {
@@ -123,6 +126,20 @@ class Edit extends Component {
         editorState: EditorState.moveFocusToEnd(this.state.editorState),
       });
     }
+  }
+
+  /**
+   * @param {*} nextProps
+   * @param {*} nextState
+   * @returns {boolean}
+   * @memberof Edit
+   */
+  shouldComponentUpdate(nextProps, nextState) {
+    return (
+      this.props.selected ||
+      !isEqual(this.props.data, nextProps.data) ||
+      !isEqual(this.state.editorState, nextState.editorState)
+    );
   }
 
   /**
@@ -176,8 +193,10 @@ class Edit extends Component {
     this.setState({ editorState });
   }
 
-  toggleAddNewBlock = () =>
+  toggleAddNewBlock = (e) => {
+    e.preventDefault();
     this.setState((state) => ({ addNewBlockOpened: !state.addNewBlockOpened }));
+  };
 
   handleClickOutside = (e) => {
     if (
@@ -202,11 +221,13 @@ class Edit extends Component {
 
     const placeholder =
       this.props.data.placeholder ||
+      this.props.formTitle ||
       this.props.intl.formatMessage(messages.text);
 
     const disableNewBlocks =
       this.props.data?.disableNewBlocks || this.props.detached;
     const { InlineToolbar } = this.state.inlineToolbarPlugin;
+    const { settings } = config;
 
     return (
       <>
@@ -285,7 +306,7 @@ class Edit extends Component {
         <InlineToolbar />
         {this.props.selected &&
           !disableNewBlocks &&
-          !blocks.blocksConfig[
+          !config.blocks.blocksConfig[
             this.props.data?.['@type'] || 'text'
           ].blockHasValue(this.props.data) && (
             <Button

@@ -1,6 +1,6 @@
 # Change Log
 
-## 10.10.1 (unreleased)
+## 12.3.1 (unreleased)
 
 ### Breaking
 
@@ -8,7 +8,165 @@
 
 ### Bugfix
 
+- fixed italian translations for block 'Maps" @giuliaghisini
+
 ### Internal
+
+- Upgrade API to Plone 5.2.4 and p.restapi 7.1.0 @sneridagh
+
+## 12.3.0 (2021-03-18)
+
+### Feature
+
+- Improve `ObjectBrowserWidget` adding a manual input field and allow external URLs. Add feature to paste internal URLs and convert them to selected objects. Added the `allowExternals` prop in order to allow this behavior (opt-in).
+
+### Bugfix
+
+- Fix storybook initial config registry setup @sneridagh
+- Search page now follows Plone's ISearchSchema settings @tiberiuichim
+- Improve `ContextNavigation` component, adding the level you are in each iteration @sneridagh
+
+### Internal
+
+- Add testing add-on for enable special testing use cases and configuration options @sneridagh
+- Add `RAZZLE_TESTING_ADDONS` environment variable for adding addons for testing purposes @sneridagh
+- Add "Humboldt Labor" to show cases.
+- Updated "Volto in Production" list @alecghica
+
+### Docs
+
+- Explicitly mention `src/config` in the "Internal proxy to API" documentation @pigeonflight
+
+## 12.2.0 (2021-03-03)
+
+### Feature
+
+- Adds skiplinks @nzambello
+- Fix some semantic tags as nav @nzambello
+- Allow addons to specify their own dependencies in their package.json `addons` key, just like the regular Volto projects. This means that it's no longer required to list all possible addons in the Volto project and they can be bootstrapped as being part of a dependency @tiberiuichim
+- insert a dimmer with the loading message in the form when the status changes in the content folder. @martina.bustacchini
+
+### Bugfix
+
+- Enable draftjs links to open in target blank if is external url. @giuliaghisini
+
+### Internal
+
+- Use correct status code for static files error handling @nzambello
+- Remove dangling `.replaces(...` for the apiPath and use flattenToAppURL instead @sneridagh
+
+## 12.1.2 (2021-02-28)
+
+### Bugfix
+
+- Fix addon reducers registration @tiberiuichim
+
+## 12.1.1 (2021-02-26)
+
+### Bugfix
+
+- Import asyncConnected actions directly from actions module, the resolution order is different in projects @tiberiuichim @avoinea
+
+## 12.1.0 (2021-02-24)
+
+**This is a brown bag release and should not be used, upgrade to Volto 12.1.1 instead.**
+
+### Feature
+
+- A new setting, `config.settings.storeExtenders` which allows customization of used Redux middleware @tiberiuichim
+- Introduce `config.settings.asyncPropsExtenders` which allows customizing, per route, the `asyncConnected` actions @tiberiuichim @sneridagh
+
+### Bugfix
+
+- a11y improvements in `ObjectBrowser` and `BlockChooser` @sneridagh
+- Fix UniversalLink for download link. @giuliaghisini
+
+### Internal
+
+- Fork redux-connect code in `src/helpers/AsyncConnect`, to allow mixing in config-based asyncConnects. Provide a webpack alias that overloads the redux-connect imports. @tiberiuichim
+
+### Docs
+
+- Update wording @svx
+
+## 12.0.0 (2021-02-20)
+
+### Breaking
+
+- Introduction of the new Volto Configuration Registry @sneridagh @tiberiuichim
+  For more information about this breaking change: https://docs.voltocms.com/upgrade-guide/#upgrading-to-volto-12xx
+
+### Feature
+
+- New breadcrumbs `INavigationRoot` aware for the _Home_ icon. This allows inner subsites navigation and better support for multilingual sites. @sneridagh
+
+### Internal
+
+- Upgrade plone.restapi to 7.0.0 and Plone to 5.2.3 @sneridagh
+
+## 12.0.0-alpha.0 (2021-02-17)
+
+### Breaking
+
+- Introduction of the new Volto Configuration Registry @sneridagh @tiberiuichim
+  For more information about this breaking change: https://docs.voltocms.com/upgrade-guide/#upgrading-to-volto-12xx
+
+## 11.1.0 (2021-02-08)
+
+### Feature
+
+- Add `preloadLazyLibs` and `settings.lazyBundles` to allow preloading bundles of lazy libraries @tiberiuichim @silviubogan
+- Added onChangeFormData prop to Form component @giuliaghisini
+- Internationalization story for add-ons @sneridagh
+- robots.txt from plone as fallback (if /public/robots.txt not exists and .env VOLTO_ROBOTSTXT variable not exists.) @giuliaghisini
+- UniversalLink and ConditionalLink accepts also an item to link to. If item is of @type Link, a direct link to remote url is generated if user is not logged. @giuliaghisini
+
+### Bugfix
+
+- temporarly removed linkDetectionPlugin for draftjs (for some conflicts with AnchorPlugin) @giuliaghisini
+- German translation: aria-label of '/contents' button : "Inhalte" not "Inhaltsverzeichnis" @ksuess
+- fix view links and others styles of entities on editing Text Block. @giuliaghisini
+- Make sidebar-collapsed visible on small mobile. @giuliaghisini
+- Fix regresion on the imagesizes styling due to the removal of the id in 11 @sneridagh
+
+### Internal
+
+- Update docs: configuration of routes and addonRoutes @ksuess
+
+## 11.0.0 (2021-01-29)
+
+### Breaking
+
+- [circular deps] Move `AlignBlock` component to its rightful place @sneridagh
+- Removing id from FormFieldWrapper @iFlameing
+- Change default Listing Template to include only Text and renamed the old default Template to Summary Template @jackahl
+
+### Feature
+
+- Add `ContextNavigation` component, it can fetch the `@contextnavigation` plone.restapi
+  endpoint and display a navigation portlet, similar to Plone's classic
+  navigation portlet.
+- added linkDetectionPlugin plugin to draftjs to automatically create links for urls and mails when editing text. @giuliaghisini
+- An initial Storybook setup. Start it with `yarn storybook`. Feel free to contribute more stories! @sneridagh
+- Add storybook Wrapper utility component. Add ContactForm initial story @tiberiuichim
+- make and load configurable reducers in the client `window.__data`, decreasing the html size @nileshgulia1 @tiberiuichim
+- Custom group component for selectStyling @nileshgulia1
+- Add new components: RenderBlocks, BlocksForm, DragDropList and EditBlockWrapper @tiberiuichim
+- Add `noValueOption` prop to `SelectWidget` so you can opt-out from the "no-value" option so the choices are a closed list @sneridagh
+- Provide `injectLazyLibs()` wrapper and `settings.loadables` config to deal with loadable libraries @tiberiuichim
+
+### Bugfix
+
+- Better handling of a condition in the new breadcrumbs @sneridagh
+
+### Internal
+
+- Upgrade react-select to 4.0.2 @sneridagh
+- Upgrade react ecosystem to 13.14.0 @sneridagh
+- Add shouldComponentUpdate to blocks @nileshgulia1
+- Update old entry in upgrade guide @tiberiuichim
+- Add `@testing-library/cypress` as a dep @sneridagh
+- Fix an internal link in documentation @tiberiuichim
 
 ## 10.10.0 (2021-01-22)
 
@@ -107,6 +265,7 @@
 ### Internal
 
 - Translations german: Unauthorized, Login/Register @ksuess
+- Removing id from FormFieldWrapper @iFlameing
 
 ## 10.6.1 (2020-12-21)
 

@@ -207,6 +207,7 @@ msgid "Breadcrumbs"
 msgstr "Nabigazio arrastoa"
 
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
 msgstr "Arakatu"
 
@@ -251,7 +252,7 @@ msgstr "Zelda"
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Center"
 msgstr "Erdiratu"
 
@@ -760,6 +761,10 @@ msgstr "Lehenengo"
 msgid "Fixed width table cells"
 msgstr "Tamaina finkoko taularen zeldak"
 
+#: components/manage/BlockChooser/BlockChooser
+msgid "Fold"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Folder"
 msgstr "Karpeta"
@@ -777,7 +782,7 @@ msgid "From"
 msgstr "Nok"
 
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Full"
 msgstr "Osoa"
 
@@ -961,6 +966,10 @@ msgstr ""
 msgid "Item(s) pasted."
 msgstr "Elementuak ondo itsatsi dira."
 
+#: components/manage/Contents/Contents
+msgid "Item(s) state has been updated."
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 msgid "Items"
 msgstr "Elementuak"
@@ -1000,7 +1009,7 @@ msgstr "Irudia"
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Left"
 msgstr "Ezkerrean"
 
@@ -1027,6 +1036,10 @@ msgstr "Esteka"
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
 msgstr "Zerrenda"
+
+#: components/manage/Form/ModalForm
+msgid "Loading"
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Location"
@@ -1140,6 +1153,10 @@ msgstr "Izena"
 msgid "Navigate back"
 msgstr "Atzera joan"
 
+#: components/theme/Navigation/ContextNavigation
+msgid "Navigation"
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "New password"
@@ -1250,6 +1267,10 @@ msgstr "Fitxa berrian ireki"
 #: components/theme/Navigation/Navigation
 msgid "Open menu"
 msgstr "Menua ireki"
+
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "Open object browser"
+msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -1429,6 +1450,10 @@ msgid "Rename"
 msgstr "Berrizendatu"
 
 #: components/manage/Contents/ContentsRenameModal
+msgid "Rename Items Loading Message"
+msgstr ""
+
+#: components/manage/Contents/ContentsRenameModal
 msgid "Rename items"
 msgstr "Elementuak berrizendatu"
 
@@ -1486,7 +1511,7 @@ msgstr "Testu aberatsa"
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Right"
 msgstr "Eskuman"
 
@@ -1561,6 +1586,10 @@ msgstr "Bilatu erabiltzaileak..."
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Second"
 msgstr "Bigarren"
+
+#: components/manage/Sidebar/ObjectBrowserNav
+msgid "Select"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Select a date to add to recurrence"
@@ -1935,6 +1964,10 @@ msgstr "UID"
 msgid "Unauthorized"
 msgstr "Ez duzu baimenik"
 
+#: components/manage/BlockChooser/BlockChooser
+msgid "Unfold"
+msgstr ""
+
 #: components/manage/Diff/Diff
 msgid "Unified"
 msgstr "Elkartuta"
@@ -1945,6 +1978,7 @@ msgstr "Desinstalatu"
 
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
+#: components/theme/View/RenderBlocks
 msgid "Unknown Block"
 msgstr "Bloke ezezaguna"
 
@@ -2096,6 +2130,10 @@ msgstr "Data hau iristean, elementua ez da erakutsiko bilaketa eta zerrendetan"
 msgid "Who"
 msgstr "Nor"
 
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Workflow Change Loading Message"
+msgstr ""
+
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
 msgstr "Workflowa eguneratu egin da"
@@ -2162,6 +2200,7 @@ msgid "common"
 msgstr "Ohikoa"
 
 #: components/manage/Blocks/Block/Edit
+#: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"
 msgstr "Ezabatu"
 
@@ -2464,6 +2503,18 @@ msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_years"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-footer"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-main-content"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-navigation"
 msgstr ""
 
 #: components/manage/Contents/Contents

@@ -1,4 +1,4 @@
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 import content from './content';
 import {
   CREATE_CONTENT,
@@ -7,6 +7,8 @@ import {
   RESET_CONTENT,
   UPDATE_CONTENT,
 } from '@plone/volto/constants/ActionTypes';
+
+const { settings } = config;
 
 describe('Content reducer', () => {
   it('should return the initial state', () => {

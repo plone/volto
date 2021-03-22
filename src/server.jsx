@@ -1,4 +1,5 @@
 /* eslint no-console: 0 */
+import '~/config'; // This is the bootstrap for the global config - server side
 import { existsSync, lstatSync, readFileSync } from 'fs';
 import React from 'react';
 import { StaticRouter } from 'react-router-dom';
@@ -6,7 +7,6 @@ import { Provider } from 'react-intl-redux';
 import express from 'express';
 import { renderToString } from 'react-dom/server';
 import { createMemoryHistory } from 'history';
-import { ReduxAsyncConnect, loadOnServer } from 'redux-connect';
 import { parse as parseUrl } from 'url';
 import { keys } from 'lodash';
 import cookie, { plugToRequest } from 'react-cookie';
@@ -19,7 +19,8 @@ import { updateIntl } from 'react-intl-redux';
 import { resetServerContext } from 'react-beautiful-dnd';
 
 import routes from '~/routes';
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
+
 import { flattenToAppURL } from '@plone/volto/helpers';
 
 import { Html, Api, persistAuthToken } from '@plone/volto/helpers';
@@ -31,11 +32,12 @@ import ErrorPage from '@plone/volto/error';
 import languages from '@plone/volto/constants/Languages';
 
 import configureStore from '@plone/volto/store';
+import { ReduxAsyncConnect, loadOnServer } from './helpers/AsyncConnect';
 
 let locales = {};
 
-if (settings) {
-  settings.supportedLanguages.forEach((lang) => {
+if (config.settings) {
+  config.settings.supportedLanguages.forEach((lang) => {
     import('~/../locales/' + lang + '.json').then((locale) => {
       locales = { ...locales, [lang]: locale.default };
     });
@@ -53,9 +55,9 @@ const server = express()
   });
 
 // Internal proxy to bypass CORS while developing.
-if (__DEVELOPMENT__ && settings.devProxyToApiPath) {
-  const apiPathURL = parseUrl(settings.apiPath);
-  const proxyURL = parseUrl(settings.devProxyToApiPath);
+if (__DEVELOPMENT__ && config.settings.devProxyToApiPath) {
+  const apiPathURL = parseUrl(config.settings.apiPath);
+  const proxyURL = parseUrl(config.settings.devProxyToApiPath);
   const serverURL = `${proxyURL.protocol}//${proxyURL.host}`;
   const instancePath = proxyURL.pathname;
   server.use(
@@ -64,11 +66,11 @@ if (__DEVELOPMENT__ && settings.devProxyToApiPath) {
       target: serverURL,
       pathRewrite: {
         '^/api':
-          settings.proxyRewriteTarget ||
+          config.settings.proxyRewriteTarget ||
           `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot/_vh_api`,
       },
       logLevel: 'silent', // change to 'debug' to see all requests
-      ...(settings?.proxyRewriteTarget?.startsWith('https') && {
+      ...(config.settings?.proxyRewriteTarget?.startsWith('https') && {
         changeOrigin: true,
         secure: false,
       }),
@@ -87,14 +89,13 @@ function setupServer(req, res, next) {
 
   const lang = new locale.Locales(
     cookie.load('I18N_LANGUAGE') ||
-      settings.defaultLanguage ||
+      config.settings.defaultLanguage ||
       req.headers['accept-language'],
   )
     .best(supported)
     .toString();
 
   const authToken = cookie.load('auth_token');
-
   const initialState = {
     userSession: { ...userSession(), token: authToken },
     form: req.body,
@@ -105,6 +106,7 @@ function setupServer(req, res, next) {
     },
     browserdetect,
   };
+
   const history = createMemoryHistory({
     initialEntries: [req.url],
   });
@@ -130,7 +132,9 @@ function setupServer(req, res, next) {
     // Displays error in console
     console.error(error);
 
-    res.status(500).send(`<!doctype html> ${renderToString(errorPage)}`);
+    res
+      .status(error.status)
+      .send(`<!doctype html> ${renderToString(errorPage)}`);
   }
 
   req.app.locals = {
@@ -143,7 +147,7 @@ function setupServer(req, res, next) {
   next();
 }
 
-const expressMiddleware = (settings.expressMiddleware || []).filter(
+const expressMiddleware = (config.settings.expressMiddleware || []).filter(
   (m) => typeof m !== 'undefined',
 );
 if (expressMiddleware.length) server.use('/', expressMiddleware);
@@ -167,7 +171,7 @@ server.get('/*', (req, res) => {
       // coming from an SSR request
       const updatedLang =
         store.getState().content.data?.language?.token ||
-        settings.defaultLanguage;
+        config.settings.defaultLanguage;
       store.dispatch(
         updateIntl({
           locale: updatedLang,
@@ -188,7 +192,7 @@ server.get('/*', (req, res) => {
       );
 
       const readCriticalCss =
-        settings.serverConfig.readCriticalCss || defaultReadCriticalCss;
+        config.settings.serverConfig.readCriticalCss || defaultReadCriticalCss;
 
       if (context.url) {
         res.redirect(flattenToAppURL(context.url));
@@ -229,7 +233,7 @@ server.get('/*', (req, res) => {
 });
 
 export const defaultReadCriticalCss = () => {
-  const { criticalCssPath } = settings.serverConfig;
+  const { criticalCssPath } = config.settings.serverConfig;
 
   const e = existsSync(criticalCssPath);
   if (!e) return;
@@ -240,7 +244,7 @@ export const defaultReadCriticalCss = () => {
   return readFileSync(criticalCssPath, { encoding: 'utf-8' });
 };
 
-server.apiPath = settings.apiPath;
-server.devProxyToApiPath = settings.devProxyToApiPath;
+server.apiPath = config.settings.apiPath;
+server.devProxyToApiPath = config.settings.devProxyToApiPath;
 
 export default server;

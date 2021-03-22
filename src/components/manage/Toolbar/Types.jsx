@@ -5,9 +5,10 @@ import { Link } from 'react-router-dom';
 import { filter, find, isEmpty, map } from 'lodash';
 import { FormattedMessage } from 'react-intl';
 import { flattenToAppURL } from '@plone/volto/helpers';
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 const Types = ({ types, pathname, content, currentLanguage }) => {
+  const { settings } = config;
   return types.length > 0 ||
     (settings.isMultilingual && content['@components'].translations) ? (
     <div className="menu-more pastanaga-menu">

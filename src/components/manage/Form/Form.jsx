@@ -44,7 +44,7 @@ import {
 import { v4 as uuid } from 'uuid';
 import { toast } from 'react-toastify';
 import { BlocksToolbar } from '@plone/volto/components';
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 /**
  * Form container class.
@@ -87,6 +87,7 @@ class Form extends Component {
     description: PropTypes.string,
     visual: PropTypes.bool,
     blocks: PropTypes.arrayOf(PropTypes.object),
+    onChangeFormData: PropTypes.func,
     requestError: PropTypes.string,
     allowedBlocks: PropTypes.arrayOf(PropTypes.string),
     showRestricted: PropTypes.bool,
@@ -162,7 +163,7 @@ class Form extends Component {
             '@type': 'title',
           },
           [ids.text]: {
-            '@type': settings.defaultBlockType,
+            '@type': config.settings.defaultBlockType,
           },
         };
       }
@@ -202,7 +203,7 @@ class Form extends Component {
    * also the first Tab to have any errors will be selected
    * @param {Object} prevProps
    */
-  componentDidUpdate(prevProps) {
+  async componentDidUpdate(prevProps, prevState) {
     let { requestError } = this.props;
     let errors = {};
     let activeIndex = 0;
@@ -220,6 +221,15 @@ class Form extends Component {
         errors,
         activeIndex,
       });
+    }
+
+    if (this.props.onChangeFormData) {
+      if (
+        JSON.stringify(prevState?.formData) !==
+        JSON.stringify(this.state.formData)
+      ) {
+        this.props.onChangeFormData(this.state.formData);
+      }
     }
   }
 
@@ -356,7 +366,7 @@ class Form extends Component {
           ...this.state.formData[blocksFieldname],
           [id]: value || null,
           [idTrailingBlock]: {
-            '@type': settings.defaultBlockType,
+            '@type': config.settings.defaultBlockType,
           },
         },
         [blocksLayoutFieldname]: {
@@ -429,6 +439,7 @@ class Form extends Component {
    * @returns {undefined}
    */
   onDeleteBlock(id, selectPrev) {
+    const { settings } = config;
     const blocksFieldname = getBlocksFieldname(this.state.formData);
     const blocksLayoutFieldname = getBlocksLayoutFieldname(this.state.formData);
 
@@ -467,6 +478,7 @@ class Form extends Component {
    * @returns {string} Id of the block
    */
   onAddBlock(type, index) {
+    const { settings } = config;
     const id = uuid();
     const idTrailingBlock = uuid();
     const blocksFieldname = getBlocksFieldname(this.state.formData);
@@ -683,6 +695,7 @@ class Form extends Component {
       disableArrowDown = false,
     } = {},
   ) {
+    const { settings } = config;
     const isMultipleSelection = e.shiftKey;
     if (e.key === 'ArrowUp' && !disableArrowUp) {
       this.onFocusPreviousBlock(block, node, isMultipleSelection);
@@ -833,6 +846,7 @@ class Form extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const { settings } = config;
     const { schema: originalSchema, onCancel, onSubmit } = this.props;
     const { formData, placeholderProps } = this.state;
     const blocksFieldname = getBlocksFieldname(formData);
@@ -1045,7 +1059,9 @@ class Form extends Component {
             {schema && schema.fieldsets.length === 1 && (
               <Segment>
                 {this.props.title && (
-                  <Segment className="primary">{this.props.title}</Segment>
+                  <Segment className="primary">
+                    <h1 style={{ fontSize: '16px' }}> {this.props.title}</h1>
+                  </Segment>
                 )}
                 {this.props.description && (
                   <Segment secondary>{this.props.description}</Segment>

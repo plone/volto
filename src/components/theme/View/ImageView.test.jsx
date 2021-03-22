@@ -5,6 +5,18 @@ import { Provider } from 'react-intl-redux';
 
 import ImageView from './ImageView';
 
+import config from '@plone/volto/registry';
+
+config.settings.imageScales = {
+  large: 768,
+  preview: 400,
+  mini: 200,
+  thumb: 128,
+  tile: 64,
+  icon: 32,
+  listing: 16,
+};
+
 const mockStore = configureStore();
 
 test('renders an image view component', () => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { isEmpty } from 'lodash';
-import { UniversalLink } from '@plone/volto/components';
+import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 
 const styles = {
   code: {
@@ -228,7 +228,7 @@ const LinkEntity = connect((state) => ({
   return (
     <UniversalLink
       href={to}
-      openLinkInNewTab={target === '_blank'}
+      openLinkInNewTab={target === '_blank' || undefined}
       download={download}
     >
       {children}

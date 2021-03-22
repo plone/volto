@@ -16,7 +16,6 @@ exports[`renders an Image Block Sidebar component 1`] = `
   >
     <div
       className="inline field text"
-      id="field-external"
     >
       <div
         className="ui grid"
@@ -32,6 +31,7 @@ exports[`renders an Image Block Sidebar component 1`] = `
             >
               <label
                 htmlFor="field-external"
+                id="fieldset-undefined-field-label-external"
               >
                 Video URL
               </label>
@@ -95,7 +95,6 @@ exports[`renders an Image Block Sidebar component 1`] = `
     </div>
     <div
       className="inline field text"
-      id="field-video-preview-image"
     >
       <div
         className="ui grid"
@@ -111,6 +110,7 @@ exports[`renders an Image Block Sidebar component 1`] = `
             >
               <label
                 htmlFor="field-video-preview-image"
+                id="fieldset-undefined-field-label-video-preview-image"
               >
                 Preview Image URL
               </label>

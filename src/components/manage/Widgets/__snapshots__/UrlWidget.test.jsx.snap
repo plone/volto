@@ -3,7 +3,6 @@
 exports[`renders an url widget component 1`] = `
 <div
   className="inline field url wide"
-  id="field-test-url"
 >
   <div
     className="ui grid"
@@ -19,6 +18,7 @@ exports[`renders an url widget component 1`] = `
         >
           <label
             htmlFor="field-test-url"
+            id="fieldset-default-field-label-test-url"
           >
             My Url
           </label>

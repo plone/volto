@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import { Button, Input, Embed, Message } from 'semantic-ui-react';
 import cx from 'classnames';
+import { isEqual } from 'lodash';
 
 import { Icon, SidebarPortal, VideoSidebar } from '@plone/volto/components';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -18,7 +19,7 @@ import {
   getParentUrl,
   flattenToAppURL,
 } from '@plone/volto/helpers';
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   VideoFormDescription: {
@@ -82,6 +83,19 @@ class Edit extends Component {
     this.setState({
       url: target.value,
     });
+  }
+
+  /**
+   * @param {*} nextProps
+   * @returns {boolean}
+   * @memberof Edit
+   */
+  shouldComponentUpdate(nextProps) {
+    return (
+      this.props.selected ||
+      nextProps.selected ||
+      !isEqual(this.props.data, nextProps.data)
+    );
   }
 
   /**
@@ -245,7 +259,7 @@ class Edit extends Component {
                         src={
                           isInternalURL(
                             data.url.replace(
-                              getParentUrl(settings.apiPath),
+                              getParentUrl(config.settings.apiPath),
                               '',
                             ),
                           )

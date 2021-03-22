@@ -1,7 +1,18 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-
 import Image from './Image';
+
+import config from '@plone/volto/registry';
+
+config.settings.imageScales = {
+  large: 768,
+  preview: 400,
+  mini: 200,
+  thumb: 128,
+  tile: 64,
+  icon: 32,
+  listing: 16,
+};
 
 const ploneImage = {
   download: 'http://localhost:8080/Plone/test-images/@@images/image',

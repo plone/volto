@@ -1,6 +1,8 @@
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 import breadcrumbs from './breadcrumbs';
 import { GET_BREADCRUMBS } from '@plone/volto/constants/ActionTypes';
+
+const { settings } = config;
 
 describe('Breadcrumbs reducer', () => {
   it('should return the initial state', () => {

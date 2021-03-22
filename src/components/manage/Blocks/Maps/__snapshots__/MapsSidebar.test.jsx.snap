@@ -16,7 +16,6 @@ exports[`renders an Image Block Sidebar component 1`] = `
   >
     <div
       className="inline field text"
-      id="field-external"
     >
       <div
         className="ui grid"
@@ -32,6 +31,7 @@ exports[`renders an Image Block Sidebar component 1`] = `
             >
               <label
                 htmlFor="field-external"
+                id="fieldset-undefined-field-label-external"
               >
                 Maps URL
               </label>

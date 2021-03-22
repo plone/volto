@@ -26,9 +26,7 @@ import { readAsDataURL } from 'promise-file-reader';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { createContent } from '@plone/volto/actions';
 
-const Dropzone = loadable(() => import('react-dropzone'), {
-  resolveComponent: (components) => components.Dropzone,
-});
+const Dropzone = loadable(() => import('react-dropzone'));
 
 const messages = defineMessages({
   cancel: {

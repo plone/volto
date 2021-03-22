@@ -38,7 +38,6 @@ export default function breadcrumbs(state = initialState, action = {}) {
         items: map(action.result.items, (item) => ({
           title: item.title,
           url: flattenToAppURL(item['@id']),
-          nav_title: item.nav_title,
         })),
         loaded: true,
         loading: false,

@@ -4,7 +4,6 @@ exports[`renders a number widget component 1`] = `
 Array [
   <div
     className="inline field"
-    id="field-my-field"
   >
     <div
       className="ui grid"
@@ -20,6 +19,7 @@ Array [
           >
             <label
               htmlFor="field-my-field"
+              id="fieldset-default-field-label-my-field"
             >
               My field
             </label>

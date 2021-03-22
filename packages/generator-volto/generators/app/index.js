@@ -51,7 +51,7 @@ const workspacePrompt = [
     type: 'input',
     name: 'workspacePath',
     message: 'Workspace path, like: src/addons/volto-addon',
-    default: '',
+    default: 'src/addons/*',
     validate: validateWorkspacePath,
   },
   {
@@ -68,6 +68,11 @@ module.exports = class extends Generator {
     this.argument('projectName', {
       type: String,
       default: currentDir,
+    });
+    this.option('volto', {
+      type: String,
+      desc:
+        'Desired Volto version, if not provided, the most recent will be used',
     });
     this.option('interactive', {
       type: Boolean,
@@ -117,13 +122,19 @@ It's important to have the generators updated!
 Run "npm install -g @plone/generator-volto" to update.`,
     });
 
-    this.log(chalk.red('Getting latest Volto version'));
-    const voltoVersion = await utils.getLatestVoltoVersion();
+    let voltoVersion;
+    if (this.opts.volto) {
+      voltoVersion = this.opts.volto;
+      this.log(`Using chosen Volto version: ${voltoVersion}`);
+    } else {
+      this.log(chalk.red('Getting latest Volto version'));
+      voltoVersion = await utils.getLatestVoltoVersion();
+      this.log(`Using latest released Volto version: ${voltoVersion}`);
+    }
 
     this.log(chalk.red("Retrieving Volto's yarn.lock"));
     this.voltoYarnLock = await utils.getVoltoYarnLock(voltoVersion);
 
-    this.log(`Using latest released Volto version: ${voltoVersion}`);
     this.globals = {
       addons: [],
       voltoVersion,
@@ -251,7 +262,14 @@ Run "npm install -g @plone/generator-volto" to update.`,
       },
     });
 
+    this.fs.copyTpl(
+      this.templatePath('.gitignorefile'),
+      this.destinationPath(base, '.gitignore'),
+      this.globals,
+    );
+
     this.fs.delete(this.destinationPath(base, 'package.json.tpl'));
+    this.fs.delete(this.destinationPath(base, '.gitignorefile'));
   }
 
   install() {

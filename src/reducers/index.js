@@ -3,7 +3,6 @@
  * @module reducers/root
  */
 
-import { reducer as reduxAsyncConnect } from 'redux-connect';
 import { intlReducer } from 'react-intl-redux';
 
 import actions from '@plone/volto/reducers/actions/actions';
@@ -37,7 +36,9 @@ import vocabularies from '@plone/volto/reducers/vocabularies/vocabularies';
 import workflow from '@plone/volto/reducers/workflow/workflow';
 import toolbar from '@plone/volto/reducers/toolbar/toolbar';
 import blocksClipboard from '@plone/volto/reducers/blocksClipboard/blocksClipboard';
-import { addonReducers } from '~/config';
+import lazyLibraries from '@plone/volto/reducers/lazyLibraries/lazyLibraries';
+import contextNavigation from '@plone/volto/reducers/contextNavigation/contextNavigation';
+import reduxAsyncConnect from './asyncConnect/asyncConnect';
 
 /**
  * Root reducer.
@@ -80,7 +81,8 @@ const reducers = {
   workflow,
   toolbar,
   blocksClipboard,
-  ...addonReducers,
+  lazyLibraries,
+  contextNavigation,
 };
 
 export default reducers;

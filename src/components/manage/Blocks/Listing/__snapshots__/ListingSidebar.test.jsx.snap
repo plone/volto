@@ -51,7 +51,7 @@ exports[`renders a Listing Block Sidebar component 1`] = `
                   class="react-select__control css-1ard45z-control"
                 >
                   <div
-                    class="react-select__value-container react-select__value-container--has-value css-1dvrfad"
+                    class="react-select__value-container react-select__value-container--has-value css-1a9cv00-ValueContainer"
                   >
                     <div
                       class="react-select__single-value css-1uccc91-singleValue"
@@ -171,7 +171,7 @@ exports[`renders a Listing Block Sidebar component 1`] = `
                         class="react-select__control css-1ard45z-control"
                       >
                         <div
-                          class="react-select__value-container css-1dvrfad"
+                          class="react-select__value-container css-1a9cv00-ValueContainer"
                         >
                           <div
                             class="react-select__placeholder css-1wa3eu0-placeholder"
@@ -268,7 +268,7 @@ exports[`renders a Listing Block Sidebar component 1`] = `
                     class="react-select__control css-1ard45z-control"
                   >
                     <div
-                      class="react-select__value-container react-select__value-container--has-value css-1dvrfad"
+                      class="react-select__value-container react-select__value-container--has-value css-1a9cv00-ValueContainer"
                     >
                       <div
                         class="react-select__single-value css-1uccc91-singleValue"
@@ -331,7 +331,6 @@ exports[`renders a Listing Block Sidebar component 1`] = `
         </div>
         <div
           class="inline field"
-          id="field-listingblock-sort-on-reverse"
         >
           <div
             class="ui grid"
@@ -369,7 +368,6 @@ exports[`renders a Listing Block Sidebar component 1`] = `
         </div>
         <div
           class="inline field text"
-          id="field-limit"
         >
           <div
             class="ui grid"
@@ -385,6 +383,7 @@ exports[`renders a Listing Block Sidebar component 1`] = `
                 >
                   <label
                     for="field-limit"
+                    id="fieldset-undefined-field-label-limit"
                   >
                     Results limit
                   </label>
@@ -409,7 +408,6 @@ exports[`renders a Listing Block Sidebar component 1`] = `
         </div>
         <div
           class="inline field text"
-          id="field-itembatchsize"
         >
           <div
             class="ui grid"
@@ -425,6 +423,7 @@ exports[`renders a Listing Block Sidebar component 1`] = `
                 >
                   <label
                     for="field-itembatchsize"
+                    id="fieldset-undefined-field-label-itembatchsize"
                   >
                     Item batch size
                   </label>
@@ -465,7 +464,6 @@ exports[`renders a Listing Block Sidebar component 1`] = `
     >
       <div
         class="inline field text"
-        id="field-linkTitle"
       >
         <div
           class="ui grid"
@@ -481,6 +479,7 @@ exports[`renders a Listing Block Sidebar component 1`] = `
               >
                 <label
                   for="field-linkTitle"
+                  id="fieldset-undefined-field-label-linkTitle"
                 >
                   Link Title
                 </label>
@@ -505,7 +504,6 @@ exports[`renders a Listing Block Sidebar component 1`] = `
       </div>
       <div
         class="inline field text"
-        id="field-linkHref"
       >
         <div
           class="ui grid"
@@ -521,6 +519,7 @@ exports[`renders a Listing Block Sidebar component 1`] = `
               >
                 <label
                   for="field-linkHref"
+                  id="fieldset-undefined-field-label-linkHref"
                 >
                   Link to
                 </label>

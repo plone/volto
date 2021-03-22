@@ -7,9 +7,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import cx from 'classnames';
-import { settings } from '~/config';
-
+import { flattenToAppURL } from '@plone/volto/helpers';
 import Image from '@plone/volto/components/theme/Image/Image';
+
+import config from '@plone/volto/registry';
 
 /**
  * View image block class.
@@ -39,7 +40,7 @@ const View = ({ data, properties }) => (
           if (data.href) {
             if (
               (data.href.startsWith('http') || data.href.startsWith('https')) &&
-              !data.href.includes(settings.apiPath)
+              !data.href.includes(config.settings.apiPath)
             ) {
               return (
                 <a
@@ -52,7 +53,7 @@ const View = ({ data, properties }) => (
             } else {
               return (
                 <Link
-                  to={data.href.replace(settings.apiPath, '')}
+                  to={flattenToAppURL(data.href)}
                   target={data.openLinkInNewTab ? '_blank' : null}
                 >
                   {image}

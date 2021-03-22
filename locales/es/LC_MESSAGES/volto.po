@@ -210,6 +210,7 @@ msgid "Breadcrumbs"
 msgstr "Barra de ruta"
 
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
 msgstr "Navegue"
 
@@ -254,7 +255,7 @@ msgstr "Celda"
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Center"
 msgstr "Centro"
 
@@ -763,6 +764,10 @@ msgstr ""
 msgid "Fixed width table cells"
 msgstr "Celdas de tabla de ancho fijo"
 
+#: components/manage/BlockChooser/BlockChooser
+msgid "Fold"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Folder"
 msgstr ""
@@ -780,7 +785,7 @@ msgid "From"
 msgstr "De"
 
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Full"
 msgstr "Completo"
 
@@ -964,6 +969,10 @@ msgstr ""
 msgid "Item(s) pasted."
 msgstr "Elemento(s) pegado(s)."
 
+#: components/manage/Contents/Contents
+msgid "Item(s) state has been updated."
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 msgid "Items"
 msgstr ""
@@ -1003,7 +1012,7 @@ msgstr ""
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Left"
 msgstr "Izquierda"
 
@@ -1029,6 +1038,10 @@ msgstr "Enlazar a"
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
+msgstr ""
+
+#: components/manage/Form/ModalForm
+msgid "Loading"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
@@ -1143,6 +1156,10 @@ msgstr "Nombre"
 msgid "Navigate back"
 msgstr "Navegar hacia atrás"
 
+#: components/theme/Navigation/ContextNavigation
+msgid "Navigation"
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "New password"
@@ -1253,6 +1270,10 @@ msgstr "Abrir en un nueva pestaña"
 #: components/theme/Navigation/Navigation
 msgid "Open menu"
 msgstr "Abrir menú"
+
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "Open object browser"
+msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -1432,6 +1453,10 @@ msgid "Rename"
 msgstr "Renombrar"
 
 #: components/manage/Contents/ContentsRenameModal
+msgid "Rename Items Loading Message"
+msgstr ""
+
+#: components/manage/Contents/ContentsRenameModal
 msgid "Rename items"
 msgstr "Renombrar elementos"
 
@@ -1489,7 +1514,7 @@ msgstr "Texto formateado"
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Right"
 msgstr "Derecha"
 
@@ -1563,6 +1588,10 @@ msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Second"
+msgstr ""
+
+#: components/manage/Sidebar/ObjectBrowserNav
+msgid "Select"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
@@ -1938,6 +1967,10 @@ msgstr ""
 msgid "Unauthorized"
 msgstr ""
 
+#: components/manage/BlockChooser/BlockChooser
+msgid "Unfold"
+msgstr ""
+
 #: components/manage/Diff/Diff
 msgid "Unified"
 msgstr "Unificado"
@@ -1948,6 +1981,7 @@ msgstr ""
 
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
+#: components/theme/View/RenderBlocks
 msgid "Unknown Block"
 msgstr "Bloque desconocido"
 
@@ -2099,6 +2133,10 @@ msgstr "Cuando se alcanza esta fecha, el contenido ya no será visible en listas
 msgid "Who"
 msgstr "Quien"
 
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Workflow Change Loading Message"
+msgstr ""
+
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
 msgstr "Flujo de trabajo actualizado."
@@ -2165,6 +2203,7 @@ msgid "common"
 msgstr "Común"
 
 #: components/manage/Blocks/Block/Edit
+#: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"
 msgstr "eliminar"
 
@@ -2467,6 +2506,18 @@ msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_years"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-footer"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-main-content"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-navigation"
 msgstr ""
 
 #: components/manage/Contents/Contents

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Grid, Form } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import loadable from '@loadable/component';
-import { blocks } from '~/config';
+import config from '@plone/volto/registry';
 
 import {
   Option,
@@ -28,7 +28,7 @@ const TemplateWidget = ({
   required = false,
   intl,
 }) => {
-  const templatesConfig = blocks?.blocksConfig?.listing?.templates;
+  const templatesConfig = config.blocks?.blocksConfig?.listing?.templates;
   let value = data.template || 'default';
 
   if (templatesConfig && Object.keys(templatesConfig).length > 1) {

@@ -13,11 +13,10 @@ import { find } from 'lodash';
 
 import { Icon, Display, Workflow } from '@plone/volto/components';
 import { getBaseUrl } from '@plone/volto/helpers';
+import config from '@plone/volto/registry';
 
 import rightArrowSVG from '@plone/volto/icons/right-key.svg';
 import userSVG from '@plone/volto/icons/user.svg';
-
-import { settings } from '~/config';
 
 const messages = defineMessages({
   personalTools: {
@@ -149,7 +148,7 @@ class More extends Component {
                 </Link>
               </li>
             )}
-            {editAction && settings.isMultilingual && (
+            {editAction && config.settings.isMultilingual && (
               <>
                 <li>
                   <Link to={`${path}/manage-translations`}>

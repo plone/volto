@@ -200,6 +200,7 @@ msgid "Breadcrumbs"
 msgstr "Breadcrumbs"
 
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
 msgstr "Răsfoiește"
 
@@ -244,7 +245,7 @@ msgstr "Celulă"
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Center"
 msgstr "Centrează"
 
@@ -753,6 +754,10 @@ msgstr ""
 msgid "Fixed width table cells"
 msgstr "Celule de tabel cu lățimea fixă"
 
+#: components/manage/BlockChooser/BlockChooser
+msgid "Fold"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Folder"
 msgstr "Director"
@@ -770,7 +775,7 @@ msgid "From"
 msgstr "Din"
 
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Full"
 msgstr "Complet"
 
@@ -954,6 +959,10 @@ msgstr ""
 msgid "Item(s) pasted."
 msgstr "Obiect(e) lipit(e)."
 
+#: components/manage/Contents/Contents
+msgid "Item(s) state has been updated."
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 msgid "Items"
 msgstr "Obiecte"
@@ -993,7 +1002,7 @@ msgstr "Imaginea de start"
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Left"
 msgstr "Stânga"
 
@@ -1020,6 +1029,10 @@ msgstr "Legătură către"
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
 msgstr "Listare"
+
+#: components/manage/Form/ModalForm
+msgid "Loading"
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Location"
@@ -1133,6 +1146,10 @@ msgstr "Nume"
 msgid "Navigate back"
 msgstr "Navigați înapoi"
 
+#: components/theme/Navigation/ContextNavigation
+msgid "Navigation"
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "New password"
@@ -1243,6 +1260,10 @@ msgstr "Deschideți într-o fereastra nouă"
 #: components/theme/Navigation/Navigation
 msgid "Open menu"
 msgstr "Deschideți meniul"
+
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "Open object browser"
+msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -1422,6 +1443,10 @@ msgid "Rename"
 msgstr "Redenumește"
 
 #: components/manage/Contents/ContentsRenameModal
+msgid "Rename Items Loading Message"
+msgstr ""
+
+#: components/manage/Contents/ContentsRenameModal
 msgid "Rename items"
 msgstr "Redenumirea articolelor"
 
@@ -1479,7 +1504,7 @@ msgstr "Richtext"
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
-#: helpers/AlignBlock/AlignBlock
+#: components/manage/Sidebar/AlignBlock
 msgid "Right"
 msgstr "Dreapta"
 
@@ -1553,6 +1578,10 @@ msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Second"
+msgstr ""
+
+#: components/manage/Sidebar/ObjectBrowserNav
+msgid "Select"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
@@ -1928,6 +1957,10 @@ msgstr "UID"
 msgid "Unauthorized"
 msgstr "Neautorizat"
 
+#: components/manage/BlockChooser/BlockChooser
+msgid "Unfold"
+msgstr ""
+
 #: components/manage/Diff/Diff
 msgid "Unified"
 msgstr "Unificat"
@@ -1938,6 +1971,7 @@ msgstr "Dezinstalare"
 
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
+#: components/theme/View/RenderBlocks
 msgid "Unknown Block"
 msgstr "Bloc necunoscut"
 
@@ -2089,6 +2123,10 @@ msgstr "Când se ajunge la această dată, conținutul nu va fi mai vizibil în 
 msgid "Who"
 msgstr "Cine"
 
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Workflow Change Loading Message"
+msgstr ""
+
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
 msgstr "Fluxul de lucru a fost actualizat."
@@ -2155,6 +2193,7 @@ msgid "common"
 msgstr "Comun"
 
 #: components/manage/Blocks/Block/Edit
+#: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"
 msgstr "Ștergeți"
 
@@ -2457,6 +2496,18 @@ msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_years"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-footer"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-main-content"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-navigation"
 msgstr ""
 
 #: components/manage/Contents/Contents

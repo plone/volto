@@ -1,12 +1,12 @@
 import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 /**
  * Get src-set list from image
  * @param {object | string} image - Image content object or url
  */
 export const getImageAttributes = (image) => {
-  const imageScales = settings.imageScales;
+  const imageScales = config.settings.imageScales;
   const minSize = Object.keys(imageScales).reduce((minSize, scale) => {
     if (!minSize || imageScales[scale] < imageScales[minSize]) {
       return scale;

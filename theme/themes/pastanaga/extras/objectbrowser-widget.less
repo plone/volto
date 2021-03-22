@@ -5,6 +5,8 @@
 
   .selected-values {
     display: flex;
+
+    overflow: hidden;
     flex: 1 1 auto;
     flex-wrap: wrap;
     align-items: center;
@@ -13,7 +15,10 @@
     margin-right: 1.5em;
 
     .ui.label {
+      overflow: hidden;
       margin: 0.3em;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
 
@@ -25,5 +30,9 @@
 
   .placeholder {
     color: #878f93;
+  }
+
+  input {
+    border: none !important;
   }
 }

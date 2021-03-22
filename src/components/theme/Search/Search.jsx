@@ -8,14 +8,14 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import { asyncConnect } from 'redux-connect';
+import { asyncConnect } from '@plone/volto/helpers';
 import { FormattedMessage } from 'react-intl';
 import { Portal } from 'react-portal';
 import { Container, Pagination, Button, Header } from 'semantic-ui-react';
 import qs from 'query-string';
 import classNames from 'classnames';
 
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 import { Helmet } from '@plone/volto/helpers';
 import { searchContent } from '@plone/volto/actions';
 import { SearchTags, Toolbar, Icon } from '@plone/volto/components';
@@ -109,12 +109,16 @@ class Search extends Component {
   doSearch = () => {
     const options = qs.parse(this.props.history.location.search);
     this.setState({ currentPage: 1 });
+    options['use_site_search_settings'] = 1;
     this.props.searchContent('', options);
   };
 
   handleQueryPaginationChange = (e, { activePage }) => {
+    const { settings } = config;
     window.scrollTo(0, 0);
     let options = qs.parse(this.props.history.location.search);
+    options['use_site_search_settings'] = 1;
+
     this.setState({ currentPage: activePage }, () => {
       this.props.searchContent('', {
         ...options,
@@ -146,6 +150,7 @@ class Search extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const { settings } = config;
     return (
       <Container id="page-search">
         <Helmet title="Search" />
@@ -341,7 +346,12 @@ export default compose(
     {
       key: 'search',
       promise: ({ location, store: { dispatch } }) =>
-        dispatch(searchContent('', qs.parse(location.search))),
+        dispatch(
+          searchContent('', {
+            ...qs.parse(location.search),
+            use_site_search_settings: 1,
+          }),
+        ),
     },
   ]),
 )(Search);

@@ -52,7 +52,7 @@ exports[`renders an Listing Data Sidebar component 1`] = `
                   onTouchEnd={[Function]}
                 >
                   <div
-                    className="react-select__value-container css-1dvrfad"
+                    className="react-select__value-container css-1a9cv00-ValueContainer"
                   >
                     <div
                       className="react-select__placeholder css-1wa3eu0-placeholder"
@@ -199,7 +199,7 @@ exports[`renders an Listing Data Sidebar component 1`] = `
               onTouchEnd={[Function]}
             >
               <div
-                className="react-select__value-container react-select__value-container--has-value css-1dvrfad"
+                className="react-select__value-container react-select__value-container--has-value css-1a9cv00-ValueContainer"
               >
                 <div
                   className="react-select__single-value css-1uccc91-singleValue"
@@ -309,7 +309,6 @@ exports[`renders an Listing Data Sidebar component 1`] = `
   </div>
   <div
     className="inline field"
-    id="field-listingblock-sort-on-reverse"
   >
     <div
       className="ui grid"
@@ -351,7 +350,6 @@ exports[`renders an Listing Data Sidebar component 1`] = `
   </div>
   <div
     className="inline field text"
-    id="field-limit"
   >
     <div
       className="ui grid"
@@ -367,6 +365,7 @@ exports[`renders an Listing Data Sidebar component 1`] = `
           >
             <label
               htmlFor="field-limit"
+              id="fieldset-undefined-field-label-limit"
             >
               Results limit
             </label>
@@ -396,7 +395,6 @@ exports[`renders an Listing Data Sidebar component 1`] = `
   </div>
   <div
     className="inline field text"
-    id="field-itembatchsize"
   >
     <div
       className="ui grid"
@@ -412,6 +410,7 @@ exports[`renders an Listing Data Sidebar component 1`] = `
           >
             <label
               htmlFor="field-itembatchsize"
+              id="fieldset-undefined-field-label-itembatchsize"
             >
               Item batch size
             </label>
