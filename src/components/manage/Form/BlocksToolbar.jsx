@@ -14,6 +14,7 @@ import { load } from 'redux-localstorage-simple';
 import { isEqual, omit, without } from 'lodash';
 
 import { setBlocksClipboard, resetBlocksClipboard } from '@plone/volto/actions';
+import { PluggableToolbarBottom } from '@plone/volto/components/manage/Toolbar/Toolbar';
 import config from '@plone/volto/registry';
 
 import copySVG from '@plone/volto/icons/copy.svg';
@@ -174,6 +175,39 @@ export class BlocksToolbarComponent extends React.Component {
         ) : (
           ''
         )}
+        {selectedBlock && (blocksClipboard?.cut || blocksClipboard?.copy) && (
+          <PluggableToolbarBottom.Plug>
+            <button
+              aria-label={intl.formatMessage(messages.pasteBlocks)}
+              onClick={this.pasteBlocks}
+              tabIndex={0}
+              className="pasteBlocks"
+              id="toolbar-paste-blocks"
+            >
+              <span class="blockCount">
+                {(blocksClipboard.cut || blocksClipboard.copy).length}
+              </span>
+              <Icon name={pasteSVG} size="30px" />
+            </button>
+          </PluggableToolbarBottom.Plug>
+        )}
+      </>
+    );
+  }
+}
+
+export default compose(
+  injectIntl,
+  connect(
+    (state) => {
+      return {
+        blocksClipboard: state?.blocksClipboard || {},
+      };
+    },
+    { setBlocksClipboard, resetBlocksClipboard },
+  ),
+)(BlocksToolbarComponent);
+/*
         {selectedBlock && (blocksClipboard?.cut || blocksClipboard?.copy) ? (
           <Portal
             node={
@@ -196,19 +230,4 @@ export class BlocksToolbarComponent extends React.Component {
         ) : (
           ''
         )}
-      </>
-    );
-  }
-}
-
-export default compose(
-  injectIntl,
-  connect(
-    (state) => {
-      return {
-        blocksClipboard: state?.blocksClipboard || {},
-      };
-    },
-    { setBlocksClipboard, resetBlocksClipboard },
-  ),
-)(BlocksToolbarComponent);
+        */
