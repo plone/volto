@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "12.1.0",
+  "version": "12.3.0",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -107,6 +107,7 @@
       "(.*)/locales/(.*)": "<rootDir>/locales/$2",
       "load-volto-addons": "<rootDir>/jest-addons-loader.js",
       "@package/config": "<rootDir>/jest-addons-loader.js",
+      "@voltoconfig": "<rootDir>/jest-addons-loader.js",
       "\\.(css|less|scss|sass)$": "identity-obj-proxy"
     },
     "coverageThreshold": {
@@ -255,6 +256,7 @@
     "cypress": "5.6.0",
     "cypress-axe": "0.8.1",
     "cypress-file-upload": "4.1.1",
+    "dependency-graph": "0.10.0",
     "detect-browser": "5.1.0",
     "diff": "3.5.0",
     "draft-js": "0.10.5",
@@ -309,7 +311,7 @@
     "postcss-overrides": "3.1.4",
     "prettier": "2.0.5",
     "pretty-bytes": "5.3.0",
-    "prismjs": "1.21.0",
+    "prismjs": "1.23.0",
     "promise-file-reader": "1.0.2",
     "prop-types": "15.7.2",
     "query-string": "4.1.0",

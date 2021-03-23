@@ -976,6 +976,10 @@ msgstr ""
 msgid "Item(s) pasted."
 msgstr "Elément(s) collé(s)"
 
+#: components/manage/Contents/Contents
+msgid "Item(s) state has been updated."
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 msgid "Items"
 msgstr "Eléments"
@@ -1042,6 +1046,10 @@ msgstr "Lien vers"
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
 msgstr "Listing"
+
+#: components/manage/Form/ModalForm
+msgid "Loading"
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Location"
@@ -1450,6 +1458,10 @@ msgstr ""
 #: components/manage/Contents/Contents
 msgid "Rename"
 msgstr "Renomer"
+
+#: components/manage/Contents/ContentsRenameModal
+msgid "Rename Items Loading Message"
+msgstr ""
 
 #: components/manage/Contents/ContentsRenameModal
 msgid "Rename items"
@@ -2128,6 +2140,10 @@ msgstr "Lorsque cette date est atteinte, le contenu ne sera plus visible dans le
 msgid "Who"
 msgstr "Qui"
 
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Workflow Change Loading Message"
+msgstr ""
+
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
 msgstr "Workflow mis à jour."
@@ -2496,6 +2512,18 @@ msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_years"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-footer"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-main-content"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-navigation"
 msgstr ""
 
 #: components/manage/Contents/Contents

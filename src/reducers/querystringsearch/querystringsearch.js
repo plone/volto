@@ -1,5 +1,5 @@
 import { map, omit } from 'lodash';
-import config from '@plone/volto/registry';
+import { flattenToAppURL } from '@plone/volto/helpers';
 
 const GET_QUERYSTRING_RESULTS = 'GET_QUERYSTRING_RESULTS';
 const RESET_QUERYSTRING_RESULTS = 'RESET_QUERYSTRING_RESULTS';
@@ -22,7 +22,6 @@ const initialState = {
  * @returns {Object} New state.
  */
 export default function querystringsearch(state = initialState, action = {}) {
-  const { settings } = config;
   switch (action.type) {
     case `${GET_QUERYSTRING_RESULTS}_PENDING`:
       return action.subrequest
@@ -58,7 +57,7 @@ export default function querystringsearch(state = initialState, action = {}) {
                 error: null,
                 items: map(action.result.items, (item) => ({
                   ...item,
-                  '@id': item['@id'].replace(settings.apiPath, ''),
+                  '@id': flattenToAppURL(item['@id']),
                 })),
                 total: action.result.items_total,
                 loaded: true,
@@ -72,7 +71,7 @@ export default function querystringsearch(state = initialState, action = {}) {
             error: null,
             items: map(action.result.items, (item) => ({
               ...item,
-              '@id': item['@id'].replace(settings.apiPath, ''),
+              '@id': flattenToAppURL(item['@id']),
             })),
             total: action.result.items_total,
             loaded: true,

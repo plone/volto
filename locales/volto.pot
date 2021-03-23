@@ -1168,6 +1168,11 @@ msgstr ""
 msgid "Item(s) pasted."
 msgstr ""
 
+#: components/manage/Contents/Contents
+# defaultMessage: Item(s) state has been updated.
+msgid "Item(s) state has been updated."
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Items
 msgid "Items"
@@ -1248,6 +1253,11 @@ msgstr ""
 #: components/manage/Blocks/Listing/ListingSidebar
 # defaultMessage: Listing
 msgid "Listing"
+msgstr ""
+
+#: components/manage/Form/ModalForm
+# defaultMessage: Loading.
+msgid "Loading"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
@@ -1751,6 +1761,11 @@ msgstr ""
 #: components/manage/Contents/Contents
 # defaultMessage: Rename
 msgid "Rename"
+msgstr ""
+
+#: components/manage/Contents/ContentsRenameModal
+# defaultMessage: Renaming items...
+msgid "Rename Items Loading Message"
 msgstr ""
 
 #: components/manage/Contents/ContentsRenameModal
@@ -2589,6 +2604,11 @@ msgstr ""
 msgid "Who"
 msgstr ""
 
+#: components/manage/Contents/ContentsWorkflowModal
+# defaultMessage: Updating workflow states...
+msgid "Workflow Change Loading Message"
+msgstr ""
+
 #: components/manage/Workflow/Workflow
 # defaultMessage: Workflow updated.
 msgid "Workflow updated."
@@ -3049,6 +3069,21 @@ msgstr ""
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: years
 msgid "rrule_years"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+# defaultMessage: Skip to footer
+msgid "skiplink-footer"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+# defaultMessage: Skip to main content
+msgid "skiplink-main-content"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+# defaultMessage: Skip to navigation
+msgid "skiplink-navigation"
 msgstr ""
 
 #: components/manage/Contents/Contents

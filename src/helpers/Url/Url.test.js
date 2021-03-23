@@ -7,6 +7,9 @@ import {
   getView,
   isCmsUi,
   isInternalURL,
+  isUrl,
+  normalizeUrl,
+  removeProtocol,
 } from './Url';
 
 const { settings } = config;
@@ -61,6 +64,10 @@ describe('Url', () => {
       expect(flattenToAppURL(`${settings.apiPath}/edit`)).toBe('/edit');
     });
 
+    it('does not fail if url is undefined', () => {
+      expect(flattenToAppURL()).toBe(undefined);
+    });
+
     it('flattens a given URL to the app URL, with settings.internalApiPath', () => {
       const url = 'http://plone:8080/Plone/something';
       const saved = settings.internalApiPath;
@@ -103,8 +110,16 @@ describe('Url', () => {
     });
   });
   describe('isInternalURL', () => {
-    it('tells if an URL is internal or not', () => {
+    it('tells if an URL from API is internal or not', () => {
       const href = `${settings.apiPath}/foo/bar`;
+      expect(isInternalURL(href)).toBe(true);
+    });
+    it('tells if an URL from APP is internal or not', () => {
+      const href = `${settings.publicURL}`;
+      expect(isInternalURL(href)).toBe(true);
+    });
+    it('tells if an URL from APP is internal or not 2', () => {
+      const href = `${settings.publicURL}/foo/bar`;
       expect(isInternalURL(href)).toBe(true);
     });
     it('tells if an URL is internal or not, with settings.internalApiPath', () => {
@@ -125,6 +140,44 @@ describe('Url', () => {
     it('tells if an URL is internal if a relative path', () => {
       const href = './../';
       expect(isInternalURL(href)).toBe(true);
+    });
+  });
+  describe('isUrl', () => {
+    it('isUrl test', () => {
+      const href = `www.example.com`;
+      expect(isUrl(href)).toBe(true);
+    });
+    it('isUrl test 2', () => {
+      const href = `www.example.com/foo/bar`;
+      expect(isUrl(href)).toBe(true);
+    });
+    it('isUrl test 3', () => {
+      const href = `https://www.example.com/foo/bar`;
+      expect(isUrl(href)).toBe(true);
+    });
+    it('isUrl test 4', () => {
+      const href = `https://www`;
+      expect(isUrl(href)).toBe(false);
+    });
+    it('isUrl test 5', () => {
+      const href = `www.e`;
+      expect(isUrl(href)).toBe(false);
+    });
+  });
+  describe('normalizeUrl', () => {
+    it('normalizeUrl test', () => {
+      const href = `www.example.com`;
+      expect(normalizeUrl(href)).toBe('http://www.example.com');
+    });
+  });
+  describe('removeProtocol', () => {
+    it('removeProtocol test https', () => {
+      const href = `https://www.example.com`;
+      expect(removeProtocol(href)).toBe('www.example.com');
+    });
+    it('removeProtocol test http', () => {
+      const href = `http://www.example.com`;
+      expect(removeProtocol(href)).toBe('www.example.com');
     });
   });
 });

@@ -1,6 +1,6 @@
 # Change Log
 
-## 12.1.1 (unreleased)
+## 12.3.1 (unreleased)
 
 ### Breaking
 
@@ -8,9 +8,68 @@
 
 ### Bugfix
 
+- fixed italian translations for block 'Maps" @giuliaghisini
+
 ### Internal
 
+- Upgrade API to Plone 5.2.4 and p.restapi 7.1.0 @sneridagh
+
+## 12.3.0 (2021-03-18)
+
+### Feature
+
+- Improve `ObjectBrowserWidget` adding a manual input field and allow external URLs. Add feature to paste internal URLs and convert them to selected objects. Added the `allowExternals` prop in order to allow this behavior (opt-in).
+
+### Bugfix
+
+- Fix storybook initial config registry setup @sneridagh
+- Search page now follows Plone's ISearchSchema settings @tiberiuichim
+- Improve `ContextNavigation` component, adding the level you are in each iteration @sneridagh
+
+### Internal
+
+- Add testing add-on for enable special testing use cases and configuration options @sneridagh
+- Add `RAZZLE_TESTING_ADDONS` environment variable for adding addons for testing purposes @sneridagh
+- Add "Humboldt Labor" to show cases.
+- Updated "Volto in Production" list @alecghica
+
+### Docs
+
+- Explicitly mention `src/config` in the "Internal proxy to API" documentation @pigeonflight
+
+## 12.2.0 (2021-03-03)
+
+### Feature
+
+- Adds skiplinks @nzambello
+- Fix some semantic tags as nav @nzambello
+- Allow addons to specify their own dependencies in their package.json `addons` key, just like the regular Volto projects. This means that it's no longer required to list all possible addons in the Volto project and they can be bootstrapped as being part of a dependency @tiberiuichim
+- insert a dimmer with the loading message in the form when the status changes in the content folder. @martina.bustacchini
+
+### Bugfix
+
+- Enable draftjs links to open in target blank if is external url. @giuliaghisini
+
+### Internal
+
+- Use correct status code for static files error handling @nzambello
+- Remove dangling `.replaces(...` for the apiPath and use flattenToAppURL instead @sneridagh
+
+## 12.1.2 (2021-02-28)
+
+### Bugfix
+
+- Fix addon reducers registration @tiberiuichim
+
+## 12.1.1 (2021-02-26)
+
+### Bugfix
+
+- Import asyncConnected actions directly from actions module, the resolution order is different in projects @tiberiuichim @avoinea
+
 ## 12.1.0 (2021-02-24)
+
+**This is a brown bag release and should not be used, upgrade to Volto 12.1.1 instead.**
 
 ### Feature
 
@@ -40,7 +99,7 @@
 
 ### Feature
 
-- New breadcrumbs `INavigationRoot` aware for the *Home* icon. This allows inner subsites navigation and better support for multilingual sites.  @sneridagh
+- New breadcrumbs `INavigationRoot` aware for the _Home_ icon. This allows inner subsites navigation and better support for multilingual sites. @sneridagh
 
 ### Internal
 

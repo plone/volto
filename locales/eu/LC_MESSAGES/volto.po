@@ -966,6 +966,10 @@ msgstr ""
 msgid "Item(s) pasted."
 msgstr "Elementuak ondo itsatsi dira."
 
+#: components/manage/Contents/Contents
+msgid "Item(s) state has been updated."
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 msgid "Items"
 msgstr "Elementuak"
@@ -1032,6 +1036,10 @@ msgstr "Esteka"
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
 msgstr "Zerrenda"
+
+#: components/manage/Form/ModalForm
+msgid "Loading"
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Location"
@@ -1440,6 +1448,10 @@ msgstr "Errepikapena ezabatu"
 #: components/manage/Contents/Contents
 msgid "Rename"
 msgstr "Berrizendatu"
+
+#: components/manage/Contents/ContentsRenameModal
+msgid "Rename Items Loading Message"
+msgstr ""
 
 #: components/manage/Contents/ContentsRenameModal
 msgid "Rename items"
@@ -2118,6 +2130,10 @@ msgstr "Data hau iristean, elementua ez da erakutsiko bilaketa eta zerrendetan"
 msgid "Who"
 msgstr "Nor"
 
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Workflow Change Loading Message"
+msgstr ""
+
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
 msgstr "Workflowa eguneratu egin da"
@@ -2486,6 +2502,18 @@ msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_years"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-footer"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-main-content"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-navigation"
 msgstr ""
 
 #: components/manage/Contents/Contents

@@ -296,7 +296,7 @@ msgstr "Seleziona la destinazione"
 
 #: components/manage/Widgets/FileWidget
 msgid "Choose a file"
-msgstr ""
+msgstr "Scegli un file"
 
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
@@ -382,7 +382,7 @@ msgstr "Copia"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Copy blocks"
-msgstr ""
+msgstr "Copia blocchi"
 
 #: components/theme/Footer/Footer
 msgid "Copyright"
@@ -420,7 +420,7 @@ msgstr "Taglia"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Cut blocks"
-msgstr ""
+msgstr "Taglia blocchi"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Daily"
@@ -499,7 +499,7 @@ msgstr "Elimina utente"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Delete blocks"
-msgstr ""
+msgstr "Elimina blocchi"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Delete col"
@@ -959,6 +959,10 @@ msgstr "Elemento/i aggiornati."
 msgid "Item(s) pasted."
 msgstr "Elemento/i incollato/i."
 
+#: components/manage/Contents/Contents
+msgid "Item(s) state has been updated."
+msgstr "Stato/i aggiornato/i"
+
 #: components/manage/Controlpanels/ContentTypes
 msgid "Items"
 msgstr "Elementi"
@@ -1025,6 +1029,10 @@ msgstr "Link a"
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
 msgstr "Elenco"
+
+#: components/manage/Form/ModalForm
+msgid "Loading"
+msgstr "Caricamento"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Location"
@@ -1318,7 +1326,7 @@ msgstr "Inserisci un URL valido eliminando il blocco e aggiungendo un nuovo bloc
 
 #: components/manage/Blocks/Maps/Edit
 msgid "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
-msgstr "Per favore inserisci il codice di incorporamento fornito da Google Maps -> Condividi -> Incorporare una mappa. Dovrebbe contenere un <iframe>."
+msgstr "Per favore inserisci il codice di incorporamento fornito da Google Maps. Per incorporare la mappa di un luogo clicca su 'Condividi' -> 'Incorporare una mappa' -> 'Copia HTML'. Se invece vuoi incorporare una mappa con MyMaps clicca su 'Incorpora nel mio sito' -> 'Copia HTML'. Deve contenere un <iframe>."
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Please fill out the form below to set your password."
@@ -1433,6 +1441,10 @@ msgstr "Rimuovi"
 #: components/manage/Contents/Contents
 msgid "Rename"
 msgstr "Rinomina"
+
+#: components/manage/Contents/ContentsRenameModal
+msgid "Rename Items Loading Message"
+msgstr "Aggiornando gli elementi..."
 
 #: components/manage/Contents/ContentsRenameModal
 msgid "Rename items"
@@ -2111,6 +2123,10 @@ msgstr "Quando questa data sarà raggiunta, il contenuto non sarà più visibile
 msgid "Who"
 msgstr "Chi"
 
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Workflow Change Loading Message"
+msgstr "Aggiornando gli stati..."
+
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
 msgstr "Workflow aggiornato."
@@ -2480,6 +2496,18 @@ msgstr "anno"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_years"
 msgstr "anni"
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-footer"
+msgstr "Salta al footer"
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-main-content"
+msgstr "Salta al contenuto"
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-navigation"
+msgstr "Salta alla navigazione"
 
 #: components/manage/Contents/Contents
 msgid "sort"

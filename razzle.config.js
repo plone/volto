@@ -146,7 +146,15 @@ const defaultModify = ({
   // Disabling the ESlint pre loader
   config.module.rules.splice(0, 1);
 
-  const addonsLoaderPath = createAddonsLoader(packageJson.addons || []);
+  let testingAddons = [];
+  if (process.env.RAZZLE_TESTING_ADDONS) {
+    testingAddons = process.env.RAZZLE_TESTING_ADDONS.split(',');
+  }
+
+  const addonsLoaderPath = createAddonsLoader([
+    ...registry.getAddonDependencies(),
+    ...testingAddons,
+  ]);
 
   config.resolve.plugins = [
     new RelativeResolverPlugin(registry),
@@ -175,6 +183,8 @@ const defaultModify = ({
     maxEntrypointSize: 10000000,
   };
 
+  let addonsAsExternals = [];
+
   const babelLoader = config.module.rules.find(babelLoaderFinder);
   const { include } = babelLoader;
   if (packageJson.name !== '@plone/volto') {
@@ -182,13 +192,12 @@ const defaultModify = ({
   }
   // Add babel support external (ie. node_modules npm published packages)
   if (packageJson.addons) {
-    registry.addonNames.forEach((addon) =>
-      include.push(fs.realpathSync(registry.packages[addon].modulePath)),
-    );
-  }
-
-  let addonsAsExternals = [];
-  if (packageJson.addons) {
+    registry.addonNames.forEach((addon) => {
+      const p = fs.realpathSync(registry.packages[addon].modulePath);
+      if (include.indexOf(p) === -1) {
+        include.push(p);
+      }
+    });
     addonsAsExternals = registry.addonNames.map((addon) => new RegExp(addon));
   }
 

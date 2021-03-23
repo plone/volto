@@ -263,13 +263,13 @@ class ObjectBrowserBody extends Component {
     } else if (mode === 'image') {
       onChangeBlock(block, {
         ...data,
-        url: item.getURL,
+        url: flattenToAppURL(item.getURL),
         alt: title,
       });
     } else if (mode === 'link') {
       onChangeBlock(block, {
         ...data,
-        href: url,
+        href: flattenToAppURL(url),
       });
     }
     updateState(mode);

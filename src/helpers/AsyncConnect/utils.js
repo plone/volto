@@ -23,3 +23,9 @@ export const mapSeries =
 
     return iterateOverResults();
   };
+
+const identity = (arg) => arg;
+let immutableStateFunc = identity;
+let mutableStateFunc = identity;
+export const getImmutableState = (state) => immutableStateFunc(state);
+export const getMutableState = (state) => mutableStateFunc(state);
