@@ -1,3 +1,5 @@
+// ported to JS from MIT licensed https://github.com/robik/react-view-slot
+
 import React from 'react';
 import sortBy from 'lodash.sortby';
 
