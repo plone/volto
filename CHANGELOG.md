@@ -14,6 +14,10 @@
 
 - Upgrade API to Plone 5.2.4 and p.restapi 7.1.0 @sneridagh
 
+### Docs
+
+- Update internal proxy docs @nzambello
+
 ## 12.3.0 (2021-03-18)
 
 ### Feature
