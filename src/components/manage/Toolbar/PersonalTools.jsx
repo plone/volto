@@ -11,7 +11,7 @@ import cx from 'classnames';
 import { FormattedMessage, injectIntl, defineMessages } from 'react-intl';
 import { Icon } from '@plone/volto/components';
 import { getUser } from '@plone/volto/actions';
-import { isControlpanelEnabled } from '@plone/volto/helpers';
+import { isAdminUser } from '@plone/volto/helpers';
 
 import logoutSVG from '@plone/volto/icons/log-out.svg';
 import rightArrowSVG from '@plone/volto/icons/right-key.svg';
@@ -145,7 +145,7 @@ class PersonalTools extends Component {
                 <Icon name={rightArrowSVG} size="24px" />
               </button>
             </li>
-            {isControlpanelEnabled(this.props.user) && (
+            {isAdminUser(this.props.user) && (
               <li>
                 <Link to="/controlpanel">
                   <FormattedMessage

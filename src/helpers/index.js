@@ -68,5 +68,5 @@ export {
 } from '@plone/volto/helpers/Utils/Utils';
 export { messages } from './MessageLabels/MessageLabels';
 export { asyncConnect } from './AsyncConnect';
-export { isControlpanelEnabled } from './User/User';
+export { isAdminUser } from './User/User';
 // export { injectLazyLibs } from './Loadable/Loadable';
