@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Include a pluggable architecture for pluggable render-time insertions (similar to <Portal>) @tiberiuichim
+
 ### Bugfix
 
 - fixed italian translations for block 'Maps" @giuliaghisini

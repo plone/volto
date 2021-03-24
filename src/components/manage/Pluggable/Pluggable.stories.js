@@ -136,6 +136,6 @@ const [Toolbar, ToolbarPlug] = createPluggableAndPlug('toolbar');
 };
 
 export default {
-  title: 'Pluggable components',
+  title: 'Internal components/Pluggable components',
   component: Pluggable,
 };
