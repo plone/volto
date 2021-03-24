@@ -42,6 +42,23 @@ export const Simple = (args) => {
   );
 };
 
+Simple.parameters = {
+  docs: {
+    description: {
+      component:
+        "Pluggables are similar to React's Portal, but provide more control over how inserts are rendered",
+    },
+    source: {
+      code: `
+<PluggablesProvider>
+  <Pluggable name="toolbar" />
+  <Plug pluggable="toolbar">Something</Plug>
+</PluggablesProvider>
+      `,
+    },
+  },
+};
+
 export const Override = (args) => {
   return (
     <Wrapper>
@@ -63,6 +80,24 @@ export const Override = (args) => {
   );
 };
 
+Override.parameters = {
+  docs: {
+    description: {
+      component:
+        'By rendering a plug insert with the same id, only the last one will be rendered',
+    },
+    source: {
+      code: `
+<PluggablesProvider>
+  <Pluggable name="toolbar" />
+  <Plug id="a" pluggable="toolbar">From first</Plug>
+  <Plug id="a" pluggable="toolbar">From second</Plug>
+</PluggablesProvider>
+      `,
+    },
+  },
+};
+
 const [Toolbar, ToolbarPlug] = createPluggableAndPlug('toolbar');
 export const UsingCreatePluggableAndPlug = (args) => {
   return (
@@ -80,7 +115,27 @@ export const UsingCreatePluggableAndPlug = (args) => {
   );
 };
 
+UsingCreatePluggableAndPlug.parameters = {
+  docs: {
+    description: {
+      component:
+        'We can use `createPluggableAndPlug` to create a new pluggable + plug components pair. ',
+    },
+    source: {
+      code: `
+const [Toolbar, ToolbarPlug] = createPluggableAndPlug('toolbar');
+
+<PluggablesProvider>
+  <Toolbar />
+  <ToolbarPlug id="a" >From first</ToolbarPlug>
+  <ToolbarPlug id="b" >From second</ToolbarPlug>
+</PluggablesProvider>
+      `,
+    },
+  },
+};
+
 export default {
   title: 'Pluggable components',
-  component: PluggablesProvider,
+  component: Pluggable,
 };

@@ -39,9 +39,6 @@ import moreSVG from '@plone/volto/icons/more.svg';
 import userSVG from '@plone/volto/icons/user.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 
-// const [ToolbarBottomPluggable, ToolbarBottomInsert] = createPluggableAndPlug(
-//   'main.toolbar.bottom',
-// );
 export const PluggableToolbarBottom = createPluggable('main.toolbar.bottom');
 
 const messages = defineMessages({
