@@ -634,10 +634,6 @@ msgstr "Fieldset bearbeiten"
 msgid "Edit recurrence"
 msgstr "Wiederkehrende Einstellungen bearbeiten"
 
-#: components/manage/Form/InlineForm
-msgid "Edit values"
-msgstr "Werte bearbeiten"
-
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
 msgstr "{title} bearbeiten"

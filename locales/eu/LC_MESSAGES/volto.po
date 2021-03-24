@@ -626,10 +626,6 @@ msgstr "Editatu eremu-multzoa"
 msgid "Edit recurrence"
 msgstr "Editatu errepikapena"
 
-#: components/manage/Form/InlineForm
-msgid "Edit values"
-msgstr "Editatu balioak"
-
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
 msgstr "Editatu {title}"

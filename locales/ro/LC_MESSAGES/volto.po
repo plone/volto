@@ -619,10 +619,6 @@ msgstr "Editează setul de câmpuri"
 msgid "Edit recurrence"
 msgstr ""
 
-#: components/manage/Form/InlineForm
-msgid "Edit values"
-msgstr "Editează valori"
-
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
 msgstr "Editează {title}"
