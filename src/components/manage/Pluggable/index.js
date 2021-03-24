@@ -1,12 +1,38 @@
 // ported to JS from MIT licensed https://github.com/robik/react-view-slot
+// We've renamed Slot => Pluggable, not to clash with Volto slots
 
 import React from 'react';
 import sortBy from 'lodash.sortby';
 
 export const context = React.createContext();
 
+/**
+ * Get the appropriate Pluggable component for the given name.
+ *
+ * To use, first create the pluggable
+ *
+ * const PluggableToolbar = createPluggable('toolbar');
+ *
+ * Render it under a PluggableProvider:
+ *
+ * <PluggableProvider>
+ * ...
+ * <PluggableToolbar />
+ * ...
+ * </PluggableProvider>
+ *
+ *
+ * Then somewhere inside the PluggableProvider tree you can now plug into the
+ * PluggableToolbar with:
+ *
+ * const PluggableToolbar = usePluggable('toolbar');
+ *
+ * <PluggableToolbar.Plug id="save" ... />
+ *
+ */
 export function usePluggable(name) {
   const ctx = React.useContext(context);
+
   if (!ctx) {
     throw new Error(
       'Using <Pluggable> component or usePluggable hook outside of <PluggableProvider>',
@@ -16,6 +42,9 @@ export function usePluggable(name) {
   return ctx.pluggables[name] || [];
 }
 
+/**
+ * Renders a pluggable insertion "area". Create it using `usePluggable`
+ */
 export function Pluggable(props) {
   const { name, maxCount, reversed, children, params } = props; // , ...rest
   let pluggables = usePluggable(name);
@@ -82,7 +111,8 @@ export const Plug = ({
 };
 
 export function createPluggable(name) {
-  const pluggable = (props) => React.createElement(Plug, { name, ...props });
+  const pluggable = (props) =>
+    React.createElement(Pluggable, { name, ...props });
   pluggable.pluggableName = name;
   pluggable.Plug = createPlugComponent(name);
   return pluggable;
