@@ -125,6 +125,9 @@ function createPlugComponent(pluggableName) {
   return plugComponent;
 }
 
+/**
+ * Creates a Pluggable + Plug pair
+ */
 export function createPluggableAndPlug(name) {
   const boundPluggable = createPluggable(name);
   return [boundPluggable, boundPluggable.Plug];

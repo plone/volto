@@ -115,7 +115,9 @@ export const UsingCreatePluggableAndPlug = (args) => {
   );
 };
 
+UsingCreatePluggableAndPlug.storyName = 'Using createPluggableAndPlug';
 UsingCreatePluggableAndPlug.parameters = {
+  component: createPluggableAndPlug,
   docs: {
     description: {
       component:
