@@ -29,6 +29,9 @@ const InlineForm = ({
   onChangeField,
   schema,
   title,
+  icon,
+  headerActions,
+  footer,
   intl,
   fieldIndex,
   basic = false,
@@ -55,7 +58,9 @@ const InlineForm = ({
     >
       {title && (
         <header className="header pulled">
-          <h2>{title}</h2>
+          {icon}
+          <h2>{title || _(messages.editValues)}</h2>
+          {headerActions}
         </header>
       )}
       {description && (
@@ -150,6 +155,7 @@ const InlineForm = ({
           </div>
         </Accordion>
       ))}
+      {footer}
     </MaybeWrap>
   );
 };
