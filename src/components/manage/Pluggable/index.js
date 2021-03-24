@@ -13,16 +13,16 @@ export const context = React.createContext();
  *
  * const PluggableToolbar = createPluggable('toolbar');
  *
- * Render it under a PluggableProvider:
+ * Render it under a PluggablesProvider:
  *
- * <PluggableProvider>
+ * <PluggablesProvider>
  * ...
  * <PluggableToolbar />
  * ...
- * </PluggableProvider>
+ * </PluggablesProvider>
  *
  *
- * Then somewhere inside the PluggableProvider tree you can now plug into the
+ * Then somewhere inside the PluggablesProvider tree you can now plug into the
  * PluggableToolbar with:
  *
  * const PluggableToolbar = usePluggable('toolbar');
@@ -35,7 +35,7 @@ export function usePluggable(name) {
 
   if (!ctx) {
     throw new Error(
-      'Using <Pluggable> component or usePluggable hook outside of <PluggableProvider>',
+      'Using <Pluggable> component or usePluggable hook outside of <PluggablesProvider>',
     );
   }
 
