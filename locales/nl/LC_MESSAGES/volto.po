@@ -2211,7 +2211,6 @@ msgstr ""
 msgid "common"
 msgstr ""
 
-#: components/manage/Blocks/Block/Edit
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"
 msgstr ""

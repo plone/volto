@@ -80,6 +80,7 @@
 
 ### Bugfix
 
+- Adapt to BlocksForm in Blocks Engine @nileshgulia1
 - a11y improvements in `ObjectBrowser` and `BlockChooser` @sneridagh
 - Fix UniversalLink for download link. @giuliaghisini
 
