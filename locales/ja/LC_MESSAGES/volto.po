@@ -626,6 +626,10 @@ msgstr "フィールドセットを編集"
 msgid "Edit recurrence"
 msgstr "繰り返しを編集"
 
+#: components/manage/Form/InlineForm
+msgid "Edit values"
+msgstr "値を編集"
+
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
 msgstr "{title} を編集"

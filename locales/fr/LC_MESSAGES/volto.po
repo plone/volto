@@ -636,6 +636,10 @@ msgstr "Modifier le groupe de champs"
 msgid "Edit recurrence"
 msgstr ""
 
+#: components/manage/Form/InlineForm
+msgid "Edit values"
+msgstr "Modifier les valeurs"
+
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
 msgstr "Modifier {title}"

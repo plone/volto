@@ -638,6 +638,10 @@ msgstr ""
 msgid "Edit recurrence"
 msgstr ""
 
+#: components/manage/Form/InlineForm
+msgid "Edit values"
+msgstr ""
+
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
 msgstr "{title} bewerken"
