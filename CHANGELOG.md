@@ -12,6 +12,7 @@
 ### Bugfix
 
 - fixed italian translations for block 'Maps" @giuliaghisini
+- fixed SidebarPortal min-height @avoinea
 
 ### Internal
 
