@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2021-02-22T08:13:56.877Z\n"
+"POT-Creation-Date: 2021-03-25T14:01:44.500Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -400,6 +400,11 @@ msgstr ""
 #: components/manage/Controlpanels/ModerateComments
 # defaultMessage: Commenter
 msgid "Commenter"
+msgstr ""
+
+#: components/theme/Comments/Comments
+# defaultMessage: Comments
+msgid "Comments"
 msgstr ""
 
 #: components/manage/Diff/Diff
@@ -999,6 +1004,11 @@ msgstr ""
 msgid "Header cell"
 msgstr ""
 
+#: components/theme/Comments/Comments
+# defaultMessage: Hide Replies
+msgid "Hide Replies"
+msgstr ""
+
 #: components/manage/History/History
 #: components/manage/Toolbar/More
 # defaultMessage: History
@@ -1253,6 +1263,11 @@ msgstr ""
 #: components/manage/Blocks/Listing/ListingSidebar
 # defaultMessage: Listing
 msgid "Listing"
+msgstr ""
+
+#: components/theme/Comments/Comments
+# defaultMessage: Load more...
+msgid "Load more"
 msgstr ""
 
 #: components/manage/Form/ModalForm
@@ -1793,6 +1808,11 @@ msgstr ""
 msgid "Replace existing file"
 msgstr ""
 
+#: components/theme/Comments/Comments
+# defaultMessage: Reply
+msgid "Reply"
+msgstr ""
+
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -2037,6 +2057,11 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Show All
 msgid "Show All"
+msgstr ""
+
+#: components/theme/Comments/Comments
+# defaultMessage: Show Replies
+msgid "Show Replies"
 msgstr ""
 
 #: components/manage/Sidebar/Sidebar
@@ -3169,9 +3194,4 @@ msgstr ""
 #: components/manage/Actions/Actions
 # defaultMessage: {title} has been deleted.
 msgid "{title} has been deleted."
-msgstr ""
-
-#: components/theme/Comments/Comments
-# defaultMessage: {user} says:
-msgid "{user} says:"
 msgstr ""
