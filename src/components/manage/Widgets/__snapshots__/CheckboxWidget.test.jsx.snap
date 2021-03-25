@@ -24,7 +24,7 @@ exports[`renders a checkbox widget component 1`] = `
             onMouseUp={[Function]}
           >
             <input
-              checked={false}
+              checked={null}
               className="hidden"
               name="field-my-field"
               readOnly={true}

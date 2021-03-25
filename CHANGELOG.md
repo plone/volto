@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fixed InlineForm boolean false value @razvanMiu
+
 ### Internal
 
 ## 12.4.0 (2021-03-25)
