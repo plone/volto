@@ -158,7 +158,7 @@ const BlocksForm = (props) => {
             pathname,
             properties,
             selected: selectedBlock === childId,
-            multiSelected: multiSelected.includes(childId),
+            multiSelected: multiSelected?.includes(childId),
             type: child['@type'],
           };
           return editBlockWrapper(

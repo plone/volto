@@ -12,6 +12,7 @@
 
 ### Bugfix
 
+- fixed multiSelected propType and BlocksForm multiSelected.includes @avoinea
 - fixed italian translations for block 'Maps" @giuliaghisini
 - fixed SidebarPortal min-height @avoinea
 
