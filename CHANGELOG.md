@@ -7,14 +7,19 @@
 ### Feature
 
 - Include a pluggable architecture for pluggable render-time insertions (similar to <Portal>) @tiberiuichim
+- Added SidebarPopup component for extra sidebar handling @avoinea
+- use SidebarPopup component in place of CSS transition sidebar @nileshgulia1
 
 ### Bugfix
 
 - fixed italian translations for block 'Maps" @giuliaghisini
+- fixed SidebarPortal min-height @avoinea
 
 ### Internal
 
 - Upgrade API to Plone 5.2.4 and p.restapi 7.1.0 @sneridagh
+- Reorganization of the Cypress tests, now they live in `cypress/tests` @sneridagh
+- Splitted Cypress tests into `core` tests and `guillotina` ones for better overall handling @sneridagh
 
 ## 12.3.0 (2021-03-18)
 
@@ -80,6 +85,7 @@
 
 ### Bugfix
 
+- Adapt to BlocksForm in Blocks Engine @nileshgulia1
 - a11y improvements in `ObjectBrowser` and `BlockChooser` @sneridagh
 - Fix UniversalLink for download link. @giuliaghisini
 

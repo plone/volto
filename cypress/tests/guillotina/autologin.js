@@ -1,8 +1,8 @@
 describe('Autologin Tests', () => {
   it('Autologin as an standalone test', function () {
-    const api_url = 'http://localhost:55001/plone';
+    const api_url = 'http://localhost:8081/db/web';
     const user = 'admin';
-    const password = 'secret';
+    const password = 'admin';
 
     cy.request({
       method: 'POST',

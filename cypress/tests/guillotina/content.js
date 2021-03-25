@@ -21,8 +21,7 @@ describe('Add Content Tests', () => {
     // then I a new page has been created
     cy.get('#toolbar-save').click();
     cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
-
-    cy.get('.navigation .item.active').should('have.text', 'My Page');
+    cy.contains('My Page');
   });
   it('As editor I can add a page with a text block', function () {
     // when I add a page with a text block
@@ -40,26 +39,32 @@ describe('Add Content Tests', () => {
     cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
 
     // then a new page with a text block has been added
-
-    cy.get('.navigation .item.active').should('have.text', 'My Page');
+    cy.contains('My Page');
+    cy.contains('This is the text');
   });
   it('As editor I can add a file', function () {
     // when I add a file
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-file').click();
 
+    cy.get('.formtabs.menu').contains('default').click();
+
     cy.get('input[name="title"]')
       .type('My File')
       .should('have.value', 'My File');
 
-    cy.get('input[id="field-file"]').attachFile('file.pdf', {
-      subjectType: 'input',
+    // Guillotina wants the file handler instead than the base64 encoding
+    cy.fixture('file.pdf').then((fileContent) => {
+      cy.get('#field-file').attachFile(
+        { fileContent, fileName: 'file.pdf', mimeType: 'application/pdf' },
+        { subjectType: 'input' },
+      );
     });
 
     cy.get('#toolbar-save').focus().click();
 
     // then a new file should have been created
-    cy.url().should('eq', Cypress.config().baseUrl + '/file.pdf');
+    cy.url().should('eq', Cypress.config().baseUrl + '/my-file');
     cy.contains('My File');
   });
 
@@ -68,16 +73,19 @@ describe('Add Content Tests', () => {
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-image').click();
 
+    cy.get('.formtabs.menu').contains('default').click();
+
     cy.get('input[name="title"]')
       .type('My image')
       .should('have.value', 'My image');
 
-    cy.fixture('image.png', 'base64')
+    // Guillotina wants the file handler instead than the base64 encoding
+    cy.fixture('image.png')
       .then((fc) => {
         return Cypress.Blob.base64StringToBlob(fc);
       })
       .then((fileContent) => {
-        cy.get('input#field-image').attachFile(
+        cy.get('#field-image').attachFile(
           { fileContent, fileName: 'image.png', mimeType: 'image/png' },
           { subjectType: 'input' },
         );
@@ -85,35 +93,26 @@ describe('Add Content Tests', () => {
       });
 
     cy.get('#toolbar-save').click();
-    cy.url().should('eq', Cypress.config().baseUrl + '/image.png');
-
+    cy.url().should('eq', Cypress.config().baseUrl + '/my-image');
     cy.contains('My image');
   });
 
-  it('As editor I can add a news item', function () {
-    // when I add a news item
-    cy.get('#toolbar-add').click();
-    cy.get('#toolbar-add-news-item').click();
-    cy.get('input[name="title"]')
-      .type('My News Item')
-      .should('have.value', 'My News Item');
-    cy.get('#toolbar-save').click();
+  describe('Actions', () => {
+    beforeEach(() => {
+      cy.autologin();
+    });
+    it('As editor I can add a Guillotina folder', function () {
+      cy.visit('/');
+      cy.get('#toolbar-add').click();
+      cy.get('#toolbar-add-cmsfolder').click();
+      cy.get('.documentFirstHeading > .public-DraftStyleDefault-block')
+        .type('This is a guillotina folder')
+        .get('.documentFirstHeading span[data-text]')
+        .contains('This is a guillotina folder');
 
-    // then a new news item should have been created
-    cy.url().should('eq', Cypress.config().baseUrl + '/my-news-item');
-    cy.get('.navigation .item.active').should('have.text', 'My News Item');
-  });
-  it('As editor I can add a folder', function () {
-    // when I add a folder
-    cy.get('#toolbar-add').click();
-    cy.get('#toolbar-add-folder').click();
-    cy.get('input[name="title"]')
-      .type('My Folder')
-      .should('have.value', 'My Folder');
-    cy.get('#toolbar-save').click();
+      cy.get('#toolbar-save').click();
 
-    // then a new folder should have been created
-    cy.url().should('eq', Cypress.config().baseUrl + '/my-folder');
-    cy.get('.navigation .item.active').should('have.text', 'My Folder');
+      cy.contains('This is a guillotina folder');
+    });
   });
 });
