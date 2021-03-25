@@ -2,7 +2,7 @@
 
 exports[`Form renders a form component 1`] = `
 <div
-  className="ui raised segments form"
+  className="ui form"
 >
   <header
     className="header pulled"
