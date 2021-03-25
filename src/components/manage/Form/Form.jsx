@@ -178,6 +178,7 @@ class Form extends Component {
     this.onChangeField = this.onChangeField.bind(this);
     this.onSelectBlock = this.onSelectBlock.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onCancel = this.onCancel.bind(this);
     this.onTabChange = this.onTabChange.bind(this);
     this.onBlurField = this.onBlurField.bind(this);
     this.onClickInput = this.onClickInput.bind(this);
@@ -338,6 +339,26 @@ class Form extends Component {
       selected,
       multiSelected,
     });
+  }
+
+  /**
+   * Cancel handler
+   * It prevents event from triggering submit, reset form if props.resetAfterSubmit
+   * and calls this.props.onCancel
+   * @method onCancel
+   * @param {Object} event Event object.
+   * @returns {undefined}
+   */
+  onCancel(event) {
+    if (event) {
+      event.preventDefault();
+    }
+    if (this.props.resetAfterSubmit) {
+      this.setState({
+        formData: this.props.formData,
+      });
+    }
+    this.props.onCancel(event);
   }
 
   /**
@@ -662,7 +683,7 @@ class Form extends Component {
                     aria-label={this.props.intl.formatMessage(messages.cancel)}
                     title={this.props.intl.formatMessage(messages.cancel)}
                     floated="right"
-                    onClick={onCancel}
+                    onClick={this.onCancel}
                   >
                     <Icon className="circled" name={clearSVG} size="30px" />
                   </Button>

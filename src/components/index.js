@@ -32,6 +32,7 @@ export NotFound from '@plone/volto/components/theme/NotFound/NotFound';
 export Forbidden from '@plone/volto/components/theme/Forbidden/Forbidden';
 export Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
 
+export Avatar from '@plone/volto/components/theme/Avatar/Avatar';
 export Icon from '@plone/volto/components/theme/Icon/Icon';
 export ConditionalLink from '@plone/volto/components/manage/ConditionalLink/ConditionalLink';
 export UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
