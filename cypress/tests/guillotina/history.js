@@ -22,7 +22,7 @@ describe('History Tests', () => {
     cy.get('#toolbar-save').click();
     cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
 
-    cy.get('.navigation .item.active').should('have.text', 'My Page');
+    cy.contains('My Page');
 
     // then I click on the Toolbar > More
     cy.get('#toolbar-more').click();
