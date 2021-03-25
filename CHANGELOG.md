@@ -2,20 +2,18 @@
 
 ## 12.3.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Improved comments @rexalex @avoinea
 - Added SidebarPopup component for extra sidebar handling @avoinea
-- use SidebarPopup component in place of CSS transition sidebar @nileshgulia1
+- Use SidebarPopup component in place of CSS transition sidebar @nileshgulia1
 
 ### Bugfix
 
-- fixed multiSelected propType and BlocksForm multiSelected.includes @avoinea
-- fixed italian translations for block 'Maps" @giuliaghisini
-- fixed SidebarPortal min-height @avoinea
-- fixed CheckboxWidget state @razvanMiu
+- Fixed multiSelected propType and BlocksForm multiSelected.includes @avoinea
+- Fixed italian translations for block `Maps` @giuliaghisini
+- Fixed SidebarPortal min-height @avoinea
+- Fixed CheckboxWidget state @razvanMiu
 
 ### Internal
 
