@@ -52,7 +52,8 @@ Simple.parameters = {
       code: `
 <PluggablesProvider>
   <Pluggable name="toolbar" />
-  <Plug pluggable="toolbar">Something</Plug>
+  <Plug pluggable="toolbar">A</Plug>
+  <Plug pluggable="toolbar">B</Plug>
 </PluggablesProvider>
       `,
     },
@@ -90,8 +91,8 @@ Override.parameters = {
       code: `
 <PluggablesProvider>
   <Pluggable name="toolbar" />
-  <Plug id="a" pluggable="toolbar">From first</Plug>
-  <Plug id="a" pluggable="toolbar">From second</Plug>
+  <Plug id="a" pluggable="toolbar">A-1</Plug>
+  <Plug id="a" pluggable="toolbar">A-2</Plug>
 </PluggablesProvider>
       `,
     },
@@ -129,8 +130,7 @@ const [Toolbar, ToolbarPlug] = createPluggableAndPlug('toolbar');
 
 <PluggablesProvider>
   <Toolbar />
-  <ToolbarPlug id="a" >From first</ToolbarPlug>
-  <ToolbarPlug id="b" >From second</ToolbarPlug>
+  <ToolbarPlug id="b">ABC</ToolbarPlug>
 </PluggablesProvider>
       `,
     },
