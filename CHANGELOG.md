@@ -7,9 +7,13 @@
 ### Feature
 
 - Improved comments @rexalex @avoinea
+- Added SidebarPopup component for extra sidebar handling @avoinea
+- use SidebarPopup component in place of CSS transition sidebar @nileshgulia1
+
 ### Bugfix
 
 - fixed italian translations for block 'Maps" @giuliaghisini
+- fixed SidebarPortal min-height @avoinea
 
 ### Internal
 
@@ -81,6 +85,7 @@
 
 ### Bugfix
 
+- Adapt to BlocksForm in Blocks Engine @nileshgulia1
 - a11y improvements in `ObjectBrowser` and `BlockChooser` @sneridagh
 - Fix UniversalLink for download link. @giuliaghisini
 
