@@ -23,6 +23,10 @@
 - Reorganization of the Cypress tests, now they live in `cypress/tests` @sneridagh
 - Splitted Cypress tests into `core` tests and `guillotina` ones for better overall handling @sneridagh
 
+### Docs
+
+- Update internal proxy docs @nzambello
+
 ## 12.3.0 (2021-03-18)
 
 ### Feature
