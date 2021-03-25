@@ -1,15 +1,8 @@
 describe('Autologin Tests', () => {
   it('Autologin as an standalone test', function () {
-    let api_url, user, password;
-    if (Cypress.env('API') === 'guillotina') {
-      api_url = 'http://localhost:8081/db/web';
-      user = 'admin';
-      password = 'admin';
-    } else {
-      api_url = 'http://localhost:55001/plone';
-      user = 'admin';
-      password = 'secret';
-    }
+    const api_url = 'http://localhost:55001/plone';
+    const user = 'admin';
+    const password = 'secret';
 
     cy.request({
       method: 'POST',

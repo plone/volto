@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
 import React from 'react';
 import { keys, map } from 'lodash';
-import { Field, Icon, MaybeWrap } from '@plone/volto/components';
+import { Field, Icon } from '@plone/volto/components';
 import AnimateHeight from 'react-animate-height';
 import { Accordion, Segment, Message } from 'semantic-ui-react';
 
@@ -54,12 +54,7 @@ const InlineForm = ({
   }
 
   return (
-    <MaybeWrap
-      as={Segment.Group}
-      condition={!unwrapped}
-      raised={!basic}
-      className="form"
-    >
+    <div className="ui form">
       {title && (
         <header className="header pulled">
           {icon}
@@ -160,7 +155,7 @@ const InlineForm = ({
         </Accordion>
       ))}
       {footer}
-    </MaybeWrap>
+    </div>
   );
 };
 

@@ -62,10 +62,11 @@ export Helmet from './Helmet/Helmet';
 export FormValidation from './FormValidation/FormValidation';
 export {
   difference,
+  getColor,
+  getInitials,
   safeWrapper,
   applyConfig,
   withServerErrorCode,
 } from '@plone/volto/helpers/Utils/Utils';
 export { messages } from './MessageLabels/MessageLabels';
 export { asyncConnect } from './AsyncConnect';
-// export { injectLazyLibs } from './Loadable/Loadable';

@@ -1,6 +1,6 @@
 # Change Log
 
-## 12.3.1 (unreleased)
+## 12.4.1 (unreleased)
 
 ### Breaking
 
@@ -8,11 +8,32 @@
 
 ### Bugfix
 
-- fixed italian translations for block 'Maps" @giuliaghisini
+### Internal
+
+## 12.4.0 (2021-03-25)
+
+### Feature
+
+- Improved comments @rexalex @avoinea
+- Added SidebarPopup component for extra sidebar handling @avoinea
+- Use SidebarPopup component in place of CSS transition sidebar @nileshgulia1
+
+### Bugfix
+
+- Fixed multiSelected propType and BlocksForm multiSelected.includes @avoinea
+- Fixed italian translations for block `Maps` @giuliaghisini
+- Fixed SidebarPortal min-height @avoinea
+- Fixed CheckboxWidget state @razvanMiu
 
 ### Internal
 
 - Upgrade API to Plone 5.2.4 and p.restapi 7.1.0 @sneridagh
+- Reorganization of the Cypress tests, now they live in `cypress/tests` @sneridagh
+- Splitted Cypress tests into `core` tests and `guillotina` ones for better overall handling @sneridagh
+
+### Docs
+
+- Update internal proxy docs @nzambello
 
 ## 12.3.0 (2021-03-18)
 
@@ -78,6 +99,7 @@
 
 ### Bugfix
 
+- Adapt to BlocksForm in Blocks Engine @nileshgulia1
 - a11y improvements in `ObjectBrowser` and `BlockChooser` @sneridagh
 - Fix UniversalLink for download link. @giuliaghisini
 
