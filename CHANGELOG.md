@@ -14,6 +14,8 @@
 ### Internal
 
 - Upgrade API to Plone 5.2.4 and p.restapi 7.1.0 @sneridagh
+- Reorganization of the Cypress tests, now they live in `cypress/tests` @sneridagh
+- Splitted Cypress tests into `core` tests and `guillotina` ones for better overall handling @sneridagh
 
 ## 12.3.0 (2021-03-18)
 
