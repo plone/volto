@@ -6,7 +6,7 @@ describe('generator-create-volto-app:app', () => {
   beforeAll(() => {
     return helpers.run(path.join(__dirname, '../generators/app')).withPrompts({
       projectName: 'test-volto',
-      useAddons: 'no',
+      useAddons: false,
     });
   });
 
