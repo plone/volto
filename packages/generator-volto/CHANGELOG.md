@@ -8,8 +8,6 @@
 - Simplify interactive questions @avoinea
 - Add addons also to dependencies @avoinea
 
-### Changes
-
 ## 4.0.0 (2021-02-20)
 
 ### Breaking
