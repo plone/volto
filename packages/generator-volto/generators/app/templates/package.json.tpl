@@ -100,9 +100,7 @@
   "engines": {
     "node": "^10 || ^12 || ^14"
   },
-  "dependencies": {
-    "@plone/volto": "<%= voltoVersion %>"
-  },
+  "dependencies": <%- dependencies %>,
   "devDependencies": {
     "eslint-plugin-prettier": "3.1.3",
     "prettier": "2.0.5",

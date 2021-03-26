@@ -5,6 +5,8 @@
 ### Added
 
 - Default workspaces path @nileshgulia1
+- Simplify interactive questions @avoinea
+- Add addons also to dependencies @avoinea
 
 ### Changes
 
