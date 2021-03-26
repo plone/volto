@@ -1,10 +1,12 @@
 # Change Log
 
-## 4.0.2 (unreleased)
+## 4.1.0 (2021-03-26)
 
 ### Added
 
-### Changes
+- Default workspaces path @nileshgulia1
+- Simplify interactive questions @avoinea
+- Add addons also to dependencies @avoinea
 
 ## 4.0.1 (2021-03-26)
 
