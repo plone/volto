@@ -17,18 +17,16 @@ import { FormFieldWrapper } from '@plone/volto/components';
  */
 const CheckboxWidget = (props) => {
   const { id, title, value, onChange, isDisabled } = props;
-  const [checked, setChecked] = React.useState(value || false);
 
   return (
     <FormFieldWrapper {...props} columns={1}>
       <div className="wrapper">
         <Checkbox
           name={`field-${id}`}
-          checked={checked}
+          checked={value}
           disabled={isDisabled}
           onChange={(event, { checked }) => {
             onChange(id, checked);
-            setChecked(checked);
           }}
           label={<label htmlFor={`field-${id}`}>{title}</label>}
         />

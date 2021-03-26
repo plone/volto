@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fixed InlineForm boolean false value @razvanMiu
+
 ### Internal
 
 - Update plone/volto Docker image to use latest yo generator and support ADDONS env @avoinea
