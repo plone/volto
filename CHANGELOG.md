@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Update plone/volto Docker image to use latest yo generator and support ADDONS env @avoinea
+
 ## 12.4.0 (2021-03-25)
 
 ### Feature
