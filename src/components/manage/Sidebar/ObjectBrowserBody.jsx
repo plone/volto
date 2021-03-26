@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
-import { Input, Segment } from 'semantic-ui-react';
+import { Input, Segment, Ref } from 'semantic-ui-react';
 import { join } from 'lodash';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 
@@ -263,13 +262,13 @@ class ObjectBrowserBody extends Component {
     } else if (mode === 'image') {
       onChangeBlock(block, {
         ...data,
-        url: item.getURL,
+        url: flattenToAppURL(item.getURL),
         alt: title,
       });
     } else if (mode === 'link') {
       onChangeBlock(block, {
         ...data,
-        href: url,
+        href: flattenToAppURL(url),
       });
     }
     updateState(mode);
@@ -344,16 +343,8 @@ class ObjectBrowserBody extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    return ReactDOM.createPortal(
-      <aside
-        role="presentation"
-        onClick={(e) => {
-          e.stopPropagation();
-        }}
-        ref={this.objectBrowser}
-        key="objectbrowsercontainerkey"
-        className="sidebar-container"
-      >
+    return (
+      <Ref innerRef={this.objectBrowser}>
         <Segment.Group raised>
           <header className="header pulled">
             <div className="vertical divider" />
@@ -445,8 +436,7 @@ class ObjectBrowserBody extends Component {
             isSelectable={this.isSelectable}
           />
         </Segment.Group>
-      </aside>,
-      document.body,
+      </Ref>
     );
   }
 }

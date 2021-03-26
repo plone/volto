@@ -125,7 +125,7 @@ class Navigation extends Component {
     const { lang } = this.props;
 
     return (
-      <nav className="navigation">
+      <nav className="navigation" id="navigation">
         <div className="hamburger-wrapper mobile tablet only">
           <button
             className={cx('hamburger hamburger--collapse', {

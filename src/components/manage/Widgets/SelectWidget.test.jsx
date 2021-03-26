@@ -26,6 +26,7 @@ test('renders a select widget component', async () => {
       <SelectWidget
         id="my-field"
         title="My field"
+        fieldSet="default"
         onChange={() => {}}
         onBlur={() => {}}
         onClick={() => {}}

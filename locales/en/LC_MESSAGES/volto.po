@@ -201,6 +201,7 @@ msgid "Breadcrumbs"
 msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
 msgstr ""
 
@@ -330,6 +331,10 @@ msgstr ""
 
 #: components/manage/Controlpanels/ModerateComments
 msgid "Commenter"
+msgstr ""
+
+#: components/theme/Comments/Comments
+msgid "Comments"
 msgstr ""
 
 #: components/manage/Diff/Diff
@@ -754,6 +759,10 @@ msgstr ""
 msgid "Fixed width table cells"
 msgstr ""
 
+#: components/manage/BlockChooser/BlockChooser
+msgid "Fold"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Folder"
 msgstr ""
@@ -826,6 +835,10 @@ msgstr ""
 
 #: components/manage/Blocks/Table/Edit
 msgid "Header cell"
+msgstr ""
+
+#: components/theme/Comments/Comments
+msgid "Hide Replies"
 msgstr ""
 
 #: components/manage/History/History
@@ -965,6 +978,10 @@ msgstr ""
 msgid "Item(s) pasted."
 msgstr ""
 
+#: components/manage/Contents/Contents
+msgid "Item(s) state has been updated."
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 msgid "Items"
 msgstr ""
@@ -1030,6 +1047,14 @@ msgstr ""
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
+msgstr ""
+
+#: components/theme/Comments/Comments
+msgid "Load more"
+msgstr ""
+
+#: components/manage/Form/ModalForm
+msgid "Loading"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
@@ -1263,6 +1288,10 @@ msgstr ""
 msgid "Open menu"
 msgstr ""
 
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "Open object browser"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Origin"
@@ -1441,6 +1470,10 @@ msgid "Rename"
 msgstr ""
 
 #: components/manage/Contents/ContentsRenameModal
+msgid "Rename Items Loading Message"
+msgstr ""
+
+#: components/manage/Contents/ContentsRenameModal
 msgid "Rename items"
 msgstr ""
 
@@ -1458,6 +1491,10 @@ msgstr ""
 
 #: components/manage/Widgets/FileWidget
 msgid "Replace existing file"
+msgstr ""
+
+#: components/theme/Comments/Comments
+msgid "Reply"
 msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
@@ -1574,6 +1611,10 @@ msgstr ""
 msgid "Second"
 msgstr ""
 
+#: components/manage/Sidebar/ObjectBrowserNav
+msgid "Select"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Select a date to add to recurrence"
 msgstr ""
@@ -1655,6 +1696,10 @@ msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Show All"
+msgstr ""
+
+#: components/theme/Comments/Comments
+msgid "Show Replies"
 msgstr ""
 
 #: components/manage/Sidebar/Sidebar
@@ -1947,6 +1992,10 @@ msgstr ""
 msgid "Unauthorized"
 msgstr ""
 
+#: components/manage/BlockChooser/BlockChooser
+msgid "Unfold"
+msgstr ""
+
 #: components/manage/Diff/Diff
 msgid "Unified"
 msgstr ""
@@ -2110,6 +2159,10 @@ msgstr ""
 msgid "Who"
 msgstr ""
 
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Workflow Change Loading Message"
+msgstr ""
+
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
 msgstr ""
@@ -2175,7 +2228,6 @@ msgstr ""
 msgid "common"
 msgstr ""
 
-#: components/manage/Blocks/Block/Edit
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"
 msgstr ""
@@ -2481,6 +2533,18 @@ msgstr ""
 msgid "rrule_years"
 msgstr ""
 
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-footer"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-main-content"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-navigation"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "sort"
 msgstr ""
@@ -2547,8 +2611,4 @@ msgstr ""
 
 #: components/manage/Actions/Actions
 msgid "{title} has been deleted."
-msgstr ""
-
-#: components/theme/Comments/Comments
-msgid "{user} says:"
 msgstr ""

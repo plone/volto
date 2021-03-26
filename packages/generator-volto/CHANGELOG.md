@@ -1,20 +1,57 @@
 # Change Log
 
-## 3.0.0 (unreleased)
+## 4.1.1 (unreleased)
 
 ### Added
 
 ### Changes
+
+## 4.1.0 (2021-03-26)
+
+### Added
+
+- Default workspaces path @nileshgulia1
+- Simplify interactive questions @avoinea
+- Add addons also to dependencies @avoinea
+
+## 4.0.1 (2021-03-26)
+
+### Added
+
+- Default workspaces path @nileshgulia1
+- Simplify interactive questions @avoinea
+- Add addons also to dependencies @avoinea
+
+## 4.0.0 (2021-02-20)
+
+### Breaking
+
+- Upgrade to Volto 12.0.0 - This generator is only compatible with Volto 12 and above. @sneridagh
+
+### Added
+
+- Added command line option where you can specify the Volto version you want to use like: `yo @plone/volto --volto=12.0.0-alpha.0` @sneridagh
+
+## 4.0.0-alpha.1 (2021-02-17)
+
+- Released another major alpha accidentally, continuing with this major then :/
+(Volto 12.0.0 and above compatible)
+
+### Added
+
+- Add comment on where to place the project imports in `config.js` @sneridagh
+
+## 4.0.0-alpha.0 (2021-02-17)
+
+### Bug Fixes
+
+- bug fix package.json of add-on generator: json format @ksuess
 
 ## 3.0.0-alpha.0 (2021-02-17)
 
 ### Breaking
 
 - Upgrade to Volto 12.0.0 - This generator is only compatible with Volto 12 and above. @sneridagh
-
-### Bug Fixes
-
-- bug fix package.json of add-on generator: json format @ksuess
 
 ## 2.4.0 (2021-02-08)
 

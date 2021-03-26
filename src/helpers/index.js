@@ -22,6 +22,9 @@ export {
   getView,
   isCmsUi,
   getId,
+  isUrl,
+  normalizeUrl,
+  removeProtocol,
 } from '@plone/volto/helpers/Url/Url';
 export { generateSitemap } from '@plone/volto/helpers/Sitemap/Sitemap';
 export { generateRobots } from '@plone/volto/helpers/Robots/Robots';
@@ -59,9 +62,11 @@ export Helmet from './Helmet/Helmet';
 export FormValidation from './FormValidation/FormValidation';
 export {
   difference,
+  getColor,
+  getInitials,
   safeWrapper,
   applyConfig,
   withServerErrorCode,
 } from '@plone/volto/helpers/Utils/Utils';
 export { messages } from './MessageLabels/MessageLabels';
-// export { injectLazyLibs } from './Loadable/Loadable';
+export { asyncConnect } from './AsyncConnect';

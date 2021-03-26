@@ -38,7 +38,7 @@ const InlineForm = ({
   const defaultFieldset = schema.fieldsets.find((o) => o.id === 'default');
   const other = schema.fieldsets.filter((o) => o.id !== 'default');
   return (
-    <Segment.Group raised className="form">
+    <div className="ui form">
       <header className="header pulled">
         {icon}
         <h2>{title || _(messages.editValues)}</h2>
@@ -75,7 +75,11 @@ const InlineForm = ({
             id={field}
             fieldSet={defaultFieldset.title.toLowerCase()}
             focus={index === 0}
-            value={formData[field] || schema.properties[field].default}
+            value={
+              'default' in schema.properties[field]
+                ? formData[field] || schema.properties[field].default
+                : formData[field]
+            }
             required={schema.required.indexOf(field) !== -1}
             onChange={(id, value) => {
               onChangeField(id, value);
@@ -97,7 +101,11 @@ const InlineForm = ({
               <Field
                 {...schema.properties[field]}
                 id={field}
-                value={formData[field] || schema.properties[field].default}
+                value={
+                  'default' in schema.properties[field]
+                    ? formData[field] || schema.properties[field].default
+                    : formData[field]
+                }
                 required={schema.required.indexOf(field) !== -1}
                 onChange={(id, value) => {
                   onChangeField(id, value);
@@ -111,7 +119,7 @@ const InlineForm = ({
         </div>
       ))}
       {footer}
-    </Segment.Group>
+    </div>
   );
 };
 

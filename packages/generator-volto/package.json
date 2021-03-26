@@ -10,7 +10,7 @@
     }
   ],
   "license": "MIT",
-  "version": "3.0.0-alpha.0",
+  "version": "4.1.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/plone/generator-volto.git"
@@ -52,7 +52,8 @@
     "dry-release": "release-it --dry-run",
     "prerelease": "tar --exclude=node_modules -zcvf generator-volto.tgz .",
     "release": "release-it",
-    "release-alpha": "release-it major --preRelease=alpha"
+    "release-major-alpha": "release-it major --preRelease=alpha",
+    "release-alpha": "release-it --preRelease=alpha"
   },
   "prettier": {
     "trailingComma": "all",

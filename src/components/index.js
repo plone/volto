@@ -25,12 +25,14 @@ export Tags from '@plone/volto/components/theme/Tags/Tags';
 export OutdatedBrowser from '@plone/volto/components/theme/OutdatedBrowser/OutdatedBrowser';
 export LanguageSelector from '@plone/volto/components/theme/LanguageSelector/LanguageSelector';
 export RenderBlocks from '@plone/volto/components/theme/View/RenderBlocks';
+export SkipLinks from '@plone/volto/components/theme/SkipLinks/SkipLinks';
 
 export Error from '@plone/volto/components/theme/Error/Error';
 export NotFound from '@plone/volto/components/theme/NotFound/NotFound';
 export Forbidden from '@plone/volto/components/theme/Forbidden/Forbidden';
 export Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
 
+export Avatar from '@plone/volto/components/theme/Avatar/Avatar';
 export Icon from '@plone/volto/components/theme/Icon/Icon';
 export ConditionalLink from '@plone/volto/components/manage/ConditionalLink/ConditionalLink';
 export UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
@@ -93,6 +95,7 @@ export Messages from '@plone/volto/components/manage/Messages/Messages';
 export BlockChooser from '@plone/volto/components/manage/BlockChooser/BlockChooser';
 export Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
 export Sidebar from '@plone/volto/components/manage/Sidebar/Sidebar';
+export SidebarPopup from '@plone/volto/components/manage/Sidebar/SidebarPopup';
 export SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
 export PersonalTools from '@plone/volto/components/manage/Toolbar/PersonalTools';
 export More from '@plone/volto/components/manage/Toolbar/More';

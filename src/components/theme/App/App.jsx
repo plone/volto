@@ -7,7 +7,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { asyncConnect } from 'redux-connect';
+import { asyncConnect } from '@plone/volto/helpers';
 import { Segment } from 'semantic-ui-react';
 import { renderRoutes } from 'react-router-config';
 import { Slide, ToastContainer, toast } from 'react-toastify';
@@ -26,6 +26,7 @@ import {
   Icon,
   OutdatedBrowser,
   AppExtras,
+  SkipLinks,
 } from '@plone/volto/components';
 import { BodyClass, getBaseUrl, getView, isCmsUi } from '@plone/volto/helpers';
 import {
@@ -128,6 +129,7 @@ class App extends Component {
             'public-ui': !isCmsUI,
           })}
         />
+        <SkipLinks />
         <Header pathname={path} />
         <Breadcrumbs pathname={path} />
         <MultilingualRedirector pathname={this.props.pathname}>
