@@ -37,9 +37,6 @@ const InlineForm = ({
   headerActions,
   footer,
   intl,
-  fieldIndex,
-  basic = false,
-  unwrapped = false,
 }) => {
   const _ = intl.formatMessage;
   const defaultFieldset = schema.fieldsets.find((o) => o.id === 'default');
@@ -86,32 +83,31 @@ const InlineForm = ({
         />
       )}
 
-      {defaultFieldset.fields.length > 0 && (
-        <div id={`blockform-fieldset-${defaultFieldset.id}`}>
-          <Segment className="form attached">
-            {map(defaultFieldset.fields, (field, index) => (
-              <Field
-                {...schema.properties[field]}
-                id={fieldIndex !== undefined ? `${field}-${fieldIndex}` : field}
-                fieldSet={defaultFieldset.title.toLowerCase()}
-                focus={index === 0}
-                value={schema.properties[field].value || formData[field]}
-                required={schema.required.indexOf(field) !== -1}
-                onChange={(id, value) => {
-                  const name =
-                    fieldIndex !== undefined
-                      ? id.replace(`-${fieldIndex}`, '')
-                      : id;
-                  onChangeField(name, value);
-                }}
-                key={field}
-                error={errors[field]}
-                block={block}
-              />
-            ))}
-          </Segment>
-        </div>
-      )}
+      <div id={`blockform-fieldset-${defaultFieldset.id}`}>
+        <Segment className="form attached">
+          {map(defaultFieldset.fields, (field, index) => (
+            <Field
+              {...schema.properties[field]}
+              id={field}
+              fieldSet={defaultFieldset.title.toLowerCase()}
+              focus={index === 0}
+              value={
+                'default' in schema.properties[field]
+                  ? formData[field] || schema.properties[field].default
+                  : formData[field]
+              }
+              required={schema.required.indexOf(field) !== -1}
+              onChange={(id, value) => {
+                onChangeField(id, value);
+              }}
+              key={field}
+              error={errors[field]}
+              block={block}
+            />
+          ))}
+        </Segment>
+      </div>
+
       {other.map((fieldset, index) => (
         <Accordion fluid styled className="form" key={fieldset.id}>
           <div key={fieldset.id} id={`blockform-fieldset-${fieldset.id}`}>
@@ -137,8 +133,12 @@ const InlineForm = ({
                   {map(fieldset.fields, (field) => (
                     <Field
                       {...schema.properties[field]}
-                      id={fieldIndex ? `${field}-${fieldIndex}` : field}
-                      value={schema.properties[field].value || formData[field]}
+                      id={field}
+                      value={
+                        'default' in schema.properties[field]
+                          ? formData[field] || schema.properties[field].default
+                          : formData[field]
+                      }
                       required={schema.required.indexOf(field) !== -1}
                       onChange={(id, value) => {
                         onChangeField(id, value);

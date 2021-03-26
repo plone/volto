@@ -218,6 +218,18 @@ make start-backend-docker-guillotina
 
 ### Run frontend
 
+Either using Docker
+
+```shell
+docker run -it --rm --name=volto -p 3000:3000 plone/volto
+
+# or with Volto add-ons enabled:
+
+docker run -it --rm --name=volto -e ADDONS="volto-testaddon volto-slate:asDefault" -p 3000:3000 plone/volto
+```
+
+or using the convenience yarn command:
+
 ```shell
 yarn start
 ```
