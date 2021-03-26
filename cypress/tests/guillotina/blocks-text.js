@@ -34,7 +34,7 @@ describe('Text Block Tests', () => {
     cy.waitForResourceToLoad('my-page');
 
     // then the page view should contain the text block
-    cy.get('#page-document p').contains('My text');
+    cy.get('#page-document').contains('My text');
   });
 
   it('As editor I can add a link to a text block', function () {
@@ -57,10 +57,8 @@ describe('Text Block Tests', () => {
     cy.waitForResourceToLoad('my-page');
 
     // then the page view should contain a link
-    cy.get('.ui.container p').contains(
-      'Colorless green ideas sleep furiously.',
-    );
-    cy.get('.ui.container p a')
+    cy.contains('Colorless green ideas sleep furiously.');
+    cy.get('#page-document a')
       .should('have.attr', 'href')
       .and('include', 'https://google.com');
   });
@@ -87,10 +85,8 @@ describe('Text Block Tests', () => {
     cy.waitForResourceToLoad('my-page');
 
     // then the page view should contain a mailto link
-    cy.get('.ui.container p').contains(
-      'Colorless green ideas sleep furiously.',
-    );
-    cy.get('.ui.container p a')
+    cy.contains('Colorless green ideas sleep furiously.');
+    cy.get('#page-document a')
       .should('have.attr', 'href')
       .and('include', 'mailto:hello@example.com');
   });
