@@ -12,8 +12,6 @@ services:
         ports:
             - '3000:3000'
         image: 'plone/volto:slim'
-        environment:
-            - INTERNAL_API_PATH=plone:8080/Plone
         # Use just 'plone/volto' image and set the env var in case you want to
         # use any released Volto addons
         # image: 'plone/volto'
