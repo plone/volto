@@ -217,6 +217,7 @@ msgid "Breadcrumbs"
 msgstr "Fil d'Ariane"
 
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
 msgstr "Explore"
 
@@ -347,6 +348,10 @@ msgstr "Commentaire"
 #: components/manage/Controlpanels/ModerateComments
 msgid "Commenter"
 msgstr "Commenter"
+
+#: components/theme/Comments/Comments
+msgid "Comments"
+msgstr ""
 
 #: components/manage/Diff/Diff
 msgid "Compare"
@@ -770,6 +775,10 @@ msgstr ""
 msgid "Fixed width table cells"
 msgstr "Taille de la cellule de la table fixé"
 
+#: components/manage/BlockChooser/BlockChooser
+msgid "Fold"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Folder"
 msgstr "Dossier"
@@ -832,6 +841,10 @@ msgstr "Groupes"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Header cell"
+msgstr ""
+
+#: components/theme/Comments/Comments
+msgid "Hide Replies"
 msgstr ""
 
 #: components/manage/History/History
@@ -971,6 +984,10 @@ msgstr ""
 msgid "Item(s) pasted."
 msgstr "Elément(s) collé(s)"
 
+#: components/manage/Contents/Contents
+msgid "Item(s) state has been updated."
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 msgid "Items"
 msgstr "Eléments"
@@ -1037,6 +1054,14 @@ msgstr "Lien vers"
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
 msgstr "Listing"
+
+#: components/theme/Comments/Comments
+msgid "Load more"
+msgstr ""
+
+#: components/manage/Form/ModalForm
+msgid "Loading"
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Location"
@@ -1265,6 +1290,10 @@ msgstr "Ouvrir dans un nouvel onglet"
 msgid "Open menu"
 msgstr "Ouvrir le menu"
 
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "Open object browser"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Origin"
@@ -1443,6 +1472,10 @@ msgid "Rename"
 msgstr "Renomer"
 
 #: components/manage/Contents/ContentsRenameModal
+msgid "Rename Items Loading Message"
+msgstr ""
+
+#: components/manage/Contents/ContentsRenameModal
 msgid "Rename items"
 msgstr "Renommer les éléments"
 
@@ -1460,6 +1493,10 @@ msgstr ""
 
 #: components/manage/Widgets/FileWidget
 msgid "Replace existing file"
+msgstr ""
+
+#: components/theme/Comments/Comments
+msgid "Reply"
 msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
@@ -1576,6 +1613,10 @@ msgstr ""
 msgid "Second"
 msgstr ""
 
+#: components/manage/Sidebar/ObjectBrowserNav
+msgid "Select"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Select a date to add to recurrence"
 msgstr ""
@@ -1657,6 +1698,10 @@ msgstr "Voir"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Show All"
+msgstr ""
+
+#: components/theme/Comments/Comments
+msgid "Show Replies"
 msgstr ""
 
 #: components/manage/Sidebar/Sidebar
@@ -1949,6 +1994,10 @@ msgstr "UID"
 msgid "Unauthorized"
 msgstr "Non autorisé"
 
+#: components/manage/BlockChooser/BlockChooser
+msgid "Unfold"
+msgstr ""
+
 #: components/manage/Diff/Diff
 msgid "Unified"
 msgstr "Unifié"
@@ -2111,6 +2160,10 @@ msgstr "Lorsque cette date est atteinte, le contenu ne sera plus visible dans le
 msgid "Who"
 msgstr "Qui"
 
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Workflow Change Loading Message"
+msgstr ""
+
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
 msgstr "Workflow mis à jour."
@@ -2176,7 +2229,6 @@ msgstr "Mot de passe oublié"
 msgid "common"
 msgstr "commun"
 
-#: components/manage/Blocks/Block/Edit
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"
 msgstr "supprimer"
@@ -2482,6 +2534,18 @@ msgstr ""
 msgid "rrule_years"
 msgstr ""
 
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-footer"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-main-content"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-navigation"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "sort"
 msgstr "trier"
@@ -2549,7 +2613,3 @@ msgstr "{title} coupé."
 #: components/manage/Actions/Actions
 msgid "{title} has been deleted."
 msgstr "{title} a été supprimé"
-
-#: components/theme/Comments/Comments
-msgid "{user} says:"
-msgstr "{user} dit :"

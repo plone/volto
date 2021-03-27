@@ -101,3 +101,22 @@ example, even if we only declare the `GET_CONTENT` type of action, we can see
 that `GET_CONTENT_SUCCESS`, `GET_CONTENT_PENDING` and `GET_CONTENT_FAIL` are
 also used in the `content` reducer. They are automatically created by the
 special Api middleware, available in `src/middleware/api.js`.
+
+## Customizing the Redux middleware
+
+It is possible to tweak Volto's Redux middleware, for example to add new
+middleware by using the `config.settings.storeExtender` configuration option.
+If you have Redux middleware that you want to insert as the first middleware to
+be used, for example, you could configure your project with:
+
+```
+import logAllMiddleware from './example';
+
+export default applyConfig(config) => {
+  const addLogAll = (middlewares) => {
+    return [...middlewares, logAllMiddleware];
+  };
+  config.settings.storeExtenders = [...config.settings.storeExtenders, addlogAll];
+
+  return config;
+}

@@ -36,7 +36,7 @@ import move from 'lodash-move';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import { asyncConnect } from 'redux-connect';
+import { asyncConnect } from '@plone/volto/helpers';
 
 import {
   searchContent,
@@ -150,6 +150,10 @@ const messages = defineMessages({
   messagePasted: {
     id: 'Item(s) pasted.',
     defaultMessage: 'Item(s) pasted.',
+  },
+  messageWorkflowUpdate: {
+    id: 'Item(s) state has been updated.',
+    defaultMessage: 'Item(s) state has been updated.',
   },
   paste: {
     id: 'Paste',
@@ -854,6 +858,13 @@ class Contents extends Component {
       showWorkflow: false,
       selected: [],
     });
+    this.props.toastify.toast.success(
+      <Toast
+        success
+        title={this.props.intl.formatMessage(messages.success)}
+        content={this.props.intl.formatMessage(messages.messageWorkflowUpdate)}
+      />,
+    );
   }
 
   /**

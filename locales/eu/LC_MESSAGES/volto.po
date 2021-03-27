@@ -207,6 +207,7 @@ msgid "Breadcrumbs"
 msgstr "Nabigazio arrastoa"
 
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
 msgstr "Arakatu"
 
@@ -337,6 +338,10 @@ msgstr "Iruzkina"
 #: components/manage/Controlpanels/ModerateComments
 msgid "Commenter"
 msgstr "Erantzuna eman duena"
+
+#: components/theme/Comments/Comments
+msgid "Comments"
+msgstr ""
 
 #: components/manage/Diff/Diff
 msgid "Compare"
@@ -760,6 +765,10 @@ msgstr "Lehenengo"
 msgid "Fixed width table cells"
 msgstr "Tamaina finkoko taularen zeldak"
 
+#: components/manage/BlockChooser/BlockChooser
+msgid "Fold"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Folder"
 msgstr "Karpeta"
@@ -822,6 +831,10 @@ msgstr "Taldeak"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Header cell"
+msgstr ""
+
+#: components/theme/Comments/Comments
+msgid "Hide Replies"
 msgstr ""
 
 #: components/manage/History/History
@@ -961,6 +974,10 @@ msgstr ""
 msgid "Item(s) pasted."
 msgstr "Elementuak ondo itsatsi dira."
 
+#: components/manage/Contents/Contents
+msgid "Item(s) state has been updated."
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 msgid "Items"
 msgstr "Elementuak"
@@ -1027,6 +1044,14 @@ msgstr "Esteka"
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
 msgstr "Zerrenda"
+
+#: components/theme/Comments/Comments
+msgid "Load more"
+msgstr ""
+
+#: components/manage/Form/ModalForm
+msgid "Loading"
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Location"
@@ -1255,6 +1280,10 @@ msgstr "Fitxa berrian ireki"
 msgid "Open menu"
 msgstr "Menua ireki"
 
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "Open object browser"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Origin"
@@ -1433,6 +1462,10 @@ msgid "Rename"
 msgstr "Berrizendatu"
 
 #: components/manage/Contents/ContentsRenameModal
+msgid "Rename Items Loading Message"
+msgstr ""
+
+#: components/manage/Contents/ContentsRenameModal
 msgid "Rename items"
 msgstr "Elementuak berrizendatu"
 
@@ -1450,6 +1483,10 @@ msgstr "Egun honetan errepikatu"
 
 #: components/manage/Widgets/FileWidget
 msgid "Replace existing file"
+msgstr ""
+
+#: components/theme/Comments/Comments
+msgid "Reply"
 msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
@@ -1566,6 +1603,10 @@ msgstr "Bilatu erabiltzaileak..."
 msgid "Second"
 msgstr "Bigarren"
 
+#: components/manage/Sidebar/ObjectBrowserNav
+msgid "Select"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Select a date to add to recurrence"
 msgstr "Aukeratu data eta gehitu errepikapenera"
@@ -1647,6 +1688,10 @@ msgstr "Erakutsi"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Show All"
+msgstr ""
+
+#: components/theme/Comments/Comments
+msgid "Show Replies"
 msgstr ""
 
 #: components/manage/Sidebar/Sidebar
@@ -1939,6 +1984,10 @@ msgstr "UID"
 msgid "Unauthorized"
 msgstr "Ez duzu baimenik"
 
+#: components/manage/BlockChooser/BlockChooser
+msgid "Unfold"
+msgstr ""
+
 #: components/manage/Diff/Diff
 msgid "Unified"
 msgstr "Elkartuta"
@@ -2101,6 +2150,10 @@ msgstr "Data hau iristean, elementua ez da erakutsiko bilaketa eta zerrendetan"
 msgid "Who"
 msgstr "Nor"
 
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Workflow Change Loading Message"
+msgstr ""
+
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
 msgstr "Workflowa eguneratu egin da"
@@ -2166,7 +2219,6 @@ msgstr "Pasahitza ahaztuta?"
 msgid "common"
 msgstr "Ohikoa"
 
-#: components/manage/Blocks/Block/Edit
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"
 msgstr "Ezabatu"
@@ -2472,6 +2524,18 @@ msgstr ""
 msgid "rrule_years"
 msgstr ""
 
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-footer"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-main-content"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-navigation"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "sort"
 msgstr "Ordenatu"
@@ -2539,7 +2603,3 @@ msgstr "{title} moztu egin da."
 #: components/manage/Actions/Actions
 msgid "{title} has been deleted."
 msgstr "{title} ezabatu egin da."
-
-#: components/theme/Comments/Comments
-msgid "{user} says:"
-msgstr "{user} erabiltzaileak zera dio:"

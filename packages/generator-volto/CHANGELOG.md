@@ -1,6 +1,32 @@
 # Change Log
 
-## 4.0.0 (unreleased)
+## 4.1.1 (unreleased)
+
+### Added
+
+### Changes
+
+## 4.1.0 (2021-03-26)
+
+### Added
+
+- Default workspaces path @nileshgulia1
+- Simplify interactive questions @avoinea
+- Add addons also to dependencies @avoinea
+
+## 4.0.1 (2021-03-26)
+
+### Added
+
+- Default workspaces path @nileshgulia1
+- Simplify interactive questions @avoinea
+- Add addons also to dependencies @avoinea
+
+## 4.0.0 (2021-02-20)
+
+### Breaking
+
+- Upgrade to Volto 12.0.0 - This generator is only compatible with Volto 12 and above. @sneridagh
 
 ### Added
 

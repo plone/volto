@@ -215,6 +215,7 @@ msgid "Breadcrumbs"
 msgstr "Brotkrumen"
 
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
 msgstr "Durchsuchen"
 
@@ -345,6 +346,10 @@ msgstr "Kommentar"
 #: components/manage/Controlpanels/ModerateComments
 msgid "Commenter"
 msgstr "Kommentarautor"
+
+#: components/theme/Comments/Comments
+msgid "Comments"
+msgstr ""
 
 #: components/manage/Diff/Diff
 msgid "Compare"
@@ -768,6 +773,10 @@ msgstr "Erster Tag des Monats"
 msgid "Fixed width table cells"
 msgstr "Tabellen-Zellen mit fester Breite"
 
+#: components/manage/BlockChooser/BlockChooser
+msgid "Fold"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Folder"
 msgstr "Ordner"
@@ -831,6 +840,10 @@ msgstr "Gruppen"
 #: components/manage/Blocks/Table/Edit
 msgid "Header cell"
 msgstr "Kopfzeile"
+
+#: components/theme/Comments/Comments
+msgid "Hide Replies"
+msgstr ""
 
 #: components/manage/History/History
 #: components/manage/Toolbar/More
@@ -969,6 +982,10 @@ msgstr "Objekt(e) wurde(n) aktualisiert"
 msgid "Item(s) pasted."
 msgstr "Artikel eingefügt."
 
+#: components/manage/Contents/Contents
+msgid "Item(s) state has been updated."
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 msgid "Items"
 msgstr "Elemente"
@@ -1035,6 +1052,14 @@ msgstr "Link auf"
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
 msgstr "Auflistung"
+
+#: components/theme/Comments/Comments
+msgid "Load more"
+msgstr ""
+
+#: components/manage/Form/ModalForm
+msgid "Loading"
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Location"
@@ -1263,6 +1288,10 @@ msgstr "In neuem Browser-Tab öffnen"
 msgid "Open menu"
 msgstr "Menü öffnen"
 
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "Open object browser"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Origin"
@@ -1441,6 +1470,10 @@ msgid "Rename"
 msgstr "Umbenennen"
 
 #: components/manage/Contents/ContentsRenameModal
+msgid "Rename Items Loading Message"
+msgstr ""
+
+#: components/manage/Contents/ContentsRenameModal
 msgid "Rename items"
 msgstr "Artikel umbenennen"
 
@@ -1458,6 +1491,10 @@ msgstr "Wiederhole am"
 
 #: components/manage/Widgets/FileWidget
 msgid "Replace existing file"
+msgstr ""
+
+#: components/theme/Comments/Comments
+msgid "Reply"
 msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
@@ -1574,6 +1611,10 @@ msgstr "Nach Nutzern suchen…"
 msgid "Second"
 msgstr "Zweiter"
 
+#: components/manage/Sidebar/ObjectBrowserNav
+msgid "Select"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Select a date to add to recurrence"
 msgstr "Wählen Sie ein Datum um ein wiederkehrendes Datum einzustellen"
@@ -1656,6 +1697,10 @@ msgstr "Zeige"
 #: helpers/MessageLabels/MessageLabels
 msgid "Show All"
 msgstr "Alle anzeigen"
+
+#: components/theme/Comments/Comments
+msgid "Show Replies"
+msgstr ""
 
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
@@ -1947,6 +1992,10 @@ msgstr "UID"
 msgid "Unauthorized"
 msgstr "Nicht autorisiert"
 
+#: components/manage/BlockChooser/BlockChooser
+msgid "Unfold"
+msgstr ""
+
 #: components/manage/Diff/Diff
 msgid "Unified"
 msgstr "Vereinigt"
@@ -2109,6 +2158,10 @@ msgstr "Wenn dieses Datum erreicht wird, wird der Inhalt nicht länger in Auflis
 msgid "Who"
 msgstr "Wer"
 
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Workflow Change Loading Message"
+msgstr ""
+
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
 msgstr "Arbeitsablauf aktualisiert."
@@ -2174,7 +2227,6 @@ msgstr "Passwort vergessen?"
 msgid "common"
 msgstr "Allgemein"
 
-#: components/manage/Blocks/Block/Edit
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"
 msgstr "Löschen"
@@ -2480,6 +2532,18 @@ msgstr "Regel Jahr"
 msgid "rrule_years"
 msgstr "Regel Jahre"
 
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-footer"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-main-content"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-navigation"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "sort"
 msgstr "sortieren"
@@ -2547,7 +2611,3 @@ msgstr "{title} ausgeschnitten."
 #: components/manage/Actions/Actions
 msgid "{title} has been deleted."
 msgstr "{title} wurde gelöscht."
-
-#: components/theme/Comments/Comments
-msgid "{user} says:"
-msgstr "{user} sagt:"

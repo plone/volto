@@ -73,6 +73,7 @@ class FormFieldWrapper extends Component {
       id,
       title,
       description,
+      fieldSet,
       required,
       error,
       wrapped,
@@ -108,7 +109,10 @@ class FormFieldWrapper extends Component {
             {columns === 2 && (
               <Grid.Column width="4">
                 <div className="wrapper">
-                  <label htmlFor={`field-${id}`}>
+                  <label
+                    id={`fieldset-${fieldSet}-field-label-${id}`}
+                    htmlFor={`field-${id}`}
+                  >
                     {draggable && onEdit && (
                       <i
                         aria-hidden="true"

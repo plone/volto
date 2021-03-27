@@ -8,16 +8,11 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { defineMessages, injectIntl } from 'react-intl';
-import { Button } from 'semantic-ui-react';
-import includes from 'lodash/includes';
-import isBoolean from 'lodash/isBoolean';
 import cx from 'classnames';
 import { setSidebarTab } from '@plone/volto/actions';
 import config from '@plone/volto/registry';
-
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
-import Icon from '@plone/volto/components/theme/Icon/Icon';
-import trashSVG from '@plone/volto/icons/delete.svg';
+
 import {
   SidebarPortal,
   BlockSettingsSidebar,
@@ -29,10 +24,6 @@ const messages = defineMessages({
     id: 'Unknown Block',
     defaultMessage: 'Unknown Block {block}',
   },
-  delete: {
-    id: 'delete',
-    defaultMessage: 'delete',
-  },
 });
 
 /**
@@ -40,7 +31,7 @@ const messages = defineMessages({
  * @class Edit
  * @extends Component
  */
-class Edit extends Component {
+export class Edit extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -52,6 +43,7 @@ class Edit extends Component {
     // properties is mapped to formData, so it's not connected to changes of the object
     properties: PropTypes.objectOf(PropTypes.any).isRequired,
     selected: PropTypes.bool.isRequired,
+    multiSelected: PropTypes.bool,
     index: PropTypes.number.isRequired,
     id: PropTypes.string.isRequired,
     manage: PropTypes.bool,
@@ -121,10 +113,7 @@ class Edit extends Component {
    */
   render() {
     const { blocks } = config;
-    const { id, type, selected } = this.props;
-    const required = isBoolean(this.props.data.required)
-      ? this.props.data.required
-      : includes(blocks.requiredBlocks, type);
+    const { type } = this.props;
 
     const disableNewBlocks = this.props.data?.disableNewBlocks;
 
@@ -206,17 +195,6 @@ class Edit extends Component {
               block: type,
             })}
           </div>
-        )}
-        {selected && !required && (
-          <Button
-            icon
-            basic
-            onClick={() => this.props.onDeleteBlock(id)}
-            className="delete-button"
-            aria-label={this.props.intl.formatMessage(messages.delete)}
-          >
-            <Icon name={trashSVG} size="18px" />
-          </Button>
         )}
       </div>
     );

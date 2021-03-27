@@ -25,7 +25,9 @@ const CheckboxWidget = (props) => {
           name={`field-${id}`}
           checked={value}
           disabled={isDisabled}
-          onChange={(event, { checked }) => onChange(id, checked)}
+          onChange={(event, { checked }) => {
+            onChange(id, checked);
+          }}
           label={<label htmlFor={`field-${id}`}>{title}</label>}
         />
       </div>

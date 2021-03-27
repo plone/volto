@@ -6,8 +6,9 @@
 import {
   ADD_COMMENT,
   DELETE_COMMENT,
-  UPDATE_COMMENT,
   LIST_COMMENTS,
+  LIST_MORE_COMMENTS,
+  UPDATE_COMMENT,
 } from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
@@ -32,6 +33,8 @@ const initialState = {
     error: null,
   },
   items: [],
+  items_total: null,
+  next: null,
 };
 
 /**
@@ -57,6 +60,7 @@ export default function comments(state = initialState, action = {}) {
     case `${DELETE_COMMENT}_PENDING`:
     case `${UPDATE_COMMENT}_PENDING`:
     case `${LIST_COMMENTS}_PENDING`:
+    case `${LIST_MORE_COMMENTS}_PENDING`:
       return {
         ...state,
         [getRequestKey(action.type)]: {
@@ -69,6 +73,19 @@ export default function comments(state = initialState, action = {}) {
       return {
         ...state,
         items: action.result.items,
+        next: action.result.batching?.next,
+        items_total: action.result.items_total,
+        [getRequestKey(action.type)]: {
+          loading: false,
+          loaded: true,
+          error: null,
+        },
+      };
+    case `${LIST_MORE_COMMENTS}_SUCCESS`:
+      return {
+        ...state,
+        items: [...state.items, ...action.result.items],
+        next: action.result.batching?.next,
         [getRequestKey(action.type)]: {
           loading: false,
           loaded: true,
@@ -86,11 +103,22 @@ export default function comments(state = initialState, action = {}) {
           error: null,
         },
       };
-    case `${ADD_COMMENT}_FAIL`:
     case `${LIST_COMMENTS}_FAIL`:
       return {
         ...state,
         items: [],
+        items_total: null,
+        next: null,
+        [getRequestKey(action.type)]: {
+          loading: false,
+          loaded: false,
+          error: action.error,
+        },
+      };
+    case `${LIST_MORE_COMMENTS}_FAIL`:
+    case `${ADD_COMMENT}_FAIL`:
+      return {
+        ...state,
         [getRequestKey(action.type)]: {
           loading: false,
           loaded: false,

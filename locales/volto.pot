@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2021-01-29T12:34:47.097Z\n"
+"POT-Creation-Date: 2021-03-25T14:01:44.500Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -242,6 +242,7 @@ msgid "Breadcrumbs"
 msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Sidebar/ObjectBrowserNav
 # defaultMessage: Browse
 msgid "Browse"
 msgstr ""
@@ -399,6 +400,11 @@ msgstr ""
 #: components/manage/Controlpanels/ModerateComments
 # defaultMessage: Commenter
 msgid "Commenter"
+msgstr ""
+
+#: components/theme/Comments/Comments
+# defaultMessage: Comments
+msgid "Comments"
 msgstr ""
 
 #: components/manage/Diff/Diff
@@ -914,6 +920,11 @@ msgstr ""
 msgid "Fixed width table cells"
 msgstr ""
 
+#: components/manage/BlockChooser/BlockChooser
+# defaultMessage: Fold
+msgid "Fold"
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: Folder
 msgid "Folder"
@@ -991,6 +1002,11 @@ msgstr ""
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Header cell
 msgid "Header cell"
+msgstr ""
+
+#: components/theme/Comments/Comments
+# defaultMessage: Hide Replies
+msgid "Hide Replies"
 msgstr ""
 
 #: components/manage/History/History
@@ -1162,6 +1178,11 @@ msgstr ""
 msgid "Item(s) pasted."
 msgstr ""
 
+#: components/manage/Contents/Contents
+# defaultMessage: Item(s) state has been updated.
+msgid "Item(s) state has been updated."
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Items
 msgid "Items"
@@ -1242,6 +1263,16 @@ msgstr ""
 #: components/manage/Blocks/Listing/ListingSidebar
 # defaultMessage: Listing
 msgid "Listing"
+msgstr ""
+
+#: components/theme/Comments/Comments
+# defaultMessage: Load more...
+msgid "Load more"
+msgstr ""
+
+#: components/manage/Form/ModalForm
+# defaultMessage: Loading.
+msgid "Loading"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
@@ -1524,6 +1555,11 @@ msgstr ""
 msgid "Open menu"
 msgstr ""
 
+#: components/manage/Widgets/ObjectBrowserWidget
+# defaultMessage: Open object browser
+msgid "Open object browser"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Origin
@@ -1743,6 +1779,11 @@ msgid "Rename"
 msgstr ""
 
 #: components/manage/Contents/ContentsRenameModal
+# defaultMessage: Renaming items...
+msgid "Rename Items Loading Message"
+msgstr ""
+
+#: components/manage/Contents/ContentsRenameModal
 # defaultMessage: Rename items
 msgid "Rename items"
 msgstr ""
@@ -1765,6 +1806,11 @@ msgstr ""
 #: components/manage/Widgets/FileWidget
 # defaultMessage: Replace existing file
 msgid "Replace existing file"
+msgstr ""
+
+#: components/theme/Comments/Comments
+# defaultMessage: Reply
+msgid "Reply"
 msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
@@ -1906,6 +1952,11 @@ msgstr ""
 msgid "Second"
 msgstr ""
 
+#: components/manage/Sidebar/ObjectBrowserNav
+# defaultMessage: Select
+msgid "Select"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: Select a date to add to recurrence
 msgid "Select a date to add to recurrence"
@@ -2006,6 +2057,11 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Show All
 msgid "Show All"
+msgstr ""
+
+#: components/theme/Comments/Comments
+# defaultMessage: Show Replies
+msgid "Show Replies"
 msgstr ""
 
 #: components/manage/Sidebar/Sidebar
@@ -2363,6 +2419,11 @@ msgstr ""
 msgid "Unauthorized"
 msgstr ""
 
+#: components/manage/BlockChooser/BlockChooser
+# defaultMessage: Unfold
+msgid "Unfold"
+msgstr ""
+
 #: components/manage/Diff/Diff
 # defaultMessage: Unified
 msgid "Unified"
@@ -2568,6 +2629,11 @@ msgstr ""
 msgid "Who"
 msgstr ""
 
+#: components/manage/Contents/ContentsWorkflowModal
+# defaultMessage: Updating workflow states...
+msgid "Workflow Change Loading Message"
+msgstr ""
+
 #: components/manage/Workflow/Workflow
 # defaultMessage: Workflow updated.
 msgid "Workflow updated."
@@ -2649,7 +2715,6 @@ msgstr ""
 msgid "common"
 msgstr ""
 
-#: components/manage/Blocks/Block/Edit
 #: components/manage/Blocks/Block/EditBlockWrapper
 # defaultMessage: delete
 msgid "delete"
@@ -3031,6 +3096,21 @@ msgstr ""
 msgid "rrule_years"
 msgstr ""
 
+#: components/theme/SkipLinks/SkipLinks
+# defaultMessage: Skip to footer
+msgid "skiplink-footer"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+# defaultMessage: Skip to main content
+msgid "skiplink-main-content"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+# defaultMessage: Skip to navigation
+msgid "skiplink-navigation"
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: sort
 msgid "sort"
@@ -3114,9 +3194,4 @@ msgstr ""
 #: components/manage/Actions/Actions
 # defaultMessage: {title} has been deleted.
 msgid "{title} has been deleted."
-msgstr ""
-
-#: components/theme/Comments/Comments
-# defaultMessage: {user} says:
-msgid "{user} says:"
 msgstr ""

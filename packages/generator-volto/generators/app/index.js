@@ -5,23 +5,16 @@ const utils = require('./utils');
 
 const currentDir = path.basename(process.cwd());
 
+const extractDependency = (name) => {
+  const bits = name.split(':');
+  const pkgName = bits[0];
+  return pkgName;
+};
+
 const validateAddonName = (name) => {
   if (!name) return false;
 
-  const bits = name.split(':');
-  const pkgName = bits[0];
-
-  // FUTURE: test for some simple sanity, like no space in addon name, etc
-  if (!pkgName) return false;
-
-  return true;
-};
-
-const validateWorkspacePath = (path) => {
-  if (!path) return false;
-
-  const bits = path.split('/');
-  const pkgName = bits[bits.length - 1];
+  const pkgName = extractDependency(name);
 
   // FUTURE: test for some simple sanity, like no space in addon name, etc
   if (!pkgName) return false;
@@ -42,23 +35,7 @@ const addonPrompt = [
     type: 'prompt',
     name: 'useAddons',
     message: 'Would you like to add another addon?',
-    default: true,
-  },
-];
-
-const workspacePrompt = [
-  {
-    type: 'input',
-    name: 'workspacePath',
-    message: 'Workspace path, like: src/addons/volto-addon',
-    default: '',
-    validate: validateWorkspacePath,
-  },
-  {
-    type: 'prompt',
-    name: 'useWorkspaces',
-    message: 'Would you like to add another workspace?',
-    default: true,
+    default: false,
   },
 ];
 
@@ -87,10 +64,6 @@ module.exports = class extends Generator {
       type: (arr) => arr,
       desc:
         'Addon loader string, like: some-volto-addon:loadExtra,loadOtherExtra',
-    });
-    this.option('skip-workspaces', {
-      type: Boolean,
-      desc: "Don't ask for workspaces as part of the scaffolding",
     });
     this.option('workspace', {
       type: (arr) => arr,
@@ -137,12 +110,16 @@ Run "npm install -g @plone/generator-volto" to update.`,
 
     this.globals = {
       addons: [],
-      voltoVersion,
+      dependencies: {},
       workspaces: [],
       private: false,
     };
 
     let props;
+
+    const dependencies = {
+      '@plone/volto': voltoVersion,
+    };
 
     // Project name
     if (this.args[0]) {
@@ -155,7 +132,7 @@ Run "npm install -g @plone/generator-volto" to update.`,
           {
             type: 'input',
             name: 'projectName',
-            message: 'Project name',
+            message: 'Project name (e.g. my-volto-project)',
             default: path.basename(process.cwd()),
           },
         ]);
@@ -169,19 +146,7 @@ Run "npm install -g @plone/generator-volto" to update.`,
     if (this.opts.description) {
       this.globals.projectDescription = this.opts.description;
     } else {
-      if (this.opts['interactive']) {
-        props = await this.prompt([
-          {
-            type: 'input',
-            name: 'projectDescription',
-            message: 'Project description',
-            default: 'A Volto-powered Plone frontend',
-          },
-        ]);
-        this.globals.projectDescription = props.projectDescription;
-      } else {
-        this.globals.projectDescription = 'A Volto-powered Plone frontend';
-      }
+      this.globals.projectDescription = 'A Volto-powered Plone frontend';
     }
 
     // Add-ons
@@ -191,6 +156,12 @@ Run "npm install -g @plone/generator-volto" to update.`,
           ? [this.opts.addon]
           : this.opts.addon;
       this.globals.addons = JSON.stringify(addons);
+      addons.forEach(function (addon) {
+        const dependency = extractDependency(addon);
+        if (dependency) {
+          dependencies[dependency] = '*';
+        }
+      });
     } else {
       if (this.opts['interactive'] && !this.opts['skip-addons']) {
         props = await this.prompt([
@@ -198,13 +169,17 @@ Run "npm install -g @plone/generator-volto" to update.`,
             type: 'prompt',
             name: 'useAddons',
             message: 'Would you like to add addons?',
-            default: true,
+            default: false,
           },
         ]);
-        while (props.useAddons === true) {
+        while (props.useAddons !== false) {
           /* eslint-disable no-await-in-loop */
           props = await this.prompt(addonPrompt);
           this.globals.addons.push(props.addonName);
+          const dependency = extractDependency(props.addonName);
+          if (dependency) {
+            dependencies[dependency] = '*';
+          }
         }
 
         this.globals.addons = JSON.stringify(this.globals.addons);
@@ -222,26 +197,11 @@ Run "npm install -g @plone/generator-volto" to update.`,
       this.globals.workspaces = JSON.stringify(workspaces);
       this.globals.private = true;
     } else {
-      if (this.opts['interactive'] && !this.opts['skip-workspaces']) {
-        props = await this.prompt([
-          {
-            type: 'prompt',
-            name: 'useWorkspaces',
-            message: 'Would you like to add workspaces?',
-            default: true,
-          },
-        ]);
-        while (props.useWorkspaces === true) {
-          /* eslint-disable no-await-in-loop */
-          props = await this.prompt(workspacePrompt);
-          this.globals.workspaces.push(props.workspacePath);
-          this.globals.private = true;
-        }
-        this.globals.workspaces = JSON.stringify(this.globals.workspaces);
-      } else {
-        this.globals.workspaces = JSON.stringify([]);
-      }
+      this.globals.workspaces = JSON.stringify([]);
     }
+
+    // Dependencies
+    this.globals.dependencies = JSON.stringify(dependencies, null, 4);
   }
 
   writing() {
@@ -283,6 +243,25 @@ Run "npm install -g @plone/generator-volto" to update.`,
   }
 
   end() {
-    this.log("Done. Now run 'yarn' to install dependencies");
+    if (!this.opts['skip-install']) {
+      this.log(
+        `
+Done.
+
+Now go to ${this.globals.projectName} and run:
+
+yarn start
+`,
+      );
+    } else {
+      this.log(`
+Done.
+
+Now go to ${this.globals.projectName} and run:
+
+yarn install
+yarn start
+`);
+    }
   }
 };
