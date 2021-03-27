@@ -231,11 +231,11 @@ make start-backend-docker-guillotina
 Either using Docker
 
 ```shell
-docker run -it --rm --name=volto -p 3000:3000 plone/volto
+docker run -it --rm --name=volto --link plone -p 3000:3000 plone/volto
 
 # or with Volto add-ons enabled:
 
-docker run -it --rm --name=volto -e ADDONS="volto-testaddon volto-slate:asDefault" -p 3000:3000 plone/volto
+docker run -it --rm --name=volto --link plone -e ADDONS="volto-testaddon volto-slate:asDefault" -p 3000:3000 plone/volto
 ```
 
 or using the convenience yarn command:
