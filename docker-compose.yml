@@ -1,7 +1,6 @@
 version: '3.3'
 services:
     plone:
-        container_name: plone
         ports:
             - '8080:8080'
         environment:
