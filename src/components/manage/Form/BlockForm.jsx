@@ -5,6 +5,10 @@ import { InlineForm } from '@plone/volto/components';
 import config from '@plone/volto/registry';
 
 const messages = defineMessages({
+  Variation: {
+    id: 'Variation',
+    defaultMessage: 'Variation',
+  },
   editValues: {
     id: 'Edit values',
     defaultMessage: 'Edit values',
@@ -47,7 +51,7 @@ const BlockForm = (props) => {
   const { formData, intl, schema: originalSchema } = props;
   const { blocks } = config;
 
-  // SchemaEnhancer
+  // Variations and schemaEnhancer aware
   const blockType = formData['@type'];
   const variations = blocks?.blocksConfig[blockType]?.variations;
   const currentVariation = formData?.variation;
