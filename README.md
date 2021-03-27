@@ -34,6 +34,22 @@ Last but not least, it also supports a [Volto Nodejs-based backend reference](ht
 demos how other systems could also use Volto to display and create content
 through it.
 
+## Demo
+
+You can try a Volto online demo in [https://volto.kitconcept.com](https://volto.kitconcept.com)
+
+### Try the demo locally
+
+If you want to give Volto a quick try and you have [Docker](https://www.docker.com/get-started) installed in your computer, bootstrap the demo using `docker-compose`:
+
+```shell
+git clone https://github.com/plone/volto.git
+cd volto
+docker-compose up
+```
+
+Go to [http://localhost:3000](http://localhost:3000) in your browser.
+
 ## Quick Start
 
 First get all the requirements installed on your system.
@@ -77,8 +93,6 @@ make build-backend
 
 ### Start Volto
 
-Once inside your Volto project folder:
-
 ```shell
 yarn start
 ```
@@ -86,10 +100,6 @@ yarn start
 ### Browsing
 
 Go to [http://localhost:3000](http://localhost:3000) in your browser.
-
-## Demo
-
-You can try a Volto online demo in [https://volto.kitconcept.com](https://volto.kitconcept.com)
 
 ## Volto in Production
 
@@ -221,11 +231,11 @@ make start-backend-docker-guillotina
 Either using Docker
 
 ```shell
-docker run -it --rm --name=volto -p 3000:3000 plone/volto
+docker run -it --rm --name=volto --link plone -p 3000:3000 plone/volto
 
 # or with Volto add-ons enabled:
 
-docker run -it --rm --name=volto -e ADDONS="volto-testaddon volto-slate:asDefault" -p 3000:3000 plone/volto
+docker run -it --rm --name=volto --link plone -e ADDONS="volto-testaddon volto-slate:asDefault" -p 3000:3000 plone/volto
 ```
 
 or using the convenience yarn command:
