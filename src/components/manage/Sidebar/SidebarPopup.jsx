@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 const DEFAULT_TIMEOUT = 500;
 
-const SidebarPopup = (props, ref) => {
+const SidebarPopup = React.forwardRef((props, ref) => {
   const { children, open, overlay } = props;
   return (
     <>
@@ -47,16 +47,21 @@ const SidebarPopup = (props, ref) => {
       </CSSTransition>
     </>
   );
-};
+});
 
 SidebarPopup.propTypes = {
   open: PropTypes.bool,
   overlay: PropTypes.bool,
+  ref: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.elementType }),
+  ]),
 };
 
 SidebarPopup.defaultProps = {
   open: false,
   overlay: false,
+  ref: null,
 };
 
-export default React.forwardRef(SidebarPopup);
+export default SidebarPopup;

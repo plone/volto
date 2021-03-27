@@ -9,6 +9,7 @@
 ### Bugfix
 
 - Fixed InlineForm boolean false value @razvanMiu
+- fix warning related to ref forwarding during ssr @nileshgulia1
 
 ### Internal
 

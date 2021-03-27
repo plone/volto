@@ -2,6 +2,7 @@ import React from 'react';
 import ObjectBrowserBody from '@plone/volto/components/manage/Sidebar/ObjectBrowserBody';
 import { getParentURL } from '@plone/volto/components/manage/Sidebar/ObjectBrowserBody';
 import SidebarPopup from '@plone/volto/components/manage/Sidebar/SidebarPopup';
+import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 
 const withObjectBrowser = (WrappedComponent) =>
   class extends React.Component {
@@ -69,6 +70,34 @@ const withObjectBrowser = (WrappedComponent) =>
       }));
 
     closeObjectBrowser = () => this.setState({ isObjectBrowserOpen: false });
+    /**
+     * Component did mount
+     * @method componentDidMount
+     * @returns {undefined}
+     */
+    componentDidMount() {
+      document.addEventListener('mousedown', this.handleClickOutside, false);
+    }
+
+    /**
+     * Component will receive props
+     * @method componentWillUnmount
+     * @returns {undefined}
+     */
+    componentWillUnmount() {
+      document.removeEventListener('mousedown', this.handleClickOutside, false);
+    }
+
+    handleClickOutside = (e) => {
+      if (
+        this.objectBrowser &&
+        doesNodeContainClick(this.objectBrowser.current, e)
+      )
+        return;
+      this.closeObjectBrowser();
+    };
+
+    objectBrowser = React.createRef();
 
     render() {
       let contextURL = this.props.pathname ?? this.props.location?.pathname;
@@ -88,6 +117,7 @@ const withObjectBrowser = (WrappedComponent) =>
             <SidebarPopup
               open={this.state.isObjectBrowserOpen}
               overlay={this.state.overlay}
+              ref={this.objectBrowser}
             >
               <ObjectBrowserBody
                 {...this.props}
