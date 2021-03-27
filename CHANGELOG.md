@@ -6,6 +6,10 @@
 
 ### Feature
 
+- Add ObjectWidget and ObjectListWidget @sneridagh
+- Add `BlockForm` component, variations and schemaExtender aware @sneridagh
+- Improvements to the `InlineForm` @sneridagh
+
 ### Bugfix
 
 - Fixed InlineForm boolean false value @razvanMiu
