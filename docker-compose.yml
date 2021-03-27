@@ -6,15 +6,17 @@ services:
         environment:
             - SITE=Plone
             - ADDONS=kitconcept.volto
-            - ZCML=kitconcept.volto.cors
             - 'PROFILES=kitconcept.volto:default-homepage'
         image: plone
     frontend:
         ports:
             - '3000:3000'
         image: 'plone/volto:slim'
+        environment:
+            - INTERNAL_API_PATH=plone:8080/Plone
         # Use just 'plone/volto' image and set the env var in case you want to
         # use any released Volto addons
         # image: 'plone/volto'
         # environment:
+        #     - INTERNAL_API_PATH=plone:8080/Plone
         #     - ADDONS="volto-slate:asDefault"
