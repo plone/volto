@@ -14,6 +14,7 @@
 
 - Update plone/volto Docker image to use latest yo generator and support ADDONS env @avoinea
 - Add `docker-compose.yml` to the repo for quick demoing @sneridagh
+- Fixed babel config when loading addons (in testing mode) @sneridagh
 
 ## 12.4.0 (2021-03-25)
 
