@@ -87,8 +87,8 @@ const withObjectBrowser = (WrappedComponent) =>
           <>
             <SidebarPopup
               open={this.state.isObjectBrowserOpen}
+              close={this.closeObjectBrowser}
               overlay={this.state.overlay}
-              closeObjectBrowser={this.closeObjectBrowser}
             >
               <ObjectBrowserBody
                 {...this.props}
