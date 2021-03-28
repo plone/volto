@@ -2,11 +2,27 @@ import React from 'react';
 import { Portal } from 'react-portal';
 import { CSSTransition } from 'react-transition-group';
 import PropTypes from 'prop-types';
+import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 
 const DEFAULT_TIMEOUT = 500;
 
-const SidebarPopup = (props, ref) => {
+const SidebarPopup = (props) => {
   const { children, open, overlay } = props;
+
+  const asideElement = React.createRef();
+
+  const handleClickOutside = (e) => {
+    if (asideElement && doesNodeContainClick(asideElement.current, e)) return;
+    props.closeObjectBrowser();
+  };
+
+  React.useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside, false);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside, false);
+    };
+  });
+
   return (
     <>
       {overlay && (
@@ -36,7 +52,7 @@ const SidebarPopup = (props, ref) => {
             onKeyDown={(e) => {
               e.stopPropagation();
             }}
-            ref={ref}
+            ref={asideElement}
             key="sidebarpopup"
             className="sidebar-container"
             style={{ overflowY: 'auto' }}
@@ -59,4 +75,4 @@ SidebarPopup.defaultProps = {
   overlay: false,
 };
 
-export default React.forwardRef(SidebarPopup);
+export default SidebarPopup;
