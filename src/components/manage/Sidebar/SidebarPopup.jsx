@@ -67,7 +67,7 @@ const SidebarPopup = (props) => {
 
 SidebarPopup.propTypes = {
   open: PropTypes.bool,
-  close: PropTypes.bool,
+  close: PropTypes.func,
   overlay: PropTypes.bool,
 };
 
