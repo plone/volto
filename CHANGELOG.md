@@ -1,6 +1,6 @@
 # Change Log
 
-## 12.2.1 (unreleased)
+## 12.4.3 (unreleased)
 
 ### Breaking
 
@@ -11,6 +11,75 @@
 - Fix storybook initial config registry setup @sneridagh
 
 ### Internal
+
+## 12.4.2 (2021-03-29)
+
+### Bugfix
+
+- Re-add formTitle, formDescription, metadata to BlocksForm @avoinea
+
+## 12.4.1 (2021-03-29)
+
+### Bugfix
+
+- Fixed InlineForm boolean false value @razvanMiu
+- Fix warning message in console, move open/close detection to the aside itself @sneridagh
+- Revert SidebarPortal min-height @avoinea
+- Add proper proptype in `SidebarPopup` @sneridagh
+
+### Internal
+
+- Update plone/volto Docker image to use latest yo generator and support ADDONS env @avoinea
+- Add `docker-compose.yml` to the repo for quick demoing @sneridagh
+- Fixed babel config when loading addons (in testing mode) @sneridagh
+
+## 12.4.0 (2021-03-25)
+
+### Feature
+
+- Improved comments @rexalex @avoinea
+- Added SidebarPopup component for extra sidebar handling @avoinea
+- Use SidebarPopup component in place of CSS transition sidebar @nileshgulia1
+
+### Bugfix
+
+- Fixed multiSelected propType and BlocksForm multiSelected.includes @avoinea
+- Fixed italian translations for block `Maps` @giuliaghisini
+- Fixed SidebarPortal min-height @avoinea
+- Fixed CheckboxWidget state @razvanMiu
+
+### Internal
+
+- Upgrade API to Plone 5.2.4 and p.restapi 7.1.0 @sneridagh
+- Reorganization of the Cypress tests, now they live in `cypress/tests` @sneridagh
+- Splitted Cypress tests into `core` tests and `guillotina` ones for better overall handling @sneridagh
+
+### Docs
+
+- Update internal proxy docs @nzambello
+
+## 12.3.0 (2021-03-18)
+
+### Feature
+
+- Improve `ObjectBrowserWidget` adding a manual input field and allow external URLs. Add feature to paste internal URLs and convert them to selected objects. Added the `allowExternals` prop in order to allow this behavior (opt-in).
+
+### Bugfix
+
+- Fix storybook initial config registry setup @sneridagh
+- Search page now follows Plone's ISearchSchema settings @tiberiuichim
+- Improve `ContextNavigation` component, adding the level you are in each iteration @sneridagh
+
+### Internal
+
+- Add testing add-on for enable special testing use cases and configuration options @sneridagh
+- Add `RAZZLE_TESTING_ADDONS` environment variable for adding addons for testing purposes @sneridagh
+- Add "Humboldt Labor" to show cases.
+- Updated "Volto in Production" list @alecghica
+
+### Docs
+
+- Explicitly mention `src/config` in the "Internal proxy to API" documentation @pigeonflight
 
 ## 12.2.0 (2021-03-03)
 
@@ -42,7 +111,6 @@
 
 - Import asyncConnected actions directly from actions module, the resolution order is different in projects @tiberiuichim @avoinea
 
-
 ## 12.1.0 (2021-02-24)
 
 **This is a brown bag release and should not be used, upgrade to Volto 12.1.1 instead.**
@@ -54,6 +122,7 @@
 
 ### Bugfix
 
+- Adapt to BlocksForm in Blocks Engine @nileshgulia1
 - a11y improvements in `ObjectBrowser` and `BlockChooser` @sneridagh
 - Fix UniversalLink for download link. @giuliaghisini
 

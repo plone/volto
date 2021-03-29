@@ -146,7 +146,15 @@ const defaultModify = ({
   // Disabling the ESlint pre loader
   config.module.rules.splice(0, 1);
 
-  const addonsLoaderPath = createAddonsLoader(registry.getAddonDependencies());
+  let testingAddons = [];
+  if (process.env.RAZZLE_TESTING_ADDONS) {
+    testingAddons = process.env.RAZZLE_TESTING_ADDONS.split(',');
+  }
+
+  const addonsLoaderPath = createAddonsLoader([
+    ...registry.getAddonDependencies(),
+    ...testingAddons,
+  ]);
 
   config.resolve.plugins = [
     new RelativeResolverPlugin(registry),
@@ -191,6 +199,16 @@ const defaultModify = ({
       }
     });
     addonsAsExternals = registry.addonNames.map((addon) => new RegExp(addon));
+  }
+
+  if (process.env.RAZZLE_TESTING_ADDONS) {
+    testingAddons.forEach((addon) => {
+      const p = fs.realpathSync(registry.packages[addon].modulePath);
+      if (include.indexOf(p) === -1) {
+        include.push(p);
+      }
+      addonsAsExternals = registry.addonNames.map((addon) => new RegExp(addon));
+    });
   }
 
   config.externals =

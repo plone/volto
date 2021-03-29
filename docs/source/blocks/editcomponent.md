@@ -26,7 +26,16 @@ import { SidebarPortal } from '@plone/volto/components';
 </SidebarPortal>
 ```
 
-Everything that's inside the `SidebarPortal` component will be rendered in the sidebar.
+Everything that's inside the `SidebarPortal` component will be rendered in the sidebar. If you need an extra layer of configuration within `SidebarPortal`, you can use `SidebarPopup`.
+
+```jsx
+
+import { SidebarPopup } from '@plone/volto/components';
+
+<SidebarPopup open={this.props.sidebarOpen}>
+  ...
+</SidebarPopup>
+```
 
 ## Automated block editing forms
 
@@ -223,7 +232,7 @@ You can select the attributes from the object (coming from the metadata brain fr
 @search endpoint used in the browser) using the `selectedItemAttrs` prop as shown in the
 last example.
 
-#### allowedExternal
+#### allowExternals
 
 You can allow users to type manually an URL (internal or external). Once validated, it
 will tokenize the value. As a feature, you can paste an internal URL (eg. the user copy

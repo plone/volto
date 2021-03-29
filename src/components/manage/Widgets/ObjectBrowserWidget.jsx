@@ -71,7 +71,7 @@ export class ObjectBrowserWidgetComponent extends Component {
     ]),
     onChange: PropTypes.func.isRequired,
     openObjectBrowser: PropTypes.func.isRequired,
-    allowedExternal: PropTypes.bool,
+    allowExternals: PropTypes.bool,
   };
 
   /**
@@ -85,7 +85,7 @@ export class ObjectBrowserWidgetComponent extends Component {
     error: [],
     value: [],
     mode: 'multiple',
-    allowedExternal: false,
+    allowExternals: false,
   };
 
   state = {
@@ -210,12 +210,14 @@ export class ObjectBrowserWidgetComponent extends Component {
   onSubmitManualLink = () => {
     if (this.validateManualLink(this.state.manualLinkInput)) {
       if (isInternalURL(this.state.manualLinkInput)) {
+        const link = this.state.manualLinkInput;
         // convert it into an internal on if possible
         this.props
           .searchContent(
             '/',
             {
               'path.query': flattenToAppURL(this.state.manualLinkInput),
+              'path.depth': '0',
               sort_on: 'getObjPositionInParent',
               metadata_fields: '_all',
               b_size: 1000,
@@ -228,8 +230,8 @@ export class ObjectBrowserWidgetComponent extends Component {
             } else {
               this.props.onChange(this.props.id, [
                 {
-                  '@id': normalizeUrl(this.state.manualLinkInput),
-                  title: removeProtocol(this.state.manualLinkInput),
+                  '@id': normalizeUrl(link),
+                  title: removeProtocol(link),
                 },
               ]);
             }

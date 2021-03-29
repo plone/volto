@@ -18,14 +18,16 @@ const BlocksForm = (props) => {
   const {
     pathname,
     onChangeField,
-    metadata,
     properties,
     onChangeFormData,
     selectedBlock,
+    multiSelected,
     onSelectBlock,
     allowedBlocks,
+    showRestricted,
     title,
     description,
+    metadata,
     manage,
     children,
   } = props;
@@ -43,12 +45,13 @@ const BlocksForm = (props) => {
       disableArrowDown = false,
     } = {},
   ) => {
+    const isMultipleSelection = e.shiftKey;
     if (e.key === 'ArrowUp' && !disableArrowUp) {
-      onFocusPreviousBlock(block, node);
+      onFocusPreviousBlock(block, node, isMultipleSelection);
       e.preventDefault();
     }
     if (e.key === 'ArrowDown' && !disableArrowDown) {
-      onFocusNextBlock(block, node);
+      onFocusNextBlock(block, node, isMultipleSelection);
       e.preventDefault();
     }
     if (e.key === 'Enter' && !disableEnter) {
@@ -57,22 +60,26 @@ const BlocksForm = (props) => {
     }
   };
 
-  const onFocusPreviousBlock = (currentBlock, blockNode) => {
+  const onFocusPreviousBlock = (
+    currentBlock,
+    blockNode,
+    isMultipleSelection,
+  ) => {
     const prev = previousBlockId(properties, currentBlock);
     if (prev === null) return;
 
     blockNode.blur();
 
-    onSelectBlock(prev);
+    onSelectBlock(prev, isMultipleSelection);
   };
 
-  const onFocusNextBlock = (currentBlock, blockNode) => {
+  const onFocusNextBlock = (currentBlock, blockNode, isMultipleSelection) => {
     const next = nextBlockId(properties, currentBlock);
     if (next === null) return;
 
     blockNode.blur();
 
-    onSelectBlock(next);
+    onSelectBlock(next, isMultipleSelection);
   };
 
   const onMutateBlock = (id, value) => {
@@ -114,7 +121,7 @@ const BlocksForm = (props) => {
   const editBlockWrapper = children || defaultBlockWrapper;
 
   return (
-    <div className="blocks-form" title={title}>
+    <div className="blocks-form">
       <DragDropList
         childList={blockList}
         onMoveItem={(result) => {
@@ -135,10 +142,13 @@ const BlocksForm = (props) => {
           const { child, childId, index } = dragProps;
           const blockProps = {
             allowedBlocks,
+            showRestricted,
             block: childId,
             data: child,
             handleKeyDown,
             id: childId,
+            formTitle: title,
+            formDescription: description,
             index,
             manage,
             onAddBlock,
@@ -154,16 +164,12 @@ const BlocksForm = (props) => {
             metadata,
             properties,
             selected: selectedBlock === childId,
+            multiSelected: multiSelected?.includes(childId),
             type: child['@type'],
           };
           return editBlockWrapper(
             dragProps,
-            <EditBlock
-              key={childId}
-              {...blockProps}
-              formTitle={title}
-              formDescription={description}
-            />,
+            <EditBlock key={childId} {...blockProps} />,
             blockProps,
           );
         }}
