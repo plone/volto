@@ -14,7 +14,9 @@ export default function ManageSlotsButton(props) {
     return Object.keys(slots)
       .filter((name) => slots[name].manage)
       .filter((name) =>
-        state.slots?.[name] ? state.slots?.[name]?.edit : true,
+        state.slots?.[name]
+          ? state.slots?.[name]?.edit
+          : state.slots?.data?.can_manage_slots,
       )
       .map((name) => ({ id: name, title: slots[name].title }));
   });

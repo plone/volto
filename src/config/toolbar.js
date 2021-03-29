@@ -8,7 +8,7 @@ import PersonalInformation from '@plone/volto/components/manage/Preferences/Pers
 import PersonalPreferences from '@plone/volto/components/manage/Preferences/PersonalPreferences';
 import StandardWrapper from '@plone/volto/components/manage/Toolbar/StandardWrapper';
 
-// import ManageSlotsButton from '@plone/volto/components/manage/EditSlot/ManageSlotsButton';
+import ManageSlotsButton from '@plone/volto/components/manage/EditSlot/ManageSlotsButton';
 import ManageSlotsMoreComponent from '@plone/volto/components/manage/EditSlot/ManageSlotsMoreComponent';
 
 import {
@@ -98,13 +98,13 @@ const defaultViewActions = [
     },
     component: moreMenu(defaultMoreActions),
   },
-  // {
-  //   id: 'SlotsMenu',
-  //   match: {
-  //     path: '/',
-  //   },
-  //   component: ManageSlotsButton,
-  // },
+  {
+    id: 'SlotsMenu',
+    match: {
+      path: '/',
+    },
+    component: ManageSlotsButton,
+  },
 ];
 
 const defaultBottomActions = [
