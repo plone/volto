@@ -2,15 +2,9 @@
 
 ## 12.4.2 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Re-add formTitle, formDescription, metadata to BlocksForm @avoinea
-
-### Internal
 
 ## 12.4.1 (2021-03-29)
 
