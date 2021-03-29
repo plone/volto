@@ -8,8 +8,6 @@
 
 ### Bugfix
 
-- Fix sitemap URL generation @nzambello
-
 ### Internal
 
 ## 12.4.2 (2021-03-29)
