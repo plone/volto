@@ -10,6 +10,7 @@
 
 - Fixed InlineForm boolean false value @razvanMiu
 - Fix warning message in console, move open/close detection to the aside itself @sneridagh
+- Revert SidebarPortal min-height @avoinea
 
 ### Internal
 
@@ -31,7 +32,6 @@
 - Fixed italian translations for block `Maps` @giuliaghisini
 - Fixed SidebarPortal min-height @avoinea
 - Fixed CheckboxWidget state @razvanMiu
-- fixed italian translations for block 'Maps" @giuliaghisini
 
 ### Internal
 
