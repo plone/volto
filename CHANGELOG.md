@@ -10,6 +10,7 @@
 
 - Fixed InlineForm boolean false value @razvanMiu
 - Fix warning message in console, move open/close detection to the aside itself @sneridagh
+- Revert SidebarPortal min-height @avoinea
 
 ### Internal
 
