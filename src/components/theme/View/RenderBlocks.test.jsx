@@ -8,7 +8,7 @@ import config from '@plone/volto/registry';
 
 const mockStore = configureStore();
 
-test('renders some blocks', () => {
+test('Allows override of blocksConfig', () => {
   const store = mockStore({
     intl: {
       locale: 'en',
