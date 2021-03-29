@@ -2,10 +2,6 @@
 
 ## 12.4.1 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Fixed InlineForm boolean false value @razvanMiu
