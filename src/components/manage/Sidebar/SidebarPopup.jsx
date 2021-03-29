@@ -7,13 +7,13 @@ import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 const DEFAULT_TIMEOUT = 500;
 
 const SidebarPopup = (props) => {
-  const { children, open, close, overlay } = props;
+  const { children, open, onClose, overlay } = props;
 
   const asideElement = React.createRef();
 
   const handleClickOutside = (e) => {
     if (asideElement && doesNodeContainClick(asideElement.current, e)) return;
-    close();
+    onClose();
   };
 
   React.useEffect(() => {
@@ -67,13 +67,13 @@ const SidebarPopup = (props) => {
 
 SidebarPopup.propTypes = {
   open: PropTypes.bool,
-  close: PropTypes.func,
+  onClose: PropTypes.func,
   overlay: PropTypes.bool,
 };
 
 SidebarPopup.defaultProps = {
   open: false,
-  close: () => {},
+  onClose: () => {},
   overlay: false,
 };
 
