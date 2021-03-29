@@ -31,6 +31,7 @@
 - Fixed italian translations for block `Maps` @giuliaghisini
 - Fixed SidebarPortal min-height @avoinea
 - Fixed CheckboxWidget state @razvanMiu
+- fixed italian translations for block 'Maps" @giuliaghisini
 
 ### Internal
 
