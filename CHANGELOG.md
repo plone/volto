@@ -1,6 +1,6 @@
 # Change Log
 
-## 12.4.1 (unreleased)
+## 12.4.2 (unreleased)
 
 ### Breaking
 
@@ -24,7 +24,16 @@
 
 ### Bugfix
 
+### Internal
+
+## 12.4.1 (2021-03-29)
+
+### Bugfix
+
 - Fixed InlineForm boolean false value @razvanMiu
+- Fix warning message in console, move open/close detection to the aside itself @sneridagh
+- Revert SidebarPortal min-height @avoinea
+- Add proper proptype in `SidebarPopup` @sneridagh
 
 ### Internal
 
