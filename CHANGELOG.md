@@ -10,6 +10,8 @@
 
 ### Internal
 
+- BlocksForm and RenderBlocks now allow a `blocksConfig` configuration object as a prop @tiberiuichim
+
 ## 12.4.2 (2021-03-29)
 
 ### Bugfix
