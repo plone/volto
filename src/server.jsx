@@ -55,7 +55,7 @@ const server = express()
   });
 
 // Internal proxy to bypass CORS while developing.
-if (__DEVELOPMENT__ && config.settings.backendAPIPath) {
+if (!__DEVELOPMENT__ && config.settings.backendAPIPath) {
   // This is the proxy to the API in case the accept header is 'application/json'
   const filter = function (pathname, req) {
     return req.headers.accept === 'application/json';
@@ -167,6 +167,13 @@ server.get('/*', (req, res) => {
   const url = req.originalUrl || req.url;
   const location = parseUrl(url);
 
+  const hostname = `${req.protocol}://${req.headers.host}`;
+
+  if (hostname) {
+    config.settings.apiPath = hostname;
+    config.settings.publicURL = hostname;
+  }
+
   loadOnServer({ store, location, routes, api })
     .then(() => {
       // The content info is in the store at this point thanks to the asynconnect
@@ -213,6 +220,7 @@ server.get('/*', (req, res) => {
                   store={store}
                   extractScripts={process.env.NODE_ENV !== 'production'}
                   criticalCss={readCriticalCss(req)}
+                  hostname={hostname}
                 />,
               )}
             `,
@@ -226,6 +234,7 @@ server.get('/*', (req, res) => {
                   markup={markup}
                   store={store}
                   criticalCss={readCriticalCss(req)}
+                  hostname={hostname}
                 />,
               )}
             `,

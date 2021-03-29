@@ -42,6 +42,10 @@ export default () => {
     window.settings = config.settings;
   }
 
+  if (window.env.hostname) {
+    config.settings.apiPath = window.env.hostname;
+  }
+
   loadableReady(() => {
     hydrate(
       <Provider store={store}>

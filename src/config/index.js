@@ -70,7 +70,7 @@ let config = {
     // Internal proxy to bypass CORS *while developing*. Not intended for production use.
     // In production, the proxy is disabled, make sure you specify an apiPath that does
     // not require CORS to work.
-    apiPath: process.env.RAZZLE_API_PATH || publicURL,
+    apiPath: process.env.RAZZLE_API_PATH || '',
     // The real path to the API not the Volto internal one (itself)
     backendAPIPath:
       process.env.RAZZLE_BACKEND_API_PATH ||
