@@ -100,13 +100,19 @@ export function deleteBlock(formData, blockId) {
   const blocksFieldname = getBlocksFieldname(formData);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
 
-  return {
+  let newFormData = {
     ...formData,
     [blocksLayoutFieldname]: {
       items: without(formData[blocksLayoutFieldname].items, blockId),
     },
     [blocksFieldname]: omit(formData[blocksFieldname], [blockId]),
   };
+
+  if (newFormData[blocksLayoutFieldname].items.length === 0) {
+    newFormData = addBlock(newFormData, config.settings.defaultBlockType, 0);
+  }
+
+  return newFormData;
 }
 
 export function addBlock(formData, type, index) {

@@ -22,6 +22,7 @@ export {
   addComment,
   deleteComment,
   listComments,
+  listMoreComments,
   updateComment,
 } from '@plone/volto/actions/comments/comments';
 export {

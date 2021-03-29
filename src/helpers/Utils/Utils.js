@@ -1,5 +1,5 @@
+import { isEqual, isObject, transform } from 'lodash';
 import React from 'react';
-import { transform, isEqual, isObject } from 'lodash';
 
 /**
  * Deep diff between two object, using lodash
@@ -58,3 +58,85 @@ export function withServerErrorCode(code) {
     return <WrappedComponent {...props} />;
   };
 }
+
+// See https://en.wikipedia.org/wiki/Web_colors#Extended_colors
+const safeColors = [
+  'Black',
+  'Blue',
+  'BlueViolet',
+  'Brown',
+  'Crimson',
+  'DarkBlue',
+  'DarkCyan',
+  'DarkGreen',
+  'DarkMagenta',
+  'DarkOliveGreen',
+  'DarkOrchid',
+  'DarkRed',
+  'DarkSlateBlue',
+  'DarkSlateGray',
+  'DarkViolet',
+  'DeepPink',
+  'DimGray',
+  'DodgerBlue',
+  'Firebrick',
+  'ForestGreen',
+  'Fuchsia',
+  'Green',
+  'IndianRed',
+  'Indigo',
+  'Magenta',
+  'Maroon',
+  'MediumBlue',
+  'MediumSlateBlue',
+  'MediumVioletRed',
+  'MidnightBlue',
+  'Navy',
+  'Olive',
+  'OliveDrab',
+  'OrangeRed',
+  'Purple',
+  'Red',
+  'RoyalBlue',
+  'SaddleBrown',
+  'SeaGreen',
+  'Sienna',
+  'SlateBlue',
+  'SlateGray',
+  'SteelBlue',
+  'Teal',
+];
+const namedColors = {};
+/**
+ * Will generate initials from string
+ * @param {string} name
+ * @param {integer} count
+ * @returns {string} only one letter if received only one name
+ */
+export const getInitials = (title, limit) => {
+  const text = title
+    .split(' ')
+    .map((n) => (n[0] ? n[0].toUpperCase() : ''))
+    .join('');
+  if (limit) {
+    return text.substring(0, limit);
+  }
+  return text;
+};
+
+/**
+ * Will generate a random color hex
+ * Will also remmember the color for each userId
+ * @param {string} userId
+ */
+export const getColor = (name) => {
+  const namedColor = namedColors[name]
+    ? namedColors[name]
+    : safeColors.length > 0
+    ? safeColors.pop()
+    : `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+  if (!namedColors[name]) {
+    namedColors[name] = namedColor;
+  }
+  return namedColor;
+};

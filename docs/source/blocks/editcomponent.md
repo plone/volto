@@ -26,7 +26,16 @@ import { SidebarPortal } from '@plone/volto/components';
 </SidebarPortal>
 ```
 
-Everything that's inside the `SidebarPortal` component will be rendered in the sidebar.
+Everything that's inside the `SidebarPortal` component will be rendered in the sidebar. If you need an extra layer of configuration within `SidebarPortal`, you can use `SidebarPopup`.
+
+```jsx
+
+import { SidebarPopup } from '@plone/volto/components';
+
+<SidebarPopup open={this.props.sidebarOpen}>
+  ...
+</SidebarPopup>
+```
 
 ## Automated block editing forms
 
