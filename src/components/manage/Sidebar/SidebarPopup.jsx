@@ -73,7 +73,7 @@ SidebarPopup.propTypes = {
 
 SidebarPopup.defaultProps = {
   open: false,
-  close: false,
+  close: () => {},
   overlay: false,
 };
 
