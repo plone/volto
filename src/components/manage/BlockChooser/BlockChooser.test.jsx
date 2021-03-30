@@ -181,6 +181,40 @@ describe('BlocksChooser', () => {
         />
       </Provider>,
     );
-    expect(container.firstChild).toHaveTextContent('Custom block');
+    expect(container).toHaveTextContent('Custom block');
+  });
+  it("doesn't show empty groups", () => {
+    const old = [...config.blocks.groupBlocksOrder];
+    config.blocks.groupBlocksOrder.push({
+      id: 'customGroup',
+      title: 'Custom group',
+    });
+    const blocksConfig = {
+      ...config.blocks.blocksConfig,
+      custom: {
+        id: 'custom',
+        title: 'Custom block',
+        icon: blockSVG,
+        mostUsed: true,
+        group: 'customGroup',
+        restricted: true,
+        edit: ({ id, data }) => (
+          <div>
+            {id} - {data.text}
+          </div>
+        ),
+      },
+    };
+    const { container } = render(
+      <Provider store={store}>
+        <BlockChooser
+          onMutateBlock={() => {}}
+          currentBlock="theblockid"
+          blocksConfig={blocksConfig}
+        />
+      </Provider>,
+    );
+    expect(container).not.toHaveTextContent('Custom group');
+    config.blocks.groupBlocksOrder = old;
   });
 });
