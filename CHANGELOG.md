@@ -24,6 +24,8 @@
 
 ### Bugfix
 
+- Don't show empty groups in BlockChooser @tiberiuichim
+
 ### Internal
 
 - BlocksForm and RenderBlocks now allow a `blocksConfig` configuration object as a prop @tiberiuichim
