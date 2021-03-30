@@ -1,6 +1,6 @@
 # Change Log
 
-## 12.4.1 (unreleased)
+## 12.4.3 (unreleased)
 
 ### Breaking
 
@@ -8,11 +8,28 @@
 
 ### Bugfix
 
+### Internal
+
+## 12.4.2 (2021-03-29)
+
+### Bugfix
+
+- Re-add formTitle, formDescription, metadata to BlocksForm @avoinea
+
+## 12.4.1 (2021-03-29)
+
+### Bugfix
+
 - Fixed InlineForm boolean false value @razvanMiu
+- Fix warning message in console, move open/close detection to the aside itself @sneridagh
+- Revert SidebarPortal min-height @avoinea
+- Add proper proptype in `SidebarPopup` @sneridagh
 
 ### Internal
 
 - Update plone/volto Docker image to use latest yo generator and support ADDONS env @avoinea
+- Add `docker-compose.yml` to the repo for quick demoing @sneridagh
+- Fixed babel config when loading addons (in testing mode) @sneridagh
 
 ## 12.4.0 (2021-03-25)
 

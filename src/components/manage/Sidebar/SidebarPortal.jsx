@@ -18,9 +18,9 @@ const SidebarPortal = ({ children, selected, tab = 'sidebar-properties' }) => {
     <>
       {selected && (
         <Portal node={isClient && document.getElementById(tab)}>
-          <div role="form" style={{ minHeight: '100%' }}>
+          <div role="form" style={{ height: '100%' }}>
             <div
-              style={{ minHeight: '100%' }}
+              style={{ height: '100%' }}
               role="presentation"
               onClick={(e) => {
                 e.stopPropagation();
