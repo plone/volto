@@ -396,7 +396,7 @@ class Example extends Component {
 ```
 
 The current block engine is available as the separate `BlocksForm` component,
-previously a part of the `Form.jsx` component. It has been previously exposed
+used to be a part of the `Form.jsx` component. It has been previously exposed
 as the [@eeacms/volto-blocks-form](https://github.com/eea/volto-blocks-form)
 addon and reused in several other addons, so you can find integration examples
 in addons such as
@@ -408,7 +408,7 @@ probably the simplest implementation to follow is in the
 [@eeacms/volto-group-block](https://github.com/eea/volto-group-block)
 
 Notice that the `BlocksForm` component allows overriding the edit block
-wrapper and allows passing a custom blocksConfig configuration object, for
+wrapper and allows passing a custom `blocksConfig` configuration object, for
 example to filter or add new blocks.
 
 You can also reuse the DragDropList component as a separate component:

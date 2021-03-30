@@ -59,5 +59,8 @@ The edit component of a block receives these props from the Blocks Engine:
 - `onFocusNextBlock` - handler for focusing the next block in the block list
 - `handleKeyDown` - handler for managing press keys while the block is selected
 - `onMoveBlock` - handler for moving blocks
+- `blocksConfig` - a (potentially customized) copy of the
+  `config.blocks.blocksConfig` configuration object, useful for blocks that
+  need to render other blocks
 
 You can use all these props to render your edit block and model its behavior.
