@@ -26,19 +26,20 @@ const BlockChooser = ({
   onMutateBlock,
   allowedBlocks,
   showRestricted,
+  blocksConfig = config.blocks.blocksConfig,
   intl,
 }) => {
-  const blocksConfig = filter(
-    config.blocks.blocksConfig,
+  const filteredBlocksConfig = filter(
+    blocksConfig,
     (item) => isEmpty(allowedBlocks) || allowedBlocks.includes(item.id),
   );
 
   let blocksAvailable = {};
-  const mostUsedBlocks = filter(blocksConfig, (item) => item.mostUsed);
+  const mostUsedBlocks = filter(filteredBlocksConfig, (item) => item.mostUsed);
   if (mostUsedBlocks) {
     blocksAvailable.mostUsed = mostUsedBlocks;
   }
-  const groupedBlocks = groupBy(blocksConfig, (item) => item.group);
+  const groupedBlocks = groupBy(filteredBlocksConfig, (item) => item.group);
   blocksAvailable = {
     ...blocksAvailable,
     ...groupedBlocks,
@@ -133,6 +134,7 @@ BlockChooser.propTypes = {
   currentBlock: PropTypes.string.isRequired,
   onMutateBlock: PropTypes.func.isRequired,
   allowedBlocks: PropTypes.arrayOf(PropTypes.string),
+  blocksConfig: PropTypes.objectOf(PropTypes.any),
 };
 
 export default injectIntl(BlockChooser);
