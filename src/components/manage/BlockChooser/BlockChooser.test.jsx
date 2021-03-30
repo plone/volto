@@ -156,4 +156,31 @@ describe('BlocksChooser', () => {
     expect(screen.getAllByRole('button')).toHaveLength(1);
     expect(container.firstChild).toHaveTextContent('Title');
   });
+  it('uses custom blocksConfig test', () => {
+    const blocksConfig = {
+      ...config.blocks.blocksConfig,
+      custom: {
+        id: 'custom',
+        title: 'Custom block',
+        icon: blockSVG,
+        mostUsed: true,
+        group: 'site',
+        edit: ({ id, data }) => (
+          <div>
+            {id} - {data.text}
+          </div>
+        ),
+      },
+    };
+    const { container } = render(
+      <Provider store={store}>
+        <BlockChooser
+          onMutateBlock={() => {}}
+          currentBlock="theblockid"
+          blocksConfig={blocksConfig}
+        />
+      </Provider>,
+    );
+    expect(container.firstChild).toHaveTextContent('Custom block');
+  });
 });
