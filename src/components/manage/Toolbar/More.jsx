@@ -13,6 +13,7 @@ import { find } from 'lodash';
 
 import { Icon, Display, Workflow } from '@plone/volto/components';
 import { getBaseUrl } from '@plone/volto/helpers';
+import config from '@plone/volto/registry';
 
 import rightArrowSVG from '@plone/volto/icons/right-key.svg';
 import userSVG from '@plone/volto/icons/user.svg';
@@ -29,6 +30,10 @@ const messages = defineMessages({
   sharing: {
     id: 'Sharing',
     defaultMessage: 'Sharing',
+  },
+  ManageTranslations: {
+    id: 'Manage Translations',
+    defaultMessage: 'Manage Translations',
   },
 });
 
@@ -63,6 +68,10 @@ class More extends Component {
     actions: null,
     content: null,
   };
+  state = {
+    openManageTranslations: false,
+    pushed: false,
+  };
 
   push = (selector) => {
     this.setState(() => ({
@@ -84,8 +93,18 @@ class More extends Component {
     const sharingAction = find(this.props.actions.object, {
       id: 'local_roles',
     });
+
     return (
-      <div className="menu-more pastanaga-menu">
+      <div
+        className="menu-more pastanaga-menu"
+        style={{
+          flex: this.props.theToolbar.current
+            ? `0 0 ${
+                this.props.theToolbar.current.getBoundingClientRect().width
+              }px`
+            : null,
+        }}
+      >
         <header>
           <h2>{this.props.content.title}</h2>
           <button
@@ -106,30 +125,18 @@ class More extends Component {
               {editAction && <Display pathname={path} />}
             </li>
             <li>
-              {historyAction ? (
-                <Link to={`${path}/history`}>
-                  <button>
-                    <div>
-                      <span className="pastanaga-menu-label">
-                        {this.props.intl.formatMessage(messages.history)}
-                      </span>
-                      <span className="pastanaga-menu-value" />
-                    </div>
-                    <Icon name={rightArrowSVG} size="24px" />
-                  </button>
-                </Link>
-              ) : (
-                <button
-                  aria-label={this.props.intl.formatMessage(messages.history)}
-                >
+              <Link to={`${path}/history`}>
+                <button>
                   <div>
                     <span className="pastanaga-menu-label">
-                      {historyAction.title}
+                      {historyAction?.title ||
+                        this.props.intl.formatMessage(messages.history)}
                     </span>
                     <span className="pastanaga-menu-value" />
                   </div>
+                  <Icon name={rightArrowSVG} size="24px" />
                 </button>
-              )}
+              </Link>
             </li>
             {sharingAction && (
               <li>
@@ -140,6 +147,21 @@ class More extends Component {
                   </button>
                 </Link>
               </li>
+            )}
+            {editAction && config.settings.isMultilingual && (
+              <>
+                <li>
+                  <Link to={`${path}/manage-translations`}>
+                    <button>
+                      {this.props.intl.formatMessage(
+                        messages.ManageTranslations,
+                      )}
+
+                      <Icon name={rightArrowSVG} size="24px" />
+                    </button>
+                  </Link>
+                </li>
+              </>
             )}
           </ul>
         </div>

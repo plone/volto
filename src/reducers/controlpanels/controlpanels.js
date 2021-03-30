@@ -2,7 +2,7 @@
  * Controlpanels reducer.
  * @module reducers/controlpanels/controlpanels
  */
-import { settings } from '~/config';
+import { flattenToAppURL } from '@plone/volto/helpers';
 import {
   GET_CONTROLPANEL,
   POST_CONTROLPANEL,
@@ -93,7 +93,7 @@ export default function controlpanels(state = initialState, action = {}) {
         ...state,
         controlpanel: {
           ...action.result,
-          '@id': action.result['@id'].replace(settings.apiPath, ''),
+          '@id': flattenToAppURL(action.result['@id']),
         },
         [getRequestKey(action.type)]: {
           loading: false,

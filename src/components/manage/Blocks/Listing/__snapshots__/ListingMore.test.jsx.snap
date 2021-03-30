@@ -4,7 +4,6 @@ exports[`renders an Listing Data Sidebar component 1`] = `
 Array [
   <div
     className="inline field text"
-    id="field-linkTitle"
   >
     <div
       className="ui grid"
@@ -20,6 +19,7 @@ Array [
           >
             <label
               htmlFor="field-linkTitle"
+              id="fieldset-undefined-field-label-linkTitle"
             >
               Link Title
             </label>
@@ -32,10 +32,13 @@ Array [
             className="ui input"
           >
             <input
-              disabled={false}
               id="field-linkTitle"
+              maxLength={null}
+              minLength={null}
               name="linkTitle"
+              onBlur={[Function]}
               onChange={[Function]}
+              onClick={[Function]}
               type="text"
               value=""
             />
@@ -46,7 +49,6 @@ Array [
   </div>,
   <div
     className="inline field text"
-    id="field-linkHref"
   >
     <div
       className="ui grid"
@@ -62,6 +64,7 @@ Array [
           >
             <label
               htmlFor="field-linkHref"
+              id="fieldset-undefined-field-label-linkHref"
             >
               Link to
             </label>
@@ -74,10 +77,13 @@ Array [
             className="ui icon input"
           >
             <input
-              disabled={false}
               id="field-linkHref"
+              maxLength={null}
+              minLength={null}
               name="linkHref"
+              onBlur={[Function]}
               onChange={[Function]}
+              onClick={[Function]}
               type="text"
               value=""
             />
@@ -94,6 +100,7 @@ Array [
             />
           </div>
           <button
+            className="field-linkHref-action-button"
             onClick={[Function]}
           >
             <svg

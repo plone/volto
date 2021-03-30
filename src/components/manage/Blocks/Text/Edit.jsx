@@ -10,11 +10,12 @@ import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import Editor from 'draft-js-plugins-editor';
 import { convertFromRaw, convertToRaw, EditorState, RichUtils } from 'draft-js';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
+
 import isSoftNewlineEvent from 'draft-js/lib/isSoftNewlineEvent';
 import { defineMessages, injectIntl } from 'react-intl';
 import { includes, isEqual } from 'lodash';
 import { filterEditorState } from 'draftjs-filters';
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 import { Icon, BlockChooser } from '@plone/volto/components';
 import addSVG from '@plone/volto/icons/circle-plus.svg';
@@ -50,6 +51,10 @@ class Edit extends Component {
     onFocusPreviousBlock: PropTypes.func.isRequired,
     onFocusNextBlock: PropTypes.func.isRequired,
     onSelectBlock: PropTypes.func.isRequired,
+    allowedBlocks: PropTypes.arrayOf(PropTypes.string),
+    showRestricted: PropTypes.bool,
+    formTitle: PropTypes.string,
+    formDescription: PropTypes.string,
   };
 
   /**
@@ -81,7 +86,7 @@ class Edit extends Component {
       }
 
       const inlineToolbarPlugin = createInlineToolbarPlugin({
-        structure: settings.richTextEditorInlineToolbarButtons,
+        structure: config.settings.richTextEditorInlineToolbarButtons,
       });
 
       this.state = {
@@ -121,6 +126,20 @@ class Edit extends Component {
         editorState: EditorState.moveFocusToEnd(this.state.editorState),
       });
     }
+  }
+
+  /**
+   * @param {*} nextProps
+   * @param {*} nextState
+   * @returns {boolean}
+   * @memberof Edit
+   */
+  shouldComponentUpdate(nextProps, nextState) {
+    return (
+      this.props.selected ||
+      !isEqual(this.props.data, nextProps.data) ||
+      !isEqual(this.state.editorState, nextState.editorState)
+    );
   }
 
   /**
@@ -174,8 +193,10 @@ class Edit extends Component {
     this.setState({ editorState });
   }
 
-  toggleAddNewBlock = () =>
+  toggleAddNewBlock = (e) => {
+    e.preventDefault();
     this.setState((state) => ({ addNewBlockOpened: !state.addNewBlockOpened }));
+  };
 
   handleClickOutside = (e) => {
     if (
@@ -198,7 +219,15 @@ class Edit extends Component {
       return <div />;
     }
 
+    const placeholder =
+      this.props.data.placeholder ||
+      this.props.formTitle ||
+      this.props.intl.formatMessage(messages.text);
+
+    const disableNewBlocks =
+      this.props.data?.disableNewBlocks || this.props.detached;
     const { InlineToolbar } = this.state.inlineToolbarPlugin;
+    const { settings } = config;
 
     return (
       <>
@@ -212,7 +241,7 @@ class Edit extends Component {
           blockRenderMap={settings.extendedBlockRenderMap}
           blockStyleFn={settings.blockStyleFn}
           customStyleMap={settings.customStyleMap}
-          placeholder={this.props.intl.formatMessage(messages.text)}
+          placeholder={placeholder}
           handleReturn={(e) => {
             if (isSoftNewlineEvent(e)) {
               this.onChange(
@@ -220,7 +249,7 @@ class Edit extends Component {
               );
               return 'handled';
             }
-            if (!this.props.detached) {
+            if (!disableNewBlocks) {
               const selectionState = this.state.editorState.getSelection();
               const anchorKey = selectionState.getAnchorKey();
               const currentContent = this.state.editorState.getCurrentContent();
@@ -239,6 +268,9 @@ class Edit extends Component {
             return {};
           }}
           handleKeyCommand={(command, editorState) => {
+            if (this.props.data.required) {
+              return;
+            }
             if (
               command === 'backspace' &&
               editorState.getCurrentContent().getPlainText().length === 0
@@ -272,12 +304,11 @@ class Edit extends Component {
           }}
         />
         <InlineToolbar />
-        {!this.props.detached &&
-          (!this.props.data.text ||
-            (this.props.data.text &&
-              this.props.data.text.blocks &&
-              this.props.data.text.blocks.length === 1 &&
-              this.props.data.text.blocks[0].text === '')) && (
+        {this.props.selected &&
+          !disableNewBlocks &&
+          !config.blocks.blocksConfig[
+            this.props.data?.['@type'] || 'text'
+          ].blockHasValue(this.props.data) && (
             <Button
               basic
               icon
@@ -291,6 +322,8 @@ class Edit extends Component {
           <BlockChooser
             onMutateBlock={this.props.onMutateBlock}
             currentBlock={this.props.block}
+            allowedBlocks={this.props.allowedBlocks}
+            showRestricted={this.props.showRestricted}
           />
         )}
       </>

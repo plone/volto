@@ -1,3 +1,4 @@
+/* eslint no-console: 0 */
 import React from 'react';
 import objectAssign from 'object-assign';
 import {

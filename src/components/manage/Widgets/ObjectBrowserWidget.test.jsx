@@ -15,7 +15,12 @@ test('renders a objectBrowser widget component', () => {
   });
   const component = renderer.create(
     <Provider store={store}>
-      <ObjectBrowserWidget id="my-field" title="My field" onChange={() => {}} />
+      <ObjectBrowserWidget
+        id="my-field"
+        title="My field"
+        fieldSet="default"
+        onChange={() => {}}
+      />
     </Provider>,
   );
   const json = component.toJSON();

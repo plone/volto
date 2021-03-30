@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import loadable from '@loadable/component';
 import 'react-image-gallery/styles/css/image-gallery.css';
-import { settings } from '~/config';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import { Button } from 'semantic-ui-react';
 import { Icon } from '@plone/volto/components';
+import config from '@plone/volto/registry';
+
 import galleryLeftSVG from '@plone/volto/icons/left-key.svg';
 import galleryRightSVG from '@plone/volto/icons/right-key.svg';
 import galleryPlaySVG from '@plone/volto/icons/play.svg';
@@ -71,16 +72,17 @@ const renderFullscreenButton = (onClick, isFullscreen) => {
 };
 
 const ImageGalleryTemplate = ({ items }) => {
+  const { settings } = config;
   const renderItems = items.filter((content) =>
     settings.imageObjects.includes(content['@type']),
   );
   const imagesInfo = renderItems.map((item) => {
     return {
       original: flattenToAppURL(
-        item[settings.listingPreviewImageField].scales.preview.download,
+        item[settings.listingPreviewImageField]?.scales.large.download || '',
       ),
       thumbnail: flattenToAppURL(
-        item[settings.listingPreviewImageField].scales.thumb.download,
+        item[settings.listingPreviewImageField]?.scales.thumb.download || '',
       ),
     };
   });
@@ -93,7 +95,7 @@ const ImageGalleryTemplate = ({ items }) => {
         renderRightNav={renderRightNav}
         renderPlayPauseButton={renderPlayPauseButton}
         renderFullscreenButton={renderFullscreenButton}
-        lazyLoad
+        lazyLoad={true}
       />
     )
   );

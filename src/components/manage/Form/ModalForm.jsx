@@ -5,7 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { keys, map, uniq } from 'lodash';
+import { keys, map } from 'lodash';
 import {
   Button,
   Form as UiForm,
@@ -13,9 +13,11 @@ import {
   Menu,
   Message,
   Modal,
+  Dimmer,
+  Loader,
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-
+import { FormValidation } from '@plone/volto/helpers';
 import { Field, Icon } from '@plone/volto/components';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -74,6 +76,7 @@ class ModalForm extends Component {
     open: PropTypes.bool,
     submitLabel: PropTypes.string,
     loading: PropTypes.bool,
+    loadingMessage: PropTypes.string,
     className: PropTypes.string,
   };
 
@@ -88,6 +91,7 @@ class ModalForm extends Component {
     formData: {},
     open: true,
     loading: null,
+    loadingMessage: null,
     submitError: null,
     className: null,
   };
@@ -103,10 +107,13 @@ class ModalForm extends Component {
     this.state = {
       currentTab: 0,
       errors: {},
+      isFormPristine: true,
       formData: props.formData,
     };
     this.selectTab = this.selectTab.bind(this);
     this.onChangeField = this.onChangeField.bind(this);
+    this.onBlurField = this.onBlurField.bind(this);
+    this.onClickInput = this.onClickInput.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
@@ -127,6 +134,36 @@ class ModalForm extends Component {
   }
 
   /**
+   * If user clicks on input, the form will be not considered pristine
+   * this will avoid onBlur effects without interraction with the form
+   * @param {Object} e event
+   */
+  onClickInput(e) {
+    this.setState({ isFormPristine: false });
+  }
+
+  /**
+   * Validate fields on blur
+   * @method onBlurField
+   * @param {string} id Id of the field
+   * @param {*} value Value of the field
+   * @returns {undefined}
+   */
+  onBlurField(id, value) {
+    if (!this.state.isFormPristine) {
+      const errors = FormValidation.validateFieldsPerFieldset({
+        schema: this.props.schema,
+        formData: this.state.formData,
+        formatMessage: this.props.intl.formatMessage,
+      });
+
+      this.setState({
+        errors,
+      });
+    }
+  }
+
+  /**
    * Submit handler
    * @method onSubmit
    * @param {Object} event Event object.
@@ -134,42 +171,19 @@ class ModalForm extends Component {
    */
   onSubmit(event) {
     event.preventDefault();
-    const errors = {};
-    map(this.props.schema.fieldsets, (fieldset) =>
-      map(fieldset.fields, (fieldId) => {
-        const field = this.props.schema.properties[fieldId];
-        const data = this.state.formData[fieldId];
-        if (this.props.schema.required.indexOf(fieldId) !== -1) {
-          if (field.type !== 'boolean' && !data) {
-            errors[fieldId] = errors[field] || [];
-            errors[fieldId].push(
-              this.props.intl.formatMessage(messages.required),
-            );
-          }
-          if (field.minLength && data.length < field.minLength) {
-            errors[fieldId] = errors[field] || [];
-            errors[fieldId].push(
-              this.props.intl.formatMessage(messages.minLength, {
-                len: field.minLength,
-              }),
-            );
-          }
-        }
-        if (field.uniqueItems && data && uniq(data).length !== data.length) {
-          errors[fieldId] = errors[field] || [];
-          errors[fieldId].push(
-            this.props.intl.formatMessage(messages.uniqueItems),
-          );
-        }
-      }),
-    );
+    const errors = FormValidation.validateFieldsPerFieldset({
+      schema: this.props.schema,
+      formData: this.state.formData,
+      formatMessage: this.props.intl.formatMessage,
+    });
+
     if (keys(errors).length > 0) {
       this.setState({
         errors,
       });
     } else {
       let setFormDataCallback = (formData) => {
-        this.setState({ formData: formData });
+        this.setState({ formData: formData, errors: {} });
       };
       this.props.onSubmit(this.state.formData, setFormDataCallback);
     }
@@ -203,13 +217,22 @@ class ModalForm extends Component {
       value: this.state.formData[field],
       required: schema.required.indexOf(field) !== -1,
       onChange: this.onChangeField,
+      onBlur: this.onBlurField,
+      onClick: this.onClickInput,
     }));
 
     const state_errors = keys(this.state.errors).length > 0;
     return (
       <Modal open={this.props.open} className={this.props.className}>
         <Header>{this.props.title}</Header>
-        <Modal.Content>
+        <Dimmer active={this.props.loading}>
+          <Loader>
+            {this.props.loadingMessage || (
+              <FormattedMessage id="Loading" defaultMessage="Loading." />
+            )}
+          </Loader>
+        </Dimmer>
+        <Modal.Content scrolling>
           <UiForm
             method="post"
             onSubmit={this.onSubmit}
@@ -242,7 +265,13 @@ class ModalForm extends Component {
               </Menu>
             )}
             {fields.map((field) => (
-              <Field {...field} key={field.id} />
+              <Field
+                {...field}
+                key={field.id}
+                onBlur={this.onBlurField}
+                onClick={this.onClickInput}
+                error={this.state.errors[field.id]}
+              />
             ))}
           </UiForm>
         </Modal.Content>

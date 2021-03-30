@@ -3,7 +3,6 @@
 exports[`renders a token widget component 1`] = `
 <div
   className="inline field"
-  id="field-my-field"
 >
   <div
     className="ui grid"
@@ -19,6 +18,7 @@ exports[`renders a token widget component 1`] = `
         >
           <label
             htmlFor="field-my-field"
+            id="fieldset-default-field-label-my-field"
           >
             My field
           </label>
@@ -37,7 +37,7 @@ exports[`renders a token widget component 1`] = `
             onTouchEnd={[Function]}
           >
             <div
-              className="react-select__value-container react-select__value-container--is-multi css-1dvrfad"
+              className="react-select__value-container react-select__value-container--is-multi css-1a9cv00-ValueContainer"
             >
               <div
                 className="react-select__placeholder css-1wa3eu0-placeholder"

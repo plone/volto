@@ -6,8 +6,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Container } from 'semantic-ui-react';
-
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 /**
  * Not found function.
@@ -34,7 +33,7 @@ const CorsError = () => (
             defaultMessage="There is a configuration problem on the backend"
           />
           <br />
-          <a href={settings.apiPath}>{settings.apiPath}</a>
+          <a href={config.settings.apiPath}>{config.settings.apiPath}</a>
         </h1>
         <p
           className="description"
@@ -62,8 +61,8 @@ const CorsError = () => (
           }}
         >
           <FormattedMessage
-            id="We apologize for the inconvenience, but the backend of the site you are accessing is not configured properly right now. Please, try again later."
-            defaultMessage="We apologize for the inconvenience, but the backend of the site you are accessing is not configured properly right now. Please, try again later."
+            id="The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
+            defaultMessage="The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
           />
         </p>
 

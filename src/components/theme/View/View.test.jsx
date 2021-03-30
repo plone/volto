@@ -4,14 +4,10 @@ import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
 import View from './View';
+import config from '@plone/volto/registry';
 
-jest.mock('~/config', () => ({
-  settings: {
-    nonContentRoutes: [],
-    supportedLanguages: ['en'],
-    navDepth: 1,
-  },
-  views: {
+beforeAll(() => {
+  config.set('views', {
     defaultView: () => <div id="DefaultView" />,
     layoutViews: {
       summary_view: () => <div id="SummaryView" />,
@@ -23,8 +19,8 @@ jest.mock('~/config', () => ({
     errorViews: {
       ECONNREFUSED: () => <div className="ECONNREFUSED" />,
     },
-  },
-}));
+  });
+});
 
 const mockStore = configureStore();
 

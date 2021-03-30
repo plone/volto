@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { isEmpty } from 'lodash';
+import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 
 const styles = {
   code: {
@@ -19,11 +18,35 @@ const styles = {
   },
 };
 
+const addBreaklinesInline = (children) => {
+  if (typeof children[0] == 'string') {
+    const s = children[0].endsWith('\n')
+      ? children[0].slice(0, -1)
+      : children[0];
+
+    if (s.split('\n').length > 1) {
+      return s.split('\n').map((child, index) => (
+        <React.Fragment key={child + index}>
+          {child}
+          <br />
+        </React.Fragment>
+      ));
+    }
+  }
+  return children;
+};
+
 // Inline (not block) styles
 const inline = {
-  BOLD: (children, { key }) => <strong key={key}>{children}</strong>,
-  ITALIC: (children, { key }) => <em key={key}>{children}</em>,
-  UNDERLINE: (children, { key }) => <u key={key}>{children}</u>,
+  BOLD: (children, { key }) => (
+    <strong key={key}>{addBreaklinesInline(children)}</strong>
+  ),
+  ITALIC: (children, { key }) => (
+    <em key={key}>{addBreaklinesInline(children)}</em>
+  ),
+  UNDERLINE: (children, { key }) => (
+    <u key={key}>{addBreaklinesInline(children)}</u>
+  ),
   CODE: (children, { key }) => (
     <span key={key} style={styles.code}>
       {children}
@@ -51,19 +74,43 @@ const splitBySoftLines = (children) =>
     });
   });
 
+// splitSoftLines for <li> tag
+const splitSoftLinesOfLists = (children) =>
+  children.map((child, index) => {
+    return (
+      <li key={index}>
+        {child.map((subchild) => {
+          if (Array.isArray(subchild)) {
+            return subchild.map((subchildren) => {
+              if (typeof subchildren === 'string') {
+                const last = subchildren.split('\n').length - 1;
+                return subchildren.split('\n').map((item, index) => (
+                  <React.Fragment key={index}>
+                    {item}
+                    {index !== last && <br />}
+                  </React.Fragment>
+                ));
+              } else {
+                return subchildren;
+              }
+            });
+          } else {
+            return subchild;
+          }
+        })}
+      </li>
+    );
+  });
+
 // Returns how the default lists should be rendered
 const getList = (ordered) => (children, { depth, keys }) =>
   ordered ? (
     <ol key={keys[0]} keys={keys} depth={depth}>
-      {children.map((child, i) => (
-        <li key={keys[i]}>{child}</li>
-      ))}
+      {splitSoftLinesOfLists(children)}
     </ol>
   ) : (
     <ul key={keys[0]} keys={keys} depth={depth}>
-      {children.map((child, i) => (
-        <li key={keys[i]}>{child}</li>
-      ))}
+      {splitSoftLinesOfLists(children)}
     </ul>
   );
 
@@ -83,39 +130,42 @@ const getList = (ordered) => (children, { depth, keys }) =>
 // const getAtomic = (children, { data, keys }) =>
 //   data.map((item, i) => <div key={keys[i]} {...data[i]} />);
 
+const processChildren = (children, keys) => {
+  const processedChildren = children.map((chunks) =>
+    chunks.map((child, index) => {
+      if (Array.isArray(child)) {
+        // If it's empty is a blank paragraph, we want to add a <br /> in it
+        if (isEmpty(child)) {
+          return <br key={index} />;
+        }
+        return child.map((subchild, index) => {
+          if (typeof subchild === 'string') {
+            const last = subchild.split('\n').length - 1;
+            return subchild.split('\n').map((item, index) => (
+              <React.Fragment key={index}>
+                {item}
+                {index !== last && <br />}
+              </React.Fragment>
+            ));
+          } else {
+            return subchild;
+          }
+        });
+      } else {
+        return child;
+      }
+    }),
+  );
+  return processedChildren.map(
+    (chunk, index) => chunk && <p key={keys[index]}>{chunk}</p>,
+  );
+};
 /**
  * Note that children can be maped to render a list or do other cool stuff
  */
 const blocks = {
   unstyled: (children, { keys }) => {
-    const processedChildren = children.map((chunks) =>
-      chunks.map((child) => {
-        if (Array.isArray(child)) {
-          // If it's empty is a blank paragraph, we want to add a <br /> in it
-          if (isEmpty(child)) {
-            return <br />;
-          }
-          return child.map((subchild, index) => {
-            if (typeof subchild === 'string') {
-              const last = subchild.split('\n').length - 1;
-              return subchild.split('\n').map((item, index) => (
-                <React.Fragment key={index}>
-                  {item}
-                  {index !== last && <br />}
-                </React.Fragment>
-              ));
-            } else {
-              return subchild;
-            }
-          });
-        } else {
-          return child;
-        }
-      }),
-    );
-    return processedChildren.map(
-      (chunk, index) => chunk && <p key={keys[index]}>{chunk}</p>,
-    );
+    return processChildren(children, keys);
   },
   atomic: (children) => children[0],
   blockquote: (children, { keys }) => (
@@ -172,27 +222,17 @@ const blocks = {
 
 const LinkEntity = connect((state) => ({
   token: state.userSession.token,
-}))(({ token, key, url, target = '_blank', targetUrl, download, children }) => {
+}))(({ token, key, url, target, targetUrl, download, children }) => {
   const to = token ? url : targetUrl || url;
-  if (download) {
-    return token ? (
-      <Link key={key} to={flattenToAppURL(to)}>
-        {children}
-      </Link>
-    ) : (
-      <a key={key} href={download}>
-        {children}
-      </a>
-    );
-  }
-  return isInternalURL(to) ? (
-    <Link key={key} to={flattenToAppURL(to)}>
+
+  return (
+    <UniversalLink
+      href={to}
+      openLinkInNewTab={target === '_blank' || undefined}
+      download={download}
+    >
       {children}
-    </Link>
-  ) : (
-    <a key={key} href={to} target={target} rel="noopener noreferrer">
-      {children}
-    </a>
+    </UniversalLink>
   );
 });
 

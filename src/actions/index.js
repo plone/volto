@@ -3,7 +3,6 @@
  * @module actions
  * @example import { getSchema } from 'actions';
  */
-
 export { listActions } from '@plone/volto/actions/actions/actions';
 export { getBreadcrumbs } from '@plone/volto/actions/breadcrumbs/breadcrumbs';
 export { setExpandedToolbar } from '@plone/volto/actions/toolbar/toolbar';
@@ -23,6 +22,7 @@ export {
   addComment,
   deleteComment,
   listComments,
+  listMoreComments,
   updateComment,
 } from '@plone/volto/actions/comments/comments';
 export {
@@ -33,6 +33,7 @@ export {
   orderContent,
   sortContent,
   resetContent,
+  updateColumnsContent,
 } from '@plone/volto/actions/content/content';
 export {
   getControlpanel,
@@ -45,6 +46,7 @@ export {
 } from '@plone/volto/actions/controlpanels/controlpanels';
 export { getDiff } from '@plone/volto/actions/diff/diff';
 export { emailNotification } from '@plone/volto/actions/emailNotification/emailNotification';
+export { emailSend } from '@plone/volto/actions/emailSend/emailSend';
 export {
   createGroup,
   deleteGroup,
@@ -63,7 +65,12 @@ export {
 } from '@plone/volto/actions/messages/messages';
 export { getNavigation } from '@plone/volto/actions/navigation/navigation';
 export { listRoles } from '@plone/volto/actions/roles/roles';
-export { getSchema } from '@plone/volto/actions/schema/schema';
+export {
+  getSchema,
+  postSchema,
+  putSchema,
+  updateSchema,
+} from '@plone/volto/actions/schema/schema';
 export {
   resetSearchContent,
   searchContent,
@@ -82,6 +89,7 @@ export {
   resetPassword,
   updatePassword,
   updateUser,
+  showAllUsers,
 } from '@plone/volto/actions/users/users';
 export {
   login,
@@ -99,4 +107,15 @@ export {
 export { getQuerystring } from '@plone/volto/actions/querystring/querystring';
 export { getQueryStringResults } from '@plone/volto/actions/querystringsearch/querystringsearch';
 export { setSidebarTab } from '@plone/volto/actions/sidebar/sidebar';
-export { getTranslationLocator } from '@plone/volto/actions/translations/translations';
+export {
+  deleteLinkTranslation,
+  getTranslationLocator,
+  linkTranslation,
+} from '@plone/volto/actions/translations/translations';
+export {
+  setBlocksClipboard,
+  resetBlocksClipboard,
+} from '@plone/volto/actions/blocksClipboard/blocksClipboard';
+export { loadLazyLibrary } from '@plone/volto/actions/lazyLibraries/lazyLibraries';
+export { getContextNavigation } from '@plone/volto/actions/contextNavigation/contextNavigation';
+export * from './asyncConnect/asyncConnect';

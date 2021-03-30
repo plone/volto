@@ -1,115 +1,102 @@
----
-aiohttp_settings:
-  client_max_size: 20971520
 databases:
-- db:
+  db:
     storage: postgresql
-    dsn: postgresql://guillotina@postgres:5432/guillotina
+    transaction_strategy: dbresolve_readcommitted
+    dsn: postgresql://postgres:secret@localhost:5432/guillotina
+    read_only: false
     pool_size: 100
+store_json: true
 applications:
-- guillotina_cms
-- guillotina.contrib.cache
-- guillotina.contrib.swagger
+  - guillotina.contrib.workflows
+  - guillotina.contrib.vocabularies
+  - guillotina.contrib.dbusers
+  - guillotina.contrib.mailer
+  - guillotina.contrib.email_validation
+  - guillotina.contrib.cache
+  - guillotina.contrib.catalog.pg
+  - guillotina_volto
+mailer:
+  utility: guillotina.contrib.mailer.utility.PrintingMailerUtility
+host: 0.0.0.0
 address: 8081
 static:
-- favicon.png: static/favicon.png
-# - pastanaga: pastanaga-angular/dist
-# - ng: plone-angular-demo/dist
-# - plone: volto
+  - favicon.png: static/favicon.png
+  - assets: guillotina:static/assets
+  - swagger_static: guillotina.contrib.swagger:static
+container_types:
+  - Site
 root_user:
   password: root
 auth_extractors:
-- guillotina.auth.extractors.CookiePolicy
-- guillotina.auth.extractors.BearerAuthPolicy
-- guillotina.auth.extractors.BasicAuthPolicy
-- guillotina.auth.extractors.WSTokenAuthPolicy
+  - guillotina.auth.extractors.BearerAuthPolicy
+  - guillotina.auth.extractors.BasicAuthPolicy
+  - guillotina.auth.extractors.WSTokenAuthPolicy
 auth_token_validators:
-- guillotina.auth.validators.SaltedHashPasswordValidator
-- guillotina.auth.validators.JWTValidator
+  - guillotina.auth.validators.SaltedHashPasswordValidator
+  - guillotina.auth.validators.JWTValidator
+redis:
+  host: localhost
+  port: 6379
 jwt:
   secret: secret
   algorithm: HS256
 jsapps:
   +admin: guillotina:static/executioner
+  +manage: guillotina:static/gmi
 cors:
   allow_origin:
-  - "*"
+    - '*'
   allow_methods:
-  - GET
-  - POST
-  - DELETE
-  - HEAD
-  - PATCH
-  - OPTIONS
+    - GET
+    - POST
+    - DELETE
+    - HEAD
+    - PATCH
+    - OPTIONS
+    - PUT
   allow_headers:
-  - "*"
+    - '*'
   expose_headers:
-  - "*"
+    - '*'
   allow_credentials: true
   max_age: 3660
+allow_register: true
+global_disallowed_types:
+  - User
+  - UserManager
+  - Group
+  - GroupManager
+  - Item
+  - Container
+  - Folder
 default_blocks:
   Document:
-  - type: title
-  - type: text
-layouts:
-  Document:
-  - default
-  - document_view
-  - layout_view
-  News:
-  - default
-  - document_view
-  - layout_view
-  Event:
-  - default
-  - document_view
-  - layout_view
-  Image:
-  - default
-  - document_view
-  - layout_view
-  File:
-  - default
-  - document_view
-  - layout_view
-  Link:
-  - default
-  - document_view
-  - layout_view
-  CMSFolder:
-  - default
-  - listing_view
-  - event_listing
-  - album_view
-  - summary_view
-  - full_view
-  - layout_view
-workflows:
-  basic:
-    initial_state: private
-    states:
-      private:
-        actions:
-            publish:
-                title: Publish
-                to: public
-                check_permission: guillotina.ReviewContent
-        set_permission:
-            roleperm:
-            - setting: Allow
-              role: guillotina.Anonymous
-              permission: guillotina.ViewContent
-      public:
-        actions:
-            retire:
-                title: Retire
-                to: private
-                check_permission: guillotina.ReviewContent
-        set_permission:
-            roleperm:
-            - setting: Deny
-              role: guillotina.Anonymous
-              permission: guillotina.ViewContent
-workflows_content:
-  guillotina.interfaces.IResource: basic
-  guillotina_cms.content.document.IDocument: basic
+    blocks:
+      tile1:
+        '@type': title
+      tile2:
+        '@type': description
+      tile3:
+        text: null
+        '@type': text
+    blocks_layout:
+      items:
+      - tile1
+      - tile2
+      - tile3
+  Container:
+    blocks:
+      tile1:
+        '@type': title
+      tile2:
+        '@type': description
+      tile3:
+        text: null
+        '@type': text
+    blocks_layout:
+      items:
+        - tile1
+        - tile2
+        - tile3
+allow_discussion_types:
+  - Document

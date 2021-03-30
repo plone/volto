@@ -5,8 +5,7 @@
 
 import superagent from 'superagent';
 import cookie from 'react-cookie';
-
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 /**
  * Get a resource image/file with authenticated (if token exist) API headers
@@ -15,7 +14,8 @@ import { settings } from '~/config';
  * @return {string} The response with the image
  */
 export const getAPIResourceWithAuth = (req) =>
-  new Promise((resolve) => {
+  new Promise((resolve, reject) => {
+    const { settings } = config;
     let apiPath = '';
     if (settings.internalApiPath && __SERVER__) {
       apiPath = settings.internalApiPath;
@@ -24,6 +24,7 @@ export const getAPIResourceWithAuth = (req) =>
     }
     const request = superagent
       .get(`${apiPath}${req.path}`)
+      .maxResponseSize(settings.maxResponseSize)
       .responseType('blob');
     const authToken = cookie.load('auth_token');
     if (authToken) {
@@ -31,7 +32,7 @@ export const getAPIResourceWithAuth = (req) =>
     }
     request.end((error, res = {}) => {
       if (error) {
-        resolve(res || error);
+        reject(error);
       } else {
         resolve(res);
       }

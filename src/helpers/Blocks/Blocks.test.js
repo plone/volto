@@ -6,6 +6,23 @@ import {
   blockHasValue,
 } from './Blocks';
 
+import config from '@plone/volto/registry';
+
+config.blocks.blocksConfig.text = {
+  id: 'text',
+  title: 'Text',
+  group: 'text',
+  restricted: false,
+  mostUsed: false,
+  blockHasOwnFocusManagement: true,
+  blockHasValue: (data) => {
+    const isEmpty =
+      !data.text ||
+      (data.text?.blocks?.length === 1 && data.text.blocks[0].text === '');
+    return !isEmpty;
+  },
+};
+
 describe('Blocks', () => {
   describe('getBlocksFieldname', () => {
     it('can get the blocks field name from formdata', () => {
@@ -119,6 +136,10 @@ describe('Blocks', () => {
   });
 
   describe('getBlock', () => {
+    it('returns empty when there is no block content and no items in layout', () => {
+      expect(getBlocks({ blocks: {}, blocks_layout: {} })).toStrictEqual([]);
+    });
+
     it('returns empty when there is no block content', () => {
       expect(
         getBlocks({ blocks: {}, blocks_layout: { items: [] } }),

@@ -10,8 +10,7 @@ import { convertFromRaw, EditorState, RichUtils } from 'draft-js';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import isSoftNewlineEvent from 'draft-js/lib/isSoftNewlineEvent';
 import { includes } from 'lodash';
-
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 /**
  * Edit text cell class.
@@ -32,6 +31,7 @@ class Cell extends Component {
     selected: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
     isTableBlockSelected: PropTypes.bool,
+    disableNewBlocks: PropTypes.bool,
   };
 
   /**
@@ -57,7 +57,7 @@ class Cell extends Component {
       editorState = EditorState.createWithContent(convertFromRaw(props.value));
 
       const inlineToolbarPlugin = createInlineToolbarPlugin({
-        structure: settings.richTextEditorInlineToolbarButtons,
+        structure: config.settings.richTextEditorInlineToolbarButtons,
       });
 
       this.state = {
@@ -123,6 +123,7 @@ class Cell extends Component {
     }
 
     const { InlineToolbar } = this.state.inlineToolbarPlugin;
+    const { settings } = config;
 
     return (
       <div>
@@ -143,7 +144,7 @@ class Cell extends Component {
               );
               return 'handled';
             }
-            if (!this.props.detached) {
+            if (!this.props.detached && !this.props.disableNewBlocks) {
               const selectionState = this.state.editorState.getSelection();
               const anchorKey = selectionState.getAnchorKey();
               const currentContent = this.state.editorState.getCurrentContent();
@@ -153,7 +154,10 @@ class Cell extends Component {
               const blockType = currentContentBlock.getType();
               if (!includes(settings.listBlockTypes, blockType)) {
                 this.props.onSelectBlock(
-                  this.props.onAddBlock('text', this.props.index + 1),
+                  this.props.onAddBlock(
+                    settings.defaultBlockType,
+                    this.props.index + 1,
+                  ),
                 );
                 return 'handled';
               }

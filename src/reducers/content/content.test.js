@@ -1,4 +1,4 @@
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 import content from './content';
 import {
   CREATE_CONTENT,
@@ -7,6 +7,8 @@ import {
   RESET_CONTENT,
   UPDATE_CONTENT,
 } from '@plone/volto/constants/ActionTypes';
+
+const { settings } = config;
 
 describe('Content reducer', () => {
   it('should return the initial state', () => {
@@ -21,17 +23,22 @@ describe('Content reducer', () => {
         loading: false,
         error: null,
       },
-      update: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
       get: {
         loaded: false,
         loading: false,
         error: null,
       },
       order: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
+      update: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
+      updatecolumns: {
         loaded: false,
         loading: false,
         error: null,
@@ -51,6 +58,24 @@ describe('Content reducer', () => {
         loaded: false,
         loading: true,
         error: null,
+      },
+    });
+  });
+
+  it('should handle CREATE_CONTENT_PENDING with subrequest', () => {
+    expect(
+      content(undefined, {
+        type: `${CREATE_CONTENT}_PENDING`,
+        subrequest: '1234',
+      }),
+    ).toMatchObject({
+      subrequests: {
+        '1234': {
+          data: null,
+          loaded: false,
+          loading: true,
+          error: null,
+        },
       },
     });
   });
@@ -84,6 +109,74 @@ describe('Content reducer', () => {
     });
   });
 
+  it('should handle CREATE_CONTENT_SUCCESS with subrequest', () => {
+    expect(
+      content(undefined, {
+        type: `${CREATE_CONTENT}_SUCCESS`,
+        subrequest: '1234',
+        result: {
+          items: [
+            {
+              '@id': `${settings.apiPath}/home-page`,
+            },
+          ],
+        },
+      }),
+    ).toMatchObject({
+      subrequests: {
+        '1234': {
+          data: {
+            items: [
+              {
+                '@id': `${settings.apiPath}/home-page`,
+                url: '/home-page',
+              },
+            ],
+          },
+          loaded: true,
+          loading: false,
+          error: null,
+        },
+      },
+    });
+  });
+
+  it('should handle CREATE_CONTENT_SUCCESS with subrequest and multiple requests', () => {
+    expect(
+      content(undefined, {
+        type: `${CREATE_CONTENT}_SUCCESS`,
+        subrequest: '1234',
+        result: [
+          {
+            '@id': `${settings.apiPath}/home-page`,
+          },
+          {
+            '@id': `${settings.apiPath}/news`,
+            url: '/news',
+          },
+        ],
+      }),
+    ).toMatchObject({
+      subrequests: {
+        '1234': {
+          data: [
+            {
+              '@id': `${settings.apiPath}/home-page`,
+              url: '/home-page',
+            },
+            {
+              '@id': `${settings.apiPath}/news`,
+              url: '/news',
+            },
+          ],
+          loaded: true,
+          loading: false,
+          error: null,
+        },
+      },
+    });
+  });
+
   it('should handle CREATE_CONTENT_FAIL', () => {
     expect(
       content(undefined, {
@@ -97,6 +190,25 @@ describe('Content reducer', () => {
         error: 'failed',
       },
       data: null,
+    });
+  });
+
+  it('should handle CREATE_CONTENT_FAIL with subrequest', () => {
+    expect(
+      content(undefined, {
+        type: `${CREATE_CONTENT}_FAIL`,
+        subrequest: '1234',
+        error: 'failed',
+      }),
+    ).toMatchObject({
+      subrequests: {
+        '1234': {
+          data: null,
+          loaded: false,
+          loading: false,
+          error: 'failed',
+        },
+      },
     });
   });
 

@@ -27,6 +27,7 @@ build-frontend:
 build-backend:  ## Build Plone 5.2
 	(cd api && python3 -m venv .)
 	(cd api && bin/pip install --upgrade pip)
+	(cd api && bin/pip install --upgrade wheel)
 	(cd api && bin/pip install -r requirements.txt)
 	(cd api && bin/buildout)
 
@@ -34,6 +35,7 @@ build-backend:  ## Build Plone 5.2
 build-backend-withport:  ## Build Plone 5.2 with port
 	(cd api && python3 -m venv .)
 	(cd api && bin/pip install --upgrade pip)
+	(cd api && bin/pip install --upgrade wheel)
 	(cd api && bin/pip install -r requirements.txt)
 	(cd api && bin/buildout instance:http-address=$(INSTANCE_PORT))
 
@@ -67,6 +69,9 @@ stop-backend-docker-guillotina:
 	docker-compose -f g-api/docker-compose.yml down
 
 test-acceptance-server:
+	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e SITE=plone -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,kitconcept.volto:default-homepage -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,kitconcept.volto,kitconcept.volto.cors -e ADDONS='plone.app.robotframework plone.app.contenttypes plone.restapi kitconcept.volto' plone ./bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
+
+test-acceptance-server-old:
 	ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,kitconcept.volto,kitconcept.volto.cors APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,kitconcept.volto:default-homepage ./api/bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
 
 test-acceptance-guillotina:

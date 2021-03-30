@@ -2,17 +2,19 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import config from '@plone/volto/registry';
 
 import Add from './Add';
 
 const mockStore = configureStore();
 
-jest.mock('~/config', () => ({
-  settings: {
-    isMultilingual: false,
-    supportedLanguages: ['de'],
-  },
-}));
+beforeAll(() => {
+  config.settings.supportedLanguages = ['de'];
+  config.settings.lazyBundles = {
+    cms: [],
+  };
+  config.settings.loadables = {};
+});
 
 jest.mock('react-portal', () => ({
   Portal: jest.fn(() => <div id="Portal" />),
@@ -51,6 +53,45 @@ describe('Add', () => {
       schema: {
         schema: {
           some: 'field',
+        },
+      },
+      content: {
+        data: {},
+        create: {
+          loading: false,
+          loaded: true,
+        },
+      },
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    const component = renderer.create(
+      <Provider store={store}>
+        <Add location={{ pathname: '/blog', search: { type: 'Document' } }} />
+      </Provider>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
+
+  it('renders an add component with schema', () => {
+    const store = mockStore({
+      schema: {
+        schema: {
+          properties: {
+            blocks: {
+              default: {
+                a: { b: 1 },
+              },
+            },
+            blocks_layout: {
+              default: {
+                items: ['a'],
+              },
+            },
+          },
         },
       },
       content: {

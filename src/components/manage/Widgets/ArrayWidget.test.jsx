@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
-import { wait } from '@testing-library/react';
+import { waitFor } from '@testing-library/react';
 
 import ArrayWidget from './ArrayWidget';
 
@@ -26,12 +26,12 @@ test('renders an array widget component', async () => {
       <ArrayWidget
         id="my-field"
         title="My field"
+        fieldSet="default"
         onChange={() => {}}
         items={{ vocabulary: { '@id': 'plone.app.vocabularies.Keywords' } }}
       />
     </Provider>,
   );
-  await wait(() => {
-    expect(component.toJSON()).toMatchSnapshot();
-  });
+  await waitFor(() => {});
+  expect(component.toJSON()).toMatchSnapshot();
 });

@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { keys } from 'lodash';
+import { keys, isEmpty } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Button } from 'semantic-ui-react';
 import { Portal } from 'react-portal';
@@ -16,7 +16,6 @@ import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { v4 as uuid } from 'uuid';
 import qs from 'query-string';
-import { settings } from '~/config';
 import { toast } from 'react-toastify';
 
 import { createContent, getSchema } from '@plone/volto/actions';
@@ -24,11 +23,13 @@ import { Form, Icon, Toolbar, Sidebar, Toast } from '@plone/volto/components';
 import {
   getBaseUrl,
   hasBlocksData,
+  flattenToAppURL,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
 } from '@plone/volto/helpers';
+import { preloadLazyLibs } from '@plone/volto/helpers/Loadable';
 
-import { blocks } from '~/config';
+import config from '@plone/volto/registry';
 
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -109,18 +110,22 @@ class Add extends Component {
     this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
-    if (blocks?.initialBlocks[props.type]) {
-      this.initialBlocksLayout = blocks.initialBlocks[props.type].map((item) =>
-        uuid(),
-      );
+    if (config.blocks?.initialBlocks[props.type]) {
+      this.initialBlocksLayout = config.blocks.initialBlocks[
+        props.type
+      ].map((item) => uuid());
       this.initialBlocks = this.initialBlocksLayout.reduce(
         (acc, value, index) => ({
           ...acc,
-          [value]: { '@type': blocks.initialBlocks[props.type][index] },
+          [value]: { '@type': config.blocks.initialBlocks[props.type][index] },
         }),
         {},
       );
     }
+    this.state = {
+      isClient: false,
+      error: null,
+    };
   }
 
   /**
@@ -130,6 +135,7 @@ class Add extends Component {
    */
   componentDidMount() {
     this.props.getSchema(this.props.type);
+    this.setState({ isClient: true });
   }
 
   /**
@@ -145,17 +151,26 @@ class Add extends Component {
       nextProps.content['@type'] === this.props.type
     ) {
       this.props.history.push(
-        this.props.returnUrl ||
-          nextProps.content['@id'].replace(settings.apiPath, ''),
+        this.props.returnUrl || flattenToAppURL(nextProps.content['@id']),
       );
     }
 
-    if (nextProps.createRequest.error) {
+    if (this.props.createRequest.loading && nextProps.createRequest.error) {
+      const message =
+        nextProps.createRequest.error.response?.body?.message ||
+        nextProps.createRequest.error.response?.text;
+
+      const error =
+        new DOMParser().parseFromString(message, 'text/html')?.all[0]
+          ?.textContent || message;
+
+      this.setState({ error: error });
+
       toast.error(
         <Toast
           error
           title={this.props.intl.formatMessage(messages.error)}
-          content={`${nextProps.createRequest.error.status}:  ${nextProps.createRequest.error.response?.body?.message}`}
+          content={`${nextProps.createRequest.error.status}:  ${error}`}
         />,
       );
     }
@@ -174,7 +189,7 @@ class Add extends Component {
         ? keys(this.props.schema.definitions)
         : null,
       '@type': this.props.type,
-      ...(settings.isMultilingual &&
+      ...(config.settings.isMultilingual &&
         this.props.location?.state?.translationOf && {
           translation_of: this.props.location.state.translationOf,
           language: this.props.location.state.language,
@@ -206,6 +221,29 @@ class Add extends Component {
         this.props.schema.properties,
       );
 
+      // Lookup initialBlocks and initialBlocksLayout within schema
+      const schemaBlocks = this.props.schema.properties[blocksFieldname]
+        ?.default;
+      const schemaBlocksLayout = this.props.schema.properties[
+        blocksLayoutFieldname
+      ]?.default?.items;
+      let initialBlocks = this.initialBlocks;
+      let initialBlocksLayout = this.initialBlocksLayout;
+      if (!isEmpty(schemaBlocksLayout) && !isEmpty(schemaBlocks)) {
+        initialBlocks = {};
+        initialBlocksLayout = [];
+        schemaBlocksLayout.forEach((value) => {
+          if (!isEmpty(schemaBlocks[value])) {
+            let newUid = uuid();
+            initialBlocksLayout.push(newUid);
+            initialBlocks[newUid] = schemaBlocks[value];
+
+            // Layout ID - keep a reference to the original block id within layout
+            initialBlocks[newUid]['@layout'] = value;
+          }
+        });
+      }
+
       return (
         <div id="page-add">
           <Helmet
@@ -219,18 +257,19 @@ class Add extends Component {
             formData={{
               ...(blocksFieldname && {
                 [blocksFieldname]:
-                  this.initialBlocks ||
+                  initialBlocks ||
                   this.props.schema.properties[blocksFieldname]?.default,
               }),
               ...(blocksLayoutFieldname && {
                 [blocksLayoutFieldname]: {
                   items:
-                    this.initialBlocksLayout ||
+                    initialBlocksLayout ||
                     this.props.schema.properties[blocksLayoutFieldname]?.default
                       ?.items,
                 },
               }),
             }}
+            requestError={this.state.error}
             onSubmit={this.onSubmit}
             hideActions
             pathname={this.props.pathname}
@@ -244,43 +283,45 @@ class Add extends Component {
             }
             loading={this.props.createRequest.loading}
           />
-          <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
-            <Toolbar
-              pathname={this.props.pathname}
-              hideDefaultViewButtons
-              inner={
-                <>
-                  <Button
-                    id="toolbar-save"
-                    className="save"
-                    aria-label={this.props.intl.formatMessage(messages.save)}
-                    onClick={() => this.form.current.onSubmit()}
-                    loading={this.props.createRequest.loading}
-                  >
-                    <Icon
-                      name={saveSVG}
-                      className="circled"
-                      size="30px"
-                      title={this.props.intl.formatMessage(messages.save)}
-                    />
-                  </Button>
-                  <Button className="cancel" onClick={() => this.onCancel()}>
-                    <Icon
-                      name={clearSVG}
-                      className="circled"
-                      aria-label={this.props.intl.formatMessage(
-                        messages.cancel,
-                      )}
-                      size="30px"
-                      title={this.props.intl.formatMessage(messages.cancel)}
-                    />
-                  </Button>
-                </>
-              }
-            />
-          </Portal>
-          {visual && (
-            <Portal node={__CLIENT__ && document.getElementById('sidebar')}>
+          {this.state.isClient && (
+            <Portal node={document.getElementById('toolbar')}>
+              <Toolbar
+                pathname={this.props.pathname}
+                hideDefaultViewButtons
+                inner={
+                  <>
+                    <Button
+                      id="toolbar-save"
+                      className="save"
+                      aria-label={this.props.intl.formatMessage(messages.save)}
+                      onClick={() => this.form.current.onSubmit()}
+                      loading={this.props.createRequest.loading}
+                    >
+                      <Icon
+                        name={saveSVG}
+                        className="circled"
+                        size="30px"
+                        title={this.props.intl.formatMessage(messages.save)}
+                      />
+                    </Button>
+                    <Button className="cancel" onClick={() => this.onCancel()}>
+                      <Icon
+                        name={clearSVG}
+                        className="circled"
+                        aria-label={this.props.intl.formatMessage(
+                          messages.cancel,
+                        )}
+                        size="30px"
+                        title={this.props.intl.formatMessage(messages.cancel)}
+                      />
+                    </Button>
+                  </>
+                }
+              />
+            </Portal>
+          )}
+          {visual && this.state.isClient && (
+            <Portal node={document.getElementById('sidebar')}>
               <Sidebar />
             </Portal>
           )}
@@ -306,4 +347,5 @@ export default compose(
     }),
     { createContent, getSchema },
   ),
+  preloadLazyLibs('cms'),
 )(Add);

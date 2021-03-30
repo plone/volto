@@ -7,8 +7,6 @@ import Edit from './Edit';
 
 const mockStore = configureStore();
 
-global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
-
 test('renders an edit table block component', () => {
   const store = mockStore({
     intl: {

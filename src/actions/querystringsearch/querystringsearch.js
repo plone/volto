@@ -1,5 +1,5 @@
 import { GET_QUERYSTRING_RESULTS } from '@plone/volto/constants/ActionTypes';
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 /**
  * Get querystring results.
@@ -8,16 +8,18 @@ import { settings } from '~/config';
  * @returns {Object} Get querystringsearch results action.
  */
 export function getQueryStringResults(path, data, subrequest, page) {
+  const { settings } = config;
   // fixes https://github.com/plone/volto/issues/1059
-  const fixedQuery = data?.query?.map((queryElem) => {
-    if (queryElem.o === 'plone.app.querystring.operation.string.relativePath') {
-      return {
-        ...queryElem,
-        v: `${path}/${queryElem.v}`,
-      };
-    }
-    return queryElem;
-  });
+
+  let requestData = JSON.parse(JSON.stringify(data));
+  if (data?.depth != null) {
+    delete requestData.depth;
+    requestData.query.forEach((q) => {
+      if (q.i === 'path') {
+        q.v += '::' + data.depth;
+      }
+    });
+  }
 
   return {
     type: GET_QUERYSTRING_RESULTS,
@@ -26,16 +28,16 @@ export function getQueryStringResults(path, data, subrequest, page) {
       op: 'post',
       path: `${path}/@querystring-search`,
       data: {
-        ...data,
-        ...(!data.b_size && {
+        ...requestData,
+        ...(!requestData.b_size && {
           b_size: settings.defaultPageSize,
         }),
         ...(page && {
-          b_start: data.b_size
+          b_start: requestData.b_size
             ? data.b_size * (page - 1)
             : settings.defaultPageSize * (page - 1),
         }),
-        query: fixedQuery,
+        query: requestData?.query,
       },
     },
   };

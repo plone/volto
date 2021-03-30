@@ -7,7 +7,6 @@ build/
 lib/
 g-api/
 tests/
-cypress/
 
 # Files
 .travis.yml
@@ -84,3 +83,4 @@ typings/
 
 styleguide.config
 .vscode
+packages

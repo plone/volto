@@ -1,22 +1,35 @@
 import React from 'react';
 import { Button, Segment, Popup } from 'semantic-ui-react';
+import { useIntl, defineMessages } from 'react-intl';
 import cx from 'classnames';
-import { Icon } from '@plone/volto/components';
-import { flattenToAppURL } from '@plone/volto/helpers';
-import { settings } from '~/config';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import { flattenToAppURL, getContentIcon } from '@plone/volto/helpers';
+import config from '@plone/volto/registry';
+
 import rightArrowSVG from '@plone/volto/icons/right-key.svg';
 import homeSVG from '@plone/volto/icons/home.svg';
+
+const messages = defineMessages({
+  browse: {
+    id: 'Browse',
+    defaultMessage: 'Browse',
+  },
+  select: {
+    id: 'Select',
+    defaultMessage: 'Select',
+  },
+});
 
 const ObjectBrowserNav = ({
   currentSearchResults,
   selected,
-  getIcon,
   handleClickOnItem,
   handleDoubleClickOnItem,
   mode,
   navigateTo,
   isSelectable,
 }) => {
+  const intl = useIntl();
   const isSelected = (item) => {
     let ret = false;
     if (selected) {
@@ -37,13 +50,18 @@ const ObjectBrowserNav = ({
         currentSearchResults.items.map((item) => (
           <li
             role="presentation"
+            aria-label={
+              item.is_folderish && mode === 'image'
+                ? `${intl.formatMessage(messages.browse)} ${item.id}`
+                : `${intl.formatMessage(messages.select)} ${item.id}`
+            }
             key={item.id}
             className={cx('', {
               'selected-item': isSelected(item),
 
               disabled:
                 mode === 'image'
-                  ? !settings.imageObjects.includes(item['@type']) &&
+                  ? !config.settings.imageObjects.includes(item['@type']) &&
                     !item.is_folderish
                   : !isSelectable(item),
             })}
@@ -59,7 +77,14 @@ const ObjectBrowserNav = ({
                     {flattenToAppURL(item['@id'])} ( {item['@type']})
                   </>
                 }
-                trigger={<span>{getIcon(item['@type'])}</span>}
+                trigger={
+                  <span>
+                    <Icon
+                      name={getContentIcon(item['@type'], item.is_folderish)}
+                      size="24px"
+                    />
+                  </span>
+                }
               />
 
               {item.title}
@@ -76,6 +101,9 @@ const ObjectBrowserNav = ({
                     e.stopPropagation();
                     navigateTo(item['@id']);
                   }}
+                  aria-label={`${intl.formatMessage(messages.browse)} ${
+                    item.id
+                  }`}
                 >
                   <Icon name={rightArrowSVG} size="24px" />
                 </Button>

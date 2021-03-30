@@ -1,11 +1,32 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { Provider } from 'react-intl-redux';
+import { render, waitFor } from '@testing-library/react';
+import configureStore from 'redux-mock-store';
+
 import FileWidget from './FileWidget';
 
-test('renders a file widget component', () => {
-  const component = renderer.create(
-    <FileWidget id="my-field" title="My field" onChange={() => {}} />,
+const mockStore = configureStore();
+
+test('renders a file widget component', async () => {
+  const store = mockStore({
+    intl: {
+      locale: 'en',
+      messages: {},
+    },
+  });
+
+  const { container } = render(
+    <Provider store={store}>
+      <FileWidget
+        id="my-field"
+        title="My field"
+        fieldSet="default"
+        onChange={() => {}}
+      />
+      ,
+    </Provider>,
   );
-  const json = component.toJSON();
-  expect(json).toMatchSnapshot();
+
+  await waitFor(() => {});
+  expect(container).toMatchSnapshot();
 });

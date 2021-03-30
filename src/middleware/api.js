@@ -8,7 +8,7 @@ import jwtDecode from 'jwt-decode';
 import { compact, join } from 'lodash';
 import qs from 'query-string';
 
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 import {
   LOGIN,
@@ -32,7 +32,7 @@ function addExpandersToPath(path, type) {
   }
   const pathPart = path.split('?')[0] || '';
   let query = qs.parse(qs.extract(path));
-  const apiExpanders = settings?.apiExpanders?.[type] || [];
+  const apiExpanders = config.settings?.apiExpanders?.[type] || [];
   let expand = join(compact([query.expand, ...apiExpanders]), ',');
   if (expand) {
     query.expand = expand;
@@ -80,8 +80,7 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
     return action(dispatch, getState);
   }
 
-  const { request, type, ...rest } = action;
-
+  const { request, type, mode = 'paralel', ...rest } = action;
   let actionPromise;
 
   if (!request) {
@@ -108,22 +107,35 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
         });
   } else {
     actionPromise = Array.isArray(request)
-      ? Promise.all(
-          request.map((item) =>
-            api[item.op](addExpandersToPath(item.path, type), {
-              data: item.data,
-              type: item.type,
-              headers: item.headers,
-            }),
-          ),
-        )
-      : api[request.op](addExpandersToPath(request.path, type), {
+      ? mode === 'serial'
+        ? request.reduce((prevPromise, item) => {
+            return prevPromise.then((acc) => {
+              return api[item.op](addExpandersToPath(item.path, type), {
+                data: item.data,
+                type: item.type,
+                headers: item.headers,
+              }).then((reqres) => {
+                return [...acc, reqres];
+              });
+            });
+          }, Promise.resolve([]))
+        : Promise.all(
+            request.map((item) =>
+              api[item.op](addExpandersToPath(item.path, type), {
+                data: item.data,
+                type: item.type,
+                headers: item.headers,
+              }),
+            ),
+          )
+      : api[request.op](addExpandersToPath(request.path), {
           data: request.data,
           type: request.type,
           headers: request.headers,
         });
     actionPromise.then(
       (result) => {
+        const { settings } = config;
         if (getState().apierror.connectionRefused) {
           next({
             ...rest,
@@ -160,6 +172,7 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
         return next({ ...rest, result, type: `${type}_SUCCESS` });
       },
       (error) => {
+        const { settings } = config;
         // Only SRR can set ECONNREFUSED
         if (error.code === 'ECONNREFUSED') {
           next({

@@ -97,6 +97,16 @@ class ChangePassword extends Component {
     super(props);
     this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.state = { isClient: false };
+  }
+
+  /**
+   * Component did mount
+   * @method componentDidMount
+   * @returns {undefined}
+   */
+  componentDidMount() {
+    this.setState({ isClient: true });
   }
 
   /**
@@ -185,22 +195,27 @@ class ChangePassword extends Component {
           onCancel={this.onCancel}
           loading={this.props.loading}
         />
-        <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
-          <Toolbar
-            pathname={this.props.pathname}
-            hideDefaultViewButtons
-            inner={
-              <Link to={`${getBaseUrl(this.props.pathname)}`} className="item">
-                <Icon
-                  name={backSVG}
-                  className="contents circled"
-                  size="30px"
-                  title={this.props.intl.formatMessage(messages.back)}
-                />
-              </Link>
-            }
-          />
-        </Portal>
+        {this.state.isClient && (
+          <Portal node={document.getElementById('toolbar')}>
+            <Toolbar
+              pathname={this.props.pathname}
+              hideDefaultViewButtons
+              inner={
+                <Link
+                  to={`${getBaseUrl(this.props.pathname)}`}
+                  className="item"
+                >
+                  <Icon
+                    name={backSVG}
+                    className="contents circled"
+                    size="30px"
+                    title={this.props.intl.formatMessage(messages.back)}
+                  />
+                </Link>
+              }
+            />
+          </Portal>
+        )}
       </Container>
     );
   }

@@ -4,7 +4,7 @@ import { Form } from 'semantic-ui-react';
 import { Accordion, Grid, Segment } from 'semantic-ui-react';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import { CheckboxWidget, Icon, TextWidget } from '@plone/volto/components';
-import { AlignBlock } from '@plone/volto/helpers';
+import AlignBlock from '@plone/volto/components/manage/Sidebar/AlignBlock';
 
 import videoSVG from '@plone/volto/icons/videocamera.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -24,6 +24,10 @@ const messages = defineMessages({
   videoURL: {
     id: 'Video URL',
     defaultMessage: 'Video URL',
+  },
+  Preview_image: {
+    id: 'Preview Image URL',
+    defaultMessage: 'Preview Image URL',
   },
 });
 
@@ -68,21 +72,50 @@ const VideoSidebar = ({
         <>
           <Segment className="form sidebar-image-data">
             {data.url && (
-              <TextWidget
-                id="external"
-                title={intl.formatMessage(messages.videoURL)}
-                required={false}
-                value={data.url}
-                icon={clearSVG}
-                iconAction={() => {
-                  resetSubmitUrl();
-                  onChangeBlock(block, {
-                    ...data,
-                    url: '',
-                  });
-                }}
-                onChange={() => {}}
-              />
+              <>
+                <TextWidget
+                  id="external"
+                  title={intl.formatMessage(messages.videoURL)}
+                  required={false}
+                  value={data.url}
+                  icon={clearSVG}
+                  iconAction={() => {
+                    resetSubmitUrl();
+                    onChangeBlock(block, {
+                      ...data,
+                      url: '',
+                    });
+                  }}
+                  onChange={() => {}}
+                />
+                <TextWidget
+                  id="video-preview-image"
+                  title={intl.formatMessage(messages.Preview_image)}
+                  required={false}
+                  value={data.preview_image?.split('/').slice(-1)[0]}
+                  icon={data.preview_image ? clearSVG : navTreeSVG}
+                  iconAction={
+                    data.preview_image
+                      ? () => {
+                          onChangeBlock(block, {
+                            ...data,
+                            preview_image: '',
+                          });
+                        }
+                      : () =>
+                          openObjectBrowser({
+                            mode: 'image',
+                            dataName: 'preview_image',
+                          })
+                  }
+                  onChange={(id, value) => {
+                    onChangeBlock(block, {
+                      ...data,
+                      preview_image: value,
+                    });
+                  }}
+                />
+              </>
             )}
             <Form.Field inline required={required}>
               <Grid>

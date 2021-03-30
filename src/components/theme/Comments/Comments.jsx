@@ -3,23 +3,32 @@
  * @module components/theme/Comments/Comments
  */
 
-import React, { Component } from 'react';
+import {
+  addComment,
+  deleteComment,
+  listComments,
+  listMoreComments,
+} from '@plone/volto/actions';
+import { Avatar, CommentEditModal, Form } from '@plone/volto/components';
+import { flattenToAppURL, getBaseUrl, getColor } from '@plone/volto/helpers';
+import moment from 'moment';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
+import { Portal } from 'react-portal';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import moment from 'moment';
-import { Button, Grid, Segment, Container } from 'semantic-ui-react';
-import { settings } from '~/config';
-
-import { addComment, deleteComment, listComments } from '@plone/volto/actions';
-import { getBaseUrl } from '@plone/volto/helpers';
-import { CommentEditModal, Form } from '@plone/volto/components';
+import { Button, Comment, Container, Icon } from 'semantic-ui-react';
+// import { Button, Grid, Segment, Container } from 'semantic-ui-react';
 
 const messages = defineMessages({
   comment: {
     id: 'Comment',
     defaultMessage: 'Comment',
+  },
+  comments: {
+    id: 'Comments',
+    defaultMessage: 'Comments',
   },
   commentDescription: {
     id:
@@ -39,6 +48,43 @@ const messages = defineMessages({
     id: 'Edit',
     defaultMessage: 'Edit',
   },
+  reply: {
+    id: 'Reply',
+    defaultMessage: 'Reply',
+  },
+  hideReplies: {
+    id: 'Hide Replies',
+    defaultMessage: 'Hide Replies',
+  },
+  showReplies: {
+    id: 'Show Replies',
+    defaultMessage: 'Show Replies',
+  },
+  loadMoreComments: {
+    id: 'Load more',
+    defaultMessage: 'Load more...',
+  },
+});
+/**
+ * Schema for the Form components to show an input field with it's label
+ * @param {Object} intl
+ */
+const makeFormSchema = (intl) => ({
+  fieldsets: [
+    {
+      fields: ['comment'],
+      id: 'default',
+      title: intl.formatMessage(messages.default),
+    },
+  ],
+  properties: {
+    comment: {
+      title: intl.formatMessage(messages.comment),
+      type: 'string',
+      widget: 'textarea',
+    },
+  },
+  required: ['comment1'],
 });
 
 /**
@@ -56,6 +102,7 @@ class Comments extends Component {
     addComment: PropTypes.func.isRequired,
     deleteComment: PropTypes.func.isRequired,
     listComments: PropTypes.func.isRequired,
+    listMoreComments: PropTypes.func.isRequired,
     pathname: PropTypes.string.isRequired,
     items: PropTypes.arrayOf(
       PropTypes.shape({
@@ -92,10 +139,14 @@ class Comments extends Component {
     this.onEdit = this.onEdit.bind(this);
     this.onEditOk = this.onEditOk.bind(this);
     this.onEditCancel = this.onEditCancel.bind(this);
+    this.setReplyTo = this.setReplyTo.bind(this);
+    this.loadMoreComments = this.loadMoreComments.bind(this);
     this.state = {
       showEdit: false,
       editId: null,
       editText: null,
+      replyTo: null,
+      collapsedComments: {},
     };
   }
 
@@ -131,7 +182,27 @@ class Comments extends Component {
    * @returns {undefined}
    */
   onSubmit(formData) {
-    this.props.addComment(getBaseUrl(this.props.pathname), formData.comment);
+    this.props.addComment(
+      getBaseUrl(this.props.pathname),
+      formData.comment,
+      this.state.replyTo,
+    );
+    this.setState({ replyTo: null });
+  }
+
+  /**
+   * The id of the comment that will receive a reply
+   * @param {string} commentId
+   */
+  setReplyTo(commentId) {
+    this.setState({ replyTo: commentId });
+  }
+
+  /**
+   * Calls the action listMoreComments passing the received url for next array of comments
+   */
+  loadMoreComments() {
+    this.props.listMoreComments(this.props.next);
   }
 
   /**
@@ -141,8 +212,27 @@ class Comments extends Component {
    * @param {string} value Delete value.
    * @returns {undefined}
    */
-  onDelete(event, { value }) {
+  onDelete(value) {
     this.props.deleteComment(value);
+  }
+
+  /**
+   * Will hide all replies to the specific comment
+   * including replies to any of the replies
+   * @param {string} commentId
+   */
+  hideReply(commentId) {
+    this.setState((prevState) => {
+      const hasComment = prevState.collapsedComments[commentId];
+      const { collapsedComments } = prevState;
+
+      return {
+        collapsedComments: {
+          ...collapsedComments,
+          [commentId]: !hasComment,
+        },
+      };
+    });
   }
 
   /**
@@ -152,7 +242,7 @@ class Comments extends Component {
    * @param {string} value Delete value.
    * @returns {undefined}
    */
-  onEdit(event, { value }) {
+  onEdit(value) {
     this.setState({
       showEdit: true,
       editId: value.id,
@@ -179,12 +269,30 @@ class Comments extends Component {
    * @method onEditCancel
    * @returns {undefined}
    */
-  onEditCancel() {
+  onEditCancel(ev) {
     this.setState({
       showEdit: false,
       editId: null,
       editText: null,
+      replyTo: null,
     });
+  }
+
+  addRepliesAsChildrenToComments(items) {
+    let initialValue = {};
+    const allCommentsWithCildren = items.reduce((accumulator, item) => {
+      return {
+        [item.comment_id]: { comment: item, children: [] },
+        ...accumulator,
+      };
+    }, initialValue);
+
+    items.forEach((comment) => {
+      if (comment.in_reply_to) {
+        allCommentsWithCildren[comment.in_reply_to].children.push(comment);
+      }
+    });
+    return allCommentsWithCildren;
   }
 
   /**
@@ -193,6 +301,127 @@ class Comments extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const { items } = this.props;
+    const { collapsedComments } = this.state;
+    // object with comment ids, to easily verify if any comment has children
+    const allCommentsWithCildren = this.addRepliesAsChildrenToComments(items);
+    // all comments that are not a reply will be shown in the first iteration
+    const allPrimaryComments = items.filter((comment) => !comment.in_reply_to);
+
+    // recursively makes comments with their replies nested
+    // each iteration will show replies to the specific comment using allCommentsWithCildren
+    const commentElement = (comment) => (
+      <Comment key={comment.comment_id}>
+        <Avatar
+          src={comment.author_image}
+          title={comment.author_name || 'Anonymous'}
+          color={getColor(comment.author_username)}
+        />
+        <Comment.Content>
+          <Comment.Author>{comment.author_name}</Comment.Author>
+          <Comment.Metadata>
+            <span>
+              {' '}
+              <span title={moment(comment.creation_date).format('LLLL')}>
+                {moment(comment.creation_date).fromNow()}
+              </span>
+            </span>
+          </Comment.Metadata>
+          <Comment.Text>
+            {' '}
+            {comment.text['mime-type'] === 'text/html' ? (
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: comment.text.data,
+                }}
+              />
+            ) : (
+              comment.text.data
+            )}
+          </Comment.Text>
+          <Comment.Actions>
+            <Comment.Action
+              as="a"
+              aria-label={this.props.intl.formatMessage(messages.reply)}
+              onClick={() => this.setReplyTo(comment.comment_id)}
+            >
+              <FormattedMessage id="Reply" defaultMessage="Reply" />
+            </Comment.Action>
+            {comment.is_editable && (
+              <Comment.Action
+                onClick={() =>
+                  this.onEdit({
+                    id: flattenToAppURL(comment['@id']),
+                    text: comment.text.data,
+                  })
+                }
+                aria-label={this.props.intl.formatMessage(messages.edit)}
+                value={{
+                  id: flattenToAppURL(comment['@id']),
+                  text: comment.text.data,
+                }}
+              >
+                <FormattedMessage id="Edit" defaultMessage="Edit" />
+              </Comment.Action>
+            )}
+            {comment.is_deletable && (
+              <Comment.Action
+                aria-label={this.props.intl.formatMessage(messages.delete)}
+                onClick={() => this.onDelete(flattenToAppURL(comment['@id']))}
+                color="red"
+              >
+                <Icon name="delete" color="red" />
+                <FormattedMessage
+                  id="Delete"
+                  defaultMessage="Delete"
+                  color="red"
+                />
+              </Comment.Action>
+            )}
+            <Comment.Action
+              as="a"
+              onClick={() => this.hideReply(comment.comment_id)}
+            >
+              {allCommentsWithCildren[comment.comment_id].children.length >
+              0 ? (
+                this.state.collapsedComments[comment.comment_id] ? (
+                  <>
+                    <Icon name="eye" color="blue" />
+                    <FormattedMessage
+                      id="Show Replies"
+                      defaultMessage="Show Replies"
+                    />
+                  </>
+                ) : (
+                  <>
+                    <Icon name="minus" color="blue" />
+                    <FormattedMessage
+                      id="Hide Replies"
+                      defaultMessage="Hide Replies"
+                    />
+                  </>
+                )
+              ) : null}
+            </Comment.Action>
+          </Comment.Actions>
+          <div id={`reply-place-${comment.comment_id}`}></div>
+        </Comment.Content>
+
+        {allCommentsWithCildren[comment.comment_id].children.length > 0
+          ? allCommentsWithCildren[comment.comment_id].children.map(
+              (child, index) => (
+                <Comment.Group
+                  collapsed={collapsedComments[comment.comment_id]}
+                  key={`group-${index}-${comment.comment_id}`}
+                >
+                  {commentElement(child)}
+                </Comment.Group>
+              ),
+            )
+          : null}
+      </Comment>
+    );
+
     return (
       <Container className="comments">
         <CommentEditModal
@@ -202,81 +431,44 @@ class Comments extends Component {
           id={this.state.editId}
           text={this.state.editText}
         />
-        {this.props.items.map((item) => [
-          <div className="comment" key={item['@id']}>
-            <Grid stackable>
-              <Grid.Column width={6}>
-                <FormattedMessage
-                  id="{user} says:"
-                  defaultMessage="{user} says:"
-                  values={{
-                    user: <span>{item.author_name}</span>,
-                  }}
-                />
-              </Grid.Column>
-              <Grid.Column width={6} textAlign="right">
-                <span title={moment(item.creation_date).format('LLLL')}>
-                  {moment(item.creation_date).fromNow()}
-                </span>
-              </Grid.Column>
-            </Grid>
-            <Segment clearing>
-              {item.text['mime-type'] === 'text/html' ? (
-                <div dangerouslySetInnerHTML={{ __html: item.text.data }} />
-              ) : (
-                item.text.data
-              )}
-              {item.is_deletable && (
-                <Button
-                  aria-label={this.props.intl.formatMessage(messages.delete)}
-                  onClick={this.onDelete}
-                  value={item['@id'].replace(settings.apiPath, '')}
-                  color="red"
-                  floated="right"
-                >
-                  <FormattedMessage id="Delete" defaultMessage="Delete" />
-                </Button>
-              )}
-              {item.is_editable && (
-                <Button
-                  aria-label={this.props.intl.formatMessage(messages.edit)}
-                  onClick={this.onEdit}
-                  floated="right"
-                  value={{
-                    id: item['@id'].replace(settings.apiPath, ''),
-                    text: item.text.data,
-                  }}
-                >
-                  <FormattedMessage id="Edit" defaultMessage="Edit" />
-                </Button>
-              )}
-            </Segment>
-            <br />
-          </div>,
-        ])}
-        <Form
-          onSubmit={this.onSubmit}
-          submitLabel={this.props.intl.formatMessage(messages.comment)}
-          resetAfterSubmit
-          title={this.props.intl.formatMessage(messages.comment)}
-          schema={{
-            fieldsets: [
-              {
-                fields: ['comment'],
-                id: 'default',
-                title: this.props.intl.formatMessage(messages.default),
-              },
-            ],
-            properties: {
-              comment: {
-                title: this.props.intl.formatMessage(messages.comment),
-                type: 'string',
-                widget: 'textarea',
-              },
-            },
-            required: ['comment'],
-          }}
-        />
+        <div id="comment-add-id">
+          <Form
+            onSubmit={this.onSubmit}
+            onCancel={this.onEditCancel}
+            submitLabel={this.props.intl.formatMessage(messages.comment)}
+            resetAfterSubmit
+            schema={makeFormSchema(this.props.intl)}
+          />
+        </div>
+
+        {/* all comments  */}
+        <Comment.Group threaded>
+          {allPrimaryComments.map((item) => commentElement(item))}
+        </Comment.Group>
+
+        {/* load more button */}
+        {this.props.items_total > this.props.items.length && (
+          <Button fluid basic color="blue" onClick={this.loadMoreComments}>
+            <FormattedMessage id="Load more" defaultMessage="Load more..." />
+          </Button>
+        )}
+
+        {this.state.replyTo && (
+          <Portal
+            node={
+              document &&
+              document.getElementById(`reply-place-${this.state.replyTo}`)
+            }
+          >
+            <Form
+              onSubmit={this.onSubmit}
+              onCancel={this.onEditCancel}
+              submitLabel={this.props.intl.formatMessage(messages.comment)}
+              resetAfterSubmit
+              schema={makeFormSchema(this.props.intl)}
+            />
+          </Portal>
+        )}
       </Container>
     );
   }
@@ -287,9 +479,11 @@ export default compose(
   connect(
     (state) => ({
       items: state.comments.items,
+      next: state.comments.next,
+      items_total: state.comments.items_total,
       addRequest: state.comments.add,
       deleteRequest: state.comments.delete,
     }),
-    { addComment, deleteComment, listComments },
+    { addComment, deleteComment, listComments, listMoreComments },
   ),
 )(Comments);

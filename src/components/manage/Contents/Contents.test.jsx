@@ -8,6 +8,12 @@ import { __test__ as Contents } from './Contents';
 
 const mockStore = configureStore();
 
+jest.mock('@plone/volto/helpers/Loadable/Loadable');
+beforeAll(
+  async () =>
+    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
+);
+
 jest.mock('react-portal', () => ({
   Portal: jest.fn(() => <div id="Portal" />),
 }));
@@ -26,7 +32,7 @@ jest.mock('moment', () =>
 );
 
 describe('Contents', () => {
-  it('renders a contents component', () => {
+  it('renders a folder contents view component', () => {
     const store = mockStore({
       actions: {
         actions: {
@@ -79,6 +85,10 @@ describe('Contents', () => {
           loaded: false,
         },
         update: {
+          loading: false,
+          loaded: false,
+        },
+        updatecolumns: {
           loading: false,
           loaded: false,
         },

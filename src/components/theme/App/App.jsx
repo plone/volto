@@ -7,7 +7,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { asyncConnect } from 'redux-connect';
+import { asyncConnect } from '@plone/volto/helpers';
 import { Segment } from 'semantic-ui-react';
 import { renderRoutes } from 'react-router-config';
 import { Slide, ToastContainer, toast } from 'react-toastify';
@@ -15,9 +15,7 @@ import split from 'lodash/split';
 import join from 'lodash/join';
 import trim from 'lodash/trim';
 import cx from 'classnames';
-import loadable from '@loadable/component';
-
-import { settings, views } from '~/config';
+import config from '@plone/volto/registry';
 
 import Error from '@plone/volto/error';
 
@@ -28,8 +26,9 @@ import {
   Icon,
   OutdatedBrowser,
   AppExtras,
+  SkipLinks,
 } from '@plone/volto/components';
-import { BodyClass, getBaseUrl, getView } from '@plone/volto/helpers';
+import { BodyClass, getBaseUrl, getView, isCmsUi } from '@plone/volto/helpers';
 import {
   getBreadcrumbs,
   getContent,
@@ -40,6 +39,8 @@ import {
 
 import clearSVG from '@plone/volto/icons/clear.svg';
 import MultilingualRedirector from '../MultilingualRedirector/MultilingualRedirector';
+
+import * as Sentry from '@sentry/browser';
 
 /**
  * @export
@@ -63,20 +64,6 @@ class App extends Component {
   };
 
   /**
-   * ComponentDidMount
-   * @method ComponentDidMount
-   * @param {string} error  The error
-   * @param {string} info The info
-   * @returns {undefined}
-   */
-  componentDidMount() {
-    if (__CLIENT__ && process.env.SENTRY_DSN) {
-      const Raven = loadable(() => import('raven-js'));
-      Raven.config(process.env.SENTRY_DSN).install();
-    }
-  }
-
-  /**
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
    * @returns {undefined}
@@ -98,9 +85,10 @@ class App extends Component {
    */
   componentDidCatch(error, info) {
     this.setState({ hasError: true, error, errorInfo: info });
-    if (__CLIENT__ && process.env.SENTRY_DSN) {
-      const Raven = loadable(() => import('raven-js'));
-      Raven.captureException(error, { extra: info });
+    if (__CLIENT__) {
+      if (window?.env?.RAZZLE_SENTRY_DSN || __SENTRY__?.SENTRY_DSN) {
+        Sentry.captureException(error);
+      }
     }
   }
 
@@ -110,8 +98,10 @@ class App extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const { views } = config;
     const path = getBaseUrl(this.props.pathname);
     const action = getView(this.props.pathname);
+    const isCmsUI = isCmsUi(this.props.pathname);
     const ConnectionRefusedView = views.errorViews.ECONNREFUSED;
 
     return (
@@ -133,8 +123,13 @@ class App extends Component {
             [trim(join(split(this.props.pathname, '/'), ' section-'))]:
               this.props.pathname !== '/',
             siteroot: this.props.pathname === '/',
+            'is-authenticated': !!this.props.token,
+            'is-anonymous': !this.props.token,
+            'cms-ui': isCmsUI,
+            'public-ui': !isCmsUI,
           })}
         />
+        <SkipLinks />
         <Header pathname={path} />
         <Breadcrumbs pathname={path} />
         <MultilingualRedirector pathname={this.props.pathname}>
@@ -149,7 +144,9 @@ class App extends Component {
                   stackTrace={this.state.errorInfo.componentStack}
                 />
               ) : (
-                renderRoutes(this.props.route.routes)
+                renderRoutes(this.props.route.routes, {
+                  staticContext: this.props.staticContext,
+                })
               )}
             </main>
           </Segment>
@@ -168,7 +165,7 @@ class App extends Component {
             />
           }
         />
-        <AppExtras />
+        <AppExtras {...this.props} />
       </Fragment>
     );
   }
@@ -177,6 +174,7 @@ class App extends Component {
 export const __test__ = connect(
   (state, props) => ({
     pathname: props.location.pathname,
+    token: state.userSession.token,
     content: state.content.data,
     apiError: state.apierror.error,
     connectionRefused: state.apierror.connectionRefused,
@@ -201,7 +199,10 @@ export default compose(
       promise: ({ location, store: { dispatch } }) =>
         __SERVER__ &&
         dispatch(
-          getNavigation(getBaseUrl(location.pathname), settings.navDepth),
+          getNavigation(
+            getBaseUrl(location.pathname),
+            config.settings.navDepth,
+          ),
         ),
     },
     {
@@ -218,10 +219,11 @@ export default compose(
   connect(
     (state, props) => ({
       pathname: props.location.pathname,
+      token: state.userSession.token,
       content: state.content.data,
       apiError: state.apierror.error,
       connectionRefused: state.apierror.connectionRefused,
     }),
-    {},
+    null,
   ),
 )(App);

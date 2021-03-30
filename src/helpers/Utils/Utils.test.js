@@ -1,4 +1,10 @@
-import { difference } from './Utils';
+import {
+  applyConfig,
+  difference,
+  getColor,
+  getInitials,
+  safeWrapper,
+} from './Utils';
 
 describe('Utils tests', () => {
   describe('difference', () => {
@@ -197,6 +203,72 @@ describe('Utils tests', () => {
           },
         },
       });
+    });
+  });
+
+  describe('getInitials', () => {
+    it('basic test empty', () => {
+      expect(getInitials('')).toEqual('');
+    });
+    it('basic test', () => {
+      expect(getInitials('Plone is the best CMS in the World!')).toEqual(
+        'PITBCITW',
+      );
+    });
+    it('basic test with limit', () => {
+      expect(getInitials('Plone is the best CMS in the World!', 2)).toEqual(
+        'PI',
+      );
+    });
+    it('basic test with trailing spaces', () => {
+      expect(getInitials('  Plone  rocks!   ', 2)).toEqual('PR');
+    });
+  });
+
+  describe('getColor', () => {
+    it('basic test empty', () => {
+      expect(getColor(1)).toEqual('Teal');
+      expect(getColor(2)).toEqual('SteelBlue');
+      expect(getColor(1)).toEqual('Teal');
+    });
+  });
+
+  describe('safeWrapper', () => {
+    it('calls the function with config', () => {
+      expect(
+        safeWrapper((config) => ({ ...config, a: 1 }))({ b: 2 }),
+      ).toStrictEqual({
+        a: 1,
+        b: 2,
+      });
+    });
+    it('fails when the function returns nothing', () => {
+      expect(safeWrapper((config) => {})).toThrow();
+    });
+  });
+
+  describe('applyConfig', () => {
+    it('applies configuration methods', () => {
+      expect(
+        applyConfig(
+          [
+            (config) => ({ ...config, b: 2 }),
+            (config) => ({ ...config, c: 3 }),
+          ],
+          { a: 1 },
+        ),
+      ).toStrictEqual({ a: 1, b: 2, c: 3 });
+    });
+
+    it('throws error on broken config method', () => {
+      let ok = false;
+      try {
+        applyConfig([(config) => ({ ...config, b: 2 }), (config) => {}], {
+          a: 1,
+        });
+        ok = true;
+      } catch {}
+      expect(ok).toBe(false);
     });
   });
 });

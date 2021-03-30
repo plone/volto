@@ -14,14 +14,14 @@ import { updateIntl } from 'react-intl-redux';
 import langmap from 'langmap';
 import { Helmet } from '@plone/volto/helpers';
 
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 import { flattenToAppURL } from '@plone/volto/helpers';
 
 let locales = {};
 
-if (settings) {
-  settings.supportedLanguages.forEach((lang) => {
+if (config.settings) {
+  config.settings.supportedLanguages.forEach((lang) => {
     import('~/../locales/' + lang + '.json').then((locale) => {
       locales = { ...locales, [lang]: locale.default };
     });
@@ -36,7 +36,7 @@ const LanguageSelector = (props) => {
   );
 
   function changeLanguage(language) {
-    cookie.save('lang', language, {
+    cookie.save('I18N_LANGUAGE', language, {
       expires: new Date((2 ** 31 - 1) * 1000),
       path: '/',
     });
@@ -48,6 +48,7 @@ const LanguageSelector = (props) => {
       }),
     );
   }
+  const { settings } = config;
 
   return settings.isMultilingual ? (
     <div className="language-selector">
@@ -64,7 +65,7 @@ const LanguageSelector = (props) => {
             }}
             key={`language-selector-${lang}`}
           >
-            {lang}&nbsp;
+            {langmap[lang].nativeName}&nbsp;
           </Link>
         );
       })}

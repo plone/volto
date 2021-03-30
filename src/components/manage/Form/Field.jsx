@@ -6,8 +6,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { DragSource, DropTarget } from 'react-dnd';
-import { settings, widgets } from '~/config';
 import { injectIntl } from 'react-intl';
+import config from '@plone/volto/registry';
 
 const MODE_HIDDEN = 'hidden'; //hidden mode. If mode is hidden, field is not rendered
 /**
@@ -15,7 +15,7 @@ const MODE_HIDDEN = 'hidden'; //hidden mode. If mode is hidden, field is not ren
  * @method getViewDefault
  * @returns {string} Widget component.
  */
-const getWidgetDefault = () => widgets.default;
+const getWidgetDefault = () => config.widgets.default;
 
 /**
  * Get widget by field's `id` attribute
@@ -23,7 +23,16 @@ const getWidgetDefault = () => widgets.default;
  * @param {string} id Id
  * @returns {string} Widget component.
  */
-const getWidgetByFieldId = (id) => widgets.id[id] || null;
+const getWidgetByFieldId = (id) => config.widgets.id[id] || null;
+
+/**
+ * Get widget by factory attribute
+ * @method getWidgetByFactory
+ * @param {string} id Id
+ * @returns {string} Widget component.
+ */
+const getWidgetByFactory = (factory) =>
+  config.widgets.factory?.[factory] || null;
 
 /**
  * Get widget by field's `widget` attribute
@@ -33,7 +42,7 @@ const getWidgetByFieldId = (id) => widgets.id[id] || null;
  */
 const getWidgetByName = (widget) =>
   typeof widget === 'string'
-    ? widgets.widget[widget] || getWidgetDefault()
+    ? config.widgets.widget[widget] || getWidgetDefault()
     : null;
 
 /**
@@ -44,8 +53,11 @@ const getWidgetByName = (widget) =>
  */
 const getWidgetByVocabulary = (vocabulary) =>
   vocabulary && vocabulary['@id']
-    ? widgets.vocabulary[
-        vocabulary['@id'].replace(`${settings.apiPath}/@vocabularies/`, '')
+    ? config.widgets.vocabulary[
+        vocabulary['@id'].replace(
+          `${config.settings.apiPath}/@vocabularies/`,
+          '',
+        )
       ]
     : null;
 
@@ -57,9 +69,9 @@ const getWidgetByVocabulary = (vocabulary) =>
  */
 const getWidgetByVocabularyFromHint = (props) =>
   props.widgetOptions && props.widgetOptions.vocabulary
-    ? widgets.vocabulary[
+    ? config.widgets.vocabulary[
         props.widgetOptions.vocabulary['@id'].replace(
-          `${settings.apiPath}/@vocabularies/`,
+          `${config.settings.apiPath}/@vocabularies/`,
           '',
         )
       ]
@@ -73,14 +85,14 @@ const getWidgetByVocabularyFromHint = (props) =>
  */
 const getWidgetByChoices = (props) => {
   if (props.choices) {
-    return widgets.choices;
+    return config.widgets.choices;
   }
 
   if (props.vocabulary) {
     // If vocabulary exists, then it means it's a choice field in disguise with
     // no widget specified that probably contains a string then we force it
     // to be a select widget instead
-    return widgets.choices;
+    return config.widgets.choices;
   }
 
   return null;
@@ -92,7 +104,7 @@ const getWidgetByChoices = (props) => {
  * @param {string} type Type
  * @returns {string} Widget component.
  */
-const getWidgetByType = (type) => widgets.type[type] || null;
+const getWidgetByType = (type) => config.widgets.type[type] || null;
 
 /**
  * Field component class.
@@ -107,6 +119,7 @@ const Field = (props, { intl }) => {
     getWidgetByChoices(props) ||
     getWidgetByVocabulary(props.vocabulary) ||
     getWidgetByVocabularyFromHint(props) ||
+    getWidgetByFactory(props.factory) ||
     getWidgetByType(props.type) ||
     getWidgetDefault();
 

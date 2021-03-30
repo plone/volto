@@ -5,41 +5,10 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Input, Icon as IconOld } from 'semantic-ui-react';
+import { Input } from 'semantic-ui-react';
 
-import { defineMessages, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import { Icon, FormFieldWrapper } from '@plone/volto/components';
-
-const messages = defineMessages({
-  default: {
-    id: 'Default',
-    defaultMessage: 'Default',
-  },
-  idTitle: {
-    id: 'Short Name',
-    defaultMessage: 'Short Name',
-  },
-  idDescription: {
-    id: 'Used for programmatic access to the fieldset.',
-    defaultMessage: 'Used for programmatic access to the fieldset.',
-  },
-  title: {
-    id: 'Title',
-    defaultMessage: 'Title',
-  },
-  description: {
-    id: 'Description',
-    defaultMessage: 'Description',
-  },
-  required: {
-    id: 'Required',
-    defaultMessage: 'Required',
-  },
-  delete: {
-    id: 'Delete',
-    defaultMessage: 'Delete',
-  },
-});
 
 /**
  * TextWidget component class.
@@ -61,6 +30,8 @@ class TextWidget extends Component {
     value: PropTypes.string,
     focus: PropTypes.bool,
     onChange: PropTypes.func,
+    onBlur: PropTypes.func,
+    onClick: PropTypes.func,
     onEdit: PropTypes.func,
     onDelete: PropTypes.func,
     icon: PropTypes.shape({
@@ -69,6 +40,8 @@ class TextWidget extends Component {
       content: PropTypes.string,
     }),
     iconAction: PropTypes.func,
+    minLength: PropTypes.number,
+    maxLength: PropTypes.number,
     wrapped: PropTypes.bool,
     placeholder: PropTypes.string,
   };
@@ -83,12 +56,16 @@ class TextWidget extends Component {
     required: false,
     error: [],
     value: null,
-    onChange: null,
+    onChange: () => {},
+    onBlur: () => {},
+    onClick: () => {},
     onEdit: null,
     onDelete: null,
     focus: false,
     icon: null,
     iconAction: null,
+    minLength: null,
+    maxLength: null,
   };
 
   /**
@@ -112,69 +89,22 @@ class TextWidget extends Component {
       id,
       value,
       onChange,
-      onEdit,
-      onDelete,
-      intl,
+      onBlur,
+      onClick,
       icon,
       iconAction,
+      minLength,
+      maxLength,
       placeholder,
     } = this.props;
 
-    const schema = {
-      fieldsets: [
-        {
-          id: 'default',
-          title: intl.formatMessage(messages.default),
-          fields: ['title', 'id', 'description', 'required'],
-        },
-      ],
-      properties: {
-        id: {
-          type: 'string',
-          title: intl.formatMessage(messages.idTitle),
-          description: intl.formatMessage(messages.idDescription),
-        },
-        title: {
-          type: 'string',
-          title: intl.formatMessage(messages.title),
-        },
-        description: {
-          type: 'string',
-          widget: 'textarea',
-          title: intl.formatMessage(messages.description),
-        },
-        required: {
-          type: 'boolean',
-          title: intl.formatMessage(messages.required),
-        },
-      },
-      required: ['id', 'title'],
-    };
-
     return (
-      <FormFieldWrapper {...this.props} draggable={true} className="text">
-        {onEdit && (
-          <div className="toolbar">
-            <button
-              className="item ui noborder button"
-              onClick={() => onEdit(id, schema)}
-            >
-              <IconOld name="write square" size="large" color="blue" />
-            </button>
-            <button
-              aria-label={this.props.intl.formatMessage(messages.delete)}
-              className="item ui noborder button"
-              onClick={() => onDelete(id)}
-            >
-              <IconOld name="close" size="large" color="red" />
-            </button>
-          </div>
-        )}
+      <FormFieldWrapper {...this.props} className="text">
         <Input
           id={`field-${id}`}
           name={id}
           value={value || ''}
-          disabled={onEdit !== null}
+          disabled={this.props.isDisabled}
           icon={icon || null}
           placeholder={placeholder}
           onChange={({ target }) =>
@@ -183,9 +113,15 @@ class TextWidget extends Component {
           ref={(node) => {
             this.node = node;
           }}
+          onBlur={({ target }) =>
+            onBlur(id, target.value === '' ? undefined : target.value)
+          }
+          onClick={() => onClick()}
+          minLength={minLength || null}
+          maxLength={maxLength || null}
         />
         {icon && iconAction && (
-          <button onClick={iconAction}>
+          <button className={`field-${id}-action-button`} onClick={iconAction}>
             <Icon name={icon} size="18px" />
           </button>
         )}

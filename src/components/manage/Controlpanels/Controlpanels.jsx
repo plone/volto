@@ -17,6 +17,7 @@ import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import Icons from '@plone/volto/constants/ControlpanelIcons';
 import { listControlpanels, getSystemInformation } from '@plone/volto/actions';
 import {
+  Error,
   Icon as IconNext,
   Toolbar,
   VersionOverview,
@@ -71,6 +72,29 @@ class Controlpanels extends Component {
   };
 
   /**
+   * Constructor
+   * @method constructor
+   * @param {Object} props Component properties
+   * @constructs EditComponent
+   */
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+      isClient: false,
+    };
+  }
+
+  /**
+   * Component did mount
+   * @method componentDidMount
+   * @returns {undefined}
+   */
+  componentDidMount() {
+    this.setState({ isClient: true });
+  }
+
+  /**
    * Component will mount
    * @method componentWillMount
    * @returns {undefined}
@@ -80,12 +104,29 @@ class Controlpanels extends Component {
     this.props.getSystemInformation();
   }
 
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    // Error
+    if (
+      this.props.controlpanelsRequest.loading &&
+      nextProps.controlpanelsRequest.error
+    ) {
+      this.setState({
+        error: nextProps.controlpanelsRequest.error,
+      });
+    }
+  }
+
   /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
   render() {
+    // Error
+    if (this.state.error) {
+      return <Error error={this.state.error} />;
+    }
+
     const controlpanels = map(
       concat(this.props.controlpanels, [
         {
@@ -161,22 +202,24 @@ class Controlpanels extends Component {
             </Segment>
           </Segment.Group>
         </Container>
-        <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
-          <Toolbar
-            pathname={this.props.pathname}
-            hideDefaultViewButtons
-            inner={
-              <Link to="/" className="item">
-                <IconNext
-                  name={backSVG}
-                  className="contents circled"
-                  size="30px"
-                  title={this.props.intl.formatMessage(messages.back)}
-                />
-              </Link>
-            }
-          />
-        </Portal>
+        {this.state.isClient && (
+          <Portal node={document.getElementById('toolbar')}>
+            <Toolbar
+              pathname={this.props.pathname}
+              hideDefaultViewButtons
+              inner={
+                <Link to="/" className="item">
+                  <IconNext
+                    name={backSVG}
+                    className="contents circled"
+                    size="30px"
+                    title={this.props.intl.formatMessage(messages.back)}
+                  />
+                </Link>
+              }
+            />
+          </Portal>
+        )}
       </div>
     );
   }
@@ -187,6 +230,7 @@ export default compose(
   connect(
     (state, props) => ({
       controlpanels: state.controlpanels.controlpanels,
+      controlpanelsRequest: state.controlpanels.list,
       pathname: props.location.pathname,
       systemInformation: state.controlpanels.systeminformation,
     }),

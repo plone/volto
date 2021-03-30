@@ -1,6 +1,10 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import ObjectBrowserNav from './ObjectBrowserNav';
+import { Provider } from 'react-intl-redux';
+import configureStore from 'redux-mock-store';
+
+const mockStore = configureStore();
 
 const currentSearchResults = {
   items: [
@@ -27,7 +31,6 @@ const currentSearchResults = {
       end: null,
       exclude_from_nav: false,
       expires: '2499-12-30T22:00:00+00:00',
-      getIcon: null,
       getId: 'front-page',
       getObjSize: '4.6 KB',
       getPath: '/Plone/front-page',
@@ -72,7 +75,6 @@ const currentSearchResults = {
       end: null,
       exclude_from_nav: false,
       expires: '2499-12-30T22:00:00+00:00',
-      getIcon: null,
       getId: 'news',
       getObjSize: '0 KB',
       getPath: '/Plone/news',
@@ -98,14 +100,21 @@ const currentSearchResults = {
 };
 
 test('renders a view image component', () => {
+  const store = mockStore({
+    intl: {
+      locale: 'en',
+      messages: {},
+    },
+  });
   const component = renderer.create(
-    <ObjectBrowserNav
-      currentSearchResults={currentSearchResults}
-      getIcon={() => {}}
-      isSelectable={() => {
-        return true;
-      }}
-    />,
+    <Provider store={store}>
+      <ObjectBrowserNav
+        currentSearchResults={currentSearchResults}
+        isSelectable={() => {
+          return true;
+        }}
+      />
+    </Provider>,
   );
   const json = component.toJSON();
   expect(json).toMatchSnapshot();

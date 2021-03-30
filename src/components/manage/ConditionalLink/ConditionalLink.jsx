@@ -1,10 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { UniversalLink } from '@plone/volto/components';
 import PropTypes from 'prop-types';
 
-const ConditionalLink = ({ condition, ...props }) => {
+const ConditionalLink = ({ condition, to, item, ...props }) => {
   if (condition) {
-    return <Link {...props}>{props.children}</Link>;
+    return (
+      <UniversalLink href={to} item={item} {...props}>
+        {props.children}
+      </UniversalLink>
+    );
   } else {
     return props.children;
   }
@@ -12,6 +16,11 @@ const ConditionalLink = ({ condition, ...props }) => {
 
 ConditionalLink.propTypes = {
   condition: PropTypes.bool,
+  to: PropTypes.string,
+  item: PropTypes.shape({
+    '@id': PropTypes.string,
+    remoteUrl: PropTypes.string, //of plone @type 'Link'
+  }),
   children: PropTypes.node,
 };
 

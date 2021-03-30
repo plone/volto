@@ -51,7 +51,7 @@ exports[`renders a Listing Block Sidebar component 1`] = `
                   class="react-select__control css-1ard45z-control"
                 >
                   <div
-                    class="react-select__value-container react-select__value-container--has-value css-1dvrfad"
+                    class="react-select__value-container react-select__value-container--has-value css-1a9cv00-ValueContainer"
                   >
                     <div
                       class="react-select__single-value css-1uccc91-singleValue"
@@ -72,13 +72,13 @@ exports[`renders a Listing Block Sidebar component 1`] = `
                           autocorrect="off"
                           id="react-select-2-input"
                           spellcheck="false"
-                          style="box-sizing: content-box; width: 2px; border: 0px; font-size: inherit; opacity: 1; outline: 0; padding: 0px;"
+                          style="box-sizing: content-box; width: 2px; border: 0px; opacity: 1; outline: 0; padding: 0px;"
                           tabindex="0"
                           type="text"
                           value=""
                         />
                         <div
-                          style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: inherit; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"
+                          style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"
                         />
                       </div>
                     </div>
@@ -171,7 +171,7 @@ exports[`renders a Listing Block Sidebar component 1`] = `
                         class="react-select__control css-1ard45z-control"
                       >
                         <div
-                          class="react-select__value-container css-1dvrfad"
+                          class="react-select__value-container css-1a9cv00-ValueContainer"
                         >
                           <div
                             class="react-select__placeholder css-1wa3eu0-placeholder"
@@ -192,13 +192,13 @@ exports[`renders a Listing Block Sidebar component 1`] = `
                                 autocorrect="off"
                                 id="react-select-3-input"
                                 spellcheck="false"
-                                style="box-sizing: content-box; width: 2px; border: 0px; font-size: inherit; opacity: 1; outline: 0; padding: 0px;"
+                                style="box-sizing: content-box; width: 2px; border: 0px; opacity: 1; outline: 0; padding: 0px;"
                                 tabindex="0"
                                 type="text"
                                 value=""
                               />
                               <div
-                                style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: inherit; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"
+                                style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"
                               />
                             </div>
                           </div>
@@ -268,7 +268,7 @@ exports[`renders a Listing Block Sidebar component 1`] = `
                     class="react-select__control css-1ard45z-control"
                   >
                     <div
-                      class="react-select__value-container react-select__value-container--has-value css-1dvrfad"
+                      class="react-select__value-container react-select__value-container--has-value css-1a9cv00-ValueContainer"
                     >
                       <div
                         class="react-select__single-value css-1uccc91-singleValue"
@@ -289,13 +289,13 @@ exports[`renders a Listing Block Sidebar component 1`] = `
                             autocorrect="off"
                             id="react-select-4-input"
                             spellcheck="false"
-                            style="box-sizing: content-box; width: 2px; border: 0px; font-size: inherit; opacity: 1; outline: 0; padding: 0px;"
+                            style="box-sizing: content-box; width: 2px; border: 0px; opacity: 1; outline: 0; padding: 0px;"
                             tabindex="0"
                             type="text"
                             value=""
                           />
                           <div
-                            style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: inherit; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"
+                            style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"
                           />
                         </div>
                       </div>
@@ -331,7 +331,6 @@ exports[`renders a Listing Block Sidebar component 1`] = `
         </div>
         <div
           class="inline field"
-          id="field-listingblock-sort-on-reverse"
         >
           <div
             class="ui grid"
@@ -369,7 +368,6 @@ exports[`renders a Listing Block Sidebar component 1`] = `
         </div>
         <div
           class="inline field text"
-          id="field-limit"
         >
           <div
             class="ui grid"
@@ -385,6 +383,7 @@ exports[`renders a Listing Block Sidebar component 1`] = `
                 >
                   <label
                     for="field-limit"
+                    id="fieldset-undefined-field-label-limit"
                   >
                     Results limit
                   </label>
@@ -409,7 +408,6 @@ exports[`renders a Listing Block Sidebar component 1`] = `
         </div>
         <div
           class="inline field text"
-          id="field-itembatchsize"
         >
           <div
             class="ui grid"
@@ -425,6 +423,7 @@ exports[`renders a Listing Block Sidebar component 1`] = `
                 >
                   <label
                     for="field-itembatchsize"
+                    id="fieldset-undefined-field-label-itembatchsize"
                   >
                     Item batch size
                   </label>
@@ -465,7 +464,6 @@ exports[`renders a Listing Block Sidebar component 1`] = `
     >
       <div
         class="inline field text"
-        id="field-linkTitle"
       >
         <div
           class="ui grid"
@@ -481,6 +479,7 @@ exports[`renders a Listing Block Sidebar component 1`] = `
               >
                 <label
                   for="field-linkTitle"
+                  id="fieldset-undefined-field-label-linkTitle"
                 >
                   Link Title
                 </label>
@@ -505,7 +504,6 @@ exports[`renders a Listing Block Sidebar component 1`] = `
       </div>
       <div
         class="inline field text"
-        id="field-linkHref"
       >
         <div
           class="ui grid"
@@ -521,6 +519,7 @@ exports[`renders a Listing Block Sidebar component 1`] = `
               >
                 <label
                   for="field-linkHref"
+                  id="fieldset-undefined-field-label-linkHref"
                 >
                   Link to
                 </label>
@@ -544,7 +543,9 @@ exports[`renders a Listing Block Sidebar component 1`] = `
                   class="icon"
                 />
               </div>
-              <button>
+              <button
+                class="field-linkHref-action-button"
+              >
                 <svg
                   class="icon"
                   style="height: 18px; width: auto; fill: currentColor;"

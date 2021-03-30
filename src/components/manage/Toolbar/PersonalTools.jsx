@@ -86,6 +86,13 @@ class PersonalTools extends Component {
         className={cx('personal-tools pastanaga-menu', {
           'has-inner-actions': this.props.hasActions,
         })}
+        style={{
+          flex: this.props.theToolbar.current
+            ? `0 0 ${
+                this.props.theToolbar.current.getBoundingClientRect().width
+              }px`
+            : null,
+        }}
       >
         <header className="header">
           <button className="back" onClick={this.pull}>

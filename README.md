@@ -1,8 +1,7 @@
 # Volto
 <img align="right" width="300" alt="Volto png" src="./docs/logos/volto-colorful.png" />
 
-[![Build Status](https://travis-ci.org/plone/volto.svg?branch=master)](https://travis-ci.org/plone/volto)
-[![Coverage](https://img.shields.io/coveralls/plone/volto.svg)](https://coveralls.io/github/plone/volto)
+[![Build Status](https://github.com/plone/volto/workflows/Volto%20CI/badge.svg)](https://github.com/plone/volto/actions)
 [![Dependencies](https://img.shields.io/david/plone/volto.svg)](https://github.com/plone/volto/blob/master/package.json)
 [![Dev Dependencies](https://img.shields.io/david/dev/plone/volto.svg)](https://github.com/plone/volto/blob/master/package.json)
 [![NPM](https://img.shields.io/npm/v/@plone/volto.svg)](https://www.npmjs.com/package/@plone/volto)
@@ -35,31 +34,44 @@ Last but not least, it also supports a [Volto Nodejs-based backend reference](ht
 demos how other systems could also use Volto to display and create content
 through it.
 
+## Demo
+
+You can try a Volto online demo in [https://volto.kitconcept.com](https://volto.kitconcept.com)
+
+### Try the demo locally
+
+If you want to give Volto a quick try and you have [Docker](https://www.docker.com/get-started) installed in your computer, bootstrap the demo using `docker-compose`:
+
+```shell
+git clone https://github.com/plone/volto.git
+cd volto
+docker-compose up
+```
+
+Go to [http://localhost:3000](http://localhost:3000) in your browser.
+
 ## Quick Start
 
 First get all the requirements installed on your system.
 
 ### Prerequisites
 
-- [Node.js LTS (12.x)](https://nodejs.org/)
+- [Node.js LTS (14.x)](https://nodejs.org/)
 - [Python 3.7.x / 2.7.x](https://python.org/) or
 - [Docker](https://www.docker.com/get-started) (if using the Plone/Guillotina docker images)
 
-### Create Volto App
+### Create a Volto project using the generator
 
-Create a new Volto project by using the `create-volto-app` utility.
+Create a new Volto project by using the `@plone/generator-volto` utility.
 
 It will bootstrap a Volto project in a folder of your choice with all the required
 boilerplate to start customizing your Volto site.
 
-    $ npm install -g yarn
-    $ npm install -g @plone/create-volto-app
-    $ create-volto-app myvoltoproject
-    $ cd myvoltoproject
+    $ npm init yo @plone/volto
 
-Although we install and use `yarn`, the `create-volto-app` tool still needs to be
-installed using `npm -g` because `yarn` has a different implementation of
-global installs.
+follow the prompts questions, provide `myvoltoproject` as project name then, when it finishes:
+
+    $ cd myvoltoproject
 
 ### Bootstrap the Plone API backend
 
@@ -68,7 +80,7 @@ We recommend Plone as backend of choice for Volto.
 You can bootstrap a ready Docker Plone container with all the dependencies and ready for Volto use:
 
 ```shell
-$ docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="kitconcept.volto" -e ZCML="kitconcept.volto.cors" -e PROFILES="kitconcept.volto:default-homepage" plone
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="kitconcept.volto" -e ZCML="kitconcept.volto.cors" -e PROFILES="kitconcept.volto:default-homepage" plone
 ```
 
 or as an alternative if you have experience with Plone and you have all the
@@ -76,24 +88,18 @@ dependencies installed on your system, you can use the supplied buildout in the
 `api` folder by issuing the command:
 
 ```shell
-$ make build-backend
+make build-backend
 ```
 
 ### Start Volto
 
-Once inside your Volto project folder:
-
 ```shell
-$ yarn start
+yarn start
 ```
 
 ### Browsing
 
 Go to [http://localhost:3000](http://localhost:3000) in your browser.
-
-## Demo
-
-You can try a Volto online demo in [https://volto.kitconcept.com](https://volto.kitconcept.com)
 
 ## Volto in Production
 
@@ -103,10 +109,18 @@ Volto is actively developed since 2017 and used in production since 2018 on the 
 - [Zeelandia](https://zeelandia.de) (Corporate website for one of the leading backery ingrediences manufactors in Germany, developed by [kitconcept GmbH](https://kitconcept.com), 2019)
 - [Excellence at Humboldt-Universität zu Berlin](https://www.alles-beginnt-mit-einer-frage.de) (Website for the excellence initiative of the [Humboldt University Berlin](https://hu-berlin.de), developed by [kitconcept GmbH](https://kitconcept.com), 2019)
 - [Forest Information System for Europe](https://forest.eea.europa.eu) (Thematic website focusing on European forests, developed by [Eau de Web](https://www.eaudeweb.ro), 2019)
+- [Industrial Emissions portal for Europe](https://industry.eea.europa.eu) (Thematic website focusing on European industrial emissions, developed by [Eau de Web](https://www.eaudeweb.ro), 2020)
+- [Energy Climate Union portal for Europe](https://demo-energy-union.eea.europa.eu) (Thematic website focusing on European strides towards mitigating climate change, developed by [Eau de Web](https://www.eaudeweb.ro), 2020)
 - [Talke Carrer Website](https://karriere.talke.com/) (Carrer website for [Talke](https://www.talke.com), one of the leading a chemical and petrochemical logistics companies in Germany, developed by [kitconcept GmbH](https://kitconcept.com), 2020)
 - [Stradanove](http://www.stradanove.it/) (Website of the Department of Youth Policies of the Municipality of Modena, developed by [RedTurtle](https://redturtle.it), 2020)
 - [Study guide at University of Jyväskylä](https://studyguide.jyu.fi/2020/) (Static website where [Volto is used as a headless CMS for authoring additional content](https://tech.blog.jyu.fi/2020/06/plone-volto-hasura-gatsbyjs-mashup/), 2020)
 - [Nuova Voce Ecologista](https://nuovavoceecologista.it) (Website of Nuova Voce Ecologista, an Italian green Party, 2020)
+- [BISE](https://biodiversity.europa.eu) (Biodiversity Information System for Europe, developed by [Eau de Web](https://www.eaudeweb.ro), 2019)
+- [MEDICE Webseite](https://medice.com/de-de) (Website for MEDICE Arzneimittel Pütter GmbH & Co. KG), developed by [Werkbank GmbH](https://werkbank.de/), 2020)
+- [Jobfamilie MEDICE](https://jobfamilie.medice.de/de) (Carrer website for MEDICE Arzneimittel Pütter GmbH & Co. KG), developed by [Werkbank GmbH](https://werkbank.de/), 2020)
+- [Baccanale Imola](https://www.baccanaleimola.it) (Baccanale is a food fair that happens every year in Imola, Italy. Developed by [RedTurtle](https://redturtle.it), 2020)
+- [ResOU](https://resou.osaka-u.ac.jp) (ResOU is introducing official researched releases by the University of Osaka, Japan. Developed by [CMScom](https://www.cmscom.jp), 2020)
+- [Humboldt Labor](https://www.humboldt-labor.de/) (The Humboldt Lab is a website where the Humboldt University Berlin presents its latest reaseach projects and findings. Developed by [WLDX](https://wldx.de/) and [kitconcept GmbH](https://kitconcept.com), 2020)
 - Please create a new [issue](https://github.com/plone/volto/issues/new) or [pull request](https://github.com/plone/volto/pulls) to add your Volto-site here!
 
 ## Documentation
@@ -165,13 +179,13 @@ For Volto development you need all the requirements already mentioned on the
 ### Checkout the Volto repository
 
 ```shell
-$ git clone https://github.com/plone/volto.git
+git clone https://github.com/plone/volto.git
 ```
 
 ### Install dependencies
 
 ```shell
-$ yarn
+yarn
 ```
 
 ### Install a backend
@@ -181,13 +195,13 @@ $ yarn
 Either using a Docker image
 
 ```shell
-$ docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="kitconcept.volto" -e ZCML="kitconcept.volto.cors" -e PROFILES="kitconcept.volto:default-homepage" plone
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="kitconcept.volto" -e ZCML="kitconcept.volto.cors" -e PROFILES="kitconcept.volto:default-homepage" plone
 ```
 
 or using the convenience makefile command:
 
 ```shell
-$ make start-backend-docker
+make start-backend-docker
 ```
 
 or running Plone on your machine (advanced), additional dependencies might be
@@ -195,7 +209,7 @@ required, only for Plone experienced integrators/developers. Check the [Plone
 Installation Documentation](https://docs.plone.org/manage/installing/installation.html).
 
 ```shell
-$ make build-backend
+make build-backend
 ```
 
 #### Guillotina (experimental)
@@ -203,19 +217,31 @@ $ make build-backend
 It still doesn't support the full API/features that Plone provides.
 
 ```shell
-$ docker-compose -f g-api/docker-compose.yml up -d
+docker-compose -f g-api/docker-compose.yml up -d
 ```
 
 or using the convenience makefile command:
 
 ```shell
-$ make start-backend-docker-guillotina
+make start-backend-docker-guillotina
 ```
 
 ### Run frontend
 
+Either using Docker
+
 ```shell
-$ yarn start
+docker run -it --rm --name=volto --link plone -p 3000:3000 plone/volto
+
+# or with Volto add-ons enabled:
+
+docker run -it --rm --name=volto --link plone -e ADDONS="volto-testaddon volto-slate:asDefault" -p 3000:3000 plone/volto
+```
+
+or using the convenience yarn command:
+
+```shell
+yarn start
 ```
 
 ### Browsing
@@ -225,7 +251,7 @@ Browse to [http://localhost:3000](http://localhost:3000) in your browser.
 ### Testing
 
 ```shell
-$ yarn test
+yarn test
 ```
 
 ### Releasing
@@ -244,13 +270,13 @@ For using it and start a release you need to fulfill the requirements:
 Then the command for release:
 
 ```shell
-$ yarn release
+yarn release
 ```
 
 a dry-release command for testing the output is also available:
 
 ```shell
-$ yarn dry-release
+yarn dry-release
 ```
 
 ### Acceptance testing
@@ -260,13 +286,13 @@ Volto uses [Cypress](https://www.cypress.io/) for browser-based acceptance testi
 Run acceptance tests (with the Plone backend):
 
 ```shell
-$ yarn ci:cypress:run
+yarn ci:cypress:run
 ```
 
 Run acceptance tests (with the Guillotina backend):
 
 ```shell
-$ yarn ci:cypress:run:guillotina
+yarn ci:cypress:run:guillotina
 ```
 
 #### Writing new acceptance tests
@@ -278,19 +304,19 @@ To do so, start three individual terminal sessions for running the Plone backend
 Start the Plone backend:
 
 ```shell
-$ make start-test-backend
+make start-test-backend
 ```
 
 Start the Volto frontend:
 
 ```shell
-$ make start-test-frontend
+make start-test-frontend
 ```
 
 Open Cypress and start acceptance tests:
 
 ```shell
-$ make start-test
+make start-test
 ```
 
 Go to the `cypress/integration` folder to see existing tests.
@@ -303,7 +329,7 @@ This directory is hot reloaded with your changes as you write the tests. For mor
 If you want to use Guillotina as backend to run the tests you should run:
 
 ```shell
-$ yarn ci:start-api-plone-guillotina
+yarn ci:start-api-plone-guillotina
 ```
 
 ## Translations

@@ -1,8 +1,7 @@
 import React from 'react';
-import { CSSTransition } from 'react-transition-group';
 import ObjectBrowserBody from '@plone/volto/components/manage/Sidebar/ObjectBrowserBody';
-
-const DEFAULT_TIMEOUT = 500;
+import { getParentURL } from '@plone/volto/components/manage/Sidebar/ObjectBrowserBody';
+import SidebarPopup from '@plone/volto/components/manage/Sidebar/SidebarPopup';
 
 const withObjectBrowser = (WrappedComponent) =>
   class extends React.Component {
@@ -29,6 +28,7 @@ const withObjectBrowser = (WrappedComponent) =>
      * @param {string} object.mode Quick mode, defaults to `image`. Values: link, image, multiple
      * @param {string} object.dataName Name of the block data property to write the selected item.
      * @param {string} object.onSelectItem Function that will be called on item selection.
+     * @param {string} object.overlay Boolean to show overlay background on content when opening objectBrowser.
      *
      * Usage:
      *
@@ -52,23 +52,29 @@ const withObjectBrowser = (WrappedComponent) =>
       mode = 'image',
       onSelectItem = null,
       dataName = null,
+      overlay = null,
       propDataName = null,
       selectableTypes,
       maximumSelectionSize,
     } = {}) =>
-      this.setState({
+      this.setState(() => ({
         isObjectBrowserOpen: true,
         mode,
         onSelectItem,
         dataName,
+        overlay,
         propDataName,
         selectableTypes,
         maximumSelectionSize,
-      });
+      }));
 
     closeObjectBrowser = () => this.setState({ isObjectBrowserOpen: false });
 
     render() {
+      let contextURL = this.props.pathname ?? this.props.location?.pathname;
+      if (contextURL?.endsWith('edit')) {
+        contextURL = getParentURL(contextURL);
+      }
       return (
         <>
           <WrappedComponent
@@ -77,27 +83,29 @@ const withObjectBrowser = (WrappedComponent) =>
             openObjectBrowser={this.openObjectBrowser}
             closeObjectBrowser={this.closeObjectBrowser}
           />
-          <CSSTransition
-            in={this.state.isObjectBrowserOpen}
-            timeout={DEFAULT_TIMEOUT}
-            classNames="sidebar-container"
-            unmountOnExit
-          >
-            <ObjectBrowserBody
-              {...this.props}
-              data={
-                this.state.propDataName
-                  ? this.props[this.state.propDataName]
-                  : this.props.data
-              }
-              closeObjectBrowser={this.closeObjectBrowser}
-              mode={this.state.mode}
-              onSelectItem={this.state.onSelectItem}
-              dataName={this.state.dataName}
-              selectableTypes={this.state.selectableTypes}
-              maximumSelectionSize={this.state.maximumSelectionSize}
-            />
-          </CSSTransition>
+
+          <>
+            <SidebarPopup
+              open={this.state.isObjectBrowserOpen}
+              onClose={this.closeObjectBrowser}
+              overlay={this.state.overlay}
+            >
+              <ObjectBrowserBody
+                {...this.props}
+                data={
+                  this.state.propDataName
+                    ? this.props[this.state.propDataName]
+                    : { ...this.props.data, contextURL }
+                }
+                closeObjectBrowser={this.closeObjectBrowser}
+                mode={this.state.mode}
+                onSelectItem={this.state.onSelectItem}
+                dataName={this.state.dataName}
+                selectableTypes={this.state.selectableTypes}
+                maximumSelectionSize={this.state.maximumSelectionSize}
+              />
+            </SidebarPopup>
+          </>
         </>
       );
     }

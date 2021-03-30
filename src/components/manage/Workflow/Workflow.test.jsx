@@ -1,12 +1,17 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
-import { wait } from '@testing-library/react';
+import { waitFor, render, screen } from '@testing-library/react';
 
 import Workflow from './Workflow';
 
 const mockStore = configureStore();
+
+jest.mock('@plone/volto/helpers/Loadable/Loadable');
+beforeAll(
+  async () =>
+    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
+);
 
 describe('Workflow', () => {
   it('renders an empty workflow component', async () => {
@@ -18,14 +23,13 @@ describe('Workflow', () => {
       },
       content: { data: { review_state: 'published' } },
     });
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <Workflow pathname="/test" />
       </Provider>,
     );
-    await wait(() => {
-      expect(component.toJSON()).toMatchSnapshot();
-    });
+    await waitFor(() => screen.getByText(/Public/));
+    expect(container).toMatchSnapshot();
   });
 
   it('renders a workflow component', async () => {
@@ -41,13 +45,13 @@ describe('Workflow', () => {
       },
       content: { data: { review_state: 'private' } },
     });
-    const component = renderer.create(
+
+    const { container } = render(
       <Provider store={store}>
         <Workflow pathname="/test" />
       </Provider>,
     );
-    await wait(() => {
-      expect(component.toJSON()).toMatchSnapshot();
-    });
+    await waitFor(() => screen.getByText('Private'));
+    expect(container).toMatchSnapshot();
   });
 });

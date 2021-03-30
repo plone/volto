@@ -9,11 +9,8 @@ import {
   FormFieldWrapper,
   TextWidget,
 } from '@plone/volto/components';
-import {
-  AlignBlock,
-  flattenToAppURL,
-  isInternalURL,
-} from '@plone/volto/helpers';
+import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
+import AlignBlock from '@plone/volto/components/manage/Sidebar/AlignBlock';
 
 import imageSVG from '@plone/volto/icons/image.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -188,17 +185,10 @@ const ImageSidebar = ({
                     <AlignBlock
                       align={data.align}
                       onChangeBlock={(block, data) => {
-                        if (data.align === 'full') {
-                          onChangeBlock(block, {
-                            ...data,
-                            size: null,
-                          });
-                        } else {
-                          onChangeBlock(block, {
-                            ...data,
-                            size: 'l',
-                          });
-                        }
+                        onChangeBlock(block, {
+                          ...data,
+                          size: data.size,
+                        });
                       }}
                       data={data}
                       block={block}
@@ -215,7 +205,6 @@ const ImageSidebar = ({
                 onChangeBlock={onChangeBlock}
                 data={data}
                 block={block}
-                disabled={data.align === 'full'}
               />
             </FormFieldWrapper>
           </Segment>

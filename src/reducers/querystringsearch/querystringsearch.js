@@ -1,5 +1,5 @@
 import { map, omit } from 'lodash';
-import { settings } from '~/config';
+import { flattenToAppURL } from '@plone/volto/helpers';
 
 const GET_QUERYSTRING_RESULTS = 'GET_QUERYSTRING_RESULTS';
 const RESET_QUERYSTRING_RESULTS = 'RESET_QUERYSTRING_RESULTS';
@@ -57,7 +57,7 @@ export default function querystringsearch(state = initialState, action = {}) {
                 error: null,
                 items: map(action.result.items, (item) => ({
                   ...item,
-                  '@id': item['@id'].replace(settings.apiPath, ''),
+                  '@id': flattenToAppURL(item['@id']),
                 })),
                 total: action.result.items_total,
                 loaded: true,
@@ -71,7 +71,7 @@ export default function querystringsearch(state = initialState, action = {}) {
             error: null,
             items: map(action.result.items, (item) => ({
               ...item,
-              '@id': item['@id'].replace(settings.apiPath, ''),
+              '@id': flattenToAppURL(item['@id']),
             })),
             total: action.result.items_total,
             loaded: true,

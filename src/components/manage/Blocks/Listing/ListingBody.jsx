@@ -5,10 +5,10 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { getContent, getQueryStringResults } from '@plone/volto/actions';
 import { Pagination } from 'semantic-ui-react';
 import { Icon } from '@plone/volto/components';
+import config from '@plone/volto/registry';
+
 import paginationLeftSVG from '@plone/volto/icons/left-key.svg';
 import paginationRightSVG from '@plone/volto/icons/right-key.svg';
-
-import { blocks, settings } from '~/config';
 
 const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
   const [currentPage, setCurrentPage] = React.useState(1);
@@ -23,24 +23,43 @@ const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
       dispatch(
         getQueryStringResults(path, { ...data, fullobjects: 1 }, data.block),
       );
+    } else if (data.template === 'imageGallery' && data?.query?.length === 0) {
+      dispatch(
+        getQueryStringResults(
+          path,
+          {
+            ...data,
+            fullobjects: 1,
+            query: [
+              {
+                i: 'path',
+                o: 'plone.app.querystring.operation.string.relativePath',
+                v: '',
+              },
+            ],
+          },
+          data.block,
+        ),
+      );
     }
+
     /* eslint-disable react-hooks/exhaustive-deps */
   }, [data]);
 
-  const folderItems = content.is_folderish ? content.items : [];
+  const folderItems = content?.is_folderish ? content.items : [];
 
   const loadingQuery =
     data?.query?.length > 0 && querystringResults?.[data.block]?.loading;
 
   const listingItems =
-    data?.query?.length > 0
+    data?.query?.length > 0 && querystringResults?.[data.block]
       ? (querystringResults &&
           querystringResults[data.block] &&
           querystringResults[data.block].items) ||
         []
       : folderItems;
 
-  const templateConfig = blocks.blocksConfig.listing.templates;
+  const templateConfig = config.blocks.blocksConfig.listing.templates;
 
   let templateName =
     data.template && !!templateConfig[data.template]
@@ -67,10 +86,11 @@ const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
       ),
     );
   }
+  const { settings } = config;
 
   return (
     <>
-      {listingItems.length > 0 ? (
+      {listingItems?.length > 0 ? (
         <>
           <ListingBodyTemplate
             items={listingItems}
@@ -78,7 +98,7 @@ const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
             {...data}
           />
           {data?.query?.length === 0 &&
-            content.items_total > settings.defaultPageSize && (
+            content?.items_total > settings.defaultPageSize && (
               <div className="pagination-wrapper">
                 <Pagination
                   activePage={currentPage}
@@ -104,7 +124,7 @@ const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
               </div>
             )}
           {data?.query?.length > 0 &&
-            querystringResults[data.block].total >
+            querystringResults?.[data.block]?.total >
               (data.b_size || settings.defaultPageSize) && (
               <div className="pagination-wrapper">
                 <Pagination

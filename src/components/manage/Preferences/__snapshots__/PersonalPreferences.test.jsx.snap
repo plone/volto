@@ -1,232 +1,60 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PersonalPreferences renders a personal preferences component 1`] = `
-<div
-  className="ui container"
->
-  <form
-    className="ui form"
-    method="post"
-    onSubmit={[Function]}
+<div>
+  <div
+    class="ui container"
   >
-    <div
-      className="ui raised segments"
+    <form
+      class="ui form"
+      method="post"
     >
       <div
-        className="ui segment"
+        class="ui raised segments"
       >
         <div
-          className="inline field help"
-          id="field-language"
+          class="ui segment"
         >
           <div
-            className="ui grid"
+            class="mocked-choices-widget"
+            id="mocked-field-language"
           >
-            <div
-              className="stretched row"
-            >
-              <div
-                className="four wide column"
-              >
-                <div
-                  className="wrapper"
-                >
-                  <label
-                    htmlFor="field-language"
-                  >
-                    Language
-                  </label>
-                </div>
-              </div>
-              <div
-                className="eight wide column"
-              >
-                <div
-                  className="react-select-container css-2b097c-container"
-                  id="field-language"
-                  onKeyDown={[Function]}
-                >
-                  <div
-                    className="react-select__control css-1ard45z-control"
-                    onMouseDown={[Function]}
-                    onTouchEnd={[Function]}
-                  >
-                    <div
-                      className="react-select__value-container react-select__value-container--has-value css-1dvrfad"
-                    >
-                      <div
-                        className="react-select__single-value css-1uccc91-singleValue"
-                      />
-                      <div
-                        className="css-b8ldur-Input"
-                      >
-                        <div
-                          className="react-select__input"
-                          style={
-                            Object {
-                              "display": "inline-block",
-                            }
-                          }
-                        >
-                          <input
-                            aria-autocomplete="list"
-                            autoCapitalize="none"
-                            autoComplete="off"
-                            autoCorrect="off"
-                            disabled={false}
-                            id="react-select-2-input"
-                            onBlur={[Function]}
-                            onChange={[Function]}
-                            onFocus={[Function]}
-                            spellCheck="false"
-                            style={
-                              Object {
-                                "background": 0,
-                                "border": 0,
-                                "boxSizing": "content-box",
-                                "color": "inherit",
-                                "fontSize": "inherit",
-                                "label": "input",
-                                "opacity": 1,
-                                "outline": 0,
-                                "padding": 0,
-                                "width": "1px",
-                              }
-                            }
-                            tabIndex="0"
-                            type="text"
-                            value=""
-                          />
-                          <div
-                            style={
-                              Object {
-                                "height": 0,
-                                "left": 0,
-                                "overflow": "scroll",
-                                "position": "absolute",
-                                "top": 0,
-                                "visibility": "hidden",
-                                "whiteSpace": "pre",
-                              }
-                            }
-                          >
-                            
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      className="react-select__indicators css-1hb7zxy-IndicatorsContainer"
-                    >
-                      <span
-                        className="react-select__indicator-separator css-6fp5c8-indicatorSeparator"
-                      />
-                      <div
-                        aria-hidden="true"
-                        className="react-select__indicator react-select__dropdown-indicator css-7hdh9a-DropdownIndicator"
-                        onMouseDown={[Function]}
-                        onTouchEnd={[Function]}
-                      >
-                        <svg
-                          className="icon"
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": undefined,
-                            }
-                          }
-                          onClick={null}
-                          style={
-                            Object {
-                              "fill": "#007bc1",
-                              "height": "24px",
-                              "width": "auto",
-                            }
-                          }
-                          viewBox=""
-                          xmlns=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <input
-                    name="language"
-                    type="hidden"
-                  />
-                </div>
-              </div>
-            </div>
-            <div
-              className="stretched row"
-            >
-              <div
-                className="stretched twelve wide column"
-              >
-                <p
-                  className="help"
-                >
-                  Your preferred language
-                </p>
-              </div>
-            </div>
+            Language
+             - 
+            Your preferred language
           </div>
         </div>
-      </div>
-      <div
-        className="ui clearing segment actions"
-      >
-        <button
-          aria-label="Save"
-          className="ui basic primary right floated button"
-          onClick={[Function]}
-          title="Save"
-          type="submit"
+        <div
+          class="ui clearing segment actions"
         >
-          <svg
-            className="icon circled"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": undefined,
-              }
-            }
-            onClick={null}
-            style={
-              Object {
-                "fill": "currentColor",
-                "height": "30px",
-                "width": "auto",
-              }
-            }
-            viewBox=""
-            xmlns=""
-          />
-        </button>
-        <button
-          aria-label="Cancel"
-          className="ui basic secondary right floated button"
-          onClick={[Function]}
-          title="Cancel"
-        >
-          <svg
-            className="icon circled"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": undefined,
-              }
-            }
-            onClick={null}
-            style={
-              Object {
-                "fill": "currentColor",
-                "height": "30px",
-                "width": "auto",
-              }
-            }
-            viewBox=""
-            xmlns=""
-          />
-        </button>
+          <button
+            aria-label="Save"
+            class="ui basic primary right floated button"
+            title="Save"
+            type="submit"
+          >
+            <svg
+              class="icon circled"
+              style="height: 30px; width: auto; fill: currentColor;"
+              viewBox=""
+              xmlns=""
+            />
+          </button>
+          <button
+            aria-label="Cancel"
+            class="ui basic secondary right floated button"
+            title="Cancel"
+          >
+            <svg
+              class="icon circled"
+              style="height: 30px; width: auto; fill: currentColor;"
+              viewBox=""
+              xmlns=""
+            />
+          </button>
+        </div>
       </div>
-    </div>
-  </form>
+    </form>
+  </div>
 </div>
 `;

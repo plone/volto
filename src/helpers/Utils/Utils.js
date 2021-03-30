@@ -1,4 +1,5 @@
-import { transform, isEqual, isObject } from 'lodash';
+import { isEqual, isObject, transform } from 'lodash';
+import React from 'react';
 
 /**
  * Deep diff between two object, using lodash
@@ -16,3 +17,126 @@ export function difference(object, base) {
     }
   });
 }
+
+/**
+ * Throw an error if the wrapped function returns undefined
+ *
+ * @param {Function} func
+ */
+export const safeWrapper = (func) => (config) => {
+  const res = func(config);
+  if (typeof res === 'undefined') {
+    throw new Error(`Configuration function doesn't return config, ${func}`);
+  }
+  return res;
+};
+
+/**
+ * A helper to pipe a configuration object through configuration loaders
+ *
+ * @param {Array} configMethods A list of configuration methods
+ * @param {Object} config The Volto singleton config object
+ */
+export function applyConfig(configMethods, config) {
+  return configMethods.reduce((acc, apply) => safeWrapper(apply)(acc), config);
+}
+
+/**
+ * A HOC factory that propagates the status of asyncConnected requests back to
+ * the main server process, to allow properly expressing an error status as
+ * HTTP status code
+ *
+ * @param {} code HTTP return code
+ */
+export function withServerErrorCode(code) {
+  return (WrappedComponent) => (props) => {
+    if (props.staticContext && Object.keys(props.staticContext).length === 0) {
+      const { staticContext } = props;
+      staticContext.error_code = code;
+      staticContext.error = props.error;
+    }
+    return <WrappedComponent {...props} />;
+  };
+}
+
+// See https://en.wikipedia.org/wiki/Web_colors#Extended_colors
+const safeColors = [
+  'Black',
+  'Blue',
+  'BlueViolet',
+  'Brown',
+  'Crimson',
+  'DarkBlue',
+  'DarkCyan',
+  'DarkGreen',
+  'DarkMagenta',
+  'DarkOliveGreen',
+  'DarkOrchid',
+  'DarkRed',
+  'DarkSlateBlue',
+  'DarkSlateGray',
+  'DarkViolet',
+  'DeepPink',
+  'DimGray',
+  'DodgerBlue',
+  'Firebrick',
+  'ForestGreen',
+  'Fuchsia',
+  'Green',
+  'IndianRed',
+  'Indigo',
+  'Magenta',
+  'Maroon',
+  'MediumBlue',
+  'MediumSlateBlue',
+  'MediumVioletRed',
+  'MidnightBlue',
+  'Navy',
+  'Olive',
+  'OliveDrab',
+  'OrangeRed',
+  'Purple',
+  'Red',
+  'RoyalBlue',
+  'SaddleBrown',
+  'SeaGreen',
+  'Sienna',
+  'SlateBlue',
+  'SlateGray',
+  'SteelBlue',
+  'Teal',
+];
+const namedColors = {};
+/**
+ * Will generate initials from string
+ * @param {string} name
+ * @param {integer} count
+ * @returns {string} only one letter if received only one name
+ */
+export const getInitials = (title, limit) => {
+  const text = title
+    .split(' ')
+    .map((n) => (n[0] ? n[0].toUpperCase() : ''))
+    .join('');
+  if (limit) {
+    return text.substring(0, limit);
+  }
+  return text;
+};
+
+/**
+ * Will generate a random color hex
+ * Will also remmember the color for each userId
+ * @param {string} userId
+ */
+export const getColor = (name) => {
+  const namedColor = namedColors[name]
+    ? namedColors[name]
+    : safeColors.length > 0
+    ? safeColors.pop()
+    : `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+  if (!namedColors[name]) {
+    namedColors[name] = namedColor;
+  }
+  return namedColor;
+};

@@ -30,7 +30,6 @@ exports[`renders an Image Block Sidebar component 1`] = `
   >
     <div
       className="inline field text"
-      id="field-external"
     >
       <div
         className="ui grid"
@@ -46,6 +45,7 @@ exports[`renders an Image Block Sidebar component 1`] = `
             >
               <label
                 htmlFor="field-external"
+                id="fieldset-undefined-field-label-external"
               >
                 External URL
               </label>
@@ -58,10 +58,13 @@ exports[`renders an Image Block Sidebar component 1`] = `
               className="ui icon input"
             >
               <input
-                disabled={false}
                 id="field-external"
+                maxLength={null}
+                minLength={null}
                 name="external"
+                onBlur={[Function]}
                 onChange={[Function]}
+                onClick={[Function]}
                 type="text"
                 value="image"
               />
@@ -78,6 +81,7 @@ exports[`renders an Image Block Sidebar component 1`] = `
               />
             </div>
             <button
+              className="field-external-action-button"
               onClick={[Function]}
             >
               <svg
@@ -105,7 +109,6 @@ exports[`renders an Image Block Sidebar component 1`] = `
     </div>
     <div
       className="inline field text"
-      id="field-alt"
     >
       <div
         className="ui grid"
@@ -121,6 +124,7 @@ exports[`renders an Image Block Sidebar component 1`] = `
             >
               <label
                 htmlFor="field-alt"
+                id="fieldset-undefined-field-label-alt"
               >
                 Alt text
               </label>
@@ -133,10 +137,13 @@ exports[`renders an Image Block Sidebar component 1`] = `
               className="ui icon input"
             >
               <input
-                disabled={false}
                 id="field-alt"
+                maxLength={null}
+                minLength={null}
                 name="alt"
+                onBlur={[Function]}
                 onChange={[Function]}
+                onClick={[Function]}
                 type="text"
                 value="alternate text"
               />
@@ -153,6 +160,7 @@ exports[`renders an Image Block Sidebar component 1`] = `
               />
             </div>
             <button
+              className="field-alt-action-button"
               onClick={[Function]}
             >
               <svg
@@ -323,7 +331,6 @@ exports[`renders an Image Block Sidebar component 1`] = `
     </div>
     <div
       className="inline field"
-      id="field-image_size"
     >
       <div
         className="ui grid"
@@ -339,6 +346,7 @@ exports[`renders an Image Block Sidebar component 1`] = `
             >
               <label
                 htmlFor="field-image_size"
+                id="fieldset-undefined-field-label-image_size"
               >
                 Size
               </label>
@@ -347,7 +355,9 @@ exports[`renders an Image Block Sidebar component 1`] = `
           <div
             className="eight wide column"
           >
-            <div>
+            <div
+              className="field-image_size"
+            >
               <div
                 className="ui buttons"
               >
@@ -431,7 +441,6 @@ exports[`renders an Image Block Sidebar component 1`] = `
     >
       <div
         className="inline field text"
-        id="field-link"
       >
         <div
           className="ui grid"
@@ -447,6 +456,7 @@ exports[`renders an Image Block Sidebar component 1`] = `
               >
                 <label
                   htmlFor="field-link"
+                  id="fieldset-undefined-field-label-link"
                 >
                   Link to
                 </label>
@@ -459,10 +469,13 @@ exports[`renders an Image Block Sidebar component 1`] = `
                 className="ui icon input"
               >
                 <input
-                  disabled={false}
                   id="field-link"
+                  maxLength={null}
+                  minLength={null}
                   name="link"
+                  onBlur={[Function]}
                   onChange={[Function]}
+                  onClick={[Function]}
                   type="text"
                   value=""
                 />
@@ -479,6 +492,7 @@ exports[`renders an Image Block Sidebar component 1`] = `
                 />
               </div>
               <button
+                className="field-link-action-button"
                 onClick={[Function]}
               >
                 <svg
@@ -506,7 +520,6 @@ exports[`renders an Image Block Sidebar component 1`] = `
       </div>
       <div
         className="inline field"
-        id="field-openLinkInNewTab"
       >
         <div
           className="ui grid"
@@ -530,7 +543,6 @@ exports[`renders an Image Block Sidebar component 1`] = `
                   <input
                     checked={false}
                     className="hidden"
-                    disabled={false}
                     name="field-openLinkInNewTab"
                     readOnly={true}
                     tabIndex={0}

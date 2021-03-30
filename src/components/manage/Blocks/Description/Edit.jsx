@@ -7,10 +7,11 @@ import React, { Component } from 'react';
 import { Map } from 'immutable';
 import PropTypes from 'prop-types';
 import { stateFromHTML } from 'draft-js-import-html';
+import { isEqual } from 'lodash';
 import { Editor, DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
 import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   description: {
@@ -113,6 +114,22 @@ class Edit extends Component {
   }
 
   /**
+   * @param {*} nextProps
+   * @param {*} nextState
+   * @returns {boolean}
+   * @memberof Edit
+   */
+  shouldComponentUpdate(nextProps) {
+    return (
+      this.props.selected ||
+      !isEqual(
+        this.props.properties.description,
+        nextProps.properties.description,
+      )
+    );
+  }
+
+  /**
    * Change handler
    * @method onChange
    * @param {object} editorState Editor state.
@@ -145,9 +162,12 @@ class Edit extends Component {
           editorState={this.state.editorState}
           blockRenderMap={extendedBlockRenderMap}
           handleReturn={() => {
+            if (this.props.data?.disableNewBlocks) {
+              return 'handled';
+            }
             this.props.onSelectBlock(
               this.props.onAddBlock(
-                settings.defaultBlockType,
+                config.settings.defaultBlockType,
                 this.props.index + 1,
               ),
             );
