@@ -4,6 +4,8 @@
 
 ### Breaking
 
+- Seamless mode by default. `Host` header support for deployments, so no `RAZZLE_API_PATH` is required in production builds anymore if the header is present. Not an strictly breaking change, but it's a default behavior change worth to notice on its own @sneridagh
+
 ### Feature
 
 ### Bugfix

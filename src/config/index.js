@@ -41,9 +41,7 @@ const port = process.env.PORT || '3000';
 
 const apiPath =
   process.env.RAZZLE_API_PATH ||
-  (__DEVELOPMENT__
-    ? `http://${host}:${port}/api`
-    : 'http://localhost:8080/Plone');
+  (__DEVELOPMENT__ ? `http://${host}:${port}/api` : '');
 
 const getServerURL = (url) => {
   if (!url) return;
