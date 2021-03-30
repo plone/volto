@@ -7,6 +7,10 @@ if [ -z "$API_PATH" ]; then
   API_PATH="http://localhost:8080/Plone"
 fi
 
+if [ -z "$INTERNAL_API_PATH" ]; then
+  INTERNAL_API_PATH="http://plone:8080/Plone"
+fi
+
 function apply_volto {
     yo --force --no-insight @plone/volto --volto=$VOLTO --no-interactive --skip-install
     REBUILD="$REBUILD $VOLTO"

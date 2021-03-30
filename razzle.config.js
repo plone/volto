@@ -201,6 +201,16 @@ const defaultModify = ({
     addonsAsExternals = registry.addonNames.map((addon) => new RegExp(addon));
   }
 
+  if (process.env.RAZZLE_TESTING_ADDONS) {
+    testingAddons.forEach((addon) => {
+      const p = fs.realpathSync(registry.packages[addon].modulePath);
+      if (include.indexOf(p) === -1) {
+        include.push(p);
+      }
+      addonsAsExternals = registry.addonNames.map((addon) => new RegExp(addon));
+    });
+  }
+
   config.externals =
     target === 'node'
       ? [
