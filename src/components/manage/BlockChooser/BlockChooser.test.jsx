@@ -140,6 +140,19 @@ describe('BlocksChooser', () => {
     // There are 2 because the others are aria-hidden="true"
     expect(screen.getAllByRole('button')).toHaveLength(2);
   });
+  it('allowedBlocks bypasses showRestricted', () => {
+    config.blocks.blocksConfig.listing.restricted = true;
+    const { container } = render(
+      <Provider store={store}>
+        <BlockChooser
+          onMutateBlock={() => {}}
+          currentBlock="theblockid"
+          allowedBlocks={['image', 'listing']}
+        />
+      </Provider>,
+    );
+    expect(container).toHaveTextContent('Listing');
+  });
   it('showRestricted test', () => {
     const { container } = render(
       <Provider store={store}>

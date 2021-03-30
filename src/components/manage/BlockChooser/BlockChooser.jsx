@@ -40,7 +40,7 @@ const BlockChooser = ({
       }
     } else {
       if (useAllowedBlocks) {
-        return allowedBlocks.includes(item.id) && !item.restricted;
+        return allowedBlocks.includes(item.id);
       } else {
         return !item.restricted;
       }
