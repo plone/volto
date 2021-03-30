@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix Text Block placeholder regression refs #2322 @avoinea
+
 ### Internal
 
 ## 12.4.2 (2021-03-29)
