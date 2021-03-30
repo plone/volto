@@ -6,6 +6,8 @@
 
 ### Feature
 
+- New setting, `config.settings.showTags` to be able to configure tags visibility on default View @avoinea
+
 ### Bugfix
 
 ### Internal
