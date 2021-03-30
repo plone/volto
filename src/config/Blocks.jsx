@@ -337,7 +337,7 @@ const blocksConfig = {
       view: [],
     },
   },
-  navigation: {
+  contextNavigation: {
     id: 'contextNavigation',
     title: 'Navigation',
     icon: tableSVG,

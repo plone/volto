@@ -71,6 +71,3 @@ export {
 export { messages } from './MessageLabels/MessageLabels';
 export { asyncConnect } from './AsyncConnect';
 export * from './Slots';
-
-// export useSlots from './Slots/useSlots';
-// export { injectLazyLibs } from './Loadable/Loadable';

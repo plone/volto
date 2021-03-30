@@ -13,30 +13,13 @@ import {
   emptyBlocksForm,
   addEmptyBlock,
 } from '@plone/volto/helpers/Blocks/Blocks';
-import { Helmet, getBaseUrl } from '@plone/volto/helpers';
+import { Helmet, getBaseUrl, slotsBlocksConfig } from '@plone/volto/helpers';
 import { Icon, Sidebar, Toolbar } from '@plone/volto/components';
 import EditBlockWrapper from './SlotEditBlockWrapper';
 import config from '@plone/volto/registry';
 
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
-
-/**
- * Set restricted to false for slot fills
- */
-const slotsBlocksConfig = (blocksConfig) => {
-  return Object.assign(
-    {},
-    ...Object.keys(blocksConfig).map((id) => ({
-      [id]: {
-        ...blocksConfig[id],
-        restricted: blocksConfig[id].isSlotFill
-          ? false
-          : blocksConfig[id].isSlotFill,
-      },
-    })),
-  );
-};
 
 const messages = defineMessages({
   save: {
