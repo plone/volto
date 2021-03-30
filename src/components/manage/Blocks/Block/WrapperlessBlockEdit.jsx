@@ -58,10 +58,10 @@ export class Edit extends React.Component {
   };
 
   componentDidMount() {
-    const { type } = this.props;
+    const { type, blocksConfig = config.blocks.blocksConfig } = this.props;
+
     const blockHasOwnFocusManagement =
-      config.blocks.blocksConfig?.[type]?.['blockHasOwnFocusManagement'] ||
-      null;
+      blocksConfig?.[type]?.['blockHasOwnFocusManagement'] || null;
     if (
       !blockHasOwnFocusManagement &&
       this.props.selected &&
@@ -69,19 +69,20 @@ export class Edit extends React.Component {
     ) {
       this.blockNode.current.focus();
     }
-    const tab = this.props.manage
-      ? 1
-      : config.blocks.blocksConfig?.[type]?.sidebarTab || 0;
+    const tab = this.props.manage ? 1 : blocksConfig?.[type]?.sidebarTab || 0;
     if (this.props.selected) {
       this.props.setSidebarTab(tab);
     }
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    const { selected, type } = this.props;
+    const {
+      selected,
+      type,
+      blocksConfig = config.blocks.blocksConfig,
+    } = this.props;
     const blockHasOwnFocusManagement =
-      config.blocks.blocksConfig?.[type]?.['blockHasOwnFocusManagement'] ||
-      null;
+      blocksConfig?.[type]?.['blockHasOwnFocusManagement'] || null;
     if (
       !blockHasOwnFocusManagement &&
       nextProps.selected &&
@@ -96,7 +97,7 @@ export class Edit extends React.Component {
     ) {
       const tab = this.props.manage
         ? 1
-        : config.blocks.blocksConfig?.[nextProps.type]?.sidebarTab || 0;
+        : blocksConfig?.[nextProps.type]?.sidebarTab || 0;
       this.props.setSidebarTab(tab);
     }
   }
@@ -109,18 +110,20 @@ export class Edit extends React.Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { type, intl } = this.props;
+    const {
+      type,
+      intl,
+      blocksConfig = config.blocks.blocksConfig,
+    } = this.props;
     const disableNewBlocks = this.props.data?.disableNewBlocks;
 
-    let Block = config.blocks.blocksConfig?.[type]?.['edit'] || null;
+    let Block = blocksConfig?.[type]?.['edit'] || null;
     if (this.props.data?.readOnly) {
-      Block = config.blocks.blocksConfig?.[type]?.['view'] || null;
+      Block = blocksConfig?.[type]?.['view'] || null;
     }
-    const schema =
-      config.blocks.blocksConfig?.[type]?.['schema'] || BlockSettingsSchema;
+    const schema = blocksConfig?.[type]?.['schema'] || BlockSettingsSchema;
     const blockHasOwnFocusManagement =
-      config.blocks.blocksConfig?.[type]?.['blockHasOwnFocusManagement'] ||
-      null;
+      blocksConfig?.[type]?.['blockHasOwnFocusManagement'] || null;
 
     return Block !== null ? (
       <div

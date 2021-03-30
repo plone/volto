@@ -111,6 +111,10 @@ defineMessages({
     id: 'common',
     defaultMessage: 'Common',
   },
+  site: {
+    id: 'site',
+    defaultMessage: 'Site',
+  },
 });
 
 const groupBlocksOrder = [
@@ -118,6 +122,7 @@ const groupBlocksOrder = [
   { id: 'text', title: 'Text' },
   { id: 'media', title: 'Media' },
   { id: 'common', title: 'Common' },
+  { id: 'site', title: 'Site' },
 ];
 
 const blocksConfig = {
@@ -336,7 +341,7 @@ const blocksConfig = {
     id: 'contextNavigation',
     title: 'Navigation',
     icon: tableSVG,
-    group: 'common',
+    group: 'site',
     view: ContextNavigationView,
     edit: ContextNavigationEdit,
     schema: BlockSettingsSchema,
