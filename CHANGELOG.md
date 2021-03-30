@@ -1,6 +1,6 @@
 # Change Log
 
-## 12.4.2 (unreleased)
+## 12.4.3 (unreleased)
 
 ### Breaking
 
@@ -25,6 +25,14 @@
 ### Bugfix
 
 ### Internal
+
+- BlocksForm and RenderBlocks now allow a `blocksConfig` configuration object as a prop @tiberiuichim
+
+## 12.4.2 (2021-03-29)
+
+### Bugfix
+
+- Re-add formTitle, formDescription, metadata to BlocksForm @avoinea
 
 ## 12.4.1 (2021-03-29)
 
