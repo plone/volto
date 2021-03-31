@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Updated italian translations @nzambello
+
 ## 12.4.2 (2021-03-29)
 
 ### Bugfix
