@@ -24,7 +24,7 @@ let socket = null;
  * @function addExpandersToPath
  * @param {string} path The url/path including the querystring
  * @param {*} type The action type
- * @returns {string} The url/path with the configured epanders added to the query string
+ * @returns {string} The url/path with the configured expanders added to the query string
  */
 function addExpandersToPath(path, type) {
   if (!path) {

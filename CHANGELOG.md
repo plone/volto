@@ -6,7 +6,7 @@
 
 ### Feature
 
-- Configurable api expanders @csenger
+- Add Configurable api expanders @csenger
 
 ### Bugfix
 
