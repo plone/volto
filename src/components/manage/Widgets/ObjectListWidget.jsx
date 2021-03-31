@@ -93,7 +93,7 @@ const ObjectListWidget = (props) => {
                   <div className="accordion-title-wrapper">
                     {`${objectSchema.title} #${index + 1}`}
                   </div>
-                  <div>
+                  <div className="accordion-tools">
                     <button
                       onClick={() => {
                         onChange(
