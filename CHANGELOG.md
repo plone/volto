@@ -6,9 +6,12 @@
 
 ### Feature
 
+- New setting, `config.settings.showTags` to be able to configure tags visibility on default View @avoinea
+
 ### Bugfix
 
 - Don't show empty groups in BlockChooser @tiberiuichim
+- Fix Text Block placeholder regression refs #2322 @avoinea
 
 ### Internal
 
