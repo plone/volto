@@ -15,10 +15,12 @@
 ### Internal
 
 - Add toPublicURL helper @nzambello
+- Don't show empty groups in BlockChooser @tiberiuichim
 - Fix Text Block placeholder regression refs #2322 @avoinea
 
 ### Internal
 
+- BlocksForm and RenderBlocks now allow a `blocksConfig` configuration object as a prop @tiberiuichim
 - Updated italian translations @nzambello
 
 ## 12.4.2 (2021-03-29)

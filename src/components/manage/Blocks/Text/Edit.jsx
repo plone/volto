@@ -55,6 +55,7 @@ class Edit extends Component {
     showRestricted: PropTypes.bool,
     formTitle: PropTypes.string,
     formDescription: PropTypes.string,
+    blocksConfig: PropTypes.objectOf(PropTypes.any),
   };
 
   /**
@@ -324,6 +325,7 @@ class Edit extends Component {
             currentBlock={this.props.block}
             allowedBlocks={this.props.allowedBlocks}
             showRestricted={this.props.showRestricted}
+            blocksConfig={this.props.blocksConfig}
           />
         )}
       </>
