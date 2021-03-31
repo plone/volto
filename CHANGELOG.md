@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix Text Block placeholder regression refs #2322 @avoinea
+
 ### Internal
 
 - Updated italian translations @nzambello
