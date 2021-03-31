@@ -6,6 +6,8 @@
 
 ### Feature
 
+- New setting, `config.settings.showTags` to be able to configure tags visibility on default View @avoinea
+
 ### Bugfix
 
 - Fix sitemap URL generation @nzambello
@@ -13,6 +15,11 @@
 ### Internal
 
 - Add toPublicURL helper @nzambello
+- Fix Text Block placeholder regression refs #2322 @avoinea
+
+### Internal
+
+- Updated italian translations @nzambello
 
 ## 12.4.2 (2021-03-29)
 

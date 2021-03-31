@@ -245,7 +245,8 @@ class View extends Component {
           token={this.props.token}
           history={this.props.history}
         />
-        {this.props.content.subjects &&
+        {config.settings.showTags &&
+          this.props.content.subjects &&
           this.props.content.subjects.length > 0 && (
             <Tags tags={this.props.content.subjects} />
           )}
