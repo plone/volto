@@ -1170,7 +1170,7 @@ msgstr "An den Anfang verschieben"
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "My email address is"
-msgstr "Mein Benutzername / Meine E-Mail-Adresse lautet"
+msgstr "Mein Benutzername / meine E-Mail-Adresse lautet"
 
 #: components/manage/Sharing/Sharing
 #: components/theme/ContactForm/ContactForm
@@ -2333,7 +2333,7 @@ msgstr "Intranet"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "label_my_email_address_is"
-msgstr "Mein Benutzername / Meine E-Mail-Adresse lautet"
+msgstr "Mein Benutzername / meine E-Mail-Adresse lautet"
 
 #: config/Blocks
 msgid "leadimage"
