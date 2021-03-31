@@ -7,15 +7,15 @@ const defaultSlots = {
     manage: true,
 
     items: [
-      {
-        id: 'ContextNavigation',
-        component: ContextNavigation,
-        props: {},
-        available: restrictToPath({
-          path: '/',
-          exact: false,
-        }),
-      },
+      // {
+      //   id: 'ContextNavigation',
+      //   component: ContextNavigation,
+      //   props: {},
+      //   available: restrictToPath({
+      //     path: '/',
+      //     exact: false,
+      //   }),
+      // },
     ],
 
     // available: ({ pathname, slotData, slotName, slots }) => true,
