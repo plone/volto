@@ -56,7 +56,7 @@
     "cypress:open:core-sandbox": "NODE_ENV=production CYPRESS_API=plone cypress open --config integrationFolder='cypress/tests/core-sandbox'",
     "cypress:run": "NODE_ENV=production CYPRESS_API=plone CYPRESS_RETRIES=2 cypress run",
     "cypress:run:guillotina": "NODE_ENV=production CYPRESS_API=guillotina cypress run --config-file cypress/cypress.guillotina.json",
-    "cypress:run:core-sandbox": "NODE_ENV=production CYPRESS_API=plone cypress run --spec 'cypress/tests/core-sandbox/*'",
+    "cypress:run:core-sandbox": "NODE_ENV=production CYPRESS_API=plone cypress run --config integrationFolder='cypress/tests/core-sandbox'",
     "cy:install": "cypress install",
     "cy:test:fixture:setup": "node cypress/support/reset-fixture.js",
     "cy:test:fixture:teardown": "node cypress/support/reset-fixture.js teardown",
