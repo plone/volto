@@ -132,6 +132,7 @@ let config = {
     serverConfig,
     storeExtenders: [],
     showTags: true,
+    useQuantaToolbar: true,
   },
   widgets: {
     ...widgetMapping,

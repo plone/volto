@@ -12,6 +12,7 @@ import {
   previousBlockId,
 } from '@plone/volto/helpers';
 import EditBlockWrapper from './EditBlockWrapper';
+import QuantaBlockWrapper from './QuantaBlockWrapper';
 import config from '@plone/volto/registry';
 
 const BlocksForm = (props) => {
@@ -113,11 +114,21 @@ const BlocksForm = (props) => {
     onChangeFormData(newFormData);
   };
 
-  const defaultBlockWrapper = ({ draginfo }, editBlock, blockProps) => (
-    <EditBlockWrapper draginfo={draginfo} blockProps={blockProps}>
-      {editBlock}
-    </EditBlockWrapper>
-  );
+  const defaultBlockWrapper = ({ draginfo }, editBlock, blockProps) => {
+    if (config.settings.useQuantaToolbar) {
+      return (
+        <QuantaBlockWrapper draginfo={draginfo} blockProps={blockProps}>
+          {editBlock}
+        </QuantaBlockWrapper>
+      );
+    } else {
+      return (
+        <EditBlockWrapper draginfo={draginfo} blockProps={blockProps}>
+          {editBlock}
+        </EditBlockWrapper>
+      );
+    }
+  };
 
   const editBlockWrapper = children || defaultBlockWrapper;
 
