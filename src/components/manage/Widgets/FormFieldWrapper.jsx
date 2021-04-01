@@ -84,6 +84,7 @@ class FormFieldWrapper extends Component {
       isDisabled,
       onDelete,
       intl,
+      noForInFieldLabel,
     } = this.props;
     const wdg = (
       <>
@@ -111,7 +112,7 @@ class FormFieldWrapper extends Component {
                 <div className="wrapper">
                   <label
                     id={`fieldset-${fieldSet}-field-label-${id}`}
-                    htmlFor={`field-${id}`}
+                    htmlFor={!noForInFieldLabel && `field-${id}`}
                   >
                     {draggable && onEdit && (
                       <i

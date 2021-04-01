@@ -1,6 +1,6 @@
-import { Accordion, Button, Segment } from 'semantic-ui-react';
-
 import React from 'react';
+import { defineMessages, useIntl } from 'react-intl';
+import { Accordion, Button, Segment } from 'semantic-ui-react';
 import { DragDropList, FormFieldWrapper, Icon } from '@plone/volto/components';
 import ObjectWidget from '@plone/volto/components/manage/Widgets/ObjectWidget';
 
@@ -12,9 +12,25 @@ import dragSVG from '@plone/volto/icons/drag.svg';
 import { v4 as uuid } from 'uuid';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 
+const messages = defineMessages({
+  labelRemoveItem: {
+    id: 'Remove item',
+    defaultMessage: 'Remove item',
+  },
+  labelCollapseItem: {
+    id: 'Collapse item',
+    defaultMessage: 'Collapse item',
+  },
+  labelShowItem: {
+    id: 'Show item',
+    defaultMessage: 'Show item',
+  },
+});
+
 const ObjectListWidget = (props) => {
-  const { id, schema, value = [], onChange, schemaExtender } = props;
+  const { fieldSet, id, schema, value = [], onChange, schemaExtender } = props;
   const [activeColumn, setActiveColumn] = React.useState(0);
+  const intl = useIntl();
 
   function handleChangeColumn(e, blockProps) {
     const { index } = blockProps;
@@ -24,13 +40,18 @@ const ObjectListWidget = (props) => {
   }
   const objectSchema = typeof schema === 'function' ? schema(props) : schema;
 
+  const topLayerShadow = '0 1px 1px rgba(0,0,0,0.15)';
+  const secondLayer = ', 0 10px 0 -5px #eee, 0 10px 1px -4px rgba(0,0,0,0.15)';
+  const thirdLayer = ', 0 20px 0 -10px #eee, 0 20px 1px -9px rgba(0,0,0,0.15)';
+
   return (
     <div className="objectlist-widget">
-      <FormFieldWrapper {...props}>
+      <FormFieldWrapper {...props} noForInFieldLabel className="objectlist">
         <div className="add-item-button-wrapper">
           <Button
             compact
             icon
+            aria-label={objectSchema.addMessage || `Add ${objectSchema.title}`}
             onClick={(e) => {
               e.preventDefault();
               onChange(id, [
@@ -50,6 +71,12 @@ const ObjectListWidget = (props) => {
         </div>
       </FormFieldWrapper>
       <DragDropList
+        style={{
+          boxShadow: `${topLayerShadow}${value.length > 1 ? secondLayer : ''}${
+            value.length > 2 ? thirdLayer : ''
+          }`,
+        }}
+        ariaLabelledBy={`fieldset-${fieldSet || 'default'}-field-label-${id}`}
         childList={value.map((o) => [o['@id'], o])}
         onMoveItem={(result) => {
           const { source, destination } = result;
@@ -78,6 +105,11 @@ const ObjectListWidget = (props) => {
                   active={activeColumn === index}
                   index={index}
                   onClick={handleChangeColumn}
+                  aria-label={`${
+                    activeColumn === index
+                      ? intl.formatMessage(messages.labelCollapseItem)
+                      : intl.formatMessage(messages.labelShowItem)
+                  } #${index + 1}`}
                 >
                   <button
                     style={{
@@ -95,6 +127,9 @@ const ObjectListWidget = (props) => {
                   </div>
                   <div className="accordion-tools">
                     <button
+                      aria-label={`${intl.formatMessage(
+                        messages.labelRemoveItem,
+                      )} #${index + 1}`}
                       onClick={() => {
                         onChange(
                           id,

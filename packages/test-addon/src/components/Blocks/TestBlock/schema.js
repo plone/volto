@@ -85,7 +85,7 @@ export const SliderSchema = (props) => ({
     {
       id: 'default',
       title: 'Default',
-      fields: ['slides'],
+      fields: ['slides', 'fieldAfterObjectList'],
     },
   ],
   properties: {
@@ -93,6 +93,9 @@ export const SliderSchema = (props) => ({
       widget: 'object_list',
       title: props.intl.formatMessage(messages.items),
       schema: itemSchema,
+    },
+    fieldAfterObjectList: {
+      title: 'Field after OL',
     },
   },
   required: [],

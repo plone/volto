@@ -7,7 +7,7 @@ const TestBlockEdit = (props) => {
 
   return (
     <>
-      <div>Test Block Edit</div>;
+      <div>Test Block Edit</div>
       <SidebarPortal selected={selected}>
         <Data
           {...props}

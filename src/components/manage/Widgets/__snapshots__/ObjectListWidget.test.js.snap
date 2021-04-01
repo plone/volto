@@ -6,7 +6,7 @@ exports[`renders an object list widget component 1`] = `
     class="objectlist-widget"
   >
     <div
-      class="inline required field help"
+      class="inline required field help objectlist"
     >
       <div
         class="ui grid"
@@ -21,7 +21,6 @@ exports[`renders an object list widget component 1`] = `
               class="wrapper"
             >
               <label
-                for="field-my-widget"
                 id="fieldset-my-field-set-field-label-my-widget"
               >
                 My Widget
@@ -58,6 +57,7 @@ exports[`renders an object list widget component 1`] = `
               class="add-item-button-wrapper"
             >
               <button
+                aria-label="Add Link"
                 class="ui compact icon button"
               >
                 <svg
@@ -87,9 +87,10 @@ exports[`renders an object list widget component 1`] = `
       </div>
     </div>
     <div
+      arialabelledby="fieldset-my-field-set-field-label-my-widget"
       data-rbd-droppable-context-id="0"
       data-rbd-droppable-id="id-0"
-      style="position: relative;"
+      style="position: relative; box-shadow: 0 1px 1px rgba(0,0,0,0.15), 0 10px 0 -5px #eee, 0 10px 1px -4px rgba(0,0,0,0.15);"
     >
       <div
         data-rbd-draggable-context-id="0"
@@ -99,6 +100,7 @@ exports[`renders an object list widget component 1`] = `
           class="accordion ui fluid styled"
         >
           <div
+            aria-label="Collapse item #1"
             class="active title"
           >
             <button
@@ -126,7 +128,9 @@ exports[`renders an object list widget component 1`] = `
             <div
               class="accordion-tools"
             >
-              <button>
+              <button
+                aria-label="Remove item #1"
+              >
                 <svg
                   class="icon"
                   style="height: 20px; width: auto; fill: #e40166;"
@@ -191,6 +195,7 @@ exports[`renders an object list widget component 1`] = `
           class="accordion ui fluid styled"
         >
           <div
+            aria-label="Show item #2"
             class="title"
           >
             <button
@@ -218,7 +223,9 @@ exports[`renders an object list widget component 1`] = `
             <div
               class="accordion-tools"
             >
-              <button>
+              <button
+                aria-label="Remove item #2"
+              >
                 <svg
                   class="icon"
                   style="height: 20px; width: auto; fill: #e40166;"

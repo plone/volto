@@ -12,15 +12,17 @@
   animation: field-just-changed-anim 0.5s;
 }
 
+.ui.segment.form.attached {
+  .field:last-child {
+    margin-bottom: 1em;
+  }
+}
+
 .objectlist-widget {
   margin-bottom: 20px;
 
   [data-rbd-draggable-context-id] {
     margin-bottom: 0;
-  }
-
-  [data-rbd-droppable-id] {
-    border-bottom: 3px double #ddd;
   }
 
   .add-item-button-wrapper {
@@ -48,14 +50,25 @@
       border-bottom: none;
     }
 
-    .content.active {
-      margin-bottom: 10px;
-    }
+    // .content.active {
+    //   margin-bottom: 10px;
+    // }
   }
 
   .accordion-tools button {
     cursor: pointer;
   }
+}
+
+[id^='blockform-fieldset-'] .objectlist-widget {
+  [data-rbd-droppable-id] {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+}
+
+.ui.accordion .ui.segment {
+  border: none;
 }
 
 .accordion-title-wrapper {
