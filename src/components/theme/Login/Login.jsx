@@ -280,7 +280,7 @@ class Login extends Component {
                                 <Link to="/password-reset">
                                   <FormattedMessage
                                     id="we can send you a new one"
-                                    defaultMessage="we can send you a new one"
+                                    defaultMessage="Reset password"
                                   />
                                 </Link>
                               ),
