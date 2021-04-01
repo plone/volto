@@ -8,8 +8,8 @@ import PersonalInformation from '@plone/volto/components/manage/Preferences/Pers
 import PersonalPreferences from '@plone/volto/components/manage/Preferences/PersonalPreferences';
 import StandardWrapper from '@plone/volto/components/manage/Toolbar/StandardWrapper';
 
-import ManageSlotsButton from '@plone/volto/components/manage/EditSlot/ManageSlotsButton';
-import ManageSlotsMoreComponent from '@plone/volto/components/manage/EditSlot/ManageSlotsMoreComponent';
+import ManageSlotsButton from '@plone/volto/components/manage/Slots/ManageSlotsButton';
+import ManageSlotsMoreComponent from '@plone/volto/components/manage/Slots/ManageSlotsMoreComponent';
 
 import {
   EditButton,
