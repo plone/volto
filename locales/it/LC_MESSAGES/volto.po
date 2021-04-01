@@ -335,7 +335,7 @@ msgstr "Autore"
 
 #: components/theme/Comments/Comments
 msgid "Comments"
-msgstr ""
+msgstr "Commenti"
 
 #: components/manage/Diff/Diff
 msgid "Compare"
@@ -579,15 +579,15 @@ msgstr "Trascina in quest'area i file dal tuo computer o clicca su “Sfoglia”
 
 #: components/manage/Widgets/FileWidget
 msgid "Drop file here to replace the existing file"
-msgstr ""
+msgstr "Rilascia un file qui per sostituire quello esistente"
 
 #: components/manage/Widgets/FileWidget
 msgid "Drop file here to upload a new file"
-msgstr ""
+msgstr "Rilascia un file qui per caricare un nuovo file"
 
 #: components/manage/Widgets/FileWidget
 msgid "Drop files here ..."
-msgstr ""
+msgstr "Rilascia file qui..."
 
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
@@ -761,7 +761,7 @@ msgstr "Celle della tabella a larghezza fissata"
 
 #: components/manage/BlockChooser/BlockChooser
 msgid "Fold"
-msgstr ""
+msgstr "Chiudi"
 
 #: components/manage/Contents/Contents
 msgid "Folder"
@@ -835,11 +835,11 @@ msgstr ""
 
 #: components/manage/Blocks/Table/Edit
 msgid "Header cell"
-msgstr ""
+msgstr "Cella d'intestazione"
 
 #: components/theme/Comments/Comments
 msgid "Hide Replies"
-msgstr ""
+msgstr "Nascondi risposte"
 
 #: components/manage/History/History
 #: components/manage/Toolbar/More
@@ -1051,7 +1051,7 @@ msgstr "Elenco"
 
 #: components/theme/Comments/Comments
 msgid "Load more"
-msgstr ""
+msgstr "Carica altro"
 
 #: components/manage/Form/ModalForm
 msgid "Loading"
@@ -1171,7 +1171,7 @@ msgstr "Torna indietro"
 
 #: components/theme/Navigation/ContextNavigation
 msgid "Navigation"
-msgstr ""
+msgstr "Navigazione"
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
@@ -1290,7 +1290,7 @@ msgstr "Apri menu"
 
 #: components/manage/Widgets/ObjectBrowserWidget
 msgid "Open object browser"
-msgstr ""
+msgstr "Apri object browser"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -1326,7 +1326,7 @@ msgstr "Incolla"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Paste blocks"
-msgstr ""
+msgstr "Incolla blocchi"
 
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Toolbar/Toolbar
@@ -1389,7 +1389,7 @@ msgstr "Preferenze"
 
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"
-msgstr ""
+msgstr "Formatta il tuo codice"
 
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
@@ -1445,12 +1445,12 @@ msgstr "il"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Reduce complexity"
-msgstr "Riduci complicità"
+msgstr "Riduci complessità"
 
 #: components/theme/Anontools/Anontools
 #: components/theme/Register/Register
 msgid "Register"
-msgstr "Iscriviti"
+msgstr "Registrati"
 
 #: components/theme/Register/Register
 msgid "Registration form"
@@ -1491,11 +1491,11 @@ msgstr "Ripeti ogni"
 
 #: components/manage/Widgets/FileWidget
 msgid "Replace existing file"
-msgstr ""
+msgstr "Sostituisci file esistente"
 
 #: components/theme/Comments/Comments
 msgid "Reply"
-msgstr ""
+msgstr "Rispondi"
 
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
@@ -1549,7 +1549,7 @@ msgstr "Ruoli"
 
 #: components/manage/Contents/ContentsBreadcrumbs
 msgid "Root"
-msgstr ""
+msgstr "Radice"
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentType
@@ -1613,7 +1613,7 @@ msgstr "Secondo"
 
 #: components/manage/Sidebar/ObjectBrowserNav
 msgid "Select"
-msgstr ""
+msgstr "Seleziona"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Select a date to add to recurrence"
@@ -1696,11 +1696,11 @@ msgstr "Mostra"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Show All"
-msgstr ""
+msgstr "Mostra tutti"
 
 #: components/theme/Comments/Comments
 msgid "Show Replies"
-msgstr ""
+msgstr "Mostra risposte"
 
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
@@ -1994,7 +1994,7 @@ msgstr "Non autorizzato"
 
 #: components/manage/BlockChooser/BlockChooser
 msgid "Unfold"
-msgstr ""
+msgstr "Apri"
 
 #: components/manage/Diff/Diff
 msgid "Unified"
@@ -2254,7 +2254,7 @@ msgstr "Bozza"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "email"
-msgstr ""
+msgstr "email"
 
 #: components/theme/View/EventView
 msgid "event_alldates"
@@ -2326,7 +2326,7 @@ msgstr "Elenco"
 
 #: components/manage/Contents/Contents
 msgid "loading"
-msgstr ""
+msgstr "caricamento"
 
 #: components/theme/Unauthorized/Unauthorized
 msgid "log in"
@@ -2567,7 +2567,7 @@ msgstr "Indice dei contenuti"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "url"
-msgstr ""
+msgstr "URL"
 
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"

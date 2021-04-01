@@ -513,8 +513,6 @@ class Form extends Component {
             manage={this.props.isAdminForm}
             allowedBlocks={this.props.allowedBlocks}
             showRestricted={this.props.showRestricted}
-            title={this.props.title}
-            description={this.props.description}
           />
           {this.state.isClient && (
             <Portal
