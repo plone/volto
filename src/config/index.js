@@ -46,7 +46,9 @@ const apiPath =
 const getServerURL = (url) => {
   if (!url) return;
   const apiPathURL = parseUrl(url);
-  return `${apiPathURL.protocol}//${apiPathURL.hostname}:${apiPathURL.port}`;
+  return `${apiPathURL.protocol}//${apiPathURL.hostname}${
+    apiPathURL.port ? `:${apiPathURL.port}` : ''
+  }`;
 };
 
 // Sensible defaults for publicURL

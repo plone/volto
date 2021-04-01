@@ -18,7 +18,7 @@ export default () => {
 
   server
     .listen(port, bind_address, () => {
-      if (app.apiPath === app.publicURL) {
+      if (app.apiPath === app.publicURL || !app.apiPath) {
         console.log(`Volto is running in SEAMLESS mode`);
       } else {
         console.log(`API server (API_PATH) is set to: ${app.apiPath}`);

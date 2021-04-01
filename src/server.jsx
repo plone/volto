@@ -168,7 +168,8 @@ server.get('/*', (req, res) => {
   const location = parseUrl(url);
 
   let apiPathFromHostHeader = '';
-  if (req.headers.host) {
+  // Get the Host header as apiPath just in case that the apiPath is not set
+  if (!config.settings.apiPath && req.headers.host) {
     apiPathFromHostHeader = `${req.protocol}://${req.headers.host}`;
     config.settings.apiPath = apiPathFromHostHeader;
     config.settings.publicURL = apiPathFromHostHeader;
