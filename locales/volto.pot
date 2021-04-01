@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2021-04-01T17:21:23.765Z\n"
+"POT-Creation-Date: 2021-04-01T18:17:59.881Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -759,7 +759,6 @@ msgstr ""
 msgid "Edit recurrence"
 msgstr ""
 
-#: components/manage/Form/BlockForm
 #: components/manage/Form/InlineForm
 # defaultMessage: Edit values
 msgid "Edit values"
@@ -846,7 +845,6 @@ msgstr ""
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Edit/Edit
-#: components/manage/Form/BlockForm
 #: components/manage/Form/InlineForm
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
@@ -2319,7 +2317,6 @@ msgstr ""
 msgid "There is a configuration problem on the backend"
 msgstr ""
 
-#: components/manage/Form/BlockForm
 #: components/manage/Form/InlineForm
 # defaultMessage: There were some errors
 msgid "There were some errors"
@@ -2548,7 +2545,7 @@ msgstr ""
 msgid "Users and groups settings"
 msgstr ""
 
-#: components/manage/Form/BlockForm
+#: components/manage/Form/BlockDataForm
 # defaultMessage: Variation
 msgid "Variation"
 msgstr ""

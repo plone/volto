@@ -627,7 +627,6 @@ msgstr ""
 msgid "Edit recurrence"
 msgstr ""
 
-#: components/manage/Form/BlockForm
 #: components/manage/Form/InlineForm
 msgid "Edit values"
 msgstr ""
@@ -698,7 +697,6 @@ msgstr ""
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Edit/Edit
-#: components/manage/Form/BlockForm
 #: components/manage/Form/InlineForm
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
@@ -1895,7 +1893,6 @@ msgstr ""
 msgid "There is a configuration problem on the backend"
 msgstr ""
 
-#: components/manage/Form/BlockForm
 #: components/manage/Form/InlineForm
 msgid "There were some errors"
 msgstr ""
@@ -2082,7 +2079,7 @@ msgstr ""
 msgid "Users and groups settings"
 msgstr ""
 
-#: components/manage/Form/BlockForm
+#: components/manage/Form/BlockDataForm
 msgid "Variation"
 msgstr ""
 

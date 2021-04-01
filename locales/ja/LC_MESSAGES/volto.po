@@ -634,7 +634,6 @@ msgstr "フィールドセットを編集"
 msgid "Edit recurrence"
 msgstr "繰り返しを編集"
 
-#: components/manage/Form/BlockForm
 #: components/manage/Form/InlineForm
 msgid "Edit values"
 msgstr "値を編集"
@@ -705,7 +704,6 @@ msgstr "新しいパスワードを入力。（5文字以上）"
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Edit/Edit
-#: components/manage/Form/BlockForm
 #: components/manage/Form/InlineForm
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
@@ -1902,7 +1900,6 @@ msgstr "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundatio
 msgid "There is a configuration problem on the backend"
 msgstr "バックエンドサーバの設定に問題があります。"
 
-#: components/manage/Form/BlockForm
 #: components/manage/Form/InlineForm
 msgid "There were some errors"
 msgstr "エラーが発生しました"
@@ -2089,7 +2086,7 @@ msgstr "ユーザとグループ"
 msgid "Users and groups settings"
 msgstr "ユーザとグループの設定"
 
-#: components/manage/Form/BlockForm
+#: components/manage/Form/BlockDataForm
 msgid "Variation"
 msgstr ""
 

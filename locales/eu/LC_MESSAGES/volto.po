@@ -634,7 +634,6 @@ msgstr "Editatu eremu-multzoa"
 msgid "Edit recurrence"
 msgstr "Editatu errepikapena"
 
-#: components/manage/Form/BlockForm
 #: components/manage/Form/InlineForm
 msgid "Edit values"
 msgstr "Editatu balioak"
@@ -705,7 +704,6 @@ msgstr "Idatzi zure pasahitz berria. Gutxienez 5 karaktere."
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Edit/Edit
-#: components/manage/Form/BlockForm
 #: components/manage/Form/InlineForm
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
@@ -1902,7 +1900,6 @@ msgstr "{plonecms} {copyright} 2000-{current_year} - {plonefoundation} eta lagun
 msgid "There is a configuration problem on the backend"
 msgstr "Zerbitzariak konfigurazio arazo bat du"
 
-#: components/manage/Form/BlockForm
 #: components/manage/Form/InlineForm
 msgid "There were some errors"
 msgstr "Errorea gertatu da"
@@ -2089,7 +2086,7 @@ msgstr "Erabiltzaile eta taldeak"
 msgid "Users and groups settings"
 msgstr "Erabiltzaile eta taldeen ezarpenak"
 
-#: components/manage/Form/BlockForm
+#: components/manage/Form/BlockDataForm
 msgid "Variation"
 msgstr ""
 

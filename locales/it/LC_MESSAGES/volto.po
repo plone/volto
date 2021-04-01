@@ -627,7 +627,6 @@ msgstr "Modifica insieme di campi"
 msgid "Edit recurrence"
 msgstr "Modifica le regole"
 
-#: components/manage/Form/BlockForm
 #: components/manage/Form/InlineForm
 msgid "Edit values"
 msgstr "Modifica i valori"
@@ -698,7 +697,6 @@ msgstr "Inserisci la tua nuova password. Minimo 5 caratteri."
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Edit/Edit
-#: components/manage/Form/BlockForm
 #: components/manage/Form/InlineForm
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
@@ -1895,7 +1893,6 @@ msgstr "{plonecms} è {copyright} 2000-{current_year} della {plonefoundation} ed
 msgid "There is a configuration problem on the backend"
 msgstr "C'è un problema di configurazione sul backend"
 
-#: components/manage/Form/BlockForm
 #: components/manage/Form/InlineForm
 msgid "There were some errors"
 msgstr "Si sono verificati degli errori"
@@ -2082,7 +2079,7 @@ msgstr "Utenti e gruppi"
 msgid "Users and groups settings"
 msgstr "Impostazioni utenti e gruppi"
 
-#: components/manage/Form/BlockForm
+#: components/manage/Form/BlockDataForm
 msgid "Variation"
 msgstr ""
 
