@@ -30,7 +30,7 @@ const EditBlockWrapper = (props) => {
     <div
       ref={draginfo.innerRef}
       {...draginfo.draggableProps}
-      className={`block-editor-${data['@type']}`}
+      className={`slot-editor slot-editor-${data['@type']}`}
     >
       <div style={{ position: 'relative' }}>
         <div
