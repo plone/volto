@@ -1,14 +1,14 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
 import { SliderSchema } from './schema';
-import BlockForm from '@plone/volto/components/manage/Form/BlockForm';
+import { BlockDataForm } from '@plone/volto/components';
 
 const TestBlockData = (props) => {
   const { block, data, onChangeBlock } = props;
   const intl = useIntl();
   const schema = SliderSchema({ ...props, intl });
   return (
-    <BlockForm
+    <BlockDataForm
       schema={schema}
       title={schema.title}
       onChangeField={(id, value) => {
