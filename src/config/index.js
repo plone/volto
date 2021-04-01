@@ -133,6 +133,7 @@ let config = {
     maxResponseSize: 2000000000, // This is superagent default (200 mb)
     serverConfig,
     storeExtenders: [],
+    showTags: true,
   },
   widgets: {
     ...widgetMapping,

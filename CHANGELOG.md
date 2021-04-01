@@ -1,6 +1,6 @@
 # Change Log
 
-## 12.4.3 (unreleased)
+## 12.5.1 (unreleased)
 
 ### Breaking
 
@@ -29,6 +29,22 @@
 ### Internal
 
 - BlocksForm and RenderBlocks now allow a `blocksConfig` configuration object as a prop @tiberiuichim
+
+## 12.5.0 (2021-03-31)
+
+### Feature
+
+- New setting, `config.settings.showTags` to be able to configure tags visibility on default View @avoinea
+
+### Bugfix
+
+- Don't show empty groups in BlockChooser @tiberiuichim
+- Fix Text Block placeholder regression refs #2322 @avoinea
+
+### Internal
+
+- BlocksForm and RenderBlocks now allow a `blocksConfig` configuration object as a prop @tiberiuichim
+- Updated italian translations @nzambello
 
 ## 12.4.2 (2021-03-29)
 
