@@ -335,6 +335,10 @@ msgstr "Fermer le menu"
 msgid "Code"
 msgstr ""
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Collapse item"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"
 msgstr "Collection"
@@ -640,6 +644,7 @@ msgstr "Modifier le groupe de champs"
 msgid "Edit recurrence"
 msgstr ""
 
+#: components/manage/Form/BlockForm
 #: components/manage/Form/InlineForm
 msgid "Edit values"
 msgstr "Modifier les valeurs"
@@ -710,6 +715,7 @@ msgstr "Entrer votre nouveau mot de passe. Minimum 5 caractères."
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Edit/Edit
+#: components/manage/Form/BlockForm
 #: components/manage/Form/InlineForm
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
@@ -1462,6 +1468,10 @@ msgstr "Formulaire d'enregistrement"
 msgid "Relevance"
 msgstr ""
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Remove item"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
 msgstr ""
@@ -1704,6 +1714,10 @@ msgstr ""
 msgid "Show Replies"
 msgstr ""
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Show item"
+msgstr ""
+
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
 msgstr "Rétrécir la barre latérale"
@@ -1898,6 +1912,7 @@ msgstr "Le {plonecms} est {copyright} 2000-{current_year} par la {plonefoundatio
 msgid "There is a configuration problem on the backend"
 msgstr "Il y a un problème de configuration sur le backend"
 
+#: components/manage/Form/BlockForm
 #: components/manage/Form/InlineForm
 msgid "There were some errors"
 msgstr "Il y a eu quelques erreurs"
@@ -2083,6 +2098,10 @@ msgstr "Utilisateurs et groupes"
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Users and groups settings"
 msgstr "Paramètre des utilisateurs et groupes"
+
+#: components/manage/Form/BlockForm
+msgid "Variation"
+msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Version Overview"

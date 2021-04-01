@@ -325,6 +325,10 @@ msgstr "Itxi menua"
 msgid "Code"
 msgstr ""
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Collapse item"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"
 msgstr "Bilduma"
@@ -630,6 +634,7 @@ msgstr "Editatu eremu-multzoa"
 msgid "Edit recurrence"
 msgstr "Editatu errepikapena"
 
+#: components/manage/Form/BlockForm
 #: components/manage/Form/InlineForm
 msgid "Edit values"
 msgstr "Editatu balioak"
@@ -700,6 +705,7 @@ msgstr "Idatzi zure pasahitz berria. Gutxienez 5 karaktere."
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Edit/Edit
+#: components/manage/Form/BlockForm
 #: components/manage/Form/InlineForm
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
@@ -1452,6 +1458,10 @@ msgstr "Erregistro formularioa"
 msgid "Relevance"
 msgstr "Errelebantzia"
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Remove item"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
 msgstr "Errepikapena ezabatu"
@@ -1694,6 +1704,10 @@ msgstr ""
 msgid "Show Replies"
 msgstr ""
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Show item"
+msgstr ""
+
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
 msgstr "Txikitu alboko barra"
@@ -1888,6 +1902,7 @@ msgstr "{plonecms} {copyright} 2000-{current_year} - {plonefoundation} eta lagun
 msgid "There is a configuration problem on the backend"
 msgstr "Zerbitzariak konfigurazio arazo bat du"
 
+#: components/manage/Form/BlockForm
 #: components/manage/Form/InlineForm
 msgid "There were some errors"
 msgstr "Errorea gertatu da"
@@ -2073,6 +2088,10 @@ msgstr "Erabiltzaile eta taldeak"
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Users and groups settings"
 msgstr "Erabiltzaile eta taldeen ezarpenak"
+
+#: components/manage/Form/BlockForm
+msgid "Variation"
+msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Version Overview"

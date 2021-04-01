@@ -337,6 +337,10 @@ msgstr ""
 msgid "Code"
 msgstr ""
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Collapse item"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"
 msgstr ""
@@ -642,6 +646,7 @@ msgstr ""
 msgid "Edit recurrence"
 msgstr ""
 
+#: components/manage/Form/BlockForm
 #: components/manage/Form/InlineForm
 msgid "Edit values"
 msgstr ""
@@ -712,6 +717,7 @@ msgstr "Geef een nieuw wachtwoord op. Minimaal 5 karakters."
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Edit/Edit
+#: components/manage/Form/BlockForm
 #: components/manage/Form/InlineForm
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
@@ -1464,6 +1470,10 @@ msgstr ""
 msgid "Relevance"
 msgstr ""
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Remove item"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
 msgstr ""
@@ -1706,6 +1716,10 @@ msgstr ""
 msgid "Show Replies"
 msgstr ""
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Show item"
+msgstr ""
+
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
 msgstr ""
@@ -1900,6 +1914,7 @@ msgstr "Het {plonecms} is {copyright} 2000-{current_year} door de {plonefoundati
 msgid "There is a configuration problem on the backend"
 msgstr ""
 
+#: components/manage/Form/BlockForm
 #: components/manage/Form/InlineForm
 msgid "There were some errors"
 msgstr ""
@@ -2084,6 +2099,10 @@ msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Users and groups settings"
+msgstr ""
+
+#: components/manage/Form/BlockForm
+msgid "Variation"
 msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels

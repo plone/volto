@@ -318,6 +318,10 @@ msgstr "Închidere meniu"
 msgid "Code"
 msgstr ""
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Collapse item"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"
 msgstr "Colecție"
@@ -623,6 +627,7 @@ msgstr "Editează setul de câmpuri"
 msgid "Edit recurrence"
 msgstr ""
 
+#: components/manage/Form/BlockForm
 #: components/manage/Form/InlineForm
 msgid "Edit values"
 msgstr "Editează valori"
@@ -693,6 +698,7 @@ msgstr "Introduceți noua parolă. Minim 5 caractere."
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Edit/Edit
+#: components/manage/Form/BlockForm
 #: components/manage/Form/InlineForm
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
@@ -1445,6 +1451,10 @@ msgstr "Formular de înregistrare"
 msgid "Relevance"
 msgstr ""
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Remove item"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
 msgstr ""
@@ -1687,6 +1697,10 @@ msgstr ""
 msgid "Show Replies"
 msgstr ""
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Show item"
+msgstr ""
+
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
 msgstr "Reduceți bara laterală"
@@ -1881,6 +1895,7 @@ msgstr "{plonecms} este {copyright} 2000- {current_year} de {plonefoundation} ș
 msgid "There is a configuration problem on the backend"
 msgstr "Există o problemă de configurare pe backend"
 
+#: components/manage/Form/BlockForm
 #: components/manage/Form/InlineForm
 msgid "There were some errors"
 msgstr "Au aparut unele erori"
@@ -2066,6 +2081,10 @@ msgstr "Utilizatori și grupuri"
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Users and groups settings"
 msgstr "Setările utilizatorilor și grupurilor"
+
+#: components/manage/Form/BlockForm
+msgid "Variation"
+msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Version Overview"

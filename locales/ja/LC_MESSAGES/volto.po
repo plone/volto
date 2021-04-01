@@ -325,6 +325,10 @@ msgstr "メニューを閉じる"
 msgid "Code"
 msgstr ""
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Collapse item"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"
 msgstr "コレクション"
@@ -630,6 +634,7 @@ msgstr "フィールドセットを編集"
 msgid "Edit recurrence"
 msgstr "繰り返しを編集"
 
+#: components/manage/Form/BlockForm
 #: components/manage/Form/InlineForm
 msgid "Edit values"
 msgstr "値を編集"
@@ -700,6 +705,7 @@ msgstr "新しいパスワードを入力。（5文字以上）"
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Edit/Edit
+#: components/manage/Form/BlockForm
 #: components/manage/Form/InlineForm
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
@@ -1452,6 +1458,10 @@ msgstr "登録フォーム"
 msgid "Relevance"
 msgstr "関連性"
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Remove item"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
 msgstr "繰り返しを削除"
@@ -1694,6 +1704,10 @@ msgstr ""
 msgid "Show Replies"
 msgstr ""
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Show item"
+msgstr ""
+
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
 msgstr "サイドバーを閉じる"
@@ -1888,6 +1902,7 @@ msgstr "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundatio
 msgid "There is a configuration problem on the backend"
 msgstr "バックエンドサーバの設定に問題があります。"
 
+#: components/manage/Form/BlockForm
 #: components/manage/Form/InlineForm
 msgid "There were some errors"
 msgstr "エラーが発生しました"
@@ -2073,6 +2088,10 @@ msgstr "ユーザとグループ"
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Users and groups settings"
 msgstr "ユーザとグループの設定"
+
+#: components/manage/Form/BlockForm
+msgid "Variation"
+msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Version Overview"
