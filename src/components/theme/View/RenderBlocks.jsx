@@ -20,16 +20,15 @@ const RenderBlocks = (props) => {
   const { location, intl, content, metadata } = props;
   const blocksFieldname = getBlocksFieldname(content);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
+  const blocksConfig = props.blocksConfig || config.blocks.blocksConfig;
   const CustomTag = `${props.as || 'div'}`;
 
   return hasBlocksData(content) ? (
     <CustomTag>
       {map(content[blocksLayoutFieldname].items, (block) => {
         const Block =
-          config.blocks.blocksConfig[
-            content[blocksFieldname]?.[block]?.['@type']
-          ]?.['view'] || null;
-        return Block !== null ? (
+          blocksConfig[content[blocksFieldname]?.[block]?.['@type']]?.view;
+        return Block ? (
           <Block
             key={block}
             id={block}
@@ -37,6 +36,7 @@ const RenderBlocks = (props) => {
             properties={content}
             data={content[blocksFieldname][block]}
             path={getBaseUrl(location?.pathname || '')}
+            blocksConfig={blocksConfig}
           />
         ) : (
           <div key={block}>

@@ -11,7 +11,7 @@ exports[`sidebar portal is rendered when the block is selected 1`] = `
       role="form"
       style={
         Object {
-          "minHeight": "100%",
+          "height": "100%",
         }
       }
     >
@@ -21,7 +21,7 @@ exports[`sidebar portal is rendered when the block is selected 1`] = `
         role="presentation"
         style={
           Object {
-            "minHeight": "100%",
+            "height": "100%",
           }
         }
       >
