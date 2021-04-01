@@ -104,7 +104,11 @@ class Html extends Component {
             dangerouslySetInnerHTML={{
               __html: `window.env = ${serialize({
                 ...runtimeConfig,
-                apiPath,
+                // Seamless mode requirement, the client need to know where the API is located
+                // if not set in the API_PATH
+                ...(apiPath && {
+                  apiPath,
+                }),
               })};`,
             }}
           />

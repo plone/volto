@@ -256,7 +256,9 @@ export const defaultReadCriticalCss = () => {
   return readFileSync(criticalCssPath, { encoding: 'utf-8' });
 };
 
+// Exposed for the console bootstrap info messages
 server.apiPath = config.settings.apiPath;
 server.devProxyToApiPath = config.settings.devProxyToApiPath;
+server.publicURL = config.settings.publicURL;
 
 export default server;

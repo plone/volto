@@ -19,8 +19,8 @@ export const getAPIResourceWithAuth = (req) =>
     let apiPath = '';
     if (settings.internalApiPath && __SERVER__) {
       apiPath = settings.internalApiPath;
-    } else if (config.settings.apiPath) {
-      apiPath = config.settings.apiPath;
+    } else if (__DEVELOPMENT__ && config.settings.devProxyToApiPath) {
+      apiPath = config.settings.devProxyToApiPath;
     }
     const request = superagent
       .get(`${apiPath}${req.path}`)
