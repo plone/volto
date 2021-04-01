@@ -52,6 +52,7 @@
 ### Feature
 
 - Improved comments @rexalex @avoinea
+- Include a pluggable architecture for pluggable render-time insertions (similar to <Portal>) @tiberiuichim
 - Added SidebarPopup component for extra sidebar handling @avoinea
 - Use SidebarPopup component in place of CSS transition sidebar @nileshgulia1
 

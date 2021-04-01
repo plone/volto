@@ -28,6 +28,7 @@ import {
 } from '@plone/volto/actions';
 import { Icon } from '@plone/volto/components';
 import { BodyClass, getBaseUrl } from '@plone/volto/helpers';
+import { createPluggable } from '@plone/volto/components/manage/Pluggable';
 
 import pastanagaSmall from '@plone/volto/components/manage/Toolbar/pastanaga-small.svg';
 import pastanagalogo from '@plone/volto/components/manage/Toolbar/pastanaga.svg';
@@ -37,6 +38,8 @@ import addSVG from '@plone/volto/icons/add-document.svg';
 import moreSVG from '@plone/volto/icons/more.svg';
 import userSVG from '@plone/volto/icons/user.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
+
+export const PluggableToolbarBottom = createPluggable('main.toolbar.bottom');
 
 const messages = defineMessages({
   edit: {
@@ -468,6 +471,7 @@ class Toolbar extends Component {
                 )}
               </div>
               <div className="toolbar-bottom">
+                <PluggableToolbarBottom />
                 <img className="minipastanaga" src={pastanagaSmall} alt="" />
                 {!this.props.hideDefaultViewButtons && (
                   <button
