@@ -7,6 +7,7 @@ import includes from 'lodash/includes';
 import isBoolean from 'lodash/isBoolean';
 import { defineMessages, injectIntl } from 'react-intl';
 import config from '@plone/volto/registry';
+import { Pluggable } from '@plone/volto/components/manage/Pluggable';
 
 import trashSVG from '@plone/volto/icons/delete.svg';
 
@@ -60,6 +61,7 @@ const EditBlockWrapper = (props) => {
               <Icon name={trashSVG} size="18px" />
             </Button>
           )}
+          <Pluggable name="block-toolbar" />
         </div>
       )}
       <div className={`ui drag block inner ${type}`}>{children}</div>
