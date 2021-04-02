@@ -6,6 +6,37 @@ import {
 } from './index';
 import Wrapper from '@plone/volto/storybook';
 import React from 'react';
+import {
+  Title,
+  Subtitle,
+  Description,
+  Primary,
+  // ArgsTable,
+  Stories,
+} from '@storybook/addon-docs/blocks';
+
+export default {
+  title: 'Internal components/Pluggable components',
+  component: Pluggable,
+  parameters: {
+    componentSubtitle: 'Pluggable architecture similar to Portals',
+    docs: {
+      page: () => (
+        <>
+          <Title />
+          <Subtitle />
+          <Description />
+          <Primary />
+          {/* <ArgsTable /> */}
+          <Stories />
+        </>
+      ),
+
+      // extractComponentDescription: () =>
+      //   'Controlled stateless component for a circular checkbox with a click event handler prop.',
+    },
+  },
+};
 
 const RandomBlock = (props) => {
   const { id = 'buttonA', marker } = props;
@@ -43,6 +74,7 @@ export const Simple = (args) => {
 };
 
 Simple.parameters = {
+  component: Pluggable,
   docs: {
     description: {
       component:
@@ -83,10 +115,10 @@ export const Override = (args) => {
 
 Override.parameters = {
   docs: {
-    description: {
-      component:
-        'By rendering a plug insert with the same id, only the last one will be rendered',
-    },
+    // description: {
+    //   component:
+    //     'By rendering a plug insert with the same id, only the last one will be rendered',
+    // },
     source: {
       code: `
 <PluggablesProvider>
@@ -120,10 +152,10 @@ UsingCreatePluggableAndPlug.storyName = 'Using createPluggableAndPlug';
 UsingCreatePluggableAndPlug.parameters = {
   component: createPluggableAndPlug,
   docs: {
-    description: {
-      component:
-        'We can use `createPluggableAndPlug` to create a new pluggable + plug components pair. ',
-    },
+    // description: {
+    //   component:
+    //     'We can use `createPluggableAndPlug` to create a new pluggable + plug components pair. ',
+    // },
     source: {
       code: `
 const [Toolbar, ToolbarPlug] = createPluggableAndPlug('toolbar');
@@ -135,9 +167,4 @@ const [Toolbar, ToolbarPlug] = createPluggableAndPlug('toolbar');
       `,
     },
   },
-};
-
-export default {
-  title: 'Internal components/Pluggable components',
-  component: Pluggable,
 };
