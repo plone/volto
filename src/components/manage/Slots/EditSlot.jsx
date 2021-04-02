@@ -95,11 +95,11 @@ class EditSlot extends React.Component {
               pathname={pathname}
               onChangeField={(id, value) => {
                 if (['blocks', 'blocks_layout'].indexOf(id) > -1) {
-                  this.blockState[id] = value;
+                  this.blocksState[id] = value;
                   this.setState({
                     data: {
                       ...data,
-                      ...this.blockState,
+                      ...this.blocksState,
                       [id]: value,
                     },
                   });
