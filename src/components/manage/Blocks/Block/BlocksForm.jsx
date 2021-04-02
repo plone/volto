@@ -25,8 +25,12 @@ const BlocksForm = (props) => {
     onSelectBlock,
     allowedBlocks,
     showRestricted,
+    title,
+    description,
+    metadata,
     manage,
     children,
+    blocksConfig = config.blocks.blocksConfig,
   } = props;
 
   const blockList = getBlocks(properties);
@@ -144,6 +148,8 @@ const BlocksForm = (props) => {
             data: child,
             handleKeyDown,
             id: childId,
+            formTitle: title,
+            formDescription: description,
             index,
             manage,
             onAddBlock,
@@ -156,9 +162,11 @@ const BlocksForm = (props) => {
             onMutateBlock,
             onSelectBlock,
             pathname,
+            metadata,
             properties,
+            blocksConfig,
             selected: selectedBlock === childId,
-            multiSelected: multiSelected.includes(childId),
+            multiSelected: multiSelected?.includes(childId),
             type: child['@type'],
           };
           return editBlockWrapper(

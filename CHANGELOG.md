@@ -1,25 +1,79 @@
 # Change Log
 
-## 12.3.1 (unreleased)
+## 12.5.1 (unreleased)
 
 ### Breaking
 
 ### Feature
 
 - Include a pluggable architecture for pluggable render-time insertions (similar to <Portal>) @tiberiuichim
-- Added SidebarPopup component for extra sidebar handling @avoinea
-- use SidebarPopup component in place of CSS transition sidebar @nileshgulia1
+### Bugfix
+
+### Internal
+
+- Upgrade Storybook to 6.2.2 @tiberiuichim
+
+## 12.5.0 (2021-03-31)
+
+### Feature
+
+- New setting, `config.settings.showTags` to be able to configure tags visibility on default View @avoinea
 
 ### Bugfix
 
-- fixed italian translations for block 'Maps" @giuliaghisini
-- fixed SidebarPortal min-height @avoinea
+- Don't show empty groups in BlockChooser @tiberiuichim
+- Fix Text Block placeholder regression refs #2322 @avoinea
+
+### Internal
+
+- BlocksForm and RenderBlocks now allow a `blocksConfig` configuration object as a prop @tiberiuichim
+- Updated italian translations @nzambello
+
+## 12.4.2 (2021-03-29)
+
+### Bugfix
+
+- Re-add formTitle, formDescription, metadata to BlocksForm @avoinea
+
+## 12.4.1 (2021-03-29)
+
+### Bugfix
+
+- Fixed InlineForm boolean false value @razvanMiu
+- Fix warning message in console, move open/close detection to the aside itself @sneridagh
+- Revert SidebarPortal min-height @avoinea
+- Add proper proptype in `SidebarPopup` @sneridagh
+
+### Internal
+
+- Update plone/volto Docker image to use latest yo generator and support ADDONS env @avoinea
+- Add `docker-compose.yml` to the repo for quick demoing @sneridagh
+- Fixed babel config when loading addons (in testing mode) @sneridagh
+
+## 12.4.0 (2021-03-25)
+
+### Feature
+
+- Improved comments @rexalex @avoinea
+- Added SidebarPopup component for extra sidebar handling @avoinea
+- Use SidebarPopup component in place of CSS transition sidebar @nileshgulia1
+
+### Bugfix
+
+- Fixed multiSelected propType and BlocksForm multiSelected.includes @avoinea
+- Fixed italian translations for block `Maps` @giuliaghisini
+- Fixed SidebarPortal min-height @avoinea
+- Fixed CheckboxWidget state @razvanMiu
 
 ### Internal
 
 - Upgrade API to Plone 5.2.4 and p.restapi 7.1.0 @sneridagh
 - Reorganization of the Cypress tests, now they live in `cypress/tests` @sneridagh
 - Splitted Cypress tests into `core` tests and `guillotina` ones for better overall handling @sneridagh
+
+### Docs
+
+- Update internal proxy docs @nzambello
 
 ## 12.3.0 (2021-03-18)
 

@@ -43,7 +43,7 @@ export class Edit extends Component {
     // properties is mapped to formData, so it's not connected to changes of the object
     properties: PropTypes.objectOf(PropTypes.any).isRequired,
     selected: PropTypes.bool.isRequired,
-    multiSelected: PropTypes.array,
+    multiSelected: PropTypes.bool,
     index: PropTypes.number.isRequired,
     id: PropTypes.string.isRequired,
     manage: PropTypes.bool,
@@ -62,9 +62,10 @@ export class Edit extends Component {
 
   componentDidMount() {
     const { type } = this.props;
+    const { blocksConfig = config.blocks.blocksConfig } = this.props;
+
     const blockHasOwnFocusManagement =
-      config.blocks.blocksConfig?.[type]?.['blockHasOwnFocusManagement'] ||
-      null;
+      blocksConfig?.[type]?.['blockHasOwnFocusManagement'] || null;
     if (
       !blockHasOwnFocusManagement &&
       this.props.selected &&
@@ -72,19 +73,17 @@ export class Edit extends Component {
     ) {
       this.blockNode.current.focus();
     }
-    const tab = this.props.manage
-      ? 1
-      : config.blocks.blocksConfig?.[type]?.sidebarTab || 0;
+    const tab = this.props.manage ? 1 : blocksConfig?.[type]?.sidebarTab || 0;
     if (this.props.selected) {
       this.props.setSidebarTab(tab);
     }
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
+    const { blocksConfig = config.blocks.blocksConfig } = this.props;
     const { selected, type } = this.props;
     const blockHasOwnFocusManagement =
-      config.blocks.blocksConfig?.[type]?.['blockHasOwnFocusManagement'] ||
-      null;
+      blocksConfig?.[type]?.['blockHasOwnFocusManagement'] || null;
     if (
       !blockHasOwnFocusManagement &&
       nextProps.selected &&
@@ -99,7 +98,7 @@ export class Edit extends Component {
     ) {
       const tab = this.props.manage
         ? 1
-        : config.blocks.blocksConfig?.[nextProps.type]?.sidebarTab || 0;
+        : blocksConfig?.[nextProps.type]?.sidebarTab || 0;
       this.props.setSidebarTab(tab);
     }
   }
@@ -112,19 +111,18 @@ export class Edit extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { blocks } = config;
+    const { blocksConfig = config.blocks.blocksConfig } = this.props;
     const { type } = this.props;
 
     const disableNewBlocks = this.props.data?.disableNewBlocks;
 
-    let Block = blocks.blocksConfig?.[type]?.['edit'] || null;
+    let Block = blocksConfig?.[type]?.['edit'] || null;
     if (this.props.data?.readOnly) {
-      Block = blocks.blocksConfig?.[type]?.['view'] || null;
+      Block = blocksConfig?.[type]?.['view'] || null;
     }
-    const schema =
-      blocks.blocksConfig?.[type]?.['schema'] || BlockSettingsSchema;
+    const schema = blocksConfig?.[type]?.['schema'] || BlockSettingsSchema;
     const blockHasOwnFocusManagement =
-      blocks.blocksConfig?.[type]?.['blockHasOwnFocusManagement'] || null;
+      blocksConfig?.[type]?.['blockHasOwnFocusManagement'] || null;
 
     return (
       <div className={`ui drag block inner ${type}`}>
