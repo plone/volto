@@ -1,5 +1,5 @@
-import ContextNavigation from '@plone/volto/components/theme/Navigation/ContextNavigation';
-import { restrictToPath } from '@plone/volto/helpers';
+// import ContextNavigation from '@plone/volto/components/theme/Navigation/ContextNavigation';
+// import { restrictToPath } from '@plone/volto/helpers';
 
 const defaultSlots = {
   asideRightSlot: {
@@ -19,7 +19,10 @@ const defaultSlots = {
     ],
 
     available: ({ pathname, slotData, slotName, slots }) => {
-      return !!slotData?.items?.length;
+      return (
+        !!Object.keys(slotData.items[slotName]['blocks']).length ||
+        !!slots[slotName].items.length
+      );
     },
 
     // optional
