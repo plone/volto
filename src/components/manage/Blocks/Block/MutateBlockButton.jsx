@@ -4,6 +4,14 @@ import addSVG from '@plone/volto/icons/circle-plus.svg';
 import { blockHasValue } from '@plone/volto/helpers';
 import { Icon, BlockChooser } from '@plone/volto/components';
 import { Button } from 'semantic-ui-react';
+import { defineMessages, useIntl } from 'react-intl';
+
+const messages = defineMessages({
+  addBlock: {
+    id: 'Add block',
+    defaultMessage: 'Add block',
+  },
+});
 
 const MutateBlockButton = ({
   block,
@@ -14,6 +22,7 @@ const MutateBlockButton = ({
   size = '19px',
   className = 'block-add-button',
 }) => {
+  const intl = useIntl();
   const { disableNewBlocks } = data;
   const [addNewBlockOpened, setAddNewBlockOpened] = React.useState(false);
 
@@ -41,7 +50,7 @@ const MutateBlockButton = ({
         <Button
           icon
           basic
-          title="Add block"
+          title={intl.formatMessage(messages.addBlock)}
           onClick={() => setAddNewBlockOpened(true)}
           className={className}
         >

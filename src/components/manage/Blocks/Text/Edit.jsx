@@ -5,7 +5,6 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import Editor from 'draft-js-plugins-editor';
 import { convertFromRaw, convertToRaw, EditorState, RichUtils } from 'draft-js';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
@@ -14,9 +13,9 @@ import isSoftNewlineEvent from 'draft-js/lib/isSoftNewlineEvent';
 import { defineMessages, injectIntl } from 'react-intl';
 import { includes, isEqual } from 'lodash';
 import { filterEditorState } from 'draftjs-filters';
-import config from '@plone/volto/registry';
-
 import { MutateBlockButton } from '@plone/volto/components';
+
+import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   text: {
@@ -91,7 +90,6 @@ class Edit extends Component {
       this.state = {
         editorState,
         inlineToolbarPlugin,
-        addNewBlockOpened: false,
       };
     }
 
@@ -108,7 +106,6 @@ class Edit extends Component {
       // See https://github.com/draft-js-plugins/draft-js-plugins/issues/800
       setTimeout(this.node.focus, 0);
     }
-    document.addEventListener('mousedown', this.handleClickOutside, false);
   }
 
   /**
@@ -139,15 +136,6 @@ class Edit extends Component {
       !isEqual(this.props.data, nextProps.data) ||
       !isEqual(this.state.editorState, nextState.editorState)
     );
-  }
-
-  /**
-   * Component will unmount
-   * @method componentWillUnmount
-   * @returns {undefined}
-   */
-  componentWillUnmount() {
-    document.removeEventListener('mousedown', this.handleClickOutside, false);
   }
 
   /**
@@ -191,22 +179,6 @@ class Edit extends Component {
     }
     this.setState({ editorState });
   }
-
-  toggleAddNewBlock = (e) => {
-    e.preventDefault();
-    this.setState((state) => ({ addNewBlockOpened: !state.addNewBlockOpened }));
-  };
-
-  handleClickOutside = (e) => {
-    if (
-      this.props.blockNode.current &&
-      doesNodeContainClick(this.props.blockNode.current, e)
-    )
-      return;
-    this.setState(() => ({
-      addNewBlockOpened: false,
-    }));
-  };
 
   /**
    * Render method.
@@ -311,6 +283,7 @@ class Edit extends Component {
             allowedBlocks={this.props.allowedBlocks}
             blocksConfig={this.props.blocksConfig}
             size="24px"
+            className="block-add-button"
           />
         )}
       </>
