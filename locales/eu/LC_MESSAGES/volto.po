@@ -2220,6 +2220,7 @@ msgid "common"
 msgstr "Ohikoa"
 
 #: components/manage/Blocks/Block/EditBlockWrapper
+#: components/manage/Blocks/Block/QuantaBlockWrapper
 msgid "delete"
 msgstr "Ezabatu"
 

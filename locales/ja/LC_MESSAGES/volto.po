@@ -2220,6 +2220,7 @@ msgid "common"
 msgstr "一般"
 
 #: components/manage/Blocks/Block/EditBlockWrapper
+#: components/manage/Blocks/Block/QuantaBlockWrapper
 msgid "delete"
 msgstr "削除"
 

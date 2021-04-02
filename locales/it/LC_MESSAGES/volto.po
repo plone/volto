@@ -2213,6 +2213,7 @@ msgid "common"
 msgstr "Comuni"
 
 #: components/manage/Blocks/Block/EditBlockWrapper
+#: components/manage/Blocks/Block/QuantaBlockWrapper
 msgid "delete"
 msgstr "Elimina"
 
