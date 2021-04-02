@@ -18,7 +18,9 @@ const defaultSlots = {
       // },
     ],
 
-    // available: ({ pathname, slotData, slotName, slots }) => true,
+    available: ({ pathname, slotData, slotName, slots }) => {
+      return !!slotData?.items?.length;
+    },
 
     // optional
     // computeLayout({staticFills, persistentFills}) {
