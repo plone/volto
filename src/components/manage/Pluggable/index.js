@@ -6,9 +6,22 @@ import sortBy from 'lodash.sortby';
 
 export const context = React.createContext();
 
+export function usePluggable(name) {
+  const ctx = React.useContext(context);
+
+  if (!ctx) {
+    throw new Error(
+      'Using <Pluggable> component or usePluggable hook outside of <PluggablesProvider>',
+    );
+  }
+
+  return ctx.pluggables[name] || [];
+}
+
 /**
  * Get the appropriate Pluggable component for the given name.
  *
+ * There's multiple ways to use this:
  * To use, first create the pluggable
  *
  * const PluggableToolbar = createPluggable('toolbar');
@@ -29,20 +42,6 @@ export const context = React.createContext();
  *
  * <PluggableToolbar.Plug id="save" ... />
  *
- */
-export function usePluggable(name) {
-  const ctx = React.useContext(context);
-
-  if (!ctx) {
-    throw new Error(
-      'Using <Pluggable> component or usePluggable hook outside of <PluggablesProvider>',
-    );
-  }
-
-  return ctx.pluggables[name] || [];
-}
-
-/**
  * Renders a pluggable insertion "area". Create it using `usePluggable`
  */
 export function Pluggable(props) {

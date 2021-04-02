@@ -5,7 +5,7 @@ import isBoolean from 'lodash/isBoolean';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Icon } from '@plone/volto/components';
 import { blockHasValue } from '@plone/volto/helpers';
-import { Pluggable } from '@plone/volto/components/manage/Pluggable';
+import { Pluggable, Plug } from '@plone/volto/components/manage/Pluggable';
 import MutateBlockButton from './MutateBlockButton';
 
 import config from '@plone/volto/registry';
@@ -41,34 +41,39 @@ const EditBlockWrapper = (props) => {
     >
       {selected && (
         <div className="toolbar quanta-block-toolbar">
-          <Button
-            style={{
-              visibility: visible ? 'visible' : 'visible',
-              display: 'inline-block',
-            }}
-            {...draginfo.dragHandleProps}
-            icon
-            basic
-          >
-            <Icon name={dragSVG} size="18px" />
-          </Button>
-          <MutateBlockButton
-            {...blockProps}
-            className="quanta-block-add-button"
-          />
-
-          {!required && (
+          <Pluggable name="block-toolbar" params={blockProps} />
+          <Plug pluggable="block-toolbar" id="drag-handle">
             <Button
+              style={{
+                visibility: visible ? 'visible' : 'visible',
+                display: 'inline-block',
+              }}
+              {...draginfo.dragHandleProps}
               icon
               basic
-              onClick={() => onDeleteBlock(block)}
-              className="delete-button"
-              aria-label={intl.formatMessage(messages.delete)}
             >
-              <Icon name={trashSVG} size="18px" />
+              <Icon name={dragSVG} size="18px" />
             </Button>
-          )}
-          <Pluggable name="block-toolbar" />
+          </Plug>
+          <Plug pluggable="block-toolbar" id="mutate-block-button">
+            <>
+              <MutateBlockButton
+                {...blockProps}
+                className="quanta-block-add-button"
+              />
+              {!required && (
+                <Button
+                  icon
+                  basic
+                  onClick={() => onDeleteBlock(block)}
+                  className="delete-button"
+                  aria-label={intl.formatMessage(messages.delete)}
+                >
+                  <Icon name={trashSVG} size="18px" />
+                </Button>
+              )}
+            </>
+          </Plug>
         </div>
       )}
       <div className={`ui drag block inner ${type}`}>{children}</div>
