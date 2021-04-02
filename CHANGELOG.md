@@ -6,9 +6,13 @@
 
 ### Feature
 
+- Add a Quanta block wrapper and toolbar. Make the Quanta wrapper the default.  You can opt-out from using it by setting `config.settings.useQuantaToolbar = false` @tiberiuichim
+
 ### Bugfix
 
 ### Internal
+
+- Add `MutateBlockButton`, a component that makes centralizes logic around BlockChooser and block mutation (changing block type) @tiberiuichim
 
 ## 12.5.0 (2021-03-31)
 

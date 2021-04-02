@@ -5,7 +5,6 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'semantic-ui-react';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import Editor from 'draft-js-plugins-editor';
 import { convertFromRaw, convertToRaw, EditorState, RichUtils } from 'draft-js';
@@ -17,8 +16,7 @@ import { includes, isEqual } from 'lodash';
 import { filterEditorState } from 'draftjs-filters';
 import config from '@plone/volto/registry';
 
-import { Icon, BlockChooser } from '@plone/volto/components';
-import addSVG from '@plone/volto/icons/circle-plus.svg';
+import { MutateBlockButton } from '@plone/volto/components';
 
 const messages = defineMessages({
   text: {
@@ -305,27 +303,14 @@ class Edit extends Component {
           }}
         />
         <InlineToolbar />
-        {this.props.selected &&
-          !disableNewBlocks &&
-          !config.blocks.blocksConfig[
-            this.props.data?.['@type'] || 'text'
-          ].blockHasValue(this.props.data) && (
-            <Button
-              basic
-              icon
-              onClick={this.toggleAddNewBlock}
-              className="block-add-button"
-            >
-              <Icon name={addSVG} className="block-add-button" size="24px" />
-            </Button>
-          )}
-        {this.state.addNewBlockOpened && (
-          <BlockChooser
+        {this.props.selected && (
+          <MutateBlockButton
+            data={this.props.data}
+            block={this.props.block}
             onMutateBlock={this.props.onMutateBlock}
-            currentBlock={this.props.block}
             allowedBlocks={this.props.allowedBlocks}
-            showRestricted={this.props.showRestricted}
             blocksConfig={this.props.blocksConfig}
+            size="24px"
           />
         )}
       </>
