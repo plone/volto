@@ -88,6 +88,10 @@ msgstr ""
 msgid "Add a description…"
 msgstr ""
 
+#: components/manage/Blocks/Block/MutateBlockButton
+msgid "Add block"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 msgid "Add block…"
 msgstr ""
