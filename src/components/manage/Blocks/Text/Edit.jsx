@@ -14,8 +14,11 @@ import { defineMessages, injectIntl } from 'react-intl';
 import { includes, isEqual } from 'lodash';
 import { filterEditorState } from 'draftjs-filters';
 import { MutateBlockButton } from '@plone/volto/components';
+import { Plug } from '@plone/volto/components/manage/Pluggable';
 
 import config from '@plone/volto/registry';
+
+const PassThrough = (props) => props.children;
 
 const messages = defineMessages({
   text: {
@@ -199,6 +202,7 @@ class Edit extends Component {
       this.props.data?.disableNewBlocks || this.props.detached;
     const { InlineToolbar } = this.state.inlineToolbarPlugin;
     const { settings } = config;
+    const PlugInsert = settings.useQuantaToolbar ? Plug : PassThrough;
 
     return (
       <>
@@ -274,7 +278,9 @@ class Edit extends Component {
             this.node = node;
           }}
         />
-        <InlineToolbar />
+        <PlugInsert pluggable="block-toolbar" id="block-text-toolbar">
+          <InlineToolbar />
+        </PlugInsert>
         {this.props.selected && (
           <MutateBlockButton
             data={this.props.data}
