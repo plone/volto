@@ -4,6 +4,8 @@
 
 ### Added
 
+- Support for Github addon `--template` @avoinea
+
 ### Changes
 
 ## 4.1.0 (2021-03-26)

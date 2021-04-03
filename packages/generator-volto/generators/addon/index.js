@@ -1,5 +1,6 @@
 const path = require('path');
 const Generator = require('yeoman-generator');
+const utils = require('./utils');
 
 const currentDir = path.basename(process.cwd());
 
@@ -15,6 +16,11 @@ module.exports = class extends Generator {
       type: Boolean,
       desc: 'Enable/disable interactive prompt',
       default: true,
+    });
+    this.option('template', {
+      type: String,
+      desc: 'Use github repo template, e.g.: eea/volto-addon-template',
+      default: '',
     });
 
     this.args = args;
@@ -42,6 +48,7 @@ Run "npm install -g @plone/generator-volto" to update.`,
       addonName: '',
       name: '',
       scope: '',
+      template: '',
     };
     let props;
 
@@ -71,6 +78,11 @@ Run "npm install -g @plone/generator-volto" to update.`,
     } else {
       this.globals.name = this.globals.addonName;
     }
+
+    // Template
+    if (this.opts.template) {
+      this.globals.template = this.opts.template;
+    }
   }
 
   writing() {
@@ -78,20 +90,27 @@ Run "npm install -g @plone/generator-volto" to update.`,
       currentDir === this.globals.name
         ? '.'
         : './src/addons/' + this.globals.name;
-    this.fs.copyTpl(
-      this.templatePath('package.json.tpl'),
-      this.destinationPath(base, 'package.json'),
-      this.globals,
-    );
+    if (this.globals.template) {
+      utils.githubTpl(
+        this.globals.template,
+        this.destinationPath(base),
+        this.globals,
+      );
+    } else {
+      this.fs.copyTpl(
+        this.templatePath('package.json.tpl'),
+        this.destinationPath(base, 'package.json'),
+        this.globals,
+      );
 
-    this.fs.copy(this.templatePath(), this.destinationPath(base), {
-      globOptions: {
-        ignore: ['**/*.tpl', '**/*~'],
-        dot: true,
-      },
-    });
-
-    this.fs.delete(this.destinationPath(base, 'package.json.tpl'));
+      this.fs.copy(this.templatePath(), this.destinationPath(base), {
+        globOptions: {
+          ignore: ['**/*.tpl', '**/*~'],
+          dot: true,
+        },
+      });
+      this.fs.delete(this.destinationPath(base, 'package.json.tpl'));
+    }
   }
 
   install() {}
