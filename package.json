@@ -63,7 +63,7 @@
     "ci:start-api-plone": "make test-acceptance-server",
     "ci:start-api-guillotina": "make test-acceptance-guillotina",
     "ci:start-frontend": "RAZZLE_API_PATH=http://localhost:55001/plone yarn build && start-test start:prod http://localhost:3000 cypress:run",
-    "ci:start-frontend-core-sandbox": "RAZZLE_TESTING_ADDONS=test-addon RAZZLE_API_PATH=http://localhost:55001/plone yarn build && start-test start:prod http://localhost:3000 cypress:run:core-sandbox",
+    "ci:start-frontend-core-sandbox": "RAZZLE_TESTING_ADDONS=core-sandbox RAZZLE_API_PATH=http://localhost:55001/plone yarn build && start-test start:prod http://localhost:3000 cypress:run:core-sandbox",
     "ci:start-project-frontend": "cd my-volto-app && RAZZLE_API_PATH=http://localhost:55001/plone yarn build && start-test start:prod http://localhost:3000 'cd .. && yarn cypress:run'",
     "ci:start-frontend-guillotina": "RAZZLE_API_PATH=http://localhost:8081/db/web yarn build && start-test start:prod http://localhost:3000 cypress:run:guillotina",
     "ci:cypress:run": "start-test ci:start-api-plone http-get://localhost:55001/plone ci:start-frontend",
