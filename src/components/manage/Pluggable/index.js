@@ -20,60 +20,6 @@ export function usePluggable(name) {
 
 /**
 
-The Pluggables components give you insertion points to push components to other
-components in an "out of tree" fashion, similar to React's <Portal> component.
-
-To understand it, let's look at the architecture:
-
-- First, we need to wrap all of our React component tree in a PluggablesProvider:
-
-```
-  <PluggablesProvider>
-    ...
-  </PluggablesProvider>
-```
-
-This Provider acts like a centralized place where "insertion points" and
-"plugins to the insertion points" can be can be registered.
-
-Now, inside the components tree of our PluggablesProvider we can insert the
-"insertion points":
-
-```
-<Pluggable name="left-column" />
-```
-
-And now we can simply plug things as children to the <Pluggable> with a <Plug>
-component:
-
-```
-<Plug pluggable="left-column" id="navigation">relevant nav stuff</Plug>
-```
-
-Declaring a <Plug> with the same id two times will make the second one (in
-terms of rendering order) replace the first one.
-
-You can also pass options to the Plugs, to enable inter-component communication:
-
-```
-<Pluggable name="block-toolbar" params={...blockProps} />
-```
-
-To use the passed params, you can do:
-
-```
-<Plug pluggable="block-toolbar" id="style">
-{({options}) => {
-  console.log(options);
-  return <Button>Clickme</Button>
-}}
-</Plug>
-
-You can also customize how the pluggables are rendered:
-
-<Pluggable name="block-toolbar">
-{(pluggables) => pluggables.map(p => <div>{p}</div>)
-</Pluggable>
 **/
 export function Pluggable(props) {
   const { name, maxCount, reversed, children, params } = props; // , ...rest
@@ -206,3 +152,5 @@ export const PluggablesProvider = ({ children }) => {
   const [pluggables, setPluggables] = React.useState(initialPluggables);
   return React.createElement(context.Provider, { value: pluggables }, children);
 };
+
+export default Pluggable;

@@ -4,8 +4,6 @@ import {
   PluggablesProvider,
   createPluggableAndPlug,
 } from './index';
-import Wrapper from '@plone/volto/storybook';
-import React from 'react';
 import {
   Title,
   Subtitle,
@@ -13,7 +11,11 @@ import {
   Primary,
   // ArgsTable,
   Stories,
+  // PRIMARY_STORY,
 } from '@storybook/addon-docs/blocks';
+import Wrapper from '@plone/volto/storybook';
+import React from 'react';
+import Mdx from './Pluggable.mdx';
 
 export default {
   title: 'Internal components/Pluggable components',
@@ -26,14 +28,12 @@ export default {
           <Title />
           <Subtitle />
           <Description />
+          <Mdx />
           <Primary />
-          {/* <ArgsTable /> */}
+          {/* <ArgsTable story={PRIMARY_STORY} /> */}
           <Stories />
         </>
       ),
-
-      // extractComponentDescription: () =>
-      //   'Controlled stateless component for a circular checkbox with a click event handler prop.',
     },
   },
 };
@@ -74,7 +74,6 @@ export const Simple = (args) => {
 };
 
 Simple.parameters = {
-  component: Pluggable,
   docs: {
     description: {
       component:
@@ -115,10 +114,10 @@ export const Override = (args) => {
 
 Override.parameters = {
   docs: {
-    // description: {
-    //   component:
-    //     'By rendering a plug insert with the same id, only the last one will be rendered',
-    // },
+    description: {
+      componentSubtitle:
+        'By rendering a plug insert with the same id, only the last one will be rendered',
+    },
     source: {
       code: `
 <PluggablesProvider>
@@ -152,10 +151,10 @@ UsingCreatePluggableAndPlug.storyName = 'Using createPluggableAndPlug';
 UsingCreatePluggableAndPlug.parameters = {
   component: createPluggableAndPlug,
   docs: {
-    // description: {
-    //   component:
-    //     'We can use `createPluggableAndPlug` to create a new pluggable + plug components pair. ',
-    // },
+    description: {
+      componentSubtitle:
+        'We can use `createPluggableAndPlug` to create a new pluggable + plug components pair. ',
+    },
     source: {
       code: `
 const [Toolbar, ToolbarPlug] = createPluggableAndPlug('toolbar');
