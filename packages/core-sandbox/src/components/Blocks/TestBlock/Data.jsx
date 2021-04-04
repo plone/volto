@@ -9,6 +9,7 @@ const TestBlockData = (props) => {
   const schema = SliderSchema({ ...props, intl });
   return (
     <BlockDataForm
+      block={block}
       schema={schema}
       title={schema.title}
       onChangeField={(id, value) => {

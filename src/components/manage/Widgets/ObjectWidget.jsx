@@ -23,6 +23,7 @@ import Field from '@plone/volto/components/manage/Form/Field';
  * @param {string} id
  */
 const FieldSet = ({
+  block,
   data,
   index,
   schema,
@@ -39,6 +40,7 @@ const FieldSet = ({
         {...schema.properties[field]}
         id={`${field}-${idx}-${id}`}
         fieldset={data.title.toLowerCase()}
+        block={block}
         value={v}
         objectvalue={value}
         required={schema.required?.indexOf(field) !== -1}
@@ -69,6 +71,7 @@ const FieldSet = ({
  * @param {string} id Field id
  */
 const ObjectWidget = ({
+  block,
   schema,
   value, // not checked to not contain unknown fields
   onChange,
@@ -83,6 +86,7 @@ const ObjectWidget = ({
         render: () => (
           <Tab.Pane>
             <FieldSet
+              block={block}
               data={fieldset}
               index={index}
               schema={schema}
@@ -95,12 +99,13 @@ const ObjectWidget = ({
         ),
       };
     },
-    [errors, id, onChange, schema, value],
+    [block, errors, id, onChange, schema, value],
   );
 
   return schema.fieldsets.length === 1 ? (
     <>
       <FieldSet
+        block={block}
         data={schema.fieldsets[0]}
         index={0}
         schema={schema}

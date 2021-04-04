@@ -10,7 +10,6 @@ import deleteSVG from '@plone/volto/icons/delete.svg';
 import addSVG from '@plone/volto/icons/add.svg';
 import dragSVG from '@plone/volto/icons/drag.svg';
 import { v4 as uuid } from 'uuid';
-import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 
 const messages = defineMessages({
   labelRemoveItem: {
@@ -28,7 +27,15 @@ const messages = defineMessages({
 });
 
 const ObjectListWidget = (props) => {
-  const { fieldSet, id, schema, value = [], onChange, schemaExtender } = props;
+  const {
+    block,
+    fieldSet,
+    id,
+    schema,
+    value = [],
+    onChange,
+    schemaExtender,
+  } = props;
   const [activeColumn, setActiveColumn] = React.useState(0);
   const intl = useIntl();
 
@@ -151,6 +158,7 @@ const ObjectListWidget = (props) => {
                     <ObjectWidget
                       id={`${id}-${index}`}
                       key={`ow-${id}-${index}`}
+                      block={block}
                       schema={
                         schemaExtender
                           ? schemaExtender(schema, child)
@@ -174,4 +182,4 @@ const ObjectListWidget = (props) => {
     </div>
   );
 };
-export default withObjectBrowser(ObjectListWidget);
+export default ObjectListWidget;

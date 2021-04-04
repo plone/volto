@@ -41,6 +41,14 @@
     }
   }
 
+  // This button reset should be general to all widgets (at some point)
+  button {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    text-align: initial;
+  }
+
   .ui.accordion {
     border: 1px solid #ddd;
 
@@ -48,11 +56,13 @@
       padding-right: 0;
       padding-left: 0;
       border-bottom: none;
+      box-shadow: none;
     }
 
-    // .content.active {
-    //   margin-bottom: 10px;
-    // }
+    .title {
+      display: flex;
+      justify-content: space-between;
+    }
   }
 
   .accordion-tools button {
