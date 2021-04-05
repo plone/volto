@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Add Storybook to the main docs (docs.voltocms.com/storybook) build @sneridagh
+
 ## 12.5.0 (2021-03-31)
 
 ### Feature
