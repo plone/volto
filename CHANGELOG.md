@@ -10,7 +10,6 @@
 
 ### Internal
 
-- Upgrade Storybook to 6.2.2 @tiberiuichim
 - Add Storybook to the main docs (docs.voltocms.com/storybook) build @sneridagh
 
 ## 12.5.0 (2021-03-31)
