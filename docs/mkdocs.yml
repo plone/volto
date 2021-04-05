@@ -12,7 +12,7 @@ theme:
     primary: 'teal'
     accent: 'red'
   font:
-    text: 'Poppins'
+    text: 'Montserrat'
     code: 'Source Code Pro'
 extra_css:
   - 'stylesheets/extra.oct2020.css'
@@ -24,6 +24,7 @@ nav:
       - Developer roadmap: 'getting-started/roadmap.md'
       - Learning resources: 'getting-started/others.md'
   - Design principles: 'design-principles/index.md'
+  - Style Guide: 'style-guide/index.md'
   - Configuration:
       - What is configurable?: 'configuration/how-to.md'
       - Settings reference guide: 'configuration/settings-reference.md'
@@ -79,7 +80,6 @@ nav:
       - Accessibility: 'developer-guidelines/accessibility-guidelines.md'
   - Contributing:
       - Guidelines: 'contributing/guidelines.md'
-  - Storybook: 'storybook/index.html'
 
 markdown_extensions:
   - admonition
