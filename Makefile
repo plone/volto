@@ -55,6 +55,7 @@ docs-build:
 	virtualenv --python=python3 .
 	./bin/pip install -r requirements-docs.txt
 	(cd docs && ../bin/mkdocs build)
+	yarn build-storybook -o docs/build/storybook
 
 start-frontend: dist
 	yarn start:prod

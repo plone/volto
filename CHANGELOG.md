@@ -6,11 +6,17 @@
 
 ### Feature
 
+- Add ObjectWidget and ObjectListWidget @sneridagh
+- Add `BlockForm` component, variations and schemaExtender aware @sneridagh
+- Improvements to the `InlineForm` @sneridagh
+
 ### Bugfix
 
 - Remove InlineForm default focus on first input @avoinea
 
 ### Internal
+
+- Add Storybook to the main docs (docs.voltocms.com/storybook) build @sneridagh
 
 ## 12.5.0 (2021-03-31)
 

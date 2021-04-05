@@ -12,6 +12,8 @@ import MainSliderViewBlock from '@package/components/Blocks/MainSlider/View';
 import MainSliderEditBlock from '@package/components/Blocks/MainSlider/Edit';
 import sliderSVG from '@plone/volto/icons/slider.svg';
 
+import CustomSchemaEnhancer from '@package/components/Blocks/CustomSchemaEnhancer';
+
 [...]
 
 const customBlocks = {
@@ -31,10 +33,23 @@ const customBlocks = {
       view: [], // Future proof (not implemented yet) view user role(s)
     },
     blockHasValue: (data) => {
-      // Returns true if the provided block data represents a value for the current block. 
-      // Required for alternate default block types implementations. 
+      // Returns true if the provided block data represents a value for the current block.
+      // Required for alternate default block types implementations.
       // See also [Settings reference](/configuration/settings-reference)
     },
+    // A block can have an schema enhancer function with the signature: (schema) => schema
+    // It can be either be at block level (it's applied always) or at a variation level
+    // The variation level one takes precedence.
+    schemaEnhancer: CustomSchemaEnhancer,
+    // A block can define variations (it should include the stock, default one)
+    variations: {
+      default: { label: 'Default' },
+      custom: {
+        label: 'Custom',
+        // The variation level schema Enhancer function
+        schemaEnhancer: CustomSchemaEnhancer
+      }
+    }
   },
 };
 
