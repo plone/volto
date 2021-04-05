@@ -28,10 +28,10 @@ export default {
           <Title />
           <Subtitle />
           <Description />
-          <Mdx />
           <Primary />
           {/* <ArgsTable story={PRIMARY_STORY} /> */}
           <Stories />
+          <Mdx />
         </>
       ),
     },

@@ -16,14 +16,14 @@ To understand it, let's look at the architecture:
 This Provider acts like a centralized place where "insertion points" and
 "plugins to the insertion points" can be can be registered.
 
-Now, inside the components tree of our PluggablesProvider we can insert the
+Now, somewhere inside the children tree of PluggablesProvider, we can create some
 "insertion points":
 
 ```
 <Pluggable name="left-column" />
 ```
 
-And now we can simply plug things as children to the `<Pluggable>` with a `<Plug>`
+And now we can simply plug things as children to the `<Pluggable>` with some `<Plug>`
 component:
 
 ```
@@ -32,6 +32,24 @@ component:
 
 Declaring a `<Plug>` with the same id two times will make the second one (in
 terms of rendering order) replace the first one.
+
+Internally, the `<PluggablesProvider>` keeps record of Pluggables and Plug and
+this is achieved by having the `<Pluggables>` and `<Plug>` components register
+themselves with the Provider via React context.
+
+### Customize how the plugs are rendered
+
+You can customize how the pluggables are rendered. The Pluggable component can
+take a function as a child, use that function to describe how the pluggables
+are rendered.
+
+```js
+<Pluggable name="block-toolbar">
+{(pluggables) => pluggables.map(p => <div>{p}</div>)
+</Pluggable>
+```
+
+### Passing parameters from the Pluggable to the Plugs
 
 You can also pass options to the Plugs, to enable inter-component communication:
 
@@ -48,12 +66,4 @@ To use the passed params, you can do:
   return <Button>Clickme</Button>
 }}
 </Plug>
-```
-
-You can also customize how the pluggables are rendered:
-
-```
-<Pluggable name="block-toolbar">
-{(pluggables) => pluggables.map(p => <div>{p}</div>)
-</Pluggable>
 ```
