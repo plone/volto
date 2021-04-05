@@ -151,6 +151,10 @@ export function addBlock(formData, type, index) {
   ];
 }
 
+export function mutateBlock(formData, id, value) {
+  return addBlockBefore(formData, id, value)[1];
+}
+
 export function addBlockBefore(formData, id, value) {
   const blocksFieldname = getBlocksFieldname(formData);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
@@ -174,11 +178,6 @@ export function addBlockBefore(formData, id, value) {
       },
     },
   ];
-}
-
-export function mutateBlock(formData, id, value) {
-  const newFormData = addBlockBefore(formData, id, value);
-  return newFormData[1];
 }
 
 export function changeBlock(formData, id, value) {
