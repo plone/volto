@@ -36,6 +36,7 @@ const InlineForm = ({
   icon,
   headerActions,
   footer,
+  focusIndex,
   intl,
 }) => {
   const _ = intl.formatMessage;
@@ -90,7 +91,7 @@ const InlineForm = ({
               {...schema.properties[field]}
               id={field}
               fieldSet={defaultFieldset.title.toLowerCase()}
-              focus={index === 0}
+              focus={index === focusIndex}
               value={
                 'default' in schema.properties[field]
                   ? formData[field] || schema.properties[field].default
@@ -167,6 +168,7 @@ InlineForm.defaultProps = {
   error: null,
   errors: {},
   schema: {},
+  focusIndex: null,
 };
 
 InlineForm.propTypes = {
@@ -190,6 +192,7 @@ InlineForm.propTypes = {
   error: PropTypes.shape({
     message: PropTypes.string,
   }),
+  focusIndex: PropTypes.number,
 };
 
 export default injectIntl(InlineForm, { forwardRef: true });

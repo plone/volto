@@ -12,6 +12,8 @@
 
 ### Bugfix
 
+- Remove InlineForm default focus on first input @avoinea
+
 ### Internal
 
 - Add Storybook to the main docs (docs.voltocms.com/storybook) build @sneridagh
