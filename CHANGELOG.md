@@ -2,8 +2,6 @@
 
 ## 12.5.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Add ObjectWidget and ObjectListWidget @sneridagh
