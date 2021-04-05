@@ -160,24 +160,31 @@ export function mutateBlock(formData, id, value) {
   // Test if block at index is already a placeholder (trailing) block
   const trailId = formData[blocksLayoutFieldname].items[index];
   if (trailId) {
-    const block = formData[blocksFieldname][trailId];
-    if (!blockHasValue(block)) {
-      return {
-        ...formData,
-        [blocksFieldname]: {
-          ...formData[blocksFieldname],
-          [id]: value || null,
-        },
-      };
-    }
+    const idnewBlock = uuid();
+    return {
+      ...formData,
+      [blocksFieldname]: {
+        ...formData[blocksFieldname],
+        [idnewBlock]: value || null,
+      },
+      [blocksLayoutFieldname]: {
+        items: [
+          ...formData[blocksLayoutFieldname].items.slice(0, index),
+          idnewBlock,
+          ...formData[blocksLayoutFieldname].items.slice(index),
+        ],
+      },
+    };
   }
 
+  const idnewBlock = uuid();
   const idTrailingBlock = uuid();
   return {
     ...formData,
     [blocksFieldname]: {
       ...formData[blocksFieldname],
-      [id]: value || null,
+      // [id]: value || null,
+      [idnewBlock]: value || null,
       [idTrailingBlock]: {
         '@type': settings.defaultBlockType,
       },
@@ -185,6 +192,7 @@ export function mutateBlock(formData, id, value) {
     [blocksLayoutFieldname]: {
       items: [
         ...formData[blocksLayoutFieldname].items.slice(0, index),
+        idnewBlock,
         idTrailingBlock,
         ...formData[blocksLayoutFieldname].items.slice(index),
       ],
