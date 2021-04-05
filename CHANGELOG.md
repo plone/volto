@@ -10,8 +10,6 @@
 
 ### Internal
 
-- Upgrade Storybook to 6.2.2 @tiberiuichim
-
 ## 12.5.0 (2021-03-31)
 
 ### Feature
