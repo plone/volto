@@ -79,6 +79,7 @@ nav:
       - Accessibility: 'developer-guidelines/accessibility-guidelines.md'
   - Contributing:
       - Guidelines: 'contributing/guidelines.md'
+  - Storybook: 'storybook/index.html'
 
 markdown_extensions:
   - admonition
