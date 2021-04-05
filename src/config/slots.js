@@ -20,7 +20,7 @@ const defaultSlots = {
 
     available: ({ pathname, slotData, slotName, slots }) => {
       return !!slots[slotName].items.length || !!Object.keys(slotData).length
-        ? !!slotData.items[slotName]['blocks'].length
+        ? !!Object.keys(slotData.items[slotName]['blocks']).length
         : false;
     },
 
