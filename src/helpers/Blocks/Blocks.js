@@ -123,7 +123,7 @@ export function addBlock(formData, type, index) {
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
   const totalItems = formData[blocksLayoutFieldname].items.length;
   const insert = index === -1 ? totalItems : index;
-
+  const trailId = formData[blocksLayoutFieldname].items[index];
   return [
     id,
     {
@@ -132,7 +132,11 @@ export function addBlock(formData, type, index) {
         items: [
           ...formData[blocksLayoutFieldname].items.slice(0, insert),
           id,
-          ...(type !== settings.defaultBlockType ? [idTrailingBlock] : []),
+          ...(trailId
+            ? []
+            : type !== settings.defaultBlockType
+            ? [idTrailingBlock]
+            : []),
           ...formData[blocksLayoutFieldname].items.slice(insert),
         ],
       },
@@ -141,63 +145,24 @@ export function addBlock(formData, type, index) {
         [id]: {
           '@type': type,
         },
-        ...(type !== settings.defaultBlockType && {
-          [idTrailingBlock]: {
-            '@type': settings.defaultBlockType,
-          },
-        }),
+        ...(trailId
+          ? []
+          : type !== settings.defaultBlockType
+          ? {
+              [idTrailingBlock]: {
+                '@type': settings.defaultBlockType,
+              },
+            }
+          : []),
       },
     },
   ];
 }
 
 export function mutateBlock(formData, id, value) {
-  const { settings } = config;
-  const blocksFieldname = getBlocksFieldname(formData);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
   const index = formData[blocksLayoutFieldname].items.indexOf(id) + 1;
-
-  // Test if block at index is already a placeholder (trailing) block
-  const trailId = formData[blocksLayoutFieldname].items[index];
-  if (trailId) {
-    const idnewBlock = uuid();
-    return {
-      ...formData,
-      [blocksFieldname]: {
-        ...formData[blocksFieldname],
-        [idnewBlock]: value || null,
-      },
-      [blocksLayoutFieldname]: {
-        items: [
-          ...formData[blocksLayoutFieldname].items.slice(0, index),
-          idnewBlock,
-          ...formData[blocksLayoutFieldname].items.slice(index),
-        ],
-      },
-    };
-  }
-
-  const idnewBlock = uuid();
-  const idTrailingBlock = uuid();
-  return {
-    ...formData,
-    [blocksFieldname]: {
-      ...formData[blocksFieldname],
-      // [id]: value || null,
-      [idnewBlock]: value || null,
-      [idTrailingBlock]: {
-        '@type': settings.defaultBlockType,
-      },
-    },
-    [blocksLayoutFieldname]: {
-      items: [
-        ...formData[blocksLayoutFieldname].items.slice(0, index),
-        idnewBlock,
-        idTrailingBlock,
-        ...formData[blocksLayoutFieldname].items.slice(index),
-      ],
-    },
-  };
+  return addBlock(formData, value['@type'], index);
 }
 
 export function changeBlock(formData, id, value) {

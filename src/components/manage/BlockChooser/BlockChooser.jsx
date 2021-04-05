@@ -23,6 +23,7 @@ const messages = defineMessages({
 
 const BlockChooser = ({
   currentBlock,
+  toggleBlockChooser,
   onMutateBlock,
   allowedBlocks,
   showRestricted,
@@ -116,9 +117,10 @@ const BlockChooser = ({
                       icon
                       basic
                       className={block.id}
-                      onClick={() =>
-                        onMutateBlock(currentBlock, { '@type': block.id })
-                      }
+                      onClick={(e) => {
+                        onMutateBlock(currentBlock, { '@type': block.id });
+                        toggleBlockChooser(e);
+                      }}
                     >
                       <Icon name={block.icon} size="36px" />
                       {intl.formatMessage({

@@ -194,8 +194,11 @@ class Edit extends Component {
     this.setState({ editorState });
   }
 
-  toggleAddNewBlock = (e) => {
-    e.preventDefault();
+  toggleAddNewBlock = (event) => {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
     this.setState((state) => ({ addNewBlockOpened: !state.addNewBlockOpened }));
   };
 
@@ -321,6 +324,7 @@ class Edit extends Component {
           )}
         {this.state.addNewBlockOpened && (
           <BlockChooser
+            toggleBlockChooser={this.toggleAddNewBlock}
             onMutateBlock={this.props.onMutateBlock}
             currentBlock={this.props.block}
             allowedBlocks={this.props.allowedBlocks}

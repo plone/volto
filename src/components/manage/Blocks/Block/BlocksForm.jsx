@@ -84,9 +84,9 @@ const BlocksForm = (props) => {
   };
 
   const onMutateBlock = (id, value) => {
-    const newFormData = mutateBlock(properties, id, value);
-
+    const [newBlockId, newFormData] = mutateBlock(properties, id, value);
     onChangeFormData(newFormData);
+    onSelectBlock(newBlockId);
   };
 
   const onAddBlock = (type, index) => {
