@@ -1,6 +1,6 @@
 # Change Log
 
-## 12.5.1 (unreleased)
+## 12.6.0 (2021-04-05)
 
 ### Feature
 
