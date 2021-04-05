@@ -69,12 +69,11 @@ const InlineForm = ({
       )}
 
       <div id={`blockform-fieldset-${defaultFieldset.id}`}>
-        {map(defaultFieldset.fields, (field, index) => (
+        {map(defaultFieldset.fields, (field) => (
           <Field
             {...schema.properties[field]}
             id={field}
             fieldSet={defaultFieldset.title.toLowerCase()}
-            focus={index === 0}
             value={
               'default' in schema.properties[field]
                 ? formData[field] || schema.properties[field].default

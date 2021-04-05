@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Remove InlineForm default focus on first input @avoinea
+
 ### Internal
 
 ## 12.5.0 (2021-03-31)
