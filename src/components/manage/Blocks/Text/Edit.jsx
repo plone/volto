@@ -98,6 +98,7 @@ class Edit extends Component {
     }
 
     this.onChange = this.onChange.bind(this);
+    this.onMutateBlock = this.onMutateBlock.bind(this);
   }
 
   /**
@@ -192,6 +193,18 @@ class Edit extends Component {
       });
     }
     this.setState({ editorState });
+  }
+
+  /**
+   * Change handler
+   * @method onMutateBlock
+   * @param {id} currentBlock id
+   * @param {value} New block value dict
+   * @returns {undefined}
+   */
+  onMutateBlock(id, value) {
+    this.props.onSelectBlock(this.props.onMutateBlock(id, value));
+    this.setState((state) => ({ addNewBlockOpened: !state.addNewBlockOpened }));
   }
 
   toggleAddNewBlock = (e) => {
@@ -321,7 +334,7 @@ class Edit extends Component {
           )}
         {this.state.addNewBlockOpened && (
           <BlockChooser
-            onMutateBlock={this.props.onMutateBlock}
+            onMutateBlock={this.onMutateBlock}
             currentBlock={this.props.block}
             allowedBlocks={this.props.allowedBlocks}
             showRestricted={this.props.showRestricted}

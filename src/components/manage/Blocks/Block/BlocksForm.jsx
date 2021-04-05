@@ -7,7 +7,7 @@ import {
   changeBlock,
   deleteBlock,
   moveBlock,
-  mutateBlock,
+  addBlockBefore,
   nextBlockId,
   previousBlockId,
 } from '@plone/volto/helpers';
@@ -84,8 +84,9 @@ const BlocksForm = (props) => {
   };
 
   const onMutateBlock = (id, value) => {
-    const newFormData = mutateBlock(properties, id, value);
+    const [newId, newFormData] = addBlockBefore(properties, id, value);
     onChangeFormData(newFormData);
+    return newId;
   };
 
   const onAddBlock = (type, index) => {

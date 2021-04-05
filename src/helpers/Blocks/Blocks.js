@@ -151,45 +151,34 @@ export function addBlock(formData, type, index) {
   ];
 }
 
-export function mutateBlock(formData, id, value) {
-  const { settings } = config;
+export function addBlockBefore(formData, id, value) {
   const blocksFieldname = getBlocksFieldname(formData);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
-  const index = formData[blocksLayoutFieldname].items.indexOf(id) + 1;
+  const index = formData[blocksLayoutFieldname].items.indexOf(id);
 
-  // Test if block at index is already a placeholder (trailing) block
-  const trailId = formData[blocksLayoutFieldname].items[index];
-  if (trailId) {
-    const block = formData[blocksFieldname][trailId];
-    if (!blockHasValue(block)) {
-      return {
-        ...formData,
-        [blocksFieldname]: {
-          ...formData[blocksFieldname],
-          [id]: value || null,
-        },
-      };
-    }
-  }
-
-  const idTrailingBlock = uuid();
-  return {
-    ...formData,
-    [blocksFieldname]: {
-      ...formData[blocksFieldname],
-      [id]: value || null,
-      [idTrailingBlock]: {
-        '@type': settings.defaultBlockType,
+  const newBlockId = uuid();
+  return [
+    newBlockId,
+    {
+      ...formData,
+      [blocksFieldname]: {
+        ...formData[blocksFieldname],
+        [newBlockId]: value || null,
+      },
+      [blocksLayoutFieldname]: {
+        items: [
+          ...formData[blocksLayoutFieldname].items.slice(0, index),
+          newBlockId,
+          ...formData[blocksLayoutFieldname].items.slice(index),
+        ],
       },
     },
-    [blocksLayoutFieldname]: {
-      items: [
-        ...formData[blocksLayoutFieldname].items.slice(0, index),
-        idTrailingBlock,
-        ...formData[blocksLayoutFieldname].items.slice(index),
-      ],
-    },
-  };
+  ];
+}
+
+export function mutateBlock(formData, id, value) {
+  const newFormData = addBlockBefore(formData, id, value);
+  return newFormData[1];
 }
 
 export function changeBlock(formData, id, value) {
