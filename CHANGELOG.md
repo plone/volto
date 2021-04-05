@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Stop changing block id onMutateBlock refs #2330 @avoinea
+
 ### Internal
 
 ## 12.6.0 (2021-04-05)
