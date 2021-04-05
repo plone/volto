@@ -14,6 +14,8 @@
 
 - Add `MutateBlockButton`, a component that makes centralizes logic around BlockChooser and block mutation (changing block type) @tiberiuichim
 
+- Upgrade Storybook to 6.2.2 @tiberiuichim
+
 ## 12.5.0 (2021-03-31)
 
 ### Feature

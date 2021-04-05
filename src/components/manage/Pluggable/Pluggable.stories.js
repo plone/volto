@@ -4,8 +4,39 @@ import {
   PluggablesProvider,
   createPluggableAndPlug,
 } from './index';
+import {
+  Title,
+  Subtitle,
+  Description,
+  Primary,
+  // ArgsTable,
+  Stories,
+  // PRIMARY_STORY,
+} from '@storybook/addon-docs/blocks';
 import Wrapper from '@plone/volto/storybook';
 import React from 'react';
+import Mdx from './Pluggable.mdx';
+
+export default {
+  title: 'Internal components/Pluggable components',
+  component: Pluggable,
+  parameters: {
+    componentSubtitle: 'Pluggable architecture similar to Portals',
+    docs: {
+      page: () => (
+        <>
+          <Title />
+          <Subtitle />
+          <Description />
+          <Primary />
+          {/* <ArgsTable story={PRIMARY_STORY} /> */}
+          <Stories />
+          <Mdx />
+        </>
+      ),
+    },
+  },
+};
 
 const RandomBlock = (props) => {
   const { id = 'buttonA', marker } = props;
@@ -84,7 +115,7 @@ export const Override = (args) => {
 Override.parameters = {
   docs: {
     description: {
-      component:
+      componentSubtitle:
         'By rendering a plug insert with the same id, only the last one will be rendered',
     },
     source: {
@@ -121,7 +152,7 @@ UsingCreatePluggableAndPlug.parameters = {
   component: createPluggableAndPlug,
   docs: {
     description: {
-      component:
+      componentSubtitle:
         'We can use `createPluggableAndPlug` to create a new pluggable + plug components pair. ',
     },
     source: {
@@ -135,9 +166,4 @@ const [Toolbar, ToolbarPlug] = createPluggableAndPlug('toolbar');
       `,
     },
   },
-};
-
-export default {
-  title: 'Internal components/Pluggable components',
-  component: Pluggable,
 };

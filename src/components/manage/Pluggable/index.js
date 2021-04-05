@@ -18,32 +18,6 @@ export function usePluggable(name) {
   return ctx.pluggables[name] || [];
 }
 
-/**
- * Get the appropriate Pluggable component for the given name.
- *
- * There's multiple ways to use this:
- * To use, first create the pluggable
- *
- * const PluggableToolbar = createPluggable('toolbar');
- *
- * Render it under a PluggablesProvider:
- *
- * <PluggablesProvider>
- * ...
- * <PluggableToolbar />
- * ...
- * </PluggablesProvider>
- *
- *
- * Then somewhere inside the PluggablesProvider tree you can now plug into the
- * PluggableToolbar with:
- *
- * const PluggableToolbar = usePluggable('toolbar');
- *
- * <PluggableToolbar.Plug id="save" ... />
- *
- * Renders a pluggable insertion "area". Create it using `usePluggable`
- */
 export function Pluggable(props) {
   const { name, maxCount, reversed, children, params } = props; // , ...rest
   let pluggables = usePluggable(name);
@@ -175,3 +149,5 @@ export const PluggablesProvider = ({ children }) => {
   const [pluggables, setPluggables] = React.useState(initialPluggables);
   return React.createElement(context.Provider, { value: pluggables }, children);
 };
+
+export default Pluggable;
