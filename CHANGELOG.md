@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- fix universal link @nileshgulia1s
+
 ### Internal
 
 ## 12.6.1 (2021-04-06)
