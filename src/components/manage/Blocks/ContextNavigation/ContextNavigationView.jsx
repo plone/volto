@@ -8,9 +8,9 @@ const ContextNavigationView = ({ data = {} }) => {
   if (root_path) navProps['root_path'] = flattenToAppURL(root_path);
 
   return (
-    <div>
+    <>
       <ConnectedContextNavigation params={navProps} />
-    </div>
+    </>
   );
 };
 

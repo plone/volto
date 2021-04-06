@@ -18,11 +18,7 @@ const defaultSlots = {
       // },
     ],
 
-    available: ({ pathname, slotData, slotName, slots }) => {
-      return !!slots[slotName].items.length || !!Object.keys(slotData).length
-        ? !!Object.keys(slotData.items[slotName]['blocks']).length
-        : false;
-    },
+    // available: ({ pathname, slotData, slotName, slots }) => true,
 
     // optional
     // computeLayout({staticFills, persistentFills}) {

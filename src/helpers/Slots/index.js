@@ -1,4 +1,5 @@
 import { matchPath } from 'react-router-dom';
+import { blockHasValue } from '@plone/volto/helpers';
 
 export function restrictToPath(match) {
   return ({ pathname }) => matchPath(pathname, match);
@@ -13,12 +14,12 @@ export function restrictToPath(match) {
 export function isSlotAvailable({ slotName, pathname, slotData, slots }) {
   return (
     [
-      ...(slotData?.items?.[slotName]?.blocks_layout?.items || []),
-      ...[
-        slots[slotName]?.items?.filter((reg) =>
-          reg.available({ pathname, slotName, slotData, slots }),
-        ),
-      ],
+      ...(Object.values(
+        slotData?.items?.[slotName]?.blocks || {},
+      ).filter((item) => blockHasValue(item)) || []),
+      ...slots[slotName]?.items?.filter((reg) =>
+        reg.available({ pathname, slotName, slotData, slots }),
+      ),
     ].length > 0
   );
 }

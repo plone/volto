@@ -5,7 +5,6 @@ import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import config from '@plone/volto/registry';
 import { isSlotAvailable } from '@plone/volto/helpers';
-// import { isEmpty } from 'lodash';
 
 const ContentContainer = ({ children, content }) => {
   const pathname = useLocation().pathname;
@@ -22,8 +21,12 @@ const ContentContainer = ({ children, content }) => {
       : isSlotAvailable(props);
   };
 
-  const hasLeftSlot = available('asideLeftSlot');
-  const hasRightSlot = available('asideRightSlot');
+  const hasLeftSlot = React.useMemo(() => available('asideLeftSlot'), [
+    slotData,
+  ]);
+  const hasRightSlot = React.useMemo(() => available('asideRightSlot'), [
+    slotData,
+  ]);
 
   const contentWidth = () => {
     if (hasLeftSlot && hasRightSlot) {
