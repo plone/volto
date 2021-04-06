@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- fixed recurrence widget when weekly recurrence is selected and event start date is on sunday. @giuliaghisini
+
 ### Internal
 
 ## 12.6.0 (2021-04-05)
