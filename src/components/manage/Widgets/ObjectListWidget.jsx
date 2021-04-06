@@ -83,7 +83,7 @@ const ObjectListWidget = (props) => {
             value.length > 2 ? thirdLayer : ''
           }`,
         }}
-        ariaLabelledBy={`fieldset-${fieldSet || 'default'}-field-label-${id}`}
+        aria-labelledby={`fieldset-${fieldSet || 'default'}-field-label-${id}`}
         childList={value.map((o) => [o['@id'], o])}
         onMoveItem={(result) => {
           const { source, destination } = result;

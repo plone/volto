@@ -112,7 +112,7 @@ class FormFieldWrapper extends Component {
                 <div className="wrapper">
                   <label
                     id={`fieldset-${fieldSet}-field-label-${id}`}
-                    htmlFor={!noForInFieldLabel && `field-${id}`}
+                    htmlFor={noForInFieldLabel ? null : `field-${id}`}
                   >
                     {draggable && onEdit && (
                       <i
