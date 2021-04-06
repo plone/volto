@@ -2,8 +2,12 @@ import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
 import React from 'react';
 import { keys, map } from 'lodash';
-import { Field } from '@plone/volto/components';
-import { Segment, Message } from 'semantic-ui-react';
+import { Field, Icon } from '@plone/volto/components';
+import AnimateHeight from 'react-animate-height';
+import { Accordion, Segment, Message } from 'semantic-ui-react';
+
+import upSVG from '@plone/volto/icons/up-key.svg';
+import downSVG from '@plone/volto/icons/down-key.svg';
 
 const messages = defineMessages({
   editValues: {
@@ -32,18 +36,30 @@ const InlineForm = ({
   icon,
   headerActions,
   footer,
+  focusIndex,
   intl,
 }) => {
   const _ = intl.formatMessage;
   const defaultFieldset = schema.fieldsets.find((o) => o.id === 'default');
   const other = schema.fieldsets.filter((o) => o.id !== 'default');
+
+  const [currentActiveFieldset, setCurrentActiveFieldset] = React.useState(0);
+  function handleCurrentActiveFieldset(e, blockProps) {
+    const { index } = blockProps;
+    const newIndex = currentActiveFieldset === index ? -1 : index;
+
+    setCurrentActiveFieldset(newIndex);
+  }
+
   return (
     <div className="ui form">
-      <header className="header pulled">
-        {icon}
-        <h2>{title || _(messages.editValues)}</h2>
-        {headerActions}
-      </header>
+      {title && (
+        <header className="header pulled">
+          {icon}
+          <h2>{title || _(messages.editValues)}</h2>
+          {headerActions}
+        </header>
+      )}
       {description && (
         <Segment secondary className="attached">
           {description}
@@ -69,54 +85,75 @@ const InlineForm = ({
       )}
 
       <div id={`blockform-fieldset-${defaultFieldset.id}`}>
-        {map(defaultFieldset.fields, (field, index) => (
-          <Field
-            {...schema.properties[field]}
-            id={field}
-            fieldSet={defaultFieldset.title.toLowerCase()}
-            focus={index === 0}
-            value={
-              'default' in schema.properties[field]
-                ? formData[field] || schema.properties[field].default
-                : formData[field]
-            }
-            required={schema.required.indexOf(field) !== -1}
-            onChange={(id, value) => {
-              onChangeField(id, value);
-            }}
-            key={field}
-            error={errors[field]}
-            block={block}
-          />
-        ))}
+        <Segment className="form attached">
+          {map(defaultFieldset.fields, (field, index) => (
+            <Field
+              {...schema.properties[field]}
+              id={field}
+              fieldSet={defaultFieldset.title.toLowerCase()}
+              focus={index === focusIndex}
+              value={
+                'default' in schema.properties[field]
+                  ? formData[field] || schema.properties[field].default
+                  : formData[field]
+              }
+              required={schema.required.indexOf(field) !== -1}
+              onChange={(id, value) => {
+                onChangeField(id, value);
+              }}
+              key={field}
+              error={errors[field]}
+              block={block}
+            />
+          ))}
+        </Segment>
       </div>
 
-      {other.map((fieldset) => (
-        <div key={fieldset.id} id={`blockform-fieldset-${fieldset.id}`}>
-          {title && (
-            <Segment className="secondary attached">{fieldset.title}</Segment>
-          )}
-          <Segment className="attached">
-            {map(fieldset.fields, (field) => (
-              <Field
-                {...schema.properties[field]}
-                id={field}
-                value={
-                  'default' in schema.properties[field]
-                    ? formData[field] || schema.properties[field].default
-                    : formData[field]
-                }
-                required={schema.required.indexOf(field) !== -1}
-                onChange={(id, value) => {
-                  onChangeField(id, value);
-                }}
-                key={field}
-                error={errors[field]}
-                block={block}
-              />
-            ))}
-          </Segment>
-        </div>
+      {other.map((fieldset, index) => (
+        <Accordion fluid styled className="form" key={fieldset.id}>
+          <div key={fieldset.id} id={`blockform-fieldset-${fieldset.id}`}>
+            <Accordion.Title
+              active={currentActiveFieldset === index}
+              index={index}
+              onClick={handleCurrentActiveFieldset}
+            >
+              {fieldset.title && <>{fieldset.title}</>}
+              {currentActiveFieldset === index ? (
+                <Icon name={upSVG} size="20px" />
+              ) : (
+                <Icon name={downSVG} size="20px" />
+              )}
+            </Accordion.Title>
+            <Accordion.Content active={currentActiveFieldset === index}>
+              <AnimateHeight
+                animateOpacity
+                duration={500}
+                height={currentActiveFieldset === index ? 'auto' : 0}
+              >
+                <Segment className="attached">
+                  {map(fieldset.fields, (field) => (
+                    <Field
+                      {...schema.properties[field]}
+                      id={field}
+                      value={
+                        'default' in schema.properties[field]
+                          ? formData[field] || schema.properties[field].default
+                          : formData[field]
+                      }
+                      required={schema.required.indexOf(field) !== -1}
+                      onChange={(id, value) => {
+                        onChangeField(id, value);
+                      }}
+                      key={field}
+                      error={errors[field]}
+                      block={block}
+                    />
+                  ))}
+                </Segment>
+              </AnimateHeight>
+            </Accordion.Content>
+          </div>
+        </Accordion>
       ))}
       {footer}
     </div>
@@ -131,6 +168,7 @@ InlineForm.defaultProps = {
   error: null,
   errors: {},
   schema: {},
+  focusIndex: null,
 };
 
 InlineForm.propTypes = {
@@ -154,6 +192,7 @@ InlineForm.propTypes = {
   error: PropTypes.shape({
     message: PropTypes.string,
   }),
+  focusIndex: PropTypes.number,
 };
 
 export default injectIntl(InlineForm, { forwardRef: true });

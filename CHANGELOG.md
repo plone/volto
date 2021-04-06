@@ -1,6 +1,6 @@
 # Change Log
 
-## 12.5.1 (unreleased)
+## 12.6.2 (unreleased)
 
 ### Breaking
 
@@ -15,6 +15,29 @@
 - Add `MutateBlockButton`, a component that makes centralizes logic around BlockChooser and block mutation (changing block type) @tiberiuichim
 
 - Upgrade Storybook to 6.2.2 @tiberiuichim
+
+## 12.6.1 (2021-04-06)
+
+### Bugfix
+
+- Remove duplicated wrapper on block edit form @sneridagh
+- Fix small catched up issues in tests @sneridagh
+
+## 12.6.0 (2021-04-05)
+
+### Feature
+
+- Add ObjectWidget and ObjectListWidget @sneridagh
+- Add `BlockForm` component, variations and schemaExtender aware @sneridagh
+- Improvements to the `InlineForm` @sneridagh
+
+### Bugfix
+
+- Remove InlineForm default focus on first input @avoinea
+
+### Internal
+
+- Add Storybook to the main docs (docs.voltocms.com/storybook) build @sneridagh
 
 ## 12.5.0 (2021-03-31)
 

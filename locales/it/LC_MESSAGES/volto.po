@@ -322,6 +322,10 @@ msgstr "Chiudi menu"
 msgid "Code"
 msgstr "Codice"
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Collapse item"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"
 msgstr "Collezione"
@@ -1449,6 +1453,10 @@ msgstr "Form di iscrizione"
 msgid "Relevance"
 msgstr "Rilevanza"
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Remove item"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
 msgstr "Rimuovi"
@@ -1690,6 +1698,10 @@ msgstr "Mostra tutti"
 #: components/theme/Comments/Comments
 msgid "Show Replies"
 msgstr "Mostra risposte"
+
+#: components/manage/Widgets/ObjectListWidget
+msgid "Show item"
+msgstr ""
 
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
@@ -2070,6 +2082,10 @@ msgstr "Utenti e gruppi"
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Users and groups settings"
 msgstr "Impostazioni utenti e gruppi"
+
+#: components/manage/Form/BlockDataForm
+msgid "Variation"
+msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Version Overview"

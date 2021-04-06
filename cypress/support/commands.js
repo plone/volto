@@ -1,3 +1,5 @@
+import '@testing-library/cypress/add-commands';
+
 // --- AUTOLOGIN -------------------------------------------------------------
 Cypress.Commands.add('autologin', () => {
   let api_url, user, password;
