@@ -8,6 +8,9 @@
 
 ### Bugfix
 
+- Remove duplicated wrapper on block edit form @sneridagh
+- Fix small catched up issues in tests @sneridagh
+
 ### Internal
 
 ## 12.6.0 (2021-04-05)

@@ -107,7 +107,7 @@ const DragDropList = (props) => {
             ref={provided.innerRef}
             {...provided.droppableProps}
             style={{ position: 'relative', ...style }}
-            ariaLabelledBy={ariaLabelledBy}
+            aria-labelledby={ariaLabelledBy}
           >
             {childList
               .filter(([id, child]) => id && child) // beware numbers!
