@@ -87,7 +87,6 @@ exports[`renders an object list widget component 1`] = `
       </div>
     </div>
     <div
-      arialabelledby="fieldset-my-field-set-field-label-my-widget"
       data-rbd-droppable-context-id="0"
       data-rbd-droppable-id="id-0"
       style="position: relative; box-shadow: 0 1px 1px rgba(0,0,0,0.15), 0 10px 0 -5px #eee, 0 10px 1px -4px rgba(0,0,0,0.15);"

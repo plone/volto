@@ -1,6 +1,6 @@
 # Change Log
 
-## 12.6.1 (unreleased)
+## 12.6.2 (unreleased)
 
 ### Breaking
 
@@ -11,6 +11,13 @@
 ### Bugfix
 
 ### Internal
+
+## 12.6.1 (2021-04-06)
+
+### Bugfix
+
+- Remove duplicated wrapper on block edit form @sneridagh
+- Fix small catched up issues in tests @sneridagh
 
 ## 12.6.0 (2021-04-05)
 

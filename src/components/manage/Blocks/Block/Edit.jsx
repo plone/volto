@@ -125,7 +125,7 @@ export class Edit extends Component {
       blocksConfig?.[type]?.['blockHasOwnFocusManagement'] || null;
 
     return (
-      <div className={`ui drag block inner ${type}`}>
+      <>
         {Block !== null ? (
           <div
             role="presentation"
@@ -197,7 +197,7 @@ export class Edit extends Component {
             })}
           </div>
         )}
-      </div>
+      </>
     );
   }
 }
