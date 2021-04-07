@@ -30,12 +30,14 @@ function addExpandersToPath(path, type) {
   if (!path) {
     return path;
   }
+  const itemtoExpand = type.split('_')[1].toLowerCase();
   const pathPart = path.split('?')[0] || '';
   let query = qs.parse(qs.extract(path));
-  const apiExpanders = config.settings?.apiExpanders?.[type] || [];
-  let expand = join(compact([query.expand, ...apiExpanders]), ',');
-  if (expand) {
-    query.expand = expand;
+  if (config.settings?.apiExpanders?.includes(itemtoExpand)) {
+    let expand = join(compact([query.expand, itemtoExpand]), ',');
+    if (expand) {
+      query.expand = expand;
+    }
   }
   const stringifiedQuery = qs.stringify(query);
   if (!stringifiedQuery) {
@@ -128,7 +130,7 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
               }),
             ),
           )
-      : api[request.op](addExpandersToPath(request.path), {
+      : api[request.op](addExpandersToPath(request.path, type), {
           data: request.data,
           type: request.type,
           headers: request.headers,
