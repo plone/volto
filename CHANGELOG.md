@@ -4,9 +4,9 @@
 
 ### Breaking
 
-- Use onAddBlockBefore instead of onMutateBlock when adding new block refs #2330 @avoinea
-
 ### Feature
+
+- Use `onInsertBlock` callback when adding new blocks if available, otherwise fallback to `onMutateBlock` refs #2330 @avoinea
 
 ### Bugfix
 

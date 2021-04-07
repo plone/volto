@@ -89,7 +89,7 @@ const BlocksForm = (props) => {
     onChangeFormData(newFormData);
   };
 
-  const onAddBlockBefore = (id, value) => {
+  const onInsertBlock = (id, value) => {
     const [newId, newFormData] = addBlockBefore(properties, id, value);
     onChangeFormData(newFormData);
     return newId;
@@ -160,7 +160,7 @@ const BlocksForm = (props) => {
             index,
             manage,
             onAddBlock,
-            onAddBlockBefore,
+            onInsertBlock,
             onChangeBlock,
             onChangeField,
             onDeleteBlock,

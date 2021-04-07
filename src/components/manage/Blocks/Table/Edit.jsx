@@ -164,7 +164,7 @@ class Edit extends Component {
     selected: PropTypes.bool.isRequired,
     block: PropTypes.string.isRequired,
     onAddBlock: PropTypes.func.isRequired,
-    onAddBlockBefore: PropTypes.func.isRequired,
+    onInsertBlock: PropTypes.func.isRequired,
     onChangeBlock: PropTypes.func.isRequired,
     onDeleteBlock: PropTypes.func.isRequired,
     onMutateBlock: PropTypes.func.isRequired,
