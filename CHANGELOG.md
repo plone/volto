@@ -7,7 +7,7 @@
 ### Feature
 
 ### Bugfix
-
+- Fix default value for checkbox widget @alexbueckig
 ### Internal
 
 ## 12.6.1 (2021-04-06)
