@@ -53,7 +53,7 @@ export function hasBlocksData(props) {
   );
 }
 
-/*
+/**
  * Pluggable method to test if a block has a set value (any non-empty value)
  * @function blockHasValue
  * @param {Object} data Block data
@@ -86,6 +86,14 @@ export const getBlocks = (properties) => {
   );
 };
 
+/**
+ * Move block to different location index within blocks_layout
+ * @function moveBlock
+ * @param {Object} formData Form data
+ * @param {number} source index within form blocks_layout items
+ * @param {number} destination index within form blocks_layout items
+ * @return {Object} New form data
+ */
 export function moveBlock(formData, source, destination) {
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
   return {
@@ -96,6 +104,13 @@ export function moveBlock(formData, source, destination) {
   };
 }
 
+/**
+ * Delete block by id
+ * @function deleteBlock
+ * @param {Object} formData Form data
+ * @param {string} blockId Block uid
+ * @return {Object} New form data
+ */
 export function deleteBlock(formData, blockId) {
   const blocksFieldname = getBlocksFieldname(formData);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
@@ -115,6 +130,14 @@ export function deleteBlock(formData, blockId) {
   return newFormData;
 }
 
+/**
+ * Add block
+ * @function addBlock
+ * @param {Object} formData Form data
+ * @param {string} type Block type
+ * @param {number} index Destination index
+ * @return {Array} New block id, New form data
+ */
 export function addBlock(formData, type, index) {
   const { settings } = config;
   const id = uuid();
@@ -151,6 +174,14 @@ export function addBlock(formData, type, index) {
   ];
 }
 
+/**
+ * Mutate block
+ * @function mutateBlock
+ * @param {Object} formData Form data
+ * @param {string} id Block uid to mutate
+ * @param {number} value Block's new value
+ * @return {Object} New form data
+ */
 export function mutateBlock(formData, id, value) {
   const { settings } = config;
   const blocksFieldname = getBlocksFieldname(formData);
@@ -192,6 +223,14 @@ export function mutateBlock(formData, id, value) {
   };
 }
 
+/**
+ * Insert new block before another block
+ * @function insertBlock
+ * @param {Object} formData Form data
+ * @param {string} id Insert new block before the block with this id
+ * @param {number} value New block's value
+ * @return {Array} New block id, New form data
+ */
 export function insertBlock(formData, id, value) {
   const blocksFieldname = getBlocksFieldname(formData);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
@@ -217,6 +256,14 @@ export function insertBlock(formData, id, value) {
   ];
 }
 
+/**
+ * Change block
+ * @function changeBlock
+ * @param {Object} formData Form data
+ * @param {string} id Block uid to change
+ * @param {number} value Block's new value
+ * @return {Object} New form data
+ */
 export function changeBlock(formData, id, value) {
   const blocksFieldname = getBlocksFieldname(formData);
   return {
@@ -228,6 +275,13 @@ export function changeBlock(formData, id, value) {
   };
 }
 
+/**
+ * Get the next block UID within form
+ * @function nextBlockId
+ * @param {Object} formData Form data
+ * @param {string} currentBlock Block uid
+ * @return {string} Next block uid
+ */
 export function nextBlockId(formData, currentBlock) {
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
   const currentIndex = formData[blocksLayoutFieldname].items.indexOf(
@@ -243,6 +297,13 @@ export function nextBlockId(formData, currentBlock) {
   return formData[blocksLayoutFieldname].items[newIndex];
 }
 
+/**
+ * Get the previous block UID within form
+ * @function previousBlockId
+ * @param {Object} formData Form data
+ * @param {string} currentBlock Block uid
+ * @return {string} Previous block uid
+ */
 export function previousBlockId(formData, currentBlock) {
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
   const currentIndex = formData[blocksLayoutFieldname].items.indexOf(
@@ -257,6 +318,12 @@ export function previousBlockId(formData, currentBlock) {
   return formData[blocksLayoutFieldname].items[newindex];
 }
 
+/**
+ * Generate empty block form
+ * @function emptyBlocksForm
+ * @param {Object} formData Form data
+ * @return {Object} Emptry blocks form with one defaultBlockType block
+ */
 export function emptyBlocksForm() {
   const { settings } = config;
   const id = uuid();
