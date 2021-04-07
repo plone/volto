@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2021-04-01T18:17:59.881Z\n"
+"POT-Creation-Date: 2021-04-07T10:29:29.790Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -787,6 +787,11 @@ msgstr ""
 #: components/manage/Blocks/Maps/View
 # defaultMessage: Embeded Google Maps
 msgid "Embeded Google Maps"
+msgstr ""
+
+#: components/manage/Widgets/ObjectListWidget
+# defaultMessage: Empty object list
+msgid "Empty object list"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypeLayout
