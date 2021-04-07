@@ -35,7 +35,7 @@ export {
 } from '@plone/volto/helpers/Content/Content';
 export {
   addBlock,
-  addBlockBefore,
+  insertBlock,
   blockHasValue,
   changeBlock,
   deleteBlock,

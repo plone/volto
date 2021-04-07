@@ -4,7 +4,7 @@ import { DragDropList } from '@plone/volto/components';
 import { getBlocks } from '@plone/volto/helpers';
 import {
   addBlock,
-  addBlockBefore,
+  insertBlock,
   changeBlock,
   deleteBlock,
   moveBlock,
@@ -90,7 +90,7 @@ const BlocksForm = (props) => {
   };
 
   const onInsertBlock = (id, value) => {
-    const [newId, newFormData] = addBlockBefore(properties, id, value);
+    const [newId, newFormData] = insertBlock(properties, id, value);
     onChangeFormData(newFormData);
     return newId;
   };

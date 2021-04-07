@@ -192,7 +192,7 @@ export function mutateBlock(formData, id, value) {
   };
 }
 
-export function addBlockBefore(formData, id, value) {
+export function insertBlock(formData, id, value) {
   const blocksFieldname = getBlocksFieldname(formData);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
   const index = formData[blocksLayoutFieldname].items.indexOf(id);
