@@ -17,6 +17,8 @@
 
 ### Internal
 
+- Add Blocks helpers docs and tests @avoinea
+
 ## 12.6.1 (2021-04-06)
 
 ### Bugfix
