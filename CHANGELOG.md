@@ -6,6 +6,8 @@
 
 ### Feature
 
+- In Text block, keep text selection on focus, and move focus to end of text if there's no selection @giuliaghisini
+
 ### Bugfix
 
 ### Internal
