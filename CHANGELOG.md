@@ -2,8 +2,6 @@
 
 ## 12.6.2 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Use `onInsertBlock` callback when adding new blocks if available, otherwise fallback to `onMutateBlock` refs #2330 @avoinea
