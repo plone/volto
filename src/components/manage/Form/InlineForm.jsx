@@ -94,7 +94,7 @@ const InlineForm = ({
               focus={index === focusIndex}
               value={
                 'default' in schema.properties[field]
-                  ? formData[field] || schema.properties[field].default
+                  ? formData[field] ?? schema.properties[field].default
                   : formData[field]
               }
               required={schema.required.indexOf(field) !== -1}

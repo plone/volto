@@ -658,6 +658,10 @@ msgstr "Itsatsitako kodearen errorea, jarraitu argibideak eta saiatu berriz."
 msgid "Embeded Google Maps"
 msgstr "Itsatsitako Google Maps"
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Empty object list"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypeLayout
 msgid "Enable editable Blocks"
 msgstr "Aktibatu editatu daitezkeen blokeak"
