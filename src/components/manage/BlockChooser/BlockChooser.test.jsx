@@ -121,7 +121,7 @@ describe('BlocksChooser', () => {
   it('renders a BlockChooser component', () => {
     const { container } = render(
       <Provider store={store}>
-        <BlockChooser onMutateBlock={() => {}} currentBlock="theblockid" />
+        <BlockChooser onAddBlockBefore={() => {}} currentBlock="theblockid" />
       </Provider>,
     );
     expect(container).toMatchSnapshot();
@@ -130,7 +130,7 @@ describe('BlocksChooser', () => {
     const { container } = render(
       <Provider store={store}>
         <BlockChooser
-          onMutateBlock={() => {}}
+          onAddBlockBefore={() => {}}
           currentBlock="theblockid"
           allowedBlocks={['image', 'listing']}
         />
@@ -145,7 +145,7 @@ describe('BlocksChooser', () => {
     const { container } = render(
       <Provider store={store}>
         <BlockChooser
-          onMutateBlock={() => {}}
+          onAddBlockBefore={() => {}}
           currentBlock="theblockid"
           allowedBlocks={['image', 'listing']}
         />
@@ -157,7 +157,7 @@ describe('BlocksChooser', () => {
     const { container } = render(
       <Provider store={store}>
         <BlockChooser
-          onMutateBlock={() => {}}
+          onAddBlockBefore={() => {}}
           currentBlock="theblockid"
           allowedBlocks={['image', 'title']}
           showRestricted
@@ -188,7 +188,7 @@ describe('BlocksChooser', () => {
     const { container } = render(
       <Provider store={store}>
         <BlockChooser
-          onMutateBlock={() => {}}
+          onAddBlockBefore={() => {}}
           currentBlock="theblockid"
           blocksConfig={blocksConfig}
         />
@@ -221,7 +221,7 @@ describe('BlocksChooser', () => {
     const { container } = render(
       <Provider store={store}>
         <BlockChooser
-          onMutateBlock={() => {}}
+          onAddBlockBefore={() => {}}
           currentBlock="theblockid"
           blocksConfig={blocksConfig}
         />

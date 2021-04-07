@@ -4,11 +4,11 @@
 
 ### Breaking
 
+- Use onAddBlockBefore instead of onMutateBlock when adding new block refs #2330 @avoinea
+
 ### Feature
 
 ### Bugfix
-
-- Stop changing block id onMutateBlock refs #2330 @avoinea
 
 ### Internal
 

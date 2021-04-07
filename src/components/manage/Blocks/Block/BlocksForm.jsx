@@ -4,10 +4,11 @@ import { DragDropList } from '@plone/volto/components';
 import { getBlocks } from '@plone/volto/helpers';
 import {
   addBlock,
+  addBlockBefore,
   changeBlock,
   deleteBlock,
   moveBlock,
-  addBlockBefore,
+  mutateBlock,
   nextBlockId,
   previousBlockId,
 } from '@plone/volto/helpers';
@@ -84,6 +85,11 @@ const BlocksForm = (props) => {
   };
 
   const onMutateBlock = (id, value) => {
+    const newFormData = mutateBlock(properties, id, value);
+    onChangeFormData(newFormData);
+  };
+
+  const onAddBlockBefore = (id, value) => {
     const [newId, newFormData] = addBlockBefore(properties, id, value);
     onChangeFormData(newFormData);
     return newId;
@@ -154,6 +160,7 @@ const BlocksForm = (props) => {
             index,
             manage,
             onAddBlock,
+            onAddBlockBefore,
             onChangeBlock,
             onChangeField,
             onDeleteBlock,

@@ -21,6 +21,7 @@ test('renders an edit table block component', () => {
         selected={false}
         block="1234"
         onAddBlock={() => {}}
+        onAddBlockBefore={() => {}}
         onChangeBlock={() => {}}
         onSelectBlock={() => {}}
         onDeleteBlock={() => {}}

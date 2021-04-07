@@ -152,7 +152,44 @@ export function addBlock(formData, type, index) {
 }
 
 export function mutateBlock(formData, id, value) {
-  return addBlockBefore(formData, id, value)[1];
+  const { settings } = config;
+  const blocksFieldname = getBlocksFieldname(formData);
+  const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
+  const index = formData[blocksLayoutFieldname].items.indexOf(id) + 1;
+
+  // Test if block at index is already a placeholder (trailing) block
+  const trailId = formData[blocksLayoutFieldname].items[index];
+  if (trailId) {
+    const block = formData[blocksFieldname][trailId];
+    if (!blockHasValue(block)) {
+      return {
+        ...formData,
+        [blocksFieldname]: {
+          ...formData[blocksFieldname],
+          [id]: value || null,
+        },
+      };
+    }
+  }
+
+  const idTrailingBlock = uuid();
+  return {
+    ...formData,
+    [blocksFieldname]: {
+      ...formData[blocksFieldname],
+      [id]: value || null,
+      [idTrailingBlock]: {
+        '@type': settings.defaultBlockType,
+      },
+    },
+    [blocksLayoutFieldname]: {
+      items: [
+        ...formData[blocksLayoutFieldname].items.slice(0, index),
+        idTrailingBlock,
+        ...formData[blocksLayoutFieldname].items.slice(index),
+      ],
+    },
+  };
 }
 
 export function addBlockBefore(formData, id, value) {
