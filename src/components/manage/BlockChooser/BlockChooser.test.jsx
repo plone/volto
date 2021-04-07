@@ -126,6 +126,14 @@ describe('BlocksChooser', () => {
     );
     expect(container).toMatchSnapshot();
   });
+  it('Fallback BlockChooser component onMutateBlock', () => {
+    const { container } = render(
+      <Provider store={store}>
+        <BlockChooser onMutateBlock={() => {}} currentBlock="theblockid" />
+      </Provider>,
+    );
+    expect(container).toMatchSnapshot();
+  });
   it('allowedBlocks test', () => {
     const { container } = render(
       <Provider store={store}>
