@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Use `onInsertBlock` callback when adding new blocks if available, otherwise fallback to `onMutateBlock` refs #2330 @avoinea
+
 ### Bugfix
 - Fix default value for checkbox widget @alexbueckig
 ### Internal
