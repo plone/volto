@@ -10,7 +10,7 @@ const DragDropList = (props) => {
     onMoveItem,
     as = 'div',
     style,
-    ariaLabelledBy,
+    forwardedAriaLabelledBy,
   } = props; //renderChild
   const [placeholderProps, setPlaceholderProps] = React.useState({});
   const [uid] = React.useState(uuid());
@@ -107,7 +107,7 @@ const DragDropList = (props) => {
             ref={provided.innerRef}
             {...provided.droppableProps}
             style={{ position: 'relative', ...style }}
-            ariaLabelledBy={ariaLabelledBy}
+            aria-labelledby={forwardedAriaLabelledBy}
           >
             {childList
               .filter(([id, child]) => id && child) // beware numbers!

@@ -1,16 +1,28 @@
 # Change Log
 
-## 12.6.1 (unreleased)
+## 12.6.2 (unreleased)
 
 ### Breaking
 
 ### Feature
 
+- Use `onInsertBlock` callback when adding new blocks if available, otherwise fallback to `onMutateBlock` refs #2330 @avoinea
+
 ### Bugfix
 
 - fixed recurrence widget when weekly recurrence is selected and event start date is on sunday. @giuliaghisini
+- Fix default value for checkbox widget @alexbueckig
+- Fix for forms in content types, the fieldset was not being passed over to the field. This affected form generation ids and labels. @sneridagh
+- Add a bit of a11y love to the `ObjectListWidget` @sneridagh
 
 ### Internal
+
+## 12.6.1 (2021-04-06)
+
+### Bugfix
+
+- Remove duplicated wrapper on block edit form @sneridagh
+- Fix small catched up issues in tests @sneridagh
 
 ## 12.6.0 (2021-04-05)
 

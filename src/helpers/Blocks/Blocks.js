@@ -192,6 +192,31 @@ export function mutateBlock(formData, id, value) {
   };
 }
 
+export function insertBlock(formData, id, value) {
+  const blocksFieldname = getBlocksFieldname(formData);
+  const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
+  const index = formData[blocksLayoutFieldname].items.indexOf(id);
+
+  const newBlockId = uuid();
+  return [
+    newBlockId,
+    {
+      ...formData,
+      [blocksFieldname]: {
+        ...formData[blocksFieldname],
+        [newBlockId]: value || null,
+      },
+      [blocksLayoutFieldname]: {
+        items: [
+          ...formData[blocksLayoutFieldname].items.slice(0, index),
+          newBlockId,
+          ...formData[blocksLayoutFieldname].items.slice(index),
+        ],
+      },
+    },
+  ];
+}
+
 export function changeBlock(formData, id, value) {
   const blocksFieldname = getBlocksFieldname(formData);
   return {

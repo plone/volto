@@ -45,6 +45,7 @@ class Edit extends Component {
     selected: PropTypes.bool.isRequired,
     block: PropTypes.string.isRequired,
     onAddBlock: PropTypes.func.isRequired,
+    onInsertBlock: PropTypes.func.isRequired,
     onChangeBlock: PropTypes.func.isRequired,
     onDeleteBlock: PropTypes.func.isRequired,
     onMutateBlock: PropTypes.func.isRequired,
@@ -321,7 +322,12 @@ class Edit extends Component {
           )}
         {this.state.addNewBlockOpened && (
           <BlockChooser
-            onMutateBlock={this.props.onMutateBlock}
+            onInsertBlock={(id, value) => {
+              this.setState((state) => ({
+                addNewBlockOpened: !state.addNewBlockOpened,
+              }));
+              this.props.onSelectBlock(this.props.onInsertBlock(id, value));
+            }}
             currentBlock={this.props.block}
             allowedBlocks={this.props.allowedBlocks}
             showRestricted={this.props.showRestricted}

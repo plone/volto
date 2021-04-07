@@ -3,7 +3,9 @@ import {
   getBlocksFieldname,
   getBlocksLayoutFieldname,
   hasBlocksData,
+  insertBlock,
   blockHasValue,
+  mutateBlock,
 } from './Blocks';
 
 import config from '@plone/volto/registry';
@@ -166,6 +168,36 @@ describe('Blocks', () => {
         ['b', { value: 2 }],
         ['a', { value: 1 }],
       ]);
+    });
+  });
+
+  describe('mutateBlock', () => {
+    it('mutate block within formdata', () => {
+      expect(
+        mutateBlock(
+          {
+            blocks: { a: { value: 1 }, b: { value: 2 } },
+            blocks_layout: { items: ['a', 'b'] },
+          },
+          'a',
+          { value: 2 },
+        )['blocks']['a'],
+      ).toStrictEqual({ value: 2 });
+    });
+  });
+
+  describe('insertBlock', () => {
+    it('insert new block within formdata before given block id', () => {
+      expect(
+        insertBlock(
+          {
+            blocks: { a: { value: 1 }, b: { value: 2 } },
+            blocks_layout: { items: ['a', 'b'] },
+          },
+          'b',
+          { value: 3 },
+        )[1]['blocks']['b'],
+      ).toStrictEqual({ value: 2 });
     });
   });
 });
