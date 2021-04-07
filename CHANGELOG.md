@@ -7,7 +7,11 @@
 ### Feature
 
 ### Bugfix
+
 - Fix default value for checkbox widget @alexbueckig
+- Fix for forms in content types, the fieldset was not being passed over to the field. This affected form generation ids and labels. @sneridagh
+- Add a bit of a11y love to the `ObjectListWidget` @sneridagh
+
 ### Internal
 
 ## 12.6.1 (2021-04-06)

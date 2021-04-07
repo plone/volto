@@ -24,6 +24,10 @@ const messages = defineMessages({
     id: 'Show item',
     defaultMessage: 'Show item',
   },
+  emptyObjectList: {
+    id: 'Empty object list',
+    defaultMessage: 'Empty object list',
+  },
 });
 
 const ObjectListWidget = (props) => {
@@ -76,6 +80,15 @@ const ObjectListWidget = (props) => {
             {objectSchema.addMessage || `Add ${objectSchema.title}`}
           </Button>
         </div>
+        {value.length === 0 && (
+          <input
+            aria-labelledby={`fieldset-${
+              fieldSet || 'default'
+            }-field-label-${id}`}
+            type="hidden"
+            value={intl.formatMessage(messages.emptyObjectList)}
+          />
+        )}
       </FormFieldWrapper>
       <DragDropList
         style={{
@@ -83,7 +96,9 @@ const ObjectListWidget = (props) => {
             value.length > 2 ? thirdLayer : ''
           }`,
         }}
-        aria-labelledby={`fieldset-${fieldSet || 'default'}-field-label-${id}`}
+        forwardedAriaLabelledBy={`fieldset-${
+          fieldSet || 'default'
+        }-field-label-${id}`}
         childList={value.map((o) => [o['@id'], o])}
         onMoveItem={(result) => {
           const { source, destination } = result;
