@@ -6,6 +6,7 @@
 import cookie from 'react-cookie';
 import jwtDecode from 'jwt-decode';
 import { compact, join } from 'lodash';
+import { matchPath } from 'react-router';
 import qs from 'query-string';
 
 import config from '@plone/volto/registry';
@@ -27,17 +28,22 @@ let socket = null;
  * @returns {string} The url/path with the configured expanders added to the query string
  */
 function addExpandersToPath(path, type) {
+  const { settings } = config;
+  const { apiExpanders = [] } = settings;
   if (!path) {
     return path;
   }
-  const itemtoExpand = type.split('_')[1].toLowerCase();
+  const Expanders = apiExpanders
+    .map((reg) => {
+      const match = matchPath(path, reg.match);
+      return match ? { reg, match } : null;
+    })
+    .filter((reg) => reg);
   const pathPart = path.split('?')[0] || '';
   let query = qs.parse(qs.extract(path));
-  if (config.settings?.apiExpanders?.includes(itemtoExpand)) {
-    let expand = join(compact([query.expand, itemtoExpand]), ',');
-    if (expand) {
-      query.expand = expand;
-    }
+  let expand = join(compact([query.expand, ...Expanders]), ',');
+  if (expand) {
+    query.expand = expand;
   }
   const stringifiedQuery = qs.stringify(query);
   if (!stringifiedQuery) {

@@ -77,7 +77,7 @@ let config = {
     // In production, the proxy is disabled, make sure you specify an apiPath that does
     // not require CORS to work.
     apiPath,
-    apiExpanders: ['navigation'],
+    apiExpanders: [],
     devProxyToApiPath:
       process.env.RAZZLE_DEV_PROXY_API_PATH || 'http://localhost:8080/Plone', // Set it to '' for disabling the proxy
     // proxyRewriteTarget Set it for set a custom target for the proxy or overide the internal VHM rewrite
