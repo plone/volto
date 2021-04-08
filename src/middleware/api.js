@@ -38,11 +38,14 @@ export function addExpandersToPath(path, type) {
     matchPath(pathPart, reg.match) ? reg[type] : null,
   );
   let query = qs.parse(qs.extract(path));
-  let expand = join(compact([query.expand, ...expanders]), ',');
+  let expand = compact([query.expand, ...expanders]);
   if (expand) {
     query.expand = expand;
   }
-  const stringifiedQuery = qs.stringify(query);
+  const stringifiedQuery = qs.stringify(query, {
+    arrayFormat: 'comma',
+    encode: false,
+  });
   if (!stringifiedQuery) {
     return pathPart;
   }
