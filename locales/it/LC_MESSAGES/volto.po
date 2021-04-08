@@ -319,6 +319,10 @@ msgstr "Chiudi menu"
 msgid "Code"
 msgstr "Codice"
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Collapse item"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"
 msgstr "Collezione"
@@ -647,6 +651,10 @@ msgstr "Errore del codice incorporato, per favore segui le istruzioni e riprova.
 #: components/manage/Blocks/Maps/View
 msgid "Embeded Google Maps"
 msgstr "Google Maps incorporata"
+
+#: components/manage/Widgets/ObjectListWidget
+msgid "Empty object list"
+msgstr ""
 
 #: components/manage/Controlpanels/ContentTypeLayout
 msgid "Enable editable Blocks"
@@ -1460,6 +1468,10 @@ msgstr "Form di iscrizione"
 msgid "Relevance"
 msgstr "Rilevanza"
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Remove item"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
 msgstr "Rimuovi"
@@ -1701,6 +1713,10 @@ msgstr "Mostra tutti"
 #: components/theme/Comments/Comments
 msgid "Show Replies"
 msgstr "Mostra risposte"
+
+#: components/manage/Widgets/ObjectListWidget
+msgid "Show item"
+msgstr ""
 
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
@@ -2082,6 +2098,14 @@ msgstr "Utenti"
 #: components/manage/Controlpanels/Controlpanels
 msgid "Users and Groups"
 msgstr "Utenti e gruppi"
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Users and groups settings"
+msgstr "Impostazioni utenti e gruppi"
+
+#: components/manage/Form/BlockDataForm
+msgid "Variation"
+msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Version Overview"

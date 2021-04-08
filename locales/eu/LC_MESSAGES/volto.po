@@ -326,6 +326,10 @@ msgstr "Itxi menua"
 msgid "Code"
 msgstr ""
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Collapse item"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"
 msgstr "Bilduma"
@@ -654,6 +658,10 @@ msgstr "Itsatsitako kodearen errorea, jarraitu argibideak eta saiatu berriz."
 #: components/manage/Blocks/Maps/View
 msgid "Embeded Google Maps"
 msgstr "Itsatsitako Google Maps"
+
+#: components/manage/Widgets/ObjectListWidget
+msgid "Empty object list"
+msgstr ""
 
 #: components/manage/Controlpanels/ContentTypeLayout
 msgid "Enable editable Blocks"
@@ -1467,6 +1475,10 @@ msgstr "Erregistro formularioa"
 msgid "Relevance"
 msgstr "Errelebantzia"
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Remove item"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
 msgstr "Errepikapena ezabatu"
@@ -1707,6 +1719,10 @@ msgstr ""
 
 #: components/theme/Comments/Comments
 msgid "Show Replies"
+msgstr ""
+
+#: components/manage/Widgets/ObjectListWidget
+msgid "Show item"
 msgstr ""
 
 #: components/manage/Sidebar/Sidebar
@@ -2089,6 +2105,14 @@ msgstr "Erabiltzaileak"
 #: components/manage/Controlpanels/Controlpanels
 msgid "Users and Groups"
 msgstr "Erabiltzaile eta taldeak"
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Users and groups settings"
+msgstr "Erabiltzaile eta taldeen ezarpenak"
+
+#: components/manage/Form/BlockDataForm
+msgid "Variation"
+msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Version Overview"

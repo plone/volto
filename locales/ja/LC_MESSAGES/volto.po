@@ -326,6 +326,10 @@ msgstr "メニューを閉じる"
 msgid "Code"
 msgstr ""
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Collapse item"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"
 msgstr "コレクション"
@@ -654,6 +658,10 @@ msgstr "Embedコードがエラーです。説明を読んで再度実行して�
 #: components/manage/Blocks/Maps/View
 msgid "Embeded Google Maps"
 msgstr "埋め込まれたGoogle Maps"
+
+#: components/manage/Widgets/ObjectListWidget
+msgid "Empty object list"
+msgstr ""
 
 #: components/manage/Controlpanels/ContentTypeLayout
 msgid "Enable editable Blocks"
@@ -1467,6 +1475,10 @@ msgstr "登録フォーム"
 msgid "Relevance"
 msgstr "関連性"
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Remove item"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
 msgstr "繰り返しを削除"
@@ -1707,6 +1719,10 @@ msgstr ""
 
 #: components/theme/Comments/Comments
 msgid "Show Replies"
+msgstr ""
+
+#: components/manage/Widgets/ObjectListWidget
+msgid "Show item"
 msgstr ""
 
 #: components/manage/Sidebar/Sidebar
@@ -2089,6 +2105,14 @@ msgstr "ユーザ"
 #: components/manage/Controlpanels/Controlpanels
 msgid "Users and Groups"
 msgstr "ユーザとグループ"
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Users and groups settings"
+msgstr "ユーザとグループの設定"
+
+#: components/manage/Form/BlockDataForm
+msgid "Variation"
+msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Version Overview"

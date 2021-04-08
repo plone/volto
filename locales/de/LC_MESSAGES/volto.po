@@ -334,6 +334,10 @@ msgstr "Menu schließen"
 msgid "Code"
 msgstr "Code"
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Collapse item"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"
 msgstr "Kollektion"
@@ -662,6 +666,10 @@ msgstr "Fehler beim Einbinden des Google Maps Codes. Bitte lesen Sie die Anweisu
 #: components/manage/Blocks/Maps/View
 msgid "Embeded Google Maps"
 msgstr "Eingebettete Google Maps Karte"
+
+#: components/manage/Widgets/ObjectListWidget
+msgid "Empty object list"
+msgstr ""
 
 #: components/manage/Controlpanels/ContentTypeLayout
 msgid "Enable editable Blocks"
@@ -1475,6 +1483,10 @@ msgstr "Registrierungsformular"
 msgid "Relevance"
 msgstr "relevanz"
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Remove item"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
 msgstr "Wiederkehrende Einstellung entfernen"
@@ -1715,6 +1727,10 @@ msgstr "Alle anzeigen"
 
 #: components/theme/Comments/Comments
 msgid "Show Replies"
+msgstr ""
+
+#: components/manage/Widgets/ObjectListWidget
+msgid "Show item"
 msgstr ""
 
 #: components/manage/Sidebar/Sidebar
@@ -2097,6 +2113,14 @@ msgstr "Nutzer"
 #: components/manage/Controlpanels/Controlpanels
 msgid "Users and Groups"
 msgstr "Nutzer und Gruppen"
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Users and groups settings"
+msgstr "Nutzer- und Gruppeneinstellungen"
+
+#: components/manage/Form/BlockDataForm
+msgid "Variation"
+msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Version Overview"

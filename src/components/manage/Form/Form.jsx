@@ -533,6 +533,7 @@ class Form extends Component {
                         <Field
                           {...schema.properties[field]}
                           id={field}
+                          fieldSet={item.title.toLowerCase()}
                           formData={this.state.formData}
                           focus={false}
                           value={this.state.formData?.[field]}

@@ -319,6 +319,10 @@ msgstr "Închidere meniu"
 msgid "Code"
 msgstr ""
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Collapse item"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"
 msgstr "Colecție"
@@ -647,6 +651,10 @@ msgstr "Eroare de cod integrat, urmați instrucțiunile și încercați din nou.
 #: components/manage/Blocks/Maps/View
 msgid "Embeded Google Maps"
 msgstr "Harti Google integrate"
+
+#: components/manage/Widgets/ObjectListWidget
+msgid "Empty object list"
+msgstr ""
 
 #: components/manage/Controlpanels/ContentTypeLayout
 msgid "Enable editable Blocks"
@@ -1460,6 +1468,10 @@ msgstr "Formular de înregistrare"
 msgid "Relevance"
 msgstr ""
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Remove item"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
 msgstr ""
@@ -1700,6 +1712,10 @@ msgstr ""
 
 #: components/theme/Comments/Comments
 msgid "Show Replies"
+msgstr ""
+
+#: components/manage/Widgets/ObjectListWidget
+msgid "Show item"
 msgstr ""
 
 #: components/manage/Sidebar/Sidebar
@@ -2082,6 +2098,14 @@ msgstr "Utilizatori"
 #: components/manage/Controlpanels/Controlpanels
 msgid "Users and Groups"
 msgstr "Utilizatori și grupuri"
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Users and groups settings"
+msgstr "Setările utilizatorilor și grupurilor"
+
+#: components/manage/Form/BlockDataForm
+msgid "Variation"
+msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Version Overview"
