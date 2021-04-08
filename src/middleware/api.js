@@ -5,7 +5,7 @@
 
 import cookie from 'react-cookie';
 import jwtDecode from 'jwt-decode';
-import { compact, join } from 'lodash';
+import { flatten, union } from 'lodash';
 import { matchPath } from 'react-router';
 import qs from 'query-string';
 
@@ -34,14 +34,15 @@ export function addExpandersToPath(path, type) {
     return path;
   }
   const pathPart = path.split('?')[0] || '';
-  const expanders = apiExpanders.map((reg) =>
-    matchPath(pathPart, reg.match) ? reg[type] : null,
-  );
+  const expanders = apiExpanders
+    .filter((expand) => matchPath(pathPart, expand.match) && expand[type])
+    .map((expand) => expand[type]);
   let query = qs.parse(qs.extract(path));
-  let expand = compact([query.expand, ...expanders]);
+  let expand = union([query.expand, ...flatten(expanders)]);
   if (expand) {
     query.expand = expand;
   }
+
   const stringifiedQuery = qs.stringify(query, {
     arrayFormat: 'comma',
     encode: false,
