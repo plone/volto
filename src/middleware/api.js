@@ -5,7 +5,7 @@
 
 import cookie from 'react-cookie';
 import jwtDecode from 'jwt-decode';
-import { flatten, union } from 'lodash';
+import { compact, flatten, union } from 'lodash';
 import { matchPath } from 'react-router';
 import qs from 'query-string';
 
@@ -35,8 +35,8 @@ export function addExpandersToPath(path, type) {
   const expanders = apiExpanders
     .filter((expand) => matchPath(pathPart, expand.match) && expand[type])
     .map((expand) => expand[type]);
-  let query = qs.parse(qs.extract(path));
-  let expand = union([query.expand, ...flatten(expanders)]);
+  const query = qs.parse(qs.extract(path));
+  const expand = compact(union([query.expand, ...flatten(expanders)]));
   if (expand) {
     query.expand = expand;
   }
