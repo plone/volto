@@ -8,6 +8,7 @@ import jwtDecode from 'jwt-decode';
 import { compact, join } from 'lodash';
 import { matchPath } from 'react-router';
 import qs from 'query-string';
+import { GET_CONTENT } from '@plone/volto/constants/ActionTypes';
 
 import config from '@plone/volto/registry';
 
@@ -37,7 +38,7 @@ function addExpandersToPath(path, type) {
   const Expanders = apiExpanders
     .map((reg) => {
       const match = matchPath(pathPart, reg.match);
-      return match ? reg[type] : null;
+      return match ? reg[GET_CONTENT] : null;
     })
     .filter((reg) => reg);
   let query = qs.parse(qs.extract(path));
