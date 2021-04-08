@@ -6,6 +6,7 @@
 
 ### Feature
 
+- Add configurable api expanders @csenger @nileshgulia1 @tiberiuichim @sneridagh
 - In Text block, keep text selection on focus, and move focus to end of text if there's no selection @giuliaghisini
 
 ### Bugfix
