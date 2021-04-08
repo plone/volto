@@ -370,7 +370,6 @@
 
 ### Bugfix
 
-- Make sure that prism is loaded before rendering HTML block @tiberiuichim
 - fix not updating roles in users controlpanel @nileshgulia1
 - Fix numeric widget console warnings regarding flex styling refs #2059 @ichim-david
 - Fix numeric widget crash once we click inside it refs #2059 @ichim-david
