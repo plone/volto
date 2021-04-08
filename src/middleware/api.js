@@ -33,15 +33,15 @@ function addExpandersToPath(path, type) {
   if (!path) {
     return path;
   }
+  const pathPart = path.split('?')[0] || '';
   const Expanders = apiExpanders
     .map((reg) => {
-      const match = matchPath(path, reg.match);
+      const match = matchPath(pathPart, reg.match);
       return match ? { reg, match } : null;
     })
     .filter((reg) => reg);
-  const pathPart = path.split('?')[0] || '';
   let query = qs.parse(qs.extract(path));
-  let expand = join(compact([query.expand, ...Expanders]), ',');
+  let expand = join(compact([query.expand, ...Expanders[0].reg[type]]), ',');
   if (expand) {
     query.expand = expand;
   }
