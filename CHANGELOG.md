@@ -2,8 +2,6 @@
 
 ## 12.7.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Add configurable api expanders @csenger @nileshgulia1 @tiberiuichim @sneridagh
@@ -12,8 +10,6 @@
 ### Bugfix
 
 - Fix `fieldset` instead of `fieldSet` in ObjectWidget component @sneridagh
-
-### Internal
 
 ## 12.7.0 (2021-04-07)
 
