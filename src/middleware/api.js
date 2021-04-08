@@ -37,11 +37,11 @@ function addExpandersToPath(path, type) {
   const Expanders = apiExpanders
     .map((reg) => {
       const match = matchPath(pathPart, reg.match);
-      return match ? { reg, match } : null;
+      return match ? reg[type] : null;
     })
     .filter((reg) => reg);
   let query = qs.parse(qs.extract(path));
-  let expand = join(compact([query.expand, ...Expanders[0].reg[type]]), ',');
+  let expand = join(compact([query.expand, ...Expanders]), ',');
   if (expand) {
     query.expand = expand;
   }
