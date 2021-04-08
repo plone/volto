@@ -4,6 +4,7 @@ import { DragDropList } from '@plone/volto/components';
 import { getBlocks } from '@plone/volto/helpers';
 import {
   addBlock,
+  insertBlock,
   changeBlock,
   deleteBlock,
   moveBlock,
@@ -30,6 +31,7 @@ const BlocksForm = (props) => {
     metadata,
     manage,
     children,
+    blocksConfig = config.blocks.blocksConfig,
   } = props;
 
   const blockList = getBlocks(properties);
@@ -85,6 +87,12 @@ const BlocksForm = (props) => {
   const onMutateBlock = (id, value) => {
     const newFormData = mutateBlock(properties, id, value);
     onChangeFormData(newFormData);
+  };
+
+  const onInsertBlock = (id, value) => {
+    const [newId, newFormData] = insertBlock(properties, id, value);
+    onChangeFormData(newFormData);
+    return newId;
   };
 
   const onAddBlock = (type, index) => {
@@ -152,6 +160,7 @@ const BlocksForm = (props) => {
             index,
             manage,
             onAddBlock,
+            onInsertBlock,
             onChangeBlock,
             onChangeField,
             onDeleteBlock,
@@ -163,6 +172,7 @@ const BlocksForm = (props) => {
             pathname,
             metadata,
             properties,
+            blocksConfig,
             selected: selectedBlock === childId,
             multiSelected: multiSelected?.includes(childId),
             type: child['@type'],

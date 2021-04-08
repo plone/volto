@@ -513,8 +513,6 @@ class Form extends Component {
             manage={this.props.isAdminForm}
             allowedBlocks={this.props.allowedBlocks}
             showRestricted={this.props.showRestricted}
-            title={this.props.title}
-            description={this.props.description}
           />
           {this.state.isClient && (
             <Portal
@@ -535,6 +533,7 @@ class Form extends Component {
                         <Field
                           {...schema.properties[field]}
                           id={field}
+                          fieldSet={item.title.toLowerCase()}
                           formData={this.state.formData}
                           focus={false}
                           value={this.state.formData?.[field]}
