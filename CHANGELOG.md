@@ -11,6 +11,8 @@
 
 ### Bugfix
 
+- Fix `fieldset` instead of `fieldSet` in ObjectWidget component @sneridagh
+
 ### Internal
 
 ## 12.7.0 (2021-04-07)
