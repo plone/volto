@@ -14,6 +14,20 @@ describe('api middleware helpers', () => {
     const result = addExpandersToPath('/de/mypage', GET_CONTENT);
     expect(result).toEqual('/de/mypage?expand=mycustomexpander');
   });
+  it('addExpandersToPath with expanders already present (multilingual)', () => {
+    config.settings.apiExpanders = [
+      {
+        match: '/',
+        GET_CONTENT: ['mycustomexpander'],
+      },
+    ];
+
+    const result = addExpandersToPath(
+      '/de/mypage?expand=translations',
+      GET_CONTENT,
+    );
+    expect(result).toEqual('/de/mypage?expand=translations,mycustomexpander');
+  });
   it('addExpandersToPath not matching', () => {
     config.settings.apiExpanders = [
       {
