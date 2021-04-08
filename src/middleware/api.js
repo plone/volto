@@ -30,9 +30,7 @@ let socket = null;
 export function addExpandersToPath(path, type) {
   const { settings } = config;
   const { apiExpanders = [] } = settings;
-  if (!path) {
-    return path;
-  }
+
   const pathPart = path.split('?')[0] || '';
   const expanders = apiExpanders
     .filter((expand) => matchPath(pathPart, expand.match) && expand[type])
@@ -42,7 +40,6 @@ export function addExpandersToPath(path, type) {
   if (expand) {
     query.expand = expand;
   }
-
   const stringifiedQuery = qs.stringify(query, {
     arrayFormat: 'comma',
     encode: false,
@@ -50,6 +47,7 @@ export function addExpandersToPath(path, type) {
   if (!stringifiedQuery) {
     return pathPart;
   }
+
   return `${pathPart}?${stringifiedQuery}`;
 }
 
