@@ -8,7 +8,6 @@ import jwtDecode from 'jwt-decode';
 import { compact, join } from 'lodash';
 import { matchPath } from 'react-router';
 import qs from 'query-string';
-import { GET_CONTENT } from '@plone/volto/constants/ActionTypes';
 
 import config from '@plone/volto/registry';
 
@@ -35,14 +34,11 @@ export function addExpandersToPath(path, type) {
     return path;
   }
   const pathPart = path.split('?')[0] || '';
-  const Expanders = apiExpanders
-    .map((reg) => {
-      const match = matchPath(pathPart, reg.match);
-      return match ? reg[GET_CONTENT] : null;
-    })
-    .filter((reg) => reg);
+  const expanders = apiExpanders.map((reg) =>
+    matchPath(pathPart, reg.match) ? reg[type] : null,
+  );
   let query = qs.parse(qs.extract(path));
-  let expand = join(compact([query.expand, ...Expanders]), ',');
+  let expand = join(compact([query.expand, ...expanders]), ',');
   if (expand) {
     query.expand = expand;
   }
