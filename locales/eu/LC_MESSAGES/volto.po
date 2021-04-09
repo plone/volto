@@ -50,7 +50,7 @@ msgid "Activate and deactivate"
 msgstr "Aktibatu eta desaktibatu"
 
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/SchemaWidget
 #: helpers/MessageLabels/MessageLabels
 msgid "Add"
@@ -180,7 +180,7 @@ msgstr "Aukerak"
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
 msgid "Back"
@@ -239,7 +239,6 @@ msgstr "Ezin da <strong>{type}</strong> elementu-motaren itxura aldatu, <strong>
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Delete/Delete
 #: components/manage/Edit/Edit
-#: components/manage/EditSlot/EditSlot
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 #: components/theme/Login/Login
@@ -326,7 +325,11 @@ msgstr "Itxi menua"
 msgid "Code"
 msgstr ""
 
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Widgets/ObjectListWidget
+msgid "Collapse item"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
 msgid "Collection"
 msgstr "Bilduma"
 
@@ -382,7 +385,7 @@ msgid "Content type deleted"
 msgstr "Elementu-mota ezabatu da"
 
 #: components/manage/Contents/Contents
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Toolbar/Toolbar
 msgid "Contents"
 msgstr "Edukiak"
 
@@ -608,7 +611,7 @@ msgstr "Eposta helbideak ez datoz bat"
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/ModerateComments
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
 #: components/theme/Comments/Comments
@@ -654,6 +657,10 @@ msgstr "Itsatsitako kodearen errorea, jarraitu argibideak eta saiatu berriz."
 #: components/manage/Blocks/Maps/View
 msgid "Embeded Google Maps"
 msgstr "Itsatsitako Google Maps"
+
+#: components/manage/Widgets/ObjectListWidget
+msgid "Empty object list"
+msgstr ""
 
 #: components/manage/Controlpanels/ContentTypeLayout
 msgid "Enable editable Blocks"
@@ -701,7 +708,6 @@ msgstr "Idatzi zure pasahitz berria. Gutxienez 5 karaktere."
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Edit/Edit
-#: components/manage/EditSlot/EditSlot
 #: components/manage/Form/InlineForm
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
@@ -743,7 +749,7 @@ msgstr "Iraungita"
 msgid "External URL"
 msgstr "Kanpoko URLa"
 
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Toolbar/Toolbar
 msgid "File"
 msgstr "Fitxategia"
 
@@ -840,7 +846,7 @@ msgid "Hide Replies"
 msgstr ""
 
 #: components/manage/History/History
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Toolbar/More
 msgid "History"
 msgstr "Historia"
 
@@ -1023,7 +1029,7 @@ msgstr "Irudia"
 msgid "Left"
 msgstr "Ezkerrean"
 
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Toolbar/Toolbar
 msgid "Link"
 msgstr "Esteka"
 
@@ -1085,7 +1091,7 @@ msgid "Make the table compact"
 msgstr "Taula trinkotu"
 
 #: components/manage/Multilingual/ManageTranslations
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Toolbar/More
 msgid "Manage Translations"
 msgstr ""
 
@@ -1142,7 +1148,7 @@ msgstr "Hilabeteko"
 msgid "Monthly"
 msgstr "Hilero"
 
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Toolbar/Toolbar
 msgid "More"
 msgstr "Gehiago"
 
@@ -1176,7 +1182,7 @@ msgstr ""
 msgid "New password"
 msgstr "Pasahitz berria"
 
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Toolbar/Toolbar
 msgid "News Item"
 msgstr "Albistea ikusi"
 
@@ -1291,7 +1297,7 @@ msgstr ""
 msgid "Origin"
 msgstr "Jatorria"
 
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Toolbar/Toolbar
 msgid "Page"
 msgstr "Orria"
 
@@ -1323,19 +1329,17 @@ msgid "Paste blocks"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
-#: components/manage/Toolbar/ToolbarComponents
-#: config/toolbar
+#: components/manage/Toolbar/Toolbar
 msgid "Personal Information"
 msgstr "Informazio pertsonala"
 
 #: components/manage/Preferences/PersonalPreferences
-#: components/manage/Toolbar/ToolbarComponents
-#: config/toolbar
+#: components/manage/Toolbar/Toolbar
 msgid "Personal Preferences"
 msgstr "Hobespen Pertsonalak"
 
 #: components/manage/Toolbar/More
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Toolbar/Toolbar
 msgid "Personal tools"
 msgstr "Tresna pertsonalak"
 
@@ -1456,6 +1460,10 @@ msgstr "Erregistro formularioa"
 msgid "Relevance"
 msgstr "Errelebantzia"
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Remove item"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
 msgstr "Errepikapena ezabatu"
@@ -1553,7 +1561,6 @@ msgstr ""
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Edit/Edit
-#: components/manage/EditSlot/EditSlot
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 #: helpers/MessageLabels/MessageLabels
@@ -1668,7 +1675,7 @@ msgid "Settings"
 msgstr "Ezarpenak"
 
 #: components/manage/Sharing/Sharing
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Toolbar/More
 msgid "Sharing"
 msgstr "Partekatzea"
 
@@ -1699,12 +1706,15 @@ msgstr ""
 msgid "Show Replies"
 msgstr ""
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Show item"
+msgstr ""
+
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
 msgstr "Txikitu alboko barra"
 
 #: components/manage/Toolbar/Toolbar
-#: components/manage/Toolbar/ToolbarComponents
 msgid "Shrink toolbar"
 msgstr "Txikitu tresna-barra"
 
@@ -2003,8 +2013,6 @@ msgid "Uninstall"
 msgstr "Desinstalatu"
 
 #: components/manage/Blocks/Block/Edit
-#: components/manage/Blocks/Block/WrapperlessBlockEdit
-#: components/theme/SlotRenderer/RenderSlotFill
 #: components/theme/View/DefaultView
 #: components/theme/View/RenderBlocks
 msgid "Unknown Block"
@@ -2081,6 +2089,10 @@ msgstr "Erabiltzaile eta taldeak"
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Users and groups settings"
 msgstr "Erabiltzaile eta taldeen ezarpenak"
+
+#: components/manage/Form/BlockDataForm
+msgid "Variation"
+msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Version Overview"
@@ -2228,7 +2240,6 @@ msgid "common"
 msgstr "Ohikoa"
 
 #: components/manage/Blocks/Block/EditBlockWrapper
-#: components/manage/EditSlot/SlotEditBlockWrapper
 msgid "delete"
 msgstr "Ezabatu"
 

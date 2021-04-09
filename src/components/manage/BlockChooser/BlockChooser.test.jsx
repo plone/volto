@@ -121,6 +121,14 @@ describe('BlocksChooser', () => {
   it('renders a BlockChooser component', () => {
     const { container } = render(
       <Provider store={store}>
+        <BlockChooser onInsertBlock={() => {}} currentBlock="theblockid" />
+      </Provider>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+  it('Fallback BlockChooser component onMutateBlock', () => {
+    const { container } = render(
+      <Provider store={store}>
         <BlockChooser onMutateBlock={() => {}} currentBlock="theblockid" />
       </Provider>,
     );
@@ -130,7 +138,7 @@ describe('BlocksChooser', () => {
     const { container } = render(
       <Provider store={store}>
         <BlockChooser
-          onMutateBlock={() => {}}
+          onInsertBlock={() => {}}
           currentBlock="theblockid"
           allowedBlocks={['image', 'listing']}
         />
@@ -145,7 +153,7 @@ describe('BlocksChooser', () => {
     const { container } = render(
       <Provider store={store}>
         <BlockChooser
-          onMutateBlock={() => {}}
+          onInsertBlock={() => {}}
           currentBlock="theblockid"
           allowedBlocks={['image', 'listing']}
         />
@@ -157,7 +165,7 @@ describe('BlocksChooser', () => {
     const { container } = render(
       <Provider store={store}>
         <BlockChooser
-          onMutateBlock={() => {}}
+          onInsertBlock={() => {}}
           currentBlock="theblockid"
           allowedBlocks={['image', 'title']}
           showRestricted
@@ -188,7 +196,7 @@ describe('BlocksChooser', () => {
     const { container } = render(
       <Provider store={store}>
         <BlockChooser
-          onMutateBlock={() => {}}
+          onInsertBlock={() => {}}
           currentBlock="theblockid"
           blocksConfig={blocksConfig}
         />
@@ -221,7 +229,7 @@ describe('BlocksChooser', () => {
     const { container } = render(
       <Provider store={store}>
         <BlockChooser
-          onMutateBlock={() => {}}
+          onInsertBlock={() => {}}
           currentBlock="theblockid"
           blocksConfig={blocksConfig}
         />

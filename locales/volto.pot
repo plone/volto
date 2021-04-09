@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2021-03-25T14:01:44.500Z\n"
+"POT-Creation-Date: 2021-04-07T10:29:29.790Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -383,6 +383,11 @@ msgstr ""
 #: components/manage/Blocks/HTML/Edit
 # defaultMessage: Code
 msgid "Code"
+msgstr ""
+
+#: components/manage/Widgets/ObjectListWidget
+# defaultMessage: Collapse item
+msgid "Collapse item"
 msgstr ""
 
 #: components/manage/Toolbar/Toolbar
@@ -782,6 +787,11 @@ msgstr ""
 #: components/manage/Blocks/Maps/View
 # defaultMessage: Embeded Google Maps
 msgid "Embeded Google Maps"
+msgstr ""
+
+#: components/manage/Widgets/ObjectListWidget
+# defaultMessage: Empty object list
+msgid "Empty object list"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypeLayout
@@ -1767,6 +1777,11 @@ msgstr ""
 msgid "Relevance"
 msgstr ""
 
+#: components/manage/Widgets/ObjectListWidget
+# defaultMessage: Remove item
+msgid "Remove item"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: Remove
 msgid "Remove recurrence"
@@ -2062,6 +2077,11 @@ msgstr ""
 #: components/theme/Comments/Comments
 # defaultMessage: Show Replies
 msgid "Show Replies"
+msgstr ""
+
+#: components/manage/Widgets/ObjectListWidget
+# defaultMessage: Show item
+msgid "Show item"
 msgstr ""
 
 #: components/manage/Sidebar/Sidebar
@@ -2528,6 +2548,11 @@ msgstr ""
 #: components/manage/Controlpanels/UsersControlpanel
 # defaultMessage: Users and groups settings
 msgid "Users and groups settings"
+msgstr ""
+
+#: components/manage/Form/BlockDataForm
+# defaultMessage: Variation
+msgid "Variation"
 msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels

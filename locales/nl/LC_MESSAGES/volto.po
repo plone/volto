@@ -62,7 +62,7 @@ msgid "Activate and deactivate"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/SchemaWidget
 #: helpers/MessageLabels/MessageLabels
 msgid "Add"
@@ -192,7 +192,7 @@ msgstr ""
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
 msgid "Back"
@@ -251,7 +251,6 @@ msgstr ""
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Delete/Delete
 #: components/manage/Edit/Edit
-#: components/manage/EditSlot/EditSlot
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 #: components/theme/Login/Login
@@ -338,7 +337,11 @@ msgstr ""
 msgid "Code"
 msgstr ""
 
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Widgets/ObjectListWidget
+msgid "Collapse item"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
 msgid "Collection"
 msgstr ""
 
@@ -394,7 +397,7 @@ msgid "Content type deleted"
 msgstr ""
 
 #: components/manage/Contents/Contents
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Toolbar/Toolbar
 msgid "Contents"
 msgstr "Inhoud"
 
@@ -620,7 +623,7 @@ msgstr ""
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/ModerateComments
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
 #: components/theme/Comments/Comments
@@ -665,6 +668,10 @@ msgstr ""
 
 #: components/manage/Blocks/Maps/View
 msgid "Embeded Google Maps"
+msgstr ""
+
+#: components/manage/Widgets/ObjectListWidget
+msgid "Empty object list"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypeLayout
@@ -713,7 +720,6 @@ msgstr "Geef een nieuw wachtwoord op. Minimaal 5 karakters."
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Edit/Edit
-#: components/manage/EditSlot/EditSlot
 #: components/manage/Form/InlineForm
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
@@ -755,7 +761,7 @@ msgstr ""
 msgid "External URL"
 msgstr ""
 
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Toolbar/Toolbar
 msgid "File"
 msgstr ""
 
@@ -852,7 +858,7 @@ msgid "Hide Replies"
 msgstr ""
 
 #: components/manage/History/History
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Toolbar/More
 msgid "History"
 msgstr ""
 
@@ -1035,7 +1041,7 @@ msgstr ""
 msgid "Left"
 msgstr ""
 
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Toolbar/Toolbar
 msgid "Link"
 msgstr ""
 
@@ -1097,7 +1103,7 @@ msgid "Make the table compact"
 msgstr ""
 
 #: components/manage/Multilingual/ManageTranslations
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Toolbar/More
 msgid "Manage Translations"
 msgstr ""
 
@@ -1154,7 +1160,7 @@ msgstr ""
 msgid "Monthly"
 msgstr ""
 
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Toolbar/Toolbar
 msgid "More"
 msgstr ""
 
@@ -1188,7 +1194,7 @@ msgstr ""
 msgid "New password"
 msgstr "Nieuw wachtwoord"
 
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Toolbar/Toolbar
 msgid "News Item"
 msgstr ""
 
@@ -1303,7 +1309,7 @@ msgstr ""
 msgid "Origin"
 msgstr ""
 
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Toolbar/Toolbar
 msgid "Page"
 msgstr ""
 
@@ -1335,19 +1341,17 @@ msgid "Paste blocks"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
-#: components/manage/Toolbar/ToolbarComponents
-#: config/toolbar
+#: components/manage/Toolbar/Toolbar
 msgid "Personal Information"
 msgstr "Persoonlijke gegevens"
 
 #: components/manage/Preferences/PersonalPreferences
-#: components/manage/Toolbar/ToolbarComponents
-#: config/toolbar
+#: components/manage/Toolbar/Toolbar
 msgid "Personal Preferences"
 msgstr "Persoonlijke voorkeuren"
 
 #: components/manage/Toolbar/More
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Toolbar/Toolbar
 msgid "Personal tools"
 msgstr ""
 
@@ -1468,6 +1472,10 @@ msgstr ""
 msgid "Relevance"
 msgstr ""
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Remove item"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
 msgstr ""
@@ -1565,7 +1573,6 @@ msgstr ""
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Edit/Edit
-#: components/manage/EditSlot/EditSlot
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 #: helpers/MessageLabels/MessageLabels
@@ -1680,7 +1687,7 @@ msgid "Settings"
 msgstr ""
 
 #: components/manage/Sharing/Sharing
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Toolbar/More
 msgid "Sharing"
 msgstr ""
 
@@ -1711,12 +1718,15 @@ msgstr ""
 msgid "Show Replies"
 msgstr ""
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Show item"
+msgstr ""
+
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
 msgstr ""
 
 #: components/manage/Toolbar/Toolbar
-#: components/manage/Toolbar/ToolbarComponents
 msgid "Shrink toolbar"
 msgstr ""
 
@@ -2015,8 +2025,6 @@ msgid "Uninstall"
 msgstr ""
 
 #: components/manage/Blocks/Block/Edit
-#: components/manage/Blocks/Block/WrapperlessBlockEdit
-#: components/theme/SlotRenderer/RenderSlotFill
 #: components/theme/View/DefaultView
 #: components/theme/View/RenderBlocks
 msgid "Unknown Block"
@@ -2092,6 +2100,10 @@ msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Users and groups settings"
+msgstr ""
+
+#: components/manage/Form/BlockDataForm
+msgid "Variation"
 msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
@@ -2240,7 +2252,6 @@ msgid "common"
 msgstr ""
 
 #: components/manage/Blocks/Block/EditBlockWrapper
-#: components/manage/EditSlot/SlotEditBlockWrapper
 msgid "delete"
 msgstr ""
 

@@ -1,6 +1,6 @@
 # Change Log
 
-## 12.5.1 (unreleased)
+## 12.8.1 (unreleased)
 
 ### Breaking
 
@@ -29,6 +29,57 @@
 ### Internal
 
 - BlocksForm and RenderBlocks now allow a `blocksConfig` configuration object as a prop @tiberiuichim
+
+## 12.8.0 (2021-04-08)
+
+### Feature
+
+- Add configurable api expanders @csenger @nileshgulia1 @tiberiuichim @sneridagh
+- In Text block, keep text selection on focus, and move focus to end of text if there's no selection @giuliaghisini
+
+### Bugfix
+
+- Fix `fieldset` instead of `fieldSet` in ObjectWidget component @sneridagh
+
+## 12.7.0 (2021-04-07)
+
+### Feature
+
+- Use `onInsertBlock` callback when adding new blocks if available, otherwise fallback to `onMutateBlock` refs #2330 @avoinea
+
+### Bugfix
+
+- fixed recurrence widget when weekly recurrence is selected and event start date is on sunday. @giuliaghisini
+- Fix default value for checkbox widget @alexbueckig
+- Fix for forms in content types, the fieldset was not being passed over to the field. This affected form generation ids and labels. @sneridagh
+- Add a bit of a11y love to the `ObjectListWidget` @sneridagh
+
+### Internal
+
+- Add Blocks helpers docs and tests @avoinea
+
+## 12.6.1 (2021-04-06)
+
+### Bugfix
+
+- Remove duplicated wrapper on block edit form @sneridagh
+- Fix small catched up issues in tests @sneridagh
+
+## 12.6.0 (2021-04-05)
+
+### Feature
+
+- Add ObjectWidget and ObjectListWidget @sneridagh
+- Add `BlockForm` component, variations and schemaExtender aware @sneridagh
+- Improvements to the `InlineForm` @sneridagh
+
+### Bugfix
+
+- Remove InlineForm default focus on first input @avoinea
+
+### Internal
+
+- Add Storybook to the main docs (docs.voltocms.com/storybook) build @sneridagh
 
 ## 12.5.0 (2021-03-31)
 

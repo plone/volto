@@ -50,7 +50,7 @@ msgid "Activate and deactivate"
 msgstr "以下のリストにあるアドオンを有効にしたり無効にしたりできます。"
 
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/SchemaWidget
 #: helpers/MessageLabels/MessageLabels
 msgid "Add"
@@ -180,7 +180,7 @@ msgstr "利用可能"
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
 msgid "Back"
@@ -239,7 +239,6 @@ msgstr ""
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Delete/Delete
 #: components/manage/Edit/Edit
-#: components/manage/EditSlot/EditSlot
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 #: components/theme/Login/Login
@@ -326,7 +325,11 @@ msgstr "メニューを閉じる"
 msgid "Code"
 msgstr ""
 
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Widgets/ObjectListWidget
+msgid "Collapse item"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
 msgid "Collection"
 msgstr "コレクション"
 
@@ -382,7 +385,7 @@ msgid "Content type deleted"
 msgstr "コンテンツタイプが削除されました"
 
 #: components/manage/Contents/Contents
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Toolbar/Toolbar
 msgid "Contents"
 msgstr "コンテンツ"
 
@@ -608,7 +611,7 @@ msgstr "E-mail アドレスが見つかりません。"
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/ModerateComments
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
 #: components/theme/Comments/Comments
@@ -654,6 +657,10 @@ msgstr "Embedコードがエラーです。説明を読んで再度実行して�
 #: components/manage/Blocks/Maps/View
 msgid "Embeded Google Maps"
 msgstr "埋め込まれたGoogle Maps"
+
+#: components/manage/Widgets/ObjectListWidget
+msgid "Empty object list"
+msgstr ""
 
 #: components/manage/Controlpanels/ContentTypeLayout
 msgid "Enable editable Blocks"
@@ -701,7 +708,6 @@ msgstr "新しいパスワードを入力。（5文字以上）"
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Edit/Edit
-#: components/manage/EditSlot/EditSlot
 #: components/manage/Form/InlineForm
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
@@ -743,7 +749,7 @@ msgstr "期間満了"
 msgid "External URL"
 msgstr "外部URL"
 
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Toolbar/Toolbar
 msgid "File"
 msgstr "ファイル"
 
@@ -840,7 +846,7 @@ msgid "Hide Replies"
 msgstr ""
 
 #: components/manage/History/History
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Toolbar/More
 msgid "History"
 msgstr "履歴"
 
@@ -1023,7 +1029,7 @@ msgstr "リード画像"
 msgid "Left"
 msgstr "左"
 
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Toolbar/Toolbar
 msgid "Link"
 msgstr "リンク"
 
@@ -1085,7 +1091,7 @@ msgid "Make the table compact"
 msgstr "コンパクトな表示"
 
 #: components/manage/Multilingual/ManageTranslations
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Toolbar/More
 msgid "Manage Translations"
 msgstr ""
 
@@ -1142,7 +1148,7 @@ msgstr "日付"
 msgid "Monthly"
 msgstr "毎月"
 
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Toolbar/Toolbar
 msgid "More"
 msgstr "もっと見る"
 
@@ -1176,7 +1182,7 @@ msgstr ""
 msgid "New password"
 msgstr "新しいパスワード"
 
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Toolbar/Toolbar
 msgid "News Item"
 msgstr "ニュース"
 
@@ -1291,7 +1297,7 @@ msgstr ""
 msgid "Origin"
 msgstr "参照元"
 
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Toolbar/Toolbar
 msgid "Page"
 msgstr "ページ"
 
@@ -1323,19 +1329,17 @@ msgid "Paste blocks"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
-#: components/manage/Toolbar/ToolbarComponents
-#: config/toolbar
+#: components/manage/Toolbar/Toolbar
 msgid "Personal Information"
 msgstr "個人情報"
 
 #: components/manage/Preferences/PersonalPreferences
-#: components/manage/Toolbar/ToolbarComponents
-#: config/toolbar
+#: components/manage/Toolbar/Toolbar
 msgid "Personal Preferences"
 msgstr "個人別設定"
 
 #: components/manage/Toolbar/More
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Toolbar/Toolbar
 msgid "Personal tools"
 msgstr "個人設定"
 
@@ -1456,6 +1460,10 @@ msgstr "登録フォーム"
 msgid "Relevance"
 msgstr "関連性"
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Remove item"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
 msgstr "繰り返しを削除"
@@ -1553,7 +1561,6 @@ msgstr ""
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Edit/Edit
-#: components/manage/EditSlot/EditSlot
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 #: helpers/MessageLabels/MessageLabels
@@ -1668,7 +1675,7 @@ msgid "Settings"
 msgstr ""
 
 #: components/manage/Sharing/Sharing
-#: components/manage/Toolbar/ToolbarComponents
+#: components/manage/Toolbar/More
 msgid "Sharing"
 msgstr "共有"
 
@@ -1699,12 +1706,15 @@ msgstr ""
 msgid "Show Replies"
 msgstr ""
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Show item"
+msgstr ""
+
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
 msgstr "サイドバーを閉じる"
 
 #: components/manage/Toolbar/Toolbar
-#: components/manage/Toolbar/ToolbarComponents
 msgid "Shrink toolbar"
 msgstr "ツールバーを閉じる"
 
@@ -2003,8 +2013,6 @@ msgid "Uninstall"
 msgstr "アンインストール"
 
 #: components/manage/Blocks/Block/Edit
-#: components/manage/Blocks/Block/WrapperlessBlockEdit
-#: components/theme/SlotRenderer/RenderSlotFill
 #: components/theme/View/DefaultView
 #: components/theme/View/RenderBlocks
 msgid "Unknown Block"
@@ -2081,6 +2089,10 @@ msgstr "ユーザとグループ"
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Users and groups settings"
 msgstr "ユーザとグループの設定"
+
+#: components/manage/Form/BlockDataForm
+msgid "Variation"
+msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Version Overview"
@@ -2228,7 +2240,6 @@ msgid "common"
 msgstr "一般"
 
 #: components/manage/Blocks/Block/EditBlockWrapper
-#: components/manage/EditSlot/SlotEditBlockWrapper
 msgid "delete"
 msgstr "削除"
 
