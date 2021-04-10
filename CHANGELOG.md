@@ -12,6 +12,9 @@
 
 ### Internal
 
+- Fix server when ECONNRESET is received from the backend @sneridagh
+- Remove all appearences of `UNSAFE_componentWillMount` since it loads also on the SSR calls too @sneridagh
+
 ## 12.8.0 (2021-04-08)
 
 ### Feature

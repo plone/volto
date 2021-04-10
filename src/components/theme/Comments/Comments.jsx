@@ -150,12 +150,7 @@ class Comments extends Component {
     };
   }
 
-  /**
-   * Component will mount
-   * @method componentWillMount
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillMount() {
+  componentDidMount() {
     this.props.listComments(getBaseUrl(this.props.pathname));
   }
 

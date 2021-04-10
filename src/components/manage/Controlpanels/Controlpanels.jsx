@@ -91,17 +91,9 @@ class Controlpanels extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    this.setState({ isClient: true });
-  }
-
-  /**
-   * Component will mount
-   * @method componentWillMount
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillMount() {
     this.props.listControlpanels();
     this.props.getSystemInformation();
+    this.setState({ isClient: true });
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
