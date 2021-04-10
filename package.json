@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "12.6.1",
+  "version": "12.8.0",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -318,7 +318,7 @@
     "prismjs": "1.23.0",
     "promise-file-reader": "1.0.2",
     "prop-types": "15.7.2",
-    "query-string": "4.1.0",
+    "query-string": "7.0.0",
     "razzle": "3.3.7",
     "razzle-plugin-bundle-analyzer": "1.2.0",
     "rc-time-picker": "3.7.3",

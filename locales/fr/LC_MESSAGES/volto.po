@@ -672,6 +672,10 @@ msgstr "Erreur dans le code intégré, veuillez suivre les instructions et essay
 msgid "Embeded Google Maps"
 msgstr "Carte Google intégrée"
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Empty object list"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypeLayout
 msgid "Enable editable Blocks"
 msgstr ""

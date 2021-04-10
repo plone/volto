@@ -45,6 +45,7 @@ class Edit extends Component {
     selected: PropTypes.bool.isRequired,
     block: PropTypes.string.isRequired,
     onAddBlock: PropTypes.func.isRequired,
+    onInsertBlock: PropTypes.func.isRequired,
     onChangeBlock: PropTypes.func.isRequired,
     onDeleteBlock: PropTypes.func.isRequired,
     onMutateBlock: PropTypes.func.isRequired,
@@ -119,11 +120,19 @@ class Edit extends Component {
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (!this.props.selected && nextProps.selected) {
-      // See https://github.com/draft-js-plugins/draft-js-plugins/issues/800
-      setTimeout(this.node.focus, 0);
-      this.setState({
-        editorState: EditorState.moveFocusToEnd(this.state.editorState),
-      });
+      const selectionState = this.state.editorState.getSelection();
+
+      if (selectionState.getStartOffset() < selectionState.getEndOffset()) {
+        //keep selection
+      } else {
+        //nothing is selected, move focus to end
+        // See https://github.com/draft-js-plugins/draft-js-plugins/issues/800
+        setTimeout(this.node.focus, 0);
+
+        this.setState({
+          editorState: EditorState.moveFocusToEnd(this.state.editorState),
+        });
+      }
     }
   }
 
@@ -285,7 +294,12 @@ class Edit extends Component {
           <MutateBlockButton
             data={this.props.data}
             block={this.props.block}
-            onMutateBlock={this.props.onMutateBlock}
+            onInsertBlock={(id, value) => {
+              this.setState((state) => ({
+                addNewBlockOpened: !state.addNewBlockOpened,
+              }));
+              this.props.onSelectBlock(this.props.onInsertBlock(id, value));
+            }}
             allowedBlocks={this.props.allowedBlocks}
             blocksConfig={this.props.blocksConfig}
             size="24px"

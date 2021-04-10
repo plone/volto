@@ -1,6 +1,6 @@
 # Change Log
 
-## 12.6.2 (unreleased)
+## 12.8.1 (unreleased)
 
 ### Breaking
 
@@ -15,6 +15,34 @@
 - Add `MutateBlockButton`, a component that makes centralizes logic around BlockChooser and block mutation (changing block type) @tiberiuichim
 
 - Upgrade Storybook to 6.2.2 @tiberiuichim
+
+## 12.8.0 (2021-04-08)
+
+### Feature
+
+- Add configurable api expanders @csenger @nileshgulia1 @tiberiuichim @sneridagh
+- In Text block, keep text selection on focus, and move focus to end of text if there's no selection @giuliaghisini
+
+### Bugfix
+
+- Fix `fieldset` instead of `fieldSet` in ObjectWidget component @sneridagh
+
+## 12.7.0 (2021-04-07)
+
+### Feature
+
+- Use `onInsertBlock` callback when adding new blocks if available, otherwise fallback to `onMutateBlock` refs #2330 @avoinea
+
+### Bugfix
+
+- fixed recurrence widget when weekly recurrence is selected and event start date is on sunday. @giuliaghisini
+- Fix default value for checkbox widget @alexbueckig
+- Fix for forms in content types, the fieldset was not being passed over to the field. This affected form generation ids and labels. @sneridagh
+- Add a bit of a11y love to the `ObjectListWidget` @sneridagh
+
+### Internal
+
+- Add Blocks helpers docs and tests @avoinea
 
 ## 12.6.1 (2021-04-06)
 

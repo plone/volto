@@ -18,6 +18,7 @@ const MutateBlockButton = ({
   allowedBlocks,
   data,
   onMutateBlock,
+  onInsertBlock,
   blocksConfig,
   size = '19px',
   className = 'block-add-button',
@@ -59,10 +60,22 @@ const MutateBlockButton = ({
       )}
       {addNewBlockOpened && (
         <BlockChooser
-          onMutateBlock={(id, value) => {
-            setAddNewBlockOpened(false);
-            onMutateBlock(id, value);
-          }}
+          onMutateBlock={
+            onMutateBlock
+              ? (id, value) => {
+                  setAddNewBlockOpened(false);
+                  onMutateBlock(id, value);
+                }
+              : null
+          }
+          onInsertBlock={
+            onInsertBlock
+              ? (id, value) => {
+                  setAddNewBlockOpened(false);
+                  onInsertBlock(id, value);
+                }
+              : null
+          }
           currentBlock={block}
           allowedBlocks={allowedBlocks}
           blocksConfig={blocksConfig}

@@ -23,6 +23,7 @@ const messages = defineMessages({
 
 const BlockChooser = ({
   currentBlock,
+  onInsertBlock,
   onMutateBlock,
   allowedBlocks,
   showRestricted,
@@ -118,7 +119,9 @@ const BlockChooser = ({
                       basic
                       className={block.id}
                       onClick={() =>
-                        onMutateBlock(currentBlock, { '@type': block.id })
+                        onInsertBlock
+                          ? onInsertBlock(currentBlock, { '@type': block.id })
+                          : onMutateBlock(currentBlock, { '@type': block.id })
                       }
                     >
                       <Icon name={block.icon} size="36px" />
@@ -141,6 +144,7 @@ const BlockChooser = ({
 BlockChooser.propTypes = {
   currentBlock: PropTypes.string.isRequired,
   onMutateBlock: PropTypes.func.isRequired,
+  onInsertBlock: PropTypes.func.isRequired,
   allowedBlocks: PropTypes.arrayOf(PropTypes.string),
   blocksConfig: PropTypes.objectOf(PropTypes.any),
 };

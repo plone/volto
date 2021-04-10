@@ -670,6 +670,10 @@ msgstr "Fehler beim Einbinden des Google Maps Codes. Bitte lesen Sie die Anweisu
 msgid "Embeded Google Maps"
 msgstr "Eingebettete Google Maps Karte"
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Empty object list"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypeLayout
 msgid "Enable editable Blocks"
 msgstr "Aktiviere bearbeitbare Blocks"

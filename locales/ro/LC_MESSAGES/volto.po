@@ -655,6 +655,10 @@ msgstr "Eroare de cod integrat, urmați instrucțiunile și încercați din nou.
 msgid "Embeded Google Maps"
 msgstr "Harti Google integrate"
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Empty object list"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypeLayout
 msgid "Enable editable Blocks"
 msgstr ""
