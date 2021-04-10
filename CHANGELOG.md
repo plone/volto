@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Avoid double calling asyncPropsExtenders @ksuess @tiberiuichim
+
 ### Internal
 
 ## 12.8.0 (2021-04-08)
