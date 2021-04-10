@@ -2,10 +2,6 @@
 
 ## 12.8.1 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Avoid double calling asyncPropsExtenders @ksuess @tiberiuichim
