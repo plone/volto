@@ -143,9 +143,6 @@ const defaultModify = ({
     ...fileLoader.exclude,
   ];
 
-  // Disabling the ESlint pre loader
-  // config.module.rules.splice(0, 1);
-
   let testingAddons = [];
   if (process.env.RAZZLE_TESTING_ADDONS) {
     testingAddons = process.env.RAZZLE_TESTING_ADDONS.split(',');
@@ -157,7 +154,7 @@ const defaultModify = ({
   ]);
 
   config.resolve.plugins = [
-    // new RelativeResolverPlugin(registry),
+    new RelativeResolverPlugin(registry),
     // new RootResolverPlugin(),
   ];
   config.resolve.fallback = { zlib: false };
