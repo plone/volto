@@ -76,7 +76,7 @@ UniversalLink.propTypes = {
   className: PropTypes.string,
   title: PropTypes.string,
   item: PropTypes.shape({
-    '@id': PropTypes.string,
+    '@id': PropTypes.string.isRequired,
     remoteUrl: PropTypes.string, //of plone @type 'Link'
   }),
   children: PropTypes.oneOfType([
