@@ -115,21 +115,13 @@ class View extends Component {
     isClient: false,
   };
 
-  /**
-   * Component will mount
-   * @method componentWillMount
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillMount() {
+  componentDidMount() {
     this.props.listActions(getBaseUrl(this.props.pathname));
     this.props.getContent(
       getBaseUrl(this.props.pathname),
       this.props.versionId,
     );
     this.props.getSlots(getBaseUrl(this.props.pathname));
-  }
-
-  componentDidMount() {
     this.setState({ isClient: true });
   }
 

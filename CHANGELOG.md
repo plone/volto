@@ -1,6 +1,6 @@
 # Change Log
 
-## 12.8.1 (unreleased)
+## 12.9.1 (unreleased)
 
 ### Breaking
 
@@ -29,6 +29,16 @@
 ### Internal
 
 - BlocksForm and RenderBlocks now allow a `blocksConfig` configuration object as a prop @tiberiuichim
+## 12.9.0 (2021-04-10)
+
+### Bugfix
+
+- Avoid double calling asyncPropsExtenders @ksuess @tiberiuichim
+
+### Internal
+
+- Fix server when ECONNRESET is received from the backend @sneridagh
+- Remove all appearences of `UNSAFE_componentWillMount` since it loads also on the SSR calls too @sneridagh
 
 ## 12.8.0 (2021-04-08)
 

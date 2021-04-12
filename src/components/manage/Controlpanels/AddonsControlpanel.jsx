@@ -166,20 +166,12 @@ class AddonsControlpanel extends Component {
   }
 
   /**
-   * Component will mount
-   * @method componentWillMount
-   * @returns {undefined}
-   */
-  componentWillMount() {
-    this.props.listAddons();
-  }
-
-  /**
    * Component did mount
    * @method componentDidMount
    * @returns {undefined}
    */
   componentDidMount() {
+    this.props.listAddons();
     this.setState({ isClient: true });
   }
 

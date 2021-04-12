@@ -408,20 +408,12 @@ class Contents extends Component {
   }
 
   /**
-   * Component will mount
-   * @method componentWillMount
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillMount() {
-    this.fetchContents();
-  }
-
-  /**
    * Component did mount
    * @method componentDidMount
    * @returns {undefined}
    */
   componentDidMount() {
+    this.fetchContents();
     this.setState({ isClient: true });
   }
 

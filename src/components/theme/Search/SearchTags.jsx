@@ -32,12 +32,7 @@ class SearchTags extends Component {
     ).isRequired,
   };
 
-  /**
-   * Component will mount
-   * @method componentWillMount
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillMount() {
+  componentDidMount() {
     this.props.getVocabulary(vocabulary);
   }
 
