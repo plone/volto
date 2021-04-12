@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Ignore files in addons when building i18n messages in the i18n script, since it's useless (they should be done in the addon itself) and lead to errors when parsing also internal `node_modules` and other utility files @sneridagh
+
 ## 12.9.0 (2021-04-10)
 
 ### Bugfix
