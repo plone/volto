@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- ObjectListWidget: edit mode: expand last added item, not first of list. @ksuess
+
 ### Internal
 
 - Ignore files in addons when building i18n messages in the i18n script, since it's useless (they should be done in the addon itself) and lead to errors when parsing also internal `node_modules` and other utility files @sneridagh
