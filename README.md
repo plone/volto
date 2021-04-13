@@ -160,6 +160,12 @@ as part of the Plone training docs at [https://training.plone.org/5/volto/index.
 
 [Timo Stollenwerk - Reinventing Plone, Roadmap to the Modern Web](https://2018.ploneconf.org/talks/reinventing-plone-roadmap-to-the-modern-web)
 
+## Node Support
+
+- Node 14: Supported since Volto 8.8.0
+- Node 12: Supported since Volto 4
+- Node 10: Supported since Volto 1 (and its predecessor "plone-react")
+
 ## Browser support
 
 Volto works well with any modern (and updated) browser, including their mobile
