@@ -237,22 +237,24 @@ class View extends Component {
             content={toPublicURL(this.props.content['@id'])}
           />
           {this.props.content.image?.scales?.large?.download && (
-            <>
-              <meta
-                property="og:image"
-                content={toPublicURL(
-                  this.props.content.image?.scales?.large?.download,
-                )}
-              />
-              <meta
-                property="og:image:width"
-                content={this.props.content.image?.scales?.large?.width}
-              />
-              <meta
-                property="og:image:height"
-                content={this.props.content.image?.scales?.large?.height}
-              />
-            </>
+            <meta
+              property="og:image"
+              content={toPublicURL(
+                this.props.content.image?.scales?.large?.download,
+              )}
+            />
+          )}
+          {this.props.content.image?.scales?.large?.download && (
+            <meta
+              property="og:image:width"
+              content={this.props.content.image?.scales?.large?.width}
+            />
+          )}
+          {this.props.content.image?.scales?.large?.download && (
+            <meta
+              property="og:image:height"
+              content={this.props.content.image?.scales?.large?.height}
+            />
           )}
           {this.props.content.description && (
             <meta
