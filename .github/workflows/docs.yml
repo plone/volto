@@ -60,6 +60,19 @@ jobs:
       - name: Build Storybook
         run: yarn build-storybook -o docs/build/storybook
 
-      - name: debug
-        working-directory: docs/build
-        run: ls -al
+      # Deploy docs to server
+      - name: Deploy to server
+        id: deploy
+        uses: Pendect/action-rsyncer@v1.1.0
+        env:
+          DEPLOY_KEY: ${{secrets.DEPLOY_KEY}}
+        with:
+          flags: '-avzr --delete'
+          options: ''
+          ssh_options: '-p ${{secrets.DEPLOY_PORT}}'
+          src: 'docs/build/'
+          dest: '${{secrets.DEPLOY_USER}}@${{secrets.DEPLOY_SERVER}}:/var/www/docs.voltocms.com'
+
+
+      - name: Display status from deploy
+        run: echo "${{ steps.deploy.outputs.status }}"
