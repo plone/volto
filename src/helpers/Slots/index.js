@@ -16,7 +16,7 @@ export function isSlotAvailable({ slotName, pathname, slotData, slots }) {
     [
       ...(Object.values(
         slotData?.items?.[slotName]?.blocks || {},
-      ).filter((item) => blockHasValue(item)) || []),
+      ).filter((item) => blockHasValue({ pathname, ...item })) || []),
       ...slots[slotName]?.items?.filter((reg) =>
         reg.available({ pathname, slotName, slotData, slots }),
       ),
