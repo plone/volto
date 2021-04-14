@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Implement Github actions workflow to deploy the documentation to the Plone Foundation server @ericof
+
 ## 12.10.1 (2021-04-14)
 
 ### Bugfix
