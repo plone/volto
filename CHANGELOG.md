@@ -11,6 +11,7 @@
 ### Bugfix
 
 - ObjectListWidget: edit mode: expand last added item, not first of list. @ksuess
+- Improve error handling in SSR when an error occurs in the code @sneridagh
 
 ### Internal
 
