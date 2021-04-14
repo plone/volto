@@ -1,5 +1,15 @@
 # Change Log
 
+## 12.10.2 (unreleased)
+
+### Breaking
+
+### Feature
+
+### Bugfix
+
+### Internal
+
 ## 12.10.1 (2021-04-14)
 
 ### Bugfix
