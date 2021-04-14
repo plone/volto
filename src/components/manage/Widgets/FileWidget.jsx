@@ -63,6 +63,12 @@ const FileWidget = (props) => {
     }
   }, [value]);
 
+  const imgsrc = value?.download
+    ? `${flattenToAppURL(value?.download)}?id=${Date.now()}`
+    : null || value?.data
+    ? `data:${value['content-type']};${value.encoding},${value.data}`
+    : null;
+
   /**
    * Drop handler
    * @method onDrop
@@ -106,11 +112,7 @@ const FileWidget = (props) => {
                 className="image-preview"
                 id={`field-${id}-image`}
                 size="small"
-                src={
-                  value?.download
-                    ? `${flattenToAppURL(value.download)}?id=${Date.now()}`
-                    : null
-                }
+                src={imgsrc}
               />
             ) : (
               <div className="dropzone-placeholder">

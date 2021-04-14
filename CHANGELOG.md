@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Add support in FileWidget for raw file data in base64 (control panels, not really NamedFile fields) @sneridagh
+
 ### Bugfix
 
 - ObjectListWidget: edit mode: expand last added item, not first of list. @ksuess
