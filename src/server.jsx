@@ -132,11 +132,8 @@ function setupServer(req, res, next) {
     // Displays error in console
     console.error(error);
 
-    // If error happens in Volto code itself
-    if (!error.status) res.status(500);
-
     res
-      .status(error.status)
+      .status(error.status || 500) // If error happens in Volto code itself error status is undefined
       .send(`<!doctype html> ${renderToString(errorPage)}`);
   }
 
