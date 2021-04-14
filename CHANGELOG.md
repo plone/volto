@@ -2,8 +2,6 @@
 
 ## 12.9.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Add support in FileWidget for raw file data in base64 (control panels, not really NamedFile fields) @sneridagh
