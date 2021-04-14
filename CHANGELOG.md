@@ -2,15 +2,9 @@
 
 ## 12.10.1 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Better error handling code in SSR when an error occurs in the code @ksuess @sneridagh
-
-### Internal
 
 ## 12.10.0 (2021-04-14)
 
