@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Include selected block in multiselections @sneridagh
+
 ### Internal
 
 - Implement Github actions workflow to deploy the documentation to the Plone Foundation server @ericof
