@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Improve the blocks engine by adding a detector for clicking outside in the `BlocksForm` @sneridagh
+
 ### Bugfix
 
 ### Internal
