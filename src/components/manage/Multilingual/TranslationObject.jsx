@@ -58,6 +58,7 @@ const TranslationObject = ({
       </Menu>
       {activeMenu === 'language' && (
         <Form
+          key="translation-object-form"
           schema={schema}
           formData={translationObject}
           onSubmit={() => {

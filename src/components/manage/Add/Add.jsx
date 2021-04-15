@@ -129,7 +129,9 @@ class Add extends Component {
       this.initialBlocks = this.initialBlocksLayout.reduce(
         (acc, value, index) => ({
           ...acc,
-          [value]: { '@type': config.blocks.initialBlocks[props.type][index] },
+          [value]: {
+            '@type': config.blocks.initialBlocks[props.type][index],
+          },
         }),
         {},
       );
@@ -251,6 +253,7 @@ class Add extends Component {
             let newUid = uuid();
             initialBlocksLayout.push(newUid);
             initialBlocks[newUid] = schemaBlocks[value];
+            initialBlocks[newUid].block = newUid;
 
             // Layout ID - keep a reference to the original block id within layout
             initialBlocks[newUid]['@layout'] = value;
@@ -262,7 +265,9 @@ class Add extends Component {
       if (translationObject && blocksFieldname && blocksLayoutFieldname) {
         initialBlocks = {};
         initialBlocksLayout = [];
-        const originalBlocks = translationObject[blocksFieldname];
+        const originalBlocks = JSON.parse(
+          JSON.stringify(translationObject[blocksFieldname]),
+        );
         const originalBlocksLayout =
           translationObject[blocksLayoutFieldname].items;
 
@@ -271,6 +276,7 @@ class Add extends Component {
             let newUid = uuid();
             initialBlocksLayout.push(newUid);
             initialBlocks[newUid] = originalBlocks[value];
+            initialBlocks[newUid].block = newUid;
 
             // Layout ID - keep a reference to the original block id within layout
             initialBlocks[newUid]['@canonical'] = value;
@@ -287,6 +293,7 @@ class Add extends Component {
           />
           <Form
             ref={this.form}
+            key="translated-or-new-content-form"
             schema={this.props.schema}
             formData={{
               ...(blocksFieldname && {
@@ -384,7 +391,9 @@ class Add extends Component {
                   this.state.formSelected === 'translationObjectForm'
                 }
                 onSelectForm={() => {
-                  this.setState({ formSelected: 'translationObjectForm' });
+                  this.setState({
+                    formSelected: 'translationObjectForm',
+                  });
                 }}
               />
             </Grid.Column>
