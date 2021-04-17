@@ -109,7 +109,7 @@ middleware by using the `config.settings.storeExtender` configuration option.
 If you have Redux middleware that you want to insert as the first middleware to
 be used, for example, you could configure your project with:
 
-```
+```js
 import logAllMiddleware from './example';
 
 export default applyConfig(config) => {
@@ -120,3 +120,4 @@ export default applyConfig(config) => {
 
   return config;
 }
+```

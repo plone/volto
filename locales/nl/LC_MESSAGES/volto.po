@@ -337,6 +337,10 @@ msgstr ""
 msgid "Code"
 msgstr ""
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Collapse item"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"
 msgstr ""
@@ -664,6 +668,10 @@ msgstr ""
 
 #: components/manage/Blocks/Maps/View
 msgid "Embeded Google Maps"
+msgstr ""
+
+#: components/manage/Widgets/ObjectListWidget
+msgid "Empty object list"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypeLayout
@@ -1464,6 +1472,10 @@ msgstr ""
 msgid "Relevance"
 msgstr ""
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Remove item"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
 msgstr ""
@@ -1704,6 +1716,10 @@ msgstr ""
 
 #: components/theme/Comments/Comments
 msgid "Show Replies"
+msgstr ""
+
+#: components/manage/Widgets/ObjectListWidget
+msgid "Show item"
 msgstr ""
 
 #: components/manage/Sidebar/Sidebar
@@ -2084,6 +2100,10 @@ msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Users and groups settings"
+msgstr ""
+
+#: components/manage/Form/BlockDataForm
+msgid "Variation"
 msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels

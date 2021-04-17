@@ -125,17 +125,18 @@ export class Edit extends Component {
       blocksConfig?.[type]?.['blockHasOwnFocusManagement'] || null;
 
     return (
-      <div className={`ui drag block inner ${type}`}>
+      <>
         {Block !== null ? (
           <div
             role="presentation"
             onClick={(e) => {
               const isMultipleSelection = e.shiftKey || e.ctrlKey || e.metaKey;
-              this.props.onSelectBlock(
-                this.props.id,
-                this.props.selected ? false : isMultipleSelection,
-                e,
-              );
+              !this.props.selected &&
+                this.props.onSelectBlock(
+                  this.props.id,
+                  this.props.selected ? false : isMultipleSelection,
+                  e,
+                );
             }}
             onKeyDown={
               !(blockHasOwnFocusManagement || disableNewBlocks)
@@ -171,7 +172,9 @@ export class Edit extends Component {
         ) : (
           <div
             role="presentation"
-            onClick={() => this.props.onSelectBlock(this.props.id)}
+            onClick={() =>
+              !this.props.selected && this.props.onSelectBlock(this.props.id)
+            }
             onKeyDown={
               !(blockHasOwnFocusManagement || disableNewBlocks)
                 ? (e) =>
@@ -194,7 +197,7 @@ export class Edit extends Component {
             })}
           </div>
         )}
-      </div>
+      </>
     );
   }
 }

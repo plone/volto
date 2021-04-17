@@ -136,7 +136,7 @@ function setupServer(req, res, next) {
     console.error(error);
 
     res
-      .status(error.status)
+      .status(error.status || 500) // If error happens in Volto code itself error status is undefined
       .send(`<!doctype html> ${renderToString(errorPage)}`);
   }
 

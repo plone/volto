@@ -145,12 +145,7 @@ class DisplaySelect extends Component {
     },
   };
 
-  /**
-   * Component will mount
-   * @method componentWillMount
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillMount() {
+  componentDidMount() {
     this.props.getSchema(this.props.type);
   }
 
