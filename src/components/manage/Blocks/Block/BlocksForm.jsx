@@ -42,7 +42,7 @@ const BlocksForm = (props) => {
 
   const dispatch = useDispatch();
 
-  const ClickOutsideListener = (e) => {
+  const ClickOutsideListener = () => {
     onSelectBlock(null);
     dispatch(setSidebarTab(0));
   };
