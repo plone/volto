@@ -1,6 +1,6 @@
 # Change Log
 
-## 12.9.1 (unreleased)
+## 12.10.2 (unreleased)
 
 ### Breaking
 
@@ -29,6 +29,29 @@
 ### Internal
 
 - BlocksForm and RenderBlocks now allow a `blocksConfig` configuration object as a prop @tiberiuichim
+- Implement Github actions workflow to deploy the documentation to the Plone Foundation server @ericof
+
+## 12.10.1 (2021-04-14)
+
+### Bugfix
+
+- Better error handling code in SSR when an error occurs in the code @ksuess @sneridagh
+
+## 12.10.0 (2021-04-14)
+
+### Feature
+
+- Add support in FileWidget for raw file data in base64 (control panels, not really NamedFile fields) @sneridagh
+
+### Bugfix
+
+- ObjectListWidget: edit mode: expand last added item, not first of list. @ksuess
+- Improve error handling in SSR when an error occurs in the code @sneridagh
+
+### Internal
+
+- Ignore files in addons when building i18n messages in the i18n script, since it's useless (they should be done in the addon itself) and lead to errors when parsing also internal `node_modules` and other utility files @sneridagh
+
 ## 12.9.0 (2021-04-10)
 
 ### Bugfix
