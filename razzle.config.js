@@ -132,6 +132,22 @@ const defaultModify = ({
         __SERVER__: true,
       }),
     );
+
+    const idxArr = config.plugins
+      .map((plugin, idx) =>
+        plugin.constructor.name === 'DefinePlugin' ? idx : '',
+      )
+      .filter(String);
+    idxArr.forEach((index) => {
+      const { definitions } = config.plugins[index];
+      if (definitions['process.env.PORT']) {
+        const newDefs = Object.assign({}, definitions);
+        // newDefs['process.env.PORT'] = 'process.env.PORT';
+        delete newDefs['process.env.PORT'];
+        config.plugins[index] = new webpack.DefinePlugin(newDefs);
+      }
+    });
+    console.dir(config.plugins, { depth: null });
   }
 
   // Don't load config|variables|overrides) files with file-loader
