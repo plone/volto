@@ -133,6 +133,12 @@ const defaultModify = ({
       }),
     );
 
+    // Razzle sets some of its basic env vars in the default config injecting them (for
+    // the client use, mainly) in a `DefinePlugin` instance. However, this also ends in
+    // the server build, removing the ability of the server node process to read from
+    // the system's (or process') env vars. In this case, in the server build, we hunt
+    // down the instance of the `DefinePlugin` defined by Razzle and remove the
+    // `process.env.PORT` so it can be overridable in runtime
     const idxArr = config.plugins
       .map((plugin, idx) =>
         plugin.constructor.name === 'DefinePlugin' ? idx : '',
@@ -142,12 +148,10 @@ const defaultModify = ({
       const { definitions } = config.plugins[index];
       if (definitions['process.env.PORT']) {
         const newDefs = Object.assign({}, definitions);
-        // newDefs['process.env.PORT'] = 'process.env.PORT';
         delete newDefs['process.env.PORT'];
         config.plugins[index] = new webpack.DefinePlugin(newDefs);
       }
     });
-    console.dir(config.plugins, { depth: null });
   }
 
   // Don't load config|variables|overrides) files with file-loader
