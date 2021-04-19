@@ -21,6 +21,7 @@ const EditBlockWrapper = (props) => {
   const { blockProps, draginfo, children, intl } = props;
   const { selected, type, data, block, onDeleteBlock } = blockProps;
   const visible = selected && blockHasValue(data) && !data?.fixed;
+  const inherited = data._v_inherit && 'slot-inherited';
 
   const required = isBoolean(data.required)
     ? data.required
@@ -30,7 +31,7 @@ const EditBlockWrapper = (props) => {
     <div
       ref={draginfo.innerRef}
       {...draginfo.draggableProps}
-      className={`slot-editor slot-editor-${data['@type']}`}
+      className={`slot-editor slot-editor-${data['@type']} ${inherited}`}
     >
       <div style={{ position: 'relative' }}>
         <div
