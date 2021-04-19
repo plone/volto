@@ -326,11 +326,16 @@ class Form extends Component {
       }
 
       if ((event.ctrlKey || event.metaKey) && !event.shiftKey) {
+        multiSelected = this.state.multiSelected || [];
+        if (!this.state.multiSelected.includes(this.state.selected)) {
+          multiSelected = [...multiSelected, this.state.selected];
+          selected = null;
+        }
         if (this.state.multiSelected.includes(id)) {
           selected = null;
-          multiSelected = without(this.state.multiSelected, id);
+          multiSelected = without(multiSelected, id);
         } else {
-          multiSelected = [...(this.state.multiSelected || []), id];
+          multiSelected = [...multiSelected, id];
         }
       }
     }

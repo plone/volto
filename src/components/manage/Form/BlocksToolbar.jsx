@@ -187,7 +187,7 @@ export class BlocksToolbarComponent extends React.Component {
               className="pasteBlocks"
               id="toolbar-paste-blocks"
             >
-              <span class="blockCount">
+              <span className="blockCount">
                 {(blocksClipboard.cut || blocksClipboard.copy).length}
               </span>
               <Icon name={pasteSVG} size="30px" />
