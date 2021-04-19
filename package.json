@@ -393,6 +393,10 @@
     "tmp": "0.2.1"
   },
   "resolutions": {
-    "http-proxy": "^1.18.1"
+    "http-proxy": "^1.18.1",
+    "draft-js/immutable": "3.8.2",
+    "draft-js-block-breakout-plugin/immutable": "3.8.2",
+    "draft-js-inline-toolbar-plugin/immutable": "3.8.2",
+    "draft-js-plugins-editor/immutable": "3.8.2"
   }
 }
