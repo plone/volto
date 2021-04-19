@@ -22,13 +22,23 @@ const registry = new AddonConfigurationRegistry(projectRootPath);
  * @return {undefined}
  */
 function extractMessages() {
-  map(glob('src/**/*.js?(x)'), (filename) => {
-    babel.transformFileSync(filename, {}, (err) => {
-      if (err) {
-        console.log(err);
-      }
-    });
-  });
+  map(
+    // We ignore the existing customized shadowed components ones, since most
+    // probably we won't be overriding them
+    // If so, we should do it in the config object or somewhere else
+    // We also ignore the addons folder since they are populated using
+    // their own locales files and taken care separatedly in this script
+    glob('src/**/*.js?(x)', {
+      ignore: ['src/customizations/**', 'src/addons/**'],
+    }),
+    (filename) => {
+      babel.transformFileSync(filename, {}, (err) => {
+        if (err) {
+          console.log(err);
+        }
+      });
+    },
+  );
 }
 
 /**

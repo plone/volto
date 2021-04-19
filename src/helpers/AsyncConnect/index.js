@@ -64,7 +64,14 @@ const applyExtenders = (asyncItems, pathname) => {
     asyncItems,
   );
 
-  return foundAsyncItems;
+  let uniqueAsyncItems = foundAsyncItems.reduce((a, d) => {
+    if (!a.some((el) => el.key === d.key)) {
+      a.push(d);
+    }
+    return a;
+  }, []);
+
+  return uniqueAsyncItems;
 };
 
 /**

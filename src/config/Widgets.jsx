@@ -22,6 +22,9 @@ import NumberWidget from '@plone/volto/components/manage/Widgets/NumberWidget';
 import ReferenceWidget from '@plone/volto/components/manage/Widgets/ReferenceWidget';
 import ObjectBrowserWidget from '@plone/volto/components/manage/Widgets/ObjectBrowserWidget';
 
+import ObjectWidget from '@plone/volto/components/manage/Widgets/ObjectWidget';
+import ObjectListWidget from '@plone/volto/components/manage/Widgets/ObjectListWidget';
+
 export const DatetimeWidget = loadable(() =>
   import('@plone/volto/components/manage/Widgets/DatetimeWidget'),
 );
@@ -51,6 +54,8 @@ export const widgetMapping = {
     url: UrlWidget,
     email: EmailWidget,
     object_browser: ObjectBrowserWidget,
+    object: ObjectWidget,
+    object_list: ObjectListWidget,
   },
   vocabulary: {
     'plone.app.vocabularies.Catalog': ObjectBrowserWidget,
