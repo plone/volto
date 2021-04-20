@@ -264,6 +264,7 @@
 
 ### Feature
 
+- added og tags for social sharing [giuliaghisini]
 - Add `preloadLazyLibs` and `settings.lazyBundles` to allow preloading bundles of lazy libraries @tiberiuichim @silviubogan
 - Added onChangeFormData prop to Form component @giuliaghisini
 - Internationalization story for add-ons @sneridagh
