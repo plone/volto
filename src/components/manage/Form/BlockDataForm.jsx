@@ -2,6 +2,7 @@ import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { InlineForm } from '@plone/volto/components';
 import config from '@plone/volto/registry';
+import { cloneDeep } from 'lodash';
 
 const messages = defineMessages({
   Variation: {
@@ -18,7 +19,9 @@ export const addVariationsFieldToSchema = ({
 }) => {
   const _ = intl.formatMessage;
 
-  schema.fieldsets[0].fields.unshift('variation');
+  if (schema.fieldsets[0].fields.indexOf('variation') === -1) {
+    schema.fieldsets[0].fields.unshift('variation');
+  }
   schema.properties.variation = {
     title: _(messages.Variation),
     choices: Object.keys(variations).map((key) => [
@@ -52,7 +55,7 @@ const withBlockDataForm = (Component) => ({ ...props }) => {
     blocks.blocksConfig?.[blockType]?.['schemaEnhancer'] ||
     null;
 
-  let schema = originalSchema;
+  let schema = cloneDeep(originalSchema);
   if (schemaEnhancer) {
     schema = schemaEnhancer({ schema: originalSchema, formData, intl });
   }
