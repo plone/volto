@@ -71,3 +71,7 @@ export {
 } from '@plone/volto/helpers/Utils/Utils';
 export { messages } from './MessageLabels/MessageLabels';
 export { asyncConnect } from './AsyncConnect';
+export {
+  changeLanguage,
+  changeLanguageCookies,
+} from '@plone/volto/helpers/Language/Language';

@@ -49,6 +49,7 @@ export class Edit extends Component {
     manage: PropTypes.bool,
     onMoveBlock: PropTypes.func.isRequired,
     onDeleteBlock: PropTypes.func.isRequired,
+    editable: PropTypes.bool,
   };
 
   /**
@@ -58,6 +59,7 @@ export class Edit extends Component {
    */
   static defaultProps = {
     manage: false,
+    editable: true,
   };
 
   componentDidMount() {
@@ -74,7 +76,7 @@ export class Edit extends Component {
       this.blockNode.current.focus();
     }
     const tab = this.props.manage ? 1 : blocksConfig?.[type]?.sidebarTab || 0;
-    if (this.props.selected) {
+    if (this.props.selected && this.props.editable) {
       this.props.setSidebarTab(tab);
     }
   }
@@ -93,8 +95,9 @@ export class Edit extends Component {
       this.blockNode.current.focus();
     }
     if (
-      (!this.props.selected && nextProps.selected) ||
-      type !== nextProps.type
+      ((!this.props.selected && nextProps.selected) ||
+        type !== nextProps.type) &&
+      this.props.editable
     ) {
       const tab = this.props.manage
         ? 1

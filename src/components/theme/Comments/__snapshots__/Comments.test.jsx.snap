@@ -15,77 +15,82 @@ exports[`Comments renders a comments component 1`] = `
         method="post"
         onSubmit={[Function]}
       >
-        <div
-          className="ui raised segments"
+        <fieldset
+          className="invisible"
+          disabled={false}
         >
           <div
-            className="ui segment"
+            className="ui raised segments"
           >
             <div
-              className="mocked-textarea-widget"
-              id="mocked-field-comment"
+              className="ui segment"
             >
-              Comment
-               - 
-              No description
+              <div
+                className="mocked-textarea-widget"
+                id="mocked-field-comment"
+              >
+                Comment
+                 - 
+                No description
+              </div>
+            </div>
+            <div
+              className="ui clearing segment actions"
+            >
+              <button
+                aria-label="Comment"
+                className="ui basic primary right floated button"
+                onClick={[Function]}
+                title="Comment"
+                type="submit"
+              >
+                <svg
+                  className="icon circled"
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": undefined,
+                    }
+                  }
+                  onClick={null}
+                  style={
+                    Object {
+                      "fill": "currentColor",
+                      "height": "30px",
+                      "width": "auto",
+                    }
+                  }
+                  viewBox=""
+                  xmlns=""
+                />
+              </button>
+              <button
+                aria-label="Cancel"
+                className="ui basic secondary right floated button"
+                onClick={[Function]}
+                title="Cancel"
+              >
+                <svg
+                  className="icon circled"
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": undefined,
+                    }
+                  }
+                  onClick={null}
+                  style={
+                    Object {
+                      "fill": "currentColor",
+                      "height": "30px",
+                      "width": "auto",
+                    }
+                  }
+                  viewBox=""
+                  xmlns=""
+                />
+              </button>
             </div>
           </div>
-          <div
-            className="ui clearing segment actions"
-          >
-            <button
-              aria-label="Comment"
-              className="ui basic primary right floated button"
-              onClick={[Function]}
-              title="Comment"
-              type="submit"
-            >
-              <svg
-                className="icon circled"
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": undefined,
-                  }
-                }
-                onClick={null}
-                style={
-                  Object {
-                    "fill": "currentColor",
-                    "height": "30px",
-                    "width": "auto",
-                  }
-                }
-                viewBox=""
-                xmlns=""
-              />
-            </button>
-            <button
-              aria-label="Cancel"
-              className="ui basic secondary right floated button"
-              onClick={[Function]}
-              title="Cancel"
-            >
-              <svg
-                className="icon circled"
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": undefined,
-                  }
-                }
-                onClick={null}
-                style={
-                  Object {
-                    "fill": "currentColor",
-                    "height": "30px",
-                    "width": "auto",
-                  }
-                }
-                viewBox=""
-                xmlns=""
-              />
-            </button>
-          </div>
-        </div>
+        </fieldset>
       </form>
     </div>
   </div>

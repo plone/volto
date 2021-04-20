@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Implemented Babel view, to compare translated items in add and edit mode. @giuliaghisini
+
 ### Bugfix
 
 - Include selected block in multiselections @sneridagh

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { updateIntl } from 'react-intl-redux';
 import cookie from 'react-cookie';
 import config from '@plone/volto/registry';
+import { changeLanguage } from '@plone/volto/helpers';
 
 let locales = {};
 
@@ -31,12 +31,7 @@ const MultilingualRedirector = (props) => {
     // ToDo: Add means to support language negotiation (with config)
     // const detectedLang = (navigator.language || navigator.userLanguage).substring(0, 2);
     if (settings.isMultilingual && pathname === '/') {
-      dispatch(
-        updateIntl({
-          locale: redirectToLanguage,
-          messages: locales[redirectToLanguage],
-        }),
-      );
+      dispatch(changeLanguage(redirectToLanguage, locales));
     }
   }, [pathname, dispatch, redirectToLanguage, settings.isMultilingual]);
 

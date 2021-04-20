@@ -22,7 +22,17 @@ const messages = defineMessages({
 });
 
 const Edit = React.memo(
-  ({ data, onChangeBlock, block, selected, properties, pathname, intl }) => {
+  (props) => {
+    const {
+      data,
+      onChangeBlock,
+      block,
+      selected,
+      properties,
+      pathname,
+      intl,
+    } = props;
+
     // componentDidMount
     React.useEffect(() => {
       if (!data.query) {
@@ -53,6 +63,8 @@ const Edit = React.memo(
         />
         <SidebarPortal selected={selected}>
           <ListingSidebar
+            key={block}
+            {...props}
             data={data}
             block={block}
             onChangeBlock={onChangeBlock}
@@ -61,8 +73,12 @@ const Edit = React.memo(
       </>
     );
   },
-  (prevProps, nextProps) =>
-    !(nextProps.selected || !isEqual(prevProps.data, nextProps.data)),
+  function areEquals(prevProps, nextProps) {
+    return !(
+      nextProps.selected !== prevProps.selected ||
+      !isEqual(prevProps.data, nextProps.data)
+    );
+  },
 );
 
 Edit.propTypes = {

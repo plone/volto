@@ -16,6 +16,7 @@ import { toast } from 'react-toastify';
 
 import { Form, Toast } from '@plone/volto/components';
 import languages from '@plone/volto/constants/Languages';
+import { changeLanguageCookies } from '@plone/volto/helpers';
 
 const messages = defineMessages({
   personalPreferences: {
@@ -83,25 +84,21 @@ class PersonalPreferences extends Component {
    * @returns {undefined}
    */
   onSubmit(data) {
-    cookie.save('I18N_LANGUAGE', data.language || '', {
-      expires: new Date((2 ** 31 - 1) * 1000),
-      path: '/',
+    let language = data.language || 'en';
+    changeLanguageCookies(language);
+    request('GET', `/assets/locales/${language}.json`).then((locale) => {
+      this.props.updateIntl({
+        locale: locale.language || 'en',
+        messages: locale.body,
+      });
+      toast.success(
+        <Toast
+          success
+          title={this.props.intl.formatMessage(messages.success)}
+          content={this.props.intl.formatMessage(messages.saved)}
+        />,
+      );
     });
-    request('GET', `/assets/locales/${data.language || 'en'}.json`).then(
-      (locale) => {
-        this.props.updateIntl({
-          locale: locale.language || 'en',
-          messages: locale.body,
-        });
-        toast.success(
-          <Toast
-            success
-            title={this.props.intl.formatMessage(messages.success)}
-            content={this.props.intl.formatMessage(messages.saved)}
-          />,
-        );
-      },
-    );
     toast.success(
       <Toast success title={this.props.intl.formatMessage(messages.saved)} />,
     );
