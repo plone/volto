@@ -108,6 +108,11 @@
 
 ### Bugfix
 
+- Fix sitemap URL generation @nzambello
+
+### Internal
+
+- Add toPublicURL helper @nzambello
 - Don't show empty groups in BlockChooser @tiberiuichim
 - Fix Text Block placeholder regression refs #2322 @avoinea
 
