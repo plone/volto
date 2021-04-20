@@ -8,11 +8,14 @@
 
 - Support Node 16 @timo
 
+- Include a pluggable architecture for pluggable render-time insertions (similar to <Portal>) @tiberiuichim
 ### Bugfix
 
 - Include selected block in multiselections @sneridagh
 
 ### Internal
+
+- Upgrade Storybook to 6.2.2 @tiberiuichim
 
 - Implement Github actions workflow to deploy the documentation to the Plone Foundation server @ericof
 - Pin `immutable` to an updated version that does not produce continuous deprecation notices in console on every change @sneridagh
