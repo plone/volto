@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2021-04-19T15:41:27.336Z\n"
+"POT-Creation-Date: 2021-04-20T10:24:17.168Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -2755,7 +2755,7 @@ msgid "common"
 msgstr ""
 
 #: components/manage/Multilingual/CompareLanguages
-# defaultMessage: Compare to
+# defaultMessage: Compare to language
 msgid "compare_to"
 msgstr ""
 
