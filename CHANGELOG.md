@@ -144,6 +144,7 @@
 - Improved comments @rexalex @avoinea
 - Added SidebarPopup component for extra sidebar handling @avoinea
 - Use SidebarPopup component in place of CSS transition sidebar @nileshgulia1
+- as in Plone, hide controlpanel for users that are no 'Manager' or 'Site Administrator'. @giuliaghisini
 
 ### Bugfix
 

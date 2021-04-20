@@ -78,3 +78,5 @@ export {
   changeLanguage,
   changeLanguageCookies,
 } from '@plone/volto/helpers/Language/Language';
+export { isAdminUser } from './User/User';
+// export { injectLazyLibs } from './Loadable/Loadable';
