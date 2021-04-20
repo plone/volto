@@ -137,6 +137,7 @@ class Add extends Component {
     this.state = {
       isClient: false,
       error: null,
+      formSelected: 'addForm',
     };
   }
 

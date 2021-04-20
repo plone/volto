@@ -119,6 +119,7 @@ class Edit extends Component {
       visual: true,
       isClient: false,
       error: null,
+      formSelected: 'editForm',
     };
     this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
