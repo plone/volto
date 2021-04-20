@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Support Node 16 @timo
+
 ### Bugfix
 
 - Include selected block in multiselections @sneridagh
