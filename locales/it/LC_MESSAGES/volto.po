@@ -199,6 +199,7 @@ msgstr "E-mail e password distinguono entrambi le maiuscole dalle minuscole, ver
 msgid "Breadcrumbs"
 msgstr "Briciole di pane"
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
@@ -572,6 +573,7 @@ msgstr "Vuoi veramente eliminare l'utente {username}?"
 msgid "Do you really want to delete this item?"
 msgstr "Vuoi veramente eliminare questo elemento?"
 
+#: components/manage/Multilingual/TranslationObject
 #: components/manage/Sidebar/Sidebar
 msgid "Document"
 msgstr "Pagina"
@@ -882,6 +884,7 @@ msgstr "Se hai dimenticato la tua password, {forgotpassword}."
 msgid "If you you do not have an account here, head over to the {registrationform}."
 msgstr "Se non ti sei ancora iscritto, compila il {registrationform} per diventare un collaboratore."
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
@@ -1955,6 +1958,10 @@ msgstr "Numero totale degli oggetti di tutte le cache"
 msgid "Total number of objects in the database"
 msgstr "Numero totale di oggetti nel database"
 
+#: components/manage/Add/Add
+msgid "Translate to"
+msgstr ""
+
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
 msgstr "Traduci in {lang}"
@@ -2046,6 +2053,11 @@ msgstr "Carica file"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Uploading files"
 msgstr "Caricamento dei files"
+
+#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Image/Edit
+msgid "Uploading image"
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
@@ -2231,6 +2243,14 @@ msgstr "Hai dimenticato la tua password?"
 #: config/Blocks
 msgid "common"
 msgstr "Comuni"
+
+#: components/manage/Multilingual/CompareLanguages
+msgid "compare_to"
+msgstr ""
+
+#: components/manage/Multilingual/CompareLanguages
+msgid "compare_to_nothing"
+msgstr ""
 
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"

@@ -207,6 +207,7 @@ msgstr "O endereço de e-mail e a senha diferenciam maiúsculas de minúsculas. 
 msgid "Breadcrumbs"
 msgstr "Navegação estrutural"
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
@@ -580,6 +581,7 @@ msgstr "Quer mesmo eliminar o usuário {username}?"
 msgid "Do you really want to delete this item?"
 msgstr "Quer mesmo eliminar este item?"
 
+#: components/manage/Multilingual/TranslationObject
 #: components/manage/Sidebar/Sidebar
 msgid "Document"
 msgstr "Documento"
@@ -890,6 +892,7 @@ msgstr "Se se esqueceu da sua senha, {forgotpassword}"
 msgid "If you you do not have an account here, head over to the {registrationform}."
 msgstr "Se não tem uma conta aqui, dirija-se a {registrationform}."
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
@@ -1963,6 +1966,10 @@ msgstr ""
 msgid "Total number of objects in the database"
 msgstr ""
 
+#: components/manage/Add/Add
+msgid "Translate to"
+msgstr ""
+
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
 msgstr ""
@@ -2054,6 +2061,11 @@ msgstr "Enviar ficheiros"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Uploading files"
 msgstr "Enviando ficheiros"
+
+#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Image/Edit
+msgid "Uploading image"
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
@@ -2239,6 +2251,14 @@ msgstr "box_forgot_password_option"
 #: config/Blocks
 msgid "common"
 msgstr "comum"
+
+#: components/manage/Multilingual/CompareLanguages
+msgid "compare_to"
+msgstr ""
+
+#: components/manage/Multilingual/CompareLanguages
+msgid "compare_to_nothing"
+msgstr ""
 
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"

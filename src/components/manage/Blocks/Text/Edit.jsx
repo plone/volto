@@ -52,6 +52,7 @@ class Edit extends Component {
     onFocusPreviousBlock: PropTypes.func.isRequired,
     onFocusNextBlock: PropTypes.func.isRequired,
     onSelectBlock: PropTypes.func.isRequired,
+    editable: PropTypes.bool,
     allowedBlocks: PropTypes.arrayOf(PropTypes.string),
     showRestricted: PropTypes.bool,
     formTitle: PropTypes.string,
@@ -66,6 +67,7 @@ class Edit extends Component {
    */
   static defaultProps = {
     detached: false,
+    editable: true,
   };
 
   /**
@@ -242,6 +244,7 @@ class Edit extends Component {
     return (
       <>
         <Editor
+          readOnly={!this.props.editable}
           onChange={this.onChange}
           editorState={this.state.editorState}
           plugins={[
