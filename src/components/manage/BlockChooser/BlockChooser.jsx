@@ -23,22 +23,37 @@ const messages = defineMessages({
 
 const BlockChooser = ({
   currentBlock,
+  onInsertBlock,
   onMutateBlock,
   allowedBlocks,
   showRestricted,
+  blocksConfig = config.blocks.blocksConfig,
   intl,
 }) => {
-  const blocksConfig = filter(
-    config.blocks.blocksConfig,
-    (item) => isEmpty(allowedBlocks) || allowedBlocks.includes(item.id),
-  );
+  const useAllowedBlocks = !isEmpty(allowedBlocks);
+
+  const filteredBlocksConfig = filter(blocksConfig, (item) => {
+    if (showRestricted) {
+      if (useAllowedBlocks) {
+        return allowedBlocks.includes(item.id);
+      } else {
+        return true;
+      }
+    } else {
+      if (useAllowedBlocks) {
+        return allowedBlocks.includes(item.id);
+      } else {
+        return !item.restricted;
+      }
+    }
+  });
 
   let blocksAvailable = {};
-  const mostUsedBlocks = filter(blocksConfig, (item) => item.mostUsed);
+  const mostUsedBlocks = filter(filteredBlocksConfig, (item) => item.mostUsed);
   if (mostUsedBlocks) {
     blocksAvailable.mostUsed = mostUsedBlocks;
   }
-  const groupedBlocks = groupBy(blocksConfig, (item) => item.group);
+  const groupedBlocks = groupBy(filteredBlocksConfig, (item) => item.group);
   blocksAvailable = {
     ...blocksAvailable,
     ...groupedBlocks,
@@ -96,30 +111,26 @@ const BlockChooser = ({
                 duration={500}
                 height={activeIndex === index ? 'auto' : 0}
               >
-                {map(
-                  filter(
-                    blocksAvailable[groupName.id],
-                    (block) => showRestricted || !block.restricted,
-                  ),
-                  (block) => (
-                    <Button.Group key={block.id}>
-                      <Button
-                        icon
-                        basic
-                        className={block.id}
-                        onClick={() =>
-                          onMutateBlock(currentBlock, { '@type': block.id })
-                        }
-                      >
-                        <Icon name={block.icon} size="36px" />
-                        {intl.formatMessage({
-                          id: block.id,
-                          defaultMessage: block.title,
-                        })}
-                      </Button>
-                    </Button.Group>
-                  ),
-                )}
+                {map(blocksAvailable[groupName.id], (block) => (
+                  <Button.Group key={block.id}>
+                    <Button
+                      icon
+                      basic
+                      className={block.id}
+                      onClick={() =>
+                        onInsertBlock
+                          ? onInsertBlock(currentBlock, { '@type': block.id })
+                          : onMutateBlock(currentBlock, { '@type': block.id })
+                      }
+                    >
+                      <Icon name={block.icon} size="36px" />
+                      {intl.formatMessage({
+                        id: block.id,
+                        defaultMessage: block.title,
+                      })}
+                    </Button>
+                  </Button.Group>
+                ))}
               </AnimateHeight>
             </Accordion.Content>
           </React.Fragment>
@@ -132,7 +143,9 @@ const BlockChooser = ({
 BlockChooser.propTypes = {
   currentBlock: PropTypes.string.isRequired,
   onMutateBlock: PropTypes.func.isRequired,
+  onInsertBlock: PropTypes.func.isRequired,
   allowedBlocks: PropTypes.arrayOf(PropTypes.string),
+  blocksConfig: PropTypes.objectOf(PropTypes.any),
 };
 
 export default injectIntl(BlockChooser);

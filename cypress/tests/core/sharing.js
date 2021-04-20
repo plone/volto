@@ -21,11 +21,8 @@ describe('Sharing Tests', () => {
     // then a new page has been created
     cy.get('#toolbar-save').click();
     cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
-    if (Cypress.env('API') === 'plone') {
-      cy.get('.navigation .item.active').should('have.text', 'My Page');
-    } else {
-      cy.contains('My Page');
-    }
+
+    cy.get('.navigation .item.active').should('have.text', 'My Page');
 
     // then I click on the Toolbar > More
     cy.get('#toolbar-more').click();

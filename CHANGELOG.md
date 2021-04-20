@@ -1,6 +1,6 @@
 # Change Log
 
-## 12.3.1 (unreleased)
+## 12.10.2 (unreleased)
 
 ### Breaking
 
@@ -10,11 +10,157 @@
 
 ### Bugfix
 
-- fixed italian translations for block 'Maps" @giuliaghisini
+- Include selected block in multiselections @sneridagh
+
+### Internal
+
+- Implement Github actions workflow to deploy the documentation to the Plone Foundation server @ericof
+- Pin `immutable` to an updated version that does not produce continuous deprecation notices in console on every change @sneridagh
+
+## 12.10.1 (2021-04-14)
+
+### Bugfix
+
+- Better error handling code in SSR when an error occurs in the code @ksuess @sneridagh
+
+## 12.10.0 (2021-04-14)
+
+### Feature
+
+- Add support in FileWidget for raw file data in base64 (control panels, not really NamedFile fields) @sneridagh
+
+### Bugfix
+
+- ObjectListWidget: edit mode: expand last added item, not first of list. @ksuess
+- Improve error handling in SSR when an error occurs in the code @sneridagh
+
+### Internal
+
+- Ignore files in addons when building i18n messages in the i18n script, since it's useless (they should be done in the addon itself) and lead to errors when parsing also internal `node_modules` and other utility files @sneridagh
+
+## 12.9.0 (2021-04-10)
+
+### Bugfix
+
+- Avoid double calling asyncPropsExtenders @ksuess @tiberiuichim
+
+### Internal
+
+- Fix server when ECONNRESET is received from the backend @sneridagh
+- Remove all appearences of `UNSAFE_componentWillMount` since it loads also on the SSR calls too @sneridagh
+
+## 12.8.0 (2021-04-08)
+
+### Feature
+
+- Add configurable api expanders @csenger @nileshgulia1 @tiberiuichim @sneridagh
+- In Text block, keep text selection on focus, and move focus to end of text if there's no selection @giuliaghisini
+
+### Bugfix
+
+- Fix `fieldset` instead of `fieldSet` in ObjectWidget component @sneridagh
+
+## 12.7.0 (2021-04-07)
+
+### Feature
+
+- Use `onInsertBlock` callback when adding new blocks if available, otherwise fallback to `onMutateBlock` refs #2330 @avoinea
+
+### Bugfix
+
+- fixed recurrence widget when weekly recurrence is selected and event start date is on sunday. @giuliaghisini
+- Fix default value for checkbox widget @alexbueckig
+- Fix for forms in content types, the fieldset was not being passed over to the field. This affected form generation ids and labels. @sneridagh
+- Add a bit of a11y love to the `ObjectListWidget` @sneridagh
+
+### Internal
+
+- Add Blocks helpers docs and tests @avoinea
+
+## 12.6.1 (2021-04-06)
+
+### Bugfix
+
+- Remove duplicated wrapper on block edit form @sneridagh
+- Fix small catched up issues in tests @sneridagh
+
+## 12.6.0 (2021-04-05)
+
+### Feature
+
+- Add ObjectWidget and ObjectListWidget @sneridagh
+- Add `BlockForm` component, variations and schemaExtender aware @sneridagh
+- Improvements to the `InlineForm` @sneridagh
+
+### Bugfix
+
+- Remove InlineForm default focus on first input @avoinea
+
+### Internal
+
+- Add Storybook to the main docs (docs.voltocms.com/storybook) build @sneridagh
+
+## 12.5.0 (2021-03-31)
+
+### Feature
+
+- New setting, `config.settings.showTags` to be able to configure tags visibility on default View @avoinea
+
+### Bugfix
+
+- Don't show empty groups in BlockChooser @tiberiuichim
+- Fix Text Block placeholder regression refs #2322 @avoinea
+
+### Internal
+
+- BlocksForm and RenderBlocks now allow a `blocksConfig` configuration object as a prop @tiberiuichim
+- Updated italian translations @nzambello
+
+## 12.4.2 (2021-03-29)
+
+### Bugfix
+
+- Re-add formTitle, formDescription, metadata to BlocksForm @avoinea
+
+## 12.4.1 (2021-03-29)
+
+### Bugfix
+
+- Fixed InlineForm boolean false value @razvanMiu
+- Fix warning message in console, move open/close detection to the aside itself @sneridagh
+- Revert SidebarPortal min-height @avoinea
+- Add proper proptype in `SidebarPopup` @sneridagh
+
+### Internal
+
+- Update plone/volto Docker image to use latest yo generator and support ADDONS env @avoinea
+- Add `docker-compose.yml` to the repo for quick demoing @sneridagh
+- Fixed babel config when loading addons (in testing mode) @sneridagh
+
+## 12.4.0 (2021-03-25)
+
+### Feature
+
+- Improved comments @rexalex @avoinea
+- Added SidebarPopup component for extra sidebar handling @avoinea
+- Use SidebarPopup component in place of CSS transition sidebar @nileshgulia1
+
+### Bugfix
+
+- Fixed multiSelected propType and BlocksForm multiSelected.includes @avoinea
+- Fixed italian translations for block `Maps` @giuliaghisini
+- Fixed SidebarPortal min-height @avoinea
+- Fixed CheckboxWidget state @razvanMiu
 
 ### Internal
 
 - Upgrade API to Plone 5.2.4 and p.restapi 7.1.0 @sneridagh
+- Reorganization of the Cypress tests, now they live in `cypress/tests` @sneridagh
+- Splitted Cypress tests into `core` tests and `guillotina` ones for better overall handling @sneridagh
+
+### Docs
+
+- Update internal proxy docs @nzambello
 
 ## 12.3.0 (2021-03-18)
 
@@ -80,6 +226,7 @@
 
 ### Bugfix
 
+- Adapt to BlocksForm in Blocks Engine @nileshgulia1
 - a11y improvements in `ObjectBrowser` and `BlockChooser` @sneridagh
 - Fix UniversalLink for download link. @giuliaghisini
 

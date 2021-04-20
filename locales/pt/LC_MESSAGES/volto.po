@@ -326,6 +326,10 @@ msgstr "Fechar menu"
 msgid "Code"
 msgstr ""
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Collapse item"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"
 msgstr ""
@@ -339,6 +343,10 @@ msgstr "Comentar"
 #: components/manage/Controlpanels/ModerateComments
 msgid "Commenter"
 msgstr "Comentador"
+
+#: components/theme/Comments/Comments
+msgid "Comments"
+msgstr ""
 
 #: components/manage/Diff/Diff
 msgid "Compare"
@@ -651,6 +659,10 @@ msgstr ""
 msgid "Embeded Google Maps"
 msgstr ""
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Empty object list"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypeLayout
 msgid "Enable editable Blocks"
 msgstr ""
@@ -828,6 +840,10 @@ msgstr "Grupos"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Header cell"
+msgstr ""
+
+#: components/theme/Comments/Comments
+msgid "Hide Replies"
 msgstr ""
 
 #: components/manage/History/History
@@ -1036,6 +1052,10 @@ msgstr "Ligar a"
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
+msgstr ""
+
+#: components/theme/Comments/Comments
+msgid "Load more"
 msgstr ""
 
 #: components/manage/Form/ModalForm
@@ -1441,6 +1461,10 @@ msgstr "Formulário de registo"
 msgid "Relevance"
 msgstr ""
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Remove item"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
 msgstr ""
@@ -1472,6 +1496,10 @@ msgstr ""
 
 #: components/manage/Widgets/FileWidget
 msgid "Replace existing file"
+msgstr ""
+
+#: components/theme/Comments/Comments
+msgid "Reply"
 msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
@@ -1673,6 +1701,14 @@ msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Show All"
+msgstr ""
+
+#: components/theme/Comments/Comments
+msgid "Show Replies"
+msgstr ""
+
+#: components/manage/Widgets/ObjectListWidget
+msgid "Show item"
 msgstr ""
 
 #: components/manage/Sidebar/Sidebar
@@ -2055,6 +2091,10 @@ msgstr "Utilizadores e Grupos"
 msgid "Users and groups settings"
 msgstr "Configurações de utilizadores e grupos"
 
+#: components/manage/Form/BlockDataForm
+msgid "Variation"
+msgstr ""
+
 #: components/manage/Controlpanels/Controlpanels
 msgid "Version Overview"
 msgstr "Resumo da Versão"
@@ -2200,7 +2240,6 @@ msgstr "box_forgot_password_option"
 msgid "common"
 msgstr "comum"
 
-#: components/manage/Blocks/Block/Edit
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"
 msgstr "eliminar"
@@ -2585,7 +2624,3 @@ msgstr "{title} cortado."
 #: components/manage/Actions/Actions
 msgid "{title} has been deleted."
 msgstr "{title} foi eliminado."
-
-#: components/theme/Comments/Comments
-msgid "{user} says:"
-msgstr "{user} diz:"

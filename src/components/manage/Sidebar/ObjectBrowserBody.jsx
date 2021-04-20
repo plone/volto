@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import { Input, Segment } from 'semantic-ui-react';
 import { join } from 'lodash';
-import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 
 // These absolute imports (without using the corresponding centralized index.js) are required
 // to cut circular import problems, this file should never use them. This is because of
@@ -128,17 +126,7 @@ class ObjectBrowserBody extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    document.addEventListener('mousedown', this.handleClickOutside, false);
     this.initialSearch(this.props.mode);
-  }
-
-  /**
-   * Component will receive props
-   * @method componentWillUnmount
-   * @returns {undefined}
-   */
-  componentWillUnmount() {
-    document.removeEventListener('mousedown', this.handleClickOutside, false);
   }
 
   initialSearch = (mode) => {
@@ -172,17 +160,6 @@ class ObjectBrowserBody extends Component {
       );
     }
   };
-
-  handleClickOutside = (e) => {
-    if (
-      this.objectBrowser &&
-      doesNodeContainClick(this.objectBrowser.current, e)
-    )
-      return;
-    this.props.closeObjectBrowser();
-  };
-
-  objectBrowser = React.createRef();
 
   navigateTo = (id) => {
     this.props.searchContent(
@@ -344,109 +321,95 @@ class ObjectBrowserBody extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    return ReactDOM.createPortal(
-      <aside
-        role="presentation"
-        onClick={(e) => {
-          e.stopPropagation();
-        }}
-        ref={this.objectBrowser}
-        key="objectbrowsercontainerkey"
-        className="sidebar-container"
-      >
-        <Segment.Group raised>
-          <header className="header pulled">
-            <div className="vertical divider" />
-            {this.state.currentFolder === '/' ? (
-              <>
-                {this.props.mode === 'image' ? (
-                  <Icon name={folderSVG} size="24px" />
-                ) : (
-                  <Icon name={linkSVG} size="24px" />
-                )}
-              </>
-            ) : (
-              <Icon
-                name={backSVG}
-                size="24px"
-                onClick={() => this.navigateTo(this.state.parentFolder)}
-              />
-            )}
-            {this.state.showSearchInput ? (
-              <Input
-                className="search"
-                onChange={this.onSearch}
-                placeholder={this.props.intl.formatMessage(
-                  messages.SearchInputPlaceholder,
-                )}
-              />
-            ) : this.props.mode === 'image' ? (
-              <h2>
-                <FormattedMessage
-                  id="Choose Image"
-                  defaultMessage="Choose Image"
-                />
-              </h2>
-            ) : (
-              <h2>
-                <FormattedMessage
-                  id="Choose Target"
-                  defaultMessage="Choose Target"
-                />
-              </h2>
-            )}
-
-            <button onClick={this.toggleSearchInput}>
-              <Icon name={searchSVG} size="24px" />
-            </button>
-            <button
-              className="clearSVG"
-              onClick={this.props.closeObjectBrowser}
-            >
-              <Icon name={clearSVG} size="24px" />
-            </button>
-          </header>
-          <Segment secondary>{this.state.currentFolder}</Segment>
-          {this.props.mode === 'multiple' && (
-            <Segment className="infos">
-              {this.props.intl.formatMessage(messages.SelectedItems)}:{' '}
-              {this.props.data?.length}
-              {this.props.maximumSelectionSize && (
-                <>
-                  {' '}
-                  {this.props.intl.formatMessage(messages.of)}{' '}
-                  {this.props.maximumSelectionSize}
-                </>
+    return (
+      <Segment.Group raised>
+        <header className="header pulled">
+          <div className="vertical divider" />
+          {this.state.currentFolder === '/' ? (
+            <>
+              {this.props.mode === 'image' ? (
+                <Icon name={folderSVG} size="24px" />
+              ) : (
+                <Icon name={linkSVG} size="24px" />
               )}
-            </Segment>
+            </>
+          ) : (
+            <Icon
+              name={backSVG}
+              size="24px"
+              onClick={() => this.navigateTo(this.state.parentFolder)}
+            />
           )}
-          <ObjectBrowserNav
-            currentSearchResults={
-              this.props.searchSubrequests[
-                `${this.props.block}-${this.props.mode}`
-              ]
-            }
-            selected={
-              this.props.mode === 'multiple'
-                ? this.props.data
-                : [
-                    {
-                      '@id':
-                        this.props.mode === 'image'
-                          ? this.state.selectedImage
-                          : this.state.selectedHref,
-                    },
-                  ]
-            }
-            handleClickOnItem={this.handleClickOnItem}
-            handleDoubleClickOnItem={this.handleDoubleClickOnItem}
-            mode={this.props.mode}
-            navigateTo={this.navigateTo}
-            isSelectable={this.isSelectable}
-          />
-        </Segment.Group>
-      </aside>,
-      document.body,
+          {this.state.showSearchInput ? (
+            <Input
+              className="search"
+              onChange={this.onSearch}
+              placeholder={this.props.intl.formatMessage(
+                messages.SearchInputPlaceholder,
+              )}
+            />
+          ) : this.props.mode === 'image' ? (
+            <h2>
+              <FormattedMessage
+                id="Choose Image"
+                defaultMessage="Choose Image"
+              />
+            </h2>
+          ) : (
+            <h2>
+              <FormattedMessage
+                id="Choose Target"
+                defaultMessage="Choose Target"
+              />
+            </h2>
+          )}
+
+          <button onClick={this.toggleSearchInput}>
+            <Icon name={searchSVG} size="24px" />
+          </button>
+          <button className="clearSVG" onClick={this.props.closeObjectBrowser}>
+            <Icon name={clearSVG} size="24px" />
+          </button>
+        </header>
+        <Segment secondary>{this.state.currentFolder}</Segment>
+        {this.props.mode === 'multiple' && (
+          <Segment className="infos">
+            {this.props.intl.formatMessage(messages.SelectedItems)}:{' '}
+            {this.props.data?.length}
+            {this.props.maximumSelectionSize && (
+              <>
+                {' '}
+                {this.props.intl.formatMessage(messages.of)}{' '}
+                {this.props.maximumSelectionSize}
+              </>
+            )}
+          </Segment>
+        )}
+        <ObjectBrowserNav
+          currentSearchResults={
+            this.props.searchSubrequests[
+              `${this.props.block}-${this.props.mode}`
+            ]
+          }
+          selected={
+            this.props.mode === 'multiple'
+              ? this.props.data
+              : [
+                  {
+                    '@id':
+                      this.props.mode === 'image'
+                        ? this.state.selectedImage
+                        : this.state.selectedHref,
+                  },
+                ]
+          }
+          handleClickOnItem={this.handleClickOnItem}
+          handleDoubleClickOnItem={this.handleDoubleClickOnItem}
+          mode={this.props.mode}
+          navigateTo={this.navigateTo}
+          isSelectable={this.isSelectable}
+        />
+      </Segment.Group>
     );
   }
 }

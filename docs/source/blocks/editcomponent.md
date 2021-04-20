@@ -26,11 +26,25 @@ import { SidebarPortal } from '@plone/volto/components';
 </SidebarPortal>
 ```
 
-Everything that's inside the `SidebarPortal` component will be rendered in the sidebar.
+Everything that's inside the `SidebarPortal` component will be rendered in the sidebar. If you need an extra layer of configuration within `SidebarPortal`, you can use `SidebarPopup`.
 
-## Automated block editing forms
+```jsx
 
-To simplify the task of defining the edit component for a block, the `InlineForm` component can be used. The block edit component needs to be described by a schema that matches the format used to serialize the content type definitions. The widgets that will be used in rendering the form follow the same algorithm that is used for the regular metadata fields for the content types. As an example of schema, it could look like this:
+import { SidebarPopup } from '@plone/volto/components';
+
+<SidebarPopup open={this.props.sidebarOpen}>
+  ...
+</SidebarPopup>
+```
+
+## Schema driven automated block settings forms
+
+A helper component is available in core in order to simplify the task of defining and rendering the settings for a block: the `BlockDataForm` component.
+
+!!! note
+    `BlockDataForm` is a convenience component around the already available in core `InlineForm` that takes care of some aspects exclusively for Volto Blocks, like Variants and schemaExtenders. You can still use `InlineForm` across Volto, but using `BlockDataForm` is recommeneded for the blocks settings use case.
+
+The edit block settings component needs to be described by a schema that matches the format used to serialize the content type definitions. The widgets that will be used in rendering the form follow the same algorithm that is used for the regular metadata fields for the content types. As an example of schema, it could look like this:
 
 ```js
 const IframeSchema = {
@@ -311,6 +325,7 @@ You can render a blocks engine form with the `BlocksForm` component.
 import { isEmpty } from 'lodash';
 import BlocksForm from '@plone/volto/components/manage/Blocks/BlocksForm';
 import { emptyBlocksForm } from '@plone/volto/helpers/Blocks/Blocks';
+import config from '@plone/volto/registry';
 
 
 class Example extends Component {
@@ -335,6 +350,8 @@ class Example extends Component {
     } = this.props;
     const formData = this.state.formData;
     const metadata = this.props.metadata || this.props.properties;
+    const {blocksConfig} = config.blocks;
+    const titleBlock = blocksConfig.title;
 
     return (
       <BlocksForm
@@ -356,6 +373,13 @@ class Example extends Component {
             },
           });
         }}
+        blocksConfig={{
+          ...blocksConfig,
+          title: {
+            ...titleBlock,
+            edit: (props) => <div>Title editing is not allowed (as example)</div>
+          }
+        }}
         onChangeField={(id, value) => {
           if (['blocks', 'blocks_layout'].indexOf(id) > -1) {
             this.blockState[id] = value;
@@ -376,12 +400,12 @@ class Example extends Component {
 }
 ```
 
-The current block engine, available as the separate `BlocksForm` component is
-a replication of the block engine from the `Form.jsx` component. It has been
-previously exposed as the
-[@eeacms/volto-blocks-form](https://github.com/eea/volto-blocks-form) addon and
-reused in several other addons, so you can find integration examples in addons
-such as [volto-columns-block](https://github.com/eea/volto-columns-block),
+The current block engine is available as the separate `BlocksForm` component,
+used to be a part of the `Form.jsx` component. It has been previously exposed
+as the [@eeacms/volto-blocks-form](https://github.com/eea/volto-blocks-form)
+addon and reused in several other addons, so you can find integration examples
+in addons such as
+[volto-columns-block](https://github.com/eea/volto-columns-block),
 [volto-accordion-block](https://github.com/rohberg/volto-accordion-block),
 [@eeacms/volto-accordion-block](https://github.com/eea/volto-accordion-block),
 [@eeacms/volto-grid-block](https://github.com/eea/volto-accordion-block), but
@@ -389,7 +413,10 @@ probably the simplest implementation to follow is in the
 [@eeacms/volto-group-block](https://github.com/eea/volto-group-block)
 
 Notice that the `BlocksForm` component allows overriding the edit block
-wrapper. You can also reuse the DragDropList component as a separate component:
+wrapper and allows passing a custom `blocksConfig` configuration object, for
+example to filter or add new blocks.
+
+You can also reuse the DragDropList component as a separate component:
 
 ```jsx
   <DragDropList

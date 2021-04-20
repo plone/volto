@@ -35,6 +35,7 @@ export {
 } from '@plone/volto/helpers/Content/Content';
 export {
   addBlock,
+  insertBlock,
   blockHasValue,
   changeBlock,
   deleteBlock,
@@ -62,6 +63,8 @@ export Helmet from './Helmet/Helmet';
 export FormValidation from './FormValidation/FormValidation';
 export {
   difference,
+  getColor,
+  getInitials,
   safeWrapper,
   applyConfig,
   withServerErrorCode,
@@ -70,3 +73,4 @@ export { messages } from './MessageLabels/MessageLabels';
 export { asyncConnect } from './AsyncConnect';
 export { isAdminUser } from './User/User';
 // export { injectLazyLibs } from './Loadable/Loadable';
+

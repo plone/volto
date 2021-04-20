@@ -57,11 +57,6 @@ class PersonalTools extends Component {
     loadComponent: PropTypes.func.isRequired,
   };
 
-  /**
-   * Component will mount
-   * @method componentWillMount
-   * @returns {undefined}
-   */
   componentDidMount() {
     this.props.getUser(this.props.userId);
   }

@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import { Helmet } from '@plone/volto/helpers';
+import { getParentUrl, Helmet } from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
 import { Container, Button, Table } from 'semantic-ui-react';
 import moment from 'moment';
@@ -16,7 +16,6 @@ import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import { deleteComment, searchContent } from '@plone/volto/actions';
 import { CommentEditModal, Icon, Toolbar } from '@plone/volto/components';
-import { getBaseUrl } from '@plone/volto/helpers';
 
 import backSVG from '@plone/volto/icons/back.svg';
 
@@ -85,23 +84,15 @@ class ModerateComments extends Component {
   }
 
   /**
-   * Component will mount
-   * @method componentWillMount
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillMount() {
-    this.props.searchContent('', {
-      portal_type: 'Discussion Item',
-      fullobjects: true,
-    });
-  }
-
-  /**
    * Component did mount
    * @method componentDidMount
    * @returns {undefined}
    */
   componentDidMount() {
+    this.props.searchContent('', {
+      portal_type: 'Discussion Item',
+      fullobjects: true,
+    });
     this.setState({ isClient: true });
   }
 
@@ -174,6 +165,15 @@ class ModerateComments extends Component {
       editId: null,
       editText: null,
     });
+  }
+
+  /**
+   * Back/Cancel handler
+   * @method onCancel
+   * @returns {undefined}
+   */
+  onCancel() {
+    this.props.history.push(getParentUrl(this.props.pathname));
   }
 
   /**
@@ -271,10 +271,7 @@ class ModerateComments extends Component {
               pathname={this.props.pathname}
               hideDefaultViewButtons
               inner={
-                <Link
-                  to={`${getBaseUrl(this.props.pathname)}controlpanel`}
-                  className="item"
-                >
+                <Link className="item" to="#" onClick={() => this.onCancel()}>
                   <Icon
                     name={backSVG}
                     className="contents circled"

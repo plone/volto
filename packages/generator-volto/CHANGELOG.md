@@ -1,12 +1,32 @@
 # Change Log
 
-## 4.0.1 (unreleased)
+## 4.2.1 (unreleased)
+
+### Added
+
+### Changes
+
+## 4.2.0 (2021-04-05)
+
+### Added
+
+- Support for Github addon `--template` @avoinea
+
+## 4.1.0 (2021-03-26)
 
 ### Added
 
 - Default workspaces path @nileshgulia1
+- Simplify interactive questions @avoinea
+- Add addons also to dependencies @avoinea
 
-### Changes
+## 4.0.1 (2021-03-26)
+
+### Added
+
+- Default workspaces path @nileshgulia1
+- Simplify interactive questions @avoinea
+- Add addons also to dependencies @avoinea
 
 ## 4.0.0 (2021-02-20)
 

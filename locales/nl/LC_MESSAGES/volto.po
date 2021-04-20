@@ -337,6 +337,10 @@ msgstr ""
 msgid "Code"
 msgstr ""
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Collapse item"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"
 msgstr ""
@@ -349,6 +353,10 @@ msgstr ""
 
 #: components/manage/Controlpanels/ModerateComments
 msgid "Commenter"
+msgstr ""
+
+#: components/theme/Comments/Comments
+msgid "Comments"
 msgstr ""
 
 #: components/manage/Diff/Diff
@@ -662,6 +670,10 @@ msgstr ""
 msgid "Embeded Google Maps"
 msgstr ""
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Empty object list"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypeLayout
 msgid "Enable editable Blocks"
 msgstr ""
@@ -839,6 +851,10 @@ msgstr ""
 
 #: components/manage/Blocks/Table/Edit
 msgid "Header cell"
+msgstr ""
+
+#: components/theme/Comments/Comments
+msgid "Hide Replies"
 msgstr ""
 
 #: components/manage/History/History
@@ -1047,6 +1063,10 @@ msgstr ""
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
+msgstr ""
+
+#: components/theme/Comments/Comments
+msgid "Load more"
 msgstr ""
 
 #: components/manage/Form/ModalForm
@@ -1452,6 +1472,10 @@ msgstr ""
 msgid "Relevance"
 msgstr ""
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Remove item"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
 msgstr ""
@@ -1483,6 +1507,10 @@ msgstr ""
 
 #: components/manage/Widgets/FileWidget
 msgid "Replace existing file"
+msgstr ""
+
+#: components/theme/Comments/Comments
+msgid "Reply"
 msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
@@ -1684,6 +1712,14 @@ msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Show All"
+msgstr ""
+
+#: components/theme/Comments/Comments
+msgid "Show Replies"
+msgstr ""
+
+#: components/manage/Widgets/ObjectListWidget
+msgid "Show item"
 msgstr ""
 
 #: components/manage/Sidebar/Sidebar
@@ -2066,6 +2102,10 @@ msgstr ""
 msgid "Users and groups settings"
 msgstr ""
 
+#: components/manage/Form/BlockDataForm
+msgid "Variation"
+msgstr ""
+
 #: components/manage/Controlpanels/Controlpanels
 msgid "Version Overview"
 msgstr ""
@@ -2211,7 +2251,6 @@ msgstr ""
 msgid "common"
 msgstr ""
 
-#: components/manage/Blocks/Block/Edit
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"
 msgstr ""
@@ -2596,7 +2635,3 @@ msgstr "{title} geknipt."
 #: components/manage/Actions/Actions
 msgid "{title} has been deleted."
 msgstr "{title} is verwijderd."
-
-#: components/theme/Comments/Comments
-msgid "{user} says:"
-msgstr ""

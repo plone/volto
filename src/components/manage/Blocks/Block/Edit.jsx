@@ -8,16 +8,11 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { defineMessages, injectIntl } from 'react-intl';
-import { Button } from 'semantic-ui-react';
-import includes from 'lodash/includes';
-import isBoolean from 'lodash/isBoolean';
 import cx from 'classnames';
 import { setSidebarTab } from '@plone/volto/actions';
 import config from '@plone/volto/registry';
-
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
-import Icon from '@plone/volto/components/theme/Icon/Icon';
-import trashSVG from '@plone/volto/icons/delete.svg';
+
 import {
   SidebarPortal,
   BlockSettingsSidebar,
@@ -29,10 +24,6 @@ const messages = defineMessages({
     id: 'Unknown Block',
     defaultMessage: 'Unknown Block {block}',
   },
-  delete: {
-    id: 'delete',
-    defaultMessage: 'delete',
-  },
 });
 
 /**
@@ -40,7 +31,7 @@ const messages = defineMessages({
  * @class Edit
  * @extends Component
  */
-class Edit extends Component {
+export class Edit extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -52,6 +43,7 @@ class Edit extends Component {
     // properties is mapped to formData, so it's not connected to changes of the object
     properties: PropTypes.objectOf(PropTypes.any).isRequired,
     selected: PropTypes.bool.isRequired,
+    multiSelected: PropTypes.bool,
     index: PropTypes.number.isRequired,
     id: PropTypes.string.isRequired,
     manage: PropTypes.bool,
@@ -70,9 +62,10 @@ class Edit extends Component {
 
   componentDidMount() {
     const { type } = this.props;
+    const { blocksConfig = config.blocks.blocksConfig } = this.props;
+
     const blockHasOwnFocusManagement =
-      config.blocks.blocksConfig?.[type]?.['blockHasOwnFocusManagement'] ||
-      null;
+      blocksConfig?.[type]?.['blockHasOwnFocusManagement'] || null;
     if (
       !blockHasOwnFocusManagement &&
       this.props.selected &&
@@ -80,19 +73,17 @@ class Edit extends Component {
     ) {
       this.blockNode.current.focus();
     }
-    const tab = this.props.manage
-      ? 1
-      : config.blocks.blocksConfig?.[type]?.sidebarTab || 0;
+    const tab = this.props.manage ? 1 : blocksConfig?.[type]?.sidebarTab || 0;
     if (this.props.selected) {
       this.props.setSidebarTab(tab);
     }
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
+    const { blocksConfig = config.blocks.blocksConfig } = this.props;
     const { selected, type } = this.props;
     const blockHasOwnFocusManagement =
-      config.blocks.blocksConfig?.[type]?.['blockHasOwnFocusManagement'] ||
-      null;
+      blocksConfig?.[type]?.['blockHasOwnFocusManagement'] || null;
     if (
       !blockHasOwnFocusManagement &&
       nextProps.selected &&
@@ -107,7 +98,7 @@ class Edit extends Component {
     ) {
       const tab = this.props.manage
         ? 1
-        : config.blocks.blocksConfig?.[nextProps.type]?.sidebarTab || 0;
+        : blocksConfig?.[nextProps.type]?.sidebarTab || 0;
       this.props.setSidebarTab(tab);
     }
   }
@@ -120,35 +111,32 @@ class Edit extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { blocks } = config;
-    const { id, type, selected } = this.props;
-    const required = isBoolean(this.props.data.required)
-      ? this.props.data.required
-      : includes(blocks.requiredBlocks, type);
+    const { blocksConfig = config.blocks.blocksConfig } = this.props;
+    const { type } = this.props;
 
     const disableNewBlocks = this.props.data?.disableNewBlocks;
 
-    let Block = blocks.blocksConfig?.[type]?.['edit'] || null;
+    let Block = blocksConfig?.[type]?.['edit'] || null;
     if (this.props.data?.readOnly) {
-      Block = blocks.blocksConfig?.[type]?.['view'] || null;
+      Block = blocksConfig?.[type]?.['view'] || null;
     }
-    const schema =
-      blocks.blocksConfig?.[type]?.['schema'] || BlockSettingsSchema;
+    const schema = blocksConfig?.[type]?.['schema'] || BlockSettingsSchema;
     const blockHasOwnFocusManagement =
-      blocks.blocksConfig?.[type]?.['blockHasOwnFocusManagement'] || null;
+      blocksConfig?.[type]?.['blockHasOwnFocusManagement'] || null;
 
     return (
-      <div className={`ui drag block inner ${type}`}>
+      <>
         {Block !== null ? (
           <div
             role="presentation"
             onClick={(e) => {
               const isMultipleSelection = e.shiftKey || e.ctrlKey || e.metaKey;
-              this.props.onSelectBlock(
-                this.props.id,
-                this.props.selected ? false : isMultipleSelection,
-                e,
-              );
+              !this.props.selected &&
+                this.props.onSelectBlock(
+                  this.props.id,
+                  this.props.selected ? false : isMultipleSelection,
+                  e,
+                );
             }}
             onKeyDown={
               !(blockHasOwnFocusManagement || disableNewBlocks)
@@ -184,7 +172,9 @@ class Edit extends Component {
         ) : (
           <div
             role="presentation"
-            onClick={() => this.props.onSelectBlock(this.props.id)}
+            onClick={() =>
+              !this.props.selected && this.props.onSelectBlock(this.props.id)
+            }
             onKeyDown={
               !(blockHasOwnFocusManagement || disableNewBlocks)
                 ? (e) =>
@@ -207,18 +197,7 @@ class Edit extends Component {
             })}
           </div>
         )}
-        {selected && !required && (
-          <Button
-            icon
-            basic
-            onClick={() => this.props.onDeleteBlock(id)}
-            className="delete-button"
-            aria-label={this.props.intl.formatMessage(messages.delete)}
-          >
-            <Icon name={trashSVG} size="18px" />
-          </Button>
-        )}
-      </div>
+      </>
     );
   }
 }

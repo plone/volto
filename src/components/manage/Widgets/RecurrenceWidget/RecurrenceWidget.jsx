@@ -284,8 +284,9 @@ class RecurrenceWidget extends Component {
 
   getWeekday = (number) => {
     var day = null;
+    const n = number === -1 ? 6 : number; //because sunday for moment has index 0, but for rrule has index 6
     Object.keys(Days).forEach((d) => {
-      if (Days[d].weekday === number) {
+      if (Days[d].weekday === n) {
         day = Days[d];
       }
     });
@@ -504,6 +505,7 @@ class RecurrenceWidget extends Component {
     var startMonth = this.props.formData?.start
       ? moment(this.props.formData.start).month() + 1
       : currMonth;
+
     var startWeekday = this.props.formData?.start
       ? this.getWeekday(moment(this.props.formData.start).day() - 1)
       : currWeekday;
