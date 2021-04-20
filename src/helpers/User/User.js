@@ -2,15 +2,13 @@
  * User helper.
  * @module helpers/AuthToken
  */
+import { intersection } from 'lodash/intersection';
 
 /**
- * Is admin user method.
- * @method isAdminUser
- * @returns {undefined}
+ * Checks if the user has one or more given roles.
+ * @method userHasRoles
+ * @returns {boolean}
  */
-export function isAdminUser(user) {
-  return user?.roles
-    ? user.roles.includes('Site Administrator') ||
-        user.roles.includes('Manager')
-    : false;
+export function userHasRoles(user, roles = []) {
+  return intersection(user?.roles ?? [], roles).length > 0;
 }
