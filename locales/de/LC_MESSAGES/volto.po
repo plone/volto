@@ -2070,7 +2070,6 @@ msgid "Uploading files"
 msgstr "Dateien hochladen"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
-#: components/manage/Blocks/Image/Edit
 msgid "Uploading image"
 msgstr ""
 

@@ -2062,7 +2062,6 @@ msgid "Uploading files"
 msgstr "ファイルをアップロードしています"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
-#: components/manage/Blocks/Image/Edit
 msgid "Uploading image"
 msgstr ""
 

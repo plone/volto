@@ -2055,7 +2055,6 @@ msgid "Uploading files"
 msgstr "Încărcarea fișierelor"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
-#: components/manage/Blocks/Image/Edit
 msgid "Uploading image"
 msgstr ""
 
