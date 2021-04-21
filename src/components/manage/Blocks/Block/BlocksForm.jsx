@@ -13,6 +13,9 @@ import {
   previousBlockId,
 } from '@plone/volto/helpers';
 import EditBlockWrapper from './EditBlockWrapper';
+import { setSidebarTab } from '@plone/volto/actions';
+import { useDispatch } from 'react-redux';
+import { useDetectClickOutside } from 'react-detect-click-outside';
 import config from '@plone/volto/registry';
 
 const BlocksForm = (props) => {
@@ -31,11 +34,26 @@ const BlocksForm = (props) => {
     metadata,
     manage,
     children,
+    disableEvents,
     blocksConfig = config.blocks.blocksConfig,
     editable = true,
   } = props;
 
   const blockList = getBlocks(properties);
+
+  const dispatch = useDispatch();
+
+  const ClickOutsideListener = () => {
+    onSelectBlock(null);
+    dispatch(setSidebarTab(0));
+  };
+
+  const ref = useDetectClickOutside({
+    onTriggered: ClickOutsideListener,
+    triggerKeys: ['Escape'],
+    disableClick: disableEvents,
+    disableKeys: disableEvents,
+  });
 
   const handleKeyDown = (
     e,
@@ -132,7 +150,7 @@ const BlocksForm = (props) => {
   const editBlockWrapper = children || defaultBlockWrapper;
 
   return (
-    <div className="blocks-form">
+    <div className="blocks-form" ref={ref}>
       <fieldset className="invisible" disabled={!editable}>
         <DragDropList
           childList={blockList}

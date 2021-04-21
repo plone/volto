@@ -35,10 +35,6 @@ const messages = defineMessages({
     id: 'Browse the site, drop an image, or type an URL',
     defaultMessage: 'Browse the site, drop an image, or type an URL',
   },
-  uploadingImage: {
-    id: 'Uploading image',
-    defaultMessage: 'Uploading image',
-  },
 });
 
 /**
@@ -310,11 +306,7 @@ class Edit extends Component {
                       {this.state.dragging && <Dimmer active></Dimmer>}
                       {this.state.uploading && (
                         <Dimmer active>
-                          <Loader indeterminate>
-                            {this.props.intl.formatMessage(
-                              messages.uploadingImage,
-                            )}
-                          </Loader>
+                          <Loader indeterminate>Uploading image</Loader>
                         </Dimmer>
                       )}
                       <div className="no-image-wrapper">
@@ -350,9 +342,12 @@ class Edit extends Component {
                             onChange={this.onChangeUrl}
                             placeholder={placeholder}
                             value={this.state.url}
-                            // Prevents propagation to the Dropzone and the opening
-                            // of the upload browser dialog
-                            onClick={(e) => e.stopPropagation()}
+                            onClick={(e) => {
+                              e.target.focus();
+                            }}
+                            onFocus={(e) => {
+                              this.props.onSelectBlock(this.props.id);
+                            }}
                           />
                           {this.state.url && (
                             <Button.Group>
