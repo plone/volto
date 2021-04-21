@@ -361,7 +361,7 @@ class Form extends Component {
     });
 
     if (this.props.onSelectForm) {
-      event.nativeEvent.stopImmediatePropagation();
+      if (event) event.nativeEvent.stopImmediatePropagation();
       this.props.onSelectForm();
     }
   }
