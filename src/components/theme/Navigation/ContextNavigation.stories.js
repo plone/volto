@@ -110,7 +110,7 @@ const ContextNavigation = (args) => {
 };
 
 export default {
-  title: 'Context navigation',
+  title: 'Internal components/Context navigation',
   component: CNC,
   decorators: [
     (Story) => (
