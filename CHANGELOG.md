@@ -4,6 +4,10 @@
 
 ### Breaking
 
+### Bugfix
+
+- Correct the selected values rendering at isMulti SelectWidget @ionlizarazu
+
 ### Feature
 
 - Include a pluggable architecture for pluggable render-time insertions (similar to <Portal>) @tiberiuichim
