@@ -732,10 +732,26 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
     }
   }
 
-  .compare-languages {
-    .pastanaga-menu {
-      button {
-        margin: 0;
+  .toolbar-compare-translatons-contaniner {
+    position: relative;
+
+    .compare-languages {
+      @media (max-width: @largestMobileScreen - 1) {
+        position: fixed;
+        top: 101px;
+        left: 0;
+      }
+      @media (min-width: @largestMobileScreen) {
+        position: absolute;
+        top: 50%;
+        left: 56px;
+        transform: translateY(-50%);
+      }
+
+      .pastanaga-menu {
+        button {
+          margin: 0;
+        }
       }
     }
   }

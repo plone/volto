@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
-
+import langmap from 'langmap';
 import config from '@plone/volto/registry';
 
 import { Icon } from '@plone/volto/components';
-
+import { Button } from 'semantic-ui-react';
 import translateSVG from '@plone/volto/icons/translate.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 
@@ -44,14 +44,14 @@ const CompareLanguagesMenu = ({
               <li key={t['@id']}>
                 <button
                   aria-label={`${intl.formatMessage(messages.compare_to)} ${
-                    t.language
+                    langmap[t.language].nativeName
                   }`}
                   onClick={() => {
                     setComparingLanguage(t.language);
                     closeMenu();
                   }}
                 >
-                  {t.language}
+                  {langmap[t.language].nativeName}
                 </button>
               </li>
             ))}
@@ -99,39 +99,43 @@ const CompareLanguages = React.forwardRef((props, ref) => {
     translationsObject[t.language] = t['@id'];
   });
 
-  return config.settings.isMultilingual && compareOptions.length > 0 ? (
-    <>
-      <div className="toolbar-button-spacer" />
+  if (config.settings.isMultilingual && compareOptions.length > 0) {
+    return (
+      <div className="toolbar-compare-translatons-contaniner">
+        <div className="toolbar-button-spacer" />
 
-      <button
-        aria-label={intl.formatMessage(messages.compare_to)}
-        onClick={() => {
-          setViewMenu(!viewMenu);
-        }}
-        id="toolbar-compare-translations"
-      >
-        <Icon className="mobile hidden" name={translateSVG} size="30px" />
-        {viewMenu ? (
-          <Icon className="mobile only" name={clearSVG} size="30px" />
-        ) : (
-          <Icon className="mobile only" name={translateSVG} size="30px" />
-        )}
-      </button>
-
-      {viewMenu && (
-        <CompareLanguagesMenu
-          pathname={pathname}
-          theToolbar={toolbarRef}
-          key={`compareLanguagesComponent`}
-          closeMenu={() => setViewMenu(false)}
-          translations={translations}
-          setComparingLanguage={(value) => {
-            setComparingLanguage(value, translationsObject[value]);
+        <Button
+          aria-label={intl.formatMessage(messages.compare_to)}
+          onClick={() => {
+            setViewMenu(!viewMenu);
           }}
-        />
-      )}
-    </>
-  ) : null;
+          id="toolbar-compare-translations"
+        >
+          <Icon className="mobile hidden" name={translateSVG} size="30px" />
+          {viewMenu ? (
+            <Icon className="mobile only" name={clearSVG} size="30px" />
+          ) : (
+            <Icon className="mobile only" name={translateSVG} size="30px" />
+          )}
+        </Button>
+
+        {viewMenu && (
+          <CompareLanguagesMenu
+            pathname={pathname}
+            theToolbar={toolbarRef}
+            key={`compareLanguagesComponent`}
+            closeMenu={() => setViewMenu(false)}
+            translations={translations}
+            setComparingLanguage={(value) => {
+              setComparingLanguage(value, translationsObject[value]);
+            }}
+          />
+        )}
+      </div>
+    );
+  } else {
+    return null;
+  }
 });
 
 export default CompareLanguages;
