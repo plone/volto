@@ -102,6 +102,11 @@ Run "npm install -g @plone/generator-volto" to update.`,
         this.destinationPath(base, 'package.json'),
         this.globals,
       );
+      this.fs.copyTpl(
+        this.templatePath('Makefile.tpl'),
+        this.destinationPath(base, 'Makefile'),
+        this.globals,
+      );
 
       this.fs.copy(this.templatePath(), this.destinationPath(base), {
         globOptions: {
@@ -110,6 +115,7 @@ Run "npm install -g @plone/generator-volto" to update.`,
         },
       });
       this.fs.delete(this.destinationPath(base, 'package.json.tpl'));
+      this.fs.delete(this.destinationPath(base, 'Makefile.tpl'));
     }
   }
 
