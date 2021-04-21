@@ -74,7 +74,7 @@ const Types = ({ types, pathname, content, currentLanguage }) => {
                 <div className="pastanaga-menu-list">
                   <ul>
                     {map(translationsLeft, (lang) => (
-                      <li>
+                      <li key={lang}>
                         <Link
                           to={{
                             pathname: `${pathname}/create-translation`,
