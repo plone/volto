@@ -7,8 +7,9 @@
 ### Feature
 
 - Support Node 16 @timo
-
+- Improve the blocks engine by adding a detector for clicking outside in the `BlocksForm` @sneridagh
 - Include a pluggable architecture for pluggable render-time insertions (similar to <Portal>) @tiberiuichim
+
 ### Bugfix
 
 - Include selected block in multiselections @sneridagh
