@@ -32,7 +32,7 @@ const BlocksForm = (props) => {
     manage,
     children,
     blocksConfig = config.blocks.blocksConfig,
-    editable,
+    editable = true,
   } = props;
 
   const blockList = getBlocks(properties);
