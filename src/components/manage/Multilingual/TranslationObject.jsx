@@ -11,7 +11,7 @@ import { Provider } from 'react-intl-redux';
 import { Form, Field } from '@plone/volto/components';
 import config from '@plone/volto/registry';
 import configureStore from '@plone/volto/store';
-import { Api } from '@plone/volto/helpers';
+import { Api, flattenToAppURL } from '@plone/volto/helpers';
 import { createBrowserHistory } from 'history';
 const messages = defineMessages({
   document: {
@@ -102,7 +102,7 @@ const TranslationObject = ({
               /*do nothing*/
             }}
             hideActions
-            pathname={pathname}
+            pathname={flattenToAppURL(translationObject['@id'])}
             visual={visual}
             title={translationObject.language.title}
             loading={false}
