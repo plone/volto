@@ -34,7 +34,7 @@ const BlocksForm = (props) => {
     metadata,
     manage,
     children,
-    disableEvents,
+    isMainForm = true,
     blocksConfig = config.blocks.blocksConfig,
     editable = true,
   } = props;
@@ -51,8 +51,8 @@ const BlocksForm = (props) => {
   const ref = useDetectClickOutside({
     onTriggered: ClickOutsideListener,
     triggerKeys: ['Escape'],
-    disableClick: disableEvents,
-    disableKeys: disableEvents,
+    disableClick: !isMainForm,
+    disableKeys: !isMainForm,
   });
 
   const handleKeyDown = (

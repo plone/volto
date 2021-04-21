@@ -361,6 +361,7 @@ class Form extends Component {
     });
 
     if (this.props.onSelectForm) {
+      event.nativeEvent.stopImmediatePropagation();
       this.props.onSelectForm();
     }
   }
@@ -538,6 +539,7 @@ class Form extends Component {
             allowedBlocks={this.props.allowedBlocks}
             showRestricted={this.props.showRestricted}
             editable={this.props.editable}
+            isMainForm={this.props.editable}
           />
           {this.state.isClient && this.props.editable && (
             <Portal
