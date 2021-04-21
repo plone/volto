@@ -7,7 +7,6 @@ exports[`Allow override of blocksConfig 1`] = `
   >
     <fieldset
       class="invisible"
-      disabled=""
     >
       <div
         data-rbd-droppable-context-id="0"
@@ -29,7 +28,7 @@ exports[`Allow override of blocksConfig 1`] = `
               data-rbd-drag-handle-draggable-id="a"
               draggable="false"
               role="button"
-              style="visibility: hidden; display: inline-block;"
+              style="visibility: visible; display: inline-block;"
               tabindex="0"
             >
               <svg
@@ -54,6 +53,17 @@ exports[`Allow override of blocksConfig 1`] = `
                   a
                 </div>
               </div>
+              <button
+                aria-label="delete"
+                class="ui basic icon button delete-button"
+              >
+                <svg
+                  class="icon"
+                  style="height: 18px; width: auto; fill: currentColor;"
+                  viewBox=""
+                  xmlns=""
+                />
+              </button>
             </div>
           </div>
         </div>

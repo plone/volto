@@ -2,13 +2,13 @@ import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { injectIntl } from 'react-intl';
-import { Portal } from 'react-portal';
 import {
   messages,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
 } from '@plone/volto/helpers';
 import { Icon } from '@plone/volto/components';
+import { Plug } from '@plone/volto/components/manage/Pluggable';
 import { v4 as uuid } from 'uuid';
 import { load } from 'redux-localstorage-simple';
 import { isEqual, omit, without } from 'lodash';
@@ -138,48 +138,46 @@ export class BlocksToolbarComponent extends React.Component {
     return (
       <>
         {selectedBlocks.length > 0 ? (
-          <Portal
-            node={
-              __CLIENT__ && document.querySelector('#toolbar .toolbar-bottom')
-            }
-          >
-            <button
-              aria-label={intl.formatMessage(messages.deleteBlocks)}
-              onClick={this.deleteBlocks}
-              tabIndex={0}
-              className="deleteBlocks"
-              id="toolbar-delete-blocks"
-            >
-              <Icon name={trashSVG} size="30px" />
-            </button>
-            <button
-              aria-label={intl.formatMessage(messages.cutBlocks)}
-              onClick={this.cutBlocksToClipboard}
-              tabIndex={0}
-              className="cutBlocks"
-              id="toolbar-cut-blocks"
-            >
-              <Icon name={cutSVG} size="30px" />
-            </button>
-            <button
-              aria-label={intl.formatMessage(messages.copyBlocks)}
-              onClick={this.copyBlocksToClipboard}
-              tabIndex={0}
-              className="copyBlocks"
-              id="toolbar-copy-blocks"
-            >
-              <Icon name={copySVG} size="30px" />
-            </button>
-          </Portal>
+          <>
+            <Plug pluggable="main.toolbar.bottom" id="blocks-delete-btn">
+              <button
+                aria-label={intl.formatMessage(messages.deleteBlocks)}
+                onClick={this.deleteBlocks}
+                tabIndex={0}
+                className="deleteBlocks"
+                id="toolbar-delete-blocks"
+              >
+                <Icon name={trashSVG} size="30px" />
+              </button>
+            </Plug>
+            <Plug pluggable="main.toolbar.bottom" id="blocks-cut-btn">
+              <button
+                aria-label={intl.formatMessage(messages.cutBlocks)}
+                onClick={this.cutBlocksToClipboard}
+                tabIndex={0}
+                className="cutBlocks"
+                id="toolbar-cut-blocks"
+              >
+                <Icon name={cutSVG} size="30px" />
+              </button>
+            </Plug>
+            <Plug pluggable="main.toolbar.bottom" id="blocks-copy-btn">
+              <button
+                aria-label={intl.formatMessage(messages.copyBlocks)}
+                onClick={this.copyBlocksToClipboard}
+                tabIndex={0}
+                className="copyBlocks"
+                id="toolbar-copy-blocks"
+              >
+                <Icon name={copySVG} size="30px" />
+              </button>
+            </Plug>
+          </>
         ) : (
           ''
         )}
-        {selectedBlock && (blocksClipboard?.cut || blocksClipboard?.copy) ? (
-          <Portal
-            node={
-              __CLIENT__ && document.querySelector('#toolbar .toolbar-bottom')
-            }
-          >
+        {selectedBlock && (blocksClipboard?.cut || blocksClipboard?.copy) && (
+          <Plug pluggable="main.toolbar.bottom" id="block-paste-btn">
             <button
               aria-label={intl.formatMessage(messages.pasteBlocks)}
               onClick={this.pasteBlocks}
@@ -192,9 +190,7 @@ export class BlocksToolbarComponent extends React.Component {
               </span>
               <Icon name={pasteSVG} size="30px" />
             </button>
-          </Portal>
-        ) : (
-          ''
+          </Plug>
         )}
       </>
     );
