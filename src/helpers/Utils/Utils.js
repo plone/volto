@@ -1,6 +1,6 @@
 import { isEqual, isObject, transform } from 'lodash';
 import React from 'react';
-import moment from 'moment/min/moment-with-locales';
+import moment from 'moment';
 
 /**
  * Deep diff between two object, using lodash
