@@ -1,25 +1,37 @@
+// to debug, set DEBUG=yeoman:generator
+const gitly = require('gitly');
 const path = require('path');
 const Generator = require('yeoman-generator');
-const utils = require('./utils');
+const fs = require('fs');
+const chalk = require('chalk');
 
 const currentDir = path.basename(process.cwd());
 
 module.exports = class extends Generator {
   constructor(args, opts) {
     super(args, opts);
+
     this.argument('addonName', {
       type: String,
       desc: 'Addon name, e.g.: @plone-collective/volto-custom-block',
       default: currentDir,
     });
+
     this.option('interactive', {
       type: Boolean,
       desc: 'Enable/disable interactive prompt',
       default: true,
     });
+
     this.option('template', {
       type: String,
       desc: 'Use github repo template, e.g.: eea/volto-addon-template',
+      default: '',
+    });
+
+    this.option('outputpath', {
+      type: String,
+      desc: 'Output path',
       default: '',
     });
 
@@ -29,13 +41,15 @@ module.exports = class extends Generator {
 
   async prompting() {
     const updateNotifier = require('update-notifier');
-    const pkg = require('../../package.json');
-    const notifier = updateNotifier({
+    const pkg = require('../../package.json'); // this generator's package.json
+    const updater = updateNotifier({
       pkg,
       shouldNotifyInNpmScript: true,
       updateCheckInterval: 0,
     });
-    notifier.notify({
+
+    // TODO: this needs to be composeWith and refactored
+    updater.notify({
       defer: false,
       message: `Update available: {currentVersion} -> {latestVersion}
 
@@ -49,6 +63,7 @@ Run "npm install -g @plone/generator-volto" to update.`,
       name: '',
       scope: '',
       template: '',
+      outputpath: '',
     };
     let props;
 
@@ -85,43 +100,49 @@ Run "npm install -g @plone/generator-volto" to update.`,
     }
   }
 
-  writing() {
-    const base =
-      currentDir === this.globals.name
-        ? '.'
-        : './src/addons/' + this.globals.name;
-    if (this.globals.template) {
-      utils.githubTpl(
-        this.globals.template,
-        this.destinationPath(base),
-        this.globals,
-      );
-    } else {
-      this.fs.copyTpl(
-        this.templatePath('package.json.tpl'),
-        this.destinationPath(base, 'package.json'),
-        this.globals,
-      );
-      this.fs.copyTpl(
-        this.templatePath('Makefile.tpl'),
-        this.destinationPath(base, 'Makefile'),
-        this.globals,
-      );
+  setDestination() {
+    // if in a Volto project, generate addon in src/addons
 
-      this.fs.copy(this.templatePath(), this.destinationPath(base), {
-        globOptions: {
-          ignore: ['**/*.tpl', '**/*~'],
-          dot: true,
-        },
-      });
-      this.fs.delete(this.destinationPath(base, 'package.json.tpl'));
-      this.fs.delete(this.destinationPath(base, 'Makefile.tpl'));
+    if (this.outputpath) {
+      this.destinationRoot(this.globals.outputpath);
+      return;
+    }
+
+    const pkgJson = path.join(currentDir, 'package.json');
+    if (fs.existsSync(pkgJson)) {
+      const destination = `./src/addons/${this.globals.name}`;
+      if (fs.existsSync(destination)) {
+        chalk.red('Addon already exists! Starting over');
+        return this.startOver();
+      }
+      this.destinationRoot(destination);
     }
   }
 
-  install() {}
+  async fetchTemplate() {
+    // if a Github template is provided, clone it under .template in destination
+
+    if (this.globals.template) {
+      await gitly.default(
+        this.globals.template,
+        this.destinationPath('.template'),
+      );
+      this.sourceRoot('.template');
+    }
+  }
+
+  install() {
+    this.renderTemplate(
+      `${this.templatePath()}/**/*`,
+      this.destinationPath(),
+      this.globals,
+    );
+  }
 
   end() {
+    if (this.sourceRoot().endsWith('.template')) {
+      fs.rmdirSync(this.sourceRoot(), { recursive: true });
+    }
     this.log("Done. Now run 'yarn' to install dependencies");
   }
 };
