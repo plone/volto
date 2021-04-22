@@ -1,6 +1,6 @@
 {
-  "name": "@plone/test-addon",
-  "description": "Volto test addon / playground",
+  "name": "@plone/core-sandbox",
+  "description": "Volto Core Sandbox addon - Contains configuration and elements that are not present in vanilla Volto",
   "maintainers": [
     {
       "name": "Plone Foundation",

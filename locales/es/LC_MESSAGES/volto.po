@@ -328,6 +328,10 @@ msgstr "Cerrar menú"
 msgid "Code"
 msgstr ""
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Collapse item"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"
 msgstr ""
@@ -656,6 +660,10 @@ msgstr ""
 #: components/manage/Blocks/Maps/View
 msgid "Embeded Google Maps"
 msgstr "Insertar Google Maps"
+
+#: components/manage/Widgets/ObjectListWidget
+msgid "Empty object list"
+msgstr ""
 
 #: components/manage/Controlpanels/ContentTypeLayout
 msgid "Enable editable Blocks"
@@ -1455,6 +1463,10 @@ msgstr "Formulario de registro"
 msgid "Relevance"
 msgstr ""
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Remove item"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
 msgstr ""
@@ -1695,6 +1707,10 @@ msgstr ""
 
 #: components/theme/Comments/Comments
 msgid "Show Replies"
+msgstr ""
+
+#: components/manage/Widgets/ObjectListWidget
+msgid "Show item"
 msgstr ""
 
 #: components/manage/Sidebar/Sidebar
@@ -2076,6 +2092,10 @@ msgstr "Usuarios y Grupos"
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Users and groups settings"
 msgstr "Configuraciones de usuarios y grupos"
+
+#: components/manage/Form/BlockDataForm
+msgid "Variation"
+msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Version Overview"
