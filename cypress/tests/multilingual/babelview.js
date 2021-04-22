@@ -23,7 +23,7 @@ describe('Babel View Tests', () => {
     cy.findByText('Translate to italiano').click();
     cy.url().should('eq', Cypress.config().baseUrl + '/it/add?type=Document');
     cy.findByText('Test document');
-    cy.findByText('Translate to italiano');
+    cy.findByText('Traduci in italiano');
     cy.get(
       '.new-translation .documentFirstHeading > .public-DraftStyleDefault-block',
     ).type('My IT page');
@@ -33,7 +33,7 @@ describe('Babel View Tests', () => {
       .contains('This is the italian text')
       .type('{enter}');
     cy.get('.new-translation .ui.basic.icon.button.block-add-button').click();
-    cy.get('.ui.basic.icon.button.image').contains('Image').click();
+    cy.get('.ui.basic.icon.button.image').contains('Immagine').click();
     cy.get('#toolbar-save').click();
 
     cy.url().should('eq', Cypress.config().baseUrl + '/it/my-it-page');
@@ -44,7 +44,7 @@ describe('Babel View Tests', () => {
     cy.get('#toolbar-add').click();
     cy.findByText('Translate to italiano').click();
     cy.findByText('Test document');
-    cy.findByText('Translate to italiano');
+    cy.findByText('Traduci in italiano');
     cy.get(
       '.new-translation .documentFirstHeading > .public-DraftStyleDefault-block',
     ).type('My IT page');
@@ -54,18 +54,18 @@ describe('Babel View Tests', () => {
       .contains('This is the italian text')
       .type('{enter}');
     cy.get('.new-translation .ui.basic.icon.button.block-add-button').click();
-    cy.get('.ui.basic.icon.button.image').contains('Image').click();
+    cy.get('.ui.basic.icon.button.image').contains('Immagine').click();
     cy.get('#toolbar-save').click();
 
     // Edit
-    cy.findByLabelText('Edit').click();
+    cy.findByLabelText('Modifica').click();
     cy.get(
       '.documentFirstHeading > .public-DraftStyleDefault-block',
     ).findByText('My IT page');
 
     // Click on the menu
-    cy.findByLabelText('Compare to language').click();
-    cy.findByLabelText('Compare to language English').click();
+    cy.findByLabelText('Confronta con altre traduzioni').click();
+    cy.findByLabelText('Confronta con altre traduzioni english').click();
 
     // The babel view is there
     cy.findByText('Test document');

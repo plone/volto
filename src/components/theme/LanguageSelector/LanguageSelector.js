@@ -27,16 +27,6 @@ const messages = defineMessages({
   },
 });
 
-let locales = {};
-
-if (config.settings) {
-  config.settings.supportedLanguages.forEach((lang) => {
-    import('~/../locales/' + lang + '.json').then((locale) => {
-      locales = { ...locales, [lang]: locale.default };
-    });
-  });
-}
-
 const LanguageSelector = (props) => {
   const intl = useIntl();
   const dispatch = useDispatch();
@@ -61,7 +51,11 @@ const LanguageSelector = (props) => {
             title={langmap[lang].nativeName}
             onClick={() => {
               props.onClickAction();
-              dispatch(changeLanguage(lang, locales));
+              if (config.settings.supportedLanguages.includes(lang)) {
+                import('~/../locales/' + lang + '.json').then((locale) => {
+                  dispatch(changeLanguage(lang, locale.default));
+                });
+              }
             }}
             key={`language-selector-${lang}`}
           >

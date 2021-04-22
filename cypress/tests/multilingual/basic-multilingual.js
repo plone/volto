@@ -17,12 +17,28 @@ describe('Basic multilingual Tests', () => {
     cy.waitForResourceToLoad('document');
   });
 
-  it('Language selector', function () {
+  it('Language selector in literals', function () {
+    cy.navigate('/en');
+    cy.findByText('Site Map');
+    cy.findByLabelText('Switch to italiano').click();
+
+    cy.findByText('Mappa del sito');
+    cy.url().should('eq', Cypress.config().baseUrl + '/it');
+  });
+
+  it('Language coming from SSR', function () {
+    cy.visit('/it');
+
+    cy.findByText('Mappa del sito');
+    cy.getCookie('lang').should('have.property', 'value', 'it');
+  });
+
+  it('Language selector in content', function () {
     // Create translation
     cy.get('#toolbar-add').click();
     cy.findByText('Translate to italiano').click();
     cy.findByText('Test document');
-    cy.findByText('Translate to italiano');
+    cy.findByText('Traduci in italiano');
     cy.get(
       '.new-translation .documentFirstHeading > .public-DraftStyleDefault-block',
     ).type('My IT page');
@@ -32,7 +48,7 @@ describe('Basic multilingual Tests', () => {
       .contains('This is the italian text')
       .type('{enter}');
     cy.get('.new-translation .ui.basic.icon.button.block-add-button').click();
-    cy.get('.ui.basic.icon.button.image').contains('Image').click();
+    cy.get('.ui.basic.icon.button.image').contains('Immagine').click();
     cy.get('#toolbar-save').click();
 
     cy.findByLabelText('Switch to english').click();

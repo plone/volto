@@ -5,16 +5,6 @@ import cookie from 'react-cookie';
 import config from '@plone/volto/registry';
 import { changeLanguage } from '@plone/volto/helpers';
 
-let locales = {};
-
-if (config.settings) {
-  config.settings.supportedLanguages.forEach((lang) => {
-    import('~/../locales/' + lang + '.json').then((locale) => {
-      locales = { ...locales, [lang]: locale.default };
-    });
-  });
-}
-
 const MultilingualRedirector = (props) => {
   const { settings } = config;
   const { pathname, children } = props;
@@ -31,7 +21,9 @@ const MultilingualRedirector = (props) => {
     // ToDo: Add means to support language negotiation (with config)
     // const detectedLang = (navigator.language || navigator.userLanguage).substring(0, 2);
     if (settings.isMultilingual && pathname === '/') {
-      dispatch(changeLanguage(redirectToLanguage, locales));
+      import('~/../locales/' + redirectToLanguage + '.json').then((locale) => {
+        dispatch(changeLanguage(redirectToLanguage, locale.default));
+      });
     }
   }, [pathname, dispatch, redirectToLanguage, settings.isMultilingual]);
 

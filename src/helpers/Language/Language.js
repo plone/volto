@@ -12,11 +12,11 @@ export function changeLanguageCookies(language) {
   });
 }
 
-export function changeLanguage(language, locales) {
+export function changeLanguage(language, locale) {
   changeLanguageCookies(language);
 
   return updateIntl({
     locale: language,
-    messages: locales[language],
+    messages: locale,
   });
 }
