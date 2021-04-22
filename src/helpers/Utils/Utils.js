@@ -1,5 +1,6 @@
 import { isEqual, isObject, transform } from 'lodash';
 import React from 'react';
+import moment from 'moment/min/moment-with-locales';
 
 /**
  * Deep diff between two object, using lodash
@@ -139,4 +140,32 @@ export const getColor = (name) => {
     namedColors[name] = namedColor;
   }
   return namedColor;
+};
+
+/**
+ * Fixes TimeZones issues on moment date objects
+ * Parses a DateTime and sets correct moment locale
+ * @param {string} locale Current locale
+ * @param {string} value DateTime string
+ * @param {string} format Date format of choice
+ * @returns {Object|string} Moment object or sting if format is set
+ */
+export const parseDateTime = (locale, value, format) => {
+  //  Used to set a server timezone or UTC as default
+  moment.defineLocale(locale, moment.localeData(locale)._config); // copy locale to moment-timezone
+  let datetime = null;
+
+  if (value) {
+    // check if datetime has timezone, otherwise assumes it's UTC
+    datetime = value.match(/T(.)*(-|\+|Z)/g)
+      ? // Since we assume UTC everywhere, then transform to local (momentjs default)
+        moment(value)
+      : // This might happen in old Plone versions dates
+        moment(`${value}Z`);
+  }
+
+  if (format && datetime) {
+    return datetime.format(format);
+  }
+  return datetime;
 };
