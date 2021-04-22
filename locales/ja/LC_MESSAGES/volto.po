@@ -1798,6 +1798,10 @@ msgstr "パスワード再設定を開始"
 msgid "State"
 msgstr "状態"
 
+#: components/manage/Multilingual/CompareLanguages
+msgid "Stop compare"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "String"
 msgstr "String (未翻訳)"
@@ -2252,10 +2256,6 @@ msgstr "一般"
 
 #: components/manage/Multilingual/CompareLanguages
 msgid "compare_to"
-msgstr ""
-
-#: components/manage/Multilingual/CompareLanguages
-msgid "compare_to_nothing"
 msgstr ""
 
 #: components/manage/Blocks/Block/EditBlockWrapper

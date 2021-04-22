@@ -13,15 +13,16 @@ const messages = defineMessages({
     id: 'compare_to',
     defaultMessage: 'Compare to language',
   },
-  compare_to_nothing: {
-    id: 'compare_to_nothing',
-    defaultMessage: 'Do not compare',
+  stop_compare: {
+    id: 'Stop compare',
+    defaultMessage: 'Stop compare',
   },
 });
 
 const CompareLanguagesMenu = ({
   theToolbar,
   translations,
+  comparingLanguage,
   setComparingLanguage,
   closeMenu,
 }) => {
@@ -42,17 +43,38 @@ const CompareLanguagesMenu = ({
           <ul>
             {translations.map((t) => (
               <li key={t['@id']}>
-                <button
-                  aria-label={`${intl.formatMessage(messages.compare_to)} ${
-                    langmap[t.language].nativeName
-                  }`}
-                  onClick={() => {
-                    setComparingLanguage(t.language);
-                    closeMenu();
-                  }}
-                >
-                  {langmap[t.language].nativeName}
-                </button>
+                {comparingLanguage === t.language ? (
+                  <button
+                    aria-label={`${intl.formatMessage(messages.stop_compare)} ${
+                      langmap[t.language].nativeName
+                    }`}
+                    title={`${intl.formatMessage(messages.stop_compare)} ${
+                      langmap[t.language].nativeName
+                    }`}
+                    onClick={() => {
+                      setComparingLanguage(null);
+                      closeMenu();
+                    }}
+                  >
+                    {langmap[t.language].nativeName}
+                    <Icon name={clearSVG} size="30px" />
+                  </button>
+                ) : (
+                  <button
+                    aria-label={`${intl.formatMessage(messages.compare_to)} ${
+                      langmap[t.language].nativeName
+                    }`}
+                    title={`${intl.formatMessage(messages.compare_to)} ${
+                      langmap[t.language].nativeName
+                    }`}
+                    onClick={() => {
+                      setComparingLanguage(t.language);
+                      closeMenu();
+                    }}
+                  >
+                    {langmap[t.language].nativeName}
+                  </button>
+                )}
               </li>
             ))}
           </ul>
@@ -77,35 +99,19 @@ const CompareLanguages = React.forwardRef((props, ref) => {
     ? content?.['@components']?.translations?.items || []
     : [];
 
-  const compareOptions = translations.map((t) => {
-    return {
-      key: t.language,
-      text: t.language,
-      value: t.language,
-      disabled: t.language === comparingLanguage,
-    };
-  });
-
-  if (comparingLanguage) {
-    compareOptions.push({
-      key: 'nothing',
-      text: intl.formatMessage(messages.compare_to_nothing),
-      value: null,
-    });
-  }
-
   const translationsObject = {};
   translations.forEach((t) => {
     translationsObject[t.language] = t['@id'];
   });
 
-  if (config.settings.isMultilingual && compareOptions.length > 0) {
+  if (config.settings.isMultilingual && translations.length > 0) {
     return (
       <div className="toolbar-compare-translatons-contaniner">
         <div className="toolbar-button-spacer" />
 
         <Button
           aria-label={intl.formatMessage(messages.compare_to)}
+          title={intl.formatMessage(messages.compare_to)}
           onClick={() => {
             setViewMenu(!viewMenu);
           }}
@@ -129,6 +135,7 @@ const CompareLanguages = React.forwardRef((props, ref) => {
             setComparingLanguage={(value) => {
               setComparingLanguage(value, translationsObject[value]);
             }}
+            comparingLanguage={comparingLanguage}
           />
         )}
       </div>

@@ -1801,6 +1801,10 @@ msgstr "Renueve la contraseña"
 msgid "State"
 msgstr "Estado"
 
+#: components/manage/Multilingual/CompareLanguages
+msgid "Stop compare"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "String"
 msgstr "Cadena de texto"
@@ -2255,10 +2259,6 @@ msgstr "Común"
 
 #: components/manage/Multilingual/CompareLanguages
 msgid "compare_to"
-msgstr ""
-
-#: components/manage/Multilingual/CompareLanguages
-msgid "compare_to_nothing"
 msgstr ""
 
 #: components/manage/Blocks/Block/EditBlockWrapper

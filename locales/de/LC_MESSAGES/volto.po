@@ -1806,6 +1806,10 @@ msgstr "E-Mail anfordern"
 msgid "State"
 msgstr "Status"
 
+#: components/manage/Multilingual/CompareLanguages
+msgid "Stop compare"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "String"
 msgstr "Text"
@@ -2260,10 +2264,6 @@ msgstr "Allgemein"
 
 #: components/manage/Multilingual/CompareLanguages
 msgid "compare_to"
-msgstr ""
-
-#: components/manage/Multilingual/CompareLanguages
-msgid "compare_to_nothing"
 msgstr ""
 
 #: components/manage/Blocks/Block/EditBlockWrapper
