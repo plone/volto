@@ -1,4 +1,4 @@
-name: Volto Core Sandbox tests
+name: Volto Multilingual tests
 on: [push]
 jobs:
   build:
@@ -34,8 +34,8 @@ jobs:
       # node install
       - run: yarn install --frozen-lockfile
 
-      - name: Cypress Core Sandbox Acceptance Tests
-        run: yarn ci:cypress:run:core-sandbox
+      - name: Cypress Multilingual Acceptance Tests
+        run: yarn ci:cypress:run:multilingual
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1
