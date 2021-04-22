@@ -881,14 +881,6 @@ msgstr "日時が未来なら、このコンテンツはこの日時までリス
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr "確かに正しいURLを入力したのにエラーになってしまう場合は、 {site_admin} に連絡してください。"
 
-#: components/theme/Login/Login
-msgid "If you have forgotten your password, {forgotpassword}"
-msgstr "パスワードを忘れたら、 {forgotpassword}"
-
-#: components/theme/Login/Login
-msgid "If you you do not have an account here, head over to the {registrationform}."
-msgstr "アカウントを持っていない場合、ここが {registrationform} です。"
-
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
@@ -1448,6 +1440,7 @@ msgid "Reduce complexity"
 msgstr "見出し行の背景色を変更しない"
 
 #: components/theme/Anontools/Anontools
+#: components/theme/Login/Login
 #: components/theme/Register/Register
 msgid "Register"
 msgstr "登録"
@@ -2231,6 +2224,7 @@ msgstr "Your password has been set successfully. You may now {link} with your ne
 msgid "Your preferred language"
 msgstr "優先する言語"
 
+#: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "box_forgot_password_option"
 msgstr "パスワードを忘れた？"
@@ -2403,10 +2397,6 @@ msgstr "公開中"
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "querystring-widget-select"
 msgstr ""
-
-#: components/theme/Login/Login
-msgid "registration form"
-msgstr "登録フォーム"
 
 #: components/theme/Search/Search
 msgid "results found"
@@ -2591,10 +2581,6 @@ msgstr "ビデオ"
 #: components/theme/View/EventView
 msgid "visit_external_website"
 msgstr "外部サイトを表示"
-
-#: components/theme/Login/Login
-msgid "we can send you a new one"
-msgstr "こちらからメール送信できます。"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"

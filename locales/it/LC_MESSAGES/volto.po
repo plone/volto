@@ -320,7 +320,7 @@ msgstr "Codice"
 
 #: components/manage/Widgets/ObjectListWidget
 msgid "Collapse item"
-msgstr ""
+msgstr "Collassa elemento"
 
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"
@@ -653,7 +653,7 @@ msgstr "Google Maps incorporata"
 
 #: components/manage/Widgets/ObjectListWidget
 msgid "Empty object list"
-msgstr ""
+msgstr "Lista di oggetti vuota"
 
 #: components/manage/Controlpanels/ContentTypeLayout
 msgid "Enable editable Blocks"
@@ -873,14 +873,6 @@ msgstr "Se questa data è in futuro, il contenuto non verrà mostrato negli elen
 #: components/theme/Unauthorized/Unauthorized
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr "Se sei sicuro di aver inserito l'indirizzo corretto ma ottieni comunque un errore, contatta l' {site_admin}."
-
-#: components/theme/Login/Login
-msgid "If you have forgotten your password, {forgotpassword}"
-msgstr "Se hai dimenticato la tua password, {forgotpassword}."
-
-#: components/theme/Login/Login
-msgid "If you you do not have an account here, head over to the {registrationform}."
-msgstr "Se non ti sei ancora iscritto, compila il {registrationform} per diventare un collaboratore."
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -1441,6 +1433,7 @@ msgid "Reduce complexity"
 msgstr "Riduci complessità"
 
 #: components/theme/Anontools/Anontools
+#: components/theme/Login/Login
 #: components/theme/Register/Register
 msgid "Register"
 msgstr "Registrati"
@@ -1455,7 +1448,7 @@ msgstr "Rilevanza"
 
 #: components/manage/Widgets/ObjectListWidget
 msgid "Remove item"
-msgstr ""
+msgstr "Rimuovi elemento"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
@@ -1701,7 +1694,7 @@ msgstr "Mostra risposte"
 
 #: components/manage/Widgets/ObjectListWidget
 msgid "Show item"
-msgstr ""
+msgstr "Mostra elemento"
 
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
@@ -2085,7 +2078,7 @@ msgstr "Impostazioni utenti e gruppi"
 
 #: components/manage/Form/BlockDataForm
 msgid "Variation"
-msgstr ""
+msgstr "Variazione"
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Version Overview"
@@ -2224,6 +2217,7 @@ msgstr "La tua password è stata reimpostata correttamente. Ora puoi {link} usan
 msgid "Your preferred language"
 msgstr "La tua lingua preferita."
 
+#: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "box_forgot_password_option"
 msgstr "Hai dimenticato la tua password?"
@@ -2396,10 +2390,6 @@ msgstr "Pubblicato"
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "querystring-widget-select"
 msgstr "Seleziona…"
-
-#: components/theme/Login/Login
-msgid "registration form"
-msgstr "form di registrazione"
 
 #: components/theme/Search/Search
 msgid "results found"
@@ -2584,10 +2574,6 @@ msgstr "Video"
 #: components/theme/View/EventView
 msgid "visit_external_website"
 msgstr "Visita il sito web"
-
-#: components/theme/Login/Login
-msgid "we can send you a new one"
-msgstr "possiamo spedirtene una nuova"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
