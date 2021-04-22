@@ -4,19 +4,16 @@ exports[`Form renders a form component 1`] = `
 <div
   className="ui form"
 >
-  <header
-    className="header pulled"
-  >
-    <h2>
-      Edit values
-    </h2>
-  </header>
   <div
     id="blockform-fieldset-default"
   >
     <div
-      className="Field"
-    />
+      className="ui segment form attached"
+    >
+      <div
+        className="Field"
+      />
+    </div>
   </div>
 </div>
 `;

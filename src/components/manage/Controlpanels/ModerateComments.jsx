@@ -84,23 +84,15 @@ class ModerateComments extends Component {
   }
 
   /**
-   * Component will mount
-   * @method componentWillMount
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillMount() {
-    this.props.searchContent('', {
-      portal_type: 'Discussion Item',
-      fullobjects: true,
-    });
-  }
-
-  /**
    * Component did mount
    * @method componentDidMount
    * @returns {undefined}
    */
   componentDidMount() {
+    this.props.searchContent('', {
+      portal_type: 'Discussion Item',
+      fullobjects: true,
+    });
     this.setState({ isClient: true });
   }
 

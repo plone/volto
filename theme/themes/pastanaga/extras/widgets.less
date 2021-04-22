@@ -1,0 +1,87 @@
+@keyframes field-just-changed-anim {
+  0% {
+    background-color: yellow;
+  }
+
+  100% {
+    background-color: transparent;
+  }
+}
+
+.field-just-changed {
+  animation: field-just-changed-anim 0.5s;
+}
+
+.ui.segment.form.attached {
+  .field:last-child {
+    margin-bottom: 1em;
+  }
+}
+
+.objectlist-widget {
+  margin-bottom: 20px;
+
+  [data-rbd-draggable-context-id] {
+    margin-bottom: 0;
+  }
+
+  .add-item-button-wrapper {
+    padding-top: 10px;
+
+    .ui.button {
+      display: inline-block;
+      padding: 7px 10px;
+      border: 2px solid #007eb1;
+      background-color: transparent;
+      border-radius: 10px;
+      color: #007eb1;
+      cursor: pointer;
+      font-size: 16px;
+      opacity: 0.8;
+    }
+  }
+
+  // This button reset should be general to all widgets (at some point)
+  button {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    text-align: initial;
+  }
+
+  .ui.accordion {
+    border: 1px solid #ddd;
+
+    .ui.segment {
+      padding-right: 0;
+      padding-left: 0;
+      border-bottom: none;
+      box-shadow: none;
+    }
+
+    .title {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .accordion-tools button {
+    cursor: pointer;
+  }
+}
+
+[id^='blockform-fieldset-'] .objectlist-widget {
+  [data-rbd-droppable-id] {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+}
+
+.ui.accordion .ui.segment {
+  border: none;
+}
+
+.accordion-title-wrapper {
+  display: flex;
+  align-content: center;
+}

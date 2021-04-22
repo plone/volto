@@ -4,6 +4,7 @@ import { DragDropList } from '@plone/volto/components';
 import { getBlocks } from '@plone/volto/helpers';
 import {
   addBlock,
+  insertBlock,
   changeBlock,
   deleteBlock,
   moveBlock,
@@ -12,6 +13,9 @@ import {
   previousBlockId,
 } from '@plone/volto/helpers';
 import EditBlockWrapper from './EditBlockWrapper';
+import { setSidebarTab } from '@plone/volto/actions';
+import { useDispatch } from 'react-redux';
+import { useDetectClickOutside } from 'react-detect-click-outside';
 import config from '@plone/volto/registry';
 
 const BlocksForm = (props) => {
@@ -30,10 +34,25 @@ const BlocksForm = (props) => {
     metadata,
     manage,
     children,
+    disableEvents,
     blocksConfig = config.blocks.blocksConfig,
   } = props;
 
   const blockList = getBlocks(properties);
+
+  const dispatch = useDispatch();
+
+  const ClickOutsideListener = () => {
+    onSelectBlock(null);
+    dispatch(setSidebarTab(0));
+  };
+
+  const ref = useDetectClickOutside({
+    onTriggered: ClickOutsideListener,
+    triggerKeys: ['Escape'],
+    disableClick: disableEvents,
+    disableKeys: disableEvents,
+  });
 
   const handleKeyDown = (
     e,
@@ -88,6 +107,12 @@ const BlocksForm = (props) => {
     onChangeFormData(newFormData);
   };
 
+  const onInsertBlock = (id, value) => {
+    const [newId, newFormData] = insertBlock(properties, id, value);
+    onChangeFormData(newFormData);
+    return newId;
+  };
+
   const onAddBlock = (type, index) => {
     const [id, newFormData] = addBlock(properties, type, index);
     onChangeFormData(newFormData);
@@ -122,7 +147,7 @@ const BlocksForm = (props) => {
   const editBlockWrapper = children || defaultBlockWrapper;
 
   return (
-    <div className="blocks-form">
+    <div className="blocks-form" ref={ref}>
       <DragDropList
         childList={blockList}
         onMoveItem={(result) => {
@@ -153,6 +178,7 @@ const BlocksForm = (props) => {
             index,
             manage,
             onAddBlock,
+            onInsertBlock,
             onChangeBlock,
             onChangeField,
             onDeleteBlock,

@@ -65,12 +65,7 @@ class Navigation extends Component {
     };
   }
 
-  /**
-   * Component will mount
-   * @method componentWillMount
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillMount() {
+  componentDidMount() {
     const { settings } = config;
     this.props.getNavigation(
       getBaseUrl(this.props.pathname),

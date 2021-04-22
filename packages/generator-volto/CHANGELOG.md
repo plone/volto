@@ -1,10 +1,16 @@
 # Change Log
 
-## 4.1.1 (unreleased)
+## 4.2.1 (unreleased)
 
 ### Added
 
 ### Changes
+
+## 4.2.0 (2021-04-05)
+
+### Added
+
+- Support for Github addon `--template` @avoinea
 
 ## 4.1.0 (2021-03-26)
 
