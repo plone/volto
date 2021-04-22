@@ -1799,6 +1799,10 @@ msgstr "Redefinir senha"
 msgid "State"
 msgstr "Estado"
 
+#: components/manage/Multilingual/CompareLanguages
+msgid "Stop compare"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "String"
 msgstr "Texto"
@@ -2253,10 +2257,6 @@ msgstr "comum"
 
 #: components/manage/Multilingual/CompareLanguages
 msgid "compare_to"
-msgstr ""
-
-#: components/manage/Multilingual/CompareLanguages
-msgid "compare_to_nothing"
 msgstr ""
 
 #: components/manage/Blocks/Block/EditBlockWrapper

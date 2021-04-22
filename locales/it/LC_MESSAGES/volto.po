@@ -321,7 +321,7 @@ msgstr "Codice"
 
 #: components/manage/Widgets/ObjectListWidget
 msgid "Collapse item"
-msgstr ""
+msgstr "Collassa elemento"
 
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"
@@ -655,7 +655,7 @@ msgstr "Google Maps incorporata"
 
 #: components/manage/Widgets/ObjectListWidget
 msgid "Empty object list"
-msgstr ""
+msgstr "Lista vuota"
 
 #: components/manage/Controlpanels/ContentTypeLayout
 msgid "Enable editable Blocks"
@@ -1458,7 +1458,7 @@ msgstr "Rilevanza"
 
 #: components/manage/Widgets/ObjectListWidget
 msgid "Remove item"
-msgstr ""
+msgstr "Elimina l'elemento"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
@@ -1704,7 +1704,7 @@ msgstr "Mostra risposte"
 
 #: components/manage/Widgets/ObjectListWidget
 msgid "Show item"
-msgstr ""
+msgstr "Mostra elemento"
 
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
@@ -1790,6 +1790,10 @@ msgstr "Rinnova la password"
 #: components/theme/View/TabularView
 msgid "State"
 msgstr "Stato"
+
+#: components/manage/Multilingual/CompareLanguages
+msgid "Stop compare"
+msgstr "Smetti di confrontare con "
 
 #: components/manage/Widgets/SchemaWidget
 msgid "String"
@@ -1960,7 +1964,7 @@ msgstr "Numero totale di oggetti nel database"
 
 #: components/manage/Add/Add
 msgid "Translate to"
-msgstr ""
+msgstr "Traduci in"
 
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
@@ -2056,7 +2060,7 @@ msgstr "Caricamento dei files"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 msgid "Uploading image"
-msgstr ""
+msgstr "Sto caricando l'immagine"
 
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
@@ -2245,11 +2249,7 @@ msgstr "Comuni"
 
 #: components/manage/Multilingual/CompareLanguages
 msgid "compare_to"
-msgstr ""
-
-#: components/manage/Multilingual/CompareLanguages
-msgid "compare_to_nothing"
-msgstr ""
+msgstr "Confronta con altre traduzioni"
 
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2021-04-21T13:27:36.649Z\n"
+"POT-Creation-Date: 2021-04-22T07:38:46.327Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -2192,6 +2192,11 @@ msgstr ""
 msgid "State"
 msgstr ""
 
+#: components/manage/Multilingual/CompareLanguages
+# defaultMessage: Stop compare
+msgid "Stop compare"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: String
 msgid "String"
@@ -2756,11 +2761,6 @@ msgstr ""
 #: components/manage/Multilingual/CompareLanguages
 # defaultMessage: Compare to language
 msgid "compare_to"
-msgstr ""
-
-#: components/manage/Multilingual/CompareLanguages
-# defaultMessage: Do not compare
-msgid "compare_to_nothing"
 msgstr ""
 
 #: components/manage/Blocks/Block/EditBlockWrapper
