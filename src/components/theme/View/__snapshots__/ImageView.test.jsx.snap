@@ -43,7 +43,7 @@ exports[`renders an image view component 1`] = `
                 className=\\"undefined\\"
                 role=\\"img\\"
                 loading=\\"lazy\\"
-                style={{ width: '100%', objectFit: 'cover' }}
+                style=\\"width: 100%; object-fit: cover;\\"
             ",
         }
       }

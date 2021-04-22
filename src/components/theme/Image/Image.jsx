@@ -54,7 +54,7 @@ const Image = ({
                 className="${className}"
                 role="${role}"
                 loading="lazy"
-                style={{ width: '100%', objectFit: 'cover' }}
+                style="width: 100%; object-fit: cover;"
             `,
           }}
         />

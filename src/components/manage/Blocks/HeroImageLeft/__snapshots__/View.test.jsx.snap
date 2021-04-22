@@ -33,7 +33,7 @@ exports[`renders a view hero component 1`] = `
                 className=\\"hero-image\\"
                 role=\\"img\\"
                 loading=\\"lazy\\"
-                style={{ width: '100%', objectFit: 'cover' }}
+                style=\\"width: 100%; object-fit: cover;\\"
             ",
         }
       }
