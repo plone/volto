@@ -25,6 +25,8 @@ describe('Content reducer', () => {
         error: null,
       },
       items: [],
+      items_total: null,
+      next: null,
     });
   });
 

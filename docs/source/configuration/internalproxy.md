@@ -57,7 +57,7 @@ RAZZLE_API_PATH=http://localhost:8081/mysite yarn start
 ```
 
 !!! tip
-    To view the existing configuration, add console.log(config) to the `applyConfig` function. This dumps the existing config to your browser console.
+    To view the existing configuration, add console.log(config) to the `applyConfig` function. This dumps the existing config to your terminal console.
     
 ### Advanced usage
 

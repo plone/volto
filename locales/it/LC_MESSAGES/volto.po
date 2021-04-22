@@ -318,6 +318,10 @@ msgstr "Chiudi menu"
 msgid "Code"
 msgstr "Codice"
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Collapse item"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"
 msgstr "Collezione"
@@ -331,6 +335,10 @@ msgstr "Commento"
 #: components/manage/Controlpanels/ModerateComments
 msgid "Commenter"
 msgstr "Autore"
+
+#: components/theme/Comments/Comments
+msgid "Comments"
+msgstr "Commenti"
 
 #: components/manage/Diff/Diff
 msgid "Compare"
@@ -574,15 +582,15 @@ msgstr "Trascina in quest'area i file dal tuo computer o clicca su “Sfoglia”
 
 #: components/manage/Widgets/FileWidget
 msgid "Drop file here to replace the existing file"
-msgstr ""
+msgstr "Rilascia un file qui per sostituire quello esistente"
 
 #: components/manage/Widgets/FileWidget
 msgid "Drop file here to upload a new file"
-msgstr ""
+msgstr "Rilascia un file qui per caricare un nuovo file"
 
 #: components/manage/Widgets/FileWidget
 msgid "Drop files here ..."
-msgstr ""
+msgstr "Rilascia file qui..."
 
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
@@ -642,6 +650,10 @@ msgstr "Errore del codice incorporato, per favore segui le istruzioni e riprova.
 #: components/manage/Blocks/Maps/View
 msgid "Embeded Google Maps"
 msgstr "Google Maps incorporata"
+
+#: components/manage/Widgets/ObjectListWidget
+msgid "Empty object list"
+msgstr ""
 
 #: components/manage/Controlpanels/ContentTypeLayout
 msgid "Enable editable Blocks"
@@ -756,7 +768,7 @@ msgstr "Celle della tabella a larghezza fissata"
 
 #: components/manage/BlockChooser/BlockChooser
 msgid "Fold"
-msgstr ""
+msgstr "Chiudi"
 
 #: components/manage/Contents/Contents
 msgid "Folder"
@@ -820,7 +832,11 @@ msgstr "Gruppi"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Header cell"
-msgstr ""
+msgstr "Cella d'intestazione"
+
+#: components/theme/Comments/Comments
+msgid "Hide Replies"
+msgstr "Nascondi risposte"
 
 #: components/manage/History/History
 #: components/manage/Toolbar/More
@@ -1030,6 +1046,10 @@ msgstr "Link a"
 msgid "Listing"
 msgstr "Elenco"
 
+#: components/theme/Comments/Comments
+msgid "Load more"
+msgstr "Carica altro"
+
 #: components/manage/Form/ModalForm
 msgid "Loading"
 msgstr "Caricamento"
@@ -1148,7 +1168,7 @@ msgstr "Torna indietro"
 
 #: components/theme/Navigation/ContextNavigation
 msgid "Navigation"
-msgstr ""
+msgstr "Navigazione"
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
@@ -1263,7 +1283,7 @@ msgstr "Apri menu"
 
 #: components/manage/Widgets/ObjectBrowserWidget
 msgid "Open object browser"
-msgstr ""
+msgstr "Apri object browser"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -1299,7 +1319,7 @@ msgstr "Incolla"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Paste blocks"
-msgstr ""
+msgstr "Incolla blocchi"
 
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Toolbar/Toolbar
@@ -1362,7 +1382,7 @@ msgstr "Preferenze"
 
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"
-msgstr ""
+msgstr "Formatta il tuo codice"
 
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
@@ -1418,12 +1438,12 @@ msgstr "il"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Reduce complexity"
-msgstr "Riduci complicità"
+msgstr "Riduci complessità"
 
 #: components/theme/Anontools/Anontools
 #: components/theme/Register/Register
 msgid "Register"
-msgstr "Iscriviti"
+msgstr "Registrati"
 
 #: components/theme/Register/Register
 msgid "Registration form"
@@ -1432,6 +1452,10 @@ msgstr "Form di iscrizione"
 #: components/theme/Search/Search
 msgid "Relevance"
 msgstr "Rilevanza"
+
+#: components/manage/Widgets/ObjectListWidget
+msgid "Remove item"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
@@ -1464,7 +1488,11 @@ msgstr "Ripeti ogni"
 
 #: components/manage/Widgets/FileWidget
 msgid "Replace existing file"
-msgstr ""
+msgstr "Sostituisci file esistente"
+
+#: components/theme/Comments/Comments
+msgid "Reply"
+msgstr "Rispondi"
 
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
@@ -1518,7 +1546,7 @@ msgstr "Ruoli"
 
 #: components/manage/Contents/ContentsBreadcrumbs
 msgid "Root"
-msgstr ""
+msgstr "Radice"
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentType
@@ -1582,7 +1610,7 @@ msgstr "Secondo"
 
 #: components/manage/Sidebar/ObjectBrowserNav
 msgid "Select"
-msgstr ""
+msgstr "Seleziona"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Select a date to add to recurrence"
@@ -1665,6 +1693,14 @@ msgstr "Mostra"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Show All"
+msgstr "Mostra tutti"
+
+#: components/theme/Comments/Comments
+msgid "Show Replies"
+msgstr "Mostra risposte"
+
+#: components/manage/Widgets/ObjectListWidget
+msgid "Show item"
 msgstr ""
 
 #: components/manage/Sidebar/Sidebar
@@ -1959,7 +1995,7 @@ msgstr "Non autorizzato"
 
 #: components/manage/BlockChooser/BlockChooser
 msgid "Unfold"
-msgstr ""
+msgstr "Apri"
 
 #: components/manage/Diff/Diff
 msgid "Unified"
@@ -2046,6 +2082,10 @@ msgstr "Utenti e gruppi"
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Users and groups settings"
 msgstr "Impostazioni utenti e gruppi"
+
+#: components/manage/Form/BlockDataForm
+msgid "Variation"
+msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Version Overview"
@@ -2192,7 +2232,6 @@ msgstr "Hai dimenticato la tua password?"
 msgid "common"
 msgstr "Comuni"
 
-#: components/manage/Blocks/Block/Edit
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"
 msgstr "Elimina"
@@ -2219,7 +2258,7 @@ msgstr "Bozza"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "email"
-msgstr ""
+msgstr "email"
 
 #: components/theme/View/EventView
 msgid "event_alldates"
@@ -2291,7 +2330,7 @@ msgstr "Elenco"
 
 #: components/manage/Contents/Contents
 msgid "loading"
-msgstr ""
+msgstr "caricamento"
 
 #: components/theme/Unauthorized/Unauthorized
 msgid "log in"
@@ -2532,7 +2571,7 @@ msgstr "Indice dei contenuti"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "url"
-msgstr ""
+msgstr "URL"
 
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"
@@ -2577,7 +2616,3 @@ msgstr "{title} tagliato."
 #: components/manage/Actions/Actions
 msgid "{title} has been deleted."
 msgstr "{title} è stato eliminato."
-
-#: components/theme/Comments/Comments
-msgid "{user} says:"
-msgstr "{user} dice:"

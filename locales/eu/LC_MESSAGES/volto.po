@@ -325,6 +325,10 @@ msgstr "Itxi menua"
 msgid "Code"
 msgstr ""
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Collapse item"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"
 msgstr "Bilduma"
@@ -338,6 +342,10 @@ msgstr "Iruzkina"
 #: components/manage/Controlpanels/ModerateComments
 msgid "Commenter"
 msgstr "Erantzuna eman duena"
+
+#: components/theme/Comments/Comments
+msgid "Comments"
+msgstr ""
 
 #: components/manage/Diff/Diff
 msgid "Compare"
@@ -650,6 +658,10 @@ msgstr "Itsatsitako kodearen errorea, jarraitu argibideak eta saiatu berriz."
 msgid "Embeded Google Maps"
 msgstr "Itsatsitako Google Maps"
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Empty object list"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypeLayout
 msgid "Enable editable Blocks"
 msgstr "Aktibatu editatu daitezkeen blokeak"
@@ -827,6 +839,10 @@ msgstr "Taldeak"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Header cell"
+msgstr ""
+
+#: components/theme/Comments/Comments
+msgid "Hide Replies"
 msgstr ""
 
 #: components/manage/History/History
@@ -1036,6 +1052,10 @@ msgstr "Esteka"
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
 msgstr "Zerrenda"
+
+#: components/theme/Comments/Comments
+msgid "Load more"
+msgstr ""
 
 #: components/manage/Form/ModalForm
 msgid "Loading"
@@ -1440,6 +1460,10 @@ msgstr "Erregistro formularioa"
 msgid "Relevance"
 msgstr "Errelebantzia"
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Remove item"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
 msgstr "Errepikapena ezabatu"
@@ -1471,6 +1495,10 @@ msgstr "Egun honetan errepikatu"
 
 #: components/manage/Widgets/FileWidget
 msgid "Replace existing file"
+msgstr ""
+
+#: components/theme/Comments/Comments
+msgid "Reply"
 msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
@@ -1672,6 +1700,14 @@ msgstr "Erakutsi"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Show All"
+msgstr ""
+
+#: components/theme/Comments/Comments
+msgid "Show Replies"
+msgstr ""
+
+#: components/manage/Widgets/ObjectListWidget
+msgid "Show item"
 msgstr ""
 
 #: components/manage/Sidebar/Sidebar
@@ -2054,6 +2090,10 @@ msgstr "Erabiltzaile eta taldeak"
 msgid "Users and groups settings"
 msgstr "Erabiltzaile eta taldeen ezarpenak"
 
+#: components/manage/Form/BlockDataForm
+msgid "Variation"
+msgstr ""
+
 #: components/manage/Controlpanels/Controlpanels
 msgid "Version Overview"
 msgstr "Bertsioen informazioa"
@@ -2199,7 +2239,6 @@ msgstr "Pasahitza ahaztuta?"
 msgid "common"
 msgstr "Ohikoa"
 
-#: components/manage/Blocks/Block/Edit
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"
 msgstr "Ezabatu"
@@ -2584,7 +2623,3 @@ msgstr "{title} moztu egin da."
 #: components/manage/Actions/Actions
 msgid "{title} has been deleted."
 msgstr "{title} ezabatu egin da."
-
-#: components/theme/Comments/Comments
-msgid "{user} says:"
-msgstr "{user} erabiltzaileak zera dio:"

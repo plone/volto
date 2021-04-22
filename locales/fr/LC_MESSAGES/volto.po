@@ -335,6 +335,10 @@ msgstr "Fermer le menu"
 msgid "Code"
 msgstr ""
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Collapse item"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"
 msgstr "Collection"
@@ -348,6 +352,10 @@ msgstr "Commentaire"
 #: components/manage/Controlpanels/ModerateComments
 msgid "Commenter"
 msgstr "Commenter"
+
+#: components/theme/Comments/Comments
+msgid "Comments"
+msgstr ""
 
 #: components/manage/Diff/Diff
 msgid "Compare"
@@ -660,6 +668,10 @@ msgstr "Erreur dans le code intégré, veuillez suivre les instructions et essay
 msgid "Embeded Google Maps"
 msgstr "Carte Google intégrée"
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Empty object list"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypeLayout
 msgid "Enable editable Blocks"
 msgstr ""
@@ -837,6 +849,10 @@ msgstr "Groupes"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Header cell"
+msgstr ""
+
+#: components/theme/Comments/Comments
+msgid "Hide Replies"
 msgstr ""
 
 #: components/manage/History/History
@@ -1046,6 +1062,10 @@ msgstr "Lien vers"
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
 msgstr "Listing"
+
+#: components/theme/Comments/Comments
+msgid "Load more"
+msgstr ""
 
 #: components/manage/Form/ModalForm
 msgid "Loading"
@@ -1450,6 +1470,10 @@ msgstr "Formulaire d'enregistrement"
 msgid "Relevance"
 msgstr ""
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Remove item"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
 msgstr ""
@@ -1481,6 +1505,10 @@ msgstr ""
 
 #: components/manage/Widgets/FileWidget
 msgid "Replace existing file"
+msgstr ""
+
+#: components/theme/Comments/Comments
+msgid "Reply"
 msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
@@ -1682,6 +1710,14 @@ msgstr "Voir"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Show All"
+msgstr ""
+
+#: components/theme/Comments/Comments
+msgid "Show Replies"
+msgstr ""
+
+#: components/manage/Widgets/ObjectListWidget
+msgid "Show item"
 msgstr ""
 
 #: components/manage/Sidebar/Sidebar
@@ -2064,6 +2100,10 @@ msgstr "Utilisateurs et groupes"
 msgid "Users and groups settings"
 msgstr "Paramètre des utilisateurs et groupes"
 
+#: components/manage/Form/BlockDataForm
+msgid "Variation"
+msgstr ""
+
 #: components/manage/Controlpanels/Controlpanels
 msgid "Version Overview"
 msgstr "Présentation de la version"
@@ -2209,7 +2249,6 @@ msgstr "Mot de passe oublié"
 msgid "common"
 msgstr "commun"
 
-#: components/manage/Blocks/Block/Edit
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"
 msgstr "supprimer"
@@ -2594,7 +2633,3 @@ msgstr "{title} coupé."
 #: components/manage/Actions/Actions
 msgid "{title} has been deleted."
 msgstr "{title} a été supprimé"
-
-#: components/theme/Comments/Comments
-msgid "{user} says:"
-msgstr "{user} dit :"

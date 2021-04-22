@@ -1,12 +1,11 @@
 # Volto
 <img align="right" width="300" alt="Volto png" src="./docs/logos/volto-colorful.png" />
 
-[![Build Status](https://github.com/plone/volto/workflows/Volto%20CI/badge.svg)](https://github.com/plone/volto/actions)
+[![NPM](https://img.shields.io/npm/v/@plone/volto.svg)](https://www.npmjs.com/package/@plone/volto)
+[![Build Status Core](https://github.com/plone/volto/actions/workflows/core.yml/badge.svg)](https://github.com/plone/volto/actions)
+[![Build Status Docs](https://github.com/plone/volto/actions/workflows/docs.yml/badge.svg)](https://github.com/plone/volto/actions)
 [![Dependencies](https://img.shields.io/david/plone/volto.svg)](https://github.com/plone/volto/blob/master/package.json)
 [![Dev Dependencies](https://img.shields.io/david/dev/plone/volto.svg)](https://github.com/plone/volto/blob/master/package.json)
-[![NPM](https://img.shields.io/npm/v/@plone/volto.svg)](https://www.npmjs.com/package/@plone/volto)
-[![Netlify
-Status](https://api.netlify.com/api/v1/badges/b8310579-ac4f-41f2-a144-9c90fca9b38f/deploy-status)](https://app.netlify.com/sites/voltocms/deploys)
 
 ## Introduction
 
@@ -33,6 +32,22 @@ concepts like traversal, content types and permissions model.
 Last but not least, it also supports a [Volto Nodejs-based backend reference](https://github.com/plone/volto-reference-backend) API implementation that
 demos how other systems could also use Volto to display and create content
 through it.
+
+## Demo
+
+You can try a Volto online demo in [https://volto.kitconcept.com](https://volto.kitconcept.com)
+
+### Try the demo locally
+
+If you want to give Volto a quick try and you have [Docker](https://www.docker.com/get-started) installed in your computer, bootstrap the demo using `docker-compose`:
+
+```shell
+git clone https://github.com/plone/volto.git
+cd volto
+docker-compose up
+```
+
+Go to [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Quick Start
 
@@ -77,8 +92,6 @@ make build-backend
 
 ### Start Volto
 
-Once inside your Volto project folder:
-
 ```shell
 yarn start
 ```
@@ -86,10 +99,6 @@ yarn start
 ### Browsing
 
 Go to [http://localhost:3000](http://localhost:3000) in your browser.
-
-## Demo
-
-You can try a Volto online demo in [https://volto.kitconcept.com](https://volto.kitconcept.com)
 
 ## Volto in Production
 
@@ -149,6 +158,12 @@ as part of the Plone training docs at [https://training.plone.org/5/volto/index.
 [Timo Stollenwerk / Víctor Fernández de Alba / Ramon Navarro - Volto Case Studies](https://2018.ploneconf.org/talks/plone-react-case-studies-when-stability-and-security-meet-speed-and-a-modern-user-interface)
 
 [Timo Stollenwerk - Reinventing Plone, Roadmap to the Modern Web](https://2018.ploneconf.org/talks/reinventing-plone-roadmap-to-the-modern-web)
+
+## Node Support
+
+- Node 14: Supported since Volto 8.8.0
+- Node 12: Supported since Volto 4
+- Node 10: Supported since Volto 1 (and its predecessor "plone-react")
 
 ## Browser support
 
@@ -217,6 +232,18 @@ make start-backend-docker-guillotina
 ```
 
 ### Run frontend
+
+Either using Docker
+
+```shell
+docker run -it --rm --name=volto --link plone -p 3000:3000 plone/volto
+
+# or with Volto add-ons enabled:
+
+docker run -it --rm --name=volto --link plone -e ADDONS="volto-testaddon volto-slate:asDefault" -p 3000:3000 plone/volto
+```
+
+or using the convenience yarn command:
 
 ```shell
 yarn start

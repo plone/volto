@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Allows override of blocksConfig 1`] = `
+<div>
+  <div>
+    <div>
+      a
+       - 
+      a
+    </div>
+    <div>
+      b
+       - 
+      b
+    </div>
+  </div>
+</div>
+`;

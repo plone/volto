@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "12.3.0",
+  "version": "12.10.1",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -52,19 +52,23 @@
     "patches": "/bin/bash patches/patchit.sh > /dev/null 2>&1 ||true",
     "deduplicate": "yarn-deduplicate yarn.lock",
     "cypress:open": "NODE_ENV=production CYPRESS_API=plone cypress open",
-    "cypress:open:guillotina": "NODE_ENV=production CYPRESS_API=guillotina cypress open",
+    "cypress:open:guillotina": "NODE_ENV=production CYPRESS_API=guillotina cypress open --config-file cypress/cypress.guillotina.json",
+    "cypress:open:core-sandbox": "NODE_ENV=production CYPRESS_API=plone cypress open --config integrationFolder='cypress/tests/core-sandbox'",
     "cypress:run": "NODE_ENV=production CYPRESS_API=plone CYPRESS_RETRIES=2 cypress run",
-    "cypress:run:guillotina": "NODE_ENV=production CYPRESS_API=guillotina cypress run",
+    "cypress:run:guillotina": "NODE_ENV=production CYPRESS_API=guillotina cypress run --config-file cypress/cypress.guillotina.json",
+    "cypress:run:core-sandbox": "NODE_ENV=production CYPRESS_API=plone cypress run --config integrationFolder='cypress/tests/core-sandbox'",
     "cy:install": "cypress install",
     "cy:test:fixture:setup": "node cypress/support/reset-fixture.js",
     "cy:test:fixture:teardown": "node cypress/support/reset-fixture.js teardown",
     "ci:start-api-plone": "make test-acceptance-server",
     "ci:start-api-guillotina": "make test-acceptance-guillotina",
     "ci:start-frontend": "RAZZLE_API_PATH=http://localhost:55001/plone yarn build && start-test start:prod http://localhost:3000 cypress:run",
+    "ci:start-frontend-core-sandbox": "RAZZLE_TESTING_ADDONS=core-sandbox RAZZLE_API_PATH=http://localhost:55001/plone yarn build && start-test start:prod http://localhost:3000 cypress:run:core-sandbox",
     "ci:start-project-frontend": "cd my-volto-app && RAZZLE_API_PATH=http://localhost:55001/plone yarn build && start-test start:prod http://localhost:3000 'cd .. && yarn cypress:run'",
     "ci:start-frontend-guillotina": "RAZZLE_API_PATH=http://localhost:8081/db/web yarn build && start-test start:prod http://localhost:3000 cypress:run:guillotina",
     "ci:cypress:run": "start-test ci:start-api-plone http-get://localhost:55001/plone ci:start-frontend",
     "ci:cypress:project:run": "start-test ci:start-api-plone http-get://localhost:55001/plone ci:start-project-frontend",
+    "ci:cypress:run:core-sandbox": "start-test ci:start-api-plone http-get://localhost:55001/plone ci:start-frontend-core-sandbox",
     "ci:cypress:run:guillotina": "start-test ci:start-api-guillotina http-get://localhost:8081 ci:start-frontend-guillotina",
     "dry-release": "release-it --dry-run",
     "release": "release-it",
@@ -314,7 +318,7 @@
     "prismjs": "1.23.0",
     "promise-file-reader": "1.0.2",
     "prop-types": "15.7.2",
-    "query-string": "4.1.0",
+    "query-string": "7.0.0",
     "razzle": "3.3.7",
     "razzle-plugin-bundle-analyzer": "1.2.0",
     "rc-time-picker": "3.7.3",
@@ -324,6 +328,7 @@
     "react-beautiful-dnd": "13.0.0",
     "react-cookie": "1.0.5",
     "react-dates": "21.5.1",
+    "react-detect-click-outside": "1.0.10",
     "react-dnd": "5.0.0",
     "react-dnd-html5-backend": "5.0.1",
     "react-dom": "16.14.0",
@@ -389,6 +394,10 @@
     "tmp": "0.2.1"
   },
   "resolutions": {
-    "http-proxy": "^1.18.1"
+    "http-proxy": "^1.18.1",
+    "draft-js/immutable": "3.8.2",
+    "draft-js-block-breakout-plugin/immutable": "3.8.2",
+    "draft-js-inline-toolbar-plugin/immutable": "3.8.2",
+    "draft-js-plugins-editor/immutable": "3.8.2"
   }
 }

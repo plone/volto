@@ -121,6 +121,14 @@ describe('BlocksChooser', () => {
   it('renders a BlockChooser component', () => {
     const { container } = render(
       <Provider store={store}>
+        <BlockChooser onInsertBlock={() => {}} currentBlock="theblockid" />
+      </Provider>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+  it('Fallback BlockChooser component onMutateBlock', () => {
+    const { container } = render(
+      <Provider store={store}>
         <BlockChooser onMutateBlock={() => {}} currentBlock="theblockid" />
       </Provider>,
     );
@@ -130,7 +138,7 @@ describe('BlocksChooser', () => {
     const { container } = render(
       <Provider store={store}>
         <BlockChooser
-          onMutateBlock={() => {}}
+          onInsertBlock={() => {}}
           currentBlock="theblockid"
           allowedBlocks={['image', 'listing']}
         />
@@ -140,11 +148,24 @@ describe('BlocksChooser', () => {
     // There are 2 because the others are aria-hidden="true"
     expect(screen.getAllByRole('button')).toHaveLength(2);
   });
+  it('allowedBlocks bypasses showRestricted', () => {
+    config.blocks.blocksConfig.listing.restricted = true;
+    const { container } = render(
+      <Provider store={store}>
+        <BlockChooser
+          onInsertBlock={() => {}}
+          currentBlock="theblockid"
+          allowedBlocks={['image', 'listing']}
+        />
+      </Provider>,
+    );
+    expect(container).toHaveTextContent('Listing');
+  });
   it('showRestricted test', () => {
     const { container } = render(
       <Provider store={store}>
         <BlockChooser
-          onMutateBlock={() => {}}
+          onInsertBlock={() => {}}
           currentBlock="theblockid"
           allowedBlocks={['image', 'title']}
           showRestricted
@@ -155,5 +176,66 @@ describe('BlocksChooser', () => {
     // There's 1 because the others are aria-hidden="true"
     expect(screen.getAllByRole('button')).toHaveLength(1);
     expect(container.firstChild).toHaveTextContent('Title');
+  });
+  it('uses custom blocksConfig test', () => {
+    const blocksConfig = {
+      ...config.blocks.blocksConfig,
+      custom: {
+        id: 'custom',
+        title: 'Custom block',
+        icon: blockSVG,
+        mostUsed: true,
+        group: 'site',
+        edit: ({ id, data }) => (
+          <div>
+            {id} - {data.text}
+          </div>
+        ),
+      },
+    };
+    const { container } = render(
+      <Provider store={store}>
+        <BlockChooser
+          onInsertBlock={() => {}}
+          currentBlock="theblockid"
+          blocksConfig={blocksConfig}
+        />
+      </Provider>,
+    );
+    expect(container).toHaveTextContent('Custom block');
+  });
+  it("doesn't show empty groups", () => {
+    const old = [...config.blocks.groupBlocksOrder];
+    config.blocks.groupBlocksOrder.push({
+      id: 'customGroup',
+      title: 'Custom group',
+    });
+    const blocksConfig = {
+      ...config.blocks.blocksConfig,
+      custom: {
+        id: 'custom',
+        title: 'Custom block',
+        icon: blockSVG,
+        mostUsed: true,
+        group: 'customGroup',
+        restricted: true,
+        edit: ({ id, data }) => (
+          <div>
+            {id} - {data.text}
+          </div>
+        ),
+      },
+    };
+    const { container } = render(
+      <Provider store={store}>
+        <BlockChooser
+          onInsertBlock={() => {}}
+          currentBlock="theblockid"
+          blocksConfig={blocksConfig}
+        />
+      </Provider>,
+    );
+    expect(container).not.toHaveTextContent('Custom group');
+    config.blocks.groupBlocksOrder = old;
   });
 });
