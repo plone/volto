@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import langmap from 'langmap';
 import { filter, find, isEmpty, map } from 'lodash';
 import { FormattedMessage } from 'react-intl';
 import { flattenToAppURL } from '@plone/volto/helpers';
@@ -90,7 +91,7 @@ const Types = ({ types, pathname, content, currentLanguage }) => {
                             id="Translate to {lang}"
                             defaultMessage="Translate to {lang}"
                             values={{
-                              lang,
+                              lang: langmap[lang].nativeName.toLowerCase(),
                             }}
                           />
                         </Link>

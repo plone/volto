@@ -106,7 +106,7 @@ const CompareLanguages = React.forwardRef((props, ref) => {
 
   if (config.settings.isMultilingual && translations.length > 0) {
     return (
-      <div className="toolbar-compare-translatons-contaniner">
+      <div className="toolbar-compare-translations-wrapper">
         <div className="toolbar-button-spacer" />
 
         <Button

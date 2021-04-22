@@ -36,7 +36,9 @@ const CreateTranslation = (props) => {
 
     // On unmount we dispatch the language change
     return () => {
-      dispatch(changeLanguage(language, locales));
+      // We change the interface language
+      const cl = async () => await dispatch(changeLanguage(language, locales));
+      return cl();
     };
     // On mount only
     /* eslint-disable react-hooks/exhaustive-deps */

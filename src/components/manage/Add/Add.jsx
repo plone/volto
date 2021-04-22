@@ -14,6 +14,7 @@ import { Button, Grid, Menu } from 'semantic-ui-react';
 import { Portal } from 'react-portal';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
+import langmap from 'langmap';
 import { v4 as uuid } from 'uuid';
 import qs from 'query-string';
 import { toast } from 'react-toastify';
@@ -234,7 +235,9 @@ class Add extends Component {
         this.props.schema.properties,
       );
       const translationObject = this.props.location?.state?.translationObject;
-      const translateTo = this.props.location?.state?.language;
+      const translateTo = langmap[
+        this.props.location?.state?.language
+      ].nativeName.toLowerCase();
 
       // Lookup initialBlocks and initialBlocksLayout within schema
       const schemaBlocks = this.props.schema.properties[blocksFieldname]
@@ -399,8 +402,9 @@ class Add extends Component {
             <div className="new-translation">
               <Menu pointing secondary attached tabular>
                 <Menu.Item name={translateTo.toUpperCase()} active={true}>
-                  {this.props.intl.formatMessage(messages.translateTo)}{' '}
-                  {translateTo.toUpperCase()}
+                  {`${this.props.intl.formatMessage(
+                    messages.translateTo,
+                  )} ${translateTo}`}
                 </Menu.Item>
               </Menu>
               {pageAdd}

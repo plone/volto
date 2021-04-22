@@ -9,6 +9,7 @@ import { defineMessages, useIntl } from 'react-intl';
 import { Form as UiForm, Menu, Segment } from 'semantic-ui-react';
 import { Provider } from 'react-intl-redux';
 import { Form, Field } from '@plone/volto/components';
+import langmap from 'langmap';
 import config from '@plone/volto/registry';
 import configureStore from '@plone/volto/store';
 import { Api, flattenToAppURL } from '@plone/volto/helpers';
@@ -72,6 +73,8 @@ const TranslationObject = ({
     api,
   );
 
+  const lang = translationObject.language.token;
+
   return translationObject && Object.keys(locales).length > 0 ? (
     <Provider store={store}>
       <>
@@ -81,7 +84,7 @@ const TranslationObject = ({
             active={activeMenu === 'language'}
             onClick={handleMenuClick}
           >
-            {translationObject.language.token.toUpperCase()}
+            {langmap[lang].nativeName}
           </Menu.Item>
           {visual && (
             <Menu.Item
@@ -104,7 +107,7 @@ const TranslationObject = ({
             hideActions
             pathname={flattenToAppURL(translationObject['@id'])}
             visual={visual}
-            title={translationObject.language.title}
+            title={langmap[lang].nativeName}
             loading={false}
             isFormSelected={isFormSelected}
             onSelectForm={onSelectForm}

@@ -18,6 +18,15 @@ import config from '@plone/volto/registry';
 
 import { flattenToAppURL } from '@plone/volto/helpers';
 
+import { defineMessages, useIntl } from 'react-intl';
+
+const messages = defineMessages({
+  switchLanguageTo: {
+    id: 'Switch to',
+    defaultMessage: 'Switch to',
+  },
+});
+
 let locales = {};
 
 if (config.settings) {
@@ -29,6 +38,7 @@ if (config.settings) {
 }
 
 const LanguageSelector = (props) => {
+  const intl = useIntl();
   const dispatch = useDispatch();
   const currentLang = useSelector((state) => state.intl.locale);
   const translations = useSelector(
@@ -43,6 +53,9 @@ const LanguageSelector = (props) => {
         const translation = find(translations, { language: lang });
         return (
           <Link
+            aria-label={`${intl.formatMessage(
+              messages.switchLanguageTo,
+            )} ${langmap[lang].nativeName.toLowerCase()}`}
             className={cx({ selected: lang === currentLang })}
             to={translation ? flattenToAppURL(translation['@id']) : `/${lang}`}
             title={langmap[lang].nativeName}
@@ -52,7 +65,7 @@ const LanguageSelector = (props) => {
             }}
             key={`language-selector-${lang}`}
           >
-            {langmap[lang].nativeName}&nbsp;
+            {langmap[lang].nativeName}
           </Link>
         );
       })}

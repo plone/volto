@@ -20,8 +20,8 @@
     }
 
     .navigation {
-      // -ms-overflow-style: none; /* IE 10+ */
-      // overflow-x: auto;
+      // -ms-overflow-style: none;-ms-overflow-style /* IE 10+ */
+      // overflow-x: auto;overflow-x
 
       &::-webkit-scrollbar {
         height: 0; /* remove scrollbar space */
@@ -69,6 +69,8 @@
     }
 
     .search {
+      margin-left: 10px;
+
       form {
         @media only screen and (min-width: @largestTabletScreen) {
           padding: 1.7em 0 @relativeBig;
