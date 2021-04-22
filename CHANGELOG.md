@@ -12,6 +12,7 @@
 ### Bugfix
 
 - Include selected block in multiselections @sneridagh
+- Change login form fixing accessibility issues @nzambello
 
 ### Internal
 
