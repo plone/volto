@@ -26,7 +26,10 @@ describe('Babel View Tests', () => {
     cy.findByText('Traduci in italiano');
     cy.get(
       '.new-translation .documentFirstHeading > .public-DraftStyleDefault-block',
-    ).type('My IT page');
+    )
+      .type('My IT page', { force: true })
+      .get('.documentFirstHeading span[data-text]')
+      .contains('My IT page');
     cy.get('.new-translation .block.inner.text .public-DraftEditor-content')
       .type('This is the italian text')
       .get('span[data-text]')
@@ -47,7 +50,10 @@ describe('Babel View Tests', () => {
     cy.findByText('Traduci in italiano');
     cy.get(
       '.new-translation .documentFirstHeading > .public-DraftStyleDefault-block',
-    ).type('My IT page');
+    )
+      .type('My IT page', { force: true })
+      .get('.documentFirstHeading span[data-text]')
+      .contains('My IT page');
     cy.get('.new-translation .block.inner.text .public-DraftEditor-content')
       .type('This is the italian text')
       .get('span[data-text]')
