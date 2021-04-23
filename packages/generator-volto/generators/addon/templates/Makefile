@@ -19,34 +19,19 @@ project:
 	cp .project.eslintrc.js .eslintrc.js
 	cd project && yarn
 	@echo "-------------------"
-	@echo "Volto project is ready!"
-	@echo "Now run: cd project && yarn start"
+	@echo "$(GREEN)Volto project is ready!$(RESET)"
+	@echo "$(RED)Now run: cd project && yarn start$(RESET)"
 
-.PHONY: build-backend
-api/bin/instance:  ## Build Plone 5.2
-	(cd api && python3 -m venv .)
-	(cd api && bin/pip install --upgrade pip)
-	(cd api && bin/pip install --upgrade wheel)
-	(cd api && bin/pip install -r requirements.txt)
-	(cd api && bin/buildout)
-
-.PHONY: build
-build:	api/bin/instance project
-
-all: build
-
-.PHONY: start-backend
-start-backend: ## Start Plone Backend
-	@echo "$(GREEN)==> Start Plone Backend$(RESET)"
-	(cd api && PYTHONWARNINGS=ignore bin/instance fg)
+all: project
 
 .PHONY: start-test-backend
 start-test-backend: ## Start Test Plone Backend
 	@echo "$(GREEN)==> Start Test Plone Backend$(RESET)"
-	ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,kitconcept.volto,kitconcept.volto.cors APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,kitconcept.volto:default-homepage ./api/bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
+	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e SITE=plone -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,kitconcept.volto:default-homepage -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,kitconcept.volto,kitconcept.volto.cors -e ADDONS='plone.app.robotframework plone.app.contenttypes plone.restapi kitconcept.volto' plone ./bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
 
 .PHONY: start-backend-docker
 start-backend-docker:		## Starts a Docker-based backend
+	@echo "$(GREEN)==> Start Docker-based Plone Backend$(RESET)"
 	docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="kitconcept.volto" -e ZCML="kitconcept.volto.cors" plone
 
 .PHONY: help
