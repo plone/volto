@@ -1,9 +1,11 @@
-// to debug, set DEBUG=yeoman:generator
+// to debug, export DEBUG=yeoman:generator
+// or export DEBUG=@plone/volto:addon
+
 const gitly = require('gitly');
 const path = require('path');
 const Generator = require('yeoman-generator');
 const fs = require('fs');
-const chalk = require('chalk');
+// const chalk = require('chalk');
 
 const currentDir = path.basename(process.cwd());
 
@@ -101,20 +103,27 @@ Run "npm install -g @plone/generator-volto" to update.`,
   }
 
   setDestination() {
+    this._debug('namespace', this.options.namespace);
     // if in a Volto project, generate addon in src/addons
 
     if (this.outputpath) {
+      this._debug('set destination to:', this.globals.outputpath);
       this.destinationRoot(this.globals.outputpath);
       return;
     }
 
-    const pkgJson = path.join(currentDir, 'package.json');
+    const pkgJson = path.join(process.cwd(), 'package.json');
+
     if (fs.existsSync(pkgJson)) {
-      const destination = `./src/addons/${this.globals.name}`;
+      const destination = path.join(
+        process.cwd(),
+        `./src/addons/${this.globals.name}`,
+      );
+
       if (fs.existsSync(destination)) {
-        chalk.red('Addon already exists! Starting over');
-        return this.startOver();
+        return;
       }
+      this._debug('set destination to:', destination);
       this.destinationRoot(destination);
     }
   }

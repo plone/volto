@@ -132,3 +132,9 @@
 // //     // );
 // //   }
 // // }
+// fs.readdirSync(path.join(tmpDir, 'src/addons/test-volto-addon')).forEach(
+//   (file) => {
+//     // eslint-disable-next-line
+//   console.log(file);
+//   },
+// );
