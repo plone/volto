@@ -188,6 +188,7 @@ msgstr "Verfügbar"
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -1060,6 +1061,10 @@ msgstr "Linktitel"
 msgid "Link to"
 msgstr "Link auf"
 
+#: components/manage/Multilingual/ManageTranslations
+msgid "Link translation for"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
 msgstr "Auflistung"
@@ -1835,6 +1840,10 @@ msgstr "Betreff"
 msgid "Success"
 msgstr "Erfolgreich"
 
+#: components/theme/LanguageSelector/LanguageSelector
+msgid "Switch to"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 msgid "Table"
 msgstr "Tabelle"
@@ -2036,6 +2045,10 @@ msgstr "Deinstallieren"
 #: components/theme/View/RenderBlocks
 msgid "Unknown Block"
 msgstr "Unbekannter Block"
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Unlink translation for"
+msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update"
