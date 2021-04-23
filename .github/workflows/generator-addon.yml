@@ -9,8 +9,8 @@ jobs:
         python-version: [3.7]
     env:
       generator-directory: ./packages/generator-volto
-      project-directory: ./my-volto-app
-      addon: @plonecollective/foo
+      project-directory: ./my-volto-addon-workspace
+      addon: "@plonecollective/foo"
 
     steps:
       - uses: actions/checkout@v2
@@ -33,6 +33,16 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
+      # install Yeoman and the generator
+      - run: npm -g install yo
+        working-directory: ${{env.generator-directory}}
+      - run: npm -g install ./
+        working-directory: ${{env.generator-directory}}
+
+      # create the addon
+      - run: yo @plone/volto:addon ${{env.addon}} --description "test addon" --no-interactive --outputpath=.
+        working-directory: ${{env.project-directory}}
+
       # # Build main Volto environment
       # - name: Build main Volto environment
       #   run: yarn install --frozen-lockfile
@@ -41,15 +51,6 @@ jobs:
       # - name: Generator tests
       #   run:  yarn && yarn test
       #   working-directory: ${{env.generator-directory}}
-
-      # install Yeoman and the generator
-      - run: npm -g install yo
-        working-directory: ${{env.generator-directory}}
-      - run: npm -g install ./
-        working-directory: ${{env.generator-directory}}
-
-      # create the addon
-      - run: yo @plone/volto:addon ${{env.addon}} --description "test addon" --no-interactive
 
       # - name: Install yalc
       #   run: npm -g install yalc
