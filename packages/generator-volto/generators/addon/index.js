@@ -106,9 +106,9 @@ Run "npm install -g @plone/generator-volto" to update.`,
     this._debug('namespace', this.options.namespace);
     // if in a Volto project, generate addon in src/addons
 
-    if (this.outputpath) {
-      this._debug('set destination to:', this.globals.outputpath);
-      this.destinationRoot(this.globals.outputpath);
+    if (this.opts.outputpath) {
+      this._debug('set destination to:', this.opts.outputpath);
+      this.destinationRoot(this.opts.outputpath);
       return;
     }
 

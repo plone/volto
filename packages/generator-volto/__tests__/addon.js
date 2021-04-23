@@ -7,7 +7,14 @@ const base = path.join(__dirname, '../generators/addon');
 
 let tmpDir;
 
-const p = (name) => path.join(tmpDir, name);
+const TEST_NAMES = [
+  'package.json',
+  'Makefile',
+  '.gitignore',
+  'src/index.js',
+  'src/index.js',
+  'src/i18n.js',
+];
 
 describe('generator-create-volto-app:addon run in Volto project', () => {
   beforeAll(() => {
@@ -27,13 +34,11 @@ describe('generator-create-volto-app:addon run in Volto project', () => {
   });
 
   it('creates files', () => {
-    assert.file([
-      p('src/addons/test-volto-addon/package.json'),
-      p('src/addons/test-volto-addon/Makefile'),
-      p('src/addons/test-volto-addon/.gitignore'),
-      p('src/addons/test-volto-addon/src/index.js'),
-      p('src/addons/test-volto-addon/src/i18n.js'),
-    ]);
+    assert.file(
+      TEST_NAMES.map((name) =>
+        path.join(tmpDir, `src/addons/test-volto-addon/${name}`),
+      ),
+    );
   });
 });
 
@@ -45,12 +50,26 @@ describe('generator-create-volto-app:addon run in empty folder', () => {
   });
 
   it('creates files', () => {
-    assert.file([
-      './package.json',
-      './Makefile',
-      './.gitignore',
-      './src/index.js',
-      './src/i18n.js',
-    ]);
+    assert.file(TEST_NAMES);
+  });
+});
+
+describe('generator-create-volto-app:addon can output to specific folder', () => {
+  beforeAll(() => {
+    return helpers
+      .run(base)
+      .inTmpDir(function (dir) {
+        tmpDir = dir;
+      })
+      .withPrompts({
+        addonName: 'test-volto-addon',
+      })
+      .withOptions({
+        outputpath: 'dest',
+      });
+  });
+
+  it('creates files', () => {
+    assert.file(TEST_NAMES.map((name) => path.join(tmpDir, `dest/${name}`)));
   });
 });
