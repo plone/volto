@@ -235,9 +235,12 @@ class Add extends Component {
         this.props.schema.properties,
       );
       const translationObject = this.props.location?.state?.translationObject;
-      const translateTo = langmap[
-        this.props.location?.state?.language
-      ].nativeName.toLowerCase();
+
+      const translateTo = translationObject
+        ? langmap?.[
+            this.props.location?.state?.language
+          ]?.nativeName?.toLowerCase()
+        : null;
 
       // Lookup initialBlocks and initialBlocksLayout within schema
       const schemaBlocks = this.props.schema.properties[blocksFieldname]
