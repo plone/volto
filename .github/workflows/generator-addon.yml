@@ -40,7 +40,7 @@ jobs:
         working-directory: ${{env.generator-directory}}
 
       # create the addon
-      - run: yo @plone/volto:addon ${{env.addon}} --description "test addon" --no-interactive --outputpath=.
+      - run: yo @plone/volto:addon ${{env.addon}} --description "test addon" --no-interactive
         working-directory: ${{env.project-directory}}
 
       # # Build main Volto environment
