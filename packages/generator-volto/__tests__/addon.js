@@ -9,7 +9,7 @@ let tmpDir;
 
 const p = (name) => path.join(tmpDir, name);
 
-describe('generator-create-volto-app:addon', () => {
+describe('generator-create-volto-app:addon run in Volto project', () => {
   beforeAll(() => {
     return helpers
       .run(base)
@@ -32,6 +32,23 @@ describe('generator-create-volto-app:addon', () => {
       // p('src/addons/test-volto-addon/.gitignore'),
       p('src/addons/test-volto-addon/src/index.js'),
       p('src/addons/test-volto-addon/src/i18n.js'),
+    ]);
+  });
+});
+
+describe('generator-create-volto-app:addon run in empty folder', () => {
+  beforeAll(() => {
+    return helpers.run(base).withPrompts({
+      addonName: 'test-volto-addon',
+    });
+  });
+
+  it('creates files', () => {
+    assert.file([
+      './package.json',
+      // p('src/addons/test-volto-addon/.gitignore'),
+      './src/index.js',
+      './src/i18n.js',
     ]);
   });
 });
