@@ -30,7 +30,7 @@ describe('generator-create-volto-app:addon run in Volto project', () => {
     assert.file([
       p('src/addons/test-volto-addon/package.json'),
       p('src/addons/test-volto-addon/Makefile'),
-      // p('src/addons/test-volto-addon/.gitignore'),
+      p('src/addons/test-volto-addon/.gitignore'),
       p('src/addons/test-volto-addon/src/index.js'),
       p('src/addons/test-volto-addon/src/i18n.js'),
     ]);
@@ -48,7 +48,7 @@ describe('generator-create-volto-app:addon run in empty folder', () => {
     assert.file([
       './package.json',
       './Makefile',
-      // p('src/addons/test-volto-addon/.gitignore'),
+      './.gitignore',
       './src/index.js',
       './src/i18n.js',
     ]);

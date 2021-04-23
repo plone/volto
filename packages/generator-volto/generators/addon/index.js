@@ -132,6 +132,7 @@ Run "npm install -g @plone/generator-volto" to update.`,
     // if a Github template is provided, clone it under .template in destination
 
     if (this.globals.template) {
+      this._debug('Cloning template in .template');
       await gitly.default(
         this.globals.template,
         this.destinationPath('.template'),
@@ -146,10 +147,13 @@ Run "npm install -g @plone/generator-volto" to update.`,
       this.destinationPath(),
       this.globals,
     );
+    // copy dotfiles
+    this.fs.copy(this.templatePath('.*'), this.destinationPath());
   }
 
   end() {
     if (this.sourceRoot().endsWith('.template')) {
+      this._debug('Removing template clone');
       fs.rmdirSync(this.sourceRoot(), { recursive: true });
     }
     this.log("Done. Now run 'yarn' to install dependencies");
