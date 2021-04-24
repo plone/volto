@@ -218,6 +218,7 @@ const blocksConfig = {
     restricted: false,
     mostUsed: true,
     sidebarTab: 1,
+    showLinkMore: false,
     security: {
       addPermission: [],
       view: [],

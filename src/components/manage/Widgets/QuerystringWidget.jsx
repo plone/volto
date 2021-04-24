@@ -12,55 +12,91 @@ import dragSVG from '@plone/volto/icons/drag.svg';
 import { v4 as uuid } from 'uuid';
 
 const messages = defineMessages({
-  labelRemoveItem: {
-    id: 'Remove item',
-    defaultMessage: 'Remove item',
+  Criteria: {
+    id: 'Criteria',
+    defaultMessage: 'Criteria',
   },
-  labelCollapseItem: {
-    id: 'Collapse item',
-    defaultMessage: 'Collapse item',
+  depth: {
+    id: 'Depth',
+    defaultMessage: 'Depth',
   },
-  labelShowItem: {
-    id: 'Show item',
-    defaultMessage: 'Show item',
+  SortOn: {
+    id: 'Sort on',
+    defaultMessage: 'Sort on',
   },
-  emptyObjectList: {
-    id: 'Empty object list',
-    defaultMessage: 'Empty object list',
+  reversedOrder: {
+    id: 'Reversed order',
+    defaultMessage: 'Reversed order',
+  },
+  limit: {
+    id: 'Results limit',
+    defaultMessage: 'Results limit',
+  },
+  itemBatchSize: {
+    id: 'Item batch size',
+    defaultMessage: 'Item batch size',
+  },
+  NoSelection: {
+    id: 'No selection',
+    defaultMessage: 'No selection',
   },
 });
 
-const ObjectListWidget = (props) => {
-  const {
-    block,
-    fieldSet,
-    id,
-    schema,
-    value = [],
-    onChange,
-    schemaExtender,
-  } = props;
+const QuerystringWidget = (props) => {
+  const { block, value } = props;
 
   const intl = useIntl();
 
-  const objectSchema = typeof schema === 'function' ? schema(props) : schema;
+  const objectSchema = {
+    fieldsets: [
+      {
+        id: 'default',
+        title: 'Default',
+        fields: [
+          'query',
+          ...(value?.query?.filter((q) => q.i === 'path').length > 0
+            ? ['depth']
+            : []),
+          'sort_on',
+          'sort_order',
+          'limit',
+          'batch_size',
+        ],
+      },
+    ],
+    properties: {
+      query: {
+        title: intl.formatMessage(messages.Criteria),
+        widget: 'query',
+      },
+      depth: {
+        title: intl.formatMessage(messages.depth),
+        type: 'number',
+      },
+      sort_on: {
+        title: intl.formatMessage(messages.SortOn),
+        widget: 'query_sort_on',
+      },
+      sort_order: {
+        title: intl.formatMessage(messages.reversedOrder),
+        type: 'boolean',
+      },
+      limit: {
+        title: intl.formatMessage(messages.limit),
+        type: 'number',
+      },
+      batch_size: {
+        title: intl.formatMessage(messages.itemBatchSize),
+        type: 'number',
+      },
+    },
+    required: [],
+  };
 
   return (
     <div className="querystring-widget">
-      <FormFieldWrapper {...props} noForInFieldLabel className="objectlist">
-        <ObjectWidget
-          id={`${id}-${index}`}
-          key={`ow-${id}-${index}`}
-          block={block}
-          schema={schemaExtender ? schemaExtender(schema, child) : objectSchema}
-          value={child}
-          onChange={(fi, fv) => {
-            const newvalue = value.map((v, i) => (i !== index ? v : fv));
-            onChange(id, newvalue);
-          }}
-        />
-      </FormFieldWrapper>
+      <ObjectWidget {...props} block={block} schema={objectSchema} />
     </div>
   );
 };
-export default ObjectListWidget;
+export default QuerystringWidget;

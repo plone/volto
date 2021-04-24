@@ -19,16 +19,23 @@ const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
   const dispatch = useDispatch();
 
   React.useEffect(() => {
-    if (data?.query?.length > 0) {
+    if (data?.querystring?.query?.length > 0) {
       dispatch(
-        getQueryStringResults(path, { ...data, fullobjects: 1 }, data.block),
+        getQueryStringResults(
+          path,
+          { ...data.querystring, fullobjects: 1 },
+          data.block,
+        ),
       );
-    } else if (data.template === 'imageGallery' && data?.query?.length === 0) {
+    } else if (
+      data.template === 'imageGallery' &&
+      data?.querystring?.query?.length === 0
+    ) {
       dispatch(
         getQueryStringResults(
           path,
           {
-            ...data,
+            ...data.querystring,
             fullobjects: 1,
             query: [
               {
@@ -49,10 +56,11 @@ const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
   const folderItems = content?.is_folderish ? content.items : [];
 
   const loadingQuery =
-    data?.query?.length > 0 && querystringResults?.[data.block]?.loading;
+    data?.querystring?.query?.length > 0 &&
+    querystringResults?.[data.block]?.loading;
 
   const listingItems =
-    data?.query?.length > 0 && querystringResults?.[data.block]
+    data?.querystring?.query?.length > 0 && querystringResults?.[data.block]
       ? (querystringResults &&
           querystringResults[data.block] &&
           querystringResults[data.block].items) ||
@@ -97,7 +105,7 @@ const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
             isEditMode={isEditMode}
             {...data}
           />
-          {data?.query?.length === 0 &&
+          {data?.querystring?.query?.length === 0 &&
             content?.items_total > settings.defaultPageSize && (
               <div className="pagination-wrapper">
                 <Pagination
@@ -123,7 +131,7 @@ const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
                 />
               </div>
             )}
-          {data?.query?.length > 0 &&
+          {data?.querystring?.query?.length > 0 &&
             querystringResults?.[data.block]?.total >
               (data.b_size || settings.defaultPageSize) && (
               <div className="pagination-wrapper">
@@ -160,13 +168,13 @@ const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
         </>
       ) : isEditMode ? (
         <div className="listing message">
-          {data?.query?.length === 0 && (
+          {data?.querystring?.query?.length === 0 && (
             <FormattedMessage
               id="No items found in this container."
               defaultMessage="No items found in this container."
             />
           )}
-          {!loadingQuery && data?.query?.length > 0 && (
+          {!loadingQuery && data?.querystring?.query?.length > 0 && (
             <FormattedMessage
               id="No results found."
               defaultMessage="No results found."

@@ -6,8 +6,9 @@ import { isEqual } from 'lodash';
 import {
   SidebarPortal,
   ListingBlockBody as ListingBody,
-  ListingBlockSidebar as ListingSidebar,
 } from '@plone/volto/components';
+import ListingData from './ListingData';
+
 import { getBaseUrl } from '@plone/volto/helpers';
 
 const messages = defineMessages({
@@ -52,7 +53,7 @@ const Edit = React.memo(
           isEditMode
         />
         <SidebarPortal selected={selected}>
-          <ListingSidebar
+          <ListingData
             data={data}
             block={block}
             onChangeBlock={onChangeBlock}

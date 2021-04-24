@@ -4,6 +4,9 @@
 
 ### Breaking
 
+- Refactored `src/components/manage/Widgets/QuerystringWidget` using `ObjectWidget` and schemas @sneridagh
+- Refactored `Listing` block using the new `src/components/manage/Widgets/QuerystringWidget`. Introducing a new `showLinkMore` opt-in for the additional feature instead of always-in. Deprecated `ListingSidebar` and `src/components/manage/Blocks/Listing/QuerystringWidget` in favor of the new `src/components/manage/Widgets/QuerystringWidget` @sneridagh
+
 ### Feature
 
 - Improve the blocks engine by adding a detector for clicking outside in the `BlocksForm` @sneridagh
