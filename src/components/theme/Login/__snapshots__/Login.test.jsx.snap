@@ -143,7 +143,7 @@ exports[`Login renders a login component 1`] = `
                       href="/password-reset"
                       onClick={[Function]}
                     >
-                      we can send you a new one
+                      Reset password
                     </a>
                   </p>
                 </div>
