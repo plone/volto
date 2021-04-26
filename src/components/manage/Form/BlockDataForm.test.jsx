@@ -19,6 +19,7 @@ beforeAll(() => {
     type: {},
     default: () => <div className="TextWidget" />,
   };
+
   config.blocks.blocksConfig.testBlock = {
     id: 'testBlock',
     variations: {
@@ -29,6 +30,20 @@ beforeAll(() => {
         label: 'Extra',
       },
     },
+  };
+
+  config.blocks.blocksConfig.testBlockVariationsList = {
+    id: 'testBlockVariationsList',
+    variations: [
+      {
+        id: 'default',
+        label: 'Default',
+      },
+      {
+        id: 'extra',
+        label: 'Extra',
+      },
+    ],
   };
 });
 
@@ -88,6 +103,34 @@ describe('BlockDataForm', () => {
       </Provider>,
     );
     expect(container).toMatchSnapshot();
+
+    // schema is cloned, not mutated in place
+    expect(testSchema.fieldsets[0].fields).toStrictEqual([]);
+  });
+
+  it('can handle variations as a list', () => {
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    const testSchema = {
+      fieldsets: [{ title: 'Default', id: 'default', fields: [] }],
+      properties: {},
+      required: [],
+    };
+    const formData = {
+      '@type': 'testBlockVariationsList',
+    };
+    const { container } = render(
+      <Provider store={store}>
+        <BlockDataForm formData={formData} schema={testSchema} />
+      </Provider>,
+    );
+    expect(container).toMatchSnapshot();
+
+    // schema is cloned, not mutated in place
     expect(testSchema.fieldsets[0].fields).toStrictEqual([]);
   });
 });

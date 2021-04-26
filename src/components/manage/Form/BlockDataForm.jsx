@@ -11,6 +11,18 @@ const messages = defineMessages({
   },
 });
 
+function makeChoices(variations, _) {
+  return Array.isArray(variations)
+    ? variations.map(({ id, label }) => [id, _({ id, defaultMessage: label })])
+    : Object.keys(variations).map((key) => [
+        key,
+        _({
+          id: variations[key].label,
+          defaultMessage: variations[key].label,
+        }),
+      ]);
+}
+
 export const addVariationsFieldToSchema = ({
   schema,
   currentVariation,
@@ -24,13 +36,7 @@ export const addVariationsFieldToSchema = ({
   }
   schema.properties.variation = {
     title: _(messages.Variation),
-    choices: Object.keys(variations).map((key) => [
-      key,
-      _({
-        id: variations[key].label,
-        defaultMessage: variations[key].label,
-      }),
-    ]),
+    choices: makeChoices(variations, _),
     noValueOption: false,
   };
 
