@@ -19,7 +19,7 @@
 
 - Implement Github actions workflow to deploy the documentation to the Plone Foundation server @ericof
 - Pin `immutable` to an updated version that does not produce continuous deprecation notices in console on every change @sneridagh
-- Remove console.error from server @nzambello
+- Print console.error in SSR if not an ignored error code @nzambello
 
 ## 12.10.1 (2021-04-14)
 
