@@ -18,21 +18,27 @@ const addonBlocks = {
       addPermission: [],
       view: [],
     },
-    variations: {
-      default: { label: 'Default' },
-      custom: {
-        label: 'Custom',
-        // components: {
-        //   view: TeaserDefaultTemplate,
-        //   wrapper: (props) => (
-        //     <>
-        //       hey! {props.data.description2} asdasd {props.children} bottoms
-        //       thinggy
-        //     </>
-        //   ),
-        // },
-        // schemaExtender: schemaExtender,
-      },
+    extensions: {
+      variation: [
+        {
+          id: 'default',
+          label: 'Default',
+        },
+        {
+          id: 'custom',
+          label: 'Custom',
+          // components: {
+          //   view: TeaserDefaultTemplate,
+          //   wrapper: (props) => (
+          //     <>
+          //       hey! {props.data.description2} asdasd {props.children} bottoms
+          //       thinggy
+          //     </>
+          //   ),
+          // },
+          // schemaExtender: schemaExtender,
+        },
+      ],
     },
   },
 };
