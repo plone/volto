@@ -56,6 +56,7 @@ const withObjectBrowser = (WrappedComponent) =>
       propDataName = null,
       selectableTypes,
       maximumSelectionSize,
+      currentPath,
     } = {}) =>
       this.setState(() => ({
         isObjectBrowserOpen: true,
@@ -66,12 +67,16 @@ const withObjectBrowser = (WrappedComponent) =>
         propDataName,
         selectableTypes,
         maximumSelectionSize,
+        currentPath,
       }));
 
     closeObjectBrowser = () => this.setState({ isObjectBrowserOpen: false });
 
     render() {
-      let contextURL = this.props.pathname ?? this.props.location?.pathname;
+      let contextURL =
+        this.props.pathname ||
+        this.props.location?.pathname ||
+        this.state?.currentPath;
       if (contextURL?.endsWith('edit')) {
         contextURL = getParentURL(contextURL);
       }
