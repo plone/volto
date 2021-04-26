@@ -148,7 +148,7 @@ export const getColor = (name) => {
  * @param {string} locale Current locale
  * @param {string} value DateTime string
  * @param {string} format Date format of choice
- * @returns {Object|string} Moment object or sting if format is set
+ * @returns {Object|string} Moment object or string if format is set
  */
 export const parseDateTime = (locale, value, format) => {
   //  Used to set a server timezone or UTC as default
