@@ -32,6 +32,11 @@ beforeAll(() => {
     },
   };
 
+  config.blocks.blocksConfig.testBlockNoVariations = {
+    id: 'testBlockNoVariations',
+    variations: {},
+  };
+
   config.blocks.blocksConfig.testBlockVariationsList = {
     id: 'testBlockVariationsList',
     variations: [
@@ -42,6 +47,16 @@ beforeAll(() => {
       {
         id: 'extra',
         label: 'Extra',
+      },
+    ],
+  };
+
+  config.blocks.blocksConfig.testBlockOneVariation = {
+    id: 'testBlockVariationsList',
+    variations: [
+      {
+        id: 'default',
+        label: 'Default',
       },
     ],
   };
@@ -82,6 +97,58 @@ describe('BlockDataForm utils', () => {
 });
 
 describe('BlockDataForm', () => {
+  it('should does not add variations to schema when unneeded', () => {
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    const testSchema = {
+      fieldsets: [{ title: 'Default', id: 'default', fields: [] }],
+      properties: {},
+      required: [],
+    };
+    const formData = {
+      '@type': 'testBlockNoVariations',
+    };
+    const { container } = render(
+      <Provider store={store}>
+        <BlockDataForm formData={formData} schema={testSchema} />
+      </Provider>,
+    );
+    expect(container).toMatchSnapshot();
+
+    // schema is cloned, not mutated in place
+    expect(testSchema.fieldsets[0].fields).toStrictEqual([]);
+  });
+
+  it('should does not add variations when only one variation', () => {
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    const testSchema = {
+      fieldsets: [{ title: 'Default', id: 'default', fields: [] }],
+      properties: {},
+      required: [],
+    };
+    const formData = {
+      '@type': 'testBlockOneVariation',
+    };
+    const { container } = render(
+      <Provider store={store}>
+        <BlockDataForm formData={formData} schema={testSchema} />
+      </Provider>,
+    );
+    expect(container).toMatchSnapshot();
+
+    // schema is cloned, not mutated in place
+    expect(testSchema.fieldsets[0].fields).toStrictEqual([]);
+  });
+
   it('should add variations to schema', () => {
     const store = mockStore({
       intl: {

@@ -2,7 +2,7 @@ import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { InlineForm } from '@plone/volto/components';
 import config from '@plone/volto/registry';
-import { cloneDeep } from 'lodash';
+import { cloneDeep, isEmpty } from 'lodash';
 
 const messages = defineMessages({
   Variation: {
@@ -21,6 +21,13 @@ function makeChoices(variations, _) {
           defaultMessage: variations[key].label,
         }),
       ]);
+}
+
+function hasMultipleVariations(variations) {
+  return isEmpty(variations)
+    ? false
+    : (Array.isArray(variations) && variations.length > 1) ||
+        Object.keys(variations).length > 1;
 }
 
 export const addVariationsFieldToSchema = ({
@@ -66,7 +73,7 @@ const withBlockDataForm = (Component) => ({ ...props }) => {
     schema = schemaEnhancer({ schema: originalSchema, formData, intl });
   }
 
-  if (variations) {
+  if (hasMultipleVariations(variations)) {
     addVariationsFieldToSchema({ schema, currentVariation, variations, intl });
   }
 
