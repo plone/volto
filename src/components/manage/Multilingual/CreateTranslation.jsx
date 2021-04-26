@@ -5,16 +5,6 @@ import { getTranslationLocator, getContent } from '@plone/volto/actions';
 import { flattenToAppURL, changeLanguage } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
-let locales = {};
-
-if (config.settings) {
-  config.settings.supportedLanguages.forEach((lang) => {
-    import('~/../locales/' + lang + '.json').then((locale) => {
-      locales = { ...locales, [lang]: locale.default };
-    });
-  });
-}
-
 const CreateTranslation = (props) => {
   const dispatch = useDispatch();
   const { language, translationOf } = props.location.state;
@@ -36,7 +26,12 @@ const CreateTranslation = (props) => {
 
     // On unmount we dispatch the language change
     return () => {
-      dispatch(changeLanguage(language, locales));
+      // We change the interface language
+      if (config.settings.supportedLanguages.includes(language)) {
+        import('~/../locales/' + language + '.json').then((locale) => {
+          dispatch(changeLanguage(language, locale.default));
+        });
+      }
     };
     // On mount only
     /* eslint-disable react-hooks/exhaustive-deps */

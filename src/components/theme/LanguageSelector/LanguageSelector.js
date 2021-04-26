@@ -18,17 +18,17 @@ import config from '@plone/volto/registry';
 
 import { flattenToAppURL } from '@plone/volto/helpers';
 
-let locales = {};
+import { defineMessages, useIntl } from 'react-intl';
 
-if (config.settings) {
-  config.settings.supportedLanguages.forEach((lang) => {
-    import('~/../locales/' + lang + '.json').then((locale) => {
-      locales = { ...locales, [lang]: locale.default };
-    });
-  });
-}
+const messages = defineMessages({
+  switchLanguageTo: {
+    id: 'Switch to',
+    defaultMessage: 'Switch to',
+  },
+});
 
 const LanguageSelector = (props) => {
+  const intl = useIntl();
   const dispatch = useDispatch();
   const currentLang = useSelector((state) => state.intl.locale);
   const translations = useSelector(
@@ -43,16 +43,23 @@ const LanguageSelector = (props) => {
         const translation = find(translations, { language: lang });
         return (
           <Link
+            aria-label={`${intl.formatMessage(
+              messages.switchLanguageTo,
+            )} ${langmap[lang].nativeName.toLowerCase()}`}
             className={cx({ selected: lang === currentLang })}
             to={translation ? flattenToAppURL(translation['@id']) : `/${lang}`}
             title={langmap[lang].nativeName}
             onClick={() => {
               props.onClickAction();
-              dispatch(changeLanguage(lang, locales));
+              if (config.settings.supportedLanguages.includes(lang)) {
+                import('~/../locales/' + lang + '.json').then((locale) => {
+                  dispatch(changeLanguage(lang, locale.default));
+                });
+              }
             }}
             key={`language-selector-${lang}`}
           >
-            {langmap[lang].nativeName}&nbsp;
+            {langmap[lang].nativeName}
           </Link>
         );
       })}

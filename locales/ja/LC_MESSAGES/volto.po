@@ -180,6 +180,7 @@ msgstr "利用可能"
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -1052,6 +1053,10 @@ msgstr "リンクタイトル"
 msgid "Link to"
 msgstr "リンク先"
 
+#: components/manage/Multilingual/ManageTranslations
+msgid "Link translation for"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
 msgstr "リスティング"
@@ -1827,6 +1832,10 @@ msgstr "件名"
 msgid "Success"
 msgstr "成功"
 
+#: components/theme/LanguageSelector/LanguageSelector
+msgid "Switch to"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 msgid "Table"
 msgstr "テーブル"
@@ -2028,6 +2037,10 @@ msgstr "アンインストール"
 #: components/theme/View/RenderBlocks
 msgid "Unknown Block"
 msgstr "不明なブロック"
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Unlink translation for"
+msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update"

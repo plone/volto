@@ -181,6 +181,7 @@ msgstr ""
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -1053,6 +1054,10 @@ msgstr ""
 msgid "Link to"
 msgstr "Ligar a"
 
+#: components/manage/Multilingual/ManageTranslations
+msgid "Link translation for"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
 msgstr ""
@@ -1828,6 +1833,10 @@ msgstr "Assunto"
 msgid "Success"
 msgstr "Sucesso"
 
+#: components/theme/LanguageSelector/LanguageSelector
+msgid "Switch to"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 msgid "Table"
 msgstr "Tabela"
@@ -2029,6 +2038,10 @@ msgstr ""
 #: components/theme/View/RenderBlocks
 msgid "Unknown Block"
 msgstr "Bloco Desconhecido"
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Unlink translation for"
+msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update"

@@ -173,6 +173,7 @@ msgstr "Disponibile"
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -1045,6 +1046,10 @@ msgstr "Link al resto"
 msgid "Link to"
 msgstr "Link a"
 
+#: components/manage/Multilingual/ManageTranslations
+msgid "Link translation for"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
 msgstr "Elenco"
@@ -1820,6 +1825,10 @@ msgstr "Oggetto"
 msgid "Success"
 msgstr "Successo"
 
+#: components/theme/LanguageSelector/LanguageSelector
+msgid "Switch to"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 msgid "Table"
 msgstr "Tabella"
@@ -2021,6 +2030,10 @@ msgstr "Disinstalla"
 #: components/theme/View/RenderBlocks
 msgid "Unknown Block"
 msgstr "Blocco sconosciuto"
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Unlink translation for"
+msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update"

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import langmap from 'langmap';
 import config from '@plone/volto/registry';
+import { useDetectClickOutside } from 'react-detect-click-outside';
 
 import { Icon } from '@plone/volto/components';
 import { Button } from 'semantic-ui-react';
@@ -28,9 +29,19 @@ const CompareLanguagesMenu = ({
 }) => {
   const intl = useIntl();
 
+  const ClickOutsideListener = () => {
+    closeMenu();
+  };
+
+  const ref = useDetectClickOutside({
+    onTriggered: ClickOutsideListener,
+    triggerKeys: ['Escape'],
+  });
+
   return (
     <div
       className="toolbar-content show compare-languages"
+      ref={ref}
       style={{
         flex: theToolbar.current
           ? `0 0 ${theToolbar.current.getBoundingClientRect().width}px`
@@ -61,12 +72,12 @@ const CompareLanguagesMenu = ({
                   </button>
                 ) : (
                   <button
-                    aria-label={`${intl.formatMessage(messages.compare_to)} ${
-                      langmap[t.language].nativeName
-                    }`}
-                    title={`${intl.formatMessage(messages.compare_to)} ${
-                      langmap[t.language].nativeName
-                    }`}
+                    aria-label={`${intl.formatMessage(
+                      messages.compare_to,
+                    )} ${langmap[t.language].nativeName.toLowerCase()}`}
+                    title={`${intl.formatMessage(
+                      messages.compare_to,
+                    )} ${langmap[t.language].nativeName.toLowerCase()}`}
                     onClick={() => {
                       setComparingLanguage(t.language);
                       closeMenu();
@@ -106,7 +117,7 @@ const CompareLanguages = React.forwardRef((props, ref) => {
 
   if (config.settings.isMultilingual && translations.length > 0) {
     return (
-      <div className="toolbar-compare-translatons-contaniner">
+      <div className="toolbar-compare-translations-wrapper">
         <div className="toolbar-button-spacer" />
 
         <Button
@@ -116,6 +127,7 @@ const CompareLanguages = React.forwardRef((props, ref) => {
             setViewMenu(!viewMenu);
           }}
           id="toolbar-compare-translations"
+          className="toolbar-button-compare-translations"
         >
           <Icon className="mobile hidden" name={translateSVG} size="30px" />
           {viewMenu ? (
