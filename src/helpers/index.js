@@ -70,4 +70,5 @@ export {
   withServerErrorCode,
 } from '@plone/volto/helpers/Utils/Utils';
 export { messages } from './MessageLabels/MessageLabels';
+export { withBlockSchemaEnhancer, withBlockExtensions } from './Extensions';
 export { asyncConnect } from './AsyncConnect';

@@ -1,5 +1,5 @@
 import React from 'react';
-import BlockDataForm, { addVariationsFieldToSchema } from './BlockDataForm';
+import BlockDataForm from './BlockDataForm';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import configureStore from 'redux-mock-store';
@@ -20,80 +20,39 @@ beforeAll(() => {
     default: () => <div className="TextWidget" />,
   };
 
-  config.blocks.blocksConfig.testBlock = {
-    id: 'testBlock',
-    variations: {
-      default: {
-        label: 'Default',
+  config.blocks.blocksConfig = {
+    ...config.blocks.blocksConfig,
+
+    testBlockNoVariations: {
+      id: 'testBlockNoVariations',
+    },
+    testBlock: {
+      id: 'testBlock',
+      extensions: {
+        variation: [
+          {
+            id: 'default',
+            label: 'Default',
+          },
+          {
+            id: 'extra',
+            label: 'Extra',
+          },
+        ],
       },
-      extra: {
-        label: 'Extra',
+    },
+    testBlockOneVariation: {
+      id: 'testBlockOneVariation',
+      extensions: {
+        variation: [
+          {
+            id: 'default',
+            label: 'Default',
+          },
+        ],
       },
     },
   };
-
-  config.blocks.blocksConfig.testBlockNoVariations = {
-    id: 'testBlockNoVariations',
-    variations: {},
-  };
-
-  config.blocks.blocksConfig.testBlockVariationsList = {
-    id: 'testBlockVariationsList',
-    variations: [
-      {
-        id: 'default',
-        label: 'Default',
-      },
-      {
-        id: 'extra',
-        label: 'Extra',
-      },
-    ],
-  };
-
-  config.blocks.blocksConfig.testBlockOneVariation = {
-    id: 'testBlockVariationsList',
-    variations: [
-      {
-        id: 'default',
-        label: 'Default',
-      },
-    ],
-  };
-});
-
-describe('BlockDataForm utils', () => {
-  it('addVariationsFieldToSchema should add field to schema', () => {
-    const testSchema = {
-      fieldsets: [{ fields: [] }],
-      properties: {},
-    };
-    const intl = { formatMessage: () => 'untitled' };
-    const schema = addVariationsFieldToSchema({
-      schema: testSchema,
-      intl,
-      variations: {},
-    });
-    expect(testSchema.fieldsets[0].fields).toStrictEqual(['variation']);
-    expect(schema.fieldsets[0].fields).toStrictEqual(['variation']);
-    expect(schema).toBe(testSchema);
-  });
-
-  it('addVariationsFieldToSchema should add only add once to schema', () => {
-    const testSchema = {
-      fieldsets: [{ fields: ['variation'] }],
-      properties: {},
-    };
-    const intl = { formatMessage: () => 'untitled' };
-    const schema = addVariationsFieldToSchema({
-      schema: testSchema,
-      intl,
-      variations: {},
-    });
-    expect(testSchema.fieldsets[0].fields).toStrictEqual(['variation']);
-    expect(schema.fieldsets[0].fields).toStrictEqual(['variation']);
-    expect(schema).toBe(testSchema);
-  });
 });
 
 describe('BlockDataForm', () => {
@@ -163,32 +122,6 @@ describe('BlockDataForm', () => {
     };
     const formData = {
       '@type': 'testBlock',
-    };
-    const { container } = render(
-      <Provider store={store}>
-        <BlockDataForm formData={formData} schema={testSchema} />
-      </Provider>,
-    );
-    expect(container).toMatchSnapshot();
-
-    // schema is cloned, not mutated in place
-    expect(testSchema.fieldsets[0].fields).toStrictEqual([]);
-  });
-
-  it('can handle variations as a list', () => {
-    const store = mockStore({
-      intl: {
-        locale: 'en',
-        messages: {},
-      },
-    });
-    const testSchema = {
-      fieldsets: [{ title: 'Default', id: 'default', fields: [] }],
-      properties: {},
-      required: [],
-    };
-    const formData = {
-      '@type': 'testBlockVariationsList',
     };
     const { container } = render(
       <Provider store={store}>
