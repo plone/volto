@@ -1,5 +1,5 @@
-// to debug, export DEBUG=yeoman:generator
-// or export DEBUG=@plone/volto:addon
+// to debug, run: export DEBUG=yeoman:generator
+// or run: export DEBUG="@plone/volto:addon"
 
 const gitly = require('gitly');
 const path = require('path');
