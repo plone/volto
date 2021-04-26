@@ -341,9 +341,12 @@ class Edit extends Component {
                           onChange={this.onChangeUrl}
                           placeholder={placeholder}
                           value={this.state.url}
-                          // Prevents propagation to the Dropzone and the opening
-                          // of the upload browser dialog
-                          onClick={(e) => e.stopPropagation()}
+                          onClick={(e) => {
+                            e.target.focus();
+                          }}
+                          onFocus={(e) => {
+                            this.props.onSelectBlock(this.props.id);
+                          }}
                         />
                         {this.state.url && (
                           <Button.Group>

@@ -138,7 +138,7 @@ class Login extends Component {
     }
   }
 
-  UNSAFE_componentWillMount() {
+  componentDidMount() {
     const { settings } = config;
     if (settings.isMultilingual) {
       this.props.getNavigation(`/${this.props.lang}`, settings.navDepth);

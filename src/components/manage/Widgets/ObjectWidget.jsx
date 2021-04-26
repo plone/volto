@@ -39,7 +39,7 @@ const FieldSet = ({
       <Field
         {...schema.properties[field]}
         id={`${field}-${idx}-${id}`}
-        fieldset={data.title.toLowerCase()}
+        fieldSet={data.title.toLowerCase()}
         block={block}
         value={v}
         objectvalue={value}

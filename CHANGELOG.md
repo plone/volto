@@ -1,8 +1,69 @@
 # Change Log
 
-## 12.6.2 (unreleased)
+## 12.10.2 (unreleased)
 
 ### Breaking
+
+### Feature
+
+- Improve the blocks engine by adding a detector for clicking outside in the `BlocksForm` @sneridagh
+- Include a pluggable architecture for pluggable render-time insertions (similar to <Portal>) @tiberiuichim
+
+### Bugfix
+
+- Include selected block in multiselections @sneridagh
+
+### Internal
+
+- Upgrade Storybook to 6.2.2 @tiberiuichim
+
+- Implement Github actions workflow to deploy the documentation to the Plone Foundation server @ericof
+- Pin `immutable` to an updated version that does not produce continuous deprecation notices in console on every change @sneridagh
+
+## 12.10.1 (2021-04-14)
+
+### Bugfix
+
+- Better error handling code in SSR when an error occurs in the code @ksuess @sneridagh
+
+## 12.10.0 (2021-04-14)
+
+### Feature
+
+- Add support in FileWidget for raw file data in base64 (control panels, not really NamedFile fields) @sneridagh
+
+### Bugfix
+
+- ObjectListWidget: edit mode: expand last added item, not first of list. @ksuess
+- Improve error handling in SSR when an error occurs in the code @sneridagh
+
+### Internal
+
+- Ignore files in addons when building i18n messages in the i18n script, since it's useless (they should be done in the addon itself) and lead to errors when parsing also internal `node_modules` and other utility files @sneridagh
+
+## 12.9.0 (2021-04-10)
+
+### Bugfix
+
+- Avoid double calling asyncPropsExtenders @ksuess @tiberiuichim
+
+### Internal
+
+- Fix server when ECONNRESET is received from the backend @sneridagh
+- Remove all appearences of `UNSAFE_componentWillMount` since it loads also on the SSR calls too @sneridagh
+
+## 12.8.0 (2021-04-08)
+
+### Feature
+
+- Add configurable api expanders @csenger @nileshgulia1 @tiberiuichim @sneridagh
+- In Text block, keep text selection on focus, and move focus to end of text if there's no selection @giuliaghisini
+
+### Bugfix
+
+- Fix `fieldset` instead of `fieldSet` in ObjectWidget component @sneridagh
+
+## 12.7.0 (2021-04-07)
 
 ### Feature
 
@@ -18,6 +79,8 @@
 - fix universal link when no item content obj passed @nileshgulia1
 
 ### Internal
+
+- Add Blocks helpers docs and tests @avoinea
 
 ## 12.6.1 (2021-04-06)
 

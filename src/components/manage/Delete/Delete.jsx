@@ -81,15 +81,6 @@ class Delete extends Component {
   }
 
   /**
-   * Component will mount
-   * @method componentWillMount
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillMount() {
-    this.props.getContent(this.props.pathname.split('/delete')[0]);
-  }
-
-  /**
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
@@ -110,6 +101,7 @@ class Delete extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
+    this.props.getContent(this.props.pathname.split('/delete')[0]);
     this.setState({ isClient: true });
   }
 

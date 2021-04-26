@@ -80,12 +80,7 @@ class ContentsWorkflowModal extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  /**
-   * Component will mount
-   * @method componentWillMount
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillMount() {
+  componentDidMount() {
     this.props.getWorkflow(this.props.items);
   }
 
