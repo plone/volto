@@ -21,12 +21,8 @@ const ContentContainer = ({ children, content }) => {
       : isSlotAvailable(props);
   };
 
-  const hasLeftSlot = React.useMemo(() => available('asideLeftSlot'), [
-    slotData,
-  ]);
-  const hasRightSlot = React.useMemo(() => available('asideRightSlot'), [
-    slotData,
-  ]);
+  const hasLeftSlot = available('asideLeftSlot');
+  const hasRightSlot = available('asideRightSlot');
 
   const contentWidth = () => {
     if (hasLeftSlot && hasRightSlot) {
