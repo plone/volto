@@ -8,7 +8,7 @@ import config from '@plone/volto/registry';
  */
 export const getImageAttributes = (
   image,
-  { maxSize = 10000, useOriginal = true } = {},
+  { maxSize = 10000, useOriginal = false } = {},
 ) => {
   const imageScales = config.settings.imageScales;
   const minSize = Object.keys(imageScales).reduce((minSize, scale) => {
@@ -34,13 +34,13 @@ export const getImageAttributes = (
     // ideal use of Plone images
     case 'imageObject':
       let sortedScales = Object.values(image.scales)
+        .filter((scale) => scale.width <= maxSize)
+        .filter((scale) => scale.width < image.width) // avoid duplicates if image is small and original is smaller than scale
         .sort((a, b) => {
           if (a.width > b.width) return 1;
           else if (a.width < b.width) return -1;
           else return 0;
-        })
-        .filter((scale) => scale.width <= maxSize)
-        .filter((scale) => scale.width < image.width); // avoid duplicates if image is small and original is smaller than scale
+        });
       attrs.src = sortedScales[0].download;
       attrs.srcSet = sortedScales.map(
         (scale) => `${flattenToAppURL(scale.download)} ${scale.width}w`,

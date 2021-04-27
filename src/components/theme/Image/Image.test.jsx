@@ -97,4 +97,32 @@ describe('Image', () => {
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
+
+  it('renders image with plone image object and opt props', () => {
+    const component = renderer.create(
+      <Image
+        image={ploneImage}
+        alt="Photo"
+        className="photo-image"
+        role="presentation"
+        maxSize={200}
+      />,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
+
+  it('renders image with plone image object and original', () => {
+    const component = renderer.create(
+      <Image
+        image={ploneImage}
+        alt="Photo"
+        className="photo-image"
+        role="presentation"
+        useOriginal
+      />,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
 });
