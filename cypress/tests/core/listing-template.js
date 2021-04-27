@@ -63,8 +63,7 @@ describe('Folder Contents Tests', () => {
     });
 
     cy.visit('/my-folder/my-document');
-    cy.get('#toolbar-add').click();
-    cy.get('#toolbar-add-document').click();
+    cy.findByLabelText('Edit').click();
     cy.get('.block.inner.text .public-DraftEditor-content').click();
     cy.get('.ui.basic.icon.button.block-add-button').click();
     cy.get('.ui.basic.icon.button.listing').contains('Listing').click();
