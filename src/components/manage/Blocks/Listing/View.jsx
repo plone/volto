@@ -4,14 +4,14 @@ import cx from 'classnames';
 
 import { ListingBlockBody as ListingBody } from '@plone/volto/components';
 
-const View = ({ data, properties, block, path }) => {
+const View = ({ data, properties, block, path, pathname }) => {
   return (
     <div className={cx('block listing', data.template)}>
       <ListingBody
         data={data}
         properties={properties}
         block={block}
-        path={path}
+        path={path || pathname}
       />
     </div>
   );
