@@ -8,7 +8,9 @@ import { getImageAttributes } from '@plone/volto/helpers';
  * @param {string} alt - Alternative text for image
  * @param {string} className - CSS class attribute
  * @param {string} role - img role attribute
- * @param {boolean} critical - whether to load the image
+ * @param {boolean} critical - whether to lazy load the image
+ * @param {number} maxSize - maximum size to render
+ * @param {boolean} useOriginal - whether to render original size
  */
 const Image = ({
   image,
@@ -16,9 +18,11 @@ const Image = ({
   className,
   role = 'img',
   critical = false,
+  maxSize,
+  useOriginal = false,
   ...imageProps
 }) => {
-  const { src, srcSet } = getImageAttributes(image);
+  const { src, srcSet } = getImageAttributes(image, { maxSize, useOriginal });
   const [isClient, setIsClient] = useState(false);
   const [srcset, setSrcset] = useState(
     critical && srcSet ? srcSet.join(', ') : null,
@@ -68,6 +72,9 @@ Image.propTypes = {
   alt: PropTypes.string,
   className: PropTypes.string,
   role: PropTypes.string,
+  critical: PropTypes.bool,
+  maxSize: PropTypes.number,
+  useOriginal: PropTypes.bool,
 };
 
 export default Image;
