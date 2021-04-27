@@ -42,13 +42,14 @@ const customBlocks = {
     // The variation level one takes precedence.
     schemaEnhancer: CustomSchemaEnhancer,
     // A block can define variations (it should include the stock, default one)
-    variations: {
-      default: { label: 'Default' },
-      custom: {
-        label: 'Custom',
-        // The variation level schema Enhancer function
-        schemaEnhancer: CustomSchemaEnhancer
-      }
+    extensions: {
+      variation: [
+        { id: 'default', label: 'Default' },
+        { id: 'custom', label: 'Custom',
+          // The variation level schema Enhancer function
+          schemaEnhancer: CustomSchemaEnhancer
+        }
+      ]
     }
   },
 };

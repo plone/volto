@@ -78,3 +78,5 @@ The rest of the stock Volto blocks will also follow to support variations by def
 In order for a block to support variations you have to use the recommended way of generating a block settings, using a [schema driven](./editcomponent.md#schema-driven-automated-block-settings-forms) `BlockDataForm` component in your data settings block component.
 
 `BlockDataForm` detects if your block has [variations configuration](./settings.md#configuring-a-new-block) and applies the schema enhancers (if any) and shows the variation selector automatically.
+
+See the [block extensions](./editcomponent.md) chapter for more details.
