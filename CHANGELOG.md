@@ -4,10 +4,13 @@
 
 ### Breaking
 
+- (minor) Refactor the block schema and variations mechanism
+
 ### Feature
 
 - Improve the blocks engine by adding a detector for clicking outside in the `BlocksForm` @sneridagh
 - Include a pluggable architecture for pluggable render-time insertions (similar to <Portal>) @tiberiuichim
+- Provide api for block extensions. See `/blocks/extensions` in documentation @tiberiuichim
 
 ### Bugfix
 
