@@ -115,12 +115,15 @@ export class Edit extends Component {
    */
   render() {
     const { blocksConfig = config.blocks.blocksConfig } = this.props;
-    const { type } = this.props;
+    const { editable, type } = this.props;
 
     const disableNewBlocks = this.props.data?.disableNewBlocks;
 
     let Block = blocksConfig?.[type]?.['edit'] || null;
-    if (this.props.data?.readOnly) {
+    if (
+      this.props.data?.readOnly ||
+      (!editable && !config.blocks.showEditBlocksInBabelView)
+    ) {
       Block = blocksConfig?.[type]?.['view'] || null;
     }
     const schema = blocksConfig?.[type]?.['schema'] || BlockSettingsSchema;
