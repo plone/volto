@@ -67,13 +67,6 @@ exports[`Login renders a login component 1`] = `
                   </div>
                 </div>
               </div>
-              <div
-                className="stretched row"
-              >
-                <div
-                  className="stretched twelve wide column"
-                />
-              </div>
             </div>
           </div>
           <div
@@ -126,20 +119,6 @@ exports[`Login renders a login component 1`] = `
               <div
                 className="stretched row"
               >
-                <div
-                  className="stretched twelve wide column"
-                >
-                  <p
-                    className="help"
-                  >
-                    <a
-                      href="/register"
-                      onClick={[Function]}
-                    >
-                      Register
-                    </a>
-                  </p>
-                </div>
                 <div
                   className="stretched twelve wide column"
                 >

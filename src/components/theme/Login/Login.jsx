@@ -228,9 +228,6 @@ class Login extends Component {
                         />
                       </Grid.Column>
                     </Grid.Row>
-                    <Grid.Row stretched>
-                      <Grid.Column stretched width="12"></Grid.Column>
-                    </Grid.Row>
                   </Grid>
                 </Form.Field>
                 <Form.Field inline className="help">
@@ -263,13 +260,15 @@ class Login extends Component {
                 <Form.Field inline className="help">
                   <Grid>
                     <Grid.Row stretched>
-                      <Grid.Column stretched width="12">
-                        <p className="help">
-                          <Link to="/register">
-                            {this.props.intl.formatMessage(messages.register)}
-                          </Link>
-                        </p>
-                      </Grid.Column>
+                      {config.settings.showSelfRegistration && (
+                        <Grid.Column stretched width="12">
+                          <p className="help">
+                            <Link to="/register">
+                              {this.props.intl.formatMessage(messages.register)}
+                            </Link>
+                          </p>
+                        </Grid.Column>
+                      )}
                       <Grid.Column stretched width="12">
                         <p className="help">
                           <Link to="/password-reset">
