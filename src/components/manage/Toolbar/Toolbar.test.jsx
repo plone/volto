@@ -5,6 +5,7 @@ import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
 import jwt from 'jsonwebtoken';
 import thunk from 'redux-thunk';
+import { PluggablesProvider } from '@plone/volto/components/manage/Pluggable';
 
 import Toolbar from './Toolbar';
 
@@ -129,9 +130,11 @@ describe('Toolbar', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <MemoryRouter>
-          <Toolbar pathname="/test" inner={<span />} activity="view" />
-        </MemoryRouter>
+        <PluggablesProvider>
+          <MemoryRouter>
+            <Toolbar pathname="/test" inner={<span />} activity="view" />
+          </MemoryRouter>
+        </PluggablesProvider>
       </Provider>,
     );
     const json = component.toJSON();

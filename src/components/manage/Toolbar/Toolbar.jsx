@@ -20,6 +20,7 @@ import {
 } from '@plone/volto/actions';
 import { BodyClass, getBaseUrl } from '@plone/volto/helpers';
 import { Bottom } from '@plone/volto/components/manage/Toolbar/ToolbarComponents';
+import { Pluggable } from '@plone/volto/components/manage/Pluggable';
 import config from '@plone/volto/registry';
 
 const messages = defineMessages({
@@ -343,6 +344,7 @@ export class BasicToolbarComponent extends Component {
                 })}
               </div>
               <div className="toolbar-bottom">
+                <Pluggable name="main.toolbar.bottom" />
                 <Bottom {...this.props}>
                   {bottom.map((BottomComponent, index) => {
                     return matchPath(
