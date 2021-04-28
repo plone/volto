@@ -4,13 +4,13 @@
 
 ### Breaking
 
+- Get rid of the font icons in the control panels overview @sneridagh
+
 ### Feature
 
 ### Bugfix
 
 ### Internal
-
-- Get rid of the font icons in the control panels overview @sneridagh
 
 ## 12.11.0 (2021-04-28)
 
