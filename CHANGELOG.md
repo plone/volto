@@ -4,8 +4,6 @@
 
 ### Breaking
 
-- (minor) Refactor the block schema and variations mechanism
-
 ### Feature
 
 - Improve the blocks engine by adding a detector for clicking outside in the `BlocksForm` @sneridagh
