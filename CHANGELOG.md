@@ -23,9 +23,9 @@
 ### Internal
 
 - Upgrade Storybook to 6.2.2 @tiberiuichim
-
 - Implement Github actions workflow to deploy the documentation to the Plone Foundation server @ericof
 - Pin `immutable` to an updated version that does not produce continuous deprecation notices in console on every change @sneridagh
+- Fix sitemap URL generation @nzambello
 
 ## 12.10.1 (2021-04-14)
 
@@ -118,6 +118,9 @@
 
 ### Bugfix
 
+### Internal
+
+- Add toPublicURL helper @nzambello
 - Don't show empty groups in BlockChooser @tiberiuichim
 - Fix Text Block placeholder regression refs #2322 @avoinea
 
