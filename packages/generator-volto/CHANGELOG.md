@@ -6,8 +6,6 @@
 
 - Ability to bootstrap a Volto project for the addon using a Makefile @tiberiuichim
 
-### Changes
-
 ## 4.2.0 (2021-04-05)
 
 ### Added
