@@ -12,11 +12,11 @@ import cx from 'classnames';
 import { find, map } from 'lodash';
 
 import langmap from 'langmap';
-import { Helmet, changeLanguage } from '@plone/volto/helpers';
+import { Helmet, flattenToAppURL } from '@plone/volto/helpers';
 
 import config from '@plone/volto/registry';
 
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { changeLanguage } from '@plone/volto/actions';
 
 import { defineMessages, useIntl } from 'react-intl';
 

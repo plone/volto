@@ -4,12 +4,17 @@
 
 ### Breaking
 
+### Bugfix
+
+- Correct the selected values rendering at isMulti SelectWidget @ionlizarazu
+
 ### Feature
 
 - Implemented Babel view, to compare translated items in add and edit mode. @giuliaghisini
 
 - Improve the blocks engine by adding a detector for clicking outside in the `BlocksForm` @sneridagh
 - Include a pluggable architecture for pluggable render-time insertions (similar to <Portal>) @tiberiuichim
+- Add parseDateTime helper from DatetimeWidget to handle timezones @nzambello
 
 ### Bugfix
 
