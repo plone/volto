@@ -28,6 +28,7 @@ import {
 } from '@plone/volto/actions';
 import { Icon } from '@plone/volto/components';
 import { BodyClass, getBaseUrl } from '@plone/volto/helpers';
+import { Pluggable } from '@plone/volto/components/manage/Pluggable';
 
 import pastanagaSmall from '@plone/volto/components/manage/Toolbar/pastanaga-small.svg';
 import pastanagalogo from '@plone/volto/components/manage/Toolbar/pastanaga.svg';
@@ -468,6 +469,7 @@ class Toolbar extends Component {
                 )}
               </div>
               <div className="toolbar-bottom">
+                <Pluggable name="main.toolbar.bottom" />
                 <img className="minipastanaga" src={pastanagaSmall} alt="" />
                 {!this.props.hideDefaultViewButtons && (
                   <button

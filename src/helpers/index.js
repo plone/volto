@@ -16,6 +16,7 @@ export {
   addAppURL,
   flattenHTMLToAppURL,
   flattenToAppURL,
+  toPublicURL,
   isInternalURL,
   getParentUrl,
   getBaseUrl,
@@ -68,6 +69,7 @@ export {
   safeWrapper,
   applyConfig,
   withServerErrorCode,
+  parseDateTime,
 } from '@plone/volto/helpers/Utils/Utils';
 export { messages } from './MessageLabels/MessageLabels';
 export { asyncConnect } from './AsyncConnect';

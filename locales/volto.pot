@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2021-04-07T10:29:29.790Z\n"
+"POT-Creation-Date: 2021-04-23T08:46:16.898Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -209,6 +209,7 @@ msgstr ""
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -241,6 +242,7 @@ msgstr ""
 msgid "Breadcrumbs"
 msgstr ""
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Sidebar/ObjectBrowserNav
 # defaultMessage: Browse
@@ -692,6 +694,7 @@ msgstr ""
 msgid "Do you really want to delete this item?"
 msgstr ""
 
+#: components/manage/Multilingual/TranslationObject
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Document
 msgid "Document"
@@ -1073,6 +1076,7 @@ msgstr ""
 msgid "If you you do not have an account here, head over to the {registrationform}."
 msgstr ""
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Image
@@ -1268,6 +1272,11 @@ msgstr ""
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Link to
 msgid "Link to"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+# defaultMessage: Link translation for
+msgid "Link translation for"
 msgstr ""
 
 #: components/manage/Blocks/Listing/ListingSidebar
@@ -2189,6 +2198,11 @@ msgstr ""
 msgid "State"
 msgstr ""
 
+#: components/manage/Multilingual/CompareLanguages
+# defaultMessage: Stop compare
+msgid "Stop compare"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: String
 msgid "String"
@@ -2216,6 +2230,11 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Success
 msgid "Success"
+msgstr ""
+
+#: components/theme/LanguageSelector/LanguageSelector
+# defaultMessage: Switch to
+msgid "Switch to"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
@@ -2392,6 +2411,11 @@ msgstr ""
 msgid "Total number of objects in the database"
 msgstr ""
 
+#: components/manage/Add/Add
+# defaultMessage: Translate to
+msgid "Translate to"
+msgstr ""
+
 #: components/manage/Toolbar/Types
 # defaultMessage: Translate to {lang}
 msgid "Translate to {lang}"
@@ -2461,6 +2485,11 @@ msgstr ""
 msgid "Unknown Block"
 msgstr ""
 
+#: components/manage/Multilingual/ManageTranslations
+# defaultMessage: Unlink translation for
+msgid "Unlink translation for"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Update
 msgid "Update"
@@ -2504,6 +2533,11 @@ msgstr ""
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Uploading files
 msgid "Uploading files"
+msgstr ""
+
+#: components/manage/Blocks/HeroImageLeft/Edit
+# defaultMessage: Uploading image
+msgid "Uploading image"
 msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
@@ -2738,6 +2772,11 @@ msgstr ""
 #: config/Blocks
 # defaultMessage: Common
 msgid "common"
+msgstr ""
+
+#: components/manage/Multilingual/CompareLanguages
+# defaultMessage: Compare to language
+msgid "compare_to"
 msgstr ""
 
 #: components/manage/Blocks/Block/EditBlockWrapper

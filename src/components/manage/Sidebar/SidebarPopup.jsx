@@ -48,9 +48,11 @@ const SidebarPopup = (props) => {
             role="presentation"
             onClick={(e) => {
               e.stopPropagation();
+              e.nativeEvent.stopImmediatePropagation();
             }}
             onKeyDown={(e) => {
               e.stopPropagation();
+              e.nativeEvent.stopImmediatePropagation();
             }}
             ref={asideElement}
             key="sidebarpopup"
