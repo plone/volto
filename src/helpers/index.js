@@ -68,6 +68,7 @@ export {
   safeWrapper,
   applyConfig,
   withServerErrorCode,
+  parseDateTime,
 } from '@plone/volto/helpers/Utils/Utils';
 export { messages } from './MessageLabels/MessageLabels';
 export { withBlockSchemaEnhancer, withBlockExtensions } from './Extensions';
