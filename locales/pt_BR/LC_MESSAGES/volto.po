@@ -181,6 +181,7 @@ msgstr ""
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -207,6 +208,7 @@ msgstr "O endereço de e-mail e a senha diferenciam maiúsculas de minúsculas. 
 msgid "Breadcrumbs"
 msgstr "Navegação estrutural"
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
@@ -580,6 +582,7 @@ msgstr "Quer mesmo eliminar o usuário {username}?"
 msgid "Do you really want to delete this item?"
 msgstr "Quer mesmo eliminar este item?"
 
+#: components/manage/Multilingual/TranslationObject
 #: components/manage/Sidebar/Sidebar
 msgid "Document"
 msgstr "Documento"
@@ -890,6 +893,7 @@ msgstr "Se se esqueceu da sua senha, {forgotpassword}"
 msgid "If you you do not have an account here, head over to the {registrationform}."
 msgstr "Se não tem uma conta aqui, dirija-se a {registrationform}."
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
@@ -1049,6 +1053,10 @@ msgstr ""
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Link to"
 msgstr "Ligar a"
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Link translation for"
+msgstr ""
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
@@ -1796,6 +1804,10 @@ msgstr "Redefinir senha"
 msgid "State"
 msgstr "Estado"
 
+#: components/manage/Multilingual/CompareLanguages
+msgid "Stop compare"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "String"
 msgstr "Texto"
@@ -1820,6 +1832,10 @@ msgstr "Assunto"
 #: helpers/MessageLabels/MessageLabels
 msgid "Success"
 msgstr "Sucesso"
+
+#: components/theme/LanguageSelector/LanguageSelector
+msgid "Switch to"
+msgstr ""
 
 #: components/manage/Blocks/Table/Edit
 msgid "Table"
@@ -1963,6 +1979,10 @@ msgstr ""
 msgid "Total number of objects in the database"
 msgstr ""
 
+#: components/manage/Add/Add
+msgid "Translate to"
+msgstr ""
+
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
 msgstr ""
@@ -2019,6 +2039,10 @@ msgstr ""
 msgid "Unknown Block"
 msgstr "Bloco Desconhecido"
 
+#: components/manage/Multilingual/ManageTranslations
+msgid "Unlink translation for"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update"
 msgstr ""
@@ -2054,6 +2078,10 @@ msgstr "Enviar ficheiros"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Uploading files"
 msgstr "Enviando ficheiros"
+
+#: components/manage/Blocks/HeroImageLeft/Edit
+msgid "Uploading image"
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
@@ -2239,6 +2267,10 @@ msgstr "box_forgot_password_option"
 #: config/Blocks
 msgid "common"
 msgstr "comum"
+
+#: components/manage/Multilingual/CompareLanguages
+msgid "compare_to"
+msgstr ""
 
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"

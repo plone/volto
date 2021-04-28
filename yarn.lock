@@ -16265,10 +16265,10 @@ react-dates@21.5.1:
     react-with-styles "^4.1.0"
     react-with-styles-interface-css "^6.0.0"
 
-react-detect-click-outside@1.0.10:
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/react-detect-click-outside/-/react-detect-click-outside-1.0.10.tgz#00a88cec6eab344809e12997e7cc3965a329366a"
-  integrity sha512-ttKhqyPv9gHWdTm+hmhDJvHuBqaoEGDxszb41/Tc7Y9wg3U2ZPuDgrJFImbYH7kAZze4LkCAIrW+7/4yPez0Nw==
+react-detect-click-outside@1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/react-detect-click-outside/-/react-detect-click-outside-1.1.1.tgz#3a3855639aeb19fb0d28524aac9f283e8ffd1542"
+  integrity sha512-1MqRw9+RaA3dF4zJePSngxBqXut/RgHajFLR91cTV7PRmQyCIrQAUtv979IhQoaoWhVM8rdSx9Eg4/vc/hcReQ==
 
 react-dev-utils@10.2.0:
   version "10.2.0"
