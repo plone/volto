@@ -203,11 +203,16 @@ const defaultModify = ({
 
   if (process.env.RAZZLE_TESTING_ADDONS) {
     testingAddons.forEach((addon) => {
-      const p = fs.realpathSync(registry.packages[addon].modulePath);
+      const normalizedAddonName = addon.split(':')[0];
+      const p = fs.realpathSync(
+        registry.packages[normalizedAddonName].modulePath,
+      );
       if (include.indexOf(p) === -1) {
         include.push(p);
       }
-      addonsAsExternals = registry.addonNames.map((addon) => new RegExp(addon));
+      addonsAsExternals = registry.addonNames.map(
+        (normalizedAddonName) => new RegExp(normalizedAddonName),
+      );
     });
   }
 

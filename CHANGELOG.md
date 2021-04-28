@@ -4,10 +4,17 @@
 
 ### Breaking
 
+### Bugfix
+
+- Correct the selected values rendering at isMulti SelectWidget @ionlizarazu
+
 ### Feature
+
+- Implemented Babel view, to compare translated items in add and edit mode. @giuliaghisini
 
 - Improve the blocks engine by adding a detector for clicking outside in the `BlocksForm` @sneridagh
 - Include a pluggable architecture for pluggable render-time insertions (similar to <Portal>) @tiberiuichim
+- Add parseDateTime helper from DatetimeWidget to handle timezones @nzambello
 
 ### Bugfix
 
@@ -16,10 +23,10 @@
 ### Internal
 
 - Upgrade Storybook to 6.2.2 @tiberiuichim
-
 - Implement Github actions workflow to deploy the documentation to the Plone Foundation server @ericof
 - Pin `immutable` to an updated version that does not produce continuous deprecation notices in console on every change @sneridagh
 - Print console.error in SSR if not an ignored error code @nzambello
+- Fix sitemap URL generation @nzambello
 
 ## 12.10.1 (2021-04-14)
 
@@ -112,6 +119,9 @@
 
 ### Bugfix
 
+### Internal
+
+- Add toPublicURL helper @nzambello
 - Don't show empty groups in BlockChooser @tiberiuichim
 - Fix Text Block placeholder regression refs #2322 @avoinea
 

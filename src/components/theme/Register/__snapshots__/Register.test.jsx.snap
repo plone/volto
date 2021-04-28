@@ -12,74 +12,79 @@ exports[`Register renders a register component 1`] = `
       method="post"
       onSubmit={[Function]}
     >
-      <div
-        className="ui raised segments"
+      <fieldset
+        className="invisible"
+        disabled={false}
       >
         <div
-          className="ui segment"
+          className="ui raised segments"
         >
           <div
-            className="ui segment primary"
+            className="ui segment"
           >
-            <h1
-              style={
-                Object {
-                  "fontSize": "16px",
-                }
-              }
+            <div
+              className="ui segment primary"
             >
-               
-              Registration form
-            </h1>
+              <h1
+                style={
+                  Object {
+                    "fontSize": "16px",
+                  }
+                }
+              >
+                 
+                Registration form
+              </h1>
+            </div>
+            <div
+              className="mocked-default-widget"
+              id="mocked-field-fullname"
+            >
+              Full Name
+               - 
+              Enter full name, e.g. John Smith.
+            </div>
+            <div
+              className="mocked-default-widget"
+              id="mocked-field-email"
+            >
+              E-mail
+               - 
+              Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
+            </div>
           </div>
           <div
-            className="mocked-default-widget"
-            id="mocked-field-fullname"
+            className="ui clearing segment actions"
           >
-            Full Name
-             - 
-            Enter full name, e.g. John Smith.
-          </div>
-          <div
-            className="mocked-default-widget"
-            id="mocked-field-email"
-          >
-            E-mail
-             - 
-            Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
+            <button
+              aria-label="Register"
+              className="ui basic primary right floated button"
+              onClick={[Function]}
+              title="Register"
+              type="submit"
+            >
+              <svg
+                className="icon circled"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": undefined,
+                  }
+                }
+                onClick={null}
+                style={
+                  Object {
+                    "fill": "currentColor",
+                    "height": "30px",
+                    "width": "auto",
+                  }
+                }
+                viewBox=""
+                xmlns=""
+              />
+            </button>
           </div>
         </div>
-        <div
-          className="ui clearing segment actions"
-        >
-          <button
-            aria-label="Register"
-            className="ui basic primary right floated button"
-            onClick={[Function]}
-            title="Register"
-            type="submit"
-          >
-            <svg
-              className="icon circled"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": undefined,
-                }
-              }
-              onClick={null}
-              style={
-                Object {
-                  "fill": "currentColor",
-                  "height": "30px",
-                  "width": "auto",
-                }
-              }
-              viewBox=""
-              xmlns=""
-            />
-          </button>
-        </div>
-      </div>
+      </fieldset>
     </form>
   </div>
 </div>
