@@ -25,6 +25,7 @@
 - Upgrade Storybook to 6.2.2 @tiberiuichim
 - Implement Github actions workflow to deploy the documentation to the Plone Foundation server @ericof
 - Pin `immutable` to an updated version that does not produce continuous deprecation notices in console on every change @sneridagh
+- Print console.error in SSR if not an ignored error code @nzambello
 - Fetch addons by https using mrs-developer @nzambello
 - Fix sitemap URL generation @nzambello
 
