@@ -4,6 +4,10 @@
 
 ### Breaking
 
+### Bugfix
+
+- Correct the selected values rendering at isMulti SelectWidget @ionlizarazu
+
 ### Feature
 
 - Implemented Babel view, to compare translated items in add and edit mode. @giuliaghisini
