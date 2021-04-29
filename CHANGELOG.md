@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Translations german: Login/Register @ksuess
+
 ### Bugfix
 
 - Fix image gallery in listing block for contained (non-query based) images @sneridagh
@@ -269,7 +271,6 @@
 ### Feature
 
 - New breadcrumbs `INavigationRoot` aware for the _Home_ icon. This allows inner subsites navigation and better support for multilingual sites. @sneridagh
-- Translations german: Login/Register @ksuess
 
 ### Internal
 
