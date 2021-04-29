@@ -20,31 +20,26 @@ This is how it would look like for an imaginary block:
 
 ```jsx
 export default (config) => {
-  config.blocks.blocksConfig.dataTable.extensions = {
-    ...config.blocks.blocksConfig.dataTable.extensions,
-    columnRenderer: {
-      title: 'Column renderer',
+  config.blocks.blocksConfig.teaserBlock.extensions = {
+    ...config.blocks.blocksConfig.teaserBlock.extensions,
+    variation: {
+      title: 'Variation',
       items: [
         {
           id: 'default',
-          label: 'Default',
+          title: 'Default',
           isDefault: true,
-          render: DefaultColumnRenderer
+          render: SimpleTeaserView
         },
         {
-          id: 'number',
-          label: 'Number',
-          render: NumberColumnRenderer,
+          id: 'card',
+          label: 'Card',
+          render: CardTeaserView,
         }
       ]
   }
 }
 ```
-
-Notice that we're declaring a new extension mechanism named "columnRenderer"
-for our block. Any other addon or project can now add new column renderers just
-by mutating our block's config. How that is further used, it's all up to the
-block developer.
 
 ## Block variations
 
@@ -147,7 +142,6 @@ actually need the "resolved" extension object from the blocksConfig
 configuration. To help with this We have another HOC, the
 `withBlockExtensions`, which injects the resolved extensions object as props.
 To use it, wrap your relevant components, for example the block View component.
-
 
 ```
 const TableBlockView = (props) => {
