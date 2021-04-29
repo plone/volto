@@ -3221,7 +3221,7 @@ msgid "visit_external_website"
 msgstr ""
 
 #: components/theme/Login/Login
-# defaultMessage: we can send you a new one
+# defaultMessage: Reset password
 msgid "we can send you a new one"
 msgstr ""
 
