@@ -5,7 +5,7 @@
 import React from 'react';
 import config from '@plone/volto/registry';
 
-export function resolveExtension(name, extensions, data, block_type) {
+export function resolveExtension(name, extensions, data) {
   const selectedExtension = data[name];
 
   let index = extensions.findIndex((conf) => conf.id === selectedExtension);
@@ -14,14 +14,7 @@ export function resolveExtension(name, extensions, data, block_type) {
     index = extensions.findIndex((conf) => conf.isDefault);
   }
 
-  if (index === -1) {
-    throw new Error(
-      `You need to register the default extension for block type: ${block_type}`,
-    );
-  }
-  const extension = extensions[index];
-
-  return extension;
+  return index !== -1 ? extensions[index] : undefined;
 }
 
 export default (WrappedComponent) => (props) => {
@@ -31,7 +24,7 @@ export default (WrappedComponent) => (props) => {
 
   const resolvedExtensions = Object.assign(
     {},
-    Object.keys(extensions).map((extensionName) => ({
+    ...Object.keys(extensions).map((extensionName) => ({
       [extensionName]: resolveExtension(
         extensionName,
         extensions[extensionName].items || [],
@@ -43,8 +36,8 @@ export default (WrappedComponent) => (props) => {
 
   return (
     <WrappedComponent
-      {...props}
       {...resolvedExtensions}
+      {...props}
       extensions={extensions}
     />
   );

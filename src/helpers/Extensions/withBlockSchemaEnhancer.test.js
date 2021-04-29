@@ -1,6 +1,6 @@
 import { addExtensionFieldToSchema } from './withBlockSchemaEnhancer';
 
-describe('BlockDataForm utils', () => {
+describe('addExtensionFieldToSchema', () => {
   it('addExtensionFieldToSchema should add field to schema', () => {
     const testSchema = {
       fieldsets: [{ fields: [] }],
