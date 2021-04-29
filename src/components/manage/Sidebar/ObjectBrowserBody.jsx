@@ -88,8 +88,8 @@ class ObjectBrowserBody extends Component {
       currentFolder:
         this.props.mode === 'multiple'
           ? '/'
-          : this.props.data?.contextURL
-          ? getParentURL(this.props.data.contextURL)
+          : this.props.contextURL
+          ? getParentURL(this.props.contextURL)
           : '/',
       currentImageFolder:
         this.props.mode === 'multiple'

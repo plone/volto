@@ -100,8 +100,9 @@ const withObjectBrowser = (WrappedComponent) =>
                 data={
                   this.state.propDataName
                     ? this.props[this.state.propDataName]
-                    : { ...this.props.data, contextURL }
+                    : this.props.data
                 }
+                contextURL={contextURL}
                 closeObjectBrowser={this.closeObjectBrowser}
                 mode={this.state.mode}
                 onSelectItem={this.state.onSelectItem}
@@ -115,4 +116,5 @@ const withObjectBrowser = (WrappedComponent) =>
       );
     }
   };
+
 export default withObjectBrowser;
