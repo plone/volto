@@ -1,6 +1,6 @@
 # Change Log
 
-## 12.11.1 (unreleased)
+## 12.12.0 (2021-04-29)
 
 ### Breaking
 
