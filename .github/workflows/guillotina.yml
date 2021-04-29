@@ -1,4 +1,4 @@
-name: Guillotina CI
+name: Guillotina Backend
 on: [push]
 jobs:
   build:

@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Improve Github Actions names @sneridagh
+
 ## 12.12.0 (2021-04-29)
 
 ### Breaking
