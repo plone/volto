@@ -29,27 +29,33 @@ beforeAll(() => {
     testBlock: {
       id: 'testBlock',
       extensions: {
-        variation: [
-          {
-            id: 'default',
-            label: 'Default',
-          },
-          {
-            id: 'extra',
-            label: 'Extra',
-          },
-        ],
+        variation: {
+          items: [
+            {
+              id: 'default',
+              title: 'Default',
+              isDefault: true,
+            },
+            {
+              id: 'extra',
+              title: 'Extra',
+            },
+          ],
+        },
       },
     },
     testBlockOneVariation: {
       id: 'testBlockOneVariation',
       extensions: {
-        variation: [
-          {
-            id: 'default',
-            label: 'Default',
-          },
-        ],
+        variation: {
+          items: [
+            {
+              id: 'default',
+              title: 'Default',
+              isDefault: true,
+            },
+          ],
+        },
       },
     },
   };

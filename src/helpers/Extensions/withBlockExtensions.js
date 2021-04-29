@@ -6,13 +6,17 @@ import React from 'react';
 import config from '@plone/volto/registry';
 
 export function resolveExtension(name, extensions, data, block_type) {
-  const selectedExtension = data[name] || 'default';
+  const selectedExtension = data[name];
 
-  const index = extensions.findIndex((conf) => conf.id === selectedExtension);
+  let index = extensions.findIndex((conf) => conf.id === selectedExtension);
+
+  if (index === -1) {
+    index = extensions.findIndex((conf) => conf.isDefault);
+  }
 
   if (index === -1) {
     throw new Error(
-      `You need to register the default extension for block types: ${block_type}`,
+      `You need to register the default extension for block type: ${block_type}`,
     );
   }
   const extension = extensions[index];
@@ -30,7 +34,7 @@ export default (WrappedComponent) => (props) => {
     Object.keys(extensions).map((extensionName) => ({
       [extensionName]: resolveExtension(
         extensionName,
-        extensions[extensionName],
+        extensions[extensionName].items || [],
         data,
         block_type,
       ),

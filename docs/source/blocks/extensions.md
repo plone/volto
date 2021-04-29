@@ -1,13 +1,13 @@
 # Block extensions mechanism
 
 A common pattern in blocks is "variations" - slightly different versions of
-a block that can be toggled on demand by the editors. For example, chosing the
+a block that can be toggled on demand by the editors. Choosing the
 listing template (gallery, summary listing, etc) for the Listing block is
-an example of the variation pattern.
+one example of the typical use cases for this feature.
 
-While it is up to the specific block implementations on how they actually use
-this machinery, Volto provides some helpers for the block extensions story, as
-explained further on this page.
+While it is up to each specific block implementations on how they actually use
+this machinery, Volto provides the framework to help define the extensions and
+be able to pick the active "variant" of each such extension.
 
 
 ## Block extensions in config
@@ -22,23 +22,26 @@ This is how it would look like for an imaginary block:
 export default (config) => {
   config.blocks.blocksConfig.dataTable.extensions = {
     ...config.blocks.blocksConfig.dataTable.extensions,
-    columnRenderers: [
-      {
-        id: 'default',
-        label: 'Default',
-        render: DefaultColumnRenderer
-      },
-      {
-        id: 'number',
-        label: 'Number',
-        render: NumberColumnRenderer,
-      }
-    ]
+    columnRenderer: {
+      title: 'Column renderer',
+      items: [
+        {
+          id: 'default',
+          label: 'Default',
+          isDefault: true,
+          render: DefaultColumnRenderer
+        },
+        {
+          id: 'number',
+          label: 'Number',
+          render: NumberColumnRenderer,
+        }
+      ]
   }
 }
 ```
 
-Notice that we're declaring a new extension mechanism named "columnRenderers"
+Notice that we're declaring a new extension mechanism named "columnRenderer"
 for our block. Any other addon or project can now add new column renderers just
 by mutating our block's config. How that is further used, it's all up to the
 block developer.
@@ -46,29 +49,28 @@ block developer.
 ## Block variations
 
 Volto ships with a default extension mechanism for blocks, named "variation".
-It is advisable to use this extension point in case you want to make your block
-extendable.
+It is advisable to use this extension point for the typical use case of
+"alternative view template for the block".
+
+A block can define variations in the block configuration. These variations can
+be used to enhance or complement the default behavior of a block without having
+to shadow its stock components. These enhancements can be at a settings level
+(add or remove block settings) via schema enhancers or, if the code of your
+block allows it, even use alternative renderers (eg. in view mode) showing the
+enhanced fields or modifying the block look and feel or behavior.
 
 If you use schema-based forms to edit the block's data, use the `BlockDataForm`
 component instead of the `InlineForm`. The BlockDataForm component will
 automatically inject a "variation" select dropdown into the form, allowing
 editors to choose the desired block variation.
 
-To do the same for your custom extension, you can wrap InlineForm in the
-`withBlockSchemaEnhancer` HOC:
+To get the same behavior for any other custom extension, you can wrap
+InlineForm in the `withBlockSchemaEnhancer` HOC:
 
 ```jsx
 import { defineMessages } from 'react-intl';
 
-const title = defineMessages({
-  id: 'galleryTemplate',
-  defaultMessage: "Gallery template"
-});
-
-const GalleryBlockForm = withBlockSchemaEnhancer(InlineForm, {
-  extensionName: 'galleryTemplates',
-  title: title
-});
+const GalleryBlockForm = withBlockSchemaEnhancer(InlineForm, 'galleryTemplates');
 ```
 
 You can even wrap BlockDataForm with it and "stack" multiple block extensions
@@ -86,34 +88,46 @@ injected `intl`, to aid with internationalization.
 For example:
 
 ```jsx
+
+const messages = defineMessages({
+  title: {
+    id: 'Column renderer',
+    defaultMessage: 'Column renderer',
+  },
+});
+
 export default (config) => {
   config.blocks.blocksConfig.dataTable.extensions = {
     ...config.blocks.blocksConfig.dataTable.extensions,
-    columnRenderers: [
-      {
-        id: 'default',
-        label: 'Default',
-        render: DefaultColumnRenderer
-      },
-      {
-        id: 'number',
-        label: 'Number',
-        render: NumberColumnRenderer,
-      },
-      {
-        id: 'colored',
-        label: 'Colored',
-        renderer: ColoredColumnRenderer,
-        schemaEnhancer: ({formData, schema, intl}) => {
-          schema.properties.color = {
-            widget: 'color',
-            title: 'Color',
-          };
-          schema.fieldsets[0].fields.push('color');
-          return schema;
+    columnRenderers: {
+      title: messages.title,
+      items: [
+        {
+          id: 'default',
+          title: 'Default',
+          isDefault: true,
+          render: DefaultColumnRenderer
+        },
+        {
+          id: 'number',
+          title: 'Number',
+          render: NumberColumnRenderer,
+        },
+        {
+          id: 'colored',
+          title: 'Colored',
+          renderer: ColoredColumnRenderer,
+          schemaEnhancer: ({formData, schema, intl}) => {
+            schema.properties.color = {
+              widget: 'color',
+              title: 'Color',
+            };
+            schema.fieldsets[0].fields.push('color');
+            return schema;
+          }
         }
-      }
-    ]
+      ]
+    }
   }
 }
 ```

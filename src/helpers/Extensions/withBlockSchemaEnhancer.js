@@ -1,9 +1,20 @@
+import { defineMessages } from 'react-intl';
 import React from 'react';
 import { useIntl } from 'react-intl';
 import config from '@plone/volto/registry';
-import { cloneDeep, isEmpty } from 'lodash';
+import { cloneDeep } from 'lodash';
 
-function defaultAddField(schema, name) {
+const messages = defineMessages({
+  variation: {
+    id: 'Variation',
+    defaultMessage: 'Variation',
+  },
+});
+
+/**
+ * Sets the field name as first field in schema
+ */
+function _addField(schema, name) {
   if (schema.fieldsets[0].fields.indexOf(name) === -1) {
     schema.fieldsets[0].fields.unshift(name);
   }
@@ -15,32 +26,32 @@ function defaultAddField(schema, name) {
 export const addExtensionFieldToSchema = ({
   schema,
   name,
-  extensions,
+  extensionConfig,
   intl,
   title,
   description,
-  insertFieldToOrder = defaultAddField,
+  insertFieldToOrder = _addField,
 }) => {
   const _ = intl.formatMessage;
 
   insertFieldToOrder(schema, name);
 
   const hasDefaultExtension =
-    extensions.findIndex(({ id }) => id === 'default') > -1;
+    extensionConfig?.items?.findIndex(({ isDefault }) => isDefault) > -1;
 
   if (!hasDefaultExtension) {
     // eslint-disable-next-line
     console.warn(
       'You should provide a default extension in extensions: ',
-      extensions,
+      extensionConfig,
     );
   }
 
   schema.properties[name] = {
     title: _(title),
-    choices: extensions.map(({ id, label }) => [
+    choices: extensionConfig?.items?.map(({ id, title }) => [
       id,
-      _({ id, defaultMessage: label }),
+      _({ id, defaultMessage: title }),
     ]),
     noValueOption: false,
   };
@@ -48,24 +59,10 @@ export const addExtensionFieldToSchema = ({
   return schema;
 };
 
-function hasMultipleExtensions(extensions) {
-  return isEmpty(extensions)
-    ? false
-    : (Array.isArray(extensions) && extensions.length > 1) ||
-        Object.keys(extensions).length > 1;
-}
-
 export const withBlockSchemaEnhancer = (
   FormComponent,
-  {
-    extensionName = 'variation',
-    title = {
-      id: 'Variation',
-      defaultMessage: 'Variation',
-    },
-    description,
-    insertFieldToOrder = defaultAddField,
-  },
+  extensionName = 'variation',
+  insertFieldToOrder = _addField,
 ) => ({ ...props }) => {
   const { formData, schema: originalSchema } = props;
   const intl = useIntl();
@@ -73,29 +70,37 @@ export const withBlockSchemaEnhancer = (
   const { blocks } = config;
 
   const blockType = formData['@type'];
-  const extensions =
+  const extensionConfig =
     blocks?.blocksConfig[blockType]?.extensions?.[extensionName];
 
-  const currentExtension = formData?.[extensionName];
-  const definition = extensions?.[currentExtension];
+  if (!extensionConfig)
+    return <FormComponent {...props} schema={originalSchema} />;
+
+  const activeItemName = formData?.[extensionName];
+  let activeItem = extensionConfig.items?.find(
+    (item) => item.id === activeItemName,
+  );
+  if (!activeItem)
+    activeItem = extensionConfig.items?.find((item) => item.isDefault);
 
   const schemaEnhancer =
     // For the main "variation" of blocks, allow simply passing a
     // schemaEnhancer in the block configuration
-    definition?.['schemaEnhancer'] ||
+    activeItem?.['schemaEnhancer'] ||
     (extensionName === 'variation' &&
-      blocks.blocksConfig?.[blockType]?.['schemaEnhancer']);
+      blocks.blocksConfig?.[blockType]?.schemaEnhancer);
 
-  let schema = cloneDeep(originalSchema);
-  if (schemaEnhancer) {
-    schema = schemaEnhancer({ schema: originalSchema, formData, intl });
-  }
+  let schema = schemaEnhancer
+    ? schemaEnhancer({ schema: cloneDeep(originalSchema), formData, intl })
+    : cloneDeep(originalSchema);
 
-  if (hasMultipleExtensions(extensions)) {
+  const { title = messages.variation, description } = extensionConfig;
+
+  if (extensionConfig.items?.length > 1) {
     addExtensionFieldToSchema({
       schema,
       name: extensionName,
-      extensions,
+      extensionConfig,
       intl,
       title,
       description,
