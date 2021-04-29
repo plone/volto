@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix image gallery in listing block for contained (non-query based) images @sneridagh
+
 ### Internal
 
 ## 12.11.0 (2021-04-28)
