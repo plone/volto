@@ -1,4 +1,4 @@
-name: Guillotina Backend
+name: Guillotina Backend Tests
 on: [push]
 jobs:
   build:

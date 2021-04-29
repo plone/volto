@@ -1,4 +1,4 @@
-name: Project Generator
+name: Project Generator Tests
 on: [push]
 jobs:
   build:
