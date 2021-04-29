@@ -180,6 +180,7 @@ msgstr "Aukerak"
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -206,6 +207,7 @@ msgstr "Bai e-posta helbideak eta bai pasahitzak maiuskula eta minuskulak bereiz
 msgid "Breadcrumbs"
 msgstr "Nabigazio arrastoa"
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
@@ -579,6 +581,7 @@ msgstr "{username} erabiltzailea ezabatu egin nahi duzu?"
 msgid "Do you really want to delete this item?"
 msgstr "Elementu hau ezabatu egin nahi duzu?"
 
+#: components/manage/Multilingual/TranslationObject
 #: components/manage/Sidebar/Sidebar
 msgid "Document"
 msgstr "Dokumentua"
@@ -881,6 +884,7 @@ msgstr "Data hau etorkizunekoa bada, edukia ez da agertuko data hori iritsi arte
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr "Ziurtatu helbide zuzenean zaudena, hala ere errorea baduzu jarri kontaktuan {site_admin}."
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
@@ -1040,6 +1044,10 @@ msgstr "Izenburua estekatu"
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Link to"
 msgstr "Esteka"
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Link translation for"
+msgstr ""
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
@@ -1788,6 +1796,10 @@ msgstr "Pasahitza berrezartzea abiatu"
 msgid "State"
 msgstr "Egoera"
 
+#: components/manage/Multilingual/CompareLanguages
+msgid "Stop compare"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "String"
 msgstr "Karaktere-katea"
@@ -1812,6 +1824,10 @@ msgstr "Gaia"
 #: helpers/MessageLabels/MessageLabels
 msgid "Success"
 msgstr "Arrakasta"
+
+#: components/theme/LanguageSelector/LanguageSelector
+msgid "Switch to"
+msgstr ""
 
 #: components/manage/Blocks/Table/Edit
 msgid "Table"
@@ -1955,6 +1971,10 @@ msgstr "Katxe guztietan dagoen elementu kopurua"
 msgid "Total number of objects in the database"
 msgstr "Datu-basean dagoen elementu kopurua"
 
+#: components/manage/Add/Add
+msgid "Translate to"
+msgstr ""
+
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
 msgstr "{lang} hizkuntzara itzuli"
@@ -2011,6 +2031,10 @@ msgstr "Desinstalatu"
 msgid "Unknown Block"
 msgstr "Bloke ezezaguna"
 
+#: components/manage/Multilingual/ManageTranslations
+msgid "Unlink translation for"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update"
 msgstr "Eguneratu"
@@ -2046,6 +2070,10 @@ msgstr "Kargatu fitxategiak"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Uploading files"
 msgstr "Fitxategiak kargatzen"
+
+#: components/manage/Blocks/HeroImageLeft/Edit
+msgid "Uploading image"
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
@@ -2232,6 +2260,10 @@ msgstr "Pasahitza ahaztuta?"
 #: config/Blocks
 msgid "common"
 msgstr "Ohikoa"
+
+#: components/manage/Multilingual/CompareLanguages
+msgid "compare_to"
+msgstr ""
 
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"

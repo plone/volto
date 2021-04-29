@@ -192,6 +192,7 @@ msgstr ""
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -218,6 +219,7 @@ msgstr ""
 msgid "Breadcrumbs"
 msgstr ""
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
@@ -591,6 +593,7 @@ msgstr ""
 msgid "Do you really want to delete this item?"
 msgstr "Weet u zeker dat u dit item wilt verwijderen?"
 
+#: components/manage/Multilingual/TranslationObject
 #: components/manage/Sidebar/Sidebar
 msgid "Document"
 msgstr ""
@@ -893,6 +896,7 @@ msgstr "Wanneer deze datum in de toekomst is zal de inhoud niet langer zichtbaar
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr "Indien u er zeker van bent dat u het webadres goed heeft, maar toch een foutmelding krijgt, neem dan contact op met {site_admin}."
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
@@ -1051,6 +1055,10 @@ msgstr ""
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Link to"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Link translation for"
 msgstr ""
 
 #: components/manage/Blocks/Listing/ListingSidebar
@@ -1800,6 +1808,10 @@ msgstr ""
 msgid "State"
 msgstr "Status"
 
+#: components/manage/Multilingual/CompareLanguages
+msgid "Stop compare"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "String"
 msgstr ""
@@ -1823,6 +1835,10 @@ msgstr ""
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
 msgid "Success"
+msgstr ""
+
+#: components/theme/LanguageSelector/LanguageSelector
+msgid "Switch to"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
@@ -1967,6 +1983,10 @@ msgstr ""
 msgid "Total number of objects in the database"
 msgstr ""
 
+#: components/manage/Add/Add
+msgid "Translate to"
+msgstr ""
+
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
 msgstr ""
@@ -2023,6 +2043,10 @@ msgstr ""
 msgid "Unknown Block"
 msgstr ""
 
+#: components/manage/Multilingual/ManageTranslations
+msgid "Unlink translation for"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update"
 msgstr ""
@@ -2058,6 +2082,10 @@ msgstr "Bestanden uploaden"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Uploading files"
 msgstr "Bestanden uploaden"
+
+#: components/manage/Blocks/HeroImageLeft/Edit
+msgid "Uploading image"
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
@@ -2243,6 +2271,10 @@ msgstr ""
 
 #: config/Blocks
 msgid "common"
+msgstr ""
+
+#: components/manage/Multilingual/CompareLanguages
+msgid "compare_to"
 msgstr ""
 
 #: components/manage/Blocks/Block/EditBlockWrapper

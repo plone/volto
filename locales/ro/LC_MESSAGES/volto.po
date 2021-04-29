@@ -173,6 +173,7 @@ msgstr "Disponibil"
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -199,6 +200,7 @@ msgstr "Atât adresa de e-mail, cât și parola sunt case-sensitive, verificați
 msgid "Breadcrumbs"
 msgstr "Breadcrumbs"
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
@@ -572,6 +574,7 @@ msgstr "Doriți cu adevărat să ștergeți utilizatorul {username}?"
 msgid "Do you really want to delete this item?"
 msgstr "Doriți cu adevărat să ștergeți acest articol?"
 
+#: components/manage/Multilingual/TranslationObject
 #: components/manage/Sidebar/Sidebar
 msgid "Document"
 msgstr "Document"
@@ -874,6 +877,7 @@ msgstr "Dacă această dată va fi în viitor, conținutul nu va apărea în lis
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr "Dacă sunteți sigur că aveți adresa web corectă, dar întâmpinați o eroare, vă rugăm să contactați {site_admin}."
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
@@ -1033,6 +1037,10 @@ msgstr "Legătură la titlu"
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Link to"
 msgstr "Legătură către"
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Link translation for"
+msgstr ""
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
@@ -1781,6 +1789,10 @@ msgstr "Start resetare parolă"
 msgid "State"
 msgstr "Stare"
 
+#: components/manage/Multilingual/CompareLanguages
+msgid "Stop compare"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "String"
 msgstr "String"
@@ -1805,6 +1817,10 @@ msgstr "Subiect"
 #: helpers/MessageLabels/MessageLabels
 msgid "Success"
 msgstr "Succes"
+
+#: components/theme/LanguageSelector/LanguageSelector
+msgid "Switch to"
+msgstr ""
 
 #: components/manage/Blocks/Table/Edit
 msgid "Table"
@@ -1948,6 +1964,10 @@ msgstr ""
 msgid "Total number of objects in the database"
 msgstr ""
 
+#: components/manage/Add/Add
+msgid "Translate to"
+msgstr ""
+
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
 msgstr "Traduceți în {lang}"
@@ -2004,6 +2024,10 @@ msgstr "Dezinstalare"
 msgid "Unknown Block"
 msgstr "Bloc necunoscut"
 
+#: components/manage/Multilingual/ManageTranslations
+msgid "Unlink translation for"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update"
 msgstr "Actualizare"
@@ -2039,6 +2063,10 @@ msgstr "Încărcați fișiere"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Uploading files"
 msgstr "Încărcarea fișierelor"
+
+#: components/manage/Blocks/HeroImageLeft/Edit
+msgid "Uploading image"
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
@@ -2225,6 +2253,10 @@ msgstr "Ați uitat parola?"
 #: config/Blocks
 msgid "common"
 msgstr "Comun"
+
+#: components/manage/Multilingual/CompareLanguages
+msgid "compare_to"
+msgstr ""
 
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"

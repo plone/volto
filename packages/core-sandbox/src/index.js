@@ -39,7 +39,7 @@ const addonBlocks = {
 
 export const multilingualFixture = (config) => {
   config.settings.isMultilingual = true;
-  config.settings.supportedLanguages = ['en', 'es'];
+  config.settings.supportedLanguages = ['en', 'it'];
 
   return config;
 };

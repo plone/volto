@@ -190,6 +190,7 @@ msgstr "Disponible"
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -216,6 +217,7 @@ msgstr "L'adresse e-mail et le mot de passe sont sensibles aux majuscules et min
 msgid "Breadcrumbs"
 msgstr "Fil d'Ariane"
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
@@ -589,6 +591,7 @@ msgstr "Voulez-vous vraiment supprimer l'utilisateur {username} ?"
 msgid "Do you really want to delete this item?"
 msgstr "Voulez-vous vraiment supprimer cet élément ?"
 
+#: components/manage/Multilingual/TranslationObject
 #: components/manage/Sidebar/Sidebar
 msgid "Document"
 msgstr "Document"
@@ -891,6 +894,7 @@ msgstr "Si cette date est dans l'avenir, le contenu n'apparaîtera pas dans les 
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr "Si vous êtes certain que l'adresse est bonne, mais que vous avez un erreur, veuillez contacter le {site_admin}."
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
@@ -1050,6 +1054,10 @@ msgstr "Titre du lien"
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Link to"
 msgstr "Lien vers"
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Link translation for"
+msgstr ""
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
@@ -1798,6 +1806,10 @@ msgstr "Lancer la réinitialisation du mot de passe"
 msgid "State"
 msgstr "Etat"
 
+#: components/manage/Multilingual/CompareLanguages
+msgid "Stop compare"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "String"
 msgstr "Chaîne"
@@ -1822,6 +1834,10 @@ msgstr "Sujet"
 #: helpers/MessageLabels/MessageLabels
 msgid "Success"
 msgstr "Succès"
+
+#: components/theme/LanguageSelector/LanguageSelector
+msgid "Switch to"
+msgstr ""
 
 #: components/manage/Blocks/Table/Edit
 msgid "Table"
@@ -1965,6 +1981,10 @@ msgstr "Nombre total d'objets en mémoire de tous les caches"
 msgid "Total number of objects in the database"
 msgstr "Nombre total d'objets dans la base de données"
 
+#: components/manage/Add/Add
+msgid "Translate to"
+msgstr ""
+
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
 msgstr "Traduire en {lang}"
@@ -2021,6 +2041,10 @@ msgstr "Désinstaller"
 msgid "Unknown Block"
 msgstr "Bloc inconnu"
 
+#: components/manage/Multilingual/ManageTranslations
+msgid "Unlink translation for"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update"
 msgstr "Mise à jour"
@@ -2056,6 +2080,10 @@ msgstr "Télécharger des fichiers"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Uploading files"
 msgstr "Téléchargement de fichiers"
+
+#: components/manage/Blocks/HeroImageLeft/Edit
+msgid "Uploading image"
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
@@ -2242,6 +2270,10 @@ msgstr "Mot de passe oublié"
 #: config/Blocks
 msgid "common"
 msgstr "commun"
+
+#: components/manage/Multilingual/CompareLanguages
+msgid "compare_to"
+msgstr ""
 
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"
