@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Change login form fixing accessibility issues @nzambello
+
 ### Bugfix
 
 ### Internal
@@ -23,7 +25,6 @@
 ### Bugfix
 
 - Include selected block in multiselections @sneridagh
-- Change login form fixing accessibility issues @nzambello
 - Correct the selected values rendering at isMulti SelectWidget @ionlizarazu
 
 ### Internal
