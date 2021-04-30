@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Better handling of the outside the engine click detection @sneridagh
+
 ### Internal
 
 ## 12.12.0 (2021-04-29)
