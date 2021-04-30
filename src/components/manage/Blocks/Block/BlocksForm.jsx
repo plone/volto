@@ -51,7 +51,8 @@ const BlocksForm = (props) => {
   const ref = useDetectClickOutside({
     onTriggered: ClickOutsideListener,
     triggerKeys: ['Escape'],
-    disableClick: !isMainForm,
+    // Disabled feature for now https://github.com/plone/volto/pull/2389#issuecomment-830027413
+    disableClick: true,
     disableKeys: !isMainForm,
   });
 

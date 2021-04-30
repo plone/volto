@@ -8,7 +8,9 @@
 
 ### Bugfix
 
-- Better handling of the outside the engine click detection @sneridagh
+- Disable click event of the outside the engine click detection, since it leads to bad
+  behavior for custom and library elements that try to mount things attaching them in
+  the Body or outside the detected container @sneridagh
 
 ### Internal
 
