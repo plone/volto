@@ -92,6 +92,10 @@ msgstr ""
 msgid "Add block…"
 msgstr ""
 
+#: components/manage/Blocks/Table/Edit
+msgid "Add border to inner columns"
+msgstr ""
+
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "Add criteria"
 msgstr ""
@@ -158,6 +162,10 @@ msgstr ""
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Alt text"
+msgstr ""
+
+#: components/manage/Blocks/Table/Edit
+msgid "Alternate row background color"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
@@ -569,10 +577,6 @@ msgstr "Verschil tussen revisie {one} en {two} van {title}"
 msgid "Distributed under the {license}."
 msgstr "Gedistribueerd onder de {license}."
 
-#: components/manage/Blocks/Table/Edit
-msgid "Divide each row into separate cells"
-msgstr ""
-
 #: components/manage/Contents/Contents
 msgid "Do you really want to delete the following items?"
 msgstr "Weet u zeker dat u de volgende items wilt verwijderen?"
@@ -785,7 +789,7 @@ msgid "First"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
-msgid "Fixed width table cells"
+msgid "Fixed width columns"
 msgstr ""
 
 #: components/manage/BlockChooser/BlockChooser
@@ -1106,10 +1110,6 @@ msgstr ""
 msgid "Login Name"
 msgstr "Gebruikersnaam"
 
-#: components/manage/Blocks/Table/Edit
-msgid "Make the table compact"
-msgstr ""
-
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Toolbar/More
 msgid "Manage Translations"
@@ -1137,6 +1137,10 @@ msgstr ""
 
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
+msgstr ""
+
+#: components/manage/Blocks/Table/Edit
+msgid "Minimalistic table design"
 msgstr ""
 
 #: components/manage/Form/ModalForm
@@ -1464,7 +1468,7 @@ msgid "Recurrence ends on"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
-msgid "Reduce complexity"
+msgid "Reduce cell padding"
 msgstr ""
 
 #: components/theme/Anontools/Anontools
@@ -1823,10 +1827,6 @@ msgstr ""
 msgid "String"
 msgstr ""
 
-#: components/manage/Blocks/Table/Edit
-msgid "Stripe alternate rows with color"
-msgstr ""
-
 #: components/theme/ContactForm/ContactForm
 msgid "Subject"
 msgstr ""
@@ -1850,10 +1850,6 @@ msgstr ""
 
 #: components/manage/Blocks/Table/Edit
 msgid "Table"
-msgstr ""
-
-#: components/manage/Blocks/Table/Edit
-msgid "Table color inverted"
 msgstr ""
 
 #: components/manage/Blocks/ToC/View

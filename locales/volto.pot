@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2021-04-23T08:46:16.898Z\n"
+"POT-Creation-Date: 2021-04-30T11:21:20.897Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -89,6 +89,11 @@ msgstr ""
 msgid "Add block…"
 msgstr ""
 
+#: components/manage/Blocks/Table/Edit
+# defaultMessage: Add border to inner columns
+msgid "Add border to inner columns"
+msgstr ""
+
 #: components/manage/Blocks/Listing/QuerystringWidget
 # defaultMessage: Add criteria
 msgid "Add criteria"
@@ -171,6 +176,11 @@ msgstr ""
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Alt text
 msgid "Alt text"
+msgstr ""
+
+#: components/manage/Blocks/Table/Edit
+# defaultMessage: Alternate row background color
+msgid "Alternate row background color"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
@@ -664,11 +674,6 @@ msgstr ""
 msgid "Distributed under the {license}."
 msgstr ""
 
-#: components/manage/Blocks/Table/Edit
-# defaultMessage: Divide each row into separate cells
-msgid "Divide each row into separate cells"
-msgstr ""
-
 #: components/manage/Contents/Contents
 # defaultMessage: Do you really want to delete the following items?
 msgid "Do you really want to delete the following items?"
@@ -929,8 +934,8 @@ msgid "First"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Fixed width table cells
-msgid "Fixed width table cells"
+# defaultMessage: Fixed width columns
+msgid "Fixed width columns"
 msgstr ""
 
 #: components/manage/BlockChooser/BlockChooser
@@ -1325,11 +1330,6 @@ msgstr ""
 msgid "Login Name"
 msgstr ""
 
-#: components/manage/Blocks/Table/Edit
-# defaultMessage: Make the table compact
-msgid "Make the table compact"
-msgstr ""
-
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Toolbar/More
 # defaultMessage: Manage Translations
@@ -1364,6 +1364,11 @@ msgstr ""
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Message
 msgid "Message"
+msgstr ""
+
+#: components/manage/Blocks/Table/Edit
+# defaultMessage: Minimalistic table design
+msgid "Minimalistic table design"
 msgstr ""
 
 #: components/manage/Form/ModalForm
@@ -1766,8 +1771,8 @@ msgid "Recurrence ends on"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Reduce complexity
-msgid "Reduce complexity"
+# defaultMessage: Reduce cell padding
+msgid "Reduce cell padding"
 msgstr ""
 
 #: components/theme/Anontools/Anontools
@@ -2208,11 +2213,6 @@ msgstr ""
 msgid "String"
 msgstr ""
 
-#: components/manage/Blocks/Table/Edit
-# defaultMessage: Stripe alternate rows with color
-msgid "Stripe alternate rows with color"
-msgstr ""
-
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Subject
 msgid "Subject"
@@ -2240,11 +2240,6 @@ msgstr ""
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Table
 msgid "Table"
-msgstr ""
-
-#: components/manage/Blocks/Table/Edit
-# defaultMessage: Table color inverted
-msgid "Table color inverted"
 msgstr ""
 
 #: components/manage/Blocks/ToC/View

@@ -73,6 +73,10 @@ msgstr "Adăugați o descriere …"
 msgid "Add block…"
 msgstr "Adăugare bloc …"
 
+#: components/manage/Blocks/Table/Edit
+msgid "Add border to inner columns"
+msgstr ""
+
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "Add criteria"
 msgstr "Adăugare criterii"
@@ -140,6 +144,10 @@ msgstr ""
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Alt text"
 msgstr "Text alternativ"
+
+#: components/manage/Blocks/Table/Edit
+msgid "Alternate row background color"
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this field?"
@@ -550,10 +558,6 @@ msgstr "Diferența dintre versiunea {one} și {two} din {title}"
 msgid "Distributed under the {license}."
 msgstr "Distribuit sub {license}."
 
-#: components/manage/Blocks/Table/Edit
-msgid "Divide each row into separate cells"
-msgstr "Împărțiți fiecare rând în celule separate"
-
 #: components/manage/Contents/Contents
 msgid "Do you really want to delete the following items?"
 msgstr "Doriți cu adevărat să ștergeți următoarele elemente?"
@@ -766,8 +770,8 @@ msgid "First"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
-msgid "Fixed width table cells"
-msgstr "Celule de tabel cu lățimea fixă"
+msgid "Fixed width columns"
+msgstr ""
 
 #: components/manage/BlockChooser/BlockChooser
 msgid "Fold"
@@ -1087,10 +1091,6 @@ msgstr "Autentificare eșuată"
 msgid "Login Name"
 msgstr "Nume de autentificare"
 
-#: components/manage/Blocks/Table/Edit
-msgid "Make the table compact"
-msgstr "Compactati tabelul"
-
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Toolbar/More
 msgid "Manage Translations"
@@ -1119,6 +1119,10 @@ msgstr ""
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
 msgstr "Mesaj"
+
+#: components/manage/Blocks/Table/Edit
+msgid "Minimalistic table design"
+msgstr ""
 
 #: components/manage/Form/ModalForm
 #: helpers/MessageLabels/MessageLabels
@@ -1445,8 +1449,8 @@ msgid "Recurrence ends on"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
-msgid "Reduce complexity"
-msgstr "Reduce complexitatea"
+msgid "Reduce cell padding"
+msgstr ""
 
 #: components/theme/Anontools/Anontools
 #: components/theme/Register/Register
@@ -1804,10 +1808,6 @@ msgstr ""
 msgid "String"
 msgstr "String"
 
-#: components/manage/Blocks/Table/Edit
-msgid "Stripe alternate rows with color"
-msgstr "Colorati randurile alternativ"
-
 #: components/theme/ContactForm/ContactForm
 msgid "Subject"
 msgstr "Subiect"
@@ -1832,10 +1832,6 @@ msgstr ""
 #: components/manage/Blocks/Table/Edit
 msgid "Table"
 msgstr "Tabel"
-
-#: components/manage/Blocks/Table/Edit
-msgid "Table color inverted"
-msgstr "Culoarea tabelului inversată"
 
 #: components/manage/Blocks/ToC/View
 msgid "Table of Contents"

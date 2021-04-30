@@ -90,6 +90,10 @@ msgstr "Ajouter une description"
 msgid "Add block…"
 msgstr ""
 
+#: components/manage/Blocks/Table/Edit
+msgid "Add border to inner columns"
+msgstr ""
+
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "Add criteria"
 msgstr "Ajouter un critère"
@@ -157,6 +161,10 @@ msgstr ""
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Alt text"
 msgstr "Texte pour la balise alt"
+
+#: components/manage/Blocks/Table/Edit
+msgid "Alternate row background color"
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this field?"
@@ -567,10 +575,6 @@ msgstr "Différence entre le révision {one] et {two} de {title}"
 msgid "Distributed under the {license}."
 msgstr "Distribué sous la {license}."
 
-#: components/manage/Blocks/Table/Edit
-msgid "Divide each row into separate cells"
-msgstr "Diviser chaque colonnes en cellules séparées"
-
 #: components/manage/Contents/Contents
 msgid "Do you really want to delete the following items?"
 msgstr "Voulez-vous vraiment supprimer les éléments suivants ?"
@@ -783,8 +787,8 @@ msgid "First"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
-msgid "Fixed width table cells"
-msgstr "Taille de la cellule de la table fixé"
+msgid "Fixed width columns"
+msgstr ""
 
 #: components/manage/BlockChooser/BlockChooser
 msgid "Fold"
@@ -1104,10 +1108,6 @@ msgstr "Echec de la connexion"
 msgid "Login Name"
 msgstr "Identifiant"
 
-#: components/manage/Blocks/Table/Edit
-msgid "Make the table compact"
-msgstr "Faire une table compacte"
-
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Toolbar/More
 msgid "Manage Translations"
@@ -1136,6 +1136,10 @@ msgstr ""
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
 msgstr "Message"
+
+#: components/manage/Blocks/Table/Edit
+msgid "Minimalistic table design"
+msgstr ""
 
 #: components/manage/Form/ModalForm
 #: helpers/MessageLabels/MessageLabels
@@ -1462,8 +1466,8 @@ msgid "Recurrence ends on"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
-msgid "Reduce complexity"
-msgstr "Réduisez la complexité"
+msgid "Reduce cell padding"
+msgstr ""
 
 #: components/theme/Anontools/Anontools
 #: components/theme/Register/Register
@@ -1821,10 +1825,6 @@ msgstr ""
 msgid "String"
 msgstr "Chaîne"
 
-#: components/manage/Blocks/Table/Edit
-msgid "Stripe alternate rows with color"
-msgstr "Rayez les rangées paires/impaires avec la couleur"
-
 #: components/theme/ContactForm/ContactForm
 msgid "Subject"
 msgstr "Sujet"
@@ -1849,10 +1849,6 @@ msgstr ""
 #: components/manage/Blocks/Table/Edit
 msgid "Table"
 msgstr "Table"
-
-#: components/manage/Blocks/Table/Edit
-msgid "Table color inverted"
-msgstr "Couleur de la table inversée"
 
 #: components/manage/Blocks/ToC/View
 msgid "Table of Contents"
