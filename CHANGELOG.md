@@ -7,6 +7,8 @@
 ### Feature
 
 ### Bugfix
+- Fixing translation of table sidebar @iFlameing
+- Adding `flattenToAppURL` in Link component @iFlameing
 
 ### Internal
 
