@@ -2,22 +2,19 @@
 
 ## 12.12.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
+- Making objectBrowserWidget context aware @iFlameing
+
 ### Bugfix
+
 - Adding `flattenToAppURL` in Link component @iFlameing
 
 - Disable click event of the outside the engine click detection, since it leads to bad
   behavior for custom and library elements that try to mount things attaching them in
   the Body or outside the detected container @sneridagh
 
-### Internal
-
 ## 12.12.0 (2021-04-29)
-
-### Breaking
 
 ### Feature
 
@@ -27,8 +24,6 @@
 
 - Fix image gallery in listing block for contained (non-query based) images @sneridagh
 
-### Internal
-
 ## 12.11.0 (2021-04-28)
 
 ### Feature
@@ -37,7 +32,6 @@
 - as in Plone, hide controlpanel for users that are no 'Manager' or 'Site Administrator'. @giuliaghisini
 - Improve the blocks engine by adding a detector for clicking outside in the `BlocksForm` @sneridagh
 - Include a pluggable architecture for pluggable render-time insertions (similar to <Portal>) @tiberiuichim
-- Making objectBrowserWidget context aware @iFlameing
 - Add parseDateTime helper from DatetimeWidget to handle timezones @nzambello
 
 ### Bugfix
