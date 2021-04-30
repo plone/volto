@@ -80,10 +80,6 @@ msgstr "Gehitu deskribapena..."
 msgid "Add block…"
 msgstr "Gehitu blokea..."
 
-#: components/manage/Blocks/Table/Edit
-msgid "Add border to inner columns"
-msgstr ""
-
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "Add criteria"
 msgstr "Gehitu irizpidea"
@@ -151,10 +147,6 @@ msgstr "Alfabetikoki"
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Alt text"
 msgstr "Ordezko testua (alt)"
-
-#: components/manage/Blocks/Table/Edit
-msgid "Alternate row background color"
-msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this field?"
@@ -565,6 +557,10 @@ msgstr "{title} elementuaren {one} eta {two} errebisioen arteko desberdintasunak
 msgid "Distributed under the {license}."
 msgstr "{license} lizentziapean banatuta."
 
+#: components/manage/Blocks/Table/Edit
+msgid "Divide each row into separate cells"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Do you really want to delete the following items?"
 msgstr "Elementu hauek ezabatu egin nahi dituzu?"
@@ -777,7 +773,7 @@ msgid "First"
 msgstr "Lehenengo"
 
 #: components/manage/Blocks/Table/Edit
-msgid "Fixed width columns"
+msgid "Fixed width table cells"
 msgstr ""
 
 #: components/manage/BlockChooser/BlockChooser
@@ -1098,6 +1094,10 @@ msgstr "Sartzeak huts egin du"
 msgid "Login Name"
 msgstr "Erabiltzaile-izena"
 
+#: components/manage/Blocks/Table/Edit
+msgid "Make the table compact"
+msgstr ""
+
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Toolbar/More
 msgid "Manage Translations"
@@ -1126,10 +1126,6 @@ msgstr "Balio handiena {len} da."
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
 msgstr "Mezua"
-
-#: components/manage/Blocks/Table/Edit
-msgid "Minimalistic table design"
-msgstr ""
 
 #: components/manage/Form/ModalForm
 #: helpers/MessageLabels/MessageLabels
@@ -1456,7 +1452,7 @@ msgid "Recurrence ends on"
 msgstr "Egun honetan amaitu"
 
 #: components/manage/Blocks/Table/Edit
-msgid "Reduce cell padding"
+msgid "Reduce complexity"
 msgstr ""
 
 #: components/theme/Anontools/Anontools
@@ -1814,6 +1810,10 @@ msgstr ""
 #: components/manage/Widgets/SchemaWidget
 msgid "String"
 msgstr "Karaktere-katea"
+
+#: components/manage/Blocks/Table/Edit
+msgid "Stripe alternate rows with color"
+msgstr ""
 
 #: components/theme/ContactForm/ContactForm
 msgid "Subject"

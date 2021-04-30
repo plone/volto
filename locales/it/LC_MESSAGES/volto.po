@@ -73,10 +73,6 @@ msgstr "Aggiungi una descrizione…"
 msgid "Add block…"
 msgstr "Aggiungi un blocco…"
 
-#: components/manage/Blocks/Table/Edit
-msgid "Add border to inner columns"
-msgstr ""
-
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "Add criteria"
 msgstr "Aggiungi un criterio"
@@ -144,10 +140,6 @@ msgstr "Alfabetico"
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Alt text"
 msgstr "Testo alternativo"
-
-#: components/manage/Blocks/Table/Edit
-msgid "Alternate row background color"
-msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this field?"
@@ -558,6 +550,10 @@ msgstr "Differenze tra la revisione {one} e {two} di {title}"
 msgid "Distributed under the {license}."
 msgstr "Distribuito sotto {license}"
 
+#: components/manage/Blocks/Table/Edit
+msgid "Divide each row into separate cells"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Do you really want to delete the following items?"
 msgstr "Vuoi veramente eliminare i seguenti elementi?"
@@ -770,7 +766,7 @@ msgid "First"
 msgstr "Primo"
 
 #: components/manage/Blocks/Table/Edit
-msgid "Fixed width columns"
+msgid "Fixed width table cells"
 msgstr ""
 
 #: components/manage/BlockChooser/BlockChooser
@@ -1091,6 +1087,10 @@ msgstr "Accesso fallito"
 msgid "Login Name"
 msgstr "Nome utente"
 
+#: components/manage/Blocks/Table/Edit
+msgid "Make the table compact"
+msgstr ""
+
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Toolbar/More
 msgid "Manage Translations"
@@ -1119,10 +1119,6 @@ msgstr "Il valore massimo è {len}."
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
 msgstr "Messaggio"
-
-#: components/manage/Blocks/Table/Edit
-msgid "Minimalistic table design"
-msgstr ""
 
 #: components/manage/Form/ModalForm
 #: helpers/MessageLabels/MessageLabels
@@ -1449,7 +1445,7 @@ msgid "Recurrence ends on"
 msgstr "il"
 
 #: components/manage/Blocks/Table/Edit
-msgid "Reduce cell padding"
+msgid "Reduce complexity"
 msgstr ""
 
 #: components/theme/Anontools/Anontools
@@ -1807,6 +1803,10 @@ msgstr "Smetti di confrontare con "
 #: components/manage/Widgets/SchemaWidget
 msgid "String"
 msgstr "Stringa"
+
+#: components/manage/Blocks/Table/Edit
+msgid "Stripe alternate rows with color"
+msgstr ""
 
 #: components/theme/ContactForm/ContactForm
 msgid "Subject"

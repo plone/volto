@@ -117,23 +117,23 @@ const messages = defineMessages({
     defaultMessage: 'Delete col',
   },
   fixed: {
-    id: 'Fixed width columns',
+    id: 'Fixed width table cells',
     defaultMessage: 'Fixed width columns',
   },
   compact: {
-    id: 'Reduce cell padding',
+    id: 'Make the table compact',
     defaultMessage: 'Reduce cell padding',
   },
   basic: {
-    id: 'Minimalistic table design',
+    id: 'Reduce complexity',
     defaultMessage: 'Minimalistic table design',
   },
   celled: {
-    id: 'Add border to inner columns',
+    id: 'Divide each row into separate cells',
     defaultMessage: 'Add border to inner columns',
   },
   striped: {
-    id: 'Alternate row background color',
+    id: 'Stripe alternate rows with color',
     defaultMessage: 'Alternate row background color',
   },
   headerCell: {

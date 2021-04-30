@@ -73,10 +73,6 @@ msgstr "Adăugați o descriere …"
 msgid "Add block…"
 msgstr "Adăugare bloc …"
 
-#: components/manage/Blocks/Table/Edit
-msgid "Add border to inner columns"
-msgstr ""
-
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "Add criteria"
 msgstr "Adăugare criterii"
@@ -144,10 +140,6 @@ msgstr ""
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Alt text"
 msgstr "Text alternativ"
-
-#: components/manage/Blocks/Table/Edit
-msgid "Alternate row background color"
-msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this field?"
@@ -558,6 +550,10 @@ msgstr "Diferența dintre versiunea {one} și {two} din {title}"
 msgid "Distributed under the {license}."
 msgstr "Distribuit sub {license}."
 
+#: components/manage/Blocks/Table/Edit
+msgid "Divide each row into separate cells"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Do you really want to delete the following items?"
 msgstr "Doriți cu adevărat să ștergeți următoarele elemente?"
@@ -770,7 +766,7 @@ msgid "First"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
-msgid "Fixed width columns"
+msgid "Fixed width table cells"
 msgstr ""
 
 #: components/manage/BlockChooser/BlockChooser
@@ -1091,6 +1087,10 @@ msgstr "Autentificare eșuată"
 msgid "Login Name"
 msgstr "Nume de autentificare"
 
+#: components/manage/Blocks/Table/Edit
+msgid "Make the table compact"
+msgstr ""
+
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Toolbar/More
 msgid "Manage Translations"
@@ -1119,10 +1119,6 @@ msgstr ""
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
 msgstr "Mesaj"
-
-#: components/manage/Blocks/Table/Edit
-msgid "Minimalistic table design"
-msgstr ""
 
 #: components/manage/Form/ModalForm
 #: helpers/MessageLabels/MessageLabels
@@ -1449,7 +1445,7 @@ msgid "Recurrence ends on"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
-msgid "Reduce cell padding"
+msgid "Reduce complexity"
 msgstr ""
 
 #: components/theme/Anontools/Anontools
@@ -1807,6 +1803,10 @@ msgstr ""
 #: components/manage/Widgets/SchemaWidget
 msgid "String"
 msgstr "String"
+
+#: components/manage/Blocks/Table/Edit
+msgid "Stripe alternate rows with color"
+msgstr ""
 
 #: components/theme/ContactForm/ContactForm
 msgid "Subject"

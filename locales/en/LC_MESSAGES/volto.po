@@ -73,10 +73,6 @@ msgstr ""
 msgid "Add block…"
 msgstr ""
 
-#: components/manage/Blocks/Table/Edit
-msgid "Add border to inner columns"
-msgstr ""
-
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "Add criteria"
 msgstr ""
@@ -143,10 +139,6 @@ msgstr ""
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Alt text"
-msgstr ""
-
-#: components/manage/Blocks/Table/Edit
-msgid "Alternate row background color"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
@@ -558,6 +550,10 @@ msgstr ""
 msgid "Distributed under the {license}."
 msgstr ""
 
+#: components/manage/Blocks/Table/Edit
+msgid "Divide each row into separate cells"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Do you really want to delete the following items?"
 msgstr ""
@@ -770,7 +766,7 @@ msgid "First"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
-msgid "Fixed width columns"
+msgid "Fixed width table cells"
 msgstr ""
 
 #: components/manage/BlockChooser/BlockChooser
@@ -1091,6 +1087,10 @@ msgstr ""
 msgid "Login Name"
 msgstr ""
 
+#: components/manage/Blocks/Table/Edit
+msgid "Make the table compact"
+msgstr ""
+
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Toolbar/More
 msgid "Manage Translations"
@@ -1118,10 +1118,6 @@ msgstr ""
 
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
-msgstr ""
-
-#: components/manage/Blocks/Table/Edit
-msgid "Minimalistic table design"
 msgstr ""
 
 #: components/manage/Form/ModalForm
@@ -1449,7 +1445,7 @@ msgid "Recurrence ends on"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
-msgid "Reduce cell padding"
+msgid "Reduce complexity"
 msgstr ""
 
 #: components/theme/Anontools/Anontools
@@ -1806,6 +1802,10 @@ msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 msgid "String"
+msgstr ""
+
+#: components/manage/Blocks/Table/Edit
+msgid "Stripe alternate rows with color"
 msgstr ""
 
 #: components/theme/ContactForm/ContactForm
