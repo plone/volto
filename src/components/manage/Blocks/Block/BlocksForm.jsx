@@ -15,7 +15,7 @@ import {
 import EditBlockWrapper from './EditBlockWrapper';
 import { setSidebarTab } from '@plone/volto/actions';
 import { useDispatch } from 'react-redux';
-import { useDetectClickOutside } from 'react-detect-click-outside';
+import { useDetectClickOutside } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
 const BlocksForm = (props) => {
