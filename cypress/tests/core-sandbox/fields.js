@@ -83,4 +83,41 @@ context('Special fields Acceptance Tests', () => {
       cy.findByText('Custom');
     });
   });
+  describe('ObjectBrowserWidget', () => {
+    beforeEach(() => {
+      // given a logged in editor and a page in edit mode
+      cy.visit('/');
+      cy.autologin();
+      cy.createContent({
+        contentType: 'Document',
+        contentId: 'document',
+        contentTitle: 'Test document',
+      });
+      cy.createContent({
+        contentType: 'Image',
+        contentId: 'my-image',
+        contentTitle: 'My Image',
+        path: '/document',
+      });
+      cy.visit('/document');
+      cy.waitForResourceToLoad('@navigation');
+      cy.waitForResourceToLoad('@breadcrumbs');
+      cy.waitForResourceToLoad('@actions');
+      cy.waitForResourceToLoad('@types');
+      cy.waitForResourceToLoad('document');
+      cy.navigate('/document/edit');
+      cy.get(`.block.title [data-contents]`);
+    });
+    it('As editor I can add a block with an objetBrowserWidget and the context path is preserved', function () {
+      cy.get('.block.inner.text .public-DraftEditor-content').click();
+      cy.get('.button .block-add-button').click({ force: true });
+      cy.get('.blocks-chooser .mostUsed .button.testBlock').click();
+
+      cy.get(
+        '[aria-labelledby="fieldset-default-field-label-href"] [aria-label="Open object browser"]',
+      ).click();
+      cy.findByText('My Image');
+      cy.findByText('/document');
+    });
+  });
 });

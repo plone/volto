@@ -60,6 +60,7 @@ class ObjectBrowserBody extends Component {
     onSelectItem: PropTypes.func,
     dataName: PropTypes.string,
     maximumSelectionSize: PropTypes.number,
+    contextURL: PropTypes.string,
   };
 
   /**
@@ -86,11 +87,7 @@ class ObjectBrowserBody extends Component {
     super(props);
     this.state = {
       currentFolder:
-        this.props.mode === 'multiple'
-          ? '/'
-          : this.props.contextURL
-          ? getParentURL(this.props.contextURL)
-          : '/',
+        this.props.mode === 'multiple' ? '/' : this.props.contextURL || '/',
       currentImageFolder:
         this.props.mode === 'multiple'
           ? '/'
