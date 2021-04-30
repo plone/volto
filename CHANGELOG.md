@@ -7,6 +7,7 @@
 ### Feature
 
 ### Bugfix
+- Fixing translation of table sidebar @iFlameing
 
 ### Internal
 

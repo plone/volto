@@ -117,28 +117,24 @@ const messages = defineMessages({
     defaultMessage: 'Delete col',
   },
   fixed: {
-    id: 'Fixed width table cells',
-    defaultMessage: 'Fixed width table cells',
+    id: 'Fixed width columns',
+    defaultMessage: 'Fixed width columns',
   },
   compact: {
-    id: 'Make the table compact',
-    defaultMessage: 'Make the table compact',
+    id: 'Reduce cell padding',
+    defaultMessage: 'Reduce cell padding',
   },
   basic: {
-    id: 'Reduce complexity',
-    defaultMessage: 'Reduce complexity',
+    id: 'Minimalistic table design',
+    defaultMessage: 'Minimalistic table design',
   },
   celled: {
-    id: 'Divide each row into separate cells',
-    defaultMessage: 'Divide each row into separate cells',
-  },
-  inverted: {
-    id: 'Table color inverted',
-    defaultMessage: 'Table color inverted',
+    id: 'Add border to inner columns',
+    defaultMessage: 'Add border to inner columns',
   },
   striped: {
-    id: 'Stripe alternate rows with color',
-    defaultMessage: 'Stripe alternate rows with color',
+    id: 'Alternate row background color',
+    defaultMessage: 'Alternate row background color',
   },
   headerCell: {
     id: 'Header cell',
@@ -211,7 +207,6 @@ class Edit extends Component {
     this.toggleCompact = this.toggleCompact.bind(this);
     this.toggleBasic = this.toggleBasic.bind(this);
     this.toggleCelled = this.toggleCelled.bind(this);
-    this.toggleInverted = this.toggleInverted.bind(this);
     this.toggleStriped = this.toggleStriped.bind(this);
   }
 
@@ -517,15 +512,6 @@ class Edit extends Component {
   }
 
   /**
-   * Toggle inverted
-   * @method toggleInverted
-   * @returns {undefined}
-   */
-  toggleInverted() {
-    this.toggleBool('inverted');
-  }
-
-  /**
    * Toggle striped
    * @method toggleStriped
    * @returns {undefined}
@@ -727,15 +713,6 @@ class Edit extends Component {
                   type="boolean"
                   value={this.props.data.table && this.props.data.table.basic}
                   onChange={this.toggleBasic}
-                />
-                <Field
-                  id="inverted"
-                  title={this.props.intl.formatMessage(messages.inverted)}
-                  type="boolean"
-                  value={
-                    this.props.data.table && this.props.data.table.inverted
-                  }
-                  onChange={this.toggleInverted}
                 />
               </Segment>
               <Segment secondary attached>
