@@ -31,6 +31,10 @@ const messages = defineMessages({
     id: 'Selected items',
     defaultMessage: 'Selected items',
   },
+  back: {
+    id: 'Back',
+    defaultMessage: 'Back',
+  },
   of: { id: 'Selected items - x of y', defaultMessage: 'of' },
 });
 
@@ -331,11 +335,12 @@ class ObjectBrowserBody extends Component {
               )}
             </>
           ) : (
-            <Icon
-              name={backSVG}
-              size="24px"
+            <button
+              aria-label={this.props.intl.formatMessage(messages.back)}
               onClick={() => this.navigateTo(this.state.parentFolder)}
-            />
+            >
+              <Icon name={backSVG} size="24px" />
+            </button>
           )}
           {this.state.showSearchInput ? (
             <Input

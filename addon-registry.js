@@ -191,21 +191,26 @@ class AddonConfigurationRegistry {
   }
 
   initTestingPackage(name) {
-    const testingPackagePath = `${this.projectRootPath}/packages/${name}/src`;
+    const normalizedAddonName = name.split(':')[0];
+    const testingPackagePath = `${this.projectRootPath}/packages/${normalizedAddonName}/src`;
     if (fs.existsSync(testingPackagePath)) {
       const basePath = getPackageBasePath(testingPackagePath);
       const packageJson = path.join(basePath, 'package.json');
 
-      if (!this.addonNames.includes(name)) this.addonNames.push(name);
+      if (!this.addonNames.includes(normalizedAddonName))
+        this.addonNames.push(normalizedAddonName);
       const pkg = {
         modulePath: testingPackagePath,
         packageJson: packageJson,
         isPublishedPackage: false,
-        name,
+        name: normalizedAddonName,
         addons: require(packageJson).addons || [],
       };
 
-      this.packages[name] = Object.assign(this.packages[name] || {}, pkg);
+      this.packages[normalizedAddonName] = Object.assign(
+        this.packages[normalizedAddonName] || {},
+        pkg,
+      );
     }
   }
 

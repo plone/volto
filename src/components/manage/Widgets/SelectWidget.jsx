@@ -96,17 +96,17 @@ function getDefaultValues(choices, value) {
       value: 'no-value',
     };
   }
-  if (isObject(value)) {
-    return {
-      label: value.title !== 'None' && value.title ? value.title : value.token,
-      value: value.token,
-    };
-  }
+
   if (isArray(value) && choices.length > 0) {
     return value.map((v) => ({
       label: find(choices, (o) => o[0] === v)?.[1] || v,
       value: v,
     }));
+  } else if (isObject(value)) {
+    return {
+      label: value.title !== 'None' && value.title ? value.title : value.token,
+      value: value.token,
+    };
   } else if (value && choices.length > 0) {
     return { label: find(choices, (o) => o[0] === value)?.[1] || value, value };
   } else {
