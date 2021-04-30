@@ -37,6 +37,7 @@
 - as in Plone, hide controlpanel for users that are no 'Manager' or 'Site Administrator'. @giuliaghisini
 - Improve the blocks engine by adding a detector for clicking outside in the `BlocksForm` @sneridagh
 - Include a pluggable architecture for pluggable render-time insertions (similar to <Portal>) @tiberiuichim
+- Making objectBrowserWidget context aware @iFlameing
 - Add parseDateTime helper from DatetimeWidget to handle timezones @nzambello
 
 ### Bugfix
