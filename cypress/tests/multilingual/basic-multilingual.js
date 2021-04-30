@@ -33,7 +33,7 @@ describe('Basic multilingual Tests', () => {
     cy.getCookie('lang').should('have.property', 'value', 'it');
   });
 
-  it('Language selector in content', function () {
+  it.only('Language selector in content', function () {
     // Create translation
     cy.get('#toolbar-add').click();
     cy.findByText('Translate to italiano').click();
@@ -50,6 +50,11 @@ describe('Basic multilingual Tests', () => {
     cy.get('.new-translation .ui.basic.icon.button.block-add-button').click();
     cy.get('.ui.basic.icon.button.image').contains('Immagine').click();
     cy.get('#toolbar-save').click();
+    cy.waitForResourceToLoad('@navigation');
+    cy.waitForResourceToLoad('@breadcrumbs');
+    cy.waitForResourceToLoad('@actions');
+    cy.waitForResourceToLoad('@types');
+    cy.waitForResourceToLoad('my-it-page');
 
     cy.findByLabelText('Switch to english').click();
 
