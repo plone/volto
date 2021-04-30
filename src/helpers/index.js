@@ -16,6 +16,7 @@ export {
   addAppURL,
   flattenHTMLToAppURL,
   flattenToAppURL,
+  toPublicURL,
   isInternalURL,
   getParentUrl,
   getBaseUrl,
@@ -73,3 +74,5 @@ export {
 export { messages } from './MessageLabels/MessageLabels';
 export { withBlockSchemaEnhancer, withBlockExtensions } from './Extensions';
 export { asyncConnect } from './AsyncConnect';
+export { userHasRoles } from './User/User';
+// export { injectLazyLibs } from './Loadable/Loadable';

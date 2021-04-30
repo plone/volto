@@ -1,12 +1,16 @@
 # Change Log
 
-## 4.3.0 (unreleased)
+## 4.3.1 (unreleased)
+
+### Added
+
+### Changes
+
+## 4.3.0 (2021-04-28)
 
 ### Added
 
 - Ability to bootstrap a Volto project for the addon using a Makefile @tiberiuichim
-
-### Changes
 
 ## 4.2.0 (2021-04-05)
 
