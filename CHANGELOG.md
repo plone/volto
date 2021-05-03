@@ -4,6 +4,8 @@
 
 ### Breaking
 
+- Deprecate Node 10 since it's out of LTS @sneridagh
+
 ### Feature
 
 ### Bugfix
