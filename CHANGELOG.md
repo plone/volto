@@ -4,7 +4,14 @@
 
 ### Breaking
 
-- Seamless mode by default. Added `Host` header support for deployments, so no `RAZZLE_API_PATH` is required in production builds anymore if the header is present. Not an strictly breaking change, but it's a default behavior change worth to notice on its own @sneridagh
+- Seamless mode by default. Added `Host` header support for deployments, so no
+  `RAZZLE_API_PATH` is required in production builds anymore if the header is present.
+  Not an strictly breaking change, but it's a default behavior change worth to notice on
+  its own. No change required in your deployments if you suply currently
+  `RAZZLE_API_PATH` in build time. See documentation for more information. @sneridagh
+
+For a complete list of actions to follow, please read the upgrade guide
+https://docs.voltocms.com/upgrade-guide/
 
 ### Feature
 
