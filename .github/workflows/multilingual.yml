@@ -1,4 +1,4 @@
-name: Volto Multilingual tests
+name: Multilingual Tests
 on: [push]
 jobs:
   build:

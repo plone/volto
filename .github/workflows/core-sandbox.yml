@@ -1,4 +1,4 @@
-name: Volto Core Sandbox tests
+name: Core Sandbox Tests
 on: [push]
 jobs:
   build:

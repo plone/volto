@@ -1,17 +1,42 @@
 # Change Log
 
-## 12.13.1 (unreleased)
+## 12.14.1 (unreleased)
 
 ### Breaking
 
 - Remove the "inverted" option in Table Block since it was useless with the current CSS
   set. Better naming of options and labels in table block (English). Updating the i18n messages for the used translations is advisable, but not required.  @iFlameing
+- Seamless mode by default. Added `Host` header support for deployments, so no
+  `RAZZLE_API_PATH` is required in production builds anymore if the header is present.
+  Not an strictly breaking change, but it's a default behavior change worth to notice on
+  its own. No change required in your deployments if you suply currently
+  `RAZZLE_API_PATH` in build time. See documentation for more information. @sneridagh
+- Deprecate Node 10 since it's out of LTS @sneridagh
+
+For a complete list of actions to follow, please read the upgrade guide
+https://docs.voltocms.com/upgrade-guide/
 
 ### Feature
+
+- Change login form fixing accessibility issues @nzambello
 
 ### Bugfix
 
 ### Internal
+
+- Improve Github Actions names @sneridagh
+
+## 12.12.0 (2021-04-29)
+## 12.14.0 (2021-05-03)
+
+### Feature
+
+- Provide api for block extensions. See `/blocks/extensions` in documentation @tiberiuichim
+
+### Bugfix
+
+- In BlockDataForm, always clone schema before applying enhancers @tiberiuichim
+- In BlockDataForm, don't add the variations field multiple times @tiberiuichim
 
 ## 12.13.0 (2021-04-30)
 
@@ -45,14 +70,11 @@
 - as in Plone, hide controlpanel for users that are no 'Manager' or 'Site Administrator'. @giuliaghisini
 - Improve the blocks engine by adding a detector for clicking outside in the `BlocksForm` @sneridagh
 - Include a pluggable architecture for pluggable render-time insertions (similar to <Portal>) @tiberiuichim
-- Provide api for block extensions. See `/blocks/extensions` in documentation @tiberiuichim
 - Add parseDateTime helper from DatetimeWidget to handle timezones @nzambello
 
 ### Bugfix
 
 - Include selected block in multiselections @sneridagh
-- In BlockDataForm, always clone schema before applying enhancers @tiberiuichim
-- In BlockDataForm, don't add the variations field multiple times @tiberiuichim
 - Correct the selected values rendering at isMulti SelectWidget @ionlizarazu
 
 ### Internal
