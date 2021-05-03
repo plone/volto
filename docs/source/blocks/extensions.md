@@ -38,9 +38,9 @@ block allows it, even use alternative renderers (eg. in view mode) showing the
 enhanced fields or modifying the block look and feel or behavior.
 
 If you use schema-based forms to edit the block's data, use the `BlockDataForm`
-component instead of the `InlineForm`. The BlockDataForm component will
-automatically inject a "variation" select dropdown into the form, allowing
-editors to choose the desired block variation.
+component instead of the `InlineForm`. The BlockDataForm component will automatically
+inject a "variation" select dropdown into the form (if any defined), allowing editors
+to choose the desired block variation.
 
 This is how the configuration would like for an imaginary block:
 
