@@ -1,8 +1,10 @@
 # Change Log
 
-## 12.12.1 (unreleased)
+## 12.14.1 (unreleased)
 
 ### Breaking
+
+- Deprecate Node 10 since it's out of LTS @sneridagh
 
 ### Feature
 
@@ -13,8 +15,32 @@
 - Improve Github Actions names @sneridagh
 
 ## 12.12.0 (2021-04-29)
+## 12.14.0 (2021-05-03)
 
-### Breaking
+### Feature
+
+- Provide api for block extensions. See `/blocks/extensions` in documentation @tiberiuichim
+
+### Bugfix
+
+- In BlockDataForm, always clone schema before applying enhancers @tiberiuichim
+- In BlockDataForm, don't add the variations field multiple times @tiberiuichim
+
+## 12.13.0 (2021-04-30)
+
+### Feature
+
+- Making objectBrowserWidget context aware @iFlameing
+
+### Bugfix
+
+- Adding `flattenToAppURL` in Link component @iFlameing
+
+- Disable click event of the outside the engine click detection, since it leads to bad
+  behavior for custom and library elements that try to mount things attaching them in
+  the Body or outside the detected container @sneridagh
+
+## 12.12.0 (2021-04-29)
 
 ### Feature
 
@@ -23,8 +49,6 @@
 ### Bugfix
 
 - Fix image gallery in listing block for contained (non-query based) images @sneridagh
-
-### Internal
 
 ## 12.11.0 (2021-04-28)
 

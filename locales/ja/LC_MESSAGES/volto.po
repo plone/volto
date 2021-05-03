@@ -2118,7 +2118,7 @@ msgstr "ユーザとグループ"
 msgid "Users and groups settings"
 msgstr "ユーザとグループの設定"
 
-#: components/manage/Form/BlockDataForm
+#: helpers/Extensions/withBlockSchemaEnhancer
 msgid "Variation"
 msgstr ""
 
