@@ -180,6 +180,7 @@ msgstr "利用可能"
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -206,6 +207,7 @@ msgstr "メールアドレスとパスワードは大文字小文字が区別さ
 msgid "Breadcrumbs"
 msgstr "パンくず"
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
@@ -579,6 +581,7 @@ msgstr "ユーザ {username} を削除してよろしいですか?"
 msgid "Do you really want to delete this item?"
 msgstr "このアイテムを削除してよろしいですか?"
 
+#: components/manage/Multilingual/TranslationObject
 #: components/manage/Sidebar/Sidebar
 msgid "Document"
 msgstr "文書"
@@ -889,6 +892,7 @@ msgstr "パスワードを忘れたら、 {forgotpassword}"
 msgid "If you you do not have an account here, head over to the {registrationform}."
 msgstr "アカウントを持っていない場合、ここが {registrationform} です。"
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
@@ -1048,6 +1052,10 @@ msgstr "リンクタイトル"
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Link to"
 msgstr "リンク先"
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Link translation for"
+msgstr ""
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
@@ -1795,6 +1803,10 @@ msgstr "パスワード再設定を開始"
 msgid "State"
 msgstr "状態"
 
+#: components/manage/Multilingual/CompareLanguages
+msgid "Stop compare"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "String"
 msgstr "String (未翻訳)"
@@ -1819,6 +1831,10 @@ msgstr "件名"
 #: helpers/MessageLabels/MessageLabels
 msgid "Success"
 msgstr "成功"
+
+#: components/theme/LanguageSelector/LanguageSelector
+msgid "Switch to"
+msgstr ""
 
 #: components/manage/Blocks/Table/Edit
 msgid "Table"
@@ -1962,6 +1978,10 @@ msgstr "キャッシュメモリ内のオブジェクト数"
 msgid "Total number of objects in the database"
 msgstr "データベースの中にあるオブジェクト数"
 
+#: components/manage/Add/Add
+msgid "Translate to"
+msgstr ""
+
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
 msgstr "{lang} に翻訳する"
@@ -2018,6 +2038,10 @@ msgstr "アンインストール"
 msgid "Unknown Block"
 msgstr "不明なブロック"
 
+#: components/manage/Multilingual/ManageTranslations
+msgid "Unlink translation for"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update"
 msgstr "更新"
@@ -2053,6 +2077,10 @@ msgstr "アップロードファイル"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Uploading files"
 msgstr "ファイルをアップロードしています"
+
+#: components/manage/Blocks/HeroImageLeft/Edit
+msgid "Uploading image"
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
@@ -2090,7 +2118,7 @@ msgstr "ユーザとグループ"
 msgid "Users and groups settings"
 msgstr "ユーザとグループの設定"
 
-#: components/manage/Form/BlockDataForm
+#: helpers/Extensions/withBlockSchemaEnhancer
 msgid "Variation"
 msgstr ""
 
@@ -2238,6 +2266,10 @@ msgstr "パスワードを忘れた？"
 #: config/Blocks
 msgid "common"
 msgstr "一般"
+
+#: components/manage/Multilingual/CompareLanguages
+msgid "compare_to"
+msgstr ""
 
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"

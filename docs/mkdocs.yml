@@ -53,11 +53,13 @@ nav:
       - Overriding i18n messages: 'recipes/overridei18n.md'
       - App component insertion point: 'recipes/appextras.md'
       - Context navigation component: 'recipes/contextnavigation.md'
+      - Pluggables: 'recipes/pluggables.md'
   - Blocks:
       - Introduction: 'blocks/introduction.md'
       - Anatomy: 'blocks/anatomy.md'
       - Settings: 'blocks/settings.md'
       - Edit components: 'blocks/editcomponent.md'
+      - Extensions: 'blocks/extensions.md'
   - Addons:
       - Introduction: 'addons/index.md'
       - Internationalization: 'addons/i18n.md'

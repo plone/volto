@@ -173,6 +173,7 @@ msgstr "Disponibile"
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -199,6 +200,7 @@ msgstr "E-mail e password distinguono entrambi le maiuscole dalle minuscole, ver
 msgid "Breadcrumbs"
 msgstr "Briciole di pane"
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
@@ -320,7 +322,7 @@ msgstr "Codice"
 
 #: components/manage/Widgets/ObjectListWidget
 msgid "Collapse item"
-msgstr ""
+msgstr "Collassa elemento"
 
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"
@@ -572,6 +574,7 @@ msgstr "Vuoi veramente eliminare l'utente {username}?"
 msgid "Do you really want to delete this item?"
 msgstr "Vuoi veramente eliminare questo elemento?"
 
+#: components/manage/Multilingual/TranslationObject
 #: components/manage/Sidebar/Sidebar
 msgid "Document"
 msgstr "Pagina"
@@ -653,7 +656,7 @@ msgstr "Google Maps incorporata"
 
 #: components/manage/Widgets/ObjectListWidget
 msgid "Empty object list"
-msgstr ""
+msgstr "Lista vuota"
 
 #: components/manage/Controlpanels/ContentTypeLayout
 msgid "Enable editable Blocks"
@@ -882,6 +885,7 @@ msgstr "Se hai dimenticato la tua password, {forgotpassword}."
 msgid "If you you do not have an account here, head over to the {registrationform}."
 msgstr "Se non ti sei ancora iscritto, compila il {registrationform} per diventare un collaboratore."
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
@@ -1041,6 +1045,10 @@ msgstr "Link al resto"
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Link to"
 msgstr "Link a"
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Link translation for"
+msgstr ""
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
@@ -1455,7 +1463,7 @@ msgstr "Rilevanza"
 
 #: components/manage/Widgets/ObjectListWidget
 msgid "Remove item"
-msgstr ""
+msgstr "Elimina l'elemento"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
@@ -1701,7 +1709,7 @@ msgstr "Mostra risposte"
 
 #: components/manage/Widgets/ObjectListWidget
 msgid "Show item"
-msgstr ""
+msgstr "Mostra elemento"
 
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
@@ -1788,6 +1796,10 @@ msgstr "Rinnova la password"
 msgid "State"
 msgstr "Stato"
 
+#: components/manage/Multilingual/CompareLanguages
+msgid "Stop compare"
+msgstr "Smetti di confrontare con "
+
 #: components/manage/Widgets/SchemaWidget
 msgid "String"
 msgstr "Stringa"
@@ -1812,6 +1824,10 @@ msgstr "Oggetto"
 #: helpers/MessageLabels/MessageLabels
 msgid "Success"
 msgstr "Successo"
+
+#: components/theme/LanguageSelector/LanguageSelector
+msgid "Switch to"
+msgstr ""
 
 #: components/manage/Blocks/Table/Edit
 msgid "Table"
@@ -1955,6 +1971,10 @@ msgstr "Numero totale degli oggetti di tutte le cache"
 msgid "Total number of objects in the database"
 msgstr "Numero totale di oggetti nel database"
 
+#: components/manage/Add/Add
+msgid "Translate to"
+msgstr "Traduci in"
+
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
 msgstr "Traduci in {lang}"
@@ -2011,6 +2031,10 @@ msgstr "Disinstalla"
 msgid "Unknown Block"
 msgstr "Blocco sconosciuto"
 
+#: components/manage/Multilingual/ManageTranslations
+msgid "Unlink translation for"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update"
 msgstr "Aggiorna"
@@ -2046,6 +2070,10 @@ msgstr "Carica file"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Uploading files"
 msgstr "Caricamento dei files"
+
+#: components/manage/Blocks/HeroImageLeft/Edit
+msgid "Uploading image"
+msgstr "Sto caricando l'immagine"
 
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
@@ -2083,7 +2111,7 @@ msgstr "Utenti e gruppi"
 msgid "Users and groups settings"
 msgstr "Impostazioni utenti e gruppi"
 
-#: components/manage/Form/BlockDataForm
+#: helpers/Extensions/withBlockSchemaEnhancer
 msgid "Variation"
 msgstr ""
 
@@ -2231,6 +2259,10 @@ msgstr "Hai dimenticato la tua password?"
 #: config/Blocks
 msgid "common"
 msgstr "Comuni"
+
+#: components/manage/Multilingual/CompareLanguages
+msgid "compare_to"
+msgstr "Confronta con altre traduzioni"
 
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"

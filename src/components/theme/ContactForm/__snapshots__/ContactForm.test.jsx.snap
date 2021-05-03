@@ -33,115 +33,120 @@ exports[`Contact form renders a contact form 1`] = `
         method="post"
         onSubmit={[Function]}
       >
-        <div
-          className="ui raised segments"
+        <fieldset
+          className="invisible"
+          disabled={false}
         >
           <div
-            className="ui segment"
+            className="ui raised segments"
           >
             <div
-              className="ui segment primary"
+              className="ui segment"
             >
-              <h1
-                style={
-                  Object {
-                    "fontSize": "16px",
-                  }
-                }
+              <div
+                className="ui segment primary"
               >
-                 
-                Contact form
-              </h1>
+                <h1
+                  style={
+                    Object {
+                      "fontSize": "16px",
+                    }
+                  }
+                >
+                   
+                  Contact form
+                </h1>
+              </div>
+              <div
+                className="mocked-default-widget"
+                id="mocked-field-name"
+              >
+                Name
+                 - 
+                No description
+              </div>
+              <div
+                className="mocked-default-widget"
+                id="mocked-field-from"
+              >
+                From
+                 - 
+                No description
+              </div>
+              <div
+                className="mocked-default-widget"
+                id="mocked-field-subject"
+              >
+                Subject
+                 - 
+                No description
+              </div>
+              <div
+                className="mocked-textarea-widget"
+                id="mocked-field-message"
+              >
+                Message
+                 - 
+                No description
+              </div>
             </div>
             <div
-              className="mocked-default-widget"
-              id="mocked-field-name"
+              className="ui clearing segment actions"
             >
-              Name
-               - 
-              No description
-            </div>
-            <div
-              className="mocked-default-widget"
-              id="mocked-field-from"
-            >
-              From
-               - 
-              No description
-            </div>
-            <div
-              className="mocked-default-widget"
-              id="mocked-field-subject"
-            >
-              Subject
-               - 
-              No description
-            </div>
-            <div
-              className="mocked-textarea-widget"
-              id="mocked-field-message"
-            >
-              Message
-               - 
-              No description
+              <button
+                aria-label="Send"
+                className="ui basic primary right floated button"
+                onClick={[Function]}
+                title="Send"
+                type="submit"
+              >
+                <svg
+                  className="icon circled"
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": undefined,
+                    }
+                  }
+                  onClick={null}
+                  style={
+                    Object {
+                      "fill": "currentColor",
+                      "height": "30px",
+                      "width": "auto",
+                    }
+                  }
+                  viewBox=""
+                  xmlns=""
+                />
+              </button>
+              <button
+                aria-label="Cancel"
+                className="ui basic secondary right floated button"
+                onClick={[Function]}
+                title="Cancel"
+              >
+                <svg
+                  className="icon circled"
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": undefined,
+                    }
+                  }
+                  onClick={null}
+                  style={
+                    Object {
+                      "fill": "currentColor",
+                      "height": "30px",
+                      "width": "auto",
+                    }
+                  }
+                  viewBox=""
+                  xmlns=""
+                />
+              </button>
             </div>
           </div>
-          <div
-            className="ui clearing segment actions"
-          >
-            <button
-              aria-label="Send"
-              className="ui basic primary right floated button"
-              onClick={[Function]}
-              title="Send"
-              type="submit"
-            >
-              <svg
-                className="icon circled"
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": undefined,
-                  }
-                }
-                onClick={null}
-                style={
-                  Object {
-                    "fill": "currentColor",
-                    "height": "30px",
-                    "width": "auto",
-                  }
-                }
-                viewBox=""
-                xmlns=""
-              />
-            </button>
-            <button
-              aria-label="Cancel"
-              className="ui basic secondary right floated button"
-              onClick={[Function]}
-              title="Cancel"
-            >
-              <svg
-                className="icon circled"
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": undefined,
-                  }
-                }
-                onClick={null}
-                style={
-                  Object {
-                    "fill": "currentColor",
-                    "height": "30px",
-                    "width": "auto",
-                  }
-                }
-                viewBox=""
-                xmlns=""
-              />
-            </button>
-          </div>
-        </div>
+        </fieldset>
       </form>
     </div>
     <div
@@ -187,115 +192,120 @@ exports[`Contact form renders a contact form with error message 1`] = `
         method="post"
         onSubmit={[Function]}
       >
-        <div
-          className="ui raised segments"
+        <fieldset
+          className="invisible"
+          disabled={false}
         >
           <div
-            className="ui segment"
+            className="ui raised segments"
           >
             <div
-              className="ui segment primary"
+              className="ui segment"
             >
-              <h1
-                style={
-                  Object {
-                    "fontSize": "16px",
-                  }
-                }
+              <div
+                className="ui segment primary"
               >
-                 
-                Contact form
-              </h1>
+                <h1
+                  style={
+                    Object {
+                      "fontSize": "16px",
+                    }
+                  }
+                >
+                   
+                  Contact form
+                </h1>
+              </div>
+              <div
+                className="mocked-default-widget"
+                id="mocked-field-name"
+              >
+                Name
+                 - 
+                No description
+              </div>
+              <div
+                className="mocked-default-widget"
+                id="mocked-field-from"
+              >
+                From
+                 - 
+                No description
+              </div>
+              <div
+                className="mocked-default-widget"
+                id="mocked-field-subject"
+              >
+                Subject
+                 - 
+                No description
+              </div>
+              <div
+                className="mocked-textarea-widget"
+                id="mocked-field-message"
+              >
+                Message
+                 - 
+                No description
+              </div>
             </div>
             <div
-              className="mocked-default-widget"
-              id="mocked-field-name"
+              className="ui clearing segment actions"
             >
-              Name
-               - 
-              No description
-            </div>
-            <div
-              className="mocked-default-widget"
-              id="mocked-field-from"
-            >
-              From
-               - 
-              No description
-            </div>
-            <div
-              className="mocked-default-widget"
-              id="mocked-field-subject"
-            >
-              Subject
-               - 
-              No description
-            </div>
-            <div
-              className="mocked-textarea-widget"
-              id="mocked-field-message"
-            >
-              Message
-               - 
-              No description
+              <button
+                aria-label="Send"
+                className="ui basic primary right floated button"
+                onClick={[Function]}
+                title="Send"
+                type="submit"
+              >
+                <svg
+                  className="icon circled"
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": undefined,
+                    }
+                  }
+                  onClick={null}
+                  style={
+                    Object {
+                      "fill": "currentColor",
+                      "height": "30px",
+                      "width": "auto",
+                    }
+                  }
+                  viewBox=""
+                  xmlns=""
+                />
+              </button>
+              <button
+                aria-label="Cancel"
+                className="ui basic secondary right floated button"
+                onClick={[Function]}
+                title="Cancel"
+              >
+                <svg
+                  className="icon circled"
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": undefined,
+                    }
+                  }
+                  onClick={null}
+                  style={
+                    Object {
+                      "fill": "currentColor",
+                      "height": "30px",
+                      "width": "auto",
+                    }
+                  }
+                  viewBox=""
+                  xmlns=""
+                />
+              </button>
             </div>
           </div>
-          <div
-            className="ui clearing segment actions"
-          >
-            <button
-              aria-label="Send"
-              className="ui basic primary right floated button"
-              onClick={[Function]}
-              title="Send"
-              type="submit"
-            >
-              <svg
-                className="icon circled"
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": undefined,
-                  }
-                }
-                onClick={null}
-                style={
-                  Object {
-                    "fill": "currentColor",
-                    "height": "30px",
-                    "width": "auto",
-                  }
-                }
-                viewBox=""
-                xmlns=""
-              />
-            </button>
-            <button
-              aria-label="Cancel"
-              className="ui basic secondary right floated button"
-              onClick={[Function]}
-              title="Cancel"
-            >
-              <svg
-                className="icon circled"
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": undefined,
-                  }
-                }
-                onClick={null}
-                style={
-                  Object {
-                    "fill": "currentColor",
-                    "height": "30px",
-                    "width": "auto",
-                  }
-                }
-                viewBox=""
-                xmlns=""
-              />
-            </button>
-          </div>
-        </div>
+        </fieldset>
       </form>
     </div>
     <div

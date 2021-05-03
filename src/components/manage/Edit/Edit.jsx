@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { asyncConnect } from '@plone/volto/helpers';
 import { defineMessages, injectIntl } from 'react-intl';
-import { Button } from 'semantic-ui-react';
+import { Button, Grid, Menu } from 'semantic-ui-react';
 import { Portal } from 'react-portal';
 import qs from 'query-string';
 import { find } from 'lodash';
@@ -24,6 +24,8 @@ import {
   Toast,
   Toolbar,
   Unauthorized,
+  CompareLanguages,
+  TranslationObject,
 } from '@plone/volto/components';
 import {
   updateContent,
@@ -36,6 +38,8 @@ import { preloadLazyLibs } from '@plone/volto/helpers/Loadable';
 
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
+
+import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   edit: {
@@ -115,6 +119,7 @@ class Edit extends Component {
       visual: true,
       isClient: false,
       error: null,
+      formSelected: 'editForm',
     };
     this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -129,7 +134,10 @@ class Edit extends Component {
     if (this.props.getRequest.loaded && this.props.content?.['@type']) {
       this.props.getSchema(this.props.content['@type']);
     }
-    this.setState({ isClient: true });
+    this.setState({
+      isClient: true,
+      comparingLanguage: null,
+    });
   }
 
   /**
@@ -178,6 +186,15 @@ class Edit extends Component {
         />,
       );
     }
+
+    if (
+      nextProps.compare_to &&
+      ((this.state.compareTo &&
+        nextProps.compare_to['@id'] !== this.state.compareTo['@id']) ||
+        !this.state.compareTo)
+    ) {
+      this.setState({ compareTo: nextProps.compare_to });
+    }
   }
 
   /**
@@ -201,8 +218,13 @@ class Edit extends Component {
     );
   }
 
-  form = React.createRef();
+  setComparingLanguage(lang, content_id) {
+    this.setState({ comparingLanguage: lang });
+    this.props.getContent(content_id, null, 'compare_to', null);
+  }
 
+  form = React.createRef();
+  toolbarRef = React.createRef;
   /**
    * Render method.
    * @method render
@@ -210,6 +232,32 @@ class Edit extends Component {
    */
   render() {
     const editPermission = find(this.props.objectActions, { id: 'edit' });
+
+    const pageEdit = (
+      <Form
+        isEditForm
+        ref={this.form}
+        schema={this.props.schema}
+        formData={this.props.content}
+        requestError={this.state.error}
+        onSubmit={this.onSubmit}
+        hideActions
+        pathname={this.props.pathname}
+        visual={this.state.visual}
+        title={
+          this.props?.schema?.title
+            ? this.props.intl.formatMessage(messages.edit, {
+                title: this.props.schema.title,
+              })
+            : null
+        }
+        loading={this.props.updateRequest.loading}
+        isFormSelected={this.state.formSelected === 'editForm'}
+        onSelectForm={() => {
+          this.setState({ formSelected: 'editForm' });
+        }}
+      />
+    );
 
     return (
       <div id="page-edit">
@@ -226,25 +274,48 @@ class Edit extends Component {
                       : null
                   }
                 />
-                <Form
-                  isEditForm
-                  ref={this.form}
-                  schema={this.props.schema}
-                  formData={this.props.content}
-                  requestError={this.state.error}
-                  onSubmit={this.onSubmit}
-                  hideActions
-                  pathname={this.props.pathname}
-                  visual={this.state.visual}
-                  title={
-                    this.props?.schema?.title
-                      ? this.props.intl.formatMessage(messages.edit, {
-                          title: this.props.schema.title,
-                        })
-                      : null
-                  }
-                  loading={this.props.updateRequest.loading}
-                />
+
+                {this.state.comparingLanguage && this.state.compareTo ? (
+                  <Grid
+                    celled="internally"
+                    stackable
+                    columns={2}
+                    id="page-compare-translation"
+                  >
+                    <Grid.Column className="source-object">
+                      <TranslationObject
+                        translationObject={this.state.compareTo}
+                        schema={this.props.schema}
+                        pathname={this.props.pathname}
+                        visual={this.state.visual}
+                        isFormSelected={
+                          this.state.formSelected === 'translationObjectForm'
+                        }
+                        onSelectForm={() => {
+                          this.setState({
+                            formSelected: 'translationObjectForm',
+                          });
+                        }}
+                      />
+                    </Grid.Column>
+                    <Grid.Column>
+                      <div className="new-translation">
+                        <Menu pointing secondary attached tabular>
+                          <Menu.Item
+                            name={this.props.content.language?.token.toUpperCase()}
+                            active={true}
+                          >
+                            {this.props.content.language?.token.toUpperCase()}
+                          </Menu.Item>
+                        </Menu>
+
+                        {pageEdit}
+                      </div>
+                    </Grid.Column>
+                  </Grid>
+                ) : (
+                  pageEdit
+                )}
               </>
             )}
 
@@ -275,6 +346,7 @@ class Edit extends Component {
             <Toolbar
               pathname={this.props.pathname}
               hideDefaultViewButtons
+              ref={this.toolbarRef}
               inner={
                 <>
                   <Button
@@ -304,6 +376,19 @@ class Edit extends Component {
                       title={this.props.intl.formatMessage(messages.cancel)}
                     />
                   </Button>
+
+                  {config.settings.isMultilingual && (
+                    <CompareLanguages
+                      content={this.props.content}
+                      visual={this.state.visual}
+                      setComparingLanguage={(lang, id) => {
+                        this.setComparingLanguage(lang, id);
+                      }}
+                      comparingLanguage={this.state.comparingLanguage}
+                      pathname={this.props.location.pathname}
+                      toolbarRef={this.toolbarRef}
+                    />
+                  )}
                 </>
               }
             />
@@ -321,6 +406,7 @@ export const __test__ = compose(
       objectActions: state.actions.actions.object,
       token: state.userSession.token,
       content: state.content.data,
+      compare_to: state.content.subrequests?.compare_to?.data,
       schema: state.schema.schema,
       getRequest: state.content.get,
       schemaRequest: state.schema,
@@ -357,6 +443,7 @@ export default compose(
       objectActions: state.actions.actions.object,
       token: state.userSession.token,
       content: state.content.data,
+      compare_to: state.content.subrequests?.compare_to?.data,
       schema: state.schema.schema,
       getRequest: state.content.get,
       schemaRequest: state.schema,
