@@ -80,7 +80,8 @@
     "release-major-alpha": "release-it major --preRelease=alpha",
     "release-alpha": "release-it --preRelease=alpha",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "prepare": "husky install"
   },
   "bundlesize": [
     {
@@ -199,36 +200,6 @@
       "releaseNotes": "node changelogupdater.js excerpt"
     }
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "post-checkout": "yarnhook",
-      "post-merge": "yarnhook",
-      "post-rebase": "yarnhook"
-    }
-  },
-  "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json}": [
-      "npx eslint --max-warnings=0 --fix",
-      "npx prettier --single-quote --write",
-      "yarn test:husky"
-    ],
-    "src/**/*.{jsx}": [
-      "yarn i18n"
-    ],
-    "theme/**/*.{css,less}": [
-      "npx stylelint --fix"
-    ],
-    "src/**/*.{css,less}": [
-      "npx stylelint --fix"
-    ],
-    "theme/**/*.overrides": [
-      "npx stylelint --fix --syntax less"
-    ],
-    "src/**/*.overrides": [
-      "npx stylelint --fix --syntax less"
-    ]
-  },
   "engines": {
     "node": "^10 || ^12 || ^14"
   },
@@ -294,7 +265,7 @@
     "handlebars": "4.7.0",
     "history": "4.10.1",
     "http-proxy-middleware": "1.0.4",
-    "husky": "4.2.5",
+    "husky": "6.0.0",
     "identity-obj-proxy": "3.0.0",
     "jest-css-modules": "1.1.0",
     "jest-environment-jsdom-sixteen": "1.0.3",
