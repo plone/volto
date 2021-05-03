@@ -6,6 +6,7 @@
 
 - Remove the "inverted" option in Table Block since it was useless with the current CSS
   set. Better naming of options and labels in table block (English). Updating the i18n messages for the used translations is advisable, but not required.  @iFlameing
+- Get rid of the font icons in the control panels overview @sneridagh
 - Seamless mode by default. Added `Host` header support for deployments, so no
   `RAZZLE_API_PATH` is required in production builds anymore if the header is present.
   Not an strictly breaking change, but it's a default behavior change worth to notice on
