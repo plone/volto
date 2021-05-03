@@ -127,11 +127,7 @@ export const withVariationSchemaEnhancer = (FormComponent) => (props) => {
   let activeItem = variations.find((item) => item.id === activeItemName);
   if (!activeItem) activeItem = variations.find((item) => item.isDefault);
 
-  const schemaEnhancer =
-    // For the main "variation" of blocks, allow simply passing a
-    // schemaEnhancer in the block configuration
-    activeItem?.['schemaEnhancer'] ||
-    blocks.blocksConfig?.[blockType]?.schemaEnhancer;
+  let schemaEnhancer = activeItem?.['schemaEnhancer'];
 
   let schema = schemaEnhancer
     ? schemaEnhancer({ schema: cloneDeep(originalSchema), formData, intl })
@@ -147,6 +143,10 @@ export const withVariationSchemaEnhancer = (FormComponent) => (props) => {
       insertFieldToOrder: _addField,
     });
   }
+
+  // Finalize the schema with a schemaEnhancer in the block config;
+  schemaEnhancer = blocks.blocksConfig?.[blockType]?.schemaEnhancer;
+  if (schemaEnhancer) schema = schemaEnhancer({ schema, formData, intl });
 
   return <FormComponent {...props} schema={schema} />;
 };

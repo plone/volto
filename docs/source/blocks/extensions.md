@@ -5,41 +5,24 @@ a block that can be toggled on demand by the editors. Choosing the
 listing template (gallery, summary listing, etc) for the Listing block is
 one example of the typical use cases for this feature.
 
+A block can define variations in the block configuration. These variations can
+be used to enhance or complement the default behavior of a block without having
+to shadow its stock components. These enhancements can be at a settings level
+(add or remove block settings) via schema enhancers or, if the code of your
+block allows it, even use alternative renderers (eg. in view mode) showing the
+enhanced fields or modifying the block look and feel or behavior.
+
+!!! note
+
+  The Listing block already supports several of them (only in the "template" or
+  the component to show on view mode), and can be extended, although it still
+  do not use the final specification on how to define them in the
+  configuration, (that will change in next Volto versions). The rest of the
+  stock Volto blocks will also follow to support variations by default.
+
 While it is up to each specific block implementations on how they actually use
-this machinery, Volto provides the framework to help define the extensions and
-be able to pick the active "variant" of each such extension.
-
-
-## Block extensions in config
-
-The configuration registry is the place where addons, projects and Volto itself
-meet, extend and override one another. So, to define new extensions for
-a block, the natural place to put it is in that block's block configuration.
-
-This is how it would look like for an imaginary block:
-
-```jsx
-export default (config) => {
-  config.blocks.blocksConfig.teaserBlock.extensions = {
-    ...config.blocks.blocksConfig.teaserBlock.extensions,
-    variation: {
-      title: 'Variation',
-      items: [
-        {
-          id: 'default',
-          title: 'Default',
-          isDefault: true,
-          render: SimpleTeaserView
-        },
-        {
-          id: 'card',
-          label: 'Card',
-          render: CardTeaserView,
-        }
-      ]
-  }
-}
-```
+this machinery, Volto provides the infrastructure to help define block
+extensions and variations.
 
 ## Block variations
 
@@ -58,6 +41,33 @@ If you use schema-based forms to edit the block's data, use the `BlockDataForm`
 component instead of the `InlineForm`. The BlockDataForm component will
 automatically inject a "variation" select dropdown into the form, allowing
 editors to choose the desired block variation.
+
+This is how the configuration would like for an imaginary block:
+
+```jsx
+export default (config) => {
+  config.blocks.blocksConfig.teaserBlock.variations = [
+    {
+      id: 'default',
+      title: 'Default',
+      isDefault: true,
+      render: SimpleTeaserView
+    },
+    {
+      id: 'card',
+      label: 'Card',
+      render: CardTeaserView,
+      schemaEnhancer: ({schema, formData, intl}) => {
+        schema.properties.cardSize = '...'; // fill in your implementation
+        return schema;
+      }
+    }
+  ];
+}
+```
+
+Notice the `schemaEnhancer` field, which allows customization of the schema for
+schema-based blocks, when a particular variation is chosen.
 
 To get the same behavior for any other custom extension, you can wrap
 InlineForm in the `withBlockSchemaEnhancer` HOC:
@@ -145,7 +155,7 @@ To use it, wrap your relevant components, for example the block View component.
 
 ```
 const TableBlockView = (props) => {
-  const variation = props.extensions.variation;
+  const variation = props.variation;
   const Renderer = variation.view;
 
   return <Renderer {...props} />;
