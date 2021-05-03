@@ -20,6 +20,9 @@ https://docs.voltocms.com/upgrade-guide/
 
 ### Internal
 
+- Improve Github Actions names @sneridagh
+
+## 12.12.0 (2021-04-29)
 ## 12.14.0 (2021-05-03)
 
 ### Feature

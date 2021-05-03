@@ -1,4 +1,4 @@
-name: Volto Core Tests
+name: Core Main Tests
 on: [push]
 jobs:
   build:
@@ -9,9 +9,6 @@ jobs:
         python-version: [3.7]
     steps:
       - uses: actions/checkout@v2
-      - name: debug
-        working-directory: api
-        run: ls -al
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
@@ -34,38 +31,8 @@ jobs:
       # node install
       - run: yarn install --frozen-lockfile
 
-      # node code analysis
-      - run: yarn run prettier
-      - run: yarn run lint
-      - run: yarn run i18n:ci
-
       # node test
       - run: yarn test:ci
-
-      # python setup
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v1
-        with:
-          python-version: ${{ matrix.python-version }}
-
-      # python cache
-      - uses: actions/cache@v1
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-
-      # python install
-      - run: pip install virtualenv
-      - name: pip install
-        working-directory: api
-        run: pip install -r requirements.txt
-      - name: buildout
-        working-directory: api
-        run: buildout
-        env:
-          CI: true
 
       # # cypress acceptance tests
       # - name: Cypress acceptance tests
