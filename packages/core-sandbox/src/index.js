@@ -10,7 +10,6 @@ const addonBlocks = {
     group: 'common',
     view: TestBlockView,
     edit: TestBlockEdit,
-    // schemaExtender: ImageSettingsSchema,
     restricted: false,
     mostUsed: true,
     sidebarTab: 1,
@@ -18,28 +17,17 @@ const addonBlocks = {
       addPermission: [],
       view: [],
     },
-    extensions: {
-      variation: [
-        {
-          id: 'default',
-          label: 'Default',
-        },
-        {
-          id: 'custom',
-          label: 'Custom',
-          // components: {
-          //   view: TeaserDefaultTemplate,
-          //   wrapper: (props) => (
-          //     <>
-          //       hey! {props.data.description2} asdasd {props.children} bottoms
-          //       thinggy
-          //     </>
-          //   ),
-          // },
-          // schemaExtender: schemaExtender,
-        },
-      ],
-    },
+    variations: [
+      {
+        id: 'default',
+        title: 'Default',
+      },
+      {
+        id: 'custom',
+        title: 'Custom',
+      },
+    ],
+    extensions: {},
   },
 };
 
