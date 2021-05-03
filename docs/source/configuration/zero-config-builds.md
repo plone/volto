@@ -1,4 +1,4 @@
-# Zero Configuration Builds
+# Zero configuration builds
 
 !!! note
     This feature is available since Volto 13.

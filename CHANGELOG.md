@@ -4,15 +4,15 @@
 
 ### Breaking
 
-- Remove the "inverted" option in Table Block since it was useless with the current CSS
-  set. Better naming of options and labels in table block (English). Updating the i18n messages for the used translations is advisable, but not required.  @iFlameing
-- Get rid of the font icons in the control panels overview @sneridagh
 - Seamless mode by default. Added `Host` header support for deployments, so no
   `RAZZLE_API_PATH` is required in production builds anymore if the header is present.
   Not an strictly breaking change, but it's a default behavior change worth to notice on
   its own. No change required in your deployments if you suply currently
   `RAZZLE_API_PATH` in build time. See documentation for more information. @sneridagh
-- Deprecate Node 10 since it's out of LTS @sneridagh
+- Deprecate Node 10 since it's out of LTS since April 30th, 2021 @sneridagh
+- Remove the "inverted" option in Table Block since it was useless with the current CSS
+  set. Better naming of options and labels in table block (English). Updating the i18n messages for the used translations is advisable, but not required.  @iFlameing
+- Get rid of the font icons in the control panels overview @sneridagh
 
 For a complete list of actions to follow, please read the upgrade guide
 https://docs.voltocms.com/upgrade-guide/
@@ -25,9 +25,8 @@ https://docs.voltocms.com/upgrade-guide/
 
 ### Internal
 
-- Improve Github Actions names @sneridagh
+- Improve Github Actions names, separate the code analysis from the main core @sneridagh
 
-## 12.12.0 (2021-04-29)
 ## 12.14.0 (2021-05-03)
 
 ### Feature
