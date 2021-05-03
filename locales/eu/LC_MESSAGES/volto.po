@@ -884,14 +884,6 @@ msgstr "Data hau etorkizunekoa bada, edukia ez da agertuko data hori iritsi arte
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr "Ziurtatu helbide zuzenean zaudena, hala ere errorea baduzu jarri kontaktuan {site_admin}."
 
-#: components/theme/Login/Login
-msgid "If you have forgotten your password, {forgotpassword}"
-msgstr "Pasahitza ahaztu baduzu, {forgotpassword}"
-
-#: components/theme/Login/Login
-msgid "If you you do not have an account here, head over to the {registrationform}."
-msgstr "Ez baduzu erabiltzaile-konturik, zoaz {registrationform}."
-
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -1456,6 +1448,7 @@ msgid "Reduce complexity"
 msgstr "Konplexutasuna gutxitu"
 
 #: components/theme/Anontools/Anontools
+#: components/theme/Login/Login
 #: components/theme/Register/Register
 msgid "Register"
 msgstr "Izena eman"
@@ -2118,7 +2111,7 @@ msgstr "Erabiltzaile eta taldeak"
 msgid "Users and groups settings"
 msgstr "Erabiltzaile eta taldeen ezarpenak"
 
-#: components/manage/Form/BlockDataForm
+#: helpers/Extensions/withBlockSchemaEnhancer
 msgid "Variation"
 msgstr ""
 
@@ -2259,6 +2252,7 @@ msgstr "Zure pasahitza ondo berrezarri da. Orain zure pasahitz berriarekin {link
 msgid "Your preferred language"
 msgstr "Zure hizkuntza"
 
+#: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "box_forgot_password_option"
 msgstr "Pasahitza ahaztuta?"
@@ -2435,10 +2429,6 @@ msgstr "Argitaratuta"
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "querystring-widget-select"
 msgstr "Aukeratu..."
-
-#: components/theme/Login/Login
-msgid "registration form"
-msgstr "Erregistro formularioa"
 
 #: components/theme/Search/Search
 msgid "results found"
@@ -2623,10 +2613,6 @@ msgstr "Bideoa"
 #: components/theme/View/EventView
 msgid "visit_external_website"
 msgstr "Webgunea ikusi"
-
-#: components/theme/Login/Login
-msgid "we can send you a new one"
-msgstr "berri bat bidali diezazukegu"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"

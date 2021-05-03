@@ -15,7 +15,7 @@ import {
 import EditBlockWrapper from './EditBlockWrapper';
 import { setSidebarTab } from '@plone/volto/actions';
 import { useDispatch } from 'react-redux';
-import { useDetectClickOutside } from 'react-detect-click-outside';
+import { useDetectClickOutside } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
 const BlocksForm = (props) => {
@@ -51,7 +51,8 @@ const BlocksForm = (props) => {
   const ref = useDetectClickOutside({
     onTriggered: ClickOutsideListener,
     triggerKeys: ['Escape'],
-    disableClick: !isMainForm,
+    // Disabled feature for now https://github.com/plone/volto/pull/2389#issuecomment-830027413
+    disableClick: true,
     disableKeys: !isMainForm,
   });
 

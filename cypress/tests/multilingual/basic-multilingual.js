@@ -50,8 +50,13 @@ describe('Basic multilingual Tests', () => {
     cy.get('.new-translation .ui.basic.icon.button.block-add-button').click();
     cy.get('.ui.basic.icon.button.image').contains('Immagine').click();
     cy.get('#toolbar-save').click();
+    cy.waitForResourceToLoad('@navigation');
+    cy.waitForResourceToLoad('@breadcrumbs');
+    cy.waitForResourceToLoad('@actions');
+    cy.waitForResourceToLoad('@types');
+    cy.waitForResourceToLoad('my-it-page');
 
-    cy.findByLabelText('Switch to english').click();
+    cy.findByLabelText('Vai a english').click();
 
     // The english doc should be shown
     cy.get('#page-document').findByText('Test document');

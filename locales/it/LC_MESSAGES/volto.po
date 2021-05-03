@@ -656,7 +656,7 @@ msgstr "Google Maps incorporata"
 
 #: components/manage/Widgets/ObjectListWidget
 msgid "Empty object list"
-msgstr "Lista vuota"
+msgstr "Lista di oggetti vuota"
 
 #: components/manage/Controlpanels/ContentTypeLayout
 msgid "Enable editable Blocks"
@@ -877,14 +877,6 @@ msgstr "Se questa data è in futuro, il contenuto non verrà mostrato negli elen
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr "Se sei sicuro di aver inserito l'indirizzo corretto ma ottieni comunque un errore, contatta l' {site_admin}."
 
-#: components/theme/Login/Login
-msgid "If you have forgotten your password, {forgotpassword}"
-msgstr "Se hai dimenticato la tua password, {forgotpassword}."
-
-#: components/theme/Login/Login
-msgid "If you you do not have an account here, head over to the {registrationform}."
-msgstr "Se non ti sei ancora iscritto, compila il {registrationform} per diventare un collaboratore."
-
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -1048,7 +1040,7 @@ msgstr "Link a"
 
 #: components/manage/Multilingual/ManageTranslations
 msgid "Link translation for"
-msgstr ""
+msgstr "Collega traduzione per"
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
@@ -1449,6 +1441,7 @@ msgid "Reduce complexity"
 msgstr "Riduci complessità"
 
 #: components/theme/Anontools/Anontools
+#: components/theme/Login/Login
 #: components/theme/Register/Register
 msgid "Register"
 msgstr "Registrati"
@@ -1463,7 +1456,7 @@ msgstr "Rilevanza"
 
 #: components/manage/Widgets/ObjectListWidget
 msgid "Remove item"
-msgstr "Elimina l'elemento"
+msgstr "Rimuovi elemento"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
@@ -1798,7 +1791,7 @@ msgstr "Stato"
 
 #: components/manage/Multilingual/CompareLanguages
 msgid "Stop compare"
-msgstr "Smetti di confrontare con "
+msgstr "Interrompi il confronto"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "String"
@@ -1827,7 +1820,7 @@ msgstr "Successo"
 
 #: components/theme/LanguageSelector/LanguageSelector
 msgid "Switch to"
-msgstr ""
+msgstr "Vai a"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Table"
@@ -2033,7 +2026,7 @@ msgstr "Blocco sconosciuto"
 
 #: components/manage/Multilingual/ManageTranslations
 msgid "Unlink translation for"
-msgstr ""
+msgstr "Scollega traduzione per"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update"
@@ -2073,7 +2066,7 @@ msgstr "Caricamento dei files"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 msgid "Uploading image"
-msgstr "Sto caricando l'immagine"
+msgstr "Caricamento dell'immagine"
 
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
@@ -2111,9 +2104,9 @@ msgstr "Utenti e gruppi"
 msgid "Users and groups settings"
 msgstr "Impostazioni utenti e gruppi"
 
-#: components/manage/Form/BlockDataForm
+#: helpers/Extensions/withBlockSchemaEnhancer
 msgid "Variation"
-msgstr ""
+msgstr "Variazione"
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Version Overview"
@@ -2252,6 +2245,7 @@ msgstr "La tua password è stata reimpostata correttamente. Ora puoi {link} usan
 msgid "Your preferred language"
 msgstr "La tua lingua preferita."
 
+#: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "box_forgot_password_option"
 msgstr "Hai dimenticato la tua password?"
@@ -2262,7 +2256,7 @@ msgstr "Comuni"
 
 #: components/manage/Multilingual/CompareLanguages
 msgid "compare_to"
-msgstr "Confronta con altre traduzioni"
+msgstr "Confronta con"
 
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"
@@ -2428,10 +2422,6 @@ msgstr "Pubblicato"
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "querystring-widget-select"
 msgstr "Seleziona…"
-
-#: components/theme/Login/Login
-msgid "registration form"
-msgstr "form di registrazione"
 
 #: components/theme/Search/Search
 msgid "results found"
@@ -2616,10 +2606,6 @@ msgstr "Video"
 #: components/theme/View/EventView
 msgid "visit_external_website"
 msgstr "Visita il sito web"
-
-#: components/theme/Login/Login
-msgid "we can send you a new one"
-msgstr "possiamo spedirtene una nuova"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
