@@ -21,8 +21,6 @@ https://docs.voltocms.com/upgrade-guide/
 
 - Change login form fixing accessibility issues @nzambello
 
-### Bugfix
-
 ### Internal
 
 - Improve Github Actions names, separate the code analysis from the main core @sneridagh
