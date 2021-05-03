@@ -31,6 +31,7 @@ import { loadables } from './Loadables';
 
 import { sentryOptions } from './Sentry';
 import { contentIcons } from './ContentIcons';
+import { controlPanelsIcons } from './ControlPanels';
 
 import applyAddonConfiguration from 'load-volto-addons';
 
@@ -133,6 +134,7 @@ let config = {
     serverConfig,
     storeExtenders: [],
     showTags: true,
+    controlPanelsIcons,
     showSelfRegistration: false,
   },
   widgets: {
