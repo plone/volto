@@ -9,6 +9,7 @@ describe('Add Content Tests', () => {
     cy.waitForResourceToLoad('@types');
     cy.waitForResourceToLoad('');
   });
+
   it('As editor I can add a page', function () {
     // when I add a page
     cy.get('#toolbar-add').click();
@@ -24,6 +25,7 @@ describe('Add Content Tests', () => {
 
     cy.get('.navigation .item.active').should('have.text', 'My Page');
   });
+
   it('As editor I can add a page with a text block', function () {
     // when I add a page with a text block
     cy.get('#toolbar-add').click();
@@ -43,6 +45,7 @@ describe('Add Content Tests', () => {
 
     cy.get('.navigation .item.active').should('have.text', 'My Page');
   });
+
   it('As editor I can add a file', function () {
     // when I add a file
     cy.get('#toolbar-add').click();
@@ -103,6 +106,7 @@ describe('Add Content Tests', () => {
     cy.url().should('eq', Cypress.config().baseUrl + '/my-news-item');
     cy.get('.navigation .item.active').should('have.text', 'My News Item');
   });
+
   it('As editor I can add a folder', function () {
     // when I add a folder
     cy.get('#toolbar-add').click();

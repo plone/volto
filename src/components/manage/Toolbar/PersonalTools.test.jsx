@@ -12,7 +12,13 @@ const mockStore = configureStore();
 describe('Toolbar Personal Tools component', () => {
   it('renders an Toolbar Personal Tools component', () => {
     const store = mockStore({
-      users: { user: { fullname: 'admin', email: 'admin@plone.org' } },
+      users: {
+        user: {
+          fullname: 'admin',
+          email: 'admin@plone.org',
+          roles: ['Manager'],
+        },
+      },
       userSession: {
         token: jwt.sign({ sub: 'admin' }, 'secret'),
       },

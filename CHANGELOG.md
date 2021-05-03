@@ -1,6 +1,6 @@
 # Change Log
 
-## 12.10.2 (unreleased)
+## 12.13.1 (unreleased)
 
 ### Breaking
 
@@ -9,19 +9,56 @@
 
 ### Feature
 
+### Bugfix
+
+### Internal
+
+## 12.13.0 (2021-04-30)
+
+### Feature
+
+- Making objectBrowserWidget context aware @iFlameing
+
+### Bugfix
+
+- Adding `flattenToAppURL` in Link component @iFlameing
+
+- Disable click event of the outside the engine click detection, since it leads to bad
+  behavior for custom and library elements that try to mount things attaching them in
+  the Body or outside the detected container @sneridagh
+
+## 12.12.0 (2021-04-29)
+
+### Feature
+
+- Translations german: Login/Register @ksuess
+
+### Bugfix
+
+- Fix image gallery in listing block for contained (non-query based) images @sneridagh
+
+## 12.11.0 (2021-04-28)
+
+### Feature
+
+- Implemented Babel view, to compare translated items in add and edit mode. @giuliaghisini
+- as in Plone, hide controlpanel for users that are no 'Manager' or 'Site Administrator'. @giuliaghisini
 - Improve the blocks engine by adding a detector for clicking outside in the `BlocksForm` @sneridagh
 - Include a pluggable architecture for pluggable render-time insertions (similar to <Portal>) @tiberiuichim
+- Add parseDateTime helper from DatetimeWidget to handle timezones @nzambello
 
 ### Bugfix
 
 - Include selected block in multiselections @sneridagh
+- Correct the selected values rendering at isMulti SelectWidget @ionlizarazu
 
 ### Internal
 
-- Upgrade Storybook to 6.2.2 @tiberiuichim
-
 - Implement Github actions workflow to deploy the documentation to the Plone Foundation server @ericof
 - Pin `immutable` to an updated version that does not produce continuous deprecation notices in console on every change @sneridagh
+- Print console.error in SSR if not an ignored error code @nzambello
+- Fetch addons with https using mrs-developer @nzambello
+- Fix sitemap URL generation @nzambello
 
 ## 12.10.1 (2021-04-14)
 
@@ -114,6 +151,9 @@
 
 ### Bugfix
 
+### Internal
+
+- Add toPublicURL helper @nzambello
 - Don't show empty groups in BlockChooser @tiberiuichim
 - Fix Text Block placeholder regression refs #2322 @avoinea
 
