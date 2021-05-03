@@ -1833,10 +1833,6 @@ msgstr ""
 msgid "Table"
 msgstr "テーブル"
 
-#: components/manage/Blocks/Table/Edit
-msgid "Table color inverted"
-msgstr "テーブルの色を反転"
-
 #: components/manage/Blocks/ToC/View
 msgid "Table of Contents"
 msgstr "目次"

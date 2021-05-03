@@ -1833,10 +1833,6 @@ msgstr ""
 msgid "Table"
 msgstr "Taula"
 
-#: components/manage/Blocks/Table/Edit
-msgid "Table color inverted"
-msgstr "Taularen kolorea inbertitu"
-
 #: components/manage/Blocks/ToC/View
 msgid "Table of Contents"
 msgstr "Edukien taula"
