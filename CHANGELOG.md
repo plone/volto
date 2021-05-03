@@ -2,13 +2,14 @@
 
 ## 12.13.1 (unreleased)
 
-### Breaking
-
 ### Feature
+
+- Provide api for block extensions. See `/blocks/extensions` in documentation @tiberiuichim
 
 ### Bugfix
 
-### Internal
+- In BlockDataForm, always clone schema before applying enhancers @tiberiuichim
+- In BlockDataForm, don't add the variations field multiple times @tiberiuichim
 
 ## 12.13.0 (2021-04-30)
 
@@ -42,14 +43,11 @@
 - as in Plone, hide controlpanel for users that are no 'Manager' or 'Site Administrator'. @giuliaghisini
 - Improve the blocks engine by adding a detector for clicking outside in the `BlocksForm` @sneridagh
 - Include a pluggable architecture for pluggable render-time insertions (similar to <Portal>) @tiberiuichim
-- Provide api for block extensions. See `/blocks/extensions` in documentation @tiberiuichim
 - Add parseDateTime helper from DatetimeWidget to handle timezones @nzambello
 
 ### Bugfix
 
 - Include selected block in multiselections @sneridagh
-- In BlockDataForm, always clone schema before applying enhancers @tiberiuichim
-- In BlockDataForm, don't add the variations field multiple times @tiberiuichim
 - Correct the selected values rendering at isMulti SelectWidget @ionlizarazu
 
 ### Internal
