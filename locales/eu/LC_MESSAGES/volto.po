@@ -2111,7 +2111,7 @@ msgstr "Erabiltzaile eta taldeak"
 msgid "Users and groups settings"
 msgstr "Erabiltzaile eta taldeen ezarpenak"
 
-#: components/manage/Form/BlockDataForm
+#: helpers/Extensions/withBlockSchemaEnhancer
 msgid "Variation"
 msgstr ""
 

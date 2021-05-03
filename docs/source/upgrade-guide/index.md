@@ -13,6 +13,14 @@ This upgrade guide lists all breaking changes in Volto and explains the
     the latest changes and propose you if you want to merge them, run it on the top of
     your project and answer the prompt.
 
+## Upgrading to Volto 13.x.x
+
+## Deprecating NodeJS 10
+
+Since April 30th, 2021 NodeJS 10 is out of Long Term Support by the NodeJS community, so
+we are deprecating it in Volto 13. Update to a NodeJS LTS version (12 or 14 at the
+moment of this writting).
+
 ## Upgrading to Volto 12.x.x
 
 ### Volto Configuration Registry

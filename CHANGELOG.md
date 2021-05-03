@@ -1,8 +1,18 @@
 # Change Log
 
-## 12.11.1 (unreleased)
+## 12.14.1 (unreleased)
 
 ### Breaking
+
+- Seamless mode by default. Added `Host` header support for deployments, so no
+  `RAZZLE_API_PATH` is required in production builds anymore if the header is present.
+  Not an strictly breaking change, but it's a default behavior change worth to notice on
+  its own. No change required in your deployments if you suply currently
+  `RAZZLE_API_PATH` in build time. See documentation for more information. @sneridagh
+- Deprecate Node 10 since it's out of LTS @sneridagh
+
+For a complete list of actions to follow, please read the upgrade guide
+https://docs.voltocms.com/upgrade-guide/
 
 ### Feature
 
@@ -11,6 +21,44 @@
 ### Bugfix
 
 ### Internal
+
+- Improve Github Actions names @sneridagh
+
+## 12.12.0 (2021-04-29)
+## 12.14.0 (2021-05-03)
+
+### Feature
+
+- Provide api for block extensions. See `/blocks/extensions` in documentation @tiberiuichim
+
+### Bugfix
+
+- In BlockDataForm, always clone schema before applying enhancers @tiberiuichim
+- In BlockDataForm, don't add the variations field multiple times @tiberiuichim
+
+## 12.13.0 (2021-04-30)
+
+### Feature
+
+- Making objectBrowserWidget context aware @iFlameing
+
+### Bugfix
+
+- Adding `flattenToAppURL` in Link component @iFlameing
+
+- Disable click event of the outside the engine click detection, since it leads to bad
+  behavior for custom and library elements that try to mount things attaching them in
+  the Body or outside the detected container @sneridagh
+
+## 12.12.0 (2021-04-29)
+
+### Feature
+
+- Translations german: Login/Register @ksuess
+
+### Bugfix
+
+- Fix image gallery in listing block for contained (non-query based) images @sneridagh
 
 ## 12.11.0 (2021-04-28)
 
@@ -269,7 +317,6 @@
 ### Feature
 
 - New breadcrumbs `INavigationRoot` aware for the _Home_ icon. This allows inner subsites navigation and better support for multilingual sites. @sneridagh
-- Translations german: Login/Register @ksuess
 
 ### Internal
 

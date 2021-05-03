@@ -2119,7 +2119,7 @@ msgstr "Nutzer und Gruppen"
 msgid "Users and groups settings"
 msgstr "Nutzer- und Gruppeneinstellungen"
 
-#: components/manage/Form/BlockDataForm
+#: helpers/Extensions/withBlockSchemaEnhancer
 msgid "Variation"
 msgstr ""
 
