@@ -9,6 +9,7 @@
   Not an strictly breaking change, but it's a default behavior change worth to notice on
   its own. No change required in your deployments if you suply currently
   `RAZZLE_API_PATH` in build time. See documentation for more information. @sneridagh
+- Deprecate Node 10 since it's out of LTS @sneridagh
 
 For a complete list of actions to follow, please read the upgrade guide
 https://docs.voltocms.com/upgrade-guide/
