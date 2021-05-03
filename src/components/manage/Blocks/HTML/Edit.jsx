@@ -67,8 +67,17 @@ class Edit extends Component {
     onSelectBlock: PropTypes.func.isRequired,
     onDeleteBlock: PropTypes.func.isRequired,
     handleKeyDown: PropTypes.func.isRequired,
+    editable: PropTypes.bool,
   };
 
+  /**
+   * Default properties
+   * @property {Object} defaultProps Default properties.
+   * @static
+   */
+  static defaultProps = {
+    editable: true,
+  };
   /**
    * Constructor
    * @method constructor
@@ -302,7 +311,8 @@ class Edit extends Component {
           <div dangerouslySetInnerHTML={{ __html: value }} />
         ) : (
           <Editor
-            value={value}
+            value={this.getValue()}
+            readOnly={!this.props.editable}
             placeholder={placeholder}
             onValueChange={(code) => this.onChangeCode(code)}
             highlight={

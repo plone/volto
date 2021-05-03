@@ -151,6 +151,7 @@ let config = {
     blocksConfig,
     groupBlocksOrder,
     initialBlocks,
+    showEditBlocksInBabelView: false,
   },
   addonRoutes: [],
   addonReducers: {},

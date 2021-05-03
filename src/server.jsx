@@ -15,15 +15,18 @@ import { detect } from 'detect-browser';
 import path from 'path';
 import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
 import { createProxyMiddleware } from 'http-proxy-middleware';
-import { updateIntl } from 'react-intl-redux';
 import { resetServerContext } from 'react-beautiful-dnd';
 
 import routes from '~/routes';
 import config from '@plone/volto/registry';
 
-import { flattenToAppURL } from '@plone/volto/helpers';
-
-import { Html, Api, persistAuthToken } from '@plone/volto/helpers';
+import {
+  flattenToAppURL,
+  Html,
+  Api,
+  persistAuthToken,
+} from '@plone/volto/helpers';
+import { changeLanguage } from '@plone/volto/actions';
 
 import userSession from '@plone/volto/reducers/userSession/userSession';
 
@@ -129,8 +132,12 @@ function setupServer(req, res, next) {
       'Cache-Control': 'public, max-age=60, no-transform',
     });
 
-    // Displays error in console
-    console.error(error);
+    /* Displays error in console
+     * TODO:
+     * - get ignored codes from Plone error_log
+     */
+    const ignoredErrors = [301, 302, 401, 404];
+    if (!ignoredErrors.includes(error.status)) console.error(error);
 
     res
       .status(error.status || 500) // If error happens in Volto code itself error status is undefined
@@ -172,12 +179,8 @@ server.get('/*', (req, res) => {
       const updatedLang =
         store.getState().content.data?.language?.token ||
         config.settings.defaultLanguage;
-      store.dispatch(
-        updateIntl({
-          locale: updatedLang,
-          messages: locales[updatedLang],
-        }),
-      );
+
+      store.dispatch(changeLanguage(updatedLang, locales[updatedLang]));
 
       const context = {};
       resetServerContext();

@@ -25,6 +25,7 @@ import FromHTMLCustomBlockFn from '@plone/volto/config/RichTextEditor/FromHTML';
 
 config.set('settings', {
   apiPath: 'http://localhost:8080/Plone',
+  defaultLanguage: 'en',
   supportedLanguages: ['en'],
   defaultPageSize: 25,
   isMultilingual: false,

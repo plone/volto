@@ -37,6 +37,14 @@ const messages = defineMessages({
     id: 'Translation linking removed',
     defaultMessage: 'Translation linking removed',
   },
+  link: {
+    id: 'Link translation for',
+    defaultMessage: 'Link translation for',
+  },
+  unlink: {
+    id: 'Unlink translation for',
+    defaultMessage: 'Unlink translation for',
+  },
   ManageTranslations: {
     id: 'Manage Translations',
     defaultMessage: 'Manage Translations',
@@ -210,6 +218,9 @@ const ManageTranslations = (props) => {
                     {translations?.[lang] ? (
                       <Button.Group>
                         <Button
+                          aria-label={`${intl.formatMessage(
+                            messages.unlink,
+                          )} ${langmap[lang].nativeName.toLowerCase()}`}
                           basic
                           icon
                           disabled={lang === content.language.token}
@@ -228,6 +239,9 @@ const ManageTranslations = (props) => {
                     ) : (
                       <Button.Group>
                         <Button
+                          aria-label={`${intl.formatMessage(
+                            messages.link,
+                          )} ${langmap[lang].nativeName.toLowerCase()}`}
                           basic
                           icon
                           disabled={lang === content.language.token}
