@@ -76,3 +76,4 @@ export { withBlockSchemaEnhancer, withBlockExtensions } from './Extensions';
 export { asyncConnect } from './AsyncConnect';
 export { userHasRoles } from './User/User';
 // export { injectLazyLibs } from './Loadable/Loadable';
+export { useDetectClickOutside } from './Utils/useDetectClickOutside';
