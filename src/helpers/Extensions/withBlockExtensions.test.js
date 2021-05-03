@@ -8,20 +8,18 @@ beforeAll(() => {
     ...config.blocks.blocksConfig,
     testBlock: {
       id: 'testBlock',
-      extensions: {
-        variation: {
-          items: [
-            {
-              id: 'default',
-              title: 'Default',
-              isDefault: true,
-            },
-            {
-              id: 'extra',
-              title: 'Extra',
-            },
-          ],
+      variations: [
+        {
+          id: 'default',
+          title: 'Default',
+          isDefault: true,
         },
+        {
+          id: 'extra',
+          title: 'Extra',
+        },
+      ],
+      extensions: {
         colRender: {
           items: [
             {
