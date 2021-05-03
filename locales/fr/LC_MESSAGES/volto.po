@@ -894,14 +894,6 @@ msgstr "Si cette date est dans l'avenir, le contenu n'apparaîtera pas dans les 
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr "Si vous êtes certain que l'adresse est bonne, mais que vous avez un erreur, veuillez contacter le {site_admin}."
 
-#: components/theme/Login/Login
-msgid "If you have forgotten your password, {forgotpassword}"
-msgstr "Si vous avez oublié votre mot de passe, {forgotpassword}"
-
-#: components/theme/Login/Login
-msgid "If you you do not have an account here, head over to the {registrationform}."
-msgstr "Si vous n'avez pas de compte, allez sur le {registrationform}."
-
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -1466,6 +1458,7 @@ msgid "Reduce complexity"
 msgstr "Réduisez la complexité"
 
 #: components/theme/Anontools/Anontools
+#: components/theme/Login/Login
 #: components/theme/Register/Register
 msgid "Register"
 msgstr "S'enregistrer"
@@ -2269,6 +2262,7 @@ msgstr "Votre mot de passe a été défini avec succès. Vous pouvez maintenant 
 msgid "Your preferred language"
 msgstr "Votre langue préférée"
 
+#: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "box_forgot_password_option"
 msgstr "Mot de passe oublié"
@@ -2445,10 +2439,6 @@ msgstr ""
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "querystring-widget-select"
 msgstr ""
-
-#: components/theme/Login/Login
-msgid "registration form"
-msgstr "formulaire d'inscription"
 
 #: components/theme/Search/Search
 msgid "results found"
@@ -2633,10 +2623,6 @@ msgstr "vidéo"
 #: components/theme/View/EventView
 msgid "visit_external_website"
 msgstr ""
-
-#: components/theme/Login/Login
-msgid "we can send you a new one"
-msgstr "nous pouvons vous en envoyer un nouveau"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"

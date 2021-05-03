@@ -896,14 +896,6 @@ msgstr "Wanneer deze datum in de toekomst is zal de inhoud niet langer zichtbaar
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr "Indien u er zeker van bent dat u het webadres goed heeft, maar toch een foutmelding krijgt, neem dan contact op met {site_admin}."
 
-#: components/theme/Login/Login
-msgid "If you have forgotten your password, {forgotpassword}"
-msgstr ""
-
-#: components/theme/Login/Login
-msgid "If you you do not have an account here, head over to the {registrationform}."
-msgstr ""
-
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -1468,6 +1460,7 @@ msgid "Reduce complexity"
 msgstr ""
 
 #: components/theme/Anontools/Anontools
+#: components/theme/Login/Login
 #: components/theme/Register/Register
 msgid "Register"
 msgstr ""
@@ -2271,6 +2264,7 @@ msgstr ""
 msgid "Your preferred language"
 msgstr "De taal van uw voorkeur"
 
+#: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "box_forgot_password_option"
 msgstr ""
@@ -2446,10 +2440,6 @@ msgstr ""
 
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "querystring-widget-select"
-msgstr ""
-
-#: components/theme/Login/Login
-msgid "registration form"
 msgstr ""
 
 #: components/theme/Search/Search
@@ -2634,10 +2624,6 @@ msgstr ""
 
 #: components/theme/View/EventView
 msgid "visit_external_website"
-msgstr ""
-
-#: components/theme/Login/Login
-msgid "we can send you a new one"
 msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal

@@ -133,6 +133,7 @@ let config = {
     serverConfig,
     storeExtenders: [],
     showTags: true,
+    showSelfRegistration: false,
   },
   widgets: {
     ...widgetMapping,

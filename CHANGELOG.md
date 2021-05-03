@@ -16,6 +16,8 @@ https://docs.voltocms.com/upgrade-guide/
 
 ### Feature
 
+- Change login form fixing accessibility issues @nzambello
+
 ### Bugfix
 
 ### Internal

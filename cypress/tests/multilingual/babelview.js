@@ -70,8 +70,8 @@ describe('Babel View Tests', () => {
     ).findByText('My IT page');
 
     // Click on the menu
-    cy.findByLabelText('Confronta con altre traduzioni').click();
-    cy.findByLabelText('Confronta con altre traduzioni english').click();
+    cy.findByLabelText('Confronta con').click();
+    cy.findByLabelText('Confronta con english').click();
 
     // The babel view is there
     cy.findByText('Test document');
