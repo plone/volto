@@ -10,6 +10,10 @@
 
 ### Internal
 
+- Full real zero configuration achievement by turning the stock default
+  `RAZZLE_PUBLIC_DIR` into a relative path, so we can enable truly movable builds
+  @sneridagh
+
 ## 13.0.0-alpha.0 (2021-05-03)
 
 ### Breaking
