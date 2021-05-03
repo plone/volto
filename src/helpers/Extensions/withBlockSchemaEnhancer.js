@@ -41,10 +41,7 @@ export const addExtensionFieldToSchema = ({
 
   if (!hasDefaultExtension) {
     // eslint-disable-next-line
-    console.warn(
-      'You should provide a default extension in extension:',
-      name,
-    );
+    console.warn('You should provide a default extension in extension:', name);
   }
 
   schema.properties[name] = {
