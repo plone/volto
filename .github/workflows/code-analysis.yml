@@ -1,4 +1,4 @@
-name: Core Main Tests
+name: Code Analysis Check
 on: [push]
 jobs:
   build:
@@ -31,31 +31,10 @@ jobs:
       # node install
       - run: yarn install --frozen-lockfile
 
-      # node test
-      - run: yarn test:ci
-
-      # # cypress acceptance tests
-      # - name: Cypress acceptance tests
-      #   uses: cypress-io/github-action@v1
-
-      - name: Cypress acceptance tests
-        run: yarn ci:cypress:run
-
-      # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
-        if: failure()
-        with:
-          name: cypress-screenshots
-          path: cypress/screenshots
-      # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
-        if: always()
-        with:
-          name: cypress-videos
-          path: cypress/videos
-
-      # Bundlewatch
-      - uses: jackyef/bundlewatch-gh-action@master
-        with:
-          bundlewatch-github-token: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
-
+      # node code analysis
+      - name: Prettier check
+        run: yarn run prettier
+      - name: ESlint check
+        run: yarn run lint
+      - name: i18n locales in sync
+        run: yarn run i18n:ci
