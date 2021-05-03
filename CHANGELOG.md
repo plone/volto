@@ -4,12 +4,14 @@
 
 ### Breaking
 
+- Remove the "inverted" option in Table Block since it was useless with the current CSS
+  set. Better naming of options and labels in table block (English). Updating the i18n messages for the used translations is advisable, but not required.  @iFlameing
+
 ### Feature
 
 ### Bugfix
 
 ### Internal
-- Changing naming of options and lables in table block @iFlameing.
 
 ## 12.13.0 (2021-04-30)
 
