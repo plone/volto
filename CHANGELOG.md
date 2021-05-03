@@ -9,6 +9,7 @@
 ### Bugfix
 
 ### Internal
+- Changing naming of options and lables in table block @iFlameing.
 
 ## 12.13.0 (2021-04-30)
 

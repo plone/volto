@@ -1843,10 +1843,6 @@ msgstr ""
 msgid "Table"
 msgstr "Tabla"
 
-#: components/manage/Blocks/Table/Edit
-msgid "Table color inverted"
-msgstr "Lista de colores invertidos"
-
 #: components/manage/Blocks/ToC/View
 msgid "Table of Contents"
 msgstr ""
