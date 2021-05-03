@@ -1,6 +1,6 @@
 import { InlineForm } from '@plone/volto/components';
-import { withBlockSchemaEnhancer } from '@plone/volto/helpers';
+import { withVariationSchemaEnhancer } from '@plone/volto/helpers';
 
-const BlockDataForm = withBlockSchemaEnhancer(InlineForm, 'variation');
+const BlockDataForm = withVariationSchemaEnhancer(InlineForm);
 
 export default BlockDataForm;

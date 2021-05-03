@@ -20,7 +20,9 @@ export function resolveExtension(name, extensions, data) {
 export default (WrappedComponent) => (props) => {
   const { data } = props;
   const block_type = data['@type'];
-  const { extensions = {} } = config.blocks.blocksConfig[block_type];
+  const { extensions = {}, variations = [] } = config.blocks.blocksConfig[
+    block_type
+  ];
 
   const resolvedExtensions = Object.assign(
     {},
@@ -33,6 +35,13 @@ export default (WrappedComponent) => (props) => {
       ),
     })),
   );
+
+  if (variations.length) {
+    const variation = data.variation
+      ? variations.find(({ id }) => id === data.variation)
+      : variations.find(({ isDefault }) => isDefault);
+    resolvedExtensions.variation = variation;
+  }
 
   return (
     <WrappedComponent

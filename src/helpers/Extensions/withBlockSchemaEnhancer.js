@@ -26,7 +26,7 @@ function _addField(schema, name) {
 export const addExtensionFieldToSchema = ({
   schema,
   name,
-  extensionConfig,
+  items,
   intl,
   title,
   description,
@@ -37,19 +37,19 @@ export const addExtensionFieldToSchema = ({
   insertFieldToOrder(schema, name);
 
   const hasDefaultExtension =
-    extensionConfig?.items?.findIndex(({ isDefault }) => isDefault) > -1;
+    items?.findIndex(({ isDefault }) => isDefault) > -1;
 
   if (!hasDefaultExtension) {
     // eslint-disable-next-line
     console.warn(
-      'You should provide a default extension in extensions: ',
-      extensionConfig,
+      'You should provide a default extension in extension:',
+      name,
     );
   }
 
   schema.properties[name] = {
     title: _(title),
-    choices: extensionConfig?.items?.map(({ id, title }) => [
+    choices: items?.map(({ id, title }) => [
       id,
       _({ id, defaultMessage: title }),
     ]),
@@ -61,7 +61,7 @@ export const addExtensionFieldToSchema = ({
 
 export const withBlockSchemaEnhancer = (
   FormComponent,
-  extensionName = 'variation',
+  extensionName = 'vendor',
   insertFieldToOrder = _addField,
 ) => ({ ...props }) => {
   const { formData, schema: originalSchema } = props;
@@ -100,11 +100,51 @@ export const withBlockSchemaEnhancer = (
     addExtensionFieldToSchema({
       schema,
       name: extensionName,
-      extensionConfig,
+      items: extensionConfig.items || [],
       intl,
       title,
       description,
       insertFieldToOrder,
+    });
+  }
+
+  return <FormComponent {...props} schema={schema} />;
+};
+
+export const withVariationSchemaEnhancer = (FormComponent) => (props) => {
+  const { formData, schema: originalSchema } = props;
+  const intl = useIntl();
+
+  const { blocks } = config;
+
+  const blockType = formData['@type'];
+  const variations = blocks?.blocksConfig[blockType]?.variations || [];
+
+  if (variations.length === 0)
+    return <FormComponent {...props} schema={originalSchema} />;
+
+  const activeItemName = formData?.variation;
+  let activeItem = variations.find((item) => item.id === activeItemName);
+  if (!activeItem) activeItem = variations.find((item) => item.isDefault);
+
+  const schemaEnhancer =
+    // For the main "variation" of blocks, allow simply passing a
+    // schemaEnhancer in the block configuration
+    activeItem?.['schemaEnhancer'] ||
+    blocks.blocksConfig?.[blockType]?.schemaEnhancer;
+
+  let schema = schemaEnhancer
+    ? schemaEnhancer({ schema: cloneDeep(originalSchema), formData, intl })
+    : cloneDeep(originalSchema);
+
+  if (variations.length > 1) {
+    addExtensionFieldToSchema({
+      schema,
+      name: 'variation',
+      items: variations,
+      intl,
+      title: messages.variation,
+      insertFieldToOrder: _addField,
     });
   }
 
