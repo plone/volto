@@ -24,7 +24,7 @@ export function getQueryStringResults(path, data, subrequest, page) {
 
   // fixes https://github.com/plone/volto/issues/2397
   if (requestData?.sort_order !== null) {
-    if (typeof requestData.sort_order === "boolean") {
+    if (typeof requestData.sort_order === 'boolean') {
       requestData.sort_order = requestData.sort_order
         ? 'descending'
         : 'ascending';
