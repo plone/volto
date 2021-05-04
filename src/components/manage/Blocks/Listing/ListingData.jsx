@@ -162,11 +162,11 @@ const ListingData = ({
         <CheckboxWidget
           id="listingblock-sort-on-reverse"
           title={intl.formatMessage(messages.reversedOrder)}
-          value={data.sort_order ? data.sort_order : false}
+          value={data.sort_order === 'descending' || data.sort_order === true}
           onChange={(name, value) => {
             onChangeBlock(block, {
               ...data,
-              sort_order: value,
+              sort_order: value ? 'descending' : 'ascending',
             });
           }}
         />
