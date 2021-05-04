@@ -25,7 +25,7 @@ const messages = defineMessages({
   },
 });
 
-export default function QueryStringSortOnWidget(props) {
+export default function QueryStringSortOrderWidget(props) {
   const { id, value, onChange } = props;
   const sortable_indexes = useSelector(
     (state) => state.querystring.sortable_indexes,
@@ -36,7 +36,7 @@ export default function QueryStringSortOnWidget(props) {
     <FormFieldWrapper
       {...props}
       draggable={false}
-      className="simple-color-picker-widget"
+      className="query-sort-on-widget"
     >
       <Select
         id="select-listingblock-sort-on"
