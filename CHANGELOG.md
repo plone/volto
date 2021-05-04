@@ -1,5 +1,12 @@
 # Change Log
 
+## 12.14.1 (unreleased)
+
+### Bugfix
+
+- Fix sort_order restapi call, works on action for existing listing blocks
+  and in ListingData saving correctly new ones @nzambello
+
 ## 12.14.0 (2021-05-03)
 
 ### Feature
