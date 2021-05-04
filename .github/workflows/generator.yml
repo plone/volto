@@ -1,4 +1,4 @@
-name: Generator Volto CI
+name: Project Generator Tests
 on: [push]
 jobs:
   build:

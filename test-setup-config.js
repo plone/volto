@@ -21,6 +21,7 @@ import {
 import { contentIcons } from '@plone/volto/config/ContentIcons';
 
 import FromHTMLCustomBlockFn from '@plone/volto/config/RichTextEditor/FromHTML';
+import { controlPanelsIcons } from '@plone/volto/config/ControlPanels';
 // import { defaultToolbar } from '@plone/volto/config/toolbar';
 
 config.set('settings', {
@@ -48,6 +49,7 @@ config.set('settings', {
       // 'diffLib',
     ],
   },
+  controlPanelsIcons,
 });
 config.set('blocks', {
   blocksConfig: {

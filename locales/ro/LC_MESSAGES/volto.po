@@ -877,14 +877,6 @@ msgstr "Dacă această dată va fi în viitor, conținutul nu va apărea în lis
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr "Dacă sunteți sigur că aveți adresa web corectă, dar întâmpinați o eroare, vă rugăm să contactați {site_admin}."
 
-#: components/theme/Login/Login
-msgid "If you have forgotten your password, {forgotpassword}"
-msgstr "Dacă v-ați uitat parola, {forgotpassword}"
-
-#: components/theme/Login/Login
-msgid "If you you do not have an account here, head over to the {registrationform}."
-msgstr "Dacă nu aveți un cont aici, treceți la {registrationform}."
-
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -1449,6 +1441,7 @@ msgid "Reduce complexity"
 msgstr "Reduce complexitatea"
 
 #: components/theme/Anontools/Anontools
+#: components/theme/Login/Login
 #: components/theme/Register/Register
 msgid "Register"
 msgstr "Înregistrare"
@@ -1833,10 +1826,6 @@ msgstr ""
 msgid "Table"
 msgstr "Tabel"
 
-#: components/manage/Blocks/Table/Edit
-msgid "Table color inverted"
-msgstr "Culoarea tabelului inversată"
-
 #: components/manage/Blocks/ToC/View
 msgid "Table of Contents"
 msgstr "Cuprins"
@@ -2111,7 +2100,7 @@ msgstr "Utilizatori și grupuri"
 msgid "Users and groups settings"
 msgstr "Setările utilizatorilor și grupurilor"
 
-#: components/manage/Form/BlockDataForm
+#: helpers/Extensions/withBlockSchemaEnhancer
 msgid "Variation"
 msgstr ""
 
@@ -2252,6 +2241,7 @@ msgstr "Parola dvs. a fost setată cu succes. Acum puteți {link} cu noua dvs. p
 msgid "Your preferred language"
 msgstr "Limba dvs. preferată"
 
+#: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "box_forgot_password_option"
 msgstr "Ați uitat parola?"
@@ -2428,10 +2418,6 @@ msgstr ""
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "querystring-widget-select"
 msgstr ""
-
-#: components/theme/Login/Login
-msgid "registration form"
-msgstr "formular de înregistrare"
 
 #: components/theme/Search/Search
 msgid "results found"
@@ -2616,10 +2602,6 @@ msgstr "Video"
 #: components/theme/View/EventView
 msgid "visit_external_website"
 msgstr "Vizitează site extern"
-
-#: components/theme/Login/Login
-msgid "we can send you a new one"
-msgstr "vă putem trimite unul nou"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"

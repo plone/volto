@@ -59,18 +59,21 @@ const server = express()
 
 // Internal proxy to bypass CORS while developing.
 if (__DEVELOPMENT__ && config.settings.devProxyToApiPath) {
+  // This is the proxy to the API in case the accept header is 'application/json'
+  const filter = function (pathname, req) {
+    return req.headers.accept === 'application/json';
+  };
   const apiPathURL = parseUrl(config.settings.apiPath);
   const proxyURL = parseUrl(config.settings.devProxyToApiPath);
   const serverURL = `${proxyURL.protocol}//${proxyURL.host}`;
   const instancePath = proxyURL.pathname;
   server.use(
-    '/api',
-    createProxyMiddleware({
+    createProxyMiddleware(filter, {
       target: serverURL,
       pathRewrite: {
-        '^/api':
+        '^/':
           config.settings.proxyRewriteTarget ||
-          `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot/_vh_api`,
+          `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot/`,
       },
       logLevel: 'silent', // change to 'debug' to see all requests
       ...(config.settings?.proxyRewriteTarget?.startsWith('https') && {
@@ -171,6 +174,16 @@ server.get('/*', (req, res) => {
   const url = req.originalUrl || req.url;
   const location = parseUrl(url);
 
+  let apiPathFromHostHeader;
+  // Get the Host header as apiPath just in case that the apiPath is not set
+  if (!config.settings.apiPath && req.headers.host) {
+    apiPathFromHostHeader = `${
+      req.headers['x-forwarded-proto'] || req.protocol
+    }://${req.headers.host}`;
+    config.settings.apiPath = apiPathFromHostHeader;
+    config.settings.publicURL = apiPathFromHostHeader;
+  }
+
   loadOnServer({ store, location, routes, api })
     .then(() => {
       // The content info is in the store at this point thanks to the asynconnect
@@ -213,6 +226,7 @@ server.get('/*', (req, res) => {
                   store={store}
                   extractScripts={process.env.NODE_ENV !== 'production'}
                   criticalCss={readCriticalCss(req)}
+                  apiPath={apiPathFromHostHeader || config.settings.apiPath}
                 />,
               )}
             `,
@@ -226,6 +240,7 @@ server.get('/*', (req, res) => {
                   markup={markup}
                   store={store}
                   criticalCss={readCriticalCss(req)}
+                  apiPath={apiPathFromHostHeader || config.settings.apiPath}
                 />,
               )}
             `,
@@ -247,7 +262,9 @@ export const defaultReadCriticalCss = () => {
   return readFileSync(criticalCssPath, { encoding: 'utf-8' });
 };
 
+// Exposed for the console bootstrap info messages
 server.apiPath = config.settings.apiPath;
 server.devProxyToApiPath = config.settings.devProxyToApiPath;
+server.publicURL = config.settings.publicURL;
 
 export default server;
