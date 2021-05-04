@@ -72,6 +72,11 @@ export {
   parseDateTime,
 } from '@plone/volto/helpers/Utils/Utils';
 export { messages } from './MessageLabels/MessageLabels';
+export {
+  withBlockSchemaEnhancer,
+  withVariationSchemaEnhancer,
+  withBlockExtensions,
+} from './Extensions';
 export { asyncConnect } from './AsyncConnect';
 export { userHasRoles } from './User/User';
 // export { injectLazyLibs } from './Loadable/Loadable';

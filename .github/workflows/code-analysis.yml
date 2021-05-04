@@ -1,4 +1,4 @@
-name: Guillotina Backend Tests
+name: Code Analysis Check
 on: [push]
 jobs:
   build:
@@ -9,9 +9,6 @@ jobs:
         python-version: [3.7]
     steps:
       - uses: actions/checkout@v2
-      - name: debug
-        working-directory: api
-        run: ls -al
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
@@ -34,18 +31,10 @@ jobs:
       # node install
       - run: yarn install --frozen-lockfile
 
-      - name: Cypress acceptance tests
-        run: yarn ci:cypress:run:guillotina
-
-      # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
-        if: failure()
-        with:
-          name: cypress-screenshots
-          path: cypress/screenshots
-      # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
-        if: always()
-        with:
-          name: cypress-videos
-          path: cypress/videos
+      # node code analysis
+      - name: Prettier check
+        run: yarn run prettier
+      - name: ESlint check
+        run: yarn run lint
+      - name: i18n locales in sync
+        run: yarn run i18n:ci

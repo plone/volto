@@ -885,14 +885,6 @@ msgstr "Se esta data estiver no futuro, o conteúdo não irá aparecer em listas
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr "Se tiver a certeza que tem o endereço web correcto mas está a obter um erro, por favor contacte o {site_admin}."
 
-#: components/theme/Login/Login
-msgid "If you have forgotten your password, {forgotpassword}"
-msgstr "Se se esqueceu da sua senha, {forgotpassword}"
-
-#: components/theme/Login/Login
-msgid "If you you do not have an account here, head over to the {registrationform}."
-msgstr "Se não tem uma conta aqui, dirija-se a {registrationform}."
-
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -1457,6 +1449,7 @@ msgid "Reduce complexity"
 msgstr "Reduzir complexidade"
 
 #: components/theme/Anontools/Anontools
+#: components/theme/Login/Login
 #: components/theme/Register/Register
 msgid "Register"
 msgstr "Registar"
@@ -1841,10 +1834,6 @@ msgstr ""
 msgid "Table"
 msgstr "Tabela"
 
-#: components/manage/Blocks/Table/Edit
-msgid "Table color inverted"
-msgstr "Cor da tabela invertida"
-
 #: components/manage/Blocks/ToC/View
 msgid "Table of Contents"
 msgstr ""
@@ -2119,7 +2108,7 @@ msgstr "Utilizadores e Grupos"
 msgid "Users and groups settings"
 msgstr "Configurações de utilizadores e grupos"
 
-#: components/manage/Form/BlockDataForm
+#: helpers/Extensions/withBlockSchemaEnhancer
 msgid "Variation"
 msgstr ""
 
@@ -2260,6 +2249,7 @@ msgstr "A sua senha foi definida com sucesso. Pode agora {link} com a sua nova s
 msgid "Your preferred language"
 msgstr "O seu idioma preferido"
 
+#: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "box_forgot_password_option"
 msgstr "box_forgot_password_option"
@@ -2436,10 +2426,6 @@ msgstr ""
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "querystring-widget-select"
 msgstr ""
-
-#: components/theme/Login/Login
-msgid "registration form"
-msgstr "formulário de registo"
 
 #: components/theme/Search/Search
 msgid "results found"
@@ -2624,10 +2610,6 @@ msgstr "vídeo"
 #: components/theme/View/EventView
 msgid "visit_external_website"
 msgstr ""
-
-#: components/theme/Login/Login
-msgid "we can send you a new one"
-msgstr "podemos enviar-lhe uma nova"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"

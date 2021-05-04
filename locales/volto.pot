@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2021-04-23T08:46:16.898Z\n"
+"POT-Creation-Date: 2021-05-03T16:30:44.786Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -665,7 +665,7 @@ msgid "Distributed under the {license}."
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Divide each row into separate cells
+# defaultMessage: Add border to inner columns
 msgid "Divide each row into separate cells"
 msgstr ""
 
@@ -929,7 +929,7 @@ msgid "First"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Fixed width table cells
+# defaultMessage: Fixed width columns
 msgid "Fixed width table cells"
 msgstr ""
 
@@ -1064,16 +1064,6 @@ msgstr ""
 #: components/theme/Unauthorized/Unauthorized
 # defaultMessage: If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}.
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
-msgstr ""
-
-#: components/theme/Login/Login
-# defaultMessage: If you have forgotten your password, {forgotpassword}
-msgid "If you have forgotten your password, {forgotpassword}"
-msgstr ""
-
-#: components/theme/Login/Login
-# defaultMessage: If you you do not have an account here, head over to the {registrationform}.
-msgid "If you you do not have an account here, head over to the {registrationform}."
 msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/Edit
@@ -1300,7 +1290,7 @@ msgid "Location"
 msgstr ""
 
 #: components/theme/Login/Login
-# defaultMessage: Login Name
+# defaultMessage: Login
 msgid "Log In"
 msgstr ""
 
@@ -1326,7 +1316,7 @@ msgid "Login Name"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Make the table compact
+# defaultMessage: Reduce cell padding
 msgid "Make the table compact"
 msgstr ""
 
@@ -1766,11 +1756,12 @@ msgid "Recurrence ends on"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Reduce complexity
+# defaultMessage: Minimalistic table design
 msgid "Reduce complexity"
 msgstr ""
 
 #: components/theme/Anontools/Anontools
+#: components/theme/Login/Login
 #: components/theme/Register/Register
 # defaultMessage: Register
 msgid "Register"
@@ -2209,7 +2200,7 @@ msgid "String"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Stripe alternate rows with color
+# defaultMessage: Alternate row background color
 msgid "Stripe alternate rows with color"
 msgstr ""
 
@@ -2240,11 +2231,6 @@ msgstr ""
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Table
 msgid "Table"
-msgstr ""
-
-#: components/manage/Blocks/Table/Edit
-# defaultMessage: Table color inverted
-msgid "Table color inverted"
 msgstr ""
 
 #: components/manage/Blocks/ToC/View
@@ -2584,7 +2570,7 @@ msgstr ""
 msgid "Users and groups settings"
 msgstr ""
 
-#: components/manage/Form/BlockDataForm
+#: helpers/Extensions/withBlockSchemaEnhancer
 # defaultMessage: Variation
 msgid "Variation"
 msgstr ""
@@ -2764,6 +2750,7 @@ msgstr ""
 msgid "Your preferred language"
 msgstr ""
 
+#: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Forgot your password?
 msgid "box_forgot_password_option"
@@ -2983,11 +2970,6 @@ msgstr ""
 #: components/manage/Blocks/Listing/QuerystringWidget
 # defaultMessage: Select…
 msgid "querystring-widget-select"
-msgstr ""
-
-#: components/theme/Login/Login
-# defaultMessage: registration form
-msgid "registration form"
 msgstr ""
 
 #: components/theme/Search/Search
@@ -3218,11 +3200,6 @@ msgstr ""
 #: components/theme/View/EventView
 # defaultMessage: Visit external website
 msgid "visit_external_website"
-msgstr ""
-
-#: components/theme/Login/Login
-# defaultMessage: Reset password
-msgid "we can send you a new one"
 msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal

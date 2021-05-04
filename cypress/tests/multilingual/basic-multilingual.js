@@ -33,7 +33,7 @@ describe('Basic multilingual Tests', () => {
     cy.getCookie('lang').should('have.property', 'value', 'it');
   });
 
-  it.only('Language selector in content', function () {
+  it('Language selector in content', function () {
     // Create translation
     cy.get('#toolbar-add').click();
     cy.findByText('Translate to italiano').click();
@@ -56,7 +56,7 @@ describe('Basic multilingual Tests', () => {
     cy.waitForResourceToLoad('@types');
     cy.waitForResourceToLoad('my-it-page');
 
-    cy.findByLabelText('Switch to english').click();
+    cy.findByLabelText('Vai a english').click();
 
     // The english doc should be shown
     cy.get('#page-document').findByText('Test document');
