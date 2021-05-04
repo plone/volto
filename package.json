@@ -28,7 +28,8 @@
     "react"
   ],
   "scripts": {
-    "postinstall": "yarn patches",
+    "postinstall": "yarn patches && yarn prepare",
+    "prepare": "husky install",
     "analyze": "BUNDLE_ANALYZE=true razzle build",
     "start": "razzle start",
     "start-spa": "razzle start --type=spa",
