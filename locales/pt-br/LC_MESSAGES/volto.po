@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-27T19:30:59.079Z\n"
-"PO-Revision-Date: 2021-05-04 14:10-0300\n"
+"PO-Revision-Date: 2021-05-04 14:26-0300\n"
 "Last-Translator: Érico Andrei <ericof@plone.org>, 2021\n"
 "Language: pt_BR\n"
 "Language-Team: Portuguese (https://www.transifex.com/plone/teams/14552/pt/)\n"
@@ -67,7 +67,7 @@ msgstr "Adicionar conteúdo"
 
 #: components/manage/Toolbar/Types
 msgid "Add Translation…"
-msgstr "Adicionar tradução..."
+msgstr "Adicionar tradução…"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Add User"
@@ -574,7 +574,7 @@ msgstr "Documento"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
-msgstr "Arraste e solte arquivos do seu computador para esta área ou clique no botão \"Procurar\"."
+msgstr "Arraste e solte arquivos do seu computador para esta área ou clique no botão \"Procurar\" ."
 
 #: components/manage/Widgets/FileWidget
 msgid "Drop file here to replace the existing file"
@@ -586,7 +586,7 @@ msgstr "Solte um arquivo aqui para enviar um novo arquivo"
 
 #: components/manage/Widgets/FileWidget
 msgid "Drop files here ..."
-msgstr "Soltar aquivos aqui"
+msgstr "Soltar aquivos aqui…"
 
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
@@ -939,7 +939,7 @@ msgstr "Tamanho do lote de itens"
 
 #: components/manage/Contents/Contents
 msgid "Item succesfully moved."
-msgstr "Item movido com sucesso"
+msgstr "Item movido com sucesso."
 
 #: components/manage/Contents/Contents
 msgid "Item(s) copied."
@@ -947,15 +947,15 @@ msgstr "Itens copiados."
 
 #: components/manage/Contents/Contents
 msgid "Item(s) cut."
-msgstr "Itens cortados"
+msgstr "Itens cortados."
 
 #: components/manage/Contents/Contents
 msgid "Item(s) has been updated."
-msgstr "Itens atualizados"
+msgstr "Itens atualizados."
 
 #: components/manage/Actions/Actions components/manage/Contents/Contents
 msgid "Item(s) pasted."
-msgstr "Itens colados"
+msgstr "Itens colados."
 
 #: components/manage/Contents/Contents
 msgid "Item(s) state has been updated."
@@ -1205,7 +1205,7 @@ msgstr "Nenhum resultado encontrado"
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
-msgstr "Nenhum resultado encontrado"
+msgstr "Nenhum resultado encontrado."
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "No selection"
@@ -1322,7 +1322,7 @@ msgstr "Digite uma URL válida excluindo o bloco e adicionando um novo bloco de 
 
 #: components/manage/Blocks/Maps/Edit
 msgid "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
-msgstr "Digite o código Embed fornecido pelo google maps -> compartilhar -> mapa Embed. Deve conter o <iframe> código.</iframe>"
+msgstr "Digite o código Embed fornecido pelo google maps -> compartilhar -> mapa Embed. Deve conter o <iframe> código.</iframe>."
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Please fill out the form below to set your password."
@@ -1393,11 +1393,11 @@ msgstr "Reinsira a senha. Certifique-se de que as senhas são idênticas."
 
 #: components/theme/Search/Search components/theme/View/SummaryView
 msgid "Read More…"
-msgstr "Leia Mais..."
+msgstr "Leia Mais…"
 
 #: components/manage/Contents/Contents
 msgid "Rearrange items by…"
-msgstr "Reorganize itens por..."
+msgstr "Reorganize itens por…"
 
 #: components/manage/Widgets/RecurrenceWidget/EndField
 msgid "Recurrence ends"
@@ -1559,7 +1559,7 @@ msgstr "Pesquisar por usuário ou grupo"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Search group…"
-msgstr "Pesquisar grupo..."
+msgstr "Pesquisar grupo…"
 
 #: components/theme/Search/Search
 msgid "Search results"
@@ -1571,7 +1571,7 @@ msgstr "Resultados da pesquisa para {term}"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Search users…"
-msgstr "Pesquisar usuários..."
+msgstr "Pesquisar usuários…"
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Second"
@@ -1713,7 +1713,7 @@ msgstr "Tamanho: {size}"
 
 #: error
 msgid "Sorry, something went wrong with your request"
-msgstr "Desculpe, algo deu errado com sua requisição."
+msgstr "Desculpe, algo deu errado com sua requisição"
 
 #: components/theme/Search/Search
 msgid "Sort By:"
@@ -1881,7 +1881,7 @@ msgstr "Este nome será exibido na URL."
 
 #: components/theme/NotFound/NotFound
 msgid "This page does not seem to exist…"
-msgstr "Esta página parece não existir..."
+msgstr "Esta página parece não existir…"
 
 #: components/manage/Widgets/DatetimeWidget
 msgid "Time"
@@ -1946,11 +1946,11 @@ msgstr "Digite uma URL de vídeo (YouTube, Vimeo ou mp4)"
 
 #: components/manage/Blocks/Text/Edit
 msgid "Type text…"
-msgstr "Digite texto..."
+msgstr "Digite texto…"
 
 #: components/manage/Blocks/Title/Edit
 msgid "Type the title…"
-msgstr "Digite o título..."
+msgstr "Digite o título…"
 
 #: components/manage/Contents/Contents
 msgid "UID"
