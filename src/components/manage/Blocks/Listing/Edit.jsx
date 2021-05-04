@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { defineMessages, injectIntl } from 'react-intl';
+import { defineMessages, useIntl } from 'react-intl';
 import { isEqual } from 'lodash';
+import { withBlockExtensions } from '@plone/volto/helpers';
 
 import {
   SidebarPortal,
@@ -24,15 +25,9 @@ const messages = defineMessages({
 
 const Edit = React.memo(
   (props) => {
-    const {
-      data,
-      onChangeBlock,
-      block,
-      selected,
-      properties,
-      pathname,
-      intl,
-    } = props;
+    const { data, onChangeBlock, block, selected, pathname } = props;
+
+    const intl = useIntl();
 
     // componentDidMount
     React.useEffect(() => {
@@ -55,13 +50,7 @@ const Edit = React.memo(
     return (
       <>
         <p className="items-preview">{placeholder}</p>
-        <ListingBody
-          data={data}
-          properties={properties}
-          block={block}
-          path={getBaseUrl(pathname)}
-          isEditMode
-        />
+        <ListingBody {...props} path={getBaseUrl(pathname)} isEditMode />
         <SidebarPortal selected={selected}>
           <ListingData
             key={block}
@@ -93,4 +82,4 @@ Edit.propTypes = {
   pathname: PropTypes.string.isRequired,
 };
 
-export default injectIntl(Edit);
+export default withBlockExtensions(Edit);

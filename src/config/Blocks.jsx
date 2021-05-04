@@ -223,14 +223,24 @@ const blocksConfig = {
       addPermission: [],
       view: [],
     },
-    templates: {
-      default: { label: 'Default', template: DefaultListingBlockTemplate },
-      imageGallery: {
-        label: 'Image gallery',
+    variations: [
+      {
+        id: 'default',
+        isDefault: true,
+        title: 'Default',
+        template: DefaultListingBlockTemplate,
+      },
+      {
+        id: 'imageGallery',
+        title: 'Image gallery',
         template: ImageGalleryListingBlockTemplate,
       },
-      summary: { label: 'Summary', template: SummaryListingBlockTemplate },
-    },
+      {
+        id: 'summary',
+        title: 'Summary',
+        template: SummaryListingBlockTemplate,
+      },
+    ],
   },
   video: {
     id: 'video',
