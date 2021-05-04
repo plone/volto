@@ -41,7 +41,8 @@ msgstr "Ativação completa"
 msgid "Action"
 msgstr "Ação"
 
-#: components/manage/Actions/Actions components/manage/Contents/Contents
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Actions"
@@ -52,7 +53,8 @@ msgid "Activate and deactivate"
 msgstr "Ativar e desativar"
 
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Toolbar/Toolbar components/manage/Widgets/SchemaWidget
+#: components/manage/Toolbar/Toolbar
+#: components/manage/Widgets/SchemaWidget
 #: helpers/MessageLabels/MessageLabels
 msgid "Add"
 msgstr "Adicionar"
@@ -173,7 +175,8 @@ msgstr "Disponível"
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/DatabaseInformation
-#: components/manage/Controlpanels/ModerateComments components/manage/Diff/Diff
+#: components/manage/Controlpanels/ModerateComments
+#: components/manage/Diff/Diff
 #: components/manage/History/History
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
@@ -181,7 +184,8 @@ msgstr "Disponível"
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
 #: components/manage/Sidebar/ObjectBrowserBody
-#: components/manage/Toolbar/Toolbar components/theme/ContactForm/ContactForm
+#: components/manage/Toolbar/Toolbar
+#: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
 msgid "Back"
 msgstr "Voltar"
@@ -232,13 +236,17 @@ msgstr "Não é possível editar layout para o tipo de conteúdo <strong>{type}<
 msgid "Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>"
 msgstr "Não é possível editar layout para o tipo de conteúdo <strong>{type}</strong>, pois o <strong>comportamento de Blocos</strong> está ativado mas  <strong>somentepara leitura</strong>"
 
-#: components/manage/Add/Add components/manage/Contents/ContentsUploadModal
+#: components/manage/Add/Add
+#: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
-#: components/manage/Controlpanels/Controlpanel components/manage/Delete/Delete
-#: components/manage/Edit/Edit components/manage/Form/ModalForm
-#: components/manage/Sharing/Sharing components/theme/Login/Login
+#: components/manage/Controlpanels/Controlpanel
+#: components/manage/Delete/Delete
+#: components/manage/Edit/Edit
+#: components/manage/Form/ModalForm
+#: components/manage/Sharing/Sharing
+#: components/theme/Login/Login
 #: helpers/MessageLabels/MessageLabels
 msgid "Cancel"
 msgstr "Cancelar"
@@ -248,7 +256,8 @@ msgid "Cell"
 msgstr "Célula"
 
 #: components/manage/Blocks/Image/ImageSizeWidget
-#: components/manage/Blocks/Maps/Edit components/manage/Sidebar/AlignBlock
+#: components/manage/Blocks/Maps/Edit
+#: components/manage/Sidebar/AlignBlock
 msgid "Center"
 msgstr "Centro"
 
@@ -380,11 +389,13 @@ msgstr "Tipo de conteúdo criado"
 msgid "Content type deleted"
 msgstr "Tipo de conteúdo removido"
 
-#: components/manage/Contents/Contents components/manage/Toolbar/Toolbar
+#: components/manage/Contents/Contents
+#: components/manage/Toolbar/Toolbar
 msgid "Contents"
 msgstr "Conteúdo"
 
-#: components/manage/Actions/Actions components/manage/Contents/Contents
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
 msgid "Copy"
 msgstr "Copiar"
@@ -421,7 +432,8 @@ msgstr "Critérios"
 msgid "Current password"
 msgstr "Senha atual"
 
-#: components/manage/Actions/Actions components/manage/Contents/Contents
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
 msgid "Cut"
 msgstr "Cortar"
@@ -471,21 +483,25 @@ msgstr "Data (mais novo primeiro)"
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/CommentEditModal
-#: components/theme/Comments/Comments components/theme/ContactForm/ContactForm
+#: components/theme/Comments/Comments
+#: components/theme/ContactForm/ContactForm
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
 #: components/theme/Register/Register
 msgid "Default"
 msgstr "Padrão"
 
-#: components/manage/Contents/Contents components/manage/Contents/ContentsItem
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/UsersControlpanelGroups
 #: components/manage/Controlpanels/UsersControlpanelUser
-#: components/manage/Delete/Delete components/manage/Widgets/FormFieldWrapper
+#: components/manage/Delete/Delete
+#: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
-#: components/manage/Widgets/WysiwygWidget components/theme/Comments/Comments
+#: components/manage/Widgets/WysiwygWidget
+#: components/theme/Comments/Comments
 msgid "Delete"
 msgstr "Excluir"
 
@@ -526,7 +542,8 @@ msgstr "Descendente"
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget components/theme/View/TabularView
+#: components/manage/Widgets/WysiwygWidget
+#: components/theme/View/TabularView
 #: helpers/MessageLabels/MessageLabels
 msgid "Description"
 msgstr "Descrição"
@@ -574,7 +591,7 @@ msgstr "Documento"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
-msgstr "Arraste e solte arquivos do seu computador para esta área ou clique no botão \"Procurar\" ."
+msgstr "Arraste e solte arquivos do seu computador para esta área ou clique no botão "Procurar" ."
 
 #: components/manage/Widgets/FileWidget
 msgid "Drop file here to replace the existing file"
@@ -600,7 +617,8 @@ msgstr "Os endereços de e-mail não coincidem."
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/ModerateComments
-#: components/manage/Toolbar/Toolbar components/manage/Widgets/FormFieldWrapper
+#: components/manage/Toolbar/Toolbar
+#: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
 #: components/theme/Comments/Comments
 msgid "Edit"
@@ -693,10 +711,13 @@ msgstr "Digite o seu endereço de e-mail para verificação."
 msgid "Enter your new password. Minimum 5 characters."
 msgstr "Digite sua nova senha. Mínimo de 5 caracteres."
 
-#: components/manage/Add/Add components/manage/Controlpanels/ContentTypeSchema
-#: components/manage/Edit/Edit components/manage/Form/InlineForm
+#: components/manage/Add/Add
+#: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Edit/Edit
+#: components/manage/Form/InlineForm
 #: components/manage/Widgets/SchemaWidget
-#: components/theme/ContactForm/ContactForm components/theme/Login/Login
+#: components/theme/ContactForm/ContactForm
+#: components/theme/Login/Login
 #: helpers/MessageLabels/MessageLabels
 msgid "Error"
 msgstr "Erro"
@@ -778,7 +799,8 @@ msgstr "Quarto"
 msgid "From"
 msgstr "De"
 
-#: components/manage/Blocks/Maps/Edit components/manage/Sidebar/AlignBlock
+#: components/manage/Blocks/Maps/Edit
+#: components/manage/Sidebar/AlignBlock
 msgid "Full"
 msgstr "Cheia"
 
@@ -829,7 +851,8 @@ msgstr "Célula de cabeçalho"
 msgid "Hide Replies"
 msgstr "Ocultar respostas"
 
-#: components/manage/History/History components/manage/Toolbar/More
+#: components/manage/History/History
+#: components/manage/Toolbar/More
 msgid "History"
 msgstr "Histórico"
 
@@ -953,7 +976,8 @@ msgstr "Itens cortados."
 msgid "Item(s) has been updated."
 msgstr "Itens atualizados."
 
-#: components/manage/Actions/Actions components/manage/Contents/Contents
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
 msgid "Item(s) pasted."
 msgstr "Itens colados."
 
@@ -965,7 +989,8 @@ msgstr "O estado dos itens foi atualizado."
 msgid "Items"
 msgstr "Itens"
 
-#: components/manage/Form/ModalForm helpers/MessageLabels/MessageLabels
+#: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
 msgid "Items must be unique."
 msgstr "Os itens devem ser únicos."
 
@@ -998,7 +1023,8 @@ msgid "Lead Image"
 msgstr "Imagem principal"
 
 #: components/manage/Blocks/Image/ImageSizeWidget
-#: components/manage/Blocks/Maps/Edit components/manage/Sidebar/AlignBlock
+#: components/manage/Blocks/Maps/Edit
+#: components/manage/Sidebar/AlignBlock
 msgid "Left"
 msgstr "Esquerda"
 
@@ -1046,7 +1072,8 @@ msgstr "Localização"
 msgid "Log In"
 msgstr "Entrar"
 
-#: components/theme/Anontools/Anontools components/theme/Login/Login
+#: components/theme/Anontools/Anontools
+#: components/theme/Login/Login
 msgid "Log in"
 msgstr "Entrar"
 
@@ -1095,7 +1122,8 @@ msgstr "O valor máximo é {len}."
 msgid "Message"
 msgstr "Mensagem"
 
-#: components/manage/Form/ModalForm helpers/MessageLabels/MessageLabels
+#: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
 msgid "Minimum length is {len}."
 msgstr "O comprimento mínimo é {len}."
 
@@ -1139,7 +1167,8 @@ msgstr "Mover para o topo da pasta"
 msgid "My email address is"
 msgstr "O meu endereço de e-mail é"
 
-#: components/manage/Sharing/Sharing components/theme/ContactForm/ContactForm
+#: components/manage/Sharing/Sharing
+#: components/theme/ContactForm/ContactForm
 msgid "Name"
 msgstr "Nome"
 
@@ -1193,7 +1222,8 @@ msgstr "Nenhum mapa selecionado"
 msgid "No occurences set"
 msgstr "Sem ocorrências definidas"
 
-#: components/manage/Widgets/ArrayWidget components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TokenWidget
 msgid "No options"
 msgstr "Sem opções"
@@ -1229,7 +1259,8 @@ msgstr "Nenhum vídeo selecionado"
 msgid "No workflow"
 msgstr "Sem workflow"
 
-#: components/manage/Contents/Contents components/manage/Contents/ContentsItem
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsItem
 msgid "None"
 msgstr "Nenhum"
 
@@ -1277,7 +1308,8 @@ msgstr "Página"
 msgid "Parent fieldset"
 msgstr "Conjunto de campos"
 
-#: components/theme/Login/Login helpers/MessageLabels/MessageLabels
+#: components/theme/Login/Login
+#: helpers/MessageLabels/MessageLabels
 msgid "Password"
 msgstr "Senha"
 
@@ -1290,7 +1322,8 @@ msgstr "Redefinição de senha"
 msgid "Passwords do not match."
 msgstr "As senhas não coincidem."
 
-#: components/manage/Actions/Actions components/manage/Contents/Contents
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
 msgid "Paste"
 msgstr "Colar"
 
@@ -1308,7 +1341,8 @@ msgstr "Informações pessoais"
 msgid "Personal Preferences"
 msgstr "Preferências pessoais"
 
-#: components/manage/Toolbar/More components/manage/Toolbar/Toolbar
+#: components/manage/Toolbar/More
+#: components/manage/Toolbar/Toolbar
 msgid "Personal tools"
 msgstr "Ferramentas pessoais"
 
@@ -1391,7 +1425,8 @@ msgstr "Data de publicação"
 msgid "Re-enter the password. Make sure the passwords are identical."
 msgstr "Reinsira a senha. Certifique-se de que as senhas são idênticas."
 
-#: components/theme/Search/Search components/theme/View/SummaryView
+#: components/theme/Search/Search
+#: components/theme/View/SummaryView
 msgid "Read More…"
 msgstr "Leia Mais…"
 
@@ -1415,7 +1450,8 @@ msgstr "Recorrência se encerra em"
 msgid "Reduce complexity"
 msgstr "Reduzir complexidade"
 
-#: components/theme/Anontools/Anontools components/theme/Login/Login
+#: components/theme/Anontools/Anontools
+#: components/theme/Login/Login
 #: components/theme/Register/Register
 msgid "Register"
 msgstr "Cadastro"
@@ -1436,7 +1472,8 @@ msgstr "Remover Item"
 msgid "Remove recurrence"
 msgstr "Remover a recorrência"
 
-#: components/manage/Actions/Actions components/manage/Contents/Contents
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
 msgid "Rename"
 msgstr "Renomear"
 
@@ -1475,7 +1512,8 @@ msgstr "Responder"
 msgid "Required"
 msgstr "Obrigatório"
 
-#: components/manage/Form/ModalForm helpers/MessageLabels/MessageLabels
+#: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
 msgid "Required input is missing."
 msgstr "Falta informação obrigatória."
 
@@ -1504,7 +1542,8 @@ msgid "Richtext"
 msgstr "Texto rico"
 
 #: components/manage/Blocks/Image/ImageSizeWidget
-#: components/manage/Blocks/Maps/Edit components/manage/Sidebar/AlignBlock
+#: components/manage/Blocks/Maps/Edit
+#: components/manage/Sidebar/AlignBlock
 msgid "Right"
 msgstr "Direita"
 
@@ -1520,11 +1559,14 @@ msgstr "Papéis"
 msgid "Root"
 msgstr "Raiz"
 
-#: components/manage/Add/Add components/manage/Controlpanels/ContentType
+#: components/manage/Add/Add
+#: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
-#: components/manage/Controlpanels/Controlpanel components/manage/Edit/Edit
-#: components/manage/Form/ModalForm components/manage/Sharing/Sharing
+#: components/manage/Controlpanels/Controlpanel
+#: components/manage/Edit/Edit
+#: components/manage/Form/ModalForm
+#: components/manage/Sharing/Sharing
 #: helpers/MessageLabels/MessageLabels
 msgid "Save"
 msgstr "Salvar"
@@ -1613,8 +1655,10 @@ msgstr "Itens selecionados - x de y"
 msgid "Selection"
 msgstr "Seleção"
 
-#: components/manage/Contents/Contents components/manage/Widgets/ArrayWidget
-#: components/manage/Widgets/SelectWidget components/manage/Widgets/TokenWidget
+#: components/manage/Contents/Contents
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
 msgid "Select…"
 msgstr "Selecionar…"
 
@@ -1634,7 +1678,8 @@ msgstr "Defina sua senha"
 msgid "Settings"
 msgstr "Configurações"
 
-#: components/manage/Sharing/Sharing components/manage/Toolbar/More
+#: components/manage/Sharing/Sharing
+#: components/manage/Toolbar/More
 msgid "Sharing"
 msgstr "Compartilhamento"
 
@@ -1748,7 +1793,8 @@ msgstr "Início da recorrência"
 msgid "Start password reset"
 msgstr "Redefinir senha"
 
-#: components/manage/Contents/Contents components/manage/Workflow/Workflow
+#: components/manage/Contents/Contents
+#: components/manage/Workflow/Workflow
 #: components/theme/View/TabularView
 msgid "State"
 msgstr "Estado"
@@ -1769,14 +1815,16 @@ msgstr "Alternar cores das linhas"
 msgid "Subject"
 msgstr "Assunto"
 
-#: components/manage/Actions/Actions components/manage/Contents/Contents
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
-#: components/theme/ContactForm/ContactForm helpers/MessageLabels/MessageLabels
+#: components/theme/ContactForm/ContactForm
+#: helpers/MessageLabels/MessageLabels
 msgid "Success"
 msgstr "Sucesso"
 
@@ -1822,7 +1870,8 @@ msgid "Text"
 msgstr "Texto"
 
 #: components/theme/ConnectionRefused/ConnectionRefused
-#: components/theme/CorsError/CorsError components/theme/NotFound/NotFound
+#: components/theme/CorsError/CorsError
+#: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized
 msgid "Thank you."
 msgstr "Obrigado."
@@ -1867,7 +1916,8 @@ msgstr "Há um problema de configuração no backend"
 msgid "There were some errors"
 msgstr "Houve alguns erros"
 
-#: components/manage/Form/ModalForm helpers/MessageLabels/MessageLabels
+#: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
 msgid "There were some errors."
 msgstr "Houve alguns erros."
 
@@ -1894,7 +1944,8 @@ msgstr "Hora"
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget components/theme/View/TabularView
+#: components/manage/Widgets/WysiwygWidget
+#: components/theme/View/TabularView
 #: helpers/MessageLabels/MessageLabels
 msgid "Title"
 msgstr "Título"
@@ -1936,7 +1987,8 @@ msgid "Translation linking removed"
 msgstr "Vínculo de tradução removido"
 
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Widgets/SchemaWidget components/theme/View/TabularView
+#: components/manage/Widgets/SchemaWidget
+#: components/theme/View/TabularView
 msgid "Type"
 msgstr "Tipo"
 
@@ -1972,7 +2024,8 @@ msgstr "Unificado"
 msgid "Uninstall"
 msgstr "Desinstalar"
 
-#: components/manage/Blocks/Block/Edit components/theme/View/DefaultView
+#: components/manage/Blocks/Block/Edit
+#: components/theme/View/DefaultView
 #: components/theme/View/RenderBlocks
 msgid "Unknown Block"
 msgstr "Bloco Desconhecido"
