@@ -9,9 +9,10 @@ import config from '@plone/volto/registry';
  */
 export function getQueryStringResults(path, data, subrequest, page) {
   const { settings } = config;
-  // fixes https://github.com/plone/volto/issues/1059
 
+  // fixes https://github.com/plone/volto/issues/1059
   let requestData = JSON.parse(JSON.stringify(data));
+
   if (data?.depth != null) {
     delete requestData.depth;
     requestData.query.forEach((q) => {
@@ -19,6 +20,15 @@ export function getQueryStringResults(path, data, subrequest, page) {
         q.v += '::' + data.depth;
       }
     });
+  }
+
+  // fixes https://github.com/plone/volto/issues/2397
+  if (requestData?.sort_order !== null) {
+    if (requestData.sort_order === true || requestData.sort_order === false) {
+      requestData.sort_order = requestData.sort_order
+        ? 'descending'
+        : 'ascending';
+    }
   }
 
   return {
