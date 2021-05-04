@@ -20,6 +20,7 @@ beforeAll(() => {
       ECONNREFUSED: () => <div className="ECONNREFUSED" />,
     },
   });
+  config.settings.publicURL = 'https://plone.org';
 });
 
 const mockStore = configureStore();

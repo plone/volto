@@ -110,10 +110,7 @@ export function flattenToAppURL(url) {
  */
 export function toPublicURL(url) {
   const { settings } = config;
-  const publicRoot = settings.apiPath
-    ?.replace('/api', '')
-    ?.replace('/Plone', '');
-  return url?.replace(settings.apiPath, publicRoot);
+  return settings.publicURL.concat(flattenToAppURL(url));
 }
 
 /**

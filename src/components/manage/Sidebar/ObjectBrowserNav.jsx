@@ -99,7 +99,6 @@ const ObjectBrowserNav = ({
                   icon
                   onClick={(e) => {
                     e.stopPropagation();
-                    e.nativeEvent.stopImmediatePropagation();
                     navigateTo(item['@id']);
                   }}
                   aria-label={`${intl.formatMessage(messages.browse)} ${

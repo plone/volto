@@ -74,6 +74,11 @@ export {
 
 export { getImageAttributes } from './Image/Image';
 export { messages } from './MessageLabels/MessageLabels';
+export {
+  withBlockSchemaEnhancer,
+  withVariationSchemaEnhancer,
+  withBlockExtensions,
+} from './Extensions';
 export { asyncConnect } from './AsyncConnect';
 export {
   changeLanguage,
@@ -81,3 +86,4 @@ export {
 } from '@plone/volto/helpers/Language/Language';
 export { userHasRoles } from './User/User';
 // export { injectLazyLibs } from './Loadable/Loadable';
+export { useDetectClickOutside } from './Utils/useDetectClickOutside';

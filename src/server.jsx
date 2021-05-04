@@ -132,6 +132,13 @@ function setupServer(req, res, next) {
       'Cache-Control': 'public, max-age=60, no-transform',
     });
 
+    /* Displays error in console
+     * TODO:
+     * - get ignored codes from Plone error_log
+     */
+    const ignoredErrors = [301, 302, 401, 404];
+    if (!ignoredErrors.includes(error.status)) console.error(error);
+
     res
       .status(error.status || 500) // If error happens in Volto code itself error status is undefined
       .send(`<!doctype html> ${renderToString(errorPage)}`);

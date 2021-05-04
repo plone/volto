@@ -709,7 +709,7 @@ msgstr "Geben Sie Ihr aktuelles Passwort ein."
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Enter your email address for verification."
-msgstr "Tragen Sie zur Überprüfung Ihre E-Mail-Adresse ein."
+msgstr "Bitte tragen Sie zur Überprüfung Ihren Benutzernamen / Ihre E-Mail-Adresse ein."
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
@@ -898,7 +898,7 @@ msgstr "Klicken Sie bitte hier, falls Sie Ihr Passwort vergessen haben: {forgotp
 
 #: components/theme/Login/Login
 msgid "If you you do not have an account here, head over to the {registrationform}."
-msgstr "Falls Sie noch keinen Zugang haben wechseln Sie bitte zum {registrationform}."
+msgstr "Falls Sie noch keinen Zugang haben, wechseln Sie bitte zum {registrationform}."
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
@@ -1178,7 +1178,7 @@ msgstr "An den Anfang verschieben"
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "My email address is"
-msgstr "Meine E-Mail-Adresse lautet"
+msgstr "Mein Benutzername / Meine E-Mail-Adresse lautet"
 
 #: components/manage/Sharing/Sharing
 #: components/theme/ContactForm/ContactForm
@@ -2126,7 +2126,7 @@ msgstr "Nutzer und Gruppen"
 msgid "Users and groups settings"
 msgstr "Nutzer- und Gruppeneinstellungen"
 
-#: components/manage/Form/BlockDataForm
+#: helpers/Extensions/withBlockSchemaEnhancer
 msgid "Variation"
 msgstr ""
 
@@ -2293,11 +2293,11 @@ msgstr "Beschreibung"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "description_lost_password"
-msgstr "Aus Sicherheitsgründen speichern wir Ihr Passwort verschlüsselt und können es Ihnen daher nicht per E-Mail schicken. Um ein neues Passwort zu erhalten, tragen Sie unten bitte Ihren Benutzernamen ein. Wir werden Ihnen daraufhin eine E-Mail schicken, in der das weitere Vorgehen beschrieben ist."
+msgstr "Aus Sicherheitsgründen speichern wir Ihr Passwort verschlüsselt und können es Ihnen daher nicht per E-Mail schicken. Um ein neues Passwort zu setzen, tragen Sie unten bitte Ihren Benutzernamen / Ihre E-Mail-Adresse ein. Wir werden Ihnen daraufhin eine E-Mail schicken, in der das weitere Vorgehen beschrieben ist."
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "description_sent_password"
-msgstr "Der Link, um das Passwort neu zu setzen, wurde Ihnen zugesendet. Die E-Mail sollte in Kürze in Ihrem Postfach ankommen. Wenn Sie die Nachricht erhalten haben, klicken Sie auf den Link in der E-Mail, um zu der Webseite zu gelangen, wo Sie das Passwort neu setzen können."
+msgstr "Der Link, um das Passwort neu zu setzen, wurde Ihnen zugesendet. Die E-Mail sollte in Kürze in Ihrem Postfach ankommen. Wenn Sie die Nachricht erhalten haben, klicken Sie bitte auf den Link in der E-Mail, um zu der Seite zu gelangen, auf der Sie das Passwort neu setzen können."
 
 #: components/manage/Contents/ContentsItem
 msgid "draft"
@@ -2341,7 +2341,7 @@ msgstr "Ort"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "heading_sent_password"
-msgstr "Bestätigung für das Zurücksetzen des Passwortes wurde gesendet!"
+msgstr "Sie haben eine E-Mail erhalten, um Ihr Passwort neu zu setzen"
 
 #: config/Blocks
 msgid "hero"
@@ -2365,7 +2365,7 @@ msgstr "Intranet"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "label_my_email_address_is"
-msgstr "Meine E-Mail-Adresse lautet"
+msgstr "Mein Benutzername / Meine E-Mail-Adresse lautet"
 
 #: config/Blocks
 msgid "leadimage"
@@ -2634,7 +2634,7 @@ msgstr "Externe Webseite besuchen"
 
 #: components/theme/Login/Login
 msgid "we can send you a new one"
-msgstr "Wir schicken Ihnen gerne ein neues Passwort zu."
+msgstr "Passwort zurücksetzen"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
