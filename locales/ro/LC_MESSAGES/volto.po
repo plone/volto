@@ -73,7 +73,7 @@ msgstr "Adăugați o descriere …"
 msgid "Add block…"
 msgstr "Adăugare bloc …"
 
-#: components/manage/Blocks/Listing/QuerystringWidget
+#: components/manage/Widgets/QueryWidget
 msgid "Add criteria"
 msgstr "Adăugare criterii"
 
@@ -187,10 +187,6 @@ msgstr "Baza"
 #: components/manage/Sidebar/Sidebar
 msgid "Block"
 msgstr "Bloc"
-
-#: components/manage/Blocks/Listing/ListingSidebar
-msgid "Block style"
-msgstr "Stil bloc"
 
 #: components/theme/Login/Login
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
@@ -367,10 +363,6 @@ msgstr "Formular de contact"
 msgid "Contained items"
 msgstr "Elemente conținute"
 
-#: components/manage/Blocks/Listing/ListingSidebar
-msgid "Content"
-msgstr "Conținut"
-
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
 msgstr "Tip de conținut creat"
@@ -414,7 +406,8 @@ msgstr "Creator"
 msgid "Creators"
 msgstr "Creatori"
 
-#: components/manage/Blocks/Listing/QuerystringWidget
+#: components/manage/Widgets/QuerystringWidget
+#: components/manage/Widgets/QueryWidget
 msgid "Criteria"
 msgstr "Criterii"
 
@@ -468,7 +461,6 @@ msgstr ""
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -519,7 +511,7 @@ msgstr "Șterge coloană"
 msgid "Delete row"
 msgstr "Șterge rând"
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerystringWidget
 msgid "Depth"
 msgstr ""
 
@@ -529,7 +521,6 @@ msgstr "Descrescător"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -946,7 +937,7 @@ msgstr ""
 msgid "Interval Yearly"
 msgstr ""
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerystringWidget
 msgid "Item batch size"
 msgstr "Dimensiunea lotului obiectului"
 
@@ -1022,17 +1013,19 @@ msgstr "Stânga"
 msgid "Link"
 msgstr "Legătură"
 
-#: components/manage/Blocks/Listing/ListingSidebar
+#: components/manage/Blocks/Listing/schema
 msgid "Link more"
 msgstr "Legătură către mai multe"
 
 #: components/manage/Blocks/Listing/ListingMore
+#: components/manage/Blocks/Listing/schema
 msgid "Link title"
 msgstr "Legătură la titlu"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/ListingMore
+#: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Link to"
@@ -1042,7 +1035,7 @@ msgstr "Legătură către"
 msgid "Link translation for"
 msgstr ""
 
-#: components/manage/Blocks/Listing/ListingSidebar
+#: components/manage/Blocks/Listing/schema
 msgid "Listing"
 msgstr "Listare"
 
@@ -1227,7 +1220,8 @@ msgstr ""
 msgid "No results found."
 msgstr "Nu s-au găsit rezultate."
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerySortOnWidget
+#: components/manage/Widgets/QuerystringWidget
 msgid "No selection"
 msgstr "Fără selecție"
 
@@ -1410,6 +1404,10 @@ msgstr "Data publicării"
 msgid "Publishing Date"
 msgstr "Data publicării"
 
+#: components/manage/Blocks/Listing/schema
+msgid "Query"
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "Re-enter the password. Make sure the passwords are identical."
@@ -1495,7 +1493,6 @@ msgstr ""
 msgid "Reply"
 msgstr ""
 
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -1507,7 +1504,7 @@ msgstr "Obligatoriu"
 msgid "Required input is missing."
 msgstr "Câmpul este obligatoriu."
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerystringWidget
 msgid "Results limit"
 msgstr "Limita rezultatelor"
 
@@ -1515,7 +1512,7 @@ msgstr "Limita rezultatelor"
 msgid "Results preview"
 msgstr "Previzualizare rezultate"
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerystringWidget
 msgid "Reversed order"
 msgstr "Ordine inversată"
 
@@ -1621,10 +1618,6 @@ msgstr ""
 msgid "Select columns to show"
 msgstr "Selectați coloane de afișat"
 
-#: components/manage/Widgets/QuerystringWidget
-msgid "Select criteria"
-msgstr "Selectarea criteriilor"
-
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Select the transition to be used for modifying the items state."
 msgstr "Selectați tranziția care va fi utilizată pentru modificarea stării elementelor."
@@ -1677,7 +1670,6 @@ msgstr "Partajare"
 msgid "Sharing for {title}"
 msgstr "Partajare pentru {title}"
 
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -1754,12 +1746,12 @@ msgstr "Ne pare rău, a apârut o eroare"
 msgid "Sort By:"
 msgstr ""
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerySortOnWidget
+#: components/manage/Widgets/QuerystringWidget
 msgid "Sort on"
 msgstr "Sortare pe"
 
 #: components/manage/Blocks/HTML/Edit
-#: components/manage/Blocks/Listing/ListingData
 msgid "Source"
 msgstr "Sursa"
 
@@ -1931,7 +1923,6 @@ msgstr ""
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -2064,7 +2055,6 @@ msgstr "Încărcarea fișierelor"
 msgid "Uploading image"
 msgstr ""
 
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -2415,7 +2405,7 @@ msgstr ""
 msgid "published"
 msgstr ""
 
-#: components/manage/Blocks/Listing/QuerystringWidget
+#: components/manage/Widgets/QueryWidget
 msgid "querystring-widget-select"
 msgstr ""
 

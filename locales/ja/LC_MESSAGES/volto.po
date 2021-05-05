@@ -80,7 +80,7 @@ msgstr "説明を追加…"
 msgid "Add block…"
 msgstr "ブロックを追加…"
 
-#: components/manage/Blocks/Listing/QuerystringWidget
+#: components/manage/Widgets/QueryWidget
 msgid "Add criteria"
 msgstr "基準を追加"
 
@@ -194,10 +194,6 @@ msgstr "比較元"
 #: components/manage/Sidebar/Sidebar
 msgid "Block"
 msgstr "ブロック"
-
-#: components/manage/Blocks/Listing/ListingSidebar
-msgid "Block style"
-msgstr "ブロックのスタイル"
 
 #: components/theme/Login/Login
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
@@ -374,10 +370,6 @@ msgstr "お問い合わせフォーム"
 msgid "Contained items"
 msgstr "含まれるアイテム"
 
-#: components/manage/Blocks/Listing/ListingSidebar
-msgid "Content"
-msgstr "コンテント"
-
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
 msgstr "コンテンツタイプが作成されました"
@@ -421,7 +413,8 @@ msgstr "作成者"
 msgid "Creators"
 msgstr "作成者"
 
-#: components/manage/Blocks/Listing/QuerystringWidget
+#: components/manage/Widgets/QuerystringWidget
+#: components/manage/Widgets/QueryWidget
 msgid "Criteria"
 msgstr "基準"
 
@@ -475,7 +468,6 @@ msgstr "日付 (新しい順)"
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -526,7 +518,7 @@ msgstr "列を削除"
 msgid "Delete row"
 msgstr "行を削除"
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerystringWidget
 msgid "Depth"
 msgstr ""
 
@@ -536,7 +528,6 @@ msgstr "降順"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -953,7 +944,7 @@ msgstr ""
 msgid "Interval Yearly"
 msgstr ""
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerystringWidget
 msgid "Item batch size"
 msgstr "1ページ表示件数"
 
@@ -1029,17 +1020,19 @@ msgstr "左"
 msgid "Link"
 msgstr "リンク"
 
-#: components/manage/Blocks/Listing/ListingSidebar
+#: components/manage/Blocks/Listing/schema
 msgid "Link more"
 msgstr "「もっと見る」の設定"
 
 #: components/manage/Blocks/Listing/ListingMore
+#: components/manage/Blocks/Listing/schema
 msgid "Link title"
 msgstr "リンクタイトル"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/ListingMore
+#: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Link to"
@@ -1049,7 +1042,7 @@ msgstr "リンク先"
 msgid "Link translation for"
 msgstr ""
 
-#: components/manage/Blocks/Listing/ListingSidebar
+#: components/manage/Blocks/Listing/schema
 msgid "Listing"
 msgstr "リスティング"
 
@@ -1234,7 +1227,8 @@ msgstr "該当する結果が見つかりません。"
 msgid "No results found."
 msgstr "結果が見つかりません"
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerySortOnWidget
+#: components/manage/Widgets/QuerystringWidget
 msgid "No selection"
 msgstr "選択肢無し"
 
@@ -1417,6 +1411,10 @@ msgstr "公開日付"
 msgid "Publishing Date"
 msgstr "公開日付"
 
+#: components/manage/Blocks/Listing/schema
+msgid "Query"
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "Re-enter the password. Make sure the passwords are identical."
@@ -1502,7 +1500,6 @@ msgstr ""
 msgid "Reply"
 msgstr ""
 
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -1514,7 +1511,7 @@ msgstr "必須"
 msgid "Required input is missing."
 msgstr "必須"
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerystringWidget
 msgid "Results limit"
 msgstr "最大件数"
 
@@ -1522,7 +1519,7 @@ msgstr "最大件数"
 msgid "Results preview"
 msgstr "結果のプレビュー"
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerystringWidget
 msgid "Reversed order"
 msgstr "逆順"
 
@@ -1628,10 +1625,6 @@ msgstr "繰り返しに追加する日を選択"
 msgid "Select columns to show"
 msgstr "表示する列を選択"
 
-#: components/manage/Widgets/QuerystringWidget
-msgid "Select criteria"
-msgstr "選択の基準"
-
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Select the transition to be used for modifying the items state."
 msgstr "アイテムの状態を変更するために遷移を選んでください"
@@ -1684,7 +1677,6 @@ msgstr "共有"
 msgid "Sharing for {title}"
 msgstr "「{title}」の共有"
 
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -1761,12 +1753,12 @@ msgstr "申し訳ありません。問題が発生したために処理できま
 msgid "Sort By:"
 msgstr "並び順:"
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerySortOnWidget
+#: components/manage/Widgets/QuerystringWidget
 msgid "Sort on"
 msgstr "ソート順"
 
 #: components/manage/Blocks/HTML/Edit
-#: components/manage/Blocks/Listing/ListingData
 msgid "Source"
 msgstr "ソース"
 
@@ -1938,7 +1930,6 @@ msgstr "時刻"
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -2071,7 +2062,6 @@ msgstr "ファイルをアップロードしています"
 msgid "Uploading image"
 msgstr ""
 
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -2422,7 +2412,7 @@ msgstr "非表示"
 msgid "published"
 msgstr "公開中"
 
-#: components/manage/Blocks/Listing/QuerystringWidget
+#: components/manage/Widgets/QueryWidget
 msgid "querystring-widget-select"
 msgstr ""
 

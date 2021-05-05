@@ -80,7 +80,7 @@ msgstr "Gehitu deskribapena..."
 msgid "Add block…"
 msgstr "Gehitu blokea..."
 
-#: components/manage/Blocks/Listing/QuerystringWidget
+#: components/manage/Widgets/QueryWidget
 msgid "Add criteria"
 msgstr "Gehitu irizpidea"
 
@@ -194,10 +194,6 @@ msgstr "Oinarria"
 #: components/manage/Sidebar/Sidebar
 msgid "Block"
 msgstr "Blokea"
-
-#: components/manage/Blocks/Listing/ListingSidebar
-msgid "Block style"
-msgstr "Blokearen estiloa"
 
 #: components/theme/Login/Login
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
@@ -374,10 +370,6 @@ msgstr "Kontaktu-formularioa"
 msgid "Contained items"
 msgstr "Barneko elementuak"
 
-#: components/manage/Blocks/Listing/ListingSidebar
-msgid "Content"
-msgstr "Edukia"
-
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
 msgstr "Elementu-mota gehitu da"
@@ -421,7 +413,8 @@ msgstr "Sortzailea"
 msgid "Creators"
 msgstr "Sortzaileak"
 
-#: components/manage/Blocks/Listing/QuerystringWidget
+#: components/manage/Widgets/QuerystringWidget
+#: components/manage/Widgets/QueryWidget
 msgid "Criteria"
 msgstr "Irizpidea"
 
@@ -475,7 +468,6 @@ msgstr "Data (berriena lehenengo)"
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -526,7 +518,7 @@ msgstr "Ezabatu zutabea"
 msgid "Delete row"
 msgstr "Ezabatu errenkada"
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerystringWidget
 msgid "Depth"
 msgstr ""
 
@@ -536,7 +528,6 @@ msgstr "Beheraka"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -953,7 +944,7 @@ msgstr "astean behin"
 msgid "Interval Yearly"
 msgstr "urtean behin"
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerystringWidget
 msgid "Item batch size"
 msgstr "Elementu-multzoaren tamaina"
 
@@ -1029,17 +1020,19 @@ msgstr "Ezkerrean"
 msgid "Link"
 msgstr "Esteka"
 
-#: components/manage/Blocks/Listing/ListingSidebar
+#: components/manage/Blocks/Listing/schema
 msgid "Link more"
 msgstr ""Gehiago" estekatu"
 
 #: components/manage/Blocks/Listing/ListingMore
+#: components/manage/Blocks/Listing/schema
 msgid "Link title"
 msgstr "Izenburua estekatu"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/ListingMore
+#: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Link to"
@@ -1049,7 +1042,7 @@ msgstr "Esteka"
 msgid "Link translation for"
 msgstr ""
 
-#: components/manage/Blocks/Listing/ListingSidebar
+#: components/manage/Blocks/Listing/schema
 msgid "Listing"
 msgstr "Zerrenda"
 
@@ -1234,7 +1227,8 @@ msgstr "Ez da emaitzarik aurkitu."
 msgid "No results found."
 msgstr "Ez da emaitzarik aurkitu."
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerySortOnWidget
+#: components/manage/Widgets/QuerystringWidget
 msgid "No selection"
 msgstr "Ez da ezer aukeratu"
 
@@ -1417,6 +1411,10 @@ msgstr "Argitaratze-data"
 msgid "Publishing Date"
 msgstr "Argitaratze-data"
 
+#: components/manage/Blocks/Listing/schema
+msgid "Query"
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "Re-enter the password. Make sure the passwords are identical."
@@ -1502,7 +1500,6 @@ msgstr ""
 msgid "Reply"
 msgstr ""
 
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -1514,7 +1511,7 @@ msgstr "Beharrezkoa"
 msgid "Required input is missing."
 msgstr "Beharrezko balioak falta dira"
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerystringWidget
 msgid "Results limit"
 msgstr "Emaitzen muga"
 
@@ -1522,7 +1519,7 @@ msgstr "Emaitzen muga"
 msgid "Results preview"
 msgstr "Emaitzen aurreikuspena"
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerystringWidget
 msgid "Reversed order"
 msgstr "Alderantzizko ordena"
 
@@ -1628,10 +1625,6 @@ msgstr "Aukeratu data eta gehitu errepikapenera"
 msgid "Select columns to show"
 msgstr "Aukeratu erakutsiko diren zutabeak"
 
-#: components/manage/Widgets/QuerystringWidget
-msgid "Select criteria"
-msgstr "Aukeraketa irizpideak"
-
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Select the transition to be used for modifying the items state."
 msgstr "Aukeratu elementuaren egoera aldatzeko trantsizioa."
@@ -1684,7 +1677,6 @@ msgstr "Partekatzea"
 msgid "Sharing for {title}"
 msgstr "{title} elementuaren partekatze-aukerak"
 
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -1761,12 +1753,12 @@ msgstr "Barkatu, zerbait ez da ondo irten zure eskaeran"
 msgid "Sort By:"
 msgstr "Ordenazioa:"
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerySortOnWidget
+#: components/manage/Widgets/QuerystringWidget
 msgid "Sort on"
 msgstr "Ordenazioa"
 
 #: components/manage/Blocks/HTML/Edit
-#: components/manage/Blocks/Listing/ListingData
 msgid "Source"
 msgstr "Iturburua"
 
@@ -1938,7 +1930,6 @@ msgstr "Ordua"
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -2071,7 +2062,6 @@ msgstr "Fitxategiak kargatzen"
 msgid "Uploading image"
 msgstr ""
 
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -2422,7 +2412,7 @@ msgstr "Pribatua"
 msgid "published"
 msgstr "Argitaratuta"
 
-#: components/manage/Blocks/Listing/QuerystringWidget
+#: components/manage/Widgets/QueryWidget
 msgid "querystring-widget-select"
 msgstr "Aukeratu..."
 
