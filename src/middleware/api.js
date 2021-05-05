@@ -121,6 +121,7 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
                 data: item.data,
                 type: item.type,
                 headers: item.headers,
+                params: item.params,
               }).then((reqres) => {
                 return [...acc, reqres];
               });
@@ -132,6 +133,7 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
                 data: item.data,
                 type: item.type,
                 headers: item.headers,
+                params: item.params,
               }),
             ),
           )
@@ -139,6 +141,7 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
           data: request.data,
           type: request.type,
           headers: request.headers,
+          params: request.params,
         });
     actionPromise.then(
       (result) => {
