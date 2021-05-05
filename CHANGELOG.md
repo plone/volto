@@ -8,6 +8,10 @@
 
 ### Bugfix
 
+- Fix PORT env var handling, if you have set the PORT in build time, the setting was
+  removed back to defaults, now the build time setting is kept (unsetting in build time
+  and set it in runtime is now the recommended setup) @sneridagh
+
 ### Internal
 
 ## 13.0.0-alpha.2 (2021-05-05)
