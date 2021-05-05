@@ -2,10 +2,6 @@
 
 ## 13.0.0 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Fix sort_order restapi call, works on action for existing listing blocks
