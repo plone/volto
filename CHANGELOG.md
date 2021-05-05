@@ -11,10 +11,18 @@
 
 ### Bugfix
 
+### Internal
+
+## 13.0.0-alpha.2 (2021-05-05)
+
+### Bugfix
+
 - Fix sort_order restapi call, works on action for existing listing blocks
   and in ListingData saving correctly new ones @nzambello
 
 ### Internal
+
+- Updated Brazilian Portuguese translations @ericof
 
 ## 13.0.0-alpha.1 (2021-05-03)
 
