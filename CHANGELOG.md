@@ -7,6 +7,7 @@
 ### Feature
 
 ### Bugfix
+- Use params prop in api middleware @giuliaghisini
 
 ### Internal
 
