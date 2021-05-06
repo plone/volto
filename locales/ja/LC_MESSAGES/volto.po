@@ -1024,14 +1024,12 @@ msgstr "リンク"
 msgid "Link more"
 msgstr "「もっと見る」の設定"
 
-#: components/manage/Blocks/Listing/ListingMore
 #: components/manage/Blocks/Listing/schema
 msgid "Link title"
 msgstr "リンクタイトル"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Listing/ListingMore
 #: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Video/VideoSidebar
@@ -1849,10 +1847,6 @@ msgstr "キャッシュごとの最大容量(byte単位)"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Target number of objects in memory per cache"
 msgstr "キャッシュごとのメモリー上の最大オブジェクト数"
-
-#: components/manage/Blocks/Listing/TemplateWidget
-msgid "Template"
-msgstr "テンプレート"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Text"

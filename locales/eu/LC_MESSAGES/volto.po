@@ -1024,14 +1024,12 @@ msgstr "Esteka"
 msgid "Link more"
 msgstr ""Gehiago" estekatu"
 
-#: components/manage/Blocks/Listing/ListingMore
 #: components/manage/Blocks/Listing/schema
 msgid "Link title"
 msgstr "Izenburua estekatu"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Listing/ListingMore
 #: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Video/VideoSidebar
@@ -1849,10 +1847,6 @@ msgstr "Katxe bakoitzaren tamaina "
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Target number of objects in memory per cache"
 msgstr "Katxe bakoitzaren elementu-kopurua"
-
-#: components/manage/Blocks/Listing/TemplateWidget
-msgid "Template"
-msgstr "Txantiloia"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Text"

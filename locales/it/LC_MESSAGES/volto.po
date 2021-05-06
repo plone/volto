@@ -1017,14 +1017,12 @@ msgstr "Link"
 msgid "Link more"
 msgstr "Link ad altro"
 
-#: components/manage/Blocks/Listing/ListingMore
 #: components/manage/Blocks/Listing/schema
 msgid "Link title"
 msgstr "Link al resto"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Listing/ListingMore
 #: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Video/VideoSidebar
@@ -1842,10 +1840,6 @@ msgstr "Dimensionei target della memoria per cache in byte"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Target number of objects in memory per cache"
 msgstr "Numero target di oggetti in memoria per cache"
-
-#: components/manage/Blocks/Listing/TemplateWidget
-msgid "Template"
-msgstr "Template"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Text"
