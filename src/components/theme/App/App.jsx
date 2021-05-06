@@ -184,7 +184,7 @@ export const __test__ = connect(
   {},
 )(App);
 
-const getBlockAsyncProps = async ({ store, location }) => {
+const fetchContent = async ({ store, location }) => {
   const content = await store.dispatch(
     getContent(getBaseUrl(location.pathname)),
   );
@@ -204,13 +204,25 @@ const getBlockAsyncProps = async ({ store, location }) => {
         id,
         data,
       });
-      promps.forEach((p) => promises.push(p));
+      if (!promps?.length) {
+        // eslint-disable-next-line
+        console.error(
+          'You should return a list of promoses from ',
+          getAsyncProps,
+        );
+
+        throw new Error(
+          'You should return a list of promises from getAsyncProps',
+        );
+      }
+      promises.push(...promps);
     }
   };
 
   visitBlocks(content, visitor);
 
   await Promise.all(promises);
+
   return content;
 };
 
@@ -224,7 +236,7 @@ export default compose(
     {
       key: 'content',
       promise: ({ location, store }) =>
-        __SERVER__ && getBlockAsyncProps({ store, location }),
+        __SERVER__ && fetchContent({ store, location }),
     },
     {
       key: 'navigation',
