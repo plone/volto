@@ -17,6 +17,7 @@ import trim from 'lodash/trim';
 import cx from 'classnames';
 import config from '@plone/volto/registry';
 import { PluggablesProvider } from '@plone/volto/components/manage/Pluggable';
+import { getBlocks, visitBlocks } from '@plone/volto/helpers/Blocks/Blocks';
 
 import Error from '@plone/volto/error';
 
@@ -183,6 +184,36 @@ export const __test__ = connect(
   {},
 )(App);
 
+const getBlockAsyncProps = async ({ store, location }) => {
+  const content = await store.dispatch(
+    getContent(getBaseUrl(location.pathname)),
+  );
+
+  const promises = [];
+  const { blocksConfig } = config.blocks;
+
+  const visitor = ([id, data]) => {
+    const blockType = data['@type'];
+    const { getAsyncProps } = blocksConfig[blockType];
+    if (getAsyncProps) {
+      const promps = getAsyncProps({
+        store,
+        dispatch: store.dispatch,
+        path: location.pathname,
+        location,
+        id,
+        data,
+      });
+      promps.forEach((p) => promises.push(p));
+    }
+  };
+
+  visitBlocks(content, visitor);
+
+  await Promise.all(promises);
+  return content;
+};
+
 export default compose(
   asyncConnect([
     {
@@ -192,8 +223,8 @@ export default compose(
     },
     {
       key: 'content',
-      promise: ({ location, store: { dispatch } }) =>
-        __SERVER__ && dispatch(getContent(getBaseUrl(location.pathname))),
+      promise: ({ location, store }) =>
+        __SERVER__ && getBlockAsyncProps({ store, location }),
     },
     {
       key: 'navigation',
