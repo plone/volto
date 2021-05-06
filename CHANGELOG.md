@@ -24,7 +24,22 @@
 
 ### Bugfix
 
+- Fix PORT env var handling, if you have set the PORT in build time, the setting was
+  removed back to defaults, now the build time setting is kept (unsetting in build time
+  and set it in runtime is now the recommended setup) @sneridagh
+
 ### Internal
+
+## 13.0.0-alpha.2 (2021-05-05)
+
+### Bugfix
+
+- Fix sort_order restapi call, works on action for existing listing blocks
+  and in ListingData saving correctly new ones @nzambello
+
+### Internal
+
+- Updated Brazilian Portuguese translations @ericof
 
 ## 13.0.0-alpha.1 (2021-05-03)
 
@@ -45,7 +60,7 @@
   `RAZZLE_API_PATH` in build time. See documentation for more information. @sneridagh
 - Deprecate Node 10 since it's out of LTS since April 30th, 2021 @sneridagh
 - Remove the "inverted" option in Table Block since it was useless with the current CSS
-  set. Better naming of options and labels in table block (English). Updating the i18n messages for the used translations is advisable, but not required.  @iFlameing
+  set. Better naming of options and labels in table block (English). Updating the i18n messages for the used translations is advisable, but not required. @iFlameing
 - Get rid of the font icons in the control panels overview @sneridagh
 
 For a complete list of actions to follow, please read the upgrade guide
