@@ -16,6 +16,16 @@ https://docs.voltocms.com/upgrade-guide/
 
 ### Internal
 
+## 13.0.0-alpha.3 (2021-05-06)
+
+### Bugfix
+
+- Use params prop in api middleware @giuliaghisini
+
+- Fix PORT env var handling, if you have set the PORT in build time, the setting was
+  removed back to defaults, now the build time setting is kept (unsetting in build time
+  and set it in runtime is now the recommended setup) @sneridagh
+
 ## 13.0.0-alpha.2 (2021-05-05)
 
 ### Bugfix

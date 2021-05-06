@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Fix Jest testing environment. Changed to `--env=jest-environment-jsdom-sixteen` @avoinea
+
 ## 4.3.0 (2021-04-28)
 
 ### Added
