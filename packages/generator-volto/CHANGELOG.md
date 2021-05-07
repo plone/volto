@@ -2,8 +2,6 @@
 
 ## 4.3.1 (unreleased)
 
-### Added
-
 ### Changes
 
 - Fix Jest testing environment. Changed to `--env=jest-environment-jsdom-sixteen` @avoinea
