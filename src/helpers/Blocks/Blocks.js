@@ -350,10 +350,12 @@ export function visitBlocks(content, callback) {
     // assumes that a block value is like: {blocks, blocks_layout} or
     // { data: {blocks, blocks_layout}}
     if (Object.keys(blockdata || {}).indexOf('blocks') > -1) {
-      getBlocks(blockdata).forEach((tuple) => queue.push(tuple));
+      queue.push(...getBlocks(blockdata));
+      // getBlocks(blockdata).forEach((tuple) => queue.push(tuple));
     }
     if (Object.keys(blockdata?.data || {}).indexOf('blocks') > -1) {
-      getBlocks(blockdata.data).forEach((tuple) => queue.push(tuple));
+      queue.push(...getBlocks(blockdata.data));
+      // getBlocks(blockdata.data).forEach((tuple) => queue.push(tuple));
     }
   }
 }
