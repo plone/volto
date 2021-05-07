@@ -88,7 +88,7 @@ msgstr "Beschreibung hinzufügen…"
 msgid "Add block…"
 msgstr "Block hinzufügen"
 
-#: components/manage/Blocks/Listing/QuerystringWidget
+#: components/manage/Widgets/QueryWidget
 msgid "Add criteria"
 msgstr "Kriterien hinzufügen"
 
@@ -202,10 +202,6 @@ msgstr "Basis"
 #: components/manage/Sidebar/Sidebar
 msgid "Block"
 msgstr "Block"
-
-#: components/manage/Blocks/Listing/ListingSidebar
-msgid "Block style"
-msgstr "Block Darstellung"
 
 #: components/theme/Login/Login
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
@@ -382,10 +378,6 @@ msgstr "Kontaktformular"
 msgid "Contained items"
 msgstr "Enthaltene Elemente"
 
-#: components/manage/Blocks/Listing/ListingSidebar
-msgid "Content"
-msgstr "Inhalt"
-
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
 msgstr "Inhaltstyp erstellt"
@@ -429,7 +421,8 @@ msgstr "Ersteller"
 msgid "Creators"
 msgstr "Ersteller"
 
-#: components/manage/Blocks/Listing/QuerystringWidget
+#: components/manage/Widgets/QuerystringWidget
+#: components/manage/Widgets/QueryWidget
 msgid "Criteria"
 msgstr "Kriterium"
 
@@ -483,7 +476,6 @@ msgstr "Datum (neustes zuerst)"
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -534,7 +526,7 @@ msgstr "Spalte löschen"
 msgid "Delete row"
 msgstr "Zeile löschen"
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerystringWidget
 msgid "Depth"
 msgstr ""
 
@@ -544,7 +536,6 @@ msgstr "Absteigend"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -961,7 +952,7 @@ msgstr "Wöchentlich"
 msgid "Interval Yearly"
 msgstr "Jährliches Intervall"
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerystringWidget
 msgid "Item batch size"
 msgstr "Batch-Anzahl"
 
@@ -1037,17 +1028,17 @@ msgstr "Links"
 msgid "Link"
 msgstr "Link"
 
-#: components/manage/Blocks/Listing/ListingSidebar
+#: components/manage/Blocks/Listing/schema
 msgid "Link more"
 msgstr "'Mehr' Link"
 
-#: components/manage/Blocks/Listing/ListingMore
+#: components/manage/Blocks/Listing/schema
 msgid "Link title"
 msgstr "Linktitel"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Listing/ListingMore
+#: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Link to"
@@ -1057,7 +1048,7 @@ msgstr "Link auf"
 msgid "Link translation for"
 msgstr ""
 
-#: components/manage/Blocks/Listing/ListingSidebar
+#: components/manage/Blocks/Listing/schema
 msgid "Listing"
 msgstr "Auflistung"
 
@@ -1242,7 +1233,8 @@ msgstr "Keine Ergebnisse gefunden"
 msgid "No results found."
 msgstr "Keine Ergebnisse gefunden."
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerySortOnWidget
+#: components/manage/Widgets/QuerystringWidget
 msgid "No selection"
 msgstr "Keine Auswahl"
 
@@ -1425,6 +1417,10 @@ msgstr "Freigabedatum"
 msgid "Publishing Date"
 msgstr "Freigabedatum"
 
+#: components/manage/Blocks/Listing/schema
+msgid "Query"
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "Re-enter the password. Make sure the passwords are identical."
@@ -1510,7 +1506,6 @@ msgstr ""
 msgid "Reply"
 msgstr ""
 
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -1522,7 +1517,7 @@ msgstr "Notwendig"
 msgid "Required input is missing."
 msgstr "Notwendige Eingabe fehlt."
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerystringWidget
 msgid "Results limit"
 msgstr "Anzahl der Ergebnisse einschränken"
 
@@ -1530,7 +1525,7 @@ msgstr "Anzahl der Ergebnisse einschränken"
 msgid "Results preview"
 msgstr "Ergebnisvorschau"
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerystringWidget
 msgid "Reversed order"
 msgstr "Sortierreihenfolge umkehren"
 
@@ -1636,10 +1631,6 @@ msgstr "Wählen Sie ein Datum um ein wiederkehrendes Datum einzustellen"
 msgid "Select columns to show"
 msgstr "Anzuzeigende Spalten wählen"
 
-#: components/manage/Widgets/QuerystringWidget
-msgid "Select criteria"
-msgstr "Kriterium wählen"
-
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Select the transition to be used for modifying the items state."
 msgstr "Arbeitsablauf-Status für Seite wählen."
@@ -1692,7 +1683,6 @@ msgstr "Freigabe"
 msgid "Sharing for {title}"
 msgstr "Freigabe für"
 
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -1769,12 +1759,12 @@ msgstr "Entschuldigung, ein Fehler ist beim Ausführen Ihrer Anfrage aufgetreten
 msgid "Sort By:"
 msgstr "Sortieren nach:"
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerySortOnWidget
+#: components/manage/Widgets/QuerystringWidget
 msgid "Sort on"
 msgstr "Sortieren nach"
 
 #: components/manage/Blocks/HTML/Edit
-#: components/manage/Blocks/Listing/ListingData
 msgid "Source"
 msgstr "Quelle"
 
@@ -1866,10 +1856,6 @@ msgstr "Ziel-Speichergröße pro Cache in Bytes"
 msgid "Target number of objects in memory per cache"
 msgstr "Ziel-Anzahl von Objekten im Speicher pro Cache"
 
-#: components/manage/Blocks/Listing/TemplateWidget
-msgid "Template"
-msgstr "Template"
-
 #: components/manage/Widgets/SchemaWidget
 msgid "Text"
 msgstr "Text"
@@ -1946,7 +1932,6 @@ msgstr "Zeit"
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -2079,7 +2064,6 @@ msgstr "Dateien hochladen"
 msgid "Uploading image"
 msgstr ""
 
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -2430,7 +2414,7 @@ msgstr "Privat"
 msgid "published"
 msgstr "Veröffentlicht"
 
-#: components/manage/Blocks/Listing/QuerystringWidget
+#: components/manage/Widgets/QueryWidget
 msgid "querystring-widget-select"
 msgstr "Select Auswahlfeld"
 

@@ -28,6 +28,18 @@ development mode uses the internal proxy in seamless mode otherwise configured
 differently. To learn more about the seamless mode read: [Seamless mode](/deploying/seamless-mode)
 and [zero configuration builds](/configuration/zero-config-builds)
 
+## Refactored Listing block using schemas and ObjectWidget
+
+Listing block has been heavily refactored using schema forms and using `BlockDataForm`
+and other of the new internal artifacts to leverage blocks variations and extensions and
+simplify it. Also, the "More..." link now it's opt-in, instead of always-in. If your
+projects rely on it, you should set the block setting
+`config.blocks.blocksConfig.listing.showLinkMore` to `true`.
+
+The advantage of this is that now you can use the `QuerystringWidget` with schema based
+data forms in a reusable way in your custom blocks. See the Listing block code for
+further references.
+
 ## Control panel icons are now SVG based instead of font based
 
 It was long due, the control panel overview route `/controlpanel` now is using SVG icons

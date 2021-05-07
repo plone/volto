@@ -12,7 +12,8 @@ import paginationLeftSVG from '@plone/volto/icons/left-key.svg';
 import paginationRightSVG from '@plone/volto/icons/right-key.svg';
 
 const ListingBody = React.memo(
-  ({ data, properties, intl, path, isEditMode }) => {
+  (props) => {
+    const { data, properties, path, isEditMode, variation } = props;
     const [currentPage, setCurrentPage] = React.useState(1);
     const content = properties;
     const querystringResults = useSelector(
@@ -64,14 +65,7 @@ const ListingBody = React.memo(
           []
         : folderItems;
 
-    const templateConfig = config.blocks.blocksConfig.listing.templates;
-
-    let templateName =
-      data.template && !!templateConfig[data.template]
-        ? data.template
-        : 'default';
-
-    const ListingBodyTemplate = templateConfig[templateName].template;
+    const ListingBodyTemplate = variation.template;
 
     function handleContentPaginationChange(e, { activePage }) {
       !isEditMode && window.scrollTo(0, 0);

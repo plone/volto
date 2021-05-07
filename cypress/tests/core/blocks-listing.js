@@ -123,7 +123,7 @@ describe('Listing Block Tests', () => {
     cy.get('#select-listingblock-sort-on')
       .click()
       .type('Effective date {enter}');
-    cy.get('input[name="field-listingblock-sort-on-reverse"]')
+    cy.get('input[name="field-sort_order_boolean-2-querystring"]')
       .check({ force: true })
       .should('be.checked');
 
@@ -182,23 +182,23 @@ describe('Listing Block Tests', () => {
     cy.get('.sidebar-container .tabs-wrapper .menu .item')
       .contains('Block')
       .click();
-    cy.get('.sidebar-listing-data .fields').contains('Add criteria').click();
+    cy.get('.querystring-widget .fields').contains('Add criteria').click();
     cy.get(
-      '.sidebar-listing-data .fields:first-of-type .field:first-of-type .react-select__menu .react-select__option',
+      '.querystring-widget .fields:first-of-type .field:first-of-type .react-select__menu .react-select__option',
     )
       .contains('Short name (id)')
       .click();
     //short-name is..
     cy.get(
-      '.sidebar-listing-data .fields:first-of-type .main-fields-wrapper .field:last-of-type',
+      '.querystring-widget .fields:first-of-type .main-fields-wrapper .field:last-of-type',
     ).click();
     cy.get(
-      '.sidebar-listing-data .fields:first-of-type .main-fields-wrapper .field:last-of-type .react-select__menu .react-select__option',
+      '.querystring-widget .fields:first-of-type .main-fields-wrapper .field:last-of-type .react-select__menu .react-select__option',
     )
       .contains('Is')
       .click();
     //insert short name
-    cy.get('.sidebar-listing-data .fields:first-of-type > .field input')
+    cy.get('.querystring-widget .fields:first-of-type > .field input')
       .clear()
       .type('my-page-test');
 
@@ -271,24 +271,24 @@ describe('Listing Block Tests', () => {
     cy.get('.sidebar-container .tabs-wrapper .menu .item')
       .contains('Block')
       .click();
-    cy.get('.sidebar-listing-data .fields').contains('Add criteria').click();
+    cy.get('.querystring-widget .fields').contains('Add criteria').click();
     cy.get(
-      '.sidebar-listing-data .fields:first-of-type .field:first-of-type .react-select__menu .react-select__option',
+      '.querystring-widget .fields:first-of-type .field:first-of-type .react-select__menu .react-select__option',
     )
       .contains('Location')
       .click();
     //location relative..
     cy.get(
-      '.sidebar-listing-data .fields:first-of-type .main-fields-wrapper .field:last-of-type',
+      '.querystring-widget .fields:first-of-type .main-fields-wrapper .field:last-of-type',
     ).click();
     cy.get(
-      '.sidebar-listing-data .fields:first-of-type .main-fields-wrapper .field:last-of-type .react-select__menu .react-select__option',
+      '.querystring-widget .fields:first-of-type .main-fields-wrapper .field:last-of-type .react-select__menu .react-select__option',
     )
       .contains('Relative path')
       .click();
 
     //insert relative path
-    cy.get('.sidebar-listing-data .fields:first-of-type > .field input')
+    cy.get('.querystring-widget .fields:first-of-type > .field input')
       .clear()
       .type('../my-folder');
 
@@ -359,24 +359,24 @@ describe('Listing Block Tests', () => {
     cy.get('.sidebar-container .tabs-wrapper .menu .item')
       .contains('Block')
       .click();
-    cy.get('.sidebar-listing-data .fields').contains('Add criteria').click();
+    cy.get('.querystring-widget .fields').contains('Add criteria').click();
     cy.get(
-      '.sidebar-listing-data .fields:first-of-type .field:first-of-type .react-select__menu .react-select__option',
+      '.querystring-widget .fields:first-of-type .field:first-of-type .react-select__menu .react-select__option',
     )
       .contains('Location')
       .click();
     //location absolute..
     cy.get(
-      '.sidebar-listing-data .fields:first-of-type .main-fields-wrapper .field:last-of-type',
+      '.querystring-widget .fields:first-of-type .main-fields-wrapper .field:last-of-type',
     ).click();
     cy.get(
-      '.sidebar-listing-data .fields:first-of-type .main-fields-wrapper .field:last-of-type .react-select__menu .react-select__option',
+      '.querystring-widget .fields:first-of-type .main-fields-wrapper .field:last-of-type .react-select__menu .react-select__option',
     )
       .contains('Absolute path')
       .click();
 
     //insert absolute path
-    cy.get('.sidebar-listing-data .fields:first-of-type > .field input')
+    cy.get('.querystring-widget .fields:first-of-type > .field input')
       .clear()
       .type('/my-page/my-folder');
 
@@ -440,24 +440,24 @@ describe('Listing Block Tests', () => {
     cy.get('.sidebar-container .tabs-wrapper .menu .item')
       .contains('Block')
       .click();
-    cy.get('.sidebar-listing-data .fields').contains('Add criteria').click();
+    cy.get('.querystring-widget .fields').contains('Add criteria').click();
     cy.get(
-      '.sidebar-listing-data .fields:first-of-type .field:first-of-type .react-select__menu .react-select__option',
+      '.querystring-widget .fields:first-of-type .field:first-of-type .react-select__menu .react-select__option',
     )
       .contains('Location')
       .click();
     //location relative..
     cy.get(
-      '.sidebar-listing-data .fields:first-of-type .main-fields-wrapper .field:last-of-type',
+      '.querystring-widget .fields:first-of-type .main-fields-wrapper .field:last-of-type',
     ).click();
     cy.get(
-      '.sidebar-listing-data .fields:first-of-type .main-fields-wrapper .field:last-of-type .react-select__menu .react-select__option',
+      '.querystring-widget .fields:first-of-type .main-fields-wrapper .field:last-of-type .react-select__menu .react-select__option',
     )
       .contains('Relative path')
       .click();
 
     //insert relative path
-    cy.get('.sidebar-listing-data .fields:first-of-type > .field input')
+    cy.get('.querystring-widget .fields:first-of-type > .field input')
       .clear()
       .type('.');
 
