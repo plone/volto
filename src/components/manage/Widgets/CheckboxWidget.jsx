@@ -23,7 +23,7 @@ const CheckboxWidget = (props) => {
       <div className="wrapper">
         <Checkbox
           name={`field-${id}`}
-          checked={value}
+          checked={value || false}
           disabled={isDisabled}
           onChange={(event, { checked }) => {
             onChange(id, checked);

@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Checkbox not using `null` as false @sneridagh
+
 ### Internal
 
 ## 13.0.0-alpha.3 (2021-05-06)
