@@ -17,7 +17,7 @@ import trim from 'lodash/trim';
 import cx from 'classnames';
 import config from '@plone/volto/registry';
 import { PluggablesProvider } from '@plone/volto/components/manage/Pluggable';
-import { getBlocks, visitBlocks } from '@plone/volto/helpers/Blocks/Blocks';
+import { visitBlocks } from '@plone/volto/helpers/Blocks/Blocks';
 
 import Error from '@plone/volto/error';
 
