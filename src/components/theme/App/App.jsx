@@ -205,12 +205,6 @@ const fetchContent = async ({ store, location }) => {
         data,
       });
       if (!promps?.length) {
-        // eslint-disable-next-line
-        console.error(
-          'You should return a list of promoses from ',
-          getAsyncProps,
-        );
-
         throw new Error(
           'You should return a list of promises from getAsyncProps',
         );
