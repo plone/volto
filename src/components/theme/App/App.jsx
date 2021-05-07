@@ -215,7 +215,7 @@ const fetchContent = async ({ store, location }) => {
 
   visitBlocks(content, visitor);
 
-  await Promise.all(promises);
+  await Promise.allSettled(promises);
 
   return content;
 };
