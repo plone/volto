@@ -10,6 +10,7 @@ import { SingleDatePicker } from 'react-dates';
 import TimePicker from 'rc-time-picker';
 import cx from 'classnames';
 import { Icon, FormFieldWrapper } from '@plone/volto/components';
+import { parseDateTime } from '@plone/volto/helpers';
 import leftKey from '@plone/volto/icons/left-key.svg';
 import rightKey from '@plone/volto/icons/right-key.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -79,21 +80,8 @@ class DatetimeWidget extends Component {
    */
   constructor(props) {
     super(props);
-    //  Used to set a server timezone or UTC as default
-    moment.defineLocale(
-      this.props.intl.locale,
-      moment.localeData(this.props.intl.locale)._config,
-    ); // copy locale to moment-timezone
-    let datetime = null;
 
-    if (this.props.value) {
-      // check if datetime has timezone, otherwise assumes it's UTC
-      datetime = this.props.value.match(/T(.)*(-|\+|Z)/g)
-        ? // Since we assume UTC everywhere, then transform to local (momentjs default)
-          moment(this.props.value)
-        : // This might happen in old Plone versions dates
-          moment(`${this.props.value}Z`);
-    }
+    let datetime = parseDateTime(this.props.intl.locale, this.props.value);
 
     this.state = {
       focused: false,

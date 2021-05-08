@@ -61,4 +61,35 @@ describe('Html', () => {
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
+  it('renders a html component with apiPath present', () => {
+    const component = renderer.create(
+      <Html
+        extractor={{
+          getLinkElements: () => [
+            <link
+              key={1}
+              data-chunk="client"
+              rel="preload"
+              as="script"
+              href="http://localhost:3001/static/js/runtime~client.js"
+            />,
+          ],
+          getStyleElements: () => [],
+          getScriptElements: () => [
+            <script async src="bundle.js" key="bundle" />,
+          ],
+        }}
+        markup="<div />"
+        store={{
+          getState: () => ({
+            content: { '@id': 'http://dummy' },
+            navigation: { '@id': 'dummy-navigation' },
+          }),
+        }}
+        apiPath={'https://plone.org'}
+      />,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
 });

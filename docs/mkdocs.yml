@@ -28,11 +28,13 @@ nav:
   - Configuration:
       - What is configurable?: 'configuration/how-to.md'
       - Settings reference guide: 'configuration/settings-reference.md'
+      - Zero config builds: 'configuration/zero-config-builds.md'
       - Internal proxy: 'configuration/internalproxy.md'
       - Backend configuration: 'configuration/backend.md'
       - Richeditor settings: 'configuration/richeditor-settings.md'
       - Multilingual: 'configuration/multilingual.md'
       - Environment variables: 'configuration/environmentvariables.md'
+      - API expanders: 'configuration/expanders.md'
   - Theming & Semantic UI:
       - About Semantic UI: 'theming/about-semantic.md'
       - Semantic UI Theming: 'theming/semanticui-theming.md'
@@ -52,11 +54,13 @@ nav:
       - Overriding i18n messages: 'recipes/overridei18n.md'
       - App component insertion point: 'recipes/appextras.md'
       - Context navigation component: 'recipes/contextnavigation.md'
+      - Pluggables: 'recipes/pluggables.md'
   - Blocks:
       - Introduction: 'blocks/introduction.md'
       - Anatomy: 'blocks/anatomy.md'
       - Settings: 'blocks/settings.md'
       - Edit components: 'blocks/editcomponent.md'
+      - Extensions: 'blocks/extensions.md'
   - Addons:
       - Introduction: 'addons/index.md'
       - Internationalization: 'addons/i18n.md'
@@ -65,6 +69,7 @@ nav:
   - Deploying:
       - Simple deployment: 'deploying/simple.md'
       - Using PM2: 'deploying/pm2.md'
+      - Seamless mode: 'deploying/seamless-mode.md'
       - Using apache: 'deploying/apache.md'
       - Using sentry: 'deploying/sentry.md'
       - Performance improvements: 'deploying/performance.md'

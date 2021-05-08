@@ -52,6 +52,8 @@ export ChangePassword from '@plone/volto/components/manage/Preferences/ChangePas
 export PersonalPreferences from '@plone/volto/components/manage/Preferences/PersonalPreferences';
 export PersonalInformation from '@plone/volto/components/manage/Preferences/PersonalInformation';
 export CreateTranslation from '@plone/volto/components/manage/Multilingual/CreateTranslation';
+export TranslationObject from '@plone/volto/components/manage/Multilingual/TranslationObject';
+export CompareLanguages from '@plone/volto/components/manage/Multilingual/CompareLanguages';
 
 export FileView from '@plone/volto/components/theme/View/FileView';
 export ImageView from '@plone/volto/components/theme/View/ImageView';
@@ -177,10 +179,6 @@ export ViewHTMLBlock from '@plone/volto/components/manage/Blocks/HTML/View';
 
 export ListingBlockBody from '@plone/volto/components/manage/Blocks/Listing/ListingBody';
 export ListingBlockData from '@plone/volto/components/manage/Blocks/Listing/ListingData';
-export ListingBlockStyle from '@plone/volto/components/manage/Blocks/Listing/ListingStyle';
-export ListingBlockMore from '@plone/volto/components/manage/Blocks/Listing/ListingMore';
-export ListingBlockSidebar from '@plone/volto/components/manage/Blocks/Listing/ListingSidebar';
-export QuerystringWidget from '@plone/volto/components/manage/Blocks/Listing/QuerystringWidget';
 
 export ImageSidebar from '@plone/volto/components/manage/Blocks/Image/ImageSidebar';
 export MapsSidebar from '@plone/volto/components/manage/Blocks/Maps/MapsSidebar';

@@ -31,6 +31,10 @@ const messages = defineMessages({
     id: 'Selected items',
     defaultMessage: 'Selected items',
   },
+  back: {
+    id: 'Back',
+    defaultMessage: 'Back',
+  },
   of: { id: 'Selected items - x of y', defaultMessage: 'of' },
 });
 
@@ -60,6 +64,7 @@ class ObjectBrowserBody extends Component {
     onSelectItem: PropTypes.func,
     dataName: PropTypes.string,
     maximumSelectionSize: PropTypes.number,
+    contextURL: PropTypes.string,
   };
 
   /**
@@ -86,11 +91,7 @@ class ObjectBrowserBody extends Component {
     super(props);
     this.state = {
       currentFolder:
-        this.props.mode === 'multiple'
-          ? '/'
-          : this.props.data?.contextURL
-          ? getParentURL(this.props.data.contextURL)
-          : '/',
+        this.props.mode === 'multiple' ? '/' : this.props.contextURL || '/',
       currentImageFolder:
         this.props.mode === 'multiple'
           ? '/'
@@ -334,11 +335,12 @@ class ObjectBrowserBody extends Component {
               )}
             </>
           ) : (
-            <Icon
-              name={backSVG}
-              size="24px"
+            <button
+              aria-label={this.props.intl.formatMessage(messages.back)}
               onClick={() => this.navigateTo(this.state.parentFolder)}
-            />
+            >
+              <Icon name={backSVG} size="24px" />
+            </button>
           )}
           {this.state.showSearchInput ? (
             <Input
