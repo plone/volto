@@ -2107,11 +2107,6 @@ msgstr "Erabiltzaileak"
 msgid "Users and Groups"
 msgstr "Erabiltzaile eta taldeak"
 
-#: components/manage/Form/BlockDataForm
-#: components/manage/Controlpanels/UsersControlpanel
-msgid "Users and groups settings"
-msgstr "Erabiltzaile eta taldeen ezarpenak"
-
 #: helpers/Extensions/withBlockSchemaEnhancer
 msgid "Variation"
 msgstr ""
