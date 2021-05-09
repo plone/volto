@@ -16,3 +16,18 @@ exports[`Allows override of blocksConfig 1`] = `
   </div>
 </div>
 `;
+
+exports[`Provides path to blocks 1`] = `
+<div>
+  <div>
+    <div>
+      id: 
+      a
+       - text: 
+      bar
+       - path: 
+      /foo
+    </div>
+  </div>
+</div>
+`;
