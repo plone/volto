@@ -342,10 +342,23 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                 <h3
                   className="ui icon center aligned header"
                 >
-                  <i
-                    aria-hidden="true"
-                    className="user icon"
-                    onClick={[Function]}
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
                   />
                   <div
                     className="content"
@@ -365,10 +378,6 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                 <h3
                   className="ui icon center aligned header"
                 >
-                  <i
-                    aria-hidden="true"
-                    className="users icon"
-                    onClick={[Function]}
                   <svg
                     className="icon"
                     dangerouslySetInnerHTML={
