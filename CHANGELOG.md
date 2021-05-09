@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Updated Brazilian Portuguese translations @ericof
+
 ## 13.0.0-alpha.4 (2021-05-07)
 
 ### Breaking
