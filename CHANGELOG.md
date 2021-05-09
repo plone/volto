@@ -16,6 +16,22 @@ https://docs.voltocms.com/upgrade-guide/
 
 ### Internal
 
+- Updated Brazilian Portuguese translations @ericof
+
+## 13.0.0-alpha.4 (2021-05-07)
+
+### Breaking
+
+- Refactored `src/components/manage/Widgets/QuerystringWidget` using `ObjectWidget` and schemas @sneridagh
+- Refactored `Listing` block using the new `src/components/manage/Widgets/QuerystringWidget`. Introducing a new `showLinkMore` block option opt-in for the additional feature instead of always-in. Deprecated `ListingSidebar` and `src/components/manage/Blocks/Listing/QuerystringWidget` in favor of the new `src/components/manage/Widgets/QuerystringWidget` @sneridagh
+
+For a more information, please read the upgrade guide
+https://docs.voltocms.com/upgrade-guide/
+
+### Bugfix
+
+- Checkbox not using `null` as false @sneridagh
+
 ## 13.0.0-alpha.3 (2021-05-06)
 
 ### Bugfix
