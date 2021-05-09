@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- RenderBlocks: Blocks like the listing block need a path. @ksuess
+
 ### Internal
 
 - Updated Brazilian Portuguese translations @ericof
