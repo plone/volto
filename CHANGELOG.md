@@ -1,6 +1,6 @@
 # Change Log
 
-## 12.14.2 (unreleased)
+## 12.14.2 (2021-05-10)
 
 ### Bugfix
 
