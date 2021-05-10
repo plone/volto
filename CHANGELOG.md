@@ -2,15 +2,9 @@
 
 ## 12.14.2 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - RenderBlocks: Blocks like the listing block need a path. @ksuess
-
-### Internal
 
 ## 12.14.1 (2021-05-04)
 
