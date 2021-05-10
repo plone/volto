@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Normalize language to get the correct filename in lazy imports for composite language names @sneridagh @ericof
+
 ### Internal
 
 - Updated Brazilian Portuguese translations @ericof

@@ -12,7 +12,11 @@ import { Form, Field } from '@plone/volto/components';
 import langmap from 'langmap';
 import config from '@plone/volto/registry';
 import configureStore from '@plone/volto/store';
-import { Api, flattenToAppURL } from '@plone/volto/helpers';
+import {
+  Api,
+  flattenToAppURL,
+  normalizeLanguageName,
+} from '@plone/volto/helpers';
 import { createBrowserHistory } from 'history';
 const messages = defineMessages({
   document: {
@@ -51,7 +55,8 @@ const TranslationObject = ({
       setLoadingLocale(true);
       let lang =
         config.settings.supportedLanguages[Object.keys(locales).length];
-      import('~/../locales/' + lang + '.json').then((locale) => {
+      const langFileName = normalizeLanguageName(lang);
+      import('~/../locales/' + langFileName + '.json').then((locale) => {
         setLocales({ ...locales, [lang]: locale.default });
         setLoadingLocale(false);
       });
