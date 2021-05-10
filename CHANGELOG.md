@@ -10,6 +10,15 @@
 
 ### Internal
 
+## 13.0.0-alpha.5 (2021-05-10)
+
+### Bugfix
+
+- RenderBlocks: Blocks like the listing block need a path. @ksuess
+- Normalize language to get the correct filename in lazy imports for composite language names @sneridagh @ericof
+
+### Internal
+
 - Updated Brazilian Portuguese translations @ericof
 
 ## 13.0.0-alpha.4 (2021-05-07)

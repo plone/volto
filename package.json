@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "13.0.0-alpha.4",
+  "version": "13.0.0-alpha.5",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -291,7 +291,7 @@
     "express": "4.17.1",
     "glob": "7.1.6",
     "hamburgers": "1.1.3",
-    "handlebars": "4.7.0",
+    "handlebars": "4.7.7",
     "history": "4.10.1",
     "http-proxy-middleware": "1.0.4",
     "husky": "4.2.5",
@@ -308,7 +308,7 @@
     "linkify-it": "3.0.2",
     "lint-staged": "10.2.2",
     "locale": "0.1.0",
-    "lodash": "4.17.19",
+    "lodash": "4.17.21",
     "lodash-move": "1.1.1",
     "lodash-webpack-plugin": "0.11.5",
     "mem": "4.0.0",
