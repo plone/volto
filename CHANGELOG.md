@@ -2,10 +2,6 @@
 
 ## 13.0.0 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - RenderBlocks: Blocks like the listing block need a path. @ksuess
