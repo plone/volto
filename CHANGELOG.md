@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Translate 'All' label in Contents view pagination. @giuliaghisini
+
 ### Internal
 
 ## 13.0.0-alpha.5 (2021-05-10)
