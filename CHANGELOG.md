@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- fix not updating roles in users controlpanel @nileshgulia1
+
 ### Internal
 
 ## 13.0.0-alpha.5 (2021-05-10)
@@ -593,7 +595,6 @@ https://docs.voltocms.com/upgrade-guide/
 
 ### Bugfix
 
-- fix not updating roles in users controlpanel @nileshgulia1
 - Fix numeric widget console warnings regarding flex styling refs #2059 @ichim-david
 - Fix numeric widget crash once we click inside it refs #2059 @ichim-david
 
