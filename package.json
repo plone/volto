@@ -302,7 +302,6 @@
     "js-yaml": "3.13.1",
     "jsonwebtoken": "8.3.0",
     "jwt-decode": "2.2.0",
-    "langmap": "0.0.16",
     "less": "3.11.1",
     "less-loader": "6.1.0",
     "linkify-it": "3.0.2",
