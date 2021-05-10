@@ -15,6 +15,7 @@ import { toast } from 'react-toastify';
 import { Form, Toast } from '@plone/volto/components';
 import languages from '@plone/volto/constants/Languages';
 import { changeLanguage } from '@plone/volto/actions';
+import { normalizeLanguageName } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
 const messages = defineMessages({
@@ -85,7 +86,8 @@ class PersonalPreferences extends Component {
   onSubmit(data) {
     let language = data.language || 'en';
     if (config.settings.supportedLanguages.includes(language)) {
-      import('~/../locales/' + language + '.json').then((locale) => {
+      const langFileName = normalizeLanguageName(language);
+      import('~/../locales/' + langFileName + '.json').then((locale) => {
         this.props.changeLanguage(language, locale.default);
       });
     }
