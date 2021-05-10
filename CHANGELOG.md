@@ -8,6 +8,7 @@
 
 ### Bugfix
 
+- RenderBlocks: Blocks like the listing block need a path. @ksuess
 - Normalize language to get the correct filename in lazy imports for composite language names @sneridagh @ericof
 
 ### Internal
