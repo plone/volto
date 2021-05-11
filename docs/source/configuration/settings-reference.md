@@ -186,10 +186,17 @@ config.settings.asyncPropsExtenders = [
 ### Internal URL blacklist
 
 If another application is published under the same top domain as Volto, you could have a route like `/abc` which should be not rendered by Volto.
-This can be achieved by a rule in the web server (Apache or Nginx) but when navigating client side, you may have references to that route so Volto is
-handling that as an internal URL but when fetching the content will break.
+This can be achieved by a rule in the reverse proxy (Apache or Nginx for example) but, when navigating client side, you may have references to that route so Volto is
+handling that as an internal URL and fetching the content will break.
 
 You can disable that path in `config.settings.internalUrlBlacklist` so it will be handled as an external link.
+
+```js
+config.settings.internalUrlBlacklist = [
+  '/external-subsite',
+  '/another-blacklisted-url',
+];
+```
 
 ## Server-specific serverConfig
 
