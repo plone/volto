@@ -11,9 +11,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import cx from 'classnames';
 import { find, map } from 'lodash';
 
-import langmap from 'langmap';
 import {
   Helmet,
+  langmap,
   flattenToAppURL,
   normalizeLanguageName,
 } from '@plone/volto/helpers';

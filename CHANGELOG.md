@@ -9,6 +9,7 @@
 ### Bugfix
 
 - Translate 'All' label in Contents view pagination. @giuliaghisini
+- Replace langmap dependency with internal code that supports composite language names @sneridagh @ericof
 
 ### Internal
 
