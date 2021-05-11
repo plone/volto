@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix leftover from the multilingual fix for composed language names @sneridagh @ericof
+
 ### Internal
 
 ## 13.0.0-alpha.6 (2021-05-11)
