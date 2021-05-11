@@ -8,6 +8,9 @@
 
 ### Bugfix
 
+- Replace langmap dependency with internal code that supports composite language names @sneridagh @ericof
+
+
 ### Internal
 
 ## 13.0.0-alpha.5 (2021-05-10)
