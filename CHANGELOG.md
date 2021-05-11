@@ -12,6 +12,8 @@
 
 ### Internal
 
+- Updated Brazilian Portuguese translations @ericof
+
 ## 13.0.0-alpha.6 (2021-05-11)
 
 ### Bugfix
