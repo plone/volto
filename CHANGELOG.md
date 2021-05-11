@@ -2,10 +2,6 @@
 
 ## 13.0.0 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Fix leftover from the multilingual fix for composed language names @sneridagh @ericof
