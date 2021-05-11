@@ -15,6 +15,7 @@ const CreateTranslation = (props) => {
   const [translationLocation, setTranslationLocation] = React.useState(null);
   const [translationObject, setTranslationObject] = React.useState(null);
 
+  console.log(language);
   React.useEffect(() => {
     // Only on mount, we dispatch the locator query
     dispatch(getTranslationLocator(translationOf, language)).then((resp) => {

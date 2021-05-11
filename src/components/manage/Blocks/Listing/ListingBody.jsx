@@ -21,10 +21,19 @@ const ListingBody = React.memo(
     );
     const dispatch = useDispatch();
 
+    // debugger;
     React.useEffect(() => {
       if (data?.query?.length > 0) {
         dispatch(
-          getQueryStringResults(path, { ...data, fullobjects: 1 }, data.block),
+          getQueryStringResults(
+            content?.id &&
+              content?.language?.token &&
+              (content.language.token !== props.intl.locale || !props.editable)
+              ? `/${content.language.token}`
+              : path,
+            { ...data, fullobjects: 1 },
+            data.block,
+          ),
         );
       } else if (
         data.template === 'imageGallery' &&
@@ -32,7 +41,11 @@ const ListingBody = React.memo(
       ) {
         dispatch(
           getQueryStringResults(
-            path,
+            content?.id &&
+              content?.language?.token &&
+              (content.language.token !== props.intl.locale || !props.editable)
+              ? `/${content.language.token}`
+              : path,
             {
               ...data,
               fullobjects: 1,
@@ -78,7 +91,11 @@ const ListingBody = React.memo(
       setCurrentPage(activePage);
       dispatch(
         getQueryStringResults(
-          path,
+          content?.id &&
+            content?.language?.token &&
+            (content.language.token !== props.intl.locale || !props.editable)
+            ? `/${content.language.token}`
+            : path,
           { ...data, fullobjects: 1 },
           data.block,
           activePage,
