@@ -19,11 +19,11 @@ const messages = defineMessages({
 
 const EditBlockWrapper = (props) => {
   const hideHandler = (data) => {
-    return !!data.fixed || !blockHasValue(data);
+    return !!data.fixed || !(blockHasValue(data) && props.blockProps.editable);
   };
 
   const { intl, blockProps, draginfo, children } = props;
-  const { block, selected, type, onDeleteBlock, data } = blockProps;
+  const { block, selected, type, onDeleteBlock, data, editable } = blockProps;
   const visible = selected && !hideHandler(data);
 
   const required = isBoolean(data.required)
@@ -49,7 +49,7 @@ const EditBlockWrapper = (props) => {
         </div>
         <div className={`ui drag block inner ${type}`}>
           {children}
-          {selected && !required && (
+          {selected && !required && editable && (
             <Button
               icon
               basic

@@ -25,10 +25,11 @@ import { Icon } from '@plone/volto/components';
 import { getNavigation, login } from '@plone/volto/actions';
 import { toast } from 'react-toastify';
 import { Toast } from '@plone/volto/components';
-import config from '@plone/volto/registry';
 
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
+
+import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   login: {
@@ -64,6 +65,14 @@ const messages = defineMessages({
       'Both email address and password are case sensitive, check that caps lock is not enabled.',
     defaultMessage:
       'Both email address and password are case sensitive, check that caps lock is not enabled.',
+  },
+  register: {
+    id: 'Register',
+    defaultMessage: 'Register',
+  },
+  forgotPassword: {
+    id: 'box_forgot_password_option',
+    defaultMessage: 'Forgot your password?',
   },
 });
 
@@ -138,21 +147,19 @@ class Login extends Component {
     }
   }
 
-  componentDidMount() {
-    const { settings } = config;
-    if (settings.isMultilingual) {
-      this.props.getNavigation(`/${this.props.lang}`, settings.navDepth);
+  UNSAFE_componentWillMount() {
+    if (config.settings.isMultilingual) {
+      this.props.getNavigation(`/${this.props.lang}`, config.settings.navDepth);
     } else {
-      this.props.getNavigation('/', settings.navDepth);
+      this.props.getNavigation('/', config.settings.navDepth);
     }
   }
 
   componentWillUnmount() {
-    const { settings } = config;
-    if (settings.isMultilingual) {
-      this.props.getNavigation(`/${this.props.lang}`, settings.navDepth);
+    if (config.settings.isMultilingual) {
+      this.props.getNavigation(`/${this.props.lang}`, config.settings.navDepth);
     } else {
-      this.props.getNavigation('/', settings.navDepth);
+      this.props.getNavigation('/', config.settings.navDepth);
     }
 
     if (toast.isActive('loginFailed')) {
@@ -187,7 +194,7 @@ class Login extends Component {
           <Form method="post" onSubmit={this.onLogin}>
             <Segment.Group raised>
               <Segment className="primary">
-                <FormattedMessage id="Log In" defaultMessage="Login Name" />
+                <FormattedMessage id="Log In" defaultMessage="Login" />
               </Segment>
               <Segment secondary>
                 <FormattedMessage
@@ -221,27 +228,6 @@ class Login extends Component {
                         />
                       </Grid.Column>
                     </Grid.Row>
-                    <Grid.Row stretched>
-                      <Grid.Column stretched width="12">
-                        <p className="help">
-                          <FormattedMessage
-                            id="If you you do not have an account here, head over to the {registrationform}."
-                            defaultMessage="If you you do not have an account here, head over to the {registrationform}."
-                            values={{
-                              registrationform: (
-                                /* eslint-disable jsx-a11y/tabindex-no-positive */
-                                <Link to="/register" tabIndex={1}>
-                                  <FormattedMessage
-                                    id="registration form"
-                                    defaultMessage="registration form"
-                                  />
-                                </Link>
-                              ),
-                            }}
-                          />
-                        </p>
-                      </Grid.Column>
-                    </Grid.Row>
                   </Grid>
                 </Form.Field>
                 <Form.Field inline className="help">
@@ -269,23 +255,27 @@ class Login extends Component {
                         />
                       </Grid.Column>
                     </Grid.Row>
+                  </Grid>
+                </Form.Field>
+                <Form.Field inline className="help">
+                  <Grid>
                     <Grid.Row stretched>
+                      {config.settings.showSelfRegistration && (
+                        <Grid.Column stretched width="12">
+                          <p className="help">
+                            <Link to="/register">
+                              {this.props.intl.formatMessage(messages.register)}
+                            </Link>
+                          </p>
+                        </Grid.Column>
+                      )}
                       <Grid.Column stretched width="12">
                         <p className="help">
-                          <FormattedMessage
-                            id="If you have forgotten your password, {forgotpassword}"
-                            defaultMessage="If you have forgotten your password, {forgotpassword}"
-                            values={{
-                              forgotpassword: (
-                                <Link to="/password-reset">
-                                  <FormattedMessage
-                                    id="we can send you a new one"
-                                    defaultMessage="we can send you a new one"
-                                  />
-                                </Link>
-                              ),
-                            }}
-                          />
+                          <Link to="/password-reset">
+                            {this.props.intl.formatMessage(
+                              messages.forgotPassword,
+                            )}
+                          </Link>
                         </p>
                       </Grid.Column>
                     </Grid.Row>

@@ -32,6 +32,7 @@ import { loadables } from './Loadables';
 import { sentryOptions } from './Sentry';
 import { contentIcons } from './ContentIcons';
 import { imageScales } from './ImageScales';
+import { controlPanelsIcons } from './ControlPanels';
 
 import applyAddonConfiguration from 'load-volto-addons';
 
@@ -42,14 +43,14 @@ const port = process.env.PORT || '3000';
 
 const apiPath =
   process.env.RAZZLE_API_PATH ||
-  (__DEVELOPMENT__
-    ? `http://${host}:${port}/api`
-    : 'http://localhost:8080/Plone');
+  (__DEVELOPMENT__ ? `http://${host}:${port}` : '');
 
 const getServerURL = (url) => {
   if (!url) return;
   const apiPathURL = parseUrl(url);
-  return `${apiPathURL.protocol}//${apiPathURL.hostname}:${apiPathURL.port}`;
+  return `${apiPathURL.protocol}//${apiPathURL.hostname}${
+    apiPathURL.port ? `:${apiPathURL.port}` : ''
+  }`;
 };
 
 // Sensible defaults for publicURL
@@ -135,6 +136,8 @@ let config = {
     serverConfig,
     storeExtenders: [],
     showTags: true,
+    controlPanelsIcons,
+    showSelfRegistration: false,
   },
   widgets: {
     ...widgetMapping,
@@ -151,6 +154,7 @@ let config = {
     blocksConfig,
     groupBlocksOrder,
     initialBlocks,
+    showEditBlocksInBabelView: false,
   },
   addonRoutes: [],
   addonReducers: {},

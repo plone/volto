@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2021-04-07T10:29:29.790Z\n"
+"POT-Creation-Date: 2021-05-06T09:01:08.193Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -89,7 +89,7 @@ msgstr ""
 msgid "Add block…"
 msgstr ""
 
-#: components/manage/Blocks/Listing/QuerystringWidget
+#: components/manage/Widgets/QueryWidget
 # defaultMessage: Add criteria
 msgid "Add criteria"
 msgstr ""
@@ -209,6 +209,7 @@ msgstr ""
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -226,11 +227,6 @@ msgstr ""
 msgid "Block"
 msgstr ""
 
-#: components/manage/Blocks/Listing/ListingSidebar
-# defaultMessage: Block style
-msgid "Block style"
-msgstr ""
-
 #: components/theme/Login/Login
 # defaultMessage: Both email address and password are case sensitive, check that caps lock is not enabled.
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
@@ -241,6 +237,7 @@ msgstr ""
 msgid "Breadcrumbs"
 msgstr ""
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Sidebar/ObjectBrowserNav
 # defaultMessage: Browse
@@ -443,11 +440,6 @@ msgstr ""
 msgid "Contained items"
 msgstr ""
 
-#: components/manage/Blocks/Listing/ListingSidebar
-# defaultMessage: Content
-msgid "Content"
-msgstr ""
-
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Content type created
 msgid "Content type created"
@@ -501,7 +493,8 @@ msgstr ""
 msgid "Creators"
 msgstr ""
 
-#: components/manage/Blocks/Listing/QuerystringWidget
+#: components/manage/Widgets/QuerystringWidget
+#: components/manage/Widgets/QueryWidget
 # defaultMessage: Criteria
 msgid "Criteria"
 msgstr ""
@@ -566,7 +559,6 @@ msgstr ""
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -625,7 +617,7 @@ msgstr ""
 msgid "Delete row"
 msgstr ""
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Depth
 msgid "Depth"
 msgstr ""
@@ -637,7 +629,6 @@ msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -663,7 +654,7 @@ msgid "Distributed under the {license}."
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Divide each row into separate cells
+# defaultMessage: Add border to inner columns
 msgid "Divide each row into separate cells"
 msgstr ""
 
@@ -692,6 +683,7 @@ msgstr ""
 msgid "Do you really want to delete this item?"
 msgstr ""
 
+#: components/manage/Multilingual/TranslationObject
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Document
 msgid "Document"
@@ -926,7 +918,7 @@ msgid "First"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Fixed width table cells
+# defaultMessage: Fixed width columns
 msgid "Fixed width table cells"
 msgstr ""
 
@@ -1063,16 +1055,7 @@ msgstr ""
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr ""
 
-#: components/theme/Login/Login
-# defaultMessage: If you have forgotten your password, {forgotpassword}
-msgid "If you have forgotten your password, {forgotpassword}"
-msgstr ""
-
-#: components/theme/Login/Login
-# defaultMessage: If you you do not have an account here, head over to the {registrationform}.
-msgid "If you you do not have an account here, head over to the {registrationform}."
-msgstr ""
-
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Image
@@ -1157,7 +1140,7 @@ msgstr ""
 msgid "Interval Yearly"
 msgstr ""
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Item batch size
 msgid "Item batch size"
 msgstr ""
@@ -1251,26 +1234,31 @@ msgstr ""
 msgid "Link"
 msgstr ""
 
-#: components/manage/Blocks/Listing/ListingSidebar
+#: components/manage/Blocks/Listing/schema
 # defaultMessage: Link more
 msgid "Link more"
 msgstr ""
 
-#: components/manage/Blocks/Listing/ListingMore
+#: components/manage/Blocks/Listing/schema
 # defaultMessage: Link Title
 msgid "Link title"
 msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Listing/ListingMore
+#: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Link to
 msgid "Link to"
 msgstr ""
 
-#: components/manage/Blocks/Listing/ListingSidebar
+#: components/manage/Multilingual/ManageTranslations
+# defaultMessage: Link translation for
+msgid "Link translation for"
+msgstr ""
+
+#: components/manage/Blocks/Listing/schema
 # defaultMessage: Listing
 msgid "Listing"
 msgstr ""
@@ -1291,7 +1279,7 @@ msgid "Location"
 msgstr ""
 
 #: components/theme/Login/Login
-# defaultMessage: Login Name
+# defaultMessage: Login
 msgid "Log In"
 msgstr ""
 
@@ -1317,7 +1305,7 @@ msgid "Login Name"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Make the table compact
+# defaultMessage: Reduce cell padding
 msgid "Make the table compact"
 msgstr ""
 
@@ -1499,7 +1487,8 @@ msgstr ""
 msgid "No results found."
 msgstr ""
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerySortOnWidget
+#: components/manage/Widgets/QuerystringWidget
 # defaultMessage: No selection
 msgid "No selection"
 msgstr ""
@@ -1724,6 +1713,11 @@ msgstr ""
 msgid "Publishing Date"
 msgstr ""
 
+#: components/manage/Blocks/Listing/schema
+# defaultMessage: Query
+msgid "Query"
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Re-enter the password. Make sure the passwords are identical.
@@ -1757,11 +1751,12 @@ msgid "Recurrence ends on"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Reduce complexity
+# defaultMessage: Minimalistic table design
 msgid "Reduce complexity"
 msgstr ""
 
 #: components/theme/Anontools/Anontools
+#: components/theme/Login/Login
 #: components/theme/Register/Register
 # defaultMessage: Register
 msgid "Register"
@@ -1828,7 +1823,6 @@ msgstr ""
 msgid "Reply"
 msgstr ""
 
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -1842,7 +1836,7 @@ msgstr ""
 msgid "Required input is missing."
 msgstr ""
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Results limit
 msgid "Results limit"
 msgstr ""
@@ -1852,7 +1846,7 @@ msgstr ""
 msgid "Results preview"
 msgstr ""
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Reversed order
 msgid "Reversed order"
 msgstr ""
@@ -1982,11 +1976,6 @@ msgstr ""
 msgid "Select columns to show"
 msgstr ""
 
-#: components/manage/Widgets/QuerystringWidget
-# defaultMessage: Select criteria
-msgid "Select criteria"
-msgstr ""
-
 #: components/manage/Contents/ContentsWorkflowModal
 # defaultMessage: Select the transition to be used for modifying the items state.
 msgid "Select the transition to be used for modifying the items state."
@@ -2051,7 +2040,6 @@ msgstr ""
 msgid "Sharing for {title}"
 msgstr ""
 
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -2146,13 +2134,13 @@ msgstr ""
 msgid "Sort By:"
 msgstr ""
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerySortOnWidget
+#: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Sort on
 msgid "Sort on"
 msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
-#: components/manage/Blocks/Listing/ListingData
 # defaultMessage: Source
 msgid "Source"
 msgstr ""
@@ -2189,13 +2177,18 @@ msgstr ""
 msgid "State"
 msgstr ""
 
+#: components/manage/Multilingual/CompareLanguages
+# defaultMessage: Stop compare
+msgid "Stop compare"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: String
 msgid "String"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Stripe alternate rows with color
+# defaultMessage: Alternate row background color
 msgid "Stripe alternate rows with color"
 msgstr ""
 
@@ -2218,14 +2211,14 @@ msgstr ""
 msgid "Success"
 msgstr ""
 
-#: components/manage/Blocks/Table/Edit
-# defaultMessage: Table
-msgid "Table"
+#: components/theme/LanguageSelector/LanguageSelector
+# defaultMessage: Switch to
+msgid "Switch to"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Table color inverted
-msgid "Table color inverted"
+# defaultMessage: Table
+msgid "Table"
 msgstr ""
 
 #: components/manage/Blocks/ToC/View
@@ -2257,11 +2250,6 @@ msgstr ""
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Target number of objects in memory per cache
 msgid "Target number of objects in memory per cache"
-msgstr ""
-
-#: components/manage/Blocks/Listing/TemplateWidget
-# defaultMessage: Template
-msgid "Template"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
@@ -2357,7 +2345,6 @@ msgstr ""
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -2390,6 +2377,11 @@ msgstr ""
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Total number of objects in the database
 msgid "Total number of objects in the database"
+msgstr ""
+
+#: components/manage/Add/Add
+# defaultMessage: Translate to
+msgid "Translate to"
 msgstr ""
 
 #: components/manage/Toolbar/Types
@@ -2461,6 +2453,11 @@ msgstr ""
 msgid "Unknown Block"
 msgstr ""
 
+#: components/manage/Multilingual/ManageTranslations
+# defaultMessage: Unlink translation for
+msgid "Unlink translation for"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Update
 msgid "Update"
@@ -2506,7 +2503,11 @@ msgstr ""
 msgid "Uploading files"
 msgstr ""
 
-#: components/manage/Widgets/QuerystringWidget
+#: components/manage/Blocks/HeroImageLeft/Edit
+# defaultMessage: Uploading image
+msgid "Uploading image"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -2550,7 +2551,7 @@ msgstr ""
 msgid "Users and groups settings"
 msgstr ""
 
-#: components/manage/Form/BlockDataForm
+#: helpers/Extensions/withBlockSchemaEnhancer
 # defaultMessage: Variation
 msgid "Variation"
 msgstr ""
@@ -2730,6 +2731,7 @@ msgstr ""
 msgid "Your preferred language"
 msgstr ""
 
+#: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Forgot your password?
 msgid "box_forgot_password_option"
@@ -2738,6 +2740,11 @@ msgstr ""
 #: config/Blocks
 # defaultMessage: Common
 msgid "common"
+msgstr ""
+
+#: components/manage/Multilingual/CompareLanguages
+# defaultMessage: Compare to language
+msgid "compare_to"
 msgstr ""
 
 #: components/manage/Blocks/Block/EditBlockWrapper
@@ -2941,14 +2948,9 @@ msgstr ""
 msgid "published"
 msgstr ""
 
-#: components/manage/Blocks/Listing/QuerystringWidget
+#: components/manage/Widgets/QueryWidget
 # defaultMessage: Select…
 msgid "querystring-widget-select"
-msgstr ""
-
-#: components/theme/Login/Login
-# defaultMessage: registration form
-msgid "registration form"
 msgstr ""
 
 #: components/theme/Search/Search
@@ -3179,11 +3181,6 @@ msgstr ""
 #: components/theme/View/EventView
 # defaultMessage: Visit external website
 msgid "visit_external_website"
-msgstr ""
-
-#: components/theme/Login/Login
-# defaultMessage: we can send you a new one
-msgid "we can send you a new one"
 msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal

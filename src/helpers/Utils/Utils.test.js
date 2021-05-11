@@ -4,6 +4,7 @@ import {
   getColor,
   getInitials,
   safeWrapper,
+  normalizeLanguageName,
 } from './Utils';
 
 describe('Utils tests', () => {
@@ -269,6 +270,15 @@ describe('Utils tests', () => {
         ok = true;
       } catch {}
       expect(ok).toBe(false);
+    });
+  });
+
+  describe('normalizeLanguageName', () => {
+    it('Normalizes an extended language (pt_BR)', () => {
+      expect(normalizeLanguageName('pt-br')).toStrictEqual('pt_BR');
+    });
+    it('Normalizes a simple language (ca)', () => {
+      expect(normalizeLanguageName('ca')).toStrictEqual('ca');
     });
   });
 });

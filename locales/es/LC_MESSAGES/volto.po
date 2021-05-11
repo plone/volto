@@ -83,7 +83,7 @@ msgstr "Agregar una descripción…"
 msgid "Add block…"
 msgstr "Agregar bloque…"
 
-#: components/manage/Blocks/Listing/QuerystringWidget
+#: components/manage/Widgets/QueryWidget
 msgid "Add criteria"
 msgstr ""
 
@@ -183,6 +183,7 @@ msgstr ""
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -197,10 +198,6 @@ msgstr "Base"
 msgid "Block"
 msgstr "Bloque"
 
-#: components/manage/Blocks/Listing/ListingSidebar
-msgid "Block style"
-msgstr ""
-
 #: components/theme/Login/Login
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
 msgstr "Tanto la dirección de correo electrónico y la contraseña son sensible a mayúsculas, verifique que la tecla Caps Lock no este habilitada."
@@ -209,6 +206,7 @@ msgstr "Tanto la dirección de correo electrónico y la contraseña son sensible
 msgid "Breadcrumbs"
 msgstr "Barra de ruta"
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
@@ -375,10 +373,6 @@ msgstr "Formulario de contacto"
 msgid "Contained items"
 msgstr ""
 
-#: components/manage/Blocks/Listing/ListingSidebar
-msgid "Content"
-msgstr ""
-
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
 msgstr ""
@@ -422,7 +416,8 @@ msgstr ""
 msgid "Creators"
 msgstr "Autores"
 
-#: components/manage/Blocks/Listing/QuerystringWidget
+#: components/manage/Widgets/QuerystringWidget
+#: components/manage/Widgets/QueryWidget
 msgid "Criteria"
 msgstr ""
 
@@ -476,7 +471,6 @@ msgstr ""
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -527,7 +521,7 @@ msgstr "Eliminar columna"
 msgid "Delete row"
 msgstr "Eliminar fila"
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerystringWidget
 msgid "Depth"
 msgstr ""
 
@@ -537,7 +531,6 @@ msgstr "Descendente"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -582,6 +575,7 @@ msgstr "¿Esta seguro que quiere eliminar el usuario {username}?"
 msgid "Do you really want to delete this item?"
 msgstr "¿Usted realmente quiere eliminar este elemento?"
 
+#: components/manage/Multilingual/TranslationObject
 #: components/manage/Sidebar/Sidebar
 msgid "Document"
 msgstr "Documento"
@@ -884,14 +878,7 @@ msgstr "Si esta fecha es en el futuro, el contenido no se mostrará en los lista
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr "Si usted esta seguro de haber ingresado la dirección web correcta pero mas obtiene un, por favor, contante al {site_admin}."
 
-#: components/theme/Login/Login
-msgid "If you have forgotten your password, {forgotpassword}"
-msgstr "Si usted ha perdido su contraseña, {forgotpassword}"
-
-#: components/theme/Login/Login
-msgid "If you you do not have an account here, head over to the {registrationform}."
-msgstr "Si usted no tiene una cuenta de usuario aquí, valla al {registrationform}."
-
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
@@ -960,7 +947,7 @@ msgstr ""
 msgid "Interval Yearly"
 msgstr ""
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerystringWidget
 msgid "Item batch size"
 msgstr ""
 
@@ -1036,23 +1023,27 @@ msgstr "Izquierda"
 msgid "Link"
 msgstr ""
 
-#: components/manage/Blocks/Listing/ListingSidebar
+#: components/manage/Blocks/Listing/schema
 msgid "Link more"
 msgstr ""
 
-#: components/manage/Blocks/Listing/ListingMore
+#: components/manage/Blocks/Listing/schema
 msgid "Link title"
 msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Listing/ListingMore
+#: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Link to"
 msgstr "Enlazar a"
 
-#: components/manage/Blocks/Listing/ListingSidebar
+#: components/manage/Multilingual/ManageTranslations
+msgid "Link translation for"
+msgstr ""
+
+#: components/manage/Blocks/Listing/schema
 msgid "Listing"
 msgstr ""
 
@@ -1237,7 +1228,8 @@ msgstr ""
 msgid "No results found."
 msgstr "La búsqueda no produjo resultados."
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerySortOnWidget
+#: components/manage/Widgets/QuerystringWidget
 msgid "No selection"
 msgstr ""
 
@@ -1420,6 +1412,10 @@ msgstr ""
 msgid "Publishing Date"
 msgstr "Fecha de publicación"
 
+#: components/manage/Blocks/Listing/schema
+msgid "Query"
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "Re-enter the password. Make sure the passwords are identical."
@@ -1451,6 +1447,7 @@ msgid "Reduce complexity"
 msgstr "Reducir complejidad"
 
 #: components/theme/Anontools/Anontools
+#: components/theme/Login/Login
 #: components/theme/Register/Register
 msgid "Register"
 msgstr "Registro"
@@ -1504,7 +1501,6 @@ msgstr ""
 msgid "Reply"
 msgstr ""
 
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -1516,7 +1512,7 @@ msgstr "Obligatorio"
 msgid "Required input is missing."
 msgstr "Un campo requerido esta sin tomar en cuenta."
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerystringWidget
 msgid "Results limit"
 msgstr ""
 
@@ -1524,7 +1520,7 @@ msgstr ""
 msgid "Results preview"
 msgstr ""
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerystringWidget
 msgid "Reversed order"
 msgstr ""
 
@@ -1630,10 +1626,6 @@ msgstr ""
 msgid "Select columns to show"
 msgstr "Selecciona la columna a mostrar"
 
-#: components/manage/Widgets/QuerystringWidget
-msgid "Select criteria"
-msgstr "Seleccionar criterios"
-
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Select the transition to be used for modifying the items state."
 msgstr "Seleccione la transición a ser efectuada al cambiar el estado del contenido."
@@ -1686,7 +1678,6 @@ msgstr "Compartir"
 msgid "Sharing for {title}"
 msgstr "Compartir para {title}"
 
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -1763,12 +1754,12 @@ msgstr "Lo siento, algo estuvo mal con su solicitud "
 msgid "Sort By:"
 msgstr ""
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerySortOnWidget
+#: components/manage/Widgets/QuerystringWidget
 msgid "Sort on"
 msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
-#: components/manage/Blocks/Listing/ListingData
 msgid "Source"
 msgstr "Fuente"
 
@@ -1798,6 +1789,10 @@ msgstr "Renueve la contraseña"
 msgid "State"
 msgstr "Estado"
 
+#: components/manage/Multilingual/CompareLanguages
+msgid "Stop compare"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "String"
 msgstr "Cadena de texto"
@@ -1823,13 +1818,13 @@ msgstr "Asunto"
 msgid "Success"
 msgstr "Éxito"
 
+#: components/theme/LanguageSelector/LanguageSelector
+msgid "Switch to"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 msgid "Table"
 msgstr "Tabla"
-
-#: components/manage/Blocks/Table/Edit
-msgid "Table color inverted"
-msgstr "Lista de colores invertidos"
 
 #: components/manage/Blocks/ToC/View
 msgid "Table of Contents"
@@ -1854,10 +1849,6 @@ msgstr ""
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Target number of objects in memory per cache"
-msgstr ""
-
-#: components/manage/Blocks/Listing/TemplateWidget
-msgid "Template"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
@@ -1936,7 +1927,6 @@ msgstr ""
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -1963,6 +1953,10 @@ msgstr ""
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total number of objects in the database"
+msgstr ""
+
+#: components/manage/Add/Add
+msgid "Translate to"
 msgstr ""
 
 #: components/manage/Toolbar/Types
@@ -2021,6 +2015,10 @@ msgstr ""
 msgid "Unknown Block"
 msgstr "Bloque desconocido"
 
+#: components/manage/Multilingual/ManageTranslations
+msgid "Unlink translation for"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update"
 msgstr ""
@@ -2057,7 +2055,10 @@ msgstr "Cargar archivos"
 msgid "Uploading files"
 msgstr "Cargando archivos"
 
-#: components/manage/Widgets/QuerystringWidget
+#: components/manage/Blocks/HeroImageLeft/Edit
+msgid "Uploading image"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -2093,7 +2094,7 @@ msgstr "Usuarios y Grupos"
 msgid "Users and groups settings"
 msgstr "Configuraciones de usuarios y grupos"
 
-#: components/manage/Form/BlockDataForm
+#: helpers/Extensions/withBlockSchemaEnhancer
 msgid "Variation"
 msgstr ""
 
@@ -2234,6 +2235,7 @@ msgstr "Su contraseña ha sido restablecida exitosamente. Usted puede {link} usa
 msgid "Your preferred language"
 msgstr "Su idioma preferido"
 
+#: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "box_forgot_password_option"
 msgstr "¿Olvidaste tu contraseña?"
@@ -2241,6 +2243,10 @@ msgstr "¿Olvidaste tu contraseña?"
 #: config/Blocks
 msgid "common"
 msgstr "Común"
+
+#: components/manage/Multilingual/CompareLanguages
+msgid "compare_to"
+msgstr ""
 
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"
@@ -2403,13 +2409,9 @@ msgstr ""
 msgid "published"
 msgstr ""
 
-#: components/manage/Blocks/Listing/QuerystringWidget
+#: components/manage/Widgets/QueryWidget
 msgid "querystring-widget-select"
 msgstr ""
-
-#: components/theme/Login/Login
-msgid "registration form"
-msgstr "formulario de registro"
 
 #: components/theme/Search/Search
 msgid "results found"
@@ -2594,10 +2596,6 @@ msgstr "Vídeo"
 #: components/theme/View/EventView
 msgid "visit_external_website"
 msgstr ""
-
-#: components/theme/Login/Login
-msgid "we can send you a new one"
-msgstr "podemos enviarte una nueva"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"

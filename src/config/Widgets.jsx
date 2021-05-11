@@ -8,6 +8,8 @@ import ArrayWidget from '@plone/volto/components/manage/Widgets/ArrayWidget';
 import CheckboxWidget from '@plone/volto/components/manage/Widgets/CheckboxWidget';
 import FileWidget from '@plone/volto/components/manage/Widgets/FileWidget';
 import PasswordWidget from '@plone/volto/components/manage/Widgets/PasswordWidget';
+import QueryWidget from '@plone/volto/components/manage/Widgets/QueryWidget';
+import QuerySortOnWidget from '@plone/volto/components/manage/Widgets/QuerySortOnWidget';
 import QuerystringWidget from '@plone/volto/components/manage/Widgets/QuerystringWidget';
 import SchemaWidget from '@plone/volto/components/manage/Widgets/SchemaWidget';
 import SelectWidget from '@plone/volto/components/manage/Widgets/SelectWidget';
@@ -53,6 +55,9 @@ export const widgetMapping = {
     align: AlignWidget,
     url: UrlWidget,
     email: EmailWidget,
+    query: QueryWidget,
+    query_sort_on: QuerySortOnWidget,
+    querystring: QuerystringWidget,
     object_browser: ObjectBrowserWidget,
     object: ObjectWidget,
     object_list: ObjectListWidget,

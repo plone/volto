@@ -1,25 +1,156 @@
 # Change Log
 
-## 12.10.2 (unreleased)
+## 13.0.0 (unreleased)
 
 ### Breaking
 
 ### Feature
 
-- Improve the blocks engine by adding a detector for clicking outside in the `BlocksForm` @sneridagh
-- Include a pluggable architecture for pluggable render-time insertions (similar to <Portal>) @tiberiuichim
 - Add Image with srcset and lazy loading using Plone scales @nzambello
 
 ### Bugfix
 
-- Include selected block in multiselections @sneridagh
+- Replace langmap dependency with internal code that supports composite language names @sneridagh @ericof
+
 
 ### Internal
 
-- Upgrade Storybook to 6.2.2 @tiberiuichim
+## 13.0.0-alpha.5 (2021-05-10)
+
+### Bugfix
+
+- RenderBlocks: Blocks like the listing block need a path. @ksuess
+- Normalize language to get the correct filename in lazy imports for composite language names @sneridagh @ericof
+
+### Internal
+
+- Updated Brazilian Portuguese translations @ericof
+
+## 13.0.0-alpha.4 (2021-05-07)
+
+### Breaking
+
+- Refactored `src/components/manage/Widgets/QuerystringWidget` using `ObjectWidget` and schemas @sneridagh
+- Refactored `Listing` block using the new `src/components/manage/Widgets/QuerystringWidget`. Introducing a new `showLinkMore` block option opt-in for the additional feature instead of always-in. Deprecated `ListingSidebar` and `src/components/manage/Blocks/Listing/QuerystringWidget` in favor of the new `src/components/manage/Widgets/QuerystringWidget` @sneridagh
+
+For a more information, please read the upgrade guide
+https://docs.voltocms.com/upgrade-guide/
+
+### Bugfix
+
+- Checkbox not using `null` as false @sneridagh
+
+## 13.0.0-alpha.3 (2021-05-06)
+
+### Bugfix
+
+- Use params prop in api middleware @giuliaghisini
+
+- Fix PORT env var handling, if you have set the PORT in build time, the setting was
+  removed back to defaults, now the build time setting is kept (unsetting in build time
+  and set it in runtime is now the recommended setup) @sneridagh
+
+## 13.0.0-alpha.2 (2021-05-05)
+
+### Bugfix
+
+- Fix sort_order restapi call, works on action for existing listing blocks
+  and in ListingData saving correctly new ones @nzambello
+
+### Internal
+
+- Updated Brazilian Portuguese translations @ericof
+
+## 13.0.0-alpha.1 (2021-05-03)
+
+### Internal
+
+- Full real zero configuration achievement by turning the stock default
+  `RAZZLE_PUBLIC_DIR` into a relative path, so we can enable truly movable builds
+  @sneridagh
+
+## 13.0.0-alpha.0 (2021-05-03)
+
+### Breaking
+
+- Seamless mode by default. Added `Host` header support for deployments, so no
+  `RAZZLE_API_PATH` is required in production builds anymore if the header is present.
+  Not an strictly breaking change, but it's a default behavior change worth to notice on
+  its own. No change required in your deployments if you suply currently
+  `RAZZLE_API_PATH` in build time. See documentation for more information. @sneridagh
+- Deprecate Node 10 since it's out of LTS since April 30th, 2021 @sneridagh
+- Remove the "inverted" option in Table Block since it was useless with the current CSS
+  set. Better naming of options and labels in table block (English). Updating the i18n messages for the used translations is advisable, but not required. @iFlameing
+- Get rid of the font icons in the control panels overview @sneridagh
+
+For a complete list of actions to follow, please read the upgrade guide
+https://docs.voltocms.com/upgrade-guide/
+
+### Feature
+
+- Change login form fixing accessibility issues @nzambello
+
+### Internal
+
+- Improve Github Actions names, separate the code analysis from the main core @sneridagh
+
+## 12.14.0 (2021-05-03)
+
+### Feature
+
+- Provide api for block extensions. See `/blocks/extensions` in documentation @tiberiuichim
+
+### Bugfix
+
+- In BlockDataForm, always clone schema before applying enhancers @tiberiuichim
+- In BlockDataForm, don't add the variations field multiple times @tiberiuichim
+
+## 12.13.0 (2021-04-30)
+
+### Feature
+
+- Making objectBrowserWidget context aware @iFlameing
+
+### Bugfix
+
+- Adding `flattenToAppURL` in Link component @iFlameing
+
+- Disable click event of the outside the engine click detection, since it leads to bad
+  behavior for custom and library elements that try to mount things attaching them in
+  the Body or outside the detected container @sneridagh
+
+## 12.12.0 (2021-04-29)
+
+### Feature
+
+- Translations german: Login/Register @ksuess
+
+### Bugfix
+
+- Fix image gallery in listing block for contained (non-query based) images @sneridagh
+
+## 12.11.0 (2021-04-28)
+
+### Feature
+
+- Implemented Babel view, to compare translated items in add and edit mode. @giuliaghisini
+- as in Plone, hide controlpanel for users that are no 'Manager' or 'Site Administrator'. @giuliaghisini
+- Improve the blocks engine by adding a detector for clicking outside in the `BlocksForm` @sneridagh
+- Include a pluggable architecture for pluggable render-time insertions (similar to <Portal>) @tiberiuichim
+- Add parseDateTime helper from DatetimeWidget to handle timezones @nzambello
+
+### Bugfix
+
+- Include selected block in multiselections @sneridagh
+- Correct the selected values rendering at isMulti SelectWidget @ionlizarazu
+
+### Internal
 
 - Implement Github actions workflow to deploy the documentation to the Plone Foundation server @ericof
 - Pin `immutable` to an updated version that does not produce continuous deprecation notices in console on every change @sneridagh
+- Print console.error in SSR if not an ignored error code @nzambello
+- Fetch addons with https using mrs-developer @nzambello
+- Fix sitemap URL generation @nzambello
 
 ## 12.10.1 (2021-04-14)
 
@@ -112,6 +243,9 @@
 
 ### Bugfix
 
+### Internal
+
+- Add toPublicURL helper @nzambello
 - Don't show empty groups in BlockChooser @tiberiuichim
 - Fix Text Block placeholder regression refs #2322 @avoinea
 

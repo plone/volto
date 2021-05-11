@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { keys, isEmpty } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
-import { Button } from 'semantic-ui-react';
+import { Button, Grid, Menu } from 'semantic-ui-react';
 import { Portal } from 'react-portal';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
@@ -19,14 +19,23 @@ import qs from 'query-string';
 import { toast } from 'react-toastify';
 
 import { createContent, getSchema } from '@plone/volto/actions';
-import { Form, Icon, Toolbar, Sidebar, Toast } from '@plone/volto/components';
+import {
+  Form,
+  Icon,
+  Toolbar,
+  Sidebar,
+  Toast,
+  TranslationObject,
+} from '@plone/volto/components';
 import {
   getBaseUrl,
   hasBlocksData,
   flattenToAppURL,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
+  langmap,
 } from '@plone/volto/helpers';
+
 import { preloadLazyLibs } from '@plone/volto/helpers/Loadable';
 
 import config from '@plone/volto/registry';
@@ -50,6 +59,10 @@ const messages = defineMessages({
   error: {
     id: 'Error',
     defaultMessage: 'Error',
+  },
+  translateTo: {
+    id: 'Translate to',
+    defaultMessage: 'Translate to',
   },
 });
 
@@ -125,6 +138,7 @@ class Add extends Component {
     this.state = {
       isClient: false,
       error: null,
+      formSelected: 'addForm',
     };
   }
 
@@ -220,6 +234,13 @@ class Add extends Component {
       const blocksLayoutFieldname = getBlocksLayoutFieldname(
         this.props.schema.properties,
       );
+      const translationObject = this.props.location?.state?.translationObject;
+
+      const translateTo = translationObject
+        ? langmap?.[
+            this.props.location?.state?.language
+          ]?.nativeName?.toLowerCase()
+        : null;
 
       // Lookup initialBlocks and initialBlocksLayout within schema
       const schemaBlocks = this.props.schema.properties[blocksFieldname]
@@ -229,6 +250,7 @@ class Add extends Component {
       ]?.default?.items;
       let initialBlocks = this.initialBlocks;
       let initialBlocksLayout = this.initialBlocksLayout;
+
       if (!isEmpty(schemaBlocksLayout) && !isEmpty(schemaBlocks)) {
         initialBlocks = {};
         initialBlocksLayout = [];
@@ -237,14 +259,37 @@ class Add extends Component {
             let newUid = uuid();
             initialBlocksLayout.push(newUid);
             initialBlocks[newUid] = schemaBlocks[value];
+            initialBlocks[newUid].block = newUid;
 
             // Layout ID - keep a reference to the original block id within layout
             initialBlocks[newUid]['@layout'] = value;
           }
         });
       }
+      //copy blocks from translationObject
+      if (translationObject && blocksFieldname && blocksLayoutFieldname) {
+        initialBlocks = {};
+        initialBlocksLayout = [];
+        const originalBlocks = JSON.parse(
+          JSON.stringify(translationObject[blocksFieldname]),
+        );
+        const originalBlocksLayout =
+          translationObject[blocksLayoutFieldname].items;
 
-      return (
+        originalBlocksLayout.forEach((value) => {
+          if (!isEmpty(originalBlocks[value])) {
+            let newUid = uuid();
+            initialBlocksLayout.push(newUid);
+            initialBlocks[newUid] = originalBlocks[value];
+            initialBlocks[newUid].block = newUid;
+
+            // Layout ID - keep a reference to the original block id within layout
+            initialBlocks[newUid]['@canonical'] = value;
+          }
+        });
+      }
+
+      const pageAdd = (
         <div id="page-add">
           <Helmet
             title={this.props.intl.formatMessage(messages.add, {
@@ -253,6 +298,7 @@ class Add extends Component {
           />
           <Form
             ref={this.form}
+            key="translated-or-new-content-form"
             schema={this.props.schema}
             formData={{
               ...(blocksFieldname && {
@@ -282,6 +328,10 @@ class Add extends Component {
                 : null
             }
             loading={this.props.createRequest.loading}
+            isFormSelected={this.state.formSelected === 'addForm'}
+            onSelectForm={() => {
+              this.setState({ formSelected: 'addForm' });
+            }}
           />
           {this.state.isClient && (
             <Portal node={document.getElementById('toolbar')}>
@@ -326,6 +376,46 @@ class Add extends Component {
             </Portal>
           )}
         </div>
+      );
+
+      return translationObject ? (
+        <Grid
+          celled="internally"
+          stackable
+          columns={2}
+          id="page-add-translation"
+        >
+          <Grid.Column className="source-object">
+            <TranslationObject
+              translationObject={translationObject}
+              schema={this.props.schema}
+              pathname={this.props.pathname}
+              visual={visual}
+              isFormSelected={
+                this.state.formSelected === 'translationObjectForm'
+              }
+              onSelectForm={() => {
+                this.setState({
+                  formSelected: 'translationObjectForm',
+                });
+              }}
+            />
+          </Grid.Column>
+          <Grid.Column>
+            <div className="new-translation">
+              <Menu pointing secondary attached tabular>
+                <Menu.Item name={translateTo.toUpperCase()} active={true}>
+                  {`${this.props.intl.formatMessage(
+                    messages.translateTo,
+                  )} ${translateTo}`}
+                </Menu.Item>
+              </Menu>
+              {pageAdd}
+            </div>
+          </Grid.Column>
+        </Grid>
+      ) : (
+        pageAdd
       );
     }
     return <div />;
