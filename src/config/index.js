@@ -135,6 +135,7 @@ let config = {
     serverConfig,
     storeExtenders: [],
     showTags: true,
+    internalUrlBlacklist: [], // URL to be considered as external
   },
   widgets: {
     ...widgetMapping,
