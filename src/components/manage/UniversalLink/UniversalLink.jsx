@@ -10,6 +10,8 @@ import { useSelector } from 'react-redux';
 import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers/Url/Url';
 import URLUtils from '@plone/volto/components/manage/AnchorPlugin/utils/URLUtils';
 
+import config from '@plone/volto/registry';
+
 const UniversalLink = ({
   href,
   item,
@@ -30,7 +32,10 @@ const UniversalLink = ({
     }
   }
 
-  const isExternal = !isInternalURL(url);
+  const isBlacklisted = (config.settings.internalUrlBlacklist ?? []).includes(
+    flattenToAppURL(url),
+  );
+  const isExternal = !isInternalURL(url) || isBlacklisted;
   const isDownload = (!isExternal && url.includes('@@download')) || download;
 
   return isExternal ? (

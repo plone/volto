@@ -136,6 +136,7 @@ let config = {
     showTags: true,
     controlPanelsIcons,
     showSelfRegistration: false,
+    internalUrlBlacklist: [], // URL to be considered as external
   },
   widgets: {
     ...widgetMapping,
