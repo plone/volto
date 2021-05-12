@@ -8,7 +8,11 @@
 
 ### Bugfix
 
+- Disable `Select` components family to lazy load on SSR, since it's breaking and the fix is quite obscure. They are not valuable on SSR responses anyway. @sneridagh
+
 ### Internal
+
+- All the `Select` components family in core are loaded through `Loadables` helper @sneridagh
 
 ## 13.0.0-alpha.7 (2021-05-11)
 
