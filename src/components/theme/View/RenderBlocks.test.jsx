@@ -50,3 +50,42 @@ test('Allows override of blocksConfig', () => {
   );
   expect(container).toMatchSnapshot();
 });
+
+test('Provides path to blocks', () => {
+  const store = mockStore({
+    intl: {
+      locale: 'en',
+      messages: {},
+    },
+  });
+  const { container } = render(
+    <Provider store={store}>
+      <RenderBlocks
+        blocksConfig={{
+          ...config.blocks.blocksConfig,
+          custom: {
+            id: 'custom',
+            view: ({ id, data, path }) => (
+              <div>
+                id: {id} - text: {data.text} - path: {path}
+              </div>
+            ),
+          },
+        }}
+        content={{
+          blocks_layout: {
+            items: ['a'],
+          },
+          blocks: {
+            a: {
+              '@type': 'custom',
+              text: 'bar',
+            },
+          },
+        }}
+        path="/foo"
+      />
+    </Provider>,
+  );
+  expect(container).toMatchSnapshot();
+});

@@ -1,19 +1,10 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { updateIntl } from 'react-intl-redux';
 import cookie from 'react-cookie';
 import config from '@plone/volto/registry';
-
-let locales = {};
-
-if (config.settings) {
-  config.settings.supportedLanguages.forEach((lang) => {
-    import('~/../locales/' + lang + '.json').then((locale) => {
-      locales = { ...locales, [lang]: locale.default };
-    });
-  });
-}
+import { changeLanguage } from '@plone/volto/actions';
+import { normalizeLanguageName } from '@plone/volto/helpers';
 
 const MultilingualRedirector = (props) => {
   const { settings } = config;
@@ -31,12 +22,10 @@ const MultilingualRedirector = (props) => {
     // ToDo: Add means to support language negotiation (with config)
     // const detectedLang = (navigator.language || navigator.userLanguage).substring(0, 2);
     if (settings.isMultilingual && pathname === '/') {
-      dispatch(
-        updateIntl({
-          locale: redirectToLanguage,
-          messages: locales[redirectToLanguage],
-        }),
-      );
+      const langFileName = normalizeLanguageName(redirectToLanguage);
+      import('~/../locales/' + langFileName + '.json').then((locale) => {
+        dispatch(changeLanguage(redirectToLanguage, locale.default));
+      });
     }
   }, [pathname, dispatch, redirectToLanguage, settings.isMultilingual]);
 

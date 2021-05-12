@@ -121,12 +121,7 @@ const BlockChooser = ({
                         onInsertBlock
                           ? onInsertBlock(currentBlock, { '@type': block.id })
                           : onMutateBlock(currentBlock, { '@type': block.id });
-                        // We should use `nativeEvent` because the event listener is set at the same level
-                        // of the React Synthetic Event system and the bubbling does not stop there.
-                        // https://stackoverflow.com/questions/24415631/reactjs-syntheticevent-stoppropagation-only-works-with-react-events/52879137#52879137
-                        // https://gist.github.com/ggregoire/ce7bc946212920c0a6bad8125567d001
-                        // https://levelup.gitconnected.com/how-exactly-does-react-handles-events-71e8b5e359f2
-                        e.nativeEvent.stopImmediatePropagation();
+                        e.stopPropagation();
                       }}
                     >
                       <Icon name={block.icon} size="36px" />

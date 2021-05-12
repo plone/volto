@@ -1,18 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import { withBlockExtensions } from '@plone/volto/helpers';
 
 import { ListingBlockBody as ListingBody } from '@plone/volto/components';
 
-const View = ({ data, properties, block, path }) => {
+const View = (props) => {
+  const { data, path, pathname } = props;
+
   return (
-    <div className={cx('block listing', data.template)}>
-      <ListingBody
-        data={data}
-        properties={properties}
-        block={block}
-        path={path}
-      />
+    <div className={cx('block listing', data.variation)}>
+      <ListingBody {...props} path={path || pathname} />
     </div>
   );
 };
@@ -23,4 +21,4 @@ View.propTypes = {
   block: PropTypes.string,
 };
 
-export default View;
+export default withBlockExtensions(View);
