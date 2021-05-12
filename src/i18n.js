@@ -219,26 +219,36 @@ ${map(pot.items, (item) => {
     );
   });
 }
-console.log('Extracting messages from source files...');
-extractMessages();
-console.log('Synchronizing messages to pot file...');
-// We only write the pot file if it's really different
-const newPot = `${potHeader()}${messagesToPot(getMessages())}\n`.replace(
-  /"POT-Creation-Date:(.*)\\n"/,
-  '',
-);
-const oldPot = fs
-  .readFileSync('locales/volto.pot', 'utf8')
-  .replace(/"POT-Creation-Date:(.*)\\n"/, '');
 
-if (newPot !== oldPot) {
-  fs.writeFileSync(
-    'locales/volto.pot',
-    `${potHeader()}${messagesToPot(getMessages())}\n`,
+function main() {
+  console.log('Extracting messages from source files...');
+  extractMessages();
+  console.log('Synchronizing messages to pot file...');
+  // We only write the pot file if it's really different
+  const newPot = `${potHeader()}${messagesToPot(getMessages())}\n`.replace(
+    /"POT-Creation-Date:(.*)\\n"/,
+    '',
   );
+  const oldPot = fs
+    .readFileSync('locales/volto.pot', 'utf8')
+    .replace(/"POT-Creation-Date:(.*)\\n"/, '');
+
+  if (newPot !== oldPot) {
+    fs.writeFileSync(
+      'locales/volto.pot',
+      `${potHeader()}${messagesToPot(getMessages())}\n`,
+    );
+  }
+  console.log('Synchronizing messages to po files...');
+  syncPoByPot();
+  console.log('Generating the json files...');
+  poToJson();
+  console.log('done!');
 }
-console.log('Synchronizing messages to po files...');
-syncPoByPot();
-console.log('Generating the json files...');
-poToJson();
-console.log('done!');
+
+// This is the equivalent of `if __name__ == '__main__'` in Python :)
+if (require.main === module) {
+  main();
+}
+
+module.exports = { poToJson };
