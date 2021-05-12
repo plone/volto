@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- UniversalLink: Respect target of internal link. @ksuess
+
 ### Internal
 
 ## 12.14.2 (2021-05-10)
