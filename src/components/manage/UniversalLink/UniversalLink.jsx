@@ -59,7 +59,7 @@ const UniversalLink = ({
   ) : (
     <Link
       to={flattenToAppURL(url)}
-      target={openLinkInNewTab ?? false ? '_blank' : null}
+      target={openLinkInNewTab ?? false ? openLinkInNewTab : null}
       title={title}
       className={className}
       {...props}
