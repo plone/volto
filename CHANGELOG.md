@@ -2,10 +2,6 @@
 
 ## 13.0.0 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Disable `Select` components family to lazy load on SSR, since it's breaking and the fix is quite obscure. They are not valuable on SSR responses anyway. @sneridagh
