@@ -32,24 +32,13 @@ const UniversalLink = ({
     }
   }
 
-  const isExternal = !isInternalURL(url);
-  const isDownload = (!isExternal && url.includes('@@download')) || download;
   const isBlacklisted = (config.settings.internalUrlBlacklist ?? []).includes(
     flattenToAppURL(url),
   );
+  const isExternal = !isInternalURL(url) || isBlacklisted;
+  const isDownload = (!isExternal && url.includes('@@download')) || download;
 
-  return isBlacklisted ? (
-    <a
-      href={url}
-      title={title}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={className}
-      {...props}
-    >
-      {children}
-    </a>
-  ) : isExternal ? (
+  return isExternal ? (
     <a
       href={url}
       title={title}
