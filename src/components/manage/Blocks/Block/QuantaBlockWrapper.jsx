@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'semantic-ui-react';
+import { Button, Dropdown } from 'semantic-ui-react';
 import includes from 'lodash/includes';
 import isBoolean from 'lodash/isBoolean';
 import { defineMessages, injectIntl } from 'react-intl';
@@ -10,6 +10,7 @@ import MutateBlockButton from './MutateBlockButton';
 
 import config from '@plone/volto/registry';
 
+import moreSVG from '@plone/volto/icons/more.svg';
 import dragSVG from '@plone/volto/icons/drag.svg';
 import trashSVG from '@plone/volto/icons/delete.svg';
 
@@ -64,18 +65,70 @@ const EditBlockWrapper = (props) => {
                 }}
                 className="quanta-block-add-button"
               />
-              {!required && (
-                <Button
-                  icon
-                  basic
-                  onClick={() => onDeleteBlock(block)}
-                  className="delete-button"
-                  aria-label={intl.formatMessage(messages.delete)}
-                >
-                  <Icon name={trashSVG} size="18px" />
-                </Button>
-              )}
             </>
+          </Plug>
+          <Plug pluggable="block-toolbar" id="more-button">
+            <Pluggable name="block-toolbar-more">
+              {({ children }) => {
+                return children ? (
+                  <Button basic icon>
+                    <Dropdown
+                      item
+                      icon={<Icon name={moreSVG} size="18px" color="#826a6a" />}
+                      className=""
+                    >
+                      <Dropdown.Menu className="right">
+                        <Dropdown.Header content="More actions" />
+                        <Dropdown.Menu scrolling>
+                          <Dropdown.Item>something</Dropdown.Item>
+                          {/* <Dropdown.Item */}
+                          {/*   key={index} */}
+                          {/*   value={index} */}
+                          {/*   onClick={this.onSelectIndex} */}
+                          {/*   className="iconAlign" */}
+                          {/* > */}
+                          {/*   {this.state.index.values[index].selected ? ( */}
+                          {/*     <Icon */}
+                          {/*       name={checkboxCheckedSVG} */}
+                          {/*       size="24px" */}
+                          {/*       color="#007eb1" */}
+                          {/*       className={this.state.index.values[index].label} */}
+                          {/*     /> */}
+                          {/*   ) : ( */}
+                          {/*     <Icon */}
+                          {/*       name={checkboxUncheckedSVG} */}
+                          {/*       className={this.state.index.values[index].label} */}
+                          {/*       size="24px" */}
+                          {/*     /> */}
+                          {/*   )} */}
+                          {/*   <span> */}
+                          {/*     {' '} */}
+                          {/*     {this.props.intl.formatMessage({ */}
+                          {/*       id: this.state.index.values[index].label, */}
+                          {/*       defaultMessage: this.state.index.values[index] */}
+                          {/*         .label, */}
+                          {/*     })} */}
+                          {/*   </span> */}
+                          {/* </Dropdown.Item> */}
+                        </Dropdown.Menu>
+                      </Dropdown.Menu>
+                    </Dropdown>
+                  </Button>
+                ) : (
+                  !required && (
+                    <Button
+                      icon
+                      basic
+                      onClick={() => onDeleteBlock(block)}
+                      className="delete-button"
+                      aria-label={intl.formatMessage(messages.delete)}
+                    >
+                      <Icon name={trashSVG} size="18px" />
+                    </Button>
+                  )
+                );
+              }}
+            </Pluggable>
           </Plug>
         </div>
       )}
