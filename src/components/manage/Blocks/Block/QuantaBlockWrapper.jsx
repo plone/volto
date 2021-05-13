@@ -59,6 +59,9 @@ const EditBlockWrapper = (props) => {
             <>
               <MutateBlockButton
                 {...blockProps}
+                onInsertBlock={(id, value) => {
+                  blockProps.onSelectBlock(blockProps.onInsertBlock(id, value));
+                }}
                 className="quanta-block-add-button"
               />
               {!required && (

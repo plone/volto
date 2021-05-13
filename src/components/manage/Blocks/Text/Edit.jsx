@@ -293,7 +293,7 @@ class Edit extends Component {
         <PlugInsert pluggable="block-toolbar" id="block-text-toolbar">
           <InlineToolbar />
         </PlugInsert>
-        {this.props.selected && (
+        {this.props.selected && !config.settings.useQuantaToolbar && (
           <MutateBlockButton
             data={this.props.data}
             block={this.props.block}
