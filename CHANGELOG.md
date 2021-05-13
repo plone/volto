@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Avoid debugging error in toolbar @tiberiuichim
+
 ### Internal
 
 - Only log changes to po (`poToJson`) if running as a script @sneridagh
