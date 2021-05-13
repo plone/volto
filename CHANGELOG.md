@@ -2,13 +2,9 @@
 
 ## 13.0.0 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Compile i18n json locales only at build time on the fly and at release time @sneridagh
-
-### Bugfix
 
 ### Internal
 
