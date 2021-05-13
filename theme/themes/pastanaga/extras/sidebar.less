@@ -278,6 +278,12 @@
     overflow-y: scroll;
   }
 
+  .ui.icon.button {
+    &:hover {
+      background-color: #edf1f2 !important;
+    }
+  }
+
   ul {
     flex: 1 0 auto;
     margin: 0;
@@ -303,6 +309,15 @@
 
         .icon {
           padding-right: 10px;
+        }
+
+        .right-arrow-icon {
+          padding-right: 0px;
+          border-radius: 4px;
+        }
+
+        .right-arrow-icon:hover {
+          background: #edf1f2;
         }
       }
     }
