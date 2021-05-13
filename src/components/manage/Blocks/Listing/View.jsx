@@ -6,11 +6,11 @@ import { withBlockExtensions } from '@plone/volto/helpers';
 import { ListingBlockBody as ListingBody } from '@plone/volto/components';
 
 const View = (props) => {
-  const { data, path, pathname } = props;
+  const { data, path } = props;
 
   return (
     <div className={cx('block listing', data.variation)}>
-      <ListingBody {...props} path={path || pathname} />
+      <ListingBody {...props} path={path} />
     </div>
   );
 };
