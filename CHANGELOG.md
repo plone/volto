@@ -6,9 +6,13 @@
 
 ### Feature
 
+- Compile i18n json locales only at build time on the fly and at release time @sneridagh
+
 ### Bugfix
 
 ### Internal
+
+- Remove json locales from the repo to avoid merge conflicts @sneridagh
 
 ## 13.0.0-alpha.8 (2021-05-12)
 

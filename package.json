@@ -185,6 +185,7 @@
   ],
   "release-it": {
     "hooks": {
+      "before:bump": "yarn i18n",
       "after:bump": "node changelogupdater.js bump ${version}",
       "after:release": "node changelogupdater.js back ${version} && git commit -am 'Back to development' && git push"
     },
