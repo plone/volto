@@ -208,27 +208,3 @@ export default compose(
     { setBlocksClipboard, resetBlocksClipboard },
   ),
 )(BlocksToolbarComponent);
-/*
-        {selectedBlock && (blocksClipboard?.cut || blocksClipboard?.copy) ? (
-          <Portal
-            node={
-              __CLIENT__ && document.querySelector('#toolbar .toolbar-bottom')
-            }
-          >
-            <button
-              aria-label={intl.formatMessage(messages.pasteBlocks)}
-              onClick={this.pasteBlocks}
-              tabIndex={0}
-              className="pasteBlocks"
-              id="toolbar-paste-blocks"
-            >
-              <span class="blockCount">
-                {(blocksClipboard.cut || blocksClipboard.copy).length}
-              </span>
-              <Icon name={pasteSVG} size="30px" />
-            </button>
-          </Portal>
-        ) : (
-          ''
-        )}
-        */
