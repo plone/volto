@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Only log changes to po (`poToJson`) if running as a script @sneridagh
+
 ## 13.0.0-alpha.9 (2021-05-13)
 
 ### Feature
