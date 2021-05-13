@@ -128,18 +128,6 @@ class App extends Component {
             'public-ui': !isCmsUI,
           })}
         />
-        {/* Body class depending on sections */}
-        <BodyClass
-          className={cx({
-            [trim(join(split(this.props.pathname, '/'), ' section-'))]:
-              this.props.pathname !== '/',
-            siteroot: this.props.pathname === '/',
-            'is-authenticated': !!this.props.token,
-            'is-anonymous': !this.props.token,
-            'cms-ui': isCmsUI,
-            'public-ui': !isCmsUI,
-          })}
-        />
         <SkipLinks />
         <Header pathname={path} />
         <Breadcrumbs pathname={path} />
