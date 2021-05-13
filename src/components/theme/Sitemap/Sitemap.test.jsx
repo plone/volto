@@ -3,7 +3,8 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
-import Sitemap from './Sitemap';
+
+import { __test__ as Sitemap } from './Sitemap';
 
 const mockStore = configureStore();
 

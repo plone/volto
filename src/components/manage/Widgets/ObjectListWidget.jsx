@@ -40,7 +40,7 @@ const ObjectListWidget = (props) => {
     onChange,
     schemaExtender,
   } = props;
-  const [activeColumn, setActiveColumn] = React.useState(0);
+  const [activeColumn, setActiveColumn] = React.useState(value.length - 1);
   const intl = useIntl();
 
   function handleChangeColumn(e, blockProps) {

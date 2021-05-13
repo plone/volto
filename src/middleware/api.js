@@ -121,6 +121,7 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
                 data: item.data,
                 type: item.type,
                 headers: item.headers,
+                params: request.params,
               }).then((reqres) => {
                 return [...acc, reqres];
               });
@@ -132,6 +133,7 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
                 data: item.data,
                 type: item.type,
                 headers: item.headers,
+                params: request.params,
               }),
             ),
           )
@@ -139,6 +141,7 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
           data: request.data,
           type: request.type,
           headers: request.headers,
+          params: request.params,
         });
     actionPromise.then(
       (result) => {
@@ -203,7 +206,7 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
         }
 
         // Gateway timeout
-        else if (error.response.statusCode === 504) {
+        else if (error?.response?.statusCode === 504) {
           next({
             ...rest,
             error,
@@ -211,10 +214,11 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
             connectionRefused: true,
             type: SET_APIERROR,
           });
+        }
 
-          // The rest
-        } else if (settings.actions_raising_api_errors.includes(action.type)) {
-          if (error.response.statusCode === 401) {
+        // The rest
+        else if (settings.actions_raising_api_errors.includes(action.type)) {
+          if (error?.response?.statusCode === 401) {
             next({
               ...rest,
               error,

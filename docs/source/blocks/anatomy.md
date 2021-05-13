@@ -65,16 +65,3 @@ The edit component of a block receives these props from the Blocks Engine:
 
 You can use all these props to render your edit block and model its behavior.
 
-## Variations
-
-A block can define variations in the block configuration. These variations can be used to enhance or complement the default behavior of a block without having to shadow its stock components. These enhancements can be at a settings level (add or remove block settings) via schema enhancers or, if the code of your block allows it, even use alternative renderers (eg. in view mode) showing the enhanced fields or modifying the block look and feel or behavior.
-
-The Listing block already supports several of them (only in the "template" or the component to show on view mode), and can be extended, although it still do not use the final specification on how to define them in the configuration, although that will change in next Volto versions.
-
-The rest of the stock Volto blocks will also follow to support variations by default.
-
-### How to make your block variations aware
-
-In order for a block to support variations you have to use the recommended way of generating a block settings, using a [schema driven](./editcomponent.md#schema-driven-automated-block-settings-forms) `BlockDataForm` component in your data settings block component.
-
-`BlockDataForm` detects if your block has [variations configuration](./settings.md#configuring-a-new-block) and applies the schema enhancers (if any) and shows the variation selector automatically.

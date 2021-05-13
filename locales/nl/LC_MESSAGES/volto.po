@@ -96,7 +96,7 @@ msgstr ""
 msgid "Add block…"
 msgstr ""
 
-#: components/manage/Blocks/Listing/QuerystringWidget
+#: components/manage/Widgets/QueryWidget
 msgid "Add criteria"
 msgstr ""
 
@@ -196,6 +196,7 @@ msgstr ""
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -210,10 +211,6 @@ msgstr "Basis"
 msgid "Block"
 msgstr ""
 
-#: components/manage/Blocks/Listing/ListingSidebar
-msgid "Block style"
-msgstr ""
-
 #: components/theme/Login/Login
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
 msgstr ""
@@ -222,6 +219,7 @@ msgstr ""
 msgid "Breadcrumbs"
 msgstr ""
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
@@ -388,10 +386,6 @@ msgstr ""
 msgid "Contained items"
 msgstr ""
 
-#: components/manage/Blocks/Listing/ListingSidebar
-msgid "Content"
-msgstr ""
-
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
 msgstr ""
@@ -435,7 +429,8 @@ msgstr ""
 msgid "Creators"
 msgstr "Auteurs"
 
-#: components/manage/Blocks/Listing/QuerystringWidget
+#: components/manage/Widgets/QuerystringWidget
+#: components/manage/Widgets/QueryWidget
 msgid "Criteria"
 msgstr ""
 
@@ -489,7 +484,6 @@ msgstr ""
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -540,7 +534,7 @@ msgstr ""
 msgid "Delete row"
 msgstr ""
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerystringWidget
 msgid "Depth"
 msgstr ""
 
@@ -550,7 +544,6 @@ msgstr "Aflopend"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -595,6 +588,7 @@ msgstr ""
 msgid "Do you really want to delete this item?"
 msgstr "Weet u zeker dat u dit item wilt verwijderen?"
 
+#: components/manage/Multilingual/TranslationObject
 #: components/manage/Sidebar/Sidebar
 msgid "Document"
 msgstr ""
@@ -897,14 +891,7 @@ msgstr "Wanneer deze datum in de toekomst is zal de inhoud niet langer zichtbaar
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr "Indien u er zeker van bent dat u het webadres goed heeft, maar toch een foutmelding krijgt, neem dan contact op met {site_admin}."
 
-#: components/theme/Login/Login
-msgid "If you have forgotten your password, {forgotpassword}"
-msgstr ""
-
-#: components/theme/Login/Login
-msgid "If you you do not have an account here, head over to the {registrationform}."
-msgstr ""
-
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
@@ -973,7 +960,7 @@ msgstr ""
 msgid "Interval Yearly"
 msgstr ""
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerystringWidget
 msgid "Item batch size"
 msgstr ""
 
@@ -1049,23 +1036,27 @@ msgstr ""
 msgid "Link"
 msgstr ""
 
-#: components/manage/Blocks/Listing/ListingSidebar
+#: components/manage/Blocks/Listing/schema
 msgid "Link more"
 msgstr ""
 
-#: components/manage/Blocks/Listing/ListingMore
+#: components/manage/Blocks/Listing/schema
 msgid "Link title"
 msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Listing/ListingMore
+#: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Link to"
 msgstr ""
 
-#: components/manage/Blocks/Listing/ListingSidebar
+#: components/manage/Multilingual/ManageTranslations
+msgid "Link translation for"
+msgstr ""
+
+#: components/manage/Blocks/Listing/schema
 msgid "Listing"
 msgstr ""
 
@@ -1250,7 +1241,8 @@ msgstr ""
 msgid "No results found."
 msgstr ""
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerySortOnWidget
+#: components/manage/Widgets/QuerystringWidget
 msgid "No selection"
 msgstr ""
 
@@ -1433,6 +1425,10 @@ msgstr ""
 msgid "Publishing Date"
 msgstr "Ingangsdatum"
 
+#: components/manage/Blocks/Listing/schema
+msgid "Query"
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "Re-enter the password. Make sure the passwords are identical."
@@ -1464,6 +1460,7 @@ msgid "Reduce complexity"
 msgstr ""
 
 #: components/theme/Anontools/Anontools
+#: components/theme/Login/Login
 #: components/theme/Register/Register
 msgid "Register"
 msgstr ""
@@ -1517,7 +1514,6 @@ msgstr ""
 msgid "Reply"
 msgstr ""
 
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -1529,7 +1525,7 @@ msgstr ""
 msgid "Required input is missing."
 msgstr "Verplichte waarde mist."
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerystringWidget
 msgid "Results limit"
 msgstr ""
 
@@ -1537,7 +1533,7 @@ msgstr ""
 msgid "Results preview"
 msgstr ""
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerystringWidget
 msgid "Reversed order"
 msgstr ""
 
@@ -1643,10 +1639,6 @@ msgstr ""
 msgid "Select columns to show"
 msgstr "Selecteer de te tonen kolommen"
 
-#: components/manage/Widgets/QuerystringWidget
-msgid "Select criteria"
-msgstr ""
-
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Select the transition to be used for modifying the items state."
 msgstr "Selecteer welke overgang moet worden gebruikt voor het wijzigen van de status van de items."
@@ -1699,7 +1691,6 @@ msgstr ""
 msgid "Sharing for {title}"
 msgstr "Delen van {title}"
 
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -1776,12 +1767,12 @@ msgstr ""
 msgid "Sort By:"
 msgstr ""
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerySortOnWidget
+#: components/manage/Widgets/QuerystringWidget
 msgid "Sort on"
 msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
-#: components/manage/Blocks/Listing/ListingData
 msgid "Source"
 msgstr ""
 
@@ -1811,6 +1802,10 @@ msgstr ""
 msgid "State"
 msgstr "Status"
 
+#: components/manage/Multilingual/CompareLanguages
+msgid "Stop compare"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "String"
 msgstr ""
@@ -1836,12 +1831,12 @@ msgstr ""
 msgid "Success"
 msgstr ""
 
-#: components/manage/Blocks/Table/Edit
-msgid "Table"
+#: components/theme/LanguageSelector/LanguageSelector
+msgid "Switch to"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
-msgid "Table color inverted"
+msgid "Table"
 msgstr ""
 
 #: components/manage/Blocks/ToC/View
@@ -1867,10 +1862,6 @@ msgstr ""
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Target number of objects in memory per cache"
-msgstr ""
-
-#: components/manage/Blocks/Listing/TemplateWidget
-msgid "Template"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
@@ -1949,7 +1940,6 @@ msgstr ""
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -1976,6 +1966,10 @@ msgstr ""
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total number of objects in the database"
+msgstr ""
+
+#: components/manage/Add/Add
+msgid "Translate to"
 msgstr ""
 
 #: components/manage/Toolbar/Types
@@ -2034,6 +2028,10 @@ msgstr ""
 msgid "Unknown Block"
 msgstr ""
 
+#: components/manage/Multilingual/ManageTranslations
+msgid "Unlink translation for"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update"
 msgstr ""
@@ -2070,7 +2068,10 @@ msgstr "Bestanden uploaden"
 msgid "Uploading files"
 msgstr "Bestanden uploaden"
 
-#: components/manage/Widgets/QuerystringWidget
+#: components/manage/Blocks/HeroImageLeft/Edit
+msgid "Uploading image"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -2106,7 +2107,7 @@ msgstr ""
 msgid "Users and groups settings"
 msgstr ""
 
-#: components/manage/Form/BlockDataForm
+#: helpers/Extensions/withBlockSchemaEnhancer
 msgid "Variation"
 msgstr ""
 
@@ -2247,12 +2248,17 @@ msgstr ""
 msgid "Your preferred language"
 msgstr "De taal van uw voorkeur"
 
+#: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "box_forgot_password_option"
 msgstr ""
 
 #: config/Blocks
 msgid "common"
+msgstr ""
+
+#: components/manage/Multilingual/CompareLanguages
+msgid "compare_to"
 msgstr ""
 
 #: components/manage/Blocks/Block/EditBlockWrapper
@@ -2417,12 +2423,8 @@ msgstr ""
 msgid "published"
 msgstr ""
 
-#: components/manage/Blocks/Listing/QuerystringWidget
+#: components/manage/Widgets/QueryWidget
 msgid "querystring-widget-select"
-msgstr ""
-
-#: components/theme/Login/Login
-msgid "registration form"
 msgstr ""
 
 #: components/theme/Search/Search
@@ -2607,10 +2609,6 @@ msgstr ""
 
 #: components/theme/View/EventView
 msgid "visit_external_website"
-msgstr ""
-
-#: components/theme/Login/Login
-msgid "we can send you a new one"
 msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal

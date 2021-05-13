@@ -82,6 +82,9 @@ class Form extends Component {
     description: PropTypes.string,
     visual: PropTypes.bool,
     blocks: PropTypes.arrayOf(PropTypes.object),
+    isFormSelected: PropTypes.bool,
+    onSelectForm: PropTypes.func,
+    editable: PropTypes.bool,
     onChangeFormData: PropTypes.func,
     requestError: PropTypes.string,
     allowedBlocks: PropTypes.arrayOf(PropTypes.string),
@@ -110,6 +113,9 @@ class Form extends Component {
     blocks: [],
     pathname: '',
     schema: {},
+    isFormSelected: true,
+    onSelectForm: null,
+    editable: true,
     requestError: null,
     allowedBlocks: null,
   };
@@ -266,6 +272,15 @@ class Form extends Component {
     this.setState({ isClient: true });
   }
 
+  static getDerivedStateFromProps(props, state) {
+    let newState = { ...state };
+    if (!props.isFormSelected) {
+      newState.selected = null;
+    }
+
+    return newState;
+  }
+
   /**
    * Change field handler
    * Remove errors for changed field
@@ -326,11 +341,16 @@ class Form extends Component {
       }
 
       if ((event.ctrlKey || event.metaKey) && !event.shiftKey) {
+        multiSelected = this.state.multiSelected || [];
+        if (!this.state.multiSelected.includes(this.state.selected)) {
+          multiSelected = [...multiSelected, this.state.selected];
+          selected = null;
+        }
         if (this.state.multiSelected.includes(id)) {
           selected = null;
-          multiSelected = without(this.state.multiSelected, id);
+          multiSelected = without(multiSelected, id);
         } else {
-          multiSelected = [...(this.state.multiSelected || []), id];
+          multiSelected = [...multiSelected, id];
         }
       }
     }
@@ -339,6 +359,11 @@ class Form extends Component {
       selected,
       multiSelected,
     });
+
+    if (this.props.onSelectForm) {
+      if (event) event.nativeEvent.stopImmediatePropagation();
+      this.props.onSelectForm();
+    }
   }
 
   /**
@@ -513,8 +538,10 @@ class Form extends Component {
             manage={this.props.isAdminForm}
             allowedBlocks={this.props.allowedBlocks}
             showRestricted={this.props.showRestricted}
+            editable={this.props.editable}
+            isMainForm={this.props.editable}
           />
-          {this.state.isClient && (
+          {this.state.isClient && this.props.editable && (
             <Portal
               node={__CLIENT__ && document.getElementById('sidebar-metadata')}
             >
@@ -560,138 +587,142 @@ class Form extends Component {
           error={keys(this.state.errors).length > 0}
           className={settings.verticalFormTabs ? 'vertical-form' : ''}
         >
-          <Segment.Group raised>
-            {schema && schema.fieldsets.length > 1 && (
-              <>
-                {settings.verticalFormTabs && this.props.title && (
-                  <Segment secondary attached key={this.props.title}>
-                    {this.props.title}
-                  </Segment>
-                )}
-                <Tab
-                  menu={{
-                    secondary: true,
-                    pointing: true,
-                    attached: true,
-                    tabular: true,
-                    className: 'formtabs',
-                    vertical: settings.verticalFormTabs,
-                  }}
-                  grid={{ paneWidth: 9, tabWidth: 3, stackable: true }}
-                  onTabChange={this.onTabChange}
-                  activeIndex={this.state.activeIndex}
-                  panes={map(schema.fieldsets, (item) => ({
-                    menuItem: item.title,
-                    render: () => [
-                      !settings.verticalFormTabs && this.props.title && (
-                        <Segment secondary attached key={this.props.title}>
-                          {this.props.title}
-                        </Segment>
-                      ),
-                      ...map(item.fields, (field, index) => (
-                        <Field
-                          {...schema.properties[field]}
-                          id={field}
-                          formData={this.state.formData}
-                          fieldSet={item.title.toLowerCase()}
-                          focus={index === 0}
-                          value={this.state.formData?.[field]}
-                          required={schema.required.indexOf(field) !== -1}
-                          onChange={this.onChangeField}
-                          onBlur={this.onBlurField}
-                          onClick={this.onClickInput}
-                          key={field}
-                          error={this.state.errors[field]}
-                        />
-                      )),
-                    ],
-                  }))}
-                />
-              </>
-            )}
-            {schema && schema.fieldsets.length === 1 && (
-              <Segment>
-                {this.props.title && (
-                  <Segment className="primary">
-                    <h1 style={{ fontSize: '16px' }}> {this.props.title}</h1>
-                  </Segment>
-                )}
-                {this.props.description && (
-                  <Segment secondary>{this.props.description}</Segment>
-                )}
-                {keys(this.state.errors).length > 0 && (
-                  <Message
-                    icon="warning"
-                    negative
-                    attached
-                    header={this.props.intl.formatMessage(messages.error)}
-                    content={this.props.intl.formatMessage(
-                      messages.thereWereSomeErrors,
-                    )}
+          <fieldset className="invisible" disabled={!this.props.editable}>
+            <Segment.Group raised>
+              {schema && schema.fieldsets.length > 1 && (
+                <>
+                  {settings.verticalFormTabs && this.props.title && (
+                    <Segment secondary attached key={this.props.title}>
+                      {this.props.title}
+                    </Segment>
+                  )}
+                  <Tab
+                    menu={{
+                      secondary: true,
+                      pointing: true,
+                      attached: true,
+                      tabular: true,
+                      className: 'formtabs',
+                      vertical: settings.verticalFormTabs,
+                    }}
+                    grid={{ paneWidth: 9, tabWidth: 3, stackable: true }}
+                    onTabChange={this.onTabChange}
+                    activeIndex={this.state.activeIndex}
+                    panes={map(schema.fieldsets, (item) => ({
+                      menuItem: item.title,
+                      render: () => [
+                        !settings.verticalFormTabs && this.props.title && (
+                          <Segment secondary attached key={this.props.title}>
+                            {this.props.title}
+                          </Segment>
+                        ),
+                        ...map(item.fields, (field, index) => (
+                          <Field
+                            {...schema.properties[field]}
+                            id={field}
+                            formData={this.state.formData}
+                            fieldSet={item.title.toLowerCase()}
+                            focus={index === 0}
+                            value={this.state.formData?.[field]}
+                            required={schema.required.indexOf(field) !== -1}
+                            onChange={this.onChangeField}
+                            onBlur={this.onBlurField}
+                            onClick={this.onClickInput}
+                            key={field}
+                            error={this.state.errors[field]}
+                          />
+                        )),
+                      ],
+                    }))}
                   />
-                )}
-                {this.props.error && (
-                  <Message
-                    icon="warning"
-                    negative
-                    attached
-                    header={this.props.intl.formatMessage(messages.error)}
-                    content={this.props.error.message}
-                  />
-                )}
-                {map(schema.fieldsets[0].fields, (field) => (
-                  <Field
-                    {...schema.properties[field]}
-                    id={field}
-                    value={this.state.formData?.[field]}
-                    required={schema.required.indexOf(field) !== -1}
-                    onChange={this.onChangeField}
-                    onBlur={this.onBlurField}
-                    onClick={this.onClickInput}
-                    key={field}
-                    error={this.state.errors[field]}
-                  />
-                ))}
-              </Segment>
-            )}
-            {!this.props.hideActions && (
-              <Segment className="actions" clearing>
-                {onSubmit && (
-                  <Button
-                    basic
-                    primary
-                    floated="right"
-                    type="submit"
-                    aria-label={
-                      this.props.submitLabel
-                        ? this.props.submitLabel
-                        : this.props.intl.formatMessage(messages.save)
-                    }
-                    title={
-                      this.props.submitLabel
-                        ? this.props.submitLabel
-                        : this.props.intl.formatMessage(messages.save)
-                    }
-                    loading={this.props.loading}
-                  >
-                    <Icon className="circled" name={aheadSVG} size="30px" />
-                  </Button>
-                )}
-                {onCancel && (
-                  <Button
-                    basic
-                    secondary
-                    aria-label={this.props.intl.formatMessage(messages.cancel)}
-                    title={this.props.intl.formatMessage(messages.cancel)}
-                    floated="right"
-                    onClick={this.onCancel}
-                  >
-                    <Icon className="circled" name={clearSVG} size="30px" />
-                  </Button>
-                )}
-              </Segment>
-            )}
-          </Segment.Group>
+                </>
+              )}
+              {schema && schema.fieldsets.length === 1 && (
+                <Segment>
+                  {this.props.title && (
+                    <Segment className="primary">
+                      <h1 style={{ fontSize: '16px' }}> {this.props.title}</h1>
+                    </Segment>
+                  )}
+                  {this.props.description && (
+                    <Segment secondary>{this.props.description}</Segment>
+                  )}
+                  {keys(this.state.errors).length > 0 && (
+                    <Message
+                      icon="warning"
+                      negative
+                      attached
+                      header={this.props.intl.formatMessage(messages.error)}
+                      content={this.props.intl.formatMessage(
+                        messages.thereWereSomeErrors,
+                      )}
+                    />
+                  )}
+                  {this.props.error && (
+                    <Message
+                      icon="warning"
+                      negative
+                      attached
+                      header={this.props.intl.formatMessage(messages.error)}
+                      content={this.props.error.message}
+                    />
+                  )}
+                  {map(schema.fieldsets[0].fields, (field) => (
+                    <Field
+                      {...schema.properties[field]}
+                      id={field}
+                      value={this.state.formData?.[field]}
+                      required={schema.required.indexOf(field) !== -1}
+                      onChange={this.onChangeField}
+                      onBlur={this.onBlurField}
+                      onClick={this.onClickInput}
+                      key={field}
+                      error={this.state.errors[field]}
+                    />
+                  ))}
+                </Segment>
+              )}
+              {!this.props.hideActions && (
+                <Segment className="actions" clearing>
+                  {onSubmit && (
+                    <Button
+                      basic
+                      primary
+                      floated="right"
+                      type="submit"
+                      aria-label={
+                        this.props.submitLabel
+                          ? this.props.submitLabel
+                          : this.props.intl.formatMessage(messages.save)
+                      }
+                      title={
+                        this.props.submitLabel
+                          ? this.props.submitLabel
+                          : this.props.intl.formatMessage(messages.save)
+                      }
+                      loading={this.props.loading}
+                    >
+                      <Icon className="circled" name={aheadSVG} size="30px" />
+                    </Button>
+                  )}
+                  {onCancel && (
+                    <Button
+                      basic
+                      secondary
+                      aria-label={this.props.intl.formatMessage(
+                        messages.cancel,
+                      )}
+                      title={this.props.intl.formatMessage(messages.cancel)}
+                      floated="right"
+                      onClick={this.onCancel}
+                    >
+                      <Icon className="circled" name={clearSVG} size="30px" />
+                    </Button>
+                  )}
+                </Segment>
+              )}
+            </Segment.Group>
+          </fieldset>
         </UiForm>
       </Container>
     );

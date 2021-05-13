@@ -11,17 +11,13 @@ import { Link } from 'react-router-dom';
 import { concat, filter, last, map, uniqBy } from 'lodash';
 import { Portal } from 'react-portal';
 import { Helmet } from '@plone/volto/helpers';
-import { Container, Grid, Header, Icon, Segment } from 'semantic-ui-react';
+import { Container, Grid, Header, Segment } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import Icons from '@plone/volto/constants/ControlpanelIcons';
 import { listControlpanels, getSystemInformation } from '@plone/volto/actions';
-import {
-  Error,
-  Icon as IconNext,
-  Toolbar,
-  VersionOverview,
-} from '@plone/volto/components';
+import { Error, Icon, Toolbar, VersionOverview } from '@plone/volto/components';
+
+import config from '@plone/volto/registry';
 
 import backSVG from '@plone/volto/icons/back.svg';
 
@@ -91,17 +87,9 @@ class Controlpanels extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    this.setState({ isClient: true });
-  }
-
-  /**
-   * Component will mount
-   * @method componentWillMount
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillMount() {
     this.props.listControlpanels();
     this.props.getSystemInformation();
+    this.setState({ isClient: true });
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -156,6 +144,8 @@ class Controlpanels extends Component {
       }),
     );
     const groups = map(uniqBy(controlpanels, 'group'), 'group');
+    const { controlPanelsIcons: icons } = config.settings;
+
     return (
       <div className="view-wrapper">
         <Helmet title={this.props.intl.formatMessage(messages.sitesetup)} />
@@ -175,7 +165,10 @@ class Controlpanels extends Component {
                       <Grid.Column key={controlpanel.id}>
                         <Link to={`/controlpanel/${controlpanel.id}`}>
                           <Header as="h3" icon textAlign="center">
-                            <Icon name={Icons[controlpanel.id] || 'setting'} />
+                            <Icon
+                              name={icons?.[controlpanel.id] || icons.default}
+                              size="48px"
+                            />
                             <Header.Content>
                               {controlpanel.title}
                             </Header.Content>
@@ -209,7 +202,7 @@ class Controlpanels extends Component {
               hideDefaultViewButtons
               inner={
                 <Link to="/" className="item">
-                  <IconNext
+                  <Icon
                     name={backSVG}
                     className="contents circled"
                     size="30px"

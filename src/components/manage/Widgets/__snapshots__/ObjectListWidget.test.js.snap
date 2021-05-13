@@ -100,8 +100,8 @@ exports[`renders an object list widget component 1`] = `
           class="accordion ui fluid styled"
         >
           <div
-            aria-label="Collapse item #1"
-            class="active title"
+            aria-label="Show item #1"
+            class="title"
           >
             <button
               aria-describedby="rbd-hidden-text-0-hidden-text-0"
@@ -147,7 +147,7 @@ exports[`renders an object list widget component 1`] = `
             </div>
           </div>
           <div
-            class="content active"
+            class="content"
           >
             <div
               class="ui segment"
@@ -195,8 +195,8 @@ exports[`renders an object list widget component 1`] = `
           class="accordion ui fluid styled"
         >
           <div
-            aria-label="Show item #2"
-            class="title"
+            aria-label="Collapse item #2"
+            class="active title"
           >
             <button
               aria-describedby="rbd-hidden-text-0-hidden-text-0"
@@ -242,7 +242,7 @@ exports[`renders an object list widget component 1`] = `
             </div>
           </div>
           <div
-            class="content"
+            class="content active"
           >
             <div
               class="ui segment"

@@ -118,11 +118,12 @@ const BlockChooser = ({
                       icon
                       basic
                       className={block.id}
-                      onClick={() =>
+                      onClick={(e) => {
                         onInsertBlock
                           ? onInsertBlock(currentBlock, { '@type': block.id })
-                          : onMutateBlock(currentBlock, { '@type': block.id })
-                      }
+                          : onMutateBlock(currentBlock, { '@type': block.id });
+                        e.stopPropagation();
+                      }}
                     >
                       <Icon name={block.icon} size="36px" />
                       {intl.formatMessage({

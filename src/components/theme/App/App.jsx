@@ -3,7 +3,7 @@
  * @module components/theme/App/App
  */
 
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -106,70 +106,78 @@ class App extends Component {
     const ConnectionRefusedView = views.errorViews.ECONNREFUSED;
 
     return (
-      <Fragment>
-        <PluggablesProvider>
-          <BodyClass className={`view-${action}view`} />
-
-          {/* Body class depending on content type */}
-          {this.props.content && this.props.content['@type'] && (
-            <BodyClass
-              className={`contenttype-${this.props.content['@type']
-                .replace(' ', '-')
-                .toLowerCase()}`}
-            />
-          )}
-
-          {/* Body class depending on sections */}
+      <PluggablesProvider>
+        <BodyClass className={`view-${action}view`} />
+        {/* Body class depending on content type */}
+        {this.props.content && this.props.content['@type'] && (
           <BodyClass
-            className={cx({
-              [trim(join(split(this.props.pathname, '/'), ' section-'))]:
-                this.props.pathname !== '/',
-              siteroot: this.props.pathname === '/',
-              'is-authenticated': !!this.props.token,
-              'is-anonymous': !this.props.token,
-              'cms-ui': isCmsUI,
-              'public-ui': !isCmsUI,
-            })}
+            className={`contenttype-${this.props.content['@type']
+              .replace(' ', '-')
+              .toLowerCase()}`}
           />
-          <SkipLinks />
-          <Header pathname={path} />
-          <Breadcrumbs pathname={path} />
-          <MultilingualRedirector pathname={this.props.pathname}>
-            <Segment basic className="content-area">
-              <main>
-                <OutdatedBrowser />
-                {this.props.connectionRefused ? (
-                  <ConnectionRefusedView />
-                ) : this.state.hasError ? (
-                  <Error
-                    message={this.state.error.message}
-                    stackTrace={this.state.errorInfo.componentStack}
-                  />
-                ) : (
-                  renderRoutes(this.props.route.routes, {
-                    staticContext: this.props.staticContext,
-                  })
-                )}
-              </main>
-            </Segment>
-          </MultilingualRedirector>
-          <Footer />
-          <ToastContainer
-            position={toast.POSITION.BOTTOM_CENTER}
-            hideProgressBar
-            transition={Slide}
-            autoClose={5000}
-            closeButton={
-              <Icon
-                className="toast-dismiss-action"
-                name={clearSVG}
-                size="18px"
-              />
-            }
-          />
-          <AppExtras {...this.props} />
-        </PluggablesProvider>
-      </Fragment>
+        )}
+        {/* Body class depending on sections */}
+        <BodyClass
+          className={cx({
+            [trim(join(split(this.props.pathname, '/'), ' section-'))]:
+              this.props.pathname !== '/',
+            siteroot: this.props.pathname === '/',
+            'is-authenticated': !!this.props.token,
+            'is-anonymous': !this.props.token,
+            'cms-ui': isCmsUI,
+            'public-ui': !isCmsUI,
+          })}
+        />
+        {/* Body class depending on sections */}
+        <BodyClass
+          className={cx({
+            [trim(join(split(this.props.pathname, '/'), ' section-'))]:
+              this.props.pathname !== '/',
+            siteroot: this.props.pathname === '/',
+            'is-authenticated': !!this.props.token,
+            'is-anonymous': !this.props.token,
+            'cms-ui': isCmsUI,
+            'public-ui': !isCmsUI,
+          })}
+        />
+        <SkipLinks />
+        <Header pathname={path} />
+        <Breadcrumbs pathname={path} />
+        <MultilingualRedirector pathname={this.props.pathname}>
+          <Segment basic className="content-area">
+            <main>
+              <OutdatedBrowser />
+              {this.props.connectionRefused ? (
+                <ConnectionRefusedView />
+              ) : this.state.hasError ? (
+                <Error
+                  message={this.state.error.message}
+                  stackTrace={this.state.errorInfo.componentStack}
+                />
+              ) : (
+                renderRoutes(this.props.route.routes, {
+                  staticContext: this.props.staticContext,
+                })
+              )}
+            </main>
+          </Segment>
+        </MultilingualRedirector>
+        <Footer />
+        <ToastContainer
+          position={toast.POSITION.BOTTOM_CENTER}
+          hideProgressBar
+          transition={Slide}
+          autoClose={5000}
+          closeButton={
+            <Icon
+              className="toast-dismiss-action"
+              name={clearSVG}
+              size="18px"
+            />
+          }
+        />
+        <AppExtras {...this.props} />
+      </PluggablesProvider>
     );
   }
 }
