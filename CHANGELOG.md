@@ -9,6 +9,7 @@
 ### Bugfix
 
 - Fix the Listing block with criteria to render correctly on a non-multilingual homepage. @ionlizarazu
+- Fix selection of previous block when deleting a block @tiberiuichim
 
 ### Internal
 
