@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix selection of previous block when deleting a block @tiberiuichim
+
 ### Internal
 
 - Only log changes to po (`poToJson`) if running as a script @sneridagh
