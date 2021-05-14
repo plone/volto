@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix the Listing block with criteria to render correctly on a non-multilingual homepage. @ionlizarazu
+
 ### Internal
 
 - Only log changes to po (`poToJson`) if running as a script @sneridagh
