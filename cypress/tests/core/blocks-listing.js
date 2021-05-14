@@ -215,9 +215,15 @@ describe('Listing Block Tests', () => {
 
     //save
     cy.get('#toolbar-save').click();
+    cy.waitForResourceToLoad('@navigation');
+    cy.waitForResourceToLoad('@breadcrumbs');
+    cy.waitForResourceToLoad('@actions');
+    cy.waitForResourceToLoad('@types');
+    cy.waitForResourceToLoad('@querystring-search');
     cy.waitForResourceToLoad('');
 
-    //test short-name criteria after save
+    cy.visit('/');
+
     cy.get('#page-document .listing-body:first-of-type').contains('My Page');
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
