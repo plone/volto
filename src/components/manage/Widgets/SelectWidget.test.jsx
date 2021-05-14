@@ -7,6 +7,12 @@ import SelectWidget from './SelectWidget';
 
 const mockStore = configureStore();
 
+jest.mock('@plone/volto/helpers/Loadable/Loadable');
+beforeAll(
+  async () =>
+    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
+);
+
 test('renders a select widget component', async () => {
   const store = mockStore({
     intl: {

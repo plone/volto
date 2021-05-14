@@ -14,7 +14,6 @@ import { Button, Grid, Menu } from 'semantic-ui-react';
 import { Portal } from 'react-portal';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
-import langmap from 'langmap';
 import { v4 as uuid } from 'uuid';
 import qs from 'query-string';
 import { toast } from 'react-toastify';
@@ -34,6 +33,7 @@ import {
   flattenToAppURL,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
+  langmap,
 } from '@plone/volto/helpers';
 
 import { preloadLazyLibs } from '@plone/volto/helpers/Loadable';

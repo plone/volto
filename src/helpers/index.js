@@ -60,6 +60,7 @@ export {
   getFieldsVocabulary,
 } from '@plone/volto/helpers/Vocabularies/Vocabularies';
 
+export langmap from './LanguageMap/LanguageMap';
 export Helmet from './Helmet/Helmet';
 export FormValidation from './FormValidation/FormValidation';
 export {
@@ -70,6 +71,7 @@ export {
   applyConfig,
   withServerErrorCode,
   parseDateTime,
+  normalizeLanguageName,
 } from '@plone/volto/helpers/Utils/Utils';
 export { messages } from './MessageLabels/MessageLabels';
 export {

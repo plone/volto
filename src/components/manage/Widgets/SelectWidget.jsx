@@ -9,8 +9,6 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { map, find, isBoolean, isObject, intersection, isArray } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
-import loadable from '@loadable/component';
-
 import {
   getBoolean,
   getVocabFromHint,
@@ -26,9 +24,7 @@ import {
   selectTheme,
   customSelectStyles,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
-
-const Select = loadable(() => import('react-select'));
-const AsyncPaginate = loadable(() => import('react-select-async-paginate'));
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 const messages = defineMessages({
   default: {
@@ -250,6 +246,8 @@ class SelectWidget extends Component {
    */
   render() {
     const { id, choices, value, onChange } = this.props;
+    const Select = this.props.reactSelect.default;
+    const AsyncPaginate = this.props.reactSelectAsyncPaginate.default;
 
     return (
       <FormFieldWrapper {...this.props}>
@@ -330,6 +328,7 @@ class SelectWidget extends Component {
 
 export default compose(
   injectIntl,
+  injectLazyLibs(['reactSelect', 'reactSelectAsyncPaginate']),
   connect(
     (state, props) => {
       const vocabBaseUrl = !props.choices
