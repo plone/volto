@@ -10,6 +10,7 @@
 
 ### Internal
 
+- Add Listing block test for root path @ionlizarazu
 - Only log changes to po (`poToJson`) if running as a script @sneridagh
 
 ## 13.0.0-alpha.9 (2021-05-13)

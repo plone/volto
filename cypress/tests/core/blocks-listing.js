@@ -139,6 +139,93 @@ describe('Listing Block Tests', () => {
     );
   });
 
+  it('Listing block - Test Root with Criteria: Type Page', () => {
+    // Given three Document in My Page i.e My News, My Folder and My Page Test
+    cy.createContent({
+      contentType: 'Document',
+      contentId: 'my-page-test',
+      contentTitle: 'My Page Test',
+      path: 'my-page',
+    });
+    cy.createContent({
+      contentType: 'News Item',
+      contentId: 'my-news',
+      contentTitle: 'My News',
+      path: 'my-page',
+    });
+    cy.createContent({
+      contentType: 'Folder',
+      contentId: 'my-folder',
+      contentTitle: 'My Folder',
+      path: 'my-page',
+    });
+
+    cy.visit('/');
+    cy.waitForResourceToLoad('@navigation');
+    cy.waitForResourceToLoad('@breadcrumbs');
+    cy.waitForResourceToLoad('@actions');
+    cy.waitForResourceToLoad('@types');
+    cy.waitForResourceToLoad('');
+    cy.navigate('/edit');
+
+    cy.get(`.block.title [data-contents]`)
+      .clear()
+      .type('Listing block - Test Root with Criteria: Type Page');
+
+    //add listing block
+    cy.get('.block.text [contenteditable]').last().clear();
+    cy.get('.block.text [contenteditable]').last().click();
+    cy.get('button.block-add-button').click();
+    cy.get('.blocks-chooser .title').contains('Common').click();
+    cy.get('.blocks-chooser .common').contains('Listing').click();
+
+    //********  add Type criteria filter
+    cy.get('.sidebar-container .tabs-wrapper .menu .item')
+      .contains('Block')
+      .click();
+    cy.get('.querystring-widget .fields').contains('Add criteria').click();
+    cy.get(
+      '.querystring-widget .fields:first-of-type .field:first-of-type .react-select__menu .react-select__option',
+    )
+      .contains('Type')
+      .click();
+    //Type matches any of...
+    cy.get(
+      '.querystring-widget .fields:first-of-type .main-fields-wrapper .field:last-of-type',
+    ).click();
+    cy.get(
+      '.querystring-widget .fields:first-of-type .main-fields-wrapper .field:last-of-type .react-select__menu .react-select__option',
+    )
+      .contains('Matches any of')
+      .click();
+    //insert Page
+    cy.get('.querystring-widget .fields:first-of-type > .field').click();
+    cy.get(
+      '.querystring-widget .fields:first-of-type > .field .react-select__menu .react-select__option',
+    )
+      .contains('Page')
+      .click();
+
+    //before save, vrify if in list there's a page with id my-page-test
+    cy.get(`.block.listing .listing-body:first-of-type`).contains('My Page');
+    //before save, verify if in list there isn't the News with title My News
+    cy.get(`.block.listing .listing-body`)
+      .contains('My News')
+      .should('not.exist');
+
+    //save
+    cy.get('#toolbar-save').click();
+    cy.waitForResourceToLoad('');
+
+    //test short-name criteria after save
+    cy.get('#page-document .listing-body:first-of-type').contains('My Page');
+    cy.get('#page-document .listing-item:first-of-type a').should(
+      'have.attr',
+      'href',
+      '/my-page',
+    );
+  });
+
   it('Listing block - Test Criteria: short-name', () => {
     // Given three Document in My Page i.e My News, My Folder and My Page Test
     cy.createContent({
