@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- separate users and groups into own sections, handle backend errors while creating users/groups @nileshgulia1
+
 ### Internal
 
 - Only log changes to po (`poToJson`) if running as a script @sneridagh

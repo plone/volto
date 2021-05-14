@@ -8,7 +8,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { Dropdown, Table, Checkbox } from 'semantic-ui-react';
 import trashSVG from '@plone/volto/icons/delete.svg';
 import { Icon } from '@plone/volto/components';
-import ploneSVG from '@plone/volto/icons/plone.svg';
+//import ploneSVG from '@plone/volto/icons/plone.svg';
 
 /**
  * UsersControlpanelUser class.
