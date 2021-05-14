@@ -3,22 +3,16 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
-import UsersControlpanel from './UsersControlpanel';
+import GroupsControlpanel from './GroupsControlpanel';
 
 const mockStore = configureStore();
-
 jest.mock('react-portal', () => ({
   Portal: jest.fn(() => <div id="Portal" />),
 }));
-
 describe('UsersControlpanel', () => {
   it('renders a user control component', () => {
     const store = mockStore({
       roles: { roles: [] },
-      users: {
-        users: [],
-        create: { loading: false },
-      },
       groups: {
         groups: [],
         create: { loading: false },
@@ -30,7 +24,7 @@ describe('UsersControlpanel', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <UsersControlpanel location={{ pathname: '/blog' }} />
+        <GroupsControlpanel location={{ pathname: '/blog' }} />
       </Provider>,
     );
     const json = component.toJSON();

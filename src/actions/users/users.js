@@ -80,17 +80,6 @@ export function listUsers(query) {
 }
 
 /**
- * Show All users function
- * @function showAllUsers
- * @returns boolean
- */
-export function showAllUsers() {
-  return {
-    type: Show_All_USERS,
-  };
-}
-
-/**
  * Update user function
  * @function updateUser
  * @param {string} id User id

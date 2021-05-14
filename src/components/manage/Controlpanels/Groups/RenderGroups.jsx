@@ -1,6 +1,6 @@
 /**
- * Users controlpanel user.
- * @module components/manage/Controlpanels/UsersControlpanelUser
+ * Users controlpanel groups.
+ * @module components/manage/Controlpanels/UsersControlpanelGroups
  */
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
@@ -10,27 +10,32 @@ import trashSVG from '@plone/volto/icons/delete.svg';
 import { Icon } from '@plone/volto/components';
 
 /**
- * UsersControlpanelUser class.
- * @class UsersControlpanelUser
+ * UsersControlpanelGroups class.
+ * @class UsersControlpanelGroups
  * @extends Component
  */
-class UsersControlpanelUser extends Component {
+class RenderGroups extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
    * @static
    */
   static propTypes = {
-    user: PropTypes.shape({
-      username: PropTypes.string,
-      fullname: PropTypes.string,
+    //single group
+    group: PropTypes.shape({
+      title: PropTypes.string,
+      description: PropTypes.string,
+      email: PropTypes.string,
+      groupname: PropTypes.string,
       roles: PropTypes.arrayOf(PropTypes.string),
     }).isRequired,
+
     roles: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string,
       }),
     ).isRequired,
+    inheritedRole: PropTypes.array,
     onDelete: PropTypes.func.isRequired,
   };
 
@@ -42,19 +47,19 @@ class UsersControlpanelUser extends Component {
    */
   constructor(props) {
     super(props);
-    this.state = {};
     this.onChange = this.onChange.bind(this);
   }
+
   /**
    * @param {*} event
    * @param {*} { value }
    * @memberof UsersControlpanelUser
    */
-
   onChange(event, { value }) {
-    const [user, role] = value.split('.');
-    this.props.updateUser(user, role);
+    const [group, role] = value.split('.');
+    this.props.updateGroups(group, role);
   }
+
   /**
    * Render method.
    * @method render
@@ -62,18 +67,14 @@ class UsersControlpanelUser extends Component {
    */
   render() {
     return (
-      <Table.Row key={this.props.user.username}>
-        <Table.Cell className="fullname">
-          {this.props.user.fullname
-            ? this.props.user.fullname
-            : this.props.user.username}
-        </Table.Cell>
+      <Table.Row key={this.props.group.title}>
+        <Table.Cell>{this.props.group.groupname}</Table.Cell>
         {this.props.roles.map((role) => (
           <Table.Cell key={role.id}>
             <Checkbox
-              checked={this.props.user.roles.includes(role.id)}
+              checked={this.props.group.roles.includes(role.id)}
               onChange={this.onChange}
-              value={`${this.props.user.id}.${role.id}`}
+              value={`${this.props.group.id}.${role.id}`}
             />
           </Table.Cell>
         ))}
@@ -82,7 +83,7 @@ class UsersControlpanelUser extends Component {
             <Dropdown.Menu className="left">
               <Dropdown.Item
                 onClick={this.props.onDelete}
-                value={this.props.user['@id']}
+                value={this.props.group['@id']}
               >
                 <Icon name={trashSVG} size="15px" />
                 <FormattedMessage id="Delete" defaultMessage="Delete" />
@@ -95,4 +96,4 @@ class UsersControlpanelUser extends Component {
   }
 }
 
-export default injectIntl(UsersControlpanelUser);
+export default injectIntl(RenderGroups);
