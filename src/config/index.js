@@ -136,6 +136,7 @@ let config = {
     showTags: true,
     controlPanelsIcons,
     showSelfRegistration: false,
+    hasWorkingCopySupport: false,
   },
   widgets: {
     ...widgetMapping,

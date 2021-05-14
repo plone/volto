@@ -8,11 +8,12 @@ import { defineMessages, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { find } from 'lodash';
-
+import { Pluggable, Plug } from '@plone/volto/components/manage/Pluggable';
 import { Icon, Display, Workflow } from '@plone/volto/components';
-import { getBaseUrl } from '@plone/volto/helpers';
+import { createWorkingCopy } from '@plone/volto/actions';
+import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
 import rightArrowSVG from '@plone/volto/icons/right-key.svg';
@@ -34,6 +35,10 @@ const messages = defineMessages({
   ManageTranslations: {
     id: 'Manage Translations',
     defaultMessage: 'Manage Translations',
+  },
+  CreateWorkingCopy: {
+    id: 'Create working copy',
+    defaultMessage: 'Create working copy',
   },
 });
 
@@ -57,6 +62,7 @@ class More extends Component {
       review_state: PropTypes.string,
     }),
     loadComponent: PropTypes.func.isRequired,
+    closeMenu: PropTypes.func.isRequired,
   };
 
   /**
@@ -118,53 +124,102 @@ class More extends Component {
         </header>
         <div className="pastanaga-menu-list">
           <ul>
-            <li className="state-select">
-              <Workflow pathname={path} />
-            </li>
-            <li className="display-select">
-              {editAction && <Display pathname={path} />}
-            </li>
-            <li>
-              <Link to={`${path}/history`}>
-                <button>
-                  <div>
-                    <span className="pastanaga-menu-label">
-                      {historyAction?.title ||
-                        this.props.intl.formatMessage(messages.history)}
-                    </span>
-                    <span className="pastanaga-menu-value" />
-                  </div>
-                  <Icon name={rightArrowSVG} size="24px" />
-                </button>
-              </Link>
-            </li>
-            {sharingAction && (
-              <li>
-                <Link to={`${path}/sharing`}>
-                  <button>
-                    {this.props.intl.formatMessage(messages.sharing)}
-                    <Icon name={rightArrowSVG} size="24px" />
-                  </button>
-                </Link>
-              </li>
-            )}
-            {editAction && config.settings.isMultilingual && (
-              <>
+            <Pluggable name="toolbar-more-menu-list" />
+            <Plug pluggable="toolbar-more-menu-list" id="state">
+              {this.props.content['@type'] !== 'Plone Site' && (
+                // Plone Site does not have workflow
+                <li className="state-select">
+                  <Workflow pathname={path} />
+                </li>
+              )}
+            </Plug>
+            <Plug pluggable="toolbar-more-menu-list" id="view">
+              {this.props.content['@type'] !== 'Plone Site' && (
+                // Plone Site does not have view (yet)
+                <li className="display-select">
+                  {editAction && <Display pathname={path} />}
+                </li>
+              )}
+            </Plug>
+            <Plug pluggable="toolbar-more-menu-list" id="history">
+              {this.props.content['@type'] !== 'Plone Site' && (
+                // Plone Site does not have history (yet)
                 <li>
-                  <Link to={`${path}/manage-translations`}>
-                    <button>
-                      {this.props.intl.formatMessage(
-                        messages.ManageTranslations,
-                      )}
-
-                      <Icon name={rightArrowSVG} size="24px" />
-                    </button>
+                  <Link to={`${path}/history`}>
+                    <div>
+                      <span className="pastanaga-menu-label">
+                        {historyAction?.title ||
+                          this.props.intl.formatMessage(messages.history)}
+                      </span>
+                      <span className="pastanaga-menu-value" />
+                    </div>
+                    <Icon name={rightArrowSVG} size="24px" />
                   </Link>
                 </li>
-              </>
-            )}
+              )}
+            </Plug>
+            <Plug pluggable="toolbar-more-menu-list" id="sharing">
+              {sharingAction && (
+                <li>
+                  <Link to={`${path}/sharing`}>
+                    {this.props.intl.formatMessage(messages.sharing)}
+                    <Icon name={rightArrowSVG} size="24px" />
+                  </Link>
+                </li>
+              )}
+            </Plug>
           </ul>
         </div>
+        <Pluggable name="toolbar-more-manage-content">
+          {(pluggables) => (
+            <>
+              {pluggables.length > 0 && (
+                <header>
+                  <h2>Manage content...</h2>
+                </header>
+              )}
+              <div className="pastanaga-menu-list">
+                <ul>
+                  {pluggables.map((p) => (
+                    <>{p()}</>
+                  ))}
+                </ul>
+              </div>
+            </>
+          )}
+        </Pluggable>
+        {config.settings.hasWorkingCopySupport && (
+          <Plug pluggable="toolbar-more-manage-content" id="workingcopy">
+            <li>
+              <button
+                aria-label={this.props.intl.formatMessage(
+                  messages.CreateWorkingCopy,
+                )}
+                onClick={() => {
+                  this.props.createWorkingCopy(path).then((response) => {
+                    this.props.history.push(flattenToAppURL(response['@id']));
+                    this.props.closeMenu();
+                  });
+                }}
+              >
+                {this.props.intl.formatMessage(messages.CreateWorkingCopy)}
+
+                <Icon name={rightArrowSVG} size="24px" />
+              </button>
+            </li>
+          </Plug>
+        )}
+        {editAction && config.settings.isMultilingual && (
+          <Plug pluggable="toolbar-more-manage-content" id="multilingual">
+            <li>
+              <Link to={`${path}/manage-translations`}>
+                {this.props.intl.formatMessage(messages.ManageTranslations)}
+
+                <Icon name={rightArrowSVG} size="24px" />
+              </Link>
+            </li>
+          </Plug>
+        )}
       </div>
     );
   }
@@ -172,12 +227,13 @@ class More extends Component {
 
 export default compose(
   injectIntl,
+  withRouter,
   connect(
     (state, props) => ({
       actions: state.actions.actions,
       pathname: props.pathname,
       content: state.content.data,
     }),
-    {},
+    { createWorkingCopy },
   ),
 )(More);
