@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix selection of previous block when deleting a block @tiberiuichim
+
 ### Internal
 
 - Add Listing block test for root path @ionlizarazu
