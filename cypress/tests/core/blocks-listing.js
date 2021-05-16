@@ -129,6 +129,8 @@ describe('Listing Block Tests', () => {
 
     //save
     cy.get('#toolbar-save').click();
+    cy.url().should('eq', Cypress.config().baseUrl + '/');
+    cy.findByLabelText('Edit');
 
     //test after save
     cy.get('#page-document .listing-body:first-of-type').contains('Page One');
