@@ -2,10 +2,6 @@
 
 ## 13.0.0 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Fix the Listing block with criteria to render correctly on a non-multilingual homepage. @ionlizarazu
