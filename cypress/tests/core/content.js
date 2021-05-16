@@ -60,6 +60,11 @@ describe('Add Content Tests', () => {
     });
 
     cy.get('#toolbar-save').focus().click();
+    cy.waitForResourceToLoad('@navigation');
+    cy.waitForResourceToLoad('@breadcrumbs');
+    cy.waitForResourceToLoad('@actions');
+    cy.waitForResourceToLoad('@types');
+    cy.waitForResourceToLoad('file.pdf');
 
     // then a new file should have been created
     cy.url().should('eq', Cypress.config().baseUrl + '/file.pdf');
