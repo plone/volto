@@ -8,6 +8,7 @@
 
 ### Bugfix
 
+- Fix the Listing block with criteria to render correctly on a non-multilingual homepage. @ionlizarazu
 - Fix selection of previous block when deleting a block @tiberiuichim
 
 ### Internal
@@ -16,6 +17,7 @@
 - Remove surge since it's not used anymore @sneridagh
 - Upgrade `react-redux` and friends @sneridagh
 - Upgrade `yarnhook` and `yarn-deduplicate` @sneridagh
+- Add Listing block test for root path @ionlizarazu
 - Only log changes to po (`poToJson`) if running as a script @sneridagh
 
 ## 13.0.0-alpha.9 (2021-05-13)
