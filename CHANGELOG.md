@@ -11,6 +11,7 @@
 ### Internal
 
 - Only log changes to po (`poToJson`) if running as a script @sneridagh
+- Make the `AddLinkForm` component generic, to allow reuse in volto-slate @tiberiuichim
 
 ## 13.0.0-alpha.9 (2021-05-13)
 
