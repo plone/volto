@@ -386,7 +386,6 @@
     "yarnhook": "0.4.3"
   },
   "devDependencies": {
-    "circular-dependency-plugin": "5.2.2",
     "@storybook/addon-actions": "^6.0.22",
     "@storybook/addon-controls": "6.1.11",
     "@storybook/addon-essentials": "^6.0.22",
