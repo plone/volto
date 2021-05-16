@@ -23,7 +23,7 @@ nav:
       - Bootstrap Volto: 'getting-started/install.md'
       - Developer roadmap: 'getting-started/roadmap.md'
       - Learning resources: 'getting-started/others.md'
-      - How does Volto works under the hood: 'getting-started/howdoesitwork.md'
+      - How does it work under the hood: 'getting-started/howdoesitwork.md'
   - Design principles: 'design-principles/index.md'
   - Style Guide: 'style-guide/index.md'
   - Configuration:

@@ -1,4 +1,4 @@
-# How does Volto works under the hood
+# How does it work under the hood
 
 You can watch the talk during the World Plone Day 2021:
 
