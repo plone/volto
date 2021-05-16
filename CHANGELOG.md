@@ -13,6 +13,9 @@
 ### Internal
 
 - Upgrade Cypress to latest @sneridagh
+- Remove surge since it's not used anymore @sneridagh
+- Upgrade `react-redux` and friends @sneridagh
+- Upgrade `yarnhook` and `yarn-deduplicate` @sneridagh
 - Only log changes to po (`poToJson`) if running as a script @sneridagh
 
 ## 13.0.0-alpha.9 (2021-05-13)
