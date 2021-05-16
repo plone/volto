@@ -257,6 +257,10 @@ const messages = defineMessages({
     id: 'Start Date',
     defaultMessage: 'Start Date',
   },
+  all: {
+    id: 'All',
+    defaultMessage: 'All',
+  },
 });
 
 /**
@@ -887,7 +891,8 @@ class Contents extends Component {
    * @returns {undefined}
    */
   fetchContents(pathname) {
-    if (this.state.pageSize === 'All') {
+    if (this.state.pageSize === this.props.intl.formatMessage(messages.all)) {
+      //'All'
       this.props.searchContent(getBaseUrl(pathname || this.props.pathname), {
         'path.depth': 1,
         sort_on: this.state.sort_on,
@@ -1664,7 +1669,12 @@ class Contents extends Component {
                             this.props.total / this.state.pageSize,
                           )}
                           pageSize={this.state.pageSize}
-                          pageSizes={[15, 30, 50, 'All']}
+                          pageSizes={[
+                            15,
+                            30,
+                            50,
+                            this.props.intl.formatMessage(messages.all),
+                          ]}
                           onChangePage={this.onChangePage}
                           onChangePageSize={this.onChangePageSize}
                         />

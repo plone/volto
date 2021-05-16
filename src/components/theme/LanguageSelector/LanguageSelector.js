@@ -11,8 +11,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import cx from 'classnames';
 import { find, map } from 'lodash';
 
-import langmap from 'langmap';
-import { Helmet, flattenToAppURL } from '@plone/volto/helpers';
+import {
+  Helmet,
+  langmap,
+  flattenToAppURL,
+  normalizeLanguageName,
+} from '@plone/volto/helpers';
 
 import config from '@plone/volto/registry';
 
@@ -52,9 +56,12 @@ const LanguageSelector = (props) => {
             onClick={() => {
               props.onClickAction();
               if (config.settings.supportedLanguages.includes(lang)) {
-                import('~/../locales/' + lang + '.json').then((locale) => {
-                  dispatch(changeLanguage(lang, locale.default));
-                });
+                const langFileName = normalizeLanguageName(lang);
+                import('~/../locales/' + langFileName + '.json').then(
+                  (locale) => {
+                    dispatch(changeLanguage(lang, locale.default));
+                  },
+                );
               }
             }}
             key={`language-selector-${lang}`}

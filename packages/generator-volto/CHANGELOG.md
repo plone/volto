@@ -1,10 +1,18 @@
 # Change Log
 
-## 4.3.1 (unreleased)
+## 4.3.2 (unreleased)
 
 ### Added
 
+- Add prettier and lint scripts to generator @tisto
+
 ### Changes
+
+## 4.3.1 (2021-05-07)
+
+### Changes
+
+- Fix Jest testing environment. Changed to `--env=jest-environment-jsdom-sixteen` @avoinea
 
 ## 4.3.0 (2021-04-28)
 

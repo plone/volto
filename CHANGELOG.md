@@ -24,11 +24,85 @@
 
 ### Bugfix
 
+- Fix the Listing block with criteria to render correctly on a non-multilingual homepage. @ionlizarazu
+- Fix selection of previous block when deleting a block @tiberiuichim
+
+### Internal
+
+- Add Listing block test for root path @ionlizarazu
+- Only log changes to po (`poToJson`) if running as a script @sneridagh
+
+## 13.0.0-alpha.9 (2021-05-13)
+
+### Feature
+
+- Compile i18n json locales only at build time on the fly and at release time @sneridagh
+
+### Internal
+
+- Remove json locales from the repo to avoid merge conflicts @sneridagh
+
+## 13.0.0-alpha.8 (2021-05-12)
+
+### Bugfix
+
+- Disable `Select` components family to lazy load on SSR, since it's breaking and the fix is quite obscure. They are not valuable on SSR responses anyway. @sneridagh
+
+### Internal
+
+- All the `Select` components family in core are loaded through `Loadables` helper @sneridagh
+
+## 13.0.0-alpha.7 (2021-05-11)
+
+### Bugfix
+
+- Fix leftover from the multilingual fix for composed language names @sneridagh @ericof
+
+### Internal
+
+- Updated Brazilian Portuguese translations @ericof
+
+## 13.0.0-alpha.6 (2021-05-11)
+
+### Bugfix
+
+- Translate 'All' label in Contents view pagination. @giuliaghisini
+- Replace langmap dependency with internal code that supports composite language names @sneridagh @ericof
+
+## 13.0.0-alpha.5 (2021-05-10)
+
+### Bugfix
+
+- RenderBlocks: Blocks like the listing block need a path. @ksuess
+- Normalize language to get the correct filename in lazy imports for composite language names @sneridagh @ericof
+
+### Internal
+
+- Updated Brazilian Portuguese translations @ericof
+
+## 13.0.0-alpha.4 (2021-05-07)
+
+### Breaking
+
+- Refactored `src/components/manage/Widgets/QuerystringWidget` using `ObjectWidget` and schemas @sneridagh
+- Refactored `Listing` block using the new `src/components/manage/Widgets/QuerystringWidget`. Introducing a new `showLinkMore` block option opt-in for the additional feature instead of always-in. Deprecated `ListingSidebar` and `src/components/manage/Blocks/Listing/QuerystringWidget` in favor of the new `src/components/manage/Widgets/QuerystringWidget` @sneridagh
+
+For a more information, please read the upgrade guide
+https://docs.voltocms.com/upgrade-guide/
+
+### Bugfix
+
+- Checkbox not using `null` as false @sneridagh
+
+## 13.0.0-alpha.3 (2021-05-06)
+
+### Bugfix
+
+- Use params prop in api middleware @giuliaghisini
+
 - Fix PORT env var handling, if you have set the PORT in build time, the setting was
   removed back to defaults, now the build time setting is kept (unsetting in build time
   and set it in runtime is now the recommended setup) @sneridagh
-
-### Internal
 
 ## 13.0.0-alpha.2 (2021-05-05)
 
@@ -188,10 +262,12 @@ https://docs.voltocms.com/upgrade-guide/
 
 ### Bugfix
 
+- fix universal link @nileshgulia1s
 - fixed recurrence widget when weekly recurrence is selected and event start date is on sunday. @giuliaghisini
 - Fix default value for checkbox widget @alexbueckig
 - Fix for forms in content types, the fieldset was not being passed over to the field. This affected form generation ids and labels. @sneridagh
 - Add a bit of a11y love to the `ObjectListWidget` @sneridagh
+- fix universal link when no item content obj passed @nileshgulia1
 
 ### Internal
 

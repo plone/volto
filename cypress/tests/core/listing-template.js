@@ -39,7 +39,7 @@ describe('Folder Contents Tests', () => {
     cy.get(
       '[style="transition: opacity 500ms ease 0ms;"] > :nth-child(2) > .ui',
     ).click();
-    cy.get('#select-listingblock-template').click().type('imageGallery{enter}');
+    cy.get('#field-variation').click().type('imageGallery{enter}');
     cy.get('#toolbar-save').click();
     cy.waitForResourceToLoad('@navigation');
     cy.waitForResourceToLoad('@breadcrumbs');
@@ -67,7 +67,7 @@ describe('Folder Contents Tests', () => {
     cy.get('.block.inner.text .public-DraftEditor-content').click();
     cy.get('.ui.basic.icon.button.block-add-button').click();
     cy.get('.ui.basic.icon.button.listing').contains('Listing').click();
-    cy.get('#select-listingblock-template').click().type('imageGallery{enter}');
+    cy.get('#field-variation').click().type('imageGallery{enter}');
     // then we should have a slide play or pause button
     cy.get('.image-gallery-play-button')
       .should('have.attr', 'aria-label')

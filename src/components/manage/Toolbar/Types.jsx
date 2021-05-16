@@ -2,10 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import langmap from 'langmap';
 import { filter, find, isEmpty, map } from 'lodash';
 import { FormattedMessage } from 'react-intl';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { flattenToAppURL, langmap } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
 const Types = ({ types, pathname, content, currentLanguage }) => {

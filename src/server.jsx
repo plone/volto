@@ -25,6 +25,7 @@ import {
   Html,
   Api,
   persistAuthToken,
+  normalizeLanguageName,
 } from '@plone/volto/helpers';
 import { changeLanguage } from '@plone/volto/actions';
 
@@ -41,7 +42,8 @@ let locales = {};
 
 if (config.settings) {
   config.settings.supportedLanguages.forEach((lang) => {
-    import('~/../locales/' + lang + '.json').then((locale) => {
+    const langFileName = normalizeLanguageName(lang);
+    import('~/../locales/' + langFileName + '.json').then((locale) => {
       locales = { ...locales, [lang]: locale.default };
     });
   });

@@ -226,18 +226,29 @@ const blocksConfig = {
     restricted: false,
     mostUsed: true,
     sidebarTab: 1,
+    showLinkMore: false,
     security: {
       addPermission: [],
       view: [],
     },
-    templates: {
-      default: { label: 'Default', template: DefaultListingBlockTemplate },
-      imageGallery: {
-        label: 'Image gallery',
+    variations: [
+      {
+        id: 'default',
+        isDefault: true,
+        title: 'Default',
+        template: DefaultListingBlockTemplate,
+      },
+      {
+        id: 'imageGallery',
+        title: 'Image gallery',
         template: ImageGalleryListingBlockTemplate,
       },
-      summary: { label: 'Summary', template: SummaryListingBlockTemplate },
-    },
+      {
+        id: 'summary',
+        title: 'Summary',
+        template: SummaryListingBlockTemplate,
+      },
+    ],
   },
   video: {
     id: 'video',

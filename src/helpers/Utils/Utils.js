@@ -169,3 +169,18 @@ export const parseDateTime = (locale, value, format) => {
   }
   return datetime;
 };
+
+/**
+ * Normalizes a language to match the i18n format from the Plone lang names
+ * @param {string} language Language to be normalized
+ * @returns {string} Language normalized
+ */
+export const normalizeLanguageName = (language) => {
+  if (language.includes('-')) {
+    let normalizedLang = language.split('-');
+    normalizedLang = `${normalizedLang[0]}_${normalizedLang[1].toUpperCase()}`;
+    return normalizedLang;
+  }
+
+  return language;
+};
