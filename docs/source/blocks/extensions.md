@@ -13,12 +13,11 @@ block allows it, even use alternative renderers (eg. in view mode) showing the
 enhanced fields or modifying the block look and feel or behavior.
 
 !!! note
-
-  The Listing block already supports several of them (only in the "template" or
-  the component to show on view mode), and can be extended, although it still
-  do not use the final specification on how to define them in the
-  configuration, (that will change in next Volto versions). The rest of the
-  stock Volto blocks will also follow to support variations by default.
+    The Listing block already supports several of them (only in the "template" or
+    the component to show on view mode), and can be extended, although it still
+    do not use the final specification on how to define them in the
+    configuration, (that will change in next Volto versions). The rest of the
+    stock Volto blocks will also follow to support variations by default.
 
 While it is up to each specific block implementations on how they actually use
 this machinery, Volto provides the infrastructure to help define block

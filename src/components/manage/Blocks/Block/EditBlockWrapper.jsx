@@ -53,7 +53,7 @@ const EditBlockWrapper = (props) => {
             <Button
               icon
               basic
-              onClick={() => onDeleteBlock(block)}
+              onClick={() => onDeleteBlock(block, true)}
               className="delete-button"
               aria-label={intl.formatMessage(messages.delete)}
             >
