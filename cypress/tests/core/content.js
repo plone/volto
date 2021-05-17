@@ -14,7 +14,6 @@ describe('Add Content Tests', () => {
     // when I add a file
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-file').click();
-    cy.wait(2000);
 
     cy.get('input[name="title"]')
       .type('My File')
@@ -23,6 +22,7 @@ describe('Add Content Tests', () => {
     cy.get('input[id="field-file"]').attachFile('file.pdf', {
       subjectType: 'input',
     });
+    cy.wait(2000);
 
     cy.get('#toolbar-save').focus().click();
     cy.waitForResourceToLoad('@navigation');
