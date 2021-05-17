@@ -90,13 +90,11 @@ const ObjectBrowserNav = ({
               {item.title}
             </span>
             {item.is_folderish && mode === 'image' && (
-              <span>
-                <Icon
-                  className="right-arrow-icon"
-                  name={rightArrowSVG}
-                  size="24px"
-                />
-              </span>
+              <Icon
+                className="right-arrow-icon"
+                name={rightArrowSVG}
+                size="24px"
+              />
             )}
             {item.is_folderish && (mode === 'link' || mode === 'multiple') && (
               <Button.Group>
