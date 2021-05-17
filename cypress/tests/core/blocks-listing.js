@@ -129,6 +129,7 @@ describe('Listing Block Tests', () => {
 
     //save
     cy.get('#toolbar-save').click();
+    cy.findByLabelText('Edit');
 
     //test after save
     cy.get('#page-document .listing-body:first-of-type').contains('Page One');
@@ -223,6 +224,8 @@ describe('Listing Block Tests', () => {
     cy.waitForResourceToLoad('');
 
     cy.visit('/');
+    cy.url().should('eq', Cypress.config().baseUrl + '/');
+    cy.findByLabelText('Edit');
 
     cy.get('#page-document .listing-body:first-of-type').contains('My Page');
     cy.get('#page-document .listing-item:first-of-type a').should(
