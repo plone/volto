@@ -16,6 +16,8 @@ import config from '@plone/volto/registry';
  */
 export const getBaseUrl = memoize((url) => {
   const { settings } = config;
+  if (!url) return;
+
   // We allow settings.nonContentRoutes to have strings (that are supposed to match
   // ending strings of pathnames, so we are converting them to RegEx to match also
   const normalized_nonContentRoutes = settings.nonContentRoutes.map((item) => {

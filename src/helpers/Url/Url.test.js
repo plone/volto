@@ -48,6 +48,9 @@ describe('Url', () => {
         '/bla/doh/sharing-my-test/doh/bla',
       );
     });
+    it('does nothing if no url is undefined', () => {
+      expect(getBaseUrl(undefined)).toBe(undefined);
+    });
   });
 
   describe('getView', () => {
