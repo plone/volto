@@ -10,7 +10,7 @@ describe('Add Content Tests', () => {
     cy.waitForResourceToLoad('');
   });
 
-  it.only('As editor I can add a file', function () {
+  it('As editor I can add a file', function () {
     // when I add a file
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-file').click();
@@ -22,6 +22,7 @@ describe('Add Content Tests', () => {
     cy.get('input[id="field-file"]').attachFile('file.pdf', {
       subjectType: 'input',
     });
+    cy.wait(2000);
 
     cy.get('#toolbar-save').focus().click();
     cy.waitForResourceToLoad('@navigation');

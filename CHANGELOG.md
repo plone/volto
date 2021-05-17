@@ -42,6 +42,7 @@ https://docs.voltocms.com/upgrade-guide/
   and set it in runtime is now the recommended setup) @sneridagh
 - Fix sort_order restapi call, works on action for existing listing blocks
   and in ListingData saving correctly new ones @nzambello
+- Fix `contextURL` in `ObjectBrowser` for special (add/edit) views using `getBaseUrl` @sneridagh
 
 ### Internal
 
