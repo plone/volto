@@ -10,10 +10,11 @@ describe('Add Content Tests', () => {
     cy.waitForResourceToLoad('');
   });
 
-  it.only('As editor I can add a file', function () {
+  it('As editor I can add a file', function () {
     // when I add a file
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-file').click();
+    cy.wait(2000);
 
     cy.get('input[name="title"]')
       .type('My File')
