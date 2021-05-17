@@ -51,6 +51,9 @@ describe('Url', () => {
     it('does nothing if no url is undefined', () => {
       expect(getBaseUrl(undefined)).toBe(undefined);
     });
+    it('return empty string if no url is empty string', () => {
+      expect(getBaseUrl('')).toBe('');
+    });
   });
 
   describe('getView', () => {
