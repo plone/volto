@@ -97,7 +97,7 @@ and configure it as in `kitconcept.volto` as shown in this PR:
 https://github.com/kitconcept/kitconcept.volto/pull/29
 
 Alternatively, if you use it in your project, you can run the provided upgrade step.
-`Migrates listings from Volto 12 to Volto 13`. You can find it in the `Add-ons` control panel.
+`Migrate listing blocks from Volto 12 to Volto 13`. You can find it in the `Add-ons` control panel.
 
 ## Control panel icons are now SVG based instead of font based
 
