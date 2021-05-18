@@ -40,6 +40,65 @@ The advantage of this is that now you can use the `QuerystringWidget` with schem
 data forms in a reusable way in your custom blocks. See the Listing block code for
 further references.
 
+### Update your custom variations (templates) in your project listing blocks
+
+In the case that you have custom templates for your listing blocks in your projects, it's required that you update the definitions to match the new core variations syntax.
+
+going from this:
+
+```js
+config.blocks.blocksConfig.listing.templates = {
+  ...config.blocks.blocksConfig.listing.templates,
+  mycustomvariationid: {
+    label: 'My custom listing variation',
+    template: MyCustomListingBlockTemplate,
+  }
+}
+```
+
+To this:
+
+```js
+  config.blocks.blocksConfig.listing.variations = [
+    ...config.blocks.blocksConfig.listing.variations,
+    {
+      id: 'mycustomvariationid',
+      isDefault: false,
+      title: 'My custom listing variation',
+      template: MyCustomListingBlockTemplate,
+    }
+  ]
+```
+
+You can use this migration upgrade step for Plone:
+
+```python
+def from12to13_migrate_listings(context):
+    def migrate_listing(originBlocks):
+        blocks = deepcopy(originBlocks)
+        for blockid in blocks:
+            block = blocks[blockid]
+            if block["@type"] == "listing":
+                if block.get("template", False) and not block.get("variation", False):
+                    block["variation"] = block["template"]
+                    del block["template"]
+                if block.get("template", False) and block.get("variation", False):
+                    del block["template"]
+                print(f"Migrated listing in {obj.absolute_url()}")
+
+        return blocks
+
+    for brain in api.content.find(object_provides=IBlocks.__identifier__):
+        obj = brain.getObject()
+        obj.blocks = migrate_listing(obj.blocks)
+```
+
+and configure it as in `kitconcept.volto` as shown in this PR:
+https://github.com/kitconcept/kitconcept.volto/pull/29
+
+Alternatively, if you use it in your project, you can run the provided upgrade step.
+`Migrates listings from Volto 12 to Volto 13`. You can find it in the `Add-ons` control panel.
+
 ## Control panel icons are now SVG based instead of font based
 
 It was long due, the control panel overview route `/controlpanel` now is using SVG icons
