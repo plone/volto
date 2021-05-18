@@ -9,6 +9,8 @@ describe('Listing Block Tests', () => {
       contentId: 'my-page',
       contentTitle: 'My Page',
     });
+    cy.removeContent({ path: '/front-page' });
+
     cy.visit('/my-page');
     cy.waitForResourceToLoad('@navigation');
     cy.waitForResourceToLoad('@breadcrumbs');
@@ -147,18 +149,6 @@ describe('Listing Block Tests', () => {
       contentTitle: 'My Page Test',
       path: 'my-page',
     });
-    cy.createContent({
-      contentType: 'News Item',
-      contentId: 'my-news',
-      contentTitle: 'My News',
-      path: 'my-page',
-    });
-    cy.createContent({
-      contentType: 'Folder',
-      contentId: 'my-folder',
-      contentTitle: 'My Folder',
-      path: 'my-page',
-    });
 
     cy.visit('/');
     cy.waitForResourceToLoad('@navigation');
@@ -173,8 +163,8 @@ describe('Listing Block Tests', () => {
       .type('Listing block - Test Root with Criteria: Type Page');
 
     //add listing block
-    cy.get('.block.text [contenteditable]').last().clear();
-    cy.get('.block.text [contenteditable]').last().click();
+    cy.get('.block.text [contenteditable]').first().clear();
+    cy.get('.block.text [contenteditable]').first().click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.blocks-chooser .common').contains('Listing').click();
@@ -189,15 +179,7 @@ describe('Listing Block Tests', () => {
     )
       .contains('Type')
       .click();
-    //Type matches any of...
-    cy.get(
-      '.querystring-widget .fields:first-of-type .main-fields-wrapper .field:last-of-type',
-    ).click();
-    cy.get(
-      '.querystring-widget .fields:first-of-type .main-fields-wrapper .field:last-of-type .react-select__menu .react-select__option',
-    )
-      .contains('Matches any of')
-      .click();
+
     //insert Page
     cy.get('.querystring-widget .fields:first-of-type > .field').click();
     cy.get(
