@@ -40,6 +40,36 @@ The advantage of this is that now you can use the `QuerystringWidget` with schem
 data forms in a reusable way in your custom blocks. See the Listing block code for
 further references.
 
+### Update your custom variations (templates) in your project listing blocks
+
+In the case that you have custom templates for your listing blocks in your projects, it's required that you update the definitions to match the new core variations syntax.
+
+going from this:
+
+```js
+config.blocks.blocksConfig.listing.templates = {
+  ...config.blocks.blocksConfig.listing.templates,
+  mycustomvariationid: {
+    label: 'My custom listing variation',
+    template: MyCustomListingBlockTemplate,
+  }
+}
+```
+
+To this:
+
+```js
+  config.blocks.blocksConfig.listing.variations = [
+    ...config.blocks.blocksConfig.listing.variations,
+    {
+      id: 'mycustomvariationid',
+      isDefault: false,
+      title: 'My custom listing variation',
+      template: MyCustomListingBlockTemplate,
+    }
+  ]
+```
+
 ## Control panel icons are now SVG based instead of font based
 
 It was long due, the control panel overview route `/controlpanel` now is using SVG icons
