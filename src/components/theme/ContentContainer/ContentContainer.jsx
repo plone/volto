@@ -15,7 +15,7 @@ const ContentContainer = ({ children, content }) => {
     if (!slots[name]) {
       return null;
     }
-    const props = { pathname, slotData, slotName: name, slots };
+    const props = { pathname, slotData, slotName: name, slots, content };
     return slots[name].available
       ? slots[name].available(props)
       : isSlotAvailable(props);
