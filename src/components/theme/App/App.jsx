@@ -40,7 +40,7 @@ import {
 
 import clearSVG from '@plone/volto/icons/clear.svg';
 import MultilingualRedirector from '../MultilingualRedirector/MultilingualRedirector';
-import WorkingCopyToastsFactory from '../WorkingCopyToastsFactory/WorkingCopyToastsFactory';
+import WorkingCopyToastsFactory from '../../manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory';
 
 import * as Sentry from '@sentry/browser';
 
