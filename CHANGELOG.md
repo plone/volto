@@ -7,6 +7,7 @@
 ### Feature
 
 ### Bugfix
+- Making placeholder image of video block to take 100% width when it is right or left aligned @iFlameing
 
 ### Internal
 
