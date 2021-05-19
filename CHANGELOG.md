@@ -1,6 +1,6 @@
 # Change Log
 
-## 13.0.1 (unreleased)
+## 13.0.2 (unreleased)
 
 ### Breaking
 
@@ -9,6 +9,12 @@
 ### Bugfix
 
 ### Internal
+
+## 13.0.1 (2021-05-18)
+
+### Bugfix
+
+- Backwards compatibility for existing listing blocks with templates @sneridagh
 
 ## 13.0.0 (2021-05-18)
 
