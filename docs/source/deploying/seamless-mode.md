@@ -9,31 +9,40 @@ it was in the same server and not outside).
 
 ## The goal?
 
-Achieve Zero configuration (avoiding at the same time hardcoded API_PATH or other vars
-in code) with good sensible defaults when setting up deployments.
+Achieve Zero configuration (avoiding at the same time hardcoded `RAZZLE_API_PATH` or
+other vars in code) with good sensible defaults when setting up deployments.
 
 Having in production this kind of setup, where both Volto and the API lives under the
 same sun. The content negotiation stays, so any API call is made with the Accept header,
 so it's routed to the backend.
 
-The idea was still use the same API_PATH meaning, and do not introduce any breaking
-change, so old deployments in place continue working as they are.
+The idea was still use the same `RAZZLE_API_PATH` meaning, and do not introduce any
+breaking change, so old deployments in place continue working as they are.
 
 ## Development environment
 
 * Seamless mode by default
-* Calls to API is always routed through internal proxy, http://localhost:3000 is both
+* Calls to API is always routed through internal proxy, `http://localhost:3000` is both
   Volto and Plone by default.
-* API_PATH sensible default is http://localhost:8080/Plone (no change of behaviour)
+* `RAZZLE_API_PATH` sensible default is `http://localhost:8080/Plone` (no change of
+  behaviour)
+
+![How Plone 6 works](HowPlone6Works001.png)
 
 ## Production environment
 
-* Nothing changes for old deployments, all work the same way if API_PATH is set
+* Nothing changes for old deployments, all work the same way if `RAZZLE_API_PATH` is set
 * If you want seamless in production as well you need to setup your reverse proxy (see
   attached Nginx reference config) properly, so the reverse proxy detects the accept
   header and route the requests properly, and remove API_PATH env var from your build In
   seamless mode no API_PATH is required (and should not be present at build time), but
   the Host header must be set in the reverse proxy (see attached Nginx reference config)
+* `yarn start:prod` does not work without setting a build time (or runtime)
+  `RAZZLE_API_PATH` enviroment variable. This is unavoidable if we want all the sensible
+  defaults in place in production mode, so it no longer defaults to
+  `http://localhost:8080/Plone`
+
+![How Plone 6 works](./HowPlone6Works002.png)
 
 ## Advantages of the seamless mode
 
