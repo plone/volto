@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Modify Default and Summary templates to render the LinkMore @ionlizarazu
+
 ### Internal
 
 ## 13.0.1 (2021-05-18)
