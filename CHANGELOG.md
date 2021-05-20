@@ -6,6 +6,8 @@
 
 ### Feature
 
+- enabled ability to set 'extractScripts' for error pages @giuliaghisini
+
 ### Bugfix
 
 ### Internal
