@@ -10,6 +10,9 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link, withRouter } from 'react-router-dom';
 import { find } from 'lodash';
+import { toast } from 'react-toastify';
+import { parse } from 'date-fns';
+import { Toast } from '@plone/volto/components';
 import { Pluggable, Plug } from '@plone/volto/components/manage/Pluggable';
 import { Icon, Display, Workflow } from '@plone/volto/components';
 import {
@@ -53,6 +56,20 @@ const messages = defineMessages({
   removeWorkingCopy: {
     id: 'Remove working copy',
     defaultMessage: 'Remove working copy',
+  },
+  workingAppliedTitle: {
+    id: 'Changes applied.',
+    defaultMessage: 'Changes applied',
+  },
+  workingCopyAppliedBy: {
+    id:
+      'Made by {creator} on {date}. This is not a working copy anymore, but the main content.',
+    defaultMessage:
+      'Made by {creator} on {date}. This is not a working copy anymore, but the main content.',
+  },
+  workingCopyRemovedTitle: {
+    id: 'The working copy was discarded',
+    defaultMessage: 'The working copy was discarded',
   },
 });
 
@@ -113,6 +130,12 @@ class More extends Component {
     const sharingAction = find(this.props.actions.object, {
       id: 'local_roles',
     });
+    const { content, intl, lang } = this.props;
+    const dateOptions = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    };
 
     return (
       <div
@@ -244,6 +267,28 @@ class More extends Component {
                           ),
                         );
                         this.props.closeMenu();
+                        toast.info(
+                          <Toast
+                            info
+                            title={intl.formatMessage(
+                              messages.workingAppliedTitle,
+                            )}
+                            content={intl.formatMessage(
+                              messages.workingCopyAppliedBy,
+                              {
+                                creator: content.working_copy?.creator_name,
+                                date: new Intl.DateTimeFormat(
+                                  lang,
+                                  dateOptions,
+                                ).format(parse(content.working_copy?.created)),
+                              },
+                            )}
+                          />,
+                          {
+                            toastId: 'workingcopyapplyinfo',
+                            autoClose: 10000,
+                          },
+                        );
                       });
                     }}
                   >
@@ -265,6 +310,18 @@ class More extends Component {
                           ),
                         );
                         this.props.closeMenu();
+                        toast.info(
+                          <Toast
+                            info
+                            title={intl.formatMessage(
+                              messages.workingCopyRemovedTitle,
+                            )}
+                          />,
+                          {
+                            toastId: 'workingcopyremovednotice',
+                            autoClose: 10000,
+                          },
+                        );
                       });
                     }}
                   >
@@ -301,6 +358,7 @@ export default compose(
       actions: state.actions.actions,
       pathname: props.pathname,
       content: state.content.data,
+      lang: state.intl.locale,
     }),
     { applyWorkingCopy, createWorkingCopy, removeWorkingCopy },
   ),
