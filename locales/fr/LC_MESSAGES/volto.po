@@ -158,6 +158,10 @@ msgstr ""
 msgid "Alt text"
 msgstr "Texte pour la balise alt"
 
+#: components/manage/Toolbar/More
+msgid "Apply working copy"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this field?"
 msgstr "Voulez-vous vraiment supprimer ce champ ?"
@@ -279,6 +283,10 @@ msgstr "Modifier l'état"
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Change workflow state recursively"
 msgstr "Modifier le "
+
+#: components/manage/Toolbar/More
+msgid "Changes applied."
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
@@ -1095,6 +1103,10 @@ msgstr "Echec de la connexion"
 msgid "Login Name"
 msgstr "Identifiant"
 
+#: components/manage/Toolbar/More
+msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 msgid "Make the table compact"
 msgstr "Faire une table compacte"
@@ -1481,6 +1493,10 @@ msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
+msgstr ""
+
+#: components/manage/Toolbar/More
+msgid "Remove working copy"
 msgstr ""
 
 #: components/manage/Actions/Actions
@@ -1904,6 +1920,10 @@ msgstr "Le processus d'inscription a réussi. Veuillez vérifier votre boîte e-
 #: components/manage/Preferences/PersonalInformation
 msgid "The user portrait/avatar"
 msgstr "Portrait / avatar de l'utilisateur"
+
+#: components/manage/Toolbar/More
+msgid "The working copy was discarded"
+msgstr ""
 
 #: components/theme/Footer/Footer
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."

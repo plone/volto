@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2021-05-19T15:36:00.187Z\n"
+"POT-Creation-Date: 2021-05-20T10:36:35.584Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -173,6 +173,11 @@ msgstr ""
 msgid "Alt text"
 msgstr ""
 
+#: components/manage/Toolbar/More
+# defaultMessage: Apply working copy
+msgid "Apply working copy"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Are you sure you want to delete this field?
 msgid "Are you sure you want to delete this field?"
@@ -315,6 +320,11 @@ msgstr ""
 #: components/manage/Contents/ContentsWorkflowModal
 # defaultMessage: Change workflow state recursively
 msgid "Change workflow state recursively"
+msgstr ""
+
+#: components/manage/Toolbar/More
+# defaultMessage: Changes applied
+msgid "Changes applied."
 msgstr ""
 
 #: components/manage/Preferences/ChangePassword
@@ -1314,6 +1324,11 @@ msgstr ""
 msgid "Login Name"
 msgstr ""
 
+#: components/manage/Toolbar/More
+# defaultMessage: Made by {creator} on {date}. This is not a working copy anymore, but the main content.
+msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Reduce cell padding
 msgid "Make the table compact"
@@ -1790,6 +1805,11 @@ msgstr ""
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: Remove
 msgid "Remove recurrence"
+msgstr ""
+
+#: components/manage/Toolbar/More
+# defaultMessage: Remove working copy
+msgid "Remove working copy"
 msgstr ""
 
 #: components/manage/Actions/Actions
@@ -2308,6 +2328,11 @@ msgstr ""
 #: components/manage/Preferences/PersonalInformation
 # defaultMessage: The user portrait/avatar
 msgid "The user portrait/avatar"
+msgstr ""
+
+#: components/manage/Toolbar/More
+# defaultMessage: The working copy was discarded
+msgid "The working copy was discarded"
 msgstr ""
 
 #: components/theme/Footer/Footer

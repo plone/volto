@@ -160,6 +160,10 @@ msgstr ""
 msgid "Alt text"
 msgstr ""
 
+#: components/manage/Toolbar/More
+msgid "Apply working copy"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this field?"
 msgstr ""
@@ -280,6 +284,10 @@ msgstr "Status wijzigen"
 
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Change workflow state recursively"
+msgstr ""
+
+#: components/manage/Toolbar/More
+msgid "Changes applied."
 msgstr ""
 
 #: components/manage/Preferences/ChangePassword
@@ -1097,6 +1105,10 @@ msgstr ""
 msgid "Login Name"
 msgstr "Gebruikersnaam"
 
+#: components/manage/Toolbar/More
+msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 msgid "Make the table compact"
 msgstr ""
@@ -1483,6 +1495,10 @@ msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
+msgstr ""
+
+#: components/manage/Toolbar/More
+msgid "Remove working copy"
 msgstr ""
 
 #: components/manage/Actions/Actions
@@ -1905,6 +1921,10 @@ msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 msgid "The user portrait/avatar"
+msgstr ""
+
+#: components/manage/Toolbar/More
+msgid "The working copy was discarded"
 msgstr ""
 
 #: components/theme/Footer/Footer

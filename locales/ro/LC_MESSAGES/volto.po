@@ -141,6 +141,10 @@ msgstr ""
 msgid "Alt text"
 msgstr "Text alternativ"
 
+#: components/manage/Toolbar/More
+msgid "Apply working copy"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this field?"
 msgstr "Sunteți sigur că doriți să ștergeți acest câmp?"
@@ -262,6 +266,10 @@ msgstr "Schimbă starea"
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Change workflow state recursively"
 msgstr "Schimbă starea fluxului de lucru recursiv"
+
+#: components/manage/Toolbar/More
+msgid "Changes applied."
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
@@ -1078,6 +1086,10 @@ msgstr "Autentificare eșuată"
 msgid "Login Name"
 msgstr "Nume de autentificare"
 
+#: components/manage/Toolbar/More
+msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 msgid "Make the table compact"
 msgstr "Compactati tabelul"
@@ -1464,6 +1476,10 @@ msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
+msgstr ""
+
+#: components/manage/Toolbar/More
+msgid "Remove working copy"
 msgstr ""
 
 #: components/manage/Actions/Actions
@@ -1887,6 +1903,10 @@ msgstr "Procesul de înregistrare a avut succes. Vă rugăm să verificați căs
 #: components/manage/Preferences/PersonalInformation
 msgid "The user portrait/avatar"
 msgstr "Portretul / avatarul utilizatorului"
+
+#: components/manage/Toolbar/More
+msgid "The working copy was discarded"
+msgstr ""
 
 #: components/theme/Footer/Footer
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."

@@ -151,6 +151,10 @@ msgstr "Alfabeticamente"
 msgid "Alt text"
 msgstr "Descrição Alt"
 
+#: components/manage/Toolbar/More
+msgid "Apply working copy"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this field?"
 msgstr "Você realmente deseja deletar este campo?"
@@ -272,6 +276,10 @@ msgstr "Alterar estado"
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Change workflow state recursively"
 msgstr "Alterar o estado de workflow recursivamente"
+
+#: components/manage/Toolbar/More
+msgid "Changes applied."
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
@@ -1088,6 +1096,10 @@ msgstr "Falha na autenticação"
 msgid "Login Name"
 msgstr "Nome de usuário"
 
+#: components/manage/Toolbar/More
+msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 msgid "Make the table compact"
 msgstr "Compactar a tabela"
@@ -1475,6 +1487,10 @@ msgstr "Remover Item"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
 msgstr "Remover a recorrência"
+
+#: components/manage/Toolbar/More
+msgid "Remove working copy"
+msgstr ""
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -1897,6 +1913,10 @@ msgstr "O processo de registro foi bem sucedido. Verifique sua caixa de entrada 
 #: components/manage/Preferences/PersonalInformation
 msgid "The user portrait/avatar"
 msgstr "Foto/avatar do usuário"
+
+#: components/manage/Toolbar/More
+msgid "The working copy was discarded"
+msgstr ""
 
 #: components/theme/Footer/Footer
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."

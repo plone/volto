@@ -148,6 +148,10 @@ msgstr "Alfabetikoki"
 msgid "Alt text"
 msgstr "Ordezko testua (alt)"
 
+#: components/manage/Toolbar/More
+msgid "Apply working copy"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this field?"
 msgstr "Eremu hau ezabatu egin nahi duzu?"
@@ -269,6 +273,10 @@ msgstr "Egoera aldatu"
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Change workflow state recursively"
 msgstr "Lan-fluxuaren egoera errekurtsiboki aldatu"
+
+#: components/manage/Toolbar/More
+msgid "Changes applied."
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
@@ -1085,6 +1093,10 @@ msgstr "Sartzeak huts egin du"
 msgid "Login Name"
 msgstr "Erabiltzaile-izena"
 
+#: components/manage/Toolbar/More
+msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 msgid "Make the table compact"
 msgstr "Taula trinkotu"
@@ -1472,6 +1484,10 @@ msgstr ""
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
 msgstr "Errepikapena ezabatu"
+
+#: components/manage/Toolbar/More
+msgid "Remove working copy"
+msgstr ""
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -1894,6 +1910,10 @@ msgstr "Izen-emate prozesua ondo egin duzu. Begiratu zure eposta, kontua aktibat
 #: components/manage/Preferences/PersonalInformation
 msgid "The user portrait/avatar"
 msgstr "Erabiltzailearen argazkia"
+
+#: components/manage/Toolbar/More
+msgid "The working copy was discarded"
+msgstr ""
 
 #: components/theme/Footer/Footer
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
