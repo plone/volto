@@ -295,8 +295,16 @@
       padding: 10px 0 10px 5px;
       cursor: pointer;
 
+      .ui.basic.icon.button {
+        margin-right: 5px;
+      }
+
       &.selected-item {
         background-color: @tealBackground;
+
+        .right-arrow-icon:hover {
+          background: #fff;
+        }
       }
 
       &.disabled {
