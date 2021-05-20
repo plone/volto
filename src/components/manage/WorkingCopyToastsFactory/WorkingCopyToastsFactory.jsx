@@ -8,6 +8,7 @@ import { Toast } from '@plone/volto/components';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import { parse } from 'date-fns';
 import config from '@plone/volto/registry';
+import useDeepCompareEffect from 'use-deep-compare-effect';
 
 const messages = defineMessages({
   thisIsAWorkingCopyOf: {
@@ -35,7 +36,7 @@ const WorkingCopyToastsFactory = (props) => {
     day: 'numeric',
   };
 
-  React.useEffect(() => {
+  useDeepCompareEffect(() => {
     if (content && config.settings.hasWorkingCopySupport) {
       if (content.working_copy) {
         let toastMessage, toastTitle;
@@ -102,7 +103,15 @@ const WorkingCopyToastsFactory = (props) => {
         }
       }
     }
-  }, [pathname, content, content?.title, content?.working_copy, intl]);
+  }, [
+    pathname,
+    content,
+    content?.title,
+    content?.working_copy,
+    intl,
+    lang,
+    dateOptions,
+  ]);
 
   return null;
 };

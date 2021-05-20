@@ -12,12 +12,18 @@ import { Link, withRouter } from 'react-router-dom';
 import { find } from 'lodash';
 import { Pluggable, Plug } from '@plone/volto/components/manage/Pluggable';
 import { Icon, Display, Workflow } from '@plone/volto/components';
-import { createWorkingCopy } from '@plone/volto/actions';
+import {
+  applyWorkingCopy,
+  createWorkingCopy,
+  removeWorkingCopy,
+} from '@plone/volto/actions';
 import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
 import rightArrowSVG from '@plone/volto/icons/right-key.svg';
 import userSVG from '@plone/volto/icons/user.svg';
+import applySVG from '@plone/volto/icons/ready.svg';
+import removeSVG from '@plone/volto/icons/circle-dismiss.svg';
 
 const messages = defineMessages({
   personalTools: {
@@ -39,6 +45,14 @@ const messages = defineMessages({
   CreateWorkingCopy: {
     id: 'Create working copy',
     defaultMessage: 'Create working copy',
+  },
+  applyWorkingCopy: {
+    id: 'Apply working copy',
+    defaultMessage: 'Apply working copy',
+  },
+  removeWorkingCopy: {
+    id: 'Remove working copy',
+    defaultMessage: 'Remove working copy',
   },
 });
 
@@ -174,40 +188,94 @@ class More extends Component {
           {(pluggables) => (
             <>
               {pluggables.length > 0 && (
-                <header>
-                  <h2>Manage content...</h2>
-                </header>
+                <>
+                  <header>
+                    <h2>Manage content...</h2>
+                  </header>
+                  <div className="pastanaga-menu-list">
+                    <ul>
+                      {pluggables.map((p) => (
+                        <>{p()}</>
+                      ))}
+                    </ul>
+                  </div>
+                </>
               )}
-              <div className="pastanaga-menu-list">
-                <ul>
-                  {pluggables.map((p) => (
-                    <>{p()}</>
-                  ))}
-                </ul>
-              </div>
             </>
           )}
         </Pluggable>
         {config.settings.hasWorkingCopySupport && (
-          <Plug pluggable="toolbar-more-manage-content" id="workingcopy">
-            <li>
-              <button
-                aria-label={this.props.intl.formatMessage(
-                  messages.CreateWorkingCopy,
-                )}
-                onClick={() => {
-                  this.props.createWorkingCopy(path).then((response) => {
-                    this.props.history.push(flattenToAppURL(response['@id']));
-                    this.props.closeMenu();
-                  });
-                }}
-              >
-                {this.props.intl.formatMessage(messages.CreateWorkingCopy)}
+          <>
+            {!this.props.content.working_copy && (
+              <Plug pluggable="toolbar-more-manage-content" id="workingcopy">
+                <li>
+                  <button
+                    aria-label={this.props.intl.formatMessage(
+                      messages.CreateWorkingCopy,
+                    )}
+                    onClick={() => {
+                      this.props.createWorkingCopy(path).then((response) => {
+                        this.props.history.push(
+                          flattenToAppURL(response['@id']),
+                        );
+                        this.props.closeMenu();
+                      });
+                    }}
+                  >
+                    {this.props.intl.formatMessage(messages.CreateWorkingCopy)}
 
-                <Icon name={rightArrowSVG} size="24px" />
-              </button>
-            </li>
-          </Plug>
+                    <Icon name={rightArrowSVG} size="24px" />
+                  </button>
+                </li>
+              </Plug>
+            )}
+            {this.props.content.working_copy && (
+              <Plug pluggable="toolbar-more-manage-content" id="workingcopy">
+                <li>
+                  <button
+                    aria-label={this.props.intl.formatMessage(
+                      messages.applyWorkingCopy,
+                    )}
+                    onClick={() => {
+                      this.props.applyWorkingCopy(path).then((response) => {
+                        this.props.history.push(
+                          flattenToAppURL(
+                            this.props.content.working_copy_of['@id'],
+                          ),
+                        );
+                        this.props.closeMenu();
+                      });
+                    }}
+                  >
+                    {this.props.intl.formatMessage(messages.applyWorkingCopy)}
+
+                    <Icon name={applySVG} size="24px" />
+                  </button>
+                </li>
+                <li>
+                  <button
+                    aria-label={this.props.intl.formatMessage(
+                      messages.removeWorkingCopy,
+                    )}
+                    onClick={() => {
+                      this.props.removeWorkingCopy(path).then((response) => {
+                        this.props.history.push(
+                          flattenToAppURL(
+                            this.props.content.working_copy_of['@id'],
+                          ),
+                        );
+                        this.props.closeMenu();
+                      });
+                    }}
+                  >
+                    {this.props.intl.formatMessage(messages.removeWorkingCopy)}
+
+                    <Icon name={removeSVG} size="24px" color="#e40166" />
+                  </button>
+                </li>
+              </Plug>
+            )}
+          </>
         )}
         {editAction && config.settings.isMultilingual && (
           <Plug pluggable="toolbar-more-manage-content" id="multilingual">
@@ -234,6 +302,6 @@ export default compose(
       pathname: props.pathname,
       content: state.content.data,
     }),
-    { createWorkingCopy },
+    { applyWorkingCopy, createWorkingCopy, removeWorkingCopy },
   ),
 )(More);

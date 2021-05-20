@@ -120,4 +120,8 @@ export { loadLazyLibrary } from '@plone/volto/actions/lazyLibraries/lazyLibrarie
 export { getContextNavigation } from '@plone/volto/actions/contextNavigation/contextNavigation';
 export * from './asyncConnect/asyncConnect';
 export { changeLanguage, changeLanguageCookies } from './language/language';
-export { createWorkingCopy } from './workingcopy/workingcopy';
+export {
+  applyWorkingCopy,
+  createWorkingCopy,
+  removeWorkingCopy,
+} from './workingcopy/workingcopy';
