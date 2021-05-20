@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Improve folder_contents workflow state (#2017) @avoinea
+
 ### Internal
 
 ## 13.0.1 (2021-05-18)
