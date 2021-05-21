@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Error message info for user on resetting password with non existing email. @ksuess
+
 ### Internal
 
 ## 13.0.1 (2021-05-18)

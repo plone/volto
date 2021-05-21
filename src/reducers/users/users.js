@@ -165,13 +165,23 @@ export default function users(state = initialState, action = {}) {
     case `${UPDATE_USER}_FAIL`:
     case `${UPDATE_PASSWORD}_FAIL`:
     case `${INITIAL_PASSWORD}_FAIL`:
-    case `${RESET_PASSWORD}_FAIL`:
       return {
         ...state,
         [getRequestKey(action.type)]: {
           loading: false,
           loaded: false,
           error: action.error.error,
+        },
+      };
+    case `${RESET_PASSWORD}_FAIL`:
+      return {
+        ...state,
+        [getRequestKey(action.type)]: {
+          loading: false,
+          loaded: false,
+          error: {
+            message: 'No user registration found for this email address.',
+          },
         },
       };
     case Show_All_USERS: {
