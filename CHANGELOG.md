@@ -1,6 +1,6 @@
 # Change Log
 
-## 13.0.2 (unreleased)
+## 13.0.2 (2021-05-22)
 
 ### Bugfix
 
