@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Apply the `schemaEnhancer` from the main block even if no variations are found @sneridagh
+
 ### Internal
 
 ## 13.0.1 (2021-05-18)
