@@ -2,10 +2,6 @@
 
 ## 13.0.2 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Apply the `schemaEnhancer` from the main block even if no variations are found @sneridagh
