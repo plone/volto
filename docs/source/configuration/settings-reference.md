@@ -20,7 +20,7 @@ This list is still incomplete, contributions are welcomed!
 ### sentryOptions
 
 !!! block ""
-Sentry configuration:
+    Sentry configuration:
 
     ```js
     import {
