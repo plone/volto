@@ -203,7 +203,11 @@ server.get('/*', (req, res) => {
         res.set({
           'Cache-Control': 'no-cache',
         });
-
+        console.log(
+          "config.settings.serverConfig.extractScripts?.errorPages || process.env.NODE_ENV !== 'production'",
+          config.settings.serverConfig.extractScripts?.errorPages ||
+            process.env.NODE_ENV !== 'production',
+        );
         res.status(context.error_code).send(
           `<!doctype html>
               ${renderToString(
@@ -211,7 +215,10 @@ server.get('/*', (req, res) => {
                   extractor={extractor}
                   markup={markup}
                   store={store}
-                  extractScripts={process.env.NODE_ENV !== 'production'}
+                  extractScripts={
+                    config.settings.serverConfig.extractScripts?.errorPages ||
+                    process.env.NODE_ENV !== 'production'
+                  }
                   criticalCss={readCriticalCss(req)}
                 />,
               )}
