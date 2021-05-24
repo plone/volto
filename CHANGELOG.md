@@ -11,6 +11,7 @@
 ### Bugfix
 
 - Modify Default and Summary templates to render the LinkMore @ionlizarazu
+- Revert #2472, this broke normal development mode images @sneridagh
 
 ### Internal
 

@@ -19,10 +19,6 @@ export const getAPIResourceWithAuth = (req) =>
     let apiPath = '';
     if (settings.internalApiPath && __SERVER__) {
       apiPath = settings.internalApiPath;
-    } else if (__DEVELOPMENT__ && config.settings.apiPath) {
-      // Use case: you are developing using an API_PATH (e.g. in the RobotServer)
-      // then the already set API_PATH should prevail
-      apiPath = config.settings.apiPath;
     } else if (__DEVELOPMENT__ && config.settings.devProxyToApiPath) {
       apiPath = config.settings.devProxyToApiPath;
     } else {
