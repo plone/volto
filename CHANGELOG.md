@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Second try to fix images in dev mode when api path is present (e.g. using the Robot server in Cypress tests) @sneridagh
+
 ### Internal
 
 ## 13.1.0 (2021-05-24)
