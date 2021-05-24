@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Revert #2472, this broke normal development mode images @sneridagh
+
 ### Internal
 
 ## 13.0.2 (2021-05-22)
@@ -17,6 +19,8 @@
 - Apply the `schemaEnhancer` from the main block even if no variations are found @sneridagh
 
 ### Internal
+
+- Fix use case: you are developing using an API_PATH (e.g. in the RobotServer) and the images are not showing because it thinks that under development it should use the internal proxy. @sneridagh
 
 ## 13.0.1 (2021-05-18)
 
