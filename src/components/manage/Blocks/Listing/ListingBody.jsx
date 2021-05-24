@@ -27,7 +27,8 @@ const ListingBody = React.memo(
           getQueryStringResults(path, { ...data, fullobjects: 1 }, data.block),
         );
       } else if (
-        data.template === 'imageGallery' &&
+        ((!data.variation && data.template === 'imageGallery') ||
+          data.variation === 'imageGallery') &&
         data?.query?.length === 0
       ) {
         dispatch(
@@ -65,7 +66,18 @@ const ListingBody = React.memo(
           []
         : folderItems;
 
-    const ListingBodyTemplate = variation.template;
+    let ListingBodyTemplate;
+    // Legacy support if template is present
+    if (data.template && !data.variation) {
+      const variations =
+        config.blocks?.blocksConfig['listing']?.variations || [];
+      const legacyTemplateConfig = variations.find(
+        (item) => item.id === data.template,
+      );
+      ListingBodyTemplate = legacyTemplateConfig.template;
+    } else {
+      ListingBodyTemplate = variation.template;
+    }
 
     function handleContentPaginationChange(e, { activePage }) {
       !isEditMode && window.scrollTo(0, 0);
