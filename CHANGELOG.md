@@ -2,8 +2,6 @@
 
 ## 13.0.3 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - enabled ability to set 'extractScripts' for error pages @giuliaghisini
@@ -12,8 +10,6 @@
 
 - Modify Default and Summary templates to render the LinkMore @ionlizarazu
 - Revert #2472, this broke normal development mode images @sneridagh
-
-### Internal
 
 ## 13.0.2 (2021-05-22)
 
