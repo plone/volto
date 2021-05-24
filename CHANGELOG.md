@@ -1,16 +1,28 @@
 # Change Log
 
-## 13.0.2 (unreleased)
+## 13.0.3 (unreleased)
 
 ### Breaking
 
 ### Feature
+
+- enabled ability to set 'extractScripts' for error pages @giuliaghisini
 
 ### Bugfix
 
 - Modify Default and Summary templates to render the LinkMore @ionlizarazu
 
 ### Internal
+
+## 13.0.2 (2021-05-22)
+
+### Bugfix
+
+- Apply the `schemaEnhancer` from the main block even if no variations are found @sneridagh
+
+### Internal
+
+- Fix use case: you are developing using an API_PATH (e.g. in the RobotServer) and the images are not showing because it thinks that under development it should use the internal proxy. @sneridagh
 
 ## 13.0.1 (2021-05-18)
 

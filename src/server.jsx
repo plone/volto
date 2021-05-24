@@ -226,7 +226,10 @@ server.get('/*', (req, res) => {
                   extractor={extractor}
                   markup={markup}
                   store={store}
-                  extractScripts={process.env.NODE_ENV !== 'production'}
+                  extractScripts={
+                    config.settings.serverConfig.extractScripts?.errorPages ||
+                    process.env.NODE_ENV !== 'production'
+                  }
                   criticalCss={readCriticalCss(req)}
                   apiPath={apiPathFromHostHeader || config.settings.apiPath}
                 />,
