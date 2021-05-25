@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Add [Volta](https://volta.sh) support @nzambello
+
 ## 13.1.1 (2021-05-25)
 
 ### Bugfix
