@@ -2,12 +2,6 @@
 
 ## 13.1.2 (unreleased)
 
-### Breaking
-
-### Feature
-
-### Bugfix
-
 ### Internal
 
 - Make the `AddLinkForm` component generic, to allow reuse in volto-slate @tiberiuichim
