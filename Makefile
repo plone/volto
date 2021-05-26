@@ -10,6 +10,10 @@ SHELL:=bash
 MAKEFLAGS+=--warn-undefined-variables
 MAKEFLAGS+=--no-builtin-rules
 
+# Project settings
+
+INSTANCE_PORT=8080
+
 # Recipe snippets for reuse
 
 # We like colors
@@ -46,14 +50,6 @@ build-frontend:
 
 .PHONY: build-backend
 build-backend:  ## Build Plone 5.2
-	(cd api && python3 -m venv .)
-	(cd api && bin/pip install --upgrade pip)
-	(cd api && bin/pip install --upgrade wheel)
-	(cd api && bin/pip install -r requirements.txt)
-	(cd api && bin/buildout)
-
-.PHONY: build-backend-withport
-build-backend-withport:  ## Build Plone 5.2 in specific port
 	(cd api && python3 -m venv .)
 	(cd api && bin/pip install --upgrade pip)
 	(cd api && bin/pip install --upgrade wheel)
