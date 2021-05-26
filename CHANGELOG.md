@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Changed 'batch_size' attribute in 'b_size' in querystring widget. @giuliaghisini
+
 ### Internal
 
 ## 13.1.1 (2021-05-25)
