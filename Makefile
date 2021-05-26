@@ -74,6 +74,11 @@ docs-build:
 	(cd docs && ../bin/mkdocs build)
 	yarn build-storybook -o docs/build/storybook
 
+.PHONY: start
+# Run both the back-end and the front end
+start:
+	$(MAKE) -j 2 start-backend start-frontend
+
 .PHONY: start-frontend
 start-frontend: dist
 	yarn start:prod
