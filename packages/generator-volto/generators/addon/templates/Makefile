@@ -10,6 +10,10 @@ GREEN=`tput setaf 2`
 RESET=`tput sgr0`
 YELLOW=`tput setaf 3`
 
+
+# Top-level targets
+
+.PHONY: project
 project:
 	npm install -g yo
 	npm install -g @plone/generator-volto
@@ -22,6 +26,7 @@ project:
 	@echo "$(GREEN)Volto project is ready!$(RESET)"
 	@echo "$(RED)Now run: cd project && yarn start$(RESET)"
 
+.PHONY: all
 all: project
 
 .PHONY: start-test-backend
