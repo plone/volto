@@ -1,3 +1,17 @@
+# Volto development
+
+### Defensive settings for make:
+#     https://tech.davis-hansson.com/p/make/
+SHELL:=bash
+.ONESHELL:
+.SHELLFLAGS:=-xeu -o pipefail -O inherit_errexit -c
+.SILENT:
+.DELETE_ON_ERROR:
+MAKEFLAGS+=--warn-undefined-variables
+MAKEFLAGS+=--no-builtin-rules
+
+# Recipe snippets for reuse
+
 # We like colors
 # From: https://coderwall.com/p/izxssa/colored-makefile-for-golang-projects
 RED=`tput setaf 1`
