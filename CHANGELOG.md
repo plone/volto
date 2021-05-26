@@ -1,6 +1,47 @@
 # Change Log
 
-## 13.0.0 (unreleased)
+## 13.1.2 (unreleased)
+
+### Breaking
+
+### Feature
+
+### Bugfix
+
+### Internal
+
+## 13.1.1 (2021-05-25)
+
+### Bugfix
+
+- Second try to fix images in dev mode when api path is present (e.g. using the Robot server in Cypress tests) @sneridagh
+
+## 13.1.0 (2021-05-24)
+
+### Feature
+
+- enabled ability to set 'extractScripts' for error pages @giuliaghisini
+
+### Bugfix
+
+- Modify Default and Summary templates to render the LinkMore @ionlizarazu
+- Revert #2472, this broke normal development mode images @sneridagh
+
+## 13.0.2 (2021-05-22)
+
+### Bugfix
+
+- Apply the `schemaEnhancer` from the main block even if no variations are found @sneridagh
+
+### Internal
+
+## 13.0.1 (2021-05-18)
+
+### Bugfix
+
+- Backwards compatibility for existing listing blocks with templates @sneridagh
+
+## 13.0.0 (2021-05-18)
 
 ### Breaking
 
@@ -42,6 +83,7 @@ https://docs.voltocms.com/upgrade-guide/
   and set it in runtime is now the recommended setup) @sneridagh
 - Fix sort_order restapi call, works on action for existing listing blocks
   and in ListingData saving correctly new ones @nzambello
+- Fix `contextURL` in `ObjectBrowser` for special (add/edit) views using `getBaseUrl` @sneridagh
 
 ### Internal
 
