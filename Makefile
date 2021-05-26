@@ -50,11 +50,7 @@ build-frontend:
 
 .PHONY: build-backend
 build-backend:  ## Build Plone 5.2
-	(cd api && python3 -m venv .)
-	(cd api && bin/pip install --upgrade pip)
-	(cd api && bin/pip install --upgrade wheel)
-	(cd api && bin/pip install -r requirements.txt)
-	(cd api && bin/buildout instance:http-address=$(INSTANCE_PORT))
+	$(MAKE) -C "./api/" build
 
 .PHONY: dist
 dist:
@@ -63,7 +59,7 @@ dist:
 
 .PHONY: test
 test:
-	(cd api && bin/test)
+	$(MAKE) -C "./api/" test
 
 .PHONY: docs-serve
 docs-serve:
@@ -104,7 +100,7 @@ test-acceptance-server-multilingual:
 
 .PHONY: test-acceptance-server-old
 test-acceptance-server-old:
-	ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,kitconcept.volto,kitconcept.volto.cors APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,kitconcept.volto:default-homepage ./api/bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
+	$(MAKE) -C "./api/" test-acceptance-server-old
 
 .PHONY: test-acceptance-guillotina
 test-acceptance-guillotina:
@@ -112,18 +108,16 @@ test-acceptance-guillotina:
 
 .PHONY: clean
 clean:
-	(cd api && rm -rf bin eggs develop-eggs include lib parts .installed.cfg .mr.developer.cfg)
+	$(MAKE) -C "./api/" clean
 	rm -rf node_modules
 
 .PHONY: start-backend
 start-backend: ## Start Plone Backend
-	@echo "$(GREEN)==> Start Plone Backend$(RESET)"
-	(cd api && PYTHONWARNINGS=ignore bin/instance fg)
+	$(MAKE) -C "./api/" start
 
 .PHONY: start-test-backend
 start-test-backend: ## Start Test Plone Backend
-	@echo "$(GREEN)==> Start Test Plone Backend$(RESET)"
-	ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,kitconcept.volto,kitconcept.volto.cors APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,kitconcept.volto:default-homepage ./api/bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
+	$(MAKE) -C "./api/" start-test
 
 .PHONY: start-test-frontend
 start-test-frontend: ## Start Test Volto Frontend
