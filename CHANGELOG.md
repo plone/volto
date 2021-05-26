@@ -10,6 +10,9 @@
 
 ### Internal
 
+- Make the `AddLinkForm` component generic, to allow reuse in volto-slate @tiberiuichim
+- Adding hover effect on ObjectBrowserNav icon @iFlameing
+
 ## 13.1.1 (2021-05-25)
 
 ### Bugfix
@@ -116,7 +119,6 @@ https://docs.voltocms.com/upgrade-guide/
 - Upgrade `yarnhook` and `yarn-deduplicate` @sneridagh
 - Add Listing block test for root path @ionlizarazu
 - Only log changes to po (`poToJson`) if running as a script @sneridagh
-- Make the `AddLinkForm` component generic, to allow reuse in volto-slate @tiberiuichim
 
 ## 13.0.0-alpha.9 (2021-05-13)
 
