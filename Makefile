@@ -78,6 +78,10 @@ docs-build:
 start-frontend: dist
 	yarn start:prod
 
+.PHONY: start-backend
+start-backend: ## Start Plone Backend
+	$(MAKE) -C "./api/" start
+
 .PHONY: start-backend-docker
 start-backend-docker:
 	docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="kitconcept.volto" -e ZCML="kitconcept.volto.cors" plone
@@ -85,6 +89,25 @@ start-backend-docker:
 .PHONY: start-backend-docker-guillotina
 start-backend-docker-guillotina:
 	docker-compose -f g-api/docker-compose.yml up -d
+
+.PHONY: start-test
+start-test: ## Start Test
+	@echo "$(GREEN)==> Start Test$(RESET)"
+	yarn cypress:open
+
+.PHONY: start-test-all
+start-test-all: ## Start Test
+	@echo "$(GREEN)==> Start Test$(RESET)"
+	yarn ci:cypress:run
+
+.PHONY: start-test-frontend
+start-test-frontend: ## Start Test Volto Frontend
+	@echo "$(GREEN)==> Start Test Volto Frontend$(RESET)"
+	RAZZLE_API_PATH=http://localhost:55001/plone yarn build && NODE_ENV=production node build/server.js
+
+.PHONY: start-test-backend
+start-test-backend: ## Start Test Plone Backend
+	$(MAKE) -C "./api/" start-test
 
 .PHONY: stop-backend-docker-guillotina
 stop-backend-docker-guillotina:
@@ -110,26 +133,3 @@ test-acceptance-guillotina:
 clean:
 	$(MAKE) -C "./api/" clean
 	rm -rf node_modules
-
-.PHONY: start-backend
-start-backend: ## Start Plone Backend
-	$(MAKE) -C "./api/" start
-
-.PHONY: start-test-backend
-start-test-backend: ## Start Test Plone Backend
-	$(MAKE) -C "./api/" start-test
-
-.PHONY: start-test-frontend
-start-test-frontend: ## Start Test Volto Frontend
-	@echo "$(GREEN)==> Start Test Volto Frontend$(RESET)"
-	RAZZLE_API_PATH=http://localhost:55001/plone yarn build && NODE_ENV=production node build/server.js
-
-.PHONY: start-test
-start-test: ## Start Test
-	@echo "$(GREEN)==> Start Test$(RESET)"
-	yarn cypress:open
-
-.PHONY: start-test-all
-start-test-all: ## Start Test
-	@echo "$(GREEN)==> Start Test$(RESET)"
-	yarn ci:cypress:run
