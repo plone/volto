@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Add internal URL blacklist to avoid render custom routes in Volto @nzambello
+
 ### Bugfix
 
 ### Internal

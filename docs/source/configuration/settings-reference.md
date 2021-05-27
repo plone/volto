@@ -10,17 +10,17 @@ This list is still incomplete, contributions are welcomed!
 ### navDepth
 
 !!! block ""
-    Navigation levels depth used in the navigation endpoint calls. Increasing this is useful for implementing fat navigation menus. Defaults to `1`.
+Navigation levels depth used in the navigation endpoint calls. Increasing this is useful for implementing fat navigation menus. Defaults to `1`.
 
 ### defaultBlockType
 
 !!! block ""
-    The default block type in Volto is "text", which uses the current DraftJS-based implementation for the rich text editor. Future alternative rich text editors will need to use this setting and replace it with their block type. The block definition should also include the `blockHasValue` function, which is needed to activate the Block Chooser functionality. See this function signature in [Blocks > Settings](../blocks/settings.md).
+The default block type in Volto is "text", which uses the current DraftJS-based implementation for the rich text editor. Future alternative rich text editors will need to use this setting and replace it with their block type. The block definition should also include the `blockHasValue` function, which is needed to activate the Block Chooser functionality. See this function signature in [Blocks > Settings](../blocks/settings.md).
 
 ### sentryOptions
 
 !!! block ""
-    Sentry configuration:
+Sentry configuration:
 
     ```js
     import {
@@ -181,6 +181,20 @@ config.settings.asyncPropsExtenders = [
   }
 ]
 
+```
+
+### Internal URL blacklist
+
+If another application is published under the same top domain as Volto, you could have a route like `/abc` which should be not rendered by Volto.
+This can be achieved by a rule in the reverse proxy (Apache or Nginx for example) but, when navigating client side, you may have references to that route so Volto is
+handling that as an internal URL and fetching the content will break.
+You can disable that path in `config.settings.internalUrlBlacklist` so it will be handled as an external link.
+
+```js
+config.settings.internalUrlBlacklist = [
+  '/external-subsite',
+  '/another-blacklisted-url',
+];
 ```
 
 ## Server-specific serverConfig
