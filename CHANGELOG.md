@@ -7,6 +7,7 @@
 ### Feature
 
 - Add internal URL blacklist to avoid render custom routes in Volto @nzambello
+- Add Image with srcset and lazy loading using Plone scales @nzambello
 
 ### Bugfix
 
