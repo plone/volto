@@ -38,7 +38,7 @@ exports[`renders an querystring widget component 1`] = `
   </div>
   <div
     className="mocked-number-widget"
-    id="mocked-field-batch_size-4-my-field"
+    id="mocked-field-b_size-4-my-field"
   >
     Item batch size
      - 

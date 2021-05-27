@@ -51,7 +51,7 @@ const QuerystringWidget = (props) => {
           'sort_on',
           'sort_order_boolean',
           'limit',
-          'batch_size',
+          'b_size',
         ],
       },
     ],
@@ -76,7 +76,7 @@ const QuerystringWidget = (props) => {
         title: intl.formatMessage(messages.limit),
         type: 'number',
       },
-      batch_size: {
+      b_size: {
         title: intl.formatMessage(messages.itemBatchSize),
         type: 'number',
       },
