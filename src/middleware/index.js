@@ -6,3 +6,4 @@
 
 export api from '@plone/volto/middleware/api';
 export crashReporter from '@plone/volto/middleware/crashReporter';
+export blacklistRoutes from './blacklistRoutes';

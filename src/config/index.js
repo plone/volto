@@ -137,6 +137,18 @@ let config = {
     storeExtenders: [],
     showTags: true,
     controlPanelsIcons,
+    externalRoutes: [
+      // {
+      //   match: {
+      //     path: '/news',
+      //     exact: true,
+      //     strict: false,
+      //   },
+      //   url(payload) {
+      //     return payload.location.pathname;
+      //   },
+      // },
+    ],
     showSelfRegistration: false,
     internalUrlBlacklist: [], // URL to be considered as external
   },
