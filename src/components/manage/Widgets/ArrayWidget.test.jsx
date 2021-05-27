@@ -8,6 +8,12 @@ import ArrayWidget from './ArrayWidget';
 
 const mockStore = configureStore();
 
+jest.mock('@plone/volto/helpers/Loadable/Loadable');
+beforeAll(
+  async () =>
+    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
+);
+
 test('renders an array widget component', async () => {
   const store = mockStore({
     intl: {

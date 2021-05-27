@@ -7,6 +7,12 @@ import Display from './Display';
 
 const mockStore = configureStore();
 
+jest.mock('@plone/volto/helpers/Loadable/Loadable');
+beforeAll(
+  async () =>
+    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
+);
+
 describe('Display', () => {
   it('renders an actions component', async () => {
     const store = mockStore({

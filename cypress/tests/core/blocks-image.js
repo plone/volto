@@ -40,6 +40,13 @@ describe('Blocks Tests', () => {
       'src',
       'https://github.com/plone/volto/raw/master/docs/logos/volto-colorful.png',
     );
+
+    cy.get('#page-document img')
+      .should('be.visible')
+      .and(($img) => {
+        // "naturalWidth" and "naturalHeight" are set when the image loads
+        expect($img[0].naturalWidth).to.be.greaterThan(0);
+      });
   });
 
   // OLD ADD IMAGE VIA DRAG AND DROP
@@ -106,7 +113,14 @@ describe('Blocks Tests', () => {
     // then image src must be equal to image name
     cy.get('.block img')
       .should('have.attr', 'src')
-      .and('eq', '/my-page/image.png/@@images/image/listing');
+      .and('eq', '/my-page/image.png/@@images/image');
+
+    cy.get('.block img')
+      .should('be.visible')
+      .and(($img) => {
+        // "naturalWidth" and "naturalHeight" are set when the image loads
+        expect($img[0].naturalWidth).to.be.greaterThan(0);
+      });
   });
 
   it('Create a image block document in edit mode', () => {
@@ -126,5 +140,12 @@ describe('Blocks Tests', () => {
     cy.get('.block img')
       .should('have.attr', 'src')
       .and('eq', '/image.png/@@images/image');
+
+    cy.get('.block img')
+      .should('be.visible')
+      .and(($img) => {
+        // "naturalWidth" and "naturalHeight" are set when the image loads
+        expect($img[0].naturalWidth).to.be.greaterThan(0);
+      });
   });
 });

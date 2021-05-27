@@ -4,6 +4,8 @@
 
 ### Added
 
+- Add prettier and lint scripts to generator @tisto
+
 ### Changes
 
 ## 4.3.1 (2021-05-07)

@@ -81,7 +81,9 @@ let config = {
     apiPath,
     apiExpanders: [],
     devProxyToApiPath:
-      process.env.RAZZLE_DEV_PROXY_API_PATH || 'http://localhost:8080/Plone', // Set it to '' for disabling the proxy
+      process.env.RAZZLE_DEV_PROXY_API_PATH ||
+      process.env.RAZZLE_API_PATH ||
+      'http://localhost:8080/Plone', // Set it to '' for disabling the proxy
     // proxyRewriteTarget Set it for set a custom target for the proxy or overide the internal VHM rewrite
     // proxyRewriteTarget: '/VirtualHostBase/http/localhost:8080/Plone/VirtualHostRoot/_vh_api'
     // proxyRewriteTarget: 'https://myvoltositeinproduction.com'

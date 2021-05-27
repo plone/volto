@@ -46,6 +46,24 @@ describe('UniversalLink', () => {
     expect(json).toMatchSnapshot();
   });
 
+  it('renders a UniversalLink component if no external(href) link passed', () => {
+    const component = renderer.create(
+      <Provider store={store}>
+        <MemoryRouter>
+          <UniversalLink
+            item={{
+              '@id': 'http://localhost:3000/en/welcome-to-volto',
+            }}
+          >
+            <h1>Title</h1>
+          </UniversalLink>
+        </MemoryRouter>
+      </Provider>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
+
   it('check UniversalLink set rel attribute for ext links', () => {
     const { getByTitle } = render(
       <Provider store={store}>

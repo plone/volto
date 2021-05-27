@@ -9,6 +9,8 @@ describe('Listing Block Tests', () => {
       contentId: 'my-page',
       contentTitle: 'My Page',
     });
+    cy.removeContent({ path: '/front-page' });
+
     cy.visit('/my-page');
     cy.waitForResourceToLoad('@navigation');
     cy.waitForResourceToLoad('@breadcrumbs');
@@ -136,6 +138,79 @@ describe('Listing Block Tests', () => {
       'have.attr',
       'href',
       '/my-page/page-one',
+    );
+  });
+
+  it('Listing block - Test Root with Criteria: Type Page', () => {
+    // Given three Document in My Page i.e My News, My Folder and My Page Test
+    cy.createContent({
+      contentType: 'Document',
+      contentId: 'my-page-test',
+      contentTitle: 'My Page Test',
+      path: 'my-page',
+    });
+
+    cy.visit('/');
+    cy.waitForResourceToLoad('@navigation');
+    cy.waitForResourceToLoad('@breadcrumbs');
+    cy.waitForResourceToLoad('@actions');
+    cy.waitForResourceToLoad('@types');
+    cy.waitForResourceToLoad('');
+    cy.navigate('/edit');
+
+    cy.get(`.block.title [data-contents]`)
+      .clear()
+      .type('Listing block - Test Root with Criteria: Type Page');
+
+    //add listing block
+    cy.get('.block.text [contenteditable]').first().clear();
+    cy.get('.block.text [contenteditable]').first().click();
+    cy.get('button.block-add-button').click();
+    cy.get('.blocks-chooser .title').contains('Common').click();
+    cy.get('.blocks-chooser .common').contains('Listing').click();
+
+    //********  add Type criteria filter
+    cy.get('.sidebar-container .tabs-wrapper .menu .item')
+      .contains('Block')
+      .click();
+    cy.get('.querystring-widget .fields').contains('Add criteria').click();
+    cy.get(
+      '.querystring-widget .fields:first-of-type .field:first-of-type .react-select__menu .react-select__option',
+    )
+      .contains('Type')
+      .click();
+
+    //insert Page
+    cy.get('.querystring-widget .fields:first-of-type > .field').click();
+    cy.get(
+      '.querystring-widget .fields:first-of-type > .field .react-select__menu .react-select__option',
+    )
+      .contains('Page')
+      .click();
+
+    //before save, vrify if in list there's a page with id my-page-test
+    cy.get(`.block.listing .listing-body:first-of-type`).contains('My Page');
+    //before save, verify if in list there isn't the News with title My News
+    cy.get(`.block.listing .listing-body`)
+      .contains('My News')
+      .should('not.exist');
+
+    //save
+    cy.get('#toolbar-save').click();
+    cy.waitForResourceToLoad('@navigation');
+    cy.waitForResourceToLoad('@breadcrumbs');
+    cy.waitForResourceToLoad('@actions');
+    cy.waitForResourceToLoad('@types');
+    cy.waitForResourceToLoad('@querystring-search');
+    cy.waitForResourceToLoad('');
+
+    cy.visit('/');
+
+    cy.get('#page-document .listing-body:first-of-type').contains('My Page');
+    cy.get('#page-document .listing-item:first-of-type a').should(
+      'have.attr',
+      'href',
+      '/my-page',
     );
   });
 

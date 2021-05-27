@@ -1,7 +1,7 @@
 import React from 'react';
 import ObjectBrowserBody from '@plone/volto/components/manage/Sidebar/ObjectBrowserBody';
-import { getParentURL } from '@plone/volto/components/manage/Sidebar/ObjectBrowserBody';
 import SidebarPopup from '@plone/volto/components/manage/Sidebar/SidebarPopup';
+import { getBaseUrl } from '@plone/volto/helpers';
 
 const withObjectBrowser = (WrappedComponent) =>
   class extends React.Component {
@@ -77,9 +77,7 @@ const withObjectBrowser = (WrappedComponent) =>
         this.props.pathname ||
         this.props.location?.pathname ||
         this.state?.currentPath;
-      if (contextURL?.endsWith('edit')) {
-        contextURL = getParentURL(contextURL);
-      }
+
       return (
         <>
           <WrappedComponent
@@ -102,7 +100,7 @@ const withObjectBrowser = (WrappedComponent) =>
                     ? this.props[this.state.propDataName]
                     : this.props.data
                 }
-                contextURL={contextURL}
+                contextURL={getBaseUrl(contextURL)}
                 closeObjectBrowser={this.closeObjectBrowser}
                 mode={this.state.mode}
                 onSelectItem={this.state.onSelectItem}
