@@ -1,7 +1,21 @@
-SHELL=/bin/bash
+# Yeoman Volto App development
+
+### Defensive settings for make:
+#     https://tech.davis-hansson.com/p/make/
+SHELL:=bash
+.ONESHELL:
+.SHELLFLAGS:=-xeu -o pipefail -O inherit_errexit -c
+.SILENT:
+.DELETE_ON_ERROR:
+MAKEFLAGS+=--warn-undefined-variables
+MAKEFLAGS+=--no-builtin-rules
+
+# Project settings
 
 DIR=$(shell basename $$(pwd))
 ADDON ?= "<%= addonName %>"
+
+# Recipe snippets for reuse
 
 # We like colors
 # From: https://coderwall.com/p/izxssa/colored-makefile-for-golang-projects
@@ -10,6 +24,10 @@ GREEN=`tput setaf 2`
 RESET=`tput sgr0`
 YELLOW=`tput setaf 3`
 
+
+# Top-level targets
+
+.PHONY: project
 project:
 	npm install -g yo
 	npm install -g @plone/generator-volto
@@ -22,6 +40,7 @@ project:
 	@echo "$(GREEN)Volto project is ready!$(RESET)"
 	@echo "$(RED)Now run: cd project && yarn start$(RESET)"
 
+.PHONY: all
 all: project
 
 .PHONY: start-test-backend
