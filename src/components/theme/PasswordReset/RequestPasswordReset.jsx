@@ -45,6 +45,14 @@ const messages = defineMessages({
     id: 'Password reset',
     defaultMessage: 'Password reset',
   },
+  passwordResetFailed: {
+    id: 'Password Reset Failed',
+    defaultMessage: 'Password Reset Failed',
+  },
+  passwordResetFailedContent: {
+    id: 'No user registration found for this identifier',
+    defaultMessage: 'No user registration found for this identifier',
+  },
 });
 
 /**
@@ -99,6 +107,15 @@ class RequestPasswordReset extends Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.loading && nextProps.loaded) {
       this.setState({ isSuccessful: true });
+    }
+    if (nextProps.error) {
+      this.setState({
+        error: {
+          message: this.props.intl.formatMessage(
+            messages.passwordResetFailedContent,
+          ),
+        },
+      });
     }
   }
 
