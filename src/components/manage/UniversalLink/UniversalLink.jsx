@@ -25,7 +25,7 @@ const UniversalLink = ({
   let url = href;
   if (!href && item) {
     if (!item['@id']) {
-      /* eslint no-console: 0 */
+      // eslint-disable-next-line no-console
       console.error(
         'Invalid item passed to UniversalLink',
         item,
