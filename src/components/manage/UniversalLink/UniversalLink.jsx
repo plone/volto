@@ -25,9 +25,20 @@ const UniversalLink = ({
 
   let url = href;
   if (!href && item) {
-    url = flattenToAppURL(item['@id']);
-    if (!token && item.remoteUrl) {
-      url = item.remoteUrl;
+    if (!item['@id']) {
+      /* eslint no-console: 0 */
+      console.error(
+        'Invalid item passed to UniversalLink',
+        item,
+        props,
+        children,
+      );
+      url = '/';
+    } else {
+      url = flattenToAppURL(item['@id']);
+      if (!token && item.remoteUrl) {
+        url = item.remoteUrl;
+      }
     }
   }
 
