@@ -32,7 +32,7 @@ const UniversalLink = ({
         props,
         children,
       );
-      url = '/';
+      url = '#';
     } else {
       url = flattenToAppURL(item['@id']);
       if (!token && item.remoteUrl) {
