@@ -424,9 +424,7 @@ describe('Users reducer', () => {
       }),
     ).toMatchObject({
       reset: {
-        error: {
-          message: 'No user registration found for this email address.',
-        },
+        error: 'failed',
         loaded: false,
         loading: false,
       },
