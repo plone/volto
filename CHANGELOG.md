@@ -11,7 +11,7 @@
 ### Internal
 
 - Various minor `Makefile` cleanup @rpatterson
-- Improve error handling in UniversalLink @nzambell
+- Improve error handling in UniversalLink @nzambello
 
 ## 13.1.2 (2021-05-26)
 
