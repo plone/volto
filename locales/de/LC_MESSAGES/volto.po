@@ -1242,6 +1242,10 @@ msgstr "Keine Auswahl"
 msgid "No uninstall profile"
 msgstr "Kein Deinstallationsprofil"
 
+#: components/theme/PasswordReset/RequestPasswordReset
+msgid "No user registration found for this identifier"
+msgstr "Diese E-Mail ist nicht registriert."
+
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
 #: components/manage/Widgets/SelectWidget
@@ -1309,6 +1313,10 @@ msgstr "Eltern-Fieldset"
 #: helpers/MessageLabels/MessageLabels
 msgid "Password"
 msgstr "Passwort"
+
+#: components/theme/PasswordReset/RequestPasswordReset
+msgid "Password Reset Failed"
+msgstr "Das Zurücksetzen des Passworts ist fehlgeschlagen."
 
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset

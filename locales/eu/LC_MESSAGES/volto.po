@@ -1234,6 +1234,10 @@ msgstr "Ez da ezer aukeratu"
 msgid "No uninstall profile"
 msgstr "Ez du desinstalatzeko profilik"
 
+#: components/theme/PasswordReset/RequestPasswordReset
+msgid "No user registration found for this identifier"
+msgstr ""
+
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
 #: components/manage/Widgets/SelectWidget
@@ -1301,6 +1305,10 @@ msgstr "Guraso den eremu-multzoa"
 #: helpers/MessageLabels/MessageLabels
 msgid "Password"
 msgstr "Pasahitza"
+
+#: components/theme/PasswordReset/RequestPasswordReset
+msgid "Password Reset Failed"
+msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset

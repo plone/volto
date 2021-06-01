@@ -1227,6 +1227,10 @@ msgstr ""
 msgid "No uninstall profile"
 msgstr ""
 
+#: components/theme/PasswordReset/RequestPasswordReset
+msgid "No user registration found for this identifier"
+msgstr ""
+
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
 #: components/manage/Widgets/SelectWidget
@@ -1293,6 +1297,10 @@ msgstr ""
 #: components/theme/Login/Login
 #: helpers/MessageLabels/MessageLabels
 msgid "Password"
+msgstr ""
+
+#: components/theme/PasswordReset/RequestPasswordReset
+msgid "Password Reset Failed"
 msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
