@@ -19,6 +19,8 @@ const store = mockStore({
   },
 });
 
+global.console.error = jest.fn();
+
 describe('UniversalLink', () => {
   it('renders a UniversalLink component with internal link', () => {
     const component = renderer.create(
@@ -125,5 +127,25 @@ describe('UniversalLink', () => {
     expect(getByTitle('Blacklisted route').getAttribute('target')).toBe(
       '_blank',
     );
+  });
+
+  it('check UniversalLink does not break with error in item', () => {
+    const component = renderer.create(
+      <Provider store={store}>
+        <MemoryRouter>
+          <UniversalLink
+            item={{
+              error: 'Error while fetching content',
+              message: 'Something went wrong',
+            }}
+          >
+            <h1>Title</h1>
+          </UniversalLink>
+        </MemoryRouter>
+      </Provider>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+    expect(global.console.error).toHaveBeenCalled();
   });
 });

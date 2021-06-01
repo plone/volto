@@ -14,7 +14,7 @@ import config from '@plone/volto/registry';
 
 const UniversalLink = ({
   href,
-  item,
+  item = null,
   openLinkInNewTab,
   download = false,
   children,
@@ -25,10 +25,21 @@ const UniversalLink = ({
   const token = useSelector((state) => state.userSession?.token);
 
   let url = href;
-  if (!href) {
-    url = flattenToAppURL(item['@id']);
-    if (!token && item.remoteUrl) {
-      url = item.remoteUrl;
+  if (!href && item) {
+    if (!item['@id']) {
+      /* eslint no-console: 0 */
+      console.error(
+        'Invalid item passed to UniversalLink',
+        item,
+        props,
+        children,
+      );
+      url = '/';
+    } else {
+      url = flattenToAppURL(item['@id']);
+      if (!token && item.remoteUrl) {
+        url = item.remoteUrl;
+      }
     }
   }
 
