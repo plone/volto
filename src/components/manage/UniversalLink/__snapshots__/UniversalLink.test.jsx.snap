@@ -3,9 +3,9 @@
 exports[`UniversalLink check UniversalLink does not break with error in item 1`] = `
 <a
   className={null}
-  href=""
-  rel="noopener noreferrer"
-  target="_blank"
+  href="/"
+  onClick={[Function]}
+  target={null}
   title={null}
 >
   <h1>
