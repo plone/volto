@@ -1316,10 +1316,6 @@ msgstr ""
 msgid "Password"
 msgstr "Mot de passe"
 
-#: components/theme/PasswordReset/RequestPasswordReset
-msgid "Password Reset Failed"
-msgstr ""
-
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Password reset"

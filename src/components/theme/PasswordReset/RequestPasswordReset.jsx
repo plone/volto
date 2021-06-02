@@ -45,10 +45,6 @@ const messages = defineMessages({
     id: 'Password reset',
     defaultMessage: 'Password reset',
   },
-  passwordResetFailed: {
-    id: 'Password Reset Failed',
-    defaultMessage: 'Password Reset Failed',
-  },
   passwordResetFailedContent: {
     id: 'No user registration found for this identifier',
     defaultMessage: 'No user registration found for this identifier',

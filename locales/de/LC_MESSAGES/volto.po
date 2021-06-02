@@ -1314,10 +1314,6 @@ msgstr "Eltern-Fieldset"
 msgid "Password"
 msgstr "Passwort"
 
-#: components/theme/PasswordReset/RequestPasswordReset
-msgid "Password Reset Failed"
-msgstr "Das Zurücksetzen des Passworts ist fehlgeschlagen."
-
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Password reset"
