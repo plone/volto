@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- changed table headline text color to black for a11y
+
 ### Internal
 
 - Various minor `Makefile` cleanup @rpatterson
