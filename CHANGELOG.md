@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Added A11y-test for Table block @ThomasKindermann
+
 - Various minor `Makefile` cleanup @rpatterson
 
 ## 13.1.2 (2021-05-26)
