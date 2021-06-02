@@ -171,7 +171,7 @@ export default function users(state = initialState, action = {}) {
         [getRequestKey(action.type)]: {
           loading: false,
           loaded: false,
-          error: action.error.error,
+          error: action.error,
         },
       };
     case Show_All_USERS: {

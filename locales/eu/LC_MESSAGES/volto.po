@@ -1234,6 +1234,7 @@ msgstr "Ez da ezer aukeratu"
 msgid "No uninstall profile"
 msgstr "Ez du desinstalatzeko profilik"
 
+#: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "No user registration found for this identifier"
 msgstr ""

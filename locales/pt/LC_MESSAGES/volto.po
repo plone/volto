@@ -1235,6 +1235,7 @@ msgstr ""
 msgid "No uninstall profile"
 msgstr ""
 
+#: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "No user registration found for this identifier"
 msgstr ""

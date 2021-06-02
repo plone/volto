@@ -1242,6 +1242,7 @@ msgstr "Keine Auswahl"
 msgid "No uninstall profile"
 msgstr "Kein Deinstallationsprofil"
 
+#: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "No user registration found for this identifier"
 msgstr "Diese E-Mail ist nicht registriert."

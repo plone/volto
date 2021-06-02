@@ -1227,6 +1227,7 @@ msgstr "Fără selecție"
 msgid "No uninstall profile"
 msgstr "Niciun profil de dezinstalare"
 
+#: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "No user registration found for this identifier"
 msgstr ""

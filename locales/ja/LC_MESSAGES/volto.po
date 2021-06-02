@@ -1234,6 +1234,7 @@ msgstr "選択肢無し"
 msgid "No uninstall profile"
 msgstr "アンインストール用のプロファイルがありません"
 
+#: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "No user registration found for this identifier"
 msgstr ""
