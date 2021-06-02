@@ -103,7 +103,9 @@ describe('Users reducer', () => {
       }),
     ).toMatchObject({
       create: {
-        error: 'failed',
+        error: {
+          error: 'failed',
+        },
         loaded: false,
         loading: false,
       },
@@ -148,7 +150,9 @@ describe('Users reducer', () => {
       }),
     ).toMatchObject({
       delete: {
-        error: 'failed',
+        error: {
+          error: 'failed',
+        },
         loaded: false,
         loading: false,
       },
@@ -196,7 +200,9 @@ describe('Users reducer', () => {
     ).toMatchObject({
       user: {},
       get: {
-        error: 'failed',
+        error: {
+          error: 'failed',
+        },
         loaded: false,
         loading: false,
       },
@@ -244,7 +250,9 @@ describe('Users reducer', () => {
     ).toMatchObject({
       users: {},
       list: {
-        error: 'failed',
+        error: {
+          error: 'failed',
+        },
         loaded: false,
         loading: false,
       },
@@ -289,7 +297,9 @@ describe('Users reducer', () => {
       }),
     ).toMatchObject({
       update_password: {
-        error: 'failed',
+        error: {
+          error: 'failed',
+        },
         loaded: false,
         loading: false,
       },
@@ -334,7 +344,9 @@ describe('Users reducer', () => {
       }),
     ).toMatchObject({
       update: {
-        error: 'failed',
+        error: {
+          error: 'failed',
+        },
         loaded: false,
         loading: false,
       },
@@ -379,7 +391,9 @@ describe('Users reducer', () => {
       }),
     ).toMatchObject({
       initial: {
-        error: 'failed',
+        error: {
+          error: 'failed',
+        },
         loaded: false,
         loading: false,
       },
@@ -424,7 +438,9 @@ describe('Users reducer', () => {
       }),
     ).toMatchObject({
       reset: {
-        error: 'failed',
+        error: {
+          error: 'failed',
+        },
         loaded: false,
         loading: false,
       },
