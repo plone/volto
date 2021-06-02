@@ -8,7 +8,7 @@
 
 ### Bugfix
 
-- reset password: error message on non existing email @ksuess
+- Reset password: error message on non existing email @ksuess
 
 ### Internal
 
