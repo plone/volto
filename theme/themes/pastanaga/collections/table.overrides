@@ -10,7 +10,7 @@
   padding: @headerVerticalPadding @headerHorizontalPadding;
   border-left: @headerDivider;
   background: @headerBackground;
-  color: @headerColor;
+  color: @black;
   cursor: auto;
   font-style: @headerFontStyle;
   font-weight: @headerFontWeight;
