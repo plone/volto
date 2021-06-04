@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Allow passing a prop, `includePaginationFields` to QuerystringWidget, to avoid including the `limit` and `batch_size` fields from the form. This is useful when creating blocks that function as 'teasers' or 'spotlights', where the number of wanted results it fixed.  @tiberiuichim
+
 ### Bugfix
 
 ### Internal
