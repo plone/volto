@@ -24,32 +24,27 @@ const ListingBody = React.memo(
     );
     const dispatch = useDispatch();
 
+    const adaptedQuery = {
+      ...(data.batch_size ? { b_size: data.batch_size } : {}),
+      ...(data.limit ? { limit: data.limit } : {}),
+      ...(data.query ? { query: data.query } : {}),
+      fullobjects: 1,
+    };
+
     React.useEffect(() => {
       if (data?.query?.length > 0) {
-        dispatch(
-          getQueryStringResults(
-            path,
-            {
-              ...(data.batch_size ? { b_size: data.batch_size } : {}),
-              ...(data.limit ? { limit: data.limit } : {}),
-              ...(data.query ? { query: data.query } : {}),
-              fullobjects: 1,
-            },
-            data.block,
-          ),
-        );
+        dispatch(getQueryStringResults(path, adaptedQuery, data.block));
       } else if (
         ((!data.variation && data.template === 'imageGallery') ||
           data.variation === 'imageGallery') &&
         data?.query?.length === 0
       ) {
+        // when used as image gallery, it doesn't need a query to list children
         dispatch(
           getQueryStringResults(
             path,
             {
-              ...(data.batch_size ? { b_size: data.batch_size } : {}),
-              ...(data.limit ? { limit: data.limit } : {}),
-              fullobjects: 1,
+              ...adaptedQuery,
               query: [
                 {
                   i: 'path',
@@ -73,10 +68,7 @@ const ListingBody = React.memo(
 
     const listingItems =
       data?.query?.length > 0 && querystringResults?.[data.block]
-        ? (querystringResults &&
-            querystringResults[data.block] &&
-            querystringResults[data.block].items) ||
-          []
+        ? querystringResults?.[data.block]?.items || []
         : folderItems;
 
     let ListingBodyTemplate;
@@ -102,12 +94,7 @@ const ListingBody = React.memo(
       !isEditMode && window.scrollTo(0, 0);
       setCurrentPage(activePage);
       dispatch(
-        getQueryStringResults(
-          path,
-          { ...data, fullobjects: 1 },
-          data.block,
-          activePage,
-        ),
+        getQueryStringResults(path, adaptedQuery, data.block, activePage),
       );
     }
 

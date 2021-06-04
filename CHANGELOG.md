@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Properly respect batching and result limits in listing block @tiberiuichim
+
 ### Internal
 
 - Various minor `Makefile` cleanup @rpatterson
