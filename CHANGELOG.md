@@ -1,6 +1,6 @@
 # Change Log
 
-## 13.1.2 (unreleased)
+## 13.1.3 (unreleased)
 
 ### Breaking
 
@@ -10,7 +10,18 @@
 
 - Changed 'batch_size' attribute in 'b_size' in querystring widget. @giuliaghisini
 
+- Properly respect batching and result limits in listing block @tiberiuichim
+
 ### Internal
+
+- Various minor `Makefile` cleanup @rpatterson
+
+## 13.1.2 (2021-05-26)
+
+### Internal
+
+- Make the `AddLinkForm` component generic, to allow reuse in volto-slate @tiberiuichim
+- Adding hover effect on ObjectBrowserNav icon @iFlameing
 
 ## 13.1.1 (2021-05-25)
 
