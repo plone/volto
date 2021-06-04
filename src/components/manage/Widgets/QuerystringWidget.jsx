@@ -33,26 +33,27 @@ const messages = defineMessages({
   },
 });
 
-const QuerystringWidget = (props) => {
-  const { block, onChange, value } = props;
+export const objectSchema = ({
+  value,
+  intl,
+  includePaginationFields = true,
+}) => {
+  const fields = [
+    'query',
+    ...(value?.query?.filter((q) => q.i === 'path').length > 0
+      ? ['depth']
+      : []),
+    'sort_on',
+    'sort_order_boolean',
+    ...(includePaginationFields ? ['limit', 'batch_size'] : []),
+  ];
 
-  const intl = useIntl();
-
-  const objectSchema = {
+  return {
     fieldsets: [
       {
         id: 'default',
         title: 'Default',
-        fields: [
-          'query',
-          ...(value?.query?.filter((q) => q.i === 'path').length > 0
-            ? ['depth']
-            : []),
-          'sort_on',
-          'sort_order_boolean',
-          'limit',
-          'batch_size',
-        ],
+        fields,
       },
     ],
     properties: {
@@ -72,24 +73,35 @@ const QuerystringWidget = (props) => {
         title: intl.formatMessage(messages.reversedOrder),
         type: 'boolean',
       },
-      limit: {
-        title: intl.formatMessage(messages.limit),
-        type: 'number',
-      },
-      batch_size: {
-        title: intl.formatMessage(messages.itemBatchSize),
-        type: 'number',
-      },
+      ...(includePaginationFields
+        ? {
+            limit: {
+              title: intl.formatMessage(messages.limit),
+              type: 'number',
+            },
+            batch_size: {
+              title: intl.formatMessage(messages.itemBatchSize),
+              type: 'number',
+            },
+          }
+        : {}),
     },
     required: [],
   };
+};
+
+const QuerystringWidget = (props) => {
+  const { block, onChange } = props;
+
+  const intl = useIntl();
+  const schema = objectSchema({ ...props, intl });
 
   return (
     <div className="querystring-widget">
       <ObjectWidget
         {...props}
         block={block}
-        schema={objectSchema}
+        schema={schema}
         onChange={(id, value) => {
           const adaptedValue = {
             ...value,
