@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Allow passing a schemaEnhancer to QuerystringWidget @tiberiuichim
+
 ### Bugfix
 
 ### Internal
