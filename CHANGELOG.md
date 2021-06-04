@@ -8,7 +8,7 @@
 
 ### Bugfix
 
-- changed breadcrumb color slightly for a11y color contrast
+- changed breadcrumb link text-color slightly for a11y color contrast
 
 ### Internal
 
