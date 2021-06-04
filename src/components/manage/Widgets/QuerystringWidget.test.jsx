@@ -24,25 +24,3 @@ test('renders an querystring widget component', async () => {
   await waitFor(() => {});
   expect(component.toJSON()).toMatchSnapshot();
 });
-
-test('can exclude pagination fields', async () => {
-  const store = mockStore({
-    querystring: { indexes: {} },
-    intl: {
-      locale: 'en',
-      messages: {},
-    },
-  });
-  const component = renderer.create(
-    <Provider store={store}>
-      <QuerystringWidget
-        id="my-field"
-        title="My field"
-        onChange={() => {}}
-        includePaginationFields={false}
-      />
-    </Provider>,
-  );
-  await waitFor(() => {});
-  expect(component.toJSON()).toMatchSnapshot();
-});
