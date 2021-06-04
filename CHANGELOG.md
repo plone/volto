@@ -12,6 +12,7 @@
 ### Bugfix
 
 - Changed 'batch_size' attribute in 'b_size' in querystring widget. @giuliaghisini
+- Fix addBreaklinesInline when string ends with new line @giuliaghisini
 
 ### Internal
 
