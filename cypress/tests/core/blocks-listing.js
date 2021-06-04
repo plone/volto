@@ -629,11 +629,6 @@ describe('Listing Block Tests', () => {
     cy.get('#toolbar-save').click();
 
     //test after save
-    cy.get('#page-document .listing-item:first-of-type a').should(
-      'have.attr',
-      'href',
-      '/my-page/my-page-test',
-    );
     cy.get('.listing-item').should(($els) => {
       expect($els).to.have.length(2);
     });
