@@ -20,7 +20,11 @@ const SkipLinks = () => {
   const intl = useIntl();
 
   return (
-    <div className="skiplinks-wrapper">
+    <div
+      className="skiplinks-wrapper"
+      role="complementary"
+      aria-label="skiplinks"
+    >
       <a className="skiplink" href="#view">
         {intl.formatMessage(messages.mainView)}
       </a>

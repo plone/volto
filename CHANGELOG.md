@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- added "Complementary" landmark-role to skiplink-container for a11y
+
 ### Internal
 
 - Various minor `Makefile` cleanup @rpatterson

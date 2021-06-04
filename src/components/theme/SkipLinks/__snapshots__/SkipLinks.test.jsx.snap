@@ -2,7 +2,9 @@
 
 exports[`SkipLinks renders skip links 1`] = `
 <div
+  aria-label="skiplinks"
   className="skiplinks-wrapper"
+  role="complementary"
 >
   <a
     className="skiplink"
