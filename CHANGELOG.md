@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix addBreaklinesInline when string ends with new line @giuliaghisini
+
 ### Internal
 
 - Various minor `Makefile` cleanup @rpatterson
