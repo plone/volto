@@ -13,19 +13,22 @@ import paginationRightSVG from '@plone/volto/icons/right-key.svg';
 
 const ListingBody = React.memo(
   (props) => {
-    const { data, properties, path, isEditMode, variation } = props;
+    const { data = {}, properties, path, isEditMode, variation } = props;
     const content = properties;
     const { settings } = config;
     const { batch_size = settings.defaultPageSize } = data;
 
-    const adaptedQuery = {
-      ...(data.limit ? { limit: data.limit } : {}),
-      ...(data.query ? { query: data.query } : {}),
-      ...(data.sort_on ? { sort_on: data.sort_on } : {}),
-      ...(data.sort_order ? { sort_order: data.sort_order } : {}),
-      b_size: batch_size,
-      fullobjects: 1,
-    };
+    const copyFields = ['limit', 'query', 'sort_on', 'sort_order', 'depth'];
+
+    const adaptedQuery = Object.assign(
+      {
+        b_size: batch_size,
+        fullobjects: 1,
+      },
+      ...copyFields.map((name) =>
+        Object.keys(data).includes(name) ? { [name]: data[name] } : {},
+      ),
+    );
 
     const [currentPage, setCurrentPage] = React.useState(1);
     const querystringResults = useSelector(
