@@ -10,6 +10,10 @@
 
 ### Bugfix
 
+- Changed 'batch_size' attribute in 'b_size' in querystring widget. @giuliaghisini
+
+- Properly respect batching and result limits in listing block @tiberiuichim
+
 ### Internal
 
 - Various minor `Makefile` cleanup @rpatterson
