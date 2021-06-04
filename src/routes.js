@@ -212,9 +212,8 @@ const routes = [
     component: App,
     routes: [
       // redirect to external links if path is in blacklist
-      ...(config.settings?.internalUrlBlacklist || []).map((path) => ({
-        path,
-        exact: true,
+      ...(config.settings?.externalRoutes || []).map((route) => ({
+        ...route.match,
         component: NotFound,
       })),
       // addon routes have a higher priority then default routes

@@ -29,5 +29,5 @@ export const nonContentRoutes = [
   '/password-reset',
   '/create-translation',
   '/manage-translations',
-  ...(config.settings?.internalUrlBlacklist || []),
+  ...(config.settings?.externalRoutes?.map((route) => route.match.path) || []),
 ];

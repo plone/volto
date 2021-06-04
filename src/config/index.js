@@ -138,10 +138,11 @@ let config = {
     showTags: true,
     controlPanelsIcons,
     externalRoutes: [
+      // URL to be considered as external
       // {
       //   match: {
       //     path: '/news',
-      //     exact: true,
+      //     exact: false,
       //     strict: false,
       //   },
       //   url(payload) {
@@ -150,7 +151,6 @@ let config = {
       // },
     ],
     showSelfRegistration: false,
-    internalUrlBlacklist: [], // URL to be considered as external
   },
   widgets: {
     ...widgetMapping,
