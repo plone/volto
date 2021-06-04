@@ -14,22 +14,22 @@ import paginationRightSVG from '@plone/volto/icons/right-key.svg';
 const ListingBody = React.memo(
   (props) => {
     const { data, properties, path, isEditMode, variation } = props;
+    const content = properties;
     const { settings } = config;
     const { batch_size = settings.defaultPageSize } = data;
 
+    const adaptedQuery = {
+      ...(data.limit ? { limit: data.limit } : {}),
+      ...(data.query ? { query: data.query } : {}),
+      b_size: batch_size,
+      fullobjects: 1,
+    };
+
     const [currentPage, setCurrentPage] = React.useState(1);
-    const content = properties;
     const querystringResults = useSelector(
       (state) => state.querystringsearch.subrequests,
     );
     const dispatch = useDispatch();
-
-    const adaptedQuery = {
-      ...(data.batch_size ? { b_size: data.batch_size } : {}),
-      ...(data.limit ? { limit: data.limit } : {}),
-      ...(data.query ? { query: data.query } : {}),
-      fullobjects: 1,
-    };
 
     React.useEffect(() => {
       if (data?.query?.length > 0) {
