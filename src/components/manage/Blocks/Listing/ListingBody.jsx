@@ -21,6 +21,8 @@ const ListingBody = React.memo(
     const adaptedQuery = {
       ...(data.limit ? { limit: data.limit } : {}),
       ...(data.query ? { query: data.query } : {}),
+      ...(data.sort_on ? { sort_on: data.sort_on } : {}),
+      ...(data.sort_order ? { sort_order: data.sort_order } : {}),
       b_size: batch_size,
       fullobjects: 1,
     };
