@@ -14,6 +14,9 @@ import paginationRightSVG from '@plone/volto/icons/right-key.svg';
 const ListingBody = React.memo(
   (props) => {
     const { data, properties, path, isEditMode, variation } = props;
+    const { settings } = config;
+    const { batch_size = settings.defaultPageSize } = data;
+
     const [currentPage, setCurrentPage] = React.useState(1);
     const content = properties;
     const querystringResults = useSelector(
@@ -24,7 +27,16 @@ const ListingBody = React.memo(
     React.useEffect(() => {
       if (data?.query?.length > 0) {
         dispatch(
-          getQueryStringResults(path, { ...data, fullobjects: 1 }, data.block),
+          getQueryStringResults(
+            path,
+            {
+              ...(data.batch_size ? { b_size: data.batch_size } : {}),
+              ...(data.limit ? { limit: data.limit } : {}),
+              ...(data.query ? { query: data.query } : {}),
+              fullobjects: 1,
+            },
+            data.block,
+          ),
         );
       } else if (
         ((!data.variation && data.template === 'imageGallery') ||
@@ -35,7 +47,8 @@ const ListingBody = React.memo(
           getQueryStringResults(
             path,
             {
-              ...data,
+              ...(data.batch_size ? { b_size: data.batch_size } : {}),
+              ...(data.limit ? { limit: data.limit } : {}),
               fullobjects: 1,
               query: [
                 {
@@ -97,7 +110,6 @@ const ListingBody = React.memo(
         ),
       );
     }
-    const { settings } = config;
 
     return (
       <>
@@ -108,41 +120,36 @@ const ListingBody = React.memo(
               isEditMode={isEditMode}
               {...data}
             />
-            {data?.query?.length === 0 &&
-              content?.items_total > settings.defaultPageSize && (
-                <div className="pagination-wrapper">
-                  <Pagination
-                    activePage={currentPage}
-                    totalPages={Math.ceil(
-                      content.items_total / settings.defaultPageSize,
-                    )}
-                    onPageChange={handleContentPaginationChange}
-                    firstItem={null}
-                    lastItem={null}
-                    prevItem={{
-                      content: <Icon name={paginationLeftSVG} size="18px" />,
-                      icon: true,
-                      'aria-disabled': !content.batching.prev,
-                      className: !content.batching.prev ? 'disabled' : null,
-                    }}
-                    nextItem={{
-                      content: <Icon name={paginationRightSVG} size="18px" />,
-                      icon: true,
-                      'aria-disabled': !content.batching.next,
-                      className: !content.batching.next ? 'disabled' : null,
-                    }}
-                  />
-                </div>
-              )}
+            {data?.query?.length === 0 && content?.items_total > batch_size && (
+              <div className="pagination-wrapper">
+                <Pagination
+                  activePage={currentPage}
+                  totalPages={Math.ceil(content.items_total / batch_size)}
+                  onPageChange={handleContentPaginationChange}
+                  firstItem={null}
+                  lastItem={null}
+                  prevItem={{
+                    content: <Icon name={paginationLeftSVG} size="18px" />,
+                    icon: true,
+                    'aria-disabled': !content.batching.prev,
+                    className: !content.batching.prev ? 'disabled' : null,
+                  }}
+                  nextItem={{
+                    content: <Icon name={paginationRightSVG} size="18px" />,
+                    icon: true,
+                    'aria-disabled': !content.batching.next,
+                    className: !content.batching.next ? 'disabled' : null,
+                  }}
+                />
+              </div>
+            )}
             {data?.query?.length > 0 &&
-              querystringResults?.[data.block]?.total >
-                (data.b_size || settings.defaultPageSize) && (
+              querystringResults?.[data.block]?.total > batch_size && (
                 <div className="pagination-wrapper">
                   <Pagination
                     activePage={currentPage}
                     totalPages={Math.ceil(
-                      querystringResults[data.block].total /
-                        (data.b_size || settings.defaultPageSize),
+                      querystringResults[data.block].total / batch_size,
                     )}
                     onPageChange={handleQueryPaginationChange}
                     firstItem={null}
