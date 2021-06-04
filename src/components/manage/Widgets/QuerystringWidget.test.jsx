@@ -24,3 +24,33 @@ test('renders an querystring widget component', async () => {
   await waitFor(() => {});
   expect(component.toJSON()).toMatchSnapshot();
 });
+
+test('can take a schemaEnhancer', async () => {
+  const store = mockStore({
+    querystring: { indexes: {} },
+    intl: {
+      locale: 'en',
+      messages: {},
+    },
+  });
+  const component = renderer.create(
+    <Provider store={store}>
+      <QuerystringWidget
+        id="my-field"
+        title="My field"
+        onChange={() => {}}
+        schemaEnhancer={({ schema }) => ({
+          ...schema,
+          fieldsets: [
+            {
+              ...schema.fieldsets[0],
+              fields: ['query', 'sort_on', 'sort_order_boolean'],
+            },
+          ],
+        })}
+      />
+    </Provider>,
+  );
+  await waitFor(() => {});
+  expect(component.toJSON()).toMatchSnapshot();
+});
