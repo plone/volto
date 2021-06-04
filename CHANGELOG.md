@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- changed breadcrumb color slightly for a11y color contrast
+
 ### Internal
 
 - Various minor `Makefile` cleanup @rpatterson
