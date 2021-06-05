@@ -33,11 +33,8 @@ export default function withQuerystringResults(WrappedComponent) {
     const dispatch = useDispatch();
 
     const folderItems = content?.is_folderish ? content.items : [];
-
     const hasQuery = data?.query?.length > 0;
-    const loadingQuery = hasQuery && querystringResults?.[block]?.loading;
-
-    const hasLoaded = loadingQuery && data?.query?.length > 0;
+    const hasLoaded = hasQuery && !querystringResults?.[block]?.loading;
 
     const listingItems =
       data?.query?.length > 0 && querystringResults?.[block]
@@ -55,24 +52,22 @@ export default function withQuerystringResults(WrappedComponent) {
       : 0;
 
     const prevBatch = showAsFolderListing
-      ? content.batching.prev
+      ? content.batching?.prev
       : showAsQueryListing
-      ? querystringResults[block].batching.prev
+      ? querystringResults[block].batching?.prev
       : null;
     const nextBatch = showAsFolderListing
-      ? content.batching.next
+      ? content.batching?.next
       : showAsQueryListing
-      ? querystringResults[block].batching.next
+      ? querystringResults[block].batching?.next
       : null;
 
     function handleContentPaginationChange(e, { activePage }) {
-      // !isEditMode && window.scrollTo(0, 0);
       setCurrentPage(activePage);
       dispatch(getContent(path, null, null, activePage));
     }
 
     function handleQueryPaginationChange(e, { activePage }) {
-      // !isEditMode && window.scrollTo(0, 0);
       setCurrentPage(activePage);
       dispatch(getQueryStringResults(path, adaptedQuery, block, activePage));
     }
@@ -119,7 +114,7 @@ export default function withQuerystringResults(WrappedComponent) {
         totalPages={totalPages}
         prevBatch={prevBatch}
         nextBatch={nextBatch}
-        items={listingItems}
+        listingItems={listingItems}
         hasLoaded={hasLoaded}
         isFolderContentsListing={showAsFolderListing}
       />
