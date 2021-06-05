@@ -9,6 +9,7 @@ import paginationLeftSVG from '@plone/volto/icons/left-key.svg';
 import paginationRightSVG from '@plone/volto/icons/right-key.svg';
 
 const ListingBody = withQuerystringResults((props) => {
+  // console.log('props', props);
   const {
     data = {},
     isEditMode,

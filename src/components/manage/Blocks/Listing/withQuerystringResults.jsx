@@ -12,6 +12,7 @@ function getDisplayName(WrappedComponent) {
 export default function withQuerystringResults(WrappedComponent) {
   function WithQuerystringResults(props) {
     const { data = {}, properties: content, path } = props;
+    const [initialPath] = React.useState(path);
     const { settings } = config;
     const { block, batch_size = settings.defaultPageSize } = data;
 
@@ -34,7 +35,7 @@ export default function withQuerystringResults(WrappedComponent) {
 
     const folderItems = content?.is_folderish ? content.items : [];
     const hasQuery = data?.query?.length > 0;
-    const hasLoaded = hasQuery && !querystringResults?.[block]?.loading;
+    const hasLoaded = hasQuery ? !querystringResults?.[block]?.loading : true;
 
     const listingItems =
       data?.query?.length > 0 && querystringResults?.[block]
@@ -64,12 +65,14 @@ export default function withQuerystringResults(WrappedComponent) {
 
     function handleContentPaginationChange(e, { activePage }) {
       setCurrentPage(activePage);
-      dispatch(getContent(path, null, null, activePage));
+      dispatch(getContent(initialPath, null, null, activePage));
     }
 
     function handleQueryPaginationChange(e, { activePage }) {
       setCurrentPage(activePage);
-      dispatch(getQueryStringResults(path, adaptedQuery, block, activePage));
+      dispatch(
+        getQueryStringResults(initialPath, adaptedQuery, block, activePage),
+      );
     }
 
     const isImageGallery =
@@ -78,12 +81,12 @@ export default function withQuerystringResults(WrappedComponent) {
 
     useDeepCompareEffect(() => {
       if (hasQuery) {
-        dispatch(getQueryStringResults(path, adaptedQuery, block));
+        dispatch(getQueryStringResults(initialPath, adaptedQuery, block));
       } else if (isImageGallery && !hasQuery) {
         // when used as image gallery, it doesn't need a query to list children
         dispatch(
           getQueryStringResults(
-            path,
+            initialPath,
             {
               ...adaptedQuery,
               query: [
@@ -98,7 +101,7 @@ export default function withQuerystringResults(WrappedComponent) {
           ),
         );
       }
-    }, [block, isImageGallery, adaptedQuery, hasQuery, path, dispatch]);
+    }, [block, isImageGallery, adaptedQuery, hasQuery, initialPath, dispatch]);
 
     return (
       <WrappedComponent
