@@ -108,8 +108,11 @@ export default function withQuerystringResults(WrappedComponent) {
     return (
       <WrappedComponent
         {...props}
-        onContentPaginationChange={handleContentPaginationChange}
-        onQueryPaginationChange={handleQueryPaginationChange}
+        onPaginationChange={(e, { activePage }) => {
+          showAsFolderListing
+            ? handleContentPaginationChange(e, { activePage })
+            : handleQueryPaginationChange(e, { activePage });
+        }}
         total={querystringResults?.[block]?.total}
         batch_size={batch_size}
         currentPage={currentPage}
