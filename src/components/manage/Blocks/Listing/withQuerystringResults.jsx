@@ -12,6 +12,8 @@ function getDisplayName(WrappedComponent) {
 export default function withQuerystringResults(WrappedComponent) {
   function WithQuerystringResults(props) {
     const { data = {}, properties: content, path } = props;
+
+    // save the path so it won't trigger dispatch on eager router location change
     const [initialPath] = React.useState(path);
     const { settings } = config;
     const { block, batch_size = settings.defaultPageSize } = data;
