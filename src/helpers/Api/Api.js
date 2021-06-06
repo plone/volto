@@ -43,7 +43,7 @@ class Api {
     methods.forEach((method) => {
       this[method] = (path, { params, data, type, headers = {} } = {}) => {
         let request;
-        let promise = new Promise((resolve, reject) => {
+        let promise = new Promise(async (resolve, reject) => {
           request = superagent[method](formatUrl(path));
 
           if (params) {
@@ -64,7 +64,7 @@ class Api {
           Object.keys(headers).forEach((key) => request.set(key, headers[key]));
 
           if (data) {
-            request.send(data);
+            await request.send(data);
           }
 
           request.end((err, response) =>

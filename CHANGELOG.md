@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Non blocking backend requests in middleware @sneridagh
+
 ### Bugfix
 
 ### Internal
