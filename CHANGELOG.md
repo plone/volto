@@ -9,11 +9,12 @@
 ### Bugfix
 
 - Changed 'batch_size' attribute in 'b_size' in querystring widget. @giuliaghisini
-
 - Properly respect batching and result limits in listing block @tiberiuichim
+- Making placeholder image of video block to take 100% width when it is right or left aligned @iFlameing
 
 ### Internal
 
+- Add [Volta](https://volta.sh) support @nzambello
 - Various minor `Makefile` cleanup @rpatterson
 
 ## 13.1.2 (2021-05-26)
