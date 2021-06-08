@@ -5,22 +5,25 @@ This is a summary of all the configuration options and what they control.
 ## Main settings
 
 !!! note
-This list is still incomplete, contributions are welcomed!
+    This list is still incomplete, contributions are welcomed!
 
 ### navDepth
 
 !!! block ""
+
     Navigation levels depth used in the navigation endpoint calls. Increasing this is useful for implementing fat navigation menus. Defaults to `1`.
 
 ### defaultBlockType
 
 !!! block ""
+
     The default block type in Volto is "text", which uses the current DraftJS-based implementation for the rich text editor. Future alternative rich text editors will need to use this setting and replace it with their block type. The block definition should also include the `blockHasValue` function, which is needed to activate the Block Chooser functionality. See this function signature in [Blocks > Settings](../blocks/settings.md).
 
 ### sentryOptions
 
 !!! block ""
-Sentry configuration:
+
+    Sentry configuration:
 
     ```js
     import {
