@@ -9,7 +9,6 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Portal } from 'react-portal';
 import { injectIntl } from 'react-intl';
-import { Helmet } from '@plone/volto/helpers';
 import qs from 'query-string';
 import config from '@plone/volto/registry';
 
@@ -19,6 +18,8 @@ import {
   BodyClass,
   getBaseUrl,
   getLayoutFieldname,
+  toPublicURL,
+  Helmet,
 } from '@plone/volto/helpers';
 
 /**
@@ -220,8 +221,55 @@ class View extends Component {
           {this.props.content.language && (
             <html lang={this.props.content.language.token} />
           )}
-          <title>{this.props.content.title}</title>
-          <meta name="description" content={this.props.content.description} />
+          <title>
+            {this.props.content.seo_title || this.props.content.title}
+          </title>
+          <meta
+            name="description"
+            content={
+              this.props.content.seo_description ||
+              this.props.content.description
+            }
+          />
+
+          <meta
+            property="og:title"
+            content={
+              this.props.content.opengraph_title ||
+              this.props.content.seo_title ||
+              this.props.content.title
+            }
+          />
+          <meta
+            property="og:url"
+            content={
+              this.props.content.seo_canonical_url ||
+              toPublicURL(this.props.content['@id'])
+            }
+          />
+          {this.props.content.image?.scales?.large?.download ||
+            (this.props.content.opengraph_image?.scales?.large?.download && (
+              <meta
+                property="og:image"
+                content={toPublicURL(
+                  this.props.content.opengraph_image?.scales?.large?.download ||
+                    this.props.content.image?.scales?.large?.download,
+                )}
+              />
+            ))}
+          {(this.props.content.opengraph_description ||
+            this.props.content.seo_description ||
+            this.props.content.description) && (
+            <meta
+              property="og:description"
+              content={
+                this.props.content.opengraph_description ||
+                this.props.content.seo_description ||
+                this.props.content.description
+              }
+            />
+          )}
+          <meta name="twitter:card" content="summary_large_image" />
         </Helmet>
         {/* Body class if displayName in component is set */}
         <BodyClass

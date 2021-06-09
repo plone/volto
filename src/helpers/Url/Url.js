@@ -116,6 +116,20 @@ export function toPublicURL(url) {
 }
 
 /**
+ * Given a URL if it starts with the API server URL
+ * this method removes the /api or the /Plone part.
+ * @method toPublicURL
+ * @param {string} url URL of the object
+ * @returns {string} public URL
+ */
+export function toPublicURL(url) {
+  const publicRoot = settings.apiPath
+    ?.replace('/api', '')
+    ?.replace('/Plone', '');
+  return url?.replace(settings.apiPath, publicRoot);
+}
+
+/**
  * Returns true if the current view is a cms ui view
  * @method isCmsUi
  * @param {string} currentPathname pathname of the current view
