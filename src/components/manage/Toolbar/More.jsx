@@ -57,6 +57,10 @@ const messages = defineMessages({
     id: 'Remove working copy',
     defaultMessage: 'Remove working copy',
   },
+  viewWorkingCopy: {
+    id: 'View working copy',
+    defaultMessage: 'View working copy',
+  },
   workingAppliedTitle: {
     id: 'Changes applied.',
     defaultMessage: 'Changes applied',
@@ -227,113 +231,149 @@ class More extends Component {
             </>
           )}
         </Pluggable>
-        {config.settings.hasWorkingCopySupport && (
-          <>
-            {!this.props.content.working_copy && (
-              <Plug pluggable="toolbar-more-manage-content" id="workingcopy">
-                <li>
-                  <button
-                    aria-label={this.props.intl.formatMessage(
-                      messages.CreateWorkingCopy,
-                    )}
-                    onClick={() => {
-                      this.props.createWorkingCopy(path).then((response) => {
-                        this.props.history.push(
-                          flattenToAppURL(response['@id']),
-                        );
-                        this.props.closeMenu();
-                      });
-                    }}
-                  >
-                    {this.props.intl.formatMessage(messages.CreateWorkingCopy)}
+        {config.settings.hasWorkingCopySupport &&
+          this.props.content['@type'] !== 'Plone Site' && (
+            <>
+              {!this.props.content.working_copy && (
+                <Plug pluggable="toolbar-more-manage-content" id="workingcopy">
+                  <li>
+                    <button
+                      aria-label={this.props.intl.formatMessage(
+                        messages.CreateWorkingCopy,
+                      )}
+                      onClick={() => {
+                        this.props.createWorkingCopy(path).then((response) => {
+                          this.props.history.push(
+                            flattenToAppURL(response['@id']),
+                          );
+                          this.props.closeMenu();
+                        });
+                      }}
+                    >
+                      {this.props.intl.formatMessage(
+                        messages.CreateWorkingCopy,
+                      )}
 
-                    <Icon name={rightArrowSVG} size="24px" />
-                  </button>
-                </li>
-              </Plug>
-            )}
-            {this.props.content.working_copy && (
-              <Plug pluggable="toolbar-more-manage-content" id="workingcopy">
-                <li>
-                  <button
-                    aria-label={this.props.intl.formatMessage(
-                      messages.applyWorkingCopy,
-                    )}
-                    onClick={() => {
-                      this.props.applyWorkingCopy(path).then((response) => {
-                        this.props.history.push(
-                          flattenToAppURL(
-                            this.props.content.working_copy_of['@id'],
-                          ),
-                        );
-                        this.props.closeMenu();
-                        toast.info(
-                          <Toast
-                            info
-                            title={intl.formatMessage(
-                              messages.workingAppliedTitle,
-                            )}
-                            content={intl.formatMessage(
-                              messages.workingCopyAppliedBy,
+                      <Icon name={rightArrowSVG} size="24px" />
+                    </button>
+                  </li>
+                </Plug>
+              )}
+              {this.props.content.working_copy &&
+                this.props.content.working_copy_of && (
+                  <Plug
+                    pluggable="toolbar-more-manage-content"
+                    id="workingcopy"
+                  >
+                    <li>
+                      <button
+                        aria-label={this.props.intl.formatMessage(
+                          messages.applyWorkingCopy,
+                        )}
+                        onClick={() => {
+                          this.props.applyWorkingCopy(path).then((response) => {
+                            this.props.history.push(
+                              flattenToAppURL(
+                                this.props.content.working_copy_of['@id'],
+                              ),
+                            );
+                            this.props.closeMenu();
+                            toast.info(
+                              <Toast
+                                info
+                                title={intl.formatMessage(
+                                  messages.workingAppliedTitle,
+                                )}
+                                content={intl.formatMessage(
+                                  messages.workingCopyAppliedBy,
+                                  {
+                                    creator: content.working_copy?.creator_name,
+                                    date: new Intl.DateTimeFormat(
+                                      lang,
+                                      dateOptions,
+                                    ).format(
+                                      parse(content.working_copy?.created),
+                                    ),
+                                  },
+                                )}
+                              />,
                               {
-                                creator: content.working_copy?.creator_name,
-                                date: new Intl.DateTimeFormat(
-                                  lang,
-                                  dateOptions,
-                                ).format(parse(content.working_copy?.created)),
+                                toastId: 'workingcopyapplyinfo',
+                                autoClose: 10000,
                               },
-                            )}
-                          />,
-                          {
-                            toastId: 'workingcopyapplyinfo',
-                            autoClose: 10000,
-                          },
-                        );
-                      });
-                    }}
-                  >
-                    {this.props.intl.formatMessage(messages.applyWorkingCopy)}
+                            );
+                          });
+                        }}
+                      >
+                        {this.props.intl.formatMessage(
+                          messages.applyWorkingCopy,
+                        )}
 
-                    <Icon name={applySVG} size="24px" />
-                  </button>
-                </li>
-                <li>
-                  <button
-                    aria-label={this.props.intl.formatMessage(
-                      messages.removeWorkingCopy,
-                    )}
-                    onClick={() => {
-                      this.props.removeWorkingCopy(path).then((response) => {
-                        this.props.history.push(
-                          flattenToAppURL(
-                            this.props.content.working_copy_of['@id'],
-                          ),
-                        );
-                        this.props.closeMenu();
-                        toast.info(
-                          <Toast
-                            info
-                            title={intl.formatMessage(
-                              messages.workingCopyRemovedTitle,
-                            )}
-                          />,
-                          {
-                            toastId: 'workingcopyremovednotice',
-                            autoClose: 10000,
-                          },
-                        );
-                      });
-                    }}
-                  >
-                    {this.props.intl.formatMessage(messages.removeWorkingCopy)}
+                        <Icon name={applySVG} size="24px" />
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        aria-label={this.props.intl.formatMessage(
+                          messages.removeWorkingCopy,
+                        )}
+                        onClick={() => {
+                          this.props
+                            .removeWorkingCopy(path)
+                            .then((response) => {
+                              this.props.history.push(
+                                flattenToAppURL(
+                                  this.props.content.working_copy_of['@id'],
+                                ),
+                              );
+                              this.props.closeMenu();
+                              toast.info(
+                                <Toast
+                                  info
+                                  title={intl.formatMessage(
+                                    messages.workingCopyRemovedTitle,
+                                  )}
+                                />,
+                                {
+                                  toastId: 'workingcopyremovednotice',
+                                  autoClose: 10000,
+                                },
+                              );
+                            });
+                        }}
+                      >
+                        {this.props.intl.formatMessage(
+                          messages.removeWorkingCopy,
+                        )}
 
-                    <Icon name={removeSVG} size="24px" color="#e40166" />
-                  </button>
-                </li>
-              </Plug>
-            )}
-          </>
-        )}
+                        <Icon name={removeSVG} size="24px" color="#e40166" />
+                      </button>
+                    </li>
+                  </Plug>
+                )}
+              {this.props.content.working_copy &&
+                !this.props.content.working_copy_of && (
+                  <Plug
+                    pluggable="toolbar-more-manage-content"
+                    id="workingcopy"
+                  >
+                    <li>
+                      <Link
+                        to={flattenToAppURL(
+                          this.props.content.working_copy['@id'],
+                        )}
+                        onClick={() => this.props.closeMenu()}
+                      >
+                        {this.props.intl.formatMessage(
+                          messages.viewWorkingCopy,
+                        )}
+                        <Icon name={rightArrowSVG} size="24px" />
+                      </Link>
+                    </li>
+                  </Plug>
+                )}
+            </>
+          )}
         {editAction && config.settings.isMultilingual && (
           <Plug pluggable="toolbar-more-manage-content" id="multilingual">
             <li>
