@@ -1320,6 +1320,10 @@ msgstr "Itsatsi"
 msgid "Paste blocks"
 msgstr ""
 
+#: components/manage/Sharing/Sharing
+msgid "Permissions have been updated"
+msgstr ""
+
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Toolbar/Toolbar
 msgid "Personal Information"
