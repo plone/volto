@@ -10,7 +10,7 @@
 
 - Making placeholder image of video block to take 100% width when it is right or left aligned @iFlameing
 - Showing clear icon when title is too long in objectbrowser selected items in multiple mode @iFlameing
-
+- Allowing user to paste url in search box in objectBrowser @iFlameing
 ### Internal
 
 - Add [Volta](https://volta.sh) support @nzambello
