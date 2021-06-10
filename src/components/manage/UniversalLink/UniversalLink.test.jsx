@@ -17,6 +17,8 @@ const store = mockStore({
   },
 });
 
+global.console.error = jest.fn();
+
 describe('UniversalLink', () => {
   it('renders a UniversalLink component with internal link', () => {
     const component = renderer.create(
@@ -37,6 +39,24 @@ describe('UniversalLink', () => {
       <Provider store={store}>
         <MemoryRouter>
           <UniversalLink href="https://github.com/plone/volto">
+            <h1>Title</h1>
+          </UniversalLink>
+        </MemoryRouter>
+      </Provider>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
+
+  it('renders a UniversalLink component if no external(href) link passed', () => {
+    const component = renderer.create(
+      <Provider store={store}>
+        <MemoryRouter>
+          <UniversalLink
+            item={{
+              '@id': 'http://localhost:3000/en/welcome-to-volto',
+            }}
+          >
             <h1>Title</h1>
           </UniversalLink>
         </MemoryRouter>
@@ -102,5 +122,25 @@ describe('UniversalLink', () => {
     expect(getByTitle('Volto GitHub repository').getAttribute('target')).toBe(
       null,
     );
+  });
+
+  it('check UniversalLink does not break with error in item', () => {
+    const component = renderer.create(
+      <Provider store={store}>
+        <MemoryRouter>
+          <UniversalLink
+            item={{
+              error: 'Error while fetching content',
+              message: 'Something went wrong',
+            }}
+          >
+            <h1>Title</h1>
+          </UniversalLink>
+        </MemoryRouter>
+      </Provider>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+    expect(global.console.error).toHaveBeenCalled();
   });
 });

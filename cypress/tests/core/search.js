@@ -136,6 +136,6 @@ describe('Search', () => {
 
     // then the first link must be Colorless
     cy.get('button[name="effective"]').click();
-    cy.get('.summary.url:first').should('have.text', 'Colorless');
+    cy.get('.summary.url:first').should('have.text', 'Color');
   });
 });

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-27T19:30:59.079Z\n"
-"PO-Revision-Date: 2021-05-08 19:30-0300\n"
+"PO-Revision-Date: 2021-05-11 15:01-0300\n"
 "Last-Translator: Érico Andrei <ericof@plone.org>, 2021\n"
 "Language: pt_BR\n"
 "Language-Team: Portuguese (https://www.transifex.com/plone/teams/14552/pt/)\n"
@@ -62,7 +62,7 @@ msgstr "Adicionar"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Add Addons"
-msgstr "Adicione Addons"
+msgstr "Adicione complementos"
 
 #: components/manage/Toolbar/Types
 msgid "Add Content"
@@ -126,7 +126,7 @@ msgstr "Adicionar {type}"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Add-ons Settings"
-msgstr "Configurações de Add-ons"
+msgstr "Configurações dos complementos"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Additional date"
@@ -789,7 +789,7 @@ msgstr "Quarto"
 
 #: components/theme/ContactForm/ContactForm
 msgid "From"
-msgstr "De"
+msgstr "E-mail"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
@@ -2040,11 +2040,11 @@ msgstr "Atualizar"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update installed addons"
-msgstr "Atualizar addons instalados"
+msgstr "Atualizar complementos instalados"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update installed addons:"
-msgstr "Atualização de addons instalados:"
+msgstr "Atualização de complementos instalados:"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Updates available"
@@ -2254,7 +2254,7 @@ msgstr "O seu idioma preferido"
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "box_forgot_password_option"
-msgstr "box_forgot_password_option"
+msgstr "Esqueceu sua senha?"
 
 #: config/Blocks
 msgid "common"

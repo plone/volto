@@ -1,6 +1,6 @@
 # Change Log
 
-## 13.0.0 (unreleased)
+## 13.1.3 (unreleased)
 
 ### Breaking
 
@@ -9,8 +9,165 @@
 ### Bugfix
 
 - fix not updating roles in users controlpanel @nileshgulia1
+- Making placeholder image of video block to take 100% width when it is right or left aligned @iFlameing
+- Showing clear icon when title is too long in objectbrowser selected items in multiple mode @iFlameing
 
 ### Internal
+
+- Add [Volta](https://volta.sh) support @nzambello
+- Various minor `Makefile` cleanup @rpatterson
+- Improve error handling in UniversalLink @nzambello
+
+## 13.1.2 (2021-05-26)
+
+### Internal
+
+- Make the `AddLinkForm` component generic, to allow reuse in volto-slate @tiberiuichim
+- Adding hover effect on ObjectBrowserNav icon @iFlameing
+
+## 13.1.1 (2021-05-25)
+
+### Bugfix
+
+- Second try to fix images in dev mode when api path is present (e.g. using the Robot server in Cypress tests) @sneridagh
+
+## 13.1.0 (2021-05-24)
+
+### Feature
+
+- enabled ability to set 'extractScripts' for error pages @giuliaghisini
+
+### Bugfix
+
+- Modify Default and Summary templates to render the LinkMore @ionlizarazu
+- Revert #2472, this broke normal development mode images @sneridagh
+
+## 13.0.2 (2021-05-22)
+
+### Bugfix
+
+- Apply the `schemaEnhancer` from the main block even if no variations are found @sneridagh
+
+### Internal
+
+## 13.0.1 (2021-05-18)
+
+### Bugfix
+
+- Backwards compatibility for existing listing blocks with templates @sneridagh
+
+## 13.0.0 (2021-05-18)
+
+### Breaking
+
+- Seamless mode by default in development. Added `Host` header support for production
+  deployments, so no `RAZZLE_API_PATH` is required in production builds anymore if the
+  header is present. Not an strictly breaking change, but it's a default behavior change
+  worth to notice on its own. No change required in your deployments if you suply
+  currently `RAZZLE_API_PATH` in build time. See documentation for more information.
+  @sneridagh
+- Deprecate Node 10 since it's out of LTS since April 30th, 2021 @sneridagh
+- Remove the "inverted" option in Table Block since it was useless with the current CSS
+  set. Better naming of options and labels in table block (English). Updating the i18n messages for the used translations is advisable, but not required. @iFlameing
+- Get rid of the font icons in the control panels overview @sneridagh
+- Refactored `src/components/manage/Widgets/QuerystringWidget` using `ObjectWidget` and schemas @sneridagh
+- Refactored `Listing` block using the new `src/components/manage/Widgets/QuerystringWidget`. Introducing a new `showLinkMore` block option opt-in for the additional feature instead of always-in. Deprecated `ListingSidebar` and `src/components/manage/Blocks/Listing/QuerystringWidget` in favor of the new `src/components/manage/Widgets/QuerystringWidget` @sneridagh
+
+For a more information, please read the upgrade guide
+https://docs.voltocms.com/upgrade-guide/
+
+### Feature
+
+- Compile i18n json locales only at build time on the fly and at release time @sneridagh
+- Change login form fixing accessibility issues @nzambello
+
+### Bugfix
+
+- Fix the Listing block with criteria to render correctly on a non-multilingual homepage. @ionlizarazu
+- Fix selection of previous block when deleting a block @tiberiuichim
+- Disable `Select` components family to lazy load on SSR, since it's breaking and the fix is quite obscure. They are not valuable on SSR responses anyway. @sneridagh
+- Fix leftover from the multilingual fix for composed language names @sneridagh @ericof
+- Translate 'All' label in Contents view pagination. @giuliaghisini
+- Replace `langmap` dependency with internal code that supports composite language names @sneridagh @ericof
+- RenderBlocks: Blocks like the listing block need a path. @ksuess
+- Normalize language to get the correct filename in lazy imports for composite language names @sneridagh @ericof
+- Checkbox not using `null` as false @sneridagh
+- Use params prop in api middleware @giuliaghisini
+- Fix PORT env var handling, if you have set the PORT in build time, the setting was
+  removed back to defaults, now the build time setting is kept (unsetting in build time
+  and set it in runtime is now the recommended setup) @sneridagh
+- Fix sort_order restapi call, works on action for existing listing blocks
+  and in ListingData saving correctly new ones @nzambello
+- Fix `contextURL` in `ObjectBrowser` for special (add/edit) views using `getBaseUrl` @sneridagh
+
+### Internal
+
+- Full real zero configuration achievement by turning the stock default
+  `RAZZLE_PUBLIC_DIR` into a relative path, so we can enable truly movable builds
+  @sneridagh
+- Upgrade Cypress to latest @sneridagh
+- Remove surge since it's not used anymore @sneridagh
+- Upgrade `react-redux` and friends @sneridagh
+- Upgrade `yarnhook` and `yarn-deduplicate` @sneridagh
+- Add Listing block test for root path @ionlizarazu
+- Only log changes to po (`poToJson`) if running as a script @sneridagh
+- Remove json locales from the repo to avoid merge conflicts @sneridagh
+- All the `Select` components family in core are loaded through `Loadables` helper @sneridagh
+- Updated Brazilian Portuguese translations @ericof
+- Improve Github Actions names, separate the code analysis from the main core @sneridagh
+
+## 13.0.0-alpha.10 (2021-05-16)
+
+### Bugfix
+
+- Fix the Listing block with criteria to render correctly on a non-multilingual homepage. @ionlizarazu
+- Fix selection of previous block when deleting a block @tiberiuichim
+
+### Internal
+
+- Upgrade Cypress to latest @sneridagh
+- Remove surge since it's not used anymore @sneridagh
+- Upgrade `react-redux` and friends @sneridagh
+- Upgrade `yarnhook` and `yarn-deduplicate` @sneridagh
+- Add Listing block test for root path @ionlizarazu
+- Only log changes to po (`poToJson`) if running as a script @sneridagh
+
+## 13.0.0-alpha.9 (2021-05-13)
+
+### Feature
+
+- Compile i18n json locales only at build time on the fly and at release time @sneridagh
+
+### Internal
+
+- Remove json locales from the repo to avoid merge conflicts @sneridagh
+
+## 13.0.0-alpha.8 (2021-05-12)
+
+### Bugfix
+
+- Disable `Select` components family to lazy load on SSR, since it's breaking and the fix is quite obscure. They are not valuable on SSR responses anyway. @sneridagh
+
+### Internal
+
+- All the `Select` components family in core are loaded through `Loadables` helper @sneridagh
+
+## 13.0.0-alpha.7 (2021-05-11)
+
+### Bugfix
+
+- Fix leftover from the multilingual fix for composed language names @sneridagh @ericof
+
+### Internal
+
+- Updated Brazilian Portuguese translations @ericof
+
+## 13.0.0-alpha.6 (2021-05-11)
+
+### Bugfix
+
+- Translate 'All' label in Contents view pagination. @giuliaghisini
+- Replace langmap dependency with internal code that supports composite language names @sneridagh @ericof
 
 ## 13.0.0-alpha.5 (2021-05-10)
 
@@ -200,10 +357,12 @@ https://docs.voltocms.com/upgrade-guide/
 
 ### Bugfix
 
+- fix universal link @nileshgulia1s
 - fixed recurrence widget when weekly recurrence is selected and event start date is on sunday. @giuliaghisini
 - Fix default value for checkbox widget @alexbueckig
 - Fix for forms in content types, the fieldset was not being passed over to the field. This affected form generation ids and labels. @sneridagh
 - Add a bit of a11y love to the `ObjectListWidget` @sneridagh
+- fix universal link when no item content obj passed @nileshgulia1
 
 ### Internal
 

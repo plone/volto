@@ -1,55 +1,41 @@
 import React from 'react';
-import loadable from '@loadable/component';
-
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { Icon } from '@plone/volto/components';
 
 import downSVG from '@plone/volto/icons/down-key.svg';
 import upSVG from '@plone/volto/icons/up-key.svg';
 import checkSVG from '@plone/volto/icons/check.svg';
 
-const ReactSelect = loadable.lib(() => import('react-select'));
-
-export const Option = (props) => {
+export const Option = injectLazyLibs('reactSelect')((props) => {
+  const { Option } = props.reactSelect.components;
   return (
-    <ReactSelect>
-      {({ components }) => (
-        <components.Option {...props}>
-          <div>{props.label}</div>
-          {props.isFocused && !props.isSelected && (
-            <Icon name={checkSVG} size="24px" color="#b8c6c8" />
-          )}
-          {props.isSelected && (
-            <Icon name={checkSVG} size="24px" color="#007bc1" />
-          )}
-        </components.Option>
+    <Option {...props}>
+      <div>{props.label}</div>
+      {props.isFocused && !props.isSelected && (
+        <Icon name={checkSVG} size="24px" color="#b8c6c8" />
       )}
-    </ReactSelect>
+      {props.isSelected && <Icon name={checkSVG} size="24px" color="#007bc1" />}
+    </Option>
   );
-};
+});
 
-export const DropdownIndicator = (props) => {
+export const DropdownIndicator = injectLazyLibs('reactSelect')((props) => {
+  const { DropdownIndicator } = props.reactSelect.components;
   return (
-    <ReactSelect>
-      {({ components }) => (
-        <components.DropdownIndicator {...props}>
-          {props.selectProps.menuIsOpen ? (
-            <Icon name={upSVG} size="24px" color="#007bc1" />
-          ) : (
-            <Icon name={downSVG} size="24px" color="#007bc1" />
-          )}
-        </components.DropdownIndicator>
+    <DropdownIndicator {...props}>
+      {props.selectProps.menuIsOpen ? (
+        <Icon name={upSVG} size="24px" color="#007bc1" />
+      ) : (
+        <Icon name={downSVG} size="24px" color="#007bc1" />
       )}
-    </ReactSelect>
+    </DropdownIndicator>
   );
-};
+});
 
-export const Group = (props) => {
-  return (
-    <ReactSelect>
-      {({ components }) => <components.Group {...props}></components.Group>}
-    </ReactSelect>
-  );
-};
+export const Group = injectLazyLibs('reactSelect')((props) => {
+  const { Group } = props.reactSelect.components;
+  return <Group {...props}></Group>;
+});
 
 export const selectTheme = (theme) => ({
   ...theme,

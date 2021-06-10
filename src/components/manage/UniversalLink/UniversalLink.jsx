@@ -12,7 +12,7 @@ import URLUtils from '@plone/volto/components/manage/AnchorPlugin/utils/URLUtils
 
 const UniversalLink = ({
   href,
-  item,
+  item = null,
   openLinkInNewTab,
   download = false,
   children,
@@ -23,10 +23,21 @@ const UniversalLink = ({
   const token = useSelector((state) => state.userSession?.token);
 
   let url = href;
-  if (!href) {
-    url = flattenToAppURL(item['@id']);
-    if (!token && item.remoteUrl) {
-      url = item.remoteUrl;
+  if (!href && item) {
+    if (!item['@id']) {
+      // eslint-disable-next-line no-console
+      console.error(
+        'Invalid item passed to UniversalLink',
+        item,
+        props,
+        children,
+      );
+      url = '#';
+    } else {
+      url = flattenToAppURL(item['@id']);
+      if (!token && item.remoteUrl) {
+        url = item.remoteUrl;
+      }
     }
   }
 
@@ -76,7 +87,7 @@ UniversalLink.propTypes = {
   className: PropTypes.string,
   title: PropTypes.string,
   item: PropTypes.shape({
-    '@id': PropTypes.string,
+    '@id': PropTypes.string.isRequired,
     remoteUrl: PropTypes.string, //of plone @type 'Link'
   }),
   children: PropTypes.oneOfType([
