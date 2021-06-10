@@ -32,7 +32,7 @@ jobs:
       - run: yarn install --frozen-lockfile
 
       - name: Cypress Working Copy Acceptance Tests
-        run: yarn ci:cypress:run:iterate
+        run: yarn ci:cypress:run:workingCopy
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1
