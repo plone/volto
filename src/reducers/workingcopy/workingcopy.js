@@ -93,7 +93,7 @@ export default function workingCopy(state = initialState, action = {}) {
         [getRequestKey(action.type)]: {
           loading: false,
           loaded: false,
-          error: action.error.response.error,
+          error: action.error?.response?.error,
         },
       };
     default:

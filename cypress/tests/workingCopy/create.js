@@ -47,8 +47,7 @@ describe('Working Copy Tests - Create', () => {
       .and('include', '/working_copy_of_document');
 
     cy.get('#toolbar-more').click();
-    cy.findByLabelText('Apply working copy');
-    cy.findByLabelText('Remove working copy');
+    cy.findByText('View working copy');
   });
 
   it('Portal root does not have create option', function () {
