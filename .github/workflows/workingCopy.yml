@@ -31,6 +31,30 @@ jobs:
       # node install
       - run: yarn install --frozen-lockfile
 
+      # python setup (temporary, while p.a.iterate changes are in a PR)
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      # python cache
+      - uses: actions/cache@v1
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+      # python install
+      - run: pip install virtualenv
+      - name: pip install
+        working-directory: api
+        run: pip install -r requirements.txt
+      - name: buildout
+        working-directory: api
+        run: buildout
+        env:
+          CI: true
+
       - name: Cypress Working Copy Acceptance Tests
         run: yarn ci:cypress:run:workingCopy
 
