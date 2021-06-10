@@ -6,6 +6,9 @@
 
 ### Feature
 
+- added og tags for social sharing @giuliaghisini @nzambello
+- added interface for plone seo extensions to use values added by them as metadata @jackahl
+
 ### Bugfix
 
 - Making placeholder image of video block to take 100% width when it is right or left aligned @iFlameing
@@ -557,8 +560,6 @@ https://docs.voltocms.com/upgrade-guide/
 
 ### Feature
 
-- added interface for plone seo extensions to use values added by them as metadata @jackahl
-- added og tags for social sharing [giuliaghisini]
 - Add `preloadLazyLibs` and `settings.lazyBundles` to allow preloading bundles of lazy libraries @tiberiuichim @silviubogan
 - Added onChangeFormData prop to Form component @giuliaghisini
 - Internationalization story for add-ons @sneridagh
