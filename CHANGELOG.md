@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Changed 'batch_size' attribute in 'b_size' in querystring widget. @giuliaghisini
+- Properly respect batching and result limits in listing block @tiberiuichim
 - Improve folder_contents workflow state (#2017) @avoinea
 - Making placeholder image of video block to take 100% width when it is right or left aligned @iFlameing
 - Showing clear icon when title is too long in objectbrowser selected items in multiple mode @iFlameing
