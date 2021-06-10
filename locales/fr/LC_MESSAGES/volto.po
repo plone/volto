@@ -2165,6 +2165,10 @@ msgstr "Voir les changements"
 msgid "View this revision"
 msgstr "Voir cette révision"
 
+#: components/manage/Toolbar/More
+msgid "View working copy"
+msgstr ""
+
 #: components/manage/Display/Display
 msgid "Viewmode"
 msgstr "Mode d'affichage"

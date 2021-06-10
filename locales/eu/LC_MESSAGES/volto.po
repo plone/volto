@@ -2155,6 +2155,10 @@ msgstr "Aldaketak ikusi"
 msgid "View this revision"
 msgstr "Bertsio hau ikusi"
 
+#: components/manage/Toolbar/More
+msgid "View working copy"
+msgstr ""
+
 #: components/manage/Display/Display
 msgid "Viewmode"
 msgstr "Bistaratze modua"

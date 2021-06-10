@@ -2155,6 +2155,10 @@ msgstr "表示"
 msgid "View this revision"
 msgstr "この履歴を表示"
 
+#: components/manage/Toolbar/More
+msgid "View working copy"
+msgstr ""
+
 #: components/manage/Display/Display
 msgid "Viewmode"
 msgstr "表示モード"

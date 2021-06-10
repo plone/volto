@@ -2148,6 +2148,10 @@ msgstr "Vizualizare modificări"
 msgid "View this revision"
 msgstr "Vizualizați această revizuire"
 
+#: components/manage/Toolbar/More
+msgid "View working copy"
+msgstr ""
+
 #: components/manage/Display/Display
 msgid "Viewmode"
 msgstr "Mod vizualizare"
