@@ -216,6 +216,10 @@ class View extends Component {
     const RenderedView =
       this.getViewByType() || this.getViewByLayout() || this.getViewDefault();
 
+    const contentHasImage =
+      this.props.content.image?.scales?.large?.download ||
+      this.props.content.opengraph_image?.scales?.large?.download;
+
     return (
       <div id="view">
         <Helmet>
@@ -232,7 +236,6 @@ class View extends Component {
               this.props.content.description
             }
           />
-
           <meta
             property="og:title"
             content={
@@ -248,26 +251,27 @@ class View extends Component {
               toPublicURL(this.props.content['@id'])
             }
           />
-          {this.props.content.image?.scales?.large?.download ||
-            (this.props.content.opengraph_image?.scales?.large?.download && (
-              <>
-                <meta
-                  property="og:image"
-                  content={toPublicURL(
-                    this.props.content.opengraph_image.scales.large.download ||
-                      this.props.content.image.scales.large.download,
-                  )}
-                />
-                <meta
-                  property="og:image:width"
-                  content={this.props.content.image.scales.large.width}
-                />
-                <meta
-                  property="og:image:height"
-                  content={this.props.content.image.scales.large.height}
-                />
-              </>
-            ))}
+          {contentHasImage && (
+            <meta
+              property="og:image"
+              content={toPublicURL(
+                this.props.content.opengraph_image.scales.large.download ||
+                  this.props.content.image.scales.large.download,
+              )}
+            />
+          )}
+          {contentHasImage && (
+            <meta
+              property="og:image:width"
+              content={this.props.content.image.scales.large.width}
+            />
+          )}
+          {contentHasImage && (
+            <meta
+              property="og:image:height"
+              content={this.props.content.image.scales.large.height}
+            />
+          )}
           {(this.props.content.opengraph_description ||
             this.props.content.seo_description ||
             this.props.content.description) && (
