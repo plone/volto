@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Working copy support for Plone (plone.app.iterate) @sneridagh
+
 ### Bugfix
 
 - Making placeholder image of video block to take 100% width when it is right or left aligned @iFlameing
