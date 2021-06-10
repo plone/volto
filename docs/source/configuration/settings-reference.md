@@ -203,3 +203,13 @@ in the `config.settings.serverConfig` object.
     this file exists it is loaded and its content is embedded inline into the
     generated HTML. By default this path is `public/critical.css`. See the
     [Performance](/deploying/performance) section for more details.
+
+### extractScripts
+
+!!! block ""
+
+    An object that allows you to configure the insertion of scripts on the page
+    in some particular cases.
+    For the moment it admits only one property: `errorPages` whose value is a Boolean.
+
+    If `extractScripts.errorPages` is `true`, the JS will be inserted into the error page.

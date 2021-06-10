@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "13.0.1",
+  "version": "13.1.2",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -403,5 +403,9 @@
     "draft-js-block-breakout-plugin/immutable": "3.8.2",
     "draft-js-inline-toolbar-plugin/immutable": "3.8.2",
     "draft-js-plugins-editor/immutable": "3.8.2"
+  },
+  "volta": {
+    "node": "14.17.0",
+    "yarn": "1.19.1"
   }
 }
