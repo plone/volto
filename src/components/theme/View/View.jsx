@@ -10,7 +10,6 @@ import { compose } from 'redux';
 import { Portal } from 'react-portal';
 import { injectIntl } from 'react-intl';
 import qs from 'query-string';
-import config from '@plone/volto/registry';
 
 import { Comments, Tags, Toolbar } from '@plone/volto/components';
 import { listActions, getContent } from '@plone/volto/actions';
@@ -21,6 +20,8 @@ import {
   toPublicURL,
   Helmet,
 } from '@plone/volto/helpers';
+
+import config from '@plone/volto/registry';
 
 /**
  * View container class.
@@ -249,13 +250,23 @@ class View extends Component {
           />
           {this.props.content.image?.scales?.large?.download ||
             (this.props.content.opengraph_image?.scales?.large?.download && (
-              <meta
-                property="og:image"
-                content={toPublicURL(
-                  this.props.content.opengraph_image?.scales?.large?.download ||
-                    this.props.content.image?.scales?.large?.download,
-                )}
-              />
+              <>
+                <meta
+                  property="og:image"
+                  content={toPublicURL(
+                    this.props.content.opengraph_image.scales.large.download ||
+                      this.props.content.image.scales.large.download,
+                  )}
+                />
+                <meta
+                  property="og:image:width"
+                  content={this.props.content.image.scales.large.width}
+                />
+                <meta
+                  property="og:image:height"
+                  content={this.props.content.image.scales.large.height}
+                />
+              </>
             ))}
           {(this.props.content.opengraph_description ||
             this.props.content.seo_description ||
