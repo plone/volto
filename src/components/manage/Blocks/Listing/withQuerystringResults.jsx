@@ -12,11 +12,13 @@ function getDisplayName(WrappedComponent) {
 export default function withQuerystringResults(WrappedComponent) {
   function WithQuerystringResults(props) {
     const { data = {}, properties: content, path } = props;
+    const { settings } = config;
+    const querystring = data.querystring || data; // For backwards compat with data saved before Blocks schema
+    const { block } = data;
+    const { batch_size = settings.defaultPageSize } = querystring;
 
     // save the path so it won't trigger dispatch on eager router location change
     const [initialPath] = React.useState(path);
-    const { settings } = config;
-    const { block, batch_size = settings.defaultPageSize } = data;
 
     const copyFields = ['limit', 'query', 'sort_on', 'sort_order', 'depth'];
 
@@ -26,7 +28,9 @@ export default function withQuerystringResults(WrappedComponent) {
         fullobjects: 1,
       },
       ...copyFields.map((name) =>
-        Object.keys(data).includes(name) ? { [name]: data[name] } : {},
+        Object.keys(querystring).includes(name)
+          ? { [name]: querystring[name] }
+          : {},
       ),
     );
     const [currentPage, setCurrentPage] = React.useState(1);
@@ -36,11 +40,11 @@ export default function withQuerystringResults(WrappedComponent) {
     const dispatch = useDispatch();
 
     const folderItems = content?.is_folderish ? content.items : [];
-    const hasQuery = data?.query?.length > 0;
+    const hasQuery = querystring?.query?.length > 0;
     const hasLoaded = hasQuery ? !querystringResults?.[block]?.loading : true;
 
     const listingItems =
-      data?.query?.length > 0 && querystringResults?.[block]
+      querystring?.query?.length > 0 && querystringResults?.[block]
         ? querystringResults?.[block]?.items || []
         : folderItems;
 

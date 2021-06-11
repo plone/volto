@@ -25,14 +25,17 @@ const ListingBody = withQuerystringResults((props) => {
 
   let ListingBodyTemplate;
   // Legacy support if template is present
+  const variations = config.blocks?.blocksConfig['listing']?.variations || [];
+  const defaultVariation = variations.filter((item) => item.isDefault)?.[0];
+
   if (data.template && !data.variation) {
-    const variations = config.blocks?.blocksConfig['listing']?.variations || [];
     const legacyTemplateConfig = variations.find(
       (item) => item.id === data.template,
     );
     ListingBodyTemplate = legacyTemplateConfig.template;
   } else {
-    ListingBodyTemplate = variation.template;
+    ListingBodyTemplate =
+      variation?.template ?? defaultVariation?.template ?? null;
   }
 
   return listingItems?.length > 0 ? (
