@@ -17,6 +17,7 @@
 - Improve folder_contents workflow state (#2017) @avoinea
 - Making placeholder image of video block to take 100% width when it is right or left aligned @iFlameing
 - Showing clear icon when title is too long in objectbrowser selected items in multiple mode @iFlameing
+- Set default value selected for variation in listing block @giuliaghisini
 
 ### Internal
 
