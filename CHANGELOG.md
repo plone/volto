@@ -6,11 +6,17 @@
 
 ### Feature
 
+- Allow passing a schemaEnhancer to QuerystringWidget @tiberiuichim
+
 - Add internal URL blacklist to avoid render custom routes in Volto @nzambello
 
 ### Bugfix
 
 - Fix addBreaklinesInline when string ends with new line @giuliaghisini
+- Changed 'batch_size' attribute in 'b_size' in querystring widget. @giuliaghisini
+
+- Properly respect batching and result limits in listing block @tiberiuichim
+
 - Changed 'batch_size' attribute in 'b_size' in querystring widget. @giuliaghisini
 - Properly respect batching and result limits in listing block @tiberiuichim
 - Improve folder_contents workflow state (#2017) @avoinea
