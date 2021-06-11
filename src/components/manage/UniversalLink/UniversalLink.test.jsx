@@ -126,7 +126,18 @@ describe('UniversalLink', () => {
   });
 
   it('check UniversalLink renders ext link for blacklisted urls', () => {
-    config.settings.internalUrlBlacklist = ['/external-app'];
+    config.settings.externalRoutes = [
+      {
+        match: {
+          path: '/external-app',
+          exact: true,
+          strict: false,
+        },
+        url(payload) {
+          return payload.location.pathname;
+        },
+      },
+    ];
 
     const { getByTitle } = render(
       <Provider store={store}>

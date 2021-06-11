@@ -9,6 +9,8 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers/Url/Url';
 import URLUtils from '@plone/volto/components/manage/AnchorPlugin/utils/URLUtils';
+import { matchPath } from 'react-router';
+
 import config from '@plone/volto/registry';
 
 const UniversalLink = ({
@@ -26,14 +28,14 @@ const UniversalLink = ({
   let url = href;
   if (!href && item) {
     if (!item['@id']) {
-      /* eslint no-console: 0 */
+      // eslint-disable-next-line no-console
       console.error(
         'Invalid item passed to UniversalLink',
         item,
         props,
         children,
       );
-      url = '/';
+      url = '#';
     } else {
       url = flattenToAppURL(item['@id']);
       if (!token && item.remoteUrl) {
@@ -42,9 +44,10 @@ const UniversalLink = ({
     }
   }
 
-  const isBlacklisted = (config.settings.internalUrlBlacklist ?? []).includes(
-    flattenToAppURL(url),
-  );
+  const isBlacklisted =
+    (config.settings.externalRoutes ?? []).find((route) =>
+      matchPath(flattenToAppURL(url), route.match),
+    )?.length > 0;
   const isExternal = !isInternalURL(url) || isBlacklisted;
   const isDownload = (!isExternal && url.includes('@@download')) || download;
 
