@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { Pagination } from 'semantic-ui-react';
 import { Icon } from '@plone/volto/components';
@@ -38,8 +38,10 @@ const ListingBody = withQuerystringResults((props) => {
       variation?.template ?? defaultVariation?.template ?? null;
   }
 
+  const listingRef = createRef();
+
   return listingItems?.length > 0 ? (
-    <>
+    <div ref={listingRef}>
       <ListingBodyTemplate
         items={listingItems}
         isEditMode={isEditMode}
@@ -51,7 +53,8 @@ const ListingBody = withQuerystringResults((props) => {
             activePage={currentPage}
             totalPages={totalPages}
             onPageChange={(e, { activePage }) => {
-              !isEditMode && window.scrollTo(0, 0);
+              !isEditMode &&
+                listingRef.current.scrollIntoView({ behavior: 'smooth' });
               onPaginationChange(e, { activePage });
             }}
             firstItem={null}
@@ -71,9 +74,9 @@ const ListingBody = withQuerystringResults((props) => {
           />
         </div>
       )}
-    </>
+    </div>
   ) : isEditMode ? (
-    <div className="listing message">
+    <div className="listing message" ref={listingRef}>
       {isFolderContentsListing && (
         <FormattedMessage
           id="No items found in this container."
