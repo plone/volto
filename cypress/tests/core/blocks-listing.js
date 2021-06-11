@@ -10,6 +10,9 @@ describe('Listing Block Tests', () => {
       contentTitle: 'My Page',
     });
     cy.removeContent({ path: '/front-page' });
+    cy.removeContent({ path: '/news' });
+    cy.removeContent({ path: '/events' });
+    cy.removeContent({ path: '/Members' });
 
     cy.visit('/my-page');
     cy.waitForResourceToLoad('@navigation');
@@ -188,7 +191,7 @@ describe('Listing Block Tests', () => {
       .contains('Page')
       .click();
 
-    //before save, vrify if in list there's a page with id my-page-test
+    //before save, verify if in list there's a page with id my-page-test
     cy.get(`.block.listing .listing-body:first-of-type`).contains('My Page');
     //before save, verify if in list there isn't the News with title My News
     cy.get(`.block.listing .listing-body`)
@@ -475,6 +478,7 @@ describe('Listing Block Tests', () => {
       .contains('Document outside Folder')
       .should('not.exist');
   });
+
   it('Listing block - Test Criteria: Location relative with some outside content', () => {
     // Given we have two document about us, contact at portal route and two document in My Page
     // i.e News Item One and News Item Two
@@ -555,6 +559,93 @@ describe('Listing Block Tests', () => {
     cy.get(`.block.listing .listing-body`)
       .contains('about us')
       .should('not.exist');
+  });
+
+  it('Listing block: respect batching and limits', () => {
+    cy.createContent({
+      contentType: 'Folder',
+      contentId: 'my-folder',
+      contentTitle: 'My Folder',
+      path: 'my-page',
+    });
+    cy.createContent({
+      contentType: 'Folder',
+      contentId: 'my-folder2',
+      contentTitle: 'My Folder 2',
+      path: 'my-page',
+    });
+    cy.createContent({
+      contentType: 'Folder',
+      contentId: 'my-folder3',
+      contentTitle: 'My Folder 3',
+      path: 'my-page',
+    });
+
+    cy.visit('/my-page');
+    cy.waitForResourceToLoad('@navigation');
+    cy.waitForResourceToLoad('@breadcrumbs');
+    cy.waitForResourceToLoad('@actions');
+    cy.waitForResourceToLoad('@types');
+    cy.waitForResourceToLoad('my-page');
+    cy.navigate('/my-page/edit');
+
+    cy.get(`.block.title [data-contents]`)
+      .clear()
+      .type('Listing block - respect batching and limits');
+
+    //add listing block
+    cy.get('.block.text [contenteditable]').click();
+    cy.get('button.block-add-button').click();
+    cy.get('.blocks-chooser .title').contains('Common').click();
+    cy.get('.blocks-chooser .common').contains('Listing').click();
+
+    //verify before save
+    cy.get(`.block.listing .listing-body:first-of-type`).contains('My Folder');
+
+    cy.get('.sidebar-container .tabs-wrapper .menu .item')
+      .contains('Block')
+      .click();
+    cy.get('.querystring-widget .fields').contains('Add criteria').click();
+    cy.get(
+      '.querystring-widget .fields:first-of-type .field:first-of-type .react-select__menu .react-select__option',
+    )
+      .contains('Type')
+      .click();
+
+    //insert Page
+    cy.get('.querystring-widget .fields:first-of-type > .field').click();
+    cy.get(
+      '.querystring-widget .fields:first-of-type > .field .react-select__menu .react-select__option',
+    )
+      .contains('Folder')
+      .click();
+
+    cy.get('#field-limit-3-querystring').click().type('2');
+
+    //save
+    cy.get('#toolbar-save').click();
+
+    //test after save
+    cy.get('#page-document .listing-item:first-of-type a').should(
+      'have.attr',
+      'href',
+      '/my-page/my-folder',
+    );
+    cy.get('.listing-item').should(($els) => {
+      expect($els).to.have.length(2);
+    });
+
+    cy.navigate('/my-page/edit');
+    cy.get('.block-editor-listing').click();
+    cy.get('.sidebar-container .tabs-wrapper .menu .item')
+      .contains('Block')
+      .click();
+
+    cy.get('#field-limit-3-querystring').click().clear().type('0');
+    cy.get('#field-batch_size-4-querystring').click().type('2');
+    cy.get('.ui.pagination.menu a[value="2"]').first().click();
+
+    cy.get('.listing-item h4').first().contains('My Folder 3');
   });
 
   it('Listing block - Test Criteria: Location Navigation', () => {
