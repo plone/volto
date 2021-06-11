@@ -211,6 +211,11 @@ const routes = [
     path: '/',
     component: App,
     routes: [
+      // redirect to external links if path is in blacklist
+      ...(config.settings?.externalRoutes || []).map((route) => ({
+        ...route.match,
+        component: NotFound,
+      })),
       // addon routes have a higher priority then default routes
       ...(config.addonRoutes || []),
       ...defaultRoutes,

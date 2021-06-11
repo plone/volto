@@ -10,6 +10,9 @@ describe('Listing Block Tests', () => {
       contentTitle: 'My Page',
     });
     cy.removeContent({ path: '/front-page' });
+    cy.removeContent({ path: '/news' });
+    cy.removeContent({ path: '/events' });
+    cy.removeContent({ path: '/Members' });
 
     cy.visit('/my-page');
     cy.waitForResourceToLoad('@navigation');
@@ -559,23 +562,22 @@ describe('Listing Block Tests', () => {
   });
 
   it('Listing block: respect batching and limits', () => {
-    // Given One Document My Page Test and One News Item MY News and One Folder My Folder
-    cy.createContent({
-      contentType: 'Document',
-      contentId: 'my-page-test',
-      contentTitle: 'My Page Test',
-      path: 'my-page',
-    });
-    cy.createContent({
-      contentType: 'News Item',
-      contentId: 'my-news',
-      contentTitle: 'My News',
-      path: 'my-page',
-    });
     cy.createContent({
       contentType: 'Folder',
       contentId: 'my-folder',
       contentTitle: 'My Folder',
+      path: 'my-page',
+    });
+    cy.createContent({
+      contentType: 'Folder',
+      contentId: 'my-folder2',
+      contentTitle: 'My Folder 2',
+      path: 'my-page',
+    });
+    cy.createContent({
+      contentType: 'Folder',
+      contentId: 'my-folder3',
+      contentTitle: 'My Folder 3',
       path: 'my-page',
     });
 
@@ -598,9 +600,7 @@ describe('Listing Block Tests', () => {
     cy.get('.blocks-chooser .common').contains('Listing').click();
 
     //verify before save
-    cy.get(`.block.listing .listing-body:first-of-type`).contains(
-      'My Page Test',
-    );
+    cy.get(`.block.listing .listing-body:first-of-type`).contains('My Folder');
 
     cy.get('.sidebar-container .tabs-wrapper .menu .item')
       .contains('Block')
@@ -609,26 +609,28 @@ describe('Listing Block Tests', () => {
     cy.get(
       '.querystring-widget .fields:first-of-type .field:first-of-type .react-select__menu .react-select__option',
     )
-      .contains('Location')
+      .contains('Type')
       .click();
-    //location relative..
-    cy.get(
-      '.querystring-widget .fields:first-of-type .main-fields-wrapper .field:last-of-type',
-    ).click();
 
+    //insert Page
+    cy.get('.querystring-widget .fields:first-of-type > .field').click();
     cy.get(
-      '.querystring-widget .fields:first-of-type .main-fields-wrapper .field:last-of-type .react-select__menu .react-select__option',
+      '.querystring-widget .fields:first-of-type > .field .react-select__menu .react-select__option',
     )
-      .contains('Absolute path')
+      .contains('Folder')
       .click();
-    cy.get('.twelve > :nth-child(1) > :nth-child(2) > .ui > input').type('/');
 
-    cy.get('#field-limit-4-querystring').click().type('2');
+    cy.get('#field-limit-3-querystring').click().type('2');
 
     //save
     cy.get('#toolbar-save').click();
 
     //test after save
+    cy.get('#page-document .listing-item:first-of-type a').should(
+      'have.attr',
+      'href',
+      '/my-page/my-folder',
+    );
     cy.get('.listing-item').should(($els) => {
       expect($els).to.have.length(2);
     });
@@ -639,11 +641,11 @@ describe('Listing Block Tests', () => {
       .contains('Block')
       .click();
 
-    cy.get('#field-limit-4-querystring').click().clear().type('0');
-    cy.get('#field-batch_size-5-querystring').click().type('2');
+    cy.get('#field-limit-3-querystring').click().clear().type('0');
+    cy.get('#field-batch_size-4-querystring').click().type('2');
     cy.get('.ui.pagination.menu a[value="2"]').first().click();
 
-    cy.get('.listing-item h4').first().contains('My Folder');
+    cy.get('.listing-item h4').first().contains('My Folder 3');
   });
 
   it('Listing block - Test Criteria: Location Navigation', () => {
