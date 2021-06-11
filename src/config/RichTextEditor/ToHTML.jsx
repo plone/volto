@@ -20,15 +20,13 @@ const styles = {
 
 const addBreaklinesInline = (children) => {
   if (typeof children[0] == 'string') {
-    const s = children[0].endsWith('\n')
-      ? children[0].slice(0, -1)
-      : children[0];
+    const s = children[0];
 
     if (s.split('\n').length > 1) {
       return s.split('\n').map((child, index) => (
         <React.Fragment key={child + index}>
           {child}
-          <br />
+          {child?.length > 0 && <br />}
         </React.Fragment>
       ));
     }
