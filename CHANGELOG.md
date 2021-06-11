@@ -7,7 +7,6 @@
 ### Feature
 
 - Allow passing a schemaEnhancer to QuerystringWidget @tiberiuichim
-
 - Add internal URL blacklist to avoid render custom routes in Volto @nzambello
 
 ### Bugfix
