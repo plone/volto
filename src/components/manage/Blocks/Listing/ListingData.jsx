@@ -17,9 +17,6 @@ const ListingData = (props) => {
         onChangeBlock(block, {
           ...data,
           [id]: value,
-          // For backwards compat, we keep the content of the querystring widget spreaded
-          // but we also keep the data in the place it belongs, for future deprecation
-          ...(id === 'querystring' && { ...value }),
         });
       }}
       formData={data}

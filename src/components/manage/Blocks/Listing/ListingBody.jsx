@@ -13,36 +13,39 @@ import paginationRightSVG from '@plone/volto/icons/right-key.svg';
 
 const ListingBody = React.memo(
   (props) => {
-    const { data = {}, properties, path, isEditMode, variation } = props;
+    const { data, properties, path, isEditMode, variation } = props;
+    const querystring = data.querystring || data; // For backwards compat with data saved before Blocks schema
+    const [currentPage, setCurrentPage] = React.useState(1);
     const content = properties;
     const { settings } = config;
-    const { batch_size = settings.defaultPageSize } = data;
+    const { b_size = settings.defaultPageSize } = querystring;
 
     const copyFields = ['limit', 'query', 'sort_on', 'sort_order', 'depth'];
 
     const adaptedQuery = Object.assign(
       {
-        b_size: batch_size,
+        b_size: b_size,
         fullobjects: 1,
       },
       ...copyFields.map((name) =>
-        Object.keys(data).includes(name) ? { [name]: data[name] } : {},
+        Object.keys(querystring).includes(name)
+          ? { [name]: querystring[name] }
+          : {},
       ),
     );
 
-    const [currentPage, setCurrentPage] = React.useState(1);
     const querystringResults = useSelector(
       (state) => state.querystringsearch.subrequests,
     );
     const dispatch = useDispatch();
 
     React.useEffect(() => {
-      if (data?.query?.length > 0) {
+      if (querystring?.query?.length > 0) {
         dispatch(getQueryStringResults(path, adaptedQuery, data.block));
       } else if (
         ((!data.variation && data.template === 'imageGallery') ||
           data.variation === 'imageGallery') &&
-        data?.query?.length === 0
+        querystring?.query?.length === 0
       ) {
         // when used as image gallery, it doesn't need a query to list children
         dispatch(
@@ -69,24 +72,28 @@ const ListingBody = React.memo(
     const folderItems = content?.is_folderish ? content.items : [];
 
     const loadingQuery =
-      data?.query?.length > 0 && querystringResults?.[data.block]?.loading;
+      querystring?.query?.length > 0 &&
+      querystringResults?.[data.block]?.loading;
 
     const listingItems =
-      data?.query?.length > 0 && querystringResults?.[data.block]
+      querystring?.query?.length > 0 && querystringResults?.[data.block]
         ? querystringResults?.[data.block]?.items || []
         : folderItems;
 
     let ListingBodyTemplate;
     // Legacy support if template is present
+
+    const variations = config.blocks?.blocksConfig['listing']?.variations || [];
+    const defaultVariation = variations.filter((item) => item.isDefault)?.[0];
+
     if (data.template && !data.variation) {
-      const variations =
-        config.blocks?.blocksConfig['listing']?.variations || [];
       const legacyTemplateConfig = variations.find(
         (item) => item.id === data.template,
       );
       ListingBodyTemplate = legacyTemplateConfig.template;
     } else {
-      ListingBodyTemplate = variation.template;
+      ListingBodyTemplate =
+        variation?.template ?? defaultVariation?.template ?? null;
     }
 
     function handleContentPaginationChange(e, { activePage }) {
@@ -112,11 +119,11 @@ const ListingBody = React.memo(
               isEditMode={isEditMode}
               {...data}
             />
-            {data?.query?.length === 0 && content?.items_total > batch_size && (
+            {querystring?.query?.length === 0 && content?.items_total > b_size && (
               <div className="pagination-wrapper">
                 <Pagination
                   activePage={currentPage}
-                  totalPages={Math.ceil(content.items_total / batch_size)}
+                  totalPages={Math.ceil(content.items_total / b_size)}
                   onPageChange={handleContentPaginationChange}
                   firstItem={null}
                   lastItem={null}
@@ -135,13 +142,13 @@ const ListingBody = React.memo(
                 />
               </div>
             )}
-            {data?.query?.length > 0 &&
-              querystringResults?.[data.block]?.total > batch_size && (
+            {querystring?.query?.length > 0 &&
+              querystringResults?.[data.block]?.total > b_size && (
                 <div className="pagination-wrapper">
                   <Pagination
                     activePage={currentPage}
                     totalPages={Math.ceil(
-                      querystringResults[data.block].total / batch_size,
+                      querystringResults[data.block].total / b_size,
                     )}
                     onPageChange={handleQueryPaginationChange}
                     firstItem={null}
@@ -170,13 +177,13 @@ const ListingBody = React.memo(
           </>
         ) : isEditMode ? (
           <div className="listing message">
-            {data?.query?.length === 0 && (
+            {querystring?.query?.length === 0 && (
               <FormattedMessage
                 id="No items found in this container."
                 defaultMessage="No items found in this container."
               />
             )}
-            {!loadingQuery && data?.query?.length > 0 && (
+            {!loadingQuery && querystring?.query?.length > 0 && (
               <FormattedMessage
                 id="No results found."
                 defaultMessage="No results found."
