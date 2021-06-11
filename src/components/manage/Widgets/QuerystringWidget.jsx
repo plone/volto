@@ -33,63 +33,65 @@ const messages = defineMessages({
   },
 });
 
+export const objectSchema = ({ intl, value }) => ({
+  fieldsets: [
+    {
+      id: 'default',
+      title: 'Default',
+      fields: [
+        'query',
+        ...(value?.query?.filter((q) => q.i === 'path').length > 0
+          ? ['depth']
+          : []),
+        'sort_on',
+        'sort_order_boolean',
+        'limit',
+        'batch_size',
+      ],
+    },
+  ],
+  properties: {
+    query: {
+      title: intl.formatMessage(messages.Criteria),
+      widget: 'query',
+    },
+    depth: {
+      title: intl.formatMessage(messages.depth),
+      type: 'number',
+    },
+    sort_on: {
+      title: intl.formatMessage(messages.SortOn),
+      widget: 'query_sort_on',
+    },
+    sort_order_boolean: {
+      title: intl.formatMessage(messages.reversedOrder),
+      type: 'boolean',
+    },
+    limit: {
+      title: intl.formatMessage(messages.limit),
+      type: 'number',
+    },
+    batch_size: {
+      title: intl.formatMessage(messages.itemBatchSize),
+      type: 'number',
+    },
+  },
+  required: [],
+});
+
 const QuerystringWidget = (props) => {
-  const { block, onChange, value } = props;
+  const { block, onChange, schemaEnhancer } = props;
 
   const intl = useIntl();
-
-  const objectSchema = {
-    fieldsets: [
-      {
-        id: 'default',
-        title: 'Default',
-        fields: [
-          'query',
-          ...(value?.query?.filter((q) => q.i === 'path').length > 0
-            ? ['depth']
-            : []),
-          'sort_on',
-          'sort_order_boolean',
-          'limit',
-          'b_size',
-        ],
-      },
-    ],
-    properties: {
-      query: {
-        title: intl.formatMessage(messages.Criteria),
-        widget: 'query',
-      },
-      depth: {
-        title: intl.formatMessage(messages.depth),
-        type: 'number',
-      },
-      sort_on: {
-        title: intl.formatMessage(messages.SortOn),
-        widget: 'query_sort_on',
-      },
-      sort_order_boolean: {
-        title: intl.formatMessage(messages.reversedOrder),
-        type: 'boolean',
-      },
-      limit: {
-        title: intl.formatMessage(messages.limit),
-        type: 'number',
-      },
-      b_size: {
-        title: intl.formatMessage(messages.itemBatchSize),
-        type: 'number',
-      },
-    },
-    required: [],
-  };
+  let schema = objectSchema({ ...props, intl });
+  schema = schemaEnhancer ? schemaEnhancer({ ...props, intl, schema }) : schema;
 
   return (
     <div className="querystring-widget">
       <ObjectWidget
         {...props}
         block={block}
-        schema={objectSchema}
+        schema={schema}
         onChange={(id, value) => {
           const adaptedValue = {
             ...value,

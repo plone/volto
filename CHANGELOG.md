@@ -6,10 +6,16 @@
 
 ### Feature
 
+- Allow passing a schemaEnhancer to QuerystringWidget @tiberiuichim
 - Add internal URL blacklist to avoid render custom routes in Volto @nzambello
 - Add Image with srcset and lazy loading using Plone scales @nzambello
 
 ### Bugfix
+
+- Fix addBreaklinesInline when string ends with new line @giuliaghisini
+- Changed 'batch_size' attribute in 'b_size' in querystring widget. @giuliaghisini
+
+- Properly respect batching and result limits in listing block @tiberiuichim
 
 - Changed 'batch_size' attribute in 'b_size' in querystring widget. @giuliaghisini
 - Fix addBreaklinesInline when string ends with new line @giuliaghisini
@@ -19,6 +25,7 @@
 - Showing clear icon when title is too long in objectbrowser selected items in multiple mode @iFlameing
 - Set default value selected for variation in listing block @giuliaghisini
 - Use querystring prop in ListingBody @giuliaghisini
+- Set default value selected for variation in listing block @giuliaghisini
 
 ### Internal
 

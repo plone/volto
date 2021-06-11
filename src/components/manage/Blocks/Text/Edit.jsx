@@ -339,6 +339,7 @@ class Edit extends Component {
               }));
               this.props.onSelectBlock(this.props.onInsertBlock(id, value));
             }}
+            onMutateBlock={() => {}}
             currentBlock={this.props.block}
             allowedBlocks={this.props.allowedBlocks}
             showRestricted={this.props.showRestricted}
