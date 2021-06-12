@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Upgrade generator deps @sneridagh
+
 ## 13.2.0 (2021-06-12)
 
 ### Feature
