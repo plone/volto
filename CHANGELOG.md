@@ -2,8 +2,6 @@
 
 ## 13.1.3 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Allow passing a schemaEnhancer to QuerystringWidget @tiberiuichim
@@ -14,9 +12,7 @@
 
 - Fix addBreaklinesInline when string ends with new line @giuliaghisini
 - Changed 'batch_size' attribute in 'b_size' in querystring widget. @giuliaghisini
-
 - Properly respect batching and result limits in listing block @tiberiuichim
-
 - Changed 'batch_size' attribute in 'b_size' in querystring widget. @giuliaghisini
 - Properly respect batching and result limits in listing block @tiberiuichim
 - Improve folder_contents workflow state (#2017) @avoinea
