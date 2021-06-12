@@ -8,6 +8,7 @@
 
 - Allow passing a schemaEnhancer to QuerystringWidget @tiberiuichim
 - Add internal URL blacklist to avoid render custom routes in Volto @nzambello
+- In listing blocks, scroll to start of listing block instead page start @giuliaghisini
 
 ### Bugfix
 
