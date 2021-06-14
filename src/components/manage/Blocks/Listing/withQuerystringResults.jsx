@@ -20,17 +20,11 @@ export default function withQuerystringResults(WrappedComponent) {
     // save the path so it won't trigger dispatch on eager router location change
     const [initialPath] = React.useState(path);
 
-    const copyFields = [
-      'limit',
-      'query',
-      'sort_on',
-      'sort_order',
-      'depth',
-      'b_size',
-    ];
+    const copyFields = ['limit', 'query', 'sort_on', 'sort_order', 'depth'];
 
     const adaptedQuery = Object.assign(
       {
+        b_size: b_size,
         fullobjects: 1,
       },
       ...copyFields.map((name) =>
