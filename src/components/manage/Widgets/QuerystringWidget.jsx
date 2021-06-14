@@ -46,7 +46,7 @@ export const objectSchema = ({ intl, value }) => ({
         'sort_on',
         'sort_order_boolean',
         'limit',
-        'batch_size',
+        'b_size',
       ],
     },
   ],
@@ -71,7 +71,7 @@ export const objectSchema = ({ intl, value }) => ({
       title: intl.formatMessage(messages.limit),
       type: 'number',
     },
-    batch_size: {
+    b_size: {
       title: intl.formatMessage(messages.itemBatchSize),
       type: 'number',
     },

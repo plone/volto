@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Changed 'batch_size' attribute in 'b_size' in querystring widget. @giuliaghisini
+
 ### Internal
 
 - Upgrade generator deps @sneridagh
