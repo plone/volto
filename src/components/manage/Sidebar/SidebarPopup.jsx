@@ -21,12 +21,12 @@ const SidebarPopup = (props) => {
 
   React.useEffect(() => {
     if (open) {
-      document.addEventListener('click', handleClickOutside, false);
+      document.addEventListener('mousedown', handleClickOutside, false);
     } else {
-      document.removeEventListener('click', handleClickOutside, false);
+      document.removeEventListener('mousedown', handleClickOutside, false);
     }
     return () =>
-      document.removeEventListener('click', handleClickOutside, false);
+      document.removeEventListener('mousedown', handleClickOutside, false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 
