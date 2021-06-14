@@ -7,10 +7,11 @@ import { save, load } from 'redux-localstorage-simple';
 import config from '@plone/volto/registry';
 import reducers from '~/reducers';
 
-import { api, crashReporter } from '@plone/volto/middleware';
+import { api, crashReporter, blacklistRoutes } from '@plone/volto/middleware';
 
 const configureStore = (initialState, history, apiHelper) => {
   let stack = [
+    blacklistRoutes,
     routerMiddleware(history),
     crashReporter,
     thunk,
