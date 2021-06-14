@@ -35,6 +35,10 @@ const messages = defineMessages({
     id: 'Back',
     defaultMessage: 'Back',
   },
+  search: {
+    id: 'Search SVG',
+    defaultMessage: 'Search SVG',
+  },
   of: { id: 'Selected items - x of y', defaultMessage: 'of' },
 });
 
@@ -186,7 +190,7 @@ class ObjectBrowserBody extends Component {
     }));
 
   onSearch = (e) => {
-    const text = e.target.value;
+    const text = flattenToAppURL(e.target.value);
     if (text.startsWith('/')) {
       this.setState({ currentFolder: text });
       this.props.searchContent(
@@ -379,7 +383,10 @@ class ObjectBrowserBody extends Component {
             </h2>
           )}
 
-          <button onClick={this.toggleSearchInput}>
+          <button
+            aria-label={this.props.intl.formatMessage(messages.search)}
+            onClick={this.toggleSearchInput}
+          >
             <Icon name={searchSVG} size="24px" />
           </button>
           <button className="clearSVG" onClick={this.props.closeObjectBrowser}>
