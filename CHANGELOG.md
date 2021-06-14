@@ -2,10 +2,6 @@
 
 ## 13.2.1 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Changed 'batch_size' attribute in 'b_size' in querystring widget. @giuliaghisini
