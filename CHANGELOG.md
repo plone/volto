@@ -1,8 +1,20 @@
 # Change Log
 
-## 13.1.3 (unreleased)
+## 13.2.1 (unreleased)
 
 ### Breaking
+
+### Feature
+
+### Bugfix
+
+- Changed 'batch_size' attribute in 'b_size' in querystring widget. @giuliaghisini
+
+### Internal
+
+- Upgrade generator deps @sneridagh
+
+## 13.2.0 (2021-06-12)
 
 ### Feature
 
@@ -15,9 +27,7 @@
 
 - Fix addBreaklinesInline when string ends with new line @giuliaghisini
 - Changed 'batch_size' attribute in 'b_size' in querystring widget. @giuliaghisini
-
 - Properly respect batching and result limits in listing block @tiberiuichim
-
 - Changed 'batch_size' attribute in 'b_size' in querystring widget. @giuliaghisini
 - Fix addBreaklinesInline when string ends with new line @giuliaghisini
 - Properly respect batching and result limits in listing block @tiberiuichim

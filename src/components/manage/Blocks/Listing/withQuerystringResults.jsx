@@ -15,16 +15,22 @@ export default function withQuerystringResults(WrappedComponent) {
     const { settings } = config;
     const querystring = data.querystring || data; // For backwards compat with data saved before Blocks schema
     const { block } = data;
-    const { batch_size = settings.defaultPageSize } = querystring;
+    const { b_size = settings.defaultPageSize } = querystring; // batchsize
 
     // save the path so it won't trigger dispatch on eager router location change
     const [initialPath] = React.useState(path);
 
-    const copyFields = ['limit', 'query', 'sort_on', 'sort_order', 'depth'];
+    const copyFields = [
+      'limit',
+      'query',
+      'sort_on',
+      'sort_order',
+      'depth',
+      'b_size',
+    ];
 
     const adaptedQuery = Object.assign(
       {
-        b_size: batch_size,
         fullobjects: 1,
       },
       ...copyFields.map((name) =>
@@ -48,14 +54,14 @@ export default function withQuerystringResults(WrappedComponent) {
         ? querystringResults?.[block]?.items || []
         : folderItems;
 
-    const showAsFolderListing = !hasQuery && content?.items_total > batch_size;
+    const showAsFolderListing = !hasQuery && content?.items_total > b_size;
     const showAsQueryListing =
-      hasQuery && querystringResults?.[block]?.total > batch_size;
+      hasQuery && querystringResults?.[block]?.total > b_size;
 
     const totalPages = showAsFolderListing
-      ? Math.ceil(content.items_total / batch_size)
+      ? Math.ceil(content.items_total / b_size)
       : showAsQueryListing
-      ? Math.ceil(querystringResults[block].total / batch_size)
+      ? Math.ceil(querystringResults[block].total / b_size)
       : 0;
 
     const prevBatch = showAsFolderListing
@@ -118,7 +124,7 @@ export default function withQuerystringResults(WrappedComponent) {
             : handleQueryPaginationChange(e, { activePage });
         }}
         total={querystringResults?.[block]?.total}
-        batch_size={batch_size}
+        batch_size={b_size}
         currentPage={currentPage}
         totalPages={totalPages}
         prevBatch={prevBatch}
