@@ -5,7 +5,7 @@ This is a summary of all the configuration options and what they control.
 ## Main settings
 
 !!! note
-This list is still incomplete, contributions are welcomed!
+    This list is still incomplete, contributions are welcomed!
 
 ### navDepth
 
@@ -205,6 +205,14 @@ config.settings.externalRoutes = [
       return payload.location.pathname;
     },
   },
+];
+```
+
+It can also be simplified as:
+```js
+config.settings.externalRoutes = [
+  { match: "/news" },
+  { match: "/events" },
 ];
 ```
 
