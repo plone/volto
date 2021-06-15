@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fixed docs for config.settings.externalRoutes @giuliaghisini
+
 ### Internal
 
 ## 13.2.1 (2021-06-14)
