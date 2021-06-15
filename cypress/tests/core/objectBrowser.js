@@ -30,13 +30,30 @@ describe('Object Browser Tests', () => {
     cy.get(`.block.title [data-contents]`);
   });
 
-  it('Now user can paste the url in search box in sidebar', () => {
+  it('As editor I can add the relative url in search box in sidebar', () => {
     cy.get('.block.inner.text .public-DraftEditor-content').click();
     cy.get('.ui.basic.icon.button.block-add-button').click();
     cy.get('.ui.basic.icon.button.image').contains('Image').click();
     cy.get('.toolbar-inner button.ui.basic.icon.button').click();
     cy.findByLabelText('Search SVG').click();
     cy.get('.ui.input.search').type('/my-page-1');
+    cy.findByLabelText('Select my-image').dblclick();
+    cy.get('#toolbar-save').click();
+    cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
+
+    // then we should see a image
+    cy.get('.block img')
+      .should('have.attr', 'src')
+      .and('eq', '/my-page-1/my-image/@@images/image');
+  });
+
+  it('As editor I can add the full url in search box in sidebar', () => {
+    cy.get('.block.inner.text .public-DraftEditor-content').click();
+    cy.get('.ui.basic.icon.button.block-add-button').click();
+    cy.get('.ui.basic.icon.button.image').contains('Image').click();
+    cy.get('.toolbar-inner button.ui.basic.icon.button').click();
+    cy.findByLabelText('Search SVG').click();
+    cy.get('.ui.input.search').type('http://localhost:55001/my-page-1');
     cy.findByLabelText('Select my-image').dblclick();
     cy.get('#toolbar-save').click();
     cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
