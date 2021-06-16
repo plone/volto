@@ -8,7 +8,8 @@
 
 ### Bugfix
 
-- fix test @giuliaghisini
+- Fix test @giuliaghisini
+- Fix the translation of header in babel view @iFlameing
 
 ### Internal
 
