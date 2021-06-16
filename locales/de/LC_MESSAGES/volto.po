@@ -1531,7 +1531,7 @@ msgstr "Sortierreihenfolge umkehren"
 
 #: components/manage/History/History
 msgid "Revert to this revision"
-msgstr "Durch diese Version ersetzen"
+msgstr "Die aktuelle Version durch diese ersetzen"
 
 #: components/manage/Contents/Contents
 msgid "Review state"
