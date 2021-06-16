@@ -1,6 +1,6 @@
 # Change Log
 
-## 13.1.3 (unreleased)
+## 13.2.2 (unreleased)
 
 ### Breaking
 
@@ -9,10 +9,46 @@
 ### Bugfix
 
 - changed table headline text color to black for a11y
+- fix test @giuliaghisini
 
 ### Internal
 
+## 13.2.1 (2021-06-14)
+
+### Bugfix
+
+- Changed 'batch_size' attribute in 'b_size' in querystring widget. @giuliaghisini
+
+### Internal
+
+- Upgrade generator deps @sneridagh
+
+## 13.2.0 (2021-06-12)
+
+### Feature
+
+- Allow passing a schemaEnhancer to QuerystringWidget @tiberiuichim
+- Add internal URL blacklist to avoid render custom routes in Volto @nzambello
+- In listing blocks, scroll to start of listing block instead page start @giuliaghisini
+
+### Bugfix
+
+- Fix addBreaklinesInline when string ends with new line @giuliaghisini
+- Changed 'batch_size' attribute in 'b_size' in querystring widget. @giuliaghisini
+- Properly respect batching and result limits in listing block @tiberiuichim
+- Changed 'batch_size' attribute in 'b_size' in querystring widget. @giuliaghisini
+- Properly respect batching and result limits in listing block @tiberiuichim
+- Improve folder_contents workflow state (#2017) @avoinea
+- Making placeholder image of video block to take 100% width when it is right or left aligned @iFlameing
+- Showing clear icon when title is too long in objectbrowser selected items in multiple mode @iFlameing
+- Use querystring prop in ListingBody @giuliaghisini
+- Set default value selected for variation in listing block @giuliaghisini
+
+### Internal
+
+- Add [Volta](https://volta.sh) support @nzambello
 - Various minor `Makefile` cleanup @rpatterson
+- Improve error handling in UniversalLink @nzambello
 
 ## 13.1.2 (2021-05-26)
 
