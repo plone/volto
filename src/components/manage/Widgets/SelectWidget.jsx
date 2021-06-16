@@ -305,7 +305,10 @@ class SelectWidget extends Component {
             styles={customSelectStyles}
             theme={selectTheme}
             components={{ DropdownIndicator, Option }}
-            defaultValue={getDefaultValues(choices, value)}
+            defaultValue={getDefaultValues(
+              choices,
+              value || this.props.defaultValue,
+            )}
             onChange={(data) => {
               let dataValue = [];
               if (Array.isArray(data)) {
