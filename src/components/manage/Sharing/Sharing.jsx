@@ -73,9 +73,13 @@ const messages = defineMessages({
     id: 'Inherited value',
     defaultMessage: 'Inherited value',
   },
-  success: {
-    id: 'Permissions have been updated',
-    defaultMessage: 'Permissions have been updated',
+  permissionsUpdated: {
+    id: 'Permissions updated',
+    defaultMessage: 'Permissions updated',
+  },
+  permissionsUpdatedSuccessfully: {
+    id: 'Permissions have been updated successfully',
+    defaultMessage: 'Permissions have been updated successfully',
   },
 });
 
@@ -167,8 +171,10 @@ class SharingComponent extends Component {
       toast.success(
         <Toast
           success
-          title={this.props.intl.formatMessage(messages.success)}
-          content={this.props.intl.formatMessage(messages.success)}
+          title={this.props.intl.formatMessage(messages.permissionsUpdated)}
+          content={this.props.intl.formatMessage(
+            messages.permissionsUpdatedSuccessfully,
+          )}
         />,
       );
     }
