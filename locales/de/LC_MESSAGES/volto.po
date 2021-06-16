@@ -309,7 +309,7 @@ msgstr "Ziel auswählen"
 
 #: components/manage/Widgets/FileWidget
 msgid "Choose a file"
-msgstr ""
+msgstr "Datei wählen"
 
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
@@ -333,7 +333,7 @@ msgstr "Code"
 
 #: components/manage/Widgets/ObjectListWidget
 msgid "Collapse item"
-msgstr ""
+msgstr "Element minimieren"
 
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"
@@ -351,7 +351,7 @@ msgstr "Kommentarautor"
 
 #: components/theme/Comments/Comments
 msgid "Comments"
-msgstr ""
+msgstr "Kommentare"
 
 #: components/manage/Diff/Diff
 msgid "Compare"
@@ -399,7 +399,7 @@ msgstr "Kopieren"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Copy blocks"
-msgstr ""
+msgstr "Blöcke kopieren"
 
 #: components/theme/Footer/Footer
 msgid "Copyright"
@@ -438,7 +438,7 @@ msgstr "Ausschneiden"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Cut blocks"
-msgstr ""
+msgstr "Blöcke ausschneiden"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Daily"
@@ -516,7 +516,7 @@ msgstr "Benutzer löschen"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Delete blocks"
-msgstr ""
+msgstr "Blöcke löschen"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Delete col"
@@ -528,7 +528,7 @@ msgstr "Zeile löschen"
 
 #: components/manage/Widgets/QuerystringWidget
 msgid "Depth"
-msgstr ""
+msgstr "Tiefe"
 
 #: components/manage/Contents/Contents
 msgid "Descending"
@@ -591,11 +591,11 @@ msgstr "Ziehen Sie Dateien von Ihrem Computer auf diesen Bereich oder drücken S
 
 #: components/manage/Widgets/FileWidget
 msgid "Drop file here to replace the existing file"
-msgstr ""
+msgstr "Datei hier ablegen um die bestehende Datei zu ersetzen"
 
 #: components/manage/Widgets/FileWidget
 msgid "Drop file here to upload a new file"
-msgstr ""
+msgstr "Datei hier ablegen um eine neue Datei hochzuladen"
 
 #: components/manage/Widgets/FileWidget
 msgid "Drop files here ..."
@@ -662,7 +662,7 @@ msgstr "Eingebettete Google Maps Karte"
 
 #: components/manage/Widgets/ObjectListWidget
 msgid "Empty object list"
-msgstr ""
+msgstr "Leere Liste von Elementen"
 
 #: components/manage/Controlpanels/ContentTypeLayout
 msgid "Enable editable Blocks"
@@ -777,7 +777,7 @@ msgstr "Tabellen-Zellen mit fester Breite"
 
 #: components/manage/BlockChooser/BlockChooser
 msgid "Fold"
-msgstr ""
+msgstr "Einklappen"
 
 #: components/manage/Contents/Contents
 msgid "Folder"
@@ -845,7 +845,7 @@ msgstr "Kopfzeile"
 
 #: components/theme/Comments/Comments
 msgid "Hide Replies"
-msgstr ""
+msgstr "Antworten verbergen"
 
 #: components/manage/History/History
 #: components/manage/Toolbar/More
@@ -979,7 +979,7 @@ msgstr "Artikel eingefügt."
 
 #: components/manage/Contents/Contents
 msgid "Item(s) state has been updated."
-msgstr ""
+msgstr "Elemente wurden aktualisiert"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Items"
@@ -1046,7 +1046,7 @@ msgstr "Link auf"
 
 #: components/manage/Multilingual/ManageTranslations
 msgid "Link translation for"
-msgstr ""
+msgstr "Übersetzung verlinken"
 
 #: components/manage/Blocks/Listing/schema
 msgid "Listing"
@@ -1054,11 +1054,11 @@ msgstr "Auflistung"
 
 #: components/theme/Comments/Comments
 msgid "Load more"
-msgstr ""
+msgstr "Mehr laden"
 
 #: components/manage/Form/ModalForm
 msgid "Loading"
-msgstr ""
+msgstr "Lädt"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Location"
@@ -1174,7 +1174,7 @@ msgstr "Zurück navigieren"
 
 #: components/theme/Navigation/ContextNavigation
 msgid "Navigation"
-msgstr ""
+msgstr "Navigation"
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
@@ -1290,7 +1290,7 @@ msgstr "Menü öffnen"
 
 #: components/manage/Widgets/ObjectBrowserWidget
 msgid "Open object browser"
-msgstr ""
+msgstr "Objekt-Browser öffnen"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -1326,7 +1326,7 @@ msgstr "Einfügen"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Paste blocks"
-msgstr ""
+msgstr "Blöcke einfügen"
 
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Toolbar/Toolbar
@@ -1419,7 +1419,7 @@ msgstr "Freigabedatum"
 
 #: components/manage/Blocks/Listing/schema
 msgid "Query"
-msgstr ""
+msgstr "Anfrage"
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
@@ -1467,7 +1467,7 @@ msgstr "relevanz"
 
 #: components/manage/Widgets/ObjectListWidget
 msgid "Remove item"
-msgstr ""
+msgstr "Element löschen"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
@@ -1480,7 +1480,7 @@ msgstr "Umbenennen"
 
 #: components/manage/Contents/ContentsRenameModal
 msgid "Rename Items Loading Message"
-msgstr ""
+msgstr "Elemente-Umbenennen Modal lädt"
 
 #: components/manage/Contents/ContentsRenameModal
 msgid "Rename items"
@@ -1500,11 +1500,11 @@ msgstr "Wiederhole am"
 
 #: components/manage/Widgets/FileWidget
 msgid "Replace existing file"
-msgstr ""
+msgstr "Existierende Datei ersetzen"
 
 #: components/theme/Comments/Comments
 msgid "Reply"
-msgstr ""
+msgstr "Antworten"
 
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -1557,7 +1557,7 @@ msgstr "Rollen"
 
 #: components/manage/Contents/ContentsBreadcrumbs
 msgid "Root"
-msgstr ""
+msgstr "Wurzel"
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentType
@@ -1621,7 +1621,7 @@ msgstr "Zweiter"
 
 #: components/manage/Sidebar/ObjectBrowserNav
 msgid "Select"
-msgstr ""
+msgstr "Auswählen"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Select a date to add to recurrence"
@@ -1703,11 +1703,11 @@ msgstr "Alle anzeigen"
 
 #: components/theme/Comments/Comments
 msgid "Show Replies"
-msgstr ""
+msgstr "Antworten anzeigen"
 
 #: components/manage/Widgets/ObjectListWidget
 msgid "Show item"
-msgstr ""
+msgstr "Element anzeigen"
 
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
@@ -1796,7 +1796,7 @@ msgstr "Status"
 
 #: components/manage/Multilingual/CompareLanguages
 msgid "Stop compare"
-msgstr ""
+msgstr "Vergleichsansicht schließen"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "String"
@@ -1825,7 +1825,7 @@ msgstr "Erfolgreich"
 
 #: components/theme/LanguageSelector/LanguageSelector
 msgid "Switch to"
-msgstr ""
+msgstr "Wechseln zu"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Table"
@@ -1962,7 +1962,7 @@ msgstr "Anzahl aller Objekte in der Datenbank"
 
 #: components/manage/Add/Add
 msgid "Translate to"
-msgstr ""
+msgstr "Übersetzen nach"
 
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
@@ -2004,7 +2004,7 @@ msgstr "Nicht autorisiert"
 
 #: components/manage/BlockChooser/BlockChooser
 msgid "Unfold"
-msgstr ""
+msgstr "Ausklappen"
 
 #: components/manage/Diff/Diff
 msgid "Unified"
@@ -2022,7 +2022,7 @@ msgstr "Unbekannter Block"
 
 #: components/manage/Multilingual/ManageTranslations
 msgid "Unlink translation for"
-msgstr ""
+msgstr "Verknüpfung der Übersetzung aufheben"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update"
@@ -2062,7 +2062,7 @@ msgstr "Dateien hochladen"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 msgid "Uploading image"
-msgstr ""
+msgstr "Bild hochladen"
 
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -2101,7 +2101,7 @@ msgstr "Nutzer- und Gruppeneinstellungen"
 
 #: helpers/Extensions/withBlockSchemaEnhancer
 msgid "Variation"
-msgstr ""
+msgstr "Variante"
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Version Overview"
@@ -2181,7 +2181,7 @@ msgstr "Wer"
 
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Workflow Change Loading Message"
-msgstr ""
+msgstr "Ladeanzeige Änderung Arbeitsablauf"
 
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
@@ -2251,7 +2251,7 @@ msgstr "Allgemein"
 
 #: components/manage/Multilingual/CompareLanguages
 msgid "compare_to"
-msgstr ""
+msgstr "Vergleiche mit"
 
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"
@@ -2556,15 +2556,15 @@ msgstr "Regel Jahre"
 
 #: components/theme/SkipLinks/SkipLinks
 msgid "skiplink-footer"
-msgstr ""
+msgstr "Footer überspringen"
 
 #: components/theme/SkipLinks/SkipLinks
 msgid "skiplink-main-content"
-msgstr ""
+msgstr "Hauptinhalt überspringen"
 
 #: components/theme/SkipLinks/SkipLinks
 msgid "skiplink-navigation"
-msgstr ""
+msgstr "Navigation überspringen"
 
 #: components/manage/Contents/Contents
 msgid "sort"

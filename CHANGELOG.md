@@ -9,6 +9,7 @@
 ### Bugfix
 
 - fix test @giuliaghisini
+- Update German translations @timo
 
 ### Internal
 
