@@ -642,7 +642,7 @@ describe('Listing Block Tests', () => {
       .click();
 
     cy.get('#field-limit-3-querystring').click().clear().type('0');
-    cy.get('#field-batch_size-4-querystring').click().type('2');
+    cy.get('#field-b_size-4-querystring').click().type('2');
     cy.get('.ui.pagination.menu a[value="2"]').first().click();
 
     cy.get('.listing-item h4').first().contains('My Folder 3');

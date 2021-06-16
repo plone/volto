@@ -9,6 +9,8 @@
 
 ### Bugfix
 
+- fix test @giuliaghisini
+
 ### Internal
 
 ## 13.2.1 (2021-06-14)
