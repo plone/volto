@@ -5,7 +5,7 @@
 ### Breaking
 
 ### Feature
-
+- Showing success toast message for adding a new local role @iFlameing
 ### Bugfix
 
 - fix test @giuliaghisini
