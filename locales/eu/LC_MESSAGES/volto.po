@@ -1320,6 +1320,14 @@ msgstr "Itsatsi"
 msgid "Paste blocks"
 msgstr ""
 
+#: components/manage/Sharing/Sharing
+msgid "Permissions have been updated successfully"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
+msgid "Permissions updated"
+msgstr ""
+
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Toolbar/Toolbar
 msgid "Personal Information"
@@ -1957,9 +1965,6 @@ msgid "Total number of objects in the database"
 msgstr "Datu-basean dagoen elementu kopurua"
 
 #: components/manage/Add/Add
-msgid "Translate to"
-msgstr ""
-
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
 msgstr "{lang} hizkuntzara itzuli"

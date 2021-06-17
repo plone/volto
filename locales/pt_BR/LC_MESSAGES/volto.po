@@ -1323,6 +1323,14 @@ msgstr "Colar"
 msgid "Paste blocks"
 msgstr "Colar blocos"
 
+#: components/manage/Sharing/Sharing
+msgid "Permissions have been updated successfully"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
+msgid "Permissions updated"
+msgstr ""
+
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Toolbar/Toolbar
 msgid "Personal Information"
@@ -1960,9 +1968,6 @@ msgid "Total number of objects in the database"
 msgstr "Número total de objetos no banco de dados"
 
 #: components/manage/Add/Add
-msgid "Translate to"
-msgstr "Traduzir para"
-
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
 msgstr "Traduza para {lang}"
