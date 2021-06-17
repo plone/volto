@@ -9,6 +9,7 @@
 ### Bugfix
 
 - fix test @giuliaghisini
+- Fix the bug related to specific versioning view @iFlameing
 
 ### Internal
 
