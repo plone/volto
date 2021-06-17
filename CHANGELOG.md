@@ -9,6 +9,7 @@
 ### Bugfix
 
 - fix test @giuliaghisini
+- Fix German translations for leadimage and listing block @timo
 
 ### Internal
 
