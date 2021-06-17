@@ -1954,9 +1954,6 @@ msgid "Total number of objects in the database"
 msgstr "Numero totale di oggetti nel database"
 
 #: components/manage/Add/Add
-msgid "Translate to"
-msgstr "Traduci in"
-
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
 msgstr "Traduci in {lang}"

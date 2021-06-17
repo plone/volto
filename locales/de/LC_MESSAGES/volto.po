@@ -1016,7 +1016,7 @@ msgstr "Layout"
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Lead Image"
-msgstr "Leadbild"
+msgstr "Lead-Bild"
 
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
@@ -1196,11 +1196,11 @@ msgstr "Kein Bild ausgewählt"
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "No image set in Lead Image content field"
-msgstr "Im Leadbild Feld wurde kein Bild gesetzt"
+msgstr "Im Feld 'Lead-Bild' wurde kein Bild gesetzt."
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "No image set in image content field"
-msgstr "Im Bild Feld wurde kein Bild gesetzt"
+msgstr "Im Feld 'Bild' wurde kein Bild gesetzt"
 
 #: components/manage/Blocks/Listing/ListingBody
 msgid "No items found in this container."
@@ -1969,9 +1969,6 @@ msgid "Total number of objects in the database"
 msgstr "Anzahl aller Objekte in der Datenbank"
 
 #: components/manage/Add/Add
-msgid "Translate to"
-msgstr ""
-
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
 msgstr "Auf {lang} übersetzen"
@@ -2054,7 +2051,7 @@ msgstr "Hochladen"
 
 #: components/manage/Blocks/LeadImage/Edit
 msgid "Upload a lead image in the 'Lead Image' content field."
-msgstr "Laden Sie ein Leadbild im 'Leadbild' Feld hoch."
+msgstr "Laden Sie ein Lead-Bild im Feld 'Lead-Bild' hoch."
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 msgid "Upload a new image"
@@ -2351,11 +2348,11 @@ msgstr "Meine E-Mail-Adresse lautet"
 
 #: config/Blocks
 msgid "leadimage"
-msgstr "leadimage"
+msgstr "Lead-Bild"
 
 #: config/Blocks
 msgid "listing"
-msgstr "listing"
+msgstr "Listing"
 
 #: components/manage/Contents/Contents
 msgid "loading"

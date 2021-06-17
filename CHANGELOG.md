@@ -12,6 +12,9 @@
 
 - fix test @giuliaghisini
 - Fix the bug related to specific versioning view @iFlameing
+- Fix test @giuliaghisini
+- Fix the translation of header in babel view @iFlameing
+- Fix German translations for leadimage and listing block @timo
 
 ### Internal
 
