@@ -1330,11 +1330,11 @@ msgstr ""
 
 #: components/manage/Sharing/Sharing
 msgid "Permissions have been updated successfully"
-msgstr ""
+msgstr "Berechtigungen wurden erfolgreich aktualisiert"
 
 #: components/manage/Sharing/Sharing
 msgid "Permissions updated"
-msgstr ""
+msgstr "Berechtigungen aktualisiert"
 
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Toolbar/Toolbar
