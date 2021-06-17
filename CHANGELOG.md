@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Show toast success message when adding a new local role @iFlameing
+
 ### Bugfix
 
 - Fix test @giuliaghisini
