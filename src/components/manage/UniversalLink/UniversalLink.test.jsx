@@ -5,6 +5,7 @@ import configureStore from 'redux-mock-store';
 import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import UniversalLink from './UniversalLink';
+import config from '@plone/volto/registry';
 
 const mockStore = configureStore();
 const store = mockStore({
@@ -16,6 +17,8 @@ const store = mockStore({
     messages: {},
   },
 });
+
+global.console.error = jest.fn();
 
 describe('UniversalLink', () => {
   it('renders a UniversalLink component with internal link', () => {
@@ -120,5 +123,57 @@ describe('UniversalLink', () => {
     expect(getByTitle('Volto GitHub repository').getAttribute('target')).toBe(
       null,
     );
+  });
+
+  it('check UniversalLink renders ext link for blacklisted urls', () => {
+    config.settings.externalRoutes = [
+      {
+        match: {
+          path: '/external-app',
+          exact: true,
+          strict: false,
+        },
+        url(payload) {
+          return payload.location.pathname;
+        },
+      },
+    ];
+
+    const { getByTitle } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <UniversalLink
+            href="http://localhost:3000/external-app"
+            title="Blacklisted route"
+          >
+            <h1>Title</h1>
+          </UniversalLink>
+        </MemoryRouter>
+      </Provider>,
+    );
+
+    expect(getByTitle('Blacklisted route').getAttribute('target')).toBe(
+      '_blank',
+    );
+  });
+
+  it('check UniversalLink does not break with error in item', () => {
+    const component = renderer.create(
+      <Provider store={store}>
+        <MemoryRouter>
+          <UniversalLink
+            item={{
+              error: 'Error while fetching content',
+              message: 'Something went wrong',
+            }}
+          >
+            <h1>Title</h1>
+          </UniversalLink>
+        </MemoryRouter>
+      </Provider>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+    expect(global.console.error).toHaveBeenCalled();
   });
 });
