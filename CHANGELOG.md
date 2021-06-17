@@ -6,10 +6,14 @@
 
 ### Feature
 
+- Show toast success message when adding a new local role @iFlameing
+
 ### Bugfix
 
 - Fix test @giuliaghisini
 - Fix the translation of header in babel view @iFlameing
+- fix test @giuliaghisini
+- Fix German translations for leadimage and listing block @timo
 
 ### Internal
 
