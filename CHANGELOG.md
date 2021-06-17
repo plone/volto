@@ -12,6 +12,7 @@
 
 - Fix test @giuliaghisini
 - Fix the translation of header in babel view @iFlameing
+- Fix German translations for leadimage and listing block @timo
 
 ### Internal
 
