@@ -15,6 +15,7 @@ import config from '@plone/volto/registry';
 
 import { Comments, Tags, Toolbar } from '@plone/volto/components';
 import { listActions, getContent } from '@plone/volto/actions';
+import { loggedIn } from '@plone/volto/selectors/userSession/userSession';
 import {
   BodyClass,
   getBaseUrl,
@@ -234,7 +235,7 @@ class View extends Component {
         <RenderedView
           content={this.props.content}
           location={this.props.location}
-          token={this.props.token}
+          userLoggedIn={this.props.userLoggedIn}
           history={this.props.history}
         />
         {config.settings.showTags &&
@@ -267,7 +268,7 @@ export default compose(
   connect(
     (state, props) => ({
       actions: state.actions.actions,
-      token: state.userSession.token,
+      userLoggedIn: loggedIn(state),
       content: state.content.data,
       error: state.content.get.error,
       apiError: state.apierror.error,

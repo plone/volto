@@ -16,7 +16,14 @@ content, users and external resources that are pulled into our app in general.
 
 ## Reducers
 
-All the reducers are located here.
+`reducers` contains all the Redux reducers that manage the life-cycle for Redux actions
+and make the according changes to state.
+
+## Selectors
+
+`selectors` contains all the [Redux
+selectors](https://redux.js.org/tutorials/fundamentals/part-2-concepts-data-flow#selectors)
+that interpret state into the form used by UI components.
 
 ## Constants
 

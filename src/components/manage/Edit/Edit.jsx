@@ -16,6 +16,7 @@ import qs from 'query-string';
 import { find } from 'lodash';
 import { toast } from 'react-toastify';
 
+import { loggedIn } from '@plone/volto/selectors/userSession/userSession';
 import {
   Forbidden,
   Form,
@@ -328,7 +329,7 @@ class Edit extends Component {
         )}
         {!editPermission && (
           <>
-            {this.props.token ? (
+            {this.props.userLoggedIn ? (
               <Forbidden
                 pathname={this.props.pathname}
                 staticContext={this.props.staticContext}
@@ -404,7 +405,7 @@ export const __test__ = compose(
   connect(
     (state, props) => ({
       objectActions: state.actions.actions.object,
-      token: state.userSession.token,
+      userLoggedIn: loggedIn(state),
       content: state.content.data,
       compare_to: state.content.subrequests?.compare_to?.data,
       schema: state.schema.schema,
@@ -441,7 +442,7 @@ export default compose(
   connect(
     (state, props) => ({
       objectActions: state.actions.actions.object,
-      token: state.userSession.token,
+      userLoggedIn: loggedIn(state),
       content: state.content.data,
       compare_to: state.content.subrequests?.compare_to?.data,
       schema: state.schema.schema,
