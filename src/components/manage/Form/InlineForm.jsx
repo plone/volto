@@ -1,13 +1,13 @@
-import PropTypes from 'prop-types';
-import { defineMessages, injectIntl } from 'react-intl';
-import React from 'react';
-import { keys, map } from 'lodash';
 import { Field, Icon } from '@plone/volto/components';
-import AnimateHeight from 'react-animate-height';
-import { Accordion, Segment, Message } from 'semantic-ui-react';
-
-import upSVG from '@plone/volto/icons/up-key.svg';
 import downSVG from '@plone/volto/icons/down-key.svg';
+import upSVG from '@plone/volto/icons/up-key.svg';
+import { keys, map } from 'lodash';
+import PropTypes from 'prop-types';
+import React from 'react';
+import AnimateHeight from 'react-animate-height';
+import { defineMessages, injectIntl } from 'react-intl';
+import { Accordion, Message, Segment } from 'semantic-ui-react';
+
 
 const messages = defineMessages({
   editValues: {
