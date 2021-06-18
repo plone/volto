@@ -10,6 +10,33 @@ describe('Add Content Tests', () => {
     cy.waitForResourceToLoad('');
   });
 
+  it('As editor I can add a file', function () {
+    // when I add a file
+    cy.get('#toolbar-add').click();
+    cy.get('#toolbar-add-file').click();
+
+    cy.get('input[name="title"]')
+      .type('My File')
+      .should('have.value', 'My File');
+
+    cy.get('input[id="field-file"]').attachFile('file.pdf', {
+      subjectType: 'input',
+    });
+    cy.wait(2000);
+
+    cy.get('#toolbar-save').focus().click();
+    cy.waitForResourceToLoad('@navigation');
+    cy.waitForResourceToLoad('@breadcrumbs');
+    cy.waitForResourceToLoad('@actions');
+    cy.waitForResourceToLoad('@types');
+    cy.waitForResourceToLoad('file.pdf');
+
+    // then a new file should have been created
+    cy.url().should('eq', Cypress.config().baseUrl + '/file.pdf');
+    cy.findByLabelText('Edit');
+    cy.contains('My File');
+  });
+
   it('As editor I can add a page', function () {
     // when I add a page
     cy.get('#toolbar-add').click();
@@ -44,26 +71,6 @@ describe('Add Content Tests', () => {
     // then a new page with a text block has been added
 
     cy.get('.navigation .item.active').should('have.text', 'My Page');
-  });
-
-  it('As editor I can add a file', function () {
-    // when I add a file
-    cy.get('#toolbar-add').click();
-    cy.get('#toolbar-add-file').click();
-
-    cy.get('input[name="title"]')
-      .type('My File')
-      .should('have.value', 'My File');
-
-    cy.get('input[id="field-file"]').attachFile('file.pdf', {
-      subjectType: 'input',
-    });
-
-    cy.get('#toolbar-save').focus().click();
-
-    // then a new file should have been created
-    cy.url().should('eq', Cypress.config().baseUrl + '/file.pdf');
-    cy.contains('My File');
   });
 
   it('As editor I can add an image', function () {

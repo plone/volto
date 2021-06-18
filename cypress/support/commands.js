@@ -138,6 +138,31 @@ Cypress.Commands.add(
     }
   },
 );
+// Remove content
+Cypress.Commands.add('removeContent', ({ path = '' }) => {
+  let api_url, auth;
+  if (Cypress.env('API') === 'guillotina') {
+    api_url = 'http://localhost:8081/db/web';
+    auth = {
+      user: 'root',
+      pass: 'root',
+    };
+  } else {
+    api_url = 'http://localhost:55001/plone';
+    auth = {
+      user: 'admin',
+      pass: 'secret',
+    };
+  }
+  return cy.request({
+    method: 'DELETE',
+    url: `${api_url}/${path}`,
+    headers: {
+      Accept: 'application/json',
+    },
+    auth: auth,
+  });
+});
 
 // --- SET WORKFLOW ----------------------------------------------------------
 Cypress.Commands.add(

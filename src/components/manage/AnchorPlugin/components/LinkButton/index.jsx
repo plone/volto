@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import unionClassNames from 'union-class-names';
-//import EditorUtils from 'draft-js-plugins-utils';
+import cx from 'classnames';
 import EditorUtils from '../../utils/EditorUtils';
+import DraftEditorUtils from 'draft-js-plugins-utils';
 import AddLinkForm from '@plone/volto/components/manage/AnchorPlugin/components/LinkButton/AddLinkForm';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 
 import linkSVG from '@plone/volto/icons/link.svg';
 import unlinkSVG from '@plone/volto/icons/unlink.svg';
+
+// import unionClassNames from 'union-class-names';
+//import EditorUtils from 'draft-js-plugins-utils';
 
 /**
  * Add link form class.
@@ -47,6 +50,19 @@ class LinkButton extends Component {
         block="draft-js"
         data={{ url: link || '' }}
         onChangeBlock={() => {}}
+        onClear={() => {
+          this.props.setEditorState(
+            DraftEditorUtils.removeLinkAtSelection(this.props.getEditorState()),
+          );
+        }}
+        onChangeValue={(url) => {
+          this.props.setEditorState(
+            DraftEditorUtils.createLinkAtSelection(
+              this.props.getEditorState(),
+              url,
+            ),
+          );
+        }}
       />
     );
     onOverrideContent(content);
@@ -64,7 +80,7 @@ class LinkButton extends Component {
       'LINK',
     );
     const className = hasLinkSelected
-      ? unionClassNames(theme.button, theme.active)
+      ? cx(theme.button, theme.active)
       : theme.button;
 
     return (

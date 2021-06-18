@@ -1,6 +1,6 @@
 # Change Log
 
-## 13.0.0 (unreleased)
+## 13.2.2 (unreleased)
 
 ### Breaking
 
@@ -10,12 +10,168 @@
 
 ### Bugfix
 
+- Fix the bug related to specific versioning view @iFlameing
+- Fix blocks-listing Cypress test @giuliaghisini
+- Fix the translation of header in babel view @iFlameing
+- Fix German translations for leadimage and listing block @timo
+- Show toast success message when adding a new local role @iFlameing
+- Bump postcss from 7.0.29 to 7.0.36 @timo
+
+### Internal
+
+## 13.2.1 (2021-06-14)
+
+### Bugfix
+
+- Changed 'batch_size' attribute in 'b_size' in querystring widget. @giuliaghisini
+
+### Internal
+
+- Upgrade generator deps @sneridagh
+
+## 13.2.0 (2021-06-12)
+
+### Feature
+
+- Allow passing a schemaEnhancer to QuerystringWidget @tiberiuichim
+- Add internal URL blacklist to avoid render custom routes in Volto @nzambello
+- In listing blocks, scroll to start of listing block instead page start @giuliaghisini
+
+### Bugfix
+
+- Fix addBreaklinesInline when string ends with new line @giuliaghisini
+- Changed 'batch_size' attribute in 'b_size' in querystring widget. @giuliaghisini
+- Properly respect batching and result limits in listing block @tiberiuichim
+- Changed 'batch_size' attribute in 'b_size' in querystring widget. @giuliaghisini
+- Properly respect batching and result limits in listing block @tiberiuichim
+- Improve folder_contents workflow state (#2017) @avoinea
+- Making placeholder image of video block to take 100% width when it is right or left aligned @iFlameing
+- Showing clear icon when title is too long in objectbrowser selected items in multiple mode @iFlameing
+- Use querystring prop in ListingBody @giuliaghisini
+- Set default value selected for variation in listing block @giuliaghisini
+
+### Internal
+
+- Add [Volta](https://volta.sh) support @nzambello
+- Various minor `Makefile` cleanup @rpatterson
+- Improve error handling in UniversalLink @nzambello
+
+## 13.1.2 (2021-05-26)
+
+### Internal
+
+- Make the `AddLinkForm` component generic, to allow reuse in volto-slate @tiberiuichim
+- Adding hover effect on ObjectBrowserNav icon @iFlameing
+
+## 13.1.1 (2021-05-25)
+
+### Bugfix
+
+- Second try to fix images in dev mode when api path is present (e.g. using the Robot server in Cypress tests) @sneridagh
+
+## 13.1.0 (2021-05-24)
+
+### Feature
+
+- enabled ability to set 'extractScripts' for error pages @giuliaghisini
+
+### Bugfix
+
+- Modify Default and Summary templates to render the LinkMore @ionlizarazu
+- Revert #2472, this broke normal development mode images @sneridagh
+
+## 13.0.2 (2021-05-22)
+
+### Bugfix
+
+- Apply the `schemaEnhancer` from the main block even if no variations are found @sneridagh
+
+### Internal
+
+## 13.0.1 (2021-05-18)
+
+### Bugfix
+
+- Backwards compatibility for existing listing blocks with templates @sneridagh
+
+## 13.0.0 (2021-05-18)
+
+### Breaking
+
+- Seamless mode by default in development. Added `Host` header support for production
+  deployments, so no `RAZZLE_API_PATH` is required in production builds anymore if the
+  header is present. Not an strictly breaking change, but it's a default behavior change
+  worth to notice on its own. No change required in your deployments if you suply
+  currently `RAZZLE_API_PATH` in build time. See documentation for more information.
+  @sneridagh
+- Deprecate Node 10 since it's out of LTS since April 30th, 2021 @sneridagh
+- Remove the "inverted" option in Table Block since it was useless with the current CSS
+  set. Better naming of options and labels in table block (English). Updating the i18n messages for the used translations is advisable, but not required. @iFlameing
+- Get rid of the font icons in the control panels overview @sneridagh
+- Refactored `src/components/manage/Widgets/QuerystringWidget` using `ObjectWidget` and schemas @sneridagh
+- Refactored `Listing` block using the new `src/components/manage/Widgets/QuerystringWidget`. Introducing a new `showLinkMore` block option opt-in for the additional feature instead of always-in. Deprecated `ListingSidebar` and `src/components/manage/Blocks/Listing/QuerystringWidget` in favor of the new `src/components/manage/Widgets/QuerystringWidget` @sneridagh
+
+For a more information, please read the upgrade guide
+https://docs.voltocms.com/upgrade-guide/
+
+### Feature
+
+- Compile i18n json locales only at build time on the fly and at release time @sneridagh
+- Change login form fixing accessibility issues @nzambello
+
+### Bugfix
+
+- Fix the Listing block with criteria to render correctly on a non-multilingual homepage. @ionlizarazu
+- Fix selection of previous block when deleting a block @tiberiuichim
+- Disable `Select` components family to lazy load on SSR, since it's breaking and the fix is quite obscure. They are not valuable on SSR responses anyway. @sneridagh
+- Fix leftover from the multilingual fix for composed language names @sneridagh @ericof
+- Translate 'All' label in Contents view pagination. @giuliaghisini
+- Replace `langmap` dependency with internal code that supports composite language names @sneridagh @ericof
+- RenderBlocks: Blocks like the listing block need a path. @ksuess
+- Normalize language to get the correct filename in lazy imports for composite language names @sneridagh @ericof
+- Checkbox not using `null` as false @sneridagh
+- Use params prop in api middleware @giuliaghisini
+- Fix PORT env var handling, if you have set the PORT in build time, the setting was
+  removed back to defaults, now the build time setting is kept (unsetting in build time
+  and set it in runtime is now the recommended setup) @sneridagh
+- Fix sort_order restapi call, works on action for existing listing blocks
+  and in ListingData saving correctly new ones @nzambello
+- Fix `contextURL` in `ObjectBrowser` for special (add/edit) views using `getBaseUrl` @sneridagh
+
+### Internal
+
+- Full real zero configuration achievement by turning the stock default
+  `RAZZLE_PUBLIC_DIR` into a relative path, so we can enable truly movable builds
+  @sneridagh
+- Upgrade Cypress to latest @sneridagh
+- Remove surge since it's not used anymore @sneridagh
+- Upgrade `react-redux` and friends @sneridagh
+- Upgrade `yarnhook` and `yarn-deduplicate` @sneridagh
+- Add Listing block test for root path @ionlizarazu
+- Only log changes to po (`poToJson`) if running as a script @sneridagh
+- Remove json locales from the repo to avoid merge conflicts @sneridagh
+- All the `Select` components family in core are loaded through `Loadables` helper @sneridagh
+- Updated Brazilian Portuguese translations @ericof
+- Improve Github Actions names, separate the code analysis from the main core @sneridagh
+
+## 13.0.0-alpha.10 (2021-05-16)
+
+### Bugfix
+
+- Fix the Listing block with criteria to render correctly on a non-multilingual homepage. @ionlizarazu
+- Fix selection of previous block when deleting a block @tiberiuichim
+
 ### Internal
 
 - Add `MutateBlockButton`, a component that makes centralizes logic around BlockChooser and block mutation (changing block type) @tiberiuichim
 
 - Upgrade Storybook to 6.2.2 @tiberiuichim
 
+- Upgrade Cypress to latest @sneridagh
+- Remove surge since it's not used anymore @sneridagh
+- Upgrade `react-redux` and friends @sneridagh
+- Upgrade `yarnhook` and `yarn-deduplicate` @sneridagh
+- Add Listing block test for root path @ionlizarazu
 - Only log changes to po (`poToJson`) if running as a script @sneridagh
 
 ## 13.0.0-alpha.9 (2021-05-13)

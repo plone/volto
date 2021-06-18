@@ -38,7 +38,7 @@ describe('Basic multilingual Tests', () => {
     cy.get('#toolbar-add').click();
     cy.findByText('Translate to italiano').click();
     cy.findByText('Test document');
-    cy.findByText('Traduci in italiano');
+    cy.findByText('Traduci in Italiano');
     cy.get(
       '.new-translation .documentFirstHeading > .public-DraftStyleDefault-block',
     ).type('My IT page');

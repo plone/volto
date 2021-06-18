@@ -1317,6 +1317,14 @@ msgstr "Incolla"
 msgid "Paste blocks"
 msgstr "Incolla blocchi"
 
+#: components/manage/Sharing/Sharing
+msgid "Permissions have been updated successfully"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
+msgid "Permissions updated"
+msgstr ""
+
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Toolbar/Toolbar
 msgid "Personal Information"
@@ -1950,9 +1958,6 @@ msgid "Total number of objects in the database"
 msgstr "Numero totale di oggetti nel database"
 
 #: components/manage/Add/Add
-msgid "Translate to"
-msgstr "Traduci in"
-
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
 msgstr "Traduci in {lang}"
