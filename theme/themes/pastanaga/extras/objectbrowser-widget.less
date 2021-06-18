@@ -15,10 +15,15 @@
     margin-right: 1.5em;
 
     .ui.label {
+      display: flex;
       overflow: hidden;
       margin: 0.3em;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+
+      .item-title {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
     }
   }
 

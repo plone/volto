@@ -38,7 +38,7 @@ const messages = defineMessages({
   of: { id: 'Selected items - x of y', defaultMessage: 'of' },
 });
 
-export function getParentURL(url) {
+function getParentURL(url) {
   return flattenToAppURL(`${join(url.split('/').slice(0, -1), '/')}`) || '/';
 }
 
