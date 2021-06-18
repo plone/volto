@@ -1,0 +1,260 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a dictionary widget component 1`] = `
+<div
+  className="inline field vocabularylist"
+>
+  <div
+    className="ui grid"
+  >
+    <div
+      className="stretched row"
+    >
+      <div
+        className="four wide column"
+      >
+        <div
+          className="wrapper"
+        >
+          <label
+            htmlFor="field-test-dict"
+            id="fieldset-default-field-label-test-dict"
+          >
+            My Vocabulary
+          </label>
+        </div>
+      </div>
+      <div
+        className="eight wide column"
+      >
+        <div
+          className="ui basic segment"
+        >
+          <h3>
+            My Vocabulary
+          </h3>
+        </div>
+        <div
+          className="ui grid add-term-button-wrapper"
+        >
+          <div
+            className="stretched row"
+          >
+            <div
+              className="six wide column"
+            >
+               
+            </div>
+            <div
+              className="six wide column"
+            >
+              <button
+                aria-label="Term"
+                className="ui button"
+                onClick={[Function]}
+              >
+                <svg
+                  className="icon"
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": undefined,
+                    }
+                  }
+                  onClick={null}
+                  style={
+                    Object {
+                      "fill": "currentColor",
+                      "height": "18px",
+                      "width": "auto",
+                    }
+                  }
+                  viewBox=""
+                  xmlns=""
+                />
+                 
+                Add term
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          className="ui grid terms-wrapper"
+        >
+          <div
+            className="stretched row term-wrapper"
+          >
+            <div
+              className="one wide column"
+            >
+              <div
+                className="ui buttons"
+              >
+                <button
+                  aria-label="Remove term #1"
+                  className="ui basic button cancel"
+                  onClick={[Function]}
+                  title="Remove term Manual"
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "#e40166",
+                        "height": "20px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                </button>
+              </div>
+            </div>
+            <div
+              className="ten wide column"
+            >
+              <div
+                className="ui input"
+              >
+                <input
+                  id="test-dict-manual"
+                  name="test-dict-manual"
+                  onChange={[Function]}
+                  placeholder="Value"
+                  required={true}
+                  type="text"
+                  value="Manual"
+                />
+              </div>
+            </div>
+            <div
+              className="one wide column"
+            >
+              <div
+                className="ui buttons"
+              >
+                <button
+                  className="ui basic button cancel"
+                  onClick={[Function]}
+                  title="Reset term Manual"
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "20px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            className="stretched row term-wrapper"
+          >
+            <div
+              className="one wide column"
+            >
+              <div
+                className="ui buttons"
+              >
+                <button
+                  aria-label="Remove term #2"
+                  className="ui basic button cancel"
+                  onClick={[Function]}
+                  title="Remove term Übersicht"
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "#e40166",
+                        "height": "20px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                </button>
+              </div>
+            </div>
+            <div
+              className="ten wide column"
+            >
+              <div
+                className="ui input"
+              >
+                <input
+                  id="test-dict-ubersicht"
+                  name="test-dict-ubersicht"
+                  onChange={[Function]}
+                  placeholder="Value"
+                  required={true}
+                  type="text"
+                  value="Übersicht"
+                />
+              </div>
+            </div>
+            <div
+              className="one wide column"
+            >
+              <div
+                className="ui buttons"
+              >
+                <button
+                  className="ui basic button cancel"
+                  onClick={[Function]}
+                  title="Reset term Übersicht"
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "20px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -126,6 +126,10 @@ msgstr "Ajouter un nouvel utilistateur"
 msgid "Add to Groups"
 msgstr "Ajouter aux groupes"
 
+#: components/manage/Widgets/DictWidget
+msgid "Add vocabulary term"
+msgstr ""
+
 #: components/manage/Add/Add
 msgid "Add {type}"
 msgstr "Ajouter {type}"
@@ -1483,6 +1487,10 @@ msgstr ""
 msgid "Remove recurrence"
 msgstr ""
 
+#: components/manage/Widgets/DictWidget
+msgid "Remove vocabulary term"
+msgstr ""
+
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 msgid "Rename"
@@ -1526,6 +1534,10 @@ msgstr "Obligatoire"
 #: helpers/MessageLabels/MessageLabels
 msgid "Required input is missing."
 msgstr "Un champ obligatoire est manquant"
+
+#: components/manage/Widgets/DictWidget
+msgid "Reset vocabulary term"
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 msgid "Results limit"
@@ -1870,6 +1882,10 @@ msgstr "Taille de la mémoire par cache en octets"
 msgid "Target number of objects in memory per cache"
 msgstr "Nombre d'objets en mémoire par cache"
 
+#: components/manage/Widgets/DictWidget
+msgid "Term"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Text"
 msgstr "Texte"
@@ -2141,6 +2157,18 @@ msgstr "Voir cette révision"
 #: components/manage/Display/Display
 msgid "Viewmode"
 msgstr "Mode d'affichage"
+
+#: components/manage/Widgets/DictWidget
+msgid "Vocabulary"
+msgstr ""
+
+#: components/manage/Widgets/DictWidget
+msgid "Vocabulary Token"
+msgstr ""
+
+#: components/manage/Widgets/DictWidget
+msgid "Vocabulary Value"
+msgstr ""
 
 #: components/manage/Controlpanels/VersionOverview
 msgid "Warning Regarding debug mode"

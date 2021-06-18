@@ -134,6 +134,11 @@ msgstr ""
 msgid "Add to Groups"
 msgstr ""
 
+#: components/manage/Widgets/DictWidget
+# defaultMessage: Add term
+msgid "Add vocabulary term"
+msgstr ""
+
 #: components/manage/Add/Add
 # defaultMessage: Add {type}
 msgid "Add {type}"
@@ -1792,6 +1797,11 @@ msgstr ""
 msgid "Remove recurrence"
 msgstr ""
 
+#: components/manage/Widgets/DictWidget
+# defaultMessage: Remove term
+msgid "Remove vocabulary term"
+msgstr ""
+
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 # defaultMessage: Rename
@@ -1844,6 +1854,11 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Required input is missing.
 msgid "Required input is missing."
+msgstr ""
+
+#: components/manage/Widgets/DictWidget
+# defaultMessage: Reset term
+msgid "Reset vocabulary term"
 msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
@@ -2267,6 +2282,11 @@ msgstr ""
 msgid "Target number of objects in memory per cache"
 msgstr ""
 
+#: components/manage/Widgets/DictWidget
+# defaultMessage: Term
+msgid "Term"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Text
 msgid "Text"
@@ -2600,6 +2620,21 @@ msgstr ""
 #: components/manage/Display/Display
 # defaultMessage: View
 msgid "Viewmode"
+msgstr ""
+
+#: components/manage/Widgets/DictWidget
+# defaultMessage: Vocabulary
+msgid "Vocabulary"
+msgstr ""
+
+#: components/manage/Widgets/DictWidget
+# defaultMessage: Token
+msgid "Vocabulary Token"
+msgstr ""
+
+#: components/manage/Widgets/DictWidget
+# defaultMessage: Value
+msgid "Vocabulary Value"
 msgstr ""
 
 #: components/manage/Controlpanels/VersionOverview

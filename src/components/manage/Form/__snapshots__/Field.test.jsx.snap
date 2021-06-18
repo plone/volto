@@ -65,3 +65,9 @@ exports[`Field renders an \`array\` type field 1`] = `
   className="ArrayWidget"
 />
 `;
+
+exports[`Field renders an \`dict\` type field 1`] = `
+<div
+  className="DictWidget"
+/>
+`;

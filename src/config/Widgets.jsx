@@ -26,6 +26,7 @@ import ObjectBrowserWidget from '@plone/volto/components/manage/Widgets/ObjectBr
 
 import ObjectWidget from '@plone/volto/components/manage/Widgets/ObjectWidget';
 import ObjectListWidget from '@plone/volto/components/manage/Widgets/ObjectListWidget';
+import DictWidget from '../components/manage/Widgets/DictWidget';
 
 export const DatetimeWidget = loadable(() =>
   import('@plone/volto/components/manage/Widgets/DatetimeWidget'),
@@ -50,6 +51,7 @@ export const widgetMapping = {
     textarea: TextareaWidget,
     datetime: DatetimeWidget,
     date: DatetimeWidget,
+    dict: DictWidget,
     password: PasswordWidget,
     file: FileWidget,
     align: AlignWidget,

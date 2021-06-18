@@ -116,6 +116,10 @@ msgstr "Gehitu erabiltzaile berria"
 msgid "Add to Groups"
 msgstr "Gehitu taldeetara"
 
+#: components/manage/Widgets/DictWidget
+msgid "Add vocabulary term"
+msgstr ""
+
 #: components/manage/Add/Add
 msgid "Add {type}"
 msgstr "Gehitu {type}"
@@ -1473,6 +1477,10 @@ msgstr ""
 msgid "Remove recurrence"
 msgstr "Errepikapena ezabatu"
 
+#: components/manage/Widgets/DictWidget
+msgid "Remove vocabulary term"
+msgstr ""
+
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 msgid "Rename"
@@ -1516,6 +1524,10 @@ msgstr "Beharrezkoa"
 #: helpers/MessageLabels/MessageLabels
 msgid "Required input is missing."
 msgstr "Beharrezko balioak falta dira"
+
+#: components/manage/Widgets/DictWidget
+msgid "Reset vocabulary term"
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 msgid "Results limit"
@@ -1860,6 +1872,10 @@ msgstr "Katxe bakoitzaren tamaina "
 msgid "Target number of objects in memory per cache"
 msgstr "Katxe bakoitzaren elementu-kopurua"
 
+#: components/manage/Widgets/DictWidget
+msgid "Term"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Text"
 msgstr "Testua"
@@ -2131,6 +2147,18 @@ msgstr "Bertsio hau ikusi"
 #: components/manage/Display/Display
 msgid "Viewmode"
 msgstr "Bistaratze modua"
+
+#: components/manage/Widgets/DictWidget
+msgid "Vocabulary"
+msgstr ""
+
+#: components/manage/Widgets/DictWidget
+msgid "Vocabulary Token"
+msgstr ""
+
+#: components/manage/Widgets/DictWidget
+msgid "Vocabulary Value"
+msgstr ""
 
 #: components/manage/Controlpanels/VersionOverview
 msgid "Warning Regarding debug mode"

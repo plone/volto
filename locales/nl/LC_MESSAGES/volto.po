@@ -128,6 +128,10 @@ msgstr ""
 msgid "Add to Groups"
 msgstr ""
 
+#: components/manage/Widgets/DictWidget
+msgid "Add vocabulary term"
+msgstr ""
+
 #: components/manage/Add/Add
 msgid "Add {type}"
 msgstr "Voeg {type} toe"
@@ -1485,6 +1489,10 @@ msgstr ""
 msgid "Remove recurrence"
 msgstr ""
 
+#: components/manage/Widgets/DictWidget
+msgid "Remove vocabulary term"
+msgstr ""
+
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 msgid "Rename"
@@ -1528,6 +1536,10 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 msgid "Required input is missing."
 msgstr "Verplichte waarde mist."
+
+#: components/manage/Widgets/DictWidget
+msgid "Reset vocabulary term"
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 msgid "Results limit"
@@ -1872,6 +1884,10 @@ msgstr ""
 msgid "Target number of objects in memory per cache"
 msgstr ""
 
+#: components/manage/Widgets/DictWidget
+msgid "Term"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Text"
 msgstr ""
@@ -2142,6 +2158,18 @@ msgstr "Bekijk deze revisie"
 
 #: components/manage/Display/Display
 msgid "Viewmode"
+msgstr ""
+
+#: components/manage/Widgets/DictWidget
+msgid "Vocabulary"
+msgstr ""
+
+#: components/manage/Widgets/DictWidget
+msgid "Vocabulary Token"
+msgstr ""
+
+#: components/manage/Widgets/DictWidget
+msgid "Vocabulary Value"
 msgstr ""
 
 #: components/manage/Controlpanels/VersionOverview
