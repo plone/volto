@@ -7,6 +7,8 @@
 ### Feature
 - Allowing user to paste url in search box in objectBrowser @iFlameing
 
+- Add DictWidget and map to field of type 'dict'. @ksuess
+
 ### Bugfix
 
 - Fixed docs for config.settings.externalRoutes @giuliaghisini
