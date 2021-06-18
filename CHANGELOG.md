@@ -14,6 +14,7 @@
 - Fix German translations for leadimage and listing block @timo
 - Show toast success message when adding a new local role @iFlameing
 - Bump postcss from 7.0.29 to 7.0.36 @timo
+- Complete Spanish translation @erral
 
 ### Internal
 
