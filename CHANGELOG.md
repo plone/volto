@@ -1,6 +1,6 @@
 # Change Log
 
-## 13.2.2 (unreleased)
+## 13.2.3 (unreleased)
 
 ### Breaking
 
@@ -11,6 +11,19 @@
 - Fixed docs for config.settings.externalRoutes @giuliaghisini
 
 ### Internal
+
+## 13.2.2 (2021-06-18)
+
+### Bugfix
+
+- Fix the bug related to specific versioning view @iFlameing
+- Fix blocks-listing Cypress test @giuliaghisini
+- Fix the translation of header in babel view @iFlameing
+- Fix German translations for leadimage and listing block @timo
+- Show toast success message when adding a new local role @iFlameing
+- Bump postcss from 7.0.29 to 7.0.36 @timo
+- Complete Spanish translation @erral
+- Complete German translation @timo
 
 ## 13.2.1 (2021-06-14)
 
