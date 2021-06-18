@@ -288,7 +288,7 @@ export default compose(
       pathname: props.location.pathname,
       versionId:
         qs.parse(props.location.search) &&
-        qs.parse(props.location.search).version_id,
+        qs.parse(props.location.search).version,
     }),
     {
       listActions,

@@ -25,7 +25,8 @@ import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import { updateSharing, getSharing } from '@plone/volto/actions';
 import { getBaseUrl } from '@plone/volto/helpers';
-import { Icon, Toolbar } from '@plone/volto/components';
+import { Icon, Toolbar, Toast } from '@plone/volto/components';
+import { toast } from 'react-toastify';
 
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -71,6 +72,14 @@ const messages = defineMessages({
   inheritedValue: {
     id: 'Inherited value',
     defaultMessage: 'Inherited value',
+  },
+  permissionsUpdated: {
+    id: 'Permissions updated',
+    defaultMessage: 'Permissions updated',
+  },
+  permissionsUpdatedSuccessfully: {
+    id: 'Permissions have been updated successfully',
+    defaultMessage: 'Permissions have been updated successfully',
   },
 });
 
@@ -159,6 +168,15 @@ class SharingComponent extends Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
       this.props.getSharing(getBaseUrl(this.props.pathname), this.state.search);
+      toast.success(
+        <Toast
+          success
+          title={this.props.intl.formatMessage(messages.permissionsUpdated)}
+          content={this.props.intl.formatMessage(
+            messages.permissionsUpdatedSuccessfully,
+          )}
+        />,
+      );
     }
     this.setState({
       inherit:

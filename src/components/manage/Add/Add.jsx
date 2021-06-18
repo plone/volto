@@ -61,8 +61,8 @@ const messages = defineMessages({
     defaultMessage: 'Error',
   },
   translateTo: {
-    id: 'Translate to',
-    defaultMessage: 'Translate to',
+    id: 'Translate to {lang}',
+    defaultMessage: 'Translate to {lang}',
   },
 });
 
@@ -237,9 +237,7 @@ class Add extends Component {
       const translationObject = this.props.location?.state?.translationObject;
 
       const translateTo = translationObject
-        ? langmap?.[
-            this.props.location?.state?.language
-          ]?.nativeName?.toLowerCase()
+        ? langmap?.[this.props.location?.state?.language]?.nativeName
         : null;
 
       // Lookup initialBlocks and initialBlocksLayout within schema
@@ -406,9 +404,9 @@ class Add extends Component {
             <div className="new-translation">
               <Menu pointing secondary attached tabular>
                 <Menu.Item name={translateTo.toUpperCase()} active={true}>
-                  {`${this.props.intl.formatMessage(
-                    messages.translateTo,
-                  )} ${translateTo}`}
+                  {`${this.props.intl.formatMessage(messages.translateTo, {
+                    lang: translateTo,
+                  })}`}
                 </Menu.Item>
               </Menu>
               {pageAdd}
