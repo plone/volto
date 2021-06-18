@@ -26,7 +26,7 @@ import ObjectBrowserWidget from '@plone/volto/components/manage/Widgets/ObjectBr
 
 import ObjectWidget from '@plone/volto/components/manage/Widgets/ObjectWidget';
 import ObjectListWidget from '@plone/volto/components/manage/Widgets/ObjectListWidget';
-import DictWidget from '../components/manage/Widgets/DictWidget';
+import DictWidget from '@plone/volto/components/manage/Widgets/DictWidget';
 
 export const DatetimeWidget = loadable(() =>
   import('@plone/volto/components/manage/Widgets/DatetimeWidget'),
