@@ -81,6 +81,7 @@ const DictWidget = (props) => {
                   ...value,
                   [newtoken]: '',
                 });
+                setToFocusId(props.id + '-' + newtoken);
               }}
             >
               <Icon name={addSVG} size="18px" />{' '}
