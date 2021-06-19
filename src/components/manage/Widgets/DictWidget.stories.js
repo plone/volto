@@ -23,7 +23,7 @@ const DictWidgetComponent = (args) => {
         <DictWidgetDefault
           {...args}
           id="Dictionary"
-          title="Dictionary"
+          title="Dictionary / Vocabulary"
           block="testBlock"
           value={value}
           onChange={onChange}
@@ -35,7 +35,7 @@ const DictWidgetComponent = (args) => {
 };
 
 export default {
-  title: 'Widgets/Dict Widget',
+  title: 'Widgets/DictWidget',
   component: DictWidgetDefault,
   decorators: [
     (Story) => (
@@ -44,7 +44,6 @@ export default {
       </div>
     ),
   ],
-  // subcomponents: { ArgsTable },
 };
 
 export const DictWidget = () => <DictWidgetComponent />;
