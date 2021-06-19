@@ -18,13 +18,8 @@
   }
 }
 
-.objectlist-widget {
-  margin-bottom: 20px;
-
-  [data-rbd-draggable-context-id] {
-    margin-bottom: 0;
-  }
-
+// FormFieldWrapper
+.field.inline {
   .add-item-button-wrapper {
     padding-top: 10px;
 
@@ -39,6 +34,14 @@
       font-size: 16px;
       opacity: 0.8;
     }
+  }
+}
+
+.objectlist-widget {
+  margin-bottom: 20px;
+
+  [data-rbd-draggable-context-id] {
+    margin-bottom: 0;
   }
 
   // This button reset should be general to all widgets (at some point)
@@ -116,5 +119,11 @@
 
   .button .icon {
     margin: 0 !important;
+  }
+}
+
+.field.inline.dictwidget {
+  .ui.grid.terms-list {
+    margin: 0;
   }
 }

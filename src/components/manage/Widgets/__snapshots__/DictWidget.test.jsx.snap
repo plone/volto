@@ -2,7 +2,7 @@
 
 exports[`renders a dictionary widget component 1`] = `
 <div
-  className="inline field vocabularylist"
+  className="inline field dictwidget"
 >
   <div
     className="ui grid"
@@ -35,50 +35,36 @@ exports[`renders a dictionary widget component 1`] = `
           </h3>
         </div>
         <div
-          className="ui grid add-term-button-wrapper"
+          className="add-item-button-wrapper"
         >
-          <div
-            className="stretched row"
+          <button
+            aria-label="Term"
+            className="ui button"
+            onClick={[Function]}
           >
-            <div
-              className="six wide column"
-            >
-               
-            </div>
-            <div
-              className="six wide column"
-            >
-              <button
-                aria-label="Term"
-                className="ui button"
-                onClick={[Function]}
-              >
-                <svg
-                  className="icon"
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": undefined,
-                    }
-                  }
-                  onClick={null}
-                  style={
-                    Object {
-                      "fill": "currentColor",
-                      "height": "18px",
-                      "width": "auto",
-                    }
-                  }
-                  viewBox=""
-                  xmlns=""
-                />
-                 
-                Add term
-              </button>
-            </div>
-          </div>
+            <svg
+              className="icon"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": undefined,
+                }
+              }
+              onClick={null}
+              style={
+                Object {
+                  "fill": "currentColor",
+                  "height": "18px",
+                  "width": "auto",
+                }
+              }
+              viewBox=""
+              xmlns=""
+            />
+            Add term
+          </button>
         </div>
         <div
-          className="ui grid terms-wrapper"
+          className="ui grid terms-list"
         >
           <div
             className="stretched row term-wrapper"

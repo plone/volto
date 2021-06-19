@@ -57,40 +57,33 @@ const DictWidget = (props) => {
   }, [dispatch, toFocusId]);
 
   function onChangeField(token, fieldvalue) {
-    let dct = { ...value };
-    dct[token] = fieldvalue;
-    onChange(id, dct);
+    onChange(id, { ...value, [token]: fieldvalue });
     setToFocusId(props.id + '-' + token);
   }
 
   return (
-    <FormFieldWrapper {...props} className="vocabularylist">
+    <FormFieldWrapper {...props} className="dictwidget">
       <Segment basic>
         <h3>{props.title}</h3>
       </Segment>
-      <Grid className="add-term-button-wrapper">
-        <Grid.Row stretched>
-          <Grid.Column width="6"> </Grid.Column>
-          <Grid.Column width="6">
-            <Button
-              aria-label={intl.formatMessage(messages.termtitle)}
-              onClick={(e) => {
-                e.preventDefault();
-                const newtoken = 'term-' + size(value);
-                onChange(id, {
-                  ...value,
-                  [newtoken]: '',
-                });
-                setToFocusId(props.id + '-' + newtoken);
-              }}
-            >
-              <Icon name={addSVG} size="18px" />{' '}
-              {intl.formatMessage(messages.addTerm)}
-            </Button>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
-      <Grid className="terms-wrapper">
+      <div className="add-item-button-wrapper">
+        <Button
+          aria-label={intl.formatMessage(messages.termtitle)}
+          onClick={(e) => {
+            e.preventDefault();
+            const newtoken = 'term-' + size(value);
+            onChange(id, {
+              ...value,
+              [newtoken]: '',
+            });
+            setToFocusId(props.id + '-' + newtoken);
+          }}
+        >
+          <Icon name={addSVG} size="18px" />
+          {intl.formatMessage(messages.addTerm)}
+        </Button>
+      </div>
+      <Grid className="terms-list">
         {vocabularytokens.map((token, index) => {
           return (
             <Grid.Row stretched className="term-wrapper" key={index}>
