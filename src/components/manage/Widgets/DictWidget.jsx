@@ -1,9 +1,11 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { keys, size } from 'lodash';
+import { keys } from 'lodash';
 import { defineMessages, useIntl } from 'react-intl';
 
 import { Button, Grid, Input, Segment } from 'semantic-ui-react';
+import { v4 as uuid } from 'uuid';
+
 import { FormFieldWrapper, Icon } from '@plone/volto/components';
 
 import deleteSVG from '@plone/volto/icons/delete.svg';
@@ -71,7 +73,8 @@ const DictWidget = (props) => {
           aria-label={intl.formatMessage(messages.termtitle)}
           onClick={(e) => {
             e.preventDefault();
-            const newtoken = 'term-' + size(value);
+            // const newtoken = 'term-' + size(value);
+            const newtoken = uuid();
             onChange(id, {
               ...value,
               [newtoken]: '',
