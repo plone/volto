@@ -180,7 +180,9 @@ export const ContentsItemComponent = ({
                 </span>
                 {messages[item[index.id]]
                   ? intl.formatMessage(messages[item[index.id]])
-                  : intl.formatMessage(messages.no_workflow_state)}
+                  : item['review_title'] ||
+                    item['review_state'] ||
+                    intl.formatMessage(messages.no_workflow_state)}
               </div>
             )}
             {index.type === 'date' && (
