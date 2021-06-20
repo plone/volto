@@ -52,7 +52,7 @@ const View = ({ data, properties }) => (
             } else {
               return (
                 <Link
-                  to={data.href.replace(config.settings.apiPath, '')}
+                  to={flattenToAppURL(data.href)}
                   target={data.openLinkInNewTab ? '_blank' : null}
                 >
                   {image}

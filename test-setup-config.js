@@ -21,9 +21,11 @@ import {
 import { contentIcons } from '@plone/volto/config/ContentIcons';
 
 import FromHTMLCustomBlockFn from '@plone/volto/config/RichTextEditor/FromHTML';
+import { controlPanelsIcons } from '@plone/volto/config/ControlPanels';
 
 config.set('settings', {
   apiPath: 'http://localhost:8080/Plone',
+  defaultLanguage: 'en',
   supportedLanguages: ['en'],
   defaultPageSize: 25,
   isMultilingual: false,
@@ -46,6 +48,7 @@ config.set('settings', {
       // 'diffLib',
     ],
   },
+  controlPanelsIcons,
 });
 config.set('blocks', {
   blocksConfig: {

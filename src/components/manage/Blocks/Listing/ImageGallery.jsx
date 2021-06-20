@@ -77,13 +77,21 @@ const ImageGalleryTemplate = ({ items }) => {
     settings.imageObjects.includes(content['@type']),
   );
   const imagesInfo = renderItems.map((item) => {
+    let imageSRCOriginal, imageSRCThumb;
+    if (item?.[settings.listingPreviewImageField]) {
+      imageSRCOriginal = flattenToAppURL(
+        item[settings.listingPreviewImageField]?.scales.large.download,
+      );
+      imageSRCThumb = flattenToAppURL(
+        item[settings.listingPreviewImageField]?.scales.thumb.download,
+      );
+    } else {
+      imageSRCOriginal = `${item.url}/@@images/${settings.listingPreviewImageField}/large`;
+      imageSRCThumb = `${item.url}/@@images/${settings.listingPreviewImageField}/thumb`;
+    }
     return {
-      original: flattenToAppURL(
-        item[settings.listingPreviewImageField]?.scales.large.download || '',
-      ),
-      thumbnail: flattenToAppURL(
-        item[settings.listingPreviewImageField]?.scales.thumb.download || '',
-      ),
+      original: imageSRCOriginal,
+      thumbnail: imageSRCThumb,
     };
   });
 

@@ -17,7 +17,12 @@ test('renders a textarea widget component', () => {
 
   const component = renderer.create(
     <Provider store={store}>
-      <TextareaWidget id="my-field" title="My field" onChange={() => {}} />
+      <TextareaWidget
+        id="my-field"
+        title="My field"
+        fieldSet="default"
+        onChange={() => {}}
+      />
     </Provider>,
   );
   const json = component.toJSON();

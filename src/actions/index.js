@@ -22,6 +22,7 @@ export {
   addComment,
   deleteComment,
   listComments,
+  listMoreComments,
   updateComment,
 } from '@plone/volto/actions/comments/comments';
 export {
@@ -117,3 +118,5 @@ export {
 } from '@plone/volto/actions/blocksClipboard/blocksClipboard';
 export { loadLazyLibrary } from '@plone/volto/actions/lazyLibraries/lazyLibraries';
 export { getContextNavigation } from '@plone/volto/actions/contextNavigation/contextNavigation';
+export * from './asyncConnect/asyncConnect';
+export { changeLanguage, changeLanguageCookies } from './language/language';

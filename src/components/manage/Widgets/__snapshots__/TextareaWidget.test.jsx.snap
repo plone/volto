@@ -18,6 +18,7 @@ exports[`renders a textarea widget component 1`] = `
         >
           <label
             htmlFor="field-my-field"
+            id="fieldset-default-field-label-my-field"
           >
             My field
           </label>

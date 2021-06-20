@@ -80,7 +80,7 @@ msgstr "Gehitu deskribapena..."
 msgid "Add block…"
 msgstr "Gehitu blokea..."
 
-#: components/manage/Blocks/Listing/QuerystringWidget
+#: components/manage/Widgets/QueryWidget
 msgid "Add criteria"
 msgstr "Gehitu irizpidea"
 
@@ -180,6 +180,7 @@ msgstr "Aukerak"
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -194,10 +195,6 @@ msgstr "Oinarria"
 msgid "Block"
 msgstr "Blokea"
 
-#: components/manage/Blocks/Listing/ListingSidebar
-msgid "Block style"
-msgstr "Blokearen estiloa"
-
 #: components/theme/Login/Login
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
 msgstr "Bai e-posta helbideak eta bai pasahitzak maiuskula eta minuskulak bereizten dituzte, egiaztatu maiuskulak blokeatzeko tekla ez dagoela aktibatuta."
@@ -206,7 +203,9 @@ msgstr "Bai e-posta helbideak eta bai pasahitzak maiuskula eta minuskulak bereiz
 msgid "Breadcrumbs"
 msgstr "Nabigazio arrastoa"
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
 msgstr "Arakatu"
 
@@ -324,6 +323,10 @@ msgstr "Itxi menua"
 msgid "Code"
 msgstr ""
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Collapse item"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"
 msgstr "Bilduma"
@@ -337,6 +340,10 @@ msgstr "Iruzkina"
 #: components/manage/Controlpanels/ModerateComments
 msgid "Commenter"
 msgstr "Erantzuna eman duena"
+
+#: components/theme/Comments/Comments
+msgid "Comments"
+msgstr ""
 
 #: components/manage/Diff/Diff
 msgid "Compare"
@@ -362,10 +369,6 @@ msgstr "Kontaktu-formularioa"
 #: components/manage/Blocks/Listing/Edit
 msgid "Contained items"
 msgstr "Barneko elementuak"
-
-#: components/manage/Blocks/Listing/ListingSidebar
-msgid "Content"
-msgstr "Edukia"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
@@ -410,7 +413,8 @@ msgstr "Sortzailea"
 msgid "Creators"
 msgstr "Sortzaileak"
 
-#: components/manage/Blocks/Listing/QuerystringWidget
+#: components/manage/Widgets/QuerystringWidget
+#: components/manage/Widgets/QueryWidget
 msgid "Criteria"
 msgstr "Irizpidea"
 
@@ -464,7 +468,6 @@ msgstr "Data (berriena lehenengo)"
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -515,7 +518,7 @@ msgstr "Ezabatu zutabea"
 msgid "Delete row"
 msgstr "Ezabatu errenkada"
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerystringWidget
 msgid "Depth"
 msgstr ""
 
@@ -525,7 +528,6 @@ msgstr "Beheraka"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -570,6 +572,7 @@ msgstr "{username} erabiltzailea ezabatu egin nahi duzu?"
 msgid "Do you really want to delete this item?"
 msgstr "Elementu hau ezabatu egin nahi duzu?"
 
+#: components/manage/Multilingual/TranslationObject
 #: components/manage/Sidebar/Sidebar
 msgid "Document"
 msgstr "Dokumentua"
@@ -648,6 +651,10 @@ msgstr "Itsatsitako kodearen errorea, jarraitu argibideak eta saiatu berriz."
 #: components/manage/Blocks/Maps/View
 msgid "Embeded Google Maps"
 msgstr "Itsatsitako Google Maps"
+
+#: components/manage/Widgets/ObjectListWidget
+msgid "Empty object list"
+msgstr ""
 
 #: components/manage/Controlpanels/ContentTypeLayout
 msgid "Enable editable Blocks"
@@ -760,6 +767,10 @@ msgstr "Lehenengo"
 msgid "Fixed width table cells"
 msgstr "Tamaina finkoko taularen zeldak"
 
+#: components/manage/BlockChooser/BlockChooser
+msgid "Fold"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Folder"
 msgstr "Karpeta"
@@ -824,6 +835,10 @@ msgstr "Taldeak"
 msgid "Header cell"
 msgstr ""
 
+#: components/theme/Comments/Comments
+msgid "Hide Replies"
+msgstr ""
+
 #: components/manage/History/History
 #: components/manage/Toolbar/More
 msgid "History"
@@ -860,14 +875,7 @@ msgstr "Data hau etorkizunekoa bada, edukia ez da agertuko data hori iritsi arte
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr "Ziurtatu helbide zuzenean zaudena, hala ere errorea baduzu jarri kontaktuan {site_admin}."
 
-#: components/theme/Login/Login
-msgid "If you have forgotten your password, {forgotpassword}"
-msgstr "Pasahitza ahaztu baduzu, {forgotpassword}"
-
-#: components/theme/Login/Login
-msgid "If you you do not have an account here, head over to the {registrationform}."
-msgstr "Ez baduzu erabiltzaile-konturik, zoaz {registrationform}."
-
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
@@ -936,7 +944,7 @@ msgstr "astean behin"
 msgid "Interval Yearly"
 msgstr "urtean behin"
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerystringWidget
 msgid "Item batch size"
 msgstr "Elementu-multzoaren tamaina"
 
@@ -960,6 +968,10 @@ msgstr ""
 #: components/manage/Contents/Contents
 msgid "Item(s) pasted."
 msgstr "Elementuak ondo itsatsi dira."
+
+#: components/manage/Contents/Contents
+msgid "Item(s) state has been updated."
+msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Items"
@@ -1008,25 +1020,37 @@ msgstr "Ezkerrean"
 msgid "Link"
 msgstr "Esteka"
 
-#: components/manage/Blocks/Listing/ListingSidebar
+#: components/manage/Blocks/Listing/schema
 msgid "Link more"
 msgstr ""Gehiago" estekatu"
 
-#: components/manage/Blocks/Listing/ListingMore
+#: components/manage/Blocks/Listing/schema
 msgid "Link title"
 msgstr "Izenburua estekatu"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Listing/ListingMore
+#: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Link to"
 msgstr "Esteka"
 
-#: components/manage/Blocks/Listing/ListingSidebar
+#: components/manage/Multilingual/ManageTranslations
+msgid "Link translation for"
+msgstr ""
+
+#: components/manage/Blocks/Listing/schema
 msgid "Listing"
 msgstr "Zerrenda"
+
+#: components/theme/Comments/Comments
+msgid "Load more"
+msgstr ""
+
+#: components/manage/Form/ModalForm
+msgid "Loading"
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Location"
@@ -1201,7 +1225,8 @@ msgstr "Ez da emaitzarik aurkitu."
 msgid "No results found."
 msgstr "Ez da emaitzarik aurkitu."
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerySortOnWidget
+#: components/manage/Widgets/QuerystringWidget
 msgid "No selection"
 msgstr "Ez da ezer aukeratu"
 
@@ -1255,6 +1280,10 @@ msgstr "Fitxa berrian ireki"
 msgid "Open menu"
 msgstr "Menua ireki"
 
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "Open object browser"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Origin"
@@ -1289,6 +1318,14 @@ msgstr "Itsatsi"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Paste blocks"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
+msgid "Permissions have been updated successfully"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
+msgid "Permissions updated"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
@@ -1380,6 +1417,10 @@ msgstr "Argitaratze-data"
 msgid "Publishing Date"
 msgstr "Argitaratze-data"
 
+#: components/manage/Blocks/Listing/schema
+msgid "Query"
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "Re-enter the password. Make sure the passwords are identical."
@@ -1411,6 +1452,7 @@ msgid "Reduce complexity"
 msgstr "Konplexutasuna gutxitu"
 
 #: components/theme/Anontools/Anontools
+#: components/theme/Login/Login
 #: components/theme/Register/Register
 msgid "Register"
 msgstr "Izena eman"
@@ -1423,6 +1465,10 @@ msgstr "Erregistro formularioa"
 msgid "Relevance"
 msgstr "Errelebantzia"
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Remove item"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
 msgstr "Errepikapena ezabatu"
@@ -1431,6 +1477,10 @@ msgstr "Errepikapena ezabatu"
 #: components/manage/Contents/Contents
 msgid "Rename"
 msgstr "Berrizendatu"
+
+#: components/manage/Contents/ContentsRenameModal
+msgid "Rename Items Loading Message"
+msgstr ""
 
 #: components/manage/Contents/ContentsRenameModal
 msgid "Rename items"
@@ -1452,7 +1502,10 @@ msgstr "Egun honetan errepikatu"
 msgid "Replace existing file"
 msgstr ""
 
-#: components/manage/Widgets/QuerystringWidget
+#: components/theme/Comments/Comments
+msgid "Reply"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -1464,7 +1517,7 @@ msgstr "Beharrezkoa"
 msgid "Required input is missing."
 msgstr "Beharrezko balioak falta dira"
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerystringWidget
 msgid "Results limit"
 msgstr "Emaitzen muga"
 
@@ -1472,7 +1525,7 @@ msgstr "Emaitzen muga"
 msgid "Results preview"
 msgstr "Emaitzen aurreikuspena"
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerystringWidget
 msgid "Reversed order"
 msgstr "Alderantzizko ordena"
 
@@ -1566,6 +1619,10 @@ msgstr "Bilatu erabiltzaileak..."
 msgid "Second"
 msgstr "Bigarren"
 
+#: components/manage/Sidebar/ObjectBrowserNav
+msgid "Select"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Select a date to add to recurrence"
 msgstr "Aukeratu data eta gehitu errepikapenera"
@@ -1573,10 +1630,6 @@ msgstr "Aukeratu data eta gehitu errepikapenera"
 #: components/manage/Contents/Contents
 msgid "Select columns to show"
 msgstr "Aukeratu erakutsiko diren zutabeak"
-
-#: components/manage/Widgets/QuerystringWidget
-msgid "Select criteria"
-msgstr "Aukeraketa irizpideak"
 
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Select the transition to be used for modifying the items state."
@@ -1630,7 +1683,6 @@ msgstr "Partekatzea"
 msgid "Sharing for {title}"
 msgstr "{title} elementuaren partekatze-aukerak"
 
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -1647,6 +1699,14 @@ msgstr "Erakutsi"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Show All"
+msgstr ""
+
+#: components/theme/Comments/Comments
+msgid "Show Replies"
+msgstr ""
+
+#: components/manage/Widgets/ObjectListWidget
+msgid "Show item"
 msgstr ""
 
 #: components/manage/Sidebar/Sidebar
@@ -1699,12 +1759,12 @@ msgstr "Barkatu, zerbait ez da ondo irten zure eskaeran"
 msgid "Sort By:"
 msgstr "Ordenazioa:"
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerySortOnWidget
+#: components/manage/Widgets/QuerystringWidget
 msgid "Sort on"
 msgstr "Ordenazioa"
 
 #: components/manage/Blocks/HTML/Edit
-#: components/manage/Blocks/Listing/ListingData
 msgid "Source"
 msgstr "Iturburua"
 
@@ -1734,6 +1794,10 @@ msgstr "Pasahitza berrezartzea abiatu"
 msgid "State"
 msgstr "Egoera"
 
+#: components/manage/Multilingual/CompareLanguages
+msgid "Stop compare"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "String"
 msgstr "Karaktere-katea"
@@ -1759,13 +1823,13 @@ msgstr "Gaia"
 msgid "Success"
 msgstr "Arrakasta"
 
+#: components/theme/LanguageSelector/LanguageSelector
+msgid "Switch to"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 msgid "Table"
 msgstr "Taula"
-
-#: components/manage/Blocks/Table/Edit
-msgid "Table color inverted"
-msgstr "Taularen kolorea inbertitu"
 
 #: components/manage/Blocks/ToC/View
 msgid "Table of Contents"
@@ -1791,10 +1855,6 @@ msgstr "Katxe bakoitzaren tamaina "
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Target number of objects in memory per cache"
 msgstr "Katxe bakoitzaren elementu-kopurua"
-
-#: components/manage/Blocks/Listing/TemplateWidget
-msgid "Template"
-msgstr "Txantiloia"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Text"
@@ -1872,7 +1932,6 @@ msgstr "Ordua"
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -1901,6 +1960,7 @@ msgstr "Katxe guztietan dagoen elementu kopurua"
 msgid "Total number of objects in the database"
 msgstr "Datu-basean dagoen elementu kopurua"
 
+#: components/manage/Add/Add
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
 msgstr "{lang} hizkuntzara itzuli"
@@ -1939,6 +1999,10 @@ msgstr "UID"
 msgid "Unauthorized"
 msgstr "Ez duzu baimenik"
 
+#: components/manage/BlockChooser/BlockChooser
+msgid "Unfold"
+msgstr ""
+
 #: components/manage/Diff/Diff
 msgid "Unified"
 msgstr "Elkartuta"
@@ -1952,6 +2016,10 @@ msgstr "Desinstalatu"
 #: components/theme/View/RenderBlocks
 msgid "Unknown Block"
 msgstr "Bloke ezezaguna"
+
+#: components/manage/Multilingual/ManageTranslations
+msgid "Unlink translation for"
+msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update"
@@ -1989,7 +2057,10 @@ msgstr "Kargatu fitxategiak"
 msgid "Uploading files"
 msgstr "Fitxategiak kargatzen"
 
-#: components/manage/Widgets/QuerystringWidget
+#: components/manage/Blocks/HeroImageLeft/Edit
+msgid "Uploading image"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -2024,6 +2095,10 @@ msgstr "Erabiltzaile eta taldeak"
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Users and groups settings"
 msgstr "Erabiltzaile eta taldeen ezarpenak"
+
+#: helpers/Extensions/withBlockSchemaEnhancer
+msgid "Variation"
+msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Version Overview"
@@ -2101,6 +2176,10 @@ msgstr "Data hau iristean, elementua ez da erakutsiko bilaketa eta zerrendetan"
 msgid "Who"
 msgstr "Nor"
 
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Workflow Change Loading Message"
+msgstr ""
+
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
 msgstr "Workflowa eguneratu egin da"
@@ -2158,6 +2237,7 @@ msgstr "Zure pasahitza ondo berrezarri da. Orain zure pasahitz berriarekin {link
 msgid "Your preferred language"
 msgstr "Zure hizkuntza"
 
+#: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "box_forgot_password_option"
 msgstr "Pasahitza ahaztuta?"
@@ -2166,7 +2246,10 @@ msgstr "Pasahitza ahaztuta?"
 msgid "common"
 msgstr "Ohikoa"
 
-#: components/manage/Blocks/Block/Edit
+#: components/manage/Multilingual/CompareLanguages
+msgid "compare_to"
+msgstr ""
+
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"
 msgstr "Ezabatu"
@@ -2328,13 +2411,9 @@ msgstr "Pribatua"
 msgid "published"
 msgstr "Argitaratuta"
 
-#: components/manage/Blocks/Listing/QuerystringWidget
+#: components/manage/Widgets/QueryWidget
 msgid "querystring-widget-select"
 msgstr "Aukeratu..."
-
-#: components/theme/Login/Login
-msgid "registration form"
-msgstr "Erregistro formularioa"
 
 #: components/theme/Search/Search
 msgid "results found"
@@ -2472,6 +2551,18 @@ msgstr ""
 msgid "rrule_years"
 msgstr ""
 
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-footer"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-main-content"
+msgstr ""
+
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-navigation"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "sort"
 msgstr "Ordenatu"
@@ -2508,10 +2599,6 @@ msgstr "Bideoa"
 msgid "visit_external_website"
 msgstr "Webgunea ikusi"
 
-#: components/theme/Login/Login
-msgid "we can send you a new one"
-msgstr "berri bat bidali diezazukegu"
-
 #: components/manage/Contents/ContentsUploadModal
 msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 msgstr ""
@@ -2539,7 +2626,3 @@ msgstr "{title} moztu egin da."
 #: components/manage/Actions/Actions
 msgid "{title} has been deleted."
 msgstr "{title} ezabatu egin da."
-
-#: components/theme/Comments/Comments
-msgid "{user} says:"
-msgstr "{user} erabiltzaileak zera dio:"

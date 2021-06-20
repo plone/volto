@@ -50,20 +50,12 @@ class DatabaseInformation extends Component {
   }
 
   /**
-   * Component will mount
-   * @method componentWillMount
-   * @returns {undefined}
-   */
-  componentWillMount() {
-    this.props.getDatabaseInformation();
-  }
-
-  /**
    * Component did mount
    * @method componentDidMount
    * @returns {undefined}
    */
   componentDidMount() {
+    this.props.getDatabaseInformation();
     this.setState({ isClient: true });
   }
 

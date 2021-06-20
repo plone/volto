@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
 import { IntlProvider } from 'react-intl';
+import { PluggablesProvider } from '@plone/volto/components/manage/Pluggable';
 import thunk from 'redux-thunk';
 
 const initialState = () => ({
@@ -1388,13 +1389,15 @@ export default class Wrapper extends Component {
     const store = configureStore([thunk])(this.customState());
     return (
       <Provider store={store}>
-        <IntlProvider locale="en">
-          <StaticRouter location={this.props.location}>
-            <div className="volto-storybook-container">
-              {this.props.children}
-            </div>
-          </StaticRouter>
-        </IntlProvider>
+        <PluggablesProvider>
+          <IntlProvider locale="en">
+            <StaticRouter location={this.props.location}>
+              <div className="volto-storybook-container">
+                {this.props.children}
+              </div>
+            </StaticRouter>
+          </IntlProvider>
+        </PluggablesProvider>
       </Provider>
     );
   }

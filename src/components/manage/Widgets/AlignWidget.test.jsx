@@ -17,7 +17,12 @@ test('renders an align widget component', () => {
 
   const component = renderer.create(
     <Provider store={store}>
-      <AlignWidget id="align" title="Alignment" onChange={() => {}} />
+      <AlignWidget
+        id="align"
+        title="Alignment"
+        fieldSet="default"
+        onChange={() => {}}
+      />
     </Provider>,
   );
   const json = component.toJSON();

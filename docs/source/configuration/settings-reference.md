@@ -5,21 +5,24 @@ This is a summary of all the configuration options and what they control.
 ## Main settings
 
 !!! note
-This list is still incomplete, contributions are welcomed!
+    This list is still incomplete, contributions are welcomed!
 
 ### navDepth
 
 !!! block ""
+
     Navigation levels depth used in the navigation endpoint calls. Increasing this is useful for implementing fat navigation menus. Defaults to `1`.
 
 ### defaultBlockType
 
 !!! block ""
+
     The default block type in Volto is "text", which uses the current DraftJS-based implementation for the rich text editor. Future alternative rich text editors will need to use this setting and replace it with their block type. The block definition should also include the `blockHasValue` function, which is needed to activate the Block Chooser functionality. See this function signature in [Blocks > Settings](../blocks/settings.md).
 
 ### sentryOptions
 
 !!! block ""
+
     Sentry configuration:
 
     ```js
@@ -148,6 +151,71 @@ This list is still incomplete, contributions are welcomed!
     lazy libraries (with `preloadLazyLibs`) or quickly load them with
     `injectLazyLibs`.
 
+### storeExtenders
+
+!!! block ""
+
+    A list of callables with signature `(middlewaresList) => middlewaresList`.
+    These callables receive the whole stack of middlewares used in Volto and
+    they can add new middleware or tweak this list.
+
+### asyncPropsExtenders
+
+!!! block ""
+
+    Per-route customizable `asyncConnect` action dispatcher. These enable
+    proper server-side rendering of content that depends on additional async
+    props coming from backend calls. It is a list of route-like configuration
+    objects (they are matched using
+    [matchRoutes](https://github.com/ReactTraining/react-router/blob/ea44618e68f6a112e48404b2ea0da3e207daf4f0/packages/react-router-config/modules/matchRoutes.js).
+    Instead of the `component` key you should provide an `extend`
+    method with signature `asyncItems => asyncItems`, so it receives a list of
+    asyncConnect "prop" objects and returns a similar list. You can add
+    new asyncConnected props as well as removing them, so you could, for
+    example, have something like this to exclude the breadcrumbs from being
+    requested:
+
+```
+config.settings.asyncPropsExtenders = [
+  ...config.settings.asyncPropsExtenders,
+  {
+    path: '/',
+    extend: (dispatchActions) => dispatchActions.filter(asyncAction=> asyncAction.key !== 'breadcrumb')
+  }
+]
+
+```
+
+### External routes
+
+If another application is published under the same top domain as Volto, you could have a route like `/abc` which should be not rendered by Volto.
+This can be achieved by a rule in the reverse proxy (Apache or Nginx for example) but, when navigating client side, you may have references to that route so Volto is
+handling that as an internal URL and fetching the content will break.
+You can disable that path in `config.settings.externalRoutes` so it will be handled as an external link.
+
+```js
+config.settings.externalRoutes = [
+  {
+    match: {
+      path: '/news',
+      exact: false,
+      strict: false,
+    },
+    url(payload) {
+      return payload.location.pathname;
+    },
+  },
+];
+```
+
+It can also be simplified as:
+```js
+config.settings.externalRoutes = [
+  { match: "/news" },
+  { match: "/events" },
+];
+```
+
 ## Server-specific serverConfig
 
 Settings that are relevant to the Express-powered Volto SSR server are stored
@@ -168,3 +236,13 @@ in the `config.settings.serverConfig` object.
     this file exists it is loaded and its content is embedded inline into the
     generated HTML. By default this path is `public/critical.css`. See the
     [Performance](/deploying/performance) section for more details.
+
+### extractScripts
+
+!!! block ""
+
+    An object that allows you to configure the insertion of scripts on the page
+    in some particular cases.
+    For the moment it admits only one property: `errorPages` whose value is a Boolean.
+
+    If `extractScripts.errorPages` is `true`, the JS will be inserted into the error page.

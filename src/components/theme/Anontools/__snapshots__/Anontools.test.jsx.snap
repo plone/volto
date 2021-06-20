@@ -16,18 +16,6 @@ exports[`Anontools renders an anontools component when no token is specified 1`]
       Log in
     </a>
   </div>
-  <div
-    className="item"
-    onClick={[Function]}
-  >
-    <a
-      aria-label="register"
-      href="/register"
-      onClick={[Function]}
-    >
-      Register
-    </a>
-  </div>
 </div>
 `;
 

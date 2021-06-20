@@ -1,11 +1,9 @@
 {
-    "compilerOptions": {
-        "paths": {
-            "test-addon": [
-                "test-addon/src"
-            ]
-        },
-        "baseUrl": "addons"
-    }
+  "compilerOptions": {
+    "paths": {
+      "test-addon": ["test-addon/src"],
+      "test-released-dummy": ["test-released-dummy"]
+    },
+    "baseUrl": "addons"
+  }
 }
-

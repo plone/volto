@@ -17,26 +17,26 @@ const messages = defineMessages({
 });
 
 const RenderBlocks = (props) => {
-  const { location, intl, content, metadata } = props;
+  const { path, intl, content, metadata } = props;
   const blocksFieldname = getBlocksFieldname(content);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
+  const blocksConfig = props.blocksConfig || config.blocks.blocksConfig;
   const CustomTag = `${props.as || 'div'}`;
 
   return hasBlocksData(content) ? (
     <CustomTag>
       {map(content[blocksLayoutFieldname].items, (block) => {
         const Block =
-          config.blocks.blocksConfig[
-            content[blocksFieldname]?.[block]?.['@type']
-          ]?.['view'] || null;
-        return Block !== null ? (
+          blocksConfig[content[blocksFieldname]?.[block]?.['@type']]?.view;
+        return Block ? (
           <Block
             key={block}
             id={block}
             metadata={metadata}
             properties={content}
             data={content[blocksFieldname][block]}
-            path={getBaseUrl(location?.pathname || '')}
+            path={getBaseUrl(path || '')}
+            blocksConfig={blocksConfig}
           />
         ) : (
           <div key={block}>

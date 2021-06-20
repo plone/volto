@@ -7,7 +7,6 @@ import { Provider } from 'react-intl-redux';
 import express from 'express';
 import { renderToString } from 'react-dom/server';
 import { createMemoryHistory } from 'history';
-import { ReduxAsyncConnect, loadOnServer } from 'redux-connect';
 import { parse as parseUrl } from 'url';
 import { keys } from 'lodash';
 import cookie, { plugToRequest } from 'react-cookie';
@@ -16,15 +15,19 @@ import { detect } from 'detect-browser';
 import path from 'path';
 import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
 import { createProxyMiddleware } from 'http-proxy-middleware';
-import { updateIntl } from 'react-intl-redux';
 import { resetServerContext } from 'react-beautiful-dnd';
 
 import routes from '~/routes';
 import config from '@plone/volto/registry';
 
-import { flattenToAppURL } from '@plone/volto/helpers';
-
-import { Html, Api, persistAuthToken } from '@plone/volto/helpers';
+import {
+  flattenToAppURL,
+  Html,
+  Api,
+  persistAuthToken,
+  normalizeLanguageName,
+} from '@plone/volto/helpers';
+import { changeLanguage } from '@plone/volto/actions';
 
 import userSession from '@plone/volto/reducers/userSession/userSession';
 
@@ -33,12 +36,14 @@ import ErrorPage from '@plone/volto/error';
 import languages from '@plone/volto/constants/Languages';
 
 import configureStore from '@plone/volto/store';
+import { ReduxAsyncConnect, loadOnServer } from './helpers/AsyncConnect';
 
 let locales = {};
 
 if (config.settings) {
   config.settings.supportedLanguages.forEach((lang) => {
-    import('~/../locales/' + lang + '.json').then((locale) => {
+    const langFileName = normalizeLanguageName(lang);
+    import('~/../locales/' + langFileName + '.json').then((locale) => {
       locales = { ...locales, [lang]: locale.default };
     });
   });
@@ -56,18 +61,21 @@ const server = express()
 
 // Internal proxy to bypass CORS while developing.
 if (__DEVELOPMENT__ && config.settings.devProxyToApiPath) {
+  // This is the proxy to the API in case the accept header is 'application/json'
+  const filter = function (pathname, req) {
+    return req.headers.accept === 'application/json';
+  };
   const apiPathURL = parseUrl(config.settings.apiPath);
   const proxyURL = parseUrl(config.settings.devProxyToApiPath);
   const serverURL = `${proxyURL.protocol}//${proxyURL.host}`;
   const instancePath = proxyURL.pathname;
   server.use(
-    '/api',
-    createProxyMiddleware({
+    createProxyMiddleware(filter, {
       target: serverURL,
       pathRewrite: {
-        '^/api':
+        '^/':
           config.settings.proxyRewriteTarget ||
-          `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot/_vh_api`,
+          `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot/`,
       },
       logLevel: 'silent', // change to 'debug' to see all requests
       ...(config.settings?.proxyRewriteTarget?.startsWith('https') && {
@@ -129,10 +137,16 @@ function setupServer(req, res, next) {
       'Cache-Control': 'public, max-age=60, no-transform',
     });
 
-    // Displays error in console
-    console.error(error);
+    /* Displays error in console
+     * TODO:
+     * - get ignored codes from Plone error_log
+     */
+    const ignoredErrors = [301, 302, 401, 404];
+    if (!ignoredErrors.includes(error.status)) console.error(error);
 
-    res.status(500).send(`<!doctype html> ${renderToString(errorPage)}`);
+    res
+      .status(error.status || 500) // If error happens in Volto code itself error status is undefined
+      .send(`<!doctype html> ${renderToString(errorPage)}`);
   }
 
   req.app.locals = {
@@ -162,6 +176,16 @@ server.get('/*', (req, res) => {
   const url = req.originalUrl || req.url;
   const location = parseUrl(url);
 
+  let apiPathFromHostHeader;
+  // Get the Host header as apiPath just in case that the apiPath is not set
+  if (!config.settings.apiPath && req.headers.host) {
+    apiPathFromHostHeader = `${
+      req.headers['x-forwarded-proto'] || req.protocol
+    }://${req.headers.host}`;
+    config.settings.apiPath = apiPathFromHostHeader;
+    config.settings.publicURL = apiPathFromHostHeader;
+  }
+
   loadOnServer({ store, location, routes, api })
     .then(() => {
       // The content info is in the store at this point thanks to the asynconnect
@@ -170,12 +194,8 @@ server.get('/*', (req, res) => {
       const updatedLang =
         store.getState().content.data?.language?.token ||
         config.settings.defaultLanguage;
-      store.dispatch(
-        updateIntl({
-          locale: updatedLang,
-          messages: locales[updatedLang],
-        }),
-      );
+
+      store.dispatch(changeLanguage(updatedLang, locales[updatedLang]));
 
       const context = {};
       resetServerContext();
@@ -206,8 +226,12 @@ server.get('/*', (req, res) => {
                   extractor={extractor}
                   markup={markup}
                   store={store}
-                  extractScripts={process.env.NODE_ENV !== 'production'}
+                  extractScripts={
+                    config.settings.serverConfig.extractScripts?.errorPages ||
+                    process.env.NODE_ENV !== 'production'
+                  }
                   criticalCss={readCriticalCss(req)}
+                  apiPath={apiPathFromHostHeader || config.settings.apiPath}
                 />,
               )}
             `,
@@ -221,6 +245,7 @@ server.get('/*', (req, res) => {
                   markup={markup}
                   store={store}
                   criticalCss={readCriticalCss(req)}
+                  apiPath={apiPathFromHostHeader || config.settings.apiPath}
                 />,
               )}
             `,
@@ -242,7 +267,9 @@ export const defaultReadCriticalCss = () => {
   return readFileSync(criticalCssPath, { encoding: 'utf-8' });
 };
 
+// Exposed for the console bootstrap info messages
 server.apiPath = config.settings.apiPath;
 server.devProxyToApiPath = config.settings.devProxyToApiPath;
+server.publicURL = config.settings.publicURL;
 
 export default server;

@@ -1,6 +1,52 @@
 # Change Log
 
-## 4.0.0 (unreleased)
+## 4.3.2 (unreleased)
+
+### Added
+
+- Add prettier and lint scripts to generator @tisto
+
+### Changes
+
+## 4.3.1 (2021-05-07)
+
+### Changes
+
+- Fix Jest testing environment. Changed to `--env=jest-environment-jsdom-sixteen` @avoinea
+
+## 4.3.0 (2021-04-28)
+
+### Added
+
+- Ability to bootstrap a Volto project for the addon using a Makefile @tiberiuichim
+
+## 4.2.0 (2021-04-05)
+
+### Added
+
+- Support for Github addon `--template` @avoinea
+
+## 4.1.0 (2021-03-26)
+
+### Added
+
+- Default workspaces path @nileshgulia1
+- Simplify interactive questions @avoinea
+- Add addons also to dependencies @avoinea
+
+## 4.0.1 (2021-03-26)
+
+### Added
+
+- Default workspaces path @nileshgulia1
+- Simplify interactive questions @avoinea
+- Add addons also to dependencies @avoinea
+
+## 4.0.0 (2021-02-20)
+
+### Breaking
+
+- Upgrade to Volto 12.0.0 - This generator is only compatible with Volto 12 and above. @sneridagh
 
 ### Added
 

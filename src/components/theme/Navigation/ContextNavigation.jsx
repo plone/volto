@@ -20,9 +20,14 @@ const messages = defineMessages({
   },
 });
 
-function renderNode(node, level) {
+function renderNode(node, parentLevel) {
+  const level = parentLevel + 1;
   return (
-    <List.Item key={node['@id']} active={node.is_current}>
+    <List.Item
+      key={node['@id']}
+      active={node.is_current}
+      className={`level-${level}`}
+    >
       <List.Content>
         <RouterLink
           to={flattenToAppURL(node.href)}
@@ -41,9 +46,10 @@ function renderNode(node, level) {
             ''
           )}
         </RouterLink>
-
         {(node.items?.length && (
-          <List.List>{node.items.map(renderNode)}</List.List>
+          <List.List>
+            {node.items.map((node) => renderNode(node, level))}
+          </List.List>
         )) ||
           ''}
       </List.Content>
@@ -62,7 +68,7 @@ export function ContextNavigationComponent(props) {
   const intl = useIntl();
 
   return items.length ? (
-    <div className="context-navigation">
+    <nav className="context-navigation">
       {navigation.has_custom_name ? (
         <div className="context-navigation-header">
           <RouterLink to={flattenToAppURL(navigation.url || '')}>
@@ -74,8 +80,8 @@ export function ContextNavigationComponent(props) {
           {intl.formatMessage(messages.navigation)}
         </div>
       )}
-      <List>{items.map(renderNode)}</List>
-    </div>
+      <List>{items.map((node) => renderNode(node, 0))}</List>
+    </nav>
   ) : (
     ''
   );

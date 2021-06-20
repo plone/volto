@@ -12,7 +12,7 @@ You need to enable multilingual in Volto's configuration object:
 export const settings = {
   ...defaultSettings,
   isMultilingual: true,
-  supportedLanguages: ['en', 'de', 'ca'],
+  supportedLanguages: ['en', 'de', 'ca', 'pt-br'],
   defaultLanguage: 'en'
 }
 ```
@@ -23,7 +23,7 @@ and which is the default language of your site.
 !!! warning
     The default language and the supported languages must match the one set in the Plone
     side, and those should be set using GenericSetup using your policy package, or
-    manually via the Languages control panel.
+    manually via the Languages control panel, i.e. en for English, or pt-br for Portuguese (Brazil)
 
 ## Features
 

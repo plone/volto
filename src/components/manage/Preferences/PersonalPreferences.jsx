@@ -7,15 +7,16 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { updateIntl } from 'react-intl-redux';
 import { map, keys } from 'lodash';
 import cookie from 'react-cookie';
-import request from 'superagent';
 import { defineMessages, injectIntl } from 'react-intl';
 import { toast } from 'react-toastify';
 
 import { Form, Toast } from '@plone/volto/components';
 import languages from '@plone/volto/constants/Languages';
+import { changeLanguage } from '@plone/volto/actions';
+import { normalizeLanguageName } from '@plone/volto/helpers';
+import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   personalPreferences: {
@@ -60,7 +61,7 @@ class PersonalPreferences extends Component {
    * @static
    */
   static propTypes = {
-    updateIntl: PropTypes.func.isRequired,
+    changeLanguage: PropTypes.func.isRequired,
     closeMenu: PropTypes.func.isRequired,
   };
 
@@ -83,25 +84,13 @@ class PersonalPreferences extends Component {
    * @returns {undefined}
    */
   onSubmit(data) {
-    cookie.save('I18N_LANGUAGE', data.language || '', {
-      expires: new Date((2 ** 31 - 1) * 1000),
-      path: '/',
-    });
-    request('GET', `/assets/locales/${data.language || 'en'}.json`).then(
-      (locale) => {
-        this.props.updateIntl({
-          locale: locale.language || 'en',
-          messages: locale.body,
-        });
-        toast.success(
-          <Toast
-            success
-            title={this.props.intl.formatMessage(messages.success)}
-            content={this.props.intl.formatMessage(messages.saved)}
-          />,
-        );
-      },
-    );
+    let language = data.language || 'en';
+    if (config.settings.supportedLanguages.includes(language)) {
+      const langFileName = normalizeLanguageName(language);
+      import('~/../locales/' + langFileName + '.json').then((locale) => {
+        this.props.changeLanguage(language, locale.default);
+      });
+    }
     toast.success(
       <Toast success title={this.props.intl.formatMessage(messages.saved)} />,
     );
@@ -155,5 +144,5 @@ class PersonalPreferences extends Component {
 
 export default compose(
   injectIntl,
-  connect(null, { updateIntl }),
+  connect(null, { changeLanguage }),
 )(PersonalPreferences);

@@ -16,12 +16,16 @@ export {
   addAppURL,
   flattenHTMLToAppURL,
   flattenToAppURL,
+  toPublicURL,
   isInternalURL,
   getParentUrl,
   getBaseUrl,
   getView,
   isCmsUi,
   getId,
+  isUrl,
+  normalizeUrl,
+  removeProtocol,
 } from '@plone/volto/helpers/Url/Url';
 export { generateSitemap } from '@plone/volto/helpers/Sitemap/Sitemap';
 export { generateRobots } from '@plone/volto/helpers/Robots/Robots';
@@ -32,6 +36,7 @@ export {
 } from '@plone/volto/helpers/Content/Content';
 export {
   addBlock,
+  insertBlock,
   blockHasValue,
   changeBlock,
   deleteBlock,
@@ -55,13 +60,26 @@ export {
   getFieldsVocabulary,
 } from '@plone/volto/helpers/Vocabularies/Vocabularies';
 
+export langmap from './LanguageMap/LanguageMap';
 export Helmet from './Helmet/Helmet';
 export FormValidation from './FormValidation/FormValidation';
 export {
   difference,
+  getColor,
+  getInitials,
   safeWrapper,
   applyConfig,
   withServerErrorCode,
+  parseDateTime,
+  normalizeLanguageName,
 } from '@plone/volto/helpers/Utils/Utils';
 export { messages } from './MessageLabels/MessageLabels';
+export {
+  withBlockSchemaEnhancer,
+  withVariationSchemaEnhancer,
+  withBlockExtensions,
+} from './Extensions';
+export { asyncConnect } from './AsyncConnect';
+export { userHasRoles } from './User/User';
 // export { injectLazyLibs } from './Loadable/Loadable';
+export { useDetectClickOutside } from './Utils/useDetectClickOutside';

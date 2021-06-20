@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { filter, map, groupBy, isEmpty } from 'lodash';
 import { Accordion, Button } from 'semantic-ui-react';
-import { injectIntl } from 'react-intl';
+import { injectIntl, defineMessages } from 'react-intl';
 import { Icon } from '@plone/volto/components';
 import AnimateHeight from 'react-animate-height';
 import config from '@plone/volto/registry';
@@ -10,24 +10,50 @@ import config from '@plone/volto/registry';
 import upSVG from '@plone/volto/icons/up-key.svg';
 import downSVG from '@plone/volto/icons/down-key.svg';
 
+const messages = defineMessages({
+  fold: {
+    id: 'Fold',
+    defaultMessage: 'Fold',
+  },
+  unfold: {
+    id: 'Unfold',
+    defaultMessage: 'Unfold',
+  },
+});
+
 const BlockChooser = ({
   currentBlock,
+  onInsertBlock,
   onMutateBlock,
   allowedBlocks,
   showRestricted,
+  blocksConfig = config.blocks.blocksConfig,
   intl,
 }) => {
-  const blocksConfig = filter(
-    config.blocks.blocksConfig,
-    (item) => isEmpty(allowedBlocks) || allowedBlocks.includes(item.id),
-  );
+  const useAllowedBlocks = !isEmpty(allowedBlocks);
+
+  const filteredBlocksConfig = filter(blocksConfig, (item) => {
+    if (showRestricted) {
+      if (useAllowedBlocks) {
+        return allowedBlocks.includes(item.id);
+      } else {
+        return true;
+      }
+    } else {
+      if (useAllowedBlocks) {
+        return allowedBlocks.includes(item.id);
+      } else {
+        return !item.restricted;
+      }
+    }
+  });
 
   let blocksAvailable = {};
-  const mostUsedBlocks = filter(blocksConfig, (item) => item.mostUsed);
+  const mostUsedBlocks = filter(filteredBlocksConfig, (item) => item.mostUsed);
   if (mostUsedBlocks) {
     blocksAvailable.mostUsed = mostUsedBlocks;
   }
-  const groupedBlocks = groupBy(blocksConfig, (item) => item.group);
+  const groupedBlocks = groupBy(filteredBlocksConfig, (item) => item.group);
   blocksAvailable = {
     ...blocksAvailable,
     ...groupedBlocks,
@@ -51,6 +77,15 @@ const BlockChooser = ({
         {map(groupBlocksOrder, (groupName, index) => (
           <React.Fragment key={groupName.id}>
             <Accordion.Title
+              aria-label={
+                activeIndex === index
+                  ? `${intl.formatMessage(messages.fold)} ${
+                      groupName.title
+                    } blocks`
+                  : `${intl.formatMessage(messages.unfold)} ${
+                      groupName.title
+                    } blocks`
+              }
               active={activeIndex === index}
               index={index}
               onClick={handleClick}
@@ -76,30 +111,27 @@ const BlockChooser = ({
                 duration={500}
                 height={activeIndex === index ? 'auto' : 0}
               >
-                {map(
-                  filter(
-                    blocksAvailable[groupName.id],
-                    (block) => showRestricted || !block.restricted,
-                  ),
-                  (block) => (
-                    <Button.Group key={block.id}>
-                      <Button
-                        icon
-                        basic
-                        className={block.id}
-                        onClick={() =>
-                          onMutateBlock(currentBlock, { '@type': block.id })
-                        }
-                      >
-                        <Icon name={block.icon} size="36px" />
-                        {intl.formatMessage({
-                          id: block.id,
-                          defaultMessage: block.title,
-                        })}
-                      </Button>
-                    </Button.Group>
-                  ),
-                )}
+                {map(blocksAvailable[groupName.id], (block) => (
+                  <Button.Group key={block.id}>
+                    <Button
+                      icon
+                      basic
+                      className={block.id}
+                      onClick={(e) => {
+                        onInsertBlock
+                          ? onInsertBlock(currentBlock, { '@type': block.id })
+                          : onMutateBlock(currentBlock, { '@type': block.id });
+                        e.stopPropagation();
+                      }}
+                    >
+                      <Icon name={block.icon} size="36px" />
+                      {intl.formatMessage({
+                        id: block.id,
+                        defaultMessage: block.title,
+                      })}
+                    </Button>
+                  </Button.Group>
+                ))}
               </AnimateHeight>
             </Accordion.Content>
           </React.Fragment>
@@ -112,7 +144,9 @@ const BlockChooser = ({
 BlockChooser.propTypes = {
   currentBlock: PropTypes.string.isRequired,
   onMutateBlock: PropTypes.func.isRequired,
+  onInsertBlock: PropTypes.func.isRequired,
   allowedBlocks: PropTypes.arrayOf(PropTypes.string),
+  blocksConfig: PropTypes.objectOf(PropTypes.any),
 };
 
 export default injectIntl(BlockChooser);

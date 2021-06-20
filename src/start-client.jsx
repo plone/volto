@@ -6,7 +6,7 @@ import { IntlProvider } from 'react-intl-redux';
 import cookie from 'react-cookie';
 import { ConnectedRouter } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
-import { ReduxAsyncConnect } from 'redux-connect';
+import { ReduxAsyncConnect } from '@plone/volto/helpers/AsyncConnect';
 import { loadableReady } from '@loadable/component';
 import routes from '~/routes';
 import config from '@plone/volto/registry';
@@ -47,6 +47,11 @@ export default () => {
     window.appHistory = history;
     window.store = store;
     window.settings = config.settings;
+  }
+
+  // If Host header is present (so window.env.apiPath is)
+  if (window.env.apiPath) {
+    config.settings.apiPath = window.env.apiPath;
   }
 
   loadableReady(() => {

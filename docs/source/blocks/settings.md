@@ -12,6 +12,15 @@ import MainSliderViewBlock from '@package/components/Blocks/MainSlider/View';
 import MainSliderEditBlock from '@package/components/Blocks/MainSlider/Edit';
 import sliderSVG from '@plone/volto/icons/slider.svg';
 
+import SimpleTeaserView from '@package/components/Blocks/SimpleTeaserView';
+import CardTeaserView from '@package/components/Blocks/CardTeaserView';
+import DefaultColumnRenderer from '@package/components/Blocks/DefaultColumnRenderer';
+import NumberColumnRenderer from '@package/components/Blocks/NumberColumnRenderer';
+import ColoredColumnRenderer from '@package/components/Blocks/ColoredColumnRenderer';
+import CardTeaserView from '@package/components/Blocks/CardTeaserView';
+
+import CustomSchemaEnhancer from '@package/components/Blocks/CustomSchemaEnhancer';
+
 [...]
 
 const customBlocks = {
@@ -31,10 +40,64 @@ const customBlocks = {
       view: [], // Future proof (not implemented yet) view user role(s)
     },
     blockHasValue: (data) => {
-      // Returns true if the provided block data represents a value for the current block. 
-      // Required for alternate default block types implementations. 
+      // Returns true if the provided block data represents a value for the current block.
+      // Required for alternate default block types implementations.
       // See also [Settings reference](/configuration/settings-reference)
     },
+    // A block can have an schema enhancer function with the signature: (schema) => schema
+    // It can be either be at block level (it's applied always), at a variation level
+    // or both. It's up to the developer to make them work nicely (not conflict) between them
+    schemaEnhancer: CustomSchemaEnhancer,
+    // A block can define variations (it should include the stock, default one)
+    variations: [
+      {
+        id: 'default',
+        title: 'Default',
+        isDefault: true,
+        render: SimpleTeaserView
+      },
+      {
+        id: 'card',
+        label: 'Card',
+        render: CardTeaserView,
+        schemaEnhancer: ({schema, formData, intl}) => {
+          schema.properties.cardSize = '...'; // fill in your implementation
+          return schema;
+        }
+      }
+    ],
+    // A block can define extensions that enhance the default stock block behavior
+    extensions: {
+      columnRenderers: {
+        title: messages.title,
+        items: [
+          {
+            id: 'default',
+            title: 'Default',
+            isDefault: true,
+            render: DefaultColumnRenderer
+          },
+          {
+            id: 'number',
+            title: 'Number',
+            render: NumberColumnRenderer,
+          },
+          {
+            id: 'colored',
+            title: 'Colored',
+            renderer: ColoredColumnRenderer,
+            schemaEnhancer: ({formData, schema, intl}) => {
+              schema.properties.color = {
+                widget: 'color',
+                title: 'Color',
+              };
+              schema.fieldsets[0].fields.push('color');
+              return schema;
+            }
+          }
+        ]
+      }
+    }
   },
 };
 

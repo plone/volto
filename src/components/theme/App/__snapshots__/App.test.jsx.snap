@@ -3,6 +3,28 @@
 exports[`App renders a app component 1`] = `
 Array [
   <div
+    className="skiplinks-wrapper"
+  >
+    <a
+      className="skiplink"
+      href="#view"
+    >
+      Skip to main content
+    </a>
+    <a
+      className="skiplink"
+      href="#navigation"
+    >
+      Skip to navigation
+    </a>
+    <a
+      className="skiplink"
+      href="#footer"
+    >
+      Skip to footer
+    </a>
+  </div>,
+  <div
     id="toolbar"
   />,
   <div

@@ -19,6 +19,7 @@ test('renders an email widget component', () => {
       <EmailWidget
         id="test-email"
         title="My Email"
+        fieldSet="default"
         onChange={() => {}}
         onBlur={() => {}}
         onClick={() => {}}

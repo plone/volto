@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import { asyncConnect } from 'redux-connect';
+import { asyncConnect } from '@plone/volto/helpers';
 import { FormattedMessage } from 'react-intl';
 import { Portal } from 'react-portal';
 import { Container, Pagination, Button, Header } from 'semantic-ui-react';
@@ -68,20 +68,12 @@ class Search extends Component {
   }
 
   /**
-   * Component will mount
-   * @method componentWillMount
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillMount() {
-    this.doSearch();
-  }
-
-  /**
    * Component did mount
    * @method componentDidMount
    * @returns {undefined}
    */
   componentDidMount() {
+    this.doSearch();
     this.setState({ isClient: true });
   }
 
@@ -109,6 +101,7 @@ class Search extends Component {
   doSearch = () => {
     const options = qs.parse(this.props.history.location.search);
     this.setState({ currentPage: 1 });
+    options['use_site_search_settings'] = 1;
     this.props.searchContent('', options);
   };
 
@@ -116,6 +109,8 @@ class Search extends Component {
     const { settings } = config;
     window.scrollTo(0, 0);
     let options = qs.parse(this.props.history.location.search);
+    options['use_site_search_settings'] = 1;
+
     this.setState({ currentPage: activePage }, () => {
       this.props.searchContent('', {
         ...options,
@@ -343,7 +338,12 @@ export default compose(
     {
       key: 'search',
       promise: ({ location, store: { dispatch } }) =>
-        dispatch(searchContent('', qs.parse(location.search))),
+        dispatch(
+          searchContent('', {
+            ...qs.parse(location.search),
+            use_site_search_settings: 1,
+          }),
+        ),
     },
   ]),
 )(Search);

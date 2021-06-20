@@ -9,10 +9,13 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers/Url/Url';
 import URLUtils from '@plone/volto/components/manage/AnchorPlugin/utils/URLUtils';
+import { matchPath } from 'react-router';
+
+import config from '@plone/volto/registry';
 
 const UniversalLink = ({
   href,
-  item,
+  item = null,
   openLinkInNewTab,
   download = false,
   children,
@@ -23,14 +26,29 @@ const UniversalLink = ({
   const token = useSelector((state) => state.userSession?.token);
 
   let url = href;
-  if (!href) {
-    url = flattenToAppURL(item['@id']);
-    if (!token && item.remoteUrl) {
-      url = item.remoteUrl;
+  if (!href && item) {
+    if (!item['@id']) {
+      // eslint-disable-next-line no-console
+      console.error(
+        'Invalid item passed to UniversalLink',
+        item,
+        props,
+        children,
+      );
+      url = '#';
+    } else {
+      url = flattenToAppURL(item['@id']);
+      if (!token && item.remoteUrl) {
+        url = item.remoteUrl;
+      }
     }
   }
 
-  const isExternal = !isInternalURL(url);
+  const isBlacklisted =
+    (config.settings.externalRoutes ?? []).find((route) =>
+      matchPath(flattenToAppURL(url), route.match),
+    )?.length > 0;
+  const isExternal = !isInternalURL(url) || isBlacklisted;
   const isDownload = (!isExternal && url.includes('@@download')) || download;
 
   return isExternal ? (
@@ -47,7 +65,13 @@ const UniversalLink = ({
       {children}
     </a>
   ) : isDownload ? (
-    <a href={url} download title={title} className={className} {...props}>
+    <a
+      href={flattenToAppURL(url)}
+      download
+      title={title}
+      className={className}
+      {...props}
+    >
       {children}
     </a>
   ) : (
@@ -70,7 +94,7 @@ UniversalLink.propTypes = {
   className: PropTypes.string,
   title: PropTypes.string,
   item: PropTypes.shape({
-    '@id': PropTypes.string,
+    '@id': PropTypes.string.isRequired,
     remoteUrl: PropTypes.string, //of plone @type 'Link'
   }),
   children: PropTypes.oneOfType([

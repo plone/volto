@@ -4,7 +4,7 @@
  */
 
 import { map, omit } from 'lodash';
-import config from '@plone/volto/registry';
+import { flattenToAppURL } from '@plone/volto/helpers';
 
 import {
   RESET_SEARCH_CONTENT,
@@ -29,7 +29,6 @@ const initialState = {
  * @returns {Object} New state.
  */
 export default function search(state = initialState, action = {}) {
-  const { settings } = config;
   switch (action.type) {
     case `${SEARCH_CONTENT}_PENDING`:
       return action.subrequest
@@ -65,7 +64,7 @@ export default function search(state = initialState, action = {}) {
                 error: null,
                 items: map(action.result.items, (item) => ({
                   ...item,
-                  '@id': item['@id'].replace(settings.apiPath, ''),
+                  '@id': flattenToAppURL(item['@id']),
                 })),
                 total: action.result.items_total,
                 loaded: true,
@@ -79,7 +78,7 @@ export default function search(state = initialState, action = {}) {
             error: null,
             items: map(action.result.items, (item) => ({
               ...item,
-              '@id': item['@id'].replace(settings.apiPath, ''),
+              '@id': flattenToAppURL(item['@id']),
             })),
             total: action.result.items_total,
             loaded: true,

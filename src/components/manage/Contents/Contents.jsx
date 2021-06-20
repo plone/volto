@@ -36,7 +36,7 @@ import move from 'lodash-move';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import { asyncConnect } from 'redux-connect';
+import { asyncConnect } from '@plone/volto/helpers';
 
 import {
   searchContent,
@@ -151,6 +151,10 @@ const messages = defineMessages({
     id: 'Item(s) pasted.',
     defaultMessage: 'Item(s) pasted.',
   },
+  messageWorkflowUpdate: {
+    id: 'Item(s) state has been updated.',
+    defaultMessage: 'Item(s) state has been updated.',
+  },
   paste: {
     id: 'Paste',
     defaultMessage: 'Paste',
@@ -254,6 +258,10 @@ const messages = defineMessages({
   startDate: {
     id: 'Start Date',
     defaultMessage: 'Start Date',
+  },
+  all: {
+    id: 'All',
+    defaultMessage: 'All',
   },
 });
 
@@ -406,20 +414,12 @@ class Contents extends Component {
   }
 
   /**
-   * Component will mount
-   * @method componentWillMount
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillMount() {
-    this.fetchContents();
-  }
-
-  /**
    * Component did mount
    * @method componentDidMount
    * @returns {undefined}
    */
   componentDidMount() {
+    this.fetchContents();
     this.setState({ isClient: true });
   }
 
@@ -854,6 +854,13 @@ class Contents extends Component {
       showWorkflow: false,
       selected: [],
     });
+    this.props.toastify.toast.success(
+      <Toast
+        success
+        title={this.props.intl.formatMessage(messages.success)}
+        content={this.props.intl.formatMessage(messages.messageWorkflowUpdate)}
+      />,
+    );
   }
 
   /**
@@ -886,7 +893,8 @@ class Contents extends Component {
    * @returns {undefined}
    */
   fetchContents(pathname) {
-    if (this.state.pageSize === 'All') {
+    if (this.state.pageSize === this.props.intl.formatMessage(messages.all)) {
+      //'All'
       this.props.searchContent(getBaseUrl(pathname || this.props.pathname), {
         'path.depth': 1,
         sort_on: this.state.sort_on,
@@ -1664,7 +1672,12 @@ class Contents extends Component {
                             this.props.total / this.state.pageSize,
                           )}
                           pageSize={this.state.pageSize}
-                          pageSizes={[15, 30, 50, 'All']}
+                          pageSizes={[
+                            15,
+                            30,
+                            50,
+                            this.props.intl.formatMessage(messages.all),
+                          ]}
                           onChangePage={this.onChangePage}
                           onChangePageSize={this.onChangePageSize}
                         />

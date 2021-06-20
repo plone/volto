@@ -93,7 +93,7 @@ module.exports = (addons) => {
   //   'src',
   //   'load-volto-addons.js',
   // );
-  //
+
   const addonsLoaderPath = tmp.tmpNameSync({ postfix: '.js' });
   const code = getAddonsLoaderCode(addons);
   fs.writeFileSync(addonsLoaderPath, new Buffer.from(code));

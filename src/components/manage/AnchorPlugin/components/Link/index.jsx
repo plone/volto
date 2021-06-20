@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
 
 const propTypes = {
   className: PropTypes.string,
@@ -18,7 +19,7 @@ const Link = ({ children, className, entityKey, getEditorState, target }) => {
     <a
       className={className}
       title={href}
-      href={href}
+      href={isInternalURL(href) ? flattenToAppURL(href) : href}
       target={target}
       rel="noopener noreferrer"
     >
