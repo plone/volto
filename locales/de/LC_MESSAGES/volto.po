@@ -96,6 +96,10 @@ msgstr "Kriterien hinzufügen"
 msgid "Add date"
 msgstr "Datum hinzufügen"
 
+#: components/manage/Widgets/DictWidget
+msgid "Add dictionary entry"
+msgstr "Eintrag hinzufügen"
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Add field"
 msgstr "Feld hinzufügen"
@@ -123,10 +127,6 @@ msgstr "Neuen Benutzer hinzufügen"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add to Groups"
 msgstr "Zu Gruppe hinzufügen"
-
-#: components/manage/Widgets/DictWidget
-msgid "Add vocabulary term"
-msgstr "Term hinzufügen"
 
 #: components/manage/Add/Add
 msgid "Add {type}"
@@ -547,6 +547,18 @@ msgstr "Absteigend"
 #: helpers/MessageLabels/MessageLabels
 msgid "Description"
 msgstr "Beschreibung"
+
+#: components/manage/Widgets/DictWidget
+msgid "Dictionary"
+msgstr "Dictionary"
+
+#: components/manage/Widgets/DictWidget
+msgid "Dictionary Entry"
+msgstr "Dictionary-Eintrag"
+
+#: components/manage/Widgets/DictWidget
+msgid "Dictionary Value"
+msgstr "Dictionary-Wert"
 
 #: components/manage/Diff/Diff
 msgid "Diff"
@@ -1477,6 +1489,10 @@ msgstr "Registrierungsformular"
 msgid "Relevance"
 msgstr "relevanz"
 
+#: components/manage/Widgets/DictWidget
+msgid "Remove dictionary entry"
+msgstr "Lösche Dictionary-Eintrag"
+
 #: components/manage/Widgets/ObjectListWidget
 msgid "Remove item"
 msgstr "Element entfernen"
@@ -1484,10 +1500,6 @@ msgstr "Element entfernen"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
 msgstr "Wiederkehrende Einstellung entfernen"
-
-#: components/manage/Widgets/DictWidget
-msgid "Remove vocabulary term"
-msgstr "Term entfernen"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -1534,8 +1546,8 @@ msgid "Required input is missing."
 msgstr "Notwendige Eingabe fehlt."
 
 #: components/manage/Widgets/DictWidget
-msgid "Reset vocabulary term"
-msgstr "Term zurücksetzen"
+msgid "Reset dictionary value"
+msgstr "Setze Dictionary-Wert"
 
 #: components/manage/Widgets/QuerystringWidget
 msgid "Results limit"
@@ -1880,10 +1892,6 @@ msgstr "Ziel-Speichergröße pro Cache in Bytes"
 msgid "Target number of objects in memory per cache"
 msgstr "Ziel-Anzahl von Objekten im Speicher pro Cache"
 
-#: components/manage/Widgets/DictWidget
-msgid "Term"
-msgstr "Term"
-
 #: components/manage/Widgets/SchemaWidget
 msgid "Text"
 msgstr "Text"
@@ -2155,18 +2163,6 @@ msgstr "Diese revision ansehen"
 #: components/manage/Display/Display
 msgid "Viewmode"
 msgstr "Ansicht"
-
-#: components/manage/Widgets/DictWidget
-msgid "Vocabulary"
-msgstr "Vokabular"
-
-#: components/manage/Widgets/DictWidget
-msgid "Vocabulary Token"
-msgstr "Vokabulartoken"
-
-#: components/manage/Widgets/DictWidget
-msgid "Vocabulary Value"
-msgstr "Vokabularwert"
 
 #: components/manage/Controlpanels/VersionOverview
 msgid "Warning Regarding debug mode"

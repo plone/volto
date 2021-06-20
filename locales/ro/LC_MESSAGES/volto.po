@@ -81,6 +81,10 @@ msgstr "Adăugare criterii"
 msgid "Add date"
 msgstr ""
 
+#: components/manage/Widgets/DictWidget
+msgid "Add dictionary entry"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Add field"
 msgstr "Adăugare câmp"
@@ -108,10 +112,6 @@ msgstr "Adăugare utilizator nou"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add to Groups"
 msgstr "Adăugare la grupuri"
-
-#: components/manage/Widgets/DictWidget
-msgid "Add vocabulary term"
-msgstr ""
 
 #: components/manage/Add/Add
 msgid "Add {type}"
@@ -532,6 +532,18 @@ msgstr "Descrescător"
 #: helpers/MessageLabels/MessageLabels
 msgid "Description"
 msgstr "Descriere"
+
+#: components/manage/Widgets/DictWidget
+msgid "Dictionary"
+msgstr ""
+
+#: components/manage/Widgets/DictWidget
+msgid "Dictionary Entry"
+msgstr ""
+
+#: components/manage/Widgets/DictWidget
+msgid "Dictionary Value"
+msgstr ""
 
 #: components/manage/Diff/Diff
 msgid "Diff"
@@ -1462,16 +1474,16 @@ msgstr "Formular de înregistrare"
 msgid "Relevance"
 msgstr ""
 
+#: components/manage/Widgets/DictWidget
+msgid "Remove dictionary entry"
+msgstr ""
+
 #: components/manage/Widgets/ObjectListWidget
 msgid "Remove item"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
-msgstr ""
-
-#: components/manage/Widgets/DictWidget
-msgid "Remove vocabulary term"
 msgstr ""
 
 #: components/manage/Actions/Actions
@@ -1519,7 +1531,7 @@ msgid "Required input is missing."
 msgstr "Câmpul este obligatoriu."
 
 #: components/manage/Widgets/DictWidget
-msgid "Reset vocabulary term"
+msgid "Reset dictionary value"
 msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
@@ -1865,10 +1877,6 @@ msgstr ""
 msgid "Target number of objects in memory per cache"
 msgstr ""
 
-#: components/manage/Widgets/DictWidget
-msgid "Term"
-msgstr ""
-
 #: components/manage/Widgets/SchemaWidget
 msgid "Text"
 msgstr "Text"
@@ -2140,18 +2148,6 @@ msgstr "Vizualizați această revizuire"
 #: components/manage/Display/Display
 msgid "Viewmode"
 msgstr "Mod vizualizare"
-
-#: components/manage/Widgets/DictWidget
-msgid "Vocabulary"
-msgstr ""
-
-#: components/manage/Widgets/DictWidget
-msgid "Vocabulary Token"
-msgstr ""
-
-#: components/manage/Widgets/DictWidget
-msgid "Vocabulary Value"
-msgstr ""
 
 #: components/manage/Controlpanels/VersionOverview
 msgid "Warning Regarding debug mode"

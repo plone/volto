@@ -88,6 +88,10 @@ msgstr "Gehitu irizpidea"
 msgid "Add date"
 msgstr "Gehitu data"
 
+#: components/manage/Widgets/DictWidget
+msgid "Add dictionary entry"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Add field"
 msgstr "Gehitu eremua"
@@ -115,10 +119,6 @@ msgstr "Gehitu erabiltzaile berria"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add to Groups"
 msgstr "Gehitu taldeetara"
-
-#: components/manage/Widgets/DictWidget
-msgid "Add vocabulary term"
-msgstr ""
 
 #: components/manage/Add/Add
 msgid "Add {type}"
@@ -539,6 +539,18 @@ msgstr "Beheraka"
 #: helpers/MessageLabels/MessageLabels
 msgid "Description"
 msgstr "Deskribapena"
+
+#: components/manage/Widgets/DictWidget
+msgid "Dictionary"
+msgstr ""
+
+#: components/manage/Widgets/DictWidget
+msgid "Dictionary Entry"
+msgstr ""
+
+#: components/manage/Widgets/DictWidget
+msgid "Dictionary Value"
+msgstr ""
 
 #: components/manage/Diff/Diff
 msgid "Diff"
@@ -1469,6 +1481,10 @@ msgstr "Erregistro formularioa"
 msgid "Relevance"
 msgstr "Errelebantzia"
 
+#: components/manage/Widgets/DictWidget
+msgid "Remove dictionary entry"
+msgstr ""
+
 #: components/manage/Widgets/ObjectListWidget
 msgid "Remove item"
 msgstr ""
@@ -1476,10 +1492,6 @@ msgstr ""
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
 msgstr "Errepikapena ezabatu"
-
-#: components/manage/Widgets/DictWidget
-msgid "Remove vocabulary term"
-msgstr ""
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -1526,7 +1538,7 @@ msgid "Required input is missing."
 msgstr "Beharrezko balioak falta dira"
 
 #: components/manage/Widgets/DictWidget
-msgid "Reset vocabulary term"
+msgid "Reset dictionary value"
 msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
@@ -1872,10 +1884,6 @@ msgstr "Katxe bakoitzaren tamaina "
 msgid "Target number of objects in memory per cache"
 msgstr "Katxe bakoitzaren elementu-kopurua"
 
-#: components/manage/Widgets/DictWidget
-msgid "Term"
-msgstr ""
-
 #: components/manage/Widgets/SchemaWidget
 msgid "Text"
 msgstr "Testua"
@@ -2147,18 +2155,6 @@ msgstr "Bertsio hau ikusi"
 #: components/manage/Display/Display
 msgid "Viewmode"
 msgstr "Bistaratze modua"
-
-#: components/manage/Widgets/DictWidget
-msgid "Vocabulary"
-msgstr ""
-
-#: components/manage/Widgets/DictWidget
-msgid "Vocabulary Token"
-msgstr ""
-
-#: components/manage/Widgets/DictWidget
-msgid "Vocabulary Value"
-msgstr ""
 
 #: components/manage/Controlpanels/VersionOverview
 msgid "Warning Regarding debug mode"

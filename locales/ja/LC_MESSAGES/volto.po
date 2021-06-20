@@ -88,6 +88,10 @@ msgstr "基準を追加"
 msgid "Add date"
 msgstr "日付を追加"
 
+#: components/manage/Widgets/DictWidget
+msgid "Add dictionary entry"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Add field"
 msgstr "フィールドを追加"
@@ -115,10 +119,6 @@ msgstr "新しいユーザを追加"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add to Groups"
 msgstr "グループに追加"
-
-#: components/manage/Widgets/DictWidget
-msgid "Add vocabulary term"
-msgstr ""
 
 #: components/manage/Add/Add
 msgid "Add {type}"
@@ -539,6 +539,18 @@ msgstr "降順"
 #: helpers/MessageLabels/MessageLabels
 msgid "Description"
 msgstr "説明"
+
+#: components/manage/Widgets/DictWidget
+msgid "Dictionary"
+msgstr ""
+
+#: components/manage/Widgets/DictWidget
+msgid "Dictionary Entry"
+msgstr ""
+
+#: components/manage/Widgets/DictWidget
+msgid "Dictionary Value"
+msgstr ""
 
 #: components/manage/Diff/Diff
 msgid "Diff"
@@ -1469,6 +1481,10 @@ msgstr "登録フォーム"
 msgid "Relevance"
 msgstr "関連性"
 
+#: components/manage/Widgets/DictWidget
+msgid "Remove dictionary entry"
+msgstr ""
+
 #: components/manage/Widgets/ObjectListWidget
 msgid "Remove item"
 msgstr ""
@@ -1476,10 +1492,6 @@ msgstr ""
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
 msgstr "繰り返しを削除"
-
-#: components/manage/Widgets/DictWidget
-msgid "Remove vocabulary term"
-msgstr ""
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -1526,7 +1538,7 @@ msgid "Required input is missing."
 msgstr "必須"
 
 #: components/manage/Widgets/DictWidget
-msgid "Reset vocabulary term"
+msgid "Reset dictionary value"
 msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
@@ -1872,10 +1884,6 @@ msgstr "キャッシュごとの最大容量(byte単位)"
 msgid "Target number of objects in memory per cache"
 msgstr "キャッシュごとのメモリー上の最大オブジェクト数"
 
-#: components/manage/Widgets/DictWidget
-msgid "Term"
-msgstr ""
-
 #: components/manage/Widgets/SchemaWidget
 msgid "Text"
 msgstr "テキスト"
@@ -2147,18 +2155,6 @@ msgstr "この履歴を表示"
 #: components/manage/Display/Display
 msgid "Viewmode"
 msgstr "表示モード"
-
-#: components/manage/Widgets/DictWidget
-msgid "Vocabulary"
-msgstr ""
-
-#: components/manage/Widgets/DictWidget
-msgid "Vocabulary Token"
-msgstr ""
-
-#: components/manage/Widgets/DictWidget
-msgid "Vocabulary Value"
-msgstr ""
 
 #: components/manage/Controlpanels/VersionOverview
 msgid "Warning Regarding debug mode"

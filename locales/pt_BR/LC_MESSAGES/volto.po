@@ -91,6 +91,10 @@ msgstr "Adicionar critério"
 msgid "Add date"
 msgstr "Adicionar data"
 
+#: components/manage/Widgets/DictWidget
+msgid "Add dictionary entry"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Add field"
 msgstr "Adicionar campo"
@@ -118,10 +122,6 @@ msgstr "Adicionar novo usuário"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add to Groups"
 msgstr "Adicionar a grupos"
-
-#: components/manage/Widgets/DictWidget
-msgid "Add vocabulary term"
-msgstr ""
 
 #: components/manage/Add/Add
 msgid "Add {type}"
@@ -542,6 +542,18 @@ msgstr "Descendente"
 #: helpers/MessageLabels/MessageLabels
 msgid "Description"
 msgstr "Descrição"
+
+#: components/manage/Widgets/DictWidget
+msgid "Dictionary"
+msgstr ""
+
+#: components/manage/Widgets/DictWidget
+msgid "Dictionary Entry"
+msgstr ""
+
+#: components/manage/Widgets/DictWidget
+msgid "Dictionary Value"
+msgstr ""
 
 #: components/manage/Diff/Diff
 msgid "Diff"
@@ -1472,6 +1484,10 @@ msgstr "Formulário de cadastro"
 msgid "Relevance"
 msgstr "Relevância"
 
+#: components/manage/Widgets/DictWidget
+msgid "Remove dictionary entry"
+msgstr ""
+
 #: components/manage/Widgets/ObjectListWidget
 msgid "Remove item"
 msgstr "Remover Item"
@@ -1479,10 +1495,6 @@ msgstr "Remover Item"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
 msgstr "Remover a recorrência"
-
-#: components/manage/Widgets/DictWidget
-msgid "Remove vocabulary term"
-msgstr ""
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -1529,7 +1541,7 @@ msgid "Required input is missing."
 msgstr "Falta informação obrigatória."
 
 #: components/manage/Widgets/DictWidget
-msgid "Reset vocabulary term"
+msgid "Reset dictionary value"
 msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
@@ -1875,10 +1887,6 @@ msgstr "Tamanho de memória destinada para o cache em bytes"
 msgid "Target number of objects in memory per cache"
 msgstr "Número de objetos na memória para o cache"
 
-#: components/manage/Widgets/DictWidget
-msgid "Term"
-msgstr ""
-
 #: components/manage/Widgets/SchemaWidget
 msgid "Text"
 msgstr "Texto"
@@ -2150,18 +2158,6 @@ msgstr "Ver esta revisão"
 #: components/manage/Display/Display
 msgid "Viewmode"
 msgstr "Visão"
-
-#: components/manage/Widgets/DictWidget
-msgid "Vocabulary"
-msgstr ""
-
-#: components/manage/Widgets/DictWidget
-msgid "Vocabulary Token"
-msgstr ""
-
-#: components/manage/Widgets/DictWidget
-msgid "Vocabulary Value"
-msgstr ""
 
 #: components/manage/Controlpanels/VersionOverview
 msgid "Warning Regarding debug mode"
