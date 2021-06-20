@@ -1547,7 +1547,7 @@ msgstr "Notwendige Eingabe fehlt."
 
 #: components/manage/Widgets/DictWidget
 msgid "Reset dictionary value"
-msgstr "Setze Dictionary-Wert"
+msgstr "Setze Dictionary-Wert zurück"
 
 #: components/manage/Widgets/QuerystringWidget
 msgid "Results limit"
