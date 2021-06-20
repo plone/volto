@@ -2,9 +2,9 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { keys } from 'lodash';
 import { defineMessages, useIntl } from 'react-intl';
+import { v4 as uuid } from 'uuid';
 
 import { Button, Grid, Input, Segment } from 'semantic-ui-react';
-import { v4 as uuid } from 'uuid';
 
 import { FormFieldWrapper, Icon } from '@plone/volto/components';
 
@@ -14,31 +14,27 @@ import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   title: {
-    id: 'Vocabulary',
-    defaultMessage: 'Vocabulary',
+    id: 'Dictionary',
+    defaultMessage: 'Dictionary',
   },
-  termtitle: {
-    id: 'Term',
-    defaultMessage: 'Term',
+  entrytitle: {
+    id: 'Dictionary Entry',
+    defaultMessage: 'Dictionary Entry',
   },
-  addTerm: {
-    id: 'Add vocabulary term',
-    defaultMessage: 'Add term',
+  addEntry: {
+    id: 'Add dictionary entry',
+    defaultMessage: 'Add entry',
   },
-  removeTerm: {
-    id: 'Remove vocabulary term',
-    defaultMessage: 'Remove term',
+  removeEntry: {
+    id: 'Remove dictionary entry',
+    defaultMessage: 'Remove entry',
   },
-  clearTerm: {
-    id: 'Reset vocabulary term',
-    defaultMessage: 'Reset term',
+  clearEntry: {
+    id: 'Reset dictionary value',
+    defaultMessage: 'Reset value',
   },
-  termtokenlabel: {
-    id: 'Vocabulary Token',
-    defaultMessage: 'Token',
-  },
-  termtitlelabel: {
-    id: 'Vocabulary Value',
+  entryvaluelabel: {
+    id: 'Dictionary Value',
     defaultMessage: 'Value',
   },
 });
@@ -49,18 +45,18 @@ const DictWidget = (props) => {
   const [toFocusId, setToFocusId] = React.useState('');
   const intl = useIntl();
 
-  const vocabularytokens = keys(value).sort((a, b) => {
+  const dictionarykeys = keys(value).sort((a, b) => {
     return value[a].localeCompare(value[b]);
   });
 
   React.useEffect(() => {
     const element = document.getElementById(toFocusId);
     element && element.focus();
-  }, [dispatch, toFocusId]);
+  }, [dispatch, toFocusId, value]);
 
-  function onChangeField(token, fieldvalue) {
-    onChange(id, { ...value, [token]: fieldvalue });
-    setToFocusId(props.id + '-' + token);
+  function onChangeFieldHandler(dictkey, fieldvalue) {
+    onChange(id, { ...value, [dictkey]: fieldvalue });
+    setToFocusId(props.id + '-' + dictkey);
   }
 
   return (
@@ -70,41 +66,40 @@ const DictWidget = (props) => {
       </Segment>
       <div className="add-item-button-wrapper">
         <Button
-          aria-label={intl.formatMessage(messages.termtitle)}
+          aria-label={intl.formatMessage(messages.entrytitle)}
           onClick={(e) => {
             e.preventDefault();
-            // const newtoken = 'term-' + size(value);
-            const newtoken = uuid();
+            const newdictkey = uuid();
             onChange(id, {
               ...value,
-              [newtoken]: '',
+              [newdictkey]: '',
             });
-            setToFocusId(props.id + '-' + newtoken);
+            setToFocusId(props.id + '-' + newdictkey);
           }}
         >
           <Icon name={addSVG} size="18px" />
-          {intl.formatMessage(messages.addTerm)}
+          {intl.formatMessage(messages.addEntry)}
         </Button>
       </div>
-      <Grid className="terms-list">
-        {vocabularytokens.map((token, index) => {
+      <Grid className="entries-list">
+        {dictionarykeys.map((dictkey, index) => {
           return (
-            <Grid.Row stretched className="term-wrapper" key={index}>
+            <Grid.Row stretched className="entry-wrapper" key={index}>
               <Grid.Column width="1">
                 <Button.Group>
                   <Button
                     basic
                     className="cancel"
-                    title={`${intl.formatMessage(messages.removeTerm)} ${
-                      value[token]
-                    }`}
-                    aria-label={`${intl.formatMessage(messages.removeTerm)} #${
+                    title={`${intl.formatMessage(messages.removeEntry)} ${
+                      value[dictkey]
+                    } (${dictkey})`}
+                    aria-label={`${intl.formatMessage(messages.removeEntry)} #${
                       index + 1
                     }`}
                     onClick={(e) => {
                       e.preventDefault();
                       let dct = { ...value };
-                      delete dct[token];
+                      delete dct[dictkey];
                       onChange(id, dct);
                     }}
                   >
@@ -114,32 +109,32 @@ const DictWidget = (props) => {
               </Grid.Column>
               <Grid.Column width="10">
                 <Input
-                  id={`${props.id}-${token}`}
-                  name={`${props.id}-${token}`}
+                  id={`${props.id}-${dictkey}`}
+                  name={`${props.id}-${dictkey}`}
                   type="text"
-                  placeholder={intl.formatMessage(messages.termtitlelabel)}
+                  placeholder={intl.formatMessage(messages.entryvaluelabel)}
                   required={true}
-                  value={value[token]}
+                  value={value[dictkey]}
                   onChange={(e, target) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    onChangeField(token, target.value);
+                    onChangeFieldHandler(dictkey, target.value);
                   }}
                 />
               </Grid.Column>
               <Grid.Column width="1">
-                {value[token]?.length > 0 && (
+                {value[dictkey]?.length > 0 && (
                   <Button.Group>
                     <Button
                       basic
                       className="cancel"
-                      title={`${intl.formatMessage(messages.clearTerm)} ${
-                        value[token]
+                      title={`${intl.formatMessage(messages.clearEntry)} ${
+                        value[dictkey]
                       }`}
                       onClick={(e) => {
                         e.preventDefault();
                         e.stopPropagation();
-                        onChangeField(token, '');
+                        onChangeFieldHandler(dictkey, '');
                       }}
                     >
                       <Icon name={clearSVG} size="20px" />
