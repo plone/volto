@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2021-06-10T15:10:30.624Z\n"
+"POT-Creation-Date: 2021-06-21T20:29:22.173Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1628,6 +1628,16 @@ msgstr ""
 msgid "Paste blocks"
 msgstr ""
 
+#: components/manage/Sharing/Sharing
+# defaultMessage: Permissions have been updated successfully
+msgid "Permissions have been updated successfully"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
+# defaultMessage: Permissions updated
+msgid "Permissions updated"
+msgstr ""
+
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Personal Information
@@ -2425,10 +2435,6 @@ msgid "Total number of objects in the database"
 msgstr ""
 
 #: components/manage/Add/Add
-# defaultMessage: Translate to
-msgid "Translate to"
-msgstr ""
-
 #: components/manage/Toolbar/Types
 # defaultMessage: Translate to {lang}
 msgid "Translate to {lang}"
