@@ -158,7 +158,7 @@ msgstr "Alternative Text"
 
 #: components/manage/Toolbar/More
 msgid "Apply working copy"
-msgstr ""
+msgstr "Arbeitskopie anwenden"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this field?"
@@ -284,7 +284,7 @@ msgstr "Arbeitlauf-Status für alle Unterobjekte ebenfalls ändern"
 
 #: components/manage/Toolbar/More
 msgid "Changes applied."
-msgstr ""
+msgstr "Änderungen durchgeführt."
 
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
@@ -419,11 +419,11 @@ msgstr "Informationen über die Urheber- und Nutzungsrechte an diesem Artikel."
 
 #: components/manage/Toolbar/More
 msgid "Create working copy"
-msgstr ""
+msgstr "Arbeitskopie erstellen"
 
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 msgid "Created by {creator} on {date}"
-msgstr ""
+msgstr "Erstellt von {creator} am {date}"
 
 #: components/manage/Contents/Contents
 msgid "Created on"
@@ -1103,7 +1103,7 @@ msgstr "Benutzername"
 
 #: components/manage/Toolbar/More
 msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
-msgstr ""
+msgstr "Erstellt von {creator} am {date}. Diese Seite ist keine Arbeitskopie mehr sondern die Live-Seite."
 
 #: components/manage/Blocks/Table/Edit
 msgid "Make the table compact"
@@ -1503,7 +1503,7 @@ msgstr "Wiederkehrende Einstellung entfernen"
 
 #: components/manage/Toolbar/More
 msgid "Remove working copy"
-msgstr ""
+msgstr "Arbeitskopie löschen"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -1621,7 +1621,7 @@ msgstr "Suche"
 
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Search SVG"
-msgstr ""
+msgstr "Suchen"
 
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search Site"
@@ -1933,7 +1933,7 @@ msgstr "Benutzer Portrait/Avatar"
 
 #: components/manage/Toolbar/More
 msgid "The working copy was discarded"
-msgstr ""
+msgstr "Die Arbeitskopie wurde verworfen"
 
 #: components/theme/Footer/Footer
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
@@ -1958,11 +1958,11 @@ msgstr "Dritter"
 
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 msgid "This has an ongoing working copy in {title}"
-msgstr ""
+msgstr "Diese Seite hat eine Arbeitskopie unter {title}"
 
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 msgid "This is a working copy of {title}"
-msgstr ""
+msgstr "Das ist eine Arbeitskopie von {title}"
 
 #: components/manage/Contents/ContentsRenameModal
 msgid "This name will be displayed in the URL."
@@ -2174,7 +2174,7 @@ msgstr "Diese revision ansehen"
 
 #: components/manage/Toolbar/More
 msgid "View working copy"
-msgstr ""
+msgstr "Arbeitskopie ansehen"
 
 #: components/manage/Display/Display
 msgid "Viewmode"
