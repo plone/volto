@@ -1052,9 +1052,7 @@ class Contents extends Component {
   render() {
     const selected = this.state.selected.length > 0;
     const path = getBaseUrl(this.props.pathname);
-    const folderContentsAction = find(this.props.objectActions, {
-      id: 'folderContents',
-    });
+    const folderContentsAction = this.props.actionsById.object.folderContents;
 
     const loading =
       (this.props.clipboardRequest?.loading &&
@@ -1728,6 +1726,7 @@ export const __test__ = compose(
     (store, props) => {
       return {
         userLoggedIn: loggedIn(store),
+        actionsById: store.actions.actionsById,
         items: store.search.items,
         sort: store.content.update.sort,
         index: store.content.updatecolumns.idx,
@@ -1769,6 +1768,7 @@ export default compose(
     (store, props) => {
       return {
         userLoggedIn: loggedIn(store),
+        actionsById: store.actions.actionsById,
         items: store.search.items,
         sort: store.content.update.sort,
         index: store.content.updatecolumns.idx,

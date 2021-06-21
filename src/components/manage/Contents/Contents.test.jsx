@@ -5,6 +5,7 @@ import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
 
 import { __test__ as Contents } from './Contents';
+import { arrayWIdsToObject } from '@plone/volto/helpers/Utils/Utils';
 
 const mockStore = configureStore();
 
@@ -31,21 +32,22 @@ jest.mock('moment', () =>
   })),
 );
 
+const actions = {
+  document_actions: [],
+  object: [
+    {
+      icon: '',
+      id: 'folderContents',
+      title: 'Contents',
+    },
+  ],
+};
+const actionsById = arrayWIdsToObject(actions);
+
 describe('Contents', () => {
   it('renders a folder contents view component', () => {
     const store = mockStore({
-      actions: {
-        actions: {
-          document_actions: [],
-          object: [
-            {
-              icon: '',
-              id: 'folderContents',
-              title: 'Contents',
-            },
-          ],
-        },
-      },
+      actions: { actions, actionsById },
       userSession: {
         token: '14134234123qwdaf',
       },
