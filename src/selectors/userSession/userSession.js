@@ -12,7 +12,10 @@ import jwtDecode from 'jwt-decode';
  * @returns {boolean} `true` if a user is currently authenticated, `false` otherwise.
  */
 export function loggedIn(state) {
-  return !!state.userSession.token;
+  /* The user may be authenticated by different means, including outside the UI.  Defer
+   * to the response from Plone, sepcifically whether Plone presents an option to log
+   * in. */
+  return !state.actions.actionsById.user.login;
 }
 
 /**

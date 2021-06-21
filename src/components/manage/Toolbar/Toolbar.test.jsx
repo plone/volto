@@ -108,7 +108,7 @@ const actions = {
       title: 'Log out',
     },
   ],
-}
+};
 const actionsById = arrayWIdsToObject(actions);
 
 describe('Toolbar', () => {

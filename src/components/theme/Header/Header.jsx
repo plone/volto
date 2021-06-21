@@ -38,8 +38,7 @@ class Header extends Component {
    * @property {Object} defaultProps Default properties.
    * @static
    */
-  static defaultProps = {
-  };
+  static defaultProps = {};
 
   /**
    * Render method.

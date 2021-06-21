@@ -5,6 +5,7 @@ import { Provider } from 'react-intl-redux';
 
 import View from './View';
 import config from '@plone/volto/registry';
+import { arrayWIdsToObject } from '@plone/volto/helpers/Utils/Utils';
 
 beforeAll(() => {
   config.set('views', {
@@ -125,18 +126,18 @@ const actions = {
     },
     {
       icon: '',
-      id: 'logout',
-      title: 'Log out',
+      id: 'login',
+      title: 'Log in',
     },
   ],
 };
+const actionsById = arrayWIdsToObject(actions);
 
 describe('View', () => {
   it('renders an empty view', () => {
     const store = mockStore({
-      actions: { actions },
+      actions: { actions, actionsById },
       content: { get: { error: null } },
-      userSession: { token: null },
       apierror: {},
       intl: {
         locale: 'en',
@@ -154,9 +155,8 @@ describe('View', () => {
 
   it('renders a summary view', () => {
     const store = mockStore({
-      actions: { actions },
+      actions: { actions, actionsById },
       content: { data: { layout: 'summary_view' }, get: { error: null } },
-      userSession: { token: null },
       apierror: {},
       intl: {
         locale: 'en',
@@ -174,9 +174,8 @@ describe('View', () => {
 
   it('renders a tabular view', () => {
     const store = mockStore({
-      actions: { actions },
+      actions: { actions, actionsById },
       content: { data: { layout: 'tabular_view' }, get: { error: null } },
-      userSession: { token: null },
       apierror: {},
       intl: {
         locale: 'en',
@@ -194,9 +193,8 @@ describe('View', () => {
 
   it('renders a document view', () => {
     const store = mockStore({
-      actions: { actions },
+      actions: { actions, actionsById },
       content: { data: {}, get: { error: null } },
-      userSession: { token: null },
       apierror: {},
       intl: {
         locale: 'en',
