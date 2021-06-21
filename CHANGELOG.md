@@ -1,10 +1,19 @@
 # Change Log
 
-## 13.2.2 (unreleased)
+## 13.2.3 (unreleased)
 
 ### Breaking
 
 ### Feature
+- Allowing user to paste url in search box in objectBrowser @iFlameing
+
+### Bugfix
+
+- Fixed docs for config.settings.externalRoutes @giuliaghisini
+
+### Internal
+
+## 13.2.2 (2021-06-18)
 
 - Working copy support for Plone (plone.app.iterate) @sneridagh
 
@@ -16,8 +25,8 @@
 - Fix German translations for leadimage and listing block @timo
 - Show toast success message when adding a new local role @iFlameing
 - Bump postcss from 7.0.29 to 7.0.36 @timo
-
-### Internal
+- Complete Spanish translation @erral
+- Complete German translation @timo
 
 ## 13.2.1 (2021-06-14)
 

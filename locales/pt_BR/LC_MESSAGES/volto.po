@@ -1614,6 +1614,10 @@ msgstr "Atualizações do esquema"
 msgid "Search"
 msgstr "Pesquisar"
 
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Search SVG"
+msgstr ""
+
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search Site"
 msgstr "Pesquisar no site"
