@@ -1587,6 +1587,10 @@ msgstr ""
 msgid "Search"
 msgstr "検索"
 
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Search SVG"
+msgstr ""
+
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search Site"
 msgstr "検索"

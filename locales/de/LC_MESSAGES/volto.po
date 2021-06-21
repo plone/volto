@@ -1595,6 +1595,10 @@ msgstr "Aktualisierungen Schema"
 msgid "Search"
 msgstr "Suche"
 
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Search SVG"
+msgstr ""
+
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search Site"
 msgstr "Website durchsuchen"

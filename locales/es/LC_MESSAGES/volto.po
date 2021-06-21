@@ -1590,6 +1590,10 @@ msgstr "Actualización de esquema"
 msgid "Search"
 msgstr "Búsqueda"
 
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Search SVG"
+msgstr ""
+
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search Site"
 msgstr "Buscar en el sitio"
