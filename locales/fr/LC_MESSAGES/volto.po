@@ -1330,6 +1330,14 @@ msgstr "Coller"
 msgid "Paste blocks"
 msgstr ""
 
+#: components/manage/Sharing/Sharing
+msgid "Permissions have been updated successfully"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
+msgid "Permissions updated"
+msgstr ""
+
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Toolbar/Toolbar
 msgid "Personal Information"
@@ -1588,6 +1596,10 @@ msgstr ""
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search"
 msgstr "Recherche"
+
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Search SVG"
+msgstr ""
 
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search Site"
@@ -1963,9 +1975,6 @@ msgid "Total number of objects in the database"
 msgstr "Nombre total d'objets dans la base de données"
 
 #: components/manage/Add/Add
-msgid "Translate to"
-msgstr ""
-
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
 msgstr "Traduire en {lang}"

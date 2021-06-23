@@ -35,6 +35,10 @@ const messages = defineMessages({
     id: 'Back',
     defaultMessage: 'Back',
   },
+  search: {
+    id: 'Search SVG',
+    defaultMessage: 'Search SVG',
+  },
   of: { id: 'Selected items - x of y', defaultMessage: 'of' },
 });
 
@@ -186,25 +190,38 @@ class ObjectBrowserBody extends Component {
     }));
 
   onSearch = (e) => {
-    const text = e.target.value;
-    text.length > 2
-      ? this.props.searchContent(
-          '/',
-          {
-            SearchableText: `${text}*`,
-            metadata_fields: '_all',
-          },
-          `${this.props.block}-${this.props.mode}`,
-        )
-      : this.props.searchContent(
-          '/',
-          {
-            'path.depth': 1,
-            sort_on: 'getObjPositionInParent',
-            metadata_fields: '_all',
-          },
-          `${this.props.block}-${this.props.mode}`,
-        );
+    const text = flattenToAppURL(e.target.value);
+    if (text.startsWith('/')) {
+      this.setState({ currentFolder: text });
+      this.props.searchContent(
+        text,
+        {
+          'path.depth': 1,
+          sort_on: 'getObjPositionInParent',
+          metadata_fields: '_all',
+        },
+        `${this.props.block}-${this.props.mode}`,
+      );
+    } else {
+      text.length > 2
+        ? this.props.searchContent(
+            '/',
+            {
+              SearchableText: `${text}*`,
+              metadata_fields: '_all',
+            },
+            `${this.props.block}-${this.props.mode}`,
+          )
+        : this.props.searchContent(
+            '/',
+            {
+              'path.depth': 1,
+              sort_on: 'getObjPositionInParent',
+              metadata_fields: '_all',
+            },
+            `${this.props.block}-${this.props.mode}`,
+          );
+    }
   };
 
   onSelectItem = (item) => {
@@ -366,7 +383,10 @@ class ObjectBrowserBody extends Component {
             </h2>
           )}
 
-          <button onClick={this.toggleSearchInput}>
+          <button
+            aria-label={this.props.intl.formatMessage(messages.search)}
+            onClick={this.toggleSearchInput}
+          >
             <Icon name={searchSVG} size="24px" />
           </button>
           <button className="clearSVG" onClick={this.props.closeObjectBrowser}>
