@@ -5,12 +5,15 @@
 ### Breaking
 
 ### Feature
+
 - Allowing user to paste url in search box in objectBrowser @iFlameing
 - Allowing user to click on the breadcrumbs of objectBrowser @iFlameing
+- `Navigation` and `Breadcrumbs` are `apiExpanders` aware and run the action depending on them @sneridagh
 
 ### Bugfix
 
 - Fixed docs for config.settings.externalRoutes @giuliaghisini
+- Fix `Login` component navigation for `INavigationRoot` structures @sneridagh
 
 ### Internal
 
