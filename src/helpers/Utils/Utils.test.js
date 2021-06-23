@@ -1,3 +1,4 @@
+import config from '@plone/volto/registry';
 import {
   applyConfig,
   difference,
@@ -5,6 +6,7 @@ import {
   getInitials,
   safeWrapper,
   normalizeLanguageName,
+  hasApiExpander,
 } from './Utils';
 
 describe('Utils tests', () => {
@@ -279,6 +281,43 @@ describe('Utils tests', () => {
     });
     it('Normalizes a simple language (ca)', () => {
       expect(normalizeLanguageName('ca')).toStrictEqual('ca');
+    });
+  });
+
+  describe('hasApiExpander', () => {
+    it('Using defaults', () => {
+      config.settings.apiExpanders = [
+        { match: '', GET_CONTENT: ['breadcrumbs', 'otherexpander'] },
+      ];
+      expect(hasApiExpander('navigation')).toStrictEqual(false);
+    });
+    it('Using defaults, present', () => {
+      config.settings.apiExpanders = [
+        { match: '', GET_CONTENT: ['breadcrumbs', 'navigation'] },
+      ];
+      expect(hasApiExpander('navigation')).toStrictEqual(true);
+    });
+    it('navigation is an api expander', () => {
+      config.settings.apiExpanders = [
+        { match: '', GET_CONTENT: ['navigation'] },
+      ];
+      expect(hasApiExpander('navigation', '', 'GET_CONTENT')).toStrictEqual(
+        true,
+      );
+    });
+    it('No api expander set, but others present', () => {
+      config.settings.apiExpanders = [
+        { match: '', GET_CONTENT: ['breadcrumbs', 'otherexpander'] },
+      ];
+      expect(hasApiExpander('navigation', '', 'GET_CONTENT')).toStrictEqual(
+        false,
+      );
+    });
+    it('No api expander set at all', () => {
+      config.settings.apiExpanders = [{ match: '', GET_CONTENT: [] }];
+      expect(hasApiExpander('navigation', '', 'GET_CONTENT')).toStrictEqual(
+        false,
+      );
     });
   });
 });

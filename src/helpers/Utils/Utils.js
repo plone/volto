@@ -1,6 +1,8 @@
-import { isEqual, isObject, transform } from 'lodash';
+import { flatten, isEqual, isObject, transform } from 'lodash';
 import React from 'react';
+import { matchPath } from 'react-router';
 import moment from 'moment';
+import config from '@plone/volto/registry';
 
 /**
  * Deep diff between two object, using lodash
@@ -183,4 +185,17 @@ export const normalizeLanguageName = (language) => {
   }
 
   return language;
+};
+
+/**
+ * Lookup if a given expander is set in apiExpanders
+ * @param {string} language Language to be normalized
+ * @returns {string} Language normalized
+ */
+export const hasApiExpander = (expander, path = '', type = 'GET_CONTENT') => {
+  return flatten(
+    config.settings.apiExpanders
+      .filter((expand) => matchPath(path, expand.match) && expand[type])
+      .map((expand) => expand[type]),
+  ).includes(expander);
 };
