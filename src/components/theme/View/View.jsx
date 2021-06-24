@@ -184,6 +184,33 @@ class View extends Component {
       .replace('connect(', '')
       .toLowerCase();
 
+  getContentImageInfo = () => {
+    const { content } = this.props;
+
+    const contentImageInfo = {
+      contentHasImage: false,
+      url: null,
+      height: null,
+      width: null,
+    };
+    contentImageInfo.contentHasImage =
+      content.image?.scales?.large?.download ||
+      content.opengraph_image?.scales?.large?.download ||
+      false;
+
+    if (contentImageInfo.contentHasImage && content?.image?.scales?.large) {
+      contentImageInfo.url = content.image.scales.large.download;
+      contentImageInfo.height = content.image.scales.large.height;
+      contentImageInfo.width = content.image.scales.large.width;
+    } else if (contentImageInfo.contentHasImage) {
+      contentImageInfo.url = content.opengraph_image.scales.large.download;
+      contentImageInfo.height = content.opengraph_image.scales.large.height;
+      contentImageInfo.width = content.opengraph_image.scales.large.width;
+    }
+
+    return contentImageInfo;
+  };
+
   /**
    * Render method.
    * @method render
@@ -216,9 +243,7 @@ class View extends Component {
     const RenderedView =
       this.getViewByType() || this.getViewByLayout() || this.getViewDefault();
 
-    const contentHasImage =
-      this.props.content.image?.scales?.large?.download ||
-      this.props.content.opengraph_image?.scales?.large?.download;
+    const contentImageInfo = this.getContentImageInfo();
 
     return (
       <div id="view">
@@ -251,25 +276,19 @@ class View extends Component {
               toPublicURL(this.props.content['@id'])
             }
           />
-          {contentHasImage && (
+          {contentImageInfo.contentHasImage && (
             <meta
               property="og:image"
-              content={toPublicURL(
-                this.props.content.opengraph_image.scales.large.download ||
-                  this.props.content.image.scales.large.download,
-              )}
+              content={toPublicURL(contentImageInfo.url)}
             />
           )}
-          {contentHasImage && (
-            <meta
-              property="og:image:width"
-              content={this.props.content.image.scales.large.width}
-            />
+          {contentImageInfo.contentHasImage && (
+            <meta property="og:image:width" content={contentImageInfo.width} />
           )}
-          {contentHasImage && (
+          {contentImageInfo.contentHasImage && (
             <meta
               property="og:image:height"
-              content={this.props.content.image.scales.large.height}
+              content={contentImageInfo.height}
             />
           )}
           {(this.props.content.opengraph_description ||
