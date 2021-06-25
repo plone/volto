@@ -5,11 +5,13 @@
 ### Breaking
 
 ### Feature
+
 - Allowing user to paste url in search box in objectBrowser @iFlameing
 
 ### Bugfix
 
 - Fixed docs for config.settings.externalRoutes @giuliaghisini
+- Fix `Pluggable` in the use case that a `Plug` is empty @sneridagh
 
 ### Internal
 
