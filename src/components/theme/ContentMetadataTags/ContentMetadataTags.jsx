@@ -27,18 +27,18 @@ const ContentMetadataTags = (props) => {
       width: null,
     };
     contentImageInfo.contentHasImage =
-      image?.scales?.large?.download ||
       opengraph_image?.scales?.large?.download ||
+      image?.scales?.large?.download ||
       false;
 
-    if (contentImageInfo.contentHasImage && image?.scales?.large) {
-      contentImageInfo.url = image.scales.large.download;
-      contentImageInfo.height = image.scales.large.height;
-      contentImageInfo.width = image.scales.large.width;
-    } else if (contentImageInfo.contentHasImage) {
+    if (contentImageInfo.contentHasImage && opengraph_image?.scales?.large) {
       contentImageInfo.url = opengraph_image.scales.large.download;
       contentImageInfo.height = opengraph_image.scales.large.height;
       contentImageInfo.width = opengraph_image.scales.large.width;
+    } else if (contentImageInfo.contentHasImage) {
+      contentImageInfo.url = image.scales.large.download;
+      contentImageInfo.height = image.scales.large.height;
+      contentImageInfo.width = image.scales.large.width;
     }
 
     return contentImageInfo;
