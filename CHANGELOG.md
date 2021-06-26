@@ -12,6 +12,7 @@
 ### Bugfix
 
 - Fixed docs for config.settings.externalRoutes @giuliaghisini
+- Fix `Pluggable` in the use case that a `Plug` is empty @sneridagh
 - Fix `Login` component navigation for `INavigationRoot` structures @sneridagh
 
 ### Internal
