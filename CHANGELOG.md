@@ -9,10 +9,13 @@
 - Allowing user to paste url in search box in objectBrowser @iFlameing
 - Detect when a user has logged in by means other than JWT, such as ZMI `Basic`
   authentication or the classic HTML Plone `@login` view @rpatterson
+- `Navigation` and `Breadcrumbs` are `apiExpanders` aware and run the action depending on them @sneridagh
 
 ### Bugfix
 
 - Fixed docs for config.settings.externalRoutes @giuliaghisini
+- Fix `Pluggable` in the use case that a `Plug` is empty @sneridagh
+- Fix `Login` component navigation for `INavigationRoot` structures @sneridagh
 
 ### Internal
 

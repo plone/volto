@@ -9,6 +9,7 @@ describe('Breadcrumbs reducer', () => {
     expect(breadcrumbs()).toEqual({
       error: null,
       items: [],
+      root: null,
       loaded: false,
       loading: false,
     });
@@ -22,6 +23,7 @@ describe('Breadcrumbs reducer', () => {
     ).toEqual({
       error: null,
       items: [],
+      root: null,
       loaded: false,
       loading: true,
     });
@@ -38,6 +40,7 @@ describe('Breadcrumbs reducer', () => {
               '@id': `${settings.apiPath}/front-page`,
             },
           ],
+          root: settings.apiPath,
         },
       }),
     ).toEqual({
@@ -48,6 +51,7 @@ describe('Breadcrumbs reducer', () => {
           url: '/front-page',
         },
       ],
+      root: '',
       loaded: true,
       loading: false,
     });
@@ -62,6 +66,7 @@ describe('Breadcrumbs reducer', () => {
     ).toEqual({
       error: 'failed',
       items: [],
+      root: null,
       loaded: false,
       loading: false,
     });
