@@ -13,6 +13,7 @@
 
 - Fixed docs for config.settings.externalRoutes @giuliaghisini
 - Fix `Login` component navigation for `INavigationRoot` structures @sneridagh
+- Hyphenation block chooser labels @ksuess
 
 ### Internal
 
