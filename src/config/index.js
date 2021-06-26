@@ -151,6 +151,7 @@ let config = {
       // },
     ],
     showSelfRegistration: false,
+    contentMetadataTagsImageField: 'image',
   },
   widgets: {
     ...widgetMapping,
