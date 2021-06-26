@@ -31,14 +31,8 @@ const SVGLOADER = {
 };
 
 module.exports = {
-  stories: [
-    '../src/**/*.stories.mdx',
-    '../src/**/*.stories.@(js|jsx|ts|tsx)'
-  ],
-  addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-  ],
+  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
   webpackFinal: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
     // You can change the configuration based on that.
@@ -94,6 +88,7 @@ module.exports = {
     return resultConfig;
   },
   babel: async (options) => {
+    console.log(options.plugins);
     return {
       ...options,
       plugins: [
