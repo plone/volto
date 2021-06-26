@@ -45,7 +45,9 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
                   class="icon"
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
-                Image
+                <span>
+                  Image
+                </span>
               </button>
             </div>
             <div
@@ -58,7 +60,9 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
                   class="icon"
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
-                Listing
+                <span>
+                  Listing
+                </span>
               </button>
             </div>
             <div
@@ -71,7 +75,9 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
                   class="icon"
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
-                Video
+                <span>
+                  Video
+                </span>
               </button>
             </div>
           </div>
@@ -114,7 +120,9 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
                   class="icon"
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
-                Text
+                <span>
+                  Text
+                </span>
               </button>
             </div>
           </div>
@@ -157,7 +165,9 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
                   class="icon"
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
-                Image
+                <span>
+                  Image
+                </span>
               </button>
             </div>
             <div
@@ -170,7 +180,9 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
                   class="icon"
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
-                Lead Image Field
+                <span>
+                  Lead Image Field
+                </span>
               </button>
             </div>
             <div
@@ -183,7 +195,9 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
                   class="icon"
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
-                Video
+                <span>
+                  Video
+                </span>
               </button>
             </div>
           </div>
@@ -226,7 +240,9 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
                   class="icon"
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
-                Listing
+                <span>
+                  Listing
+                </span>
               </button>
             </div>
             <div
@@ -239,7 +255,9 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
                   class="icon"
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
-                Table of Contents
+                <span>
+                  Table of Contents
+                </span>
               </button>
             </div>
             <div
@@ -252,7 +270,9 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
                   class="icon"
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
-                Hero
+                <span>
+                  Hero
+                </span>
               </button>
             </div>
             <div
@@ -265,7 +285,9 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
                   class="icon"
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
-                Maps
+                <span>
+                  Maps
+                </span>
               </button>
             </div>
             <div
@@ -278,7 +300,9 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
                   class="icon"
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
-                HTML
+                <span>
+                  HTML
+                </span>
               </button>
             </div>
             <div
@@ -291,7 +315,9 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
                   class="icon"
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
-                Table
+                <span>
+                  Table
+                </span>
               </button>
             </div>
           </div>
@@ -347,7 +373,9 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
                   class="icon"
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
-                Image
+                <span>
+                  Image
+                </span>
               </button>
             </div>
             <div
@@ -360,7 +388,9 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
                   class="icon"
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
-                Listing
+                <span>
+                  Listing
+                </span>
               </button>
             </div>
             <div
@@ -373,7 +403,9 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
                   class="icon"
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
-                Video
+                <span>
+                  Video
+                </span>
               </button>
             </div>
           </div>
@@ -416,7 +448,9 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
                   class="icon"
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
-                Text
+                <span>
+                  Text
+                </span>
               </button>
             </div>
           </div>
@@ -459,7 +493,9 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
                   class="icon"
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
-                Image
+                <span>
+                  Image
+                </span>
               </button>
             </div>
             <div
@@ -472,7 +508,9 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
                   class="icon"
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
-                Lead Image Field
+                <span>
+                  Lead Image Field
+                </span>
               </button>
             </div>
             <div
@@ -485,7 +523,9 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
                   class="icon"
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
-                Video
+                <span>
+                  Video
+                </span>
               </button>
             </div>
           </div>
@@ -528,7 +568,9 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
                   class="icon"
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
-                Listing
+                <span>
+                  Listing
+                </span>
               </button>
             </div>
             <div
@@ -541,7 +583,9 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
                   class="icon"
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
-                Table of Contents
+                <span>
+                  Table of Contents
+                </span>
               </button>
             </div>
             <div
@@ -554,7 +598,9 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
                   class="icon"
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
-                Hero
+                <span>
+                  Hero
+                </span>
               </button>
             </div>
             <div
@@ -567,7 +613,9 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
                   class="icon"
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
-                Maps
+                <span>
+                  Maps
+                </span>
               </button>
             </div>
             <div
@@ -580,7 +628,9 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
                   class="icon"
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
-                HTML
+                <span>
+                  HTML
+                </span>
               </button>
             </div>
             <div
@@ -593,7 +643,9 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
                   class="icon"
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
-                Table
+                <span>
+                  Table
+                </span>
               </button>
             </div>
           </div>
