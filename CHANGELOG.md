@@ -5,7 +5,9 @@
 ### Breaking
 
 ### Feature
+
 - Allowing user to paste url in search box in objectBrowser @iFlameing
+- `Navigation` and `Breadcrumbs` are `apiExpanders` aware and run the action depending on them @sneridagh
 
 - added og tags for social sharing @giuliaghisini @nzambello
 - added interface for plone seo extensions to use values added by them as metadata @jackahl
@@ -13,6 +15,8 @@
 ### Bugfix
 
 - Fixed docs for config.settings.externalRoutes @giuliaghisini
+- Fix `Pluggable` in the use case that a `Plug` is empty @sneridagh
+- Fix `Login` component navigation for `INavigationRoot` structures @sneridagh
 
 ### Internal
 
