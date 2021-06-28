@@ -403,7 +403,11 @@ class ObjectBrowserBody extends Component {
                   <React.Fragment key={`divider-${item}-${index}`}>
                     {index === 0 ? (
                       <Breadcrumb.Section onClick={() => this.navigateTo('/')}>
-                        <Icon name={homeSVG} size="18px" />
+                        <Icon
+                          className="home-icon"
+                          name={homeSVG}
+                          size="18px"
+                        />
                       </Breadcrumb.Section>
                     ) : (
                       <>
@@ -422,7 +426,7 @@ class ObjectBrowserBody extends Component {
               })
             ) : (
               <Breadcrumb.Section onClick={() => this.navigateTo('/')}>
-                <Icon name={homeSVG} size="18px" />
+                <Icon className="home-icon" name={homeSVG} size="18px" />
               </Breadcrumb.Section>
             )}
           </Breadcrumb>
