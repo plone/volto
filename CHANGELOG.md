@@ -6,10 +6,16 @@
 
 ### Feature
 
+- Allowing user to paste url in search box in objectBrowser @iFlameing
+- `Navigation` and `Breadcrumbs` are `apiExpanders` aware and run the action depending on them @sneridagh
+
 ### Bugfix
 
 - fix not updating roles in users controlpanel @nileshgulia1
 - Fixed docs for config.settings.externalRoutes @giuliaghisini
+- Fix `Pluggable` in the use case that a `Plug` is empty @sneridagh
+- Fix `Login` component navigation for `INavigationRoot` structures @sneridagh
+- Hyphenation block chooser labels @ksuess
 
 ### Internal
 
