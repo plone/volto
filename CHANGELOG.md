@@ -18,6 +18,8 @@
 
 ### Internal
 
+- Bumps prismjs from 1.23.0 to 1.24.0. @timo
+
 ## 13.2.2 (2021-06-18)
 
 ### Bugfix
