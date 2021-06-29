@@ -155,6 +155,10 @@ msgstr "Alfabéticamente"
 msgid "Alt text"
 msgstr "Texto alternativo"
 
+#: components/manage/Toolbar/More
+msgid "Apply working copy"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this field?"
 msgstr "¿Esta seguro de querer eliminar este campo?"
@@ -276,6 +280,10 @@ msgstr "Cambiar Estado"
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Change workflow state recursively"
 msgstr "Cambiar el estado del flujo de trabajo recursivamente"
+
+#: components/manage/Toolbar/More
+msgid "Changes applied."
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
@@ -407,6 +415,14 @@ msgstr "Copyright"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Copyright statement or other rights information on this item."
 msgstr "Información del copyright o otros derechos en este elemento."
+
+#: components/manage/Toolbar/More
+msgid "Create working copy"
+msgstr ""
+
+#: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
+msgid "Created by {creator} on {date}"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Created on"
@@ -1096,6 +1112,10 @@ msgstr "Inicio de Sesión fallo"
 msgid "Login Name"
 msgstr "Nombre de usuario"
 
+#: components/manage/Toolbar/More
+msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 msgid "Make the table compact"
 msgstr "Hacer la tabla compacta"
@@ -1495,6 +1515,10 @@ msgstr "Eliminar elemento"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
 msgstr "Eliminar repetición"
+
+#: components/manage/Toolbar/More
+msgid "Remove working copy"
+msgstr ""
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -1926,6 +1950,10 @@ msgstr "El registro fue exitoso. Verifique su bandeja de entrada para obtener in
 msgid "The user portrait/avatar"
 msgstr "El retrato/avatar del usuario"
 
+#: components/manage/Toolbar/More
+msgid "The working copy was discarded"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
 msgstr "El {plonecms} es {copyright} 2000-{current_year} por la {plonefoundation} y amigos."
@@ -1946,6 +1974,14 @@ msgstr "Hay algunos errores."
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Third"
 msgstr "Tercero"
+
+#: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
+msgid "This has an ongoing working copy in {title}"
+msgstr ""
+
+#: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
+msgid "This is a working copy of {title}"
+msgstr ""
 
 #: components/manage/Contents/ContentsRenameModal
 msgid "This name will be displayed in the URL."
@@ -2154,6 +2190,10 @@ msgstr "Mostrar los cambios"
 #: components/manage/History/History
 msgid "View this revision"
 msgstr "Mostrar esta revisión"
+
+#: components/manage/Toolbar/More
+msgid "View working copy"
+msgstr ""
 
 #: components/manage/Display/Display
 msgid "Viewmode"

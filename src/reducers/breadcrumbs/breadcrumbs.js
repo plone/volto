@@ -11,6 +11,7 @@ import { GET_BREADCRUMBS } from '@plone/volto/constants/ActionTypes';
 const initialState = {
   error: null,
   items: [],
+  root: null,
   loaded: false,
   loading: false,
 };
@@ -39,6 +40,7 @@ export default function breadcrumbs(state = initialState, action = {}) {
           title: item.title,
           url: flattenToAppURL(item['@id']),
         })),
+        root: flattenToAppURL(action.result.root),
         loaded: true,
         loading: false,
       };
