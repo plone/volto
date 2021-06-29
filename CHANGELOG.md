@@ -2,15 +2,9 @@
 
 ## 13.3.2 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Working copy support for Plone (plone.app.iterate) @sneridagh
-
-### Bugfix
-
-### Internal
 
 ## 13.3.1 (2021-06-29)
 
