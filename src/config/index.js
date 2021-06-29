@@ -153,7 +153,7 @@ let config = {
       // },
     ],
     showSelfRegistration: false,
-    internalUrlBlacklist: [], // URL to be considered as external
+    contentMetadataTagsImageField: 'image',
   },
   widgets: {
     ...widgetMapping,

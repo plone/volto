@@ -11,14 +11,17 @@ import { Portal } from 'react-portal';
 import { injectIntl } from 'react-intl';
 import qs from 'query-string';
 
-import { Comments, Tags, Toolbar } from '@plone/volto/components';
+import {
+  ContentMetadataTags,
+  Comments,
+  Tags,
+  Toolbar,
+} from '@plone/volto/components';
 import { listActions, getContent } from '@plone/volto/actions';
 import {
   BodyClass,
   getBaseUrl,
   getLayoutFieldname,
-  toPublicURL,
-  Helmet,
 } from '@plone/volto/helpers';
 
 import config from '@plone/volto/registry';
@@ -216,76 +219,9 @@ class View extends Component {
     const RenderedView =
       this.getViewByType() || this.getViewByLayout() || this.getViewDefault();
 
-    const contentHasImage =
-      this.props.content.image?.scales?.large?.download ||
-      this.props.content.opengraph_image?.scales?.large?.download;
-
     return (
       <div id="view">
-        <Helmet>
-          {this.props.content.language && (
-            <html lang={this.props.content.language.token} />
-          )}
-          <title>
-            {this.props.content.seo_title || this.props.content.title}
-          </title>
-          <meta
-            name="description"
-            content={
-              this.props.content.seo_description ||
-              this.props.content.description
-            }
-          />
-          <meta
-            property="og:title"
-            content={
-              this.props.content.opengraph_title ||
-              this.props.content.seo_title ||
-              this.props.content.title
-            }
-          />
-          <meta
-            property="og:url"
-            content={
-              this.props.content.seo_canonical_url ||
-              toPublicURL(this.props.content['@id'])
-            }
-          />
-          {contentHasImage && (
-            <meta
-              property="og:image"
-              content={toPublicURL(
-                this.props.content.opengraph_image.scales.large.download ||
-                  this.props.content.image.scales.large.download,
-              )}
-            />
-          )}
-          {contentHasImage && (
-            <meta
-              property="og:image:width"
-              content={this.props.content.image.scales.large.width}
-            />
-          )}
-          {contentHasImage && (
-            <meta
-              property="og:image:height"
-              content={this.props.content.image.scales.large.height}
-            />
-          )}
-          {(this.props.content.opengraph_description ||
-            this.props.content.seo_description ||
-            this.props.content.description) && (
-            <meta
-              property="og:description"
-              content={
-                this.props.content.opengraph_description ||
-                this.props.content.seo_description ||
-                this.props.content.description
-              }
-            />
-          )}
-          <meta name="twitter:card" content="summary_large_image" />
-        </Helmet>
+        <ContentMetadataTags content={this.props.content} />
         {/* Body class if displayName in component is set */}
         <BodyClass
           className={

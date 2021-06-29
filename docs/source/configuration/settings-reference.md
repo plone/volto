@@ -246,3 +246,9 @@ in the `config.settings.serverConfig` object.
     For the moment it admits only one property: `errorPages` whose value is a Boolean.
 
     If `extractScripts.errorPages` is `true`, the JS will be inserted into the error page.
+
+### contentMetadataTagsImageField
+
+!!! block ""
+
+    The SEO default image field name for using it in the metadata HEAD tag. Defaults to `image`.
