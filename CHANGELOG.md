@@ -67,6 +67,8 @@
 - Set default value selected for variation in listing block @giuliaghisini
 - Use querystring prop in ListingBody @giuliaghisini
 - Set default value selected for variation in listing block @giuliaghisini
+- Fix outside click handling in object browser @nzambello
+- Close object browser when pressing ESC @nzambello
 
 ### Internal
 

@@ -2,26 +2,43 @@ import React from 'react';
 import { Portal } from 'react-portal';
 import { CSSTransition } from 'react-transition-group';
 import PropTypes from 'prop-types';
-import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 
 const DEFAULT_TIMEOUT = 500;
 
 const SidebarPopup = (props) => {
   const { children, open, onClose, overlay } = props;
 
-  const asideElement = React.createRef();
-
   const handleClickOutside = (e) => {
-    if (asideElement && doesNodeContainClick(asideElement.current, e)) return;
-    onClose();
+    let sidebarContainer = e?.target?.closest('#sidebar-popup-container');
+    if (open && !sidebarContainer) {
+      onClose();
+    }
+  };
+
+  const handleESCPress = (e) => {
+    if (e.code === 'Escape') onClose();
   };
 
   React.useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside, false);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside, false);
-    };
-  });
+    if (open) {
+      document.addEventListener('click', handleClickOutside, false);
+    } else {
+      document.removeEventListener('click', handleClickOutside, false);
+    }
+    return () =>
+      document.removeEventListener('click', handleClickOutside, false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open]);
+
+  React.useEffect(() => {
+    if (open) {
+      document.addEventListener('keydown', handleESCPress, false);
+    } else {
+      document.removeEventListener('keydown', handleESCPress, false);
+    }
+    return () => document.removeEventListener('keydown', handleESCPress, false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open]);
 
   return (
     <>
@@ -52,9 +69,9 @@ const SidebarPopup = (props) => {
             onKeyDown={(e) => {
               e.stopPropagation();
             }}
-            ref={asideElement}
             key="sidebarpopup"
             className="sidebar-container"
+            id="sidebar-popup-container"
             style={{ overflowY: 'auto' }}
           >
             {children}
