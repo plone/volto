@@ -151,6 +151,7 @@ let config = {
       // },
     ],
     showSelfRegistration: false,
+    hasWorkingCopySupport: false,
   },
   widgets: {
     ...widgetMapping,

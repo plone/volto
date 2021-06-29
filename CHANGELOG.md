@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Working copy support for Plone (plone.app.iterate) @sneridagh
+
 ### Bugfix
 
 ### Internal
