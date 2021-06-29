@@ -251,4 +251,4 @@ in the `config.settings.serverConfig` object.
 
 !!! block ""
 
-    The SEO default image field name for using it in the metadata HEAD tag. Defaults to `image`.
+    The OpenGraph image that will represent this content item, will be used in the metadata HEAD tag as og:image for SEO purposes. Defaults to image. See the OpenGraph Protocol for more details.
