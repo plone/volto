@@ -1,6 +1,6 @@
 # Change Log
 
-## 13.3.1 (unreleased)
+## 13.3.2 (unreleased)
 
 ### Breaking
 
@@ -11,6 +11,12 @@
 ### Internal
 
 - Upgrade to Storybook 6.3, refresh deps version for babel @sneridagh
+
+## 13.3.1 (2021-06-29)
+
+### Internal
+
+- Remove locales .json files pushed again by mistake, now they are no longer needed to be in the repo, since they are generated at runtime, and included in the released versions @sneridagh
 
 ## 13.3.0 (2021-06-29)
 
