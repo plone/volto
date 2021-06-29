@@ -273,7 +273,11 @@ class Edit extends Component {
                         })
                       : null
                   }
-                />
+                >
+                  {this.props.content?.language && (
+                    <html lang={this.props.content.language.token} />
+                  )}
+                </Helmet>
 
                 {this.state.comparingLanguage && this.state.compareTo ? (
                   <Grid
