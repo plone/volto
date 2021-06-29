@@ -2,8 +2,6 @@
 
 ## 13.2.3 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Allowing user to paste url in search box in objectBrowser @iFlameing
