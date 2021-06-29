@@ -38,6 +38,12 @@ export const multilingualFixture = (config) => {
   return config;
 };
 
+export const workingCopyFixture = (config) => {
+  config.settings.hasWorkingCopySupport = true;
+
+  return config;
+};
+
 const applyConfig = (config) => {
   return {
     ...config,

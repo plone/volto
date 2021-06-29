@@ -1,6 +1,6 @@
 # Change Log
 
-## 13.3.2 (unreleased)
+## 13.4.1 (unreleased)
 
 ### Breaking
 
@@ -11,6 +11,12 @@
 ### Internal
 
 - Upgrade to Storybook 6.3, refresh deps version for babel @sneridagh
+
+## 13.4.0 (2021-06-29)
+
+### Feature
+
+- Working copy support for Plone (plone.app.iterate) @sneridagh
 
 ## 13.3.1 (2021-06-29)
 
