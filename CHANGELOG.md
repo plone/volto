@@ -1,8 +1,18 @@
 # Change Log
 
-## 13.2.3 (unreleased)
+## 13.3.1 (unreleased)
 
 ### Breaking
+
+### Feature
+
+### Bugfix
+
+### Internal
+
+- Remove locales .json files pushed again by mistake, now they are no longer needed to be in the repo, since they are generated at runtime, and included in the released versions @sneridagh
+
+## 13.3.0 (2021-06-29)
 
 ### Feature
 
@@ -14,11 +24,11 @@
 - Fixed docs for config.settings.externalRoutes @giuliaghisini
 - Fix `Pluggable` in the use case that a `Plug` is empty @sneridagh
 - Fix `Login` component navigation for `INavigationRoot` structures @sneridagh
-- Hyphenation block chooser labels @ksuess
+- Hyphenation block chooser labels (no html changes) @ksuess
 
 ### Internal
 
-- Remove locales .json files pushed again by mistake, now they are no longer needed to be in the repo, since they are generated at runtime, and included in the released versions @sneridagh
+- Bumps prismjs from 1.23.0 to 1.24.0. @timo
 
 ## 13.2.2 (2021-06-18)
 

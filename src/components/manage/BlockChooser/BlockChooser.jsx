@@ -125,12 +125,10 @@ const BlockChooser = ({
                       }}
                     >
                       <Icon name={block.icon} size="36px" />
-                      <span>
-                        {intl.formatMessage({
-                          id: block.id,
-                          defaultMessage: block.title,
-                        })}
-                      </span>
+                      {intl.formatMessage({
+                        id: block.id,
+                        defaultMessage: block.title,
+                      })}
                     </Button>
                   </Button.Group>
                 ))}
