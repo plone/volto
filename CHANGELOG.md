@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Working copy support for Plone (plone.app.iterate) @sneridagh
+
 ### Bugfix
 
 ### Internal
@@ -35,8 +37,6 @@
 - Bumps prismjs from 1.23.0 to 1.24.0. @timo
 
 ## 13.2.2 (2021-06-18)
-
-- Working copy support for Plone (plone.app.iterate) @sneridagh
 
 ### Bugfix
 
