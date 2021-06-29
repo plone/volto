@@ -30,6 +30,8 @@ const WorkingCopyToastsFactory = (props) => {
   const pathname = useLocation().pathname;
   const lang = useSelector((state) => state.intl.locale);
   const { content } = props;
+  const title = content?.title;
+  const working_copy = content?.working_copy;
   const dateOptions = {
     year: 'numeric',
     month: 'long',
@@ -38,7 +40,7 @@ const WorkingCopyToastsFactory = (props) => {
 
   useDeepCompareEffect(() => {
     if (content && config.settings.hasWorkingCopySupport) {
-      if (content.working_copy) {
+      if (working_copy) {
         let toastMessage, toastTitle;
         if (content.working_copy_of) {
           // I'm a working copy
@@ -52,8 +54,8 @@ const WorkingCopyToastsFactory = (props) => {
           // I'm a baseline
           toastMessage = messages.workingCopyIs;
           toastTitle = (
-            <Link to={flattenToAppURL(content.working_copy['@id'])}>
-              {content.working_copy?.title}
+            <Link to={flattenToAppURL(working_copy['@id'])}>
+              {working_copy?.title}
             </Link>
           );
         }
@@ -66,9 +68,9 @@ const WorkingCopyToastsFactory = (props) => {
                   title: toastTitle,
                 })}
                 content={intl.formatMessage(messages.workingCopyCreatedBy, {
-                  creator: content.working_copy?.creator_name,
+                  creator: working_copy?.creator_name,
                   date: new Intl.DateTimeFormat(lang, dateOptions).format(
-                    parse(content.working_copy?.created),
+                    parse(working_copy?.created),
                   ),
                 })}
               />
@@ -82,9 +84,9 @@ const WorkingCopyToastsFactory = (props) => {
                 title: toastTitle,
               })}
               content={intl.formatMessage(messages.workingCopyCreatedBy, {
-                creator: content.working_copy?.creator_name,
+                creator: working_copy?.creator_name,
                 date: new Intl.DateTimeFormat(lang, dateOptions).format(
-                  parse(content.working_copy?.created),
+                  parse(working_copy?.created),
                 ),
               })}
             />,
@@ -97,21 +99,13 @@ const WorkingCopyToastsFactory = (props) => {
           );
         }
       }
-      if (!content.working_copy) {
+      if (!working_copy) {
         if (toast.isActive('workingcopyinfo')) {
           toast.dismiss('workingcopyinfo');
         }
       }
     }
-  }, [
-    pathname,
-    content,
-    content?.title,
-    content?.working_copy,
-    intl,
-    lang,
-    dateOptions,
-  ]);
+  }, [pathname, content, title, working_copy, intl, lang, dateOptions]);
 
   return null;
 };
