@@ -1,6 +1,5 @@
 import React from 'react';
 import { toPublicURL, Helmet } from '@plone/volto/helpers';
-import { Pluggable, Plug } from '@plone/volto/components/manage/Pluggable';
 import config from '@plone/volto/registry';
 
 const ContentMetadataTags = (props) => {
@@ -48,44 +47,38 @@ const ContentMetadataTags = (props) => {
 
   return (
     <>
-      <Pluggable name="content-metadata-tags" />
-      <Plug pluggable="content-metadata-tags" id="default">
-        <Helmet>
-          {language && <html lang={language.token} />}
-          <title>{seo_title || title}</title>
-          <meta name="description" content={seo_description || description} />
+      <Helmet>
+        {language && <html lang={language.token} />}
+        <title>{seo_title || title}</title>
+        <meta name="description" content={seo_description || description} />
+        <meta
+          property="og:title"
+          content={opengraph_title || seo_title || title}
+        />
+        <meta
+          property="og:url"
+          content={seo_canonical_url || toPublicURL(props.content['@id'])}
+        />
+        {contentImageInfo.contentHasImage && (
           <meta
-            property="og:title"
-            content={opengraph_title || seo_title || title}
+            property="og:image"
+            content={toPublicURL(contentImageInfo.url)}
           />
+        )}
+        {contentImageInfo.contentHasImage && (
+          <meta property="og:image:width" content={contentImageInfo.width} />
+        )}
+        {contentImageInfo.contentHasImage && (
+          <meta property="og:image:height" content={contentImageInfo.height} />
+        )}
+        {(opengraph_description || seo_description || description) && (
           <meta
-            property="og:url"
-            content={seo_canonical_url || toPublicURL(props.content['@id'])}
+            property="og:description"
+            content={opengraph_description || seo_description || description}
           />
-          {contentImageInfo.contentHasImage && (
-            <meta
-              property="og:image"
-              content={toPublicURL(contentImageInfo.url)}
-            />
-          )}
-          {contentImageInfo.contentHasImage && (
-            <meta property="og:image:width" content={contentImageInfo.width} />
-          )}
-          {contentImageInfo.contentHasImage && (
-            <meta
-              property="og:image:height"
-              content={contentImageInfo.height}
-            />
-          )}
-          {(opengraph_description || seo_description || description) && (
-            <meta
-              property="og:description"
-              content={opengraph_description || seo_description || description}
-            />
-          )}
-          <meta name="twitter:card" content="summary_large_image" />
-        </Helmet>
-      </Plug>
+        )}
+        <meta name="twitter:card" content="summary_large_image" />
+      </Helmet>
     </>
   );
 };
