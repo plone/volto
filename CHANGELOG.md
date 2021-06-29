@@ -51,6 +51,8 @@
 - Add internal URL blacklist to avoid render custom routes in Volto @nzambello
 - Add Image with srcset and lazy loading using Plone scales @nzambello
 - In listing blocks, scroll to start of listing block instead page start @giuliaghisini
+- added og tags for social sharing @giuliaghisini @nzambello
+- added interface for plone seo extensions to use values added by them as metadata @jackahl
 
 ### Bugfix
 
