@@ -247,8 +247,15 @@ in the `config.settings.serverConfig` object.
 
     If `extractScripts.errorPages` is `true`, the JS will be inserted into the error page.
 
+### contentMetadataTagsImageField
+
+!!! block ""
+
+    The OpenGraph image that will represent this content item, will be used in the metadata HEAD tag as og:image for SEO purposes. Defaults to image. See the OpenGraph Protocol for more details.
+
 ### hasWorkingCopySupport
 
 !!! block ""
 
     This setting will enable working copy support in your site. You need to install the `plone.app.iterate` add-on in your Plone site in order to make it working.
+
