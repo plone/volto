@@ -1,8 +1,30 @@
 # Change Log
 
-## 13.2.3 (unreleased)
+## 13.4.1 (unreleased)
 
 ### Breaking
+
+### Feature
+
+### Bugfix
+
+### Internal
+
+- Upgrade to Storybook 6.3, refresh deps version for babel @sneridagh
+
+## 13.4.0 (2021-06-29)
+
+### Feature
+
+- Working copy support for Plone (plone.app.iterate) @sneridagh
+
+## 13.3.1 (2021-06-29)
+
+### Internal
+
+- Remove locales .json files pushed again by mistake, now they are no longer needed to be in the repo, since they are generated at runtime, and included in the released versions @sneridagh
+
+## 13.3.0 (2021-06-29)
 
 ### Feature
 
@@ -17,8 +39,11 @@
 - Fixed docs for config.settings.externalRoutes @giuliaghisini
 - Fix `Pluggable` in the use case that a `Plug` is empty @sneridagh
 - Fix `Login` component navigation for `INavigationRoot` structures @sneridagh
+- Hyphenation block chooser labels (no html changes) @ksuess
 
 ### Internal
+
+- Bumps prismjs from 1.23.0 to 1.24.0. @timo
 
 ## 13.2.2 (2021-06-18)
 
