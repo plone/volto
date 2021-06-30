@@ -2,11 +2,10 @@
 
 ## 13.4.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
-### Bugfix
+- Add og tags for social sharing @giuliaghisini @nzambello
+- Add interface for plone seo extensions to use values added by them as metadata @jackahl
 
 ### Internal
 
@@ -30,9 +29,6 @@
 
 - Allowing user to paste url in search box in objectBrowser @iFlameing
 - `Navigation` and `Breadcrumbs` are `apiExpanders` aware and run the action depending on them @sneridagh
-
-- added og tags for social sharing @giuliaghisini @nzambello
-- added interface for plone seo extensions to use values added by them as metadata @jackahl
 
 ### Bugfix
 
