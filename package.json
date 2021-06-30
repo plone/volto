@@ -316,6 +316,7 @@
     "jwt-decode": "2.2.0",
     "less": "3.11.1",
     "less-loader": "6.1.0",
+    "levenary": "1.1.1",
     "linkify-it": "3.0.2",
     "lint-staged": "10.2.2",
     "locale": "0.1.0",
