@@ -7,6 +7,7 @@ import { Icon } from '@plone/volto/components';
 import { blockHasValue } from '@plone/volto/helpers';
 import { Pluggable, Plug } from '@plone/volto/components/manage/Pluggable';
 import MutateBlockButton from './MutateBlockButton';
+import cx from 'classnames';
 
 import config from '@plone/volto/registry';
 
@@ -26,7 +27,7 @@ const QuantaEditBlockWrapper = (props) => {
     return !!data.fixed || !blockHasValue(data);
   };
 
-  const { intl, blockProps, draginfo, children } = props;
+  const { intl, blockProps, draginfo, children, className } = props;
   const { block, data, onDeleteBlock, selected, type } = blockProps;
   const visible = selected && !hideHandler(data);
 
@@ -38,7 +39,11 @@ const QuantaEditBlockWrapper = (props) => {
     <div
       ref={draginfo.innerRef}
       {...draginfo.draggableProps}
-      className={`quanta-block quanta-block-editor-${data['@type']}`}
+      className={cx(
+        'quanta-block',
+        `quanta-block-editor-${data['@type']}`,
+        className,
+      )}
     >
       {selected && (
         <div className="toolbar quanta-block-toolbar">

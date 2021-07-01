@@ -1,3 +1,7 @@
+/** This is the classic block wrapper. The BlocksForm uses either this one or
+ * the QuantaEditBlockWrapper
+ */
+
 import React from 'react';
 import { Icon } from '@plone/volto/components';
 import { blockHasValue } from '@plone/volto/helpers';

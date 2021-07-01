@@ -15,7 +15,7 @@ import {
 } from '@plone/volto/helpers/Blocks/Blocks';
 import { Helmet, getBaseUrl, slotsBlocksConfig } from '@plone/volto/helpers';
 import { Icon, Sidebar, Toolbar } from '@plone/volto/components';
-import EditBlockWrapper from './SlotEditBlockWrapper';
+import SlotEditBlockWrapper from './SlotEditBlockWrapper';
 import config from '@plone/volto/registry';
 
 import saveSVG from '@plone/volto/icons/save.svg';
@@ -114,9 +114,12 @@ class EditSlot extends React.Component {
               blocksConfig={blocksConfig}
             >
               {({ draginfo }, editBlock, blockProps) => (
-                <EditBlockWrapper draginfo={draginfo} blockProps={blockProps}>
+                <SlotEditBlockWrapper
+                  draginfo={draginfo}
+                  blockProps={blockProps}
+                >
                   {editBlock}
-                </EditBlockWrapper>
+                </SlotEditBlockWrapper>
               )}
             </BlocksForm>
             <Portal node={document.getElementById('toolbar')}>
