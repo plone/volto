@@ -86,6 +86,10 @@ msgstr "Ajouter un utilisateur"
 msgid "Add a description…"
 msgstr "Ajouter une description"
 
+#: components/manage/Blocks/Block/MutateBlockButton
+msgid "Add block"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 msgid "Add block…"
 msgstr ""
