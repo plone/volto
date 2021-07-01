@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Updated Brazilian Portuguese translations @ericof
+
 ## 13.5.0 (2021-06-30)
 
 ### Feature
