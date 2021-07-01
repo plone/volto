@@ -298,11 +298,9 @@ class Edit extends Component {
             data={this.props.data}
             block={this.props.block}
             onInsertBlock={(id, value) => {
-              this.setState((state) => ({
-                addNewBlockOpened: !state.addNewBlockOpened,
-              }));
               this.props.onSelectBlock(this.props.onInsertBlock(id, value));
             }}
+            onMutateBlock={() => {}}
             allowedBlocks={this.props.allowedBlocks}
             blocksConfig={this.props.blocksConfig}
             size="24px"

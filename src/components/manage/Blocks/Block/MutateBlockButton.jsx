@@ -13,17 +13,38 @@ const messages = defineMessages({
   },
 });
 
-const MutateBlockButton = ({
-  block,
-  allowedBlocks,
-  data,
-  onMutateBlock,
-  onInsertBlock,
-  blocksConfig,
-  size = '19px',
-  className = 'block-add-button',
-}) => {
+export const ButtonViewComponent = (props) => {
   const intl = useIntl();
+  const {
+    className = 'block-add-button',
+    size = '19px',
+    onShowBlockChooser,
+  } = props;
+
+  return (
+    <Button
+      icon
+      basic
+      title={intl.formatMessage(messages.addBlock)}
+      onClick={onShowBlockChooser}
+      className={className}
+    >
+      <Icon name={addSVG} className={className} size={size} />
+    </Button>
+  );
+};
+
+const MutateBlockButton = (props) => {
+  const {
+    block,
+    allowedBlocks,
+    showRestricted,
+    data,
+    onMutateBlock,
+    onInsertBlock,
+    blocksConfig,
+    view,
+  } = props;
   const { disableNewBlocks } = data;
   const [addNewBlockOpened, setAddNewBlockOpened] = React.useState(false);
 
@@ -38,6 +59,8 @@ const MutateBlockButton = ({
     setAddNewBlockOpened(false);
   }, []);
 
+  const ButtonView = view || ButtonViewComponent;
+
   React.useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside, false);
     return () => {
@@ -48,15 +71,10 @@ const MutateBlockButton = ({
   return (
     <>
       {!disableNewBlocks && !blockHasValue(data) && (
-        <Button
-          icon
-          basic
-          title={intl.formatMessage(messages.addBlock)}
-          onClick={() => setAddNewBlockOpened(true)}
-          className={className}
-        >
-          <Icon name={addSVG} className={className} size={size} />
-        </Button>
+        <ButtonView
+          {...props}
+          onShowBlockChooser={() => setAddNewBlockOpened(true)}
+        />
       )}
       {addNewBlockOpened && (
         <BlockChooser
@@ -79,6 +97,7 @@ const MutateBlockButton = ({
           currentBlock={block}
           allowedBlocks={allowedBlocks}
           blocksConfig={blocksConfig}
+          showRestricted={showRestricted}
           ref={blockChooserRef}
         />
       )}
