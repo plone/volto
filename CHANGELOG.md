@@ -1,6 +1,6 @@
 # Change Log
 
-## 13.2.2 (unreleased)
+## 13.5.1 (unreleased)
 
 ### Breaking
 
@@ -12,8 +12,61 @@
 
 - fix test @giuliaghisini
 - Fix outside click handling in object browser @nzambello
+### Internal
+
+## 13.5.0 (2021-06-30)
+
+### Feature
+
+- Add og tags for social sharing @giuliaghisini @nzambello
+- Add interface for plone seo extensions to use values added by them as metadata @jackahl
 
 ### Internal
+
+- Upgrade to Storybook 6.3, refresh deps version for babel @sneridagh
+
+## 13.4.0 (2021-06-29)
+
+### Feature
+
+- Working copy support for Plone (plone.app.iterate) @sneridagh
+
+## 13.3.1 (2021-06-29)
+
+### Internal
+
+- Remove locales .json files pushed again by mistake, now they are no longer needed to be in the repo, since they are generated at runtime, and included in the released versions @sneridagh
+
+## 13.3.0 (2021-06-29)
+
+### Feature
+
+- Allowing user to paste url in search box in objectBrowser @iFlameing
+- `Navigation` and `Breadcrumbs` are `apiExpanders` aware and run the action depending on them @sneridagh
+
+### Bugfix
+
+- Fixed docs for config.settings.externalRoutes @giuliaghisini
+- Fix `Pluggable` in the use case that a `Plug` is empty @sneridagh
+- Fix `Login` component navigation for `INavigationRoot` structures @sneridagh
+- Hyphenation block chooser labels (no html changes) @ksuess
+
+### Internal
+
+- Bumps prismjs from 1.23.0 to 1.24.0. @timo
+
+## 13.2.2 (2021-06-18)
+
+### Bugfix
+
+- Fix the bug related to specific versioning view @iFlameing
+- Fix blocks-listing Cypress test @giuliaghisini
+- Fix the translation of header in babel view @iFlameing
+- Fix German translations for leadimage and listing block @timo
+- Show toast success message when adding a new local role @iFlameing
+- Bump postcss from 7.0.29 to 7.0.36 @timo
+- Complete Spanish translation @erral
+- Complete German translation @timo
 
 ## 13.2.1 (2021-06-14)
 
