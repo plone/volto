@@ -8,27 +8,32 @@ const DEFAULT_TIMEOUT = 500;
 const SidebarPopup = (props) => {
   const { children, open, onClose, overlay } = props;
 
-  const handleClickOutside = (e) => {
-    let sidebarContainer = e?.target?.closest('#sidebar-popup-container');
-    if (open && !sidebarContainer) {
-      onClose();
-    }
-  };
+  const handleClickOutside = React.useCallback(
+    (e) => {
+      let sidebarContainer = e?.target?.closest('#sidebar-popup-container');
+      if (open && !sidebarContainer) {
+        onClose();
+      }
+    },
+    [onClose, open],
+  );
 
-  const handleESCPress = (e) => {
-    if (e.code === 'Escape') onClose();
-  };
+  const handleESCPress = React.useCallback(
+    (e) => {
+      if (e.code === 'Escape') onClose();
+    },
+    [onClose],
+  );
 
   React.useEffect(() => {
     if (open) {
-      document.addEventListener('click', handleClickOutside, false);
+      document.addEventListener('mousedown', handleClickOutside, false);
     } else {
-      document.removeEventListener('click', handleClickOutside, false);
+      document.removeEventListener('mousedown', handleClickOutside, false);
     }
     return () =>
-      document.removeEventListener('click', handleClickOutside, false);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [open]);
+      document.removeEventListener('mousedown', handleClickOutside, false);
+  }, [handleClickOutside, open]);
 
   React.useEffect(() => {
     if (open) {
@@ -37,8 +42,7 @@ const SidebarPopup = (props) => {
       document.removeEventListener('keydown', handleESCPress, false);
     }
     return () => document.removeEventListener('keydown', handleESCPress, false);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [open]);
+  }, [handleESCPress, open]);
 
   return (
     <>
