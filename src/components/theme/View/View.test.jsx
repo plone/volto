@@ -21,6 +21,7 @@ beforeAll(() => {
       ECONNREFUSED: () => <div className="ECONNREFUSED" />,
     },
   });
+  config.settings.publicURL = 'https://plone.org';
 });
 
 const mockStore = configureStore();
@@ -33,6 +34,9 @@ jest.mock('../SocialSharing/SocialSharing', () =>
 );
 jest.mock('../Comments/Comments', () => jest.fn(() => <div id="Comments" />));
 jest.mock('../Tags/Tags', () => jest.fn(() => <div id="Tags" />));
+jest.mock('../ContentMetadataTags/ContentMetadataTags', () =>
+  jest.fn(() => <div id="ContentMetadataTags" />),
+);
 
 const actions = {
   document_actions: [],

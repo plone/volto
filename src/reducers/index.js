@@ -40,6 +40,7 @@ import lazyLibraries from '@plone/volto/reducers/lazyLibraries/lazyLibraries';
 import contextNavigation from '@plone/volto/reducers/contextNavigation/contextNavigation';
 import slots from './slots/slots';
 import reduxAsyncConnect from './asyncConnect/asyncConnect';
+import workingCopy from './workingcopy/workingcopy';
 
 /**
  * Root reducer.
@@ -85,6 +86,7 @@ const reducers = {
   lazyLibraries,
   contextNavigation,
   slots,
+  workingCopy,
 };
 
 export default reducers;

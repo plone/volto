@@ -1,12 +1,12 @@
 ## Overview
 
 The Pluggables framework give you insertion points to push components to other
-components in an "out of tree" fashion, similar to React's `<Portal>` component.
+components in an "out of tree" fashion, similar to React's `<Portal>` component, but with vitamines.
 
-In almost any case a Pluggable is a better solution that a Portal. Some of the
+In almost any case a Pluggable is a better solution than a Portal. Some of the
 benefits include:
 
-- the Pluggable (the destination) can pass parameters to the Plug (the
+- the `Pluggable` (the target destination) can pass parameters to the `Plug` (the
   inserted)
 - any Plug can be overridden, based on the id (you can't do that with Portal)
 - you can plug multiple Plugs into a Pluggable and you can control the order
@@ -15,8 +15,8 @@ benefits include:
 To understand how they work, it's useful to look at the architecture:
 
 - First, we need to wrap all of our React component tree in
-  a PluggablesProvider (this needs to be done only once in Volto and it's done
-  at the `App.jsx` level):
+  a `PluggablesProvider` (this needs to be done only once in Volto and it's in place
+  at `App.jsx` component level), so you don't have to do it:
 
 ```
 <PluggablesProvider>
@@ -28,15 +28,15 @@ This Provider acts like a centralized place where "insertion points" and
 "plugins to the insertion points" can be can be registered. It achieves that by
 using a dedicated React context.
 
-Now, somewhere inside the children tree of PluggablesProvider, we can create some
+Now, somewhere inside the children tree of `PluggablesProvider`, we can create some
 "insertion points":
 
 ```
 <Pluggable name="left-column" />
 ```
 
-Then we can simply plug things as children to the `<Pluggable>` with some `<Plug>`
-component:
+Then we can plug things as children to the `<Pluggable>` with some `<Plug>`
+components:
 
 ```
 <Plug pluggable="left-column" id="navigation">relevant nav stuff</Plug>
@@ -51,13 +51,13 @@ themselves with the Provider via React context.
 
 ### Customize how the plugs are rendered
 
-You can customize how the pluggables are rendered. The Pluggable component can
+You can customize how the pluggables are rendered. The `Pluggable` component can
 take a function as a child, use that function to describe how the pluggables
 are rendered.
 
 ```js
 <Pluggable name="block-toolbar">
-{(pluggables) => pluggables.map(p => <div>{p}</div>)
+{(pluggables) => pluggables.map((p) => (<>{p()}</>))}
 </Pluggable>
 ```
 
@@ -79,4 +79,3 @@ To use the passed params, you can do:
 }}
 </Plug>
 ```
-

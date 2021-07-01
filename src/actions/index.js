@@ -121,3 +121,8 @@ export { getContextNavigation } from '@plone/volto/actions/contextNavigation/con
 export * from './asyncConnect/asyncConnect';
 export { getSlots, saveSlot } from './slots/slots';
 export { changeLanguage, changeLanguageCookies } from './language/language';
+export {
+  applyWorkingCopy,
+  createWorkingCopy,
+  removeWorkingCopy,
+} from './workingcopy/workingcopy';
