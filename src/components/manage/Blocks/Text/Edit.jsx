@@ -109,7 +109,6 @@ class Edit extends Component {
       // See https://github.com/draft-js-plugins/draft-js-plugins/issues/800
       setTimeout(this.node.focus, 0);
     }
-    // document.addEventListener('mousedown', this.handleClickOutside, false);
   }
 
   /**
