@@ -172,6 +172,7 @@ const blocksConfig = {
     mostUsed: false,
     blockHasOwnFocusManagement: true,
     sidebarTab: 0,
+    disableQuantaToolbar: true,
     security: {
       addPermission: [],
       view: [],

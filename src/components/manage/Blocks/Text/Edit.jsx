@@ -27,6 +27,9 @@ const messages = defineMessages({
   },
 });
 
+const usesClassicWrapper = (data) =>
+  config.blocks.blocksConfig[data?.['@type']]?.disableQuantaToolbar === true;
+
 /**
  * Edit text block class.
  * @class Edit
@@ -213,7 +216,9 @@ class Edit extends Component {
       this.props.data?.disableNewBlocks || this.props.detached;
     const { InlineToolbar } = this.state.inlineToolbarPlugin;
     const { settings } = config;
-    const PlugInsert = settings.useQuantaToolbar ? Plug : PassThrough;
+    const usesQuantaToolbar =
+      settings.useQuantaToolbar && !usesClassicWrapper(this.props.data);
+    const PlugInsert = usesQuantaToolbar ? Plug : PassThrough;
 
     return (
       <>
@@ -293,7 +298,7 @@ class Edit extends Component {
         <PlugInsert pluggable="block-toolbar" id="block-text-toolbar">
           <InlineToolbar />
         </PlugInsert>
-        {this.props.selected && !config.settings.useQuantaToolbar && (
+        {this.props.selected && !usesQuantaToolbar && (
           <MutateBlockButton
             data={this.props.data}
             block={this.props.block}
