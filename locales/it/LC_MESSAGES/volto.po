@@ -145,6 +145,10 @@ msgstr "Alfabetico"
 msgid "Alt text"
 msgstr "Testo alternativo"
 
+#: components/manage/Toolbar/More
+msgid "Apply working copy"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this field?"
 msgstr "Sicuro di voler eliminare questo campo?"
@@ -266,6 +270,10 @@ msgstr "Cambia Stato"
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Change workflow state recursively"
 msgstr "Cambia stato di workflow ricorsivamente"
+
+#: components/manage/Toolbar/More
+msgid "Changes applied."
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
@@ -397,6 +405,14 @@ msgstr "Copyright"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Copyright statement or other rights information on this item."
 msgstr "Informazioni sul copyright o su altri diritti dell'elemento."
+
+#: components/manage/Toolbar/More
+msgid "Create working copy"
+msgstr ""
+
+#: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
+msgid "Created by {creator} on {date}"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Created on"
@@ -1074,6 +1090,10 @@ msgstr "Accesso fallito"
 msgid "Login Name"
 msgstr "Nome utente"
 
+#: components/manage/Toolbar/More
+msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 msgid "Make the table compact"
 msgstr "Rendi la tabella compatta"
@@ -1470,6 +1490,10 @@ msgstr "Rimuovi elemento"
 msgid "Remove recurrence"
 msgstr "Rimuovi"
 
+#: components/manage/Toolbar/More
+msgid "Remove working copy"
+msgstr ""
+
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 msgid "Rename"
@@ -1583,6 +1607,10 @@ msgstr ""
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search"
 msgstr "Ricerca"
+
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Search SVG"
+msgstr ""
 
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search Site"
@@ -1892,6 +1920,10 @@ msgstr "La registrazione è avvenuta correttamente. Per favore controlla la tua 
 msgid "The user portrait/avatar"
 msgstr "L'avatar/ritratto utente"
 
+#: components/manage/Toolbar/More
+msgid "The working copy was discarded"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
 msgstr "{plonecms} è {copyright} 2000-{current_year} della {plonefoundation} ed amici."
@@ -1912,6 +1944,14 @@ msgstr "Si sono verificati degli errori."
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Third"
 msgstr "Terzo"
+
+#: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
+msgid "This has an ongoing working copy in {title}"
+msgstr ""
+
+#: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
+msgid "This is a working copy of {title}"
+msgstr ""
 
 #: components/manage/Contents/ContentsRenameModal
 msgid "This name will be displayed in the URL."
@@ -2120,6 +2160,10 @@ msgstr "Mostra le modifiche"
 #: components/manage/History/History
 msgid "View this revision"
 msgstr "Mostra questa revisione"
+
+#: components/manage/Toolbar/More
+msgid "View working copy"
+msgstr ""
 
 #: components/manage/Display/Display
 msgid "Viewmode"
