@@ -46,6 +46,7 @@ export class Edit extends React.Component {
     manage: PropTypes.bool,
     onMoveBlock: PropTypes.func.isRequired,
     onDeleteBlock: PropTypes.func.isRequired,
+    editable: PropTypes.bool,
   };
 
   /**
@@ -55,6 +56,7 @@ export class Edit extends React.Component {
    */
   static defaultProps = {
     manage: false,
+    editable: true,
   };
 
   componentDidMount() {

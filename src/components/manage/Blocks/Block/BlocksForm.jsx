@@ -1,5 +1,5 @@
 import React from 'react';
-import EditBlock from './WrapperlessBlockEdit';
+import WrapperlessBlockEdit from './WrapperlessBlockEdit';
 import { DragDropList } from '@plone/volto/components';
 import { getBlocks } from '@plone/volto/helpers';
 import {
@@ -16,7 +16,7 @@ import EditBlockWrapper from './EditBlockWrapper';
 import { setSidebarTab } from '@plone/volto/actions';
 import { useDispatch } from 'react-redux';
 import { useDetectClickOutside } from '@plone/volto/helpers';
-import QuantaBlockWrapper from './QuantaBlockWrapper';
+import QuantaEditBlockWrapper from './QuantaEditBlockWrapper';
 import config from '@plone/volto/registry';
 
 const BlocksForm = (props) => {
@@ -146,9 +146,9 @@ const BlocksForm = (props) => {
   const defaultBlockWrapper = ({ draginfo }, editBlock, blockProps) => {
     if (config.settings.useQuantaToolbar) {
       return (
-        <QuantaBlockWrapper draginfo={draginfo} blockProps={blockProps}>
+        <QuantaEditBlockWrapper draginfo={draginfo} blockProps={blockProps}>
           {editBlock}
-        </QuantaBlockWrapper>
+        </QuantaEditBlockWrapper>
       );
     } else {
       return (
@@ -214,7 +214,7 @@ const BlocksForm = (props) => {
             };
             return editBlockWrapper(
               dragProps,
-              <EditBlock key={childId} {...blockProps} />,
+              <WrapperlessBlockEdit key={childId} {...blockProps} />,
               blockProps,
             );
           }}

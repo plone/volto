@@ -21,7 +21,7 @@ const messages = defineMessages({
   },
 });
 
-const EditBlockWrapper = (props) => {
+const QuantaEditBlockWrapper = (props) => {
   const hideHandler = (data) => {
     return !!data.fixed || !blockHasValue(data);
   };
@@ -137,4 +137,4 @@ const EditBlockWrapper = (props) => {
   );
 };
 
-export default injectIntl(EditBlockWrapper);
+export default injectIntl(QuantaEditBlockWrapper);
