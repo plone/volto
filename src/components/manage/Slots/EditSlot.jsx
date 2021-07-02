@@ -63,7 +63,7 @@ class EditSlot extends React.Component {
 
   componentDidMount() {
     this.setState({ isClient: true });
-    this.props.getSlots(getBaseUrl(this.props.pathname), { raw: true });
+    this.props.getSlots(getBaseUrl(this.props.pathname), { full: true });
   }
 
   componentDidUpdate() {
