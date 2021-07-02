@@ -341,28 +341,29 @@ export function emptyBlocksForm() {
 /**
  * Given a blocks form, makes adds an empty placeholder block is none exists
  */
-export function addEmptyBlock(formData) {
+export function addPlaceholderBlock(formData) {
   const blocks = getBlocks(formData);
+
   const hasEmptyBlock =
     blocks.findIndex(([, block]) => !blockHasValue(block)) > -1;
-  const allReadOnly =
-    blocks.filter(([, block]) => block.readOnly).length === blocks.length;
+  // const allReadOnly =
+  //   blocks.filter(([, block]) => block.readOnly).length === blocks.length;
 
   const id = uuid();
 
-  return hasEmptyBlock || !allReadOnly
+  return hasEmptyBlock //|| !allReadOnly
     ? formData
     : {
         ...formData,
         blocks: {
-          ...formData.blocks,
+          ...(formData.blocks || {}),
           [id]: {
             '@type': config.settings.defaultBlockType,
           },
         },
         blocks_layout: {
-          ...formData.blocks_layout,
-          items: [...formData.blocks_layout.items, id],
+          ...(formData.blocks_layout || []),
+          items: [...(formData.blocks_layout?.items || []), id],
         },
       };
 }

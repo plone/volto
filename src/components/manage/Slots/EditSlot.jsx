@@ -5,13 +5,14 @@ import { withRouter } from 'react-router-dom';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Portal } from 'react-portal';
 import { Button } from 'semantic-ui-react';
-import { isEmpty } from 'lodash';
+import { isEqual } from 'lodash';
 
 import { getSlots, saveSlot } from '@plone/volto/actions';
 import BlocksForm from '@plone/volto/components/manage/Blocks/Block/BlocksForm';
 import {
+  getBlocks,
   emptyBlocksForm,
-  addEmptyBlock,
+  addPlaceholderBlock,
 } from '@plone/volto/helpers/Blocks/Blocks';
 import { Helmet, getBaseUrl, slotsBlocksConfig } from '@plone/volto/helpers';
 import { InlineForm, Icon, Sidebar, Toolbar } from '@plone/volto/components';
@@ -42,10 +43,11 @@ class EditSlot extends React.Component {
   constructor(props) {
     super(props);
 
-    const { slotData } = props;
-    const data = addEmptyBlock(
-      isEmpty(slotData?.blocks) ? emptyBlocksForm() : slotData,
-    );
+    this.onCancel = this.onCancel.bind(this);
+    this.onSave = this.onSave.bind(this);
+    this.getInitialData = this.getInitialData.bind(this);
+
+    const data = this.getInitialData(this.props);
 
     this.state = {
       isClient: false,
@@ -56,9 +58,12 @@ class EditSlot extends React.Component {
     // special variable, needed to support blocks that rely on `onChangeBlock`
     // API to change the whole blocks + layout of the form
     this.blocksState = {};
+  }
 
-    this.onCancel = this.onCancel.bind(this);
-    this.onSave = this.onSave.bind(this);
+  getInitialData(props) {
+    const { slotData = {} } = props;
+
+    return addPlaceholderBlock(slotData);
   }
 
   componentDidMount() {
@@ -66,9 +71,16 @@ class EditSlot extends React.Component {
     this.props.getSlots(getBaseUrl(this.props.pathname), { full: true });
   }
 
-  componentDidUpdate() {
-    if (isEmpty(this.state.data?.blocks || {})) {
+  componentDidUpdate(prevProps) {
+    const blocks = getBlocks(this.state.data);
+    if (!blocks.length) {
       this.setState({ data: emptyBlocksForm() });
+    }
+
+    if (!isEqual(prevProps.slotData, this.props.slotData)) {
+      this.setState({
+        data: { ...this.state.data, ...this.getInitialData(this.props) },
+      });
     }
   }
 
