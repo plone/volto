@@ -166,9 +166,10 @@ export const PluggablesProvider = ({ children }) => {
   };
 
   const initialPluggables = {
-    pluggables: !config.transient.isFirstPass
-      ? config.transient.pluggables
-      : {},
+    pluggables:
+      __SERVER__ && !config.transient.isFirstPass
+        ? config.transient.pluggables
+        : {},
     setPlug,
     removePlug,
   };
