@@ -81,7 +81,7 @@ const QuantaEditBlockWrapper = (props) => {
         className,
       )}
     >
-      {selected && (
+      {selected ? (
         <div className="toolbar quanta-block-toolbar">
           <Button
             style={{
@@ -122,6 +122,8 @@ const QuantaEditBlockWrapper = (props) => {
 
           <DefaultPlugs {...props} />
         </div>
+      ) : (
+        <div {...draginfo.dragHandleProps} style={{ display: 'none' }}></div>
       )}
       <div className={`ui drag block inner ${type}`}>{children}</div>
     </div>
