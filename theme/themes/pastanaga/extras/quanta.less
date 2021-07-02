@@ -21,3 +21,13 @@
     background: transparent !important;
   }
 }
+
+.quanta-block {
+  &.slot-inherited {
+    .block .block.selected::before,
+    .block .block.selected:hover::before {
+      border-width: 1px;
+      border-color: rgba(0, 0, 0, 0.75);
+    }
+  }
+}

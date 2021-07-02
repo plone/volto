@@ -4,17 +4,20 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Portal } from 'react-portal';
-import { Button } from 'semantic-ui-react';
+import { Button, Segment } from 'semantic-ui-react';
 import { isEqual } from 'lodash';
+import { v4 as uuid } from 'uuid';
 
 import { getSlots, saveSlot } from '@plone/volto/actions';
 import BlocksForm from '@plone/volto/components/manage/Blocks/Block/BlocksForm';
 import {
   getBlocks,
   emptyBlocksForm,
-  addPlaceholderBlock,
-} from '@plone/volto/helpers/Blocks/Blocks';
-import { Helmet, getBaseUrl, slotsBlocksConfig } from '@plone/volto/helpers';
+  Helmet,
+  getBaseUrl,
+  slotsBlocksConfig,
+  blockHasValue,
+} from '@plone/volto/helpers';
 import { InlineForm, Icon, Sidebar, Toolbar } from '@plone/volto/components';
 import SlotEditBlockWrapper from './SlotEditBlockWrapper';
 import SlotSchema from './schema';
@@ -38,6 +41,42 @@ const messages = defineMessages({
     defaultMessage: 'Error',
   },
 });
+
+/**
+ * Given a blocks form, makes adds an empty placeholder block is none exists
+ */
+function addPlaceholderBlock(formData) {
+  const blocks = getBlocks(formData);
+
+  const emptyBlocks = blocks
+    .filter(([, block]) => !blockHasValue(block))
+    .map(([id]) => id);
+  const readOnlyBlocks = blocks
+    .filter(([, block]) => block.readOnly)
+    .map(([id]) => id);
+
+  const hasPlaceholder = !!emptyBlocks.find(
+    (b) => readOnlyBlocks.indexOf(b) === -1,
+  );
+
+  const id = uuid();
+
+  return hasPlaceholder
+    ? formData
+    : {
+        ...formData,
+        blocks: {
+          ...(formData.blocks || {}),
+          [id]: {
+            '@type': config.settings.defaultBlockType,
+          },
+        },
+        blocks_layout: {
+          ...(formData.blocks_layout || []),
+          items: [...(formData.blocks_layout?.items || []), id],
+        },
+      };
+}
 
 class EditSlot extends React.Component {
   constructor(props) {
@@ -182,18 +221,28 @@ class EditSlot extends React.Component {
             <Portal
               node={__CLIENT__ && document.getElementById('sidebar-settings')}
             >
-              <InlineForm
-                schema={SlotSchema(this.props)}
-                formData={data}
-                onChangeField={(id, value) =>
-                  this.setState({
-                    data: {
-                      ...data,
-                      [id]: value,
-                    },
-                  })
-                }
-              />
+              <div>
+                <InlineForm
+                  schema={SlotSchema(this.props)}
+                  formData={data}
+                  onChangeField={(id, value) =>
+                    this.setState({
+                      data: {
+                        ...data,
+                        [id]: value,
+                      },
+                    })
+                  }
+                />
+                <Segment>
+                  <fieldset>
+                    <legend>Block color legend</legend>
+                    <div className="block">
+                      <div className="block">Regular slot fill</div>
+                    </div>
+                  </fieldset>
+                </Segment>
+              </div>
             </Portal>
           </div>
         )}
