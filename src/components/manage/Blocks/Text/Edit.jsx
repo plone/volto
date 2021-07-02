@@ -27,9 +27,6 @@ const messages = defineMessages({
   },
 });
 
-const usesClassicWrapper = (data) =>
-  config.blocks.blocksConfig[data?.['@type']]?.disableQuantaToolbar === true;
-
 /**
  * Edit text block class.
  * @class Edit
@@ -216,8 +213,7 @@ class Edit extends Component {
       this.props.data?.disableNewBlocks || this.props.detached;
     const { InlineToolbar } = this.state.inlineToolbarPlugin;
     const { settings } = config;
-    const usesQuantaToolbar =
-      settings.useQuantaToolbar && !usesClassicWrapper(this.props.data);
+    const usesQuantaToolbar = settings.useQuantaToolbar; // && !usesClassicWrapper(this.props.data);
     const PlugInsert = usesQuantaToolbar ? Plug : PassThrough;
 
     return (
@@ -295,22 +291,22 @@ class Edit extends Component {
             this.node = node;
           }}
         />
+        <InlineToolbar />
         <PlugInsert pluggable="block-toolbar" id="block-text-toolbar">
-          <InlineToolbar />
+          {this.props.selected && (
+            <MutateBlockButton
+              data={this.props.data}
+              block={this.props.block}
+              onInsertBlock={(id, value) => {
+                this.props.onSelectBlock(this.props.onInsertBlock(id, value));
+              }}
+              allowedBlocks={this.props.allowedBlocks}
+              blocksConfig={this.props.blocksConfig}
+              size="24px"
+              className="block-add-button"
+            />
+          )}
         </PlugInsert>
-        {this.props.selected && !usesQuantaToolbar && (
-          <MutateBlockButton
-            data={this.props.data}
-            block={this.props.block}
-            onInsertBlock={(id, value) => {
-              this.props.onSelectBlock(this.props.onInsertBlock(id, value));
-            }}
-            allowedBlocks={this.props.allowedBlocks}
-            blocksConfig={this.props.blocksConfig}
-            size="24px"
-            className="block-add-button"
-          />
-        )}
       </>
     );
   }

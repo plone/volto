@@ -6,7 +6,7 @@ import { defineMessages, injectIntl } from 'react-intl';
 import { Icon } from '@plone/volto/components';
 import { blockHasValue } from '@plone/volto/helpers';
 import { Pluggable, Plug } from '@plone/volto/components/manage/Pluggable';
-import EditBlockWrapper from './EditBlockWrapper';
+// import EditBlockWrapper from './EditBlockWrapper';
 import MutateBlockButton from './MutateBlockButton';
 import cx from 'classnames';
 
@@ -27,14 +27,11 @@ const hideHandler = (data) => {
   return !!data.fixed || !blockHasValue(data);
 };
 
-const usesClassicWrapper = (data) =>
-  config.blocks.blocksConfig[data?.['@type']]?.disableQuantaToolbar === true;
-
 const QuantaEditBlockWrapper = (props) => {
   const { intl, blockProps, draginfo, children, className } = props;
   const { block, data, onDeleteBlock, selected, type } = blockProps;
 
-  if (usesClassicWrapper(data)) return <EditBlockWrapper {...props} />;
+  // if (usesClassicWrapper(data)) return <EditBlockWrapper {...props} />;
 
   const visible = selected && !hideHandler(data);
 
