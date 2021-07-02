@@ -23,7 +23,7 @@ const VocabularyTermsWidgetComponent = (args) => {
         <VocabularyTermsWidgetDefault
           {...args}
           id="Dictionary"
-          title="Dictionary / Vocabulary"
+          title="Vocabulary terms"
           block="testBlock"
           value={value}
           onChange={onChange}
