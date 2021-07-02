@@ -6,9 +6,11 @@ import { Plug } from '@plone/volto/components/manage/Pluggable';
 
 const SlotEditBlockWrapper = (props) => {
   const { blockProps } = props;
-  const { data } = blockProps;
-  const inherited = data._v_inherit && 'slot-inherited';
+  const { data, selected, block } = blockProps;
+  // const inherited = data._v_inherit && 'slot-inherited';
+  // console.log('inherited', inherited, data);
 
+  const inherited = true;
   return (
     <>
       <QuantaEditBlockWrapper
@@ -18,8 +20,16 @@ const SlotEditBlockWrapper = (props) => {
           `slot-editor-${data['@type']}`,
           inherited || '',
         )}
+        key={`wrapper-${block}-${selected}`}
       />
-      <Plug pluggable="block-toolbar" id="slot-buttons"></Plug>
+      {inherited && (
+        <Plug
+          pluggable="block-toolbar-more"
+          id="delete-button"
+          from="slot"
+          key={`plug-${block}-${selected}`}
+        ></Plug>
+      )}
     </>
   );
 };
