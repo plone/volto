@@ -96,10 +96,6 @@ msgstr "Kriterien hinzufügen"
 msgid "Add date"
 msgstr "Datum hinzufügen"
 
-#: components/manage/Widgets/DictWidget
-msgid "Add dictionary entry"
-msgstr "Eintrag hinzufügen"
-
 #: components/manage/Widgets/SchemaWidget
 msgid "Add field"
 msgstr "Feld hinzufügen"
@@ -127,6 +123,10 @@ msgstr "Neuen Benutzer hinzufügen"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add to Groups"
 msgstr "Zu Gruppe hinzufügen"
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Add vocabulary term"
+msgstr "Füge neuen Term hinzu"
 
 #: components/manage/Add/Add
 msgid "Add {type}"
@@ -563,18 +563,6 @@ msgstr "Absteigend"
 #: helpers/MessageLabels/MessageLabels
 msgid "Description"
 msgstr "Beschreibung"
-
-#: components/manage/Widgets/DictWidget
-msgid "Dictionary"
-msgstr "Dictionary"
-
-#: components/manage/Widgets/DictWidget
-msgid "Dictionary Entry"
-msgstr "Dictionary-Eintrag"
-
-#: components/manage/Widgets/DictWidget
-msgid "Dictionary Value"
-msgstr "Dictionary-Wert"
 
 #: components/manage/Diff/Diff
 msgid "Diff"
@@ -1509,10 +1497,6 @@ msgstr "Registrierungsformular"
 msgid "Relevance"
 msgstr "relevanz"
 
-#: components/manage/Widgets/DictWidget
-msgid "Remove dictionary entry"
-msgstr "Lösche Dictionary-Eintrag"
-
 #: components/manage/Widgets/ObjectListWidget
 msgid "Remove item"
 msgstr "Element entfernen"
@@ -1520,6 +1504,10 @@ msgstr "Element entfernen"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
 msgstr "Wiederkehrende Einstellung entfernen"
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Remove term"
+msgstr "Entferne Term"
 
 #: components/manage/Toolbar/More
 msgid "Remove working copy"
@@ -1569,9 +1557,9 @@ msgstr "Notwendig"
 msgid "Required input is missing."
 msgstr "Notwendige Eingabe fehlt."
 
-#: components/manage/Widgets/DictWidget
-msgid "Reset dictionary value"
-msgstr "Setze Dictionary-Wert zurück"
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Reset term title"
+msgstr "Setze Titel zurück"
 
 #: components/manage/Widgets/QuerystringWidget
 msgid "Results limit"
@@ -2203,6 +2191,18 @@ msgstr "Arbeitskopie ansehen"
 #: components/manage/Display/Display
 msgid "Viewmode"
 msgstr "Ansicht"
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary term"
+msgstr "Term"
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary term title"
+msgstr "Termtitel"
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary terms"
+msgstr "Terme"
 
 #: components/manage/Controlpanels/VersionOverview
 msgid "Warning Regarding debug mode"

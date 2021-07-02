@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2021-06-21T20:34:09.835Z\n"
+"POT-Creation-Date: 2021-07-02T11:27:23.864Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -99,11 +99,6 @@ msgstr ""
 msgid "Add date"
 msgstr ""
 
-#: components/manage/Widgets/DictWidget
-# defaultMessage: Add entry
-msgid "Add dictionary entry"
-msgstr ""
-
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Add field
 msgid "Add field"
@@ -137,6 +132,11 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add to Groups
 msgid "Add to Groups"
+msgstr ""
+
+#: components/manage/Widgets/VocabularyTermsWidget
+# defaultMessage: Add term
+msgid "Add vocabulary term"
 msgstr ""
 
 #: components/manage/Add/Add
@@ -661,21 +661,6 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Description
 msgid "Description"
-msgstr ""
-
-#: components/manage/Widgets/DictWidget
-# defaultMessage: Dictionary
-msgid "Dictionary"
-msgstr ""
-
-#: components/manage/Widgets/DictWidget
-# defaultMessage: Dictionary Entry
-msgid "Dictionary Entry"
-msgstr ""
-
-#: components/manage/Widgets/DictWidget
-# defaultMessage: Value
-msgid "Dictionary Value"
 msgstr ""
 
 #: components/manage/Diff/Diff
@@ -1827,11 +1812,6 @@ msgstr ""
 msgid "Relevance"
 msgstr ""
 
-#: components/manage/Widgets/DictWidget
-# defaultMessage: Remove entry
-msgid "Remove dictionary entry"
-msgstr ""
-
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Remove item
 msgid "Remove item"
@@ -1840,6 +1820,11 @@ msgstr ""
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: Remove
 msgid "Remove recurrence"
+msgstr ""
+
+#: components/manage/Widgets/VocabularyTermsWidget
+# defaultMessage: Remove term
+msgid "Remove term"
 msgstr ""
 
 #: components/manage/Toolbar/More
@@ -1901,9 +1886,9 @@ msgstr ""
 msgid "Required input is missing."
 msgstr ""
 
-#: components/manage/Widgets/DictWidget
-# defaultMessage: Reset value
-msgid "Reset dictionary value"
+#: components/manage/Widgets/VocabularyTermsWidget
+# defaultMessage: Reset title
+msgid "Reset term title"
 msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
@@ -2680,6 +2665,21 @@ msgstr ""
 #: components/manage/Display/Display
 # defaultMessage: View
 msgid "Viewmode"
+msgstr ""
+
+#: components/manage/Widgets/VocabularyTermsWidget
+# defaultMessage: Vocabulary term
+msgid "Vocabulary term"
+msgstr ""
+
+#: components/manage/Widgets/VocabularyTermsWidget
+# defaultMessage: Title
+msgid "Vocabulary term title"
+msgstr ""
+
+#: components/manage/Widgets/VocabularyTermsWidget
+# defaultMessage: Vocabulary terms
+msgid "Vocabulary terms"
 msgstr ""
 
 #: components/manage/Controlpanels/VersionOverview

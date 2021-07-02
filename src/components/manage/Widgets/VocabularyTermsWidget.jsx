@@ -1,3 +1,15 @@
+/**
+ * VocabularyTermsWidget
+ * @module components/manage/Widgets/VocabularyTermsWidget
+ * Widget for dict field
+ * with value_type TextLine field
+ *
+ * values are editable
+ * keys are generated
+ * Purpose: Use this widget for a dict field (of controlpanel), that acts as a source of a vocabulary for a Choice field.
+ * Vocabulary terms should change over time only in title (corresponding dictionary value), not value (corresponding dictionary key), as vocabulary term values are stored on content type instances.
+ */
+
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { keys } from 'lodash';
@@ -14,38 +26,38 @@ import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   title: {
-    id: 'Dictionary',
-    defaultMessage: 'Dictionary',
+    id: 'Vocabulary terms',
+    defaultMessage: 'Vocabulary terms',
   },
-  entrytitle: {
-    id: 'Dictionary Entry',
-    defaultMessage: 'Dictionary Entry',
+  termtitle: {
+    id: 'Vocabulary term',
+    defaultMessage: 'Vocabulary term',
   },
-  addEntry: {
-    id: 'Add dictionary entry',
-    defaultMessage: 'Add entry',
+  addTerm: {
+    id: 'Add vocabulary term',
+    defaultMessage: 'Add term',
   },
-  removeEntry: {
-    id: 'Remove dictionary entry',
-    defaultMessage: 'Remove entry',
+  removeTerm: {
+    id: 'Remove term',
+    defaultMessage: 'Remove term',
   },
-  clearEntry: {
-    id: 'Reset dictionary value',
-    defaultMessage: 'Reset value',
+  clearTermTitle: {
+    id: 'Reset term title',
+    defaultMessage: 'Reset title',
   },
-  entryvaluelabel: {
-    id: 'Dictionary Value',
-    defaultMessage: 'Value',
+  termtitlelabel: {
+    id: 'Vocabulary term title',
+    defaultMessage: 'Title',
   },
 });
 
-const DictWidget = (props) => {
+const VocabularyTermsWidget = (props) => {
   const { id, value = {}, onChange } = props;
   const dispatch = useDispatch();
   const [toFocusId, setToFocusId] = React.useState('');
   const intl = useIntl();
 
-  const dictionarykeys = keys(value).sort((a, b) => {
+  const vocabularytokens = keys(value).sort((a, b) => {
     return value[a].localeCompare(value[b]);
   });
 
@@ -66,7 +78,7 @@ const DictWidget = (props) => {
       </Segment>
       <div className="add-item-button-wrapper">
         <Button
-          aria-label={intl.formatMessage(messages.entrytitle)}
+          aria-label={intl.formatMessage(messages.termtitle)}
           onClick={(e) => {
             e.preventDefault();
             const newdictkey = uuid();
@@ -78,11 +90,11 @@ const DictWidget = (props) => {
           }}
         >
           <Icon name={addSVG} size="18px" />
-          {intl.formatMessage(messages.addEntry)}
+          {intl.formatMessage(messages.addTerm)}
         </Button>
       </div>
       <Grid className="entries-list">
-        {dictionarykeys.map((dictkey, index) => {
+        {vocabularytokens.map((dictkey, index) => {
           return (
             <Grid.Row stretched className="entry-wrapper" key={index}>
               <Grid.Column width="1">
@@ -90,10 +102,8 @@ const DictWidget = (props) => {
                   <Button
                     basic
                     className="cancel"
-                    title={`${intl.formatMessage(messages.removeEntry)} ${
-                      value[dictkey]
-                    } (${dictkey})`}
-                    aria-label={`${intl.formatMessage(messages.removeEntry)} #${
+                    title={intl.formatMessage(messages.removeTerm)}
+                    aria-label={`${intl.formatMessage(messages.removeTerm)} #${
                       index + 1
                     }`}
                     onClick={(e) => {
@@ -112,7 +122,7 @@ const DictWidget = (props) => {
                   id={`${props.id}-${dictkey}`}
                   name={`${props.id}-${dictkey}`}
                   type="text"
-                  placeholder={intl.formatMessage(messages.entryvaluelabel)}
+                  placeholder={intl.formatMessage(messages.termtitlelabel)}
                   required={true}
                   value={value[dictkey]}
                   onChange={(e, target) => {
@@ -128,9 +138,7 @@ const DictWidget = (props) => {
                     <Button
                       basic
                       className="cancel"
-                      title={`${intl.formatMessage(messages.clearEntry)} ${
-                        value[dictkey]
-                      }`}
+                      title={intl.formatMessage(messages.clearTermTitle)}
                       onClick={(e) => {
                         e.preventDefault();
                         e.stopPropagation();
@@ -150,4 +158,4 @@ const DictWidget = (props) => {
   );
 };
 
-export default DictWidget;
+export default VocabularyTermsWidget;

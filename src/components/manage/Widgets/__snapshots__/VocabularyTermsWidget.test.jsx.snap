@@ -38,7 +38,7 @@ exports[`renders a dictionary widget component 1`] = `
           className="add-item-button-wrapper"
         >
           <button
-            aria-label="Dictionary Entry"
+            aria-label="Vocabulary term"
             className="ui button"
             onClick={[Function]}
           >
@@ -60,7 +60,7 @@ exports[`renders a dictionary widget component 1`] = `
               viewBox=""
               xmlns=""
             />
-            Add entry
+            Add term
           </button>
         </div>
         <div
@@ -76,10 +76,10 @@ exports[`renders a dictionary widget component 1`] = `
                 className="ui buttons"
               >
                 <button
-                  aria-label="Remove entry #1"
+                  aria-label="Remove term #1"
                   className="ui basic button cancel"
                   onClick={[Function]}
-                  title="Remove entry Manual (manual)"
+                  title="Remove term"
                 >
                   <svg
                     className="icon"
@@ -112,7 +112,7 @@ exports[`renders a dictionary widget component 1`] = `
                   id="test-dict-manual"
                   name="test-dict-manual"
                   onChange={[Function]}
-                  placeholder="Value"
+                  placeholder="Title"
                   required={true}
                   type="text"
                   value="Manual"
@@ -128,7 +128,7 @@ exports[`renders a dictionary widget component 1`] = `
                 <button
                   className="ui basic button cancel"
                   onClick={[Function]}
-                  title="Reset value Manual"
+                  title="Reset title"
                 >
                   <svg
                     className="icon"
@@ -162,10 +162,10 @@ exports[`renders a dictionary widget component 1`] = `
                 className="ui buttons"
               >
                 <button
-                  aria-label="Remove entry #2"
+                  aria-label="Remove term #2"
                   className="ui basic button cancel"
                   onClick={[Function]}
-                  title="Remove entry Übersicht (ubersicht)"
+                  title="Remove term"
                 >
                   <svg
                     className="icon"
@@ -198,7 +198,7 @@ exports[`renders a dictionary widget component 1`] = `
                   id="test-dict-ubersicht"
                   name="test-dict-ubersicht"
                   onChange={[Function]}
-                  placeholder="Value"
+                  placeholder="Title"
                   required={true}
                   type="text"
                   value="Übersicht"
@@ -214,7 +214,7 @@ exports[`renders a dictionary widget component 1`] = `
                 <button
                   className="ui basic button cancel"
                   onClick={[Function]}
-                  title="Reset value Übersicht"
+                  title="Reset title"
                 >
                   <svg
                     className="icon"

@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
-import DictWidget from './DictWidget';
+import VocabularyTermsWidget from './VocabularyTermsWidget';
 
 const mockStore = configureStore();
 
@@ -16,7 +16,7 @@ test('renders a dictionary widget component', () => {
   });
   const component = renderer.create(
     <Provider store={store}>
-      <DictWidget
+      <VocabularyTermsWidget
         id="test-dict"
         title="My Vocabulary"
         fieldSet="default"

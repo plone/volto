@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Add VocabularyTermsWidget and map to field with widget attribute set to 'vocabularyterms'. @ksuess
+
 ### Bugfix
 
 ### Internal
@@ -28,8 +30,6 @@
 
 - Allowing user to paste url in search box in objectBrowser @iFlameing
 - `Navigation` and `Breadcrumbs` are `apiExpanders` aware and run the action depending on them @sneridagh
-
-- Add DictWidget and map to field of type 'dict'. @ksuess
 
 ### Bugfix
 

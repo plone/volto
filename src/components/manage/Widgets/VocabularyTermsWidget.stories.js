@@ -1,4 +1,4 @@
-import DictWidgetDefault from './DictWidget';
+import VocabularyTermsWidgetDefault from './VocabularyTermsWidget';
 import Wrapper from '@plone/volto/storybook';
 import React from 'react';
 
@@ -10,7 +10,7 @@ const customStore = {
   },
 };
 
-const DictWidgetComponent = (args) => {
+const VocabularyTermsWidgetComponent = (args) => {
   const [value, setValue] = React.useState({});
   const onChange = (block, value) => setValue(value);
 
@@ -20,7 +20,7 @@ const DictWidgetComponent = (args) => {
       customStore={customStore}
     >
       <div className="ui segment form attached">
-        <DictWidgetDefault
+        <VocabularyTermsWidgetDefault
           {...args}
           id="Dictionary"
           title="Dictionary / Vocabulary"
@@ -35,8 +35,8 @@ const DictWidgetComponent = (args) => {
 };
 
 export default {
-  title: 'Widgets/DictWidget',
-  component: DictWidgetDefault,
+  title: 'Widgets/VocabularyTermsWidget',
+  component: VocabularyTermsWidgetDefault,
   decorators: [
     (Story) => (
       <div className="ui segment form attached" style={{ width: '600px' }}>
@@ -46,4 +46,4 @@ export default {
   ],
 };
 
-export const DictWidget = () => <DictWidgetComponent />;
+export const VocabularyTermsWidget = () => <VocabularyTermsWidgetComponent />;

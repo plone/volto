@@ -26,7 +26,7 @@ import ObjectBrowserWidget from '@plone/volto/components/manage/Widgets/ObjectBr
 
 import ObjectWidget from '@plone/volto/components/manage/Widgets/ObjectWidget';
 import ObjectListWidget from '@plone/volto/components/manage/Widgets/ObjectListWidget';
-import DictWidget from '@plone/volto/components/manage/Widgets/DictWidget';
+import VocabularyTermsWidget from '@plone/volto/components/manage/Widgets/VocabularyTermsWidget';
 
 export const DatetimeWidget = loadable(() =>
   import('@plone/volto/components/manage/Widgets/DatetimeWidget'),
@@ -62,6 +62,7 @@ export const widgetMapping = {
     object_browser: ObjectBrowserWidget,
     object: ObjectWidget,
     object_list: ObjectListWidget,
+    vocabularyterms: VocabularyTermsWidget,
   },
   vocabulary: {
     'plone.app.vocabularies.Catalog': ObjectBrowserWidget,
@@ -77,7 +78,6 @@ export const widgetMapping = {
     object: FileWidget,
     datetime: DatetimeWidget,
     date: DatetimeWidget,
-    dict: DictWidget,
     password: PasswordWidget,
     number: NumberWidget,
     integer: NumberWidget,

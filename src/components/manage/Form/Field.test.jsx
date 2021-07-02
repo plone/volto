@@ -18,6 +18,7 @@ beforeAll(() => {
       datetime: () => <div className="DatetimeWidget" />,
       password: () => <div className="PasswordWidget" />,
       file: () => <div className="FileWidget" />,
+      vocabularyterms: () => <div className="VocabularyTermsWidget" />,
     },
     vocabulary: {
       'plone.app.vocabularies.Catalog': () => (
@@ -28,7 +29,6 @@ beforeAll(() => {
     type: {
       boolean: () => <div className="CheckboxWidget" />,
       array: () => <div className="ArrayWidget" />,
-      dict: () => <div className="DictWidget" />,
       object: () => <div className="FileWidget" />,
       datetime: () => <div className="DatetimeWidget" />,
       password: () => <div className="PasswordWidget" />,
@@ -201,22 +201,6 @@ describe('Field', () => {
     const component = renderer.create(
       <Provider store={store}>
         <Field type="array" id="test" />
-      </Provider>,
-    );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
-  });
-
-  it('renders an `dict` type field', () => {
-    const store = mockStore({
-      intl: {
-        locale: 'en',
-        messages: {},
-      },
-    });
-    const component = renderer.create(
-      <Provider store={store}>
-        <Field type="dict" id="test" />
       </Provider>,
     );
     const json = component.toJSON();

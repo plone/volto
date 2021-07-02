@@ -89,10 +89,6 @@ msgstr ""
 msgid "Add date"
 msgstr ""
 
-#: components/manage/Widgets/DictWidget
-msgid "Add dictionary entry"
-msgstr ""
-
 #: components/manage/Widgets/SchemaWidget
 msgid "Add field"
 msgstr "Adicionar campo"
@@ -120,6 +116,10 @@ msgstr "Adicionar um novo utilizador"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add to Groups"
 msgstr "Adicionar a Grupos"
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Add vocabulary term"
+msgstr ""
 
 #: components/manage/Add/Add
 msgid "Add {type}"
@@ -556,18 +556,6 @@ msgstr "Descendente"
 #: helpers/MessageLabels/MessageLabels
 msgid "Description"
 msgstr "Descrição"
-
-#: components/manage/Widgets/DictWidget
-msgid "Dictionary"
-msgstr ""
-
-#: components/manage/Widgets/DictWidget
-msgid "Dictionary Entry"
-msgstr ""
-
-#: components/manage/Widgets/DictWidget
-msgid "Dictionary Value"
-msgstr ""
 
 #: components/manage/Diff/Diff
 msgid "Diff"
@@ -1502,16 +1490,16 @@ msgstr "Formulário de registo"
 msgid "Relevance"
 msgstr ""
 
-#: components/manage/Widgets/DictWidget
-msgid "Remove dictionary entry"
-msgstr ""
-
 #: components/manage/Widgets/ObjectListWidget
 msgid "Remove item"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
+msgstr ""
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Remove term"
 msgstr ""
 
 #: components/manage/Toolbar/More
@@ -1562,8 +1550,8 @@ msgstr "Obrigatório"
 msgid "Required input is missing."
 msgstr "Falta informação obrigatória."
 
-#: components/manage/Widgets/DictWidget
-msgid "Reset dictionary value"
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Reset term title"
 msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
@@ -2196,6 +2184,18 @@ msgstr ""
 #: components/manage/Display/Display
 msgid "Viewmode"
 msgstr "Modo de visualização"
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary term"
+msgstr ""
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary term title"
+msgstr ""
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary terms"
+msgstr ""
 
 #: components/manage/Controlpanels/VersionOverview
 msgid "Warning Regarding debug mode"

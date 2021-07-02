@@ -81,10 +81,6 @@ msgstr ""
 msgid "Add date"
 msgstr ""
 
-#: components/manage/Widgets/DictWidget
-msgid "Add dictionary entry"
-msgstr ""
-
 #: components/manage/Widgets/SchemaWidget
 msgid "Add field"
 msgstr ""
@@ -111,6 +107,10 @@ msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Add to Groups"
+msgstr ""
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Add vocabulary term"
 msgstr ""
 
 #: components/manage/Add/Add
@@ -547,18 +547,6 @@ msgstr ""
 #: components/theme/View/TabularView
 #: helpers/MessageLabels/MessageLabels
 msgid "Description"
-msgstr ""
-
-#: components/manage/Widgets/DictWidget
-msgid "Dictionary"
-msgstr ""
-
-#: components/manage/Widgets/DictWidget
-msgid "Dictionary Entry"
-msgstr ""
-
-#: components/manage/Widgets/DictWidget
-msgid "Dictionary Value"
 msgstr ""
 
 #: components/manage/Diff/Diff
@@ -1494,16 +1482,16 @@ msgstr ""
 msgid "Relevance"
 msgstr ""
 
-#: components/manage/Widgets/DictWidget
-msgid "Remove dictionary entry"
-msgstr ""
-
 #: components/manage/Widgets/ObjectListWidget
 msgid "Remove item"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
+msgstr ""
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Remove term"
 msgstr ""
 
 #: components/manage/Toolbar/More
@@ -1554,8 +1542,8 @@ msgstr ""
 msgid "Required input is missing."
 msgstr ""
 
-#: components/manage/Widgets/DictWidget
-msgid "Reset dictionary value"
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Reset term title"
 msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
@@ -2187,6 +2175,18 @@ msgstr ""
 
 #: components/manage/Display/Display
 msgid "Viewmode"
+msgstr ""
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary term"
+msgstr ""
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary term title"
+msgstr ""
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary terms"
 msgstr ""
 
 #: components/manage/Controlpanels/VersionOverview
