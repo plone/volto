@@ -71,7 +71,11 @@ test('Can render a custom button', () => {
   const data = { '@type': 'text', text: '' };
   const { container } = render(
     <Provider store={store}>
-      <MutateBlockButton data={data} block="123" view={CustomButton} />
+      <MutateBlockButton
+        data={data}
+        block="123"
+        buttonComponent={CustomButton}
+      />
     </Provider>,
   );
   expect(container).toMatchSnapshot();

@@ -13,7 +13,7 @@ const messages = defineMessages({
   },
 });
 
-export const ButtonViewComponent = (props) => {
+export const AddButtonComponent = (props) => {
   const intl = useIntl();
   const {
     className = 'block-add-button',
@@ -43,7 +43,7 @@ const MutateBlockButton = (props) => {
     onMutateBlock,
     onInsertBlock,
     blocksConfig,
-    view,
+    buttonComponent,
   } = props;
   const { disableNewBlocks } = data;
   const [addNewBlockOpened, setAddNewBlockOpened] = React.useState(false);
@@ -59,7 +59,7 @@ const MutateBlockButton = (props) => {
     setAddNewBlockOpened(false);
   }, []);
 
-  const ButtonView = view || ButtonViewComponent;
+  const ButtonComponent = buttonComponent || AddButtonComponent;
 
   React.useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside, false);
@@ -71,7 +71,7 @@ const MutateBlockButton = (props) => {
   return (
     <>
       {!disableNewBlocks && !blockHasValue(data) && (
-        <ButtonView
+        <ButtonComponent
           {...props}
           onShowBlockChooser={() => setAddNewBlockOpened(true)}
         />

@@ -305,7 +305,6 @@ class Edit extends Component {
             onInsertBlock={(id, value) => {
               this.props.onSelectBlock(this.props.onInsertBlock(id, value));
             }}
-            onMutateBlock={() => {}}
             allowedBlocks={this.props.allowedBlocks}
             blocksConfig={this.props.blocksConfig}
             size="24px"
