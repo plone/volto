@@ -144,8 +144,8 @@ const BlockChooser = ({
 
 BlockChooser.propTypes = {
   currentBlock: PropTypes.string.isRequired,
-  onMutateBlock: PropTypes.func.isRequired,
-  onInsertBlock: PropTypes.func.isRequired,
+  onMutateBlock: PropTypes.func,
+  onInsertBlock: PropTypes.func,
   allowedBlocks: PropTypes.arrayOf(PropTypes.string),
   blocksConfig: PropTypes.objectOf(PropTypes.any),
 };
