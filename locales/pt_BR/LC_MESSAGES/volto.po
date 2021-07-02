@@ -119,6 +119,10 @@ msgstr "Adicionar novo usuário"
 msgid "Add to Groups"
 msgstr "Adicionar a grupos"
 
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Add vocabulary term"
+msgstr ""
+
 #: components/manage/Add/Add
 msgid "Add {type}"
 msgstr "Adicionar {type}"
@@ -1496,6 +1500,10 @@ msgstr "Remover Item"
 msgid "Remove recurrence"
 msgstr "Remover a recorrência"
 
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Remove term"
+msgstr ""
+
 #: components/manage/Toolbar/More
 msgid "Remove working copy"
 msgstr "Remover a cópia de trabalho"
@@ -1543,6 +1551,10 @@ msgstr "Obrigatório"
 #: helpers/MessageLabels/MessageLabels
 msgid "Required input is missing."
 msgstr "Falta informação obrigatória."
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Reset term title"
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 msgid "Results limit"
@@ -2174,6 +2186,18 @@ msgstr "Exibir a cópia de trabalho"
 #: components/manage/Display/Display
 msgid "Viewmode"
 msgstr "Visão"
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary term"
+msgstr ""
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary term title"
+msgstr ""
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary terms"
+msgstr ""
 
 #: components/manage/Controlpanels/VersionOverview
 msgid "Warning Regarding debug mode"

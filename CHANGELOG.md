@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Add VocabularyTermsWidget and map to field with widget attribute set to 'vocabularyterms'. @ksuess
+
 ### Bugfix
 
 ### Internal
