@@ -7,12 +7,15 @@
 ### Feature
 
 - Close object browser when pressing ESC @nzambello
+- Add VocabularyTermsWidget and map to field with widget attribute set to 'vocabularyterms'. @ksuess
 
 ### Bugfix
 
 - fix test @giuliaghisini
 - Fix outside click handling in object browser @nzambello
 ### Internal
+
+- Updated Brazilian Portuguese translations @ericof
 
 ## 13.5.0 (2021-06-30)
 

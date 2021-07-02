@@ -116,6 +116,10 @@ msgstr "Gehitu erabiltzaile berria"
 msgid "Add to Groups"
 msgstr "Gehitu taldeetara"
 
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Add vocabulary term"
+msgstr ""
+
 #: components/manage/Add/Add
 msgid "Add {type}"
 msgstr "Gehitu {type}"
@@ -1493,6 +1497,10 @@ msgstr ""
 msgid "Remove recurrence"
 msgstr "Errepikapena ezabatu"
 
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Remove term"
+msgstr ""
+
 #: components/manage/Toolbar/More
 msgid "Remove working copy"
 msgstr ""
@@ -1540,6 +1548,10 @@ msgstr "Beharrezkoa"
 #: helpers/MessageLabels/MessageLabels
 msgid "Required input is missing."
 msgstr "Beharrezko balioak falta dira"
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Reset term title"
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 msgid "Results limit"
@@ -2171,6 +2183,18 @@ msgstr ""
 #: components/manage/Display/Display
 msgid "Viewmode"
 msgstr "Bistaratze modua"
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary term"
+msgstr ""
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary term title"
+msgstr ""
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary terms"
+msgstr ""
 
 #: components/manage/Controlpanels/VersionOverview
 msgid "Warning Regarding debug mode"
