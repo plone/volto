@@ -17,13 +17,19 @@ import {
  * @param {string} url Content url.
  * @returns {Object} Get slots action.
  */
-export function getSlots(url) {
+export function getSlots(url, options = {}) {
+  let qs = Object.keys(options)
+    .map(function (key) {
+      return key + '=' + options[key];
+    })
+    .join('&');
+
   const path = flattenToAppURL(url);
   return {
     type: GET_SLOTS,
     request: {
       op: 'get',
-      path: `${path}/@slots`,
+      path: `${path}/@slots${qs ? `?${qs}` : ''}`,
     },
   };
 }
@@ -35,12 +41,18 @@ export function getSlots(url) {
  * @param {string} url Content url.
  * @returns {Object} Get slot action.
  */
-export function getSlot(url, slotName) {
+export function getSlot(url, slotName, options) {
+  let qs = Object.keys(options)
+    .map(function (key) {
+      return key + '=' + options[key];
+    })
+    .join('&');
+
   return {
     type: GET_SLOT,
     request: {
       op: 'get',
-      path: `${url}/@slots/${slotName}`,
+      path: `${url}/@slots/${slotName}${qs ? `?${qs}` : ''}`,
     },
   };
 }

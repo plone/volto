@@ -14,8 +14,10 @@ import {
   addEmptyBlock,
 } from '@plone/volto/helpers/Blocks/Blocks';
 import { Helmet, getBaseUrl, slotsBlocksConfig } from '@plone/volto/helpers';
-import { Icon, Sidebar, Toolbar } from '@plone/volto/components';
+import { InlineForm, Icon, Sidebar, Toolbar } from '@plone/volto/components';
 import SlotEditBlockWrapper from './SlotEditBlockWrapper';
+import SlotSchema from './schema';
+
 import config from '@plone/volto/registry';
 
 import saveSVG from '@plone/volto/icons/save.svg';
@@ -61,7 +63,7 @@ class EditSlot extends React.Component {
 
   componentDidMount() {
     this.setState({ isClient: true });
-    this.props.getSlots(getBaseUrl(this.props.pathname));
+    this.props.getSlots(getBaseUrl(this.props.pathname), { raw: true });
   }
 
   componentDidUpdate() {
@@ -163,7 +165,23 @@ class EditSlot extends React.Component {
               />
             </Portal>
             <Portal node={document.getElementById('sidebar')}>
-              <Sidebar />
+              <Sidebar documentTab={false} settingsTab={true} />
+            </Portal>
+            <Portal
+              node={__CLIENT__ && document.getElementById('sidebar-settings')}
+            >
+              <InlineForm
+                schema={SlotSchema(this.props)}
+                formData={data}
+                onChangeField={(id, value) =>
+                  this.setState({
+                    data: {
+                      ...data,
+                      [id]: value,
+                    },
+                  })
+                }
+              />
             </Portal>
           </div>
         )}
