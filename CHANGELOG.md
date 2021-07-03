@@ -10,6 +10,9 @@
 
 ### Bugfix
 
+- changed table headline text color to black for a11y
+- fix test @giuliaghisini
+
 ### Internal
 
 - Updated Brazilian Portuguese translations @ericof
