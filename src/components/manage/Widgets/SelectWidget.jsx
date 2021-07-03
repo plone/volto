@@ -254,7 +254,8 @@ class SelectWidget extends Component {
                   // Fix "None" on the serializer, to remove when fixed in p.restapi
                   option[1] !== 'None' && option[1] ? option[1] : option[0],
               })),
-              ...(this.props.noValueOption
+              // Only set "no-value" option if there's no default in the field
+              ...(this.props.noValueOption && !this.props.default
                 ? [
                     {
                       label: this.props.intl.formatMessage(messages.no_value),
