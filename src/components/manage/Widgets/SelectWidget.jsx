@@ -144,6 +144,7 @@ class SelectWidget extends Component {
   };
 
   state = {
+    // TODO: also take into account this.props.defaultValue?
     selectedOption: normalizeValue(this.props.choices, this.props.value),
   };
 
@@ -255,6 +256,7 @@ class SelectWidget extends Component {
                   option[1] !== 'None' && option[1] ? option[1] : option[0],
               })),
               // Only set "no-value" option if there's no default in the field
+              // TODO: also if this.props.defaultValue?
               ...(this.props.noValueOption && !this.props.default
                 ? [
                     {
