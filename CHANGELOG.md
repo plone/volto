@@ -65,6 +65,7 @@
 
 ### Bugfix
 
+- Avoid debugging error in toolbar @tiberiuichim
 - Fix the bug related to specific versioning view @iFlameing
 - Fix blocks-listing Cypress test @giuliaghisini
 - Fix the translation of header in babel view @iFlameing
