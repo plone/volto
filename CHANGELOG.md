@@ -2,8 +2,6 @@
 
 ## 13.5.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Add VocabularyTermsWidget and map to field with widget attribute set to 'vocabularyterms'. @ksuess
@@ -13,7 +11,6 @@
 - added "Complementary" landmark-role to skiplink-container for a11y @ThomasKindermann
 - changed breadcrumb link text-color slightly for a11y color contrast @ThomasKindermann
 - changed table headline text color to black for a11y @ThomasKindermann
-- fix test @giuliaghisini
 
 ### Internal
 
