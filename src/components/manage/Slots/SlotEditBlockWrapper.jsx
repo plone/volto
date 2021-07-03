@@ -3,12 +3,14 @@ import { injectIntl } from 'react-intl';
 import QuantaEditBlockWrapper from '@plone/volto/components/manage/Blocks/Block/QuantaEditBlockWrapper';
 import cx from 'classnames';
 import { Plug } from '@plone/volto/components/manage/Pluggable';
+import trashSVG from '@plone/volto/icons/delete.svg';
+import { BlockToolbarItem } from '@plone/volto/components';
 
 const SlotEditBlockWrapper = (props) => {
   const { blockProps } = props;
-  const { data, selected, block } = blockProps;
+  const { data } = blockProps;
   // const inherited = data._v_inherit && 'slot-inherited';
-  // console.log('inherited', inherited, data);
+  // , selected, block
 
   const inherited = true;
   return (
@@ -20,15 +22,43 @@ const SlotEditBlockWrapper = (props) => {
           `slot-editor-${data['@type']}`,
           inherited || '',
         )}
-        key={`wrapper-${block}-${selected}`}
       />
+
       {inherited && (
-        <Plug
-          pluggable="block-toolbar-more"
-          id="delete-button"
-          from="slot"
-          key={`plug-${block}-${selected}`}
-        ></Plug>
+        <>
+          <Plug
+            pluggable="block-toolbar-extra"
+            id="delete-button"
+            dependencies={[blockProps]}
+          >
+            {(options) => {
+              return (
+                <BlockToolbarItem
+                  icon={trashSVG}
+                  label="Delete block"
+                  group="block"
+                  {...options}
+                />
+              );
+            }}
+          </Plug>
+          <Plug
+            pluggable="block-toolbar-extra"
+            id="delete-button-2"
+            dependencies={[blockProps]}
+          >
+            {(options) => {
+              return (
+                <BlockToolbarItem
+                  icon={trashSVG}
+                  label="Delete block"
+                  group="block"
+                  {...options}
+                />
+              );
+            }}
+          </Plug>
+        </>
       )}
     </>
   );

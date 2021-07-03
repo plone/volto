@@ -3,11 +3,10 @@ import cx from 'classnames';
 import { Button, Dropdown } from 'semantic-ui-react';
 import includes from 'lodash/includes';
 import isBoolean from 'lodash/isBoolean';
-import { defineMessages, injectIntl, useIntl } from 'react-intl';
-import { Icon } from '@plone/volto/components';
+import { defineMessages, useIntl } from 'react-intl';
+import { BlockChooserButton, Icon } from '@plone/volto/components';
 import { blockHasValue } from '@plone/volto/helpers';
 import { Pluggable, Plug } from '@plone/volto/components/manage/Pluggable';
-import MutateBlockButton from './MutateBlockButton';
 
 import config from '@plone/volto/registry';
 
@@ -26,27 +25,13 @@ const hideHandler = (data) => {
   return !!data.fixed || !blockHasValue(data);
 };
 
-const DefaultPlugs = (props) => {
-  const intl = useIntl();
-  const { blockProps } = props;
-  const { data, type, onDeleteBlock, block } = blockProps;
-  const required = isBoolean(data.required)
-    ? data.required
-    : includes(config.blocks.requiredBlocks, type);
-
-  return <>); })()}</>;
-};
-
 const QuantaEditBlockWrapper = (props) => {
   const { blockProps, draginfo, children, className } = props;
-  const { intl } = props;
-  // const { data, selected, type } = blockProps;
+  const intl = useIntl();
   const { selected, data, type, onDeleteBlock, block } = blockProps;
   const required = isBoolean(data.required)
     ? data.required
     : includes(config.blocks.requiredBlocks, type);
-
-  // if (usesClassicWrapper(data)) return <EditBlockWrapper {...props} />;
 
   const visible = selected && !hideHandler(data);
 
@@ -74,9 +59,56 @@ const QuantaEditBlockWrapper = (props) => {
             <Icon name={dragSVG} size="18px" />
           </Button>
 
-          <Pluggable name="block-toolbar" params={blockProps} />
-          <Pluggable name="block-toolbar-slots" params={blockProps} />
-          <Pluggable name="block-toolbar-more"></Pluggable>
+          <Pluggable name="block-toolbar-required" params={blockProps} />
+          <Pluggable name="block-toolbar-main" params={blockProps} />
+          <Pluggable name="block-toolbar-extra">
+            {(pluggables) => {
+              const results = pluggables
+                ?.map((p) => p({ isMenuShape: pluggables.length > 1 }))
+                .filter((r) => !!r);
+              return results.length > 1 ? (
+                <Button basic icon>
+                  <Dropdown
+                    item
+                    icon={<Icon name={moreSVG} size="18px" color="#826a6a" />}
+                    className=""
+                  >
+                    <Dropdown.Menu className="right">
+                      <Dropdown.Header content="More actions" />
+                      <Dropdown.Menu scrolling>{results}</Dropdown.Menu>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </Button>
+              ) : results.length === 1 ? (
+                results[0]
+              ) : null;
+            }}
+          </Pluggable>
+
+          <Plug pluggable="block-toolbar-required" id="mutate-block-button">
+            <BlockChooserButton
+              {...blockProps}
+              onInsertBlock={(id, value) => {
+                blockProps.onSelectBlock(blockProps.onInsertBlock(id, value));
+              }}
+              className="quanta-block-add-button"
+            />
+          </Plug>
+          <Plug pluggable="block-toolbar-extra" id="delete-button">
+            <>
+              {!required ? (
+                <Button
+                  icon
+                  basic
+                  onClick={() => onDeleteBlock(block)}
+                  className="delete-button"
+                  aria-label={intl.formatMessage(messages.delete)}
+                >
+                  <Icon name={trashSVG} size="18px" />
+                </Button>
+              ) : null}
+            </>
+          </Plug>
         </div>
       ) : (
         <div {...draginfo.dragHandleProps} style={{ display: 'none' }}></div>
@@ -86,54 +118,9 @@ const QuantaEditBlockWrapper = (props) => {
   );
 };
 
-//        <Plug pluggable="block-toolbar" id="mutate-block-button">
-//          <MutateBlockButton
-//            {...blockProps}
-//            onInsertBlock={(id, value) => {
-//              blockProps.onSelectBlock(blockProps.onInsertBlock(id, value));
-//            }}
-//            className="quanta-block-add-button"
-//          />
-//        </Plug>
-//        <Plug pluggable="block-toolbar-more" id="delete-button" from="source">
-//          <>
-//            {!required ? (
-//              <Button
-//                icon
-//                basic
-//                onClick={() => onDeleteBlock(block)}
-//                className="delete-button"
-//                aria-label={intl.formatMessage(messages.delete)}
-//              >
-//                <Icon name={trashSVG} size="18px" />
-//              </Button>
-//            ) : null}
-//          </>
-//        </Plug>
-
-export default injectIntl(QuantaEditBlockWrapper);
+export default QuantaEditBlockWrapper;
 /*
 {children.map((child, i) => (
   <Dropdown.Item key={i}>{child}</Dropdown.Item>
 ))}
 */
-
-// {(pluggables) => {
-//   const results = pluggables?.map((p) => p()).filter((r) => !!r);
-//   return results.length > 1 ? (
-//     <Button basic icon>
-//       <Dropdown
-//         item
-//         icon={<Icon name={moreSVG} size="18px" color="#826a6a" />}
-//         className=""
-//       >
-//         <Dropdown.Menu className="right">
-//           <Dropdown.Header content="More actions" />
-//           <Dropdown.Menu scrolling>{results}</Dropdown.Menu>
-//         </Dropdown.Menu>
-//       </Dropdown>
-//     </Button>
-//   ) : results.length === 1 ? (
-//     results[0]
-//   ) : null;
-// }}

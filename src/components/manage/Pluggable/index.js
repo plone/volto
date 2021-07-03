@@ -8,7 +8,6 @@ export const context = React.createContext();
 
 export function usePluggable(name) {
   const ctx = React.useContext(context);
-  console.log('ctx', ctx.pluggables[name], name);
 
   if (!ctx) {
     throw new Error(
@@ -68,7 +67,6 @@ export function usePlug({ pluggable, id, renderer, dependencies, options }) {
 
   React.useEffect(
     () => {
-      console.log('useEffect', pluggable, id, renderer);
       if (renderer) {
         setPlug(pluggable, id, renderer);
         return () => removePlug(pluggable, id);
@@ -116,7 +114,6 @@ export function createPluggableAndPlug(name) {
 
 export const PluggablesProvider = ({ children }) => {
   const setPlug = (pluggable, id, renderer) => {
-    console.log('setPlug', pluggable, id, renderer);
     Object.assign(renderer, { id });
 
     setPluggables((prevState) => ({
