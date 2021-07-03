@@ -63,24 +63,61 @@ const QuantaEditBlockWrapper = (props) => {
           <Pluggable name="block-toolbar-main" params={blockProps} />
           <Pluggable name="block-toolbar-extra">
             {(pluggables) => {
-              const results = pluggables
-                ?.map((p) => p({ isMenuShape: pluggables.length > 1 }))
+              const groups = new Map();
+              const seen = [];
+              const options = { isMenuShape: pluggables.length > 1 };
+              config.blocks.toolbarGroups.forEach(({ id, title }) => {
+                groups[id] = pluggables
+                  .filter((p, i) => {
+                    if (p.extra?.group === id) {
+                      seen.push(i);
+                      return true;
+                    }
+                    return false;
+                  })
+                  .map((p) => p(options))
+                  .filter((r) => !!r);
+              });
+              const ungrouped = pluggables
+                .filter((p, i) => seen.indexOf(i) === -1)
+                .map((p) => p(options))
                 .filter((r) => !!r);
-              return results.length > 1 ? (
+
+              const allItems = [
+                ...[...Object.keys(groups).map((n) => groups[n])],
+                ...ungrouped,
+              ].reduce((n, acc) => acc + n, 0);
+
+              return allItems.length > 1 ? (
                 <Button basic icon>
                   <Dropdown
                     item
                     icon={<Icon name={moreSVG} size="18px" color="#826a6a" />}
                     className=""
                   >
-                    <Dropdown.Menu className="right">
-                      <Dropdown.Header content="More actions" />
-                      <Dropdown.Menu scrolling>{results}</Dropdown.Menu>
-                    </Dropdown.Menu>
+                    {Object.keys(groups).map((groupName) => {
+                      const results = groups[groupName];
+                      const { title } = config.blocks.toolbarGroups.find(
+                        (g) => g.id === groupName,
+                      );
+                      return (
+                        <Dropdown.Menu className="right" key={groupName}>
+                          <Dropdown.Header content={title} />
+                          <Dropdown.Menu scrolling>{results}</Dropdown.Menu>
+                        </Dropdown.Menu>
+                      );
+                    })}
+                    {ungrouped.length && (
+                      <Dropdown.Menu className="right" key="ungrouped">
+                        <Dropdown.Menu scrolling>
+                          {ungrouped.map((r, i) => r)}
+                        </Dropdown.Menu>
+                      </Dropdown.Menu>
+                    )}
                   </Dropdown>
                 </Button>
-              ) : results.length === 1 ? (
-                results[0]
+              ) : allItems.length === 1 ? (
+                allItems[0]
               ) : null;
             }}
           </Pluggable>

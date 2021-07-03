@@ -125,6 +125,11 @@ const groupBlocksOrder = [
   { id: 'site', title: 'Site' },
 ];
 
+const toolbarGroups = [
+  { id: 'slot', title: 'Slot' },
+  { id: 'misc', title: 'Miscellaneous' },
+];
+
 const blocksConfig = {
   title: {
     id: 'title',
@@ -373,4 +378,10 @@ const requiredBlocks = ['title'];
 
 const initialBlocks = {};
 
-export { groupBlocksOrder, requiredBlocks, blocksConfig, initialBlocks };
+export {
+  groupBlocksOrder,
+  toolbarGroups,
+  requiredBlocks,
+  blocksConfig,
+  initialBlocks,
+};

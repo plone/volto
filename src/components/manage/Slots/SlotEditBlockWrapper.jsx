@@ -25,40 +25,39 @@ const SlotEditBlockWrapper = (props) => {
       />
 
       {inherited && (
-        <>
-          <Plug
-            pluggable="block-toolbar-extra"
-            id="delete-button"
-            dependencies={[blockProps]}
-          >
-            {(options) => {
-              return (
-                <BlockToolbarItem
-                  icon={trashSVG}
-                  label="Delete block"
-                  group="block"
-                  {...options}
-                />
-              );
-            }}
-          </Plug>
-          <Plug
-            pluggable="block-toolbar-extra"
-            id="delete-button-2"
-            dependencies={[blockProps]}
-          >
-            {(options) => {
-              return (
-                <BlockToolbarItem
-                  icon={trashSVG}
-                  label="Delete block"
-                  group="block"
-                  {...options}
-                />
-              );
-            }}
-          </Plug>
-        </>
+        <Plug
+          pluggable="block-toolbar-extra"
+          id="delete-button"
+          dependencies={[blockProps]}
+          extra={{ group: 'slot' }}
+        >
+          {(options) => (
+            <BlockToolbarItem
+              icon={trashSVG}
+              label="Delete block"
+              group="block"
+              {...options}
+            />
+          )}
+        </Plug>
+      )}
+
+      {inherited && (
+        <Plug
+          pluggable="block-toolbar-extra"
+          id="delete-button-2"
+          dependencies={[blockProps]}
+          extra={{ group: 'misc' }}
+        >
+          {(options) => (
+            <BlockToolbarItem
+              icon={trashSVG}
+              label="Delete block"
+              group="block"
+              {...options}
+            />
+          )}
+        </Plug>
       )}
     </>
   );

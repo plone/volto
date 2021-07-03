@@ -23,6 +23,7 @@ import plugins, { inlineToolbarButtons } from './RichTextEditor/Plugins';
 import FromHTMLCustomBlockFn from './RichTextEditor/FromHTML';
 import {
   groupBlocksOrder,
+  toolbarGroups,
   requiredBlocks,
   blocksConfig,
   initialBlocks,
@@ -171,6 +172,7 @@ let config = {
     requiredBlocks,
     blocksConfig,
     groupBlocksOrder,
+    toolbarGroups,
     initialBlocks,
     showEditBlocksInBabelView: false,
   },
