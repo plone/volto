@@ -34,6 +34,7 @@ nav:
       - Backend configuration: 'configuration/backend.md'
       - Richeditor settings: 'configuration/richeditor-settings.md'
       - Multilingual: 'configuration/multilingual.md'
+      - Working copy: 'configuration/workingcopy.md'
       - Environment variables: 'configuration/environmentvariables.md'
       - API expanders: 'configuration/expanders.md'
   - Theming & Semantic UI:

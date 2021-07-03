@@ -13,6 +13,7 @@ describe('createContent Tests', () => {
     cy.get('.documentFirstHeading').should('have.text', 'My Page');
     cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
   });
+
   it('Create document with path', function () {
     cy.createContent({
       contentType: 'Document',
@@ -28,6 +29,7 @@ describe('createContent Tests', () => {
     cy.visit('/container/child');
     cy.get('.documentFirstHeading').should('have.text', 'My Child');
   });
+
   it('Create document with custom id', function () {
     cy.createContent({
       contentType: 'Document',
@@ -37,6 +39,7 @@ describe('createContent Tests', () => {
     cy.visit('/my-custom-id');
     cy.get('.documentFirstHeading').should('have.text', 'My Page');
   });
+
   it('Create News Item', function () {
     cy.createContent({
       contentType: 'News Item',
@@ -46,6 +49,7 @@ describe('createContent Tests', () => {
     cy.visit('/my-news-item');
     cy.get('.documentFirstHeading').should('have.text', 'My News Item');
   });
+
   it('Create File', function () {
     cy.createContent({
       contentType: 'File',
@@ -61,12 +65,14 @@ describe('createContent Tests', () => {
     );
     // cy.get('.view-wrapper a').click();
   });
+
   it('Create Image', function () {
     cy.createContent({
       contentType: 'Image',
       contentId: 'my-image',
       contentTitle: 'My Image',
     });
+
     cy.visit('/my-image');
     cy.get('.documentFirstHeading').should('have.text', 'My Image');
     cy.get('.view-wrapper img')
