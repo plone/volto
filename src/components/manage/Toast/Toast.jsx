@@ -36,7 +36,7 @@ const Toast = (props) => {
 };
 
 Toast.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   content: PropTypes.string.isRequired,
   info: PropTypes.bool,
   success: PropTypes.bool,

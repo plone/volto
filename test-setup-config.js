@@ -49,6 +49,7 @@ config.set('settings', {
     ],
   },
   controlPanelsIcons,
+  apiExpanders: [],
 });
 config.set('blocks', {
   blocksConfig: {
