@@ -13,7 +13,7 @@ import isSoftNewlineEvent from 'draft-js/lib/isSoftNewlineEvent';
 import { defineMessages, injectIntl } from 'react-intl';
 import { includes, isEqual } from 'lodash';
 import { filterEditorState } from 'draftjs-filters';
-import { MutateBlockButton } from '@plone/volto/components';
+import { BlockChooserButton } from '@plone/volto/components';
 import { Plug } from '@plone/volto/components/manage/Pluggable';
 
 import config from '@plone/volto/registry';
@@ -294,7 +294,7 @@ class Edit extends Component {
         <InlineToolbar />
         <PlugInsert pluggable="block-toolbar" id="block-text-toolbar">
           {this.props.selected && (
-            <MutateBlockButton
+            <BlockChooserButton
               data={this.props.data}
               block={this.props.block}
               onInsertBlock={(id, value) => {

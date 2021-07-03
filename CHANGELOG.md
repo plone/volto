@@ -9,6 +9,7 @@
 - Add a Quanta block wrapper and toolbar. Make the Quanta wrapper the default.  You can opt-out from using it by setting `config.settings.useQuantaToolbar = false` @tiberiuichim
 
 - A new component was added, `MutateBlockButton`, it encapsulate the logic of show/hiding the `BlockChooser` @tiberiuichim
+- A new component was added, `BlockChooserButton`, it encapsulate the logic of show/hiding the `BlockChooser` @tiberiuichim
 
 ### Bugfix
 
