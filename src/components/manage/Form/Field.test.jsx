@@ -18,6 +18,7 @@ beforeAll(() => {
       datetime: () => <div className="DatetimeWidget" />,
       password: () => <div className="PasswordWidget" />,
       file: () => <div className="FileWidget" />,
+      vocabularyterms: () => <div className="VocabularyTermsWidget" />,
     },
     vocabulary: {
       'plone.app.vocabularies.Catalog': () => (

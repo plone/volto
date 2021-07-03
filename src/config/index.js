@@ -137,7 +137,22 @@ let config = {
     storeExtenders: [],
     showTags: true,
     controlPanelsIcons,
+    externalRoutes: [
+      // URL to be considered as external
+      // {
+      //   match: {
+      //     path: '/news',
+      //     exact: false,
+      //     strict: false,
+      //   },
+      //   url(payload) {
+      //     return payload.location.pathname;
+      //   },
+      // },
+    ],
     showSelfRegistration: false,
+    contentMetadataTagsImageField: 'image',
+    hasWorkingCopySupport: false,
   },
   widgets: {
     ...widgetMapping,

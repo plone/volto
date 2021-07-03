@@ -63,12 +63,17 @@ export function usePlug({ pluggable, id, renderer, dependencies, options }) {
   const { setPlug, removePlug } = pluggableContext;
   const { name, order, extra } = options;
 
-  Object.assign(renderer, { pluggableName: name, extra, order });
+  // Could be that a Plug is empty (or it evaluates and have no children)
+  if (renderer) {
+    Object.assign(renderer, { pluggableName: name, extra, order });
+  }
 
   React.useEffect(
     () => {
-      setPlug(pluggable, id, renderer);
-      return () => removePlug(pluggable, id);
+      if (renderer) {
+        setPlug(pluggable, id, renderer);
+        return () => removePlug(pluggable, id);
+      }
     },
     dependencies, // eslint-disable-line react-hooks/exhaustive-deps
   );
@@ -81,7 +86,8 @@ export const Plug = ({
   children,
   ...options
 }) => {
-  const renderer = typeof children === 'function' ? children : () => children;
+  const renderer =
+    children && (typeof children === 'function' ? children : () => children);
   usePlug({ pluggable, id, renderer, dependencies, options });
   return null;
 };
