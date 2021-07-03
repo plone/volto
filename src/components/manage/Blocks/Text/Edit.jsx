@@ -15,7 +15,7 @@ import { includes, isEqual } from 'lodash';
 import { filterEditorState } from 'draftjs-filters';
 import config from '@plone/volto/registry';
 
-import { MutateBlockButton } from '@plone/volto/components';
+import { BlockChooserButton } from '@plone/volto/components';
 
 const messages = defineMessages({
   text: {
@@ -288,7 +288,7 @@ class Edit extends Component {
         />
         <InlineToolbar />
         {this.props.selected && (
-          <MutateBlockButton
+          <BlockChooserButton
             data={this.props.data}
             block={this.props.block}
             onInsertBlock={(id, value) => {

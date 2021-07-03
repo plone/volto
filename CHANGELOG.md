@@ -6,7 +6,7 @@
 
 ### Feature
 
-- A new component was added, `MutateBlockButton`, it encapsulate the logic of show/hiding the `BlockChooser` @tiberiuichim
+- A new component was added, `BlockChooserButton`, it encapsulate the logic of show/hiding the `BlockChooser` @tiberiuichim
 
 ### Bugfix
 

@@ -13,7 +13,7 @@ const messages = defineMessages({
   },
 });
 
-export const AddButtonComponent = (props) => {
+export const ButtonComponent = (props) => {
   const intl = useIntl();
   const {
     className = 'block-add-button',
@@ -34,7 +34,7 @@ export const AddButtonComponent = (props) => {
   );
 };
 
-const MutateBlockButton = (props) => {
+const BlockChooserButton = (props) => {
   const {
     block,
     allowedBlocks,
@@ -59,7 +59,7 @@ const MutateBlockButton = (props) => {
     setAddNewBlockOpened(false);
   }, []);
 
-  const ButtonComponent = buttonComponent || AddButtonComponent;
+  const Component = buttonComponent || ButtonComponent;
 
   React.useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside, false);
@@ -71,7 +71,7 @@ const MutateBlockButton = (props) => {
   return (
     <>
       {!disableNewBlocks && !blockHasValue(data) && (
-        <ButtonComponent
+        <Component
           {...props}
           onShowBlockChooser={() => setAddNewBlockOpened(true)}
         />
@@ -105,4 +105,4 @@ const MutateBlockButton = (props) => {
   );
 };
 
-export default MutateBlockButton;
+export default BlockChooserButton;

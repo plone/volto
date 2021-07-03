@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
-import MutateBlockButton from './MutateBlockButton';
+import BlockChooserButton from './BlockChooserButton';
 import { render } from '@testing-library/react';
 
 import config from '@plone/volto/registry';
@@ -36,7 +36,7 @@ test('Does not render if the block is not empty', () => {
   const data = {}; // Volto plays safe with unknown data
   const { container } = render(
     <Provider store={store}>
-      <MutateBlockButton data={data} block="123" />
+      <BlockChooserButton data={data} block="123" />
     </Provider>,
   );
   expect(container).toMatchSnapshot();
@@ -53,7 +53,7 @@ test('Renders a button', () => {
   const data = { '@type': 'text', text: '' };
   const { container } = render(
     <Provider store={store}>
-      <MutateBlockButton data={data} block="123" />
+      <BlockChooserButton data={data} block="123" />
     </Provider>,
   );
   expect(container).toMatchSnapshot();
@@ -71,7 +71,7 @@ test('Can render a custom button', () => {
   const data = { '@type': 'text', text: '' };
   const { container } = render(
     <Provider store={store}>
-      <MutateBlockButton
+      <BlockChooserButton
         data={data}
         block="123"
         buttonComponent={CustomButton}
