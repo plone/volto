@@ -10,6 +10,7 @@
 
 ### Bugfix
 
+- changed breadcrumb link text-color slightly for a11y color contrast
 - changed table headline text color to black for a11y
 - fix test @giuliaghisini
 
