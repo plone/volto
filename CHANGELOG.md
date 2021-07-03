@@ -10,8 +10,9 @@
 
 ### Bugfix
 
-- changed breadcrumb link text-color slightly for a11y color contrast
-- changed table headline text color to black for a11y
+- added "Complementary" landmark-role to skiplink-container for a11y @ThomasKindermann
+- changed breadcrumb link text-color slightly for a11y color contrast @ThomasKindermann
+- changed table headline text color to black for a11y @ThomasKindermann
 - fix test @giuliaghisini
 
 ### Internal
