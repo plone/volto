@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
-import { Input, Segment } from 'semantic-ui-react';
+import { Input, Segment, Breadcrumb } from 'semantic-ui-react';
+
 import { join } from 'lodash';
 
 // These absolute imports (without using the corresponding centralized index.js) are required
@@ -19,6 +20,7 @@ import folderSVG from '@plone/volto/icons/folder.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import searchSVG from '@plone/volto/icons/zoom.svg';
 import linkSVG from '@plone/volto/icons/link.svg';
+import homeSVG from '@plone/volto/icons/home.svg';
 
 import ObjectBrowserNav from '@plone/volto/components/manage/Sidebar/ObjectBrowserNav';
 
@@ -34,6 +36,10 @@ const messages = defineMessages({
   back: {
     id: 'Back',
     defaultMessage: 'Back',
+  },
+  search: {
+    id: 'Search SVG',
+    defaultMessage: 'Search SVG',
   },
   of: { id: 'Selected items - x of y', defaultMessage: 'of' },
 });
@@ -186,25 +192,38 @@ class ObjectBrowserBody extends Component {
     }));
 
   onSearch = (e) => {
-    const text = e.target.value;
-    text.length > 2
-      ? this.props.searchContent(
-          '/',
-          {
-            SearchableText: `${text}*`,
-            metadata_fields: '_all',
-          },
-          `${this.props.block}-${this.props.mode}`,
-        )
-      : this.props.searchContent(
-          '/',
-          {
-            'path.depth': 1,
-            sort_on: 'getObjPositionInParent',
-            metadata_fields: '_all',
-          },
-          `${this.props.block}-${this.props.mode}`,
-        );
+    const text = flattenToAppURL(e.target.value);
+    if (text.startsWith('/')) {
+      this.setState({ currentFolder: text });
+      this.props.searchContent(
+        text,
+        {
+          'path.depth': 1,
+          sort_on: 'getObjPositionInParent',
+          metadata_fields: '_all',
+        },
+        `${this.props.block}-${this.props.mode}`,
+      );
+    } else {
+      text.length > 2
+        ? this.props.searchContent(
+            '/',
+            {
+              SearchableText: `${text}*`,
+              metadata_fields: '_all',
+            },
+            `${this.props.block}-${this.props.mode}`,
+          )
+        : this.props.searchContent(
+            '/',
+            {
+              'path.depth': 1,
+              sort_on: 'getObjPositionInParent',
+              metadata_fields: '_all',
+            },
+            `${this.props.block}-${this.props.mode}`,
+          );
+    }
   };
 
   onSelectItem = (item) => {
@@ -366,14 +385,52 @@ class ObjectBrowserBody extends Component {
             </h2>
           )}
 
-          <button onClick={this.toggleSearchInput}>
+          <button
+            aria-label={this.props.intl.formatMessage(messages.search)}
+            onClick={this.toggleSearchInput}
+          >
             <Icon name={searchSVG} size="24px" />
           </button>
           <button className="clearSVG" onClick={this.props.closeObjectBrowser}>
             <Icon name={clearSVG} size="24px" />
           </button>
         </header>
-        <Segment secondary>{this.state.currentFolder}</Segment>
+        <Segment secondary className="breadcrumbs" vertical>
+          <Breadcrumb>
+            {this.state.currentFolder !== '/' ? (
+              this.state.currentFolder.split('/').map((item, index, items) => {
+                return (
+                  <React.Fragment key={`divider-${item}-${index}`}>
+                    {index === 0 ? (
+                      <Breadcrumb.Section onClick={() => this.navigateTo('/')}>
+                        <Icon
+                          className="home-icon"
+                          name={homeSVG}
+                          size="18px"
+                        />
+                      </Breadcrumb.Section>
+                    ) : (
+                      <>
+                        <Breadcrumb.Divider key={`divider-${item.url}`} />
+                        <Breadcrumb.Section
+                          onClick={() =>
+                            this.navigateTo(items.slice(0, index + 1).join('/'))
+                          }
+                        >
+                          {item}
+                        </Breadcrumb.Section>
+                      </>
+                    )}
+                  </React.Fragment>
+                );
+              })
+            ) : (
+              <Breadcrumb.Section onClick={() => this.navigateTo('/')}>
+                <Icon className="home-icon" name={homeSVG} size="18px" />
+              </Breadcrumb.Section>
+            )}
+          </Breadcrumb>
+        </Segment>
         {this.props.mode === 'multiple' && (
           <Segment className="infos">
             {this.props.intl.formatMessage(messages.SelectedItems)}:{' '}

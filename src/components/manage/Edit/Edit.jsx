@@ -273,7 +273,11 @@ class Edit extends Component {
                         })
                       : null
                   }
-                />
+                >
+                  {this.props.content?.language && (
+                    <html lang={this.props.content.language.token} />
+                  )}
+                </Helmet>
 
                 {this.state.comparingLanguage && this.state.compareTo ? (
                   <Grid
@@ -346,7 +350,6 @@ class Edit extends Component {
             <Toolbar
               pathname={this.props.pathname}
               hideDefaultViewButtons
-              ref={this.toolbarRef}
               inner={
                 <>
                   <Button

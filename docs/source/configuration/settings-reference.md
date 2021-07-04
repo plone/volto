@@ -186,17 +186,33 @@ config.settings.asyncPropsExtenders = [
 
 ```
 
-### Internal URL blacklist
+### External routes
 
 If another application is published under the same top domain as Volto, you could have a route like `/abc` which should be not rendered by Volto.
 This can be achieved by a rule in the reverse proxy (Apache or Nginx for example) but, when navigating client side, you may have references to that route so Volto is
 handling that as an internal URL and fetching the content will break.
-You can disable that path in `config.settings.internalUrlBlacklist` so it will be handled as an external link.
+You can disable that path in `config.settings.externalRoutes` so it will be handled as an external link.
 
 ```js
-config.settings.internalUrlBlacklist = [
-  '/external-subsite',
-  '/another-blacklisted-url',
+config.settings.externalRoutes = [
+  {
+    match: {
+      path: '/news',
+      exact: false,
+      strict: false,
+    },
+    url(payload) {
+      return payload.location.pathname;
+    },
+  },
+];
+```
+
+It can also be simplified as:
+```js
+config.settings.externalRoutes = [
+  { match: "/news" },
+  { match: "/events" },
 ];
 ```
 
@@ -230,3 +246,16 @@ in the `config.settings.serverConfig` object.
     For the moment it admits only one property: `errorPages` whose value is a Boolean.
 
     If `extractScripts.errorPages` is `true`, the JS will be inserted into the error page.
+
+### contentMetadataTagsImageField
+
+!!! block ""
+
+    The OpenGraph image that will represent this content item, will be used in the metadata HEAD tag as og:image for SEO purposes. Defaults to image. See the OpenGraph Protocol for more details.
+
+### hasWorkingCopySupport
+
+!!! block ""
+
+    This setting will enable working copy support in your site. You need to install the `plone.app.iterate` add-on in your Plone site in order to make it working.
+
