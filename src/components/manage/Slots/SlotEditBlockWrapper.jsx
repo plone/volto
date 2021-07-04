@@ -17,15 +17,33 @@ const SlotEditBlockWrapper = (props) => {
           'slot-inherited': inherited,
         })}
       />
+
+      <Plug
+        pluggable="block-toolbar-main"
+        id="mutate-block-button-classic"
+        dependencies={[blockProps]}
+      >
+        <></>
+      </Plug>
+
       {selected && inherited ? (
-        <Plug
-          pluggable="block-toolbar-extra"
-          id="delete-button"
-          dependencies={[blockProps]}
-          extra={{ group: 'slot' }}
-        >
-          <div></div>
-        </Plug>
+        <>
+          <Plug
+            pluggable="block-toolbar-extra"
+            id="delete-button"
+            dependencies={[blockProps]}
+            extra={{ group: 'slot' }}
+          >
+            <></>
+          </Plug>
+          <Plug
+            pluggable="block-toolbar-main"
+            id="mutate-block-button"
+            dependencies={[blockProps]}
+          >
+            <></>
+          </Plug>
+        </>
       ) : (
         ''
       )}

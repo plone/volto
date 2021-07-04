@@ -215,6 +215,7 @@ class Edit extends Component {
     const { settings } = config;
     const usesQuantaToolbar = settings.useQuantaToolbar; // && !usesClassicWrapper(this.props.data);
     const PlugInsert = usesQuantaToolbar ? Plug : PassThrough;
+    const { selected } = this.props;
 
     return (
       <>
@@ -292,20 +293,26 @@ class Edit extends Component {
           }}
         />
         <InlineToolbar />
-        <PlugInsert pluggable="block-toolbar" id="block-text-toolbar">
-          {this.props.selected && (
-            <BlockChooserButton
-              data={this.props.data}
-              block={this.props.block}
-              onInsertBlock={(id, value) => {
-                this.props.onSelectBlock(this.props.onInsertBlock(id, value));
-              }}
-              allowedBlocks={this.props.allowedBlocks}
-              blocksConfig={this.props.blocksConfig}
-              size="24px"
-              className="block-add-button"
-            />
-          )}
+        <PlugInsert
+          pluggable="block-toolbar-main"
+          id="mutate-block-button-classic"
+          dependencies={[selected]}
+        >
+          <>
+            {selected ? (
+              <BlockChooserButton
+                data={this.props.data}
+                block={this.props.block}
+                onInsertBlock={(id, value) => {
+                  this.props.onSelectBlock(this.props.onInsertBlock(id, value));
+                }}
+                allowedBlocks={this.props.allowedBlocks}
+                blocksConfig={this.props.blocksConfig}
+                size="24px"
+                className="block-add-button"
+              />
+            ) : null}
+          </>
         </PlugInsert>
       </>
     );

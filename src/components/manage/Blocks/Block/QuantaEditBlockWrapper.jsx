@@ -129,7 +129,7 @@ const QuantaEditBlockWrapper = (props) => {
             }}
           </Pluggable>
 
-          <Plug pluggable="block-toolbar-required" id="mutate-block-button">
+          <Plug pluggable="block-toolbar-main" id="mutate-block-button">
             <BlockChooserButton
               {...blockProps}
               onInsertBlock={(id, value) => {
