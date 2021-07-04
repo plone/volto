@@ -15,6 +15,7 @@
 
 - Add tests for `Select` component, document the use cases propely @sneridagh
 - Upgrade `AsyncSelect` to a version compatible with `react-select` v4 @sneridagh
+- Upgrade to latest `react-select` @sneridagh
 
 ## 13.6.0 (2021-07-03)
 
