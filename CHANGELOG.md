@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix InlineForm's understanding of missing default values @rexalex
+
 ### Internal
 
 ## 13.6.0 (2021-07-03)
