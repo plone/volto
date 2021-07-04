@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-27T19:30:59.079Z\n"
-"PO-Revision-Date: 2021-05-11 15:01-0300\n"
+"PO-Revision-Date: 2021-06-30 15:41+0200\n"
 "Last-Translator: Érico Andrei <ericof@plone.org>, 2021\n"
 "Language: pt_BR\n"
 "Language-Team: Portuguese (https://www.transifex.com/plone/teams/14552/pt/)\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Language-Name: Português do Brasil\n"
 "Preferred-Encodings: utf-8\n"
 "Domain: volto\n"
-"X-Generator: Poedit 2.4.3\n"
+"X-Generator: Poedit 3.0\n"
 
 #: components/manage/Blocks/HTML/Edit
 msgid "<p>Add some HTML here</p>"
@@ -123,6 +123,10 @@ msgstr "Adicionar novo usuário"
 msgid "Add to Groups"
 msgstr "Adicionar a grupos"
 
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Add vocabulary term"
+msgstr ""
+
 #: components/manage/Add/Add
 msgid "Add {type}"
 msgstr "Adicionar {type}"
@@ -157,7 +161,7 @@ msgstr "Descrição Alt"
 
 #: components/manage/Toolbar/More
 msgid "Apply working copy"
-msgstr ""
+msgstr "Aplicar a cópia de trabalho"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this field?"
@@ -283,7 +287,7 @@ msgstr "Alterar o estado de workflow recursivamente"
 
 #: components/manage/Toolbar/More
 msgid "Changes applied."
-msgstr ""
+msgstr "Alterações aplicadas."
 
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
@@ -418,11 +422,11 @@ msgstr "Declaração de copyright ou outras informações de direitos sobre este
 
 #: components/manage/Toolbar/More
 msgid "Create working copy"
-msgstr ""
+msgstr "Criar cópia de trabalho"
 
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 msgid "Created by {creator} on {date}"
-msgstr ""
+msgstr "Criado por {creator} em {date}"
 
 #: components/manage/Contents/Contents
 msgid "Created on"
@@ -1102,7 +1106,7 @@ msgstr "Nome de usuário"
 
 #: components/manage/Toolbar/More
 msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
-msgstr ""
+msgstr "Criado por {creator} em {date}. Esta não é mais uma cópia de trabalho, mas sim o conteúdo final."
 
 #: components/manage/Blocks/Table/Edit
 msgid "Make the table compact"
@@ -1349,11 +1353,11 @@ msgstr "Colar blocos"
 
 #: components/manage/Sharing/Sharing
 msgid "Permissions have been updated successfully"
-msgstr ""
+msgstr "Permissões atualizadas com sucesso"
 
 #: components/manage/Sharing/Sharing
 msgid "Permissions updated"
-msgstr ""
+msgstr "Permissões atualizadas"
 
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Toolbar/Toolbar
@@ -1500,9 +1504,13 @@ msgstr "Remover Item"
 msgid "Remove recurrence"
 msgstr "Remover a recorrência"
 
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Remove term"
+msgstr ""
+
 #: components/manage/Toolbar/More
 msgid "Remove working copy"
-msgstr ""
+msgstr "Remover a cópia de trabalho"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -1547,6 +1555,10 @@ msgstr "Obrigatório"
 #: helpers/MessageLabels/MessageLabels
 msgid "Required input is missing."
 msgstr "Falta informação obrigatória."
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Reset term title"
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 msgid "Results limit"
@@ -1620,7 +1632,7 @@ msgstr "Pesquisar"
 
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Search SVG"
-msgstr ""
+msgstr "SVG de busca"
 
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search Site"
@@ -1932,7 +1944,7 @@ msgstr "Foto/avatar do usuário"
 
 #: components/manage/Toolbar/More
 msgid "The working copy was discarded"
-msgstr ""
+msgstr "A cópia de trabalho foi descartada."
 
 #: components/theme/Footer/Footer
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
@@ -1957,11 +1969,11 @@ msgstr "Terceiro"
 
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 msgid "This has an ongoing working copy in {title}"
-msgstr ""
+msgstr "Este conteúdo tem uma cópia de trabalho ativa em {title}"
 
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 msgid "This is a working copy of {title}"
-msgstr ""
+msgstr "Esta é uma cópia de trabalho de {title}"
 
 #: components/manage/Contents/ContentsRenameModal
 msgid "This name will be displayed in the URL."
@@ -2173,11 +2185,23 @@ msgstr "Ver esta revisão"
 
 #: components/manage/Toolbar/More
 msgid "View working copy"
-msgstr ""
+msgstr "Exibir a cópia de trabalho"
 
 #: components/manage/Display/Display
 msgid "Viewmode"
 msgstr "Visão"
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary term"
+msgstr ""
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary term title"
+msgstr ""
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary terms"
+msgstr ""
 
 #: components/manage/Controlpanels/VersionOverview
 msgid "Warning Regarding debug mode"
