@@ -146,6 +146,7 @@ class SelectWidget extends Component {
   state = {
     // TODO: also take into account this.props.defaultValue?
     selectedOption: normalizeValue(this.props.choices, this.props.value),
+    search: '',
   };
 
   /**
@@ -169,10 +170,11 @@ class SelectWidget extends Component {
    */
   loadOptions = (search, previousOptions, additional) => {
     let hasMore = this.props.itemsTotal > previousOptions.length;
-    if (hasMore) {
-      const offset = this.state.search !== search ? 0 : additional.offset;
+    const offset = this.state.search !== search ? 0 : additional.offset;
+    this.setState({ search });
+
+    if (hasMore || this.state.search !== search) {
       this.props.getVocabulary(this.props.vocabBaseUrl, search, offset);
-      this.setState({ search });
 
       return {
         options:
@@ -186,7 +188,8 @@ class SelectWidget extends Component {
         },
       };
     }
-    return null;
+    // We should return always an object like this, if not it complains:
+    return { options: [] };
   };
 
   /**
@@ -209,7 +212,7 @@ class SelectWidget extends Component {
   render() {
     const { id, choices, onChange } = this.props;
     const Select = this.props.reactSelect.default;
-    const AsyncPaginate = this.props.reactSelectAsyncPaginate.default;
+    const AsyncPaginate = this.props.reactSelectAsyncPaginate.AsyncPaginate;
 
     return (
       <FormFieldWrapper {...this.props}>
