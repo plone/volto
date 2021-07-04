@@ -11,11 +11,12 @@ import { Icon } from '@plone/volto/components';
 const BlockToolbarItem = (props) => {
   const { isMenuShape = false, icon, label, ...rest } = props;
   return isMenuShape ? (
-    <Dropdown.Item icon={icon} {...rest}>
+    <Dropdown.Item {...rest}>
+      <Icon name={icon} size="18px" />
       {label}
     </Dropdown.Item>
   ) : (
-    <Button icon basic {...rest}>
+    <Button icon basic {...rest} title={label}>
       <Icon name={icon} size="18px" />
     </Button>
   );

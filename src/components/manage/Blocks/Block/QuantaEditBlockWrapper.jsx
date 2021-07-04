@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import { Button, Dropdown } from 'semantic-ui-react';
+import { Menu, Button, Dropdown } from 'semantic-ui-react';
 import includes from 'lodash/includes';
 import isBoolean from 'lodash/isBoolean';
 import { defineMessages, useIntl } from 'react-intl';
@@ -83,39 +83,46 @@ const QuantaEditBlockWrapper = (props) => {
                 .map((p) => p(options))
                 .filter((r) => !!r);
 
-              const allItems = [
-                ...[...Object.keys(groups).map((n) => groups[n])],
-                ...ungrouped,
-              ].reduce((n, acc) => acc + n, 0);
+              let allItems = [...ungrouped]; // TODO: use reduce
+              Object.keys(groups)
+                .map((n) => groups[n])
+                .forEach((entries) => (allItems = [...allItems, ...entries]));
 
               return allItems.length > 1 ? (
-                <Button basic icon>
-                  <Dropdown
-                    item
-                    icon={<Icon name={moreSVG} size="18px" color="#826a6a" />}
-                    className=""
-                  >
-                    {Object.keys(groups).map((groupName) => {
-                      const results = groups[groupName];
-                      const { title } = config.blocks.toolbarGroups.find(
-                        (g) => g.id === groupName,
-                      );
-                      return (
-                        <Dropdown.Menu className="right" key={groupName}>
-                          <Dropdown.Header content={title} />
-                          <Dropdown.Menu scrolling>{results}</Dropdown.Menu>
-                        </Dropdown.Menu>
-                      );
-                    })}
-                    {ungrouped.length && (
-                      <Dropdown.Menu className="right" key="ungrouped">
-                        <Dropdown.Menu scrolling>
+                <Dropdown
+                  item
+                  icon={
+                    <Button basic icon>
+                      <Icon name={moreSVG} size="18px" color="#826a6a" />
+                    </Button>
+                  }
+                  className=""
+                >
+                  <Dropdown.Menu className="right" scrolling>
+                    <>
+                      {Object.keys(groups).map((groupName) => {
+                        const results = groups[groupName];
+                        const { title } = config.blocks.toolbarGroups.find(
+                          (g) => g.id === groupName,
+                        );
+                        return (
+                          <>
+                            <Dropdown.Header content={title} />
+                            <Dropdown.Menu scrolling>{results}</Dropdown.Menu>
+                          </>
+                        );
+                      })}
+                      {ungrouped.length > 0 ? (
+                        <>
+                          <Dropdown.Divider />
                           {ungrouped.map((r, i) => r)}
-                        </Dropdown.Menu>
-                      </Dropdown.Menu>
-                    )}
-                  </Dropdown>
-                </Button>
+                        </>
+                      ) : (
+                        ''
+                      )}
+                    </>
+                  </Dropdown.Menu>
+                </Dropdown>
               ) : allItems.length === 1 ? (
                 allItems[0]
               ) : null;

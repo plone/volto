@@ -9,10 +9,10 @@ import { BlockToolbarItem } from '@plone/volto/components';
 const SlotEditBlockWrapper = (props) => {
   const { blockProps } = props;
   const { data } = blockProps;
-  // const inherited = data._v_inherit && 'slot-inherited';
+  const inherited = data._v_inherit ? 'slot-inherited' : null;
+  console.log('data', data);
   // , selected, block
 
-  const inherited = true;
   return (
     <>
       <QuantaEditBlockWrapper
@@ -23,41 +23,17 @@ const SlotEditBlockWrapper = (props) => {
           inherited || '',
         )}
       />
-
-      {inherited && (
+      {inherited ? (
         <Plug
           pluggable="block-toolbar-extra"
           id="delete-button"
           dependencies={[blockProps]}
           extra={{ group: 'slot' }}
         >
-          {(options) => (
-            <BlockToolbarItem
-              icon={trashSVG}
-              label="Delete block"
-              group="block"
-              {...options}
-            />
-          )}
+          <div>inherited</div>
         </Plug>
-      )}
-
-      {inherited && (
-        <Plug
-          pluggable="block-toolbar-extra"
-          id="delete-button-2"
-          dependencies={[blockProps]}
-          extra={{ group: 'misc' }}
-        >
-          {(options) => (
-            <BlockToolbarItem
-              icon={trashSVG}
-              label="Delete block"
-              group="block"
-              {...options}
-            />
-          )}
-        </Plug>
+      ) : (
+        ''
       )}
     </>
   );
