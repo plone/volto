@@ -84,7 +84,7 @@ msgstr "Benutzer hinzufügen"
 msgid "Add a description…"
 msgstr "Beschreibung hinzufügen…"
 
-#: components/manage/Blocks/Block/MutateBlockButton
+#: components/manage/BlockChooser/BlockChooserButton
 msgid "Add block"
 msgstr ""
 

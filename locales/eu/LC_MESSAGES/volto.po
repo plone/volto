@@ -76,7 +76,7 @@ msgstr "Gehitu erabiltzailea"
 msgid "Add a description…"
 msgstr "Gehitu deskribapena..."
 
-#: components/manage/Blocks/Block/MutateBlockButton
+#: components/manage/BlockChooser/BlockChooserButton
 msgid "Add block"
 msgstr ""
 

@@ -69,7 +69,7 @@ msgstr "Adăugare utilizator"
 msgid "Add a description…"
 msgstr "Adăugați o descriere …"
 
-#: components/manage/Blocks/Block/MutateBlockButton
+#: components/manage/BlockChooser/BlockChooserButton
 msgid "Add block"
 msgstr ""
 
