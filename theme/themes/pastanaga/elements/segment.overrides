@@ -60,6 +60,10 @@
   text-transform: uppercase;
 }
 
+.users-control-panel table div.item::after {
+  display: none;
+}
+
 .ui.segment.imageborder {
   display: flex;
   height: 100%;

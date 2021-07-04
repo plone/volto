@@ -461,19 +461,19 @@ class UsersControlpanel extends Component {
                     title: this.props.intl.formatMessage(
                       messages.addUserFormRolesTitle,
                     ),
-                    type: 'array',
                     choices: this.props.roles.map((role) => [role.id, role.id]),
+                    noValueOption: false,
                     description: '',
                   },
                   groups: {
                     title: this.props.intl.formatMessage(
                       messages.addUserGroupNameTitle,
                     ),
-                    type: 'array',
                     choices: this.props.groups.map((group) => [
                       group.id,
                       group.id,
                     ]),
+                    noValueOption: false,
                     description: '',
                   },
                 },
