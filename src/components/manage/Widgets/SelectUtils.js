@@ -49,10 +49,11 @@ export function normalizeValue(choices, value) {
       label: value.title !== 'None' && value.title ? value.title : value.token,
       value: value.token,
     };
-  } else if (value && choices.length > 0 && isArray(choices[0])) {
+  } else if (value && choices && choices.length > 0 && isArray(choices[0])) {
     return { label: find(choices, (o) => o[0] === value)?.[1] || value, value };
   } else if (
     value &&
+    choices &&
     choices.length > 0 &&
     Object.keys(choices[0]).includes('value') &&
     Object.keys(choices[0]).includes('label')
