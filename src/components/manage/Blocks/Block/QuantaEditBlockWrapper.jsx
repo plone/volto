@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import { Menu, Button, Dropdown } from 'semantic-ui-react';
+import { Button, Dropdown } from 'semantic-ui-react';
 import includes from 'lodash/includes';
 import isBoolean from 'lodash/isBoolean';
 import { defineMessages, useIntl } from 'react-intl';
