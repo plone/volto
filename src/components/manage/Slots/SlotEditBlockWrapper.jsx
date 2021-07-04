@@ -13,11 +13,9 @@ const SlotEditBlockWrapper = (props) => {
     <>
       <QuantaEditBlockWrapper
         {...props}
-        className={cx(
-          'slot-editor',
-          `slot-editor-${data['@type']}`,
-          inherited || '',
-        )}
+        classNames={cx('slot-editor', `slot-editor-${data['@type']}`, {
+          'slot-inherited': inherited,
+        })}
       />
       {selected && inherited ? (
         <Plug

@@ -26,7 +26,7 @@ const hideHandler = (data) => {
 };
 
 const QuantaEditBlockWrapper = (props) => {
-  const { blockProps, draginfo, children, className } = props;
+  const { blockProps, draginfo, children, classNames } = props;
   const intl = useIntl();
   const { selected, data, type, onDeleteBlock, block } = blockProps;
   const required = isBoolean(data.required)
@@ -42,7 +42,7 @@ const QuantaEditBlockWrapper = (props) => {
       className={cx(
         'quanta-block',
         `quanta-block-editor-${data['@type']}`,
-        className,
+        classNames,
       )}
     >
       {selected ? (

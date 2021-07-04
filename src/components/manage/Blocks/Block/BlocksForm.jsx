@@ -19,6 +19,22 @@ import { useDetectClickOutside } from '@plone/volto/helpers';
 import QuantaEditBlockWrapper from './QuantaEditBlockWrapper';
 import config from '@plone/volto/registry';
 
+const topLevelBlockWrapper = ({ draginfo }, editBlock, blockProps) => {
+  return (
+    <QuantaEditBlockWrapper draginfo={draginfo} blockProps={blockProps}>
+      {editBlock}
+    </QuantaEditBlockWrapper>
+  );
+};
+
+const defaultBlockWrapper = ({ draginfo }, editBlock, blockProps) => {
+  return (
+    <EditBlockWrapper draginfo={draginfo} blockProps={blockProps}>
+      {editBlock}
+    </EditBlockWrapper>
+  );
+};
+
 const BlocksForm = (props) => {
   const {
     pathname,
@@ -143,23 +159,11 @@ const BlocksForm = (props) => {
     onChangeFormData(newFormData);
   };
 
-  const defaultBlockWrapper = ({ draginfo }, editBlock, blockProps) => {
-    if (config.settings.useQuantaToolbar) {
-      return (
-        <QuantaEditBlockWrapper draginfo={draginfo} blockProps={blockProps}>
-          {editBlock}
-        </QuantaEditBlockWrapper>
-      );
-    } else {
-      return (
-        <EditBlockWrapper draginfo={draginfo} blockProps={blockProps}>
-          {editBlock}
-        </EditBlockWrapper>
-      );
-    }
-  };
-
-  const editBlockWrapper = children || defaultBlockWrapper;
+  const editBlockWrapper =
+    children ||
+    (props.isMainForm && config.settings.useQuantaToolbar
+      ? topLevelBlockWrapper
+      : defaultBlockWrapper);
 
   return (
     <div className="blocks-form" ref={ref}>

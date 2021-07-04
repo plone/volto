@@ -165,6 +165,7 @@ class EditSlot extends React.Component {
               metadata={content}
               properties={data}
               blocksConfig={blocksConfig}
+              isMainForm
             >
               {({ draginfo }, editBlock, blockProps) => (
                 <SlotEditBlockWrapper
