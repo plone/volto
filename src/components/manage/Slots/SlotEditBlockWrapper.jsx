@@ -26,8 +26,15 @@ const SlotEditBlockWrapper = (props) => {
         <></>
       </Plug>
 
-      {selected && inherited ? (
+      {selected && inherited && (
         <>
+          <Plug
+            pluggable="block-toolbar-main"
+            id="mutate-block-button"
+            dependencies={[blockProps]}
+          >
+            <></>
+          </Plug>
           <Plug
             pluggable="block-toolbar-extra"
             id="delete-button"
@@ -40,12 +47,8 @@ const SlotEditBlockWrapper = (props) => {
             pluggable="block-toolbar-main"
             id="mutate-block-button"
             dependencies={[blockProps]}
-          >
-            <></>
-          </Plug>
+          ></Plug>
         </>
-      ) : (
-        ''
       )}
     </>
   );
