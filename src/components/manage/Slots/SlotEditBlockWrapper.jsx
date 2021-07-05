@@ -39,16 +39,21 @@ const SlotEditBlockWrapper = (props) => {
             id="hide-slot-fill"
             dependencies={[blockProps]}
           >
-            {(options) => (
-              <BlockToolbarItem
-                {...options}
-                label="Hide slot fill"
-                icon={blockIsHidden ? showSVG : hideSVG}
-                onClick={() =>
-                  onChangeBlock(block, { ...data, 'v:hidden': !blockIsHidden })
-                }
-              />
-            )}
+            {(options) => {
+              return (
+                <BlockToolbarItem
+                  {...options}
+                  label="Hide slot fill"
+                  icon={blockIsHidden ? showSVG : hideSVG}
+                  onClick={() =>
+                    onChangeBlock(block, {
+                      ...data,
+                      'v:hidden': !blockIsHidden,
+                    })
+                  }
+                />
+              );
+            }}
           </Plug>
           {/* Hide the mutate and delete buttons, if slot is inherited */}
           <Plug
