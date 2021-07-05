@@ -6,6 +6,8 @@ import { Plug } from '@plone/volto/components/manage/Pluggable';
 import { BlockToolbarItem } from '@plone/volto/components';
 import hideSVG from '@plone/volto/icons/hide.svg';
 import showSVG from '@plone/volto/icons/show.svg';
+import lockOffSVG from '@plone/volto/icons/lock-off.svg';
+import lockSVG from '@plone/volto/icons/lock.svg';
 
 const SlotEditBlockWrapper = (props) => {
   const { blockProps } = props;
@@ -34,6 +36,27 @@ const SlotEditBlockWrapper = (props) => {
 
       {selected && inherited && (
         <>
+          <Plug
+            pluggable="block-toolbar-main"
+            id="lockunlock-slot-fill"
+            dependencies={[blockProps]}
+          >
+            {(options) => {
+              return (
+                <BlockToolbarItem
+                  {...options}
+                  label="Unlock fill"
+                  icon={lockOffSVG}
+                  onClick={() =>
+                    onChangeBlock(block, {
+                      ...data,
+                      'v:hidden': !blockIsHidden,
+                    })
+                  }
+                />
+              );
+            }}
+          </Plug>
           <Plug
             pluggable="block-toolbar-main"
             id="hide-slot-fill"
