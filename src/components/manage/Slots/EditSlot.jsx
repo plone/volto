@@ -239,7 +239,7 @@ class EditSlot extends React.Component {
                   <fieldset>
                     <legend>Block color legend</legend>
                     <div className="block">
-                      <div className="block">Regular slot fill</div>
+                      <div className="block selected">Regular slot fill</div>
                     </div>
                   </fieldset>
                 </Segment>
