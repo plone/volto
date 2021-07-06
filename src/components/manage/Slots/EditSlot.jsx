@@ -46,7 +46,7 @@ const messages = defineMessages({
  * Given a blocks form, makes adds an empty placeholder block is none exists
  */
 function addPlaceholderBlock(formData) {
-  const blocks = getBlocks(formData);
+  const blocks = getBlocks(formData || {});
 
   const emptyBlocks = blocks
     .filter(([, block]) => !blockHasValue(block))

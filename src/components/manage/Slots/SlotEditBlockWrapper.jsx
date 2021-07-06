@@ -110,7 +110,7 @@ const SlotEditBlockWrapper = (props) => {
                 icon={trashSVG}
                 onClick={() => {
                   ReactDOM.unstable_batchedUpdates(() => {
-                    // console.log({ block, data, properties });
+                    console.log({ block, data, properties });
                     const [newFormData, blockId] = restoreBlock(
                       block,
                       data,
@@ -118,7 +118,7 @@ const SlotEditBlockWrapper = (props) => {
                     );
                     newFormData.blocks[blockId]._v_inherit = true;
                     newFormData.blocks[blockId].readOnly = true;
-                    // console.log(newFormData, blockId);
+                    console.log(newFormData, blockId);
 
                     onChangeField('blocks', newFormData['blocks']);
                     onChangeField(
@@ -157,6 +157,7 @@ const SlotEditBlockWrapper = (props) => {
                       );
                       delete newFormData.blocks[blockId]._v_inherit;
                       delete newFormData.blocks[blockId].readOnly;
+                      console.log('newformData', newFormData);
 
                       onChangeField('blocks', newFormData['blocks']);
                       onChangeField(
@@ -194,6 +195,11 @@ const SlotEditBlockWrapper = (props) => {
                         ...newFormData.blocks[blockId],
                         'v:hidden': !blockIsHidden,
                       };
+
+                      if (!blockIsHidden) {
+                        delete newFormData.blocks[blockId]._v_inherit;
+                      }
+                      console.log('newformData', newFormData);
 
                       onChangeField('blocks', newFormData['blocks']);
                       onChangeField(

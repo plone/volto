@@ -15,22 +15,22 @@ const PluggableMenuSection = (props) => {
         const options = { isMenuShape: pluggables.length > 1, ...params };
         config.blocks.toolbarGroups.forEach(({ id, title }) => {
           groups[id] = pluggables
-            .filter((p, i) => {
-              if (p.extra?.group === id) {
+            .filter((plug, i) => {
+              if (plug.extra?.group === id) {
                 seen.push(i);
                 return true;
               }
               return false;
             })
-            .map((p) => p(options))
-            .filter((r) => !!r);
+            .map((plug) => [plug(options), plug.id])
+            .filter(([res]) => !!res);
         });
         const ungrouped = pluggables
-          .filter((p, i) => seen.indexOf(i) === -1)
-          .map((p) => p(options))
-          .filter((r) => !!r);
+          .filter((plug, i) => seen.indexOf(i) === -1)
+          .map((plug) => [plug(options), plug.id])
+          .filter(([res]) => !!res);
 
-        // NOTE: this will reorder even if ungroupd, based on config group
+        // NOTE: this will reorder even if ungrouped, based on config group
         // defined order
         let allItems = []; // TODO: use reduce
         Object.keys(groups)
@@ -58,14 +58,20 @@ const PluggableMenuSection = (props) => {
                   return (
                     <>
                       <Dropdown.Header content={title} />
-                      <Dropdown.Menu scrolling>{results}</Dropdown.Menu>
+                      <Dropdown.Menu scrolling>
+                        {results.map(([res, id]) => (
+                          <React.Fragment key={id}>{res}</React.Fragment>
+                        ))}
+                      </Dropdown.Menu>
                     </>
                   );
                 })}
                 {ungrouped.length > 0 ? (
                   <>
                     <Dropdown.Divider />
-                    {ungrouped.map((r, i) => r)}
+                    {ungrouped.map(([res, id]) => (
+                      <React.Fragment key={id}>{res}</React.Fragment>
+                    ))}
                   </>
                 ) : (
                   ''
@@ -74,7 +80,9 @@ const PluggableMenuSection = (props) => {
             </Dropdown.Menu>
           </Dropdown>
         ) : allItems.length > 0 ? (
-          allItems
+          allItems.map(([res, id]) => (
+            <React.Fragment key={id}>{res}</React.Fragment>
+          ))
         ) : null;
       }}
     </Pluggable>
