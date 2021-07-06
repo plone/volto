@@ -11,6 +11,7 @@
 ### Bugfix
 
 - Fix outside click handling in object browser @nzambello
+- Fix InlineForm's understanding of missing default values @rexalex
 
 ### Internal
 
