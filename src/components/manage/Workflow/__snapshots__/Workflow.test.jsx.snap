@@ -33,7 +33,7 @@ exports[`Workflow renders a workflow component 1`] = `
         <input
           aria-autocomplete="list"
           class="css-wmatm6-dummyInput-DummyInput"
-          id="react-select-2-input"
+          id="react-select-3-input"
           readonly=""
           tabindex="0"
           value=""

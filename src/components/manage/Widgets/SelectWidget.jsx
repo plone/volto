@@ -211,6 +211,8 @@ class SelectWidget extends Component {
    */
   render() {
     const { id, choices, onChange } = this.props;
+    // Make sure that both disabled and isDisabled (from the DX layout feat work)
+    const disabled = this.props.disabled || this.props.isDisabled;
     const Select = this.props.reactSelect.default;
     const AsyncPaginate = this.props.reactSelectAsyncPaginate.AsyncPaginate;
 
@@ -219,7 +221,7 @@ class SelectWidget extends Component {
         {this.props.vocabBaseUrl ? (
           <>
             <AsyncPaginate
-              isDisabled={this.props.isDisabled}
+              isDisabled={disabled}
               className="react-select-container"
               classNamePrefix="react-select"
               options={this.props.choices || []}
@@ -243,7 +245,7 @@ class SelectWidget extends Component {
             id={`field-${id}`}
             key={this.props.choices}
             name={id}
-            isDisabled={this.props.isDisabled}
+            isDisabled={disabled}
             className="react-select-container"
             classNamePrefix="react-select"
             isMulti={
