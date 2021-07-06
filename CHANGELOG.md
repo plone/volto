@@ -1,18 +1,31 @@
 # Change Log
 
-## 13.5.1 (unreleased)
+## 13.6.1 (unreleased)
 
 ### Breaking
 
 ### Feature
 
 - Close object browser when pressing ESC @nzambello
+
+### Bugfix
+
+- Fix outside click handling in object browser @nzambello
+
+### Internal
+
+## 13.6.0 (2021-07-03)
+
+### Feature
+
 - Add VocabularyTermsWidget and map to field with widget attribute set to 'vocabularyterms'. @ksuess
 
 ### Bugfix
 
-- fix test @giuliaghisini
-- Fix outside click handling in object browser @nzambello
+- added "Complementary" landmark-role to skiplink-container for a11y @ThomasKindermann
+- changed breadcrumb link text-color slightly for a11y color contrast @ThomasKindermann
+- changed table headline text color to black for a11y @ThomasKindermann
+
 ### Internal
 
 - Updated Brazilian Portuguese translations @ericof
@@ -45,6 +58,7 @@
 ### Feature
 
 - Allowing user to paste url in search box in objectBrowser @iFlameing
+- Allowing user to click on the breadcrumbs of objectBrowser @iFlameing
 - `Navigation` and `Breadcrumbs` are `apiExpanders` aware and run the action depending on them @sneridagh
 
 ### Bugfix
@@ -62,6 +76,7 @@
 
 ### Bugfix
 
+- Avoid debugging error in toolbar @tiberiuichim
 - Fix the bug related to specific versioning view @iFlameing
 - Fix blocks-listing Cypress test @giuliaghisini
 - Fix the translation of header in babel view @iFlameing
