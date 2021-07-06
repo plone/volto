@@ -235,14 +235,16 @@ class EditSlot extends React.Component {
                     })
                   }
                 />
-                <Segment>
-                  <fieldset>
-                    <legend>Block color legend</legend>
-                    <div className="block">
-                      <div className="block selected">Regular slot fill</div>
-                    </div>
-                  </fieldset>
-                </Segment>
+                {false && (
+                  <Segment>
+                    <fieldset>
+                      <legend>Block color legend</legend>
+                      <div className="block">
+                        <div className="block selected">Regular slot fill</div>
+                      </div>
+                    </fieldset>
+                  </Segment>
+                )}
               </div>
             </Portal>
           </div>

@@ -13,7 +13,7 @@ import showSVG from '@plone/volto/icons/show.svg';
 import lockOffSVG from '@plone/volto/icons/lock-off.svg';
 import trashSVG from '@plone/volto/icons/delete.svg';
 
-const unlockBlock = (block, formData) => {
+const copyBlock = (block, data, formData) => {
   const newId = uuid();
   const newFormData = {
     blocks_layout: {
@@ -25,23 +25,19 @@ const unlockBlock = (block, formData) => {
       [newId]: {
         ...formData.blocks[block],
         's:isVariantOf': block,
+        _v_original: { ...data },
       },
     },
   };
 
-  // we keep this block around, just in case the user locks/unlocks the block
-  // it should be cleaned up in the backend
-  // delete newFormData.blocks[block];
-
-  delete newFormData.blocks[newId]._v_inherit;
-  delete newFormData.blocks[newId].readOnly;
+  delete newFormData.blocks[block];
 
   const ix = formData.blocks_layout.items.indexOf(block);
   newFormData.blocks_layout.items[ix] = newId;
   return [newFormData, newId];
 };
 
-const lockBlock = (block, data, formData) => {
+const restoreBlock = (block, data, formData) => {
   const oldId = data['s:isVariantOf'];
 
   const newFormData = {
@@ -52,9 +48,7 @@ const lockBlock = (block, data, formData) => {
     blocks: {
       ...formData.blocks,
       [oldId]: {
-        ...formData.blocks[oldId],
-        // _v_inherit: true,
-        // readOnly: true,
+        ...data._v_original, //  || formData.blocks[oldId]
       },
     },
   };
@@ -72,7 +66,7 @@ const SlotEditBlockWrapper = (props) => {
     data,
     selected,
     block,
-    onChangeBlock,
+    // onChangeBlock,
     onChangeField,
     onSelectBlock,
     properties,
@@ -116,11 +110,15 @@ const SlotEditBlockWrapper = (props) => {
                 icon={trashSVG}
                 onClick={() => {
                   ReactDOM.unstable_batchedUpdates(() => {
-                    const [newFormData, blockId] = lockBlock(
+                    // console.log({ block, data, properties });
+                    const [newFormData, blockId] = restoreBlock(
                       block,
                       data,
                       properties,
                     );
+                    newFormData.blocks[blockId]._v_inherit = true;
+                    newFormData.blocks[blockId].readOnly = true;
+                    // console.log(newFormData, blockId);
 
                     onChangeField('blocks', newFormData['blocks']);
                     onChangeField(
@@ -152,10 +150,13 @@ const SlotEditBlockWrapper = (props) => {
                   icon={lockOffSVG}
                   onClick={() => {
                     ReactDOM.unstable_batchedUpdates(() => {
-                      const [newFormData, blockId] = unlockBlock(
+                      const [newFormData, blockId] = copyBlock(
                         block,
+                        data,
                         properties,
                       );
+                      delete newFormData.blocks[blockId]._v_inherit;
+                      delete newFormData.blocks[blockId].readOnly;
 
                       onChangeField('blocks', newFormData['blocks']);
                       onChangeField(
@@ -181,12 +182,28 @@ const SlotEditBlockWrapper = (props) => {
                   {...options}
                   label="Hide slot fill"
                   icon={blockIsHidden ? showSVG : hideSVG}
-                  onClick={() =>
-                    onChangeBlock(block, {
-                      ...data,
-                      'v:hidden': !blockIsHidden,
-                    })
-                  }
+                  onClick={() => {
+                    ReactDOM.unstable_batchedUpdates(() => {
+                      const op = blockIsHidden ? restoreBlock : copyBlock;
+                      const [newFormData, blockId] = op(
+                        block,
+                        data,
+                        properties,
+                      );
+                      newFormData.blocks[blockId] = {
+                        ...newFormData.blocks[blockId],
+                        'v:hidden': !blockIsHidden,
+                      };
+
+                      onChangeField('blocks', newFormData['blocks']);
+                      onChangeField(
+                        'blocks_layout',
+                        newFormData['blocks_layout'],
+                      );
+
+                      onSelectBlock(blockId);
+                    });
+                  }}
                 />
               );
             }}
