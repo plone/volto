@@ -12,6 +12,9 @@
 
 ### Internal
 
+- Update `browserlist` DB @sneridagh
+- Install `luxon` explicitly to fix `rrule` package flickering deps (yarn problem) @sneridagh
+
 ## 13.6.0 (2021-07-03)
 
 ### Feature
