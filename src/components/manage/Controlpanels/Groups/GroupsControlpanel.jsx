@@ -444,6 +444,7 @@ class GroupsControlpanel extends Component {
                     title: this.props.intl.formatMessage(
                       messages.addGroupsFormRolesTitle,
                     ),
+                    type: 'array',
                     choices: this.props.roles.map((role) => [role.id, role.id]),
                     noValueOption: false,
                     description: '',
