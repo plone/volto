@@ -127,6 +127,10 @@ msgstr "Ajouter un nouvel utilistateur"
 msgid "Add to Groups"
 msgstr "Ajouter aux groupes"
 
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Add vocabulary term"
+msgstr ""
+
 #: components/manage/Add/Add
 msgid "Add {type}"
 msgstr "Ajouter {type}"
@@ -158,6 +162,10 @@ msgstr ""
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Alt text"
 msgstr "Texte pour la balise alt"
+
+#: components/manage/Toolbar/More
+msgid "Apply working copy"
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this field?"
@@ -280,6 +288,10 @@ msgstr "Modifier l'état"
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Change workflow state recursively"
 msgstr "Modifier le "
+
+#: components/manage/Toolbar/More
+msgid "Changes applied."
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
@@ -411,6 +423,14 @@ msgstr "Droits d'auteur"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Copyright statement or other rights information on this item."
 msgstr "Droits d'auteur ou autres informations sur les droits sur cet élément"
+
+#: components/manage/Toolbar/More
+msgid "Create working copy"
+msgstr ""
+
+#: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
+msgid "Created by {creator} on {date}"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Created on"
@@ -1098,6 +1118,10 @@ msgstr "Echec de la connexion"
 msgid "Login Name"
 msgstr "Identifiant"
 
+#: components/manage/Toolbar/More
+msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 msgid "Make the table compact"
 msgstr "Faire une table compacte"
@@ -1257,6 +1281,7 @@ msgstr "Aucun profile de désinstalation"
 
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
+#: components/manage/Widgets/SelectUtils
 #: components/manage/Widgets/SelectWidget
 msgid "No value"
 msgstr "Aucune valeur"
@@ -1498,6 +1523,14 @@ msgstr ""
 msgid "Remove recurrence"
 msgstr ""
 
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Remove term"
+msgstr ""
+
+#: components/manage/Toolbar/More
+msgid "Remove working copy"
+msgstr ""
+
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 msgid "Rename"
@@ -1541,6 +1574,10 @@ msgstr "Obligatoire"
 #: helpers/MessageLabels/MessageLabels
 msgid "Required input is missing."
 msgstr "Un champ obligatoire est manquant"
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Reset term title"
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 msgid "Results limit"
@@ -1924,6 +1961,10 @@ msgstr "Le processus d'inscription a réussi. Veuillez vérifier votre boîte e-
 msgid "The user portrait/avatar"
 msgstr "Portrait / avatar de l'utilisateur"
 
+#: components/manage/Toolbar/More
+msgid "The working copy was discarded"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
 msgstr "Le {plonecms} est {copyright} 2000-{current_year} par la {plonefoundation} et ses amis."
@@ -1943,6 +1984,14 @@ msgstr "Il y a eu quelques erreurs."
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Third"
+msgstr ""
+
+#: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
+msgid "This has an ongoing working copy in {title}"
+msgstr ""
+
+#: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
+msgid "This is a working copy of {title}"
 msgstr ""
 
 #: components/manage/Contents/ContentsRenameModal
@@ -2154,9 +2203,25 @@ msgstr "Voir les changements"
 msgid "View this revision"
 msgstr "Voir cette révision"
 
+#: components/manage/Toolbar/More
+msgid "View working copy"
+msgstr ""
+
 #: components/manage/Display/Display
 msgid "Viewmode"
 msgstr "Mode d'affichage"
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary term"
+msgstr ""
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary term title"
+msgstr ""
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary terms"
+msgstr ""
 
 #: components/manage/Controlpanels/VersionOverview
 msgid "Warning Regarding debug mode"

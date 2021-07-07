@@ -120,3 +120,8 @@ export { getContextNavigation } from '@plone/volto/actions/contextNavigation/con
 export { authenticatedRole } from '@plone/volto/actions/authRole/authRole';
 export * from './asyncConnect/asyncConnect';
 export { changeLanguage, changeLanguageCookies } from './language/language';
+export {
+  applyWorkingCopy,
+  createWorkingCopy,
+  removeWorkingCopy,
+} from './workingcopy/workingcopy';

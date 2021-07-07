@@ -40,6 +40,7 @@ import blocksClipboard from '@plone/volto/reducers/blocksClipboard/blocksClipboa
 import lazyLibraries from '@plone/volto/reducers/lazyLibraries/lazyLibraries';
 import contextNavigation from '@plone/volto/reducers/contextNavigation/contextNavigation';
 import reduxAsyncConnect from './asyncConnect/asyncConnect';
+import workingCopy from './workingcopy/workingcopy';
 
 /**
  * Root reducer.
@@ -85,6 +86,7 @@ const reducers = {
   blocksClipboard,
   lazyLibraries,
   contextNavigation,
+  workingCopy,
 };
 
 export default reducers;
