@@ -41,6 +41,7 @@ import { loggedIn } from '@plone/volto/selectors/userSession/userSession';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
 import MultilingualRedirector from '../MultilingualRedirector/MultilingualRedirector';
+import WorkingCopyToastsFactory from '../../manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory';
 
 import * as Sentry from '@sentry/browser';
 
@@ -154,6 +155,7 @@ class App extends Component {
           </Segment>
         </MultilingualRedirector>
         <Footer />
+        <WorkingCopyToastsFactory content={this.props.content} />
         <ToastContainer
           position={toast.POSITION.BOTTOM_CENTER}
           hideProgressBar
