@@ -14,6 +14,7 @@
 
 - Update `browserlist` DB @sneridagh
 - Install `luxon` explicitly to fix `rrule` package flickering deps (yarn problem) @sneridagh
+- Add Cypress test for Link content type @tisto
 
 ## 13.6.0 (2021-07-03)
 
