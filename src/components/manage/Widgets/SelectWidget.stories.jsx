@@ -1,5 +1,12 @@
 import React from 'react';
-import { SelectWidgetComponent as SelectComponent } from './SelectWidget';
+import { SelectWidgetComponent } from './SelectWidget';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import Wrapper from '@plone/volto/storybook';
+
+const SelectComponent = injectLazyLibs([
+  'reactSelect',
+  'reactSelectAsyncPaginate',
+])(SelectWidgetComponent);
 
 const Select = (args) => {
   const [value, setValue] = React.useState(args.value ?? '');
@@ -8,7 +15,11 @@ const Select = (args) => {
     setValue(value);
   };
 
-  return <SelectComponent {...args} onChange={onChange} value={value} />;
+  return (
+    <Wrapper>
+      <SelectComponent {...args} onChange={onChange} value={value} />
+    </Wrapper>
+  );
 };
 
 export const Default = Select.bind({});
