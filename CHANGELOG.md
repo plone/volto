@@ -16,6 +16,13 @@
 - Add tests for `Select` component, document the use cases propely @sneridagh
 - Upgrade `AsyncSelect` to a version compatible with `react-select` v4 @sneridagh
 - Upgrade to latest `react-select` @sneridagh
+- Fix InlineForm's understanding of missing default values @rexalex
+
+### Internal
+
+- Update `browserlist` DB @sneridagh
+- Install `luxon` explicitly to fix `rrule` package flickering deps (yarn problem) @sneridagh
+- Add Cypress test for Link content type @tisto
 
 ## 13.6.0 (2021-07-03)
 
