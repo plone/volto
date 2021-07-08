@@ -155,7 +155,7 @@ Disabled.args = {
 };
 
 export default {
-  title: 'Select',
+  title: 'Widgets/Select Widget',
   component: SelectComponent,
   decorators: [
     (Story) => (
