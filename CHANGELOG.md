@@ -16,8 +16,10 @@
 
 - Update `browserlist` DB @sneridagh
 - Install `luxon` explicitly to fix `rrule` package flickering deps (yarn problem) @sneridagh
+- Add a11y cypress test for table block @ThomasKindermann
 - Add Cypress test for Link content type @tisto
 - Upgrade plone.restapi to 8.4.1 in the dev buildout @tisto
+
 
 ## 13.6.0 (2021-07-03)
 
