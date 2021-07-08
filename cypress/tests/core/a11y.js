@@ -13,7 +13,7 @@ describe('Accessibility Tests', () => {
     cy.checkA11y();
   });
 
-  it.only('Table has no a11y violations', () => {
+  it('Table has no a11y violations', () => {
     cy.createContent({
       contentType: 'Document',
       contentId: 'document',
