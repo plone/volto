@@ -33,7 +33,7 @@ const QuantaEditBlockWrapper = (props) => {
     ? data.required
     : includes(config.blocks.requiredBlocks, type);
 
-  const visible = selected && !hideHandler(data);
+  const visibleHandler = selected && !hideHandler(data);
 
   return (
     <div
@@ -49,8 +49,8 @@ const QuantaEditBlockWrapper = (props) => {
         <div className="toolbar quanta-block-toolbar">
           <Button
             style={{
-              visibility: visible ? 'visible' : 'visible',
-              display: 'inline-block',
+              // avoid react-dnd to complain
+              visibility: visibleHandler ? 'visible' : 'visible',
             }}
             {...draginfo.dragHandleProps}
             icon

@@ -139,6 +139,13 @@ const SlotEditBlockWrapper = (props) => {
         <>
           <Plug
             pluggable="block-toolbar-main"
+            id="mutate-block-button"
+            dependencies={[blockProps]}
+          >
+            <div>Mutate</div>
+          </Plug>
+          <Plug
+            pluggable="block-toolbar-main"
             id="lockunlock-slot-fill"
             dependencies={[blockProps]}
           >
