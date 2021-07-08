@@ -151,7 +151,7 @@ describe('Add Content Tests', () => {
     cy.get('main').contains('https://google.com');
   });
 
-  it.only('As editor I can add a Link (with an internal link)', function () {
+  it('As editor I can add a Link (with an internal link)', function () {
 
     // Given a Document "Link Target"
     cy.createContent({
