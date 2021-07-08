@@ -128,7 +128,7 @@ describe('Add Content Tests', () => {
     cy.get('.navigation .item.active').should('have.text', 'My Folder');
   });
 
-  it('As editor I can add a link', function () {
+  it('As editor I can add a Link (with an external link)', function () {
 
     // When I add a link
     cy.get('#toolbar-add').click();
@@ -146,8 +146,43 @@ describe('Add Content Tests', () => {
     cy.url().should('eq', Cypress.config().baseUrl + '/my-link');
 
     // Then the link title should show up on the link view
+    cy.get('main').contains('My Link');
+    // and the link should show up on the link view
+    cy.get('main').contains('https://google.com');
+  });
+
+  it.only('As editor I can add a Link (with an internal link)', function () {
+
+    // Given a Document "Link Target"
+    cy.createContent({
+      contentType: 'Document',
+      contentId: 'link-target',
+      contentTitle: 'Link Target',
+    });
+
+    // When I add a Link with an internal link to "link-target"
+    cy.get('#toolbar-add').click();
+    cy.get('#toolbar-add-link').click();
+
+    cy.get('input[name="title"]')
+      .type('My Link')
+      .should('have.value', 'My Link');
+
+    cy.get('input[name="remoteUrl"]')
+      .type('/link-target')
+      .should('have.value', '/link-target');
+
+    cy.get('#toolbar-save').click();
+    cy.url().should('eq', Cypress.config().baseUrl + '/my-link');
+
+    // Then the link title should show up on the link view
     cy.contains('My Link');
     // and the link should show up on the link view
-    cy.contains('https://google.com');
+    cy.contains('/link-target');
+    // and the link redirects to the link target
+    cy.get('main a[href="/link-target"]').click();
+    cy.url().should('eq', Cypress.config().baseUrl + '/link-target');
+    cy.get('main').contains('Link Target');
   });
+
 });
