@@ -6,6 +6,8 @@
 
 ### Feature
 
+- VocabularyTermsWidget option with translations for config.settings.supportedLanguages @ksuess
+
 ### Bugfix
 
 - Fix InlineForm's understanding of missing default values @rexalex
