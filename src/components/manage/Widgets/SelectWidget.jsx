@@ -291,6 +291,8 @@ class SelectWidget extends Component {
   }
 }
 
+export const SelectWidgetComponent = injectIntl(SelectWidget);
+
 export default compose(
   injectIntl,
   injectLazyLibs(['reactSelect', 'reactSelectAsyncPaginate']),
