@@ -127,4 +127,27 @@ describe('Add Content Tests', () => {
     cy.url().should('eq', Cypress.config().baseUrl + '/my-folder');
     cy.get('.navigation .item.active').should('have.text', 'My Folder');
   });
+
+  it('As editor I can add a link', function () {
+
+    // When I add a link
+    cy.get('#toolbar-add').click();
+    cy.get('#toolbar-add-link').click();
+
+    cy.get('input[name="title"]')
+      .type('My Link')
+      .should('have.value', 'My Link');
+
+    cy.get('input[name="remoteUrl"]')
+      .type('https://google.com')
+      .should('have.value', 'https://google.com');
+
+    cy.get('#toolbar-save').click();
+    cy.url().should('eq', Cypress.config().baseUrl + '/my-link');
+
+    // Then the link title should show up on the link view
+    cy.contains('My Link');
+    // and the link should show up on the link view
+    cy.contains('https://google.com');
+  });
 });
