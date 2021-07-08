@@ -10,6 +10,11 @@ describe('Accessibility Tests', () => {
 
   it('Contact form has not a11y violations', () => {
     cy.navigate('/contact-form');
+    cy.get('#field-name').click().type('Input');
+    cy.get('#field-from').click().type('something@domain.com');
+    cy.get('#field-subject').click().type('Input');
+    cy.get('#field-message').click().type('Input');
+    cy.get('button[title="Send"]').click();
     cy.checkA11y();
   });
 
