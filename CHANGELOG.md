@@ -14,6 +14,7 @@
 
 - Update `browserlist` DB @sneridagh
 - Install `luxon` explicitly to fix `rrule` package flickering deps (yarn problem) @sneridagh
+- Add a11y cypress test for table block @ThomasKindermann
 
 ## 13.6.0 (2021-07-03)
 
