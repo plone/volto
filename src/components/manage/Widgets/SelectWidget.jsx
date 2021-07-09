@@ -19,10 +19,10 @@ import { getVocabulary, getVocabularyTokenTitle } from '@plone/volto/actions';
 import { normalizeValue } from './SelectUtils';
 
 import {
-  Option,
-  DropdownIndicator,
-  selectTheme,
   customSelectStyles,
+  DropdownIndicator,
+  Option,
+  selectTheme,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
