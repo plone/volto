@@ -11,9 +11,20 @@
 - A new component was added, `MutateBlockButton`, it encapsulate the logic of show/hiding the `BlockChooser` @tiberiuichim
 - A new component was added, `BlockChooserButton`, it encapsulate the logic of show/hiding the `BlockChooser` @tiberiuichim
 
+- VocabularyTermsWidget option with translations for config.settings.supportedLanguages @ksuess
+
 ### Bugfix
 
+- Fix InlineForm's understanding of missing default values @rexalex
+
 ### Internal
+
+- Update `browserlist` DB @sneridagh
+- Install `luxon` explicitly to fix `rrule` package flickering deps (yarn problem) @sneridagh
+- Add a11y cypress test for table block @ThomasKindermann
+- Add Cypress test for Link content type @tisto
+- Upgrade plone.restapi to 8.4.1 in the dev buildout @tisto
+
 
 ## 13.6.0 (2021-07-03)
 
