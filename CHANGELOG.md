@@ -8,6 +8,7 @@
 
 ### Bugfix
 
+- add "view" id to contact-form container for main content skiplink @ThomasKindermann
 - Fix InlineForm's understanding of missing default values @rexalex
 
 ### Internal
