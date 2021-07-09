@@ -43,7 +43,7 @@ const messages = defineMessages({
 });
 
 /**
- * Given a blocks form, makes adds an empty placeholder block is none exists
+ * Given a blocks form, adds an empty placeholder block is none exists
  */
 function addPlaceholderBlock(formData) {
   const blocks = getBlocks(formData || {});
@@ -139,6 +139,7 @@ class EditSlot extends React.Component {
     const { pathname, content } = this.props;
     const { data, selectedBlock } = this.state;
     const blocksConfig = slotsBlocksConfig(config.blocks.blocksConfig);
+
     return (
       <div id="slot-edit">
         <Helmet title="Edit slot" />

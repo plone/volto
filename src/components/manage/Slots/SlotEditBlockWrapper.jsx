@@ -13,7 +13,7 @@ import showSVG from '@plone/volto/icons/show.svg';
 import lockOffSVG from '@plone/volto/icons/lock-off.svg';
 import trashSVG from '@plone/volto/icons/delete.svg';
 
-const copyBlock = (block, data, formData) => {
+const customizeBlock = (block, data, formData) => {
   const newId = uuid();
   const newFormData = {
     blocks_layout: {
@@ -74,7 +74,6 @@ const SlotEditBlockWrapper = (props) => {
   const inherited = data._v_inherit ? 'slot-inherited' : null;
   const blockIsHidden = !!data['v:hidden'];
   const blockIsVariant = !!data['s:isVariantOf'];
-  // console.log(blockProps);
 
   return (
     <>
@@ -110,7 +109,6 @@ const SlotEditBlockWrapper = (props) => {
                 icon={trashSVG}
                 onClick={() => {
                   ReactDOM.unstable_batchedUpdates(() => {
-                    console.log({ block, data, properties });
                     const [newFormData, blockId] = restoreBlock(
                       block,
                       data,
@@ -118,7 +116,6 @@ const SlotEditBlockWrapper = (props) => {
                     );
                     newFormData.blocks[blockId]._v_inherit = true;
                     newFormData.blocks[blockId].readOnly = true;
-                    console.log(newFormData, blockId);
 
                     onChangeField('blocks', newFormData['blocks']);
                     onChangeField(
@@ -135,15 +132,18 @@ const SlotEditBlockWrapper = (props) => {
         </Plug>
       )}
 
+      {selected && blockIsHidden && (
+        <Plug
+          pluggable="block-toolbar-main"
+          id="mutate-block-button"
+          dependencies={[blockProps]}
+        >
+          <></>
+        </Plug>
+      )}
+
       {selected && inherited && (
         <>
-          <Plug
-            pluggable="block-toolbar-main"
-            id="mutate-block-button"
-            dependencies={[blockProps]}
-          >
-            <div>Mutate</div>
-          </Plug>
           <Plug
             pluggable="block-toolbar-main"
             id="lockunlock-slot-fill"
@@ -157,14 +157,13 @@ const SlotEditBlockWrapper = (props) => {
                   icon={lockOffSVG}
                   onClick={() => {
                     ReactDOM.unstable_batchedUpdates(() => {
-                      const [newFormData, blockId] = copyBlock(
+                      const [newFormData, blockId] = customizeBlock(
                         block,
                         data,
                         properties,
                       );
                       delete newFormData.blocks[blockId]._v_inherit;
                       delete newFormData.blocks[blockId].readOnly;
-                      console.log('newformData', newFormData);
 
                       onChangeField('blocks', newFormData['blocks']);
                       onChangeField(
@@ -192,7 +191,7 @@ const SlotEditBlockWrapper = (props) => {
                   icon={blockIsHidden ? showSVG : hideSVG}
                   onClick={() => {
                     ReactDOM.unstable_batchedUpdates(() => {
-                      const op = blockIsHidden ? restoreBlock : copyBlock;
+                      const op = blockIsHidden ? restoreBlock : customizeBlock;
                       const [newFormData, blockId] = op(
                         block,
                         data,
@@ -206,8 +205,6 @@ const SlotEditBlockWrapper = (props) => {
                       if (!blockIsHidden) {
                         delete newFormData.blocks[blockId]._v_inherit;
                       }
-                      console.log('newformData', newFormData);
-
                       onChangeField('blocks', newFormData['blocks']);
                       onChangeField(
                         'blocks_layout',

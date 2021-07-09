@@ -76,7 +76,11 @@ const QuantaEditBlockWrapper = (props) => {
               className="quanta-block-add-button"
             />
           </Plug>
-          <Plug pluggable="block-toolbar-extra" id="delete-button">
+          <Plug
+            pluggable="block-toolbar-extra"
+            id="delete-button"
+            dependencies={[blockProps]}
+          >
             <>
               {!required ? (
                 <Button
