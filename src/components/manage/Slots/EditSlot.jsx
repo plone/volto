@@ -131,12 +131,11 @@ class EditSlot extends React.Component {
   onSave() {
     const { saveSlot, pathname, slotId } = this.props;
     let { data } = this.state;
+    const cleanData = cleanupLastPlaceholders(data);
 
-    saveSlot(getBaseUrl(pathname), slotId, cleanupLastPlaceholders(data)).then(
-      () => {
-        this.props.history.push(getBaseUrl(this.props.pathname));
-      },
-    );
+    saveSlot(getBaseUrl(pathname), slotId, cleanData).then(() => {
+      this.props.history.push(getBaseUrl(this.props.pathname));
+    });
   }
 
   render() {

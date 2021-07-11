@@ -142,7 +142,7 @@ const SlotEditBlockWrapper = (props) => {
         </Plug>
       )}
 
-      {selected && !blockIsHidden && (
+      {selected && !blockIsHidden && inherited && (
         <Plug
           pluggable="block-toolbar-main"
           id="lockunlock-slot-fill"

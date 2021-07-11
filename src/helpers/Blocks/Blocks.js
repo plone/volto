@@ -363,7 +363,7 @@ export function isPlaceholderBlock(blockData) {
  */
 export function cleanupLastPlaceholders(formData) {
   const { blocks, blocks_layout } = formData;
-  if (!blocks_layout?.length) return formData;
+  if (!blocks_layout?.items?.length) return formData;
 
   const remove = [];
   [...(blocks_layout.items || [])].reverse().find((uid) => {
