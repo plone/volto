@@ -118,6 +118,7 @@ export function deleteBlock(formData, blockId) {
   let newFormData = {
     ...formData,
     [blocksLayoutFieldname]: {
+      ...formData[blocksLayoutFieldname],
       items: without(formData[blocksLayoutFieldname].items, blockId),
     },
     [blocksFieldname]: omit(formData[blocksFieldname], [blockId]),
@@ -323,7 +324,7 @@ export function previousBlockId(formData, currentBlock) {
  * Generate empty block form
  * @function emptyBlocksForm
  * @param {Object} formData Form data
- * @return {Object} Emptry blocks form with one defaultBlockType block
+ * @return {Object} Empty blocks form with one defaultBlockType block
  */
 export function emptyBlocksForm() {
   const { settings } = config;
@@ -336,4 +337,18 @@ export function emptyBlocksForm() {
     },
     blocks_layout: { items: [id] },
   };
+}
+
+/**
+ * Returns true if the block data is an empty placeholder block
+ * @function isPlaceholderBlock
+ * @param {Object} blockData Block data
+ * @return {Boolean} True if block data is an empty placeholder block
+ */
+export function isPlaceholderBlock(blockData) {
+  const { settings } = config;
+  return (
+    blockData?.['@type'] === settings.defaultBlockType &&
+    !blockHasValue(blockData)
+  );
 }

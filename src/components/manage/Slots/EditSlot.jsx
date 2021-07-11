@@ -7,6 +7,7 @@ import { Portal } from 'react-portal';
 import { Button, Segment } from 'semantic-ui-react';
 import { isEqual } from 'lodash';
 import { v4 as uuid } from 'uuid';
+import { omit } from 'lodash';
 
 import { getSlots, saveSlot } from '@plone/volto/actions';
 import BlocksForm from '@plone/volto/components/manage/Blocks/Block/BlocksForm';
@@ -17,6 +18,7 @@ import {
   getBaseUrl,
   slotsBlocksConfig,
   blockHasValue,
+  isPlaceholderBlock,
 } from '@plone/volto/helpers';
 import { InlineForm, Icon, Sidebar, Toolbar } from '@plone/volto/components';
 import SlotEditBlockWrapper from './SlotEditBlockWrapper';
@@ -129,21 +131,51 @@ class EditSlot extends React.Component {
 
   onSave() {
     const { saveSlot, pathname, slotId } = this.props;
-    const { data } = this.state;
+    let { data } = this.state;
+    data = this.cleanupLastPlaceholders(data);
+
     saveSlot(getBaseUrl(pathname), slotId, data).then(() => {
       this.props.history.push(getBaseUrl(this.props.pathname));
     });
   }
 
+  cleanupLastPlaceholders(data) {
+    // Placeholder blocks are annoying to deal with when they're inherited.
+    // We remove the last placeholder block from data
+
+    const { blocks, blocks_layout } = data;
+    if (!blocks_layout?.length) return data;
+
+    const remove = [];
+    [...blocks_layout.items].reverse().find((uid) => {
+      if (isPlaceholderBlock(blocks[uid])) {
+        remove.push(uid);
+        return false;
+      } else {
+        return true;
+      }
+    });
+
+    return {
+      ...data,
+      blocks_layout: {
+        ...blocks_layout,
+        items: blocks_layout.items.filter((uid) => remove.indexOf(uid) === -1),
+      },
+      blocks: omit(blocks, remove),
+    };
+  }
+
   render() {
     const { pathname, content } = this.props;
-    const { data, selectedBlock } = this.state;
+    const { data, selectedBlock, isClient } = this.state;
     const blocksConfig = slotsBlocksConfig(config.blocks.blocksConfig);
+    const title = config.slots[this.props.slotId]?.title || this.props.slotId;
 
     return (
       <div id="slot-edit">
-        <Helmet title="Edit slot" />
-        {this.state.isClient && (
+        <Helmet title={`Edit slot: ${title}`} />
+        {isClient && (
           <div className="ui container">
             <BlocksForm
               pathname={pathname}
@@ -220,9 +252,7 @@ class EditSlot extends React.Component {
             <Portal node={document.getElementById('sidebar')}>
               <Sidebar documentTab={false} settingsTab={true} />
             </Portal>
-            <Portal
-              node={__CLIENT__ && document.getElementById('sidebar-settings')}
-            >
+            <Portal node={document.getElementById('sidebar-settings')}>
               <div>
                 <InlineForm
                   schema={SlotSchema(this.props)}
