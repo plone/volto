@@ -1,6 +1,7 @@
 import React from 'react';
 import Wrapper from '@plone/volto/storybook';
 import PluggableMenuSection from './PluggableMenuSection';
+import { Button } from 'semantic-ui-react';
 import BlockToolbarItem from './BlockToolbarItem';
 import {
   PluggablesProvider,
@@ -14,22 +15,26 @@ const PluggableMenuSectionStory = (args) => {
   return (
     <Wrapper>
       <PluggablesProvider>
-        <PluggableMenuSection {...args} />
-        <Plug id="show" pluggable={args.name} extra={{ group: 'slot' }}>
-          {(options) => (
-            <BlockToolbarItem icon={showSVG} label="Show" {...options} />
-          )}
-        </Plug>
-        <Plug id="hide" pluggable={args.name}>
-          {(options) => (
-            <BlockToolbarItem icon={hideSVG} label="Hide" {...options} />
-          )}
-        </Plug>
-        <Plug id="delete" pluggable={args.name}>
-          {(options) => (
-            <BlockToolbarItem icon={trashSVG} label="Delete" {...options} />
-          )}
-        </Plug>
+        <div className="toolbar quanta-block-toolbar">
+          <Button icon="trash" />
+          <Button icon="search" />
+          <PluggableMenuSection {...args} />
+          <Plug id="show" pluggable={args.name} extra={{ group: 'slot' }}>
+            {(options) => (
+              <BlockToolbarItem icon={showSVG} label="Show" {...options} />
+            )}
+          </Plug>
+          <Plug id="hide" pluggable={args.name} extra={{ group: 'slot' }}>
+            {(options) => (
+              <BlockToolbarItem icon={hideSVG} label="Hide" {...options} />
+            )}
+          </Plug>
+          <Plug id="delete" pluggable={args.name}>
+            {(options) => (
+              <BlockToolbarItem icon={trashSVG} label="Delete" {...options} />
+            )}
+          </Plug>
+        </div>
       </PluggablesProvider>
     </Wrapper>
   );
@@ -47,7 +52,7 @@ export default {
   component: PluggableMenuSection,
   decorators: [
     (Story) => (
-      <div style={{ width: '400px' }}>
+      <div style={{ width: '400px', padding: '100px' }}>
         <Story />
       </div>
     ),
