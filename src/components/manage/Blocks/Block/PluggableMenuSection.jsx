@@ -48,7 +48,7 @@ const PluggableMenuSection = (props) => {
             }
             className=""
           >
-            <Dropdown.Menu className="right" scrolling>
+            <Dropdown.Menu className="right">
               <>
                 {Object.keys(groups).map((groupName) => {
                   const results = groups[groupName];
