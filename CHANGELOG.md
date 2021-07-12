@@ -1,6 +1,6 @@
 # Change Log
 
-## 13.6.1 (unreleased)
+## 13.7.0 (2021-07-12)
 
 ### Feature
 
