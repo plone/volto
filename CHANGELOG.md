@@ -6,6 +6,8 @@
 
 ### Feature
 
+- A new component was added, `BlockChooserButton`, it encapsulate the logic of show/hiding the `BlockChooser` @tiberiuichim
+
 ### Bugfix
 
 ### Internal
