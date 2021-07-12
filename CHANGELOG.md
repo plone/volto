@@ -1,6 +1,6 @@
 # Change Log
 
-## 13.6.1 (unreleased)
+## 13.7.1 (unreleased)
 
 ### Breaking
 
@@ -11,11 +11,20 @@
 - A new component was added, `MutateBlockButton`, it encapsulate the logic of show/hiding the `BlockChooser` @tiberiuichim
 - A new component was added, `BlockChooserButton`, it encapsulate the logic of show/hiding the `BlockChooser` @tiberiuichim
 
+### Bugfix
+
+### Internal
+
+## 13.7.0 (2021-07-12)
+
+### Feature
+
 - VocabularyTermsWidget option with translations for config.settings.supportedLanguages @ksuess
 
 ### Bugfix
 
 - Fix InlineForm's understanding of missing default values @rexalex
+- Guard in `isInternalURL` to catch non-string values @sneridagh
 
 ### Internal
 
@@ -24,7 +33,6 @@
 - Add a11y cypress test for table block @ThomasKindermann
 - Add Cypress test for Link content type @tisto
 - Upgrade plone.restapi to 8.4.1 in the dev buildout @tisto
-
 
 ## 13.6.0 (2021-07-03)
 
