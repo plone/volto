@@ -11,6 +11,7 @@
 ### Bugfix
 
 - Fix InlineForm's understanding of missing default values @rexalex
+- Guard in `isInternalURL` to catch non-string values @sneridagh
 
 ### Internal
 
