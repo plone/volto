@@ -33,7 +33,6 @@ const BlockChooser = ({
 }) => {
   const intl = useIntl();
   const useAllowedBlocks = !isEmpty(allowedBlocks);
-  const currentBlocks = map(properties.blocks, (item) => item['@type']);
 
   const filteredBlocksConfig = filter(blocksConfig, (item) => {
     if (showRestricted) {
@@ -46,8 +45,12 @@ const BlockChooser = ({
       if (useAllowedBlocks) {
         return allowedBlocks.includes(item.id);
       } else {
-        if (item.unique && !currentBlocks.includes(item.id)) return true;
-        return !item.restricted;
+        // Overload restricted as a function, so we can decide the availability of a block
+        // depending on this function, given properties (current present blocks) and the
+        // block being evaluated
+        return typeof item.restricted === 'function'
+          ? !item.restricted({ properties, block: item })
+          : !item.restricted;
       }
     }
   });

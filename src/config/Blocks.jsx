@@ -1,4 +1,5 @@
 import { defineMessages } from 'react-intl';
+import { map } from 'lodash';
 
 import ViewTitleBlock from '@plone/volto/components/manage/Blocks/Title/View';
 import ViewDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/View';
@@ -126,8 +127,8 @@ const blocksConfig = {
     view: ViewTitleBlock,
     edit: EditTitleBlock,
     schema: BlockSettingsSchema,
-    restricted: true,
-    unique: true,
+    restricted: ({ properties, block }) =>
+      map(properties.blocks, (item) => item['@type']).includes(block.id),
     mostUsed: false,
     blockHasOwnFocusManagement: true,
     sidebarTab: 0,
