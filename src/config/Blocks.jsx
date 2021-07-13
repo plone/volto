@@ -127,6 +127,7 @@ const blocksConfig = {
     edit: EditTitleBlock,
     schema: BlockSettingsSchema,
     restricted: true,
+    unique: true,
     mostUsed: false,
     blockHasOwnFocusManagement: true,
     sidebarTab: 0,

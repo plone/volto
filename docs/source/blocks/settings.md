@@ -32,6 +32,7 @@ const customBlocks = {
     view: MainSliderViewBlock, // The view mode component
     edit: MainSliderEditBlock, // The edit mode component
     restricted: false, // If the block is restricted, it won't show in the chooser
+    unique: true, // If the block is unique, the chooser will only allow one instance in the current object
     mostUsed: true, // A meta group `most used`, appearing at the top of the chooser
     blockHasOwnFocusManagement: false, // Set this to true if the block manages its own focus
     sidebarTab: 0, // The sidebar tab you want to be selected when selecting the block

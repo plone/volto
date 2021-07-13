@@ -29,9 +29,11 @@ const BlockChooser = ({
   showRestricted,
   blocksConfig = config.blocks.blocksConfig,
   blockChooserRef,
+  properties = {},
 }) => {
   const intl = useIntl();
   const useAllowedBlocks = !isEmpty(allowedBlocks);
+  const currentBlocks = map(properties.blocks, (item) => item['@type']);
 
   const filteredBlocksConfig = filter(blocksConfig, (item) => {
     if (showRestricted) {
@@ -44,6 +46,7 @@ const BlockChooser = ({
       if (useAllowedBlocks) {
         return allowedBlocks.includes(item.id);
       } else {
+        if (item.unique && !currentBlocks.includes(item.id)) return true;
         return !item.restricted;
       }
     }

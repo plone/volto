@@ -7,6 +7,7 @@
 ### Feature
 
 - A new component was added, `BlockChooserButton`, it encapsulate the logic of show/hiding the `BlockChooser` @tiberiuichim
+- New `unique` property for blocks config, it allows you to force only one instance of the unique block, if present, it won't show the block in the blocks chooser, and if not present it will @sneridagh
 
 ### Bugfix
 
