@@ -1,5 +1,4 @@
 import React from 'react';
-import { map } from 'lodash';
 import '@testing-library/jest-dom/extend-expect';
 import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-intl-redux';
@@ -242,7 +241,9 @@ describe('BlocksChooser', () => {
   it('Show unique in case they have been removed (restricted as a function)', () => {
     config.blocks.required = [];
     config.blocks.blocksConfig.title.restricted = ({ properties, block }) =>
-      map(properties.blocks, (item) => item['@type']).includes(block.id);
+      properties.blocks_layout?.items?.find(
+        (uid) => properties.blocks?.[uid]?.['@type'] === block.id,
+      );
 
     const { container } = render(
       <Provider store={store}>
