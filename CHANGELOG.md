@@ -10,6 +10,8 @@
 
 ### Bugfix
 
+- Add fallback to the "image" field in Image Gallery if the listingPreviewImageField defined in the project is not available on an object @jackahl
+
 ### Internal
 
 ## 13.7.0 (2021-07-12)
