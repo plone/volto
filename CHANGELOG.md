@@ -1,5 +1,16 @@
 # Change Log
 
+## 14.0.0 (unreleased)
+
+### Breaking
+
+- Detect when a user has logged in by means other than JWT, such as ZMI `Basic`
+  authentication or the classic HTML Plone `@login` view @rpatterson
+
+### Feature
+
+### Bugfix
+
 ## 13.6.1 (unreleased)
 
 ### Breaking
@@ -59,8 +70,6 @@
 ### Feature
 
 - Allowing user to paste url in search box in objectBrowser @iFlameing
-- Detect when a user has logged in by means other than JWT, such as ZMI `Basic`
-  authentication or the classic HTML Plone `@login` view @rpatterson
 - Allowing user to click on the breadcrumbs of objectBrowser @iFlameing
 - `Navigation` and `Breadcrumbs` are `apiExpanders` aware and run the action depending on them @sneridagh
 
