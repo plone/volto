@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { filter, map, groupBy, isEmpty } from 'lodash';
 import { Accordion, Button } from 'semantic-ui-react';
-import { injectIntl, defineMessages } from 'react-intl';
+import { useIntl, defineMessages } from 'react-intl';
 import { Icon } from '@plone/volto/components';
 import AnimateHeight from 'react-animate-height';
 import config from '@plone/volto/registry';
@@ -28,8 +28,9 @@ const BlockChooser = ({
   allowedBlocks,
   showRestricted,
   blocksConfig = config.blocks.blocksConfig,
-  intl,
+  blockChooserRef,
 }) => {
+  const intl = useIntl();
   const useAllowedBlocks = !isEmpty(allowedBlocks);
 
   const filteredBlocksConfig = filter(blocksConfig, (item) => {
@@ -72,7 +73,7 @@ const BlockChooser = ({
   }
 
   return (
-    <div className="blocks-chooser">
+    <div className="blocks-chooser" ref={blockChooserRef}>
       <Accordion fluid styled className="form">
         {map(groupBlocksOrder, (groupName, index) => (
           <React.Fragment key={groupName.id}>
@@ -143,10 +144,12 @@ const BlockChooser = ({
 
 BlockChooser.propTypes = {
   currentBlock: PropTypes.string.isRequired,
-  onMutateBlock: PropTypes.func.isRequired,
-  onInsertBlock: PropTypes.func.isRequired,
+  onMutateBlock: PropTypes.func,
+  onInsertBlock: PropTypes.func,
   allowedBlocks: PropTypes.arrayOf(PropTypes.string),
   blocksConfig: PropTypes.objectOf(PropTypes.any),
 };
 
-export default injectIntl(BlockChooser);
+export default React.forwardRef((props, ref) => (
+  <BlockChooser {...props} blockChooserRef={ref} />
+));
