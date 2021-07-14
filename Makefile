@@ -83,7 +83,6 @@ docs-build:
 .PHONY: start
 # Run both the back-end and the front end
 start:
-	docker-compose up -d traefik
 	$(MAKE) -e -j 2 start-backend start-frontend
 
 .PHONY: start-frontend
@@ -101,6 +100,10 @@ start-backend-docker:
 .PHONY: start-backend-docker-guillotina
 start-backend-docker-guillotina:
 	docker-compose -f g-api/docker-compose.yml up -d
+
+.PHONY: start-proxy
+start-proxy: start
+	docker-compose up -d traefik
 
 .PHONY: start-test
 start-test: ## Start Test
