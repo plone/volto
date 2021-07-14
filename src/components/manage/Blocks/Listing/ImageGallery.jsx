@@ -88,9 +88,6 @@ const ImageGalleryTemplate = ({ items }) => {
     } else if (item.url) {
       imageSRCOriginal = `${item.url}/@@images/${settings.listingPreviewImageField}/large`;
       imageSRCThumb = `${item.url}/@@images/${settings.listingPreviewImageField}/thumb`;
-    } else if (item.url) {
-      imageSRCOriginal = `${item.url}/@@images/${settings.listingPreviewImageField}/large`;
-      imageSRCThumb = `${item.url}/@@images/${settings.listingPreviewImageField}/thumb`;
     } else {
       imageSRCOriginal = item.image.scales.large.download;
       imageSRCThumb = item.image.scales.thumb.download;
