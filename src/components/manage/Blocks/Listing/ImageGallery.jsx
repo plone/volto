@@ -85,9 +85,12 @@ const ImageGalleryTemplate = ({ items }) => {
       imageSRCThumb = flattenToAppURL(
         item[settings.listingPreviewImageField]?.scales.thumb.download,
       );
-    } else {
+    } else if (item.url) {
       imageSRCOriginal = `${item.url}/@@images/${settings.listingPreviewImageField}/large`;
       imageSRCThumb = `${item.url}/@@images/${settings.listingPreviewImageField}/thumb`;
+    } else {
+      imageSRCOriginal = item.image.scales.large.download;
+      imageSRCThumb = item.image.scales.thumb.download;
     }
     return {
       original: imageSRCOriginal,

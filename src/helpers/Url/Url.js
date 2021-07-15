@@ -174,12 +174,13 @@ export function addAppURL(url) {
 export function isInternalURL(url) {
   const { settings } = config;
   return (
-    url.indexOf(settings.publicURL) !== -1 ||
-    url.indexOf(settings.internalApiPath) !== -1 ||
-    url.indexOf(settings.apiPath) !== -1 ||
-    url.charAt(0) === '/' ||
-    url.charAt(0) === '.' ||
-    url.startsWith('#')
+    url &&
+    (url.indexOf(settings.publicURL) !== -1 ||
+      url.indexOf(settings.internalApiPath) !== -1 ||
+      url.indexOf(settings.apiPath) !== -1 ||
+      url.charAt(0) === '/' ||
+      url.charAt(0) === '.' ||
+      url.startsWith('#'))
   );
 }
 

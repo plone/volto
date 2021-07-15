@@ -69,6 +69,10 @@ msgstr "Aggiungi un utente"
 msgid "Add a description…"
 msgstr "Aggiungi una descrizione…"
 
+#: components/manage/BlockChooser/BlockChooserButton
+msgid "Add block"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 msgid "Add block…"
 msgstr "Aggiungi un blocco…"
@@ -108,6 +112,10 @@ msgstr "Aggiungi nuovo utente"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add to Groups"
 msgstr "Aggiungi ai gruppi"
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Add vocabulary term"
+msgstr ""
 
 #: components/manage/Add/Add
 msgid "Add {type}"
@@ -1486,6 +1494,10 @@ msgstr "Rimuovi elemento"
 msgid "Remove recurrence"
 msgstr "Rimuovi"
 
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Remove term"
+msgstr ""
+
 #: components/manage/Toolbar/More
 msgid "Remove working copy"
 msgstr ""
@@ -1533,6 +1545,10 @@ msgstr "Obbligatorio"
 #: helpers/MessageLabels/MessageLabels
 msgid "Required input is missing."
 msgstr "Un campo richiesto è mancante."
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Reset term title"
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 msgid "Results limit"
@@ -2164,6 +2180,18 @@ msgstr ""
 #: components/manage/Display/Display
 msgid "Viewmode"
 msgstr "Vista"
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary term"
+msgstr ""
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary term title"
+msgstr ""
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary terms"
+msgstr ""
 
 #: components/manage/Controlpanels/VersionOverview
 msgid "Warning Regarding debug mode"
