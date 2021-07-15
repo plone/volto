@@ -13,6 +13,9 @@
 
 - fix test @giuliaghisini
 - Fix outside click handling in object browser @nzambello
+- Fix ObjectBrowserNav items key @nzambello
+- Fix ObjectBrowserNav aria label: id => title @nzambello
+
 ### Internal
 
 ## 13.8.0 (2021-07-14)
