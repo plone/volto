@@ -8,6 +8,9 @@
 
 ### Bugfix
 
+- Improve consistency of `TokenWidget`'s use of the choice labels as "values"
+  instead of internal uids assigned by `react-select`.
+
 ### Internal
 
 ## 13.8.0 (2021-07-14)
