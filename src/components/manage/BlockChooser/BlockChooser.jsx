@@ -29,6 +29,7 @@ const BlockChooser = ({
   showRestricted,
   blocksConfig = config.blocks.blocksConfig,
   blockChooserRef,
+  properties = {},
 }) => {
   const intl = useIntl();
   const useAllowedBlocks = !isEmpty(allowedBlocks);
@@ -44,7 +45,12 @@ const BlockChooser = ({
       if (useAllowedBlocks) {
         return allowedBlocks.includes(item.id);
       } else {
-        return !item.restricted;
+        // Overload restricted as a function, so we can decide the availability of a block
+        // depending on this function, given properties (current present blocks) and the
+        // block being evaluated
+        return typeof item.restricted === 'function'
+          ? !item.restricted({ properties, block: item })
+          : !item.restricted;
       }
     }
   });

@@ -97,6 +97,7 @@ const BlockChooserButton = (props) => {
           currentBlock={block}
           allowedBlocks={allowedBlocks}
           blocksConfig={blocksConfig}
+          properties={properties}
           showRestricted={showRestricted}
           ref={blockChooserRef}
         />

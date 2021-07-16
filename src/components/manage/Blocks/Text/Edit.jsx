@@ -13,11 +13,11 @@ import isSoftNewlineEvent from 'draft-js/lib/isSoftNewlineEvent';
 import { defineMessages, injectIntl } from 'react-intl';
 import { includes, isEqual } from 'lodash';
 import { filterEditorState } from 'draftjs-filters';
-import { BlockChooserButton } from '@plone/volto/components';
 import { Plug } from '@plone/volto/components/manage/Pluggable';
 
 import config from '@plone/volto/registry';
 
+import { BlockChooserButton } from '@plone/volto/components';
 const PassThrough = (props) => props.children;
 
 const messages = defineMessages({

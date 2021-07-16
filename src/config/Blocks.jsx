@@ -139,7 +139,10 @@ const blocksConfig = {
     view: ViewTitleBlock,
     edit: EditTitleBlock,
     schema: BlockSettingsSchema,
-    restricted: true,
+    restricted: ({ properties, block }) =>
+      properties.blocks_layout?.items?.find(
+        (uid) => properties.blocks?.[uid]?.['@type'] === block.id,
+      ),
     mostUsed: false,
     blockHasOwnFocusManagement: true,
     sidebarTab: 0,
