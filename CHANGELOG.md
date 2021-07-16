@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Missing prop `properties` passed down required for #2579 to work properly @sneridagh
+
 ### Internal
 
 ## 13.8.0 (2021-07-14)
