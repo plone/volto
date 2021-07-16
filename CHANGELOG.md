@@ -8,8 +8,7 @@
 
 ### Bugfix
 
-- Improve consistency of `TokenWidget`'s use of the choice labels as "values"
-  instead of internal uids assigned by `react-select`.
+- Improve consistency of `TokenWidget`'s use of the choice labels as "values" instead of internal uids assigned by `react-select`. @tiberiuichim
 
 ### Internal
 
