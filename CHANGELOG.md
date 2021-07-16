@@ -1,6 +1,6 @@
 # Change Log
 
-## 13.8.1 (unreleased)
+## 13.8.2 (unreleased)
 
 ### Breaking
 
@@ -14,6 +14,12 @@
 ### Bugfix
 
 ### Internal
+
+## 13.8.1 (2021-07-16)
+
+### Bugfix
+
+- Missing prop `properties` passed down required for #2579 to work properly @sneridagh
 
 ## 13.8.0 (2021-07-14)
 
