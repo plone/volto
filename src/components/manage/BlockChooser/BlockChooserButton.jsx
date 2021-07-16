@@ -44,6 +44,7 @@ const BlockChooserButton = (props) => {
     onInsertBlock,
     blocksConfig,
     buttonComponent,
+    properties,
   } = props;
   const { disableNewBlocks } = data;
   const [addNewBlockOpened, setAddNewBlockOpened] = React.useState(false);
