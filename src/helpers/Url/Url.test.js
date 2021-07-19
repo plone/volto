@@ -183,6 +183,14 @@ describe('Url', () => {
       const href = './../';
       expect(isInternalURL(href)).toBe(true);
     });
+    it('Behave if URL is not a string', () => {
+      const href = null;
+      expect(isInternalURL(href)).toBe(null);
+    });
+    it('Behave if URL is not a string II', () => {
+      const href = undefined;
+      expect(isInternalURL(href)).toBe(undefined);
+    });
   });
   describe('isUrl', () => {
     it('isUrl test', () => {

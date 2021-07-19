@@ -78,6 +78,10 @@ msgstr "Adicionar Utilizador"
 msgid "Add a description…"
 msgstr "Adicionar uma descrição…"
 
+#: components/manage/BlockChooser/BlockChooserButton
+msgid "Add block"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 msgid "Add block…"
 msgstr "Adicionar bloco…"
