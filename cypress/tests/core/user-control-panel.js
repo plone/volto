@@ -6,6 +6,7 @@ describe('User Control Panel Test', () => {
     cy.visit('/');
     cy.autologin();
   });
+
   it('Should add User to controlPanel', () => {
     cy.visit('/controlpanel/users');
     cy.waitForResourceToLoad('@navigation');
@@ -26,6 +27,22 @@ describe('User Control Panel Test', () => {
     cy.get('.icon.button:first').click();
     cy.get('.fullname').should('have.text', 'Alok Kumar');
   });
+
+  it('Should show error from backend when add User fails', () => {
+    cy.visit('/controlpanel/users');
+    // when I added a user from controlPanel
+    cy.get('Button[id="toolbar-add"]').click();
+    cy.get('input[id="field-username"]').clear().type('iFlameing');
+    cy.get('input[id="field-fullname"]').clear().type('Alok Kumar');
+    cy.get('input[id ="field-email"]').clear().type('info@example.com');
+    cy.get('input[id="field-password"]').clear().type('test@test');
+    cy.get('button[title="Save"]').click(-50, -50, { force: true });
+    cy.intercept('POST', '/@users').as('post');
+    cy.wait('@post').then((res) => {
+      cy.contains(res.body.error.message);
+    });
+  });
+
   it('Should update group roles', () => {
     cy.visit('/controlpanel/groups');
     cy.waitForResourceToLoad('@navigation');
