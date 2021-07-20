@@ -84,6 +84,11 @@ msgstr ""
 msgid "Add a description…"
 msgstr ""
 
+#: components/manage/BlockChooser/BlockChooserButton
+# defaultMessage: Add block
+msgid "Add block"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add block…
 msgid "Add block…"

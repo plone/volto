@@ -1,6 +1,6 @@
 # Change Log
 
-## 13.6.1 (unreleased)
+## 13.8.2 (unreleased)
 
 ### Breaking
 
@@ -16,13 +16,44 @@
 - Add tests for `Select` component, document the use cases propely @sneridagh
 - Upgrade `AsyncSelect` to a version compatible with `react-select` v4 @sneridagh
 - Upgrade to latest `react-select` @sneridagh
+
+### Internal
+
+## 13.8.1 (2021-07-16)
+
+### Bugfix
+
+- Missing prop `properties` passed down required for #2579 to work properly @sneridagh
+
+## 13.8.0 (2021-07-14)
+
+### Feature
+
+- A new component was added, `BlockChooserButton`, it encapsulate the logic of show/hiding the `BlockChooser` @tiberiuichim
+- Overload `required` property for blocks config, it supports a function as value taken `properties` (current object data) and `block` (the block being evaluated in `BlockChooser`). The purpose is to enable more control over the available blocks in the Blocks chooser. @sneridagh
+
+### Bugfix
+
+- Add fallback to the "image" field in Image Gallery if the listingPreviewImageField defined in the project is not available on an object @jackahl
+
+## 13.7.0 (2021-07-12)
+
+### Feature
+
+- VocabularyTermsWidget option with translations for config.settings.supportedLanguages @ksuess
+
+### Bugfix
+
 - Fix InlineForm's understanding of missing default values @rexalex
+- Guard in `isInternalURL` to catch non-string values @sneridagh
 
 ### Internal
 
 - Update `browserlist` DB @sneridagh
 - Install `luxon` explicitly to fix `rrule` package flickering deps (yarn problem) @sneridagh
+- Add a11y cypress test for table block @ThomasKindermann
 - Add Cypress test for Link content type @tisto
+- Upgrade plone.restapi to 8.4.1 in the dev buildout @tisto
 
 ## 13.6.0 (2021-07-03)
 
