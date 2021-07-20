@@ -2,15 +2,9 @@
 
 ## 13.8.2 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Improve `URLWidget` component, so it uses `flattenToURL` for the value @sneridagh
-
-### Internal
 
 ## 13.8.1 (2021-07-16)
 
