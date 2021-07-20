@@ -28,7 +28,7 @@ describe('User Control Panel Test', () => {
   });
 
   it('Should show error from backend when add User fails', () => {
-    cy.intercept('POST', '/@users').as('saveUser');
+    cy.intercept('POST', '**users').as('saveUser');
     cy.visit('/controlpanel/users');
     // when I added a user from controlPanel
     cy.get('Button[id="toolbar-add"]').click();
