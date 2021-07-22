@@ -57,15 +57,23 @@ describe('User Control Panel Test', () => {
     cy.waitForResourceToLoad('@types');
     cy.waitForResourceToLoad('@users');
 
+    //add a user first
+    cy.get('Button[id="toolbar-add"]').click();
+    cy.get('input[id="field-username"]').clear().type('iFlameing');
+    cy.get('input[id="field-fullname"]').clear().type('Alok Kumar');
+    cy.get('input[id ="field-email"]').clear().type('info@example.com');
+    cy.get('input[id="field-password"]').clear().type('test@test');
+    cy.get('button[title="Save"]').click(-50, -50, { force: true });
+
     // select first user with name, delete it and search if its exists or not!
-    cy.get('tr > td.fullname').first().should('have.text', 'test-user');
+    cy.get('tr > td.fullname').first().should('have.text', 'Alok Kumar');
     cy.get('div[role="listbox"]').first().click();
     cy.get('div[role="option"]').first().click();
     cy.contains('Delete User');
     cy.get('button.ui.primary.button').should('have.text', 'OK').click();
     cy.get('input[id="user-search-input"]').clear().type('i');
     cy.get('.icon.button:first').click();
-    cy.get('.fullname').should('not.have.text', 'test-user');
+    cy.get('.fullname').should('not.have.text', 'Alok Kumar');
   });
 
   it('Should update group roles', () => {
