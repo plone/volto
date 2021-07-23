@@ -1,4 +1,5 @@
 import '@testing-library/cypress/add-commands';
+import { getIfExists } from '../helpers';
 
 // --- AUTOLOGIN -------------------------------------------------------------
 Cypress.Commands.add('autologin', () => {
@@ -362,3 +363,4 @@ Cypress.Commands.add('store', () => {
 Cypress.Commands.add('settings', (key, value) => {
   return cy.window().its('settings');
 });
+Cypress.Commands.add('getIfExists', getIfExists);

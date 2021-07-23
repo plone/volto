@@ -73,25 +73,9 @@ describe('User Control Panel Test', () => {
     cy.get('button.ui.primary.button').should('have.text', 'OK').click();
     cy.get('input[id="user-search-input"]').clear().type('i');
     cy.get('.icon.button:first').click();
-    cy.get('.fullname').should('not.have.text', 'Alok Kumar');
+    cy.getIfExists('.fullname').should('not.have.text', 'Alok Kumar');
   });
 
-  it('Should update group roles', () => {
-    cy.visit('/controlpanel/groups');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-
-    cy.get('[data-group="groups"] input[type="checkbox"')
-      .first()
-      .check({ force: true });
-    cy.get('Button[id="toolbar-save"]').click();
-    cy.reload();
-    cy.get('[data-group="groups"] div.checkbox')
-      .first()
-      .should('have.class', 'checked');
-  });
   it('Should update user roles', () => {
     cy.visit('/controlpanel/users');
     cy.waitForResourceToLoad('@navigation');
