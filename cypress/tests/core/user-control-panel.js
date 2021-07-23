@@ -28,7 +28,7 @@ describe('User Control Panel Test', () => {
   });
 
   it('Should show error from backend when add User fails', () => {
-    cy.intercept('POST', '**users', {
+    cy.intercept('POST', '**/@users', {
       statusCode: 400,
       body: {
         error: {

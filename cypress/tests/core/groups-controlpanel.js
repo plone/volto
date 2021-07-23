@@ -32,9 +32,7 @@ describe('Groups Control Panel Test', () => {
     cy.intercept('POST', '**groups', {
       statusCode: 400,
       body: {
-        error: {
-          message: 'Error from backend.',
-        },
+        message: 'Error from backend.',
       },
     }).as('saveGroup');
     cy.visit('/controlpanel/groups');
@@ -46,7 +44,7 @@ describe('Groups Control Panel Test', () => {
     cy.get('input[id="field-email"]').clear().type('test@gmail.com');
     cy.get('button[title="Save"]').click(-50, -50, { force: true });
     cy.wait('@saveGroup').then((intercepted) => {
-      cy.contains(intercepted.response.body.error.message);
+      cy.contains(intercepted.response.body.message);
     });
   });
 
