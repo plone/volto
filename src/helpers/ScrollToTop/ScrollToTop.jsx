@@ -47,11 +47,13 @@ class ScrollToTop extends React.Component {
   constructor(props) {
     super(props);
     this.scrollTo = this.scrollTo.bind(this);
+    this.handleRouteChange = this.handleRouteChange.bind(this);
     this.handlePopStateChange = this.handlePopStateChange.bind(this);
   }
 
   componentDidMount() {
     window.addEventListener('popstate', this.handlePopStateChange);
+    this.handleRouteChange();
   }
 
   componentWillUnmount() {
@@ -64,33 +66,7 @@ class ScrollToTop extends React.Component {
    * @memberof ScrollToTop
    */
   componentDidUpdate(prevProps) {
-    const { location: prevLocation, history } = prevProps;
-    const { location: nextLocation } = this.props;
-
-    if (prevLocation === nextLocation) return;
-
-    const key = prevLocation.key || DefaultKey;
-
-    const hash = nextLocation.state?.volto_scroll_hash || '';
-    const offset = nextLocation.state?.volto_scroll_offset || 0;
-
-    const locationChanged =
-      nextLocation.pathname !== prevLocation.pathname && hash === '';
-
-    const element = hash ? document.getElementById(hash) : null;
-
-    const scroll = getScrollPage();
-
-    if (locationChanged && history.action !== 'POP') {
-      this.scrollTo(0);
-      this.visitedUrl.set(key, scroll);
-    } else if (element && history.action !== 'POP') {
-      this.scrollTo(element.offsetTop - offset);
-      this.visitedUrl.set(key, scroll);
-    } else {
-      this.visitedUrl.set(key, scroll);
-    }
-    return;
+    this.handleRouteChange(prevProps);
   }
   /**
    * Scroll to top position triggered if content is loaded
@@ -112,6 +88,44 @@ class ScrollToTop extends React.Component {
         clearInterval(this.clock);
       }
     }, 100);
+  }
+  /**
+   * Scroll to top position triggered if content is loaded
+   * @method handleRouteChange
+   * @param {Object} prevProps Previous Props
+   * @returns {null} Null
+   */
+  handleRouteChange(prevProps) {
+    const { location: prevLocation = {}, history = {} } = prevProps || {};
+    const { location: nextLocation } = this.props;
+
+    if (prevLocation === nextLocation) return;
+
+    const key = prevLocation.key || DefaultKey;
+
+    const hash =
+      nextLocation.state?.volto_scroll_hash ||
+      nextLocation.hash.substring(1) ||
+      '';
+    const offset = nextLocation.state?.volto_scroll_offset || 0;
+
+    const locationChanged =
+      nextLocation.pathname !== prevLocation.pathname && hash === '';
+
+    const element = hash ? document.getElementById(hash) : null;
+
+    const scroll = getScrollPage();
+
+    if (locationChanged && history.action !== 'POP') {
+      this.scrollTo(0);
+      this.visitedUrl.set(key, scroll);
+    } else if (element && history.action !== 'POP') {
+      this.scrollTo(element.offsetTop - offset);
+      this.visitedUrl.set(key, scroll);
+    } else {
+      this.visitedUrl.set(key, scroll);
+    }
+    return;
   }
   /**
    * Scroll restoration on popstate event
