@@ -153,6 +153,7 @@ let config = {
     showSelfRegistration: false,
     contentMetadataTagsImageField: 'image',
     hasWorkingCopySupport: false,
+    hasLockingSupport: false,
   },
   widgets: {
     ...widgetMapping,
