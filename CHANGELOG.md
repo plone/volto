@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Content locking support for Plone (plone.locking) @avoinea
+
 ### Bugfix
 
 ### Internal
