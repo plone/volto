@@ -55,6 +55,7 @@ class Edit extends Component {
     formTitle: PropTypes.string,
     formDescription: PropTypes.string,
     blocksConfig: PropTypes.objectOf(PropTypes.any),
+    properties: PropTypes.objectOf(PropTypes.any),
   };
 
   /**
@@ -300,6 +301,7 @@ class Edit extends Component {
             blocksConfig={this.props.blocksConfig}
             size="24px"
             className="block-add-button"
+            properties={this.props.properties}
           />
         )}
       </>
