@@ -13,6 +13,8 @@ if (isBrowser) {
 
 const DefaultKey = 'init-enter';
 
+const TIMEOUT = 10000;
+
 const getScrollPage = () => {
   let docScrollTop = 0;
   if (document.documentElement && document.documentElement !== null) {
@@ -27,6 +29,7 @@ const getScrollPage = () => {
  */
 class ScrollToTop extends React.Component {
   clock;
+  timer = 0;
   visitedUrl = new Map();
   /**
    * Property types.
@@ -76,8 +79,9 @@ class ScrollToTop extends React.Component {
    */
   scrollTo(top) {
     clearInterval(this.clock);
+    this.timer = 0;
     this.clock = setInterval(() => {
-      if (!this.props.content.get.loading) {
+      if (!this.props.content.get.loading || this.timer >= TIMEOUT) {
         window.requestAnimationFrame(() => {
           window.scrollTo({
             top,
@@ -86,7 +90,9 @@ class ScrollToTop extends React.Component {
           });
         });
         clearInterval(this.clock);
+        this.timer = 0;
       }
+      this.timer += 100;
     }, 100);
   }
   /**
