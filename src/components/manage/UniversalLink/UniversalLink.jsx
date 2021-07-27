@@ -5,7 +5,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers/Url/Url';
 import URLUtils from '@plone/volto/components/manage/AnchorPlugin/utils/URLUtils';
@@ -21,8 +21,13 @@ const UniversalLink = ({
   children,
   className = null,
   title = null,
+  stripHash = false,
+  delay = 0,
+  offset = null,
+  onClick = () => {},
   ...props
 }) => {
+  const history = useHistory();
   const token = useSelector((state) => state.userSession?.token);
 
   let url = href;
@@ -50,6 +55,10 @@ const UniversalLink = ({
     )?.length > 0;
   const isExternal = !isInternalURL(url) || isBlacklisted;
   const isDownload = (!isExternal && url.includes('@@download')) || download;
+  const appUrl = flattenToAppURL(url);
+
+  const path = stripHash ? appUrl.split('#')[0] : appUrl;
+  const hash = appUrl.split('#')[1];
 
   return isExternal ? (
     <a
@@ -65,21 +74,37 @@ const UniversalLink = ({
       {children}
     </a>
   ) : isDownload ? (
-    <a
-      href={flattenToAppURL(url)}
-      download
-      title={title}
-      className={className}
-      {...props}
-    >
+    <a href={appUrl} download title={title} className={className} {...props}>
       {children}
     </a>
   ) : (
     <Link
-      to={flattenToAppURL(url)}
+      to={path}
       target={openLinkInNewTab ?? false ? '_blank' : null}
       title={title}
       className={className}
+      onClick={(e) => {
+        if (typeof onClick === 'function') {
+          onClick();
+          if (!hash) return;
+        }
+        e.preventDefault();
+        if (delay) {
+          setTimeout(() => {
+            history.push(stripHash ? path : appUrl, {
+              volto_scroll_hash: hash,
+              volto_scroll_offset:
+                typeof offset === 'function' ? offset() : offset,
+            });
+          }, delay);
+        } else {
+          history.push(stripHash ? path : appUrl, {
+            volto_scroll_hash: hash,
+            volto_scroll_offset:
+              typeof offset === 'function' ? offset() : offset,
+          });
+        }
+      }}
       {...props}
     >
       {children}
@@ -97,6 +122,10 @@ UniversalLink.propTypes = {
     '@id': PropTypes.string.isRequired,
     remoteUrl: PropTypes.string, //of plone @type 'Link'
   }),
+  stripHash: PropTypes.bool,
+  delay: PropTypes.number, // ms
+  offset: PropTypes.oneOfType([PropTypes.func, PropTypes.number]),
+  onClick: PropTypes.func,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,

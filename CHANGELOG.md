@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Added anchor link functionality to `UniversalLink` component. New logic for `ScrollToTop` to handle anchor links and scroll restoration with configurable scroll behavior (`auto` or `smooth`) @razvanMiu
+
 ### Bugfix
 
 ### Internal
