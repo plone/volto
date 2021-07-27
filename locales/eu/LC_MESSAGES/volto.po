@@ -894,6 +894,10 @@ msgstr "Aukeratuta badago, elementu hau ez da nabigazio zuhaitzean agertuko"
 msgid "If this date is in the future, the content will not show up in listings and searches until this date."
 msgstr "Data hau etorkizunekoa bada, edukia ez da agertuko data hori iritsi arte"
 
+#: components/manage/LockingToastsFactory/LockingToastsFactory
+msgid "If you are certain this user has abandoned the object, you may unlock the object. You will then be able to edit it."
+msgstr ""
+
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
@@ -1970,6 +1974,10 @@ msgstr ""
 
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 msgid "This is a working copy of {title}"
+msgstr ""
+
+#: components/manage/LockingToastsFactory/LockingToastsFactory
+msgid "This item was locked by {creator} on {date}"
 msgstr ""
 
 #: components/manage/Contents/ContentsRenameModal
