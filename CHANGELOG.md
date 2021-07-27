@@ -1,6 +1,6 @@
 # Change Log
 
-## 13.8.2 (unreleased)
+## 13.8.3 (unreleased)
 
 ### Breaking
 
@@ -16,6 +16,12 @@
 - Improve consistency of `TokenWidget`'s use of the choice labels as "values" instead of internal uids assigned by `react-select`. @tiberiuichim
 
 ### Internal
+
+## 13.8.2 (2021-07-20)
+
+### Bugfix
+
+- Improve `URLWidget` component, so it uses `flattenToURL` for the value @sneridagh
 
 ## 13.8.1 (2021-07-16)
 
@@ -3406,3 +3412,7 @@ refer to all of them in https://github.com/plone/volto/releases
 - Basic components (navigation, toolbar, breadcrumbs etc) @robgietema
 - Authentication including login / logout @robgietema
 - Setup build environment @robgietema
+
+### Changed
+
+- Fixed passing intl to the schemaExtender in the ObjectListWidget component. @1bsilver
