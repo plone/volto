@@ -4,6 +4,7 @@
  */
 
 import React, { Component } from 'react';
+import jwtDecode from 'jwt-decode';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -155,7 +156,10 @@ class App extends Component {
           </Segment>
         </MultilingualRedirector>
         <Footer />
-        <LockingToastsFactory content={this.props.content} />
+        <LockingToastsFactory
+          content={this.props.content}
+          user={this.props.userId}
+        />
         <WorkingCopyToastsFactory content={this.props.content} />
         <ToastContainer
           position={toast.POSITION.BOTTOM_CENTER}
@@ -225,6 +229,9 @@ export default compose(
     (state, props) => ({
       pathname: props.location.pathname,
       token: state.userSession.token,
+      userId: state.userSession.token
+        ? jwtDecode(state.userSession.token).sub
+        : '',
       content: state.content.data,
       apiError: state.apierror.error,
       connectionRefused: state.apierror.connectionRefused,

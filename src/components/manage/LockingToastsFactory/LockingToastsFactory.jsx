@@ -27,7 +27,7 @@ const LockingToastsFactory = (props) => {
   const intl = useIntl();
   const pathname = useLocation().pathname;
   const lang = useSelector((state) => state.intl.locale);
-  const { content } = props;
+  const { content, user } = props;
   const locking = content?.['@components']?.['lock'];
   const creator = locking?.creator_name || locking?.creator || '';
   // const creator_url = locking?.creator_url || '';
@@ -41,8 +41,8 @@ const LockingToastsFactory = (props) => {
   };
 
   useDeepCompareEffect(() => {
-    if (content && config.settings.hasLockingSupport) {
-      if (locking?.locked) {
+    if (config.settings.hasLockingSupport && user && content) {
+      if (locking?.locked && locking?.creator !== user) {
         if (toast.isActive('lockinginfo')) {
           toast.update('lockinginfo', {
             render: (
@@ -84,7 +84,17 @@ const LockingToastsFactory = (props) => {
         }
       }
     }
-  }, [pathname, content, creator, locking, date, intl, lang, dateOptions]);
+  }, [
+    content,
+    creator,
+    date,
+    dateOptions,
+    intl,
+    lang,
+    locking,
+    pathname,
+    user,
+  ]);
 
   return null;
 };
