@@ -117,7 +117,7 @@ context('Special fields Acceptance Tests', () => {
         '[aria-labelledby="fieldset-default-field-label-href"] [aria-label="Open object browser"]',
       ).click();
       cy.findByText('My Image');
-      cy.findByText('/document');
+      cy.findByText('document');
     });
   });
 });

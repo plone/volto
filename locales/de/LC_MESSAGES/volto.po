@@ -84,6 +84,10 @@ msgstr "Benutzer hinzufügen"
 msgid "Add a description…"
 msgstr "Beschreibung hinzufügen…"
 
+#: components/manage/BlockChooser/BlockChooserButton
+msgid "Add block"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 msgid "Add block…"
 msgstr "Block hinzufügen"
@@ -124,6 +128,10 @@ msgstr "Neuen Benutzer hinzufügen"
 msgid "Add to Groups"
 msgstr "Zu Gruppe hinzufügen"
 
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Add vocabulary term"
+msgstr "Füge neuen Term hinzu"
+
 #: components/manage/Add/Add
 msgid "Add {type}"
 msgstr "{type} hinzufügen"
@@ -155,6 +163,10 @@ msgstr "alphabetisch"
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Alt text"
 msgstr "Alternative Text"
+
+#: components/manage/Toolbar/More
+msgid "Apply working copy"
+msgstr "Arbeitskopie anwenden"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this field?"
@@ -277,6 +289,10 @@ msgstr "Arbeitsablauf-Status ändern"
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Change workflow state recursively"
 msgstr "Arbeitlauf-Status für alle Unterobjekte ebenfalls ändern"
+
+#: components/manage/Toolbar/More
+msgid "Changes applied."
+msgstr "Änderungen durchgeführt."
 
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
@@ -408,6 +424,14 @@ msgstr "Urheberrecht"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Copyright statement or other rights information on this item."
 msgstr "Informationen über die Urheber- und Nutzungsrechte an diesem Artikel."
+
+#: components/manage/Toolbar/More
+msgid "Create working copy"
+msgstr "Arbeitskopie erstellen"
+
+#: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
+msgid "Created by {creator} on {date}"
+msgstr "Erstellt von {creator} am {date}"
 
 #: components/manage/Contents/Contents
 msgid "Created on"
@@ -1085,6 +1109,10 @@ msgstr "Login fehlgeschlagen"
 msgid "Login Name"
 msgstr "Benutzername"
 
+#: components/manage/Toolbar/More
+msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
+msgstr "Erstellt von {creator} am {date}. Diese Seite ist keine Arbeitskopie mehr sondern die Live-Seite."
+
 #: components/manage/Blocks/Table/Edit
 msgid "Make the table compact"
 msgstr "Tabelle kompakt darstellen"
@@ -1481,6 +1509,14 @@ msgstr "Element entfernen"
 msgid "Remove recurrence"
 msgstr "Wiederkehrende Einstellung entfernen"
 
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Remove term"
+msgstr "Entferne Term"
+
+#: components/manage/Toolbar/More
+msgid "Remove working copy"
+msgstr "Arbeitskopie löschen"
+
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 msgid "Rename"
@@ -1524,6 +1560,10 @@ msgstr "Notwendig"
 #: helpers/MessageLabels/MessageLabels
 msgid "Required input is missing."
 msgstr "Notwendige Eingabe fehlt."
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Reset term title"
+msgstr "Setze Titel zurück"
 
 #: components/manage/Widgets/QuerystringWidget
 msgid "Results limit"
@@ -1594,6 +1634,10 @@ msgstr "Aktualisierungen Schema"
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search"
 msgstr "Suche"
+
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Search SVG"
+msgstr "Suchen"
 
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search Site"
@@ -1903,6 +1947,10 @@ msgstr "Bitte prüfen Sie Ihr E-Mail Postfach. Sie sollten eine E-Mail erhalten 
 msgid "The user portrait/avatar"
 msgstr "Benutzer Portrait/Avatar"
 
+#: components/manage/Toolbar/More
+msgid "The working copy was discarded"
+msgstr "Die Arbeitskopie wurde verworfen"
+
 #: components/theme/Footer/Footer
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
 msgstr "{plonecms} {copyright} 2000-{current_year} {plonefoundation} und Freunde."
@@ -1923,6 +1971,14 @@ msgstr "Es sind Fehler aufgetreten."
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Third"
 msgstr "Dritter"
+
+#: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
+msgid "This has an ongoing working copy in {title}"
+msgstr "Diese Seite hat eine Arbeitskopie unter {title}"
+
+#: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
+msgid "This is a working copy of {title}"
+msgstr "Das ist eine Arbeitskopie von {title}"
 
 #: components/manage/Contents/ContentsRenameModal
 msgid "This name will be displayed in the URL."
@@ -2132,9 +2188,25 @@ msgstr "Änderungen anzeigen"
 msgid "View this revision"
 msgstr "Diese revision ansehen"
 
+#: components/manage/Toolbar/More
+msgid "View working copy"
+msgstr "Arbeitskopie ansehen"
+
 #: components/manage/Display/Display
 msgid "Viewmode"
 msgstr "Ansicht"
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary term"
+msgstr "Term"
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary term title"
+msgstr "Termtitel"
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary terms"
+msgstr "Terme"
 
 #: components/manage/Controlpanels/VersionOverview
 msgid "Warning Regarding debug mode"
