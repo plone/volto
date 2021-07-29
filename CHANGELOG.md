@@ -6,6 +6,8 @@
 
 ### Feature
 
+- cypress tests for users and groups controlpanel @nileshgulia1
+
 ### Bugfix
 
 - Add select utils `normalizerValue`, add state to the basic select field forcing it to be fully controlled @sneridagh
@@ -16,6 +18,7 @@
 - Add tests for `Select` component, document the use cases propely @sneridagh
 - Upgrade `AsyncSelect` to a version compatible with `react-select` v4 @sneridagh
 - Upgrade to latest `react-select` @sneridagh
+
 ## 13.8.1 (2021-07-16)
 
 ### Bugfix
