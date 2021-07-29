@@ -204,7 +204,9 @@ class Edit extends Component {
    * @returns {undefined}
    */
   onSubmit(data) {
-    this.props.updateContent(getBaseUrl(this.props.pathname), data);
+    const lock_token = this.props.content?.['@components']?.['lock']?.token;
+    const headers = lock_token ? { 'Lock-Token': lock_token } : {};
+    this.props.updateContent(getBaseUrl(this.props.pathname), data, headers);
   }
 
   /**

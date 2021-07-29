@@ -56,18 +56,25 @@ export function deleteContent(urls) {
  * @function updateContent
  * @param {string|Array} urls Content url(s).
  * @param {Object|Array} content Content data.
+ * @param {Object|Array} headers Custom headers.
  * @returns {Object} Update content action.
  */
-export function updateContent(urls, content) {
+export function updateContent(urls, content, headers = {}) {
   return {
     type: UPDATE_CONTENT,
     request:
       typeof urls === 'string'
-        ? { op: 'patch', path: urls, data: nestContent(content) }
+        ? {
+            op: 'patch',
+            path: urls,
+            data: nestContent(content),
+            headers: headers,
+          }
         : urls.map((url, index) => ({
             op: 'patch',
             path: url,
             data: nestContent(content[index]),
+            headers: headers,
           })),
   };
 }
