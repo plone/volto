@@ -28,6 +28,11 @@ describe('Content reducer', () => {
         loading: false,
         error: null,
       },
+      lock: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
       order: {
         loaded: false,
         loading: false,
@@ -45,6 +50,11 @@ describe('Content reducer', () => {
       },
       data: null,
       subrequests: {},
+      unlock: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
     });
   });
 

@@ -30,6 +30,8 @@ import {
 import {
   updateContent,
   getContent,
+  lockContent,
+  unlockContent,
   getSchema,
   listActions,
 } from '@plone/volto/actions';
@@ -75,6 +77,8 @@ class Edit extends Component {
     updateContent: PropTypes.func.isRequired,
     getContent: PropTypes.func.isRequired,
     getSchema: PropTypes.func.isRequired,
+    lockContent: PropTypes.func.isRequired,
+    unlockContent: PropTypes.func.isRequired,
     updateRequest: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
@@ -207,6 +211,10 @@ class Edit extends Component {
     const lock_token = this.props.content?.['@components']?.['lock']?.token;
     const headers = lock_token ? { 'Lock-Token': lock_token } : {};
     this.props.updateContent(getBaseUrl(this.props.pathname), data, headers);
+
+    if (config.settings.hasLockingSupport) {
+      this.props.unlockContent(getBaseUrl(this.props.pathname));
+    }
   }
 
   /**
@@ -215,6 +223,10 @@ class Edit extends Component {
    * @returns {undefined}
    */
   onCancel() {
+    if (config.settings.hasLockingSupport) {
+      this.props.unlockContent(getBaseUrl(this.props.pathname));
+    }
+
     this.props.history.push(
       this.props.returnUrl || getBaseUrl(this.props.pathname),
     );
@@ -424,6 +436,8 @@ export const __test__ = compose(
       updateContent,
       getContent,
       getSchema,
+      lockContent,
+      unlockContent,
     },
   ),
 )(Edit);
@@ -441,6 +455,11 @@ export default compose(
       key: 'content',
       promise: async ({ location, store: { dispatch } }) =>
         await dispatch(getContent(getBaseUrl(location.pathname))),
+    },
+    {
+      key: 'lock',
+      promise: async ({ location, store: { dispatch } }) =>
+        await dispatch(lockContent(getBaseUrl(location.pathname))),
     },
   ]),
   connect(
@@ -460,6 +479,8 @@ export default compose(
       updateContent,
       getContent,
       getSchema,
+      lockContent,
+      unlockContent,
     },
   ),
   preloadLazyLibs('cms'),
