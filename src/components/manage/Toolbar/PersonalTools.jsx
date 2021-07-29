@@ -11,6 +11,8 @@ import cx from 'classnames';
 import { FormattedMessage, injectIntl, defineMessages } from 'react-intl';
 import { Icon } from '@plone/volto/components';
 import { getUser } from '@plone/volto/actions';
+import { userHasRoles } from '@plone/volto/helpers';
+
 import logoutSVG from '@plone/volto/icons/log-out.svg';
 import rightArrowSVG from '@plone/volto/icons/right-key.svg';
 
@@ -55,11 +57,6 @@ class PersonalTools extends Component {
     loadComponent: PropTypes.func.isRequired,
   };
 
-  /**
-   * Component will mount
-   * @method componentWillMount
-   * @returns {undefined}
-   */
   componentDidMount() {
     this.props.getUser(this.props.userId);
   }
@@ -143,12 +140,21 @@ class PersonalTools extends Component {
                 <Icon name={rightArrowSVG} size="24px" />
               </button>
             </li>
-            <li>
-              <Link to="/controlpanel">
-                <FormattedMessage id="Site Setup" defaultMessage="Site Setup" />
-                <Icon name={rightArrowSVG} size="24px" />
-              </Link>
-            </li>
+
+            {userHasRoles(this.props.user, [
+              'Site Administrator',
+              'Manager',
+            ]) && (
+              <li>
+                <Link to="/controlpanel">
+                  <FormattedMessage
+                    id="Site Setup"
+                    defaultMessage="Site Setup"
+                  />
+                  <Icon name={rightArrowSVG} size="24px" />
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
       </div>

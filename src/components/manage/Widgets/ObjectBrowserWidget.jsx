@@ -27,6 +27,7 @@ import clearSVG from '@plone/volto/icons/clear.svg';
 import homeSVG from '@plone/volto/icons/home.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import blankSVG from '@plone/volto/icons/blank.svg';
+import { withRouter } from 'react-router';
 
 const messages = defineMessages({
   placeholder: {
@@ -116,18 +117,20 @@ export class ObjectBrowserWidgetComponent extends Component {
         }
         trigger={
           <Label>
-            {item.title}
-            {this.props.mode === 'multiple' && (
-              <Icon
-                name={clearSVG}
-                size="12px"
-                className="right"
-                onClick={(event) => {
-                  event.preventDefault();
-                  this.removeItem(item);
-                }}
-              />
-            )}
+            <div className="item-title">{item.title}</div>
+            <div>
+              {this.props.mode === 'multiple' && (
+                <Icon
+                  name={clearSVG}
+                  size="12px"
+                  className="right"
+                  onClick={(event) => {
+                    event.preventDefault();
+                    this.removeItem(item);
+                  }}
+                />
+              )}
+            </div>
           </Label>
         }
       />
@@ -264,10 +267,11 @@ export class ObjectBrowserWidgetComponent extends Component {
     ev.preventDefault();
     this.props.openObjectBrowser({
       mode: this.props.mode,
+      currentPath: this.props.location.pathname,
+      propDataName: 'value',
       onSelectItem: (url, item) => {
         this.onChange(item);
       },
-      propDataName: 'value',
       selectableTypes: this.props.widgetOptions?.pattern_options
         ?.selectableTypes,
       maximumSelectionSize: this.props.widgetOptions?.pattern_options
@@ -402,11 +406,13 @@ const ObjectBrowserWidgetMode = (mode) =>
   compose(
     injectIntl,
     withObjectBrowser,
+    withRouter,
     connect(null, { searchContent }),
   )((props) => <ObjectBrowserWidgetComponent {...props} mode={mode} />);
 export { ObjectBrowserWidgetMode };
 export default compose(
   injectIntl,
   withObjectBrowser,
+  withRouter,
   connect(null, { searchContent }),
 )(ObjectBrowserWidgetComponent);

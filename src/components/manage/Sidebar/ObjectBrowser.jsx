@@ -1,7 +1,7 @@
 import React from 'react';
 import ObjectBrowserBody from '@plone/volto/components/manage/Sidebar/ObjectBrowserBody';
-import { getParentURL } from '@plone/volto/components/manage/Sidebar/ObjectBrowserBody';
 import SidebarPopup from '@plone/volto/components/manage/Sidebar/SidebarPopup';
+import { getBaseUrl } from '@plone/volto/helpers';
 
 const withObjectBrowser = (WrappedComponent) =>
   class extends React.Component {
@@ -56,6 +56,7 @@ const withObjectBrowser = (WrappedComponent) =>
       propDataName = null,
       selectableTypes,
       maximumSelectionSize,
+      currentPath,
     } = {}) =>
       this.setState(() => ({
         isObjectBrowserOpen: true,
@@ -66,15 +67,17 @@ const withObjectBrowser = (WrappedComponent) =>
         propDataName,
         selectableTypes,
         maximumSelectionSize,
+        currentPath,
       }));
 
     closeObjectBrowser = () => this.setState({ isObjectBrowserOpen: false });
 
     render() {
-      let contextURL = this.props.pathname ?? this.props.location?.pathname;
-      if (contextURL?.endsWith('edit')) {
-        contextURL = getParentURL(contextURL);
-      }
+      let contextURL =
+        this.props.pathname ||
+        this.props.location?.pathname ||
+        this.state?.currentPath;
+
       return (
         <>
           <WrappedComponent
@@ -95,8 +98,9 @@ const withObjectBrowser = (WrappedComponent) =>
                 data={
                   this.state.propDataName
                     ? this.props[this.state.propDataName]
-                    : { ...this.props.data, contextURL }
+                    : this.props.data
                 }
+                contextURL={getBaseUrl(contextURL)}
                 closeObjectBrowser={this.closeObjectBrowser}
                 mode={this.state.mode}
                 onSelectItem={this.state.onSelectItem}
@@ -110,4 +114,5 @@ const withObjectBrowser = (WrappedComponent) =>
       );
     }
   };
+
 export default withObjectBrowser;

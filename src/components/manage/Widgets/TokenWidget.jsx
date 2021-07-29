@@ -7,7 +7,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import loadable from '@loadable/component';
 import { defineMessages, injectIntl } from 'react-intl';
 import {
   getVocabFromHint,
@@ -24,10 +23,7 @@ import {
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
 
 import { FormFieldWrapper } from '@plone/volto/components';
-
-const AsyncCreatable = loadable.lib(() =>
-  import('react-select/async-creatable'),
-);
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 const messages = defineMessages({
   select: {
@@ -173,29 +169,27 @@ class TokenWidget extends Component {
    */
   render() {
     const { selectedOption } = this.state;
+    const AsyncCreatableSelect = this.props.reactSelectAsyncCreateable.default;
+
     return (
       <FormFieldWrapper {...this.props}>
-        <AsyncCreatable>
-          {({ default: AsyncCreatableSelect }) => (
-            <AsyncCreatableSelect
-              isDisabled={this.props.isDisabled}
-              className="react-select-container"
-              classNamePrefix="react-select"
-              defaultOptions={this.props.choices || []}
-              styles={customSelectStyles}
-              theme={selectTheme}
-              components={{ DropdownIndicator, Option }}
-              isMulti
-              value={selectedOption || []}
-              loadOptions={this.loadOptions}
-              onChange={this.handleChange}
-              placeholder={this.props.intl.formatMessage(messages.select)}
-              noOptionsMessage={() =>
-                this.props.intl.formatMessage(messages.no_options)
-              }
-            />
-          )}
-        </AsyncCreatable>
+        <AsyncCreatableSelect
+          isDisabled={this.props.isDisabled}
+          className="react-select-container"
+          classNamePrefix="react-select"
+          defaultOptions={this.props.choices || []}
+          styles={customSelectStyles}
+          theme={selectTheme}
+          components={{ DropdownIndicator, Option }}
+          isMulti
+          value={selectedOption || []}
+          loadOptions={this.loadOptions}
+          onChange={this.handleChange}
+          placeholder={this.props.intl.formatMessage(messages.select)}
+          noOptionsMessage={() =>
+            this.props.intl.formatMessage(messages.no_options)
+          }
+        />
       </FormFieldWrapper>
     );
   }
@@ -203,6 +197,7 @@ class TokenWidget extends Component {
 
 export default compose(
   injectIntl,
+  injectLazyLibs(['reactSelectAsyncCreateable']),
   connect(
     (state, props) => {
       const vocabBaseUrl =

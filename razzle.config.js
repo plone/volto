@@ -16,6 +16,7 @@ const babelLoaderFinder = makeLoaderFinder('babel-loader');
 
 const projectRootPath = path.resolve('.');
 const languages = require('./src/constants/Languages');
+const { poToJson } = require('./src/i18n');
 
 const packageJson = require(path.join(projectRootPath, 'package.json'));
 
@@ -26,6 +27,9 @@ const defaultModify = ({
   webpackConfig: config,
   webpackObject: webpack,
 }) => {
+  // Compile language JSON files from po files
+  poToJson();
+
   if (dev) {
     config.plugins.unshift(
       new webpack.DefinePlugin({
@@ -132,6 +136,37 @@ const defaultModify = ({
         __SERVER__: true,
       }),
     );
+
+    // Razzle sets some of its basic env vars in the default config injecting them (for
+    // the client use, mainly) in a `DefinePlugin` instance. However, this also ends in
+    // the server build, removing the ability of the server node process to read from
+    // the system's (or process') env vars. In this case, in the server build, we hunt
+    // down the instance of the `DefinePlugin` defined by Razzle and remove the
+    // `process.env.PORT` so it can be overridable in runtime
+    const idxArr = config.plugins
+      .map((plugin, idx) =>
+        plugin.constructor.name === 'DefinePlugin' ? idx : '',
+      )
+      .filter(String);
+    idxArr.forEach((index) => {
+      const { definitions } = config.plugins[index];
+      if (definitions['process.env.PORT']) {
+        const newDefs = Object.assign({}, definitions);
+        // Transforms the stock RAZZLE_PUBLIC_DIR into relative path,
+        // so one can move the build around
+        newDefs['process.env.RAZZLE_PUBLIC_DIR'] = newDefs[
+          'process.env.RAZZLE_PUBLIC_DIR'
+        ].replace(projectRootPath, '.');
+        // Handles the PORT, so it takes the real PORT from the runtime enviroment var,
+        // but keeps the one from build time, if different from 3000 (by not deleting it)
+        // So build time one takes precedence, do not set it in build time if you want
+        // to control it always via runtime (assumming 3000 === not set in build time)
+        if (newDefs['process.env.PORT'] === '3000') {
+          delete newDefs['process.env.PORT'];
+        }
+        config.plugins[index] = new webpack.DefinePlugin(newDefs);
+      }
+    });
   }
 
   // Don't load config|variables|overrides) files with file-loader
@@ -203,11 +238,16 @@ const defaultModify = ({
 
   if (process.env.RAZZLE_TESTING_ADDONS) {
     testingAddons.forEach((addon) => {
-      const p = fs.realpathSync(registry.packages[addon].modulePath);
+      const normalizedAddonName = addon.split(':')[0];
+      const p = fs.realpathSync(
+        registry.packages[normalizedAddonName].modulePath,
+      );
       if (include.indexOf(p) === -1) {
         include.push(p);
       }
-      addonsAsExternals = registry.addonNames.map((addon) => new RegExp(addon));
+      addonsAsExternals = registry.addonNames.map(
+        (normalizedAddonName) => new RegExp(normalizedAddonName),
+      );
     });
   }
 

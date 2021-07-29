@@ -62,6 +62,7 @@ test('renders a ListingBody component', () => {
           block="1234"
           onChangeBlock={() => {}}
           path="/"
+          variation={{}}
         />
       </MemoryRouter>
     </Provider>,

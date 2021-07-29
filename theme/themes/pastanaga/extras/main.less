@@ -303,7 +303,6 @@ button {
     margin-left: 8px;
 
     h4 {
-      padding-top: 4px;
       margin-bottom: 0;
       font-weight: @bold;
     }
@@ -346,6 +345,39 @@ button {
 //Controlpanel
 .controlpanel .ui .grid h3 {
   flex-direction: column;
+}
+
+//Add translation
+#page-add-translation {
+  .new-translation {
+    margin-left: 2em;
+  }
+
+  .source-object {
+    padding-right: 3em;
+  }
+
+  .ui.menu.formtabs {
+    flex-wrap: wrap;
+  }
+}
+//Add translation, Compare translation
+#page-add-translation,
+#page-compare-translation {
+  .full-width {
+    position: unset;
+    right: unset;
+    left: unset;
+    width: 100% !important;
+    margin-right: unset !important;
+    margin-left: unset !important;
+  }
+}
+
+fieldset.invisible {
+  padding: 0;
+  border: none;
+  margin: 0;
 }
 
 .vertical-form {
@@ -413,4 +445,7 @@ button {
 @import 'print';
 @import 'userscontrolpanel.less';
 @import 'skiplinks';
+@import 'widgets';
+@import 'login';
+@import 'language-selector';
 .loadUIOverrides();

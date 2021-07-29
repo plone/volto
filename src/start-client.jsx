@@ -42,6 +42,11 @@ export default () => {
     window.settings = config.settings;
   }
 
+  // If Host header is present (so window.env.apiPath is)
+  if (window.env.apiPath) {
+    config.settings.apiPath = window.env.apiPath;
+  }
+
   loadableReady(() => {
     hydrate(
       <Provider store={store}>

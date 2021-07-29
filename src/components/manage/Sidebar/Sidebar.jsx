@@ -159,6 +159,7 @@ class Sidebar extends Component {
    * @returns {undefined}
    */
   onTabChange(event, data) {
+    event.nativeEvent.stopImmediatePropagation();
     this.props.setSidebarTab(data.activeIndex);
   }
 

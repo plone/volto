@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import { isObject, intersection } from 'lodash';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import loadable from '@loadable/component';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 import {
   getVocabFromHint,
@@ -26,9 +26,6 @@ import {
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
 
 import { FormFieldWrapper } from '@plone/volto/components';
-
-const AsyncPaginate = loadable(() => import('react-select-async-paginate'));
-const CreatableSelect = loadable(() => import('react-select/creatable'));
 
 const messages = defineMessages({
   select: {
@@ -208,6 +205,8 @@ class ArrayWidget extends Component {
    */
   render() {
     const { selectedOption } = this.state;
+    const CreatableSelect = this.props.reactSelectCreateable.default;
+    const AsyncPaginate = this.props.reactSelectAsyncPaginate.default;
 
     return (
       <FormFieldWrapper {...this.props}>
@@ -278,6 +277,7 @@ export const ArrayWidgetComponent = ArrayWidget;
 
 export default compose(
   injectIntl,
+  injectLazyLibs(['reactSelectCreateable', 'reactSelectAsyncPaginate']),
   connect(
     (state, props) => {
       const vocabBaseUrl =

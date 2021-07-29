@@ -69,11 +69,15 @@ msgstr "Adăugare utilizator"
 msgid "Add a description…"
 msgstr "Adăugați o descriere …"
 
+#: components/manage/BlockChooser/BlockChooserButton
+msgid "Add block"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 msgid "Add block…"
 msgstr "Adăugare bloc …"
 
-#: components/manage/Blocks/Listing/QuerystringWidget
+#: components/manage/Widgets/QueryWidget
 msgid "Add criteria"
 msgstr "Adăugare criterii"
 
@@ -109,6 +113,10 @@ msgstr "Adăugare utilizator nou"
 msgid "Add to Groups"
 msgstr "Adăugare la grupuri"
 
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Add vocabulary term"
+msgstr ""
+
 #: components/manage/Add/Add
 msgid "Add {type}"
 msgstr "Adăugare {type}"
@@ -140,6 +148,10 @@ msgstr ""
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Alt text"
 msgstr "Text alternativ"
+
+#: components/manage/Toolbar/More
+msgid "Apply working copy"
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this field?"
@@ -173,6 +185,7 @@ msgstr "Disponibil"
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -187,10 +200,6 @@ msgstr "Baza"
 msgid "Block"
 msgstr "Bloc"
 
-#: components/manage/Blocks/Listing/ListingSidebar
-msgid "Block style"
-msgstr "Stil bloc"
-
 #: components/theme/Login/Login
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
 msgstr "Atât adresa de e-mail, cât și parola sunt case-sensitive, verificați dacă tasta 'Caps Lock' nu este activată."
@@ -199,6 +208,7 @@ msgstr "Atât adresa de e-mail, cât și parola sunt case-sensitive, verificați
 msgid "Breadcrumbs"
 msgstr "Breadcrumbs"
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
@@ -265,6 +275,10 @@ msgstr "Schimbă starea"
 msgid "Change workflow state recursively"
 msgstr "Schimbă starea fluxului de lucru recursiv"
 
+#: components/manage/Toolbar/More
+msgid "Changes applied."
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -318,6 +332,10 @@ msgstr "Închidere meniu"
 msgid "Code"
 msgstr ""
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Collapse item"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"
 msgstr "Colecție"
@@ -361,10 +379,6 @@ msgstr "Formular de contact"
 msgid "Contained items"
 msgstr "Elemente conținute"
 
-#: components/manage/Blocks/Listing/ListingSidebar
-msgid "Content"
-msgstr "Conținut"
-
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
 msgstr "Tip de conținut creat"
@@ -396,6 +410,14 @@ msgstr "Drepturi de autor"
 msgid "Copyright statement or other rights information on this item."
 msgstr "Declarație de copyright sau alte informații privind drepturile asupra acestui articol."
 
+#: components/manage/Toolbar/More
+msgid "Create working copy"
+msgstr ""
+
+#: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
+msgid "Created by {creator} on {date}"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Created on"
 msgstr "Creat pe"
@@ -408,7 +430,8 @@ msgstr "Creator"
 msgid "Creators"
 msgstr "Creatori"
 
-#: components/manage/Blocks/Listing/QuerystringWidget
+#: components/manage/Widgets/QuerystringWidget
+#: components/manage/Widgets/QueryWidget
 msgid "Criteria"
 msgstr "Criterii"
 
@@ -462,7 +485,6 @@ msgstr ""
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -513,7 +535,7 @@ msgstr "Șterge coloană"
 msgid "Delete row"
 msgstr "Șterge rând"
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerystringWidget
 msgid "Depth"
 msgstr ""
 
@@ -523,7 +545,6 @@ msgstr "Descrescător"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -568,6 +589,7 @@ msgstr "Doriți cu adevărat să ștergeți utilizatorul {username}?"
 msgid "Do you really want to delete this item?"
 msgstr "Doriți cu adevărat să ștergeți acest articol?"
 
+#: components/manage/Multilingual/TranslationObject
 #: components/manage/Sidebar/Sidebar
 msgid "Document"
 msgstr "Document"
@@ -646,6 +668,10 @@ msgstr "Eroare de cod integrat, urmați instrucțiunile și încercați din nou.
 #: components/manage/Blocks/Maps/View
 msgid "Embeded Google Maps"
 msgstr "Harti Google integrate"
+
+#: components/manage/Widgets/ObjectListWidget
+msgid "Empty object list"
+msgstr ""
 
 #: components/manage/Controlpanels/ContentTypeLayout
 msgid "Enable editable Blocks"
@@ -866,14 +892,7 @@ msgstr "Dacă această dată va fi în viitor, conținutul nu va apărea în lis
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr "Dacă sunteți sigur că aveți adresa web corectă, dar întâmpinați o eroare, vă rugăm să contactați {site_admin}."
 
-#: components/theme/Login/Login
-msgid "If you have forgotten your password, {forgotpassword}"
-msgstr "Dacă v-ați uitat parola, {forgotpassword}"
-
-#: components/theme/Login/Login
-msgid "If you you do not have an account here, head over to the {registrationform}."
-msgstr "Dacă nu aveți un cont aici, treceți la {registrationform}."
-
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
@@ -942,7 +961,7 @@ msgstr ""
 msgid "Interval Yearly"
 msgstr ""
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerystringWidget
 msgid "Item batch size"
 msgstr "Dimensiunea lotului obiectului"
 
@@ -1018,23 +1037,27 @@ msgstr "Stânga"
 msgid "Link"
 msgstr "Legătură"
 
-#: components/manage/Blocks/Listing/ListingSidebar
+#: components/manage/Blocks/Listing/schema
 msgid "Link more"
 msgstr "Legătură către mai multe"
 
-#: components/manage/Blocks/Listing/ListingMore
+#: components/manage/Blocks/Listing/schema
 msgid "Link title"
 msgstr "Legătură la titlu"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Listing/ListingMore
+#: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Link to"
 msgstr "Legătură către"
 
-#: components/manage/Blocks/Listing/ListingSidebar
+#: components/manage/Multilingual/ManageTranslations
+msgid "Link translation for"
+msgstr ""
+
+#: components/manage/Blocks/Listing/schema
 msgid "Listing"
 msgstr "Listare"
 
@@ -1070,6 +1093,10 @@ msgstr "Autentificare eșuată"
 #: components/theme/Login/Login
 msgid "Login Name"
 msgstr "Nume de autentificare"
+
+#: components/manage/Toolbar/More
+msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
+msgstr ""
 
 #: components/manage/Blocks/Table/Edit
 msgid "Make the table compact"
@@ -1219,7 +1246,8 @@ msgstr ""
 msgid "No results found."
 msgstr "Nu s-au găsit rezultate."
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerySortOnWidget
+#: components/manage/Widgets/QuerystringWidget
 msgid "No selection"
 msgstr "Fără selecție"
 
@@ -1313,6 +1341,14 @@ msgstr "Lipire"
 msgid "Paste blocks"
 msgstr ""
 
+#: components/manage/Sharing/Sharing
+msgid "Permissions have been updated successfully"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
+msgid "Permissions updated"
+msgstr ""
+
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Toolbar/Toolbar
 msgid "Personal Information"
@@ -1402,6 +1438,10 @@ msgstr "Data publicării"
 msgid "Publishing Date"
 msgstr "Data publicării"
 
+#: components/manage/Blocks/Listing/schema
+msgid "Query"
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "Re-enter the password. Make sure the passwords are identical."
@@ -1433,6 +1473,7 @@ msgid "Reduce complexity"
 msgstr "Reduce complexitatea"
 
 #: components/theme/Anontools/Anontools
+#: components/theme/Login/Login
 #: components/theme/Register/Register
 msgid "Register"
 msgstr "Înregistrare"
@@ -1445,8 +1486,20 @@ msgstr "Formular de înregistrare"
 msgid "Relevance"
 msgstr ""
 
+#: components/manage/Widgets/ObjectListWidget
+msgid "Remove item"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
+msgstr ""
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Remove term"
+msgstr ""
+
+#: components/manage/Toolbar/More
+msgid "Remove working copy"
 msgstr ""
 
 #: components/manage/Actions/Actions
@@ -1482,7 +1535,6 @@ msgstr ""
 msgid "Reply"
 msgstr ""
 
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -1494,7 +1546,11 @@ msgstr "Obligatoriu"
 msgid "Required input is missing."
 msgstr "Câmpul este obligatoriu."
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Reset term title"
+msgstr ""
+
+#: components/manage/Widgets/QuerystringWidget
 msgid "Results limit"
 msgstr "Limita rezultatelor"
 
@@ -1502,7 +1558,7 @@ msgstr "Limita rezultatelor"
 msgid "Results preview"
 msgstr "Previzualizare rezultate"
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerystringWidget
 msgid "Reversed order"
 msgstr "Ordine inversată"
 
@@ -1564,6 +1620,10 @@ msgstr ""
 msgid "Search"
 msgstr "Căutare"
 
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Search SVG"
+msgstr ""
+
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search Site"
 msgstr "Căutare pe site"
@@ -1607,10 +1667,6 @@ msgstr ""
 #: components/manage/Contents/Contents
 msgid "Select columns to show"
 msgstr "Selectați coloane de afișat"
-
-#: components/manage/Widgets/QuerystringWidget
-msgid "Select criteria"
-msgstr "Selectarea criteriilor"
 
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Select the transition to be used for modifying the items state."
@@ -1664,7 +1720,6 @@ msgstr "Partajare"
 msgid "Sharing for {title}"
 msgstr "Partajare pentru {title}"
 
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -1685,6 +1740,10 @@ msgstr ""
 
 #: components/theme/Comments/Comments
 msgid "Show Replies"
+msgstr ""
+
+#: components/manage/Widgets/ObjectListWidget
+msgid "Show item"
 msgstr ""
 
 #: components/manage/Sidebar/Sidebar
@@ -1737,12 +1796,12 @@ msgstr "Ne pare rău, a apârut o eroare"
 msgid "Sort By:"
 msgstr ""
 
-#: components/manage/Blocks/Listing/ListingData
+#: components/manage/Widgets/QuerySortOnWidget
+#: components/manage/Widgets/QuerystringWidget
 msgid "Sort on"
 msgstr "Sortare pe"
 
 #: components/manage/Blocks/HTML/Edit
-#: components/manage/Blocks/Listing/ListingData
 msgid "Source"
 msgstr "Sursa"
 
@@ -1772,6 +1831,10 @@ msgstr "Start resetare parolă"
 msgid "State"
 msgstr "Stare"
 
+#: components/manage/Multilingual/CompareLanguages
+msgid "Stop compare"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "String"
 msgstr "String"
@@ -1797,13 +1860,13 @@ msgstr "Subiect"
 msgid "Success"
 msgstr "Succes"
 
+#: components/theme/LanguageSelector/LanguageSelector
+msgid "Switch to"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 msgid "Table"
 msgstr "Tabel"
-
-#: components/manage/Blocks/Table/Edit
-msgid "Table color inverted"
-msgstr "Culoarea tabelului inversată"
 
 #: components/manage/Blocks/ToC/View
 msgid "Table of Contents"
@@ -1829,10 +1892,6 @@ msgstr ""
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Target number of objects in memory per cache"
 msgstr ""
-
-#: components/manage/Blocks/Listing/TemplateWidget
-msgid "Template"
-msgstr "Șablon"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Text"
@@ -1873,6 +1932,10 @@ msgstr "Procesul de înregistrare a avut succes. Vă rugăm să verificați căs
 msgid "The user portrait/avatar"
 msgstr "Portretul / avatarul utilizatorului"
 
+#: components/manage/Toolbar/More
+msgid "The working copy was discarded"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
 msgstr "{plonecms} este {copyright} 2000- {current_year} de {plonefoundation} și prieteni."
@@ -1894,6 +1957,14 @@ msgstr "Au aparut unele erori."
 msgid "Third"
 msgstr ""
 
+#: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
+msgid "This has an ongoing working copy in {title}"
+msgstr ""
+
+#: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
+msgid "This is a working copy of {title}"
+msgstr ""
+
 #: components/manage/Contents/ContentsRenameModal
 msgid "This name will be displayed in the URL."
 msgstr "Acest nume va fi afișat în adresa URL."
@@ -1910,7 +1981,6 @@ msgstr ""
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -1939,6 +2009,7 @@ msgstr ""
 msgid "Total number of objects in the database"
 msgstr ""
 
+#: components/manage/Add/Add
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
 msgstr "Traduceți în {lang}"
@@ -1995,6 +2066,10 @@ msgstr "Dezinstalare"
 msgid "Unknown Block"
 msgstr "Bloc necunoscut"
 
+#: components/manage/Multilingual/ManageTranslations
+msgid "Unlink translation for"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update"
 msgstr "Actualizare"
@@ -2031,7 +2106,10 @@ msgstr "Încărcați fișiere"
 msgid "Uploading files"
 msgstr "Încărcarea fișierelor"
 
-#: components/manage/Widgets/QuerystringWidget
+#: components/manage/Blocks/HeroImageLeft/Edit
+msgid "Uploading image"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -2067,6 +2145,10 @@ msgstr "Utilizatori și grupuri"
 msgid "Users and groups settings"
 msgstr "Setările utilizatorilor și grupurilor"
 
+#: helpers/Extensions/withBlockSchemaEnhancer
+msgid "Variation"
+msgstr ""
+
 #: components/manage/Controlpanels/Controlpanels
 msgid "Version Overview"
 msgstr "Prezentare generală a versiunii"
@@ -2091,9 +2173,25 @@ msgstr "Vizualizare modificări"
 msgid "View this revision"
 msgstr "Vizualizați această revizuire"
 
+#: components/manage/Toolbar/More
+msgid "View working copy"
+msgstr ""
+
 #: components/manage/Display/Display
 msgid "Viewmode"
 msgstr "Mod vizualizare"
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary term"
+msgstr ""
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary term title"
+msgstr ""
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary terms"
+msgstr ""
 
 #: components/manage/Controlpanels/VersionOverview
 msgid "Warning Regarding debug mode"
@@ -2204,6 +2302,7 @@ msgstr "Parola dvs. a fost setată cu succes. Acum puteți {link} cu noua dvs. p
 msgid "Your preferred language"
 msgstr "Limba dvs. preferată"
 
+#: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "box_forgot_password_option"
 msgstr "Ați uitat parola?"
@@ -2211,6 +2310,10 @@ msgstr "Ați uitat parola?"
 #: config/Blocks
 msgid "common"
 msgstr "Comun"
+
+#: components/manage/Multilingual/CompareLanguages
+msgid "compare_to"
+msgstr ""
 
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete"
@@ -2373,13 +2476,9 @@ msgstr ""
 msgid "published"
 msgstr ""
 
-#: components/manage/Blocks/Listing/QuerystringWidget
+#: components/manage/Widgets/QueryWidget
 msgid "querystring-widget-select"
 msgstr ""
-
-#: components/theme/Login/Login
-msgid "registration form"
-msgstr "formular de înregistrare"
 
 #: components/theme/Search/Search
 msgid "results found"
@@ -2564,10 +2663,6 @@ msgstr "Video"
 #: components/theme/View/EventView
 msgid "visit_external_website"
 msgstr "Vizitează site extern"
-
-#: components/theme/Login/Login
-msgid "we can send you a new one"
-msgstr "vă putem trimite unul nou"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"

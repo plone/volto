@@ -1,12 +1,11 @@
 # Volto
 <img align="right" width="300" alt="Volto png" src="./docs/logos/volto-colorful.png" />
 
-[![Build Status](https://github.com/plone/volto/workflows/Volto%20CI/badge.svg)](https://github.com/plone/volto/actions)
+[![NPM](https://img.shields.io/npm/v/@plone/volto.svg)](https://www.npmjs.com/package/@plone/volto)
+[![Build Status Core](https://github.com/plone/volto/actions/workflows/core.yml/badge.svg)](https://github.com/plone/volto/actions)
+[![Build Status Docs](https://github.com/plone/volto/actions/workflows/docs.yml/badge.svg)](https://github.com/plone/volto/actions)
 [![Dependencies](https://img.shields.io/david/plone/volto.svg)](https://github.com/plone/volto/blob/master/package.json)
 [![Dev Dependencies](https://img.shields.io/david/dev/plone/volto.svg)](https://github.com/plone/volto/blob/master/package.json)
-[![NPM](https://img.shields.io/npm/v/@plone/volto.svg)](https://www.npmjs.com/package/@plone/volto)
-[![Netlify
-Status](https://api.netlify.com/api/v1/badges/b8310579-ac4f-41f2-a144-9c90fca9b38f/deploy-status)](https://app.netlify.com/sites/voltocms/deploys)
 
 ## Introduction
 
@@ -159,6 +158,12 @@ as part of the Plone training docs at [https://training.plone.org/5/volto/index.
 [Timo Stollenwerk / Víctor Fernández de Alba / Ramon Navarro - Volto Case Studies](https://2018.ploneconf.org/talks/plone-react-case-studies-when-stability-and-security-meet-speed-and-a-modern-user-interface)
 
 [Timo Stollenwerk - Reinventing Plone, Roadmap to the Modern Web](https://2018.ploneconf.org/talks/reinventing-plone-roadmap-to-the-modern-web)
+
+## Node Support
+
+- Node 14: Supported since Volto 8.8.0
+- Node 12: Supported since Volto 4
+- Node 10: Supported since Volto 1 (and its predecessor "plone-react")
 
 ## Browser support
 
