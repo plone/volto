@@ -268,7 +268,12 @@ export default compose(
         pathname: props.location.pathname,
         content: state.content.data,
         updateRequest: state.slots?.patch || {},
-        slotData: state.slots.data?.items?.[slotId],
+        slotData: {
+          ...(state.slots.data?.items?.[slotId] || {}),
+          '@components': {
+            ...(state.content.data?.['@components'] || {}),
+          },
+        },
       };
     },
     {
