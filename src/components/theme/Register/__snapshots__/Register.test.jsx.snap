@@ -12,172 +12,79 @@ exports[`Register renders a register component 1`] = `
       method="post"
       onSubmit={[Function]}
     >
-      <div
-        className="ui raised segments"
+      <fieldset
+        className="invisible"
+        disabled={false}
       >
         <div
-          className="ui segment"
+          className="ui raised segments"
         >
           <div
-            className="ui segment primary"
-          >
-            <h1
-              style={
-                Object {
-                  "fontSize": "16px",
-                }
-              }
-            >
-               
-              Registration form
-            </h1>
-          </div>
-          <div
-            className="inline required field help text"
+            className="ui segment"
           >
             <div
-              className="ui grid"
+              className="ui segment primary"
             >
-              <div
-                className="stretched row"
+              <h1
+                style={
+                  Object {
+                    "fontSize": "16px",
+                  }
+                }
               >
-                <div
-                  className="four wide column"
-                >
-                  <div
-                    className="wrapper"
-                  >
-                    <label
-                      htmlFor="field-fullname"
-                    >
-                      Full Name
-                    </label>
-                  </div>
-                </div>
-                <div
-                  className="eight wide column"
-                >
-                  <div
-                    className="ui input"
-                  >
-                    <input
-                      id="field-fullname"
-                      maxLength={null}
-                      minLength={null}
-                      name="fullname"
-                      onBlur={[Function]}
-                      onChange={[Function]}
-                      onClick={[Function]}
-                      type="text"
-                      value=""
-                    />
-                  </div>
-                </div>
-              </div>
-              <div
-                className="stretched row"
-              >
-                <div
-                  className="stretched twelve wide column"
-                >
-                  <p
-                    className="help"
-                  >
-                    Enter full name, e.g. John Smith.
-                  </p>
-                </div>
-              </div>
+                 
+                Registration form
+              </h1>
+            </div>
+            <div
+              className="mocked-default-widget"
+              id="mocked-field-fullname"
+            >
+              Full Name
+               - 
+              Enter full name, e.g. John Smith.
+            </div>
+            <div
+              className="mocked-default-widget"
+              id="mocked-field-email"
+            >
+              E-mail
+               - 
+              Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
             </div>
           </div>
           <div
-            className="inline required field help text"
+            className="ui clearing segment actions"
           >
-            <div
-              className="ui grid"
+            <button
+              aria-label="Register"
+              className="ui basic primary right floated button"
+              onClick={[Function]}
+              title="Register"
+              type="submit"
             >
-              <div
-                className="stretched row"
-              >
-                <div
-                  className="four wide column"
-                >
-                  <div
-                    className="wrapper"
-                  >
-                    <label
-                      htmlFor="field-email"
-                    >
-                      E-mail
-                    </label>
-                  </div>
-                </div>
-                <div
-                  className="eight wide column"
-                >
-                  <div
-                    className="ui input"
-                  >
-                    <input
-                      id="field-email"
-                      maxLength={null}
-                      minLength={null}
-                      name="email"
-                      onBlur={[Function]}
-                      onChange={[Function]}
-                      onClick={[Function]}
-                      type="text"
-                      value=""
-                    />
-                  </div>
-                </div>
-              </div>
-              <div
-                className="stretched row"
-              >
-                <div
-                  className="stretched twelve wide column"
-                >
-                  <p
-                    className="help"
-                  >
-                    Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
-                  </p>
-                </div>
-              </div>
-            </div>
+              <svg
+                className="icon circled"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": undefined,
+                  }
+                }
+                onClick={null}
+                style={
+                  Object {
+                    "fill": "currentColor",
+                    "height": "30px",
+                    "width": "auto",
+                  }
+                }
+                viewBox=""
+                xmlns=""
+              />
+            </button>
           </div>
         </div>
-        <div
-          className="ui clearing segment actions"
-        >
-          <button
-            aria-label="Register"
-            className="ui basic primary right floated button"
-            onClick={[Function]}
-            title="Register"
-            type="submit"
-          >
-            <svg
-              className="icon circled"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": undefined,
-                }
-              }
-              onClick={null}
-              style={
-                Object {
-                  "fill": "currentColor",
-                  "height": "30px",
-                  "width": "auto",
-                }
-              }
-              viewBox=""
-              xmlns=""
-            />
-          </button>
-        </div>
-      </div>
+      </fieldset>
     </form>
   </div>
 </div>

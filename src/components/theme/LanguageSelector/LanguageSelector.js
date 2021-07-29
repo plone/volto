@@ -6,48 +6,40 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import cookie from 'react-cookie';
+
 import { useSelector, useDispatch } from 'react-redux';
 import cx from 'classnames';
 import { find, map } from 'lodash';
-import { updateIntl } from 'react-intl-redux';
-import langmap from 'langmap';
-import { Helmet } from '@plone/volto/helpers';
 
-import { settings } from '~/config';
+import {
+  Helmet,
+  langmap,
+  flattenToAppURL,
+  normalizeLanguageName,
+} from '@plone/volto/helpers';
 
-import { flattenToAppURL } from '@plone/volto/helpers';
+import config from '@plone/volto/registry';
 
-let locales = {};
+import { changeLanguage } from '@plone/volto/actions';
 
-if (settings) {
-  settings.supportedLanguages.forEach((lang) => {
-    import('~/../locales/' + lang + '.json').then((locale) => {
-      locales = { ...locales, [lang]: locale.default };
-    });
-  });
-}
+import { defineMessages, useIntl } from 'react-intl';
+
+const messages = defineMessages({
+  switchLanguageTo: {
+    id: 'Switch to',
+    defaultMessage: 'Switch to',
+  },
+});
 
 const LanguageSelector = (props) => {
+  const intl = useIntl();
   const dispatch = useDispatch();
   const currentLang = useSelector((state) => state.intl.locale);
   const translations = useSelector(
     (state) => state.content.data?.['@components']?.translations?.items,
   );
 
-  function changeLanguage(language) {
-    cookie.save('I18N_LANGUAGE', language, {
-      expires: new Date((2 ** 31 - 1) * 1000),
-      path: '/',
-    });
-
-    dispatch(
-      updateIntl({
-        locale: language,
-        messages: locales[language],
-      }),
-    );
-  }
+  const { settings } = config;
 
   return settings.isMultilingual ? (
     <div className="language-selector">
@@ -55,16 +47,26 @@ const LanguageSelector = (props) => {
         const translation = find(translations, { language: lang });
         return (
           <Link
+            aria-label={`${intl.formatMessage(
+              messages.switchLanguageTo,
+            )} ${langmap[lang].nativeName.toLowerCase()}`}
             className={cx({ selected: lang === currentLang })}
             to={translation ? flattenToAppURL(translation['@id']) : `/${lang}`}
             title={langmap[lang].nativeName}
             onClick={() => {
               props.onClickAction();
-              changeLanguage(lang);
+              if (config.settings.supportedLanguages.includes(lang)) {
+                const langFileName = normalizeLanguageName(lang);
+                import('~/../locales/' + langFileName + '.json').then(
+                  (locale) => {
+                    dispatch(changeLanguage(lang, locale.default));
+                  },
+                );
+              }
             }}
             key={`language-selector-${lang}`}
           >
-            {langmap[lang].nativeName}&nbsp;
+            {langmap[lang].nativeName}
           </Link>
         );
       })}

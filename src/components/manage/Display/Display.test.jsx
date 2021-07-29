@@ -1,11 +1,17 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import { render, waitFor } from '@testing-library/react';
 
 import Display from './Display';
 
 const mockStore = configureStore();
+
+jest.mock('@plone/volto/helpers/Loadable/Loadable');
+beforeAll(
+  async () =>
+    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
+);
 
 describe('Display', () => {
   it('renders an actions component', async () => {
@@ -25,15 +31,13 @@ describe('Display', () => {
       },
     });
 
-    const { act } = renderer;
-    let component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <Display pathname="/test" />
       </Provider>,
     );
 
-    await act(async () => {});
-
-    expect(component.toJSON()).toMatchSnapshot();
+    await waitFor(() => {});
+    expect(container).toMatchSnapshot();
   });
 });

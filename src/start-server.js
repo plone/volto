@@ -10,7 +10,7 @@ initSentry(Sentry);
 
 export default () => {
   const server = http.createServer(app);
-  const host = process.env.HOST || 'localhost';
+  // const host = process.env.HOST || 'localhost';
   const port = process.env.PORT || 3000;
   const bind_address = process.env.RAZZLE_BIND_ADDRESS || '0.0.0.0';
 
@@ -18,12 +18,16 @@ export default () => {
 
   server
     .listen(port, bind_address, () => {
-      console.log(`API server (API_PATH) is set to: ${app.apiPath}`);
+      if (app.apiPath === app.publicURL || !app.apiPath) {
+        console.log(`Volto is running in SEAMLESS mode`);
+      } else {
+        console.log(`API server (API_PATH) is set to: ${app.apiPath}`);
+      }
       if (__DEVELOPMENT__ && app.devProxyToApiPath)
         console.log(
-          `Using internal proxy: http://${host}:${port}/api -> ${app.devProxyToApiPath}`,
+          `Using internal proxy: ${app.publicURL} -> ${app.devProxyToApiPath}`,
         );
-      console.log(`🎭 Volto started at http://${host}:${port} 🚀`);
+      console.log(`🎭 Volto started at ${app.publicURL} 🚀`);
     })
     .on('error', (e) => {
       console.error(e.message);

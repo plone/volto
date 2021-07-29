@@ -2,7 +2,7 @@ import React from 'react';
 import { Breadcrumb } from 'semantic-ui-react';
 import { Link, useLocation } from 'react-router-dom';
 import { defineMessages, useIntl } from 'react-intl';
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   home: {
@@ -16,6 +16,7 @@ const messages = defineMessages({
 });
 
 const ContentsBreadcrumbs = (props) => {
+  const { settings } = config;
   const { items } = props;
   const intl = useIntl();
   const pathname = useLocation().pathname;

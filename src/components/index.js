@@ -24,12 +24,15 @@ export Pagination from '@plone/volto/components/theme/Pagination/Pagination';
 export Tags from '@plone/volto/components/theme/Tags/Tags';
 export OutdatedBrowser from '@plone/volto/components/theme/OutdatedBrowser/OutdatedBrowser';
 export LanguageSelector from '@plone/volto/components/theme/LanguageSelector/LanguageSelector';
+export RenderBlocks from '@plone/volto/components/theme/View/RenderBlocks';
+export SkipLinks from '@plone/volto/components/theme/SkipLinks/SkipLinks';
 
 export Error from '@plone/volto/components/theme/Error/Error';
 export NotFound from '@plone/volto/components/theme/NotFound/NotFound';
 export Forbidden from '@plone/volto/components/theme/Forbidden/Forbidden';
 export Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
 
+export Avatar from '@plone/volto/components/theme/Avatar/Avatar';
 export Icon from '@plone/volto/components/theme/Icon/Icon';
 export ConditionalLink from '@plone/volto/components/manage/ConditionalLink/ConditionalLink';
 export UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
@@ -49,6 +52,8 @@ export ChangePassword from '@plone/volto/components/manage/Preferences/ChangePas
 export PersonalPreferences from '@plone/volto/components/manage/Preferences/PersonalPreferences';
 export PersonalInformation from '@plone/volto/components/manage/Preferences/PersonalInformation';
 export CreateTranslation from '@plone/volto/components/manage/Multilingual/CreateTranslation';
+export TranslationObject from '@plone/volto/components/manage/Multilingual/TranslationObject';
+export CompareLanguages from '@plone/volto/components/manage/Multilingual/CompareLanguages';
 
 export FileView from '@plone/volto/components/theme/View/FileView';
 export ImageView from '@plone/volto/components/theme/View/ImageView';
@@ -89,8 +94,10 @@ export Sharing from '@plone/volto/components/manage/Sharing/Sharing';
 export Workflow from '@plone/volto/components/manage/Workflow/Workflow';
 export Messages from '@plone/volto/components/manage/Messages/Messages';
 export BlockChooser from '@plone/volto/components/manage/BlockChooser/BlockChooser';
+export BlockChooserButton from '@plone/volto/components/manage/BlockChooser/BlockChooserButton';
 export Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
 export Sidebar from '@plone/volto/components/manage/Sidebar/Sidebar';
+export SidebarPopup from '@plone/volto/components/manage/Sidebar/SidebarPopup';
 export SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
 export PersonalTools from '@plone/volto/components/manage/Toolbar/PersonalTools';
 export More from '@plone/volto/components/manage/Toolbar/More';
@@ -115,6 +122,10 @@ export ContentsTagsModal from '@plone/volto/components/manage/Contents/ContentsT
 export UsersControlpanelUser from '@plone/volto/components/manage/Controlpanels/UsersControlpanelUser';
 export UsersControlpanelGroups from '@plone/volto/components/manage/Controlpanels/UsersControlpanelGroups';
 export DiffField from '@plone/volto/components/manage/Diff/DiffField';
+export DragDropList from '@plone/volto/components/manage/DragDropList/DragDropList';
+export InlineForm from '@plone/volto/components/manage/Form/InlineForm';
+export BlocksForm from '@plone/volto/components/manage/Blocks/Block/BlocksForm';
+export BlockDataForm from '@plone/volto/components/manage/Form/BlockDataForm';
 
 export FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 export ArrayWidget from '@plone/volto/components/manage/Widgets/ArrayWidget';
@@ -140,6 +151,8 @@ export TextWidget from '@plone/volto/components/manage/Widgets/TextWidget';
 export WysiwygWidget from '@plone/volto/components/manage/Widgets/WysiwygWidget';
 export ObjectBrowserWidget from '@plone/volto/components/manage/Widgets/ObjectBrowserWidget';
 export ObjectBrowserWidgetMode from '@plone/volto/components/manage/Widgets/ObjectBrowserWidget';
+export ObjectWidget from '@plone/volto/components/manage/Widgets/ObjectWidget';
+export ObjectListWidget from '@plone/volto/components/manage/Widgets/ObjectListWidget';
 
 export EditDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/Edit';
 export EditTitleBlock from '@plone/volto/components/manage/Blocks/Title/Edit';
@@ -166,10 +179,6 @@ export ViewHTMLBlock from '@plone/volto/components/manage/Blocks/HTML/View';
 
 export ListingBlockBody from '@plone/volto/components/manage/Blocks/Listing/ListingBody';
 export ListingBlockData from '@plone/volto/components/manage/Blocks/Listing/ListingData';
-export ListingBlockStyle from '@plone/volto/components/manage/Blocks/Listing/ListingStyle';
-export ListingBlockMore from '@plone/volto/components/manage/Blocks/Listing/ListingMore';
-export ListingBlockSidebar from '@plone/volto/components/manage/Blocks/Listing/ListingSidebar';
-export QuerystringWidget from '@plone/volto/components/manage/Blocks/Listing/QuerystringWidget';
 
 export ImageSidebar from '@plone/volto/components/manage/Blocks/Image/ImageSidebar';
 export MapsSidebar from '@plone/volto/components/manage/Blocks/Maps/MapsSidebar';
@@ -182,7 +191,8 @@ export BlockSettingsSchema from '@plone/volto/components/manage/Blocks/Block/Sch
 export TextSettingsSchema from '@plone/volto/components/manage/Blocks/Text/Schema';
 export ImageSettingsSchema from '@plone/volto/components/manage/Blocks/Image/Schema';
 export ToCSettingsSchema from '@plone/volto/components/manage/Blocks/ToC/Schema';
-export InlineForm from './manage/Form/InlineForm';
 
-// Temporarilly re-added because of #2068
+export MaybeWrap from '@plone/volto/components/manage/MaybeWrap/MaybeWrap';
+export ContentMetadataTags from '@plone/volto/components/theme/ContentMetadataTags/ContentMetadataTags';
+
 export App from '@plone/volto/components/theme/App/App';

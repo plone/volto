@@ -19,8 +19,8 @@ import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import { defineMessages, injectIntl } from 'react-intl';
 import configureStore from 'redux-mock-store';
 import { MemoryRouter } from 'react-router-dom';
+import config from '@plone/volto/registry';
 
-import { settings } from '~/config';
 import { FormFieldWrapper } from '@plone/volto/components';
 
 const messages = defineMessages({
@@ -153,7 +153,7 @@ class WysiwygWidget extends Component {
       let editorState;
       if (props.value && props.value.data) {
         const contentState = stateFromHTML(props.value.data, {
-          customBlockFn: settings.FromHTMLCustomBlockFn,
+          customBlockFn: config.settings.FromHTMLCustomBlockFn,
         });
         editorState = EditorState.createWithContent(contentState);
       } else {
@@ -161,7 +161,7 @@ class WysiwygWidget extends Component {
       }
 
       const inlineToolbarPlugin = createInlineToolbarPlugin({
-        structure: settings.richTextEditorInlineToolbarButtons,
+        structure: config.settings.richTextEditorInlineToolbarButtons,
       });
 
       this.state = { editorState, inlineToolbarPlugin };
@@ -208,6 +208,7 @@ class WysiwygWidget extends Component {
    * @returns {undefined}
    */
   onChange(editorState) {
+    const { settings } = config;
     this.setState({ editorState });
     const mockStore = configureStore();
 
@@ -275,6 +276,7 @@ class WysiwygWidget extends Component {
       );
     }
     const { InlineToolbar } = this.state.inlineToolbarPlugin;
+    const { settings } = config;
 
     return (
       <FormFieldWrapper {...this.props} className="wysiwyg">

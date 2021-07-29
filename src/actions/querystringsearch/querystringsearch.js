@@ -1,5 +1,5 @@
 import { GET_QUERYSTRING_RESULTS } from '@plone/volto/constants/ActionTypes';
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 /**
  * Get querystring results.
@@ -8,9 +8,11 @@ import { settings } from '~/config';
  * @returns {Object} Get querystringsearch results action.
  */
 export function getQueryStringResults(path, data, subrequest, page) {
-  // fixes https://github.com/plone/volto/issues/1059
+  const { settings } = config;
 
+  // fixes https://github.com/plone/volto/issues/1059
   let requestData = JSON.parse(JSON.stringify(data));
+
   if (data?.depth != null) {
     delete requestData.depth;
     requestData.query.forEach((q) => {
@@ -18,6 +20,15 @@ export function getQueryStringResults(path, data, subrequest, page) {
         q.v += '::' + data.depth;
       }
     });
+  }
+
+  // fixes https://github.com/plone/volto/issues/2397
+  if (requestData?.sort_order !== null) {
+    if (typeof requestData.sort_order === 'boolean') {
+      requestData.sort_order = requestData.sort_order
+        ? 'descending'
+        : 'ascending';
+    }
   }
 
   return {

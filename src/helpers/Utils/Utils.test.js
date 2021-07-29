@@ -1,4 +1,13 @@
-import { difference, applyConfig, safeWrapper } from './Utils';
+import config from '@plone/volto/registry';
+import {
+  applyConfig,
+  difference,
+  getColor,
+  getInitials,
+  safeWrapper,
+  normalizeLanguageName,
+  hasApiExpander,
+} from './Utils';
 
 describe('Utils tests', () => {
   describe('difference', () => {
@@ -200,6 +209,33 @@ describe('Utils tests', () => {
     });
   });
 
+  describe('getInitials', () => {
+    it('basic test empty', () => {
+      expect(getInitials('')).toEqual('');
+    });
+    it('basic test', () => {
+      expect(getInitials('Plone is the best CMS in the World!')).toEqual(
+        'PITBCITW',
+      );
+    });
+    it('basic test with limit', () => {
+      expect(getInitials('Plone is the best CMS in the World!', 2)).toEqual(
+        'PI',
+      );
+    });
+    it('basic test with trailing spaces', () => {
+      expect(getInitials('  Plone  rocks!   ', 2)).toEqual('PR');
+    });
+  });
+
+  describe('getColor', () => {
+    it('basic test empty', () => {
+      expect(getColor(1)).toEqual('Teal');
+      expect(getColor(2)).toEqual('SteelBlue');
+      expect(getColor(1)).toEqual('Teal');
+    });
+  });
+
   describe('safeWrapper', () => {
     it('calls the function with config', () => {
       expect(
@@ -236,6 +272,52 @@ describe('Utils tests', () => {
         ok = true;
       } catch {}
       expect(ok).toBe(false);
+    });
+  });
+
+  describe('normalizeLanguageName', () => {
+    it('Normalizes an extended language (pt_BR)', () => {
+      expect(normalizeLanguageName('pt-br')).toStrictEqual('pt_BR');
+    });
+    it('Normalizes a simple language (ca)', () => {
+      expect(normalizeLanguageName('ca')).toStrictEqual('ca');
+    });
+  });
+
+  describe('hasApiExpander', () => {
+    it('Using defaults', () => {
+      config.settings.apiExpanders = [
+        { match: '', GET_CONTENT: ['breadcrumbs', 'otherexpander'] },
+      ];
+      expect(hasApiExpander('navigation')).toStrictEqual(false);
+    });
+    it('Using defaults, present', () => {
+      config.settings.apiExpanders = [
+        { match: '', GET_CONTENT: ['breadcrumbs', 'navigation'] },
+      ];
+      expect(hasApiExpander('navigation')).toStrictEqual(true);
+    });
+    it('navigation is an api expander', () => {
+      config.settings.apiExpanders = [
+        { match: '', GET_CONTENT: ['navigation'] },
+      ];
+      expect(hasApiExpander('navigation', '', 'GET_CONTENT')).toStrictEqual(
+        true,
+      );
+    });
+    it('No api expander set, but others present', () => {
+      config.settings.apiExpanders = [
+        { match: '', GET_CONTENT: ['breadcrumbs', 'otherexpander'] },
+      ];
+      expect(hasApiExpander('navigation', '', 'GET_CONTENT')).toStrictEqual(
+        false,
+      );
+    });
+    it('No api expander set at all', () => {
+      config.settings.apiExpanders = [{ match: '', GET_CONTENT: [] }];
+      expect(hasApiExpander('navigation', '', 'GET_CONTENT')).toStrictEqual(
+        false,
+      );
     });
   });
 });

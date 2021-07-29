@@ -5,19 +5,17 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'semantic-ui-react';
-import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import Editor from 'draft-js-plugins-editor';
 import { convertFromRaw, convertToRaw, EditorState, RichUtils } from 'draft-js';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
+
 import isSoftNewlineEvent from 'draft-js/lib/isSoftNewlineEvent';
 import { defineMessages, injectIntl } from 'react-intl';
 import { includes, isEqual } from 'lodash';
 import { filterEditorState } from 'draftjs-filters';
-import { settings, blocks } from '~/config';
+import config from '@plone/volto/registry';
 
-import { Icon, BlockChooser } from '@plone/volto/components';
-import addSVG from '@plone/volto/icons/circle-plus.svg';
+import { BlockChooserButton } from '@plone/volto/components';
 
 const messages = defineMessages({
   text: {
@@ -44,14 +42,20 @@ class Edit extends Component {
     selected: PropTypes.bool.isRequired,
     block: PropTypes.string.isRequired,
     onAddBlock: PropTypes.func.isRequired,
+    onInsertBlock: PropTypes.func.isRequired,
     onChangeBlock: PropTypes.func.isRequired,
     onDeleteBlock: PropTypes.func.isRequired,
     onMutateBlock: PropTypes.func.isRequired,
     onFocusPreviousBlock: PropTypes.func.isRequired,
     onFocusNextBlock: PropTypes.func.isRequired,
     onSelectBlock: PropTypes.func.isRequired,
+    editable: PropTypes.bool,
     allowedBlocks: PropTypes.arrayOf(PropTypes.string),
     showRestricted: PropTypes.bool,
+    formTitle: PropTypes.string,
+    formDescription: PropTypes.string,
+    blocksConfig: PropTypes.objectOf(PropTypes.any),
+    properties: PropTypes.objectOf(PropTypes.any),
   };
 
   /**
@@ -61,6 +65,7 @@ class Edit extends Component {
    */
   static defaultProps = {
     detached: false,
+    editable: true,
   };
 
   /**
@@ -83,13 +88,12 @@ class Edit extends Component {
       }
 
       const inlineToolbarPlugin = createInlineToolbarPlugin({
-        structure: settings.richTextEditorInlineToolbarButtons,
+        structure: config.settings.richTextEditorInlineToolbarButtons,
       });
 
       this.state = {
         editorState,
         inlineToolbarPlugin,
-        addNewBlockOpened: false,
       };
     }
 
@@ -106,7 +110,6 @@ class Edit extends Component {
       // See https://github.com/draft-js-plugins/draft-js-plugins/issues/800
       setTimeout(this.node.focus, 0);
     }
-    document.addEventListener('mousedown', this.handleClickOutside, false);
   }
 
   /**
@@ -117,11 +120,19 @@ class Edit extends Component {
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (!this.props.selected && nextProps.selected) {
-      // See https://github.com/draft-js-plugins/draft-js-plugins/issues/800
-      setTimeout(this.node.focus, 0);
-      this.setState({
-        editorState: EditorState.moveFocusToEnd(this.state.editorState),
-      });
+      const selectionState = this.state.editorState.getSelection();
+
+      if (selectionState.getStartOffset() < selectionState.getEndOffset()) {
+        //keep selection
+      } else {
+        //nothing is selected, move focus to end
+        // See https://github.com/draft-js-plugins/draft-js-plugins/issues/800
+        setTimeout(this.node.focus, 0);
+
+        this.setState({
+          editorState: EditorState.moveFocusToEnd(this.state.editorState),
+        });
+      }
     }
   }
 
@@ -131,17 +142,12 @@ class Edit extends Component {
    * @returns {boolean}
    * @memberof Edit
    */
-  shouldComponentUpdate(nextProps) {
-    return this.props.selected || !isEqual(this.props.data, nextProps.data);
-  }
-
-  /**
-   * Component will unmount
-   * @method componentWillUnmount
-   * @returns {undefined}
-   */
-  componentWillUnmount() {
-    document.removeEventListener('mousedown', this.handleClickOutside, false);
+  shouldComponentUpdate(nextProps, nextState) {
+    return (
+      this.props.selected ||
+      !isEqual(this.props.data, nextProps.data) ||
+      !isEqual(this.state.editorState, nextState.editorState)
+    );
   }
 
   /**
@@ -186,20 +192,6 @@ class Edit extends Component {
     this.setState({ editorState });
   }
 
-  toggleAddNewBlock = () =>
-    this.setState((state) => ({ addNewBlockOpened: !state.addNewBlockOpened }));
-
-  handleClickOutside = (e) => {
-    if (
-      this.props.blockNode.current &&
-      doesNodeContainClick(this.props.blockNode.current, e)
-    )
-      return;
-    this.setState(() => ({
-      addNewBlockOpened: false,
-    }));
-  };
-
   /**
    * Render method.
    * @method render
@@ -212,15 +204,18 @@ class Edit extends Component {
 
     const placeholder =
       this.props.data.placeholder ||
+      this.props.formTitle ||
       this.props.intl.formatMessage(messages.text);
 
     const disableNewBlocks =
       this.props.data?.disableNewBlocks || this.props.detached;
     const { InlineToolbar } = this.state.inlineToolbarPlugin;
+    const { settings } = config;
 
     return (
       <>
         <Editor
+          readOnly={!this.props.editable}
           onChange={this.onChange}
           editorState={this.state.editorState}
           plugins={[
@@ -293,26 +288,18 @@ class Edit extends Component {
           }}
         />
         <InlineToolbar />
-        {this.props.selected &&
-          !disableNewBlocks &&
-          !blocks.blocksConfig[
-            this.props.data?.['@type'] || 'text'
-          ].blockHasValue(this.props.data) && (
-            <Button
-              basic
-              icon
-              onClick={this.toggleAddNewBlock}
-              className="block-add-button"
-            >
-              <Icon name={addSVG} className="block-add-button" size="24px" />
-            </Button>
-          )}
-        {this.state.addNewBlockOpened && (
-          <BlockChooser
-            onMutateBlock={this.props.onMutateBlock}
-            currentBlock={this.props.block}
+        {this.props.selected && (
+          <BlockChooserButton
+            data={this.props.data}
+            block={this.props.block}
+            onInsertBlock={(id, value) => {
+              this.props.onSelectBlock(this.props.onInsertBlock(id, value));
+            }}
             allowedBlocks={this.props.allowedBlocks}
-            showRestricted={this.props.showRestricted}
+            blocksConfig={this.props.blocksConfig}
+            size="24px"
+            className="block-add-button"
+            properties={this.props.properties}
           />
         )}
       </>

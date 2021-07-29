@@ -99,6 +99,7 @@ exports[`ManageTranslations renders a ManageTranslations component 1`] = `
               className="ui buttons"
             >
               <button
+                aria-label="Link translation for deutsch"
                 className="ui basic icon button"
                 onClick={[Function]}
               >
@@ -178,6 +179,7 @@ exports[`ManageTranslations renders a ManageTranslations component 1`] = `
               className="ui buttons"
             >
               <button
+                aria-label="Link translation for español"
                 className="ui basic icon button"
                 onClick={[Function]}
               >

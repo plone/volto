@@ -9,8 +9,6 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { map, find, isBoolean, isObject, intersection, isArray } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
-import loadable from '@loadable/component';
-
 import {
   getBoolean,
   getVocabFromHint,
@@ -26,9 +24,7 @@ import {
   selectTheme,
   customSelectStyles,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
-
-const Select = loadable(() => import('react-select'));
-const AsyncPaginate = loadable(() => import('react-select-async-paginate'));
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 const messages = defineMessages({
   default: {
@@ -96,17 +92,17 @@ function getDefaultValues(choices, value) {
       value: 'no-value',
     };
   }
-  if (isObject(value)) {
-    return {
-      label: value.title !== 'None' && value.title ? value.title : value.token,
-      value: value.token,
-    };
-  }
+
   if (isArray(value) && choices.length > 0) {
     return value.map((v) => ({
       label: find(choices, (o) => o[0] === v)?.[1] || v,
       value: v,
     }));
+  } else if (isObject(value)) {
+    return {
+      label: value.title !== 'None' && value.title ? value.title : value.token,
+      value: value.token,
+    };
   } else if (value && choices.length > 0) {
     return { label: find(choices, (o) => o[0] === value)?.[1] || value, value };
   } else {
@@ -155,6 +151,7 @@ class SelectWidget extends Component {
     onDelete: PropTypes.func,
     itemsTotal: PropTypes.number,
     wrapped: PropTypes.bool,
+    noValueOption: PropTypes.bool,
   };
 
   /**
@@ -180,6 +177,7 @@ class SelectWidget extends Component {
     onClick: () => {},
     onEdit: null,
     onDelete: null,
+    noValueOption: true,
   };
 
   state = {
@@ -248,6 +246,8 @@ class SelectWidget extends Component {
    */
   render() {
     const { id, choices, value, onChange } = this.props;
+    const Select = this.props.reactSelect.default;
+    const AsyncPaginate = this.props.reactSelectAsyncPaginate.default;
 
     return (
       <FormFieldWrapper {...this.props}>
@@ -293,15 +293,22 @@ class SelectWidget extends Component {
                   // Fix "None" on the serializer, to remove when fixed in p.restapi
                   option[1] !== 'None' && option[1] ? option[1] : option[0],
               })),
-              {
-                label: this.props.intl.formatMessage(messages.no_value),
-                value: 'no-value',
-              },
+              ...(this.props.noValueOption
+                ? [
+                    {
+                      label: this.props.intl.formatMessage(messages.no_value),
+                      value: 'no-value',
+                    },
+                  ]
+                : []),
             ]}
             styles={customSelectStyles}
             theme={selectTheme}
             components={{ DropdownIndicator, Option }}
-            defaultValue={getDefaultValues(choices, value)}
+            defaultValue={getDefaultValues(
+              choices,
+              value || this.props.defaultValue,
+            )}
             onChange={(data) => {
               let dataValue = [];
               if (Array.isArray(data)) {
@@ -324,6 +331,7 @@ class SelectWidget extends Component {
 
 export default compose(
   injectIntl,
+  injectLazyLibs(['reactSelect', 'reactSelectAsyncPaginate']),
   connect(
     (state, props) => {
       const vocabBaseUrl = !props.choices

@@ -10,8 +10,7 @@ import { convertFromRaw, EditorState, RichUtils } from 'draft-js';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import isSoftNewlineEvent from 'draft-js/lib/isSoftNewlineEvent';
 import { includes } from 'lodash';
-
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 /**
  * Edit text cell class.
@@ -33,6 +32,7 @@ class Cell extends Component {
     onChange: PropTypes.func.isRequired,
     isTableBlockSelected: PropTypes.bool,
     disableNewBlocks: PropTypes.bool,
+    editable: PropTypes.bool,
   };
 
   /**
@@ -42,6 +42,7 @@ class Cell extends Component {
    */
   static defaultProps = {
     detached: false,
+    editable: true,
   };
 
   /**
@@ -58,7 +59,7 @@ class Cell extends Component {
       editorState = EditorState.createWithContent(convertFromRaw(props.value));
 
       const inlineToolbarPlugin = createInlineToolbarPlugin({
-        structure: settings.richTextEditorInlineToolbarButtons,
+        structure: config.settings.richTextEditorInlineToolbarButtons,
       });
 
       this.state = {
@@ -124,10 +125,12 @@ class Cell extends Component {
     }
 
     const { InlineToolbar } = this.state.inlineToolbarPlugin;
+    const { settings } = config;
 
     return (
       <div>
         <Editor
+          readOnly={!this.props.editable}
           onChange={this.onChange}
           editorState={this.state.editorState}
           plugins={[

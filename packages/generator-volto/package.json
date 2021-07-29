@@ -10,7 +10,7 @@
     }
   ],
   "license": "MIT",
-  "version": "2.3.0",
+  "version": "4.3.1",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/plone/generator-volto.git"
@@ -50,9 +50,10 @@
     "ci:cypress:run": "start-test ci:start-api-plone http-get://localhost:55001/plone ci:start-frontend",
     "ci:cypress:run:guillotina": "start-test ci:start-api-guillotina http-get://localhost:8081 ci:start-frontend-guillotina",
     "dry-release": "release-it --dry-run",
-    "prerelease": "tar --exclude=node_modules -cvfz generator-volto.tgz .",
+    "prerelease": "tar --exclude=node_modules -zcvf generator-volto.tgz .",
     "release": "release-it",
-    "release-alpha": "release-it major --preRelease=alpha"
+    "release-major-alpha": "release-it major --preRelease=alpha",
+    "release-alpha": "release-it --preRelease=alpha"
   },
   "prettier": {
     "trailingComma": "all",
@@ -109,6 +110,7 @@
     "eslint-config-standard": "^16.0.2",
     "execa": "0.6.3",
     "fs-extra": "3.0.0",
+    "gitly": "2.0.3",
     "mkdirp-then": "1.2.0",
     "ms": "1.0.0",
     "mz": "2.6.0",
@@ -127,8 +129,8 @@
     "jest": "^24.8.0",
     "lint-staged": "^9.4.3",
     "prettier": "2.0.5",
-    "release-it": "^14.2.2",
+    "release-it": "^14.9.0",
     "yeoman-assert": "^3.1.0",
-    "yeoman-test": "^1.7.0"
+    "yeoman-test": "^6.1.0"
   }
 }

@@ -4,7 +4,7 @@
  */
 
 import { map, omit } from 'lodash';
-import { settings } from '~/config';
+import { flattenToAppURL } from '@plone/volto/helpers';
 
 import {
   RESET_SEARCH_CONTENT,
@@ -64,7 +64,7 @@ export default function search(state = initialState, action = {}) {
                 error: null,
                 items: map(action.result.items, (item) => ({
                   ...item,
-                  '@id': item['@id'].replace(settings.apiPath, ''),
+                  '@id': flattenToAppURL(item['@id']),
                 })),
                 total: action.result.items_total,
                 loaded: true,
@@ -78,7 +78,7 @@ export default function search(state = initialState, action = {}) {
             error: null,
             items: map(action.result.items, (item) => ({
               ...item,
-              '@id': item['@id'].replace(settings.apiPath, ''),
+              '@id': flattenToAppURL(item['@id']),
             })),
             total: action.result.items_total,
             loaded: true,

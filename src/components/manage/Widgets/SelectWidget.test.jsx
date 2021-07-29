@@ -1,12 +1,17 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
-import { waitFor } from '@testing-library/react';
+import { waitFor, render, screen } from '@testing-library/react';
 
 import SelectWidget from './SelectWidget';
 
 const mockStore = configureStore();
+
+jest.mock('@plone/volto/helpers/Loadable/Loadable');
+beforeAll(
+  async () =>
+    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
+);
 
 test('renders a select widget component', async () => {
   const store = mockStore({
@@ -22,17 +27,19 @@ test('renders a select widget component', async () => {
     },
   });
 
-  const component = renderer.create(
+  const { container } = render(
     <Provider store={store}>
       <SelectWidget
         id="my-field"
         title="My field"
+        fieldSet="default"
         onChange={() => {}}
         onBlur={() => {}}
         onClick={() => {}}
       />
     </Provider>,
   );
-  await waitFor(() => {});
-  expect(component.toJSON()).toMatchSnapshot();
+
+  await waitFor(() => screen.getByText('My field'));
+  expect(container).toMatchSnapshot();
 });

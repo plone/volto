@@ -1,0 +1,25 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import TitleComponent from './Title';
+
+<Meta
+  title="Title"
+  argTypes={{
+    title: { control: 'text' },
+  }}
+/>
+
+# Title
+
+```jsx static
+<Title title="Plone" />
+```
+
+export const Title = (args) => <TitleComponent {...args} />;
+
+<Story name="Title" args={{ title: 'Welcome to Plone' }}>
+  {Title.bind({})}
+</Story>
+
+## Props
+
+<ArgsTable of={TitleComponent} />

@@ -22,9 +22,7 @@ const imageMimetypes = [
   'image/gif',
   'image/svg+xml',
 ];
-const Dropzone = loadable(() => import('react-dropzone'), {
-  resolveComponent: (components) => components.Dropzone,
-});
+const Dropzone = loadable(() => import('react-dropzone'));
 
 const messages = defineMessages({
   releaseDrag: {
@@ -64,6 +62,12 @@ const FileWidget = (props) => {
       setFileType(true);
     }
   }, [value]);
+
+  const imgsrc = value?.download
+    ? `${flattenToAppURL(value?.download)}?id=${Date.now()}`
+    : null || value?.data
+    ? `data:${value['content-type']};${value.encoding},${value.data}`
+    : null;
 
   /**
    * Drop handler
@@ -108,11 +112,7 @@ const FileWidget = (props) => {
                 className="image-preview"
                 id={`field-${id}-image`}
                 size="small"
-                src={
-                  value?.download
-                    ? `${flattenToAppURL(value.download)}?id=${Date.now()}`
-                    : null
-                }
+                src={imgsrc}
               />
             ) : (
               <div className="dropzone-placeholder">

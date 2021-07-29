@@ -1,69 +1,48 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Display renders an actions component 1`] = `
-Array [
+<div>
   <label
-    htmlFor="display-select"
+    for="display-select"
   >
     View
-  </label>,
+  </label>
   <div
-    className="react-select-container css-2b097c-container"
-    onKeyDown={[Function]}
+    class="react-select-container css-2b097c-container"
   >
     <div
-      className="react-select__control css-yjz7n5-control"
-      onMouseDown={[Function]}
-      onTouchEnd={[Function]}
+      class="react-select__control css-yjz7n5-control"
     >
       <div
-        className="react-select__value-container react-select__value-container--has-value css-g1d714-ValueContainer"
+        class="react-select__value-container react-select__value-container--has-value css-g1d714-ValueContainer"
       >
         <div
-          className="react-select__single-value css-1uccc91-singleValue"
+          class="react-select__single-value css-1uccc91-singleValue"
         >
           Summary view
         </div>
         <input
           aria-autocomplete="list"
-          className="css-wmatm6-dummyInput-DummyInput"
-          disabled={false}
+          class="css-wmatm6-dummyInput-DummyInput"
           id="react-select-2-input"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          readOnly={true}
-          tabIndex="0"
+          readonly=""
+          tabindex="0"
           value=""
         />
       </div>
       <div
-        className="react-select__indicators css-1hb7zxy-IndicatorsContainer"
+        class="react-select__indicators css-1hb7zxy-IndicatorsContainer"
       >
         <span
-          className="react-select__indicator-separator css-6fp5c8-indicatorSeparator"
+          class="react-select__indicator-separator css-6fp5c8-indicatorSeparator"
         />
         <div
           aria-hidden="true"
-          className="react-select__indicator react-select__dropdown-indicator css-tlfecz-indicatorContainer"
-          onMouseDown={[Function]}
-          onTouchEnd={[Function]}
+          class="react-select__indicator react-select__dropdown-indicator css-tlfecz-indicatorContainer"
         >
           <svg
-            className="icon"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": undefined,
-              }
-            }
-            onClick={null}
-            style={
-              Object {
-                "fill": "#007bc1",
-                "height": "24px",
-                "width": "auto",
-              }
-            }
+            class="icon"
+            style="height: 24px; width: auto; fill: #007bc1;"
             viewBox=""
             xmlns=""
           />
@@ -75,6 +54,6 @@ Array [
       type="hidden"
       value="summary_view"
     />
-  </div>,
-]
+  </div>
+</div>
 `;

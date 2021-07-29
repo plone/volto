@@ -1,12 +1,12 @@
 import React from 'react';
 import { Button, Container, Segment, Table } from 'semantic-ui-react';
 import { Helmet } from '@plone/volto/helpers';
-import langmap from 'langmap';
-import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
+import { flattenToAppURL, getBaseUrl, langmap } from '@plone/volto/helpers';
 import { reduce } from 'lodash';
 import { Link, useLocation } from 'react-router-dom';
 import { Icon, Toast, Toolbar } from '@plone/volto/components';
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
+
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import {
   deleteLinkTranslation,
@@ -35,6 +35,14 @@ const messages = defineMessages({
   unlinked: {
     id: 'Translation linking removed',
     defaultMessage: 'Translation linking removed',
+  },
+  link: {
+    id: 'Link translation for',
+    defaultMessage: 'Link translation for',
+  },
+  unlink: {
+    id: 'Unlink translation for',
+    defaultMessage: 'Unlink translation for',
   },
   ManageTranslations: {
     id: 'Manage Translations',
@@ -167,7 +175,7 @@ const ManageTranslations = (props) => {
               </Table.Row>
             </Table.Header>
             <Table.Body>
-              {settings.supportedLanguages.map((lang) => (
+              {config.settings.supportedLanguages.map((lang) => (
                 <Table.Row key={lang}>
                   <Table.Cell collapsing>
                     {lang === content.language.token ? (
@@ -209,6 +217,9 @@ const ManageTranslations = (props) => {
                     {translations?.[lang] ? (
                       <Button.Group>
                         <Button
+                          aria-label={`${intl.formatMessage(
+                            messages.unlink,
+                          )} ${langmap[lang].nativeName.toLowerCase()}`}
                           basic
                           icon
                           disabled={lang === content.language.token}
@@ -227,6 +238,9 @@ const ManageTranslations = (props) => {
                     ) : (
                       <Button.Group>
                         <Button
+                          aria-label={`${intl.formatMessage(
+                            messages.link,
+                          )} ${langmap[lang].nativeName.toLowerCase()}`}
                           basic
                           icon
                           disabled={lang === content.language.token}

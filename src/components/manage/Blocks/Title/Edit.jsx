@@ -10,7 +10,7 @@ import { stateFromHTML } from 'draft-js-import-html';
 import { isEqual } from 'lodash';
 import { Editor, DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
 import { defineMessages, injectIntl } from 'react-intl';
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   title: {
@@ -49,6 +49,16 @@ class Edit extends Component {
     onFocusPreviousBlock: PropTypes.func.isRequired,
     onFocusNextBlock: PropTypes.func.isRequired,
     block: PropTypes.string.isRequired,
+    editable: PropTypes.bool,
+  };
+
+  /**
+   * Default properties
+   * @property {Object} defaultProps Default properties.
+   * @static
+   */
+  static defaultProps = {
+    editable: true,
   };
 
   /**
@@ -152,6 +162,7 @@ class Edit extends Component {
 
     return (
       <Editor
+        readOnly={!this.props.editable}
         onChange={this.onChange}
         editorState={this.state.editorState}
         blockRenderMap={extendedBlockRenderMap}
@@ -161,7 +172,7 @@ class Edit extends Component {
           }
           this.props.onSelectBlock(
             this.props.onAddBlock(
-              settings.defaultBlockType,
+              config.settings.defaultBlockType,
               this.props.index + 1,
             ),
           );

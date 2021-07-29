@@ -9,15 +9,14 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
-
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 /**
  * Anontools container class.
  * @class Anontools
  * @extends Component
  */
-class Anontools extends Component {
+export class Anontools extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -48,6 +47,7 @@ class Anontools extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const { settings } = config;
     return (
       !this.props.token && (
         <Menu pointing secondary floated="right">
@@ -66,11 +66,13 @@ class Anontools extends Component {
               <FormattedMessage id="Log in" defaultMessage="Log in" />
             </Link>
           </Menu.Item>
-          <Menu.Item>
-            <Link aria-label="register" to="/register">
-              <FormattedMessage id="Register" defaultMessage="Register" />
-            </Link>
-          </Menu.Item>
+          {settings.showSelfRegistration && (
+            <Menu.Item>
+              <Link aria-label="register" to="/register">
+                <FormattedMessage id="Register" defaultMessage="Register" />
+              </Link>
+            </Menu.Item>
+          )}
         </Menu>
       )
     );

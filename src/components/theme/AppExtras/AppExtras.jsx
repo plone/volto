@@ -1,9 +1,9 @@
 import React from 'react';
 import { matchPath } from 'react-router';
-
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 const AppExtras = (props) => {
+  const { settings } = config;
   const { appExtras = [] } = settings;
   const { pathname } = props;
   const active = appExtras

@@ -11,8 +11,8 @@ import { NavLink } from 'react-router-dom';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Menu } from 'semantic-ui-react';
 import cx from 'classnames';
-import { getBaseUrl } from '@plone/volto/helpers';
-import { settings } from '~/config';
+import { getBaseUrl, hasApiExpander } from '@plone/volto/helpers';
+import config from '@plone/volto/registry';
 
 import { getNavigation } from '@plone/volto/actions';
 
@@ -65,16 +65,14 @@ class Navigation extends Component {
     };
   }
 
-  /**
-   * Component will mount
-   * @method componentWillMount
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillMount() {
-    this.props.getNavigation(
-      getBaseUrl(this.props.pathname),
-      settings.navDepth,
-    );
+  componentDidMount() {
+    const { settings } = config;
+    if (!hasApiExpander('navigation', getBaseUrl(this.props.pathname))) {
+      this.props.getNavigation(
+        getBaseUrl(this.props.pathname),
+        settings.navDepth,
+      );
+    }
   }
 
   /**
@@ -84,11 +82,17 @@ class Navigation extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.pathname !== this.props.pathname) {
-      this.props.getNavigation(
-        getBaseUrl(nextProps.pathname),
-        settings.navDepth,
-      );
+    const { settings } = config;
+    if (
+      nextProps.pathname !== this.props.pathname ||
+      nextProps.token !== this.props.token
+    ) {
+      if (!hasApiExpander('navigation', getBaseUrl(this.props.pathname))) {
+        this.props.getNavigation(
+          getBaseUrl(nextProps.pathname),
+          settings.navDepth,
+        );
+      }
     }
   }
 
@@ -119,10 +123,11 @@ class Navigation extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const { settings } = config;
     const { lang } = this.props;
 
     return (
-      <nav className="navigation">
+      <nav className="navigation" id="navigation">
         <div className="hamburger-wrapper mobile tablet only">
           <button
             className={cx('hamburger hamburger--collapse', {
@@ -190,6 +195,7 @@ export default compose(
   injectIntl,
   connect(
     (state) => ({
+      token: state.userSession.token,
       items: state.navigation.items,
       lang: state.intl.locale,
     }),

@@ -37,4 +37,32 @@ describe('ContentsWorkflowModal', () => {
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
+
+  it('renders a loading message contents workflow modal component', () => {
+    const store = mockStore({
+      workflow: {
+        transition: {
+          loading: false,
+          loaded: true,
+        },
+        multiple: [],
+      },
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    const component = renderer.create(
+      <Provider store={store}>
+        <ContentsWorkflowModal
+          open
+          onOk={() => {}}
+          onCancel={() => {}}
+          items={['/blog']}
+        />
+      </Provider>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
 });

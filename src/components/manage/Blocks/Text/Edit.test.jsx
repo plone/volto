@@ -23,6 +23,7 @@ test('renders an edit text block component', () => {
         selected={false}
         block="1234"
         onAddBlock={() => {}}
+        onInsertBlock={() => {}}
         onChangeBlock={() => {}}
         onSelectBlock={() => {}}
         onDeleteBlock={() => {}}

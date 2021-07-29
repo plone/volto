@@ -3,7 +3,8 @@ import renderer from 'react-test-renderer';
 import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
 import EventView from './EventView';
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
+
 const mockStore = configureStore();
 
 const store = mockStore({
@@ -12,6 +13,8 @@ const store = mockStore({
     messages: {},
   },
 });
+
+const { settings } = config;
 
 test('renders an event view component with all props', () => {
   const component = renderer.create(

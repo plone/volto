@@ -102,20 +102,12 @@ class ContentType extends Component {
   }
 
   /**
-   * Component will mount
-   * @method componentWillMount
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillMount() {
-    this.props.getControlpanel(join([this.props.parent, this.props.id], '/'));
-  }
-
-  /**
    * Component did mount
    * @method componentDidMount
    * @returns {undefined}
    */
   componentDidMount() {
+    this.props.getControlpanel(join([this.props.parent, this.props.id], '/'));
     this.setState({ isClient: true });
   }
 

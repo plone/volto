@@ -26,11 +26,25 @@ import { SidebarPortal } from '@plone/volto/components';
 </SidebarPortal>
 ```
 
-Everything that's inside the `SidebarPortal` component will be rendered in the sidebar.
+Everything that's inside the `SidebarPortal` component will be rendered in the sidebar. If you need an extra layer of configuration within `SidebarPortal`, you can use `SidebarPopup`.
 
-## Automated block editing forms
+```jsx
 
-To simplify the task of defining the edit component for a block, the `InlineForm` component can be used. The block edit component needs to be described by a schema that matches the format used to serialize the content type definitions. The widgets that will be used in rendering the form follow the same algorithm that is used for the regular metadata fields for the content types. As an example of schema, it could look like this:
+import { SidebarPopup } from '@plone/volto/components';
+
+<SidebarPopup open={this.props.sidebarOpen}>
+  ...
+</SidebarPopup>
+```
+
+## Schema driven automated block settings forms
+
+A helper component is available in core in order to simplify the task of defining and rendering the settings for a block: the `BlockDataForm` component.
+
+!!! note
+    `BlockDataForm` is a convenience component around the already available in core `InlineForm` that takes care of some aspects exclusively for Volto Blocks, like Variants and schemaExtenders. You can still use `InlineForm` across Volto, but using `BlockDataForm` is recommeneded for the blocks settings use case.
+
+The edit block settings component needs to be described by a schema that matches the format used to serialize the content type definitions. The widgets that will be used in rendering the form follow the same algorithm that is used for the regular metadata fields for the content types. As an example of schema, it could look like this:
 
 ```js
 const IframeSchema = {
@@ -223,6 +237,13 @@ You can select the attributes from the object (coming from the metadata brain fr
 @search endpoint used in the browser) using the `selectedItemAttrs` prop as shown in the
 last example.
 
+#### allowExternals
+
+You can allow users to type manually an URL (internal or external). Once validated, it
+will tokenize the value. As a feature, you can paste an internal URL (eg. the user copy
+the URL from the browser, and paste it in the widget) and will be converted to a
+tokenized value, as if it was selected via the Object Browser widget.
+
 #### ObjectBrowserWidgetMode()
 
 Returns the component widget with _mode_ passed as argument.
@@ -295,3 +316,170 @@ form.widget(
   }),
 );
 ```
+
+## Reusing the blocks engine in your components
+
+You can render a blocks engine form with the `BlocksForm` component.
+
+```jsx
+import { isEmpty } from 'lodash';
+import BlocksForm from '@plone/volto/components/manage/Blocks/BlocksForm';
+import { emptyBlocksForm } from '@plone/volto/helpers/Blocks/Blocks';
+import config from '@plone/volto/registry';
+
+
+class Example extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedBlock: null,
+      formData: null,
+    }
+    this.blocksState = {};
+  }
+
+  render() {
+    const {
+      block,
+      data,
+      onChangeBlock,
+      pathname,
+      selected,
+      manage,
+    } = this.props;
+    const formData = this.state.formData;
+    const metadata = this.props.metadata || this.props.properties;
+    const {blocksConfig} = config.blocks;
+    const titleBlock = blocksConfig.title;
+
+    return (
+      <BlocksForm
+        title="A form with blocks"
+        description={data?.instructions?.data}
+        manage={manage}
+        allowedBlocks={data?.allowedBlocks}
+        metadata={metadata}
+        properties={isEmpty(formData) ? emptyBlocksForm() : formData}
+        selectedBlock={
+          selected ? this.state.selectedBlock : null
+        }
+        onSelectBlock={(id) => this.setState({ selectedBlock: id }) }
+        onChangeFormData={(newFormData) => {
+          onChangeBlock(block, {
+            ...data,
+            data: {
+              ...formData,
+            },
+          });
+        }}
+        blocksConfig={{
+          ...blocksConfig,
+          title: {
+            ...titleBlock,
+            edit: (props) => <div>Title editing is not allowed (as example)</div>
+          }
+        }}
+        onChangeField={(id, value) => {
+          if (['blocks', 'blocks_layout'].indexOf(id) > -1) {
+            this.blockState[id] = value;
+            onChangeBlock(block, {
+              ...data,
+              data: {
+                ...data.data,
+                ...this.blockState,
+              },
+            });
+          }
+        }}
+        pathname={pathname}
+      >
+      </BlocksForm>
+    );
+  }
+}
+```
+
+The current block engine is available as the separate `BlocksForm` component,
+used to be a part of the `Form.jsx` component. It has been previously exposed
+as the [@eeacms/volto-blocks-form](https://github.com/eea/volto-blocks-form)
+addon and reused in several other addons, so you can find integration examples
+in addons such as
+[volto-columns-block](https://github.com/eea/volto-columns-block),
+[volto-accordion-block](https://github.com/rohberg/volto-accordion-block),
+[@eeacms/volto-accordion-block](https://github.com/eea/volto-accordion-block),
+[@eeacms/volto-grid-block](https://github.com/eea/volto-accordion-block), but
+probably the simplest implementation to follow is in the
+[@eeacms/volto-group-block](https://github.com/eea/volto-group-block)
+
+Notice that the `BlocksForm` component allows overriding the edit block
+wrapper and allows passing a custom `blocksConfig` configuration object, for
+example to filter or add new blocks.
+
+You can also reuse the DragDropList component as a separate component:
+
+```jsx
+  <DragDropList
+    childList={childList}
+    as="tbody"
+    onMoveItem={(result) => {
+      const { source, destination } = result;
+      const ns = JSON.parse(JSON.stringify(state));
+      Object.keys(ns.order).forEach((lang) => {
+        const x = ns.order[lang][source.index];
+        const y = ns.order[lang][destination.index];
+        ns.order[lang][destination.index] = x;
+        ns.order[lang][source.index] = y;
+      });
+      setState(ns);
+      return true;
+    }}
+  >
+    {({ index, draginfo }) => {
+      return (
+        <Ref innerRef={draginfo.innerRef} key={index}>
+          <Table.Row {...draginfo.draggableProps}>
+            <Table.Cell>
+              <div {...draginfo.dragHandleProps}>
+                <Icon name={dragSVG} size="18px" />
+              </div>
+            </Table.Cell>
+            {langs.map((lang) => {
+              const i = state.order[lang][index];
+              const entry = state.data[lang][i];
+              return (
+                <Table.Cell key={lang}>
+                  <TermInput
+                    entry={entry}
+                    onChange={(id, value) => {
+                      const newState = { ...state };
+                      newState.data[lang][i] = {
+                        ...newState.data[lang][i],
+                        [id]: value,
+                      };
+
+                      setState(newState);
+                    }}
+                  />
+                </Table.Cell>
+              );
+            })}
+            <Table.Cell>
+              <Button basic onClick={() => {}}>
+                <Icon
+                  className="circled"
+                  name={deleteSVG}
+                  size="12px"
+                />
+              </Button>
+            </Table.Cell>
+          </Table.Row>
+        </Ref>
+      );
+    }}
+  </DragDropList>
+```
+
+Check the source code of volto-columns-block and
+[volto-taxonomy](https://github.com/eea/volto-taxonomy/) for details on
+how to reuse this component.

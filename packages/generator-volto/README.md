@@ -53,6 +53,12 @@ Arguments:
 
 to see a full list of options and arguments.
 
+You can provide an specific Volto version like:
+
+```
+yo @plone/volto --volto=12.0.0-alpha.0
+```
+
 You can use it in full non-interactive mode by passing something like:
 
 ```
@@ -85,14 +91,16 @@ Usage:
   yo @plone/volto:addon [<addonName>] [options]
 
 Options:
-  -h,   --help          # Print the generator's options and usage
-        --skip-cache    # Do not remember prompt answers             Default: false
-        --skip-install  # Do not automatically install dependencies  Default: false
-        --interactive   # Enable/disable interactive prompt          Default: true
+  -h,   --help           # Print the generator's options and usage
+        --skip-cache     # Do not remember prompt answers                            Default: false
+        --skip-install   # Do not automatically install dependencies                 Default: false
+        --force-install  # Fail on install dependencies error                        Default: false
+        --ask-answered   # Show prompts for already configured options               Default: false
+        --interactive    # Enable/disable interactive prompt                         Default: true
+        --template       # Use github repo template, e.g.: eea/volto-addon-template
 
 Arguments:
-  addonName  # Addon name, e.g.: @corp/volto-custom-block  Type: String  Required: false
-
+  addonName  # Addon name, e.g.: @plone-collective/volto-custom-block  Type: String  Required: false
 ```
 
 ### Start Volto with `yarn start`

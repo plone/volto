@@ -1,26 +1,91 @@
 import React from 'react';
-import { waitFor } from '@testing-library/react';
-import renderer from 'react-test-renderer';
-import configureStore from 'redux-mock-store';
-import FileWidget from './FileWidget';
 import { Provider } from 'react-intl-redux';
+import { render, waitFor } from '@testing-library/react';
+import configureStore from 'redux-mock-store';
+
+import FileWidget from './FileWidget';
+
+jest.spyOn(global.Date, 'now').mockImplementation(() => '0');
 
 const mockStore = configureStore();
 
-test('renders a file widget component', async () => {
-  const store = mockStore({
-    intl: {
-      locale: 'en',
-      messages: {},
-    },
+describe('FileWidget', () => {
+  test('renders an empty file widget component', async () => {
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+
+    const { container } = render(
+      <Provider store={store}>
+        <FileWidget
+          id="my-field"
+          title="My field"
+          fieldSet="default"
+          onChange={() => {}}
+        />
+      </Provider>,
+    );
+
+    await waitFor(() => {});
+    expect(container).toMatchSnapshot();
   });
+  test('renders a file widget component with value', async () => {
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
 
-  const component = renderer.create(
-    <Provider store={store}>
-      <FileWidget id="my-field" title="My field" onChange={() => {}} />,
-    </Provider>,
-  );
+    const { container } = render(
+      <Provider store={store}>
+        <FileWidget
+          id="my-field"
+          title="My field"
+          fieldSet="default"
+          onChange={() => {}}
+          value={{
+            download: 'http://myfile',
+            'content-type': 'image/png',
+            filename: 'myfile',
+            encoding: '',
+          }}
+        />
+      </Provider>,
+    );
 
-  await waitFor(() => {});
-  expect(component.toJSON()).toMatchSnapshot();
+    await waitFor(() => {});
+    expect(container).toMatchSnapshot();
+  });
+  test('renders a file widget component with value in raw data', async () => {
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+
+    const { container } = render(
+      <Provider store={store}>
+        <FileWidget
+          id="my-field"
+          title="My field"
+          fieldSet="default"
+          onChange={() => {}}
+          value={{
+            data: 'oiweurtksdgfjaslfqw9523563456',
+            'content-type': 'image/png',
+            filename: 'myfile',
+            encoding: 'base64',
+          }}
+        />
+      </Provider>,
+    );
+
+    await waitFor(() => {});
+    expect(container).toMatchSnapshot();
+  });
 });

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { isEmpty } from 'lodash';
-import { UniversalLink } from '@plone/volto/components';
+import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 
 const styles = {
   code: {
@@ -20,15 +20,13 @@ const styles = {
 
 const addBreaklinesInline = (children) => {
   if (typeof children[0] == 'string') {
-    const s = children[0].endsWith('\n')
-      ? children[0].slice(0, -1)
-      : children[0];
+    const s = children[0];
 
     if (s.split('\n').length > 1) {
       return s.split('\n').map((child, index) => (
         <React.Fragment key={child + index}>
           {child}
-          <br />
+          {child?.length > 0 && <br />}
         </React.Fragment>
       ));
     }
@@ -228,7 +226,7 @@ const LinkEntity = connect((state) => ({
   return (
     <UniversalLink
       href={to}
-      openLinkInNewTab={target === '_blank'}
+      openLinkInNewTab={target === '_blank' || undefined}
       download={download}
     >
       {children}

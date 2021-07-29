@@ -13,7 +13,8 @@ import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import cookie from 'react-cookie';
 import { filter, find } from 'lodash';
 import cx from 'classnames';
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
+
 import More from '@plone/volto/components/manage/Toolbar/More';
 import PersonalTools from '@plone/volto/components/manage/Toolbar/PersonalTools';
 import Types from '@plone/volto/components/manage/Toolbar/Types';
@@ -27,6 +28,7 @@ import {
 } from '@plone/volto/actions';
 import { Icon } from '@plone/volto/components';
 import { BodyClass, getBaseUrl } from '@plone/volto/helpers';
+import { Pluggable } from '@plone/volto/components/manage/Pluggable';
 
 import pastanagaSmall from '@plone/volto/components/manage/Toolbar/pastanaga-small.svg';
 import pastanagalogo from '@plone/volto/components/manage/Toolbar/pastanaga.svg';
@@ -422,7 +424,7 @@ class Toolbar extends Component {
                     {this.props.content &&
                       ((this.props.content.is_folderish &&
                         this.props.types.length > 0) ||
-                        (settings.isMultilingual &&
+                        (config.settings.isMultilingual &&
                           this.props.content['@components'].translations)) && (
                         <button
                           className="add"
@@ -467,6 +469,7 @@ class Toolbar extends Component {
                 )}
               </div>
               <div className="toolbar-bottom">
+                <Pluggable name="main.toolbar.bottom" />
                 <img className="minipastanaga" src={pastanagaSmall} alt="" />
                 {!this.props.hideDefaultViewButtons && (
                   <button

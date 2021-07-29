@@ -8,8 +8,7 @@ import {
   GET_WORKFLOW_MULTIPLE,
   TRANSITION_WORKFLOW,
 } from '@plone/volto/constants/ActionTypes';
-
-import { settings } from '~/config';
+import { flattenToAppURL } from '@plone/volto/helpers';
 
 /**
  * Get workflow function.
@@ -41,12 +40,12 @@ export function transitionWorkflow(urls, include_children = false) {
       typeof urls === 'string'
         ? {
             op: 'post',
-            path: urls.replace(settings.apiPath, ''),
+            path: flattenToAppURL(urls),
             data: { include_children },
           }
         : urls.map((url) => ({
             op: 'post',
-            path: url.replace(settings.apiPath, ''),
+            path: flattenToAppURL(url),
             data: { include_children },
           })),
   };

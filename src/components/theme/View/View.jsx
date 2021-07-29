@@ -9,17 +9,22 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Portal } from 'react-portal';
 import { injectIntl } from 'react-intl';
-import { Helmet } from '@plone/volto/helpers';
 import qs from 'query-string';
-import { views } from '~/config';
 
-import { Comments, Tags, Toolbar } from '@plone/volto/components';
+import {
+  ContentMetadataTags,
+  Comments,
+  Tags,
+  Toolbar,
+} from '@plone/volto/components';
 import { listActions, getContent } from '@plone/volto/actions';
 import {
   BodyClass,
   getBaseUrl,
   getLayoutFieldname,
 } from '@plone/volto/helpers';
+
+import config from '@plone/volto/registry';
 
 /**
  * View container class.
@@ -110,20 +115,12 @@ class View extends Component {
     isClient: false,
   };
 
-  /**
-   * Component will mount
-   * @method componentWillMount
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillMount() {
+  componentDidMount() {
     this.props.listActions(getBaseUrl(this.props.pathname));
     this.props.getContent(
       getBaseUrl(this.props.pathname),
       this.props.versionId,
     );
-  }
-
-  componentDidMount() {
     this.setState({ isClient: true });
   }
 
@@ -155,7 +152,7 @@ class View extends Component {
    * @method getViewDefault
    * @returns {string} Markup for component.
    */
-  getViewDefault = () => views.defaultView;
+  getViewDefault = () => config.views.defaultView;
 
   /**
    * Get view by content type
@@ -163,7 +160,7 @@ class View extends Component {
    * @returns {string} Markup for component.
    */
   getViewByType = () =>
-    views.contentTypesViews[this.props.content['@type']] || null;
+    config.views.contentTypesViews[this.props.content['@type']] || null;
 
   /**
    * Get view by content layout property
@@ -171,7 +168,7 @@ class View extends Component {
    * @returns {string} Markup for component.
    */
   getViewByLayout = () =>
-    views.layoutViews[
+    config.views.layoutViews[
       this.props.content[getLayoutFieldname(this.props.content)]
     ] || null;
 
@@ -196,6 +193,7 @@ class View extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const { views } = config;
     if (this.props.error && !this.props.connectionRefused) {
       let FoundView;
       if (this.props.error.status === undefined) {
@@ -223,13 +221,7 @@ class View extends Component {
 
     return (
       <div id="view">
-        <Helmet>
-          {this.props.content.language && (
-            <html lang={this.props.content.language.token} />
-          )}
-          <title>{this.props.content.title}</title>
-          <meta name="description" content={this.props.content.description} />
-        </Helmet>
+        <ContentMetadataTags content={this.props.content} />
         {/* Body class if displayName in component is set */}
         <BodyClass
           className={
@@ -244,7 +236,8 @@ class View extends Component {
           token={this.props.token}
           history={this.props.history}
         />
-        {this.props.content.subjects &&
+        {config.settings.showTags &&
+          this.props.content.subjects &&
           this.props.content.subjects.length > 0 && (
             <Tags tags={this.props.content.subjects} />
           )}
@@ -281,7 +274,7 @@ export default compose(
       pathname: props.location.pathname,
       versionId:
         qs.parse(props.location.search) &&
-        qs.parse(props.location.search).version_id,
+        qs.parse(props.location.search).version,
     }),
     {
       listActions,

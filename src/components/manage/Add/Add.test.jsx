@@ -2,17 +2,19 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import config from '@plone/volto/registry';
 
 import Add from './Add';
 
 const mockStore = configureStore();
 
-jest.mock('~/config', () => ({
-  settings: {
-    isMultilingual: false,
-    supportedLanguages: ['de'],
-  },
-}));
+beforeAll(() => {
+  config.settings.supportedLanguages = ['de'];
+  config.settings.lazyBundles = {
+    cms: [],
+  };
+  config.settings.loadables = {};
+});
 
 jest.mock('react-portal', () => ({
   Portal: jest.fn(() => <div id="Portal" />),

@@ -20,6 +20,7 @@ test('renders a datetime widget component', () => {
       <DatetimeWidget
         id="my-field"
         title="My field"
+        fieldSet="default"
         onChange={() => {}}
         value={moment('2019-10-21').toISOString()}
       />

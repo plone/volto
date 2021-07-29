@@ -16,7 +16,13 @@ test('renders a number widget component', () => {
   });
   const component = renderer.create(
     <Provider store={store}>
-      <NumberWidget id="my-field" title="My field" onChange={() => {}} />,
+      <NumberWidget
+        id="my-field"
+        title="My field"
+        fieldSet="default"
+        onChange={() => {}}
+      />
+      ,
     </Provider>,
   );
   const json = component.toJSON();

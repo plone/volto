@@ -1,7 +1,9 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import NewsItemView from './NewsItemView';
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
+
+const { settings } = config;
 
 test('renders a news item view component', () => {
   const component = renderer.create(

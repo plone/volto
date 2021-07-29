@@ -5,6 +5,7 @@ exports[`renders a view image component 1`] = `
   className="ui segment object-listing"
 >
   <li
+    aria-label="Select front-page"
     className=""
     onClick={[Function]}
     onDoubleClick={[Function]}
@@ -43,6 +44,7 @@ exports[`renders a view image component 1`] = `
     </span>
   </li>
   <li
+    aria-label="Select news"
     className=""
     onClick={[Function]}
     onDoubleClick={[Function]}

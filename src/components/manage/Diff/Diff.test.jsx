@@ -1,8 +1,9 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+// import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
+import { waitFor, render, screen } from '@testing-library/react';
 
 import Diff from './Diff';
 
@@ -17,8 +18,14 @@ jest.mock('moment', () =>
   })),
 );
 
+jest.mock('@plone/volto/helpers/Loadable/Loadable');
+beforeAll(
+  async () =>
+    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
+);
+
 describe('Diff', () => {
-  it('renders a diff component', () => {
+  it('renders a diff component', async () => {
     const store = mockStore({
       history: {
         entries: [
@@ -70,14 +77,14 @@ describe('Diff', () => {
         messages: {},
       },
     });
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <MemoryRouter initialEntries={['/blog?one=0&two=1']}>
           <Diff />
         </MemoryRouter>
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    await waitFor(() => screen.getByTestId('DiffField'));
+    expect(container).toMatchSnapshot();
   });
 });

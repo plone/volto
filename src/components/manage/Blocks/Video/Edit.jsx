@@ -19,7 +19,7 @@ import {
   getParentUrl,
   flattenToAppURL,
 } from '@plone/volto/helpers';
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   VideoFormDescription: {
@@ -259,7 +259,7 @@ class Edit extends Component {
                         src={
                           isInternalURL(
                             data.url.replace(
-                              getParentUrl(settings.apiPath),
+                              getParentUrl(config.settings.apiPath),
                               '',
                             ),
                           )

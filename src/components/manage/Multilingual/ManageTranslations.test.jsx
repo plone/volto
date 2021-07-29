@@ -3,16 +3,14 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
+import config from '@plone/volto/registry';
 
 import ManageTranslations from './ManageTranslations';
 
-jest.mock('~/config', () => ({
-  settings: {
-    isMultilingual: true,
-    supportedLanguages: ['de', 'es'],
-    nonContentRoutes: [],
-  },
-}));
+beforeAll(() => {
+  config.settings.isMultilingual = true;
+  config.settings.supportedLanguages = ['de', 'es'];
+});
 
 jest.mock('react-portal', () => ({
   Portal: jest.fn(() => <div id="Portal" />),

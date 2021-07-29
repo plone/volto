@@ -5,8 +5,11 @@
 
 import cookie from 'react-cookie';
 import jwtDecode from 'jwt-decode';
+import { compact, flatten, union } from 'lodash';
+import { matchPath } from 'react-router';
+import qs from 'query-string';
 
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 import {
   LOGIN,
@@ -15,6 +18,38 @@ import {
 } from '@plone/volto/constants/ActionTypes';
 
 let socket = null;
+
+/**
+ *
+ * Add configured expanders to an api call for an action
+ * @function addExpandersToPath
+ * @param {string} path The url/path including the querystring
+ * @param {*} type The action type
+ * @returns {string} The url/path with the configured expanders added to the query string
+ */
+export function addExpandersToPath(path, type) {
+  const { settings } = config;
+  const { apiExpanders = [] } = settings;
+
+  const pathPart = path.split('?')[0] || '';
+  const expanders = apiExpanders
+    .filter((expand) => matchPath(pathPart, expand.match) && expand[type])
+    .map((expand) => expand[type]);
+  const query = qs.parse(qs.extract(path));
+  const expand = compact(union([query.expand, ...flatten(expanders)]));
+  if (expand) {
+    query.expand = expand;
+  }
+  const stringifiedQuery = qs.stringify(query, {
+    arrayFormat: 'comma',
+    encode: false,
+  });
+  if (!stringifiedQuery) {
+    return pathPart;
+  }
+
+  return `${pathPart}?${stringifiedQuery}`;
+}
 
 /**
  * Send a message on a websocket.
@@ -63,17 +98,30 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
 
   if (socket) {
     actionPromise = Array.isArray(request)
-      ? Promise.all(request.map((item) => sendOnSocket({ ...item, id: type })))
-      : sendOnSocket({ ...request, id: type });
+      ? Promise.all(
+          request.map((item) =>
+            sendOnSocket({
+              ...item,
+              path: addExpandersToPath(item.path, type),
+              id: type,
+            }),
+          ),
+        )
+      : sendOnSocket({
+          ...request,
+          path: addExpandersToPath(request.path, type),
+          id: type,
+        });
   } else {
     actionPromise = Array.isArray(request)
       ? mode === 'serial'
         ? request.reduce((prevPromise, item) => {
             return prevPromise.then((acc) => {
-              return api[item.op](item.path, {
+              return api[item.op](addExpandersToPath(item.path, type), {
                 data: item.data,
                 type: item.type,
                 headers: item.headers,
+                params: request.params,
               }).then((reqres) => {
                 return [...acc, reqres];
               });
@@ -81,20 +129,23 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
           }, Promise.resolve([]))
         : Promise.all(
             request.map((item) =>
-              api[item.op](item.path, {
+              api[item.op](addExpandersToPath(item.path, type), {
                 data: item.data,
                 type: item.type,
                 headers: item.headers,
+                params: request.params,
               }),
             ),
           )
-      : api[request.op](request.path, {
+      : api[request.op](addExpandersToPath(request.path, type), {
           data: request.data,
           type: request.type,
           headers: request.headers,
+          params: request.params,
         });
     actionPromise.then(
       (result) => {
+        const { settings } = config;
         if (getState().apierror.connectionRefused) {
           next({
             ...rest,
@@ -131,6 +182,7 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
         return next({ ...rest, result, type: `${type}_SUCCESS` });
       },
       (error) => {
+        const { settings } = config;
         // Only SRR can set ECONNREFUSED
         if (error.code === 'ECONNREFUSED') {
           next({
@@ -154,7 +206,7 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
         }
 
         // Gateway timeout
-        else if (error.response.statusCode === 504) {
+        else if (error?.response?.statusCode === 504) {
           next({
             ...rest,
             error,
@@ -162,10 +214,11 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
             connectionRefused: true,
             type: SET_APIERROR,
           });
+        }
 
-          // The rest
-        } else if (settings.actions_raising_api_errors.includes(action.type)) {
-          if (error.response.statusCode === 401) {
+        // The rest
+        else if (settings.actions_raising_api_errors.includes(action.type)) {
+          if (error?.response?.statusCode === 401) {
             next({
               ...rest,
               error,

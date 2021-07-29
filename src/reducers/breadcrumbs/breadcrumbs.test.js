@@ -1,12 +1,15 @@
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 import breadcrumbs from './breadcrumbs';
 import { GET_BREADCRUMBS } from '@plone/volto/constants/ActionTypes';
+
+const { settings } = config;
 
 describe('Breadcrumbs reducer', () => {
   it('should return the initial state', () => {
     expect(breadcrumbs()).toEqual({
       error: null,
       items: [],
+      root: null,
       loaded: false,
       loading: false,
     });
@@ -20,6 +23,7 @@ describe('Breadcrumbs reducer', () => {
     ).toEqual({
       error: null,
       items: [],
+      root: null,
       loaded: false,
       loading: true,
     });
@@ -36,6 +40,7 @@ describe('Breadcrumbs reducer', () => {
               '@id': `${settings.apiPath}/front-page`,
             },
           ],
+          root: settings.apiPath,
         },
       }),
     ).toEqual({
@@ -46,6 +51,7 @@ describe('Breadcrumbs reducer', () => {
           url: '/front-page',
         },
       ],
+      root: '',
       loaded: true,
       loading: false,
     });
@@ -60,6 +66,7 @@ describe('Breadcrumbs reducer', () => {
     ).toEqual({
       error: 'failed',
       items: [],
+      root: null,
       loaded: false,
       loading: false,
     });

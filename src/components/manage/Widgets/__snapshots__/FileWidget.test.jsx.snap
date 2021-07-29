@@ -1,81 +1,217 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a file widget component 1`] = `
-Array [
+exports[`FileWidget renders a file widget component with value 1`] = `
+<div>
   <div
-    className="inline field"
+    class="inline field"
   >
     <div
-      className="ui grid"
+      class="ui grid"
     >
       <div
-        className="stretched row"
+        class="stretched row"
       >
         <div
-          className="four wide column"
+          class="four wide column"
         >
           <div
-            className="wrapper"
+            class="wrapper"
           >
             <label
-              htmlFor="field-my-field"
+              for="field-my-field"
+              id="fieldset-default-field-label-my-field"
             >
               My field
             </label>
           </div>
         </div>
         <div
-          className="eight wide column"
+          class="eight wide column"
         >
           <div
-            className="file-widget-dropzone"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDragEnter={[Function]}
-            onDragLeave={[Function]}
-            onDragOver={[Function]}
-            onDrop={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            tabIndex={0}
+            class="file-widget-dropzone"
+            tabindex="0"
+          >
+            <img
+              class="ui small image image-preview"
+              id="field-my-field-image"
+              src="http://myfile?id=0"
+            />
+            <label
+              class="label-file-widget-input"
+            >
+              Replace existing file
+            </label>
+            <input
+              autocomplete="off"
+              id="field-my-field"
+              multiple=""
+              name="my-field"
+              style="display: none;"
+              tabindex="-1"
+              type="file"
+            />
+          </div>
+          <div
+            class="field-file-name"
+          >
+            myfile
+            <button
+              aria-label="delete file"
+              class="ui basic icon button delete-button"
+            >
+              <svg
+                class="icon"
+                style="height: 20px; width: auto; fill: currentColor;"
+                viewBox=""
+                xmlns=""
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`FileWidget renders a file widget component with value in raw data 1`] = `
+<div>
+  <div
+    class="inline field"
+  >
+    <div
+      class="ui grid"
+    >
+      <div
+        class="stretched row"
+      >
+        <div
+          class="four wide column"
+        >
+          <div
+            class="wrapper"
+          >
+            <label
+              for="field-my-field"
+              id="fieldset-default-field-label-my-field"
+            >
+              My field
+            </label>
+          </div>
+        </div>
+        <div
+          class="eight wide column"
+        >
+          <div
+            class="file-widget-dropzone"
+            tabindex="0"
+          >
+            <img
+              class="ui small image image-preview"
+              id="field-my-field-image"
+              src="data:image/png;base64,oiweurtksdgfjaslfqw9523563456"
+            />
+            <label
+              class="label-file-widget-input"
+            >
+              Replace existing file
+            </label>
+            <input
+              autocomplete="off"
+              id="field-my-field"
+              multiple=""
+              name="my-field"
+              style="display: none;"
+              tabindex="-1"
+              type="file"
+            />
+          </div>
+          <div
+            class="field-file-name"
+          >
+            myfile
+            <button
+              aria-label="delete file"
+              class="ui basic icon button delete-button"
+            >
+              <svg
+                class="icon"
+                style="height: 20px; width: auto; fill: currentColor;"
+                viewBox=""
+                xmlns=""
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`FileWidget renders an empty file widget component 1`] = `
+<div>
+  <div
+    class="inline field"
+  >
+    <div
+      class="ui grid"
+    >
+      <div
+        class="stretched row"
+      >
+        <div
+          class="four wide column"
+        >
+          <div
+            class="wrapper"
+          >
+            <label
+              for="field-my-field"
+              id="fieldset-default-field-label-my-field"
+            >
+              My field
+            </label>
+          </div>
+        </div>
+        <div
+          class="eight wide column"
+        >
+          <div
+            class="file-widget-dropzone"
+            tabindex="0"
           >
             <div
-              className="dropzone-placeholder"
+              class="dropzone-placeholder"
             >
               <p
-                className="dropzone-text"
+                class="dropzone-text"
               >
                 Drop file here to upload a new file
               </p>
             </div>
             <label
-              className="label-file-widget-input"
+              class="label-file-widget-input"
             >
               Choose a file
             </label>
             <input
-              autoComplete="off"
+              autocomplete="off"
               id="field-my-field"
-              multiple={true}
+              multiple=""
               name="my-field"
-              onChange={[Function]}
-              onClick={[Function]}
-              style={
-                Object {
-                  "display": "none",
-                }
-              }
-              tabIndex={-1}
+              style="display: none;"
+              tabindex="-1"
               type="file"
             />
           </div>
           <div
-            className="field-file-name"
+            class="field-file-name"
           />
         </div>
       </div>
     </div>
-  </div>,
-  ",",
-]
+  </div>
+</div>
 `;

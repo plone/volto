@@ -39,7 +39,7 @@ import {
 import App from '@plone/volto/components/theme/App/App';
 import View from '@plone/volto/components/theme/View/View';
 
-import { addonRoutes } from '~/config';
+import config from '@plone/volto/registry';
 
 /**
  * Default routes array.
@@ -211,8 +211,13 @@ const routes = [
     path: '/',
     component: App,
     routes: [
+      // redirect to external links if path is in blacklist
+      ...(config.settings?.externalRoutes || []).map((route) => ({
+        ...route.match,
+        component: NotFound,
+      })),
       // addon routes have a higher priority then default routes
-      ...(addonRoutes || []),
+      ...(config.addonRoutes || []),
       ...defaultRoutes,
     ],
   },

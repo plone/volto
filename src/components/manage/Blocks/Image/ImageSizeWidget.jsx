@@ -34,7 +34,7 @@ const ImageSizeWidget = ({ onChangeBlock, data, block, disabled }) => {
   const intl = useIntl();
 
   return (
-    <div>
+    <div className="field-image_size">
       <Button.Group>
         <Button
           icon

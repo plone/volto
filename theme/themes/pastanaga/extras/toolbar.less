@@ -368,6 +368,11 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
 
         .toolbar-actions {
           flex-direction: column;
+
+          .ui.dropdown.left {
+            width: 100%;
+            text-align: center;
+          }
         }
 
         .toolbar-bottom {
@@ -723,6 +728,34 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
         font-size: 14px;
         font-weight: 500;
         text-transform: uppercase;
+      }
+    }
+  }
+
+  .toolbar-compare-translations-wrapper {
+    position: relative;
+
+    .toolbar-button-compare-translations .icon {
+      padding: 4px;
+    }
+
+    .compare-languages {
+      @media (max-width: @largestMobileScreen - 1) {
+        position: fixed;
+        top: 101px;
+        left: 0;
+      }
+      @media (min-width: @largestMobileScreen) {
+        position: absolute;
+        top: 50%;
+        left: 56px;
+        transform: translateY(-50%);
+      }
+
+      .pastanaga-menu {
+        button {
+          margin: 0;
+        }
       }
     }
   }
