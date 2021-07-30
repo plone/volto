@@ -316,6 +316,10 @@ class AddonConfigurationRegistry {
               aliases[
                 filename.replace(customPath, name).replace(/\.(js|jsx)$/, '')
               ] = path.resolve(filename);
+            } else {
+              console.log(
+                `The file ${filename} doesn't exist in the ${name} (${targetPath}), unable to customize.`,
+              );
             }
           },
         );
