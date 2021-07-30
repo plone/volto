@@ -43,6 +43,9 @@ include
 share
 .Python
 
+# locales
+locales/*.json
+
 # Tests
 /tests/bin
 /tests/develop-eggs

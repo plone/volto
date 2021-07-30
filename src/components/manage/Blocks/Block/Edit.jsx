@@ -49,6 +49,7 @@ export class Edit extends Component {
     manage: PropTypes.bool,
     onMoveBlock: PropTypes.func.isRequired,
     onDeleteBlock: PropTypes.func.isRequired,
+    editable: PropTypes.bool,
   };
 
   /**
@@ -58,6 +59,7 @@ export class Edit extends Component {
    */
   static defaultProps = {
     manage: false,
+    editable: true,
   };
 
   componentDidMount() {
@@ -74,7 +76,7 @@ export class Edit extends Component {
       this.blockNode.current.focus();
     }
     const tab = this.props.manage ? 1 : blocksConfig?.[type]?.sidebarTab || 0;
-    if (this.props.selected) {
+    if (this.props.selected && this.props.editable) {
       this.props.setSidebarTab(tab);
     }
   }
@@ -93,8 +95,9 @@ export class Edit extends Component {
       this.blockNode.current.focus();
     }
     if (
-      (!this.props.selected && nextProps.selected) ||
-      type !== nextProps.type
+      ((!this.props.selected && nextProps.selected) ||
+        type !== nextProps.type) &&
+      this.props.editable
     ) {
       const tab = this.props.manage
         ? 1
@@ -112,12 +115,15 @@ export class Edit extends Component {
    */
   render() {
     const { blocksConfig = config.blocks.blocksConfig } = this.props;
-    const { type } = this.props;
+    const { editable, type } = this.props;
 
     const disableNewBlocks = this.props.data?.disableNewBlocks;
 
     let Block = blocksConfig?.[type]?.['edit'] || null;
-    if (this.props.data?.readOnly) {
+    if (
+      this.props.data?.readOnly ||
+      (!editable && !config.blocks.showEditBlocksInBabelView)
+    ) {
       Block = blocksConfig?.[type]?.['view'] || null;
     }
     const schema = blocksConfig?.[type]?.['schema'] || BlockSettingsSchema;
@@ -125,17 +131,18 @@ export class Edit extends Component {
       blocksConfig?.[type]?.['blockHasOwnFocusManagement'] || null;
 
     return (
-      <div className={`ui drag block inner ${type}`}>
+      <>
         {Block !== null ? (
           <div
             role="presentation"
             onClick={(e) => {
               const isMultipleSelection = e.shiftKey || e.ctrlKey || e.metaKey;
-              this.props.onSelectBlock(
-                this.props.id,
-                this.props.selected ? false : isMultipleSelection,
-                e,
-              );
+              !this.props.selected &&
+                this.props.onSelectBlock(
+                  this.props.id,
+                  this.props.selected ? false : isMultipleSelection,
+                  e,
+                );
             }}
             onKeyDown={
               !(blockHasOwnFocusManagement || disableNewBlocks)
@@ -171,7 +178,9 @@ export class Edit extends Component {
         ) : (
           <div
             role="presentation"
-            onClick={() => this.props.onSelectBlock(this.props.id)}
+            onClick={() =>
+              !this.props.selected && this.props.onSelectBlock(this.props.id)
+            }
             onKeyDown={
               !(blockHasOwnFocusManagement || disableNewBlocks)
                 ? (e) =>
@@ -194,7 +203,7 @@ export class Edit extends Component {
             })}
           </div>
         )}
-      </div>
+      </>
     );
   }
 }

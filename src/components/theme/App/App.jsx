@@ -3,7 +3,7 @@
  * @module components/theme/App/App
  */
 
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -16,6 +16,7 @@ import join from 'lodash/join';
 import trim from 'lodash/trim';
 import cx from 'classnames';
 import config from '@plone/volto/registry';
+import { PluggablesProvider } from '@plone/volto/components/manage/Pluggable';
 
 import Error from '@plone/volto/error';
 
@@ -39,6 +40,7 @@ import {
 
 import clearSVG from '@plone/volto/icons/clear.svg';
 import MultilingualRedirector from '../MultilingualRedirector/MultilingualRedirector';
+import WorkingCopyToastsFactory from '../../manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory';
 
 import * as Sentry from '@sentry/browser';
 
@@ -105,7 +107,7 @@ class App extends Component {
     const ConnectionRefusedView = views.errorViews.ECONNREFUSED;
 
     return (
-      <Fragment>
+      <PluggablesProvider>
         <BodyClass className={`view-${action}view`} />
 
         {/* Body class depending on content type */}
@@ -152,6 +154,7 @@ class App extends Component {
           </Segment>
         </MultilingualRedirector>
         <Footer />
+        <WorkingCopyToastsFactory content={this.props.content} />
         <ToastContainer
           position={toast.POSITION.BOTTOM_CENTER}
           hideProgressBar
@@ -166,7 +169,7 @@ class App extends Component {
           }
         />
         <AppExtras {...this.props} />
-      </Fragment>
+      </PluggablesProvider>
     );
   }
 }

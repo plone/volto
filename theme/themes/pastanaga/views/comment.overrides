@@ -3,5 +3,5 @@
 *******************************/
 
 .ui.comments .comment .avatar.circular img {
-	border-radius: 50%;
+  border-radius: 50%;
 }

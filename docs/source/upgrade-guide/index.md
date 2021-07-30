@@ -13,6 +13,171 @@ This upgrade guide lists all breaking changes in Volto and explains the
     the latest changes and propose you if you want to merge them, run it on the top of
     your project and answer the prompt.
 
+## Upgrading to Volto 13.x.x
+
+## Deprecating NodeJS 10
+
+Since April 30th, 2021 NodeJS 10 is out of Long Term Support by the NodeJS community, so
+we are deprecating it in Volto 13. Please update your projects to a NodeJS LTS version
+(12 or 14 at the moment of this writting).
+
+## Seamless mode is the default in development mode
+
+Not really a breaking change, but it's worth noting it. By default, Volto 13 in
+development mode uses the internal proxy in seamless mode otherwise configured
+differently. To learn more about the seamless mode read: [Seamless mode](/deploying/seamless-mode)
+and [zero configuration builds](/configuration/zero-config-builds)
+
+## Refactored Listing block using schemas and ObjectWidget
+
+Listing block has been heavily refactored using schema forms and using `BlockDataForm`
+and other of the new internal artifacts to leverage blocks variations and extensions and
+simplify it. Also, the "More..." link now it's opt-in, instead of always-in. If your
+projects rely on it, you should set the block setting
+`config.blocks.blocksConfig.listing.showLinkMore` to `true`.
+
+The advantage of this is that now you can use the `QuerystringWidget` with schema based
+data forms in a reusable way in your custom blocks. See the Listing block code for
+further references.
+
+### Migrate your existing listing blocks
+
+**(Updated: 2021/06/12)** If you have an existing Volto installation and you are using
+listing blocks, you must run an upgrade step in order to match the new listing
+internals. You can find this upgrade step in the `kitconcept.volto` package. You can run
+the step from there if you have installed `kitconcept.volto` in your project, it's named
+`Migrate listing blocks from Volto 12 to Volto 13`. You can find it in the `Add-ons`
+control panel. Alternativelly, you can transfer it to your own integration packages and
+run it from there.
+
+https://github.com/kitconcept/kitconcept.volto/blob/main/src/kitconcept/volto/upgrades.py#L6-L64
+
+```python
+def from12to13_migrate_listings(context):
+    def migrate_listing(originBlocks):
+        blocks = deepcopy(originBlocks)
+        for blockid in blocks:
+            block = blocks[blockid]
+            if block["@type"] == "listing":
+                if block.get("template", False) and not block.get("variation", False):
+                    block["variation"] = block["template"]
+                    del block["template"]
+                if block.get("template", False) and block.get("variation", False):
+                    del block["template"]
+
+                # Migrate to internal structure
+                if not block.get("querystring", False):
+                    # Creates if it is not created
+                    block["querystring"] = {}
+                if block.get("query", False) or block.get("query") == []:
+                    block["querystring"]["query"] = block["query"]
+                    del block["query"]
+                if block.get("sort_on", False):
+                    block["querystring"]["sort_on"] = block["sort_on"]
+                    del block["sort_on"]
+                if block.get("sort_order", False):
+                    block["querystring"]["sort_order"] = block["sort_order"]
+                    if isinstance(block["sort_order"], bool):
+                        block["querystring"]["sort_order"] = (
+                            "descending" if block["sort_order"] else "ascending"
+                        )
+                    else:
+                        block["querystring"]["sort_order"] = block["sort_order"]
+                    block["querystring"]["sort_order_boolean"] = (
+                        True
+                        if block["sort_order"] == "descending" or block["sort_order"]
+                        else False
+                    )
+                    del block["sort_order"]
+                if block.get("limit", False):
+                    block["querystring"]["limit"] = block["limit"]
+                    del block["limit"]
+                if block.get("batch_size", False):
+                    block["querystring"]["batch_size"] = block["batch_size"]
+                    del block["batch_size"]
+                if block.get("depth", False):
+                    block["querystring"]["depth"] = block["depth"]
+                    del block["depth"]
+
+                # batch_size to b_size, idempotent
+                if block["querystring"].get("batch_size", False):
+                    block["querystring"]["b_size"] = block["querystring"]["batch_size"]
+                    del block["querystring"]["batch_size"]
+
+                print(f"Migrated listing in {obj.absolute_url()}")
+
+        return blocks
+
+    pc = api.portal.get_tool("portal_catalog")
+    for brain in pc.unrestrictedSearchResults(object_provides=IBlocks.__identifier__):
+        obj = brain.getObject()
+        obj.blocks = migrate_listing(obj.blocks)
+```
+
+If you have trouble configuring the upgrade step in your own package, you can take a
+look and configure it as in `kitconcept.volto` as shown in this PR:
+https://github.com/kitconcept/kitconcept.volto/pull/29
+
+!!! note
+    When an official integration package exists, these upgrade steps in the backend
+    will be provided in there.
+
+### Update your custom variations (templates) in your project listing blocks
+
+In the case that you have custom templates for your listing blocks in your projects, it's required that you update the definitions to match the new core variations syntax.
+
+going from this:
+
+```js
+config.blocks.blocksConfig.listing.templates = {
+  ...config.blocks.blocksConfig.listing.templates,
+  mycustomvariationid: {
+    label: 'My custom listing variation',
+    template: MyCustomListingBlockTemplate,
+  }
+}
+```
+
+To this:
+
+```js
+  config.blocks.blocksConfig.listing.variations = [
+    ...config.blocks.blocksConfig.listing.variations,
+    {
+      id: 'mycustomvariationid',
+      isDefault: false,
+      title: 'My custom listing variation',
+      template: MyCustomListingBlockTemplate,
+    }
+  ]
+```
+
+## Control panel icons are now SVG based instead of font based
+
+It was long due, the control panel overview route `/controlpanel` now is using SVG icons
+from the Pastanaga icon set, instead of the deprecated font ones. If you have customized
+or created a control panel and you are using it in Volto, you should update it and use
+the config registry setting: `controlPanelsIcons` and add the name of your control panel and the related SVG like:
+
+```js
+import myfancyiconSVG from '@plone/volto/icons/myfancyicon.svg';
+import config from '@plone/volto/registry'
+
+config.settings.controlPanelsIcons.mynewcontrolpanelid = myfancyiconSVG;
+```
+
+## Login form UI and accessibility updated
+
+Not really a breaking change, but it's worth note that we changed the look and feel of
+the login form and improved usability and accessibility. Another move towards the new
+Quanta look and feel.
+
+## Changes in the Table block feature set and messages
+
+The "inverted" option in Table Block was removed since it was useless with the current
+CSS set. Better naming of options and labels in table block (English). Updating the i18n
+messages for the used translations is advisable, but not required.
+
 ## Upgrading to Volto 12.x.x
 
 ### Volto Configuration Registry

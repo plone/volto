@@ -9,17 +9,22 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Portal } from 'react-portal';
 import { injectIntl } from 'react-intl';
-import { Helmet } from '@plone/volto/helpers';
 import qs from 'query-string';
-import config from '@plone/volto/registry';
 
-import { Comments, Tags, Toolbar } from '@plone/volto/components';
+import {
+  ContentMetadataTags,
+  Comments,
+  Tags,
+  Toolbar,
+} from '@plone/volto/components';
 import { listActions, getContent } from '@plone/volto/actions';
 import {
   BodyClass,
   getBaseUrl,
   getLayoutFieldname,
 } from '@plone/volto/helpers';
+
+import config from '@plone/volto/registry';
 
 /**
  * View container class.
@@ -110,20 +115,12 @@ class View extends Component {
     isClient: false,
   };
 
-  /**
-   * Component will mount
-   * @method componentWillMount
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillMount() {
+  componentDidMount() {
     this.props.listActions(getBaseUrl(this.props.pathname));
     this.props.getContent(
       getBaseUrl(this.props.pathname),
       this.props.versionId,
     );
-  }
-
-  componentDidMount() {
     this.setState({ isClient: true });
   }
 
@@ -224,13 +221,7 @@ class View extends Component {
 
     return (
       <div id="view">
-        <Helmet>
-          {this.props.content.language && (
-            <html lang={this.props.content.language.token} />
-          )}
-          <title>{this.props.content.title}</title>
-          <meta name="description" content={this.props.content.description} />
-        </Helmet>
+        <ContentMetadataTags content={this.props.content} />
         {/* Body class if displayName in component is set */}
         <BodyClass
           className={
@@ -283,7 +274,7 @@ export default compose(
       pathname: props.location.pathname,
       versionId:
         qs.parse(props.location.search) &&
-        qs.parse(props.location.search).version_id,
+        qs.parse(props.location.search).version,
     }),
     {
       listActions,

@@ -9,6 +9,34 @@ describe('Add Content Tests', () => {
     cy.waitForResourceToLoad('@types');
     cy.waitForResourceToLoad('');
   });
+
+  it('As editor I can add a file', function () {
+    // when I add a file
+    cy.get('#toolbar-add').click();
+    cy.get('#toolbar-add-file').click();
+
+    cy.get('input[name="title"]')
+      .type('My File')
+      .should('have.value', 'My File');
+
+    cy.get('input[id="field-file"]').attachFile('file.pdf', {
+      subjectType: 'input',
+    });
+    cy.wait(2000);
+
+    cy.get('#toolbar-save').focus().click();
+    cy.waitForResourceToLoad('@navigation');
+    cy.waitForResourceToLoad('@breadcrumbs');
+    cy.waitForResourceToLoad('@actions');
+    cy.waitForResourceToLoad('@types');
+    cy.waitForResourceToLoad('file.pdf');
+
+    // then a new file should have been created
+    cy.url().should('eq', Cypress.config().baseUrl + '/file.pdf');
+    cy.findByLabelText('Edit');
+    cy.contains('My File');
+  });
+
   it('As editor I can add a page', function () {
     // when I add a page
     cy.get('#toolbar-add').click();
@@ -24,6 +52,7 @@ describe('Add Content Tests', () => {
 
     cy.get('.navigation .item.active').should('have.text', 'My Page');
   });
+
   it('As editor I can add a page with a text block', function () {
     // when I add a page with a text block
     cy.get('#toolbar-add').click();
@@ -42,25 +71,6 @@ describe('Add Content Tests', () => {
     // then a new page with a text block has been added
 
     cy.get('.navigation .item.active').should('have.text', 'My Page');
-  });
-  it('As editor I can add a file', function () {
-    // when I add a file
-    cy.get('#toolbar-add').click();
-    cy.get('#toolbar-add-file').click();
-
-    cy.get('input[name="title"]')
-      .type('My File')
-      .should('have.value', 'My File');
-
-    cy.get('input[id="field-file"]').attachFile('file.pdf', {
-      subjectType: 'input',
-    });
-
-    cy.get('#toolbar-save').focus().click();
-
-    // then a new file should have been created
-    cy.url().should('eq', Cypress.config().baseUrl + '/file.pdf');
-    cy.contains('My File');
   });
 
   it('As editor I can add an image', function () {
@@ -103,6 +113,7 @@ describe('Add Content Tests', () => {
     cy.url().should('eq', Cypress.config().baseUrl + '/my-news-item');
     cy.get('.navigation .item.active').should('have.text', 'My News Item');
   });
+
   it('As editor I can add a folder', function () {
     // when I add a folder
     cy.get('#toolbar-add').click();
@@ -116,4 +127,62 @@ describe('Add Content Tests', () => {
     cy.url().should('eq', Cypress.config().baseUrl + '/my-folder');
     cy.get('.navigation .item.active').should('have.text', 'My Folder');
   });
+
+  it('As editor I can add a Link (with an external link)', function () {
+
+    // When I add a link
+    cy.get('#toolbar-add').click();
+    cy.get('#toolbar-add-link').click();
+
+    cy.get('input[name="title"]')
+      .type('My Link')
+      .should('have.value', 'My Link');
+
+    cy.get('input[name="remoteUrl"]')
+      .type('https://google.com')
+      .should('have.value', 'https://google.com');
+
+    cy.get('#toolbar-save').click();
+    cy.url().should('eq', Cypress.config().baseUrl + '/my-link');
+
+    // Then the link title should show up on the link view
+    cy.get('main').contains('My Link');
+    // and the link should show up on the link view
+    cy.get('main').contains('https://google.com');
+  });
+
+  it('As editor I can add a Link (with an internal link)', function () {
+
+    // Given a Document "Link Target"
+    cy.createContent({
+      contentType: 'Document',
+      contentId: 'link-target',
+      contentTitle: 'Link Target',
+    });
+
+    // When I add a Link with an internal link to "link-target"
+    cy.get('#toolbar-add').click();
+    cy.get('#toolbar-add-link').click();
+
+    cy.get('input[name="title"]')
+      .type('My Link')
+      .should('have.value', 'My Link');
+
+    cy.get('input[name="remoteUrl"]')
+      .type('/link-target')
+      .should('have.value', '/link-target');
+
+    cy.get('#toolbar-save').click();
+    cy.url().should('eq', Cypress.config().baseUrl + '/my-link');
+
+    // Then the link title should show up on the link view
+    cy.contains('My Link');
+    // and the link should show up on the link view
+    cy.contains('/link-target');
+    // and the link redirects to the link target
+    cy.get('main a[href="/link-target"]').click();
+    cy.url().should('eq', Cypress.config().baseUrl + '/link-target');
+    cy.get('main').contains('Link Target');
+  });
+
 });

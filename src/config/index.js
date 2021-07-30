@@ -31,6 +31,7 @@ import { loadables } from './Loadables';
 
 import { sentryOptions } from './Sentry';
 import { contentIcons } from './ContentIcons';
+import { controlPanelsIcons } from './ControlPanels';
 
 import applyAddonConfiguration from 'load-volto-addons';
 
@@ -41,14 +42,14 @@ const port = process.env.PORT || '3000';
 
 const apiPath =
   process.env.RAZZLE_API_PATH ||
-  (__DEVELOPMENT__
-    ? `http://${host}:${port}/api`
-    : 'http://localhost:8080/Plone');
+  (__DEVELOPMENT__ ? `http://${host}:${port}` : '');
 
 const getServerURL = (url) => {
   if (!url) return;
   const apiPathURL = parseUrl(url);
-  return `${apiPathURL.protocol}//${apiPathURL.hostname}:${apiPathURL.port}`;
+  return `${apiPathURL.protocol}//${apiPathURL.hostname}${
+    apiPathURL.port ? `:${apiPathURL.port}` : ''
+  }`;
 };
 
 // Sensible defaults for publicURL
@@ -77,8 +78,11 @@ let config = {
     // In production, the proxy is disabled, make sure you specify an apiPath that does
     // not require CORS to work.
     apiPath,
+    apiExpanders: [],
     devProxyToApiPath:
-      process.env.RAZZLE_DEV_PROXY_API_PATH || 'http://localhost:8080/Plone', // Set it to '' for disabling the proxy
+      process.env.RAZZLE_DEV_PROXY_API_PATH ||
+      process.env.RAZZLE_API_PATH ||
+      'http://localhost:8080/Plone', // Set it to '' for disabling the proxy
     // proxyRewriteTarget Set it for set a custom target for the proxy or overide the internal VHM rewrite
     // proxyRewriteTarget: '/VirtualHostBase/http/localhost:8080/Plone/VirtualHostRoot/_vh_api'
     // proxyRewriteTarget: 'https://myvoltositeinproduction.com'
@@ -132,6 +136,23 @@ let config = {
     serverConfig,
     storeExtenders: [],
     showTags: true,
+    controlPanelsIcons,
+    externalRoutes: [
+      // URL to be considered as external
+      // {
+      //   match: {
+      //     path: '/news',
+      //     exact: false,
+      //     strict: false,
+      //   },
+      //   url(payload) {
+      //     return payload.location.pathname;
+      //   },
+      // },
+    ],
+    showSelfRegistration: false,
+    contentMetadataTagsImageField: 'image',
+    hasWorkingCopySupport: false,
   },
   widgets: {
     ...widgetMapping,
@@ -148,6 +169,7 @@ let config = {
     blocksConfig,
     groupBlocksOrder,
     initialBlocks,
+    showEditBlocksInBabelView: false,
   },
   addonRoutes: [],
   addonReducers: {},
