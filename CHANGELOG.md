@@ -16,6 +16,7 @@
 - Fix ObjectBrowserNav items key @nzambello
 - Fix ObjectBrowserNav aria label: id => title @nzambello
 - Prevent form submit when clicking on BlockChooserButton @giuliaghisini
+- Disable change workflow for Image and Files in FolderContents view @giuliaghisini
 
 ### Internal
 
