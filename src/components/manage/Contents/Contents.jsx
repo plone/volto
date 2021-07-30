@@ -265,6 +265,8 @@ const messages = defineMessages({
   },
 });
 
+const NO_WORKFLOW_STATE = ['Image', 'File'];
+
 /**
  * Contents class.
  * @class Contents
@@ -387,6 +389,7 @@ class Contents extends Component {
     this.orderTimeout = null;
     this.state = {
       selected: [],
+      workflowSelected: [],
       showDelete: false,
       showUpload: false,
       showRename: false,
@@ -506,6 +509,7 @@ class Contents extends Component {
   onDeselect(event, { value }) {
     this.setState({
       selected: pull(this.state.selected, value),
+      workflowSelected: pull(this.state.workflowSelected, value),
     });
   }
 
@@ -515,14 +519,21 @@ class Contents extends Component {
    * @param {object} event Event object
    * @returns {undefined}
    */
-  onSelect(event, id) {
+  onSelect(event, item) {
+    const id = item['@id'];
+
     if (indexOf(this.state.selected, id) === -1) {
       this.setState({
         selected: concat(this.state.selected, id),
+        workflowSelected:
+          NO_WORKFLOW_STATE.indexOf(item['@type']) < 0
+            ? concat(this.state.workflowSelected, id)
+            : this.state.workflowSelected,
       });
     } else {
       this.setState({
         selected: pull(this.state.selected, id),
+        workflowSelected: pull(this.state.workflowSelected, id),
       });
     }
   }
@@ -535,6 +546,12 @@ class Contents extends Component {
   onSelectAll() {
     this.setState({
       selected: map(this.state.items, (item) => item['@id']),
+      workflowSelected: map(
+        this.state.items.filter(
+          (item) => NO_WORKFLOW_STATE.indexOf(item['@type']) < 0,
+        ),
+        (item) => item['@id'],
+      ),
     });
   }
 
@@ -546,6 +563,7 @@ class Contents extends Component {
   onSelectNone() {
     this.setState({
       selected: [],
+      workflowSelected: [],
     });
   }
 
@@ -1135,7 +1153,7 @@ class Contents extends Component {
                       open={this.state.showWorkflow}
                       onCancel={this.onWorkflowCancel}
                       onOk={this.onWorkflowOk}
-                      items={this.state.selected}
+                      items={this.state.workflowSelected}
                     />
                   )}
                   <section id="content-core">
