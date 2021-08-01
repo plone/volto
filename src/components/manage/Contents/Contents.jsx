@@ -606,11 +606,12 @@ class Contents extends Component {
    * @returns {undefined}
    */
   onChangeSelected(event, { value }) {
-    const match = new RegExp(escapeRegExp(value), 'i'); //ignore case for ideal match
     const { items, selected } = this.state;
 
     const filteredItems = filter(selected, (selectedItem) =>
-      match.test(find(items, (item) => item['@id'] === selectedItem).title),
+      find(items, (item) => item['@id'] === selectedItem)
+        .title.toLowerCase()
+        .includes(value.toLowerCase()),
     );
 
     this.setState({
