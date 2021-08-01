@@ -1,4 +1,11 @@
 {
+  "private": true,
+  "workspaces": [
+    "src/addons/volto-columns-block"
+  ],
+  "addons": [
+    "@eeacms/volto-columns-block"
+  ],
   "name": "@plone/volto",
   "description": "Volto",
   "maintainers": [
