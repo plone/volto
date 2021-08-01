@@ -9,6 +9,7 @@
 ### Bugfix
 
 - Prevent form submit when clicking on BlockChooserButton @giuliaghisini
+- Make selectedItems Filter work in Contents folder @nileshgulia1
 
 ### Internal
 
