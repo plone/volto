@@ -26,7 +26,11 @@ export const ButtonComponent = (props) => {
       icon
       basic
       title={intl.formatMessage(messages.addBlock)}
-      onClick={onShowBlockChooser}
+      onClick={(e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        onShowBlockChooser();
+      }}
       className={className}
     >
       <Icon name={addSVG} className={className} size={size} />

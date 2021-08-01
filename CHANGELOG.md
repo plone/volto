@@ -15,6 +15,8 @@
 
 - Improve consistency of `TokenWidget`'s use of the choice labels as "values" instead of internal uids assigned by `react-select`. @tiberiuichim
 
+- Prevent form submit when clicking on BlockChooserButton @giuliaghisini
+
 ### Internal
 
 ## 13.8.2 (2021-07-20)
