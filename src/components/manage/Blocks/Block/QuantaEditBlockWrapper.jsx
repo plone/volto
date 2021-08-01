@@ -70,7 +70,7 @@ const QuantaEditBlockWrapper = (props) => {
           <Plug
             pluggable="block-toolbar-main"
             id="mutate-block-button"
-            dependencies={[blockProps]}
+            dependencies={[{ ...blockProps }]}
           >
             <BlockChooserButton
               {...blockProps}
@@ -104,6 +104,13 @@ const QuantaEditBlockWrapper = (props) => {
         <div {...draginfo.dragHandleProps} style={{ display: 'none' }}></div>
       )}
       <div className={`ui drag block inner ${type}`}>{children}</div>
+      <Plug
+        pluggable="block-toolbar-main"
+        id="mutate-block-button-classic"
+        dependencies={[{ ...blockProps }]}
+      >
+        <></>
+      </Plug>
     </div>
   );
 };
