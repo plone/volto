@@ -1,12 +1,81 @@
 # Change Log
 
-## 13.4.1 (unreleased)
+## 13.8.3 (unreleased)
 
 ### Breaking
 
 ### Feature
 
 ### Bugfix
+
+- Prevent form submit when clicking on BlockChooserButton @giuliaghisini
+
+### Internal
+
+## 13.8.2 (2021-07-20)
+
+### Bugfix
+
+- Improve `URLWidget` component, so it uses `flattenToURL` for the value @sneridagh
+
+## 13.8.1 (2021-07-16)
+
+### Bugfix
+
+- Missing prop `properties` passed down required for #2579 to work properly @sneridagh
+
+## 13.8.0 (2021-07-14)
+
+### Feature
+
+- A new component was added, `BlockChooserButton`, it encapsulate the logic of show/hiding the `BlockChooser` @tiberiuichim
+- Overload `required` property for blocks config, it supports a function as value taken `properties` (current object data) and `block` (the block being evaluated in `BlockChooser`). The purpose is to enable more control over the available blocks in the Blocks chooser. @sneridagh
+
+### Bugfix
+
+- Add fallback to the "image" field in Image Gallery if the listingPreviewImageField defined in the project is not available on an object @jackahl
+
+## 13.7.0 (2021-07-12)
+
+### Feature
+
+- VocabularyTermsWidget option with translations for config.settings.supportedLanguages @ksuess
+
+### Bugfix
+
+- Fix InlineForm's understanding of missing default values @rexalex
+- Guard in `isInternalURL` to catch non-string values @sneridagh
+
+### Internal
+
+- Update `browserlist` DB @sneridagh
+- Install `luxon` explicitly to fix `rrule` package flickering deps (yarn problem) @sneridagh
+- Add a11y cypress test for table block @ThomasKindermann
+- Add Cypress test for Link content type @tisto
+- Upgrade plone.restapi to 8.4.1 in the dev buildout @tisto
+
+## 13.6.0 (2021-07-03)
+
+### Feature
+
+- Add VocabularyTermsWidget and map to field with widget attribute set to 'vocabularyterms'. @ksuess
+
+### Bugfix
+
+- added "Complementary" landmark-role to skiplink-container for a11y @ThomasKindermann
+- changed breadcrumb link text-color slightly for a11y color contrast @ThomasKindermann
+- changed table headline text color to black for a11y @ThomasKindermann
+
+### Internal
+
+- Updated Brazilian Portuguese translations @ericof
+
+## 13.5.0 (2021-06-30)
+
+### Feature
+
+- Add og tags for social sharing @giuliaghisini @nzambello
+- Add interface for plone seo extensions to use values added by them as metadata @jackahl
 
 ### Internal
 
@@ -30,10 +99,8 @@
 ### Feature
 
 - Allowing user to paste url in search box in objectBrowser @iFlameing
+- Allowing user to click on the breadcrumbs of objectBrowser @iFlameing
 - `Navigation` and `Breadcrumbs` are `apiExpanders` aware and run the action depending on them @sneridagh
-
-- added og tags for social sharing @giuliaghisini @nzambello
-- added interface for plone seo extensions to use values added by them as metadata @jackahl
 
 ### Bugfix
 
@@ -50,6 +117,7 @@
 
 ### Bugfix
 
+- Avoid debugging error in toolbar @tiberiuichim
 - Fix the bug related to specific versioning view @iFlameing
 - Fix blocks-listing Cypress test @giuliaghisini
 - Fix the translation of header in babel view @iFlameing
@@ -3313,3 +3381,7 @@ refer to all of them in https://github.com/plone/volto/releases
 - Basic components (navigation, toolbar, breadcrumbs etc) @robgietema
 - Authentication including login / logout @robgietema
 - Setup build environment @robgietema
+
+### Changed
+
+- Fixed passing intl to the schemaExtender in the ObjectListWidget component. @1bsilver

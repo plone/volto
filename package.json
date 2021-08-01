@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "13.4.0",
+  "version": "13.8.2",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -324,6 +324,7 @@
     "lodash-move": "1.1.1",
     "lodash-webpack-plugin": "0.11.5",
     "lodash.sortby": "^4.7.0",
+    "luxon": "1.22.0",
     "mem": "4.0.0",
     "mini-css-extract-plugin": "0.9.0",
     "moment": "2.24.0",
