@@ -29,9 +29,28 @@ const hideHandler = (data) => {
   return !!data.fixed || !blockHasValue(data);
 };
 
-const QuantaToolbar = (props) => {
+const QuantaToolbar = ({ extra, children }) => {
   // const pluggableContext = React.useContext(PluggableContext);
-  return <div className="toolbar quanta-block-toolbar">{props.children}</div>;
+  return (
+    <Pluggable name="block-toolbar">
+      {(pluggables) => {
+        console.log(
+          'bt',
+          // pluggables,
+          pluggables.map((p) => p.id),
+        );
+        return pluggables?.length ? (
+          <>
+            <div className="toolbar quanta-block-toolbar">
+              {pluggables.map((p) => p())}
+            </div>
+          </>
+        ) : (
+          extra
+        );
+      }}
+    </Pluggable>
+  );
 };
 
 const QuantaEditBlockWrapper = (props) => {
@@ -43,6 +62,7 @@ const QuantaEditBlockWrapper = (props) => {
     : includes(config.blocks.requiredBlocks, type);
 
   const visibleHandler = selected && !hideHandler(data);
+  // console.log(props);
 
   return (
     <div
@@ -54,31 +74,60 @@ const QuantaEditBlockWrapper = (props) => {
         classNames,
       )}
     >
+      {draginfo.dragHandleProps['data-rbd-drag-handle-draggable-id']}
       {selected ? (
-        <QuantaToolbar {...props}>
-          <Button
-            style={{
-              // avoid react-dnd to complain
-              visibility: visibleHandler ? 'visible' : 'visible',
+        <>
+          <Pluggable name="block-toolbar">
+            {(pluggables) => {
+              console.log(
+                'bt',
+                // pluggables,
+                pluggables.map((p) => p.id),
+              );
+              return (
+                <div className="toolbar quanta-block-toolbar">
+                  <Button
+                    style={{
+                      // avoid react-dnd to complain
+                      visibility: visibleHandler ? 'visible' : 'visible',
+                    }}
+                    {...draginfo.dragHandleProps}
+                    icon
+                    basic
+                  >
+                    <Icon name={dragSVG} size="18px" />
+                  </Button>
+                  {pluggables.map((p) => p())}
+                </div>
+              );
             }}
-            {...draginfo.dragHandleProps}
-            icon
-            basic
+          </Pluggable>
+          <Plug
+            pluggable="block-toolbar"
+            id="block-children"
+            dependencies={[{ ...blockProps }]}
           >
-            <Icon name={dragSVG} size="18px" />
-          </Button>
-
-          <Pluggable
-            name={`block-toolbar-required:${block}`}
-            params={blockProps}
-          />
-          <Pluggable name={`block-toolbar-main:${block}`} params={blockProps} />
-          <PluggableMenuSection
-            name={`block-toolbar-extra:${block}`}
-            maxSizeBeforeCollapse={3}
-            params={blockProps}
-          />
-
+            <Pluggable
+              name={`block-toolbar-required:${block}`}
+              params={blockProps}
+            />
+            <Pluggable
+              name={`block-toolbar-main:${block}`}
+              params={blockProps}
+            />
+            <PluggableMenuSection
+              name={`block-toolbar-extra:${block}`}
+              maxSizeBeforeCollapse={3}
+              params={blockProps}
+            />
+          </Plug>
+          <Plug
+            pluggable={`block-toolbar-main:${block}`}
+            id="mutate-block-button-classic"
+            dependencies={[{ ...blockProps }]}
+          >
+            <></>
+          </Plug>
           <Plug
             pluggable={`block-toolbar-main:${block}`}
             id="mutate-block-button"
@@ -111,18 +160,11 @@ const QuantaEditBlockWrapper = (props) => {
               ) : null}
             </>
           </Plug>
-        </QuantaToolbar>
+        </>
       ) : (
         <div {...draginfo.dragHandleProps} style={{ display: 'none' }}></div>
       )}
       <div className={`ui drag block inner ${type}`}>{children}</div>
-      <Plug
-        pluggable={`block-toolbar-main:${block}`}
-        id="mutate-block-button-classic"
-        dependencies={[{ ...blockProps }]}
-      >
-        <></>
-      </Plug>
     </div>
   );
 };
@@ -132,4 +174,30 @@ export default QuantaEditBlockWrapper;
 {children.map((child, i) => (
   <Dropdown.Item key={i}>{child}</Dropdown.Item>
 ))}
+          <Plug
+            id={`drag-handler:${block}`}
+            pluggable="block-toolbar"
+            extra={{ visible: visibleHandler }}
+            order={-100}
+            dependencies={[{ ...blockProps }]}
+          ></Plug>
+ *
+*/
+/*
+<QuantaToolbar
+  {...props}
+  extra={
+    <Button
+      style={{
+        // avoid react-dnd to complain
+        visibility: visibleHandler ? 'visible' : 'visible',
+      }}
+      {...draginfo.dragHandleProps}
+      icon
+      basic
+    >
+      <Icon name={dragSVG} size="18px" />
+    </Button>
+  }
+></QuantaToolbar>;
 */
