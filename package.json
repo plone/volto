@@ -307,7 +307,7 @@
     "http-proxy-middleware": "1.0.4",
     "husky": "4.2.5",
     "identity-obj-proxy": "3.0.0",
-    "immutable": "^4.0.0-rc.12",
+    "immutable": "3.8.2",
     "jest-css-modules": "1.1.0",
     "jest-environment-jsdom-sixteen": "1.0.3",
     "jest-file": "1.0.0",

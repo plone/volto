@@ -83,7 +83,7 @@ specifiers:
   http-proxy-middleware: 1.0.4
   husky: 4.2.5
   identity-obj-proxy: 3.0.0
-  immutable: ^4.0.0-rc.12
+  immutable: 3.8.2
   jest-css-modules: 1.1.0
   jest-environment-jsdom-sixteen: 1.0.3
   jest-file: 1.0.0
@@ -209,7 +209,7 @@ dependencies:
   bundlewatch: 0.2.7
   circular-dependency-plugin: 5.2.2
   classnames: 2.2.6
-  connected-react-router: 6.8.0_29d74f4653710d29cd8022439856c765
+  connected-react-router: 6.8.0_faf9d2bbe2578b5f5f0cd1d50d0cedf6
   coveralls: 3.0.2
   cypress: 7.3.0
   cypress-axe: 0.12.2_axe-core@3.5.3+cypress@7.3.0
@@ -222,7 +222,7 @@ dependencies:
   draft-js: 0.10.5_react-dom@16.14.0+react@16.14.0
   draft-js-block-breakout-plugin: 2.0.1_90ad9ee14655e03081a27e68d6f390a3
   draft-js-buttons: 2.0.2_90ad9ee14655e03081a27e68d6f390a3
-  draft-js-import-html: 1.4.1_18c6657e76426a7e4083d737e130923a
+  draft-js-import-html: 1.4.1_draft-js@0.10.5+immutable@3.8.2
   draft-js-inline-toolbar-plugin: 2.0.3_90ad9ee14655e03081a27e68d6f390a3
   draft-js-plugins-editor: 2.1.1_90ad9ee14655e03081a27e68d6f390a3
   draft-js-plugins-utils: 2.0.3_draft-js@0.10.5
@@ -249,7 +249,7 @@ dependencies:
   http-proxy-middleware: 1.0.4
   husky: 4.2.5
   identity-obj-proxy: 3.0.0
-  immutable: 4.0.0-rc.12
+  immutable: 3.8.2
   jest-css-modules: 1.1.0
   jest-environment-jsdom-sixteen: 1.0.3
   jest-file: 1.0.0
@@ -7778,7 +7778,7 @@ packages:
     engines: {node: '>=0.8'}
     dev: false
 
-  /connected-react-router/6.8.0_29d74f4653710d29cd8022439856c765:
+  /connected-react-router/6.8.0_faf9d2bbe2578b5f5f0cd1d50d0cedf6:
     resolution: {integrity: sha512-E64/6krdJM3Ag3MMmh2nKPtMbH15s3JQDuaYJvOVXzu6MbHbDyIvuwLOyhQIuP4Om9zqEfZYiVyflROibSsONg==}
     peerDependencies:
       history: ^4.7.2
@@ -7790,7 +7790,7 @@ packages:
       seamless-immutable: ^7.1.3
     dependencies:
       history: 4.10.1
-      immutable: 4.0.0-rc.12
+      immutable: 3.8.2
       prop-types: 15.7.2
       react: 16.14.0
       react-redux: 7.2.4_react-dom@16.14.0+react@16.14.0
@@ -9059,27 +9059,27 @@ packages:
       react-dom: 16.14.0_react@16.14.0
     dev: false
 
-  /draft-js-import-element/1.4.0_18c6657e76426a7e4083d737e130923a:
+  /draft-js-import-element/1.4.0_draft-js@0.10.5+immutable@3.8.2:
     resolution: {integrity: sha512-WmYT5PrCm47lGL5FkH6sRO3TTAcn7qNHsD3igiPqLG/RXrqyKrqN4+wBgbcT2lhna/yfWTRtgzAbQsSJoS1Meg==}
     peerDependencies:
       draft-js: '>=0.10.0'
       immutable: 3.x.x
     dependencies:
       draft-js: 0.10.5_react-dom@16.14.0+react@16.14.0
-      draft-js-utils: 1.4.0_18c6657e76426a7e4083d737e130923a
-      immutable: 4.0.0-rc.12
+      draft-js-utils: 1.4.0_draft-js@0.10.5+immutable@3.8.2
+      immutable: 3.8.2
       synthetic-dom: 1.4.0
     dev: false
 
-  /draft-js-import-html/1.4.1_18c6657e76426a7e4083d737e130923a:
+  /draft-js-import-html/1.4.1_draft-js@0.10.5+immutable@3.8.2:
     resolution: {integrity: sha512-KOZmtgxZriCDgg5Smr3Y09TjubvXe7rHPy/2fuLSsL+aSzwUDwH/aHDA/k47U+WfpmL4qgyg4oZhqx9TYJV0tg==}
     peerDependencies:
       draft-js: '>=0.10.0'
       immutable: 3.x.x
     dependencies:
       draft-js: 0.10.5_react-dom@16.14.0+react@16.14.0
-      draft-js-import-element: 1.4.0_18c6657e76426a7e4083d737e130923a
-      immutable: 4.0.0-rc.12
+      draft-js-import-element: 1.4.0_draft-js@0.10.5+immutable@3.8.2
+      immutable: 3.8.2
     dev: false
 
   /draft-js-inline-toolbar-plugin/2.0.3_90ad9ee14655e03081a27e68d6f390a3:
@@ -9127,14 +9127,14 @@ packages:
       draft-js: 0.10.5_react-dom@16.14.0+react@16.14.0
     dev: false
 
-  /draft-js-utils/1.4.0_18c6657e76426a7e4083d737e130923a:
+  /draft-js-utils/1.4.0_draft-js@0.10.5+immutable@3.8.2:
     resolution: {integrity: sha512-8s9FFuKC+lOWGwJ0b3om2PF+uXrqQPaEQlPJI7UxdzxTYGMeKouMPA9+YlPn52zcAVElIZtd2tXj6eQmvlKelw==}
     peerDependencies:
       draft-js: '>=0.10.0'
       immutable: 3.x.x
     dependencies:
       draft-js: 0.10.5_react-dom@16.14.0+react@16.14.0
-      immutable: 4.0.0-rc.12
+      immutable: 3.8.2
     dev: false
 
   /draft-js/0.10.5_react-dom@16.14.0+react@16.14.0:
@@ -11590,8 +11590,9 @@ packages:
     engines: {node: '>=0.8.0'}
     dev: false
 
-  /immutable/4.0.0-rc.12:
-    resolution: {integrity: sha512-0M2XxkZLx/mi3t8NVwIm1g8nHoEmM9p9UBl/G9k4+hm0kBgOVdMV/B3CY5dQ8qG8qc80NN4gDV4HQv6FTJ5q7A==}
+  /immutable/3.8.2:
+    resolution: {integrity: sha1-wkOZUUVbs5kT2vKBN28VMOEErfM=}
+    engines: {node: '>=0.10.0'}
     dev: false
 
   /import-cwd/2.1.0:
