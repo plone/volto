@@ -87,7 +87,7 @@ const SlotEditBlockWrapper = (props) => {
 
       {/* Override the classic (+) block chooser button, if it exists */}
       <Plug
-        pluggable="block-toolbar-main"
+        pluggable={`block-toolbar-main:${block}`}
         id="mutate-block-button-classic"
         dependencies={[blockProps]}
       >
@@ -96,7 +96,7 @@ const SlotEditBlockWrapper = (props) => {
 
       {selected && blockIsVariant && (
         <Plug
-          pluggable="block-toolbar-extra"
+          pluggable={`block-toolbar-extra:${block}`}
           id="delete-button"
           dependencies={[blockProps]}
           extra={{ group: 'slot' }}
@@ -144,7 +144,7 @@ const SlotEditBlockWrapper = (props) => {
 
       {selected && !blockIsHidden && inherited && (
         <Plug
-          pluggable="block-toolbar-main"
+          pluggable={`block-toolbar-main:${block}`}
           id="lockunlock-slot-fill"
           dependencies={[blockProps]}
         >
@@ -182,7 +182,7 @@ const SlotEditBlockWrapper = (props) => {
       {selected && inherited && (
         <>
           <Plug
-            pluggable="block-toolbar-main"
+            pluggable={`block-toolbar-main:${block}`}
             id="hide-slot-fill"
             dependencies={[blockProps]}
           >
@@ -223,14 +223,14 @@ const SlotEditBlockWrapper = (props) => {
           </Plug>
           {/* Hide the mutate and delete buttons, if slot is inherited */}
           <Plug
-            pluggable="block-toolbar-main"
+            pluggable={`block-toolbar-main:${block}`}
             id="mutate-block-button"
             dependencies={[blockProps]}
           >
             <></>
           </Plug>
           <Plug
-            pluggable="block-toolbar-extra"
+            pluggable={`block-toolbar-extra:${block}`}
             id="delete-button"
             dependencies={[blockProps]}
             extra={{ group: 'slot' }}

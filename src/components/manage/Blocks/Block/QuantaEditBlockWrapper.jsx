@@ -6,7 +6,11 @@ import isBoolean from 'lodash/isBoolean';
 import { defineMessages, useIntl } from 'react-intl';
 import { BlockChooserButton, Icon } from '@plone/volto/components';
 import { blockHasValue } from '@plone/volto/helpers';
-import { Pluggable, Plug } from '@plone/volto/components/manage/Pluggable';
+import {
+  Pluggable,
+  Plug,
+  // context as PluggableContext,
+} from '@plone/volto/components/manage/Pluggable';
 import PluggableMenuSection from './PluggableMenuSection';
 
 import config from '@plone/volto/registry';
@@ -23,6 +27,11 @@ const messages = defineMessages({
 
 const hideHandler = (data) => {
   return !!data.fixed || !blockHasValue(data);
+};
+
+const QuantaToolbar = (props) => {
+  // const pluggableContext = React.useContext(PluggableContext);
+  return <div className="toolbar quanta-block-toolbar">{props.children}</div>;
 };
 
 const QuantaEditBlockWrapper = (props) => {
@@ -46,7 +55,7 @@ const QuantaEditBlockWrapper = (props) => {
       )}
     >
       {selected ? (
-        <div className="toolbar quanta-block-toolbar">
+        <QuantaToolbar {...props}>
           <Button
             style={{
               // avoid react-dnd to complain
@@ -59,16 +68,19 @@ const QuantaEditBlockWrapper = (props) => {
             <Icon name={dragSVG} size="18px" />
           </Button>
 
-          <Pluggable name="block-toolbar-required" params={blockProps} />
-          <Pluggable name="block-toolbar-main" params={blockProps} />
+          <Pluggable
+            name={`block-toolbar-required:${block}`}
+            params={blockProps}
+          />
+          <Pluggable name={`block-toolbar-main:${block}`} params={blockProps} />
           <PluggableMenuSection
-            name="block-toolbar-extra"
+            name={`block-toolbar-extra:${block}`}
             maxSizeBeforeCollapse={3}
             params={blockProps}
           />
 
           <Plug
-            pluggable="block-toolbar-main"
+            pluggable={`block-toolbar-main:${block}`}
             id="mutate-block-button"
             dependencies={[{ ...blockProps }]}
           >
@@ -81,7 +93,7 @@ const QuantaEditBlockWrapper = (props) => {
             />
           </Plug>
           <Plug
-            pluggable="block-toolbar-extra"
+            pluggable={`block-toolbar-extra:${block}`}
             id="delete-button"
             dependencies={[blockProps]}
           >
@@ -99,13 +111,13 @@ const QuantaEditBlockWrapper = (props) => {
               ) : null}
             </>
           </Plug>
-        </div>
+        </QuantaToolbar>
       ) : (
         <div {...draginfo.dragHandleProps} style={{ display: 'none' }}></div>
       )}
       <div className={`ui drag block inner ${type}`}>{children}</div>
       <Plug
-        pluggable="block-toolbar-main"
+        pluggable={`block-toolbar-main:${block}`}
         id="mutate-block-button-classic"
         dependencies={[{ ...blockProps }]}
       >

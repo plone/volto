@@ -216,7 +216,7 @@ class Edit extends Component {
     const { settings } = config;
     const usesQuantaToolbar = settings.useQuantaToolbar; // && !usesClassicWrapper(this.props.data);
     const PlugInsert = usesQuantaToolbar ? Plug : PassThrough;
-    const { selected } = this.props;
+    const { selected, block } = this.props;
 
     return (
       <>
@@ -295,7 +295,7 @@ class Edit extends Component {
         />
         <InlineToolbar />
         <PlugInsert
-          pluggable="block-toolbar-main"
+          pluggable={`block-toolbar-main:${block}`}
           id="mutate-block-button-classic"
           dependencies={[selected]}
         >

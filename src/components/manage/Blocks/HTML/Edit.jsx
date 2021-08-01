@@ -250,7 +250,10 @@ class Edit extends Component {
       <>
         {this.props.selected && value && (
           <div className="toolbar">
-            <PlugInsert pluggable="block-toolbar" id="html-buttons">
+            <PlugInsert
+              pluggable={`block-toolbar-main:${this.props.block}`}
+              id="html-buttons"
+            >
               <Popup
                 trigger={
                   <Button
