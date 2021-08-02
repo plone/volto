@@ -606,6 +606,7 @@ class Contents extends Component {
    * @returns {undefined}
    */
   onChangeSelected(event, { value }) {
+    event.stopPropagation();
     const { items, selected } = this.state;
 
     const filteredItems = filter(selected, (selectedItem) =>
@@ -1611,11 +1612,6 @@ class Contents extends Component {
                                     onClick={(e) => {
                                       e.preventDefault();
                                       e.stopPropagation();
-                                    }}
-                                    onKeyDown={(e) => {
-                                      if (e.keyCode === '32') {
-                                        e.stopPropagation();
-                                      }
                                     }}
                                   />
                                   <Dropdown.Menu scrolling>
