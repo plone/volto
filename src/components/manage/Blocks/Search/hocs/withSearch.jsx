@@ -95,7 +95,7 @@ const useLocationStateManager = () => {
 
   const setSearchData = React.useCallback(
     (searchData) => {
-      const newParams = new URLSearchParams('');
+      const newParams = new URLSearchParams(location.search);
 
       let changed = false;
 
@@ -112,7 +112,7 @@ const useLocationStateManager = () => {
 
       if (changed) history.push({ search: newParams.toString() });
     },
-    [history, oldState],
+    [history, oldState, location.search],
   );
 
   return [current, setSearchData];

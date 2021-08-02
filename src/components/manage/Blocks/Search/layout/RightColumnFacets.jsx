@@ -4,6 +4,8 @@ import { Grid, Divider } from 'semantic-ui-react';
 import { Button } from 'semantic-ui-react';
 import { flushSync } from 'react-dom';
 
+const FacetWrapper = ({ children }) => <div className="facet">{children}</div>;
+
 const RightColumnFacets = (props) => {
   const {
     children,
@@ -70,9 +72,7 @@ const RightColumnFacets = (props) => {
                 if (isLive) onTriggerSearch(searchedText || '', f);
               });
             }}
-            facetWrapper={({ children }) => (
-              <div className="facet">{children}</div>
-            )}
+            facetWrapper={FacetWrapper}
           />
         </Grid.Column>
       </Grid.Row>
