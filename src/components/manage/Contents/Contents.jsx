@@ -29,7 +29,6 @@ import {
   indexOf,
   keys,
   map,
-  escapeRegExp,
   mapValues,
   pull,
 } from 'lodash';
