@@ -29,30 +29,6 @@ const hideHandler = (data) => {
   return !!data.fixed || !blockHasValue(data);
 };
 
-const QuantaToolbar = ({ extra, children }) => {
-  // const pluggableContext = React.useContext(PluggableContext);
-  return (
-    <Pluggable name="block-toolbar">
-      {(pluggables) => {
-        console.log(
-          'bt',
-          // pluggables,
-          pluggables.map((p) => p.id),
-        );
-        return pluggables?.length ? (
-          <>
-            <div className="toolbar quanta-block-toolbar">
-              {pluggables.map((p) => p())}
-            </div>
-          </>
-        ) : (
-          extra
-        );
-      }}
-    </Pluggable>
-  );
-};
-
 const QuantaEditBlockWrapper = (props) => {
   const { blockProps, draginfo, children, classNames } = props;
   const intl = useIntl();
@@ -63,6 +39,7 @@ const QuantaEditBlockWrapper = (props) => {
 
   const visibleHandler = selected && !hideHandler(data);
   // console.log(props);
+  // {draginfo.dragHandleProps['data-rbd-drag-handle-draggable-id']}
 
   return (
     <div
@@ -74,16 +51,14 @@ const QuantaEditBlockWrapper = (props) => {
         classNames,
       )}
     >
-      {draginfo.dragHandleProps['data-rbd-drag-handle-draggable-id']}
       {selected ? (
         <>
           <Pluggable name="block-toolbar">
-            {(pluggables) => {
-              console.log(
-                'bt',
-                // pluggables,
-                pluggables.map((p) => p.id),
-              );
+            {(blockControls) => {
+              // console.log(
+              //   'bt',
+              //   blockControls.map((p) => p.id),
+              // );
               return (
                 <div className="toolbar quanta-block-toolbar">
                   <Button
@@ -97,7 +72,7 @@ const QuantaEditBlockWrapper = (props) => {
                   >
                     <Icon name={dragSVG} size="18px" />
                   </Button>
-                  {pluggables.map((p) => p())}
+                  {blockControls.map((p) => p())}
                 </div>
               );
             }}
@@ -200,4 +175,28 @@ export default QuantaEditBlockWrapper;
     </Button>
   }
 ></QuantaToolbar>;
+// const QuantaToolbar = ({ extra, children }) => {
+//   // const pluggableContext = React.useContext(PluggableContext);
+//   return (
+//     <Pluggable name="block-toolbar">
+//       {(pluggables) => {
+//         console.log(
+//           'bt',
+//           // pluggables,
+//           pluggables.map((p) => p.id),
+//         );
+//         return pluggables?.length ? (
+//           <>
+//             <div className="toolbar quanta-block-toolbar">
+//               {pluggables.map((p) => p())}
+//             </div>
+//           </>
+//         ) : (
+//           extra
+//         );
+//       }}
+//     </Pluggable>
+//   );
+// };
+
 */
