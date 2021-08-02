@@ -12,8 +12,6 @@
 
 ### Internal
 
-- Add some explicit dependencies, pin prepend-http to @2 as later switches to "https by default". This makes it possible to use pnpm instead of yarn. @tiberiuichim
-
 ## 13.8.2 (2021-07-20)
 
 ### Bugfix
