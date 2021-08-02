@@ -9,6 +9,7 @@
 ### Bugfix
 
 - Prevent form submit when clicking on BlockChooserButton @giuliaghisini
+- Fix SearchWidget search by path @giuliaghisini
 
 ### Internal
 
