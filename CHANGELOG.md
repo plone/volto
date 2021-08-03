@@ -9,6 +9,7 @@
 ### Bugfix
 
 - Prevent form submit when clicking on BlockChooserButton @giuliaghisini
+- Fix overflow table in Content view @giuliaghisini
 
 ### Internal
 
