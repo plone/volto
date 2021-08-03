@@ -25,6 +25,7 @@ import {
   getTypes,
   listActions,
   setExpandedToolbar,
+  unlockContent,
 } from '@plone/volto/actions';
 import { Icon } from '@plone/volto/components';
 import { BodyClass, getBaseUrl } from '@plone/volto/helpers';
@@ -33,6 +34,7 @@ import { Pluggable } from '@plone/volto/components/manage/Pluggable';
 import pastanagaSmall from '@plone/volto/components/manage/Toolbar/pastanaga-small.svg';
 import pastanagalogo from '@plone/volto/components/manage/Toolbar/pastanaga.svg';
 import penSVG from '@plone/volto/icons/pen.svg';
+import unlockSVG from '@plone/volto/icons/unlock.svg';
 import folderSVG from '@plone/volto/icons/folder.svg';
 import addSVG from '@plone/volto/icons/add-document.svg';
 import moreSVG from '@plone/volto/icons/more.svg';
@@ -96,6 +98,10 @@ const messages = defineMessages({
     id: 'Back',
     defaultMessage: 'Back',
   },
+  unlock: {
+    id: 'Unlock',
+    defaultMessage: 'Unlock',
+  },
 });
 
 const toolbarComponents = {
@@ -149,6 +155,8 @@ class Toolbar extends Component {
       }),
     ),
     listActions: PropTypes.func.isRequired,
+    unlockContent: PropTypes.func,
+    unlockRequest: PropTypes.objectOf(PropTypes.any),
     inner: PropTypes.element.isRequired,
     hideDefaultViewButtons: PropTypes.bool,
   };
@@ -199,6 +207,11 @@ class Toolbar extends Component {
     if (nextProps.pathname !== this.props.pathname) {
       this.props.listActions(getBaseUrl(nextProps.pathname));
       this.props.getTypes(getBaseUrl(nextProps.pathname));
+    }
+
+    // Unlock
+    if (this.props.unlockRequest.loading && nextProps.unlockRequest.loaded) {
+      this.props.listActions(getBaseUrl(nextProps.pathname));
     }
   }
 
@@ -270,6 +283,10 @@ class Toolbar extends Component {
     this.closeMenu();
   };
 
+  unlock = (e) => {
+    this.props.unlockContent(getBaseUrl(this.props.pathname), true);
+  };
+
   /**
    * Render method.
    * @method render
@@ -277,7 +294,11 @@ class Toolbar extends Component {
    */
   render() {
     const path = getBaseUrl(this.props.pathname);
-    const editAction = find(this.props.actions.object, { id: 'edit' });
+    const unlockAction =
+      config.settings.hasLockingSupport &&
+      this.props.content?.['@components']?.['lock']?.locked;
+    const editAction =
+      !unlockAction && find(this.props.actions.object, { id: 'edit' });
     const folderContentsAction = find(this.props.actions.object, {
       id: 'folderContents',
     });
@@ -379,6 +400,19 @@ class Toolbar extends Component {
                 )}
                 {!this.props.hideDefaultViewButtons && (
                   <>
+                    {unlockAction && (
+                      <button
+                        aria-label={this.props.intl.formatMessage(
+                          messages.unlock,
+                        )}
+                        className="unlock"
+                        onClick={(e) => this.unlock(e)}
+                        tabIndex={0}
+                      >
+                        <Icon name={unlockSVG} size="30px" className="unlock" />
+                      </button>
+                    )}
+
                     {editAction && (
                       <Link
                         aria-label={this.props.intl.formatMessage(
@@ -519,7 +553,8 @@ export default compose(
       content: state.content.data,
       pathname: props.pathname,
       types: filter(state.types.types, 'addable'),
+      unlockRequest: state.content.unlock,
     }),
-    { getTypes, listActions, setExpandedToolbar },
+    { getTypes, listActions, setExpandedToolbar, unlockContent },
   ),
 )(Toolbar);

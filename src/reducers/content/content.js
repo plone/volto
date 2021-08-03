@@ -231,7 +231,6 @@ export default function content(state = initialState, action = {}) {
             },
           };
     case `${DELETE_CONTENT}_SUCCESS`:
-    case `${UNLOCK_CONTENT}_SUCCESS`:
     case `${ORDER_CONTENT}_SUCCESS`:
       return {
         ...state,
@@ -244,6 +243,24 @@ export default function content(state = initialState, action = {}) {
             order: action.sort?.order,
           },
           index: action.index,
+        },
+      };
+    case `${UNLOCK_CONTENT}_SUCCESS`:
+      return {
+        ...state,
+        [getRequestKey(action.type)]: {
+          loading: false,
+          loaded: true,
+          error: null,
+        },
+        data: {
+          ...state.data,
+          '@components': {
+            ...(state?.data?.['@components'] || {}),
+            lock: {
+              ...result,
+            },
+          },
         },
       };
     case `${UPDATE_CONTENT}_SUCCESS`:

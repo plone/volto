@@ -220,13 +220,21 @@ export function lockContent(urls) {
  * @param {string|Array} urls Content url(s).
  * @returns {Object} Unlock content action.
  */
-export function unlockContent(urls) {
+export function unlockContent(urls, force = false) {
   return {
     type: UNLOCK_CONTENT,
     mode: 'serial',
     request:
       typeof urls === 'string'
-        ? { op: 'del', path: `${urls}/@lock` }
-        : urls.map((url) => ({ op: 'del', path: `${url}/@lock` })),
+        ? {
+            op: 'del',
+            path: `${urls}/@lock`,
+            data: force ? { force: true } : {},
+          }
+        : urls.map((url) => ({
+            op: 'del',
+            path: `${url}/@lock`,
+            data: force ? { force: true } : {},
+          })),
   };
 }
