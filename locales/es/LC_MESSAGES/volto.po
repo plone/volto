@@ -2088,6 +2088,10 @@ msgstr "Bloque desconocido"
 msgid "Unlink translation for"
 msgstr "Eliminar enlace de traducción de"
 
+#: components/manage/Toolbar/Toolbar
+msgid "Unlock"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update"
 msgstr "Actualizar"

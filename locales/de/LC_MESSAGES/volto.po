@@ -2093,6 +2093,10 @@ msgstr "Unbekannter Block"
 msgid "Unlink translation for"
 msgstr "Verknüpfung der Übersetzung aufheben"
 
+#: components/manage/Toolbar/Toolbar
+msgid "Unlock"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update"
 msgstr "Update"

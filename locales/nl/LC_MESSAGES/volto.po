@@ -2097,6 +2097,10 @@ msgstr ""
 msgid "Unlink translation for"
 msgstr ""
 
+#: components/manage/Toolbar/Toolbar
+msgid "Unlock"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update"
 msgstr ""
