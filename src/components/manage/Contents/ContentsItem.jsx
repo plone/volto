@@ -110,7 +110,7 @@ export const ContentsItemComponent = ({
               icon
               basic
               aria-label="Unchecked"
-              onClick={(e) => onClick(e, item)}
+              onClick={(e) => onClick(e, item['@id'])}
             >
               <Icon
                 name={checkboxCheckedSVG}
@@ -124,7 +124,7 @@ export const ContentsItemComponent = ({
               icon
               basic
               aria-label="Checked"
-              onClick={(e) => onClick(e, item)}
+              onClick={(e) => onClick(e, item['@id'])}
             >
               <Icon
                 name={checkboxUncheckedSVG}
