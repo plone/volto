@@ -7,6 +7,7 @@ import React, { Component } from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import jwtDecode from 'jwt-decode';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
@@ -140,6 +141,7 @@ class Toolbar extends Component {
       user: PropTypes.arrayOf(PropTypes.object),
     }),
     token: PropTypes.string,
+    userId: PropTypes.string,
     pathname: PropTypes.string.isRequired,
     content: PropTypes.shape({
       '@type': PropTypes.string,
@@ -169,6 +171,7 @@ class Toolbar extends Component {
   static defaultProps = {
     actions: null,
     token: null,
+    userId: null,
     content: null,
     hideDefaultViewButtons: false,
     types: [],
@@ -296,7 +299,9 @@ class Toolbar extends Component {
     const path = getBaseUrl(this.props.pathname);
     const unlockAction =
       config.settings.hasLockingSupport &&
-      this.props.content?.['@components']?.['lock']?.locked;
+      this.props.content?.['@components']?.['lock']?.locked &&
+      this.props.content?.['@components']?.['lock']?.creator !==
+        this.props.userId;
     const editAction =
       !unlockAction && find(this.props.actions.object, { id: 'edit' });
     const folderContentsAction = find(this.props.actions.object, {
@@ -550,6 +555,9 @@ export default compose(
     (state, props) => ({
       actions: state.actions.actions,
       token: state.userSession.token,
+      userId: state.userSession.token
+        ? jwtDecode(state.userSession.token).sub
+        : '',
       content: state.content.data,
       pathname: props.pathname,
       types: filter(state.types.types, 'addable'),
