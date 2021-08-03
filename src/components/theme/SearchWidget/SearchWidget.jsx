@@ -75,7 +75,7 @@ class SearchWidget extends Component {
    */
   onSubmit(event) {
     const path =
-      this.props.pathname?.length > 0 ? `&path=${this.props.pathname}` : '';
+      this.props.pathname?.length > 0 ? `&path=${encodeURIComponent(this.props.pathname)}` : '';
     this.props.history.push(`/search?SearchableText=${encodeURIComponent(this.state.text)}${path}`);
     event.preventDefault();
   }
