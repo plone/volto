@@ -259,3 +259,9 @@ in the `config.settings.serverConfig` object.
 
     This setting will enable working copy support in your site. You need to install the `plone.app.iterate` add-on in your Plone site in order to make it working.
 
+
+### hasLockingSupport
+
+!!! block ""
+
+    This setting will enable content locking support in your site. You need to enable `plone.locking` behavior on your Dexterity Content-Type.
