@@ -117,7 +117,7 @@ module.exports = (userOptions = {}) => ({
         test: /\.less$/,
         include: [
           path.resolve('./theme'),
-          path.join(require.resolve('@plone/volto', '../theme')),
+          path.join(require.resolve('@plone/volto'), '../../theme'),
           /node_modules\/@plone\/volto\/theme/,
           /plone\.volto\/theme/,
           /node_modules\/semantic-ui-less/,
