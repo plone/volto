@@ -8,6 +8,11 @@
       "url": "http://plone.org"
     }
   ],
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./babel": "./babel.js"
+  },
   "license": "MIT",
   "version": "13.8.2",
   "repository": {
