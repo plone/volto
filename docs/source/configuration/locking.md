@@ -1,6 +1,6 @@
 # Locking support
 
-Volto provide support for Plone's locking feature. You need to enable `plone.locking` behavior on your Dexterity Content-Type that comes available by default. You can do that in Plone's control panel or using the Generic Setup facility.
+Volto provides support for Plone's locking feature, but you need to enable the `plone.locking` behavior on your Dexterity content types first. You can do that in Plone's control panel or using the Generic Setup facilities.
 
 ## Volto configuration
 
