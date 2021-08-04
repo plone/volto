@@ -23,7 +23,7 @@ const MultilingualRedirector = (props) => {
     // const detectedLang = (navigator.language || navigator.userLanguage).substring(0, 2);
     if (settings.isMultilingual && pathname === '/') {
       const langFileName = normalizeLanguageName(redirectToLanguage);
-      import('~/../locales/' + langFileName + '.json').then((locale) => {
+      import('@package/../locales/' + langFileName + '.json').then((locale) => {
         dispatch(changeLanguage(redirectToLanguage, locale.default));
       });
     }

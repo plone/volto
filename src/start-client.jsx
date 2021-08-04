@@ -1,4 +1,4 @@
-import '~/config'; // This is the bootstrap for the global config - client side
+import '@package/config'; // This is the bootstrap for the global config - client side
 import React from 'react';
 import { hydrate } from 'react-dom';
 import { Provider } from 'react-redux';
@@ -7,9 +7,9 @@ import { ConnectedRouter } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
 import { ReduxAsyncConnect } from '@plone/volto/helpers/AsyncConnect';
 import { loadableReady } from '@loadable/component';
-import routes from '~/routes';
+import routes from '@package/routes';
 import config from '@plone/volto/registry';
-import '~/theme';
+import '@package/theme';
 
 import configureStore from '@plone/volto/store';
 import { Api, persistAuthToken, ScrollToTop } from '@plone/volto/helpers';

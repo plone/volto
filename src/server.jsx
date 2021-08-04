@@ -1,5 +1,5 @@
 /* eslint no-console: 0 */
-import '~/config'; // This is the bootstrap for the global config - server side
+import '@package/config'; // This is the bootstrap for the global config - server side
 import { existsSync, lstatSync, readFileSync } from 'fs';
 import React from 'react';
 import { StaticRouter } from 'react-router-dom';
@@ -17,7 +17,7 @@ import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
 import { createProxyMiddleware } from 'http-proxy-middleware';
 import { resetServerContext } from 'react-beautiful-dnd';
 
-import routes from '~/routes';
+import routes from '@package/routes';
 import config from '@plone/volto/registry';
 
 import {
@@ -43,7 +43,7 @@ let locales = {};
 if (config.settings) {
   config.settings.supportedLanguages.forEach((lang) => {
     const langFileName = normalizeLanguageName(lang);
-    import('~/../locales/' + langFileName + '.json').then((locale) => {
+    import('@package/../locales/' + langFileName + '.json').then((locale) => {
       locales = { ...locales, [lang]: locale.default };
     });
   });

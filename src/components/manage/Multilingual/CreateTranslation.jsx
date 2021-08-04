@@ -33,9 +33,11 @@ const CreateTranslation = (props) => {
       // We change the interface language
       if (config.settings.supportedLanguages.includes(language)) {
         const langFileName = normalizeLanguageName(language);
-        import('~/../locales/' + langFileName + '.json').then((locale) => {
-          dispatch(changeLanguage(language, locale.default));
-        });
+        import('@package/../locales/' + langFileName + '.json').then(
+          (locale) => {
+            dispatch(changeLanguage(language, locale.default));
+          },
+        );
       }
     };
     // On mount only

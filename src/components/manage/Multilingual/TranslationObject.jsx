@@ -56,7 +56,7 @@ const TranslationObject = ({
       let lang =
         config.settings.supportedLanguages[Object.keys(locales).length];
       const langFileName = normalizeLanguageName(lang);
-      import('~/../locales/' + langFileName + '.json').then((locale) => {
+      import('@package/../locales/' + langFileName + '.json').then((locale) => {
         setLocales({ ...locales, [lang]: locale.default });
         setLoadingLocale(false);
       });
