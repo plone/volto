@@ -202,6 +202,17 @@ class Edit extends Component {
   }
 
   /**
+   * Component will unmount
+   * @method componentWillUnmount
+   * @returns {undefined}
+   */
+  componentWillUnmount() {
+    if (config.settings.hasLockingSupport) {
+      this.props.unlockContent(getBaseUrl(this.props.pathname));
+    }
+  }
+
+  /**
    * Submit handler
    * @method onSubmit
    * @param {object} data Form data.
@@ -211,10 +222,6 @@ class Edit extends Component {
     const lock_token = this.props.content?.['@components']?.['lock']?.token;
     const headers = lock_token ? { 'Lock-Token': lock_token } : {};
     this.props.updateContent(getBaseUrl(this.props.pathname), data, headers);
-
-    if (config.settings.hasLockingSupport) {
-      this.props.unlockContent(getBaseUrl(this.props.pathname));
-    }
   }
 
   /**
@@ -223,10 +230,6 @@ class Edit extends Component {
    * @returns {undefined}
    */
   onCancel() {
-    if (config.settings.hasLockingSupport) {
-      this.props.unlockContent(getBaseUrl(this.props.pathname));
-    }
-
     this.props.history.push(
       this.props.returnUrl || getBaseUrl(this.props.pathname),
     );
