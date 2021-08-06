@@ -34,22 +34,16 @@ const TopSideFacets = (props) => {
         <SearchDetails text={searchedText} total={totalItems} as="h5" />
       </Grid.Column>
 
-      <Grid.Row>
+      <Grid.Row verticalAlign="bottom">
         <Grid.Column width={12}>
-          <Grid verticalAlign="bottom" columns={12}>
-            {data.showSearchInput && (
-              <Grid.Column mobile={6} tablet={6} computer={6}>
-                <SearchInput {...props} isLive={isLive} />
-              </Grid.Column>
-            )}
+          <div className="search-wrapper">
+            {data.showSearchInput && <SearchInput {...props} isLive={isLive} />}
             {data.showSearchButton && (
-              <Grid.Column mobile={4} tablet={3} computer={6}>
-                <Button onClick={() => onTriggerSearch(searchText)}>
-                  {data.searchButtonLabel || 'Search!'}
-                </Button>
-              </Grid.Column>
+              <Button onClick={() => onTriggerSearch(searchText)}>
+                {data.searchButtonLabel || 'Search!'}
+              </Button>
             )}
-          </Grid>
+          </div>
         </Grid.Column>
       </Grid.Row>
 
@@ -79,7 +73,5 @@ const TopSideFacets = (props) => {
     </Grid>
   );
 };
-
-// <Grid.Column mobile={12} tablet={8} computer={9}></Grid.Column>
 
 export default TopSideFacets;

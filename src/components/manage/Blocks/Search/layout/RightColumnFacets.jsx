@@ -37,19 +37,17 @@ const RightColumnFacets = (props) => {
         </Grid.Column>
       </Grid.Row>
 
-      <Grid.Row columns="equal" verticalAlign="bottom">
-        {data.showSearchInput && (
-          <Grid.Column width={7}>
-            <SearchInput {...props} isLive={isLive} />
-          </Grid.Column>
-        )}
-        {data.showSearchButton && (
-          <Grid.Column>
-            <Button onClick={() => onTriggerSearch(searchText)}>
-              {data.searchButtonLabel || 'Search!'}
-            </Button>
-          </Grid.Column>
-        )}
+      <Grid.Row verticalAlign="bottom">
+        <Grid.Column width={12}>
+          <div className="search-wrapper">
+            {data.showSearchInput && <SearchInput {...props} isLive={isLive} />}
+            {data.showSearchButton && (
+              <Button onClick={() => onTriggerSearch(searchText)}>
+                {data.searchButtonLabel || 'Search!'}
+              </Button>
+            )}
+          </div>
+        </Grid.Column>
       </Grid.Row>
 
       <Grid.Row>

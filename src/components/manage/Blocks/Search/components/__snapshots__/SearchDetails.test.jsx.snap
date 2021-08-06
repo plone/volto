@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchDetails renders search detail component 1`] = `
+<h4>
+  Searched for: test. 
+  Search results: 
+  10
+</h4>
+`;

@@ -35,6 +35,20 @@ const LeftColumnFacets = (props) => {
           <SearchDetails text={searchedText} total={totalItems} />
         </Grid.Column>
       </Grid.Row>
+
+      <Grid.Row verticalAlign="bottom">
+        <Grid.Column width={12}>
+          <div className="search-wrapper">
+            {data.showSearchInput && <SearchInput {...props} isLive={isLive} />}
+            {data.showSearchButton && (
+              <Button onClick={() => onTriggerSearch(searchText)}>
+                {data.searchButtonLabel || 'Search!'}
+              </Button>
+            )}
+          </div>
+        </Grid.Column>
+      </Grid.Row>
+
       <Grid.Row>
         <Grid.Column mobile={12} tablet={4} computer={3}>
           <Facets
@@ -49,32 +63,10 @@ const LeftColumnFacets = (props) => {
             facetWrapper={FacetWrapper}
           />
         </Grid.Column>
-        <Grid.Column mobile={12} tablet={8} computer={9}>
-          <Grid container>
-            <Grid.Row>
-              <Grid columns="2" verticalAlign="bottom">
-                {data.showSearchInput && (
-                  <Grid.Column>
-                    <SearchInput {...props} isLive={isLive} />
-                  </Grid.Column>
-                )}
-                {data.showSearchButton && (
-                  <Grid.Column>
-                    <Button onClick={() => onTriggerSearch(searchText)}>
-                      {data.searchButtonLabel || 'Search!'}
-                    </Button>
-                  </Grid.Column>
-                )}
-              </Grid>
-            </Grid.Row>
 
-            <Grid.Row>
-              <Grid.Column width={12}>
-                <Divider />
-                {children}
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
+        <Grid.Column mobile={12} tablet={8} computer={9}>
+          <Divider />
+          {children}
         </Grid.Column>
       </Grid.Row>
     </Grid>
