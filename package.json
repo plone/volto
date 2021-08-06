@@ -11,7 +11,8 @@
   "main": "./src/index.js",
   "exports": {
     ".": "./src/index.js",
-    "./babel": "./babel.js"
+    "./babel": "./babel.js",
+    "./*": "./src/*"
   },
   "license": "MIT",
   "version": "13.8.2",
