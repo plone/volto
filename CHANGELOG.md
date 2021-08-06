@@ -1,6 +1,6 @@
 # Change Log
 
-## 13.8.2 (unreleased)
+## 13.8.3 (unreleased)
 
 ### Breaking
 
@@ -16,6 +16,16 @@
 - Add tests for `Select` component, document the use cases propely @sneridagh
 - Upgrade `AsyncSelect` to a version compatible with `react-select` v4 @sneridagh
 - Upgrade to latest `react-select` @sneridagh
+- Prevent form submit when clicking on BlockChooserButton @giuliaghisini
+
+### Internal
+
+## 13.8.2 (2021-07-20)
+
+### Bugfix
+
+- Improve `URLWidget` component, so it uses `flattenToURL` for the value @sneridagh
+
 ## 13.8.1 (2021-07-16)
 
 ### Bugfix
@@ -3379,3 +3389,7 @@ refer to all of them in https://github.com/plone/volto/releases
 - Basic components (navigation, toolbar, breadcrumbs etc) @robgietema
 - Authentication including login / logout @robgietema
 - Setup build environment @robgietema
+
+### Changed
+
+- Fixed passing intl to the schemaExtender in the ObjectListWidget component. @1bsilver
