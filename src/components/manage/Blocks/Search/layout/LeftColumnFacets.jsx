@@ -1,10 +1,14 @@
 import React from 'react';
 import { SearchInput, SearchDetails, Facets } from '../components';
-import { Grid, Divider } from 'semantic-ui-react';
+import { Grid, Divider, Segment } from 'semantic-ui-react';
 import { Button } from 'semantic-ui-react';
 import { flushSync } from 'react-dom';
 
-const FacetWrapper = ({ children }) => <div className="facet">{children}</div>;
+const FacetWrapper = ({ children }) => (
+  <Segment basic className="facet">
+    {children}
+  </Segment>
+);
 
 const LeftColumnFacets = (props) => {
   const {

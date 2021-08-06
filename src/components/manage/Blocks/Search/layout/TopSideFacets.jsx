@@ -38,17 +38,24 @@ const TopSideFacets = (props) => {
         <Grid.Column width={12}>
           <Grid verticalAlign="bottom" columns={12}>
             {data.showSearchInput && (
-              <Grid.Column mobile={6} tablet={6} computer={3}>
+              <Grid.Column mobile={6} tablet={6} computer={6}>
                 <SearchInput {...props} isLive={isLive} />
               </Grid.Column>
             )}
             {data.showSearchButton && (
-              <Grid.Column mobile={4} tablet={3} computer={2}>
+              <Grid.Column mobile={4} tablet={3} computer={6}>
                 <Button onClick={() => onTriggerSearch(searchText)}>
                   {data.searchButtonLabel || 'Search!'}
                 </Button>
               </Grid.Column>
             )}
+          </Grid>
+        </Grid.Column>
+      </Grid.Row>
+
+      <Grid.Row>
+        <Grid.Column width={12}>
+          <Grid verticalAlign="bottom" columns={12}>
             <Facets
               data={data}
               facets={facets}
@@ -61,9 +68,10 @@ const TopSideFacets = (props) => {
               facetWrapper={FacetWrapper}
             />
           </Grid>
-          <Divider />
         </Grid.Column>
       </Grid.Row>
+
+      <Divider />
 
       <Grid.Row>
         <Grid.Column width={12}>{children}</Grid.Column>
