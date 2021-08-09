@@ -10,6 +10,8 @@
 
 ### Bugfix
 
+- Prevent form submit when clicking on BlockChooserButton @giuliaghisini
+
 ### Internal
 
 ## 13.8.2 (2021-07-20)
