@@ -203,6 +203,10 @@ msgstr "戻る"
 msgid "Base"
 msgstr "比較元"
 
+#: components/manage/Blocks/Search/schema
+msgid "Base search query"
+msgstr ""
+
 #: components/manage/Sidebar/Sidebar
 msgid "Block"
 msgstr "ブロック"
@@ -398,6 +402,10 @@ msgstr "コンテンツタイプが削除されました"
 #: components/manage/Toolbar/Toolbar
 msgid "Contents"
 msgstr "コンテンツ"
+
+#: components/manage/Blocks/Search/schema
+msgid "Controls"
+msgstr ""
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -767,6 +775,22 @@ msgstr "期間満了"
 msgid "External URL"
 msgstr "外部URL"
 
+#: components/manage/Blocks/Search/schema
+msgid "Facet"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+msgid "Facet widget"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+msgid "Facets"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+msgid "Field"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 msgid "File"
 msgstr "ファイル"
@@ -859,8 +883,16 @@ msgstr "グループ"
 msgid "Header cell"
 msgstr ""
 
+#: components/manage/Blocks/Search/schema
+msgid "Hidden facets will still filter the results if proper parameters are passed in URLs"
+msgstr ""
+
 #: components/theme/Comments/Comments
 msgid "Hide Replies"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+msgid "Hide facet?"
 msgstr ""
 
 #: components/manage/History/History
@@ -1006,6 +1038,10 @@ msgstr "アイテム数"
 msgid "Items must be unique."
 msgstr "アイテムはユニークである必要があります。"
 
+#: components/manage/Blocks/Search/schema
+msgid "Label"
+msgstr ""
+
 #: components/manage/Preferences/PersonalPreferences
 msgid "Language"
 msgstr "言語"
@@ -1067,6 +1103,10 @@ msgstr ""
 #: components/manage/Blocks/Listing/schema
 msgid "Listing"
 msgstr "リスティング"
+
+#: components/manage/Blocks/Search/SearchBlockEdit
+msgid "Listing template"
+msgstr ""
 
 #: components/theme/Comments/Comments
 msgid "Load more"
@@ -1178,6 +1218,10 @@ msgstr "フォルダーの一番下に移動"
 #: components/manage/Contents/ContentsItem
 msgid "Move to top of folder"
 msgstr "フォルダーの一番上に移動"
+
+#: components/manage/Blocks/Search/schema
+msgid "Multiple choices?"
+msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "My email address is"
@@ -1623,6 +1667,7 @@ msgstr "スキーマ"
 msgid "Schema updates"
 msgstr ""
 
+#: components/manage/Blocks/Search/schema
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search"
 msgstr "検索"
@@ -1634,6 +1679,14 @@ msgstr ""
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search Site"
 msgstr "検索"
+
+#: components/manage/Blocks/Search/schema
+msgid "Search block"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+msgid "Search button label"
+msgstr ""
 
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Search content"
@@ -1647,6 +1700,11 @@ msgstr "検索"
 msgid "Search group…"
 msgstr "グループを検索…"
 
+#: components/manage/Blocks/Search/schema
+msgid "Search input label"
+msgstr ""
+
+#: components/manage/Blocks/Search/components/SearchDetails
 #: components/theme/Search/Search
 msgid "Search results"
 msgstr "検索"
@@ -1658,6 +1716,10 @@ msgstr "検索"
 #: helpers/MessageLabels/MessageLabels
 msgid "Search users…"
 msgstr "ユーザーを検索…"
+
+#: components/manage/Blocks/Search/components/SearchDetails
+msgid "Searched for"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Second"
@@ -1751,6 +1813,14 @@ msgstr ""
 
 #: components/manage/Widgets/ObjectListWidget
 msgid "Show item"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+msgid "Show search button?"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+msgid "Show search input?"
 msgstr ""
 
 #: components/manage/Sidebar/Sidebar
@@ -1964,6 +2034,10 @@ msgstr "いくつかのエラーが発生しました"
 msgid "Third"
 msgstr "第3"
 
+#: components/manage/Blocks/Search/schema
+msgid "This disables the live search"
+msgstr ""
+
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 msgid "This has an ongoing working copy in {title}"
 msgstr ""
@@ -1985,6 +2059,7 @@ msgid "Time"
 msgstr "時刻"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Search/schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes

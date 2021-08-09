@@ -196,6 +196,10 @@ msgstr "Indietro"
 msgid "Base"
 msgstr "Base"
 
+#: components/manage/Blocks/Search/schema
+msgid "Base search query"
+msgstr ""
+
 #: components/manage/Sidebar/Sidebar
 msgid "Block"
 msgstr "Blocco"
@@ -391,6 +395,10 @@ msgstr "Il tipo di contenuto è stato eliminato"
 #: components/manage/Toolbar/Toolbar
 msgid "Contents"
 msgstr "Contenuti"
+
+#: components/manage/Blocks/Search/schema
+msgid "Controls"
+msgstr ""
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -760,6 +768,22 @@ msgstr "Scaduto"
 msgid "External URL"
 msgstr "URL esterno"
 
+#: components/manage/Blocks/Search/schema
+msgid "Facet"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+msgid "Facet widget"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+msgid "Facets"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+msgid "Field"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 msgid "File"
 msgstr "File"
@@ -852,9 +876,17 @@ msgstr "Gruppi"
 msgid "Header cell"
 msgstr "Cella d'intestazione"
 
+#: components/manage/Blocks/Search/schema
+msgid "Hidden facets will still filter the results if proper parameters are passed in URLs"
+msgstr ""
+
 #: components/theme/Comments/Comments
 msgid "Hide Replies"
 msgstr "Nascondi risposte"
+
+#: components/manage/Blocks/Search/schema
+msgid "Hide facet?"
+msgstr ""
 
 #: components/manage/History/History
 #: components/manage/Toolbar/More
@@ -999,6 +1031,10 @@ msgstr "Elementi"
 msgid "Items must be unique."
 msgstr "Gli elementi devono essere unici."
 
+#: components/manage/Blocks/Search/schema
+msgid "Label"
+msgstr ""
+
 #: components/manage/Preferences/PersonalPreferences
 msgid "Language"
 msgstr "Lingua"
@@ -1060,6 +1096,10 @@ msgstr "Collega traduzione per"
 #: components/manage/Blocks/Listing/schema
 msgid "Listing"
 msgstr "Elenco"
+
+#: components/manage/Blocks/Search/SearchBlockEdit
+msgid "Listing template"
+msgstr ""
 
 #: components/theme/Comments/Comments
 msgid "Load more"
@@ -1171,6 +1211,10 @@ msgstr "Sposta in fondo alla cartella"
 #: components/manage/Contents/ContentsItem
 msgid "Move to top of folder"
 msgstr "Sposta in cima alla cartella"
+
+#: components/manage/Blocks/Search/schema
+msgid "Multiple choices?"
+msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "My email address is"
@@ -1616,6 +1660,7 @@ msgstr ""
 msgid "Schema updates"
 msgstr ""
 
+#: components/manage/Blocks/Search/schema
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search"
 msgstr "Ricerca"
@@ -1627,6 +1672,14 @@ msgstr ""
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search Site"
 msgstr "Cerca nel sito"
+
+#: components/manage/Blocks/Search/schema
+msgid "Search block"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+msgid "Search button label"
+msgstr ""
 
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Search content"
@@ -1640,6 +1693,11 @@ msgstr "Ricerca per nome utente o gruppo"
 msgid "Search group…"
 msgstr "Cerca gruppo…"
 
+#: components/manage/Blocks/Search/schema
+msgid "Search input label"
+msgstr ""
+
+#: components/manage/Blocks/Search/components/SearchDetails
 #: components/theme/Search/Search
 msgid "Search results"
 msgstr "Risultati della ricerca"
@@ -1651,6 +1709,10 @@ msgstr "Risultati per {term}"
 #: helpers/MessageLabels/MessageLabels
 msgid "Search users…"
 msgstr "Cerca utenti…"
+
+#: components/manage/Blocks/Search/components/SearchDetails
+msgid "Searched for"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Second"
@@ -1745,6 +1807,14 @@ msgstr "Mostra risposte"
 #: components/manage/Widgets/ObjectListWidget
 msgid "Show item"
 msgstr "Mostra elemento"
+
+#: components/manage/Blocks/Search/schema
+msgid "Show search button?"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+msgid "Show search input?"
+msgstr ""
 
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
@@ -1957,6 +2027,10 @@ msgstr "Si sono verificati degli errori."
 msgid "Third"
 msgstr "Terzo"
 
+#: components/manage/Blocks/Search/schema
+msgid "This disables the live search"
+msgstr ""
+
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 msgid "This has an ongoing working copy in {title}"
 msgstr ""
@@ -1978,6 +2052,7 @@ msgid "Time"
 msgstr "Ora"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Search/schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes

@@ -1,5 +1,83 @@
 import config from '@plone/volto/registry';
+import { defineMessages } from 'react-intl';
 import { cloneDeep } from 'lodash';
+
+const messages = defineMessages({
+  searchBlock: {
+    id: 'Search block',
+    defaultMessage: 'Search block',
+  },
+  controls: {
+    id: 'Controls',
+    defaultMessage: 'Controls',
+  },
+  baseSearchQuery: {
+    id: 'Base search query',
+    defaultMessage: 'Base search query',
+  },
+  title: {
+    id: 'Title',
+    defaultMessage: 'Title',
+  },
+  searchInputPrompt: {
+    id: 'Search input label',
+    defaultMessage: 'Search input label',
+  },
+  showSearchInput: {
+    id: 'Show search input?',
+    defaultMessage: 'Show search input?',
+  },
+  showSearchButtonTitle: {
+    id: 'Show search button?',
+    defaultMessage: 'Show search button?',
+  },
+  showSearchButtonDescription: {
+    id: 'This disables the live search',
+    defaultMessage: 'This disables the live search',
+  },
+  searchButtonLabel: {
+    id: 'Search button label',
+    defaultMessage: 'Search button label',
+  },
+  searchButtonPlaceholder: {
+    id: 'Search',
+    defaultMessage: 'Search',
+  },
+  facets: {
+    id: 'Facets',
+    defaultMessage: 'Facets',
+  },
+  facet: {
+    id: 'Facet',
+    defaultMessage: 'Facet',
+  },
+  label: {
+    id: 'Label',
+    defaultMessage: 'Label',
+  },
+  field: {
+    id: 'Field',
+    defaultMessage: 'Field',
+  },
+  multipleChoices: {
+    id: 'Multiple choices?',
+    defaultMessage: 'Multiple choices?',
+  },
+  hideFacetTitle: {
+    id: 'Hide facet?',
+    defaultMessage: 'Hide facet?',
+  },
+  hideFacetDescription: {
+    id:
+      'Hidden facets will still filter the results if proper parameters are passed in URLs',
+    defaultMessage:
+      'Hidden facets will still filter the results if proper parameters are passed in URLs',
+  },
+  facetWidget: {
+    id: 'Facet widget',
+    defaultMessage: 'Facet widget',
+  },
+});
 
 const enhanceSchema = (originalSchema, formData) => {
   const extensionName = 'facetWidgets';
@@ -22,8 +100,8 @@ const enhanceSchema = (originalSchema, formData) => {
   return schema;
 };
 
-const FacetSchema = () => ({
-  title: 'Facet',
+const FacetSchema = (intl) => ({
+  title: intl.formatMessage(messages.facet),
   fieldsets: [
     {
       id: 'default',
@@ -33,27 +111,26 @@ const FacetSchema = () => ({
   ],
   properties: {
     title: {
-      title: 'Label',
+      title: intl.formatMessage(messages.label),
     },
     field: {
-      title: 'Field',
+      title: intl.formatMessage(messages.field),
       widget: 'select_metadata_field',
       vocabulary: { '@id': 'plone.app.vocabularies.MetadataFields' },
     },
     multiple: {
       type: 'boolean',
-      title: 'Multiple choices?',
+      title: intl.formatMessage(messages.multipleChoices),
       default: false,
     },
     hidden: {
       type: 'boolean',
-      title: 'Hide facet?',
+      title: intl.formatMessage(messages.hideFacetTitle),
       default: false,
-      description:
-        'Hidden facets will still filter the results if proper parameters are passed in URLs',
+      description: intl.formatMessage(messages.hideFacetDescription),
     },
     type: {
-      title: 'Facet widget',
+      title: intl.formatMessage(messages.facetWidget),
       choices: config.blocks.blocksConfig.searchBlock.extensions.facetWidgets.types.map(
         ({ id, title }) => [id, title],
       ),
@@ -65,9 +142,9 @@ const FacetSchema = () => ({
   required: ['field'],
 });
 
-export default ({ data = {} }) => {
+export default ({ data = {}, intl }) => {
   return {
-    title: 'Search block',
+    title: intl.formatMessage(messages.searchBlock),
     fieldsets: [
       {
         id: 'default',
@@ -76,7 +153,7 @@ export default ({ data = {} }) => {
       },
       {
         id: 'controls',
-        title: 'Controls',
+        title: intl.formatMessage(messages.controls),
         fields: [
           'showSearchInput',
           ...(data.showSearchInput ? ['searchInputPrompt'] : []),
@@ -86,39 +163,39 @@ export default ({ data = {} }) => {
       },
       {
         id: 'searchquery',
-        title: 'Base search query',
+        title: intl.formatMessage(messages.baseSearchQuery),
         fields: ['query'],
       },
       {
         id: 'facets',
-        title: 'Facets',
+        title: intl.formatMessage(messages.facets),
         fields: ['facets'],
       },
     ],
     properties: {
       title: {
-        title: 'Title',
+        title: intl.formatMessage(messages.title),
       },
       searchInputPrompt: {
-        title: 'Search input label',
+        title: intl.formatMessage(messages.searchInputPrompt),
       },
       showSearchInput: {
         type: 'boolean',
-        title: 'Show search input?',
+        title: intl.formatMessage(messages.showSearchInput),
       },
       showSearchButton: {
         type: 'boolean',
-        title: 'Show search button?',
-        description: 'This disables the live search',
+        title: intl.formatMessage(messages.showSearchButtonTitle),
+        description: intl.formatMessage(messages.showSearchButtonDescription),
       },
       searchButtonLabel: {
-        title: 'Search button label',
-        placeholder: 'Search!',
+        title: intl.formatMessage(messages.searchButtonLabel),
+        placeholder: intl.formatMessage(messages.searchButtonPlaceholder),
       },
       facets: {
-        title: 'Facets',
+        title: intl.formatMessage(messages.facets),
         widget: 'object_list',
-        schema: FacetSchema(),
+        schema: FacetSchema(intl),
         schemaExtender: enhanceSchema,
       },
       query: {

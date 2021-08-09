@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2021-07-04T05:13:46.951Z\n"
+"POT-Creation-Date: 2021-08-09T13:42:54.503Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -235,6 +235,11 @@ msgstr ""
 #: components/manage/Diff/Diff
 # defaultMessage: Base
 msgid "Base"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Base search query
+msgid "Base search query"
 msgstr ""
 
 #: components/manage/Sidebar/Sidebar
@@ -474,6 +479,11 @@ msgstr ""
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Contents
 msgid "Contents"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Controls
+msgid "Controls"
 msgstr ""
 
 #: components/manage/Actions/Actions
@@ -922,6 +932,26 @@ msgstr ""
 msgid "External URL"
 msgstr ""
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Facet
+msgid "Facet"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Facet widget
+msgid "Facet widget"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Facets
+msgid "Facets"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Field
+msgid "Field"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: File
 msgid "File"
@@ -1036,9 +1066,19 @@ msgstr ""
 msgid "Header cell"
 msgstr ""
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Hidden facets will still filter the results if proper parameters are passed in URLs
+msgid "Hidden facets will still filter the results if proper parameters are passed in URLs"
+msgstr ""
+
 #: components/theme/Comments/Comments
 # defaultMessage: Hide Replies
 msgid "Hide Replies"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Hide facet?
+msgid "Hide facet?"
 msgstr ""
 
 #: components/manage/History/History
@@ -1217,6 +1257,11 @@ msgstr ""
 msgid "Items must be unique."
 msgstr ""
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Label
+msgid "Label"
+msgstr ""
+
 #: components/manage/Preferences/PersonalPreferences
 # defaultMessage: Language
 msgid "Language"
@@ -1291,6 +1336,11 @@ msgstr ""
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Listing
 msgid "Listing"
+msgstr ""
+
+#: components/manage/Blocks/Search/SearchBlockEdit
+# defaultMessage: Listing template
+msgid "Listing template"
 msgstr ""
 
 #: components/theme/Comments/Comments
@@ -1429,6 +1479,11 @@ msgstr ""
 #: components/manage/Contents/ContentsItem
 # defaultMessage: Move to top of folder
 msgid "Move to top of folder"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Multiple choices?
+msgid "Multiple choices?"
 msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
@@ -1976,6 +2031,7 @@ msgstr ""
 msgid "Schema updates"
 msgstr ""
 
+#: components/manage/Blocks/Search/schema
 #: components/theme/SearchWidget/SearchWidget
 # defaultMessage: Search
 msgid "Search"
@@ -1989,6 +2045,16 @@ msgstr ""
 #: components/theme/SearchWidget/SearchWidget
 # defaultMessage: Search Site
 msgid "Search Site"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Search block
+msgid "Search block"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Search button label
+msgid "Search button label"
 msgstr ""
 
 #: components/manage/Sidebar/ObjectBrowserBody
@@ -2006,6 +2072,12 @@ msgstr ""
 msgid "Search group…"
 msgstr ""
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Search input label
+msgid "Search input label"
+msgstr ""
+
+#: components/manage/Blocks/Search/components/SearchDetails
 #: components/theme/Search/Search
 # defaultMessage: Search results
 msgid "Search results"
@@ -2019,6 +2091,11 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Search users…
 msgid "Search users…"
+msgstr ""
+
+#: components/manage/Blocks/Search/components/SearchDetails
+# defaultMessage: Searched for
+msgid "Searched for"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
@@ -2135,6 +2212,16 @@ msgstr ""
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Show item
 msgid "Show item"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Show search button?
+msgid "Show search button?"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Show search input?
+msgid "Show search input?"
 msgstr ""
 
 #: components/manage/Sidebar/Sidebar
@@ -2396,6 +2483,11 @@ msgstr ""
 msgid "Third"
 msgstr ""
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: This disables the live search
+msgid "This disables the live search"
+msgstr ""
+
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 # defaultMessage: This has an ongoing working copy in {title}
 msgid "This has an ongoing working copy in {title}"
@@ -2422,6 +2514,7 @@ msgid "Time"
 msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Search/schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes

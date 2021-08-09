@@ -8,16 +8,24 @@ import config from '@plone/volto/registry';
 import { addExtensionFieldToSchema } from '@plone/volto/helpers/Extensions/withBlockSchemaEnhancer';
 import { withSearch } from './hocs';
 import useDeepCompareEffect from 'use-deep-compare-effect';
+import { defineMessages } from 'react-intl';
+
+const messages = defineMessages({
+  template: {
+    id: 'Listing template',
+    defaultMessage: 'Listing template',
+  },
+});
 
 const SearchBlockEdit = (props) => {
   const { block, onChangeBlock, data, selected, intl, onTriggerSearch } = props;
-  let schema = Schema({ data });
+  let schema = Schema({ data, intl });
   schema = addExtensionFieldToSchema({
     schema,
     name: 'listingBodyTemplate',
     items: config.blocks.blocksConfig.listing.variations,
     intl,
-    title: { id: 'Listing template' },
+    title: { id: intl.formatMessage(messages.template) },
   });
 
   const { query = {} } = data || {};

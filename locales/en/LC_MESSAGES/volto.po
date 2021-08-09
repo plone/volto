@@ -196,6 +196,10 @@ msgstr ""
 msgid "Base"
 msgstr ""
 
+#: components/manage/Blocks/Search/schema
+msgid "Base search query"
+msgstr ""
+
 #: components/manage/Sidebar/Sidebar
 msgid "Block"
 msgstr ""
@@ -390,6 +394,10 @@ msgstr ""
 #: components/manage/Contents/Contents
 #: components/manage/Toolbar/Toolbar
 msgid "Contents"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+msgid "Controls"
 msgstr ""
 
 #: components/manage/Actions/Actions
@@ -760,6 +768,22 @@ msgstr ""
 msgid "External URL"
 msgstr ""
 
+#: components/manage/Blocks/Search/schema
+msgid "Facet"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+msgid "Facet widget"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+msgid "Facets"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+msgid "Field"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 msgid "File"
 msgstr ""
@@ -852,8 +876,16 @@ msgstr ""
 msgid "Header cell"
 msgstr ""
 
+#: components/manage/Blocks/Search/schema
+msgid "Hidden facets will still filter the results if proper parameters are passed in URLs"
+msgstr ""
+
 #: components/theme/Comments/Comments
 msgid "Hide Replies"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+msgid "Hide facet?"
 msgstr ""
 
 #: components/manage/History/History
@@ -999,6 +1031,10 @@ msgstr ""
 msgid "Items must be unique."
 msgstr ""
 
+#: components/manage/Blocks/Search/schema
+msgid "Label"
+msgstr ""
+
 #: components/manage/Preferences/PersonalPreferences
 msgid "Language"
 msgstr ""
@@ -1059,6 +1095,10 @@ msgstr ""
 
 #: components/manage/Blocks/Listing/schema
 msgid "Listing"
+msgstr ""
+
+#: components/manage/Blocks/Search/SearchBlockEdit
+msgid "Listing template"
 msgstr ""
 
 #: components/theme/Comments/Comments
@@ -1170,6 +1210,10 @@ msgstr ""
 
 #: components/manage/Contents/ContentsItem
 msgid "Move to top of folder"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+msgid "Multiple choices?"
 msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
@@ -1616,6 +1660,7 @@ msgstr ""
 msgid "Schema updates"
 msgstr ""
 
+#: components/manage/Blocks/Search/schema
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search"
 msgstr ""
@@ -1626,6 +1671,14 @@ msgstr ""
 
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search Site"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+msgid "Search block"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+msgid "Search button label"
 msgstr ""
 
 #: components/manage/Sidebar/ObjectBrowserBody
@@ -1640,6 +1693,11 @@ msgstr ""
 msgid "Search group…"
 msgstr ""
 
+#: components/manage/Blocks/Search/schema
+msgid "Search input label"
+msgstr ""
+
+#: components/manage/Blocks/Search/components/SearchDetails
 #: components/theme/Search/Search
 msgid "Search results"
 msgstr ""
@@ -1650,6 +1708,10 @@ msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Search users…"
+msgstr ""
+
+#: components/manage/Blocks/Search/components/SearchDetails
+msgid "Searched for"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
@@ -1744,6 +1806,14 @@ msgstr ""
 
 #: components/manage/Widgets/ObjectListWidget
 msgid "Show item"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+msgid "Show search button?"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+msgid "Show search input?"
 msgstr ""
 
 #: components/manage/Sidebar/Sidebar
@@ -1957,6 +2027,10 @@ msgstr ""
 msgid "Third"
 msgstr ""
 
+#: components/manage/Blocks/Search/schema
+msgid "This disables the live search"
+msgstr ""
+
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 msgid "This has an ongoing working copy in {title}"
 msgstr ""
@@ -1978,6 +2052,7 @@ msgid "Time"
 msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Search/schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes

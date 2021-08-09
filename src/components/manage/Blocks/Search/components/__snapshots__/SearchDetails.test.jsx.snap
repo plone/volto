@@ -3,7 +3,8 @@
 exports[`SearchDetails renders search detail component 1`] = `
 <h4>
   Searched for: test. 
-  Search results: 
+  Search results
+  : 
   10
 </h4>
 `;
