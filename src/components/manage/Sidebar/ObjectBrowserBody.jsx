@@ -193,7 +193,7 @@ class ObjectBrowserBody extends Component {
         showSearchInput: !prevState.showSearchInput,
       }),
       () => {
-        this.searchInputRef.current.focus();
+        if (this.searchInputRef?.current) this.searchInputRef.current.focus();
       },
     );
 
