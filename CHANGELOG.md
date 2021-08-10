@@ -1,6 +1,6 @@
 # Change Log
 
-## 13.8.1 (unreleased)
+## 13.8.3 (unreleased)
 
 ### Breaking
 
@@ -10,7 +10,21 @@
 
 ### Bugfix
 
+- Prevent form submit when clicking on BlockChooserButton @giuliaghisini
+
 ### Internal
+
+## 13.8.2 (2021-07-20)
+
+### Bugfix
+
+- Improve `URLWidget` component, so it uses `flattenToURL` for the value @sneridagh
+
+## 13.8.1 (2021-07-16)
+
+### Bugfix
+
+- Missing prop `properties` passed down required for #2579 to work properly @sneridagh
 
 ## 13.8.0 (2021-07-14)
 
@@ -3368,3 +3382,7 @@ refer to all of them in https://github.com/plone/volto/releases
 - Basic components (navigation, toolbar, breadcrumbs etc) @robgietema
 - Authentication including login / logout @robgietema
 - Setup build environment @robgietema
+
+### Changed
+
+- Fixed passing intl to the schemaExtender in the ObjectListWidget component. @1bsilver
