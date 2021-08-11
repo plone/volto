@@ -66,7 +66,7 @@ const TopSideFacets = (props) => {
               setFacets={(f) => {
                 flushSync(() => {
                   setFacets(f);
-                  if (isLive) onTriggerSearch(searchedText || '', f);
+                  onTriggerSearch(searchedText || '', f);
                 });
               }}
               facetWrapper={FacetWrapper}
