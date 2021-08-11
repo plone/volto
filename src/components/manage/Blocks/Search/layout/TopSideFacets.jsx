@@ -3,6 +3,14 @@ import { SearchInput, SearchDetails, Facets } from '../components';
 import { Grid, Divider } from 'semantic-ui-react';
 import { Button } from 'semantic-ui-react';
 import { flushSync } from 'react-dom';
+import { defineMessages, useIntl } from 'react-intl';
+
+const messages = defineMessages({
+  searchButtonText: {
+    id: 'Search',
+    defaultMessage: 'Search',
+  },
+});
 
 const FacetWrapper = ({ children }) => (
   <Grid.Column mobile={12} tablet={4} computer={3}>
@@ -26,6 +34,7 @@ const TopSideFacets = (props) => {
   } = props;
   const { showSearchButton } = data;
   const isLive = !showSearchButton;
+  const intl = useIntl();
 
   return (
     <Grid className="searchBlock-facets" stackable>
@@ -40,7 +49,8 @@ const TopSideFacets = (props) => {
             {data.showSearchInput && <SearchInput {...props} isLive={isLive} />}
             {data.showSearchButton && (
               <Button onClick={() => onTriggerSearch(searchText)}>
-                {data.searchButtonLabel || 'Search!'}
+                {data.searchButtonLabel ||
+                  intl.formatMessage(messages.searchButtonText)}
               </Button>
             )}
           </div>

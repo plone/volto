@@ -1675,6 +1675,9 @@ msgstr "Schema"
 msgid "Schema updates"
 msgstr "Aktualisierungen Schema"
 
+#: components/manage/Blocks/Search/layout/LeftColumnFacets
+#: components/manage/Blocks/Search/layout/RightColumnFacets
+#: components/manage/Blocks/Search/layout/TopSideFacets
 #: components/manage/Blocks/Search/schema
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search"
