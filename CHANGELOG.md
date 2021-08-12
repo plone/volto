@@ -9,6 +9,7 @@
 ### Bugfix
 
 - Prevent form submit when clicking on BlockChooserButton @giuliaghisini
+- Fix the babel view cancel button redirect @iFlameing
 
 ### Internal
 
