@@ -34,6 +34,10 @@ const messages = defineMessages({
     id: 'No items selected',
     defaultMessage: 'No items selected',
   },
+  singularPlaceholder: {
+    id: 'No item selected',
+    defaultMessage: 'No item selected',
+  },
   edit: {
     id: 'Edit',
     defaultMessage: 'Edit',
@@ -354,7 +358,7 @@ export class ObjectBrowserWidgetComponent extends Component {
                   onChange={this.onManualLinkInput}
                   value={this.state.manualLinkInput}
                   placeholder={this.props.intl.formatMessage(
-                    messages.placeholder,
+                    messages.singularPlaceholder,
                   )}
                 />
               )}

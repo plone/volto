@@ -1230,6 +1230,10 @@ msgstr "Im Feld 'Lead-Bild' wurde kein Bild gesetzt."
 msgid "No image set in image content field"
 msgstr "Im Feld 'Bild' wurde kein Bild gesetzt"
 
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "No item selected"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 msgid "No items found in this container."
 msgstr "Keine Elemente gefunden"

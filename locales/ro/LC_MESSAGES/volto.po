@@ -1215,6 +1215,10 @@ msgstr "Nicio imagine setată în câmpul de conținut imagine de start"
 msgid "No image set in image content field"
 msgstr "Nicio imagine setată în câmpul imagine de continut"
 
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "No item selected"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 msgid "No items found in this container."
 msgstr "Nu s-au găsit articole în acest container."

@@ -1222,6 +1222,10 @@ msgstr "コンテンツフィールドのリード画像がありません"
 msgid "No image set in image content field"
 msgstr "コンテンツフィールドの画像がありません"
 
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "No item selected"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 msgid "No items found in this container."
 msgstr "アイテムが見つかりませんでした"

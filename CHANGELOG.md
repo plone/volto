@@ -9,6 +9,7 @@
 ### Bugfix
 
 - Prevent form submit when clicking on BlockChooserButton @giuliaghisini
+- Fix singular and plural form of placeholder in objectbrowserwidget @iRohitSingh
 
 ### Internal
 
