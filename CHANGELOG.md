@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Add title/tooltip on Toolbar buttons @avoinea #1384
+
 ### Bugfix
 
 - Prevent form submit when clicking on BlockChooserButton @giuliaghisini
