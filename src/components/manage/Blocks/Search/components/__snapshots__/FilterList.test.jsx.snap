@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterList renders filters listing component for search block 1`] = `
+<div
+  className="filter-list"
+>
+  <div
+    className="filter-list-wrapper"
+  >
+    <div
+      className="filter-list-group"
+    >
+      <div
+        className="ui labels"
+      >
+        <div
+          className="ui label"
+          onClick={[Function]}
+        >
+          Document
+          <i
+            aria-hidden="true"
+            className="delete icon"
+            onClick={[Function]}
+          />
+        </div>
+        <div
+          className="ui label"
+          onClick={[Function]}
+        >
+          Folder
+          <i
+            aria-hidden="true"
+            className="delete icon"
+            onClick={[Function]}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

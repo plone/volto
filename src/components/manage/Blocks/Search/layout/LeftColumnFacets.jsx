@@ -1,5 +1,5 @@
 import React from 'react';
-import { SearchInput, SearchDetails, Facets } from '../components';
+import { SearchInput, SearchDetails, Facets, FilterList } from '../components';
 import { Grid, Divider, Segment } from 'semantic-ui-react';
 import { Button } from 'semantic-ui-react';
 import { flushSync } from 'react-dom';
@@ -28,6 +28,7 @@ const LeftColumnFacets = (props) => {
     onTriggerSearch,
     searchedText, // search text for previous search
     searchText, // search text currently being entered (controlled input)
+    isEditMode,
     // searchData,
     // mode = 'view',
     // variation,
@@ -58,6 +59,17 @@ const LeftColumnFacets = (props) => {
           </div>
         </Grid.Column>
       </Grid.Row>
+
+      <FilterList
+        {...props}
+        isEditMode={isEditMode}
+        setFacets={(f) => {
+          flushSync(() => {
+            setFacets(f);
+            onTriggerSearch(searchedText || '', f);
+          });
+        }}
+      />
 
       <Grid.Row>
         <Grid.Column mobile={12} tablet={4} computer={3}>
