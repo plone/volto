@@ -152,7 +152,7 @@ let config = {
     ],
     showSelfRegistration: false,
     contentMetadataTagsImageField: 'image',
-    hasWorkingCopySupport: true,
+    hasWorkingCopySupport: false,
   },
   widgets: {
     ...widgetMapping,
