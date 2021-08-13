@@ -70,6 +70,6 @@ describe('Object Browser Tests', () => {
     cy.get('.ui.basic.icon.button.image').contains('Image').click();
     cy.get('.toolbar-inner button.ui.basic.icon.button').click();
     cy.findByLabelText('Search SVG').click();
-    cy.get('.ui.input.search').should('be.focused');
+    cy.get('.ui.input.search input').should('be.focused');
   });
 });
