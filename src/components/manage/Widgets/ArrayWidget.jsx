@@ -144,14 +144,14 @@ class ArrayWidget extends Component {
    * @returns {undefined}
    */
   loadOptions = (search, previousOptions, additional) => {
-    let hasMore = this.props.vocabState?.batching?.next;
+    let hasMore =
+      this.state.search !== search || this.props.vocabState?.batching?.next;
 
     if (hasMore) {
       const offset = this.state.search !== search ? 0 : additional.offset;
 
       this.props.getVocabulary(this.props.vocabBaseUrl, search, offset);
       this.setState({ search });
-
       return {
         options:
           intersection(previousOptions, this.props.choices).length ===
@@ -164,6 +164,8 @@ class ArrayWidget extends Component {
         },
       };
     }
+
+    console.log(previousOptions, this.props.choices);
 
     return {
       options:
