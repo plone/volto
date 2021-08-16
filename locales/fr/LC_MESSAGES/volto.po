@@ -1232,6 +1232,10 @@ msgstr "Aucune image pour le champ de l'image de garde"
 msgid "No image set in image content field"
 msgstr "Aucune image pour le champ image"
 
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "No item selected"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 msgid "No items found in this container."
 msgstr "Aucun élément trouvé dans ce conteneur"

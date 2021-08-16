@@ -1215,6 +1215,10 @@ msgstr "Nessuna immagine impostata come Immagine di testata"
 msgid "No image set in image content field"
 msgstr "Nessuna immagine impostata"
 
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "No item selected"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 msgid "No items found in this container."
 msgstr "Nessun elemento trovato in questo contenitore."

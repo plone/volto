@@ -1215,6 +1215,10 @@ msgstr ""
 msgid "No image set in image content field"
 msgstr ""
 
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "No item selected"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 msgid "No items found in this container."
 msgstr ""

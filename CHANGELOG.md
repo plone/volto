@@ -7,6 +7,7 @@
 ### Feature
 
 ### Bugfix
+- Fix singular and plural form of Placeholder in objectBrowserWidget  @iRohitSingh
 
 ### Internal
 
