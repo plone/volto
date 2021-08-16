@@ -9,6 +9,7 @@
 ### Bugfix
 
 - Prevent form submit when clicking on BlockChooserButton @giuliaghisini
+- Show toast error when trying to delete item and it's not permitted @danielamormocea
 
 ### Internal
 

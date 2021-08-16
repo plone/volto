@@ -120,8 +120,8 @@ const messages = defineMessages({
     defaultMessage: 'Do you really want to delete the following items?',
   },
   deleteError: {
-    id: 'The object could not be deleted.',
-    defaultMessage: 'The object could not be deleted.',
+    id: 'The item could not be deleted.',
+    defaultMessage: 'The item could not be deleted.',
   },
   loading: {
     id: 'loading',
