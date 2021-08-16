@@ -90,6 +90,7 @@ const ObjectListWidget = (props) => {
           />
         )}
       </FormFieldWrapper>
+
       <DragDropList
         style={{
           boxShadow: `${topLayerShadow}${value.length > 1 ? secondLayer : ''}${

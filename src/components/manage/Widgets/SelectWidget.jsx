@@ -206,9 +206,11 @@ class SelectWidget extends Component {
    * @returns {undefined}
    */
   loadOptions = (search, previousOptions, additional) => {
-    let hasMore = this.props.itemsTotal > previousOptions.length;
+    let hasMore = this.props.vocabState?.batching?.next;
+
     if (hasMore) {
-      const offset = this.state.search !== search ? 0 : additional.offset;
+      const offset = this.state.search ?? '' !== search ? 0 : additional.offset;
+
       this.props.getVocabulary(this.props.vocabBaseUrl, search, offset);
       this.setState({ search });
 
@@ -224,7 +226,14 @@ class SelectWidget extends Component {
         },
       };
     }
-    return null;
+    return {
+      options:
+        intersection(previousOptions, this.props.choices).length ===
+        this.props.choices.length
+          ? []
+          : this.props.choices,
+      hasMore: false,
+    };
   };
 
   /**

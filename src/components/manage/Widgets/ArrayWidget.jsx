@@ -98,32 +98,16 @@ class ArrayWidget extends Component {
     value: null,
   };
 
-  /**
-   * Constructor
-   * @method constructor
-   * @param {Object} props Component properties
-   * @constructs Actions
-   */
-  constructor(props) {
-    super(props);
-    this.search = this.search.bind(this);
-    this.loadOptions = this.loadOptions.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.vocabBaseUrl =
-      getVocabFromHint(props) ||
-      getVocabFromField(props) ||
-      getVocabFromItems(props);
-    this.state = {
-      search: '',
-      selectedOption: props.value
-        ? props.value.map((item) =>
-            isObject(item)
-              ? { label: item.title || item.token, value: item.token }
-              : { label: item, value: item },
-          )
-        : [],
-    };
-  }
+  state = {
+    search: '',
+    selectedOption: this.props.value
+      ? this.props.value.map((item) =>
+          isObject(item)
+            ? { label: item.title || item.token, value: item.token }
+            : { label: item, value: item },
+        )
+      : [],
+  };
 
   /**
    * Component did mount
@@ -134,9 +118,9 @@ class ArrayWidget extends Component {
     if (
       !this.props.items?.choices &&
       !this.props.choices &&
-      this.vocabBaseUrl
+      this.props.vocabBaseUrl
     ) {
-      this.props.getVocabulary(this.vocabBaseUrl);
+      this.props.getVocabulary(this.props.vocabBaseUrl);
     }
   }
 
@@ -145,11 +129,11 @@ class ArrayWidget extends Component {
    * @param {string} query Search query.
    * @returns {undefined}
    */
-  search(query) {
+  search = (query) => {
     if (query.length > 1) {
-      this.props.getVocabulary(this.vocabBaseUrl, query);
+      this.props.getVocabulary(this.props.vocabBaseUrl, query);
     }
-  }
+  };
 
   /**
    * Initiate search with new query
@@ -159,12 +143,13 @@ class ArrayWidget extends Component {
    * @param {string} additional Additional arguments to pass to the next loadOptions.
    * @returns {undefined}
    */
-  loadOptions(search, previousOptions, additional) {
-    let hasMore = this.props.itemsTotal > previousOptions.length;
+  loadOptions = (search, previousOptions, additional) => {
+    let hasMore = this.props.vocabState?.batching?.next;
+
     if (hasMore) {
       const offset = this.state.search !== search ? 0 : additional.offset;
 
-      this.props.getVocabulary(this.vocabBaseUrl, search, offset);
+      this.props.getVocabulary(this.props.vocabBaseUrl, search, offset);
       this.setState({ search });
 
       return {
@@ -179,8 +164,16 @@ class ArrayWidget extends Component {
         },
       };
     }
-    return null;
-  }
+
+    return {
+      options:
+        intersection(previousOptions, this.props.choices).length ===
+        this.props.choices.length
+          ? []
+          : this.props.choices,
+      hasMore: false,
+    };
+  };
 
   /**
    * Handle the field change, store it in the local state and back to simple
@@ -189,14 +182,14 @@ class ArrayWidget extends Component {
    * @param {array} selectedOption The selected options (already aggregated).
    * @returns {undefined}
    */
-  handleChange(selectedOption) {
+  handleChange = (selectedOption) => {
     this.setState({ selectedOption });
 
     this.props.onChange(
       this.props.id,
       selectedOption ? selectedOption.map((item) => item.value) : null,
     );
-  }
+  };
 
   /**
    * Render method.
@@ -210,7 +203,7 @@ class ArrayWidget extends Component {
 
     return (
       <FormFieldWrapper {...this.props}>
-        {!this.props.items?.choices && this.vocabBaseUrl ? (
+        {!this.props.items?.choices && this.props.vocabBaseUrl ? (
           <AsyncPaginate
             isDisabled={this.props.isDisabled}
             className="react-select-container"
@@ -287,15 +280,24 @@ export default compose(
       const vocabState = state.vocabularies[vocabBaseUrl];
       // If the schema already has the choices in it, then do not try to get the vocab,
       // even if there is one
+
       if (props.items?.choices) {
         return {
           choices: props.items.choices,
         };
       } else if (vocabState) {
         return {
+          vocabBaseUrl,
+          vocabState,
           choices: vocabState.items,
           itemsTotal: vocabState.itemsTotal,
           loading: Boolean(vocabState.loading),
+        };
+        // There is a moment that vocabState is not there yet, so we need to pass the
+        // vocabBaseUrl to the component.
+      } else if (vocabBaseUrl) {
+        return {
+          vocabBaseUrl,
         };
       }
       return {};
