@@ -208,7 +208,8 @@ class SelectWidget extends Component {
   loadOptions = (search, previousOptions, additional) => {
     let hasMore = this.props.itemsTotal > previousOptions.length;
     if (hasMore) {
-      const offset = this.state.search !== search ? 0 : additional.offset;
+      const offset =
+        this.state.search ?? '' !== search ?? '' ? 0 : additional.offset;
       this.props.getVocabulary(this.props.vocabBaseUrl, search, offset);
       this.setState({ search });
 

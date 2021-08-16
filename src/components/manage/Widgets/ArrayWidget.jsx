@@ -106,7 +106,7 @@ class ArrayWidget extends Component {
    */
   constructor(props) {
     super(props);
-    this.search = this.search.bind(this);
+
     this.loadOptions = this.loadOptions.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.vocabBaseUrl =
@@ -137,17 +137,6 @@ class ArrayWidget extends Component {
       this.vocabBaseUrl
     ) {
       this.props.getVocabulary(this.vocabBaseUrl);
-    }
-  }
-
-  /**
-   * Initiate search with new query
-   * @param {string} query Search query.
-   * @returns {undefined}
-   */
-  search(query) {
-    if (query.length > 1) {
-      this.props.getVocabulary(this.vocabBaseUrl, query);
     }
   }
 
