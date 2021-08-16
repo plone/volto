@@ -2,16 +2,10 @@
 
 ## 13.8.3 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Prevent form submit when clicking on BlockChooserButton @giuliaghisini
 - Add missing `publicURL` to the list of `window.env` serialized variables coming from the hosts configuration to complete the support for seamless mode @sneridagh
-
-### Internal
 
 ## 13.8.2 (2021-07-20)
 
