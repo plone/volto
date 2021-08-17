@@ -34,7 +34,7 @@ Array [
             className="icon circled"
             dangerouslySetInnerHTML={
               Object {
-                "__html": undefined,
+                "__html": "<title>Edit</title>undefined",
               }
             }
             onClick={null}
@@ -58,7 +58,7 @@ Array [
             className="icon"
             dangerouslySetInnerHTML={
               Object {
-                "__html": undefined,
+                "__html": "<title>Contents</title>undefined",
               }
             }
             onClick={null}
@@ -84,7 +84,7 @@ Array [
             className="icon"
             dangerouslySetInnerHTML={
               Object {
-                "__html": undefined,
+                "__html": "<title>Add</title>undefined",
               }
             }
             onClick={null}
@@ -113,7 +113,7 @@ Array [
             className="icon mobile hidden"
             dangerouslySetInnerHTML={
               Object {
-                "__html": undefined,
+                "__html": "<title>More</title>undefined",
               }
             }
             onClick={null}
@@ -166,7 +166,7 @@ Array [
             className="icon"
             dangerouslySetInnerHTML={
               Object {
-                "__html": undefined,
+                "__html": "<title>Personal tools</title>undefined",
               }
             }
             onClick={null}

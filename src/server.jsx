@@ -232,6 +232,7 @@ server.get('/*', (req, res) => {
                   }
                   criticalCss={readCriticalCss(req)}
                   apiPath={apiPathFromHostHeader || config.settings.apiPath}
+                  publicURL={apiPathFromHostHeader || config.settings.publicURL}
                 />,
               )}
             `,
@@ -246,6 +247,7 @@ server.get('/*', (req, res) => {
                   store={store}
                   criticalCss={readCriticalCss(req)}
                   apiPath={apiPathFromHostHeader || config.settings.apiPath}
+                  publicURL={apiPathFromHostHeader || config.settings.publicURL}
                 />,
               )}
             `,

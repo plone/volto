@@ -186,6 +186,7 @@ msgstr ""
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
 #: components/manage/Sidebar/ObjectBrowserBody
+#: components/manage/Toolbar/PersonalTools
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -1092,6 +1093,10 @@ msgstr ""
 
 #: components/theme/Login/Login
 msgid "Login Name"
+msgstr ""
+
+#: components/manage/Toolbar/PersonalTools
+msgid "Logout"
 msgstr ""
 
 #: components/manage/Toolbar/More
