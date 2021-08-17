@@ -197,6 +197,7 @@ msgstr "Disponible"
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
 #: components/manage/Sidebar/ObjectBrowserBody
+#: components/manage/Toolbar/PersonalTools
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -1114,6 +1115,10 @@ msgstr "Inicio de Sesión fallo"
 #: components/theme/Login/Login
 msgid "Login Name"
 msgstr "Nombre de usuario"
+
+#: components/manage/Toolbar/PersonalTools
+msgid "Logout"
+msgstr ""
 
 #: components/manage/Toolbar/More
 msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
