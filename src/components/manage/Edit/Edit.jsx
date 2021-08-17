@@ -172,6 +172,7 @@ class Edit extends Component {
 
     if (this.props.updateRequest.loading && nextProps.updateRequest.error) {
       const message =
+        nextProps.updateRequest.error?.response?.body?.error?.message ||
         nextProps.updateRequest.error?.response?.body?.message ||
         nextProps.updateRequest.error?.response?.text ||
         '';
