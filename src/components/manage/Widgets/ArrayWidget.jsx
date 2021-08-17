@@ -149,26 +149,24 @@ class ArrayWidget extends Component {
    * @returns {undefined}
    */
   loadOptions(search, previousOptions, additional) {
-    let hasMore = this.props.itemsTotal > previousOptions.length;
+    let hasMore = this.props.itemsTotal > additional.offset;
+    const offset = this.state.search !== search ? 0 : additional.offset;
     if (hasMore) {
-      const offset = this.state.search !== search ? 0 : additional.offset;
-
       this.props.getVocabulary(this.vocabBaseUrl, search, offset);
       this.setState({ search });
-
-      return {
-        options:
-          intersection(previousOptions, this.props.choices).length ===
-          this.props.choices.length
-            ? []
-            : this.props.choices,
-        hasMore: hasMore,
-        additional: {
-          offset: offset === additional.offset ? offset + 25 : offset,
-        },
-      };
     }
-    return null;
+
+    return {
+      options:
+        intersection(previousOptions, this.props.choices).length ===
+        this.props.choices.length
+          ? []
+          : this.props.choices,
+      hasMore: hasMore,
+      additional: {
+        offset: offset === additional.offset ? offset + 25 : offset,
+      },
+    };
   }
 
   /**
