@@ -244,7 +244,7 @@ Array [
             className="icon unlock"
             dangerouslySetInnerHTML={
               Object {
-                "__html": undefined,
+                "__html": "<title>Unlock</title>undefined",
               }
             }
             onClick={null}

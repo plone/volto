@@ -414,7 +414,12 @@ class Toolbar extends Component {
                         onClick={(e) => this.unlock(e)}
                         tabIndex={0}
                       >
-                        <Icon name={unlockSVG} size="30px" className="unlock" />
+                        <Icon
+                          name={unlockSVG}
+                          size="30px"
+                          className="unlock"
+                          title={this.props.intl.formatMessage(messages.unlock)}
+                        />
                       </button>
                     )}
 
