@@ -9,6 +9,7 @@
 - Content locking support for Plone (plone.locking) @avoinea
 
 ### Bugfix
+
 - Add title/tooltip on Toolbar buttons @avoinea #1384
 
 ### Bugfix
