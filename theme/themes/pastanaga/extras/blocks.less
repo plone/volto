@@ -900,11 +900,17 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     padding-left: 0;
   }
 
-  .filter-list {
-    .filter-list-wrapper {
-      display: inline-block;
-    }
+  .filter-list-group {
+    display: flex;
+    align-items: center;
+  }
 
+  .filter-list-wrapper {
+    display: inline-block;
+    padding: 0.3em 1.2em 0.3em 0;
+  }
+
+  .filter-list {
     .ui.labels {
       display: flex;
       flex-direction: row;
@@ -914,6 +920,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 
     .label-title {
       padding-right: 0.5em;
+      font-size: small;
     }
   }
 }
