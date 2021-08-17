@@ -490,10 +490,7 @@ class Contents extends Component {
       );
     }
 
-    if (
-      this.props.deleteRequest.loading &&
-      nextProps.deleteRequest.error
-    ) {
+    if (this.props.deleteRequest.loading && nextProps.deleteRequest.error) {
       this.props.toastify.toast.error(
         <Toast
           error
