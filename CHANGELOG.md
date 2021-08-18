@@ -11,9 +11,6 @@
 
 - Add title/tooltip on Toolbar buttons @avoinea #1384
 - Slight CSS fix on `ObjectWidget` for supporting long add element button messages @sneridagh
-
-### Bugfix
-
 - Fix the babel view cancel button redirect @iFlameing
 - Show toast error when trying to delete item and it's not permitted @danielamormocea
 
