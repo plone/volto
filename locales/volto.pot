@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2021-07-04T05:13:46.951Z\n"
+"POT-Creation-Date: 2021-08-17T15:26:07.509Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -225,6 +225,7 @@ msgstr ""
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
 #: components/manage/Sidebar/ObjectBrowserBody
+#: components/manage/Toolbar/PersonalTools
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -1334,6 +1335,11 @@ msgstr ""
 msgid "Login Name"
 msgstr ""
 
+#: components/manage/Toolbar/PersonalTools
+# defaultMessage: Logout
+msgid "Logout"
+msgstr ""
+
 #: components/manage/Toolbar/More
 # defaultMessage: Made by {creator} on {date}. This is not a working copy anymore, but the main content.
 msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
@@ -2353,6 +2359,11 @@ msgstr ""
 #: components/theme/CorsError/CorsError
 # defaultMessage: The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators.
 msgid "The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: The item could not be deleted.
+msgid "The item could not be deleted."
 msgstr ""
 
 #: components/theme/Register/Register

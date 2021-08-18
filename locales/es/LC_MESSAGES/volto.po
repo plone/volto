@@ -196,6 +196,7 @@ msgstr "Disponible"
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
 #: components/manage/Sidebar/ObjectBrowserBody
+#: components/manage/Toolbar/PersonalTools
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -1104,6 +1105,10 @@ msgstr "Inicio de Sesión fallo"
 msgid "Login Name"
 msgstr "Nombre de usuario"
 
+#: components/manage/Toolbar/PersonalTools
+msgid "Logout"
+msgstr ""
+
 #: components/manage/Toolbar/More
 msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
 msgstr ""
@@ -1933,6 +1938,10 @@ msgstr "La base de datos responde pero las cabeceras CORS no están configuradas
 #: components/theme/CorsError/CorsError
 msgid "The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
 msgstr "La base de datos no responde, disculpe las molestias. Intente cargar la página otra vez. Si el problema continúa póngase en contacto con el administrador del sitio."
+
+#: components/manage/Contents/Contents
+msgid "The item could not be deleted."
+msgstr ""
 
 #: components/theme/Register/Register
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."

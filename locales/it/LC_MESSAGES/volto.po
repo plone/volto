@@ -186,6 +186,7 @@ msgstr "Disponibile"
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
 #: components/manage/Sidebar/ObjectBrowserBody
+#: components/manage/Toolbar/PersonalTools
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -1094,6 +1095,10 @@ msgstr "Accesso fallito"
 msgid "Login Name"
 msgstr "Nome utente"
 
+#: components/manage/Toolbar/PersonalTools
+msgid "Logout"
+msgstr ""
+
 #: components/manage/Toolbar/More
 msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
 msgstr ""
@@ -1923,6 +1928,10 @@ msgstr "Il backend sta rispondendo, ma i CORS headers non sono adeguatamente con
 #: components/theme/CorsError/CorsError
 msgid "The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
 msgstr "Il server di backend del tuo sito web non risponde, ci scusiamo per l'inconveniente. Prova a ricaricare la pagina e riprova. Se il problema persiste, contattare gli amministratori del sito."
+
+#: components/manage/Contents/Contents
+msgid "The item could not be deleted."
+msgstr ""
 
 #: components/theme/Register/Register
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."

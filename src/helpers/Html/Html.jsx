@@ -87,7 +87,14 @@ class Html extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { extractor, markup, store, criticalCss, apiPath } = this.props;
+    const {
+      extractor,
+      markup,
+      store,
+      criticalCss,
+      apiPath,
+      publicURL,
+    } = this.props;
     const head = Helmet.rewind();
     const bodyClass = join(BodyClass.rewind(), ' ');
     return (
@@ -108,6 +115,9 @@ class Html extends Component {
                 // if not set in the API_PATH
                 ...(apiPath && {
                   apiPath,
+                }),
+                ...(publicURL && {
+                  publicURL,
                 }),
               })};`,
             }}
