@@ -2,8 +2,6 @@
 
 ## 13.8.4 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Removed unnecessary set-cookies for the removal of the authentication cookie when the user is not logged in @mamico
@@ -18,8 +16,6 @@
 
 - Fix the babel view cancel button redirect @iFlameing
 - Show toast error when trying to delete item and it's not permitted @danielamormocea
-
-### Internal
 
 ## 13.8.3 (2021-08-16)
 
