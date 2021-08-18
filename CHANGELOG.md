@@ -11,6 +11,7 @@
 ### Bugfix
 
 - Add title/tooltip on Toolbar buttons @avoinea #1384
+- Slight CSS fix on `ObjectWidget` for supporting long add element button messages @sneridagh
 
 ### Bugfix
 
