@@ -88,22 +88,14 @@ const UniversalLink = ({
           onClick();
           if (!hash) return;
         }
-        e.preventDefault();
-        if (delay) {
-          setTimeout(() => {
-            history.push(stripHash ? path : appUrl, {
-              volto_scroll_hash: hash,
-              volto_scroll_offset:
-                typeof offset === 'function' ? offset() : offset,
-            });
-          }, delay);
-        } else {
+        setTimeout(() => {
           history.push(stripHash ? path : appUrl, {
             volto_scroll_hash: hash,
             volto_scroll_offset:
               typeof offset === 'function' ? offset() : offset,
           });
-        }
+        }, delay);
+        e.preventDefault();
       }}
       {...props}
     >
