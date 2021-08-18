@@ -7,12 +7,13 @@
 ### Feature
 
 - Add title/tooltip on Toolbar buttons @avoinea #1384
-
 - Prevent form submit when clicking on BlockChooserButton @giuliaghisini
 - Fix SearchWidget search by path @giuliaghisini
+
 ### Bugfix
 
 - Show toast error when trying to delete item and it's not permitted @danielamormocea
+
 ### Internal
 
 ## 13.8.3 (2021-08-16)
