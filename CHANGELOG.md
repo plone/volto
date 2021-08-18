@@ -7,6 +7,7 @@
 ### Feature
 
 - Removed unnecessary set-cookies for the removal of the authentication cookie when the user is not logged in @mamico
+- Add additional classnames for the field wrappers and the fieldsets in forms, this helps to be more addressable in CSS if required @sneridagh
 
 ### Bugfix
 

@@ -3,7 +3,7 @@
 exports[`renders a select widget component 1`] = `
 <div>
   <div
-    class="inline field"
+    class="inline field field-wrapper-my-field"
   >
     <div
       class="ui grid"
