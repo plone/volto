@@ -459,7 +459,7 @@ export default compose(
       key: 'content',
       promise: async ({ location, store: { dispatch } }) => {
         if (config?.settings?.hasLockingSupport) {
-          dispatch(lockContent(getBaseUrl(location.pathname)));
+          await dispatch(lockContent(getBaseUrl(location.pathname)));
         }
         return await dispatch(getContent(getBaseUrl(location.pathname)));
       },
