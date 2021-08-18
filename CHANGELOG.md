@@ -2,14 +2,13 @@
 
 ## 13.10.1 (unreleased)
 
-### Breaking
-
 ### Feature
+
+- Add select utils `normalizerValue`, add state to the basic select field forcing it to be fully controlled @sneridagh
 
 ### Bugfix
 
 - Improve consistency of `TokenWidget`'s use of the choice labels as "values" instead of internal uids assigned by `react-select`. @tiberiuichim
-- Add select utils `normalizerValue`, add state to the basic select field forcing it to be fully controlled @sneridagh
 - Solve glitch in async loading options in `AsyncSelect` components @sneridagh
 
 ### Internal
