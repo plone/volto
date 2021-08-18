@@ -5,6 +5,7 @@
 ### Breaking
 
 ### Feature
+- Increase clickable area of right-arrow in objectBrowser @iFlameing
 
 - Fix SearchWidget search by path @giuliaghisini
 
