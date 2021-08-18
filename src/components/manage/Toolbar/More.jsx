@@ -160,7 +160,11 @@ class More extends Component {
             onClick={() => this.push('personalTools')}
             tabIndex={0}
           >
-            <Icon name={userSVG} size="30px" />
+            <Icon
+              name={userSVG}
+              size="30px"
+              title={this.props.intl.formatMessage(messages.personalTools)}
+            />
           </button>
         </header>
         <div className="pastanaga-menu-list">
@@ -309,7 +313,13 @@ class More extends Component {
                           messages.applyWorkingCopy,
                         )}
 
-                        <Icon name={applySVG} size="24px" />
+                        <Icon
+                          name={applySVG}
+                          size="24px"
+                          title={this.props.intl.formatMessage(
+                            messages.applyWorkingCopy,
+                          )}
+                        />
                       </button>
                     </li>
                     <li>
@@ -346,7 +356,14 @@ class More extends Component {
                           messages.removeWorkingCopy,
                         )}
 
-                        <Icon name={removeSVG} size="24px" color="#e40166" />
+                        <Icon
+                          name={removeSVG}
+                          size="24px"
+                          color="#e40166"
+                          title={this.props.intl.formatMessage(
+                            messages.removeWorkingCopy,
+                          )}
+                        />
                       </button>
                     </li>
                   </Plug>

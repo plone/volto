@@ -1,17 +1,26 @@
 # Change Log
 
-## 13.8.3 (unreleased)
+## 13.8.4 (unreleased)
 
 ### Breaking
 
 ### Feature
 
-### Bugfix
+- Add title/tooltip on Toolbar buttons @avoinea #1384
 
 - Prevent form submit when clicking on BlockChooserButton @giuliaghisini
 - Make selectedItems Filter work in Contents folder @nileshgulia1
+### Bugfix
 
+- Show toast error when trying to delete item and it's not permitted @danielamormocea
 ### Internal
+
+## 13.8.3 (2021-08-16)
+
+### Bugfix
+
+- Prevent form submit when clicking on BlockChooserButton @giuliaghisini
+- Add missing `publicURL` to the list of `window.env` serialized variables coming from the hosts configuration to complete the support for seamless mode @sneridagh
 
 ## 13.8.2 (2021-07-20)
 
