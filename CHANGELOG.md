@@ -9,14 +9,11 @@
 - Removed unnecessary set-cookies for the removal of the authentication cookie when the user is not logged in @mamico
 
 ### Bugfix
-- This Enable us to change the  default content type view @iRohitSingh
-
-- Add title/tooltip on Toolbar buttons @avoinea #1384
-
-### Bugfix
 
 - Fix the babel view cancel button redirect @iFlameing
 - Show toast error when trying to delete item and it's not permitted @danielamormocea
+- Add title/tooltip on Toolbar buttons @avoinea #1384
+- This Enable us to change the  default content type view @iRohitSingh
 
 ### Internal
 
