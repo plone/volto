@@ -2,18 +2,15 @@
 
 ## 13.9.1 (unreleased)
 
-### Breaking
-
 ### Feature
+
 - Increase clickable area of right-arrow in objectBrowser @iFlameing
-
-- Fix SearchWidget search by path @giuliaghisini
-
 - Prevent form submit when clicking on BlockChooserButton @giuliaghisini
 - Make selectedItems Filter work in Contents folder @nileshgulia1
+
 ### Bugfix
 
-### Internal
+- Fix SearchWidget search by path @giuliaghisini
 
 ## 13.9.0 (2021-08-18)
 
