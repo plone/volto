@@ -10,7 +10,9 @@
 
 ### Bugfix
 
+- Fix the babel view cancel button redirect @iFlameing
 - Show toast error when trying to delete item and it's not permitted @danielamormocea
+
 ### Internal
 
 ## 13.8.3 (2021-08-16)
