@@ -1,20 +1,30 @@
 # Change Log
 
-## 13.8.4 (unreleased)
+## 13.9.1 (unreleased)
 
 ### Breaking
 
 ### Feature
 
-- Add title/tooltip on Toolbar buttons @avoinea #1384
-- Prevent form submit when clicking on BlockChooserButton @giuliaghisini
 - Fix SearchWidget search by path @giuliaghisini
 
 ### Bugfix
 
-- Show toast error when trying to delete item and it's not permitted @danielamormocea
-
 ### Internal
+
+## 13.9.0 (2021-08-18)
+
+### Feature
+
+- Removed unnecessary set-cookies for the removal of the authentication cookie when the user is not logged in @mamico
+- Add additional classnames for the field wrappers and the fieldsets in forms, this helps to be more addressable in CSS if required @sneridagh
+
+### Bugfix
+
+- Add title/tooltip on Toolbar buttons @avoinea #1384
+- Slight CSS fix on `ObjectWidget` for supporting long add element button messages @sneridagh
+- Fix the babel view cancel button redirect @iFlameing
+- Show toast error when trying to delete item and it's not permitted @danielamormocea
 
 ## 13.8.3 (2021-08-16)
 
