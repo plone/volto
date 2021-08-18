@@ -217,7 +217,7 @@ class View extends Component {
       return <span />;
     }
     const RenderedView =
-      this.getViewByType() || this.getViewByLayout() || this.getViewDefault();
+      this.getViewByLayout() || this.getViewByType() || this.getViewDefault();
 
     return (
       <div id="view">

@@ -7,7 +7,7 @@
 ### Feature
 
 ### Bugfix
-
+- This Enable us to change the  default content type view @iRohitSingh
 ### Internal
 
 ## 13.8.3 (2021-08-16)
