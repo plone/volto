@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Fix SearchWidget search by path @giuliaghisini
+
 ### Bugfix
 
 ### Internal
