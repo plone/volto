@@ -6,6 +6,10 @@
 
 ### Feature
 
+- Removed unnecessary set-cookies for the removal of the authentication cookie when the user is not logged in @mamico
+
+### Bugfix
+
 - Add title/tooltip on Toolbar buttons @avoinea #1384
 
 ### Bugfix
