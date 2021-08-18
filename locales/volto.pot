@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2021-08-17T07:51:04.274Z\n"
+"POT-Creation-Date: 2021-08-17T15:26:07.509Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1078,11 +1078,6 @@ msgstr ""
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: If this date is in the future, the content will not show up in listings and searches until this date.
 msgid "If this date is in the future, the content will not show up in listings and searches until this date."
-msgstr ""
-
-#: components/manage/LockingToastsFactory/LockingToastsFactory
-# defaultMessage: If you are certain this user has abandoned the object, you may unlock the object. You will then be able to edit it.
-msgid "If you are certain this user has abandoned the object, you may unlock the object. You will then be able to edit it."
 msgstr ""
 
 #: components/theme/NotFound/NotFound
@@ -2366,6 +2361,11 @@ msgstr ""
 msgid "The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
 msgstr ""
 
+#: components/manage/Contents/Contents
+# defaultMessage: The item could not be deleted.
+msgid "The item could not be deleted."
+msgstr ""
+
 #: components/theme/Register/Register
 # defaultMessage: The registration process has been successful. Please check your e-mail inbox for information on how activate your account.
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
@@ -2415,11 +2415,6 @@ msgstr ""
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 # defaultMessage: This is a working copy of {title}
 msgid "This is a working copy of {title}"
-msgstr ""
-
-#: components/manage/LockingToastsFactory/LockingToastsFactory
-# defaultMessage: This item was locked by {creator} on {date}
-msgid "This item was locked by {creator} on {date}"
 msgstr ""
 
 #: components/manage/Contents/ContentsRenameModal
@@ -2548,11 +2543,6 @@ msgstr ""
 #: components/manage/Multilingual/ManageTranslations
 # defaultMessage: Unlink translation for
 msgid "Unlink translation for"
-msgstr ""
-
-#: components/manage/Toolbar/Toolbar
-# defaultMessage: Unlock
-msgid "Unlock"
 msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel

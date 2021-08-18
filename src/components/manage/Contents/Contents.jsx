@@ -119,6 +119,10 @@ const messages = defineMessages({
     id: 'Do you really want to delete the following items?',
     defaultMessage: 'Do you really want to delete the following items?',
   },
+  deleteError: {
+    id: 'The item could not be deleted.',
+    defaultMessage: 'The item could not be deleted.',
+  },
   loading: {
     id: 'loading',
     defaultMessage: 'Loading',
@@ -485,6 +489,17 @@ class Contents extends Component {
         />,
       );
     }
+
+    if (this.props.deleteRequest.loading && nextProps.deleteRequest.error) {
+      this.props.toastify.toast.error(
+        <Toast
+          error
+          title={this.props.intl.formatMessage(messages.deleteError)}
+          content={this.props.intl.formatMessage(messages.deleteError)}
+        />,
+      );
+    }
+
     if (this.props.orderRequest.loading && nextProps.orderRequest.loaded) {
       this.props.toastify.toast.success(
         <Toast

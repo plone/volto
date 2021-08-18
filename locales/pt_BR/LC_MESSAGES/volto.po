@@ -1943,6 +1943,10 @@ msgstr "O servidor de backend está respondendo, mas os cabeçalhos CORS não es
 msgid "The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
 msgstr "O servidor de backend do seu site não está respondendo, pedimos desculpas pelo inconveniente. Por favor, tente recarregar a página e tente novamente. Se o problema persistir, entre em contato com os administradores do site."
 
+#: components/manage/Contents/Contents
+msgid "The item could not be deleted."
+msgstr ""
+
 #: components/theme/Register/Register
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 msgstr "O processo de registro foi bem sucedido. Verifique sua caixa de entrada de e-mail para obter informações sobre como ativar sua conta."
