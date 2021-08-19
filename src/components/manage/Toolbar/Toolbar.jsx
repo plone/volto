@@ -387,7 +387,12 @@ class Toolbar extends Component {
                         className="edit"
                         to={`${path}/edit`}
                       >
-                        <Icon name={penSVG} size="30px" className="circled" />
+                        <Icon
+                          name={penSVG}
+                          size="30px"
+                          className="circled"
+                          title={this.props.intl.formatMessage(messages.edit)}
+                        />
                       </Link>
                     )}
                     {this.props.content &&
@@ -400,7 +405,13 @@ class Toolbar extends Component {
                           )}
                           to={`${path}/contents`}
                         >
-                          <Icon name={folderSVG} size="30px" />
+                          <Icon
+                            name={folderSVG}
+                            size="30px"
+                            title={this.props.intl.formatMessage(
+                              messages.contents,
+                            )}
+                          />
                         </Link>
                       )}
                     {this.props.content &&
@@ -435,7 +446,11 @@ class Toolbar extends Component {
                           tabIndex={0}
                           id="toolbar-add"
                         >
-                          <Icon name={addSVG} size="30px" />
+                          <Icon
+                            name={addSVG}
+                            size="30px"
+                            title={this.props.intl.formatMessage(messages.add)}
+                          />
                         </button>
                       )}
                     <div className="toolbar-button-spacer" />
@@ -450,6 +465,7 @@ class Toolbar extends Component {
                         className="mobile hidden"
                         name={moreSVG}
                         size="30px"
+                        title={this.props.intl.formatMessage(messages.more)}
                       />
                       {this.state.showMenu ? (
                         <Icon
@@ -481,7 +497,13 @@ class Toolbar extends Component {
                     tabIndex={0}
                     id="toolbar-personal"
                   >
-                    <Icon name={userSVG} size="30px" />
+                    <Icon
+                      name={userSVG}
+                      size="30px"
+                      title={this.props.intl.formatMessage(
+                        messages.personalTools,
+                      )}
+                    />
                   </button>
                 )}
                 <div className="divider" />
