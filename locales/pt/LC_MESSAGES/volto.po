@@ -1281,6 +1281,7 @@ msgstr ""
 
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
+#: components/manage/Widgets/SelectUtils
 #: components/manage/Widgets/SelectWidget
 msgid "No value"
 msgstr "Sem qualquer valor"
@@ -1950,6 +1951,10 @@ msgstr ""
 
 #: components/theme/CorsError/CorsError
 msgid "The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
+msgstr ""
+
+#: components/manage/Contents/Contents
+msgid "The item could not be deleted."
 msgstr ""
 
 #: components/theme/Register/Register
