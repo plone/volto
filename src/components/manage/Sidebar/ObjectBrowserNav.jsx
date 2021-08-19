@@ -52,10 +52,10 @@ const ObjectBrowserNav = ({
             role="presentation"
             aria-label={
               item.is_folderish && mode === 'image'
-                ? `${intl.formatMessage(messages.browse)} ${item.id}`
-                : `${intl.formatMessage(messages.select)} ${item.id}`
+                ? `${intl.formatMessage(messages.browse)} ${item.title}`
+                : `${intl.formatMessage(messages.select)} ${item.title}`
             }
-            key={item.id}
+            key={item['@id']}
             className={cx('', {
               'selected-item': isSelected(item),
 
@@ -110,7 +110,7 @@ const ObjectBrowserNav = ({
                     basic
                     icon
                     aria-label={`${intl.formatMessage(messages.browse)} ${
-                      item.id
+                      item.title
                     }`}
                   >
                     <Icon
