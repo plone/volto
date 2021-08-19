@@ -6,7 +6,7 @@ exports[`renders an object list widget component 1`] = `
     class="objectlist-widget"
   >
     <div
-      class="inline required field help objectlist"
+      class="inline required field help objectlist field-wrapper-my-widget"
     >
       <div
         class="ui grid"
