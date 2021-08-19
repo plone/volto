@@ -97,25 +97,30 @@ const ObjectBrowserNav = ({
               />
             )}
             {item.is_folderish && (mode === 'link' || mode === 'multiple') && (
-              <Button.Group>
-                <Button
-                  basic
-                  icon
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    navigateTo(item['@id']);
-                  }}
-                  aria-label={`${intl.formatMessage(messages.browse)} ${
-                    item.title
-                  }`}
-                >
-                  <Icon
-                    className="right-arrow-icon"
-                    name={rightArrowSVG}
-                    size="24px"
-                  />
-                </Button>
-              </Button.Group>
+              <div
+                role="presentation"
+                className="right-arrow-link-mode"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  navigateTo(item['@id']);
+                }}
+              >
+                <Button.Group>
+                  <Button
+                    basic
+                    icon
+                    aria-label={`${intl.formatMessage(messages.browse)} ${
+                      item.title
+                    }`}
+                  >
+                    <Icon
+                      className="right-arrow-icon"
+                      name={rightArrowSVG}
+                      size="24px"
+                    />
+                  </Button>
+                </Button.Group>
+              </div>
             )}
           </li>
         ))}

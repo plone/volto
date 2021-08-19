@@ -18,7 +18,12 @@ exports[`Toolbar More component renders a Toolbar More component 1`] = `
           style="height: 30px; width: auto; fill: currentColor;"
           viewBox=""
           xmlns=""
-        />
+        >
+          <title>
+            Personal tools
+          </title>
+          undefined
+        </svg>
       </button>
     </header>
     <div
@@ -98,7 +103,12 @@ exports[`Toolbar More component renders a Toolbar More component with manage con
           style="height: 30px; width: auto; fill: currentColor;"
           viewBox=""
           xmlns=""
-        />
+        >
+          <title>
+            Personal tools
+          </title>
+          undefined
+        </svg>
       </button>
     </header>
     <div
