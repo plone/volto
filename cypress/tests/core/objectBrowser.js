@@ -37,7 +37,7 @@ describe('Object Browser Tests', () => {
     cy.get('.toolbar-inner button.ui.basic.icon.button').click();
     cy.findByLabelText('Search SVG').click();
     cy.get('.ui.input.search').type('/my-page-1');
-    cy.findByLabelText('Select my-image').dblclick();
+    cy.findByLabelText('Select My Image').dblclick();
     cy.get('#toolbar-save').click();
     cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
 
@@ -54,7 +54,7 @@ describe('Object Browser Tests', () => {
     cy.get('.toolbar-inner button.ui.basic.icon.button').click();
     cy.findByLabelText('Search SVG').click();
     cy.get('.ui.input.search').type('http://localhost:55001/my-page-1');
-    cy.findByLabelText('Select my-image').dblclick();
+    cy.findByLabelText('Select My Image').dblclick();
     cy.get('#toolbar-save').click();
     cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
 
@@ -62,5 +62,14 @@ describe('Object Browser Tests', () => {
     cy.get('.block img')
       .should('have.attr', 'src')
       .and('eq', '/my-page-1/my-image/@@images/image');
+  });
+
+  it('As editor I get focus on search box in sidebar when clicking on lens icon', () => {
+    cy.get('.block.inner.text .public-DraftEditor-content').click();
+    cy.get('.ui.basic.icon.button.block-add-button').click();
+    cy.get('.ui.basic.icon.button.image').contains('Image').click();
+    cy.get('.toolbar-inner button.ui.basic.icon.button').click();
+    cy.findByLabelText('Search SVG').click();
+    cy.get('.ui.input.search input').should('be.focused');
   });
 });
