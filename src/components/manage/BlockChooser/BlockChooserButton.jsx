@@ -26,7 +26,11 @@ export const ButtonComponent = (props) => {
       icon
       basic
       title={intl.formatMessage(messages.addBlock)}
-      onClick={onShowBlockChooser}
+      onClick={(e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        onShowBlockChooser();
+      }}
       className={className}
     >
       <Icon name={addSVG} className={className} size={size} />
@@ -44,6 +48,7 @@ const BlockChooserButton = (props) => {
     onInsertBlock,
     blocksConfig,
     buttonComponent,
+    properties,
   } = props;
   const { disableNewBlocks } = data;
   const [addNewBlockOpened, setAddNewBlockOpened] = React.useState(false);
@@ -97,6 +102,7 @@ const BlockChooserButton = (props) => {
           currentBlock={block}
           allowedBlocks={allowedBlocks}
           blocksConfig={blocksConfig}
+          properties={properties}
           showRestricted={showRestricted}
           ref={blockChooserRef}
         />

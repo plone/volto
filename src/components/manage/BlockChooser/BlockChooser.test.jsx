@@ -238,4 +238,52 @@ describe('BlocksChooser', () => {
     expect(container).not.toHaveTextContent('Custom group');
     config.blocks.groupBlocksOrder = old;
   });
+  it('Show unique in case they have been removed (restricted as a function)', () => {
+    config.blocks.required = [];
+    config.blocks.blocksConfig.title.restricted = ({ properties, block }) =>
+      properties.blocks_layout?.items?.find(
+        (uid) => properties.blocks?.[uid]?.['@type'] === block.id,
+      );
+
+    const { container } = render(
+      <Provider store={store}>
+        <BlockChooser
+          onInsertBlock={() => {}}
+          currentBlock="theblockid"
+          properties={{
+            blocks: {
+              'my-block-hash': {
+                '@type': 'text',
+              },
+            },
+          }}
+        />
+      </Provider>,
+    );
+    expect(container.firstChild).toHaveTextContent('Title');
+  });
+  it('Do not show unique in case it is present', () => {
+    config.blocks.required = [];
+    config.blocks.blocksConfig.title.restricted = true;
+
+    const { container } = render(
+      <Provider store={store}>
+        <BlockChooser
+          onInsertBlock={() => {}}
+          currentBlock="theblockid"
+          properties={{
+            blocks: {
+              'my-block-hash': {
+                '@type': 'text',
+              },
+              'my-block-title-hash': {
+                '@type': 'title',
+              },
+            },
+          }}
+        />
+      </Provider>,
+    );
+    expect(container.firstChild).not.toHaveTextContent('Title');
+  });
 });
