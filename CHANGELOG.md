@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Use Plone logo (Closes #2632) @ericof
+
 ## 13.12.0 (2021-08-20)
 
 ### Feature
