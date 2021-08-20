@@ -12,6 +12,7 @@
 
 - Fix ObjectBrowserNav items key @nzambello
 - Fix ObjectBrowserNav aria label: id => title @nzambello
+- Show info about backend debug mode in control panel only if backend in debug mode @ksuess
 
 ### Internal
 

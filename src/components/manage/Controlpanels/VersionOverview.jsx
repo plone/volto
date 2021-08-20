@@ -15,6 +15,7 @@ const VersionOverview = ({
   plone_version,
   python_version,
   zope_version,
+  debug_mode,
 }) => {
   const voltoVersion = packageJSON.version;
 
@@ -31,16 +32,18 @@ const VersionOverview = ({
         <List.Item key="volto">Python {python_version}</List.Item>
         <List.Item key="volto">PIL {pil_version}</List.Item>
       </List>
-      <p>
-        <FormattedMessage
-          id="Warning Regarding debug mode"
-          defaultMessage='You are running in "debug mode". This mode is intended for sites that
+      {debug_mode === 'Yes' && (
+        <p>
+          <FormattedMessage
+            id="Warning Regarding debug mode"
+            defaultMessage='You are running in "debug mode". This mode is intended for sites that
         are under development. This allows many configuration changes to be
         immediately visible, but will make your site run more slowly. To turn
         off debug mode, stop the server, set "debug-mode=off" in your
         buildout.cfg, re-run bin/buildout and then restart the server process.'
-        />
-      </p>
+          />
+        </p>
+      )}
     </>
   );
 };
