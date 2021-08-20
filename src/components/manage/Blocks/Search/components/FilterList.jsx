@@ -12,8 +12,9 @@ import downSVG from '@plone/volto/icons/down-key.svg';
 
 const FilterList = (props) => {
   const { data, facets, setFacets, isEditMode } = props;
+  const filters = !Object.values(facets).every((facet) => !facet.length);
+
   const [isOpened, setIsOpened] = React.useState(false);
-  const filters = !Object.values(facets).every((x) => !x.length);
 
   return filters && Object.keys(facets).length ? (
     <Grid.Row verticalAlign="bottom">
