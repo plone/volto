@@ -2,38 +2,90 @@
 
 exports[`FilterList renders filters listing component for search block 1`] = `
 <div
-  className="filter-list"
+  className="bottom aligned row"
 >
   <div
-    className="filter-list-wrapper"
+    className="twelve wide column"
   >
     <div
-      className="filter-list-group"
+      className="accordion ui filter-listing"
     >
       <div
-        className="ui labels"
+        className="title filter-list-header"
+        onClick={[Function]}
+      >
+        <button
+          className="ui basic compact right floated button"
+          onClick={[Function]}
+        >
+          <i
+            aria-hidden="true"
+            className="trash icon"
+            onClick={[Function]}
+          />
+          Reset filters
+        </button>
+        <div
+          className="filter-list-title"
+        >
+          <svg
+            className="icon"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "currentColor",
+                "height": "18px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
+          />
+          Current filters applied
+        </div>
+      </div>
+      <div
+        className="content filter-list-content"
       >
         <div
-          className="ui label"
-          onClick={[Function]}
-        >
-          Document
-          <i
-            aria-hidden="true"
-            className="delete icon"
-            onClick={[Function]}
-          />
-        </div>
+          className="ui inverted divider"
+        />
         <div
-          className="ui label"
-          onClick={[Function]}
+          className="filter-list"
         >
-          Folder
-          <i
-            aria-hidden="true"
-            className="delete icon"
-            onClick={[Function]}
-          />
+          <div>
+            <div
+              className="filter-list-group"
+            >
+              <div
+                className="ui small label"
+                onClick={[Function]}
+              >
+                Document
+                <i
+                  aria-hidden="true"
+                  className="delete icon"
+                  onClick={[Function]}
+                />
+              </div>
+              <div
+                className="ui small label"
+                onClick={[Function]}
+              >
+                Folder
+                <i
+                  aria-hidden="true"
+                  className="delete icon"
+                  onClick={[Function]}
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -41,24 +41,26 @@ const LeftColumnFacets = (props) => {
     <Grid className="searchBlock-facets left-column-facets" stackable>
       <Grid.Row>
         <Grid.Column width={12}>
-          <h3>{data.title}</h3>
+          {data.title && <h3>{data.title}</h3>}
           <SearchDetails text={searchedText} total={totalItems} />
         </Grid.Column>
       </Grid.Row>
 
-      <Grid.Row verticalAlign="bottom">
-        <Grid.Column width={12}>
-          <div className="search-wrapper">
-            {data.showSearchInput && <SearchInput {...props} isLive={isLive} />}
-            {data.showSearchButton && (
-              <Button onClick={() => onTriggerSearch(searchText)}>
-                {data.searchButtonLabel ||
-                  intl.formatMessage(messages.searchButtonText)}
-              </Button>
-            )}
-          </div>
-        </Grid.Column>
-      </Grid.Row>
+      {data.showSearchInput && (
+        <Grid.Row verticalAlign="bottom">
+          <Grid.Column width={12}>
+            <div className="search-wrapper">
+              <SearchInput {...props} isLive={isLive} />
+              {data.showSearchButton && (
+                <Button onClick={() => onTriggerSearch(searchText)}>
+                  {data.searchButtonLabel ||
+                    intl.formatMessage(messages.searchButtonText)}
+                </Button>
+              )}
+            </div>
+          </Grid.Column>
+        </Grid.Row>
+      )}
 
       <FilterList
         {...props}

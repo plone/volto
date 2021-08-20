@@ -891,36 +891,59 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     }
   }
 
-  .items {
-    padding: 1em 0;
-  }
-
   .segment.facet {
     padding-right: 0;
     padding-left: 0;
   }
 
-  .filter-list-group {
-    display: flex;
-    align-items: center;
+  .items {
+    padding: 1em 0;
   }
 
-  .filter-list-wrapper {
-    display: inline-block;
-    padding: 0.3em 1.2em 0.3em 0;
-  }
+  .ui.accordion.filter-listing {
+    padding: 0.5rem 1rem 0.5rem 0.5rem;
+    background-color: #e9e9e9;
+    border-radius: 0.3rem;
 
-  .filter-list {
-    .ui.labels {
-      display: flex;
-      flex-direction: row;
-      align-items: baseline;
-      margin-right: 1.2em;
+    .active.title .filter-list-title svg {
+      transform: rotate(90deg);
     }
 
-    .label-title {
-      padding-right: 0.5em;
-      font-size: small;
+    .ui.basic.button:hover {
+      background: transparent !important;
+    }
+
+    .filter-list-title {
+      display: flex;
+      align-items: center;
+    }
+
+    .filter-list-group {
+      display: flex;
+      align-items: center;
+      margin: 0.5rem 0;
+
+      .ui.label {
+        background-color: #fff;
+      }
+    }
+
+    .filter-list-content {
+      padding-top: 0 !important;
+    }
+
+    .filter-list {
+      .ui.labels {
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+        margin-right: 1.2em;
+      }
+
+      .label-title {
+        padding-right: 0.5em;
+        font-size: small;
+      }
     }
   }
 }

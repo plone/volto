@@ -44,19 +44,21 @@ const TopSideFacets = (props) => {
         <SearchDetails text={searchedText} total={totalItems} as="h5" />
       </Grid.Column>
 
-      <Grid.Row verticalAlign="bottom">
-        <Grid.Column width={12}>
-          <div className="search-wrapper">
-            {data.showSearchInput && <SearchInput {...props} isLive={isLive} />}
-            {data.showSearchButton && (
-              <Button onClick={() => onTriggerSearch(searchText)}>
-                {data.searchButtonLabel ||
-                  intl.formatMessage(messages.searchButtonText)}
-              </Button>
-            )}
-          </div>
-        </Grid.Column>
-      </Grid.Row>
+      {data.showSearchInput && (
+        <Grid.Row verticalAlign="bottom">
+          <Grid.Column width={12}>
+            <div className="search-wrapper">
+              <SearchInput {...props} isLive={isLive} />
+              {data.showSearchButton && (
+                <Button onClick={() => onTriggerSearch(searchText)}>
+                  {data.searchButtonLabel ||
+                    intl.formatMessage(messages.searchButtonText)}
+                </Button>
+              )}
+            </div>
+          </Grid.Column>
+        </Grid.Row>
+      )}
 
       <FilterList
         {...props}
