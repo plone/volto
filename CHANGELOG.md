@@ -2,8 +2,6 @@
 
 ## 13.11.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Multilingual routing was added for sitemap, search, contact-form, change-password, register and password-reset @ionlizarazu
@@ -14,8 +12,6 @@
 - Fix ObjectBrowserNav items key @nzambello
 - Fix ObjectBrowserNav aria label: id => title @nzambello
 - Fix missing code in `ArrayWidget` from refactored `SelectWidget` @sneridagh
-
-### Internal
 
 ## 13.11.0 (2021-08-18)
 
