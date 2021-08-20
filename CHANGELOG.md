@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Footer: Point to plone.org instead of plone.com @ericof
+
 ## 13.12.0 (2021-08-20)
 
 ### Feature
