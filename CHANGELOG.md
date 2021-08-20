@@ -9,6 +9,7 @@
 ### Bugfix
 
 ### Internal
+- Disabled all the other configuration options when user did not choose any criteria in listing block @iFlameing
 
 ## 13.12.0 (2021-08-20)
 
