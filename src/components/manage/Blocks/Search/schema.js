@@ -100,13 +100,13 @@ const enhanceSchema = (originalSchema, formData) => {
   return schema;
 };
 
-const FacetSchema = (intl) => ({
+const FacetSchema = ({ intl }) => ({
   title: intl.formatMessage(messages.facet),
   fieldsets: [
     {
       id: 'default',
       title: 'Default',
-      fields: ['title', 'field', 'multiple', 'type', 'hidden'],
+      fields: ['title', 'field', 'type', 'multiple', 'hidden'],
     },
   ],
   properties: {
@@ -152,16 +152,6 @@ export default ({ data = {}, intl }) => {
         fields: ['title'],
       },
       {
-        id: 'controls',
-        title: intl.formatMessage(messages.controls),
-        fields: [
-          'showSearchInput',
-          ...(data.showSearchInput ? ['searchInputPrompt'] : []),
-          'showSearchButton',
-          ...(data.showSearchButton ? ['searchButtonLabel'] : []),
-        ],
-      },
-      {
         id: 'searchquery',
         title: intl.formatMessage(messages.baseSearchQuery),
         fields: ['query'],
@@ -170,6 +160,16 @@ export default ({ data = {}, intl }) => {
         id: 'facets',
         title: intl.formatMessage(messages.facets),
         fields: ['facets'],
+      },
+      {
+        id: 'controls',
+        title: intl.formatMessage(messages.controls),
+        fields: [
+          'showSearchInput',
+          ...(data.showSearchInput ? ['searchInputPrompt'] : []),
+          'showSearchButton',
+          ...(data.showSearchButton ? ['searchButtonLabel'] : []),
+        ],
       },
     ],
     properties: {
@@ -195,7 +195,7 @@ export default ({ data = {}, intl }) => {
       facets: {
         title: intl.formatMessage(messages.facets),
         widget: 'object_list',
-        schema: FacetSchema(intl),
+        schema: FacetSchema({ intl }),
         schemaExtender: enhanceSchema,
       },
       query: {
