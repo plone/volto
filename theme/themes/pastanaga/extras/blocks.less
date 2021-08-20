@@ -913,9 +913,18 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
       background: transparent !important;
     }
 
+    .filter-list-header {
+      display: flex;
+      justify-content: space-between;
+    }
+
     .filter-list-title {
       display: flex;
       align-items: center;
+    }
+
+    .filter-list-content {
+      padding-top: 0 !important;
     }
 
     .filter-list-group {
@@ -931,17 +940,13 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
       }
 
       .ui.label {
+        margin-left: 0.8em;
         background-color: #fff;
       }
 
       .label-title {
-        padding-right: 0.5em;
         font-size: small;
       }
-    }
-
-    .filter-list-content {
-      padding-top: 0 !important;
     }
   }
 }

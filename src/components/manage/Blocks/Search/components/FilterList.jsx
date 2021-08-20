@@ -13,6 +13,10 @@ import downSVG from '@plone/volto/icons/down-key.svg';
 const FilterList = (props) => {
   const { data, facets, setFacets, isEditMode } = props;
   const filters = !Object.values(facets).every((facet) => !facet.length);
+  const currentFilters = Object.values(facets).reduce(
+    (a, c) => a + c.length,
+    0,
+  );
 
   const [isOpened, setIsOpened] = React.useState(false);
 
@@ -25,22 +29,22 @@ const FilterList = (props) => {
             active={isOpened}
             onClick={() => setIsOpened(!isOpened)}
           >
+            <div className="filter-list-title">
+              <VoltoIcon name={downSVG} size="18px" />
+              Current filters applied: {currentFilters}
+            </div>
             <Button
+              icon
               basic
               compact
-              floated="right"
+              size="small"
               onClick={() => {
                 !isEditMode && setFacets({});
               }}
             >
               <Icon name="trash" />
-              Reset filters
+              Clear filters
             </Button>
-
-            <div className="filter-list-title">
-              <VoltoIcon name={downSVG} size="18px" />
-              Current filters applied
-            </div>
           </Accordion.Title>
           <Accordion.Content className="filter-list-content" active={isOpened}>
             <Divider inverted />

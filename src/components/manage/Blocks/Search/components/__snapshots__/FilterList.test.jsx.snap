@@ -14,17 +14,6 @@ exports[`FilterList renders filters listing component for search block 1`] = `
         className="title filter-list-header"
         onClick={[Function]}
       >
-        <button
-          className="ui basic compact right floated button"
-          onClick={[Function]}
-        >
-          <i
-            aria-hidden="true"
-            className="trash icon"
-            onClick={[Function]}
-          />
-          Reset filters
-        </button>
         <div
           className="filter-list-title"
         >
@@ -46,8 +35,20 @@ exports[`FilterList renders filters listing component for search block 1`] = `
             viewBox=""
             xmlns=""
           />
-          Current filters applied
+          Current filters applied: 
+          2
         </div>
+        <button
+          className="ui small basic compact icon button"
+          onClick={[Function]}
+        >
+          <i
+            aria-hidden="true"
+            className="trash icon"
+            onClick={[Function]}
+          />
+          Clear filters
+        </button>
       </div>
       <div
         className="content filter-list-content"
