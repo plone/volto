@@ -2178,6 +2178,10 @@ msgstr ""
 msgid "Variation"
 msgstr ""
 
+#: components/manage/History/History
+msgid "Version"
+msgstr ""
+
 #: components/manage/Controlpanels/Controlpanels
 msgid "Version Overview"
 msgstr ""

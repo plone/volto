@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2021-08-17T15:26:07.509Z\n"
+"POT-Creation-Date: 2021-08-23T12:31:54.493Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -2642,6 +2642,11 @@ msgstr ""
 #: helpers/Extensions/withBlockSchemaEnhancer
 # defaultMessage: Variation
 msgid "Variation"
+msgstr ""
+
+#: components/manage/History/History
+# defaultMessage: Version
+msgid "Version"
 msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels

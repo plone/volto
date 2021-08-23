@@ -145,16 +145,19 @@ class History extends Component {
           <Table selectable compact singleLine attached>
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell width={4}>
+                <Table.HeaderCell width={3}>
                   <FormattedMessage id="What" defaultMessage="What" />
                 </Table.HeaderCell>
-                <Table.HeaderCell width={4}>
+                <Table.HeaderCell width={3}>
+                  <FormattedMessage id="Version" defaultMessage="Version" />
+                </Table.HeaderCell>
+                <Table.HeaderCell width={3}>
                   <FormattedMessage id="Who" defaultMessage="Who" />
                 </Table.HeaderCell>
-                <Table.HeaderCell width={4}>
+                <Table.HeaderCell width={3}>
                   <FormattedMessage id="When" defaultMessage="When" />
                 </Table.HeaderCell>
-                <Table.HeaderCell width={4}>
+                <Table.HeaderCell width={3}>
                   <FormattedMessage
                     id="Change Note"
                     defaultMessage="Change Note"
@@ -186,6 +189,7 @@ class History extends Component {
                       </span>
                     )}
                   </Table.Cell>
+                  <Table.Cell>{entry.version}</Table.Cell>
                   <Table.Cell>{entry.actor.fullname}</Table.Cell>
                   <Table.Cell>
                     <span title={moment(entry.time).format('LLLL')}>

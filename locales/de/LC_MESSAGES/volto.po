@@ -2174,6 +2174,10 @@ msgstr "Nutzer- und Gruppeneinstellungen"
 msgid "Variation"
 msgstr "Variante"
 
+#: components/manage/History/History
+msgid "Version"
+msgstr ""
+
 #: components/manage/Controlpanels/Controlpanels
 msgid "Version Overview"
 msgstr "Versionsübersicht"
