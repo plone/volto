@@ -1,6 +1,6 @@
 import React from 'react';
 import { SearchInput, SearchDetails, Facets, FilterList } from '../components';
-import { Grid, Divider } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 import { Button } from 'semantic-ui-react';
 import { flushSync } from 'react-dom';
 import { defineMessages, useIntl } from 'react-intl';
@@ -88,8 +88,6 @@ const TopSideFacets = (props) => {
           </Grid>
         </Grid.Column>
       </Grid.Row>
-
-      <Divider />
 
       <Grid.Row>
         <Grid.Column width={12}>{children}</Grid.Column>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { SearchInput, SearchDetails, Facets, FilterList } from '../components';
-import { Grid, Divider, Segment } from 'semantic-ui-react';
+import { Grid, Segment } from 'semantic-ui-react';
 import { Button } from 'semantic-ui-react';
 import { flushSync } from 'react-dom';
 import { defineMessages, useIntl } from 'react-intl';
@@ -75,7 +75,6 @@ const RightColumnFacets = (props) => {
 
       <Grid.Row>
         <Grid.Column mobile={12} tablet={8} computer={9}>
-          <Divider />
           {children}
         </Grid.Column>
 
