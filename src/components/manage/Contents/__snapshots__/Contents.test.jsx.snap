@@ -1615,6 +1615,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                         >
                           <input
                             onChange={[Function]}
+                            onClick={[Function]}
                             placeholder="Filter…"
                             type="text"
                           />

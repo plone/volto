@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-27T19:30:59.079Z\n"
-"PO-Revision-Date: 2021-06-30 15:41+0200\n"
+"PO-Revision-Date: 2021-08-20 21:05+0200\n"
 "Last-Translator: Érico Andrei <ericof@plone.org>, 2021\n"
 "Language: pt_BR\n"
 "Language-Team: Portuguese (https://www.transifex.com/plone/teams/14552/pt/)\n"
@@ -81,7 +81,7 @@ msgstr "Adicionar uma descrição…"
 
 #: components/manage/BlockChooser/BlockChooserButton
 msgid "Add block"
-msgstr ""
+msgstr "Adicionar Bloco"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Add block…"
@@ -125,7 +125,7 @@ msgstr "Adicionar a grupos"
 
 #: components/manage/Widgets/VocabularyTermsWidget
 msgid "Add vocabulary term"
-msgstr ""
+msgstr "Adicionar termo de vocabulário"
 
 #: components/manage/Add/Add
 msgid "Add {type}"
@@ -1111,7 +1111,7 @@ msgstr "Nome de usuário"
 
 #: components/manage/Toolbar/PersonalTools
 msgid "Logout"
-msgstr ""
+msgstr "Sair"
 
 #: components/manage/Toolbar/More
 msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
@@ -1276,6 +1276,7 @@ msgstr "Sem perfil de desinstalação"
 
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
+#: components/manage/Widgets/SelectUtils
 #: components/manage/Widgets/SelectWidget
 msgid "No value"
 msgstr "Sem valor"
@@ -1515,7 +1516,7 @@ msgstr "Remover a recorrência"
 
 #: components/manage/Widgets/VocabularyTermsWidget
 msgid "Remove term"
-msgstr ""
+msgstr "Remover o termo"
 
 #: components/manage/Toolbar/More
 msgid "Remove working copy"
@@ -1567,7 +1568,7 @@ msgstr "Falta informação obrigatória."
 
 #: components/manage/Widgets/VocabularyTermsWidget
 msgid "Reset term title"
-msgstr ""
+msgstr "Redefinir o título do termo"
 
 #: components/manage/Widgets/QuerystringWidget
 msgid "Results limit"
@@ -1945,7 +1946,7 @@ msgstr "O servidor de backend do seu site não está respondendo, pedimos descul
 
 #: components/manage/Contents/Contents
 msgid "The item could not be deleted."
-msgstr ""
+msgstr "O item não pôde ser excluído."
 
 #: components/theme/Register/Register
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
@@ -2214,15 +2215,15 @@ msgstr "Visão"
 
 #: components/manage/Widgets/VocabularyTermsWidget
 msgid "Vocabulary term"
-msgstr ""
+msgstr "Termo de vocabulário"
 
 #: components/manage/Widgets/VocabularyTermsWidget
 msgid "Vocabulary term title"
-msgstr ""
+msgstr "Título do termo de vocabulário"
 
 #: components/manage/Widgets/VocabularyTermsWidget
 msgid "Vocabulary terms"
-msgstr ""
+msgstr "Termos de vocabulário"
 
 #: components/manage/Controlpanels/VersionOverview
 msgid "Warning Regarding debug mode"

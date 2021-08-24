@@ -377,6 +377,7 @@ class Contents extends Component {
     this.onOrderItem = this.onOrderItem.bind(this);
     this.onSortItems = this.onSortItems.bind(this);
     this.onMoveToTop = this.onMoveToTop.bind(this);
+    this.onChangeSelected = this.onChangeSelected.bind(this);
     this.onMoveToBottom = this.onMoveToBottom.bind(this);
     this.cut = this.cut.bind(this);
     this.copy = this.copy.bind(this);
@@ -609,6 +610,28 @@ class Contents extends Component {
         }, 200);
       },
     );
+  }
+
+  /**
+   * On change selected values (Filter)
+   * @method onChangeSelected
+   * @param {object} event Event object.
+   * @param {string} value Filter value.
+   * @returns {undefined}
+   */
+  onChangeSelected(event, { value }) {
+    event.stopPropagation();
+    const { items, selected } = this.state;
+
+    const filteredItems = filter(selected, (selectedItem) =>
+      find(items, (item) => item['@id'] === selectedItem)
+        .title.toLowerCase()
+        .includes(value.toLowerCase()),
+    );
+
+    this.setState({
+      filteredItems,
+    });
   }
 
   /**
@@ -1065,6 +1088,7 @@ class Contents extends Component {
    */
   render() {
     const selected = this.state.selected.length > 0;
+    const filteredItems = this.state.filteredItems || this.state.selected;
     const path = getBaseUrl(this.props.pathname);
     const folderContentsAction = find(this.props.objectActions, {
       id: 'folderContents',
@@ -1598,9 +1622,14 @@ class Contents extends Component {
                                     placeholder={this.props.intl.formatMessage(
                                       messages.filter,
                                     )}
+                                    onChange={this.onChangeSelected}
+                                    onClick={(e) => {
+                                      e.preventDefault();
+                                      e.stopPropagation();
+                                    }}
                                   />
                                   <Dropdown.Menu scrolling>
-                                    {map(this.state.selected, (item) => (
+                                    {map(filteredItems, (item) => (
                                       <Dropdown.Item
                                         key={item}
                                         value={item}

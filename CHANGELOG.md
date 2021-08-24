@@ -1,6 +1,6 @@
 # Change Log
 
-## 13.8.4 (unreleased)
+## 13.12.1 (unreleased)
 
 ### Breaking
 
@@ -8,17 +8,72 @@
 
 - Content locking support for Plone (plone.locking) @avoinea
 - Removed unnecessary set-cookies for the removal of the authentication cookie when the user is not logged in @mamico
+### Bugfix
+
+### Internal
+
+- Updated Brazilian Portuguese translations @ericof
+
+- Footer: Point to plone.org instead of plone.com @ericof
+
+
+## 13.12.0 (2021-08-20)
+
+### Feature
+
+- Multilingual routing was added for sitemap, search, contact-form, change-password, register and password-reset @ionlizarazu
+- Opening the search input in the object browser, it will get the focus @nzambello
+
+### Bugfix
+
+- Fix ObjectBrowserNav items key @nzambello
+- Fix ObjectBrowserNav aria label: id => title @nzambello
+- Fix missing code in `ArrayWidget` from refactored `SelectWidget` @sneridagh
+
+## 13.11.0 (2021-08-18)
+
+### Feature
+
+- Add select utils `normalizerValue`, add state to the basic select field forcing it to be fully controlled @sneridagh
+
+### Bugfix
+
+- Improve consistency of `TokenWidget`'s use of the choice labels as "values" instead of internal uids assigned by `react-select`. @tiberiuichim
+- Solve glitch in async loading options in `AsyncSelect` components @sneridagh
+
+### Internal
+
+- Add tests for `Select` component, document the use cases propely @sneridagh
+- Upgrade `AsyncSelect` to a version compatible with `react-select` v4 @sneridagh
+- Upgrade to latest `react-select` @sneridagh
+
+### Internal
+
+## 13.10.0 (2021-08-18)
+
+### Feature
+
+- Increase clickable area of right-arrow in objectBrowser @iFlameing
+- Prevent form submit when clicking on BlockChooserButton @giuliaghisini
+- Make selectedItems Filter work in Contents folder @nileshgulia1
+
+### Bugfix
+
+- Fix SearchWidget search by path @giuliaghisini
+
+## 13.9.0 (2021-08-18)
+
+### Feature
+
+- Removed unnecessary set-cookies for the removal of the authentication cookie when the user is not logged in @mamico
+- Add additional classnames for the field wrappers and the fieldsets in forms, this helps to be more addressable in CSS if required @sneridagh
 
 ### Bugfix
 
 - Add title/tooltip on Toolbar buttons @avoinea #1384
-
-### Bugfix
-
+- Slight CSS fix on `ObjectWidget` for supporting long add element button messages @sneridagh
 - Fix the babel view cancel button redirect @iFlameing
 - Show toast error when trying to delete item and it's not permitted @danielamormocea
-
-### Internal
 
 ## 13.8.3 (2021-08-16)
 
