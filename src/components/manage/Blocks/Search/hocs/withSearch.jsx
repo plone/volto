@@ -87,7 +87,7 @@ const useLocationStateManager = () => {
   const location = useLocation();
   const history = useHistory();
 
-  const oldState = new URLSearchParams(location.search);
+  const oldState = new URLSearchParams(location.hash);
   const current = Object.assign(
     {},
     ...Array.from(oldState.keys()).map((k) => ({ [k]: oldState.get(k) })),
@@ -95,7 +95,7 @@ const useLocationStateManager = () => {
 
   const setSearchData = React.useCallback(
     (searchData) => {
-      const newParams = new URLSearchParams(location.search);
+      const newParams = new URLSearchParams(location.hash);
 
       let changed = false;
 
@@ -110,9 +110,12 @@ const useLocationStateManager = () => {
           }
         });
 
-      if (changed) history.push({ search: newParams.toString() });
+      if (changed)
+        history.push({
+          hash: newParams.toString(),
+        });
     },
-    [history, oldState, location.search],
+    [history, oldState, location.hash],
   );
 
   return [current, setSearchData];
