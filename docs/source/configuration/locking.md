@@ -11,16 +11,6 @@ Volto provides support for Plone's locking feature, but you need to enable the `
 4. Select the `Locking (Locking support for dexterity)` behavior
 5. Save
 
-## Volto configuration
-
-If your backend does not support locking, you can disable locking via Volto's configuration object:
-
-```js
-import config from '@plone/volto/registry'
-
-config.settings.hasLockingSupport = false;
-```
-
 ## Features
 
 Volto locking support features include:

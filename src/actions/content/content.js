@@ -150,7 +150,6 @@ export function getContent(
         }
       : {},
     settings.isMultilingual ? { expand: 'translations' } : {},
-    settings.hasLockingSupport ? { expand: 'lock' } : {},
   );
 
   let qs = Object.keys(query)

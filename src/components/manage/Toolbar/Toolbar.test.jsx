@@ -6,7 +6,6 @@ import { MemoryRouter } from 'react-router-dom';
 import jwt from 'jsonwebtoken';
 import thunk from 'redux-thunk';
 import { PluggablesProvider } from '@plone/volto/components/manage/Pluggable';
-import config from '@plone/volto/registry';
 
 import Toolbar from './Toolbar';
 
@@ -143,7 +142,6 @@ describe('Toolbar', () => {
   });
 
   it('renders the Toolbar component with lock', () => {
-    config.settings.hasLockingSupport = true;
     const store = mockStore({
       types: { types: [{ title: 'Document', addable: true }] },
       actions: {
@@ -252,11 +250,9 @@ describe('Toolbar', () => {
         data: {
           '@type': 'Folder',
           is_folderish: true,
-          '@components': {
-            lock: {
-              locked: true,
-              creator: 'joe',
-            },
+          lock: {
+            locked: true,
+            creator: 'joe',
           },
         },
       },

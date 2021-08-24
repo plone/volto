@@ -255,11 +255,8 @@ export default function content(state = initialState, action = {}) {
         },
         data: {
           ...state.data,
-          '@components': {
-            ...(state?.data?.['@components'] || {}),
-            lock: {
-              ...result,
-            },
+          lock: {
+            ...result,
           },
         },
       };
@@ -283,6 +280,12 @@ export default function content(state = initialState, action = {}) {
           loading: false,
           loaded: true,
           error: null,
+        },
+        data: {
+          ...state.data,
+          lock: {
+            ...result,
+          },
         },
       };
     case `${CREATE_CONTENT}_FAIL`:

@@ -208,7 +208,7 @@ class Edit extends Component {
    * @returns {undefined}
    */
   componentWillUnmount() {
-    if (config.settings.hasLockingSupport) {
+    if (this.props.content?.lock?.locked) {
       this.props.unlockContent(getBaseUrl(this.props.pathname));
     }
   }
@@ -220,7 +220,7 @@ class Edit extends Component {
    * @returns {undefined}
    */
   onSubmit(data) {
-    const lock_token = this.props.content?.['@components']?.['lock']?.token;
+    const lock_token = this.props.content?.lock?.token;
     const headers = lock_token ? { 'Lock-Token': lock_token } : {};
     this.props.updateContent(getBaseUrl(this.props.pathname), data, headers);
   }
@@ -458,10 +458,13 @@ export default compose(
     {
       key: 'content',
       promise: async ({ location, store: { dispatch } }) => {
-        if (config?.settings?.hasLockingSupport) {
+        const content = await dispatch(
+          getContent(getBaseUrl(location.pathname)),
+        );
+        if (content?.lock !== undefined) {
           await dispatch(lockContent(getBaseUrl(location.pathname)));
         }
-        return await dispatch(getContent(getBaseUrl(location.pathname)));
+        return content;
       },
     },
   ]),

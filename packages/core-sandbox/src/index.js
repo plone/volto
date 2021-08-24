@@ -45,8 +45,6 @@ export const workingCopyFixture = (config) => {
 };
 
 export const lockingFixture = (config) => {
-  config.settings.hasLockingSupport = true;
-
   return config;
 };
 

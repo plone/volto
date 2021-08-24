@@ -7,7 +7,6 @@ import { defineMessages, useIntl } from 'react-intl';
 import { Toast } from '@plone/volto/components';
 // import { flattenToAppURL } from '@plone/volto/helpers';
 import { parse } from 'date-fns';
-import config from '@plone/volto/registry';
 import useDeepCompareEffect from 'use-deep-compare-effect';
 
 const messages = defineMessages({
@@ -28,10 +27,10 @@ const LockingToastsFactory = (props) => {
   const pathname = useLocation().pathname;
   const lang = useSelector((state) => state.intl.locale);
   const { content, user } = props;
-  const locking = content?.['@components']?.['lock'];
-  const creator = locking?.creator_name || locking?.creator || '';
+  const lock = content?.lock;
+  const creator = lock?.creator_name || lock?.creator || '';
   // const creator_url = locking?.creator_url || '';
-  const date = locking?.created || '';
+  const date = lock?.created || '';
   const dateOptions = {
     year: 'numeric',
     month: 'long',
@@ -41,8 +40,8 @@ const LockingToastsFactory = (props) => {
   };
 
   useDeepCompareEffect(() => {
-    if (config.settings.hasLockingSupport && user && content) {
-      if (locking?.locked && locking?.creator !== user) {
+    if (user && content) {
+      if (lock?.locked && lock?.creator !== user) {
         if (toast.isActive('lockinginfo')) {
           toast.update('lockinginfo', {
             render: (
@@ -84,17 +83,7 @@ const LockingToastsFactory = (props) => {
         }
       }
     }
-  }, [
-    content,
-    creator,
-    date,
-    dateOptions,
-    intl,
-    lang,
-    locking,
-    pathname,
-    user,
-  ]);
+  }, [content, creator, date, dateOptions, intl, lang, lock, pathname, user]);
 
   return null;
 };
