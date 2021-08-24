@@ -23,7 +23,7 @@ const SelectFacet = (props) => {
       onChange={(data) => {
         onChange(
           facet.field.value,
-          isMulti ? data.map(({ value }) => value) : data.value,
+          isMulti ? data.map(({ value }) => value) : [data.value],
         );
       }}
       isMulti={facet.multiple}

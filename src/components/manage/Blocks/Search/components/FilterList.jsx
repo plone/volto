@@ -12,13 +12,13 @@ import downSVG from '@plone/volto/icons/down-key.svg';
 
 const FilterList = (props) => {
   const { data, facets, setFacets, isEditMode } = props;
-  const filters = !Object.values(facets).every((facet) => !facet.length);
-  const currentFilters = Object.values(facets).reduce(
-    (a, c) => a + c.length,
-    0,
-  );
-
   const [isOpened, setIsOpened] = React.useState(false);
+  const filters = !Object.values(facets).every((facet) => !facet.length);
+  const currentFilters = Object.fromEntries(
+    Object.entries(facets).filter((v) => v[1]),
+  );
+  const totalFilters = [].concat.apply([], Object.values(currentFilters))
+    .length;
 
   return filters && Object.keys(facets).length ? (
     <Grid.Row verticalAlign="bottom">
@@ -31,7 +31,7 @@ const FilterList = (props) => {
           >
             <div className="filter-list-title">
               <VoltoIcon name={downSVG} size="18px" />
-              Current filters applied: {currentFilters}
+              Current filters applied: {totalFilters}
             </div>
             <Button
               icon
@@ -62,24 +62,42 @@ const FilterList = (props) => {
                           ''
                         );
                       })}
-                      {facets[facet].map((entry, i) => (
+                      {typeof facets[facet] === 'string' ? (
                         <Label size="small" key={i}>
-                          {entry}
+                          {facets[facet]}
                           <Icon
                             name="delete"
                             onClick={() => {
-                              const entries = facets[facet].filter(
-                                (item) => item !== entry,
-                              );
                               !isEditMode &&
                                 setFacets({
                                   ...facets,
-                                  [facet]: entries,
+                                  [facet]: '',
                                 });
                             }}
                           />
                         </Label>
-                      ))}
+                      ) : (
+                        <>
+                          {facets[facet].map((entry, i) => (
+                            <Label size="small" key={i}>
+                              {entry}
+                              <Icon
+                                name="delete"
+                                onClick={() => {
+                                  const entries = facets[facet].filter(
+                                    (item) => item !== entry,
+                                  );
+                                  !isEditMode &&
+                                    setFacets({
+                                      ...facets,
+                                      [facet]: entries,
+                                    });
+                                }}
+                              />
+                            </Label>
+                          ))}
+                        </>
+                      )}
                     </div>
                   )}
                 </div>
