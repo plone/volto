@@ -41,7 +41,7 @@ const LockingToastsFactory = (props) => {
 
   useDeepCompareEffect(() => {
     if (user && content) {
-      if (lock?.locked && lock?.creator !== user) {
+      if (lock?.locked && lock?.stealable && lock?.creator !== user) {
         if (toast.isActive('lockinginfo')) {
           toast.update('lockinginfo', {
             render: (

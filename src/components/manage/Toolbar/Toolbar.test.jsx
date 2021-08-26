@@ -252,6 +252,7 @@ describe('Toolbar', () => {
           is_folderish: true,
           lock: {
             locked: true,
+            stealable: true,
             creator: 'joe',
           },
         },

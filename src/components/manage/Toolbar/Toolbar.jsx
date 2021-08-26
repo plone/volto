@@ -298,7 +298,8 @@ class Toolbar extends Component {
   render() {
     const path = getBaseUrl(this.props.pathname);
     const lock = this.props.content?.lock;
-    const unlockAction = lock?.locked && lock?.creator !== this.props.userId;
+    const unlockAction =
+      lock?.locked && lock?.stealable && lock?.creator !== this.props.userId;
     const editAction =
       !unlockAction && find(this.props.actions.object, { id: 'edit' });
     const folderContentsAction = find(this.props.actions.object, {
