@@ -8,7 +8,7 @@
 
 ### Bugfix
 
-- Fix QueryWidget styling @kreafox
+- Properly style QueryWidget when used standalone, outside of QuerystringWidget @kreafox
 
 ### Internal
 
