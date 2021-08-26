@@ -1,8 +1,8 @@
 describe('Document locking', () => {
   beforeEach(() => {
     // given a logged in editor and a page in edit mode
-    cy.createUser({username: 'editor1', fullname: "Editor 1"});
-    cy.createUser({username: 'editor2', fullname: "Editor 2"});
+    cy.createUser({ username: 'editor1', fullname: 'Editor 1' });
+    cy.createUser({ username: 'editor2', fullname: 'Editor 2' });
     cy.visit('/');
   });
 
@@ -28,10 +28,7 @@ describe('Document locking', () => {
 
     // As an editor I can lock a document when Edit
     cy.findByLabelText('Edit').click();
-    cy.url().should(
-      'eq',
-      Cypress.config().baseUrl + '/document/edit',
-    );
+    cy.url().should('eq', Cypress.config().baseUrl + '/document/edit');
     cy.waitForResourceToLoad('@actions');
     cy.waitForResourceToLoad('@types');
     cy.waitForResourceToLoad('document');
@@ -47,7 +44,9 @@ describe('Document locking', () => {
     cy.waitForResourceToLoad('@types');
     cy.waitForResourceToLoad('document');
 
-    cy.findByRole('alert').get('.toast-inner-content').contains('This item was locked by Editor 1 on');
+    cy.findByRole('alert')
+      .get('.toast-inner-content')
+      .contains('This item was locked by Editor 1 on');
   });
 
   it('As editor, I can see when a page is currently edited by another user', function () {
@@ -67,10 +66,7 @@ describe('Document locking', () => {
 
     // As an editor I can lock a document when Edit
     cy.findByLabelText('Edit').click();
-    cy.url().should(
-      'eq',
-      Cypress.config().baseUrl + '/document/edit',
-    );
+    cy.url().should('eq', Cypress.config().baseUrl + '/document/edit');
     cy.waitForResourceToLoad('@actions');
     cy.waitForResourceToLoad('@types');
     cy.waitForResourceToLoad('document');
@@ -86,7 +82,9 @@ describe('Document locking', () => {
     cy.waitForResourceToLoad('@types');
     cy.waitForResourceToLoad('document');
 
-    cy.findByRole('alert').get('.toast-inner-content').contains('This item was locked by Editor 1 on');
+    cy.findByRole('alert')
+      .get('.toast-inner-content')
+      .contains('This item was locked by Editor 1 on');
     cy.findByLabelText('Unlock');
   });
 
@@ -107,10 +105,7 @@ describe('Document locking', () => {
 
     // As an editor I can lock a document when Edit
     cy.findByLabelText('Edit').click();
-    cy.url().should(
-      'eq',
-      Cypress.config().baseUrl + '/document/edit',
-    );
+    cy.url().should('eq', Cypress.config().baseUrl + '/document/edit');
     cy.waitForResourceToLoad('@actions');
     cy.waitForResourceToLoad('@types');
     cy.waitForResourceToLoad('document');
@@ -126,15 +121,14 @@ describe('Document locking', () => {
     cy.waitForResourceToLoad('@types');
     cy.waitForResourceToLoad('document');
 
-    cy.findByRole('alert').get('.toast-inner-content').contains('This item was locked by Editor 1 on');
+    cy.findByRole('alert')
+      .get('.toast-inner-content')
+      .contains('This item was locked by Editor 1 on');
 
     // As another editor I can unlock the document
     cy.findByLabelText('Unlock').click();
     cy.findByLabelText('Edit').click();
-    cy.url().should(
-      'eq',
-      Cypress.config().baseUrl + '/document/edit',
-    );
+    cy.url().should('eq', Cypress.config().baseUrl + '/document/edit');
 
     // As another editor I can edit the document
     cy.get('.documentFirstHeading > .public-DraftStyleDefault-block')

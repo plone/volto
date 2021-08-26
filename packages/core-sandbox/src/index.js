@@ -44,10 +44,6 @@ export const workingCopyFixture = (config) => {
   return config;
 };
 
-export const lockingFixture = (config) => {
-  return config;
-};
-
 const applyConfig = (config) => {
   return {
     ...config,
