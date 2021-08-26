@@ -31,27 +31,27 @@ exports[`History renders a history component 1`] = `
           className=""
         >
           <th
-            className="three wide"
+            className="one wide"
+          >
+            #
+          </th>
+          <th
+            className="four wide"
           >
             What
           </th>
           <th
-            className="three wide"
-          >
-            Version
-          </th>
-          <th
-            className="three wide"
+            className="four wide"
           >
             Who
           </th>
           <th
-            className="three wide"
+            className="four wide"
           >
             When
           </th>
           <th
-            className="three wide"
+            className="four wide"
           >
             Change Note
           </th>
@@ -69,14 +69,16 @@ exports[`History renders a history component 1`] = `
           <td
             className=""
           >
+            <span />
+          </td>
+          <td
+            className=""
+          >
             <span>
               Publish
                (Private → Published)
             </span>
           </td>
-          <td
-            className=""
-          />
           <td
             className=""
           >
@@ -106,13 +108,15 @@ exports[`History renders a history component 1`] = `
           <td
             className=""
           >
+            <span />
+          </td>
+          <td
+            className=""
+          >
             <span>
               Edited
             </span>
           </td>
-          <td
-            className=""
-          />
           <td
             className=""
           >
@@ -169,14 +173,16 @@ exports[`History renders a history component 1`] = `
           <td
             className=""
           >
+            <span />
+          </td>
+          <td
+            className=""
+          >
             <span>
               Create
                (Private)
             </span>
           </td>
-          <td
-            className=""
-          />
           <td
             className=""
           >

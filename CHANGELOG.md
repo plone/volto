@@ -5,7 +5,7 @@
 ### Breaking
 
 ### Feature
-- Showing Version in History View @iFlameing
+- Show version in history view @iFlameing
 
 ### Bugfix
 

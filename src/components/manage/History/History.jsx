@@ -145,19 +145,22 @@ class History extends Component {
           <Table selectable compact singleLine attached>
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell width={3}>
+                <Table.HeaderCell width={1}>
+                  <FormattedMessage
+                    id="History Version Number"
+                    defaultMessage="#"
+                  />
+                </Table.HeaderCell>
+                <Table.HeaderCell width={4}>
                   <FormattedMessage id="What" defaultMessage="What" />
                 </Table.HeaderCell>
-                <Table.HeaderCell width={3}>
-                  <FormattedMessage id="Version" defaultMessage="Version" />
-                </Table.HeaderCell>
-                <Table.HeaderCell width={3}>
+                <Table.HeaderCell width={4}>
                   <FormattedMessage id="Who" defaultMessage="Who" />
                 </Table.HeaderCell>
-                <Table.HeaderCell width={3}>
+                <Table.HeaderCell width={4}>
                   <FormattedMessage id="When" defaultMessage="When" />
                 </Table.HeaderCell>
-                <Table.HeaderCell width={3}>
+                <Table.HeaderCell width={4}>
                   <FormattedMessage
                     id="Change Note"
                     defaultMessage="Change Note"
@@ -169,6 +172,18 @@ class History extends Component {
             <Table.Body>
               {map(entries, (entry) => (
                 <Table.Row key={entry.time}>
+                  <Table.Cell>
+                    {('version' in entry && entry.version > 0 && (
+                      <Link
+                        className="item"
+                        to={`${getBaseUrl(this.props.pathname)}/diff?one=${
+                          entry.version - 1
+                        }&two=${entry.version}`}
+                      >
+                        {entry.version}
+                      </Link>
+                    )) || <span>{entry.version}</span>}
+                  </Table.Cell>
                   <Table.Cell>
                     {('version' in entry && entry.version > 0 && (
                       <Link
@@ -189,7 +204,6 @@ class History extends Component {
                       </span>
                     )}
                   </Table.Cell>
-                  <Table.Cell>{entry.version}</Table.Cell>
                   <Table.Cell>{entry.actor.fullname}</Table.Cell>
                   <Table.Cell>
                     <span title={moment(entry.time).format('LLLL')}>
