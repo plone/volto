@@ -870,6 +870,10 @@ msgid "History"
 msgstr "Historia"
 
 #: components/manage/History/History
+msgid "History Version Number"
+msgstr ""
+
+#: components/manage/History/History
 msgid "History of {title}"
 msgstr "{title} elementuaren historia"
 
@@ -2164,10 +2168,6 @@ msgstr "Erabiltzaile eta taldeen ezarpenak"
 
 #: helpers/Extensions/withBlockSchemaEnhancer
 msgid "Variation"
-msgstr ""
-
-#: components/manage/History/History
-msgid "Version"
 msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels

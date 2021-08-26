@@ -863,6 +863,10 @@ msgid "History"
 msgstr "Istoric"
 
 #: components/manage/History/History
+msgid "History Version Number"
+msgstr ""
+
+#: components/manage/History/History
 msgid "History of {title}"
 msgstr "Istoricul {title}"
 
@@ -2157,10 +2161,6 @@ msgstr "Setările utilizatorilor și grupurilor"
 
 #: helpers/Extensions/withBlockSchemaEnhancer
 msgid "Variation"
-msgstr ""
-
-#: components/manage/History/History
-msgid "Version"
 msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
