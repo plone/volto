@@ -203,6 +203,7 @@ msgstr "Disponible"
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
 #: components/manage/Sidebar/ObjectBrowserBody
+#: components/manage/Toolbar/PersonalTools
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -1111,6 +1112,10 @@ msgstr "Echec de la connexion"
 msgid "Login Name"
 msgstr "Identifiant"
 
+#: components/manage/Toolbar/PersonalTools
+msgid "Logout"
+msgstr ""
+
 #: components/manage/Toolbar/More
 msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
 msgstr ""
@@ -1274,6 +1279,7 @@ msgstr "Aucun profile de désinstalation"
 
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
+#: components/manage/Widgets/SelectUtils
 #: components/manage/Widgets/SelectWidget
 msgid "No value"
 msgstr "Aucune valeur"
@@ -1939,6 +1945,10 @@ msgstr "Le backend répond, mais les en-têtes CORS ne sont pas configurés corr
 
 #: components/theme/CorsError/CorsError
 msgid "The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
+msgstr ""
+
+#: components/manage/Contents/Contents
+msgid "The item could not be deleted."
 msgstr ""
 
 #: components/theme/Register/Register

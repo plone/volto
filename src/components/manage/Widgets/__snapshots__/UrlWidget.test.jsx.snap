@@ -2,7 +2,7 @@
 
 exports[`renders an url widget component 1`] = `
 <div
-  className="inline field url wide"
+  className="inline field url wide field-wrapper-test-url"
 >
   <div
     className="ui grid"

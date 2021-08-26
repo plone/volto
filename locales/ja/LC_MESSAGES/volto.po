@@ -193,6 +193,7 @@ msgstr "利用可能"
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
 #: components/manage/Sidebar/ObjectBrowserBody
+#: components/manage/Toolbar/PersonalTools
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -1101,6 +1102,10 @@ msgstr "ログインに失敗しました"
 msgid "Login Name"
 msgstr "ログイン名"
 
+#: components/manage/Toolbar/PersonalTools
+msgid "Logout"
+msgstr ""
+
 #: components/manage/Toolbar/More
 msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
 msgstr ""
@@ -1264,6 +1269,7 @@ msgstr "アンインストール用のプロファイルがありません"
 
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
+#: components/manage/Widgets/SelectUtils
 #: components/manage/Widgets/SelectWidget
 msgid "No value"
 msgstr "値がありません"
@@ -1929,6 +1935,10 @@ msgstr "The backend is responding, but the CORS headers are not configured prope
 
 #: components/theme/CorsError/CorsError
 msgid "The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
+msgstr ""
+
+#: components/manage/Contents/Contents
+msgid "The item could not be deleted."
 msgstr ""
 
 #: components/theme/Register/Register

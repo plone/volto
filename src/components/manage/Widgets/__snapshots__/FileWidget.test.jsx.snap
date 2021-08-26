@@ -3,7 +3,7 @@
 exports[`FileWidget renders a file widget component with value 1`] = `
 <div>
   <div
-    class="inline field"
+    class="inline field field-wrapper-my-field"
   >
     <div
       class="ui grid"
@@ -78,7 +78,7 @@ exports[`FileWidget renders a file widget component with value 1`] = `
 exports[`FileWidget renders a file widget component with value in raw data 1`] = `
 <div>
   <div
-    class="inline field"
+    class="inline field field-wrapper-my-field"
   >
     <div
       class="ui grid"
@@ -153,7 +153,7 @@ exports[`FileWidget renders a file widget component with value in raw data 1`] =
 exports[`FileWidget renders an empty file widget component 1`] = `
 <div>
   <div
-    class="inline field"
+    class="inline field field-wrapper-my-field"
   >
     <div
       class="ui grid"
