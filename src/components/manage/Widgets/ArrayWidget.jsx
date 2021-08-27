@@ -136,7 +136,12 @@ class ArrayWidget extends Component {
       !this.props.choices &&
       this.vocabBaseUrl
     ) {
-      this.props.getVocabulary(this.vocabBaseUrl);
+      this.props.getVocabulary(
+        this.vocabBaseUrl,
+        null,
+        0,
+        this.props.intl.locale,
+      );
     }
   }
 
@@ -152,7 +157,12 @@ class ArrayWidget extends Component {
     let hasMore = this.props.itemsTotal > additional.offset;
     const offset = this.state.search !== search ? 0 : additional.offset;
     if (hasMore) {
-      this.props.getVocabulary(this.vocabBaseUrl, search, offset);
+      this.props.getVocabulary(
+        this.vocabBaseUrl,
+        search,
+        offset,
+        this.props.intl.locale,
+      );
       this.setState({ search });
     }
 
@@ -271,7 +281,14 @@ export default compose(
         getVocabFromHint(props) ||
         getVocabFromField(props) ||
         getVocabFromItems(props);
-      const vocabState = state.vocabularies[vocabBaseUrl];
+      //const vocabState = state.vocabularies[props.intl.locale][vocabBaseUrl];
+      console.log(
+        props.intl.locale,
+        state.vocabularies.subrequests?.[props.intl.locale]?.[vocabBaseUrl]
+          ?.items,
+      );
+      const vocabState =
+        state.vocabularies.subrequests?.[props.intl.locale]?.[vocabBaseUrl];
       // If the schema already has the choices in it, then do not try to get the vocab,
       // even if there is one
       if (props.items?.choices) {

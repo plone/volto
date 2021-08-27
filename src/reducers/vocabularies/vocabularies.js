@@ -8,7 +8,7 @@ import {
   GET_VOCABULARY_TOKEN_TITLE,
 } from '@plone/volto/constants/ActionTypes';
 
-const initialState = {};
+const initialState = { subrequests: {} };
 
 /**
  * Vocabularies reducer.
@@ -22,8 +22,7 @@ export default function vocabularies(state = initialState, action = {}) {
   switch (action.type) {
     case `${GET_VOCABULARY}_PENDING`:
     case `${GET_VOCABULARY_TOKEN_TITLE}_PENDING`:
-      return {
-        ...state,
+      const vocabStateP = {
         [action.vocabulary]: {
           // We preserve here the previous items array to prevent the component
           // to rerender due to prop changes while the PENDING state is active,
@@ -36,9 +35,22 @@ export default function vocabularies(state = initialState, action = {}) {
           loading: !!((vocabState.loading || 0) + 1),
         },
       };
+      return action.subrequest
+        ? {
+            ...state,
+            subrequests: {
+              ...state.subrequests,
+              [action.subrequest]: {
+                ...vocabStateP,
+              },
+            },
+          }
+        : {
+            ...state,
+            ...vocabStateP,
+          };
     case `${GET_VOCABULARY}_SUCCESS`:
-      return {
-        ...state,
+      const vocabStateS = {
         [action.vocabulary]: {
           ...state[action.vocabulary],
           error: null,
@@ -54,16 +66,44 @@ export default function vocabularies(state = initialState, action = {}) {
           itemsTotal: action.result.items_total,
         },
       };
+      return action.subrequest
+        ? {
+            ...state,
+            subrequests: {
+              ...state.subrequests,
+              [action.subrequest]: {
+                ...vocabStateS,
+              },
+            },
+          }
+        : {
+            ...state,
+            ...vocabStateS,
+          };
     case `${GET_VOCABULARY}_FAIL`:
     case `${GET_VOCABULARY_TOKEN_TITLE}_FAIL`:
-      return {
-        ...state,
+      const vocabStateF = {
         [action.vocabulary]: {
           error: action.error,
           loaded: false,
           loading: !!(vocabState.loading - 1),
         },
       };
+
+      return action.subrequest
+        ? {
+            ...state,
+            subrequests: {
+              ...state.subrequests,
+              [action.subrequest]: {
+                vocabStateF,
+              },
+            },
+          }
+        : {
+            ...state,
+            ...vocabStateF,
+          };
     case `${GET_VOCABULARY_TOKEN_TITLE}_SUCCESS`:
       return {
         ...state,

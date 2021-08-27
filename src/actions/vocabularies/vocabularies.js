@@ -17,7 +17,12 @@ import config from '@plone/volto/registry';
  * @param {number} start Start of result batch.
  * @returns {Object} Get vocabulary action.
  */
-export function getVocabulary(vocabNameOrURL, query = null, start = 0) {
+export function getVocabulary(
+  vocabNameOrURL,
+  query = null,
+  start = 0,
+  subrequest,
+) {
   const { settings } = config;
   // In case we have a URL, we have to get the vocabulary name
   const vocabulary =
@@ -30,6 +35,7 @@ export function getVocabulary(vocabNameOrURL, query = null, start = 0) {
   return {
     type: GET_VOCABULARY,
     vocabulary: vocabNameOrURL,
+    subrequest,
     start,
     request: {
       op: 'get',
