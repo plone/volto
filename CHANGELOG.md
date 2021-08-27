@@ -29,6 +29,9 @@
 - Fix ObjectBrowserNav items key @nzambello
 - Fix ObjectBrowserNav aria label: id => title @nzambello
 - Fix missing code in `ArrayWidget` from refactored `SelectWidget` @sneridagh
+- Show info about backend debug mode in control panel only if backend in debug mode @ksuess
+
+### Internal
 
 ## 13.11.0 (2021-08-18)
 
