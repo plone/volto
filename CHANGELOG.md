@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Show info about backend debug mode in control panel only if backend in debug mode @ksuess
+
 ### Internal
 
 - Updated Brazilian Portuguese translations @ericof
