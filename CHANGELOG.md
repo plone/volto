@@ -26,6 +26,8 @@
 
 - Footer: Point to plone.org instead of plone.com @ericof
 
+- Fix reactSelectAsyncPaginate in ArrayWidget and SelectWidget, and fix required prop of SearchWidget. @giuliaghisini
+
 ## 13.12.0 (2021-08-20)
 
 ### Feature
