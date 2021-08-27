@@ -8,12 +8,13 @@
 
 ### Bugfix
 
+- Cut/Copy blocks: fixed cut/copy unselected blocks. @giuliaghisini
+
 ### Internal
 
 - Updated Brazilian Portuguese translations @ericof
 
 - Footer: Point to plone.org instead of plone.com @ericof
-
 
 ## 13.12.0 (2021-08-20)
 
