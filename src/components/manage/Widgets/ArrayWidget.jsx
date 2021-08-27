@@ -207,7 +207,7 @@ class ArrayWidget extends Component {
   render() {
     const { selectedOption } = this.state;
     const CreatableSelect = this.props.reactSelectCreateable.default;
-    const AsyncPaginate = this.props.reactSelectAsyncPaginate.AsyncPaginate;
+    const AsyncPaginate = this.props.reactSelectAsyncPaginate.default;
 
     return (
       <FormFieldWrapper {...this.props}>
