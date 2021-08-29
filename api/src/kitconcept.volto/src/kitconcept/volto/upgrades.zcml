@@ -1,0 +1,15 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="kitconcept.volto">
+
+  <genericsetup:upgradeStep
+    source="1010"
+    destination="1011"
+    profile="kitconcept.volto:default"
+    title="Migrate listing blocks from Volto 12 to Volto 13"
+    handler=".upgrades.from12to13_migrate_listings"
+    />
+
+</configure>

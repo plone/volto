@@ -1,0 +1,5 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    i18n_domain="kitconcept.volto">
+
+</configure>

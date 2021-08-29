@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<registry>
+  <record name="plone.default_language" interface="Products.CMFPlone.interfaces.controlpanel.ILanguageSchema" field="default_language">
+    <value>en</value>
+  </record>
+  <!-- Set language to it/en -->
+  <record name="plone.available_languages" interface="Products.CMFPlone.interfaces.controlpanel.ILanguageSchema" field="available_languages">
+    <value>
+      <element>it</element>
+      <element>en</element>
+    </value>
+  </record>
+</registry>

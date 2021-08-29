@@ -1,0 +1,6 @@
+<metadata>
+ <version>1000</version>
+ <dependencies>
+  <dependency>profile-kitconcept.volto:default</dependency>
+ </dependencies>
+</metadata>

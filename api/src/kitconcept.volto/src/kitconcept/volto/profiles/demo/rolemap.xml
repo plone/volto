@@ -1,0 +1,10 @@
+<rolemap>
+  <permissions>
+    <permission name="Plone Site Setup: Overview" acquire="True">
+      <role name="Anonymous"/>
+      <role name="Member"/>
+      <role name="Site Administrator"/>
+      <role name="Manager"/>
+    </permission>
+  </permissions>
+</rolemap>

@@ -1,0 +1,7 @@
+<metadata>
+ <version>1000</version>
+ <dependencies>
+   <dependency>profile-kitconcept.volto:default</dependency>
+   <dependency>profile-plone.app.multilingual:default</dependency>
+ </dependencies>
+</metadata>

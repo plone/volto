@@ -28,7 +28,8 @@ lighthouse-report.html
 /api/bin/
 /api/parts/
 /api/share/python-wheels/
-/api/src/
+/api/src/plone.rest/
+/api/src/plone.restapi/
 /api/venv/
 /api/notebook/env/
 api/.Python

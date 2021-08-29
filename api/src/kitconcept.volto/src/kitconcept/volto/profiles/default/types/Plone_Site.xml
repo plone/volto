@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<object name="Plone Site"
+   meta_type="Factory-based Type Information with dynamic views"
+   i18n:domain="plone" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+ <property name="title" i18n:translate=""></property>
+ <property name="description"
+      i18n:translate="">The root object in a Plone site.</property>
+ <property name="icon_expr"></property>
+ <property name="content_meta_type">Plone Site</property>
+ <property name="product">CMFPlone</property>
+ <property name="factory">manage_addSite</property>
+ <property name="immediate_view">folder_listing</property>
+ <property name="global_allow">False</property>
+ <property name="filter_content_types">False</property>
+ <property name="allowed_content_types"/>
+ <property name="allow_discussion">False</property>
+ <property name="default_view">folder_listing</property>
+ <property name="view_methods">
+  <element value="folder_listing"/>
+  <element value="folder_summary_view"/>
+  <element value="folder_full_view"/>
+  <element value="folder_tabular_view"/>
+  <element value="atct_album_view"/>
+ </property>
+ <alias from="(Default)" to="(dynamic view)"/>
+ <alias from="edit" to="@@site-controlpanel"/>
+ <alias from="sharing" to="@@sharing"/>
+ <alias from="view" to="(selected layout)"/>
+ <action title="View" action_id="view" category="object" condition_expr=""
+    url_expr="string:${object_url}" visible="True"
+    i18n:attributes="title">
+  <permission value="View"/>
+ </action>
+ <action
+    action_id="edit"
+    category="object"
+    condition_expr=""
+    i18n:attributes="title"
+    title="Edit"
+    url_expr="string:${object_url}/edit"
+    visible="True">
+  <permission value="Manage portal"/>
+ </action>
+</object>

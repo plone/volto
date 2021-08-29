@@ -1,0 +1,108 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2021-07-02 14:42+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: de\n"
+"Language-Name: Deutsch\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: kitconcept.volto\n"
+
+#: ../behaviors/configure.zcml:28
+msgid "Adds HeadTitle field"
+msgstr ""
+
+#: ../configure.zcml:58
+msgid "Creates a default page for the site"
+msgstr ""
+
+#: ../behaviors/configure.zcml:28
+msgid "HeadTitle field"
+msgstr ""
+
+#: ../behaviors/headtitle.py:13
+msgid "Header title"
+msgstr "Kopftitel"
+
+#: ../behaviors/headtitle.py:15
+msgid "Header title should consist of year and number of the report"
+msgstr "Kopftitel sollte aus Jahr und Nummer des Berichts bestehen"
+
+#: ../configure.zcml:40
+msgid "Installs the kitconcept.volto add-on."
+msgstr ""
+
+#: ../behaviors/configure.zcml:21
+#: ../behaviors/navtitle.py:12
+msgid "Navigation title"
+msgstr "Navigationstitel"
+
+#: ../behaviors/configure.zcml:21
+msgid "Navigation title used in sections, menus and doormats"
+msgstr ""
+
+#: ../behaviors/configure.zcml:14
+msgid "Preview Image"
+msgstr ""
+
+#: ../behaviors/preview.py:20
+msgid "Preview image caption"
+msgstr "Legende zum Vorschaubild"
+
+#: ../behaviors/configure.zcml:14
+msgid "Preview image for listings"
+msgstr ""
+
+#: ../configure.zcml:67
+msgid "Special requirements and setup for demo site"
+msgstr ""
+
+#: ../configure.zcml:76
+msgid "Special test fixture for multilingual use case"
+msgstr ""
+
+#: ../configure.zcml:84
+msgid "Specific profile for re-adding the richtext behavior"
+msgstr ""
+
+#: ../configure.zcml:49
+msgid "Uninstalls the kitconcept.volto add-on."
+msgstr ""
+
+#: ../configure.zcml:67
+msgid "kitconcept.volto demo special requirements"
+msgstr ""
+
+#: ../configure.zcml:76
+msgid "kitconcept.volto multilingual Cypress tests fixtures"
+msgstr ""
+
+#: ../configure.zcml:84
+msgid "kitconcept.volto p51 profile"
+msgstr ""
+
+#: ../configure.zcml:58
+msgid "kitconcept.volto site (Default content on homepage)"
+msgstr ""
+
+#: ../configure.zcml:40
+msgid "kitconcept.volto site (kitconcept.volto)"
+msgstr ""
+
+#: ../configure.zcml:49
+msgid "kitconcept.volto site (kitconcept.volto): uninstall"
+msgstr ""
+
+#. Default: "Preview image"
+#: ../behaviors/preview.py:14
+msgid "label_previewimage"
+msgstr "Vorschaubild"

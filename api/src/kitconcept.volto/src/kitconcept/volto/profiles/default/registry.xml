@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<registry>
+  <records interface="Products.CMFPlone.interfaces.controlpanel.INavigationSchema" prefix="plone">
+    <value key="nonfolderish_tabs">False</value>
+  </records>
+
+  <!-- This is for the elements in the root, not show the current item in navigation-->
+  <record name="plone.show_excluded_items" interface="Products.CMFPlone.interfaces.controlpanel.INavigationSchema" field="show_excluded_items">
+    <value>False</value>
+  </record>
+
+  <records interface="kitconcept.volto.interfaces.IVoltoSettings" prefix="volto">
+  </records>
+
+  <record 
+    name="plone.types_use_view_action_in_listings"
+    interface="Products.CMFPlone.interfaces.controlpanel.ITypesSchema"
+    field="types_use_view_action_in_listings"
+    purge="true">
+    <value></value>
+  </record>
+
+  <!-- Allowed sizes -->
+  <record 
+    name="plone.allowed_sizes" 
+    interface="Products.CMFPlone.interfaces.controlpanel.IImagingSchema" 
+    field="allowed_sizes"
+    purge="True"> <!-- Purge the existing ones! -->
+      <value>
+        <element>icon 32:32</element>
+        <element>tile 64:64</element>
+        <element>thumb 128:128</element>
+        <element>mini 200:65536</element>
+        <element>preview 400:65536</element>
+        <element>teaser 600:65536</element>
+        <element>large 800:65536</element>
+        <element>larger 1000:65536</element>
+        <element>great 1200:65536</element>
+        <element>huge 1600:65536</element>      
+      </value>
+  </record>
+
+</registry>

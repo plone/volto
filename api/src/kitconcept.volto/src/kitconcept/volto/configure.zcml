@@ -1,0 +1,119 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:monkey="http://namespaces.plone.org/monkey"
+    i18n_domain="kitconcept.volto"
+    >
+
+  <configure zcml:condition="installed plone.app.imaging">
+    <include package="plone.app.imaging" />
+  </configure>
+
+  <i18n:registerTranslations directory="locales" />
+
+  <include package=".behaviors" />
+  <include package=".browser" />
+
+  <include file="patches.zcml" />
+  <include file="upgrades.zcml" />
+
+  <includeDependencies package="." />
+
+  <browser:page
+    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+    name="blocksuuidfixer"
+    permission="cmf.ManagePortal"
+    class=".blocksuuidfixer.DuplicatedBlocksUUIDFixer"
+    />
+
+  <genericsetup:registerProfile
+      name="default"
+      title="kitconcept.volto site (kitconcept.volto)"
+      directory="profiles/default"
+      description="Installs the kitconcept.volto add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      post_handler=".setuphandlers.post_install"
+      />
+
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="kitconcept.volto site (kitconcept.volto): uninstall"
+      directory="profiles/uninstall"
+      description="Uninstalls the kitconcept.volto add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      post_handler=".setuphandlers.uninstall"
+      />
+
+  <genericsetup:registerProfile
+      name="default-homepage"
+      title="kitconcept.volto site (Default content on homepage)"
+      directory="profiles/homepage"
+      description="Creates a default page for the site"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      post_handler=".setuphandlers.create_default_homepage"
+      />
+
+  <genericsetup:registerProfile
+      name="demo"
+      title="kitconcept.volto demo special requirements"
+      directory="profiles/demo"
+      description="Special requirements and setup for demo site"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      post_handler=".setuphandlers.create_demo_homepage"
+      />
+
+  <genericsetup:registerProfile
+      name="multilingual"
+      title="kitconcept.volto multilingual Cypress tests fixtures"
+      directory="profiles/multilingual"
+      description="Special test fixture for multilingual use case"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      post_handler=".setuphandlers.post_install_multilingual"
+      />
+
+  <genericsetup:registerProfile
+      name="richtext"
+      title="kitconcept.volto p51 profile"
+      directory="profiles/richtext"
+      description="Specific profile for re-adding the richtext behavior"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <utility
+      factory=".setuphandlers.HiddenProfiles"
+      name="kitconcept.volto-hiddenprofiles" />
+
+  <browser:page
+      name="volto_settings"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class=".controlpanel.VoltoSettingsControlPanel"
+      permission="cmf.ManagePortal"
+      />
+
+  <adapter
+    factory=".controlpanel.VoltoControlpanel"
+    name="volto-settings" />
+
+  <adapter
+    factory=".scaling.VoltoImageScalingFactory"
+    for="plone.app.contenttypes.interfaces.IImage"
+  />
+
+  <adapter name="hasPreviewImage" factory=".indexers.hasPreviewImage" />
+
+  <configure zcml:condition="have plonerestapi-7">
+    <subscriber factory=".transforms.NestedResolveUIDDeserializer"
+    provides="plone.restapi.interfaces.IBlockFieldDeserializationTransformer"/>
+    <subscriber factory=".transforms.NestedResolveUIDDeserializerRoot"
+    provides="plone.restapi.interfaces.IBlockFieldDeserializationTransformer"/>
+    <subscriber factory=".transforms.NestedResolveUIDSerializer"
+    provides="plone.restapi.interfaces.IBlockFieldSerializationTransformer"/>
+    <subscriber factory=".transforms.NestedResolveUIDSerializerRoot"
+    provides="plone.restapi.interfaces.IBlockFieldSerializationTransformer"/>
+  </configure>
+
+</configure>

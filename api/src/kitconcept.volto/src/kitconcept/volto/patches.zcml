@@ -1,0 +1,25 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:monkey="http://namespaces.plone.org/monkey"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    i18n_domain="kitconcept.volto">
+
+  <include package="collective.monkeypatcher" />
+
+  <monkey:patch
+      description="Change default SiteErrorLog logger to file for fix Sentry logs"
+      class="Products.SiteErrorLog.SiteErrorLog.SiteErrorLog"
+      original="_do_copy_to_zlog"
+      replacement=".patches._do_copy_to_zlog"
+      />
+
+  <monkey:patch
+      zcml:condition="have plone-52"
+      description="Patch password reset tool construct URL to cater for different frontend domain"
+      class="Products.CMFPlone.browser.login.password_reset.PasswordResetToolView"
+      original="construct_url"
+      replacement=".patches.construct_url"
+      docstringWarning="True"
+      />
+
+</configure>

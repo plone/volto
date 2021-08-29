@@ -1,0 +1,5 @@
+====================
+kitconcept.volto
+====================
+
+User documentation

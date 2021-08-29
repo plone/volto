@@ -1,0 +1,37 @@
+.coverage
+.vscode
+*.egg-info
+*.log
+*.mo
+*.py?
+*.swp
+.Python
+# dirs
+bin/
+buildout-cache/
+develop-eggs/
+eggs/
+htmlcov/
+include/
+lib/
+local/
+parts/
+test.plone_addon/
+var/
+node_modules
+# files
+.installed.cfg
+.mr.developer.cfg
+lib64
+log.html
+output.xml
+pip-selfcheck.json
+report.html
+# excludes
+!.coveragerc
+!.editorconfig
+!.gitattributes
+!.gitignore
+!.gitkeep
+!.travis.yml
+pyvenv.cfg

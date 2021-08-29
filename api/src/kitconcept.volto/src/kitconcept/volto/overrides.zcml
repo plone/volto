@@ -1,0 +1,10 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:zcml="http://namespaces.zope.org/zcml">
+
+  <utility
+    component=".vocabularies.subject.KeywordsVocabularyFactory"
+    name="plone.app.vocabularies.Keywords"
+    />
+
+</configure>

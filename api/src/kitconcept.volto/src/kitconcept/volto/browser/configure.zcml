@@ -1,0 +1,28 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:cache="http://namespaces.zope.org/cache"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:zcml="http://namespaces.zope.org/zcml">
+
+  <browser:page
+    zcml:condition="have plone-5"
+    for="*"
+    name="breadcrumbs_view"
+    class=".breadcrumbs.PhysicalNavigationBreadcrumbs"
+    permission="zope.Public"
+    allowed_attributes="breadcrumbs"
+    layer="kitconcept.volto.interfaces.IKitconceptvoltoCoreLayer"
+    />
+
+  <browser:page
+    zcml:condition="have plone-5"
+    for="*"
+    name="portal_tabs_view"
+    class=".navigation.CatalogNavigationTabs"
+    permission="zope.Public"
+    allowed_attributes="topLevelTabs"
+    layer="kitconcept.volto.interfaces.IKitconceptvoltoCoreLayer"
+    />
+
+</configure>

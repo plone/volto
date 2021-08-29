@@ -1,0 +1,11 @@
+  <configure xmlns="http://namespaces.zope.org/zope"
+             xmlns:plone="http://namespaces.plone.org/plone">
+    <plone:CORSPolicy
+      allow_origin="http://localhost:3000,http://127.0.0.1:3000"
+      allow_methods="DELETE,GET,OPTIONS,PATCH,POST,PUT"
+      allow_credentials="true"
+      expose_headers="Content-Length,X-My-Header"
+      allow_headers="Accept,Authorization,Content-Type,X-Custom-Header"
+      max_age="3600"
+      />
+  </configure>

@@ -1,0 +1,29 @@
+name: Basic tests
+'on':
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.8]
+    steps:
+      - uses: actions/checkout@v2
+      - name: 'Set up Python ${{ matrix.python-version }}'
+        uses: actions/setup-python@v2
+        with:
+          python-version: '${{ matrix.python-version }}'
+      - name: Cache multiple paths
+        uses: actions/cache@v2
+        with:
+          path: $HOME/buildout-cache
+          key: '${{ runner.os }}-${{ hashFiles(''TODO'') }}'
+      - run: pip install -r requirements.txt
+      - run: buildout -c ci.cfg
+      - run: 'if [ -f "bin/black" ]; then bin/black src/ ; fi'
+      - run: bin/test

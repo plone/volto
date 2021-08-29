@@ -1,0 +1,30 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="kitconcept.volto"
+    >
+
+  <include package="plone.behavior" file="meta.zcml"/>
+
+  <plone:behavior
+      name="volto.preview_image"
+      title="Preview Image"
+      description="Preview image for listings"
+      provides=".preview.IPreview"
+    />
+
+  <plone:behavior
+      name="volto.navtitle"
+      title="Navigation title"
+      description="Navigation title used in sections, menus and doormats"
+      provides=".navtitle.INavTitle"
+    />
+
+  <plone:behavior
+    name="volto.head_title"
+    title="Head title field"
+    description="Adds Head title field"
+    provides=".headtitle.IHeadTitle"
+  />
+
+</configure>

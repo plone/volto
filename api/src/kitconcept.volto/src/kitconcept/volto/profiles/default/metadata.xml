@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <version>1010</version>
+  <dependencies>
+    <dependency>profile-collective.folderishtypes.dx:default</dependency>
+    <dependency>profile-plone.restapi:blocks</dependency>
+  </dependencies>
+</metadata>
