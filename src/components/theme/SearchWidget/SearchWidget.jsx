@@ -48,11 +48,9 @@ class SearchWidget extends Component {
   constructor(props) {
     super(props);
     this.onChangeText = this.onChangeText.bind(this);
-    this.onChangeSection = this.onChangeSection.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.state = {
       text: '',
-      section: false,
     };
   }
 
@@ -70,28 +68,18 @@ class SearchWidget extends Component {
   }
 
   /**
-   * On change section
-   * @method onChangeSection
-   * @param {object} event Event object.
-   * @param {bool} checked Section checked.
-   * @returns {undefined}
-   */
-  onChangeSection(event, { checked }) {
-    this.setState({
-      section: checked,
-    });
-  }
-
-  /**
    * Submit handler
    * @method onSubmit
    * @param {event} event Event object.
    * @returns {undefined}
    */
   onSubmit(event) {
-    const section = this.state.section ? `&path=${this.props.pathname}` : '';
+    const path =
+      this.props.pathname?.length > 0
+        ? `&path=${encodeURIComponent(this.props.pathname)}`
+        : '';
     this.props.history.push(
-      `/search?SearchableText=${this.state.text}${section}`,
+      `/search?SearchableText=${encodeURIComponent(this.state.text)}${path}`,
     );
     event.preventDefault();
   }

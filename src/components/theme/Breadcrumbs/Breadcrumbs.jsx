@@ -13,7 +13,7 @@ import { defineMessages, injectIntl } from 'react-intl';
 
 import { Icon } from '@plone/volto/components';
 import { getBreadcrumbs } from '@plone/volto/actions';
-import { getBaseUrl } from '@plone/volto/helpers';
+import { getBaseUrl, hasApiExpander } from '@plone/volto/helpers';
 
 import homeSVG from '@plone/volto/icons/home.svg';
 
@@ -52,7 +52,9 @@ class Breadcrumbs extends Component {
   };
 
   componentDidMount() {
-    this.props.getBreadcrumbs(getBaseUrl(this.props.pathname));
+    if (!hasApiExpander('breadcrumbs', getBaseUrl(this.props.pathname))) {
+      this.props.getBreadcrumbs(getBaseUrl(this.props.pathname));
+    }
   }
 
   /**
@@ -63,7 +65,9 @@ class Breadcrumbs extends Component {
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
-      this.props.getBreadcrumbs(getBaseUrl(nextProps.pathname));
+      if (!hasApiExpander('breadcrumbs', getBaseUrl(this.props.pathname))) {
+        this.props.getBreadcrumbs(getBaseUrl(nextProps.pathname));
+      }
     }
   }
 

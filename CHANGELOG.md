@@ -1,6 +1,6 @@
 # Change Log
 
-## 13.1.3 (unreleased)
+## 13.12.1 (unreleased)
 
 ### Breaking
 
@@ -11,6 +11,227 @@
 ### Bugfix
 
 ### Internal
+
+- Updated Brazilian Portuguese translations @ericof
+
+- Footer: Point to plone.org instead of plone.com @ericof
+
+
+## 13.12.0 (2021-08-20)
+
+### Feature
+
+- Multilingual routing was added for sitemap, search, contact-form, change-password, register and password-reset @ionlizarazu
+- Opening the search input in the object browser, it will get the focus @nzambello
+
+### Bugfix
+
+- Fix ObjectBrowserNav items key @nzambello
+- Fix ObjectBrowserNav aria label: id => title @nzambello
+- Fix missing code in `ArrayWidget` from refactored `SelectWidget` @sneridagh
+
+## 13.11.0 (2021-08-18)
+
+### Feature
+
+- Add select utils `normalizerValue`, add state to the basic select field forcing it to be fully controlled @sneridagh
+
+### Bugfix
+
+- Improve consistency of `TokenWidget`'s use of the choice labels as "values" instead of internal uids assigned by `react-select`. @tiberiuichim
+- Solve glitch in async loading options in `AsyncSelect` components @sneridagh
+
+### Internal
+
+- Add tests for `Select` component, document the use cases propely @sneridagh
+- Upgrade `AsyncSelect` to a version compatible with `react-select` v4 @sneridagh
+- Upgrade to latest `react-select` @sneridagh
+
+### Internal
+
+## 13.10.0 (2021-08-18)
+
+### Feature
+
+- Increase clickable area of right-arrow in objectBrowser @iFlameing
+- Prevent form submit when clicking on BlockChooserButton @giuliaghisini
+- Make selectedItems Filter work in Contents folder @nileshgulia1
+
+### Bugfix
+
+- Fix SearchWidget search by path @giuliaghisini
+
+## 13.9.0 (2021-08-18)
+
+### Feature
+
+- Removed unnecessary set-cookies for the removal of the authentication cookie when the user is not logged in @mamico
+- Add additional classnames for the field wrappers and the fieldsets in forms, this helps to be more addressable in CSS if required @sneridagh
+
+### Bugfix
+
+- Add title/tooltip on Toolbar buttons @avoinea #1384
+- Slight CSS fix on `ObjectWidget` for supporting long add element button messages @sneridagh
+- Fix the babel view cancel button redirect @iFlameing
+- Show toast error when trying to delete item and it's not permitted @danielamormocea
+
+## 13.8.3 (2021-08-16)
+
+### Bugfix
+
+- Prevent form submit when clicking on BlockChooserButton @giuliaghisini
+- Add missing `publicURL` to the list of `window.env` serialized variables coming from the hosts configuration to complete the support for seamless mode @sneridagh
+
+## 13.8.2 (2021-07-20)
+
+### Bugfix
+
+- Improve `URLWidget` component, so it uses `flattenToURL` for the value @sneridagh
+
+## 13.8.1 (2021-07-16)
+
+### Bugfix
+
+- Missing prop `properties` passed down required for #2579 to work properly @sneridagh
+
+## 13.8.0 (2021-07-14)
+
+### Feature
+
+- A new component was added, `BlockChooserButton`, it encapsulate the logic of show/hiding the `BlockChooser` @tiberiuichim
+- Overload `required` property for blocks config, it supports a function as value taken `properties` (current object data) and `block` (the block being evaluated in `BlockChooser`). The purpose is to enable more control over the available blocks in the Blocks chooser. @sneridagh
+
+### Bugfix
+
+- Add fallback to the "image" field in Image Gallery if the listingPreviewImageField defined in the project is not available on an object @jackahl
+
+## 13.7.0 (2021-07-12)
+
+### Feature
+
+- VocabularyTermsWidget option with translations for config.settings.supportedLanguages @ksuess
+
+### Bugfix
+
+- Fix InlineForm's understanding of missing default values @rexalex
+- Guard in `isInternalURL` to catch non-string values @sneridagh
+
+### Internal
+
+- Update `browserlist` DB @sneridagh
+- Install `luxon` explicitly to fix `rrule` package flickering deps (yarn problem) @sneridagh
+- Add a11y cypress test for table block @ThomasKindermann
+- Add Cypress test for Link content type @tisto
+- Upgrade plone.restapi to 8.4.1 in the dev buildout @tisto
+
+## 13.6.0 (2021-07-03)
+
+### Feature
+
+- Add VocabularyTermsWidget and map to field with widget attribute set to 'vocabularyterms'. @ksuess
+
+### Bugfix
+
+- added "Complementary" landmark-role to skiplink-container for a11y @ThomasKindermann
+- changed breadcrumb link text-color slightly for a11y color contrast @ThomasKindermann
+- changed table headline text color to black for a11y @ThomasKindermann
+
+### Internal
+
+- Updated Brazilian Portuguese translations @ericof
+
+## 13.5.0 (2021-06-30)
+
+### Feature
+
+- Add og tags for social sharing @giuliaghisini @nzambello
+- Add interface for plone seo extensions to use values added by them as metadata @jackahl
+
+### Internal
+
+- Upgrade to Storybook 6.3, refresh deps version for babel @sneridagh
+
+## 13.4.0 (2021-06-29)
+
+### Feature
+
+- Working copy support for Plone (plone.app.iterate) @sneridagh
+
+## 13.3.1 (2021-06-29)
+
+### Internal
+
+- Remove locales .json files pushed again by mistake, now they are no longer needed to be in the repo, since they are generated at runtime, and included in the released versions @sneridagh
+
+## 13.3.0 (2021-06-29)
+
+### Feature
+
+- Allowing user to paste url in search box in objectBrowser @iFlameing
+- Allowing user to click on the breadcrumbs of objectBrowser @iFlameing
+- `Navigation` and `Breadcrumbs` are `apiExpanders` aware and run the action depending on them @sneridagh
+
+### Bugfix
+
+- Fixed docs for config.settings.externalRoutes @giuliaghisini
+- Fix `Pluggable` in the use case that a `Plug` is empty @sneridagh
+- Fix `Login` component navigation for `INavigationRoot` structures @sneridagh
+- Hyphenation block chooser labels (no html changes) @ksuess
+
+### Internal
+
+- Bumps prismjs from 1.23.0 to 1.24.0. @timo
+
+## 13.2.2 (2021-06-18)
+
+### Bugfix
+
+- Avoid debugging error in toolbar @tiberiuichim
+- Fix the bug related to specific versioning view @iFlameing
+- Fix blocks-listing Cypress test @giuliaghisini
+- Fix the translation of header in babel view @iFlameing
+- Fix German translations for leadimage and listing block @timo
+- Show toast success message when adding a new local role @iFlameing
+- Bump postcss from 7.0.29 to 7.0.36 @timo
+- Complete Spanish translation @erral
+- Complete German translation @timo
+
+## 13.2.1 (2021-06-14)
+
+### Bugfix
+
+- Changed 'batch_size' attribute in 'b_size' in querystring widget. @giuliaghisini
+
+### Internal
+
+- Upgrade generator deps @sneridagh
+
+## 13.2.0 (2021-06-12)
+
+### Feature
+
+- Allow passing a schemaEnhancer to QuerystringWidget @tiberiuichim
+- Add internal URL blacklist to avoid render custom routes in Volto @nzambello
+- In listing blocks, scroll to start of listing block instead page start @giuliaghisini
+
+### Bugfix
+
+- Fix addBreaklinesInline when string ends with new line @giuliaghisini
+- Changed 'batch_size' attribute in 'b_size' in querystring widget. @giuliaghisini
+- Properly respect batching and result limits in listing block @tiberiuichim
+- Changed 'batch_size' attribute in 'b_size' in querystring widget. @giuliaghisini
+- Properly respect batching and result limits in listing block @tiberiuichim
+- Improve folder_contents workflow state (#2017) @avoinea
+- Making placeholder image of video block to take 100% width when it is right or left aligned @iFlameing
+- Showing clear icon when title is too long in objectbrowser selected items in multiple mode @iFlameing
+- Use querystring prop in ListingBody @giuliaghisini
+- Set default value selected for variation in listing block @giuliaghisini
+
+### Internal
+
+- Add [Volta](https://volta.sh) support @nzambello
+- Various minor `Makefile` cleanup @rpatterson
+- Improve error handling in UniversalLink @nzambello
 
 ## 13.1.2 (2021-05-26)
 
@@ -3229,3 +3450,7 @@ refer to all of them in https://github.com/plone/volto/releases
 - Basic components (navigation, toolbar, breadcrumbs etc) @robgietema
 - Authentication including login / logout @robgietema
 - Setup build environment @robgietema
+
+### Changed
+
+- Fixed passing intl to the schemaExtender in the ObjectListWidget component. @1bsilver

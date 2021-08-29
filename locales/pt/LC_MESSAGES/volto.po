@@ -77,6 +77,10 @@ msgstr "Adicionar Utilizador"
 msgid "Add a description…"
 msgstr "Adicionar uma descrição…"
 
+#: components/manage/BlockChooser/BlockChooserButton
+msgid "Add block"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 msgid "Add block…"
 msgstr "Adicionar bloco…"
@@ -117,6 +121,10 @@ msgstr "Adicionar um novo utilizador"
 msgid "Add to Groups"
 msgstr "Adicionar a Grupos"
 
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Add vocabulary term"
+msgstr ""
+
 #: components/manage/Add/Add
 msgid "Add {type}"
 msgstr "Adicionar {type}"
@@ -148,6 +156,10 @@ msgstr ""
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Alt text"
 msgstr "Texto alternativo"
+
+#: components/manage/Toolbar/More
+msgid "Apply working copy"
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this field?"
@@ -182,6 +194,7 @@ msgstr ""
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
 #: components/manage/Sidebar/ObjectBrowserBody
+#: components/manage/Toolbar/PersonalTools
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -269,6 +282,10 @@ msgstr "Alterar Estado"
 
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Change workflow state recursively"
+msgstr ""
+
+#: components/manage/Toolbar/More
+msgid "Changes applied."
 msgstr ""
 
 #: components/manage/Preferences/ChangePassword
@@ -401,6 +418,14 @@ msgstr "Copyright"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Copyright statement or other rights information on this item."
 msgstr "Declaração de copyright ou outras informações de direitos sobre este item."
+
+#: components/manage/Toolbar/More
+msgid "Create working copy"
+msgstr ""
+
+#: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
+msgid "Created by {creator} on {date}"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Created on"
@@ -1078,6 +1103,14 @@ msgstr "Falhou o início de sessão"
 msgid "Login Name"
 msgstr "Nome de utilizador"
 
+#: components/manage/Toolbar/PersonalTools
+msgid "Logout"
+msgstr ""
+
+#: components/manage/Toolbar/More
+msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 msgid "Make the table compact"
 msgstr "Compactar a tabela"
@@ -1237,6 +1270,7 @@ msgstr ""
 
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
+#: components/manage/Widgets/SelectUtils
 #: components/manage/Widgets/SelectWidget
 msgid "No value"
 msgstr "Sem qualquer valor"
@@ -1319,6 +1353,14 @@ msgstr "Colar"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Paste blocks"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
+msgid "Permissions have been updated successfully"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
+msgid "Permissions updated"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
@@ -1466,6 +1508,14 @@ msgstr ""
 msgid "Remove recurrence"
 msgstr ""
 
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Remove term"
+msgstr ""
+
+#: components/manage/Toolbar/More
+msgid "Remove working copy"
+msgstr ""
+
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 msgid "Rename"
@@ -1509,6 +1559,10 @@ msgstr "Obrigatório"
 #: helpers/MessageLabels/MessageLabels
 msgid "Required input is missing."
 msgstr "Falta informação obrigatória."
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Reset term title"
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 msgid "Results limit"
@@ -1579,6 +1633,10 @@ msgstr ""
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search"
 msgstr "Pesquisar"
+
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Search SVG"
+msgstr ""
 
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search Site"
@@ -1880,6 +1938,10 @@ msgstr ""
 msgid "The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
 msgstr ""
 
+#: components/manage/Contents/Contents
+msgid "The item could not be deleted."
+msgstr ""
+
 #: components/theme/Register/Register
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 msgstr "O processo de registo foi bem sucedido. Por favor verifique no seu e-mail a informação sobre como activar a sua conta."
@@ -1887,6 +1949,10 @@ msgstr "O processo de registo foi bem sucedido. Por favor verifique no seu e-mai
 #: components/manage/Preferences/PersonalInformation
 msgid "The user portrait/avatar"
 msgstr "Retrato/avatar do utilizador"
+
+#: components/manage/Toolbar/More
+msgid "The working copy was discarded"
+msgstr ""
 
 #: components/theme/Footer/Footer
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
@@ -1907,6 +1973,14 @@ msgstr "Ocorreram alguns erros."
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Third"
+msgstr ""
+
+#: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
+msgid "This has an ongoing working copy in {title}"
+msgstr ""
+
+#: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
+msgid "This is a working copy of {title}"
 msgstr ""
 
 #: components/manage/Contents/ContentsRenameModal
@@ -1954,9 +2028,6 @@ msgid "Total number of objects in the database"
 msgstr ""
 
 #: components/manage/Add/Add
-msgid "Translate to"
-msgstr ""
-
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
 msgstr ""
@@ -2120,9 +2191,25 @@ msgstr "Ver modificações"
 msgid "View this revision"
 msgstr "Ver esta revisão"
 
+#: components/manage/Toolbar/More
+msgid "View working copy"
+msgstr ""
+
 #: components/manage/Display/Display
 msgid "Viewmode"
 msgstr "Modo de visualização"
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary term"
+msgstr ""
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary term title"
+msgstr ""
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary terms"
+msgstr ""
 
 #: components/manage/Controlpanels/VersionOverview
 msgid "Warning Regarding debug mode"

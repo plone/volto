@@ -88,6 +88,10 @@ msgstr ""
 msgid "Add a description…"
 msgstr ""
 
+#: components/manage/BlockChooser/BlockChooserButton
+msgid "Add block"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 msgid "Add block…"
 msgstr ""
@@ -128,6 +132,10 @@ msgstr ""
 msgid "Add to Groups"
 msgstr ""
 
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Add vocabulary term"
+msgstr ""
+
 #: components/manage/Add/Add
 msgid "Add {type}"
 msgstr "Voeg {type} toe"
@@ -158,6 +166,10 @@ msgstr ""
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Alt text"
+msgstr ""
+
+#: components/manage/Toolbar/More
+msgid "Apply working copy"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
@@ -193,6 +205,7 @@ msgstr ""
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
 #: components/manage/Sidebar/ObjectBrowserBody
+#: components/manage/Toolbar/PersonalTools
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -280,6 +293,10 @@ msgstr "Status wijzigen"
 
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Change workflow state recursively"
+msgstr ""
+
+#: components/manage/Toolbar/More
+msgid "Changes applied."
 msgstr ""
 
 #: components/manage/Preferences/ChangePassword
@@ -412,6 +429,14 @@ msgstr "Copyright"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Copyright statement or other rights information on this item."
 msgstr "Auteursrechten of andere rechtsinformatie van dit item."
+
+#: components/manage/Toolbar/More
+msgid "Create working copy"
+msgstr ""
+
+#: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
+msgid "Created by {creator} on {date}"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Created on"
@@ -1089,6 +1114,14 @@ msgstr ""
 msgid "Login Name"
 msgstr "Gebruikersnaam"
 
+#: components/manage/Toolbar/PersonalTools
+msgid "Logout"
+msgstr ""
+
+#: components/manage/Toolbar/More
+msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 msgid "Make the table compact"
 msgstr ""
@@ -1248,6 +1281,7 @@ msgstr ""
 
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
+#: components/manage/Widgets/SelectUtils
 #: components/manage/Widgets/SelectWidget
 msgid "No value"
 msgstr ""
@@ -1330,6 +1364,14 @@ msgstr "Plakken"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Paste blocks"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
+msgid "Permissions have been updated successfully"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
+msgid "Permissions updated"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
@@ -1477,6 +1519,14 @@ msgstr ""
 msgid "Remove recurrence"
 msgstr ""
 
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Remove term"
+msgstr ""
+
+#: components/manage/Toolbar/More
+msgid "Remove working copy"
+msgstr ""
+
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 msgid "Rename"
@@ -1520,6 +1570,10 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 msgid "Required input is missing."
 msgstr "Verplichte waarde mist."
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Reset term title"
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 msgid "Results limit"
@@ -1590,6 +1644,10 @@ msgstr ""
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search"
 msgstr "Zoek"
+
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Search SVG"
+msgstr ""
 
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search Site"
@@ -1891,12 +1949,20 @@ msgstr ""
 msgid "The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
 msgstr ""
 
+#: components/manage/Contents/Contents
+msgid "The item could not be deleted."
+msgstr ""
+
 #: components/theme/Register/Register
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 msgid "The user portrait/avatar"
+msgstr ""
+
+#: components/manage/Toolbar/More
+msgid "The working copy was discarded"
 msgstr ""
 
 #: components/theme/Footer/Footer
@@ -1918,6 +1984,14 @@ msgstr "Er zijn fouten opgetreden."
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Third"
+msgstr ""
+
+#: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
+msgid "This has an ongoing working copy in {title}"
+msgstr ""
+
+#: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
+msgid "This is a working copy of {title}"
 msgstr ""
 
 #: components/manage/Contents/ContentsRenameModal
@@ -1965,9 +2039,6 @@ msgid "Total number of objects in the database"
 msgstr ""
 
 #: components/manage/Add/Add
-msgid "Translate to"
-msgstr ""
-
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
 msgstr ""
@@ -2131,8 +2202,24 @@ msgstr "Bekijk wijzigingen"
 msgid "View this revision"
 msgstr "Bekijk deze revisie"
 
+#: components/manage/Toolbar/More
+msgid "View working copy"
+msgstr ""
+
 #: components/manage/Display/Display
 msgid "Viewmode"
+msgstr ""
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary term"
+msgstr ""
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary term title"
+msgstr ""
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary terms"
 msgstr ""
 
 #: components/manage/Controlpanels/VersionOverview

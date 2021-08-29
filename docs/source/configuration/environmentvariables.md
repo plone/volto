@@ -23,3 +23,8 @@ websites (for example a test website) to forbid robots from crawling it.
 $ VOLTO_ROBOTSTXT="User-agent: *
 Disallow: /" yarn start
 ```
+
+!!! note
+
+    If you want to use the `VOLTO_ROBOTSTXT` environment variable, make sure to
+    delete the file `public/robots.txt` from your project.

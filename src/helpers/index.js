@@ -72,6 +72,7 @@ export {
   withServerErrorCode,
   parseDateTime,
   normalizeLanguageName,
+  hasApiExpander,
 } from '@plone/volto/helpers/Utils/Utils';
 
 export { getImageAttributes } from './Image/Image';

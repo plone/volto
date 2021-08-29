@@ -38,7 +38,7 @@ describe('Basic multilingual Tests', () => {
     cy.get('#toolbar-add').click();
     cy.findByText('Translate to italiano').click();
     cy.findByText('Test document');
-    cy.findByText('Traduci in italiano');
+    cy.findByText('Traduci in Italiano');
     cy.get(
       '.new-translation .documentFirstHeading > .public-DraftStyleDefault-block',
     ).type('My IT page');
@@ -78,7 +78,7 @@ describe('Basic multilingual Tests', () => {
     // Link it again
     cy.findByLabelText('Link translation for italiano').click();
     cy.findByLabelText('Back').click();
-    cy.findByLabelText('Select it').dblclick();
+    cy.findByLabelText('Select Italiano').dblclick();
     cy.findByText('/it');
   });
 });

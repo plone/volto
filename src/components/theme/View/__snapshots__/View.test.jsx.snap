@@ -5,6 +5,9 @@ exports[`View renders a document view 1`] = `
   id="view"
 >
   <div
+    id="ContentMetadataTags"
+  />
+  <div
     id="DefaultView"
   />
   <div
@@ -18,6 +21,9 @@ exports[`View renders a summary view 1`] = `
   id="view"
 >
   <div
+    id="ContentMetadataTags"
+  />
+  <div
     id="SummaryView"
   />
   <div
@@ -30,6 +36,9 @@ exports[`View renders a tabular view 1`] = `
 <div
   id="view"
 >
+  <div
+    id="ContentMetadataTags"
+  />
   <div
     id="TabularView"
   />

@@ -94,6 +94,7 @@ export Sharing from '@plone/volto/components/manage/Sharing/Sharing';
 export Workflow from '@plone/volto/components/manage/Workflow/Workflow';
 export Messages from '@plone/volto/components/manage/Messages/Messages';
 export BlockChooser from '@plone/volto/components/manage/BlockChooser/BlockChooser';
+export BlockChooserButton from '@plone/volto/components/manage/BlockChooser/BlockChooserButton';
 export Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
 export Sidebar from '@plone/volto/components/manage/Sidebar/Sidebar';
 export SidebarPopup from '@plone/volto/components/manage/Sidebar/SidebarPopup';
@@ -192,5 +193,6 @@ export ImageSettingsSchema from '@plone/volto/components/manage/Blocks/Image/Sch
 export ToCSettingsSchema from '@plone/volto/components/manage/Blocks/ToC/Schema';
 
 export MaybeWrap from '@plone/volto/components/manage/MaybeWrap/MaybeWrap';
+export ContentMetadataTags from '@plone/volto/components/theme/ContentMetadataTags/ContentMetadataTags';
 
 export App from '@plone/volto/components/theme/App/App';

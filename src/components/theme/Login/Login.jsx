@@ -147,21 +147,7 @@ class Login extends Component {
     }
   }
 
-  UNSAFE_componentWillMount() {
-    if (config.settings.isMultilingual) {
-      this.props.getNavigation(`/${this.props.lang}`, config.settings.navDepth);
-    } else {
-      this.props.getNavigation('/', config.settings.navDepth);
-    }
-  }
-
   componentWillUnmount() {
-    if (config.settings.isMultilingual) {
-      this.props.getNavigation(`/${this.props.lang}`, config.settings.navDepth);
-    } else {
-      this.props.getNavigation('/', config.settings.navDepth);
-    }
-
     if (toast.isActive('loginFailed')) {
       toast.dismiss('loginFailed');
     }
@@ -322,7 +308,6 @@ export default compose(
   injectIntl,
   connect(
     (state, props) => ({
-      lang: state.intl.locale,
       error: state.userSession.login.error,
       loading: state.userSession.login.loading,
       token: state.userSession.token,
