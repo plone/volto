@@ -115,7 +115,7 @@ const FacetSchema = ({ intl }) => ({
     },
     field: {
       title: intl.formatMessage(messages.field),
-      widget: 'select_metadata_field',
+      widget: 'select_querystring_field',
       vocabulary: { '@id': 'plone.app.vocabularies.MetadataFields' },
     },
     multiple: {

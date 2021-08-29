@@ -64,7 +64,7 @@ export const widgetMapping = {
     object: ObjectWidget,
     object_list: ObjectListWidget,
     vocabularyterms: VocabularyTermsWidget,
-    select_metadata_field: SelectMetadataWidget,
+    select_querystring_field: SelectMetadataWidget,
   },
   vocabulary: {
     'plone.app.vocabularies.Catalog': ObjectBrowserWidget,
