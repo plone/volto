@@ -1,4 +1,4 @@
-import { map, uniq, keys, isEmpty } from 'lodash';
+import { map, uniq, keys, intersection, isEmpty } from 'lodash';
 import { messages } from '../MessageLabels/MessageLabels';
 
 /**
@@ -183,7 +183,9 @@ const validateRequiredFields = (
   touchedField,
 ) => {
   const errors = {};
-  const fields = isEmpty(touchedField) ? schema.required : keys(touchedField);
+  const fields = isEmpty(touchedField)
+    ? schema.required
+    : intersection(schema.required, keys(touchedField));
   map(fields, (requiredField) => {
     const type = schema.properties[requiredField]?.type;
     const widget = schema.properties[requiredField]?.widget;
