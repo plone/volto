@@ -27,11 +27,12 @@ const Image = ({
   const [srcset, setSrcset] = useState(
     critical && srcSet ? srcSet.join(', ') : null,
   );
+  const hasSrcSet = srcset?.length;
 
   useEffect(() => {
     setIsClient(true);
     if (!srcset && srcSet?.length > 0) setSrcset(srcSet.join(', '));
-  }, [srcSet, srcSet?.length, srcset]);
+  }, [srcSet, hasSrcSet, srcset]);
 
   return (
     <>
@@ -55,7 +56,7 @@ const Image = ({
                 src="${src}"
                 ${srcSet?.length && `srcset="${srcSet.join(', ')}"`}
                 alt="${alt}"
-                class="${className}"
+                class="${className || ''}"
                 role="${role}"
                 loading="lazy"
                 style="width: 100%; object-fit: cover;"
