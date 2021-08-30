@@ -8,12 +8,13 @@
 
 ### Bugfix
 
+- Validate `required` touched-only fields in Form everywhere @nileshgulia1
+
 ### Internal
 
 - Updated Brazilian Portuguese translations @ericof
 
 - Footer: Point to plone.org instead of plone.com @ericof
-
 
 ## 13.12.0 (2021-08-20)
 
