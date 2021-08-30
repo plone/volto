@@ -8,12 +8,13 @@
 
 ### Bugfix
 
+- Fix for Contents tag modal @nzambello
+
 ### Internal
 
 - Updated Brazilian Portuguese translations @ericof
-
 - Footer: Point to plone.org instead of plone.com @ericof
-
+- Array and token widget available as named widget @nzambello
 
 ## 13.12.0 (2021-08-20)
 
