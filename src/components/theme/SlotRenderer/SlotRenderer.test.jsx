@@ -59,10 +59,10 @@ describe('SlotRenderer Component', () => {
       </MemoryRouter>,
     );
 
-    const divSlot = container.querySelector('.slot-aboveContentTitle div');
+    const divSlot = container.querySelector('#slot-aboveContentTitle div');
     expect(divSlot).toHaveClass('slot-component');
 
-    const asideSlot = container.querySelector('.slot-aboveContentTitle aside');
+    const asideSlot = container.querySelector('#slot-aboveContentTitle aside');
     expect(asideSlot).toHaveClass('slot-component');
   });
 
@@ -89,9 +89,9 @@ describe('SlotRenderer Component', () => {
         </Provider>
       </MemoryRouter>,
     );
-    const divSlot = container.querySelector('.slot-aboveContentTitle div');
+    const divSlot = container.querySelector('#slot-aboveContentTitle div');
     expect(divSlot).toHaveClass('slot-component');
-    const asideSlot = container.querySelector('.slot-aboveContentTitle aside');
+    const asideSlot = container.querySelector('#slot-aboveContentTitle aside');
     expect(asideSlot).toBe(null);
   });
 
@@ -123,7 +123,7 @@ describe('SlotRenderer Component', () => {
       </MemoryRouter>,
     );
 
-    const divSlot = container.querySelector('.slot-aboveContentTitle div');
+    const divSlot = container.querySelector('#slot-aboveContentTitle div');
     expect(divSlot).toHaveClass('slot-component-aboveContentTitle');
     const asideSlot = container.querySelector('.slot-aboveContentTitle aside');
     expect(asideSlot).toBe(null);
@@ -156,7 +156,7 @@ describe('SlotRenderer Component', () => {
         </Provider>
       </MemoryRouter>,
     );
-    const divSlot = container.querySelector('.slot-aboveContentTitle div');
+    const divSlot = container.querySelector('#slot-aboveContentTitle div');
     expect(divSlot).toHaveClass('slot-component-aboveContentTitle');
     const asideSlot = container.querySelector('aside');
     expect(asideSlot).toBe(null);
@@ -180,7 +180,7 @@ describe('SlotRenderer Component', () => {
         </Provider>
       </MemoryRouter>,
     );
-    const divSlot = container.querySelector('.slot-aboveContentTitle div');
+    const divSlot = container.querySelector('#slot-aboveContentTitle div');
     expect(divSlot).toHaveClass('slot-component-aboveContentTitle');
   });
 
@@ -202,7 +202,7 @@ describe('SlotRenderer Component', () => {
         </Provider>
       </MemoryRouter>,
     );
-    const divSlot = container.querySelector('.slot-aboveContentTitle div');
+    const divSlot = container.querySelector('#slot-aboveContentTitle div');
     expect(divSlot).toBe(null);
   });
 });

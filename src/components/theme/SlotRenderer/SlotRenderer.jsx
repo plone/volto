@@ -7,7 +7,7 @@ import { v4 as uuid } from 'uuid';
 import Registry from '@plone/volto/registry';
 
 const DefaultSlotWrapper = ({ name, children }) => (
-  <div className={`slot-${name}`}>{children}</div>
+  <div id={`slot-${name}`}>{children}</div>
 );
 
 const defaultComputeLayout = ({ staticFills, persistentFills }) => [
