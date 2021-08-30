@@ -1,4 +1,4 @@
-import { map, uniq } from 'lodash';
+import { map, uniq, keys, isEmpty } from 'lodash';
 import { messages } from '../MessageLabels/MessageLabels';
 
 /**
@@ -176,10 +176,15 @@ const hasUniqueItems = (field, fieldData, formatMessage) => {
  * If required fields are undefined, return list of errors
  * @returns {Object[string]} - list of errors
  */
-const validateRequiredFields = (schema, formData, formatMessage) => {
+const validateRequiredFields = (
+  schema,
+  formData,
+  formatMessage,
+  touchedField,
+) => {
   const errors = {};
-
-  map(schema.required, (requiredField) => {
+  const fields = isEmpty(touchedField) ? schema.required : keys(touchedField);
+  map(fields, (requiredField) => {
     const type = schema.properties[requiredField]?.type;
     const widget = schema.properties[requiredField]?.widget;
 
@@ -215,8 +220,18 @@ const validateRequiredFields = (schema, formData, formatMessage) => {
  * !!ONLY fields with data will be tested (those undefined are ignored here)
  * @returns {Object[string]} - list of errors
  */
-const validateFieldsPerFieldset = (schema, formData, formatMessage) => {
-  const errors = validateRequiredFields(schema, formData, formatMessage);
+const validateFieldsPerFieldset = (
+  schema,
+  formData,
+  formatMessage,
+  touchedField,
+) => {
+  const errors = validateRequiredFields(
+    schema,
+    formData,
+    formatMessage,
+    touchedField,
+  );
 
   map(schema.properties, (field, fieldId) => {
     const fieldWidgetType = field.widget || field.type;
@@ -327,8 +342,14 @@ class FormValidation {
     schema = { properties: {}, fieldsets: [], required: [] },
     formData = {},
     formatMessage = () => {},
+    touchedField = {},
   } = {}) {
-    return validateFieldsPerFieldset(schema, formData, formatMessage);
+    return validateFieldsPerFieldset(
+      schema,
+      formData,
+      formatMessage,
+      touchedField,
+    );
   }
 }
 
