@@ -56,6 +56,7 @@ export const widgetMapping = {
     align: AlignWidget,
     url: UrlWidget,
     email: EmailWidget,
+    array: ArrayWidget,
     token: TokenWidget,
     query: QueryWidget,
     query_sort_on: QuerySortOnWidget,

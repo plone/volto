@@ -132,6 +132,7 @@ class ContentsTagsModal extends Component {
             properties: {
               tags_to_remove: {
                 type: 'array',
+                widget: 'array',
                 title: this.props.intl.formatMessage(messages.tagsToRemove),
                 choices: currentSetTags.map((tag) => [tag, tag]),
               },
