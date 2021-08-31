@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Show loading indicator for listing view @iFlameing
+
 ### Bugfix
 
 ### Internal
