@@ -2436,6 +2436,7 @@ msgstr "Lead-Bild"
 msgid "listing"
 msgstr "Listing"
 
+#: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Contents/Contents
 msgid "loading"
 msgstr "laden"

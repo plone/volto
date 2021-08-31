@@ -2431,6 +2431,7 @@ msgstr "Imagen Principal"
 msgid "listing"
 msgstr "Listado"
 
+#: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Contents/Contents
 msgid "loading"
 msgstr "Cargando"
