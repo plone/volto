@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix SearchWidget required `pathname` @avoinea #2645
+
 ### Internal
 
 - Updated Brazilian Portuguese translations @ericof
