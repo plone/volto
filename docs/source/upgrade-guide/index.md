@@ -13,6 +13,28 @@ This upgrade guide lists all breaking changes in Volto and explains the
     the latest changes and propose you if you want to merge them, run it on the top of
     your project and answer the prompt.
 
+## Upgrading to Volto 14.x.x
+
+### Content locking
+
+Not really a breaking change, but it's worth noting it. By default, Volto 14 comes with
+[content-locking](/configuration/locking) enabled, if the backend supports it. Thus:
+* Upgrade Plone RestAPI:
+  * **plone.restapi**>=`8.9.0` (Plone 5+)
+  * **plone.restapi**>=`7.4.0` (Plone 4)
+* Update `plone:CORSPolicy` to include `Lock-Token` within `allow_headers`:
+
+```xml
+  <plone:CORSPolicy
+    allow_origin="http://localhost:3000,http://127.0.0.1:3000"
+    allow_methods="DELETE,GET,OPTIONS,PATCH,POST,PUT"
+    allow_credentials="true"
+    expose_headers="Content-Length,X-My-Header"
+    allow_headers="Accept,Authorization,Content-Type,X-Custom-Header,Origin,Lock-Token"
+    max_age="3600"
+    />
+```
+
 ## Upgrading to Volto 13.x.x
 
 ## Deprecating NodeJS 10
