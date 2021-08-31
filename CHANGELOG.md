@@ -1,12 +1,28 @@
 # Change Log
 
-## 13.11.1 (unreleased)
+## 13.12.1 (unreleased)
 
 ### Breaking
 
 ### Feature
- 
+
 - Close object browser when pressing ESC @nzambello
+
+### Bugfix
+
+### Internal
+
+- Updated Brazilian Portuguese translations @ericof
+
+- Footer: Point to plone.org instead of plone.com @ericof
+
+
+## 13.12.0 (2021-08-20)
+
+### Feature
+
+- Multilingual routing was added for sitemap, search, contact-form, change-password, register and password-reset @ionlizarazu
+- Opening the search input in the object browser, it will get the focus @nzambello
 
 ### Bugfix
 
@@ -15,8 +31,7 @@
 - Opening the search input in the object browser, it will get the focus @nzambello
 - Fix ObjectBrowserNav items key @nzambello
 - Fix ObjectBrowserNav aria label: id => title @nzambello
-
-### Internal
+- Fix missing code in `ArrayWidget` from refactored `SelectWidget` @sneridagh
 
 ## 13.11.0 (2021-08-18)
 
