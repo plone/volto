@@ -8,6 +8,7 @@
 
 ### Bugfix
 
+- Add location.search as criteria in `ScrollToTop` component @kreafox
 - Scroll to top only if the location pathname changes @kreafox
 
 ### Internal
