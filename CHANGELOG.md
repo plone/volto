@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Contents shows also array indexes @nzambello
+
 ### Bugfix
 
 - Fix for Contents tag modal @nzambello
