@@ -8,6 +8,7 @@
 
 - Close object browser when pressing ESC @nzambello
 - Opening the search input in the object browser, it will get the focus @nzambello
+- Contents shows also array indexes @nzambello
 
 ### Bugfix
 
