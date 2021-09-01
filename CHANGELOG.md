@@ -5,6 +5,7 @@
 ### Breaking
 
 ### Feature
+- Show version in history view @iFlameing
 
 - Contents shows also array indexes @nzambello
 
