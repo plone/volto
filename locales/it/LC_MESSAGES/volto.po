@@ -863,6 +863,10 @@ msgid "History"
 msgstr "Cronologia"
 
 #: components/manage/History/History
+msgid "History Version Number"
+msgstr ""
+
+#: components/manage/History/History
 msgid "History of {title}"
 msgstr "Cronologia di {title}"
 

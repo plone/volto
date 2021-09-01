@@ -871,6 +871,10 @@ msgid "History"
 msgstr "Histórico"
 
 #: components/manage/History/History
+msgid "History Version Number"
+msgstr ""
+
+#: components/manage/History/History
 msgid "History of {title}"
 msgstr "Histórico de {title}"
 

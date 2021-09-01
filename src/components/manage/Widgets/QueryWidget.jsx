@@ -14,6 +14,7 @@ import { getQuerystring } from '@plone/volto/actions';
 import { Icon } from '@plone/volto/components';
 import { format, parse } from 'date-fns';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import cx from 'classnames';
 
 import {
   Option,
@@ -260,7 +261,7 @@ class QuerystringWidget extends Component {
         inline
         required={required}
         error={error.length > 0}
-        className={description ? 'help' : ''}
+        className={cx('query-widget', description ? 'help' : '')}
         id={`${fieldSet || 'field'}-${id}`}
       >
         <Grid>

@@ -870,6 +870,10 @@ msgid "History"
 msgstr "履歴"
 
 #: components/manage/History/History
+msgid "History Version Number"
+msgstr ""
+
+#: components/manage/History/History
 msgid "History of {title}"
 msgstr "{title} の履歴"
 
