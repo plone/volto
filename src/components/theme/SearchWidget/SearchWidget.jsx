@@ -36,7 +36,7 @@ class SearchWidget extends Component {
    * @static
    */
   static propTypes = {
-    pathname: PropTypes.string.isRequired,
+    pathname: PropTypes.string,
   };
 
   /**
