@@ -9,8 +9,12 @@
 ### Bugfix
 
 - Cut/Copy blocks: fixed cut/copy unselected blocks. @giuliaghisini
+- Properly style QueryWidget when used standalone, outside of QuerystringWidget @kreafox
+- Add location.search as criteria in `ScrollToTop` component @kreafox
+- Scroll to top only if the location pathname changes @kreafox
 
 ### Internal
+- Disabled all the other configuration options when user did not choose any criteria in listing block @iFlameing
 
 - Updated Brazilian Portuguese translations @ericof
 
