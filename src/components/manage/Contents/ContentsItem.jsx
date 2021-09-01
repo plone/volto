@@ -202,6 +202,9 @@ export const ContentsItemComponent = ({
                 )}
               </span>
             )}
+            {index.type === 'array' && (
+              <span>{item[index.id]?.join(', ')}</span>
+            )}
           </Table.Cell>
         ))}
         <Table.Cell

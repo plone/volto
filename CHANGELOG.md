@@ -6,8 +6,11 @@
 
 ### Feature
 
+- Contents shows also array indexes @nzambello
+
 ### Bugfix
 
+- Fix for Contents tag modal @nzambello
 - Cut/Copy blocks: fixed cut/copy unselected blocks. @giuliaghisini
 - Properly style QueryWidget when used standalone, outside of QuerystringWidget @kreafox
 - Add location.search as criteria in `ScrollToTop` component @kreafox
@@ -17,8 +20,8 @@
 - Disabled all the other configuration options when user did not choose any criteria in listing block @iFlameing
 
 - Updated Brazilian Portuguese translations @ericof
-
 - Footer: Point to plone.org instead of plone.com @ericof
+- Array and token widget available as named widget @nzambello
 
 ## 13.12.0 (2021-08-20)
 
