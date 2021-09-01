@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- fix not updating roles in users controlpanel @nileshgulia1
+
 ### Internal
 
 ## 13.13.0 (2021-09-01)
@@ -198,7 +200,6 @@
 
 ### Bugfix
 
-- fix not updating roles in users controlpanel @nileshgulia1
 - Fixed docs for config.settings.externalRoutes @giuliaghisini
 - Fix `Pluggable` in the use case that a `Plug` is empty @sneridagh
 - Fix `Login` component navigation for `INavigationRoot` structures @sneridagh
