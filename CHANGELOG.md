@@ -2,11 +2,9 @@
 
 ## 13.12.1 (unreleased)
 
-### Breaking
-
 ### Feature
-- Show version in history view @iFlameing
 
+- Show version in history view @iFlameing
 - Contents shows also array indexes @nzambello
 
 ### Bugfix
@@ -19,8 +17,8 @@
 - Scroll to top only if the location pathname changes @kreafox
 
 ### Internal
-- Disabled all the other configuration options when user did not choose any criteria in listing block @iFlameing
 
+- Disabled all the other configuration options when user did not choose any criteria in listing block @iFlameing
 - Updated Brazilian Portuguese translations @ericof
 - Footer: Point to plone.org instead of plone.com @ericof
 - Array and token widget available as named widget @nzambello
