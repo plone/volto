@@ -24,7 +24,7 @@ const messages = defineMessages({
 });
 
 function QueryStringSortOrderWidget(props) {
-  const { id, value, onChange, reactSelect } = props;
+  const { id, value, onChange, reactSelect, isDisabled } = props;
   const sortable_indexes = useSelector(
     (state) => state.querystring.sortable_indexes,
   );
@@ -43,6 +43,7 @@ function QueryStringSortOrderWidget(props) {
         className="react-select-container"
         classNamePrefix="react-select"
         // placeholder="Select criteria"
+        isDisabled={isDisabled}
         options={[
           {
             label: intl.formatMessage(messages.NoSelection),
