@@ -8,6 +8,7 @@
 
 ### Bugfix
 
+- Properly style QueryWidget when used standalone, outside of QuerystringWidget @kreafox
 - Add location.search as criteria in `ScrollToTop` component @kreafox
 - Scroll to top only if the location pathname changes @kreafox
 
