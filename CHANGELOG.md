@@ -10,6 +10,7 @@
 
 ### Bugfix
 
+- Fix SearchWidget required `pathname` @avoinea #2645
 - Fix for Contents tag modal @nzambello
 - Cut/Copy blocks: fixed cut/copy unselected blocks. @giuliaghisini
 - Properly style QueryWidget when used standalone, outside of QuerystringWidget @kreafox
