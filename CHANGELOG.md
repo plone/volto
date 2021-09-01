@@ -8,13 +8,15 @@
 
 ### Bugfix
 
+- Add location.search as criteria in `ScrollToTop` component @kreafox
+- Scroll to top only if the location pathname changes @kreafox
+
 ### Internal
 - Disabled all the other configuration options when user did not choose any criteria in listing block @iFlameing
 
 - Updated Brazilian Portuguese translations @ericof
 
 - Footer: Point to plone.org instead of plone.com @ericof
-
 
 ## 13.12.0 (2021-08-20)
 
