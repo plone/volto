@@ -1,6 +1,6 @@
 # Change Log
 
-## 13.12.1 (unreleased)
+## 13.14.1 (unreleased)
 
 ### Breaking
 
@@ -12,10 +12,34 @@
 
 ### Internal
 
+## 13.14.0 (2021-09-02)
+
+### Feature
+
+- Refactor users and groups controlpanel @nileshgulia1
+
+## 13.13.0 (2021-09-01)
+
+### Feature
+
+- Show version in history view @iFlameing
+- Contents shows also array indexes @nzambello
+
+### Bugfix
+
+- Fix SearchWidget required `pathname` @avoinea #2645
+- Fix for Contents tag modal @nzambello
+- Cut/Copy blocks: fixed cut/copy unselected blocks. @giuliaghisini
+- Properly style QueryWidget when used standalone, outside of QuerystringWidget @kreafox
+- Add location.search as criteria in `ScrollToTop` component @kreafox
+- Scroll to top only if the location pathname changes @kreafox
+
+### Internal
+
+- Disabled all the other configuration options when user did not choose any criteria in listing block @iFlameing
 - Updated Brazilian Portuguese translations @ericof
-
 - Footer: Point to plone.org instead of plone.com @ericof
-
+- Array and token widget available as named widget @nzambello
 
 ## 13.12.0 (2021-08-20)
 
@@ -46,8 +70,6 @@
 - Add tests for `Select` component, document the use cases propely @sneridagh
 - Upgrade `AsyncSelect` to a version compatible with `react-select` v4 @sneridagh
 - Upgrade to latest `react-select` @sneridagh
-
-### Internal
 
 ## 13.10.0 (2021-08-18)
 
