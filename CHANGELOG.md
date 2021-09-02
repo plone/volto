@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- fix not updating roles in users controlpanel @nileshgulia1
+
 ### Internal
 
 ## 13.13.0 (2021-09-01)
@@ -62,8 +64,6 @@
 - Add tests for `Select` component, document the use cases propely @sneridagh
 - Upgrade `AsyncSelect` to a version compatible with `react-select` v4 @sneridagh
 - Upgrade to latest `react-select` @sneridagh
-
-### Internal
 
 ## 13.10.0 (2021-08-18)
 
