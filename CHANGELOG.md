@@ -12,6 +12,8 @@
 
 ### Internal
 
+- Get SchemaWidget field factories from backend @avoinea
+
 ## 13.13.0 (2021-09-01)
 
 ### Feature

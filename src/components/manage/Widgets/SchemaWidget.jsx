@@ -129,18 +129,7 @@ const messages = defineMessages({
 });
 
 /**
- * Makes a list of field types formated for select widget
- * @param {Object[]} listOfTypes array of strings
- * @param {*} intl
- * @returns {Object[]} example [['text', 'text']]
- */
-const makeFieldTypes = (listOfTypes, intl) => {
-  const result = listOfTypes.map((type) => [type.title, type.title]);
-  return result;
-};
-
-/**
- * Makes a list of fieldset types formated for select widget
+ * Makes a list of fieldset types formatted for select widget
  * @param {Object[]} listOfTypes array of strings
  * @param {*} intl
  * @returns {Object[]} example [['default', 'default']]
@@ -327,7 +316,7 @@ const getItemStyle = (isDragging, draggableStyle) => ({
   // change background colour if dragging
   background: isDragging ? 'white' : 'transparent',
 
-  // styles we need to apply on draggables
+  // styles we need to apply on draggable
   ...draggableStyle,
 });
 
@@ -1081,7 +1070,7 @@ class SchemaWidget extends Component {
     const lastUserCreatedFieldsIndex = hasChangeNote
       ? this.props.value.fieldsets[this.state.currentFieldset].fields.length - 1
       : this.props.value.fieldsets[this.state.currentFieldset].fields.length;
-    // fields that were not created by the user, but are part of a behaviour
+    // fields that were not created by the user, but are part of a behavior
     const makeNonUserFields = () =>
       map(
         this.props.value.fieldsets[this.state.currentFieldset].fields.slice(
@@ -1311,8 +1300,11 @@ class SchemaWidget extends Component {
               properties: {
                 factory: {
                   type: 'string',
+                  factory: 'Choice',
                   title: this.props.intl.formatMessage(messages.type),
-                  choices: makeFieldTypes(vocabularyFields?.items),
+                  vocabulary: {
+                    '@id': `Fields`,
+                  },
                 },
                 title: {
                   type: 'string',
