@@ -6,6 +6,8 @@
 
 ### Feature
 
+- cypress: user controlpanel tests @nileshgulia1
+
 ### Bugfix
 
 - fix not updating roles in users controlpanel @nileshgulia1
