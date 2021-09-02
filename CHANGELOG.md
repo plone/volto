@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Update italian translations @nzambello
+
 ## 13.14.0 (2021-09-02)
 
 ### Feature
