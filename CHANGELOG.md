@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Add placeholder to WysiwygWidget @nzambello
+
 ## 13.14.0 (2021-09-02)
 
 ### Feature
