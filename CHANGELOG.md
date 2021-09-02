@@ -2,17 +2,9 @@
 
 ## 13.13.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
-- cypress: user controlpanel tests @nileshgulia1
-
-### Bugfix
-
-- fix not updating roles in users controlpanel @nileshgulia1
-
-### Internal
+- Refactor users and groups controlpanel @nileshgulia1
 
 ## 13.13.0 (2021-09-01)
 
