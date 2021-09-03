@@ -5,6 +5,7 @@
 ### Breaking
 
 ### Feature
+- Show item title and item type when hovering over item title and item type icon in folder content view @iFlameing
 
 ### Bugfix
 
