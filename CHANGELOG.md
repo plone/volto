@@ -5,6 +5,7 @@
 ### Breaking
 
 ### Feature
+
 - Change the batch size of folder content @iFlameing
 
 ### Bugfix
