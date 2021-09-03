@@ -1,6 +1,6 @@
 # Change Log
 
-## 13.13.1 (unreleased)
+## 13.14.1 (unreleased)
 
 ### Breaking
 
@@ -8,11 +8,14 @@
 
 ### Bugfix
 
-- fix not updating roles in users controlpanel @nileshgulia1
-
 ### Internal
 
 - Get SchemaWidget field factories from backend @avoinea
+## 13.14.0 (2021-09-02)
+
+### Feature
+
+- Refactor users and groups controlpanel @nileshgulia1
 
 ## 13.13.0 (2021-09-01)
 
