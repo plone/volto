@@ -113,9 +113,10 @@ const useLocationStateManager = () => {
       if (changed)
         history.push({
           hash: newParams.toString(),
+          search: location.search,
         });
     },
-    [history, oldState, location.hash],
+    [history, oldState, location.hash, location.search],
   );
 
   return [current, setSearchData];

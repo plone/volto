@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix search block Cypress test @kreafox
+
 ### Internal
 
 ## 13.12.0 (2021-08-20)
