@@ -2453,6 +2453,7 @@ msgstr "Imagine (copertă)"
 msgid "listing"
 msgstr "Listare"
 
+#: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Contents/Contents
 msgid "loading"
 msgstr ""

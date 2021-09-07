@@ -1,6 +1,6 @@
 # Change Log
 
-## 13.14.1 (unreleased)
+## 13.15.1 (unreleased)
 
 ### Breaking
 
@@ -12,6 +12,24 @@
 ### Bugfix
 
 ### Internal
+
+## 13.15.0 (2021-09-07)
+
+### Feature
+
+- Show item title and item type when hovering over item title and item type icon in folder content view @iFlameing
+- Change the batch size of folder content @iFlameing
+- Show loading indicator for listing view @iFlameing
+
+### Bugfix
+
+- Validate `required` touched-only fields in Form everywhere @nileshgulia1
+
+### Internal
+
+- Add placeholder to WysiwygWidget @nzambello
+- Update italian translations @nzambello
+- Get SchemaWidget field factories from backend @avoinea
 
 ## 13.14.0 (2021-09-02)
 
