@@ -41,7 +41,8 @@ msgstr "アクション"
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Controlpanels/UsersControlpanel
+#: components/manage/Controlpanels/Groups/GroupsControlpanel
+#: components/manage/Controlpanels/Users/UsersControlpanel
 msgid "Actions"
 msgstr "アクション"
 
@@ -75,6 +76,10 @@ msgstr "ユーザを追加"
 #: components/manage/Blocks/Description/Edit
 msgid "Add a description…"
 msgstr "説明を追加…"
+
+#: components/manage/BlockChooser/BlockChooserButton
+msgid "Add block"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Add block…"
@@ -116,6 +121,10 @@ msgstr "新しいユーザを追加"
 msgid "Add to Groups"
 msgstr "グループに追加"
 
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Add vocabulary term"
+msgstr ""
+
 #: components/manage/Add/Add
 msgid "Add {type}"
 msgstr "{type} を追加"
@@ -147,6 +156,10 @@ msgstr "アルファベット順"
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Alt text"
 msgstr "代替テキスト"
+
+#: components/manage/Toolbar/More
+msgid "Apply working copy"
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this field?"
@@ -181,6 +194,7 @@ msgstr "利用可能"
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
 #: components/manage/Sidebar/ObjectBrowserBody
+#: components/manage/Toolbar/PersonalTools
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -269,6 +283,10 @@ msgstr "状態を変更"
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Change workflow state recursively"
 msgstr "下位階層のワークフローの状態も変更する"
+
+#: components/manage/Toolbar/More
+msgid "Changes applied."
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
@@ -401,6 +419,14 @@ msgstr "著作権"
 msgid "Copyright statement or other rights information on this item."
 msgstr "このアイテムの著作権宣言文または他の権利情報"
 
+#: components/manage/Toolbar/More
+msgid "Create working copy"
+msgstr ""
+
+#: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
+msgid "Created by {creator} on {date}"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Created on"
 msgstr "作成日"
@@ -483,9 +509,9 @@ msgstr "基本"
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypesActions
+#: components/manage/Controlpanels/Groups/RenderGroups
 #: components/manage/Controlpanels/ModerateComments
-#: components/manage/Controlpanels/UsersControlpanelGroups
-#: components/manage/Controlpanels/UsersControlpanelUser
+#: components/manage/Controlpanels/Users/RenderUsers
 #: components/manage/Delete/Delete
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
@@ -556,7 +582,7 @@ msgstr "列の区切り線を表示"
 msgid "Do you really want to delete the following items?"
 msgstr "以下のアイテムを削除してよろしいですか?"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: components/manage/Controlpanels/Groups/GroupsControlpanel
 msgid "Do you really want to delete the group {groupname}?"
 msgstr "グループ {groupname} を削除してよろしいですか?"
 
@@ -564,7 +590,7 @@ msgstr "グループ {groupname} を削除してよろしいですか?"
 msgid "Do you really want to delete the type {typename}?"
 msgstr "本当にコンテンツタイプ {typename} を削除しますか?"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: components/manage/Controlpanels/Users/UsersControlpanel
 msgid "Do you really want to delete the user {username}?"
 msgstr "ユーザ {username} を削除してよろしいですか?"
 
@@ -822,14 +848,24 @@ msgstr "グループ"
 msgid "Group created"
 msgstr "グループが作成されました"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
+msgid "Group roles updated"
+msgstr ""
+
+#: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: helpers/MessageLabels/MessageLabels
 msgid "Groupname"
 msgstr "グループ名"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/Groups/GroupsControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Groups"
 msgstr "グループ"
+
+#: components/manage/Controlpanels/Groups/GroupsControlpanel
+msgid "Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol{plone_svg}indicates a role inherited from membership in another group."
+msgstr ""
 
 #: components/manage/Blocks/Table/Edit
 msgid "Header cell"
@@ -843,6 +879,10 @@ msgstr ""
 #: components/manage/Toolbar/More
 msgid "History"
 msgstr "履歴"
+
+#: components/manage/History/History
+msgid "History Version Number"
+msgstr ""
 
 #: components/manage/History/History
 msgid "History of {title}"
@@ -1077,6 +1117,14 @@ msgstr "ログインに失敗しました"
 msgid "Login Name"
 msgstr "ログイン名"
 
+#: components/manage/Toolbar/PersonalTools
+msgid "Logout"
+msgstr ""
+
+#: components/manage/Toolbar/More
+msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 msgid "Make the table compact"
 msgstr "コンパクトな表示"
@@ -1236,6 +1284,7 @@ msgstr "アンインストール用のプロファイルがありません"
 
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
+#: components/manage/Widgets/SelectUtils
 #: components/manage/Widgets/SelectWidget
 msgid "No value"
 msgstr "値がありません"
@@ -1252,6 +1301,10 @@ msgstr "ワークフローなし"
 #: components/manage/Contents/ContentsItem
 msgid "None"
 msgstr "None"
+
+#: components/manage/Controlpanels/Users/UsersControlpanel
+msgid "Note that roles set here apply directly to a user. The symbol{plone_svg}indicates a role inherited from membership in a group."
+msgstr ""
 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Number of active objects"
@@ -1318,6 +1371,14 @@ msgstr "ペースト"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Paste blocks"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
+msgid "Permissions have been updated successfully"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
+msgid "Permissions updated"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
@@ -1465,6 +1526,14 @@ msgstr ""
 msgid "Remove recurrence"
 msgstr "繰り返しを削除"
 
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Remove term"
+msgstr ""
+
+#: components/manage/Toolbar/More
+msgid "Remove working copy"
+msgstr ""
+
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 msgid "Rename"
@@ -1508,6 +1577,10 @@ msgstr "必須"
 #: helpers/MessageLabels/MessageLabels
 msgid "Required input is missing."
 msgstr "必須"
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Reset term title"
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 msgid "Results limit"
@@ -1578,6 +1651,10 @@ msgstr ""
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search"
 msgstr "検索"
+
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Search SVG"
+msgstr ""
 
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search Site"
@@ -1879,6 +1956,10 @@ msgstr "The backend is responding, but the CORS headers are not configured prope
 msgid "The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
 msgstr ""
 
+#: components/manage/Contents/Contents
+msgid "The item could not be deleted."
+msgstr ""
+
 #: components/theme/Register/Register
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 msgstr "The registration process has been successful. Please check your e-mail inbox for information on how activate your account. (未翻訳)"
@@ -1886,6 +1967,10 @@ msgstr "The registration process has been successful. Please check your e-mail i
 #: components/manage/Preferences/PersonalInformation
 msgid "The user portrait/avatar"
 msgstr "写真やアバターなどプロフィール画像を登録してください。"
+
+#: components/manage/Toolbar/More
+msgid "The working copy was discarded"
+msgstr ""
 
 #: components/theme/Footer/Footer
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
@@ -1907,6 +1992,14 @@ msgstr "いくつかのエラーが発生しました"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Third"
 msgstr "第3"
+
+#: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
+msgid "This has an ongoing working copy in {title}"
+msgstr ""
+
+#: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
+msgid "This is a working copy of {title}"
+msgstr ""
 
 #: components/manage/Contents/ContentsRenameModal
 msgid "This name will be displayed in the URL."
@@ -1953,9 +2046,6 @@ msgid "Total number of objects in the database"
 msgstr "データベースの中にあるオブジェクト数"
 
 #: components/manage/Add/Add
-msgid "Translate to"
-msgstr ""
-
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
 msgstr "{lang} に翻訳する"
@@ -2070,26 +2160,27 @@ msgstr "ユーザ"
 msgid "User created"
 msgstr "ユーザを作成しました"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: components/manage/Controlpanels/Users/UsersControlpanel
 msgid "User name"
 msgstr "ユーザ名"
+
+#: helpers/MessageLabels/MessageLabels
+msgid "User roles updated"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Username"
 msgstr "ユーザ名"
 
-#: components/manage/Controlpanels/UsersControlpanel
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/Users/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
 msgid "Users"
 msgstr "ユーザ"
 
 #: components/manage/Controlpanels/Controlpanels
-#: helpers/MessageLabels/MessageLabels
 msgid "Users and Groups"
 msgstr "ユーザとグループ"
-
-#: components/manage/Controlpanels/UsersControlpanel
-msgid "Users and groups settings"
-msgstr "ユーザとグループの設定"
 
 #: helpers/Extensions/withBlockSchemaEnhancer
 msgid "Variation"
@@ -2119,9 +2210,25 @@ msgstr "表示"
 msgid "View this revision"
 msgstr "この履歴を表示"
 
+#: components/manage/Toolbar/More
+msgid "View working copy"
+msgstr ""
+
 #: components/manage/Display/Display
 msgid "Viewmode"
 msgstr "表示モード"
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary term"
+msgstr ""
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary term title"
+msgstr ""
+
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary terms"
+msgstr ""
 
 #: components/manage/Controlpanels/VersionOverview
 msgid "Warning Regarding debug mode"
@@ -2341,6 +2448,7 @@ msgstr "リード画像"
 msgid "listing"
 msgstr "リスティング"
 
+#: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Contents/Contents
 msgid "loading"
 msgstr ""

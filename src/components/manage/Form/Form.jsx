@@ -255,6 +255,7 @@ class Form extends Component {
         schema: this.props.schema,
         formData: this.state.formData,
         formatMessage: this.props.intl.formatMessage,
+        touchedField: { [id]: value },
       });
 
       this.setState({
@@ -552,7 +553,12 @@ class Form extends Component {
               >
                 {schema &&
                   map(schema.fieldsets, (item) => [
-                    <Segment secondary attached key={item.title}>
+                    <Segment
+                      secondary
+                      attached
+                      className={`fieldset-${item.id}`}
+                      key={item.title}
+                    >
                       {item.title}
                     </Segment>,
                     <Segment attached key={`fieldset-contents-${item.title}`}>

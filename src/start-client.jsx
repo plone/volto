@@ -46,6 +46,9 @@ export default () => {
   if (window.env.apiPath) {
     config.settings.apiPath = window.env.apiPath;
   }
+  if (window.env.publicURL) {
+    config.settings.publicURL = window.env.publicURL;
+  }
 
   loadableReady(() => {
     hydrate(

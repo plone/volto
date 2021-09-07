@@ -14,8 +14,8 @@ export function setBlocksClipboard(payload) {
     type: SET_BLOCKS_CLIPBOARD,
     ...Object.assign(
       {},
-      payload.cut ? { cut: payload.cut } : {},
-      payload.copy ? { copy: payload.copy } : {},
+      payload.cut ? { cut: payload.cut.filter((b) => !!b) } : {},
+      payload.copy ? { copy: payload.copy.filter((b) => !!b) } : {},
     ),
   };
 }
