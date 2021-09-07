@@ -17,6 +17,7 @@
 
 ### Internal
 
+- Add placeholder to WysiwygWidget @nzambello
 - Update italian translations @nzambello
 - Get SchemaWidget field factories from backend @avoinea
 
