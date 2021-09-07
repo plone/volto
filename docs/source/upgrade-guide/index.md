@@ -15,6 +15,14 @@ This upgrade guide lists all breaking changes in Volto and explains the
 
 ## Upgrading to Volto 14.x.x
 
+### Removal of old configuration system based on imports
+
+As announced in the deprecation notice in Volto 12 release, from Volto 14 on, the old
+configuration system based on imports will stop work. Migrate your Volto configuration
+for your projects before upgrading to Volto 14.
+
+More information: https://docs.voltocms.com/upgrade-guide/#volto-configuration-registry
+
 ### Content locking
 
 Not really a breaking change, but it's worth noting it. By default, Volto 14 comes with
