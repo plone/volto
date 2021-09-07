@@ -2448,6 +2448,7 @@ msgstr "Irudi nagusiaren eremua"
 msgid "listing"
 msgstr "Zerrenda"
 
+#: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Contents/Contents
 msgid "loading"
 msgstr ""

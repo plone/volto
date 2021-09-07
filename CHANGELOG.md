@@ -9,6 +9,8 @@
 
 - Change the batch size of folder content @iFlameing
 
+- Show loading indicator for listing view @iFlameing
+
 ### Bugfix
 
 - Validate `required` touched-only fields in Form everywhere @nileshgulia1
