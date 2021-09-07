@@ -4,6 +4,7 @@
  */
 
 import React, { Component } from 'react';
+import jwtDecode from 'jwt-decode';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -41,6 +42,7 @@ import {
 import clearSVG from '@plone/volto/icons/clear.svg';
 import MultilingualRedirector from '../MultilingualRedirector/MultilingualRedirector';
 import WorkingCopyToastsFactory from '../../manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory';
+import LockingToastsFactory from '../../manage/LockingToastsFactory/LockingToastsFactory';
 
 import * as Sentry from '@sentry/browser';
 
@@ -154,6 +156,10 @@ class App extends Component {
           </Segment>
         </MultilingualRedirector>
         <Footer />
+        <LockingToastsFactory
+          content={this.props.content}
+          user={this.props.userId}
+        />
         <WorkingCopyToastsFactory content={this.props.content} />
         <ToastContainer
           position={toast.POSITION.BOTTOM_CENTER}
@@ -223,6 +229,9 @@ export default compose(
     (state, props) => ({
       pathname: props.location.pathname,
       token: state.userSession.token,
+      userId: state.userSession.token
+        ? jwtDecode(state.userSession.token).sub
+        : '',
       content: state.content.data,
       apiError: state.apierror.error,
       connectionRefused: state.apierror.connectionRefused,
