@@ -17,7 +17,9 @@
 
 ### Internal
 
+- Update italian translations @nzambello
 - Get SchemaWidget field factories from backend @avoinea
+
 ## 13.14.0 (2021-09-02)
 
 ### Feature
