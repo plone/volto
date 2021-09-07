@@ -5,12 +5,20 @@
 ### Breaking
 
 ### Feature
+- Show item title and item type when hovering over item title and item type icon in folder content view @iFlameing
+
+- Change the batch size of folder content @iFlameing
+
+- Show loading indicator for listing view @iFlameing
 
 ### Bugfix
+
+- Validate `required` touched-only fields in Form everywhere @nileshgulia1
 
 ### Internal
 
 - Update italian translations @nzambello
+- Get SchemaWidget field factories from backend @avoinea
 
 ## 13.14.0 (2021-09-02)
 

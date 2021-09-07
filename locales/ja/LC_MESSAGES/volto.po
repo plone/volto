@@ -2448,6 +2448,7 @@ msgstr "リード画像"
 msgid "listing"
 msgstr "リスティング"
 
+#: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Contents/Contents
 msgid "loading"
 msgstr ""

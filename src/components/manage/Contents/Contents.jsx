@@ -402,7 +402,7 @@ class Contents extends Component {
       items: this.props.items,
       filter: '',
       currentPage: 0,
-      pageSize: 15,
+      pageSize: 50,
       index: this.props.index || {
         order: keys(Indexes),
         values: mapValues(Indexes, (value, key) => ({
@@ -1717,8 +1717,6 @@ class Contents extends Component {
                           )}
                           pageSize={this.state.pageSize}
                           pageSizes={[
-                            15,
-                            30,
                             50,
                             this.props.intl.formatMessage(messages.all),
                           ]}

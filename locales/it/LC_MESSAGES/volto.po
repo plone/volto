@@ -2441,6 +2441,7 @@ msgstr "Immagine di testata"
 msgid "listing"
 msgstr "Elenco"
 
+#: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Contents/Contents
 msgid "loading"
 msgstr "caricamento"
