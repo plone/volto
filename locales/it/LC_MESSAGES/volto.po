@@ -903,6 +903,10 @@ msgstr "Se attivi l'opzione, questo elemento non apparirà nell'albero di naviga
 msgid "If this date is in the future, the content will not show up in listings and searches until this date."
 msgstr "Se questa data è in futuro, il contenuto non verrà mostrato negli elenchi e nelle ricerche fino a questa data."
 
+#: components/manage/LockingToastsFactory/LockingToastsFactory
+msgid "If you are certain this user has abandoned the object, you may unlock the object. You will then be able to edit it."
+msgstr ""
+
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
@@ -1994,6 +1998,10 @@ msgstr "Questa è una copia di lavoro in corso di {title}"
 msgid "This is a working copy of {title}"
 msgstr "Questa è una copia di lavoro di {title}"
 
+#: components/manage/LockingToastsFactory/LockingToastsFactory
+msgid "This item was locked by {creator} on {date}"
+msgstr ""
+
 #: components/manage/Contents/ContentsRenameModal
 msgid "This name will be displayed in the URL."
 msgstr "Questo nome verrà mostrato nell'URL."
@@ -2098,6 +2106,10 @@ msgstr "Blocco sconosciuto"
 #: components/manage/Multilingual/ManageTranslations
 msgid "Unlink translation for"
 msgstr "Scollega traduzione per"
+
+#: components/manage/Toolbar/Toolbar
+msgid "Unlock"
+msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update"

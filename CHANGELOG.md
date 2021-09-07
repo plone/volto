@@ -10,6 +10,9 @@ See https://docs.voltocms.com/upgrade-guide/#volto-configuration-registry
 
 ### Feature
 
+- Content locking support for Plone (plone.locking) @avoinea
+- Removed unnecessary set-cookies for the removal of the authentication cookie when the user is not logged in @mamico
+
 ### Bugfix
 
 ### Internal
