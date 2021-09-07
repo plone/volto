@@ -11,6 +11,8 @@
 
 ### Bugfix
 
+- Validate `required` touched-only fields in Form everywhere @nileshgulia1
+
 ### Internal
 
 - Get SchemaWidget field factories from backend @avoinea
