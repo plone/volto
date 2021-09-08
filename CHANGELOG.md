@@ -4,10 +4,12 @@
 
 ### Breaking
 
+- Remove compatibility for old configuration (based on imports) system. Migrate your configuration to the new configuration system for your project before upgrading to Volto 14. See https://docs.voltocms.com/upgrade-guide/#volto-configuration-registry @sneridagh
+- Content locking is not a breaking change, but it's worth noting that Volto 14 comes with locking support enabled by default. Latest `plone.restapi` versions is required. See https://docs.voltocms.com/upgrade-guide/ for more information
+
 ### Feature
 
 - Content locking support for Plone (plone.locking) @avoinea
-- Removed unnecessary set-cookies for the removal of the authentication cookie when the user is not logged in @mamico
 
 ### Bugfix
 
