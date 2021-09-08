@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Improvements in search block @kreafox
+
 ### Bugfix
 
 - Fix search block Cypress test @kreafox

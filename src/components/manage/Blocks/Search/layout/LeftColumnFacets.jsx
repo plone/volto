@@ -40,41 +40,15 @@ const LeftColumnFacets = (props) => {
   return (
     <Grid className="searchBlock-facets left-column-facets" stackable>
       <Grid.Row>
-        <Grid.Column width={12}>
+        <Grid.Column>
           {data.title && <h3>{data.title}</h3>}
           <SearchDetails text={searchedText} total={totalItems} />
         </Grid.Column>
       </Grid.Row>
 
-      {data.showSearchInput && (
-        <Grid.Row verticalAlign="bottom">
-          <Grid.Column width={12}>
-            <div className="search-wrapper">
-              <SearchInput {...props} isLive={isLive} />
-              {data.showSearchButton && (
-                <Button onClick={() => onTriggerSearch(searchText)}>
-                  {data.searchButtonLabel ||
-                    intl.formatMessage(messages.searchButtonText)}
-                </Button>
-              )}
-            </div>
-          </Grid.Column>
-        </Grid.Row>
-      )}
-
-      <FilterList
-        {...props}
-        isEditMode={isEditMode}
-        setFacets={(f) => {
-          flushSync(() => {
-            setFacets(f);
-            onTriggerSearch(searchedText || '', f);
-          });
-        }}
-      />
-
       <Grid.Row>
-        <Grid.Column mobile={12} tablet={4} computer={3}>
+        <Grid.Column className="facets" mobile={12} tablet={4} computer={3}>
+          {data.facetsTitle && <h3>{data.facetsTitle}</h3>}
           <Facets
             data={data}
             facets={facets}
@@ -89,6 +63,29 @@ const LeftColumnFacets = (props) => {
         </Grid.Column>
 
         <Grid.Column mobile={12} tablet={8} computer={9}>
+          {data.showSearchInput && (
+            <div className="search-wrapper">
+              <SearchInput {...props} isLive={isLive} />
+              {data.showSearchButton && (
+                <Button primary onClick={() => onTriggerSearch(searchText)}>
+                  {data.searchButtonLabel ||
+                    intl.formatMessage(messages.searchButtonText)}
+                </Button>
+              )}
+            </div>
+          )}
+
+          <FilterList
+            {...props}
+            isEditMode={isEditMode}
+            setFacets={(f) => {
+              flushSync(() => {
+                setFacets(f);
+                onTriggerSearch(searchedText || '', f);
+              });
+            }}
+          />
+
           {children}
         </Grid.Column>
       </Grid.Row>

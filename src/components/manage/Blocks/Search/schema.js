@@ -159,7 +159,7 @@ export default ({ data = {}, intl }) => {
       {
         id: 'facets',
         title: intl.formatMessage(messages.facets),
-        fields: ['facets'],
+        fields: ['facetsTitle', 'facets'],
       },
       {
         id: 'controls',
@@ -197,6 +197,9 @@ export default ({ data = {}, intl }) => {
         widget: 'object_list',
         schema: FacetSchema({ intl }),
         schemaExtender: enhanceSchema,
+      },
+      facetsTitle: {
+        title: intl.formatMessage(messages.title),
       },
       query: {
         title: 'Query',

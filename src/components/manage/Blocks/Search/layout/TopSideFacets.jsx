@@ -39,40 +39,42 @@ const TopSideFacets = (props) => {
 
   return (
     <Grid className="searchBlock-facets" stackable>
-      <Grid.Column width={12}>
-        {data.title && <h3>{data.title}</h3>}
-        <SearchDetails text={searchedText} total={totalItems} as="h5" />
-      </Grid.Column>
+      <Grid.Row>
+        <Grid.Column>
+          {data.title && <h3>{data.title}</h3>}
+          <SearchDetails text={searchedText} total={totalItems} as="h5" />
+        </Grid.Column>
+      </Grid.Row>
 
       {data.showSearchInput && (
         <Grid.Row verticalAlign="bottom">
-          <Grid.Column width={12}>
+          <Grid.Column>
             <div className="search-wrapper">
               <SearchInput {...props} isLive={isLive} />
               {data.showSearchButton && (
-                <Button onClick={() => onTriggerSearch(searchText)}>
+                <Button primary onClick={() => onTriggerSearch(searchText)}>
                   {data.searchButtonLabel ||
                     intl.formatMessage(messages.searchButtonText)}
                 </Button>
               )}
             </div>
+            <FilterList
+              {...props}
+              isEditMode={isEditMode}
+              setFacets={(f) => {
+                flushSync(() => {
+                  setFacets(f);
+                  onTriggerSearch(searchedText || '', f);
+                });
+              }}
+            />
           </Grid.Column>
         </Grid.Row>
       )}
 
-      <FilterList
-        {...props}
-        isEditMode={isEditMode}
-        setFacets={(f) => {
-          flushSync(() => {
-            setFacets(f);
-            onTriggerSearch(searchedText || '', f);
-          });
-        }}
-      />
-
       <Grid.Row>
-        <Grid.Column width={12}>
+        <Grid.Column className="facets">
+          {data.facetsTitle && <h3>{data.facetsTitle}</h3>}
           <Grid verticalAlign="bottom" columns={12}>
             <Facets
               data={data}
@@ -90,7 +92,7 @@ const TopSideFacets = (props) => {
       </Grid.Row>
 
       <Grid.Row>
-        <Grid.Column width={12}>{children}</Grid.Column>
+        <Grid.Column>{children}</Grid.Column>
       </Grid.Row>
     </Grid>
   );
