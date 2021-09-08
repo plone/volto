@@ -11,10 +11,6 @@
 
 - Content locking support for Plone (plone.locking) @avoinea
 
-### Bugfix
-
-### Internal
-
 ## 13.15.0 (2021-09-07)
 
 ### Feature
