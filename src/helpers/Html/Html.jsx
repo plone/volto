@@ -101,6 +101,11 @@ class Html extends Component {
       <html lang="en">
         <head>
           <meta charSet="utf-8" />
+          <link rel="shortcut icon" href="/favicon.ico" />
+          <meta name="generator" content="Volto - http://plone.org" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta name="apple-mobile-web-app-capable" content="yes" />
+
           {head.base.toComponent()}
           {head.title.toComponent()}
           {head.meta.toComponent()}
@@ -123,10 +128,6 @@ class Html extends Component {
             }}
           />
 
-          <link rel="shortcut icon" href="/favicon.ico" />
-          <meta name="generator" content="Volto - http://plone.org" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <meta name="apple-mobile-web-app-capable" content="yes" />
           {process.env.NODE_ENV === 'production' && criticalCss && (
             <style
               dangerouslySetInnerHTML={{ __html: this.props.criticalCss }}

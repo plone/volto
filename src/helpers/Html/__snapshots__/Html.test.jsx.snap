@@ -8,18 +8,6 @@ exports[`Html renders a html component 1`] = `
     <meta
       charSet="utf-8"
     />
-    
-    
-    
-    
-    
-    <script
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "window.env = {};",
-        }
-      }
-    />
     <link
       href="/favicon.ico"
       rel="shortcut icon"
@@ -35,6 +23,18 @@ exports[`Html renders a html component 1`] = `
     <meta
       content="yes"
       name="apple-mobile-web-app-capable"
+    />
+    
+    
+    
+    
+    
+    <script
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "window.env = {};",
+        }
+      }
     />
     <link
       as="script"
@@ -88,18 +88,6 @@ exports[`Html renders a html component with apiPath present 1`] = `
     <meta
       charSet="utf-8"
     />
-    
-    
-    
-    
-    
-    <script
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "window.env = {\\"apiPath\\":\\"https:\\\\u002F\\\\u002Fplone.org\\"};",
-        }
-      }
-    />
     <link
       href="/favicon.ico"
       rel="shortcut icon"
@@ -115,6 +103,18 @@ exports[`Html renders a html component with apiPath present 1`] = `
     <meta
       content="yes"
       name="apple-mobile-web-app-capable"
+    />
+    
+    
+    
+    
+    
+    <script
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "window.env = {\\"apiPath\\":\\"https:\\\\u002F\\\\u002Fplone.org\\"};",
+        }
+      }
     />
     <link
       as="script"

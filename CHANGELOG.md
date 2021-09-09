@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Move favicon in Html.jsx to make it overridable @nzambello
+
 ## 14.0.0-alpha.0 (2021-09-08)
 
 ### Breaking
