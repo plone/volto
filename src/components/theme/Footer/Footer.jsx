@@ -119,7 +119,7 @@ const Footer = ({ intl }) => {
             </Link>
           </div>
           <div role="listitem" className="item">
-            <a className="item" href="https://plone.com">
+            <a className="item" href="https://plone.org">
               <FormattedMessage
                 id="Powered by Plone & Python"
                 defaultMessage="Powered by Plone & Python"
