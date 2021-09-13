@@ -100,8 +100,8 @@ describe('Search Block Tests', () => {
     cy.get('#toolbar-save > .icon').click();
 
     cy.get(
-      '.searchBlock .three.column > .facet:nth-of-type(1) .entries > .entry:nth-of-type(1) label',
+      '.block.search .three.column > .facet:nth-of-type(1) .entries > .entry:nth-of-type(1) label',
     ).click();
-    cy.get('.searchBlock .filter-list-header .ui.button').click();
+    cy.get('.block.search .filter-list-header .ui.button').click();
   });
 });
