@@ -39,6 +39,7 @@ import heroSVG from '@plone/volto/icons/hero.svg';
 import tableSVG from '@plone/volto/icons/table.svg';
 import listBulletSVG from '@plone/volto/icons/list-bullet.svg';
 import tocSVG from '@plone/volto/icons/list-bullet.svg';
+import searchSVG from '@plone/volto/icons/zoom.svg';
 
 import ImageGalleryListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/ImageGallery';
 import BlockSettingsSchema from '@plone/volto/components/manage/Blocks/Block/Schema';
@@ -354,10 +355,10 @@ const blocksConfig = {
       view: [],
     },
   },
-  searchBlock: {
-    id: 'searchBlock',
-    title: 'Search listing',
-    icon: listBulletSVG,
+  search: {
+    id: 'search',
+    title: 'Search',
+    icon: searchSVG,
     group: 'common',
     view: SearchBlockView,
     edit: SearchBlockEdit,
