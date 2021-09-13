@@ -37,11 +37,15 @@ import {
   getTypes,
   getWorkflow,
 } from '@plone/volto/actions';
-import { loggedIn } from '@plone/volto/selectors/userSession/userSession';
+import {
+  loggedIn,
+  userData,
+} from '@plone/volto/selectors/userSession/userSession';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
 import MultilingualRedirector from '../MultilingualRedirector/MultilingualRedirector';
 import WorkingCopyToastsFactory from '../../manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory';
+import LockingToastsFactory from '../../manage/LockingToastsFactory/LockingToastsFactory';
 
 import * as Sentry from '@sentry/browser';
 
@@ -155,6 +159,10 @@ class App extends Component {
           </Segment>
         </MultilingualRedirector>
         <Footer />
+        <LockingToastsFactory
+          content={this.props.content}
+          user={this.props.userId}
+        />
         <WorkingCopyToastsFactory content={this.props.content} />
         <ToastContainer
           position={toast.POSITION.BOTTOM_CENTER}
@@ -224,6 +232,7 @@ export default compose(
     (state, props) => ({
       pathname: props.location.pathname,
       userLoggedIn: loggedIn(state),
+      userId: userData(state).userId,
       content: state.content.data,
       apiError: state.apierror.error,
       connectionRefused: state.apierror.connectionRefused,

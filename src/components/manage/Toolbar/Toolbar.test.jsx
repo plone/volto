@@ -142,4 +142,40 @@ describe('Toolbar', () => {
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
+
+  it('renders the Toolbar component with lock', () => {
+    const store = mockStore({
+      types: { types: [{ title: 'Document', addable: true }] },
+      actions: { actions, actionsById },
+      userSession: {
+        token: jwt.sign({ fullname: 'John Doe' }, 'secret'),
+      },
+      content: {
+        data: {
+          '@type': 'Folder',
+          is_folderish: true,
+          lock: {
+            locked: true,
+            stealable: true,
+            creator: 'joe',
+          },
+        },
+      },
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    const component = renderer.create(
+      <Provider store={store}>
+        <PluggablesProvider>
+          <MemoryRouter>
+            <Toolbar pathname="/test" inner={<span />} />
+          </MemoryRouter>
+        </PluggablesProvider>
+      </Provider>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
 });

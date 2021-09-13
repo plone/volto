@@ -20,6 +20,14 @@ import backSVG from '@plone/volto/icons/back.svg';
 import cameraSVG from '@plone/volto/icons/camera.svg';
 
 const messages = defineMessages({
+  back: {
+    id: 'Back',
+    defaultMessage: 'Back',
+  },
+  logout: {
+    id: 'Logout',
+    defaultMessage: 'Logout',
+  },
   preferences: {
     id: 'Preferences',
     defaultMessage: 'Preferences',
@@ -93,7 +101,11 @@ class PersonalTools extends Component {
       >
         <header className="header">
           <button className="back" onClick={this.pull}>
-            <Icon name={backSVG} size="30px" />
+            <Icon
+              name={backSVG}
+              size="30px"
+              title={this.props.intl.formatMessage(messages.back)}
+            />
           </button>
           <div className="vertical divider" />
           <h2>
@@ -102,7 +114,12 @@ class PersonalTools extends Component {
               : this.props.user.username}
           </h2>
           <Link id="toolbar-logout" to="/logout">
-            <Icon className="logout" name={logoutSVG} size="30px" />
+            <Icon
+              className="logout"
+              name={logoutSVG}
+              size="30px"
+              title={this.props.intl.formatMessage(messages.logout)}
+            />
           </Link>
         </header>
         <div className={cx('avatar', { default: !this.props.user.portrait })}>

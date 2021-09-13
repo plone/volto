@@ -43,7 +43,7 @@ export const ContentsIndexHeaderComponent = ({
   connectDropTarget(
     connectDragSource(
       <th
-        className={`${widthValues[width - 1]} wide`}
+        className={`${widthValues[width - 2]} wide`}
         style={{ opacity: isDragging ? 0.5 : 1, cursor: 'move' }}
       >
         {intl.formatMessage({

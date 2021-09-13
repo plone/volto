@@ -1,4 +1,4 @@
-import '~/config'; // This is the bootstrap for the global config - client side
+import '@plone/volto/config'; // This is the bootstrap for the global config - client side
 import React from 'react';
 import { hydrate } from 'react-dom';
 import { Provider } from 'react-redux';
@@ -45,6 +45,9 @@ export default () => {
   // If Host header is present (so window.env.apiPath is)
   if (window.env.apiPath) {
     config.settings.apiPath = window.env.apiPath;
+  }
+  if (window.env.publicURL) {
+    config.settings.publicURL = window.env.publicURL;
   }
 
   loadableReady(() => {

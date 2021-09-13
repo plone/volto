@@ -11,15 +11,134 @@
 
 ### Bugfix
 
-## 13.8.2 (unreleased)
+### Internal
+
+## 14.0.0-alpha.0 (2021-09-08)
 
 ### Breaking
 
+- Remove compatibility for old configuration (based on imports) system. Migrate your configuration to the new configuration system for your project before upgrading to Volto 14. See https://docs.voltocms.com/upgrade-guide/#volto-configuration-registry @sneridagh
+- Content locking is not a breaking change, but it's worth noting that Volto 14 comes with locking support enabled by default. Latest `plone.restapi` versions is required. See https://docs.voltocms.com/upgrade-guide/ for more information
+
 ### Feature
+
+- Content locking support for Plone (plone.locking) @avoinea
+
+## 13.15.0 (2021-09-07)
+
+### Feature
+
+- Show item title and item type when hovering over item title and item type icon in folder content view @iFlameing
+- Change the batch size of folder content @iFlameing
+- Show loading indicator for listing view @iFlameing
 
 ### Bugfix
 
+- Validate `required` touched-only fields in Form everywhere @nileshgulia1
+
 ### Internal
+
+- Add placeholder to WysiwygWidget @nzambello
+- Update italian translations @nzambello
+- Get SchemaWidget field factories from backend @avoinea
+
+## 13.14.0 (2021-09-02)
+
+### Feature
+
+- Refactor users and groups controlpanel @nileshgulia1
+
+## 13.13.0 (2021-09-01)
+
+### Feature
+
+- Show version in history view @iFlameing
+- Contents shows also array indexes @nzambello
+
+### Bugfix
+
+- Fix SearchWidget required `pathname` @avoinea #2645
+- Fix for Contents tag modal @nzambello
+- Cut/Copy blocks: fixed cut/copy unselected blocks. @giuliaghisini
+- Properly style QueryWidget when used standalone, outside of QuerystringWidget @kreafox
+- Add location.search as criteria in `ScrollToTop` component @kreafox
+- Scroll to top only if the location pathname changes @kreafox
+
+### Internal
+
+- Disabled all the other configuration options when user did not choose any criteria in listing block @iFlameing
+- Updated Brazilian Portuguese translations @ericof
+- Footer: Point to plone.org instead of plone.com @ericof
+- Array and token widget available as named widget @nzambello
+
+## 13.12.0 (2021-08-20)
+
+### Feature
+
+- Multilingual routing was added for sitemap, search, contact-form, change-password, register and password-reset @ionlizarazu
+- Opening the search input in the object browser, it will get the focus @nzambello
+
+### Bugfix
+
+- Fix ObjectBrowserNav items key @nzambello
+- Fix ObjectBrowserNav aria label: id => title @nzambello
+- Fix missing code in `ArrayWidget` from refactored `SelectWidget` @sneridagh
+
+## 13.11.0 (2021-08-18)
+
+### Feature
+
+- Add select utils `normalizerValue`, add state to the basic select field forcing it to be fully controlled @sneridagh
+
+### Bugfix
+
+- Improve consistency of `TokenWidget`'s use of the choice labels as "values" instead of internal uids assigned by `react-select`. @tiberiuichim
+- Solve glitch in async loading options in `AsyncSelect` components @sneridagh
+
+### Internal
+
+- Add tests for `Select` component, document the use cases propely @sneridagh
+- Upgrade `AsyncSelect` to a version compatible with `react-select` v4 @sneridagh
+- Upgrade to latest `react-select` @sneridagh
+
+## 13.10.0 (2021-08-18)
+
+### Feature
+
+- Increase clickable area of right-arrow in objectBrowser @iFlameing
+- Prevent form submit when clicking on BlockChooserButton @giuliaghisini
+- Make selectedItems Filter work in Contents folder @nileshgulia1
+
+### Bugfix
+
+- Fix SearchWidget search by path @giuliaghisini
+
+## 13.9.0 (2021-08-18)
+
+### Feature
+
+- Removed unnecessary set-cookies for the removal of the authentication cookie when the user is not logged in @mamico
+- Add additional classnames for the field wrappers and the fieldsets in forms, this helps to be more addressable in CSS if required @sneridagh
+
+### Bugfix
+
+- Add title/tooltip on Toolbar buttons @avoinea #1384
+- Slight CSS fix on `ObjectWidget` for supporting long add element button messages @sneridagh
+- Fix the babel view cancel button redirect @iFlameing
+- Show toast error when trying to delete item and it's not permitted @danielamormocea
+
+## 13.8.3 (2021-08-16)
+
+### Bugfix
+
+- Prevent form submit when clicking on BlockChooserButton @giuliaghisini
+- Add missing `publicURL` to the list of `window.env` serialized variables coming from the hosts configuration to complete the support for seamless mode @sneridagh
+
+## 13.8.2 (2021-07-20)
+
+### Bugfix
+
+- Improve `URLWidget` component, so it uses `flattenToURL` for the value @sneridagh
 
 ## 13.8.1 (2021-07-16)
 
@@ -3383,3 +3502,7 @@ refer to all of them in https://github.com/plone/volto/releases
 - Basic components (navigation, toolbar, breadcrumbs etc) @robgietema
 - Authentication including login / logout @robgietema
 - Setup build environment @robgietema
+
+### Changed
+
+- Fixed passing intl to the schemaExtender in the ObjectListWidget component. @1bsilver
