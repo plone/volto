@@ -7,13 +7,9 @@
 - Detect when a user has logged in by means other than JWT, such as ZMI `Basic`
   authentication or the classic HTML Plone `@login` view @rpatterson
 
-### Feature
-
 ### Bugfix
 
 - Fix SelectWidget vocabulary load on second component mount @avoinea #2655
-
-### Internal
 
 ## 14.0.0-alpha.0 (2021-09-08)
 
