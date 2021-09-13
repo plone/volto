@@ -15,7 +15,11 @@ import {
   getVocabFromItems,
 } from '@plone/volto/helpers';
 import { FormFieldWrapper } from '@plone/volto/components';
-import { getVocabulary, getVocabularyTokenTitle } from '@plone/volto/actions';
+import {
+  getVocabulary,
+  getVocabularyTokenTitle,
+  resetVocabulary,
+} from '@plone/volto/actions';
 import { normalizeValue } from './SelectUtils';
 
 import {
@@ -92,6 +96,7 @@ class SelectWidget extends Component {
     error: PropTypes.arrayOf(PropTypes.string),
     getVocabulary: PropTypes.func.isRequired,
     getVocabularyTokenTitle: PropTypes.func.isRequired,
+    resetVocabulary: PropTypes.func.isRequired,
     choices: PropTypes.arrayOf(
       PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
     ),
@@ -161,6 +166,17 @@ class SelectWidget extends Component {
   }
 
   /**
+   * Component will unmount
+   * @method componentWillUnmount
+   * @returns {undefined}
+   */
+  componentWillUnmount() {
+    if (this.props.vocabBaseUrl) {
+      this.props.resetVocabulary(this.props.vocabBaseUrl);
+    }
+  }
+
+  /**
    * Initiate search with new query
    * @method loadOptions
    * @param {string} search Search query.
@@ -169,7 +185,7 @@ class SelectWidget extends Component {
    * @returns {undefined}
    */
   loadOptions = (search, previousOptions, additional) => {
-    let hasMore = this.props.itemsTotal > previousOptions.length;
+    let hasMore = this.props.itemsTotal > previousOptions.length + 1;
     const offset = this.state.search !== search ? 0 : additional.offset;
     this.setState({ search });
 
@@ -328,6 +344,6 @@ export default compose(
       }
       return {};
     },
-    { getVocabulary, getVocabularyTokenTitle },
+    { getVocabulary, getVocabularyTokenTitle, resetVocabulary },
   ),
 )(SelectWidget);

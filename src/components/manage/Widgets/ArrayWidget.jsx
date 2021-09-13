@@ -16,7 +16,7 @@ import {
   getVocabFromField,
   getVocabFromItems,
 } from '@plone/volto/helpers';
-import { getVocabulary } from '@plone/volto/actions';
+import { getVocabulary, resetVocabulary } from '@plone/volto/actions';
 
 import {
   Option,
@@ -60,6 +60,7 @@ class ArrayWidget extends Component {
     required: PropTypes.bool,
     error: PropTypes.arrayOf(PropTypes.string),
     getVocabulary: PropTypes.func.isRequired,
+    resetVocabulary: PropTypes.func.isRequired,
     choices: PropTypes.arrayOf(
       PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
     ),
@@ -109,10 +110,6 @@ class ArrayWidget extends Component {
     this.search = this.search.bind(this);
     this.loadOptions = this.loadOptions.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.vocabBaseUrl =
-      getVocabFromHint(props) ||
-      getVocabFromField(props) ||
-      getVocabFromItems(props);
     this.state = {
       search: '',
       selectedOption: props.value
@@ -134,9 +131,20 @@ class ArrayWidget extends Component {
     if (
       !this.props.items?.choices?.length &&
       !this.props.choices?.length &&
-      this.vocabBaseUrl
+      this.props.vocabBaseUrl
     ) {
-      this.props.getVocabulary(this.vocabBaseUrl);
+      this.props.getVocabulary(this.props.vocabBaseUrl);
+    }
+  }
+
+  /**
+   * Component will unmount
+   * @method componentWillUnmount
+   * @returns {undefined}
+   */
+  componentWillUnmount() {
+    if (this.props.vocabBaseUrl) {
+      this.props.resetVocabulary(this.props.vocabBaseUrl);
     }
   }
 
@@ -147,7 +155,7 @@ class ArrayWidget extends Component {
    */
   search(query) {
     if (query.length > 1) {
-      this.props.getVocabulary(this.vocabBaseUrl, query);
+      this.props.getVocabulary(this.props.vocabBaseUrl, query);
     }
   }
 
@@ -160,12 +168,12 @@ class ArrayWidget extends Component {
    * @returns {undefined}
    */
   loadOptions = (search, previousOptions, additional) => {
-    let hasMore = this.props.itemsTotal > previousOptions.length;
+    let hasMore = this.props.itemsTotal > previousOptions.length + 1;
     const offset = this.state.search !== search ? 0 : additional.offset;
     this.setState({ search });
 
     if (hasMore || this.state.search !== search) {
-      this.props.getVocabulary(this.vocabBaseUrl, search, offset);
+      this.props.getVocabulary(this.props.vocabBaseUrl, search, offset);
 
       return {
         options:
@@ -211,7 +219,7 @@ class ArrayWidget extends Component {
 
     return (
       <FormFieldWrapper {...this.props}>
-        {!this.props.items?.choices && this.vocabBaseUrl ? (
+        {!this.props.items?.choices && this.props.vocabBaseUrl ? (
           <AsyncPaginate
             isDisabled={this.props.isDisabled}
             className="react-select-container"
@@ -294,13 +302,19 @@ export default compose(
         };
       } else if (vocabState) {
         return {
+          vocabBaseUrl,
+          vocabState,
           choices: vocabState.items,
           itemsTotal: vocabState.itemsTotal,
           loading: Boolean(vocabState.loading),
         };
+      } else if (vocabBaseUrl) {
+        return {
+          vocabBaseUrl,
+        };
       }
       return {};
     },
-    { getVocabulary },
+    { getVocabulary, resetVocabulary },
   ),
 )(ArrayWidget);

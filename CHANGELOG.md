@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Reset vocabulary on SelectWidget / ArrayWidget component unmount @avoinea #2657
+
 ### Internal
 
 ## 14.0.0-alpha.1 (2021-09-13)
