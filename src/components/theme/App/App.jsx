@@ -4,7 +4,6 @@
  */
 
 import React, { Component } from 'react';
-import jwtDecode from 'jwt-decode';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -38,6 +37,10 @@ import {
   getTypes,
   getWorkflow,
 } from '@plone/volto/actions';
+import {
+  loggedIn,
+  userData,
+} from '@plone/volto/selectors/userSession/userSession';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
 import MultilingualRedirector from '../MultilingualRedirector/MultilingualRedirector';
@@ -127,8 +130,8 @@ class App extends Component {
             [trim(join(split(this.props.pathname, '/'), ' section-'))]:
               this.props.pathname !== '/',
             siteroot: this.props.pathname === '/',
-            'is-authenticated': !!this.props.token,
-            'is-anonymous': !this.props.token,
+            'is-authenticated': !!this.props.userLoggedIn,
+            'is-anonymous': !this.props.userLoggedIn,
             'cms-ui': isCmsUI,
             'public-ui': !isCmsUI,
           })}
@@ -183,7 +186,7 @@ class App extends Component {
 export const __test__ = connect(
   (state, props) => ({
     pathname: props.location.pathname,
-    token: state.userSession.token,
+    userLoggedIn: loggedIn(state),
     content: state.content.data,
     apiError: state.apierror.error,
     connectionRefused: state.apierror.connectionRefused,
@@ -228,10 +231,8 @@ export default compose(
   connect(
     (state, props) => ({
       pathname: props.location.pathname,
-      token: state.userSession.token,
-      userId: state.userSession.token
-        ? jwtDecode(state.userSession.token).sub
-        : '',
+      userLoggedIn: loggedIn(state),
+      userId: userData(state).userId,
       content: state.content.data,
       apiError: state.apierror.error,
       connectionRefused: state.apierror.connectionRefused,

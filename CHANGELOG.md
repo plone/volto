@@ -4,6 +4,9 @@
 
 ### Breaking
 
+- Detect when a user has logged in by means other than JWT, such as ZMI `Basic`
+  authentication or the classic HTML Plone `@login` view @rpatterson
+
 ### Feature
 
 ### Bugfix
