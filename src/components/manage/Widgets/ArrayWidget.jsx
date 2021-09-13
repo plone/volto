@@ -132,8 +132,8 @@ class ArrayWidget extends Component {
    */
   componentDidMount() {
     if (
-      !this.props.items?.choices &&
-      !this.props.choices &&
+      !this.props.items?.choices?.length &&
+      !this.props.choices?.length &&
       this.vocabBaseUrl
     ) {
       this.props.getVocabulary(this.vocabBaseUrl);
