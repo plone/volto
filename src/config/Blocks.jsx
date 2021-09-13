@@ -55,6 +55,7 @@ import TopSideFacets from '@plone/volto/components/manage/Blocks/Search/layout/T
 import {
   SelectFacet,
   CheckboxFacet,
+  DropDownCheckboxFacet,
 } from '@plone/volto/components/manage/Blocks/Search/components';
 
 defineMessages({
@@ -409,6 +410,12 @@ const blocksConfig = {
             id: 'checkboxFacet',
             title: 'Checkbox',
             view: CheckboxFacet,
+            isDefault: false,
+          },
+          {
+            id: 'DropDownCheckboxFacet',
+            title: 'DropDown Checkbox Facet',
+            view: DropDownCheckboxFacet,
             isDefault: false,
           },
         ],

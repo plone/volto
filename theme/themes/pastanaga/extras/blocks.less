@@ -963,4 +963,30 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
       }
     }
   }
+
+  .dropdown-checkbox-facet {
+    position: relative;
+
+    .handler-wrapper {
+      display: flex;
+      align-items: center;
+
+      h4 {
+        margin-bottom: 0;
+      }
+    }
+
+    .entries {
+      display: none;
+
+      &.isOpen {
+        position: absolute;
+        top: 30px;
+        display: block;
+        padding: 10px;
+        border: 1px solid #ddd;
+        background-color: #fff;
+      }
+    }
+  }
 }
