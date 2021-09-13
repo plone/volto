@@ -8,11 +8,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { defineMessages, injectIntl } from 'react-intl';
+import jwtDecode from 'jwt-decode';
 import { toast } from 'react-toastify';
 
 import { Form, Toast } from '@plone/volto/components';
 import { getUser, updateUser } from '@plone/volto/actions';
-import { userData } from '@plone/volto/selectors/userSession/userSession';
 
 const messages = defineMessages({
   personalInformation: {
@@ -230,7 +230,9 @@ export default compose(
   connect(
     (state, props) => ({
       user: state.users.user,
-      userId: userData(state).userId,
+      userId: state.userSession.token
+        ? jwtDecode(state.userSession.token).sub
+        : '',
       loaded: state.users.get.loaded,
       loading: state.users.update.loading,
     }),

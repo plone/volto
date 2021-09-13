@@ -7,7 +7,7 @@ test('renders a link view component', () => {
   const component = renderer.create(
     <MemoryRouter>
       <LinkView
-        userLoggedIn={true}
+        token="1234"
         content={{
           title: 'Hello World!',
           description: 'Hi',

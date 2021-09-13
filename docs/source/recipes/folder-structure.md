@@ -4,26 +4,20 @@ Volto is based on React, Redux, and React-Router. All of the
 code is located in the `src` folder. The following convention for locating
 resources is used.
 
-## Components
-
-`components` contains all the React components, AKA views. This includes views for the
-management interface and the theme.
-
 ## Actions
 
 `actions` contains all the redux actions for fetching all backend data like
 content, users and external resources that are pulled into our app in general.
 
-## Reducers
+## Components
 
-`reducers` contains all the Redux reducers that manage the life-cycle for Redux actions
-and make the according changes to state.
+`components` contains all the views. This includes views for the management
+interface and the theme.
 
-## Selectors
+## Config
 
-`selectors` contains all the [Redux
-selectors](https://redux.js.org/tutorials/fundamentals/part-2-concepts-data-flow#selectors)
-that interpret state into the form used by UI components.
+In this folder all configuration is stored. All configuration can be overridden
+in your theme package.
 
 ## Constants
 
@@ -33,10 +27,9 @@ The constants contain all constants including the action types.
 
 `helpers` contains helper methods like for example url helpers.
 
-## Config
+## Reducers
 
-In this folder all configuration is stored. All configuration can be overridden
-in your theme package.
+All the reducers are located here.
 
 ## Theme
 

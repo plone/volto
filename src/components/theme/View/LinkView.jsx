@@ -27,7 +27,7 @@ class LinkView extends Component {
       description: PropTypes.string,
       remoteUrl: PropTypes.string,
     }),
-    userLoggedIn: PropTypes.bool,
+    token: PropTypes.string,
   };
 
   /**
@@ -37,10 +37,11 @@ class LinkView extends Component {
    */
   static defaultProps = {
     content: null,
+    token: null,
   };
 
   componentDidMount() {
-    if (!this.props.userLoggedIn) {
+    if (!this.props.token) {
       const { remoteUrl } = this.props.content;
       if (isInternalURL(remoteUrl)) {
         this.props.history.replace(flattenToAppURL(remoteUrl));
