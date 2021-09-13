@@ -83,9 +83,7 @@ const enhanceSchema = (originalSchema, formData) => {
   const extensionName = 'facetWidgets';
   const extensionType = 'type';
   const variations =
-    config.blocks.blocksConfig.searchBlock.extensions[extensionName][
-      extensionType
-    ];
+    config.blocks.blocksConfig.search.extensions[extensionName][extensionType];
 
   const activeItemName = formData?.[extensionType];
   let activeItem = variations?.find((item) => item.id === activeItemName);
@@ -131,10 +129,10 @@ const FacetSchema = ({ intl }) => ({
     },
     type: {
       title: intl.formatMessage(messages.facetWidget),
-      choices: config.blocks.blocksConfig.searchBlock.extensions.facetWidgets.types.map(
+      choices: config.blocks.blocksConfig.search.extensions.facetWidgets.types.map(
         ({ id, title }) => [id, title],
       ),
-      defaultValue: config.blocks.blocksConfig.searchBlock.extensions.facetWidgets.types.find(
+      defaultValue: config.blocks.blocksConfig.search.extensions.facetWidgets.types.find(
         ({ isDefault }) => isDefault,
       ).id,
     },
