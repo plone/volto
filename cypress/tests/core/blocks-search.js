@@ -48,7 +48,7 @@ describe('Search Block Tests', () => {
     cy.get('.block.text [contenteditable]').click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
-    cy.get('.blocks-chooser .common').contains('Search listing').click();
+    cy.get('.blocks-chooser .common').contains('Search').click();
 
     // Add search query criteria
     cy.get('#blockform-fieldset-searchquery').click();
