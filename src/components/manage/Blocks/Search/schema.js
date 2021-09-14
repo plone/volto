@@ -43,6 +43,14 @@ const messages = defineMessages({
     id: 'Search',
     defaultMessage: 'Search',
   },
+  showSortOn: {
+    id: 'Show sorting?',
+    defaultMessage: 'Show sorting?',
+  },
+  sortOnLabel: {
+    id: 'Sort on label',
+    defaultMessage: 'Sort on label',
+  },
   facets: {
     id: 'Facets',
     defaultMessage: 'Facets',
@@ -167,6 +175,8 @@ export default ({ data = {}, intl }) => {
           ...(data.showSearchInput ? ['searchInputPrompt'] : []),
           'showSearchButton',
           ...(data.showSearchButton ? ['searchButtonLabel'] : []),
+          'showSortOn',
+          ...(data.showSortOn ? ['sortOnLabel'] : []),
         ],
       },
     ],
@@ -189,6 +199,13 @@ export default ({ data = {}, intl }) => {
       searchButtonLabel: {
         title: intl.formatMessage(messages.searchButtonLabel),
         placeholder: intl.formatMessage(messages.searchButtonPlaceholder),
+      },
+      showSortOn: {
+        type: 'boolean',
+        title: intl.formatMessage(messages.showSortOn),
+      },
+      sortOnLabel: {
+        title: intl.formatMessage(messages.sortOnLabel),
       },
       facets: {
         title: intl.formatMessage(messages.facets),

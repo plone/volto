@@ -6,6 +6,7 @@
 
 ### Feature
 
+- Add enable/disable toggle for sorting section in the search block, and fix missing sorting for the top variation @kreafox
 - i18 in search block & fixes @kreafox
 - Add sorting option for search block @kreafox
 - Improvements in search block @kreafox

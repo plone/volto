@@ -56,9 +56,9 @@ const TopSideFacets = (props) => {
         </Grid.Column>
       </Grid.Row>
 
-      {data.showSearchInput && (
-        <Grid.Row verticalAlign="bottom">
-          <Grid.Column>
+      <Grid.Row>
+        <Grid.Column>
+          {data.showSearchInput && (
             <div className="search-wrapper">
               <SearchInput {...props} isLive={isLive} />
               {data.showSearchButton && (
@@ -68,16 +68,20 @@ const TopSideFacets = (props) => {
                 </Button>
               )}
             </div>
-            <FilterList
-              {...props}
-              isEditMode={isEditMode}
-              setFacets={(f) => {
-                flushSync(() => {
-                  setFacets(f);
-                  onTriggerSearch(searchedText || '', f);
-                });
-              }}
-            />
+          )}
+
+          <FilterList
+            {...props}
+            isEditMode={isEditMode}
+            setFacets={(f) => {
+              flushSync(() => {
+                setFacets(f);
+                onTriggerSearch(searchedText || '', f);
+              });
+            }}
+          />
+
+          {data.showSortOn && (
             <SortOn
               data={data}
               isEditMode={isEditMode}
@@ -100,26 +104,26 @@ const TopSideFacets = (props) => {
                 });
               }}
             />
-          </Grid.Column>
-        </Grid.Row>
-      )}
+          )}
 
-      <Grid.Row>
-        <Grid.Column className="facets">
-          {data.facetsTitle && <h3>{data.facetsTitle}</h3>}
-          <Grid verticalAlign="bottom" columns={12}>
-            <Facets
-              data={data}
-              facets={facets}
-              setFacets={(f) => {
-                flushSync(() => {
-                  setFacets(f);
-                  onTriggerSearch(searchedText || '', f);
-                });
-              }}
-              facetWrapper={FacetWrapper}
-            />
-          </Grid>
+          {data.facets && data.facets.length > 0 && (
+            <div className="facets">
+              {data.facetsTitle && <h3>{data.facetsTitle}</h3>}
+              <Grid verticalAlign="bottom" columns={12}>
+                <Facets
+                  data={data}
+                  facets={facets}
+                  setFacets={(f) => {
+                    flushSync(() => {
+                      setFacets(f);
+                      onTriggerSearch(searchedText || '', f);
+                    });
+                  }}
+                  facetWrapper={FacetWrapper}
+                />
+              </Grid>
+            </div>
+          )}
         </Grid.Column>
       </Grid.Row>
 

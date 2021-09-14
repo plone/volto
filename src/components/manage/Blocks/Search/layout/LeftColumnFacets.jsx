@@ -57,19 +57,23 @@ const LeftColumnFacets = (props) => {
       </Grid.Row>
 
       <Grid.Row>
-        <Grid.Column className="facets" mobile={12} tablet={4} computer={3}>
-          {data.facetsTitle && <h3>{data.facetsTitle}</h3>}
-          <Facets
-            data={data}
-            facets={facets}
-            setFacets={(f) => {
-              flushSync(() => {
-                setFacets(f);
-                onTriggerSearch(searchedText || '', f);
-              });
-            }}
-            facetWrapper={FacetWrapper}
-          />
+        <Grid.Column mobile={12} tablet={4} computer={3}>
+          {data.facets && data.facets.length > 0 && (
+            <div className="facets">
+              {data.facetsTitle && <h3>{data.facetsTitle}</h3>}
+              <Facets
+                data={data}
+                facets={facets}
+                setFacets={(f) => {
+                  flushSync(() => {
+                    setFacets(f);
+                    onTriggerSearch(searchedText || '', f);
+                  });
+                }}
+                facetWrapper={FacetWrapper}
+              />
+            </div>
+          )}
         </Grid.Column>
 
         <Grid.Column mobile={12} tablet={8} computer={9}>
@@ -96,23 +100,30 @@ const LeftColumnFacets = (props) => {
             }}
           />
 
-          <SortOn
-            data={data}
-            isEditMode={isEditMode}
-            sortOrder={sortOrder}
-            setSortOn={(sortOn) => {
-              flushSync(() => {
-                setSortOn(sortOn);
-                onTriggerSearch(searchedText || '', facets, sortOn);
-              });
-            }}
-            setSortOrder={(sortOrder) => {
-              flushSync(() => {
-                setSortOrder(sortOrder);
-                onTriggerSearch(searchedText || '', facets, sortOn, sortOrder);
-              });
-            }}
-          />
+          {data.showSortOn && (
+            <SortOn
+              data={data}
+              isEditMode={isEditMode}
+              sortOrder={sortOrder}
+              setSortOn={(sortOn) => {
+                flushSync(() => {
+                  setSortOn(sortOn);
+                  onTriggerSearch(searchedText || '', facets, sortOn);
+                });
+              }}
+              setSortOrder={(sortOrder) => {
+                flushSync(() => {
+                  setSortOrder(sortOrder);
+                  onTriggerSearch(
+                    searchedText || '',
+                    facets,
+                    sortOn,
+                    sortOrder,
+                  );
+                });
+              }}
+            />
+          )}
 
           {children}
         </Grid.Column>

@@ -1863,6 +1863,10 @@ msgstr ""
 msgid "Show search input?"
 msgstr ""
 
+#: components/manage/Blocks/Search/schema
+msgid "Show sorting?"
+msgstr ""
+
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
 msgstr "Txikitu alboko barra"
@@ -1913,14 +1917,14 @@ msgstr "Barkatu, zerbait ez da ondo irten zure eskaeran"
 msgid "Sort By:"
 msgstr "Ordenazioa:"
 
-#: components/manage/Blocks/Search/components/SortOn
-msgid "Sort by"
-msgstr ""
-
 #: components/manage/Widgets/QuerySortOnWidget
 #: components/manage/Widgets/QuerystringWidget
 msgid "Sort on"
 msgstr "Ordenazioa"
+
+#: components/manage/Blocks/Search/schema
+msgid "Sort on label"
+msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
 msgid "Source"

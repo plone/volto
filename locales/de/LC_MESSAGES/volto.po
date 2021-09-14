@@ -1871,6 +1871,10 @@ msgstr ""
 msgid "Show search input?"
 msgstr ""
 
+#: components/manage/Blocks/Search/schema
+msgid "Show sorting?"
+msgstr ""
+
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
 msgstr "Sidebar verkleinern"
@@ -1921,14 +1925,14 @@ msgstr "Entschuldigung, ein Fehler ist beim Ausführen Ihrer Anfrage aufgetreten
 msgid "Sort By:"
 msgstr "Sortieren nach:"
 
-#: components/manage/Blocks/Search/components/SortOn
-msgid "Sort by"
-msgstr ""
-
 #: components/manage/Widgets/QuerySortOnWidget
 #: components/manage/Widgets/QuerystringWidget
 msgid "Sort on"
 msgstr "Sortieren nach"
+
+#: components/manage/Blocks/Search/schema
+msgid "Sort on label"
+msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
 msgid "Source"

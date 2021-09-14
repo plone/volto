@@ -1863,6 +1863,10 @@ msgstr ""
 msgid "Show search input?"
 msgstr ""
 
+#: components/manage/Blocks/Search/schema
+msgid "Show sorting?"
+msgstr ""
+
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
 msgstr "サイドバーを閉じる"
@@ -1913,14 +1917,14 @@ msgstr "申し訳ありません。問題が発生したために処理できま
 msgid "Sort By:"
 msgstr "並び順:"
 
-#: components/manage/Blocks/Search/components/SortOn
-msgid "Sort by"
-msgstr ""
-
 #: components/manage/Widgets/QuerySortOnWidget
 #: components/manage/Widgets/QuerystringWidget
 msgid "Sort on"
 msgstr "ソート順"
+
+#: components/manage/Blocks/Search/schema
+msgid "Sort on label"
+msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
 msgid "Source"

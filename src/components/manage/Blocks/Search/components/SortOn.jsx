@@ -13,14 +13,6 @@ import { Button } from 'semantic-ui-react';
 import { compose } from 'redux';
 import { toPairs, groupBy, map } from 'lodash';
 import cx from 'classnames';
-import { defineMessages, useIntl } from 'react-intl';
-
-const messages = defineMessages({
-  sortBy: {
-    id: 'Sort by',
-    defaultMessage: 'Sort by',
-  },
-});
 
 const SortOn = (props) => {
   const {
@@ -34,14 +26,13 @@ const SortOn = (props) => {
   } = props;
   const sortable_indexes = querystring.indexes;
   const Select = reactSelect.default;
-  const intl = useIntl();
 
   return (
     <div className="search-sort-wrapper">
       <div className="search-sort-on">
-        <span className="sort-label">
-          {intl.formatMessage(messages.sortBy)}:
-        </span>
+        {data.sortOnLabel && (
+          <span className="sort-label">{data.sortOnLabel}</span>
+        )}
         <Select
           id="select-search-sort-on"
           name="select-searchblock-sort-on"
