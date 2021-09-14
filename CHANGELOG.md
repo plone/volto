@@ -2,13 +2,10 @@
 
 ## 14.0.0 (unreleased)
 
-### Breaking
-
-### Feature
-
-### Bugfix
-
 ### Internal
+
+- Revert: Detect when a user has logged in by means other than JWT, such as ZMI `Basic`
+  authentication or the classic HTML Plone `@login` view @rpatterson
 
 ## 14.0.0-alpha.1 (2021-09-13)
 
