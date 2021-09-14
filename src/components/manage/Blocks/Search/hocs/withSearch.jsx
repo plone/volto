@@ -168,8 +168,8 @@ const withSearch = (options) => (WrappedComponent) => {
       ),
     );
 
-    const [sortOn, setSortOn] = React.useState(data?.query.sort_on);
-    const [sortOrder, setSortOrder] = React.useState(data?.query.sort_order);
+    const [sortOn, setSortOn] = React.useState(data?.query?.sort_on);
+    const [sortOrder, setSortOrder] = React.useState(data?.query?.sort_order);
 
     const [searchData, setSearchData] = React.useState(
       getInitialState(data, facets, urlSearchText, id),

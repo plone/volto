@@ -332,6 +332,10 @@ msgstr "Seleccionar Archivo"
 msgid "Clear"
 msgstr "Limpiar"
 
+#: components/manage/Blocks/Search/components/FilterList
+msgid "Clear filters"
+msgstr ""
+
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
 msgstr "Haga clic aquí para descargar la imagen a tamaño completo"
@@ -454,6 +458,10 @@ msgstr "Autores"
 #: components/manage/Widgets/QueryWidget
 msgid "Criteria"
 msgstr "Criterios"
+
+#: components/manage/Blocks/Search/components/FilterList
+msgid "Current filters applied"
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 msgid "Current password"
@@ -1907,6 +1915,10 @@ msgstr "Lo siento, algo estuvo mal con su solicitud "
 #: components/theme/Search/Search
 msgid "Sort By:"
 msgstr "Ordenar por:"
+
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Sort by"
+msgstr ""
 
 #: components/manage/Widgets/QuerySortOnWidget
 #: components/manage/Widgets/QuerystringWidget

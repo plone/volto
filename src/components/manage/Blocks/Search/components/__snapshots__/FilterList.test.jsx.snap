@@ -29,7 +29,8 @@ exports[`FilterList renders filters listing component for search block 1`] = `
         viewBox=""
         xmlns=""
       />
-      Current filters applied: 
+      Current filters applied
+      : 
       2
     </div>
     <button

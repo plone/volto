@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2021-09-03T08:05:09.647Z\n"
+"POT-Creation-Date: 2021-09-14T10:26:39.298Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -389,6 +389,11 @@ msgstr ""
 msgid "Clear"
 msgstr ""
 
+#: components/manage/Blocks/Search/components/FilterList
+# defaultMessage: Clear filters
+msgid "Clear filters"
+msgstr ""
+
 #: components/theme/View/ImageView
 # defaultMessage: Click to download full sized image
 msgid "Click to download full sized image"
@@ -539,6 +544,11 @@ msgstr ""
 #: components/manage/Widgets/QueryWidget
 # defaultMessage: Criteria
 msgid "Criteria"
+msgstr ""
+
+#: components/manage/Blocks/Search/components/FilterList
+# defaultMessage: Current filters applied
+msgid "Current filters applied"
 msgstr ""
 
 #: components/manage/Preferences/ChangePassword
@@ -2322,6 +2332,11 @@ msgstr ""
 #: components/theme/Search/Search
 # defaultMessage: Sort by:
 msgid "Sort By:"
+msgstr ""
+
+#: components/manage/Blocks/Search/components/SortOn
+# defaultMessage: Sort by
+msgid "Sort by"
 msgstr ""
 
 #: components/manage/Widgets/QuerySortOnWidget

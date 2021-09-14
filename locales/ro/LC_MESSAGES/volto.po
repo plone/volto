@@ -322,6 +322,10 @@ msgstr ""
 msgid "Clear"
 msgstr ""
 
+#: components/manage/Blocks/Search/components/FilterList
+msgid "Clear filters"
+msgstr ""
+
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
 msgstr "Faceți clic pentru a descărca imaginea cu dimensiuni complete"
@@ -444,6 +448,10 @@ msgstr "Creatori"
 #: components/manage/Widgets/QueryWidget
 msgid "Criteria"
 msgstr "Criterii"
+
+#: components/manage/Blocks/Search/components/FilterList
+msgid "Current filters applied"
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 msgid "Current password"
@@ -1896,6 +1904,10 @@ msgstr "Ne pare rău, a apârut o eroare"
 
 #: components/theme/Search/Search
 msgid "Sort By:"
+msgstr ""
+
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Sort by"
 msgstr ""
 
 #: components/manage/Widgets/QuerySortOnWidget

@@ -13,6 +13,14 @@ import { Button } from 'semantic-ui-react';
 import { compose } from 'redux';
 import { toPairs, groupBy, map } from 'lodash';
 import cx from 'classnames';
+import { defineMessages, useIntl } from 'react-intl';
+
+const messages = defineMessages({
+  sortBy: {
+    id: 'Sort by',
+    defaultMessage: 'Sort by',
+  },
+});
 
 const SortOn = (props) => {
   const {
@@ -25,13 +33,15 @@ const SortOn = (props) => {
     isEditMode,
   } = props;
   const sortable_indexes = querystring.indexes;
-  const { sort_on } = data?.query;
   const Select = reactSelect.default;
+  const intl = useIntl();
 
   return (
     <div className="search-sort-wrapper">
       <div className="search-sort-on">
-        <span className="sort-label">Sort by:</span>
+        <span className="sort-label">
+          {intl.formatMessage(messages.sortBy)}:
+        </span>
         <Select
           id="select-search-sort-on"
           name="select-searchblock-sort-on"
@@ -60,11 +70,11 @@ const SortOn = (props) => {
             ),
           ]}
           defaultValue={{
-            value: sort_on || '',
+            value: data?.query?.sort_on || 'No selection',
             label:
-              sort_on && sortable_indexes
-                ? sortable_indexes[sort_on]?.title
-                : sort_on || 'No selection',
+              data?.query?.sort_on && sortable_indexes
+                ? sortable_indexes[data?.query?.sort_on]?.title
+                : data?.query?.sort_on || 'No selection',
           }}
           onChange={(data) => {
             !isEditMode && setSortOn(data.value);

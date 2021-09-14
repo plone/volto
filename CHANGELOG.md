@@ -6,6 +6,7 @@
 
 ### Feature
 
+- i18 in search block & fixes @kreafox
 - Add sorting option for search block @kreafox
 - Improvements in search block @kreafox
 

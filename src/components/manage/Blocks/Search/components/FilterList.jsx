@@ -2,6 +2,18 @@ import React from 'react';
 import { Accordion, Button, Label, Icon } from 'semantic-ui-react';
 import { Icon as VoltoIcon } from '@plone/volto/components';
 import downSVG from '@plone/volto/icons/down-key.svg';
+import { defineMessages, useIntl } from 'react-intl';
+
+const messages = defineMessages({
+  currentFilters: {
+    id: 'Current filters applied',
+    defaultMessage: 'Current filters applied',
+  },
+  clearFilters: {
+    id: 'Clear filters',
+    defaultMessage: 'Clear filters',
+  },
+});
 
 const FilterList = (props) => {
   const { data, facets, setFacets, isEditMode } = props;
@@ -12,6 +24,7 @@ const FilterList = (props) => {
   );
   const totalFilters = [].concat.apply([], Object.values(currentFilters))
     .length;
+  const intl = useIntl();
 
   return filters && Object.keys(facets).length ? (
     <Accordion className="filter-listing">
@@ -22,7 +35,7 @@ const FilterList = (props) => {
       >
         <div className="filter-list-title">
           <VoltoIcon name={downSVG} size="18px" />
-          Current filters applied: {totalFilters}
+          {intl.formatMessage(messages.currentFilters)}: {totalFilters}
         </div>
         <Button
           icon
@@ -34,7 +47,7 @@ const FilterList = (props) => {
           }}
         >
           <Icon name="trash" />
-          Clear filters
+          {intl.formatMessage(messages.clearFilters)}
         </Button>
       </Accordion.Title>
       <Accordion.Content className="filter-list-content" active={isOpened}>
