@@ -1,5 +1,11 @@
 import React from 'react';
-import { SearchInput, SearchDetails, Facets, FilterList } from '../components';
+import {
+  SearchInput,
+  SearchDetails,
+  Facets,
+  FilterList,
+  SortOn,
+} from '../components';
 import { Grid } from 'semantic-ui-react';
 import { Button } from 'semantic-ui-react';
 import { flushSync } from 'react-dom';
@@ -25,6 +31,10 @@ const TopSideFacets = (props) => {
     totalItems,
     facets,
     setFacets,
+    setSortOn,
+    setSortOrder,
+    sortOn,
+    sortOrder,
     onTriggerSearch,
     searchedText, // search text for previous search
     searchText, // search text currently being entered (controlled input)
@@ -65,6 +75,28 @@ const TopSideFacets = (props) => {
                 flushSync(() => {
                   setFacets(f);
                   onTriggerSearch(searchedText || '', f);
+                });
+              }}
+            />
+            <SortOn
+              data={data}
+              isEditMode={isEditMode}
+              sortOrder={sortOrder}
+              setSortOn={(sortOn) => {
+                flushSync(() => {
+                  setSortOn(sortOn);
+                  onTriggerSearch(searchedText || '', facets, sortOn);
+                });
+              }}
+              setSortOrder={(sortOrder) => {
+                flushSync(() => {
+                  setSortOrder(sortOrder);
+                  onTriggerSearch(
+                    searchedText || '',
+                    facets,
+                    sortOn,
+                    sortOrder,
+                  );
                 });
               }}
             />

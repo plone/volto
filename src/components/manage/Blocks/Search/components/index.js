@@ -4,3 +4,4 @@ export SelectFacet from './SelectFacet';
 export CheckboxFacet from './CheckboxFacet';
 export SearchInput from './SearchInput';
 export FilterList from './FilterList';
+export SortOn from './SortOn';

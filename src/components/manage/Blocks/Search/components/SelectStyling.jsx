@@ -58,3 +58,48 @@ export const customSelectStyles = {
     },
   }),
 };
+
+export const sortOnSelectStyles = {
+  control: (styles, state) => ({
+    ...styles,
+    border: '1px solid #c7d5d8',
+    borderRadius: '5px',
+    boxShadow: 'none',
+    minHeight: '20px',
+    width: '170px',
+  }),
+  menu: (styles, state) => ({
+    ...styles,
+    top: null,
+    marginTop: 0,
+    boxShadow: 'none',
+    border: '1px solid #c7d5d8',
+    zIndex: 2,
+    width: '170px',
+  }),
+  indicatorSeparator: (styles) => ({
+    ...styles,
+    width: null,
+  }),
+  dropdownIndicator: (styles) => ({
+    ...styles,
+    padding: '3px',
+  }),
+  option: (styles, state) => ({
+    ...styles,
+    backgroundColor: null,
+    minHeight: '20px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: '6px 12px',
+    color: state.isSelected
+      ? '#007bc1'
+      : state.isFocused
+      ? '#4a4a4a'
+      : 'inherit',
+    ':active': {
+      backgroundColor: null,
+    },
+  }),
+};

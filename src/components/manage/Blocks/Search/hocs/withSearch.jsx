@@ -32,7 +32,7 @@ function getInitialState(data, facets, urlSearchText, id) {
   };
 }
 
-function getSearchData(query, facets, id, searchText) {
+function getSearchData(query, facets, id, searchText, sortOn, sortOrder) {
   const res = {
     query: [
       ...(query.query || []),
@@ -48,8 +48,8 @@ function getSearchData(query, facets, id, searchText) {
           : undefined,
       ),
     ].filter((o) => !!o),
-    sort_on: query.sort_on,
-    sort_order: query.sort_order,
+    sort_on: sortOn || query.sort_on,
+    sort_order: sortOrder || query.sort_order,
     b_size: query.b_size,
     limit: query.limit,
     block: id,
@@ -168,6 +168,9 @@ const withSearch = (options) => (WrappedComponent) => {
       ),
     );
 
+    const [sortOn, setSortOn] = React.useState(data?.query.sort_on);
+    const [sortOrder, setSortOrder] = React.useState(data?.query.sort_order);
+
     const [searchData, setSearchData] = React.useState(
       getInitialState(data, facets, urlSearchText, id),
     );
@@ -175,7 +178,7 @@ const withSearch = (options) => (WrappedComponent) => {
     const timeoutRef = React.useRef();
 
     const updateSearchParams = React.useCallback(
-      (toSearch, toSearchFacets) => {
+      (toSearch, toSearchFacets, toSortOn, toSortOrder) => {
         if (timeoutRef.current) clearTimeout(timeoutRef.current);
         timeoutRef.current = setTimeout(
           () => {
@@ -184,15 +187,19 @@ const withSearch = (options) => (WrappedComponent) => {
               toSearchFacets || facets,
               id,
               toSearch,
+              toSortOn || sortOn,
+              toSortOrder || sortOrder,
             );
             if (toSearchFacets) setFacets(toSearchFacets);
+            if (toSortOn) setSortOn(toSortOn);
+            if (toSortOrder) setSortOrder(toSortOrder);
             setSearchData(searchData);
             setLocationSearchData(getSearchFields(searchData));
           },
           toSearchFacets ? inputDelay / 3 : inputDelay,
         );
       },
-      [data.query, facets, id, setLocationSearchData],
+      [data.query, facets, id, setLocationSearchData, sortOn, sortOrder],
     );
 
     return (
@@ -201,6 +208,10 @@ const withSearch = (options) => (WrappedComponent) => {
         searchData={searchData}
         facets={facets}
         setFacets={setFacets}
+        setSortOn={setSortOn}
+        setSortOrder={setSortOrder}
+        sortOn={sortOn}
+        sortOrder={sortOrder}
         searchedText={urlSearchText}
         searchText={searchText}
         setSearchText={setSearchText}
