@@ -13,7 +13,7 @@ const Facets = (props) => {
     facetWrapper,
     isEditMode,
   } = props;
-  const { searchBlock } = config.blocks.blocksConfig;
+  const { search } = config.blocks.blocksConfig;
 
   const FacetWrapper = facetWrapper;
   const query_to_values = Object.assign(
@@ -64,13 +64,13 @@ const Facets = (props) => {
 
           const { view: FacetWidget } = resolveExtension(
             'type',
-            searchBlock.extensions.facetWidgets.types,
+            search.extensions.facetWidgets.types,
             facet,
           );
 
           const {
             rewriteOptions = (name, options) => options,
-          } = searchBlock.extensions.facetWidgets;
+          } = search.extensions.facetWidgets;
 
           return FacetWrapper && Object.keys(values).length ? (
             <FacetWrapper key={facet['@id']}>
