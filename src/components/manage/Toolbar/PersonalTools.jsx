@@ -6,11 +6,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import jwtDecode from 'jwt-decode';
 import cx from 'classnames';
 import { FormattedMessage, injectIntl, defineMessages } from 'react-intl';
 import { Icon } from '@plone/volto/components';
 import { getUser } from '@plone/volto/actions';
-import { userData } from '@plone/volto/selectors/userSession/userSession';
 import { userHasRoles } from '@plone/volto/helpers';
 
 import logoutSVG from '@plone/volto/icons/log-out.svg';
@@ -183,7 +183,9 @@ export default injectIntl(
   connect(
     (state) => ({
       user: state.users.user,
-      userId: userData(state).userId,
+      userId: state.userSession.token
+        ? jwtDecode(state.userSession.token).sub
+        : '',
     }),
     { getUser },
   )(PersonalTools),

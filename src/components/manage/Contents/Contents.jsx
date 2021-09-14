@@ -51,7 +51,6 @@ import {
   updateColumnsContent,
 } from '@plone/volto/actions';
 import Indexes, { defaultIndexes } from '@plone/volto/constants/Indexes';
-import { loggedIn } from '@plone/volto/selectors/userSession/userSession';
 import {
   ContentsIndexHeader,
   ContentsItem,
@@ -1091,7 +1090,9 @@ class Contents extends Component {
     const selected = this.state.selected.length > 0;
     const filteredItems = this.state.filteredItems || this.state.selected;
     const path = getBaseUrl(this.props.pathname);
-    const folderContentsAction = this.props.actionsById.object.folderContents;
+    const folderContentsAction = find(this.props.objectActions, {
+      id: 'folderContents',
+    });
 
     const loading =
       (this.props.clipboardRequest?.loading &&
@@ -1101,7 +1102,7 @@ class Contents extends Component {
       (this.props.orderRequest?.loading && !this.props.orderRequest?.error) ||
       (this.props.searchRequest?.loading && !this.props.searchRequest?.error);
 
-    return this.props.userLoggedIn && this.props.objectActions.length > 0 ? (
+    return this.props.token && this.props.objectActions.length > 0 ? (
       <>
         {folderContentsAction ? (
           <Container id="page-contents" className="folder-contents">
@@ -1767,8 +1768,7 @@ export const __test__ = compose(
   connect(
     (store, props) => {
       return {
-        userLoggedIn: loggedIn(store),
-        actionsById: store.actions.actionsById,
+        token: store.userSession.token,
         items: store.search.items,
         sort: store.content.update.sort,
         index: store.content.updatecolumns.idx,
@@ -1809,8 +1809,7 @@ export default compose(
   connect(
     (store, props) => {
       return {
-        userLoggedIn: loggedIn(store),
-        actionsById: store.actions.actionsById,
+        token: store.userSession.token,
         items: store.search.items,
         sort: store.content.update.sort,
         index: store.content.updatecolumns.idx,

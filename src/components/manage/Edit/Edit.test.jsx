@@ -2,8 +2,8 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import jwt from 'jsonwebtoken';
 
-import { arrayWIdsToObject } from '@plone/volto/helpers/Utils/Utils';
 import { __test__ as Edit } from './Edit';
 
 const mockStore = configureStore();
@@ -13,23 +13,24 @@ jest.mock('react-portal', () => ({
 }));
 jest.mock('../Form/Form', () => jest.fn(() => <div className="Form" />));
 
-const actions = {
-  document_actions: [],
-  object: [
-    {
-      icon: '',
-      id: 'edit',
-      title: 'Edit',
-    },
-  ],
-  user: [{ id: 'logout' }],
-};
-const actionsById = arrayWIdsToObject(actions);
-
 describe('Edit', () => {
   it('renders an empty edit component', () => {
     const store = mockStore({
-      actions: { actions, actionsById },
+      userSession: {
+        token: jwt.sign({ fullname: 'John Doe' }, 'secret'),
+      },
+      actions: {
+        actions: {
+          document_actions: [],
+          object: [
+            {
+              icon: '',
+              id: 'edit',
+              title: 'Edit',
+            },
+          ],
+        },
+      },
       schema: {
         schema: null,
       },
@@ -60,7 +61,21 @@ describe('Edit', () => {
 
   it('renders an edit component', () => {
     const store = mockStore({
-      actions: { actions, actionsById },
+      userSession: {
+        token: jwt.sign({ fullname: 'John Doe' }, 'secret'),
+      },
+      actions: {
+        actions: {
+          document_actions: [],
+          object: [
+            {
+              icon: '',
+              id: 'edit',
+              title: 'Edit',
+            },
+          ],
+        },
+      },
       schema: {
         schema: {
           some: 'field',

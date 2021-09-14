@@ -4,7 +4,6 @@
  */
 
 import { LIST_ACTIONS } from '@plone/volto/constants/ActionTypes';
-import { arrayWIdsToObject } from '@plone/volto/helpers/Utils/Utils';
 
 const initialState = {
   error: null,
@@ -19,7 +18,6 @@ const initialState = {
   loaded: false,
   loading: false,
 };
-initialState.actionsById = arrayWIdsToObject(initialState.actions);
 
 /**
  * Actions reducer.
@@ -40,11 +38,8 @@ export default function actions(state = initialState, action = {}) {
     case `${LIST_ACTIONS}_SUCCESS`:
       return {
         ...state,
-        /* Also transform the arrays of actions into objects of actions by action id.
-         * Makes it much easier to check for the presence of an action. */
         error: null,
         actions: action.result,
-        actionsById: arrayWIdsToObject(action.result),
         loaded: true,
         loading: false,
       };
