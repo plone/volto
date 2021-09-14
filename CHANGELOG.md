@@ -6,6 +6,7 @@
 
 ### Feature
 
+- Add sorting option for search block @kreafox
 - Improvements in search block @kreafox
 
 ### Bugfix
