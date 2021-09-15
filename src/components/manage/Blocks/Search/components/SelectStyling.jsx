@@ -44,7 +44,7 @@ export const customSelectStyles = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: '6px 12px',
+    padding: '6px 6px',
     color: state.isSelected
       ? '#007bc1'
       : state.isFocused
@@ -55,6 +55,8 @@ export const customSelectStyles = {
     },
     svg: {
       flex: '0 0 auto',
+      height: '18px !important',
+      width: '18px !important',
     },
   }),
 };
@@ -92,7 +94,7 @@ export const sortOnSelectStyles = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: '6px 12px',
+    padding: '6px 6px',
     color: state.isSelected
       ? '#007bc1'
       : state.isFocused
@@ -100,6 +102,11 @@ export const sortOnSelectStyles = {
       : 'inherit',
     ':active': {
       backgroundColor: null,
+    },
+    svg: {
+      flex: '0 0 auto',
+      height: '18px !important',
+      width: '18px !important',
     },
   }),
 };
