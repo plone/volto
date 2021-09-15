@@ -99,8 +99,9 @@ describe('Search Block Tests', () => {
     // Save the page
     cy.get('#toolbar-save > .icon').click();
 
+    cy.wait(500);
     cy.get(
-      '.block.search .three.column > .facet:nth-of-type(1) .entries > .entry:nth-of-type(1) label',
+      '.block.search .facets > .facet .entries > .entry:nth-of-type(1) label',
     ).click();
     cy.get('.block.search .filter-list-header .ui.button').click();
   });

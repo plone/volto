@@ -13,6 +13,7 @@
 
 ### Bugfix
 
+- Fix cypress test @kreafox
 - Fix search block Cypress test @kreafox
 
 ### Internal
