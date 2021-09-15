@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix /edit and /add nonContentRoutes to fix isCmsUi fn @giuliaghisini
+
 ### Internal
 
 - Update to latest p.restapi (8.9.1) @sneridagh
