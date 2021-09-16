@@ -86,7 +86,7 @@ msgstr "Beschreibung hinzufügen…"
 
 #: components/manage/BlockChooser/BlockChooserButton
 msgid "Add block"
-msgstr ""
+msgstr "Block hinzufügen"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Add block…"
