@@ -14,6 +14,7 @@
 - Remove `workingcopy` from checkouts info for kitconcept.volto @sneridagh
 - Remove built workingcopy fixture environment based on local, back to docker based one @sneridagh
 - Add `omelette` to the local Plone backend build @sneridagh
+- Optimize npm package by adding docs/ cypress/ and tests/ to .npmignore @avoinea
 
 ## 14.0.0-alpha.2 (2021-09-14)
 
