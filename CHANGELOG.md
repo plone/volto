@@ -15,8 +15,33 @@
 
 - Fix cypress test @kreafox
 - Fix search block Cypress test @kreafox
+- Fix /edit and /add nonContentRoutes to fix isCmsUi fn @giuliaghisini
 
 ### Internal
+
+- Update to latest p.restapi (8.9.1) @sneridagh
+- Remove `workingcopy` from checkouts info for kitconcept.volto @sneridagh
+- Remove built workingcopy fixture environment based on local, back to docker based one @sneridagh
+- Add `omelette` to the local Plone backend build @sneridagh
+- Optimize npm package by adding docs/ cypress/ and tests/ to .npmignore @avoinea
+
+## 14.0.0-alpha.2 (2021-09-14)
+
+### Internal
+
+- Revert: Detect when a user has logged in by means other than JWT, such as ZMI `Basic`
+  authentication or the classic HTML Plone `@login` view @rpatterson
+
+## 14.0.0-alpha.1 (2021-09-13)
+
+### Breaking
+
+- Detect when a user has logged in by means other than JWT, such as ZMI `Basic`
+  authentication or the classic HTML Plone `@login` view @rpatterson
+
+### Bugfix
+
+- Fix SelectWidget vocabulary load on second component mount @avoinea #2655
 
 ## 14.0.0-alpha.0 (2021-09-08)
 

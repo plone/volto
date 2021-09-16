@@ -8,6 +8,16 @@ lib/
 g-api/
 tests/
 
+# Docs
+docs/
+
+# Cypress
+cypress/
+
+# Tests
+__tests__/
+*.snap
+
 # Files
 .travis.yml
 requirements-docs.txt
