@@ -176,7 +176,7 @@ if (__DEVELOPMENT__ && config.settings.devProxyToApiPath) {
         config.settings.proxyRewriteTarget ||
         `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot/`,
     },
-    logLevel: 'debug', // change to 'debug' to see all requests
+    logLevel: 'silent', // change to 'debug' to see all requests
     ...(config.settings?.proxyRewriteTarget?.startsWith('https') && {
       changeOrigin: true,
       secure: false,
