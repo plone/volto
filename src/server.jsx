@@ -151,6 +151,7 @@ if (__DEVELOPMENT__ && config.settings.devProxyToApiPath) {
 
   const proxyMiddleware = createProxyMiddleware(filter, {
     onProxyReq: (proxyReq, req, res) => {
+      // Fixes https://github.com/chimurai/http-proxy-middleware/issues/320
       if (!req.body || !Object.keys(req.body).length) {
         return;
       }
