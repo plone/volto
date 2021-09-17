@@ -87,7 +87,7 @@ msgstr "Beschreibung hinzufügen…"
 
 #: components/manage/BlockChooser/BlockChooserButton
 msgid "Add block"
-msgstr ""
+msgstr "Block hinzufügen"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Add block…"
@@ -215,7 +215,7 @@ msgstr "Basis"
 
 #: components/manage/Blocks/Search/schema
 msgid "Base search query"
-msgstr ""
+msgstr "Basis Suchfilter"
 
 #: components/manage/Sidebar/Sidebar
 msgid "Block"
@@ -339,7 +339,7 @@ msgstr "Löschen"
 
 #: components/manage/Blocks/Search/components/FilterList
 msgid "Clear filters"
-msgstr ""
+msgstr "Filter entfernen"
 
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
@@ -466,7 +466,7 @@ msgstr "Kriterium"
 
 #: components/manage/Blocks/Search/components/FilterList
 msgid "Current filters applied"
-msgstr ""
+msgstr "Ausgewählte Filter"
 
 #: components/manage/Preferences/ChangePassword
 msgid "Current password"
@@ -795,19 +795,19 @@ msgstr "Externe URL"
 
 #: components/manage/Blocks/Search/schema
 msgid "Facet"
-msgstr ""
+msgstr "Facette"
 
 #: components/manage/Blocks/Search/schema
 msgid "Facet widget"
-msgstr ""
+msgstr "Facetten-Widget"
 
 #: components/manage/Blocks/Search/schema
 msgid "Facets"
-msgstr ""
+msgstr "Facetten"
 
 #: components/manage/Blocks/Search/schema
 msgid "Field"
-msgstr ""
+msgstr "Feld"
 
 #: components/manage/Toolbar/Toolbar
 msgid "File"
@@ -890,7 +890,7 @@ msgstr "Gruppe erstellt"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Group roles updated"
-msgstr ""
+msgstr "Gruppenrollen aktualsiert"
 
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: helpers/MessageLabels/MessageLabels
@@ -913,7 +913,7 @@ msgstr "Kopfzeile"
 
 #: components/manage/Blocks/Search/schema
 msgid "Hidden facets will still filter the results if proper parameters are passed in URLs"
-msgstr ""
+msgstr "Verteckte Facetten können die Ergebnisse weiterhin filtern, wenn die entsprechenden Parameter in der URL angehängt werden"
 
 #: components/theme/Comments/Comments
 msgid "Hide Replies"
@@ -921,7 +921,7 @@ msgstr "Antworten ausblenden"
 
 #: components/manage/Blocks/Search/schema
 msgid "Hide facet?"
-msgstr ""
+msgstr "Facette verstecken"
 
 #: components/manage/History/History
 #: components/manage/Toolbar/More
@@ -1076,7 +1076,7 @@ msgstr "Auswahl muss eindeutig sein."
 
 #: components/manage/Blocks/Search/schema
 msgid "Label"
-msgstr ""
+msgstr "Label"
 
 #: components/manage/Preferences/PersonalPreferences
 msgid "Language"
