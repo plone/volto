@@ -10,6 +10,7 @@
 
 - Fix /edit and /add nonContentRoutes to fix isCmsUi fn @giuliaghisini
 - Fix on form errors in block editor, not changing to metadata tab @sneridagh
+- Register the dev api proxy after the express middleware @tiberiuichim
 
 ### Internal
 
