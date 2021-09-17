@@ -16,6 +16,7 @@ import path from 'path';
 import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
 import { createProxyMiddleware } from 'http-proxy-middleware';
 import { resetServerContext } from 'react-beautiful-dnd';
+import querystring from 'querystring';
 
 import routes from '~/routes';
 import config from '@plone/volto/registry';
@@ -147,21 +148,41 @@ if (__DEVELOPMENT__ && config.settings.devProxyToApiPath) {
   const proxyURL = parseUrl(config.settings.devProxyToApiPath);
   const serverURL = `${proxyURL.protocol}//${proxyURL.host}`;
   const instancePath = proxyURL.pathname;
-  server.use(
-    createProxyMiddleware(filter, {
-      target: serverURL,
-      pathRewrite: {
-        '^/':
-          config.settings.proxyRewriteTarget ||
-          `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot/`,
-      },
-      logLevel: 'silent', // change to 'debug' to see all requests
-      ...(config.settings?.proxyRewriteTarget?.startsWith('https') && {
-        changeOrigin: true,
-        secure: false,
-      }),
+
+  const proxyMiddleware = createProxyMiddleware(filter, {
+    onProxyReq: (proxyReq, req, res) => {
+      if (!req.body || !Object.keys(req.body).length) {
+        return;
+      }
+
+      const contentType = proxyReq.getHeader('Content-Type');
+      const writeBody = (bodyData) => {
+        proxyReq.setHeader('Content-Length', Buffer.byteLength(bodyData));
+        proxyReq.write(bodyData);
+      };
+
+      if (contentType.includes('application/json')) {
+        writeBody(JSON.stringify(req.body));
+      }
+
+      if (contentType.includes('application/x-www-form-urlencoded')) {
+        writeBody(querystring.stringify(req.body));
+      }
+    },
+    target: serverURL,
+    pathRewrite: {
+      '^/':
+        config.settings.proxyRewriteTarget ||
+        `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot/`,
+    },
+    logLevel: 'debug', // change to 'debug' to see all requests
+    ...(config.settings?.proxyRewriteTarget?.startsWith('https') && {
+      changeOrigin: true,
+      secure: false,
     }),
-  );
+  });
+  // server.use(express.json());
+  server.use(proxyMiddleware);
 }
 
 server.get('/*', (req, res) => {
