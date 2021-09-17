@@ -59,33 +59,6 @@ const server = express()
     res.send('');
   });
 
-// Internal proxy to bypass CORS while developing.
-if (__DEVELOPMENT__ && config.settings.devProxyToApiPath) {
-  // This is the proxy to the API in case the accept header is 'application/json'
-  const filter = function (pathname, req) {
-    return req.headers.accept === 'application/json';
-  };
-  const apiPathURL = parseUrl(config.settings.apiPath);
-  const proxyURL = parseUrl(config.settings.devProxyToApiPath);
-  const serverURL = `${proxyURL.protocol}//${proxyURL.host}`;
-  const instancePath = proxyURL.pathname;
-  server.use(
-    createProxyMiddleware(filter, {
-      target: serverURL,
-      pathRewrite: {
-        '^/':
-          config.settings.proxyRewriteTarget ||
-          `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot/`,
-      },
-      logLevel: 'silent', // change to 'debug' to see all requests
-      ...(config.settings?.proxyRewriteTarget?.startsWith('https') && {
-        changeOrigin: true,
-        secure: false,
-      }),
-    }),
-  );
-}
-
 server.all('*', setupServer);
 
 function setupServer(req, res, next) {
@@ -163,6 +136,33 @@ const expressMiddleware = (config.settings.expressMiddleware || []).filter(
   (m) => typeof m !== 'undefined',
 );
 if (expressMiddleware.length) server.use('/', expressMiddleware);
+
+// Internal proxy to bypass CORS while developing.
+if (__DEVELOPMENT__ && config.settings.devProxyToApiPath) {
+  // This is the proxy to the API in case the accept header is 'application/json'
+  const filter = function (pathname, req) {
+    return req.headers.accept === 'application/json';
+  };
+  const apiPathURL = parseUrl(config.settings.apiPath);
+  const proxyURL = parseUrl(config.settings.devProxyToApiPath);
+  const serverURL = `${proxyURL.protocol}//${proxyURL.host}`;
+  const instancePath = proxyURL.pathname;
+  server.use(
+    createProxyMiddleware(filter, {
+      target: serverURL,
+      pathRewrite: {
+        '^/':
+          config.settings.proxyRewriteTarget ||
+          `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot/`,
+      },
+      logLevel: 'silent', // change to 'debug' to see all requests
+      ...(config.settings?.proxyRewriteTarget?.startsWith('https') && {
+        changeOrigin: true,
+        secure: false,
+      }),
+    }),
+  );
+}
 
 server.get('/*', (req, res) => {
   const { store, api, errorHandler } = req.app.locals;
