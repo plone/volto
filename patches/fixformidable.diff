@@ -1,0 +1,57 @@
+diff --git a/lib/file.js b/lib/file.js
+index 50d34c0..fc54205 100644
+--- a/lib/file.js
++++ b/lib/file.js
+@@ -1,4 +1,6 @@
+-if (global.GENTLY) require = GENTLY.hijack(require);
++if (global.GENTLY) {
++  require = GENTLY.hijack(require);
++}
+ 
+ var util = require('util'),
+     fs = require('fs'),
+@@ -16,7 +18,7 @@ function File(properties) {
+   this.lastModifiedDate = null;
+ 
+   this._writeStream = null;
+-  
++
+   for (var key in properties) {
+     this[key] = properties[key];
+   }
+diff --git a/lib/incoming_form.js b/lib/incoming_form.js
+index dbd920b..7103cce 100644
+--- a/lib/incoming_form.js
++++ b/lib/incoming_form.js
+@@ -1,4 +1,6 @@
+-if (global.GENTLY) require = GENTLY.hijack(require);
++if (global.GENTLY) {
++  require = GENTLY.hijack(require);
++}
+ 
+ var crypto = require('crypto');
+ var fs = require('fs');
+diff --git a/lib/json_parser.js b/lib/json_parser.js
+index 28a23ba..f30b426 100644
+--- a/lib/json_parser.js
++++ b/lib/json_parser.js
+@@ -1,4 +1,6 @@
+-if (global.GENTLY) require = GENTLY.hijack(require);
++if (global.GENTLY) {
++  require = GENTLY.hijack(require);
++}
+ 
+ var Buffer = require('buffer').Buffer;
+ 
+diff --git a/lib/querystring_parser.js b/lib/querystring_parser.js
+index fcaffe0..1ba164d 100644
+--- a/lib/querystring_parser.js
++++ b/lib/querystring_parser.js
+@@ -1,4 +1,6 @@
+-if (global.GENTLY) require = GENTLY.hijack(require);
++if (global.GENTLY) {
++  require = GENTLY.hijack(require);
++}
+ 
+ // This is a buffering parser, not quite as nice as the multipart one.
+ // If I find time I'll rewrite this to be fully streaming as well
