@@ -204,7 +204,6 @@ function formatHeader(comments, headers) {
  */
 function syncPoByPot() {
   const pot = Pofile.parse(fs.readFileSync('locales/volto.pot', 'utf8'));
-
   map(glob('locales/**/*.po'), (filename) => {
     const po = Pofile.parse(fs.readFileSync(filename, 'utf8'));
 
@@ -215,6 +214,7 @@ ${map(pot.items, (item) => {
   const poItem = find(po.items, { msgid: item.msgid });
   return [
     `${map(item.references, (ref) => `#: ${ref}`).join('\n')}`,
+    `${item.comments[0]}`,
     `msgid "${item.msgid}"`,
     `msgstr "${poItem ? poItem.msgstr : ''}"`,
   ].join('\n');
@@ -271,8 +271,8 @@ function main() {
   }
   console.log('Synchronizing messages to po files...');
   syncPoByPot();
-  console.log('Applying defaults to EN po file...');
-  syncENPoFileWithDefaults();
+  // console.log('Applying defaults to EN po file...');
+  // syncENPoFileWithDefaults();
   console.log('Generating the json files...');
   poToJson();
   console.log('done!');
