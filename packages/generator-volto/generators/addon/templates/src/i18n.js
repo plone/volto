@@ -148,6 +148,7 @@ ${map(pot.items, (item) => {
   const poItem = find(po.items, { msgid: item.msgid });
   return [
     `${map(item.references, (ref) => `#: ${ref}`).join('\n')}`,
+    `# ${item.comments[0]}`,
     `msgid "${item.msgid}"`,
     `msgstr "${poItem ? poItem.msgstr : ''}"`,
   ].join('\n');
