@@ -251,7 +251,10 @@ const defaultModify = ({
     });
   }
 
-  config.externals = target === 'node' ? ['crypto', 'buffer'] : [];
+  config.externals =
+    target === 'node'
+      ? ['crypto', 'buffer', 'express', 'formidable', 'component-classes']
+      : [];
 
   return config;
 };
