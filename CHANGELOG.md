@@ -8,6 +8,7 @@
 
 ### Bugfix
 
+- Missing default messages from JSON EN language file @sneridagh
 - Fix /edit and /add nonContentRoutes to fix isCmsUi fn @giuliaghisini
 
 ### Internal
