@@ -1941,6 +1941,14 @@
   dependencies:
     "@types/node" ">= 8"
 
+"@plone/scripts@./packages/scripts":
+  version "1.0.0"
+  dependencies:
+    babel-plugin-react-intl "5.1.17"
+    babel-preset-razzle "3.3.7"
+    commander "8.2.0"
+    razzle "3.3.7"
+
 "@pmmmwh/react-refresh-webpack-plugin@0.3.0":
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@pmmmwh/react-refresh-webpack-plugin/-/react-refresh-webpack-plugin-0.3.0.tgz#1caa675c3098801152537ee63420bcd672213295"
@@ -4590,7 +4598,7 @@ babel-preset-jest@^24.9.0:
     "@babel/plugin-syntax-object-rest-spread" "^7.0.0"
     babel-plugin-jest-hoist "^24.9.0"
 
-babel-preset-razzle@latest:
+babel-preset-razzle@3.3.7, babel-preset-razzle@latest:
   version "3.3.7"
   resolved "https://registry.yarnpkg.com/babel-preset-razzle/-/babel-preset-razzle-3.3.7.tgz#0e04632e2cecc68cdc0e321476fde2cc464e407c"
   integrity sha512-C26dJ1tuA0YhfZzXPVyPn+xdTWG31ykh0Qb3w8Nfby07VNgsk+hJ+GKQBwo/BwzrQNkDqQThWLzgdOeuaazd1w==
@@ -5825,6 +5833,11 @@ comma-separated-tokens@^1.0.0:
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/comma-separated-tokens/-/comma-separated-tokens-1.0.8.tgz#632b80b6117867a158f1080ad498b2fbe7e3f5ea"
   integrity sha512-GHuDRO12Sypu2cV70d1dkA2EUmXHgntrzbpvOB+Qy+49ypNfGgFQIC2fhhXbnyrJRynDCAARsT7Ou0M6hirpfw==
+
+commander@8.2.0:
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-8.2.0.tgz#37fe2bde301d87d47a53adeff8b5915db1381ca8"
+  integrity sha512-LLKxDvHeL91/8MIyTAD5BFMNtoIwztGPMiM/7Bl8rIPmHCZXRxmSWr91h57dpOpnQ6jIUqEWdXE/uBYMfiVZDA==
 
 commander@^2.11.0, commander@^2.18.0:
   version "2.20.0"

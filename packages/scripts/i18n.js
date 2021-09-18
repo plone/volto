@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 /* eslint no-console: 0 */
 /**
  * i18n script.
@@ -13,14 +14,18 @@ const babel = require('@babel/core');
 const path = require('path');
 const projectRootPath = path.resolve('.');
 const packageJson = require(path.join(projectRootPath, 'package.json'));
-const AddonConfigurationRegistry = require('../addon-registry');
-const registry = new AddonConfigurationRegistry(projectRootPath);
 
 const { program } = require('commander');
 
 program.option('-a, --addon', 'i18n support for addons');
 program.parse(process.argv);
 const options = program.opts();
+let registry;
+
+if (!options.addon) {
+  const AddonConfigurationRegistry = require('../addon-registry');
+  registry = new AddonConfigurationRegistry(projectRootPath);
+}
 
 /**
  * Extract messages into separate JSON files
@@ -150,20 +155,23 @@ function poToJson() {
     let { items } = Pofile.parse(fs.readFileSync(filename, 'utf8'));
     const lang = filename.match(/locales\/(.*)\/LC_MESSAGES\//)[1];
 
-    // Merge addons locales
-    if (packageJson.addons) {
-      registry.addonNames.forEach((addon) => {
-        const addonlocale = `${registry.packages[addon].modulePath}/../${filename}`;
-        if (fs.existsSync(addonlocale)) {
-          const addonItems = Pofile.parse(fs.readFileSync(addonlocale, 'utf8'))
-            .items;
-          items = [...addonItems, ...items];
-          if (require.main === module) {
-            // We only log it if called as script
-            console.log(`Merging ${addon} locales for ${lang}`);
+    if (!options.addon) {
+      // Merge addons locales
+      if (packageJson.addons) {
+        registry.addonNames.forEach((addon) => {
+          const addonlocale = `${registry.packages[addon].modulePath}/../${filename}`;
+          if (fs.existsSync(addonlocale)) {
+            const addonItems = Pofile.parse(
+              fs.readFileSync(addonlocale, 'utf8'),
+            ).items;
+            items = [...addonItems, ...items];
+            if (require.main === module) {
+              // We only log it if called as script
+              console.log(`Merging ${addon} locales for ${lang}`);
+            }
           }
-        }
-      });
+        });
+      }
     }
 
     // Merge project locales, the project customization wins
