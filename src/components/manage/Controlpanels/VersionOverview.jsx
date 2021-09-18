@@ -34,7 +34,7 @@ const VersionOverview = ({
       <p>
         <FormattedMessage
           id="Warning Regarding debug mode"
-          defaultMessage='You are running in \"debug mode\". This mode is intended for sites that are under development. This allows many configuration changes to be immediately visible, but will make your site run more slowly. To turn off debug mode, stop the server, set \"debug-mode=off\" in your buildout.cfg, re-run bin/buildout and then restart the server process.'
+          defaultMessage="You are running in 'debug mode'. This mode is intended for sites that are under development. This allows many configuration changes to be immediately visible, but will make your site run more slowly. To turn off debug mode, stop the server, set 'debug-mode=off' in your buildout.cfg, re-run bin/buildout and then restart the server process."
         />
       </p>
     </>
