@@ -1,3 +1,4 @@
+/* eslint no-console: 0 */
 const fs = require('fs');
 const semver = require('semver');
 
@@ -39,8 +40,9 @@ try {
       return console.log('Error, the CHANGELOG file is malformed.');
     }
     const currentDate = new Date();
-    const date = `${currentDate.getFullYear()}-${`0${currentDate.getMonth() +
-      1}`.slice(-2)}-${`0${currentDate.getDate()}`.slice(-2)}`;
+    const date = `${currentDate.getFullYear()}-${`0${
+      currentDate.getMonth() + 1
+    }`.slice(-2)}-${`0${currentDate.getDate()}`.slice(-2)}`;
 
     if (version !== origVersion) {
       console.log(`Updating to the given version ${version}`);
@@ -52,7 +54,7 @@ try {
     const newChangelog = data.replace(original, newLine);
 
     // Save data to disk if command is bump
-    fs.writeFile('CHANGELOG.md', newChangelog, err => {
+    fs.writeFile('CHANGELOG.md', newChangelog, (err) => {
       // throws an error, you could also catch it here
       if (err) throw err;
 
@@ -72,7 +74,7 @@ try {
       insertIndex,
     )}${backToDevelTemplate}${data.slice(insertIndex)}`;
     console.log(back);
-    fs.writeFile('CHANGELOG.md', back, err => {
+    fs.writeFile('CHANGELOG.md', back, (err) => {
       // throws an error, you could also catch it here
       if (err) throw err;
 

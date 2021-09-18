@@ -31,6 +31,7 @@ import sharing from '@plone/volto/reducers/sharing/sharing';
 import sidebar from '@plone/volto/reducers/sidebar/sidebar';
 import types from '@plone/volto/reducers/types/types';
 import users from '@plone/volto/reducers/users/users';
+import authRole from '@plone/volto/reducers/authRole/authRole';
 import userSession from '@plone/volto/reducers/userSession/userSession';
 import vocabularies from '@plone/volto/reducers/vocabularies/vocabularies';
 import workflow from '@plone/volto/reducers/workflow/workflow';
@@ -39,6 +40,7 @@ import blocksClipboard from '@plone/volto/reducers/blocksClipboard/blocksClipboa
 import lazyLibraries from '@plone/volto/reducers/lazyLibraries/lazyLibraries';
 import contextNavigation from '@plone/volto/reducers/contextNavigation/contextNavigation';
 import reduxAsyncConnect from './asyncConnect/asyncConnect';
+import workingCopy from './workingcopy/workingcopy';
 
 /**
  * Root reducer.
@@ -76,6 +78,7 @@ const reducers = {
   sidebar,
   types,
   users,
+  authRole,
   userSession,
   vocabularies,
   workflow,
@@ -83,6 +86,7 @@ const reducers = {
   blocksClipboard,
   lazyLibraries,
   contextNavigation,
+  workingCopy,
 };
 
 export default reducers;

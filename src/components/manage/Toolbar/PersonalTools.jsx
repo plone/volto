@@ -11,6 +11,8 @@ import cx from 'classnames';
 import { FormattedMessage, injectIntl, defineMessages } from 'react-intl';
 import { Icon } from '@plone/volto/components';
 import { getUser } from '@plone/volto/actions';
+import { userHasRoles } from '@plone/volto/helpers';
+
 import logoutSVG from '@plone/volto/icons/log-out.svg';
 import rightArrowSVG from '@plone/volto/icons/right-key.svg';
 
@@ -18,6 +20,14 @@ import backSVG from '@plone/volto/icons/back.svg';
 import cameraSVG from '@plone/volto/icons/camera.svg';
 
 const messages = defineMessages({
+  back: {
+    id: 'Back',
+    defaultMessage: 'Back',
+  },
+  logout: {
+    id: 'Logout',
+    defaultMessage: 'Logout',
+  },
   preferences: {
     id: 'Preferences',
     defaultMessage: 'Preferences',
@@ -55,11 +65,6 @@ class PersonalTools extends Component {
     loadComponent: PropTypes.func.isRequired,
   };
 
-  /**
-   * Component will mount
-   * @method componentWillMount
-   * @returns {undefined}
-   */
   componentDidMount() {
     this.props.getUser(this.props.userId);
   }
@@ -96,7 +101,11 @@ class PersonalTools extends Component {
       >
         <header className="header">
           <button className="back" onClick={this.pull}>
-            <Icon name={backSVG} size="30px" />
+            <Icon
+              name={backSVG}
+              size="30px"
+              title={this.props.intl.formatMessage(messages.back)}
+            />
           </button>
           <div className="vertical divider" />
           <h2>
@@ -105,7 +114,12 @@ class PersonalTools extends Component {
               : this.props.user.username}
           </h2>
           <Link id="toolbar-logout" to="/logout">
-            <Icon className="logout" name={logoutSVG} size="30px" />
+            <Icon
+              className="logout"
+              name={logoutSVG}
+              size="30px"
+              title={this.props.intl.formatMessage(messages.logout)}
+            />
           </Link>
         </header>
         <div className={cx('avatar', { default: !this.props.user.portrait })}>
@@ -143,12 +157,21 @@ class PersonalTools extends Component {
                 <Icon name={rightArrowSVG} size="24px" />
               </button>
             </li>
-            <li>
-              <Link to="/controlpanel">
-                <FormattedMessage id="Site Setup" defaultMessage="Site Setup" />
-                <Icon name={rightArrowSVG} size="24px" />
-              </Link>
-            </li>
+
+            {userHasRoles(this.props.user, [
+              'Site Administrator',
+              'Manager',
+            ]) && (
+              <li>
+                <Link to="/controlpanel">
+                  <FormattedMessage
+                    id="Site Setup"
+                    defaultMessage="Site Setup"
+                  />
+                  <Icon name={rightArrowSVG} size="24px" />
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
       </div>

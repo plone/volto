@@ -199,12 +199,7 @@ class Workflow extends Component {
       : {},
   };
 
-  /**
-   * Component will mount
-   * @method componentWillMount
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillMount() {
+  componentDidMount() {
     this.props.getWorkflow(this.props.pathname);
   }
 

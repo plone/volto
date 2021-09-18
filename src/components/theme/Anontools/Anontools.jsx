@@ -66,11 +66,13 @@ export class Anontools extends Component {
               <FormattedMessage id="Log in" defaultMessage="Log in" />
             </Link>
           </Menu.Item>
-          <Menu.Item>
-            <Link aria-label="register" to="/register">
-              <FormattedMessage id="Register" defaultMessage="Register" />
-            </Link>
-          </Menu.Item>
+          {settings.showSelfRegistration && (
+            <Menu.Item>
+              <Link aria-label="register" to="/register">
+                <FormattedMessage id="Register" defaultMessage="Register" />
+              </Link>
+            </Menu.Item>
+          )}
         </Menu>
       )
     );

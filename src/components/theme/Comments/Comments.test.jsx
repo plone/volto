@@ -21,6 +21,7 @@ describe('Comments', () => {
         items: [
           {
             '@id': 'someurl',
+            comment_id: '1614094601171408',
             author_name: 'admin',
             creation_date: '2017-11-06T19:36:01',
             text: { data: 'Some comment' },

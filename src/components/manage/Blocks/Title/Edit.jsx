@@ -49,6 +49,16 @@ class Edit extends Component {
     onFocusPreviousBlock: PropTypes.func.isRequired,
     onFocusNextBlock: PropTypes.func.isRequired,
     block: PropTypes.string.isRequired,
+    editable: PropTypes.bool,
+  };
+
+  /**
+   * Default properties
+   * @property {Object} defaultProps Default properties.
+   * @static
+   */
+  static defaultProps = {
+    editable: true,
   };
 
   /**
@@ -152,6 +162,7 @@ class Edit extends Component {
 
     return (
       <Editor
+        readOnly={!this.props.editable}
         onChange={this.onChange}
         editorState={this.state.editorState}
         blockRenderMap={extendedBlockRenderMap}

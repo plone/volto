@@ -29,7 +29,7 @@ exports[`renders an Image Block Sidebar component 1`] = `
     className="ui segment form sidebar-image-data"
   >
     <div
-      className="inline field text"
+      className="inline field text field-wrapper-external"
     >
       <div
         className="ui grid"
@@ -108,7 +108,7 @@ exports[`renders an Image Block Sidebar component 1`] = `
       </div>
     </div>
     <div
-      className="inline field text"
+      className="inline field text field-wrapper-alt"
     >
       <div
         className="ui grid"
@@ -330,7 +330,7 @@ exports[`renders an Image Block Sidebar component 1`] = `
       </div>
     </div>
     <div
-      className="inline field"
+      className="inline field field-wrapper-image_size"
     >
       <div
         className="ui grid"
@@ -440,7 +440,7 @@ exports[`renders an Image Block Sidebar component 1`] = `
       className="content active"
     >
       <div
-        className="inline field text"
+        className="inline field text field-wrapper-link"
       >
         <div
           className="ui grid"
@@ -519,7 +519,7 @@ exports[`renders an Image Block Sidebar component 1`] = `
         </div>
       </div>
       <div
-        className="inline field"
+        className="inline field field-wrapper-openLinkInNewTab"
       >
         <div
           className="ui grid"

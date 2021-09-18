@@ -1,19 +1,26 @@
-FROM node:10.14.2-slim
+FROM node:12-stretch-slim
 
-RUN apt-get update -y
-# RUN apt-get install -y libpng12-dev
+RUN runDeps="openssl ca-certificates patch" \
+ && apt-get update \
+ && apt-get install -y --no-install-recommends $runDeps \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /opt/app/
+RUN mkdir -p /opt/frontend \
+ && chown -R node /opt/frontend
 
-COPY package.json yarn.lock ./
+WORKDIR /opt/frontend/
+RUN npm install -g yo @plone/generator-volto wait-on
 
-RUN yarn install
+USER node
+RUN yo --no-insight @plone/volto --no-interactive
 
-COPY . .
+RUN RAZZLE_API_PATH=VOLTO_API_PATH RAZZLE_INTERNAL_API_PATH=VOLTO_INTERNAL_API_PATH yarn \
+ && RAZZLE_API_PATH=VOLTO_API_PATH RAZZLE_INTERNAL_API_PATH=VOLTO_INTERNAL_API_PATH yarn build
 
-RUN RAZZLE_API_PATH=VOLTO_API_PATH RAZZLE_INTERNAL_API_PATH=VOLTO_INTERNAL_API_PATH yarn build
+COPY entrypoint.sh /
 
-EXPOSE 3000
+EXPOSE 3000 3001 4000 4001
 
-ENTRYPOINT ["/opt/app/entrypoint.sh"]
-CMD yarn start:prod
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["yarn", "start:prod"]

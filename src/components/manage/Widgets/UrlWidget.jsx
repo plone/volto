@@ -26,7 +26,7 @@ const UrlWidget = (props) => {
   const { id, onChange, onBlur, onClick, minLength, maxLength } = props;
   const inputId = `field-${id}`;
 
-  const [value, setValue] = useState(props.value);
+  const [value, setValue] = useState(flattenToAppURL(props.value));
   const [isInvalid, setIsInvalid] = useState(false);
   /**
    * Clear handler

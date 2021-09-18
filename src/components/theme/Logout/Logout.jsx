@@ -39,12 +39,7 @@ class Logout extends Component {
     query: null,
   };
 
-  /**
-   * Component will mount
-   * @method componentWillMount
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillMount() {
+  componentDidMount() {
     this.props.logout();
     this.props.purgeMessages();
   }

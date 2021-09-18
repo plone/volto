@@ -49,7 +49,9 @@ export function persistAuthToken(store) {
 
     if (previousValue !== currentValue || initial) {
       if (!currentValue) {
-        cookie.remove('auth_token', { path: '/' });
+        if (previousValue) {
+          cookie.remove('auth_token', { path: '/' });
+        }
       } else {
         cookie.save('auth_token', currentValue, {
           path: '/',

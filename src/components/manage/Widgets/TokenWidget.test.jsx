@@ -8,6 +8,12 @@ import TokenWidget from './TokenWidget';
 
 const mockStore = configureStore();
 
+jest.mock('@plone/volto/helpers/Loadable/Loadable');
+beforeAll(
+  async () =>
+    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
+);
+
 test('renders a token widget component', async () => {
   const store = mockStore({
     intl: {
