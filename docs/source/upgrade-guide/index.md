@@ -15,6 +15,14 @@ This upgrade guide lists all breaking changes in Volto and explains the
 
 ## Upgrading to Volto 14.x.x
 
+### Update i18n configuration for addons
+
+Not a breaking change, but it's worth noticing that there was some i18n improvements, and
+in the case of addons, it should be updated with the version in the new generator. You'll
+find it in:
+
+https://github.com/plone/volto/blob/master/packages/generator-volto/generators/addon/templates/src/i18n.js
+
 ### Removal of old configuration system based on imports
 
 As announced in the deprecation notice in Volto 12 release, from Volto 14 on, the old
