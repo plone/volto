@@ -223,6 +223,33 @@ ${map(pot.items, (item) => {
   });
 }
 
+/**
+ * Sync po by the pot file and apply defaults
+ * @function syncENPoFileWithDefaults
+ * @return {undefined}
+ */
+function syncENPoFileWithDefaults() {
+  const filename = 'locales/en/LC_MESSAGES/volto.po';
+  const po = Pofile.parse(fs.readFileSync(filename, 'utf8'));
+  const messages = getMessages();
+  fs.writeFileSync(
+    filename,
+    `${formatHeader(po.comments, po.headers)}
+${map(keys(getMessages()).sort(), (key) => {
+  const poItem = find(po.items, { msgid: key });
+  return [
+    `${map(poItem.references, (ref) => `#: ${ref}`).join('\n')}`,
+    `msgid "${poItem.msgid}"`,
+    `msgstr "${
+      poItem?.msgstr?.length && poItem?.msgstr[0] !== ''
+        ? poItem.msgstr[0]
+        : messages[key].defaultMessage
+    }"`,
+  ].join('\n');
+}).join('\n\n')}\n`,
+  );
+}
+
 function main() {
   console.log('Extracting messages from source files...');
   extractMessages();
@@ -244,6 +271,8 @@ function main() {
   }
   console.log('Synchronizing messages to po files...');
   syncPoByPot();
+  console.log('Applying defaults to EN po file...');
+  syncENPoFileWithDefaults();
   console.log('Generating the json files...');
   poToJson();
   console.log('done!');
