@@ -17,16 +17,6 @@ const packageJson = require(path.join(projectRootPath, 'package.json'));
 
 const { program } = require('commander');
 
-program.option('-a, --addon', 'i18n support for addons');
-program.parse(process.argv);
-const options = program.opts();
-let registry;
-
-if (!options.addon) {
-  const AddonConfigurationRegistry = require('../addon-registry');
-  registry = new AddonConfigurationRegistry(projectRootPath);
-}
-
 /**
  * Extract messages into separate JSON files
  * @function extractMessages
@@ -150,12 +140,12 @@ msgstr ""
  * @function poToJson
  * @return {undefined}
  */
-function poToJson() {
+function poToJson({ registry, addonMode }) {
   map(glob('locales/**/*.po'), (filename) => {
     let { items } = Pofile.parse(fs.readFileSync(filename, 'utf8'));
     const lang = filename.match(/locales\/(.*)\/LC_MESSAGES\//)[1];
 
-    if (!options.addon) {
+    if (!addonMode) {
       // Merge addons locales
       if (packageJson.addons) {
         registry.addonNames.forEach((addon) => {
@@ -244,7 +234,7 @@ ${map(pot.items, (item) => {
   });
 }
 
-function main() {
+function main({ addonMode }) {
   console.log('Extracting messages from source files...');
   extractMessages();
   console.log('Synchronizing messages to pot file...');
@@ -265,16 +255,24 @@ function main() {
   }
   console.log('Synchronizing messages to po files...');
   syncPoByPot();
-  if (!options.addon) {
+  if (!addonMode) {
     console.log('Generating the language JSON files...');
-    poToJson();
+    const AddonConfigurationRegistry = require(path.join(
+      projectRootPath,
+      'addon-registry',
+    ));
+    const registry = new AddonConfigurationRegistry(projectRootPath);
+    poToJson({ registry, addonMode });
   }
   console.log('done!');
 }
 
 // This is the equivalent of `if __name__ == '__main__'` in Python :)
 if (require.main === module) {
-  main();
+  program.option('-a, --addon', 'run i18n script for addons');
+  program.parse(process.argv);
+  const options = program.opts();
+  main({ addonMode: options.addon });
 }
 
 module.exports = { poToJson };
