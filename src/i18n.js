@@ -167,13 +167,19 @@ function poToJson() {
       items = [...libItems, ...items];
     }
 
-    // Write it
+    // Write the corresponding language JSON, cover the special EN use case for including
+    // defaults if not present
     fs.writeFileSync(
       `locales/${lang}.json`,
       JSON.stringify(
         zipObject(
           map(items, (item) => item.msgid),
-          map(items, (item) => item.msgstr[0]),
+          map(items, (item) =>
+            lang === 'en'
+              ? item.msgstr[0] ||
+                item.comments[0].replace('defaultMessage: ', '')
+              : item.msgstr[0],
+          ),
         ),
       ),
     );
@@ -214,40 +220,13 @@ ${map(pot.items, (item) => {
   const poItem = find(po.items, { msgid: item.msgid });
   return [
     `${map(item.references, (ref) => `#: ${ref}`).join('\n')}`,
-    `${item.comments[0]}`,
+    `# ${item.comments[0]}`,
     `msgid "${item.msgid}"`,
     `msgstr "${poItem ? poItem.msgstr : ''}"`,
   ].join('\n');
 }).join('\n\n')}\n`,
     );
   });
-}
-
-/**
- * Sync po by the pot file and apply defaults
- * @function syncENPoFileWithDefaults
- * @return {undefined}
- */
-function syncENPoFileWithDefaults() {
-  const filename = 'locales/en/LC_MESSAGES/volto.po';
-  const po = Pofile.parse(fs.readFileSync(filename, 'utf8'));
-  const messages = getMessages();
-  fs.writeFileSync(
-    filename,
-    `${formatHeader(po.comments, po.headers)}
-${map(keys(getMessages()).sort(), (key) => {
-  const poItem = find(po.items, { msgid: key });
-  return [
-    `${map(poItem.references, (ref) => `#: ${ref}`).join('\n')}`,
-    `msgid "${poItem.msgid}"`,
-    `msgstr "${
-      poItem?.msgstr?.length && poItem?.msgstr[0] !== ''
-        ? poItem.msgstr[0]
-        : messages[key].defaultMessage
-    }"`,
-  ].join('\n');
-}).join('\n\n')}\n`,
-  );
 }
 
 function main() {
@@ -271,8 +250,6 @@ function main() {
   }
   console.log('Synchronizing messages to po files...');
   syncPoByPot();
-  // console.log('Applying defaults to EN po file...');
-  // syncENPoFileWithDefaults();
   console.log('Generating the json files...');
   poToJson();
   console.log('done!');
