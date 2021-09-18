@@ -332,7 +332,7 @@
     "promise-file-reader": "1.0.2",
     "prop-types": "15.7.2",
     "query-string": "7.0.0",
-    "razzle": "3.3.7",
+    "razzle": "3.4.5",
     "razzle-plugin-bundle-analyzer": "1.2.0",
     "rc-time-picker": "3.7.3",
     "react": "16.14.0",
