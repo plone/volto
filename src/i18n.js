@@ -210,6 +210,7 @@ function formatHeader(comments, headers) {
  */
 function syncPoByPot() {
   const pot = Pofile.parse(fs.readFileSync('locales/volto.pot', 'utf8'));
+
   map(glob('locales/**/*.po'), (filename) => {
     const po = Pofile.parse(fs.readFileSync(filename, 'utf8'));
 
