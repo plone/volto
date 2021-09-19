@@ -910,6 +910,10 @@ msgstr "選ばれると、このアイテムはナビゲーションツリー内
 msgid "If this date is in the future, the content will not show up in listings and searches until this date."
 msgstr "日時が未来なら、このコンテンツはこの日時までリストアップや検索対象になりません。"
 
+#: components/manage/LockingToastsFactory/LockingToastsFactory
+msgid "If you are certain this user has abandoned the object, you may unlock the object. You will then be able to edit it."
+msgstr ""
+
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
@@ -2001,6 +2005,10 @@ msgstr ""
 msgid "This is a working copy of {title}"
 msgstr ""
 
+#: components/manage/LockingToastsFactory/LockingToastsFactory
+msgid "This item was locked by {creator} on {date}"
+msgstr ""
+
 #: components/manage/Contents/ContentsRenameModal
 msgid "This name will be displayed in the URL."
 msgstr "この名前はURLの一部として使用されます"
@@ -2104,6 +2112,10 @@ msgstr "不明なブロック"
 
 #: components/manage/Multilingual/ManageTranslations
 msgid "Unlink translation for"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
+msgid "Unlock"
 msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -2448,6 +2460,7 @@ msgstr "リード画像"
 msgid "listing"
 msgstr "リスティング"
 
+#: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Contents/Contents
 msgid "loading"
 msgstr ""

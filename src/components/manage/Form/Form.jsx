@@ -255,6 +255,7 @@ class Form extends Component {
         schema: this.props.schema,
         formData: this.state.formData,
         formatMessage: this.props.intl.formatMessage,
+        touchedField: { [id]: value },
       });
 
       this.setState({

@@ -1,6 +1,6 @@
 # Change Log
 
-## 13.14.1 (unreleased)
+## 14.0.0 (unreleased)
 
 ### Breaking
 
@@ -10,7 +10,63 @@
 
 ### Bugfix
 
+- Fix /edit and /add nonContentRoutes to fix isCmsUi fn @giuliaghisini
+- Register the dev api proxy after the express middleware @tiberiuichim
+
 ### Internal
+
+- Update to latest p.restapi (8.9.1) @sneridagh
+- Remove `workingcopy` from checkouts info for kitconcept.volto @sneridagh
+- Remove built workingcopy fixture environment based on local, back to docker based one @sneridagh
+- Add `omelette` to the local Plone backend build @sneridagh
+- Optimize npm package by adding docs/ cypress/ and tests/ to .npmignore @avoinea
+
+## 14.0.0-alpha.2 (2021-09-14)
+
+### Internal
+
+- Revert: Detect when a user has logged in by means other than JWT, such as ZMI `Basic`
+  authentication or the classic HTML Plone `@login` view @rpatterson
+
+## 14.0.0-alpha.1 (2021-09-13)
+
+### Breaking
+
+- Detect when a user has logged in by means other than JWT, such as ZMI `Basic`
+  authentication or the classic HTML Plone `@login` view @rpatterson
+
+### Bugfix
+
+- Fix SelectWidget vocabulary load on second component mount @avoinea #2655
+
+## 14.0.0-alpha.0 (2021-09-08)
+
+### Breaking
+
+- Remove compatibility for old configuration (based on imports) system. Migrate your configuration to the new configuration system for your project before upgrading to Volto 14. See https://docs.voltocms.com/upgrade-guide/#volto-configuration-registry @sneridagh
+- Content locking is not a breaking change, but it's worth noting that Volto 14 comes with locking support enabled by default. Latest `plone.restapi` versions is required. See https://docs.voltocms.com/upgrade-guide/ for more information
+
+### Feature
+
+- Content locking support for Plone (plone.locking) @avoinea
+
+## 13.15.0 (2021-09-07)
+
+### Feature
+
+- Show item title and item type when hovering over item title and item type icon in folder content view @iFlameing
+- Change the batch size of folder content @iFlameing
+- Show loading indicator for listing view @iFlameing
+
+### Bugfix
+
+- Validate `required` touched-only fields in Form everywhere @nileshgulia1
+
+### Internal
+
+- Add placeholder to WysiwygWidget @nzambello
+- Update italian translations @nzambello
+- Get SchemaWidget field factories from backend @avoinea
 
 ## 13.14.0 (2021-09-02)
 
