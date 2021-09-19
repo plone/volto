@@ -4,6 +4,8 @@
 
 ### Breaking
 
+- New i18n infrastructure in the new `@plone/scripts` package @sneridagh
+
 ### Feature
 
 ### Bugfix
