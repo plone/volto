@@ -7,6 +7,7 @@
 ### Feature
 
 - Japanese translation updated @terapyon
+- German translations updated @tisto
 
 ### Bugfix
 
