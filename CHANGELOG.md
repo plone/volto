@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Japanese translation updated @terapyon
+
 ### Bugfix
 
 ### Internal
