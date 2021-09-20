@@ -36,4 +36,18 @@ describe('Add Content Tests', () => {
     cy.get('input#effective-date').should('have.value', '12/24/2050');
     cy.get('input#effective-time').should('have.value', '10:00 AM');
   });
+
+  it('As an editor, given a document with no title or a validation error when I save the sidebar tab switches to the metadata tab', function () {
+    cy.get('.block.inner.text .public-DraftEditor-content').click();
+    cy.get('.ui.basic.icon.button.block-add-button').click();
+    cy.get('.ui.basic.icon.button.image').contains('Image').click();
+    cy.get('#toolbar-save').click();
+
+    cy.findByRole('alert')
+      .get('.toast-inner-content')
+      .contains('Required input is missing');
+    cy.get('.sidebar-container .tabs-wrapper a.active.item').contains(
+      'Document',
+    );
+  });
 });
