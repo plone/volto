@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix logout action, removing the `__ac` cookie as well, if present. @sneridagh
+
 ### Internal
 
 ## 14.0.0-alpha.7 (2021-09-20)
