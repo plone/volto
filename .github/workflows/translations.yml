@@ -1,4 +1,4 @@
-name: Translations Coverage
+name: Translations Coverage DE
 on: [push]
 
 jobs:
@@ -11,5 +11,5 @@ jobs:
         uses: alexkiro/i18n-coverage@v1.0.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          translations-path: 'locales/**/*.po'
-          ignore-languages: 'en'
+          translations-path: 'locales/de/LC_MESSAGES/*.po'
+          only-languages: 'de'
