@@ -2,16 +2,10 @@
 
 ## 14.0.0 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Japanese translation updated @terapyon
 - German translations updated @tisto
-
-### Bugfix
-
-### Internal
 
 ## 14.0.0-alpha.6 (2021-09-20)
 
