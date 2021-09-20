@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Japanese translation updated @terapyon
+
 ### Bugfix
 
 ### Internal
@@ -34,7 +36,6 @@
 
 - Fix /edit and /add nonContentRoutes to fix isCmsUi fn @giuliaghisini
 - Register the dev api proxy after the express middleware @tiberiuichim
-- Japanese translation updated @terapyon
 
 ### Internal
 
