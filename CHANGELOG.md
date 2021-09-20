@@ -8,9 +8,17 @@
 
 ### Bugfix
 
+- Do not show lead image block when the content type does not have the behavior enabled @sneridagh
+
 ### Internal
 
 - Add gh action for DE translation coverage @tisto
+
+## 14.0.0-alpha.8 (2021-09-20)
+
+### Bugfix
+
+- Fix logout action, removing the `__ac` cookie as well, if present. @sneridagh
 
 ## 14.0.0-alpha.7 (2021-09-20)
 
