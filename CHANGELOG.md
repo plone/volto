@@ -8,6 +8,30 @@
 
 ### Bugfix
 
+### Internal
+
+## 14.0.0-alpha.6 (2021-09-20)
+
+### Bugfix
+
+- Fix SSR on /edit with dev proxy @tiberiuichim
+
+## 14.0.0-alpha.5 (2021-09-20)
+
+### Bugfix
+
+- Fix on form errors in block editor, not changing to metadata tab @sneridagh
+
+## 14.0.0-alpha.4 (2021-09-20)
+
+### Internal
+
+- Bring back the `cypress` folder from the npm ignore files, since the libs in there are required and helpful for projects, remove only the `tests` and `fixtures` @sneridagh
+
+## 14.0.0-alpha.3 (2021-09-20)
+
+### Bugfix
+
 - Fix /edit and /add nonContentRoutes to fix isCmsUi fn @giuliaghisini
 - Register the dev api proxy after the express middleware @tiberiuichim
 - Japanese translation updated @terapyon
