@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix SSR on /edit with dev proxy @tiberiuichim
+
 ### Internal
 
 ## 14.0.0-alpha.5 (2021-09-20)
