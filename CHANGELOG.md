@@ -8,6 +8,10 @@
 
 ### Bugfix
 
+- Yet another attempt at fixing devproxy. Split the devproxy into a separate
+  express middleware. Introduce the `DEBUG_HPM` env var to make the devproxy
+  verbose @tiberiuichim
+
 ### Internal
 
 ## 14.0.0-alpha.7 (2021-09-20)
