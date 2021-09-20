@@ -13,3 +13,5 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           translations-path: 'locales/de/LC_MESSAGES/*.po'
           only-languages: 'de'
+      - name: Get the coverage
+        run: echo "The coverage was ${{ steps.i18nCoverage.outputs.coverage }}"
