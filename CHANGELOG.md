@@ -1,6 +1,6 @@
 # Change Log
 
-## 13.15.1 (unreleased)
+## 13.15.1 (2021-09-20)
 
 ### Bugfix
 
