@@ -2,10 +2,6 @@
 
 ## 14.0.0 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Fix /edit and /add nonContentRoutes to fix isCmsUi fn @giuliaghisini
