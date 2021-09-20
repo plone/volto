@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Add gh action for DE translation coverage @tisto
+
 ## 14.0.0-alpha.7 (2021-09-20)
 
 ### Feature
