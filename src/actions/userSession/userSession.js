@@ -4,6 +4,7 @@
  */
 
 import { LOGIN, LOGIN_RENEW, LOGOUT } from '@plone/volto/constants/ActionTypes';
+import cookie from 'react-cookie';
 
 /**
  * Login function.
@@ -44,6 +45,8 @@ export function loginRenew() {
  * @returns {Object} Logout action.
  */
 export function logout() {
+  cookie.remove('__ac', { path: '/' });
+
   return {
     type: LOGOUT,
   };

@@ -1,5 +1,11 @@
 # Change Log
 
+## 13.15.1 (unreleased)
+
+### Bugfix
+
+- Backported: Fix logout action, removing the `__ac` cookie as well, if present. @sneridagh
+
 ## 13.15.0 (2021-09-07)
 
 ### Feature
