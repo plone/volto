@@ -2,13 +2,9 @@
 
 ## 14.0.0 (unreleased)
 
-### Breaking
-
-### Feature
-
-### Bugfix
-
 ### Internal
+
+- Bring back the `cypress` folder from the npm ignore files, since the libs in there are required and helpful for projects, remove only the `tests` and `fixtures` @sneridagh
 
 ## 14.0.0-alpha.3 (2021-09-20)
 
