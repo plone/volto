@@ -6,13 +6,9 @@
 
 - Use the block's title as the source of the translation instead of using the id of the block. See upgrade guide for more information @sneridagh
 
-### Feature
-
 ### Bugfix
 
 - Do not show lead image block when the content type does not have the behavior enabled @sneridagh
-
-### Internal
 
 ## 14.0.0-alpha.8 (2021-09-20)
 
