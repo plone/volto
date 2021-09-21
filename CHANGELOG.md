@@ -11,7 +11,73 @@
 
 ### Bugfix
 
+- Do not show lead image block when the content type does not have the behavior enabled @sneridagh
+
 ### Internal
+
+## 14.0.0-alpha.8 (2021-09-20)
+
+### Bugfix
+
+- Fix logout action, removing the `__ac` cookie as well, if present. @sneridagh
+
+## 14.0.0-alpha.7 (2021-09-20)
+
+### Feature
+
+- Japanese translation updated @terapyon
+- German translations updated @tisto
+
+## 14.0.0-alpha.6 (2021-09-20)
+
+### Bugfix
+
+- Fix SSR on /edit with dev proxy @tiberiuichim
+
+## 14.0.0-alpha.5 (2021-09-20)
+
+### Bugfix
+
+- Fix on form errors in block editor, not changing to metadata tab @sneridagh
+
+## 14.0.0-alpha.4 (2021-09-20)
+
+### Internal
+
+- Bring back the `cypress` folder from the npm ignore files, since the libs in there are required and helpful for projects, remove only the `tests` and `fixtures` @sneridagh
+
+## 14.0.0-alpha.3 (2021-09-20)
+
+### Bugfix
+
+- Fix /edit and /add nonContentRoutes to fix isCmsUi fn @giuliaghisini
+- Register the dev api proxy after the express middleware @tiberiuichim
+
+### Internal
+
+- Update to latest p.restapi (8.9.1) @sneridagh
+- Remove `workingcopy` from checkouts info for kitconcept.volto @sneridagh
+- Remove built workingcopy fixture environment based on local, back to docker based one @sneridagh
+- Add `omelette` to the local Plone backend build @sneridagh
+- Optimize npm package by adding docs/ cypress/ and tests/ to .npmignore @avoinea
+
+## 14.0.0-alpha.2 (2021-09-14)
+
+### Internal
+
+- Revert: Detect when a user has logged in by means other than JWT, such as ZMI `Basic`
+  authentication or the classic HTML Plone `@login` view @rpatterson
+
+## 14.0.0-alpha.1 (2021-09-13)
+
+### Breaking
+
+- Detect when a user has logged in by means other than JWT, such as ZMI `Basic`
+  authentication or the classic HTML Plone `@login` view @rpatterson
+
+### Bugfix
+
+- Fix SelectWidget vocabulary load on second component mount @avoinea #2655
 
 ## 14.0.0-alpha.0 (2021-09-08)
 

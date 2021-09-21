@@ -155,7 +155,7 @@ class SelectWidget extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    if (!this.props.choices && this.props.vocabBaseUrl) {
+    if (!this.props.choices?.length && this.props.vocabBaseUrl) {
       this.props.getVocabulary(this.props.vocabBaseUrl);
     }
   }

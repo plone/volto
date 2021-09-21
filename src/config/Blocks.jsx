@@ -202,7 +202,7 @@ const blocksConfig = {
     view: ViewLeadImageBlock,
     edit: EditLeadImageBlock,
     schema: BlockSettingsSchema,
-    restricted: false,
+    restricted: ({ properties }) => !properties.hasOwnProperty('image'),
     mostUsed: false,
     sidebarTab: 1,
     security: {
