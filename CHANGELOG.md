@@ -4,6 +4,8 @@
 
 ### Breaking
 
+- Use the block's `title` as the source of the translation `id` instead of using the `id` of the block. See upgrade guide for more information. @sneridagh
+
 ### Feature
 
 ### Bugfix
