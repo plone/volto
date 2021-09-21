@@ -15,7 +15,13 @@ export function loggedIn(state) {
   /* The user may be authenticated by different means, including outside the UI.  Defer
    * to the response from Plone, sepcifically whether Plone presents an option to log
    * in. */
-  return !state.actions.actionsById.user.login;
+
+  if (
+    typeof state.actions.actionsById.user.login === 'undefined' &&
+    typeof state.actions.actionsById.user.logout === 'undefined'
+  )
+    return false;
+  return !!state.actions.actionsById.user?.logout;
 }
 
 /**
