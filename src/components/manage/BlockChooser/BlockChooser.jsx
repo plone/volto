@@ -133,7 +133,7 @@ const BlockChooser = ({
                     >
                       <Icon name={block.icon} size="36px" />
                       {intl.formatMessage({
-                        id: block.id,
+                        id: block.title,
                         defaultMessage: block.title,
                       })}
                     </Button>
