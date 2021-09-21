@@ -36,6 +36,7 @@ import {
   getNavigation,
   getTypes,
   getWorkflow,
+  listActions,
 } from '@plone/volto/actions';
 import {
   loggedIn,
@@ -196,6 +197,14 @@ export const __test__ = connect(
 
 export default compose(
   asyncConnect([
+    {
+      key: 'actions',
+      // Dispatch async/await to make the operation syncronous, otherwise it returns
+      // before the promise is resolved
+      promise: async ({ location, store: { dispatch } }) =>
+        __SERVER__ &&
+        (await dispatch(listActions(getBaseUrl(location.pathname)))),
+    },
     {
       key: 'breadcrumbs',
       promise: ({ location, store: { dispatch } }) =>

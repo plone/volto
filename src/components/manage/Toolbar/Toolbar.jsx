@@ -194,9 +194,10 @@ class Toolbar extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    this.props.listActions(getBaseUrl(this.props.pathname));
-    this.props.getTypes(getBaseUrl(this.props.pathname));
-    this.props.setExpandedToolbar(this.state.expanded);
+    this.props
+      .listActions(getBaseUrl(this.props.pathname))
+      .then(() => this.props.getTypes(getBaseUrl(this.props.pathname)));
+
     document.addEventListener('mousedown', this.handleClickOutside, false);
   }
 
@@ -208,8 +209,9 @@ class Toolbar extends Component {
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
-      this.props.listActions(getBaseUrl(nextProps.pathname));
-      this.props.getTypes(getBaseUrl(nextProps.pathname));
+      this.props
+        .listActions(getBaseUrl(nextProps.pathname))
+        .then(() => this.props.getTypes(getBaseUrl(this.props.pathname)));
     }
 
     // Unlock
