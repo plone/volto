@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2021-09-14T19:09:44.603Z\n"
+"POT-Creation-Date: 2021-09-22T10:25:15.697Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1091,6 +1091,11 @@ msgid "Header cell"
 msgstr ""
 
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Headline
+msgid "Headline"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
 # defaultMessage: Hidden facets will still filter the results if proper parameters are passed in URLs
 msgid "Hidden facets will still filter the results if proper parameters are passed in URLs"
 msgstr ""
@@ -1370,11 +1375,6 @@ msgstr ""
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Listing
 msgid "Listing"
-msgstr ""
-
-#: components/manage/Blocks/Search/SearchBlockEdit
-# defaultMessage: Listing template
-msgid "Listing template"
 msgstr ""
 
 #: components/theme/Comments/Comments
@@ -2004,6 +2004,11 @@ msgstr ""
 #: components/manage/Blocks/Listing/Edit
 # defaultMessage: Results preview
 msgid "Results preview"
+msgstr ""
+
+#: components/manage/Blocks/Search/SearchBlockEdit
+# defaultMessage: Results template
+msgid "Results template"
 msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget

@@ -19,6 +19,10 @@ const messages = defineMessages({
     id: 'Title',
     defaultMessage: 'Title',
   },
+  headline: {
+    id: 'Headline',
+    defaultMessage: 'Headline',
+  },
   searchInputPrompt: {
     id: 'Search input label',
     defaultMessage: 'Search input label',
@@ -155,7 +159,7 @@ export default ({ data = {}, intl }) => {
       {
         id: 'default',
         title: 'Default',
-        fields: ['title'],
+        fields: ['headline'],
       },
       {
         id: 'searchquery',
@@ -181,8 +185,8 @@ export default ({ data = {}, intl }) => {
       },
     ],
     properties: {
-      title: {
-        title: intl.formatMessage(messages.title),
+      headline: {
+        title: intl.formatMessage(messages.headline),
       },
       searchInputPrompt: {
         title: intl.formatMessage(messages.searchInputPrompt),

@@ -51,7 +51,7 @@ const RightColumnFacets = (props) => {
     <Grid className="searchBlock-facets right-column-facets" stackable>
       <Grid.Row>
         <Grid.Column>
-          {data.title && <h3>{data.title}</h3>}
+          {data.headline && <h2 className="headline">{data.headline}</h2>}
           <SearchDetails text={searchedText} total={totalItems} />
         </Grid.Column>
       </Grid.Row>

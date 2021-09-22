@@ -12,8 +12,8 @@ import { defineMessages } from 'react-intl';
 
 const messages = defineMessages({
   template: {
-    id: 'Listing template',
-    defaultMessage: 'Listing template',
+    id: 'Results template',
+    defaultMessage: 'Results template',
   },
 });
 

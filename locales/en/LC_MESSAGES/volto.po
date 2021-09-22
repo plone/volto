@@ -897,6 +897,10 @@ msgid "Header cell"
 msgstr ""
 
 #: components/manage/Blocks/Search/schema
+msgid "Headline"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
 msgid "Hidden facets will still filter the results if proper parameters are passed in URLs"
 msgstr ""
 
@@ -1123,10 +1127,6 @@ msgstr ""
 
 #: components/manage/Blocks/Listing/schema
 msgid "Listing"
-msgstr ""
-
-#: components/manage/Blocks/Search/SearchBlockEdit
-msgid "Listing template"
 msgstr ""
 
 #: components/theme/Comments/Comments
@@ -1637,6 +1637,10 @@ msgstr ""
 
 #: components/manage/Blocks/Listing/Edit
 msgid "Results preview"
+msgstr ""
+
+#: components/manage/Blocks/Search/SearchBlockEdit
+msgid "Results template"
 msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
