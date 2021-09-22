@@ -20,6 +20,8 @@ const filter = function (pathname, req) {
 
 let _env = null;
 
+// the config is not available at the middleware creation time, so it needs to
+// read/cache the global configuration on first request.
 function getEnv() {
   if (_env) {
     return _env;
@@ -44,7 +46,9 @@ export default function () {
   const devProxy = createProxyMiddleware(filter, {
     selfHandleResponse: true,
     onProxyRes: responseInterceptor(
-      async (responseBuffer, proxyRes, req, res) => responseBuffer,
+      async (responseBuffer, proxyRes, req, res) => {
+        return responseBuffer;
+      },
     ),
     onProxyReq: (proxyReq, req, res) => {
       // Fixes https://github.com/chimurai/http-proxy-middleware/issues/320

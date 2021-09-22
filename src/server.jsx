@@ -56,19 +56,18 @@ const server = express()
   .head('/*', function (req, res) {
     // Support for HEAD requests. Required by start-test utility in CI.
     res.send('');
+  })
+  .all('*', (req, res, next) => {
+    plugToRequest(req, res);
+    next();
   });
+
+const middleware = (config.settings.expressMiddleware || []).filter((m) => m);
+if (middleware.length) server.use('/', middleware);
 
 server.all('*', setupServer);
 
-const expressMiddleware = (config.settings.expressMiddleware || []).filter(
-  (m) => typeof m !== 'undefined',
-);
-
-if (expressMiddleware.length) server.use('/', expressMiddleware);
-
 function setupServer(req, res, next) {
-  plugToRequest(req, res);
-
   const api = new Api(req);
 
   const browserdetect = detect(req.headers['user-agent']);
