@@ -12,7 +12,55 @@
 
 - Fix cypress test @kreafox
 - Fix search block Cypress test @kreafox
+### Internal
+
+## 14.0.0-alpha.9 (2021-09-21)
+
+### Breaking
+
+- Use the block's title as the source of the translation instead of using the id of the block. See upgrade guide for more information @sneridagh
+
+### Bugfix
+
+- Do not show lead image block when the content type does not have the behavior enabled @sneridagh
+
+## 14.0.0-alpha.8 (2021-09-20)
+
+### Bugfix
+
+- Fix logout action, removing the `__ac` cookie as well, if present. @sneridagh
+
+## 14.0.0-alpha.7 (2021-09-20)
+
+### Feature
+
+- Japanese translation updated @terapyon
+- German translations updated @tisto
+
+## 14.0.0-alpha.6 (2021-09-20)
+
+### Bugfix
+
+- Fix SSR on /edit with dev proxy @tiberiuichim
+
+## 14.0.0-alpha.5 (2021-09-20)
+
+### Bugfix
+
+- Fix on form errors in block editor, not changing to metadata tab @sneridagh
+
+## 14.0.0-alpha.4 (2021-09-20)
+
+### Internal
+
+- Bring back the `cypress` folder from the npm ignore files, since the libs in there are required and helpful for projects, remove only the `tests` and `fixtures` @sneridagh
+
+## 14.0.0-alpha.3 (2021-09-20)
+
+### Bugfix
+
 - Fix /edit and /add nonContentRoutes to fix isCmsUi fn @giuliaghisini
+- Register the dev api proxy after the express middleware @tiberiuichim
 
 ### Internal
 

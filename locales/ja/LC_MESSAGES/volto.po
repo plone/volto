@@ -1,11 +1,12 @@
 # Manabu TERADA <terada@cmscom.jp> 2019
 # Peacock <peacock0803sz@gmail.com> 2019
+# zenich 2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-27T19:30:59.079Z\n"
-"PO-Revision-Date: 2020-09-23 20:50+0900\n"
+"PO-Revision-Date: 2021-09-08 20:50+0900\n"
 "Last-Translator: Manabu TERADA <terada@cmscom.jp>\n"
 "Language: ja\n"
 "Language-Team: Plone Japanese Team <https://github.com/plonejp>\n"
@@ -241,11 +242,11 @@ msgstr "キャッシュの名前"
 
 #: components/manage/Controlpanels/ContentTypeLayout
 msgid "Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled"
-msgstr ""
+msgstr "<strong>{type}</strong>コンテンツタイプのレイアウトを編集できません。<strong>Voltoブロック</strong>のサポートが有効でないためです。"
 
 #: components/manage/Controlpanels/ContentTypeLayout
 msgid "Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>"
-msgstr ""
+msgstr "ふるまいの<strong>ブロックが有効</strong>で、かつ<strong>読み取り専用</strong>であるため、<strong>{type}</strong>コンテンツタイプのレイアウトを編集できません。"
 
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsUploadModal
@@ -323,11 +324,11 @@ msgstr "ターゲットを選択"
 
 #: components/manage/Widgets/FileWidget
 msgid "Choose a file"
-msgstr ""
+msgstr "ファイルを選択"
 
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
-msgstr ""
+msgstr "クリア"
 
 #: components/manage/Blocks/Search/components/FilterList
 msgid "Clear filters"
@@ -347,7 +348,7 @@ msgstr "メニューを閉じる"
 
 #: components/manage/Blocks/HTML/Edit
 msgid "Code"
-msgstr ""
+msgstr "コード"
 
 #: components/manage/Widgets/ObjectListWidget
 msgid "Collapse item"
@@ -421,7 +422,7 @@ msgstr "コピー"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Copy blocks"
-msgstr ""
+msgstr "ブロックをコピー"
 
 #: components/theme/Footer/Footer
 msgid "Copyright"
@@ -472,7 +473,7 @@ msgstr "カット"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Cut blocks"
-msgstr ""
+msgstr "ブロックをカット"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Daily"
@@ -550,7 +551,7 @@ msgstr "ユーザを削除"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Delete blocks"
-msgstr ""
+msgstr "ブロックを削除"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Delete col"
@@ -562,7 +563,7 @@ msgstr "行を削除"
 
 #: components/manage/Widgets/QuerystringWidget
 msgid "Depth"
-msgstr ""
+msgstr "深さ"
 
 #: components/manage/Contents/Contents
 msgid "Descending"
@@ -625,24 +626,24 @@ msgstr "ここにファイルをドラッグ、または「参照」ボタンを
 
 #: components/manage/Widgets/FileWidget
 msgid "Drop file here to replace the existing file"
-msgstr ""
+msgstr "ファイルをここにドロップして、既存のファイルを置き換え"
 
 #: components/manage/Widgets/FileWidget
 msgid "Drop file here to upload a new file"
-msgstr ""
+msgstr "ファイルをここにドロップして、新しいファイルをアップロード"
 
 #: components/manage/Widgets/FileWidget
 msgid "Drop files here ..."
-msgstr ""
+msgstr "ファイルをここにドロップ"
 
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
 msgid "E-mail"
-msgstr "E-mail"
+msgstr "メール"
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "E-mail addresses do not match."
-msgstr "E-mail アドレスが見つかりません。"
+msgstr "メールアドレスが見つかりません。"
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypesActions
@@ -708,11 +709,11 @@ msgstr "終了日付"
 
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 msgid "Enter URL or select an item"
-msgstr ""
+msgstr "URLを入力または項目を選択"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Enter a username above to search or click 'Show All'"
-msgstr ""
+msgstr "検索するユーザ名を上に入力するか、[すべて表示]をクリックしてください。"
 
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
@@ -827,7 +828,7 @@ msgstr "テーブルのセル幅を固定"
 
 #: components/manage/BlockChooser/BlockChooser
 msgid "Fold"
-msgstr ""
+msgstr "折りたたむ"
 
 #: components/manage/Contents/Contents
 msgid "Folder"
@@ -901,7 +902,7 @@ msgstr ""
 
 #: components/manage/Blocks/Table/Edit
 msgid "Header cell"
-msgstr ""
+msgstr "見出しセル"
 
 #: components/manage/Blocks/Search/schema
 msgid "Hidden facets will still filter the results if proper parameters are passed in URLs"
@@ -967,7 +968,7 @@ msgstr "画像"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Include this occurence"
-msgstr ""
+msgstr "この繰り返しを含める"
 
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
@@ -1014,19 +1015,19 @@ msgstr "インストール済バージョン"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Interval Daily"
-msgstr ""
+msgstr "日"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Interval Monthly"
-msgstr ""
+msgstr "月"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Interval Weekly"
-msgstr ""
+msgstr "週"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Interval Yearly"
-msgstr ""
+msgstr "年"
 
 #: components/manage/Widgets/QuerystringWidget
 msgid "Item batch size"
@@ -1034,7 +1035,7 @@ msgstr "1ページ表示件数"
 
 #: components/manage/Contents/Contents
 msgid "Item succesfully moved."
-msgstr ""
+msgstr "アイテムは正常に移動されました。"
 
 #: components/manage/Contents/Contents
 msgid "Item(s) copied."
@@ -1046,7 +1047,7 @@ msgstr "アイテムがカットされました。"
 
 #: components/manage/Contents/Contents
 msgid "Item(s) has been updated."
-msgstr ""
+msgstr "アイテムが更新されました。"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -1055,7 +1056,7 @@ msgstr "アイテムがペーストされました。"
 
 #: components/manage/Contents/Contents
 msgid "Item(s) state has been updated."
-msgstr ""
+msgstr "アイテムの状態が更新されました。"
 
 #: components/manage/Controlpanels/ContentTypes
 msgid "Items"
@@ -1142,7 +1143,7 @@ msgstr ""
 
 #: components/manage/Form/ModalForm
 msgid "Loading"
-msgstr ""
+msgstr "読み込み中"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Location"
@@ -1184,11 +1185,11 @@ msgstr "コンパクトな表示"
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Toolbar/More
 msgid "Manage Translations"
-msgstr ""
+msgstr "翻訳の管理"
 
 #: components/manage/Multilingual/ManageTranslations
 msgid "Manage translations for {title}"
-msgstr ""
+msgstr "{title}の翻訳を管理する"
 
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "Map"
@@ -1257,7 +1258,7 @@ msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "My email address is"
-msgstr "私のE-mailアドレスは、"
+msgstr "私のメールアドレスは、"
 
 #: components/manage/Sharing/Sharing
 #: components/theme/ContactForm/ContactForm
@@ -1270,7 +1271,7 @@ msgstr "元に戻る"
 
 #: components/theme/Navigation/ContextNavigation
 msgid "Navigation"
-msgstr ""
+msgstr "ナビゲーション"
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
@@ -1391,7 +1392,7 @@ msgstr "Open menu (未翻訳)"
 
 #: components/manage/Widgets/ObjectBrowserWidget
 msgid "Open object browser"
-msgstr ""
+msgstr "オブジェクトブラウザを開く"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -1404,7 +1405,7 @@ msgstr "ページ"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Parent fieldset"
-msgstr ""
+msgstr "親フィールドセット"
 
 #: components/theme/Login/Login
 #: helpers/MessageLabels/MessageLabels
@@ -1427,7 +1428,7 @@ msgstr "ペースト"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Paste blocks"
-msgstr ""
+msgstr "ブロックを貼り付け"
 
 #: components/manage/Sharing/Sharing
 msgid "Permissions have been updated successfully"
@@ -1486,7 +1487,7 @@ msgstr "顔写真"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Possible values"
-msgstr ""
+msgstr "選択肢"
 
 #: components/theme/Footer/Footer
 msgid "Powered by Plone & Python"
@@ -1498,7 +1499,7 @@ msgstr "個別設定"
 
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"
-msgstr ""
+msgstr "コードの整形"
 
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
@@ -1507,7 +1508,7 @@ msgstr "プレビュー"
 
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Preview Image URL"
-msgstr ""
+msgstr "プレビュー画像のURL"
 
 #: components/manage/Toolbar/PersonalTools
 msgid "Profile"
@@ -1597,7 +1598,7 @@ msgstr "名前の変更"
 
 #: components/manage/Contents/ContentsRenameModal
 msgid "Rename Items Loading Message"
-msgstr ""
+msgstr "Rename Items Loading Message (未翻訳)"
 
 #: components/manage/Contents/ContentsRenameModal
 msgid "Rename items"
@@ -1617,7 +1618,7 @@ msgstr "日または曜日"
 
 #: components/manage/Widgets/FileWidget
 msgid "Replace existing file"
-msgstr ""
+msgstr "ファイルの置き換え"
 
 #: components/theme/Comments/Comments
 msgid "Reply"
@@ -1678,7 +1679,7 @@ msgstr "ロール"
 
 #: components/manage/Contents/ContentsBreadcrumbs
 msgid "Root"
-msgstr ""
+msgstr "Root"
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentType
@@ -1702,7 +1703,7 @@ msgstr "スキーマ"
 
 #: components/manage/Controlpanels/ContentTypeSchema
 msgid "Schema updates"
-msgstr ""
+msgstr "スキーマの更新"
 
 #: components/manage/Blocks/Search/layout/LeftColumnFacets
 #: components/manage/Blocks/Search/layout/RightColumnFacets
@@ -1767,7 +1768,7 @@ msgstr "第2"
 
 #: components/manage/Sidebar/ObjectBrowserNav
 msgid "Select"
-msgstr ""
+msgstr "選択"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Select a date to add to recurrence"
@@ -1791,7 +1792,7 @@ msgstr "選択中のアイテム"
 
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Selected items - x of y"
-msgstr ""
+msgstr "選択したアイテム-x/y"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Selection"
@@ -1818,7 +1819,7 @@ msgstr "パスワードを設定"
 
 #: components/manage/Sidebar/Sidebar
 msgid "Settings"
-msgstr ""
+msgstr "設定"
 
 #: components/manage/Sharing/Sharing
 #: components/manage/Toolbar/More
@@ -1845,7 +1846,7 @@ msgstr "表示件数"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "Show All"
-msgstr ""
+msgstr "すべて表示"
 
 #: components/theme/Comments/Comments
 msgid "Show Replies"
@@ -2047,7 +2048,7 @@ msgstr "The backend is responding, but the CORS headers are not configured prope
 
 #: components/theme/CorsError/CorsError
 msgid "The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
-msgstr ""
+msgstr "Webサイトのバックエンドサーバが応答しません。ご不便をおかけして申し訳ありません。ページの再読み込みを実行してください。問題が解決しない場合は、サイト管理者にお問い合わせください。"
 
 #: components/manage/Contents/Contents
 msgid "The item could not be deleted."
@@ -2154,11 +2155,11 @@ msgstr "{lang} に翻訳する"
 
 #: components/manage/Multilingual/ManageTranslations
 msgid "Translation linked"
-msgstr ""
+msgstr "関連付けられた翻訳"
 
 #: components/manage/Multilingual/ManageTranslations
 msgid "Translation linking removed"
-msgstr ""
+msgstr "翻訳の関連付けが削除されました"
 
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
@@ -2184,11 +2185,11 @@ msgstr "UID"
 
 #: components/theme/Unauthorized/Unauthorized
 msgid "Unauthorized"
-msgstr "Unauthorized(未翻訳)"
+msgstr "権限がありません"
 
 #: components/manage/BlockChooser/BlockChooser
 msgid "Unfold"
-msgstr ""
+msgstr "展開する"
 
 #: components/manage/Diff/Diff
 msgid "Unified"
@@ -2342,7 +2343,7 @@ msgstr "デバッグモードに関する警告"
 
 #: components/theme/ConnectionRefused/ConnectionRefused
 msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later."
-msgstr ""
+msgstr "サイトのバックエンドは現在使用できません。ご不便をおかけしますが、後でもう一度お試しください。"
 
 #: components/theme/NotFound/NotFound
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
@@ -2358,7 +2359,7 @@ msgstr "あなたのパスワードを回復する必要がある場合、この
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Weeek day of month"
-msgstr ""
+msgstr " "
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Weekday"
@@ -2386,7 +2387,7 @@ msgstr "誰が"
 
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Workflow Change Loading Message"
-msgstr ""
+msgstr "ワークフローを変更しています..."
 
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
@@ -2427,7 +2428,7 @@ msgstr "You can view the history of your item below. (未翻訳)"
 
 #: components/manage/Contents/Contents
 msgid "You can't paste this content here"
-msgstr ""
+msgstr "このコンテンツをここに貼り付けることはできません"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Your email is required for reset your password."
@@ -2484,7 +2485,7 @@ msgstr "下書き(draft)"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "email"
-msgstr ""
+msgstr "正しいメールアドレスを入力してください"
 
 #: components/theme/View/EventView
 msgid "event_alldates"
@@ -2508,11 +2509,11 @@ msgstr "イベントURL"
 
 #: components/theme/View/EventView
 msgid "event_what"
-msgstr ""
+msgstr "内容"
 
 #: components/theme/View/EventView
 msgid "event_when"
-msgstr "イベント日時"
+msgstr "日時"
 
 #: components/theme/View/EventView
 msgid "event_where"
@@ -2536,11 +2537,11 @@ msgstr "画像"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "integer"
-msgstr ""
+msgstr "整数を入力してください"
 
 #: components/manage/Contents/ContentsItem
 msgid "intranet"
-msgstr ""
+msgstr "イントラネット"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "label_my_email_address_is"
@@ -2557,7 +2558,7 @@ msgstr "リスティング"
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Contents/Contents
 msgid "loading"
-msgstr ""
+msgstr "読み込み中"
 
 #: components/theme/Unauthorized/Unauthorized
 msgid "log in"
@@ -2569,11 +2570,11 @@ msgstr "地図"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "maxLength"
-msgstr ""
+msgstr "最大長さ"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "maximum"
-msgstr ""
+msgstr "入力範囲の最大値(この値を含みます)"
 
 #: config/Blocks
 msgid "media"
@@ -2581,11 +2582,11 @@ msgstr "メディア"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "minLength"
-msgstr ""
+msgstr "最小長さ"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "minimum"
-msgstr ""
+msgstr "入力範囲の最小値"
 
 #: config/Blocks
 msgid "mostUsed"
@@ -2597,7 +2598,7 @@ msgstr "状態なし"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "number"
-msgstr ""
+msgstr "数値を入力してください"
 
 #: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
 #: components/manage/Widgets/RecurrenceWidget/ByYearField
@@ -2610,7 +2611,7 @@ msgstr "または、他のページを試してください。"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "others"
-msgstr ""
+msgstr "その他"
 
 #: components/manage/Contents/ContentsItem
 msgid "private"
@@ -2622,7 +2623,7 @@ msgstr "公開中"
 
 #: components/manage/Widgets/QueryWidget
 msgid "querystring-widget-select"
-msgstr ""
+msgstr "選択してください"
 
 #: components/theme/Search/Search
 msgid "results found"
@@ -2634,143 +2635,143 @@ msgstr "サイトルートに戻ってください。"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_and"
-msgstr ""
+msgstr "および"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_approximate"
-msgstr ""
+msgstr "〜概数"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_at"
-msgstr ""
+msgstr "於"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_dateFormat"
-msgstr ""
+msgstr "[year]-[month]-[day]"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_day"
-msgstr ""
+msgstr "日付"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_days"
-msgstr ""
+msgstr "日数"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_every"
-msgstr ""
+msgstr "毎"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_for"
-msgstr ""
+msgstr "の間"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_hour"
-msgstr ""
+msgstr "時間"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_hours"
-msgstr ""
+msgstr "時間"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_in"
-msgstr ""
+msgstr "内"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_last"
-msgstr ""
+msgstr "最終"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_minutes"
-msgstr ""
+msgstr "分"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_month"
-msgstr ""
+msgstr "月"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_months"
-msgstr ""
+msgstr "月"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_nd"
-msgstr ""
+msgstr " "
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_on"
-msgstr ""
+msgstr " "
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_on the"
-msgstr ""
+msgstr " "
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_or"
-msgstr ""
+msgstr "または"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_rd"
-msgstr ""
+msgstr " "
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_st"
-msgstr ""
+msgstr " "
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_th"
-msgstr ""
+msgstr " "
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_the"
-msgstr ""
+msgstr " "
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_time"
-msgstr ""
+msgstr "時間"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_times"
-msgstr ""
+msgstr "回"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_until"
-msgstr ""
+msgstr "まで"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_week"
-msgstr ""
+msgstr "週"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_weekday"
-msgstr ""
+msgstr "平日"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_weekdays"
-msgstr ""
+msgstr "平日"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_weeks"
-msgstr ""
+msgstr "週"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_year"
-msgstr ""
+msgstr "年"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_years"
-msgstr ""
+msgstr "年"
 
 #: components/theme/SkipLinks/SkipLinks
 msgid "skiplink-footer"
-msgstr ""
+msgstr "フッターへ"
 
 #: components/theme/SkipLinks/SkipLinks
 msgid "skiplink-main-content"
-msgstr ""
+msgstr "メインコンテンツへ"
 
 #: components/theme/SkipLinks/SkipLinks
 msgid "skiplink-navigation"
-msgstr ""
+msgstr "ナビゲーションへ"
 
 #: components/manage/Contents/Contents
 msgid "sort"
@@ -2794,7 +2795,7 @@ msgstr "目次"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "url"
-msgstr ""
+msgstr "正しいURLを入力してください"
 
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"
@@ -2810,7 +2811,7 @@ msgstr "外部サイトを表示"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
-msgstr ""
+msgstr "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 
 #: components/manage/Contents/Contents
 msgid "{count} selected"
