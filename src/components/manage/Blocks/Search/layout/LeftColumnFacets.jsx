@@ -52,7 +52,6 @@ const LeftColumnFacets = (props) => {
       <Grid.Row>
         <Grid.Column>
           {data.headline && <h2 className="headline">{data.headline}</h2>}
-          <SearchDetails text={searchedText} total={totalItems} />
         </Grid.Column>
       </Grid.Row>
 
@@ -100,31 +99,34 @@ const LeftColumnFacets = (props) => {
             }}
           />
 
-          {data.showSortOn && (
-            <SortOn
-              data={data}
-              isEditMode={isEditMode}
-              sortOrder={sortOrder}
-              setSortOn={(sortOn) => {
-                flushSync(() => {
-                  setSortOn(sortOn);
-                  onTriggerSearch(searchedText || '', facets, sortOn);
-                });
-              }}
-              setSortOrder={(sortOrder) => {
-                flushSync(() => {
-                  setSortOrder(sortOrder);
-                  onTriggerSearch(
-                    searchedText || '',
-                    facets,
-                    sortOn,
-                    sortOrder,
-                  );
-                });
-              }}
-            />
-          )}
+          <div className="search-results-count-sort">
+            <SearchDetails text={searchedText} total={totalItems} />
 
+            {data.showSortOn && (
+              <SortOn
+                data={data}
+                isEditMode={isEditMode}
+                sortOrder={sortOrder}
+                setSortOn={(sortOn) => {
+                  flushSync(() => {
+                    setSortOn(sortOn);
+                    onTriggerSearch(searchedText || '', facets, sortOn);
+                  });
+                }}
+                setSortOrder={(sortOrder) => {
+                  flushSync(() => {
+                    setSortOrder(sortOrder);
+                    onTriggerSearch(
+                      searchedText || '',
+                      facets,
+                      sortOn,
+                      sortOrder,
+                    );
+                  });
+                }}
+              />
+            )}
+          </div>
           {children}
         </Grid.Column>
       </Grid.Row>

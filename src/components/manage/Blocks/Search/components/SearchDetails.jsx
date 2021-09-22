@@ -16,7 +16,7 @@ const SearchDetails = ({ total, text, as = 'h4' }) => {
   const El = as;
   const intl = useIntl();
   return (
-    <El>
+    <El className="search-details">
       {text ? `${intl.formatMessage(messages.searchedFor)}: ${text}. ` : ''}
       {intl.formatMessage(messages.searchResults)}: {total}
     </El>

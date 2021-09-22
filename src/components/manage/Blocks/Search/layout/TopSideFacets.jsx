@@ -52,7 +52,6 @@ const TopSideFacets = (props) => {
       <Grid.Row>
         <Grid.Column>
           {data.headline && <h2 className="headline">{data.headline}</h2>}
-          <SearchDetails text={searchedText} total={totalItems} as="h5" />
         </Grid.Column>
       </Grid.Row>
 
@@ -70,42 +69,43 @@ const TopSideFacets = (props) => {
             </div>
           )}
 
-          <FilterList
-            {...props}
-            isEditMode={isEditMode}
-            setFacets={(f) => {
-              flushSync(() => {
-                setFacets(f);
-                onTriggerSearch(searchedText || '', f);
-              });
-            }}
-          />
-
-          {data.showSortOn && (
-            <SortOn
-              data={data}
+          <div className="search-filters-sort">
+            <FilterList
+              {...props}
               isEditMode={isEditMode}
-              sortOrder={sortOrder}
-              setSortOn={(sortOn) => {
+              setFacets={(f) => {
                 flushSync(() => {
-                  setSortOn(sortOn);
-                  onTriggerSearch(searchedText || '', facets, sortOn);
-                });
-              }}
-              setSortOrder={(sortOrder) => {
-                flushSync(() => {
-                  setSortOrder(sortOrder);
-                  onTriggerSearch(
-                    searchedText || '',
-                    facets,
-                    sortOn,
-                    sortOrder,
-                  );
+                  setFacets(f);
+                  onTriggerSearch(searchedText || '', f);
                 });
               }}
             />
-          )}
 
+            {data.showSortOn && (
+              <SortOn
+                data={data}
+                isEditMode={isEditMode}
+                sortOrder={sortOrder}
+                setSortOn={(sortOn) => {
+                  flushSync(() => {
+                    setSortOn(sortOn);
+                    onTriggerSearch(searchedText || '', facets, sortOn);
+                  });
+                }}
+                setSortOrder={(sortOrder) => {
+                  flushSync(() => {
+                    setSortOrder(sortOrder);
+                    onTriggerSearch(
+                      searchedText || '',
+                      facets,
+                      sortOn,
+                      sortOrder,
+                    );
+                  });
+                }}
+              />
+            )}
+          </div>
           {data.facets && data.facets.length > 0 && (
             <div className="facets">
               {data.facetsTitle && <h3>{data.facetsTitle}</h3>}
@@ -124,6 +124,7 @@ const TopSideFacets = (props) => {
               </Grid>
             </div>
           )}
+          <SearchDetails text={searchedText} total={totalItems} as="h5" />
         </Grid.Column>
       </Grid.Row>
 
