@@ -2,6 +2,7 @@ import React from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { isEmpty } from 'lodash';
+import qs from 'query-string';
 
 function getInitialState(data, facets, urlSearchText, id) {
   return {
@@ -87,18 +88,17 @@ const useLocationStateManager = () => {
   const location = useLocation();
   const history = useHistory();
 
-  const oldState = React.useMemo(
-    () => new URLSearchParams((location.hash || '').slice(1)),
-    [location.hash],
-  );
+  const oldState = React.useMemo(() => qs.parse(location.hash), [
+    location.hash,
+  ]);
+
   const current = Object.assign(
     {},
-    ...Array.from(oldState.keys()).map((k) => ({ [k]: oldState.get(k) })),
+    ...Array.from(Object.keys(oldState)).map((k) => ({ [k]: oldState[k] })),
   );
-
   const setSearchData = React.useCallback(
     (searchData) => {
-      const newParams = new URLSearchParams(location.hash);
+      const newParams = qs.parse(location.hash);
 
       let changed = false;
 
@@ -106,18 +106,19 @@ const useLocationStateManager = () => {
         .sort()
         .forEach((k) => {
           if (searchData[k]) {
-            newParams.set(k, searchData[k]);
-            if (oldState.get(k) !== searchData[k]) {
+            newParams[k] = searchData[k];
+            if (oldState[k] !== searchData[k]) {
               changed = true;
             }
           }
         });
 
-      if (changed)
+      if (changed) {
         history.push({
-          hash: newParams.toString(),
+          hash: qs.stringify(newParams),
           search: location.search,
         });
+      }
     },
     [history, oldState, location.hash, location.search],
   );
@@ -135,7 +136,6 @@ const withSearch = (options) => (WrappedComponent) => {
       setLocationSearchData,
     ] = useLocationStateManager();
 
-    // console.log('loc', locationSearchData);
     const urlQuery = locationSearchData.query
       ? JSON.parse(locationSearchData.query)
       : [];

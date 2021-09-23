@@ -8,6 +8,7 @@ import config from '@plone/volto/registry';
 import { withSearch } from './hocs';
 import { compose } from 'redux';
 import { isEqual, isFunction } from 'lodash';
+import useDeepCompareEffect from 'use-deep-compare-effect';
 
 const getListingBodyVariation = (data) => {
   const { variations } = config.blocks.blocksConfig.listing;
@@ -39,15 +40,19 @@ const blockPropsAreChanged = (prevProps, nextProps) => {
 };
 
 const SearchBlockView = (props) => {
-  const { data, searchData, mode = 'view', variation } = props;
+  const { data, searchData, mode = 'view', variation, onTriggerSearch } = props;
 
   const Layout = variation.view;
 
   const listingBodyVariation = getListingBodyVariation(data);
 
+  const { query = {} } = data || {};
+  useDeepCompareEffect(() => {
+    onTriggerSearch();
+  }, [query, onTriggerSearch]);
+
   return (
     <div className="block search">
-      {JSON.stringify(data)}
       <Layout {...props} isEditMode={mode === 'edit'}>
         <ListingBody
           variation={listingBodyVariation}
