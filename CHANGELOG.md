@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- sitemap.xml.gz obeys Plone Search settings @erral 
+
 ### Internal
 
 ## 14.0.0-alpha.9 (2021-09-21)
