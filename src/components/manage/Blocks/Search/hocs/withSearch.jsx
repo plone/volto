@@ -87,7 +87,10 @@ const useLocationStateManager = () => {
   const location = useLocation();
   const history = useHistory();
 
-  const oldState = new URLSearchParams(location.hash);
+  const oldState = React.useMemo(
+    () => new URLSearchParams((location.hash || '').slice(1)),
+    [location.hash],
+  );
   const current = Object.assign(
     {},
     ...Array.from(oldState.keys()).map((k) => ({ [k]: oldState.get(k) })),
@@ -132,10 +135,11 @@ const withSearch = (options) => (WrappedComponent) => {
       setLocationSearchData,
     ] = useLocationStateManager();
 
-    const urlSearchText = locationSearchData.SearchableText || '';
+    // console.log('loc', locationSearchData);
     const urlQuery = locationSearchData.query
       ? JSON.parse(locationSearchData.query)
       : [];
+    const urlSearchText = locationSearchData.SearchableText || '';
 
     const querystringResults = useSelector(
       (state) => state.querystringsearch.subrequests,

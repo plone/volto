@@ -13,6 +13,7 @@ const messages = defineMessages({
 });
 
 const SearchDetails = ({ total, text, as = 'h4' }) => {
+  // console.log('searched', text);
   const El = as;
   const intl = useIntl();
   return (
