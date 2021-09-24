@@ -79,6 +79,7 @@ const Facets = (props) => {
                 choices={rewriteOptions(facet?.field?.value, choices)}
                 isMulti={isMulti}
                 value={value}
+                isEditMode={isEditMode}
                 onChange={(id, value) => {
                   !isEditMode && setFacets({ ...facets, [id]: value });
                 }}

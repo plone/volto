@@ -2,7 +2,7 @@ import React from 'react';
 import { Checkbox, Header } from 'semantic-ui-react';
 
 const SelectFacet = (props) => {
-  const { facet, choices, isMulti, onChange, value } = props;
+  const { facet, choices, isMulti, onChange, value, isEditMode } = props;
   const facetValue = value;
 
   return (
@@ -12,6 +12,7 @@ const SelectFacet = (props) => {
         {choices.map(({ label, value }, i) => (
           <div className="entry">
             <Checkbox
+              disabled={isEditMode}
               label={label}
               radio={!isMulti}
               checked={
