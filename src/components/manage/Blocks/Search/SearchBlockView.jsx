@@ -34,9 +34,8 @@ const blockPropsAreChanged = (prevProps, nextProps) => {
 
   const prev = filtered(prevProps);
   const next = filtered(nextProps);
-  const equal = isEqual(prev, next);
 
-  return equal;
+  return isEqual(prev, next);
 };
 
 const SearchBlockView = (props) => {
