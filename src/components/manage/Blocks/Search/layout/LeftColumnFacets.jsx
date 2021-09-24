@@ -56,26 +56,32 @@ const LeftColumnFacets = (props) => {
       </Grid.Row>
 
       <Grid.Row>
-        <Grid.Column mobile={12} tablet={4} computer={3}>
-          {data.facets && data.facets.length > 0 && (
-            <div className="facets">
-              {data.facetsTitle && <h3>{data.facetsTitle}</h3>}
-              <Facets
-                data={data}
-                facets={facets}
-                setFacets={(f) => {
-                  flushSync(() => {
-                    setFacets(f);
-                    onTriggerSearch(searchedText || '', f);
-                  });
-                }}
-                facetWrapper={FacetWrapper}
-              />
-            </div>
-          )}
-        </Grid.Column>
+        {facets.length && (
+          <Grid.Column mobile={12} tablet={4} computer={3}>
+            {data.facets && data.facets.length > 0 && (
+              <div className="facets">
+                {data.facetsTitle && <h3>{data.facetsTitle}</h3>}
+                <Facets
+                  data={data}
+                  facets={facets}
+                  setFacets={(f) => {
+                    flushSync(() => {
+                      setFacets(f);
+                      onTriggerSearch(searchedText || '', f);
+                    });
+                  }}
+                  facetWrapper={FacetWrapper}
+                />
+              </div>
+            )}
+          </Grid.Column>
+        )}
 
-        <Grid.Column mobile={12} tablet={8} computer={9}>
+        <Grid.Column
+          mobile={12}
+          tablet={facets.length ? 8 : 12}
+          computer={facets.length ? 9 : 12}
+        >
           {(Object.keys(data).includes('showSearchInput')
             ? data.showSearchInput
             : true) && (

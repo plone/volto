@@ -1,9 +1,13 @@
 import React from 'react';
-import { useLocation, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { isEmpty } from 'lodash';
 import qs from 'query-string';
+import { useLocation, useHistory } from 'react-router-dom';
 
+/**
+ * Get the initial state for the search terms/facets, based on block data and
+ * URL
+ */
 function getInitialState(data, facets, urlSearchText, id) {
   return {
     query: [
@@ -33,7 +37,14 @@ function getInitialState(data, facets, urlSearchText, id) {
   };
 }
 
-function getSearchData(query, facets, id, searchText, sortOn, sortOrder) {
+function getSearchEndpointParams({
+  query,
+  facets,
+  id,
+  searchText,
+  sortOn,
+  sortOrder,
+}) {
   const res = {
     query: [
       ...(query.query || []),
@@ -67,24 +78,25 @@ function getSearchData(query, facets, id, searchText, sortOn, sortOrder) {
   return res;
 }
 
-const urlFields = [
+const searchEndpointFields = [
   'sort_on',
   'sort_order',
   'b_size',
   'limit',
   'SearchableText',
 ];
+
 const getSearchFields = (searchData) => {
   return Object.assign(
     {},
-    ...urlFields.map((k) => {
+    ...searchEndpointFields.map((k) => {
       return searchData[k] ? { [k]: searchData[k] } : {};
     }),
     searchData.query ? { query: JSON.stringify(searchData['query']) } : {},
   );
 };
 
-const useLocationStateManager = () => {
+const useHashState = () => {
   const location = useLocation();
   const history = useHistory();
 
@@ -92,6 +104,7 @@ const useLocationStateManager = () => {
     location.hash,
   ]);
 
+  // This creates a shallow copy. Why is this needed?
   const current = Object.assign(
     {},
     ...Array.from(Object.keys(oldState)).map((k) => ({ [k]: oldState[k] })),
@@ -126,15 +139,25 @@ const useLocationStateManager = () => {
   return [current, setSearchData];
 };
 
+const useSearchBlockState = (uniqueId, isEditMode) => {
+  const location = useLocation();
+  const [hashState, setHashState] = useHashState(qs.parse(location.hash));
+  const [internalState, setInternalState] = React.useState({});
+
+  return isEditMode
+    ? [internalState, setInternalState]
+    : [hashState, setHashState];
+};
+
 const withSearch = (options) => (WrappedComponent) => {
   const { inputDelay = 1000 } = options || {};
   return (props) => {
-    const { data, id } = props;
+    const { data, id, editable = false } = props;
 
-    const [
-      locationSearchData,
-      setLocationSearchData,
-    ] = useLocationStateManager();
+    const [locationSearchData, setLocationSearchData] = useSearchBlockState(
+      id,
+      editable,
+    );
 
     const urlQuery = locationSearchData.query
       ? JSON.parse(locationSearchData.query)
@@ -147,7 +170,7 @@ const withSearch = (options) => (WrappedComponent) => {
     const totalItems =
       querystringResults[id]?.total || querystringResults[id]?.items?.length;
 
-    // TODO: should use only useLocationStateManager()
+    // TODO: refactor, should use only useLocationStateManager()!!!
     const [searchText, setSearchText] = React.useState(urlSearchText);
     const configuredFacets =
       data.facets?.map((facet) => facet?.field?.value) || [];
@@ -158,7 +181,12 @@ const withSearch = (options) => (WrappedComponent) => {
       Object.assign(
         {},
         ...urlQuery.map(({ i, v }) => ({ [i]: v })),
-        // supporting simple filters like ?Subject=something
+
+        // support for simple filters like ?Subject=something
+        // TODO: since the move to hash params this is no longer working.
+        // We'd have to treat the location.search and manage it just like the
+        // hash, to support it. We can read it, but we'd have to reset it as
+        // well, so at that point what's the difference to the hash?
         ...configuredFacets.map((f) =>
           locationSearchData[f]
             ? {
@@ -181,19 +209,19 @@ const withSearch = (options) => (WrappedComponent) => {
 
     const timeoutRef = React.useRef();
 
-    const updateSearchParams = React.useCallback(
+    const onTriggerSearch = React.useCallback(
       (toSearch, toSearchFacets, toSortOn, toSortOrder) => {
         if (timeoutRef.current) clearTimeout(timeoutRef.current);
         timeoutRef.current = setTimeout(
           () => {
-            const searchData = getSearchData(
-              data.query || {},
-              toSearchFacets || facets,
+            const searchData = getSearchEndpointParams({
+              query: data.query || {},
+              facets: toSearchFacets || facets,
               id,
-              toSearch,
-              toSortOn || sortOn,
-              toSortOrder || sortOrder,
-            );
+              searchText: toSearch,
+              sortOn: toSortOn || sortOn,
+              sortOrder: toSortOrder || sortOrder,
+            });
             if (toSearchFacets) setFacets(toSearchFacets);
             if (toSortOn) setSortOn(toSortOn);
             if (toSortOrder) setSortOrder(toSortOrder);
@@ -205,6 +233,15 @@ const withSearch = (options) => (WrappedComponent) => {
       },
       [data.query, facets, id, setLocationSearchData, sortOn, sortOrder],
     );
+
+    // useTraceUpdate({
+    //   query: data.query,
+    //   facets,
+    //   id,
+    //   setLocationSearchData,
+    //   sortOn,
+    //   sortOrder,
+    // });
 
     return (
       <WrappedComponent
@@ -219,7 +256,7 @@ const withSearch = (options) => (WrappedComponent) => {
         searchedText={urlSearchText}
         searchText={searchText}
         setSearchText={setSearchText}
-        onTriggerSearch={updateSearchParams}
+        onTriggerSearch={onTriggerSearch}
         totalItems={totalItems}
       />
     );
@@ -227,3 +264,22 @@ const withSearch = (options) => (WrappedComponent) => {
 };
 
 export default withSearch;
+
+// function useTraceUpdate(props) {
+//   const prev = React.useRef(props);
+//   React.useEffect(() => {
+//     const changedProps = Object.entries(props).reduce(
+//       (lookup, [key, value]) => {
+//         if (prev.current[key] !== value) {
+//           lookup[key] = [prev.current[key], value];
+//         }
+//         return lookup;
+//       },
+//       {},
+//     );
+//     if (Object.keys(changedProps).length > 0) {
+//       console.log('Changed props:', changedProps);
+//     }
+//     prev.current = props;
+//   });
+// }
