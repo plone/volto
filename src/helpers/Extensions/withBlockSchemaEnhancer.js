@@ -158,3 +158,38 @@ export const withVariationSchemaEnhancer = (FormComponent) => (props) => {
 
   return <FormComponent {...props} schema={schema} />;
 };
+
+export const applySchemaEnhancer = (originalSchema, data, intl) => {
+  let schema, schemaEnhancer;
+  const formData = data;
+  const { blocks } = config;
+
+  const blockType = formData['@type'];
+  const variations = blocks?.blocksConfig[blockType]?.variations || [];
+
+  if (variations.length === 0) {
+    // No variations present but anyways
+    // finalize the schema with a schemaEnhancer in the block config is present
+    schemaEnhancer = blocks.blocksConfig?.[blockType]?.schemaEnhancer;
+    if (schemaEnhancer)
+      schema = schemaEnhancer({ schema: originalSchema, formData, intl });
+    return schema;
+  }
+
+  const activeItemName = formData?.variation;
+  let activeItem = variations.find((item) => item.id === activeItemName);
+  if (!activeItem) activeItem = variations.find((item) => item.isDefault);
+
+  schemaEnhancer = activeItem?.['schemaEnhancer'];
+
+  schema = schemaEnhancer
+    ? schemaEnhancer({ schema: cloneDeep(originalSchema), formData, intl })
+    : cloneDeep(originalSchema);
+
+  // Finalize the schema with a schemaEnhancer in the block config;
+  schemaEnhancer = blocks.blocksConfig?.[blockType]?.schemaEnhancer;
+
+  if (schemaEnhancer) schema = schemaEnhancer({ schema, formData, intl });
+
+  return schema;
+};
