@@ -1,14 +1,15 @@
 import React from 'react';
-import BlockDataForm from '@plone/volto/components/manage/Form/BlockDataForm';
-import Schema from './schema';
-import { SearchBlockViewComponent } from './SearchBlockView';
-import { SidebarPortal } from '@plone/volto/components';
-import { getBaseUrl } from '@plone/volto/helpers';
-import config from '@plone/volto/registry';
-import { addExtensionFieldToSchema } from '@plone/volto/helpers/Extensions/withBlockSchemaEnhancer';
-import { withSearch } from './hocs';
 import useDeepCompareEffect from 'use-deep-compare-effect';
 import { defineMessages } from 'react-intl';
+
+import { SidebarPortal, BlockDataForm } from '@plone/volto/components';
+import { addExtensionFieldToSchema } from '@plone/volto/helpers/Extensions/withBlockSchemaEnhancer';
+import { getBaseUrl } from '@plone/volto/helpers';
+import config from '@plone/volto/registry';
+
+import { SearchBlockViewComponent } from './SearchBlockView';
+import Schema from './schema';
+import { withSearch } from './hocs';
 
 const messages = defineMessages({
   template: {
