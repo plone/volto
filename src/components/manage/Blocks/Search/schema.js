@@ -196,6 +196,7 @@ export default ({ data = {}, intl }) => {
       showSearchInput: {
         type: 'boolean',
         title: intl.formatMessage(messages.showSearchInput),
+        default: true,
       },
       showSearchButton: {
         type: 'boolean',
