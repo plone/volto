@@ -76,7 +76,9 @@ const LeftColumnFacets = (props) => {
         </Grid.Column>
 
         <Grid.Column mobile={12} tablet={8} computer={9}>
-          {data.showSearchInput && (
+          {(Object.keys(data).includes('showSearchInput')
+            ? data.showSearchInput
+            : true) && (
             <div className="search-wrapper">
               <SearchInput {...props} isLive={isLive} />
               {data.showSearchButton && (
