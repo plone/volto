@@ -1,18 +1,51 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Form renders a form component 1`] = `
-<div
-  className="ui form"
->
+<div>
   <div
-    id="blockform-fieldset-default"
+    class="ui form"
   >
     <div
-      className="ui segment form attached"
+      id="blockform-fieldset-default"
     >
       <div
-        className="Field"
-      />
+        class="ui segment form attached"
+      >
+        <div
+          class="mocked-default-widget"
+          id="mocked-field-title"
+        >
+          The title
+           - 
+          No description
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Form renders a form component with defaults in the schema 1`] = `
+<div>
+  <div
+    class="ui form"
+  >
+    <div
+      id="blockform-fieldset-default"
+    >
+      <div
+        class="ui segment form attached"
+      >
+        <div
+          class="mocked-default-widget"
+          id="mocked-field-title"
+        >
+          The title
+           - 
+          No description
+          This is the default
+        </div>
+      </div>
     </div>
   </div>
 </div>

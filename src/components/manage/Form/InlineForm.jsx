@@ -5,6 +5,7 @@ import { keys, map } from 'lodash';
 import { Field, Icon } from '@plone/volto/components';
 import AnimateHeight from 'react-animate-height';
 import { Accordion, Segment, Message } from 'semantic-ui-react';
+import { applySchemaEnhancer } from '@plone/volto/helpers';
 
 import upSVG from '@plone/volto/icons/up-key.svg';
 import downSVG from '@plone/volto/icons/down-key.svg';
@@ -24,24 +25,56 @@ const messages = defineMessages({
   },
 });
 
-const InlineForm = ({
-  block,
-  description,
-  error, // Such as {message: "It's not good"}
-  errors = {},
-  formData,
-  onChangeField,
-  schema,
-  title,
-  icon,
-  headerActions,
-  footer,
-  focusIndex,
-  intl,
-}) => {
+const InlineForm = (props) => {
+  const {
+    block,
+    description,
+    error, // Such as {message: "It's not good"}
+    errors = {},
+    formData,
+    onChangeField,
+    schema,
+    title,
+    icon,
+    headerActions,
+    footer,
+    focusIndex,
+    onChangeBlock,
+    intl,
+  } = props;
   const _ = intl.formatMessage;
   const defaultFieldset = schema.fieldsets.find((o) => o.id === 'default');
   const other = schema.fieldsets.filter((o) => o.id !== 'default');
+
+  /**
+   * Will set field values from schema, by matching the default values
+   * @returns {Object} defaultValues
+   */
+  const setInitialData = () => {
+    const objectSchema = typeof schema === 'function' ? schema(props) : schema;
+    const finalSchema = applySchemaEnhancer(objectSchema, formData, intl);
+    const defaultValues = Object.keys(finalSchema.properties).reduce(
+      (accumulator, currentField) => {
+        return finalSchema.properties[currentField].default
+          ? {
+              ...accumulator,
+              [currentField]: finalSchema.properties[currentField].default,
+            }
+          : accumulator;
+      },
+      {},
+    );
+
+    return {
+      ...defaultValues,
+      ...formData,
+    };
+  };
+
+  React.useEffect(() => {
+    onChangeBlock && onChangeBlock(block, setInitialData());
+    /* eslint-disable-next-line */
+  }, []);
 
   const [currentActiveFieldset, setCurrentActiveFieldset] = React.useState(0);
   function handleCurrentActiveFieldset(e, blockProps) {
