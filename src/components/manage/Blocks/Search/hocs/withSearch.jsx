@@ -129,11 +129,12 @@ const useHashState = () => {
       if (changed) {
         history.push({
           hash: qs.stringify(newParams),
-          search: location.search,
+          // TODO: handle ?Subject= and ?SearchableText=
+          // search: location.search,
         });
       }
     },
-    [history, oldState, location.hash, location.search],
+    [history, oldState, location.hash],
   );
 
   return [current, setSearchData];
@@ -234,15 +235,6 @@ const withSearch = (options) => (WrappedComponent) => {
       [data.query, facets, id, setLocationSearchData, sortOn, sortOrder],
     );
 
-    // useTraceUpdate({
-    //   query: data.query,
-    //   facets,
-    //   id,
-    //   setLocationSearchData,
-    //   sortOn,
-    //   sortOrder,
-    // });
-
     return (
       <WrappedComponent
         {...props}
@@ -264,22 +256,3 @@ const withSearch = (options) => (WrappedComponent) => {
 };
 
 export default withSearch;
-
-// function useTraceUpdate(props) {
-//   const prev = React.useRef(props);
-//   React.useEffect(() => {
-//     const changedProps = Object.entries(props).reduce(
-//       (lookup, [key, value]) => {
-//         if (prev.current[key] !== value) {
-//           lookup[key] = [prev.current[key], value];
-//         }
-//         return lookup;
-//       },
-//       {},
-//     );
-//     if (Object.keys(changedProps).length > 0) {
-//       console.log('Changed props:', changedProps);
-//     }
-//     prev.current = props;
-//   });
-// }

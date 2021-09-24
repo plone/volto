@@ -57,7 +57,9 @@ const TopSideFacets = (props) => {
 
       <Grid.Row>
         <Grid.Column>
-          {data.showSearchInput && (
+          {(Object.keys(data).includes('showSearchInput')
+            ? data.showSearchInput
+            : true) && (
             <div className="search-wrapper">
               <SearchInput {...props} isLive={isLive} />
               {data.showSearchButton && (

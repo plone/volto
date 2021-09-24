@@ -56,8 +56,14 @@ const RightColumnFacets = (props) => {
       </Grid.Row>
 
       <Grid.Row>
-        <Grid.Column mobile={12} tablet={8} computer={9}>
-          {data.showSearchInput && (
+        <Grid.Column
+          mobile={12}
+          tablet={data.facets.length ? 8 : 12}
+          computer={data.facets.length ? 9 : 12}
+        >
+          {(Object.keys(data).includes('showSearchInput')
+            ? data.showSearchInput
+            : true) && (
             <div className="search-wrapper">
               <SearchInput {...props} isLive={isLive} />
               {data.showSearchButton && (
@@ -109,8 +115,8 @@ const RightColumnFacets = (props) => {
           {children}
         </Grid.Column>
 
-        <Grid.Column mobile={12} tablet={4} computer={3}>
-          {data.facets && data.facets.length > 0 && (
+        {data.facets && data.facets.length > 0 && (
+          <Grid.Column mobile={12} tablet={4} computer={3}>
             <div className="facets">
               {data.facetsTitle && <h3>{data.facetsTitle}</h3>}
               <Facets
@@ -126,8 +132,8 @@ const RightColumnFacets = (props) => {
                 facetWrapper={FacetWrapper}
               />
             </div>
-          )}
-        </Grid.Column>
+          </Grid.Column>
+        )}
       </Grid.Row>
     </Grid>
   );
