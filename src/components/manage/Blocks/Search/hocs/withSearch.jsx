@@ -4,9 +4,16 @@ import { isEmpty } from 'lodash';
 import qs from 'query-string';
 import { useLocation, useHistory } from 'react-router-dom';
 
+const SEARCH_ENDPOINT_FIELDS = [
+  'SearchableText',
+  'b_size',
+  'limit',
+  'sort_on',
+  'sort_order',
+];
+
 /**
- * Get the initial state for the search terms/facets, based on block data and
- * URL
+ * Based on URL state, gets an initial internal state for the search
  */
 function getInitialState(data, facets, urlSearchText, id) {
   return {
@@ -37,14 +44,11 @@ function getInitialState(data, facets, urlSearchText, id) {
   };
 }
 
-function getSearchEndpointParams({
-  query,
-  facets,
-  id,
-  searchText,
-  sortOn,
-  sortOrder,
-}) {
+/**
+ * "Normalizes" the search state to something that's serializable and usable
+ * as initial state
+ */
+function normalizeState({ query, facets, id, searchText, sortOn, sortOrder }) {
   const res = {
     query: [
       ...(query.query || []),
@@ -78,18 +82,10 @@ function getSearchEndpointParams({
   return res;
 }
 
-const searchEndpointFields = [
-  'sort_on',
-  'sort_order',
-  'b_size',
-  'limit',
-  'SearchableText',
-];
-
 const getSearchFields = (searchData) => {
   return Object.assign(
     {},
-    ...searchEndpointFields.map((k) => {
+    ...SEARCH_ENDPOINT_FIELDS.map((k) => {
       return searchData[k] ? { [k]: searchData[k] } : {};
     }),
     searchData.query ? { query: JSON.stringify(searchData['query']) } : {},
@@ -215,7 +211,7 @@ const withSearch = (options) => (WrappedComponent) => {
         if (timeoutRef.current) clearTimeout(timeoutRef.current);
         timeoutRef.current = setTimeout(
           () => {
-            const searchData = getSearchEndpointParams({
+            const searchData = normalizeState({
               query: data.query || {},
               facets: toSearchFacets || facets,
               id,
