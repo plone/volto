@@ -4,11 +4,6 @@ exports[`SearchInput renders a search input component 1`] = `
 <div
   className="search-input"
 >
-  <label
-    className="search-block-prompt"
-  >
-    Search!!!
-  </label>
   <div
     className="ui fluid input"
   >
@@ -16,7 +11,7 @@ exports[`SearchInput renders a search input component 1`] = `
       id="undefined-searchtext"
       onChange={[Function]}
       onKeyPress={[Function]}
-      placeholder="Search..."
+      placeholder="Search!!!"
       type="text"
       value="hello"
     />

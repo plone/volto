@@ -42,7 +42,8 @@ const FilterList = (props) => {
           basic
           compact
           size="small"
-          onClick={() => {
+          onClick={(e) => {
+            e.stopPropagation();
             !isEditMode && setFacets({});
           }}
         >
@@ -56,7 +57,7 @@ const FilterList = (props) => {
             <div key={i}>
               {facets[facet].length > 0 && (
                 <div className="filter-list-group" key={i}>
-                  {data?.facets.map((f, i) => {
+                  {data?.facets?.map((f, i) => {
                     return facet === f?.field?.value ? (
                       <span className="label-title" key={i}>
                         {f.title || f?.field?.label}:

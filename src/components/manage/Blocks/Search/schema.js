@@ -36,8 +36,10 @@ const messages = defineMessages({
     defaultMessage: 'Show search button?',
   },
   showSearchButtonDescription: {
-    id: 'This disables the live search',
-    defaultMessage: 'This disables the live search',
+    id:
+      'The button presence disables the live search, the query is issued when you press ENTER',
+    defaultMessage:
+      'The button presence disables the live search, the query is issued when you press ENTER',
   },
   searchButtonLabel: {
     id: 'Search button label',
@@ -175,12 +177,12 @@ export default ({ data = {}, intl }) => {
         id: 'controls',
         title: intl.formatMessage(messages.controls),
         fields: [
-          'showSearchInput',
-          ...(data.showSearchInput ? ['searchInputPrompt'] : []),
-          'showSearchButton',
-          ...(data.showSearchButton ? ['searchButtonLabel'] : []),
           'showSortOn',
           ...(data.showSortOn ? ['sortOnLabel'] : []),
+          'showSearchInput',
+          'showSearchButton',
+          ...(data.showSearchInput ? ['searchInputPrompt'] : []),
+          ...(data.showSearchButton ? ['searchButtonLabel'] : []),
         ],
       },
     ],
