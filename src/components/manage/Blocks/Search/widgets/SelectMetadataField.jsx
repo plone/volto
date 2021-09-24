@@ -19,6 +19,8 @@ import {
   customSelectStyles,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
 
+const identity = (a) => a;
+
 /**
  * SelectWidget component class.
  * @function SelectWidget
@@ -145,6 +147,7 @@ class SelectWidget extends Component {
       onChange,
       // placeholder,
       querystring,
+      filterOptions = identity,
     } = this.props;
     const isDisabled = false;
     const { indexes = [] } = querystring;
@@ -160,7 +163,9 @@ class SelectWidget extends Component {
           className="react-select-container"
           classNamePrefix="react-select"
           options={map(
-            toPairs(groupBy(toPairs(indexes), (item) => item[1].group)),
+            toPairs(
+              groupBy(toPairs(filterOptions(indexes)), (item) => item[1].group),
+            ),
             (group) => ({
               label: group[0],
               options: map(

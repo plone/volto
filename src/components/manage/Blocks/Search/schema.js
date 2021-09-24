@@ -129,6 +129,20 @@ const FacetSchema = ({ intl }) => ({
       title: intl.formatMessage(messages.field),
       widget: 'select_querystring_field',
       vocabulary: { '@id': 'plone.app.vocabularies.MetadataFields' },
+      filterOptions: (options) => {
+        // Only allows indexes that provide simple, fixed vocabularies.
+        // This should be improved, together with the facets. The querystring
+        // widget implementation should serve as inspiration for those dynamic
+        // types of facets.
+        return Object.assign(
+          {},
+          ...Object.keys(options).map((k) =>
+            Object.keys(options[k].values || {}).length
+              ? { [k]: options[k] }
+              : {},
+          ),
+        );
+      },
     },
     multiple: {
       type: 'boolean',
