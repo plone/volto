@@ -2,6 +2,7 @@ import React from 'react';
 import { withQueryString } from '../hocs';
 import { compose } from 'redux';
 import { resolveExtension } from '@plone/volto/helpers/Extensions/withBlockExtensions';
+import DefaultFacet from './DefaultFacet';
 import config from '@plone/volto/registry';
 
 const Facets = (props) => {
@@ -62,7 +63,7 @@ const Facets = (props) => {
                 }
             : [];
 
-          const { view: FacetWidget } = resolveExtension(
+          let { view: FacetWidget } = resolveExtension(
             'type',
             search.extensions.facetWidgets.types,
             facet,
@@ -85,7 +86,14 @@ const Facets = (props) => {
               />
             </FacetWrapper>
           ) : (
-            ''
+            <DefaultFacet
+              facet={facet}
+              value={facets[facet?.field?.value]}
+              onChange={(id, value) => {
+                debugger;
+                !isEditMode && setFacets({ ...facets, [id]: value });
+              }}
+            />
           );
         })}
     </>
