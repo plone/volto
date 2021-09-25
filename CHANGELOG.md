@@ -8,6 +8,8 @@
 
 ### Feature
 
+- Add RAZZLE_I18NDEBUGMODE env var and corresponding i18nDebugMode config setting to enable/disable react-intl error messages. @sneridagh
+
 ### Bugfix
 
 - Missing default messages from JSON EN language file @sneridagh
