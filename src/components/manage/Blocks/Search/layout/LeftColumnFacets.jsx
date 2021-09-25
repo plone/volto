@@ -56,7 +56,7 @@ const LeftColumnFacets = (props) => {
       </Grid.Row>
 
       <Grid.Row>
-        {data.facets && data.facets.length > 0 && (
+        {data.facets?.length && (
           <Grid.Column mobile={12} tablet={4} computer={3}>
             <div className="facets">
               {data.facetsTitle && <h3>{data.facetsTitle}</h3>}
@@ -77,8 +77,8 @@ const LeftColumnFacets = (props) => {
 
         <Grid.Column
           mobile={12}
-          tablet={data.facets.length ? 8 : 12}
-          computer={data.facets.length ? 9 : 12}
+          tablet={data.facets?.length ? 8 : 12}
+          computer={data.facets?.length ? 9 : 12}
         >
           {(Object.keys(data).includes('showSearchInput')
             ? data.showSearchInput

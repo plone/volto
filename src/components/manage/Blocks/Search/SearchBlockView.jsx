@@ -45,10 +45,16 @@ const SearchBlockView = (props) => {
 
   const listingBodyVariation = getListingBodyVariation(data);
 
-  const { query = {} } = data || {};
-  useDeepCompareEffect(() => {
-    onTriggerSearch();
-  }, [query, onTriggerSearch]);
+  // const { query = {} } = data || {};
+  // useDeepCompareEffect(() => {
+  //   onTriggerSearch();
+  // }, [query, onTriggerSearch]);
+
+  React.useEffect(() => {
+    return () => {
+      console.log('unmount block');
+    };
+  });
 
   return (
     <div className="block search">
