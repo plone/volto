@@ -94,3 +94,4 @@ typings/
 styleguide.config
 .vscode
 packages
+!packages/scripts
