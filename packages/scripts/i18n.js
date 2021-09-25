@@ -16,6 +16,7 @@ const projectRootPath = path.resolve('.');
 const packageJson = require(path.join(projectRootPath, 'package.json'));
 
 const { program } = require('commander');
+const chalk = require('chalk');
 
 /**
  * Extract messages into separate JSON files
@@ -180,8 +181,9 @@ function poToJson({ registry, addonMode }) {
           map(items, (item) => item.msgid),
           map(items, (item) =>
             lang === 'en'
-              ? item.msgstr[0] ||
-                item.comments[0].replace('defaultMessage: ', '')
+              ? item.msgstr[0] || item.comments[0]
+                ? item.comments[0].replace('defaultMessage: ', '')
+                : ''
               : item.msgstr[0],
           ),
         ),
@@ -256,11 +258,26 @@ function main({ addonMode }) {
   console.log('Synchronizing messages to po files...');
   syncPoByPot();
   if (!addonMode) {
+    // Detect if I'm in a project or in Volto itself
+    let AddonConfigurationRegistry;
+    try {
+      if (fs.existsSync(`${projectRootPath}/node_modules/@plone/volto`)) {
+        AddonConfigurationRegistry = require('@plone/volto/addon-registry');
+      } else {
+        AddonConfigurationRegistry = require(path.join(
+          projectRootPath,
+          'addon-registry',
+        ));
+      }
+    } catch {
+      console.log(
+        chalk.red(
+          'Getting the addon registry failed. Are you executing i18n from inside an addon? Try the -a flag.',
+        ),
+      );
+      process.exit();
+    }
     console.log('Generating the language JSON files...');
-    const AddonConfigurationRegistry = require(path.join(
-      projectRootPath,
-      'addon-registry',
-    ));
     const registry = new AddonConfigurationRegistry(projectRootPath);
     poToJson({ registry, addonMode });
   }
