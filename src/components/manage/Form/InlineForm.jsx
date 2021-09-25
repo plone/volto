@@ -46,7 +46,7 @@ const InlineForm = (props) => {
   const defaultFieldset = schema.fieldsets.find((o) => o.id === 'default');
   const other = schema.fieldsets.filter((o) => o.id !== 'default');
 
-  const initialFormData = React.useState(formData);
+  const [initialFormData] = React.useState(formData);
   const objectSchema = typeof schema === 'function' ? schema(props) : schema;
 
   /**
