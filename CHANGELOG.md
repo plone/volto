@@ -2,12 +2,6 @@
 
 ## 14.0.0 (unreleased)
 
-### Breaking
-
-### Feature
-
-### Bugfix
-
 ### Internal
 
 - Use released @plone/scripts, since the builds are broken if it's a local package @sneridagh
