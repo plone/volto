@@ -14,6 +14,6 @@
     "i18n": "rm -rf build/messages && NODE_ENV=production i18n --addon"
   },
   "dependencies": {
-    "@plone/scripts": "latest"
+    "@plone/scripts": "*"
   }
 }
