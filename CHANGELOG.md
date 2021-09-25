@@ -4,10 +4,15 @@
 
 ### Breaking
 
+- New i18n infrastructure in the new `@plone/scripts` package @sneridagh
+
 ### Feature
+
+- Add RAZZLE_I18NDEBUGMODE env var and corresponding i18nDebugMode config setting to enable/disable react-intl error messages. @sneridagh
 
 ### Bugfix
 
+- Missing default messages from JSON EN language file @sneridagh
 ### Internal
 
 ## 14.0.0-alpha.9 (2021-09-21)
