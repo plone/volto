@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Use released @plone/scripts, since the builds are broken if it's a local package @sneridagh
+
 ## 14.0.0-alpha.10 (2021-09-25)
 
 ### Breaking
