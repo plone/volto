@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Use plone.volto instead of kitconcept.volto @tisto
+
 ## 14.0.0-alpha.10 (2021-09-25)
 
 ### Breaking
