@@ -56,6 +56,29 @@ and add this to the `dependencies` list:
    }
 ```
 
+and lastly, use this `babel.config.js` instead of the one you have:
+
+```diff
+-module.exports = require('@plone/volto/babel');
++module.exports = function (api) {
++  api.cache(true);
++  const presets = ['razzle/babel'];
++  const plugins = [
++    [
++      'react-intl', // React Intl extractor, required for the whole i18n infrastructure to work
++      {
++        messagesDir: './build/messages/',
++      },
++    ],
++  ];
++
++  return {
++    plugins,
++    presets,
++  };
++};
+```
+
 !!! note
   The `i18n` scripts is now an executable in the node environment now, for convenience.
 
