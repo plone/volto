@@ -26,6 +26,8 @@ and the infrastructure (Babel config) for it to run.
 
 Steps for migration:
 
+#### Projects
+
 In a project, `package.json` replace the `scripts` `i18n` line with this one:
 
 ```diff
@@ -35,15 +37,9 @@ In a project, `package.json` replace the `scripts` `i18n` line with this one:
 +  },
 ```
 
-and add this to the `dependencies` list:
+#### Addons
 
-```diff
-+  "dependencies": {
-+    "@plone/scripts": "latest"
-   }
-```
-
-In addons, remove the `src/i18n.js` script since it's useless, and in `scripts` in `package.json`:
+If you are an addon maintainer, remove the `src/i18n.js` script since it's useless, and in `scripts` in `package.json`:
 
 ```diff
    "scripts": {
@@ -51,7 +47,17 @@ In addons, remove the `src/i18n.js` script since it's useless, and in `scripts` 
 +    "i18n": "rm -rf build/messages && NODE_ENV=production i18n",
 ```
 
-Note that the `i18n` is now an executable in the node environment now, for convenience.
+
+and add this to the `dependencies` list:
+
+```diff
++  "dependencies": {
++    "@plone/scripts": "*"
+   }
+```
+
+!!! note
+  The `i18n` scripts is now an executable in the node environment now, for convenience.
 
 ### Removal of old configuration system based on imports
 
