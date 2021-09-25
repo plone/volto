@@ -1,6 +1,6 @@
 # Change Log
 
-## 1.0.0 (unreleased)
+## 1.0.1 (unreleased)
 
 ### Breaking
 
@@ -10,7 +10,7 @@
 
 ### Internal
 
-## 1.0.1 (2021-09-25)
+## 1.0.0 (2021-09-25)
 
 ### Feature
 
