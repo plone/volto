@@ -59,11 +59,11 @@ describe('applySchemaEnhancer', () => {
       };
       return schema;
     };
-    const schemaEnhanced = applySchemaEnhancer(
-      testSchema,
-      { '@type': 'listing' },
+    const schemaEnhanced = applySchemaEnhancer({
+      schema: testSchema,
+      formData: { '@type': 'listing' },
       intl,
-    );
+    });
 
     expect(schemaEnhanced.properties.newField.title).toStrictEqual(
       'My new field',
@@ -87,11 +87,11 @@ describe('applySchemaEnhancer', () => {
       };
       return schema;
     };
-    const schemaEnhanced = applySchemaEnhancer(
-      testSchema,
-      { '@type': 'listing' },
+    const schemaEnhanced = applySchemaEnhancer({
+      schema: testSchema,
+      formData: { '@type': 'listing' },
       intl,
-    );
+    });
 
     expect(schemaEnhanced.properties.newField.title).toStrictEqual(
       'My new field',
@@ -126,11 +126,11 @@ describe('applySchemaEnhancer', () => {
       };
       return schema;
     };
-    const schemaEnhanced = applySchemaEnhancer(
-      testSchema,
-      { '@type': 'listing' },
+    const schemaEnhanced = applySchemaEnhancer({
+      schema: testSchema,
+      formData: { '@type': 'listing' },
       intl,
-    );
+    });
 
     expect(schemaEnhanced.properties.newField.title).toStrictEqual(
       'My new field',
@@ -168,11 +168,11 @@ describe('applySchemaEnhancer', () => {
       };
       return schema;
     };
-    const schemaEnhanced = applySchemaEnhancer(
-      testSchema,
-      { '@type': 'listing' },
+    const schemaEnhanced = applySchemaEnhancer({
+      schema: testSchema,
+      formData: { '@type': 'listing' },
       intl,
-    );
+    });
 
     expect(schemaEnhanced.properties.newField.title).toStrictEqual(
       'My new field from the main config',

@@ -111,9 +111,12 @@ export const withBlockSchemaEnhancer = (
   return <FormComponent {...props} schema={schema} />;
 };
 
-export const applySchemaEnhancer = (originalSchema, data, intl) => {
+export const applySchemaEnhancer = ({
+  schema: originalSchema,
+  formData,
+  intl,
+}) => {
   let schema, schemaEnhancer;
-  const formData = data;
   const { blocks } = config;
 
   const blockType = formData['@type'];
@@ -154,7 +157,7 @@ export const withVariationSchemaEnhancer = (FormComponent) => (props) => {
   const blockType = formData['@type'];
   const variations = blocks?.blocksConfig[blockType]?.variations || [];
 
-  let schema = applySchemaEnhancer(originalSchema, formData, intl);
+  let schema = applySchemaEnhancer({ schema: originalSchema, formData, intl });
 
   if (variations.length > 1) {
     addExtensionFieldToSchema({

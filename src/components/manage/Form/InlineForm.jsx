@@ -39,7 +39,7 @@ const InlineForm = (props) => {
     headerActions,
     footer,
     focusIndex,
-    onChangeBlock,
+    onChangeFormData,
     intl,
   } = props;
   const _ = intl.formatMessage;
@@ -52,7 +52,11 @@ const InlineForm = (props) => {
    */
   const setInitialData = () => {
     const objectSchema = typeof schema === 'function' ? schema(props) : schema;
-    const finalSchema = applySchemaEnhancer(objectSchema, formData, intl);
+    const finalSchema = applySchemaEnhancer({
+      schema: objectSchema,
+      formData,
+      intl,
+    });
     const defaultValues = Object.keys(finalSchema.properties).reduce(
       (accumulator, currentField) => {
         return finalSchema.properties[currentField].default
@@ -72,7 +76,7 @@ const InlineForm = (props) => {
   };
 
   React.useEffect(() => {
-    onChangeBlock && onChangeBlock(block, setInitialData());
+    onChangeFormData && onChangeFormData(setInitialData());
     /* eslint-disable-next-line */
   }, []);
 

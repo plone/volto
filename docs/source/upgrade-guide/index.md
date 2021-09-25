@@ -115,6 +115,32 @@ Not really a breaking change, but it's worth noting it. By default, Volto 14 com
 The `BlockChooser` component now uses the `title` of the block as source for translating
 the block title. Before, it took the `id` of the block, which is utterly wrong. Could be that this change will trigger untranslated blocks titles in your projects and addons.
 
+### Defaults in `BlockDataForm` helper
+
+For the new feature to work properly, you have to pass down the `onChangeFormData` down in every instantiation of `BlockDataForm` like:
+
+```diff
+--- a/src/components/manage/Blocks/Listing/ListingData.jsx
++++ b/src/components/manage/Blocks/Listing/ListingData.jsx
+@@ -5,7 +5,7 @@ import { BlockDataForm } from '@plone/volto/components';
+ import { schemaListing } from './schema';
+
+ const ListingData = (props) => {
+-  const { data, block, onChangeBlock } = props;
++  const { data, block, onChangeBlock, onChangeFormData } = props;
+   const intl = useIntl();
+   const schema = schemaListing({ ...props, intl });
+
+@@ -19,7 +19,7 @@ const ListingData = (props) => {
+           [id]: value,
+         });
+       }}
++      onChangeFormData={onChangeFormData}
+       formData={data}
+       block={block}
+     />
+```
+
 ## Upgrading to Volto 13.x.x
 
 ## Deprecating NodeJS 10
