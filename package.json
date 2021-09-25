@@ -247,7 +247,7 @@
     "@loadable/component": "5.14.1",
     "@loadable/server": "5.14.0",
     "@loadable/webpack-plugin": "5.14.0",
-    "@plone/scripts": "*",
+    "@plone/scripts": "1.0.0",
     "@sentry/browser": "5.12.1",
     "@sentry/integrations": "5.27.3",
     "@sentry/node": "5.12.3",
