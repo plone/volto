@@ -46,13 +46,19 @@ const InlineForm = (props) => {
   const defaultFieldset = schema.fieldsets.find((o) => o.id === 'default');
   const other = schema.fieldsets.filter((o) => o.id !== 'default');
 
+  const initialFormData = React.useState(formData);
+  const objectSchema = typeof schema === 'function' ? schema(props) : schema;
+
   /**
    * Will set field values from schema, by matching the default values
    * @returns {Object} defaultValues
    */
-  const setInitialData = () => {
-    const objectSchema = typeof schema === 'function' ? schema(props) : schema;
-    const finalSchema = applySchemaEnhancer(objectSchema, formData, intl);
+  const setInitialData = React.useCallback(() => {
+    const finalSchema = applySchemaEnhancer(
+      objectSchema,
+      initialFormData,
+      intl,
+    );
     const defaultValues = Object.keys(finalSchema.properties).reduce(
       (accumulator, currentField) => {
         return finalSchema.properties[currentField].default
@@ -67,14 +73,13 @@ const InlineForm = (props) => {
 
     return {
       ...defaultValues,
-      ...formData,
+      ...initialFormData,
     };
-  };
+  }, [initialFormData, intl, objectSchema]);
 
   React.useEffect(() => {
     onChangeBlock && onChangeBlock(block, setInitialData());
-    /* eslint-disable-next-line */
-  }, []);
+  }, [block, onChangeBlock, setInitialData]);
 
   const [currentActiveFieldset, setCurrentActiveFieldset] = React.useState(0);
   function handleCurrentActiveFieldset(e, blockProps) {
