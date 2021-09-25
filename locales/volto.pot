@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2021-09-22T10:25:15.697Z\n"
+"POT-Creation-Date: 2021-09-25T11:00:20.093Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -2081,6 +2081,7 @@ msgstr ""
 msgid "Schema updates"
 msgstr ""
 
+#: components/manage/Blocks/Search/components/SearchInput
 #: components/manage/Blocks/Search/layout/LeftColumnFacets
 #: components/manage/Blocks/Search/layout/RightColumnFacets
 #: components/manage/Blocks/Search/layout/TopSideFacets
@@ -2505,6 +2506,11 @@ msgstr ""
 msgid "The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
 msgstr ""
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: The button presence disables the live search, the query is issued when you press ENTER
+msgid "The button presence disables the live search, the query is issued when you press ENTER"
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: The item could not be deleted.
 msgid "The item could not be deleted."
@@ -2549,11 +2555,6 @@ msgstr ""
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Third
 msgid "Third"
-msgstr ""
-
-#: components/manage/Blocks/Search/schema
-# defaultMessage: This disables the live search
-msgid "This disables the live search"
 msgstr ""
 
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
