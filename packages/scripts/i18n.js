@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 /* eslint no-console: 0 */
 /**
  * i18n script.
@@ -13,8 +14,9 @@ const babel = require('@babel/core');
 const path = require('path');
 const projectRootPath = path.resolve('.');
 const packageJson = require(path.join(projectRootPath, 'package.json'));
-const AddonConfigurationRegistry = require('../addon-registry');
-const registry = new AddonConfigurationRegistry(projectRootPath);
+
+const { program } = require('commander');
+const chalk = require('chalk');
 
 /**
  * Extract messages into separate JSON files
@@ -139,25 +141,28 @@ msgstr ""
  * @function poToJson
  * @return {undefined}
  */
-function poToJson() {
+function poToJson({ registry, addonMode }) {
   map(glob('locales/**/*.po'), (filename) => {
     let { items } = Pofile.parse(fs.readFileSync(filename, 'utf8'));
     const lang = filename.match(/locales\/(.*)\/LC_MESSAGES\//)[1];
 
-    // Merge addons locales
-    if (packageJson.addons) {
-      registry.addonNames.forEach((addon) => {
-        const addonlocale = `${registry.packages[addon].modulePath}/../${filename}`;
-        if (fs.existsSync(addonlocale)) {
-          const addonItems = Pofile.parse(fs.readFileSync(addonlocale, 'utf8'))
-            .items;
-          items = [...addonItems, ...items];
-          if (require.main === module) {
-            // We only log it if called as script
-            console.log(`Merging ${addon} locales for ${lang}`);
+    if (!addonMode) {
+      // Merge addons locales
+      if (packageJson.addons) {
+        registry.addonNames.forEach((addon) => {
+          const addonlocale = `${registry.packages[addon].modulePath}/../${filename}`;
+          if (fs.existsSync(addonlocale)) {
+            const addonItems = Pofile.parse(
+              fs.readFileSync(addonlocale, 'utf8'),
+            ).items;
+            items = [...addonItems, ...items];
+            if (require.main === module) {
+              // We only log it if called as script
+              console.log(`Merging ${addon} locales for ${lang}`);
+            }
           }
-        }
-      });
+        });
+      }
     }
 
     // Merge project locales, the project customization wins
@@ -167,13 +172,20 @@ function poToJson() {
       items = [...libItems, ...items];
     }
 
-    // Write it
+    // Write the corresponding language JSON, cover the special EN use case for including
+    // defaults if not present
     fs.writeFileSync(
       `locales/${lang}.json`,
       JSON.stringify(
         zipObject(
           map(items, (item) => item.msgid),
-          map(items, (item) => item.msgstr[0]),
+          map(items, (item) =>
+            lang === 'en'
+              ? item.msgstr[0] || item.comments[0]
+                ? item.comments[0].replace('defaultMessage: ', '')
+                : ''
+              : item.msgstr[0],
+          ),
         ),
       ),
     );
@@ -215,6 +227,7 @@ ${map(pot.items, (item) => {
   const poItem = find(po.items, { msgid: item.msgid });
   return [
     `${map(item.references, (ref) => `#: ${ref}`).join('\n')}`,
+    `# ${item.comments[0]}`,
     `msgid "${item.msgid}"`,
     `msgstr "${poItem ? poItem.msgstr : ''}"`,
   ].join('\n');
@@ -223,7 +236,7 @@ ${map(pot.items, (item) => {
   });
 }
 
-function main() {
+function main({ addonMode }) {
   console.log('Extracting messages from source files...');
   extractMessages();
   console.log('Synchronizing messages to pot file...');
@@ -244,14 +257,39 @@ function main() {
   }
   console.log('Synchronizing messages to po files...');
   syncPoByPot();
-  console.log('Generating the json files...');
-  poToJson();
+  if (!addonMode) {
+    // Detect if I'm in a project or in Volto itself
+    let AddonConfigurationRegistry;
+    try {
+      if (fs.existsSync(`${projectRootPath}/node_modules/@plone/volto`)) {
+        AddonConfigurationRegistry = require('@plone/volto/addon-registry');
+      } else {
+        AddonConfigurationRegistry = require(path.join(
+          projectRootPath,
+          'addon-registry',
+        ));
+      }
+    } catch {
+      console.log(
+        chalk.red(
+          'Getting the addon registry failed. Are you executing i18n from inside an addon? Try the -a flag.',
+        ),
+      );
+      process.exit();
+    }
+    console.log('Generating the language JSON files...');
+    const registry = new AddonConfigurationRegistry(projectRootPath);
+    poToJson({ registry, addonMode });
+  }
   console.log('done!');
 }
 
 // This is the equivalent of `if __name__ == '__main__'` in Python :)
 if (require.main === module) {
-  main();
+  program.option('-a, --addon', 'run i18n script for addons');
+  program.parse(process.argv);
+  const options = program.opts();
+  main({ addonMode: options.addon });
 }
 
 module.exports = { poToJson };

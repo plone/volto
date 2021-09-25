@@ -15,6 +15,73 @@ This upgrade guide lists all breaking changes in Volto and explains the
 
 ## Upgrading to Volto 14.x.x
 
+### Update i18n configuration for projects and addons
+
+The i18n script and infrastructure has been moved to its own package, since we needed it
+to be independent of Volto itself. This was necessary for being able to use it from the
+addons without having to install whole Volto with them (which is not possible).
+
+`@plone/scripts` package is the placeholder of the script, which has been also improved
+and the infrastructure (Babel config) for it to run.
+
+Steps for migration:
+
+#### Projects
+
+In a project, `package.json` replace the `scripts` `i18n` line with this one:
+
+```diff
+   "scripts": {
+-    "i18n": "NODE_ENV=production node src/i18n.js"
++    "i18n": "rm -rf build/messages && NODE_ENV=production i18n --addon"
++  },
+```
+
+#### Addons
+
+If you are an addon maintainer, remove the `src/i18n.js` script since it's useless, and in `scripts` in `package.json`:
+
+```diff
+   "scripts": {
+-    "i18n": "NODE_ENV=production node node_modules/@plone/volto/src/i18n.js",
++    "i18n": "rm -rf build/messages && NODE_ENV=production i18n",
+```
+
+
+and add this to the `dependencies` list:
+
+```diff
++  "dependencies": {
++    "@plone/scripts": "*"
+   }
+```
+
+and lastly, use this `babel.config.js` instead of the one you have:
+
+```diff
+-module.exports = require('@plone/volto/babel');
++module.exports = function (api) {
++  api.cache(true);
++  const presets = ['razzle/babel'];
++  const plugins = [
++    [
++      'react-intl', // React Intl extractor, required for the whole i18n infrastructure to work
++      {
++        messagesDir: './build/messages/',
++      },
++    ],
++  ];
++
++  return {
++    plugins,
++    presets,
++  };
++};
+```
+
+!!! note
+  The `i18n` scripts is now an executable in the node environment now, for convenience.
+
 ### Removal of old configuration system based on imports
 
 As announced in the deprecation notice in Volto 12 release, from Volto 14 on, the old
