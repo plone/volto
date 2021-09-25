@@ -1941,7 +1941,7 @@
   dependencies:
     "@types/node" ">= 8"
 
-"@plone/scripts@./packages/scripts":
+"@plone/scripts@file:./packages/scripts":
   version "1.0.0"
   dependencies:
     babel-plugin-react-intl "5.1.17"
