@@ -15,8 +15,6 @@
 
 - Missing default messages from JSON EN language file @sneridagh
 
-### Internal
-
 ## 14.0.0-alpha.9 (2021-09-21)
 
 ### Breaking
