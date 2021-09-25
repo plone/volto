@@ -3,18 +3,18 @@
 The Pluggables framework give you insertion points to push components to other
 components in an "out of tree" fashion, like React's `<Portal>` component, but with vitamins.
 
-In almost any case a `<Pluggable>` is a better solution than a `<Portal>`. Some benefits include:
+In almost any case, `<Pluggable>` is a better solution than a `<Portal>`. Some benefits include:
 
 - the `<Pluggable>` (the target destination) can pass parameters to the `<Plug>` (the
   inserted)
-- any `<Plug>` can be overridden, based on the id (you can't do that with `<Portal>`)
+- any `<Plug>` can be overridden, based on the `id` (you can't do that with `<Portal>`)
 - you can plug multiple `Plugs` into a `<Pluggable>` and you can control the order
   they appear
 
 To understand how they work, it's useful to look at the architecture:
 
 - First, we need to wrap all of our React component tree in
-  a `<PluggablesProvider>` (this needs to be done only once in Volto, and it's in place
+  a `<PluggablesProvider>` (this needs to be done only once in Volto, and it's there in place already
   at `App.jsx` component level), so you don't have to do it:
 
 ```jsx
@@ -41,7 +41,7 @@ components:
 <Plug pluggable="left-column" id="navigation">relevant nav stuff</Plug>
 ```
 
-Declaring a `<Plug>` with the same id twice will make the second one (in
+Declaring a `<Plug>` with the same `id` twice will make the second one (in
 terms of rendering order) replace the first one.
 
 Internally, the `<PluggablesProvider>` keeps a record of `Pluggables` and `Plug` and
