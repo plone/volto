@@ -5,6 +5,7 @@
 ### Breaking
 
 - New i18n infrastructure in the new `@plone/scripts` package @sneridagh
+- Removed `src/i18n.js` in favor of the above change @sneridagh
 
 ### Feature
 
@@ -13,6 +14,7 @@
 ### Bugfix
 
 - Missing default messages from JSON EN language file @sneridagh
+
 ### Internal
 
 ## 14.0.0-alpha.9 (2021-09-21)
