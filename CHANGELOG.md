@@ -12,6 +12,12 @@
 
 - Use plone.volto instead of kitconcept.volto @tisto
 
+## 14.0.0-alpha.11 (2021-09-25)
+
+### Internal
+
+- Use released @plone/scripts, since the builds are broken if it's a local package @sneridagh
+
 ## 14.0.0-alpha.10 (2021-09-25)
 
 ### Breaking
