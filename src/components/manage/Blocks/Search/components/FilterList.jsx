@@ -18,15 +18,23 @@ const messages = defineMessages({
 const FilterList = (props) => {
   const { data, facets, setFacets, isEditMode } = props;
   const [isOpened, setIsOpened] = React.useState(false);
-  const filters = !Object.values(facets).every((facet) => !facet.length);
+
+  // TODO: the facets are merged with the default query. We need to untangle
+  // and claim only the original facet values
+  const showFilterList = !Object.values(facets).every((facet) => !facet.length);
+
   const currentFilters = Object.fromEntries(
     Object.entries(facets).filter((v) => v[1]),
   );
+
   const totalFilters = [].concat.apply([], Object.values(currentFilters))
     .length;
+
+  // console.log({ data, facets, showFilterList, currentFilters, totalFilters });
+
   const intl = useIntl();
 
-  return filters && Object.keys(facets).length ? (
+  return showFilterList && Object.keys(facets).length ? (
     <Accordion className="filter-listing">
       <Accordion.Title
         className="filter-list-header"

@@ -14,6 +14,9 @@ const SEARCH_ENDPOINT_FIELDS = [
 
 /**
  * Based on URL state, gets an initial internal state for the search
+ *
+ * @function getInitialState
+ *
  */
 function getInitialState(data, facets, urlSearchText, id) {
   return {
@@ -47,9 +50,12 @@ function getInitialState(data, facets, urlSearchText, id) {
 /**
  * "Normalizes" the search state to something that's serializable and usable
  * as initial state
+ *
+ * @function normalizeState
+ *
  */
 function normalizeState({ query, facets, id, searchText, sortOn, sortOrder }) {
-  const res = {
+  const params = {
     query: [
       ...(query.query || []),
       ...Object.keys(facets).map((name) =>
@@ -71,15 +77,18 @@ function normalizeState({ query, facets, id, searchText, sortOn, sortOrder }) {
     block: id,
   };
 
+  // TODO: need to check if SearchableText facet is not already in the query
+  // Ideally the searchtext functionality should be restructured as being just
+  // another facet
   if (searchText) {
-    res.query.push({
+    params.query.push({
       i: 'SearchableText',
       o: 'plone.app.querystring.operation.string.contains',
       v: searchText,
     });
   }
 
-  return res;
+  return params;
 }
 
 const getSearchFields = (searchData) => {
