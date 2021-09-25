@@ -12,7 +12,8 @@ tests/
 docs/
 
 # Cypress
-cypress/
+cypress/fixtures
+cypress/tests
 
 # Tests
 __tests__/

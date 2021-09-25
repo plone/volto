@@ -110,6 +110,11 @@ Not really a breaking change, but it's worth noting it. By default, Volto 14 com
     />
 ```
 
+### Blocks chooser now uses the title instead of the id of the block as translation source
+
+The `BlockChooser` component now uses the `title` of the block as source for translating
+the block title. Before, it took the `id` of the block, which is utterly wrong. Could be that this change will trigger untranslated blocks titles in your projects and addons.
+
 ## Upgrading to Volto 13.x.x
 
 ## Deprecating NodeJS 10
