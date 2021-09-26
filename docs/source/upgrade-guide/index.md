@@ -152,7 +152,7 @@ the step from there if you have installed `plone.volto` in your project, it's na
 control panel. Alternatively, you can transfer it to your own integration packages and
 run it from there.
 
-https://github.com/kitconcept/plone.volto/blob/main/src/kitconcept/volto/upgrades.py#L6-L64
+https://github.com/plone/plone.volto/blob/main/src/plone/volto/upgrades.py#L6-L64
 
 ```python
 def from12to13_migrate_listings(context):
