@@ -129,11 +129,7 @@ const InlineForm = (props) => {
               id={field}
               fieldSet={defaultFieldset.title.toLowerCase()}
               focus={index === focusIndex}
-              value={
-                'default' in schema.properties[field]
-                  ? formData[field] ?? schema.properties[field].default
-                  : formData[field]
-              }
+              value={formData[field]}
               required={schema.required.indexOf(field) !== -1}
               onChange={(id, value) => {
                 onChangeField(id, value);
@@ -172,11 +168,7 @@ const InlineForm = (props) => {
                     <Field
                       {...schema.properties[field]}
                       id={field}
-                      value={
-                        'default' in schema.properties[field]
-                          ? formData[field] ?? schema.properties[field].default
-                          : formData[field]
-                      }
+                      value={formData[field]}
                       required={schema.required.indexOf(field) !== -1}
                       onChange={(id, value) => {
                         onChangeField(id, value);

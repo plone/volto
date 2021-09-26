@@ -11,14 +11,33 @@ const mockStore = configureStore();
 function NewBaseWidget(name) {
   return (props) => (
     <div id={`mocked-field-${props.id}`} className={`mocked-${name}-widget`}>
-      {props.title || 'No title'} - {props.description || 'No description'}
-      {props.value}
+      {props.title || 'No title'} - {props.description || 'No description'} -
+      {(typeof props.value === 'boolean'
+        ? JSON.stringify(props.value)
+        : props.value) || 'No value'}
     </div>
   );
 }
 
+const withStateManagement = (Component) => ({ ...props }) => {
+  const [formData, setFormData] = React.useState(props.formData);
+  const onChangeFormData = (formData) => {
+    setFormData(formData);
+  };
+
+  return (
+    <Component
+      {...props}
+      onChangeFormData={onChangeFormData}
+      formData={formData}
+    />
+  );
+};
+
 beforeAll(() => {
   config.widgets.default = NewBaseWidget('default');
+  config.widgets.type.boolean = NewBaseWidget('boolean');
+  config.widgets.type.number = NewBaseWidget('number');
 });
 
 describe('Form', () => {
@@ -30,11 +49,11 @@ describe('Form', () => {
       },
     });
 
-    let formData = {};
+    const WrappedInlineForm = withStateManagement(InlineForm);
 
     const { container } = render(
       <Provider store={store}>
-        <InlineForm
+        <WrappedInlineForm
           schema={{
             fieldsets: [
               {
@@ -55,27 +74,25 @@ describe('Form', () => {
           }}
           onSubmit={() => {}}
           onCancel={() => {}}
-          formData={formData}
-          onChangeBlock={(block, data) => {
-            formData = data;
-          }}
+          formData={{}}
         />
       </Provider>,
     );
     expect(container).toMatchSnapshot();
   });
-  it('renders a form component with defaults in the schema', () => {
+  it('renders a form component with defaults in the schema - Default text field', () => {
     const store = mockStore({
       intl: {
         locale: 'en',
         messages: {},
       },
     });
-    let formData = {};
+
+    const WrappedInlineForm = withStateManagement(InlineForm);
 
     const { container } = render(
       <Provider store={store}>
-        <InlineForm
+        <WrappedInlineForm
           schema={{
             fieldsets: [
               {
@@ -94,13 +111,107 @@ describe('Form', () => {
           }}
           onSubmit={() => {}}
           onCancel={() => {}}
-          onChangeBlock={(block, data) => {
-            formData = data;
-          }}
-          formData={formData}
+          formData={{}}
         />
       </Provider>,
     );
+
+    expect(container).toMatchSnapshot();
+  });
+  it('renders a form component with defaults in the schema - Checkboxes', () => {
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+
+    const WrappedInlineForm = withStateManagement(InlineForm);
+
+    const { container } = render(
+      <Provider store={store}>
+        <WrappedInlineForm
+          schema={{
+            fieldsets: [
+              {
+                id: 'default',
+                title: 'Default',
+                fields: [
+                  'theCheckBox',
+                  'theTruthyCheckBox',
+                  'theFalsyCheckBox',
+                ],
+              },
+            ],
+            properties: {
+              theCheckBox: {
+                title: 'The checkbox',
+                type: 'boolean',
+              },
+              theTruthyCheckBox: {
+                title: 'The truthy checkbox',
+                type: 'boolean',
+                default: true,
+              },
+              theFalsyCheckBox: {
+                title: 'The falsy checkbox',
+                type: 'boolean',
+                default: false,
+              },
+            },
+            required: [],
+          }}
+          onSubmit={() => {}}
+          onCancel={() => {}}
+          formData={{}}
+        />
+      </Provider>,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+  it('renders a form component with defaults in the schema - Number field', () => {
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+
+    const WrappedInlineForm = withStateManagement(InlineForm);
+
+    const { container } = render(
+      <Provider store={store}>
+        <WrappedInlineForm
+          schema={{
+            fieldsets: [
+              {
+                id: 'default',
+                title: 'Default',
+                fields: ['number', 'numberWithValue'],
+              },
+            ],
+            properties: {
+              number: {
+                title: 'The number, default set',
+                type: 'number',
+                default: 5,
+              },
+              numberWithValue: {
+                title: 'The number, default with a value',
+                type: 'number',
+                default: 5,
+              },
+            },
+            required: [],
+          }}
+          onSubmit={() => {}}
+          onCancel={() => {}}
+          formData={{ numberWithValue: 10 }}
+        />
+      </Provider>,
+    );
+
     expect(container).toMatchSnapshot();
   });
 });
