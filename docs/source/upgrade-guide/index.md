@@ -146,13 +146,13 @@ further references.
 
 **(Updated: 2021/06/12)** If you have an existing Volto installation and you are using
 listing blocks, you must run an upgrade step in order to match the new listing
-internals. You can find this upgrade step in the `kitconcept.volto` package. You can run
-the step from there if you have installed `kitconcept.volto` in your project, it's named
+internals. You can find this upgrade step in the `plone.volto` package. You can run
+the step from there if you have installed `plone.volto` in your project, it's named
 `Migrate listing blocks from Volto 12 to Volto 13`. You can find it in the `Add-ons`
 control panel. Alternatively, you can transfer it to your own integration packages and
 run it from there.
 
-https://github.com/kitconcept/kitconcept.volto/blob/main/src/kitconcept/volto/upgrades.py#L6-L64
+https://github.com/plone/plone.volto/blob/main/src/plone/volto/upgrades.py#L6-L64
 
 ```python
 def from12to13_migrate_listings(context):
@@ -217,8 +217,8 @@ def from12to13_migrate_listings(context):
 ```
 
 If you have trouble configuring the upgrade step in your own package, you can take a
-look and configure it as in `kitconcept.volto` as shown in this PR:
-https://github.com/kitconcept/kitconcept.volto/pull/29
+look and configure it as in `plone.volto` as shown in this PR:
+https://github.com/kitconcept/plone.volto/pull/29
 
 !!! note
     When an official integration package exists, these upgrade steps in the backend
