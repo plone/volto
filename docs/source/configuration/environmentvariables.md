@@ -28,3 +28,12 @@ Disallow: /" yarn start
 
     If you want to use the `VOLTO_ROBOTSTXT` environment variable, make sure to
     delete the file `public/robots.txt` from your project.
+
+
+### RAZZLE_DEBUG_CUSTOMIZATIONS
+
+It will enable the log of the non-compliant customizations (in server console) if you are experiencing problems with a customization not working.
+
+### RAZZLE_I18NDEBUGMODE
+
+It will enable the log of missing i18n messages (in console).

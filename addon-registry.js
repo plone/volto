@@ -322,9 +322,11 @@ class AddonConfigurationRegistry {
                 filename.replace(customPath, name).replace(/\.(js|jsx)$/, '')
               ] = path.resolve(filename);
             } else {
-              console.log(
-                `The file ${filename} doesn't exist in the ${name} (${targetPath}), unable to customize.`,
-              );
+              if (process.env.RAZZLE_DEBUG_CUSTOMIZATIONS) {
+                console.log(
+                  `The file ${filename} doesn't exist in the ${name} (${targetPath}), unable to customize.`,
+                );
+              }
             }
           },
         );
