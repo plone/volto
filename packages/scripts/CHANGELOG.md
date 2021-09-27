@@ -2,13 +2,9 @@
 
 ## 1.0.2 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
-### Internal
+- Missing default interpreter for `chagelogupdater` script @sneridagh
 
 ## 1.0.1 (2021-09-27)
 
