@@ -88,14 +88,6 @@ describe('Search Block Tests', () => {
     cy.get('.react-select__option').contains('Checkbox').click();
     cy.get('label[for="field-multiple-3-facets-0"]').click();
 
-    // Add search input
-    cy.get('#blockform-fieldset-controls').click();
-    cy.get('label[for="field-showSearchInput"]').click();
-    cy.get('#field-searchInputPrompt').click();
-    cy.get('#field-searchInputPrompt').type('Type search term:');
-    cy.get('#blockform-fieldset-controls').click();
-    cy.get('label[for="field-showSearchButton"]').click();
-
     // Save the page
     cy.get('#toolbar-save > .icon').click();
 
