@@ -22,7 +22,7 @@ export const history = createBrowserHistory();
 initSentry(Sentry);
 
 function reactIntlErrorHandler(error) {
-  if (process.env.NODE_ENV !== 'production') {
+  if (config.settings.i18nDebugMode) {
     /* eslint no-console: 0 */
     // console.info(error);
   }

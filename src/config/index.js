@@ -92,6 +92,7 @@ let config = {
     actions_raising_api_errors: ['GET_CONTENT', 'UPDATE_CONTENT'],
     internalApiPath: process.env.RAZZLE_INTERNAL_API_PATH || undefined,
     websockets: process.env.RAZZLE_WEBSOCKETS || false,
+    i18nDebugMode: process.env.RAZZLE_I18NDEBUGMODE || false,
     nonContentRoutes,
     extendedBlockRenderMap,
     blockStyleFn,

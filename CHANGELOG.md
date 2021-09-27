@@ -14,6 +14,29 @@
 - Fix search block Cypress test @kreafox
 ### Internal
 
+- Use plone.volto instead of kitconcept.volto @tisto
+
+## 14.0.0-alpha.11 (2021-09-25)
+
+### Internal
+
+- Use released @plone/scripts, since the builds are broken if it's a local package @sneridagh
+
+## 14.0.0-alpha.10 (2021-09-25)
+
+### Breaking
+
+- New i18n infrastructure in the new `@plone/scripts` package @sneridagh
+- Removed `src/i18n.js` in favor of the above change @sneridagh
+
+### Feature
+
+- Add RAZZLE_I18NDEBUGMODE env var and corresponding i18nDebugMode config setting to enable/disable react-intl error messages. @sneridagh
+
+### Bugfix
+
+- Missing default messages from JSON EN language file @sneridagh
+
 ## 14.0.0-alpha.9 (2021-09-21)
 
 ### Breaking
