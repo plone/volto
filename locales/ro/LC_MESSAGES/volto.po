@@ -238,6 +238,7 @@ msgid "Base"
 msgstr "Baza"
 
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Base search query
 msgid "Base search query"
 msgstr ""
 
@@ -387,6 +388,7 @@ msgid "Clear"
 msgstr ""
 
 #: components/manage/Blocks/Search/components/FilterList
+# defaultMessage: Clear filters
 msgid "Clear filters"
 msgstr ""
 
@@ -485,6 +487,7 @@ msgid "Contents"
 msgstr "Cuprins"
 
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Controls
 msgid "Controls"
 msgstr ""
 
@@ -542,6 +545,7 @@ msgid "Criteria"
 msgstr "Criterii"
 
 #: components/manage/Blocks/Search/components/FilterList
+# defaultMessage: Current filters applied
 msgid "Current filters applied"
 msgstr ""
 
@@ -939,18 +943,22 @@ msgid "External URL"
 msgstr "URL extern"
 
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Facet
 msgid "Facet"
 msgstr ""
 
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Facet widget
 msgid "Facet widget"
 msgstr ""
 
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Facets
 msgid "Facets"
 msgstr ""
 
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Field
 msgid "Field"
 msgstr ""
 
@@ -1081,10 +1089,12 @@ msgid "Header cell"
 msgstr ""
 
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Headline
 msgid "Headline"
 msgstr ""
 
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Hidden facets will still filter the results if proper parameters are passed in URLs
 msgid "Hidden facets will still filter the results if proper parameters are passed in URLs"
 msgstr ""
 
@@ -1094,6 +1104,7 @@ msgid "Hide Replies"
 msgstr ""
 
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Hide facet?
 msgid "Hide facet?"
 msgstr ""
 
@@ -1284,6 +1295,7 @@ msgid "Items must be unique."
 msgstr "Obiectele trebuie să fie unice."
 
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Label
 msgid "Label"
 msgstr ""
 
@@ -1507,6 +1519,7 @@ msgid "Move to top of folder"
 msgstr "Mutați în partea de sus a folderului"
 
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Multiple choices?
 msgid "Multiple choices?"
 msgstr ""
 
@@ -1992,6 +2005,7 @@ msgid "Results preview"
 msgstr "Previzualizare rezultate"
 
 #: components/manage/Blocks/Search/SearchBlockEdit
+# defaultMessage: Results template
 msgid "Results template"
 msgstr ""
 
@@ -2086,10 +2100,12 @@ msgid "Search Site"
 msgstr "Căutare pe site"
 
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Search block
 msgid "Search block"
 msgstr ""
 
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Search button label
 msgid "Search button label"
 msgstr ""
 
@@ -2109,6 +2125,7 @@ msgid "Search group…"
 msgstr ""
 
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Search input label
 msgid "Search input label"
 msgstr ""
 
@@ -2129,6 +2146,7 @@ msgid "Search users…"
 msgstr ""
 
 #: components/manage/Blocks/Search/components/SearchDetails
+# defaultMessage: Searched for
 msgid "Searched for"
 msgstr ""
 
@@ -2249,14 +2267,17 @@ msgid "Show item"
 msgstr ""
 
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Show search button?
 msgid "Show search button?"
 msgstr ""
 
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Show search input?
 msgid "Show search input?"
 msgstr ""
 
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Show sorting?
 msgid "Show sorting?"
 msgstr ""
 
@@ -2329,6 +2350,7 @@ msgid "Sort on"
 msgstr "Sortare pe"
 
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Sort on label
 msgid "Sort on label"
 msgstr ""
 
@@ -2483,6 +2505,7 @@ msgid "The backend server of your website is not anwering, we apologize for the 
 msgstr ""
 
 #: components/manage/Blocks/Search/schema
+# defaultMessage: The button presence disables the live search, the query is issued when you press ENTER
 msgid "The button presence disables the live search, the query is issued when you press ENTER"
 msgstr ""
 

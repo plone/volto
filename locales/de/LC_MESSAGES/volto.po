@@ -253,6 +253,7 @@ msgid "Base"
 msgstr "Basis"
 
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Base search query
 msgid "Base search query"
 msgstr "Basis Suchfilter"
 
@@ -402,6 +403,7 @@ msgid "Clear"
 msgstr "Löschen"
 
 #: components/manage/Blocks/Search/components/FilterList
+# defaultMessage: Clear filters
 msgid "Clear filters"
 msgstr "Filter entfernen"
 
@@ -500,6 +502,7 @@ msgid "Contents"
 msgstr "Inhalte"
 
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Controls
 msgid "Controls"
 msgstr ""
 
@@ -557,6 +560,7 @@ msgid "Criteria"
 msgstr "Kriterium"
 
 #: components/manage/Blocks/Search/components/FilterList
+# defaultMessage: Current filters applied
 msgid "Current filters applied"
 msgstr "Ausgewählte Filter"
 
@@ -954,18 +958,22 @@ msgid "External URL"
 msgstr "Externe URL"
 
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Facet
 msgid "Facet"
 msgstr "Facette"
 
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Facet widget
 msgid "Facet widget"
 msgstr "Facetten-Widget"
 
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Facets
 msgid "Facets"
 msgstr "Facetten"
 
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Field
 msgid "Field"
 msgstr "Feld"
 
@@ -1096,10 +1104,12 @@ msgid "Header cell"
 msgstr "Kopfzeile"
 
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Headline
 msgid "Headline"
 msgstr ""
 
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Hidden facets will still filter the results if proper parameters are passed in URLs
 msgid "Hidden facets will still filter the results if proper parameters are passed in URLs"
 msgstr "Verteckte Facetten können die Ergebnisse weiterhin filtern, wenn die entsprechenden Parameter in der URL angehängt werden"
 
@@ -1109,6 +1119,7 @@ msgid "Hide Replies"
 msgstr "Antworten ausblenden"
 
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Hide facet?
 msgid "Hide facet?"
 msgstr "Facette verstecken"
 
@@ -1299,6 +1310,7 @@ msgid "Items must be unique."
 msgstr "Auswahl muss eindeutig sein."
 
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Label
 msgid "Label"
 msgstr "Label"
 
@@ -1522,6 +1534,7 @@ msgid "Move to top of folder"
 msgstr "An den Anfang verschieben"
 
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Multiple choices?
 msgid "Multiple choices?"
 msgstr ""
 
@@ -2007,6 +2020,7 @@ msgid "Results preview"
 msgstr "Ergebnisvorschau"
 
 #: components/manage/Blocks/Search/SearchBlockEdit
+# defaultMessage: Results template
 msgid "Results template"
 msgstr ""
 
@@ -2101,10 +2115,12 @@ msgid "Search Site"
 msgstr "Website durchsuchen"
 
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Search block
 msgid "Search block"
 msgstr ""
 
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Search button label
 msgid "Search button label"
 msgstr ""
 
@@ -2124,6 +2140,7 @@ msgid "Search group…"
 msgstr "Nach Gruppe suchen…"
 
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Search input label
 msgid "Search input label"
 msgstr ""
 
@@ -2144,6 +2161,7 @@ msgid "Search users…"
 msgstr "Nach Nutzern suchen…"
 
 #: components/manage/Blocks/Search/components/SearchDetails
+# defaultMessage: Searched for
 msgid "Searched for"
 msgstr ""
 
@@ -2264,14 +2282,17 @@ msgid "Show item"
 msgstr "Elemente anzeigen"
 
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Show search button?
 msgid "Show search button?"
 msgstr ""
 
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Show search input?
 msgid "Show search input?"
 msgstr ""
 
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Show sorting?
 msgid "Show sorting?"
 msgstr ""
 
@@ -2344,6 +2365,7 @@ msgid "Sort on"
 msgstr "Sortieren nach"
 
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Sort on label
 msgid "Sort on label"
 msgstr ""
 
@@ -2498,6 +2520,7 @@ msgid "The backend server of your website is not anwering, we apologize for the 
 msgstr "Der Server antwortet nicht, wir entschuldigen uns für die Unanehmlichkeiten. Bitte versuchen Sie die Seite neu zu laden. Falls das Problem weiterhin besteht kontaktieren Sie bitte den Seitenbetreiber."
 
 #: components/manage/Blocks/Search/schema
+# defaultMessage: The button presence disables the live search, the query is issued when you press ENTER
 msgid "The button presence disables the live search, the query is issued when you press ENTER"
 msgstr ""
 
