@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Missing `pofile` as dependency @sneridagh
+
 ### Internal
 
 ## 1.0.0 (2021-09-25)
