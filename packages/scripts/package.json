@@ -52,10 +52,7 @@
     "github": {
       "release": true,
       "releaseName": "@plone/scripts ${version}",
-      "releaseNotes": "node ./changelogupdater.js excerpt",
-      "assets": [
-        "*.tgz"
-      ]
+      "releaseNotes": "node ./changelogupdater.js excerpt"
     }
   },
   "publishConfig": {
