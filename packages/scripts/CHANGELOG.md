@@ -1,6 +1,6 @@
 # Change Log
 
-## 1.0.1 (unreleased)
+## 1.0.1 (2021-09-27)
 
 ### Bugfix
 
