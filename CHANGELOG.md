@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Show correct fieldname and not internal field id in Toast error messages on Add/Edit forms @jackahl
+
 ### Internal
 
 - Use plone.volto instead of kitconcept.volto @tisto
