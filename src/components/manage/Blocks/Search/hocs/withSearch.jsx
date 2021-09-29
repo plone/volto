@@ -101,6 +101,9 @@ const getSearchFields = (searchData) => {
   );
 };
 
+/**
+ * A HOC that will mirror the search block state to a hash location
+ */
 const useHashState = () => {
   const location = useLocation();
   const history = useHistory();
@@ -145,6 +148,10 @@ const useHashState = () => {
   return [current, setSearchData];
 };
 
+/**
+ * A hook to make it possible to switch disable mirroring the search block
+ * state to the window location
+ */
 const useSearchBlockState = (uniqueId, isEditMode) => {
   const location = useLocation();
   const [hashState, setHashState] = useHashState(qs.parse(location.hash));
@@ -169,12 +176,6 @@ const withSearch = (options) => (WrappedComponent) => {
       ? JSON.parse(locationSearchData.query)
       : [];
     const urlSearchText = locationSearchData.SearchableText || '';
-
-    const querystringResults = useSelector(
-      (state) => state.querystringsearch.subrequests,
-    );
-    const totalItems =
-      querystringResults[id]?.total || querystringResults[id]?.items?.length;
 
     // TODO: refactor, should use only useLocationStateManager()!!!
     const [searchText, setSearchText] = React.useState(urlSearchText);
@@ -239,6 +240,14 @@ const withSearch = (options) => (WrappedComponent) => {
       },
       [data.query, facets, id, setLocationSearchData, sortOn, sortOrder],
     );
+
+    const querystringResults = useSelector(
+      (state) => state.querystringsearch.subrequests,
+    );
+    const totalItems =
+      searchData.query?.length > 0 // This is to compensate for listing block not triggering fetch when query is empty
+        ? querystringResults[id]?.total || querystringResults[id]?.items?.length
+        : 0;
 
     return (
       <WrappedComponent
