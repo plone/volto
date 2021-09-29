@@ -1,6 +1,8 @@
 import React from 'react';
-import { Input } from 'semantic-ui-react';
+import { Button, Input } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
+import { Icon } from '@plone/volto/components';
+import loupeSVG from '@plone/volto/icons/zoom.svg';
 
 const messages = defineMessages({
   search: {
@@ -32,6 +34,11 @@ const SearchInput = (props) => {
           }
         }}
       />
+      {isLive && (
+        <Button basic icon className="search-input-live-icon-button">
+          <Icon name={loupeSVG} />
+        </Button>
+      )}
     </div>
   );
 };
