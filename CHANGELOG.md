@@ -2,14 +2,10 @@
 
 ## 14.0.0 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Show correct fieldname and not internal field id in Toast error messages on Add/Edit forms @jackahl
-- sitemap.xml.gz obeys Plone Search settings @erral 
+- sitemap.xml.gz obeys Plone Search settings @erral
 
 ### Internal
 
