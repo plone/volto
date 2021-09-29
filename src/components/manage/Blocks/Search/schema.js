@@ -194,7 +194,7 @@ export default ({ data = {}, intl }) => {
           'showSortOn',
           ...(data.showSortOn ? ['sortOnLabel'] : []),
           'showSearchInput',
-          'showSearchButton',
+          ...(data.showSearchInput ? ['showSearchButton'] : []),
           // ...(data.showSearchInput ? ['searchInputPrompt'] : []),
           // ...(data.showSearchButton ? ['searchButtonLabel'] : []),
         ],
