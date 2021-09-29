@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- sitemap.xml.gz obeys Plone Search settings @erral 
+
 ### Internal
 
 - Use plone.volto instead of kitconcept.volto @tisto
