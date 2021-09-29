@@ -30,12 +30,18 @@ const SelectFacet = (props) => {
       components={{ DropdownIndicator, Option }}
       isDisabled={isEditMode}
       onChange={(data) => {
-        onChange(
-          facet.field.value,
-          isMulti ? data.map(({ value }) => value) : [data.value],
-        );
+        if (data) {
+          onChange(
+            facet.field.value,
+            isMulti ? data.map(({ value }) => value) : [data.value],
+          );
+        } else {
+          // data has been removed
+          onChange(facet.field.value, []);
+        }
       }}
       isMulti={facet.multiple}
+      isClearable
       value={v}
     />
   );

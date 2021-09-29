@@ -36,6 +36,7 @@ export const customSelectStyles = {
   }),
   dropdownIndicator: (styles) => ({
     paddingRight: 0,
+    paddingTop: '4px',
   }),
   option: (styles, state) => ({
     ...styles,
