@@ -403,7 +403,8 @@
     "identity-obj-proxy": "3.0.0",
     "jest-environment-jsdom-sixteen": "1.0.3",
     "react-is": "^16.13.1",
-    "tmp": "0.2.1"
+    "tmp": "0.2.1",
+    "use-trace-update": "1.3.2"
   },
   "resolutions": {
     "http-proxy": "^1.18.1",
