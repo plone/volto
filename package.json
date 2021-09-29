@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "14.0.0-alpha.11",
+  "version": "14.0.0-alpha.12",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -273,6 +273,7 @@
     "cypress": "7.3.0",
     "cypress-axe": "0.12.2",
     "cypress-file-upload": "5.0.7",
+    "debug": "4.3.2",
     "dependency-graph": "0.10.0",
     "detect-browser": "5.1.0",
     "diff": "3.5.0",

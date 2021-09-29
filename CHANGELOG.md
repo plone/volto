@@ -14,7 +14,17 @@
 - Fix search block Cypress test @kreafox
 ### Internal
 
+## 14.0.0-alpha.12 (2021-09-29)
+
+### Bugfix
+
+- Show correct fieldname and not internal field id in Toast error messages on Add/Edit forms @jackahl
+- sitemap.xml.gz obeys Plone Search settings @erral
+
+### Internal
+
 - Use plone.volto instead of kitconcept.volto @tisto
+- Silence customization errors, they are now behind a `RAZZLE_DEBUG_CUSTOMIZATIONS` enviroment variable @sneridagh
 
 ## 14.0.0-alpha.11 (2021-09-25)
 
