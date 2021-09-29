@@ -2,7 +2,7 @@
 const glob = require('glob').sync;
 const path = require('path');
 const fs = require('fs');
-
+const debug = require('debug')('shadowing');
 const { map } = require('lodash');
 const { DepGraph } = require('dependency-graph');
 
@@ -322,11 +322,9 @@ class AddonConfigurationRegistry {
                 filename.replace(customPath, name).replace(/\.(js|jsx)$/, '')
               ] = path.resolve(filename);
             } else {
-              if (process.env.RAZZLE_DEBUG_CUSTOMIZATIONS) {
-                console.log(
-                  `The file ${filename} doesn't exist in the ${name} (${targetPath}), unable to customize.`,
-                );
-              }
+              debug(
+                `The file ${filename} doesn't exist in the ${name} (${targetPath}), unable to customize.`,
+              );
             }
           },
         );

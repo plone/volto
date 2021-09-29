@@ -25,15 +25,34 @@ Disallow: /" yarn start
 ```
 
 !!! note
-
     If you want to use the `VOLTO_ROBOTSTXT` environment variable, make sure to
     delete the file `public/robots.txt` from your project.
 
 
-### RAZZLE_DEBUG_CUSTOMIZATIONS
+### DEBUG
 
-It will enable the log of the non-compliant customizations (in server console) if you are experiencing problems with a customization not working.
+It will enable the log several logging points scattered through the Volto code. It uses the `volto:` namespace.
 
-### RAZZLE_I18NDEBUGMODE
+```bash
+DEBUG=volto:i18n yarn start
+```
+
+or
+
+```bash
+DEBUG=volto:shadowing yarn start
+```
+
+also
+
+```bash
+DEBUG=volto:* yarn start
+```
+
+#### Component Shadowing errors (shadowing)
+
+It displays the errors of the non-compliant customizations (in server console) if you are experiencing problems with a customization not working.
+
+#### Internationalization errors (i18n)
 
 It will enable the log of missing i18n messages (in console).

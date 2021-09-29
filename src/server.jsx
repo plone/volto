@@ -17,6 +17,7 @@ import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
 import { createProxyMiddleware } from 'http-proxy-middleware';
 import { resetServerContext } from 'react-beautiful-dnd';
 import querystring from 'querystring';
+import debug from 'debug';
 
 import routes from '~/routes';
 import config from '@plone/volto/registry';
@@ -48,6 +49,10 @@ if (config.settings) {
       locales = { ...locales, [lang]: locale.default };
     });
   });
+}
+
+function reactIntlErrorHandler(error) {
+  debug('i18n')(error);
 }
 
 const supported = new locale.Locales(keys(languages), 'en');
@@ -153,7 +158,7 @@ function setupServer(req, res, next) {
 
   function errorHandler(error) {
     const errorPage = (
-      <Provider store={store}>
+      <Provider store={store} onError={reactIntlErrorHandler}>
         <StaticRouter context={{}} location={req.url}>
           <ErrorPage message={error.message} />
         </StaticRouter>
@@ -223,7 +228,7 @@ server.get('/*', (req, res) => {
       resetServerContext();
       const markup = renderToString(
         <ChunkExtractorManager extractor={extractor}>
-          <Provider store={store}>
+          <Provider store={store} onError={reactIntlErrorHandler}>
             <StaticRouter context={context} location={req.url}>
               <ReduxAsyncConnect routes={routes} helpers={api} />
             </StaticRouter>
