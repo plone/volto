@@ -252,6 +252,11 @@ msgstr "Zurück"
 msgid "Base"
 msgstr "Basis"
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Base search query
+msgid "Base search query"
+msgstr "Basis Suchfilter"
+
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Block
 msgid "Block"
@@ -397,6 +402,11 @@ msgstr "Datei auswählen"
 msgid "Clear"
 msgstr "Löschen"
 
+#: components/manage/Blocks/Search/components/FilterList
+# defaultMessage: Clear filters
+msgid "Clear filters"
+msgstr "Filter entfernen"
+
 #: components/theme/View/ImageView
 # defaultMessage: Click to download full sized image
 msgid "Click to download full sized image"
@@ -491,6 +501,11 @@ msgstr "Inhaltstyp gelöscht"
 msgid "Contents"
 msgstr "Inhalte"
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Controls
+msgid "Controls"
+msgstr ""
+
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
@@ -543,6 +558,11 @@ msgstr "Ersteller"
 # defaultMessage: Criteria
 msgid "Criteria"
 msgstr "Kriterium"
+
+#: components/manage/Blocks/Search/components/FilterList
+# defaultMessage: Current filters applied
+msgid "Current filters applied"
+msgstr "Ausgewählte Filter"
 
 #: components/manage/Preferences/ChangePassword
 # defaultMessage: Current password
@@ -937,6 +957,26 @@ msgstr "Abgelaufen"
 msgid "External URL"
 msgstr "Externe URL"
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Facet
+msgid "Facet"
+msgstr "Facette"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Facet widget
+msgid "Facet widget"
+msgstr "Facetten-Widget"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Facets
+msgid "Facets"
+msgstr "Facetten"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Field
+msgid "Field"
+msgstr "Feld"
+
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: File
 msgid "File"
@@ -1063,10 +1103,25 @@ msgstr ""
 msgid "Header cell"
 msgstr "Kopfzeile"
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Headline
+msgid "Headline"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Hidden facets will still filter the results if proper parameters are passed in URLs
+msgid "Hidden facets will still filter the results if proper parameters are passed in URLs"
+msgstr "Verteckte Facetten können die Ergebnisse weiterhin filtern, wenn die entsprechenden Parameter in der URL angehängt werden"
+
 #: components/theme/Comments/Comments
 # defaultMessage: Hide Replies
 msgid "Hide Replies"
 msgstr "Antworten ausblenden"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Hide facet?
+msgid "Hide facet?"
+msgstr "Facette verstecken"
 
 #: components/manage/History/History
 #: components/manage/Toolbar/More
@@ -1253,6 +1308,11 @@ msgstr "Elemente"
 # defaultMessage: Items must be unique.
 msgid "Items must be unique."
 msgstr "Auswahl muss eindeutig sein."
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Label
+msgid "Label"
+msgstr "Label"
 
 #: components/manage/Preferences/PersonalPreferences
 # defaultMessage: Language
@@ -1472,6 +1532,11 @@ msgstr "Ans Ende verschieben"
 # defaultMessage: Move to top of folder
 msgid "Move to top of folder"
 msgstr "An den Anfang verschieben"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Multiple choices?
+msgid "Multiple choices?"
+msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: My email address is
@@ -1954,6 +2019,11 @@ msgstr "Anzahl der Ergebnisse einschränken"
 msgid "Results preview"
 msgstr "Ergebnisvorschau"
 
+#: components/manage/Blocks/Search/SearchBlockEdit
+# defaultMessage: Results template
+msgid "Results template"
+msgstr ""
+
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Reversed order
 msgid "Reversed order"
@@ -2024,6 +2094,11 @@ msgstr "Schema"
 msgid "Schema updates"
 msgstr "Aktualisierungen Schema"
 
+#: components/manage/Blocks/Search/components/SearchInput
+#: components/manage/Blocks/Search/layout/LeftColumnFacets
+#: components/manage/Blocks/Search/layout/RightColumnFacets
+#: components/manage/Blocks/Search/layout/TopSideFacets
+#: components/manage/Blocks/Search/schema
 #: components/theme/SearchWidget/SearchWidget
 # defaultMessage: Search
 msgid "Search"
@@ -2038,6 +2113,16 @@ msgstr "Suchen"
 # defaultMessage: Search Site
 msgid "Search Site"
 msgstr "Website durchsuchen"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Search block
+msgid "Search block"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Search button label
+msgid "Search button label"
+msgstr ""
 
 #: components/manage/Sidebar/ObjectBrowserBody
 # defaultMessage: Search content
@@ -2054,6 +2139,12 @@ msgstr "Nach Benutzer oder Gruppe suchen"
 msgid "Search group…"
 msgstr "Nach Gruppe suchen…"
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Search input label
+msgid "Search input label"
+msgstr ""
+
+#: components/manage/Blocks/Search/components/SearchDetails
 #: components/theme/Search/Search
 # defaultMessage: Search results
 msgid "Search results"
@@ -2068,6 +2159,11 @@ msgstr "Suchergebnisse für {term}"
 # defaultMessage: Search users…
 msgid "Search users…"
 msgstr "Nach Nutzern suchen…"
+
+#: components/manage/Blocks/Search/components/SearchDetails
+# defaultMessage: Searched for
+msgid "Searched for"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Second
@@ -2185,6 +2281,21 @@ msgstr "Antworten anzeigen"
 msgid "Show item"
 msgstr "Elemente anzeigen"
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Show search button?
+msgid "Show search button?"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Show search input?
+msgid "Show search input?"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Show sorting?
+msgid "Show sorting?"
+msgstr ""
+
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Shrink sidebar
 msgid "Shrink sidebar"
@@ -2252,6 +2363,11 @@ msgstr "Sortieren nach:"
 # defaultMessage: Sort on
 msgid "Sort on"
 msgstr "Sortieren nach"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Sort on label
+msgid "Sort on label"
+msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
 # defaultMessage: Source
@@ -2403,6 +2519,11 @@ msgstr "Das Backend antwortet, allerdings sind ihre CORS HTTP Header nicht korre
 msgid "The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
 msgstr "Der Server antwortet nicht, wir entschuldigen uns für die Unanehmlichkeiten. Bitte versuchen Sie die Seite neu zu laden. Falls das Problem weiterhin besteht kontaktieren Sie bitte den Seitenbetreiber."
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: The button presence disables the live search, the query is issued when you press ENTER
+msgid "The button presence disables the live search, the query is issued when you press ENTER"
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: The item could not be deleted.
 msgid "The item could not be deleted."
@@ -2480,6 +2601,7 @@ msgid "Time"
 msgstr "Zeit"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Search/schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes

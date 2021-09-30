@@ -6,8 +6,12 @@
 
 ### Feature
 
+- Add new block, the search block, a customizable @tiberiuichim @kreafox @sneridagh
+
 ### Bugfix
 
+- Fix cypress test @kreafox
+- Fix search block Cypress test @kreafox
 ### Internal
 
 ## 14.0.0-alpha.12 (2021-09-29)
