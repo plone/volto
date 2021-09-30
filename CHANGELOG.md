@@ -2,17 +2,9 @@
 
 ## 14.0.0 (unreleased)
 
-### Breaking
-
 ### Feature
 
-- Add new block, the search block, a customizable @tiberiuichim @kreafox @sneridagh
-
-### Bugfix
-
-- Fix cypress test @kreafox
-- Fix search block Cypress test @kreafox
-### Internal
+- Add the new search block @tiberiuichim @kreafox @sneridagh
 
 ## 14.0.0-alpha.12 (2021-09-29)
 
