@@ -4,6 +4,7 @@
  */
 
 import { GET_QUERYSTRING } from '@plone/volto/constants/ActionTypes';
+import { sortBy } from 'lodash';
 
 const initialState = {
   error: null,
@@ -12,6 +13,26 @@ const initialState = {
   loaded: false,
   loading: false,
 };
+
+function rewriteVocabularyValues(indexes) {
+  const rewrittenIndexes = {};
+  Object.keys(indexes).forEach((indexKey) => {
+    const index = indexes[indexKey];
+    let items;
+    if (Object.keys(index.values)?.length) {
+      items = Object.keys(index.values).map((key) => {
+        return {
+          title: index.values[key].title,
+          token: key,
+        };
+      });
+    }
+    index.items = sortBy(items, 'title');
+    rewrittenIndexes[indexKey] = index;
+  });
+
+  return rewrittenIndexes;
+}
 
 /**
  * Querystring reducer.
@@ -33,7 +54,7 @@ export default function querystring(state = initialState, action = {}) {
       return {
         ...state,
         error: null,
-        indexes: action.result.indexes,
+        indexes: rewriteVocabularyValues(action.result.indexes),
         sortable_indexes: action.result.sortable_indexes,
         loaded: true,
         loading: false,
