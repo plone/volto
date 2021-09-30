@@ -15,40 +15,40 @@ This upgrade guide lists all breaking changes in Volto and explains the
 
 ## Upgrading to Volto 14.x.x
 
-### Update i18n configuration for projects and addons
+### Update i18n configuration for projects and add-ons
 
-The i18n script and infrastructure has been moved to its own package, since we needed it
-to be independent of Volto itself. This was necessary for being able to use it from the
-addons without having to install whole Volto with them (which is not possible).
+The i18n script and infrastructure have been moved to their own package since we needed them
+to be independent of Volto itself. This was necessary for being able to use them from the
+add-ons without having to install the whole Volto package (which is not possible).
 
-`@plone/scripts` package is the placeholder of the script, which has been also improved
-and the infrastructure (Babel config) for it to run.
+`@plone/scripts` package is the placeholder of the script, which has also been improved
+alongside the infrastructure (Babel config) for it to run.
 
 Steps for migration:
 
 #### Projects
 
-In a project, `package.json` replace the `scripts` `i18n` line with this one:
+In a project's `package.json` replace the `scripts` `i18n` line with this one:
 
 ```diff
    "scripts": {
 -    "i18n": "NODE_ENV=production node src/i18n.js"
-+    "i18n": "rm -rf build/messages && NODE_ENV=production i18n --addon"
++    "i18n": "rm -rf build/messages && NODE_ENV=production i18n"
 +  },
 ```
 
-#### Addons
+#### Add-ons
 
-If you are an addon maintainer, remove the `src/i18n.js` script since it's useless, and in `scripts` in `package.json`:
+If you are an add-on maintainer, remove the `src/i18n.js` script since it's useless, and then within the `scripts` section of `package.json` apply the following change:
 
 ```diff
    "scripts": {
 -    "i18n": "NODE_ENV=production node node_modules/@plone/volto/src/i18n.js",
-+    "i18n": "rm -rf build/messages && NODE_ENV=production i18n",
++    "i18n": "rm -rf build/messages && NODE_ENV=production i18n --addon",
 ```
 
 
-and add this to the `dependencies` list:
+afterwards add this to the `dependencies` list:
 
 ```diff
 +  "dependencies": {
@@ -56,7 +56,7 @@ and add this to the `dependencies` list:
    }
 ```
 
-and lastly, use this `babel.config.js` instead of the one you have:
+Now that `package.json` is modified afterwards replace `babel.config.js` contents with the following:
 
 ```diff
 -module.exports = require('@plone/volto/babel');
@@ -80,7 +80,7 @@ and lastly, use this `babel.config.js` instead of the one you have:
 ```
 
 !!! note
-  The `i18n` scripts is now an executable in the node environment now, for convenience.
+For convenience the `i18n` script is now an executable in the node environment.
 
 ### Removal of old configuration system based on imports
 
@@ -113,7 +113,7 @@ Not really a breaking change, but it's worth noting it. By default, Volto 14 com
 ### Blocks chooser now uses the title instead of the id of the block as translation source
 
 The `BlockChooser` component now uses the `title` of the block as source for translating
-the block title. Before, it took the `id` of the block, which is utterly wrong. Could be that this change will trigger untranslated blocks titles in your projects and addons.
+the block title. Before, it took the `id` of the block, which is utterly wrong. Could be that this change will trigger untranslated blocks titles in your projects and add-ons.
 
 ## Upgrading to Volto 13.x.x
 
@@ -299,7 +299,7 @@ like (just to mention one of them) the HMR (Hot Module Reloader) does not work p
 
 That's why in this version we are introducing the new Volto's Configuration Registry.
 It's a centralized singleton that it is populated from the core config module and can be
-modified by the addons and the project itself. The code, instead of using imports to get
+modified by the add-ons and the project itself. The code, instead of using imports to get
 it, imports the singleton and then access the proper registry key inside it (`settings`,
 `blocks`, `views`, etc...)
 
@@ -335,9 +335,9 @@ custom code (and Volto customizations using the shadowing engine) has to adapt t
 new way of reading the config from the new Volto's Configuration. However, it won't be
 mandatory until Volto 14, leaving the community time to adapt their code and projects.
 
-!!! tip Recommended for addons
-    If you are an addon maintainer and you migrate your add-on to be Volto 12 compatible,
-    it's recommended that you add it as `peerDependencies` for Volto 12.
+!!! tip Recommended for add-ons
+If you are an add-on maintainer, and you migrate your add-on to be Volto 12 compatible,
+it's recommended that you add it as `peerDependencies` for Volto 12.
 
     ```json
       "peerDependencies": {
@@ -370,7 +370,7 @@ mandatory until Volto 14, leaving the community time to adapt their code and pro
    },
 ```
 
-#### Changes in in your project's `config` module
+#### Changes in your project's `config` module
 
 Remove the imports and the exports in your `src/config.js`:
 
@@ -427,9 +427,9 @@ export default function applyConfig(config) {
 }
 ```
 
-It has the same signature and it's used like the `applyConfig()` function in `index.js`
+It has the same signature, and it's used like the `applyConfig()` function in `index.js`
 module add-ons. You should place your project's configuration here and mutate the config
-like you would do it in addons.
+like you would do it in add-ons.
 
 Let's show it in an example. Let's say you have this config in your project's `src/config` module:
 
@@ -463,7 +463,7 @@ export default function applyConfig(config) {
     configuration registry too. Make sure all of them are already migrated to Volto 12.
 
 !!! tip
-    Although might be daunting, the migration is quite straight forward, and the refactoring
+    Although this might be daunting, the migration is quite straight forward, and the refactoring
     of the required code is undergo through a series of "search and replace" in your IDE of choice.
 
 #### Changes in your project's `package.json`
@@ -489,7 +489,7 @@ there instead of the real mocked components and accept them.
 !!! warning
     This configuration is *not recommended* and might lead to inconsistencies and has been tested
     only partially and can you can find unseen problems. This method is only a workaround in case the
-    addons you are using are not yet migrated or you can't to migrate your code. And in
+    add-ons you are using are not yet migrated, or you can't to migrate your code. And in
     any case, as stated above, it will be deprecated and will stop working in Volto 14.
 
 Make the following changes to your `src/config.js`, first remove the main imports, and add
@@ -588,7 +588,7 @@ the end of `src/config.js`:
 
 !!! note Recommended
     Although you can keep both ways of using Volto's config it is
-    recommended you use the new registry based configuration as soon as possible and we
+    recommended you use the new registry based configuration as soon as possible, and we
     discourage you to continue using the old way.
 
 
@@ -699,7 +699,7 @@ just copy `patches/razzle-plugins.patch` file and overwrite `patches/patchit.sh`
 
 Historically, Volto was using "stage-0" TC-39 proposals. The configuration was starting
 showing its age, since Babel 7 dedided to stop maintaining the presets for stages, we
-moved to use an static configuration instead of a managed one. That lead to a "living on
+moved to use a static configuration instead of a managed one. That lead to a "living on
 the edge" situation since we supported proposals that they didn't make the cut. For more
 information about the TC39 approval process read (https://tc39.es/process-document/)
 
@@ -781,10 +781,10 @@ A new webpack resolver plugin has been integrated with Volto, it reroutes
 'local' resolve requests (for example `import Something from './Something'`) to
 'absolute' resolve requests (like
 `import Something from '@plone/myaddon/Something`). This allows the
-shadow-based customization mechanisms to work consistently with addons and
+shadow-based customization mechanisms to work consistently with add-ons and
 Volto.
 
-This is not a breaking change and it shouldn't affect any existing code, but by
+This is not a breaking change, and it shouldn't affect any existing code, but by
 its very nature, a resolver plugin has the potential to introduce unexpected
 behavior. Just be aware of its existence and take it into consideration if you
 notice anything strange.
@@ -833,7 +833,7 @@ with:
 ```
 
 You might consider moving your theme files to a subfolder called `site`, to
-prepare for the arrival of addons theming and their overrides.  In that case,
+prepare for the arrival of add-ons theming and their overrides.  In that case,
 you would set your `@siteFolder` to:
 
 ```
@@ -921,14 +921,14 @@ a Webpack config in your local `razzle.config.js`.
 
 ### Update your eslint config
 
-Introduced in the Volto 5 series, it's recommended that you update your local ESLint config. In the past, we used `.eslintrc` file to do so. In order to support automatically Volto addons, you should remove it and use a JS based config one `.eslintrc.js` with this contents:
+Introduced in the Volto 5 series, it's recommended that you update your local ESLint config. In the past, we used `.eslintrc` file to do so. In order to support automatically Volto add-ons, you should remove it and use a JS based config one `.eslintrc.js` with this content:
 
 ```js
 const path = require('path');
 const projectRootPath = path.resolve('.');
 const packageJson = require(path.join(projectRootPath, 'package.json'));
 
-// Extends ESlint configuration for adding the aliases to `src` directories in Volto addons
+// Extends ESlint configuration for adding the aliases to `src` directories in Volto add-ons
 const addonsAliases = [];
 if (packageJson.addons) {
   const addons = packageJson.addons;
@@ -965,7 +965,7 @@ We have improved the overall UX of the block drag and drop feature by using the 
 lib machinery) in the structure. The original structure and class names are still in
 there (as children of these wrappers) to maintain maximum backwards compatibility. Those
 might be cleaned up in next major versions, so if for some reason you have customized
-the styling of your blocks in edit mode relying in the old structure, you might want to
+the styling of your blocks in edit mode relying on the old structure, you might want to
 review and adapt them.
 
 ### Update `config.js`
@@ -1101,7 +1101,7 @@ in async aware like this:
 All the calls for update the title in the document performed by `Helmet` are now
 centralized in the `View.jsx` components. It's recommended to remove all the Helmet
 calls for updating the title from your components specially if you are using some of the
-SEO addons for Volto, since not doing that could interfere with them.
+SEO add-ons for Volto, since not doing that could interfere with them.
 
 ## Upgrading to Volto 4.x.x
 
@@ -1116,7 +1116,7 @@ First, update your `package.json` to Volto 4.x.x.
 
 ### New initial blocks per content type setting in Alpha 37
 
-Not breaking change, but now there's a new setting in Blocks, `initialBlocks` where you can define a the initial blocks for all content types. You can override the default ('title' and a 'text' block) and provide your own by modifying the configuration object:
+Not breaking change, but now there's a new setting in Blocks, `initialBlocks` where you can define the initial blocks for all content types. You can override the default ('title' and a 'text' block) and provide your own by modifying the configuration object:
 
 ```js
 const initialBlocks = {
@@ -1136,7 +1136,7 @@ For better resource grouping, the `ImageSidebar` component has been moved to the
 
 ### Copy `yarn.lock` from volto-starter-kit in Alpha 17
 
-Due to changes in the dependency tree, it's required to use an specific `yarn.lock` file by deleting it and copy the one here: https://github.com/plone/volto-starter-kit/blob/master/yarn.lock before upgrading to Volto alpha 17.
+Due to changes in the dependency tree, it's required to use a specific `yarn.lock` file by deleting it and copy the one here: https://github.com/plone/volto-starter-kit/blob/master/yarn.lock before upgrading to Volto alpha 17.
 
 ### Forked Helmet into Volto core
 
@@ -1157,7 +1157,7 @@ Due to the inactivity of the Helmet project, we decided to fork it to the core. 
 
 ### Alpha 16 is a brownbag release
 
-There was a problem with the projects using Volto eslint config when upgrading to latest versions related to typescript, we will take of that in the near future. So skip this version.
+There was a problem with the projects using Volto eslint config when upgrading to the latest versions related to typescript, we will take of that in the near future. So skip this version.
 
 ### Stylelint and prettier config in Alpha 14
 
@@ -1262,14 +1262,14 @@ See the [blocks section](../blocks/editcomponent.md#openobjectbrowser-handler-ap
 
 An internal renaming to use the term `Blocks` everywhere was done to unify naming through the code a and the documentation.
 
-Plone RESTAPI was updated to that purpose too, and running an upgrade step (do so in Plone's Addons control panel) is required in order to migrate the data. No step is required if you are using a brand new ZODB.
+Plone RESTAPI was updated to that purpose too, and running an upgrade step (do so in Plone's Addons control panel) is required in order to migrate the data. No step is required if you are using a brand-new ZODB.
 
 This is the versions compatibility table across all the packages involved:
 
 Volto 4 - plone.restapi >= 5.0.0 - kitconcept.voltodemo >= 2.0
 
 !!! note
-    The renaming happened in Volto 4 alpha.10 and plone.restapi 5.0.0. Volto 4 alpha versions under that release use older versions of `plone.restapi` and `kitconcept.voltodemo`, however if you are using alpha releases it's recommended to upgrade to latest alpha or the final release of Volto 4.
+The renaming happened in Volto 4 alpha.10 and plone.restapi 5.0.0. Volto 4 alpha versions under that release use older versions of `plone.restapi` and `kitconcept.voltodemo`, however if you are using alpha releases it's recommended to upgrade to the latest alpha or the final release of Volto 4.
 
 The project configuration should also be updated, in your `src/config.js`:
 
@@ -1406,7 +1406,7 @@ In order to upgrade your blocks you should simplify the outer `<div>` (took as e
 
 The blocks engine now takes care for the keyboard navigation of the blocks, so you need to remove the outer `<div>` from your custom block, then your block doesn't have to react to the change on `this.props.selected` either, because it's also something that the blocks engine already does for you.
 
-The focus management is also transferred to the engine, so no needed for your block to manage the focus. However, if your block does indeed require to manage its own focus, then you should mark it with the `blockHasOwnFocusManagement` property in the blocks configuration object:
+The focus management is also transferred to the engine, so it's not needed for your block to manage the focus. However, if your block does indeed require to manage its own focus, then you should mark it with the `blockHasOwnFocusManagement` property in the blocks configuration object:
 
 ``` js hl_lines="10"
     text: {
@@ -1456,7 +1456,7 @@ Then update your `package.json` to Volto 3.x.
 ```
 
 Volto 3.x is compatible with the new changes introduced in the vocabularies
-endpoint in plone.restapi 4.0.0. If you custom build a widget based in the
+endpoint in plone.restapi 4.0.0. If you custom-build a widget based in the
 Volto ones, you should update them as well. Volto updated its own widget set to
 support them:
 
@@ -1470,8 +1470,8 @@ They all use `react-select` third party library for render it.
 
 ### Improved Blocks HOC
 
-The Blocks HOC (High Order Component) was changed to lift off some of the
-features from the blocks themselves and now it takes care of them by its own.
+The Blocks HOC (High Order Component) was changed to lift off some 
+features from the blocks themselves, and now it takes care of them by its own.
 
 - The delete block feature was moved to it
 - The keylisteners for navigating through blocks was moved to it
