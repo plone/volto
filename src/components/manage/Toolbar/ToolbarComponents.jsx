@@ -18,6 +18,7 @@ import pastanagalogo from '@plone/volto/components/manage/Toolbar/pastanaga.svg'
 import penSVG from '@plone/volto/icons/pen.svg';
 import rightArrowSVG from '@plone/volto/icons/right-key.svg';
 import userSVG from '@plone/volto/icons/user.svg';
+import unlockSVG from '@plone/volto/icons/unlock.svg';
 
 // import { matchPath } from 'react-router';
 
@@ -111,19 +112,40 @@ export const connectAction = compose(
 );
 
 export const EditButton = (props) => {
-  const editAction = find(props.actions.object, { id: 'edit' });
+  const lock = props.content?.lock;
+  const unlockAction =
+    lock?.locked && lock?.stealable && lock?.creator !== props.userId;
+  const editAction =
+    !unlockAction && find(props.actions.object, { id: 'edit' });
   const path = getBaseUrl(props.pathname);
 
-  return editAction ? (
-    <Link
-      aria-label={props.intl.formatMessage(messages.edit)}
-      className="edit"
-      to={`${path}/edit`}
-    >
-      <Icon name={penSVG} size="30px" className="circled" />
-    </Link>
-  ) : (
-    ''
+  return (
+    <>
+      {editAction && (
+        <Link
+          aria-label={props.intl.formatMessage(messages.edit)}
+          className="edit"
+          to={`${path}/edit`}
+        >
+          <Icon name={penSVG} size="30px" className="circled" />
+        </Link>
+      )}
+      {unlockAction && (
+        <button
+          aria-label={props.intl.formatMessage(messages.unlock)}
+          className="unlock"
+          onClick={(e) => props.unlockContent(getBaseUrl(props.pathname), true)}
+          tabIndex={0}
+        >
+          <Icon
+            name={unlockSVG}
+            size="30px"
+            className="unlock"
+            title={props.intl.formatMessage(messages.unlock)}
+          />
+        </button>
+      )}
+    </>
   );
 };
 

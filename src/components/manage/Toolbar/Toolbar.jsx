@@ -225,10 +225,6 @@ export class BasicToolbarComponent extends Component {
     this.closeMenu();
   };
 
-  unlock = (e) => {
-    this.props.unlockContent(getBaseUrl(this.props.pathname), true);
-  };
-
   /**
    * Render method.
    * @method render
