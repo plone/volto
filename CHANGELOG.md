@@ -12,6 +12,8 @@
 
 ### Internal
 
+- Add development dependency on use-trace-update, useful for performance debugging @tiberiuichim
+
 ## 14.0.0-alpha.13 (2021-09-30)
 
 ### Feature
