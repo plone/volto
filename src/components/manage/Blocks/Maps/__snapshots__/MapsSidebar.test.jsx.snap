@@ -15,7 +15,7 @@ exports[`renders an Image Block Sidebar component 1`] = `
     className="ui segment form sidebar-image-data"
   >
     <div
-      className="inline field text"
+      className="inline field text field-wrapper-external"
     >
       <div
         className="ui grid"

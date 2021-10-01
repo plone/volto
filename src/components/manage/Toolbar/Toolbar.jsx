@@ -9,6 +9,7 @@ import { matchPath } from 'react-router';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
+import jwtDecode from 'jwt-decode';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import cookie from 'react-cookie';
 import { filter } from 'lodash';
@@ -17,6 +18,7 @@ import {
   getTypes,
   listActions,
   setExpandedToolbar,
+  unlockContent,
 } from '@plone/volto/actions';
 import { BodyClass, getBaseUrl } from '@plone/volto/helpers';
 import { Bottom } from '@plone/volto/components/manage/Toolbar/ToolbarComponents';
@@ -48,6 +50,7 @@ export class BasicToolbarComponent extends Component {
       user: PropTypes.arrayOf(PropTypes.object),
     }),
     token: PropTypes.string,
+    userId: PropTypes.string,
     pathname: PropTypes.string.isRequired,
     content: PropTypes.shape({
       '@type': PropTypes.string,
@@ -63,6 +66,8 @@ export class BasicToolbarComponent extends Component {
       }),
     ),
     listActions: PropTypes.func.isRequired,
+    unlockContent: PropTypes.func,
+    unlockRequest: PropTypes.objectOf(PropTypes.any),
     inner: PropTypes.element.isRequired,
     hideDefaultViewButtons: PropTypes.bool,
   };
@@ -75,6 +80,7 @@ export class BasicToolbarComponent extends Component {
   static defaultProps = {
     actions: null,
     token: null,
+    userId: null,
     content: null,
     hideDefaultViewButtons: false,
     types: [],
@@ -116,6 +122,11 @@ export class BasicToolbarComponent extends Component {
     if (nextProps.pathname !== this.props.pathname) {
       this.props.listActions(getBaseUrl(nextProps.pathname));
       this.props.getTypes(getBaseUrl(nextProps.pathname));
+    }
+
+    // Unlock
+    if (this.props.unlockRequest.loading && nextProps.unlockRequest.loaded) {
+      this.props.listActions(getBaseUrl(nextProps.pathname));
     }
   }
 
@@ -212,6 +223,10 @@ export class BasicToolbarComponent extends Component {
       return;
     }
     this.closeMenu();
+  };
+
+  unlock = (e) => {
+    this.props.unlockContent(getBaseUrl(this.props.pathname), true);
   };
 
   /**
@@ -391,11 +406,15 @@ export const BasicToolbar = compose(
     (state, props) => ({
       actions: state.actions.actions,
       token: state.userSession.token,
+      userId: state.userSession.token
+        ? jwtDecode(state.userSession.token).sub
+        : '',
       content: state.content.data,
       pathname: props.pathname,
       types: filter(state.types.types, 'addable'),
+      unlockRequest: state.content.unlock,
     }),
-    { getTypes, listActions, setExpandedToolbar },
+    { getTypes, listActions, setExpandedToolbar, unlockContent },
   ),
 )(BasicToolbarComponent);
 

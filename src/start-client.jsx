@@ -1,4 +1,4 @@
-import '~/config'; // This is the bootstrap for the global config - client side
+import '@plone/volto/config'; // This is the bootstrap for the global config - client side
 import React from 'react';
 import { hydrate } from 'react-dom';
 import { Provider } from 'react-redux';
@@ -7,6 +7,7 @@ import { ConnectedRouter } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
 import { ReduxAsyncConnect } from '@plone/volto/helpers/AsyncConnect';
 import { loadableReady } from '@loadable/component';
+import debug from 'debug';
 import routes from '~/routes';
 import config from '@plone/volto/registry';
 import '~/theme';
@@ -22,10 +23,7 @@ export const history = createBrowserHistory();
 initSentry(Sentry);
 
 function reactIntlErrorHandler(error) {
-  if (process.env.NODE_ENV !== 'production') {
-    /* eslint no-console: 0 */
-    // console.info(error);
-  }
+  debug('i18n')(error);
 }
 
 export default () => {
@@ -45,6 +43,9 @@ export default () => {
   // If Host header is present (so window.env.apiPath is)
   if (window.env.apiPath) {
     config.settings.apiPath = window.env.apiPath;
+  }
+  if (window.env.publicURL) {
+    config.settings.publicURL = window.env.publicURL;
   }
 
   loadableReady(() => {

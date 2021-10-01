@@ -132,8 +132,8 @@ class ArrayWidget extends Component {
    */
   componentDidMount() {
     if (
-      !this.props.items?.choices &&
-      !this.props.choices &&
+      !this.props.items?.choices?.length &&
+      !this.props.choices?.length &&
       this.vocabBaseUrl
     ) {
       this.props.getVocabulary(this.vocabBaseUrl);
@@ -159,13 +159,13 @@ class ArrayWidget extends Component {
    * @param {string} additional Additional arguments to pass to the next loadOptions.
    * @returns {undefined}
    */
-  loadOptions(search, previousOptions, additional) {
+  loadOptions = (search, previousOptions, additional) => {
     let hasMore = this.props.itemsTotal > previousOptions.length;
-    if (hasMore) {
-      const offset = this.state.search !== search ? 0 : additional.offset;
+    const offset = this.state.search !== search ? 0 : additional.offset;
+    this.setState({ search });
 
+    if (hasMore || this.state.search !== search) {
       this.props.getVocabulary(this.vocabBaseUrl, search, offset);
-      this.setState({ search });
 
       return {
         options:
@@ -179,8 +179,9 @@ class ArrayWidget extends Component {
         },
       };
     }
-    return null;
-  }
+    // We should return always an object like this, if not it complains:
+    return { options: [] };
+  };
 
   /**
    * Handle the field change, store it in the local state and back to simple
@@ -206,7 +207,7 @@ class ArrayWidget extends Component {
   render() {
     const { selectedOption } = this.state;
     const CreatableSelect = this.props.reactSelectCreateable.default;
-    const AsyncPaginate = this.props.reactSelectAsyncPaginate.default;
+    const AsyncPaginate = this.props.reactSelectAsyncPaginate.AsyncPaginate;
 
     return (
       <FormFieldWrapper {...this.props}>
@@ -273,7 +274,7 @@ class ArrayWidget extends Component {
   }
 }
 
-export const ArrayWidgetComponent = ArrayWidget;
+export const ArrayWidgetComponent = injectIntl(ArrayWidget);
 
 export default compose(
   injectIntl,
