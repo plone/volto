@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Get `blocks` and `blocks_layout` defaults from existing behavior when enabling TTW editable DX Layout @avoinea
+
 ### Internal
 
 ## 14.0.0-alpha.13 (2021-09-30)
