@@ -14,6 +14,61 @@
 
 ### Internal
 
+## 14.0.0-alpha.13 (2021-09-30)
+
+### Feature
+
+- Add the new search block @tiberiuichim @kreafox @sneridagh
+
+## 14.0.0-alpha.12 (2021-09-29)
+
+### Bugfix
+
+- Show correct fieldname and not internal field id in Toast error messages on Add/Edit forms @jackahl
+- sitemap.xml.gz obeys Plone Search settings @erral
+
+### Internal
+
+- Use plone.volto instead of kitconcept.volto @tisto
+- Silence customization errors, they are now behind a `RAZZLE_DEBUG_CUSTOMIZATIONS` enviroment variable @sneridagh
+
+## 14.0.0-alpha.11 (2021-09-25)
+
+### Internal
+
+- Use released @plone/scripts, since the builds are broken if it's a local package @sneridagh
+
+## 14.0.0-alpha.10 (2021-09-25)
+
+### Breaking
+
+- New i18n infrastructure in the new `@plone/scripts` package @sneridagh
+- Removed `src/i18n.js` in favor of the above change @sneridagh
+
+### Feature
+
+- Add RAZZLE_I18NDEBUGMODE env var and corresponding i18nDebugMode config setting to enable/disable react-intl error messages. @sneridagh
+
+### Bugfix
+
+- Missing default messages from JSON EN language file @sneridagh
+
+## 14.0.0-alpha.9 (2021-09-21)
+
+### Breaking
+
+- Use the block's title as the source of the translation instead of using the id of the block. See upgrade guide for more information @sneridagh
+
+### Bugfix
+
+- Do not show lead image block when the content type does not have the behavior enabled @sneridagh
+
+## 14.0.0-alpha.8 (2021-09-20)
+
+### Bugfix
+
+- Fix logout action, removing the `__ac` cookie as well, if present. @sneridagh
+
 ## 14.0.0-alpha.7 (2021-09-20)
 
 ### Feature

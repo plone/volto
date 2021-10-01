@@ -7,6 +7,7 @@ import { ConnectedRouter } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
 import { ReduxAsyncConnect } from '@plone/volto/helpers/AsyncConnect';
 import { loadableReady } from '@loadable/component';
+import debug from 'debug';
 import routes from '~/routes';
 import config from '@plone/volto/registry';
 import '~/theme';
@@ -22,10 +23,7 @@ export const history = createBrowserHistory();
 initSentry(Sentry);
 
 function reactIntlErrorHandler(error) {
-  if (process.env.NODE_ENV !== 'production') {
-    /* eslint no-console: 0 */
-    console.info(error);
-  }
+  debug('i18n')(error);
 }
 
 export default () => {
