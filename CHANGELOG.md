@@ -1,6 +1,6 @@
 # Change Log
 
-## 13.0.0 (unreleased)
+## 14.0.0 (unreleased)
 
 ### Breaking
 
@@ -13,6 +13,562 @@ https://docs.voltocms.com/upgrade-guide/
 ### Feature
 
 ### Bugfix
+
+### Internal
+
+## 14.0.0-alpha.14 (2021-10-01)
+
+### Bugfix
+
+- Get `blocks` and `blocks_layout` defaults from existing behavior when enabling TTW editable DX Layout @avoinea
+
+### Internal
+
+- Add development dependency on use-trace-update, useful for performance debugging @tiberiuichim
+- Upgrade to `@plone/scripts` 1.0.3 @sneridagh
+
+## 14.0.0-alpha.13 (2021-09-30)
+
+### Feature
+
+- Add the new search block @tiberiuichim @kreafox @sneridagh
+
+## 14.0.0-alpha.12 (2021-09-29)
+
+### Bugfix
+
+- Show correct fieldname and not internal field id in Toast error messages on Add/Edit forms @jackahl
+- sitemap.xml.gz obeys Plone Search settings @erral
+
+### Internal
+
+- Use plone.volto instead of kitconcept.volto @tisto
+- Silence customization errors, they are now behind a `RAZZLE_DEBUG_CUSTOMIZATIONS` enviroment variable @sneridagh
+
+## 14.0.0-alpha.11 (2021-09-25)
+
+### Internal
+
+- Use released @plone/scripts, since the builds are broken if it's a local package @sneridagh
+
+## 14.0.0-alpha.10 (2021-09-25)
+
+### Breaking
+
+- New i18n infrastructure in the new `@plone/scripts` package @sneridagh
+- Removed `src/i18n.js` in favor of the above change @sneridagh
+
+### Feature
+
+- Add RAZZLE_I18NDEBUGMODE env var and corresponding i18nDebugMode config setting to enable/disable react-intl error messages. @sneridagh
+
+### Bugfix
+
+- Missing default messages from JSON EN language file @sneridagh
+
+## 14.0.0-alpha.9 (2021-09-21)
+
+### Breaking
+
+- Use the block's title as the source of the translation instead of using the id of the block. See upgrade guide for more information @sneridagh
+
+### Bugfix
+
+- Do not show lead image block when the content type does not have the behavior enabled @sneridagh
+
+## 14.0.0-alpha.8 (2021-09-20)
+
+### Bugfix
+
+- Fix logout action, removing the `__ac` cookie as well, if present. @sneridagh
+
+## 14.0.0-alpha.7 (2021-09-20)
+
+### Feature
+
+- Japanese translation updated @terapyon
+- German translations updated @tisto
+
+## 14.0.0-alpha.6 (2021-09-20)
+
+### Bugfix
+
+- Fix SSR on /edit with dev proxy @tiberiuichim
+
+## 14.0.0-alpha.5 (2021-09-20)
+
+### Bugfix
+
+- Fix on form errors in block editor, not changing to metadata tab @sneridagh
+
+## 14.0.0-alpha.4 (2021-09-20)
+
+### Internal
+
+- Bring back the `cypress` folder from the npm ignore files, since the libs in there are required and helpful for projects, remove only the `tests` and `fixtures` @sneridagh
+
+## 14.0.0-alpha.3 (2021-09-20)
+
+### Bugfix
+
+- Fix /edit and /add nonContentRoutes to fix isCmsUi fn @giuliaghisini
+- Register the dev api proxy after the express middleware @tiberiuichim
+
+### Internal
+
+- Update to latest p.restapi (8.9.1) @sneridagh
+- Remove `workingcopy` from checkouts info for kitconcept.volto @sneridagh
+- Remove built workingcopy fixture environment based on local, back to docker based one @sneridagh
+- Add `omelette` to the local Plone backend build @sneridagh
+- Optimize npm package by adding docs/ cypress/ and tests/ to .npmignore @avoinea
+
+## 14.0.0-alpha.2 (2021-09-14)
+
+### Internal
+
+- Revert: Detect when a user has logged in by means other than JWT, such as ZMI `Basic`
+  authentication or the classic HTML Plone `@login` view @rpatterson
+
+## 14.0.0-alpha.1 (2021-09-13)
+
+### Breaking
+
+- Detect when a user has logged in by means other than JWT, such as ZMI `Basic`
+  authentication or the classic HTML Plone `@login` view @rpatterson
+
+### Bugfix
+
+- Fix SelectWidget vocabulary load on second component mount @avoinea #2655
+
+## 14.0.0-alpha.0 (2021-09-08)
+
+### Breaking
+
+- Remove compatibility for old configuration (based on imports) system. Migrate your configuration to the new configuration system for your project before upgrading to Volto 14. See https://docs.voltocms.com/upgrade-guide/#volto-configuration-registry @sneridagh
+- Content locking is not a breaking change, but it's worth noting that Volto 14 comes with locking support enabled by default. Latest `plone.restapi` versions is required. See https://docs.voltocms.com/upgrade-guide/ for more information
+
+### Feature
+
+- Content locking support for Plone (plone.locking) @avoinea
+
+## 13.15.0 (2021-09-07)
+
+### Feature
+
+- Show item title and item type when hovering over item title and item type icon in folder content view @iFlameing
+- Change the batch size of folder content @iFlameing
+- Show loading indicator for listing view @iFlameing
+
+### Bugfix
+
+- Validate `required` touched-only fields in Form everywhere @nileshgulia1
+
+### Internal
+
+- Add placeholder to WysiwygWidget @nzambello
+- Update italian translations @nzambello
+- Get SchemaWidget field factories from backend @avoinea
+
+## 13.14.0 (2021-09-02)
+
+### Feature
+
+- Refactor users and groups controlpanel @nileshgulia1
+
+## 13.13.0 (2021-09-01)
+
+### Feature
+
+- Show version in history view @iFlameing
+- Contents shows also array indexes @nzambello
+
+### Bugfix
+
+- Fix SearchWidget required `pathname` @avoinea #2645
+- Fix for Contents tag modal @nzambello
+- Cut/Copy blocks: fixed cut/copy unselected blocks. @giuliaghisini
+- Properly style QueryWidget when used standalone, outside of QuerystringWidget @kreafox
+- Add location.search as criteria in `ScrollToTop` component @kreafox
+- Scroll to top only if the location pathname changes @kreafox
+
+### Internal
+
+- Disabled all the other configuration options when user did not choose any criteria in listing block @iFlameing
+- Updated Brazilian Portuguese translations @ericof
+- Footer: Point to plone.org instead of plone.com @ericof
+- Array and token widget available as named widget @nzambello
+
+## 13.12.0 (2021-08-20)
+
+### Feature
+
+- Multilingual routing was added for sitemap, search, contact-form, change-password, register and password-reset @ionlizarazu
+- Opening the search input in the object browser, it will get the focus @nzambello
+
+### Bugfix
+
+- Fix ObjectBrowserNav items key @nzambello
+- Fix ObjectBrowserNav aria label: id => title @nzambello
+- Fix missing code in `ArrayWidget` from refactored `SelectWidget` @sneridagh
+
+## 13.11.0 (2021-08-18)
+
+### Feature
+
+- Add select utils `normalizerValue`, add state to the basic select field forcing it to be fully controlled @sneridagh
+
+### Bugfix
+
+- Improve consistency of `TokenWidget`'s use of the choice labels as "values" instead of internal uids assigned by `react-select`. @tiberiuichim
+- Solve glitch in async loading options in `AsyncSelect` components @sneridagh
+
+### Internal
+
+- Add tests for `Select` component, document the use cases propely @sneridagh
+- Upgrade `AsyncSelect` to a version compatible with `react-select` v4 @sneridagh
+- Upgrade to latest `react-select` @sneridagh
+
+## 13.10.0 (2021-08-18)
+
+### Feature
+
+- Increase clickable area of right-arrow in objectBrowser @iFlameing
+- Prevent form submit when clicking on BlockChooserButton @giuliaghisini
+- Make selectedItems Filter work in Contents folder @nileshgulia1
+
+### Bugfix
+
+- Fix SearchWidget search by path @giuliaghisini
+
+## 13.9.0 (2021-08-18)
+
+### Feature
+
+- Removed unnecessary set-cookies for the removal of the authentication cookie when the user is not logged in @mamico
+- Add additional classnames for the field wrappers and the fieldsets in forms, this helps to be more addressable in CSS if required @sneridagh
+
+### Bugfix
+
+- Add title/tooltip on Toolbar buttons @avoinea #1384
+- Slight CSS fix on `ObjectWidget` for supporting long add element button messages @sneridagh
+- Fix the babel view cancel button redirect @iFlameing
+- Show toast error when trying to delete item and it's not permitted @danielamormocea
+
+## 13.8.3 (2021-08-16)
+
+### Bugfix
+
+- Prevent form submit when clicking on BlockChooserButton @giuliaghisini
+- Add missing `publicURL` to the list of `window.env` serialized variables coming from the hosts configuration to complete the support for seamless mode @sneridagh
+
+## 13.8.2 (2021-07-20)
+
+### Bugfix
+
+- Improve `URLWidget` component, so it uses `flattenToURL` for the value @sneridagh
+
+## 13.8.1 (2021-07-16)
+
+### Bugfix
+
+- Missing prop `properties` passed down required for #2579 to work properly @sneridagh
+
+## 13.8.0 (2021-07-14)
+
+### Feature
+
+- A new component was added, `BlockChooserButton`, it encapsulate the logic of show/hiding the `BlockChooser` @tiberiuichim
+- Overload `required` property for blocks config, it supports a function as value taken `properties` (current object data) and `block` (the block being evaluated in `BlockChooser`). The purpose is to enable more control over the available blocks in the Blocks chooser. @sneridagh
+
+### Bugfix
+
+- Add fallback to the "image" field in Image Gallery if the listingPreviewImageField defined in the project is not available on an object @jackahl
+
+## 13.7.0 (2021-07-12)
+
+### Feature
+
+- VocabularyTermsWidget option with translations for config.settings.supportedLanguages @ksuess
+
+### Bugfix
+
+- Fix InlineForm's understanding of missing default values @rexalex
+- Guard in `isInternalURL` to catch non-string values @sneridagh
+
+### Internal
+
+- Update `browserlist` DB @sneridagh
+- Install `luxon` explicitly to fix `rrule` package flickering deps (yarn problem) @sneridagh
+- Add a11y cypress test for table block @ThomasKindermann
+- Add Cypress test for Link content type @tisto
+- Upgrade plone.restapi to 8.4.1 in the dev buildout @tisto
+
+## 13.6.0 (2021-07-03)
+
+### Feature
+
+- Add VocabularyTermsWidget and map to field with widget attribute set to 'vocabularyterms'. @ksuess
+
+### Bugfix
+
+- added "Complementary" landmark-role to skiplink-container for a11y @ThomasKindermann
+- changed breadcrumb link text-color slightly for a11y color contrast @ThomasKindermann
+- changed table headline text color to black for a11y @ThomasKindermann
+
+### Internal
+
+- Updated Brazilian Portuguese translations @ericof
+
+## 13.5.0 (2021-06-30)
+
+### Feature
+
+- Add og tags for social sharing @giuliaghisini @nzambello
+- Add interface for plone seo extensions to use values added by them as metadata @jackahl
+
+### Internal
+
+- Upgrade to Storybook 6.3, refresh deps version for babel @sneridagh
+
+## 13.4.0 (2021-06-29)
+
+### Feature
+
+- Working copy support for Plone (plone.app.iterate) @sneridagh
+
+## 13.3.1 (2021-06-29)
+
+### Internal
+
+- Remove locales .json files pushed again by mistake, now they are no longer needed to be in the repo, since they are generated at runtime, and included in the released versions @sneridagh
+
+## 13.3.0 (2021-06-29)
+
+### Feature
+
+- Allowing user to paste url in search box in objectBrowser @iFlameing
+- Allowing user to click on the breadcrumbs of objectBrowser @iFlameing
+- `Navigation` and `Breadcrumbs` are `apiExpanders` aware and run the action depending on them @sneridagh
+
+### Bugfix
+
+- Fixed docs for config.settings.externalRoutes @giuliaghisini
+- Fix `Pluggable` in the use case that a `Plug` is empty @sneridagh
+- Fix `Login` component navigation for `INavigationRoot` structures @sneridagh
+- Hyphenation block chooser labels (no html changes) @ksuess
+
+### Internal
+
+- Bumps prismjs from 1.23.0 to 1.24.0. @timo
+
+## 13.2.2 (2021-06-18)
+
+### Bugfix
+
+- Avoid debugging error in toolbar @tiberiuichim
+- Fix the bug related to specific versioning view @iFlameing
+- Fix blocks-listing Cypress test @giuliaghisini
+- Fix the translation of header in babel view @iFlameing
+- Fix German translations for leadimage and listing block @timo
+- Show toast success message when adding a new local role @iFlameing
+- Bump postcss from 7.0.29 to 7.0.36 @timo
+- Complete Spanish translation @erral
+- Complete German translation @timo
+
+## 13.2.1 (2021-06-14)
+
+### Bugfix
+
+- Changed 'batch_size' attribute in 'b_size' in querystring widget. @giuliaghisini
+
+### Internal
+
+- Upgrade generator deps @sneridagh
+
+## 13.2.0 (2021-06-12)
+
+### Feature
+
+- Allow passing a schemaEnhancer to QuerystringWidget @tiberiuichim
+- Add internal URL blacklist to avoid render custom routes in Volto @nzambello
+- In listing blocks, scroll to start of listing block instead page start @giuliaghisini
+
+### Bugfix
+
+- Fix addBreaklinesInline when string ends with new line @giuliaghisini
+- Changed 'batch_size' attribute in 'b_size' in querystring widget. @giuliaghisini
+- Properly respect batching and result limits in listing block @tiberiuichim
+- Changed 'batch_size' attribute in 'b_size' in querystring widget. @giuliaghisini
+- Properly respect batching and result limits in listing block @tiberiuichim
+- Improve folder_contents workflow state (#2017) @avoinea
+- Making placeholder image of video block to take 100% width when it is right or left aligned @iFlameing
+- Showing clear icon when title is too long in objectbrowser selected items in multiple mode @iFlameing
+- Use querystring prop in ListingBody @giuliaghisini
+- Set default value selected for variation in listing block @giuliaghisini
+
+### Internal
+
+- Add [Volta](https://volta.sh) support @nzambello
+- Various minor `Makefile` cleanup @rpatterson
+- Improve error handling in UniversalLink @nzambello
+
+## 13.1.2 (2021-05-26)
+
+### Internal
+
+- Make the `AddLinkForm` component generic, to allow reuse in volto-slate @tiberiuichim
+- Adding hover effect on ObjectBrowserNav icon @iFlameing
+
+## 13.1.1 (2021-05-25)
+
+### Bugfix
+
+- Second try to fix images in dev mode when api path is present (e.g. using the Robot server in Cypress tests) @sneridagh
+
+## 13.1.0 (2021-05-24)
+
+### Feature
+
+- enabled ability to set 'extractScripts' for error pages @giuliaghisini
+
+### Bugfix
+
+- Modify Default and Summary templates to render the LinkMore @ionlizarazu
+- Revert #2472, this broke normal development mode images @sneridagh
+
+## 13.0.2 (2021-05-22)
+
+### Bugfix
+
+- Apply the `schemaEnhancer` from the main block even if no variations are found @sneridagh
+
+### Internal
+
+## 13.0.1 (2021-05-18)
+
+### Bugfix
+
+- Backwards compatibility for existing listing blocks with templates @sneridagh
+
+## 13.0.0 (2021-05-18)
+
+### Breaking
+
+- Seamless mode by default in development. Added `Host` header support for production
+  deployments, so no `RAZZLE_API_PATH` is required in production builds anymore if the
+  header is present. Not an strictly breaking change, but it's a default behavior change
+  worth to notice on its own. No change required in your deployments if you suply
+  currently `RAZZLE_API_PATH` in build time. See documentation for more information.
+  @sneridagh
+- Deprecate Node 10 since it's out of LTS since April 30th, 2021 @sneridagh
+- Remove the "inverted" option in Table Block since it was useless with the current CSS
+  set. Better naming of options and labels in table block (English). Updating the i18n messages for the used translations is advisable, but not required. @iFlameing
+- Get rid of the font icons in the control panels overview @sneridagh
+- Refactored `src/components/manage/Widgets/QuerystringWidget` using `ObjectWidget` and schemas @sneridagh
+- Refactored `Listing` block using the new `src/components/manage/Widgets/QuerystringWidget`. Introducing a new `showLinkMore` block option opt-in for the additional feature instead of always-in. Deprecated `ListingSidebar` and `src/components/manage/Blocks/Listing/QuerystringWidget` in favor of the new `src/components/manage/Widgets/QuerystringWidget` @sneridagh
+
+For a more information, please read the upgrade guide
+https://docs.voltocms.com/upgrade-guide/
+
+### Feature
+
+- Compile i18n json locales only at build time on the fly and at release time @sneridagh
+- Change login form fixing accessibility issues @nzambello
+
+### Bugfix
+
+- Fix the Listing block with criteria to render correctly on a non-multilingual homepage. @ionlizarazu
+- Fix selection of previous block when deleting a block @tiberiuichim
+- Disable `Select` components family to lazy load on SSR, since it's breaking and the fix is quite obscure. They are not valuable on SSR responses anyway. @sneridagh
+- Fix leftover from the multilingual fix for composed language names @sneridagh @ericof
+- Translate 'All' label in Contents view pagination. @giuliaghisini
+- Replace `langmap` dependency with internal code that supports composite language names @sneridagh @ericof
+- RenderBlocks: Blocks like the listing block need a path. @ksuess
+- Normalize language to get the correct filename in lazy imports for composite language names @sneridagh @ericof
+- Checkbox not using `null` as false @sneridagh
+- Use params prop in api middleware @giuliaghisini
+- Fix PORT env var handling, if you have set the PORT in build time, the setting was
+  removed back to defaults, now the build time setting is kept (unsetting in build time
+  and set it in runtime is now the recommended setup) @sneridagh
+- Fix sort_order restapi call, works on action for existing listing blocks
+  and in ListingData saving correctly new ones @nzambello
+- Fix `contextURL` in `ObjectBrowser` for special (add/edit) views using `getBaseUrl` @sneridagh
+
+### Internal
+
+- Full real zero configuration achievement by turning the stock default
+  `RAZZLE_PUBLIC_DIR` into a relative path, so we can enable truly movable builds
+  @sneridagh
+- Upgrade Cypress to latest @sneridagh
+- Remove surge since it's not used anymore @sneridagh
+- Upgrade `react-redux` and friends @sneridagh
+- Upgrade `yarnhook` and `yarn-deduplicate` @sneridagh
+- Add Listing block test for root path @ionlizarazu
+- Only log changes to po (`poToJson`) if running as a script @sneridagh
+- Remove json locales from the repo to avoid merge conflicts @sneridagh
+- All the `Select` components family in core are loaded through `Loadables` helper @sneridagh
+- Updated Brazilian Portuguese translations @ericof
+- Improve Github Actions names, separate the code analysis from the main core @sneridagh
+
+## 13.0.0-alpha.10 (2021-05-16)
+
+### Bugfix
+
+- Fix the Listing block with criteria to render correctly on a non-multilingual homepage. @ionlizarazu
+- Fix selection of previous block when deleting a block @tiberiuichim
+
+### Internal
+
+- Upgrade Cypress to latest @sneridagh
+- Remove surge since it's not used anymore @sneridagh
+- Upgrade `react-redux` and friends @sneridagh
+- Upgrade `yarnhook` and `yarn-deduplicate` @sneridagh
+- Add Listing block test for root path @ionlizarazu
+- Only log changes to po (`poToJson`) if running as a script @sneridagh
+
+## 13.0.0-alpha.9 (2021-05-13)
+
+### Feature
+
+- Compile i18n json locales only at build time on the fly and at release time @sneridagh
+
+### Internal
+
+- Remove json locales from the repo to avoid merge conflicts @sneridagh
+
+## 13.0.0-alpha.8 (2021-05-12)
+
+### Bugfix
+
+- Disable `Select` components family to lazy load on SSR, since it's breaking and the fix is quite obscure. They are not valuable on SSR responses anyway. @sneridagh
+
+### Internal
+
+- All the `Select` components family in core are loaded through `Loadables` helper @sneridagh
+
+## 13.0.0-alpha.7 (2021-05-11)
+
+### Bugfix
+
+- Fix leftover from the multilingual fix for composed language names @sneridagh @ericof
+
+### Internal
+
+- Updated Brazilian Portuguese translations @ericof
+
+## 13.0.0-alpha.6 (2021-05-11)
+
+### Bugfix
+
+- Translate 'All' label in Contents view pagination. @giuliaghisini
+- Replace langmap dependency with internal code that supports composite language names @sneridagh @ericof
+
+## 13.0.0-alpha.5 (2021-05-10)
+
+### Bugfix
+
+- RenderBlocks: Blocks like the listing block need a path. @ksuess
+- Normalize language to get the correct filename in lazy imports for composite language names @sneridagh @ericof
 
 ### Internal
 
@@ -195,10 +751,12 @@ https://docs.voltocms.com/upgrade-guide/
 
 ### Bugfix
 
+- fix universal link @nileshgulia1s
 - fixed recurrence widget when weekly recurrence is selected and event start date is on sunday. @giuliaghisini
 - Fix default value for checkbox widget @alexbueckig
 - Fix for forms in content types, the fieldset was not being passed over to the field. This affected form generation ids and labels. @sneridagh
 - Add a bit of a11y love to the `ObjectListWidget` @sneridagh
+- fix universal link when no item content obj passed @nileshgulia1
 
 ### Internal
 
@@ -3071,3 +3629,7 @@ refer to all of them in https://github.com/plone/volto/releases
 - Basic components (navigation, toolbar, breadcrumbs etc) @robgietema
 - Authentication including login / logout @robgietema
 - Setup build environment @robgietema
+
+### Changed
+
+- Fixed passing intl to the schemaExtender in the ObjectListWidget component. @1bsilver

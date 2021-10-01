@@ -13,7 +13,8 @@ import { defineMessages, injectIntl } from 'react-intl';
 import { getQuerystring } from '@plone/volto/actions';
 import { Icon } from '@plone/volto/components';
 import { format, parse } from 'date-fns';
-import loadable from '@loadable/component';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import cx from 'classnames';
 
 import {
   Option,
@@ -23,8 +24,6 @@ import {
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
-
-const Select = loadable(() => import('react-select'));
 
 const messages = defineMessages({
   Criteria: {
@@ -116,7 +115,7 @@ class QuerystringWidget extends Component {
    * @param {number} index Row index.
    * @returns {Object} Widget.
    */
-  getWidget(row, index) {
+  getWidget(row, index, Select) {
     const props = {
       fluid: true,
       value: row.v,
@@ -251,15 +250,18 @@ class QuerystringWidget extends Component {
       onEdit,
       indexes,
       fieldSet,
+      reactSelect,
       intl,
     } = this.props;
+
+    const Select = reactSelect.default;
 
     return (
       <Form.Field
         inline
         required={required}
         error={error.length > 0}
-        className={description ? 'help' : ''}
+        className={cx('query-widget', description ? 'help' : '')}
         id={`${fieldSet || 'field'}-${id}`}
       >
         <Grid>
@@ -383,7 +385,7 @@ class QuerystringWidget extends Component {
                         </Button>
                       )}
                     </div>
-                    {this.getWidget(row, index)}
+                    {this.getWidget(row, index, Select)}
                     {this.props.indexes[row.i].operators[row.o].widget && (
                       <Button
                         onClick={(event) => {
@@ -468,6 +470,7 @@ class QuerystringWidget extends Component {
 
 export default compose(
   injectIntl,
+  injectLazyLibs(['reactSelect']),
   connect(
     (state) => ({
       indexes: state.querystring.indexes,

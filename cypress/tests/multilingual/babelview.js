@@ -23,7 +23,7 @@ describe('Babel View Tests', () => {
     cy.findByText('Translate to italiano').click();
     cy.url().should('eq', Cypress.config().baseUrl + '/it/add?type=Document');
     cy.findByText('Test document');
-    cy.findByText('Traduci in italiano');
+    cy.findByText('Traduci in Italiano');
     cy.get(
       '.new-translation .documentFirstHeading > .public-DraftStyleDefault-block',
     )
@@ -47,7 +47,7 @@ describe('Babel View Tests', () => {
     cy.get('#toolbar-add').click();
     cy.findByText('Translate to italiano').click();
     cy.findByText('Test document');
-    cy.findByText('Traduci in italiano');
+    cy.findByText('Traduci in Italiano');
     cy.get(
       '.new-translation .documentFirstHeading > .public-DraftStyleDefault-block',
     )
@@ -85,5 +85,7 @@ describe('Babel View Tests', () => {
       .type('My IT page edited');
 
     cy.get('#toolbar-save').click();
+    cy.url().should('eq', Cypress.config().baseUrl + '/it/my-it-page');
+    cy.contains('My IT page edited');
   });
 });

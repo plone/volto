@@ -80,7 +80,9 @@ let config = {
     apiPath,
     apiExpanders: [],
     devProxyToApiPath:
-      process.env.RAZZLE_DEV_PROXY_API_PATH || 'http://localhost:8080/Plone', // Set it to '' for disabling the proxy
+      process.env.RAZZLE_DEV_PROXY_API_PATH ||
+      process.env.RAZZLE_API_PATH ||
+      'http://localhost:8080/Plone', // Set it to '' for disabling the proxy
     // proxyRewriteTarget Set it for set a custom target for the proxy or overide the internal VHM rewrite
     // proxyRewriteTarget: '/VirtualHostBase/http/localhost:8080/Plone/VirtualHostRoot/_vh_api'
     // proxyRewriteTarget: 'https://myvoltositeinproduction.com'
@@ -90,6 +92,7 @@ let config = {
     actions_raising_api_errors: ['GET_CONTENT', 'UPDATE_CONTENT'],
     internalApiPath: process.env.RAZZLE_INTERNAL_API_PATH || undefined,
     websockets: process.env.RAZZLE_WEBSOCKETS || false,
+    i18nDebugMode: process.env.RAZZLE_I18NDEBUGMODE || false,
     nonContentRoutes,
     extendedBlockRenderMap,
     blockStyleFn,
@@ -135,7 +138,22 @@ let config = {
     storeExtenders: [],
     showTags: true,
     controlPanelsIcons,
+    externalRoutes: [
+      // URL to be considered as external
+      // {
+      //   match: {
+      //     path: '/news',
+      //     exact: false,
+      //     strict: false,
+      //   },
+      //   url(payload) {
+      //     return payload.location.pathname;
+      //   },
+      // },
+    ],
     showSelfRegistration: false,
+    contentMetadataTagsImageField: 'image',
+    hasWorkingCopySupport: false,
   },
   widgets: {
     ...widgetMapping,
@@ -160,18 +178,10 @@ let config = {
 
 config = applyAddonConfiguration(config);
 
-export const settings = config.settings;
-export const widgets = config.widgets;
-export const views = config.views;
-export const blocks = config.blocks;
-export const addonRoutes = [...config.addonRoutes];
-export const addonReducers = { ...config.addonReducers };
-export const appExtras = config.appExtras;
-
-ConfigRegistry.settings = settings;
-ConfigRegistry.blocks = blocks;
-ConfigRegistry.views = views;
-ConfigRegistry.widgets = widgets;
-ConfigRegistry.addonRoutes = addonRoutes;
-ConfigRegistry.addonReducers = addonReducers;
-ConfigRegistry.appExtras = appExtras;
+ConfigRegistry.settings = config.settings;
+ConfigRegistry.blocks = config.blocks;
+ConfigRegistry.views = config.views;
+ConfigRegistry.widgets = config.widgets;
+ConfigRegistry.addonRoutes = config.addonRoutes;
+ConfigRegistry.addonReducers = config.addonReducers;
+ConfigRegistry.appExtras = config.appExtras;

@@ -14,12 +14,11 @@ import { Button, Grid, Menu } from 'semantic-ui-react';
 import { Portal } from 'react-portal';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
-import langmap from 'langmap';
 import { v4 as uuid } from 'uuid';
 import qs from 'query-string';
 import { toast } from 'react-toastify';
 
-import { createContent, getSchema } from '@plone/volto/actions';
+import { createContent, getSchema, changeLanguage } from '@plone/volto/actions';
 import {
   Form,
   Icon,
@@ -34,6 +33,8 @@ import {
   flattenToAppURL,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
+  langmap,
+  normalizeLanguageName,
 } from '@plone/volto/helpers';
 
 import { preloadLazyLibs } from '@plone/volto/helpers/Loadable';
@@ -61,8 +62,8 @@ const messages = defineMessages({
     defaultMessage: 'Error',
   },
   translateTo: {
-    id: 'Translate to',
-    defaultMessage: 'Translate to',
+    id: 'Translate to {lang}',
+    defaultMessage: 'Translate to {lang}',
   },
 });
 
@@ -217,7 +218,16 @@ class Add extends Component {
    * @returns {undefined}
    */
   onCancel() {
-    this.props.history.push(getBaseUrl(this.props.pathname));
+    if (this.props.location?.state?.translationOf) {
+      const language = this.props.location.state.languageFrom;
+      const langFileName = normalizeLanguageName(language);
+      import('~/../locales/' + langFileName + '.json').then((locale) => {
+        this.props.changeLanguage(language, locale.default);
+      });
+      this.props.history.push(this.props.location?.state?.translationOf);
+    } else {
+      this.props.history.push(getBaseUrl(this.props.pathname));
+    }
   }
 
   form = React.createRef();
@@ -237,9 +247,7 @@ class Add extends Component {
       const translationObject = this.props.location?.state?.translationObject;
 
       const translateTo = translationObject
-        ? langmap?.[
-            this.props.location?.state?.language
-          ]?.nativeName?.toLowerCase()
+        ? langmap?.[this.props.location?.state?.language]?.nativeName
         : null;
 
       // Lookup initialBlocks and initialBlocksLayout within schema
@@ -405,9 +413,9 @@ class Add extends Component {
             <div className="new-translation">
               <Menu pointing secondary attached tabular>
                 <Menu.Item name={translateTo.toUpperCase()} active={true}>
-                  {`${this.props.intl.formatMessage(
-                    messages.translateTo,
-                  )} ${translateTo}`}
+                  {`${this.props.intl.formatMessage(messages.translateTo, {
+                    lang: translateTo,
+                  })}`}
                 </Menu.Item>
               </Menu>
               {pageAdd}
@@ -435,7 +443,7 @@ export default compose(
       returnUrl: qs.parse(props.location.search).return_url,
       type: qs.parse(props.location.search).type,
     }),
-    { createContent, getSchema },
+    { createContent, getSchema, changeLanguage },
   ),
   preloadLazyLibs('cms'),
 )(Add);

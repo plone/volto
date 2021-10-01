@@ -1,16 +1,16 @@
 import '@testing-library/cypress/add-commands';
-
+import { getIfExists } from '../helpers';
 // --- AUTOLOGIN -------------------------------------------------------------
-Cypress.Commands.add('autologin', () => {
+Cypress.Commands.add('autologin', (usr, pass) => {
   let api_url, user, password;
   if (Cypress.env('API') === 'guillotina') {
     api_url = 'http://localhost:8081/db/web';
-    user = 'admin';
-    password = 'admin';
+    user = usr || 'admin';
+    password = pass || 'admin';
   } else {
     api_url = 'http://localhost:55001/plone';
-    user = 'admin';
-    password = 'secret';
+    user = usr || 'admin';
+    password = pass || 'secret';
   }
 
   return cy
@@ -136,6 +136,115 @@ Cypress.Commands.add(
         })
         .then(() => console.log(`${contentType} created`));
     }
+  },
+);
+// Remove content
+Cypress.Commands.add('removeContent', ({ path = '' }) => {
+  let api_url, auth;
+  if (Cypress.env('API') === 'guillotina') {
+    api_url = 'http://localhost:8081/db/web';
+    auth = {
+      user: 'root',
+      pass: 'root',
+    };
+  } else {
+    api_url = 'http://localhost:55001/plone';
+    auth = {
+      user: 'admin',
+      pass: 'secret',
+    };
+  }
+  return cy.request({
+    method: 'DELETE',
+    url: `${api_url}/${path}`,
+    headers: {
+      Accept: 'application/json',
+    },
+    auth: auth,
+  });
+});
+
+// --- CREATE USER --------------------------------------------------------
+Cypress.Commands.add(
+  'createUser',
+  ({
+    username = 'editor',
+    fullname = 'editor',
+    email = 'editor@local.dev',
+    password = 'secret',
+    roles = ['Editor']
+  }) => {
+    let api_url, auth, path;
+    if (Cypress.env('API') === 'guillotina') {
+      api_url = 'http://localhost:8081/db/web';
+      auth = {
+        user: 'root',
+        pass: 'root',
+      };
+      path = 'users';
+    } else {
+      api_url = 'http://localhost:55001/plone';
+      auth = {
+        user: 'admin',
+        pass: 'secret',
+      };
+      path = '@users';
+    }
+
+    return cy
+      .request({
+        method: 'POST',
+        url: `${api_url}/${path}`,
+        headers: {
+          Accept: 'application/json',
+        },
+        auth: auth,
+        body: {
+          "@type": "User",
+          username: username,
+          fullname: fullname,
+          email: email,
+          password: password,
+          roles: roles
+        },
+      })
+      .then(() => console.log(`User ${username} created`));
+  },
+);
+
+// Remove user
+Cypress.Commands.add(
+  'removeUser',
+  (
+    username = 'editor',
+  ) => {
+    let api_url, auth, path;
+    if (Cypress.env('API') === 'guillotina') {
+      api_url = 'http://localhost:8081/db/web';
+      auth = {
+        user: 'root',
+        pass: 'root',
+      };
+      path = 'users';
+    } else {
+      api_url = 'http://localhost:55001/plone';
+      auth = {
+        user: 'admin',
+        pass: 'secret',
+      };
+      path = '@users';
+    }
+
+    return cy
+      .request({
+        method: 'DELETE',
+        url: `${api_url}/${path}/${username}`,
+        headers: {
+          Accept: 'application/json',
+        },
+        auth: auth,
+      })
+      .then(() => console.log(`User ${username} removed`));
   },
 );
 
@@ -337,3 +446,4 @@ Cypress.Commands.add('store', () => {
 Cypress.Commands.add('settings', (key, value) => {
   return cy.window().its('settings');
 });
+Cypress.Commands.add('getIfExists', getIfExists);

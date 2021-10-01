@@ -20,7 +20,7 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
         className="icon"
         dangerouslySetInnerHTML={
           Object {
-            "__html": undefined,
+            "__html": "<title>Back</title>undefined",
           }
         }
         onClick={null}
@@ -50,7 +50,7 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
         className="icon logout"
         dangerouslySetInnerHTML={
           Object {
-            "__html": undefined,
+            "__html": "<title>Logout</title>undefined",
           }
         }
         onClick={null}

@@ -6,6 +6,8 @@ import {
   GET_CONTENT,
   RESET_CONTENT,
   UPDATE_CONTENT,
+  LOCK_CONTENT,
+  UNLOCK_CONTENT,
 } from '@plone/volto/constants/ActionTypes';
 
 const { settings } = config;
@@ -28,6 +30,11 @@ describe('Content reducer', () => {
         loading: false,
         error: null,
       },
+      lock: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
       order: {
         loaded: false,
         loading: false,
@@ -45,6 +52,11 @@ describe('Content reducer', () => {
       },
       data: null,
       subrequests: {},
+      unlock: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
     });
   });
 
@@ -479,6 +491,92 @@ describe('Content reducer', () => {
       ),
     ).toMatchObject({
       subrequests: {},
+    });
+  });
+
+  it('should handle LOCK_CONTENT_PENDING', () => {
+    expect(
+      content(undefined, {
+        type: `${LOCK_CONTENT}_PENDING`,
+      }),
+    ).toMatchObject({
+      lock: {
+        loaded: false,
+        loading: true,
+        error: null,
+      },
+    });
+  });
+
+  it('should handle LOCK_CONTENT_SUCCESS', () => {
+    expect(
+      content(undefined, {
+        type: `${LOCK_CONTENT}_SUCCESS`,
+      }),
+    ).toMatchObject({
+      lock: {
+        loaded: true,
+        loading: false,
+        error: null,
+      },
+    });
+  });
+
+  it('should handle LOCK_CONTENT_FAIL', () => {
+    expect(
+      content(undefined, {
+        type: `${LOCK_CONTENT}_FAIL`,
+        error: 'failed',
+      }),
+    ).toMatchObject({
+      lock: {
+        loaded: false,
+        loading: false,
+        error: 'failed',
+      },
+    });
+  });
+
+  it('should handle UNLOCK_CONTENT_PENDING', () => {
+    expect(
+      content(undefined, {
+        type: `${UNLOCK_CONTENT}_PENDING`,
+      }),
+    ).toMatchObject({
+      unlock: {
+        loaded: false,
+        loading: true,
+        error: null,
+      },
+    });
+  });
+
+  it('should handle UNLOCK_CONTENT_SUCCESS', () => {
+    expect(
+      content(undefined, {
+        type: `${UNLOCK_CONTENT}_SUCCESS`,
+      }),
+    ).toMatchObject({
+      unlock: {
+        loaded: true,
+        loading: false,
+        error: null,
+      },
+    });
+  });
+
+  it('should handle UNLOCK_CONTENT_FAIL', () => {
+    expect(
+      content(undefined, {
+        type: `${UNLOCK_CONTENT}_FAIL`,
+        error: 'failed',
+      }),
+    ).toMatchObject({
+      unlock: {
+        loaded: false,
+        loading: false,
+        error: 'failed',
+      },
     });
   });
 });

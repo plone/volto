@@ -16,6 +16,8 @@ import config from '@plone/volto/registry';
  */
 export const getBaseUrl = memoize((url) => {
   const { settings } = config;
+  if (url === undefined) return;
+
   // We allow settings.nonContentRoutes to have strings (that are supposed to match
   // ending strings of pathnames, so we are converting them to RegEx to match also
   const normalized_nonContentRoutes = settings.nonContentRoutes.map((item) => {
@@ -172,12 +174,13 @@ export function addAppURL(url) {
 export function isInternalURL(url) {
   const { settings } = config;
   return (
-    url.indexOf(settings.publicURL) !== -1 ||
-    url.indexOf(settings.internalApiPath) !== -1 ||
-    url.indexOf(settings.apiPath) !== -1 ||
-    url.charAt(0) === '/' ||
-    url.charAt(0) === '.' ||
-    url.startsWith('#')
+    url &&
+    (url.indexOf(settings.publicURL) !== -1 ||
+      url.indexOf(settings.internalApiPath) !== -1 ||
+      url.indexOf(settings.apiPath) !== -1 ||
+      url.charAt(0) === '/' ||
+      url.charAt(0) === '.' ||
+      url.startsWith('#'))
   );
 }
 

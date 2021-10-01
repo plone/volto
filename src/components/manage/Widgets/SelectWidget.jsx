@@ -7,28 +7,24 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { map, find, isBoolean, isObject, intersection, isArray } from 'lodash';
+import { map, intersection } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
-import loadable from '@loadable/component';
-
 import {
-  getBoolean,
   getVocabFromHint,
   getVocabFromField,
   getVocabFromItems,
 } from '@plone/volto/helpers';
 import { FormFieldWrapper } from '@plone/volto/components';
 import { getVocabulary, getVocabularyTokenTitle } from '@plone/volto/actions';
+import { normalizeValue } from './SelectUtils';
 
 import {
-  Option,
-  DropdownIndicator,
-  selectTheme,
   customSelectStyles,
+  DropdownIndicator,
+  Option,
+  selectTheme,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
-
-const Select = loadable(() => import('react-select'));
-const AsyncPaginate = loadable(() => import('react-select-async-paginate'));
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 const messages = defineMessages({
   default: {
@@ -76,43 +72,6 @@ const messages = defineMessages({
     defaultMessage: 'No options',
   },
 });
-
-function getDefaultValues(choices, value) {
-  if (!isObject(value) && isBoolean(value)) {
-    // We have a boolean value, which means we need to provide a "No value"
-    // option
-    const label = find(choices, (o) => getBoolean(o[0]) === value);
-    return label
-      ? {
-          label: label[1],
-          value,
-        }
-      : {};
-  }
-  if (!value || value.length === 0) return null;
-  if (value === 'no-value') {
-    return {
-      label: this.props.intl.formatMessage(messages.no_value),
-      value: 'no-value',
-    };
-  }
-
-  if (isArray(value) && choices.length > 0) {
-    return value.map((v) => ({
-      label: find(choices, (o) => o[0] === v)?.[1] || v,
-      value: v,
-    }));
-  } else if (isObject(value)) {
-    return {
-      label: value.title !== 'None' && value.title ? value.title : value.token,
-      value: value.token,
-    };
-  } else if (value && choices.length > 0) {
-    return { label: find(choices, (o) => o[0] === value)?.[1] || value, value };
-  } else {
-    return [];
-  }
-}
 
 /**
  * SelectWidget component class.
@@ -185,9 +144,9 @@ class SelectWidget extends Component {
   };
 
   state = {
-    selectedOption: this.props.value
-      ? { label: this.props.value.title, value: this.props.value.value }
-      : {},
+    // TODO: also take into account this.props.defaultValue?
+    selectedOption: normalizeValue(this.props.choices, this.props.value),
+    search: '',
   };
 
   /**
@@ -196,7 +155,7 @@ class SelectWidget extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    if (!this.props.choices && this.props.vocabBaseUrl) {
+    if (!this.props.choices?.length && this.props.vocabBaseUrl) {
       this.props.getVocabulary(this.props.vocabBaseUrl);
     }
   }
@@ -211,10 +170,11 @@ class SelectWidget extends Component {
    */
   loadOptions = (search, previousOptions, additional) => {
     let hasMore = this.props.itemsTotal > previousOptions.length;
-    if (hasMore) {
-      const offset = this.state.search !== search ? 0 : additional.offset;
+    const offset = this.state.search !== search ? 0 : additional.offset;
+    this.setState({ search });
+
+    if (hasMore || this.state.search !== search) {
       this.props.getVocabulary(this.props.vocabBaseUrl, search, offset);
-      this.setState({ search });
 
       return {
         options:
@@ -228,7 +188,8 @@ class SelectWidget extends Component {
         },
       };
     }
-    return null;
+    // We should return always an object like this, if not it complains:
+    return { options: [] };
   };
 
   /**
@@ -249,14 +210,18 @@ class SelectWidget extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { id, choices, value, onChange } = this.props;
+    const { id, choices, onChange } = this.props;
+    // Make sure that both disabled and isDisabled (from the DX layout feat work)
+    const disabled = this.props.disabled || this.props.isDisabled;
+    const Select = this.props.reactSelect.default;
+    const AsyncPaginate = this.props.reactSelectAsyncPaginate.AsyncPaginate;
 
     return (
       <FormFieldWrapper {...this.props}>
         {this.props.vocabBaseUrl ? (
           <>
             <AsyncPaginate
-              isDisabled={this.props.isDisabled}
+              isDisabled={disabled}
               className="react-select-container"
               classNamePrefix="react-select"
               options={this.props.choices || []}
@@ -280,7 +245,7 @@ class SelectWidget extends Component {
             id={`field-${id}`}
             key={this.props.choices}
             name={id}
-            isDisabled={this.props.isDisabled}
+            isDisabled={disabled}
             className="react-select-container"
             classNamePrefix="react-select"
             isMulti={
@@ -295,7 +260,9 @@ class SelectWidget extends Component {
                   // Fix "None" on the serializer, to remove when fixed in p.restapi
                   option[1] !== 'None' && option[1] ? option[1] : option[0],
               })),
-              ...(this.props.noValueOption
+              // Only set "no-value" option if there's no default in the field
+              // TODO: also if this.props.defaultValue?
+              ...(this.props.noValueOption && !this.props.default
                 ? [
                     {
                       label: this.props.intl.formatMessage(messages.no_value),
@@ -307,18 +274,14 @@ class SelectWidget extends Component {
             styles={customSelectStyles}
             theme={selectTheme}
             components={{ DropdownIndicator, Option }}
-            defaultValue={getDefaultValues(choices, value)}
-            onChange={(data) => {
-              let dataValue = [];
-              if (Array.isArray(data)) {
-                for (let obj of data) {
-                  dataValue.push(obj.value);
-                }
-                return onChange(id, dataValue);
-              }
+            value={this.state.selectedOption}
+            onChange={(selectedOption) => {
+              this.setState({ selectedOption });
               return onChange(
                 id,
-                data && data.value !== 'no-value' ? data.value : undefined,
+                selectedOption && selectedOption.value !== 'no-value'
+                  ? selectedOption.value
+                  : undefined,
               );
             }}
           />
@@ -328,8 +291,11 @@ class SelectWidget extends Component {
   }
 }
 
+export const SelectWidgetComponent = injectIntl(SelectWidget);
+
 export default compose(
   injectIntl,
+  injectLazyLibs(['reactSelect', 'reactSelectAsyncPaginate']),
   connect(
     (state, props) => {
       const vocabBaseUrl = !props.choices

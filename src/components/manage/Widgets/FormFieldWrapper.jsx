@@ -103,7 +103,11 @@ class FormFieldWrapper extends Component {
         inline
         required={required}
         error={error.length > 0}
-        className={cx(description ? 'help' : '', className)}
+        className={cx(
+          description ? 'help' : '',
+          className,
+          `field-wrapper-${id}`,
+        )}
       >
         <Grid>
           <Grid.Row stretched>

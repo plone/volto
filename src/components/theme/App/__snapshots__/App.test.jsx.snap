@@ -3,7 +3,9 @@
 exports[`App renders a app component 1`] = `
 Array [
   <div
+    aria-label="skiplinks"
     className="skiplinks-wrapper"
+    role="complementary"
   >
     <a
       className="skiplink"

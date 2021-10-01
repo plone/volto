@@ -1,5 +1,5 @@
 /* eslint no-console: 0 */
-import '~/config'; // This is the bootstrap for the global config - server side
+import '@plone/volto/config'; // This is the bootstrap for the global config - server side
 import { existsSync, lstatSync, readFileSync } from 'fs';
 import React from 'react';
 import { StaticRouter } from 'react-router-dom';
@@ -16,6 +16,8 @@ import path from 'path';
 import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
 import { createProxyMiddleware } from 'http-proxy-middleware';
 import { resetServerContext } from 'react-beautiful-dnd';
+import querystring from 'querystring';
+import debug from 'debug';
 
 import routes from '~/routes';
 import config from '@plone/volto/registry';
@@ -25,6 +27,7 @@ import {
   Html,
   Api,
   persistAuthToken,
+  normalizeLanguageName,
 } from '@plone/volto/helpers';
 import { changeLanguage } from '@plone/volto/actions';
 
@@ -41,13 +44,22 @@ let locales = {};
 
 if (config.settings) {
   config.settings.supportedLanguages.forEach((lang) => {
-    import('~/../locales/' + lang + '.json').then((locale) => {
+    const langFileName = normalizeLanguageName(lang);
+    import('~/../locales/' + langFileName + '.json').then((locale) => {
       locales = { ...locales, [lang]: locale.default };
     });
   });
 }
 
+function reactIntlErrorHandler(error) {
+  debug('i18n')(error);
+}
+
 const supported = new locale.Locales(keys(languages), 'en');
+
+const expressMiddleware = (config.settings.expressMiddleware || []).filter(
+  (m) => typeof m !== 'undefined',
+);
 
 const server = express()
   .disable('x-powered-by')
@@ -56,6 +68,8 @@ const server = express()
     // Support for HEAD requests. Required by start-test utility in CI.
     res.send('');
   });
+
+if (expressMiddleware.length) server.use('/', expressMiddleware);
 
 // Internal proxy to bypass CORS while developing.
 if (__DEVELOPMENT__ && config.settings.devProxyToApiPath) {
@@ -67,21 +81,41 @@ if (__DEVELOPMENT__ && config.settings.devProxyToApiPath) {
   const proxyURL = parseUrl(config.settings.devProxyToApiPath);
   const serverURL = `${proxyURL.protocol}//${proxyURL.host}`;
   const instancePath = proxyURL.pathname;
-  server.use(
-    createProxyMiddleware(filter, {
-      target: serverURL,
-      pathRewrite: {
-        '^/':
-          config.settings.proxyRewriteTarget ||
-          `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot/`,
-      },
-      logLevel: 'silent', // change to 'debug' to see all requests
-      ...(config.settings?.proxyRewriteTarget?.startsWith('https') && {
-        changeOrigin: true,
-        secure: false,
-      }),
+
+  const proxyMiddleware = createProxyMiddleware(filter, {
+    onProxyReq: (proxyReq, req, res) => {
+      // Fixes https://github.com/chimurai/http-proxy-middleware/issues/320
+      if (!req.body || !Object.keys(req.body).length) {
+        return;
+      }
+
+      const contentType = proxyReq.getHeader('Content-Type');
+      const writeBody = (bodyData) => {
+        proxyReq.setHeader('Content-Length', Buffer.byteLength(bodyData));
+        proxyReq.write(bodyData);
+      };
+
+      if (contentType.includes('application/json')) {
+        writeBody(JSON.stringify(req.body));
+      }
+
+      if (contentType.includes('application/x-www-form-urlencoded')) {
+        writeBody(querystring.stringify(req.body));
+      }
+    },
+    target: serverURL,
+    pathRewrite: {
+      '^/':
+        config.settings.proxyRewriteTarget ||
+        `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot/`,
+    },
+    logLevel: 'silent', // change to 'debug' to see all requests
+    ...(config.settings?.proxyRewriteTarget?.startsWith('https') && {
+      changeOrigin: true,
+      secure: false,
     }),
-  );
+  });
+  server.use(proxyMiddleware);
 }
 
 server.all('*', setupServer);
@@ -124,7 +158,7 @@ function setupServer(req, res, next) {
 
   function errorHandler(error) {
     const errorPage = (
-      <Provider store={store}>
+      <Provider store={store} onError={reactIntlErrorHandler}>
         <StaticRouter context={{}} location={req.url}>
           <ErrorPage message={error.message} />
         </StaticRouter>
@@ -156,11 +190,6 @@ function setupServer(req, res, next) {
 
   next();
 }
-
-const expressMiddleware = (config.settings.expressMiddleware || []).filter(
-  (m) => typeof m !== 'undefined',
-);
-if (expressMiddleware.length) server.use('/', expressMiddleware);
 
 server.get('/*', (req, res) => {
   const { store, api, errorHandler } = req.app.locals;
@@ -199,7 +228,7 @@ server.get('/*', (req, res) => {
       resetServerContext();
       const markup = renderToString(
         <ChunkExtractorManager extractor={extractor}>
-          <Provider store={store}>
+          <Provider store={store} onError={reactIntlErrorHandler}>
             <StaticRouter context={context} location={req.url}>
               <ReduxAsyncConnect routes={routes} helpers={api} />
             </StaticRouter>
@@ -224,9 +253,13 @@ server.get('/*', (req, res) => {
                   extractor={extractor}
                   markup={markup}
                   store={store}
-                  extractScripts={process.env.NODE_ENV !== 'production'}
+                  extractScripts={
+                    config.settings.serverConfig.extractScripts?.errorPages ||
+                    process.env.NODE_ENV !== 'production'
+                  }
                   criticalCss={readCriticalCss(req)}
                   apiPath={apiPathFromHostHeader || config.settings.apiPath}
+                  publicURL={apiPathFromHostHeader || config.settings.publicURL}
                 />,
               )}
             `,
@@ -241,6 +274,7 @@ server.get('/*', (req, res) => {
                   store={store}
                   criticalCss={readCriticalCss(req)}
                   apiPath={apiPathFromHostHeader || config.settings.apiPath}
+                  publicURL={apiPathFromHostHeader || config.settings.publicURL}
                 />,
               )}
             `,

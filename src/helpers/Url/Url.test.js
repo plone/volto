@@ -48,6 +48,12 @@ describe('Url', () => {
         '/bla/doh/sharing-my-test/doh/bla',
       );
     });
+    it('does nothing if no url is undefined', () => {
+      expect(getBaseUrl(undefined)).toBe(undefined);
+    });
+    it('return empty string if no url is empty string', () => {
+      expect(getBaseUrl('')).toBe('');
+    });
   });
 
   describe('getView', () => {
@@ -176,6 +182,14 @@ describe('Url', () => {
     it('tells if an URL is internal if a relative path', () => {
       const href = './../';
       expect(isInternalURL(href)).toBe(true);
+    });
+    it('Behave if URL is not a string', () => {
+      const href = null;
+      expect(isInternalURL(href)).toBe(null);
+    });
+    it('Behave if URL is not a string II', () => {
+      const href = undefined;
+      expect(isInternalURL(href)).toBe(undefined);
     });
   });
   describe('isUrl', () => {

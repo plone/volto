@@ -1,12 +1,12 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   changeLanguage,
   getTranslationLocator,
   getContent,
 } from '@plone/volto/actions';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { flattenToAppURL, normalizeLanguageName } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
 const CreateTranslation = (props) => {
@@ -14,6 +14,7 @@ const CreateTranslation = (props) => {
   const { language, translationOf } = props.location.state;
   const [translationLocation, setTranslationLocation] = React.useState(null);
   const [translationObject, setTranslationObject] = React.useState(null);
+  const languageFrom = useSelector((state) => state.intl.locale);
 
   React.useEffect(() => {
     // Only on mount, we dispatch the locator query
@@ -32,7 +33,8 @@ const CreateTranslation = (props) => {
     return () => {
       // We change the interface language
       if (config.settings.supportedLanguages.includes(language)) {
-        import('~/../locales/' + language + '.json').then((locale) => {
+        const langFileName = normalizeLanguageName(language);
+        import('~/../locales/' + langFileName + '.json').then((locale) => {
           dispatch(changeLanguage(language, locale.default));
         });
       }
@@ -52,6 +54,7 @@ const CreateTranslation = (props) => {
             translationOf: props.location.state.translationOf,
             language: props.location.state.language,
             translationObject: translationObject,
+            languageFrom,
           },
         }}
       />

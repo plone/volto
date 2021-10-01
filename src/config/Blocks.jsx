@@ -39,6 +39,7 @@ import heroSVG from '@plone/volto/icons/hero.svg';
 import tableSVG from '@plone/volto/icons/table.svg';
 import listBulletSVG from '@plone/volto/icons/list-bullet.svg';
 import tocSVG from '@plone/volto/icons/list-bullet.svg';
+import searchSVG from '@plone/volto/icons/zoom.svg';
 
 import ImageGalleryListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/ImageGallery';
 import BlockSettingsSchema from '@plone/volto/components/manage/Blocks/Block/Schema';
@@ -46,6 +47,16 @@ import TextSettingsSchema from '@plone/volto/components/manage/Blocks/Text/Schem
 import ImageSettingsSchema from '@plone/volto/components/manage/Blocks/Image/Schema';
 import ToCSettingsSchema from '@plone/volto/components/manage/Blocks/ToC/Schema';
 
+import SearchBlockView from '@plone/volto/components/manage/Blocks/Search/SearchBlockView';
+import SearchBlockEdit from '@plone/volto/components/manage/Blocks/Search/SearchBlockEdit';
+
+import RightColumnFacets from '@plone/volto/components/manage/Blocks/Search/layout/RightColumnFacets';
+import LeftColumnFacets from '@plone/volto/components/manage/Blocks/Search/layout/LeftColumnFacets';
+import TopSideFacets from '@plone/volto/components/manage/Blocks/Search/layout/TopSideFacets';
+import {
+  SelectFacet,
+  CheckboxFacet,
+} from '@plone/volto/components/manage/Blocks/Search/components';
 import getListingBlockAsyncProps from '@plone/volto/components/manage/Blocks/Listing/getAsyncProps';
 
 defineMessages({
@@ -128,7 +139,10 @@ const blocksConfig = {
     view: ViewTitleBlock,
     edit: EditTitleBlock,
     schema: BlockSettingsSchema,
-    restricted: true,
+    restricted: ({ properties, block }) =>
+      properties.blocks_layout?.items?.find(
+        (uid) => properties.blocks?.[uid]?.['@type'] === block.id,
+      ),
     mostUsed: false,
     blockHasOwnFocusManagement: true,
     sidebarTab: 0,
@@ -201,7 +215,7 @@ const blocksConfig = {
     view: ViewLeadImageBlock,
     edit: EditLeadImageBlock,
     schema: BlockSettingsSchema,
-    restricted: false,
+    restricted: ({ properties }) => !properties.hasOwnProperty('image'),
     mostUsed: false,
     sidebarTab: 1,
     security: {
@@ -341,6 +355,67 @@ const blocksConfig = {
     security: {
       addPermission: [],
       view: [],
+    },
+  },
+  search: {
+    id: 'search',
+    title: 'Search',
+    icon: searchSVG,
+    group: 'common',
+    view: SearchBlockView,
+    edit: SearchBlockEdit,
+    restricted: false,
+    mostUsed: false,
+    sidebarTab: 1,
+    security: {
+      addPermission: [],
+      view: [],
+    },
+    variations: [
+      {
+        id: 'facetsRightSide',
+        title: 'Facets on right side',
+        view: RightColumnFacets,
+        isDefault: true,
+      },
+      {
+        id: 'facetsLeftSide',
+        title: 'Facets on left side',
+        view: LeftColumnFacets,
+        isDefault: false,
+      },
+      {
+        id: 'facetsTopSide',
+        title: 'Facets on top',
+        view: TopSideFacets,
+        isDefault: false,
+      },
+    ],
+    extensions: {
+      facetWidgets: {
+        rewriteOptions: (name, choices) => {
+          return name === 'review_state'
+            ? choices.map((opt) => ({
+                ...opt,
+                label: opt.label.replace(/\[.+\]/, '').trim(),
+              }))
+            : choices;
+        },
+        types: [
+          {
+            id: 'selectFacet',
+            title: 'Select',
+            view: SelectFacet,
+            isDefault: true,
+          },
+          {
+            id: 'checkboxFacet',
+            title: 'Checkbox',
+            view: CheckboxFacet,
+            isDefault: false,
+          },
+        ],
+      },
     },
   },
 };
