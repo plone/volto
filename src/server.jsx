@@ -52,6 +52,10 @@ if (config.settings) {
 
 const supported = new locale.Locales(keys(languages), 'en');
 
+const expressMiddleware = (config.settings.expressMiddleware || []).filter(
+  (m) => typeof m !== 'undefined',
+);
+
 const server = express()
   .disable('x-powered-by')
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
@@ -59,6 +63,55 @@ const server = express()
     // Support for HEAD requests. Required by start-test utility in CI.
     res.send('');
   });
+
+if (expressMiddleware.length) server.use('/', expressMiddleware);
+
+// Internal proxy to bypass CORS while developing.
+if (__DEVELOPMENT__ && config.settings.devProxyToApiPath) {
+  // This is the proxy to the API in case the accept header is 'application/json'
+  const filter = function (pathname, req) {
+    return req.headers.accept === 'application/json';
+  };
+  const apiPathURL = parseUrl(config.settings.apiPath);
+  const proxyURL = parseUrl(config.settings.devProxyToApiPath);
+  const serverURL = `${proxyURL.protocol}//${proxyURL.host}`;
+  const instancePath = proxyURL.pathname;
+
+  const proxyMiddleware = createProxyMiddleware(filter, {
+    onProxyReq: (proxyReq, req, res) => {
+      // Fixes https://github.com/chimurai/http-proxy-middleware/issues/320
+      if (!req.body || !Object.keys(req.body).length) {
+        return;
+      }
+
+      const contentType = proxyReq.getHeader('Content-Type');
+      const writeBody = (bodyData) => {
+        proxyReq.setHeader('Content-Length', Buffer.byteLength(bodyData));
+        proxyReq.write(bodyData);
+      };
+
+      if (contentType.includes('application/json')) {
+        writeBody(JSON.stringify(req.body));
+      }
+
+      if (contentType.includes('application/x-www-form-urlencoded')) {
+        writeBody(querystring.stringify(req.body));
+      }
+    },
+    target: serverURL,
+    pathRewrite: {
+      '^/':
+        config.settings.proxyRewriteTarget ||
+        `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot/`,
+    },
+    logLevel: 'silent', // change to 'debug' to see all requests
+    ...(config.settings?.proxyRewriteTarget?.startsWith('https') && {
+      changeOrigin: true,
+      secure: false,
+    }),
+  });
+  server.use(proxyMiddleware);
+}
 
 server.all('*', setupServer);
 
@@ -131,59 +184,6 @@ function setupServer(req, res, next) {
   };
 
   next();
-}
-
-const expressMiddleware = (config.settings.expressMiddleware || []).filter(
-  (m) => typeof m !== 'undefined',
-);
-if (expressMiddleware.length) server.use('/', expressMiddleware);
-
-// Internal proxy to bypass CORS while developing.
-if (__DEVELOPMENT__ && config.settings.devProxyToApiPath) {
-  // This is the proxy to the API in case the accept header is 'application/json'
-  const filter = function (pathname, req) {
-    return req.headers.accept === 'application/json';
-  };
-  const apiPathURL = parseUrl(config.settings.apiPath);
-  const proxyURL = parseUrl(config.settings.devProxyToApiPath);
-  const serverURL = `${proxyURL.protocol}//${proxyURL.host}`;
-  const instancePath = proxyURL.pathname;
-
-  const proxyMiddleware = createProxyMiddleware(filter, {
-    onProxyReq: (proxyReq, req, res) => {
-      // Fixes https://github.com/chimurai/http-proxy-middleware/issues/320
-      if (!req.body || !Object.keys(req.body).length) {
-        return;
-      }
-
-      const contentType = proxyReq.getHeader('Content-Type');
-      const writeBody = (bodyData) => {
-        proxyReq.setHeader('Content-Length', Buffer.byteLength(bodyData));
-        proxyReq.write(bodyData);
-      };
-
-      if (contentType.includes('application/json')) {
-        writeBody(JSON.stringify(req.body));
-      }
-
-      if (contentType.includes('application/x-www-form-urlencoded')) {
-        writeBody(querystring.stringify(req.body));
-      }
-    },
-    target: serverURL,
-    pathRewrite: {
-      '^/':
-        config.settings.proxyRewriteTarget ||
-        `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot/`,
-    },
-    logLevel: 'silent', // change to 'debug' to see all requests
-    ...(config.settings?.proxyRewriteTarget?.startsWith('https') && {
-      changeOrigin: true,
-      secure: false,
-    }),
-  });
-  // server.use(express.json());
-  server.use(proxyMiddleware);
 }
 
 server.get('/*', (req, res) => {

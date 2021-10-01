@@ -1,8 +1,12 @@
 # Change Log
 
-## 14.0.0 (unreleased)
+## 14.0.0-alpha.8 (2021-09-20)
 
-### Breaking
+### Bugfix
+
+- Fix logout action, removing the `__ac` cookie as well, if present. @sneridagh
+
+## 14.0.0-alpha.7 (2021-09-20)
 
 ### Feature
 
@@ -28,6 +32,27 @@
 - Footer: Point to plone.org instead of plone.com @ericof
 
 - Fix reactSelectAsyncPaginate in ArrayWidget and SelectWidget, and fix required prop of SearchWidget. @giuliaghisini
+- Japanese translation updated @terapyon
+- German translations updated @tisto
+
+## 14.0.0-alpha.6 (2021-09-20)
+
+### Bugfix
+
+- Fix SSR on /edit with dev proxy @tiberiuichim
+
+## 14.0.0-alpha.5 (2021-09-20)
+
+### Bugfix
+
+- Fix on form errors in block editor, not changing to metadata tab @sneridagh
+
+## 14.0.0-alpha.4 (2021-09-20)
+
+### Internal
+
+- Bring back the `cypress` folder from the npm ignore files, since the libs in there are required and helpful for projects, remove only the `tests` and `fixtures` @sneridagh
+
 ## 14.0.0-alpha.3 (2021-09-20)
 
 ### Bugfix
