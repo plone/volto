@@ -8,10 +8,29 @@
 
 ### Bugfix
 
+- Get `blocks` and `blocks_layout` defaults from existing behavior when enabling TTW editable DX Layout @avoinea
+
+### Internal
+
+- Add development dependency on use-trace-update, useful for performance debugging @tiberiuichim
+
+## 14.0.0-alpha.13 (2021-09-30)
+
+### Feature
+
+- Add the new search block @tiberiuichim @kreafox @sneridagh
+
+## 14.0.0-alpha.12 (2021-09-29)
+
+### Bugfix
+
+- Show correct fieldname and not internal field id in Toast error messages on Add/Edit forms @jackahl
+- sitemap.xml.gz obeys Plone Search settings @erral
+
 ### Internal
 
 - Use plone.volto instead of kitconcept.volto @tisto
-- Add development dependency on use-trace-update, useful for performance debugging @tiberiuichim
+- Silence customization errors, they are now behind a `RAZZLE_DEBUG_CUSTOMIZATIONS` enviroment variable @sneridagh
 
 ## 14.0.0-alpha.11 (2021-09-25)
 

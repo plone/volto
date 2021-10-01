@@ -244,6 +244,11 @@ msgstr "Atzera"
 msgid "Base"
 msgstr "Oinarria"
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Base search query
+msgid "Base search query"
+msgstr ""
+
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Block
 msgid "Block"
@@ -389,6 +394,11 @@ msgstr ""
 msgid "Clear"
 msgstr ""
 
+#: components/manage/Blocks/Search/components/FilterList
+# defaultMessage: Clear filters
+msgid "Clear filters"
+msgstr ""
+
 #: components/theme/View/ImageView
 # defaultMessage: Click to download full sized image
 msgid "Click to download full sized image"
@@ -483,6 +493,11 @@ msgstr "Elementu-mota ezabatu da"
 msgid "Contents"
 msgstr "Edukiak"
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Controls
+msgid "Controls"
+msgstr ""
+
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
@@ -535,6 +550,11 @@ msgstr "Sortzaileak"
 # defaultMessage: Criteria
 msgid "Criteria"
 msgstr "Irizpidea"
+
+#: components/manage/Blocks/Search/components/FilterList
+# defaultMessage: Current filters applied
+msgid "Current filters applied"
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 # defaultMessage: Current password
@@ -929,6 +949,26 @@ msgstr "Iraungita"
 msgid "External URL"
 msgstr "Kanpoko URLa"
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Facet
+msgid "Facet"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Facet widget
+msgid "Facet widget"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Facets
+msgid "Facets"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Field
+msgid "Field"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: File
 msgid "File"
@@ -1055,9 +1095,24 @@ msgstr ""
 msgid "Header cell"
 msgstr ""
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Headline
+msgid "Headline"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Hidden facets will still filter the results if proper parameters are passed in URLs
+msgid "Hidden facets will still filter the results if proper parameters are passed in URLs"
+msgstr ""
+
 #: components/theme/Comments/Comments
 # defaultMessage: Hide Replies
 msgid "Hide Replies"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Hide facet?
+msgid "Hide facet?"
 msgstr ""
 
 #: components/manage/History/History
@@ -1245,6 +1300,11 @@ msgstr "Elementuak"
 # defaultMessage: Items must be unique.
 msgid "Items must be unique."
 msgstr "Elementuak bakarrak izan behar dira."
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Label
+msgid "Label"
+msgstr ""
 
 #: components/manage/Preferences/PersonalPreferences
 # defaultMessage: Language
@@ -1464,6 +1524,11 @@ msgstr "Karpetaren barrenera mugitu"
 # defaultMessage: Move to top of folder
 msgid "Move to top of folder"
 msgstr "Karpetaren gorengo tokira mugitu"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Multiple choices?
+msgid "Multiple choices?"
+msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: My email address is
@@ -1946,6 +2011,11 @@ msgstr "Emaitzen muga"
 msgid "Results preview"
 msgstr "Emaitzen aurreikuspena"
 
+#: components/manage/Blocks/Search/SearchBlockEdit
+# defaultMessage: Results template
+msgid "Results template"
+msgstr ""
+
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Reversed order
 msgid "Reversed order"
@@ -2016,6 +2086,11 @@ msgstr "Eskema"
 msgid "Schema updates"
 msgstr "Eskemaren eguneraketak"
 
+#: components/manage/Blocks/Search/components/SearchInput
+#: components/manage/Blocks/Search/layout/LeftColumnFacets
+#: components/manage/Blocks/Search/layout/RightColumnFacets
+#: components/manage/Blocks/Search/layout/TopSideFacets
+#: components/manage/Blocks/Search/schema
 #: components/theme/SearchWidget/SearchWidget
 # defaultMessage: Search
 msgid "Search"
@@ -2030,6 +2105,16 @@ msgstr ""
 # defaultMessage: Search Site
 msgid "Search Site"
 msgstr "Atarian bilatu"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Search block
+msgid "Search block"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Search button label
+msgid "Search button label"
+msgstr ""
 
 #: components/manage/Sidebar/ObjectBrowserBody
 # defaultMessage: Search content
@@ -2046,6 +2131,12 @@ msgstr "Bilatu erabiltzailea edo taldea"
 msgid "Search group…"
 msgstr "Bilatu taldea..."
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Search input label
+msgid "Search input label"
+msgstr ""
+
+#: components/manage/Blocks/Search/components/SearchDetails
 #: components/theme/Search/Search
 # defaultMessage: Search results
 msgid "Search results"
@@ -2060,6 +2151,11 @@ msgstr "${term} bilatuz aurkitu dena"
 # defaultMessage: Search users…
 msgid "Search users…"
 msgstr "Bilatu erabiltzaileak..."
+
+#: components/manage/Blocks/Search/components/SearchDetails
+# defaultMessage: Searched for
+msgid "Searched for"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Second
@@ -2177,6 +2273,21 @@ msgstr ""
 msgid "Show item"
 msgstr ""
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Show search button?
+msgid "Show search button?"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Show search input?
+msgid "Show search input?"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Show sorting?
+msgid "Show sorting?"
+msgstr ""
+
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Shrink sidebar
 msgid "Shrink sidebar"
@@ -2244,6 +2355,11 @@ msgstr "Ordenazioa:"
 # defaultMessage: Sort on
 msgid "Sort on"
 msgstr "Ordenazioa"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Sort on label
+msgid "Sort on label"
+msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
 # defaultMessage: Source
@@ -2395,6 +2511,11 @@ msgstr "Zerbitzaria ondo dago baina CORS goiburukoak ez dira zuzenak."
 msgid "The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
 msgstr "Zerbitzaria ez dago ondo, barkatu eragozpenak. Saiatu orrialdea freskatzen. Arazoak jarraitzen badu jarri kontaktuan atariaren kudeatzailearekin."
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: The button presence disables the live search, the query is issued when you press ENTER
+msgid "The button presence disables the live search, the query is issued when you press ENTER"
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: The item could not be deleted.
 msgid "The item could not be deleted."
@@ -2472,6 +2593,7 @@ msgid "Time"
 msgstr "Ordua"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Search/schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
