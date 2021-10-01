@@ -181,9 +181,10 @@ function poToJson({ registry, addonMode }) {
           map(items, (item) => item.msgid),
           map(items, (item) =>
             lang === 'en'
-              ? item.msgstr[0] || item.comments[0]
-                ? item.comments[0].replace('defaultMessage: ', '')
-                : ''
+              ? item.msgstr[0] ||
+                (item.comments[0]
+                  ? item.comments[0].replace('defaultMessage: ', '')
+                  : '')
               : item.msgstr[0],
           ),
         ),
