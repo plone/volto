@@ -18,7 +18,7 @@ import { v4 as uuid } from 'uuid';
 import qs from 'query-string';
 import { toast } from 'react-toastify';
 
-import { createContent, getSchema } from '@plone/volto/actions';
+import { createContent, getSchema, changeLanguage } from '@plone/volto/actions';
 import {
   Form,
   Icon,
@@ -34,6 +34,7 @@ import {
   getBlocksFieldname,
   getBlocksLayoutFieldname,
   langmap,
+  normalizeLanguageName,
 } from '@plone/volto/helpers';
 
 import { preloadLazyLibs } from '@plone/volto/helpers/Loadable';
@@ -217,7 +218,16 @@ class Add extends Component {
    * @returns {undefined}
    */
   onCancel() {
-    this.props.history.push(getBaseUrl(this.props.pathname));
+    if (this.props.location?.state?.translationOf) {
+      const language = this.props.location.state.languageFrom;
+      const langFileName = normalizeLanguageName(language);
+      import('~/../locales/' + langFileName + '.json').then((locale) => {
+        this.props.changeLanguage(language, locale.default);
+      });
+      this.props.history.push(this.props.location?.state?.translationOf);
+    } else {
+      this.props.history.push(getBaseUrl(this.props.pathname));
+    }
   }
 
   form = React.createRef();
@@ -334,7 +344,6 @@ class Add extends Component {
           {this.state.isClient && (
             <Portal node={document.getElementById('toolbar')}>
               <Toolbar
-                activity="add"
                 pathname={this.props.pathname}
                 hideDefaultViewButtons
                 inner={
@@ -434,7 +443,7 @@ export default compose(
       returnUrl: qs.parse(props.location.search).return_url,
       type: qs.parse(props.location.search).type,
     }),
-    { createContent, getSchema },
+    { createContent, getSchema, changeLanguage },
   ),
   preloadLazyLibs('cms'),
 )(Add);

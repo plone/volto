@@ -95,6 +95,7 @@ let config = {
     actions_raising_api_errors: ['GET_CONTENT', 'UPDATE_CONTENT'],
     internalApiPath: process.env.RAZZLE_INTERNAL_API_PATH || undefined,
     websockets: process.env.RAZZLE_WEBSOCKETS || false,
+    i18nDebugMode: process.env.RAZZLE_I18NDEBUGMODE || false,
     nonContentRoutes,
     extendedBlockRenderMap,
     blockStyleFn,
@@ -184,22 +185,11 @@ let config = {
 
 config = applyAddonConfiguration(config);
 
-export const settings = config.settings;
-export const widgets = config.widgets;
-export const views = config.views;
-export const blocks = config.blocks;
-export const addonRoutes = [...config.addonRoutes];
-export const addonReducers = { ...config.addonReducers };
-export const appExtras = config.appExtras;
-export const toolbar = config.toolbar;
-export const slots = config.slots;
-
-ConfigRegistry.settings = settings;
-ConfigRegistry.blocks = blocks;
-ConfigRegistry.views = views;
-ConfigRegistry.widgets = widgets;
-ConfigRegistry.addonRoutes = addonRoutes;
-ConfigRegistry.addonReducers = addonReducers;
-ConfigRegistry.appExtras = appExtras;
-ConfigRegistry.slots = slots;
-ConfigRegistry.toolbar = toolbar;
+ConfigRegistry.settings = config.settings;
+ConfigRegistry.blocks = config.blocks;
+ConfigRegistry.views = config.views;
+ConfigRegistry.widgets = config.widgets;
+ConfigRegistry.addonRoutes = config.addonRoutes;
+ConfigRegistry.addonReducers = config.addonReducers;
+ConfigRegistry.appExtras = config.appExtras;
+ConfigRegistry.slots = config.slots;

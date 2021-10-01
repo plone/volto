@@ -267,7 +267,6 @@ const ManageTranslations = (props) => {
         {__CLIENT__ && (
           <Portal node={document.getElementById('toolbar')}>
             <Toolbar
-              activity="manage-translations"
               pathname={pathname}
               hideDefaultViewButtons
               inner={

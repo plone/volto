@@ -85,5 +85,7 @@ describe('Babel View Tests', () => {
       .type('My IT page edited');
 
     cy.get('#toolbar-save').click();
+    cy.url().should('eq', Cypress.config().baseUrl + '/it/my-it-page');
+    cy.contains('My IT page edited');
   });
 });

@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { without, union, map } from 'lodash';
+import { map } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 
 import { updateContent } from '@plone/volto/actions';
@@ -89,14 +89,17 @@ class ContentsTagsModal extends Component {
    * @param {Object} data Form data
    * @returns {undefined}
    */
-  onSubmit(data) {
+  onSubmit({ tags_to_add = [], tags_to_remove = [] }) {
     this.props.updateContent(
       map(this.props.items, (item) => item.url),
       map(this.props.items, (item) => ({
-        subjects: union(
-          without(item.subjects, ...data.tags_to_remove),
-          data.tags_to_add,
-        ),
+        subjects: [
+          ...new Set(
+            (item.subjects ?? [])
+              .filter((s) => !tags_to_remove.includes(s))
+              .concat(tags_to_add),
+          ),
+        ],
       })),
     );
   }
@@ -107,6 +110,10 @@ class ContentsTagsModal extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const currentSetTags = [
+      ...new Set(this.props.items.map((item) => item.subjects).flat()),
+    ];
+
     return (
       this.props.open && (
         <ModalForm
@@ -114,10 +121,6 @@ class ContentsTagsModal extends Component {
           onSubmit={this.onSubmit}
           onCancel={this.props.onCancel}
           title={this.props.intl.formatMessage(messages.tags)}
-          formData={{
-            tags_to_remove: [],
-            tags_to_add: [],
-          }}
           schema={{
             fieldsets: [
               {
@@ -129,11 +132,17 @@ class ContentsTagsModal extends Component {
             properties: {
               tags_to_remove: {
                 type: 'array',
+                widget: 'array',
                 title: this.props.intl.formatMessage(messages.tagsToRemove),
+                choices: currentSetTags.map((tag) => [tag, tag]),
               },
               tags_to_add: {
                 type: 'array',
+                widget: 'token',
                 title: this.props.intl.formatMessage(messages.tagsToAdd),
+                items: {
+                  vocabulary: { '@id': 'plone.app.vocabularies.Keywords' },
+                },
               },
             },
             required: [],

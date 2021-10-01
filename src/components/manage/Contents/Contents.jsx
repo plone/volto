@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Portal } from 'react-portal';
+import { Link } from 'react-router-dom';
 import {
   Button,
   Confirm,
@@ -69,6 +70,7 @@ import ContentsBreadcrumbs from './ContentsBreadcrumbs';
 import { Helmet, getBaseUrl } from '@plone/volto/helpers';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
+import backSVG from '@plone/volto/icons/back.svg';
 import cutSVG from '@plone/volto/icons/cut.svg';
 import deleteSVG from '@plone/volto/icons/delete.svg';
 import copySVG from '@plone/volto/icons/copy.svg';
@@ -116,6 +118,10 @@ const messages = defineMessages({
   deleteConfirm: {
     id: 'Do you really want to delete the following items?',
     defaultMessage: 'Do you really want to delete the following items?',
+  },
+  deleteError: {
+    id: 'The item could not be deleted.',
+    defaultMessage: 'The item could not be deleted.',
   },
   loading: {
     id: 'loading',
@@ -371,6 +377,7 @@ class Contents extends Component {
     this.onOrderItem = this.onOrderItem.bind(this);
     this.onSortItems = this.onSortItems.bind(this);
     this.onMoveToTop = this.onMoveToTop.bind(this);
+    this.onChangeSelected = this.onChangeSelected.bind(this);
     this.onMoveToBottom = this.onMoveToBottom.bind(this);
     this.cut = this.cut.bind(this);
     this.copy = this.copy.bind(this);
@@ -395,7 +402,7 @@ class Contents extends Component {
       items: this.props.items,
       filter: '',
       currentPage: 0,
-      pageSize: 15,
+      pageSize: 50,
       index: this.props.index || {
         order: keys(Indexes),
         values: mapValues(Indexes, (value, key) => ({
@@ -483,6 +490,17 @@ class Contents extends Component {
         />,
       );
     }
+
+    if (this.props.deleteRequest.loading && nextProps.deleteRequest.error) {
+      this.props.toastify.toast.error(
+        <Toast
+          error
+          title={this.props.intl.formatMessage(messages.deleteError)}
+          content={this.props.intl.formatMessage(messages.deleteError)}
+        />,
+      );
+    }
+
     if (this.props.orderRequest.loading && nextProps.orderRequest.loaded) {
       this.props.toastify.toast.success(
         <Toast
@@ -592,6 +610,28 @@ class Contents extends Component {
         }, 200);
       },
     );
+  }
+
+  /**
+   * On change selected values (Filter)
+   * @method onChangeSelected
+   * @param {object} event Event object.
+   * @param {string} value Filter value.
+   * @returns {undefined}
+   */
+  onChangeSelected(event, { value }) {
+    event.stopPropagation();
+    const { items, selected } = this.state;
+
+    const filteredItems = filter(selected, (selectedItem) =>
+      find(items, (item) => item['@id'] === selectedItem)
+        .title.toLowerCase()
+        .includes(value.toLowerCase()),
+    );
+
+    this.setState({
+      filteredItems,
+    });
   }
 
   /**
@@ -1048,6 +1088,8 @@ class Contents extends Component {
    */
   render() {
     const selected = this.state.selected.length > 0;
+    const filteredItems = this.state.filteredItems || this.state.selected;
+    const path = getBaseUrl(this.props.pathname);
     const folderContentsAction = find(this.props.objectActions, {
       id: 'folderContents',
     });
@@ -1580,9 +1622,14 @@ class Contents extends Component {
                                     placeholder={this.props.intl.formatMessage(
                                       messages.filter,
                                     )}
+                                    onChange={this.onChangeSelected}
+                                    onClick={(e) => {
+                                      e.preventDefault();
+                                      e.stopPropagation();
+                                    }}
                                   />
                                   <Dropdown.Menu scrolling>
-                                    {map(this.state.selected, (item) => (
+                                    {map(filteredItems, (item) => (
                                       <Dropdown.Item
                                         key={item}
                                         value={item}
@@ -1670,8 +1717,6 @@ class Contents extends Component {
                           )}
                           pageSize={this.state.pageSize}
                           pageSizes={[
-                            15,
-                            30,
                             50,
                             this.props.intl.formatMessage(messages.all),
                           ]}
@@ -1687,8 +1732,21 @@ class Contents extends Component {
                 <Portal node={document.getElementById('toolbar')}>
                   <Toolbar
                     pathname={this.props.pathname}
-                    activity="contents"
-                    inner={<></>}
+                    inner={
+                      <Link
+                        to={`${path}`}
+                        aria-label={this.props.intl.formatMessage(
+                          messages.back,
+                        )}
+                      >
+                        <Icon
+                          name={backSVG}
+                          className="contents circled"
+                          size="30px"
+                          title={this.props.intl.formatMessage(messages.back)}
+                        />
+                      </Link>
+                    }
                   />
                 </Portal>
               )}

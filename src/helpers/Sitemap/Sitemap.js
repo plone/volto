@@ -21,7 +21,7 @@ export const generateSitemap = (_req) =>
   new Promise((resolve) => {
     const { settings } = config;
     const request = superagent.get(
-      `${settings.apiPath}/@search?metadata_fields=modified&b_size=100000000`,
+      `${settings.apiPath}/@search?metadata_fields=modified&b_size=100000000&use_site_search_settings=1`,
     );
     request.set('Accept', 'application/json');
     const authToken = cookie.load('auth_token');

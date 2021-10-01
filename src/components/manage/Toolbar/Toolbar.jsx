@@ -5,37 +5,130 @@
 
 import React, { Component } from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
-import { matchPath } from 'react-router';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import jwtDecode from 'jwt-decode';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import cookie from 'react-cookie';
-import { filter } from 'lodash';
+import { filter, find } from 'lodash';
 import cx from 'classnames';
+import config from '@plone/volto/registry';
+
+import More from '@plone/volto/components/manage/Toolbar/More';
+import PersonalTools from '@plone/volto/components/manage/Toolbar/PersonalTools';
+import Types from '@plone/volto/components/manage/Toolbar/Types';
+import PersonalInformation from '@plone/volto/components/manage/Preferences/PersonalInformation';
+import PersonalPreferences from '@plone/volto/components/manage/Preferences/PersonalPreferences';
+import StandardWrapper from '@plone/volto/components/manage/Toolbar/StandardWrapper';
 import {
   getTypes,
   listActions,
   setExpandedToolbar,
+  unlockContent,
 } from '@plone/volto/actions';
+import { Icon } from '@plone/volto/components';
 import { BodyClass, getBaseUrl } from '@plone/volto/helpers';
-import { Bottom } from '@plone/volto/components/manage/Toolbar/ToolbarComponents';
 import { Pluggable } from '@plone/volto/components/manage/Pluggable';
-import config from '@plone/volto/registry';
+
+import pastanagaSmall from '@plone/volto/components/manage/Toolbar/pastanaga-small.svg';
+import pastanagalogo from '@plone/volto/components/manage/Toolbar/pastanaga.svg';
+import penSVG from '@plone/volto/icons/pen.svg';
+import unlockSVG from '@plone/volto/icons/unlock.svg';
+import folderSVG from '@plone/volto/icons/folder.svg';
+import addSVG from '@plone/volto/icons/add-document.svg';
+import moreSVG from '@plone/volto/icons/more.svg';
+import userSVG from '@plone/volto/icons/user.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
+  edit: {
+    id: 'Edit',
+    defaultMessage: 'Edit',
+  },
+  contents: {
+    id: 'Contents',
+    defaultMessage: 'Contents',
+  },
+  add: {
+    id: 'Add',
+    defaultMessage: 'Add',
+  },
+  more: {
+    id: 'More',
+    defaultMessage: 'More',
+  },
+  personalTools: {
+    id: 'Personal tools',
+    defaultMessage: 'Personal tools',
+  },
   shrinkToolbar: {
     id: 'Shrink toolbar',
     defaultMessage: 'Shrink toolbar',
   },
+  personalInformation: {
+    id: 'Personal Information',
+    defaultMessage: 'Personal Information',
+  },
+  personalPreferences: {
+    id: 'Personal Preferences',
+    defaultMessage: 'Personal Preferences',
+  },
+  collection: {
+    id: 'Collection',
+    defaultMessage: 'Collection',
+  },
+  file: {
+    id: 'File',
+    defaultMessage: 'File',
+  },
+  link: {
+    id: 'Link',
+    defaultMessage: 'Link',
+  },
+  newsItem: {
+    id: 'News Item',
+    defaultMessage: 'News Item',
+  },
+  page: {
+    id: 'Page',
+    defaultMessage: 'Page',
+  },
+  back: {
+    id: 'Back',
+    defaultMessage: 'Back',
+  },
+  unlock: {
+    id: 'Unlock',
+    defaultMessage: 'Unlock',
+  },
 });
 
+const toolbarComponents = {
+  personalTools: { component: PersonalTools, wrapper: null },
+  more: { component: More, wrapper: null },
+  types: { component: Types, wrapper: null, contentAsProps: true },
+  profile: {
+    component: PersonalInformation,
+    wrapper: StandardWrapper,
+    wrapperTitle: messages.personalInformation,
+    hideToolbarBody: true,
+  },
+  preferences: {
+    component: PersonalPreferences,
+    wrapper: StandardWrapper,
+    wrapperTitle: messages.personalPreferences,
+    hideToolbarBody: true,
+  },
+};
+
 /**
- * BasicToolbar container class.
- * @class BasicToolbar
+ * Toolbar container class.
+ * @class Toolbar
  * @extends Component
  */
-export class BasicToolbarComponent extends Component {
+class Toolbar extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -48,6 +141,7 @@ export class BasicToolbarComponent extends Component {
       user: PropTypes.arrayOf(PropTypes.object),
     }),
     token: PropTypes.string,
+    userId: PropTypes.string,
     pathname: PropTypes.string.isRequired,
     content: PropTypes.shape({
       '@type': PropTypes.string,
@@ -63,6 +157,8 @@ export class BasicToolbarComponent extends Component {
       }),
     ),
     listActions: PropTypes.func.isRequired,
+    unlockContent: PropTypes.func,
+    unlockRequest: PropTypes.objectOf(PropTypes.any),
     inner: PropTypes.element.isRequired,
     hideDefaultViewButtons: PropTypes.bool,
   };
@@ -75,16 +171,14 @@ export class BasicToolbarComponent extends Component {
   static defaultProps = {
     actions: null,
     token: null,
+    userId: null,
     content: null,
     hideDefaultViewButtons: false,
     types: [],
   };
 
-  getCookieName = () => 'toolbar_expanded';
-  // `${this.props.activity ? `${this.props.activity}-` : ''}toolbar_expanded`;
-
   state = {
-    expanded: cookie.load(this.getCookieName()) !== 'false',
+    expanded: cookie.load('toolbar_expanded') !== 'false',
     showMenu: false,
     menuStyle: {},
     menuComponents: [],
@@ -117,6 +211,11 @@ export class BasicToolbarComponent extends Component {
       this.props.listActions(getBaseUrl(nextProps.pathname));
       this.props.getTypes(getBaseUrl(nextProps.pathname));
     }
+
+    // Unlock
+    if (this.props.unlockRequest.loading && nextProps.unlockRequest.loaded) {
+      this.props.listActions(getBaseUrl(nextProps.pathname));
+    }
   }
 
   /**
@@ -129,7 +228,7 @@ export class BasicToolbarComponent extends Component {
   }
 
   handleShrink = () => {
-    cookie.save(this.getCookieName(), !this.state.expanded, {
+    cookie.save('toolbar_expanded', !this.state.expanded, {
       expires: new Date((2 ** 31 - 1) * 1000),
       path: '/',
     });
@@ -143,40 +242,26 @@ export class BasicToolbarComponent extends Component {
     this.setState(() => ({ showMenu: false, loadedComponents: [] }));
 
   loadComponent = (type) => {
-    const { toolbar } = config;
     const { loadedComponents } = this.state;
-    if (type) {
-      if (!this.state.loadedComponents.includes(type)) {
-        this.setState({
-          loadedComponents: [...loadedComponents, type],
-          hideToolbarBody:
-            toolbar.toolbarComponents[type].hideToolbarBody || false,
-        });
-      }
-    } else {
-      this.setState({ loadedComponents: [] });
+    if (!this.state.loadedComponents.includes(type)) {
+      this.setState({
+        loadedComponents: [...loadedComponents, type],
+        hideToolbarBody: toolbarComponents[type].hideToolbarBody || false,
+      });
     }
-    // testing tibi
-    document.removeEventListener('mousedown', this.handleClickOutside, false);
   };
 
   unloadComponent = () => {
-    const { toolbar } = config;
     this.setState((state) => ({
       loadedComponents: state.loadedComponents.slice(0, -1),
       hideToolbarBody:
-        toolbar.toolbarComponents[
+        toolbarComponents[
           state.loadedComponents[state.loadedComponents.length - 2]
         ].hideToolbarBody || false,
     }));
   };
 
-  toggleMenu = (e, selector, options = {}) => {
-    const {
-      extras = [],
-      menuStyle = { top: 0, overflow: 'initial' },
-      loadedComponentName = 'default',
-    } = options;
+  toggleMenu = (e, selector) => {
     if (this.state.showMenu) {
       this.closeMenu();
       return;
@@ -186,32 +271,23 @@ export class BasicToolbarComponent extends Component {
       this.setState((state) => ({
         showMenu: !state.showMenu,
         menuStyle: { bottom: 0 },
-        extras,
-        loadedComponentName,
       }));
     } else {
       this.setState((state) => ({
         showMenu: !state.showMenu,
-        menuStyle,
-        extras,
-        loadedComponentName,
+        menuStyle: { top: 0, overflow: 'initial' },
       }));
     }
     this.loadComponent(selector);
   };
 
   handleClickOutside = (e) => {
-    const isOriginalMoreMenu =
-      this.pusher && doesNodeContainClick(this.pusher, e);
-
-    // if it's the extended dropdown menu, it needs to handle click outside on
-    // its own
-    const isExtendedDropdownMenu = this.state.showMenu && this.state.extras;
-
-    if (isOriginalMoreMenu || isExtendedDropdownMenu) {
-      return;
-    }
+    if (this.pusher && doesNodeContainClick(this.pusher, e)) return;
     this.closeMenu();
+  };
+
+  unlock = (e) => {
+    this.props.unlockContent(getBaseUrl(this.props.pathname), true);
   };
 
   /**
@@ -220,8 +296,15 @@ export class BasicToolbarComponent extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { toolbar } = config;
-    const { top = [], bottom = [] } = this.props;
+    const path = getBaseUrl(this.props.pathname);
+    const lock = this.props.content?.lock;
+    const unlockAction =
+      lock?.locked && lock?.stealable && lock?.creator !== this.props.userId;
+    const editAction =
+      !unlockAction && find(this.props.actions.object, { id: 'edit' });
+    const folderContentsAction = find(this.props.actions.object, {
+      id: 'folderContents',
+    });
     const { expanded } = this.state;
 
     return (
@@ -256,15 +339,14 @@ export class BasicToolbarComponent extends Component {
               {this.state.loadedComponents.map((component, index) =>
                 (() => {
                   const ToolbarComponent =
-                    toolbar.toolbarComponents[component].component;
-                  const WrapperComponent =
-                    toolbar.toolbarComponents[component].wrapper;
+                    toolbarComponents[component].component;
+                  const WrapperComponent = toolbarComponents[component].wrapper;
                   const haveActions =
-                    toolbar.toolbarComponents[component].hideToolbarBody;
+                    toolbarComponents[component].hideToolbarBody;
                   const title =
-                    toolbar.toolbarComponents[component].wrapperTitle &&
+                    toolbarComponents[component].wrapperTitle &&
                     this.props.intl.formatMessage(
-                      toolbar.toolbarComponents[component].wrapperTitle,
+                      toolbarComponents[component].wrapperTitle,
                     );
                   if (WrapperComponent) {
                     return (
@@ -279,9 +361,6 @@ export class BasicToolbarComponent extends Component {
                         key={`personalToolsComponent-${index}`}
                         closeMenu={this.closeMenu}
                         hasActions={haveActions}
-                        extras={this.state.extras}
-                        showMenu={this.state.showMenu}
-                        loadedComponentName={this.state.loadedComponentName}
                       >
                         <ToolbarComponent
                           pathname={this.props.pathname}
@@ -290,10 +369,7 @@ export class BasicToolbarComponent extends Component {
                           componentIndex={index}
                           theToolbar={this.toolbarWindow}
                           closeMenu={this.closeMenu}
-                          extras={this.state.extras}
-                          showMenu={this.state.showMenu}
                           isToolbarEmbedded
-                          loadedComponentName={this.state.loadedComponentName}
                         />
                       </WrapperComponent>
                     );
@@ -307,11 +383,8 @@ export class BasicToolbarComponent extends Component {
                         theToolbar={this.toolbarWindow}
                         key={`personalToolsComponent-${index}`}
                         closeMenu={this.closeMenu}
-                        extras={this.state.extras}
-                        showMenu={this.state.showMenu}
-                        loadedComponentName={this.state.loadedComponentName}
                         content={
-                          toolbar.toolbarComponents[component].contentAsProps
+                          toolbarComponents[component].contentAsProps
                             ? this.props.content
                             : null
                         }
@@ -325,44 +398,160 @@ export class BasicToolbarComponent extends Component {
           <div className={this.state.expanded ? 'toolbar expanded' : 'toolbar'}>
             <div className="toolbar-body">
               <div className="toolbar-actions">
-                {this.props.inner}
-                {top.map((ActionComponent, index) => {
-                  return matchPath(
-                    this.props.pathname,
-                    ActionComponent.match,
-                  ) ? (
-                    // eslint-disable-next-line react/jsx-pascal-case
-                    <ActionComponent.component
-                      {...this.props}
-                      key={index}
-                      toggleMenu={this.toggleMenu}
-                      showMenu={this.state.showMenu}
-                      theToolbar={this.toolbarWindow}
-                      loadedComponentName={this.state.loadedComponentName}
-                    />
-                  ) : null;
-                })}
+                {this.props.hideDefaultViewButtons && this.props.inner && (
+                  <>{this.props.inner}</>
+                )}
+                {!this.props.hideDefaultViewButtons && (
+                  <>
+                    {unlockAction && (
+                      <button
+                        aria-label={this.props.intl.formatMessage(
+                          messages.unlock,
+                        )}
+                        className="unlock"
+                        onClick={(e) => this.unlock(e)}
+                        tabIndex={0}
+                      >
+                        <Icon
+                          name={unlockSVG}
+                          size="30px"
+                          className="unlock"
+                          title={this.props.intl.formatMessage(messages.unlock)}
+                        />
+                      </button>
+                    )}
+
+                    {editAction && (
+                      <Link
+                        aria-label={this.props.intl.formatMessage(
+                          messages.edit,
+                        )}
+                        className="edit"
+                        to={`${path}/edit`}
+                      >
+                        <Icon
+                          name={penSVG}
+                          size="30px"
+                          className="circled"
+                          title={this.props.intl.formatMessage(messages.edit)}
+                        />
+                      </Link>
+                    )}
+                    {this.props.content &&
+                      this.props.content.is_folderish &&
+                      folderContentsAction &&
+                      !this.props.pathname.endsWith('/contents') && (
+                        <Link
+                          aria-label={this.props.intl.formatMessage(
+                            messages.contents,
+                          )}
+                          to={`${path}/contents`}
+                        >
+                          <Icon
+                            name={folderSVG}
+                            size="30px"
+                            title={this.props.intl.formatMessage(
+                              messages.contents,
+                            )}
+                          />
+                        </Link>
+                      )}
+                    {this.props.content &&
+                      this.props.content.is_folderish &&
+                      folderContentsAction &&
+                      this.props.pathname.endsWith('/contents') && (
+                        <Link
+                          to={`${path}`}
+                          aria-label={this.props.intl.formatMessage(
+                            messages.back,
+                          )}
+                        >
+                          <Icon
+                            name={clearSVG}
+                            className="contents circled"
+                            size="30px"
+                            title={this.props.intl.formatMessage(messages.back)}
+                          />
+                        </Link>
+                      )}
+                    {this.props.content &&
+                      ((this.props.content.is_folderish &&
+                        this.props.types.length > 0) ||
+                        (config.settings.isMultilingual &&
+                          this.props.content['@components'].translations)) && (
+                        <button
+                          className="add"
+                          aria-label={this.props.intl.formatMessage(
+                            messages.add,
+                          )}
+                          onClick={(e) => this.toggleMenu(e, 'types')}
+                          tabIndex={0}
+                          id="toolbar-add"
+                        >
+                          <Icon
+                            name={addSVG}
+                            size="30px"
+                            title={this.props.intl.formatMessage(messages.add)}
+                          />
+                        </button>
+                      )}
+                    <div className="toolbar-button-spacer" />
+                    <button
+                      className="more"
+                      aria-label={this.props.intl.formatMessage(messages.more)}
+                      onClick={(e) => this.toggleMenu(e, 'more')}
+                      tabIndex={0}
+                      id="toolbar-more"
+                    >
+                      <Icon
+                        className="mobile hidden"
+                        name={moreSVG}
+                        size="30px"
+                        title={this.props.intl.formatMessage(messages.more)}
+                      />
+                      {this.state.showMenu ? (
+                        <Icon
+                          className="mobile only"
+                          name={clearSVG}
+                          size="30px"
+                        />
+                      ) : (
+                        <Icon
+                          className="mobile only"
+                          name={moreSVG}
+                          size="30px"
+                        />
+                      )}
+                    </button>
+                  </>
+                )}
               </div>
               <div className="toolbar-bottom">
                 <Pluggable name="main.toolbar.bottom" />
-                <Bottom {...this.props}>
-                  {bottom.map((BottomComponent, index) => {
-                    return matchPath(
-                      this.props.pathname,
-                      BottomComponent.match,
-                    ) ? (
-                      // eslint-disable-next-line react/jsx-pascal-case
-                      <BottomComponent.component
-                        {...this.props}
-                        key={index}
-                        toggleMenu={this.toggleMenu}
-                        showMenu={this.state.showMenu}
-                        theToolbar={this.toolbarWindow}
-                        loadedComponentName={this.state.loadedComponentName}
-                      />
-                    ) : null;
-                  })}
-                </Bottom>
+                <img className="minipastanaga" src={pastanagaSmall} alt="" />
+                {!this.props.hideDefaultViewButtons && (
+                  <button
+                    className="user"
+                    aria-label={this.props.intl.formatMessage(
+                      messages.personalTools,
+                    )}
+                    onClick={(e) => this.toggleMenu(e, 'personalTools')}
+                    tabIndex={0}
+                    id="toolbar-personal"
+                  >
+                    <Icon
+                      name={userSVG}
+                      size="30px"
+                      title={this.props.intl.formatMessage(
+                        messages.personalTools,
+                      )}
+                    />
+                  </button>
+                )}
+                <div className="divider" />
+                <div className="pastanagalogo">
+                  <img src={pastanagalogo} alt="" />
+                </div>
               </div>
             </div>
             <div className="toolbar-handler">
@@ -385,24 +574,20 @@ export class BasicToolbarComponent extends Component {
   }
 }
 
-export const BasicToolbar = compose(
+export default compose(
   injectIntl,
   connect(
     (state, props) => ({
       actions: state.actions.actions,
       token: state.userSession.token,
+      userId: state.userSession.token
+        ? jwtDecode(state.userSession.token).sub
+        : '',
       content: state.content.data,
       pathname: props.pathname,
       types: filter(state.types.types, 'addable'),
+      unlockRequest: state.content.unlock,
     }),
-    { getTypes, listActions, setExpandedToolbar },
+    { getTypes, listActions, setExpandedToolbar, unlockContent },
   ),
-)(BasicToolbarComponent);
-
-const Toolbar = (props) => {
-  const { toolbar } = config;
-  const activity = toolbar.activities[props.activity || 'default'] || [];
-  return <BasicToolbar {...props} {...activity}></BasicToolbar>;
-};
-
-export default Toolbar;
+)(Toolbar);
