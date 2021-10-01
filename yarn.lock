@@ -1941,14 +1941,15 @@
   dependencies:
     "@types/node" ">= 8"
 
-"@plone/scripts@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@plone/scripts/-/scripts-1.0.0.tgz#ab723dd21883c19473dea1b95e4f47a98ef9c406"
-  integrity sha512-GeSIOOKYNS8u6SrpA1vf7Rqhh8RBEVPcFSzEd5WxiScq7dPfPaIkMicdpLAfDDj1r8NhNuxLMV1HsmHcv3gL1A==
+"@plone/scripts@1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@plone/scripts/-/scripts-1.0.3.tgz#ea3e5f29b6fcb8f088b32e43394d71748d5538b4"
+  integrity sha512-wE0vsWpOI5jeoVJVP0T2IpBGz6wdlQrOqicK0EsC0+6hYqmPJb2cGUXNe0JhUDONF6Gi/Ubklcgd05Lpb2+bjA==
   dependencies:
     babel-plugin-react-intl "5.1.17"
     babel-preset-razzle "3.4.5"
     commander "8.2.0"
+    pofile "1.0.10"
     razzle "3.4.5"
 
 "@pmmmwh/react-refresh-webpack-plugin@0.3.0":

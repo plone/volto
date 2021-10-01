@@ -13,6 +13,7 @@
 ### Internal
 
 - Add development dependency on use-trace-update, useful for performance debugging @tiberiuichim
+- Upgrade to `@plone/scripts` 1.0.3 @sneridagh
 
 ## 14.0.0-alpha.13 (2021-09-30)
 
