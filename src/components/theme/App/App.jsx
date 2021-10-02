@@ -192,7 +192,7 @@ export const __test__ = connect(
   {},
 )(App);
 
-const fetchContent = async ({ store, location }) => {
+export const fetchContent = async ({ store, location }) => {
   const content = await store.dispatch(
     getContent(getBaseUrl(location.pathname)),
   );
