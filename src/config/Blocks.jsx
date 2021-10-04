@@ -57,7 +57,7 @@ import {
   SelectFacet,
   CheckboxFacet,
 } from '@plone/volto/components/manage/Blocks/Search/components';
-import getListingBlockAsyncProps from '@plone/volto/components/manage/Blocks/Listing/getAsyncProps';
+import getListingBlockAsyncData from '@plone/volto/components/manage/Blocks/Listing/getAsyncData';
 
 defineMessages({
   title: {
@@ -257,7 +257,7 @@ const blocksConfig = {
         template: SummaryListingBlockTemplate,
       },
     ],
-    getAsyncProps: getListingBlockAsyncProps,
+    getAsyncData: getListingBlockAsyncData,
   },
   video: {
     id: 'video',

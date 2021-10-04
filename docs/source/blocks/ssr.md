@@ -6,7 +6,7 @@ a mechanism for async rendering in the form of `asyncConnect` and
 `asyncPropExtenders`.
 
 For blocks we have a similar mechanism but we provide it via the
-`config.blocks` registry. To use it, add the `getAsyncProps` key in your block
+`config.blocks` registry. To use it, add the `getAsyncData` key in your block
 configuration, pointing to a function that returns a list of promises.
 
 For example:

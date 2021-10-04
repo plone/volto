@@ -202,9 +202,9 @@ export const fetchContent = async ({ store, location }) => {
 
   const visitor = ([id, data]) => {
     const blockType = data['@type'];
-    const { getAsyncProps } = blocksConfig[blockType];
-    if (getAsyncProps) {
-      const promps = getAsyncProps({
+    const { getAsyncData } = blocksConfig[blockType];
+    if (getAsyncData) {
+      const props = getAsyncData({
         store,
         dispatch: store.dispatch,
         path: location.pathname,
@@ -212,12 +212,12 @@ export const fetchContent = async ({ store, location }) => {
         id,
         data,
       });
-      if (!promps?.length) {
+      if (!props?.length) {
         throw new Error(
-          'You should return a list of promises from getAsyncProps',
+          'You should return a list of promises from getAsyncData',
         );
       }
-      promises.push(...promps);
+      promises.push(...props);
     }
   };
 

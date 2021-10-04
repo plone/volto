@@ -6,7 +6,7 @@
 
 ### Feature
 
-- Provide Server-Side Rendering capabilities for blocks with async-based content (such as the listing block). A block needs to provide its own `getAsyncProps` implementation, which is similar to an `asyncConnect` wrapper promise. @tiberiuichim @sneridagh
+- Provide Server-Side Rendering capabilities for blocks with async-based content (such as the listing block). A block needs to provide its own `getAsyncData` implementation, which is similar to an `asyncConnect` wrapper promise. @tiberiuichim @sneridagh
 
 ### Bugfix
 
