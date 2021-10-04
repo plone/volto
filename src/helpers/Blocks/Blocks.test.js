@@ -310,7 +310,18 @@ describe('Blocks', () => {
             '1': {
               blocks: {
                 '2': {},
-                '3': {},
+                '3': {
+                  data: {
+                    blocks: {
+                      '11': {},
+                      '12': {},
+                      '13': {},
+                    },
+                    blocks_layout: {
+                      items: ['11', '12', '13'],
+                    },
+                  },
+                },
                 '7': {
                   blocks: {
                     '8': {},
@@ -347,7 +358,7 @@ describe('Blocks', () => {
         a.push(x);
       });
 
-      expect(a.length).toBe(10);
+      expect(a.length).toBe(13);
     });
   });
 });
