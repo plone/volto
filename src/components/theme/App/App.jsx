@@ -204,7 +204,7 @@ export const fetchContent = async ({ store, location }) => {
     const blockType = data['@type'];
     const { getAsyncData } = blocksConfig[blockType];
     if (getAsyncData) {
-      const props = getAsyncData({
+      const p = getAsyncData({
         store,
         dispatch: store.dispatch,
         path: location.pathname,
@@ -212,12 +212,12 @@ export const fetchContent = async ({ store, location }) => {
         id,
         data,
       });
-      if (!props?.length) {
+      if (!p?.length) {
         throw new Error(
           'You should return a list of promises from getAsyncData',
         );
       }
-      promises.push(...props);
+      promises.push(...p);
     }
   };
 
