@@ -2,6 +2,8 @@
 
 ## 14.0.0 (unreleased)
 
+- Added LinkMore component and link more in HeroImageLeft block. @giuliaghisini
+
 ### Breaking
 
 ### Feature
@@ -9,6 +11,7 @@
 ### Bugfix
 
 ### Internal
+
 - Improved developer documentation. Proof read several chapters, most importantly the upgrade guide @ichim-david
 
 ## 14.0.0-alpha.14 (2021-10-01)
