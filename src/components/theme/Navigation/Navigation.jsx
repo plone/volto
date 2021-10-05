@@ -13,8 +13,8 @@ import { Menu } from 'semantic-ui-react';
 import cx from 'classnames';
 import { getBaseUrl, hasApiExpander } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
-
 import { getNavigation } from '@plone/volto/actions';
+import { CSSTransition } from 'react-transition-group';
 
 const messages = defineMessages({
   closeMobileMenu: {
@@ -26,6 +26,28 @@ const messages = defineMessages({
     defaultMessage: 'Open menu',
   },
 });
+
+const NavItems = (props) => {
+  const { settings } = config;
+  const { lang } = props;
+  return (
+    <>
+      {props.items.map((item) => (
+        <NavLink
+          to={item.url === '' ? '/' : item.url}
+          key={item.url}
+          className="item"
+          activeClassName="active"
+          exact={
+            settings.isMultilingual ? item.url === `/${lang}` : item.url === ''
+          }
+        >
+          {item.title}
+        </NavLink>
+      ))}
+    </>
+  );
+};
 
 /**
  * Navigation container class.
@@ -123,14 +145,11 @@ class Navigation extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { settings } = config;
-    const { lang } = this.props;
-
     return (
       <nav className="navigation" id="navigation">
         <div className="hamburger-wrapper mobile tablet only">
           <button
-            className={cx('hamburger hamburger--collapse', {
+            className={cx('hamburger hamburger--spin', {
               'is-active': this.state.isMobileMenuOpen,
             })}
             aria-label={
@@ -163,29 +182,36 @@ class Navigation extends Component {
           stackable
           pointing
           secondary
-          className={
-            this.state.isMobileMenuOpen
-              ? 'open'
-              : 'computer large screen widescreen only'
-          }
+          className="computer large screen widescreen only"
           onClick={this.closeMobileMenu}
         >
-          {this.props.items.map((item) => (
-            <NavLink
-              to={item.url === '' ? '/' : item.url}
-              key={item.url}
-              className="item"
-              activeClassName="active"
-              exact={
-                settings.isMultilingual
-                  ? item.url === `/${lang}`
-                  : item.url === ''
-              }
-            >
-              {item.title}
-            </NavLink>
-          ))}
+          <NavItems items={this.props.items} />
         </Menu>
+        <CSSTransition
+          in={this.state.isMobileMenuOpen}
+          timeout={500}
+          classNames="mobile-menu"
+          unmountOnExit
+        >
+          <div
+            key="myuniquekey"
+            style={{
+              height: '100vh',
+              position: 'fixed',
+              top: 0,
+              right: 0,
+              left: 0,
+              zIndex: 3,
+              width: '100vw',
+            }}
+          >
+            <div className="mobile-menu-nav">
+              <Menu stackable pointing secondary onClick={this.closeMobileMenu}>
+                <NavItems items={this.props.items} />
+              </Menu>
+            </div>
+          </div>
+        </CSSTransition>
       </nav>
     );
   }
