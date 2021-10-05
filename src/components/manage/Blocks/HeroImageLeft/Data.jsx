@@ -1,9 +1,9 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
-import schemaHero from './Schema';
+import schemaHero from './schema.js';
 import { BlockDataForm } from '@plone/volto/components';
 
-const TestBlockData = (props) => {
+const HeroImageLeftBlockData = (props) => {
   const { block, data, onChangeBlock } = props;
   const intl = useIntl();
   const schema = schemaHero({ ...props, intl });
@@ -23,4 +23,4 @@ const TestBlockData = (props) => {
   );
 };
 
-export default TestBlockData;
+export default HeroImageLeftBlockData;
