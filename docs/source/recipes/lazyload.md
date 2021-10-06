@@ -106,7 +106,7 @@ You can quickly load these bundles by wrapping your component in the
 `preloadLazyLibs` HOC:
 
 ```jsx
-import { useLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import { preloadLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 const SomeComponent = (props) => <div>Hello</div>;
 
