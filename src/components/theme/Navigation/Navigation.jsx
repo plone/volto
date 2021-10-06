@@ -7,14 +7,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { NavLink } from 'react-router-dom';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Menu } from 'semantic-ui-react';
 import cx from 'classnames';
-import { getBaseUrl, hasApiExpander } from '@plone/volto/helpers';
+import { BodyClass, getBaseUrl, hasApiExpander } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 import { getNavigation } from '@plone/volto/actions';
 import { CSSTransition } from 'react-transition-group';
+import NavItems from '@plone/volto/components/theme/Navigation/NavItems';
 
 const messages = defineMessages({
   closeMobileMenu: {
@@ -26,28 +26,6 @@ const messages = defineMessages({
     defaultMessage: 'Open menu',
   },
 });
-
-const NavItems = (props) => {
-  const { settings } = config;
-  const { lang } = props;
-  return (
-    <>
-      {props.items.map((item) => (
-        <NavLink
-          to={item.url === '' ? '/' : item.url}
-          key={item.url}
-          className="item"
-          activeClassName="active"
-          exact={
-            settings.isMultilingual ? item.url === `/${lang}` : item.url === ''
-          }
-        >
-          {item.title}
-        </NavLink>
-      ))}
-    </>
-  );
-};
 
 /**
  * Navigation container class.
@@ -185,7 +163,7 @@ class Navigation extends Component {
           className="computer large screen widescreen only"
           onClick={this.closeMobileMenu}
         >
-          <NavItems items={this.props.items} />
+          <NavItems items={this.props.items} lang={this.props.lang} />
         </Menu>
         <CSSTransition
           in={this.state.isMobileMenuOpen}
@@ -193,21 +171,11 @@ class Navigation extends Component {
           classNames="mobile-menu"
           unmountOnExit
         >
-          <div
-            key="myuniquekey"
-            style={{
-              height: '100vh',
-              position: 'fixed',
-              top: 0,
-              right: 0,
-              left: 0,
-              zIndex: 3,
-              width: '100vw',
-            }}
-          >
+          <div key="mobile-menu-key" className="mobile-menu">
+            <BodyClass className="has-mobile-menu-open" />
             <div className="mobile-menu-nav">
               <Menu stackable pointing secondary onClick={this.closeMobileMenu}>
-                <NavItems items={this.props.items} />
+                <NavItems items={this.props.items} lang={this.props.lang} />
               </Menu>
             </div>
           </div>
