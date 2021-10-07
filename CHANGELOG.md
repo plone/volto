@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+-Add spinner on sharing View Button @iRohitSingh
+
 ### Internal
 - Improved developer documentation. Proof read several chapters, most importantly the upgrade guide @ichim-david
 
