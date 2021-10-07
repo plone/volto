@@ -4,24 +4,27 @@
 
 This feature was added in Volto 13 as experimental. During the experimental phase we realised of several issues hard to solve, which made us to rethink the feature into its second incarnation, available since Volto 14.
 
-The first implementation wanted to unify both backend and frontend under the same sun, using the `Accept` header to route the requests to the API and to Volto SSR server. As reference and for the record, these were the major issues we encounter (https://github.com/plone/volto/issues/2706):
+The first implementation wanted to unify both backend and frontend under the same sun, using the `Accept` header to route the requests to the API and to Volto SSR server. As reference and for the record, these were the major issues we encountered (https://github.com/plone/volto/issues/2706):
 
 - Browsers are unable to differentiate cached responses using the `Accept` header, so the last one (usually the JSON one) was cached, then shown in some situations (like browser restart and open tabs). The back button also showed the JSON responses under some circumstances.
-- The use of cache servers and services is hard, since they do not accept the `Vary` header (CloudFlare) and in Varnish the handling is also difficult to differentiate both requests and cache (and then invalidate) them propely
-- Private images/files are hard to handle
+- The use of cache servers and services is hard, since they do not accept the `Vary` header (CloudFlare) and in Varnish the handling is also difficult to differentiate both requests and cache (and then invalidate) them properly.
+- Private images/files are hard to handle.
 
 For all these reasons, we have reconsidered and adjusted the feature a bit to overcome all the issues found in the past.
 
+!!! note
+    Seamless mode will no longer try to unify both frontend and backend server, differentiating them using the `Accept` header. However, we are sticking to the name since it also depicts the intention of the feature: to ease the setup of Volto deployments.
+
 ## Challenges and goals
 
-Seamless' mode main challenge was to achieve Zero configuration avoiding hardcoded API_PATH or other environment vars involved, and stablishing good sensible defaults when setting up deployments (and also in development). So the developer/devops don't have to overthink their setups.
+Seamless' mode main challenge is to achieve Zero configuration avoiding hardcoded `API_PATH` or other environment vars involved, and establishing good sensible defaults when setting up deployments (and also in development). So the developer/devops don't have to overthink their setups.
 
 These are the problems we wanted to solve:
 
 - Avoid having to expose and publish the classic UI if you don't really need it
 - If possible, having to rewrite all API responses, since it returns paths that does not correspond to the original object handled and "seen" from Volto, so you have to adjust them (via a code helper) in a lot of call responses.
 - Simplify Docker builds, making all the configuration via the runtime environment variables
-- Content negotiation was an amazing idea, but the reality is that it was a promise never fulfilled and it was sparsely supported in browsers or the web ecosysytem.
+- Content negotiation was an amazing idea, but the reality is that it was a promise never fulfilled and it was sparsely supported in browsers or the web ecosystem.
 
 ## Features part of seamless mode
 
@@ -50,11 +53,11 @@ This brings you a lot of power, since you don't have to rebuild on every config 
 
 Since `plone.rest` 2.0.0a1, Plone provides a way to access the RESTAPI without using the `application/json` `Accept` header. It enables a new traversal handler `++api++` that returns RESTAPI calls seamlessly, without any additional path in its responses.
 
-Seamless mode will use this convention when setting up development and productions environments for you. So all backend calls, by default, will assume a `++api++` present in your backend.
+Seamless mode will use this convention when setting up development and productions environments for you. So if no `RAZZLE_API_PATH` is present, all backend calls by default will assume a `++api++` present in your backend and will try to use it.
 
-### Use `Host` header for auto configure the API_PATH
+### Use `Host` header for auto configure the `API_PATH`
 
-The Host header from the request is being read by the Volto server if no RAZZLE_API_PATH is present and used in the APP from the first request on. The information catched up in the SSR server is passed to the client app so it also knows who the backend is. This feature could be special
+The Host header from the request is being read by the Volto server if no `RAZZLE_API_PATH` is present and used in Volto from the first request on. The information read in the SSR server is passed to the client app so it also knows who the backend is.
 
 ## Advantages of the seamless mode
 
