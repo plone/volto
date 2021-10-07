@@ -4,6 +4,8 @@
 
 ### Breaking
 
+- Fix logout action using the backend @logout endpoint, effectively removing the `__ac` cookie. It is recommended to upgrade to the latest p.restapi version to take full advantage of this feature @sneridagh
+
 ### Feature
 
 ### Bugfix
