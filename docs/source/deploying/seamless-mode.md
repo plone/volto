@@ -23,9 +23,9 @@ These are the problems we wanted to solve:
 - Simplify Docker builds, making all the configuration via the runtime environment variables
 - Content negotiation was an amazing idea, but the reality is that it was a promise never fulfilled and it was sparsely supported in browsers or the web ecosysytem.
 
-## Solutions
+## Features part of seamless mode
 
-Seamless mode is a set of features in itself.
+Seamless mode is a set of features in itself. Here is a brief introduction of them:
 
 ### Runtime environment variables
 
@@ -35,63 +35,47 @@ All the environment variables configurables work now in runtime, not in build ti
     Before Volto 13, you'd do:
 
     ```bash
-    RAZZLE_API_PATH=https://plone.org yarn build && yarn start
+    RAZZLE_API_PATH=https://plone.org yarn build && yarn start:prod
     ```
 
     From Volto 13 on, you can:
 
     ```bash
-    yarn build && RAZZLE_API_PATH=https://plone.org yarn start
+    yarn build && RAZZLE_API_PATH=https://plone.org yarn start:prod
     ```
+
+This brings you a lot of power, since you don't have to rebuild on every config change. You can also generate builds on your CI, then deploy everywhere.
+
+### Unified traversal ++api++
+
+Since `plone.rest` 2.0.0a1, Plone provides a way to access the RESTAPI without using the `application/json` `Accept` header. It enables a new traversal handler `++api++` that returns RESTAPI calls seamlessly, without any additional path in its responses.
+
+Seamless mode will use this convention when setting up development and productions environments for you. So all backend calls, by default, will assume a `++api++` present in your backend.
+
+### Use `Host` header for auto configure the API_PATH
+
+The Host header from the request is being read by the Volto server if no RAZZLE_API_PATH is present and used in the APP from the first request on. The information catched up in the SSR server is passed to the client app so it also knows who the backend is. This feature could be special
 
 ## Advantages of the seamless mode
 
-The zero configuration and the lack of having to rely on hardcoded variable names in the builds is already achieved from Volto 13. All important environment variables work in runtime.
-
-Configuration using `Host` headers.
-
-The zero config and the lack of having to rely on hardcoded variable names in the build
-is the main advantage of seamless mode.
+Delegating to the web server the responsability of configure how the components of the app should relate with each other, so you don't have to configure the same thing in several points of the architecture, making the whole setup less error prone. Combined with the sensible default of using the default traversal route ``++api++`` and the runtime variables (or the absence of them), makes deployments far more easy and predictable.
 
 Theoretically, you could deploy several sites using the same Volto SSR server without
-recompiling (just using the Host header in the reverse proxy)
+recompiling (just using the Host header in the reverse proxy). Before seamless mode, you'll have to have a Volto build for every site domain.
 
 Opens the door for http://servername/sitename deployments as well, so several sites
-hosted the same Volto SSR server, we could use headers (same as Pyramid) to accomplish
-that as well.
+hosted the same Volto SSR server.
 
-All internal links are app ones, so a link to a page /my-page will be returned by the
-API as is. So flattenToAppURL will still be required (for old deployments) but if
-seamless is adopted, it won't be required anymore in mid-term.
+All internal links are app ones (thanks to the ``++api++`` traversal), so a link to a page /my-page will be returned by the API as is. So flattenToAppURL will still be required (for old deployments) but if seamless is adopted, it won't be required anymore in mid-term.
 
 The Plone classic UI is not public (which in some points clients might find it ugly and
-problematic from the SEO point of view), with the bonus that the indexers cannot reach
-them.
+problematic from the SEO point of view), so indexers cannot reach it.
 
-Repeateable docker builds (since the config will be based on runtime)
+Repeateable docker builds (since the config will be based on runtime).
 
-## Development environment
-
-* Seamless mode by default
-* Calls to API is always routed through internal proxy, `http://localhost:3000` is both
-  Volto and Plone by default.
-* `RAZZLE_API_PATH` sensible default is `http://localhost:8080/Plone` (no change of
-  behaviour)
+Ready to use production builds (e.g. vainila Volto built, ready for test), configured in runtime.
 
 ![How Plone 6 works](HowPlone6Works001.png)
-
-## Production environment
-
-* Nothing changes for old deployments, all work the same way if `RAZZLE_API_PATH` is set
-* If you want seamless in production as well you need to setup your reverse proxy (see
-  attached Nginx reference config) properly, so the reverse proxy detects the accept
-  header and route the requests properly, and remove API_PATH env var from your build In
-  seamless mode no API_PATH is required (and should not be present at build time), but
-  the Host header must be set in the reverse proxy (see attached Nginx reference config)
-* `yarn start:prod` does not work without setting a build time (or runtime)
-  `RAZZLE_API_PATH` enviroment variable. This is unavoidable if we want all the sensible
-  defaults in place in production mode, so it no longer defaults to
-  `http://localhost:8080/Plone`
 
 ![How Plone 6 works](./HowPlone6Works002.png)
 
@@ -114,41 +98,38 @@ server {
   access_log /dev/stdout;
   error_log /dev/stdout;
 
-  location ~(.*)$ {
-    location ~* \.(js|jsx|css|less|swf|eot|ttf|otf|woff|woff2)$ {
-        add_header Cache-Control "public";
-        expires +1y;
-        proxy_pass http://frontend;
-    }
-    location ~* static.*\.(ico|jpg|jpeg|png|gif|svg)$ {
-        add_header Cache-Control "public";
-        expires +1y;
-        proxy_pass http://frontend;
-    }
+  # [zero-config] This one is the new mode, using new plone.rest
+  # yarn build && yarn start:prod
+  location ~ /\+\+api\+\+($|/.*) {
+      rewrite ^/\+\+api\+\+($|/.*) /VirtualHostBase/http/local.kitconcept.io/Plone/++api++/VirtualHostRoot/$1 break;
+      proxy_pass http://backend;
+  }
 
-    if ($http_accept = 'application/json') {
-        rewrite ^(.*) /VirtualHostBase/http/local.kitconcept.io/Plone/VirtualHostRoot$1 break;
-        proxy_pass http://backend;
-        break;
-    }
+  # [zero-config] This one is in legacy mode (using a /api style APIURL)
+  # yarn build && yarn start:prod
+  # location ~ /\+\+api\+\+($|/.*) {
+  #     rewrite ^/\+\+api\+\+($|/.*) /VirtualHostBase/http/local.kitconcept.io/Plone/VirtualHostRoot/_vh_++api++$1 break;
+  #     proxy_pass http://backend;
+  # }
 
-    location ~ /@@images/ {
-        rewrite ^(.*) /VirtualHostBase/http/local.kitconcept.io/Plone/VirtualHostRoot$1 break;
-        proxy_pass http://backend;
-        break;
-    }
+  location ~ / {
+      location ~* \.(js|jsx|css|less|swf|eot|ttf|otf|woff|woff2)$ {
+          add_header Cache-Control "public";
+          expires +1y;
+          proxy_pass http://frontend;
+      }
+      location ~* static.*\.(ico|jpg|jpeg|png|gif|svg)$ {
+          add_header Cache-Control "public";
+          expires +1y;
+          proxy_pass http://frontend;
+      }
 
-    location ~ /@@download/ {
-        rewrite ^(.*) /VirtualHostBase/http/local.kitconcept.io/Plone/VirtualHostRoot$1 break;
-        proxy_pass http://backend;
-        break;
-    }
-
-    proxy_set_header        Host $host;
-    proxy_set_header        X-Real-IP $remote_addr;
-    proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header        X-Forwarded-Proto $scheme;
-    proxy_pass              http://frontend;
+      proxy_set_header        Host $host;
+      proxy_set_header        X-Real-IP $remote_addr;
+      proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header        X-Forwarded-Proto $scheme;
+      proxy_redirect http:// https://;
+      proxy_pass http://frontend;
   }
 }
 ```
