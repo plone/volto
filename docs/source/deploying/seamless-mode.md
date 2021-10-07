@@ -1,23 +1,74 @@
 # Seamless mode
 
-!!! note
-    This feature is available since Volto 13.
+## Feature history
 
-The seamless mode was introduced in Volto 13. It's the ability to host both the frontend
-and the backend under the same server name, making the access to the API seamless (as if
-it was in the same server and not outside).
+This feature was added in Volto 13 as experimental. During the experimental phase we realised of several issues hard to solve, which made us to rethink the feature into its second incarnation, available since Volto 14.
 
-## The goal?
+The first implementation wanted to unify both backend and frontend under the same sun, using the `Accept` header to route the requests to the API and to Volto SSR server. As reference and for the record, these were the major issues we encounter (https://github.com/plone/volto/issues/2706):
 
-Achieve Zero configuration (avoiding at the same time hardcoded `RAZZLE_API_PATH` or
-other vars in code) with good sensible defaults when setting up deployments.
+- Browsers are unable to differentiate cached responses using the `Accept` header, so the last one (usually the JSON one) was cached, then shown in some situations (like browser restart and open tabs). The back button also showed the JSON responses under some circumstances.
+- The use of cache servers and services is hard, since they do not accept the `Vary` header (CloudFlare) and in Varnish the handling is also difficult to differentiate both requests and cache (and then invalidate) them propely
+- Private images/files are hard to handle
 
-Having in production this kind of setup, where both Volto and the API lives under the
-same sun. The content negotiation stays, so any API call is made with the Accept header,
-so it's routed to the backend.
+For all these reasons, we have reconsidered and adjusted the feature a bit to overcome all the issues found in the past.
 
-The idea was still use the same `RAZZLE_API_PATH` meaning, and do not introduce any
-breaking change, so old deployments in place continue working as they are.
+## Challenges and goals
+
+Seamless' mode main challenge was to achieve Zero configuration avoiding hardcoded API_PATH or other environment vars involved, and stablishing good sensible defaults when setting up deployments (and also in development). So the developer/devops don't have to overthink their setups.
+
+These are the problems we wanted to solve:
+
+- Avoid having to expose and publish the classic UI if you don't really need it
+- If possible, having to rewrite all API responses, since it returns paths that does not correspond to the original object handled and "seen" from Volto, so you have to adjust them (via a code helper) in a lot of call responses.
+- Simplify Docker builds, making all the configuration via the runtime environment variables
+- Content negotiation was an amazing idea, but the reality is that it was a promise never fulfilled and it was sparsely supported in browsers or the web ecosysytem.
+
+## Solutions
+
+Seamless mode is a set of features in itself.
+
+### Runtime environment variables
+
+All the environment variables configurables work now in runtime, not in build time. This works since Volto 13.
+
+!!! info
+    Before Volto 13, you'd do:
+
+    ```bash
+    RAZZLE_API_PATH=https://plone.org yarn build && yarn start
+    ```
+
+    From Volto 13 on, you can:
+
+    ```bash
+    yarn build && RAZZLE_API_PATH=https://plone.org yarn start
+    ```
+
+## Advantages of the seamless mode
+
+The zero configuration and the lack of having to rely on hardcoded variable names in the builds is already achieved from Volto 13. All important environment variables work in runtime.
+
+Configuration using `Host` headers.
+
+The zero config and the lack of having to rely on hardcoded variable names in the build
+is the main advantage of seamless mode.
+
+Theoretically, you could deploy several sites using the same Volto SSR server without
+recompiling (just using the Host header in the reverse proxy)
+
+Opens the door for http://servername/sitename deployments as well, so several sites
+hosted the same Volto SSR server, we could use headers (same as Pyramid) to accomplish
+that as well.
+
+All internal links are app ones, so a link to a page /my-page will be returned by the
+API as is. So flattenToAppURL will still be required (for old deployments) but if
+seamless is adopted, it won't be required anymore in mid-term.
+
+The Plone classic UI is not public (which in some points clients might find it ugly and
+problematic from the SEO point of view), with the bonus that the indexers cannot reach
+them.
+
+Repeateable docker builds (since the config will be based on runtime)
 
 ## Development environment
 
@@ -43,26 +94,6 @@ breaking change, so old deployments in place continue working as they are.
   `http://localhost:8080/Plone`
 
 ![How Plone 6 works](./HowPlone6Works002.png)
-
-## Advantages of the seamless mode
-
-The zero config and the lack of having to rely on hardcoded variable names in the build
-is the main advantage of seamless mode.
-
-Theoretically, you could deploy several sites using the same Volto SSR server without
-recompiling (just using the Host header in the reverse proxy)
-
-Opens the door for http://servername/sitename deployments as well, so several sites
-hosted the same Volto SSR server, we could use headers (same as Pyramid) to accomplish
-that as well.
-
-All internal links are app ones, so a link to a page /my-page will be returned by the
-API as is. So flattenToAppURL will still be required (for old deployments) but if
-seamless is adopted, it won't be required anymore in mid-term.
-
-The Plone classic UI is not public (which in some points clients might find it ugly and
-problematic from the SEO point of view), with the bonus that the indexers cannot reach
-them.
 
 ## Nginx example config for seamless mode deployments
 
