@@ -35,8 +35,7 @@ const SummaryTemplate = ({ items, linkTitle, linkHref, isEditMode }) => {
               {item[settings.listingPreviewImageField] && (
                 <img
                   src={flattenToAppURL(
-                    item[settings.listingPreviewImageField].scales.preview
-                      .download,
+                    `${item.url}/@@images/${settings.listingPreviewImageField}/preview`,
                   )}
                   alt={item.title}
                 />

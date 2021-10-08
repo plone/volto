@@ -23,9 +23,11 @@ export default function withQuerystringResults(WrappedComponent) {
     const copyFields = ['limit', 'query', 'sort_on', 'sort_order', 'depth'];
 
     const adaptedQuery = Object.assign(
+      config.settings.bbb_listingBlockFetchesFullobjects
+        ? { fullobjects: 1 }
+        : {},
       {
         b_size: b_size,
-        fullobjects: 1,
       },
       ...copyFields.map((name) =>
         Object.keys(querystring).includes(name)

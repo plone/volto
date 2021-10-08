@@ -114,6 +114,10 @@ Not really a breaking change, but it's worth noting it. By default, Volto 14 com
 The `BlockChooser` component now uses the `title` of the block as source for translating
 the block title. Before, it took the `id` of the block, which is utterly wrong. Could be that this change will trigger untranslated blocks titles in your projects and add-ons.
 
+### Listing block now doesn't retrieve fullobjects
+
+The query used by the listing block always used the `fullobjects` flag, which fully serialized the resultant response items. From Volto 14, this is no longer true, the results will get the normal catalog query metadata results. You'll need to adapt your code for get the appropiate data if required and/or use the metadata counterparts. If your code depends on this behavior and you don't have time to adapt now, there's a scape hatch: set the flag `bbb_listingBlockFetchesFullobjects` to `true` in the `settings` config object.
+
 ## Upgrading to Volto 13.x.x
 
 ## Deprecating NodeJS 10
@@ -1100,7 +1104,7 @@ to be async aware like this:
 
 All the calls for updating the title in the document performed by `Helmet` are now
 centralized in the `View.jsx` components. It's recommended to remove all the Helmet
-calls for updating the title from your components especially if you are using some 
+calls for updating the title from your components especially if you are using some
 SEO add-ons for Volto, since not doing that could interfere with them.
 
 ## Upgrading to Volto 4.x.x
@@ -1470,7 +1474,7 @@ They all use `react-select` third party library for render it.
 
 ### Improved Blocks HOC
 
-The Blocks HOC (High Order Component) was changed to lift off some 
+The Blocks HOC (High Order Component) was changed to lift off some
 features from the blocks themselves, and now it takes care of them by itself.
 
 - The delete block feature was moved to it
