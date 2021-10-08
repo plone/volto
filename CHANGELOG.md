@@ -9,7 +9,9 @@
 ### Bugfix
 
 ### Internal
+
 - Improved developer documentation. Proof read several chapters, most importantly the upgrade guide @ichim-david
+- add test for showing effective pages in listing block @kindermann
 
 ## 14.0.0-alpha.14 (2021-10-01)
 
