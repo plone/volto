@@ -9,7 +9,10 @@
 ### Bugfix
 
 ### Internal
+
 - Improved developer documentation. Proof read several chapters, most importantly the upgrade guide @ichim-david
+
+- Fix "make start-frontend" @tisto
 
 ## 14.0.0-alpha.14 (2021-10-01)
 
