@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Add `volto-guillotina` addon to core @sneridagh
+
 ### Bugfix
 
 ### Internal
@@ -16,6 +18,8 @@
 - Updated Brazilian Portuguese translations @ericof
 - Footer: Point to plone.org instead of plone.com @ericof
 - Fix "make start-frontend" @tisto
+
+- Update all the tests infrastructure for the new `volto-guillotina` addon @sneridagh
 
 ## 14.0.0-alpha.14 (2021-10-01)
 
