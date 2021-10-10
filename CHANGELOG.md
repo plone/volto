@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Add `volto-guillotina` addon to core @sneridagh
+
 ### Bugfix
 
 ### Internal
@@ -13,6 +15,8 @@
 - Improved developer documentation. Proof read several chapters, most importantly the upgrade guide @ichim-david
 
 - Fix "make start-frontend" @tisto
+
+- Update all the tests infrastructure for the new `volto-guillotina` addon @sneridagh
 
 ## 14.0.0-alpha.14 (2021-10-01)
 
