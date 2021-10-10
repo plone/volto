@@ -14,9 +14,7 @@ import locale from 'locale';
 import { detect } from 'detect-browser';
 import path from 'path';
 import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
-import { createProxyMiddleware } from 'http-proxy-middleware';
 import { resetServerContext } from 'react-beautiful-dnd';
-import querystring from 'querystring';
 import debug from 'debug';
 
 import routes from '~/routes';
@@ -57,72 +55,24 @@ function reactIntlErrorHandler(error) {
 
 const supported = new locale.Locales(keys(languages), 'en');
 
-const expressMiddleware = (config.settings.expressMiddleware || []).filter(
-  (m) => typeof m !== 'undefined',
-);
-
 const server = express()
   .disable('x-powered-by')
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
   .head('/*', function (req, res) {
     // Support for HEAD requests. Required by start-test utility in CI.
     res.send('');
+  })
+  .all('*', (req, res, next) => {
+    plugToRequest(req, res);
+    next();
   });
 
-if (expressMiddleware.length) server.use('/', expressMiddleware);
-
-// Internal proxy to bypass CORS while developing.
-if (__DEVELOPMENT__ && config.settings.devProxyToApiPath) {
-  // This is the proxy to the API in case the accept header is 'application/json'
-  const filter = function (pathname, req) {
-    return req.headers.accept === 'application/json';
-  };
-  const apiPathURL = parseUrl(config.settings.apiPath);
-  const proxyURL = parseUrl(config.settings.devProxyToApiPath);
-  const serverURL = `${proxyURL.protocol}//${proxyURL.host}`;
-  const instancePath = proxyURL.pathname;
-
-  const proxyMiddleware = createProxyMiddleware(filter, {
-    onProxyReq: (proxyReq, req, res) => {
-      // Fixes https://github.com/chimurai/http-proxy-middleware/issues/320
-      if (!req.body || !Object.keys(req.body).length) {
-        return;
-      }
-
-      const contentType = proxyReq.getHeader('Content-Type');
-      const writeBody = (bodyData) => {
-        proxyReq.setHeader('Content-Length', Buffer.byteLength(bodyData));
-        proxyReq.write(bodyData);
-      };
-
-      if (contentType.includes('application/json')) {
-        writeBody(JSON.stringify(req.body));
-      }
-
-      if (contentType.includes('application/x-www-form-urlencoded')) {
-        writeBody(querystring.stringify(req.body));
-      }
-    },
-    target: serverURL,
-    pathRewrite: {
-      '^/':
-        config.settings.proxyRewriteTarget ||
-        `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot/`,
-    },
-    logLevel: 'silent', // change to 'debug' to see all requests
-    ...(config.settings?.proxyRewriteTarget?.startsWith('https') && {
-      changeOrigin: true,
-      secure: false,
-    }),
-  });
-  server.use(proxyMiddleware);
-}
+const middleware = (config.settings.expressMiddleware || []).filter((m) => m);
+if (middleware.length) server.use('/', middleware);
 
 server.all('*', setupServer);
 
 function setupServer(req, res, next) {
-  plugToRequest(req, res);
-
   const api = new Api(req);
 
   const browserdetect = detect(req.headers['user-agent']);
