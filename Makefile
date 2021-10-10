@@ -80,8 +80,8 @@ start:
 	$(MAKE) -j 2 start-backend start-frontend
 
 .PHONY: start-frontend
-start-frontend: dist
-	yarn start:prod
+start-frontend:
+	yarn start
 
 .PHONY: start-backend
 start-backend: ## Start Plone Backend
