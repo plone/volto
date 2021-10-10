@@ -14,6 +14,9 @@
 
 - Improved developer documentation. Proof read several chapters, most importantly the upgrade guide @ichim-david
 
+- Use Plone logo (Closes #2632) @ericof
+- Updated Brazilian Portuguese translations @ericof
+- Footer: Point to plone.org instead of plone.com @ericof
 - Fix "make start-frontend" @tisto
 
 - Update all the tests infrastructure for the new `volto-guillotina` addon @sneridagh
