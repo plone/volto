@@ -13,6 +13,7 @@
 ### Internal
 
 - Improved developer documentation. Proof read several chapters, most importantly the upgrade guide @ichim-david
+- add test for showing effective pages in listing block @kindermann
 
 - Use Plone logo (Closes #2632) @ericof
 - Updated Brazilian Portuguese translations @ericof
