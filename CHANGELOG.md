@@ -2,17 +2,11 @@
 
 ## 14.0.0 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Yet another attempt at fixing devproxy. Split the devproxy into a separate
   express middleware. Introduce the `DEBUG_HPM` env var to make the devproxy
   verbose @tiberiuichim
-
-### Internal
 
 ## 14.0.0-alpha.15 (2021-10-10)
 
