@@ -114,6 +114,10 @@ Not really a breaking change, but it's worth noting it. By default, Volto 14 com
 The `BlockChooser` component now uses the `title` of the block as source for translating
 the block title. Before, it took the `id` of the block, which is utterly wrong. Could be that this change will trigger untranslated blocks titles in your projects and add-ons.
 
+### Adjusted main Logo component styling
+
+In order to match the Plone logo and in lieu to use a better generic icon starting point, the `Logo.jsx` component and `.logo-nav-wrapper` styling have been adjusted. The logo is not constrained by default to `64px` and the wrapper now centers vertically. Please check that your project logo placeholder is still in good shape after upgrade.
+
 ## Upgrading to Volto 13.x.x
 
 ## Deprecating NodeJS 10
@@ -1100,7 +1104,7 @@ to be async aware like this:
 
 All the calls for updating the title in the document performed by `Helmet` are now
 centralized in the `View.jsx` components. It's recommended to remove all the Helmet
-calls for updating the title from your components especially if you are using some 
+calls for updating the title from your components especially if you are using some
 SEO add-ons for Volto, since not doing that could interfere with them.
 
 ## Upgrading to Volto 4.x.x
@@ -1470,7 +1474,7 @@ They all use `react-select` third party library for render it.
 
 ### Improved Blocks HOC
 
-The Blocks HOC (High Order Component) was changed to lift off some 
+The Blocks HOC (High Order Component) was changed to lift off some
 features from the blocks themselves, and now it takes care of them by itself.
 
 - The delete block feature was moved to it

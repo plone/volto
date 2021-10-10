@@ -12,6 +12,9 @@
 
 - Improved developer documentation. Proof read several chapters, most importantly the upgrade guide @ichim-david
 
+- Use Plone logo (Closes #2632) @ericof
+- Updated Brazilian Portuguese translations @ericof
+- Footer: Point to plone.org instead of plone.com @ericof
 - Fix "make start-frontend" @tisto
 
 ## 14.0.0-alpha.14 (2021-10-01)
