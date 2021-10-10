@@ -67,7 +67,8 @@ https://docs.voltocms.com/upgrade-guide/
 ### Internal
 
 - Use plone.volto instead of kitconcept.volto @tisto
-- Silence customization errors, they are now behind a `RAZZLE_DEBUG_CUSTOMIZATIONS` enviroment variable @sneridagh
+- Silence customization errors, they are now behind a `debug` library namespace @sneridagh
+- Remove recently introduced `RAZZLE_I18NDEBUGMODE` in favor of a `debug` library namespace @sneridagh
 
 ## 14.0.0-alpha.11 (2021-09-25)
 
