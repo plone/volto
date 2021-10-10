@@ -4,21 +4,22 @@
 
 ### Breaking
 
+- Adjusted main `Logo` component styling @sneridagh
+
+For a more information, please read the upgrade guide
+https://docs.voltocms.com/upgrade-guide/
+
 ### Feature
 
 - Add `volto-guillotina` addon to core @sneridagh
 
-### Bugfix
-
 ### Internal
 
 - Improved developer documentation. Proof read several chapters, most importantly the upgrade guide @ichim-david
-
 - Use Plone logo (Closes #2632) @ericof
 - Updated Brazilian Portuguese translations @ericof
 - Footer: Point to plone.org instead of plone.com @ericof
 - Fix "make start-frontend" @tisto
-
 - Update all the tests infrastructure for the new `volto-guillotina` addon @sneridagh
 
 ## 14.0.0-alpha.14 (2021-10-01)
