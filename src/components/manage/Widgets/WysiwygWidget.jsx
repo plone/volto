@@ -100,6 +100,10 @@ class WysiwygWidget extends Component {
       encoding: PropTypes.string,
     }),
     /**
+     * Placeholder for the editor
+     */
+    placeholder: PropTypes.string,
+    /**
      * List of error messages
      */
     error: PropTypes.arrayOf(PropTypes.string),
@@ -292,6 +296,7 @@ class WysiwygWidget extends Component {
                   this.state.inlineToolbarPlugin,
                   ...settings.richTextEditorPlugins,
                 ]}
+                placeholder={this.props.placeholder}
                 blockRenderMap={settings.extendedBlockRenderMap}
                 blockStyleFn={settings.blockStyleFn}
                 customStyleMap={settings.customStyleMap}
