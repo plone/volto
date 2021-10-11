@@ -6,13 +6,9 @@
 
 - Fix logout action using the backend @logout endpoint, effectively removing the `__ac` cookie. It is recommended to upgrade to the latest p.restapi version to take full advantage of this feature @sneridagh
 
-### Feature
-
 ### Bugfix
 
 -Add spinner on sharing View Button @iRohitSingh
-
-### Internal
 
 ## 14.0.0-alpha.16 (2021-10-10)
 
