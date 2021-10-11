@@ -2,13 +2,9 @@
 
 ## 14.0.0 (unreleased)
 
-### Breaking
-
-### Feature
-
-### Bugfix
-
 ### Internal
+
+- Re-release last release, since it does not show on NPM @sneridagh
 
 ## 14.0.0-alpha.17 (2021-10-11)
 
@@ -18,7 +14,7 @@
 
 ### Bugfix
 
--Add spinner on sharing View Button @iRohitSingh
+- Add spinner on sharing View Button @iRohitSingh
 
 ## 14.0.0-alpha.16 (2021-10-10)
 
