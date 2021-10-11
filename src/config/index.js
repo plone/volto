@@ -102,7 +102,6 @@ let config = {
     ToHTMLRenderers,
     ToHTMLOptions,
     imageObjects: ['Image'],
-    listingPreviewImageField: 'image',
     customStyleMap: null,
     notSupportedBrowsers: ['ie'],
     defaultPageSize: 25,
