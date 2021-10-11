@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import loadable from '@loadable/component';
 import 'react-image-gallery/styles/css/image-gallery.css';
-import { flattenToAppURL } from '@plone/volto/helpers';
 import { Button } from 'semantic-ui-react';
 import { Icon } from '@plone/volto/components';
 import config from '@plone/volto/registry';
@@ -73,28 +72,14 @@ const renderFullscreenButton = (onClick, isFullscreen) => {
 
 const ImageGalleryTemplate = ({ items }) => {
   const { settings } = config;
-  const renderItems = items.filter((content) =>
-    settings.imageObjects.includes(content['@type']),
+  const renderItems = items.filter(
+    (content) =>
+      settings.imageObjects.includes(content['@type']) && content.image_field,
   );
   const imagesInfo = renderItems.map((item) => {
-    let imageSRCOriginal, imageSRCThumb;
-    if (item?.[settings.listingPreviewImageField]) {
-      imageSRCOriginal = flattenToAppURL(
-        item[settings.listingPreviewImageField]?.scales.large.download,
-      );
-      imageSRCThumb = flattenToAppURL(
-        item[settings.listingPreviewImageField]?.scales.thumb.download,
-      );
-    } else if (item.url) {
-      imageSRCOriginal = `${item.url}/@@images/${settings.listingPreviewImageField}/large`;
-      imageSRCThumb = `${item.url}/@@images/${settings.listingPreviewImageField}/thumb`;
-    } else {
-      imageSRCOriginal = item.image.scales.large.download;
-      imageSRCThumb = item.image.scales.thumb.download;
-    }
     return {
-      original: imageSRCOriginal,
-      thumbnail: imageSRCThumb,
+      original: `${item.url}/@@images/${item.image_field}/large`,
+      thumbnail: `${item.url}/@@images/${item.image_field}/thumb`,
     };
   });
 
