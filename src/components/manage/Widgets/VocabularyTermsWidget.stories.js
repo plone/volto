@@ -10,18 +10,26 @@ const customStore = {
   },
 };
 
-const customStoreTranslations = {
-  userSession: { token: '1234' },
-  intl: {
-    locale: 'it',
-    messages: {},
-  },
-};
-
-const WrappedSimple = (args) => {
+const WrappedJSONField = (args) => {
   const [value, setValue] = React.useState({
-    '001': 'manual',
-    '002': 'questions & answers',
+    items: [
+      {
+        token: 'talk',
+        titles: {
+          en: 'Talk',
+          de: 'Vortrag',
+          it: 'Lettura',
+        },
+      },
+      {
+        token: 'lightning-talk',
+        titles: {
+          en: 'Lightning-Talk',
+          de: 'kürzerer erleuchtender Vortrag',
+          it: 'Lightning-Talk',
+        },
+      },
+    ],
   });
   const onChange = (block, value) => setValue(value);
 
@@ -33,47 +41,7 @@ const WrappedSimple = (args) => {
       <div className="ui segment form attached">
         <VocabularyTermsWidget
           {...args}
-          id="Simple"
-          title="Vocabulary terms"
-          block="testBlock"
-          value={value}
-          value_type={{
-            schema: {
-              type: 'string',
-            },
-          }}
-          onChange={onChange}
-        />
-        <pre>{JSON.stringify(value, null, 4)}</pre>
-      </div>
-    </Wrapper>
-  );
-};
-
-const WrappedTranslations = (args) => {
-  const [value, setValue] = React.useState({
-    '001': {
-      en: 'manual',
-      it: 'manuale',
-      de: 'Anleitung',
-    },
-    '002': {
-      en: 'questions & answers',
-      it: 'domande frequenti',
-      de: 'FAQs',
-    },
-  });
-  const onChange = (block, value) => setValue(value);
-
-  return (
-    <Wrapper
-      location={{ pathname: '/folder2/folder21/doc212' }}
-      customStore={customStoreTranslations}
-    >
-      <div className="ui segment form attached">
-        <VocabularyTermsWidget
-          {...args}
-          id="Translations"
+          id="simplevocabulary"
           title="Vocabulary terms"
           block="testBlock"
           value={value}
@@ -97,6 +65,4 @@ export default {
   ],
 };
 
-export const Simple = () => <WrappedSimple />;
-
-export const Translations = () => <WrappedTranslations />;
+export const JSONField = () => <WrappedJSONField />;

@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Make VocabularyTermsWidget orderable @ksuess
+
 ### Bugfix
 
 ### Internal
