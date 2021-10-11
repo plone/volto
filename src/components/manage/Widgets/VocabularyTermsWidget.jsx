@@ -143,15 +143,16 @@ const VocabularyTermsWidget = (props) => {
   }, [dispatch, toFocusId]);
 
   // LEGACY: value from unordered zope.schema.Dict instead of zope.schema.JSONField
-  // TODO upgrade step for Dict to JSONField
   if (widgetvalue.items === undefined) {
-    // return (
-    //   <div>
-    //     Consider switching to an ordered vocabulary provided by a JSONField
-    //   </div>
-    // );
     widgetvalue = {
-      items: Object.fromEntries(widgetvalue),
+      items: Object.keys(widgetvalue).map((key) => {
+        return {
+          token: key,
+          titles: {
+            en: widgetvalue[key],
+          },
+        };
+      }),
     };
   }
 
