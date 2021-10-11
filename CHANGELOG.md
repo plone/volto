@@ -10,6 +10,8 @@
 
 ### Bugfix
 
+-Add spinner on sharing View Button @iRohitSingh
+
 ### Internal
 
 ## 14.0.0-alpha.16 (2021-10-10)
