@@ -118,6 +118,10 @@ the block title. Before, it took the `id` of the block, which is utterly wrong. 
 
 The query used by the listing block always used the `fullobjects` flag, which fully serialized the resultant response items. From Volto 14, this is no longer true, the results will get the normal catalog query metadata results. You'll need to adapt your code for get the appropiate data if required and/or use the metadata counterparts. If your code depends on this behavior and you don't have time to adapt now, there's a scape hatch: set the flag `bbb_listingBlockFetchesFullobjects` to `true` in the `settings` config object.
 
+### Adjusted main Logo component styling
+
+In order to match the Plone logo and in lieu to use a better generic icon starting point, the `Logo.jsx` component and `.logo-nav-wrapper` styling have been adjusted. The logo is not constrained by default to `64px` and the wrapper now centers vertically. Please check that your project logo placeholder is still in good shape after upgrade.
+
 ## Upgrading to Volto 13.x.x
 
 ## Deprecating NodeJS 10
