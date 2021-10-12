@@ -17,6 +17,19 @@ const settings = {
   criticalCssPath: 'public/critical.css',
   readCriticalCss: null, // so it will be defaultReadCriticalCss
   extractScripts: { errorPages: false },
+  staticFiles: [{
+    match: /^\/static\/.*/,
+    headers: {
+      // stable resources never change. 31536000 seconds == 365 days
+      'Cache-Control': 'public, max-age=31536000'
+    }
+  },
+  {
+    match: /.*/,
+    headers: {
+      'Cache-Control': 'public, max-age=60'
+    }
+  }],
 };
 
 export default settings;
