@@ -7,6 +7,7 @@
 ### Feature
 
 - Make VocabularyTermsWidget orderable @ksuess
+- Get widget by tagged values @ksuess
 
 ### Bugfix
 
