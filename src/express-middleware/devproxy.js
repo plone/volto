@@ -11,7 +11,11 @@ import { parse as parseUrl } from 'url';
 
 const filter = function (pathname, req) {
   // This is the proxy to the API in case the accept header is 'application/json'
-  return __DEVELOPMENT__ && config.settings.devProxyToApiPath;
+  return (
+    __DEVELOPMENT__ &&
+    config.settings.devProxyToApiPath &&
+    pathname.startsWith('/++api++')
+  );
 };
 
 let _env = null;
@@ -22,7 +26,6 @@ function getEnv() {
   if (_env) {
     return _env;
   }
-
   const apiPathURL = parseUrl(config.settings.apiPath);
   const proxyURL = parseUrl(config.settings.devProxyToApiPath);
   const serverURL = `${proxyURL.protocol}//${proxyURL.host}`;
@@ -33,7 +36,7 @@ function getEnv() {
     serverURL,
     instancePath,
   };
-
+  console.log(_env);
   return _env;
 }
 
@@ -73,20 +76,24 @@ export default function () {
     },
     pathRewrite: (path, req) => {
       const { apiPathURL, instancePath } = getEnv();
+      console.log(
+        config.settings.proxyRewriteTarget ||
+          `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot`,
+      );
       const target =
         config.settings.proxyRewriteTarget ||
         `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/++api++/VirtualHostRoot`;
 
       return `${target}${path}`;
     },
-    logLevel: process.env.DEBUG_HPM ? 'debug' : 'silent',
+    logLevel: 'debug',
     ...(config.settings?.proxyRewriteTarget?.startsWith('https') && {
       changeOrigin: true,
       secure: false,
     }),
   });
 
-  middleware.all('/\\+\\+api\\+\\+', devProxy);
+  middleware.all('*', devProxy);
   middleware.id = 'devProxy';
 
   return middleware;

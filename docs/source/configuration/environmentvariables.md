@@ -13,6 +13,10 @@ In the frontend we can access this variable with:
 window.env.RAZZLE_MY_VARIABLE
 ```
 
+## RAZZLE_LEGACY_TRAVERSE
+
+
+
 ## VOLTO_ROBOTSTXT
 
 You can override the robots.txt file with an environment variable called

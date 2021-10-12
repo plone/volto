@@ -8,7 +8,6 @@ import cookie from 'react-cookie';
 import config from '@plone/volto/registry';
 
 const methods = ['get', 'post', 'put', 'patch', 'del'];
-const APISUFIX = '/++api++';
 
 /**
  * Format the url.
@@ -18,14 +17,16 @@ const APISUFIX = '/++api++';
  */
 function formatUrl(path) {
   const { settings } = config;
+  const APISUFIX = settings.legacyTraverse ? '' : '/++api++';
+
   if (path.startsWith('http://') || path.startsWith('https://')) return path;
 
   const adjustedPath = path[0] !== '/' ? `/${path}` : path;
   let apiPath = '';
   if (settings.internalApiPath && __SERVER__) {
     apiPath = settings.internalApiPath;
-  } else if (config.settings.apiPath) {
-    apiPath = config.settings.apiPath;
+  } else if (settings.apiPath) {
+    apiPath = settings.apiPath;
   }
   // console.log(apiPath);
   return `${apiPath}${APISUFIX}${adjustedPath}`;

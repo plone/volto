@@ -49,8 +49,6 @@ if (config.settings) {
   });
 }
 
-let isSeamlessMode = false;
-
 function reactIntlErrorHandler(error) {
   debug('i18n')(error);
 }
@@ -133,11 +131,8 @@ function setupServer(req, res, next) {
       .send(`<!doctype html> ${renderToString(errorPage)}`);
   }
 
-  if (!isSeamlessMode && !config.settings.apiPath && req.headers.host) {
-    isSeamlessMode = true;
-  }
-
-  if (isSeamlessMode) {
+  if (!__DEVELOPMENT__ && !process.env.RAZZLE_API_PATH && req.headers.host) {
+    console.log(req.headers.host);
     req.app.locals.detectedHost = `${
       req.headers['x-forwarded-proto'] || req.protocol
     }://${req.headers.host}`;
