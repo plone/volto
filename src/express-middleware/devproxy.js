@@ -26,6 +26,7 @@ function getEnv() {
   if (_env) {
     return _env;
   }
+
   const apiPathURL = parseUrl(config.settings.apiPath);
   const proxyURL = parseUrl(config.settings.devProxyToApiPath);
   const serverURL = `${proxyURL.protocol}//${proxyURL.host}`;
@@ -36,7 +37,7 @@ function getEnv() {
     serverURL,
     instancePath,
   };
-  console.log(_env);
+
   return _env;
 }
 
@@ -76,17 +77,13 @@ export default function () {
     },
     pathRewrite: (path, req) => {
       const { apiPathURL, instancePath } = getEnv();
-      console.log(
-        config.settings.proxyRewriteTarget ||
-          `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot`,
-      );
       const target =
         config.settings.proxyRewriteTarget ||
         `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/++api++/VirtualHostRoot`;
 
-      return `${target}${path}`;
+      return `${target}${path.replace('/++api++', '')}`;
     },
-    logLevel: 'debug',
+    logLevel: process.env.DEBUG_HPM ? 'debug' : 'silent',
     ...(config.settings?.proxyRewriteTarget?.startsWith('https') && {
       changeOrigin: true,
       secure: false,
@@ -98,48 +95,3 @@ export default function () {
 
   return middleware;
 }
-
-// if (__DEVELOPMENT__ && config.settings.devProxyToApiPath) {
-//   // This is the proxy to the API in case the accept header is 'application/json'
-//   // const filter = function (pathname, req) {
-//   //   return req.headers.accept === 'application/json';
-//   // };
-//   const apiPathURL = parseUrl(config.settings.apiPath);
-//   const proxyURL = parseUrl(config.settings.devProxyToApiPath);
-//   const serverURL = `${proxyURL.protocol}//${proxyURL.host}`;
-//   const instancePath = proxyURL.pathname;
-
-//   const proxyMiddleware = createProxyMiddleware({
-//     onProxyReq: (proxyReq, req, res) => {
-//       // Fixes https://github.com/chimurai/http-proxy-middleware/issues/320
-//       if (!req.body || !Object.keys(req.body).length) {
-//         return;
-//       }
-
-//       const contentType = proxyReq.getHeader('Content-Type');
-//       const writeBody = (bodyData) => {
-//         proxyReq.setHeader('Content-Length', Buffer.byteLength(bodyData));
-//         proxyReq.write(bodyData);
-//       };
-
-//       if (contentType.includes('application/json')) {
-//         writeBody(JSON.stringify(req.body));
-//       }
-
-//       if (contentType.includes('application/x-www-form-urlencoded')) {
-//         writeBody(querystring.stringify(req.body));
-//       }
-//     },
-//     target: serverURL,
-//     pathRewrite: {
-//       '^/':
-//         config.settings.proxyRewriteTarget ||
-//         `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/++api++/VirtualHostRoot/`,
-//     },
-//     logLevel: 'silent', // change to 'debug' to see all requests
-//     ...(config.settings?.proxyRewriteTarget?.startsWith('https') && {
-//       changeOrigin: true,
-//       secure: false,
-//     }),
-//   });
-//   server.use('/\\+\\+api\\+\\+', proxyMiddleware);
