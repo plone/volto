@@ -130,21 +130,13 @@ class ContentTypeLayout extends Component {
   }
 
   /**
-   * Component will mount
-   * @method componentWillMount
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillMount() {
-    this.props.getControlpanel(join([this.props.parent, this.props.id], '/'));
-    this.props.getSchema(this.props.id);
-  }
-
-  /**
    * Component did mount
    * @method componentDidMount
    * @returns {undefined}
    */
   componentDidMount() {
+    this.props.getControlpanel(join([this.props.parent, this.props.id], '/'));
+    this.props.getSchema(this.props.id);
     this.setState({ isClient: true });
   }
 
@@ -167,11 +159,10 @@ class ContentTypeLayout extends Component {
 
     // Schema GET
     if (this.props.schemaRequest.loading && nextProps.schemaRequest.loaded) {
-      let properties = nextProps.schema?.properties || {};
-      let content = {};
-      let value, key;
-      for (key in properties) {
-        value = properties[key].default;
+      const properties = nextProps.schema?.properties || {};
+      const content = {};
+      for (const key in properties) {
+        const value = properties[key].default;
         if (value) {
           content[key] = value;
         }
@@ -237,7 +228,7 @@ class ContentTypeLayout extends Component {
    * @returns {undefined}
    */
   onSubmit(data) {
-    let schema = { properties: {} };
+    const schema = { properties: {} };
     Object.keys(data)
       .filter((k) => data[k])
       .forEach((k) => (schema.properties[k] = { default: data[k] }));
@@ -250,7 +241,7 @@ class ContentTypeLayout extends Component {
    * @returns {undefined}
    */
   onCancel() {
-    let url = getParentUrl(this.props.pathname);
+    const url = getParentUrl(this.props.pathname);
     this.props.history.push(getParentUrl(url));
   }
 
@@ -260,7 +251,10 @@ class ContentTypeLayout extends Component {
    * @returns {undefined}
    */
   onEnableBlocks() {
-    let schema = {
+    const { properties = {} } = this.props.schema;
+    const blocksFieldName = getBlocksFieldname(properties);
+    const blocksLayoutFieldname = getBlocksLayoutFieldname(properties);
+    const schema = {
       fieldsets: [
         {
           id: 'layout',
@@ -274,12 +268,14 @@ class ContentTypeLayout extends Component {
           type: 'dict',
           widget: 'json',
           factory: 'JSONField',
+          default: properties[blocksFieldName]?.default || {},
         },
         blocks_layout: {
           title: 'Blocks Layout',
           type: 'dict',
           widget: 'json',
           factory: 'JSONField',
+          default: properties[blocksLayoutFieldname]?.default || { items: [] },
         },
       },
     };

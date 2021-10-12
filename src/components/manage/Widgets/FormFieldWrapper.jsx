@@ -84,6 +84,7 @@ class FormFieldWrapper extends Component {
       isDisabled,
       onDelete,
       intl,
+      noForInFieldLabel,
     } = this.props;
     const wdg = (
       <>
@@ -102,7 +103,11 @@ class FormFieldWrapper extends Component {
         inline
         required={required}
         error={error.length > 0}
-        className={cx(description ? 'help' : '', className)}
+        className={cx(
+          description ? 'help' : '',
+          className,
+          `field-wrapper-${id}`,
+        )}
       >
         <Grid>
           <Grid.Row stretched>
@@ -111,7 +116,7 @@ class FormFieldWrapper extends Component {
                 <div className="wrapper">
                   <label
                     id={`fieldset-${fieldSet}-field-label-${id}`}
-                    htmlFor={`field-${id}`}
+                    htmlFor={noForInFieldLabel ? null : `field-${id}`}
                   >
                     {draggable && onEdit && (
                       <i

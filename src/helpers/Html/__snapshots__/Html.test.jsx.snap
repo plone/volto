@@ -79,3 +79,83 @@ exports[`Html renders a html component 1`] = `
   </body>
 </html>
 `;
+
+exports[`Html renders a html component with apiPath present 1`] = `
+<html
+  lang="en"
+>
+  <head>
+    <meta
+      charSet="utf-8"
+    />
+    
+    
+    
+    
+    
+    <script
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "window.env = {\\"apiPath\\":\\"https:\\\\u002F\\\\u002Fplone.org\\"};",
+        }
+      }
+    />
+    <link
+      href="/favicon.ico"
+      rel="shortcut icon"
+    />
+    <meta
+      content="Volto - http://plone.org"
+      name="generator"
+    />
+    <meta
+      content="width=device-width, initial-scale=1"
+      name="viewport"
+    />
+    <meta
+      content="yes"
+      name="apple-mobile-web-app-capable"
+    />
+    <link
+      as="script"
+      crossOrigin="true"
+      data-chunk="client"
+      href="http://localhost:3001/static/js/runtime~client.js"
+      rel="preload"
+    />
+  </head>
+  <body
+    className="class1 class2"
+  >
+    <div
+      aria-label="Toolbar"
+      id="toolbar"
+      role="navigation"
+    />
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<div />",
+        }
+      }
+      id="main"
+    />
+    <div
+      id="sidebar"
+    />
+    <script
+      charSet="UTF-8"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "window.__data={\\"content\\":{\\"@id\\":\\"http:\\\\u002F\\\\u002Fdummy\\"}};",
+        }
+      }
+    />
+    <script
+      async={true}
+      crossOrigin="true"
+      src="bundle.js"
+    />
+  </body>
+</html>
+`;

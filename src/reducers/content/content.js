@@ -11,6 +11,8 @@ import {
   CREATE_CONTENT,
   DELETE_CONTENT,
   GET_CONTENT,
+  LOCK_CONTENT,
+  UNLOCK_CONTENT,
   ORDER_CONTENT,
   RESET_CONTENT,
   UPDATE_CONTENT,
@@ -44,6 +46,16 @@ const initialState = {
     error: null,
   },
   updatecolumns: {
+    loaded: false,
+    loading: false,
+    error: null,
+  },
+  lock: {
+    loaded: false,
+    loading: false,
+    error: null,
+  },
+  unlock: {
     loaded: false,
     loading: false,
     error: null,
@@ -83,7 +95,9 @@ export default function content(state = initialState, action = {}) {
         },
       };
     case `${CREATE_CONTENT}_PENDING`:
+    case `${LOCK_CONTENT}_PENDING`:
     case `${DELETE_CONTENT}_PENDING`:
+    case `${UNLOCK_CONTENT}_PENDING`:
     case `${UPDATE_CONTENT}_PENDING`:
     case `${GET_CONTENT}_PENDING`:
     case `${ORDER_CONTENT}_PENDING`:
@@ -231,6 +245,21 @@ export default function content(state = initialState, action = {}) {
           index: action.index,
         },
       };
+    case `${UNLOCK_CONTENT}_SUCCESS`:
+      return {
+        ...state,
+        [getRequestKey(action.type)]: {
+          loading: false,
+          loaded: true,
+          error: null,
+        },
+        data: {
+          ...state.data,
+          lock: {
+            ...result,
+          },
+        },
+      };
     case `${UPDATE_CONTENT}_SUCCESS`:
       return {
         ...state,
@@ -244,8 +273,25 @@ export default function content(state = initialState, action = {}) {
           },
         },
       };
+    case `${LOCK_CONTENT}_SUCCESS`:
+      return {
+        ...state,
+        [getRequestKey(action.type)]: {
+          loading: false,
+          loaded: true,
+          error: null,
+        },
+        data: {
+          ...state.data,
+          lock: {
+            ...result,
+          },
+        },
+      };
     case `${CREATE_CONTENT}_FAIL`:
+    case `${LOCK_CONTENT}_FAIL`:
     case `${DELETE_CONTENT}_FAIL`:
+    case `${UNLOCK_CONTENT}_FAIL`:
     case `${UPDATE_CONTENT}_FAIL`:
     case `${GET_CONTENT}_FAIL`:
     case `${ORDER_CONTENT}_FAIL`:

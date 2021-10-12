@@ -2,7 +2,7 @@
  * Config.
  * @module config
  */
-
+import { parse as parseUrl } from 'url';
 import { defaultWidget, widgetMapping } from './Widgets';
 import {
   layoutViews,
@@ -31,6 +31,7 @@ import { loadables } from './Loadables';
 
 import { sentryOptions } from './Sentry';
 import { contentIcons } from './ContentIcons';
+import { controlPanelsIcons } from './ControlPanels';
 
 import applyAddonConfiguration from 'load-volto-addons';
 
@@ -41,9 +42,26 @@ const port = process.env.PORT || '3000';
 
 const apiPath =
   process.env.RAZZLE_API_PATH ||
+  (__DEVELOPMENT__ ? `http://${host}:${port}` : '');
+
+const getServerURL = (url) => {
+  if (!url) return;
+  const apiPathURL = parseUrl(url);
+  return `${apiPathURL.protocol}//${apiPathURL.hostname}${
+    apiPathURL.port ? `:${apiPathURL.port}` : ''
+  }`;
+};
+
+// Sensible defaults for publicURL
+// if RAZZLE_PUBLIC_URL is present, use it
+// if in DEV, use the host/port combination by default
+// if in PROD, assume it's RAZZLE_API_PATH server name (no /api or alikes) or fallback
+// to DEV settings if RAZZLE_API_PATH is not present
+const publicURL =
+  process.env.RAZZLE_PUBLIC_URL ||
   (__DEVELOPMENT__
-    ? `http://${host}:${port}/api`
-    : 'http://localhost:8080/Plone');
+    ? `http://${host}:${port}`
+    : getServerURL(process.env.RAZZLE_API_PATH) || `http://${host}:${port}`);
 
 const serverConfig =
   typeof __SERVER__ !== 'undefined' && __SERVER__
@@ -54,12 +72,17 @@ let config = {
   settings: {
     host,
     port,
+    // The URL Volto is going to be served (see sensible defaults above)
+    publicURL,
     // Internal proxy to bypass CORS *while developing*. Not intended for production use.
     // In production, the proxy is disabled, make sure you specify an apiPath that does
     // not require CORS to work.
     apiPath,
+    apiExpanders: [],
     devProxyToApiPath:
-      process.env.RAZZLE_DEV_PROXY_API_PATH || 'http://localhost:8080/Plone', // Set it to '' for disabling the proxy
+      process.env.RAZZLE_DEV_PROXY_API_PATH ||
+      process.env.RAZZLE_API_PATH ||
+      'http://localhost:8080/Plone', // Set it to '' for disabling the proxy
     // proxyRewriteTarget Set it for set a custom target for the proxy or overide the internal VHM rewrite
     // proxyRewriteTarget: '/VirtualHostBase/http/localhost:8080/Plone/VirtualHostRoot/_vh_api'
     // proxyRewriteTarget: 'https://myvoltositeinproduction.com'
@@ -112,6 +135,24 @@ let config = {
     maxResponseSize: 2000000000, // This is superagent default (200 mb)
     serverConfig,
     storeExtenders: [],
+    showTags: true,
+    controlPanelsIcons,
+    externalRoutes: [
+      // URL to be considered as external
+      // {
+      //   match: {
+      //     path: '/news',
+      //     exact: false,
+      //     strict: false,
+      //   },
+      //   url(payload) {
+      //     return payload.location.pathname;
+      //   },
+      // },
+    ],
+    showSelfRegistration: false,
+    contentMetadataTagsImageField: 'image',
+    hasWorkingCopySupport: false,
   },
   widgets: {
     ...widgetMapping,
@@ -128,6 +169,7 @@ let config = {
     blocksConfig,
     groupBlocksOrder,
     initialBlocks,
+    showEditBlocksInBabelView: false,
   },
   addonRoutes: [],
   addonReducers: {},
@@ -135,18 +177,10 @@ let config = {
 
 config = applyAddonConfiguration(config);
 
-export const settings = config.settings;
-export const widgets = config.widgets;
-export const views = config.views;
-export const blocks = config.blocks;
-export const addonRoutes = [...config.addonRoutes];
-export const addonReducers = { ...config.addonReducers };
-export const appExtras = config.appExtras;
-
-ConfigRegistry.settings = settings;
-ConfigRegistry.blocks = blocks;
-ConfigRegistry.views = views;
-ConfigRegistry.widgets = widgets;
-ConfigRegistry.addonRoutes = addonRoutes;
-ConfigRegistry.addonReducers = addonReducers;
-ConfigRegistry.appExtras = appExtras;
+ConfigRegistry.settings = config.settings;
+ConfigRegistry.blocks = config.blocks;
+ConfigRegistry.views = config.views;
+ConfigRegistry.widgets = config.widgets;
+ConfigRegistry.addonRoutes = config.addonRoutes;
+ConfigRegistry.addonReducers = config.addonReducers;
+ConfigRegistry.appExtras = config.appExtras;

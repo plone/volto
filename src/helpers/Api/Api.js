@@ -23,8 +23,8 @@ function formatUrl(path) {
   let apiPath = '';
   if (settings.internalApiPath && __SERVER__) {
     apiPath = settings.internalApiPath;
-  } else {
-    apiPath = settings.apiPath;
+  } else if (config.settings.apiPath) {
+    apiPath = config.settings.apiPath;
   }
   return `${apiPath}${adjustedPath}`;
 }

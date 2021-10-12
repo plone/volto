@@ -124,12 +124,7 @@ class ReferenceWidget extends Component {
     };
   }
 
-  /**
-   * Component will mount
-   * @method componentWillMount
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillMount() {
+  componentDidMount() {
     this.props.resetSearchContent();
   }
 

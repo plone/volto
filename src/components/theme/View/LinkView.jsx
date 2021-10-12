@@ -40,12 +40,7 @@ class LinkView extends Component {
     token: null,
   };
 
-  /**
-   * Component will mount
-   * @method componentWillMount
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillMount() {
+  componentDidMount() {
     if (!this.props.token) {
       const { remoteUrl } = this.props.content;
       if (isInternalURL(remoteUrl)) {

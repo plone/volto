@@ -3,9 +3,11 @@ import filesMiddleware from '@plone/volto/express-middleware/files';
 import robotstxtMiddleware from '@plone/volto/express-middleware/robotstxt';
 import sitemapMiddleware from '@plone/volto/express-middleware/sitemap';
 import staticsMiddleware from '@plone/volto/express-middleware/static';
+import devProxyMiddleware from '@plone/volto/express-middleware/devproxy';
 
 const settings = {
   expressMiddleware: [
+    devProxyMiddleware(),
     filesMiddleware(),
     imagesMiddleware(),
     robotstxtMiddleware(),
@@ -14,19 +16,7 @@ const settings = {
   ],
   criticalCssPath: 'public/critical.css',
   readCriticalCss: null, // so it will be defaultReadCriticalCss
-  staticFiles: [{
-    match: /^\/static\/.*/,
-    headers: {
-      // stable resources never change. 31536000 seconds == 365 days
-      'Cache-Control': 'public, max-age=31536000'
-    }
-  },
-  {
-    match: /.*/,
-    headers: {
-      'Cache-Control': 'public, max-age=60'
-    }
-  }],
+  extractScripts: { errorPages: false },
 };
 
 export default settings;

@@ -39,10 +39,23 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                 <h3
                   className="ui icon center aligned header"
                 >
-                  <i
-                    aria-hidden="true"
-                    className="calendar icon"
-                    onClick={[Function]}
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
                   />
                   <div
                     className="content"
@@ -62,10 +75,23 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                 <h3
                   className="ui icon center aligned header"
                 >
-                  <i
-                    aria-hidden="true"
-                    className="setting icon"
-                    onClick={[Function]}
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
                   />
                   <div
                     className="content"
@@ -85,10 +111,23 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                 <h3
                   className="ui icon center aligned header"
                 >
-                  <i
-                    aria-hidden="true"
-                    className="add-on icon"
-                    onClick={[Function]}
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
                   />
                   <div
                     className="content"
@@ -108,10 +147,23 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                 <h3
                   className="ui icon center aligned header"
                 >
-                  <i
-                    aria-hidden="true"
-                    className="setting icon"
-                    onClick={[Function]}
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
                   />
                   <div
                     className="content"
@@ -148,10 +200,23 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                 <h3
                   className="ui icon center aligned header"
                 >
-                  <i
-                    aria-hidden="true"
-                    className="write icon"
-                    onClick={[Function]}
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
                   />
                   <div
                     className="content"
@@ -171,10 +236,23 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                 <h3
                   className="ui icon center aligned header"
                 >
-                  <i
-                    aria-hidden="true"
-                    className="comments icon"
-                    onClick={[Function]}
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
                   />
                   <div
                     className="content"
@@ -211,10 +289,23 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                 <h3
                   className="ui icon center aligned header"
                 >
-                  <i
-                    aria-hidden="true"
-                    className="lock icon"
-                    onClick={[Function]}
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
                   />
                   <div
                     className="content"
@@ -230,7 +321,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
       <div
         className="ui secondary segment"
       >
-        Users
+        Users and Groups
       </div>
       <div
         className="ui attached segment"
@@ -251,15 +342,64 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                 <h3
                   className="ui icon center aligned header"
                 >
-                  <i
-                    aria-hidden="true"
-                    className="users icon"
-                    onClick={[Function]}
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
                   />
                   <div
                     className="content"
                   >
-                    Users and Groups
+                    Users
+                  </div>
+                </h3>
+              </a>
+            </div>
+            <div
+              className="column"
+            >
+              <a
+                href="/controlpanel/groups"
+                onClick={[Function]}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
+                  >
+                    Groups
                   </div>
                 </h3>
               </a>

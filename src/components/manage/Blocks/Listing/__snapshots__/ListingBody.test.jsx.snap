@@ -1,3 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a ListingBody component 1`] = `null`;
+exports[`renders a ListingBody component 1`] = `
+<div>
+  <div
+    className="ui inverted dimmer"
+    onClick={[Function]}
+  >
+    <div
+      className="content"
+    >
+      <div
+        className="ui small indeterminate text loader"
+      >
+        Loading
+      </div>
+    </div>
+  </div>
+</div>
+`;

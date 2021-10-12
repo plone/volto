@@ -1,9 +1,8 @@
+import '~/config'; // This is the bootstrap for the global config - client side
 import React from 'react';
 import { StaticRouter } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
 import enMessages from '~/../locales/en.json';
-
-import '../test-setup-config';
 
 import '~/theme';
 

@@ -10,7 +10,7 @@
     }
   ],
   "license": "MIT",
-  "version": "4.0.0",
+  "version": "5.0.0-alpha.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/plone/generator-volto.git"
@@ -110,6 +110,7 @@
     "eslint-config-standard": "^16.0.2",
     "execa": "0.6.3",
     "fs-extra": "3.0.0",
+    "gitly": "2.0.3",
     "mkdirp-then": "1.2.0",
     "ms": "1.0.0",
     "mz": "2.6.0",
@@ -128,8 +129,8 @@
     "jest": "^24.8.0",
     "lint-staged": "^9.4.3",
     "prettier": "2.0.5",
-    "release-it": "^14.2.2",
+    "release-it": "^14.9.0",
     "yeoman-assert": "^3.1.0",
-    "yeoman-test": "^1.7.0"
+    "yeoman-test": "^6.1.0"
   }
 }

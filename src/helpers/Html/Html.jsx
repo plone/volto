@@ -87,7 +87,14 @@ class Html extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { extractor, markup, store, criticalCss } = this.props;
+    const {
+      extractor,
+      markup,
+      store,
+      criticalCss,
+      apiPath,
+      publicURL,
+    } = this.props;
     const head = Helmet.rewind();
     const bodyClass = join(BodyClass.rewind(), ' ');
     return (
@@ -102,7 +109,17 @@ class Html extends Component {
 
           <script
             dangerouslySetInnerHTML={{
-              __html: `window.env = ${serialize(runtimeConfig)};`,
+              __html: `window.env = ${serialize({
+                ...runtimeConfig,
+                // Seamless mode requirement, the client need to know where the API is located
+                // if not set in the API_PATH
+                ...(apiPath && {
+                  apiPath,
+                }),
+                ...(publicURL && {
+                  publicURL,
+                }),
+              })};`,
             }}
           />
 

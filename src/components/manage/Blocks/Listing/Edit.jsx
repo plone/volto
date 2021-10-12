@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { defineMessages, injectIntl } from 'react-intl';
+import { defineMessages, useIntl } from 'react-intl';
 import { isEqual } from 'lodash';
+import { withBlockExtensions } from '@plone/volto/helpers';
 
 import {
   SidebarPortal,
   ListingBlockBody as ListingBody,
-  ListingBlockSidebar as ListingSidebar,
 } from '@plone/volto/components';
+import ListingData from './ListingData';
+
 import { getBaseUrl } from '@plone/volto/helpers';
 
 const messages = defineMessages({
@@ -22,7 +24,11 @@ const messages = defineMessages({
 });
 
 const Edit = React.memo(
-  ({ data, onChangeBlock, block, selected, properties, pathname, intl }) => {
+  (props) => {
+    const { data, onChangeBlock, block, selected, pathname } = props;
+
+    const intl = useIntl();
+
     // componentDidMount
     React.useEffect(() => {
       if (!data.query) {
@@ -44,15 +50,11 @@ const Edit = React.memo(
     return (
       <>
         <p className="items-preview">{placeholder}</p>
-        <ListingBody
-          data={data}
-          properties={properties}
-          block={block}
-          path={getBaseUrl(pathname)}
-          isEditMode
-        />
+        <ListingBody {...props} path={getBaseUrl(pathname)} isEditMode />
         <SidebarPortal selected={selected}>
-          <ListingSidebar
+          <ListingData
+            key={block}
+            {...props}
             data={data}
             block={block}
             onChangeBlock={onChangeBlock}
@@ -61,8 +63,12 @@ const Edit = React.memo(
       </>
     );
   },
-  (prevProps, nextProps) =>
-    !(nextProps.selected || !isEqual(prevProps.data, nextProps.data)),
+  function areEquals(prevProps, nextProps) {
+    return !(
+      nextProps.selected !== prevProps.selected ||
+      !isEqual(prevProps.data, nextProps.data)
+    );
+  },
 );
 
 Edit.propTypes = {
@@ -76,4 +82,4 @@ Edit.propTypes = {
   pathname: PropTypes.string.isRequired,
 };
 
-export default injectIntl(Edit);
+export default withBlockExtensions(Edit);

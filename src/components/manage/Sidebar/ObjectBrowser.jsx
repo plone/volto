@@ -1,10 +1,7 @@
 import React from 'react';
-import { CSSTransition } from 'react-transition-group';
 import ObjectBrowserBody from '@plone/volto/components/manage/Sidebar/ObjectBrowserBody';
-import ReactDOM from 'react-dom';
-import { getParentURL } from '@plone/volto/components/manage/Sidebar/ObjectBrowserBody';
-
-const DEFAULT_TIMEOUT = 500;
+import SidebarPopup from '@plone/volto/components/manage/Sidebar/SidebarPopup';
+import { getBaseUrl } from '@plone/volto/helpers';
 
 const withObjectBrowser = (WrappedComponent) =>
   class extends React.Component {
@@ -59,6 +56,7 @@ const withObjectBrowser = (WrappedComponent) =>
       propDataName = null,
       selectableTypes,
       maximumSelectionSize,
+      currentPath,
     } = {}) =>
       this.setState(() => ({
         isObjectBrowserOpen: true,
@@ -69,15 +67,17 @@ const withObjectBrowser = (WrappedComponent) =>
         propDataName,
         selectableTypes,
         maximumSelectionSize,
+        currentPath,
       }));
 
     closeObjectBrowser = () => this.setState({ isObjectBrowserOpen: false });
 
     render() {
-      let contextURL = this.props.pathname ?? this.props.location?.pathname;
-      if (contextURL?.endsWith('edit')) {
-        contextURL = getParentURL(contextURL);
-      }
+      let contextURL =
+        this.props.pathname ||
+        this.props.location?.pathname ||
+        this.state?.currentPath;
+
       return (
         <>
           <WrappedComponent
@@ -88,33 +88,19 @@ const withObjectBrowser = (WrappedComponent) =>
           />
 
           <>
-            <CSSTransition
-              in={this.state.isObjectBrowserOpen && this.state.overlay}
-              timeout={DEFAULT_TIMEOUT}
-              classNames="overlay-container"
-              unmountOnExit
-            >
-              <>
-                {__CLIENT__ &&
-                  ReactDOM.createPortal(
-                    <div className="overlay-container"></div>,
-                    document.body,
-                  )}
-              </>
-            </CSSTransition>
-            <CSSTransition
-              in={this.state.isObjectBrowserOpen}
-              timeout={DEFAULT_TIMEOUT}
-              classNames="sidebar-container"
-              unmountOnExit
+            <SidebarPopup
+              open={this.state.isObjectBrowserOpen}
+              onClose={this.closeObjectBrowser}
+              overlay={this.state.overlay}
             >
               <ObjectBrowserBody
                 {...this.props}
                 data={
                   this.state.propDataName
                     ? this.props[this.state.propDataName]
-                    : { ...this.props.data, contextURL }
+                    : this.props.data
                 }
+                contextURL={getBaseUrl(contextURL)}
                 closeObjectBrowser={this.closeObjectBrowser}
                 mode={this.state.mode}
                 onSelectItem={this.state.onSelectItem}
@@ -122,10 +108,11 @@ const withObjectBrowser = (WrappedComponent) =>
                 selectableTypes={this.state.selectableTypes}
                 maximumSelectionSize={this.state.maximumSelectionSize}
               />
-            </CSSTransition>
+            </SidebarPopup>
           </>
         </>
       );
     }
   };
+
 export default withObjectBrowser;

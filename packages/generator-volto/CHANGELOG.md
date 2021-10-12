@@ -1,12 +1,56 @@
 # Change Log
 
-## 4.0.1 (unreleased)
+## 5.0.0 (unreleased)
+
+### Added
+
+### Changes
+
+## 5.0.0-alpha.0 (2021-09-26)
+
+### Breaking
+
+- Added new configuration for i18n using the new package `@plone/scripts`. 5.0.0 and onwards is supposed to work on Volto 14 and above. @sneridagh
+
+### Added
+
+- Add prettier and lint scripts to generator @tisto
+
+### Changes
+
+## 4.3.1 (2021-05-07)
+
+### Changes
+
+- Fix Jest testing environment. Changed to `--env=jest-environment-jsdom-sixteen` @avoinea
+
+## 4.3.0 (2021-04-28)
+
+### Added
+
+- Ability to bootstrap a Volto project for the addon using a Makefile @tiberiuichim
+
+## 4.2.0 (2021-04-05)
+
+### Added
+
+- Support for Github addon `--template` @avoinea
+
+## 4.1.0 (2021-03-26)
 
 ### Added
 
 - Default workspaces path @nileshgulia1
+- Simplify interactive questions @avoinea
+- Add addons also to dependencies @avoinea
 
-### Changes
+## 4.0.1 (2021-03-26)
+
+### Added
+
+- Default workspaces path @nileshgulia1
+- Simplify interactive questions @avoinea
+- Add addons also to dependencies @avoinea
 
 ## 4.0.0 (2021-02-20)
 

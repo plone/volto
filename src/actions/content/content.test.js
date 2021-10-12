@@ -6,6 +6,8 @@ import {
   orderContent,
   resetContent,
   sortContent,
+  lockContent,
+  unlockContent,
 } from './content';
 import {
   CREATE_CONTENT,
@@ -14,6 +16,8 @@ import {
   GET_CONTENT,
   ORDER_CONTENT,
   RESET_CONTENT,
+  LOCK_CONTENT,
+  UNLOCK_CONTENT,
 } from '@plone/volto/constants/ActionTypes';
 
 describe('Content action', () => {
@@ -76,6 +80,19 @@ describe('Content action', () => {
       expect(action.request.op).toEqual('patch');
       expect(action.request.path).toEqual(url);
       expect(action.request.data).toEqual(content);
+    });
+
+    it('should create an action to update content with custom headers', () => {
+      const url = 'http://localhost';
+      const content = 'Hello World!';
+      const headers = { token: 1 };
+      const action = updateContent(url, content, headers);
+
+      expect(action.type).toEqual(UPDATE_CONTENT);
+      expect(action.request.op).toEqual('patch');
+      expect(action.request.path).toEqual(url);
+      expect(action.request.data).toEqual(content);
+      expect(action.request.headers).toEqual(headers);
     });
 
     it('should create an action to update content for multiple urls', () => {
@@ -233,6 +250,61 @@ describe('Content action', () => {
       expect(action.request[1].op).toEqual('post');
       expect(action.request[1].path).toEqual(url);
       expect(action.request[1].data).toEqual(content[1]);
+    });
+  });
+
+  describe('lockContent', () => {
+    it('should create an action to lock content', () => {
+      const url = 'http://localhost';
+      const action = lockContent(url);
+
+      expect(action.type).toEqual(LOCK_CONTENT);
+      expect(action.request.op).toEqual('post');
+      expect(action.request.path).toEqual(`${url}/@lock`);
+    });
+
+    it('should create an action to lock content for multiple urls', () => {
+      const urls = ['http://localhost/blog', 'http://locahost/users'];
+      const action = lockContent(urls);
+
+      expect(action.type).toEqual(LOCK_CONTENT);
+      expect(action.request[0].op).toEqual('post');
+      expect(action.request[0].path).toEqual(`${urls[0]}/@lock`);
+      expect(action.request[1].op).toEqual('post');
+      expect(action.request[1].path).toEqual(`${urls[1]}/@lock`);
+    });
+  });
+
+  describe('unlockContent', () => {
+    it('should create an action to unlock content', () => {
+      const url = 'http://localhost';
+      const action = unlockContent(url);
+
+      expect(action.type).toEqual(UNLOCK_CONTENT);
+      expect(action.request.op).toEqual('del');
+      expect(action.request.path).toEqual(`${url}/@lock`);
+    });
+
+    it('should create an action to force unlock content', () => {
+      const url = 'http://localhost';
+      const data = { force: true };
+      const action = unlockContent(url, true);
+
+      expect(action.type).toEqual(UNLOCK_CONTENT);
+      expect(action.request.op).toEqual('del');
+      expect(action.request.path).toEqual(`${url}/@lock`);
+      expect(action.request.data).toEqual(data);
+    });
+
+    it('should create an action to unlock content for multiple urls', () => {
+      const urls = ['http://localhost/blog', 'http://locahost/users'];
+      const action = unlockContent(urls);
+
+      expect(action.type).toEqual(UNLOCK_CONTENT);
+      expect(action.request[0].op).toEqual('del');
+      expect(action.request[0].path).toEqual(`${urls[0]}/@lock`);
+      expect(action.request[1].op).toEqual('del');
+      expect(action.request[1].path).toEqual(`${urls[1]}/@lock`);
     });
   });
 });

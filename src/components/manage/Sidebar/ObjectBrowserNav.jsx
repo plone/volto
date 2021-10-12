@@ -52,10 +52,10 @@ const ObjectBrowserNav = ({
             role="presentation"
             aria-label={
               item.is_folderish && mode === 'image'
-                ? `${intl.formatMessage(messages.browse)} ${item.id}`
-                : `${intl.formatMessage(messages.select)} ${item.id}`
+                ? `${intl.formatMessage(messages.browse)} ${item.title}`
+                : `${intl.formatMessage(messages.select)} ${item.title}`
             }
-            key={item.id}
+            key={item['@id']}
             className={cx('', {
               'selected-item': isSelected(item),
 
@@ -90,24 +90,37 @@ const ObjectBrowserNav = ({
               {item.title}
             </span>
             {item.is_folderish && mode === 'image' && (
-              <Icon name={rightArrowSVG} size="24px" />
+              <Icon
+                className="right-arrow-icon"
+                name={rightArrowSVG}
+                size="24px"
+              />
             )}
             {item.is_folderish && (mode === 'link' || mode === 'multiple') && (
-              <Button.Group>
-                <Button
-                  basic
-                  icon
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    navigateTo(item['@id']);
-                  }}
-                  aria-label={`${intl.formatMessage(messages.browse)} ${
-                    item.id
-                  }`}
-                >
-                  <Icon name={rightArrowSVG} size="24px" />
-                </Button>
-              </Button.Group>
+              <div
+                role="presentation"
+                className="right-arrow-link-mode"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  navigateTo(item['@id']);
+                }}
+              >
+                <Button.Group>
+                  <Button
+                    basic
+                    icon
+                    aria-label={`${intl.formatMessage(messages.browse)} ${
+                      item.title
+                    }`}
+                  >
+                    <Icon
+                      className="right-arrow-icon"
+                      name={rightArrowSVG}
+                      size="24px"
+                    />
+                  </Button>
+                </Button.Group>
+              </div>
             )}
           </li>
         ))}
