@@ -61,8 +61,7 @@ directives.widget(
  */
 const getWidgetFromTaggedValues = (widgetOptions) =>
   typeof widgetOptions?.frontendOptions?.widget === 'string'
-    ? config.widgets.widget[widgetOptions.frontendOptions.widget] ||
-      getWidgetDefault()
+    ? config.widgets.widget[widgetOptions.frontendOptions.widget]
     : null;
 
 /**
