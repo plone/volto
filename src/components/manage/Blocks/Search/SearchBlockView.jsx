@@ -7,6 +7,7 @@ import config from '@plone/volto/registry';
 
 import { withSearch } from './hocs';
 import { compose } from 'redux';
+import { useSelector } from 'react-redux';
 import { isEqual, isFunction } from 'lodash';
 
 const getListingBodyVariation = (data) => {
@@ -37,19 +38,37 @@ const blockPropsAreChanged = (prevProps, nextProps) => {
   return isEqual(prev, next);
 };
 
+const applyDefaults = (data, root) => {
+  const defaultQuery = [
+    {
+      i: 'path',
+      o: 'plone.app.querystring.operation.string.absolutePath',
+      v: root || '/',
+    },
+  ];
+  return {
+    ...data,
+    sort_on: data?.sort_on || 'effective',
+    sort_order: data?.sort_order || 'descending',
+    query: data?.query?.length ? data.query : defaultQuery,
+  };
+};
+
 const SearchBlockView = (props) => {
   const { data, searchData, mode = 'view', variation } = props;
 
   const Layout = variation.view;
 
   const listingBodyVariation = getListingBodyVariation(data);
+  const root = useSelector((state) => state.breadcrumbs.root);
+  const listingBodyData = applyDefaults(searchData, root);
 
   return (
     <div className="block search">
       <Layout {...props} isEditMode={mode === 'edit'}>
         <ListingBody
           variation={listingBodyVariation}
-          data={searchData || {}}
+          data={listingBodyData}
           path={props.path}
           isEditMode={mode === 'edit'}
         />
