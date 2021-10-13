@@ -86,6 +86,11 @@ function normalizeState({ query, facets, id, searchText, sortOn, sortOrder }) {
   // TODO: need to check if SearchableText facet is not already in the query
   // Ideally the searchtext functionality should be restructured as being just
   // another facet
+  params.query = params.query.reduce(
+    // Remove SearchableText from query
+    (acc, kvp) => (kvp.i === 'SearchableText' ? acc : [...acc, kvp]),
+    [],
+  );
   if (searchText) {
     params.query.push({
       i: 'SearchableText',
@@ -183,8 +188,10 @@ const withSearch = (options) => (WrappedComponent) => {
     const urlQuery = locationSearchData.query
       ? JSON.parse(locationSearchData.query)
       : [];
-    // console.log('urlQuery', { urlQuery, locationSearchData });
-    const urlSearchText = locationSearchData.SearchableText || '';
+    const urlSearchText =
+      locationSearchData.SearchableText ||
+      urlQuery.find(({ i }) => i === 'SearchableText')?.v ||
+      '';
 
     // TODO: refactor, should use only useLocationStateManager()!!!
     const [searchText, setSearchText] = React.useState(urlSearchText);
