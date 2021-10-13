@@ -259,6 +259,7 @@ class Edit extends Component {
             </center>
           </Message>
         )}
+        {!this.props.selected && <div className="map-overlay" />}
         <SidebarPortal selected={this.props.selected}>
           <MapsSidebar {...this.props} resetSubmitUrl={this.resetSubmitUrl} />
         </SidebarPortal>

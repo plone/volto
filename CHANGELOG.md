@@ -11,6 +11,8 @@
 
 ### Bugfix
 
+- Fix the selection of Maps Block @iRohitSingh
+
 ### Internal
 
 ## 14.0.0-alpha.18 (2021-10-11)
