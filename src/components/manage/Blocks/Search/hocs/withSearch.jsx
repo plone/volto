@@ -4,6 +4,10 @@ import { isEmpty } from 'lodash';
 import qs from 'query-string';
 import { useLocation, useHistory } from 'react-router-dom';
 
+function getDisplayName(WrappedComponent) {
+  return WrappedComponent.displayName || WrappedComponent.name || 'Component';
+}
+
 const SEARCH_ENDPOINT_FIELDS = [
   'SearchableText',
   'b_size',
@@ -11,6 +15,8 @@ const SEARCH_ENDPOINT_FIELDS = [
   'sort_on',
   'sort_order',
 ];
+
+// const PAQO = 'plone.app.querystring.operation';
 
 /**
  * Based on URL state, gets an initial internal state for the search
@@ -117,6 +123,7 @@ const useHashState = () => {
     {},
     ...Array.from(Object.keys(oldState)).map((k) => ({ [k]: oldState[k] })),
   );
+
   const setSearchData = React.useCallback(
     (searchData) => {
       const newParams = qs.parse(location.hash);
@@ -150,11 +157,11 @@ const useHashState = () => {
 
 /**
  * A hook to make it possible to switch disable mirroring the search block
- * state to the window location
+ * state to the window location. When using the internal state we "start from
+ * scratch", as it's intended to be used in the edit page.
  */
 const useSearchBlockState = (uniqueId, isEditMode) => {
-  const location = useLocation();
-  const [hashState, setHashState] = useHashState(qs.parse(location.hash));
+  const [hashState, setHashState] = useHashState();
   const [internalState, setInternalState] = React.useState({});
 
   return isEditMode
@@ -164,7 +171,8 @@ const useSearchBlockState = (uniqueId, isEditMode) => {
 
 const withSearch = (options) => (WrappedComponent) => {
   const { inputDelay = 1000 } = options || {};
-  return (props) => {
+
+  function WithSearch(props) {
     const { data, id, editable = false } = props;
 
     const [locationSearchData, setLocationSearchData] = useSearchBlockState(
@@ -175,6 +183,7 @@ const withSearch = (options) => (WrappedComponent) => {
     const urlQuery = locationSearchData.query
       ? JSON.parse(locationSearchData.query)
       : [];
+    // console.log('urlQuery', { urlQuery, locationSearchData });
     const urlSearchText = locationSearchData.SearchableText || '';
 
     // TODO: refactor, should use only useLocationStateManager()!!!
@@ -264,7 +273,10 @@ const withSearch = (options) => (WrappedComponent) => {
         totalItems={totalItems}
       />
     );
-  };
+  }
+  WithSearch.displayName = `WithSearch(${getDisplayName(WrappedComponent)})`;
+
+  return WithSearch;
 };
 
 export default withSearch;
