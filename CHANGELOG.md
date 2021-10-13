@@ -11,6 +11,8 @@
 
 ### Bugfix
 
+- pathname from router in listingBlock View @nileshgulia1
+
 ### Internal
 
 ## 14.0.0-alpha.18 (2021-10-11)
