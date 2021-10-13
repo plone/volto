@@ -16,7 +16,7 @@ const SEARCH_ENDPOINT_FIELDS = [
   'sort_order',
 ];
 
-// const PAQO = 'plone.app.querystring.operation';
+const PAQO = 'plone.app.querystring.operation';
 
 /**
  * Based on URL state, gets an initial internal state for the search
@@ -108,7 +108,7 @@ const getSearchFields = (searchData) => {
     ...SEARCH_ENDPOINT_FIELDS.map((k) => {
       return searchData[k] ? { [k]: searchData[k] } : {};
     }),
-    searchData.query ? { query: JSON.stringify(searchData['query']) } : {},
+    searchData.query ? { query: serializeQuery(searchData['query']) } : {},
   );
 };
 
@@ -174,6 +174,19 @@ const useSearchBlockState = (uniqueId, isEditMode) => {
     : [hashState, setHashState];
 };
 
+// Simple compress/decompress the state in URL by replacing the lengthy string
+const deserializeQuery = (q) => {
+  return JSON.parse(q)?.map((kvp) => ({
+    ...kvp,
+    o: kvp.o.replace(/^paqo/, PAQO),
+  }));
+};
+const serializeQuery = (q) => {
+  return JSON.stringify(
+    q?.map((kvp) => ({ ...kvp, o: kvp.o.replace(PAQO, 'paqo') })),
+  );
+};
+
 const withSearch = (options) => (WrappedComponent) => {
   const { inputDelay = 1000 } = options || {};
 
@@ -186,7 +199,7 @@ const withSearch = (options) => (WrappedComponent) => {
     );
 
     const urlQuery = locationSearchData.query
-      ? JSON.parse(locationSearchData.query)
+      ? deserializeQuery(locationSearchData.query)
       : [];
     const urlSearchText =
       locationSearchData.SearchableText ||
