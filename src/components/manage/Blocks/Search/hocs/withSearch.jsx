@@ -245,9 +245,7 @@ const withSearch = (options) => (WrappedComponent) => {
       (state) => state.querystringsearch.subrequests,
     );
     const totalItems =
-      searchData.query?.length > 0 // This is to compensate for listing block not triggering fetch when query is empty
-        ? querystringResults[id]?.total || querystringResults[id]?.items?.length
-        : 0;
+      querystringResults[id]?.total || querystringResults[id]?.items?.length;
 
     return (
       <WrappedComponent
