@@ -19,7 +19,7 @@ jest.mock('superagent', () => ({
 }));
 
 beforeAll(() => {
-  config.settings.legacyTraverse = true;
+  config.settings.legacyTraverse = false;
 });
 
 const api = new Api();
@@ -30,11 +30,11 @@ test('get request', () => {});
 describe('Api', () => {
   it('prefixes relative path', () => {
     const promise = api.get('');
-    expect(promise.request.url).toBe(`${settings.apiPath}/`);
+    expect(promise.request.url).toBe(`${settings.apiPath}/++api++/`);
   });
   it('does not prefix absolute path', () => {
     const promise = api.get('/test');
-    expect(promise.request.url).toBe(`${settings.apiPath}/test`);
+    expect(promise.request.url).toBe(`${settings.apiPath}/++api++/test`);
   });
   it('does not change http URL provided as path', () => {
     const promise = api.get('http://example.com');
