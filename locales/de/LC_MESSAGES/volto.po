@@ -212,6 +212,7 @@ msgstr "Sind Sie sicher, dass Sie dieses Feld löschen möchten?"
 msgid "Are you sure you want to delete this fieldset including all fields?"
 msgstr "Sind Sie sicher, dass Sie dieses Fieldset löschen möchten?"
 
+#: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
 # defaultMessage: Ascending
 msgid "Ascending"
@@ -687,6 +688,7 @@ msgstr "Zeile löschen"
 msgid "Depth"
 msgstr "Tiefe"
 
+#: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
 # defaultMessage: Descending
 msgid "Descending"
@@ -1629,6 +1631,7 @@ msgstr "Keine Ergebnisse gefunden"
 msgid "No results found."
 msgstr "Keine Ergebnisse gefunden."
 
+#: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Widgets/QuerySortOnWidget
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: No selection
@@ -2170,6 +2173,11 @@ msgstr ""
 msgid "Second"
 msgstr "Zweiter"
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Section title
+msgid "Section title"
+msgstr ""
+
 #: components/manage/Sidebar/ObjectBrowserNav
 # defaultMessage: Select
 msgid "Select"
@@ -2358,6 +2366,7 @@ msgstr "Entschuldigung, ein Fehler ist beim Ausführen Ihrer Anfrage aufgetreten
 msgid "Sort By:"
 msgstr "Sortieren nach:"
 
+#: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Widgets/QuerySortOnWidget
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Sort on
@@ -2367,6 +2376,11 @@ msgstr "Sortieren nach"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Sort on label
 msgid "Sort on label"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Sort on options
+msgid "Sort on options"
 msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
@@ -2601,7 +2615,6 @@ msgid "Time"
 msgstr "Zeit"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
-#: components/manage/Blocks/Search/schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
