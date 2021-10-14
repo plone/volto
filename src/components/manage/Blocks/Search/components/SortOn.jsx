@@ -27,6 +27,8 @@ const SortOn = (props) => {
   const sortable_indexes = querystring.indexes;
   const Select = reactSelect.default;
 
+  // TODO: this needs i18n work
+
   return (
     <div className="search-sort-wrapper">
       <div className="search-sort-on">

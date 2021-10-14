@@ -57,6 +57,10 @@ const messages = defineMessages({
     id: 'Sort on label',
     defaultMessage: 'Sort on label',
   },
+  sortOnOptions: {
+    id: 'Sort on options',
+    defaultMessage: 'Sort on options',
+  },
   facets: {
     id: 'Facets',
     defaultMessage: 'Facets',
@@ -194,7 +198,7 @@ export default ({ data = {}, intl }) => {
           'showSortOn',
           ...(data.showSortOn ? ['sortOnLabel'] : []),
           'showSearchInput',
-          ...(data.showSearchInput ? ['showSearchButton'] : []),
+          ...(data.showSearchInput ?? true ? ['showSearchButton'] : []),
           // ...(data.showSearchInput ? ['searchInputPrompt'] : []),
           // ...(data.showSearchButton ? ['searchButtonLabel'] : []),
         ],
@@ -227,6 +231,9 @@ export default ({ data = {}, intl }) => {
       },
       sortOnLabel: {
         title: intl.formatMessage(messages.sortOnLabel),
+      },
+      sortOnOptions: {
+        title: intl.formatMessage(messages.sortOnOptions),
       },
       facets: {
         title: intl.formatMessage(messages.facets),
