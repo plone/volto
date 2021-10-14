@@ -14,6 +14,16 @@ This upgrade guide lists all breaking changes in Volto and explains the
 
 ## Upgrading to Volto 14.x.x
 
+### Revisited, rethinked and refactored Seamless mode
+
+Seamless mode was released as experimental in Volto 13. However, after a period of testing some issues were detected so the feature has been rethinked and refactored.
+
+If you want to take full advantage of seamless mode you should upgrade your backend to latest `plone.restapi` (8.12.1 or greater) and `plone.rest` (2.0.0a1 or greater) versions.
+
+If you were already using Seamless mode in your deployments, you should update them as explained in the deployment documentation (link just below).
+
+Read the full documentation about Seamless mode: https://docs.voltocms.com/deploying/seamless-mode/
+
 ### Update i18n configuration for projects and add-ons
 
 The i18n script and infrastructure have been moved to their own package since we needed them

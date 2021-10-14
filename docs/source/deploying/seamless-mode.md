@@ -22,7 +22,7 @@ Seamless' mode main challenge is to achieve Zero configuration avoiding hardcode
 These are the problems we wanted to solve:
 
 - Avoid having to expose and publish the classic UI if you don't really need it
-- If possible, having to rewrite all API responses, since it returns paths that does not correspond to the original object handled and "seen" from Volto, so you have to adjust them (via a code helper) in a lot of call responses.
+- If possible, avoid having to rewrite all API responses, since it returns paths that does not correspond to the original object handled and "seen" from Volto, so you have to adjust them (via a code helper) in a lot of call responses.
 - Simplify Docker builds, making all the configuration via the runtime environment variables
 - Content negotiation was an amazing idea, but the reality is that it was a promise never fulfilled and it was sparsely supported in browsers or the web ecosystem.
 

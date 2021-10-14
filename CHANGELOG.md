@@ -4,11 +4,14 @@
 
 ### Breaking
 
-### Feature
-
-- Rethinked and refactored Seamless mode @sneridagh
+- Revisited, rethinked and refactored Seamless mode Seamless mode @sneridagh
 For more information, please read the deploying guide
 https://docs.voltocms.com/deploying/seamless-mode/
+
+and the upgrade guide
+https://docs.voltocms.com/upgrade-guide/
+
+### Feature
 
 - Make VocabularyTermsWidget orderable @ksuess
 - Get widget by tagged values @ksuess
