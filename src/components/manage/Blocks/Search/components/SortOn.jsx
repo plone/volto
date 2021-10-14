@@ -66,10 +66,6 @@ const SortOn = (props) => {
           theme={selectTheme}
           components={{ DropdownIndicator, Option }}
           options={[
-            {
-              label: intl.formatMessage(messages.noSelection),
-              value: '',
-            },
             ...sortOnOptions.map((k) => ({
               value: k,
               label: sortable_indexes[k]?.title || k,
