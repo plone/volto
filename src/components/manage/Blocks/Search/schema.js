@@ -15,9 +15,9 @@ const messages = defineMessages({
     id: 'Base search query',
     defaultMessage: 'Base search query',
   },
-  title: {
-    id: 'Title',
-    defaultMessage: 'Title',
+  sectionTitle: {
+    id: 'Section title',
+    defaultMessage: 'Section title',
   },
   headline: {
     id: 'Headline',
@@ -197,6 +197,7 @@ export default ({ data = {}, intl }) => {
         fields: [
           'showSortOn',
           ...(data.showSortOn ? ['sortOnLabel'] : []),
+          ...(data.showSortOn ? ['sortOnOptions'] : []),
           'showSearchInput',
           ...(data.showSearchInput ?? true ? ['showSearchButton'] : []),
           // ...(data.showSearchInput ? ['searchInputPrompt'] : []),
@@ -242,7 +243,7 @@ export default ({ data = {}, intl }) => {
         schemaExtender: enhanceSchema,
       },
       facetsTitle: {
-        title: intl.formatMessage(messages.title),
+        title: intl.formatMessage(messages.sectionTitle),
       },
       query: {
         title: 'Query',
