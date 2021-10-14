@@ -79,8 +79,7 @@ const SearchBlockView = (props) => {
 
 export const SearchBlockViewComponent = compose(
   withBlockExtensions,
-  withQueryString,
   (Component) => React.memo(Component, blockPropsAreChanged),
 )(SearchBlockView);
 
-export default withSearch()(SearchBlockViewComponent);
+export default compose(withQueryString, withSearch())(SearchBlockViewComponent);
