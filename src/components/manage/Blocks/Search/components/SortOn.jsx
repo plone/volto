@@ -1,5 +1,4 @@
 import React from 'react';
-import { withQueryString } from '../hocs';
 import { selectTheme, sortOnSelectStyles } from './SelectStyling';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { Icon } from '@plone/volto/components';
@@ -10,7 +9,6 @@ import {
 import upSVG from '@plone/volto/icons/sort-up.svg';
 import downSVG from '@plone/volto/icons/sort-down.svg';
 import { Button } from 'semantic-ui-react';
-import { compose } from 'redux';
 import { toPairs, groupBy, map } from 'lodash';
 import cx from 'classnames';
 
@@ -106,7 +104,4 @@ const SortOn = (props) => {
   );
 };
 
-export default compose(
-  injectLazyLibs(['reactSelect']),
-  withQueryString,
-)(SortOn);
+export default injectLazyLibs(['reactSelect'])(SortOn);

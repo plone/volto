@@ -39,6 +39,7 @@ const RightColumnFacets = (props) => {
     searchedText, // search text for previous search
     searchText, // search text currently being entered (controlled input)
     isEditMode,
+    querystring = {},
     // searchData,
     // mode = 'view',
     // variation,
@@ -93,6 +94,7 @@ const RightColumnFacets = (props) => {
             {data.showSortOn && (
               <SortOn
                 data={data}
+                querystring={querystring}
                 isEditMode={isEditMode}
                 sortOrder={sortOrder}
                 setSortOn={(sortOn) => {
@@ -123,6 +125,7 @@ const RightColumnFacets = (props) => {
             <div className="facets">
               {data.facetsTitle && <h3>{data.facetsTitle}</h3>}
               <Facets
+                querystring={querystring}
                 data={data}
                 facets={facets}
                 isEditMode={isEditMode}
