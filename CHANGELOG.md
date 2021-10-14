@@ -10,10 +10,28 @@
 
 For a more information, please read the deploying guide
 https://docs.voltocms.com/deploying/seamless-mode/
+- Make VocabularyTermsWidget orderable @ksuess
+- Get widget by tagged values @ksuess
 
 ### Bugfix
 
 ### Internal
+
+## 14.0.0-alpha.18 (2021-10-11)
+
+### Internal
+
+- Re-release last release, since it does not show on NPM @sneridagh
+
+## 14.0.0-alpha.17 (2021-10-11)
+
+### Breaking
+
+- Fix logout action using the backend @logout endpoint, effectively removing the `__ac` cookie. It is recommended to upgrade to the latest p.restapi version to take full advantage of this feature @sneridagh
+
+### Bugfix
+
+- Add spinner on sharing View Button @iRohitSingh
 
 ## 14.0.0-alpha.16 (2021-10-10)
 
