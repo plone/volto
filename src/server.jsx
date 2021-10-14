@@ -132,7 +132,6 @@ function setupServer(req, res, next) {
   }
 
   if (!__DEVELOPMENT__ && !process.env.RAZZLE_API_PATH && req.headers.host) {
-    console.log(req.headers.host);
     req.app.locals.detectedHost = `${
       req.headers['x-forwarded-proto'] || req.protocol
     }://${req.headers.host}`;

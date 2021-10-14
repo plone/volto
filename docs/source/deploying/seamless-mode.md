@@ -82,6 +82,23 @@ Ready to use production builds (e.g. vainila Volto built, ready for test), confi
 
 ![How Plone 6 works](./HowPlone6Works002.png)
 
+# Requisites for using Seamless mode
+
+You need to upgrade `plone.rest` package to `2.0.0a1` version or later, and `plone.restapi` to `8.12.1` version or later. So in your buildout, under the `[versions]` section:
+
+```
+[versions]
+
+plone.rest = 2.0.0a1
+plone.restapi = 8.12.1
+```
+
+or update your pip `requirements.txt` if you are using pip.
+
+If you are using the official Docker Plone image, use the `VERSIONS` environment variable:
+
+`VERSIONS="plone.restapi=8.12.1 plone.rest=2.0.0a1"`
+
 ## Nginx example config for seamless mode deployments
 
 ```conf
@@ -109,10 +126,19 @@ server {
   }
 
   # [zero-config] This one is in legacy mode (using a /api style APIURL)
+  # Not recommended, since the responses are not seamless (they have the path on them)
   # yarn build && yarn start:prod
   # location ~ /\+\+api\+\+($|/.*) {
   #     rewrite ^/\+\+api\+\+($|/.*) /VirtualHostBase/http/local.kitconcept.io/Plone/VirtualHostRoot/_vh_++api++$1 break;
   #     proxy_pass http://backend;
+  # }
+
+  # Legacy deployment, using RAZZLE_LEGACY_TRAVERSE Volto won't append ++api++ automatically
+  # Recommended if you can't upgrade to latest `plone.rest`
+  # yarn build && RAZZLE_LEGACY_TRAVERSE=true yarn start:prod
+  # location ~ /api($|/.*) {
+  #     rewrite ^/api($|/.*) /VirtualHostBase/http/local.kitconcept.io/Plone/VirtualHostRoot/_vh_api$1 break;
+  #    proxy_pass http://backend;
   # }
 
   location ~ / {

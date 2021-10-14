@@ -6,6 +6,11 @@
 
 ### Feature
 
+- Rethinked and refactored Seamless mode @sneridagh
+
+For a more information, please read the deploying guide
+https://docs.voltocms.com/deploying/seamless-mode/
+
 ### Bugfix
 
 ### Internal
