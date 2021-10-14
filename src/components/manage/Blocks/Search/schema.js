@@ -235,6 +235,7 @@ export default ({ data = {}, intl }) => {
       },
       sortOnOptions: {
         title: intl.formatMessage(messages.sortOnOptions),
+        widget: 'array',
       },
       facets: {
         title: intl.formatMessage(messages.facets),

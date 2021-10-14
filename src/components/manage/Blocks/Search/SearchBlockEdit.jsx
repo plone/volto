@@ -20,8 +20,19 @@ const messages = defineMessages({
 });
 
 const SearchBlockEdit = (props) => {
-  const { block, onChangeBlock, data, selected, intl, onTriggerSearch } = props;
+  const {
+    block,
+    onChangeBlock,
+    data,
+    selected,
+    intl,
+    onTriggerSearch,
+    querystring = {},
+  } = props;
+  const { sortable_indexes = {} } = querystring;
+
   let schema = Schema({ data, intl });
+
   schema = addExtensionFieldToSchema({
     schema,
     name: 'listingBodyTemplate',
@@ -29,6 +40,12 @@ const SearchBlockEdit = (props) => {
     intl,
     title: { id: intl.formatMessage(messages.template) },
   });
+  schema.properties.sortOnOptions.items = {
+    choices: Object.keys(sortable_indexes).map((k) => [
+      k,
+      sortable_indexes[k].title,
+    ]),
+  };
 
   const { query = {} } = data || {};
   useDeepCompareEffect(() => {
