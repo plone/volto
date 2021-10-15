@@ -118,26 +118,18 @@ server {
   access_log /dev/stdout;
   error_log /dev/stdout;
 
-  # [zero-config] This one is the new mode, using new plone.rest
+  # [seamless mode] Recomended as default configuration, using seamless mode new plone.rest traversal
   # yarn build && yarn start:prod
   location ~ /\+\+api\+\+($|/.*) {
-      rewrite ^/\+\+api\+\+($|/.*) /VirtualHostBase/http/local.kitconcept.io/Plone/++api++/VirtualHostRoot/$1 break;
+      rewrite ^/\+\+api\+\+($|/.*) /VirtualHostBase/http/myservername.org/Plone/++api++/VirtualHostRoot/$1 break;
       proxy_pass http://backend;
   }
 
-  # [zero-config] This one is in legacy mode (using a /api style APIURL)
-  # Not recommended, since the responses are not seamless (they have the path on them)
-  # yarn build && yarn start:prod
-  # location ~ /\+\+api\+\+($|/.*) {
-  #     rewrite ^/\+\+api\+\+($|/.*) /VirtualHostBase/http/local.kitconcept.io/Plone/VirtualHostRoot/_vh_++api++$1 break;
-  #     proxy_pass http://backend;
-  # }
-
-  # Legacy deployment, using RAZZLE_LEGACY_TRAVERSE Volto won't append ++api++ automatically
-  # Recommended if you can't upgrade to latest `plone.rest`
-  # yarn build && RAZZLE_LEGACY_TRAVERSE=true yarn start:prod
+  # Legacy deployment example, using RAZZLE_LEGACY_TRAVERSE Volto won't append ++api++ automatically
+  # Recommended only if you can't upgrade to latest `plone.restapi` and `plone.rest`
+  # yarn build && RAZZLE_API_PATH=http://myservername.org/api RAZZLE_LEGACY_TRAVERSE=true yarn start:prod
   # location ~ /api($|/.*) {
-  #     rewrite ^/api($|/.*) /VirtualHostBase/http/local.kitconcept.io/Plone/VirtualHostRoot/_vh_api$1 break;
+  #     rewrite ^/api($|/.*) /VirtualHostBase/http/myservername.org/Plone/VirtualHostRoot/_vh_api$1 break;
   #    proxy_pass http://backend;
   # }
 
