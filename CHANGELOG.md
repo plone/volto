@@ -2,16 +2,10 @@
 
 ## 14.0.0 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Make VocabularyTermsWidget orderable @ksuess
 - Get widget by tagged values @ksuess
-
-### Bugfix
-
-### Internal
 
 ## 14.0.0-alpha.18 (2021-10-11)
 
