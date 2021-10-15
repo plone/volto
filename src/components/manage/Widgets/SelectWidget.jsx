@@ -16,7 +16,7 @@ import {
 } from '@plone/volto/helpers';
 import { FormFieldWrapper } from '@plone/volto/components';
 import { getVocabulary, getVocabularyTokenTitle } from '@plone/volto/actions';
-import { normalizeValue } from './SelectUtils';
+import { normalizeValue } from '@plone/volto/components/manage/Widgets/SelectUtils';
 
 import {
   customSelectStyles,
@@ -106,6 +106,7 @@ class SelectWidget extends Component {
       PropTypes.object,
       PropTypes.string,
       PropTypes.bool,
+      PropTypes.func,
     ]),
     onChange: PropTypes.func.isRequired,
     onBlur: PropTypes.func,
@@ -115,6 +116,7 @@ class SelectWidget extends Component {
     itemsTotal: PropTypes.number,
     wrapped: PropTypes.bool,
     noValueOption: PropTypes.bool,
+    customOption: PropTypes.any,
   };
 
   /**
@@ -141,6 +143,7 @@ class SelectWidget extends Component {
     onEdit: null,
     onDelete: null,
     noValueOption: true,
+    customOption: null,
   };
 
   state = {
@@ -213,8 +216,13 @@ class SelectWidget extends Component {
     const { id, choices, onChange } = this.props;
     // Make sure that both disabled and isDisabled (from the DX layout feat work)
     const disabled = this.props.disabled || this.props.isDisabled;
+    const isMulti = this.props.isMulti
+      ? this.props.isMulti
+      : id === 'roles' || id === 'groups';
     const Select = this.props.reactSelect.default;
-    const AsyncPaginate = this.props.reactSelectAsyncPaginate.AsyncPaginate;
+    const AsyncPaginate =
+      this.props.reactSelectAsyncPaginate.AsyncPaginate ||
+      this.props.reactSelectAsyncPaginate.default;
 
     return (
       <FormFieldWrapper {...this.props}>
@@ -248,11 +256,7 @@ class SelectWidget extends Component {
             isDisabled={disabled}
             className="react-select-container"
             classNamePrefix="react-select"
-            isMulti={
-              this.props.isMulti
-                ? this.props.isMulti
-                : id === 'roles' || id === 'groups'
-            }
+            isMulti={isMulti}
             options={[
               ...map(choices, (option) => ({
                 value: option[0],
@@ -273,10 +277,23 @@ class SelectWidget extends Component {
             ]}
             styles={customSelectStyles}
             theme={selectTheme}
-            components={{ DropdownIndicator, Option }}
+            components={{
+              DropdownIndicator,
+              Option: this.props.customOption
+                ? this.props.customOption
+                : Option,
+            }}
             value={this.state.selectedOption}
             onChange={(selectedOption) => {
               this.setState({ selectedOption });
+              let dataValue = [];
+              if (isMulti) {
+                //selectedOption is an array
+                for (let obj of selectedOption) {
+                  dataValue.push(obj.value);
+                }
+                return onChange(id, dataValue);
+              }
               return onChange(
                 id,
                 selectedOption && selectedOption.value !== 'no-value'
