@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fixed SelectWidget: when there was a selected value, the selection was lost when the tab was changed. @giuliaghisini
+
 ### Internal
 
 ## 14.0.0-alpha.19 (2021-10-15)
