@@ -131,6 +131,14 @@ function setupServer(req, res, next) {
       .send(`<!doctype html> ${renderToString(errorPage)}`);
   }
 
+  if (!__DEVELOPMENT__ && !process.env.RAZZLE_API_PATH && req.headers.host) {
+    req.app.locals.detectedHost = `${
+      req.headers['x-forwarded-proto'] || req.protocol
+    }://${req.headers.host}`;
+    config.settings.apiPath = req.app.locals.detectedHost;
+    config.settings.publicURL = req.app.locals.detectedHost;
+  }
+
   req.app.locals = {
     ...req.app.locals,
     store,
@@ -152,16 +160,6 @@ server.get('/*', (req, res) => {
 
   const url = req.originalUrl || req.url;
   const location = parseUrl(url);
-
-  let apiPathFromHostHeader;
-  // Get the Host header as apiPath just in case that the apiPath is not set
-  if (!config.settings.apiPath && req.headers.host) {
-    apiPathFromHostHeader = `${
-      req.headers['x-forwarded-proto'] || req.protocol
-    }://${req.headers.host}`;
-    config.settings.apiPath = apiPathFromHostHeader;
-    config.settings.publicURL = apiPathFromHostHeader;
-  }
 
   loadOnServer({ store, location, routes, api })
     .then(() => {
@@ -208,8 +206,12 @@ server.get('/*', (req, res) => {
                     process.env.NODE_ENV !== 'production'
                   }
                   criticalCss={readCriticalCss(req)}
-                  apiPath={apiPathFromHostHeader || config.settings.apiPath}
-                  publicURL={apiPathFromHostHeader || config.settings.publicURL}
+                  apiPath={
+                    req.app.locals.detectedHost || config.settings.apiPath
+                  }
+                  publicURL={
+                    req.app.locals.detectedHost || config.settings.publicURL
+                  }
                 />,
               )}
             `,
@@ -223,8 +225,12 @@ server.get('/*', (req, res) => {
                   markup={markup}
                   store={store}
                   criticalCss={readCriticalCss(req)}
-                  apiPath={apiPathFromHostHeader || config.settings.apiPath}
-                  publicURL={apiPathFromHostHeader || config.settings.publicURL}
+                  apiPath={
+                    req.app.locals.detectedHost || config.settings.apiPath
+                  }
+                  publicURL={
+                    req.app.locals.detectedHost || config.settings.publicURL
+                  }
                 />,
               )}
             `,

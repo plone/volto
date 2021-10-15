@@ -22,6 +22,28 @@
 
 ### Internal
 
+## 14.0.0-alpha.20 (2021-10-15)
+
+### Breaking
+
+- Revisited, rethought and refactored Seamless mode Seamless mode @sneridagh
+For more information, please read the deploying guide
+https://docs.voltocms.com/deploying/seamless-mode/
+
+and the upgrade guide
+https://docs.voltocms.com/upgrade-guide/
+
+### Bugfix
+
+- Fixed SelectWidget: when there was a selected value, the selection was lost when the tab was changed. @giuliaghisini
+
+## 14.0.0-alpha.19 (2021-10-15)
+
+### Feature
+
+- Make VocabularyTermsWidget orderable @ksuess
+- Get widget by tagged values @ksuess
+
 ## 14.0.0-alpha.18 (2021-10-11)
 
 ### Internal
@@ -52,7 +74,7 @@
 
 - Adjusted main `Logo` component styling @sneridagh
 
-For a more information, please read the upgrade guide
+For more information, please read the upgrade guide
 https://docs.voltocms.com/upgrade-guide/
 
 ### Feature

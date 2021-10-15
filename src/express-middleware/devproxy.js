@@ -14,7 +14,7 @@ const filter = function (pathname, req) {
   return (
     __DEVELOPMENT__ &&
     config.settings.devProxyToApiPath &&
-    req.headers.accept === 'application/json'
+    pathname.startsWith('/++api++')
   );
 };
 
@@ -79,9 +79,9 @@ export default function () {
       const { apiPathURL, instancePath } = getEnv();
       const target =
         config.settings.proxyRewriteTarget ||
-        `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot`;
+        `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/++api++/VirtualHostRoot`;
 
-      return `${target}${path}`;
+      return `${target}${path.replace('/++api++', '')}`;
     },
     logLevel: process.env.DEBUG_HPM ? 'debug' : 'silent',
     ...(config.settings?.proxyRewriteTarget?.startsWith('https') && {
