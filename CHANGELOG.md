@@ -4,7 +4,7 @@
 
 ### Breaking
 
-- Revisited, rethinked and refactored Seamless mode Seamless mode @sneridagh
+- Revisited, rethought and refactored Seamless mode Seamless mode @sneridagh
 For more information, please read the deploying guide
 https://docs.voltocms.com/deploying/seamless-mode/
 
