@@ -48,7 +48,7 @@ const SortOn = (props) => {
   const Select = reactSelect.default;
 
   const activeSortOn = data?.query?.sort_on || '';
-  const { sortOnOptions } = data;
+  const { sortOnOptions = [] } = data;
 
   return (
     <div className="search-sort-wrapper">
