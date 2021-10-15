@@ -1,11 +1,5 @@
-// import superagent from 'superagent';
 import config from '@plone/volto/registry';
 import Api from './Api';
-
-// jest.mock('react-cookie', () => ({
-//   load: jest.fn(() => 'token'),
-// }));
-//
 
 jest.mock('superagent', () => ({
   get: jest.fn((url) => ({

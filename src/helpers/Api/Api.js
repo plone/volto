@@ -28,7 +28,7 @@ function formatUrl(path) {
   } else if (settings.apiPath) {
     apiPath = settings.apiPath;
   }
-  // console.log(apiPath);
+
   return `${apiPath}${APISUFIX}${adjustedPath}`;
 }
 
