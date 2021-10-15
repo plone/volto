@@ -4,6 +4,13 @@
 
 ### Breaking
 
+- Revisited, rethought and refactored Seamless mode Seamless mode @sneridagh
+For more information, please read the deploying guide
+https://docs.voltocms.com/deploying/seamless-mode/
+
+and the upgrade guide
+https://docs.voltocms.com/upgrade-guide/
+
 ### Feature
 
 ### Bugfix
@@ -49,7 +56,7 @@
 
 - Adjusted main `Logo` component styling @sneridagh
 
-For a more information, please read the upgrade guide
+For more information, please read the upgrade guide
 https://docs.voltocms.com/upgrade-guide/
 
 ### Feature

@@ -40,12 +40,17 @@ export default () => {
     window.settings = config.settings;
   }
 
-  // If Host header is present (so window.env.apiPath is)
+  // Setup the client registry from the SSR response values, presents in the `window.env`
+  // variable. This is key for the Seamless mode to work.
   if (window.env.apiPath) {
     config.settings.apiPath = window.env.apiPath;
   }
   if (window.env.publicURL) {
     config.settings.publicURL = window.env.publicURL;
+  }
+  // TODO: To be removed when the use of the legacy traverse is deprecated.
+  if (window.env.RAZZLE_LEGACY_TRAVERSE) {
+    config.settings.legacyTraverse = true;
   }
 
   loadableReady(() => {
