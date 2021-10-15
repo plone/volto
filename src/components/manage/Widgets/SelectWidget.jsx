@@ -277,9 +277,7 @@ class SelectWidget extends Component {
             theme={selectTheme}
             components={{
               DropdownIndicator,
-              Option: this.props.customOptionStyling
-                ? this.props.customOptionStyling
-                : Option,
+              Option: this.props.customOptionStyling || Option,
             }}
             value={this.state.selectedOption}
             onChange={(selectedOption) => {
