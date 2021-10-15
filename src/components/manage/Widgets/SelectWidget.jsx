@@ -116,7 +116,7 @@ class SelectWidget extends Component {
     itemsTotal: PropTypes.number,
     wrapped: PropTypes.bool,
     noValueOption: PropTypes.bool,
-    customOption: PropTypes.any,
+    customOptionStyling: PropTypes.any,
   };
 
   /**
@@ -143,7 +143,7 @@ class SelectWidget extends Component {
     onEdit: null,
     onDelete: null,
     noValueOption: true,
-    customOption: null,
+    customOptionStyling: null,
   };
 
   state = {
@@ -216,9 +216,7 @@ class SelectWidget extends Component {
     const { id, choices, onChange } = this.props;
     // Make sure that both disabled and isDisabled (from the DX layout feat work)
     const disabled = this.props.disabled || this.props.isDisabled;
-    const isMulti = this.props.isMulti
-      ? this.props.isMulti
-      : id === 'roles' || id === 'groups';
+    const isMulti = this.props.isMulti || id === 'roles' || id === 'groups';
     const Select = this.props.reactSelect.default;
     const AsyncPaginate =
       this.props.reactSelectAsyncPaginate.AsyncPaginate ||
@@ -279,20 +277,18 @@ class SelectWidget extends Component {
             theme={selectTheme}
             components={{
               DropdownIndicator,
-              Option: this.props.customOption
-                ? this.props.customOption
+              Option: this.props.customOptionStyling
+                ? this.props.customOptionStyling
                 : Option,
             }}
             value={this.state.selectedOption}
             onChange={(selectedOption) => {
               this.setState({ selectedOption });
-              let dataValue = [];
               if (isMulti) {
-                //selectedOption is an array
-                for (let obj of selectedOption) {
-                  dataValue.push(obj.value);
-                }
-                return onChange(id, dataValue);
+                return onChange(
+                  id,
+                  selectedOption.map((el) => el.value),
+                );
               }
               return onChange(
                 id,
