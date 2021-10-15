@@ -89,6 +89,7 @@ const TopSideFacets = (props) => {
                 data={data}
                 querystring={querystring}
                 isEditMode={isEditMode}
+                sortOn={sortOn}
                 sortOrder={sortOrder}
                 setSortOn={(sortOn) => {
                   flushSync(() => {

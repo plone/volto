@@ -37,9 +37,10 @@ const SortOn = (props) => {
   const {
     data = {},
     reactSelect,
+    sortOn = null,
+    sortOrder = null,
     setSortOn,
     setSortOrder,
-    sortOrder,
     isEditMode,
     querystring = {},
     intl,
@@ -47,8 +48,16 @@ const SortOn = (props) => {
   const { sortable_indexes } = querystring;
   const Select = reactSelect.default;
 
-  const activeSortOn = data?.query?.sort_on || '';
+  const activeSortOn = sortOn || data?.query?.sort_on || '';
+
   const { sortOnOptions = [] } = data;
+  const value = {
+    value: activeSortOn || intl.formatMessage(messages.noSelection),
+    label:
+      activeSortOn && sortable_indexes
+        ? sortable_indexes[activeSortOn]?.title
+        : activeSortOn || intl.formatMessage(messages.noSelection),
+  };
 
   return (
     <div className="search-sort-wrapper">
@@ -71,13 +80,7 @@ const SortOn = (props) => {
               label: sortable_indexes[k]?.title || k,
             })),
           ]}
-          defaultValue={{
-            value: activeSortOn || intl.formatMessage(messages.noSelection),
-            label:
-              activeSortOn && sortable_indexes
-                ? sortable_indexes[activeSortOn]?.title
-                : activeSortOn || intl.formatMessage(messages.noSelection),
-          }}
+          value={value}
           onChange={(data) => {
             !isEditMode && setSortOn(data.value);
           }}
@@ -95,7 +98,7 @@ const SortOn = (props) => {
           !isEditMode && setSortOrder('ascending');
         }}
       >
-        <Icon name={downSVG} size="25px" />
+        <Icon name={upSVG} size="25px" />
       </Button>
       <Button
         icon
@@ -109,7 +112,7 @@ const SortOn = (props) => {
           !isEditMode && setSortOrder('descending');
         }}
       >
-        <Icon name={upSVG} size="25px" />
+        <Icon name={downSVG} size="25px" />
       </Button>
     </div>
   );

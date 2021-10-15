@@ -117,6 +117,7 @@ const LeftColumnFacets = (props) => {
                 querystring={querystring}
                 data={data}
                 isEditMode={isEditMode}
+                sortOn={sortOn}
                 sortOrder={sortOrder}
                 setSortOn={(sortOn) => {
                   flushSync(() => {

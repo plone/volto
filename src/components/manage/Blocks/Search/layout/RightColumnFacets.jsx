@@ -97,6 +97,7 @@ const RightColumnFacets = (props) => {
                 querystring={querystring}
                 isEditMode={isEditMode}
                 sortOrder={sortOrder}
+                sortOn={sortOn}
                 setSortOn={(sortOn) => {
                   flushSync(() => {
                     setSortOn(sortOn);
