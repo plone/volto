@@ -5,16 +5,23 @@
 ### Breaking
 
 ### Feature
-
 - Make VocabularyTermsWidget orderable @ksuess
 - Get widget by tagged values @ksuess
 - Added custom option to SelectWidget to render custom optionss (for example with icons) @giuliaghisini
+
 
 ### Bugfix
 
 - Fixed selected widget to use isMulti prop @giuliaghisini
 
 ### Internal
+
+## 14.0.0-alpha.19 (2021-10-15)
+
+### Feature
+
+- Make VocabularyTermsWidget orderable @ksuess
+- Get widget by tagged values @ksuess
 
 ## 14.0.0-alpha.18 (2021-10-11)
 
