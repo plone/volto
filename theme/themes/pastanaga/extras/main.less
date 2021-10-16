@@ -455,17 +455,26 @@ body.has-toolbar-collapsed .mobile-menu {
 
 .mobile-menu-nav {
   display: flex;
+  overflow: auto;
   height: 100%;
-  align-items: center;
-  justify-content: center;
+  align-items: @mobileMenuNavAlignItems;
+  justify-content: @mobileMenuNavJustifyContent;
+  text-align: @mobileMenuNavTextAlign;
+
+  &::-webkit-scrollbar {
+    width: @mobileScrollbarWidth;
+    -webkit-appearance: none;
+    background: @mobileScrollbarTrackBackground;
+  }
 
   .ui.pointing.secondary.stackable.menu {
-    align-items: center;
-    font-size: @24px;
+    align-items: @mobileMenuNavMenuAlignItems;
+    font-size: @mobileMenuNavMenuFontSize;
 
     .item {
       display: flex;
-      justify-content: center;
+      justify-content: @mobileMenuNavItemJustifyContent;
+      line-height: @mobileMenuNavItemLineHeight;
     }
   }
 }
