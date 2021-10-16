@@ -155,8 +155,23 @@ class SelectWidget extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    if (!this.props.choices?.length && this.props.vocabBaseUrl) {
+    if (
+      (!this.props.choices || this.props.choices?.length === 0) &&
+      this.props.vocabBaseUrl
+    ) {
       this.props.getVocabulary(this.props.vocabBaseUrl);
+    }
+  }
+
+  componentDidUpdate() {
+    if (
+      !this.state.selectedOption &&
+      this.props.value &&
+      this.props.choices?.length > 0
+    ) {
+      this.setState({
+        selectedOption: normalizeValue(this.props.choices, this.props.value),
+      });
     }
   }
 

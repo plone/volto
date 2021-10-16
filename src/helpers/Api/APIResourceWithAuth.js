@@ -16,16 +16,18 @@ import config from '@plone/volto/registry';
 export const getAPIResourceWithAuth = (req) =>
   new Promise((resolve, reject) => {
     const { settings } = config;
+    const APISUFIX = settings.legacyTraverse ? '' : '/++api++';
+
     let apiPath = '';
     if (settings.internalApiPath && __SERVER__) {
       apiPath = settings.internalApiPath;
-    } else if (__DEVELOPMENT__ && config.settings.devProxyToApiPath) {
-      apiPath = config.settings.devProxyToApiPath;
+    } else if (__DEVELOPMENT__ && settings.devProxyToApiPath) {
+      apiPath = settings.devProxyToApiPath;
     } else {
-      apiPath = config.settings.apiPath;
+      apiPath = settings.apiPath;
     }
     const request = superagent
-      .get(`${apiPath}${req.path}`)
+      .get(`${apiPath}${APISUFIX}${req.path}`)
       .maxResponseSize(settings.maxResponseSize)
       .responseType('blob');
     const authToken = cookie.load('auth_token');

@@ -412,7 +412,7 @@ class SharingComponent extends Component {
                 type="submit"
                 aria-label={this.props.intl.formatMessage(messages.save)}
                 title={this.props.intl.formatMessage(messages.save)}
-                loading={this.props.loading}
+                loading={this.props.updateRequest.loading}
                 onClick={this.onSubmit}
               >
                 <Icon className="circled" name={aheadSVG} size="30px" />
