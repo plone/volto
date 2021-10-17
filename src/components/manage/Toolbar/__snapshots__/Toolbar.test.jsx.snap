@@ -72,3 +72,76 @@ Array [
   />,
 ]
 `;
+
+exports[`Toolbar renders the Toolbar component with lock 1`] = `
+Array [
+  <div
+    className="toolbar-content"
+    style={Object {}}
+  >
+    <div
+      className="pusher-puller"
+      style={
+        Object {
+          "transform": null,
+        }
+      }
+    />
+  </div>,
+  <div
+    className="toolbar expanded"
+  >
+    <div
+      className="toolbar-body"
+    >
+      <div
+        className="toolbar-actions"
+      >
+        <span />
+        <div
+          className="view-button"
+        >
+          Default View
+        </div>
+      </div>
+      <div
+        className="toolbar-bottom"
+      >
+        <img
+          alt=""
+          className="minipastanaga"
+          src="pastanaga-small.svg"
+        />
+        <div
+          className="view-button"
+        >
+          Default bottom
+        </div>
+        <div
+          className="divider"
+        />
+        <div
+          className="pastanagalogo"
+        >
+          <img
+            alt=""
+            src="pastanaga.svg"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="toolbar-handler"
+    >
+      <button
+        aria-label="Shrink toolbar"
+        className=""
+        onClick={[Function]}
+      />
+    </div>
+  </div>,
+  <div
+    className="pusher"
+  />,
+]
+`;
