@@ -18,6 +18,74 @@
 - Prevent form submit when clicking on BlockChooserButton @giuliaghisini
 ### Internal
 
+## 14.0.0-alpha.20 (2021-10-15)
+
+### Breaking
+
+- Revisited, rethought and refactored Seamless mode Seamless mode @sneridagh
+For more information, please read the deploying guide
+https://docs.voltocms.com/deploying/seamless-mode/
+
+and the upgrade guide
+https://docs.voltocms.com/upgrade-guide/
+
+### Bugfix
+
+- Fixed SelectWidget: when there was a selected value, the selection was lost when the tab was changed. @giuliaghisini
+
+## 14.0.0-alpha.19 (2021-10-15)
+
+### Feature
+
+- Make VocabularyTermsWidget orderable @ksuess
+- Get widget by tagged values @ksuess
+
+## 14.0.0-alpha.18 (2021-10-11)
+
+### Internal
+
+- Re-release last release, since it does not show on NPM @sneridagh
+
+## 14.0.0-alpha.17 (2021-10-11)
+
+### Breaking
+
+- Fix logout action using the backend @logout endpoint, effectively removing the `__ac` cookie. It is recommended to upgrade to the latest p.restapi version to take full advantage of this feature @sneridagh
+
+### Bugfix
+
+- Add spinner on sharing View Button @iRohitSingh
+
+## 14.0.0-alpha.16 (2021-10-10)
+
+### Bugfix
+
+- Yet another attempt at fixing devproxy. Split the devproxy into a separate
+  express middleware. Introduce the `DEBUG_HPM` env var to make the devproxy
+  verbose @tiberiuichim
+
+## 14.0.0-alpha.15 (2021-10-10)
+
+### Breaking
+
+- Adjusted main `Logo` component styling @sneridagh
+
+For more information, please read the upgrade guide
+https://docs.voltocms.com/upgrade-guide/
+
+### Feature
+
+- Add `volto-guillotina` addon to core @sneridagh
+
+### Internal
+
+- Improved developer documentation. Proof read several chapters, most importantly the upgrade guide @ichim-david
+- Use Plone logo (Closes #2632) @ericof
+- Updated Brazilian Portuguese translations @ericof
+- Footer: Point to plone.org instead of plone.com @ericof
+- Fix "make start-frontend" @tisto
+- Update all the tests infrastructure for the new `volto-guillotina` addon @sneridagh
+
 ## 14.0.0-alpha.14 (2021-10-01)
 
 ### Bugfix
@@ -45,7 +113,8 @@
 ### Internal
 
 - Use plone.volto instead of kitconcept.volto @tisto
-- Silence customization errors, they are now behind a `RAZZLE_DEBUG_CUSTOMIZATIONS` enviroment variable @sneridagh
+- Silence customization errors, they are now behind a `debug` library namespace @sneridagh
+- Remove recently introduced `RAZZLE_I18NDEBUGMODE` in favor of a `debug` library namespace @sneridagh
 
 ## 14.0.0-alpha.11 (2021-09-25)
 

@@ -362,6 +362,33 @@ class AddonConfigurationRegistry {
   }
 
   /**
+   * Allow testing packages addons to customize Volto and other addons.
+   *
+   * Same as the above one, but specific for Volto testing addons
+   */
+  getTestingAddonCustomizationPaths() {
+    let aliases = {};
+    if (process.env.RAZZLE_TESTING_ADDONS) {
+      process.env.RAZZLE_TESTING_ADDONS.split(',').forEach((addon) => {
+        const normalizedAddonName = addon.split(':')[0];
+        const testingPackagePath = `${this.projectRootPath}/packages/${normalizedAddonName}/src`;
+        if (fs.existsSync(testingPackagePath)) {
+          const basePath = getPackageBasePath(testingPackagePath);
+          const packageJson = path.join(basePath, 'package.json');
+          aliases = {
+            ...aliases,
+            ...this.getCustomizationPaths(require(packageJson), basePath),
+          };
+        }
+      });
+
+      return aliases;
+    } else {
+      return [];
+    }
+  }
+
+  /**
    * Returns an agregated, dependency-resolved list of addon loader strings
    */
   getAddonDependencies() {
