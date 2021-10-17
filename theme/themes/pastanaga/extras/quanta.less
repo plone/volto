@@ -31,11 +31,33 @@
     }
   }
 
-  &.slot-hidden ::before {
-    background-color: rgba(0, 0, 0, 0.6) !important;
+  &.slot-hidden {
+    ::before {
+      background-color: rgba(0, 0, 0, 0.6) !important;
+    }
+
+    &::before {
+      padding: 0.1em;
+      border: 1px solid #ccc;
+      background-color: #eee;
+      border-radius: 5px;
+      content: 'hidden' !important;
+      float: right;
+    }
   }
 
-  &.slot-inherited ::before {
-    background-color: rgba(255, 0, 0, 0.3);
+  &.slot-inherited {
+    ::before {
+      background-color: #eeec;
+    }
+
+    &::before {
+      padding: 0.1em;
+      border: 1px solid #ccc;
+      background-color: #eee;
+      border-radius: 5px;
+      content: 'inherited';
+      float: right;
+    }
   }
 }

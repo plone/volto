@@ -39,6 +39,7 @@ export const customizeBlock = (block, data, formData) => {
 
 export const restoreBlock = (block, data, formData) => {
   // replace a block with its older variant
+  // console.log('restore', { block, data, formData });
   const oldId = data['s:isVariantOf'];
 
   const newFormData = {
