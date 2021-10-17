@@ -6,7 +6,19 @@
 
 ### Feature
 
+- Make VocabularyTermsWidget orderable @ksuess
+- Get widget by tagged values @ksuess
+- In the search block, allow editors to specify the sort on criteria.
+  @tiberiuichim
+
 ### Bugfix
+
+- Bugfixes to search block. By default search block, when empty, makes a simple
+  query to the nav root, to list all content. Fix reading search text from URL.
+  Implement a simple compression of URL. Don't count searched text as filter.
+  Fix an edge case with showSearchInput in schema. Rename title to Section
+  Title in facet column settings. Avoid double calls to querystring endpoint.
+  @tiberiuichim
 
 ### Internal
 

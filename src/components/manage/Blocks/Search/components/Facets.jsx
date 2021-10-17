@@ -1,6 +1,4 @@
 import React from 'react';
-import { withQueryString } from '../hocs';
-import { compose } from 'redux';
 import { resolveExtension } from '@plone/volto/helpers/Extensions/withBlockExtensions';
 import config from '@plone/volto/registry';
 
@@ -93,4 +91,4 @@ const Facets = (props) => {
   );
 };
 
-export default compose(withQueryString)(Facets);
+export default Facets;
