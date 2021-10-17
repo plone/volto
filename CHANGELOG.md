@@ -2,12 +2,8 @@
 
 ## 14.0.0 (unreleased)
 
-### Breaking
-
 ### Feature
 
-- Make VocabularyTermsWidget orderable @ksuess
-- Get widget by tagged values @ksuess
 - In the search block, allow editors to specify the sort on criteria.
   @tiberiuichim
 
@@ -19,8 +15,7 @@
   Fix an edge case with showSearchInput in schema. Rename title to Section
   Title in facet column settings. Avoid double calls to querystring endpoint.
   @tiberiuichim
-
-### Internal
+- Use correct shade of black in Plone logo @sneridagh
 
 ## 14.0.0-alpha.20 (2021-10-15)
 
