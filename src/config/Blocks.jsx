@@ -21,7 +21,7 @@ import EditImageBlock from '@plone/volto/components/manage/Blocks/Image/Edit';
 import EditLeadImageBlock from '@plone/volto/components/manage/Blocks/LeadImage/Edit';
 import EditListingBlock from '@plone/volto/components/manage/Blocks/Listing/Edit';
 import DefaultListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/DefaultTemplate';
-import DefaultTemplateSchema from '@plone/volto/components/manage/Blocks/Listing/defaultTemplateSchema';
+import { defaultTemplateSchema } from '@plone/volto/components/manage/Blocks/Listing/defaultTemplateSchema';
 import SummaryListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/SummaryTemplate';
 import EditVideoBlock from '@plone/volto/components/manage/Blocks/Video/Edit';
 import EditHeroImageLeftBlock from '@plone/volto/components/manage/Blocks/HeroImageLeft/Edit';
@@ -245,7 +245,7 @@ const blocksConfig = {
         isDefault: true,
         title: 'Default',
         template: DefaultListingBlockTemplate,
-        schema: DefaultTemplateSchema,
+        schemaEnhancer: defaultTemplateSchema,
       },
       {
         id: 'imageGallery',
