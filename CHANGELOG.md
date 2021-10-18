@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- UniversalLink: handle direct download for content-type File if user is not logged. @giuliaghisini
+
 ### Internal
 
 ## 14.0.0-alpha.21 (2021-10-17)
@@ -32,8 +34,8 @@
 ### Breaking
 
 - Revisited, rethought and refactored Seamless mode Seamless mode @sneridagh
-For more information, please read the deploying guide
-https://docs.voltocms.com/deploying/seamless-mode/
+  For more information, please read the deploying guide
+  https://docs.voltocms.com/deploying/seamless-mode/
 
 and the upgrade guide
 https://docs.voltocms.com/upgrade-guide/
