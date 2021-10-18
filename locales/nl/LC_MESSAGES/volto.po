@@ -709,6 +709,11 @@ msgstr "Aflopend"
 msgid "Description"
 msgstr "Beschrijving"
 
+#: components/manage/Blocks/Listing/defaultTemplateSchema
+# defaultMessage: Description field
+msgid "Description field"
+msgstr ""
+
 #: components/manage/Diff/Diff
 # defaultMessage: Diff
 msgid "Diff"
@@ -2308,6 +2313,11 @@ msgstr ""
 msgid "Show sorting?"
 msgstr ""
 
+#: components/manage/Blocks/Listing/schema
+# defaultMessage: undefined
+msgid "Show variation configuration"
+msgstr ""
+
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Shrink sidebar
 msgid "Shrink sidebar"
@@ -2630,6 +2640,11 @@ msgstr ""
 # defaultMessage: Title
 msgid "Title"
 msgstr "Titel"
+
+#: components/manage/Blocks/Listing/defaultTemplateSchema
+# defaultMessage: Title field
+msgid "Title field"
+msgstr ""
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Total active and non-active objects

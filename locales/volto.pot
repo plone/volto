@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2021-10-14T10:05:59.147Z\n"
+"POT-Creation-Date: 2021-10-18T10:00:31.303Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -690,6 +690,11 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Description
 msgid "Description"
+msgstr ""
+
+#: components/manage/Blocks/Listing/defaultTemplateSchema
+# defaultMessage: Description field
+msgid "Description field"
 msgstr ""
 
 #: components/manage/Diff/Diff
@@ -2291,6 +2296,11 @@ msgstr ""
 msgid "Show sorting?"
 msgstr ""
 
+#: components/manage/Blocks/Listing/schema
+# defaultMessage: undefined
+msgid "Show variation configuration"
+msgstr ""
+
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Shrink sidebar
 msgid "Shrink sidebar"
@@ -2612,6 +2622,11 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Title
 msgid "Title"
+msgstr ""
+
+#: components/manage/Blocks/Listing/defaultTemplateSchema
+# defaultMessage: Title field
+msgid "Title field"
 msgstr ""
 
 #: components/manage/Controlpanels/DatabaseInformation
