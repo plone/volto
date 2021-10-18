@@ -2304,9 +2304,9 @@ msgstr ""
 msgid "Show sorting?"
 msgstr ""
 
-#: components/manage/Blocks/Listing/schema
+#: components/manage/Blocks/Listing/defaultTemplateSchema
 # defaultMessage: undefined
-msgid "Show variation configuration"
+msgid "Show variation config"
 msgstr ""
 
 #: components/manage/Sidebar/Sidebar

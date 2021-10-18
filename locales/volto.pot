@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2021-10-18T10:00:31.303Z\n"
+"POT-Creation-Date: 2021-10-18T15:37:49.800Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -2296,9 +2296,9 @@ msgstr ""
 msgid "Show sorting?"
 msgstr ""
 
-#: components/manage/Blocks/Listing/schema
+#: components/manage/Blocks/Listing/defaultTemplateSchema
 # defaultMessage: undefined
-msgid "Show variation configuration"
+msgid "Show variation config"
 msgstr ""
 
 #: components/manage/Sidebar/Sidebar
