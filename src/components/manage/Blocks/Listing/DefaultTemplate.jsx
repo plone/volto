@@ -5,7 +5,14 @@ import { flattenToAppURL } from '@plone/volto/helpers';
 
 import { isInternalURL } from '@plone/volto/helpers/Url/Url';
 
-const DefaultTemplate = ({ items, linkTitle, linkHref, isEditMode }) => {
+const DefaultTemplate = ({
+  items,
+  linkTitle,
+  linkHref,
+  isEditMode,
+  variationTitle,
+  variationDescription,
+}) => {
   let link = null;
   let href = linkHref?.[0]?.['@id'] || '';
 
@@ -18,7 +25,6 @@ const DefaultTemplate = ({ items, linkTitle, linkHref, isEditMode }) => {
   } else if (href) {
     link = <a href={href}>{linkTitle || href}</a>;
   }
-
   return (
     <>
       <div className="items">
@@ -26,8 +32,24 @@ const DefaultTemplate = ({ items, linkTitle, linkHref, isEditMode }) => {
           <div className="listing-item" key={item['@id']}>
             <ConditionalLink item={item} condition={!isEditMode}>
               <div className="listing-body">
-                <h4>{item.title ? item.title : item.id}</h4>
-                <p>{item.description}</p>
+                <h4>
+                  {variationTitle &&
+                  typeof item[variationTitle] != 'object' &&
+                  item[variationTitle] != null
+                    ? item[variationTitle]
+                    : item.title
+                    ? item.title
+                    : item.id}
+                </h4>
+                <p>
+                  {variationDescription &&
+                  typeof item[variationDescription] != 'object' &&
+                  item[variationDescription] != null
+                    ? item[variationDescription]
+                    : item.description
+                    ? item.description
+                    : item.id}
+                </p>
               </div>
             </ConditionalLink>
           </div>

@@ -22,18 +22,22 @@ const messages = defineMessages({
     id: 'Link to',
     defaultMessage: 'Link to',
   },
+  variationConfiguration: {
+    id: 'Show variation configuration',
+    defineMessages: 'Show variation configuration',
+  },
 });
 
 export const schemaListing = (props) => {
-  const { intl } = props;
-
+  const { intl, variation, data } = props;
+  const vConfig = variation?.schema ? ['variationConfiguration'] : [];
   return {
     title: intl.formatMessage(messages.listing),
     fieldsets: [
       {
         id: 'default',
         title: 'Default',
-        fields: ['querystring'],
+        fields: [...vConfig, 'querystring'],
       },
       ...(config.blocks.blocksConfig.listing.showLinkMore
         ? [
@@ -43,6 +47,9 @@ export const schemaListing = (props) => {
               fields: ['linkTitle', 'linkHref'],
             },
           ]
+        : []),
+      ...(data.variationConfiguration && variation.schema
+        ? variation.schema(props).fieldsets
         : []),
     ],
 
@@ -61,6 +68,12 @@ export const schemaListing = (props) => {
         selectedItemAttrs: ['Title', 'Description'],
         allowExternals: true,
       },
+      variationConfiguration: {
+        type: 'boolean',
+        title: intl.formatMessage(messages.variationConfiguration),
+        default: false,
+      },
+      ...(variation?.schema ? variation.schema(props).properties : ''),
     },
     required: [],
   };
