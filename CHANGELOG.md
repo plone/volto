@@ -6,6 +6,8 @@
 
 ### Feature
 
+- add a custom schema to the listing block default template @ionlizarazu
+
 ### Bugfix
 
 ### Internal
