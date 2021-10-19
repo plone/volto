@@ -357,6 +357,13 @@ yarn ci:start-api-plone-guillotina
 
 If you would like contribute to translate Volto into several languages, please, read the [Internationalization (i18n) guide](https://docs.voltocms.com/customizing/i18n/).
 
+
+## Contributors
+
+<a href="https://github.com/plone/volto/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=plone/volto" />
+</a>
+
 ## License
 
 MIT License. Copyrights hold the [Plone Foundation](https://plone.org/foundation).
