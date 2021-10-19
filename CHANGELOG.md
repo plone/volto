@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Add locales to existing block variations @sneridagh
+
 ## 14.0.0-alpha.21 (2021-10-17)
 
 ### Feature

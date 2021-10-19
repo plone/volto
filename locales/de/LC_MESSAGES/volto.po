@@ -974,6 +974,21 @@ msgstr "Facetten-Widget"
 msgid "Facets"
 msgstr "Facetten"
 
+#: config/Blocks
+# defaultMessage: Facets on left side
+msgid "Facets on left side"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Facets on right side
+msgid "Facets on right side"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Facets on top
+msgid "Facets on top"
+msgstr ""
+
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Field
 msgid "Field"
@@ -1185,6 +1200,11 @@ msgstr "Wenn Sie sicher sind, dass Sie die richtige Adresse eingegeben haben, ko
 # defaultMessage: Image
 msgid "Image"
 msgstr "Bild"
+
+#: config/Blocks
+# defaultMessage: Image gallery
+msgid "Image gallery"
+msgstr "Bildergalerie"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Include this occurence
@@ -2453,6 +2473,11 @@ msgstr "Betreff"
 # defaultMessage: Success
 msgid "Success"
 msgstr "Erfolgreich"
+
+#: config/Blocks
+# defaultMessage: Summary
+msgid "Summary"
+msgstr "Zusammenfassung"
 
 #: components/theme/LanguageSelector/LanguageSelector
 # defaultMessage: Switch to
