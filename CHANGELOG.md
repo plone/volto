@@ -16,6 +16,7 @@
 
 - In the search block, allow editors to specify the sort on criteria.
   @tiberiuichim
+- Updated Volto production sites list @giuliaghisini
 
 ### Bugfix
 
@@ -32,8 +33,8 @@
 ### Breaking
 
 - Revisited, rethought and refactored Seamless mode Seamless mode @sneridagh
-For more information, please read the deploying guide
-https://docs.voltocms.com/deploying/seamless-mode/
+  For more information, please read the deploying guide
+  https://docs.voltocms.com/deploying/seamless-mode/
 
 and the upgrade guide
 https://docs.voltocms.com/upgrade-guide/
