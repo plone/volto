@@ -1,4 +1,4 @@
-name: Volto Documentation
+name: Documentation
 on:
   push:
     tags:

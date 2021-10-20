@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import loadable from '@loadable/component';
+import { compose } from 'redux';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 import { getSchema, updateContent, getContent } from '@plone/volto/actions';
 import layouts from '@plone/volto/constants/Layouts';
@@ -14,41 +15,31 @@ import downSVG from '@plone/volto/icons/down-key.svg';
 import upSVG from '@plone/volto/icons/up-key.svg';
 import checkSVG from '@plone/volto/icons/check.svg';
 
-const ReactSelect = loadable.lib(() => import('react-select'));
-
-const Option = (props) => {
+const Option = injectLazyLibs('reactSelect')((props) => {
+  const { Option } = props.reactSelect.components;
   return (
-    <ReactSelect>
-      {({ components }) => (
-        <components.Option {...props}>
-          <div>{props.label}</div>
-          {props.isFocused && !props.isSelected && (
-            <Icon name={checkSVG} size="24px" color="#b8c6c8" />
-          )}
-          {props.isSelected && (
-            <Icon name={checkSVG} size="24px" color="#007bc1" />
-          )}
-        </components.Option>
+    <Option {...props}>
+      <div>{props.label}</div>
+      {props.isFocused && !props.isSelected && (
+        <Icon name={checkSVG} size="24px" color="#b8c6c8" />
       )}
-    </ReactSelect>
+      {props.isSelected && <Icon name={checkSVG} size="24px" color="#007bc1" />}
+    </Option>
   );
-};
+});
 
-const DropdownIndicator = (props) => {
+const DropdownIndicator = injectLazyLibs('reactSelect')((props) => {
+  const { DropdownIndicator } = props.reactSelect.components;
   return (
-    <ReactSelect>
-      {({ components }) => (
-        <components.DropdownIndicator {...props}>
-          {props.selectProps.menuIsOpen ? (
-            <Icon name={upSVG} size="24px" color="#007bc1" />
-          ) : (
-            <Icon name={downSVG} size="24px" color="#007bc1" />
-          )}
-        </components.DropdownIndicator>
+    <DropdownIndicator {...props}>
+      {props.selectProps.menuIsOpen ? (
+        <Icon name={upSVG} size="24px" color="#007bc1" />
+      ) : (
+        <Icon name={downSVG} size="24px" color="#007bc1" />
       )}
-    </ReactSelect>
+    </DropdownIndicator>
   );
-};
+});
 
 const selectTheme = (theme) => ({
   ...theme,
@@ -192,54 +183,53 @@ class DisplaySelect extends Component {
 
   render() {
     const { selectedOption } = this.state;
+    const Select = this.props.reactSelect.default;
 
     return (
-      <Fragment>
+      <>
         <label htmlFor="display-select">
           <FormattedMessage id="Viewmode" defaultMessage="View" />
         </label>
-        <ReactSelect>
-          {({ default: Select }) => (
-            <Select
-              name="display-select"
-              className="react-select-container"
-              classNamePrefix="react-select"
-              options={this.props.layouts
-                .filter(
-                  (layout) =>
-                    Object.keys(config.views.contentTypesViews).includes(
-                      layout,
-                    ) || Object.keys(config.views.layoutViews).includes(layout),
-                )
-                .map((item) => ({
-                  value: item,
-                  label: layouts[item] || item,
-                }))}
-              styles={customSelectStyles}
-              theme={selectTheme}
-              components={{ DropdownIndicator, Option }}
-              onChange={this.setLayout}
-              defaultValue={selectedOption}
-              isSearchable={false}
-            />
-          )}
-        </ReactSelect>
-      </Fragment>
+        <Select
+          name="display-select"
+          className="react-select-container"
+          classNamePrefix="react-select"
+          options={this.props.layouts
+            .filter(
+              (layout) =>
+                Object.keys(config.views.contentTypesViews).includes(layout) ||
+                Object.keys(config.views.layoutViews).includes(layout),
+            )
+            .map((item) => ({
+              value: item,
+              label: layouts[item] || item,
+            }))}
+          styles={customSelectStyles}
+          theme={selectTheme}
+          components={{ DropdownIndicator, Option }}
+          onChange={this.setLayout}
+          defaultValue={selectedOption}
+          isSearchable={false}
+        />
+      </>
     );
   }
 }
 
-export default connect(
-  (state) => ({
-    loaded: state.content.update.loaded,
-    layouts: state.schema.schema ? state.schema.schema.layouts : [],
-    layout: state.content.data
-      ? state.content.data[getLayoutFieldname(state.content.data)]
-      : '',
-    layout_fieldname: state.content.data
-      ? getLayoutFieldname(state.content.data)
-      : '',
-    type: state.content.data ? state.content.data['@type'] : '',
-  }),
-  { getSchema, updateContent, getContent },
+export default compose(
+  injectLazyLibs('reactSelect'),
+  connect(
+    (state) => ({
+      loaded: state.content.update.loaded,
+      layouts: state.schema.schema ? state.schema.schema.layouts : [],
+      layout: state.content.data
+        ? state.content.data[getLayoutFieldname(state.content.data)]
+        : '',
+      layout_fieldname: state.content.data
+        ? getLayoutFieldname(state.content.data)
+        : '',
+      type: state.content.data ? state.content.data['@type'] : '',
+    }),
+    { getSchema, updateContent, getContent },
+  ),
 )(DisplaySelect);

@@ -3,6 +3,7 @@ import config from '@plone/volto/registry';
 import {
   flattenToAppURL,
   flattenHTMLToAppURL,
+  toPublicURL,
   getBaseUrl,
   getView,
   isCmsUi,
@@ -47,6 +48,12 @@ describe('Url', () => {
         '/bla/doh/sharing-my-test/doh/bla',
       );
     });
+    it('does nothing if no url is undefined', () => {
+      expect(getBaseUrl(undefined)).toBe(undefined);
+    });
+    it('return empty string if no url is empty string', () => {
+      expect(getBaseUrl('')).toBe('');
+    });
   });
 
   describe('getView', () => {
@@ -74,6 +81,41 @@ describe('Url', () => {
       settings.internalApiPath = 'http://plone:8080/Plone';
       expect(flattenToAppURL(url)).toBe('/something');
       settings.internalApiPath = saved;
+    });
+  });
+
+  describe('toPublicURL', () => {
+    it('returns public URL given the app URL', () => {
+      const savedPublicURL = settings.publicURL;
+      settings.publicURL = 'https://plone.org';
+      expect(toPublicURL('/section/content')).toBe(
+        'https://plone.org/section/content',
+      );
+      settings.publicURL = savedPublicURL;
+    });
+
+    it('returns public URL given the content @id while in dev mode', () => {
+      const savedPublicURL = settings.publicURL;
+      const savedApiPath = settings.apiPath;
+      settings.publicURL = 'https://plone.org';
+      settings.apiPath = 'http://localhost:3000/api';
+      expect(toPublicURL('http://localhost:3000/api/section/content')).toBe(
+        'https://plone.org/section/content',
+      );
+      settings.publicURL = savedPublicURL;
+      settings.apiPath = savedApiPath;
+    });
+
+    it('returns public URL given the content @id while in dev mode', () => {
+      const savedPublicURL = settings.publicURL;
+      const savedApiPath = settings.apiPath;
+      settings.publicURL = 'https://plone.org';
+      settings.apiPath = 'https://plone.org/api';
+      expect(toPublicURL('https://plone.org/api/section/content')).toBe(
+        'https://plone.org/section/content',
+      );
+      settings.publicURL = savedPublicURL;
+      settings.apiPath = savedApiPath;
     });
   });
 
@@ -140,6 +182,14 @@ describe('Url', () => {
     it('tells if an URL is internal if a relative path', () => {
       const href = './../';
       expect(isInternalURL(href)).toBe(true);
+    });
+    it('Behave if URL is not a string', () => {
+      const href = null;
+      expect(isInternalURL(href)).toBe(null);
+    });
+    it('Behave if URL is not a string II', () => {
+      const href = undefined;
+      expect(isInternalURL(href)).toBe(undefined);
     });
   });
   describe('isUrl', () => {

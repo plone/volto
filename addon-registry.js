@@ -2,7 +2,7 @@
 const glob = require('glob').sync;
 const path = require('path');
 const fs = require('fs');
-
+const debug = require('debug')('shadowing');
 const { map } = require('lodash');
 const { DepGraph } = require('dependency-graph');
 
@@ -191,21 +191,26 @@ class AddonConfigurationRegistry {
   }
 
   initTestingPackage(name) {
-    const testingPackagePath = `${this.projectRootPath}/packages/${name}/src`;
+    const normalizedAddonName = name.split(':')[0];
+    const testingPackagePath = `${this.projectRootPath}/packages/${normalizedAddonName}/src`;
     if (fs.existsSync(testingPackagePath)) {
       const basePath = getPackageBasePath(testingPackagePath);
       const packageJson = path.join(basePath, 'package.json');
 
-      if (!this.addonNames.includes(name)) this.addonNames.push(name);
+      if (!this.addonNames.includes(normalizedAddonName))
+        this.addonNames.push(normalizedAddonName);
       const pkg = {
         modulePath: testingPackagePath,
         packageJson: packageJson,
         isPublishedPackage: false,
-        name,
+        name: normalizedAddonName,
         addons: require(packageJson).addons || [],
       };
 
-      this.packages[name] = Object.assign(this.packages[name] || {}, pkg);
+      this.packages[normalizedAddonName] = Object.assign(
+        this.packages[normalizedAddonName] || {},
+        pkg,
+      );
     }
   }
 
@@ -317,7 +322,7 @@ class AddonConfigurationRegistry {
                 filename.replace(customPath, name).replace(/\.(js|jsx)$/, '')
               ] = path.resolve(filename);
             } else {
-              console.log(
+              debug(
                 `The file ${filename} doesn't exist in the ${name} (${targetPath}), unable to customize.`,
               );
             }
@@ -354,6 +359,33 @@ class AddonConfigurationRegistry {
       };
     });
     return aliases;
+  }
+
+  /**
+   * Allow testing packages addons to customize Volto and other addons.
+   *
+   * Same as the above one, but specific for Volto testing addons
+   */
+  getTestingAddonCustomizationPaths() {
+    let aliases = {};
+    if (process.env.RAZZLE_TESTING_ADDONS) {
+      process.env.RAZZLE_TESTING_ADDONS.split(',').forEach((addon) => {
+        const normalizedAddonName = addon.split(':')[0];
+        const testingPackagePath = `${this.projectRootPath}/packages/${normalizedAddonName}/src`;
+        if (fs.existsSync(testingPackagePath)) {
+          const basePath = getPackageBasePath(testingPackagePath);
+          const packageJson = path.join(basePath, 'package.json');
+          aliases = {
+            ...aliases,
+            ...this.getCustomizationPaths(require(packageJson), basePath),
+          };
+        }
+      });
+
+      return aliases;
+    } else {
+      return [];
+    }
   }
 
   /**

@@ -12,6 +12,13 @@ import MainSliderViewBlock from '@package/components/Blocks/MainSlider/View';
 import MainSliderEditBlock from '@package/components/Blocks/MainSlider/Edit';
 import sliderSVG from '@plone/volto/icons/slider.svg';
 
+import SimpleTeaserView from '@package/components/Blocks/SimpleTeaserView';
+import CardTeaserView from '@package/components/Blocks/CardTeaserView';
+import DefaultColumnRenderer from '@package/components/Blocks/DefaultColumnRenderer';
+import NumberColumnRenderer from '@package/components/Blocks/NumberColumnRenderer';
+import ColoredColumnRenderer from '@package/components/Blocks/ColoredColumnRenderer';
+import CardTeaserView from '@package/components/Blocks/CardTeaserView';
+
 import CustomSchemaEnhancer from '@package/components/Blocks/CustomSchemaEnhancer';
 
 [...]
@@ -24,7 +31,7 @@ const customBlocks = {
     group: 'common', // The group (blocks can be grouped, displayed in the chooser)
     view: MainSliderViewBlock, // The view mode component
     edit: MainSliderEditBlock, // The edit mode component
-    restricted: false, // If the block is restricted, it won't show in the chooser
+    restricted: false, // {Boolean|function} If the block is restricted, it won't show in the chooser. The function signature is `({properties, block})` where `properties` is the current object data and `block` is the block being evaluated in `BlockChooser`.
     mostUsed: true, // A meta group `most used`, appearing at the top of the chooser
     blockHasOwnFocusManagement: false, // Set this to true if the block manages its own focus
     sidebarTab: 0, // The sidebar tab you want to be selected when selecting the block
@@ -38,16 +45,57 @@ const customBlocks = {
       // See also [Settings reference](/configuration/settings-reference)
     },
     // A block can have an schema enhancer function with the signature: (schema) => schema
-    // It can be either be at block level (it's applied always) or at a variation level
-    // The variation level one takes precedence.
+    // It can be either be at block level (it's applied always), at a variation level
+    // or both. It's up to the developer to make them work nicely (not conflict) between them
     schemaEnhancer: CustomSchemaEnhancer,
     // A block can define variations (it should include the stock, default one)
-    variations: {
-      default: { label: 'Default' },
-      custom: {
-        label: 'Custom',
-        // The variation level schema Enhancer function
-        schemaEnhancer: CustomSchemaEnhancer
+    variations: [
+      {
+        id: 'default',
+        title: 'Default',
+        isDefault: true,
+        render: SimpleTeaserView
+      },
+      {
+        id: 'card',
+        label: 'Card',
+        render: CardTeaserView,
+        schemaEnhancer: ({schema, formData, intl}) => {
+          schema.properties.cardSize = '...'; // fill in your implementation
+          return schema;
+        }
+      }
+    ],
+    // A block can define extensions that enhance the default stock block behavior
+    extensions: {
+      columnRenderers: {
+        title: messages.title,
+        items: [
+          {
+            id: 'default',
+            title: 'Default',
+            isDefault: true,
+            render: DefaultColumnRenderer
+          },
+          {
+            id: 'number',
+            title: 'Number',
+            render: NumberColumnRenderer,
+          },
+          {
+            id: 'colored',
+            title: 'Colored',
+            renderer: ColoredColumnRenderer,
+            schemaEnhancer: ({formData, schema, intl}) => {
+              schema.properties.color = {
+                widget: 'color',
+                title: 'Color',
+              };
+              schema.fieldsets[0].fields.push('color');
+              return schema;
+            }
+          }
+        ]
       }
     }
   },

@@ -18,6 +18,7 @@ beforeAll(() => {
       datetime: () => <div className="DatetimeWidget" />,
       password: () => <div className="PasswordWidget" />,
       file: () => <div className="FileWidget" />,
+      vocabularyterms: () => <div className="VocabularyTermsWidget" />,
     },
     vocabulary: {
       'plone.app.vocabularies.Catalog': () => (
@@ -216,6 +217,29 @@ describe('Field', () => {
     const component = renderer.create(
       <Provider store={store}>
         <Field id="test" />
+      </Provider>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
+
+  it('renders a widget regarding the priority of tagged value over name', () => {
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    const component = renderer.create(
+      <Provider store={store}>
+        <>
+          <Field widget="textarea" id="test" />
+          <Field
+            widget="textarea"
+            widgetOptions={{ frontendOptions: { widget: 'richtext' } }}
+            id="test"
+          />
+        </>
       </Provider>,
     );
     const json = component.toJSON();

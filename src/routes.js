@@ -32,6 +32,7 @@ import {
   Sharing,
   Sitemap,
   UsersControlpanel,
+  GroupsControlpanel,
 } from '@plone/volto/components';
 
 // Deliberatelly use of absolute path of these components, since we do not want them
@@ -46,6 +47,41 @@ import config from '@plone/volto/registry';
  * @array
  * @returns {array} Routes.
  */
+export const multilingualRoutes = [
+  {
+    path: `/(${config.settings?.supportedLanguages.join('|')})/sitemap`,
+    component: Sitemap,
+  },
+  {
+    path: `/(${config.settings?.supportedLanguages.join('|')})/search`,
+    component: Search,
+  },
+  {
+    path: `/(${config.settings?.supportedLanguages.join('|')})/contact-form`,
+    component: ContactForm,
+  },
+  {
+    path: `/(${config.settings?.supportedLanguages.join('|')})/change-password`,
+    component: ChangePassword,
+  },
+  {
+    path: `/(${config.settings?.supportedLanguages.join('|')})/register`,
+    component: Register,
+  },
+  {
+    path: `/(${config.settings?.supportedLanguages.join('|')})/password-reset`,
+    component: RequestPasswordReset,
+    exact: true,
+  },
+  {
+    path: `/(${config.settings?.supportedLanguages.join(
+      '|',
+    )})/password-reset/:token`,
+    component: PasswordReset,
+    exact: true,
+  },
+];
+
 export const defaultRoutes = [
   {
     path: '/',
@@ -108,6 +144,10 @@ export const defaultRoutes = [
   {
     path: '/controlpanel/users',
     component: UsersControlpanel,
+  },
+  {
+    path: '/controlpanel/groups',
+    component: GroupsControlpanel,
   },
   {
     path: '/controlpanel/:id',
@@ -211,8 +251,14 @@ const routes = [
     path: '/',
     component: App,
     routes: [
+      // redirect to external links if path is in blacklist
+      ...(config.settings?.externalRoutes || []).map((route) => ({
+        ...route.match,
+        component: NotFound,
+      })),
       // addon routes have a higher priority then default routes
       ...(config.addonRoutes || []),
+      ...((config.settings?.isMultilingual && multilingualRoutes) || []),
       ...defaultRoutes,
     ],
   },

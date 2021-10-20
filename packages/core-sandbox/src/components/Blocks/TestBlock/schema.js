@@ -85,7 +85,7 @@ export const SliderSchema = (props) => ({
     {
       id: 'default',
       title: 'Default',
-      fields: ['slides', 'fieldAfterObjectList'],
+      fields: ['slides', 'fieldAfterObjectList', 'href'],
     },
   ],
   properties: {
@@ -96,6 +96,18 @@ export const SliderSchema = (props) => ({
     },
     fieldAfterObjectList: {
       title: 'Field after OL',
+    },
+    href: {
+      title: props.intl.formatMessage(messages.Source),
+      widget: 'object_browser',
+      mode: 'link',
+      selectedItemAttrs: [
+        'Title',
+        'Description',
+        'hasPreviewImage',
+        'headtitle',
+      ],
+      allowExternals: true,
     },
   },
   required: [],

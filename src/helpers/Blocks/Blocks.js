@@ -170,6 +170,7 @@ export function addBlock(formData, type, index) {
           },
         }),
       },
+      selected: id,
     },
   ];
 }

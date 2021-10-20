@@ -2,7 +2,7 @@
 
 exports[`renders a textarea widget component 1`] = `
 <div
-  className="inline field textarea"
+  className="inline field textarea field-wrapper-my-field"
 >
   <div
     className="ui grid"

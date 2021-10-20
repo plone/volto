@@ -1,5 +1,5 @@
 /* eslint no-console: 0 */
-import '~/config'; // This is the bootstrap for the global config - server side
+import '@plone/volto/config'; // This is the bootstrap for the global config - server side
 import { existsSync, lstatSync, readFileSync } from 'fs';
 import React from 'react';
 import { StaticRouter } from 'react-router-dom';
@@ -14,16 +14,20 @@ import locale from 'locale';
 import { detect } from 'detect-browser';
 import path from 'path';
 import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
-import { createProxyMiddleware } from 'http-proxy-middleware';
-import { updateIntl } from 'react-intl-redux';
 import { resetServerContext } from 'react-beautiful-dnd';
+import debug from 'debug';
 
 import routes from '~/routes';
 import config from '@plone/volto/registry';
 
-import { flattenToAppURL } from '@plone/volto/helpers';
-
-import { Html, Api, persistAuthToken } from '@plone/volto/helpers';
+import {
+  flattenToAppURL,
+  Html,
+  Api,
+  persistAuthToken,
+  normalizeLanguageName,
+} from '@plone/volto/helpers';
+import { changeLanguage } from '@plone/volto/actions';
 
 import userSession from '@plone/volto/reducers/userSession/userSession';
 
@@ -38,10 +42,15 @@ let locales = {};
 
 if (config.settings) {
   config.settings.supportedLanguages.forEach((lang) => {
-    import('~/../locales/' + lang + '.json').then((locale) => {
+    const langFileName = normalizeLanguageName(lang);
+    import('~/../locales/' + langFileName + '.json').then((locale) => {
       locales = { ...locales, [lang]: locale.default };
     });
   });
+}
+
+function reactIntlErrorHandler(error) {
+  debug('i18n')(error);
 }
 
 const supported = new locale.Locales(keys(languages), 'en');
@@ -52,37 +61,18 @@ const server = express()
   .head('/*', function (req, res) {
     // Support for HEAD requests. Required by start-test utility in CI.
     res.send('');
+  })
+  .all('*', (req, res, next) => {
+    plugToRequest(req, res);
+    next();
   });
 
-// Internal proxy to bypass CORS while developing.
-if (__DEVELOPMENT__ && config.settings.devProxyToApiPath) {
-  const apiPathURL = parseUrl(config.settings.apiPath);
-  const proxyURL = parseUrl(config.settings.devProxyToApiPath);
-  const serverURL = `${proxyURL.protocol}//${proxyURL.host}`;
-  const instancePath = proxyURL.pathname;
-  server.use(
-    '/api',
-    createProxyMiddleware({
-      target: serverURL,
-      pathRewrite: {
-        '^/api':
-          config.settings.proxyRewriteTarget ||
-          `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot/_vh_api`,
-      },
-      logLevel: 'silent', // change to 'debug' to see all requests
-      ...(config.settings?.proxyRewriteTarget?.startsWith('https') && {
-        changeOrigin: true,
-        secure: false,
-      }),
-    }),
-  );
-}
+const middleware = (config.settings.expressMiddleware || []).filter((m) => m);
+if (middleware.length) server.use('/', middleware);
 
 server.all('*', setupServer);
 
 function setupServer(req, res, next) {
-  plugToRequest(req, res);
-
   const api = new Api(req);
 
   const browserdetect = detect(req.headers['user-agent']);
@@ -118,7 +108,7 @@ function setupServer(req, res, next) {
 
   function errorHandler(error) {
     const errorPage = (
-      <Provider store={store}>
+      <Provider store={store} onError={reactIntlErrorHandler}>
         <StaticRouter context={{}} location={req.url}>
           <ErrorPage message={error.message} />
         </StaticRouter>
@@ -129,12 +119,24 @@ function setupServer(req, res, next) {
       'Cache-Control': 'public, max-age=60, no-transform',
     });
 
-    // Displays error in console
-    console.error(error);
+    /* Displays error in console
+     * TODO:
+     * - get ignored codes from Plone error_log
+     */
+    const ignoredErrors = [301, 302, 401, 404];
+    if (!ignoredErrors.includes(error.status)) console.error(error);
 
     res
       .status(error.status || 500) // If error happens in Volto code itself error status is undefined
       .send(`<!doctype html> ${renderToString(errorPage)}`);
+  }
+
+  if (!__DEVELOPMENT__ && !process.env.RAZZLE_API_PATH && req.headers.host) {
+    req.app.locals.detectedHost = `${
+      req.headers['x-forwarded-proto'] || req.protocol
+    }://${req.headers.host}`;
+    config.settings.apiPath = req.app.locals.detectedHost;
+    config.settings.publicURL = req.app.locals.detectedHost;
   }
 
   req.app.locals = {
@@ -146,11 +148,6 @@ function setupServer(req, res, next) {
 
   next();
 }
-
-const expressMiddleware = (config.settings.expressMiddleware || []).filter(
-  (m) => typeof m !== 'undefined',
-);
-if (expressMiddleware.length) server.use('/', expressMiddleware);
 
 server.get('/*', (req, res) => {
   const { store, api, errorHandler } = req.app.locals;
@@ -172,18 +169,14 @@ server.get('/*', (req, res) => {
       const updatedLang =
         store.getState().content.data?.language?.token ||
         config.settings.defaultLanguage;
-      store.dispatch(
-        updateIntl({
-          locale: updatedLang,
-          messages: locales[updatedLang],
-        }),
-      );
+
+      store.dispatch(changeLanguage(updatedLang, locales[updatedLang]));
 
       const context = {};
       resetServerContext();
       const markup = renderToString(
         <ChunkExtractorManager extractor={extractor}>
-          <Provider store={store}>
+          <Provider store={store} onError={reactIntlErrorHandler}>
             <StaticRouter context={context} location={req.url}>
               <ReduxAsyncConnect routes={routes} helpers={api} />
             </StaticRouter>
@@ -208,8 +201,17 @@ server.get('/*', (req, res) => {
                   extractor={extractor}
                   markup={markup}
                   store={store}
-                  extractScripts={process.env.NODE_ENV !== 'production'}
+                  extractScripts={
+                    config.settings.serverConfig.extractScripts?.errorPages ||
+                    process.env.NODE_ENV !== 'production'
+                  }
                   criticalCss={readCriticalCss(req)}
+                  apiPath={
+                    req.app.locals.detectedHost || config.settings.apiPath
+                  }
+                  publicURL={
+                    req.app.locals.detectedHost || config.settings.publicURL
+                  }
                 />,
               )}
             `,
@@ -223,6 +225,12 @@ server.get('/*', (req, res) => {
                   markup={markup}
                   store={store}
                   criticalCss={readCriticalCss(req)}
+                  apiPath={
+                    req.app.locals.detectedHost || config.settings.apiPath
+                  }
+                  publicURL={
+                    req.app.locals.detectedHost || config.settings.publicURL
+                  }
                 />,
               )}
             `,
@@ -244,7 +252,9 @@ export const defaultReadCriticalCss = () => {
   return readFileSync(criticalCssPath, { encoding: 'utf-8' });
 };
 
+// Exposed for the console bootstrap info messages
 server.apiPath = config.settings.apiPath;
 server.devProxyToApiPath = config.settings.devProxyToApiPath;
+server.publicURL = config.settings.publicURL;
 
 export default server;

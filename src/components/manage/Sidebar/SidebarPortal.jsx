@@ -24,11 +24,9 @@ const SidebarPortal = ({ children, selected, tab = 'sidebar-properties' }) => {
               role="presentation"
               onClick={(e) => {
                 e.stopPropagation();
-                e.nativeEvent.stopImmediatePropagation();
               }}
               onKeyDown={(e) => {
                 e.stopPropagation();
-                e.nativeEvent.stopImmediatePropagation();
               }}
             >
               {children}

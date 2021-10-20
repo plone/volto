@@ -139,7 +139,6 @@ export const ContentsItemComponent = ({
           <Link
             className="icon-align-name"
             to={`${item['@id']}${item.is_folderish ? '/contents' : ''}`}
-            title={item['@type']}
           >
             <div className="expire-align">
               <Icon
@@ -147,8 +146,9 @@ export const ContentsItemComponent = ({
                 size="20px"
                 className="icon-margin"
                 color="#878f93"
+                title={item['@type']}
               />{' '}
-              <span> {item.title}</span>
+              <span title={item.title}> {item.title}</span>
             </div>
             {item.ExpirationDate !== 'None' &&
               new Date(item.ExpirationDate).getTime() <
@@ -180,7 +180,9 @@ export const ContentsItemComponent = ({
                 </span>
                 {messages[item[index.id]]
                   ? intl.formatMessage(messages[item[index.id]])
-                  : intl.formatMessage(messages.no_workflow_state)}
+                  : item['review_title'] ||
+                    item['review_state'] ||
+                    intl.formatMessage(messages.no_workflow_state)}
               </div>
             )}
             {index.type === 'date' && (
@@ -199,6 +201,9 @@ export const ContentsItemComponent = ({
                   <FormattedMessage id="None" defaultMessage="None" />
                 )}
               </span>
+            )}
+            {index.type === 'array' && (
+              <span>{item[index.id]?.join(', ')}</span>
             )}
           </Table.Cell>
         ))}

@@ -31,6 +31,7 @@ import { loadables } from './Loadables';
 
 import { sentryOptions } from './Sentry';
 import { contentIcons } from './ContentIcons';
+import { controlPanelsIcons } from './ControlPanels';
 
 import applyAddonConfiguration from 'load-volto-addons';
 
@@ -41,14 +42,14 @@ const port = process.env.PORT || '3000';
 
 const apiPath =
   process.env.RAZZLE_API_PATH ||
-  (__DEVELOPMENT__
-    ? `http://${host}:${port}/api`
-    : 'http://localhost:8080/Plone');
+  (__DEVELOPMENT__ ? `http://${host}:${port}` : '');
 
 const getServerURL = (url) => {
   if (!url) return;
   const apiPathURL = parseUrl(url);
-  return `${apiPathURL.protocol}//${apiPathURL.hostname}:${apiPathURL.port}`;
+  return `${apiPathURL.protocol}//${apiPathURL.hostname}${
+    apiPathURL.port ? `:${apiPathURL.port}` : ''
+  }`;
 };
 
 // Sensible defaults for publicURL
@@ -79,7 +80,9 @@ let config = {
     apiPath,
     apiExpanders: [],
     devProxyToApiPath:
-      process.env.RAZZLE_DEV_PROXY_API_PATH || 'http://localhost:8080/Plone', // Set it to '' for disabling the proxy
+      process.env.RAZZLE_DEV_PROXY_API_PATH ||
+      process.env.RAZZLE_API_PATH ||
+      'http://localhost:8080/Plone', // Set it to '' for disabling the proxy
     // proxyRewriteTarget Set it for set a custom target for the proxy or overide the internal VHM rewrite
     // proxyRewriteTarget: '/VirtualHostBase/http/localhost:8080/Plone/VirtualHostRoot/_vh_api'
     // proxyRewriteTarget: 'https://myvoltositeinproduction.com'
@@ -89,6 +92,8 @@ let config = {
     actions_raising_api_errors: ['GET_CONTENT', 'UPDATE_CONTENT'],
     internalApiPath: process.env.RAZZLE_INTERNAL_API_PATH || undefined,
     websockets: process.env.RAZZLE_WEBSOCKETS || false,
+    // TODO: legacyTraverse to be removed when the use of the legacy traverse is deprecated.
+    legacyTraverse: process.env.RAZZLE_LEGACY_TRAVERSE || false,
     nonContentRoutes,
     extendedBlockRenderMap,
     blockStyleFn,
@@ -133,6 +138,23 @@ let config = {
     serverConfig,
     storeExtenders: [],
     showTags: true,
+    controlPanelsIcons,
+    externalRoutes: [
+      // URL to be considered as external
+      // {
+      //   match: {
+      //     path: '/news',
+      //     exact: false,
+      //     strict: false,
+      //   },
+      //   url(payload) {
+      //     return payload.location.pathname;
+      //   },
+      // },
+    ],
+    showSelfRegistration: false,
+    contentMetadataTagsImageField: 'image',
+    hasWorkingCopySupport: false,
   },
   widgets: {
     ...widgetMapping,
@@ -149,6 +171,7 @@ let config = {
     blocksConfig,
     groupBlocksOrder,
     initialBlocks,
+    showEditBlocksInBabelView: false,
   },
   addonRoutes: [],
   addonReducers: {},
@@ -156,18 +179,10 @@ let config = {
 
 config = applyAddonConfiguration(config);
 
-export const settings = config.settings;
-export const widgets = config.widgets;
-export const views = config.views;
-export const blocks = config.blocks;
-export const addonRoutes = [...config.addonRoutes];
-export const addonReducers = { ...config.addonReducers };
-export const appExtras = config.appExtras;
-
-ConfigRegistry.settings = settings;
-ConfigRegistry.blocks = blocks;
-ConfigRegistry.views = views;
-ConfigRegistry.widgets = widgets;
-ConfigRegistry.addonRoutes = addonRoutes;
-ConfigRegistry.addonReducers = addonReducers;
-ConfigRegistry.appExtras = appExtras;
+ConfigRegistry.settings = config.settings;
+ConfigRegistry.blocks = config.blocks;
+ConfigRegistry.views = config.views;
+ConfigRegistry.widgets = config.widgets;
+ConfigRegistry.addonRoutes = config.addonRoutes;
+ConfigRegistry.addonReducers = config.addonReducers;
+ConfigRegistry.appExtras = config.appExtras;

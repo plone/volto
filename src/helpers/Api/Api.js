@@ -17,16 +17,19 @@ const methods = ['get', 'post', 'put', 'patch', 'del'];
  */
 function formatUrl(path) {
   const { settings } = config;
+  const APISUFIX = settings.legacyTraverse ? '' : '/++api++';
+
   if (path.startsWith('http://') || path.startsWith('https://')) return path;
 
   const adjustedPath = path[0] !== '/' ? `/${path}` : path;
   let apiPath = '';
   if (settings.internalApiPath && __SERVER__) {
     apiPath = settings.internalApiPath;
-  } else {
+  } else if (settings.apiPath) {
     apiPath = settings.apiPath;
   }
-  return `${apiPath}${adjustedPath}`;
+
+  return `${apiPath}${APISUFIX}${adjustedPath}`;
 }
 
 /**
