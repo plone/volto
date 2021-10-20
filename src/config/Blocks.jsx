@@ -127,6 +127,28 @@ defineMessages({
     id: 'site',
     defaultMessage: 'Site',
   },
+  // Listing block variations
+  summary: {
+    id: 'Summary',
+    defaultMessage: 'Summary',
+  },
+  imageGallery: {
+    id: 'Image gallery',
+    defaultMessage: 'Image gallery',
+  },
+  // Search block variations
+  facetsRightSide: {
+    id: 'Facets on right side',
+    defaultMessage: 'Facets on right side',
+  },
+  facetsLeftSide: {
+    id: 'Facets on left side',
+    defaultMessage: 'Facets on left side',
+  },
+  facetsTopSide: {
+    id: 'Facets on top',
+    defaultMessage: 'Facets on top',
+  },
 });
 
 const groupBlocksOrder = [

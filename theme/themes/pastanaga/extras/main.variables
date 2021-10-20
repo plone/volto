@@ -1,0 +1,13 @@
+
+/* Mobile Menu Nav */
+@mobileMenuNavAlignItems: center;
+@mobileMenuNavJustifyContent: center;
+@mobileMenuNavTextAlign: center;
+
+/* Mobile Menu Nav Menu */
+@mobileMenuNavMenuAlignItems: center;
+@mobileMenuNavMenuFontSize: @24px;
+
+/* Mobile Menu Nav Item */
+@mobileMenuNavItemJustifyContent: center;
+@mobileMenuNavItemLineHeight: 1.25;
