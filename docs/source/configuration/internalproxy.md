@@ -14,8 +14,7 @@ These are the settings that allows you to configure the API and how the proxy wo
 - `devProxyToApiPath` - The real backend URL, used by the proxy. By default, `http://localhost:8080/Plone`
 
 !!! tip
-    You don't want to deal with CORS in your production deployments, so the proxy is only
-    enabled in development mode (e.g `yarn start`)
+    You don't want to deal with CORS in your production deployments, so using the proxy is only meant to be enabled in development mode (e.g `yarn start`). However, for convenience and for testing/demoing using the stock build, it's also enabled in production mode since Volto 14.
 
 !!! note
     You can disable the proxy by redefining a new `apiPath` and redefining an empty
@@ -25,7 +24,7 @@ Here are some examples.
 
 ### Redefining the proxy target
 
-You can redefine the local proxy target by using the `RAZZLE_DEV_PROXY_API_PATH` or `devProxyToApiPath` in the configuration object (`src/config.js`).
+You can redefine the local proxy target by using the `RAZZLE_DEV_PROXY_API_PATH` or setting `devProxyToApiPath` in the configuration object (`src/config.js`).
 
 For example, if the path to your Plone site is `http://localhost:8081/mysite`, add the following to the bottom of the `src/config.js` file:
 
@@ -53,12 +52,12 @@ export const settings = {
 
 or use the environment variable:
 ```bash
-RAZZLE_API_PATH=http://localhost:8081/mysite yarn start
+RAZZLE_DEV_PROXY_API_PATH= RAZZLE_API_PATH=http://localhost:8081/mysite yarn start
 ```
 
 !!! tip
     To view the existing configuration, add console.log(config) to the `applyConfig` function. This dumps the existing config to your terminal console.
-    
+
 ### Advanced usage
 
 It's possible to define the proxy target more accuratelly using the `RAZZLE_PROXY_REWRITE_TARGET` environment variable, or the `proxyRewriteTarget` setting in the configuration object.

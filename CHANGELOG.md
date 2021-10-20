@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Enable to be able to use the internal proxy in production as well @sneridagh
+
 ### Bugfix
 
 ### Internal
