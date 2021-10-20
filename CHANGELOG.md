@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix loading of cookie on SSR for certain requests, revert slight change in how they are loaded introduced in alpha 16 @sneridagh
+
 ### Internal
 
 ## 14.0.0-alpha.22 (2021-10-20)
