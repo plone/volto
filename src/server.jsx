@@ -64,9 +64,9 @@ const server = express()
   });
 
 const middleware = (config.settings.expressMiddleware || []).filter((m) => m);
-if (middleware.length) server.use('/', middleware);
 
 server.all('*', setupServer);
+if (middleware.length) server.use('/', middleware);
 
 function setupServer(req, res, next) {
   plugToRequest(req, res);
