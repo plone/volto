@@ -4,6 +4,8 @@
 
 ### Added
 
+- Support Node 16 @sneridagh
+
 ### Changes
 
 ## 5.0.0-alpha.0 (2021-09-26)
