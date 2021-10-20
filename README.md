@@ -180,6 +180,7 @@ as part of the Plone training docs at [https://training.plone.org/5/volto/index.
 - Node 16: Supported since Volto 14
 - Node 14: Supported since Volto 8.8.0
 - Node 12: Supported since Volto 4
+- Node 10: Deprecated from Volto 13 onwards. It was supported since Volto 1 (and its predecessor "plone-react")
 
 ## Browser support
 
