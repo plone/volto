@@ -11,10 +11,7 @@ import { NavLink } from 'react-router-dom';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Menu } from 'semantic-ui-react';
 import cx from 'classnames';
-import { getBaseUrl, hasApiExpander } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
-
-import { getNavigation } from '@plone/volto/actions';
 
 const messages = defineMessages({
   closeMobileMenu: {
@@ -39,7 +36,6 @@ class Navigation extends Component {
    * @static
    */
   static propTypes = {
-    getNavigation: PropTypes.func.isRequired,
     pathname: PropTypes.string.isRequired,
     items: PropTypes.arrayOf(
       PropTypes.shape({
@@ -63,37 +59,6 @@ class Navigation extends Component {
     this.state = {
       isMobileMenuOpen: false,
     };
-  }
-
-  componentDidMount() {
-    const { settings } = config;
-    if (!hasApiExpander('navigation', getBaseUrl(this.props.pathname))) {
-      this.props.getNavigation(
-        getBaseUrl(this.props.pathname),
-        settings.navDepth,
-      );
-    }
-  }
-
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    const { settings } = config;
-    if (
-      nextProps.pathname !== this.props.pathname ||
-      nextProps.token !== this.props.token
-    ) {
-      if (!hasApiExpander('navigation', getBaseUrl(this.props.pathname))) {
-        this.props.getNavigation(
-          getBaseUrl(nextProps.pathname),
-          settings.navDepth,
-        );
-      }
-    }
   }
 
   /**
@@ -193,12 +158,9 @@ class Navigation extends Component {
 
 export default compose(
   injectIntl,
-  connect(
-    (state) => ({
-      token: state.userSession.token,
-      items: state.navigation.items,
-      lang: state.intl.locale,
-    }),
-    { getNavigation },
-  ),
+  connect((state) => ({
+    token: state.userSession.token,
+    items: state.navigation.items,
+    lang: state.intl.locale,
+  })),
 )(Navigation);
