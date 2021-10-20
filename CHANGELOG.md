@@ -6,10 +6,6 @@
 
 - Improve mobile navigation menu with a nicer interaction and a fixed overlay with a drawer (customizable via CSSTransitionGroup) animation @sneridagh
 
-### Feature
-
-### Bugfix
-
 ### Internal
 
 - Add locales to existing block variations @sneridagh
