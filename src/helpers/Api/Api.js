@@ -56,6 +56,7 @@ class Api {
           const authToken = cookie.load('auth_token');
           if (authToken) {
             request.set('Authorization', `Bearer ${authToken}`);
+            if (__SERVER__) request.set('Cookie', `auth_token=${authToken}`);
           }
 
           request.set('Accept', 'application/json');
