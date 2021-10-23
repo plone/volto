@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Prevent ua-parser-js security breach. See: https://github.com/advisories/GHSA-pjwm-rvh2-c87w @thet
+
 ### Internal
 
 ## 14.0.0-alpha.23 (2021-10-21)
