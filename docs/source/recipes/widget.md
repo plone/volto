@@ -1,5 +1,30 @@
 # Forms and widgets
 
+## Set frontend widget
+
+If you want to register a frontend widget for your field, you can define your field such as:
+
+```python
+directives.widget(
+    'specialfield',
+    frontendOptions={
+        "widget": 'specialwidget',
+        "version": 'extra'
+    })
+specialfield = schema.TextLine(title="Field with special frontend widget")
+```
+
+Then register your frontend widget in your apps configuration.
+
+```
+import { MySpecialWidget } from './components';
+
+const applyConfig = (config) => {
+  config.widgets.widget.specialwidget = MySpecialWidget;
+  return config;
+}
+```
+
 ## Single-choice field with vocabulary
 
 If you have a fixed predefined vocabulary you can define your field such as:
@@ -100,5 +125,5 @@ Based on this setup, Volto will render this field with the `TokenWidget`.
 
 ## Write a new widget
 
-!!! warning
-    Please contribute this section!
+!!! note
+    Please contribute to this section!

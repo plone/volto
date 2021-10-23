@@ -28,6 +28,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { injectIntl } from 'react-intl';
 import { Portal } from 'react-portal';
+import { connect } from 'react-redux';
 import {
   Button,
   Container,
@@ -39,6 +40,8 @@ import {
 import { v4 as uuid } from 'uuid';
 import { toast } from 'react-toastify';
 import { BlocksToolbar } from '@plone/volto/components';
+import { setSidebarTab } from '@plone/volto/actions';
+import { compose } from 'redux';
 import config from '@plone/volto/registry';
 
 /**
@@ -422,6 +425,8 @@ class Form extends Component {
           );
         },
       );
+      // Changes the focus to the metadata tab in the sidebar if error
+      this.props.setSidebarTab(0);
     } else {
       // Get only the values that have been modified (Edit forms), send all in case that
       // it's an add form
@@ -735,4 +740,8 @@ class Form extends Component {
   }
 }
 
-export default injectIntl(Form, { forwardRef: true });
+const FormIntl = injectIntl(Form, { forwardRef: true });
+
+export default compose(
+  connect(null, { setSidebarTab }, null, { forwardRef: true }),
+)(FormIntl);

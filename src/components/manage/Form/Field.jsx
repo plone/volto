@@ -46,6 +46,25 @@ const getWidgetByName = (widget) =>
     : null;
 
 /**
+ * Get widget by tagged values
+ * @param {object} widgetOptions
+ * @returns {string} Widget component.
+ * 
+ 
+directives.widget(
+    'fieldname',
+    frontendOptions={
+        "widget": 'specialwidget',
+        "version": 'extra'
+    })
+
+ */
+const getWidgetFromTaggedValues = (widgetOptions) =>
+  typeof widgetOptions?.frontendOptions?.widget === 'string'
+    ? config.widgets.widget[widgetOptions.frontendOptions.widget]
+    : null;
+
+/**
  * Get widget by field's `vocabulary` attribute
  * @method getWidgetByVocabulary
  * @param {string} vocabulary Widget
@@ -115,6 +134,7 @@ const getWidgetByType = (type) => config.widgets.type[type] || null;
 const Field = (props, { intl }) => {
   const Widget =
     getWidgetByFieldId(props.id) ||
+    getWidgetFromTaggedValues(props.widgetOptions) ||
     getWidgetByName(props.widget) ||
     getWidgetByChoices(props) ||
     getWidgetByVocabulary(props.vocabulary) ||

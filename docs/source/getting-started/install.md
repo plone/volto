@@ -102,13 +102,13 @@ should not throw an error and show the current running containers.
 
 ## Run a Volto ready Plone Docker container
 
-When you have installed Docker, you can run an standard Plone Docker container with the proper configuration for Volto using the `kitconcept.volto` add'on right away by issuing:
+When you have installed Docker, you can run an standard Plone Docker container with the proper configuration for Volto using the `plone.volto` add'on right away by issuing:
 
 ```shell
 docker run -it --rm --name=plone \
-  -p 8080:8080 -e SITE=Plone -e ADDONS="kitconcept.volto" \
-  -e ZCML="kitconcept.volto.cors" \
-  -e PROFILES="kitconcept.volto:default-homepage" \
+  -p 8080:8080 -e SITE=Plone -e ADDONS="plone.volto" \
+  -e ZCML="plone.volto.cors" \
+  -e PROFILES="plone.volto:default-homepage" \
   plone
 ```
 
@@ -125,7 +125,7 @@ docker run -it --rm --name=plone \
 
 If you are somewhat familiar with Python development, you can also install Plone locally
 without using Docker. Check the [backend configuration](../configuration/backend.md) section.
-It also has more information on kitconcept.volto.
+It also has more information on plone.volto.
 
 
 ## Install Volto

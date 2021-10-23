@@ -12,7 +12,10 @@ tests/
 docs/
 
 # Cypress
-cypress/
+cypress/fixtures
+cypress/tests
+cypress/screenshots
+cypress/videos
 
 # Tests
 __tests__/
@@ -94,3 +97,4 @@ typings/
 styleguide.config
 .vscode
 packages
+.tx
