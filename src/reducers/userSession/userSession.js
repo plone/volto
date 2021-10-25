@@ -55,7 +55,8 @@ export default function userSession(state = initialState, action = {}) {
           error: action.error.response.error,
         },
       };
-    case LOGOUT:
+    case `${LOGOUT}_FAIL`:
+    case `${LOGOUT}_SUCCESS`:
       return {
         ...state,
         token: null,

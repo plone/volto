@@ -78,7 +78,7 @@ describe('Basic multilingual Tests', () => {
     // Link it again
     cy.findByLabelText('Link translation for italiano').click();
     cy.findByLabelText('Back').click();
-    cy.findByLabelText('Select it').dblclick();
+    cy.findByLabelText('Select Italiano').dblclick();
     cy.findByText('/it');
   });
 });

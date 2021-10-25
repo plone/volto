@@ -1,6 +1,6 @@
 # Change Log
 
-## 13.8.3 (unreleased)
+## 14.0.0 (unreleased)
 
 ### Breaking
 
@@ -10,8 +10,362 @@
 
 - Prevent form submit when clicking on BlockChooserButton @giuliaghisini
 - Fix overflow table in Content view @giuliaghisini
+- Prevent ua-parser-js security breach. See: https://github.com/advisories/GHSA-pjwm-rvh2-c87w @thet
+- Fix storybook errors in the connected components, api is undefined. Using now a mock of the store instead of the whole thing @sneridagh
 
 ### Internal
+
+## 14.0.0-alpha.23 (2021-10-21)
+
+### Feature
+
+- Enable to be able to use the internal proxy in production as well @sneridagh
+
+### Bugfix
+
+- Fix loading of cookie on SSR for certain requests, revert slight change in how they are loaded introduced in alpha 16 @sneridagh
+
+## 14.0.0-alpha.22 (2021-10-20)
+
+### Breaking
+
+- Improve mobile navigation menu with a nicer interaction and a fixed overlay with a drawer (customizable via CSSTransitionGroup) animation @sneridagh
+
+### Internal
+
+- Add locales to existing block variations @sneridagh
+
+## 14.0.0-alpha.21 (2021-10-17)
+
+### Feature
+
+- In the search block, allow editors to specify the sort on criteria.
+  @tiberiuichim
+- Updated Volto production sites list @giuliaghisini
+
+### Bugfix
+
+- Bugfixes to search block. By default search block, when empty, makes a simple
+  query to the nav root, to list all content. Fix reading search text from URL.
+  Implement a simple compression of URL. Don't count searched text as filter.
+  Fix an edge case with showSearchInput in schema. Rename title to Section
+  Title in facet column settings. Avoid double calls to querystring endpoint.
+  @tiberiuichim
+- Use correct shade of black in Plone logo @sneridagh
+
+## 14.0.0-alpha.20 (2021-10-15)
+
+### Breaking
+
+- Revisited, rethought and refactored Seamless mode Seamless mode @sneridagh
+  For more information, please read the deploying guide
+  https://docs.voltocms.com/deploying/seamless-mode/
+
+and the upgrade guide
+https://docs.voltocms.com/upgrade-guide/
+
+### Bugfix
+
+- Fixed SelectWidget: when there was a selected value, the selection was lost when the tab was changed. @giuliaghisini
+
+## 14.0.0-alpha.19 (2021-10-15)
+
+### Feature
+
+- Make VocabularyTermsWidget orderable @ksuess
+- Get widget by tagged values @ksuess
+
+## 14.0.0-alpha.18 (2021-10-11)
+
+### Internal
+
+- Re-release last release, since it does not show on NPM @sneridagh
+
+## 14.0.0-alpha.17 (2021-10-11)
+
+### Breaking
+
+- Fix logout action using the backend @logout endpoint, effectively removing the `__ac` cookie. It is recommended to upgrade to the latest p.restapi version to take full advantage of this feature @sneridagh
+
+### Bugfix
+
+- Add spinner on sharing View Button @iRohitSingh
+
+## 14.0.0-alpha.16 (2021-10-10)
+
+### Bugfix
+
+- Yet another attempt at fixing devproxy. Split the devproxy into a separate
+  express middleware. Introduce the `DEBUG_HPM` env var to make the devproxy
+  verbose @tiberiuichim
+
+## 14.0.0-alpha.15 (2021-10-10)
+
+### Breaking
+
+- Adjusted main `Logo` component styling @sneridagh
+
+For more information, please read the upgrade guide
+https://docs.voltocms.com/upgrade-guide/
+
+### Feature
+
+- Add `volto-guillotina` addon to core @sneridagh
+
+### Internal
+
+- Improved developer documentation. Proof read several chapters, most importantly the upgrade guide @ichim-david
+- Use Plone logo (Closes #2632) @ericof
+- Updated Brazilian Portuguese translations @ericof
+- Footer: Point to plone.org instead of plone.com @ericof
+- Fix "make start-frontend" @tisto
+- Update all the tests infrastructure for the new `volto-guillotina` addon @sneridagh
+
+## 14.0.0-alpha.14 (2021-10-01)
+
+### Bugfix
+
+- Get `blocks` and `blocks_layout` defaults from existing behavior when enabling TTW editable DX Layout @avoinea
+
+### Internal
+
+- Add development dependency on use-trace-update, useful for performance debugging @tiberiuichim
+- Upgrade to `@plone/scripts` 1.0.3 @sneridagh
+
+## 14.0.0-alpha.13 (2021-09-30)
+
+### Feature
+
+- Add the new search block @tiberiuichim @kreafox @sneridagh
+
+## 14.0.0-alpha.12 (2021-09-29)
+
+### Bugfix
+
+- Show correct fieldname and not internal field id in Toast error messages on Add/Edit forms @jackahl
+- sitemap.xml.gz obeys Plone Search settings @erral
+
+### Internal
+
+- Use plone.volto instead of kitconcept.volto @tisto
+- Silence customization errors, they are now behind a `debug` library namespace @sneridagh
+- Remove recently introduced `RAZZLE_I18NDEBUGMODE` in favor of a `debug` library namespace @sneridagh
+
+## 14.0.0-alpha.11 (2021-09-25)
+
+### Internal
+
+- Use released @plone/scripts, since the builds are broken if it's a local package @sneridagh
+
+## 14.0.0-alpha.10 (2021-09-25)
+
+### Breaking
+
+- New i18n infrastructure in the new `@plone/scripts` package @sneridagh
+- Removed `src/i18n.js` in favor of the above change @sneridagh
+
+### Feature
+
+- Add RAZZLE_I18NDEBUGMODE env var and corresponding i18nDebugMode config setting to enable/disable react-intl error messages. @sneridagh
+
+### Bugfix
+
+- Missing default messages from JSON EN language file @sneridagh
+
+## 14.0.0-alpha.9 (2021-09-21)
+
+### Breaking
+
+- Use the block's title as the source of the translation instead of using the id of the block. See upgrade guide for more information @sneridagh
+
+### Bugfix
+
+- Do not show lead image block when the content type does not have the behavior enabled @sneridagh
+
+## 14.0.0-alpha.8 (2021-09-20)
+
+### Bugfix
+
+- Fix logout action, removing the `__ac` cookie as well, if present. @sneridagh
+
+## 14.0.0-alpha.7 (2021-09-20)
+
+### Feature
+
+- Japanese translation updated @terapyon
+- German translations updated @tisto
+
+## 14.0.0-alpha.6 (2021-09-20)
+
+### Bugfix
+
+- Fix SSR on /edit with dev proxy @tiberiuichim
+
+## 14.0.0-alpha.5 (2021-09-20)
+
+### Bugfix
+
+- Fix on form errors in block editor, not changing to metadata tab @sneridagh
+
+## 14.0.0-alpha.4 (2021-09-20)
+
+### Internal
+
+- Bring back the `cypress` folder from the npm ignore files, since the libs in there are required and helpful for projects, remove only the `tests` and `fixtures` @sneridagh
+
+## 14.0.0-alpha.3 (2021-09-20)
+
+### Bugfix
+
+- Fix /edit and /add nonContentRoutes to fix isCmsUi fn @giuliaghisini
+- Register the dev api proxy after the express middleware @tiberiuichim
+
+### Internal
+
+- Update to latest p.restapi (8.9.1) @sneridagh
+- Remove `workingcopy` from checkouts info for kitconcept.volto @sneridagh
+- Remove built workingcopy fixture environment based on local, back to docker based one @sneridagh
+- Add `omelette` to the local Plone backend build @sneridagh
+- Optimize npm package by adding docs/ cypress/ and tests/ to .npmignore @avoinea
+
+## 14.0.0-alpha.2 (2021-09-14)
+
+### Internal
+
+- Revert: Detect when a user has logged in by means other than JWT, such as ZMI `Basic`
+  authentication or the classic HTML Plone `@login` view @rpatterson
+
+## 14.0.0-alpha.1 (2021-09-13)
+
+### Breaking
+
+- Detect when a user has logged in by means other than JWT, such as ZMI `Basic`
+  authentication or the classic HTML Plone `@login` view @rpatterson
+
+### Bugfix
+
+- Fix SelectWidget vocabulary load on second component mount @avoinea #2655
+
+## 14.0.0-alpha.0 (2021-09-08)
+
+### Breaking
+
+- Remove compatibility for old configuration (based on imports) system. Migrate your configuration to the new configuration system for your project before upgrading to Volto 14. See https://docs.voltocms.com/upgrade-guide/#volto-configuration-registry @sneridagh
+- Content locking is not a breaking change, but it's worth noting that Volto 14 comes with locking support enabled by default. Latest `plone.restapi` versions is required. See https://docs.voltocms.com/upgrade-guide/ for more information
+
+### Feature
+
+- Content locking support for Plone (plone.locking) @avoinea
+
+## 13.15.0 (2021-09-07)
+
+### Feature
+
+- Show item title and item type when hovering over item title and item type icon in folder content view @iFlameing
+- Change the batch size of folder content @iFlameing
+- Show loading indicator for listing view @iFlameing
+
+### Bugfix
+
+- Validate `required` touched-only fields in Form everywhere @nileshgulia1
+
+### Internal
+
+- Add placeholder to WysiwygWidget @nzambello
+- Update italian translations @nzambello
+- Get SchemaWidget field factories from backend @avoinea
+
+## 13.14.0 (2021-09-02)
+
+### Feature
+
+- Refactor users and groups controlpanel @nileshgulia1
+
+## 13.13.0 (2021-09-01)
+
+### Feature
+
+- Show version in history view @iFlameing
+- Contents shows also array indexes @nzambello
+
+### Bugfix
+
+- Fix SearchWidget required `pathname` @avoinea #2645
+- Fix for Contents tag modal @nzambello
+- Cut/Copy blocks: fixed cut/copy unselected blocks. @giuliaghisini
+- Properly style QueryWidget when used standalone, outside of QuerystringWidget @kreafox
+- Add location.search as criteria in `ScrollToTop` component @kreafox
+- Scroll to top only if the location pathname changes @kreafox
+
+### Internal
+
+- Disabled all the other configuration options when user did not choose any criteria in listing block @iFlameing
+- Updated Brazilian Portuguese translations @ericof
+- Footer: Point to plone.org instead of plone.com @ericof
+- Array and token widget available as named widget @nzambello
+
+## 13.12.0 (2021-08-20)
+
+### Feature
+
+- Multilingual routing was added for sitemap, search, contact-form, change-password, register and password-reset @ionlizarazu
+- Opening the search input in the object browser, it will get the focus @nzambello
+
+### Bugfix
+
+- Fix ObjectBrowserNav items key @nzambello
+- Fix ObjectBrowserNav aria label: id => title @nzambello
+- Fix missing code in `ArrayWidget` from refactored `SelectWidget` @sneridagh
+
+## 13.11.0 (2021-08-18)
+
+### Feature
+
+- Add select utils `normalizerValue`, add state to the basic select field forcing it to be fully controlled @sneridagh
+
+### Bugfix
+
+- Improve consistency of `TokenWidget`'s use of the choice labels as "values" instead of internal uids assigned by `react-select`. @tiberiuichim
+- Solve glitch in async loading options in `AsyncSelect` components @sneridagh
+
+### Internal
+
+- Add tests for `Select` component, document the use cases propely @sneridagh
+- Upgrade `AsyncSelect` to a version compatible with `react-select` v4 @sneridagh
+- Upgrade to latest `react-select` @sneridagh
+
+## 13.10.0 (2021-08-18)
+
+### Feature
+
+- Increase clickable area of right-arrow in objectBrowser @iFlameing
+- Prevent form submit when clicking on BlockChooserButton @giuliaghisini
+- Make selectedItems Filter work in Contents folder @nileshgulia1
+
+### Bugfix
+
+- Fix SearchWidget search by path @giuliaghisini
+
+## 13.9.0 (2021-08-18)
+
+### Feature
+
+- Removed unnecessary set-cookies for the removal of the authentication cookie when the user is not logged in @mamico
+- Add additional classnames for the field wrappers and the fieldsets in forms, this helps to be more addressable in CSS if required @sneridagh
+
+### Bugfix
+
+- Add title/tooltip on Toolbar buttons @avoinea #1384
+- Slight CSS fix on `ObjectWidget` for supporting long add element button messages @sneridagh
+- Fix the babel view cancel button redirect @iFlameing
+- Show toast error when trying to delete item and it's not permitted @danielamormocea
+
+## 13.8.3 (2021-08-16)
+
+### Bugfix
+
+- Prevent form submit when clicking on BlockChooserButton @giuliaghisini
+- Add missing `publicURL` to the list of `window.env` serialized variables coming from the hosts configuration to complete the support for seamless mode @sneridagh
 
 ## 13.8.2 (2021-07-20)
 

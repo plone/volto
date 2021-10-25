@@ -49,12 +49,16 @@ export function persistAuthToken(store) {
 
     if (previousValue !== currentValue || initial) {
       if (!currentValue) {
-        cookie.remove('auth_token', { path: '/' });
+        if (previousValue) {
+          cookie.remove('auth_token', { path: '/' });
+        }
       } else {
-        cookie.save('auth_token', currentValue, {
-          path: '/',
-          expires: new Date(jwtDecode(currentValue).exp * 1000),
-        });
+        if (previousValue !== currentValue) {
+          cookie.save('auth_token', currentValue, {
+            path: '/',
+            expires: new Date(jwtDecode(currentValue).exp * 1000),
+          });
+        }
         const exp =
           (jwtDecode(store.getState().userSession.token).exp * 1000 -
             new Date().getTime()) *
