@@ -3,7 +3,11 @@ const path = require('path');
 
 const projectRootPath = fs.realpathSync('./project');    // __dirname
 const packageJson = require(path.join(projectRootPath, 'package.json'));
-const jsConfig = require(path.join(projectRootPath, 'jsconfig.json')).compilerOptions;
+
+let configFile = path.join(projectRootPath, 'jsconfig.json');
+if (fs.existsSync(path.join(projectRootPath, 'tsconfig.json')))
+  configFile = path.join(projectRootPath, 'tsconfig.json');
+const jsConfig = require(configFile).compilerOptions;
 
 const pathsConfig = jsConfig.paths;
 

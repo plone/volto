@@ -3,13 +3,13 @@
  * @module razzle.config
  */
 
-const jsConfig = require('./jsconfig').compilerOptions;
+const tsConfig = require('./tsconfig').compilerOptions;
 
-const pathsConfig = jsConfig.paths;
+const pathsConfig = tsConfig.paths;
 let voltoPath = './node_modules/@plone/volto';
 Object.keys(pathsConfig).forEach(pkg => {
   if (pkg === '@plone/volto') {
-    voltoPath = `./${jsConfig.baseUrl}/${pathsConfig[pkg][0]}`;
+    voltoPath = `./${tsConfig.baseUrl}/${pathsConfig[pkg][0]}`;
   }
 });
 
