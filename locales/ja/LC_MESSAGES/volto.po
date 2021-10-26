@@ -967,6 +967,21 @@ msgstr ""
 msgid "Facets"
 msgstr ""
 
+#: config/Blocks
+# defaultMessage: Facets on left side
+msgid "Facets on left side"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Facets on right side
+msgid "Facets on right side"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Facets on top
+msgid "Facets on top"
+msgstr ""
+
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Field
 msgid "Field"
@@ -1178,6 +1193,11 @@ msgstr "確かに正しいURLを入力したのにエラーになってしまう
 # defaultMessage: Image
 msgid "Image"
 msgstr "画像"
+
+#: config/Blocks
+# defaultMessage: Image gallery
+msgid "Image gallery"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Include this occurence
@@ -2446,6 +2466,11 @@ msgstr "件名"
 # defaultMessage: Success
 msgid "Success"
 msgstr "成功"
+
+#: config/Blocks
+# defaultMessage: Summary
+msgid "Summary"
+msgstr ""
 
 #: components/theme/LanguageSelector/LanguageSelector
 # defaultMessage: Switch to

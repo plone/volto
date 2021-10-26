@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2021-10-14T10:05:59.147Z\n"
+"POT-Creation-Date: 2021-10-19T10:19:38.333Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -961,6 +961,21 @@ msgstr ""
 msgid "Facets"
 msgstr ""
 
+#: config/Blocks
+# defaultMessage: Facets on left side
+msgid "Facets on left side"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Facets on right side
+msgid "Facets on right side"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Facets on top
+msgid "Facets on top"
+msgstr ""
+
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Field
 msgid "Field"
@@ -1171,6 +1186,11 @@ msgstr ""
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Image
 msgid "Image"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Image gallery
+msgid "Image gallery"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
@@ -2439,6 +2459,11 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Success
 msgid "Success"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Summary
+msgid "Summary"
 msgstr ""
 
 #: components/theme/LanguageSelector/LanguageSelector
