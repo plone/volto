@@ -13,6 +13,8 @@
 
 ### Internal
 
+- Micromanage and customize SemanticUI CSS bundle. Move theme import to top. @sneridagh
+
 ## 14.0.0-alpha.23 (2021-10-21)
 
 ### Feature
