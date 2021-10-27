@@ -44,7 +44,7 @@ describe('Object Browser Tests', () => {
     // then we should see a image
     cy.get('.block img')
       .should('have.attr', 'src')
-      .and('eq', '/my-page-1/my-image/@@images/image/listing');
+      .and('eq', '/my-page-1/my-image/@@images/image/icon');
   });
 
   it('As editor I can add the full url in search box in sidebar', () => {
@@ -61,7 +61,7 @@ describe('Object Browser Tests', () => {
     // then we should see a image
     cy.get('.block img')
       .should('have.attr', 'src')
-      .and('eq', '/my-page-1/my-image/@@images/image/listing');
+      .and('eq', '/my-page-1/my-image/@@images/image/icon');
   });
 
   it('As editor I get focus on search box in sidebar when clicking on lens icon', () => {
