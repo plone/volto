@@ -49,6 +49,7 @@ import {
   orderContent,
   sortContent,
   updateColumnsContent,
+  getLinkintegrity,
 } from '@plone/volto/actions';
 import Indexes, { defaultIndexes } from '@plone/volto/constants/Indexes';
 import {
@@ -118,6 +119,16 @@ const messages = defineMessages({
   deleteConfirm: {
     id: 'Do you really want to delete the following items?',
     defaultMessage: 'Do you really want to delete the following items?',
+  },
+  deleteLinkintegrity: {
+    id:
+      'By deleting these items, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that you remove these references first.',
+    defaultMessage:
+      'By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that you remove these references first.',
+  },
+  deleteLinkintegrityItemList: {
+    id: 'The following items will be affected:',
+    defaultMessage: 'The following items will be affected:',
   },
   deleteError: {
     id: 'The item could not be deleted.',
@@ -324,6 +335,8 @@ class Contents extends Component {
     ).isRequired,
     total: PropTypes.number.isRequired,
     pathname: PropTypes.string.isRequired,
+    getLinkintegrity: PropTypes.func.isRequired,
+    affectedLinks: PropTypes.array,
   };
 
   /**
@@ -426,6 +439,7 @@ class Contents extends Component {
   componentDidMount() {
     this.fetchContents();
     this.setState({ isClient: true });
+    //this.props.getLinkintegrity('something/something-else');
   }
 
   /**
@@ -1000,6 +1014,13 @@ class Contents extends Component {
    * @returns {undefined}
    */
   delete(event, { value }) {
+    let uids = [];
+    this.state.selected.forEach((item) => {
+      uids.push(
+        this.state.items.find((element) => element['@id'] === item).UID,
+      );
+    });
+    this.props.getLinkintegrity(uids);
     this.setState({
       showDelete: true,
       itemsToDelete: value ? [value] : this.state.selected,
@@ -1132,6 +1153,31 @@ class Contents extends Component {
                             </li>
                           ))}
                         </ul>
+                        {this.props.affectedLinks?.length > 0 && (
+                          <div>
+                            {this.props.intl.formatMessage(
+                              messages.deleteLinkintegrity,
+                            )}
+                            <ul className="content">
+                              {this.props.affectedLinks.map((item) => {
+                                return (
+                                  <li>
+                                    <a href={item['@id']}>
+                                      {item['title']} -{' '}
+                                      <a
+                                        href={item['@id'] + '/delete'}
+                                        rel="noopener noreferrer"
+                                        target="_blank"
+                                      >
+                                        [manage item in new window]
+                                      </a>
+                                    </a>
+                                  </li>
+                                );
+                              })}
+                            </ul>
+                          </div>
+                        )}
                       </div>
                     }
                     onCancel={this.onDeleteCancel}
@@ -1786,6 +1832,7 @@ export const __test__ = compose(
         updateRequest: store.content.update,
         objectActions: store.actions.actions.object,
         orderRequest: store.content.order,
+        affectedLinks: store.linkintegrity.result,
       };
     },
     {
@@ -1799,6 +1846,7 @@ export const __test__ = compose(
       orderContent,
       sortContent,
       updateColumnsContent,
+      getLinkintegrity,
     },
   ),
 )(Contents);
@@ -1827,6 +1875,7 @@ export default compose(
         updateRequest: store.content.update,
         objectActions: store.actions.actions.object,
         orderRequest: store.content.order,
+        affectedLinks: store.linkintegrity.result,
       };
     },
     {
@@ -1840,6 +1889,7 @@ export default compose(
       orderContent,
       sortContent,
       updateColumnsContent,
+      getLinkintegrity,
     },
   ),
   asyncConnect([

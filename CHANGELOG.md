@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Add link integrity check when deleting content objects
+
 ### Bugfix
 
 - Prevent ua-parser-js security breach. See: https://github.com/advisories/GHSA-pjwm-rvh2-c87w @thet

@@ -127,3 +127,4 @@ export {
   createWorkingCopy,
   removeWorkingCopy,
 } from './workingcopy/workingcopy';
+export { getLinkintegrity } from '@plone/volto/actions/linkintegrity/linkintegrity';

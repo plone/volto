@@ -13,8 +13,11 @@ import { Portal } from 'react-portal';
 import { Button, Container, List, Segment } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import qs from 'query-string';
-
-import { deleteContent, getContent } from '@plone/volto/actions';
+import {
+  deleteContent,
+  getContent,
+  getLinkintegrity,
+} from '@plone/volto/actions';
 import { Toolbar } from '@plone/volto/components';
 
 const messages = defineMessages({
@@ -46,6 +49,7 @@ class Delete extends Component {
   static propTypes = {
     deleteContent: PropTypes.func.isRequired,
     getContent: PropTypes.func.isRequired,
+    getLinkintegrity: PropTypes.func.isRequired,
     deleteRequest: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
@@ -55,6 +59,7 @@ class Delete extends Component {
       title: PropTypes.string,
     }),
     returnUrl: PropTypes.string,
+    affectedLinks: PropTypes.array,
   };
 
   /**
@@ -102,6 +107,7 @@ class Delete extends Component {
    */
   componentDidMount() {
     this.props.getContent(this.props.pathname.split('/delete')[0]);
+    this.props.getLinkintegrity([this.props.content.UID]);
     this.setState({ isClient: true });
   }
 
@@ -146,6 +152,41 @@ class Delete extends Component {
                   <List.Item>{this.props.content.title}</List.Item>
                 </List>
               </Segment>
+              {this.props.affectedLinks?.length > 0 && (
+                <>
+                  <Segment attached>
+                    <FormattedMessage
+                      id="By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that you remove these references first."
+                      defaultMessage="By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that you remove these references first."
+                    />
+                  </Segment>
+                  <Segment attached>
+                    <FormattedMessage
+                      id="This Page is referenced by the following items:"
+                      defaultMessage="This Page is referenced by the following items:"
+                    />
+                    <List bulleted>
+                      {this.props.affectedLinks[0].breaches.map((item) => {
+                        return (
+                          <List.Item>
+                            <a href={item['@id']}>
+                              {item['title']}
+                              <a
+                                href={item['@id'] + '/edit'}
+                                rel="noopener noreferrer"
+                                target="_blank"
+                              >
+                                {' '}
+                                - [edit in new window]
+                              </a>
+                            </a>
+                          </List.Item>
+                        );
+                      })}
+                    </List>
+                  </Segment>
+                </>
+              )}
               <Segment className="actions" clearing>
                 <Button
                   basic
@@ -197,7 +238,8 @@ export default compose(
       deleteRequest: state.content.delete,
       pathname: props.location.pathname,
       returnUrl: qs.parse(props.location.search).return_url,
+      affectedLinks: state.linkintegrity.result,
     }),
-    { deleteContent, getContent },
+    { deleteContent, getContent, getLinkintegrity },
   ),
 )(Delete);
