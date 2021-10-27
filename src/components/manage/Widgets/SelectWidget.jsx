@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { map, intersection } from 'lodash';
+import { map, differenceBy, unionBy } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 import {
   getVocabFromHint,
@@ -15,7 +15,11 @@ import {
   getVocabFromItems,
 } from '@plone/volto/helpers';
 import { FormFieldWrapper } from '@plone/volto/components';
-import { getVocabulary, getVocabularyTokenTitle } from '@plone/volto/actions';
+import {
+  getVocabulary,
+  getVocabularyTokenTitle,
+  resetVocaboulary,
+} from '@plone/volto/actions';
 import { normalizeValue } from './SelectUtils';
 
 import {
@@ -147,6 +151,7 @@ class SelectWidget extends Component {
     // TODO: also take into account this.props.defaultValue?
     selectedOption: normalizeValue(this.props.choices, this.props.value),
     search: '',
+    loadedOptions: [],
   };
 
   /**
@@ -155,23 +160,89 @@ class SelectWidget extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    if (
-      (!this.props.choices || this.props.choices?.length === 0) &&
-      this.props.vocabBaseUrl
-    ) {
+    //console.log('componentDidMount');
+    // if (
+    //   (!this.props.choices || this.props.choices?.length === 0) &&
+    //   this.props.vocabBaseUrl
+    // ) {
+    //   this.props.getVocabulary(this.props.vocabBaseUrl);
+    // }
+    this.props.resetVocaboulary(this.props.vocabBaseUrl);
+    if (this.props.vocabBaseUrl) {
       this.props.getVocabulary(this.props.vocabBaseUrl);
     }
   }
 
+  componentWillUnmount() {
+    // proper unload
+    //  console.log('componentWillUnmount');
+    this.props.resetVocaboulary(this.props.vocabBaseUrl);
+  }
+
   componentDidUpdate() {
+    // console.log(
+    //   'componentDidUpdate',
+    //   this.state.selectedOption,
+    //   this.props.choices,
+    //   this.props.value,
+    //   'loadedOptions',
+    //   this.state.loadedOptions,
+    // );
+
+    if (this.props.value && !this.state.selectedOption && !this.props.loading) {
+      if (this.state.loadedOptions?.length > 0) {
+        let selectedOption = normalizeValue(
+          this.state.loadedOptions,
+          this.props.value,
+        );
+        // console.log('selectedOption', selectedOption);
+        if (normalizeValue(this.props.choices, this.props.value)) {
+          this.setState({
+            selectedOption: selectedOption,
+          });
+        } else {
+          // console.log('do get vocab for next page');
+          this.props.getVocabulary(
+            this.props.vocabBaseUrl,
+            null,
+            this.state.loadedOptions?.length,
+          );
+        }
+      }
+    }
+
+    // console.log(
+    //   '*** choicess:',
+    //   this.props.choices,
+    //   'loading: ',
+    //   this.props.loading,
+    //   'loaded: ',
+    //   this.state.loadedOptions,
+    //   'itemsTotal: ',
+    //   this.props.itemsTotal,
+    // );
+
     if (
-      !this.state.selectedOption &&
-      this.props.value &&
-      this.props.choices?.length > 0
+      this.props.choices?.length > 0 &&
+      !this.props.loading &&
+      this.state.loadedOptions?.length < this.props.itemsTotal
     ) {
-      this.setState({
-        selectedOption: normalizeValue(this.props.choices, this.props.value),
-      });
+      let loadedOptions = unionBy(
+        this.state.loadedOptions,
+        this.props.choices,
+        'value',
+      );
+      // console.log(
+      //   '--- state: ',
+      //   this.state.loadedOptions.length,
+      //   'calc: ',
+      //   loadedOptions.length,
+      //   'choices:',
+      //   this.props.choices,
+      // );
+      if (loadedOptions.length !== this.state.loadedOptions?.length) {
+        this.setState({ loadedOptions: loadedOptions });
+      }
     }
   }
 
@@ -184,19 +255,27 @@ class SelectWidget extends Component {
    * @returns {undefined}
    */
   loadOptions = (search, previousOptions, additional) => {
-    let hasMore = this.props.itemsTotal > previousOptions.length;
+    let showMore = this.props.itemsTotal > previousOptions.length;
+    let hasMore = this.props.itemsTotal > this.state.loadedOptions.length;
+    // this.props.itemsTotal >
+    // previousOptions.length + this.props.choices.length;
+
     const offset = this.state.search !== search ? 0 : additional.offset;
     this.setState({ search });
 
-    if (hasMore || this.state.search !== search) {
-      this.props.getVocabulary(this.props.vocabBaseUrl, search, offset);
+    if (showMore || this.state.search !== search) {
+      if (hasMore) {
+        this.props.getVocabulary(this.props.vocabBaseUrl, search, offset);
+      }
+
+      let diff = differenceBy(
+        this.state.loadedOptions,
+        previousOptions,
+        'value',
+      );
 
       return {
-        options:
-          intersection(previousOptions, this.props.choices).length ===
-          this.props.choices.length
-            ? []
-            : this.props.choices,
+        options: diff,
         hasMore: hasMore,
         additional: {
           offset: offset === additional.offset ? offset + 25 : offset,
@@ -239,7 +318,6 @@ class SelectWidget extends Component {
               isDisabled={disabled}
               className="react-select-container"
               classNamePrefix="react-select"
-              options={this.props.choices || []}
               styles={customSelectStyles}
               theme={selectTheme}
               components={{ DropdownIndicator, Option }}
@@ -343,6 +421,6 @@ export default compose(
       }
       return {};
     },
-    { getVocabulary, getVocabularyTokenTitle },
+    { getVocabulary, getVocabularyTokenTitle, resetVocaboulary },
   ),
 )(SelectWidget);

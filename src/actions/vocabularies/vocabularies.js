@@ -6,6 +6,7 @@
 import {
   GET_VOCABULARY,
   GET_VOCABULARY_TOKEN_TITLE,
+  RESET_VOCABOULARY,
 } from '@plone/volto/constants/ActionTypes';
 import config from '@plone/volto/registry';
 
@@ -62,5 +63,18 @@ export function getVocabularyTokenTitle(vocabNameOrURL, token = null) {
       op: 'get',
       path: `/@vocabularies/${vocabulary}?token=${token}`,
     },
+  };
+}
+
+/**
+ * Reset vocaboulary function
+ * @function resetVocaboulary
+ * @param {string} vocabNameOrURL Full API URL of vocabulary or vocabulary name
+ * @returns {Object} Get vocaboulary action
+ */
+export function resetVocaboulary(vocabNameOrURL = null) {
+  return {
+    type: RESET_VOCABOULARY,
+    vocabulary: vocabNameOrURL,
   };
 }

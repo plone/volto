@@ -160,12 +160,18 @@ class ArrayWidget extends Component {
    * @returns {undefined}
    */
   loadOptions = (search, previousOptions, additional) => {
-    let hasMore = this.props.itemsTotal > previousOptions.length;
+    let showMore = this.props.itemsTotal > previousOptions.length;
+    let hasMore =
+      this.props.itemsTotal >
+      previousOptions.length + this.props.choices.length;
+
     const offset = this.state.search !== search ? 0 : additional.offset;
     this.setState({ search });
 
-    if (hasMore || this.state.search !== search) {
-      this.props.getVocabulary(this.vocabBaseUrl, search, offset);
+    if (showMore || this.state.search !== search) {
+      if (hasMore) {
+        this.props.getVocabulary(this.vocabBaseUrl, search, offset);
+      }
 
       return {
         options:

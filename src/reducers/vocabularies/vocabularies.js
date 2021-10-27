@@ -6,6 +6,7 @@
 import {
   GET_VOCABULARY,
   GET_VOCABULARY_TOKEN_TITLE,
+  RESET_VOCABOULARY,
 } from '@plone/volto/constants/ActionTypes';
 
 const initialState = {};
@@ -73,6 +74,13 @@ export default function vocabularies(state = initialState, action = {}) {
           loaded: true,
           loading: !!(vocabState.loading - 1),
           [action.token]: action.result.items[0].title,
+        },
+      };
+    case RESET_VOCABOULARY:
+      return {
+        ...state,
+        [action.vocabulary]: {
+          items: null,
         },
       };
     default:

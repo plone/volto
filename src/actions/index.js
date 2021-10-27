@@ -100,6 +100,7 @@ export {
 export {
   getVocabulary,
   getVocabularyTokenTitle,
+  resetVocaboulary,
 } from '@plone/volto/actions/vocabularies/vocabularies';
 export {
   getWorkflow,
