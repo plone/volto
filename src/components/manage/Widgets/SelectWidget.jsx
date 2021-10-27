@@ -188,6 +188,10 @@ class SelectWidget extends Component {
     //   'loadedOptions',
     //   this.state.loadedOptions,
     // );
+    console.log('didpudate', this.state.search, this.state.loadedOptions);
+    if (this.state.search && this.state.loadedOptions.length > 0) {
+      this.setState({ loadedOptions: [] });
+    }
 
     if (this.props.value && !this.state.selectedOption && !this.props.loading) {
       if (this.state.loadedOptions?.length > 0) {
@@ -227,21 +231,25 @@ class SelectWidget extends Component {
       !this.props.loading &&
       this.state.loadedOptions?.length < this.props.itemsTotal
     ) {
-      let loadedOptions = unionBy(
-        this.state.loadedOptions,
-        this.props.choices,
-        'value',
-      );
-      // console.log(
-      //   '--- state: ',
-      //   this.state.loadedOptions.length,
-      //   'calc: ',
-      //   loadedOptions.length,
-      //   'choices:',
-      //   this.props.choices,
-      // );
-      if (loadedOptions.length !== this.state.loadedOptions?.length) {
-        this.setState({ loadedOptions: loadedOptions });
+      if (this.state.search?.length > 0) {
+        this.setState({ loadedOptions: this.props.choices });
+      } else {
+        let loadedOptions = unionBy(
+          this.state.loadedOptions,
+          this.props.choices,
+          'value',
+        );
+        // console.log(
+        //   '--- state: ',
+        //   this.state.loadedOptions.length,
+        //   'calc: ',
+        //   loadedOptions.length,
+        //   'choices:',
+        //   this.props.choices,
+        // );
+        if (loadedOptions.length !== this.state.loadedOptions?.length) {
+          this.setState({ loadedOptions: loadedOptions });
+        }
       }
     }
   }
@@ -255,6 +263,7 @@ class SelectWidget extends Component {
    * @returns {undefined}
    */
   loadOptions = (search, previousOptions, additional) => {
+    console.log('loadoptions', search, this.state.search);
     let showMore = this.props.itemsTotal > previousOptions.length;
     let hasMore = this.props.itemsTotal > this.state.loadedOptions.length;
     // this.props.itemsTotal >
@@ -263,19 +272,24 @@ class SelectWidget extends Component {
     const offset = this.state.search !== search ? 0 : additional.offset;
     this.setState({ search });
 
-    if (showMore || this.state.search !== search) {
-      if (hasMore) {
+    const searchByText = this.state.search !== search;
+
+    if (showMore || searchByText) {
+      if (hasMore || searchByText) {
         this.props.getVocabulary(this.props.vocabBaseUrl, search, offset);
       }
-
-      let diff = differenceBy(
+      let options = differenceBy(
         this.state.loadedOptions,
         previousOptions,
         'value',
       );
 
+      if (searchByText) {
+        options = this.props.choices;
+      }
+
       return {
-        options: diff,
+        options: options,
         hasMore: hasMore,
         additional: {
           offset: offset === additional.offset ? offset + 25 : offset,
@@ -294,7 +308,7 @@ class SelectWidget extends Component {
    * @returns {undefined}
    */
   handleChange = (selectedOption) => {
-    this.setState({ selectedOption });
+    this.setState({ selectedOption, search: '' });
     this.props.onChange(this.props.id, selectedOption.value);
   };
 
