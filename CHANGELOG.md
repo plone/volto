@@ -16,7 +16,20 @@
 - Improve consistency of `TokenWidget`'s use of the choice labels as "values" instead of internal uids assigned by `react-select`. @tiberiuichim
 
 - Prevent form submit when clicking on BlockChooserButton @giuliaghisini
+- Prevent ua-parser-js security breach. See: https://github.com/advisories/GHSA-pjwm-rvh2-c87w @thet
+- Fix storybook errors in the connected components, api is undefined. Using now a mock of the store instead of the whole thing @sneridagh
+
 ### Internal
+
+## 14.0.0-alpha.23 (2021-10-21)
+
+### Feature
+
+- Enable to be able to use the internal proxy in production as well @sneridagh
+
+### Bugfix
+
+- Fix loading of cookie on SSR for certain requests, revert slight change in how they are loaded introduced in alpha 16 @sneridagh
 
 ## 14.0.0-alpha.22 (2021-10-20)
 

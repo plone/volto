@@ -68,9 +68,9 @@ const server = express()
   });
 
 const middleware = (config.settings.expressMiddleware || []).filter((m) => m);
-if (middleware.length) server.use('/', middleware);
 
 server.all('*', setupServer);
+if (middleware.length) server.use('/', middleware);
 
 function setupServer(req, res, next) {
   const api = new Api(req);
@@ -131,7 +131,7 @@ function setupServer(req, res, next) {
       .send(`<!doctype html> ${renderToString(errorPage)}`);
   }
 
-  if (!__DEVELOPMENT__ && !process.env.RAZZLE_API_PATH && req.headers.host) {
+  if (!process.env.RAZZLE_API_PATH && req.headers.host) {
     req.app.locals.detectedHost = `${
       req.headers['x-forwarded-proto'] || req.protocol
     }://${req.headers.host}`;

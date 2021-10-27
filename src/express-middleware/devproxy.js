@@ -11,11 +11,7 @@ import { parse as parseUrl } from 'url';
 
 const filter = function (pathname, req) {
   // This is the proxy to the API in case the accept header is 'application/json'
-  return (
-    __DEVELOPMENT__ &&
-    config.settings.devProxyToApiPath &&
-    pathname.startsWith('/++api++')
-  );
+  return config.settings.devProxyToApiPath && pathname.startsWith('/++api++');
 };
 
 let _env = null;
