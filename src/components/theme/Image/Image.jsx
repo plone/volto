@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { getImageAttributes } from '@plone/volto/helpers';
 
@@ -23,21 +23,46 @@ const Image = ({
   ...imageProps
 }) => {
   const { src, srcSet } = getImageAttributes(image, { maxSize, useOriginal });
-  const [isClient, setIsClient] = useState(false);
+  const imageRef = useRef();
   const [srcset, setSrcset] = useState(
     critical && srcSet ? srcSet.join(', ') : null,
   );
   const hasSrcSet = srcset?.length;
+  const imageHasLoaded = imageRef?.current?.complete;
 
   useEffect(() => {
-    setIsClient(true);
-    if (!srcset && srcSet?.length > 0) setSrcset(srcSet.join(', '));
-  }, [srcSet, hasSrcSet, srcset]);
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (
+            entries[0].isIntersecting === true &&
+            imageHasLoaded &&
+            !srcset &&
+            srcSet?.length > 0
+          ) {
+            setTimeout(() => {
+              setSrcset(
+                srcSet
+                  .filter(
+                    (s) =>
+                      parseInt(s.split(' ')[1].replace('w', ''), 10) <=
+                      imageRef.current.width,
+                  )
+                  .join(', '),
+              );
+            }, 600);
+          }
+        },
+        { threshold: [0] },
+      );
+      observer.observe(imageRef.current);
+    }
+  }, [imageHasLoaded, srcSet, srcset]);
 
   return (
     <>
       <picture>
-        {srcset && (isClient || critical) && <source srcSet={srcset} />}
+        {hasSrcSet && <source srcSet={srcset} />}
         <img
           src={src}
           alt={alt}
@@ -46,6 +71,7 @@ const Image = ({
           loading="lazy"
           style={{ width: '100%', objectFit: 'cover' }}
           {...imageProps}
+          ref={imageRef}
         />
       </picture>
       {!critical && (
@@ -69,13 +95,20 @@ const Image = ({
 };
 
 Image.propTypes = {
-  image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
   alt: PropTypes.string,
   className: PropTypes.string,
   role: PropTypes.string,
   critical: PropTypes.bool,
   maxSize: PropTypes.number,
   useOriginal: PropTypes.bool,
+};
+
+Image.defaultProps = {
+  alt: '',
+  role: 'img',
+  critical: false,
+  useOriginal: false,
 };
 
 export default Image;
