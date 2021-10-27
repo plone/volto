@@ -39,7 +39,7 @@ const InlineForm = (props) => {
     headerActions,
     footer,
     focusIndex,
-    onChangeFormData,
+    onChangeBlock,
     intl,
   } = props;
   const _ = intl.formatMessage;
@@ -76,7 +76,7 @@ const InlineForm = (props) => {
   };
 
   React.useEffect(() => {
-    onChangeFormData && onChangeFormData(setInitialData());
+    onChangeBlock && onChangeBlock(block, { ...setInitialData() });
     /* eslint-disable-next-line */
   }, []);
 
