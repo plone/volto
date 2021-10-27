@@ -135,7 +135,8 @@ Volto is actively developed since 2017 and used in production since 2018 on the 
 - [Comune di Medolla](http://www.comune.medolla.mo.it/) (Website of the Municipality of Medolla. Developed by [RedTurtle](https://redturtle.it), 2021)
 - [Camera di Commercio dell'Umbria](www.umbria.camcom.it) (Website Chamber of Commerce of umbria. Developed by [RedTurtle](https://redturtle.it), 2021)
 - [Biblioteche Pianura Est](https://bibest.it) (Website of the Associated libraries of eastern plain. Developed by [RedTurtle](https://redturtle.it), 2021)
-- Please create a new [issue](https://github.com/plone/volto/issues/new) or [pull request](https://github.com/plone/volto/pulls) to add your Volto-site here!
+- [RawMaterial](https://rawmaterial.it/en) (Company's website. Developed by [RawMaterial](https://rawmaterial.it/en), 2021)
+-  Please create a new [issue](https://github.com/plone/volto/issues/new) or [pull request](https://github.com/plone/volto/pulls) to add your Volto-site here!
 
 
 ## Documentation
