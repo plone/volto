@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "14.0.0-alpha.10",
+  "version": "14.0.0-alpha.23",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -60,7 +60,7 @@
     "cypress:run:core-sandbox": "NODE_ENV=production CYPRESS_API=plone cypress run --config integrationFolder='cypress/tests/core-sandbox'",
     "cypress:run:multilingual": "NODE_ENV=production CYPRESS_API=plone cypress run --config integrationFolder='cypress/tests/multilingual'",
     "cypress:run:workingCopy": "NODE_ENV=production CYPRESS_API=plone cypress run --config integrationFolder='cypress/tests/workingCopy'",
-    "cypress:run:guillotina": "NODE_ENV=production CYPRESS_API=guillotina cypress run --config-file cypress/cypress.guillotina.json",
+    "cypress:run:guillotina": "NODE_ENV=production CYPRESS_API=guillotina cypress run --config integrationFolder='cypress/tests/guillotina'",
     "cy:install": "cypress install",
     "cy:test:fixture:setup": "node cypress/support/reset-fixture.js",
     "cy:test:fixture:teardown": "node cypress/support/reset-fixture.js teardown",
@@ -73,7 +73,7 @@
     "ci:start-frontend-multilingual": "RAZZLE_TESTING_ADDONS=core-sandbox:multilingualFixture RAZZLE_API_PATH=http://localhost:55001/plone yarn build && start-test start:prod http://localhost:3000 cypress:run:multilingual",
     "ci:start-frontend-workingCopy": "RAZZLE_TESTING_ADDONS=core-sandbox:workingCopyFixture RAZZLE_API_PATH=http://localhost:55001/plone yarn build && start-test start:prod http://localhost:3000 cypress:run:workingCopy",
     "ci:start-project-frontend": "cd my-volto-app && RAZZLE_API_PATH=http://localhost:55001/plone yarn build && start-test start:prod http://localhost:3000 'cd .. && yarn cypress:run'",
-    "ci:start-frontend-guillotina": "RAZZLE_API_PATH=http://localhost:8081/db/web yarn build && start-test start:prod http://localhost:3000 cypress:run:guillotina",
+    "ci:start-frontend-guillotina": "RAZZLE_TESTING_ADDONS=volto-guillotina RAZZLE_API_PATH=http://localhost:8081/db/web RAZZLE_LEGACY_TRAVERSE=true yarn build && start-test start:prod http://localhost:3000 cypress:run:guillotina",
     "ci:cypress:run": "start-test ci:start-api-plone http-get://localhost:55001/plone ci:start-frontend",
     "ci:cypress:project:run": "start-test ci:start-api-plone http-get://localhost:55001/plone ci:start-project-frontend",
     "ci:cypress:run:core-sandbox": "start-test ci:start-api-plone http-get://localhost:55001/plone ci:start-frontend-core-sandbox",
@@ -247,7 +247,7 @@
     "@loadable/component": "5.14.1",
     "@loadable/server": "5.14.0",
     "@loadable/webpack-plugin": "5.14.0",
-    "@plone/scripts": "file:./packages/scripts",
+    "@plone/scripts": "1.0.3",
     "@sentry/browser": "5.12.1",
     "@sentry/integrations": "5.27.3",
     "@sentry/node": "5.12.3",
@@ -273,6 +273,7 @@
     "cypress": "7.3.0",
     "cypress-axe": "0.12.2",
     "cypress-file-upload": "5.0.7",
+    "debug": "4.3.2",
     "dependency-graph": "0.10.0",
     "detect-browser": "5.1.0",
     "diff": "3.5.0",
@@ -301,7 +302,7 @@
     "hamburgers": "1.1.3",
     "handlebars": "4.7.7",
     "history": "4.10.1",
-    "http-proxy-middleware": "1.0.4",
+    "http-proxy-middleware": "2.0.1",
     "husky": "4.2.5",
     "identity-obj-proxy": "3.0.0",
     "jest-css-modules": "1.1.0",
@@ -403,14 +404,19 @@
     "identity-obj-proxy": "3.0.0",
     "jest-environment-jsdom-sixteen": "1.0.3",
     "react-is": "^16.13.1",
-    "tmp": "0.2.1"
+    "tmp": "0.2.1",
+    "use-trace-update": "1.3.2"
+  },
+  "resolutions-comments": {
+    "ua-parser-js": "See https://github.com/faisalman/ua-parser-js/issues/536"
   },
   "resolutions": {
     "http-proxy": "^1.18.1",
     "draft-js/immutable": "3.8.2",
     "draft-js-block-breakout-plugin/immutable": "3.8.2",
     "draft-js-inline-toolbar-plugin/immutable": "3.8.2",
-    "draft-js-plugins-editor/immutable": "3.8.2"
+    "draft-js-plugins-editor/immutable": "3.8.2",
+    "ua-parser-js": "0.7.28"
   },
   "volta": {
     "node": "14.17.0",

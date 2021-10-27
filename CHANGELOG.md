@@ -10,7 +10,152 @@
 
 ### Bugfix
 
+- Prevent ua-parser-js security breach. See: https://github.com/advisories/GHSA-pjwm-rvh2-c87w @thet
+- Fix storybook errors in the connected components, api is undefined. Using now a mock of the store instead of the whole thing @sneridagh
+
 ### Internal
+
+## 14.0.0-alpha.23 (2021-10-21)
+
+### Feature
+
+- Enable to be able to use the internal proxy in production as well @sneridagh
+
+### Bugfix
+
+- Fix loading of cookie on SSR for certain requests, revert slight change in how they are loaded introduced in alpha 16 @sneridagh
+
+## 14.0.0-alpha.22 (2021-10-20)
+
+### Breaking
+
+- Improve mobile navigation menu with a nicer interaction and a fixed overlay with a drawer (customizable via CSSTransitionGroup) animation @sneridagh
+
+### Internal
+
+- Add locales to existing block variations @sneridagh
+
+## 14.0.0-alpha.21 (2021-10-17)
+
+### Feature
+
+- In the search block, allow editors to specify the sort on criteria.
+  @tiberiuichim
+- Updated Volto production sites list @giuliaghisini
+
+### Bugfix
+
+- Bugfixes to search block. By default search block, when empty, makes a simple
+  query to the nav root, to list all content. Fix reading search text from URL.
+  Implement a simple compression of URL. Don't count searched text as filter.
+  Fix an edge case with showSearchInput in schema. Rename title to Section
+  Title in facet column settings. Avoid double calls to querystring endpoint.
+  @tiberiuichim
+- Use correct shade of black in Plone logo @sneridagh
+
+## 14.0.0-alpha.20 (2021-10-15)
+
+### Breaking
+
+- Revisited, rethought and refactored Seamless mode Seamless mode @sneridagh
+  For more information, please read the deploying guide
+  https://docs.voltocms.com/deploying/seamless-mode/
+
+and the upgrade guide
+https://docs.voltocms.com/upgrade-guide/
+
+### Bugfix
+
+- Fixed SelectWidget: when there was a selected value, the selection was lost when the tab was changed. @giuliaghisini
+
+## 14.0.0-alpha.19 (2021-10-15)
+
+### Feature
+
+- Make VocabularyTermsWidget orderable @ksuess
+- Get widget by tagged values @ksuess
+
+## 14.0.0-alpha.18 (2021-10-11)
+
+### Internal
+
+- Re-release last release, since it does not show on NPM @sneridagh
+
+## 14.0.0-alpha.17 (2021-10-11)
+
+### Breaking
+
+- Fix logout action using the backend @logout endpoint, effectively removing the `__ac` cookie. It is recommended to upgrade to the latest p.restapi version to take full advantage of this feature @sneridagh
+
+### Bugfix
+
+- Add spinner on sharing View Button @iRohitSingh
+
+## 14.0.0-alpha.16 (2021-10-10)
+
+### Bugfix
+
+- Yet another attempt at fixing devproxy. Split the devproxy into a separate
+  express middleware. Introduce the `DEBUG_HPM` env var to make the devproxy
+  verbose @tiberiuichim
+
+## 14.0.0-alpha.15 (2021-10-10)
+
+### Breaking
+
+- Adjusted main `Logo` component styling @sneridagh
+
+For more information, please read the upgrade guide
+https://docs.voltocms.com/upgrade-guide/
+
+### Feature
+
+- Add `volto-guillotina` addon to core @sneridagh
+
+### Internal
+
+- Improved developer documentation. Proof read several chapters, most importantly the upgrade guide @ichim-david
+- Use Plone logo (Closes #2632) @ericof
+- Updated Brazilian Portuguese translations @ericof
+- Footer: Point to plone.org instead of plone.com @ericof
+- Fix "make start-frontend" @tisto
+- Update all the tests infrastructure for the new `volto-guillotina` addon @sneridagh
+
+## 14.0.0-alpha.14 (2021-10-01)
+
+### Bugfix
+
+- Get `blocks` and `blocks_layout` defaults from existing behavior when enabling TTW editable DX Layout @avoinea
+
+### Internal
+
+- Add development dependency on use-trace-update, useful for performance debugging @tiberiuichim
+- Upgrade to `@plone/scripts` 1.0.3 @sneridagh
+
+## 14.0.0-alpha.13 (2021-09-30)
+
+### Feature
+
+- Add the new search block @tiberiuichim @kreafox @sneridagh
+
+## 14.0.0-alpha.12 (2021-09-29)
+
+### Bugfix
+
+- Show correct fieldname and not internal field id in Toast error messages on Add/Edit forms @jackahl
+- sitemap.xml.gz obeys Plone Search settings @erral
+
+### Internal
+
+- Use plone.volto instead of kitconcept.volto @tisto
+- Silence customization errors, they are now behind a `debug` library namespace @sneridagh
+- Remove recently introduced `RAZZLE_I18NDEBUGMODE` in favor of a `debug` library namespace @sneridagh
+
+## 14.0.0-alpha.11 (2021-09-25)
+
+### Internal
+
+- Use released @plone/scripts, since the builds are broken if it's a local package @sneridagh
 
 ## 14.0.0-alpha.10 (2021-09-25)
 

@@ -7,6 +7,7 @@ import { ConnectedRouter } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
 import { ReduxAsyncConnect } from '@plone/volto/helpers/AsyncConnect';
 import { loadableReady } from '@loadable/component';
+import debug from 'debug';
 import routes from '~/routes';
 import config from '@plone/volto/registry';
 import '~/theme';
@@ -22,10 +23,7 @@ export const history = createBrowserHistory();
 initSentry(Sentry);
 
 function reactIntlErrorHandler(error) {
-  if (config.settings.i18nDebugMode) {
-    /* eslint no-console: 0 */
-    console.info(error);
-  }
+  debug('i18n')(error);
 }
 
 export default () => {
@@ -42,12 +40,17 @@ export default () => {
     window.settings = config.settings;
   }
 
-  // If Host header is present (so window.env.apiPath is)
+  // Setup the client registry from the SSR response values, presents in the `window.env`
+  // variable. This is key for the Seamless mode to work.
   if (window.env.apiPath) {
     config.settings.apiPath = window.env.apiPath;
   }
   if (window.env.publicURL) {
     config.settings.publicURL = window.env.publicURL;
+  }
+  // TODO: To be removed when the use of the legacy traverse is deprecated.
+  if (window.env.RAZZLE_LEGACY_TRAVERSE) {
+    config.settings.legacyTraverse = true;
   }
 
   loadableReady(() => {
