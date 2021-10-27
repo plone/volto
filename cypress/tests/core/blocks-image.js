@@ -107,13 +107,13 @@ describe('Blocks Tests', () => {
       subjectType: 'input',
       encoding: 'utf8',
     });
-    cy.waitForResourceToLoad('image.png/@@images/image/listing');
+    cy.waitForResourceToLoad('image.png/@@images/image');
     cy.get('#toolbar-save').click();
 
     // then image src must be equal to image name
     cy.get('.block img')
       .should('have.attr', 'src')
-      .and('eq', '/my-page/image.png/@@images/image/listing');
+      .and('eq', '/my-page/image.png/@@images/image/icon');
 
     cy.get('.block img')
       .should('be.visible')
