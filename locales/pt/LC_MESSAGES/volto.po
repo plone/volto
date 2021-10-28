@@ -283,6 +283,11 @@ msgstr "Navegue no website, largue uma imagem ou escreva um URL"
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr "Por predefinição, as permissões do contentor deste item são herdadas. Se desactivar isto, apenas serão válidas as permissões de partilha explicitamente definidas. No resumo, o símbolo {inherited} indica um valor herdado. Do mesmo modo, o símbolo {global} indica um papel global, que é gerido pelo administrador do sítio."
 
+#: components/manage/Contents/Contents
+# defaultMessage: By deleting these items, you will break links that exist in the items listed below. We recommend that you remove these references first.
+msgid "By deleting these items, you will break links that exist in the items listed below. We recommend that you remove these references first."
+msgstr ""
+
 #: components/manage/Delete/Delete
 # defaultMessage: By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that you remove these references first.
 msgid "By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that you remove these references first."
@@ -1934,6 +1939,11 @@ msgstr ""
 msgid "Reduce complexity"
 msgstr "Reduzir complexidade"
 
+#: components/manage/Contents/Contents
+# defaultMessage: Referenced by:
+msgid "Referenced by:"
+msgstr ""
+
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
 #: components/theme/Register/Register
@@ -2607,7 +2617,6 @@ msgstr "Ocorreram alguns erros."
 msgid "Third"
 msgstr ""
 
-#: components/manage/Contents/Contents
 #: components/manage/Delete/Delete
 # defaultMessage: This Page is referenced by the following items:
 msgid "This Page is referenced by the following items:"

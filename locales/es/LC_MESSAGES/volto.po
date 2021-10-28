@@ -285,6 +285,11 @@ msgstr "Navegue el contenido, arrastre un imagen o ingrese una dirección URL"
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr "Por defecto, los permisos desde el contenedor de este elemento son heredados. Si usted deshabilita esta opción, solamente los permisos compartidos definidos explícitamente serán validos. En la vista general, el símbolo {inherited} indica un valor heredado. Similarmente, el símbolo {global} indica un rol global, el cual es administrado por el administrador del sitio."
 
+#: components/manage/Contents/Contents
+# defaultMessage: By deleting these items, you will break links that exist in the items listed below. We recommend that you remove these references first.
+msgid "By deleting these items, you will break links that exist in the items listed below. We recommend that you remove these references first."
+msgstr ""
+
 #: components/manage/Delete/Delete
 # defaultMessage: By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that you remove these references first.
 msgid "By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that you remove these references first."
@@ -1936,6 +1941,11 @@ msgstr "La repetición finaliza el"
 msgid "Reduce complexity"
 msgstr "Reducir complejidad"
 
+#: components/manage/Contents/Contents
+# defaultMessage: Referenced by:
+msgid "Referenced by:"
+msgstr ""
+
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
 #: components/theme/Register/Register
@@ -2609,7 +2619,6 @@ msgstr "Hay algunos errores."
 msgid "Third"
 msgstr "Tercero"
 
-#: components/manage/Contents/Contents
 #: components/manage/Delete/Delete
 # defaultMessage: This Page is referenced by the following items:
 msgid "This Page is referenced by the following items:"
