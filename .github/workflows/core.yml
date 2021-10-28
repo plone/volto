@@ -32,6 +32,7 @@ jobs:
       - run: yarn install --frozen-lockfile
 
       # node test
+      - run: yarn i18n
       - run: yarn test:ci
 
       # # cypress acceptance tests
