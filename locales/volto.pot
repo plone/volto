@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2021-10-19T10:19:38.333Z\n"
+"POT-Creation-Date: 2021-10-28T09:55:11.185Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -182,6 +182,16 @@ msgstr ""
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Alt text
 msgid "Alt text"
+msgstr ""
+
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: Leave empty if the image is purely decorative.
+msgid "Alt text hint"
+msgstr ""
+
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: Describe the purpose of the image.
+msgid "Alt text hint link text"
 msgstr ""
 
 #: components/manage/Toolbar/More
