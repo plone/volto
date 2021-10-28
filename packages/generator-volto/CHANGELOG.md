@@ -5,8 +5,7 @@
 ### Added
 
 - Add prettier and lint scripts to generator @tisto
-
-### Changes
+- Node 16 support for 4.x.x branch @sneridagh
 
 ## 4.3.1 (2021-05-07)
 
