@@ -128,15 +128,15 @@ const ImageSidebar = ({
                 iconAction={
                   data.url
                     ? () => {
-                      resetSubmitUrl();
-                      onChangeBlock(block, {
-                        ...data,
-                        url: '',
-                      });
-                    }
+                        resetSubmitUrl();
+                        onChangeBlock(block, {
+                          ...data,
+                          url: '',
+                        });
+                      }
                     : () => openObjectBrowser()
                 }
-                onChange={() => { }}
+                onChange={() => {}}
               />
             )}
             {!isInternalURL(data.url) && (
@@ -154,7 +154,7 @@ const ImageSidebar = ({
                     url: '',
                   });
                 }}
-                onChange={() => { }}
+                onChange={() => {}}
               />
             )}
             <TextWidget
@@ -239,8 +239,8 @@ const ImageSidebar = ({
               {activeAccIndex === 0 ? (
                 <Icon name={upSVG} size="20px" />
               ) : (
-                  <Icon name={downSVG} size="20px" />
-                )}
+                <Icon name={downSVG} size="20px" />
+              )}
             </Accordion.Title>
             <Accordion.Content active={activeAccIndex === 0}>
               <TextWidget
@@ -252,11 +252,11 @@ const ImageSidebar = ({
                 iconAction={
                   data.href
                     ? () => {
-                      onChangeBlock(block, {
-                        ...data,
-                        href: '',
-                      });
-                    }
+                        onChangeBlock(block, {
+                          ...data,
+                          href: '',
+                        });
+                      }
                     : () => openObjectBrowser({ mode: 'link' })
                 }
                 onChange={(name, value) => {
