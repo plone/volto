@@ -10,6 +10,7 @@
 - Image block:
     - When uploading an image or selecting that from the object browser, Image block will set an empty string as alternative text @nzambello
     - Adds a description to the alt-tag with w3c explaination @nzambello
+- Support Node 16 @timo
 
 ### Bugfix
 
