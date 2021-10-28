@@ -122,13 +122,13 @@ const messages = defineMessages({
   },
   deleteLinkintegrity: {
     id:
-      'By deleting these items, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that you remove these references first.',
+      'By deleting these items, you will break links that exist in the items listed below. We recommend that you remove these references first.',
     defaultMessage:
-      'By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that you remove these references first.',
+      'By deleting these items, you will break links that exist in the items listed below. We recommend that you remove these references first.',
   },
   deleteLinkintegrityItemList: {
-    id: 'The following items will be affected:',
-    defaultMessage: 'The following items will be affected:',
+    id: 'Referenced by:',
+    defaultMessage: 'Referenced by:',
   },
   deleteError: {
     id: 'The item could not be deleted.',
@@ -439,7 +439,6 @@ class Contents extends Component {
   componentDidMount() {
     this.fetchContents();
     this.setState({ isClient: true });
-    //this.props.getLinkintegrity('something/something-else');
   }
 
   /**
@@ -1155,24 +1154,49 @@ class Contents extends Component {
                         </ul>
                         {this.props.affectedLinks?.length > 0 && (
                           <div>
+                            <br />
                             {this.props.intl.formatMessage(
                               messages.deleteLinkintegrity,
                             )}
-                            <ul className="content">
+                            <ul>
                               {this.props.affectedLinks.map((item) => {
                                 return (
-                                  <li>
-                                    <a href={item['@id']}>
-                                      {item['title']} -{' '}
-                                      <a
-                                        href={item['@id'] + '/delete'}
-                                        rel="noopener noreferrer"
-                                        target="_blank"
-                                      >
-                                        [manage item in new window]
-                                      </a>
-                                    </a>
-                                  </li>
+                                  <>
+                                    {/* <p>
+                                      {this.props.intl.formatMessage(
+                                        messages.deleteLinkintegrityItem,
+                                      )}
+                                    </p> */}
+                                    <li>
+                                      <a href={item['@id']}>{item['title']}</a>
+                                    </li>
+                                    <br />
+                                    <p>
+                                      {this.props.intl.formatMessage(
+                                        messages.deleteLinkintegrityItemList,
+                                      )}
+                                    </p>
+                                    <ul>
+                                      {item.breaches.map((breach) => {
+                                        return (
+                                          <li>
+                                            <a href={breach['@id']}>
+                                              {breach['title']}
+                                            </a>{' '}
+                                            -{' '}
+                                            <a
+                                              href={breach['@id'] + '/edit'}
+                                              rel="noopener noreferrer"
+                                              target="_blank"
+                                            >
+                                              [edit in new window]
+                                            </a>
+                                          </li>
+                                        );
+                                      })}
+                                    </ul>
+                                    <br />
+                                  </>
                                 );
                               })}
                             </ul>
@@ -1832,7 +1856,7 @@ export const __test__ = compose(
         updateRequest: store.content.update,
         objectActions: store.actions.actions.object,
         orderRequest: store.content.order,
-        affectedLinks: store.linkintegrity.result,
+        affectedLinks: store.linkintegrity?.result,
       };
     },
     {

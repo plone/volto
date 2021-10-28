@@ -107,7 +107,7 @@ class Delete extends Component {
    */
   componentDidMount() {
     this.props.getContent(this.props.pathname.split('/delete')[0]);
-    this.props.getLinkintegrity([this.props.content.UID]);
+    this.props.getLinkintegrity([this.props.content?.UID]);
     this.setState({ isClient: true });
   }
 
@@ -238,7 +238,7 @@ export default compose(
       deleteRequest: state.content.delete,
       pathname: props.location.pathname,
       returnUrl: qs.parse(props.location.search).return_url,
-      affectedLinks: state.linkintegrity.result,
+      affectedLinks: state.linkintegrity?.result,
     }),
     { deleteContent, getContent, getLinkintegrity },
   ),
