@@ -6,6 +6,7 @@
 
 ### Feature
 
+- Support Node 16 @timo
 ### Bugfix
 
 - Prevent ua-parser-js security breach. See: https://github.com/advisories/GHSA-pjwm-rvh2-c87w @thet
