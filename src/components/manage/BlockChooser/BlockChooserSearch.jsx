@@ -5,22 +5,18 @@
 
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { Form, Input } from 'semantic-ui-react';
+import { Button, Form, Input } from 'semantic-ui-react';
 import { compose } from 'redux';
 import { PropTypes } from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
 
 import { Icon } from '@plone/volto/components';
-import zoomSVG from '@plone/volto/icons/zoom.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   search: {
     id: 'Search',
     defaultMessage: 'Search',
-  },
-  searchSite: {
-    id: 'Search Site',
-    defaultMessage: 'Search Site',
   },
 });
 
@@ -52,6 +48,7 @@ class BlockChooserSearch extends Component {
     this.state = {
       text: '',
     };
+    this.searchInput = React.createRef();
   }
 
   /**
@@ -62,6 +59,10 @@ class BlockChooserSearch extends Component {
    * @returns {undefined}
    */
   onChangeText(event, { value }) {
+    this.setSearchValue(value);
+  }
+
+  setSearchValue(value) {
     this.props.onChange(value);
     this.setState({
       text: value,
@@ -87,8 +88,11 @@ class BlockChooserSearch extends Component {
   render() {
     return (
       // onSubmit={this.onSubmit}
-      <Form>
-        <Form.Field className="searchbox">
+      <Form style={{ padding: '0.5em' }}>
+        <Form.Field
+          className="searchbox"
+          style={{ borderLeft: 0, height: '2em', padding: 0 }}
+        >
           {/* eslint-disable jsx-a11y/no-autofocus */}
           <Input
             aria-label={this.props.intl.formatMessage(messages.search)}
@@ -97,13 +101,23 @@ class BlockChooserSearch extends Component {
             value={this.state.text}
             transparent
             autoComplete="off"
-            placeholder={this.props.intl.formatMessage(messages.searchSite)}
+            placeholder={this.props.intl.formatMessage(messages.search)}
             title={this.props.intl.formatMessage(messages.search)}
             autoFocus
+            ref={this.searchInput}
           />
-          <button aria-label={this.props.intl.formatMessage(messages.search)}>
-            <Icon name={zoomSVG} size="18px" />
-          </button>
+          {this.state.text && (
+            <Button
+              className="clear-search-button"
+              aria-label={this.props.intl.formatMessage(messages.search)}
+              onClick={() => {
+                this.setSearchValue('');
+                this.searchInput.current.focus();
+              }}
+            >
+              <Icon name={clearSVG} size="18px" />
+            </Button>
+          )}
         </Form.Field>
       </Form>
     );
