@@ -6,6 +6,7 @@
 
 ### Feature
 
+- Support Node 16 @timo
 - Add Image with srcset and lazy loading using Plone scales @nzambello
 
 ### Bugfix
