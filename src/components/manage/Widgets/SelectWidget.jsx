@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { map, intersection } from 'lodash';
+import { map } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 import {
   getVocabFromHint,
@@ -146,7 +146,6 @@ class SelectWidget extends Component {
   state = {
     // TODO: also take into account this.props.defaultValue?
     selectedOption: normalizeValue(this.props.choices, this.props.value),
-    search: '',
   };
 
   /**
@@ -159,7 +158,12 @@ class SelectWidget extends Component {
       (!this.props.choices || this.props.choices?.length === 0) &&
       this.props.vocabBaseUrl
     ) {
-      this.props.getVocabulary(this.props.vocabBaseUrl);
+      this.props.getVocabulary(
+        this.props.vocabBaseUrl,
+        null,
+        undefined,
+        100000,
+      );
     }
   }
 
@@ -176,50 +180,6 @@ class SelectWidget extends Component {
   }
 
   /**
-   * Initiate search with new query
-   * @method loadOptions
-   * @param {string} search Search query.
-   * @param {string} previousOptions The previous options rendered.
-   * @param {string} additional Additional arguments to pass to the next loadOptions.
-   * @returns {undefined}
-   */
-  loadOptions = (search, previousOptions, additional) => {
-    let hasMore = this.props.itemsTotal > previousOptions.length;
-    const offset = this.state.search !== search ? 0 : additional.offset;
-    this.setState({ search });
-
-    if (hasMore || this.state.search !== search) {
-      this.props.getVocabulary(this.props.vocabBaseUrl, search, offset);
-
-      return {
-        options:
-          intersection(previousOptions, this.props.choices).length ===
-          this.props.choices.length
-            ? []
-            : this.props.choices,
-        hasMore: hasMore,
-        additional: {
-          offset: offset === additional.offset ? offset + 25 : offset,
-        },
-      };
-    }
-    // We should return always an object like this, if not it complains:
-    return { options: [] };
-  };
-
-  /**
-   * Handle the field change, store it in the local state and back to simple
-   * array of tokens for correct serialization
-   * @method handleChange
-   * @param {array} selectedOption The selected options (already aggregated).
-   * @returns {undefined}
-   */
-  handleChange = (selectedOption) => {
-    this.setState({ selectedOption });
-    this.props.onChange(this.props.id, selectedOption.value);
-  };
-
-  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -229,78 +189,58 @@ class SelectWidget extends Component {
     // Make sure that both disabled and isDisabled (from the DX layout feat work)
     const disabled = this.props.disabled || this.props.isDisabled;
     const Select = this.props.reactSelect.default;
-    const AsyncPaginate = this.props.reactSelectAsyncPaginate.AsyncPaginate;
+
+    let options = this.props.vocabBaseUrl
+      ? this.props.choices
+      : [
+          ...map(choices, (option) => ({
+            value: option[0],
+            label:
+              // Fix "None" on the serializer, to remove when fixed in p.restapi
+              option[1] !== 'None' && option[1] ? option[1] : option[0],
+          })),
+          // Only set "no-value" option if there's no default in the field
+          // TODO: also if this.props.defaultValue?
+          ...(this.props.noValueOption && !this.props.default
+            ? [
+                {
+                  label: this.props.intl.formatMessage(messages.no_value),
+                  value: 'no-value',
+                },
+              ]
+            : []),
+        ];
 
     return (
       <FormFieldWrapper {...this.props}>
-        {this.props.vocabBaseUrl ? (
-          <>
-            <AsyncPaginate
-              isDisabled={disabled}
-              className="react-select-container"
-              classNamePrefix="react-select"
-              options={this.props.choices || []}
-              styles={customSelectStyles}
-              theme={selectTheme}
-              components={{ DropdownIndicator, Option }}
-              value={this.state.selectedOption}
-              loadOptions={this.loadOptions}
-              onChange={this.handleChange}
-              additional={{
-                offset: 25,
-              }}
-              placeholder={this.props.intl.formatMessage(messages.select)}
-              noOptionsMessage={() =>
-                this.props.intl.formatMessage(messages.no_options)
-              }
-            />
-          </>
-        ) : (
-          <Select
-            id={`field-${id}`}
-            key={this.props.choices}
-            name={id}
-            isDisabled={disabled}
-            className="react-select-container"
-            classNamePrefix="react-select"
-            isMulti={
-              this.props.isMulti
-                ? this.props.isMulti
-                : id === 'roles' || id === 'groups'
-            }
-            options={[
-              ...map(choices, (option) => ({
-                value: option[0],
-                label:
-                  // Fix "None" on the serializer, to remove when fixed in p.restapi
-                  option[1] !== 'None' && option[1] ? option[1] : option[0],
-              })),
-              // Only set "no-value" option if there's no default in the field
-              // TODO: also if this.props.defaultValue?
-              ...(this.props.noValueOption && !this.props.default
-                ? [
-                    {
-                      label: this.props.intl.formatMessage(messages.no_value),
-                      value: 'no-value',
-                    },
-                  ]
-                : []),
-            ]}
-            styles={customSelectStyles}
-            theme={selectTheme}
-            components={{ DropdownIndicator, Option }}
-            value={this.state.selectedOption}
-            onChange={(selectedOption) => {
-              this.setState({ selectedOption });
-              return onChange(
-                id,
-                selectedOption && selectedOption.value !== 'no-value'
-                  ? selectedOption.value
-                  : undefined,
-              );
-            }}
-          />
-        )}
+        <Select
+          id={`field-${id}`}
+          key={choices}
+          name={id}
+          isDisabled={disabled}
+          isSearchable={true}
+          className="react-select-container"
+          classNamePrefix="react-select"
+          isMulti={
+            this.props.isMulti
+              ? this.props.isMulti
+              : id === 'roles' || id === 'groups'
+          }
+          options={options}
+          styles={customSelectStyles}
+          theme={selectTheme}
+          components={{ DropdownIndicator, Option }}
+          value={this.state.selectedOption}
+          onChange={(selectedOption) => {
+            this.setState({ selectedOption });
+            return onChange(
+              id,
+              selectedOption && selectedOption.value !== 'no-value'
+                ? selectedOption.value
+                : undefined,
+            );
+          }}
+        />
       </FormFieldWrapper>
     );
   }
@@ -310,7 +250,7 @@ export const SelectWidgetComponent = injectIntl(SelectWidget);
 
 export default compose(
   injectIntl,
-  injectLazyLibs(['reactSelect', 'reactSelectAsyncPaginate']),
+  injectLazyLibs(['reactSelect']),
   connect(
     (state, props) => {
       const vocabBaseUrl = !props.choices

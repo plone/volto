@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
-import { isObject, intersection } from 'lodash';
+import { isObject } from 'lodash';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
@@ -106,15 +106,10 @@ class ArrayWidget extends Component {
    */
   constructor(props) {
     super(props);
-    this.search = this.search.bind(this);
-    this.loadOptions = this.loadOptions.bind(this);
+
     this.handleChange = this.handleChange.bind(this);
-    this.vocabBaseUrl =
-      getVocabFromHint(props) ||
-      getVocabFromField(props) ||
-      getVocabFromItems(props);
+
     this.state = {
-      search: '',
       selectedOption: props.value
         ? props.value.map((item) =>
             isObject(item)
@@ -134,54 +129,16 @@ class ArrayWidget extends Component {
     if (
       !this.props.items?.choices?.length &&
       !this.props.choices?.length &&
-      this.vocabBaseUrl
+      this.props.vocabBaseUrl
     ) {
-      this.props.getVocabulary(this.vocabBaseUrl);
+      this.props.getVocabulary(
+        this.props.vocabBaseUrl,
+        null,
+        undefined,
+        100000,
+      );
     }
   }
-
-  /**
-   * Initiate search with new query
-   * @param {string} query Search query.
-   * @returns {undefined}
-   */
-  search(query) {
-    if (query.length > 1) {
-      this.props.getVocabulary(this.vocabBaseUrl, query);
-    }
-  }
-
-  /**
-   * Initiate search with new query
-   * @method loadOptions
-   * @param {string} search Search query.
-   * @param {string} previousOptions The previous options rendered.
-   * @param {string} additional Additional arguments to pass to the next loadOptions.
-   * @returns {undefined}
-   */
-  loadOptions = (search, previousOptions, additional) => {
-    let hasMore = this.props.itemsTotal > previousOptions.length;
-    const offset = this.state.search !== search ? 0 : additional.offset;
-    this.setState({ search });
-
-    if (hasMore || this.state.search !== search) {
-      this.props.getVocabulary(this.vocabBaseUrl, search, offset);
-
-      return {
-        options:
-          intersection(previousOptions, this.props.choices).length ===
-          this.props.choices.length
-            ? []
-            : this.props.choices,
-        hasMore: hasMore,
-        additional: {
-          offset: offset === additional.offset ? offset + 25 : offset,
-        },
-      };
-    }
-    // We should return always an object like this, if not it complains:
-    return { options: [] };
-  };
 
   /**
    * Handle the field change, store it in the local state and back to simple
@@ -207,68 +164,52 @@ class ArrayWidget extends Component {
   render() {
     const { selectedOption } = this.state;
     const CreatableSelect = this.props.reactSelectCreateable.default;
-    const AsyncPaginate = this.props.reactSelectAsyncPaginate.AsyncPaginate;
 
     return (
       <FormFieldWrapper {...this.props}>
-        {!this.props.items?.choices && this.vocabBaseUrl ? (
-          <AsyncPaginate
-            isDisabled={this.props.isDisabled}
-            className="react-select-container"
-            classNamePrefix="react-select"
-            options={this.props.choices || []}
-            styles={customSelectStyles}
-            theme={selectTheme}
-            components={{ DropdownIndicator, Option }}
-            isMulti
-            value={selectedOption || []}
-            loadOptions={this.loadOptions}
-            onChange={this.handleChange}
-            additional={{
-              offset: 25,
-            }}
-            placeholder={this.props.intl.formatMessage(messages.select)}
-            noOptionsMessage={() =>
-              this.props.intl.formatMessage(messages.no_options)
-            }
-          />
-        ) : (
-          <CreatableSelect
-            className="react-select-container"
-            classNamePrefix="react-select"
-            options={
-              this.props.choices
-                ? [
-                    ...this.props.choices.map((option) => ({
-                      value: option[0],
-                      label:
-                        // Fix "None" on the serializer, to remove when fixed in p.restapi
-                        option[1] !== 'None' && option[1]
-                          ? option[1]
-                          : option[0],
-                    })),
-                    {
-                      label: this.props.intl.formatMessage(messages.no_value),
-                      value: 'no-value',
-                    },
-                  ]
-                : [
-                    {
-                      label: this.props.intl.formatMessage(messages.no_value),
-                      value: 'no-value',
-                    },
-                  ]
-            }
-            styles={customSelectStyles}
-            isDisabled={this.props.isDisabled}
-            theme={selectTheme}
-            components={{ DropdownIndicator, Option }}
-            value={selectedOption || []}
-            placeholder={this.props.intl.formatMessage(messages.select)}
-            onChange={this.handleChange}
-            isMulti
-          />
-        )}
+        <CreatableSelect
+          id={`field-${this.props.id}`}
+          key={this.props.id}
+          isDisabled={this.props.isDisabled}
+          className="react-select-container"
+          classNamePrefix="react-select"
+          options={
+            this.props.vocabBaseUrl
+              ? this.props.choices
+              : this.props.choices
+              ? [
+                  ...this.props.choices.map((option) => ({
+                    value: option[0],
+                    label:
+                      // Fix "None" on the serializer, to remove when fixed in p.restapi
+                      option[1] !== 'None' && option[1] ? option[1] : option[0],
+                  })),
+                  ...(this.props.noValueOption && !this.props.default
+                    ? [
+                        {
+                          label: this.props.intl.formatMessage(
+                            messages.no_value,
+                          ),
+                          value: 'no-value',
+                        },
+                      ]
+                    : []),
+                ]
+              : [
+                  {
+                    label: this.props.intl.formatMessage(messages.no_value),
+                    value: 'no-value',
+                  },
+                ]
+          }
+          styles={customSelectStyles}
+          theme={selectTheme}
+          components={{ DropdownIndicator, Option }}
+          value={selectedOption || []}
+          placeholder={this.props.intl.formatMessage(messages.select)}
+          onChange={this.handleChange}
+          isMulti
+        />
       </FormFieldWrapper>
     );
   }
@@ -278,13 +219,14 @@ export const ArrayWidgetComponent = injectIntl(ArrayWidget);
 
 export default compose(
   injectIntl,
-  injectLazyLibs(['reactSelectCreateable', 'reactSelectAsyncPaginate']),
+  injectLazyLibs(['reactSelectCreateable']),
   connect(
     (state, props) => {
       const vocabBaseUrl =
         getVocabFromHint(props) ||
         getVocabFromField(props) ||
         getVocabFromItems(props);
+
       const vocabState = state.vocabularies[vocabBaseUrl];
       // If the schema already has the choices in it, then do not try to get the vocab,
       // even if there is one
@@ -297,9 +239,10 @@ export default compose(
           choices: vocabState.items,
           itemsTotal: vocabState.itemsTotal,
           loading: Boolean(vocabState.loading),
+          vocabBaseUrl,
         };
       }
-      return {};
+      return { vocabBaseUrl };
     },
     { getVocabulary },
   ),

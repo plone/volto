@@ -96,13 +96,8 @@ class TokenWidget extends Component {
    */
   constructor(props) {
     super(props);
-    this.search = this.search.bind(this);
-    this.loadOptions = this.loadOptions.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.vocabBaseUrl =
-      getVocabFromHint(props) ||
-      getVocabFromField(props) ||
-      getVocabFromItems(props);
+
     this.state = {
       selectedOption: props.value
         ? props.value.map((item) => ({ label: item, value: item }))
@@ -116,37 +111,7 @@ class TokenWidget extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    this.props.getVocabulary(this.vocabBaseUrl);
-  }
-
-  /**
-   * Initiate search with new query
-   * @param {string} query Search query.
-   * @returns {undefined}
-   */
-  search(query) {
-    if (query.length > 1) {
-      this.props.getVocabulary(this.vocabBaseUrl, query);
-    }
-  }
-
-  /**
-   * Load options from the vocabulary endpoint
-   * @method loadOptions
-   * @param {string} search Search query.
-   * @param {string} previousOptions The previous options rendered.
-   * @param {string} additional Additional arguments to pass to the next loadOptions.
-   * @returns {undefined}
-   */
-  loadOptions(search) {
-    return this.props.getVocabulary(this.vocabBaseUrl, search).then((resolve) =>
-      this.props.choices.map
-        .filter((item) => !this.state.selectedOption.includes(item.label))
-        .map((item) => ({
-          label: item.label || item.value,
-          value: item.value,
-        })),
-    );
+    this.props.getVocabulary(this.props.vocabBaseUrl, null, undefined, 100000);
   }
 
   /**
@@ -180,21 +145,23 @@ class TokenWidget extends Component {
         label: item.label || item.value,
         value: item.value,
       }));
-    const AsyncCreatableSelect = this.props.reactSelectAsyncCreateable.default;
+    const CreatableSelect = this.props.reactSelectCreateable.default;
 
     return (
       <FormFieldWrapper {...this.props}>
-        <AsyncCreatableSelect
+        <CreatableSelect
+          id={`field-${this.props.id}`}
+          key={this.props.id}
           isDisabled={this.props.isDisabled}
           className="react-select-container"
           classNamePrefix="react-select"
           defaultOptions={defaultOptions}
+          options={defaultOptions}
           styles={customSelectStyles}
           theme={selectTheme}
           components={{ DropdownIndicator, Option }}
           isMulti
           value={selectedOption || []}
-          loadOptions={this.loadOptions}
           onChange={this.handleChange}
           placeholder={this.props.intl.formatMessage(messages.select)}
           noOptionsMessage={() =>
@@ -208,7 +175,7 @@ class TokenWidget extends Component {
 
 export default compose(
   injectIntl,
-  injectLazyLibs(['reactSelectAsyncCreateable']),
+  injectLazyLibs(['reactSelectCreateable']),
   connect(
     (state, props) => {
       const vocabBaseUrl =
@@ -226,9 +193,10 @@ export default compose(
             : [],
           itemsTotal: vocabState.itemsTotal,
           loading: Boolean(vocabState.loading),
+          vocabBaseUrl,
         };
       }
-      return {};
+      return { vocabBaseUrl };
     },
     { getVocabulary },
   ),

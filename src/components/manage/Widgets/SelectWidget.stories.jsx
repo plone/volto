@@ -3,10 +3,7 @@ import { SelectWidgetComponent } from './SelectWidget';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import Wrapper from '@plone/volto/storybook';
 
-const SelectComponent = injectLazyLibs([
-  'reactSelect',
-  'reactSelectAsyncPaginate',
-])(SelectWidgetComponent);
+const SelectComponent = injectLazyLibs(['reactSelect'])(SelectWidgetComponent);
 
 const Select = (args) => {
   const [value, setValue] = React.useState(args.value ?? '');
@@ -123,7 +120,7 @@ export const VocabularyBased = Select.bind({});
 VocabularyBased.args = {
   id: 'field-vocab-based',
   title: 'field title',
-  description: 'This is a vocab-based field (AsyncSelect based)',
+  description: 'This is a vocab-based field',
   placeholder: 'Select something…',
   // choices in Vocabulary based selects that has choices and spects a string in return
   // Use case: Language select - A Choice schema that spects a string as value

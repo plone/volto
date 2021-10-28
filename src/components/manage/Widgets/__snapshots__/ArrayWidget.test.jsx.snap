@@ -29,7 +29,8 @@ exports[`renders an array widget component 1`] = `
       >
         <div
           className="react-select-container css-2b097c-container"
-          onKeyDown={[Function]}
+          id="field-my-field"
+          onKeyDown={[Function]}          
         >
           <span
             aria-atomic="false"
@@ -39,7 +40,7 @@ exports[`renders an array widget component 1`] = `
           />
           <div
             className="react-select__control css-1ard45z-control"
-            onMouseDown={[Function]}
+            onMouseDown={[Function]}          
             onTouchEnd={[Function]}
           >
             <div
