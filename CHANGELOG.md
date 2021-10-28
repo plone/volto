@@ -6,6 +6,11 @@
 
 ### Feature
 
+- FormFieldWrapper accepts now strings and elements for description @nzambello
+- Image block:
+    - When uploading an image or selecting that from the object browser, Image block will set an empty string as alternative text @nzambello
+    - Adds a description to the alt-tag with w3c explaination @nzambello
+
 ### Bugfix
 
 - Prevent ua-parser-js security breach. See: https://github.com/advisories/GHSA-pjwm-rvh2-c87w @thet
