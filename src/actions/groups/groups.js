@@ -4,6 +4,17 @@
  */
 
 import {
+  compact,
+  concat,
+  isArray,
+  join,
+  map,
+  pickBy,
+  toPairs,
+  identity,
+} from 'lodash';
+
+import {
   CREATE_GROUP,
   DELETE_GROUP,
   GET_GROUP,
@@ -65,18 +76,21 @@ export function getGroup(id) {
  * @function listGroups
  * @returns {Object} List groups action
  */
-export function listGroups(query) {
+export function listGroups(options) {
+  options = pickBy(options, identity);
+  const query = join(
+    map(toPairs(pickBy(options, (item) => !isArray(item))), (item) =>
+      join(item, '='),
+    ),
+    '&',
+  );
+
   return {
     type: LIST_GROUPS,
-    request: query
-      ? {
-          op: 'get',
-          path: `/@groups?query=${query}`,
-        }
-      : {
-          op: 'get',
-          path: '/@groups',
-        },
+    request: {
+      op: 'get',
+      path: `/@groups${query ? `?${query}` : ''}`,
+    },
   };
 }
 

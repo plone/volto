@@ -109,7 +109,9 @@ class GroupsControlpanel extends Component {
 
   fetchData = async () => {
     await this.props.listRoles();
-    await this.props.listGroups();
+    await this.props.listGroups({
+      b_size: 10,
+    });
     this.setState({
       groupEntries: this.props.groups,
     });
@@ -133,7 +135,7 @@ class GroupsControlpanel extends Component {
       (this.props.createGroupRequest.loading &&
         nextProps.createGroupRequest.loaded)
     ) {
-      this.props.listGroups(this.state.search);
+      this.props.listGroups({ query: this.state.search });
     }
     if (
       this.props.createGroupRequest.loading &&
@@ -170,7 +172,7 @@ class GroupsControlpanel extends Component {
    */
   onSearchGroups(event) {
     event.preventDefault();
-    this.props.listGroups(this.state.search);
+    this.props.listGroups({ query: this.state.search });
   }
 
   /**
