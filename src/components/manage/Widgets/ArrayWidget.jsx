@@ -63,7 +63,6 @@ class ArrayWidget extends Component {
     choices: PropTypes.arrayOf(
       PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
     ),
-    loading: PropTypes.bool,
     items: PropTypes.shape({
       vocabulary: PropTypes.object,
     }),
@@ -74,7 +73,6 @@ class ArrayWidget extends Component {
       PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     ),
     onChange: PropTypes.func.isRequired,
-    itemsTotal: PropTypes.number,
     wrapped: PropTypes.bool,
   };
 
@@ -94,7 +92,6 @@ class ArrayWidget extends Component {
     },
     error: [],
     choices: [],
-    loading: false,
     value: null,
   };
 
@@ -110,7 +107,9 @@ class ArrayWidget extends Component {
     this.handleChange = this.handleChange.bind(this);
 
     this.state = {
-      selectedOption: props.value
+      selectedOption: this.props.vocabBaseUrl
+        ? []
+        : props.value
         ? props.value.map((item) =>
             isObject(item)
               ? { label: item.title || item.token, value: item.token }
@@ -136,7 +135,28 @@ class ArrayWidget extends Component {
         null,
         undefined,
         100000,
+        this.props.intl.locale,
       );
+    }
+    this.setDefaultValues();
+  }
+
+  componentDidUpdate() {
+    this.setDefaultValues();
+  }
+
+  setDefaultValues() {
+    if (
+      (this.state.selectedOption || []).length === 0 &&
+      this.props.value &&
+      this.props.choices?.length > 0 &&
+      this.props.vocabBaseUrl
+    ) {
+      this.setState({
+        selectedOption: this.props.choices.filter(
+          (item) => this.props.value.indexOf(item.value) >= 0,
+        ),
+      });
     }
   }
 
@@ -227,7 +247,9 @@ export default compose(
         getVocabFromField(props) ||
         getVocabFromItems(props);
 
-      const vocabState = state.vocabularies[vocabBaseUrl];
+      const vocabState =
+        state.vocabularies?.[vocabBaseUrl]?.subrequests?.[props.intl.locale];
+
       // If the schema already has the choices in it, then do not try to get the vocab,
       // even if there is one
       if (props.items?.choices) {
@@ -237,8 +259,6 @@ export default compose(
       } else if (vocabState) {
         return {
           choices: vocabState.items,
-          itemsTotal: vocabState.itemsTotal,
-          loading: Boolean(vocabState.loading),
           vocabBaseUrl,
         };
       }

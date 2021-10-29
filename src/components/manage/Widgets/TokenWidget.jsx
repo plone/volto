@@ -55,7 +55,6 @@ class TokenWidget extends Component {
     error: PropTypes.arrayOf(PropTypes.string),
     getVocabulary: PropTypes.func.isRequired,
     choices: PropTypes.arrayOf(PropTypes.object),
-    loading: PropTypes.bool,
     items: PropTypes.shape({
       vocabulary: PropTypes.object,
     }),
@@ -64,7 +63,6 @@ class TokenWidget extends Component {
     }),
     value: PropTypes.arrayOf(PropTypes.string),
     onChange: PropTypes.func.isRequired,
-    itemsTotal: PropTypes.number,
     wrapped: PropTypes.bool,
   };
 
@@ -84,7 +82,6 @@ class TokenWidget extends Component {
     },
     error: [],
     choices: [],
-    loading: false,
     value: null,
   };
 
@@ -111,7 +108,13 @@ class TokenWidget extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    this.props.getVocabulary(this.props.vocabBaseUrl, null, undefined, 100000);
+    this.props.getVocabulary(
+      this.props.vocabBaseUrl,
+      null,
+      undefined,
+      100000,
+      this.props.intl.locale,
+    );
   }
 
   /**
@@ -182,7 +185,10 @@ export default compose(
         getVocabFromHint(props) ||
         getVocabFromField(props) ||
         getVocabFromItems(props);
-      const vocabState = state.vocabularies[vocabBaseUrl];
+
+      const vocabState =
+        state.vocabularies?.[vocabBaseUrl]?.subrequests?.[props.intl.locale];
+
       if (vocabState) {
         return {
           choices: vocabState.items
@@ -191,8 +197,6 @@ export default compose(
                 value: item.value,
               }))
             : [],
-          itemsTotal: vocabState.itemsTotal,
-          loading: Boolean(vocabState.loading),
           vocabBaseUrl,
         };
       }

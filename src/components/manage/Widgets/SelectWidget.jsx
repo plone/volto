@@ -95,7 +95,6 @@ class SelectWidget extends Component {
     choices: PropTypes.arrayOf(
       PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
     ),
-    loading: PropTypes.bool,
     items: PropTypes.shape({
       vocabulary: PropTypes.object,
     }),
@@ -112,7 +111,6 @@ class SelectWidget extends Component {
     onClick: PropTypes.func,
     onEdit: PropTypes.func,
     onDelete: PropTypes.func,
-    itemsTotal: PropTypes.number,
     wrapped: PropTypes.bool,
     noValueOption: PropTypes.bool,
   };
@@ -133,7 +131,6 @@ class SelectWidget extends Component {
     },
     error: [],
     choices: [],
-    loading: false,
     value: null,
     onChange: () => {},
     onBlur: () => {},
@@ -163,6 +160,7 @@ class SelectWidget extends Component {
         null,
         undefined,
         100000,
+        this.props.intl.locale,
       );
     }
   }
@@ -231,6 +229,7 @@ class SelectWidget extends Component {
           theme={selectTheme}
           components={{ DropdownIndicator, Option }}
           value={this.state.selectedOption}
+          placeholder={this.props.intl.formatMessage(messages.select)}
           onChange={(selectedOption) => {
             this.setState({ selectedOption });
             return onChange(
@@ -258,7 +257,9 @@ export default compose(
           getVocabFromField(props) ||
           getVocabFromItems(props)
         : '';
-      const vocabState = state.vocabularies[vocabBaseUrl];
+
+      const vocabState =
+        state.vocabularies?.[vocabBaseUrl]?.subrequests?.[props.intl.locale];
 
       // If the schema already has the choices in it, then do not try to get the vocab,
       // even if there is one
@@ -269,10 +270,7 @@ export default compose(
       } else if (vocabState) {
         return {
           vocabBaseUrl,
-          vocabState,
-          choices: vocabState.items,
-          itemsTotal: vocabState.itemsTotal,
-          loading: Boolean(vocabState.loading),
+          choices: vocabState?.items ?? [],
         };
         // There is a moment that vocabState is not there yet, so we need to pass the
         // vocabBaseUrl to the component.
