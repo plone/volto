@@ -1,6 +1,6 @@
 # Change Log
 
-## 4.3.2 (unreleased)
+## 4.4.0 (2021-10-29)
 
 ### Added
 
