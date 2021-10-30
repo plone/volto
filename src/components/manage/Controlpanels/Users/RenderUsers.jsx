@@ -4,11 +4,12 @@
  */
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { FormattedMessage, injectIntl } from 'react-intl';
-import { Dropdown, Table, Checkbox } from 'semantic-ui-react';
-import trashSVG from '@plone/volto/icons/delete.svg';
+import { injectIntl } from 'react-intl';
+import { Table } from 'semantic-ui-react';
 import { Icon } from '@plone/volto/components';
-import ploneSVG from '@plone/volto/icons/plone.svg';
+import checkboxUncheckedSVG from '@plone/volto/icons/checkbox-unchecked.svg';
+import checkboxCheckedSVG from '@plone/volto/icons/checkbox-checked.svg';
+import groupSVG from '@plone/volto/icons/group.svg';
 
 /**
  * UsersControlpanelUser class.
@@ -52,55 +53,65 @@ class RenderUsers extends Component {
    * @memberof UsersControlpanelUser
    */
 
-  onChange(event, { value }) {
+  onChange(event, value) {
     const [user, role] = value.split('.');
     this.props.updateUser(user, role);
   }
+
+  /**
+   *@param {string}
+   *@returns {Boolean}
+   *@memberof RenderUsers
+   */
+  renderIcon = (role) => this.props.user.roles.includes(role.id);
+
   /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
   render() {
+    const { selected, user, onChangeSelect, roles, inheritedRole } = this.props;
+    const isSelected = selected.includes(user.id);
     return (
       <Table.Row key={this.props.user.username}>
-        <Table.Cell className="fullname">
-          {this.props.user.fullname
-            ? this.props.user.fullname
-            : this.props.user.username}
+        <Table.Cell>
+          <Icon
+            name={isSelected ? checkboxCheckedSVG : checkboxUncheckedSVG}
+            color={isSelected ? '#007eb1' : '#826a6a'}
+            onClick={(e) => {
+              e.stopPropagation();
+              onChangeSelect(user.id);
+            }}
+            size="24px"
+          />
         </Table.Cell>
-        {this.props.roles.map((role) => (
+        <Table.Cell className="fullname">
+          {user.fullname || user.username}
+        </Table.Cell>
+        {roles.map((role) => (
           <Table.Cell key={role.id}>
-            {this.props.inheritedRole &&
-            this.props.inheritedRole.includes(role.id) ? (
+            {inheritedRole && inheritedRole.includes(role.id) ? (
               <Icon
-                name={ploneSVG}
+                name={groupSVG}
                 size="20px"
                 color="#007EB1"
                 title={'plone-svg'}
               />
             ) : (
-              <Checkbox
-                checked={this.props.user.roles.includes(role.id)}
-                onChange={this.onChange}
-                value={`${this.props.user.id}.${role.id}`}
+              <Icon
+                name={
+                  this.renderIcon(role)
+                    ? checkboxCheckedSVG
+                    : checkboxUncheckedSVG
+                }
+                onClick={(e) => this.onChange(e, `${user.id}.${role.id}`)}
+                color={this.renderIcon(role) ? '#007eb1' : '#826a6a'}
+                size="24px"
               />
             )}
           </Table.Cell>
         ))}
-        <Table.Cell textAlign="right">
-          <Dropdown icon="ellipsis horizontal">
-            <Dropdown.Menu className="left">
-              <Dropdown.Item
-                onClick={this.props.onDelete}
-                value={this.props.user['@id']}
-              >
-                <Icon name={trashSVG} size="15px" />
-                <FormattedMessage id="Delete" defaultMessage="Delete" />
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-        </Table.Cell>
       </Table.Row>
     );
   }

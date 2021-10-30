@@ -42,15 +42,15 @@ exports[`UsersControlpanel renders a user control component 1`] = `
     <div
       className="ui segment"
     >
-      <form
-        className="ui form"
-        onSubmit={[Function]}
+      <div
+        className="ui secondary attached menu"
       >
         <div
-          className="field"
+          className="left item"
+          onClick={[Function]}
         >
           <div
-            className="ui action input"
+            className="ui large transparent input"
           >
             <input
               id="user-search-input"
@@ -59,66 +59,113 @@ exports[`UsersControlpanel renders a user control component 1`] = `
               placeholder="Search users…"
               type="text"
             />
-            <button
-              className="ui icon button"
-              onClick={[Function]}
-            >
-              <i
-                aria-hidden="true"
-                className="search icon"
-                onClick={[Function]}
-              />
-            </button>
           </div>
+          <svg
+            className="icon zoom"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={[Function]}
+            style={
+              Object {
+                "fill": "#007eb1",
+                "height": "30px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
+          />
         </div>
-      </form>
-    </div>
-    <form
-      className="ui form"
-      onSubmit={[Function]}
-    >
-      <div
-        className="table"
-      >
-        <table
-          className="ui striped unstackable attached padded table"
+        <button
+          className="ui button disabled icon item"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
-          <thead
+          <svg
+            className="icon delete"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "grey",
+                "height": "24px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
+          />
+        </button>
+      </div>
+    </div>
+    <div
+      className="table"
+    >
+      <table
+        className="ui striped unstackable attached padded table"
+      >
+        <thead
+          className=""
+        >
+          <tr
             className=""
           >
-            <tr
+            <th
               className=""
             >
-              <th
-                className=""
-              >
-                User name
-              </th>
-              <th
-                className=""
-              >
-                Actions
-              </th>
-            </tr>
-          </thead>
-          <tbody
-            className=""
-            data-user="users"
-          />
-        </table>
-      </div>
+              <svg
+                className="icon"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": undefined,
+                  }
+                }
+                onClick={[Function]}
+                style={
+                  Object {
+                    "fill": "#007eb1",
+                    "height": "24px",
+                    "width": "auto",
+                  }
+                }
+                viewBox=""
+                xmlns=""
+              />
+            </th>
+            <th
+              className=""
+            >
+              User name
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          className=""
+          data-user="users"
+        />
+      </table>
+    </div>
+    <div
+      className="contents-pagination"
+    >
       <div
-        className="contents-pagination"
+        className="ui secondary attached menu"
       >
         <div
-          className="ui secondary attached menu"
-        >
-          <div
-            className="menu"
-          />
-        </div>
+          className="menu"
+        />
       </div>
-    </form>
+    </div>
   </div>
   <div
     id="Portal"

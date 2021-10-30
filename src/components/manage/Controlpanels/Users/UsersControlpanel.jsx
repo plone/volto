@@ -22,11 +22,7 @@ import {
 } from '@plone/volto/components';
 import { Link } from 'react-router-dom';
 import { Helmet, messages } from '@plone/volto/helpers';
-import clearSVG from '@plone/volto/icons/clear.svg';
-import addUserSvg from '@plone/volto/icons/add-user.svg';
-import saveSVG from '@plone/volto/icons/save.svg';
-import ploneSVG from '@plone/volto/icons/plone.svg';
-import { find, map, pull, difference } from 'lodash';
+import { includes, map, pull, difference } from 'lodash';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
@@ -37,12 +33,21 @@ import { bindActionCreators, compose } from 'redux';
 import {
   Confirm,
   Container,
-  Form,
   Input,
   Button,
+  Menu,
+  Popup,
   Segment,
   Table,
 } from 'semantic-ui-react';
+import checkboxUncheckedSVG from '@plone/volto/icons/checkbox-unchecked.svg';
+import checkboxCheckedSVG from '@plone/volto/icons/checkbox-checked.svg';
+import addUserSvg from '@plone/volto/icons/add-user.svg';
+import saveSVG from '@plone/volto/icons/save.svg';
+import groupSVG from '@plone/volto/icons/group.svg';
+import deleteSVG from '@plone/volto/icons/delete.svg';
+import zoomSVG from '@plone/volto/icons/zoom.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 /**
  * UsersControlpanel class.
@@ -85,27 +90,17 @@ class UsersControlpanel extends Component {
    */
   constructor(props) {
     super(props);
-    this.onChangeSearch = this.onChangeSearch.bind(this);
-    this.onSearch = this.onSearch.bind(this);
-    this.delete = this.delete.bind(this);
-
-    this.onDeleteOk = this.onDeleteOk.bind(this);
-    this.onDeleteCancel = this.onDeleteCancel.bind(this);
-    this.onAddUserSubmit = this.onAddUserSubmit.bind(this);
-    this.onAddUserError = this.onAddUserError.bind(this);
-    this.onAddUserSuccess = this.onAddUserSuccess.bind(this);
-    this.updateUserRole = this.updateUserRole.bind(this);
     this.state = {
       search: '',
       showAddUser: false,
       showAddUserErrorConfirm: false,
       addUserError: '',
       showDelete: false,
-      userToDelete: undefined,
       entries: [],
       isClient: false,
       currentPage: 0,
       pageSize: 10,
+      selected: [],
     };
   }
 
@@ -152,20 +147,16 @@ class UsersControlpanel extends Component {
     }
   }
 
-  getUserFromProps(value) {
-    return find(this.props.users, ['@id', value]);
-  }
-
   /**
    * Search handler
    * @method onSearch
    * @param {object} event Event object.
    * @returns {undefined}
    */
-  onSearch(event) {
+  onSearch = (event) => {
     event.preventDefault();
     this.props.listUsers(this.state.search);
-  }
+  };
 
   /**
    * On change search handler
@@ -173,54 +164,53 @@ class UsersControlpanel extends Component {
    * @param {object} event Event object.
    * @returns {undefined}
    */
-  onChangeSearch(event) {
+  onChangeSearch = (event) => {
     this.setState({
       search: event.target.value,
     });
-  }
+  };
 
   /**
-   * Delete a user
-   * @method delete
-   * @param {object} event Event object.
-   * @param {string} value username.
+   *
+   *
+   * @param {*} event Event object.
+   * @memberof UsersControlpanel
    * @returns {undefined}
    */
-  delete(event, { value }) {
-    if (value) {
-      this.setState({
-        showDelete: true,
-        userToDelete: this.getUserFromProps(value),
-      });
-    }
-  }
+  onDeleteSelected = () => {
+    this.setState({
+      showDelete: true,
+    });
+  };
 
   /**
    * On delete ok
    * @method onDeleteOk
    * @returns {undefined}
    */
-  onDeleteOk() {
-    if (this.state.userToDelete) {
-      this.props.deleteUser(this.state.userToDelete.id);
-      this.setState({
-        showDelete: false,
-        userToDelete: undefined,
-      });
+  onDeleteOk = () => {
+    const { selected } = this.state;
+    if (selected) {
+      for (let i = 0; i < selected.length; i++) {
+        this.props.deleteUser(selected[i]);
+      }
     }
-  }
+    this.setState({
+      showDelete: false,
+      selected: [],
+    });
+  };
 
   /**
    * On delete cancel
    * @method onDeleteCancel
    * @returns {undefined}
    */
-  onDeleteCancel() {
+  onDeleteCancel = () => {
     this.setState({
       showDelete: false,
-      itemsToDelete: [],
     });
-  }
+  };
 
   /**
    *@param {object} user
@@ -245,21 +235,21 @@ class UsersControlpanel extends Component {
    * @param {func} callback to set new form data in the ModalForm
    * @returns {undefined}
    */
-  onAddUserSubmit(data, callback) {
+  onAddUserSubmit = (data, callback) => {
     const { groups } = data;
     if (groups && groups.length > 0) this.addUserToGroup(data);
     this.props.createUser(data);
     this.setState({
       addUserSetFormDataCallback: callback,
     });
-  }
+  };
 
   /**
    * Handle Success after createUser()
    *
    * @returns {undefined}
    */
-  onAddUserSuccess() {
+  onAddUserSuccess = () => {
     this.state.addUserSetFormDataCallback({});
     this.setState({
       showAddUser: false,
@@ -273,7 +263,7 @@ class UsersControlpanel extends Component {
         content={this.props.intl.formatMessage(messages.userCreated)}
       />,
     );
-  }
+  };
 
   /**
    *
@@ -282,7 +272,7 @@ class UsersControlpanel extends Component {
    * @param {*} callback
    * @memberof UsersControlpanel
    */
-  updateUserRole(name, value) {
+  updateUserRole = (name, value) => {
     this.setState({
       entries: map(this.state.entries, (entry) => ({
         ...entry,
@@ -294,7 +284,7 @@ class UsersControlpanel extends Component {
             : pull(entry.roles, value),
       })),
     });
-  }
+  };
   /**
    *
    * @param {*} event
@@ -331,11 +321,11 @@ class UsersControlpanel extends Component {
    * @param {object} error object. Requires the property .message
    * @returns {undefined}
    */
-  onAddUserError(error) {
+  onAddUserError = (error) => {
     this.setState({
       addUserError: error.response.body.error.message,
     });
-  }
+  };
 
   /**
    * On change page
@@ -359,6 +349,34 @@ class UsersControlpanel extends Component {
   }
 
   /**
+   * On select all handler
+   * @method onSelectAll
+   * @returns {undefined}
+   */
+  onSelectAll = () => {
+    const { entries } = this.state;
+    this.setState((prevState) => ({
+      selected:
+        prevState.selected.length === entries.length
+          ? []
+          : map(entries, (item) => item.id),
+    }));
+  };
+
+  /**
+   * On select single user handler
+   * @method onChangeSelect
+   * @returns {undefined}
+   */
+  onChangeSelect = (id) => {
+    this.setState((prevState) => ({
+      selected: !includes(prevState.selected, id)
+        ? [...prevState.selected, id]
+        : pull(prevState.selected, id),
+    }));
+  };
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -370,9 +388,10 @@ class UsersControlpanel extends Component {
     /*let fullnameToDelete = this.state.userToDelete
         ? this.state.userToDelete.fullname
         : '';*/
-    let usernameToDelete = this.state.userToDelete
-      ? this.state.userToDelete.username
-      : '';
+
+    const isSelectedAll =
+      this.state.selected.length === this.state.entries.length;
+
     return (
       <Container className="users-control-panel">
         <Helmet title={this.props.intl.formatMessage(messages.users)} />
@@ -384,14 +403,14 @@ class UsersControlpanel extends Component {
             )}
             content={
               <div className="content">
+                <FormattedMessage
+                  id="Do you really want to delete the following users?"
+                  defaultMessage="Do you really want to delete the following users?"
+                />
                 <ul className="content">
-                  <FormattedMessage
-                    id="Do you really want to delete the user {username}?"
-                    defaultMessage="Do you really want to delete the user {username}?"
-                    values={{
-                      username: <b>{usernameToDelete}</b>,
-                    }}
-                  />
+                  {map(this.state.selected, (item) => (
+                    <li key={item}>{item}</li>
+                  ))}
                 </ul>
               </div>
             }
@@ -495,7 +514,7 @@ class UsersControlpanel extends Component {
               values={{
                 plone_svg: (
                   <Icon
-                    name={ploneSVG}
+                    name={groupSVG}
                     size="20px"
                     color="#007EB1"
                     title={'plone-svg'}
@@ -505,70 +524,107 @@ class UsersControlpanel extends Component {
             />
           </Segment>
           <Segment>
-            <Form onSubmit={this.onSearch}>
-              <Form.Field>
+            <Menu secondary attached>
+              <Menu.Item position="left">
                 <Input
+                  transparent
                   name="SearchableText"
-                  action={{ icon: 'search' }}
                   placeholder={this.props.intl.formatMessage(
                     messages.searchUsers,
                   )}
+                  size="large"
                   onChange={this.onChangeSearch}
                   id="user-search-input"
                 />
-              </Form.Field>
-            </Form>
-          </Segment>
-          <Form>
-            <div className="table">
-              <Table padded striped attached unstackable>
-                <Table.Header>
-                  <Table.Row>
-                    <Table.HeaderCell>
-                      <FormattedMessage
-                        id="User name"
-                        defaultMessage="User name"
-                      />
-                    </Table.HeaderCell>
-                    {this.props.roles.map((role) => (
-                      <Table.HeaderCell key={role.id}>
-                        {role.id}
-                      </Table.HeaderCell>
-                    ))}
-                    <Table.HeaderCell>
-                      <FormattedMessage id="Actions" defaultMessage="Actions" />
-                    </Table.HeaderCell>
-                  </Table.Row>
-                </Table.Header>
-                <Table.Body data-user="users">
-                  {this.state.entries
-                    .slice(
-                      this.state.currentPage * 10,
-                      this.state.pageSize * (this.state.currentPage + 1),
-                    )
-                    .map((user) => (
-                      <RenderUsers
-                        key={user.id}
-                        onDelete={this.delete}
-                        roles={this.props.roles}
-                        user={user}
-                        updateUser={this.updateUserRole}
-                        inheritedRole={this.props.inheritedRole}
-                      />
-                    ))}
-                </Table.Body>
-              </Table>
-            </div>
-            <div className="contents-pagination">
-              <Pagination
-                current={this.state.currentPage}
-                total={Math.ceil(
-                  this.state.entries?.length / this.state.pageSize,
-                )}
-                onChangePage={this.onChangePage}
+                <Icon
+                  name={zoomSVG}
+                  size="30px"
+                  color="#007eb1"
+                  onClick={this.onSearch}
+                  className="zoom"
+                />
+              </Menu.Item>
+              <Popup
+                trigger={
+                  <Menu.Item
+                    icon
+                    as={Button}
+                    onClick={this.onDeleteSelected}
+                    disabled={!this.state.selected.length > 0}
+                  >
+                    <Icon
+                      name={deleteSVG}
+                      size="24px"
+                      color={
+                        this.state.selected.length > 0 ? '#e40166' : 'grey'
+                      }
+                      className="delete"
+                    />
+                  </Menu.Item>
+                }
+                position="top center"
+                content={this.props.intl.formatMessage(messages.delete)}
+                size="mini"
               />
-            </div>
-          </Form>
+            </Menu>
+          </Segment>
+
+          <div className="table">
+            <Table padded striped attached unstackable>
+              <Table.Header>
+                <Table.Row>
+                  <Table.HeaderCell>
+                    <Icon
+                      name={
+                        isSelectedAll
+                          ? checkboxCheckedSVG
+                          : checkboxUncheckedSVG
+                      }
+                      onClick={this.onSelectAll}
+                      color={isSelectedAll ? '#007eb1' : '#826a6a'}
+                      size="24px"
+                    />
+                  </Table.HeaderCell>
+                  <Table.HeaderCell>
+                    <FormattedMessage
+                      id="User name"
+                      defaultMessage="User name"
+                    />
+                  </Table.HeaderCell>
+                  {this.props.roles.map((role) => (
+                    <Table.HeaderCell key={role.id}>{role.id}</Table.HeaderCell>
+                  ))}
+                </Table.Row>
+              </Table.Header>
+              <Table.Body data-user="users">
+                {this.state.entries
+                  .slice(
+                    this.state.currentPage * 10,
+                    this.state.pageSize * (this.state.currentPage + 1),
+                  )
+                  .map((user) => (
+                    <RenderUsers
+                      key={user.id}
+                      selected={this.state.selected}
+                      onChangeSelect={this.onChangeSelect}
+                      roles={this.props.roles}
+                      user={user}
+                      updateUser={this.updateUserRole}
+                      inheritedRole={this.props.inheritedRole}
+                    />
+                  ))}
+              </Table.Body>
+            </Table>
+          </div>
+          <div className="contents-pagination">
+            <Pagination
+              current={this.state.currentPage}
+              total={Math.ceil(
+                this.state.entries?.length / this.state.pageSize,
+              )}
+              onChangePage={this.onChangePage}
+            />
+          </div>
         </Segment.Group>
         {this.state.isClient && (
           <Portal node={document.getElementById('toolbar')}>

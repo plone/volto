@@ -4,11 +4,12 @@
  */
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { FormattedMessage, injectIntl } from 'react-intl';
-import { Dropdown, Table, Checkbox } from 'semantic-ui-react';
-import trashSVG from '@plone/volto/icons/delete.svg';
-import ploneSVG from '@plone/volto/icons/plone.svg';
+import { injectIntl } from 'react-intl';
+import { Table } from 'semantic-ui-react';
 import { Icon } from '@plone/volto/components';
+import checkboxUncheckedSVG from '@plone/volto/icons/checkbox-unchecked.svg';
+import checkboxCheckedSVG from '@plone/volto/icons/checkbox-checked.svg';
+import groupSVG from '@plone/volto/icons/group.svg';
 
 /**
  * UsersControlpanelGroups class.
@@ -48,7 +49,7 @@ class RenderGroups extends Component {
    */
   constructor(props) {
     super(props);
-    this.onChange = this.onChange.bind(this);
+    this.onChangeRole = this.onChangeRole.bind(this);
   }
 
   /**
@@ -56,7 +57,7 @@ class RenderGroups extends Component {
    * @param {*} { value }
    * @memberof UsersControlpanelUser
    */
-  onChange(event, { value }) {
+  onChangeRole(event, value) {
     const [group, role] = value.split('.');
     this.props.updateGroups(group, role);
   }
@@ -69,52 +70,70 @@ class RenderGroups extends Component {
   isAuthGroup = (roleId) => {
     return this.props.inheritedRole.includes(roleId);
   };
+
+  /**
+   *@param {string}
+   *@returns {Boolean}
+   *@memberof RenderGroups
+   */
+  renderIcon = (role) =>
+    this.props.group.id === 'AuthenticatedUsers'
+      ? this.isAuthGroup(role.id)
+      : this.props.group.roles.includes(role.id);
+
   /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
   render() {
+    const {
+      selected,
+      group,
+      onChangeSelect,
+      roles,
+      inheritedRole,
+    } = this.props;
+    const isSelected = selected.includes(group.id);
     return (
-      <Table.Row key={this.props.group.title}>
-        <Table.Cell>{this.props.group.groupname}</Table.Cell>
-        {this.props.roles.map((role) => (
+      <Table.Row key={group.title}>
+        <Table.Cell>
+          <Icon
+            name={isSelected ? checkboxCheckedSVG : checkboxUncheckedSVG}
+            color={isSelected ? '#007eb1' : '#826a6a'}
+            onClick={(e) => {
+              e.stopPropagation();
+              onChangeSelect(group.id);
+            }}
+            size="24px"
+          />
+        </Table.Cell>
+        <Table.Cell>{group.groupname}</Table.Cell>
+        {roles.map((role) => (
           <Table.Cell key={role.id}>
-            {this.props.inheritedRole &&
-            this.props.inheritedRole.includes(role.id) &&
-            this.props.group.roles.includes('Authenticated') ? (
+            {inheritedRole &&
+            inheritedRole.includes(role.id) &&
+            group.roles.includes('Authenticated') ? (
               <Icon
-                name={ploneSVG}
+                name={groupSVG}
                 size="20px"
                 color="#007EB1"
                 title={'plone-svg'}
               />
             ) : (
-              <Checkbox
-                checked={
-                  this.props.group.id === 'AuthenticatedUsers'
-                    ? this.isAuthGroup(role.id)
-                    : this.props.group.roles.includes(role.id)
+              <Icon
+                name={
+                  this.renderIcon(role)
+                    ? checkboxCheckedSVG
+                    : checkboxUncheckedSVG
                 }
-                onChange={this.onChange}
-                value={`${this.props.group.id}.${role.id}`}
+                onClick={(e) => this.onChangeRole(e, `${group.id}.${role.id}`)}
+                color={this.renderIcon(role) ? '#007eb1' : '#826a6a'}
+                size="24px"
               />
             )}
           </Table.Cell>
         ))}
-        <Table.Cell textAlign="right">
-          <Dropdown icon="ellipsis horizontal">
-            <Dropdown.Menu className="left">
-              <Dropdown.Item
-                onClick={this.props.onDelete}
-                value={this.props.group['@id']}
-              >
-                <Icon name={trashSVG} size="15px" />
-                <FormattedMessage id="Delete" defaultMessage="Delete" />
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-        </Table.Cell>
       </Table.Row>
     );
   }

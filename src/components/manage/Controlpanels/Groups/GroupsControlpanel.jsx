@@ -21,11 +21,7 @@ import {
 } from '@plone/volto/components';
 import { Link } from 'react-router-dom';
 import { Helmet, messages } from '@plone/volto/helpers';
-import clearSVG from '@plone/volto/icons/clear.svg';
-import addUserSvg from '@plone/volto/icons/add-user.svg';
-import saveSVG from '@plone/volto/icons/save.svg';
-import ploneSVG from '@plone/volto/icons/plone.svg';
-import { find, map, pull } from 'lodash';
+import { map, pull, includes } from 'lodash';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
@@ -38,11 +34,20 @@ import {
   Confirm,
   Container,
   Button,
-  Form,
   Input,
   Segment,
+  Menu,
+  Popup,
   Table,
 } from 'semantic-ui-react';
+import checkboxUncheckedSVG from '@plone/volto/icons/checkbox-unchecked.svg';
+import checkboxCheckedSVG from '@plone/volto/icons/checkbox-checked.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
+import addUserSvg from '@plone/volto/icons/add-user.svg';
+import saveSVG from '@plone/volto/icons/save.svg';
+import groupSVG from '@plone/volto/icons/group.svg';
+import deleteSVG from '@plone/volto/icons/delete.svg';
+import zoomSVG from '@plone/volto/icons/zoom.svg';
 
 /**
  * GroupsControlpanel class.
@@ -84,26 +89,17 @@ class GroupsControlpanel extends Component {
    */
   constructor(props) {
     super(props);
-    this.onChangeSearch = this.onChangeSearch.bind(this);
-    this.onSearchGroups = this.onSearchGroups.bind(this);
-    this.deleteGroup = this.deleteGroup.bind(this);
-    this.onDeleteOk = this.onDeleteOk.bind(this);
-    this.onDeleteCancel = this.onDeleteCancel.bind(this);
-    this.onAddGroupSubmit = this.onAddGroupSubmit.bind(this);
-    this.onAddGroupError = this.onAddGroupError.bind(this);
-    this.onAddGroupSuccess = this.onAddGroupSuccess.bind(this);
-    this.updateGroupRole = this.updateGroupRole.bind(this);
     this.state = {
       search: '',
       addGroupError: '',
       showDelete: false,
-      groupToDelete: undefined,
       showAddGroup: false,
       groupEntries: [],
       isClient: false,
       authenticatedRole: props.inheritedRole || [],
       currentPage: 0,
       pageSize: 10,
+      selected: [],
     };
   }
 
@@ -157,10 +153,6 @@ class GroupsControlpanel extends Component {
     }
   }
 
-  getGroupFromProps(value) {
-    return find(this.props.groups, ['@id', value]);
-  }
-
   /**
    *
    *
@@ -168,10 +160,10 @@ class GroupsControlpanel extends Component {
    * @memberof GroupsControlpanel
    * @returns {undefined}
    */
-  onSearchGroups(event) {
+  onSearchGroups = (event) => {
     event.preventDefault();
     this.props.listGroups(this.state.search);
-  }
+  };
 
   /**
    * On change search handler
@@ -179,11 +171,11 @@ class GroupsControlpanel extends Component {
    * @param {object} event Event object.
    * @returns {undefined}
    */
-  onChangeSearch(event) {
+  onChangeSearch = (event) => {
     this.setState({
       search: event.target.value,
     });
-  }
+  };
 
   /**
    *
@@ -193,41 +185,40 @@ class GroupsControlpanel extends Component {
    * @memberof GroupsControlpanel
    * @returns {undefined}
    */
-  deleteGroup(event, { value }) {
-    if (value) {
-      this.setState({
-        showDelete: true,
-        groupToDelete: this.getGroupFromProps(value),
-      });
-    }
-  }
+  onDeleteSelected = () => {
+    this.setState({
+      showDelete: true,
+    });
+  };
 
   /**
    * On delete ok
    * @method onDeleteOk
    * @returns {undefined}
    */
-  onDeleteOk() {
-    if (this.state.groupToDelete) {
-      this.props.deleteGroup(this.state.groupToDelete.id);
-      this.setState({
-        showDelete: false,
-        groupToDelete: undefined,
-      });
+  onDeleteOk = () => {
+    const { selected } = this.state;
+    if (selected) {
+      for (let i = 0; i < selected.length; i++) {
+        this.props.deleteGroup(selected[i]);
+      }
     }
-  }
+    this.setState({
+      showDelete: false,
+      selected: [],
+    });
+  };
 
   /**
    * On delete cancel
    * @method onDeleteCancel
    * @returns {undefined}
    */
-  onDeleteCancel() {
+  onDeleteCancel = () => {
     this.setState({
       showDelete: false,
-      itemsToDelete: [],
     });
-  }
+  };
 
   /**
    *
@@ -235,12 +226,12 @@ class GroupsControlpanel extends Component {
    * @param {*} value
    * @memberof GroupsControlpanel
    */
-  updateGroupRole(name, value) {
+  updateGroupRole = (name, value) => {
     this.setState((prevState) => ({
       groupEntries: map(this.state.groupEntries, (entry) => ({
         ...entry,
         roles:
-          entry.id === name && !entry.roles.includes(value)
+          entry.id === name && !includes(entry.roles, value)
             ? [...entry.roles, value]
             : entry.id !== name
             ? entry.roles
@@ -248,13 +239,13 @@ class GroupsControlpanel extends Component {
       })),
       authenticatedRole:
         name === 'AuthenticatedUsers' &&
-        !prevState.authenticatedRole.includes(value)
+        !includes(prevState.authenticatedRole, value)
           ? [...prevState.authenticatedRole, value]
           : name !== 'AuthenticatedUsers'
           ? prevState.authenticatedRole
           : pull(prevState.authenticatedRole, value),
     }));
-  }
+  };
   /**
    * @param {*} event
    * @memberof GroupsControlpanel
@@ -281,12 +272,12 @@ class GroupsControlpanel extends Component {
    * @memberof GroupsControlpanel
    * @returns {undefined}
    */
-  onAddGroupSubmit(data, callback) {
+  onAddGroupSubmit = (data, callback) => {
     this.props.createGroup(data);
     this.setState({
       addGroupSetFormDataCallback: callback,
     });
-  }
+  };
 
   /**
    * Handle Errors after createGroup()
@@ -295,11 +286,11 @@ class GroupsControlpanel extends Component {
    * @memberof GroupsControlpanel
    * @returns {undefined}
    */
-  onAddGroupError(error) {
+  onAddGroupError = (error) => {
     this.setState({
       addGroupError: error.response.body.message,
     });
-  }
+  };
 
   componentDidUpdate(prevProps, prevState) {
     if (this.props.groups !== prevProps.groups) {
@@ -315,7 +306,7 @@ class GroupsControlpanel extends Component {
    * @memberof GroupsControlpanel
    * @returns {undefined}
    */
-  onAddGroupSuccess() {
+  onAddGroupSuccess = () => {
     this.state.addGroupSetFormDataCallback({});
     this.setState({
       showAddGroup: false,
@@ -329,7 +320,7 @@ class GroupsControlpanel extends Component {
         content={this.props.intl.formatMessage(messages.groupCreated)}
       />,
     );
-  }
+  };
 
   /**
    * On change page
@@ -345,6 +336,34 @@ class GroupsControlpanel extends Component {
   };
 
   /**
+   * On select all handler
+   * @method onSelectAll
+   * @returns {undefined}
+   */
+  onSelectAll = () => {
+    const { groupEntries } = this.state;
+    this.setState((prevState) => ({
+      selected:
+        prevState.selected.length === groupEntries.length
+          ? []
+          : map(groupEntries, (item) => item.id),
+    }));
+  };
+
+  /**
+   * On select single group handler
+   * @method onChangeSelect
+   * @returns {undefined}
+   */
+  onChangeSelect = (id) => {
+    this.setState((prevState) => ({
+      selected: !includes(prevState.selected, id)
+        ? [...prevState.selected, id]
+        : pull(prevState.selected, id),
+    }));
+  };
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -356,9 +375,9 @@ class GroupsControlpanel extends Component {
     /*let fullnameToDelete = this.state.groupToDelete
         ? this.state.groupToDelete.fullname
         : '';*/
-    let groupNameToDelete = this.state.groupToDelete
-      ? this.state.groupToDelete.id
-      : '';
+
+    const isSelectedAll =
+      this.state.selected.length === this.state.groupEntries.length;
 
     return (
       <Container className="users-control-panel">
@@ -371,14 +390,14 @@ class GroupsControlpanel extends Component {
             )}
             content={
               <div className="content">
+                <FormattedMessage
+                  id="Do you really want to delete the following groups?"
+                  defaultMessage="Do you really want to delete the following groups?"
+                />
                 <ul className="content">
-                  <FormattedMessage
-                    id="Do you really want to delete the group {groupname}?"
-                    defaultMessage="Do you really want to delete the group {groupname}?"
-                    values={{
-                      groupname: <b>{groupNameToDelete}</b>,
-                    }}
-                  />
+                  {map(this.state.selected, (item) => (
+                    <li key={item}>{item}</li>
+                  ))}
                 </ul>
               </div>
             }
@@ -466,7 +485,7 @@ class GroupsControlpanel extends Component {
               values={{
                 plone_svg: (
                   <Icon
-                    name={ploneSVG}
+                    name={groupSVG}
                     size="20px"
                     color="#007EB1"
                     title={'plone-svg'}
@@ -476,70 +495,106 @@ class GroupsControlpanel extends Component {
             />
           </Segment>
           <Segment>
-            <Form onSubmit={this.onSearchGroups}>
-              <Form.Field>
+            <Menu secondary attached>
+              <Menu.Item position="left">
                 <Input
+                  transparent
                   name="SearchableText"
-                  action={{ icon: 'search' }}
                   placeholder={this.props.intl.formatMessage(
                     messages.searchGroups,
                   )}
+                  size="large"
                   onChange={this.onChangeSearch}
                   id="group-search-input"
                 />
-              </Form.Field>
-            </Form>
-          </Segment>
-          <Form>
-            <div className="table">
-              <Table padded striped attached unstackable>
-                <Table.Header>
-                  <Table.Row>
-                    <Table.HeaderCell>
-                      <FormattedMessage
-                        id="Groupname"
-                        defaultMessage="Groupname"
-                      />
-                    </Table.HeaderCell>
-                    {this.props.roles.map((role) => (
-                      <Table.HeaderCell key={role.id}>
-                        {role.id}
-                      </Table.HeaderCell>
-                    ))}
-                    <Table.HeaderCell>
-                      <FormattedMessage id="Actions" defaultMessage="Actions" />
-                    </Table.HeaderCell>
-                  </Table.Row>
-                </Table.Header>
-                <Table.Body data-group="groups">
-                  {this.state.groupEntries
-                    .slice(
-                      this.state.currentPage * 10,
-                      this.state.pageSize * (this.state.currentPage + 1),
-                    )
-                    .map((group) => (
-                      <RenderGroups
-                        key={group.id}
-                        onDelete={this.deleteGroup}
-                        roles={this.props.roles}
-                        group={group}
-                        updateGroups={this.updateGroupRole}
-                        inheritedRole={this.state.authenticatedRole}
-                      />
-                    ))}
-                </Table.Body>
-              </Table>
-            </div>
-            <div className="contents-pagination">
-              <Pagination
-                current={this.state.currentPage}
-                total={Math.ceil(
-                  this.state.groupEntries?.length / this.state.pageSize,
-                )}
-                onChangePage={this.onChangePage}
+                <Icon
+                  name={zoomSVG}
+                  size="30px"
+                  color="#007eb1"
+                  onClick={this.onSearchGroups}
+                  className="zoom"
+                />
+              </Menu.Item>
+              <Popup
+                trigger={
+                  <Menu.Item
+                    icon
+                    as={Button}
+                    onClick={this.onDeleteSelected}
+                    disabled={!this.state.selected.length > 0}
+                  >
+                    <Icon
+                      name={deleteSVG}
+                      size="24px"
+                      color={
+                        this.state.selected.length > 0 ? '#e40166' : 'grey'
+                      }
+                      className="delete"
+                    />
+                  </Menu.Item>
+                }
+                position="top center"
+                content={this.props.intl.formatMessage(messages.delete)}
+                size="mini"
               />
-            </div>
-          </Form>
+            </Menu>
+          </Segment>
+          <div className="table">
+            <Table padded striped attached unstackable>
+              <Table.Header>
+                <Table.Row>
+                  <Table.HeaderCell>
+                    <Icon
+                      name={
+                        isSelectedAll
+                          ? checkboxCheckedSVG
+                          : checkboxUncheckedSVG
+                      }
+                      onClick={this.onSelectAll}
+                      color={isSelectedAll ? '#007eb1' : '#826a6a'}
+                      size="24px"
+                    />
+                  </Table.HeaderCell>
+                  <Table.HeaderCell>
+                    <FormattedMessage
+                      id="Groupname"
+                      defaultMessage="Groupname"
+                    />
+                  </Table.HeaderCell>
+                  {this.props.roles.map((role) => (
+                    <Table.HeaderCell key={role.id}>{role.id}</Table.HeaderCell>
+                  ))}
+                </Table.Row>
+              </Table.Header>
+              <Table.Body data-group="groups">
+                {this.state.groupEntries
+                  .slice(
+                    this.state.currentPage * 10,
+                    this.state.pageSize * (this.state.currentPage + 1),
+                  )
+                  .map((group) => (
+                    <RenderGroups
+                      key={group.id}
+                      roles={this.props.roles}
+                      group={group}
+                      selected={this.state.selected}
+                      onChangeSelect={this.onChangeSelect}
+                      updateGroups={this.updateGroupRole}
+                      inheritedRole={this.state.authenticatedRole}
+                    />
+                  ))}
+              </Table.Body>
+            </Table>
+          </div>
+          <div className="contents-pagination">
+            <Pagination
+              current={this.state.currentPage}
+              total={Math.ceil(
+                this.state.groupEntries?.length / this.state.pageSize,
+              )}
+              onChangePage={this.onChangePage}
+            />
+          </div>
         </Segment.Group>
         {this.state.isClient && (
           <Portal node={document.getElementById('toolbar')}>

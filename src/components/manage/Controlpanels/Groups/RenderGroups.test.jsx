@@ -49,6 +49,7 @@ describe('UsersControlpanelGroups', () => {
           group={testGroups}
           roles={testRoles}
           onDelete={() => {}}
+          selected={[]}
         />
       </Provider>,
     );

@@ -158,6 +158,10 @@ export const messages = defineMessages({
     id: 'Success',
     defaultMessage: 'Success',
   },
+  delete: {
+    id: 'Delete',
+    defaultMessage: 'Delete',
+  },
   userCreated: {
     id: 'User created',
     defaultMessage: 'User created',
