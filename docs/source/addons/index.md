@@ -177,7 +177,7 @@ Then, in `package.json`:
 
 ```json hl_lines="2"
   "scripts": {
-    "develop": "missdev --output=addons",
+    "develop": "missdev --config=jsconfig.json --output=addons",
   }
 ```
 

@@ -18,7 +18,7 @@
     "test": "razzle test --env=jest-environment-jsdom-sixteen --passWithNoTests",
     "start:prod": "NODE_ENV=production node build/server.js",
     "i18n": "rm -rf build/messages && NODE_ENV=production i18n",
-    "develop": "missdev --output=addons --fetch-https"
+    "develop": "missdev --config=jsconfig.json --output=addons --fetch-https"
   },
   "private": <%- private %>,
   "workspaces": <%- workspaces %>,
