@@ -4,20 +4,21 @@ const path = require('path');
 const projectRootPath = fs.realpathSync('./project'); // __dirname
 const packageJson = require(path.join(projectRootPath, 'package.json'));
 
-let configFile = path.join(projectRootPath, 'jsconfig.json');
-if (fs.existsSync(path.join(projectRootPath, 'tsconfig.json')))
-  configFile = path.join(projectRootPath, 'tsconfig.json');
-const jsConfig = require(configFile).compilerOptions;
-
-const pathsConfig = jsConfig.paths;
-
 let voltoPath = path.join(projectRootPath, 'node_modules/@plone/volto');
 
-Object.keys(pathsConfig).forEach((pkg) => {
-  if (pkg === '@plone/volto') {
-    voltoPath = `./${jsConfig.baseUrl}/${pathsConfig[pkg][0]}`;
-  }
-});
+let configFile;
+if (fs.existsSync(`${this.projectRootPath}/tsconfig.json`))
+  configFile = `${this.projectRootPath}/tsconfig.json`;
+else if (fs.existsSync(`${this.projectRootPath}/jsconfig.json`))
+  configFile = `${this.projectRootPath}/jsconfig.json`;
+
+if (configFile) {
+  const jsConfig = require(configFile).compilerOptions;
+  const pathsConfig = jsConfig.paths;
+  if (pathsConfig['@plone/volto'])
+    voltoPath = `./${jsConfig.baseUrl}/${pathsConfig['@plone/volto'][0]}`;
+}
+
 const AddonConfigurationRegistry = require(`${voltoPath}/addon-registry.js`);
 const reg = new AddonConfigurationRegistry(projectRootPath);
 
@@ -28,7 +29,7 @@ const addonAliases = Object.keys(reg.packages).map((o) => [
 ]);
 
 module.exports = {
-  extends: `${projectRootPath}/node_modules/@plone/volto/.eslintrc`,
+  extends: `${voltoPath}/.eslintrc`,
   settings: {
     'import/resolver': {
       alias: {
