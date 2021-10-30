@@ -1,3 +1,4 @@
+const fs = require('fs');
 const path = require('path');
 const projectRootPath = __dirname;
 const packageJson = require(path.join(projectRootPath, 'package.json'));

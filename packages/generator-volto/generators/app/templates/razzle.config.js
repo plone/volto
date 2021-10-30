@@ -2,6 +2,7 @@
  * Replace with custom razzle config when needed.
  * @module razzle.config
  */
+const fs = require('fs');
 
 let voltoPath = './node_modules/@plone/volto';
 
