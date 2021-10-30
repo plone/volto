@@ -17,7 +17,7 @@
     "prettier:ci": "./node_modules/.bin/prettier --single-quote --check 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
     "test": "razzle test --env=jest-environment-jsdom-sixteen --passWithNoTests",
     "start:prod": "NODE_ENV=production node build/server.js",
-    "i18n": "NODE_ENV=production node node_modules/@plone/volto/src/i18n.js",
+    "i18n": "rm -rf build/messages && NODE_ENV=production i18n",
     "develop": "missdev --output=addons --fetch-https"
   },
   "private": <%- private %>,
@@ -104,7 +104,7 @@
     "not dead"
   ],
   "engines": {
-    "node": "^10 || ^12 || ^14"
+    "node": "^12 || ^14 || ^16"
   },
   "dependencies": <%- dependencies %>,
   "devDependencies": {

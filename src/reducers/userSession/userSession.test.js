@@ -78,7 +78,7 @@ describe('User session reducer', () => {
           },
         },
         {
-          type: LOGOUT,
+          type: `${LOGOUT}_SUCCESS`,
         },
       ),
     ).toEqual({

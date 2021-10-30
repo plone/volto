@@ -1,6 +1,22 @@
 # Change Log
 
-## 4.3.2 (unreleased)
+## 5.0.0 (unreleased)
+
+### Added
+
+### Changes
+
+## 5.0.0-alpha.1 (2021-10-29)
+
+### Added
+
+- Support Node 16 @sneridagh
+
+## 5.0.0-alpha.0 (2021-09-26)
+
+### Breaking
+
+- Added new configuration for i18n using the new package `@plone/scripts`. 5.0.0 and onwards is supposed to work on Volto 14 and above. @sneridagh
 
 ### Added
 
