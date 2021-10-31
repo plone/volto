@@ -8,12 +8,20 @@
 
 ### Bugfix
 
-- Prevent ua-parser-js security breach. See: https://github.com/advisories/GHSA-pjwm-rvh2-c87w @thet
-- Fix storybook errors in the connected components, api is undefined. Using now a mock of the store instead of the whole thing @sneridagh
-
 ### Internal
 
 - Add RawMaterial website in Volto production sites @nzambello
+
+## 14.0.0-alpha.24 (2021-10-29)
+
+### Feature
+
+- Support Node 16 @timo
+
+### Bugfix
+
+- Prevent ua-parser-js security breach. See: https://github.com/advisories/GHSA-pjwm-rvh2-c87w @thet
+- Fix storybook errors in the connected components, api is undefined. Using now a mock of the store instead of the whole thing @sneridagh
 
 ## 14.0.0-alpha.23 (2021-10-21)
 

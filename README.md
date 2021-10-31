@@ -56,7 +56,7 @@ First get all the requirements installed on your system.
 
 ### Prerequisites
 
-- [Node.js LTS (14.x)](https://nodejs.org/)
+- [Node.js LTS (16.x)](https://nodejs.org/)
 - [Python 3.7.x / 2.7.x](https://python.org/) or
 - [Docker](https://www.docker.com/get-started) (if using the Plone/Guillotina docker images)
 
@@ -67,7 +67,8 @@ Create a new Volto project by using the `@plone/generator-volto` utility.
 It will bootstrap a Volto project in a folder of your choice with all the required
 boilerplate to start customizing your Volto site.
 
-    $ npm init yo @plone/volto
+    $ npm install -g yo @plone/generator-volto
+    $ yo @plone/volto
 
 follow the prompts questions, provide `myvoltoproject` as project name then, when it finishes:
 
@@ -178,9 +179,10 @@ as part of the Plone training docs at [https://training.plone.org/5/volto/index.
 
 ## Node Support
 
+- Node 16: Supported since Volto 14
 - Node 14: Supported since Volto 8.8.0
 - Node 12: Supported since Volto 4
-- Node 10: Supported since Volto 1 (and its predecessor "plone-react")
+- Node 10: Deprecated from Volto 13 onwards. It was supported since Volto 1 (and its predecessor "plone-react")
 
 ## Browser support
 
