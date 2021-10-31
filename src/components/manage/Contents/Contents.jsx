@@ -1417,7 +1417,10 @@ class Contents extends Component {
                         attached
                         className="contents-breadcrumbs"
                       >
-                        <ContentsBreadcrumbs items={this.props.breadcrumbs} />
+                        <ContentsBreadcrumbs
+                          items={this.props.breadcrumbs}
+                          root={this.props.root}
+                        />
                         <Dropdown
                           item
                           icon={
@@ -1811,6 +1814,7 @@ export default compose(
       return {
         token: store.userSession.token,
         items: store.search.items,
+        root: store.breadcrumbs.root,
         sort: store.content.update.sort,
         index: store.content.updatecolumns.idx,
         breadcrumbs: store.breadcrumbs.items,
