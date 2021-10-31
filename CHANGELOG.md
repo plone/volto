@@ -24,6 +24,8 @@
 - Fix storybook errors in the connected components, api is undefined. Using now a mock of the store instead of the whole thing @sneridagh
 - CSS fix on `QueryWidget` to prevent line jumping for clear button when the multi selection widget has multiple items @kreafox
 
+- Micromanage and customize SemanticUI CSS bundle. Move theme import to top. @sneridagh
+
 ## 14.0.0-alpha.23 (2021-10-21)
 
 ### Feature
