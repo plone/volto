@@ -11,6 +11,7 @@
 ### Internal
 
 - Add RawMaterial website in Volto production sites @nzambello
+- Cleanup dangling virtualenv files that should not be committed @pnicolli
 
 ## 14.0.0-alpha.24 (2021-10-29)
 
