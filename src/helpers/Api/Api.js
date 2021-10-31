@@ -15,13 +15,20 @@ const methods = ['get', 'post', 'put', 'patch', 'del'];
  * @param {string} path Path (or URL) to be formatted.
  * @returns {string} Formatted path.
  */
-function formatUrl(path) {
+export function formatUrl(path) {
   const { settings } = config;
   const APISUFIX = settings.legacyTraverse ? '' : '/++api++';
+  const portalSubName = settings.portalSubName;
 
+  // it's an external link
   if (path.startsWith('http://') || path.startsWith('https://')) return path;
 
-  const adjustedPath = path[0] !== '/' ? `/${path}` : path;
+  let adjustedPath = path[0] !== '/' ? `/${path}` : path;
+
+  if (portalSubName) {
+    adjustedPath = adjustedPath.replace(`/${portalSubName}`, '');
+  }
+
   let apiPath = '';
   if (settings.internalApiPath && __SERVER__) {
     apiPath = settings.internalApiPath;
@@ -29,6 +36,10 @@ function formatUrl(path) {
     apiPath = settings.apiPath;
   }
 
+  // console.log('path: ', path);
+  // console.log('adjustedPath: ', adjustedPath);
+  // console.log('final url: ', `${apiPath}${APISUFIX}${adjustedPath}`);
+  // console.log('--------------');
   return `${apiPath}${APISUFIX}${adjustedPath}`;
 }
 
