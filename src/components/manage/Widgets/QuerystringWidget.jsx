@@ -85,7 +85,7 @@ export const objectSchema = ({ intl, isDisabled, value }) => ({
 
 const QuerystringWidget = (props) => {
   const { block, onChange, schemaEnhancer } = props;
-  const isDisabled = props.value ? false : true;
+  const isDisabled = props.value?.query.length ? false : true;
 
   const intl = useIntl();
   let schema = objectSchema({ ...props, intl, isDisabled });
