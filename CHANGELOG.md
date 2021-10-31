@@ -10,14 +10,23 @@
 - Image block:
     - When uploading an image or selecting that from the object browser, Image block will set an empty string as alternative text @nzambello
     - Adds a description to the alt-tag with w3c explaination @nzambello
+    
+### Bugfix
+
+- Fix disable mode of `QuerystringWidget` when all criteria are deleted @kreafox
+
+### Internal
+
+- Add RawMaterial website in Volto production sites @nzambello
+
+## 14.0.0-alpha.24 (2021-10-29)
+
 - Support Node 16 @timo
 
 ### Bugfix
 
 - Prevent ua-parser-js security breach. See: https://github.com/advisories/GHSA-pjwm-rvh2-c87w @thet
 - Fix storybook errors in the connected components, api is undefined. Using now a mock of the store instead of the whole thing @sneridagh
-
-### Internal
 
 ## 14.0.0-alpha.23 (2021-10-21)
 
