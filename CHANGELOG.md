@@ -10,6 +10,101 @@
 
 ### Internal
 
+## 14.0.0-alpha.26 (2021-11-01)
+
+### Feature
+
+- Provide Server-Side Rendering capabilities for blocks with async-based content (such as the listing block). A block needs to provide its own `getAsyncData` implementation, which is similar to an `asyncConnect` wrapper promise. @tiberiuichim @sneridagh
+
+## 14.0.0-alpha.25 (2021-11-01)
+
+### Feature
+
+- FormFieldWrapper accepts now strings and elements for description @nzambello
+- Image block:
+  - When uploading an image or selecting that from the object browser, Image block will set an empty string as alternative text @nzambello
+  - Adds a description to the alt-tag with w3c explaination @nzambello
+
+### Bugfix
+
+- Fix disable mode of `QuerystringWidget` when all criteria are deleted @kreafox
+
+### Internal
+
+- Add RawMaterial website in Volto production sites @nzambello
+
+## 14.0.0-alpha.24 (2021-10-29)
+
+### Feature
+
+- Support Node 16 @timo
+
+### Bugfix
+
+- Prevent ua-parser-js security breach. See: https://github.com/advisories/GHSA-pjwm-rvh2-c87w @thet
+- Fix storybook errors in the connected components, api is undefined. Using now a mock of the store instead of the whole thing @sneridagh
+- CSS fix on `QueryWidget` to prevent line jumping for clear button when the multi selection widget has multiple items @kreafox
+
+## 14.0.0-alpha.23 (2021-10-21)
+
+### Feature
+
+- Enable to be able to use the internal proxy in production as well @sneridagh
+
+### Bugfix
+
+- Fix loading of cookie on SSR for certain requests, revert slight change in how they are loaded introduced in alpha 16 @sneridagh
+
+## 14.0.0-alpha.22 (2021-10-20)
+
+### Breaking
+
+- Improve mobile navigation menu with a nicer interaction and a fixed overlay with a drawer (customizable via CSSTransitionGroup) animation @sneridagh
+
+### Internal
+
+- Add locales to existing block variations @sneridagh
+
+## 14.0.0-alpha.21 (2021-10-17)
+
+### Feature
+
+- In the search block, allow editors to specify the sort on criteria.
+  @tiberiuichim
+- Updated Volto production sites list @giuliaghisini
+
+### Bugfix
+
+- Bugfixes to search block. By default search block, when empty, makes a simple
+  query to the nav root, to list all content. Fix reading search text from URL.
+  Implement a simple compression of URL. Don't count searched text as filter.
+  Fix an edge case with showSearchInput in schema. Rename title to Section
+  Title in facet column settings. Avoid double calls to querystring endpoint.
+  @tiberiuichim
+- Use correct shade of black in Plone logo @sneridagh
+
+## 14.0.0-alpha.20 (2021-10-15)
+
+### Breaking
+
+- Revisited, rethought and refactored Seamless mode Seamless mode @sneridagh
+  For more information, please read the deploying guide
+  https://docs.voltocms.com/deploying/seamless-mode/
+
+and the upgrade guide
+https://docs.voltocms.com/upgrade-guide/
+
+### Bugfix
+
+- Fixed SelectWidget: when there was a selected value, the selection was lost when the tab was changed. @giuliaghisini
+
+## 14.0.0-alpha.19 (2021-10-15)
+
+### Feature
+
+- Make VocabularyTermsWidget orderable @ksuess
+- Get widget by tagged values @ksuess
+
 ## 14.0.0-alpha.18 (2021-10-11)
 
 ### Internal
@@ -40,7 +135,7 @@
 
 - Adjusted main `Logo` component styling @sneridagh
 
-For a more information, please read the upgrade guide
+For more information, please read the upgrade guide
 https://docs.voltocms.com/upgrade-guide/
 
 ### Feature

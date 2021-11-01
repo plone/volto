@@ -190,6 +190,16 @@ msgstr ""
 msgid "Alt text"
 msgstr "Texto alternativo"
 
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: Leave empty if the image is purely decorative.
+msgid "Alt text hint"
+msgstr ""
+
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: Describe the purpose of the image.
+msgid "Alt text hint link text"
+msgstr ""
+
 #: components/manage/Toolbar/More
 # defaultMessage: Apply working copy
 msgid "Apply working copy"
@@ -205,6 +215,7 @@ msgstr "Tem a certeza que quer eliminar este campo?"
 msgid "Are you sure you want to delete this fieldset including all fields?"
 msgstr "Tem a certeza que quer eliminar este conjunto de campos incluindo todos os campos?"
 
+#: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
 # defaultMessage: Ascending
 msgid "Ascending"
@@ -680,6 +691,7 @@ msgstr "Eliminar linha"
 msgid "Depth"
 msgstr ""
 
+#: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
 # defaultMessage: Descending
 msgid "Descending"
@@ -965,6 +977,21 @@ msgstr ""
 msgid "Facets"
 msgstr ""
 
+#: config/Blocks
+# defaultMessage: Facets on left side
+msgid "Facets on left side"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Facets on right side
+msgid "Facets on right side"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Facets on top
+msgid "Facets on top"
+msgstr ""
+
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Field
 msgid "Field"
@@ -1176,6 +1203,11 @@ msgstr "Se tiver a certeza que tem o endereço web correcto mas está a obter um
 # defaultMessage: Image
 msgid "Image"
 msgstr "Imagem"
+
+#: config/Blocks
+# defaultMessage: Image gallery
+msgid "Image gallery"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Include this occurence
@@ -1622,6 +1654,7 @@ msgstr ""
 msgid "No results found."
 msgstr "Não foram encontrados quaisquer resultados."
 
+#: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Widgets/QuerySortOnWidget
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: No selection
@@ -2163,6 +2196,11 @@ msgstr ""
 msgid "Second"
 msgstr ""
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Section title
+msgid "Section title"
+msgstr ""
+
 #: components/manage/Sidebar/ObjectBrowserNav
 # defaultMessage: Select
 msgid "Select"
@@ -2351,6 +2389,7 @@ msgstr ""
 msgid "Sort By:"
 msgstr ""
 
+#: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Widgets/QuerySortOnWidget
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Sort on
@@ -2360,6 +2399,11 @@ msgstr ""
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Sort on label
 msgid "Sort on label"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Sort on options
+msgid "Sort on options"
 msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
@@ -2432,6 +2476,11 @@ msgstr "Assunto"
 # defaultMessage: Success
 msgid "Success"
 msgstr "Sucesso"
+
+#: config/Blocks
+# defaultMessage: Summary
+msgid "Summary"
+msgstr ""
 
 #: components/theme/LanguageSelector/LanguageSelector
 # defaultMessage: Switch to
@@ -2594,7 +2643,6 @@ msgid "Time"
 msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/Edit
-#: components/manage/Blocks/Search/schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes

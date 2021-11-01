@@ -197,6 +197,16 @@ msgstr "alphabetisch"
 msgid "Alt text"
 msgstr "Alternative Text"
 
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: Leave empty if the image is purely decorative.
+msgid "Alt text hint"
+msgstr ""
+
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: Describe the purpose of the image.
+msgid "Alt text hint link text"
+msgstr ""
+
 #: components/manage/Toolbar/More
 # defaultMessage: Apply working copy
 msgid "Apply working copy"
@@ -212,6 +222,7 @@ msgstr "Sind Sie sicher, dass Sie dieses Feld löschen möchten?"
 msgid "Are you sure you want to delete this fieldset including all fields?"
 msgstr "Sind Sie sicher, dass Sie dieses Fieldset löschen möchten?"
 
+#: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
 # defaultMessage: Ascending
 msgid "Ascending"
@@ -504,7 +515,7 @@ msgstr "Inhalte"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Controls
 msgid "Controls"
-msgstr ""
+msgstr "Einstellungen"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -687,6 +698,7 @@ msgstr "Zeile löschen"
 msgid "Depth"
 msgstr "Tiefe"
 
+#: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
 # defaultMessage: Descending
 msgid "Descending"
@@ -972,6 +984,21 @@ msgstr "Facetten-Widget"
 msgid "Facets"
 msgstr "Facetten"
 
+#: config/Blocks
+# defaultMessage: Facets on left side
+msgid "Facets on left side"
+msgstr "Facetten links"
+
+#: config/Blocks
+# defaultMessage: Facets on right side
+msgid "Facets on right side"
+msgstr "Facetten rechts"
+
+#: config/Blocks
+# defaultMessage: Facets on top
+msgid "Facets on top"
+msgstr "Facetten oben"
+
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Field
 msgid "Field"
@@ -1096,7 +1123,7 @@ msgstr "Gruppen"
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 # defaultMessage: Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol{plone_svg}indicates a role inherited from membership in another group.
 msgid "Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol{plone_svg}indicates a role inherited from membership in another group."
-msgstr ""
+msgstr "Gruppen sind Kollektionen von Nutzern, wie z.B. Abteilungen oder Organisationseinheiten. Berechtigungen werden normalerweise nicht global an Gruppen vergeben, sondern eher an Rollen, und dann haben Gruppen eine bestimmte Rolle. Das Symbol {plone_svg} zeigt an, dass eine Rolle von einer anderen Gruppe geerbt wird."
 
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Header cell
@@ -1106,7 +1133,7 @@ msgstr "Kopfzeile"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Headline
 msgid "Headline"
-msgstr ""
+msgstr "Überschrift"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Hidden facets will still filter the results if proper parameters are passed in URLs
@@ -1132,7 +1159,7 @@ msgstr "Historie"
 #: components/manage/History/History
 # defaultMessage: #
 msgid "History Version Number"
-msgstr ""
+msgstr "Historie Versionsnummer"
 
 #: components/manage/History/History
 # defaultMessage: History of {title}
@@ -1183,6 +1210,11 @@ msgstr "Wenn Sie sicher sind, dass Sie die richtige Adresse eingegeben haben, ko
 # defaultMessage: Image
 msgid "Image"
 msgstr "Bild"
+
+#: config/Blocks
+# defaultMessage: Image gallery
+msgid "Image gallery"
+msgstr "Bildergalerie"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Include this occurence
@@ -1536,7 +1568,7 @@ msgstr "An den Anfang verschieben"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Multiple choices?
 msgid "Multiple choices?"
-msgstr ""
+msgstr "Mehrfachauswahl"
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: My email address is
@@ -1629,6 +1661,7 @@ msgstr "Keine Ergebnisse gefunden"
 msgid "No results found."
 msgstr "Keine Ergebnisse gefunden."
 
+#: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Widgets/QuerySortOnWidget
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: No selection
@@ -1667,7 +1700,7 @@ msgstr "Nicht vorhanden"
 #: components/manage/Controlpanels/Users/UsersControlpanel
 # defaultMessage: Note that roles set here apply directly to a user. The symbol{plone_svg}indicates a role inherited from membership in a group.
 msgid "Note that roles set here apply directly to a user. The symbol{plone_svg}indicates a role inherited from membership in a group."
-msgstr ""
+msgstr "Rollen gelten für diesen Nutzer. Das Zeichen {plone_svg} zeigt an dass eine Rolle von einer Gruppenzugehörigkeit geerbt wird."
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Number of active objects
@@ -2022,7 +2055,7 @@ msgstr "Ergebnisvorschau"
 #: components/manage/Blocks/Search/SearchBlockEdit
 # defaultMessage: Results template
 msgid "Results template"
-msgstr ""
+msgstr "Template Suchergebnisliste"
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Reversed order
@@ -2117,12 +2150,12 @@ msgstr "Website durchsuchen"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Search block
 msgid "Search block"
-msgstr ""
+msgstr "Such-Block"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Search button label
 msgid "Search button label"
-msgstr ""
+msgstr "Label Such-Button"
 
 #: components/manage/Sidebar/ObjectBrowserBody
 # defaultMessage: Search content
@@ -2142,7 +2175,7 @@ msgstr "Nach Gruppe suchen…"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Search input label
 msgid "Search input label"
-msgstr ""
+msgstr "Label Suchfeld"
 
 #: components/manage/Blocks/Search/components/SearchDetails
 #: components/theme/Search/Search
@@ -2163,12 +2196,17 @@ msgstr "Nach Nutzern suchen…"
 #: components/manage/Blocks/Search/components/SearchDetails
 # defaultMessage: Searched for
 msgid "Searched for"
-msgstr ""
+msgstr "Suche nach"
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Second
 msgid "Second"
 msgstr "Zweiter"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Section title
+msgid "Section title"
+msgstr "Abschnittstitel"
 
 #: components/manage/Sidebar/ObjectBrowserNav
 # defaultMessage: Select
@@ -2284,17 +2322,17 @@ msgstr "Elemente anzeigen"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Show search button?
 msgid "Show search button?"
-msgstr ""
+msgstr "Such-Button anzeigen?"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Show search input?
 msgid "Show search input?"
-msgstr ""
+msgstr "Such-Eingabe anzeigen?"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Show sorting?
 msgid "Show sorting?"
-msgstr ""
+msgstr "Sortieroption anzeigen?"
 
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Shrink sidebar
@@ -2358,6 +2396,7 @@ msgstr "Entschuldigung, ein Fehler ist beim Ausführen Ihrer Anfrage aufgetreten
 msgid "Sort By:"
 msgstr "Sortieren nach:"
 
+#: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Widgets/QuerySortOnWidget
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Sort on
@@ -2367,7 +2406,12 @@ msgstr "Sortieren nach"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Sort on label
 msgid "Sort on label"
-msgstr ""
+msgstr "Label für Sortieren"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Sort on options
+msgid "Sort on options"
+msgstr "Sortieroptionen"
 
 #: components/manage/Blocks/HTML/Edit
 # defaultMessage: Source
@@ -2439,6 +2483,11 @@ msgstr "Betreff"
 # defaultMessage: Success
 msgid "Success"
 msgstr "Erfolgreich"
+
+#: config/Blocks
+# defaultMessage: Summary
+msgid "Summary"
+msgstr "Zusammenfassung"
 
 #: components/theme/LanguageSelector/LanguageSelector
 # defaultMessage: Switch to
@@ -2522,7 +2571,7 @@ msgstr "Der Server antwortet nicht, wir entschuldigen uns für die Unanehmlichke
 #: components/manage/Blocks/Search/schema
 # defaultMessage: The button presence disables the live search, the query is issued when you press ENTER
 msgid "The button presence disables the live search, the query is issued when you press ENTER"
-msgstr ""
+msgstr "Der Button deaktiviert die Live-Suche, die Suchanfrage wird abgeschickt wenn die ENTER-Taste gedrückt wird"
 
 #: components/manage/Contents/Contents
 # defaultMessage: The item could not be deleted.
@@ -2601,7 +2650,6 @@ msgid "Time"
 msgstr "Zeit"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
-#: components/manage/Blocks/Search/schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes

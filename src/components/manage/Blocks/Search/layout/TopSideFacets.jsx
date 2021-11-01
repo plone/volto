@@ -39,6 +39,7 @@ const TopSideFacets = (props) => {
     searchedText, // search text for previous search
     searchText, // search text currently being entered (controlled input)
     isEditMode,
+    querystring = {},
     // searchData,
     // mode = 'view',
     // variation,
@@ -86,7 +87,9 @@ const TopSideFacets = (props) => {
             {data.showSortOn && (
               <SortOn
                 data={data}
+                querystring={querystring}
                 isEditMode={isEditMode}
+                sortOn={sortOn}
                 sortOrder={sortOrder}
                 setSortOn={(sortOn) => {
                   flushSync(() => {
@@ -114,6 +117,7 @@ const TopSideFacets = (props) => {
               <Grid verticalAlign="bottom" columns={12}>
                 <Facets
                   data={data}
+                  querystring={querystring}
                   facets={facets}
                   setFacets={(f) => {
                     flushSync(() => {
