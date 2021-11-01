@@ -182,6 +182,16 @@ msgstr "Alfabetico"
 msgid "Alt text"
 msgstr "Testo alternativo"
 
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: Leave empty if the image is purely decorative.
+msgid "Alt text hint"
+msgstr "Lascia vuoto se l'immagine è decorativa."
+
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: Describe the purpose of the image.
+msgid "Alt text hint link text"
+msgstr "Descrivi lo scopo dell'immagine."
+
 #: components/manage/Toolbar/More
 # defaultMessage: Apply working copy
 msgid "Apply working copy"
@@ -241,7 +251,7 @@ msgstr "Base"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Base search query
 msgid "Base search query"
-msgstr ""
+msgstr "Query di ricerca di base"
 
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Block
@@ -391,7 +401,7 @@ msgstr "Annulla"
 #: components/manage/Blocks/Search/components/FilterList
 # defaultMessage: Clear filters
 msgid "Clear filters"
-msgstr ""
+msgstr "Pulisci filtri"
 
 #: components/theme/View/ImageView
 # defaultMessage: Click to download full sized image
@@ -490,7 +500,7 @@ msgstr "Contenuti"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Controls
 msgid "Controls"
-msgstr ""
+msgstr "Controlli"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -548,7 +558,7 @@ msgstr "Criteri"
 #: components/manage/Blocks/Search/components/FilterList
 # defaultMessage: Current filters applied
 msgid "Current filters applied"
-msgstr ""
+msgstr "Filtri applicati"
 
 #: components/manage/Preferences/ChangePassword
 # defaultMessage: Current password
@@ -947,37 +957,37 @@ msgstr "URL esterno"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Facet
 msgid "Facet"
-msgstr ""
+msgstr "Faccetta"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Facet widget
 msgid "Facet widget"
-msgstr ""
+msgstr "Widget faccette"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Facets
 msgid "Facets"
-msgstr ""
+msgstr "Faccette"
 
 #: config/Blocks
 # defaultMessage: Facets on left side
 msgid "Facets on left side"
-msgstr ""
+msgstr "Faccette nel lato sinistro"
 
 #: config/Blocks
 # defaultMessage: Facets on right side
 msgid "Facets on right side"
-msgstr ""
+msgstr "Faccette nel lato destro"
 
 #: config/Blocks
 # defaultMessage: Facets on top
 msgid "Facets on top"
-msgstr ""
+msgstr "Faccette sopra"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Field
 msgid "Field"
-msgstr ""
+msgstr "Campo"
 
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: File
@@ -1108,12 +1118,12 @@ msgstr "Cella d'intestazione"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Headline
 msgid "Headline"
-msgstr ""
+msgstr "Intestazione"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Hidden facets will still filter the results if proper parameters are passed in URLs
 msgid "Hidden facets will still filter the results if proper parameters are passed in URLs"
-msgstr ""
+msgstr "Le faccette nascoste filtreranno comunque i risultati se i relativi parametri vengono passati nell'URL"
 
 #: components/theme/Comments/Comments
 # defaultMessage: Hide Replies
@@ -1123,7 +1133,7 @@ msgstr "Nascondi risposte"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Hide facet?
 msgid "Hide facet?"
-msgstr ""
+msgstr "Nascondi faccetta"
 
 #: components/manage/History/History
 #: components/manage/Toolbar/More
@@ -1171,7 +1181,7 @@ msgstr "Se questa data è in futuro, il contenuto non verrà mostrato negli elen
 #: components/manage/LockingToastsFactory/LockingToastsFactory
 # defaultMessage: If you are certain this user has abandoned the object, you may unlock the object. You will then be able to edit it.
 msgid "If you are certain this user has abandoned the object, you may unlock the object. You will then be able to edit it."
-msgstr ""
+msgstr "Se sei certo che questo utente ha abbandonato il contenuto, puoi sbloccarlo per poterlo modificare."
 
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized
@@ -1189,7 +1199,7 @@ msgstr "Immagine"
 #: config/Blocks
 # defaultMessage: Image gallery
 msgid "Image gallery"
-msgstr ""
+msgstr "Galleria di immagini"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Include this occurence
@@ -1319,7 +1329,7 @@ msgstr "Gli elementi devono essere unici."
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Label
 msgid "Label"
-msgstr ""
+msgstr "Etichetta"
 
 #: components/manage/Preferences/PersonalPreferences
 # defaultMessage: Language
@@ -1543,7 +1553,7 @@ msgstr "Sposta in cima alla cartella"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Multiple choices?
 msgid "Multiple choices?"
-msgstr ""
+msgstr "Scelta multipla"
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: My email address is
@@ -2030,7 +2040,7 @@ msgstr "Anteprima dei risultati"
 #: components/manage/Blocks/Search/SearchBlockEdit
 # defaultMessage: Results template
 msgid "Results template"
-msgstr ""
+msgstr "Template dei risultati"
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Reversed order
@@ -2125,12 +2135,12 @@ msgstr "Cerca nel sito"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Search block
 msgid "Search block"
-msgstr ""
+msgstr "Blocco di ricerca"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Search button label
 msgid "Search button label"
-msgstr ""
+msgstr "Etichetta del bottone di ricerca"
 
 #: components/manage/Sidebar/ObjectBrowserBody
 # defaultMessage: Search content
@@ -2150,7 +2160,7 @@ msgstr "Cerca gruppo…"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Search input label
 msgid "Search input label"
-msgstr ""
+msgstr "Etichetta dell'input di ricerca"
 
 #: components/manage/Blocks/Search/components/SearchDetails
 #: components/theme/Search/Search
@@ -2171,7 +2181,7 @@ msgstr "Cerca utenti…"
 #: components/manage/Blocks/Search/components/SearchDetails
 # defaultMessage: Searched for
 msgid "Searched for"
-msgstr ""
+msgstr "Cerco per"
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Second
@@ -2181,7 +2191,7 @@ msgstr "Secondo"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Section title
 msgid "Section title"
-msgstr ""
+msgstr "Titolo della sezione"
 
 #: components/manage/Sidebar/ObjectBrowserNav
 # defaultMessage: Select
@@ -2297,17 +2307,17 @@ msgstr "Mostra elemento"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Show search button?
 msgid "Show search button?"
-msgstr ""
+msgstr "Mostra bottone di ricerca"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Show search input?
 msgid "Show search input?"
-msgstr ""
+msgstr "Mostra campo di ricerca"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Show sorting?
 msgid "Show sorting?"
-msgstr ""
+msgstr "Mostra ordinamento"
 
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Shrink sidebar
@@ -2381,12 +2391,12 @@ msgstr "Ordina per"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Sort on label
 msgid "Sort on label"
-msgstr ""
+msgstr "Etichetta campo di ordinamento"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Sort on options
 msgid "Sort on options"
-msgstr ""
+msgstr "Opzioni ordinamento"
 
 #: components/manage/Blocks/HTML/Edit
 # defaultMessage: Source
@@ -2462,7 +2472,7 @@ msgstr "Successo"
 #: config/Blocks
 # defaultMessage: Summary
 msgid "Summary"
-msgstr ""
+msgstr "Sommario"
 
 #: components/theme/LanguageSelector/LanguageSelector
 # defaultMessage: Switch to
@@ -2546,7 +2556,7 @@ msgstr "Il server di backend del tuo sito web non risponde, ci scusiamo per l'in
 #: components/manage/Blocks/Search/schema
 # defaultMessage: The button presence disables the live search, the query is issued when you press ENTER
 msgid "The button presence disables the live search, the query is issued when you press ENTER"
-msgstr ""
+msgstr "La presenza del bottone disabilita la ricerca live, quindi la ricerca viene effettuata quando viene premuto INVIO"
 
 #: components/manage/Contents/Contents
 # defaultMessage: The item could not be deleted.
@@ -2607,7 +2617,7 @@ msgstr "Questa è una copia di lavoro di {title}"
 #: components/manage/LockingToastsFactory/LockingToastsFactory
 # defaultMessage: This item was locked by {creator} on {date}
 msgid "This item was locked by {creator} on {date}"
-msgstr ""
+msgstr "Questo contenuto è stato bloccato da {creator} il {date}"
 
 #: components/manage/Contents/ContentsRenameModal
 # defaultMessage: This name will be displayed in the URL.
@@ -2740,7 +2750,7 @@ msgstr "Scollega traduzione per"
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Unlock
 msgid "Unlock"
-msgstr ""
+msgstr "Sblocca"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Update
