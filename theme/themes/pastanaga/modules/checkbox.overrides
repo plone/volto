@@ -15,9 +15,47 @@
 }
 
 /* Checked */
-.ui.checkbox input:checked ~ .box:after,
-.ui.checkbox input:checked ~ label:after {
+.ui.checkbox input:checked  {
+  & ~ label:after, .box:after {
   content: '\e800';
+  color: #007eb1;
+}
+  & ~ label:before, {
+    border: 1px solid #007eb1;
+  }
+
+/* Focus */
+  &:focus {
+  & ~ label:before {
+    border: 1px solid #007eb1;
+}
+  & ~ label:after, .box:after {
+    content: '\e800';
+    color: #007eb1;
+}
+
+}
+
+}
+
+/* Unchecked */
+.ui.checkbox {
+  label {
+    &:before {
+    border: 1px solid #826a6a;
+    border-radius: unset;
+  }
+  &:hover:before {
+    border: 1px solid #826a6a;
+  }
+  &:focus:before {
+    border: 1px solid #826a6a;
+  }
+}
+input:focus ~ label:before {
+  border: 1px solid #826a6a;
+}
+
 }
 
 /* Indeterminate */
