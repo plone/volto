@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Style checkboxes @nileshgulia1
+
 ### Bugfix
 
 ### Internal
