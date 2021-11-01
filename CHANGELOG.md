@@ -2,15 +2,9 @@
 
 ## 14.0.0 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Provide Server-Side Rendering capabilities for blocks with async-based content (such as the listing block). A block needs to provide its own `getAsyncData` implementation, which is similar to an `asyncConnect` wrapper promise. @tiberiuichim @sneridagh
-
-### Bugfix
-
-### Internal
 
 ## 14.0.0-alpha.25 (2021-11-01)
 
