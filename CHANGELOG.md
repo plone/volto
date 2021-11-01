@@ -2,16 +2,16 @@
 
 ## 14.0.0 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - FormFieldWrapper accepts now strings and elements for description @nzambello
 - Image block:
-    - When uploading an image or selecting that from the object browser, Image block will set an empty string as alternative text @nzambello
-    - Adds a description to the alt-tag with w3c explaination @nzambello
-    
+  - When uploading an image or selecting that from the object browser, Image block will set an empty string as alternative text @nzambello
+  - Adds a description to the alt-tag with w3c explaination @nzambello
+
 ### Bugfix
+
+- Fix disable mode of `QuerystringWidget` when all criteria are deleted @kreafox
 
 ### Internal
 
@@ -38,7 +38,6 @@
 ### Bugfix
 
 - Fix loading of cookie on SSR for certain requests, revert slight change in how they are loaded introduced in alpha 16 @sneridagh
-- Fix disable mode of `QuerystringWidget` when all criteria are deleted @kreafox
 
 ## 14.0.0-alpha.22 (2021-10-20)
 
