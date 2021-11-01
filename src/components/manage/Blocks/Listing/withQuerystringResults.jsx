@@ -25,7 +25,7 @@ export default function withQuerystringResults(WrappedComponent) {
     const adaptedQuery = Object.assign(
       config.settings.bbb_listingBlockFetchesFullobjects
         ? { fullobjects: 1 }
-        : {},
+        : { metadata_fields: '_all' },
       {
         b_size: b_size,
       },
