@@ -5,7 +5,7 @@ import { BlockDataForm } from '@plone/volto/components';
 import { schemaListing } from './schema';
 
 const ListingData = (props) => {
-  const { data, block, onChangeBlock, onChangeFormData } = props;
+  const { data, block, onChangeBlock } = props;
   const intl = useIntl();
   const schema = schemaListing({ ...props, intl });
 
@@ -19,7 +19,7 @@ const ListingData = (props) => {
           [id]: value,
         });
       }}
-      onChangeFormData={onChangeFormData}
+      onChangeBlock={onChangeBlock}
       formData={data}
       block={block}
     />
