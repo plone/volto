@@ -13,8 +13,6 @@
     
 ### Bugfix
 
-- Fix disable mode of `QuerystringWidget` when all criteria are deleted @kreafox
-
 ### Internal
 
 - Add RawMaterial website in Volto production sites @nzambello
@@ -37,6 +35,8 @@
 ### Bugfix
 
 - Fix loading of cookie on SSR for certain requests, revert slight change in how they are loaded introduced in alpha 16 @sneridagh
+- Fix disable mode of `QuerystringWidget` when all criteria are deleted @kreafox
+
 
 ## 14.0.0-alpha.22 (2021-10-20)
 
