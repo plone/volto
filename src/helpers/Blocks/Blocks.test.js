@@ -13,6 +13,7 @@ import {
   mutateBlock,
   nextBlockId,
   previousBlockId,
+  visitBlocks,
 } from './Blocks';
 
 import config from '@plone/volto/registry';
@@ -298,6 +299,66 @@ describe('Blocks', () => {
           'a',
         ),
       ).toBe('b');
+    });
+  });
+
+  describe('visitBlocks', () => {
+    it('visit blocks', () => {
+      const d = {
+        data: {
+          blocks: {
+            '1': {
+              blocks: {
+                '2': {},
+                '3': {
+                  data: {
+                    blocks: {
+                      '11': {},
+                      '12': {},
+                      '13': {},
+                    },
+                    blocks_layout: {
+                      items: ['11', '12', '13'],
+                    },
+                  },
+                },
+                '7': {
+                  blocks: {
+                    '8': {},
+                    '9': {},
+                    '10': {},
+                  },
+                  blocks_layout: {
+                    items: ['8', '9', '10'],
+                  },
+                },
+              },
+              blocks_layout: {
+                items: ['2', '3', '7'],
+              },
+            },
+            '4': {
+              blocks: {
+                '5': {},
+                '6': {},
+              },
+              blocks_layout: {
+                items: ['5', '6'],
+              },
+            },
+          },
+          blocks_layout: {
+            items: ['1', '4'],
+          },
+        },
+      };
+
+      const a = [];
+      visitBlocks(d.data, (x) => {
+        a.push(x);
+      });
+
+      expect(a.length).toBe(13);
     });
   });
 });
