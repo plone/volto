@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix opening of overlay on first click @iRohitSingh
+
 ### Internal
 
 ## 14.0.0-alpha.26 (2021-11-01)
