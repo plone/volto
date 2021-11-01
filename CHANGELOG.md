@@ -19,6 +19,8 @@
 
 ## 14.0.0-alpha.24 (2021-10-29)
 
+### Feature
+
 - Support Node 16 @timo
 
 ### Bugfix
