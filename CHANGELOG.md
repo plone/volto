@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix gap of image block in Paragraph styling that shows in chrome @iRohitSingh
+
 ### Internal
 
 ## 14.0.0-alpha.26 (2021-11-01)
