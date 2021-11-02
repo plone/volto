@@ -340,6 +340,28 @@ export function emptyBlocksForm() {
 }
 
 /**
+ * Recursively discover blocks in data and call the provided callback
+ */
+export function visitBlocks(content, callback) {
+  const queue = getBlocks(content);
+  while (queue.length > 0) {
+    const [id, blockdata] = queue.shift();
+    callback([id, blockdata]);
+
+    // assumes that a block value is like: {blocks, blocks_layout} or
+    // { data: {blocks, blocks_layout}}
+    if (Object.keys(blockdata || {}).indexOf('blocks') > -1) {
+      queue.push(...getBlocks(blockdata));
+      // getBlocks(blockdata).forEach((tuple) => queue.push(tuple));
+    }
+    if (Object.keys(blockdata?.data || {}).indexOf('blocks') > -1) {
+      queue.push(...getBlocks(blockdata.data));
+      // getBlocks(blockdata.data).forEach((tuple) => queue.push(tuple));
+    }
+  }
+}
+
+/**
  * Returns true if the block data is an empty placeholder block
  * @function isPlaceholderBlock
  * @param {Object} blockData Block data

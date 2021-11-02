@@ -159,6 +159,16 @@ msgstr "Alfabeticamente"
 msgid "Alt text"
 msgstr "Descrição Alt"
 
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: Leave empty if the image is purely decorative.
+msgid "Alt text hint"
+msgstr ""
+
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: Describe the purpose of the image.
+msgid "Alt text hint link text"
+msgstr ""
+
 #: components/manage/Toolbar/More
 msgid "Apply working copy"
 msgstr "Aplicar a cópia de trabalho"
