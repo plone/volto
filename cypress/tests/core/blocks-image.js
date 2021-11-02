@@ -148,4 +148,22 @@ describe('Blocks Tests', () => {
         expect($img[0].naturalWidth).to.be.greaterThan(0);
       });
   });
+
+  it('Create an image block and initially alt attr is empty', () => {
+    // when I add an image block via upload
+    cy.get('.block.inner.text .public-DraftEditor-content').click();
+    cy.get('.ui.basic.icon.button.block-add-button').click();
+    cy.get('.ui.basic.icon.button.image').contains('Image').click();
+
+    cy.get('input[type="file"]').attachFile('image.png', {
+      subjectType: 'input',
+      encoding: 'utf8',
+    });
+    cy.waitForResourceToLoad('image.png/@@images/image');
+
+    // then in sidebar alt attr should be empty
+    cy.get('#sidebar-properties .field-wrapper-alt input#field-alt')
+      .should('have.attr', 'value')
+      .and('eq', '');
+  });
 });

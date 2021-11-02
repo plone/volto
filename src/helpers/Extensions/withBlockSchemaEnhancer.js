@@ -48,7 +48,7 @@ export const addExtensionFieldToSchema = ({
     title: _(title),
     choices: items?.map(({ id, title }) => [
       id,
-      _({ id, defaultMessage: title }),
+      _({ id: title, defaultMessage: title }),
     ]),
     noValueOption: false,
     defaultValue: hasDefaultExtension
