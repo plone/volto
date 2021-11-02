@@ -37,21 +37,23 @@ const ContentContainer = ({ children, content }) => {
   return (
     <>
       {hasLeftSlot || hasRightSlot ? (
-        <Grid stackable as={Container}>
-          {hasLeftSlot && (
-            <Grid.Column as="aside" className="aside-left-slot" width={3}>
-              <SlotRenderer name="asideLeftSlot" metadata={content} />
+        <Container>
+          <Grid stackable>
+            {hasLeftSlot && (
+              <Grid.Column as="aside" className="aside-left-slot" width={3}>
+                <SlotRenderer name="asideLeftSlot" metadata={content} />
+              </Grid.Column>
+            )}
+            <Grid.Column className="content-body" width={contentWidth()}>
+              {children}
             </Grid.Column>
-          )}
-          <Grid.Column className="content-body" width={contentWidth()}>
-            {children}
-          </Grid.Column>
-          {hasRightSlot && (
-            <Grid.Column as="aside" className="aside-right-slot" width={3}>
-              <SlotRenderer name="asideRightSlot" metadata={content} />
-            </Grid.Column>
-          )}
-        </Grid>
+            {hasRightSlot && (
+              <Grid.Column as="aside" className="aside-right-slot" width={3}>
+                <SlotRenderer name="asideRightSlot" metadata={content} />
+              </Grid.Column>
+            )}
+          </Grid>
+        </Container>
       ) : (
         <>{children}</>
       )}
