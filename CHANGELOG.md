@@ -9,6 +9,7 @@
 ### Bugfix
 
 ### Internal
+- Removing the hardcoded default block type from text block @iRohitSingh
 
 ## 14.0.0-alpha.26 (2021-11-01)
 
