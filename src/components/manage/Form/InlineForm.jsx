@@ -1,10 +1,11 @@
-import PropTypes from 'prop-types';
-import { defineMessages, injectIntl } from 'react-intl';
 import React from 'react';
-import { keys, map } from 'lodash';
-import { Field, Icon } from '@plone/volto/components';
-import AnimateHeight from 'react-animate-height';
+import PropTypes from 'prop-types';
 import { Accordion, Segment, Message } from 'semantic-ui-react';
+import { defineMessages, injectIntl } from 'react-intl';
+import AnimateHeight from 'react-animate-height';
+import { keys, map } from 'lodash';
+
+import { Field, Icon } from '@plone/volto/components';
 import { applySchemaEnhancer } from '@plone/volto/helpers';
 
 import upSVG from '@plone/volto/icons/up-key.svg';
@@ -46,12 +47,12 @@ const InlineForm = (props) => {
   const defaultFieldset = schema.fieldsets.find((o) => o.id === 'default');
   const other = schema.fieldsets.filter((o) => o.id !== 'default');
 
+  const objectSchema = typeof schema === 'function' ? schema(props) : schema;
   /**
    * Will set field values from schema, by matching the default values
    * @returns {Object} defaultValues
    */
-  const setInitialData = () => {
-    const objectSchema = typeof schema === 'function' ? schema(props) : schema;
+  const setInitialData = React.useCallback(() => {
     const finalSchema = applySchemaEnhancer({
       schema: objectSchema,
       formData,
@@ -73,12 +74,16 @@ const InlineForm = (props) => {
       ...defaultValues,
       ...formData,
     };
-  };
+  }, [formData, intl, objectSchema]);
+
+  const [initialized, setInitialized] = React.useState();
 
   React.useEffect(() => {
-    onChangeBlock && onChangeBlock(block, { ...setInitialData() });
-    /* eslint-disable-next-line */
-  }, []);
+    if (!initialized) {
+      onChangeBlock && onChangeBlock(block, { ...setInitialData() });
+      setInitialized(true);
+    }
+  }, [initialized, block, onChangeBlock, setInitialData]);
 
   const [currentActiveFieldset, setCurrentActiveFieldset] = React.useState(0);
   function handleCurrentActiveFieldset(e, blockProps) {

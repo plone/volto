@@ -51,7 +51,7 @@ export const addExtensionFieldToSchema = ({
       _({ id, defaultMessage: title }),
     ]),
     noValueOption: false,
-    defaultValue: hasDefaultExtension
+    default: hasDefaultExtension
       ? items?.find((item) => item.isDefault).id
       : null,
   };
