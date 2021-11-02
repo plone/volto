@@ -4,6 +4,8 @@
 
 ### Breaking
 
+- Use title instead of id as a source of translation in "Variation" field in block enhancers @sneridagh
+
 ### Feature
 
 ### Bugfix
