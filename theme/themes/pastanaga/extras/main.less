@@ -152,21 +152,21 @@ button {
 .ui.checkbox {
   label {
     &:before {
-      border: 1px solid #826a6a;
+      border: @checkboxBorderUnchecked;
       border-radius: unset;
     }
 
     &:hover:before {
-      border: 1px solid #826a6a;
+      border: @checkboxBorderUnchecked;
     }
 
     &:focus:before {
-      border: 1px solid #826a6a;
+      border: @checkboxBorderUnchecked;
     }
   }
 
   input:focus ~ label:before {
-    border: 1px solid #826a6a;
+    border: @checkboxBorderUnchecked;
   }
 }
 
@@ -174,23 +174,23 @@ button {
 .ui.checkbox input:checked {
   & ~ label:after,
   .box:after {
-    color: #007eb1;
+    color: @checkboxColor;
     content: '\e800';
   }
 
   & ~ label:before {
-    border: 1px solid #007eb1;
+    border: @checkboxBorderChecked;
   }
 
   /* Focus */
   &:focus {
     & ~ label:before {
-      border: 1px solid #007eb1;
+      border: @checkboxBorderChecked;
     }
 
     & ~ label:after,
     .box:after {
-      color: #007eb1;
+      color: @checkboxColor;
       content: '\e800';
     }
   }
