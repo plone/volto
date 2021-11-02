@@ -20,13 +20,13 @@ function NewBaseWidget(name) {
 }
 
 const withStateManagement = (Component) => ({ ...props }) => {
-  const [formData, setFormData] = React.useState(props.formData);
-  const onChangeBlock = (block, formData) => {
-    setFormData(formData);
+  const [formData, setFormData] = React.useState(props.formData || {});
+  const onChangeField = (id, value) => {
+    setFormData({ ...formData, [id]: value });
   };
 
   return (
-    <Component {...props} onChangeBlock={onChangeBlock} formData={formData} />
+    <Component {...props} onChangeField={onChangeField} formData={formData} />
   );
 };
 

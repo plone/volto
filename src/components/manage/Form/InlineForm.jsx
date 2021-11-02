@@ -3,10 +3,9 @@ import PropTypes from 'prop-types';
 import { Accordion, Segment, Message } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import AnimateHeight from 'react-animate-height';
-import { keys, map } from 'lodash';
+import { keys, map, isEqual } from 'lodash';
 
 import { Field, Icon } from '@plone/volto/components';
-import { applySchemaEnhancer } from '@plone/volto/helpers';
 
 import upSVG from '@plone/volto/icons/up-key.svg';
 import downSVG from '@plone/volto/icons/down-key.svg';
@@ -40,7 +39,6 @@ const InlineForm = (props) => {
     headerActions,
     footer,
     focusIndex,
-    onChangeBlock,
     intl,
   } = props;
   const _ = intl.formatMessage;
@@ -53,17 +51,12 @@ const InlineForm = (props) => {
    * @returns {Object} defaultValues
    */
   const setInitialData = React.useCallback(() => {
-    const finalSchema = applySchemaEnhancer({
-      schema: objectSchema,
-      formData,
-      intl,
-    });
-    const defaultValues = Object.keys(finalSchema.properties).reduce(
+    const defaultValues = Object.keys(objectSchema.properties).reduce(
       (accumulator, currentField) => {
-        return finalSchema.properties[currentField].default
+        return objectSchema.properties[currentField].default
           ? {
               ...accumulator,
-              [currentField]: finalSchema.properties[currentField].default,
+              [currentField]: objectSchema.properties[currentField].default,
             }
           : accumulator;
       },
@@ -74,16 +67,21 @@ const InlineForm = (props) => {
       ...defaultValues,
       ...formData,
     };
-  }, [formData, intl, objectSchema]);
+  }, [formData, objectSchema]);
 
   const [initialized, setInitialized] = React.useState();
 
   React.useEffect(() => {
     if (!initialized) {
-      onChangeBlock && onChangeBlock(block, { ...setInitialData() });
       setInitialized(true);
+      const initialData = { ...setInitialData() };
+      Object.keys(initialData).forEach((k) => {
+        if (!isEqual(initialData[k], formData?.[k])) {
+          onChangeField(k, initialData[k]);
+        }
+      });
     }
-  }, [initialized, block, onChangeBlock, setInitialData]);
+  }, [formData, initialized, block, onChangeField, setInitialData]);
 
   const [currentActiveFieldset, setCurrentActiveFieldset] = React.useState(0);
   function handleCurrentActiveFieldset(e, blockProps) {
