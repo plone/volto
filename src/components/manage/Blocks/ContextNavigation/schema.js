@@ -7,6 +7,7 @@ export const EditSchema = () => {
         title: 'Default',
         fields: [
           'name',
+          'linkToSitemap',
           'root_node',
           'includeTop',
           'currentFolderOnly',
@@ -23,6 +24,11 @@ export const EditSchema = () => {
       name: {
         title: 'Title',
         description: 'The title of the navigation tree',
+      },
+      linkToSitemap: {
+        title: 'Link the title to the sitemap page',
+        description: 'If enabled, the title redirects to the sitemap page.',
+        type: 'boolean',
       },
       root_node: {
         title: 'Root node',

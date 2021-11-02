@@ -63,7 +63,7 @@ function renderNode(node, parentLevel) {
  * INavigationPortlet
  */
 export function ContextNavigationComponent(props) {
-  const { navigation = {} } = props;
+  const { navigation = {}, params = {} } = props;
   const { items = [] } = navigation;
   const intl = useIntl();
 
@@ -71,9 +71,13 @@ export function ContextNavigationComponent(props) {
     <nav className="context-navigation">
       {navigation.has_custom_name ? (
         <div className="context-navigation-header">
-          <RouterLink to={flattenToAppURL(navigation.url || '')}>
-            {navigation.title}
-          </RouterLink>
+          {params.linkToSitemap ? (
+            <RouterLink to={flattenToAppURL(navigation.url || '')}>
+              {navigation.title}
+            </RouterLink>
+          ) : (
+            <>{navigation.title}</>
+          )}
         </div>
       ) : (
         <div className="context-navigation-header">
