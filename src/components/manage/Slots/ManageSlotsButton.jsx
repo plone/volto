@@ -23,7 +23,7 @@ export default function ManageSlotsButton(props) {
 
   // TODO: i18n
 
-  return content['@id'] && editableSlots.length ? (
+  return content?.['@id'] && editableSlots.length ? (
     <DropdownWithButton
       {...props}
       name="manage-slots"
