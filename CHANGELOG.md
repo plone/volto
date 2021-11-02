@@ -6,12 +6,6 @@
 
 - Use title instead of id as a source of translation in "Variation" field in block enhancers @sneridagh
 
-### Feature
-
-### Bugfix
-
-### Internal
-
 ## 14.0.0-alpha.26 (2021-11-01)
 
 ### Feature
