@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fixed ObjectBrowserWidget when is multiple or maximumSelectionSize is not set @giuliaghisini
+
 ### Internal
 
 ## 14.0.0-alpha.27 (2021-11-02)
