@@ -4,6 +4,8 @@
 
 ### Breaking
 
+- Defaults are observed in block data if `InlineForm` or `BlockDataForm` are used. It won't break if not changed, but the feature won't be enabled until you follow upgrade instructions. Find them in the upgrade guide. @sneridagh @tiberiuichim
+
 ### Feature
 
 ### Bugfix

@@ -79,6 +79,7 @@ export {
   withBlockSchemaEnhancer,
   withVariationSchemaEnhancer,
   withBlockExtensions,
+  applySchemaEnhancer,
 } from './Extensions';
 export { asyncConnect } from './AsyncConnect';
 export { userHasRoles } from './User/User';
