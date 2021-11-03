@@ -45,43 +45,32 @@ const InlineForm = (props) => {
   const defaultFieldset = schema.fieldsets.find((o) => o.id === 'default');
   const other = schema.fieldsets.filter((o) => o.id !== 'default');
 
-  const objectSchema = typeof schema === 'function' ? schema(props) : schema;
-  /**
-   * Will set field values from schema, by matching the default values
-   * @returns {Object} defaultValues
-   */
-  const setInitialData = React.useCallback(() => {
-    const defaultValues = Object.keys(objectSchema.properties).reduce(
-      (accumulator, currentField) => {
-        return objectSchema.properties[currentField].default
-          ? {
-              ...accumulator,
-              [currentField]: objectSchema.properties[currentField].default,
-            }
-          : accumulator;
-      },
-      {},
-    );
+  React.useEffect(() => {
+    // Will set field values from schema, by matching the default values
 
-    return {
-      ...defaultValues,
+    const objectSchema = typeof schema === 'function' ? schema(props) : schema;
+    const initialData = {
+      ...Object.keys(objectSchema.properties).reduce(
+        (accumulator, currentField) => {
+          return objectSchema.properties[currentField].default
+            ? {
+                ...accumulator,
+                [currentField]: objectSchema.properties[currentField].default,
+              }
+            : accumulator;
+        },
+        {},
+      ),
       ...formData,
     };
-  }, [formData, objectSchema]);
 
-  const [initialized, setInitialized] = React.useState();
-
-  React.useEffect(() => {
-    if (!initialized) {
-      setInitialized(true);
-      const initialData = { ...setInitialData() };
-      Object.keys(initialData).forEach((k) => {
-        if (!isEqual(initialData[k], formData?.[k])) {
-          onChangeField(k, initialData[k]);
-        }
-      });
-    }
-  }, [formData, initialized, block, onChangeField, setInitialData]);
+    Object.keys(initialData).forEach((k) => {
+      if (!isEqual(initialData[k], formData?.[k])) {
+        onChangeField(k, initialData[k]);
+      }
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const [currentActiveFieldset, setCurrentActiveFieldset] = React.useState(0);
   function handleCurrentActiveFieldset(e, blockProps) {
