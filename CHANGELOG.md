@@ -15,6 +15,7 @@
 ### Feature
 
 - Provide Server-Side Rendering capabilities for blocks with async-based content (such as the listing block). A block needs to provide its own `getAsyncData` implementation, which is similar to an `asyncConnect` wrapper promise. @tiberiuichim @sneridagh
+- Support typescript usage in Volto sites @pnicolli
 
 ## 14.0.0-alpha.25 (2021-11-01)
 
