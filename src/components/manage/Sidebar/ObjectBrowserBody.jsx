@@ -309,10 +309,12 @@ class ObjectBrowserBody extends Component {
           this.onSelectItem(item);
           let length = this.props.data ? this.props.data.length : 0;
 
-          if (
-            this.props.maximumSelectionSize > 0 &&
-            length + 1 >= this.props.maximumSelectionSize
-          ) {
+          let stopSelecting =
+            this.props.mode !== 'multiple' ||
+            (this.props.maximumSelectionSize > 0 &&
+              length + 1 >= this.props.maximumSelectionSize);
+
+          if (stopSelecting) {
             this.props.closeObjectBrowser();
           }
         } else {
