@@ -1,11 +1,11 @@
-import PropTypes from 'prop-types';
-import { defineMessages, injectIntl } from 'react-intl';
 import React from 'react';
-import { keys, map } from 'lodash';
-import { Field, Icon } from '@plone/volto/components';
-import AnimateHeight from 'react-animate-height';
+import PropTypes from 'prop-types';
 import { Accordion, Segment, Message } from 'semantic-ui-react';
-import { applySchemaEnhancer } from '@plone/volto/helpers';
+import { defineMessages, injectIntl } from 'react-intl';
+import AnimateHeight from 'react-animate-height';
+import { keys, map, isEqual } from 'lodash';
+
+import { Field, Icon } from '@plone/volto/components';
 
 import upSVG from '@plone/volto/icons/up-key.svg';
 import downSVG from '@plone/volto/icons/down-key.svg';
@@ -39,45 +39,37 @@ const InlineForm = (props) => {
     headerActions,
     footer,
     focusIndex,
-    onChangeBlock,
     intl,
   } = props;
   const _ = intl.formatMessage;
   const defaultFieldset = schema.fieldsets.find((o) => o.id === 'default');
   const other = schema.fieldsets.filter((o) => o.id !== 'default');
 
-  /**
-   * Will set field values from schema, by matching the default values
-   * @returns {Object} defaultValues
-   */
-  const setInitialData = () => {
-    const objectSchema = typeof schema === 'function' ? schema(props) : schema;
-    const finalSchema = applySchemaEnhancer({
-      schema: objectSchema,
-      formData,
-      intl,
-    });
-    const defaultValues = Object.keys(finalSchema.properties).reduce(
-      (accumulator, currentField) => {
-        return finalSchema.properties[currentField].default
-          ? {
-              ...accumulator,
-              [currentField]: finalSchema.properties[currentField].default,
-            }
-          : accumulator;
-      },
-      {},
-    );
+  React.useEffect(() => {
+    // Will set field values from schema, by matching the default values
 
-    return {
-      ...defaultValues,
+    const objectSchema = typeof schema === 'function' ? schema(props) : schema;
+    const initialData = {
+      ...Object.keys(objectSchema.properties).reduce(
+        (accumulator, currentField) => {
+          return objectSchema.properties[currentField].default
+            ? {
+                ...accumulator,
+                [currentField]: objectSchema.properties[currentField].default,
+              }
+            : accumulator;
+        },
+        {},
+      ),
       ...formData,
     };
-  };
 
-  React.useEffect(() => {
-    onChangeBlock && onChangeBlock(block, { ...setInitialData() });
-    /* eslint-disable-next-line */
+    Object.keys(initialData).forEach((k) => {
+      if (!isEqual(initialData[k], formData?.[k])) {
+        onChangeField(k, initialData[k]);
+      }
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const [currentActiveFieldset, setCurrentActiveFieldset] = React.useState(0);
