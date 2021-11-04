@@ -35,6 +35,18 @@ body {
   flex-direction: column;
 }
 
+.addReducedTextElements() when (@reduceTextElementsSize = true) {
+  @{textElementsParentSelector} {
+    @{textElementsSelectors} {
+      max-width: @textElementsMaxWidth;
+      margin-right: @textElementsRightMargin;
+      margin-left: @textElementsLeftMargin;
+    }
+  }
+}
+
+.addReducedTextElements();
+
 .overlay-container {
   position: fixed;
   z-index: 110;
