@@ -234,7 +234,6 @@ class ObjectBrowserBody extends Component {
 
   onSelectItem = (item) => {
     const url = item['@id'];
-    const title = item.title;
     const { block, data, mode, dataName, onChangeBlock } = this.props;
 
     const updateState = (mode) => {
@@ -267,7 +266,7 @@ class ObjectBrowserBody extends Component {
       onChangeBlock(block, {
         ...data,
         url: flattenToAppURL(item.getURL),
-        alt: title,
+        alt: '',
       });
     } else if (mode === 'link') {
       onChangeBlock(block, {

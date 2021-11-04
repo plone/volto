@@ -182,6 +182,16 @@ msgstr "Alfabetico"
 msgid "Alt text"
 msgstr "Testo alternativo"
 
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: Leave empty if the image is purely decorative.
+msgid "Alt text hint"
+msgstr "Lascia vuoto se l'immagine è decorativa."
+
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: Describe the purpose of the image.
+msgid "Alt text hint link text"
+msgstr "Descrivi lo scopo dell'immagine."
+
 #: components/manage/Toolbar/More
 # defaultMessage: Apply working copy
 msgid "Apply working copy"
@@ -962,12 +972,12 @@ msgstr "Faccette"
 #: config/Blocks
 # defaultMessage: Facets on left side
 msgid "Facets on left side"
-msgstr "Faccette a sinistra"
+msgstr "Faccette nel lato sinistro"
 
 #: config/Blocks
 # defaultMessage: Facets on right side
 msgid "Facets on right side"
-msgstr "Faccette a destra"
+msgstr "Faccette nel lato destro"
 
 #: config/Blocks
 # defaultMessage: Facets on top
@@ -1189,7 +1199,7 @@ msgstr "Immagine"
 #: config/Blocks
 # defaultMessage: Image gallery
 msgid "Image gallery"
-msgstr "Galliera di immagini"
+msgstr "Galleria di immagini"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Include this occurence
@@ -2030,7 +2040,7 @@ msgstr "Anteprima dei risultati"
 #: components/manage/Blocks/Search/SearchBlockEdit
 # defaultMessage: Results template
 msgid "Results template"
-msgstr ""
+msgstr "Template dei risultati"
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Reversed order
@@ -2125,7 +2135,7 @@ msgstr "Cerca nel sito"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Search block
 msgid "Search block"
-msgstr ""
+msgstr "Blocco di ricerca"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Search button label
