@@ -1,4 +1,6 @@
-
+/*-------------------
+      main.less
+--------------------*/
 /* Mobile Menu Nav */
 @mobileMenuNavAlignItems: center;
 @mobileMenuNavJustifyContent: center;
@@ -11,3 +13,8 @@
 /* Mobile Menu Nav Item */
 @mobileMenuNavItemJustifyContent: center;
 @mobileMenuNavItemLineHeight: 1.25;
+
+/*-------------------
+      login.less
+--------------------*/
+@loginContainerMaxWidth: 376px !important;

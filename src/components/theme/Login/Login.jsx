@@ -176,7 +176,7 @@ class Login extends Component {
     return (
       <div id="page-login">
         <Helmet title={this.props.intl.formatMessage(messages.Login)} />
-        <Container text>
+        <Container>
           <Form method="post" onSubmit={this.onLogin}>
             <Segment.Group raised>
               <Segment className="primary">

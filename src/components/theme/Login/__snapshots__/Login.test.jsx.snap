@@ -5,7 +5,7 @@ exports[`Login renders a login component 1`] = `
   id="page-login"
 >
   <div
-    className="ui text container"
+    className="ui container"
   >
     <form
       className="ui form"
