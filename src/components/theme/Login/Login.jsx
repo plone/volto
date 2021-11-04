@@ -248,21 +248,21 @@ class Login extends Component {
                     <Grid.Row stretched>
                       {config.settings.showSelfRegistration && (
                         <Grid.Column stretched width="12">
-                          <p className="help">
+                          <div className="help">
                             <Link to="/register">
                               {this.props.intl.formatMessage(messages.register)}
                             </Link>
-                          </p>
+                          </div>
                         </Grid.Column>
                       )}
                       <Grid.Column stretched width="12">
-                        <p className="help">
+                        <div className="help">
                           <Link to="/password-reset">
                             {this.props.intl.formatMessage(
                               messages.forgotPassword,
                             )}
                           </Link>
-                        </p>
+                        </div>
                       </Grid.Column>
                     </Grid.Row>
                   </Grid>

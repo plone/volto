@@ -122,7 +122,7 @@ exports[`Login renders a login component 1`] = `
                 <div
                   className="stretched twelve wide column"
                 >
-                  <p
+                  <div
                     className="help"
                   >
                     <a
@@ -131,7 +131,7 @@ exports[`Login renders a login component 1`] = `
                     >
                       Forgot your password?
                     </a>
-                  </p>
+                  </div>
                 </div>
               </div>
             </div>
