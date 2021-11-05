@@ -12,6 +12,8 @@
 
 ### Internal
 
+- Adding Schema for Maps Block in Sidebar @iRohitSingh
+
 ## 14.0.0-alpha.27 (2021-11-02)
 
 ### Breaking
