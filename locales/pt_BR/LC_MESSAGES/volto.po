@@ -170,7 +170,7 @@ msgstr "Outra data"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Maps/schema
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Alignment
 msgid "Alignment"
@@ -1401,7 +1401,6 @@ msgstr "Título do link"
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
-#: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Link to
 msgid "Link to"
@@ -1484,12 +1483,13 @@ msgstr "Gerenciar traduções"
 msgid "Manage translations for {title}"
 msgstr "Gerenciar traduções para {title}"
 
-#: components/manage/Blocks/Maps/MapsSidebar
-# defaultMessage: Map
-msgid "Map"
-msgstr "Mapa"
+#: components/manage/Blocks/Maps/MapsData
+#: components/manage/Blocks/Maps/schema
+# defaultMessage: Maps
+msgid "Maps"
+msgstr ""
 
-#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Maps/schema
 # defaultMessage: Maps URL
 msgid "Maps URL"
 msgstr "Url do Mapa"
@@ -1628,7 +1628,7 @@ msgstr "Não foram encontrados itens nesta pasta."
 msgid "No items selected"
 msgstr "Nenhum item selecionado"
 
-#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Maps/MapsData
 # defaultMessage: No map selected
 msgid "No map selected"
 msgstr "Nenhum mapa selecionado"
@@ -1719,7 +1719,6 @@ msgstr "Ok"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Open in a new tab
 msgid "Open in a new tab"
