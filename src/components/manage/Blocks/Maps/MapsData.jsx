@@ -18,11 +18,9 @@ const messages = defineMessages({
 });
 
 const MapsData = (props) => {
-  const { data, block, onChangeBlock, schemaEnhancer } = props;
+  const { data, block, onChangeBlock } = props;
   const intl = useIntl();
-  const schema = schemaEnhancer
-    ? schemaEnhancer(MapsSchema({ ...props, intl }), props)
-    : MapsSchema({ ...props, intl });
+  const schema = MapsSchema({ ...props, intl });
 
   return (
     <>
