@@ -12,12 +12,14 @@ export const usePagination = (query, defaultPage = 1) => {
   const [currentPage, setCurrentPage] = React.useState(defaultPage);
 
   useDeepCompareEffect(() => {
-    setCurrentPage(1);
-  }, [query, previousQuery]);
+    setCurrentPage(defaultPage);
+  }, [query, previousQuery, defaultPage]);
 
   return {
     currentPage:
-      previousQuery && !isEqual(previousQuery, query) ? 1 : currentPage,
+      previousQuery && !isEqual(previousQuery, query)
+        ? defaultPage
+        : currentPage,
     setCurrentPage,
   };
 };
