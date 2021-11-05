@@ -4,31 +4,13 @@ import hoistNonReactStatics from 'hoist-non-react-statics';
 import useDeepCompareEffect from 'use-deep-compare-effect';
 
 import { getContent, getQueryStringResults } from '@plone/volto/actions';
-import { usePrevious } from '@plone/volto/helpers';
-import { isEqual } from 'lodash';
+import { usePagination } from '@plone/volto/helpers';
 
 import config from '@plone/volto/registry';
 
 function getDisplayName(WrappedComponent) {
   return WrappedComponent.displayName || WrappedComponent.name || 'Component';
 }
-
-const useQueryPagination = (querystring) => {
-  const previousQuerystring = usePrevious(querystring);
-  const [currentPage, setCurrentPage] = React.useState(1);
-
-  useDeepCompareEffect(() => {
-    setCurrentPage(1);
-  }, [querystring, previousQuerystring]);
-
-  return {
-    currentPage:
-      previousQuerystring && !isEqual(previousQuerystring, querystring)
-        ? 1
-        : currentPage,
-    setCurrentPage,
-  };
-};
 
 export default function withQuerystringResults(WrappedComponent) {
   function WithQuerystringResults(props) {
@@ -55,7 +37,7 @@ export default function withQuerystringResults(WrappedComponent) {
           : {},
       ),
     );
-    const { currentPage, setCurrentPage } = useQueryPagination(querystring);
+    const { currentPage, setCurrentPage } = usePagination(querystring, 1);
     const querystringResults = useSelector(
       (state) => state.querystringsearch.subrequests,
     );
