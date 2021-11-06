@@ -78,8 +78,8 @@ const ImageGalleryTemplate = ({ items }) => {
   );
   const imagesInfo = renderItems.map((item) => {
     return {
-      original: `${item.url}/@@images/${item.image_field}/large`,
-      thumbnail: `${item.url}/@@images/${item.image_field}/thumb`,
+      original: `${item['@id']}/@@images/${item.image_field}/large`,
+      thumbnail: `${item['@id']}/@@images/${item.image_field}/thumb`,
     };
   });
 

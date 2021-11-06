@@ -30,7 +30,7 @@ const SummaryTemplate = ({ items, linkTitle, linkHref, isEditMode }) => {
               {item.image_field && (
                 <img
                   src={flattenToAppURL(
-                    `${item.url}/@@images/${item.image_field}/preview`,
+                    `${item['@id']}/@@images/${item.image_field}/preview`,
                   )}
                   alt={item.title}
                 />
