@@ -10,6 +10,24 @@
 
 ### Internal
 
+## 14.0.0-alpha.29 (2021-11-06)
+
+### Bugfix
+
+- Fix reset pagination in searchblock when changing facet filters @tiberiuichim
+
+## 14.0.0-alpha.28 (2021-11-03)
+
+### Feature
+
+- Defaults are observed in block data if `InlineForm` or `BlockDataForm` are used. @sneridagh @tiberiuichim
+
+## 14.0.0-alpha.27 (2021-11-02)
+
+### Breaking
+
+- Use title instead of id as a source of translation in "Variation" field in block enhancers @sneridagh
+
 ## 14.0.0-alpha.26 (2021-11-01)
 
 ### Feature
