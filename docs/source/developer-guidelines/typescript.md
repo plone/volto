@@ -1,24 +1,24 @@
-# Typescript
+# TypeScript
 
 !!! note
-    This feature is available since Volto 14.
+    This feature is available since Volto 14. Please note that TypeScript is *not* allowed in Volto core, that's why it's not enabled in the core by default. This feature enables the use of TypeScript (as opt-in) in projects and in add-ons.
 
-It is possible to enable Typescript support when developing you project with Volto.
-Volto itself is not written in Typescript, but it is configured so you can use it if you want.
+It is possible to enable TypeScript support when developing you project with Volto.
+Volto itself is not written in TypeScript, but it is ready to use it if you want.
 
-In order to enable Typescript, you need to install these additional dependencies in your project:
+In order to enable TypeScript, you need to install these additional dependencies in your project:
 
 ```shell
 yarn add --dev typescript @typescript-eslint/parser @typescript-eslint/eslint-plugin @types/react @types/react-dom concurrently
 ```
 
-Razzle supports Typescript by default if you just use it, but all it does is transpile it to JavaScript with Babel in order to build it properly.
-When used this way, Typescript is actually ignored by your build pipeline, it is only checked by your editor, if capable of doing it on its own.
+Razzle supports TypeScript by default if you just use it, but all it does is transpile it to JavaScript with Babel in order to build it properly.
+When used this way, TypeScript is actually ignored by your build pipeline, it is only checked by your editor, if capable of doing it on its own.
 See more about this topic here: [https://www.typescriptlang.org/docs/handbook/babel-with-typescript.html](https://www.typescriptlang.org/docs/handbook/babel-with-typescript.html).
 
 If you want to configure your build pipeline properly and your editor in a way that is consistent with your build tooling, there a few more configuration files you will need to tweak.
 
-First of all, you need to rename your ``jsconfig.json`` file to ``tsconfig.json`` and add Typescript configuration to the Volto configuration you already have.
+First of all, you need to rename your ``jsconfig.json`` file to ``tsconfig.json`` and add TypeScript configuration to the Volto configuration you already have.
 A basic example of a working ``tsconfig.json`` file is:
 
 ```json
@@ -44,7 +44,7 @@ A basic example of a working ``tsconfig.json`` file is:
 }
 ```
 
-Now that you have configured Typescript, you just need to run it alongside Razzle in order to typecheck your code and block the production build if it has any problems.
+Now that you have configured TypeScript, you just need to run it alongside Razzle in order to typecheck your code and block the production build if it has any problems.
 Change your scripts in your ``package.json`` like this (inspired by [https://github.com/jaredpalmer/razzle/blob/master/examples/with-typescript/package.json](https://github.com/jaredpalmer/razzle/blob/master/examples/with-typescript/package.json)):
 
 ```json hl_lines="2 3 7 8 9 10 17"
@@ -101,13 +101,13 @@ module.exports = {
 };
 ```
 
-Your editor should be properly reporting errors now, it should also be consistent with errors returned by the Typescript compiler in the console during development.
+Your editor should be properly reporting errors now, it should also be consistent with errors returned by the TypeScript compiler in the console during development.
 
 ## CSS Modules
 
 If you are using CSS Modules in your code, instead of keeping all the styles in the main ``theme`` folder, you will see the typechecking failing because it does not recognize the modules you are importing with, for example, ``import styles from './styles.module.css'``.
 
-Add a declaration file in your ``src`` folder to teach Typescript about CSS Modules. As a basic working example, you can add the following file in your code at the path ``src/cssmodules.d.ts`` (inspired by [https://github.com/facebook/create-react-app/blob/main/packages/react-scripts/lib/react-app.d.ts](https://github.com/facebook/create-react-app/blob/main/packages/react-scripts/lib/react-app.d.ts)):
+Add a declaration file in your ``src`` folder to teach TypeScript about CSS Modules. As a basic working example, you can add the following file in your code at the path ``src/cssmodules.d.ts`` (inspired by [https://github.com/facebook/create-react-app/blob/main/packages/react-scripts/lib/react-app.d.ts](https://github.com/facebook/create-react-app/blob/main/packages/react-scripts/lib/react-app.d.ts)):
 
 ```ts
 declare module '*.module.css' {
