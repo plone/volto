@@ -2,15 +2,9 @@
 
 ## 14.0.0 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Fix reset pagination in searchblock when changing facet filters @tiberiuichim
-
-### Internal
 
 ## 14.0.0-alpha.28 (2021-11-03)
 
