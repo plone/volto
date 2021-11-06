@@ -17,6 +17,14 @@ Check the Volto 14 upgrade guide for breaking changes: https://docs.voltocms.com
 
 - [ ] Switch from DraftJS to Slate as default editor: https://github.com/plone/volto/issues/2167
 
+## Volto 16+ (nice to have, no blockers)
+
+- [ ] Control Panel Overhaul: https://github.com/plone/volto/issues/29
+- [ ] Content Rules: https://github.com/plone/volto/issues/10
+- [ ] Form Builder: https://github.com/plone/volto/issues/739
+- [ ] Grid Block
+- [ ] Teaser Block
+
 ## Plone 6
 
 - Plone 6 final will ship with the current final Volto version that is around at that time
