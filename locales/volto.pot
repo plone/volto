@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2021-11-05T14:43:34.401Z\n"
+"POT-Creation-Date: 2021-11-06T10:04:19.272Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1475,7 +1475,7 @@ msgstr ""
 msgid "Manage translations for {title}"
 msgstr ""
 
-#: components/manage/Blocks/Maps/MapsData
+#: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Maps/schema
 # defaultMessage: Maps
 msgid "Maps"
@@ -1620,7 +1620,7 @@ msgstr ""
 msgid "No items selected"
 msgstr ""
 
-#: components/manage/Blocks/Maps/MapsData
+#: components/manage/Blocks/Maps/MapsSidebar
 # defaultMessage: No map selected
 msgid "No map selected"
 msgstr ""

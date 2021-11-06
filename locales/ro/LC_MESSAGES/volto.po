@@ -1473,7 +1473,7 @@ msgstr ""
 msgid "Manage translations for {title}"
 msgstr ""
 
-#: components/manage/Blocks/Maps/MapsData
+#: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Maps/schema
 # defaultMessage: Maps
 msgid "Maps"
@@ -1618,7 +1618,7 @@ msgstr "Nu s-au găsit articole în acest container."
 msgid "No items selected"
 msgstr "Niciun element selectat"
 
-#: components/manage/Blocks/Maps/MapsData
+#: components/manage/Blocks/Maps/MapsSidebar
 # defaultMessage: No map selected
 msgid "No map selected"
 msgstr "Nicio hartă selectată"

@@ -1490,7 +1490,7 @@ msgstr ""
 msgid "Manage translations for {title}"
 msgstr ""
 
-#: components/manage/Blocks/Maps/MapsData
+#: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Maps/schema
 # defaultMessage: Maps
 msgid "Maps"
@@ -1635,7 +1635,7 @@ msgstr "Aucun élément trouvé dans ce conteneur"
 msgid "No items selected"
 msgstr "Aucun élément sélectionné"
 
-#: components/manage/Blocks/Maps/MapsData
+#: components/manage/Blocks/Maps/MapsSidebar
 # defaultMessage: No map selected
 msgid "No map selected"
 msgstr "Aucune carte sélectionnée"

@@ -1483,7 +1483,7 @@ msgstr "Administrar traducciones"
 msgid "Manage translations for {title}"
 msgstr "Administrar traducciones de {title}"
 
-#: components/manage/Blocks/Maps/MapsData
+#: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Maps/schema
 # defaultMessage: Maps
 msgid "Maps"
@@ -1628,7 +1628,7 @@ msgstr "No hay elementos en esta carpeta"
 msgid "No items selected"
 msgstr "No se han seleccionado elementos"
 
-#: components/manage/Blocks/Maps/MapsData
+#: components/manage/Blocks/Maps/MapsSidebar
 # defaultMessage: No map selected
 msgid "No map selected"
 msgstr "No se ha seleccionado el mapa"
