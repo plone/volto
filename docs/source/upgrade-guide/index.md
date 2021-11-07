@@ -14,6 +14,19 @@ This upgrade guide lists all breaking changes in Volto and explains the
 
 ## Upgrading to Volto 14.x.x
 
+### Revisited rethought and refactored Seamless mode
+
+Seamless mode was released as experimental in Volto 13. However, after a period of testing some issues were detected so the feature has been rethought and refactored.
+
+If you want to take full advantage of seamless mode you should upgrade your backend to the latest `plone.restapi` (8.12.1 or greater) and `plone.rest` (2.0.0a1 or greater) versions.
+
+If you were already using Seamless mode in your deployments, you should update them as explained in the deployment documentation (link just below).
+
+!!! warning
+    The proxy in development mode will only work using the new traversal `++api++`. You need to upgrade your development environment to include the requirements explained above.
+
+Read the full documentation about Seamless mode: https://docs.voltocms.com/deploying/seamless-mode/
+
 ### Update i18n configuration for projects and add-ons
 
 The i18n script and infrastructure have been moved to their own package since we needed them
@@ -94,8 +107,8 @@ More information: https://docs.voltocms.com/upgrade-guide/#volto-configuration-r
 Not really a breaking change, but it's worth noting it. By default, Volto 14 comes with
 [content-locking](/configuration/locking) enabled, if the backend supports it. Thus:
 * Upgrade Plone RestAPI:
-  * **plone.restapi**>=`8.9.0` (Plone 5+)
-  * **plone.restapi**>=`7.4.0` (Plone 4)
+    * **plone.restapi**>=`8.9.0` (Plone 5+)
+    * **plone.restapi**>=`7.4.0` (Plone 4)
 * Update `plone:CORSPolicy` to include `Lock-Token` within `allow_headers`:
 
 ```xml
@@ -112,7 +125,20 @@ Not really a breaking change, but it's worth noting it. By default, Volto 14 com
 ### Blocks chooser now uses the title instead of the id of the block as translation source
 
 The `BlockChooser` component now uses the `title` of the block as source for translating
-the block title. Before, it took the `id` of the block, which is utterly wrong. Could be that this change will trigger untranslated blocks titles in your projects and add-ons.
+the block title. Before, it took the `id` of the block, which is utterly wrong and missleading. There is a chance that this change will trigger untranslated blocks titles in your projects and add-ons.
+
+### Variation field now uses the title instead of the id of the variation as translation source
+
+Following the same convention as the above change, `Variation` field coming from the block enhancers now uses the `title` of the block as source for translating
+the variation title. Before, it took the `id` of the block, which as stated before, is wrong and missleading. There is a chance that  this change will trigger untranslated variation titles in your projects and add-ons.
+
+### New mobile navigation menu
+
+The mobile navigation menu has been improved using a customizable `CSSTransition` group animation. It is a breaking change since this change introduces new classes and HTML to accomplish it. A new `NavItems` helper (presentational) component has been introduced as well. However, the API of the component hasn't changed so your customizations/shadowed components (if any) are safe. If you want to use the new stock menu and interaction, and you have customizations/shadowed components, you need to update them using the stock one.
+
+### Adjusted main Logo component styling
+
+In order to match the Plone logo and in lieu to use a better generic icon starting point, the `Logo.jsx` component and `.logo-nav-wrapper` styling have been adjusted. The logo is not constrained by default to `64px` and the wrapper now centers vertically. Please check that your project logo placeholder is still in good shape after upgrade.
 
 ## Upgrading to Volto 13.x.x
 
@@ -222,8 +248,8 @@ look and configure it as in `plone.volto` as shown in this PR:
 https://github.com/kitconcept/plone.volto/pull/29
 
 !!! note
-    When an official integration package exists, these upgrade steps in the backend
-    will be provided in there.
+When an official integration package exists, these upgrade steps in the backend
+will be provided in there.
 
 ### Update your custom variations (templates) in your project listing blocks
 
@@ -327,9 +353,9 @@ config.settings.isMultilingual = true
 ```
 
 !!! warning Deprecation notice
-    The old way of using the import to get Volto's configuration will still be working as
-    long as you support it in your project `src/config` but it will be deprecated and
-    will stop working from *Volto 14* onwards.
+The old way of using the import to get Volto's configuration will still be working as
+long as you support it in your project `src/config` but it will be deprecated and
+will stop working from *Volto 14* onwards.
 
 It is *highly* advisable that you use the new configuration registry right away. Your
 custom code (and Volto customizations using the shadowing engine) has to adapt to the
@@ -337,8 +363,8 @@ new way of reading the config from the new Volto's Configuration. However, it wo
 mandatory until Volto 14, leaving the community time to adapt their code and projects.
 
 !!! tip Recommended for add-ons
-    If you are an add-on maintainer, and you migrate your add-on to be Volto 12 compatible,
-    it's recommended that you add it as `peerDependencies` for Volto 12.
+If you are an add-on maintainer, and you migrate your add-on to be Volto 12 compatible,
+it's recommended that you add it as `peerDependencies` for Volto 12.
 
     ```json
       "peerDependencies": {
@@ -460,12 +486,12 @@ export default function applyConfig(config) {
 ```
 
 !!! warning
-    The add-ons you might be using might need to migrate to use the new
-    configuration registry too. Make sure all of them are already migrated to Volto 12.
+The add-ons you might be using might need to migrate to use the new
+configuration registry too. Make sure all of them are already migrated to Volto 12.
 
 !!! tip
-    Although this might be daunting, the migration is quite straightforward, and the refactoring
-    of the required code can be undergone through a series of "search and replace" in your IDE of choice.
+Although this might be daunting, the migration is quite straightforward, and the refactoring
+of the required code can be undergone through a series of "search and replace" in your IDE of choice.
 
 #### Changes in your project's `package.json`
 
@@ -488,10 +514,10 @@ there instead of the real mocked components and accept them.
 ### Alternative - both configurations coexisting
 
 !!! warning
-    This configuration is *not recommended* and might lead to inconsistencies and has been tested
-    only partially and can you can find unseen problems. This method is only a workaround in case the
-    add-ons you are using are not yet migrated, or you can't migrate your code. And in
-    any case, as stated above, it will be deprecated and will stop working in Volto 14.
+This configuration is *not recommended* and might lead to inconsistencies and has been tested
+only partially and can you can find unseen problems. This method is only a workaround in case the
+add-ons you are using are not yet migrated, or you can't migrate your code. And in
+any case, as stated above, it will be deprecated and will stop working in Volto 14.
 
 Make the following changes to your `src/config.js`, first remove the main imports, and add
 the import to the new config registry:
@@ -627,8 +653,8 @@ To resolve this you can change the template of the affected Listing Blocks eithe
 ### Remove the Razzle plugins patch
 
 !!! warning
-    If you haven't upgraded your project to Volto 9.x.x and followed the upgrade guide
-    instructions, you are set, and you do not need to do anything.
+If you haven't upgraded your project to Volto 9.x.x and followed the upgrade guide
+instructions, you are set, and you do not need to do anything.
 
 In order to have support for Razzle plugins as local modules we introduced a patch in
 9.0.0 that addressed the lack of support in Razzle 3.3.7 . Unfortunately, not only did that
@@ -655,8 +681,8 @@ testing code to adapt to the changes. Please refer to the `@testing-library/reac
 ### Internal upgrade to use Razzle 3.3.7
 
 !!!note
-    If you haven't customized your `razzle.config.js` in your project, or have any
-    custom plugin in place, you don't have to do anything.
+If you haven't customized your `razzle.config.js` in your project, or have any
+custom plugin in place, you don't have to do anything.
 
 Razzle is the isometric build system for both the server and the client parts on top
 of which Volto is built. Recently, it has been under heavy development and some new
@@ -1100,7 +1126,7 @@ to be async aware like this:
 
 All the calls for updating the title in the document performed by `Helmet` are now
 centralized in the `View.jsx` components. It's recommended to remove all the Helmet
-calls for updating the title from your components especially if you are using some 
+calls for updating the title from your components especially if you are using some
 SEO add-ons for Volto, since not doing that could interfere with them.
 
 ## Upgrading to Volto 4.x.x
@@ -1233,11 +1259,11 @@ index 7c8194c..5c63469 100644
 
 !!! note
     If you are linting actively your project, the build might be broken after this update. You should run:
-    ```
-    $ yarn prettier:fix
-    $ yarn stylelint:fix
-    ```
-    then commit the changes.
+```
+$ yarn prettier:fix
+$ yarn stylelint:fix
+```
+then commit the changes.
 
 ### openObjectBrowser API change in Alpha 11
 
@@ -1269,7 +1295,7 @@ This is the version compatibility table across all the packages involved:
 Volto 4 - plone.restapi >= 5.0.0 - kitconcept.voltodemo >= 2.0
 
 !!! note
-The renaming happened in Volto 4 alpha.10 and plone.restapi 5.0.0. Volto 4 alpha versions under that release use older versions of `plone.restapi` and `kitconcept.voltodemo`, however if you are using alpha releases it's recommended to upgrade to the latest alpha or the final release of Volto 4.
+    The renaming happened in Volto 4 alpha.10 and plone.restapi 5.0.0. Volto 4 alpha versions under that release use older versions of `plone.restapi` and `kitconcept.voltodemo`, however if you are using alpha releases it's recommended to upgrade to the latest alpha or the final release of Volto 4.
 
 The project configuration should also be updated, in your `src/config.js`:
 
@@ -1470,7 +1496,7 @@ They all use `react-select` third party library for render it.
 
 ### Improved Blocks HOC
 
-The Blocks HOC (High Order Component) was changed to lift off some 
+The Blocks HOC (High Order Component) was changed to lift off some
 features from the blocks themselves, and now it takes care of them by itself.
 
 - The delete block feature was moved to it

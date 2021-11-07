@@ -125,13 +125,19 @@ class AddonConfigurationRegistry {
   }
 
   /**
-   * Use jsconfig.js to get paths for "development" packages/addons (coming from mrs.developer.json)
+   * Use tsconfig.json or jsconfig.json to get paths for "development" packages/addons
+   * (coming from mrs.developer.json)
    * Not all of these packages have to be Volto addons.
    */
   initDevelopmentPackages() {
-    if (fs.existsSync(`${this.projectRootPath}/jsconfig.json`)) {
-      const jsConfig = require(`${this.projectRootPath}/jsconfig`)
-        .compilerOptions;
+    let configFile;
+    if (fs.existsSync(`${this.projectRootPath}/tsconfig.json`))
+      configFile = `${this.projectRootPath}/tsconfig.json`;
+    else if (fs.existsSync(`${this.projectRootPath}/jsconfig.json`))
+      configFile = `${this.projectRootPath}/jsconfig.json`;
+
+    if (configFile) {
+      const jsConfig = require(configFile).compilerOptions;
       const pathsConfig = jsConfig.paths;
 
       Object.keys(pathsConfig).forEach((name) => {
@@ -284,7 +290,8 @@ class AddonConfigurationRegistry {
       const base = path.join(rootPath, customizationPath);
       const reg = [];
 
-      // All registered addon packages (in jsconfig.json and package.json:addons) can be customized
+      // All registered addon packages (in tsconfig.json/jsconfig.json and package.json:addons)
+      // can be customized
       Object.values(this.packages).forEach((addon) => {
         const { name, modulePath } = addon;
         if (fs.existsSync(path.join(base, name))) {
@@ -359,6 +366,33 @@ class AddonConfigurationRegistry {
       };
     });
     return aliases;
+  }
+
+  /**
+   * Allow testing packages addons to customize Volto and other addons.
+   *
+   * Same as the above one, but specific for Volto testing addons
+   */
+  getTestingAddonCustomizationPaths() {
+    let aliases = {};
+    if (process.env.RAZZLE_TESTING_ADDONS) {
+      process.env.RAZZLE_TESTING_ADDONS.split(',').forEach((addon) => {
+        const normalizedAddonName = addon.split(':')[0];
+        const testingPackagePath = `${this.projectRootPath}/packages/${normalizedAddonName}/src`;
+        if (fs.existsSync(testingPackagePath)) {
+          const basePath = getPackageBasePath(testingPackagePath);
+          const packageJson = path.join(basePath, 'package.json');
+          aliases = {
+            ...aliases,
+            ...this.getCustomizationPaths(require(packageJson), basePath),
+          };
+        }
+      });
+
+      return aliases;
+    } else {
+      return [];
+    }
   }
 
   /**

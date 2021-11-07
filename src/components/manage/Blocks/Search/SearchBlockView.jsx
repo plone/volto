@@ -5,8 +5,9 @@ import { withBlockExtensions } from '@plone/volto/helpers';
 
 import config from '@plone/volto/registry';
 
-import { withSearch } from './hocs';
+import { withSearch, withQueryString } from './hocs';
 import { compose } from 'redux';
+import { useSelector } from 'react-redux';
 import { isEqual, isFunction } from 'lodash';
 
 const getListingBodyVariation = (data) => {
@@ -21,20 +22,36 @@ const getListingBodyVariation = (data) => {
 
 const isfunc = (obj) => isFunction(obj) || typeof obj === 'function';
 
-const blockPropsAreChanged = (prevProps, nextProps) => {
-  const filtered = (obj) =>
-    Object.assign(
-      {},
-      ...Object.keys(obj).map((k) => {
-        const reject = k !== 'properties' && !isfunc(obj[k]);
-        return reject ? { [k]: obj[k] } : {};
-      }),
-    );
+const _filtered = (obj) =>
+  Object.assign(
+    {},
+    ...Object.keys(obj).map((k) => {
+      const reject = k !== 'properties' && !isfunc(obj[k]);
+      return reject ? { [k]: obj[k] } : {};
+    }),
+  );
 
-  const prev = filtered(prevProps);
-  const next = filtered(nextProps);
+const blockPropsAreChanged = (prevProps, nextProps) => {
+  const prev = _filtered(prevProps);
+  const next = _filtered(nextProps);
 
   return isEqual(prev, next);
+};
+
+const applyDefaults = (data, root) => {
+  const defaultQuery = [
+    {
+      i: 'path',
+      o: 'plone.app.querystring.operation.string.absolutePath',
+      v: root || '/',
+    },
+  ];
+  return {
+    ...data,
+    sort_on: data?.sort_on || 'effective',
+    sort_order: data?.sort_order || 'descending',
+    query: data?.query?.length ? data.query : defaultQuery,
+  };
 };
 
 const SearchBlockView = (props) => {
@@ -43,13 +60,15 @@ const SearchBlockView = (props) => {
   const Layout = variation.view;
 
   const listingBodyVariation = getListingBodyVariation(data);
+  const root = useSelector((state) => state.breadcrumbs.root);
+  const listingBodyData = applyDefaults(searchData, root);
 
   return (
     <div className="block search">
       <Layout {...props} isEditMode={mode === 'edit'}>
         <ListingBody
           variation={listingBodyVariation}
-          data={searchData || {}}
+          data={listingBodyData}
           path={props.path}
           isEditMode={mode === 'edit'}
         />
@@ -63,4 +82,4 @@ export const SearchBlockViewComponent = compose(
   (Component) => React.memo(Component, blockPropsAreChanged),
 )(SearchBlockView);
 
-export default withSearch()(SearchBlockViewComponent);
+export default compose(withQueryString, withSearch())(SearchBlockViewComponent);

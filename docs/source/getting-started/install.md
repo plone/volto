@@ -37,8 +37,8 @@ nvm version
 
 4. Install any active LTS version of NodeJS (https://nodejs.org/en/about/releases/):
 ```
-nvm install 14.15.1
-nvm use 14.15.1
+nvm install 16
+nvm use 16
 ```
 
 5. Test NodeJS:
@@ -133,21 +133,19 @@ It also has more information on plone.volto.
 Use the project generator helper utility.
 
 1. Open a terminal and execute:
-```
-npm init yo @plone/volto
+```console
+$ npm install -g yo @plone/generator-volto
+$ yo @plone/volto
 ```
 
 2. Answer to the prompted questions and provide the name of the new app (folder) to be created. For the sake of this documentation, provide `myvoltoproject` as project name then.
 
 !!! info
-    This is the shortcut for using `npm init` command. It uses Yeoman (`yo`) and `@plone/generator-volto` and execute them without having to be installed globally. However, more advanced options for the generator are available, but you'll have to install it and run it without `npm init`:
-
-    ```console
-    $ npm install -g yo
-    $ npm install -g @plone/generator-volto
+    You can run the generator with parameters to tailor your requirements.
+    ```
     $ yo @plone/volto --help
     ```
-    take a look at the full [README](https://github.com/plone/volto/blob/master/packages/generator-volto/README.md) for more information.
+    or take a look at the [README](https://github.com/plone/volto/blob/master/packages/generator-volto/README.md) for more information.
 
 3. Change directory to the newly created folder `myvoltoapp` (or the one you've chosen):
 ```
