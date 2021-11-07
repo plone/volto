@@ -8,10 +8,58 @@
 
 ### Bugfix
 
+-Fix  The Full-width image overlaps the drag handle  @iRohitSingh
+
+### Internal
+
+## 14.0.0-alpha.30 (2021-11-07)
+
+### Feature
+
+- Support typescript usage in Volto sites @pnicolli
+
+## 14.0.0-alpha.29 (2021-11-06)
+
+### Bugfix
+
+- Fix reset pagination in searchblock when changing facet filters @tiberiuichim
+
+## 14.0.0-alpha.28 (2021-11-03)
+
+### Feature
+
+- Defaults are observed in block data if `InlineForm` or `BlockDataForm` are used. @sneridagh @tiberiuichim
+
+## 14.0.0-alpha.27 (2021-11-02)
+
+### Breaking
+
+- Use title instead of id as a source of translation in "Variation" field in block enhancers @sneridagh
+
+## 14.0.0-alpha.26 (2021-11-01)
+
+### Feature
+
+- Provide Server-Side Rendering capabilities for blocks with async-based content (such as the listing block). A block needs to provide its own `getAsyncData` implementation, which is similar to an `asyncConnect` wrapper promise. @tiberiuichim @sneridagh
+
+## 14.0.0-alpha.25 (2021-11-01)
+
+### Feature
+
+- FormFieldWrapper accepts now strings and elements for description @nzambello
+- Image block:
+  - When uploading an image or selecting that from the object browser, Image block will set an empty string as alternative text @nzambello
+  - Adds a description to the alt-tag with w3c explaination @nzambello
+
+### Bugfix
+
+- Fix disable mode of `QuerystringWidget` when all criteria are deleted @kreafox
+
 ### Internal
 
 - Add RawMaterial website in Volto production sites @nzambello
 - Cleanup dangling virtualenv files that should not be committed @pnicolli
+- Improve italian translation @pnicolli
 
 ## 14.0.0-alpha.24 (2021-10-29)
 
@@ -34,7 +82,6 @@
 ### Bugfix
 
 - Fix loading of cookie on SSR for certain requests, revert slight change in how they are loaded introduced in alpha 16 @sneridagh
-- Fix disable mode of `QuerystringWidget` when all criteria are deleted @kreafox
 
 ## 14.0.0-alpha.22 (2021-10-20)
 
