@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+-Fix  The Full-width image overlaps the drag handle  @iRohitSingh
+
 ### Internal
 
 ## 14.0.0-alpha.30 (2021-11-07)
