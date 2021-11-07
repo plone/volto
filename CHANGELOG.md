@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix the selection of Maps Block @iRohitSingh
+
 ### Internal
 
 ## 14.0.0-alpha.30 (2021-11-07)
@@ -20,7 +22,6 @@
 
 ### Bugfix
 
-- Fix the selection of Maps Block @iRohitSingh
 - Fix reset pagination in searchblock when changing facet filters @tiberiuichim
 
 ## 14.0.0-alpha.28 (2021-11-03)
