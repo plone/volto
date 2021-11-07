@@ -9,8 +9,11 @@
 ### Bugfix
 
 - UniversalLink: handle direct download for content-type File if user is not logged. @giuliaghisini
+- Fixed ObjectBrowserWidget when is multiple or maximumSelectionSize is not set @giuliaghisini
+-Fix  The Full-width image overlaps the drag handle  @iRohitSingh
 
 ### Internal
+- Removing the hardcoded default block type from text block @iRohitSingh
 
 ## 14.0.0-alpha.30 (2021-11-07)
 
@@ -58,6 +61,7 @@
 ### Internal
 
 - Add RawMaterial website in Volto production sites @nzambello
+- Improve italian translation @pnicolli
 
 ## 14.0.0-alpha.24 (2021-10-29)
 

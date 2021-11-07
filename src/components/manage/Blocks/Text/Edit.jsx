@@ -243,7 +243,10 @@ class Edit extends Component {
               const blockType = currentContentBlock.getType();
               if (!includes(settings.listBlockTypes, blockType)) {
                 this.props.onSelectBlock(
-                  this.props.onAddBlock('text', this.props.index + 1),
+                  this.props.onAddBlock(
+                    config.settings.defaultBlockType,
+                    this.props.index + 1,
+                  ),
                 );
                 return 'handled';
               }
