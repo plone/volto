@@ -58,6 +58,7 @@
 ### Internal
 
 - Add RawMaterial website in Volto production sites @nzambello
+- Improve italian translation @pnicolli
 
 ## 14.0.0-alpha.24 (2021-10-29)
 
