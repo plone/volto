@@ -37,9 +37,20 @@ const UniversalLink = ({
       );
       url = '#';
     } else {
+      //case: generic item
       url = flattenToAppURL(item['@id']);
+
+      //case: item like a Link
       if (!token && item.remoteUrl) {
         url = item.remoteUrl;
+      }
+
+      //case: item of type 'File'
+      if (
+        !token &&
+        config.settings.downloadableObjects.includes(item['@type'])
+      ) {
+        url = `${url}/@@download/file`;
       }
     }
   }

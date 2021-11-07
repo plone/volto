@@ -64,6 +64,7 @@ nav:
       - Settings: 'blocks/settings.md'
       - Edit components: 'blocks/editcomponent.md'
       - Extensions: 'blocks/extensions.md'
+      - SSR: 'blocks/ssr.md'
   - Addons:
       - Introduction: 'addons/index.md'
       - Internationalization: 'addons/i18n.md'

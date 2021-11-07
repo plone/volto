@@ -57,6 +57,7 @@ import {
   SelectFacet,
   CheckboxFacet,
 } from '@plone/volto/components/manage/Blocks/Search/components';
+import getListingBlockAsyncData from '@plone/volto/components/manage/Blocks/Listing/getAsyncData';
 
 defineMessages({
   title: {
@@ -119,6 +120,28 @@ defineMessages({
   common: {
     id: 'common',
     defaultMessage: 'Common',
+  },
+  // Listing block variations
+  summary: {
+    id: 'Summary',
+    defaultMessage: 'Summary',
+  },
+  imageGallery: {
+    id: 'Image gallery',
+    defaultMessage: 'Image gallery',
+  },
+  // Search block variations
+  facetsRightSide: {
+    id: 'Facets on right side',
+    defaultMessage: 'Facets on right side',
+  },
+  facetsLeftSide: {
+    id: 'Facets on left side',
+    defaultMessage: 'Facets on left side',
+  },
+  facetsTopSide: {
+    id: 'Facets on top',
+    defaultMessage: 'Facets on top',
   },
 });
 
@@ -256,6 +279,7 @@ const blocksConfig = {
         template: SummaryListingBlockTemplate,
       },
     ],
+    getAsyncData: getListingBlockAsyncData,
   },
   video: {
     id: 'video',
@@ -300,12 +324,13 @@ const blocksConfig = {
     restricted: false,
     mostUsed: false,
     blockHasOwnFocusManagement: true,
-    sidebarTab: 0,
+    sidebarTab: 1,
     security: {
       addPermission: [],
       view: [],
     },
   },
+
   maps: {
     id: 'maps',
     title: 'Maps',
