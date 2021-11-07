@@ -11,6 +11,7 @@
 -Fix  The Full-width image overlaps the drag handle  @iRohitSingh
 
 ### Internal
+- Removing the hardcoded default block type from text block @iRohitSingh
 
 ## 14.0.0-alpha.30 (2021-11-07)
 
