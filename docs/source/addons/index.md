@@ -217,11 +217,11 @@ Now the addon is found in `src/addons/`.
 If you want to know more about `mrs-developer` config options, please refer to
 [its npm page](https://www.npmjs.com/package/mrs-developer).
 
-#### jsconfig.json
+#### tsconfig.json / jsconfig.json
 
 `mrs-developer` automatically creates this file for you, but if you choose not
 to use mrs-developer, you'll have to add something like this to your
-`jsconfig.json` file in the Volto project root:
+`tsconfig.json` or `jsconfig.json` file in the Volto project root:
 
 ```json
 {
