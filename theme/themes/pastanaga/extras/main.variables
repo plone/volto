@@ -6,7 +6,7 @@
 @reduceTextElementsSize: true;
 @textElementsMaxWidth: 660px;
 @textElementsParentSelector: .content-area;
-@textElementsSelectors: h1, h2, h3, h4, h5, h6, p, ol, ul;
+@textElementsSelectors: h2, h3, h4, h5, h6, p, ol, ul, blockquote;
 @textElementsLeftMargin: auto !important;
 @textElementsRightMargin: auto !important;
 
