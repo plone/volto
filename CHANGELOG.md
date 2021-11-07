@@ -17,6 +17,7 @@
 ### Internal
 - Removing the hardcoded default block type from text block @iRohitSingh
 
+- updated Volto sites list @giuliaghisini
 ## 14.0.0-alpha.30 (2021-11-07)
 
 ### Feature
