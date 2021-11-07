@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Support typescript usage in Volto sites @pnicolli
+
 ### Bugfix
 
 ### Internal
