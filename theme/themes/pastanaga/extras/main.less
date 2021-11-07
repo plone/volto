@@ -154,6 +154,7 @@ button {
     &:before {
       border: @checkboxBorderUnchecked;
       border-radius: unset;
+      box-shadow: 0 2px 2px 0 #0000001a;
     }
 
     &:hover:before {
@@ -180,6 +181,7 @@ button {
 
   & ~ label:before {
     border: @checkboxBorderChecked;
+    box-shadow: none;
   }
 
   /* Focus */
