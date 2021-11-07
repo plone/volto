@@ -46,7 +46,10 @@ const UniversalLink = ({
       }
 
       //case: item of type 'File'
-      if (!token && item['@type'] === 'File') {
+      if (
+        !token &&
+        config.settings.downloadableObjects.includes(item['@type'])
+      ) {
         url = `${url}/@@download/file`;
       }
     }
