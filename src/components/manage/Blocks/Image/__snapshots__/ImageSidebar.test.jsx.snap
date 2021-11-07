@@ -108,7 +108,7 @@ exports[`renders an Image Block Sidebar component 1`] = `
       </div>
     </div>
     <div
-      className="inline field text field-wrapper-alt"
+      className="inline field help text field-wrapper-alt"
     >
       <div
         className="ui grid"
@@ -182,6 +182,28 @@ exports[`renders an Image Block Sidebar component 1`] = `
                 xmlns=""
               />
             </button>
+          </div>
+        </div>
+        <div
+          className="stretched row"
+        >
+          <div
+            className="stretched twelve wide column"
+          >
+            <p
+              className="help"
+            >
+              <a
+                href="https://www.w3.org/WAI/tutorials/images/decision-tree/"
+                rel="noopener noreferrer"
+                target="_blank"
+                title="Open in a new tab"
+              >
+                Describe the purpose of the image.
+              </a>
+               
+              Leave empty if the image is purely decorative.
+            </p>
           </div>
         </div>
       </div>

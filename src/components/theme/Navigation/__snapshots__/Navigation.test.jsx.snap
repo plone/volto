@@ -10,7 +10,7 @@ exports[`Navigation renders a navigation component with an active item 1`] = `
   >
     <button
       aria-label="Open menu"
-      className="hamburger hamburger--collapse"
+      className="hamburger hamburger--spin"
       onClick={[Function]}
       title="Open menu"
       type="button"
@@ -59,7 +59,7 @@ exports[`Navigation renders a navigation component with an active item when its 
   >
     <button
       aria-label="Open menu"
-      className="hamburger hamburger--collapse"
+      className="hamburger hamburger--spin"
       onClick={[Function]}
       title="Open menu"
       type="button"
@@ -108,7 +108,7 @@ exports[`Navigation renders a navigation component with only one active item eve
   >
     <button
       aria-label="Open menu"
-      className="hamburger hamburger--collapse"
+      className="hamburger hamburger--spin"
       onClick={[Function]}
       title="Open menu"
       type="button"
@@ -165,7 +165,7 @@ exports[`Navigation renders a navigation component without active items 1`] = `
   >
     <button
       aria-label="Open menu"
-      className="hamburger hamburger--collapse"
+      className="hamburger hamburger--spin"
       onClick={[Function]}
       title="Open menu"
       type="button"

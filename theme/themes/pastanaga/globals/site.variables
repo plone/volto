@@ -92,6 +92,8 @@
 /*-------------------
     Scroll Bars
 --------------------*/
+@mobileScrollbarWidth: 4px;
+@mobileScrollbarTrackBackground: transparent;
 
 
 /*-------------------

@@ -169,7 +169,7 @@ class QuerystringWidget extends Component {
         );
       case 'MultipleSelectionWidget':
         return (
-          <Form.Field style={{ flex: '1 0 auto', maxWidth: '93%' }}>
+          <Form.Field style={{ flex: '1 0 auto', maxWidth: '92%' }}>
             <Select
               {...props}
               className="react-select-container"
