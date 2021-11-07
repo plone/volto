@@ -186,6 +186,7 @@ const BlocksForm = (props) => {
               onInsertBlock,
               onChangeBlock,
               onChangeField,
+              onChangeFormData,
               onDeleteBlock,
               onFocusNextBlock,
               onFocusPreviousBlock,
