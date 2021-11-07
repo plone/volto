@@ -251,7 +251,7 @@ msgstr "Base"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Base search query
 msgid "Base search query"
-msgstr "Query di ricerca di base"
+msgstr "Ricerca iniziale"
 
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Block
@@ -401,7 +401,7 @@ msgstr "Annulla"
 #: components/manage/Blocks/Search/components/FilterList
 # defaultMessage: Clear filters
 msgid "Clear filters"
-msgstr "Pulisci filtri"
+msgstr "Azzera filtri"
 
 #: components/theme/View/ImageView
 # defaultMessage: Click to download full sized image
@@ -464,7 +464,7 @@ msgstr "Conferma password"
 #: components/theme/ConnectionRefused/ConnectionRefused
 # defaultMessage: Connection refused
 msgid "Connection refused"
-msgstr "Connesione rifiutata"
+msgstr "Connessione rifiutata"
 
 #: components/theme/Footer/Footer
 # defaultMessage: Contact
@@ -558,7 +558,7 @@ msgstr "Criteri"
 #: components/manage/Blocks/Search/components/FilterList
 # defaultMessage: Current filters applied
 msgid "Current filters applied"
-msgstr "Filtri applicati"
+msgstr "Filtri attualmente applicati"
 
 #: components/manage/Preferences/ChangePassword
 # defaultMessage: Current password
@@ -962,7 +962,7 @@ msgstr "Faccetta"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Facet widget
 msgid "Facet widget"
-msgstr "Widget faccette"
+msgstr "Widget della faccetta"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Facets
@@ -982,7 +982,7 @@ msgstr "Faccette nel lato destro"
 #: config/Blocks
 # defaultMessage: Facets on top
 msgid "Facets on top"
-msgstr "Faccette sopra"
+msgstr "Faccette in alto"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Field
@@ -1123,7 +1123,7 @@ msgstr "Intestazione"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Hidden facets will still filter the results if proper parameters are passed in URLs
 msgid "Hidden facets will still filter the results if proper parameters are passed in URLs"
-msgstr "Le faccette nascoste filtreranno comunque i risultati se i relativi parametri vengono passati nell'URL"
+msgstr "Le faccette nascoste filtreranno comunque i risultati se saranno passati parametri adeguati nell'URL"
 
 #: components/theme/Comments/Comments
 # defaultMessage: Hide Replies
@@ -1133,7 +1133,7 @@ msgstr "Nascondi risposte"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Hide facet?
 msgid "Hide facet?"
-msgstr "Nascondi faccetta"
+msgstr "Nascondere la faccetta?"
 
 #: components/manage/History/History
 #: components/manage/Toolbar/More
@@ -1181,7 +1181,7 @@ msgstr "Se questa data è in futuro, il contenuto non verrà mostrato negli elen
 #: components/manage/LockingToastsFactory/LockingToastsFactory
 # defaultMessage: If you are certain this user has abandoned the object, you may unlock the object. You will then be able to edit it.
 msgid "If you are certain this user has abandoned the object, you may unlock the object. You will then be able to edit it."
-msgstr "Se sei certo che questo utente ha abbandonato il contenuto, puoi sbloccarlo per poterlo modificare."
+msgstr "Se sei sicuro che questo utente ha chiuso l'oggetto, puoi sbloccarlo. Sarai successivamente in grado di modificarlo."
 
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized
@@ -1378,16 +1378,19 @@ msgstr "Sinistra"
 msgid "Link"
 msgstr "Link"
 
+#: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link more
 msgid "Link more"
 msgstr "Link ad altro"
 
+#: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link Title
 msgid "Link title"
 msgstr "Link al resto"
 
+#: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
@@ -1553,7 +1556,7 @@ msgstr "Sposta in cima alla cartella"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Multiple choices?
 msgid "Multiple choices?"
-msgstr "Scelta multipla"
+msgstr "Scelta multipla?"
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: My email address is
@@ -2160,7 +2163,7 @@ msgstr "Cerca gruppo…"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Search input label
 msgid "Search input label"
-msgstr "Etichetta dell'input di ricerca"
+msgstr "Etichetta del campo di ricerca"
 
 #: components/manage/Blocks/Search/components/SearchDetails
 #: components/theme/Search/Search
@@ -2181,7 +2184,7 @@ msgstr "Cerca utenti…"
 #: components/manage/Blocks/Search/components/SearchDetails
 # defaultMessage: Searched for
 msgid "Searched for"
-msgstr "Cerco per"
+msgstr "Hai cercato"
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Second
@@ -2307,17 +2310,17 @@ msgstr "Mostra elemento"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Show search button?
 msgid "Show search button?"
-msgstr "Mostra bottone di ricerca"
+msgstr "Mostrare il bottone di ricerca?"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Show search input?
 msgid "Show search input?"
-msgstr "Mostra campo di ricerca"
+msgstr "Mostrare il campo di ricerca?"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Show sorting?
 msgid "Show sorting?"
-msgstr "Mostra ordinamento"
+msgstr "Mostrare l'ordinamento?"
 
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Shrink sidebar
@@ -2391,12 +2394,12 @@ msgstr "Ordina per"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Sort on label
 msgid "Sort on label"
-msgstr "Etichetta campo di ordinamento"
+msgstr "Etichetta dell'ordinamento"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Sort on options
 msgid "Sort on options"
-msgstr "Opzioni ordinamento"
+msgstr "Opzioni di ordinamento"
 
 #: components/manage/Blocks/HTML/Edit
 # defaultMessage: Source
@@ -2556,7 +2559,7 @@ msgstr "Il server di backend del tuo sito web non risponde, ci scusiamo per l'in
 #: components/manage/Blocks/Search/schema
 # defaultMessage: The button presence disables the live search, the query is issued when you press ENTER
 msgid "The button presence disables the live search, the query is issued when you press ENTER"
-msgstr "La presenza del bottone disabilita la ricerca live, quindi la ricerca viene effettuata quando viene premuto INVIO"
+msgstr "La presenza del bottone disabilita la ricerca al volo, la ricerca verrà effettuata premendo Invio"
 
 #: components/manage/Contents/Contents
 # defaultMessage: The item could not be deleted.
