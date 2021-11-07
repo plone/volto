@@ -986,7 +986,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                     <div
                       aria-expanded={false}
                       aria-label="sort"
-                      className="ui simple dropdown sort-icon"
+                      className="ui item dropdown sort-icon"
                       onBlur={[Function]}
                       onChange={[Function]}
                       onClick={[Function]}
