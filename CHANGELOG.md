@@ -11,8 +11,66 @@
 - UniversalLink: handle direct download for content-type File if user is not logged. @giuliaghisini
 - Prevent ua-parser-js security breach. See: https://github.com/advisories/GHSA-pjwm-rvh2-c87w @thet
 - Fix storybook errors in the connected components, api is undefined. Using now a mock of the store instead of the whole thing @sneridagh
+### Internal
+
+## 14.0.0-alpha.30 (2021-11-07)
+
+### Feature
+
+- Support typescript usage in Volto sites @pnicolli
+
+## 14.0.0-alpha.29 (2021-11-06)
+
+### Bugfix
+
+- Fix reset pagination in searchblock when changing facet filters @tiberiuichim
+
+## 14.0.0-alpha.28 (2021-11-03)
+
+### Feature
+
+- Defaults are observed in block data if `InlineForm` or `BlockDataForm` are used. @sneridagh @tiberiuichim
+
+## 14.0.0-alpha.27 (2021-11-02)
+
+### Breaking
+
+- Use title instead of id as a source of translation in "Variation" field in block enhancers @sneridagh
+
+## 14.0.0-alpha.26 (2021-11-01)
+
+### Feature
+
+- Provide Server-Side Rendering capabilities for blocks with async-based content (such as the listing block). A block needs to provide its own `getAsyncData` implementation, which is similar to an `asyncConnect` wrapper promise. @tiberiuichim @sneridagh
+
+## 14.0.0-alpha.25 (2021-11-01)
+
+### Feature
+
+- FormFieldWrapper accepts now strings and elements for description @nzambello
+- Image block:
+  - When uploading an image or selecting that from the object browser, Image block will set an empty string as alternative text @nzambello
+  - Adds a description to the alt-tag with w3c explaination @nzambello
+
+### Bugfix
+
+- Fix disable mode of `QuerystringWidget` when all criteria are deleted @kreafox
 
 ### Internal
+
+- Add RawMaterial website in Volto production sites @nzambello
+
+## 14.0.0-alpha.24 (2021-10-29)
+
+### Feature
+
+- Support Node 16 @timo
+
+### Bugfix
+
+- Prevent ua-parser-js security breach. See: https://github.com/advisories/GHSA-pjwm-rvh2-c87w @thet
+- Fix storybook errors in the connected components, api is undefined. Using now a mock of the store instead of the whole thing @sneridagh
+- CSS fix on `QueryWidget` to prevent line jumping for clear button when the multi selection widget has multiple items @kreafox
 
 ## 14.0.0-alpha.23 (2021-10-21)
 
