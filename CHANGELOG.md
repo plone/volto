@@ -4,10 +4,6 @@
 
 - Added LinkMore component and link more in HeroImageLeft block. @giuliaghisini
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Fix the selection of Maps Block @iRohitSingh
@@ -20,6 +16,8 @@
 
 - Removing the hardcoded default block type from text block @iRohitSingh
 - updated Volto sites list @giuliaghisini
+- Cleanup dangling virtualenv files that should not be committed @pnicolli
+- Improve italian translation @pnicolli
 
 ## 14.0.0-alpha.30 (2021-11-07)
 
@@ -67,8 +65,6 @@
 ### Internal
 
 - Add RawMaterial website in Volto production sites @nzambello
-- Cleanup dangling virtualenv files that should not be committed @pnicolli
-- Improve italian translation @pnicolli
 
 ## 14.0.0-alpha.24 (2021-10-29)
 
