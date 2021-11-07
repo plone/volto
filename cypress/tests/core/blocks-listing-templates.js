@@ -23,7 +23,7 @@ describe('Folder Contents Tests', () => {
     cy.waitForResourceToLoad('@types');
   });
 
-  it.only('Should render Summary template', () => {
+  it('Should render Summary template', () => {
     // when inserting image and selecting image gallery listing
     cy.createContent({
       contentType: 'Image',
@@ -46,11 +46,15 @@ describe('Folder Contents Tests', () => {
     cy.waitForResourceToLoad('@actions');
     cy.waitForResourceToLoad('@types');
     cy.url().should('eq', Cypress.config().baseUrl + '/my-folder/my-document');
-    cy.pause();
-    // then we should have a slide play or pause button
-    cy.get('.image-gallery-play-button')
-      .should('have.attr', 'aria-label')
-      .and('eq', 'Play or Pause Slideshow');
+    cy.get('.listing-item img')
+      .should('have.attr', 'src')
+      .and('contain', '/my-folder/my-document/my-image/@@images/image/preview');
+    cy.get('.listing-item img')
+      .should('be.visible')
+      .and(($img) => {
+        // "naturalWidth" and "naturalHeight" are set when the image loads
+        expect($img[0].naturalWidth).to.be.greaterThan(0);
+      });
   });
 
   it('Should render Image gallery listing view', () => {
@@ -81,6 +85,13 @@ describe('Folder Contents Tests', () => {
     cy.get('.image-gallery-play-button')
       .should('have.attr', 'aria-label')
       .and('eq', 'Play or Pause Slideshow');
+
+    cy.get('.image-gallery-slides img.image-gallery-image')
+      .should('be.visible')
+      .and(($img) => {
+        // "naturalWidth" and "naturalHeight" are set when the image loads
+        expect($img[0].naturalWidth).to.be.greaterThan(0);
+      });
   });
 
   it('Should render image gallery in edit mode', () => {
@@ -102,5 +113,11 @@ describe('Folder Contents Tests', () => {
     cy.get('.image-gallery-play-button')
       .should('have.attr', 'aria-label')
       .and('eq', 'Play or Pause Slideshow');
+    cy.get('.image-gallery-slides img.image-gallery-image')
+      .should('be.visible')
+      .and(($img) => {
+        // "naturalWidth" and "naturalHeight" are set when the image loads
+        expect($img[0].naturalWidth).to.be.greaterThan(0);
+      });
   });
 });
