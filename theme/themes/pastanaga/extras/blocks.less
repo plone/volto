@@ -391,8 +391,12 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
   }
 
   .hero-body {
+    display: flex;
+
     max-height: 400px;
     flex: 1 1;
+    flex-direction: column;
+    justify-content: space-between;
     padding: 30px;
     background-color: @tealBackground;
     overflow-y: hidden;
@@ -406,6 +410,10 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
       margin: 0;
       overflow-y: hidden;
       word-break: break-word;
+    }
+
+    .link-more {
+      text-align: right;
     }
   }
 

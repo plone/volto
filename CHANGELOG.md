@@ -2,6 +2,8 @@
 
 ## 14.0.0 (unreleased)
 
+- Added LinkMore component and link more in HeroImageLeft block. @giuliaghisini
+
 ### Breaking
 
 ### Feature
