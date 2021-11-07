@@ -2,15 +2,9 @@
 
 ## 14.0.0 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Support typescript usage in Volto sites @pnicolli
-
-### Bugfix
-
-### Internal
 
 ## 14.0.0-alpha.29 (2021-11-06)
 
