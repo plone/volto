@@ -12,6 +12,31 @@
 
 ### Internal
 
+## 14.0.0-alpha.31 (2021-11-07)
+
+- Added LinkMore component and link more in HeroImageLeft block. @giuliaghisini
+
+### Bugfix
+
+- Fix the selection of Maps Block @iRohitSingh
+- UniversalLink: handle direct download for content-type File if user is not logged. @giuliaghisini
+- Fixed ObjectBrowserWidget when is multiple or maximumSelectionSize is not set @giuliaghisini
+- Fix full-width image overlaps the drag handle  @iRohitSingh
+- Fix move item to top of the folder when clicking on move to top action button @iRohitSingh
+
+### Internal
+
+- Removing the hardcoded default block type from text block @iRohitSingh
+- updated Volto sites list @giuliaghisini
+- Cleanup dangling virtualenv files that should not be committed @pnicolli
+- Improve italian translation @pnicolli
+
+## 14.0.0-alpha.30 (2021-11-07)
+
+### Feature
+
+- Support typescript usage in Volto sites @pnicolli
+
 ## 14.0.0-alpha.29 (2021-11-06)
 
 ### Bugfix
