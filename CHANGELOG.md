@@ -10,6 +10,7 @@
 
 ### Bugfix
 
+- UniversalLink: handle direct download for content-type File if user is not logged. @giuliaghisini
 - Fixed ObjectBrowserWidget when is multiple or maximumSelectionSize is not set @giuliaghisini
 -Fix  The Full-width image overlaps the drag handle  @iRohitSingh
 
