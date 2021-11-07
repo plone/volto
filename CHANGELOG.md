@@ -9,8 +9,28 @@
 ### Bugfix
 
 - Fixed ObjectBrowserWidget when is multiple or maximumSelectionSize is not set @giuliaghisini
+-Fix  The Full-width image overlaps the drag handle  @iRohitSingh
 
 ### Internal
+- Removing the hardcoded default block type from text block @iRohitSingh
+
+## 14.0.0-alpha.30 (2021-11-07)
+
+### Feature
+
+- Support typescript usage in Volto sites @pnicolli
+
+## 14.0.0-alpha.29 (2021-11-06)
+
+### Bugfix
+
+- Fix reset pagination in searchblock when changing facet filters @tiberiuichim
+
+## 14.0.0-alpha.28 (2021-11-03)
+
+### Feature
+
+- Defaults are observed in block data if `InlineForm` or `BlockDataForm` are used. @sneridagh @tiberiuichim
 
 ## 14.0.0-alpha.27 (2021-11-02)
 
@@ -40,6 +60,7 @@
 ### Internal
 
 - Add RawMaterial website in Volto production sites @nzambello
+- Improve italian translation @pnicolli
 
 ## 14.0.0-alpha.24 (2021-10-29)
 
