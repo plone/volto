@@ -105,7 +105,7 @@ let config = {
     ToHTMLRenderers,
     ToHTMLOptions,
     imageObjects: ['Image'],
-    downloadableObjects: ['File'],
+    downloadableObjects: ['File'], //list of content-ypes for which the direct download of the file will be carried out if the user is not authenticated
     listingPreviewImageField: 'image',
     customStyleMap: null,
     notSupportedBrowsers: ['ie'],
