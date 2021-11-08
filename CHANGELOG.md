@@ -12,6 +12,8 @@
 
 ### Internal
 
+- Upgrade plone.restapi from 8.12.1 -> 8.13.0 @tisto
+
 ## 14.0.0-alpha.31 (2021-11-07)
 
 - Added LinkMore component and link more in HeroImageLeft block. @giuliaghisini
