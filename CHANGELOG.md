@@ -9,6 +9,7 @@
 ### Bugfix
 
 ### Internal
+- Add schema to video block sidebar @iRohitSingh
 
 ## 14.0.0-alpha.31 (2021-11-07)
 

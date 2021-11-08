@@ -143,6 +143,7 @@ class Edit extends Component {
    */
   render() {
     const { data } = this.props;
+    const placeholderImage = data.preview_image && data.preview_image[0];
     const placeholder =
       this.props.data.placeholder ||
       this.props.intl.formatMessage(messages.VideoBlockInputPlaceholder);
@@ -166,17 +167,17 @@ class Edit extends Component {
             {data.url.match('youtu') ? (
               <>
                 {data.url.match('list') ? (
-                  data.preview_image ? (
+                  placeholderImage ? (
                     <Embed
                       url={`https://www.youtube.com/embed/videoseries?list=${
                         data.url.match(/^.*\?list=(.*)$/)[1]
                       }`}
                       placeholder={
-                        isInternalURL(data.preview_image)
+                        isInternalURL(data.preview_image[0]['@id'])
                           ? `${flattenToAppURL(
-                              data.preview_image,
+                              data.preview_image[0]['@id'],
                             )}/@@images/image`
-                          : data.preview_image
+                          : data.preview_image[0]['@id']
                       }
                       defaultActive
                       autoplay={false}
@@ -191,7 +192,7 @@ class Edit extends Component {
                       autoplay={false}
                     />
                   )
-                ) : data.preview_image ? (
+                ) : placeholderImage ? (
                   <Embed
                     id={
                       data.url.match(/.be\//)
@@ -200,11 +201,11 @@ class Edit extends Component {
                     }
                     source="youtube"
                     placeholder={
-                      isInternalURL(data.preview_image)
+                      isInternalURL(data.preview_image[0]['@id'])
                         ? `${flattenToAppURL(
-                            data.preview_image,
+                            data.preview_image[0]['@id'],
                           )}/@@images/image`
-                        : data.preview_image
+                        : data.preview_image[0]['@id']
                     }
                     icon="play"
                     autoplay={false}
@@ -227,16 +228,16 @@ class Edit extends Component {
               <>
                 <div className="ui blocker" />
                 {data.url.match('vimeo') ? (
-                  data.preview_image ? (
+                  placeholderImage ? (
                     <Embed
                       id={data.url.match(/^.*\.com\/(.*)/)[1]}
                       source="vimeo"
                       placeholder={
-                        isInternalURL(data.preview_image)
+                        isInternalURL(data.preview_image[0]['@id'])
                           ? `${flattenToAppURL(
-                              data.preview_image,
+                              data.preview_image[0]['@id'],
                             )}/@@images/image`
-                          : data.preview_image
+                          : data.preview_image[0]['@id']
                       }
                       icon="play"
                       autoplay={false}
@@ -268,12 +269,12 @@ class Edit extends Component {
                         }
                         controls
                         poster={
-                          data.preview_image
-                            ? isInternalURL(data.preview_image)
+                          placeholderImage
+                            ? isInternalURL(data.preview_image[0]['@id'])
                               ? `${flattenToAppURL(
-                                  data.preview_image,
+                                  data.preview_image[0]['@id'],
                                 )}/@@images/image`
-                              : data.preview_image
+                              : data.preview_image[0]['@id']
                             : ''
                         }
                         type="video/mp4"
