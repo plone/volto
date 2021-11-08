@@ -234,7 +234,6 @@ class ObjectBrowserBody extends Component {
 
   onSelectItem = (item) => {
     const url = item['@id'];
-    const title = item.title;
     const { block, data, mode, dataName, onChangeBlock } = this.props;
 
     const updateState = (mode) => {
@@ -267,7 +266,7 @@ class ObjectBrowserBody extends Component {
       onChangeBlock(block, {
         ...data,
         url: flattenToAppURL(item.getURL),
-        alt: title,
+        alt: '',
       });
     } else if (mode === 'link') {
       onChangeBlock(block, {
@@ -303,12 +302,19 @@ class ObjectBrowserBody extends Component {
       if (this.isSelectable(item)) {
         if (
           !this.props.maximumSelectionSize ||
+          this.props.mode === 'multiple' ||
           !this.props.data ||
           this.props.data.length < this.props.maximumSelectionSize
         ) {
           this.onSelectItem(item);
           let length = this.props.data ? this.props.data.length : 0;
-          if (length + 1 >= this.props.maximumSelectionSize) {
+
+          let stopSelecting =
+            this.props.mode !== 'multiple' ||
+            (this.props.maximumSelectionSize > 0 &&
+              length + 1 >= this.props.maximumSelectionSize);
+
+          if (stopSelecting) {
             this.props.closeObjectBrowser();
           }
         } else {

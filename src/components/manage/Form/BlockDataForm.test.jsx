@@ -71,7 +71,11 @@ describe('BlockDataForm', () => {
     };
     const { container } = render(
       <Provider store={store}>
-        <BlockDataForm formData={formData} schema={testSchema} />
+        <BlockDataForm
+          formData={formData}
+          schema={testSchema}
+          onChangeField={(id, value) => {}}
+        />
       </Provider>,
     );
     expect(container).toMatchSnapshot();
@@ -97,7 +101,11 @@ describe('BlockDataForm', () => {
     };
     const { container } = render(
       <Provider store={store}>
-        <BlockDataForm formData={formData} schema={testSchema} />
+        <BlockDataForm
+          formData={formData}
+          schema={testSchema}
+          onChangeField={(id, value) => {}}
+        />
       </Provider>,
     );
     expect(container).toMatchSnapshot();
@@ -123,7 +131,11 @@ describe('BlockDataForm', () => {
     };
     const { container } = render(
       <Provider store={store}>
-        <BlockDataForm formData={formData} schema={testSchema} />
+        <BlockDataForm
+          formData={formData}
+          schema={testSchema}
+          onChangeField={(id, value) => {}}
+        />
       </Provider>,
     );
     expect(container).toMatchSnapshot();

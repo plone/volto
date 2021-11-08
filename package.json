@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "14.0.0-alpha.23",
+  "version": "14.0.0-alpha.31",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -87,12 +87,6 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
-  "bundlesize": [
-    {
-      "path": "build/public/static/js/*.js",
-      "maxSize": "680kB"
-    }
-  ],
   "bundlewatch": {
     "files": [
       {
@@ -236,7 +230,7 @@
     ]
   },
   "engines": {
-    "node": "^12 || ^14"
+    "node": "^12 || ^14 || ^16"
   },
   "dependencies": {
     "@babel/plugin-proposal-export-default-from": "7.10.4",
@@ -263,7 +257,6 @@
     "babel-plugin-lodash": "3.3.4",
     "babel-plugin-react-intl": "5.1.17",
     "babel-plugin-root-import": "6.1.0",
-    "bundlesize": "0.18.0",
     "bundlewatch": "0.2.7",
     "circular-dependency-plugin": "5.2.2",
     "classnames": "2.2.6",
@@ -329,7 +322,7 @@
     "postcss-overrides": "3.1.4",
     "prettier": "2.0.5",
     "pretty-bytes": "5.3.0",
-    "prismjs": "1.24.0",
+    "prismjs": "1.25.0",
     "promise-file-reader": "1.0.2",
     "prop-types": "15.7.2",
     "query-string": "7.0.0",

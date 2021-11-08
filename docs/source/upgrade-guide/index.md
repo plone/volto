@@ -125,7 +125,12 @@ Not really a breaking change, but it's worth noting it. By default, Volto 14 com
 ### Blocks chooser now uses the title instead of the id of the block as translation source
 
 The `BlockChooser` component now uses the `title` of the block as source for translating
-the block title. Before, it took the `id` of the block, which is utterly wrong. Could be that this change will trigger untranslated blocks titles in your projects and add-ons.
+the block title. Before, it took the `id` of the block, which is utterly wrong and missleading. There is a chance that this change will trigger untranslated blocks titles in your projects and add-ons.
+
+### Variation field now uses the title instead of the id of the variation as translation source
+
+Following the same convention as the above change, `Variation` field coming from the block enhancers now uses the `title` of the block as source for translating
+the variation title. Before, it took the `id` of the block, which as stated before, is wrong and missleading. There is a chance that  this change will trigger untranslated variation titles in your projects and add-ons.
 
 ### New mobile navigation menu
 
