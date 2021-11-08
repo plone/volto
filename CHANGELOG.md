@@ -10,6 +10,7 @@
 
 ### Internal
 
+- Updated i18n link into the README file @macagua
 - Updated Spanish translations @macagua
 
 ## 14.0.0-alpha.31 (2021-11-07)

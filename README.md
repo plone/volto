@@ -358,7 +358,7 @@ yarn ci:start-api-plone-guillotina
 
 ## Translations
 
-If you would like contribute to translate Volto into several languages, please, read the [Internationalization (i18n) guide](https://docs.voltocms.com/customizing/i18n/).
+If you would like contribute to translate Volto into several languages, please, read the [Internationalization (i18n) guide](https://docs.voltocms.com/recipes/i18n/).
 
 ## Contributors
 
