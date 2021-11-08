@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix downloadableObjects default value @giuliaghisini
+
 ### Internal
 
 - Remove bundlesize @tisto
@@ -22,7 +24,7 @@
 - Fix the selection of Maps Block @iRohitSingh
 - UniversalLink: handle direct download for content-type File if user is not logged. @giuliaghisini
 - Fixed ObjectBrowserWidget when is multiple or maximumSelectionSize is not set @giuliaghisini
-- Fix full-width image overlaps the drag handle  @iRohitSingh
+- Fix full-width image overlaps the drag handle @iRohitSingh
 - Fix move item to top of the folder when clicking on move to top action button @iRohitSingh
 
 ### Internal
