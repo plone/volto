@@ -40,7 +40,11 @@ exports[`renders a view hero component 1`] = `
     />
     <div
       className="hero-body"
-    />
+    >
+      <div
+        className="hero-text"
+      />
+    </div>
   </div>
 </div>
 `;
