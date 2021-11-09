@@ -3,8 +3,10 @@ import config from '@plone/volto/registry';
 
 const staticMiddleware = express.static(process.env.RAZZLE_PUBLIC_DIR, {
   setHeaders: function (res, path) {
-    const relpath = path.substr(process.env.RAZZLE_PUBLIC_DIR.length);
-    config.settings.staticFiles.some((elem) => {
+    const pathLib = require('path');
+    const base = pathLib.resolve(process.env.RAZZLE_PUBLIC_DIR);
+    const relpath = path.substr(base.length);
+    config.settings.serverConfig.staticFiles.some((elem) => {
       if (relpath.match(elem.match)) {
         for (const name in elem.headers) {
           res.setHeader(name, elem.headers[name] || 'undefined');

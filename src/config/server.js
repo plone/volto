@@ -19,6 +19,7 @@ const settings = {
   extractScripts: { errorPages: false },
   staticFiles: [
     {
+      id: 'root_static',
       match: /^\/static\/.*/,
       headers: {
         // stable resources never change. 31536000 seconds == 365 days
@@ -26,6 +27,7 @@ const settings = {
       },
     },
     {
+      id: 'all',
       match: /.*/,
       headers: {
         'Cache-Control': 'public, max-age=60',
