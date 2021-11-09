@@ -4,6 +4,8 @@
 
 ### Breaking
 
+- Listing block no longer use `fullobjects` to retrieve backend data. It uses the catalog data instead. @plone/volto-team
+
 ### Feature
 
 ### Bugfix
