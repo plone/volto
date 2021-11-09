@@ -258,3 +258,13 @@ in the `config.settings.serverConfig` object.
 !!! block ""
 
     This setting will enable working copy support in your site. You need to install the `plone.app.iterate` add-on in your Plone site in order to make it working.
+
+### bbb_listingBlockFetchesFullobjects
+
+!!! block ""
+
+    Before Volto 14, the query used by the listing block always used the `fullobjects` flag, which fully serialized the resultant response items. If your code depends on this behavior, set this flag to `true` in the `settings` object.
+
+    !!! note
+        You should probably refactor your code to avoid depending on this
+        behavior. It can cause performance issues when you have large results changesets
