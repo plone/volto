@@ -18,15 +18,15 @@ const methods = ['get', 'post', 'put', 'patch', 'del'];
 export function formatUrl(path) {
   const { settings } = config;
   const APISUFIX = settings.legacyTraverse ? '' : '/++api++';
-  const portalSubName = settings.portalSubName;
+  const prefixPath = settings.prefixPath;
 
   // it's an external link
   if (path.startsWith('http://') || path.startsWith('https://')) return path;
 
   let adjustedPath = path[0] !== '/' ? `/${path}` : path;
 
-  if (portalSubName) {
-    adjustedPath = adjustedPath.replace(`/${portalSubName}`, '');
+  if (prefixPath) {
+    adjustedPath = adjustedPath.replace(`/${prefixPath}`, '');
   }
 
   let apiPath = '';
@@ -36,10 +36,6 @@ export function formatUrl(path) {
     apiPath = settings.apiPath;
   }
 
-  // console.log('path: ', path);
-  // console.log('adjustedPath: ', adjustedPath);
-  // console.log('final url: ', `${apiPath}${APISUFIX}${adjustedPath}`);
-  // console.log('--------------');
   return `${apiPath}${APISUFIX}${adjustedPath}`;
 }
 
