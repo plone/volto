@@ -15,9 +15,9 @@ const messages = defineMessages({
     id: 'Base search query',
     defaultMessage: 'Base search query',
   },
-  title: {
-    id: 'Title',
-    defaultMessage: 'Title',
+  sectionTitle: {
+    id: 'Section title',
+    defaultMessage: 'Section title',
   },
   headline: {
     id: 'Headline',
@@ -56,6 +56,10 @@ const messages = defineMessages({
   sortOnLabel: {
     id: 'Sort on label',
     defaultMessage: 'Sort on label',
+  },
+  sortOnOptions: {
+    id: 'Sort on options',
+    defaultMessage: 'Sort on options',
   },
   facets: {
     id: 'Facets',
@@ -193,8 +197,9 @@ export default ({ data = {}, intl }) => {
         fields: [
           'showSortOn',
           ...(data.showSortOn ? ['sortOnLabel'] : []),
+          ...(data.showSortOn ? ['sortOnOptions'] : []),
           'showSearchInput',
-          ...(data.showSearchInput ? ['showSearchButton'] : []),
+          ...(data.showSearchInput ?? true ? ['showSearchButton'] : []),
           // ...(data.showSearchInput ? ['searchInputPrompt'] : []),
           // ...(data.showSearchButton ? ['searchButtonLabel'] : []),
         ],
@@ -228,6 +233,10 @@ export default ({ data = {}, intl }) => {
       sortOnLabel: {
         title: intl.formatMessage(messages.sortOnLabel),
       },
+      sortOnOptions: {
+        title: intl.formatMessage(messages.sortOnOptions),
+        widget: 'array',
+      },
       facets: {
         title: intl.formatMessage(messages.facets),
         widget: 'object_list',
@@ -235,7 +244,7 @@ export default ({ data = {}, intl }) => {
         schemaExtender: enhanceSchema,
       },
       facetsTitle: {
-        title: intl.formatMessage(messages.title),
+        title: intl.formatMessage(messages.sectionTitle),
       },
       query: {
         title: 'Query',

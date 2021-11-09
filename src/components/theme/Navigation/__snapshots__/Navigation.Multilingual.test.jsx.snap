@@ -10,7 +10,7 @@ exports[`Navigation Multilingual renders a navigation component with an active i
   >
     <button
       aria-label="Open menu"
-      className="hamburger hamburger--collapse"
+      className="hamburger hamburger--spin"
       onClick={[Function]}
       title="Open menu"
       type="button"
@@ -67,7 +67,7 @@ exports[`Navigation Multilingual renders a navigation component with an active i
   >
     <button
       aria-label="Open menu"
-      className="hamburger hamburger--collapse"
+      className="hamburger hamburger--spin"
       onClick={[Function]}
       title="Open menu"
       type="button"
@@ -124,7 +124,7 @@ exports[`Navigation Multilingual renders a navigation component with only one ac
   >
     <button
       aria-label="Open menu"
-      className="hamburger hamburger--collapse"
+      className="hamburger hamburger--spin"
       onClick={[Function]}
       title="Open menu"
       type="button"
@@ -189,7 +189,7 @@ exports[`Navigation Multilingual renders a navigation component without active i
   >
     <button
       aria-label="Open menu"
-      className="hamburger hamburger--collapse"
+      className="hamburger hamburger--spin"
       onClick={[Function]}
       title="Open menu"
       type="button"

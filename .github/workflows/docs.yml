@@ -1,14 +1,14 @@
 name: Documentation
 on:
   push:
-    tags:
-      - '*'
+    branches:
+      - master
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [14.x]
+        node-version: [16.x]
         python-version: [3.7]
     steps:
       - uses: actions/checkout@v2
