@@ -76,18 +76,16 @@ const RightColumnFacets = (props) => {
             </div>
           )}
 
-          <div>
-            <FilterList
-              {...props}
-              isEditMode={isEditMode}
-              setFacets={(f) => {
-                flushSync(() => {
-                  setFacets(f);
-                  onTriggerSearch(searchedText || '', f);
-                });
-              }}
-            />
-          </div>
+          <FilterList
+            {...props}
+            isEditMode={isEditMode}
+            setFacets={(f) => {
+              flushSync(() => {
+                setFacets(f);
+                onTriggerSearch(searchedText || '', f);
+              });
+            }}
+          />
 
           <div className="search-results-count-sort">
             <SearchDetails text={searchedText} total={totalItems} />
