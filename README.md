@@ -56,7 +56,7 @@ First get all the requirements installed on your system.
 
 ### Prerequisites
 
-- [Node.js LTS (14.x)](https://nodejs.org/)
+- [Node.js LTS (16.x)](https://nodejs.org/)
 - [Python 3.7.x / 2.7.x](https://python.org/) or
 - [Docker](https://www.docker.com/get-started) (if using the Plone/Guillotina docker images)
 
@@ -67,7 +67,8 @@ Create a new Volto project by using the `@plone/generator-volto` utility.
 It will bootstrap a Volto project in a folder of your choice with all the required
 boilerplate to start customizing your Volto site.
 
-    $ npm init yo @plone/volto
+    $ npm install -g yo @plone/generator-volto
+    $ yo @plone/volto
 
 follow the prompts questions, provide `myvoltoproject` as project name then, when it finishes:
 
@@ -133,10 +134,11 @@ Volto is actively developed since 2017 and used in production since 2018 on the 
 - [Comune di San Possidonio](https://www.comune.sanpossidonio.mo.it/) (Website of the Municipality of San Possidonio. Developed by [RedTurtle](https://redturtle.it), 2021)
 - [Comune di Mirandola](https://comune.mirandola.mo.it/) (Website of the Municipality of Mirandola. Developed by [RedTurtle](https://redturtle.it), 2021)
 - [Comune di Medolla](http://www.comune.medolla.mo.it/) (Website of the Municipality of Medolla. Developed by [RedTurtle](https://redturtle.it), 2021)
-- [Camera di Commercio dell'Umbria](www.umbria.camcom.it) (Website Chamber of Commerce of umbria. Developed by [RedTurtle](https://redturtle.it), 2021)
+- [Camera di Commercio dell'Umbria](https://www.umbria.camcom.it) (Website Chamber of Commerce of Umbria. Developed by [RedTurtle](https://redturtle.it), 2021)
 - [Biblioteche Pianura Est](https://bibest.it) (Website of the Associated libraries of eastern plain. Developed by [RedTurtle](https://redturtle.it), 2021)
+- [Camera di Commercio di Reggio Emilia](https://www.re.camcom.gov.it/) (Website Chamber of Commerce of Reggio Emilia. Developed by [RedTurtle](https://redturtle.it), 2021)
+- [RawMaterial](https://rawmaterial.it/en) (Company's website. Developed by [RawMaterial](https://rawmaterial.it/en), 2021)
 - Please create a new [issue](https://github.com/plone/volto/issues/new) or [pull request](https://github.com/plone/volto/pulls) to add your Volto-site here!
-
 
 ## Documentation
 
@@ -177,9 +179,10 @@ as part of the Plone training docs at [https://training.plone.org/5/volto/index.
 
 ## Node Support
 
+- Node 16: Supported since Volto 14
 - Node 14: Supported since Volto 8.8.0
 - Node 12: Supported since Volto 4
-- Node 10: Supported since Volto 1 (and its predecessor "plone-react")
+- Node 10: Deprecated from Volto 13 onwards. It was supported since Volto 1 (and its predecessor "plone-react")
 
 ## Browser support
 
@@ -356,7 +359,6 @@ yarn ci:start-api-plone-guillotina
 ## Translations
 
 If you would like contribute to translate Volto into several languages, please, read the [Internationalization (i18n) guide](https://docs.voltocms.com/customizing/i18n/).
-
 
 ## Contributors
 

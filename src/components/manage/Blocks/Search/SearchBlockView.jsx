@@ -22,18 +22,18 @@ const getListingBodyVariation = (data) => {
 
 const isfunc = (obj) => isFunction(obj) || typeof obj === 'function';
 
-const blockPropsAreChanged = (prevProps, nextProps) => {
-  const filtered = (obj) =>
-    Object.assign(
-      {},
-      ...Object.keys(obj).map((k) => {
-        const reject = k !== 'properties' && !isfunc(obj[k]);
-        return reject ? { [k]: obj[k] } : {};
-      }),
-    );
+const _filtered = (obj) =>
+  Object.assign(
+    {},
+    ...Object.keys(obj).map((k) => {
+      const reject = k !== 'properties' && !isfunc(obj[k]);
+      return reject ? { [k]: obj[k] } : {};
+    }),
+  );
 
-  const prev = filtered(prevProps);
-  const next = filtered(nextProps);
+const blockPropsAreChanged = (prevProps, nextProps) => {
+  const prev = _filtered(prevProps);
+  const next = _filtered(nextProps);
 
   return isEqual(prev, next);
 };
