@@ -1047,14 +1047,27 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     }
   }
 
-  .search-input-live-icon-button {
+  .search-input-actions {
     position: absolute;
-    top: 4px;
-    right: 4px;
+    top: 0;
+    right: 0;
+    display: flex;
+    height: 100%;
+    align-items: center;
 
     svg {
       width: 28px !important;
       height: 28px !important;
+    }
+
+    .ui.button {
+      margin: 0 5px;
+    }
+
+    .divider {
+      width: 1px;
+      height: 60%;
+      border-right: 1px solid #dfe1e5;
     }
   }
 }

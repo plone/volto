@@ -221,6 +221,7 @@ export default ({ data = {}, intl }) => {
         type: 'boolean',
         title: intl.formatMessage(messages.showSearchButtonTitle),
         description: intl.formatMessage(messages.showSearchButtonDescription),
+        default: true,
       },
       searchButtonLabel: {
         title: intl.formatMessage(messages.searchButtonLabel),
