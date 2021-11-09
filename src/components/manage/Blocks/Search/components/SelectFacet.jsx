@@ -33,11 +33,11 @@ const SelectFacet = (props) => {
         if (data) {
           onChange(
             facet.field.value,
-            isMulti ? data.map(({ value }) => value) : [data.value],
+            isMulti ? data.map(({ value }) => value) : data.value,
           );
         } else {
           // data has been removed
-          onChange(facet.field.value, []);
+          onChange(facet.field.value, isMulti ? [] : '');
         }
       }}
       isMulti={facet.multiple}
