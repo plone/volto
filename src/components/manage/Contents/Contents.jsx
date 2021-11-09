@@ -737,8 +737,19 @@ class Contents extends Component {
    * @returns {undefined}
    */
   onMoveToTop(event, { value }) {
-    this.onOrderItem(this.state.items[value]['@id'], value, -value, false);
-    this.onOrderItem(this.state.items[value]['@id'], value, -value, true);
+    const id = this.state.items[value]['@id'];
+    value = this.state.currentPage * this.state.pageSize + value;
+    this.props.orderContent(
+      getBaseUrl(this.props.pathname),
+      id.replace(/^.*\//, ''),
+      -value,
+    );
+    this.setState(
+      {
+        currentPage: 0,
+      },
+      () => this.fetchContents(),
+    );
   }
 
   /**
