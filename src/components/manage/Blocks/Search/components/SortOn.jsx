@@ -62,9 +62,9 @@ const SortOn = (props) => {
   return (
     <div className="search-sort-wrapper">
       <div className="search-sort-on">
-        {data.sortOnLabel && (
-          <span className="sort-label">{data.sortOnLabel}</span>
-        )}
+        <span className="sort-label">
+          {intl.formatMessage(messages.sortOn)}
+        </span>
         <Select
           id="select-search-sort-on"
           name="select-searchblock-sort-on"

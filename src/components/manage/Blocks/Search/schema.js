@@ -53,10 +53,6 @@ const messages = defineMessages({
     id: 'Show sorting?',
     defaultMessage: 'Show sorting?',
   },
-  sortOnLabel: {
-    id: 'Sort on label',
-    defaultMessage: 'Sort on label',
-  },
   sortOnOptions: {
     id: 'Sort on options',
     defaultMessage: 'Sort on options',
@@ -196,7 +192,6 @@ export default ({ data = {}, intl }) => {
         title: intl.formatMessage(messages.controls),
         fields: [
           'showSortOn',
-          ...(data.showSortOn ? ['sortOnLabel'] : []),
           ...(data.showSortOn ? ['sortOnOptions'] : []),
           'showSearchInput',
           ...(data.showSearchInput ?? true ? ['showSearchButton'] : []),
@@ -230,9 +225,6 @@ export default ({ data = {}, intl }) => {
       showSortOn: {
         type: 'boolean',
         title: intl.formatMessage(messages.showSortOn),
-      },
-      sortOnLabel: {
-        title: intl.formatMessage(messages.sortOnLabel),
       },
       sortOnOptions: {
         title: intl.formatMessage(messages.sortOnOptions),
