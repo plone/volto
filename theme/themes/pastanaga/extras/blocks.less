@@ -1008,6 +1008,10 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     align-items: center;
     justify-content: flex-end;
 
+    @media only screen and (max-width: (@largestMobileScreen)) {
+      margin-bottom: 1.5em;
+    }
+
     .ui.basic.button {
       padding: 3px !important;
     }
@@ -1032,13 +1036,25 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     display: flex;
     align-items: flex-start;
 
+    @media only screen and (max-width: (@largestMobileScreen)) {
+      flex-direction: column;
+    }
+
     .filter-listing {
       padding-right: 1em;
       margin-bottom: 0 !important;
+
+      @media only screen and (max-width: (@largestMobileScreen)) {
+        width: 100%;
+        padding-right: 0;
+        margin-bottom: 1.5em !important;
+      }
     }
 
     .search-sort-wrapper {
-      padding-top: 4px;
+      @media only screen and (min-width: (@largestMobileScreen)) {
+        padding-top: 4px;
+      }
     }
   }
 
@@ -1047,6 +1063,11 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     align-items: center;
     justify-content: space-between;
     margin-bottom: 1.5em;
+
+    @media only screen and (max-width: (@largestMobileScreen)) {
+      flex-direction: column-reverse;
+      align-items: flex-start;
+    }
 
     .search-details {
       margin: 0;
