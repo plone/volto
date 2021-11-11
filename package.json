@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "14.0.0-alpha.31",
+  "version": "14.0.0-alpha.32",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -87,12 +87,6 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
-  "bundlesize": [
-    {
-      "path": "build/public/static/js/*.js",
-      "maxSize": "680kB"
-    }
-  ],
   "bundlewatch": {
     "files": [
       {
@@ -263,7 +257,6 @@
     "babel-plugin-lodash": "3.3.4",
     "babel-plugin-react-intl": "5.1.17",
     "babel-plugin-root-import": "6.1.0",
-    "bundlesize": "0.18.0",
     "bundlewatch": "0.2.7",
     "circular-dependency-plugin": "5.2.2",
     "classnames": "2.2.6",
