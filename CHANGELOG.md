@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fixes in search block. Disable default live search. Added clear button for search input. Fixed facet dropdown clear button. Removed sort on label customization option. Layout improvements, CSS polishments. @kreafox
+
 ### Internal
 
 ## 14.0.0-alpha.32 (2021-11-09)
