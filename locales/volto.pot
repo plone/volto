@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2021-11-10T09:59:01.766Z\n"
+"POT-Creation-Date: 2021-11-11T15:39:13.734Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -2184,8 +2184,8 @@ msgid "Search users…"
 msgstr ""
 
 #: components/manage/Blocks/Search/components/SearchDetails
-# defaultMessage: Searched for
-msgid "Searched for"
+# defaultMessage: Searched for: <em>{searchedtext}</em>.
+msgid "Searched for: <em>{searchedtext}</em>."
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField

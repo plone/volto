@@ -2192,8 +2192,8 @@ msgid "Search users…"
 msgstr "Pesquisar usuários…"
 
 #: components/manage/Blocks/Search/components/SearchDetails
-# defaultMessage: Searched for
-msgid "Searched for"
+# defaultMessage: Searched for: <em>{searchedtext}</em>.
+msgid "Searched for: <em>{searchedtext}</em>."
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
