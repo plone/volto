@@ -1065,14 +1065,17 @@ msgstr "Links"
 msgid "Link"
 msgstr "Link"
 
+#: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 msgid "Link more"
 msgstr "'Mehr' Link"
 
+#: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 msgid "Link title"
 msgstr "Linktitel"
 
+#: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema

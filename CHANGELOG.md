@@ -4,7 +4,24 @@
 
 ### Breaking
 
-- Defaults are observed in block data if `InlineForm` or `BlockDataForm` are used. It won't break if not changed, but the feature won't be enabled until you follow upgrade instructions. Find them in the upgrade guide. @sneridagh @tiberiuichim
+### Feature
+
+### Bugfix
+
+### Internal
+
+## 14.0.0-alpha.32 (2021-11-09)
+
+### Breaking
+
+- Listing block no longer use `fullobjects` to retrieve backend data. It uses the catalog data instead. @plone/volto-team
+
+### Internal
+
+- Remove bundlesize @tisto
+- Upgrade plone.restapi from 8.12.1 -> 8.13.0 @tisto
+
+## 14.0.0-alpha.31 (2021-11-07)
 
 ### Feature
 
@@ -13,6 +30,8 @@
 - A new component was added, `MutateBlockButton`, it encapsulate the logic of show/hiding the `BlockChooser` @tiberiuichim
 - A new component was added, `BlockChooserButton`, it encapsulate the logic of show/hiding the `BlockChooser` @tiberiuichim
 
+- Added LinkMore component and link more in HeroImageLeft block. @giuliaghisini
+
 ### Bugfix
 
 - Improve consistency of `TokenWidget`'s use of the choice labels as "values" instead of internal uids assigned by `react-select`. @tiberiuichim
@@ -20,7 +39,36 @@
 - Prevent form submit when clicking on BlockChooserButton @giuliaghisini
 - Prevent ua-parser-js security breach. See: https://github.com/advisories/GHSA-pjwm-rvh2-c87w @thet
 - Fix storybook errors in the connected components, api is undefined. Using now a mock of the store instead of the whole thing @sneridagh
+- Fix the selection of Maps Block @iRohitSingh
+- UniversalLink: handle direct download for content-type File if user is not logged. @giuliaghisini
+- Fixed ObjectBrowserWidget when is multiple or maximumSelectionSize is not set @giuliaghisini
+- Fix full-width image overlaps the drag handle  @iRohitSingh
+- Fix move item to top of the folder when clicking on move to top action button @iRohitSingh
+
 ### Internal
+
+- Removing the hardcoded default block type from text block @iRohitSingh
+- updated Volto sites list @giuliaghisini
+- Cleanup dangling virtualenv files that should not be committed @pnicolli
+- Improve italian translation @pnicolli
+
+## 14.0.0-alpha.30 (2021-11-07)
+
+### Feature
+
+- Support typescript usage in Volto sites @pnicolli
+
+## 14.0.0-alpha.29 (2021-11-06)
+
+### Bugfix
+
+- Fix reset pagination in searchblock when changing facet filters @tiberiuichim
+
+## 14.0.0-alpha.28 (2021-11-03)
+
+### Feature
+
+- Defaults are observed in block data if `InlineForm` or `BlockDataForm` are used. @sneridagh @tiberiuichim
 
 ## 14.0.0-alpha.27 (2021-11-02)
 

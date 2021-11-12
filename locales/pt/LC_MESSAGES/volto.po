@@ -1058,14 +1058,17 @@ msgstr "Esquerda"
 msgid "Link"
 msgstr ""
 
+#: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 msgid "Link more"
 msgstr ""
 
+#: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 msgid "Link title"
 msgstr ""
 
+#: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema

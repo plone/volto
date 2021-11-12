@@ -51,6 +51,7 @@ config.set('settings', {
   },
   controlPanelsIcons,
   apiExpanders: [],
+  downloadableObjects: ['Link'],
 });
 config.set('blocks', {
   blocksConfig: {

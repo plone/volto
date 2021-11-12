@@ -36,6 +36,7 @@ export Avatar from '@plone/volto/components/theme/Avatar/Avatar';
 export Icon from '@plone/volto/components/theme/Icon/Icon';
 export ConditionalLink from '@plone/volto/components/manage/ConditionalLink/ConditionalLink';
 export UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
+export LinkMore from '@plone/volto/components/manage/LinkMore/LinkMore';
 
 export SlotRenderer from '@plone/volto/components/theme/SlotRenderer/SlotRenderer';
 export ContentContainer from '@plone/volto/components/theme/ContentContainer/ContentContainer';
