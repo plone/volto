@@ -237,10 +237,10 @@
       "npx stylelint --fix"
     ],
     "theme/**/*.overrides": [
-      "npx stylelint --fix --syntax less"
+      "npx stylelint --fix"
     ],
     "src/**/*.overrides": [
-      "npx stylelint --fix --syntax less"
+      "npx stylelint --fix"
     ]
   },
   "engines": {
