@@ -53,6 +53,11 @@ class Breadcrumbs extends Component {
 
   componentDidMount() {
     if (!hasApiExpander('breadcrumbs', getBaseUrl(this.props.pathname))) {
+      console.log(
+        'pathname',
+        this.props.pathname,
+        getBaseUrl(this.props.pathname),
+      );
       this.props.getBreadcrumbs(getBaseUrl(this.props.pathname));
     }
   }
