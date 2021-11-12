@@ -20,6 +20,7 @@ import config from '@plone/volto/registry';
 export function getVocabulary(vocabNameOrURL, query = null, start = 0) {
   const { settings } = config;
   // In case we have a URL, we have to get the vocabulary name
+  console.log('vocab', vocabNameOrURL);
   const vocabulary =
     vocabNameOrURL &&
     vocabNameOrURL.replace(`${settings.apiPath}/@vocabularies/`, '');
@@ -47,6 +48,7 @@ export function getVocabulary(vocabNameOrURL, query = null, start = 0) {
  * @returns {Object} Get vocabulary action.
  */
 export function getVocabularyTokenTitle(vocabNameOrURL, token = null) {
+  console.log('vocabt', vocabNameOrURL);
   const { settings } = config;
   // In case we have a URL, we have to get the vocabulary name
   const vocabulary = vocabNameOrURL.replace(
