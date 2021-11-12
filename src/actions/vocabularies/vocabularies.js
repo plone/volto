@@ -8,6 +8,7 @@ import {
   GET_VOCABULARY_TOKEN_TITLE,
 } from '@plone/volto/constants/ActionTypes';
 import config from '@plone/volto/registry';
+import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
 
 /**
  * Get vocabulary given a URL (coming from a Schema) or from a vocabulary name.
@@ -18,6 +19,12 @@ import config from '@plone/volto/registry';
  * @returns {Object} Get vocabulary action.
  */
 export function getVocabulary(vocabNameOrURL, query = null, start = 0) {
+  console.log('getVocabulary', {
+    vocabNameOrURL,
+    flat: flattenToAppURL(vocabNameOrURL),
+    base: getBaseUrl(vocabNameOrURL),
+    fullflat: getBaseUrl(flattenToAppURL(vocabNameOrURL)),
+  });
   const { settings } = config;
   // In case we have a URL, we have to get the vocabulary name
   const vocabulary =

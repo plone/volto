@@ -98,8 +98,8 @@ export function flattenToAppURL(url) {
   return (
     url &&
     url
-      .replace(settings.internalApiPath, prefixPath)
-      .replace(settings.apiPath, prefixPath)
+      .replace(settings.internalApiPath, '')
+      .replace(settings.apiPath, '')
       .replace(settings.publicURL, prefixPath)
   );
 }

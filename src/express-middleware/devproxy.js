@@ -77,7 +77,9 @@ export default function () {
         config.settings.proxyRewriteTarget ||
         `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/++api++/VirtualHostRoot`;
 
-      return `${target}${path.replace('/++api++', '')}`;
+      const p = `${target}${path.replace('/++api++', '')}`;
+      console.log('path rewrite', p, path);
+      return p;
     },
     logLevel: process.env.DEBUG_HPM ? 'debug' : 'silent',
     ...(config.settings?.proxyRewriteTarget?.startsWith('https') && {
