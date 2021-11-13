@@ -3,9 +3,10 @@ import { ArrayWidgetComponent } from './ArrayWidget';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { RealStoreWrapper as Wrapper } from '@plone/volto/storybook';
 
-const ArrayComponent = injectLazyLibs(['reactSelectCreateable'])(
-  ArrayWidgetComponent,
-);
+const ArrayComponent = injectLazyLibs([
+  'reactSelectCreateable',
+  'reactSortableHOC',
+])(ArrayWidgetComponent);
 
 const Array = (args) => {
   const [value, setValue] = React.useState(args.value ?? '');

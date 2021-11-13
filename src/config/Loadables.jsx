@@ -7,6 +7,9 @@ export const loadables = {
   toastify: loadable.lib(() => import('react-toastify')),
   reactSelect: loadable.lib(() => import('react-select'), { ssr: false }),
   reactWindow: loadable.lib(() => import('react-window'), { ssr: false }),
+  reactSortableHOC: loadable.lib(() => import('react-sortable-hoc'), {
+    ssr: false,
+  }),
   reactSelectAsyncPaginate: loadable.lib(
     () => import('react-select-async-paginate'),
     { ssr: false },
